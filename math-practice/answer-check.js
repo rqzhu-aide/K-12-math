@@ -43,8 +43,13 @@
     return '';
   }
   function enforceForm(q, answer, category) { return category==='correct' && formFeedback(q,answer) ? 'partial' : category; }
+  function gradingNotice(q) {
+    var source=q.gradingStatus==='disputed'?q:q.knowledgeGraph;
+    return source && source.gradingStatus==='disputed'
+      ? source.gradingNote || 'This problem is available for study without grading.' : null;
+  }
   function classify(q, answer) {
-    if (q.gradingStatus==='disputed') return 'not_graded';
+    if (gradingNotice(q)!==null) return 'not_graded';
     if ((q.rejectedAnswers || []).some(function(x){return normal(x)===normal(answer);})) return 'wrong';
     var kind = q.responseType || 'choice';
     if (kind === 'choice') return answer === q.answer ? 'correct' : 'wrong';
@@ -78,6 +83,6 @@
     return 'wrong';
   }
   function check(q, answer) { var category=classify(q,answer);return category==='correct'?true:category==='wrong'?false:null; }
-  root.MathPracticeAnswers = {check: check, classify: classify, formFeedback: formFeedback, enforceForm: enforceForm};
+  root.MathPracticeAnswers = {check: check, classify: classify, formFeedback: formFeedback, enforceForm: enforceForm, gradingNotice: gradingNotice};
   if (typeof module !== 'undefined') module.exports = root.MathPracticeAnswers;
 })(typeof window === 'undefined' ? globalThis : window);

@@ -882,6 +882,14 @@ summary { cursor: pointer; }
 .picker-action::after { content: " +"; }
 .problem-picker[open] .picker-action::after { content: " −"; }
 .picker-fields { padding: 10px 0 22px; }
+.practice-path { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; padding: 0 0 20px; margin: 0 0 20px; border-bottom: 1px solid var(--field-line); }
+.practice-path select, .practice-path input { width: 100%; min-width: 0; max-width: none; }
+.practice-path .path-concept, .practice-path .path-copy, .path-results { grid-column: 1 / -1; }
+.practice-path > button { justify-self: start; min-height: 44px; }
+.practice-path .path-copy { margin: 0; overflow-wrap: anywhere; }
+.path-results { display: grid; gap: 8px; }
+.path-question { text-align: left; white-space: normal; overflow-wrap: anywhere; min-height: 44px; }
+@media (max-width: 560px) { .practice-path { grid-template-columns: minmax(0, 1fr); } }
 .bank-choice { max-width: none; }
 .pool-selects { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 0; }
 .pool-selects select { width: 100%; min-width: 0; }
@@ -987,6 +995,16 @@ button:disabled { opacity: .55; cursor: not-allowed; }
 .notebook-empty { font-size: .8125rem; color: var(--ink-2); margin: 0 0 18px; }
 .notebook-empty { border-top: 1px solid var(--hairline); padding-top: 17px; }
 .notebook-list { display: grid; }
+.graph-evidence { margin: 2px 0 20px; padding: 0 0 10px; border-bottom: 1px solid var(--hairline); color: var(--ink); }
+.graph-evidence > summary { cursor: pointer; padding: 10px 0; font-size: .88rem; font-weight: 650; }
+.graph-evidence p { margin: 5px 0; }
+.graph-topic { margin: 12px 0 4px; font: 400 1.15rem/1.3 var(--book-serif); }
+.graph-target, .graph-quote { font-size: .825rem; line-height: 1.5; }
+.graph-observations { margin: 12px 0; padding-left: 1.2rem; }
+.graph-observation { padding-left: 2px; margin-bottom: 12px; font-size: .8rem; overflow-wrap: anywhere; }
+.graph-context, .graph-quote { display: block; margin-top: 3px; }
+.graph-context, .graph-source, .graph-scope, .graph-summary { color: var(--ink-2); font-size: .75rem; line-height: 1.5; }
+.graph-source summary { cursor: pointer; padding: 5px 0; }
 .notebook-row { display: flex; align-items: center; border-top: 1px solid var(--hairline); }
 .notebook-item { flex: 1; min-width: 0; width: 100%; min-height: 60px; display: block; padding: 14px 0; border: 0; border-radius: 0; text-align: left; color: var(--ink); background: transparent; cursor: pointer; font: 500 .8125rem/1.5 var(--font); }
 .notebook-item:hover { color: var(--accent-deep); background: var(--accent-soft); }
@@ -1097,6 +1115,15 @@ footer .source-credits p { margin: 0; }
     <details class="problem-picker" id="problemPicker">
     <summary><span id="pickerTitle">Find a problem</span><span class="picker-action">Browse</span></summary>
     <div class="picker-fields">
+    <div class="practice-path" aria-label="Practice path">
+      <div class="field-inline"><label for="practicePath">Practice path</label><select id="practicePath"><option value="ailleo">ailleo · Mathematical ideas</option><option value="CN">CN · Chinese curriculum</option><option value="US">US · Common Core</option></select></div>
+      <div class="field-inline"><label for="pathFilter">Filter concepts or standards</label><input class="free-answer" id="pathFilter" type="search" placeholder="For example: fractions" autocomplete="off"></div>
+      <div class="field-inline path-concept"><label id="pathConceptLabel" for="pathConcept">Mathematical concept</label><select id="pathConcept" disabled><option>Loading concepts…</option></select></div>
+      <button type="button" class="ghost" id="pathFind" disabled>Find practice</button>
+      <p class="pool-hint path-copy" id="pathDescription"></p>
+      <p class="pool-hint path-copy" id="pathStatus" role="status"></p>
+      <div class="path-results" id="pathResults"></div>
+    </div>
     <p class="pool-hint" id="poolCount"></p>
     <div class="field-inline bank-choice"><label for="selBank">Question bank</label><select id="selBank"></select></div>
     <div class="pool-selects" id="poolSelectors">
@@ -1166,7 +1193,7 @@ footer .source-credits p { margin: 0; }
           <p class="reasoning-feedback" id="reasoningFeedback" role="status"></p>
         </div>
       </div>
-      <p id="clarification" role="status" hidden></p>
+      <p id="coach" role="status" hidden></p>
       <p class="tutor-status" id="tutorStatus" role="status" hidden></p>
       <button class="ghost" type="button" id="hintToggle" aria-expanded="false" aria-controls="hintBody" hidden>Show a hint</button>
       <div class="hint-body rich-content" id="hintBody" hidden></div>
@@ -1189,6 +1216,11 @@ footer .source-credits p { margin: 0; }
     </div>
     <p class="notebook-empty" id="notebookEmpty">Save a challenge or try a problem. Your recent work will be here when you return.</p>
   </aside>
+  <details id="graphEvidence" class="graph-evidence" hidden>
+    <summary>Knowledge graph evidence</summary>
+    <p class="graph-scope" id="graphEvidenceScope"></p>
+    <div id="graphEvidenceBody"></div>
+  </details>
   <aside class="signals-panel" id="signalsPanel" aria-labelledby="signalsTitle" data-collapsed="false">
     <div class="signals-head">
       <h2 id="signalsTitle">Learning signals</h2>
@@ -1215,7 +1247,7 @@ footer .source-credits p { margin: 0; }
 
   <footer>
     <div class="source-credits">
-      <p>AMC questions and official solution booklets: <a href="https://maa.org/student-programs/amc/" target="_blank" rel="noopener noreferrer">Mathematical Association of America (MAA)</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a>.</p>
+      <p>AMC material and adapted solutions: <a href="https://maa.org/student-programs/amc/" target="_blank" rel="noopener noreferrer">Mathematical Association of America (MAA)</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a>.</p>
       <p>Chinese K-12 material: <a href="https://github.com/xiaoyang111222/cn-math-taxonomy" target="_blank" rel="noopener noreferrer">xiaoyang111222/cn-math-taxonomy</a> · <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a>.</p>
     </div>
     <span>Your drafts and notebook stay in this browser.</span>
@@ -1230,7 +1262,9 @@ footer .source-credits p { margin: 0; }
 <script src="vendor/katex/katex.min.js"></script>
 <script src="vendor/katex/contrib/auto-render.min.js"></script>
 <script src="speech-input.js"></script>
+<script src="graph-evidence.js"></script>
 <script src="practice-feedback.js"></script>
+<script src="curriculum-path.js"></script>
 <script>
 (function () {
   "use strict";
@@ -1264,7 +1298,8 @@ footer .source-credits p { margin: 0; }
     if (!currentQuestion) return;
     var previous = attempts[currentQuestion.id] || {};
     var changed = (previous.thoughts || '') !== els.thoughts.value || (previous.answer || null) !== (selectedAnswer || null);
-    attempts[currentQuestion.id] = { thoughts: els.thoughts.value, answer: selectedAnswer, originalSpeech: feedback ? feedback.evidence : null };
+    attempts[currentQuestion.id] = { thoughts: els.thoughts.value, answer: selectedAnswer, originalSpeech: feedback ? feedback.evidence : null,
+      tutorContext: feedback ? feedback.state() : previous.tutorContext || null };
     try { localStorage.setItem(ATTEMPTS_KEY, JSON.stringify(attempts)); saveFailures.draft = false; }
     catch (_) { saveFailures.draft = true; }
     var entry = notebook[currentQuestion.id] || {};
@@ -1620,7 +1655,10 @@ footer .source-credits p { margin: 0; }
     buildAnswerButtons(q);
     emptyResults();
     $("figureNotice").hidden = !hasFigures(q);
-    if (feedback) feedback.restore(attempt.originalSpeech);
+    if (feedback) {
+      feedback.restoreTurn(attempt.tutorContext, !!(attempt.answer || attempt.thoughts || notebook[q.id] && notebook[q.id].last));
+      feedback.restore(attempt.originalSpeech);
+    }
     updateChips();
     $('problemPicker').open = false;
     $('earlierAttempt').open = false;
@@ -1697,6 +1735,7 @@ footer .source-credits p { margin: 0; }
   var solReturnFocus = null, inertSiblings = [];
 
   function openSolution(q, opener) {
+    if (feedback && currentQuestion && currentQuestion.id === q.id) feedback.solutionOpened();
     solReturnFocus = opener || null;
     solTitle.textContent = questionTitle(q) + '. Solution';
     var body = el("div");
@@ -1705,9 +1744,15 @@ footer .source-credits p { margin: 0; }
     if (q.gradingStatus === 'disputed' && q.gradingNote) body.appendChild(el('p', 'pool-hint', q.gradingNote));
     var sol = q.solution || "";
     var amcSolutionOmitted = !sol && questionIndex[q.id].bank === window.AMC_BANK;
-    var officialSolutionURL = amcSolutionOmitted && q.officialSolution && [
+    var officialSolutionURL = questionIndex[q.id].bank === window.AMC_BANK && q.officialSolution && [
       '../amc-bank/official-solutions/AMC8_2023_Solutions.pdf',
-      '../amc-bank/official-solutions/AMC10A_2022_Solutions.pdf'
+      '../amc-bank/official-solutions/AMC8_2022_Solutions.pdf',
+      '../amc-bank/official-solutions/AMC8_2020_Solutions.pdf',
+      '../amc-bank/official-solutions/AMC8_2019_Solutions.pdf',
+      '../amc-bank/official-solutions/AMC8_2018_Solutions.pdf',
+      '../amc-bank/official-solutions/AMC10A_2022_Solutions.pdf',
+      '../amc-bank/official-solutions/AMC10A_2021_Spring_Solutions.pdf',
+      '../amc-bank/official-solutions/AMC10A_2021_Fall_Solutions.pdf'
     ].indexOf(q.officialSolution.url) >= 0 ? q.officialSolution.url : null;
     var solutionMessage = amcSolutionOmitted ? "A worked solution for this problem is not included." : "No solution is available for this question.";
     if (officialSolutionURL) solutionMessage = "Official MAA solutions are available in the original booklet.";
@@ -1715,16 +1760,18 @@ footer .source-credits p { margin: 0; }
     if (sol) body.appendChild(el('p', 'solution-reflection', 'Which idea made this solution work? Look for a step you could use in another problem.'));
 
     if (officialSolutionURL) {
-      var officialLine = el('p', 'pool-hint');
+      var officialLine = el('p', 'pool-hint', sol ? 'Adapted by Math Practice from MAA official solutions. ' : '');
       var officialLink = el('a', null, 'Read official MAA solutions (PDF)');
       officialLink.href = officialSolutionURL;
+      var officialPage = q.officialSolution.page;
+      if (Number.isInteger(officialPage) && officialPage >= 1 && officialPage <= 23) officialLink.href += '#page=' + officialPage;
       officialLink.target = '_blank'; officialLink.rel = 'noopener noreferrer';
       officialLine.appendChild(officialLink);
       body.appendChild(officialLine);
-    } else if ((sol && q.solutionSource) || (amcSolutionOmitted && httpURL(q.sourceURL))) {
-      var sourceLine = el("p", "pool-hint", amcSolutionOmitted ? "" : "Solution source: ");
-      var sourceText = amcSolutionOmitted ? "View the source page at LIVE by Po-Shen Loh" : q.solutionSource === "live-poshenloh" ? "LIVE by Po-Shen Loh (third-party solution)" : q.solutionSource;
-      var sourceURL = httpURL(q.sourceURL);
+    } else if (sol && q.solutionSource) {
+      var sourceLine = el("p", "pool-hint", "Solution source: ");
+      var sourceText = q.solutionSource;
+      var sourceURL = httpURL(q.solutionSourceURL || q.sourceURL);
       if (sourceURL) {
         var sourceLink = el("a", null, sourceText);
         sourceLink.href = sourceURL;
@@ -1887,7 +1934,10 @@ footer .source-credits p { margin: 0; }
       .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
       .then(function (j) {
         connection.configured = j.configured === true;
-        setConnection(role, !connection.configured ? "idle" : j.ready === true ? "ok" : "down", !connection.configured ? "Not configured" : j.ready === true ? "Ready" : j.label || "Offline", j.message || "Add an optional connection in Settings.");
+        if (role === 'decision') connection.localEvidenceItems = Array.isArray(j.localEvidenceItems) ? j.localEvidenceItems : [];
+        var label = connection.configured ? j.label || (j.ready === true ? "Ready" : "Offline") : "Not configured";
+        var state = !connection.configured || label === "Not tested" ? "idle" : j.ready === true ? "ok" : "down";
+        setConnection(role, state, label, j.message || "Add an optional connection in Settings.");
       })
       .catch(function () { connection.configured = false; setConnection(role, "idle", "Practice mode", "Answer checks and solutions work without the backend. Start the local launcher to add optional model connections."); })
       .finally(function () {
@@ -1897,7 +1947,11 @@ footer .source-credits p { margin: 0; }
       });
     return connection.pending;
   }
-  function serviceSettings() { return {decision: connections.decision.configured === true, inference: connections.inference.configured === true}; }
+  function serviceSettings() {
+    var reviewed = connections.decision.localEvidenceItems || [];
+    return {decision: connections.decision.configured === true, inference: connections.inference.configured === true,
+      localEvidence: !!currentQuestion && reviewed.indexOf(currentQuestion.id) >= 0};
+  }
   function waitServices() { return Promise.all(['decision', 'inference'].map(function (role) { return connections[role].pending; })); }
   function resetSignalsMessage() {
     var configured = connections && connections.decision.configured === true;
@@ -1908,7 +1962,7 @@ footer .source-credits p { margin: 0; }
     connections[role].button.addEventListener("click", function () { ping(role); });
   });
 
-  var running = false, lastSubmitted = null, speechInput = null, feedback = null;
+  var running = false, lastSubmitted = null, speechInput = null, feedback = null, practicePath = null;
   function updateSubmissionNote() {
     if (feedback) feedback.revisionChanged();
     if (!lastSubmitted) { els.submissionNote.textContent = ""; return; }
@@ -1988,12 +2042,16 @@ footer .source-credits p { margin: 0; }
   function run() { feedback.submit(); }
   feedback = new window.MathPracticeFeedback({
     question: function () { return currentQuestion; }, answer: function () { return selectedAnswer; },
+    bank: function () { return BANK.id; },
+    layer: function () { return practicePath ? practicePath.layer() : 'ailleo'; },
+    curriculumNodeId: function () { return practicePath ? practicePath.nodeId() : null; },
     draft: els.thoughts, note: els.submissionNote, panel: els.panel, panelStatus: els.panelStatus,
     results: els.resultsBody, announce: els.announcement, el: el, percent: fmtPct, typeset: typeset,
     connection: setConnection, collapse: setCollapsed, setRunning: setRunning, save: saveAttempt,
     services: serviceSettings, waitServices: waitServices,
     checkAnswer: window.MathPracticeAnswers.check,
     classifyAnswer: window.MathPracticeAnswers.classify,
+    graphEvidence: function (row) { if (window.MathPracticeGraph) window.MathPracticeGraph.record(row); },
     submitted: function (snapshot) {
       lastSubmitted = snapshot;
       if (!snapshot.answer && !snapshot.thoughts.trim()) { saveAttempt(); updateSubmissionNote(); return; }
@@ -2020,6 +2078,16 @@ footer .source-credits p { margin: 0; }
     onTranscript: function (transcript) { feedback.recorded(transcript); }
   });
   initPool();
+  if (window.MathPracticeCurriculumPath) practicePath = new window.MathPracticeCurriculumPath({
+    question: function (id) { return questionIndex[id] && questionIndex[id].question; },
+    title: questionTitle,
+    select: function (q) { goToQuestion(q); focusQuestion(); },
+    changed: function () { if (feedback) feedback.revisionChanged(); saveAttempt(); updateSubmissionNote(); }
+  });
+  if (location.search) {
+    var linkedId = new URLSearchParams(location.search).get('problem');
+    if (linkedId && Object.hasOwn(questionIndex, linkedId)) goToQuestion(questionIndex[linkedId].question);
+  }
   Object.keys(connections).forEach(ping);
 })();
 </script>

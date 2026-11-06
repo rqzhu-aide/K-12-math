@@ -1,0 +1,2285 @@
+{
+  "schemaVersion": 1,
+  "auditPacketId": "audit-011",
+  "status": "complete",
+  "selection": {
+    "provider": "chatgpt",
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "startedAt": "2026-11-05T12:27:04.288686+00:00",
+  "raw": "{\n  \"audits\": [\n    {\n      \"questionId\": \"q001\",\n      \"decision\": \"unresolved\",\n      \"assessedIds\": [],\n      \"supportIds\": [],\n      \"routes\": [\n        {\n          \"id\": \"complete-two-squares\",\n          \"label\": \"Complete both squares\",\n          \"nodeIds\": [\"math:completing-square-expression\", \"cnm_220\"]\n        },\n        {\n          \"id\": \"nonnegative-discriminant\",\n          \"label\": \"Require real roots in x\",\n          \"nodeIds\": [\"cnm_223\", \"cnm_153\", \"cnm_220\"]\n        }\n      ],\n      \"derivedAnswer\": \"B: 2\",\n      \"mathematicalReason\": \"The equation becomes (x-5)^2+(y+3)^2=0. Both squares are nonnegative for real variables, so x=5 and y=-3, giving x+y=2. Alternatively, treating the equation as quadratic in x gives discriminant -4(y+3)^2, which must be nonnegative and therefore forces y=-3. Both proposed routes are valid. The remaining scope gap concerns the simultaneous equality condition for a sum of nonnegative squares, rather than either algebraic procedure alone.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [\n        \"Using nonnegativity and equality conditions of sums of real squares to determine all variables in a quadratic constraint.\"\n      ],\n      \"limitations\": [\n        \"The mathematical answer is determined. The unresolved status concerns primary catalog coverage: the supplied definitions describe the route procedures but do not directly describe the joint sum-of-squares equality condition.\"\n      ],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q002\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"math:graph-models\", \"cnm_h232\"],\n      \"supportIds\": [],\n      \"routes\": [\n        {\n          \"id\": \"complements-and-cycle-types\",\n          \"label\": \"Complement pairs and cycle components\",\n          \"nodeIds\": [\"math:graph-models\", \"cnm_h234\", \"cnm_h239\", \"math:symmetry-counting\"]\n        }\n      ],\n      \"derivedAnswer\": \"B: 170\",\n      \"mathematicalReason\": \"Model the six named people as labeled vertices of a simple undirected graph. The common degree is 1, 2, 3, or 4. Degree-1 graphs are perfect matchings, counted by 6!/(2^3*3!)=15. A degree-2 graph is either a six-cycle, counted by 6!/(6*2)=60, or two triangles, counted by C(6,3)/2=10. Complementation pairs degrees 1 and 4, and degrees 2 and 3, so the total is 2(15+70)=170. Both variants are defensible. The symmetry node applies to rotational and reversal redundancy in cycle encodings, not to identifying differently labeled friendship graphs.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q003\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"math:prime-factorization\"],\n      \"supportIds\": [],\n      \"routes\": [],\n      \"derivedAnswer\": \"C: 251,750,000\",\n      \"mathematicalReason\": \"The factorization is N=2^7*5^6*19*53. Its five smallest positive divisors are 1, 2, 4, 5, and 8; in particular, 3 and 7 are not factors. The bijection d -> N/d reverses divisor order, so the fifth-largest divisor is N/8=251,750,000. Prime-exponent divisibility supplies a valid solution method within the proposed scope.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q004\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"math:integer-diophantine-equations\"],\n      \"supportIds\": [\"cnm_p055\"],\n      \"routes\": [\n        {\n          \"id\": \"digit-congruence\",\n          \"label\": \"Reduce the payment modulo 11\",\n          \"nodeIds\": [\"math:modular-congruence\"]\n        },\n        {\n          \"id\": \"test-payment-divisibility\",\n          \"label\": \"Test candidate totals by division\",\n          \"nodeIds\": [\"cnm_p106\"]\n        }\n      ],\n      \"derivedAnswer\": \"D: 3\",\n      \"mathematicalReason\": \"The dollar total is T=102+10A. If each contribution is an integer number c of cents, then 11c=100T. Since gcd(100,11)=1, T must be divisible by 11. Modulo 11, T is congruent to 3-A, so the digit A must be 3. The total is then $132, or $12 per member. Place-value support and either proposed divisibility route are appropriate.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [\n        \"This uses the ordinary monetary convention of exact whole-cent contributions. Allowing arbitrary fractional-cent contributions would leave A undetermined.\"\n      ],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q005\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"math:extremal-principle\"],\n      \"supportIds\": [\"math:prime-factorization\"],\n      \"routes\": [\n        {\n          \"id\": \"integer-polynomial-factorization\",\n          \"label\": \"Factor the four odd-input roots\",\n          \"nodeIds\": [\"math:polynomial-remainder-factor\", \"cnm_p159\"]\n        }\n      ],\n      \"derivedAnswer\": \"B: 315\",\n      \"mathematicalReason\": \"Since a=P(1), a is an integer. Write P(x)-a=F(x)Q(x), where F(x)=(x-1)(x-3)(x-5)(x-7) and Q has integer coefficients; successive division by these monic linear factors preserves integrality. At x=2,4,6,8, F takes values -15,9,-15,105. Thus 15,9,105 all divide 2a, so 315 divides a. Attainability is essential: take a=315 and Q(x)=-8x^3+124x^2-576x+762. Its values at 2,4,6,8 are 42,-70,42,-6, so P(x)=315+F(x)Q(x) has all the required values. This proves both the universal bound and an attaining construction.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q006\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"math:recursive-counting-probability\"],\n      \"supportIds\": [\"cnm_h230\"],\n      \"routes\": [],\n      \"derivedAnswer\": \"D: 42\",\n      \"mathematicalReason\": \"Place the digits in increasing numerical order. The occupied cells must have row lengths 3>=r1>=r2>=r3>=0, and these lengths retain all information needed to determine which row can receive the next digit. With F(0,0,0)=1, let F(r1,r2,r3) be the sum of F over valid predecessor states obtained by deleting one terminal cell. This gives F(3,3,1)=21 and F(3,2,2)=21, hence F(3,3,2)=42 and F(3,3,3)=42. The state, transitions, and initial condition satisfy the proposed recursion scope. This is a valid selected method, not a claim that recursion is the only method.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q007\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_h232\"],\n      \"supportIds\": [],\n      \"routes\": [\n        {\n          \"id\": \"dominating-label-complement\",\n          \"label\": \"Subtract triples with a dominating label\",\n          \"nodeIds\": [\"math:double-counting\", \"cnm_h239\", \"cnm_h010\", \"cnm_h231\"]\n        },\n        {\n          \"id\": \"modular-gap-compositions\",\n          \"label\": \"Count bounded cyclic gaps\",\n          \"nodeIds\": [\"math:modular-congruence\", \"math:stars-and-bars\", \"cnm_h231\"]\n        }\n      ],\n      \"derivedAnswer\": \"B: 855\",\n      \"mathematicalReason\": \"For distinct labels, exactly one direction of the relation holds, and every label precedes nine others. Among the C(19,3)=969 unordered triples, each noncyclic triple has a unique dominating label, giving 19*C(9,2)=684 such triples. The remaining 285 triples each yield three ordered cyclic triples, so the answer is 855. The alternative route is also valid: the three positive residue gaps lie in 1 through 9 and sum to 19. Their deficits from 9 sum to 8, giving C(10,2)=45 gap triples and 19*45=855 ordered triples. Both routes support the proposed counting scope.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q008\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_h201\", \"cnm_h207\", \"math:integer-diophantine-equations\"],\n      \"supportIds\": [],\n      \"routes\": [\n        {\n          \"id\": \"parameterize-arithmetic-difference\",\n          \"label\": \"Use the positive common difference\",\n          \"nodeIds\": [\"cnm_h202\", \"cnm_151\"]\n        },\n        {\n          \"id\": \"parameterize-geometric-ratio\",\n          \"label\": \"Use the geometric ratio\",\n          \"nodeIds\": [\"cnm_h208\", \"cnm_224\"]\n        }\n      ],\n      \"derivedAnswer\": \"C: 2\",\n      \"mathematicalReason\": \"Set b=a+d and c=a+2d, where d is a positive integer. The reordered geometric progression gives c^2=ab, so d(3a+4d)=0. Since d>0, a=-4d/3, b=-d/3, and c=2d/3. Integrality forces d=3t with positive integer t, giving all solutions (-4t,-t,2t). Therefore the minimum c is 2, attained at (-4,-1,2), whose reordered geometric ratio is -1/2. The ratio route likewise yields (2q+1)(q-1)=0, with q=1 excluded by strict ordering. Both routes and the assessed scopes are valid.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q009\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_111\", \"cnm_110\", \"cnm_177\"],\n      \"supportIds\": [\"cnm_122\"],\n      \"routes\": [],\n      \"derivedAnswer\": \"C: 5\",\n      \"mathematicalReason\": \"Order the sides as a<b<c to enforce the exclusions by side type and avoid congruent copies. The strict triangle inequality rules out a=1, while the perimeter bound gives a<=3. For a=2, the possibilities are (2,3,4), (2,4,5), and (2,5,6). For a=3, they are (3,4,5), (3,4,6), and (3,5,6). The triple (3,4,5) is right and is excluded; the other five are nonright triangles of positive area. Triangle inequalities, classification, the right-triangle check, and SSS as the justification for counting side multisets are appropriate.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q010\",\n      \"decision\": \"unresolved\",\n      \"assessedIds\": [],\n      \"supportIds\": [\"math:modular-congruence\"],\n      \"routes\": [],\n      \"derivedAnswer\": \"B: Jenna wins with 2013 coins; whoever goes first wins with 2014 coins.\",\n      \"mathematicalReason\": \"Classifying positions by both the number of coins and whose turn it is gives the following result by backward induction: on Barbara's turn, Barbara wins exactly for n congruent to 2 or 4 modulo 5; on Jenna's turn, Barbara wins exactly for n congruent to 0 modulo 5. The base case n=1 includes Barbara's forced pass and Jenna's immediate win. Thus 2013, congruent to 3, is a Jenna win with either starter. For 2014, congruent to 4, Barbara wins if she starts and Jenna wins if she starts. Congruence supports this classification, but proving optimal choices requires a minimax winning-position argument, not a counting or probability recurrence.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [\n        \"Optimal play in turn-dependent subtraction games: winning and losing positions, backward induction, forced passes, and modular reply strategies.\"\n      ],\n      \"limitations\": [\n        \"The supplied definitions do not establish a scope covering turn-dependent minimax game analysis. The mathematical result is resolved, but the primary catalog mapping remains unresolved.\"\n      ],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q011\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"math:integer-diophantine-equations\"],\n      \"supportIds\": [\"cnm_p053\", \"cnm_p111\"],\n      \"routes\": [],\n      \"derivedAnswer\": \"D: 37\",\n      \"mathematicalReason\": \"If the positive whole-number duration is h hours, the distance in miles is 55h. The odometer increase is (100c+10b+a)-(100a+10b+c)=99(c-a). Hence 9(c-a)=5h, so c-a is a positive multiple of 5. The digit bounds force c-a=5. Then a+b+c=2a+b+5<=7, with a>=1 and b>=0, forces a=1, b=0, c=6. Thus a^2+b^2+c^2=37. Place value and distance=rate*time support the integer-restriction argument as proposed.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q012\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_h232\"],\n      \"supportIds\": [],\n      \"routes\": [\n        {\n          \"id\": \"classify-extra-song-pattern\",\n          \"label\": \"Classify the extra song pattern\",\n          \"nodeIds\": [\"cnm_h234\", \"math:multiset-permutations\"]\n        },\n        {\n          \"id\": \"exclude-missing-pair-patterns\",\n          \"label\": \"Inclusion-exclusion\",\n          \"nodeIds\": [\"math:inclusion-exclusion-general\", \"cnm_h231\"]\n        }\n      ],\n      \"derivedAnswer\": \"B: 132\",\n      \"mathematicalReason\": \"Each distinct song has seven allowed like-subsets: the empty set, three singletons, and three exact pairs. All three pair types must occur. If the fourth pattern is one of the four non-pair types, there are 4*4!=96 assignments. If it repeats a pair type, there are 3*(4!/2!)=36 assignments. The total is 132. Alternatively, inclusion-exclusion gives 7^4-3*6^4+3*5^4-4^4=132. Both optional routes fit their definitions, and the case-based method directly supports combined addition and multiplication.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q013\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"math:prime-valuations-factorials\"],\n      \"supportIds\": [\"math:floor-ceiling\"],\n      \"routes\": [],\n      \"derivedAnswer\": \"B: 8\",\n      \"mathematicalReason\": \"The trailing-zero count is Z(n)=v_5(n!)=floor(n/5)+floor(n/25)+floor(n/125)+..., because factors of 2 are more abundant than factors of 5. Checking the integers from 5 through 14 in Z(2n)=3Z(n) gives exactly n=8,9,13,14. These are consequently the four least solutions. Their sum is 44, whose digit sum is 8. The factorial-valuation node directly covers the required prime-power counts, with floor values providing appropriate support.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q014\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_p017\", \"math:modular-congruence\"],\n      \"supportIds\": [],\n      \"routes\": [\n        {\n          \"id\": \"subtract-digit-value-expressions\",\n          \"label\": \"Subtract place-value expressions\",\n          \"nodeIds\": [\"cnm_027\", \"cnm_036\"]\n        }\n      ],\n      \"derivedAnswer\": \"A: 45\",\n      \"mathematicalReason\": \"If the tens and units digits are a and b, swapping them changes the score by (10b+a)-(10a+b)=9(b-a); any higher digits cancel. The absolute difference must therefore be a multiple of 9. Among the options, only 45 qualifies, and it is attainable, for example by recording 61 instead of 16. Place-value algebra and its equivalent congruence-modulo-9 formulation justify the proposed scopes; modular notation is a valid method, not a universally required one.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q015\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"math:integer-diophantine-equations\"],\n      \"supportIds\": [],\n      \"routes\": [\n        {\n          \"id\": \"list-proper-divisors\",\n          \"label\": \"List divisors of 30\",\n          \"nodeIds\": [\"cnm_p153\"]\n        },\n        {\n          \"id\": \"count-prime-exponent-choices\",\n          \"label\": \"Count divisors by prime exponents\",\n          \"nodeIds\": [\"math:prime-factorization\", \"math:divisor-count-and-sum\"]\n        }\n      ],\n      \"derivedAnswer\": \"D: 7\",\n      \"mathematicalReason\": \"Since n is positive, positivity of the quotient requires 1<=n<30; n=30 is undefined. Set d=30-n, so 1<=d<=29 and n/(30-n)=30/d-1. This is a positive integer exactly when d is a proper positive divisor of 30. These divisors are 1,2,3,5,6,10,15, giving seven solutions. Equivalently, 30=2*3*5 has eight positive divisors, and d=30 is excluded. Both proposed divisor-counting routes are valid.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q016\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"math:divisor-count-and-sum\", \"math:prime-factorization\"],\n      \"supportIds\": [],\n      \"routes\": [],\n      \"derivedAnswer\": \"D: 325\",\n      \"mathematicalReason\": \"Write n=2^a*5^b*11^c times any remaining prime powers. The three mandatory factors in the divisor count of 110n^3 are 3a+2, 3b+2, and 3c+2. Each divides 110, is at least 2, and is congruent to 2 modulo 3. The only possible triple whose product divides 110 is 2,5,11 in some order; it already exhausts 110, so n has no other prime factors. Thus a,b,c are 0,1,3 in some order, and 3 does not divide n. Consequently the divisor count of 81n^4 is (4+1)(1)(5)(13)=325. Both proposed assessed nodes are directly exercised.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q017\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_h230\"],\n      \"supportIds\": [],\n      \"routes\": [\n        {\n          \"id\": \"first-seat-recursion\",\n          \"label\": \"Recur on the first fixed seat or swapped pair\",\n          \"nodeIds\": [\"math:recursive-counting-probability\"]\n        },\n        {\n          \"id\": \"choose-adjacent-swaps\",\n          \"label\": \"Count disjoint adjacent swaps\",\n          \"nodeIds\": [\"math:bijective-counting\", \"cnm_h237\"]\n        }\n      ],\n      \"derivedAnswer\": \"A: 89\",\n      \"mathematicalReason\": \"Consider the leftmost seat not already resolved. Its occupant either stays, or moves one seat right, in which case the next occupant must move left into that seat. Repeating this argument shows that every legal arrangement consists uniquely of fixed seats and disjoint adjacent swaps. Therefore F(n)=F(n-1)+F(n-2), with F(0)=F(1)=1, giving F(10)=89. Alternatively, arrangements with k swaps correspond to choosing k domino positions among 10-k compressed positions, so the count is sum from k=0 to 5 of C(10-k,k)=89. Both routes justify the addition-principle scope.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q018\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_206\", \"math:integer-diophantine-equations\"],\n      \"supportIds\": [],\n      \"routes\": [],\n      \"derivedAnswer\": \"E: -8\",\n      \"mathematicalReason\": \"Setting y=0 gives x-intercepts -5/a and -b/3. Equality is equivalent to ab=15. The positive factor pairs are (a,b)=(1,15),(3,5),(5,3),(15,1), producing distinct intercepts -5,-5/3,-1,-1/3. Their sum is -8. The coincident-line case a=3,b=5 is allowed by the statement and is included. The proposed scopes correctly combine the intercept-equation relationship with complete enumeration of positive integer factor pairs.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q019\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"math:lattice-counting\"],\n      \"supportIds\": [\"cnm_h042\"],\n      \"routes\": [\n        {\n          \"id\": \"exclude-power-crossings\",\n          \"label\": \"Count excluded windows\",\n          \"nodeIds\": [\"cnm_h010\", \"cnm_h232\"]\n        },\n        {\n          \"id\": \"telescope-floor-differences\",\n          \"label\": \"Sum floor differences\",\n          \"nodeIds\": [\"cnm_h043\", \"math:floor-ceiling\", \"math:telescoping\"]\n        }\n      ],\n      \"derivedAnswer\": \"B: 279\",\n      \"mathematicalReason\": \"Let t=log_5(2), so 0<2t<1. For each m, the only possible n is floor(mt), and it works exactly when floor((m+2)t)=floor(mt). Positive powers of 2 and 5 cannot be equal, so no endpoint equality occurs. The floor difference is either 0 or 1. Summing gives 2012-[floor(2013t)+floor(2014t)-floor(t)-floor(2t)]. The given inequality implies 2013t<867<2014t, hence the two final floors are 866 and 867; the initial floors are zero. The count is 279. For the complementary route, the first 866 crossings each exclude two starts and the 867th excludes only m=2012. Crossings cannot overlap within a length-2 window because log_2(5)>2. Both routes correctly count the integer pairs with strict endpoints.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q020\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"math:infinite-geometric-series\"],\n      \"supportIds\": [],\n      \"routes\": [\n        {\n          \"id\": \"quadratic-denominator\",\n          \"label\": \"Complete the square in the denominator\",\n          \"nodeIds\": [\"math:completing-square-expression\", \"cnm_235\"]\n        },\n        {\n          \"id\": \"am-gm-denominator\",\n          \"label\": \"Bound the denominator using AM-GM\",\n          \"nodeIds\": [\"cnm_h022\"]\n        }\n      ],\n      \"derivedAnswer\": \"E: 4\",\n      \"mathematicalReason\": \"Let the first term be a and the real common ratio be r. Convergence requires |r|<1, and the second-term condition ar=1 excludes r=0. Thus S=a/(1-r)=1/[r(1-r)]. Since 1-r>0 and S>0, r must be positive, giving 0<r<1. Now r(1-r)=1/4-(r-1/2)^2<=1/4, with equality at r=1/2. Therefore S>=4, attained by the series 2+1+1/2+.... AM-GM on the positive numbers r and 1-r gives the same attainable bound. The series scope and both optional optimization routes are valid.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    }\n  ]\n}",
+  "promotionStatus": "not_promoted",
+  "at": "2026-11-05T12:27:04.285858+00:00",
+  "reviewMode": "targeted",
+  "packetHash": "34ef93fd88a9c5739c09f1cae0651dac6f12f90cad9e2ce9b603b00c7fcdb04c",
+  "planHash": "5d52003b9bfcd0f7c7834a4f5f9b6c175a85947412d725fc78308adefb0a905d",
+  "catalogHash": "5bc81d43a32ca981d0a974516852f2eb731325d0f85b14cab04d76bdfd842aa7",
+  "inputHash": "c1cf4733157a7f4f9fc27790a53ecb435bc8b5ab5b832683c535ef283c0f5712",
+  "aliasBindings": {
+    "q001": {
+      "groupId": "task-a2a2baa6a690ddd6a423",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2013_AMC_12B_Q06.json",
+          "questionId": "2013_AMC_12B_Q06",
+          "bank": "amc",
+          "contentHash": "db18ce8a11b85cc861815dfc77508b97d97d8dd82a0c12fc1c5cb8232a7f6f01",
+          "figureHashes": {},
+          "displayHash": "a2a2baa6a690ddd6a42336dfb09193cb8942ee9f68eb17b97e52bf1aae376c7c",
+          "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+          "level": "AMC 12",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "e2fb5f09c3b26867a10e7a99442691b45d02b2d8bc29102f8dfa67d8afd8a0c8",
+          "firstPassPacketId": "map-467",
+          "firstPassReceiptHash": "fd7412c69b90fe74e5c90b8f02adbd814debd974bc0bf42100aa91b927217eab",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope",
+            "reported_limitation",
+            "unresolved_or_missing_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "057ff9a94db242c7fd3845c585ff7b5f641e2d6203145e56f11781bda26e03ae",
+          "questionIds": [
+            "2013_AMC_12B_Q06"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q002": {
+      "groupId": "task-a340e293fabcb6b7ac54",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2012_AMC_10A_Q23.json",
+          "questionId": "2012_AMC_10A_Q23",
+          "bank": "amc",
+          "contentHash": "39b225d32485c283c8c8036c6e5e2cd912f2088b3dfcb3a4ea47ccb4a82a85a2",
+          "figureHashes": {},
+          "displayHash": "a340e293fabcb6b7ac54fd19171c3663ba5d9d6fda7cdd2017a089f176dd7506",
+          "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "038e5e0fc5fdc92a0e5a8032af83d1590518147f1de135a49645f2b0bfbe8f29",
+          "firstPassPacketId": "map-451",
+          "firstPassReceiptHash": "21c04456a476817da6ff43331bfa07503b80d52d538b398373d42b1c1c147b42",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        },
+        {
+          "path": "amc-bank\\questions\\2012_AMC_12A_Q19.json",
+          "questionId": "2012_AMC_12A_Q19",
+          "bank": "amc",
+          "contentHash": "f3b0ab2ff195de7b3872550d09138b451f6d5e9990eed48693f27cde7d968448",
+          "figureHashes": {},
+          "displayHash": "a340e293fabcb6b7ac54fd19171c3663ba5d9d6fda7cdd2017a089f176dd7506",
+          "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+          "level": "AMC 12",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "b540d478099457d607c27c56c53da2ccdb7ffae2dd2d24e9b9e6c986cc1192c8",
+          "firstPassPacketId": "map-455",
+          "firstPassReceiptHash": "97e38608ec4d7c0c0f2433c1c77167ecd4ae973df345f3a49bfa09841fea5c54",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "73b1f2c0ba6e9da14e1c5f3a50e3d1aa7f2d46fa23e08ad64686b7d051fcebb0",
+          "questionIds": [
+            "2012_AMC_12A_Q19"
+          ]
+        },
+        {
+          "variantId": "v02",
+          "candidateHash": "8dbbc6686d2780745a31e38764c387ee7118fb9396f36d679dd0fe6fd852f0d6",
+          "questionIds": [
+            "2012_AMC_10A_Q23"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q003": {
+      "groupId": "task-a43d8836654421f0f038",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2014_AMC_10B_Q12.json",
+          "questionId": "2014_AMC_10B_Q12",
+          "bank": "amc",
+          "contentHash": "7972e5f77d5a106815de7681123738281084d0e76ed8194909ef590ccf1088ab",
+          "figureHashes": {},
+          "displayHash": "a43d8836654421f0f03834f55db381680136341a88288eeae887addbae96fbdb",
+          "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "2fc760f88637ffac22e2245149cc20e630dde89eb96e5c4946ee7ad5349d67ac",
+          "firstPassPacketId": "map-474",
+          "firstPassReceiptHash": "146f4703ccf8dc40b27941b47e6ec79c81dd9d524967976ff10e362987fc4010",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "1f794739d5be75033ba40d8ea799357a0c08f928a60cc9b96dad5926dd81944f",
+          "questionIds": [
+            "2014_AMC_10B_Q12"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q004": {
+      "groupId": "task-a51cef1442d12904f7cf",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2014_AMC_8_Q08.json",
+          "questionId": "2014_AMC_8_Q08",
+          "bank": "amc",
+          "contentHash": "3462bf8fb6501d4c1accfae0e9102ac128529a3d62ee89d8996f2b4f6c8324f1",
+          "figureHashes": {},
+          "displayHash": "a51cef1442d12904f7cf63aec53dd45c8cfb4f3e8b4653bf842eb50e00370a95",
+          "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+          "level": "AMC 8",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "9fe752d316f2e11fc86331eb39fa5d98541a021b13a4d38c9f1f14d3210c730e",
+          "firstPassPacketId": "map-480",
+          "firstPassReceiptHash": "07fd542ab0083b777088e4be718ded641a63421590151f0480d798ad1e5530ca",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope",
+            "reported_limitation"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "1bbb096fe91dc2d03259afaea4b742fdd021ef87b891e29f8865931ec77dec1e",
+          "questionIds": [
+            "2014_AMC_8_Q08"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q005": {
+      "groupId": "task-a5fb1def64d8db133c08",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2010_AMC_12B_Q21.json",
+          "questionId": "2010_AMC_12B_Q21",
+          "bank": "amc",
+          "contentHash": "d55d523a2f7e9271930bedd8051e343a34c40def039765c38f61df3a00f29a70",
+          "figureHashes": {},
+          "displayHash": "a5fb1def64d8db133c08cfd398f45381886ace510dab399221707af5d2c17e86",
+          "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+          "level": "AMC 12",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "ec3060105321b1789746281469c23b393d0fef12d66e89308787a1db97c14271",
+          "firstPassPacketId": "map-347",
+          "firstPassReceiptHash": "984d22489b264e34b822134e51fbbedb928bf5903a6f0168f045d34777199972",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "022b0773e3d31bff77c6a3ca4357c809d2676829ce5183fa5b23ec2f94429f06",
+          "questionIds": [
+            "2010_AMC_12B_Q21"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q006": {
+      "groupId": "task-a61f8c41571006f7182b",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2010_AMC_12B_Q17.json",
+          "questionId": "2010_AMC_12B_Q17",
+          "bank": "amc",
+          "contentHash": "e81216528ac26b1cab49312bcf66624def46c779c1e4d11098c9671ada1741d7",
+          "figureHashes": {},
+          "displayHash": "a61f8c41571006f7182b372ea787c7e665ff71a698821ce2164573f215cd1d67",
+          "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+          "level": "AMC 12",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "7f9d21a8ae51dc02be53ebdc31e9948d5e5203641080d8a24daee5a0d04a38a4",
+          "firstPassPacketId": "map-347",
+          "firstPassReceiptHash": "984d22489b264e34b822134e51fbbedb928bf5903a6f0168f045d34777199972",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "e28793d4b789591924abaa6dfa3c520437c582e9f1a9a6801e862fad56668cc2",
+          "questionIds": [
+            "2010_AMC_12B_Q17"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q007": {
+      "groupId": "task-a6c612ba2b48a4f020c0",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2013_AMC_12A_Q20.json",
+          "questionId": "2013_AMC_12A_Q20",
+          "bank": "amc",
+          "contentHash": "ac088b9e235a3a73ddad29ed61c34474b932db98ae51d70185ddc624a30b5c1b",
+          "figureHashes": {},
+          "displayHash": "a6c612ba2b48a4f020c07441eeb188b29a072e7d5691e7d8d8dcbc406e8ae737",
+          "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+          "level": "AMC 12",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "5bb15fd7ab184c6ca729e17b1bdfc9cfe68215725e2b801809bc10d16cd536e4",
+          "firstPassPacketId": "map-466",
+          "firstPassReceiptHash": "a82afe3582517be1576fa4f30724a461d2469891022f62cf420b6dad6fd635d7",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "0b0664aadad5febbf0273e626da7e9d3dd72febd14729e819854025b771b3710",
+          "questionIds": [
+            "2013_AMC_12A_Q20"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q008": {
+      "groupId": "task-a6e21b6aea001bdee56f",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2014_AMC_12A_Q14.json",
+          "questionId": "2014_AMC_12A_Q14",
+          "bank": "amc",
+          "contentHash": "c842ee23d5faa88ebaacbc9e1140192ca31f438a17b5bdfde7f895b6b7c40e47",
+          "figureHashes": {},
+          "displayHash": "a6e21b6aea001bdee56f84fdf771a2b34a31b312521e8146cda3ae88a77fe045",
+          "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+          "level": "AMC 12",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "9c39f74d7e6d0b44745c473efb0f0125b7b47cba29100789e917119c1a1c7280",
+          "firstPassPacketId": "map-476",
+          "firstPassReceiptHash": "0bc75a298e5067e7a44021b18bfaa1dac6347cb4ad330732ff2c12b6d1c32ac3",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "83540fc0c4c4586da0218ef8353a2bd82b20090289920028cb8c8458543c50fc",
+          "questionIds": [
+            "2014_AMC_12A_Q14"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q009": {
+      "groupId": "task-a87220a02d2687374487",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2015_AMC_12B_Q10.json",
+          "questionId": "2015_AMC_12B_Q10",
+          "bank": "amc",
+          "contentHash": "feb17540ea98bca29bea7c9ecc2cf3267ca83046117cd65662b2a70c493fb1f5",
+          "figureHashes": {},
+          "displayHash": "a87220a02d2687374487a3211257f3fff6a0cb935a834d4949254c2a14399b5c",
+          "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+          "level": "AMC 12",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "ad29920e9c255261d4ddbb62826602de74b8bfdfa60b289ad1ebc7fc69a41f9a",
+          "firstPassPacketId": "map-489",
+          "firstPassReceiptHash": "a17d65c599ebb79ec6801f24f46f23ac936524afcb1c45332b77707e2322339f",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": []
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "450b2655548768988fc703826f51b9c78c145f5ae9053101dd80dc615b475989",
+          "questionIds": [
+            "2015_AMC_12B_Q10"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q010": {
+      "groupId": "task-a913d1686921b634525f",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2013_AMC_12B_Q18.json",
+          "questionId": "2013_AMC_12B_Q18",
+          "bank": "amc",
+          "contentHash": "ae0a86742892b57234aace5782933c147ba6eca2409514192583f73fe71048c3",
+          "figureHashes": {},
+          "displayHash": "a913d1686921b634525fbecec7d09e60bfb6c55359c6669e78f3e3752e1a8843",
+          "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+          "level": "AMC 12",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "04ad58017588f2602966e92dc73cb000038df1d9f2b7c8a4fc6d23d2fca29d06",
+          "firstPassPacketId": "map-468",
+          "firstPassReceiptHash": "e66eecbcaaa6b54757219acb8f4d29fd937fe38a4eddb6e7d6fbb5938332d554",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope",
+            "reported_limitation",
+            "unresolved_or_missing_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "3b01ab5099f6f311d35cfea43c7b5d5c71eaa4c35663ca205d670b049e1980ef",
+          "questionIds": [
+            "2013_AMC_12B_Q18"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q011": {
+      "groupId": "task-a93c8588e973bc01d49c",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2014_AMC_12B_Q10.json",
+          "questionId": "2014_AMC_12B_Q10",
+          "bank": "amc",
+          "contentHash": "e236b661f0c9f073c38967ccd80aec26cb220f02003cf05bc51051b1edd1a92b",
+          "figureHashes": {},
+          "displayHash": "a93c8588e973bc01d49c99e7f821f91f590e3ec54152721e6f92f025b884451d",
+          "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+          "level": "AMC 12",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "fdf11a2b7e06f47d4312762368a0ec6ad42b078c48438113e94370ebad16b8c1",
+          "firstPassPacketId": "map-478",
+          "firstPassReceiptHash": "cd856e22781c3308b019421ffdf0db0145141b39192f91fd98490fa7e900280f",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "6e6029056a20f50ee13796502c5c564ec8799fd055cada9ceb6ed8f45aa5af92",
+          "questionIds": [
+            "2014_AMC_12B_Q10"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q012": {
+      "groupId": "task-aac31373113dfdd37fe7",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2012_AMC_10B_Q24.json",
+          "questionId": "2012_AMC_10B_Q24",
+          "bank": "amc",
+          "contentHash": "c0b8aff50d2482ac7156cef502d047c37795bb1d6ad7dc129d98d834c74d2b01",
+          "figureHashes": {},
+          "displayHash": "aac31373113dfdd37fe7a6325077d4b1a0cb915bb1cab72731d9961747a2eb31",
+          "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "76b0e1e5d6faea3bd782d2a13d4d9950d30c3438c7637e65df1045d6015da944",
+          "firstPassPacketId": "map-453",
+          "firstPassReceiptHash": "ea4f65ba007e3e29c7c5e5f1f86c4445cae767010d83cfbc7e46dd235b47875d",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "6ed9d4e7bcbc34de09ec332f7288c6571bf13e846d59d6f273f9726dbb3a438a",
+          "questionIds": [
+            "2012_AMC_10B_Q24"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q013": {
+      "groupId": "task-ac4ef964427a2d4e0be8",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2015_AMC_10B_Q23.json",
+          "questionId": "2015_AMC_10B_Q23",
+          "bank": "amc",
+          "contentHash": "2200072acadf9ea1cf59efa2a819cb4a8a5f8a6419bcc01fc7e41ee63e29a03f",
+          "figureHashes": {},
+          "displayHash": "ac4ef964427a2d4e0be85b57e0defe7bf3a99c40e0114f2947d11cecbc2b34cb",
+          "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "603cf98af23c2ddd6e68aac1408ffb4b22330ca4c2473aa40880a2b5a05a8ad0",
+          "firstPassPacketId": "map-486",
+          "firstPassReceiptHash": "c7559013b6936279f893be8c536b7be52f0f9be9e20a38cf4c79935dd9c2052e",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "350b57f6c1369e91c378b50217f75a734a5c73205f2ed3c68c0b7c0d92968a5a",
+          "questionIds": [
+            "2015_AMC_10B_Q23"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q014": {
+      "groupId": "task-accc721baf5e5415d85d",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2013_AMC_8_Q13.json",
+          "questionId": "2013_AMC_8_Q13",
+          "bank": "amc",
+          "contentHash": "f2cb09d779f70500b18253ec439d01bfbfe4df9810ed3aee7639e15759ff62db",
+          "figureHashes": {},
+          "displayHash": "accc721baf5e5415d85d3e139b25bed26d808c33db966fe1a0e83c7ff5a0de02",
+          "answerRulesHash": "30195ac12af612a37d753a2b6c289551b46f2daa651c84066e3f9fa3c440cafb",
+          "level": "AMC 8",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "3292475e9ee9d14fbfea280b40f427b472b6dae9ac23411bb8ce91463bb4ca82",
+          "firstPassPacketId": "map-470",
+          "firstPassReceiptHash": "3fb45893592039b82bea3b39d2fc631af6e94259c00b782a5506d177e05e7b2f",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "29fc772170d1289f5396bfce0ec8f675f1edc3fc9f6360ef4a60926d1fbec82e",
+          "questionIds": [
+            "2013_AMC_8_Q13"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q015": {
+      "groupId": "task-ae3e4f547f9cd511fb4f",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2014_AMC_12B_Q07.json",
+          "questionId": "2014_AMC_12B_Q07",
+          "bank": "amc",
+          "contentHash": "e6374811e230f105da6cb8442eee40d1fedb9f493b72266f611767cc9a19f83c",
+          "figureHashes": {},
+          "displayHash": "ae3e4f547f9cd511fb4f4dd30a48c56558c3aff8ed928d9c435e34c37535a7dc",
+          "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+          "level": "AMC 12",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "f218ece4502363106e257da66b602895e1b20e0bca325c397f3da08d93cac5ca",
+          "firstPassPacketId": "map-478",
+          "firstPassReceiptHash": "cd856e22781c3308b019421ffdf0db0145141b39192f91fd98490fa7e900280f",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "ac0d5c6aa871f09e2f10b7a5b7834bc341af12f038a82986d078a0265bb7f2e7",
+          "questionIds": [
+            "2014_AMC_12B_Q07"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q016": {
+      "groupId": "task-b0ff8a7fe1d0adb338ed",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2016_AMC_10A_Q22.json",
+          "questionId": "2016_AMC_10A_Q22",
+          "bank": "amc",
+          "contentHash": "026c7fad9802a80a362a8ef29e37edb88f64cb2dacb78df6339a211dc1018de6",
+          "figureHashes": {},
+          "displayHash": "b0ff8a7fe1d0adb338ede88524d4b61b607ced3cd2c27f8c97846cec24339704",
+          "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "bfefd7ebc0e3f105956a23504a2f47e27dc53b4d4b326b1d80df4174b9fb8273",
+          "firstPassPacketId": "map-494",
+          "firstPassReceiptHash": "fc0428cf8401266940359ee2fe8428ea1c968091f233e32643c59646c4c57c10",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "8d17c7f2b0fe82ca0b21839c5fe951b8f64fa095f5665525e0a962e79b23c449",
+          "questionIds": [
+            "2016_AMC_10A_Q22"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q017": {
+      "groupId": "task-b15f61357c875e29bbea",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2009_AMC_12B_Q21.json",
+          "questionId": "2009_AMC_12B_Q21",
+          "bank": "amc",
+          "contentHash": "1c0217abe9edf6db8daf15a96be8dd3e359dc87df2d44a0701a1b49879d71d61",
+          "figureHashes": {},
+          "displayHash": "b15f61357c875e29bbeafb1bd13d4e67bf6402c4bbf65ebc82bdf91402d2c957",
+          "answerRulesHash": "30195ac12af612a37d753a2b6c289551b46f2daa651c84066e3f9fa3c440cafb",
+          "level": "AMC 12",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "949c9b338aa961c0974bc57989b23a9560293670f707c331ac23728000984fac",
+          "firstPassPacketId": "map-434",
+          "firstPassReceiptHash": "0572d8de2220e78955a6a5f27ba846819adfbb0ab3115d5c78040cb3a4197099",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "2f786bc6a5c4512e1b406dbcaffc38b954622808a010c83d31feababfb219164",
+          "questionIds": [
+            "2009_AMC_12B_Q21"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q018": {
+      "groupId": "task-b2e7192b34ba29b458e8",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2014_AMC_10A_Q21.json",
+          "questionId": "2014_AMC_10A_Q21",
+          "bank": "amc",
+          "contentHash": "1ab37c0251315df3d7046cf49f551e28ee74e73371f434e1cb7a23facc5ba7e6",
+          "figureHashes": {},
+          "displayHash": "b2e7192b34ba29b458e875635791f7b2b3ed8f6dd35b0622324765f73b72c803",
+          "answerRulesHash": "8fa1d4de71d76dca373ae83555562198ef33cfb23e91c1ecf7b14c2939567a09",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "c6e609ddb25d65e1bae4990a8ed4394b493401bf4318d3b06a8262a3822ee09c",
+          "firstPassPacketId": "map-473",
+          "firstPassReceiptHash": "1659d0cdf1a7b97afe083172c06e00f1888280d64df1f3cb00d88f7ca8ddc472",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "ecbcb368bc826dc4879a957188e040e51a6ef9c781f208f0d5e2b2ab8d32d417",
+          "questionIds": [
+            "2014_AMC_10A_Q21"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q019": {
+      "groupId": "task-b387e6796488cafd7735",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2014_AMC_12A_Q22.json",
+          "questionId": "2014_AMC_12A_Q22",
+          "bank": "amc",
+          "contentHash": "cfa9a45d98f3d83ee4f178f1e113f5cfb45cf1d97b6e5dcf13327fb1a7f8544b",
+          "figureHashes": {},
+          "displayHash": "b387e6796488cafd77355fd333ba4516b9df92349cf85f647bc526bb31770913",
+          "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+          "level": "AMC 12",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "d6e98fcb6b38686e1c557e6c2f4d5d27690da915881a745c4a6f95a62033a84b",
+          "firstPassPacketId": "map-477",
+          "firstPassReceiptHash": "03c2a40df78d8b64edc54dee970300aed7acbda1eb898651ea0e9390a8ab95e0",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "32bd61aefb5bfc5d8acf7626aa10322e8179467e557fb3a82f442c1c9f84a7ae",
+          "questionIds": [
+            "2014_AMC_12A_Q22"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q020": {
+      "groupId": "task-b45452dbe31dccc5f877",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2016_AMC_10B_Q16.json",
+          "questionId": "2016_AMC_10B_Q16",
+          "bank": "amc",
+          "contentHash": "743444f0a695e97af56bb2fcb01d6956ad3f70f610f96c2cc20600934339cb53",
+          "figureHashes": {},
+          "displayHash": "b45452dbe31dccc5f8777e0ee5213651976d6d4f0fd51ff088add18b1ee65543",
+          "answerRulesHash": "8fa1d4de71d76dca373ae83555562198ef33cfb23e91c1ecf7b14c2939567a09",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "9d654e6fabf5ca8a280c609d9947a3ed330eae67171d0a1a65c4901c4772510d",
+          "firstPassPacketId": "map-496",
+          "firstPassReceiptHash": "2b0ac8f6d94b61f338ea0d0a5c9d1353d42fad6f9224db631086ddfc12141d49",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "66c9e67dc1a63a9faf93eb5e1de3cef4135d6e05d87943729ad430ff5e1ddfba",
+          "questionIds": [
+            "2016_AMC_10B_Q16"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    }
+  },
+  "imageCount": 0,
+  "imageHashes": [],
+  "candidateExposure": true,
+  "keysSolutionsSourceLabelsExposed": false,
+  "receiptBase": {
+    "schemaVersion": 1,
+    "status": "prepared_not_reviewed",
+    "at": "2026-11-05T12:27:04.285858+00:00",
+    "reviewMode": "targeted",
+    "auditPacketId": "audit-011",
+    "packetHash": "34ef93fd88a9c5739c09f1cae0651dac6f12f90cad9e2ce9b603b00c7fcdb04c",
+    "planHash": "5d52003b9bfcd0f7c7834a4f5f9b6c175a85947412d725fc78308adefb0a905d",
+    "catalogHash": "5bc81d43a32ca981d0a974516852f2eb731325d0f85b14cab04d76bdfd842aa7",
+    "inputHash": "c1cf4733157a7f4f9fc27790a53ecb435bc8b5ab5b832683c535ef283c0f5712",
+    "aliasBindings": {
+      "q001": {
+        "groupId": "task-a2a2baa6a690ddd6a423",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2013_AMC_12B_Q06.json",
+            "questionId": "2013_AMC_12B_Q06",
+            "bank": "amc",
+            "contentHash": "db18ce8a11b85cc861815dfc77508b97d97d8dd82a0c12fc1c5cb8232a7f6f01",
+            "figureHashes": {},
+            "displayHash": "a2a2baa6a690ddd6a42336dfb09193cb8942ee9f68eb17b97e52bf1aae376c7c",
+            "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+            "level": "AMC 12",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "e2fb5f09c3b26867a10e7a99442691b45d02b2d8bc29102f8dfa67d8afd8a0c8",
+            "firstPassPacketId": "map-467",
+            "firstPassReceiptHash": "fd7412c69b90fe74e5c90b8f02adbd814debd974bc0bf42100aa91b927217eab",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope",
+              "reported_limitation",
+              "unresolved_or_missing_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "057ff9a94db242c7fd3845c585ff7b5f641e2d6203145e56f11781bda26e03ae",
+            "questionIds": [
+              "2013_AMC_12B_Q06"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q002": {
+        "groupId": "task-a340e293fabcb6b7ac54",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2012_AMC_10A_Q23.json",
+            "questionId": "2012_AMC_10A_Q23",
+            "bank": "amc",
+            "contentHash": "39b225d32485c283c8c8036c6e5e2cd912f2088b3dfcb3a4ea47ccb4a82a85a2",
+            "figureHashes": {},
+            "displayHash": "a340e293fabcb6b7ac54fd19171c3663ba5d9d6fda7cdd2017a089f176dd7506",
+            "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "038e5e0fc5fdc92a0e5a8032af83d1590518147f1de135a49645f2b0bfbe8f29",
+            "firstPassPacketId": "map-451",
+            "firstPassReceiptHash": "21c04456a476817da6ff43331bfa07503b80d52d538b398373d42b1c1c147b42",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          },
+          {
+            "path": "amc-bank\\questions\\2012_AMC_12A_Q19.json",
+            "questionId": "2012_AMC_12A_Q19",
+            "bank": "amc",
+            "contentHash": "f3b0ab2ff195de7b3872550d09138b451f6d5e9990eed48693f27cde7d968448",
+            "figureHashes": {},
+            "displayHash": "a340e293fabcb6b7ac54fd19171c3663ba5d9d6fda7cdd2017a089f176dd7506",
+            "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+            "level": "AMC 12",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "b540d478099457d607c27c56c53da2ccdb7ffae2dd2d24e9b9e6c986cc1192c8",
+            "firstPassPacketId": "map-455",
+            "firstPassReceiptHash": "97e38608ec4d7c0c0f2433c1c77167ecd4ae973df345f3a49bfa09841fea5c54",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "73b1f2c0ba6e9da14e1c5f3a50e3d1aa7f2d46fa23e08ad64686b7d051fcebb0",
+            "questionIds": [
+              "2012_AMC_12A_Q19"
+            ]
+          },
+          {
+            "variantId": "v02",
+            "candidateHash": "8dbbc6686d2780745a31e38764c387ee7118fb9396f36d679dd0fe6fd852f0d6",
+            "questionIds": [
+              "2012_AMC_10A_Q23"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q003": {
+        "groupId": "task-a43d8836654421f0f038",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2014_AMC_10B_Q12.json",
+            "questionId": "2014_AMC_10B_Q12",
+            "bank": "amc",
+            "contentHash": "7972e5f77d5a106815de7681123738281084d0e76ed8194909ef590ccf1088ab",
+            "figureHashes": {},
+            "displayHash": "a43d8836654421f0f03834f55db381680136341a88288eeae887addbae96fbdb",
+            "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "2fc760f88637ffac22e2245149cc20e630dde89eb96e5c4946ee7ad5349d67ac",
+            "firstPassPacketId": "map-474",
+            "firstPassReceiptHash": "146f4703ccf8dc40b27941b47e6ec79c81dd9d524967976ff10e362987fc4010",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "1f794739d5be75033ba40d8ea799357a0c08f928a60cc9b96dad5926dd81944f",
+            "questionIds": [
+              "2014_AMC_10B_Q12"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q004": {
+        "groupId": "task-a51cef1442d12904f7cf",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2014_AMC_8_Q08.json",
+            "questionId": "2014_AMC_8_Q08",
+            "bank": "amc",
+            "contentHash": "3462bf8fb6501d4c1accfae0e9102ac128529a3d62ee89d8996f2b4f6c8324f1",
+            "figureHashes": {},
+            "displayHash": "a51cef1442d12904f7cf63aec53dd45c8cfb4f3e8b4653bf842eb50e00370a95",
+            "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+            "level": "AMC 8",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "9fe752d316f2e11fc86331eb39fa5d98541a021b13a4d38c9f1f14d3210c730e",
+            "firstPassPacketId": "map-480",
+            "firstPassReceiptHash": "07fd542ab0083b777088e4be718ded641a63421590151f0480d798ad1e5530ca",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope",
+              "reported_limitation"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "1bbb096fe91dc2d03259afaea4b742fdd021ef87b891e29f8865931ec77dec1e",
+            "questionIds": [
+              "2014_AMC_8_Q08"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q005": {
+        "groupId": "task-a5fb1def64d8db133c08",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2010_AMC_12B_Q21.json",
+            "questionId": "2010_AMC_12B_Q21",
+            "bank": "amc",
+            "contentHash": "d55d523a2f7e9271930bedd8051e343a34c40def039765c38f61df3a00f29a70",
+            "figureHashes": {},
+            "displayHash": "a5fb1def64d8db133c08cfd398f45381886ace510dab399221707af5d2c17e86",
+            "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+            "level": "AMC 12",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "ec3060105321b1789746281469c23b393d0fef12d66e89308787a1db97c14271",
+            "firstPassPacketId": "map-347",
+            "firstPassReceiptHash": "984d22489b264e34b822134e51fbbedb928bf5903a6f0168f045d34777199972",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "022b0773e3d31bff77c6a3ca4357c809d2676829ce5183fa5b23ec2f94429f06",
+            "questionIds": [
+              "2010_AMC_12B_Q21"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q006": {
+        "groupId": "task-a61f8c41571006f7182b",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2010_AMC_12B_Q17.json",
+            "questionId": "2010_AMC_12B_Q17",
+            "bank": "amc",
+            "contentHash": "e81216528ac26b1cab49312bcf66624def46c779c1e4d11098c9671ada1741d7",
+            "figureHashes": {},
+            "displayHash": "a61f8c41571006f7182b372ea787c7e665ff71a698821ce2164573f215cd1d67",
+            "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+            "level": "AMC 12",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "7f9d21a8ae51dc02be53ebdc31e9948d5e5203641080d8a24daee5a0d04a38a4",
+            "firstPassPacketId": "map-347",
+            "firstPassReceiptHash": "984d22489b264e34b822134e51fbbedb928bf5903a6f0168f045d34777199972",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "e28793d4b789591924abaa6dfa3c520437c582e9f1a9a6801e862fad56668cc2",
+            "questionIds": [
+              "2010_AMC_12B_Q17"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q007": {
+        "groupId": "task-a6c612ba2b48a4f020c0",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2013_AMC_12A_Q20.json",
+            "questionId": "2013_AMC_12A_Q20",
+            "bank": "amc",
+            "contentHash": "ac088b9e235a3a73ddad29ed61c34474b932db98ae51d70185ddc624a30b5c1b",
+            "figureHashes": {},
+            "displayHash": "a6c612ba2b48a4f020c07441eeb188b29a072e7d5691e7d8d8dcbc406e8ae737",
+            "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+            "level": "AMC 12",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "5bb15fd7ab184c6ca729e17b1bdfc9cfe68215725e2b801809bc10d16cd536e4",
+            "firstPassPacketId": "map-466",
+            "firstPassReceiptHash": "a82afe3582517be1576fa4f30724a461d2469891022f62cf420b6dad6fd635d7",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "0b0664aadad5febbf0273e626da7e9d3dd72febd14729e819854025b771b3710",
+            "questionIds": [
+              "2013_AMC_12A_Q20"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q008": {
+        "groupId": "task-a6e21b6aea001bdee56f",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2014_AMC_12A_Q14.json",
+            "questionId": "2014_AMC_12A_Q14",
+            "bank": "amc",
+            "contentHash": "c842ee23d5faa88ebaacbc9e1140192ca31f438a17b5bdfde7f895b6b7c40e47",
+            "figureHashes": {},
+            "displayHash": "a6e21b6aea001bdee56f84fdf771a2b34a31b312521e8146cda3ae88a77fe045",
+            "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+            "level": "AMC 12",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "9c39f74d7e6d0b44745c473efb0f0125b7b47cba29100789e917119c1a1c7280",
+            "firstPassPacketId": "map-476",
+            "firstPassReceiptHash": "0bc75a298e5067e7a44021b18bfaa1dac6347cb4ad330732ff2c12b6d1c32ac3",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "83540fc0c4c4586da0218ef8353a2bd82b20090289920028cb8c8458543c50fc",
+            "questionIds": [
+              "2014_AMC_12A_Q14"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q009": {
+        "groupId": "task-a87220a02d2687374487",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2015_AMC_12B_Q10.json",
+            "questionId": "2015_AMC_12B_Q10",
+            "bank": "amc",
+            "contentHash": "feb17540ea98bca29bea7c9ecc2cf3267ca83046117cd65662b2a70c493fb1f5",
+            "figureHashes": {},
+            "displayHash": "a87220a02d2687374487a3211257f3fff6a0cb935a834d4949254c2a14399b5c",
+            "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+            "level": "AMC 12",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "ad29920e9c255261d4ddbb62826602de74b8bfdfa60b289ad1ebc7fc69a41f9a",
+            "firstPassPacketId": "map-489",
+            "firstPassReceiptHash": "a17d65c599ebb79ec6801f24f46f23ac936524afcb1c45332b77707e2322339f",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": []
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "450b2655548768988fc703826f51b9c78c145f5ae9053101dd80dc615b475989",
+            "questionIds": [
+              "2015_AMC_12B_Q10"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q010": {
+        "groupId": "task-a913d1686921b634525f",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2013_AMC_12B_Q18.json",
+            "questionId": "2013_AMC_12B_Q18",
+            "bank": "amc",
+            "contentHash": "ae0a86742892b57234aace5782933c147ba6eca2409514192583f73fe71048c3",
+            "figureHashes": {},
+            "displayHash": "a913d1686921b634525fbecec7d09e60bfb6c55359c6669e78f3e3752e1a8843",
+            "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+            "level": "AMC 12",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "04ad58017588f2602966e92dc73cb000038df1d9f2b7c8a4fc6d23d2fca29d06",
+            "firstPassPacketId": "map-468",
+            "firstPassReceiptHash": "e66eecbcaaa6b54757219acb8f4d29fd937fe38a4eddb6e7d6fbb5938332d554",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope",
+              "reported_limitation",
+              "unresolved_or_missing_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "3b01ab5099f6f311d35cfea43c7b5d5c71eaa4c35663ca205d670b049e1980ef",
+            "questionIds": [
+              "2013_AMC_12B_Q18"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q011": {
+        "groupId": "task-a93c8588e973bc01d49c",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2014_AMC_12B_Q10.json",
+            "questionId": "2014_AMC_12B_Q10",
+            "bank": "amc",
+            "contentHash": "e236b661f0c9f073c38967ccd80aec26cb220f02003cf05bc51051b1edd1a92b",
+            "figureHashes": {},
+            "displayHash": "a93c8588e973bc01d49c99e7f821f91f590e3ec54152721e6f92f025b884451d",
+            "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+            "level": "AMC 12",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "fdf11a2b7e06f47d4312762368a0ec6ad42b078c48438113e94370ebad16b8c1",
+            "firstPassPacketId": "map-478",
+            "firstPassReceiptHash": "cd856e22781c3308b019421ffdf0db0145141b39192f91fd98490fa7e900280f",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "6e6029056a20f50ee13796502c5c564ec8799fd055cada9ceb6ed8f45aa5af92",
+            "questionIds": [
+              "2014_AMC_12B_Q10"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q012": {
+        "groupId": "task-aac31373113dfdd37fe7",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2012_AMC_10B_Q24.json",
+            "questionId": "2012_AMC_10B_Q24",
+            "bank": "amc",
+            "contentHash": "c0b8aff50d2482ac7156cef502d047c37795bb1d6ad7dc129d98d834c74d2b01",
+            "figureHashes": {},
+            "displayHash": "aac31373113dfdd37fe7a6325077d4b1a0cb915bb1cab72731d9961747a2eb31",
+            "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "76b0e1e5d6faea3bd782d2a13d4d9950d30c3438c7637e65df1045d6015da944",
+            "firstPassPacketId": "map-453",
+            "firstPassReceiptHash": "ea4f65ba007e3e29c7c5e5f1f86c4445cae767010d83cfbc7e46dd235b47875d",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "6ed9d4e7bcbc34de09ec332f7288c6571bf13e846d59d6f273f9726dbb3a438a",
+            "questionIds": [
+              "2012_AMC_10B_Q24"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q013": {
+        "groupId": "task-ac4ef964427a2d4e0be8",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2015_AMC_10B_Q23.json",
+            "questionId": "2015_AMC_10B_Q23",
+            "bank": "amc",
+            "contentHash": "2200072acadf9ea1cf59efa2a819cb4a8a5f8a6419bcc01fc7e41ee63e29a03f",
+            "figureHashes": {},
+            "displayHash": "ac4ef964427a2d4e0be85b57e0defe7bf3a99c40e0114f2947d11cecbc2b34cb",
+            "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "603cf98af23c2ddd6e68aac1408ffb4b22330ca4c2473aa40880a2b5a05a8ad0",
+            "firstPassPacketId": "map-486",
+            "firstPassReceiptHash": "c7559013b6936279f893be8c536b7be52f0f9be9e20a38cf4c79935dd9c2052e",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "350b57f6c1369e91c378b50217f75a734a5c73205f2ed3c68c0b7c0d92968a5a",
+            "questionIds": [
+              "2015_AMC_10B_Q23"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q014": {
+        "groupId": "task-accc721baf5e5415d85d",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2013_AMC_8_Q13.json",
+            "questionId": "2013_AMC_8_Q13",
+            "bank": "amc",
+            "contentHash": "f2cb09d779f70500b18253ec439d01bfbfe4df9810ed3aee7639e15759ff62db",
+            "figureHashes": {},
+            "displayHash": "accc721baf5e5415d85d3e139b25bed26d808c33db966fe1a0e83c7ff5a0de02",
+            "answerRulesHash": "30195ac12af612a37d753a2b6c289551b46f2daa651c84066e3f9fa3c440cafb",
+            "level": "AMC 8",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "3292475e9ee9d14fbfea280b40f427b472b6dae9ac23411bb8ce91463bb4ca82",
+            "firstPassPacketId": "map-470",
+            "firstPassReceiptHash": "3fb45893592039b82bea3b39d2fc631af6e94259c00b782a5506d177e05e7b2f",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "29fc772170d1289f5396bfce0ec8f675f1edc3fc9f6360ef4a60926d1fbec82e",
+            "questionIds": [
+              "2013_AMC_8_Q13"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q015": {
+        "groupId": "task-ae3e4f547f9cd511fb4f",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2014_AMC_12B_Q07.json",
+            "questionId": "2014_AMC_12B_Q07",
+            "bank": "amc",
+            "contentHash": "e6374811e230f105da6cb8442eee40d1fedb9f493b72266f611767cc9a19f83c",
+            "figureHashes": {},
+            "displayHash": "ae3e4f547f9cd511fb4f4dd30a48c56558c3aff8ed928d9c435e34c37535a7dc",
+            "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+            "level": "AMC 12",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "f218ece4502363106e257da66b602895e1b20e0bca325c397f3da08d93cac5ca",
+            "firstPassPacketId": "map-478",
+            "firstPassReceiptHash": "cd856e22781c3308b019421ffdf0db0145141b39192f91fd98490fa7e900280f",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "ac0d5c6aa871f09e2f10b7a5b7834bc341af12f038a82986d078a0265bb7f2e7",
+            "questionIds": [
+              "2014_AMC_12B_Q07"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q016": {
+        "groupId": "task-b0ff8a7fe1d0adb338ed",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2016_AMC_10A_Q22.json",
+            "questionId": "2016_AMC_10A_Q22",
+            "bank": "amc",
+            "contentHash": "026c7fad9802a80a362a8ef29e37edb88f64cb2dacb78df6339a211dc1018de6",
+            "figureHashes": {},
+            "displayHash": "b0ff8a7fe1d0adb338ede88524d4b61b607ced3cd2c27f8c97846cec24339704",
+            "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "bfefd7ebc0e3f105956a23504a2f47e27dc53b4d4b326b1d80df4174b9fb8273",
+            "firstPassPacketId": "map-494",
+            "firstPassReceiptHash": "fc0428cf8401266940359ee2fe8428ea1c968091f233e32643c59646c4c57c10",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "8d17c7f2b0fe82ca0b21839c5fe951b8f64fa095f5665525e0a962e79b23c449",
+            "questionIds": [
+              "2016_AMC_10A_Q22"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q017": {
+        "groupId": "task-b15f61357c875e29bbea",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2009_AMC_12B_Q21.json",
+            "questionId": "2009_AMC_12B_Q21",
+            "bank": "amc",
+            "contentHash": "1c0217abe9edf6db8daf15a96be8dd3e359dc87df2d44a0701a1b49879d71d61",
+            "figureHashes": {},
+            "displayHash": "b15f61357c875e29bbeafb1bd13d4e67bf6402c4bbf65ebc82bdf91402d2c957",
+            "answerRulesHash": "30195ac12af612a37d753a2b6c289551b46f2daa651c84066e3f9fa3c440cafb",
+            "level": "AMC 12",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "949c9b338aa961c0974bc57989b23a9560293670f707c331ac23728000984fac",
+            "firstPassPacketId": "map-434",
+            "firstPassReceiptHash": "0572d8de2220e78955a6a5f27ba846819adfbb0ab3115d5c78040cb3a4197099",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "2f786bc6a5c4512e1b406dbcaffc38b954622808a010c83d31feababfb219164",
+            "questionIds": [
+              "2009_AMC_12B_Q21"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q018": {
+        "groupId": "task-b2e7192b34ba29b458e8",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2014_AMC_10A_Q21.json",
+            "questionId": "2014_AMC_10A_Q21",
+            "bank": "amc",
+            "contentHash": "1ab37c0251315df3d7046cf49f551e28ee74e73371f434e1cb7a23facc5ba7e6",
+            "figureHashes": {},
+            "displayHash": "b2e7192b34ba29b458e875635791f7b2b3ed8f6dd35b0622324765f73b72c803",
+            "answerRulesHash": "8fa1d4de71d76dca373ae83555562198ef33cfb23e91c1ecf7b14c2939567a09",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "c6e609ddb25d65e1bae4990a8ed4394b493401bf4318d3b06a8262a3822ee09c",
+            "firstPassPacketId": "map-473",
+            "firstPassReceiptHash": "1659d0cdf1a7b97afe083172c06e00f1888280d64df1f3cb00d88f7ca8ddc472",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "ecbcb368bc826dc4879a957188e040e51a6ef9c781f208f0d5e2b2ab8d32d417",
+            "questionIds": [
+              "2014_AMC_10A_Q21"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q019": {
+        "groupId": "task-b387e6796488cafd7735",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2014_AMC_12A_Q22.json",
+            "questionId": "2014_AMC_12A_Q22",
+            "bank": "amc",
+            "contentHash": "cfa9a45d98f3d83ee4f178f1e113f5cfb45cf1d97b6e5dcf13327fb1a7f8544b",
+            "figureHashes": {},
+            "displayHash": "b387e6796488cafd77355fd333ba4516b9df92349cf85f647bc526bb31770913",
+            "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+            "level": "AMC 12",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "d6e98fcb6b38686e1c557e6c2f4d5d27690da915881a745c4a6f95a62033a84b",
+            "firstPassPacketId": "map-477",
+            "firstPassReceiptHash": "03c2a40df78d8b64edc54dee970300aed7acbda1eb898651ea0e9390a8ab95e0",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "32bd61aefb5bfc5d8acf7626aa10322e8179467e557fb3a82f442c1c9f84a7ae",
+            "questionIds": [
+              "2014_AMC_12A_Q22"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q020": {
+        "groupId": "task-b45452dbe31dccc5f877",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2016_AMC_10B_Q16.json",
+            "questionId": "2016_AMC_10B_Q16",
+            "bank": "amc",
+            "contentHash": "743444f0a695e97af56bb2fcb01d6956ad3f70f610f96c2cc20600934339cb53",
+            "figureHashes": {},
+            "displayHash": "b45452dbe31dccc5f8777e0ee5213651976d6d4f0fd51ff088add18b1ee65543",
+            "answerRulesHash": "8fa1d4de71d76dca373ae83555562198ef33cfb23e91c1ecf7b14c2939567a09",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "9d654e6fabf5ca8a280c609d9947a3ed330eae67171d0a1a65c4901c4772510d",
+            "firstPassPacketId": "map-496",
+            "firstPassReceiptHash": "2b0ac8f6d94b61f338ea0d0a5c9d1353d42fad6f9224db631086ddfc12141d49",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "66c9e67dc1a63a9faf93eb5e1de3cef4135d6e05d87943729ad430ff5e1ddfba",
+            "questionIds": [
+              "2016_AMC_10B_Q16"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      }
+    },
+    "imageCount": 0,
+    "imageHashes": [],
+    "candidateExposure": true,
+    "keysSolutionsSourceLabelsExposed": false,
+    "promotionStatus": "not_promoted"
+  },
+  "usage": {
+    "attribution": {
+      "items": {
+        "msg_03a530be90a90bda016aec7619bc6087d2a1fd1f8a180ea864": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "content": [
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 32106,
+              "output_tokens": 0
+            }
+          ],
+          "input_tokens": 32106,
+          "output_tokens": 0
+        },
+        "rs_03a530be90a90bda016aec761b7da887d29ea0250d2baa8e01": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 2,
+          "output_tokens": 516
+        },
+        "rs_03a530be90a90bda016aec762c449887d2a5eb4b39c5455388": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03a530be90a90bda016aec763b7e0887d289b94aecd3a810aa": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03a530be90a90bda016aec7647dfc087d294796ee71f764f44": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03a530be90a90bda016aec765ae99487d28c8f6fa9e9572242": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03a530be90a90bda016aec7669988487d28dcd0f9a31bc0947": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03a530be90a90bda016aec767a897487d2b2832eca0e869823": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03a530be90a90bda016aec768a711487d2b73f4c5f725a4a37": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03a530be90a90bda016aec7698871087d298f31dbbf8167000": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03a530be90a90bda016aec76a728dc87d2becc98ecee02774f": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03a530be90a90bda016aec76b6e52487d285c8ce27bdd79178": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03a530be90a90bda016aec76c6ecd887d28c860ce71222f4e6": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03a530be90a90bda016aec76d9234087d2ab47fbdef501c3a0": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03a530be90a90bda016aec76ec5bac87d2b2dfaa273aaa217f": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03a530be90a90bda016aec76fe3b9887d297609347783fd6ca": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03a530be90a90bda016aec770efc1c87d2b99fa21a2e301daa": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03a530be90a90bda016aec77205ab887d2b6b7b9c2707b0bc5": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03a530be90a90bda016aec77303a9487d28f8eb6223c47784f": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "msg_03a530be90a90bda016aec7744796c87d299cc6ce3fc18f1f7": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "content": [
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 0,
+              "output_tokens": 5809
+            }
+          ],
+          "input_tokens": 0,
+          "output_tokens": 5809
+        }
+      },
+      "request_fields": {
+        "text.format": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 13056,
+          "input_tokens": 13171,
+          "output_tokens": 0
+        },
+        "instructions": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 164,
+          "output_tokens": 0
+        }
+      }
+    },
+    "input_tokens": 45443,
+    "input_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 13056
+    },
+    "output_tokens": 15131,
+    "output_tokens_details": {
+      "reasoning_tokens": 9322
+    },
+    "total_tokens": 60574
+  },
+  "returnedModel": "gpt-6.1-sol",
+  "returnedReasoning": {
+    "context": "all_turns",
+    "effort": "xhigh",
+    "mode": "standard",
+    "summary": null
+  },
+  "responseReceivedAt": "2026-11-05T12:33:26.831795+00:00",
+  "audits": [
+    {
+      "questionId": "q001",
+      "decision": "unresolved",
+      "assessedIds": [],
+      "supportIds": [],
+      "routes": [
+        {
+          "id": "complete-two-squares",
+          "label": "Complete both squares",
+          "nodeIds": [
+            "math:completing-square-expression",
+            "cnm_220"
+          ]
+        },
+        {
+          "id": "nonnegative-discriminant",
+          "label": "Require real roots in x",
+          "nodeIds": [
+            "cnm_223",
+            "cnm_153",
+            "cnm_220"
+          ]
+        }
+      ],
+      "derivedAnswer": "B: 2",
+      "mathematicalReason": "The equation becomes (x-5)^2+(y+3)^2=0. Both squares are nonnegative for real variables, so x=5 and y=-3, giving x+y=2. Alternatively, treating the equation as quadratic in x gives discriminant -4(y+3)^2, which must be nonnegative and therefore forces y=-3. Both proposed routes are valid. The remaining scope gap concerns the simultaneous equality condition for a sum of nonnegative squares, rather than either algebraic procedure alone.",
+      "candidateFindings": [],
+      "needsNewNodes": [
+        "Using nonnegativity and equality conditions of sums of real squares to determine all variables in a quadratic constraint."
+      ],
+      "limitations": [
+        "The mathematical answer is determined. The unresolved status concerns primary catalog coverage: the supplied definitions describe the route procedures but do not directly describe the joint sum-of-squares equality condition."
+      ],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q002",
+      "decision": "accept",
+      "assessedIds": [
+        "math:graph-models",
+        "cnm_h232"
+      ],
+      "supportIds": [],
+      "routes": [
+        {
+          "id": "complements-and-cycle-types",
+          "label": "Complement pairs and cycle components",
+          "nodeIds": [
+            "math:graph-models",
+            "cnm_h234",
+            "cnm_h239",
+            "math:symmetry-counting"
+          ]
+        }
+      ],
+      "derivedAnswer": "B: 170",
+      "mathematicalReason": "Model the six named people as labeled vertices of a simple undirected graph. The common degree is 1, 2, 3, or 4. Degree-1 graphs are perfect matchings, counted by 6!/(2^3*3!)=15. A degree-2 graph is either a six-cycle, counted by 6!/(6*2)=60, or two triangles, counted by C(6,3)/2=10. Complementation pairs degrees 1 and 4, and degrees 2 and 3, so the total is 2(15+70)=170. Both variants are defensible. The symmetry node applies to rotational and reversal redundancy in cycle encodings, not to identifying differently labeled friendship graphs.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q003",
+      "decision": "accept",
+      "assessedIds": [
+        "math:prime-factorization"
+      ],
+      "supportIds": [],
+      "routes": [],
+      "derivedAnswer": "C: 251,750,000",
+      "mathematicalReason": "The factorization is N=2^7*5^6*19*53. Its five smallest positive divisors are 1, 2, 4, 5, and 8; in particular, 3 and 7 are not factors. The bijection d -> N/d reverses divisor order, so the fifth-largest divisor is N/8=251,750,000. Prime-exponent divisibility supplies a valid solution method within the proposed scope.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q004",
+      "decision": "accept",
+      "assessedIds": [
+        "math:integer-diophantine-equations"
+      ],
+      "supportIds": [
+        "cnm_p055"
+      ],
+      "routes": [
+        {
+          "id": "digit-congruence",
+          "label": "Reduce the payment modulo 11",
+          "nodeIds": [
+            "math:modular-congruence"
+          ]
+        },
+        {
+          "id": "test-payment-divisibility",
+          "label": "Test candidate totals by division",
+          "nodeIds": [
+            "cnm_p106"
+          ]
+        }
+      ],
+      "derivedAnswer": "D: 3",
+      "mathematicalReason": "The dollar total is T=102+10A. If each contribution is an integer number c of cents, then 11c=100T. Since gcd(100,11)=1, T must be divisible by 11. Modulo 11, T is congruent to 3-A, so the digit A must be 3. The total is then $132, or $12 per member. Place-value support and either proposed divisibility route are appropriate.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [
+        "This uses the ordinary monetary convention of exact whole-cent contributions. Allowing arbitrary fractional-cent contributions would leave A undetermined."
+      ],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q005",
+      "decision": "accept",
+      "assessedIds": [
+        "math:extremal-principle"
+      ],
+      "supportIds": [
+        "math:prime-factorization"
+      ],
+      "routes": [
+        {
+          "id": "integer-polynomial-factorization",
+          "label": "Factor the four odd-input roots",
+          "nodeIds": [
+            "math:polynomial-remainder-factor",
+            "cnm_p159"
+          ]
+        }
+      ],
+      "derivedAnswer": "B: 315",
+      "mathematicalReason": "Since a=P(1), a is an integer. Write P(x)-a=F(x)Q(x), where F(x)=(x-1)(x-3)(x-5)(x-7) and Q has integer coefficients; successive division by these monic linear factors preserves integrality. At x=2,4,6,8, F takes values -15,9,-15,105. Thus 15,9,105 all divide 2a, so 315 divides a. Attainability is essential: take a=315 and Q(x)=-8x^3+124x^2-576x+762. Its values at 2,4,6,8 are 42,-70,42,-6, so P(x)=315+F(x)Q(x) has all the required values. This proves both the universal bound and an attaining construction.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q006",
+      "decision": "accept",
+      "assessedIds": [
+        "math:recursive-counting-probability"
+      ],
+      "supportIds": [
+        "cnm_h230"
+      ],
+      "routes": [],
+      "derivedAnswer": "D: 42",
+      "mathematicalReason": "Place the digits in increasing numerical order. The occupied cells must have row lengths 3>=r1>=r2>=r3>=0, and these lengths retain all information needed to determine which row can receive the next digit. With F(0,0,0)=1, let F(r1,r2,r3) be the sum of F over valid predecessor states obtained by deleting one terminal cell. This gives F(3,3,1)=21 and F(3,2,2)=21, hence F(3,3,2)=42 and F(3,3,3)=42. The state, transitions, and initial condition satisfy the proposed recursion scope. This is a valid selected method, not a claim that recursion is the only method.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q007",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_h232"
+      ],
+      "supportIds": [],
+      "routes": [
+        {
+          "id": "dominating-label-complement",
+          "label": "Subtract triples with a dominating label",
+          "nodeIds": [
+            "math:double-counting",
+            "cnm_h239",
+            "cnm_h010",
+            "cnm_h231"
+          ]
+        },
+        {
+          "id": "modular-gap-compositions",
+          "label": "Count bounded cyclic gaps",
+          "nodeIds": [
+            "math:modular-congruence",
+            "math:stars-and-bars",
+            "cnm_h231"
+          ]
+        }
+      ],
+      "derivedAnswer": "B: 855",
+      "mathematicalReason": "For distinct labels, exactly one direction of the relation holds, and every label precedes nine others. Among the C(19,3)=969 unordered triples, each noncyclic triple has a unique dominating label, giving 19*C(9,2)=684 such triples. The remaining 285 triples each yield three ordered cyclic triples, so the answer is 855. The alternative route is also valid: the three positive residue gaps lie in 1 through 9 and sum to 19. Their deficits from 9 sum to 8, giving C(10,2)=45 gap triples and 19*45=855 ordered triples. Both routes support the proposed counting scope.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q008",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_h201",
+        "cnm_h207",
+        "math:integer-diophantine-equations"
+      ],
+      "supportIds": [],
+      "routes": [
+        {
+          "id": "parameterize-arithmetic-difference",
+          "label": "Use the positive common difference",
+          "nodeIds": [
+            "cnm_h202",
+            "cnm_151"
+          ]
+        },
+        {
+          "id": "parameterize-geometric-ratio",
+          "label": "Use the geometric ratio",
+          "nodeIds": [
+            "cnm_h208",
+            "cnm_224"
+          ]
+        }
+      ],
+      "derivedAnswer": "C: 2",
+      "mathematicalReason": "Set b=a+d and c=a+2d, where d is a positive integer. The reordered geometric progression gives c^2=ab, so d(3a+4d)=0. Since d>0, a=-4d/3, b=-d/3, and c=2d/3. Integrality forces d=3t with positive integer t, giving all solutions (-4t,-t,2t). Therefore the minimum c is 2, attained at (-4,-1,2), whose reordered geometric ratio is -1/2. The ratio route likewise yields (2q+1)(q-1)=0, with q=1 excluded by strict ordering. Both routes and the assessed scopes are valid.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q009",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_111",
+        "cnm_110",
+        "cnm_177"
+      ],
+      "supportIds": [
+        "cnm_122"
+      ],
+      "routes": [],
+      "derivedAnswer": "C: 5",
+      "mathematicalReason": "Order the sides as a<b<c to enforce the exclusions by side type and avoid congruent copies. The strict triangle inequality rules out a=1, while the perimeter bound gives a<=3. For a=2, the possibilities are (2,3,4), (2,4,5), and (2,5,6). For a=3, they are (3,4,5), (3,4,6), and (3,5,6). The triple (3,4,5) is right and is excluded; the other five are nonright triangles of positive area. Triangle inequalities, classification, the right-triangle check, and SSS as the justification for counting side multisets are appropriate.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q010",
+      "decision": "unresolved",
+      "assessedIds": [],
+      "supportIds": [
+        "math:modular-congruence"
+      ],
+      "routes": [],
+      "derivedAnswer": "B: Jenna wins with 2013 coins; whoever goes first wins with 2014 coins.",
+      "mathematicalReason": "Classifying positions by both the number of coins and whose turn it is gives the following result by backward induction: on Barbara's turn, Barbara wins exactly for n congruent to 2 or 4 modulo 5; on Jenna's turn, Barbara wins exactly for n congruent to 0 modulo 5. The base case n=1 includes Barbara's forced pass and Jenna's immediate win. Thus 2013, congruent to 3, is a Jenna win with either starter. For 2014, congruent to 4, Barbara wins if she starts and Jenna wins if she starts. Congruence supports this classification, but proving optimal choices requires a minimax winning-position argument, not a counting or probability recurrence.",
+      "candidateFindings": [],
+      "needsNewNodes": [
+        "Optimal play in turn-dependent subtraction games: winning and losing positions, backward induction, forced passes, and modular reply strategies."
+      ],
+      "limitations": [
+        "The supplied definitions do not establish a scope covering turn-dependent minimax game analysis. The mathematical result is resolved, but the primary catalog mapping remains unresolved."
+      ],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q011",
+      "decision": "accept",
+      "assessedIds": [
+        "math:integer-diophantine-equations"
+      ],
+      "supportIds": [
+        "cnm_p053",
+        "cnm_p111"
+      ],
+      "routes": [],
+      "derivedAnswer": "D: 37",
+      "mathematicalReason": "If the positive whole-number duration is h hours, the distance in miles is 55h. The odometer increase is (100c+10b+a)-(100a+10b+c)=99(c-a). Hence 9(c-a)=5h, so c-a is a positive multiple of 5. The digit bounds force c-a=5. Then a+b+c=2a+b+5<=7, with a>=1 and b>=0, forces a=1, b=0, c=6. Thus a^2+b^2+c^2=37. Place value and distance=rate*time support the integer-restriction argument as proposed.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q012",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_h232"
+      ],
+      "supportIds": [],
+      "routes": [
+        {
+          "id": "classify-extra-song-pattern",
+          "label": "Classify the extra song pattern",
+          "nodeIds": [
+            "cnm_h234",
+            "math:multiset-permutations"
+          ]
+        },
+        {
+          "id": "exclude-missing-pair-patterns",
+          "label": "Inclusion-exclusion",
+          "nodeIds": [
+            "math:inclusion-exclusion-general",
+            "cnm_h231"
+          ]
+        }
+      ],
+      "derivedAnswer": "B: 132",
+      "mathematicalReason": "Each distinct song has seven allowed like-subsets: the empty set, three singletons, and three exact pairs. All three pair types must occur. If the fourth pattern is one of the four non-pair types, there are 4*4!=96 assignments. If it repeats a pair type, there are 3*(4!/2!)=36 assignments. The total is 132. Alternatively, inclusion-exclusion gives 7^4-3*6^4+3*5^4-4^4=132. Both optional routes fit their definitions, and the case-based method directly supports combined addition and multiplication.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q013",
+      "decision": "accept",
+      "assessedIds": [
+        "math:prime-valuations-factorials"
+      ],
+      "supportIds": [
+        "math:floor-ceiling"
+      ],
+      "routes": [],
+      "derivedAnswer": "B: 8",
+      "mathematicalReason": "The trailing-zero count is Z(n)=v_5(n!)=floor(n/5)+floor(n/25)+floor(n/125)+..., because factors of 2 are more abundant than factors of 5. Checking the integers from 5 through 14 in Z(2n)=3Z(n) gives exactly n=8,9,13,14. These are consequently the four least solutions. Their sum is 44, whose digit sum is 8. The factorial-valuation node directly covers the required prime-power counts, with floor values providing appropriate support.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q014",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_p017",
+        "math:modular-congruence"
+      ],
+      "supportIds": [],
+      "routes": [
+        {
+          "id": "subtract-digit-value-expressions",
+          "label": "Subtract place-value expressions",
+          "nodeIds": [
+            "cnm_027",
+            "cnm_036"
+          ]
+        }
+      ],
+      "derivedAnswer": "A: 45",
+      "mathematicalReason": "If the tens and units digits are a and b, swapping them changes the score by (10b+a)-(10a+b)=9(b-a); any higher digits cancel. The absolute difference must therefore be a multiple of 9. Among the options, only 45 qualifies, and it is attainable, for example by recording 61 instead of 16. Place-value algebra and its equivalent congruence-modulo-9 formulation justify the proposed scopes; modular notation is a valid method, not a universally required one.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q015",
+      "decision": "accept",
+      "assessedIds": [
+        "math:integer-diophantine-equations"
+      ],
+      "supportIds": [],
+      "routes": [
+        {
+          "id": "list-proper-divisors",
+          "label": "List divisors of 30",
+          "nodeIds": [
+            "cnm_p153"
+          ]
+        },
+        {
+          "id": "count-prime-exponent-choices",
+          "label": "Count divisors by prime exponents",
+          "nodeIds": [
+            "math:prime-factorization",
+            "math:divisor-count-and-sum"
+          ]
+        }
+      ],
+      "derivedAnswer": "D: 7",
+      "mathematicalReason": "Since n is positive, positivity of the quotient requires 1<=n<30; n=30 is undefined. Set d=30-n, so 1<=d<=29 and n/(30-n)=30/d-1. This is a positive integer exactly when d is a proper positive divisor of 30. These divisors are 1,2,3,5,6,10,15, giving seven solutions. Equivalently, 30=2*3*5 has eight positive divisors, and d=30 is excluded. Both proposed divisor-counting routes are valid.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q016",
+      "decision": "accept",
+      "assessedIds": [
+        "math:divisor-count-and-sum",
+        "math:prime-factorization"
+      ],
+      "supportIds": [],
+      "routes": [],
+      "derivedAnswer": "D: 325",
+      "mathematicalReason": "Write n=2^a*5^b*11^c times any remaining prime powers. The three mandatory factors in the divisor count of 110n^3 are 3a+2, 3b+2, and 3c+2. Each divides 110, is at least 2, and is congruent to 2 modulo 3. The only possible triple whose product divides 110 is 2,5,11 in some order; it already exhausts 110, so n has no other prime factors. Thus a,b,c are 0,1,3 in some order, and 3 does not divide n. Consequently the divisor count of 81n^4 is (4+1)(1)(5)(13)=325. Both proposed assessed nodes are directly exercised.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q017",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_h230"
+      ],
+      "supportIds": [],
+      "routes": [
+        {
+          "id": "first-seat-recursion",
+          "label": "Recur on the first fixed seat or swapped pair",
+          "nodeIds": [
+            "math:recursive-counting-probability"
+          ]
+        },
+        {
+          "id": "choose-adjacent-swaps",
+          "label": "Count disjoint adjacent swaps",
+          "nodeIds": [
+            "math:bijective-counting",
+            "cnm_h237"
+          ]
+        }
+      ],
+      "derivedAnswer": "A: 89",
+      "mathematicalReason": "Consider the leftmost seat not already resolved. Its occupant either stays, or moves one seat right, in which case the next occupant must move left into that seat. Repeating this argument shows that every legal arrangement consists uniquely of fixed seats and disjoint adjacent swaps. Therefore F(n)=F(n-1)+F(n-2), with F(0)=F(1)=1, giving F(10)=89. Alternatively, arrangements with k swaps correspond to choosing k domino positions among 10-k compressed positions, so the count is sum from k=0 to 5 of C(10-k,k)=89. Both routes justify the addition-principle scope.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q018",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_206",
+        "math:integer-diophantine-equations"
+      ],
+      "supportIds": [],
+      "routes": [],
+      "derivedAnswer": "E: -8",
+      "mathematicalReason": "Setting y=0 gives x-intercepts -5/a and -b/3. Equality is equivalent to ab=15. The positive factor pairs are (a,b)=(1,15),(3,5),(5,3),(15,1), producing distinct intercepts -5,-5/3,-1,-1/3. Their sum is -8. The coincident-line case a=3,b=5 is allowed by the statement and is included. The proposed scopes correctly combine the intercept-equation relationship with complete enumeration of positive integer factor pairs.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q019",
+      "decision": "accept",
+      "assessedIds": [
+        "math:lattice-counting"
+      ],
+      "supportIds": [
+        "cnm_h042"
+      ],
+      "routes": [
+        {
+          "id": "exclude-power-crossings",
+          "label": "Count excluded windows",
+          "nodeIds": [
+            "cnm_h010",
+            "cnm_h232"
+          ]
+        },
+        {
+          "id": "telescope-floor-differences",
+          "label": "Sum floor differences",
+          "nodeIds": [
+            "cnm_h043",
+            "math:floor-ceiling",
+            "math:telescoping"
+          ]
+        }
+      ],
+      "derivedAnswer": "B: 279",
+      "mathematicalReason": "Let t=log_5(2), so 0<2t<1. For each m, the only possible n is floor(mt), and it works exactly when floor((m+2)t)=floor(mt). Positive powers of 2 and 5 cannot be equal, so no endpoint equality occurs. The floor difference is either 0 or 1. Summing gives 2012-[floor(2013t)+floor(2014t)-floor(t)-floor(2t)]. The given inequality implies 2013t<867<2014t, hence the two final floors are 866 and 867; the initial floors are zero. The count is 279. For the complementary route, the first 866 crossings each exclude two starts and the 867th excludes only m=2012. Crossings cannot overlap within a length-2 window because log_2(5)>2. Both routes correctly count the integer pairs with strict endpoints.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q020",
+      "decision": "accept",
+      "assessedIds": [
+        "math:infinite-geometric-series"
+      ],
+      "supportIds": [],
+      "routes": [
+        {
+          "id": "quadratic-denominator",
+          "label": "Complete the square in the denominator",
+          "nodeIds": [
+            "math:completing-square-expression",
+            "cnm_235"
+          ]
+        },
+        {
+          "id": "am-gm-denominator",
+          "label": "Bound the denominator using AM-GM",
+          "nodeIds": [
+            "cnm_h022"
+          ]
+        }
+      ],
+      "derivedAnswer": "E: 4",
+      "mathematicalReason": "Let the first term be a and the real common ratio be r. Convergence requires |r|<1, and the second-term condition ar=1 excludes r=0. Thus S=a/(1-r)=1/[r(1-r)]. Since 1-r>0 and S>0, r must be positive, giving 0<r<1. Now r(1-r)=1/4-(r-1/2)^2<=1/4, with equality at r=1/2. Therefore S>=4, attained by the series 2+1+1/2+.... AM-GM on the positive numbers r and 1-r gives the same attainable bound. The series scope and both optional optimization routes are valid.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    }
+  ],
+  "validationErrors": [
+    "q004: Acceptance conflicts with retained findings or limitations"
+  ],
+  "qualificationFindings": [
+    "q004: Acceptance conflicts with retained findings or limitations"
+  ],
+  "structuralFindings": [],
+  "validationStatus": "qualified_acceptance_pending_adjudication",
+  "mathematicalValidation": "model scope audit only; no automatic acceptance or promotion",
+  "finishedAt": "2026-11-05T12:33:26.833951+00:00",
+  "elapsedSeconds": 382.653
+}

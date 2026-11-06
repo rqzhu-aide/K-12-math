@@ -15,11 +15,11 @@
   },
   "Choices Type": "text",
   "Correct Answer": "B",
-  "Solution": "",
+  "Solution": "Count lattice points using one more than each side length. A square of integer side \\(u-1\\) has \\(u\\) rows and \\(u\\) columns, hence \\(u^2\\) lattice points including its boundary.\n\nWrite the side lengths of \\(R,S,T\\) as \\(a-1,b-1,c-1\\). The ratio \\(a^2/b^2=9/4\\) gives \\(a=3k\\), \\(b=2k\\) for a positive integer \\(k\\). The two squares share exactly the \\(b=2k\\) points on the shorter vertical edge. Therefore\n\\[\n|R\\cup S|=9k^2+4k^2-2k=k(13k-2).\n\\]\nSince \\(T\\) contains one quarter as many points,\n\\[\n4c^2=k(13k-2).\\tag{1}\n\\]\nIn particular \\(k\\) is even: if it were odd, the right side would be odd and the left side even.\n\nThe fraction condition says\n\\[\n\\frac{|S\\cap T|}{4k^2}\n=27\\frac{|R\\cap T|}{9k^2},\n\\]\nso \\(|S\\cap T|=12|R\\cap T|\\). Both overlaps contain lattice points: if either count were zero, the equality would make both zero, contrary to the top vertices lying in \\(R\\cup S\\). If \\(T\\) lay wholly to the right of the axis, its overlap with \\(S\\) would be contained in its overlap with \\(R\\), contradicting the ratio \\(12:1\\). Thus its left edge is negative and its right edge is nonnegative. Put its left edge at \\(x=-j\\), so its right edge is at \\(x=c-1-j\\). Its top vertices lie in the two larger squares, so all its \\(c\\) rows fit in each overlap. The overlaps have \\(j+1\\) and \\(c-j\\) columns, respectively, counting the axis in both. Hence\n\\[\n\\frac{j+1}{c-j}=12,\n\\qquad 13j+1=12c.\n\\]\nThis forces \\(c\\equiv-1\\pmod{13}\\), meaning that \\(c\\) is one less than a multiple of \\(13\\). In remainder calculations, multiples of \\(13\\) may be discarded. Thus \\(c^2\\) has remainder \\(1\\), and reducing (1) gives \\(4\\equiv-2k\\pmod{13}\\). Equivalently, \\(13\\) divides \\(2(k+2)\\). Since \\(13\\) does not divide \\(2\\), it divides \\(k+2\\). Therefore \\(k\\equiv11\\pmod{13}\\): \\(k\\) leaves remainder \\(11\\) when divided by \\(13\\).\n\nThe positive even possibilities for \\(k\\) start \\(24,50,76,\\ldots\\). At \\(k=24\\), (1) gives \\(c^2=1860\\), which lies strictly between \\(43^2=1849\\) and \\(44^2=1936\\). It cannot be a square. At \\(k=50\\), (1) gives \\(c=90\\), and \\(13j+1=12c\\) gives \\(j=83\\).\n\nThis candidate is feasible: \\(R\\) has side \\(149\\) on the right of the axis, \\(S\\) has side \\(99\\) on the left, and \\(T\\) runs from \\(x=-83\\) to \\(6\\) with height \\(89\\). Its top vertices lie in \\(R\\cup S\\); its overlaps have \\(84\\cdot90=7560\\) and \\(7\\cdot90=630\\) points, in the required ratio \\(12:1\\).\n\nFinally, \\(c=\\tfrac12\\sqrt{k(13k-2)}\\) increases with positive \\(k\\), so \\((3k-1)+(2k-1)+(c-1)=5k+c-3\\) increases as well. Excluding every smaller possible \\(k\\) therefore proves that the minimum sum is\n\\[\n149+99+89=\\boxed{337},\n\\]\nchoice B. Boundary lattice points are the reason for the extra row, column, and shared-axis correction.",
   "Meta": {
     "QuestionSource": "live-poshenloh",
     "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
+    "SolutionSource": "Adapted from MAA official solutions",
     "AreaSource": "jev:0.48",
     "Concepts": "lattice point; modular arithmetic; optimization",
     "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2022A/solutions",
@@ -33,7 +33,7 @@
         "alt": ""
       }
     },
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
+    "SolutionStatus": "Reviewed adaptation from official MAA solution",
     "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
     "Copyright": "Copyright Mathematical Association of America",
     "License": "CC-BY-NC-SA-4.0",
@@ -44,12 +44,34 @@
       "sourceURL": "https://maa.org/wp-content/uploads/2024/08/2022-AMC-10A-solutions.pdf",
       "label": "2022 AMC 10A",
       "attribution": "Mathematical Association of America (MAA)",
-      "license": "CC-BY-NC-SA-4.0"
+      "license": "CC-BY-NC-SA-4.0",
+      "page": 22
     },
     "Modifications": [
       "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
+      "Third-party worked solution and solution-only figures omitted from the public distribution",
+      "Added an original Math Practice explanation from the verified official MAA solution; independent expansion review pending",
+      "Independent expansion review clarified prerequisites and the decisive deduction; mathematical result rechecked"
+    ],
+    "SolutionSourceURL": "https://maa.org/wp-content/uploads/2024/08/2022-AMC-10A-solutions.pdf",
+    "SolutionAdaptation": {
+      "author": "Math Practice",
+      "date": "2026-10-26",
+      "officialPage": 22,
+      "officialPages": [
+        22
+      ],
+      "localBooklet": "official-solutions/AMC10A_2022_Solutions.pdf",
+      "officialSHA256": "806a4e74584d2f8329388fdc7ce5870362c430e83dfb889ff129f8522b98c48e",
+      "method": "Count boundary lattice points, derive congruences, exclude smaller candidates, and construct the minimum.",
+      "reviewStatus": "reviewed",
+      "authorship": "Original explanation drafted from the question and official MAA argument; archived third-party worked solutions were not read",
+      "changes": "Added connected explanatory prose, the reason for the method, and justification of decisive deductions. Replaced the source parity shortcut with direct exclusion of the only smaller congruence candidate k=24 and an explicit feasible construction.",
+      "reviewDate": "2026-10-26",
+      "reviewMethod": "A separate AI agent checked the full mathematical argument and student-facing reasoning against the official solution and relevant figures; both judgments passed",
+      "reviewer": "independent AMC8 author agent",
+      "reviewSolutionSHA256": "d1263caed55e9b2e76399142ffe33149a0b23e59c794e59f0a842c56d6f67730"
+    }
   },
   "ID": "2022_AMC_10A_Q25",
   "Bank": "amc",
@@ -59,5 +81,39 @@
   "domain": [
     "domain:geometry"
   ],
-  "skill": []
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "math-knowledge-v1",
+    "contentHash": "ec6f4b294623c516eba52ea48f79de9336d131cfaa683f0224e5c48df224bc6b",
+    "status": "mapped",
+    "reviewStatus": "machine_scope_audited",
+    "assessedIds": [
+      "math:lattice-counting",
+      "math:integer-diophantine-equations",
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_h009",
+      "cnm_p210"
+    ],
+    "routes": [
+      {
+        "id": "congruence-candidate-filter",
+        "label": "Filter candidates using congruences",
+        "nodeIds": [
+          "math:modular-congruence",
+          "cnm_p156"
+        ]
+      },
+      {
+        "id": "bounded-square-test",
+        "label": "Complete the square and test smaller candidates",
+        "nodeIds": [
+          "cnm_221",
+          "cnm_079"
+        ]
+      }
+    ],
+    "flags": []
+  }
 }

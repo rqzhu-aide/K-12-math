@@ -15,11 +15,11 @@
   },
   "Choices Type": "text",
   "Correct Answer": "E",
-  "Solution": "",
+  "Solution": "Call the starting leaf \\(S\\). Every four-hop sequence has probability \\(1/3^4=1/81\\), so we can count the sequences that end at \\(S\\).\n\nThe cricket cannot stay on a leaf. If it returns to \\(S\\) on hop 2, its path has the form\n\n\\[\nS\\to A\\to S\\to B\\to S.\n\\]\n\nThere are \\(3\\) choices for \\(A\\) and \\(3\\) for \\(B\\), giving \\(9\\) paths. The leaves \\(A\\) and \\(B\\) may be the same.\n\nIf it does not return on hop 2, all three intermediate leaves in a successful path must be different from \\(S\\): hop 1 must leave \\(S\\), and hop 3 cannot be at \\(S\\) because the final hop must move back to \\(S\\). There are \\(3\\) choices for the first, \\(2\\) for the second, and \\(2\\) for the third, followed by the required hop to \\(S\\). This gives \\(3\\cdot2\\cdot2=12\\) paths.\n\nThese cases are disjoint and include every return in four hops. The probability is\n\n\\[\n\\frac{9+12}{81}=\\boxed{\\frac7{27}},\n\\]\n\nchoice \\(\\boxed{\\text{E}}\\). Splitting by the intermediate return avoids listing individual paths.",
   "Meta": {
     "QuestionSource": "live-poshenloh",
     "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
+    "SolutionSource": "Adapted from MAA official solutions",
     "AreaSource": "jev:0.98",
     "Concepts": "recursive probability; symmetry",
     "SourceURL": "https://live.poshenloh.com/past-contests/amc8/2022/solutions",
@@ -35,7 +35,7 @@
         "assetSHA256": "4e72539a7d11db51e3ed6beb1859803cc7c24db3c4c89569881c847afa8eb800"
       }
     },
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
+    "SolutionStatus": "Reviewed adaptation from official MAA solution",
     "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
     "Copyright": "Copyright Mathematical Association of America",
     "License": "CC-BY-NC-SA-4.0",
@@ -43,8 +43,31 @@
     "TranscriptionSource": "LIVE by Po-Shen Loh",
     "Modifications": [
       "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
+      "Third-party worked solution and solution-only figures omitted from the public distribution",
+      "Added original Math Practice explanatory prose based on the official MAA solution; independently reviewed for mathematics and student-facing reasoning",
+      "Independent expansion review repaired a specific proof or explanation gap; before/after evidence is recorded in local review reports"
+    ],
+    "SolutionSourceURL": "https://drive.usercontent.google.com/uc?id=1h0XYnHhGAtM4i3JxvGUgozPrlhZiYZQb&export=download",
+    "OfficialSolution": {
+      "url": "../amc-bank/official-solutions/AMC8_2022_Solutions.pdf",
+      "sourceURL": "https://drive.usercontent.google.com/uc?id=1h0XYnHhGAtM4i3JxvGUgozPrlhZiYZQb&export=download",
+      "label": "2022 AMC 8",
+      "attribution": "Mathematical Association of America (MAA)",
+      "license": "CC-BY-NC-SA-4.0",
+      "page": 18
+    },
+    "SolutionAdaptation": {
+      "author": "Math Practice",
+      "date": "2026-10-26",
+      "officialPage": 18,
+      "method": "Count the two possible patterns of returns to the starting leaf",
+      "reviewStatus": "reviewed",
+      "changes": "Original explanatory prose from the official MAA argument; one main route with the necessary intermediate reasoning",
+      "reviewer": "official_amc10_sources",
+      "reviewDate": "2026-10-26",
+      "reviewSolutionSHA256": "6e9a41d3f00e5f6b29bd0d9b135e4467dfa3d3bcd22f99ce5515a88e25a9cb2e",
+      "reviewMethod": "A separate AI agent checked the full mathematical argument and student-facing reasoning against the official solution and relevant figures; both judgments passed"
+    }
   },
   "ID": "2022_AMC_8_Q25",
   "Bank": "amc",
@@ -54,5 +77,32 @@
   "domain": [
     "domain:counting-probability"
   ],
-  "skill": []
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "math-knowledge-v1",
+    "contentHash": "939a00f83f89a4dcac8e52f2fd9ad7271c0bae70aaa8c986a683e330b68a90ff",
+    "status": "mapped",
+    "reviewStatus": "machine_scope_audited",
+    "assessedIds": [
+      "cnm_h137"
+    ],
+    "supportIds": [],
+    "routes": [
+      {
+        "id": "count-return-histories",
+        "label": "Count returning hop histories",
+        "nodeIds": [
+          "cnm_h232"
+        ]
+      },
+      {
+        "id": "return-state-recurrence",
+        "label": "Starting-leaf state recurrence",
+        "nodeIds": [
+          "math:recursive-counting-probability"
+        ]
+      }
+    ],
+    "flags": []
+  }
 }

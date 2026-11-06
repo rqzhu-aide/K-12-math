@@ -6,9 +6,10 @@
       this.o = options; this.serial = 0; this.signalSerial = 0;
       this.mathRequest = null; this.tutorRequest = null; this.signalRequest = null;
       this.evidence = null; this.submitted = null; this.hint = ''; this.initialCategory = null; this.initialAnswerCategory = null; this.mathState = 'idle';
+      this.sessionId = this.practiceSession(); this.context = null; this.finalGraphs = new Set(); this.assessment = null;
       this.serviceOverrides = {};
       this.n = {};
-      for (const id of ['workFeedback', 'submissionMark', 'answerFeedback', 'reasoningFeedback', 'clarification', 'tutorStatus', 'hintToggle', 'hintBody', 'tutorRetry', 'reviewNote']) this.n[id] = document.getElementById(id);
+      for (const id of ['workFeedback', 'submissionMark', 'answerFeedback', 'reasoningFeedback', 'coach', 'tutorStatus', 'hintToggle', 'hintBody', 'tutorRetry', 'reviewNote']) this.n[id] = document.getElementById(id);
       this.n.hintToggle.addEventListener('click', () => {
         if (!this.hint || this.edited()) return;
         const open = this.n.hintBody.hidden;
@@ -16,11 +17,86 @@
         this.n.hintBody.textContent = open ? this.hint : '';
         this.n.hintToggle.textContent = open ? 'Hide hint' : 'Show a hint';
         this.n.hintToggle.setAttribute('aria-expanded', String(open));
-        if (open) this.o.typeset(this.n.hintBody);
+        if (open) {
+          this.context.last.openedHint = this.hint;
+          this.noteAssistance('hint'); this.o.save(); this.o.typeset(this.n.hintBody);
+        }
       });
       this.n.tutorRetry.addEventListener('click', () => {
         if (!this.edited() && this.initialCategory) this.requestTutor(this.initialCategory, this.initialAnswerCategory, this.serial);
       });
+    }
+    id() {
+      return typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function' ? crypto.randomUUID()
+        : Date.now().toString(36) + '-' + Math.random().toString(36).slice(2) + '-' + Math.random().toString(36).slice(2);
+    }
+    practiceSession() {
+      try {
+        const key = 'math-practice.practice-session.v1', previous = sessionStorage.getItem(key);
+        if (previous) return previous;
+        const id = this.id(); sessionStorage.setItem(key, id); return id;
+      } catch (_) { return this.id(); }
+    }
+    bank() { return this.o.bank ? this.o.bank() : this.o.question() && this.o.question().bank || ''; }
+    layer() { return this.o.layer ? this.o.layer() : 'ailleo'; }
+    curriculumNodeId() { return this.o.curriculumNodeId ? this.o.curriculumNodeId() : null; }
+    state() { return this.context; }
+    previous(value) {
+      if (!value || typeof value.answer !== 'string' || value.answer.length > 2000 || typeof value.thoughts !== 'string' || value.thoughts.length > 12000
+          || typeof value.coach !== 'string' || value.coach.length > 3000 || !(value.openedHint === null || typeof value.openedHint === 'string' && value.openedHint.length <= 3000)) return null;
+      return {answer: value.answer, thoughts: value.thoughts, coach: value.coach, openedHint: value.openedHint};
+    }
+    restoreTurn(value, hasHistory) {
+      const q = this.o.question();
+      if (!q) return;
+      const compatible = value && value.version === 1 && value.sessionId === this.sessionId && value.questionId === q.id && value.bank === this.bank();
+      const help = ['none', 'coach', 'hint', 'solution', 'unknown'];
+      this.context = {version: 1, sessionId: this.sessionId, questionId: q.id, bank: this.bank(),
+        assistance: compatible && help.includes(value.assistance) ? value.assistance : hasHistory || value ? 'unknown' : 'none', last: null};
+      const last = compatible && value.last;
+      if (last && typeof last.revisionId === 'string' && last.revisionId && last.revisionId.length <= 128 && this.previous(last)
+          && last.turn && last.turn.revisionId === last.revisionId && help.includes(last.turn.assistance)
+          && (last.turn.action === 'submit' && last.turn.previous === null || last.turn.action === 'revise' && this.previous(last.turn.previous))) {
+        this.context.last = {...this.previous(last), revisionId: last.revisionId, curriculumNodeId: typeof last.curriculumNodeId === 'string' ? last.curriculumNodeId : null, curriculumLayer: ['ailleo', 'CN', 'US'].includes(last.curriculumLayer) ? last.curriculumLayer : 'ailleo', turn: {revisionId: last.revisionId,
+          action: last.turn.action, assistance: last.turn.assistance, previous: this.previous(last.turn.previous)}};
+      }
+      else if (last) this.context.assistance = 'unknown';
+    }
+    ensureContext() {
+      const q = this.o.question();
+      if (q && (!this.context || this.context.questionId !== q.id || this.context.bank !== this.bank())) this.restoreTurn(null, false);
+    }
+    noteAssistance(kind) {
+      this.ensureContext();
+      if (!this.context) return;
+      const levels = ['none', 'coach', 'hint', 'solution', 'unknown'];
+      if (kind === 'solution' || levels.indexOf(kind) > levels.indexOf(this.context.assistance)) this.context.assistance = kind;
+    }
+    solutionOpened() { this.noteAssistance('solution'); this.o.save(); }
+    freeze(question, answer, thoughts) {
+      this.ensureContext();
+      const last = this.context.last;
+      if (last && last.answer === answer && last.thoughts === thoughts && (last.curriculumLayer || 'ailleo') === this.layer() && (last.curriculumNodeId || null) === this.curriculumNodeId()) return {question, bank: this.bank(), curriculumLayer: this.layer(), curriculumNodeId: this.curriculumNodeId(), answer, thoughts, turn: last.turn};
+      const revisionId = this.id();
+      const previous = last ? {answer: last.answer, thoughts: last.thoughts, coach: last.coach, openedHint: last.openedHint} : null;
+      const turn = {revisionId, action: last ? 'revise' : 'submit', assistance: this.context.assistance, previous};
+      this.context.last = {revisionId, curriculumLayer: this.layer(), curriculumNodeId: this.curriculumNodeId(), answer, thoughts, coach: '', openedHint: null, turn};
+      return {question, bank: this.bank(), curriculumLayer: this.layer(), curriculumNodeId: this.curriculumNodeId(), answer, thoughts, turn};
+    }
+    current(serial, submitted, value) {
+      return serial === this.serial && this.submitted === submitted && !this.edited()
+        && (!value || value.revisionId === undefined || value.revisionId === submitted.turn.revisionId)
+        && (!value || value.curriculumLayer === undefined || value.curriculumLayer === submitted.curriculumLayer)
+        && (!value || value.curriculumNodeId === undefined || value.curriculumNodeId === submitted.curriculumNodeId);
+    }
+    finishGraph(value, serial, submitted) {
+      if (!value || !value.graphEvidence || !this.current(serial, submitted, value) || value.revisionId !== submitted.turn.revisionId) return;
+      const evidence = value.graphEvidence;
+      if (evidence.revisionId !== submitted.turn.revisionId || evidence.bank !== submitted.bank || evidence.questionId !== submitted.question.id) return;
+      const key = submitted.turn.revisionId + ':' + JSON.stringify(value.graphEvidence);
+      if (this.finalGraphs.has(key)) return;
+      this.finalGraphs.add(key);
+      if (this.o.graphEvidence) this.o.graphEvidence(value.graphEvidence);
     }
     async post(url, body, controller) {
       const timer = setTimeout(() => controller.abort(), 155000);
@@ -52,6 +128,7 @@
       this.cancelMath(); this.signalSerial++;
       if (this.signalRequest) this.signalRequest.abort();
       this.signalRequest = null; this.evidence = null; this.submitted = null; this.hint = '';
+      this.context = null; this.assessment = null;
       this.mathState = 'idle';
       this.showSubmissionMark();
       this.n.workFeedback.hidden = true;
@@ -72,8 +149,10 @@
     validSignals(signals) {
       return Array.isArray(signals) && signals.length === 3 && ['confidence', 'reasoning', 'engagement'].every((id, i) => {
         const s = signals[i];
-        return s && s.id === id && typeof s.title === 'string' && typeof s.label === 'string' && typeof s.score === 'number' && Number.isFinite(s.score) && s.score >= 0 && s.score <= 1
-          && Array.isArray(s.distribution) && s.distribution.every(d => typeof d.label === 'string' && typeof d.score === 'number' && Number.isFinite(d.score) && d.score >= 0 && d.score <= 1);
+        return s && s.id === id && typeof s.title === 'string' && typeof s.label === 'string'
+          && (typeof s.evidence === 'string' && s.evidence.trim().length > 0
+            || typeof s.score === 'number' && Number.isFinite(s.score) && s.score >= 0 && s.score <= 1
+            && Array.isArray(s.distribution) && s.distribution.every(d => typeof d.label === 'string' && typeof d.score === 'number' && Number.isFinite(d.score) && d.score >= 0 && d.score <= 1));
       });
     }
     async checkSignals() {
@@ -114,42 +193,55 @@
       const el = this.o.el, wrap = el('div', 'signals-result'), list = el('dl', 'signal-list');
       for (const signal of this.evidence.signals) {
         const row = el('div', 'signal-row'), value = el('dd'); row.appendChild(el('dt', null, signal.title));
-        value.appendChild(el('span', null, signal.label)); const score = el('span', 'signal-probability', this.o.percent(signal.score));
-        score.setAttribute('aria-label', 'Model probability ' + this.o.percent(signal.score)); value.appendChild(score); row.appendChild(value); list.appendChild(row);
+        value.appendChild(el('span', null, signal.label));
+        if (typeof signal.score === 'number') {
+          const score = el('span', 'signal-probability', this.o.percent(signal.score));
+          score.setAttribute('aria-label', 'Model probability ' + this.o.percent(signal.score)); value.appendChild(score);
+        }
+        row.appendChild(value); list.appendChild(row);
       }
       wrap.appendChild(list);
-      const details = el('details', 'signal-details'); details.appendChild(el('summary', null, 'All probabilities and original speech'));
+      const hasScores = this.evidence.signals.some(signal => Array.isArray(signal.distribution));
+      const details = el('details', 'signal-details'); details.appendChild(el('summary', null, hasScores ? 'All probabilities and original speech' : 'Evidence and original speech'));
       details.appendChild(el('p', null, 'These observations describe the original transcript, not mathematical accuracy or measured certainty about you.'));
       for (const signal of this.evidence.signals) {
         details.appendChild(el('strong', null, signal.title));
-        for (const item of signal.distribution) { const row = el('div', 'signal-score'); row.appendChild(el('span', null, item.label)); row.appendChild(el('span', 'num', this.o.percent(item.score))); details.appendChild(row); }
+        if (signal.evidence) details.appendChild(el('p', null, signal.evidence));
+        for (const item of signal.distribution || []) { const row = el('div', 'signal-score'); row.appendChild(el('span', null, item.label)); row.appendChild(el('span', 'num', this.o.percent(item.score))); details.appendChild(row); }
       }
       details.appendChild(el('p', 'submitted-work', 'Original speech transcript: ' + this.evidence.transcript)); wrap.appendChild(details);
       this.o.results.replaceChildren(wrap); this.o.panel.dataset.state = 'ready'; this.o.panelStatus.textContent = 'From original speech, before edits';
       this.o.announce.textContent = 'Learning signals ready from your original speech.';
     }
     edited() {
-      return !this.submitted || !this.o.question() || this.o.question().id !== this.submitted.question.id || this.o.answer() !== this.submitted.answer || this.o.draft.value.trim() !== this.submitted.thoughts;
+      return !this.submitted || !this.o.question() || this.o.question().id !== this.submitted.question.id || this.bank() !== this.submitted.bank || this.layer() !== this.submitted.curriculumLayer || this.curriculumNodeId() !== this.submitted.curriculumNodeId || this.o.answer() !== this.submitted.answer || this.o.draft.value.trim() !== this.submitted.thoughts;
     }
     revisionChanged() {
       const edited = this.edited();
       this.n.reviewNote.hidden = !this.submitted || !edited;
       this.n.reviewNote.textContent = this.submitted && edited ? 'This feedback belongs to your earlier try. Submit your changes for a fresh check.' : '';
       this.n.hintToggle.disabled = edited; this.n.tutorRetry.disabled = edited;
-      if (edited) { this.n.hintBody.hidden = true; this.n.hintBody.textContent = ''; this.n.hintToggle.setAttribute('aria-expanded', 'false'); this.n.hintToggle.textContent = 'Show a hint'; }
+      if (edited) {
+        if (this.mathRequest || this.tutorRequest) {
+          this.cancelMath(); this.mathState = 'idle'; this.n.tutorStatus.hidden = true; this.n.tutorRetry.hidden = true;
+          this.n.reasoningFeedback.textContent = 'Thinking: Submit your changes for a fresh check.';
+        }
+        this.n.hintBody.hidden = true; this.n.hintBody.textContent = ''; this.n.hintToggle.setAttribute('aria-expanded', 'false'); this.n.hintToggle.textContent = 'Show a hint';
+      }
     }
     async submit() {
       const question = this.o.question(), answer = this.o.answer(), thoughts = this.o.draft.value.trim();
-      if (question && question.gradingStatus === 'disputed') {
-        this.cancelMath(); this.submitted = {question, answer, thoughts}; this.mathState = 'ready';
-        this.o.submitted(this.submitted); this.showNotGraded(question.gradingNote); this.o.updated();
+      const gradingNote = question ? window.MathPracticeAnswers.gradingNotice(question) : null;
+      if (gradingNote !== null) {
+        this.cancelMath(); this.submitted = this.freeze(question, answer || '', thoughts); this.mathState = 'ready';
+        this.o.submitted(this.submitted); this.showNotGraded(gradingNote); this.o.updated();
         return;
       }
       if (!question || !answer) {
         this.o.note.textContent = !question ? 'Choose a problem first.' : 'Choose or enter an answer before submitting.';
         return;
       }
-      this.cancelMath(); this.submitted = {question, answer, thoughts}; this.initialCategory = null; this.initialAnswerCategory = null; this.hint = '';
+      this.cancelMath(); this.submitted = this.freeze(question, answer, thoughts); this.initialCategory = null; this.initialAnswerCategory = null; this.hint = ''; this.assessment = null;
       this.serviceOverrides = {};
       this.mathState = 'loading';
       this.o.submitted(this.submitted); this.o.setRunning(true);
@@ -158,27 +250,27 @@
       this.showAnswer(answer, this.o.checkAnswer(question, answer), exactCategory);
       this.showSubmissionMark('cannot_judge', exactCategory);
       n.reasoningFeedback.className = 'reasoning-feedback'; n.reasoningFeedback.textContent = 'Thinking: Checking your reasoning...';
-      n.clarification.hidden = true; n.hintToggle.hidden = true; n.hintBody.hidden = true; n.hintBody.textContent = ''; n.tutorRetry.hidden = true; n.tutorStatus.hidden = true;
+      n.coach.hidden = true; n.hintToggle.hidden = true; n.hintBody.hidden = true; n.hintBody.textContent = ''; n.tutorRetry.hidden = true; n.tutorStatus.hidden = true;
       if (exactCategory === 'partial') {
-        n.clarification.hidden = false; n.clarification.textContent = window.MathPracticeAnswers.formFeedback(question, answer) || 'Complete or clarify your answer above, then submit again.';
+        this.showCoach(window.MathPracticeAnswers.formFeedback(question, answer) || 'Complete or clarify your answer above, then submit again.', true);
       }
       n.hintToggle.setAttribute('aria-expanded', 'false'); n.hintToggle.textContent = 'Show a hint';
       this.revisionChanged();
-      const serial = this.serial, controller = new AbortController(); this.mathRequest = controller;
+      const serial = this.serial, submitted = this.submitted, controller = new AbortController(); this.mathRequest = controller;
       try {
-        if (location.protocol !== 'file:' && thoughts) await this.waitServices();
-        if (serial !== this.serial) return;
+        if (location.protocol !== 'file:') await this.waitServices();
+        if (!this.current(serial, submitted)) return;
         const services = this.services();
-        if (location.protocol === 'file:' || !thoughts || (!services.decision && !services.inference)) {
+        if (location.protocol === 'file:' || (!services.decision && !services.inference && !services.localEvidence)) {
           this.mathState = 'ready';
           const message = location.protocol === 'file:' ? 'Start the local launcher and add a model in Connections for reasoning feedback.'
-            : !thoughts && (services.decision || services.inference) ? 'Add your thinking and submit again for a reasoning review.'
             : 'Add a decision or inference model in Connections for reasoning feedback.';
           this.showUnchecked(message, exactCategory);
           return;
         }
-        const value = await this.post('/api/assessment', {questionId: question.id, answer, thoughts}, controller);
-        if (serial !== this.serial) return;
+        const value = await this.post('/api/assessment', {bank: submitted.bank, curriculumLayer: submitted.curriculumLayer, curriculumNodeId: submitted.curriculumNodeId, questionId: question.id, answer, thoughts, turn: submitted.turn}, controller);
+        if (!this.current(serial, submitted)) return;
+        if (!this.current(serial, submitted, value)) throw new Error('The check returned a different submission. Submit again to retry.');
         if (value.questionId === question.id && value.answer === answer && value.gradingStatus === 'disputed' && value.answerCategory === 'not_graded' && value.answerCorrect === null) {
           this.mathState = 'ready'; this.showNotGraded(value.gradingNote); return;
         }
@@ -187,18 +279,21 @@
         this.updateServices(value);
         this.showAnswer(answer, value.answerCorrect, value.answerCategory);
         if (!this.services().decision && !this.services().inference) this.showUnchecked('Add a decision or inference model in Connections for reasoning feedback.', value.answerCategory);
+        else if (!thoughts && !this.services().inference) this.showUnchecked('Add your thinking and submit again for a reasoning review.', value.answerCategory);
         else this.showVerdict(value.category, '', value.answerCategory, value.answerFormFeedback);
         this.mathState = 'ready';
+        this.assessment = value;
         if (value.modelUsed) this.o.connection('decision', 'ok', 'Ready', 'The decision model checked the submitted work.');
         if (this.services().inference && (value.category !== 'correct' || value.answerCategory !== 'correct')) {
           this.initialCategory = value.category; this.initialAnswerCategory = value.answerCategory;
           this.requestTutor(value.category, value.answerCategory, serial);
-        }
+        } else this.finishGraph(value, serial, submitted);
         this.revisionChanged();
       } catch (error) {
-        if (serial !== this.serial) return;
+        if (!this.current(serial, submitted)) return;
         this.mathState = 'error';
-        n.reasoningFeedback.textContent = 'Thinking: Not checked. The model check is unavailable. Your answer check above still applies.';
+        if (!thoughts) this.showUnchecked('Add your thinking and submit again for a reasoning review.', exactCategory);
+        else n.reasoningFeedback.textContent = 'Thinking: Not checked. The model check is unavailable. Your answer check above still applies.';
         this.o.note.textContent = error.name === 'AbortError' ? 'The check took too long. Submit again to retry.' : error instanceof TypeError ? 'Could not reach the backend. Start the local launcher and submit again.' : error.message;
       } finally {
         if (serial === this.serial) { this.mathRequest = null; this.o.setRunning(false); this.o.updated(); }
@@ -220,12 +315,17 @@
     reconcileForm(value) {
       const submitted = this.submitted;
       const message = window.MathPracticeAnswers.formFeedback(submitted.question, submitted.answer);
-      if (message && value.answerCategory === 'correct') { value.answerCategory = 'partial'; value.answerCorrect = null; }
+      const corrected = message && value.answerCategory === 'correct';
+      if (corrected) { value.answerCategory = 'partial'; value.answerCorrect = null; }
       if (message && value.answerCategory === 'partial') {
         value.answerFormFeedback = message;
-        if (Object.prototype.hasOwnProperty.call(value, 'clarification')) {
+        if (corrected && Object.prototype.hasOwnProperty.call(value, 'clarification')) {
           value.clarification = message;
-          if (!value.hint) value.hint = 'Keep the same mathematical value and use the requested answer form.';
+          value.hint = '';
+        }
+        if (corrected && Object.prototype.hasOwnProperty.call(value, 'coach')) {
+          value.coach = message;
+          value.hint = '';
         }
       }
     }
@@ -235,9 +335,9 @@
       n.workFeedback.hidden = false;
       n.answerFeedback.textContent = 'Not graded: Disputed problem.'; n.answerFeedback.className = 'answer-feedback';
       n.reasoningFeedback.textContent = 'No score is assigned. You can still explore this problem.'; n.reasoningFeedback.className = 'reasoning-feedback';
-      n.clarification.hidden = false; n.clarification.textContent = note || 'None of the printed choices answers this problem as written.';
+      n.coach.hidden = false; n.coach.textContent = note || 'None of the printed choices answers this problem as written.';
       n.hintToggle.hidden = true; n.hintBody.hidden = true; n.hintBody.textContent = ''; n.tutorRetry.hidden = true; n.tutorStatus.hidden = true;
-      this.o.announce.textContent = n.answerFeedback.textContent + ' ' + n.clarification.textContent;
+      this.o.announce.textContent = n.answerFeedback.textContent + ' ' + n.coach.textContent;
     }
     showSubmissionMark(category, answerCategory) {
       const mark = this.n.submissionMark;
@@ -246,54 +346,77 @@
       mark.dataset.result = result; mark.hidden = !result;
       mark.setAttribute('aria-label', labels[result] || '');
     }
-    showAnswer(answer, correct, category) {
+    showAnswer(answer, correct, category, hasCoach) {
       category = category || (correct === null ? 'cannot_judge' : correct ? 'correct' : 'wrong');
       const label = this.submitted.question.responseType && this.submitted.question.responseType !== 'choice' ? 'Answer: ' : 'Answer ' + answer + ': ';
-      const labels = {correct: 'Correct.', wrong: 'Not quite yet. Check your final answer against your working.', partial: 'Partially correct. Complete your answer or use the requested form.', cannot_judge: 'Not checked automatically. Compare with the reference solution.'};
+      const labels = {correct: 'Correct.', wrong: hasCoach ? 'Not quite yet.' : 'Not quite yet. Check your final answer against your working.', partial: hasCoach ? 'Partially correct.' : 'Partially correct. Complete your answer or use the requested form.', cannot_judge: hasCoach ? 'Not checked automatically.' : 'Not checked automatically. Compare with the reference solution.'};
       this.n.answerFeedback.textContent = label + labels[category];
       this.n.answerFeedback.className = 'answer-feedback' + (category === 'correct' ? ' correct' : ' verdict-' + category);
     }
-    showVerdict(category, clarification, answerCategory, formFeedback) {
+    showCoach(coach, assistance) {
+      this.n.coach.hidden = !coach;
+      this.n.coach.textContent = coach || '';
+      if (coach) {
+        this.o.typeset(this.n.coach);
+        if (this.context && this.context.last) {
+          this.context.last.coach = coach;
+          if (assistance) this.noteAssistance('coach');
+          this.o.save();
+        }
+      }
+    }
+    showVerdict(category, coach, answerCategory, formFeedback) {
       this.showSubmissionMark(category, answerCategory);
-      const n = this.n, labels = {correct: 'Correct.', wrong: answerCategory === 'correct' ? 'Your answer is correct. Check that each step in your explanation works.' : 'A step needs another look. Check each step against the information in the problem.', partial: 'Partially correct. Explain the missing step so your idea can be checked.', cannot_judge: this.services().inference ? 'Your explanation needs a closer review. Checking it now.' : 'The decision model could not judge this explanation. Add an inference model for a closer review.'};
-      n.reasoningFeedback.textContent = 'Thinking: ' + labels[category]; n.reasoningFeedback.className = 'reasoning-feedback verdict-' + category;
-      const needsClarification = category === 'partial' || answerCategory === 'partial' || (answerCategory === 'cannot_judge' && clarification);
-      n.clarification.hidden = !needsClarification;
-      n.clarification.textContent = needsClarification ? (answerCategory === 'partial' && formFeedback) || clarification || (answerCategory === 'partial' ? 'Complete or clarify your answer above, then submit again.' : 'What justifies your next step? Add the missing explanation above, then submit again.') : '';
-      if (needsClarification) this.o.typeset(n.clarification);
-      this.o.announce.textContent = n.answerFeedback.textContent + ' ' + n.reasoningFeedback.textContent;
+      const n = this.n, labels = {correct: 'Correct.', wrong: 'A step needs another look.', partial: 'Partly explained.', cannot_judge: 'Not checked.'};
+      n.reasoningFeedback.textContent = 'Thinking: ' + (category === 'partial' && !this.submitted.thoughts ? 'Not provided yet.' : labels[category]); n.reasoningFeedback.className = 'reasoning-feedback verdict-' + category;
+      const text = coach || (answerCategory === 'partial' ? formFeedback || 'Complete or clarify your answer above, then submit again.' : '');
+      this.showCoach(text, category !== 'correct' || answerCategory !== 'correct');
+      this.o.announce.textContent = n.answerFeedback.textContent + ' ' + n.reasoningFeedback.textContent + (text ? ' ' + text : '');
+    }
+    validTutor(value) {
+      if (!['correct', 'wrong', 'partial'].includes(value.category) || !this.validAnswer(value)
+          || typeof value.coach !== 'string' || !value.coach.trim() || typeof value.hint !== 'string'
+          || value.coach.length > 3000 || value.hint.length > 3000) return false;
+      const text = value.coach + ' ' + value.hint;
+      const script = /[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\u3040-\u30ff\uac00-\ud7af]/g;
+      const characters = (text.match(script) || []).length;
+      const words = text.replace(script, ' ').trim().split(/\s+/).filter(Boolean).length;
+      return characters + 2 * words <= 100;
     }
     async requestTutor(category, answerCategory, serial) {
-      if (this.tutorRequest || !this.services().inference || location.protocol === 'file:' || this.submitted.question.gradingStatus === 'disputed') return;
+      if (this.tutorRequest || !this.services().inference || location.protocol === 'file:' || window.MathPracticeAnswers.gradingNotice(this.submitted.question) !== null) return;
       const submitted = this.submitted, controller = new AbortController(), n = this.n;
       this.tutorRequest = controller; n.tutorRetry.hidden = true; n.tutorStatus.hidden = false;
       const reviewing = [category, answerCategory].some(value => value === 'partial' || value === 'cannot_judge');
-      n.tutorStatus.textContent = reviewing ? 'Taking a closer look at your answer and thinking...' : 'Preparing an optional hint. You can keep working.';
+      n.tutorStatus.textContent = submitted.thoughts ? 'Reviewing your thinking. You can keep working.' : 'Reviewing your answer. You can keep working.';
       try {
-        const value = await this.post('/api/tutor', {questionId: submitted.question.id, answer: submitted.answer, thoughts: submitted.thoughts, category, answerCategory}, controller);
-        if (serial !== this.serial) return;
+        const value = await this.post('/api/tutor', {bank: submitted.bank, curriculumLayer: submitted.curriculumLayer, curriculumNodeId: submitted.curriculumNodeId, questionId: submitted.question.id, answer: submitted.answer, thoughts: submitted.thoughts, category, answerCategory, turn: submitted.turn}, controller);
+        if (!this.current(serial, submitted)) return;
+        if (!this.current(serial, submitted, value)) throw new Error('The tutor returned a different submission. Retry the review.');
         this.updateServices(value);
         if (value.configured === false || value.inferenceConfigured === false) {
           this.serviceOverrides.inference = false; n.tutorStatus.hidden = true; n.tutorRetry.hidden = true;
           if (!this.services().decision) this.showUnchecked('Add an inference model in Connections for reasoning feedback.', answerCategory);
           else if (category === 'cannot_judge') this.showVerdict(category, '', answerCategory);
+          this.finishGraph(this.assessment, serial, submitted);
           return;
         }
         if (value.questionId === submitted.question.id && value.answer === submitted.answer && value.gradingStatus === 'disputed' && value.answerCategory === 'not_graded' && value.answerCorrect === null) { this.showNotGraded(value.gradingNote); return; }
         this.reconcileForm(value);
-        const needsHint = [value.category, value.answerCategory].some(result => result === 'wrong' || result === 'partial');
-        const needsClarification = value.category === 'partial' || ['partial', 'cannot_judge'].includes(value.answerCategory);
-        if (value.questionId !== submitted.question.id || value.answer !== submitted.answer || !['correct', 'wrong', 'partial'].includes(value.category) || typeof value.hint !== 'string' || typeof value.clarification !== 'string' || (value.hint + ' ' + value.clarification).trim().split(/\s+/).filter(Boolean).length > 50
-          || !this.validAnswer(value) || Boolean(value.hint.trim()) !== needsHint || Boolean(value.clarification.trim()) !== needsClarification) throw new Error('The tutor returned an incomplete or overlong review. Retry the review.');
-        this.showAnswer(submitted.answer, value.answerCorrect, value.answerCategory);
-        this.showVerdict(value.category, value.clarification, value.answerCategory, value.answerFormFeedback); this.hint = value.hint;
-        n.hintToggle.hidden = !this.hint; n.tutorStatus.textContent = this.hint ? 'Your hint is ready when you want it.' : 'Your review is ready.';
+        if (value.questionId !== submitted.question.id || value.answer !== submitted.answer || !this.validTutor(value)
+          || value.category === 'correct' && value.answerCategory === 'correct' && value.hint.trim()) throw new Error('The tutor returned an incomplete or overlong review. Retry the review.');
+        this.showAnswer(submitted.answer, value.answerCorrect, value.answerCategory, true);
+        this.showVerdict(value.category, value.coach.trim(), value.answerCategory, value.answerFormFeedback); this.hint = value.hint.trim();
+        n.hintBody.hidden = true; n.hintBody.textContent = ''; n.hintToggle.setAttribute('aria-expanded', 'false'); n.hintToggle.textContent = 'Show a hint';
+        n.hintToggle.hidden = !this.hint; n.tutorStatus.hidden = true;
+        this.finishGraph(value, serial, submitted);
         this.o.connection('inference', 'ok', 'Ready', 'The inference model returned a mathematical review.'); this.revisionChanged();
       } catch (error) {
-        if (serial !== this.serial) return;
-        if (category === 'cannot_judge') n.reasoningFeedback.textContent = 'Thinking: Your explanation still needs a closer review. Retry when ready.';
+        if (!this.current(serial, submitted)) return;
+        if (category === 'cannot_judge') n.reasoningFeedback.textContent = submitted.thoughts ? 'Thinking: Your explanation still needs a closer review. Retry when ready.' : 'Thinking: Not provided yet.';
         n.tutorStatus.textContent = error.name === 'AbortError' ? 'The tutor took too long. Retry when ready.' : error instanceof TypeError ? 'The tutor could not connect. Check inference settings and retry.' : error.message;
         n.tutorRetry.hidden = false; n.tutorRetry.textContent = reviewing ? 'Retry review' : 'Retry hint'; this.revisionChanged();
+        this.finishGraph(this.assessment, serial, submitted);
       } finally { if (serial === this.serial) this.tutorRequest = null; }
     }
   }

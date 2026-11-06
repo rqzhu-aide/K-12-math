@@ -38,32 +38,45 @@ def port_available(port):
         return False
 
 
-def launch(port=8877, open_browser=True):
+def launch(port=8877, open_browser=True, settings_path=None):
     if not 1 <= port <= 65535:
         raise RuntimeError('Choose a port between 1 and 65535.')
     # Validate the local configuration before starting or reusing this engine.
     from connection_settings import ConnectionSettings, SettingsError
     try:
-        settings = ConnectionSettings()
+        settings = ConnectionSettings(settings_path)
         if not settings.path.exists():
+            if settings_path is not None:
+                raise RuntimeError(f'The selected settings file does not exist: {settings.path}. Choose an existing settings file.')
             settings.save({})
     except SettingsError as exc:
         raise RuntimeError(str(exc)) from None
     base = f'http://127.0.0.1:{port}'
-    running = engine(base)
+    settings_identity = engine_instance(settings.path)
+
+    def selected_engine():
+        running = engine(base)
+        if running is not None:
+            identity = running.get('settingsInstance')
+            if identity != settings_identity and (identity is not None or settings_path is not None):
+                raise RuntimeError(f'Port {port} cannot be reused with the selected settings file. Use another port or stop that engine and restart.')
+        return running
+
+    running = selected_engine()
     if running is None:
         if not port_available(port):
             raise RuntimeError(f'Port {port} is already in use by another application or an older Math Practice engine. Close that engine and try again.')
         logs = ROOT / '.local'
         logs.mkdir(parents=True, exist_ok=True)
         with (logs / 'launcher-output.log').open('ab') as output, (logs / 'launcher-errors.log').open('ab') as errors:
-            process = subprocess.Popen([sys.executable, str(ROOT / 'scripts/serve_math_practice.py'), '--port', str(port)],
+            process = subprocess.Popen([sys.executable, str(ROOT / 'scripts/serve_math_practice.py'), '--port', str(port),
+                                        '--settings', str(settings.path.resolve())],
                                        cwd=ROOT, stdin=subprocess.DEVNULL, stdout=output, stderr=errors,
                                        creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0,
                                        start_new_session=os.name != 'nt')
         deadline = time.monotonic() + 15
         while time.monotonic() < deadline:
-            running = engine(base)
+            running = selected_engine()
             if running is not None:
                 break
             if process.poll() is not None:
@@ -78,7 +91,7 @@ def launch(port=8877, open_browser=True):
         with OPENER.open(request, timeout=5) as response:
             response.read()
     except (OSError, ValueError):
-        raise RuntimeError('The engine could not reload config.json. Check the file, then try again.') from None
+        raise RuntimeError(f'The engine could not reload {settings.path.name}. Check the selected settings file, then try again.') from None
     url = base + '/math-practice/'
     if open_browser:
         webbrowser.open(url)
@@ -89,9 +102,10 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--port', type=int, default=8877)
     parser.add_argument('--no-open', action='store_true', help='Start the engine without opening a browser.')
+    parser.add_argument('--settings', type=Path, help='Load model connections from a saved JSON or YAML settings file.')
     args = parser.parse_args()
     try:
-        result = launch(args.port, not args.no_open)
+        result = launch(args.port, not args.no_open, args.settings)
     except RuntimeError as exc:
         print(str(exc), file=sys.stderr)
         return 1

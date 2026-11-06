@@ -42,6 +42,73 @@ class RuntimeFixture:
 
 
 class RuntimeTests(RuntimeFixture, unittest.TestCase):
+    def shared(self, **overrides):
+        return {'setup': {'mode': 'single', 'provider': 'custom'}, 'shared': {
+            'bases': ['https://provider.example/v1'], 'speechModel': 'speech-test',
+            'textModel': 'text-test', 'apiKey': 'shared-secret', 'useTutor': False, **overrides}}
+
+    def test_single_provider_round_trip_and_saved_key_reuse(self):
+        public = self.settings.save(self.shared())
+        self.assertEqual(public['setup']['mode'], 'single')
+        self.assertTrue(public['speech']['configured'])
+        self.assertEqual(public['decision']['protocol'], 'chat')
+        self.assertFalse(public['inference']['configured'])
+        self.assertNotIn('shared-secret', json.dumps(public))
+        restarted = ConnectionSettings(self.settings.path)
+        self.assertEqual(restarted.public()['setup'], public['setup'])
+        patch_value = self.shared(apiKey='', useTutor=True)
+        self.assertTrue(restarted.compare_file(patch_value)['different'])
+        restarted.save(patch_value)
+        self.assertEqual(restarted.inference_config()['apiKey'], 'shared-secret')
+        self.assertEqual(restarted.decision_config().api_key, 'shared-secret')
+        self.assertFalse(restarted.compare_file(patch_value)['different'])
+
+    def test_empty_single_setup_matches_saved_empty_connections(self):
+        self.settings.save({})
+        value = self.shared(bases=[], speechModel='', textModel='', apiKey='')
+        value['setup']['provider'] = ''
+        self.assertFalse(self.settings.compare_file(value)['different'])
+
+    def test_changing_provider_does_not_forward_the_previous_key(self):
+        self.settings.save(self.shared())
+        changed = self.shared(bases=['https://another-provider.example/v1'], apiKey='')
+        self.assertEqual(self.settings.speech_config(changed).api_key, '')
+        changed['setup']['provider'] = 'openai'
+        with self.assertRaisesRegex(SettingsError, 'API key'):
+            self.settings.save(changed)
+        self.assertEqual(self.settings.speech_config().api_key, 'shared-secret')
+
+    def test_separate_mode_and_explicit_key_reuse(self):
+        self.settings.save(self.shared())
+        self.settings.save({'setup': {'mode': 'separate'}})
+        self.assertEqual(ConnectionSettings(self.settings.path).public()['setup']['mode'], 'separate')
+        patch_value = {'inference': {'provider': 'api', 'bases': ['https://provider.example/v1'],
+                                     'model': 'text-test', 'keyFrom': 'decision'}}
+        self.settings.save(patch_value)
+        self.assertEqual(self.settings.inference_config()['apiKey'], 'shared-secret')
+        patch_value['inference']['bases'] = ['https://another-provider.example']
+        with self.assertRaises(SettingsError):
+            self.settings.save(patch_value)
+
+    def test_chat_learning_signals_have_evidence_without_invented_probabilities(self):
+        assessor = StudentAssessment(ModelConfig(('https://provider.example/v1',), 'text-test', 'test-key', 'chat'), cn_bank_root=self.questions)
+        observations = {'confidence': {'code': 'uncertain', 'evidence': 'The student says "I am unsure".'},
+                        'reasoning': {'code': 'incomplete', 'evidence': 'No approach is explained.'},
+                        'engagement': {'code': 'unclear', 'evidence': 'No engagement cue is expressed.'}}
+        reply = {'choices': [{'message': {'content': json.dumps(observations)}}]}
+        with patch('model_connections.request', return_value=reply) as request:
+            result = assessor.learning_signals({'questionId': QUESTION['ID'], 'transcript': 'I am unsure.'})
+        self.assertEqual(len(result['signals']), 3)
+        self.assertEqual(result['signals'][0]['code'], 'uncertain')
+        self.assertNotIn('score', result['signals'][0])
+        self.assertNotIn('probabilities', json.dumps(result))
+        self.assertEqual(request.call_args.args[1], '/v1/chat/completions')
+        self.assertIn('I am unsure.', request.call_args.args[2].decode())
+        observations['confidence']['code'] = 'happy'
+        reply['choices'][0]['message']['content'] = json.dumps(observations)
+        with patch('model_connections.request', return_value=reply), self.assertRaises(AssessmentError):
+            assessor.learning_signals({'questionId': QUESTION['ID'], 'transcript': 'I am unsure.'})
+
     def test_defaults_and_partial_configuration_are_independent(self):
         public = self.settings.public()
         for role in ('decision', 'speech', 'inference'):
@@ -104,7 +171,7 @@ class RuntimeTests(RuntimeFixture, unittest.TestCase):
         self.assertTrue(result['modelUsed'])
         self.assertEqual(decide.call_count, 2)
         self.settings.save({'inference': {'provider': 'api', 'bases': ['https://inference.example/v1'], 'model': 'my-inference'}})
-        reply = {'choices': [{'message': {'content': json.dumps({'category': 'correct', 'answerCategory': 'correct', 'clarification': '', 'hint': ''})}}]}
+        reply = {'choices': [{'message': {'content': json.dumps({'category': 'correct', 'answerCategory': 'correct', 'coach': 'Your explanation is correct.', 'hint': ''})}}]}
         with patch('practice_tutor.request', return_value=reply) as request:
             result = review_submission(assessor, self.settings, MagicMock(), {**ATTEMPT, 'category': 'cannot_judge', 'answerCategory': 'correct'})
         self.assertTrue(result['inferenceConfigured'])
@@ -156,6 +223,7 @@ class HttpRuntimeTests(RuntimeFixture, unittest.TestCase):
         self.server.settings = self.settings
         self.server.assessor = self.assessor
         self.server.openai = MagicMock()
+        self.server.chatgpt = MagicMock()
         self.worker = threading.Thread(target=self.server.serve_forever, daemon=True)
         self.worker.start()
         self.opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
@@ -196,6 +264,26 @@ class HttpRuntimeTests(RuntimeFixture, unittest.TestCase):
         self.server.openai.status.assert_not_called()
         self.server.openai.infer.assert_not_called()
 
+    def test_revision_bound_graph_record_and_empty_reasoning_at_http_boundary(self):
+        item = 'cnm_221_q2'
+        real_item = Path(__file__).resolve().parents[1] / 'cn-math-bank' / 'questions' / (item + '.json')
+        (self.questions / real_item.name).write_bytes(real_item.read_bytes())
+        turn = {'revisionId': 'test-first', 'assistance': 'none', 'action': 'submit', 'previous': None}
+        attempt = {'bank': 'cn-math', 'questionId': item, 'answer': '9', 'thoughts': '', 'turn': turn}
+        with patch('student_assessment.StudentAssessment._decide', side_effect=AssertionError('Blank work must skip inference')):
+            code, assessed = self.request('/api/assessment', attempt)
+        self.assertEqual(code, 200)
+        self.assertEqual(assessed['category'], 'cannot_judge')
+        self.assertEqual(assessed['answerCategory'], 'correct')
+        self.assertEqual(assessed['graphEvidence']['status'], 'unobserved')
+        self.assertEqual(assessed['graphEvidence']['observationReason'], 'blank_reasoning')
+        self.assertIn(item, self.request('/api/status/decision')[1]['localEvidenceItems'])
+        self.assertEqual(assessed['graphEvidence']['revisionId'], turn['revisionId'])
+        self.assertEqual(self.request('/api/assessment', {**attempt, 'bank': 'amc'})[0], 400)
+        self.assertEqual(self.request('/api/assessment', {**attempt, 'turn': {'revisionId': []}})[0], 400)
+        self.assertNotIn('graphEvidence', self.request('/api/assessment', {**ATTEMPT, 'bank': 'cn-math', 'turn': turn})[1])
+        self.assertNotIn('graphEvidence', self.request('/api/assessment', {key: val for key, val in attempt.items() if key != 'turn'})[1])
+
     def test_http_engine_identity_and_independent_settings(self):
         code, value = self.request('/api/engine')
         self.assertEqual(code, 200)
@@ -208,11 +296,113 @@ class HttpRuntimeTests(RuntimeFixture, unittest.TestCase):
         self.assertFalse(value['inference']['configured'])
         self.assertNotIn('speech-secret', json.dumps(value))
 
+    def test_chatgpt_uses_the_chosen_model_for_testing_and_practice(self):
+        custom = {'provider': 'api', 'bases': ['https://tutor.example'], 'model': 'local-tutor', 'apiKey': 'test-key'}
+        self.settings.save({'inference': custom})
+        plan = {'inference': {'provider': 'chatgpt', 'model': 'plan-tutor'}}
+        self.server.chatgpt.status.return_value = {'state': 'signed_in', 'canTest': True, 'message': 'Signed in.'}
+        self.server.chatgpt.infer.return_value = json.dumps({'category': 'correct', 'answerCategory': 'correct',
+                                                             'hint': '', 'coach': 'Your explanation is correct.'})
+        self.assertEqual(self.request('/api/connections/chatgpt')[1]['state'], 'signed_in')
+        self.server.chatgpt.infer.assert_not_called()
+        self.assertTrue(self.request('/api/settings/inference/test', plan)[1]['ready'])
+        self.assertEqual(self.settings.inference_config()['provider'], 'api')
+        status, saved = self.request('/api/settings', plan)
+        self.assertEqual(status, 200)
+        self.assertNotIn('test-key', json.dumps(saved))
+        self.assertEqual(saved['inference']['modelByProvider']['api'], 'local-tutor')
+        self.assertTrue(self.request('/api/status/inference')[1]['ready'])
+        code, review = self.request('/api/tutor', {**ATTEMPT, 'category': 'cannot_judge', 'answerCategory': 'correct'})
+        self.assertEqual(code, 200)
+        self.assertEqual(review['category'], 'correct')
+        for call in self.server.chatgpt.infer.call_args_list:
+            self.assertEqual(call.args[0]['model'], 'plan-tutor')
+            self.assertNotIn('test-key', json.dumps(call.args[0]))
+        self.assertEqual(self.server.chatgpt.infer.call_count, 2)
+        self.server.openai.infer.assert_not_called()
+        self.assertEqual(self.request('/api/settings/reload', {})[1]['inference']['provider'], 'chatgpt')
+        self.assertFalse(self.request('/api/settings/compare', plan)[1]['different'])
+        self.settings.save({'inference': {'provider': 'api', 'model': 'local-tutor'}})
+        self.assertEqual(self.settings.inference_config()['apiKey'], 'test-key')
+
+    def test_account_actions_are_explicit_and_local(self):
+        for action, method in (('login', 'start_login'), ('cancel', 'cancel_login'), ('disconnect', 'sign_out')):
+            handler = getattr(self.server.chatgpt, method)
+            handler.return_value = {'state': 'signed_out'}
+            self.assertEqual(self.request('/api/connections/chatgpt/' + action, {})[0], 200)
+            handler.assert_called_once_with()
+        self.assertEqual(self.request('/api/connections/chatgpt/login', {'clientId': 'saved-account'})[0], 200)
+        self.server.chatgpt.start_login.assert_called_with(client_id='saved-account')
+        self.assertEqual(self.request('/api/connections/chatgpt/login', {'newAccount': True})[0], 200)
+        self.server.chatgpt.start_login.assert_called_with(new_account=True)
+        self.assertEqual(self.request('/api/connections/chatgpt/login', {'newAccount': 'yes'})[0], 400)
+        self.server.chatgpt.infer.assert_not_called()
+
     def test_private_and_legacy_paths_are_not_served(self):
         for path in ('/math-practice/config.json', '/scripts/student_assessment.py',
                      '/math-practice/amc-bank.js', '/question%20bank/figures/example.png'):
             self.assertEqual(self.request(path)[0], 404)
         self.assertEqual(self.request('/api/assessment', {**ATTEMPT, 'questionId': '9999_AMC_8_Q01'})[0], 404)
+
+    def test_amc_legacy_and_frozen_turn_submissions_share_the_same_bank(self):
+        question = self.assessor._question('2023_AMC_8_Q01')
+        attempt = {'questionId': question['ID'], 'answer': question['Correct Answer'], 'thoughts': 'I evaluated each group first.'}
+        for extra in ({}, {'bank': 'amc', 'turn': {'revisionId': 'amc-current', 'action': 'submit',
+                                                'assistance': 'none', 'previous': None}}):
+            code, result = self.request('/api/assessment', {**attempt, **extra})
+            self.assertEqual(code, 200)
+            self.assertEqual(result['answerCategory'], 'correct')
+            self.assertNotIn('graphEvidence', result)
+        self.server.chatgpt.infer.assert_not_called()
+
+    def test_pilot_evidence_binds_to_the_current_revision_and_presubmission_help(self):
+        source = Path(__file__).resolve().parents[1] / 'cn-math-bank/questions/cnm_221_q2.json'
+        question = json.loads(source.read_text(encoding='utf-8'))
+        (self.questions / source.name).write_text(json.dumps(question), encoding='utf-8')
+        attempt = {'bank': 'cn-math', 'questionId': question['ID'], 'answer': '9',
+                   'thoughts': 'The constant is 3 squared, so 3^2 = 9.',
+                   'turn': {'revisionId': 'coached-revision', 'action': 'revise', 'assistance': 'coach',
+                            'previous': {'answer': '3', 'thoughts': 'I added 3 because half of 6 is 3.',
+                                         'coach': 'Which constant appears when you expand the square?', 'openedHint': None}}}
+        code, result = self.request('/api/assessment', attempt)
+        self.assertEqual(code, 200)
+        evidence = result['graphEvidence']
+        self.assertEqual(evidence['revisionId'], 'coached-revision')
+        self.assertEqual(evidence['bank'], attempt['bank'])
+        self.assertEqual(evidence['questionId'], question['ID'])
+        self.assertEqual(evidence['assistance'], 'coach')
+        self.assertEqual(evidence['status'], 'demonstrated')
+        self.assertIn(evidence['quote'], attempt['thoughts'])
+        self.assertTrue(evidence['shadow'])
+        self.server.chatgpt.infer.assert_not_called()
+
+    def test_tutor_receives_one_prior_submission_without_speech_or_notebook_fields(self):
+        reply = json.dumps({'category': 'partial', 'answerCategory': 'correct',
+                            'coach': 'Which calculation supports that total?', 'hint': ''})
+        prior = {'answer': '3', 'thoughts': 'I counted three.', 'coach': 'What did you count?',
+                 'openedHint': 'Count both pairs.', 'rawAudio': 'private-audio', 'notebook': ['older work']}
+        attempt = {**ATTEMPT, 'bank': 'cn-math', 'category': 'partial', 'answerCategory': 'correct',
+                   'originalSpeech': {'transcript': 'Original private speech'},
+                   'turn': {'revisionId': 'current-turn', 'action': 'revise', 'assistance': 'hint', 'previous': prior}}
+        for provider in ('chatgpt', 'api'):
+            with self.subTest(provider=provider):
+                self.settings.save({'inference': {'provider': provider, 'model': 'synthetic-tutor',
+                                                 'bases': ['https://synthetic.invalid'], 'apiKey': 'synthetic-key'}})
+                self.server.chatgpt.infer.return_value = reply
+                with patch('practice_tutor.request', return_value={'choices': [{'message': {'content': reply}}]}) as transport:
+                    code, result = self.request('/api/tutor', attempt)
+                self.assertEqual(code, 200)
+                self.assertEqual(result['revisionId'], 'current-turn')
+                if provider == 'chatgpt':
+                    prompt = json.loads(self.server.chatgpt.infer.call_args.args[1])
+                else:
+                    wire = json.loads(transport.call_args.args[2])
+                    prompt = json.loads(wire['messages'][1]['content'])
+                self.assertEqual(prompt['turn']['previous']['openedHint'], prior['openedHint'])
+                self.assertEqual(set(prompt['turn']['previous']), {'answer', 'thoughts', 'coach', 'openedHint'})
+                self.assertNotIn('private-audio', json.dumps(prompt))
+                self.assertNotIn('older work', json.dumps(prompt))
+                self.assertNotIn('Original private speech', json.dumps(prompt))
 
 
 if __name__ == '__main__':

@@ -48,14 +48,14 @@ function customBank(fields = {}) {
 function amcBank() {
   const sample = {bank: 'amc', level: 'AMC 8', year: 2026, batch: 'NA', number: 1,
     responseType: 'choice', question: 'What is 2 + 2?', choices: {A: '2', B: '4'}, answer: 'B',
-    solution: 'Adding two and two gives four.', solutionSource: 'live-poshenloh',
+    solution: 'Adding two and two gives four.', solutionSource: 'Adapted from MAA official solutions',
     sourceURL: 'https://live.poshenloh.com/past-contests/amc8/2026/1'};
   return {id: 'amc', label: 'AMC contests', figuresBase: '../amc-bank/figures/', questions: [
-    {id: 'amc8_2026_1', ...sample},
+    {id: 'amc8_2026_1', ...sample, officialSolution: {url: '../amc-bank/official-solutions/AMC8_2023_Solutions.pdf', page: 2}},
     {id: 'amc8_2026_2', ...sample, number: 2, solution: '', solutionSource: ''}]};
 }
-function environment(customBanks, amc) {
-  const elements = new Map(), storage = new Map(), root = new Element();
+function environment(customBanks, amc, options = {}) {
+  const elements = new Map(), storage = new Map(), requests = [], root = new Element();
   const node = id => {
     if (!elements.has(id)) { const value = new Element(); root.appendChild(value); elements.set(id, value); }
     return elements.get(id);
@@ -72,14 +72,14 @@ function environment(customBanks, amc) {
   if (amc) window.AMC_BANK = amc;
   const context = vm.createContext({window, document: {getElementById: node, addEventListener() {},
     body: new Element(), createElement: tag => new Element(tag), createTextNode: text},
-    location: {protocol: 'file:'}, localStorage: {getItem: key => storage.get(key), setItem: (key, value) => storage.set(key, value)},
+    location: {protocol: options.paths ? 'http:' : 'file:'}, localStorage: {getItem: key => storage.get(key), setItem: (key, value) => storage.set(key, value)},
     URL, AbortController, setTimeout, clearTimeout, setInterval, clearInterval,
-    fetch: async () => { throw new Error('Practice must not need a network request'); }});
-  for (const file of ['speech-input.js', 'practice-feedback.js']) {
+    fetch: async (url, request) => { requests.push({url, request}); if (options.fetch) return options.fetch(url, request); throw new Error('Practice must not need a network request'); }});
+  for (const file of ['speech-input.js', 'practice-feedback.js'].concat(options.paths ? ['curriculum-path.js'] : [])) {
     vm.runInContext(fs.readFileSync(path.join(directory, file), 'utf8'), context, {filename: file});
   }
   vm.runInContext(bootstrap, context, {filename: 'index.html'});
-  return {node, storage, cnNotice};
+  return {node, storage, cnNotice, requests};
 }
 async function select(env, id, value) { env.node(id).value = value; await env.node(id).emit('change'); }
 function options(node) { return node.children.map(option => [option.value, option.textContent]); }
@@ -132,17 +132,17 @@ test('AMC navigation, answer checks, solution provenance, and CN return work wit
   await env.node('thoughtsSubmit').emit('click');
   assert.match(env.node('answerFeedback').textContent, /Correct\./);
   await find(env.node('poolDisplay'), 'sol-btn').emit('click');
-  assert.match(env.node('solBody').textContent, /LIVE by Po-Shen Loh \(third-party solution\)/);
-  assert.doesNotMatch(env.node('solBody').textContent, /official/i);
+  assert.match(env.node('solBody').textContent, /Adding two and two gives four\./);
+  assert.match(env.node('solBody').textContent, /Adapted by Math Practice from MAA official solutions\./);
+  const officialLink = find(env.node('solBody'), 'pool-hint').children.find(child => child.tagName === 'A');
+  assert.equal(officialLink.href, '../amc-bank/official-solutions/AMC8_2023_Solutions.pdf#page=2');
+  assert.doesNotMatch(env.node('solBody').textContent, /LIVE by Po-Shen Loh/);
   await env.node('solClose').emit('click');
   await env.node('nextProblem').emit('click');
   await find(env.node('poolDisplay'), 'sol-btn').emit('click');
   assert.match(env.node('solBody').textContent, /Correct answer: \(B\)/);
   assert.match(env.node('solBody').textContent, /A worked solution for this problem is not included\./);
-  const archiveLink = find(env.node('solBody'), 'pool-hint').children.find(child => child.tagName === 'A');
-  assert.equal(archiveLink.textContent, 'View the source page at LIVE by Po-Shen Loh');
-  assert.equal(archiveLink.href, 'https://live.poshenloh.com/past-contests/amc8/2026/1');
-  assert.doesNotMatch(env.node('solBody').textContent, /Solution source:|Which idea made this solution work/);
+  assert.doesNotMatch(env.node('solBody').textContent, /LIVE|source page|Solution source:|Which idea made this solution work/);
   await env.node('solClose').emit('click');
   await select(env, 'selBank', 'cn-math');
   assert.equal(env.node('sourceNotice').textContent, env.cnNotice);
@@ -163,7 +163,9 @@ test('disputed AMC solutions retain the historical key and explain why the probl
   assert.doesNotMatch(env.node('solBody').textContent, /Correct answer:|See the explanation below/);
 });
 
-for (const booklet of ['AMC8_2023_Solutions.pdf', 'AMC10A_2022_Solutions.pdf']) {
+  for (const booklet of ['AMC8_2023_Solutions.pdf', 'AMC8_2022_Solutions.pdf',
+    'AMC8_2020_Solutions.pdf', 'AMC8_2019_Solutions.pdf', 'AMC8_2018_Solutions.pdf',
+    'AMC10A_2022_Solutions.pdf', 'AMC10A_2021_Spring_Solutions.pdf', 'AMC10A_2021_Fall_Solutions.pdf']) {
   test(`AMC questions open the bundled official MAA booklet ${booklet}`, async () => {
     const amc = amcBank();
     const url = '../amc-bank/official-solutions/' + booklet;
@@ -183,7 +185,7 @@ for (const booklet of ['AMC8_2023_Solutions.pdf', 'AMC10A_2022_Solutions.pdf']) 
   });
 }
 
-test('unrecognized official booklet metadata retains the honest AMC source-page fallback', async () => {
+test('unrecognized official booklet metadata shows an honest unavailable notice without a third-party solution link', async () => {
   for (const url of ['javascript:alert(1)', '../amc-bank/official-solutions/unknown.pdf', 'https://example.org/solutions.pdf']) {
     const amc = amcBank();
     amc.questions = [{...amc.questions[1], officialSolution: {url}}];
@@ -193,8 +195,7 @@ test('unrecognized official booklet metadata retains the honest AMC source-page 
     await find(env.node('poolDisplay'), 'sol-btn').emit('click');
     assert.match(env.node('solBody').textContent, /A worked solution for this problem is not included\./);
     assert.doesNotMatch(env.node('solBody').textContent, /Official MAA solutions|Read official/);
-    const link = find(env.node('solBody'), 'pool-hint').children.find(child => child.tagName === 'A');
-    assert.equal(link.href, amc.questions[0].sourceURL);
+    assert.doesNotMatch(env.node('solBody').textContent, /LIVE|source page/);
   }
 });
 
@@ -338,3 +339,52 @@ test('custom question answers, sequential navigation, solutions, and notebook re
   const attempts = JSON.parse(env.storage.get('math-practice.attempts.v1'));
   assert.equal(attempts.garden_math_q1.answer, '1/2');
 });
+
+for (const layer of ['ailleo', 'CN', 'US']) {
+  test(layer + ' practice selection captures the standard while manual custom, AMC and CN browsing still works', async () => {
+    const submissions = [];
+    const response = value => ({ok: true, json: async () => value, text: async () => JSON.stringify(value)});
+    const selectedId = layer === 'ailleo' ? 'math:fraction' : 'native-standard';
+    const env = environment([customBank()], amcBank(), {paths: true, fetch: (url, request) => {
+      if (url.includes('/api/status/')) return response({configured: false, ready: false,
+        localEvidenceItems: ['garden_math_q1', 'amc8_2026_1', 'cn-sample']});
+      if (url.includes('/browse')) return response({status: 'available', nodes: [
+        {id: selectedId, name: 'Fractions', label: 'Fraction standard', placement: {grade: 4}}]});
+      if (url.includes('/practice')) return response({status: layer === 'US' ? 'partial' : 'mapped', candidates: [
+        {questionId: 'not-installed'}, {questionId: 'garden_math_q1'}, {questionId: 'amc8_2026_1'}]});
+      assert.equal(url, '/api/assessment');
+      const body = JSON.parse(request.body); submissions.push(body);
+      return response({questionId: body.questionId, answer: body.answer, revisionId: body.turn.revisionId,
+        curriculumLayer: body.curriculumLayer, curriculumNodeId: body.curriculumNodeId,
+        category: 'cannot_judge', answerCategory: 'correct', answerCorrect: true,
+        decisionConfigured: false, inferenceConfigured: false});
+    }});
+    await new Promise(resolve => setImmediate(resolve));
+    if (layer !== 'ailleo') {
+      await select(env, 'practicePath', layer);
+      await new Promise(resolve => setImmediate(resolve));
+    }
+    await select(env, 'pathConcept', selectedId);
+    await env.node('pathFind').emit('click');
+    assert.equal(env.node('pathResults').children.length, 2);
+    await env.node('pathResults').children[0].emit('click');
+    assert.equal(env.node('selBank').value, 'garden_math');
+    env.node('freeAnswer').value = '1/2'; await env.node('freeAnswer').emit('input');
+    await env.node('thoughtsSubmit').emit('click');
+    await new Promise(resolve => setImmediate(resolve));
+    await select(env, 'selBank', 'amc'); await env.node('beginPractice').emit('click');
+    await env.node('answerOpts').children.find(button => button.dataset.answer === 'B').emit('click');
+    await env.node('thoughtsSubmit').emit('click');
+    await new Promise(resolve => setImmediate(resolve));
+    await select(env, 'selBank', 'cn-math'); await env.node('beginPractice').emit('click');
+    env.node('freeAnswer').value = '1/2'; await env.node('freeAnswer').emit('input');
+    await env.node('thoughtsSubmit').emit('click');
+    await new Promise(resolve => setImmediate(resolve));
+    assert.deepEqual(submissions.map(body => [body.bank, body.questionId, body.curriculumLayer, body.curriculumNodeId]), [
+      ['garden_math', 'garden_math_q1', layer, selectedId], ['amc', 'amc8_2026_1', layer, selectedId],
+      ['cn-math', 'cn-sample', layer, selectedId]]);
+    assert.equal(env.node('practicePath').value, layer);
+    assert.equal(env.node('pathConcept').value, selectedId);
+    assert.match(env.node('answerFeedback').textContent, /Correct\./);
+  });
+}

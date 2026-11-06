@@ -36,11 +36,21 @@ Copied LIVE worked solutions and their solution-only diagrams are excluded.
 Nothing in this notice asserts a license to republish those explanations.
 Source page links provide provenance and do not relicense the linked websites.
 
-Two unchanged official MAA solution booklets, for **2023 AMC 8** and
-**2022 AMC 10A**, are included in `official-solutions/`. Their original copyright
-and editorial-board notices remain intact. They cover 50 questions; other
-official solution booklets are not part of this distribution. Their MAA URLs
-and file hashes are recorded in [sources.json](sources.json).
+Eight official MAA solution booklets, preserved as retrieved, are included in
+`official-solutions/`: **2018, 2019, 2020, 2022, and 2023 AMC 8**, plus
+**2021 Spring, 2021 Fall, and 2022 AMC 10A**. Their original copyright and
+editorial-board notices remain intact. They cover 200 questions. Two were obtained
+from MAA's website and six from mirrors of MAA-authored booklets. Retrieval URLs,
+file hashes, and source checks are recorded in [sources.json](sources.json).
+A saved-file hash identifies the retrieved copy; publisher reference hashes
+were not available for the six mirror files.
+
+Two hundred learner-facing solutions are adapted by Math Practice from these official
+booklets under the same CC BY-NC-SA 4.0 terms. They are project adaptations, not
+MAA-authored or MAA-reviewed explanations. [ADAPTATIONS.md](ADAPTATIONS.md) lists
+the questions, source pages, modifications, and review scope. New solution
+figures are cropped from official pages or drawn to support the adapted
+argument; their per-record metadata identifies which.
 
 ## Modifications in Math Practice
 
@@ -48,8 +58,12 @@ We converted problem transcriptions into structured JSON and browser data,
 normalized LaTeX and figure references, added stable IDs and topic metadata,
 and retained reviewed corrections and grading notes. Some original geometry
 figures were recovered for display. The published snapshot removes copied
-third-party solution text and solution-only figures, and adds links to the two
-unchanged official MAA solution booklets for their corresponding questions.
+third-party solution text and solution-only figures, and adds links to the eight
+official MAA solution booklets, preserved as retrieved, for those questions.
+The adaptations expand important deductions, explain method choices and useful
+strategies, and add official-source crops or original explanatory figures.
+Two prompt figures were replaced with official-source versions during the initial
+six-question pilot, which is included in the 200-question batch.
 
 Per-record metadata preserves the original source URLs, source hashes, figure
 provenance, correction reasons, and modification descriptions. Historical

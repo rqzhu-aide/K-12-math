@@ -20,96 +20,105 @@
       </div></div>
   </header>
   <main>
-    <h1>Connections</h1>
-    <p class="intro">Add optional models for decisions, speech, and deeper mathematical reasoning. Answer checks and solutions work without them.</p>
+    <h1>AI connections</h1>
+    <p class="intro">Choose the models for tutor reviews, transcription, and feedback on your thinking. Each connection is optional.</p>
     <p id="pageStatus" class="page-status" role="status">Loading saved settings…</p>
-    <div class="actions">
-      <button type="button" class="secondary" id="loadConfiguration">Load Configuration</button>
-      <button type="button" class="secondary" id="testConnections">Test Connection</button>
-      <button type="button" class="primary" id="saveConfiguration" hidden>Save Configuration</button>
-    </div>
-    <p class="help">Settings come from <code>config.json</code> beside <code>index.html</code>. To start the local engine, open <strong>Start Math Practice.cmd</strong> in the same folder.</p>
 
-    <section data-model-role="decision" aria-labelledby="decisionTitle">
-      <div class="section-head"><h2 id="decisionTitle">Decision model</h2><span id="decisionBadge" class="badge">Not tested</span></div>
-      <p class="section-description">Reads original speech for learning signals and checks submitted answers and edited reasoning independently.</p>
+    <div id="separateConnections">
+    <div class="connection-tabs" role="tablist" aria-label="Model connections">
+      <button type="button" id="inferenceTab" data-model-role="inference" role="tab" aria-selected="true" aria-controls="inferencePanel">Mathematics</button>
+      <button type="button" id="speechTab" data-model-role="speech" role="tab" aria-selected="false" aria-controls="speechPanel" tabindex="-1">Speech</button>
+      <button type="button" id="decisionTab" data-model-role="decision" role="tab" aria-selected="false" aria-controls="decisionPanel" tabindex="-1">Sentiment</button>
+    </div>
+
+    <section id="decisionPanel" data-model-role="decision" role="tabpanel" aria-labelledby="decisionTab" tabindex="0" hidden>
+      <div class="section-head"><h2 id="decisionTitle">Sentiment</h2><span id="decisionBadge" class="badge">Not tested</span></div>
+      <p class="section-description">Reads confidence, clarity of reasoning, and engagement in your original transcript. These signals describe your words, not emotion measured from your voice.</p>
       <form id="decisionForm">
         <div class="field">
-          <label for="decisionBases">Server addresses</label>
-          <textarea id="decisionBases" rows="2" spellcheck="false" placeholder="http://localhost:8000" aria-describedby="decisionHelp"></textarea>
-          <p class="help" id="decisionHelp">Optional. Leave addresses and model ID blank to disable. Use one address per line for a service with the typed decision API at /v1/systemone.</p>
+          <label for="decisionBases">URL</label>
+          <input id="decisionBases" type="url" spellcheck="false" placeholder="http://localhost:8000">
         </div>
-        <div class="field-pair">
-          <div class="field"><label for="decisionModel">Model ID</label><input id="decisionModel" type="text" placeholder="Your model ID" maxlength="200" spellcheck="false"></div>
-          <div class="field"><label for="decisionKey">API key</label><input id="decisionKey" type="password" autocomplete="new-password" maxlength="4096" aria-describedby="decisionKeyHelp"><p id="decisionKeyHelp" class="help">Leave blank to keep the configured key.</p></div>
+        <div class="field"><label for="decisionKey">API Key</label><input id="decisionKey" type="password" autocomplete="new-password" maxlength="4096" placeholder="Optional"></div>
+        <div class="model-actions">
+          <div class="field"><label for="decisionModel">Model Name</label><input id="decisionModel" type="text" placeholder="Your model name" maxlength="200" spellcheck="false"></div>
+          <button type="button" class="secondary" id="testDecision">Test Connection</button>
+          <button type="submit" class="primary" id="saveDecision">Save Settings</button>
         </div>
-        <div class="actions"><button type="submit" class="primary" id="saveDecision">Save decision settings</button><button type="button" class="secondary" id="testDecision">Test decision model</button></div>
         <p id="decisionResult" class="result" role="status" tabindex="-1">Test sends a short example to the addresses entered above.</p>
       </form>
     </section>
 
-    <section data-model-role="speech" aria-labelledby="speechTitle">
-      <div class="section-head"><h2 id="speechTitle">Speech to text</h2><span id="speechBadge" class="badge">Not tested</span></div>
+    <section id="speechPanel" data-model-role="speech" role="tabpanel" aria-labelledby="speechTab" tabindex="0" hidden>
+      <div class="section-head"><h2 id="speechTitle">Speech</h2><span id="speechBadge" class="badge">Not tested</span></div>
       <p class="section-description">Turns spoken thinking into a text draft for the student to review.</p>
       <form id="speechForm">
         <div class="field">
-          <label for="speechBases">Server addresses</label>
-          <textarea id="speechBases" rows="2" spellcheck="false" placeholder="http://localhost:8000" aria-describedby="speechHelp"></textarea>
-          <p class="help" id="speechHelp">Optional. Leave addresses and model ID blank to disable. Use one address per line for a service that accepts WAV audio at /v1/audio/transcriptions.</p>
+          <label for="speechBases">URL</label>
+          <input id="speechBases" type="url" spellcheck="false" placeholder="http://localhost:8000">
         </div>
-        <div class="field-pair">
-          <div class="field"><label for="speechModel">Model ID</label><input id="speechModel" type="text" placeholder="Your model ID" maxlength="200" spellcheck="false"></div>
-          <div class="field"><label for="speechKey">API key</label><input id="speechKey" type="password" autocomplete="new-password" maxlength="4096" aria-describedby="speechKeyHelp"><p id="speechKeyHelp" class="help">Leave blank to keep the configured key.</p></div>
+        <div class="field"><label for="speechKey">API Key</label><input id="speechKey" type="password" autocomplete="new-password" maxlength="4096" placeholder="Optional"></div>
+        <div class="model-actions">
+          <div class="field"><label for="speechModel">Model Name</label><input id="speechModel" type="text" placeholder="Your model name" maxlength="200" spellcheck="false"></div>
+          <button type="button" class="secondary" id="testSpeech">Test Connection</button>
+          <button type="submit" class="primary" id="saveSpeech">Save Settings</button>
         </div>
-        <div class="actions"><button type="submit" class="primary" id="saveSpeech">Save speech settings</button><button type="button" class="secondary" id="testSpeech">Test speech to text</button></div>
         <p id="speechResult" class="result" role="status" tabindex="-1">Test sends a one-second silent WAV to check the connection. It does not use your microphone.</p>
       </form>
     </section>
 
-    <section data-model-role="inference" aria-labelledby="inferenceTitle">
-      <div class="section-head"><h2 id="inferenceTitle">Inference model</h2><span id="inferenceBadge" class="badge">Not tested</span></div>
-      <p class="section-description">Reviews your math and prepares hints when your answer or explanation needs another look.</p>
+    <section id="inferencePanel" data-model-role="inference" role="tabpanel" aria-labelledby="inferenceTab" tabindex="0">
+      <div class="section-head"><h2 id="inferenceTitle">Mathematics</h2><span id="inferenceBadge" class="badge">Not tested</span></div>
+      <p class="section-description">Reviews your answers and reasoning and offers hints. Questions with figures need a model that can read images.</p>
       <form id="inferenceForm">
-        <div class="field">
-          <label for="inferenceProvider">Connection</label>
-          <select id="inferenceProvider"><option value="api" selected>Compatible API</option><option value="codex">Codex account</option></select>
-        </div>
-        <div id="codexConnection" hidden>
-          <p id="accountStatus" class="account-status" role="status">Choose Codex account to check sign-in on this computer.</p>
-          <div class="account-actions actions">
-            <button type="button" class="secondary" id="loginOpenai" disabled>Sign in with OpenAI</button>
-            <button type="button" class="text-button" id="refreshOpenai">Refresh status</button>
-            <button type="button" class="text-button" id="cancelLogin" hidden>Cancel sign-in</button>
-          </div>
-          <div id="deviceLogin" class="device-login" hidden>
-            <p>Enter this code on OpenAI’s website:</p>
-            <div class="device-actions"><code id="deviceCode"></code><button type="button" class="secondary" id="copyCode">Copy code</button></div>
-            <a id="deviceLink" class="back-link" target="_blank" rel="noreferrer">Open OpenAI sign-in</a>
-            <p class="help">Return here after signing in. The status updates automatically.</p>
-          </div>
-          <p class="help account-help">Uses this computer’s Codex account. Sign-in happens on OpenAI’s website; credentials stay in the backend.</p>
-        </div>
         <div id="inferenceApiFields">
-          <div class="field">
-            <label for="inferenceBases">Server addresses</label>
-            <textarea id="inferenceBases" rows="2" spellcheck="false" placeholder="http://localhost:8000" aria-describedby="inferenceHelp"></textarea>
-            <p class="help" id="inferenceHelp">Optional. Leave addresses and model ID blank to disable. Use one address per line for a compatible chat-completions API. A base address may include /v1.</p>
+        <div class="field">
+          <div class="method-heading"><label for="inferenceBases">URL</label><button type="button" class="method-link" id="useChatgptPlan" disabled>Use a ChatGPT plan</button></div>
+          <input id="inferenceBases" type="url" spellcheck="false" placeholder="http://localhost:8000">
+        </div>
+        <div class="field" id="inferenceKeyField"><label for="inferenceKey">API Key</label><input id="inferenceKey" type="password" autocomplete="new-password" maxlength="4096" placeholder="Optional"></div>
+        </div>
+        <div id="planAccountFields" class="field" hidden>
+          <div class="method-heading"><span id="planAccountLabel">ChatGPT plan</span><button type="button" class="method-link" id="useCustomApi">Use custom API</button></div>
+          <div class="account-connection" aria-labelledby="planAccountLabel">
+            <p id="planAccountStatus" role="status"></p>
+            <div class="account-actions">
+              <button type="button" class="plan-login" id="planLogin" data-oai-siwc-button hidden><img src="vendor/chatgpt-signin-white.svg" alt="" width="20" height="20">Continue with ChatGPT</button>
+              <span class="account-alternatives" id="planAlternatives" hidden></span>
+              <button type="button" class="secondary" id="planCancel" hidden>Cancel sign-in</button>
+              <button type="button" class="method-link" id="legacyToPlan" hidden>Use a ChatGPT plan</button>
+              <a id="managePlan" href="https://chatgpt.com/settings/usage" target="_blank" rel="noopener noreferrer" hidden>Manage usage</a>
+              <button type="button" class="method-link" id="planModels" hidden>Refresh model list</button>
+              <button type="button" class="method-link" id="planDisconnect" hidden>Disconnect</button>
+            </div>
           </div>
-          <div class="field"><label for="inferenceKey">API key</label><input id="inferenceKey" type="password" autocomplete="new-password" maxlength="4096" aria-describedby="inferenceKeyHelp"><p id="inferenceKeyHelp" class="help">Leave blank to keep the configured key.</p></div>
         </div>
-        <div class="field-pair">
-          <div class="field"><label for="inferenceModel">Model ID</label><input id="inferenceModel" type="text" placeholder="Your model ID" maxlength="200" spellcheck="false"></div>
-          <div class="field" id="effortField" hidden><label for="inferenceEffort">Reasoning effort</label><select id="inferenceEffort"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option><option value="xhigh">Extra high</option><option value="max">Maximum</option></select></div>
+        <div class="model-actions">
+          <div class="field"><label for="inferenceModel">Model Name</label><input id="inferenceModel" type="text" placeholder="Your model name" maxlength="200" spellcheck="false"><datalist id="inferenceModelNames"></datalist></div>
+          <button type="button" class="secondary" id="testInference" disabled>Test Connection</button>
+          <button type="submit" class="primary" id="saveInference">Save Settings</button>
         </div>
-        <div class="actions"><button type="submit" class="primary" id="saveInference">Save inference settings</button><button type="button" class="secondary" id="testInference" disabled>Test inference model</button></div>
-        <p id="inferenceResult" class="result" role="status" tabindex="-1">Test runs one short request with the connection and model entered above.</p>
+        <p id="inferenceResult" class="result" role="status" tabindex="-1">The test sends a sample answer for a text tutor review.</p>
       </form>
+      <dialog id="planWelcome" aria-labelledby="planWelcomeTitle">
+        <h2 id="planWelcomeTitle">ChatGPT plan connected</h2>
+        <p>Tutor tests use your ChatGPT plan. Save your chosen model to use the plan during practice. You can manage usage in ChatGPT settings.</p>
+        <form method="dialog"><button class="primary">Got it</button></form>
+      </dialog>
     </section>
+    </div>
+
+    <div class="configuration-actions actions">
+      <button type="button" class="secondary connection-test" id="testConnections" disabled><span id="testConnectionsLabel">Test All Connections</span><span class="connection-dots" aria-hidden="true"><span id="inferenceDot" class="connection-dot" data-model-role="inference"></span><span id="speechDot" class="connection-dot" data-model-role="speech"></span><span id="decisionDot" class="connection-dot" data-model-role="decision"></span></span></button>
+      <button type="button" class="primary" id="saveConfiguration" disabled>Save All Settings</button>
+      <button type="button" class="text-button" id="loadConfiguration">Load Settings</button>
+    </div>
+    <p class="help">Tests send small samples and may use API credits or ChatGPT plan usage. The Speech test uses a silent clip.</p>
 
     <div class="workflow-note" aria-labelledby="workflowTitle">
-      <h2 id="workflowTitle">How these connections are used</h2>
-      <p>Practice checks supported answers against the supplied answer key. Thinking is checked only when a decision or inference model is configured. A speech connection adds transcription; a decision connection adds learning signals from original speech. With an inference connection, unresolved work receives a deeper review and optional hints.</p>
-      <p class="help">Saving or opening this page does not start inference or use your microphone.</p>
+      <h2 id="workflowTitle">Your data and connections</h2>
+      <p>Your keys are saved on this computer. Audio and submitted text go to the services you choose when you use an AI feature. Opening or saving settings does not run a model.</p>
+      <p class="help">Answer-key checks and included solutions work without AI. To use connections, keep the local Math Practice launcher running.</p>
     </div>
   </main>
   <footer><span>Settings apply to this local installation. Your practice drafts stay in the browser.</span><span class="site-credit">Developed by Ruoqing Zhu · <a href="https://github.com/rqzhu-aide" target="_blank" rel="noopener noreferrer">GitHub: rqzhu-aide</a></span></footer>

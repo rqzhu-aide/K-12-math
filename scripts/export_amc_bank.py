@@ -17,12 +17,19 @@ def browser_question(record):
         'choicesType': 'Choices Type', 'answer': 'Correct Answer',
         'gradingStatus': 'GradingStatus', 'gradingNote': 'GradingNote',
         'answerForm': 'Answer Form', 'rejectedAnswers': 'Rejected Answers',
-        'solution': 'Solution',
+        'solution': 'Solution', 'knowledgeGraph': 'KnowledgeGraph',
     }
     question = {name: record[key] for name, key in fields.items() if key in record}
     meta = record['Meta']
+    if record.get('Solution') and not (
+        meta.get('SolutionSource') == 'Adapted from MAA official solutions'
+        and meta.get('OfficialSolution')
+        and meta.get('SolutionAdaptation', {}).get('reviewStatus') == 'reviewed'
+    ):
+        raise ValueError(f"{record['ID']}: only reviewed official-source adaptations may be exported")
     question.update(
         solutionSource=meta.get('SolutionSource', ''),
+        solutionSourceURL=meta.get('SolutionSourceURL', ''),
         sourceURL=meta.get('SourceURL', ''),
         figureSources=meta.get('FigureSources', {}),
         editorialNote=meta.get('EditorialNote', '') or record.get('Source Content Note', ''),

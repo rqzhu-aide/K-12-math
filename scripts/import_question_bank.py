@@ -17,7 +17,7 @@ def remove_generated(path, base):
 
 
 def import_bank(source, root=ROOT, replace=False, check=False):
-    manifest, records, figures = read_bank(source)
+    manifest, records, figures = read_bank(source, graph_root=root)
     result = {'id': manifest['id'], 'questions': len(records), 'figures': len(figures)}
     if check:
         return result
@@ -34,7 +34,7 @@ def import_bank(source, root=ROOT, replace=False, check=False):
             if existing != target and valid_bank_id(existing.name) and existing.is_dir():
                 if not existing.resolve().is_relative_to(base):
                     raise BankError('Installed banks must stay inside custom-banks.')
-                old_manifest, old_records, _ = read_bank(existing)
+                old_manifest, old_records, _ = read_bank(existing, graph_root=root)
                 if old_manifest['id'] != existing.name:
                     raise BankError(f'{existing.name}: folder name must match bank.json id.')
                 banks.append(browser_bank(old_manifest, old_records))

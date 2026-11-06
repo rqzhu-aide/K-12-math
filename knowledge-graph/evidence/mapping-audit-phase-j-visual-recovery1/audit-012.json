@@ -1,0 +1,1329 @@
+{
+  "schemaVersion": 1,
+  "auditPacketId": "audit-012",
+  "status": "complete",
+  "selection": {
+    "provider": "chatgpt",
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "startedAt": "2026-11-05T14:44:08.494748+00:00",
+  "raw": "{\n  \"audits\": [\n    {\n      \"questionId\": \"q001\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_p150\", \"cnm_257\"],\n      \"supportIds\": [\"cnm_266\", \"cnm_139\", \"cnm_174\", \"cnm_p148\"],\n      \"routes\": [],\n      \"derivedAnswer\": \"C: 54√3 − 18π square units.\",\n      \"mathematicalReason\": \"Joining the center to the vertices partitions the hexagon into six equilateral triangles of side 6. Each has altitude √(6² − 3²) = 3√3, so the hexagon's area is 6·(6·3√3/2) = 54√3. Each vertex sector has angle 120° and radius 3, hence area (120/360)π·3² = 3π. Adjacent sectors meet only at side midpoints, and their interiors do not overlap. Subtracting all six sectors gives 54√3 − 18π. Composite-area subtraction and sector area are directly assessed; the listed polygon and triangle facts support this valid route.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [\n        \"Image slot 1 uses the same fill for the vertex sectors and the central region. The explicit wording, rather than the fill alone, identifies the requested region as outside the sectors.\"\n      ],\n      \"figureEvidence\": [\n        {\n          \"imageSlot\": 1,\n          \"fact\": \"There are six inward arcs, each joining the two sides adjacent to a vertex. Neighboring arcs meet on the hexagon sides; the central region and vertex sectors share the same purple fill.\"\n        }\n      ]\n    },\n    {\n      \"questionId\": \"q002\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_p148\"],\n      \"supportIds\": [\"cnm_p077\"],\n      \"routes\": [],\n      \"derivedAnswer\": \"E: BE = 8.\",\n      \"mathematicalReason\": \"Because E lies on BC and ABCD is a square, AB is perpendicular to BE and AB = 10. Thus 40 = [ABE] = (1/2)·10·BE, giving BE = 8. This lies within the side of length 10. The triangle-area scope is directly assessed, with square properties supplying the perpendicular height.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": [\n        {\n          \"imageSlot\": 2,\n          \"fact\": \"E is drawn between B and C on the square's upper side, and AE forms triangle ABE with the adjacent sides AB and BE.\"\n        }\n      ]\n    },\n    {\n      \"questionId\": \"q003\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_254\", \"cnm_069\"],\n      \"supportIds\": [\"cnm_116\", \"cnm_p187\"],\n      \"routes\": [\n        {\n          \"id\": \"cyclic-opposite-angles\",\n          \"label\": \"Opposite cyclic angles\",\n          \"nodeIds\": [\"cnm_255\"]\n        },\n        {\n          \"id\": \"intercepted-arcs\",\n          \"label\": \"Intercepted arcs\",\n          \"nodeIds\": [\"cnm_253\"]\n        }\n      ],\n      \"derivedAnswer\": \"C: ∠BCD = 130°.\",\n      \"mathematicalReason\": \"Since EB is a diameter, ∠EAB = 90°. Consequently ∠AEB + ∠ABE = 90°, and the ratio 4:5 gives 40° and 50°, respectively. From AB ∥ ED, ∠BED = 50°. In cyclic quadrilateral EBCD, the opposite angles BED and BCD are supplementary, so ∠BCD = 130°. Alternatively, ∠BED intercepts the 100° arc BCD, leaving a 260° arc intercepted by ∠BCD, again giving 130°. Both optional routes are valid; they need not be combined. The condition DC ∥ EB is not needed for this selected solution.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": [\n        {\n          \"imageSlot\": 3,\n          \"fact\": \"EB passes through the marked center. The cyclic order is E, A, B, C, D, so E and C are opposite vertices of cyclic quadrilateral EBCD.\"\n        }\n      ]\n    },\n    {\n      \"questionId\": \"q004\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_p150\"],\n      \"supportIds\": [\"cnm_266\", \"cnm_113\"],\n      \"routes\": [],\n      \"derivedAnswer\": \"D: 7/16.\",\n      \"mathematicalReason\": \"The eight triangles formed by joining O to consecutive vertices have equal area. The shaded region consists of triangles OBC, OCD, and ODE, together with triangle OBX. Since X is the midpoint of AB, OX is a median of triangle OAB, and [OBX] = [OAB]/2. The shaded fraction is therefore (3 + 1/2)/8 = 7/16. The proposed composite-area scope and its regular-polygon and median supports fit this solution.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": [\n        {\n          \"imageSlot\": 4,\n          \"fact\": \"The shaded boundary is X–B–C–D–E–O–X. Thus the shaded region includes the three full central triangles along BC, CD, and DE, plus OBX, rather than the portion toward A.\"\n        }\n      ]\n    },\n    {\n      \"questionId\": \"q005\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"math:recursive-counting-probability\"],\n      \"supportIds\": [\"math:graph-models\", \"cnm_h232\"],\n      \"routes\": [],\n      \"derivedAnswer\": \"E: 2400 paths.\",\n      \"mathematicalReason\": \"The all-rightward horizontal cuts, containing 2, 4, 4, and 2 edges, separate three blocks, each with one leftward arrow. Once a path crosses such a cut, it cannot return to the previous block. Within a block, track used edges, not merely visited vertices. A crossing uses either one forward horizontal edge, or two forward edges separated by the unique backward edge. For the latter case, edge-disjointness forces the first and second forward edges to lie on opposite sides of the backward edge. Ordering entry and exit vertices from top to bottom, the transfer matrices are T1 = [[2,2,3,3],[3,3,2,2]], T2 = [[4,4,8,8],[4,4,8,8],[8,8,4,4],[8,8,4,4]], and T3 = [[2,3],[2,3],[3,2],[3,2]]. Starting with counts (1,1), these yield (5,5,5,5), then (120,120,120,120), then (1200,1200). Each final exit has one continuation to B, giving 2400. This validates the proposed block-state counting method without imposing an unwarranted prohibition on repeated vertices.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": [\n        {\n          \"imageSlot\": 5,\n          \"fact\": \"The seven horizontal-edge columns contain 2, 3, 4, 5, 4, 3, and 2 edges. Exactly three central horizontal edges point left, one in each of the second, fourth, and sixth columns; all other horizontal arrows point right.\"\n        },\n        {\n          \"imageSlot\": 5,\n          \"fact\": \"The unmarked slanted edges are bidirectional. Between successive horizontal-edge columns, they form zigzag chains, enabling the stated entry-to-exit block enumeration.\"\n        }\n      ]\n    },\n    {\n      \"questionId\": \"q006\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_267\"],\n      \"supportIds\": [\"cnm_245\", \"cnm_p089\"],\n      \"routes\": [\n        {\n          \"id\": \"complementary-triangle-bound\",\n          \"label\": \"Similarity and complementary areas\",\n          \"nodeIds\": [\"cnm_271\", \"cnm_p148\", \"cnm_p150\"]\n        },\n        {\n          \"id\": \"trigonometric-projection-bound\",\n          \"label\": \"Trigonometric projection inequalities\",\n          \"nodeIds\": [\"cnm_276\", \"cnm_096\"]\n        }\n      ],\n      \"derivedAnswer\": \"C: 15 square inches.\",\n      \"mathematicalReason\": \"A global bound is necessary; the remaining area 21 is not the answer. Let a fitted square have side s and orientation θ, reduced by symmetry to 0° ≤ θ ≤ 45°, and put k = cos θ + sin θ. Its axis-aligned bounding square has side sk, so sk ≤ 5. It also contains a concentric axis-aligned square of side s/k. Any axis-aligned square contained in the remaining cross has side at most 3: for a larger one, neither coordinate interval fits within the central interval [1,4], so it contains a point in a removed corner. Hence s/k ≤ 3, and multiplying gives s² ≤ 15, without assuming the fitted square is centered. For attainment, set a = (5+√5)/2 and b = (5−√5)/2. The square with vertices (0,b), (a,0), (5,a), and (b,5) has a+b = 5 and ab = 5. Its sides pass through the four reentrant corners because 1/a + 1/b = 1, so it fits and has area a²+b² = 15. Similar-triangle/complementary-area reasoning or trigonometric projections can establish these bounds; neither route is universally required.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": [\n        {\n          \"imageSlot\": 6,\n          \"fact\": \"Four equal corner squares are excluded from the outer square, leaving the white cross-shaped region. With the stated dimensions, the reentrant corners are (1,1), (4,1), (4,4), and (1,4) in a [0,5] × [0,5] coordinate model.\"\n        }\n      ]\n    },\n    {\n      \"questionId\": \"q007\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_183\"],\n      \"supportIds\": [\"cnm_055\"],\n      \"routes\": [\n        {\n          \"id\": \"similar-triangle-side-ratios\",\n          \"label\": \"Use similar triangles\",\n          \"nodeIds\": [\"cnm_271\", \"cnm_272\"]\n        },\n        {\n          \"id\": \"isosceles-angle-chase\",\n          \"label\": \"Use equal base angles\",\n          \"nodeIds\": [\"cnm_069\", \"cnm_138\"]\n        }\n      ],\n      \"derivedAnswer\": \"C: 56.\",\n      \"mathematicalReason\": \"Since DE ∥ AC, triangles BDE and BAC are similar. Thus BD/BA = DE/AC, and BA = AC implies BD = DE. Equivalently, the equal base angles of ABC and the parallel lines give equal base angles in BDE, establishing the same equality. Opposite sides of parallelogram ADEF are equal, so AF = DE. Its perimeter is 2(AD + AF) = 2(AD + BD) = 2AB = 56. This is independent of E's position and does not require E to be a midpoint. The parallelogram and segment-addition scopes fit, and either proposed route supplies the needed equality.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": [\n        {\n          \"imageSlot\": 7,\n          \"fact\": \"D lies on AB, E lies on BC, and F lies on AC; the interior segments form A–D–E–F. No midpoint marks are shown or used.\"\n        }\n      ]\n    },\n    {\n      \"questionId\": \"q008\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_272\"],\n      \"supportIds\": [\"cnm_181\", \"cnm_137\"],\n      \"routes\": [\n        {\n          \"id\": \"pentagram-triangle-similarity\",\n          \"label\": \"Similar isosceles triangles\",\n          \"nodeIds\": [\"cnm_271\", \"cnm_272\", \"cnm_222\"]\n        },\n        {\n          \"id\": \"ptolemy-diagonal-ratio\",\n          \"label\": \"Diagonal ratio via Ptolemy\",\n          \"nodeIds\": [\"cnm_266\", \"math:ptolemy-theorem\", \"cnm_271\", \"cnm_272\", \"cnm_222\"]\n        }\n      ],\n      \"derivedAnswer\": \"D: 1 + √5.\",\n      \"mathematicalReason\": \"Let s be an outer side and d an outer diagonal. Similar isosceles pentagram triangles give d² = sd + s². Thus d/s = φ = (1+√5)/2; the negative quadratic root is inadmissible for a length ratio. The intersection-segment relations are AG = d−s = s/φ and FG = d−2AG = s/φ². The inner pentagon FGHIJ is regular, so its diagonal JH is φ times its side FG, giving JH = s/φ. Since AG = 1, s = φ, FG = φ−1, and JH = 1. Therefore FG + JH + CD = (φ−1)+1+φ = 1+√5. For the alternative route, regularity ensures cyclicity, and Ptolemy on ABCD gives d² = s²+sd; similarity then determines the intersection segments. Both routes are valid alternatives.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": [\n        {\n          \"imageSlot\": 8,\n          \"fact\": \"F = AD ∩ EB, G = AC ∩ EB, H = AC ∩ BD, and J = AD ∩ EC. In particular, FG is the central segment of diagonal EB.\"\n        },\n        {\n          \"imageSlot\": 8,\n          \"fact\": \"The five inner intersection points occur in the order F, G, H, I, J. JH is a diagonal of this inner pentagon, while CD is a side of the outer regular pentagon.\"\n        }\n      ]\n    }\n  ]\n}",
+  "promotionStatus": "not_promoted",
+  "at": "2026-11-05T14:44:08.491839+00:00",
+  "reviewMode": "targeted",
+  "packetHash": "42f31952554c3e9bb99b909a45fec28513293f97bbcdeb58d90810dde3bc5bd3",
+  "planHash": "70c726b144b3298401f6facf4f11aec10cc6af7e6ea3ce59e48dfcd41348f199",
+  "catalogHash": "5bc81d43a32ca981d0a974516852f2eb731325d0f85b14cab04d76bdfd842aa7",
+  "inputHash": "be4a9a8c3d900c2f078101b55fe9982c19a7d91c486f668f6f32b79ecf919b4a",
+  "aliasBindings": {
+    "q001": {
+      "groupId": "task-b089f710189414c66111",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2014_AMC_10A_Q12.json",
+          "questionId": "2014_AMC_10A_Q12",
+          "bank": "amc",
+          "contentHash": "9ef421d65ea7696abd626e84972b23dc14599e528d291bf7ba4808101ca3c332",
+          "figureHashes": {
+            "figures/2014_AMC_10A_Q12_question_fig1.svg": "810ca7ed02aee308dc8287eb02449f1b6686d2167c032061afa47ba02ad9e3da"
+          },
+          "displayHash": "b089f710189414c66111e6b28fd8a6485172ddcdd44c3db24cbce5a338d2677a",
+          "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "94c4d4d19d4fc50c6d137a3ab440f15f3e9f599b3764d012942b5b5314103cfa",
+          "firstPassPacketId": "map-284",
+          "firstPassReceiptHash": "63951436099e0aba936917174682f7ba7e61c7c7886b37435b09a992680a78cf",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "displayed_figure",
+            "reported_limitation"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "b3089f2a97eacadfdc8f1dd8e9976297fd63a4b3e45844fb0571ab3f2bb19f93",
+          "questionIds": [
+            "2014_AMC_10A_Q12"
+          ]
+        }
+      ],
+      "imageSlots": [
+        1
+      ],
+      "figureHashes": {
+        "figures/2014_AMC_10A_Q12_question_fig1.svg": "810ca7ed02aee308dc8287eb02449f1b6686d2167c032061afa47ba02ad9e3da"
+      }
+    },
+    "q002": {
+      "groupId": "task-b1f3e100235a75c0e300",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2013_AMC_12A_Q01.json",
+          "questionId": "2013_AMC_12A_Q01",
+          "bank": "amc",
+          "contentHash": "638ee87631d5d23c5a06c41440c00154c815e7c9070e19d025d93f3366545fb6",
+          "figureHashes": {
+            "figures/2013_AMC_12A_Q01_question_fig1.svg": "86f561bc17ff5c87365ce00c37892f3a50f953c0251e1e1780007be291937d89"
+          },
+          "displayHash": "b1f3e100235a75c0e3005ea4f4c113eddf7e327659a4d872b8342bd76e8b146d",
+          "answerRulesHash": "8fa1d4de71d76dca373ae83555562198ef33cfb23e91c1ecf7b14c2939567a09",
+          "level": "AMC 12",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "5703ae951ad88cb91b1a25b7069b955b5075b7c5d61a828d2d9cb9848b6619ea",
+          "firstPassPacketId": "map-283",
+          "firstPassReceiptHash": "d8bba344a3845e4c1621ec38a6aba5436b05a424da65076328a4821b82a24f26",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "displayed_figure"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "cda1af13fcb68da80d13cb35649dba4dc7742a98cb122e4ca0389f0315e622a4",
+          "questionIds": [
+            "2013_AMC_12A_Q01"
+          ]
+        }
+      ],
+      "imageSlots": [
+        2
+      ],
+      "figureHashes": {
+        "figures/2013_AMC_12A_Q01_question_fig1.svg": "86f561bc17ff5c87365ce00c37892f3a50f953c0251e1e1780007be291937d89"
+      }
+    },
+    "q003": {
+      "groupId": "task-b622d54bf7c535abd31f",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2011_AMC_10B_Q17.json",
+          "questionId": "2011_AMC_10B_Q17",
+          "bank": "amc",
+          "contentHash": "9d3bcb6521d299e6cff75e096dcc99213f8df1891d69cdf30404d1fa95ab9d6b",
+          "figureHashes": {
+            "figures/2011_AMC_10B_Q17_question_fig1.svg": "b2240e339765f9f7abe946b8087e0ad4c9b1c7702517a002a7de1470f020fa58"
+          },
+          "displayHash": "b622d54bf7c535abd31fa4e22a52b14d2cfe6f4bc0cc87602df688a5e19c77ac",
+          "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "ff48b31a7518ae2e422c7cfdc165019208d9c1c4858fc479ea9670ea773d95d0",
+          "firstPassPacketId": "map-279",
+          "firstPassReceiptHash": "945ff9c45a4b358826d41f3bd87676df00d00f15da334e516cce3cee66b9d488",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "displayed_figure"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "69d8525ccd0dc7d77ef491813a8816977d52bdafca3d999e43757411aa474764",
+          "questionIds": [
+            "2011_AMC_10B_Q17"
+          ]
+        }
+      ],
+      "imageSlots": [
+        3
+      ],
+      "figureHashes": {
+        "figures/2011_AMC_10B_Q17_question_fig1.svg": "b2240e339765f9f7abe946b8087e0ad4c9b1c7702517a002a7de1470f020fa58"
+      }
+    },
+    "q004": {
+      "groupId": "task-b91b76616650de3028ea",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2015_AMC_8_Q02.json",
+          "questionId": "2015_AMC_8_Q02",
+          "bank": "amc",
+          "contentHash": "57e428abf3233b3a3f88335057f851b4f571fc749f10da731a5e6d3c0a71ab2c",
+          "figureHashes": {
+            "figures/2015_AMC_8_Q02_question_fig1.svg": "0de8a7332b7bcb2e8920854d9580e21cc13d94a10b90b40fa994dba7da38319d"
+          },
+          "displayHash": "b91b76616650de3028ea926a630411e91e7543f997c2a212b5cea7214b91f0aa",
+          "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+          "level": "AMC 8",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "91ab514a9daadf8af72b3ffd4d58fd79322828223186798b91c9607d18e513e1",
+          "firstPassPacketId": "map-287",
+          "firstPassReceiptHash": "055a92a0275d6374fc24f9ce1371b9547a40f6a0efb846936e1e2605be43ac25",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "displayed_figure"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "6627d38676c81a0d03e074da6c13e99d193fe0ed7d1e477a761634a173faa777",
+          "questionIds": [
+            "2015_AMC_8_Q02"
+          ]
+        }
+      ],
+      "imageSlots": [
+        4
+      ],
+      "figureHashes": {
+        "figures/2015_AMC_8_Q02_question_fig1.svg": "0de8a7332b7bcb2e8920854d9580e21cc13d94a10b90b40fa994dba7da38319d"
+      }
+    },
+    "q005": {
+      "groupId": "task-c7b6982e88a39d1f2e5c",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2012_AMC_10B_Q25.json",
+          "questionId": "2012_AMC_10B_Q25",
+          "bank": "amc",
+          "contentHash": "8674ff0beecd8b051cba3d00142d57afb228a1dd4768b83b9f3816bf33305ec9",
+          "figureHashes": {
+            "figures/2012_AMC_10B_Q25_question_fig1.svg": "996c8130a3807f9d290e7a94a62020968fcc4e68ff493cce519d33ac2e69ad82"
+          },
+          "displayHash": "c7b6982e88a39d1f2e5c68711d5968e362f952fe88eccb5c46e6effea6ebea1e",
+          "answerRulesHash": "8fa1d4de71d76dca373ae83555562198ef33cfb23e91c1ecf7b14c2939567a09",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "d843524295f078e769cfb314425bd6e7375e96e5b0da618bf2e59bf893e857ce",
+          "firstPassPacketId": "map-281",
+          "firstPassReceiptHash": "9e34b1710f1641632af0e40f19ca2393ce151858606abcb3dcc93760fd6b875d",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "displayed_figure",
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "62af74b3ae998476e58bde28db89a7c5af755729bbc754dd19d1fe7d1c067855",
+          "questionIds": [
+            "2012_AMC_10B_Q25"
+          ]
+        }
+      ],
+      "imageSlots": [
+        5
+      ],
+      "figureHashes": {
+        "figures/2012_AMC_10B_Q25_question_fig1.svg": "996c8130a3807f9d290e7a94a62020968fcc4e68ff493cce519d33ac2e69ad82"
+      }
+    },
+    "q006": {
+      "groupId": "task-c9811f55701f24bcfbbc",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2015_AMC_8_Q25.json",
+          "questionId": "2015_AMC_8_Q25",
+          "bank": "amc",
+          "contentHash": "dae2ed7362733d035f4d046a73354b2355a3d31929ce19b655212ffc9b51b065",
+          "figureHashes": {
+            "figures/2015_AMC_8_Q25_question_fig1.svg": "040d44cbd54ca78a7162f78edaa69071db8c545e8cfd281498a10dd1a3403c0e"
+          },
+          "displayHash": "c9811f55701f24bcfbbcc1c674260d2eed86c355c7dee9e2884cfa759d10a8dc",
+          "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+          "level": "AMC 8",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "04f214b299fbef03a4347b01f5159eb1c1b0bdaea604d38f986db263ebdffb17",
+          "firstPassPacketId": "map-288",
+          "firstPassReceiptHash": "9303ec9cd98924c53f74d54d042c96ca04523452561d0b65d48d890c1e9c414f",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "displayed_figure"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "112d1dbc4bdee546e191ee167b3e7f7ee76337c7139ad286525a36e61b9888ff",
+          "questionIds": [
+            "2015_AMC_8_Q25"
+          ]
+        }
+      ],
+      "imageSlots": [
+        6
+      ],
+      "figureHashes": {
+        "figures/2015_AMC_8_Q25_question_fig1.svg": "040d44cbd54ca78a7162f78edaa69071db8c545e8cfd281498a10dd1a3403c0e"
+      }
+    },
+    "q007": {
+      "groupId": "task-ca93e233e85b36ed79b4",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2013_AMC_10A_Q12.json",
+          "questionId": "2013_AMC_10A_Q12",
+          "bank": "amc",
+          "contentHash": "f55e71edfb8be0605afd61a8419395f27db0c9b7ec7cb233213740b423b93ef5",
+          "figureHashes": {
+            "figures/2013_AMC_10A_Q12_question_fig1.svg": "56db77d9fe8fb022f765e29e5ce95429c2967bc48d7a01ab1d4d76cfb7ceb629"
+          },
+          "displayHash": "ca93e233e85b36ed79b4bfcf0e35241c75e6199f09c5b9e28704067b8ed27b54",
+          "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "333e517e271fc66a44781199b418bf322120770a613ddfff5a99a99841d706c2",
+          "firstPassPacketId": "map-282",
+          "firstPassReceiptHash": "7e9d072e878219880e76fb967223ca0e2b9ed8225f54de18c60c09a098a206c1",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "displayed_figure"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "e47374e07f2f7bf830999d007d836343eb6c092584794c5196873898d059feef",
+          "questionIds": [
+            "2013_AMC_10A_Q12"
+          ]
+        }
+      ],
+      "imageSlots": [
+        7
+      ],
+      "figureHashes": {
+        "figures/2013_AMC_10A_Q12_question_fig1.svg": "56db77d9fe8fb022f765e29e5ce95429c2967bc48d7a01ab1d4d76cfb7ceb629"
+      }
+    },
+    "q008": {
+      "groupId": "task-cbdebb2f829e45f3d4c7",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2015_AMC_10B_Q22.json",
+          "questionId": "2015_AMC_10B_Q22",
+          "bank": "amc",
+          "contentHash": "9e4e0d22654258f7618d82fc22da9516e41dab0213c5854a41944323549d72b4",
+          "figureHashes": {
+            "figures/2015_AMC_10B_Q22_question_fig1.svg": "18e80e60efbed445d9afc5b2f38fa366577ac0232362b6992e03d17f3cca5eac"
+          },
+          "displayHash": "cbdebb2f829e45f3d4c71ef99c132d1c76c2294d25e1a2adbd4cb7612777a90f",
+          "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "98aec476c855f79206dda0c7114024cef03fce001498e459b9c4d6086f9e580a",
+          "firstPassPacketId": "map-287",
+          "firstPassReceiptHash": "055a92a0275d6374fc24f9ce1371b9547a40f6a0efb846936e1e2605be43ac25",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "displayed_figure",
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "442dc7f1ce184b15d859502145953b3cf453bbfd80bf22f7d00303d71ce4ffc1",
+          "questionIds": [
+            "2015_AMC_10B_Q22"
+          ]
+        }
+      ],
+      "imageSlots": [
+        8
+      ],
+      "figureHashes": {
+        "figures/2015_AMC_10B_Q22_question_fig1.svg": "18e80e60efbed445d9afc5b2f38fa366577ac0232362b6992e03d17f3cca5eac"
+      }
+    }
+  },
+  "imageCount": 8,
+  "imageHashes": [
+    "ae5916c356afc87e5d46d945e0d6192b265dfae5046fc70feac83e7b950faa11",
+    "1edc1c22b95e994a86dc2dbc717a4a967f57814550d19ffe7a28ca37fad3582c",
+    "d7c4e35172fb67c15d512e85f40896614c6fe33dec7fb80cdcba9d0af90750e2",
+    "97a7a68aa0d471eec9d8c9e8ad3a23de6140ad4992c31a4e4403a78f210df188",
+    "d1d561658e6041e05ae94f02d2435c15c32ecd9c2b27c27182e06fd445dcf8f9",
+    "f83c3edd7806c54c91811b1ba4c09e7684b789d65dcda07467d8687a8663704b",
+    "53cd111ddbb947ab2d4629950892f3db1ea0b91ca918662c123fff0224ce15fd",
+    "3507d5cb962c09000f69d50f1f2c170d827210b774f76225fd6034f235e312de"
+  ],
+  "candidateExposure": true,
+  "keysSolutionsSourceLabelsExposed": false,
+  "receiptBase": {
+    "schemaVersion": 1,
+    "status": "prepared_not_reviewed",
+    "at": "2026-11-05T14:44:08.491839+00:00",
+    "reviewMode": "targeted",
+    "auditPacketId": "audit-012",
+    "packetHash": "42f31952554c3e9bb99b909a45fec28513293f97bbcdeb58d90810dde3bc5bd3",
+    "planHash": "70c726b144b3298401f6facf4f11aec10cc6af7e6ea3ce59e48dfcd41348f199",
+    "catalogHash": "5bc81d43a32ca981d0a974516852f2eb731325d0f85b14cab04d76bdfd842aa7",
+    "inputHash": "be4a9a8c3d900c2f078101b55fe9982c19a7d91c486f668f6f32b79ecf919b4a",
+    "aliasBindings": {
+      "q001": {
+        "groupId": "task-b089f710189414c66111",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2014_AMC_10A_Q12.json",
+            "questionId": "2014_AMC_10A_Q12",
+            "bank": "amc",
+            "contentHash": "9ef421d65ea7696abd626e84972b23dc14599e528d291bf7ba4808101ca3c332",
+            "figureHashes": {
+              "figures/2014_AMC_10A_Q12_question_fig1.svg": "810ca7ed02aee308dc8287eb02449f1b6686d2167c032061afa47ba02ad9e3da"
+            },
+            "displayHash": "b089f710189414c66111e6b28fd8a6485172ddcdd44c3db24cbce5a338d2677a",
+            "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "94c4d4d19d4fc50c6d137a3ab440f15f3e9f599b3764d012942b5b5314103cfa",
+            "firstPassPacketId": "map-284",
+            "firstPassReceiptHash": "63951436099e0aba936917174682f7ba7e61c7c7886b37435b09a992680a78cf",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "displayed_figure",
+              "reported_limitation"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "b3089f2a97eacadfdc8f1dd8e9976297fd63a4b3e45844fb0571ab3f2bb19f93",
+            "questionIds": [
+              "2014_AMC_10A_Q12"
+            ]
+          }
+        ],
+        "imageSlots": [
+          1
+        ],
+        "figureHashes": {
+          "figures/2014_AMC_10A_Q12_question_fig1.svg": "810ca7ed02aee308dc8287eb02449f1b6686d2167c032061afa47ba02ad9e3da"
+        }
+      },
+      "q002": {
+        "groupId": "task-b1f3e100235a75c0e300",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2013_AMC_12A_Q01.json",
+            "questionId": "2013_AMC_12A_Q01",
+            "bank": "amc",
+            "contentHash": "638ee87631d5d23c5a06c41440c00154c815e7c9070e19d025d93f3366545fb6",
+            "figureHashes": {
+              "figures/2013_AMC_12A_Q01_question_fig1.svg": "86f561bc17ff5c87365ce00c37892f3a50f953c0251e1e1780007be291937d89"
+            },
+            "displayHash": "b1f3e100235a75c0e3005ea4f4c113eddf7e327659a4d872b8342bd76e8b146d",
+            "answerRulesHash": "8fa1d4de71d76dca373ae83555562198ef33cfb23e91c1ecf7b14c2939567a09",
+            "level": "AMC 12",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "5703ae951ad88cb91b1a25b7069b955b5075b7c5d61a828d2d9cb9848b6619ea",
+            "firstPassPacketId": "map-283",
+            "firstPassReceiptHash": "d8bba344a3845e4c1621ec38a6aba5436b05a424da65076328a4821b82a24f26",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "displayed_figure"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "cda1af13fcb68da80d13cb35649dba4dc7742a98cb122e4ca0389f0315e622a4",
+            "questionIds": [
+              "2013_AMC_12A_Q01"
+            ]
+          }
+        ],
+        "imageSlots": [
+          2
+        ],
+        "figureHashes": {
+          "figures/2013_AMC_12A_Q01_question_fig1.svg": "86f561bc17ff5c87365ce00c37892f3a50f953c0251e1e1780007be291937d89"
+        }
+      },
+      "q003": {
+        "groupId": "task-b622d54bf7c535abd31f",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2011_AMC_10B_Q17.json",
+            "questionId": "2011_AMC_10B_Q17",
+            "bank": "amc",
+            "contentHash": "9d3bcb6521d299e6cff75e096dcc99213f8df1891d69cdf30404d1fa95ab9d6b",
+            "figureHashes": {
+              "figures/2011_AMC_10B_Q17_question_fig1.svg": "b2240e339765f9f7abe946b8087e0ad4c9b1c7702517a002a7de1470f020fa58"
+            },
+            "displayHash": "b622d54bf7c535abd31fa4e22a52b14d2cfe6f4bc0cc87602df688a5e19c77ac",
+            "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "ff48b31a7518ae2e422c7cfdc165019208d9c1c4858fc479ea9670ea773d95d0",
+            "firstPassPacketId": "map-279",
+            "firstPassReceiptHash": "945ff9c45a4b358826d41f3bd87676df00d00f15da334e516cce3cee66b9d488",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "displayed_figure"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "69d8525ccd0dc7d77ef491813a8816977d52bdafca3d999e43757411aa474764",
+            "questionIds": [
+              "2011_AMC_10B_Q17"
+            ]
+          }
+        ],
+        "imageSlots": [
+          3
+        ],
+        "figureHashes": {
+          "figures/2011_AMC_10B_Q17_question_fig1.svg": "b2240e339765f9f7abe946b8087e0ad4c9b1c7702517a002a7de1470f020fa58"
+        }
+      },
+      "q004": {
+        "groupId": "task-b91b76616650de3028ea",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2015_AMC_8_Q02.json",
+            "questionId": "2015_AMC_8_Q02",
+            "bank": "amc",
+            "contentHash": "57e428abf3233b3a3f88335057f851b4f571fc749f10da731a5e6d3c0a71ab2c",
+            "figureHashes": {
+              "figures/2015_AMC_8_Q02_question_fig1.svg": "0de8a7332b7bcb2e8920854d9580e21cc13d94a10b90b40fa994dba7da38319d"
+            },
+            "displayHash": "b91b76616650de3028ea926a630411e91e7543f997c2a212b5cea7214b91f0aa",
+            "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+            "level": "AMC 8",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "91ab514a9daadf8af72b3ffd4d58fd79322828223186798b91c9607d18e513e1",
+            "firstPassPacketId": "map-287",
+            "firstPassReceiptHash": "055a92a0275d6374fc24f9ce1371b9547a40f6a0efb846936e1e2605be43ac25",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "displayed_figure"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "6627d38676c81a0d03e074da6c13e99d193fe0ed7d1e477a761634a173faa777",
+            "questionIds": [
+              "2015_AMC_8_Q02"
+            ]
+          }
+        ],
+        "imageSlots": [
+          4
+        ],
+        "figureHashes": {
+          "figures/2015_AMC_8_Q02_question_fig1.svg": "0de8a7332b7bcb2e8920854d9580e21cc13d94a10b90b40fa994dba7da38319d"
+        }
+      },
+      "q005": {
+        "groupId": "task-c7b6982e88a39d1f2e5c",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2012_AMC_10B_Q25.json",
+            "questionId": "2012_AMC_10B_Q25",
+            "bank": "amc",
+            "contentHash": "8674ff0beecd8b051cba3d00142d57afb228a1dd4768b83b9f3816bf33305ec9",
+            "figureHashes": {
+              "figures/2012_AMC_10B_Q25_question_fig1.svg": "996c8130a3807f9d290e7a94a62020968fcc4e68ff493cce519d33ac2e69ad82"
+            },
+            "displayHash": "c7b6982e88a39d1f2e5c68711d5968e362f952fe88eccb5c46e6effea6ebea1e",
+            "answerRulesHash": "8fa1d4de71d76dca373ae83555562198ef33cfb23e91c1ecf7b14c2939567a09",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "d843524295f078e769cfb314425bd6e7375e96e5b0da618bf2e59bf893e857ce",
+            "firstPassPacketId": "map-281",
+            "firstPassReceiptHash": "9e34b1710f1641632af0e40f19ca2393ce151858606abcb3dcc93760fd6b875d",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "displayed_figure",
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "62af74b3ae998476e58bde28db89a7c5af755729bbc754dd19d1fe7d1c067855",
+            "questionIds": [
+              "2012_AMC_10B_Q25"
+            ]
+          }
+        ],
+        "imageSlots": [
+          5
+        ],
+        "figureHashes": {
+          "figures/2012_AMC_10B_Q25_question_fig1.svg": "996c8130a3807f9d290e7a94a62020968fcc4e68ff493cce519d33ac2e69ad82"
+        }
+      },
+      "q006": {
+        "groupId": "task-c9811f55701f24bcfbbc",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2015_AMC_8_Q25.json",
+            "questionId": "2015_AMC_8_Q25",
+            "bank": "amc",
+            "contentHash": "dae2ed7362733d035f4d046a73354b2355a3d31929ce19b655212ffc9b51b065",
+            "figureHashes": {
+              "figures/2015_AMC_8_Q25_question_fig1.svg": "040d44cbd54ca78a7162f78edaa69071db8c545e8cfd281498a10dd1a3403c0e"
+            },
+            "displayHash": "c9811f55701f24bcfbbcc1c674260d2eed86c355c7dee9e2884cfa759d10a8dc",
+            "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+            "level": "AMC 8",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "04f214b299fbef03a4347b01f5159eb1c1b0bdaea604d38f986db263ebdffb17",
+            "firstPassPacketId": "map-288",
+            "firstPassReceiptHash": "9303ec9cd98924c53f74d54d042c96ca04523452561d0b65d48d890c1e9c414f",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "displayed_figure"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "112d1dbc4bdee546e191ee167b3e7f7ee76337c7139ad286525a36e61b9888ff",
+            "questionIds": [
+              "2015_AMC_8_Q25"
+            ]
+          }
+        ],
+        "imageSlots": [
+          6
+        ],
+        "figureHashes": {
+          "figures/2015_AMC_8_Q25_question_fig1.svg": "040d44cbd54ca78a7162f78edaa69071db8c545e8cfd281498a10dd1a3403c0e"
+        }
+      },
+      "q007": {
+        "groupId": "task-ca93e233e85b36ed79b4",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2013_AMC_10A_Q12.json",
+            "questionId": "2013_AMC_10A_Q12",
+            "bank": "amc",
+            "contentHash": "f55e71edfb8be0605afd61a8419395f27db0c9b7ec7cb233213740b423b93ef5",
+            "figureHashes": {
+              "figures/2013_AMC_10A_Q12_question_fig1.svg": "56db77d9fe8fb022f765e29e5ce95429c2967bc48d7a01ab1d4d76cfb7ceb629"
+            },
+            "displayHash": "ca93e233e85b36ed79b4bfcf0e35241c75e6199f09c5b9e28704067b8ed27b54",
+            "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "333e517e271fc66a44781199b418bf322120770a613ddfff5a99a99841d706c2",
+            "firstPassPacketId": "map-282",
+            "firstPassReceiptHash": "7e9d072e878219880e76fb967223ca0e2b9ed8225f54de18c60c09a098a206c1",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "displayed_figure"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "e47374e07f2f7bf830999d007d836343eb6c092584794c5196873898d059feef",
+            "questionIds": [
+              "2013_AMC_10A_Q12"
+            ]
+          }
+        ],
+        "imageSlots": [
+          7
+        ],
+        "figureHashes": {
+          "figures/2013_AMC_10A_Q12_question_fig1.svg": "56db77d9fe8fb022f765e29e5ce95429c2967bc48d7a01ab1d4d76cfb7ceb629"
+        }
+      },
+      "q008": {
+        "groupId": "task-cbdebb2f829e45f3d4c7",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2015_AMC_10B_Q22.json",
+            "questionId": "2015_AMC_10B_Q22",
+            "bank": "amc",
+            "contentHash": "9e4e0d22654258f7618d82fc22da9516e41dab0213c5854a41944323549d72b4",
+            "figureHashes": {
+              "figures/2015_AMC_10B_Q22_question_fig1.svg": "18e80e60efbed445d9afc5b2f38fa366577ac0232362b6992e03d17f3cca5eac"
+            },
+            "displayHash": "cbdebb2f829e45f3d4c71ef99c132d1c76c2294d25e1a2adbd4cb7612777a90f",
+            "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "98aec476c855f79206dda0c7114024cef03fce001498e459b9c4d6086f9e580a",
+            "firstPassPacketId": "map-287",
+            "firstPassReceiptHash": "055a92a0275d6374fc24f9ce1371b9547a40f6a0efb846936e1e2605be43ac25",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "displayed_figure",
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "442dc7f1ce184b15d859502145953b3cf453bbfd80bf22f7d00303d71ce4ffc1",
+            "questionIds": [
+              "2015_AMC_10B_Q22"
+            ]
+          }
+        ],
+        "imageSlots": [
+          8
+        ],
+        "figureHashes": {
+          "figures/2015_AMC_10B_Q22_question_fig1.svg": "18e80e60efbed445d9afc5b2f38fa366577ac0232362b6992e03d17f3cca5eac"
+        }
+      }
+    },
+    "imageCount": 8,
+    "imageHashes": [
+      "ae5916c356afc87e5d46d945e0d6192b265dfae5046fc70feac83e7b950faa11",
+      "1edc1c22b95e994a86dc2dbc717a4a967f57814550d19ffe7a28ca37fad3582c",
+      "d7c4e35172fb67c15d512e85f40896614c6fe33dec7fb80cdcba9d0af90750e2",
+      "97a7a68aa0d471eec9d8c9e8ad3a23de6140ad4992c31a4e4403a78f210df188",
+      "d1d561658e6041e05ae94f02d2435c15c32ecd9c2b27c27182e06fd445dcf8f9",
+      "f83c3edd7806c54c91811b1ba4c09e7684b789d65dcda07467d8687a8663704b",
+      "53cd111ddbb947ab2d4629950892f3db1ea0b91ca918662c123fff0224ce15fd",
+      "3507d5cb962c09000f69d50f1f2c170d827210b774f76225fd6034f235e312de"
+    ],
+    "candidateExposure": true,
+    "keysSolutionsSourceLabelsExposed": false,
+    "promotionStatus": "not_promoted"
+  },
+  "usage": {
+    "attribution": {
+      "items": {
+        "msg_03fb973970809b59016aec963a721487d2812cbfd5e8865398": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "content": [
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 24557,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 905,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 1010,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 1010,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 1010,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 627,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 1010,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 871,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 976,
+              "output_tokens": 0
+            }
+          ],
+          "input_tokens": 31976,
+          "output_tokens": 0
+        },
+        "rs_03fb973970809b59016aec963ce18c87d2878e9e1b6954c833": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 2,
+          "output_tokens": 516
+        },
+        "rs_03fb973970809b59016aec9653d52487d2ad5a349096c54200": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec9667e4a487d2a2015940f14f8fb5": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec967b370087d292bd796c85805edd": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec968df3fc87d2be91555abd3f97e9": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec96a5379887d2a4022e7635b56337": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec96bdbd9487d280f8fba353936eb2": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec96d5b9f087d2984001be64e4fff4": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec96ef749487d2811461db4ae3b2a8": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec9704f5f887d2b54b6f862b7ff860": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec971b10ec87d29455bc34c5464557": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec972b18fc87d2a4b4fe8a667a3572": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec97404c8887d2ab30ae17cdc6944d": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec975451d887d2849995cbb5a55f91": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec9768f0cc87d282f3808f3e84c735": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec9781c50887d2859261234e4f8d4d": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec97996b4487d29f8445b212a49043": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec97ae818c87d2bc1bb9f3ff96c3da": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec97c4b71887d2bdad17c4f3d9d2d3": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec97da483487d2b347146e15a74234": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec97f2cc5c87d2b9f66e6e70855236": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec9809b00087d2b39024b5f2f631fa": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec981f810c87d29d9ef2c8065de945": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec9834cda887d2a21af221cba71529": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec984c904c87d29a7a3131dbd8be3a": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec985e3dd487d287c741d4b6a5574f": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec987096f487d2b04c25826b49ac04": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec98853a6087d2ac491e2db09e8daf": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec989d25a087d2b0ccbd8b4f11b5a3": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_03fb973970809b59016aec98b83f3c87d2b0d8ecc85e026ffe": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 216
+        },
+        "msg_03fb973970809b59016aec98c3d91887d2b461b3eead76b855": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "content": [
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 0,
+              "output_tokens": 3211
+            }
+          ],
+          "input_tokens": 0,
+          "output_tokens": 3211
+        }
+      },
+      "request_fields": {
+        "text.format": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 13056,
+          "input_tokens": 13171,
+          "output_tokens": 0
+        },
+        "instructions": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 164,
+          "output_tokens": 0
+        }
+      }
+    },
+    "input_tokens": 45313,
+    "input_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 13056
+    },
+    "output_tokens": 18447,
+    "output_tokens_details": {
+      "reasoning_tokens": 15236
+    },
+    "total_tokens": 63760
+  },
+  "returnedModel": "gpt-6.1-sol",
+  "returnedReasoning": {
+    "context": "all_turns",
+    "effort": "xhigh",
+    "mode": "standard",
+    "summary": null
+  },
+  "responseReceivedAt": "2026-11-05T14:56:00.454575+00:00",
+  "audits": [
+    {
+      "questionId": "q001",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_p150",
+        "cnm_257"
+      ],
+      "supportIds": [
+        "cnm_266",
+        "cnm_139",
+        "cnm_174",
+        "cnm_p148"
+      ],
+      "routes": [],
+      "derivedAnswer": "C: 54√3 − 18π square units.",
+      "mathematicalReason": "Joining the center to the vertices partitions the hexagon into six equilateral triangles of side 6. Each has altitude √(6² − 3²) = 3√3, so the hexagon's area is 6·(6·3√3/2) = 54√3. Each vertex sector has angle 120° and radius 3, hence area (120/360)π·3² = 3π. Adjacent sectors meet only at side midpoints, and their interiors do not overlap. Subtracting all six sectors gives 54√3 − 18π. Composite-area subtraction and sector area are directly assessed; the listed polygon and triangle facts support this valid route.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [
+        "Image slot 1 uses the same fill for the vertex sectors and the central region. The explicit wording, rather than the fill alone, identifies the requested region as outside the sectors."
+      ],
+      "figureEvidence": [
+        {
+          "imageSlot": 1,
+          "fact": "There are six inward arcs, each joining the two sides adjacent to a vertex. Neighboring arcs meet on the hexagon sides; the central region and vertex sectors share the same purple fill."
+        }
+      ]
+    },
+    {
+      "questionId": "q002",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_p148"
+      ],
+      "supportIds": [
+        "cnm_p077"
+      ],
+      "routes": [],
+      "derivedAnswer": "E: BE = 8.",
+      "mathematicalReason": "Because E lies on BC and ABCD is a square, AB is perpendicular to BE and AB = 10. Thus 40 = [ABE] = (1/2)·10·BE, giving BE = 8. This lies within the side of length 10. The triangle-area scope is directly assessed, with square properties supplying the perpendicular height.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": [
+        {
+          "imageSlot": 2,
+          "fact": "E is drawn between B and C on the square's upper side, and AE forms triangle ABE with the adjacent sides AB and BE."
+        }
+      ]
+    },
+    {
+      "questionId": "q003",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_254",
+        "cnm_069"
+      ],
+      "supportIds": [
+        "cnm_116",
+        "cnm_p187"
+      ],
+      "routes": [
+        {
+          "id": "cyclic-opposite-angles",
+          "label": "Opposite cyclic angles",
+          "nodeIds": [
+            "cnm_255"
+          ]
+        },
+        {
+          "id": "intercepted-arcs",
+          "label": "Intercepted arcs",
+          "nodeIds": [
+            "cnm_253"
+          ]
+        }
+      ],
+      "derivedAnswer": "C: ∠BCD = 130°.",
+      "mathematicalReason": "Since EB is a diameter, ∠EAB = 90°. Consequently ∠AEB + ∠ABE = 90°, and the ratio 4:5 gives 40° and 50°, respectively. From AB ∥ ED, ∠BED = 50°. In cyclic quadrilateral EBCD, the opposite angles BED and BCD are supplementary, so ∠BCD = 130°. Alternatively, ∠BED intercepts the 100° arc BCD, leaving a 260° arc intercepted by ∠BCD, again giving 130°. Both optional routes are valid; they need not be combined. The condition DC ∥ EB is not needed for this selected solution.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": [
+        {
+          "imageSlot": 3,
+          "fact": "EB passes through the marked center. The cyclic order is E, A, B, C, D, so E and C are opposite vertices of cyclic quadrilateral EBCD."
+        }
+      ]
+    },
+    {
+      "questionId": "q004",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_p150"
+      ],
+      "supportIds": [
+        "cnm_266",
+        "cnm_113"
+      ],
+      "routes": [],
+      "derivedAnswer": "D: 7/16.",
+      "mathematicalReason": "The eight triangles formed by joining O to consecutive vertices have equal area. The shaded region consists of triangles OBC, OCD, and ODE, together with triangle OBX. Since X is the midpoint of AB, OX is a median of triangle OAB, and [OBX] = [OAB]/2. The shaded fraction is therefore (3 + 1/2)/8 = 7/16. The proposed composite-area scope and its regular-polygon and median supports fit this solution.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": [
+        {
+          "imageSlot": 4,
+          "fact": "The shaded boundary is X–B–C–D–E–O–X. Thus the shaded region includes the three full central triangles along BC, CD, and DE, plus OBX, rather than the portion toward A."
+        }
+      ]
+    },
+    {
+      "questionId": "q005",
+      "decision": "accept",
+      "assessedIds": [
+        "math:recursive-counting-probability"
+      ],
+      "supportIds": [
+        "math:graph-models",
+        "cnm_h232"
+      ],
+      "routes": [],
+      "derivedAnswer": "E: 2400 paths.",
+      "mathematicalReason": "The all-rightward horizontal cuts, containing 2, 4, 4, and 2 edges, separate three blocks, each with one leftward arrow. Once a path crosses such a cut, it cannot return to the previous block. Within a block, track used edges, not merely visited vertices. A crossing uses either one forward horizontal edge, or two forward edges separated by the unique backward edge. For the latter case, edge-disjointness forces the first and second forward edges to lie on opposite sides of the backward edge. Ordering entry and exit vertices from top to bottom, the transfer matrices are T1 = [[2,2,3,3],[3,3,2,2]], T2 = [[4,4,8,8],[4,4,8,8],[8,8,4,4],[8,8,4,4]], and T3 = [[2,3],[2,3],[3,2],[3,2]]. Starting with counts (1,1), these yield (5,5,5,5), then (120,120,120,120), then (1200,1200). Each final exit has one continuation to B, giving 2400. This validates the proposed block-state counting method without imposing an unwarranted prohibition on repeated vertices.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": [
+        {
+          "imageSlot": 5,
+          "fact": "The seven horizontal-edge columns contain 2, 3, 4, 5, 4, 3, and 2 edges. Exactly three central horizontal edges point left, one in each of the second, fourth, and sixth columns; all other horizontal arrows point right."
+        },
+        {
+          "imageSlot": 5,
+          "fact": "The unmarked slanted edges are bidirectional. Between successive horizontal-edge columns, they form zigzag chains, enabling the stated entry-to-exit block enumeration."
+        }
+      ]
+    },
+    {
+      "questionId": "q006",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_267"
+      ],
+      "supportIds": [
+        "cnm_245",
+        "cnm_p089"
+      ],
+      "routes": [
+        {
+          "id": "complementary-triangle-bound",
+          "label": "Similarity and complementary areas",
+          "nodeIds": [
+            "cnm_271",
+            "cnm_p148",
+            "cnm_p150"
+          ]
+        },
+        {
+          "id": "trigonometric-projection-bound",
+          "label": "Trigonometric projection inequalities",
+          "nodeIds": [
+            "cnm_276",
+            "cnm_096"
+          ]
+        }
+      ],
+      "derivedAnswer": "C: 15 square inches.",
+      "mathematicalReason": "A global bound is necessary; the remaining area 21 is not the answer. Let a fitted square have side s and orientation θ, reduced by symmetry to 0° ≤ θ ≤ 45°, and put k = cos θ + sin θ. Its axis-aligned bounding square has side sk, so sk ≤ 5. It also contains a concentric axis-aligned square of side s/k. Any axis-aligned square contained in the remaining cross has side at most 3: for a larger one, neither coordinate interval fits within the central interval [1,4], so it contains a point in a removed corner. Hence s/k ≤ 3, and multiplying gives s² ≤ 15, without assuming the fitted square is centered. For attainment, set a = (5+√5)/2 and b = (5−√5)/2. The square with vertices (0,b), (a,0), (5,a), and (b,5) has a+b = 5 and ab = 5. Its sides pass through the four reentrant corners because 1/a + 1/b = 1, so it fits and has area a²+b² = 15. Similar-triangle/complementary-area reasoning or trigonometric projections can establish these bounds; neither route is universally required.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": [
+        {
+          "imageSlot": 6,
+          "fact": "Four equal corner squares are excluded from the outer square, leaving the white cross-shaped region. With the stated dimensions, the reentrant corners are (1,1), (4,1), (4,4), and (1,4) in a [0,5] × [0,5] coordinate model."
+        }
+      ]
+    },
+    {
+      "questionId": "q007",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_183"
+      ],
+      "supportIds": [
+        "cnm_055"
+      ],
+      "routes": [
+        {
+          "id": "similar-triangle-side-ratios",
+          "label": "Use similar triangles",
+          "nodeIds": [
+            "cnm_271",
+            "cnm_272"
+          ]
+        },
+        {
+          "id": "isosceles-angle-chase",
+          "label": "Use equal base angles",
+          "nodeIds": [
+            "cnm_069",
+            "cnm_138"
+          ]
+        }
+      ],
+      "derivedAnswer": "C: 56.",
+      "mathematicalReason": "Since DE ∥ AC, triangles BDE and BAC are similar. Thus BD/BA = DE/AC, and BA = AC implies BD = DE. Equivalently, the equal base angles of ABC and the parallel lines give equal base angles in BDE, establishing the same equality. Opposite sides of parallelogram ADEF are equal, so AF = DE. Its perimeter is 2(AD + AF) = 2(AD + BD) = 2AB = 56. This is independent of E's position and does not require E to be a midpoint. The parallelogram and segment-addition scopes fit, and either proposed route supplies the needed equality.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": [
+        {
+          "imageSlot": 7,
+          "fact": "D lies on AB, E lies on BC, and F lies on AC; the interior segments form A–D–E–F. No midpoint marks are shown or used."
+        }
+      ]
+    },
+    {
+      "questionId": "q008",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_272"
+      ],
+      "supportIds": [
+        "cnm_181",
+        "cnm_137"
+      ],
+      "routes": [
+        {
+          "id": "pentagram-triangle-similarity",
+          "label": "Similar isosceles triangles",
+          "nodeIds": [
+            "cnm_271",
+            "cnm_272",
+            "cnm_222"
+          ]
+        },
+        {
+          "id": "ptolemy-diagonal-ratio",
+          "label": "Diagonal ratio via Ptolemy",
+          "nodeIds": [
+            "cnm_266",
+            "math:ptolemy-theorem",
+            "cnm_271",
+            "cnm_272",
+            "cnm_222"
+          ]
+        }
+      ],
+      "derivedAnswer": "D: 1 + √5.",
+      "mathematicalReason": "Let s be an outer side and d an outer diagonal. Similar isosceles pentagram triangles give d² = sd + s². Thus d/s = φ = (1+√5)/2; the negative quadratic root is inadmissible for a length ratio. The intersection-segment relations are AG = d−s = s/φ and FG = d−2AG = s/φ². The inner pentagon FGHIJ is regular, so its diagonal JH is φ times its side FG, giving JH = s/φ. Since AG = 1, s = φ, FG = φ−1, and JH = 1. Therefore FG + JH + CD = (φ−1)+1+φ = 1+√5. For the alternative route, regularity ensures cyclicity, and Ptolemy on ABCD gives d² = s²+sd; similarity then determines the intersection segments. Both routes are valid alternatives.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": [
+        {
+          "imageSlot": 8,
+          "fact": "F = AD ∩ EB, G = AC ∩ EB, H = AC ∩ BD, and J = AD ∩ EC. In particular, FG is the central segment of diagonal EB."
+        },
+        {
+          "imageSlot": 8,
+          "fact": "The five inner intersection points occur in the order F, G, H, I, J. JH is a diagonal of this inner pentagon, while CD is a side of the outer regular pentagon."
+        }
+      ]
+    }
+  ],
+  "validationErrors": [
+    "q001: Acceptance conflicts with retained findings or limitations"
+  ],
+  "qualificationFindings": [
+    "q001: Acceptance conflicts with retained findings or limitations"
+  ],
+  "structuralFindings": [],
+  "validationStatus": "qualified_acceptance_pending_adjudication",
+  "mathematicalValidation": "model scope audit only; no automatic acceptance or promotion",
+  "finishedAt": "2026-11-05T14:56:00.459817+00:00",
+  "elapsedSeconds": 712.94
+}

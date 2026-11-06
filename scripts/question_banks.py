@@ -19,6 +19,29 @@ class BankError(ValueError):
     """A bank cannot be used without an actionable correction."""
 
 
+def reference_solution(question):
+    """Share labeled source text, excluding a reviewed conflict with the task."""
+    meta = question.get('Meta') or {}
+    solution = question.get('Solution', '')
+    if not isinstance(solution, str) or not solution.strip():
+        solution = ''
+    omitted = ''
+    if (question.get('ID') == 'cnm_p167_q1'
+            and question.get('Question') == 'Calculate: \\(1\\times3=?\\)'
+            and solution == 'Multiply both the numerator and denominator of \\(\\frac{1}{2}\\) by 3. The new numerator is 3.'):
+        solution = ''
+        omitted = 'Reviewed mismatch: this question asks only for multiplication; fraction-equivalence details were omitted.'
+    if not solution and meta.get('SolutionStatus') == 'Third-party worked solution not included in this distribution':
+        omitted = meta['SolutionStatus']
+    provenance = {'source': meta.get('SolutionSource') or 'Bank-provided solution; source not specified',
+                  'reviewStatus': meta.get('SolutionStatus') or 'Review status not specified'}
+    for source, target in (('SolutionSourceURL', 'sourceURL'), ('SourceRevision', 'sourceRevision')):
+        if meta.get(source):
+            provenance[target] = meta[source]
+    availability = 'deliberately_omitted' if omitted else 'present' if solution else 'missing'
+    return {'text': solution, 'availability': availability, 'provenance': provenance, 'omittedReason': omitted}
+
+
 def valid_bank_id(value):
     return isinstance(value, str) and len(value) <= 48 and bool(BANK_ID.fullmatch(value))
 
@@ -186,7 +209,7 @@ def validate_figure(path):
     return data
 
 
-def read_bank(source):
+def read_bank(source, graph_root=ROOT):
     source = Path(source).resolve()
     manifest = read_json(source / 'bank.json')
     validate_manifest(manifest)
@@ -207,6 +230,13 @@ def read_bank(source):
             for relative in FIGURE.findall(text):
                 if relative not in figures:
                     figures[relative] = validate_figure(figure_path(source, relative))
+        if 'KnowledgeGraph' in question:
+            from knowledge_graph import GraphError
+            from knowledge_graph_questions import validate_imported_references
+            try:
+                validate_imported_references(question, root=graph_root, bank_root=source)
+            except GraphError as exc:
+                raise BankError(f'{path.name}: {exc}') from None
         records.append(question)
     if not records:
         raise BankError('questions/: add at least one JSON question file.')
@@ -220,7 +250,8 @@ def browser_bank(manifest, records):
               'questionType': 'Question Type', 'choices': 'Choices', 'choicesType': 'Choices Type',
               'answer': 'Correct Answer', 'acceptedAnswers': 'Accepted Answers', 'unorderedAnswers': 'Unordered Answers',
               'gradingStatus': 'GradingStatus', 'gradingNote': 'GradingNote', 'answerForm': 'Answer Form',
-              'rejectedAnswers': 'Rejected Answers', 'solution': 'Solution'}
+              'rejectedAnswers': 'Rejected Answers', 'solution': 'Solution',
+              'knowledgeGraph': 'KnowledgeGraph'}
     questions = []
     for record in records:
         item = {display: record[key] for display, key in fields.items() if key in record}

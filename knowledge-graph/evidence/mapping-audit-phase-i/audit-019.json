@@ -1,0 +1,1250 @@
+{
+  "schemaVersion": 1,
+  "auditPacketId": "audit-019",
+  "status": "complete",
+  "selection": {
+    "provider": "chatgpt",
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "startedAt": "2026-11-05T13:11:39.190776+00:00",
+  "raw": "{\n  \"audits\": [\n    {\n      \"questionId\": \"q001\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_p150\"],\n      \"supportIds\": [],\n      \"routes\": [\n        {\n          \"id\": \"triangle-area-units\",\n          \"label\": \"Count triangle area units\",\n          \"nodeIds\": [\"cnm_p148\"]\n        },\n        {\n          \"id\": \"subtract-square-areas\",\n          \"label\": \"Subtract square areas\",\n          \"nodeIds\": [\"cnm_p089\", \"cnm_174\"]\n        }\n      ],\n      \"derivedAnswer\": \"A: B = W.\",\n      \"mathematicalReason\": \"Let each white square have area u and diagonal d, so d² = 2u. There are 12 white squares, giving W = 12u. The center square has side 2d and area R = 8u; the outer square has side 4d and area 32u. Therefore B = 32u − 12u − 8u = 12u = W. The triangle-unit route also works: the four corner blue triangles each have area u, and the other sixteen blue triangles each have area u/2. Both routes validly assess combining and subtracting component areas.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [\n        \"The center square is rendered dark blue or purple rather than red; its central position identifies the region denoted by R.\"\n      ],\n      \"figureEvidence\": [\n        {\n          \"imageSlot\": 1,\n          \"fact\": \"Twelve congruent tilted white squares surround the central square.\"\n        },\n        {\n          \"imageSlot\": 1,\n          \"fact\": \"The central square's side spans two white-square diagonals, while the outer square's side spans four.\"\n        },\n        {\n          \"imageSlot\": 1,\n          \"fact\": \"The blue region consists of four larger corner triangles and sixteen smaller triangles, supporting the alternative area-unit count.\"\n        }\n      ]\n    },\n    {\n      \"questionId\": \"q002\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_084\"],\n      \"supportIds\": [],\n      \"routes\": [\n        {\n          \"id\": \"grid-dissection\",\n          \"label\": \"Rectangle and triangle dissection\",\n          \"nodeIds\": [\"cnm_p150\", \"cnm_p089\", \"cnm_p148\"]\n        },\n        {\n          \"id\": \"coordinate-shoelace\",\n          \"label\": \"Coordinate polygon area\",\n          \"nodeIds\": [\"math:shoelace-formula\"]\n        }\n      ],\n      \"derivedAnswer\": \"C: 22 1/2 square grid units.\",\n      \"mathematicalReason\": \"Take the bottom-left peg as (0,0), with adjacent peg spacing one. In boundary order the vertices are P = (0,5), Q = (3,4), R = (10,10), and S = (4,0). Shoelace gives area = |(0 + 30 + 0 + 20) − (15 + 40 + 40 + 0)|/2 = 45/2. Alternatively, the outer triangle PRS has area 35 and the triangular indentation PQR has area 25/2, leaving 45/2; these triangle areas can be obtained by bounding-rectangle dissection. The coordinate-area scope is defensible for the coordinate method, without making coordinates necessary for the dissection alternative.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [\n        \"The numerical area uses the standard unit-grid convention: adjacent peg spacing is one.\"\n      ],\n      \"figureEvidence\": [\n        {\n          \"imageSlot\": 2,\n          \"fact\": \"The board has eleven equally spaced peg positions in each direction, spanning ten grid intervals.\"\n        },\n        {\n          \"imageSlot\": 2,\n          \"fact\": \"Using an upward-pointing vertical coordinate, the polygon vertices are (0,5), (3,4), (10,10), and (4,0); (3,4) is the concave vertex.\"\n        }\n      ]\n    },\n    {\n      \"questionId\": \"q003\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_203\"],\n      \"supportIds\": [\"cnm_h167\", \"cnm_096\"],\n      \"routes\": [],\n      \"derivedAnswer\": \"B: −1 < mb < 0.\",\n      \"mathematicalReason\": \"The descending line has y-intercept b with 0 < b < 1. Write its x-intercept as t; the graph shows 1 < t < 2. Applying the slope formula to (0,b) and (t,0) gives m = −b/t, hence mb = −b²/t. Since 0 < b²/t < 1, it follows that −1 < mb < 0. This uses coefficient interpretation, the slope formula, and inequality properties exactly as mapped; no exact intercept values need to be estimated.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": [\n        {\n          \"imageSlot\": 3,\n          \"fact\": \"The line descends from left to right and crosses the y-axis strictly between 0 and 1.\"\n        },\n        {\n          \"imageSlot\": 3,\n          \"fact\": \"The line crosses the x-axis strictly between the labeled coordinates 1 and 2.\"\n        }\n      ]\n    },\n    {\n      \"questionId\": \"q004\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_262\", \"cnm_272\"],\n      \"supportIds\": [\"cnm_271\", \"cnm_174\"],\n      \"routes\": [],\n      \"derivedAnswer\": \"B: CD = 44/3.\",\n      \"mathematicalReason\": \"The radii AC and BD are perpendicular to the common tangent CD. Thus triangle AEC is right, and EC = √(5² − 3²) = 4. Triangles AEC and BED are similar by their right angles and vertical angles at E. Corresponding sides give ED/EC = BD/AC = 8/3, so ED = 32/3. Because E lies between C and D, CD = EC + ED = 4 + 32/3 = 44/3. The tangent, similarity, and Pythagorean scopes all have direct roles in this valid method.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": [\n        {\n          \"imageSlot\": 4,\n          \"fact\": \"The tangent contacts are C on the smaller circle and D on the larger circle, with C, E, D in that order.\"\n        },\n        {\n          \"imageSlot\": 4,\n          \"fact\": \"The center line has A, E, B in that order, giving the intersecting-line configuration used for the vertical angles.\"\n        }\n      ]\n    },\n    {\n      \"questionId\": \"q005\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_p192\", \"cnm_h181\"],\n      \"supportIds\": [\"cnm_191\", \"cnm_174\", \"cnm_171\"],\n      \"routes\": [],\n      \"derivedAnswer\": \"C: 4(3 − 2√2).\",\n      \"mathematicalReason\": \"Let each small radius be r and the large radius be R. Internal tangency places all four small-circle centers at distance R − r from the large center. Neighboring external tangencies make the four consecutive center distances 2r. Thus the center quadrilateral is a cyclic rhombus, hence a square, with circumradius √2 r. Consequently R − r = √2 r, so R = (1 + √2)r. The requested area ratio is 4πr²/(πR²) = 4/(1 + √2)² = 4(3 − 2√2). The mapped circle-position, square, Pythagorean, circle-area, and rationalization scopes are defensible.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": [\n        {\n          \"imageSlot\": 5,\n          \"fact\": \"Four congruent smaller circles form a ring, with each circle tangent to its two neighbors.\"\n        },\n        {\n          \"imageSlot\": 5,\n          \"fact\": \"Each smaller circle is internally tangent to the same enclosing circle; these tangencies, rather than enclosure alone, determine the radius relationship.\"\n        }\n      ]\n    },\n    {\n      \"questionId\": \"q006\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_h181\"],\n      \"supportIds\": [\"cnm_174\", \"cnm_191\"],\n      \"routes\": [\n        {\n          \"id\": \"center-distance-quadratic\",\n          \"label\": \"Center distances and a quadratic\",\n          \"nodeIds\": [\"cnm_222\"]\n        },\n        {\n          \"id\": \"special-right-triangle\",\n          \"label\": \"A 30-60-90 center triangle\",\n          \"nodeIds\": [\"cnm_276\", \"cnm_277\", \"cnm_278\", \"cnm_171\"]\n        }\n      ],\n      \"derivedAnswer\": \"A: a + b + c + d = 3.\",\n      \"mathematicalReason\": \"Let the semicircle radius be r. Taking the top-left corner as (0,0), with downward vertical coordinate, the left and top semicircle centers are (0,r) and (1 − r,0). External tangency gives r² + (1 − r)² = (2r)², or 2r² + 2r − 1 = 0. The positive root is r = (√3 − 1)/2; the negative root is geometrically inadmissible. The four semicircle centers form a square of side 2r, centered at the square's center, so their distance from that center is √2 r. If the small-circle radius is s, external tangency gives s + r = √2 r. Its diameter is therefore 2s = (√2 − 1)(√3 − 1), giving a = 2, b = −1, c = 3, d = −1 and sum 3. The alternative special-angle route is also valid: the corner-and-centers right triangle has hypotenuse 2r and short leg r, making it a 30-60-90 triangle.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": [\n        {\n          \"imageSlot\": 6,\n          \"fact\": \"The diameter endpoints follow a cyclic pattern: the left semicircle starts at the top-left vertex, the top one at the top-right vertex, the right one at the bottom-right vertex, and the bottom one at the bottom-left vertex.\"\n        },\n        {\n          \"imageSlot\": 6,\n          \"fact\": \"Adjacent semicircular arcs touch externally inside the square, and the central small circle lies outside each semicircular disk and touches each arc.\"\n        }\n      ]\n    },\n    {\n      \"questionId\": \"q007\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_h181\"],\n      \"supportIds\": [\"cnm_133\", \"cnm_174\", \"cnm_224\"],\n      \"routes\": [],\n      \"derivedAnswer\": \"D: the radius of circle B is 8/9.\",\n      \"mathematicalReason\": \"Let O be the center of circle D and let r be the common radius of B and C. Since circle A has radius 1 and passes through O, its center is distance 1 from O. Internal tangency then gives the radius of D as 2. Both O and the center of A are equidistant from the centers of B and C, so their joining line is the perpendicular bisector of the segment joining those centers. Set O = (0,0), the center of A = (−1,0), and the centers of B and C = (x,r) and (x,−r); the vertical coordinates follow from their mutual external tangency. The distance equations are x² + r² = (2 − r)² and (x + 1)² + r² = (1 + r)². They imply x² = 4 − 4r and x = 3r − 2, hence r(9r − 8) = 0. Excluding the zero-radius case gives r = 8/9. Each mapped support scope is used in this method.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": [\n        {\n          \"imageSlot\": 7,\n          \"fact\": \"Circle A occupies the left part of the enclosing circle, while the congruent circles B and C lie above and below on the right.\"\n        },\n        {\n          \"imageSlot\": 7,\n          \"fact\": \"The diagram displays the pairwise external contacts among A, B, and C and their internal contacts with D, consistent with the stated tangency configuration.\"\n        }\n      ]\n    },\n    {\n      \"questionId\": \"q008\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_p148\"],\n      \"supportIds\": [],\n      \"routes\": [\n        {\n          \"id\": \"subtract-corner-triangles\",\n          \"label\": \"Subtract corner triangle areas\",\n          \"nodeIds\": [\"cnm_p150\"]\n        },\n        {\n          \"id\": \"coordinate-shoelace-area\",\n          \"label\": \"Coordinates and shoelace\",\n          \"nodeIds\": [\"cnm_084\", \"math:shoelace-formula\"]\n        }\n      ],\n      \"derivedAnswer\": \"E: 7/16.\",\n      \"mathematicalReason\": \"The outer triangle has area 12·16/2 = 96. Each corner triangle has area 3/16 of the outer area: ABF has ratio (AB/AC)(AF/AE) = (1/4)(3/4); BCD has ratio (BC/AC)(CD/CE) = (3/4)(1/4); and DEF has ratio (DE/CE)(EF/EA) = (3/4)(1/4). These products follow from successive common-altitude applications of the triangle-area formula. Subtracting the three corner areas gives [BDF]/[ACE] = 1 − 9/16 = 7/16, with [BDF] = 42. The coordinate alternative is independently valid: C = (0,0), A = (0,12), E = (16,0) give B = (0,9), D = (4,0), F = (12,3), whose shoelace area is 42.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": [\n        {\n          \"imageSlot\": 8,\n          \"fact\": \"B lies between A and C, D between C and E, and F between A and E; the shaded region is triangle BDF.\"\n        },\n        {\n          \"imageSlot\": 8,\n          \"fact\": \"The displayed side subdivisions are AB = 3, BC = 9, CD = 4, DE = 12, AF = 15, and FE = 5, identifying the three corner triangles removed from ACE.\"\n        }\n      ]\n    }\n  ]\n}",
+  "promotionStatus": "not_promoted",
+  "at": "2026-11-05T13:11:39.185628+00:00",
+  "reviewMode": "targeted",
+  "packetHash": "9d23d1cb12207c9eb48061b70d9a653f75c4346b81fb5ed84fde3a269108b76a",
+  "planHash": "00b783ca963fe883a92059f866a9e801970facce1af386759cbc0e103cda6520",
+  "catalogHash": "5bc81d43a32ca981d0a974516852f2eb731325d0f85b14cab04d76bdfd842aa7",
+  "inputHash": "8e75c04d8d78cd246432b10d8cb720bf8beaed92ca37c4f5e4091aed272ea802",
+  "aliasBindings": {
+    "q001": {
+      "groupId": "task-338b8d2249ee455b335f",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2002_AMC_10A_Q08.json",
+          "questionId": "2002_AMC_10A_Q08",
+          "bank": "amc",
+          "contentHash": "f9c903874ace39bfc5c3823b305b269197212aa6a018a9cf518989c934ac95a1",
+          "figureHashes": {
+            "figures/2002_AMC_10A_Q08_question_fig1.svg": "c055a74799ae17617f0a5f9a61061aee094679a3d9e15754b74adee6a55d7e7f"
+          },
+          "displayHash": "338b8d2249ee455b335f7d75b310385a37c4de566aac9a91c1cbdc9ced4973b9",
+          "answerRulesHash": "30195ac12af612a37d753a2b6c289551b46f2daa651c84066e3f9fa3c440cafb",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "e91435bdcb521b493dd3dc83b16c9e3f8e13eb23cb9d2911d47d4a70a6440df3",
+          "firstPassPacketId": "map-253",
+          "firstPassReceiptHash": "c01f9c29cbebee2fd2307f05449a087a5403bb08b1a63c93ebdd7e40da4c638e",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "displayed_figure",
+            "reported_limitation"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "f1950f6526114c56b6485b11364ebc9933a010c6cfd8849aa199269e8420fbc6",
+          "questionIds": [
+            "2002_AMC_10A_Q08"
+          ]
+        }
+      ],
+      "imageSlots": [
+        1
+      ],
+      "figureHashes": {
+        "figures/2002_AMC_10A_Q08_question_fig1.svg": "c055a74799ae17617f0a5f9a61061aee094679a3d9e15754b74adee6a55d7e7f"
+      }
+    },
+    "q002": {
+      "groupId": "task-3475fc4703ed4e019f46",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2004_AMC_8_Q14.json",
+          "questionId": "2004_AMC_8_Q14",
+          "bank": "amc",
+          "contentHash": "74930539136aa63c28df43d52adec6b046952ccaeb9a6bb2e1824d8c82b574e0",
+          "figureHashes": {
+            "figures/2004_AMC_8_Q14_question_fig1.svg": "88c3792fc7015517b7b99fa32e8eef2fe8986b742ff809796b5d56ad4411459e"
+          },
+          "displayHash": "3475fc4703ed4e019f46587c49f7b4b5646d260ff07795de98eb392c916a69cd",
+          "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+          "level": "AMC 8",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "e12071044eca201e3ab4b7ae11bc0f944b36d9bdfc655a049ed0847c55bcd828",
+          "firstPassPacketId": "map-262",
+          "firstPassReceiptHash": "215161eba8ef0b440e8a660f0e3bc0632676297475d5af9dd71f5977de25908f",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "displayed_figure",
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "7663e427967447a6a41f5ed0b8dc4e684e4530b35605e53c60531dabc39a6002",
+          "questionIds": [
+            "2004_AMC_8_Q14"
+          ]
+        }
+      ],
+      "imageSlots": [
+        2
+      ],
+      "figureHashes": {
+        "figures/2004_AMC_8_Q14_question_fig1.svg": "88c3792fc7015517b7b99fa32e8eef2fe8986b742ff809796b5d56ad4411459e"
+      }
+    },
+    "q003": {
+      "groupId": "task-34ce447fa5a3b8a35339",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2004_AMC_12A_Q05.json",
+          "questionId": "2004_AMC_12A_Q05",
+          "bank": "amc",
+          "contentHash": "3742676270a33b3382bc40a6c7ff47f588185244d464461893e07b7b0b4e3bbb",
+          "figureHashes": {
+            "figures/2004_AMC_12A_Q05_question_fig1.svg": "37a75d4d0133047897e02149baed46354c3db207d96b9a5670bbe33ae10dd3bd"
+          },
+          "displayHash": "34ce447fa5a3b8a353395095bb3e88cf66f4114f3835bbcfadf898d090d2e735",
+          "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+          "level": "AMC 12",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "064b93eecf2451e35238e8c866c91117f09389d4dfdd9ed0de02e3e634bafc5a",
+          "firstPassPacketId": "map-261",
+          "firstPassReceiptHash": "8a24dd4e3e83c9664c16df70e5a92787b069d7f957375bf896cb43064c3b1fa4",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "displayed_figure"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "e80b104d70d7e751243eb1f2c910e63f93fe7bfd4641492fd4498aa51f953fe3",
+          "questionIds": [
+            "2004_AMC_12A_Q05"
+          ]
+        }
+      ],
+      "imageSlots": [
+        3
+      ],
+      "figureHashes": {
+        "figures/2004_AMC_12A_Q05_question_fig1.svg": "37a75d4d0133047897e02149baed46354c3db207d96b9a5670bbe33ae10dd3bd"
+      }
+    },
+    "q004": {
+      "groupId": "task-365ac6c73f21aab8ab34",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2006_AMC_10A_Q23.json",
+          "questionId": "2006_AMC_10A_Q23",
+          "bank": "amc",
+          "contentHash": "d2ebc979c21075182825079f0877c86c6d804bf3f829b751ed2ba5f950c44804",
+          "figureHashes": {
+            "figures/2006_AMC_10A_Q23_question_fig1.svg": "cbe08cdf29cdac60ec95c4d661b076dd714cf14146a5fd59856543d14b266840"
+          },
+          "displayHash": "365ac6c73f21aab8ab34e776a5efa324f4331a03d5fd29a7ef9148f72cdb9b5d",
+          "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "beadaaac95387d50565e4c33f29ea65c4f538da6998ab7be99c0f89c98f4aed9",
+          "firstPassPacketId": "map-266",
+          "firstPassReceiptHash": "e17bfe0b2e47cb62c00a465870c12e8f52cfc67f4e05649381d256b6d7a00a02",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "displayed_figure"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "80ef7293efdbd8aa266d5f044d2f4a0df99cd7d48a4d8d86fb53d4213e8161a1",
+          "questionIds": [
+            "2006_AMC_10A_Q23"
+          ]
+        }
+      ],
+      "imageSlots": [
+        4
+      ],
+      "figureHashes": {
+        "figures/2006_AMC_10A_Q23_question_fig1.svg": "cbe08cdf29cdac60ec95c4d661b076dd714cf14146a5fd59856543d14b266840"
+      }
+    },
+    "q005": {
+      "groupId": "task-3a410187f3add4039451",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2009_AMC_10A_Q21.json",
+          "questionId": "2009_AMC_10A_Q21",
+          "bank": "amc",
+          "contentHash": "f4761eb6fc403d20b78dd6682419e20c6206cb15e2f45a6aba31b3d78f4ea9e7",
+          "figureHashes": {
+            "figures/2009_AMC_10A_Q21_question_fig1.svg": "d0a3e2057dc474ec2585ca8fd78cdaa8347de002495846a1e10a2419cb72f050"
+          },
+          "displayHash": "3a410187f3add4039451c5f9625018f2631888f1d6e20849e7a1cf68c8c0a0ed",
+          "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "98b818dcd84a9bf776dce778fd42fd2b590faae91b2e043dafee250f3fc680b9",
+          "firstPassPacketId": "map-274",
+          "firstPassReceiptHash": "6619dccb3c485f90df8be313722bd5b3fd6103aa1983365f4b577cd9562c8d3c",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "displayed_figure"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "d54d13ff4ffa3f4dd71b184042a42fc6cdf5613c69c2564578732a1cacabcc12",
+          "questionIds": [
+            "2009_AMC_10A_Q21"
+          ]
+        }
+      ],
+      "imageSlots": [
+        5
+      ],
+      "figureHashes": {
+        "figures/2009_AMC_10A_Q21_question_fig1.svg": "d0a3e2057dc474ec2585ca8fd78cdaa8347de002495846a1e10a2419cb72f050"
+      }
+    },
+    "q006": {
+      "groupId": "task-3a6c8e4e7ac5998ab017",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2025_AMC_10B_Q20.json",
+          "questionId": "2025_AMC_10B_Q20",
+          "bank": "amc",
+          "contentHash": "17d3d5e1975ab1137664826a48ed7af5a55dd929005d3ff2bd3906375b823d59",
+          "figureHashes": {
+            "figures/2025_AMC_10B_Q20_question_fig1.svg": "7cca618bca1378f58bc8642071c929aebae98435bef422f8bcbaed20d74467db"
+          },
+          "displayHash": "3a6c8e4e7ac5998ab0178f488a9b15b39058abca6a53bd6583ab02fb8bb2f985",
+          "answerRulesHash": "30195ac12af612a37d753a2b6c289551b46f2daa651c84066e3f9fa3c440cafb",
+          "level": "AMC 10",
+          "topic": "Geometry",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "1a64f68e9b6ddcdcc2c7651863a37943d5daa3c6efc44e272e128ca0f034808a",
+          "firstPassPacketId": "map-312",
+          "firstPassReceiptHash": "bcba9df4cea053fc6a531d04b8809d08726f9f66939ae6855ecae6520740245b",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "displayed_figure"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "feb2dae5a0193fb07a7cf460f118297da07ffd151aa6d3a93324fc716a467805",
+          "questionIds": [
+            "2025_AMC_10B_Q20"
+          ]
+        }
+      ],
+      "imageSlots": [
+        6
+      ],
+      "figureHashes": {
+        "figures/2025_AMC_10B_Q20_question_fig1.svg": "7cca618bca1378f58bc8642071c929aebae98435bef422f8bcbaed20d74467db"
+      }
+    },
+    "q007": {
+      "groupId": "task-3aff321297936da0c9af",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2004_AMC_10A_Q23.json",
+          "questionId": "2004_AMC_10A_Q23",
+          "bank": "amc",
+          "contentHash": "130ba91eef35460bae6d996bb0b4feb1969ab9409166369c47931d3fcb754047",
+          "figureHashes": {
+            "figures/2004_AMC_10A_Q23_question_fig1.svg": "cfd24aded16d6bde31e22293f20d3709f53b4aca7c927091ca8b0a62d5eedc7c"
+          },
+          "displayHash": "3aff321297936da0c9afae99f1d6dfba66f8c64b5d1d2dccee8de0560836e061",
+          "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "8b4c057e97e677ce645923e622de4220847ea63912165cb4f1bac45159cf55df",
+          "firstPassPacketId": "map-260",
+          "firstPassReceiptHash": "ad1d565b215144b0facbd92c70a0cbef274c8711e5ccb45e98268cef0b27dea2",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "displayed_figure",
+            "method_choice_risk"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "c6e0d7bd24447787bebd5a4b47172512271a989a3fd49caad45fb718bff438d7",
+          "questionIds": [
+            "2004_AMC_10A_Q23"
+          ]
+        }
+      ],
+      "imageSlots": [
+        7
+      ],
+      "figureHashes": {
+        "figures/2004_AMC_10A_Q23_question_fig1.svg": "cfd24aded16d6bde31e22293f20d3709f53b4aca7c927091ca8b0a62d5eedc7c"
+      }
+    },
+    "q008": {
+      "groupId": "task-3b28865d7b2436c7f362",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2004_AMC_10B_Q18.json",
+          "questionId": "2004_AMC_10B_Q18",
+          "bank": "amc",
+          "contentHash": "a97146125821054d08d04773beff4842456a72e76557b31fd6b27807c26364cb",
+          "figureHashes": {
+            "figures/2004_AMC_10B_Q18_question_fig1.svg": "d7739813af12a79571a82bc200b3ee29c550efefeeced5bfb353fd4351d2ce0f"
+          },
+          "displayHash": "3b28865d7b2436c7f362fc54ff6fc8b84ec5018ef7c61f72ee1fd2ae33d65287",
+          "answerRulesHash": "8fa1d4de71d76dca373ae83555562198ef33cfb23e91c1ecf7b14c2939567a09",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "5ef21c957e8310bb20aefc81664b7fe96daaa329af81f53312e1fd88a4d32222",
+          "firstPassPacketId": "map-260",
+          "firstPassReceiptHash": "ad1d565b215144b0facbd92c70a0cbef274c8711e5ccb45e98268cef0b27dea2",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "displayed_figure",
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "337b49a30e22195fdf75e0b15f2d8cb19022a6b8eb88ae983510c1c99506dadc",
+          "questionIds": [
+            "2004_AMC_10B_Q18"
+          ]
+        }
+      ],
+      "imageSlots": [
+        8
+      ],
+      "figureHashes": {
+        "figures/2004_AMC_10B_Q18_question_fig1.svg": "d7739813af12a79571a82bc200b3ee29c550efefeeced5bfb353fd4351d2ce0f"
+      }
+    }
+  },
+  "imageCount": 8,
+  "imageHashes": [
+    "5b3c20745c769dbd9d52f37641495d87133ab5f4367ad06ee57e2c1526a9e3c3",
+    "3f66639a1754efac87fab02aa2fae0d1cbd383533aedef03e08fb58c5b491309",
+    "bd9fae1e993c334366d8e8ec38a2975ac966b6520fbab91f91554a3a1e465c20",
+    "f137a117eb6d5af43f444c74dcd70c315c1b11365ddebbb933c6aa9a15684346",
+    "000bcabe222735cbe2d2fefcb780922dec8efb69e44a5e61560b4c585c9192f2",
+    "74f4bc1292d22bd3295a08b0d17cbd2e334cd4c470fc6a07a51e589492595f85",
+    "61970458fb795b159b7c35e8697b0d2cf75ae5b31a175ea7c82fe8d65a9dad1b",
+    "048946922124ce70e0b97277d4f843a7a8322463f71fcddf2d6697bf8141a353"
+  ],
+  "candidateExposure": true,
+  "keysSolutionsSourceLabelsExposed": false,
+  "receiptBase": {
+    "schemaVersion": 1,
+    "status": "prepared_not_reviewed",
+    "at": "2026-11-05T13:11:39.185628+00:00",
+    "reviewMode": "targeted",
+    "auditPacketId": "audit-019",
+    "packetHash": "9d23d1cb12207c9eb48061b70d9a653f75c4346b81fb5ed84fde3a269108b76a",
+    "planHash": "00b783ca963fe883a92059f866a9e801970facce1af386759cbc0e103cda6520",
+    "catalogHash": "5bc81d43a32ca981d0a974516852f2eb731325d0f85b14cab04d76bdfd842aa7",
+    "inputHash": "8e75c04d8d78cd246432b10d8cb720bf8beaed92ca37c4f5e4091aed272ea802",
+    "aliasBindings": {
+      "q001": {
+        "groupId": "task-338b8d2249ee455b335f",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2002_AMC_10A_Q08.json",
+            "questionId": "2002_AMC_10A_Q08",
+            "bank": "amc",
+            "contentHash": "f9c903874ace39bfc5c3823b305b269197212aa6a018a9cf518989c934ac95a1",
+            "figureHashes": {
+              "figures/2002_AMC_10A_Q08_question_fig1.svg": "c055a74799ae17617f0a5f9a61061aee094679a3d9e15754b74adee6a55d7e7f"
+            },
+            "displayHash": "338b8d2249ee455b335f7d75b310385a37c4de566aac9a91c1cbdc9ced4973b9",
+            "answerRulesHash": "30195ac12af612a37d753a2b6c289551b46f2daa651c84066e3f9fa3c440cafb",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "e91435bdcb521b493dd3dc83b16c9e3f8e13eb23cb9d2911d47d4a70a6440df3",
+            "firstPassPacketId": "map-253",
+            "firstPassReceiptHash": "c01f9c29cbebee2fd2307f05449a087a5403bb08b1a63c93ebdd7e40da4c638e",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "displayed_figure",
+              "reported_limitation"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "f1950f6526114c56b6485b11364ebc9933a010c6cfd8849aa199269e8420fbc6",
+            "questionIds": [
+              "2002_AMC_10A_Q08"
+            ]
+          }
+        ],
+        "imageSlots": [
+          1
+        ],
+        "figureHashes": {
+          "figures/2002_AMC_10A_Q08_question_fig1.svg": "c055a74799ae17617f0a5f9a61061aee094679a3d9e15754b74adee6a55d7e7f"
+        }
+      },
+      "q002": {
+        "groupId": "task-3475fc4703ed4e019f46",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2004_AMC_8_Q14.json",
+            "questionId": "2004_AMC_8_Q14",
+            "bank": "amc",
+            "contentHash": "74930539136aa63c28df43d52adec6b046952ccaeb9a6bb2e1824d8c82b574e0",
+            "figureHashes": {
+              "figures/2004_AMC_8_Q14_question_fig1.svg": "88c3792fc7015517b7b99fa32e8eef2fe8986b742ff809796b5d56ad4411459e"
+            },
+            "displayHash": "3475fc4703ed4e019f46587c49f7b4b5646d260ff07795de98eb392c916a69cd",
+            "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+            "level": "AMC 8",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "e12071044eca201e3ab4b7ae11bc0f944b36d9bdfc655a049ed0847c55bcd828",
+            "firstPassPacketId": "map-262",
+            "firstPassReceiptHash": "215161eba8ef0b440e8a660f0e3bc0632676297475d5af9dd71f5977de25908f",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "displayed_figure",
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "7663e427967447a6a41f5ed0b8dc4e684e4530b35605e53c60531dabc39a6002",
+            "questionIds": [
+              "2004_AMC_8_Q14"
+            ]
+          }
+        ],
+        "imageSlots": [
+          2
+        ],
+        "figureHashes": {
+          "figures/2004_AMC_8_Q14_question_fig1.svg": "88c3792fc7015517b7b99fa32e8eef2fe8986b742ff809796b5d56ad4411459e"
+        }
+      },
+      "q003": {
+        "groupId": "task-34ce447fa5a3b8a35339",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2004_AMC_12A_Q05.json",
+            "questionId": "2004_AMC_12A_Q05",
+            "bank": "amc",
+            "contentHash": "3742676270a33b3382bc40a6c7ff47f588185244d464461893e07b7b0b4e3bbb",
+            "figureHashes": {
+              "figures/2004_AMC_12A_Q05_question_fig1.svg": "37a75d4d0133047897e02149baed46354c3db207d96b9a5670bbe33ae10dd3bd"
+            },
+            "displayHash": "34ce447fa5a3b8a353395095bb3e88cf66f4114f3835bbcfadf898d090d2e735",
+            "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+            "level": "AMC 12",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "064b93eecf2451e35238e8c866c91117f09389d4dfdd9ed0de02e3e634bafc5a",
+            "firstPassPacketId": "map-261",
+            "firstPassReceiptHash": "8a24dd4e3e83c9664c16df70e5a92787b069d7f957375bf896cb43064c3b1fa4",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "displayed_figure"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "e80b104d70d7e751243eb1f2c910e63f93fe7bfd4641492fd4498aa51f953fe3",
+            "questionIds": [
+              "2004_AMC_12A_Q05"
+            ]
+          }
+        ],
+        "imageSlots": [
+          3
+        ],
+        "figureHashes": {
+          "figures/2004_AMC_12A_Q05_question_fig1.svg": "37a75d4d0133047897e02149baed46354c3db207d96b9a5670bbe33ae10dd3bd"
+        }
+      },
+      "q004": {
+        "groupId": "task-365ac6c73f21aab8ab34",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2006_AMC_10A_Q23.json",
+            "questionId": "2006_AMC_10A_Q23",
+            "bank": "amc",
+            "contentHash": "d2ebc979c21075182825079f0877c86c6d804bf3f829b751ed2ba5f950c44804",
+            "figureHashes": {
+              "figures/2006_AMC_10A_Q23_question_fig1.svg": "cbe08cdf29cdac60ec95c4d661b076dd714cf14146a5fd59856543d14b266840"
+            },
+            "displayHash": "365ac6c73f21aab8ab34e776a5efa324f4331a03d5fd29a7ef9148f72cdb9b5d",
+            "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "beadaaac95387d50565e4c33f29ea65c4f538da6998ab7be99c0f89c98f4aed9",
+            "firstPassPacketId": "map-266",
+            "firstPassReceiptHash": "e17bfe0b2e47cb62c00a465870c12e8f52cfc67f4e05649381d256b6d7a00a02",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "displayed_figure"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "80ef7293efdbd8aa266d5f044d2f4a0df99cd7d48a4d8d86fb53d4213e8161a1",
+            "questionIds": [
+              "2006_AMC_10A_Q23"
+            ]
+          }
+        ],
+        "imageSlots": [
+          4
+        ],
+        "figureHashes": {
+          "figures/2006_AMC_10A_Q23_question_fig1.svg": "cbe08cdf29cdac60ec95c4d661b076dd714cf14146a5fd59856543d14b266840"
+        }
+      },
+      "q005": {
+        "groupId": "task-3a410187f3add4039451",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2009_AMC_10A_Q21.json",
+            "questionId": "2009_AMC_10A_Q21",
+            "bank": "amc",
+            "contentHash": "f4761eb6fc403d20b78dd6682419e20c6206cb15e2f45a6aba31b3d78f4ea9e7",
+            "figureHashes": {
+              "figures/2009_AMC_10A_Q21_question_fig1.svg": "d0a3e2057dc474ec2585ca8fd78cdaa8347de002495846a1e10a2419cb72f050"
+            },
+            "displayHash": "3a410187f3add4039451c5f9625018f2631888f1d6e20849e7a1cf68c8c0a0ed",
+            "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "98b818dcd84a9bf776dce778fd42fd2b590faae91b2e043dafee250f3fc680b9",
+            "firstPassPacketId": "map-274",
+            "firstPassReceiptHash": "6619dccb3c485f90df8be313722bd5b3fd6103aa1983365f4b577cd9562c8d3c",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "displayed_figure"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "d54d13ff4ffa3f4dd71b184042a42fc6cdf5613c69c2564578732a1cacabcc12",
+            "questionIds": [
+              "2009_AMC_10A_Q21"
+            ]
+          }
+        ],
+        "imageSlots": [
+          5
+        ],
+        "figureHashes": {
+          "figures/2009_AMC_10A_Q21_question_fig1.svg": "d0a3e2057dc474ec2585ca8fd78cdaa8347de002495846a1e10a2419cb72f050"
+        }
+      },
+      "q006": {
+        "groupId": "task-3a6c8e4e7ac5998ab017",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2025_AMC_10B_Q20.json",
+            "questionId": "2025_AMC_10B_Q20",
+            "bank": "amc",
+            "contentHash": "17d3d5e1975ab1137664826a48ed7af5a55dd929005d3ff2bd3906375b823d59",
+            "figureHashes": {
+              "figures/2025_AMC_10B_Q20_question_fig1.svg": "7cca618bca1378f58bc8642071c929aebae98435bef422f8bcbaed20d74467db"
+            },
+            "displayHash": "3a6c8e4e7ac5998ab0178f488a9b15b39058abca6a53bd6583ab02fb8bb2f985",
+            "answerRulesHash": "30195ac12af612a37d753a2b6c289551b46f2daa651c84066e3f9fa3c440cafb",
+            "level": "AMC 10",
+            "topic": "Geometry",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "1a64f68e9b6ddcdcc2c7651863a37943d5daa3c6efc44e272e128ca0f034808a",
+            "firstPassPacketId": "map-312",
+            "firstPassReceiptHash": "bcba9df4cea053fc6a531d04b8809d08726f9f66939ae6855ecae6520740245b",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "displayed_figure"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "feb2dae5a0193fb07a7cf460f118297da07ffd151aa6d3a93324fc716a467805",
+            "questionIds": [
+              "2025_AMC_10B_Q20"
+            ]
+          }
+        ],
+        "imageSlots": [
+          6
+        ],
+        "figureHashes": {
+          "figures/2025_AMC_10B_Q20_question_fig1.svg": "7cca618bca1378f58bc8642071c929aebae98435bef422f8bcbaed20d74467db"
+        }
+      },
+      "q007": {
+        "groupId": "task-3aff321297936da0c9af",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2004_AMC_10A_Q23.json",
+            "questionId": "2004_AMC_10A_Q23",
+            "bank": "amc",
+            "contentHash": "130ba91eef35460bae6d996bb0b4feb1969ab9409166369c47931d3fcb754047",
+            "figureHashes": {
+              "figures/2004_AMC_10A_Q23_question_fig1.svg": "cfd24aded16d6bde31e22293f20d3709f53b4aca7c927091ca8b0a62d5eedc7c"
+            },
+            "displayHash": "3aff321297936da0c9afae99f1d6dfba66f8c64b5d1d2dccee8de0560836e061",
+            "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "8b4c057e97e677ce645923e622de4220847ea63912165cb4f1bac45159cf55df",
+            "firstPassPacketId": "map-260",
+            "firstPassReceiptHash": "ad1d565b215144b0facbd92c70a0cbef274c8711e5ccb45e98268cef0b27dea2",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "displayed_figure",
+              "method_choice_risk"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "c6e0d7bd24447787bebd5a4b47172512271a989a3fd49caad45fb718bff438d7",
+            "questionIds": [
+              "2004_AMC_10A_Q23"
+            ]
+          }
+        ],
+        "imageSlots": [
+          7
+        ],
+        "figureHashes": {
+          "figures/2004_AMC_10A_Q23_question_fig1.svg": "cfd24aded16d6bde31e22293f20d3709f53b4aca7c927091ca8b0a62d5eedc7c"
+        }
+      },
+      "q008": {
+        "groupId": "task-3b28865d7b2436c7f362",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2004_AMC_10B_Q18.json",
+            "questionId": "2004_AMC_10B_Q18",
+            "bank": "amc",
+            "contentHash": "a97146125821054d08d04773beff4842456a72e76557b31fd6b27807c26364cb",
+            "figureHashes": {
+              "figures/2004_AMC_10B_Q18_question_fig1.svg": "d7739813af12a79571a82bc200b3ee29c550efefeeced5bfb353fd4351d2ce0f"
+            },
+            "displayHash": "3b28865d7b2436c7f362fc54ff6fc8b84ec5018ef7c61f72ee1fd2ae33d65287",
+            "answerRulesHash": "8fa1d4de71d76dca373ae83555562198ef33cfb23e91c1ecf7b14c2939567a09",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "5ef21c957e8310bb20aefc81664b7fe96daaa329af81f53312e1fd88a4d32222",
+            "firstPassPacketId": "map-260",
+            "firstPassReceiptHash": "ad1d565b215144b0facbd92c70a0cbef274c8711e5ccb45e98268cef0b27dea2",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "displayed_figure",
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "337b49a30e22195fdf75e0b15f2d8cb19022a6b8eb88ae983510c1c99506dadc",
+            "questionIds": [
+              "2004_AMC_10B_Q18"
+            ]
+          }
+        ],
+        "imageSlots": [
+          8
+        ],
+        "figureHashes": {
+          "figures/2004_AMC_10B_Q18_question_fig1.svg": "d7739813af12a79571a82bc200b3ee29c550efefeeced5bfb353fd4351d2ce0f"
+        }
+      }
+    },
+    "imageCount": 8,
+    "imageHashes": [
+      "5b3c20745c769dbd9d52f37641495d87133ab5f4367ad06ee57e2c1526a9e3c3",
+      "3f66639a1754efac87fab02aa2fae0d1cbd383533aedef03e08fb58c5b491309",
+      "bd9fae1e993c334366d8e8ec38a2975ac966b6520fbab91f91554a3a1e465c20",
+      "f137a117eb6d5af43f444c74dcd70c315c1b11365ddebbb933c6aa9a15684346",
+      "000bcabe222735cbe2d2fefcb780922dec8efb69e44a5e61560b4c585c9192f2",
+      "74f4bc1292d22bd3295a08b0d17cbd2e334cd4c470fc6a07a51e589492595f85",
+      "61970458fb795b159b7c35e8697b0d2cf75ae5b31a175ea7c82fe8d65a9dad1b",
+      "048946922124ce70e0b97277d4f843a7a8322463f71fcddf2d6697bf8141a353"
+    ],
+    "candidateExposure": true,
+    "keysSolutionsSourceLabelsExposed": false,
+    "promotionStatus": "not_promoted"
+  },
+  "usage": {
+    "attribution": {
+      "items": {
+        "msg_0419f9cd3c4d4784016aec808d0d6c87d28f9d855a281c336b": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "content": [
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 24158,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 1010,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 1010,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 1010,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 592,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 1010,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 1010,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 940,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 767,
+              "output_tokens": 0
+            }
+          ],
+          "input_tokens": 31507,
+          "output_tokens": 0
+        },
+        "rs_0419f9cd3c4d4784016aec808feed087d294c6f68dfcf6a62f": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 2,
+          "output_tokens": 516
+        },
+        "rs_0419f9cd3c4d4784016aec80aa871c87d2a15d430ba00b3b1a": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_0419f9cd3c4d4784016aec80bdce4487d2be8638581fb5c061": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_0419f9cd3c4d4784016aec80d09b8c87d2a52c36305dd7494b": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_0419f9cd3c4d4784016aec80e3fb1087d2b61d56d72c5e6627": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_0419f9cd3c4d4784016aec80f5a91c87d2907e2f15d85ab4f9": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_0419f9cd3c4d4784016aec8107daac87d2864bbddad508bd8d": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_0419f9cd3c4d4784016aec811e0ca487d29091ac8b5210a855": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_0419f9cd3c4d4784016aec813345a887d2b311c81e490485a1": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_0419f9cd3c4d4784016aec81457a3087d287ef24de2e1c7a8f": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_0419f9cd3c4d4784016aec815aeef087d29b4389fc49147876": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_0419f9cd3c4d4784016aec8173da2087d282d1f8e2e33e8e2e": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_0419f9cd3c4d4784016aec818a727c87d28436722dbfb4c7fd": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 298
+        },
+        "msg_0419f9cd3c4d4784016aec8198b2f887d2b8a6eef3698393cb": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "content": [
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 0,
+              "output_tokens": 3346
+            }
+          ],
+          "input_tokens": 0,
+          "output_tokens": 3346
+        }
+      },
+      "request_fields": {
+        "text.format": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 13056,
+          "input_tokens": 13171,
+          "output_tokens": 0
+        },
+        "instructions": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 164,
+          "output_tokens": 0
+        }
+      }
+    },
+    "input_tokens": 44844,
+    "input_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 13056
+    },
+    "output_tokens": 9858,
+    "output_tokens_details": {
+      "reasoning_tokens": 6512
+    },
+    "total_tokens": 54702
+  },
+  "returnedModel": "gpt-6.1-sol",
+  "returnedReasoning": {
+    "context": "all_turns",
+    "effort": "xhigh",
+    "mode": "standard",
+    "summary": null
+  },
+  "responseReceivedAt": "2026-11-05T13:17:08.315038+00:00",
+  "audits": [
+    {
+      "questionId": "q001",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_p150"
+      ],
+      "supportIds": [],
+      "routes": [
+        {
+          "id": "triangle-area-units",
+          "label": "Count triangle area units",
+          "nodeIds": [
+            "cnm_p148"
+          ]
+        },
+        {
+          "id": "subtract-square-areas",
+          "label": "Subtract square areas",
+          "nodeIds": [
+            "cnm_p089",
+            "cnm_174"
+          ]
+        }
+      ],
+      "derivedAnswer": "A: B = W.",
+      "mathematicalReason": "Let each white square have area u and diagonal d, so d² = 2u. There are 12 white squares, giving W = 12u. The center square has side 2d and area R = 8u; the outer square has side 4d and area 32u. Therefore B = 32u − 12u − 8u = 12u = W. The triangle-unit route also works: the four corner blue triangles each have area u, and the other sixteen blue triangles each have area u/2. Both routes validly assess combining and subtracting component areas.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [
+        "The center square is rendered dark blue or purple rather than red; its central position identifies the region denoted by R."
+      ],
+      "figureEvidence": [
+        {
+          "imageSlot": 1,
+          "fact": "Twelve congruent tilted white squares surround the central square."
+        },
+        {
+          "imageSlot": 1,
+          "fact": "The central square's side spans two white-square diagonals, while the outer square's side spans four."
+        },
+        {
+          "imageSlot": 1,
+          "fact": "The blue region consists of four larger corner triangles and sixteen smaller triangles, supporting the alternative area-unit count."
+        }
+      ]
+    },
+    {
+      "questionId": "q002",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_084"
+      ],
+      "supportIds": [],
+      "routes": [
+        {
+          "id": "grid-dissection",
+          "label": "Rectangle and triangle dissection",
+          "nodeIds": [
+            "cnm_p150",
+            "cnm_p089",
+            "cnm_p148"
+          ]
+        },
+        {
+          "id": "coordinate-shoelace",
+          "label": "Coordinate polygon area",
+          "nodeIds": [
+            "math:shoelace-formula"
+          ]
+        }
+      ],
+      "derivedAnswer": "C: 22 1/2 square grid units.",
+      "mathematicalReason": "Take the bottom-left peg as (0,0), with adjacent peg spacing one. In boundary order the vertices are P = (0,5), Q = (3,4), R = (10,10), and S = (4,0). Shoelace gives area = |(0 + 30 + 0 + 20) − (15 + 40 + 40 + 0)|/2 = 45/2. Alternatively, the outer triangle PRS has area 35 and the triangular indentation PQR has area 25/2, leaving 45/2; these triangle areas can be obtained by bounding-rectangle dissection. The coordinate-area scope is defensible for the coordinate method, without making coordinates necessary for the dissection alternative.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [
+        "The numerical area uses the standard unit-grid convention: adjacent peg spacing is one."
+      ],
+      "figureEvidence": [
+        {
+          "imageSlot": 2,
+          "fact": "The board has eleven equally spaced peg positions in each direction, spanning ten grid intervals."
+        },
+        {
+          "imageSlot": 2,
+          "fact": "Using an upward-pointing vertical coordinate, the polygon vertices are (0,5), (3,4), (10,10), and (4,0); (3,4) is the concave vertex."
+        }
+      ]
+    },
+    {
+      "questionId": "q003",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_203"
+      ],
+      "supportIds": [
+        "cnm_h167",
+        "cnm_096"
+      ],
+      "routes": [],
+      "derivedAnswer": "B: −1 < mb < 0.",
+      "mathematicalReason": "The descending line has y-intercept b with 0 < b < 1. Write its x-intercept as t; the graph shows 1 < t < 2. Applying the slope formula to (0,b) and (t,0) gives m = −b/t, hence mb = −b²/t. Since 0 < b²/t < 1, it follows that −1 < mb < 0. This uses coefficient interpretation, the slope formula, and inequality properties exactly as mapped; no exact intercept values need to be estimated.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": [
+        {
+          "imageSlot": 3,
+          "fact": "The line descends from left to right and crosses the y-axis strictly between 0 and 1."
+        },
+        {
+          "imageSlot": 3,
+          "fact": "The line crosses the x-axis strictly between the labeled coordinates 1 and 2."
+        }
+      ]
+    },
+    {
+      "questionId": "q004",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_262",
+        "cnm_272"
+      ],
+      "supportIds": [
+        "cnm_271",
+        "cnm_174"
+      ],
+      "routes": [],
+      "derivedAnswer": "B: CD = 44/3.",
+      "mathematicalReason": "The radii AC and BD are perpendicular to the common tangent CD. Thus triangle AEC is right, and EC = √(5² − 3²) = 4. Triangles AEC and BED are similar by their right angles and vertical angles at E. Corresponding sides give ED/EC = BD/AC = 8/3, so ED = 32/3. Because E lies between C and D, CD = EC + ED = 4 + 32/3 = 44/3. The tangent, similarity, and Pythagorean scopes all have direct roles in this valid method.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": [
+        {
+          "imageSlot": 4,
+          "fact": "The tangent contacts are C on the smaller circle and D on the larger circle, with C, E, D in that order."
+        },
+        {
+          "imageSlot": 4,
+          "fact": "The center line has A, E, B in that order, giving the intersecting-line configuration used for the vertical angles."
+        }
+      ]
+    },
+    {
+      "questionId": "q005",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_p192",
+        "cnm_h181"
+      ],
+      "supportIds": [
+        "cnm_191",
+        "cnm_174",
+        "cnm_171"
+      ],
+      "routes": [],
+      "derivedAnswer": "C: 4(3 − 2√2).",
+      "mathematicalReason": "Let each small radius be r and the large radius be R. Internal tangency places all four small-circle centers at distance R − r from the large center. Neighboring external tangencies make the four consecutive center distances 2r. Thus the center quadrilateral is a cyclic rhombus, hence a square, with circumradius √2 r. Consequently R − r = √2 r, so R = (1 + √2)r. The requested area ratio is 4πr²/(πR²) = 4/(1 + √2)² = 4(3 − 2√2). The mapped circle-position, square, Pythagorean, circle-area, and rationalization scopes are defensible.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": [
+        {
+          "imageSlot": 5,
+          "fact": "Four congruent smaller circles form a ring, with each circle tangent to its two neighbors."
+        },
+        {
+          "imageSlot": 5,
+          "fact": "Each smaller circle is internally tangent to the same enclosing circle; these tangencies, rather than enclosure alone, determine the radius relationship."
+        }
+      ]
+    },
+    {
+      "questionId": "q006",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_h181"
+      ],
+      "supportIds": [
+        "cnm_174",
+        "cnm_191"
+      ],
+      "routes": [
+        {
+          "id": "center-distance-quadratic",
+          "label": "Center distances and a quadratic",
+          "nodeIds": [
+            "cnm_222"
+          ]
+        },
+        {
+          "id": "special-right-triangle",
+          "label": "A 30-60-90 center triangle",
+          "nodeIds": [
+            "cnm_276",
+            "cnm_277",
+            "cnm_278",
+            "cnm_171"
+          ]
+        }
+      ],
+      "derivedAnswer": "A: a + b + c + d = 3.",
+      "mathematicalReason": "Let the semicircle radius be r. Taking the top-left corner as (0,0), with downward vertical coordinate, the left and top semicircle centers are (0,r) and (1 − r,0). External tangency gives r² + (1 − r)² = (2r)², or 2r² + 2r − 1 = 0. The positive root is r = (√3 − 1)/2; the negative root is geometrically inadmissible. The four semicircle centers form a square of side 2r, centered at the square's center, so their distance from that center is √2 r. If the small-circle radius is s, external tangency gives s + r = √2 r. Its diameter is therefore 2s = (√2 − 1)(√3 − 1), giving a = 2, b = −1, c = 3, d = −1 and sum 3. The alternative special-angle route is also valid: the corner-and-centers right triangle has hypotenuse 2r and short leg r, making it a 30-60-90 triangle.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": [
+        {
+          "imageSlot": 6,
+          "fact": "The diameter endpoints follow a cyclic pattern: the left semicircle starts at the top-left vertex, the top one at the top-right vertex, the right one at the bottom-right vertex, and the bottom one at the bottom-left vertex."
+        },
+        {
+          "imageSlot": 6,
+          "fact": "Adjacent semicircular arcs touch externally inside the square, and the central small circle lies outside each semicircular disk and touches each arc."
+        }
+      ]
+    },
+    {
+      "questionId": "q007",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_h181"
+      ],
+      "supportIds": [
+        "cnm_133",
+        "cnm_174",
+        "cnm_224"
+      ],
+      "routes": [],
+      "derivedAnswer": "D: the radius of circle B is 8/9.",
+      "mathematicalReason": "Let O be the center of circle D and let r be the common radius of B and C. Since circle A has radius 1 and passes through O, its center is distance 1 from O. Internal tangency then gives the radius of D as 2. Both O and the center of A are equidistant from the centers of B and C, so their joining line is the perpendicular bisector of the segment joining those centers. Set O = (0,0), the center of A = (−1,0), and the centers of B and C = (x,r) and (x,−r); the vertical coordinates follow from their mutual external tangency. The distance equations are x² + r² = (2 − r)² and (x + 1)² + r² = (1 + r)². They imply x² = 4 − 4r and x = 3r − 2, hence r(9r − 8) = 0. Excluding the zero-radius case gives r = 8/9. Each mapped support scope is used in this method.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": [
+        {
+          "imageSlot": 7,
+          "fact": "Circle A occupies the left part of the enclosing circle, while the congruent circles B and C lie above and below on the right."
+        },
+        {
+          "imageSlot": 7,
+          "fact": "The diagram displays the pairwise external contacts among A, B, and C and their internal contacts with D, consistent with the stated tangency configuration."
+        }
+      ]
+    },
+    {
+      "questionId": "q008",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_p148"
+      ],
+      "supportIds": [],
+      "routes": [
+        {
+          "id": "subtract-corner-triangles",
+          "label": "Subtract corner triangle areas",
+          "nodeIds": [
+            "cnm_p150"
+          ]
+        },
+        {
+          "id": "coordinate-shoelace-area",
+          "label": "Coordinates and shoelace",
+          "nodeIds": [
+            "cnm_084",
+            "math:shoelace-formula"
+          ]
+        }
+      ],
+      "derivedAnswer": "E: 7/16.",
+      "mathematicalReason": "The outer triangle has area 12·16/2 = 96. Each corner triangle has area 3/16 of the outer area: ABF has ratio (AB/AC)(AF/AE) = (1/4)(3/4); BCD has ratio (BC/AC)(CD/CE) = (3/4)(1/4); and DEF has ratio (DE/CE)(EF/EA) = (3/4)(1/4). These products follow from successive common-altitude applications of the triangle-area formula. Subtracting the three corner areas gives [BDF]/[ACE] = 1 − 9/16 = 7/16, with [BDF] = 42. The coordinate alternative is independently valid: C = (0,0), A = (0,12), E = (16,0) give B = (0,9), D = (4,0), F = (12,3), whose shoelace area is 42.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": [
+        {
+          "imageSlot": 8,
+          "fact": "B lies between A and C, D between C and E, and F between A and E; the shaded region is triangle BDF."
+        },
+        {
+          "imageSlot": 8,
+          "fact": "The displayed side subdivisions are AB = 3, BC = 9, CD = 4, DE = 12, AF = 15, and FE = 5, identifying the three corner triangles removed from ACE."
+        }
+      ]
+    }
+  ],
+  "validationErrors": [
+    "q001: Acceptance conflicts with retained findings or limitations",
+    "q002: Acceptance conflicts with retained findings or limitations"
+  ],
+  "qualificationFindings": [
+    "q001: Acceptance conflicts with retained findings or limitations",
+    "q002: Acceptance conflicts with retained findings or limitations"
+  ],
+  "structuralFindings": [],
+  "validationStatus": "qualified_acceptance_pending_adjudication",
+  "mathematicalValidation": "model scope audit only; no automatic acceptance or promotion",
+  "finishedAt": "2026-11-05T13:17:08.316926+00:00",
+  "elapsedSeconds": 329.484
+}

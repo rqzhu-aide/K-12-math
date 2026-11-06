@@ -7,7 +7,6 @@ import re
 import shutil
 import subprocess
 import threading
-import time
 import tomllib
 
 from student_assessment import AssessmentError
@@ -73,10 +72,12 @@ class OpenAIConnection:
             sdk = importlib.util.find_spec('openai_codex') is not None
             if self._process and self._process.poll() is None:
                 state, message = 'waiting', 'Complete sign-in on OpenAI’s website, then return here.'
-            elif self._state == 'failed':
-                state, message = 'failed', 'Sign-in did not finish. Try again; device-code login may need enabling in your ChatGPT security settings.'
             else:
                 state, message = self._status()
+                if self._state == 'failed' and state != 'signed_in':
+                    state, message = 'failed', 'Sign-in did not finish. Try again; device-code login may need enabling in your ChatGPT security settings.'
+                elif state == 'signed_in':
+                    self._state = None
             if not sdk:
                 message += ' Install the openai-codex package in your shared Python installation to test inference.'
             return {'state': state, 'message': message, 'sdkAvailable': sdk,
@@ -176,12 +177,6 @@ class OpenAIConnection:
         finally:
             await client.close()
 
-    async def _probe(self, selection):
-        text = await self._generate(selection, 'Return exactly MATH_PRACTICE_OK.',
-                                    'This is a connection check. Use no tools. Return exactly MATH_PRACTICE_OK.')
-        if text != 'MATH_PRACTICE_OK':
-            raise AssessmentError('The selected model did not complete the test response. Check its availability in Codex.', 502)
-
     def infer(self, selection, prompt, instructions, schema, images=()):
         status = self.status()
         if not status['canTest']:
@@ -197,18 +192,14 @@ class OpenAIConnection:
         if not self._test_lock.acquire(blocking=False):
             raise AssessmentError('An OpenAI test is already running. Wait for it to finish.', 409)
         try:
-            status = self.status()
-            if not status['canTest']:
-                raise AssessmentError(status['message'], 503)
-            started = time.monotonic()
+            from practice_tutor import test_tutor_connection
             try:
-                asyncio.run(self._probe(selection))
+                result = test_tutor_connection({**selection, 'provider': 'codex'}, self)
             except AssessmentError:
                 raise
             except Exception:
                 # SDK exceptions may contain local configuration or transport data.
                 raise AssessmentError('OpenAI did not complete the test inference. Check the selected model, account limits, and Codex connection.', 502) from None
-            return {'ready': True, 'message': 'OpenAI completed the test inference.',
-                    **selection, 'elapsedMs': round((time.monotonic() - started) * 1000)}
+            return {**result, **selection}
         finally:
             self._test_lock.release()

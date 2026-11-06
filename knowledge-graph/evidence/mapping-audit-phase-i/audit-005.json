@@ -1,0 +1,2207 @@
+{
+  "schemaVersion": 1,
+  "auditPacketId": "audit-005",
+  "status": "complete",
+  "selection": {
+    "provider": "chatgpt",
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "startedAt": "2026-11-05T12:25:59.856640+00:00",
+  "raw": "{\n  \"audits\": [\n    {\n      \"questionId\": \"q001\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\n        \"math:floor-ceiling\",\n        \"math:integer-diophantine-equations\"\n      ],\n      \"supportIds\": [\n        \"cnm_h020\"\n      ],\n      \"routes\": [\n        {\n          \"id\": \"quadratic-sign-intervals\",\n          \"label\": \"Quadratic inequality intervals\",\n          \"nodeIds\": [\n            \"cnm_h024\"\n          ]\n        },\n        {\n          \"id\": \"integer-square-bounds\",\n          \"label\": \"Completed-square integer bounds\",\n          \"nodeIds\": [\n            \"math:completing-square-expression\",\n            \"cnm_079\"\n          ]\n        }\n      ],\n      \"derivedAnswer\": \"C: 6\",\n      \"mathematicalReason\": \"Put k=floor(sqrt(n)). Then n=70k-1000 and k²≤70k-1000<(k+1)². The first inequality is (k-35)²≤225, giving 20≤k≤50. The second is (k-34)²>155. Since 12²<155<13², an integer k must satisfy k≤21 or k≥47. Thus k is one of 20,21,47,48,49,50. Each gives a distinct positive n satisfying the original equation. Both proposed inequality routes fit their stated scopes.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q002\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\n        \"math:centroid-ratios\",\n        \"cnm_p192\"\n      ],\n      \"supportIds\": [\n        \"cnm_275\"\n      ],\n      \"routes\": [],\n      \"derivedAnswer\": \"C: 50\",\n      \"mathematicalReason\": \"Let O be the midpoint of diameter AB. The centroid G lies on CO with CG:GO=2:1, so OG=OC/3=4. Consequently, its locus is the radius-4 circle centered at O, with the two images of A and B omitted. These omissions do not change the intended enclosed area, 16π≈50.265, which rounds to 50. The centroid, homothety, and circle-area scopes are appropriate.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q003\",\n      \"decision\": \"unresolved\",\n      \"assessedIds\": [],\n      \"supportIds\": [\n        \"cnm_h107\",\n        \"cnm_p207\"\n      ],\n      \"routes\": [],\n      \"derivedAnswer\": \"D: 20\",\n      \"mathematicalReason\": \"The points whose nearest point on AB is an interior point form a radius-3 cylinder of length AB. The two endpoint regions are hemispheres, together forming one radius-3 sphere. Hence 216π=9π·AB+(4/3)π·3³=9π·AB+36π, so AB=20 units. The supplied scopes cover decomposition and cylinder volume, but do not establish coverage of the absolute sphere-volume formula.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [\n        \"Absolute sphere and hemisphere volume formulas, V=(4/3)πr³ and V=(2/3)πr³, if not already covered after scope lookup.\"\n      ],\n      \"limitations\": [\n        \"Request scope lookup for cnm_h111 and cnm_h112. Their full definitions were not supplied, so their titles alone cannot establish formula coverage or independently verify the candidate's claim that cnm_h112 covers only scaling.\"\n      ],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q004\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\n        \"math:graph-models\"\n      ],\n      \"supportIds\": [\n        \"cnm_p156\"\n      ],\n      \"routes\": [],\n      \"derivedAnswer\": \"C: 7\",\n      \"mathematicalReason\": \"Represent squares as vertices and shared edges as graph edges. The entries 1 through 9 form a path visiting every vertex. In a checkerboard coloring, every step changes color. The color containing the four corners and center has five squares, so it contains the five odd entries. Those entries sum to 25; subtracting the corner sum 18 leaves center entry 7. For example, rows (1,2,3), (8,7,4), (9,6,5) realize the conditions. The graph-modeling scope and elementary parity support are defensible.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q005\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\n        \"math:recursive-counting-probability\"\n      ],\n      \"supportIds\": [\n        \"cnm_h246\",\n        \"cnm_h139\"\n      ],\n      \"routes\": [],\n      \"derivedAnswer\": \"B: 5/8\",\n      \"mathematicalReason\": \"From (1,2), the first jump reaches the vertical boundary at (0,2) with probability 1/4. The other three neighbors are (2,2), (1,1), and (1,3). Each lies on a diagonal reflection that fixes the starting point and exchanges vertical and horizontal exits, so each has vertical-exit probability 1/2. Absorption occurs almost surely: from any interior state, three consecutive left jumps suffice to reach a boundary, giving a uniform positive absorption probability in each three-step block. Corners cannot be the first boundary point reached. Thus the desired probability is 1/4+3(1/4)(1/2)=5/8. This fits first-step probability reasoning and the listed support scopes.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q006\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\n        \"math:symmetry-counting\",\n        \"cnm_h231\"\n      ],\n      \"supportIds\": [],\n      \"routes\": [],\n      \"derivedAnswer\": \"B: 1022\",\n      \"mathematicalReason\": \"Index cell centers by coordinates from -3 through 3. Under the square's rotations and reflections, a cell orbit is determined by the unordered pair of absolute coordinates, represented uniquely by 0≤u≤v≤3. There are 4+3+2+1=10 such orbits, including the smaller central and axial orbits. An invariant code assigns one color independently to each orbit, giving 2¹⁰ codes. Removing the two monochromatic codes leaves 1022. This is a defensible use of orbit/fixed-arrangement reasoning; it does not divide arbitrary colorings into equivalence classes or divide by eight.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q007\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\n        \"math:prime-factorization\"\n      ],\n      \"supportIds\": [\n        \"cnm_164\"\n      ],\n      \"routes\": [],\n      \"derivedAnswer\": \"E: 9\",\n      \"mathematicalReason\": \"Since 4000=2⁵·5³, the expression equals 2^(n+5)·5^(3-n). Unique prime factorization makes it an integer exactly when both exponents are nonnegative: -5≤n≤3. This gives nine integer values, including zero and negative values. The assessed exponent-structure scope and negative-exponent support match the solution.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q008\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\n        \"cnm_p150\"\n      ],\n      \"supportIds\": [\n        \"cnm_185\"\n      ],\n      \"routes\": [\n        {\n          \"id\": \"side-ratio-and-similarity\",\n          \"label\": \"Angle-bisector side ratio and similarity\",\n          \"nodeIds\": [\n            \"math:angle-bisector-side-ratio\",\n            \"cnm_271\",\n            \"cnm_272\",\n            \"cnm_p148\"\n          ]\n        },\n        {\n          \"id\": \"equal-distance-area-splits\",\n          \"label\": \"Equal-distance triangle area splits\",\n          \"nodeIds\": [\n            \"cnm_128\",\n            \"cnm_p148\"\n          ]\n        }\n      ],\n      \"derivedAnswer\": \"D: 75\",\n      \"mathematicalReason\": \"The angle-bisector theorem gives BG:GC=AB:AC=5:1, so area(ABG)=100. Since DE is a midsegment parallel to BC, triangles ADF and ABG are similar with length ratio 1/2; therefore area(ADF)=25. Subtraction gives area(FDBG)=100-25=75. Alternatively, equal distances from the bisector points to AB and AC give the same 5:1 area splits, while elementary base-height reasoning gives area(ADE)=120/4=30. Both proposed routes are valid without requiring their union.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q009\",\n      \"decision\": \"unresolved\",\n      \"assessedIds\": [],\n      \"supportIds\": [\n        \"cnm_h102\",\n        \"cnm_h103\",\n        \"cnm_h104\",\n        \"math:infinite-geometric-series\"\n      ],\n      \"routes\": [],\n      \"derivedAnswer\": \"B: 7/16\",\n      \"mathematicalReason\": \"Squaring a_n+b_ni gives 2a_nb_n=Im((3+4i)^n). Also a_n²+b_n²=5^n, so |a_nb_n|≤5^n/2 and the requested series converges absolutely by comparison with a real geometric series. With r=(3+4i)/7, whose modulus is 5/7, the value is (1/2)Im(1/(1-r))=(1/2)Im(7/(4-4i))=7/16. The displayed evaluation uses a complex-ratio geometric-series extension, whereas the supplied infinite-series node explicitly restricts its ratio to real numbers.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [\n        \"For the displayed route: convergent complex-ratio geometric series, with modulus-based convergence and extraction of real or imaginary parts.\"\n      ],\n      \"limitations\": [\n        \"The real geometric-series node supports the convergence majorant, not the complex-ratio evaluation as currently defined.\",\n        \"This is a route-specific coverage gap, not a claim that every valid solution must sum a complex series; real coupled-recurrence methods are also possible, but their summation coverage is not established by the supplied scopes.\"\n      ],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q010\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\n        \"math:modular-congruence\"\n      ],\n      \"supportIds\": [],\n      \"routes\": [],\n      \"derivedAnswer\": \"D: 1239\",\n      \"mathematicalReason\": \"If n has t trailing nines, adding one changes its digit sum by 1-9t. Thus S(n+1)=1275-9t, which is congruent to 6 modulo 9. Among the choices only 1239 has that residue, and it corresponds to t=4. Feasibility is not merely a residue claim: take n whose decimal representation consists of 137 nines, then a 5, then four nines. Its digit sum is 1274, and adding one gives digit sum 137·9+6=1239. The congruence scope is appropriate.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q011\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\n        \"math:prime-factorization\",\n        \"math:infinite-geometric-series\"\n      ],\n      \"supportIds\": [],\n      \"routes\": [],\n      \"derivedAnswer\": \"C: 19\",\n      \"mathematicalReason\": \"Every allowed integer has a unique representation 2^i·3^j·5^k with i,j,k≥0, including 1 when all exponents are zero. The reciprocal sum is therefore (Σ2^(-i))(Σ3^(-j))(Σ5^(-k))=2·(3/2)·(5/4)=15/4. All three ratios have absolute value below one. Nonnegative terms justify passing from finite exponent boxes to the full sum. Hence m+n=15+4=19, and both assessed scopes are directly exercised.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q012\",\n      \"decision\": \"revise\",\n      \"assessedIds\": [\n        \"cnm_h098\",\n        \"math:shoelace-formula\"\n      ],\n      \"supportIds\": [\n        \"cnm_183\",\n        \"cnm_173\"\n      ],\n      \"routes\": [\n        {\n          \"id\": \"cartesian-square-roots\",\n          \"label\": \"Cartesian extraction of the complex roots\",\n          \"nodeIds\": [\n            \"cnm_h099\",\n            \"cnm_h102\",\n            \"cnm_220\"\n          ]\n        },\n        {\n          \"id\": \"polar-square-roots\",\n          \"label\": \"Polar extraction of the complex roots\",\n          \"nodeIds\": [\n            \"math:complex-polar-de-moivre\"\n          ]\n        }\n      ],\n      \"derivedAnswer\": \"A: 20\",\n      \"mathematicalReason\": \"The first equation has roots ±(√10+i√6), and the second has roots ±(√3+i). For example, these follow from x²-y² and 2xy together with x²+y²=16 or 4, respectively. Let u=(√10,√6) and v=(√3,1). In cyclic order v,u,-v,-u, shoelace gives area 2|det(u,v)|=2(3√2-√10)=6√2-2√10. Thus p+q+r+s=6+2+2+10=20. For the two retained coordinate-area routes, shoelace is the directly exercised area procedure. A separately justified base-height solution would also be valid, but is not required.\",\n      \"candidateFindings\": [\n        \"v01: cnm_p147 specifically covers identifying a base and its corresponding perpendicular height and applying base×height. Neither proposed shoelace route establishes that procedure; the target figure being a parallelogram is insufficient by itself. For the retained coordinate routes, replace this assessed ID with math:shoelace-formula.\"\n      ],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q013\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\n        \"cnm_p157\"\n      ],\n      \"supportIds\": [],\n      \"routes\": [\n        {\n          \"id\": \"square-residues-modulo-three\",\n          \"label\": \"Check divisibility by 3 and the exceptional prime\",\n          \"nodeIds\": [\n            \"math:modular-congruence\"\n          ]\n        }\n      ],\n      \"derivedAnswer\": \"C: p²+26\",\n      \"mathematicalReason\": \"For a prime p other than 3, p²≡1 modulo 3, so p²+26 is divisible by 3 and is greater than 3. At the exceptional prime p=3, it equals 35, also composite. The other choices can be prime: A gives 41 at p=5, B gives 73 at p=7, D gives 71 at p=5, and E gives 457 at p=19. The prime/composite concept and the proposed congruence route are appropriate.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q014\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\n        \"math:integer-diophantine-equations\"\n      ],\n      \"supportIds\": [\n        \"cnm_h203\",\n        \"cnm_027\"\n      ],\n      \"routes\": [],\n      \"derivedAnswer\": \"D: 17\",\n      \"mathematicalReason\": \"The arithmetic-mean condition is 2(10b+c)=10a+b+10c+d. All of a,b,c are nonzero because the three numbers are increasing two-digit integers. Put t=b-a, u=c-b, and v=d-c. Equality of the two positive differences gives 10t+u=10u+v. Strict increase forces t≥0. Writing e=u-t yields v=t-9e, c=a+2t+e, and d=a+3t-8e. The digit bounds force e=0 or 1. For e=0, t=1 allows six a-values and t=2 allows three, totaling nine. For e=1, t=0,1,2,3 allow respectively 1,2,3,2 a-values, totaling eight. Hence there are 17 numbers. This is a complete bounded integer-equation count matching the candidate scopes.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q015\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\n        \"math:extremal-principle\"\n      ],\n      \"supportIds\": [\n        \"cnm_027\"\n      ],\n      \"routes\": [\n        {\n          \"id\": \"value-per-pound-bound\",\n          \"label\": \"Unit-value bound and an attaining load\",\n          \"nodeIds\": [\n            \"cnm_p185\",\n            \"cnm_096\"\n          ]\n        },\n        {\n          \"id\": \"bounded-integer-enumeration\",\n          \"label\": \"Enumerate the number of five-pound rocks\",\n          \"nodeIds\": [\n            \"cnm_h020\",\n            \"cnm_029\"\n          ]\n        }\n      ],\n      \"derivedAnswer\": \"C: 50 dollars\",\n      \"mathematicalReason\": \"Every rock is worth at most 14/5 dollars per pound, so any allowed load has value at most 18·14/5=50.4 dollars. Since every load has integer dollar value, its value is at most 50. Two five-pound rocks and two four-pound rocks weigh exactly 18 pounds and are worth 50 dollars, attaining the bound. Alternatively, fixing the number of five-pound rocks at 0,1,2,3 gives optimal values 48,49,50,48. Both routes justify a global maximum and fit the proposed scopes.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q016\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\n        \"cnm_251\",\n        \"cnm_174\"\n      ],\n      \"supportIds\": [\n        \"cnm_138\",\n        \"cnm_148\"\n      ],\n      \"routes\": [],\n      \"derivedAnswer\": \"E: 100\",\n      \"mathematicalReason\": \"Let O be the center and M the perpendicular projection of O onto chord CD. The perpendicular diameter theorem gives CM=DM=h. Since BE=2√5<5√2, E lies between O and B, so EO points along EA. The angle between EO and EC is therefore 45°, making triangle OEM an isosceles right triangle; write EM=OM=t. Because E is inside the circle, CE and DE are h+t and h-t in some order. Pythagoras gives h²+t²=R²=50, so CE²+DE²=(h+t)²+(h-t)²=2(h²+t²)=100 square units. All listed scopes are used by this route.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q017\",\n      \"decision\": \"unresolved\",\n      \"assessedIds\": [],\n      \"supportIds\": [\n        \"cnm_162\",\n        \"cnm_h018\",\n        \"cnm_h200\",\n        \"cnm_h208\"\n      ],\n      \"routes\": [],\n      \"derivedAnswer\": \"C: [81,242]\",\n      \"mathematicalReason\": \"Let e_n=x_n-4. Then e_0=1 and e_(n+1)=e_n(e_n+9)/(e_n+10). Inductively, 0<e_(n+1)<e_n≤1, so 9/10<e_(n+1)/e_n≤10/11. Consequently (9/10)^n≤e_n≤(10/11)^n. Since (9/10)^4>1/2, e_80>2^(-20), so m>80. Since (10/11)^8<1/2, e_160<2^(-20), so m≤160. Thus 81≤m≤160, entirely within choice C. The decisive comparison of nonlinear iterates with geometric bounds goes beyond the supplied simple-recurrence definition.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [\n        \"Comparison bounds for nonlinear real recurrences: establish invariant positive bounds, bound successive error ratios, compare with geometric sequences, and locate a first threshold-crossing index.\"\n      ],\n      \"limitations\": [\n        \"cnm_h200 covers generating terms from a recurrence, while cnm_h208 supplies geometric terms; neither supplied definition directly covers the comparison argument needed here.\"\n      ],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q018\",\n      \"decision\": \"unresolved\",\n      \"assessedIds\": [\n        \"math:floor-ceiling\"\n      ],\n      \"supportIds\": [\n        \"cnm_h047\",\n        \"cnm_h140\"\n      ],\n      \"routes\": [\n        {\n          \"id\": \"dyadic-interval-sum\",\n          \"label\": \"Sum matching interval probabilities\",\n          \"nodeIds\": [\n            \"math:infinite-geometric-series\"\n          ]\n        },\n        {\n          \"id\": \"dyadic-self-similarity\",\n          \"label\": \"Self-similar probability recurrence\",\n          \"nodeIds\": [\n            \"math:recursive-counting-probability\",\n            \"cnm_042\"\n          ]\n        }\n      ],\n      \"derivedAnswer\": \"D: 1/3\",\n      \"mathematicalReason\": \"For k≥1, floor(log₂x)=-k precisely when 2^(-k)≤x<2^(1-k), an interval of length 2^(-k). Independence makes the probability that both variables occupy this bin equal to 4^(-k). Summing the disjoint matching-bin events gives (1/4)/(1-1/4)=1/3. Alternatively, both variables in the upper half contribute 1/4, both in the lower half contribute P/4 after rescaling, and mixed halves fail; hence P=1/4+P/4. Endpoints have probability zero. Both routes are mathematically sound, but require the missing interval-length interpretation of continuous uniform probability.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [\n        \"Continuous uniform probability on an interval, including relative interval lengths, zero-probability endpoints, and products for independent selections.\"\n      ],\n      \"limitations\": [\n        \"The supplied floor, logarithm, independence, and summation scopes do not establish the continuous uniform probability model.\"\n      ],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q019\",\n      \"decision\": \"unresolved\",\n      \"assessedIds\": [],\n      \"supportIds\": [\n        \"cnm_p192\",\n        \"cnm_p089\",\n        \"cnm_p150\"\n      ],\n      \"routes\": [],\n      \"derivedAnswer\": \"B: 0.4\",\n      \"mathematicalReason\": \"Partition the large square into unit lattice cells. For 0≤d≤1/2, the favorable part of each cell consists of four nonoverlapping quarter disks, totaling area πd². At d=1/2 the favorable fraction is π/4>1/2, so the required d must be smaller than 1/2. Therefore πd²=1/2, giving d=1/√(2π)≈0.39894, which rounds to 0.4. The integer side length makes the unit-cell partition exact, including along the outer boundary. The geometric area scopes are appropriate support, but the area-ratio probability principle is not supplied.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [\n        \"Uniform planar geometric probability: probability equals favorable area divided by total area, with appropriate treatment of overlaps and boundaries.\"\n      ],\n      \"limitations\": [\n        \"The supplied scopes do not cover uniform probability on a planar region; finite equally likely outcome models do not by themselves establish this principle.\"\n      ],\n      \"figureEvidence\": []\n    },\n    {\n      \"questionId\": \"q020\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\n        \"math:integer-diophantine-equations\"\n      ],\n      \"supportIds\": [\n        \"math:prime-factorization\"\n      ],\n      \"routes\": [\n        {\n          \"id\": \"normalize-by-gcd\",\n          \"label\": \"Normalize to coprime factors\",\n          \"nodeIds\": [\n            \"math:prime-factorization\",\n            \"math:integer-diophantine-equations\"\n          ]\n        },\n        {\n          \"id\": \"shifted-factor-pairs\",\n          \"label\": \"Factor a shifted gcd-lcm equation\",\n          \"nodeIds\": [\n            \"cnm_151\",\n            \"math:integer-diophantine-equations\"\n          ]\n        }\n      ],\n      \"derivedAnswer\": \"B: 2\",\n      \"mathematicalReason\": \"Write g=gcd(a,b) and L=lcm(a,b), so ab=gL and g divides L. The equation becomes (g-20)(L-12)=177=3·59. Positive factor pairs give (g,L)=(21,189),(23,71),(79,15),(197,13); only (21,189) satisfies g≤L and g dividing L. Negative factor pairs cannot give positive g and L: the only possible negative values of g-20 are -1 and -3, and both make L negative. Now write a=21u and b=21v with gcd(u,v)=1. Then uv=L/g=9, so the only coprime ordered factor pairs are (1,9) and (9,1). Thus (a,b)=(21,189) or (189,21). Both proposed routes support a complete integer-solution analysis.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": []\n    }\n  ]\n}",
+  "promotionStatus": "not_promoted",
+  "at": "2026-11-05T12:25:59.851290+00:00",
+  "reviewMode": "targeted",
+  "packetHash": "c9061edd6139715e390806a8b84459388060198e6956f084af70501ccaecbbd3",
+  "planHash": "00b783ca963fe883a92059f866a9e801970facce1af386759cbc0e103cda6520",
+  "catalogHash": "5bc81d43a32ca981d0a974516852f2eb731325d0f85b14cab04d76bdfd842aa7",
+  "inputHash": "741c493ef97fb1a6248fde55173ebecdf904b2409b5e2e207b3976e0e0fd63e4",
+  "aliasBindings": {
+    "q001": {
+      "groupId": "task-62d42addce48b2071caf",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2020_AMC_10B_Q24.json",
+          "questionId": "2020_AMC_10B_Q24",
+          "bank": "amc",
+          "contentHash": "6ba960eac3cd013846be6ed1ccb14dbf1b47072a5fff0722eddb488a183e2912",
+          "figureHashes": {},
+          "displayHash": "62d42addce48b2071caf57a0fd3a7385e19dc6fb7820b051222521fc59795b6d",
+          "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+          "level": "AMC 10",
+          "topic": "Counting & Probability",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "518cc6975782e5da94ec8e62bc64ac7d6dbeb323b1c2aadbd5171f9da8f70c17",
+          "firstPassPacketId": "map-541",
+          "firstPassReceiptHash": "6329e4e02da62af6e1a4fcb43c139ef8f5bb28dddc929e0c825bbfe913b09bf4",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "920f0c3d82d2747ac6ba8da11f4f8f098d925005f6cacc9a6edc5e3960c3a3df",
+          "questionIds": [
+            "2020_AMC_10B_Q24"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q002": {
+      "groupId": "task-639e3fb6fe71a2a55e48",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2018_AMC_12B_Q08.json",
+          "questionId": "2018_AMC_12B_Q08",
+          "bank": "amc",
+          "contentHash": "45e8534bb8bda8362f5d8fd1d8198ae908bb2875c3e73c3a83339e70be7d72da",
+          "figureHashes": {},
+          "displayHash": "639e3fb6fe71a2a55e482e45fe8dcf6f86080da37bcef653d625ffd261fd67d2",
+          "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+          "level": "AMC 12",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "4907e8b3d77dfabbd9939215692035b4fdd6d62264b73d3f79f6473ad0310794",
+          "firstPassPacketId": "map-523",
+          "firstPassReceiptHash": "56e9874c027998eec7fd72381d52efc0168f7db5f99b0b4c06edde358d63e106",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "8086c498d991f3dd39ff80debe5432a8e49fb2e6cdf90971641de4d53480b4cf",
+          "questionIds": [
+            "2018_AMC_12B_Q08"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q003": {
+      "groupId": "task-655f62b4241571c03a38",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2017_AMC_10A_Q11.json",
+          "questionId": "2017_AMC_10A_Q11",
+          "bank": "amc",
+          "contentHash": "5dbad7cfbc335acd575ad58d90a2f0f70daa2b6a169de852dcc7fceec76647f5",
+          "figureHashes": {},
+          "displayHash": "655f62b4241571c03a386753e8fb110d66188e29f0590142f0fe301b4905b2cf",
+          "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "89297a7e8e285f4628f7e289826a6d59caa544d823f28da76d2bd8a639b05c16",
+          "firstPassPacketId": "map-505",
+          "firstPassReceiptHash": "424697d6425566dc19a52a69f66248491b683ec2af84e66453e5b478d0571e15",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "unresolved_or_missing_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "41ce375caf23752399d6d99039b29d76b664cffea13ec0ab24e8a987d2372d25",
+          "questionIds": [
+            "2017_AMC_10A_Q11"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q004": {
+      "groupId": "task-65dda66125cbfc884461",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2016_AMC_12B_Q12.json",
+          "questionId": "2016_AMC_12B_Q12",
+          "bank": "amc",
+          "contentHash": "3b38788cf8a1849d53cffdee1455e1fdd8977a40986a35393eae37564eda92bf",
+          "figureHashes": {},
+          "displayHash": "65dda66125cbfc884461fd3bc69e319bf8485bfc49ee1afcdc5b8080b630096f",
+          "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+          "level": "AMC 12",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "c30041c0f3c5daeea0d00ee7b3a4f3b1997fb0a8064bd692fed067b081da2d55",
+          "firstPassPacketId": "map-501",
+          "firstPassReceiptHash": "4b2acc1b0584c2a164d6d71110e32e6b11a386f4f6df263bf459f1b963f26a58",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "aabc2443ab5530c3ba45a576e4662232a810bca15208d4d15605b7d2aef87f49",
+          "questionIds": [
+            "2016_AMC_12B_Q12"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q005": {
+      "groupId": "task-669750ea2c4b139fdb94",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2020_AMC_10A_Q13.json",
+          "questionId": "2020_AMC_10A_Q13",
+          "bank": "amc",
+          "contentHash": "4c671e8cfeb45864cf60152bc4525e356e2f7894d7a6f83355d82c4e44e1ab9f",
+          "figureHashes": {},
+          "displayHash": "669750ea2c4b139fdb9466dd20d4d9105d2ad9b637777cfa8a6839236019081d",
+          "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+          "level": "AMC 10",
+          "topic": "Counting & Probability",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "1b735589973ff239ceb43631a0d3942c76f2de0c51a46b6138ff323c842af600",
+          "firstPassPacketId": "map-538",
+          "firstPassReceiptHash": "e7932d7ef5147a3028b148fe6d67d3cfd13345f608936032af3076d10c0ad1a5",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope",
+            "route_scope_risk"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "f91316c592ac6ce6c8f3edaddb30f2f027f0a332c3e8c44e386a8e2d04b2b4a1",
+          "questionIds": [
+            "2020_AMC_10A_Q13"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q006": {
+      "groupId": "task-66a9caf791c208be1ebc",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2018_AMC_12A_Q15.json",
+          "questionId": "2018_AMC_12A_Q15",
+          "bank": "amc",
+          "contentHash": "a98a18b5cfa4b7fe5283c1cc795e323c714bb9c766a0bf0eaf66284bbbfb92cc",
+          "figureHashes": {},
+          "displayHash": "66a9caf791c208be1ebcce72c31dcba4e357dc32eaa50a9ce19384c10f03a6b1",
+          "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+          "level": "AMC 12",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "7dfa90abbb21e8d1b3e8649eb45a392dbc15b713171077e73a0b7ff7511b685c",
+          "firstPassPacketId": "map-521",
+          "firstPassReceiptHash": "903a2ed29e983adf81058a6824b8bd9a30f4aba3dcb5df96a995e452f85cb802",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "b780c5962a671b6dbf2ef13e6eb622090f3d564e91815f51458c660f68b357d6",
+          "questionIds": [
+            "2018_AMC_12A_Q15"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q007": {
+      "groupId": "task-68b5f8042be28ff9a075",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2018_AMC_10A_Q07.json",
+          "questionId": "2018_AMC_10A_Q07",
+          "bank": "amc",
+          "contentHash": "987c25809678ca48fb38683034053fd0aa53f71e5c783699e086f86fba9c3a02",
+          "figureHashes": {},
+          "displayHash": "68b5f8042be28ff9a0757bca04da8e72e146d5f6d1b33e9941b82fc676986ae6",
+          "answerRulesHash": "8fa1d4de71d76dca373ae83555562198ef33cfb23e91c1ecf7b14c2939567a09",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "9ca791318f761c40c2cbb59f0506a43c3af8cd42dc45c678530331035892df15",
+          "firstPassPacketId": "map-516",
+          "firstPassReceiptHash": "354c243e0f1955a63ac4128bd47d71a968558e8359b59abc31c4c1cfc2fc46a6",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "e1d4f572da3097d14b5eb92c59502303bbe61d41710e5ae4ff7da47721afd9cb",
+          "questionIds": [
+            "2018_AMC_10A_Q07"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q008": {
+      "groupId": "task-691fe5d4607d7a28b1ee",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2018_AMC_10A_Q24.json",
+          "questionId": "2018_AMC_10A_Q24",
+          "bank": "amc",
+          "contentHash": "d9bb2c817f8334cafb469959f845cd074ad3914bc9130adf6075fb25840655f4",
+          "figureHashes": {},
+          "displayHash": "691fe5d4607d7a28b1ee190b440dead52b6d98c64658d148d85a54b9c71abadb",
+          "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "dc72d7daab0a7962ff666e12e4a82878728a188f0514e2415159a1e2bdfb54b7",
+          "firstPassPacketId": "map-517",
+          "firstPassReceiptHash": "f4b6042436d8b2a7eff96ee22a6e2ddffc82016d66af6bb6f12f35f8fc98e9c4",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "25e705ef32ac7786afa3611a864333da5349a7a0d2c94b1c038aa2da808abde5",
+          "questionIds": [
+            "2018_AMC_10A_Q24"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q009": {
+      "groupId": "task-6927ee5ec79be8ce0c2a",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2020_AMC_12A_Q22.json",
+          "questionId": "2020_AMC_12A_Q22",
+          "bank": "amc",
+          "contentHash": "f73dc67ef75c5c42a9ef855f28391820e3602d3023d958c5d7124c655fd89430",
+          "figureHashes": {},
+          "displayHash": "6927ee5ec79be8ce0c2a3d3e415590d7758d0993813fbb1ebd0aae6fd9dd163a",
+          "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+          "level": "AMC 12",
+          "topic": "Algebra",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "3456ddd0ee6d4477afbb52009afb6620f7201bec7d963d811b7bb05bb34064c5",
+          "firstPassPacketId": "map-543",
+          "firstPassReceiptHash": "9b54388027da95cb1569222e73343eeff993840f6091e696065bcf9961d34d2b",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope",
+            "reported_limitation",
+            "unresolved_or_missing_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "c8eb6fda99dd3914d3e61d3358d65f84b55acae5f203ae94587cf9d39411a443",
+          "questionIds": [
+            "2020_AMC_12A_Q22"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q010": {
+      "groupId": "task-6aafa172263debad7e24",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2017_AMC_10A_Q20.json",
+          "questionId": "2017_AMC_10A_Q20",
+          "bank": "amc",
+          "contentHash": "d6d8b792b5f4d940d77ea43ba63519b688da544119c8df34b79539e06741e4db",
+          "figureHashes": {},
+          "displayHash": "6aafa172263debad7e242b921b72e4c9e1b498cb4d8d255252434b6802d50fab",
+          "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "7e14e15d07e006295e604927d082b9a5a07740544e5992788ac14fc50334f98e",
+          "firstPassPacketId": "map-506",
+          "firstPassReceiptHash": "15c5d861a8333f44533a7b2f031fd720cece1145510b573826480a120af68562",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "1cfb43fa6a12d7a3fbc7e43b726d84586e9f33ae14b81a5207001ec0f2ce4b4e",
+          "questionIds": [
+            "2017_AMC_10A_Q20"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q011": {
+      "groupId": "task-6b242e7f0c1df9a64ba0",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2018_AMC_12A_Q19.json",
+          "questionId": "2018_AMC_12A_Q19",
+          "bank": "amc",
+          "contentHash": "125ceab03cc9bcd9984e83d22e1e6e6ea62b6f4041f54c94d8e2587b06a91910",
+          "figureHashes": {},
+          "displayHash": "6b242e7f0c1df9a64ba06ac94ac522c97dff2835d15d1b12061786816cef8722",
+          "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+          "level": "AMC 12",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "81fd1f618a7c716453f8c0a270d78c042ec46d4f802283135ccf77f33cf8cba7",
+          "firstPassPacketId": "map-521",
+          "firstPassReceiptHash": "903a2ed29e983adf81058a6824b8bd9a30f4aba3dcb5df96a995e452f85cb802",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "bcf0d2da859fed22a2a4be541d314d16f22de00b859124f00da833b3853a528f",
+          "questionIds": [
+            "2018_AMC_12A_Q19"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q012": {
+      "groupId": "task-6d26b3e4f29429aed2bb",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2018_AMC_12A_Q22.json",
+          "questionId": "2018_AMC_12A_Q22",
+          "bank": "amc",
+          "contentHash": "53720c2f19e574e664e2a6a535e794e4311a15bc0ebaf575f3b077070640ca3e",
+          "figureHashes": {},
+          "displayHash": "6d26b3e4f29429aed2bb9f7ab9a15dae038e79509b44b3a88aefbb8cbc730c74",
+          "answerRulesHash": "30195ac12af612a37d753a2b6c289551b46f2daa651c84066e3f9fa3c440cafb",
+          "level": "AMC 12",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "29dc3827717866e6537db039ece83c5fcb2ce037e6629d0db1251a9af2ba5ade",
+          "firstPassPacketId": "map-522",
+          "firstPassReceiptHash": "efd08ed057dace52be9f60ada99327ad5ed44e9127e4379645263193d7c3c0e4",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "c74f02e583f967b5e9df12cb839f74bd360dcedcaf4f3d1a7e976b5ed1235e30",
+          "questionIds": [
+            "2018_AMC_12A_Q22"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q013": {
+      "groupId": "task-6d358bda921d6b8a2d40",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2018_AMC_10B_Q11.json",
+          "questionId": "2018_AMC_10B_Q11",
+          "bank": "amc",
+          "contentHash": "7447c9fc1c867c8830dfc72e41c45bb9d90d4d0795d4f668ad4939d73223686f",
+          "figureHashes": {},
+          "displayHash": "6d358bda921d6b8a2d405455474a8ec897395e2d46dbac0acb44f226df6803ff",
+          "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "58810582437bbdfc73100f3a4960718e970964ad34f1bd82586757ca83efc30d",
+          "firstPassPacketId": "map-518",
+          "firstPassReceiptHash": "8a16cdbb4bd203fe722d74448b1a66c1033d0eae395c31fff562be2bb471d818",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "623443ef787d4d8c0a90057d00443e5ee33c9ce8b5d543a087f73359a506648f",
+          "questionIds": [
+            "2018_AMC_10B_Q11"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q014": {
+      "groupId": "task-6d60555d4806f8f69e2c",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2016_AMC_10B_Q24.json",
+          "questionId": "2016_AMC_10B_Q24",
+          "bank": "amc",
+          "contentHash": "315ccfcb6f07541e4a986e51dfc823aace1dba5f5927c1496503467725cfabce",
+          "figureHashes": {},
+          "displayHash": "6d60555d4806f8f69e2ccd713605f464f6a0e2c6768967a8419f74cecbdaa59c",
+          "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "5708e994d4b0ca8251157a5dacf634254c546427a9d53b571057b149da651318",
+          "firstPassPacketId": "map-497",
+          "firstPassReceiptHash": "1d095c76c6d85738ad4241f619ae48b8585744f699dbbd4b25f6a9a0277c1d34",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "5f27ccb8f03f2461f9550f243ef6cfc213923ce902b884cf446972a33348388c",
+          "questionIds": [
+            "2016_AMC_10B_Q24"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q015": {
+      "groupId": "task-6e3564fdd832bdb1f619",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2018_AMC_12A_Q02.json",
+          "questionId": "2018_AMC_12A_Q02",
+          "bank": "amc",
+          "contentHash": "4f45196c81b1b038bedfa830af599f36f40cb45c95c880a4abfebfed0ce2c812",
+          "figureHashes": {},
+          "displayHash": "6e3564fdd832bdb1f6194d6e4312abae07e2cd5c312ded3920cd3e738bf3d921",
+          "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+          "level": "AMC 12",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "1b29ac5193fdc5ba2ff7669784131b799c51624d897480ebd29ddf955c6a3e32",
+          "firstPassPacketId": "map-520",
+          "firstPassReceiptHash": "0e6a0f507b0267e2b229572647db762570f2da6c3ad56a03e2f236f3cd9f0b73",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "ee0c1b4e5b0e669e0833317227c914e49604fe37bea82a9e5ddc17adc45564e8",
+          "questionIds": [
+            "2018_AMC_12A_Q02"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q016": {
+      "groupId": "task-6f5b8a965d92101552f8",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2020_AMC_12B_Q12.json",
+          "questionId": "2020_AMC_12B_Q12",
+          "bank": "amc",
+          "contentHash": "df37e47a7d70547934ae037b322efb9879a5fbae692c4f647c76d1610cf8bd19",
+          "figureHashes": {},
+          "displayHash": "6f5b8a965d92101552f8666f338a625a5c92445c15e85710e81b58838be02f6a",
+          "answerRulesHash": "8fa1d4de71d76dca373ae83555562198ef33cfb23e91c1ecf7b14c2939567a09",
+          "level": "AMC 12",
+          "topic": "Geometry",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "af8c1403cb985467a4e91d9822340d9fb911485f0ae453821901aabd8ee1da3f",
+          "firstPassPacketId": "map-544",
+          "firstPassReceiptHash": "81551c225f0c54ab4f734f839f4223ccb73c45a81f7bf9ffe82d310c33c047e9",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": []
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "3b451d6ba2ac241260b40477428e050b1b875daedb7f0776936fc4b15d832ed4",
+          "questionIds": [
+            "2020_AMC_12B_Q12"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q017": {
+      "groupId": "task-70009a2b47ab10c121ce",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2019_AMC_10B_Q24.json",
+          "questionId": "2019_AMC_10B_Q24",
+          "bank": "amc",
+          "contentHash": "6d7ffdd79bcf0849fc15784252bd2fc69466911eecd3f53fe26ad65711407083",
+          "figureHashes": {},
+          "displayHash": "70009a2b47ab10c121cec0658fcc7e7dde207b90ae3983d5a1850fc588af05b5",
+          "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "5fe80ebbcb810bccfc6ab512999ab6f20e88069bd45d8983b03efd2437092755",
+          "firstPassPacketId": "map-530",
+          "firstPassReceiptHash": "33288b6a9eea197c9b5063587db01877a1e59c96cce15568ff76edc39becaf41",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "reported_limitation",
+            "unresolved_or_missing_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "4fb561b3c26b5b1f9fa84bee3aef7696b19e8387f7878db36b54570ae6702af9",
+          "questionIds": [
+            "2019_AMC_10B_Q24"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q018": {
+      "groupId": "task-7018af2840fc78664f35",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2017_AMC_12B_Q20.json",
+          "questionId": "2017_AMC_12B_Q20",
+          "bank": "amc",
+          "contentHash": "d4f76779a5379c786b895c951ebbb67d6d121cc22b10cc203cfac6b61470aa85",
+          "figureHashes": {},
+          "displayHash": "7018af2840fc78664f359f9d0cad764fc57de40a67764b570651a5c451083c63",
+          "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+          "level": "AMC 12",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "45ec62cff446471d79ef70e8dfc6c2e1012d805839cc594c9aafb4a041184bb5",
+          "firstPassPacketId": "map-513",
+          "firstPassReceiptHash": "d00250b7d08a9215420534b56803d7caf4d12ede5df9efa38576175ce781dc7b",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope",
+            "reported_limitation",
+            "unresolved_or_missing_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "771f8ecc9b1a66cc457e69913c94a8e3667476d71306d1b88afa00f1c3bdbbd7",
+          "questionIds": [
+            "2017_AMC_12B_Q20"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q019": {
+      "groupId": "task-718f7b5e1790a1882a8f",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2020_AMC_12A_Q16.json",
+          "questionId": "2020_AMC_12A_Q16",
+          "bank": "amc",
+          "contentHash": "41c1a99925831910d327aae8c1c5bdeb0bf2b8bf8240bcf9fbe420b512c03fea",
+          "figureHashes": {},
+          "displayHash": "718f7b5e1790a1882a8f0c3a1bc91d8f0ca1665beff7e4a7e2df31a97f53d697",
+          "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+          "level": "AMC 12",
+          "topic": "Counting & Probability",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "1d69e64f68b6e5246c595ec7f7d93355b8b372afa7a82d25a854b1aa7877540f",
+          "firstPassPacketId": "map-543",
+          "firstPassReceiptHash": "9b54388027da95cb1569222e73343eeff993840f6091e696065bcf9961d34d2b",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "reported_limitation",
+            "unresolved_or_missing_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "7ef669145637358a5092f7b2e7fbf0710f613312315cbce7c0b96ba458560708",
+          "questionIds": [
+            "2020_AMC_12A_Q16"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    },
+    "q020": {
+      "groupId": "task-728e8fa149213ac89e44",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2018_AMC_10B_Q23.json",
+          "questionId": "2018_AMC_10B_Q23",
+          "bank": "amc",
+          "contentHash": "2fa5d7e9d7c74a28e4a90722da9789a3368b8259a0ff4a4d1b25eac67e59cf8d",
+          "figureHashes": {},
+          "displayHash": "728e8fa149213ac89e445eb74a83be308d1592e48166f378fdd5514c9e597776",
+          "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "7f9dea290e400ea9c7832eb87b92f39d26f3fa6c10789582c707249ef2265909",
+          "firstPassPacketId": "map-519",
+          "firstPassReceiptHash": "116e30f7a43f964942fbb5cdd68d5592d1824a4576820564246ff1d29467c45d",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "extension_scope",
+            "route_scope_risk"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "91f06acabbf8848e773115a37fee04462dadf96c00c4a3276b80d28559bd3497",
+          "questionIds": [
+            "2018_AMC_10B_Q23"
+          ]
+        }
+      ],
+      "imageSlots": [],
+      "figureHashes": {}
+    }
+  },
+  "imageCount": 0,
+  "imageHashes": [],
+  "candidateExposure": true,
+  "keysSolutionsSourceLabelsExposed": false,
+  "receiptBase": {
+    "schemaVersion": 1,
+    "status": "prepared_not_reviewed",
+    "at": "2026-11-05T12:25:59.851290+00:00",
+    "reviewMode": "targeted",
+    "auditPacketId": "audit-005",
+    "packetHash": "c9061edd6139715e390806a8b84459388060198e6956f084af70501ccaecbbd3",
+    "planHash": "00b783ca963fe883a92059f866a9e801970facce1af386759cbc0e103cda6520",
+    "catalogHash": "5bc81d43a32ca981d0a974516852f2eb731325d0f85b14cab04d76bdfd842aa7",
+    "inputHash": "741c493ef97fb1a6248fde55173ebecdf904b2409b5e2e207b3976e0e0fd63e4",
+    "aliasBindings": {
+      "q001": {
+        "groupId": "task-62d42addce48b2071caf",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2020_AMC_10B_Q24.json",
+            "questionId": "2020_AMC_10B_Q24",
+            "bank": "amc",
+            "contentHash": "6ba960eac3cd013846be6ed1ccb14dbf1b47072a5fff0722eddb488a183e2912",
+            "figureHashes": {},
+            "displayHash": "62d42addce48b2071caf57a0fd3a7385e19dc6fb7820b051222521fc59795b6d",
+            "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+            "level": "AMC 10",
+            "topic": "Counting & Probability",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "518cc6975782e5da94ec8e62bc64ac7d6dbeb323b1c2aadbd5171f9da8f70c17",
+            "firstPassPacketId": "map-541",
+            "firstPassReceiptHash": "6329e4e02da62af6e1a4fcb43c139ef8f5bb28dddc929e0c825bbfe913b09bf4",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "920f0c3d82d2747ac6ba8da11f4f8f098d925005f6cacc9a6edc5e3960c3a3df",
+            "questionIds": [
+              "2020_AMC_10B_Q24"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q002": {
+        "groupId": "task-639e3fb6fe71a2a55e48",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2018_AMC_12B_Q08.json",
+            "questionId": "2018_AMC_12B_Q08",
+            "bank": "amc",
+            "contentHash": "45e8534bb8bda8362f5d8fd1d8198ae908bb2875c3e73c3a83339e70be7d72da",
+            "figureHashes": {},
+            "displayHash": "639e3fb6fe71a2a55e482e45fe8dcf6f86080da37bcef653d625ffd261fd67d2",
+            "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+            "level": "AMC 12",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "4907e8b3d77dfabbd9939215692035b4fdd6d62264b73d3f79f6473ad0310794",
+            "firstPassPacketId": "map-523",
+            "firstPassReceiptHash": "56e9874c027998eec7fd72381d52efc0168f7db5f99b0b4c06edde358d63e106",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "8086c498d991f3dd39ff80debe5432a8e49fb2e6cdf90971641de4d53480b4cf",
+            "questionIds": [
+              "2018_AMC_12B_Q08"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q003": {
+        "groupId": "task-655f62b4241571c03a38",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2017_AMC_10A_Q11.json",
+            "questionId": "2017_AMC_10A_Q11",
+            "bank": "amc",
+            "contentHash": "5dbad7cfbc335acd575ad58d90a2f0f70daa2b6a169de852dcc7fceec76647f5",
+            "figureHashes": {},
+            "displayHash": "655f62b4241571c03a386753e8fb110d66188e29f0590142f0fe301b4905b2cf",
+            "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "89297a7e8e285f4628f7e289826a6d59caa544d823f28da76d2bd8a639b05c16",
+            "firstPassPacketId": "map-505",
+            "firstPassReceiptHash": "424697d6425566dc19a52a69f66248491b683ec2af84e66453e5b478d0571e15",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "unresolved_or_missing_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "41ce375caf23752399d6d99039b29d76b664cffea13ec0ab24e8a987d2372d25",
+            "questionIds": [
+              "2017_AMC_10A_Q11"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q004": {
+        "groupId": "task-65dda66125cbfc884461",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2016_AMC_12B_Q12.json",
+            "questionId": "2016_AMC_12B_Q12",
+            "bank": "amc",
+            "contentHash": "3b38788cf8a1849d53cffdee1455e1fdd8977a40986a35393eae37564eda92bf",
+            "figureHashes": {},
+            "displayHash": "65dda66125cbfc884461fd3bc69e319bf8485bfc49ee1afcdc5b8080b630096f",
+            "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+            "level": "AMC 12",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "c30041c0f3c5daeea0d00ee7b3a4f3b1997fb0a8064bd692fed067b081da2d55",
+            "firstPassPacketId": "map-501",
+            "firstPassReceiptHash": "4b2acc1b0584c2a164d6d71110e32e6b11a386f4f6df263bf459f1b963f26a58",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "aabc2443ab5530c3ba45a576e4662232a810bca15208d4d15605b7d2aef87f49",
+            "questionIds": [
+              "2016_AMC_12B_Q12"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q005": {
+        "groupId": "task-669750ea2c4b139fdb94",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2020_AMC_10A_Q13.json",
+            "questionId": "2020_AMC_10A_Q13",
+            "bank": "amc",
+            "contentHash": "4c671e8cfeb45864cf60152bc4525e356e2f7894d7a6f83355d82c4e44e1ab9f",
+            "figureHashes": {},
+            "displayHash": "669750ea2c4b139fdb9466dd20d4d9105d2ad9b637777cfa8a6839236019081d",
+            "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+            "level": "AMC 10",
+            "topic": "Counting & Probability",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "1b735589973ff239ceb43631a0d3942c76f2de0c51a46b6138ff323c842af600",
+            "firstPassPacketId": "map-538",
+            "firstPassReceiptHash": "e7932d7ef5147a3028b148fe6d67d3cfd13345f608936032af3076d10c0ad1a5",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope",
+              "route_scope_risk"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "f91316c592ac6ce6c8f3edaddb30f2f027f0a332c3e8c44e386a8e2d04b2b4a1",
+            "questionIds": [
+              "2020_AMC_10A_Q13"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q006": {
+        "groupId": "task-66a9caf791c208be1ebc",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2018_AMC_12A_Q15.json",
+            "questionId": "2018_AMC_12A_Q15",
+            "bank": "amc",
+            "contentHash": "a98a18b5cfa4b7fe5283c1cc795e323c714bb9c766a0bf0eaf66284bbbfb92cc",
+            "figureHashes": {},
+            "displayHash": "66a9caf791c208be1ebcce72c31dcba4e357dc32eaa50a9ce19384c10f03a6b1",
+            "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+            "level": "AMC 12",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "7dfa90abbb21e8d1b3e8649eb45a392dbc15b713171077e73a0b7ff7511b685c",
+            "firstPassPacketId": "map-521",
+            "firstPassReceiptHash": "903a2ed29e983adf81058a6824b8bd9a30f4aba3dcb5df96a995e452f85cb802",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "b780c5962a671b6dbf2ef13e6eb622090f3d564e91815f51458c660f68b357d6",
+            "questionIds": [
+              "2018_AMC_12A_Q15"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q007": {
+        "groupId": "task-68b5f8042be28ff9a075",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2018_AMC_10A_Q07.json",
+            "questionId": "2018_AMC_10A_Q07",
+            "bank": "amc",
+            "contentHash": "987c25809678ca48fb38683034053fd0aa53f71e5c783699e086f86fba9c3a02",
+            "figureHashes": {},
+            "displayHash": "68b5f8042be28ff9a0757bca04da8e72e146d5f6d1b33e9941b82fc676986ae6",
+            "answerRulesHash": "8fa1d4de71d76dca373ae83555562198ef33cfb23e91c1ecf7b14c2939567a09",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "9ca791318f761c40c2cbb59f0506a43c3af8cd42dc45c678530331035892df15",
+            "firstPassPacketId": "map-516",
+            "firstPassReceiptHash": "354c243e0f1955a63ac4128bd47d71a968558e8359b59abc31c4c1cfc2fc46a6",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "e1d4f572da3097d14b5eb92c59502303bbe61d41710e5ae4ff7da47721afd9cb",
+            "questionIds": [
+              "2018_AMC_10A_Q07"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q008": {
+        "groupId": "task-691fe5d4607d7a28b1ee",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2018_AMC_10A_Q24.json",
+            "questionId": "2018_AMC_10A_Q24",
+            "bank": "amc",
+            "contentHash": "d9bb2c817f8334cafb469959f845cd074ad3914bc9130adf6075fb25840655f4",
+            "figureHashes": {},
+            "displayHash": "691fe5d4607d7a28b1ee190b440dead52b6d98c64658d148d85a54b9c71abadb",
+            "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "dc72d7daab0a7962ff666e12e4a82878728a188f0514e2415159a1e2bdfb54b7",
+            "firstPassPacketId": "map-517",
+            "firstPassReceiptHash": "f4b6042436d8b2a7eff96ee22a6e2ddffc82016d66af6bb6f12f35f8fc98e9c4",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "25e705ef32ac7786afa3611a864333da5349a7a0d2c94b1c038aa2da808abde5",
+            "questionIds": [
+              "2018_AMC_10A_Q24"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q009": {
+        "groupId": "task-6927ee5ec79be8ce0c2a",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2020_AMC_12A_Q22.json",
+            "questionId": "2020_AMC_12A_Q22",
+            "bank": "amc",
+            "contentHash": "f73dc67ef75c5c42a9ef855f28391820e3602d3023d958c5d7124c655fd89430",
+            "figureHashes": {},
+            "displayHash": "6927ee5ec79be8ce0c2a3d3e415590d7758d0993813fbb1ebd0aae6fd9dd163a",
+            "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+            "level": "AMC 12",
+            "topic": "Algebra",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "3456ddd0ee6d4477afbb52009afb6620f7201bec7d963d811b7bb05bb34064c5",
+            "firstPassPacketId": "map-543",
+            "firstPassReceiptHash": "9b54388027da95cb1569222e73343eeff993840f6091e696065bcf9961d34d2b",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope",
+              "reported_limitation",
+              "unresolved_or_missing_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "c8eb6fda99dd3914d3e61d3358d65f84b55acae5f203ae94587cf9d39411a443",
+            "questionIds": [
+              "2020_AMC_12A_Q22"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q010": {
+        "groupId": "task-6aafa172263debad7e24",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2017_AMC_10A_Q20.json",
+            "questionId": "2017_AMC_10A_Q20",
+            "bank": "amc",
+            "contentHash": "d6d8b792b5f4d940d77ea43ba63519b688da544119c8df34b79539e06741e4db",
+            "figureHashes": {},
+            "displayHash": "6aafa172263debad7e242b921b72e4c9e1b498cb4d8d255252434b6802d50fab",
+            "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "7e14e15d07e006295e604927d082b9a5a07740544e5992788ac14fc50334f98e",
+            "firstPassPacketId": "map-506",
+            "firstPassReceiptHash": "15c5d861a8333f44533a7b2f031fd720cece1145510b573826480a120af68562",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "1cfb43fa6a12d7a3fbc7e43b726d84586e9f33ae14b81a5207001ec0f2ce4b4e",
+            "questionIds": [
+              "2017_AMC_10A_Q20"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q011": {
+        "groupId": "task-6b242e7f0c1df9a64ba0",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2018_AMC_12A_Q19.json",
+            "questionId": "2018_AMC_12A_Q19",
+            "bank": "amc",
+            "contentHash": "125ceab03cc9bcd9984e83d22e1e6e6ea62b6f4041f54c94d8e2587b06a91910",
+            "figureHashes": {},
+            "displayHash": "6b242e7f0c1df9a64ba06ac94ac522c97dff2835d15d1b12061786816cef8722",
+            "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+            "level": "AMC 12",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "81fd1f618a7c716453f8c0a270d78c042ec46d4f802283135ccf77f33cf8cba7",
+            "firstPassPacketId": "map-521",
+            "firstPassReceiptHash": "903a2ed29e983adf81058a6824b8bd9a30f4aba3dcb5df96a995e452f85cb802",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "bcf0d2da859fed22a2a4be541d314d16f22de00b859124f00da833b3853a528f",
+            "questionIds": [
+              "2018_AMC_12A_Q19"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q012": {
+        "groupId": "task-6d26b3e4f29429aed2bb",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2018_AMC_12A_Q22.json",
+            "questionId": "2018_AMC_12A_Q22",
+            "bank": "amc",
+            "contentHash": "53720c2f19e574e664e2a6a535e794e4311a15bc0ebaf575f3b077070640ca3e",
+            "figureHashes": {},
+            "displayHash": "6d26b3e4f29429aed2bb9f7ab9a15dae038e79509b44b3a88aefbb8cbc730c74",
+            "answerRulesHash": "30195ac12af612a37d753a2b6c289551b46f2daa651c84066e3f9fa3c440cafb",
+            "level": "AMC 12",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "29dc3827717866e6537db039ece83c5fcb2ce037e6629d0db1251a9af2ba5ade",
+            "firstPassPacketId": "map-522",
+            "firstPassReceiptHash": "efd08ed057dace52be9f60ada99327ad5ed44e9127e4379645263193d7c3c0e4",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "c74f02e583f967b5e9df12cb839f74bd360dcedcaf4f3d1a7e976b5ed1235e30",
+            "questionIds": [
+              "2018_AMC_12A_Q22"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q013": {
+        "groupId": "task-6d358bda921d6b8a2d40",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2018_AMC_10B_Q11.json",
+            "questionId": "2018_AMC_10B_Q11",
+            "bank": "amc",
+            "contentHash": "7447c9fc1c867c8830dfc72e41c45bb9d90d4d0795d4f668ad4939d73223686f",
+            "figureHashes": {},
+            "displayHash": "6d358bda921d6b8a2d405455474a8ec897395e2d46dbac0acb44f226df6803ff",
+            "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "58810582437bbdfc73100f3a4960718e970964ad34f1bd82586757ca83efc30d",
+            "firstPassPacketId": "map-518",
+            "firstPassReceiptHash": "8a16cdbb4bd203fe722d74448b1a66c1033d0eae395c31fff562be2bb471d818",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "623443ef787d4d8c0a90057d00443e5ee33c9ce8b5d543a087f73359a506648f",
+            "questionIds": [
+              "2018_AMC_10B_Q11"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q014": {
+        "groupId": "task-6d60555d4806f8f69e2c",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2016_AMC_10B_Q24.json",
+            "questionId": "2016_AMC_10B_Q24",
+            "bank": "amc",
+            "contentHash": "315ccfcb6f07541e4a986e51dfc823aace1dba5f5927c1496503467725cfabce",
+            "figureHashes": {},
+            "displayHash": "6d60555d4806f8f69e2ccd713605f464f6a0e2c6768967a8419f74cecbdaa59c",
+            "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "5708e994d4b0ca8251157a5dacf634254c546427a9d53b571057b149da651318",
+            "firstPassPacketId": "map-497",
+            "firstPassReceiptHash": "1d095c76c6d85738ad4241f619ae48b8585744f699dbbd4b25f6a9a0277c1d34",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "5f27ccb8f03f2461f9550f243ef6cfc213923ce902b884cf446972a33348388c",
+            "questionIds": [
+              "2016_AMC_10B_Q24"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q015": {
+        "groupId": "task-6e3564fdd832bdb1f619",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2018_AMC_12A_Q02.json",
+            "questionId": "2018_AMC_12A_Q02",
+            "bank": "amc",
+            "contentHash": "4f45196c81b1b038bedfa830af599f36f40cb45c95c880a4abfebfed0ce2c812",
+            "figureHashes": {},
+            "displayHash": "6e3564fdd832bdb1f6194d6e4312abae07e2cd5c312ded3920cd3e738bf3d921",
+            "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+            "level": "AMC 12",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "1b29ac5193fdc5ba2ff7669784131b799c51624d897480ebd29ddf955c6a3e32",
+            "firstPassPacketId": "map-520",
+            "firstPassReceiptHash": "0e6a0f507b0267e2b229572647db762570f2da6c3ad56a03e2f236f3cd9f0b73",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "ee0c1b4e5b0e669e0833317227c914e49604fe37bea82a9e5ddc17adc45564e8",
+            "questionIds": [
+              "2018_AMC_12A_Q02"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q016": {
+        "groupId": "task-6f5b8a965d92101552f8",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2020_AMC_12B_Q12.json",
+            "questionId": "2020_AMC_12B_Q12",
+            "bank": "amc",
+            "contentHash": "df37e47a7d70547934ae037b322efb9879a5fbae692c4f647c76d1610cf8bd19",
+            "figureHashes": {},
+            "displayHash": "6f5b8a965d92101552f8666f338a625a5c92445c15e85710e81b58838be02f6a",
+            "answerRulesHash": "8fa1d4de71d76dca373ae83555562198ef33cfb23e91c1ecf7b14c2939567a09",
+            "level": "AMC 12",
+            "topic": "Geometry",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "af8c1403cb985467a4e91d9822340d9fb911485f0ae453821901aabd8ee1da3f",
+            "firstPassPacketId": "map-544",
+            "firstPassReceiptHash": "81551c225f0c54ab4f734f839f4223ccb73c45a81f7bf9ffe82d310c33c047e9",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": []
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "3b451d6ba2ac241260b40477428e050b1b875daedb7f0776936fc4b15d832ed4",
+            "questionIds": [
+              "2020_AMC_12B_Q12"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q017": {
+        "groupId": "task-70009a2b47ab10c121ce",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2019_AMC_10B_Q24.json",
+            "questionId": "2019_AMC_10B_Q24",
+            "bank": "amc",
+            "contentHash": "6d7ffdd79bcf0849fc15784252bd2fc69466911eecd3f53fe26ad65711407083",
+            "figureHashes": {},
+            "displayHash": "70009a2b47ab10c121cec0658fcc7e7dde207b90ae3983d5a1850fc588af05b5",
+            "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "5fe80ebbcb810bccfc6ab512999ab6f20e88069bd45d8983b03efd2437092755",
+            "firstPassPacketId": "map-530",
+            "firstPassReceiptHash": "33288b6a9eea197c9b5063587db01877a1e59c96cce15568ff76edc39becaf41",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "reported_limitation",
+              "unresolved_or_missing_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "4fb561b3c26b5b1f9fa84bee3aef7696b19e8387f7878db36b54570ae6702af9",
+            "questionIds": [
+              "2019_AMC_10B_Q24"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q018": {
+        "groupId": "task-7018af2840fc78664f35",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2017_AMC_12B_Q20.json",
+            "questionId": "2017_AMC_12B_Q20",
+            "bank": "amc",
+            "contentHash": "d4f76779a5379c786b895c951ebbb67d6d121cc22b10cc203cfac6b61470aa85",
+            "figureHashes": {},
+            "displayHash": "7018af2840fc78664f359f9d0cad764fc57de40a67764b570651a5c451083c63",
+            "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+            "level": "AMC 12",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "45ec62cff446471d79ef70e8dfc6c2e1012d805839cc594c9aafb4a041184bb5",
+            "firstPassPacketId": "map-513",
+            "firstPassReceiptHash": "d00250b7d08a9215420534b56803d7caf4d12ede5df9efa38576175ce781dc7b",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope",
+              "reported_limitation",
+              "unresolved_or_missing_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "771f8ecc9b1a66cc457e69913c94a8e3667476d71306d1b88afa00f1c3bdbbd7",
+            "questionIds": [
+              "2017_AMC_12B_Q20"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q019": {
+        "groupId": "task-718f7b5e1790a1882a8f",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2020_AMC_12A_Q16.json",
+            "questionId": "2020_AMC_12A_Q16",
+            "bank": "amc",
+            "contentHash": "41c1a99925831910d327aae8c1c5bdeb0bf2b8bf8240bcf9fbe420b512c03fea",
+            "figureHashes": {},
+            "displayHash": "718f7b5e1790a1882a8f0c3a1bc91d8f0ca1665beff7e4a7e2df31a97f53d697",
+            "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+            "level": "AMC 12",
+            "topic": "Counting & Probability",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "1d69e64f68b6e5246c595ec7f7d93355b8b372afa7a82d25a854b1aa7877540f",
+            "firstPassPacketId": "map-543",
+            "firstPassReceiptHash": "9b54388027da95cb1569222e73343eeff993840f6091e696065bcf9961d34d2b",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "reported_limitation",
+              "unresolved_or_missing_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "7ef669145637358a5092f7b2e7fbf0710f613312315cbce7c0b96ba458560708",
+            "questionIds": [
+              "2020_AMC_12A_Q16"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      },
+      "q020": {
+        "groupId": "task-728e8fa149213ac89e44",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2018_AMC_10B_Q23.json",
+            "questionId": "2018_AMC_10B_Q23",
+            "bank": "amc",
+            "contentHash": "2fa5d7e9d7c74a28e4a90722da9789a3368b8259a0ff4a4d1b25eac67e59cf8d",
+            "figureHashes": {},
+            "displayHash": "728e8fa149213ac89e445eb74a83be308d1592e48166f378fdd5514c9e597776",
+            "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "7f9dea290e400ea9c7832eb87b92f39d26f3fa6c10789582c707249ef2265909",
+            "firstPassPacketId": "map-519",
+            "firstPassReceiptHash": "116e30f7a43f964942fbb5cdd68d5592d1824a4576820564246ff1d29467c45d",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "extension_scope",
+              "route_scope_risk"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "91f06acabbf8848e773115a37fee04462dadf96c00c4a3276b80d28559bd3497",
+            "questionIds": [
+              "2018_AMC_10B_Q23"
+            ]
+          }
+        ],
+        "imageSlots": [],
+        "figureHashes": {}
+      }
+    },
+    "imageCount": 0,
+    "imageHashes": [],
+    "candidateExposure": true,
+    "keysSolutionsSourceLabelsExposed": false,
+    "promotionStatus": "not_promoted"
+  },
+  "usage": {
+    "attribution": {
+      "items": {
+        "msg_068a65e58e2a6446016aec75da099c87d2a03e945e85a9a407": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "content": [
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 32222,
+              "output_tokens": 0
+            }
+          ],
+          "input_tokens": 32222,
+          "output_tokens": 0
+        },
+        "rs_068a65e58e2a6446016aec75dc2dfc87d2b10e39baf63e9cba": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 2,
+          "output_tokens": 516
+        },
+        "rs_068a65e58e2a6446016aec75ea9cd487d2a865a0d5b84d7f26": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_068a65e58e2a6446016aec75f8efd487d29ec6464466f5a69c": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_068a65e58e2a6446016aec7608af8487d2a7790c11933395cb": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_068a65e58e2a6446016aec7613b7a487d291a493891837cd2a": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_068a65e58e2a6446016aec76207e1c87d290fbe411a3c5dafd": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_068a65e58e2a6446016aec762cbf1c87d2b7748ca95127fd0a": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_068a65e58e2a6446016aec7639e31087d2b76a9b735bcd0e08": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_068a65e58e2a6446016aec76448d4087d293fb7de6d035daf9": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_068a65e58e2a6446016aec764e2b1887d2babe6ca9f9af65ad": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_068a65e58e2a6446016aec765c0b9487d2b9e976616ea6d22e": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_068a65e58e2a6446016aec76694e4887d2854c9e8177d8d7b4": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_068a65e58e2a6446016aec7676180087d294332aa8b1f0b1a8": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_068a65e58e2a6446016aec76827e6c87d2a2ffea15f21cf6eb": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_068a65e58e2a6446016aec769190a887d284960eea08202d50": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_068a65e58e2a6446016aec76a1135c87d28ba91aa944400dab": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_068a65e58e2a6446016aec76af9f8087d2939a0e902f2a76a0": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_068a65e58e2a6446016aec76be311c87d292eafe457dc984bf": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_068a65e58e2a6446016aec76ca541c87d2864270675c7377b4": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_068a65e58e2a6446016aec76d9548087d2b15e1f2e4a1aff4e": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "msg_068a65e58e2a6446016aec76e75b3887d28c53eaf1cbe25e23": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "content": [
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 0,
+              "output_tokens": 5957
+            }
+          ],
+          "input_tokens": 0,
+          "output_tokens": 5957
+        }
+      },
+      "request_fields": {
+        "text.format": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 13056,
+          "input_tokens": 13171,
+          "output_tokens": 0
+        },
+        "instructions": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 164,
+          "output_tokens": 0
+        }
+      }
+    },
+    "input_tokens": 45559,
+    "input_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 13056
+    },
+    "output_tokens": 16315,
+    "output_tokens_details": {
+      "reasoning_tokens": 10358
+    },
+    "total_tokens": 61874
+  },
+  "returnedModel": "gpt-6.1-sol",
+  "returnedReasoning": {
+    "context": "all_turns",
+    "effort": "xhigh",
+    "mode": "standard",
+    "summary": null
+  },
+  "responseReceivedAt": "2026-11-05T12:31:44.500769+00:00",
+  "audits": [
+    {
+      "questionId": "q001",
+      "decision": "accept",
+      "assessedIds": [
+        "math:floor-ceiling",
+        "math:integer-diophantine-equations"
+      ],
+      "supportIds": [
+        "cnm_h020"
+      ],
+      "routes": [
+        {
+          "id": "quadratic-sign-intervals",
+          "label": "Quadratic inequality intervals",
+          "nodeIds": [
+            "cnm_h024"
+          ]
+        },
+        {
+          "id": "integer-square-bounds",
+          "label": "Completed-square integer bounds",
+          "nodeIds": [
+            "math:completing-square-expression",
+            "cnm_079"
+          ]
+        }
+      ],
+      "derivedAnswer": "C: 6",
+      "mathematicalReason": "Put k=floor(sqrt(n)). Then n=70k-1000 and k²≤70k-1000<(k+1)². The first inequality is (k-35)²≤225, giving 20≤k≤50. The second is (k-34)²>155. Since 12²<155<13², an integer k must satisfy k≤21 or k≥47. Thus k is one of 20,21,47,48,49,50. Each gives a distinct positive n satisfying the original equation. Both proposed inequality routes fit their stated scopes.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q002",
+      "decision": "accept",
+      "assessedIds": [
+        "math:centroid-ratios",
+        "cnm_p192"
+      ],
+      "supportIds": [
+        "cnm_275"
+      ],
+      "routes": [],
+      "derivedAnswer": "C: 50",
+      "mathematicalReason": "Let O be the midpoint of diameter AB. The centroid G lies on CO with CG:GO=2:1, so OG=OC/3=4. Consequently, its locus is the radius-4 circle centered at O, with the two images of A and B omitted. These omissions do not change the intended enclosed area, 16π≈50.265, which rounds to 50. The centroid, homothety, and circle-area scopes are appropriate.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q003",
+      "decision": "unresolved",
+      "assessedIds": [],
+      "supportIds": [
+        "cnm_h107",
+        "cnm_p207"
+      ],
+      "routes": [],
+      "derivedAnswer": "D: 20",
+      "mathematicalReason": "The points whose nearest point on AB is an interior point form a radius-3 cylinder of length AB. The two endpoint regions are hemispheres, together forming one radius-3 sphere. Hence 216π=9π·AB+(4/3)π·3³=9π·AB+36π, so AB=20 units. The supplied scopes cover decomposition and cylinder volume, but do not establish coverage of the absolute sphere-volume formula.",
+      "candidateFindings": [],
+      "needsNewNodes": [
+        "Absolute sphere and hemisphere volume formulas, V=(4/3)πr³ and V=(2/3)πr³, if not already covered after scope lookup."
+      ],
+      "limitations": [
+        "Request scope lookup for cnm_h111 and cnm_h112. Their full definitions were not supplied, so their titles alone cannot establish formula coverage or independently verify the candidate's claim that cnm_h112 covers only scaling."
+      ],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q004",
+      "decision": "accept",
+      "assessedIds": [
+        "math:graph-models"
+      ],
+      "supportIds": [
+        "cnm_p156"
+      ],
+      "routes": [],
+      "derivedAnswer": "C: 7",
+      "mathematicalReason": "Represent squares as vertices and shared edges as graph edges. The entries 1 through 9 form a path visiting every vertex. In a checkerboard coloring, every step changes color. The color containing the four corners and center has five squares, so it contains the five odd entries. Those entries sum to 25; subtracting the corner sum 18 leaves center entry 7. For example, rows (1,2,3), (8,7,4), (9,6,5) realize the conditions. The graph-modeling scope and elementary parity support are defensible.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q005",
+      "decision": "accept",
+      "assessedIds": [
+        "math:recursive-counting-probability"
+      ],
+      "supportIds": [
+        "cnm_h246",
+        "cnm_h139"
+      ],
+      "routes": [],
+      "derivedAnswer": "B: 5/8",
+      "mathematicalReason": "From (1,2), the first jump reaches the vertical boundary at (0,2) with probability 1/4. The other three neighbors are (2,2), (1,1), and (1,3). Each lies on a diagonal reflection that fixes the starting point and exchanges vertical and horizontal exits, so each has vertical-exit probability 1/2. Absorption occurs almost surely: from any interior state, three consecutive left jumps suffice to reach a boundary, giving a uniform positive absorption probability in each three-step block. Corners cannot be the first boundary point reached. Thus the desired probability is 1/4+3(1/4)(1/2)=5/8. This fits first-step probability reasoning and the listed support scopes.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q006",
+      "decision": "accept",
+      "assessedIds": [
+        "math:symmetry-counting",
+        "cnm_h231"
+      ],
+      "supportIds": [],
+      "routes": [],
+      "derivedAnswer": "B: 1022",
+      "mathematicalReason": "Index cell centers by coordinates from -3 through 3. Under the square's rotations and reflections, a cell orbit is determined by the unordered pair of absolute coordinates, represented uniquely by 0≤u≤v≤3. There are 4+3+2+1=10 such orbits, including the smaller central and axial orbits. An invariant code assigns one color independently to each orbit, giving 2¹⁰ codes. Removing the two monochromatic codes leaves 1022. This is a defensible use of orbit/fixed-arrangement reasoning; it does not divide arbitrary colorings into equivalence classes or divide by eight.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q007",
+      "decision": "accept",
+      "assessedIds": [
+        "math:prime-factorization"
+      ],
+      "supportIds": [
+        "cnm_164"
+      ],
+      "routes": [],
+      "derivedAnswer": "E: 9",
+      "mathematicalReason": "Since 4000=2⁵·5³, the expression equals 2^(n+5)·5^(3-n). Unique prime factorization makes it an integer exactly when both exponents are nonnegative: -5≤n≤3. This gives nine integer values, including zero and negative values. The assessed exponent-structure scope and negative-exponent support match the solution.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q008",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_p150"
+      ],
+      "supportIds": [
+        "cnm_185"
+      ],
+      "routes": [
+        {
+          "id": "side-ratio-and-similarity",
+          "label": "Angle-bisector side ratio and similarity",
+          "nodeIds": [
+            "math:angle-bisector-side-ratio",
+            "cnm_271",
+            "cnm_272",
+            "cnm_p148"
+          ]
+        },
+        {
+          "id": "equal-distance-area-splits",
+          "label": "Equal-distance triangle area splits",
+          "nodeIds": [
+            "cnm_128",
+            "cnm_p148"
+          ]
+        }
+      ],
+      "derivedAnswer": "D: 75",
+      "mathematicalReason": "The angle-bisector theorem gives BG:GC=AB:AC=5:1, so area(ABG)=100. Since DE is a midsegment parallel to BC, triangles ADF and ABG are similar with length ratio 1/2; therefore area(ADF)=25. Subtraction gives area(FDBG)=100-25=75. Alternatively, equal distances from the bisector points to AB and AC give the same 5:1 area splits, while elementary base-height reasoning gives area(ADE)=120/4=30. Both proposed routes are valid without requiring their union.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q009",
+      "decision": "unresolved",
+      "assessedIds": [],
+      "supportIds": [
+        "cnm_h102",
+        "cnm_h103",
+        "cnm_h104",
+        "math:infinite-geometric-series"
+      ],
+      "routes": [],
+      "derivedAnswer": "B: 7/16",
+      "mathematicalReason": "Squaring a_n+b_ni gives 2a_nb_n=Im((3+4i)^n). Also a_n²+b_n²=5^n, so |a_nb_n|≤5^n/2 and the requested series converges absolutely by comparison with a real geometric series. With r=(3+4i)/7, whose modulus is 5/7, the value is (1/2)Im(1/(1-r))=(1/2)Im(7/(4-4i))=7/16. The displayed evaluation uses a complex-ratio geometric-series extension, whereas the supplied infinite-series node explicitly restricts its ratio to real numbers.",
+      "candidateFindings": [],
+      "needsNewNodes": [
+        "For the displayed route: convergent complex-ratio geometric series, with modulus-based convergence and extraction of real or imaginary parts."
+      ],
+      "limitations": [
+        "The real geometric-series node supports the convergence majorant, not the complex-ratio evaluation as currently defined.",
+        "This is a route-specific coverage gap, not a claim that every valid solution must sum a complex series; real coupled-recurrence methods are also possible, but their summation coverage is not established by the supplied scopes."
+      ],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q010",
+      "decision": "accept",
+      "assessedIds": [
+        "math:modular-congruence"
+      ],
+      "supportIds": [],
+      "routes": [],
+      "derivedAnswer": "D: 1239",
+      "mathematicalReason": "If n has t trailing nines, adding one changes its digit sum by 1-9t. Thus S(n+1)=1275-9t, which is congruent to 6 modulo 9. Among the choices only 1239 has that residue, and it corresponds to t=4. Feasibility is not merely a residue claim: take n whose decimal representation consists of 137 nines, then a 5, then four nines. Its digit sum is 1274, and adding one gives digit sum 137·9+6=1239. The congruence scope is appropriate.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q011",
+      "decision": "accept",
+      "assessedIds": [
+        "math:prime-factorization",
+        "math:infinite-geometric-series"
+      ],
+      "supportIds": [],
+      "routes": [],
+      "derivedAnswer": "C: 19",
+      "mathematicalReason": "Every allowed integer has a unique representation 2^i·3^j·5^k with i,j,k≥0, including 1 when all exponents are zero. The reciprocal sum is therefore (Σ2^(-i))(Σ3^(-j))(Σ5^(-k))=2·(3/2)·(5/4)=15/4. All three ratios have absolute value below one. Nonnegative terms justify passing from finite exponent boxes to the full sum. Hence m+n=15+4=19, and both assessed scopes are directly exercised.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q012",
+      "decision": "revise",
+      "assessedIds": [
+        "cnm_h098",
+        "math:shoelace-formula"
+      ],
+      "supportIds": [
+        "cnm_183",
+        "cnm_173"
+      ],
+      "routes": [
+        {
+          "id": "cartesian-square-roots",
+          "label": "Cartesian extraction of the complex roots",
+          "nodeIds": [
+            "cnm_h099",
+            "cnm_h102",
+            "cnm_220"
+          ]
+        },
+        {
+          "id": "polar-square-roots",
+          "label": "Polar extraction of the complex roots",
+          "nodeIds": [
+            "math:complex-polar-de-moivre"
+          ]
+        }
+      ],
+      "derivedAnswer": "A: 20",
+      "mathematicalReason": "The first equation has roots ±(√10+i√6), and the second has roots ±(√3+i). For example, these follow from x²-y² and 2xy together with x²+y²=16 or 4, respectively. Let u=(√10,√6) and v=(√3,1). In cyclic order v,u,-v,-u, shoelace gives area 2|det(u,v)|=2(3√2-√10)=6√2-2√10. Thus p+q+r+s=6+2+2+10=20. For the two retained coordinate-area routes, shoelace is the directly exercised area procedure. A separately justified base-height solution would also be valid, but is not required.",
+      "candidateFindings": [
+        "v01: cnm_p147 specifically covers identifying a base and its corresponding perpendicular height and applying base×height. Neither proposed shoelace route establishes that procedure; the target figure being a parallelogram is insufficient by itself. For the retained coordinate routes, replace this assessed ID with math:shoelace-formula."
+      ],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q013",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_p157"
+      ],
+      "supportIds": [],
+      "routes": [
+        {
+          "id": "square-residues-modulo-three",
+          "label": "Check divisibility by 3 and the exceptional prime",
+          "nodeIds": [
+            "math:modular-congruence"
+          ]
+        }
+      ],
+      "derivedAnswer": "C: p²+26",
+      "mathematicalReason": "For a prime p other than 3, p²≡1 modulo 3, so p²+26 is divisible by 3 and is greater than 3. At the exceptional prime p=3, it equals 35, also composite. The other choices can be prime: A gives 41 at p=5, B gives 73 at p=7, D gives 71 at p=5, and E gives 457 at p=19. The prime/composite concept and the proposed congruence route are appropriate.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q014",
+      "decision": "accept",
+      "assessedIds": [
+        "math:integer-diophantine-equations"
+      ],
+      "supportIds": [
+        "cnm_h203",
+        "cnm_027"
+      ],
+      "routes": [],
+      "derivedAnswer": "D: 17",
+      "mathematicalReason": "The arithmetic-mean condition is 2(10b+c)=10a+b+10c+d. All of a,b,c are nonzero because the three numbers are increasing two-digit integers. Put t=b-a, u=c-b, and v=d-c. Equality of the two positive differences gives 10t+u=10u+v. Strict increase forces t≥0. Writing e=u-t yields v=t-9e, c=a+2t+e, and d=a+3t-8e. The digit bounds force e=0 or 1. For e=0, t=1 allows six a-values and t=2 allows three, totaling nine. For e=1, t=0,1,2,3 allow respectively 1,2,3,2 a-values, totaling eight. Hence there are 17 numbers. This is a complete bounded integer-equation count matching the candidate scopes.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q015",
+      "decision": "accept",
+      "assessedIds": [
+        "math:extremal-principle"
+      ],
+      "supportIds": [
+        "cnm_027"
+      ],
+      "routes": [
+        {
+          "id": "value-per-pound-bound",
+          "label": "Unit-value bound and an attaining load",
+          "nodeIds": [
+            "cnm_p185",
+            "cnm_096"
+          ]
+        },
+        {
+          "id": "bounded-integer-enumeration",
+          "label": "Enumerate the number of five-pound rocks",
+          "nodeIds": [
+            "cnm_h020",
+            "cnm_029"
+          ]
+        }
+      ],
+      "derivedAnswer": "C: 50 dollars",
+      "mathematicalReason": "Every rock is worth at most 14/5 dollars per pound, so any allowed load has value at most 18·14/5=50.4 dollars. Since every load has integer dollar value, its value is at most 50. Two five-pound rocks and two four-pound rocks weigh exactly 18 pounds and are worth 50 dollars, attaining the bound. Alternatively, fixing the number of five-pound rocks at 0,1,2,3 gives optimal values 48,49,50,48. Both routes justify a global maximum and fit the proposed scopes.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q016",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_251",
+        "cnm_174"
+      ],
+      "supportIds": [
+        "cnm_138",
+        "cnm_148"
+      ],
+      "routes": [],
+      "derivedAnswer": "E: 100",
+      "mathematicalReason": "Let O be the center and M the perpendicular projection of O onto chord CD. The perpendicular diameter theorem gives CM=DM=h. Since BE=2√5<5√2, E lies between O and B, so EO points along EA. The angle between EO and EC is therefore 45°, making triangle OEM an isosceles right triangle; write EM=OM=t. Because E is inside the circle, CE and DE are h+t and h-t in some order. Pythagoras gives h²+t²=R²=50, so CE²+DE²=(h+t)²+(h-t)²=2(h²+t²)=100 square units. All listed scopes are used by this route.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q017",
+      "decision": "unresolved",
+      "assessedIds": [],
+      "supportIds": [
+        "cnm_162",
+        "cnm_h018",
+        "cnm_h200",
+        "cnm_h208"
+      ],
+      "routes": [],
+      "derivedAnswer": "C: [81,242]",
+      "mathematicalReason": "Let e_n=x_n-4. Then e_0=1 and e_(n+1)=e_n(e_n+9)/(e_n+10). Inductively, 0<e_(n+1)<e_n≤1, so 9/10<e_(n+1)/e_n≤10/11. Consequently (9/10)^n≤e_n≤(10/11)^n. Since (9/10)^4>1/2, e_80>2^(-20), so m>80. Since (10/11)^8<1/2, e_160<2^(-20), so m≤160. Thus 81≤m≤160, entirely within choice C. The decisive comparison of nonlinear iterates with geometric bounds goes beyond the supplied simple-recurrence definition.",
+      "candidateFindings": [],
+      "needsNewNodes": [
+        "Comparison bounds for nonlinear real recurrences: establish invariant positive bounds, bound successive error ratios, compare with geometric sequences, and locate a first threshold-crossing index."
+      ],
+      "limitations": [
+        "cnm_h200 covers generating terms from a recurrence, while cnm_h208 supplies geometric terms; neither supplied definition directly covers the comparison argument needed here."
+      ],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q018",
+      "decision": "unresolved",
+      "assessedIds": [
+        "math:floor-ceiling"
+      ],
+      "supportIds": [
+        "cnm_h047",
+        "cnm_h140"
+      ],
+      "routes": [
+        {
+          "id": "dyadic-interval-sum",
+          "label": "Sum matching interval probabilities",
+          "nodeIds": [
+            "math:infinite-geometric-series"
+          ]
+        },
+        {
+          "id": "dyadic-self-similarity",
+          "label": "Self-similar probability recurrence",
+          "nodeIds": [
+            "math:recursive-counting-probability",
+            "cnm_042"
+          ]
+        }
+      ],
+      "derivedAnswer": "D: 1/3",
+      "mathematicalReason": "For k≥1, floor(log₂x)=-k precisely when 2^(-k)≤x<2^(1-k), an interval of length 2^(-k). Independence makes the probability that both variables occupy this bin equal to 4^(-k). Summing the disjoint matching-bin events gives (1/4)/(1-1/4)=1/3. Alternatively, both variables in the upper half contribute 1/4, both in the lower half contribute P/4 after rescaling, and mixed halves fail; hence P=1/4+P/4. Endpoints have probability zero. Both routes are mathematically sound, but require the missing interval-length interpretation of continuous uniform probability.",
+      "candidateFindings": [],
+      "needsNewNodes": [
+        "Continuous uniform probability on an interval, including relative interval lengths, zero-probability endpoints, and products for independent selections."
+      ],
+      "limitations": [
+        "The supplied floor, logarithm, independence, and summation scopes do not establish the continuous uniform probability model."
+      ],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q019",
+      "decision": "unresolved",
+      "assessedIds": [],
+      "supportIds": [
+        "cnm_p192",
+        "cnm_p089",
+        "cnm_p150"
+      ],
+      "routes": [],
+      "derivedAnswer": "B: 0.4",
+      "mathematicalReason": "Partition the large square into unit lattice cells. For 0≤d≤1/2, the favorable part of each cell consists of four nonoverlapping quarter disks, totaling area πd². At d=1/2 the favorable fraction is π/4>1/2, so the required d must be smaller than 1/2. Therefore πd²=1/2, giving d=1/√(2π)≈0.39894, which rounds to 0.4. The integer side length makes the unit-cell partition exact, including along the outer boundary. The geometric area scopes are appropriate support, but the area-ratio probability principle is not supplied.",
+      "candidateFindings": [],
+      "needsNewNodes": [
+        "Uniform planar geometric probability: probability equals favorable area divided by total area, with appropriate treatment of overlaps and boundaries."
+      ],
+      "limitations": [
+        "The supplied scopes do not cover uniform probability on a planar region; finite equally likely outcome models do not by themselves establish this principle."
+      ],
+      "figureEvidence": []
+    },
+    {
+      "questionId": "q020",
+      "decision": "accept",
+      "assessedIds": [
+        "math:integer-diophantine-equations"
+      ],
+      "supportIds": [
+        "math:prime-factorization"
+      ],
+      "routes": [
+        {
+          "id": "normalize-by-gcd",
+          "label": "Normalize to coprime factors",
+          "nodeIds": [
+            "math:prime-factorization",
+            "math:integer-diophantine-equations"
+          ]
+        },
+        {
+          "id": "shifted-factor-pairs",
+          "label": "Factor a shifted gcd-lcm equation",
+          "nodeIds": [
+            "cnm_151",
+            "math:integer-diophantine-equations"
+          ]
+        }
+      ],
+      "derivedAnswer": "B: 2",
+      "mathematicalReason": "Write g=gcd(a,b) and L=lcm(a,b), so ab=gL and g divides L. The equation becomes (g-20)(L-12)=177=3·59. Positive factor pairs give (g,L)=(21,189),(23,71),(79,15),(197,13); only (21,189) satisfies g≤L and g dividing L. Negative factor pairs cannot give positive g and L: the only possible negative values of g-20 are -1 and -3, and both make L negative. Now write a=21u and b=21v with gcd(u,v)=1. Then uv=L/g=9, so the only coprime ordered factor pairs are (1,9) and (9,1). Thus (a,b)=(21,189) or (189,21). Both proposed routes support a complete integer-solution analysis.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": []
+    }
+  ],
+  "validationErrors": [],
+  "qualificationFindings": [],
+  "structuralFindings": [],
+  "validationStatus": "structure_valid",
+  "mathematicalValidation": "model scope audit only; no automatic acceptance or promotion",
+  "finishedAt": "2026-11-05T12:31:44.503860+00:00",
+  "elapsedSeconds": 344.754
+}

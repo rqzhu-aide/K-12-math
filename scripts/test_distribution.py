@@ -7,9 +7,21 @@ import subprocess
 import unittest
 
 from question_banks import AMC_QUESTION_ID
+from export_amc_bank import browser_question
 
 ROOT = Path(__file__).resolve().parents[1]
 BANK = ROOT / 'cn-math-bank'
+ADAPTED_EXAMS = {
+    '2018_AMC_8': 'AMC8_2018_Solutions.pdf',
+    '2019_AMC_8': 'AMC8_2019_Solutions.pdf',
+    '2020_AMC_8': 'AMC8_2020_Solutions.pdf',
+    '2022_AMC_8': 'AMC8_2022_Solutions.pdf',
+    '2023_AMC_8': 'AMC8_2023_Solutions.pdf',
+    '2021_AMC_10A': 'AMC10A_2021_Spring_Solutions.pdf',
+    '2021_Fall_AMC_10A': 'AMC10A_2021_Fall_Solutions.pdf',
+    '2022_AMC_10A': 'AMC10A_2022_Solutions.pdf',
+}
+OFFICIAL_ADAPTED_IDS = {f'{exam}_Q{n:02d}' for exam in ADAPTED_EXAMS for n in range(1, 26)}
 
 
 class DistributionTests(unittest.TestCase):
@@ -63,6 +75,13 @@ class DistributionTests(unittest.TestCase):
             'cn-math-bank/source/raw.json', 'cn-math-bank/reports/check.json',
             'math-practice/test/screenshots/example.png', 'unrelated-personal-file.txt',
             'custom-banks/banks.js', 'custom-banks/private/questions/private__one.json',
+            'knowledge-graph/local/mappings.jsonl', 'knowledge-graph/knowledge.sqlite3',
+            'knowledge-graph/knowledge.sqlite3-wal', 'knowledge-graph/scratch.json',
+            'knowledge-graph/source/unreviewed.json',
+            'local-service/setting.yaml', 'local-service/api_key.txt',
+            'scripts/local-service/SERVICES-GUIDE.md',
+            'math-practice/setting.yaml', 'math-practice/settings.yml',
+            'math-practice/auth.json', 'math-practice/secret.key',
             'question-bank-template/private-notes.txt',
         ]
         result = subprocess.run(['git', 'check-ignore', '-z', '--stdin'], cwd=ROOT,
@@ -97,7 +116,8 @@ class AmcDistributionTests(unittest.TestCase):
             self.assertIsNotNone(AMC_QUESTION_ID.fullmatch(record['ID']))
             self.assertEqual(record['ID'], question['id'])
             self.assertIn(record['Correct Answer'], record['Choices'])
-            self.assertEqual(record['Solution'], '', question['id'] + ': copied solutions are withheld')
+            self.assertEqual(bool(record['Solution']), question['id'] in OFFICIAL_ADAPTED_IDS,
+                             question['id'] + ': only the reviewed 200-question batch has worked solutions')
             for display, stored in fields.items():
                 self.assertEqual(question[display], record[stored], question['id'] + ': ' + display)
         self.assertIn('1950_AMC_12_Q50', self.records)
@@ -121,19 +141,34 @@ class AmcDistributionTests(unittest.TestCase):
             self.assertEqual(meta['License'], 'CC-BY-NC-SA-4.0', record['ID'])
             self.assertIn('American Mathematics Competitions', meta['Attribution'], record['ID'])
             self.assertIn('Mathematical Association of America (MAA)', meta['Attribution'], record['ID'])
-            self.assertEqual(meta['SolutionSource'], '', record['ID'])
+            for note in (meta.get('EditorialNote', ''), record.get('Source Content Note', '')):
+                self.assertNotIn('processing code/', note, record['ID'])
+            if record['ID'] in OFFICIAL_ADAPTED_IDS:
+                self.assertEqual(meta['SolutionSource'], 'Adapted from MAA official solutions')
+                self.assertEqual(meta['SolutionSourceURL'], meta['OfficialSolution']['sourceURL'])
+                self.assertEqual(meta['SolutionAdaptation']['reviewStatus'], 'reviewed')
+                self.assertEqual(meta['SolutionAdaptation']['officialPage'], meta['OfficialSolution']['page'])
+            else:
+                self.assertEqual(meta['SolutionSource'], '', record['ID'])
         for question in self.browser['questions']:
-            self.assertEqual(question['solutionSource'], '', question['id'])
+            meta = self.records[question['id']]['Meta']
+            self.assertEqual(question['solutionSource'], meta['SolutionSource'])
+            self.assertEqual(question['solutionSourceURL'], meta.get('SolutionSourceURL', ''))
         self.assertTrue((self.bank / 'LICENSE').is_file())
         self.assertTrue((self.bank / 'NOTICE.md').is_file())
 
-    def test_official_solution_booklets_cover_exactly_their_50_questions(self):
-        expected = {
-            '2023_AMC_8': ('official-solutions/AMC8_2023_Solutions.pdf',
-                           'https://maa.org/wp-content/uploads/2024/08/2023_AMC8_Solutions_.pdf'),
-            '2022_AMC_10A': ('official-solutions/AMC10A_2022_Solutions.pdf',
-                            'https://maa.org/wp-content/uploads/2024/08/2022-AMC-10A-solutions.pdf'),
-        }
+    def test_export_rejects_copied_or_unreviewed_solutions(self):
+        record = json.loads(json.dumps(self.records['2023_AMC_8_Q01']))
+        record['Meta']['SolutionSource'] = 'live-poshenloh'
+        with self.assertRaises(ValueError):
+            browser_question(record)
+        record['Meta']['SolutionSource'] = 'Adapted from MAA official solutions'
+        record['Meta']['SolutionAdaptation']['reviewStatus'] = 'pending'
+        with self.assertRaises(ValueError):
+            browser_question(record)
+
+    def test_official_solution_booklets_cover_exactly_their_200_questions(self):
+        expected = {exam: 'official-solutions/' + name for exam, name in ADAPTED_EXAMS.items()}
         expected_ids = {f'{exam}_Q{number:02d}' for exam in expected for number in range(1, 26)}
         backend_refs = {key: record['Meta']['OfficialSolution'] for key, record in self.records.items()
                         if 'OfficialSolution' in record['Meta']}
@@ -142,12 +177,14 @@ class AmcDistributionTests(unittest.TestCase):
         self.assertEqual(set(backend_refs), expected_ids)
         self.assertEqual(browser_refs, backend_refs)
         manifest = json.loads((self.bank / 'sources.json').read_text(encoding='utf-8'))['officialSolutions']
-        self.assertEqual(len(manifest), 2)
+        self.assertEqual(len(expected_ids), 200)
+        self.assertEqual(len(manifest), 8)
         self.assertEqual({source['exam'] for source in manifest}, set(expected))
         self.assertEqual({path.name for path in (self.bank / 'official-solutions').iterdir()},
-                         {Path(filename).name for filename, _ in expected.values()})
+                         {Path(filename).name for filename in expected.values()})
         for source in manifest:
-            filename, source_url = expected[source['exam']]
+            filename = expected[source['exam']]
+            source_url = source['url']
             self.assertEqual(source['file'], filename)
             self.assertEqual(source['url'], source_url)
             self.assertFalse(source['modified'])
@@ -163,6 +200,9 @@ class AmcDistributionTests(unittest.TestCase):
                 self.assertEqual(reference['sourceURL'], source_url)
                 self.assertEqual(reference['license'], source['license'])
                 self.assertEqual(reference['attribution'], source['attribution'])
+                self.assertIsInstance(reference['page'], int)
+                self.assertGreaterEqual(reference['page'], 1)
+                self.assertLessEqual(reference['page'], source.get('pages', 23))
 
 
 if __name__ == '__main__':

@@ -278,7 +278,7 @@ class CustomRuntimeTests(BankFixture, unittest.TestCase):
         settings = ConnectionSettings(self.root / 'config.json')
         settings.save({'inference': {'provider': 'api', 'bases': ['https://inference.example'], 'model': 'test-model'}})
         reply = {'choices': [{'message': {'content': json.dumps({'category': 'correct', 'answerCategory': 'correct',
-                                                                 'clarification': '', 'hint': ''})}}]}
+                                                                 'coach': 'Your explanation is correct.', 'hint': ''})}}]}
         attempt = {'questionId': record['ID'], 'answer': '4', 'thoughts': 'I added two and two.',
                    'category': 'cannot_judge', 'answerCategory': 'correct'}
         with patch('practice_tutor.question_images', return_value=([], [])) as images, \
@@ -450,11 +450,14 @@ class CustomAssetHttpTests(BankFixture, unittest.TestCase):
                 self.assertEqual(code, 404)
                 self.assertNotIn(b'private', data)
 
-    def test_only_the_two_official_amc_solution_pdfs_are_public(self):
+    def test_only_the_eight_official_amc_solution_pdfs_are_public(self):
         bank, _ = self.make_amc_question()
         official = bank / 'official-solutions'
         official.mkdir()
-        for filename in ('AMC8_2023_Solutions.pdf', 'AMC10A_2022_Solutions.pdf'):
+        for filename in ('AMC8_2023_Solutions.pdf', 'AMC8_2022_Solutions.pdf',
+                         'AMC8_2020_Solutions.pdf', 'AMC8_2019_Solutions.pdf',
+                         'AMC8_2018_Solutions.pdf', 'AMC10A_2022_Solutions.pdf',
+                         'AMC10A_2021_Spring_Solutions.pdf', 'AMC10A_2021_Fall_Solutions.pdf'):
             expected = b'%PDF-1.4\n' + filename.encode('ascii')
             (official / filename).write_bytes(expected)
             code, headers, data = self.request('/amc-bank/official-solutions/' + filename)

@@ -1,0 +1,1288 @@
+{
+  "schemaVersion": 1,
+  "auditPacketId": "audit-016",
+  "status": "complete",
+  "selection": {
+    "provider": "chatgpt",
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "startedAt": "2026-11-05T14:52:28.123641+00:00",
+  "raw": "{\n  \"audits\": [\n    {\n      \"questionId\": \"q001\",\n      \"decision\": \"revise\",\n      \"assessedIds\": [\"cnm_p150\", \"cnm_257\"],\n      \"supportIds\": [\"cnm_139\", \"cnm_p148\", \"cnm_174\"],\n      \"routes\": [\n        {\n          \"id\": \"inner-hexagon-segments\",\n          \"label\": \"Inner hexagon minus circular segments\",\n          \"nodeIds\": [\"cnm_266\", \"cnm_257\", \"cnm_p150\"]\n        },\n        {\n          \"id\": \"semicircle-overlap-correction\",\n          \"label\": \"Subtract semicircle areas and restore adjacent overlaps\",\n          \"nodeIds\": [\"cnm_p192\", \"cnm_257\", \"cnm_p150\"]\n        }\n      ],\n      \"derivedAnswer\": \"D: 3√3 − π square units.\",\n      \"mathematicalReason\": \"Each semicircle has radius 1. Regular-hexagon geometry shows that the six interior intersections of adjacent semicircles form a regular hexagon of side 1. The shaded region is this inner hexagon minus six circular segments, each subtending 60°. Its area is 3√3/2 − 6(π/6 − √3/4) = 3√3 − π. Alternatively, each adjacent overlap has area π/3 − √3/2, so overlap correction gives 6√3 − 3π + 6(π/3 − √3/2). Nonadjacent semicircles do not intersect, and there are no triple overlaps.\",\n      \"candidateFindings\": [\n        \"v01: The overlap-correction method is valid, but math:inclusion-exclusion-general is explicitly defined for counting finite sets, not continuous areas. Remove that scope tag from this route; cnm_p150 already supports the required area addition and subtraction.\"\n      ],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": [\n        {\n          \"imageSlot\": 1,\n          \"fact\": \"The six semicircles face inward from the hexagon's sides; adjacent arcs form six unshaded lenses. The shaded central region is bounded by six arcs between their interior intersections.\"\n        }\n      ]\n    },\n    {\n      \"questionId\": \"q002\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_p200\"],\n      \"supportIds\": [],\n      \"routes\": [],\n      \"derivedAnswer\": \"B: 37 dots.\",\n      \"mathematicalReason\": \"The displayed totals are 1, 7, and 19. The first two added hexagonal bands contain 6 and 12 dots, respectively. The next band contains 18 dots, giving 19 + 18 = 37. Identifying and extending this geometric dot pattern directly matches cnm_p200.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": [\n        {\n          \"imageSlot\": 2,\n          \"fact\": \"The first hexagon contains one dot, the second contains that center plus a six-dot band, and the third adds a twelve-dot outer band.\"\n        }\n      ]\n    },\n    {\n      \"questionId\": \"q003\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"math:centroid-ratios\"],\n      \"supportIds\": [\"cnm_189\"],\n      \"routes\": [\n        {\n          \"id\": \"midpoint-square-homothety\",\n          \"label\": \"Homothety of the midpoint square\",\n          \"nodeIds\": [\"cnm_185\", \"cnm_275\"]\n        },\n        {\n          \"id\": \"centroid-coordinate-averages\",\n          \"label\": \"Coordinate averages of vertices\",\n          \"nodeIds\": [\"cnm_084\"]\n        }\n      ],\n      \"derivedAnswer\": \"C: 200 square units.\",\n      \"mathematicalReason\": \"Let the four side midpoints be M1 through M4. Each relevant centroid is P + (2/3)(Mi − P), so the centroid quadrilateral is the midpoint square scaled by 2/3 about P. The midpoint square has area 30²/2 = 450, making the required area (2/3)²·450 = 200. Equivalently, the centroid square has perpendicular diagonals of length 20, so the rhombus area formula gives 20·20/2 = 200. Coordinate averaging is also valid. AP and BP do not affect the result.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": [\n        {\n          \"imageSlot\": 3,\n          \"fact\": \"ABCD is labeled cyclically around the square, and the interior point P is joined to all four vertices, forming the four triangles in the stem. No measurement from P's drawn position is used.\"\n        }\n      ]\n    },\n    {\n      \"questionId\": \"q004\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"math:recursive-counting-probability\"],\n      \"supportIds\": [],\n      \"routes\": [],\n      \"derivedAnswer\": \"A: 28 paths.\",\n      \"mathematicalReason\": \"Number columns 1 through 8 from left to right and let N(t,c) count paths reaching column c after t upward steps. Initialize N(0,6) = 1, with all other starting counts zero. Since each move goes diagonally upward, N(t+1,c) = N(t,c−1) + N(t,c+1), with counts outside the board set to zero. After six steps, columns 6 and 8 have counts 19 and 9. Thus the count at Q, column 7 after seven steps, is 19 + 9 = 28. This is a direct application of finite-state counting recursion.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": [\n        {\n          \"imageSlot\": 4,\n          \"fact\": \"The board has eight rows and eight columns. P is in bottom-row column 6 and Q is in top-row column 7. The sample path confirms moves to diagonally adjoining unshaded squares in the next row.\"\n        }\n      ]\n    },\n    {\n      \"questionId\": \"q005\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_p209\", \"cnm_272\"],\n      \"supportIds\": [],\n      \"routes\": [],\n      \"derivedAnswer\": \"E: 4:1.\",\n      \"mathematicalReason\": \"Let the initial liquid heights be hn and hw. Equal initial volumes give (π/3)·3²·hn = (π/3)·6²·hw, hence hn/hw = 4. Within each cone, similar axial triangles make radius proportional to height, so the volume below height h is proportional to h³. If the common initial volume is V and each submerged marble displaces volume m, both heights are multiplied by the same factor k = ((V+m)/V)^(1/3). The rises therefore have ratio (k−1)hn:(k−1)hw = 4:1. The numerical sphere-volume formula is unnecessary because the equal displacement cancels.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": [\n        {\n          \"imageSlot\": 5,\n          \"fact\": \"Both cones have downward-facing vertices, and the initial horizontal liquid surfaces have radii labeled 3 and 6 from their axes. No opening angle or height is measured from the schematic drawing.\"\n        }\n      ]\n    },\n    {\n      \"questionId\": \"q006\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_132\"],\n      \"supportIds\": [],\n      \"routes\": [\n        {\n          \"id\": \"similar-right-triangles\",\n          \"label\": \"Use similar right triangles\",\n          \"nodeIds\": [\"cnm_271\", \"cnm_272\"]\n        },\n        {\n          \"id\": \"coordinate-equidistance\",\n          \"label\": \"Use coordinate distances\",\n          \"nodeIds\": [\"cnm_h173\", \"cnm_042\"]\n        }\n      ],\n      \"derivedAnswer\": \"D: 15/8 inches.\",\n      \"mathematicalReason\": \"Folding A onto B makes the crease the perpendicular bisector of AB. Let M be the midpoint of AB and let the crease meet AC at N. Then AM = 5/2, and right triangles AMN and ACB are similar, with scale factor AM/AC = 5/8. Thus MN = (5/8)·CB = 15/8. Also AN = (5/8)·AB = 25/8 < 4, confirming that N lies on AC. For the coordinate alternative, A=(0,0), B=(4,3), and N=(x,0); equidistance gives x²=(4−x)²+9, so x=25/8, and the distance from N to M=(2,3/2) is 15/8.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": [\n        {\n          \"imageSlot\": 6,\n          \"fact\": \"The labels identify AB=5, AC=4, and BC=3, with A at the left end of AC and B above C. These lengths establish that the right angle is at C.\"\n        }\n      ]\n    },\n    {\n      \"questionId\": \"q007\",\n      \"decision\": \"accept\",\n      \"assessedIds\": [\"cnm_209\"],\n      \"supportIds\": [\"cnm_p111\"],\n      \"routes\": [],\n      \"derivedAnswer\": \"E: the graph in image slot 11.\",\n      \"mathematicalReason\": \"The outbound drive lasts two hours, so the trail is 45·2 = 90 miles from home. The car remains there during the three-hour hike, from 10 a.m. to 1 p.m. The return drive takes 90/60 = 1.5 hours, ending at 2:30 p.m. The correct distance-time graph therefore rises linearly from 0 to 90, stays constant for three hours, then falls more steeply to 0 at 2:30 p.m. This matches the supplied piecewise-linear modeling scope and the supporting distance–speed–time relationship.\",\n      \"candidateFindings\": [],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": [\n        {\n          \"imageSlot\": 7,\n          \"fact\": \"Choice A reaches 90 miles at 10 a.m. and stays there until 1 p.m., but returns to zero at 3 p.m.\"\n        },\n        {\n          \"imageSlot\": 8,\n          \"fact\": \"Choice B has a plateau at 45 miles rather than 90 miles.\"\n        },\n        {\n          \"imageSlot\": 9,\n          \"fact\": \"Choice C returns to zero at 2:30 p.m., but its plateau is only 45 miles.\"\n        },\n        {\n          \"imageSlot\": 10,\n          \"fact\": \"Choice D has a plateau at 120 miles rather than 90 miles.\"\n        },\n        {\n          \"imageSlot\": 11,\n          \"fact\": \"Choice E passes through 0 miles at 8 a.m., 90 miles at 10 a.m., remains at 90 until 1 p.m., and reaches zero halfway between 2 and 3 p.m.\"\n        }\n      ]\n    },\n    {\n      \"questionId\": \"q008\",\n      \"decision\": \"revise\",\n      \"assessedIds\": [\"cnm_124\", \"cnm_273\"],\n      \"supportIds\": [\"cnm_p089\", \"cnm_p077\", \"cnm_055\", \"cnm_121\", \"cnm_224\"],\n      \"routes\": [\n        {\n          \"id\": \"right-triangle-altitude\",\n          \"label\": \"Selected assessment route: congruence and hypotenuse projections\",\n          \"nodeIds\": [\"cnm_124\", \"cnm_121\", \"cnm_273\", \"cnm_224\"]\n        },\n        {\n          \"id\": \"coordinate-orthogonality\",\n          \"label\": \"Alternative route: coordinates and perpendicular vectors\",\n          \"nodeIds\": [\"cnm_084\", \"cnm_h088\", \"cnm_174\", \"cnm_224\"]\n        }\n      ],\n      \"derivedAnswer\": \"D: 117 square units.\",\n      \"mathematicalReason\": \"Perpendicularity gives ∠ABP = ∠BCQ. Together with the right angles at A and B and AB=BC, ASA proves triangles ABP and BCQ congruent. Hence CQ=BP=6+7=13. In right triangle BCQ, BR is the altitude to hypotenuse CQ, so QR·CR=BR²=36 and QR+CR=13. The two hypotenuse pieces are therefore 4 and 9. Since BC>BQ, the projection relation BC²=CQ·CR forces CR>QR, giving CR=9. The square's area is BC²=13·9=117. The assessed scopes describe this synthetic route; the supplied coordinate route is a valid alternative, not an additional requirement.\",\n      \"candidateFindings\": [\n        \"v01: cnm_p089 should not be the sole assessed scope. Computing side squared is only the final elementary step; the substantive work is establishing congruence and applying right-triangle altitude similarity. Move cnm_p089 to support and assess the selected geometric route.\"\n      ],\n      \"needsNewNodes\": [],\n      \"limitations\": [],\n      \"figureEvidence\": [\n        {\n          \"imageSlot\": 12,\n          \"fact\": \"P lies on AD, Q lies on AB, and R lies between P and B and between Q and C. The right-angle mark is at the intersection of BP and CQ, with PR labeled 7 and BR labeled 6.\"\n        }\n      ]\n    }\n  ]\n}",
+  "promotionStatus": "not_promoted",
+  "at": "2026-11-05T14:52:28.120032+00:00",
+  "reviewMode": "targeted",
+  "packetHash": "ecd4caaf56db05957e9061b18edd429d890e1aba1d3a8aa99dbe2e2b6b94a159",
+  "planHash": "80c64a7b6059dc8d93deda3950ef625c5efd4916d8627606cd9acb1fc7b3979f",
+  "catalogHash": "5bc81d43a32ca981d0a974516852f2eb731325d0f85b14cab04d76bdfd842aa7",
+  "inputHash": "81510d677d2ab7591ee1c8971d2a62470e207f91e7356e5944cfca022436a3cc",
+  "aliasBindings": {
+    "q001": {
+      "groupId": "task-cb7ff92ac1a67121ef76",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2020_AMC_10B_Q14.json",
+          "questionId": "2020_AMC_10B_Q14",
+          "bank": "amc",
+          "contentHash": "cc8787037dce42380dcb1289c84445c0d251f5461bc26497544128cff54922a4",
+          "figureHashes": {
+            "figures/2020_AMC_10B_Q14_question_fig1.svg": "c09ceac9379057cfc6b145556fcb5d057457b34ef69d8c7a09cd73f95feae0d6"
+          },
+          "displayHash": "cb7ff92ac1a67121ef768f7c9a5ec3bff277552876503df808c97a45e2de2f6e",
+          "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+          "level": "AMC 10",
+          "topic": "Geometry",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "57245bf079057ee87b1ed7eda46dc6e52841596e5fb70e18170be2761f6f2689",
+          "firstPassPacketId": "map-296",
+          "firstPassReceiptHash": "3300853c745d6deccaacbc5e41376518b30dc2dee36a58742eb96abe292770ce",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "displayed_figure",
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "dd0f58de1c45a62a766c88c6bd14723e133fdd0fba20e8eba7cb671cde309e7b",
+          "questionIds": [
+            "2020_AMC_10B_Q14"
+          ]
+        }
+      ],
+      "imageSlots": [
+        1
+      ],
+      "figureHashes": {
+        "figures/2020_AMC_10B_Q14_question_fig1.svg": "c09ceac9379057cfc6b145556fcb5d057457b34ef69d8c7a09cd73f95feae0d6"
+      }
+    },
+    "q002": {
+      "groupId": "task-ce0cbdd0eed5969c7662",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2020_AMC_8_Q04.json",
+          "questionId": "2020_AMC_8_Q04",
+          "bank": "amc",
+          "contentHash": "097d604fc3045393f0e3e61740dac324185d7ce8b70bf9f1d0b57773afa7a430",
+          "figureHashes": {
+            "figures/2020_AMC_8_Q04_question_fig1.svg": "41a23ac3e91bbcbc2fc64eb2f9ec0635387aba5bd3caffa5eb49199606149fdd"
+          },
+          "displayHash": "ce0cbdd0eed5969c7662b0606468d4ac5033c79ed5ea1b989be0fde638263fda",
+          "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+          "level": "AMC 8",
+          "topic": "Counting & Probability",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "64cb91451627864c5a2aa49e58eb5d20a056fb7510e23196644b91239d94ff97",
+          "firstPassPacketId": "map-297",
+          "firstPassReceiptHash": "6ecc70a114cf0d2066e3f7f5740a6800bf453aff8ce0f21b2cd25dd65e998ed3",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "displayed_figure"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "01b637d1a629b76916c16ba29a250ebf394f5d260b83b9e64b77a40df44edfd1",
+          "questionIds": [
+            "2020_AMC_8_Q04"
+          ]
+        }
+      ],
+      "imageSlots": [
+        2
+      ],
+      "figureHashes": {
+        "figures/2020_AMC_8_Q04_question_fig1.svg": "41a23ac3e91bbcbc2fc64eb2f9ec0635387aba5bd3caffa5eb49199606149fdd"
+      }
+    },
+    "q003": {
+      "groupId": "task-cee72b1342efc88912ad",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2018_AMC_12B_Q13.json",
+          "questionId": "2018_AMC_12B_Q13",
+          "bank": "amc",
+          "contentHash": "a60e3cde61849e4007c72300a7fb120a095e700f4678ea4662e4c2312e7333f5",
+          "figureHashes": {
+            "figures/2018_AMC_12B_Q13_question_fig1.svg": "c9719ea88777962adc9e059d078a6db4ac3868bdf6e34b84f173265c608a5d35"
+          },
+          "displayHash": "cee72b1342efc88912adae1419ffe86076cf4d2cad5e0362eaffffab14d8a8b1",
+          "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+          "level": "AMC 12",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "45bf92d34e232d6936406432a4de50b0e4142377e9c7578751f202a6a0bc228c",
+          "firstPassPacketId": "map-292",
+          "firstPassReceiptHash": "39344ed22fb309f2d16dc9000429052ae00d53148684928c4769b9980886e346",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "displayed_figure",
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "13f5b43845c23caae6006ba3334eb041963c34ea38aadd4c1f461a173ff5da12",
+          "questionIds": [
+            "2018_AMC_12B_Q13"
+          ]
+        }
+      ],
+      "imageSlots": [
+        3
+      ],
+      "figureHashes": {
+        "figures/2018_AMC_12B_Q13_question_fig1.svg": "c9719ea88777962adc9e059d078a6db4ac3868bdf6e34b84f173265c608a5d35"
+      }
+    },
+    "q004": {
+      "groupId": "task-d03b7ee136dcb15959bd",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2020_AMC_8_Q21.json",
+          "questionId": "2020_AMC_8_Q21",
+          "bank": "amc",
+          "contentHash": "34f0cf3ef73a0d61a66145445958ad0fa33812c1716d616b6b89e48cee42bdb0",
+          "figureHashes": {
+            "figures/2020_AMC_8_Q21_question_fig1.svg": "c05531577cb5dcf460c30369865e45dbb4b6190dabb5899eff431094788b406c"
+          },
+          "displayHash": "d03b7ee136dcb15959bd898fdaae380a58ecb0df06771824d7d8f5542a9ffc22",
+          "answerRulesHash": "30195ac12af612a37d753a2b6c289551b46f2daa651c84066e3f9fa3c440cafb",
+          "level": "AMC 8",
+          "topic": "Counting & Probability",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "41003521a3b3a1f2a9a3c523bc6155e5a16743c612167655af078e58f02c2604",
+          "firstPassPacketId": "map-297",
+          "firstPassReceiptHash": "6ecc70a114cf0d2066e3f7f5740a6800bf453aff8ce0f21b2cd25dd65e998ed3",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "displayed_figure",
+            "extension_scope"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "4daa7180323d9d4ed80218def63b8d2da41a90226fe86b8f8c200d8062d5aa2c",
+          "questionIds": [
+            "2020_AMC_8_Q21"
+          ]
+        }
+      ],
+      "imageSlots": [
+        4
+      ],
+      "figureHashes": {
+        "figures/2020_AMC_8_Q21_question_fig1.svg": "c05531577cb5dcf460c30369865e45dbb4b6190dabb5899eff431094788b406c"
+      }
+    },
+    "q005": {
+      "groupId": "task-d170e5c038f08c517039",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2021_AMC_12A_Q10.json",
+          "questionId": "2021_AMC_12A_Q10",
+          "bank": "amc",
+          "contentHash": "b6481677e5824c16a6f5494d41cd3c10cde2bbf64cd8c9a6c8af8666c57ac4c6",
+          "figureHashes": {
+            "figures/2021_AMC_12A_Q10_question_fig1.svg": "c4d3cdb5df35bb0a4b0124f66f5a909adc7181d4a888b227f87f89354bdd0e2a"
+          },
+          "displayHash": "d170e5c038f08c51703932ab4a26b599e2d1f896dbedbcd6c88746da8df26fbd",
+          "answerRulesHash": "8fa1d4de71d76dca373ae83555562198ef33cfb23e91c1ecf7b14c2939567a09",
+          "level": "AMC 12",
+          "topic": "Geometry",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "20892aff7e0db1b0568e6c59893e3580f60cc4de3166976551584c2da2b05787",
+          "firstPassPacketId": "map-299",
+          "firstPassReceiptHash": "71cb9889ac54a2e5c48cb026a8e03ad3915140a2062461a1809fc4c9253038d7",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "displayed_figure"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "f5cbd4b2405522eb5df72f9f477c978b3640d97c66c7b0c3144f39fd63b69ca5",
+          "questionIds": [
+            "2021_AMC_12A_Q10"
+          ]
+        }
+      ],
+      "imageSlots": [
+        5
+      ],
+      "figureHashes": {
+        "figures/2021_AMC_12A_Q10_question_fig1.svg": "c4d3cdb5df35bb0a4b0124f66f5a909adc7181d4a888b227f87f89354bdd0e2a"
+      }
+    },
+    "q006": {
+      "groupId": "task-d3eaf5c53775cd6f0c43",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2018_AMC_10A_Q13.json",
+          "questionId": "2018_AMC_10A_Q13",
+          "bank": "amc",
+          "contentHash": "c98c6a945553f7c130876b5827fbed723648758aeacde0f825a454b9308af3f4",
+          "figureHashes": {
+            "figures/2018_AMC_10A_Q13_question_fig1.svg": "0bada3a078c2297e630ebf4c712b1f2096a90be996f7a6dfeaad701b1e717882"
+          },
+          "displayHash": "d3eaf5c53775cd6f0c4393aaa1c51d3cd2d4cdfbf55095c2ae2581779d31d14c",
+          "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+          "level": "AMC 10",
+          "topic": "Unclassified",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "3aad828ed289d82a71a0e7304e039c4ad00d89523e40c60aa6a53509cd51acfd",
+          "firstPassPacketId": "map-291",
+          "firstPassReceiptHash": "616ab4cde2d50aea091ce79586934eab372c13b36f5e207c940f22790c13b368",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "displayed_figure"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "425140dc5ed53e6e702f67ead45fd07993cd4fc993b6798d77d7303f100f4dcc",
+          "questionIds": [
+            "2018_AMC_10A_Q13"
+          ]
+        }
+      ],
+      "imageSlots": [
+        6
+      ],
+      "figureHashes": {
+        "figures/2018_AMC_10A_Q13_question_fig1.svg": "0bada3a078c2297e630ebf4c712b1f2096a90be996f7a6dfeaad701b1e717882"
+      }
+    },
+    "q007": {
+      "groupId": "task-d744c005c5097261db46",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2022_AMC_8_Q10.json",
+          "questionId": "2022_AMC_8_Q10",
+          "bank": "amc",
+          "contentHash": "9ab1e936dff5dd4638b8d426997fd11e551a72f7bb6a6a15ed71f24741214b58",
+          "figureHashes": {
+            "figures/2022_AMC_8_Q10_choiceA_fig1.svg": "cdbc31e94cb7d9a52ab1ce789565f48d9fe758b7936a73ed047a09cba5f43f96",
+            "figures/2022_AMC_8_Q10_choiceB_fig2.svg": "d7e14c0ef5fc1afd6cd4328992aa704405bc1c465dad10e145912082c158b206",
+            "figures/2022_AMC_8_Q10_choiceC_fig3.svg": "dcd4a7a7a34d50e94938ce67a500ec21b1d94719e32c984a7546816ee9c315f4",
+            "figures/2022_AMC_8_Q10_choiceD_fig4.svg": "d97ad9337cf4a23cacb8a828e917e050374e711bae4e714b26033a0dcd00f3d9",
+            "figures/2022_AMC_8_Q10_choiceE_fig5.svg": "b06a456d09d18658071dcf24bcfae9b29e2a0ee5b17c6f7df3dc67a3599d71bb"
+          },
+          "displayHash": "d744c005c5097261db46ba1c77e9731ee06b178178dc36d601d8aabc084ada91",
+          "answerRulesHash": "8fa1d4de71d76dca373ae83555562198ef33cfb23e91c1ecf7b14c2939567a09",
+          "level": "AMC 8",
+          "topic": "Prealgebra",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "481a6b910002268021db4ac8c1d55f60d80502ba839509ac937fdbf946f46422",
+          "firstPassPacketId": "map-303",
+          "firstPassReceiptHash": "75ebf4d10f7bf79eee37f63ec6f02feaba2519a3cc2e90e78172e1b82ebdd81a",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "displayed_figure"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "81a0f39b2ddb9e0f764fd95c2abef708827a19a32ac2bab8e95e66a56dd7a630",
+          "questionIds": [
+            "2022_AMC_8_Q10"
+          ]
+        }
+      ],
+      "imageSlots": [
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "figureHashes": {
+        "figures/2022_AMC_8_Q10_choiceA_fig1.svg": "cdbc31e94cb7d9a52ab1ce789565f48d9fe758b7936a73ed047a09cba5f43f96",
+        "figures/2022_AMC_8_Q10_choiceB_fig2.svg": "d7e14c0ef5fc1afd6cd4328992aa704405bc1c465dad10e145912082c158b206",
+        "figures/2022_AMC_8_Q10_choiceC_fig3.svg": "dcd4a7a7a34d50e94938ce67a500ec21b1d94719e32c984a7546816ee9c315f4",
+        "figures/2022_AMC_8_Q10_choiceD_fig4.svg": "d97ad9337cf4a23cacb8a828e917e050374e711bae4e714b26033a0dcd00f3d9",
+        "figures/2022_AMC_8_Q10_choiceE_fig5.svg": "b06a456d09d18658071dcf24bcfae9b29e2a0ee5b17c6f7df3dc67a3599d71bb"
+      }
+    },
+    "q008": {
+      "groupId": "task-db874b4b915f753a34b4",
+      "bindings": [
+        {
+          "path": "amc-bank\\questions\\2021_Fall_AMC_10B_Q15.json",
+          "questionId": "2021_Fall_AMC_10B_Q15",
+          "bank": "amc",
+          "contentHash": "9c10795fbe74870ae2cdce36d153ea3aa4d0c25e709fbcded4e37edf62767cf6",
+          "figureHashes": {
+            "figures/2021_Fall_AMC_10B_Q15_question_fig1.svg": "fccc1ebcd423f1fed56c344fbd95914479a6b212aa6b2ee74481705dba974175"
+          },
+          "displayHash": "db874b4b915f753a34b4aa24067aa91d84a3e9a2ce89cbefe9d7c07fd6edaa12",
+          "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+          "level": "AMC 10",
+          "topic": "Geometry",
+          "responseType": "choice",
+          "mappingStatus": "complete",
+          "mappingHash": "4831a451d7cb06a703dd7de4f50e15a04ed80bb50532234f84239b7cf9b93367",
+          "firstPassPacketId": "map-300",
+          "firstPassReceiptHash": "cf78fd4d518d0ceb2fe5d61c6c705a2139d6a8675d82f433455028bd6b30385f",
+          "receiptErrors": [],
+          "mappingErrors": [],
+          "riskFlags": [
+            "displayed_figure"
+          ]
+        }
+      ],
+      "candidateVariants": [
+        {
+          "variantId": "v01",
+          "candidateHash": "52e9262cb05fae9d611058747d7cc9d8361c63c29c30fd24a2f1d99f5174f9ec",
+          "questionIds": [
+            "2021_Fall_AMC_10B_Q15"
+          ]
+        }
+      ],
+      "imageSlots": [
+        12
+      ],
+      "figureHashes": {
+        "figures/2021_Fall_AMC_10B_Q15_question_fig1.svg": "fccc1ebcd423f1fed56c344fbd95914479a6b212aa6b2ee74481705dba974175"
+      }
+    }
+  },
+  "imageCount": 12,
+  "imageHashes": [
+    "d21a89ce5c3c77db4db8767f6c76ddd145d7904bd46a2a66dc786f025cee01e4",
+    "ce3e287b58f6ee7e917c30df687a63f899a861adae790ad41eae232a8dc1c868",
+    "8c2569f20ac52064c106456ffc689b8b14931d910adf407f64dd1fd03ae360b9",
+    "45a770b52fb88a0f5a1c896209125f2a3104f97178fede49900875bcc3cd0c7a",
+    "00c4114b9167e3e863d9d96d1642bbe3741cf2bb3e1fe9138ee1cd53b93053cb",
+    "5c22e2880b3d8e44e3457cce1e6adf5f532d2a44d1149f8ee92ccb7fb6c74500",
+    "9b543cc193173f592e86c18768e8209d733e50fbdde610f613bd389a1dcd656c",
+    "402acd67d9ea1eb313cf5777495f7e9918db0699cc896c038a9c6bf4be587d20",
+    "62f685275bbf6532ac7c4e8cdc42e7e30d359dd4d60bb462eab6d259183a0216",
+    "a808cca213068d7f39355288612089ea97241d854d5c803fcaec0c1239c83a1b",
+    "b58b19136b1327061f21ba72abedd88dc26dedb885546ec625f87c83bb5cf824",
+    "e7e8ed72394ab839a6e7c47ebcf5146006d065292007a8614e3a0ef0179153f1"
+  ],
+  "candidateExposure": true,
+  "keysSolutionsSourceLabelsExposed": false,
+  "receiptBase": {
+    "schemaVersion": 1,
+    "status": "prepared_not_reviewed",
+    "at": "2026-11-05T14:52:28.120032+00:00",
+    "reviewMode": "targeted",
+    "auditPacketId": "audit-016",
+    "packetHash": "ecd4caaf56db05957e9061b18edd429d890e1aba1d3a8aa99dbe2e2b6b94a159",
+    "planHash": "80c64a7b6059dc8d93deda3950ef625c5efd4916d8627606cd9acb1fc7b3979f",
+    "catalogHash": "5bc81d43a32ca981d0a974516852f2eb731325d0f85b14cab04d76bdfd842aa7",
+    "inputHash": "81510d677d2ab7591ee1c8971d2a62470e207f91e7356e5944cfca022436a3cc",
+    "aliasBindings": {
+      "q001": {
+        "groupId": "task-cb7ff92ac1a67121ef76",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2020_AMC_10B_Q14.json",
+            "questionId": "2020_AMC_10B_Q14",
+            "bank": "amc",
+            "contentHash": "cc8787037dce42380dcb1289c84445c0d251f5461bc26497544128cff54922a4",
+            "figureHashes": {
+              "figures/2020_AMC_10B_Q14_question_fig1.svg": "c09ceac9379057cfc6b145556fcb5d057457b34ef69d8c7a09cd73f95feae0d6"
+            },
+            "displayHash": "cb7ff92ac1a67121ef768f7c9a5ec3bff277552876503df808c97a45e2de2f6e",
+            "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+            "level": "AMC 10",
+            "topic": "Geometry",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "57245bf079057ee87b1ed7eda46dc6e52841596e5fb70e18170be2761f6f2689",
+            "firstPassPacketId": "map-296",
+            "firstPassReceiptHash": "3300853c745d6deccaacbc5e41376518b30dc2dee36a58742eb96abe292770ce",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "displayed_figure",
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "dd0f58de1c45a62a766c88c6bd14723e133fdd0fba20e8eba7cb671cde309e7b",
+            "questionIds": [
+              "2020_AMC_10B_Q14"
+            ]
+          }
+        ],
+        "imageSlots": [
+          1
+        ],
+        "figureHashes": {
+          "figures/2020_AMC_10B_Q14_question_fig1.svg": "c09ceac9379057cfc6b145556fcb5d057457b34ef69d8c7a09cd73f95feae0d6"
+        }
+      },
+      "q002": {
+        "groupId": "task-ce0cbdd0eed5969c7662",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2020_AMC_8_Q04.json",
+            "questionId": "2020_AMC_8_Q04",
+            "bank": "amc",
+            "contentHash": "097d604fc3045393f0e3e61740dac324185d7ce8b70bf9f1d0b57773afa7a430",
+            "figureHashes": {
+              "figures/2020_AMC_8_Q04_question_fig1.svg": "41a23ac3e91bbcbc2fc64eb2f9ec0635387aba5bd3caffa5eb49199606149fdd"
+            },
+            "displayHash": "ce0cbdd0eed5969c7662b0606468d4ac5033c79ed5ea1b989be0fde638263fda",
+            "answerRulesHash": "388d6924090583ac5fe32cdcea9c171eca47a5eaa40bf220a9cd752e14b5f1bb",
+            "level": "AMC 8",
+            "topic": "Counting & Probability",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "64cb91451627864c5a2aa49e58eb5d20a056fb7510e23196644b91239d94ff97",
+            "firstPassPacketId": "map-297",
+            "firstPassReceiptHash": "6ecc70a114cf0d2066e3f7f5740a6800bf453aff8ce0f21b2cd25dd65e998ed3",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "displayed_figure"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "01b637d1a629b76916c16ba29a250ebf394f5d260b83b9e64b77a40df44edfd1",
+            "questionIds": [
+              "2020_AMC_8_Q04"
+            ]
+          }
+        ],
+        "imageSlots": [
+          2
+        ],
+        "figureHashes": {
+          "figures/2020_AMC_8_Q04_question_fig1.svg": "41a23ac3e91bbcbc2fc64eb2f9ec0635387aba5bd3caffa5eb49199606149fdd"
+        }
+      },
+      "q003": {
+        "groupId": "task-cee72b1342efc88912ad",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2018_AMC_12B_Q13.json",
+            "questionId": "2018_AMC_12B_Q13",
+            "bank": "amc",
+            "contentHash": "a60e3cde61849e4007c72300a7fb120a095e700f4678ea4662e4c2312e7333f5",
+            "figureHashes": {
+              "figures/2018_AMC_12B_Q13_question_fig1.svg": "c9719ea88777962adc9e059d078a6db4ac3868bdf6e34b84f173265c608a5d35"
+            },
+            "displayHash": "cee72b1342efc88912adae1419ffe86076cf4d2cad5e0362eaffffab14d8a8b1",
+            "answerRulesHash": "66c02fc1f97b6cb54749322e154cabf3b2ea4fcd67219753772de6fe894a67ca",
+            "level": "AMC 12",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "45bf92d34e232d6936406432a4de50b0e4142377e9c7578751f202a6a0bc228c",
+            "firstPassPacketId": "map-292",
+            "firstPassReceiptHash": "39344ed22fb309f2d16dc9000429052ae00d53148684928c4769b9980886e346",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "displayed_figure",
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "13f5b43845c23caae6006ba3334eb041963c34ea38aadd4c1f461a173ff5da12",
+            "questionIds": [
+              "2018_AMC_12B_Q13"
+            ]
+          }
+        ],
+        "imageSlots": [
+          3
+        ],
+        "figureHashes": {
+          "figures/2018_AMC_12B_Q13_question_fig1.svg": "c9719ea88777962adc9e059d078a6db4ac3868bdf6e34b84f173265c608a5d35"
+        }
+      },
+      "q004": {
+        "groupId": "task-d03b7ee136dcb15959bd",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2020_AMC_8_Q21.json",
+            "questionId": "2020_AMC_8_Q21",
+            "bank": "amc",
+            "contentHash": "34f0cf3ef73a0d61a66145445958ad0fa33812c1716d616b6b89e48cee42bdb0",
+            "figureHashes": {
+              "figures/2020_AMC_8_Q21_question_fig1.svg": "c05531577cb5dcf460c30369865e45dbb4b6190dabb5899eff431094788b406c"
+            },
+            "displayHash": "d03b7ee136dcb15959bd898fdaae380a58ecb0df06771824d7d8f5542a9ffc22",
+            "answerRulesHash": "30195ac12af612a37d753a2b6c289551b46f2daa651c84066e3f9fa3c440cafb",
+            "level": "AMC 8",
+            "topic": "Counting & Probability",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "41003521a3b3a1f2a9a3c523bc6155e5a16743c612167655af078e58f02c2604",
+            "firstPassPacketId": "map-297",
+            "firstPassReceiptHash": "6ecc70a114cf0d2066e3f7f5740a6800bf453aff8ce0f21b2cd25dd65e998ed3",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "displayed_figure",
+              "extension_scope"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "4daa7180323d9d4ed80218def63b8d2da41a90226fe86b8f8c200d8062d5aa2c",
+            "questionIds": [
+              "2020_AMC_8_Q21"
+            ]
+          }
+        ],
+        "imageSlots": [
+          4
+        ],
+        "figureHashes": {
+          "figures/2020_AMC_8_Q21_question_fig1.svg": "c05531577cb5dcf460c30369865e45dbb4b6190dabb5899eff431094788b406c"
+        }
+      },
+      "q005": {
+        "groupId": "task-d170e5c038f08c517039",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2021_AMC_12A_Q10.json",
+            "questionId": "2021_AMC_12A_Q10",
+            "bank": "amc",
+            "contentHash": "b6481677e5824c16a6f5494d41cd3c10cde2bbf64cd8c9a6c8af8666c57ac4c6",
+            "figureHashes": {
+              "figures/2021_AMC_12A_Q10_question_fig1.svg": "c4d3cdb5df35bb0a4b0124f66f5a909adc7181d4a888b227f87f89354bdd0e2a"
+            },
+            "displayHash": "d170e5c038f08c51703932ab4a26b599e2d1f896dbedbcd6c88746da8df26fbd",
+            "answerRulesHash": "8fa1d4de71d76dca373ae83555562198ef33cfb23e91c1ecf7b14c2939567a09",
+            "level": "AMC 12",
+            "topic": "Geometry",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "20892aff7e0db1b0568e6c59893e3580f60cc4de3166976551584c2da2b05787",
+            "firstPassPacketId": "map-299",
+            "firstPassReceiptHash": "71cb9889ac54a2e5c48cb026a8e03ad3915140a2062461a1809fc4c9253038d7",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "displayed_figure"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "f5cbd4b2405522eb5df72f9f477c978b3640d97c66c7b0c3144f39fd63b69ca5",
+            "questionIds": [
+              "2021_AMC_12A_Q10"
+            ]
+          }
+        ],
+        "imageSlots": [
+          5
+        ],
+        "figureHashes": {
+          "figures/2021_AMC_12A_Q10_question_fig1.svg": "c4d3cdb5df35bb0a4b0124f66f5a909adc7181d4a888b227f87f89354bdd0e2a"
+        }
+      },
+      "q006": {
+        "groupId": "task-d3eaf5c53775cd6f0c43",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2018_AMC_10A_Q13.json",
+            "questionId": "2018_AMC_10A_Q13",
+            "bank": "amc",
+            "contentHash": "c98c6a945553f7c130876b5827fbed723648758aeacde0f825a454b9308af3f4",
+            "figureHashes": {
+              "figures/2018_AMC_10A_Q13_question_fig1.svg": "0bada3a078c2297e630ebf4c712b1f2096a90be996f7a6dfeaad701b1e717882"
+            },
+            "displayHash": "d3eaf5c53775cd6f0c4393aaa1c51d3cd2d4cdfbf55095c2ae2581779d31d14c",
+            "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+            "level": "AMC 10",
+            "topic": "Unclassified",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "3aad828ed289d82a71a0e7304e039c4ad00d89523e40c60aa6a53509cd51acfd",
+            "firstPassPacketId": "map-291",
+            "firstPassReceiptHash": "616ab4cde2d50aea091ce79586934eab372c13b36f5e207c940f22790c13b368",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "displayed_figure"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "425140dc5ed53e6e702f67ead45fd07993cd4fc993b6798d77d7303f100f4dcc",
+            "questionIds": [
+              "2018_AMC_10A_Q13"
+            ]
+          }
+        ],
+        "imageSlots": [
+          6
+        ],
+        "figureHashes": {
+          "figures/2018_AMC_10A_Q13_question_fig1.svg": "0bada3a078c2297e630ebf4c712b1f2096a90be996f7a6dfeaad701b1e717882"
+        }
+      },
+      "q007": {
+        "groupId": "task-d744c005c5097261db46",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2022_AMC_8_Q10.json",
+            "questionId": "2022_AMC_8_Q10",
+            "bank": "amc",
+            "contentHash": "9ab1e936dff5dd4638b8d426997fd11e551a72f7bb6a6a15ed71f24741214b58",
+            "figureHashes": {
+              "figures/2022_AMC_8_Q10_choiceA_fig1.svg": "cdbc31e94cb7d9a52ab1ce789565f48d9fe758b7936a73ed047a09cba5f43f96",
+              "figures/2022_AMC_8_Q10_choiceB_fig2.svg": "d7e14c0ef5fc1afd6cd4328992aa704405bc1c465dad10e145912082c158b206",
+              "figures/2022_AMC_8_Q10_choiceC_fig3.svg": "dcd4a7a7a34d50e94938ce67a500ec21b1d94719e32c984a7546816ee9c315f4",
+              "figures/2022_AMC_8_Q10_choiceD_fig4.svg": "d97ad9337cf4a23cacb8a828e917e050374e711bae4e714b26033a0dcd00f3d9",
+              "figures/2022_AMC_8_Q10_choiceE_fig5.svg": "b06a456d09d18658071dcf24bcfae9b29e2a0ee5b17c6f7df3dc67a3599d71bb"
+            },
+            "displayHash": "d744c005c5097261db46ba1c77e9731ee06b178178dc36d601d8aabc084ada91",
+            "answerRulesHash": "8fa1d4de71d76dca373ae83555562198ef33cfb23e91c1ecf7b14c2939567a09",
+            "level": "AMC 8",
+            "topic": "Prealgebra",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "481a6b910002268021db4ac8c1d55f60d80502ba839509ac937fdbf946f46422",
+            "firstPassPacketId": "map-303",
+            "firstPassReceiptHash": "75ebf4d10f7bf79eee37f63ec6f02feaba2519a3cc2e90e78172e1b82ebdd81a",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "displayed_figure"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "81a0f39b2ddb9e0f764fd95c2abef708827a19a32ac2bab8e95e66a56dd7a630",
+            "questionIds": [
+              "2022_AMC_8_Q10"
+            ]
+          }
+        ],
+        "imageSlots": [
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "figureHashes": {
+          "figures/2022_AMC_8_Q10_choiceA_fig1.svg": "cdbc31e94cb7d9a52ab1ce789565f48d9fe758b7936a73ed047a09cba5f43f96",
+          "figures/2022_AMC_8_Q10_choiceB_fig2.svg": "d7e14c0ef5fc1afd6cd4328992aa704405bc1c465dad10e145912082c158b206",
+          "figures/2022_AMC_8_Q10_choiceC_fig3.svg": "dcd4a7a7a34d50e94938ce67a500ec21b1d94719e32c984a7546816ee9c315f4",
+          "figures/2022_AMC_8_Q10_choiceD_fig4.svg": "d97ad9337cf4a23cacb8a828e917e050374e711bae4e714b26033a0dcd00f3d9",
+          "figures/2022_AMC_8_Q10_choiceE_fig5.svg": "b06a456d09d18658071dcf24bcfae9b29e2a0ee5b17c6f7df3dc67a3599d71bb"
+        }
+      },
+      "q008": {
+        "groupId": "task-db874b4b915f753a34b4",
+        "bindings": [
+          {
+            "path": "amc-bank\\questions\\2021_Fall_AMC_10B_Q15.json",
+            "questionId": "2021_Fall_AMC_10B_Q15",
+            "bank": "amc",
+            "contentHash": "9c10795fbe74870ae2cdce36d153ea3aa4d0c25e709fbcded4e37edf62767cf6",
+            "figureHashes": {
+              "figures/2021_Fall_AMC_10B_Q15_question_fig1.svg": "fccc1ebcd423f1fed56c344fbd95914479a6b212aa6b2ee74481705dba974175"
+            },
+            "displayHash": "db874b4b915f753a34b4aa24067aa91d84a3e9a2ce89cbefe9d7c07fd6edaa12",
+            "answerRulesHash": "754ed4bd0d143d0301e7bc6d90184a4d85e9fd03d8027d9e2c9f52cee5e757ba",
+            "level": "AMC 10",
+            "topic": "Geometry",
+            "responseType": "choice",
+            "mappingStatus": "complete",
+            "mappingHash": "4831a451d7cb06a703dd7de4f50e15a04ed80bb50532234f84239b7cf9b93367",
+            "firstPassPacketId": "map-300",
+            "firstPassReceiptHash": "cf78fd4d518d0ceb2fe5d61c6c705a2139d6a8675d82f433455028bd6b30385f",
+            "receiptErrors": [],
+            "mappingErrors": [],
+            "riskFlags": [
+              "displayed_figure"
+            ]
+          }
+        ],
+        "candidateVariants": [
+          {
+            "variantId": "v01",
+            "candidateHash": "52e9262cb05fae9d611058747d7cc9d8361c63c29c30fd24a2f1d99f5174f9ec",
+            "questionIds": [
+              "2021_Fall_AMC_10B_Q15"
+            ]
+          }
+        ],
+        "imageSlots": [
+          12
+        ],
+        "figureHashes": {
+          "figures/2021_Fall_AMC_10B_Q15_question_fig1.svg": "fccc1ebcd423f1fed56c344fbd95914479a6b212aa6b2ee74481705dba974175"
+        }
+      }
+    },
+    "imageCount": 12,
+    "imageHashes": [
+      "d21a89ce5c3c77db4db8767f6c76ddd145d7904bd46a2a66dc786f025cee01e4",
+      "ce3e287b58f6ee7e917c30df687a63f899a861adae790ad41eae232a8dc1c868",
+      "8c2569f20ac52064c106456ffc689b8b14931d910adf407f64dd1fd03ae360b9",
+      "45a770b52fb88a0f5a1c896209125f2a3104f97178fede49900875bcc3cd0c7a",
+      "00c4114b9167e3e863d9d96d1642bbe3741cf2bb3e1fe9138ee1cd53b93053cb",
+      "5c22e2880b3d8e44e3457cce1e6adf5f532d2a44d1149f8ee92ccb7fb6c74500",
+      "9b543cc193173f592e86c18768e8209d733e50fbdde610f613bd389a1dcd656c",
+      "402acd67d9ea1eb313cf5777495f7e9918db0699cc896c038a9c6bf4be587d20",
+      "62f685275bbf6532ac7c4e8cdc42e7e30d359dd4d60bb462eab6d259183a0216",
+      "a808cca213068d7f39355288612089ea97241d854d5c803fcaec0c1239c83a1b",
+      "b58b19136b1327061f21ba72abedd88dc26dedb885546ec625f87c83bb5cf824",
+      "e7e8ed72394ab839a6e7c47ebcf5146006d065292007a8614e3a0ef0179153f1"
+    ],
+    "candidateExposure": true,
+    "keysSolutionsSourceLabelsExposed": false,
+    "promotionStatus": "not_promoted"
+  },
+  "usage": {
+    "attribution": {
+      "items": {
+        "msg_05fba5efce092288016aec982dd0a887d2b7a4e96e90cde313": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "content": [
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 23879,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 905,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 488,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 1010,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 1010,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 557,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 801,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 662,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 662,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 662,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 662,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 662,
+              "output_tokens": 0
+            },
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 976,
+              "output_tokens": 0
+            }
+          ],
+          "input_tokens": 32936,
+          "output_tokens": 0
+        },
+        "rs_05fba5efce092288016aec982fee1887d2b6c2dcbf2ffb503b": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 2,
+          "output_tokens": 516
+        },
+        "rs_05fba5efce092288016aec983ecebc87d296a123ae7f6ca4c8": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_05fba5efce092288016aec984b427087d2b9b89bbc10d23c21": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_05fba5efce092288016aec985ac30c87d28c0d90313e963fd1": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_05fba5efce092288016aec986a02e487d2b68e9349e0529aa5": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_05fba5efce092288016aec9878811887d2a1c8b0d5158945e1": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_05fba5efce092288016aec9888280087d2aaa1c37961593e9f": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_05fba5efce092288016aec9896180487d28aedfe1010095472": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_05fba5efce092288016aec98a6a4c087d2809d518e7acc3538": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_05fba5efce092288016aec98b5ba6c87d29845cf5daa48fa9f": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_05fba5efce092288016aec98c6247c87d281af687c6655d91f": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_05fba5efce092288016aec98d9996087d29651bce491941e09": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_05fba5efce092288016aec98ea2a2887d28cb87794fbc6fea1": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "rs_05fba5efce092288016aec98f9b47487d2a34fa95f41a3085e": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 0,
+          "output_tokens": 518
+        },
+        "msg_05fba5efce092288016aec990a572887d2bfe10a383293c1a6": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "content": [
+            {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0,
+              "input_tokens": 0,
+              "output_tokens": 3018
+            }
+          ],
+          "input_tokens": 0,
+          "output_tokens": 3018
+        }
+      },
+      "request_fields": {
+        "text.format": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 13171,
+          "output_tokens": 0
+        },
+        "instructions": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0,
+          "input_tokens": 164,
+          "output_tokens": 0
+        }
+      }
+    },
+    "input_tokens": 46273,
+    "input_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 0
+    },
+    "output_tokens": 10268,
+    "output_tokens_details": {
+      "reasoning_tokens": 7250
+    },
+    "total_tokens": 56541
+  },
+  "returnedModel": "gpt-6.1-sol",
+  "returnedReasoning": {
+    "context": "all_turns",
+    "effort": "xhigh",
+    "mode": "standard",
+    "summary": null
+  },
+  "responseReceivedAt": "2026-11-05T14:56:51.821941+00:00",
+  "audits": [
+    {
+      "questionId": "q001",
+      "decision": "revise",
+      "assessedIds": [
+        "cnm_p150",
+        "cnm_257"
+      ],
+      "supportIds": [
+        "cnm_139",
+        "cnm_p148",
+        "cnm_174"
+      ],
+      "routes": [
+        {
+          "id": "inner-hexagon-segments",
+          "label": "Inner hexagon minus circular segments",
+          "nodeIds": [
+            "cnm_266",
+            "cnm_257",
+            "cnm_p150"
+          ]
+        },
+        {
+          "id": "semicircle-overlap-correction",
+          "label": "Subtract semicircle areas and restore adjacent overlaps",
+          "nodeIds": [
+            "cnm_p192",
+            "cnm_257",
+            "cnm_p150"
+          ]
+        }
+      ],
+      "derivedAnswer": "D: 3√3 − π square units.",
+      "mathematicalReason": "Each semicircle has radius 1. Regular-hexagon geometry shows that the six interior intersections of adjacent semicircles form a regular hexagon of side 1. The shaded region is this inner hexagon minus six circular segments, each subtending 60°. Its area is 3√3/2 − 6(π/6 − √3/4) = 3√3 − π. Alternatively, each adjacent overlap has area π/3 − √3/2, so overlap correction gives 6√3 − 3π + 6(π/3 − √3/2). Nonadjacent semicircles do not intersect, and there are no triple overlaps.",
+      "candidateFindings": [
+        "v01: The overlap-correction method is valid, but math:inclusion-exclusion-general is explicitly defined for counting finite sets, not continuous areas. Remove that scope tag from this route; cnm_p150 already supports the required area addition and subtraction."
+      ],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": [
+        {
+          "imageSlot": 1,
+          "fact": "The six semicircles face inward from the hexagon's sides; adjacent arcs form six unshaded lenses. The shaded central region is bounded by six arcs between their interior intersections."
+        }
+      ]
+    },
+    {
+      "questionId": "q002",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_p200"
+      ],
+      "supportIds": [],
+      "routes": [],
+      "derivedAnswer": "B: 37 dots.",
+      "mathematicalReason": "The displayed totals are 1, 7, and 19. The first two added hexagonal bands contain 6 and 12 dots, respectively. The next band contains 18 dots, giving 19 + 18 = 37. Identifying and extending this geometric dot pattern directly matches cnm_p200.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": [
+        {
+          "imageSlot": 2,
+          "fact": "The first hexagon contains one dot, the second contains that center plus a six-dot band, and the third adds a twelve-dot outer band."
+        }
+      ]
+    },
+    {
+      "questionId": "q003",
+      "decision": "accept",
+      "assessedIds": [
+        "math:centroid-ratios"
+      ],
+      "supportIds": [
+        "cnm_189"
+      ],
+      "routes": [
+        {
+          "id": "midpoint-square-homothety",
+          "label": "Homothety of the midpoint square",
+          "nodeIds": [
+            "cnm_185",
+            "cnm_275"
+          ]
+        },
+        {
+          "id": "centroid-coordinate-averages",
+          "label": "Coordinate averages of vertices",
+          "nodeIds": [
+            "cnm_084"
+          ]
+        }
+      ],
+      "derivedAnswer": "C: 200 square units.",
+      "mathematicalReason": "Let the four side midpoints be M1 through M4. Each relevant centroid is P + (2/3)(Mi − P), so the centroid quadrilateral is the midpoint square scaled by 2/3 about P. The midpoint square has area 30²/2 = 450, making the required area (2/3)²·450 = 200. Equivalently, the centroid square has perpendicular diagonals of length 20, so the rhombus area formula gives 20·20/2 = 200. Coordinate averaging is also valid. AP and BP do not affect the result.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": [
+        {
+          "imageSlot": 3,
+          "fact": "ABCD is labeled cyclically around the square, and the interior point P is joined to all four vertices, forming the four triangles in the stem. No measurement from P's drawn position is used."
+        }
+      ]
+    },
+    {
+      "questionId": "q004",
+      "decision": "accept",
+      "assessedIds": [
+        "math:recursive-counting-probability"
+      ],
+      "supportIds": [],
+      "routes": [],
+      "derivedAnswer": "A: 28 paths.",
+      "mathematicalReason": "Number columns 1 through 8 from left to right and let N(t,c) count paths reaching column c after t upward steps. Initialize N(0,6) = 1, with all other starting counts zero. Since each move goes diagonally upward, N(t+1,c) = N(t,c−1) + N(t,c+1), with counts outside the board set to zero. After six steps, columns 6 and 8 have counts 19 and 9. Thus the count at Q, column 7 after seven steps, is 19 + 9 = 28. This is a direct application of finite-state counting recursion.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": [
+        {
+          "imageSlot": 4,
+          "fact": "The board has eight rows and eight columns. P is in bottom-row column 6 and Q is in top-row column 7. The sample path confirms moves to diagonally adjoining unshaded squares in the next row."
+        }
+      ]
+    },
+    {
+      "questionId": "q005",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_p209",
+        "cnm_272"
+      ],
+      "supportIds": [],
+      "routes": [],
+      "derivedAnswer": "E: 4:1.",
+      "mathematicalReason": "Let the initial liquid heights be hn and hw. Equal initial volumes give (π/3)·3²·hn = (π/3)·6²·hw, hence hn/hw = 4. Within each cone, similar axial triangles make radius proportional to height, so the volume below height h is proportional to h³. If the common initial volume is V and each submerged marble displaces volume m, both heights are multiplied by the same factor k = ((V+m)/V)^(1/3). The rises therefore have ratio (k−1)hn:(k−1)hw = 4:1. The numerical sphere-volume formula is unnecessary because the equal displacement cancels.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": [
+        {
+          "imageSlot": 5,
+          "fact": "Both cones have downward-facing vertices, and the initial horizontal liquid surfaces have radii labeled 3 and 6 from their axes. No opening angle or height is measured from the schematic drawing."
+        }
+      ]
+    },
+    {
+      "questionId": "q006",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_132"
+      ],
+      "supportIds": [],
+      "routes": [
+        {
+          "id": "similar-right-triangles",
+          "label": "Use similar right triangles",
+          "nodeIds": [
+            "cnm_271",
+            "cnm_272"
+          ]
+        },
+        {
+          "id": "coordinate-equidistance",
+          "label": "Use coordinate distances",
+          "nodeIds": [
+            "cnm_h173",
+            "cnm_042"
+          ]
+        }
+      ],
+      "derivedAnswer": "D: 15/8 inches.",
+      "mathematicalReason": "Folding A onto B makes the crease the perpendicular bisector of AB. Let M be the midpoint of AB and let the crease meet AC at N. Then AM = 5/2, and right triangles AMN and ACB are similar, with scale factor AM/AC = 5/8. Thus MN = (5/8)·CB = 15/8. Also AN = (5/8)·AB = 25/8 < 4, confirming that N lies on AC. For the coordinate alternative, A=(0,0), B=(4,3), and N=(x,0); equidistance gives x²=(4−x)²+9, so x=25/8, and the distance from N to M=(2,3/2) is 15/8.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": [
+        {
+          "imageSlot": 6,
+          "fact": "The labels identify AB=5, AC=4, and BC=3, with A at the left end of AC and B above C. These lengths establish that the right angle is at C."
+        }
+      ]
+    },
+    {
+      "questionId": "q007",
+      "decision": "accept",
+      "assessedIds": [
+        "cnm_209"
+      ],
+      "supportIds": [
+        "cnm_p111"
+      ],
+      "routes": [],
+      "derivedAnswer": "E: the graph in image slot 11.",
+      "mathematicalReason": "The outbound drive lasts two hours, so the trail is 45·2 = 90 miles from home. The car remains there during the three-hour hike, from 10 a.m. to 1 p.m. The return drive takes 90/60 = 1.5 hours, ending at 2:30 p.m. The correct distance-time graph therefore rises linearly from 0 to 90, stays constant for three hours, then falls more steeply to 0 at 2:30 p.m. This matches the supplied piecewise-linear modeling scope and the supporting distance–speed–time relationship.",
+      "candidateFindings": [],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": [
+        {
+          "imageSlot": 7,
+          "fact": "Choice A reaches 90 miles at 10 a.m. and stays there until 1 p.m., but returns to zero at 3 p.m."
+        },
+        {
+          "imageSlot": 8,
+          "fact": "Choice B has a plateau at 45 miles rather than 90 miles."
+        },
+        {
+          "imageSlot": 9,
+          "fact": "Choice C returns to zero at 2:30 p.m., but its plateau is only 45 miles."
+        },
+        {
+          "imageSlot": 10,
+          "fact": "Choice D has a plateau at 120 miles rather than 90 miles."
+        },
+        {
+          "imageSlot": 11,
+          "fact": "Choice E passes through 0 miles at 8 a.m., 90 miles at 10 a.m., remains at 90 until 1 p.m., and reaches zero halfway between 2 and 3 p.m."
+        }
+      ]
+    },
+    {
+      "questionId": "q008",
+      "decision": "revise",
+      "assessedIds": [
+        "cnm_124",
+        "cnm_273"
+      ],
+      "supportIds": [
+        "cnm_p089",
+        "cnm_p077",
+        "cnm_055",
+        "cnm_121",
+        "cnm_224"
+      ],
+      "routes": [
+        {
+          "id": "right-triangle-altitude",
+          "label": "Selected assessment route: congruence and hypotenuse projections",
+          "nodeIds": [
+            "cnm_124",
+            "cnm_121",
+            "cnm_273",
+            "cnm_224"
+          ]
+        },
+        {
+          "id": "coordinate-orthogonality",
+          "label": "Alternative route: coordinates and perpendicular vectors",
+          "nodeIds": [
+            "cnm_084",
+            "cnm_h088",
+            "cnm_174",
+            "cnm_224"
+          ]
+        }
+      ],
+      "derivedAnswer": "D: 117 square units.",
+      "mathematicalReason": "Perpendicularity gives ∠ABP = ∠BCQ. Together with the right angles at A and B and AB=BC, ASA proves triangles ABP and BCQ congruent. Hence CQ=BP=6+7=13. In right triangle BCQ, BR is the altitude to hypotenuse CQ, so QR·CR=BR²=36 and QR+CR=13. The two hypotenuse pieces are therefore 4 and 9. Since BC>BQ, the projection relation BC²=CQ·CR forces CR>QR, giving CR=9. The square's area is BC²=13·9=117. The assessed scopes describe this synthetic route; the supplied coordinate route is a valid alternative, not an additional requirement.",
+      "candidateFindings": [
+        "v01: cnm_p089 should not be the sole assessed scope. Computing side squared is only the final elementary step; the substantive work is establishing congruence and applying right-triangle altitude similarity. Move cnm_p089 to support and assess the selected geometric route."
+      ],
+      "needsNewNodes": [],
+      "limitations": [],
+      "figureEvidence": [
+        {
+          "imageSlot": 12,
+          "fact": "P lies on AD, Q lies on AB, and R lies between P and B and between Q and C. The right-angle mark is at the intersection of BP and CQ, with PR labeled 7 and BR labeled 6."
+        }
+      ]
+    }
+  ],
+  "validationErrors": [],
+  "qualificationFindings": [],
+  "structuralFindings": [],
+  "validationStatus": "structure_valid",
+  "mathematicalValidation": "model scope audit only; no automatic acceptance or promotion",
+  "finishedAt": "2026-11-05T14:56:51.825697+00:00",
+  "elapsedSeconds": 264.16
+}

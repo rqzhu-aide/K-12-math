@@ -128,6 +128,11 @@ Describe where the solution came from honestly in `Meta.SolutionSource`, such
 as an official published solution, a teacher's derivation, or an AI-generated
 draft. Record modifications and translation review status when applicable.
 
+Use the [explanation style guide](EXPLANATION_STYLE.md) to write solutions that
+explain why the method fits, connect the important steps, and give the learner a
+useful strategy to recognize again. Review reasoning and student readability
+alongside the mathematical answer.
+
 ## Choose the response type deliberately
 
 | Type | Reference answer | Local answer check |

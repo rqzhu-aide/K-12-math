@@ -67,6 +67,36 @@ def not_graded_result(question, answer):
             'modelUsed': False, 'decisionRequests': 0}
 
 
+def confirmed_grading_notice(answer_check):
+    """Project only adjudicated central outcomes, never first-pass uncertainty."""
+    status = answer_check.get('status') if isinstance(answer_check, dict) else None
+    notes = {
+        'confirmed_conflict': 'A review found a mathematical inconsistency in this question or its answer key. You can study it without grading.',
+        'confirmed_ambiguous': 'This question does not identify one unambiguous answer. You can study it without grading.',
+    }
+    if status not in notes:
+        return None
+    return {'gradingStatus': 'disputed', 'gradingNote': notes[status]}
+
+
+def effective_grading_question(question, root=None):
+    """Return a temporary grading view after binding the unchanged source record.
+
+    Only the central reader can authorize a new dispute. A portable stub or an
+    unreviewed disagreement cannot do so. The returned view is never persisted.
+    """
+    if question.get('GradingStatus') == 'disputed':
+        return question
+    from knowledge_graph import context_for_question
+    context = context_for_question(question, **({'root': root} if root is not None else {}))
+    if context.get('binding', {}).get('status') != 'current':
+        return question
+    notice = confirmed_grading_notice(context.get('answerCheck'))
+    if notice is None:
+        return question
+    return {**question, 'GradingStatus': notice['gradingStatus'], 'GradingNote': notice['gradingNote']}
+
+
 def exact_answer_category(question, answer):
     """Return a proven category, or None when explicit formats cannot decide."""
     if question.get('GradingStatus') == 'disputed':
