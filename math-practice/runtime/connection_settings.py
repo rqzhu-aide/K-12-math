@@ -146,10 +146,12 @@ class ConnectionSettings:
             os.environ.get('SPEECH_MODEL', '').strip(), os.environ.get('SPEECH_API_KEY', '').strip())
         self._inference = {'provider': 'api', **DEFAULT_OPENAI, 'bases': [], 'apiKey': ''}
         self._key_files = {}
-        self._math_assessment = 'decision'
+        self._math_assessment = 'inference'
         self._setup = {'mode': 'separate' if self._decision.configured or self._speech.configured else 'single', 'provider': ''}
         self.notice = ''
         if self.path.is_file():
+            # Profiles saved before this choice existed used the decision model.
+            self._math_assessment = 'decision'
             try:
                 saved = read_document(self.path)
                 configs = self._merge(saved)

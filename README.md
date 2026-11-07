@@ -3,7 +3,7 @@
 [![Knowledge graph 1.0.0](https://img.shields.io/badge/Knowledge_graph-1.0.0-245984)](database/knowledge-graph/source/metadata.json)
 [![CN bank 1.0.0](https://img.shields.io/badge/CN_bank-1.0.0-427354)](database/cn-math-bank/VERSION)
 [![AMC bank 1.0.0](https://img.shields.io/badge/AMC_bank-1.0.0-996532)](database/amc-bank/VERSION)
-[![Math Practice UI 2.0.0](https://img.shields.io/badge/Math_Practice_UI-2.0.0-625395)](math-practice/VERSION)
+[![Math Practice UI 2.1.0](https://img.shields.io/badge/Math_Practice_UI-2.1.0-625395)](math-practice/VERSION)
 
 K-12-math is a mathematics study collection with **936 knowledge graph nodes (knowledge items), 3,355 Chinese curriculum questions, and 5,435 AMC questions**. Students can follow the Chinese curriculum, browse US Common Core standards, or explore concepts through the grade-independent **ailleo** map. A question can connect to several concepts, and different solution methods can use different sets of concepts.
 
@@ -14,7 +14,7 @@ K-12-math is a mathematics study collection with **936 knowledge graph nodes (kn
 | [Mathematics knowledge graph](database/knowledge-graph/) | 1.0.0 | Connects 936 concepts through 1,634 accepted relationships and links questions to the concepts they assess or use in a solution. |
 | [Chinese curriculum question bank](database/cn-math-bank/) | 1.0.0 | Contains 3,355 questions in English with answers and worked solutions, alongside the original Chinese material. |
 | [AMC question bank](database/amc-bank/) | 1.0.0 | Contains 5,435 questions and answer keys from 195 competition papers, with stored worked solutions for 3,678 questions. |
-| [Math Practice UI](math-practice/) | 2.0.0 | Runs locally so students can browse either bank, explain their thinking, and practice with optional model feedback. |
+| [Math Practice UI](math-practice/) | 2.1.0 | Runs locally so students can browse either bank, explain their thinking, and practice with optional model feedback. |
 
 All 8,790 questions have graph annotations. For 8,780, the annotation identifies an assessed concept or a solution route. The other ten link to definitions for context. Of the 7,033 questions with a stored solution, 200 AMC explanations adapt official MAA solutions. The question banks identify the sources of their explanations.
 
@@ -28,9 +28,17 @@ python math-practice/runtime/serve_math_practice.py
 
 Open [Math Practice on your computer](http://127.0.0.1:8877/math-practice/). Choose a map or a question bank, open a problem, and enter an answer. Browsing, answer-key checks, and stored solutions work offline.
 
-For tutoring, configure your own compatible LLM API or locally hosted model in **Settings → Connection settings**. Mathematics, speech transcription, and learning signals can each use a different provider. Students can type their reasoning or record it by voice, edit the transcript, and submit it with their answer. The math tutor checks the answer and the explanation together, points to a missing or mistaken step, and can offer a hint for the next attempt. Model requests go to the services you select. [UI and model setup](math-practice/README.md)
+| 1. Practice a question | 2. Choose the model for each task |
+|:---:|:---:|
+| [![Question page with the problem, answer controls, and space to explain the solution](math-practice/images/question-page.png)](math-practice/images/question-page.png) | [![API connection settings showing math reasoning and feedback, voice to text, and sentiment analysis](math-practice/images/model-settings.png)](math-practice/images/model-settings.png) |
 
-[![Math Practice showing a recorded explanation, feedback on the student's reasoning, and a hint](math-practice/images/interactive-practice.png)](math-practice/images/interactive-practice.png)
+Students can type their reasoning or record it, edit the transcript, and submit it with their answer. In **Settings → Connection settings**, each of three optional roles can use its own provider. For example, use an OpenAI account for math and local models for the other two:
+
+- **Math reasoning and feedback** checks the submitted answer and explanation together. If either has a problem, the tutor explains where and can offer a hint.
+- **Voice to text** transcribes the recording into a draft the student can edit.
+- **Sentiment analysis** reads the original transcript for expressed confidence, engagement, and how clearly the student explained their reasoning. It does not grade the math or analyze vocal tone.
+
+See [UI and model setup](math-practice/README.md#optional-ai-connections) for supported APIs and local model settings.
 
 ## Further development and custom question banks
 

@@ -1,6 +1,10 @@
-# Math Practice UI 2.0.0
+# Math Practice UI 2.1.0
 
-Browse questions, record or type your thinking, and ask for feedback or a hint. Run these commands from the repository root.
+Browse questions, record or type your thinking, and ask for feedback or a hint.
+
+| Practice a question | Configure the three model roles |
+|:---:|:---:|
+| [![Question with answer and reasoning controls](images/question-page.png)](images/question-page.png) | [![API settings for math reasoning and feedback, voice to text, and sentiment analysis](images/model-settings.png)](images/model-settings.png) |
 
 ## Start practicing
 
@@ -65,18 +69,16 @@ for conversion details and answer-checking limits.
 
 ## Optional AI connections
 
-Open **Settings → Connection settings**. The **Mathematics**, **Speech**, and
-**Sentiment** tabs each have a URL, an optional API key, and a model name. Each
-connection can use its own service or local model. Existing saved connections
-load directly into these tabs.
+Open **Settings → Connection settings** to choose a model for each task. For
+example, you can connect your OpenAI account for math reasoning and feedback,
+and use local models for voice to text and sentiment analysis. With a custom API,
+enter the service URL and model name, and a key if the service requires one.
+You can leave any role unconfigured. Existing connections load into their tabs.
 
-Use **Test All Connections** to check each configured feature before saving.
+Use **Test All Connections** to check the configured features before saving.
 Each colored dot means that tab passed its sample task. If a dot is gray, open
-the matching tab to see its status or the reason a test failed. The tests use synthetic
-samples, including a short silent recording, and may use API credits. Speech
-accuracy and the quality of the feedback depend on the models you choose.
-Chat-based learning signals describe the transcript's words and show brief
-supporting evidence. Ordinary practice needs no API key.
+the matching tab to see its status. Tests use synthetic samples, including a
+short silent recording, and may use API credits. Ordinary practice needs no API key.
 
 ### Separate and local connections
 
@@ -86,12 +88,14 @@ then save and test that connection. Leave its address and model blank to disable
 
 | Connection | Adds | Required API |
 | --- | --- | --- |
-| Mathematics | Reviews answers and provides hints | Compatible `POST /v1/chat/completions` returning a structured tutor review |
-| Speech | Turns recorded thinking into an editable draft | `POST /v1/audio/transcriptions` accepting multipart WAV and returning a text field |
-| Sentiment | Checks learning signals in a transcript, mathematical reasoning, and typed answers | Compatible `POST /v1/chat/completions` with JSON responses, or custom `POST /v1/systemone` with rubric choices and probabilities |
+| Math reasoning and feedback | Reviews the submitted answer and explanation in one call, with feedback and a hint when needed | Compatible `POST /v1/chat/completions` returning a structured tutor review, or a supported account connection |
+| Voice to text | Turns recorded thinking into an editable transcript | `POST /v1/audio/transcriptions` accepting multipart WAV and returning a text field |
+| Sentiment analysis | Reads the original transcript for expressed confidence, engagement, and how clearly the student explained their reasoning; this does not require the reasoning to be correct | Compatible `POST /v1/chat/completions` with JSON responses, or custom `POST /v1/systemone` with rubric choices and probabilities |
 
 Model listing through `GET /v1/models` is optional. The connection tests call
-the task endpoints directly, including all three assessment tasks for Sentiment.
+the task endpoints directly. Sentiment analysis uses the words in the original
+speech transcript. The math tutor uses the thinking the student submits, including
+any edits they make before submitting.
 
 Use an address such as `http://localhost:8000` and the model ID reported by your
 own server. An address ending in `/v1` is also accepted. New text connections use
@@ -109,12 +113,12 @@ Figures with even-odd clipping also use an existing system or user installation 
 Chrome, Chromium, or Edge. This preserves white holes and overlapping outlines in
 the image sent to the tutor. The app does not download a browser.
 
-In **Mathematics**, choose **Use a ChatGPT plan** to connect an eligible plan.
+In the math tab, choose **Use a ChatGPT plan** to connect an eligible plan.
 **Continue with ChatGPT** opens OpenAI's sign-in page. After granting access,
 choose a model, run **Test Connection**, then **Save Settings**. A passing
-Mathematics test means the model returned a valid text tutor review. Figure
+math test means the model returned a valid text tutor review. Figure
 questions also require image support. Use **Manage usage** to check plan limits,
-or **Use custom API** to switch back. Speech and Sentiment use their own endpoints.
+or **Use custom API** to switch back. Voice to text and sentiment analysis use their own endpoints.
 [OpenAI's local-app sign-in guide](https://developers.openai.com/siwc/token-sharing-open-source)
 
 ChatGPT sign-in uses the shared Python package `PyJWT[crypto]`. Install it once
@@ -142,14 +146,12 @@ and `inference` sections as JSON and require shared **PyYAML**
 `apiKeyFile: api_key.txt`, resolved relative to the profile, instead of embedding
 its key. Unchanged key-file references are preserved when saving.
 
-Set `mathAssessment: inference` to use one Mathematics inference for answer and
-reasoning correctness together with tutoring feedback and any hint. The decision
-connection handles only learning signals; there is no separate model-based math
-grader in this mode. Exact answer-key checks still run locally without inference;
-submitting an answer, with or without thinking, triggers the combined Mathematics
-review.
-The default `mathAssessment: decision` retains the separate decision-model math
-check before tutoring. For an existing Codex account, use `inference.provider: codex`
+New installations use `mathAssessment: inference`: the math tutor checks the
+answer and reasoning and returns its feedback and any hint in one inference.
+Exact answer-key checks still work locally without a model. An existing profile
+that omits `mathAssessment` or explicitly sets it to `decision` keeps the older
+separate math check. Set it to `inference` to use the new routing with that profile.
+For an existing Codex account, use `inference.provider: codex`
 with its model and effort; account credentials remain in the existing user-wide
 sign-in. Private profiles and `local-service/` are Git-ignored. A launcher will not
 reuse a running server with a different profile; choose another port or restart it.

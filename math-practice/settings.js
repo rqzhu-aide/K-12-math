@@ -48,7 +48,7 @@
     if (sections.some(function (section) { return id === section + "Badge"; })) updateConnectionIndicators();
   }
   function updateConnectionIndicators() {
-    var names = {inference: "Mathematics", speech: "Speech", decision: "Sentiment"};
+    var names = {inference: "Math reasoning & feedback", speech: "Voice to text", decision: "Sentiment analysis"};
     var descriptions = tabOrder.map(function (section) {
       var badge = $(section + "Badge"), description = names[section] + ": " + (badge.textContent || "Not tested");
       $(section + "Dot").dataset.state = badge.dataset.state === "ok" ? "ok" : "idle";
