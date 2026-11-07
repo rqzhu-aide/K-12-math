@@ -1,116 +1,74 @@
 {
-  "Year": 1990,
-  "Level": "AMC 12",
-  "Batch": "NA",
-  "Area": "Unclassified",
-  "Number": 29,
-  "Question": "A subset of the integers \\(1,\\) \\(2,\\) \\(\\ldots,\\) \\(100\\) has the property that none of its members is \\(3\\) times another. What is the largest number of members such a subset can have?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(50\\)",
-    "B": "\\(66\\)",
-    "C": "\\(67\\)",
-    "D": "\\(76\\)",
-    "E": "\\(78\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "Method 1: Disjoint forbidden pairs\n\nTo prove a largest possible size, we need both an upper bound and a subset attaining it. Each pair \\((k,3k)\\) forces us to omit at least one of its members. Using pairs that do not overlap makes these required omissions add up.\n\nFor every integer \\(k\\) from \\(12\\) through \\(33\\), form the pair \\((k,3k)\\). There are\n\\[\n33-12+1=22\n\\]\nsuch pairs. Their smaller members lie between \\(12\\) and \\(33\\), and their larger members lie between \\(36\\) and \\(99\\). The pairs therefore have no members in common. The two additional pairs \\((2,6)\\) and \\((3,9)\\) use four new integers. Altogether, these are \\(24\\) disjoint forbidden pairs.\n\nAny allowed subset must omit at least one member from each pair. Because the pairs are disjoint, these are at least \\(24\\) different omissions. Thus the subset has at most\n\\[\n100-24=76\n\\]\nmembers.\n\nNow select \\(1\\), every integer from \\(4\\) through \\(11\\), and every integer from \\(34\\) through \\(100\\). This selection is allowed: the triple of \\(1\\) is the unselected number \\(3\\); the triple of any number from \\(4\\) through \\(11\\) lies in the unselected interval from \\(12\\) through \\(33\\); and the triple of any selected number at least \\(34\\) exceeds \\(100\\). These cases cover every selected member.\n\nThe three selected groups are disjoint and contain\n\\[\n1+(11-4+1)+(100-34+1)=1+8+67=76\n\\]\nmembers. The upper bound is attained, so the largest size is \\(\\boxed{76}\\), choice \\(\\mathrm{D}\\).\n\nMethod 2: Alternate members of multiplication chains\n\nMultiplication by \\(3\\) organizes the integers into chains such as\n\\[\n1,3,9,27,81\n\\qquad\\text{and}\\qquad\n2,6,18,54.\n\\]\nMore generally, start a chain at each positive integer \\(m\\) not divisible by \\(3\\), and list \\(m,3m,9m,\\ldots\\), stopping before exceeding \\(100\\). Every integer from \\(1\\) through \\(100\\) belongs to exactly one chain: repeatedly dividing out factors of \\(3\\) determines its unique starting value \\(m\\).\n\nA forbidden pair consists of consecutive terms in one chain. For an upper bound within a chain, pair its first two terms, then its next two terms, and continue. We may select at most one term from each pair, together with the final unpaired term if the chain has odd length. Selecting the first, third, fifth, and subsequent odd-positioned terms attains this bound. There are no forbidden pairs between different chains, so making this selection in every chain gives a largest possible subset.\n\nIt remains to count these selected terms. The first terms are precisely the integers not divisible by \\(3\\), giving \\(100-33=67\\). The third terms are precisely those divisible by \\(9\\) but not by \\(27\\), giving \\(11-3=8\\). The fifth terms are divisible by \\(81\\) but not by \\(243\\), giving just \\(81\\), or one term. Since \\(3^5=243>100\\), no chain has more than five terms.\n\nThese three categories are disjoint and include every selected term. Therefore the maximum is\n\\[\n67+8+1=\\boxed{76},\n\\]\nchoice \\(\\mathrm{D}\\).",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "Original Math Practice solution",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "extremal combinatorics; powers; independent set",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/1990/solutions",
-    "SourceSHA256": "848d6e7c73ff6871bc49565e2db9249ad0802ec283945667a6714effffe47d65",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 30,
-    "HistoricalSeries": "AHSME",
-    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "answer": {
+    "accepted": [
+      "D"
     ],
-    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
-    "SolutionReview": {
-      "status": "reviewed",
-      "solutionSHA256": "3c36d229aae04aa26c21af322abe920d158eacbc6c162d21ceeab66e886ccee9",
-      "questionContentHash": "235fb3869efe9733e049cd5c66954a41a55c0d81d6aa5433754f8a741b369952",
-      "evidence": {
-        "path": "knowledge-graph/evidence/solutions-2026-11-06/1990_AMC_12_Q29.json",
-        "sha256": "94aa5d44b76cb0e57637e3761b1778e6fba14325973e51f5795d2ff15c9aa523"
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "math:extremal-principle"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
+  },
+  "id": "1990_AMC_12_Q29",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(50\\)",
+        "id": "A"
       },
-      "author": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
+      {
+        "content": "\\(66\\)",
+        "id": "B"
       },
-      "reviewer": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
+      {
+        "content": "\\(67\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(76\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(78\\)",
+        "id": "E"
       }
+    ],
+    "prompt": "A subset of the integers \\(1,\\) \\(2,\\) \\(\\ldots,\\) \\(100\\) has the property that none of its members is \\(3\\) times another. What is the largest number of members such a subset can have?"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:extremal-principle"
+      ],
+      "explanation": "To prove a largest possible size, we need both an upper bound and a subset attaining it. Each pair \\((k,3k)\\) forces us to omit at least one of its members. Using pairs that do not overlap makes these required omissions add up.\n\nFor every integer \\(k\\) from \\(12\\) through \\(33\\), form the pair \\((k,3k)\\). There are\n\\[\n33-12+1=22\n\\]\nsuch pairs. Their smaller members lie between \\(12\\) and \\(33\\), and their larger members lie between \\(36\\) and \\(99\\). The pairs therefore have no members in common. The two additional pairs \\((2,6)\\) and \\((3,9)\\) use four new integers. Altogether, these are \\(24\\) disjoint forbidden pairs.\n\nAny allowed subset must omit at least one member from each pair. Because the pairs are disjoint, these are at least \\(24\\) different omissions. Thus the subset has at most\n\\[\n100-24=76\n\\]\nmembers.\n\nNow select \\(1\\), every integer from \\(4\\) through \\(11\\), and every integer from \\(34\\) through \\(100\\). This selection is allowed: the triple of \\(1\\) is the unselected number \\(3\\); the triple of any number from \\(4\\) through \\(11\\) lies in the unselected interval from \\(12\\) through \\(33\\); and the triple of any selected number at least \\(34\\) exceeds \\(100\\). These cases cover every selected member.\n\nThe three selected groups are disjoint and contain\n\\[\n1+(11-4+1)+(100-34+1)=1+8+67=76\n\\]\nmembers. The upper bound is attained, so the largest size is \\(\\boxed{76}\\), choice \\(\\mathrm{D}\\).",
+      "id": "disjoint-forbidden-pairs",
+      "sourceRef": "amc/1990_AMC_12_Q29#disjoint-forbidden-pairs",
+      "title": "Disjoint forbidden pairs"
+    },
+    {
+      "directNodeIds": [
+        "math:extremal-principle",
+        "math:prime-factorization"
+      ],
+      "explanation": "Multiplication by \\(3\\) organizes the integers into chains such as\n\\[\n1,3,9,27,81\n\\qquad\\text{and}\\qquad\n2,6,18,54.\n\\]\nMore generally, start a chain at each positive integer \\(m\\) not divisible by \\(3\\), and list \\(m,3m,9m,\\ldots\\), stopping before exceeding \\(100\\). Every integer from \\(1\\) through \\(100\\) belongs to exactly one chain: repeatedly dividing out factors of \\(3\\) determines its unique starting value \\(m\\).\n\nA forbidden pair consists of consecutive terms in one chain. For an upper bound within a chain, pair its first two terms, then its next two terms, and continue. We may select at most one term from each pair, together with the final unpaired term if the chain has odd length. Selecting the first, third, fifth, and subsequent odd-positioned terms attains this bound. There are no forbidden pairs between different chains, so making this selection in every chain gives a largest possible subset.\n\nIt remains to count these selected terms. The first terms are precisely the integers not divisible by \\(3\\), giving \\(100-33=67\\). The third terms are precisely those divisible by \\(9\\) but not by \\(27\\), giving \\(11-3=8\\). The fifth terms are divisible by \\(81\\) but not by \\(243\\), giving just \\(81\\), or one term. Since \\(3^5=243>100\\), no chain has more than five terms.\n\nThese three categories are disjoint and include every selected term. Therefore the maximum is\n\\[\n67+8+1=\\boxed{76},\n\\]\nchoice \\(\\mathrm{D}\\).",
+      "id": "powers-of-three-chains",
+      "sourceRef": "amc/1990_AMC_12_Q29#powers-of-three-chains",
+      "title": "Alternate members of multiplication chains"
+    },
+    {
+      "directNodeIds": [
+        "math:graph-models",
+        "cnm_h200"
+      ],
+      "id": "recursive-interval-pairing",
+      "sourceRef": "amc/1990_AMC_12_Q29#recursive-interval-pairing",
+      "title": "Pair forbidden interval neighbors recursively"
     }
-  },
-  "ID": "1990_AMC_12_Q29",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "235fb3869efe9733e049cd5c66954a41a55c0d81d6aa5433754f8a741b369952",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:extremal-principle"
-    ],
-    "supportIds": [
-      "cnm_p153"
-    ],
-    "routes": [
-      {
-        "id": "powers-of-three-chains",
-        "label": "Alternate selections along multiplication chains",
-        "nodeIds": [
-          "math:prime-factorization",
-          "math:graph-models"
-        ]
-      },
-      {
-        "id": "recursive-interval-pairing",
-        "label": "Pair forbidden interval neighbors recursively",
-        "nodeIds": [
-          "math:graph-models",
-          "cnm_h200"
-        ]
-      },
-      {
-        "id": "disjoint-forbidden-pairs",
-        "label": "Disjoint forbidden pairs",
-        "nodeIds": [
-          "math:extremal-principle",
-          "cnm_p153"
-        ]
-      },
-      {
-        "id": "solution:powers-of-three-chains:3c36d229aae0",
-        "label": "Alternate members of multiplication chains",
-        "nodeIds": [
-          "math:extremal-principle",
-          "math:prime-factorization",
-          "cnm_p153",
-          "cnm_019"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  ],
+  "sourceRef": "amc/1990_AMC_12_Q29"
 }

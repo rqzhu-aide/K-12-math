@@ -1,98 +1,58 @@
 {
-  "Year": 2012,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 24,
-  "Question": "Let \\(\\{a_k\\}_{k=1}^{2011}\\) be the sequence of real numbers defined by \\(a_1 = 0.201,\\) \\(a_2 = (0.2011)^{a_1},\\) \\(a_3 = (0.20101)^{a_2},\\) and \\(a_4 = (0.201011)^{a_3},\\) and more generally \\[ a_k = \\begin{cases} \\tiny \\left(0.\\underbrace{20101\\ldots0101}_{k+2 \\text{ digits}}\\right)^{a_{k-1}}, & \\tiny \\text{if } k \\text{ is odd,} \\\\ \\tiny \\left(0.\\underbrace{20101\\ldots01011}_{k+2 \\text{ digits}}\\right)^{a_{k-1}}, & \\tiny \\text{if } k \\text{ is even.} \\end{cases} \\]\n\nRearranging the numbers in the sequence \\(\\{a_k\\}_{k=1}^{2011}\\) in decreasing order produces a new sequence \\(\\{b_k\\}_{k=1}^{2011}.\\) What is the sum of all the integers \\(k,\\) \\(1 \\le k \\le 2011,\\) such that \\(a_k = b_k?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(671\\)",
-    "B": "\\(1006\\)",
-    "C": "\\(1341\\)",
-    "D": "\\(2011\\)",
-    "E": "\\(2012\\)"
+  "answer": {
+    "accepted": [
+      "C"
+    ],
+    "type": "choice"
   },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "Let \\(c_k\\) denote the decimal base used to define \\(a_k\\), with \\(c_1=0.201\\). Comparing their digits shows that the odd-indexed bases increase, the even-indexed bases decrease, and every odd-indexed base is below every even-indexed base. For example,\n\\[\nc_1<c_3<c_5<c_6<c_4<c_2.\n\\]\nThese comparisons suggest that the terms themselves may form two interlacing lists, but the exponents must also be checked.\n\nFor \\(0<c<1\\), the value \\(c^t\\) decreases as \\(t\\) increases. For a fixed positive exponent, it increases as the positive base increases. We will use both facts together.\n\nIntroduce \\(a_0=1\\), so that \\(a_1=c_1^{a_0}\\) and the recurrence \\(a_k=c_k^{a_{k-1}}\\) works from \\(k=1\\). All terms \\(a_k\\) for \\(k\\ge1\\) lie strictly between \\(0\\) and \\(1\\). Also,\n\\[\na_1<c_2<a_2<a_0,\n\\]\nbecause \\(a_1<1\\) and raising \\(c_2\\in(0,1)\\) to an exponent below \\(1\\) increases its value.\n\nWe now prove that each new term lies strictly between the preceding two terms. Suppose \\(k\\) is even and\n\\[\na_{k-1}<a_k<a_{k-2}.\n\\]\nThe decimal bases satisfy \\(c_{k-1}<c_{k+1}<c_k\\). Comparing both bases and exponents gives\n\\[\nc_{k-1}^{a_{k-2}}\n<c_{k+1}^{a_k}\n<c_k^{a_{k-1}},\n\\]\nwhich is exactly \\(a_{k-1}<a_{k+1}<a_k\\).\n\nWhen \\(k\\ge3\\) is odd, the corresponding assumptions are \\(a_{k-2}<a_k<a_{k-1}\\) and \\(c_k<c_{k+1}<c_{k-1}\\). They give\n\\[\nc_k^{a_{k-1}}\n<c_{k+1}^{a_k}\n<c_{k-1}^{a_{k-2}},\n\\]\nso \\(a_k<a_{k+1}<a_{k-1}\\). Starting with \\(a_1<a_2<a_0\\), these two steps apply alternately and prove the nesting for the entire sequence.\n\nIt follows that the odd-indexed terms strictly increase, the even-indexed terms strictly decrease, and the last odd term is below the last even term. Thus the decreasing order is\n\\[\na_2>a_4>\\cdots>a_{2010}\n>a_{2011}>a_{2009}>\\cdots>a_1.\n\\]\nAll terms are distinct. There are \\(1005\\) even-indexed terms, so\n\\[\nb_k=a_{2k}\\qquad(1\\le k\\le1005).\n\\]\nEquality \\(a_k=b_k\\) here would require \\(k=2k\\), impossible for positive \\(k\\).\n\nFor the remaining positions,\n\\[\nb_k=a_{4023-2k}\n\\qquad(1006\\le k\\le2011).\n\\]\nDistinctness now makes \\(a_k=b_k\\) equivalent to\n\\[\nk=4023-2k,\n\\qquad k=1341.\n\\]\nThis lies in the required range and is the only matching index. The requested sum is therefore \\(\\boxed{1341}\\), choice \\(\\mathrm{C}\\).",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "Original Math Practice solution",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "exponent; inequality",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2012A/solutions",
-    "SourceSHA256": "223bc8145a866bc65e06d6ccd19c2b9e28870e5cab32e6df9b5c51655ad4a8e1",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ],
-    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
-    "SolutionReview": {
-      "status": "reviewed",
-      "solutionSHA256": "8ebd8dbaaf4b47508f1dc8adb3b0d99d9a1acc1da31772454ed95cdae9eef14f",
-      "questionContentHash": "52da8802e393abc8b88a87fe398237bd24fd1d5e140fa7c87cd37cf13c829620",
-      "evidence": {
-        "path": "knowledge-graph/evidence/solutions-2026-11-06/2012_AMC_12A_Q24.json",
-        "sha256": "6fbd79861145d8667db6881617dd18e66732ddb8b894377f21aee8e2453a485d"
-      },
-      "author": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
-      },
-      "reviewer": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
-      }
-    }
+  "assessedNodeIds": [
+    "cnm_h042",
+    "cnm_h200"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
   },
-  "ID": "2012_AMC_12A_Q24",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "52da8802e393abc8b88a87fe398237bd24fd1d5e140fa7c87cd37cf13c829620",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h042",
-      "cnm_h200"
-    ],
-    "supportIds": [
-      "cnm_h197",
-      "cnm_h041",
-      "cnm_042"
-    ],
-    "routes": [
+  "id": "2012_AMC_12A_Q24",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "nested-exponential-order",
-        "label": "Prove the terms lie in nested intervals",
-        "nodeIds": [
-          "cnm_h042",
-          "cnm_h200",
-          "cnm_h213",
-          "cnm_h197",
-          "cnm_h041",
-          "cnm_p119",
-          "cnm_042"
-        ]
+        "content": "\\(671\\)",
+        "id": "A"
+      },
+      {
+        "content": "\\(1006\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(1341\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(2011\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(2012\\)",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "Let \\(\\{a_k\\}_{k=1}^{2011}\\) be the sequence of real numbers defined by \\(a_1 = 0.201,\\) \\(a_2 = (0.2011)^{a_1},\\) \\(a_3 = (0.20101)^{a_2},\\) and \\(a_4 = (0.201011)^{a_3},\\) and more generally \\[ a_k = \\begin{cases} \\tiny \\left(0.\\underbrace{20101\\ldots0101}_{k+2 \\text{ digits}}\\right)^{a_{k-1}}, & \\tiny \\text{if } k \\text{ is odd,} \\\\ \\tiny \\left(0.\\underbrace{20101\\ldots01011}_{k+2 \\text{ digits}}\\right)^{a_{k-1}}, & \\tiny \\text{if } k \\text{ is even.} \\end{cases} \\]\n\nRearranging the numbers in the sequence \\(\\{a_k\\}_{k=1}^{2011}\\) in decreasing order produces a new sequence \\(\\{b_k\\}_{k=1}^{2011}.\\) What is the sum of all the integers \\(k,\\) \\(1 \\le k \\le 2011,\\) such that \\(a_k = b_k?\\)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "cnm_h042",
+        "cnm_h200",
+        "cnm_h213"
+      ],
+      "explanation": "Let \\(c_k\\) denote the decimal base used to define \\(a_k\\), with \\(c_1=0.201\\). Comparing their digits shows that the odd-indexed bases increase, the even-indexed bases decrease, and every odd-indexed base is below every even-indexed base. For example,\n\\[\nc_1<c_3<c_5<c_6<c_4<c_2.\n\\]\nThese comparisons suggest that the terms themselves may form two interlacing lists, but the exponents must also be checked.\n\nFor \\(0<c<1\\), the value \\(c^t\\) decreases as \\(t\\) increases. For a fixed positive exponent, it increases as the positive base increases. We will use both facts together.\n\nIntroduce \\(a_0=1\\), so that \\(a_1=c_1^{a_0}\\) and the recurrence \\(a_k=c_k^{a_{k-1}}\\) works from \\(k=1\\). All terms \\(a_k\\) for \\(k\\ge1\\) lie strictly between \\(0\\) and \\(1\\). Also,\n\\[\na_1<c_2<a_2<a_0,\n\\]\nbecause \\(a_1<1\\) and raising \\(c_2\\in(0,1)\\) to an exponent below \\(1\\) increases its value.\n\nWe now prove that each new term lies strictly between the preceding two terms. Suppose \\(k\\) is even and\n\\[\na_{k-1}<a_k<a_{k-2}.\n\\]\nThe decimal bases satisfy \\(c_{k-1}<c_{k+1}<c_k\\). Comparing both bases and exponents gives\n\\[\nc_{k-1}^{a_{k-2}}\n<c_{k+1}^{a_k}\n<c_k^{a_{k-1}},\n\\]\nwhich is exactly \\(a_{k-1}<a_{k+1}<a_k\\).\n\nWhen \\(k\\ge3\\) is odd, the corresponding assumptions are \\(a_{k-2}<a_k<a_{k-1}\\) and \\(c_k<c_{k+1}<c_{k-1}\\). They give\n\\[\nc_k^{a_{k-1}}\n<c_{k+1}^{a_k}\n<c_{k-1}^{a_{k-2}},\n\\]\nso \\(a_k<a_{k+1}<a_{k-1}\\). Starting with \\(a_1<a_2<a_0\\), these two steps apply alternately and prove the nesting for the entire sequence.\n\nIt follows that the odd-indexed terms strictly increase, the even-indexed terms strictly decrease, and the last odd term is below the last even term. Thus the decreasing order is\n\\[\na_2>a_4>\\cdots>a_{2010}\n>a_{2011}>a_{2009}>\\cdots>a_1.\n\\]\nAll terms are distinct. There are \\(1005\\) even-indexed terms, so\n\\[\nb_k=a_{2k}\\qquad(1\\le k\\le1005).\n\\]\nEquality \\(a_k=b_k\\) here would require \\(k=2k\\), impossible for positive \\(k\\).\n\nFor the remaining positions,\n\\[\nb_k=a_{4023-2k}\n\\qquad(1006\\le k\\le2011).\n\\]\nDistinctness now makes \\(a_k=b_k\\) equivalent to\n\\[\nk=4023-2k,\n\\qquad k=1341.\n\\]\nThis lies in the required range and is the only matching index. The requested sum is therefore \\(\\boxed{1341}\\), choice \\(\\mathrm{C}\\).",
+      "id": "nested-exponential-order",
+      "sourceRef": "amc/2012_AMC_12A_Q24#nested-exponential-order",
+      "title": "Prove the terms lie in nested intervals"
+    }
+  ],
+  "sourceRef": "amc/2012_AMC_12A_Q24"
 }

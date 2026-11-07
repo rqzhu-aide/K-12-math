@@ -1,95 +1,56 @@
 {
-  "Year": 2012,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 22,
-  "Question": "Distinct planes \\(p_1,\\) \\(p_2,\\) \\(\\ldots,\\) \\(p_k\\) intersect the interior of a cube \\(Q.\\) Let \\(S\\) be the union of the faces of \\(Q\\) and let \\(P = \\bigcup_{j=1}^{k} p_j.\\) The intersection of \\(P\\) and \\(S\\) consists of the union of all segments joining the midpoints of every pair of edges belonging to the same face of \\(Q.\\) What is the difference between the maximum and the minimum possible values of \\(k?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(8\\)",
-    "B": "\\(12\\)",
-    "C": "\\(20\\)",
-    "D": "\\(23\\)",
-    "E": "\\(24\\)"
+  "answer": {
+    "accepted": [
+      "C"
+    ],
+    "type": "choice"
   },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "On each face, the four edge midpoints determine six required segments: two join opposite edge midpoints, and four join adjacent edge midpoints. Call these midlines and corner segments, respectively. Altogether there are \\(12\\) midlines and \\(24\\) corner segments.\n\nAn allowable plane cuts each face it crosses in a straight chord. Since no additional surface points are allowed, that chord must be one of the six required segments. Also, every required segment must lie in at least one chosen plane: finitely many planes that do not contain its line could cover only finitely many points of the segment.\n\nWe first classify all allowable planes. Choose coordinates so the cube is \\([-1,1]^3\\). This merely chooses a convenient common scale.\n\nSuppose a section contains a midline. By cube symmetry, take that midline to have endpoints \\((0,-1,1)\\) and \\((0,1,1)\\). On the adjacent face \\(y=1\\), the section must join \\((0,1,1)\\) to one of that face's other three edge midpoints:\n\\[\n(0,1,-1),\\quad (1,1,0),\\quad (-1,1,0).\n\\]\nThree noncollinear points determine a plane, so these choices give, respectively,\n\\[\nx=0,\\qquad x+z=1,\\qquad -x+z=1.\n\\]\nThe first produces a central square; the other two produce rectangles. Applying cube symmetry gives exactly three central squares and twelve rectangles. Each rectangle has midlines on exactly two adjacent faces, and there is one such rectangle for each of the cube's twelve edges. Each square contains four required face segments, while each rectangle contains four, including two midlines.\n\nNow suppose a section has no midline. Take one of its corner segments to have endpoints \\((1,0,1)\\) and \\((0,1,1)\\). On the face \\(x=1\\), its next segment must join \\((1,0,1)\\) to either \\((1,1,0)\\) or \\((1,-1,0)\\); the third possible endpoint would create a midline. These choices determine\n\\[\nx+y+z=2\n\\quad\\text{or}\\quad\nx+y-z=0.\n\\]\nThe first cuts off a corner triangle, giving eight possibilities, one for each cube vertex. The second gives a central hexagon. Its symmetric versions have equations \\(\\pm x\\pm y\\pm z=0\\); reversing all signs gives the same plane, so there are \\(2^3/2=4\\) hexagons. These triangles and hexagons have only required corner segments as their sides.\n\nThe classification is exhaustive, and each listed plane is allowable. Thus at most\n\\[\n3+12+8+4=27\n\\]\nplanes can be chosen.\n\nTo bound the minimum, let \\(t\\) be the number of chosen planes containing midlines. Each covers at most four of the twelve midlines, so \\(t\\ge3\\). Such planes meet only four faces; every other plane meets at most six. Covering all \\(36\\) required segments therefore requires\n\\[\n36\\le4t+6(k-t)=6k-2t\\le6k-6,\n\\]\nwhich gives \\(k\\ge7\\).\n\nSeven planes do suffice. The three central squares cover all twelve midlines. The four central hexagons cover all twenty-four corner segments: on \\(z=1\\), their traces are exactly \\(x+y=\\pm1\\) and \\(x-y=\\pm1\\), and the same holds on every other face by symmetry. Hence the minimum is \\(7\\). Adding all remaining allowable planes introduces no extra surface points, so the maximum is \\(27\\).\n\nThe requested difference is\n\\[\n27-7=\\boxed{20},\n\\]\nchoice \\(\\mathrm{C}\\).",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "Original Math Practice solution",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "cube geometry; 3D geometry; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2012A/solutions",
-    "SourceSHA256": "223bc8145a866bc65e06d6ccd19c2b9e28870e5cab32e6df9b5c51655ad4a8e1",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ],
-    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
-    "SolutionReview": {
-      "status": "reviewed",
-      "solutionSHA256": "cfd5446578eacab205de25ea9c46c83ad51c3677539dd3956a47e4c1f4ee33c2",
-      "questionContentHash": "6831ad21568599561771a03117c4d091b37daada1fbbb1aac2cdb452ab18ad01",
-      "evidence": {
-        "path": "knowledge-graph/evidence/solutions-2026-11-06/2012_AMC_12A_Q22.json",
-        "sha256": "87e1b9cd52ce3afab1081416d348f5388a5c50f3dc2a8dbf500b6bb5829e9cf9"
-      },
-      "author": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
-      },
-      "reviewer": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
-      }
-    }
+  "assessedNodeIds": [
+    "math:extremal-principle"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
   },
-  "ID": "2012_AMC_12A_Q22",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "6831ad21568599561771a03117c4d091b37daada1fbbb1aac2cdb452ab18ad01",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:extremal-principle"
-    ],
-    "supportIds": [
-      "cnm_h113",
-      "cnm_p160",
-      "cnm_h230"
-    ],
-    "routes": [
+  "id": "2012_AMC_12A_Q22",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "classify-sections-and-attain-bounds",
-        "label": "Classify the sections and prove both bounds",
-        "nodeIds": [
-          "math:extremal-principle",
-          "cnm_h151",
-          "cnm_h113",
-          "cnm_p160",
-          "cnm_h230"
-        ]
+        "content": "\\(8\\)",
+        "id": "A"
+      },
+      {
+        "content": "\\(12\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(20\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(23\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(24\\)",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "Distinct planes \\(p_1,\\) \\(p_2,\\) \\(\\ldots,\\) \\(p_k\\) intersect the interior of a cube \\(Q.\\) Let \\(S\\) be the union of the faces of \\(Q\\) and let \\(P = \\bigcup_{j=1}^{k} p_j.\\) The intersection of \\(P\\) and \\(S\\) consists of the union of all segments joining the midpoints of every pair of edges belonging to the same face of \\(Q.\\) What is the difference between the maximum and the minimum possible values of \\(k?\\)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:extremal-principle",
+        "cnm_h151"
+      ],
+      "explanation": "On each face, the four edge midpoints determine six required segments: two join opposite edge midpoints, and four join adjacent edge midpoints. Call these midlines and corner segments, respectively. Altogether there are \\(12\\) midlines and \\(24\\) corner segments.\n\nAn allowable plane cuts each face it crosses in a straight chord. Since no additional surface points are allowed, that chord must be one of the six required segments. Also, every required segment must lie in at least one chosen plane: finitely many planes that do not contain its line could cover only finitely many points of the segment.\n\nWe first classify all allowable planes. Choose coordinates so the cube is \\([-1,1]^3\\). This merely chooses a convenient common scale.\n\nSuppose a section contains a midline. By cube symmetry, take that midline to have endpoints \\((0,-1,1)\\) and \\((0,1,1)\\). On the adjacent face \\(y=1\\), the section must join \\((0,1,1)\\) to one of that face's other three edge midpoints:\n\\[\n(0,1,-1),\\quad (1,1,0),\\quad (-1,1,0).\n\\]\nThree noncollinear points determine a plane, so these choices give, respectively,\n\\[\nx=0,\\qquad x+z=1,\\qquad -x+z=1.\n\\]\nThe first produces a central square; the other two produce rectangles. Applying cube symmetry gives exactly three central squares and twelve rectangles. Each rectangle has midlines on exactly two adjacent faces, and there is one such rectangle for each of the cube's twelve edges. Each square contains four required face segments, while each rectangle contains four, including two midlines.\n\nNow suppose a section has no midline. Take one of its corner segments to have endpoints \\((1,0,1)\\) and \\((0,1,1)\\). On the face \\(x=1\\), its next segment must join \\((1,0,1)\\) to either \\((1,1,0)\\) or \\((1,-1,0)\\); the third possible endpoint would create a midline. These choices determine\n\\[\nx+y+z=2\n\\quad\\text{or}\\quad\nx+y-z=0.\n\\]\nThe first cuts off a corner triangle, giving eight possibilities, one for each cube vertex. The second gives a central hexagon. Its symmetric versions have equations \\(\\pm x\\pm y\\pm z=0\\); reversing all signs gives the same plane, so there are \\(2^3/2=4\\) hexagons. These triangles and hexagons have only required corner segments as their sides.\n\nThe classification is exhaustive, and each listed plane is allowable. Thus at most\n\\[\n3+12+8+4=27\n\\]\nplanes can be chosen.\n\nTo bound the minimum, let \\(t\\) be the number of chosen planes containing midlines. Each covers at most four of the twelve midlines, so \\(t\\ge3\\). Such planes meet only four faces; every other plane meets at most six. Covering all \\(36\\) required segments therefore requires\n\\[\n36\\le4t+6(k-t)=6k-2t\\le6k-6,\n\\]\nwhich gives \\(k\\ge7\\).\n\nSeven planes do suffice. The three central squares cover all twelve midlines. The four central hexagons cover all twenty-four corner segments: on \\(z=1\\), their traces are exactly \\(x+y=\\pm1\\) and \\(x-y=\\pm1\\), and the same holds on every other face by symmetry. Hence the minimum is \\(7\\). Adding all remaining allowable planes introduces no extra surface points, so the maximum is \\(27\\).\n\nThe requested difference is\n\\[\n27-7=\\boxed{20},\n\\]\nchoice \\(\\mathrm{C}\\).",
+      "id": "classify-sections-and-attain-bounds",
+      "sourceRef": "amc/2012_AMC_12A_Q22#classify-sections-and-attain-bounds",
+      "title": "Classify the sections and prove both bounds"
+    }
+  ],
+  "sourceRef": "amc/2012_AMC_12A_Q22"
 }

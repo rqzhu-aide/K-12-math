@@ -1,119 +1,76 @@
 {
-  "Year": 2006,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 25,
-  "Question": "How many non-empty subsets \\(S\\) of \\(\\{1, 2, 3, \\ldots, 15\\}\\) have the following two properties?\n\n\\((1)\\) No two consecutive integers belong to \\(S.\\)\n\n\\((2)\\) If \\(S\\) contains \\(k\\) elements, then \\(S\\) contains no number less than \\(k.\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(277\\)",
-    "B": "\\(311\\)",
-    "C": "\\(376\\)",
-    "D": "\\(377\\)",
-    "E": "\\(405\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "Method 1: Remove the required gaps\n\nThe lower bound on the selected numbers depends on the subset's size, so first fix that size. Write a valid subset with \\(k\\) elements as\n\\[\nS=\\{a_1<a_2<\\cdots<a_k\\}.\n\\]\nThe conditions become \\(a_1\\ge k\\) and \\(a_{i+1}\\ge a_i+2\\). Therefore\n\\[\na_k\\ge k+2(k-1)=3k-2.\n\\]\nSince \\(a_k\\le15\\), only \\(k=1,2,3,4,5\\) are possible.\n\nOrdinary combinations count distinct choices without a spacing restriction. To obtain such choices, subtract one extra unit at each successive position:\n\\[\nb_i=a_i-(i-1),\\qquad 1\\le i\\le k.\n\\]\nBecause consecutive \\(a_i\\)'s differ by at least \\(2\\), consecutive \\(b_i\\)'s differ by at least \\(1\\). The endpoint bounds give\n\\[\nk\\le b_1<b_2<\\cdots<b_k\\le16-k.\n\\]\nThus the \\(b_i\\)'s form a \\(k\\)-element subset of the \\(17-2k\\) integers from \\(k\\) through \\(16-k\\).\n\nConversely, choose any \\(k\\) distinct integers in this interval, put them in increasing order, and define \\(a_i=b_i+(i-1)\\). The resulting numbers are at least \\(k\\), consecutive numbers differ by at least \\(2\\), and \\(a_k\\le15\\). These constructions undo one another, so every valid subset is counted exactly once. The number of size-\\(k\\) subsets is therefore\n\\[\n\\binom{17-2k}{k}.\n\\]\nThe five sizes are disjoint and exhaust all nonempty possibilities. Their total is\n\\[\n\\begin{aligned}\n&\\binom{15}{1}+\\binom{13}{2}+\\binom{11}{3}\n+\\binom94+\\binom75\\\\\n&\\qquad=15+78+165+126+21\\\\\n&\\qquad=\\boxed{405}.\n\\end{aligned}\n\\]\nThe empty subset is excluded because the count starts at \\(k=1\\). The answer is choice \\(\\boxed{\\text{E}}\\).\n\nMethod 2: Count by reducing to smaller sets\n\nRemoving the largest selected number lowers the subset's size by one. Subtracting one from the remaining numbers then lowers their required minimum by the same amount. This suggests relating the answer to counts for smaller ground sets.\n\nFor each integer \\(n\\ge0\\), let \\(F(n)\\) count the subsets of \\(\\{1,\\ldots,n\\}\\) satisfying the two conditions, including the empty subset. For \\(n=0\\), the ground set is empty. The initial values are\n\\[\nF(0)=1,\\qquad F(1)=2,\\qquad F(2)=3,\n\\]\nbecause for \\(n=1,2\\), only the empty subset and singletons are allowed.\n\nFor \\(n\\ge3\\), split the valid subsets according to whether they contain \\(n\\). Those omitting \\(n\\) are counted by \\(F(n-1)\\).\n\nNow take a valid subset containing \\(n\\), with \\(k\\) elements. Remove \\(n\\), then subtract \\(1\\) from every remaining element. The resulting subset \\(T\\) has \\(k-1\\) elements, each at least \\(k-1\\), and its gaps remain at least \\(2\\). The original subset could not contain \\(n-1\\), so the elements of \\(T\\) are at most \\(n-3\\). Thus \\(T\\) is counted by \\(F(n-3)\\). When the original subset is \\(\\{n\\}\\), this gives the empty \\(T\\).\n\nConversely, take any subset \\(T\\) counted by \\(F(n-3)\\), and let its size be \\(j\\). Add \\(1\\) to each element, then adjoin \\(n\\). The shifted elements are at least \\(j+1\\), their gaps remain at least \\(2\\), and they are at most \\(n-2\\), so none is consecutive to \\(n\\). Also \\(j\\le n-3\\), which ensures that the adjoined \\(n\\) is at least the new size \\(j+1\\). This construction also works for empty \\(T\\), producing \\(\\{n\\}\\).\n\nThe two constructions are inverses. Hence the subsets containing \\(n\\) are counted exactly once by \\(F(n-3)\\), and the exhaustive, disjoint split gives\n\\[\nF(n)=F(n-1)+F(n-3),\\qquad n\\ge3.\n\\]\nSuccessive applications yield\n\\[\n\\begin{aligned}\nF(3)&=4,\\quad F(4)=6,\\quad F(5)=9,\\\\\nF(6)&=13,\\quad F(7)=19,\\quad F(8)=28,\\\\\nF(9)&=41,\\quad F(10)=60,\\quad F(11)=88,\\\\\nF(12)&=129,\\quad F(13)=189,\\quad F(14)=277.\n\\end{aligned}\n\\]\nTherefore \\(F(15)=277+129=406\\). Removing the one empty subset leaves\n\\[\n406-1=\\boxed{405},\n\\]\nchoice \\(\\boxed{\\text{E}}\\).",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "Original Math Practice solution",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "subsets; bijection; combinations",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2006A/solutions",
-    "SourceSHA256": "1edbde106c7436025cc9bbf87638897f3d96336ee70396aca754290176198dce",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "answer": {
+    "accepted": [
+      "E"
     ],
-    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
-    "SolutionReview": {
-      "status": "reviewed",
-      "solutionSHA256": "ff319b76cb8730957783ad3dab5812f4ed5d46303ade71ee422de1c73101c185",
-      "questionContentHash": "923d2ad3e2bc5bca81d45b1242b5d6ef870c3824e3862f5b7aafc9313e92021b",
-      "evidence": {
-        "path": "knowledge-graph/evidence/solutions-2026-11-06/2006_AMC_12A_Q25.json",
-        "sha256": "4208b4d607c421c1ae49b9bf32c62bc9ae01da173a19726e6595c764e714f6ed"
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "math:bijective-counting"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
+  },
+  "id": "2006_AMC_12A_Q25",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(277\\)",
+        "id": "A"
       },
-      "author": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
+      {
+        "content": "\\(311\\)",
+        "id": "B"
       },
-      "reviewer": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
+      {
+        "content": "\\(376\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(377\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(405\\)",
+        "id": "E"
       }
+    ],
+    "prompt": "How many non-empty subsets \\(S\\) of \\(\\{1, 2, 3, \\ldots, 15\\}\\) have the following two properties?\n\n\\((1)\\) No two consecutive integers belong to \\(S.\\)\n\n\\((2)\\) If \\(S\\) contains \\(k\\) elements, then \\(S\\) contains no number less than \\(k.\\)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:bijective-counting",
+        "cnm_h239",
+        "cnm_h237"
+      ],
+      "explanation": "The lower bound on the selected numbers depends on the subset's size, so first fix that size. Write a valid subset with \\(k\\) elements as\n\\[\nS=\\{a_1<a_2<\\cdots<a_k\\}.\n\\]\nThe conditions become \\(a_1\\ge k\\) and \\(a_{i+1}\\ge a_i+2\\). Therefore\n\\[\na_k\\ge k+2(k-1)=3k-2.\n\\]\nSince \\(a_k\\le15\\), only \\(k=1,2,3,4,5\\) are possible.\n\nOrdinary combinations count distinct choices without a spacing restriction. To obtain such choices, subtract one extra unit at each successive position:\n\\[\nb_i=a_i-(i-1),\\qquad 1\\le i\\le k.\n\\]\nBecause consecutive \\(a_i\\)'s differ by at least \\(2\\), consecutive \\(b_i\\)'s differ by at least \\(1\\). The endpoint bounds give\n\\[\nk\\le b_1<b_2<\\cdots<b_k\\le16-k.\n\\]\nThus the \\(b_i\\)'s form a \\(k\\)-element subset of the \\(17-2k\\) integers from \\(k\\) through \\(16-k\\).\n\nConversely, choose any \\(k\\) distinct integers in this interval, put them in increasing order, and define \\(a_i=b_i+(i-1)\\). The resulting numbers are at least \\(k\\), consecutive numbers differ by at least \\(2\\), and \\(a_k\\le15\\). These constructions undo one another, so every valid subset is counted exactly once. The number of size-\\(k\\) subsets is therefore\n\\[\n\\binom{17-2k}{k}.\n\\]\nThe five sizes are disjoint and exhaust all nonempty possibilities. Their total is\n\\[\n\\begin{aligned}\n&\\binom{15}{1}+\\binom{13}{2}+\\binom{11}{3}\n+\\binom94+\\binom75\\\\\n&\\qquad=15+78+165+126+21\\\\\n&\\qquad=\\boxed{405}.\n\\end{aligned}\n\\]\nThe empty subset is excluded because the count starts at \\(k=1\\). The answer is choice \\(\\boxed{\\text{E}}\\).",
+      "id": "compress-required-gaps",
+      "sourceRef": "amc/2006_AMC_12A_Q25#compress-required-gaps",
+      "title": "Remove the required gaps"
+    },
+    {
+      "directNodeIds": [
+        "math:bijective-counting",
+        "math:recursive-counting-probability",
+        "cnm_h200"
+      ],
+      "explanation": "Removing the largest selected number lowers the subset's size by one. Subtracting one from the remaining numbers then lowers their required minimum by the same amount. This suggests relating the answer to counts for smaller ground sets.\n\nFor each integer \\(n\\ge0\\), let \\(F(n)\\) count the subsets of \\(\\{1,\\ldots,n\\}\\) satisfying the two conditions, including the empty subset. For \\(n=0\\), the ground set is empty. The initial values are\n\\[\nF(0)=1,\\qquad F(1)=2,\\qquad F(2)=3,\n\\]\nbecause for \\(n=1,2\\), only the empty subset and singletons are allowed.\n\nFor \\(n\\ge3\\), split the valid subsets according to whether they contain \\(n\\). Those omitting \\(n\\) are counted by \\(F(n-1)\\).\n\nNow take a valid subset containing \\(n\\), with \\(k\\) elements. Remove \\(n\\), then subtract \\(1\\) from every remaining element. The resulting subset \\(T\\) has \\(k-1\\) elements, each at least \\(k-1\\), and its gaps remain at least \\(2\\). The original subset could not contain \\(n-1\\), so the elements of \\(T\\) are at most \\(n-3\\). Thus \\(T\\) is counted by \\(F(n-3)\\). When the original subset is \\(\\{n\\}\\), this gives the empty \\(T\\).\n\nConversely, take any subset \\(T\\) counted by \\(F(n-3)\\), and let its size be \\(j\\). Add \\(1\\) to each element, then adjoin \\(n\\). The shifted elements are at least \\(j+1\\), their gaps remain at least \\(2\\), and they are at most \\(n-2\\), so none is consecutive to \\(n\\). Also \\(j\\le n-3\\), which ensures that the adjoined \\(n\\) is at least the new size \\(j+1\\). This construction also works for empty \\(T\\), producing \\(\\{n\\}\\).\n\nThe two constructions are inverses. Hence the subsets containing \\(n\\) are counted exactly once by \\(F(n-3)\\), and the exhaustive, disjoint split gives\n\\[\nF(n)=F(n-1)+F(n-3),\\qquad n\\ge3.\n\\]\nSuccessive applications yield\n\\[\n\\begin{aligned}\nF(3)&=4,\\quad F(4)=6,\\quad F(5)=9,\\\\\nF(6)&=13,\\quad F(7)=19,\\quad F(8)=28,\\\\\nF(9)&=41,\\quad F(10)=60,\\quad F(11)=88,\\\\\nF(12)&=129,\\quad F(13)=189,\\quad F(14)=277.\n\\end{aligned}\n\\]\nTherefore \\(F(15)=277+129=406\\). Removing the one empty subset leaves\n\\[\n406-1=\\boxed{405},\n\\]\nchoice \\(\\boxed{\\text{E}}\\).",
+      "id": "reduce-ground-set",
+      "sourceRef": "amc/2006_AMC_12A_Q25#reduce-ground-set",
+      "title": "Count by reducing to smaller sets"
+    },
+    {
+      "directNodeIds": [
+        "math:stars-and-bars"
+      ],
+      "id": "distribute-gap-slack",
+      "sourceRef": "amc/2006_AMC_12A_Q25#distribute-gap-slack",
+      "title": "Count nonnegative gap variables"
     }
-  },
-  "ID": "2006_AMC_12A_Q25",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "923d2ad3e2bc5bca81d45b1242b5d6ef870c3824e3862f5b7aafc9313e92021b",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:bijective-counting"
-    ],
-    "supportIds": [
-      "cnm_h230"
-    ],
-    "routes": [
-      {
-        "id": "compress-required-gaps",
-        "label": "Compress gaps between selected numbers",
-        "nodeIds": [
-          "math:bijective-counting",
-          "cnm_h237"
-        ]
-      },
-      {
-        "id": "distribute-gap-slack",
-        "label": "Count nonnegative gap variables",
-        "nodeIds": [
-          "math:stars-and-bars"
-        ]
-      },
-      {
-        "id": "solution:compress-required-gaps:ff319b76cb87",
-        "label": "Remove the required gaps",
-        "nodeIds": [
-          "math:bijective-counting",
-          "cnm_h239",
-          "cnm_h237",
-          "cnm_h236",
-          "cnm_h230"
-        ]
-      },
-      {
-        "id": "reduce-ground-set",
-        "label": "Count by reducing to smaller sets",
-        "nodeIds": [
-          "math:bijective-counting",
-          "math:recursive-counting-probability",
-          "cnm_h200",
-          "cnm_h230",
-          "cnm_h197"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  ],
+  "sourceRef": "amc/2006_AMC_12A_Q25"
 }

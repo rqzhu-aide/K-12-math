@@ -468,7 +468,9 @@ def browser_question(record, *, root=ROOT, manifest=None):
     meta = record['Meta']
     item.update(schemaVersion='3.0', sourceRef=record['SourceRef'],
         figureSources=deepcopy(meta.get('FigureSources', {})), sourceURL=meta.get('SourceURL',''),
-        solutionSource=meta.get('SolutionSource',''), solutionSourceURL=meta.get('SolutionSourceURL',''))
+        solutionSource=meta.get('SolutionSource',''), solutionSourceURL=meta.get('SolutionSourceURL',''),
+        editorialNote=meta.get('EditorialNote', '') or record.get('Source Content Note', ''),
+        translationStatus=meta.get('Translation', {}).get('status', ''))
     if meta.get('OfficialSolution'):
         item['officialSolution'] = deepcopy(meta['OfficialSolution'])
     solution = reference_solution(record, root=root)

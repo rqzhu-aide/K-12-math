@@ -1,5 +1,6 @@
 """Compare explicit answer formats without running imported code or symbolic guesses."""
 from fractions import Fraction
+from copy import copy
 import re
 import unicodedata
 
@@ -105,7 +106,9 @@ def effective_grading_question(question, root=None):
     notice = confirmed_grading_notice(context.get('answerCheck'))
     if notice is None:
         return question
-    return {**question, 'GradingStatus': notice['gradingStatus'], 'GradingNote': notice['gradingNote']}
+    result = copy(question)
+    result.update(GradingStatus=notice['gradingStatus'], GradingNote=notice['gradingNote'])
+    return result
 
 
 def exact_answer_category(question, answer):

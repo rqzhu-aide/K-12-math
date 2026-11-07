@@ -1,124 +1,69 @@
 {
-  "Year": 2012,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 20,
-  "Question": "Bernardo and Silvia play the following game. An integer between \\(0\\) and \\(999\\) inclusive is selected and given to Bernardo. Whenever Bernardo receives a number, he doubles it and passes the result to Silvia. Whenever Silvia receives a number, she adds \\(50\\) to it and passes the result to Bernardo. The winner is the last person who produces a number less than \\(1000.\\)\n\nLet \\(N\\) be the smallest initial number that results in a win for Bernardo. What is the sum of the digits of \\(N?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\( 7 \\)",
-    "B": "\\( 8 \\)",
-    "C": "\\( 9 \\)",
-    "D": "\\( 10 \\)",
-    "E": "\\( 11 \\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "Method 1: Track Bernardo's outputs and rule out smaller starts\n\nThe numbers never decrease. Bernardo wins when one of his outputs is at least \\(950\\) but less than \\(1000\\), because Silvia's next addition of \\(50\\) then reaches or exceeds \\(1000\\).\n\nLet \\(B_k\\) be Bernardo's output on his \\(k\\)th turn, starting from the initial integer \\(N\\). His first output is \\(B_1=2N\\). Between two of his turns, Silvia adds \\(50\\), so\n\\[\nB_{k+1}=2(B_k+50)=2B_k+100.\n\\]\nApplying this rule gives\n\\[\n\\begin{aligned}\nB_2&=4N+100,\\\\\nB_3&=8N+300,\\\\\nB_4&=16N+700.\n\\end{aligned}\n\\]\nFor every integer \\(0\\le N\\le15\\), we have\n\\[\n700\\le B_4\\le940.\n\\]\nSilvia's following output is therefore between \\(750\\) and \\(990\\), still below \\(1000\\). All earlier outputs are smaller, so the game has not crossed the threshold before this. But Bernardo's next output satisfies\n\\[\nB_5=2B_4+100\\ge1500.\n\\]\nThus Silvia is the last person below \\(1000\\) for every initial number smaller than \\(16\\).\n\nFor \\(N=16\\), Bernardo's outputs are\n\\[\n32,\\quad164,\\quad428,\\quad956.\n\\]\nSilvia then produces \\(956+50=1006\\), so Bernardo wins. Therefore the smallest initial number is \\(16\\), whose digit sum is \\(1+6=\\boxed7\\), choice \\(\\boxed{\\text{A}}\\).\n\nMethod 2: Work backward from Bernardo's winning turn\n\nSuppose Bernardo receives \\(x\\) on his final successful turn. To win, his doubled number must remain below \\(1000\\), while Silvia's next result must reach \\(1000\\). Thus\n\\[\n950\\le2x<1000,\n\\]\nwhich is equivalent to\n\\[\n475\\le x<500.\n\\]\nWe can now work backward through whole rounds. A whole round changes an input \\(u\\) received by Bernardo into the next input \\(2u+50\\). Therefore, to reverse a whole round, subtract \\(50\\) and divide by \\(2\\).\n\nLet \\(I_j\\) be the interval of possible starting values that reach the winning input after \\(j\\) earlier whole rounds. Repeatedly reversing the endpoints gives\n\\[\n\\begin{aligned}\nI_0&=[475,500),\\\\\nI_1&=[212.5,225),\\\\\nI_2&=[81.25,87.5),\\\\\nI_3&=[15.625,18.75),\\\\\nI_4&=[-17.1875,-15.625).\n\\end{aligned}\n\\]\nThe last interval is entirely negative, and reversing any negative value again keeps it negative. Thus no additional nonnegative starting values arise from longer play.\n\nThese intervals give valid play whenever the starting value is a nonnegative integer: every preceding whole round ends at an input below \\(500\\), so its two outputs are also below \\(1000\\). The final input then satisfies the winning condition.\n\nThe smallest integer in the nonnegative intervals is \\(16\\), in \\(I_3\\). Indeed, it gives Bernardo's outputs \\(32,164,428,956\\), followed by Silvia's \\(1006\\). Hence \\(N=16\\), and its digit sum is \\(\\boxed7\\), choice \\(\\boxed{\\text{A}}\\).",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "Original Math Practice solution",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "recursion; inequality; digits",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2012B/solutions",
-    "SourceSHA256": "f9d2f6920458eec7c19f539eda6c328ce627ae836c9e30836fc3f8e9465eec3f",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "answer": {
+    "accepted": [
+      "A"
     ],
-    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
-    "SolutionReview": {
-      "status": "reviewed",
-      "solutionSHA256": "d1159ab9cc77808be8fa616e6d5c379efafa4ff85ad00d16ff2d1297fbb7bc8b",
-      "questionContentHash": "67ec674115e4a51b62cbd42a2f5f342e50467aeb0d3a5ddd924d7e954fe25a63",
-      "evidence": {
-        "path": "knowledge-graph/evidence/solutions-2026-11-06/2012_AMC_10B_Q20.json",
-        "sha256": "3fb68815c421077f978556e418c9a52cf1deff27b5b9a9a2c18bc7f93cde0640"
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "cnm_100",
+    "math:extremal-principle"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 10"
+  },
+  "id": "2012_AMC_10B_Q20",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\( 7 \\)",
+        "id": "A"
       },
-      "author": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
+      {
+        "content": "\\( 8 \\)",
+        "id": "B"
       },
-      "reviewer": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
+      {
+        "content": "\\( 9 \\)",
+        "id": "C"
+      },
+      {
+        "content": "\\( 10 \\)",
+        "id": "D"
+      },
+      {
+        "content": "\\( 11 \\)",
+        "id": "E"
       }
+    ],
+    "prompt": "Bernardo and Silvia play the following game. An integer between \\(0\\) and \\(999\\) inclusive is selected and given to Bernardo. Whenever Bernardo receives a number, he doubles it and passes the result to Silvia. Whenever Silvia receives a number, she adds \\(50\\) to it and passes the result to Bernardo. The winner is the last person who produces a number less than \\(1000.\\)\n\nLet \\(N\\) be the smallest initial number that results in a win for Bernardo. What is the sum of the digits of \\(N?\\)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "cnm_h200",
+        "cnm_100",
+        "math:extremal-principle"
+      ],
+      "explanation": "The numbers never decrease. Bernardo wins when one of his outputs is at least \\(950\\) but less than \\(1000\\), because Silvia's next addition of \\(50\\) then reaches or exceeds \\(1000\\).\n\nLet \\(B_k\\) be Bernardo's output on his \\(k\\)th turn, starting from the initial integer \\(N\\). His first output is \\(B_1=2N\\). Between two of his turns, Silvia adds \\(50\\), so\n\\[\nB_{k+1}=2(B_k+50)=2B_k+100.\n\\]\nApplying this rule gives\n\\[\n\\begin{aligned}\nB_2&=4N+100,\\\\\nB_3&=8N+300,\\\\\nB_4&=16N+700.\n\\end{aligned}\n\\]\nFor every integer \\(0\\le N\\le15\\), we have\n\\[\n700\\le B_4\\le940.\n\\]\nSilvia's following output is therefore between \\(750\\) and \\(990\\), still below \\(1000\\). All earlier outputs are smaller, so the game has not crossed the threshold before this. But Bernardo's next output satisfies\n\\[\nB_5=2B_4+100\\ge1500.\n\\]\nThus Silvia is the last person below \\(1000\\) for every initial number smaller than \\(16\\).\n\nFor \\(N=16\\), Bernardo's outputs are\n\\[\n32,\\quad164,\\quad428,\\quad956.\n\\]\nSilvia then produces \\(956+50=1006\\), so Bernardo wins. Therefore the smallest initial number is \\(16\\), whose digit sum is \\(1+6=\\boxed7\\), choice \\(\\boxed{\\text{A}}\\).",
+      "id": "forward-bernardo-outputs",
+      "sourceRef": "amc/2012_AMC_10B_Q20#forward-bernardo-outputs",
+      "title": "Track Bernardo's outputs and rule out smaller starts"
+    },
+    {
+      "directNodeIds": [
+        "cnm_100",
+        "cnm_097",
+        "math:extremal-principle"
+      ],
+      "explanation": "Suppose Bernardo receives \\(x\\) on his final successful turn. To win, his doubled number must remain below \\(1000\\), while Silvia's next result must reach \\(1000\\). Thus\n\\[\n950\\le2x<1000,\n\\]\nwhich is equivalent to\n\\[\n475\\le x<500.\n\\]\nWe can now work backward through whole rounds. A whole round changes an input \\(u\\) received by Bernardo into the next input \\(2u+50\\). Therefore, to reverse a whole round, subtract \\(50\\) and divide by \\(2\\).\n\nLet \\(I_j\\) be the interval of possible starting values that reach the winning input after \\(j\\) earlier whole rounds. Repeatedly reversing the endpoints gives\n\\[\n\\begin{aligned}\nI_0&=[475,500),\\\\\nI_1&=[212.5,225),\\\\\nI_2&=[81.25,87.5),\\\\\nI_3&=[15.625,18.75),\\\\\nI_4&=[-17.1875,-15.625).\n\\end{aligned}\n\\]\nThe last interval is entirely negative, and reversing any negative value again keeps it negative. Thus no additional nonnegative starting values arise from longer play.\n\nThese intervals give valid play whenever the starting value is a nonnegative integer: every preceding whole round ends at an input below \\(500\\), so its two outputs are also below \\(1000\\). The final input then satisfies the winning condition.\n\nThe smallest integer in the nonnegative intervals is \\(16\\), in \\(I_3\\). Indeed, it gives Bernardo's outputs \\(32,164,428,956\\), followed by Silvia's \\(1006\\). Hence \\(N=16\\), and its digit sum is \\(\\boxed7\\), choice \\(\\boxed{\\text{A}}\\).",
+      "id": "backward-winning-intervals",
+      "sourceRef": "amc/2012_AMC_10B_Q20#backward-winning-intervals",
+      "title": "Work backward from Bernardo's winning turn"
     }
-  },
-  "ID": "2012_AMC_10B_Q20",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "67ec674115e4a51b62cbd42a2f5f342e50467aeb0d3a5ddd924d7e954fe25a63",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_100",
-      "math:extremal-principle"
-    ],
-    "supportIds": [
-      "cnm_096",
-      "cnm_h020"
-    ],
-    "routes": [
-      {
-        "id": "forward-bernardo-outputs",
-        "label": "Iterate Bernardo's outputs",
-        "nodeIds": [
-          "cnm_h200",
-          "cnm_099"
-        ]
-      },
-      {
-        "id": "backward-winning-intervals",
-        "label": "Reverse the winning interval",
-        "nodeIds": [
-          "cnm_096",
-          "cnm_097"
-        ]
-      },
-      {
-        "id": "solution:forward-bernardo-outputs:d1159ab9cc77",
-        "label": "Track Bernardo's outputs and rule out smaller starts",
-        "nodeIds": [
-          "cnm_h200",
-          "cnm_100",
-          "math:extremal-principle",
-          "cnm_h197",
-          "cnm_027",
-          "cnm_096",
-          "cnm_h020"
-        ]
-      },
-      {
-        "id": "solution:backward-winning-intervals:d1159ab9cc77",
-        "label": "Work backward from Bernardo's winning turn",
-        "nodeIds": [
-          "cnm_100",
-          "cnm_097",
-          "math:extremal-principle",
-          "cnm_096",
-          "cnm_h020"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  ],
+  "sourceRef": "amc/2012_AMC_10B_Q20"
 }

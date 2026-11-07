@@ -1,118 +1,75 @@
 {
-  "Year": 2015,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 21,
-  "Question": "Cozy the Cat and Dash the Dog are going up a staircase with a certain number of steps. However, instead of walking up the steps one at a time, both Cozy and Dash jump.\n\nCozy goes two steps up with each jump (though if necessary, he will just jump the last step).\n\nDash goes five steps up with each jump (though if necessary, he will just jump the last steps if there are fewer than \\(5\\) steps left).\n\nSuppose Dash takes \\(19\\) fewer jumps than Cozy to reach the top of the staircase. Let \\(s\\) denote the sum of all possible numbers of steps this staircase can have. What is the sum of the digits of \\(s?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\( 9 \\)",
-    "B": "\\( 11 \\)",
-    "C": "\\( 12 \\)",
-    "D": "\\( 13 \\)",
-    "E": "\\( 15 \\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "Method 1: Use the ranges for each jump count\n\nA fixed number of jumps gives an exact range of possible staircase lengths, including the shorter final jump. Let \\(n\\) be the number of steps and \\(d\\) the number of Dash's jumps. Cozy then takes \\(d+19\\) jumps.\n\nCozy takes exactly \\(d+19\\) jumps when\n\\[\n2d+37\\le n\\le2d+38.\n\\]\nThe lower endpoint allows a final jump of one step. Dash takes exactly \\(d\\) jumps when\n\\[\n5d-4\\le n\\le5d.\n\\]\nFor these intervals to overlap, each lower endpoint must be no greater than the other upper endpoint. Thus\n\\[\n2d+37\\le5d,\n\\qquad\n5d-4\\le2d+38.\n\\]\nThese inequalities give \\(37\\le3d\\le42\\). Since \\(d\\) is an integer, \\(d=13\\) or \\(d=14\\).\n\nIf \\(d=13\\), Cozy's range is \\(63\\le n\\le64\\), and Dash's range is \\(61\\le n\\le65\\). Both \\(63\\) and \\(64\\) work.\n\nIf \\(d=14\\), Cozy's range is \\(65\\le n\\le66\\), and Dash's range is \\(66\\le n\\le70\\). Only \\(66\\) works.\n\nThese exact intervals cover all possibilities, so\n\\[\ns=63+64+66=193.\n\\]\nIts digit sum is \\(1+9+3=\\boxed{13}\\), choice \\(\\mathrm{D}\\).\n\nMethod 2: Separate complete ten-step blocks\n\nTen steps are convenient because Cozy covers them in \\(5\\) jumps and Dash in \\(2\\). Write the staircase length uniquely as\n\\[\nn=10q+r,\\qquad 0\\le r\\le9,\n\\]\nwhere \\(q\\) and \\(r\\) are nonnegative integers. Both animals land exactly at step \\(10q\\), so the complete blocks contribute a jump difference of \\(3q\\).\n\nLet \\(\\delta\\) be Cozy's extra jumps minus Dash's extra jumps for the remaining \\(r\\) steps. Counting a partial final jump as one jump gives:\n\nFor \\(r=0,1,2\\), \\(\\delta=0\\).\n\nFor \\(r=3,4,6\\), \\(\\delta=1\\).\n\nFor \\(r=5,7,8\\), \\(\\delta=2\\).\n\nFor \\(r=9\\), \\(\\delta=3\\).\n\nFor example, \\(6\\) remaining steps require \\(3\\) Cozy jumps and \\(2\\) Dash jumps, giving a difference of \\(1\\).\n\nThe required difference is \\(3q+\\delta=19\\). Since \\(0\\le\\delta\\le3\\),\n\\[\n16\\le3q\\le19,\n\\]\nso the only integer possibility is \\(q=6\\). It follows that \\(\\delta=1\\), giving \\(r=3,4,6\\). Thus the possible lengths are exactly \\(63,64,66\\); the unique quotient-remainder representation ensures none are omitted or repeated. Their sum is \\(193\\), whose digit sum is \\(\\boxed{13}\\), choice \\(\\mathrm{D}\\).",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "Original Math Practice solution",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "floor and ceiling functions; Diophantine Equation; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2015B/solutions",
-    "SourceSHA256": "f11f24070443f9aba328ba188c1acd0452762aca6aa23069997cd80e74ad2d82",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "answer": {
+    "accepted": [
+      "D"
     ],
-    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
-    "SolutionReview": {
-      "status": "reviewed",
-      "solutionSHA256": "607340533d9d573fff1e7cd4169b53e1d1a9982b866da3c74289a68987ea6db5",
-      "questionContentHash": "4fc182e9d5624e7cf943bdd511389e6ce87468e7b3608756360a0117d28b6fe0",
-      "evidence": {
-        "path": "knowledge-graph/evidence/solutions-2026-11-06/2015_AMC_10B_Q21.json",
-        "sha256": "caa0156ca826f43e545ee4e428b1b56e7f094b3f8df66b870f4fd5806fedeb60"
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "math:floor-ceiling"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 10"
+  },
+  "id": "2015_AMC_10B_Q21",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\( 9 \\)",
+        "id": "A"
       },
-      "author": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
+      {
+        "content": "\\( 11 \\)",
+        "id": "B"
       },
-      "reviewer": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
+      {
+        "content": "\\( 12 \\)",
+        "id": "C"
+      },
+      {
+        "content": "\\( 13 \\)",
+        "id": "D"
+      },
+      {
+        "content": "\\( 15 \\)",
+        "id": "E"
       }
+    ],
+    "prompt": "Cozy the Cat and Dash the Dog are going up a staircase with a certain number of steps. However, instead of walking up the steps one at a time, both Cozy and Dash jump.\n\nCozy goes two steps up with each jump (though if necessary, he will just jump the last step).\n\nDash goes five steps up with each jump (though if necessary, he will just jump the last steps if there are fewer than \\(5\\) steps left).\n\nSuppose Dash takes \\(19\\) fewer jumps than Cozy to reach the top of the staircase. Let \\(s\\) denote the sum of all possible numbers of steps this staircase can have. What is the sum of the digits of \\(s?\\)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:floor-ceiling",
+        "cnm_099",
+        "cnm_h020"
+      ],
+      "explanation": "A fixed number of jumps gives an exact range of possible staircase lengths, including the shorter final jump. Let \\(n\\) be the number of steps and \\(d\\) the number of Dash's jumps. Cozy then takes \\(d+19\\) jumps.\n\nCozy takes exactly \\(d+19\\) jumps when\n\\[\n2d+37\\le n\\le2d+38.\n\\]\nThe lower endpoint allows a final jump of one step. Dash takes exactly \\(d\\) jumps when\n\\[\n5d-4\\le n\\le5d.\n\\]\nFor these intervals to overlap, each lower endpoint must be no greater than the other upper endpoint. Thus\n\\[\n2d+37\\le5d,\n\\qquad\n5d-4\\le2d+38.\n\\]\nThese inequalities give \\(37\\le3d\\le42\\). Since \\(d\\) is an integer, \\(d=13\\) or \\(d=14\\).\n\nIf \\(d=13\\), Cozy's range is \\(63\\le n\\le64\\), and Dash's range is \\(61\\le n\\le65\\). Both \\(63\\) and \\(64\\) work.\n\nIf \\(d=14\\), Cozy's range is \\(65\\le n\\le66\\), and Dash's range is \\(66\\le n\\le70\\). Only \\(66\\) works.\n\nThese exact intervals cover all possibilities, so\n\\[\ns=63+64+66=193.\n\\]\nIts digit sum is \\(1+9+3=\\boxed{13}\\), choice \\(\\mathrm{D}\\).",
+      "id": "jump-count-intervals",
+      "sourceRef": "amc/2015_AMC_10B_Q21#jump-count-intervals",
+      "title": "Use the ranges for each jump count"
+    },
+    {
+      "directNodeIds": [
+        "math:floor-ceiling",
+        "cnm_p052"
+      ],
+      "explanation": "Ten steps are convenient because Cozy covers them in \\(5\\) jumps and Dash in \\(2\\). Write the staircase length uniquely as\n\\[\nn=10q+r,\\qquad 0\\le r\\le9,\n\\]\nwhere \\(q\\) and \\(r\\) are nonnegative integers. Both animals land exactly at step \\(10q\\), so the complete blocks contribute a jump difference of \\(3q\\).\n\nLet \\(\\delta\\) be Cozy's extra jumps minus Dash's extra jumps for the remaining \\(r\\) steps. Counting a partial final jump as one jump gives:\n\nFor \\(r=0,1,2\\), \\(\\delta=0\\).\n\nFor \\(r=3,4,6\\), \\(\\delta=1\\).\n\nFor \\(r=5,7,8\\), \\(\\delta=2\\).\n\nFor \\(r=9\\), \\(\\delta=3\\).\n\nFor example, \\(6\\) remaining steps require \\(3\\) Cozy jumps and \\(2\\) Dash jumps, giving a difference of \\(1\\).\n\nThe required difference is \\(3q+\\delta=19\\). Since \\(0\\le\\delta\\le3\\),\n\\[\n16\\le3q\\le19,\n\\]\nso the only integer possibility is \\(q=6\\). It follows that \\(\\delta=1\\), giving \\(r=3,4,6\\). Thus the possible lengths are exactly \\(63,64,66\\); the unique quotient-remainder representation ensures none are omitted or repeated. Their sum is \\(193\\), whose digit sum is \\(\\boxed{13}\\), choice \\(\\mathrm{D}\\).",
+      "id": "ten-step-blocks",
+      "sourceRef": "amc/2015_AMC_10B_Q21#ten-step-blocks",
+      "title": "Separate complete ten-step blocks"
+    },
+    {
+      "directNodeIds": [
+        "math:modular-congruence"
+      ],
+      "id": "ceiling-residue-cases",
+      "sourceRef": "amc/2015_AMC_10B_Q21#ceiling-residue-cases",
+      "title": "Ceilings and residue cases"
     }
-  },
-  "ID": "2015_AMC_10B_Q21",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "4fc182e9d5624e7cf943bdd511389e6ce87468e7b3608756360a0117d28b6fe0",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:floor-ceiling"
-    ],
-    "supportIds": [
-      "cnm_p050"
-    ],
-    "routes": [
-      {
-        "id": "ceiling-residue-cases",
-        "label": "Ceilings and residue cases",
-        "nodeIds": [
-          "math:modular-congruence"
-        ]
-      },
-      {
-        "id": "jump-count-intervals",
-        "label": "Integer jump-count intervals",
-        "nodeIds": [
-          "cnm_099",
-          "cnm_h020"
-        ]
-      },
-      {
-        "id": "solution:jump-count-intervals:607340533d9d",
-        "label": "Use the ranges for each jump count",
-        "nodeIds": [
-          "math:floor-ceiling",
-          "cnm_099",
-          "cnm_h020",
-          "cnm_p050",
-          "cnm_097"
-        ]
-      },
-      {
-        "id": "ten-step-blocks",
-        "label": "Separate complete ten-step blocks",
-        "nodeIds": [
-          "math:floor-ceiling",
-          "cnm_p052",
-          "cnm_p050",
-          "cnm_p153"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  ],
+  "sourceRef": "amc/2015_AMC_10B_Q21"
 }

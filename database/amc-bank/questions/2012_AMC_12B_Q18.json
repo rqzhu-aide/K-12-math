@@ -1,116 +1,76 @@
 {
-  "Year": 2012,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 18,
-  "Question": "Let \\((a_1, a_2, \\ldots, a_{10})\\) be a list of the first \\(10\\) positive integers such that for each \\(2 \\le i \\le 10\\) either \\(a_i + 1\\) or \\(a_i - 1\\) or both appear somewhere before \\(a_i\\) in the list. How many such lists are there?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(120\\)",
-    "B": "\\(512\\)",
-    "C": "\\(1024\\)",
-    "D": "\\(181{,}440\\)",
-    "E": "\\(362{,}880\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "Method 1: Method 1: Read the list backward\n\nThe condition forces the numbers already listed to form an interval of consecutive integers. To see this, the first entry forms a one-number interval. If the current entries are \\(\\ell,\\ell+1,\\ldots,r\\), an unused number having a neighbor among them must be \\(\\ell-1\\) or \\(r+1\\). Adding either extends the interval by one.\n\nNow read a valid list backward, starting with the full interval \\(1,2,\\ldots,10\\). The last entry must be an endpoint, either \\(1\\) or \\(10\\), because deleting an interior number would leave a gap in the preceding prefix. The same reasoning applies after every deletion.\n\nWhenever at least two numbers remain, there are exactly two distinct endpoints to choose from. There are nine such deletions, after which the remaining number is forced. Thus there are \\(2^9\\) possible deletion histories.\n\nConversely, every history of endpoint deletions gives a valid list when reversed: each restored endpoint differs by \\(1\\) from an endpoint already present. Different histories give different lists, and every valid list supplies exactly one history. Hence the required count is\n\\[\n2^9=\\boxed{512},\n\\]\nchoice \\(\\mathrm{B}\\).\n\nMethod 2: Method 2: Choose positions for the smaller entries\n\nEvery prefix must consist of consecutive integers: starting with one number, the next unused number can only extend the current interval at its lower or upper end.\n\nFix the first entry as \\(a_1=k\\), where \\(1\\le k\\le10\\). The smaller numbers must then appear in the order\n\\[\nk-1,k-2,\\ldots,1,\n\\]\nand the larger numbers must appear in the order\n\\[\nk+1,k+2,\\ldots,10.\n\\]\nTheir two internal orders are forced, but the two groups can be interleaved. Choose which \\(k-1\\) of the remaining nine positions contain smaller numbers; filling those positions in decreasing order and the others in increasing order gives exactly one valid list. Thus there are \\(\\binom9{k-1}\\) lists starting with \\(k\\). This also handles \\(k=1\\) and \\(k=10\\), when one group is empty.\n\nThe possible first entries give disjoint cases, so the total is\n\\[\n\\sum_{k=1}^{10}\\binom9{k-1}\n=\\sum_{j=0}^{9}\\binom9j.\n\\]\nThis sum counts all subsets of nine positions, grouped by their size. Each position is either chosen or unchosen, so there are \\(2^9\\) subsets. Consequently the number of lists is \\(\\boxed{512}\\), choice \\(\\mathrm{B}\\).",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "Original Math Practice solution",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "bijection; combinations",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2012B/solutions",
-    "SourceSHA256": "4bd5efbe7bf94eb63b06d8711b413495b92982db90fad375fe553d262487b635",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "answer": {
+    "accepted": [
+      "B"
     ],
-    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
-    "SolutionReview": {
-      "status": "reviewed",
-      "solutionSHA256": "99d7d5ac7fab381b6c92094630a507151c614bc69e97dd40cdf7983559fc6581",
-      "questionContentHash": "419b6c16b9d4565532d7f77c4d0ae4df9353ee97d941050c7d57cdd66014b46b",
-      "evidence": {
-        "path": "knowledge-graph/evidence/solutions-2026-11-06/2012_AMC_12B_Q18.json",
-        "sha256": "d6195da839da1ff910584510d9556778c8089278cbab01b3afd94e251636ac74"
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "math:bijective-counting"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
+  },
+  "id": "2012_AMC_12B_Q18",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(120\\)",
+        "id": "A"
       },
-      "author": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
+      {
+        "content": "\\(512\\)",
+        "id": "B"
       },
-      "reviewer": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
+      {
+        "content": "\\(1024\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(181{,}440\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(362{,}880\\)",
+        "id": "E"
       }
+    ],
+    "prompt": "Let \\((a_1, a_2, \\ldots, a_{10})\\) be a list of the first \\(10\\) positive integers such that for each \\(2 \\le i \\le 10\\) either \\(a_i + 1\\) or \\(a_i - 1\\) or both appear somewhere before \\(a_i\\) in the list. How many such lists are there?"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:bijective-counting",
+        "cnm_h231"
+      ],
+      "explanation": "The condition forces the numbers already listed to form an interval of consecutive integers. To see this, the first entry forms a one-number interval. If the current entries are \\(\\ell,\\ell+1,\\ldots,r\\), an unused number having a neighbor among them must be \\(\\ell-1\\) or \\(r+1\\). Adding either extends the interval by one.\n\nNow read a valid list backward, starting with the full interval \\(1,2,\\ldots,10\\). The last entry must be an endpoint, either \\(1\\) or \\(10\\), because deleting an interior number would leave a gap in the preceding prefix. The same reasoning applies after every deletion.\n\nWhenever at least two numbers remain, there are exactly two distinct endpoints to choose from. There are nine such deletions, after which the remaining number is forced. Thus there are \\(2^9\\) possible deletion histories.\n\nConversely, every history of endpoint deletions gives a valid list when reversed: each restored endpoint differs by \\(1\\) from an endpoint already present. Different histories give different lists, and every valid list supplies exactly one history. Hence the required count is\n\\[\n2^9=\\boxed{512},\n\\]\nchoice \\(\\mathrm{B}\\).",
+      "id": "reverse-endpoint-deletion",
+      "sourceRef": "amc/2012_AMC_12B_Q18#reverse-endpoint-deletion",
+      "title": "Read the list backward"
+    },
+    {
+      "directNodeIds": [
+        "math:bijective-counting",
+        "cnm_h236",
+        "cnm_h242"
+      ],
+      "explanation": "Every prefix must consist of consecutive integers: starting with one number, the next unused number can only extend the current interval at its lower or upper end.\n\nFix the first entry as \\(a_1=k\\), where \\(1\\le k\\le10\\). The smaller numbers must then appear in the order\n\\[\nk-1,k-2,\\ldots,1,\n\\]\nand the larger numbers must appear in the order\n\\[\nk+1,k+2,\\ldots,10.\n\\]\nTheir two internal orders are forced, but the two groups can be interleaved. Choose which \\(k-1\\) of the remaining nine positions contain smaller numbers; filling those positions in decreasing order and the others in increasing order gives exactly one valid list. Thus there are \\(\\binom9{k-1}\\) lists starting with \\(k\\). This also handles \\(k=1\\) and \\(k=10\\), when one group is empty.\n\nThe possible first entries give disjoint cases, so the total is\n\\[\n\\sum_{k=1}^{10}\\binom9{k-1}\n=\\sum_{j=0}^{9}\\binom9j.\n\\]\nThis sum counts all subsets of nine positions, grouped by their size. Each position is either chosen or unchosen, so there are \\(2^9\\) subsets. Consequently the number of lists is \\(\\boxed{512}\\), choice \\(\\mathrm{B}\\).",
+      "id": "fix-first-entry-and-interleave",
+      "sourceRef": "amc/2012_AMC_12B_Q18#fix-first-entry-and-interleave",
+      "title": "Choose positions for the smaller entries"
+    },
+    {
+      "directNodeIds": [
+        "cnm_h237",
+        "cnm_h242"
+      ],
+      "id": "fix-first-entry",
+      "sourceRef": "amc/2012_AMC_12B_Q18#fix-first-entry",
+      "title": "Encode left-extension positions and sum binomial counts"
     }
-  },
-  "ID": "2012_AMC_12B_Q18",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "419b6c16b9d4565532d7f77c4d0ae4df9353ee97d941050c7d57cdd66014b46b",
-    "status": "mapped",
-    "reviewStatus": "machine_adjudicated",
-    "assessedIds": [
-      "math:bijective-counting"
-    ],
-    "supportIds": [
-      "cnm_h231"
-    ],
-    "routes": [
-      {
-        "id": "reverse-endpoint-deletion",
-        "label": "Encode the list by nine binary endpoint deletions",
-        "nodeIds": [
-          "cnm_h231"
-        ]
-      },
-      {
-        "id": "fix-first-entry",
-        "label": "Encode left-extension positions and sum binomial counts",
-        "nodeIds": [
-          "cnm_h237",
-          "cnm_h242"
-        ]
-      },
-      {
-        "id": "solution:reverse-endpoint-deletion:99d7d5ac7fab",
-        "label": "Method 1: Read the list backward",
-        "nodeIds": [
-          "math:bijective-counting",
-          "cnm_h231"
-        ]
-      },
-      {
-        "id": "fix-first-entry-and-interleave",
-        "label": "Method 2: Choose positions for the smaller entries",
-        "nodeIds": [
-          "math:bijective-counting",
-          "cnm_h236",
-          "cnm_h242",
-          "cnm_h230",
-          "cnm_h231"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  ],
+  "sourceRef": "amc/2012_AMC_12B_Q18"
 }

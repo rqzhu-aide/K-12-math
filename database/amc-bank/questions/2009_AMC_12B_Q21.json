@@ -1,114 +1,77 @@
 {
-  "Year": 2009,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 21,
-  "Question": "Ten women sit in \\(10\\) seats in a line. All of the \\(10\\) get up and then reseat themselves using all \\(10\\) seats, each sitting in the seat she was in before or a seat next to the one she occupied before. In how many ways can the women be reseated?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(89\\)",
-    "B": "\\(90\\)",
-    "C": "\\(120\\)",
-    "D": "\\(210\\)",
-    "E": "\\(2^{38}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "Method 1: Count by the first woman’s choice\n\nNumber the women by their original seats, from left to right. Let \\(a_n\\) be the number of legal reseatings for \\(n\\) women in \\(n\\) consecutive seats under the same rule.\n\nThe first woman has only two possibilities. If she stays in seat \\(1\\), the remaining women have \\(a_{n-1}\\) legal arrangements in the remaining seats. If she moves to seat \\(2\\), then the second woman must occupy seat \\(1\\): no other woman can reach that seat. These two women swap, leaving \\(a_{n-2}\\) arrangements for the remaining women.\n\nThe cases are disjoint and cover every legal reseating. Moreover, every legal arrangement of the remaining women extends in exactly one way within its case. Therefore, for \\(n\\ge2\\),\n\\[\na_n=a_{n-1}+a_{n-2}.\n\\]\nThere is one arrangement of no women and one arrangement of a single woman, so \\(a_0=a_1=1\\). Successively adding the preceding two counts gives\n\\[\n\\begin{aligned}\na_2&=2,&a_3&=3,&a_4&=5,\\\\\na_5&=8,&a_6&=13,&a_7&=21,\\\\\na_8&=34,&a_9&=55,&a_{10}&=89.\n\\end{aligned}\n\\]\nThus there are \\(\\boxed{89}\\) reseatings, choice \\(\\boxed{\\text{A}}\\).\n\nMethod 2: Count blocks of adjacent swaps\n\nEvery legal reseating consists of women who stay and disjoint adjacent pairs who swap. To prove this, start at the leftmost woman not yet considered. She either stays, or moves one seat right. In the latter case, her neighbor must move into her old seat, since no later woman can reach it. Remove that single woman or swapped pair and repeat along the line.\n\nSuppose there are \\(k\\) swapped pairs, where \\(0\\le k\\le5\\). Treat each swapped pair as a double block and each woman who stays as a single block. There are \\(k\\) double blocks and \\(10-2k\\) single blocks, making \\(10-k\\) blocks altogether. Choosing which \\(k\\) of those block positions are double determines the reseating, giving\n\\[\n\\binom{10-k}{k}\n\\]\npossibilities.\n\nThis correspondence is reversible: read the blocks from left to right, assign the next original woman to a single block, and swap the next two original women in a double block. Thus every reseating is counted once. Different values of \\(k\\) are disjoint cases, so the total is\n\\[\n\\begin{aligned}\n\\sum_{k=0}^{5}\\binom{10-k}{k}\n&=1+9+28+35+15+1\\\\\n&=\\boxed{89}.\n\\end{aligned}\n\\]\nThe answer is \\(\\boxed{\\text{A}}\\).",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "Original Math Practice solution",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "recursion; Fibonacci",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2009B/solutions",
-    "SourceSHA256": "b8f37a332948f74a5a5631130107eb2a8267ae3c5936f0fcb3ffe414531a8d5b",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "answer": {
+    "accepted": [
+      "A"
     ],
-    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
-    "SolutionReview": {
-      "status": "reviewed",
-      "solutionSHA256": "df65223cd86be9e0437ef528b1beb9534a2ff2741862ea8978bee590f3dedd8d",
-      "questionContentHash": "1c0217abe9edf6db8daf15a96be8dd3e359dc87df2d44a0701a1b49879d71d61",
-      "evidence": {
-        "path": "knowledge-graph/evidence/solutions-2026-11-06/2009_AMC_12B_Q21.json",
-        "sha256": "678af501c51c2b358a6031ccff051f9b365b5a7986b973e853dfcee78c00d37e"
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "cnm_h230"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
+  },
+  "id": "2009_AMC_12B_Q21",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(89\\)",
+        "id": "A"
       },
-      "author": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
+      {
+        "content": "\\(90\\)",
+        "id": "B"
       },
-      "reviewer": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
+      {
+        "content": "\\(120\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(210\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(2^{38}\\)",
+        "id": "E"
       }
+    ],
+    "prompt": "Ten women sit in \\(10\\) seats in a line. All of the \\(10\\) get up and then reseat themselves using all \\(10\\) seats, each sitting in the seat she was in before or a seat next to the one she occupied before. In how many ways can the women be reseated?"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "cnm_h230",
+        "math:recursive-counting-probability",
+        "cnm_h200"
+      ],
+      "explanation": "Number the women by their original seats, from left to right. Let \\(a_n\\) be the number of legal reseatings for \\(n\\) women in \\(n\\) consecutive seats under the same rule.\n\nThe first woman has only two possibilities. If she stays in seat \\(1\\), the remaining women have \\(a_{n-1}\\) legal arrangements in the remaining seats. If she moves to seat \\(2\\), then the second woman must occupy seat \\(1\\): no other woman can reach that seat. These two women swap, leaving \\(a_{n-2}\\) arrangements for the remaining women.\n\nThe cases are disjoint and cover every legal reseating. Moreover, every legal arrangement of the remaining women extends in exactly one way within its case. Therefore, for \\(n\\ge2\\),\n\\[\na_n=a_{n-1}+a_{n-2}.\n\\]\nThere is one arrangement of no women and one arrangement of a single woman, so \\(a_0=a_1=1\\). Successively adding the preceding two counts gives\n\\[\n\\begin{aligned}\na_2&=2,&a_3&=3,&a_4&=5,\\\\\na_5&=8,&a_6&=13,&a_7&=21,\\\\\na_8&=34,&a_9&=55,&a_{10}&=89.\n\\end{aligned}\n\\]\nThus there are \\(\\boxed{89}\\) reseatings, choice \\(\\boxed{\\text{A}}\\).",
+      "id": "first-seat-recursion",
+      "sourceRef": "amc/2009_AMC_12B_Q21#first-seat-recursion",
+      "title": "Count by the first woman’s choice"
+    },
+    {
+      "directNodeIds": [
+        "cnm_h230",
+        "math:bijective-counting",
+        "cnm_h237"
+      ],
+      "explanation": "Every legal reseating consists of women who stay and disjoint adjacent pairs who swap. To prove this, start at the leftmost woman not yet considered. She either stays, or moves one seat right. In the latter case, her neighbor must move into her old seat, since no later woman can reach it. Remove that single woman or swapped pair and repeat along the line.\n\nSuppose there are \\(k\\) swapped pairs, where \\(0\\le k\\le5\\). Treat each swapped pair as a double block and each woman who stays as a single block. There are \\(k\\) double blocks and \\(10-2k\\) single blocks, making \\(10-k\\) blocks altogether. Choosing which \\(k\\) of those block positions are double determines the reseating, giving\n\\[\n\\binom{10-k}{k}\n\\]\npossibilities.\n\nThis correspondence is reversible: read the blocks from left to right, assign the next original woman to a single block, and swap the next two original women in a double block. Thus every reseating is counted once. Different values of \\(k\\) are disjoint cases, so the total is\n\\[\n\\begin{aligned}\n\\sum_{k=0}^{5}\\binom{10-k}{k}\n&=1+9+28+35+15+1\\\\\n&=\\boxed{89}.\n\\end{aligned}\n\\]\nThe answer is \\(\\boxed{\\text{A}}\\).",
+      "id": "compress-adjacent-swaps",
+      "sourceRef": "amc/2009_AMC_12B_Q21#compress-adjacent-swaps",
+      "title": "Count blocks of adjacent swaps"
+    },
+    {
+      "directNodeIds": [
+        "math:bijective-counting",
+        "cnm_h237"
+      ],
+      "id": "choose-adjacent-swaps",
+      "sourceRef": "amc/2009_AMC_12B_Q21#choose-adjacent-swaps",
+      "title": "Count disjoint adjacent swaps"
     }
-  },
-  "ID": "2009_AMC_12B_Q21",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "1c0217abe9edf6db8daf15a96be8dd3e359dc87df2d44a0701a1b49879d71d61",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h230"
-    ],
-    "supportIds": [],
-    "routes": [
-      {
-        "id": "first-seat-recursion",
-        "label": "Recur on the first fixed seat or swapped pair",
-        "nodeIds": [
-          "math:recursive-counting-probability"
-        ]
-      },
-      {
-        "id": "choose-adjacent-swaps",
-        "label": "Count disjoint adjacent swaps",
-        "nodeIds": [
-          "math:bijective-counting",
-          "cnm_h237"
-        ]
-      },
-      {
-        "id": "solution:first-seat-recursion:df65223cd86b",
-        "label": "Count by the first woman’s choice",
-        "nodeIds": [
-          "cnm_h230",
-          "math:recursive-counting-probability",
-          "cnm_h200"
-        ]
-      },
-      {
-        "id": "compress-adjacent-swaps",
-        "label": "Count blocks of adjacent swaps",
-        "nodeIds": [
-          "cnm_h230",
-          "math:bijective-counting",
-          "cnm_h237",
-          "cnm_h236"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  ],
+  "sourceRef": "amc/2009_AMC_12B_Q21"
 }

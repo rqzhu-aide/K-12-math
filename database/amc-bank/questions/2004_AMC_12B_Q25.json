@@ -1,92 +1,55 @@
 {
-  "Year": 2004,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 25,
-  "Question": "Given that \\(2^{2004}\\) is a \\(604\\)-digit number whose first digit is \\(1,\\) how many elements of the set \\(S = \\{2^0, 2^1, 2^2, \\ldots, 2^{2003}\\}\\) have a first digit of \\(4?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(194\\)",
-    "B": "\\(195\\)",
-    "C": "\\(196\\)",
-    "D": "\\(197\\)",
-    "E": "\\(198\\)"
+  "answer": {
+    "accepted": [
+      "B"
+    ],
+    "type": "choice"
   },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "Successive powers of two double, so grouping them by their number of decimal digits lets us control how many powers occur in each group.\n\nThe information about \\(2^{2004}\\) means\n\\[\n10^{603}\\leq2^{2004}<2\\cdot10^{603}.\n\\]\nDividing by \\(2\\) shows that \\(2^{2003}<10^{603}\\). Thus \\(S\\) contains exactly all powers of two below \\(10^{603}\\), grouped into the \\(603\\) possible digit lengths from \\(1\\) through \\(603\\).\n\nConsider one digit length. Write \\(T=10^j\\), so its numbers lie in \\([T,10T)\\), and let \\(p\\) be the smallest power of two in this interval. Then\n\\[\nT\\leq p<2T.\n\\]\nFor \\(T>1\\), the upper bound follows because the preceding power \\(p/2\\) is below \\(T\\); for \\(T=1\\), it follows directly from \\(p=1\\).\n\nThe powers \\(p,2p,4p\\) all lie below \\(10T\\), while \\(16p\\geq16T\\) does not. Hence this digit-length group contains either three powers or four, depending on whether \\(8p<10T\\).\n\nOnly \\(4p\\) can start with \\(4\\): the first two powers are below \\(4T\\), and the possible fourth is at least \\(8T\\). Since \\(4p\\geq4T\\), it starts with \\(4\\) exactly when\n\\[\n4p<5T\n\\quad\\Longleftrightarrow\\quad\n8p<10T.\n\\]\nTherefore each four-power group contains exactly one leading-\\(4\\) power, and each three-power group contains none.\n\nLet \\(N\\) be the number of four-power groups. Counting the same \\(2004\\) powers by their digit-length groups gives\n\\[\n2004=4N+3(603-N)=1809+N.\n\\]\nEvery power belongs to exactly one group, so the desired count is \\(N=\\boxed{195}\\), choice \\(\\mathrm{B}\\).",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "Original Math Practice solution",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "digits; pattern recognition",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2004B/solutions",
-    "SourceSHA256": "f9f300d7603d422f7abc31703bfa47c98b565c7d16177cf80dace96e39baccb2",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ],
-    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
-    "SolutionReview": {
-      "status": "reviewed",
-      "solutionSHA256": "33c1193bd8037ab2530410dd2a4292e1d1183b3a95d1bc6ed0548f81b92443ba",
-      "questionContentHash": "7ff6883aadf08121c04ab01b7be1db2fe80d3c16b2bfa79e9e9b4193a23b541b",
-      "evidence": {
-        "path": "knowledge-graph/evidence/solutions-2026-11-06/2004_AMC_12B_Q25.json",
-        "sha256": "a48d1bf96f3aaf5dd085bfa96aafdb286b20fd0c14a120d43b6eb7e3909350ab"
-      },
-      "author": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
-      },
-      "reviewer": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
-      }
-    }
+  "assessedNodeIds": [
+    "math:double-counting"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
   },
-  "ID": "2004_AMC_12B_Q25",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "7ff6883aadf08121c04ab01b7be1db2fe80d3c16b2bfa79e9e9b4193a23b541b",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:double-counting"
-    ],
-    "supportIds": [
-      "cnm_019",
-      "cnm_022"
-    ],
-    "routes": [
+  "id": "2004_AMC_12B_Q25",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "count-by-digit-length",
-        "label": "Group the powers by digit length",
-        "nodeIds": [
-          "math:double-counting",
-          "cnm_019",
-          "cnm_022"
-        ]
+        "content": "\\(194\\)",
+        "id": "A"
+      },
+      {
+        "content": "\\(195\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(196\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(197\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(198\\)",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "Given that \\(2^{2004}\\) is a \\(604\\)-digit number whose first digit is \\(1,\\) how many elements of the set \\(S = \\{2^0, 2^1, 2^2, \\ldots, 2^{2003}\\}\\) have a first digit of \\(4?\\)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:double-counting"
+      ],
+      "explanation": "Successive powers of two double, so grouping them by their number of decimal digits lets us control how many powers occur in each group.\n\nThe information about \\(2^{2004}\\) means\n\\[\n10^{603}\\leq2^{2004}<2\\cdot10^{603}.\n\\]\nDividing by \\(2\\) shows that \\(2^{2003}<10^{603}\\). Thus \\(S\\) contains exactly all powers of two below \\(10^{603}\\), grouped into the \\(603\\) possible digit lengths from \\(1\\) through \\(603\\).\n\nConsider one digit length. Write \\(T=10^j\\), so its numbers lie in \\([T,10T)\\), and let \\(p\\) be the smallest power of two in this interval. Then\n\\[\nT\\leq p<2T.\n\\]\nFor \\(T>1\\), the upper bound follows because the preceding power \\(p/2\\) is below \\(T\\); for \\(T=1\\), it follows directly from \\(p=1\\).\n\nThe powers \\(p,2p,4p\\) all lie below \\(10T\\), while \\(16p\\geq16T\\) does not. Hence this digit-length group contains either three powers or four, depending on whether \\(8p<10T\\).\n\nOnly \\(4p\\) can start with \\(4\\): the first two powers are below \\(4T\\), and the possible fourth is at least \\(8T\\). Since \\(4p\\geq4T\\), it starts with \\(4\\) exactly when\n\\[\n4p<5T\n\\quad\\Longleftrightarrow\\quad\n8p<10T.\n\\]\nTherefore each four-power group contains exactly one leading-\\(4\\) power, and each three-power group contains none.\n\nLet \\(N\\) be the number of four-power groups. Counting the same \\(2004\\) powers by their digit-length groups gives\n\\[\n2004=4N+3(603-N)=1809+N.\n\\]\nEvery power belongs to exactly one group, so the desired count is \\(N=\\boxed{195}\\), choice \\(\\mathrm{B}\\).",
+      "id": "count-by-digit-length",
+      "sourceRef": "amc/2004_AMC_12B_Q25#count-by-digit-length",
+      "title": "Group the powers by digit length"
+    }
+  ],
+  "sourceRef": "amc/2004_AMC_12B_Q25"
 }

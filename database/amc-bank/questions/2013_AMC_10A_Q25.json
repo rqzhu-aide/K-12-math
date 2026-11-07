@@ -1,98 +1,58 @@
 {
-  "Year": 2013,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 25,
-  "Question": "All \\(20\\) diagonals are drawn in a regular octagon. At how many distinct points in the interior of the octagon (not on the boundary) do two or more diagonals intersect?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(49\\)",
-    "B": "\\(65\\)",
-    "C": "\\(70\\)",
-    "D": "\\(96\\)",
-    "E": "\\(128\\)"
+  "answer": {
+    "accepted": [
+      "A"
+    ],
+    "type": "choice"
   },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "Choosing four vertices gives a convex quadrilateral whose two diagonals cross inside the octagon. Conversely, every crossing pair of diagonals determines exactly four vertices. Thus the number of crossing pairs is\n\\[\n\\binom{8}{4}=70.\n\\]\nThis counts pairs of diagonals rather than distinct points. If several diagonals meet at one point, we must replace their several pair counts by a single point count.\n\nLabel the vertices \\(V_0,V_1,\\ldots,V_7\\) in cyclic order, and let \\(O\\) be the center. Diagonals sharing a vertex cannot also meet in the interior, so diagonals through a common interior point have distinct endpoints. Consequently, at most four diagonals can meet there.\n\nIf four diagonals meet, each diagonal must have one endpoint of each of the other three diagonals on each side of it. Its endpoints therefore have three vertices between them in each direction around the octagon, so they are opposite vertices. Thus four diagonals meet only at \\(O\\), where the four diameters intersect.\n\nTo find every possible triple intersection, consider its six endpoints, written in cyclic order as \\(A_1,\\ldots,A_6\\). Each diagonal must separate the endpoints of the other two, so the only possible three diagonals are\n\\[\nA_1A_4,\\qquad A_2A_5,\\qquad A_3A_6.\n\\]\nWe can therefore classify triples by the two octagon vertices omitted from their endpoints. Rotation and reflection reduce the possibilities to omitted vertices \\(V_0,V_d\\), where \\(d=1,2,3,4\\).\n\nWe will use the following symmetry fact: two crossing diagonals that are reflections of one another meet on the reflecting axis. Their unique intersection must be fixed by that reflection.\n\nFor \\(d=1\\), the possible triple is \\(V_2V_5,V_3V_6,V_4V_7\\). The first two are reflections across diameter \\(V_0V_4\\), so their crossing lies on that diameter. But \\(V_4V_7\\) meets the diameter only at the boundary vertex \\(V_4\\). There is no triple intersection.\n\nFor \\(d=2\\), the possible triple is \\(V_1V_5,V_3V_6,V_4V_7\\). The last two cross and are reflections across diameter \\(V_1V_5\\), so their crossing lies on that diameter. These three diagonals do meet. Their point is not \\(O\\), because the last two diagonals are not diameters.\n\nFor \\(d=3\\), the possible triple is \\(V_1V_5,V_2V_6,V_4V_7\\). The first two are diameters and meet at \\(O\\), while the third does not pass through \\(O\\). There is no triple intersection.\n\nFor \\(d=4\\), the possible triple is \\(V_1V_5,V_2V_6,V_3V_7\\). These are three diameters, giving the already identified center.\n\nThere are eight omitted pairs of the form \\(\\{V_i,V_{i+2}\\}\\), with indices read cyclically, so there are eight noncentral triple intersections. They are distinct: if two different triples met at the same noncentral point, at least four diagonals would meet there, which we have ruled out. The cases above exhaust all triples, so every remaining intersection has exactly two diagonals through it.\n\nEach triple intersection contributed \\(\\binom{3}{2}=3\\) to our pair count instead of \\(1\\), and the center contributed \\(\\binom{4}{2}=6\\) instead of \\(1\\). Hence the number of distinct interior intersection points is\n\\[\n70-8(3-1)-(6-1)=\\boxed{49}.\n\\]\nThe answer is \\(\\text{A}\\).",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "Original Math Practice solution",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "counting intersections; regular polygon; combinations",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2013A/solutions",
-    "SourceSHA256": "149c65140e4167524eef8e720816ccf0ad75716f50f264f23748ee7baad775b0",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ],
-    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
-    "SolutionReview": {
-      "status": "reviewed",
-      "solutionSHA256": "ef6fb6802877fc0cbe7dc660e10e78742b1debc91c4f3fa8dd0dfd1915edac28",
-      "questionContentHash": "a0a10bc94d6f4b02aa6c8d548e0ea6a8075d8b808f0da34ec95135943f09be8b",
-      "evidence": {
-        "path": "knowledge-graph/evidence/solutions-2026-11-06/2013_AMC_10A_Q25.json",
-        "sha256": "96a6de0a7c0f90f2522c83d70e501811b97eee30de506e4b5e679761e667f03f"
-      },
-      "author": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
-      },
-      "reviewer": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
-      }
-    }
+  "assessedNodeIds": [
+    "math:double-counting"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 10"
   },
-  "ID": "2013_AMC_10A_Q25",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "a0a10bc94d6f4b02aa6c8d548e0ea6a8075d8b808f0da34ec95135943f09be8b",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:double-counting"
-    ],
-    "supportIds": [
-      "cnm_180",
-      "cnm_266"
-    ],
-    "routes": [
+  "id": "2013_AMC_10A_Q25",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "crossing-pairs-and-multiplicities",
-        "label": "Count crossing pairs and correct repeated points",
-        "nodeIds": [
-          "math:double-counting",
-          "cnm_h237",
-          "cnm_245",
-          "cnm_132",
-          "cnm_180",
-          "cnm_266",
-          "cnm_h236",
-          "cnm_244",
-          "cnm_131"
-        ]
+        "content": "\\(49\\)",
+        "id": "A"
+      },
+      {
+        "content": "\\(65\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(70\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(96\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(128\\)",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "All \\(20\\) diagonals are drawn in a regular octagon. At how many distinct points in the interior of the octagon (not on the boundary) do two or more diagonals intersect?"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:double-counting",
+        "cnm_h237",
+        "cnm_245",
+        "cnm_132"
+      ],
+      "explanation": "Choosing four vertices gives a convex quadrilateral whose two diagonals cross inside the octagon. Conversely, every crossing pair of diagonals determines exactly four vertices. Thus the number of crossing pairs is\n\\[\n\\binom{8}{4}=70.\n\\]\nThis counts pairs of diagonals rather than distinct points. If several diagonals meet at one point, we must replace their several pair counts by a single point count.\n\nLabel the vertices \\(V_0,V_1,\\ldots,V_7\\) in cyclic order, and let \\(O\\) be the center. Diagonals sharing a vertex cannot also meet in the interior, so diagonals through a common interior point have distinct endpoints. Consequently, at most four diagonals can meet there.\n\nIf four diagonals meet, each diagonal must have one endpoint of each of the other three diagonals on each side of it. Its endpoints therefore have three vertices between them in each direction around the octagon, so they are opposite vertices. Thus four diagonals meet only at \\(O\\), where the four diameters intersect.\n\nTo find every possible triple intersection, consider its six endpoints, written in cyclic order as \\(A_1,\\ldots,A_6\\). Each diagonal must separate the endpoints of the other two, so the only possible three diagonals are\n\\[\nA_1A_4,\\qquad A_2A_5,\\qquad A_3A_6.\n\\]\nWe can therefore classify triples by the two octagon vertices omitted from their endpoints. Rotation and reflection reduce the possibilities to omitted vertices \\(V_0,V_d\\), where \\(d=1,2,3,4\\).\n\nWe will use the following symmetry fact: two crossing diagonals that are reflections of one another meet on the reflecting axis. Their unique intersection must be fixed by that reflection.\n\nFor \\(d=1\\), the possible triple is \\(V_2V_5,V_3V_6,V_4V_7\\). The first two are reflections across diameter \\(V_0V_4\\), so their crossing lies on that diameter. But \\(V_4V_7\\) meets the diameter only at the boundary vertex \\(V_4\\). There is no triple intersection.\n\nFor \\(d=2\\), the possible triple is \\(V_1V_5,V_3V_6,V_4V_7\\). The last two cross and are reflections across diameter \\(V_1V_5\\), so their crossing lies on that diameter. These three diagonals do meet. Their point is not \\(O\\), because the last two diagonals are not diameters.\n\nFor \\(d=3\\), the possible triple is \\(V_1V_5,V_2V_6,V_4V_7\\). The first two are diameters and meet at \\(O\\), while the third does not pass through \\(O\\). There is no triple intersection.\n\nFor \\(d=4\\), the possible triple is \\(V_1V_5,V_2V_6,V_3V_7\\). These are three diameters, giving the already identified center.\n\nThere are eight omitted pairs of the form \\(\\{V_i,V_{i+2}\\}\\), with indices read cyclically, so there are eight noncentral triple intersections. They are distinct: if two different triples met at the same noncentral point, at least four diagonals would meet there, which we have ruled out. The cases above exhaust all triples, so every remaining intersection has exactly two diagonals through it.\n\nEach triple intersection contributed \\(\\binom{3}{2}=3\\) to our pair count instead of \\(1\\), and the center contributed \\(\\binom{4}{2}=6\\) instead of \\(1\\). Hence the number of distinct interior intersection points is\n\\[\n70-8(3-1)-(6-1)=\\boxed{49}.\n\\]\nThe answer is \\(\\text{A}\\).",
+      "id": "crossing-pairs-and-multiplicities",
+      "sourceRef": "amc/2013_AMC_10A_Q25#crossing-pairs-and-multiplicities",
+      "title": "Count crossing pairs and correct repeated points"
+    }
+  ],
+  "sourceRef": "amc/2013_AMC_10A_Q25"
 }

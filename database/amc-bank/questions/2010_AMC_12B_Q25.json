@@ -1,90 +1,55 @@
 {
-  "Year": 2010,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 25,
-  "Question": "For every integer \\(n\\ge2,\\) let \\(\\operatorname{pow}(n)\\) be the largest power of the largest prime that divides \\(n.\\) For example, \\(\\operatorname{pow}(144)=\\operatorname{pow}(2^4\\cdot3^2)=3^2.\\) What is the largest integer \\(m\\) such that \\(2010^m\\) divides \\[\\prod_{n=2}^{5300}\\operatorname{pow}(n)?\\]",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(74\\)",
-    "B": "\\(75\\)",
-    "C": "\\(76\\)",
-    "D": "\\(77\\)",
-    "E": "\\(78\\)"
+  "answer": {
+    "accepted": [
+      "D"
+    ],
+    "type": "choice"
   },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "Factor the required divisor:\n\\[\n2010=2\\cdot3\\cdot5\\cdot67.\n\\]\nLet \\(T\\) be the product in the question, and let \\(E_p\\) denote the exponent of a prime \\(p\\) in \\(T\\). Because each prime occurs once in 2010, the largest possible \\(m\\) is\n\\[\n\\min(E_2,E_3,E_5,E_{67}).\n\\]\nA factor \\(\\operatorname{pow}(n)\\) contributes copies of \\(p\\) only when \\(p\\) is the largest prime dividing \\(n\\).\n\nStart with 67, since relatively few inputs can contribute it. Every multiple of 67 in the range has the unique form\n\\[\nn=67k,\\qquad 1\\le k\\le79,\n\\]\nbecause \\(67\\cdot79=5293\\) and \\(67\\cdot80=5360\\). Such an input is eligible unless \\(k\\) has a prime factor greater than 67. The only such primes at most 79 are \\(71,73,79\\), and none has another positive multiple at most 79. Thus exactly three values of \\(k\\) are excluded, leaving \\(79-3=76\\) eligible inputs.\n\nEach eligible input contributes one factor of 67. The input \\(67^2=4489\\), corresponding to \\(k=67\\), contributes one additional factor. No input reaches \\(67^3\\). Therefore\n\\[\nE_{67}=76+1=77.\n\\]\nWe must check that the other three primes supply at least this many factors.\n\nFor 2, the eligible inputs are exactly the powers of 2. Since \\(2^{12}=4096\\le5300<2^{13}\\),\n\\[\nE_2=1+2+\\cdots+12=78.\n\\]\nFor 3, use the inputs \\(c3^b\\), where \\(c\\in\\{1,2,4\\}\\) and \\(1\\le b\\le6\\). All are at most \\(4\\cdot3^6=2916\\), and their largest prime is 3. Together they contribute\n\\[\n3(1+2+\\cdots+6)=63\n\\]\nfactors of 3. The two further inputs \\(3^7\\) and \\(2\\cdot3^7=4374\\) contribute 14 more, so \\(E_3\\ge77\\).\n\nFor 5, use the inputs \\(c5^b\\) from these two groups:\n\\[\nc\\in\\{1,2,3,4,6,8\\},\\quad 1\\le b\\le4,\n\\]\n\\[\nc\\in\\{9,12,16\\},\\quad 1\\le b\\le3.\n\\]\nTheir maximum values are 5000 and 2000, respectively. Every multiplier has only prime factors 2 and 3, so each input has largest prime 5 and contributes exactly \\(b\\) factors of 5. Different pairs \\((c,b)\\) give different inputs, since \\(c\\) is not divisible by 5. Hence\n\\[\nE_5\\ge6(1+2+3+4)+3(1+2+3)=78.\n\\]\nThe inputs counted for 3 are likewise distinct because their multipliers are not divisible by 3. These lower bounds suffice: every required prime supplies at least 77 factors, while 67 supplies exactly 77. Thus the largest exponent is \\(\\boxed{77}\\), choice \\(\\mathrm{D}\\).",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "Original Math Practice solution",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "prime factorization; prime; counting integers in a range",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2010B/solutions",
-    "SourceSHA256": "b83a1f44e92d61973d3537ee0e4c5761fab39cf32d2f75f8dd229b9f55223bf1",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ],
-    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
-    "SolutionReview": {
-      "status": "reviewed",
-      "solutionSHA256": "954913411cc59ea2546bd80baffa83bac446ece7d5bd3ddb342c93445f523a29",
-      "questionContentHash": "a943d301281da1be32627ed79b956ec3a77b8a5bca6f5c03eb9924cd7d19aafe",
-      "evidence": {
-        "path": "knowledge-graph/evidence/solutions-2026-11-06/2010_AMC_12B_Q25.json",
-        "sha256": "26ed5c08b3dceab8c6a316a34746c7fe4e47e1301ae76c9ed70d9a193d72d98a"
-      },
-      "author": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
-      },
-      "reviewer": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
-      }
-    }
+  "assessedNodeIds": [
+    "math:prime-valuations-factorials"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
   },
-  "ID": "2010_AMC_12B_Q25",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "a943d301281da1be32627ed79b956ec3a77b8a5bca6f5c03eb9924cd7d19aafe",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:prime-valuations-factorials"
-    ],
-    "supportIds": [
-      "math:prime-factorization"
-    ],
-    "routes": [
+  "id": "2010_AMC_12B_Q25",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "restricted-prime-exponent-count",
-        "label": "Count the limiting prime exponent",
-        "nodeIds": [
-          "math:prime-valuations-factorials",
-          "math:prime-factorization"
-        ]
+        "content": "\\(74\\)",
+        "id": "A"
+      },
+      {
+        "content": "\\(75\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(76\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(77\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(78\\)",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "For every integer \\(n\\ge2,\\) let \\(\\operatorname{pow}(n)\\) be the largest power of the largest prime that divides \\(n.\\) For example, \\(\\operatorname{pow}(144)=\\operatorname{pow}(2^4\\cdot3^2)=3^2.\\) What is the largest integer \\(m\\) such that \\(2010^m\\) divides \\[\\prod_{n=2}^{5300}\\operatorname{pow}(n)?\\]"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:prime-valuations-factorials"
+      ],
+      "explanation": "Factor the required divisor:\n\\[\n2010=2\\cdot3\\cdot5\\cdot67.\n\\]\nLet \\(T\\) be the product in the question, and let \\(E_p\\) denote the exponent of a prime \\(p\\) in \\(T\\). Because each prime occurs once in 2010, the largest possible \\(m\\) is\n\\[\n\\min(E_2,E_3,E_5,E_{67}).\n\\]\nA factor \\(\\operatorname{pow}(n)\\) contributes copies of \\(p\\) only when \\(p\\) is the largest prime dividing \\(n\\).\n\nStart with 67, since relatively few inputs can contribute it. Every multiple of 67 in the range has the unique form\n\\[\nn=67k,\\qquad 1\\le k\\le79,\n\\]\nbecause \\(67\\cdot79=5293\\) and \\(67\\cdot80=5360\\). Such an input is eligible unless \\(k\\) has a prime factor greater than 67. The only such primes at most 79 are \\(71,73,79\\), and none has another positive multiple at most 79. Thus exactly three values of \\(k\\) are excluded, leaving \\(79-3=76\\) eligible inputs.\n\nEach eligible input contributes one factor of 67. The input \\(67^2=4489\\), corresponding to \\(k=67\\), contributes one additional factor. No input reaches \\(67^3\\). Therefore\n\\[\nE_{67}=76+1=77.\n\\]\nWe must check that the other three primes supply at least this many factors.\n\nFor 2, the eligible inputs are exactly the powers of 2. Since \\(2^{12}=4096\\le5300<2^{13}\\),\n\\[\nE_2=1+2+\\cdots+12=78.\n\\]\nFor 3, use the inputs \\(c3^b\\), where \\(c\\in\\{1,2,4\\}\\) and \\(1\\le b\\le6\\). All are at most \\(4\\cdot3^6=2916\\), and their largest prime is 3. Together they contribute\n\\[\n3(1+2+\\cdots+6)=63\n\\]\nfactors of 3. The two further inputs \\(3^7\\) and \\(2\\cdot3^7=4374\\) contribute 14 more, so \\(E_3\\ge77\\).\n\nFor 5, use the inputs \\(c5^b\\) from these two groups:\n\\[\nc\\in\\{1,2,3,4,6,8\\},\\quad 1\\le b\\le4,\n\\]\n\\[\nc\\in\\{9,12,16\\},\\quad 1\\le b\\le3.\n\\]\nTheir maximum values are 5000 and 2000, respectively. Every multiplier has only prime factors 2 and 3, so each input has largest prime 5 and contributes exactly \\(b\\) factors of 5. Different pairs \\((c,b)\\) give different inputs, since \\(c\\) is not divisible by 5. Hence\n\\[\nE_5\\ge6(1+2+3+4)+3(1+2+3)=78.\n\\]\nThe inputs counted for 3 are likewise distinct because their multipliers are not divisible by 3. These lower bounds suffice: every required prime supplies at least 77 factors, while 67 supplies exactly 77. Thus the largest exponent is \\(\\boxed{77}\\), choice \\(\\mathrm{D}\\).",
+      "id": "restricted-prime-exponent-count",
+      "sourceRef": "amc/2010_AMC_12B_Q25#restricted-prime-exponent-count",
+      "title": "Count the limiting prime exponent"
+    }
+  ],
+  "sourceRef": "amc/2010_AMC_12B_Q25"
 }

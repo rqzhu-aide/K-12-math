@@ -1,101 +1,60 @@
 {
-  "Year": 2013,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 24,
-  "Question": "Three distinct segments are chosen at random among the segments whose endpoints are the vertices of a regular \\(12\\)-gon. What is the probability that the lengths of these three segments are the three side lengths of a triangle with positive area?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{553}{715}\\)",
-    "B": "\\(\\dfrac{443}{572}\\)",
-    "C": "\\(\\dfrac{111}{143}\\)",
-    "D": "\\(\\dfrac{81}{104}\\)",
-    "E": "\\(\\dfrac{223}{286}\\)"
+  "answer": {
+    "accepted": [
+      "E"
+    ],
+    "type": "choice"
   },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "Only the three lengths matter; the chosen segments need not meet. Scale the circumradius of the regular \\(12\\)-gon to \\(1\\), which preserves every triangle inequality. Let \\(d_k\\) be the length of a chord joining vertices \\(k\\) steps apart along the shorter arc, for \\(1\\le k\\le6\\). Its central angle is \\(30k^\\circ\\), so the cosine law gives\n\\[\nd_k^2=2-2\\cos(30k^\\circ).\n\\]\nUsing the special-angle cosine values, the six lengths in increasing order are\n\\[\n\\begin{gathered}\nd_1=\\sqrt{2-\\sqrt3},\\quad d_2=1,\\quad d_3=\\sqrt2,\\\\\nd_4=\\sqrt3,\\quad d_5=\\sqrt{2+\\sqrt3},\\quad d_6=2.\n\\end{gathered}\n\\]\nThere are \\(12\\) segments of each type \\(1\\) through \\(5\\): start at any vertex and move forward \\(k\\) steps. Type \\(6\\) consists of the six diameters, since that construction counts each diameter from both endpoints. Thus there are \\(5\\cdot12+6=66\\) segments, and \\(\\binom{66}{3}\\) equally likely selections.\n\nFor sorted types \\(i\\le j\\le k\\), the lengths fail to form a triangle of positive area exactly when \\(d_i+d_j\\le d_k\\). We need the following exact thresholds:\n\\[\n\\begin{gathered}\nd_2<2d_1<d_3,\\qquad d_3<d_1+d_2<d_4,\\\\\nd_1+d_3=d_5,\\qquad d_1+d_4>d_6,\\\\\n2d_2=d_6,\\qquad d_2+d_3>d_6.\n\\end{gathered}\n\\]\nHere is a verification of the less immediate comparisons. From \\(3/2<\\sqrt3<7/4\\), we obtain \\(1/2<d_1<1/\\sqrt2\\). Also,\n\\[\n(\\sqrt3-1)^2-d_1^2=2-\\sqrt3>0,\n\\]\nso \\(1+d_1<\\sqrt3\\). Together with \\(\\sqrt2<3/2\\), these bounds give the first two thresholds and \\(d_1+\\sqrt3>2\\). Finally, \\(d_1d_5=1\\) and \\(d_1^2+d_5^2=4\\), so \\((d_5-d_1)^2=2\\). Since \\(d_5>d_1\\), this proves \\(d_5=d_1+\\sqrt2\\).\n\nThe thresholds give the complete list of failed sorted types:\n\n• \\((1,1,k)\\) with \\(k=3,4,5,6\\), contributing \\(\\binom{12}{2}(12+12+12+6)=\\binom{12}{2}\\cdot42\\).\n\n• \\((1,2,k)\\) with \\(k=4,5,6\\), contributing \\(12\\cdot12(12+12+6)=144\\cdot30\\).\n\n• \\((1,3,k)\\) with \\(k=5,6\\), contributing \\(12\\cdot12(12+6)=144\\cdot18\\).\n\n• \\((2,2,6)\\), contributing \\(\\binom{12}{2}\\cdot6\\).\n\nThere are no others: if the smallest type is \\(1\\), a second type of at least \\(4\\) already makes the sum exceed the largest possible length \\(2\\). If the smallest type is \\(2\\), a second type of at least \\(3\\) does the same. If the smallest type is at least \\(3\\), the sum is at least \\(2\\sqrt2>2\\). Each selection has a unique sorted type list, so the cases do not overlap. The combination factors choose distinct segments even when their lengths agree.\n\nThe failed count is\n\\[\n\\binom{12}{2}\\cdot42+144\\cdot30\n+144\\cdot18+\\binom{12}{2}\\cdot6\n=10080.\n\\]\nConsequently the desired probability is\n\\[\n1-\\frac{10080}{\\binom{66}{3}}\n=1-\\frac{10080}{45760}\n=\\boxed{\\frac{223}{286}},\n\\]\nchoice \\(\\text{E}\\).",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "Original Math Practice solution",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "regular polygon; triangle inequality; complementary counting",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2013A/solutions",
-    "SourceSHA256": "18c22c15aefb1a767b8ad1e647cf03c1a8599cc1da7c7c07f2f71f0a7bba7ad6",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ],
-    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
-    "SolutionReview": {
-      "status": "reviewed",
-      "solutionSHA256": "fe5b64353f053cd1816b24c7441f9ece39093bf1dab1eb65fb994a25e323eeca",
-      "questionContentHash": "6835836cc3546a97150ef9de4c70d48caa01d054cac3a7563eeee5ebdb997aff",
-      "evidence": {
-        "path": "knowledge-graph/evidence/solutions-2026-11-06/2013_AMC_12A_Q24.json",
-        "sha256": "c00ffcea9b70ddc39a9cc5f5fcd5fdd63d2893d945b200585c0c888d6c5afad9"
-      },
-      "author": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
-      },
-      "reviewer": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
-      }
-    }
+  "assessedNodeIds": [
+    "cnm_111",
+    "cnm_h137"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
   },
-  "ID": "2013_AMC_12A_Q24",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "6835836cc3546a97150ef9de4c70d48caa01d054cac3a7563eeee5ebdb997aff",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_111",
-      "cnm_h137"
-    ],
-    "supportIds": [
-      "cnm_266",
-      "cnm_277",
-      "cnm_h239"
-    ],
-    "routes": [
+  "id": "2013_AMC_12A_Q24",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "chord-types-and-failed-triangle-inequalities",
-        "label": "Count the length combinations that fail",
-        "nodeIds": [
-          "cnm_111",
-          "cnm_h137",
-          "cnm_h239",
-          "cnm_h139",
-          "math:general-cosine-law-application",
-          "cnm_266",
-          "cnm_277",
-          "cnm_h065",
-          "cnm_h237",
-          "cnm_309"
-        ]
+        "content": "\\(\\dfrac{553}{715}\\)",
+        "id": "A"
+      },
+      {
+        "content": "\\(\\dfrac{443}{572}\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(\\dfrac{111}{143}\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(\\dfrac{81}{104}\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(\\dfrac{223}{286}\\)",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "Three distinct segments are chosen at random among the segments whose endpoints are the vertices of a regular \\(12\\)-gon. What is the probability that the lengths of these three segments are the three side lengths of a triangle with positive area?"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "cnm_111",
+        "cnm_h137",
+        "cnm_h239",
+        "cnm_h139",
+        "math:general-cosine-law-application"
+      ],
+      "explanation": "Only the three lengths matter; the chosen segments need not meet. Scale the circumradius of the regular \\(12\\)-gon to \\(1\\), which preserves every triangle inequality. Let \\(d_k\\) be the length of a chord joining vertices \\(k\\) steps apart along the shorter arc, for \\(1\\le k\\le6\\). Its central angle is \\(30k^\\circ\\), so the cosine law gives\n\\[\nd_k^2=2-2\\cos(30k^\\circ).\n\\]\nUsing the special-angle cosine values, the six lengths in increasing order are\n\\[\n\\begin{gathered}\nd_1=\\sqrt{2-\\sqrt3},\\quad d_2=1,\\quad d_3=\\sqrt2,\\\\\nd_4=\\sqrt3,\\quad d_5=\\sqrt{2+\\sqrt3},\\quad d_6=2.\n\\end{gathered}\n\\]\nThere are \\(12\\) segments of each type \\(1\\) through \\(5\\): start at any vertex and move forward \\(k\\) steps. Type \\(6\\) consists of the six diameters, since that construction counts each diameter from both endpoints. Thus there are \\(5\\cdot12+6=66\\) segments, and \\(\\binom{66}{3}\\) equally likely selections.\n\nFor sorted types \\(i\\le j\\le k\\), the lengths fail to form a triangle of positive area exactly when \\(d_i+d_j\\le d_k\\). We need the following exact thresholds:\n\\[\n\\begin{gathered}\nd_2<2d_1<d_3,\\qquad d_3<d_1+d_2<d_4,\\\\\nd_1+d_3=d_5,\\qquad d_1+d_4>d_6,\\\\\n2d_2=d_6,\\qquad d_2+d_3>d_6.\n\\end{gathered}\n\\]\nHere is a verification of the less immediate comparisons. From \\(3/2<\\sqrt3<7/4\\), we obtain \\(1/2<d_1<1/\\sqrt2\\). Also,\n\\[\n(\\sqrt3-1)^2-d_1^2=2-\\sqrt3>0,\n\\]\nso \\(1+d_1<\\sqrt3\\). Together with \\(\\sqrt2<3/2\\), these bounds give the first two thresholds and \\(d_1+\\sqrt3>2\\). Finally, \\(d_1d_5=1\\) and \\(d_1^2+d_5^2=4\\), so \\((d_5-d_1)^2=2\\). Since \\(d_5>d_1\\), this proves \\(d_5=d_1+\\sqrt2\\).\n\nThe thresholds give the complete list of failed sorted types:\n\n• \\((1,1,k)\\) with \\(k=3,4,5,6\\), contributing \\(\\binom{12}{2}(12+12+12+6)=\\binom{12}{2}\\cdot42\\).\n\n• \\((1,2,k)\\) with \\(k=4,5,6\\), contributing \\(12\\cdot12(12+12+6)=144\\cdot30\\).\n\n• \\((1,3,k)\\) with \\(k=5,6\\), contributing \\(12\\cdot12(12+6)=144\\cdot18\\).\n\n• \\((2,2,6)\\), contributing \\(\\binom{12}{2}\\cdot6\\).\n\nThere are no others: if the smallest type is \\(1\\), a second type of at least \\(4\\) already makes the sum exceed the largest possible length \\(2\\). If the smallest type is \\(2\\), a second type of at least \\(3\\) does the same. If the smallest type is at least \\(3\\), the sum is at least \\(2\\sqrt2>2\\). Each selection has a unique sorted type list, so the cases do not overlap. The combination factors choose distinct segments even when their lengths agree.\n\nThe failed count is\n\\[\n\\binom{12}{2}\\cdot42+144\\cdot30\n+144\\cdot18+\\binom{12}{2}\\cdot6\n=10080.\n\\]\nConsequently the desired probability is\n\\[\n1-\\frac{10080}{\\binom{66}{3}}\n=1-\\frac{10080}{45760}\n=\\boxed{\\frac{223}{286}},\n\\]\nchoice \\(\\text{E}\\).",
+      "id": "chord-types-and-failed-triangle-inequalities",
+      "sourceRef": "amc/2013_AMC_12A_Q24#chord-types-and-failed-triangle-inequalities",
+      "title": "Count the length combinations that fail"
+    }
+  ],
+  "sourceRef": "amc/2013_AMC_12A_Q24"
 }

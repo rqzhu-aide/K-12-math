@@ -1,9 +1,9 @@
 # K-12-Math knowledge graph, questions and practice UI
 
 [![Knowledge graph 1.0.0](https://img.shields.io/badge/Knowledge_graph-1.0.0-245984)](database/knowledge-graph/source/metadata.json)
-[![CN bank 1.0.0](https://img.shields.io/badge/CN_bank-1.0.0-427354)](database/cn-math-bank/VERSION)
-[![AMC bank 1.0.0](https://img.shields.io/badge/AMC_bank-1.0.0-996532)](database/amc-bank/VERSION)
-[![Math Practice UI 2.1.0](https://img.shields.io/badge/Math_Practice_UI-2.1.0-625395)](math-practice/VERSION)
+[![CN bank 2.0.0](https://img.shields.io/badge/CN_bank-2.0.0-427354)](database/cn-math-bank/VERSION)
+[![AMC bank 2.0.0](https://img.shields.io/badge/AMC_bank-2.0.0-996532)](database/amc-bank/VERSION)
+[![Math Practice UI 2.1.1](https://img.shields.io/badge/Math_Practice_UI-2.1.1-625395)](math-practice/VERSION)
 
 K-12-math is a mathematics study collection with **936 knowledge graph nodes (knowledge items), 3,355 Chinese curriculum questions, and 5,435 AMC questions**. Students can follow the Chinese curriculum, browse US Common Core standards, or explore concepts through the grade-independent **ailleo** map. A question can connect to several concepts, and different solution methods can use different sets of concepts.
 
@@ -12,11 +12,11 @@ K-12-math is a mathematics study collection with **936 knowledge graph nodes (kn
 | Component | Version | Contents |
 |---|---|---|
 | [Mathematics knowledge graph](database/knowledge-graph/) | 1.0.0 | Connects 936 concepts through 1,634 accepted relationships and links questions to the concepts they assess or use in a solution. |
-| [Chinese curriculum question bank](database/cn-math-bank/) | 1.0.0 | Contains 3,355 questions in English with answers and worked solutions, alongside the original Chinese material. |
-| [AMC question bank](database/amc-bank/) | 1.0.0 | Contains 5,435 questions and answer keys from 195 competition papers, with stored worked solutions for 3,678 questions. |
-| [Math Practice UI](math-practice/) | 2.1.0 | Runs locally so students can browse either bank, explain their thinking, and practice with optional model feedback. |
+| [Chinese curriculum question bank](database/cn-math-bank/) | 2.0.0 | Contains 3,355 questions in English with answers and worked solutions, alongside the original Chinese material. |
+| [AMC question bank](database/amc-bank/) | 2.0.0 | Contains 5,435 questions and answer keys from 195 competition papers, with stored worked solutions for 3,678 questions. |
+| [Math Practice UI](math-practice/) | 2.1.1 | Runs locally so students can browse either bank, explain their thinking, and practice with optional model feedback. |
 
-All 8,790 questions have graph annotations. For 8,780, the annotation identifies an assessed concept or a solution route. The other ten link to definitions for context. Of the 7,033 questions with a stored solution, 200 AMC explanations adapt official MAA solutions. The question banks identify the sources of their explanations.
+All 8,790 questions have graph annotations. For 8,780, the annotation identifies an assessed concept or a solution route. The other ten link to definitions for context. The 7,033 solved questions contain 7,592 written methods. Of these questions, 559 have two worked methods, and 200 AMC questions include an adaptation of an official MAA solution. The question banks identify the sources of their explanations.
 
 ## Practice with the collection
 
@@ -42,9 +42,9 @@ See [UI and model setup](math-practice/README.md#optional-ai-connections) for su
 
 ## Further development and custom question banks
 
-The [question-bank template 1.0.0](question-bank-template/) publishes the compact English question format used in the 12-question pilot. It records the prompt, choices, accepted answers, classification, sources, and the immediate knowledge nodes for each solution method. To use your own bank, prepare its questions in this format and import the folder into Math Practice. The template includes an importable example and the commands to check it.
+All 7,033 questions with stored worked solutions use the compact English format published in [question-bank template 1.0.0](question-bank-template/). It records the prompt, choices, accepted answers, classification, sources, and the immediate knowledge nodes for each solution method. To use your own bank, prepare its questions in this format and import the folder into Math Practice. The template includes an importable example and the commands to check it.
 
-Further work includes writing and reviewing solutions for the **1,757 AMC questions** that still have only an answer key, and extending the pilot format to the full collection.
+The remaining **1,757 AMC questions** have answer keys. They can be migrated as their worked solutions are reviewed and added to the bank.
 
 ## License and sources
 

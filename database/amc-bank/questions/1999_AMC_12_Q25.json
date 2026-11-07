@@ -1,123 +1,85 @@
 {
-  "Year": 1999,
-  "Level": "AMC 12",
-  "Batch": "NA",
-  "Area": "Unclassified",
-  "Number": 25,
-  "Question": "There are unique integers \\(a_2,\\) \\(a_3,\\) \\(a_4,\\) \\(a_5,\\) \\(a_6,\\) \\(a_7\\) such that\n\n\\[ \\begin{aligned} &\\frac{5}{7} = \\frac{a_2}{2!} + \\frac{a_3}{3!} + \\frac{a_4}{4!} \\\\ &\\quad {}+ \\frac{a_5}{5!} + \\frac{a_6}{6!} + \\frac{a_7}{7!}, \\end{aligned} \\]\n\nwhere \\(0 \\le a_i \\lt i\\) for \\(i = 2,\\) \\(3,\\) \\(\\ldots,\\) \\(7.\\) Find \\(a_2 + a_3 + a_4 + a_5 + a_6 + a_7.\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(8\\)",
-    "B": "\\(9\\)",
-    "C": "\\(10\\)",
-    "D": "\\(11\\)",
-    "E": "\\(12\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "Method 1: Work backward using remainders\n\nMultiplying by \\(7!=5040\\) turns the factorial fractions into integers:\n\\[\n3600=2520a_2+840a_3+210a_4+42a_5+7a_6+a_7.\n\\]\nEvery term on the right except \\(a_7\\) is divisible by 7. Since \\(a_7\\) is an integer with \\(0\\le a_7<7\\), it must be the remainder when 3600 is divided by 7. Thus \\(a_7=2\\). Subtracting 2 and dividing by 7 gives\n\\[\n514=360a_2+120a_3+30a_4+6a_5+a_6.\n\\]\nNow every term except \\(a_6\\) is divisible by 6, and \\(0\\le a_6<6\\), so \\(a_6\\) is the remainder on division by 6. The same structure continues: remove the last coefficient and divide to expose the next one. The successive divisions are\n\\[\n\\begin{aligned}\n3600&=7\\cdot514+2 &&\\Rightarrow a_7=2,\\\\\n514&=6\\cdot85+4 &&\\Rightarrow a_6=4,\\\\\n85&=5\\cdot17+0 &&\\Rightarrow a_5=0,\\\\\n17&=4\\cdot4+1 &&\\Rightarrow a_4=1,\\\\\n4&=3\\cdot1+1 &&\\Rightarrow a_3=1.\n\\end{aligned}\n\\]\nThe last quotient is \\(a_2=1\\). Each remainder is uniquely forced by its stated range. The resulting coefficients satisfy all the bounds, and\n\\[\n2520+840+210+0+28+2=3600,\n\\]\nwhich verifies the original equation after multiplication by \\(7!\\).\n\nTheir sum is \\(1+1+1+0+4+2=\\boxed9\\), choice \\(\\boxed{\\text{B}}\\).\n\nMethod 2: Work forward using bounded tails\n\nThe bounds \\(0\\le a_i<i\\) make each coefficient recoverable from the integer part of a scaled remainder. To justify this, let \\(T_k\\) be the sum of the terms after \\(a_k/k!\\), for \\(2\\le k\\le7\\). Then\n\\[\n0\\le T_k\\le\\sum_{i=k+1}^{7}\\frac{i-1}{i!}.\n\\]\nThe identity\n\\[\n\\frac{i-1}{i!}=\\frac1{(i-1)!}-\\frac1{i!}\n\\]\nmakes consecutive terms cancel, giving\n\\[\n0\\le T_k\\le\\frac1{k!}-\\frac1{7!}<\\frac1{k!}.\n\\]\nFor \\(k=7\\), the sum is empty and \\(T_7=0\\), so the same bound holds.\n\nAfter earlier terms have been removed, multiplying what remains by \\(k!\\) therefore gives \\(a_k+k!T_k\\), with \\(0\\le k!T_k<1\\). Its integer part is exactly \\(a_k\\).\n\nWe can implement this by starting with \\(5/7\\), multiplying by 2, keeping the integer part, and then multiplying the fractional remainder by 3. Continue with multipliers 4 through 7:\n\\[\n\\begin{aligned}\n2\\cdot\\frac57&=1+\\frac37 &&\\Rightarrow a_2=1,\\\\\n3\\cdot\\frac37&=1+\\frac27 &&\\Rightarrow a_3=1,\\\\\n4\\cdot\\frac27&=1+\\frac17 &&\\Rightarrow a_4=1,\\\\\n5\\cdot\\frac17&=0+\\frac57 &&\\Rightarrow a_5=0,\\\\\n6\\cdot\\frac57&=4+\\frac27 &&\\Rightarrow a_6=4,\\\\\n7\\cdot\\frac27&=2 &&\\Rightarrow a_7=2.\n\\end{aligned}\n\\]\nThe tail bound forces every extracted coefficient. All coefficients obey their required ranges, and the final fractional remainder is zero, confirming exact equality. Their sum is \\(\\boxed9\\), choice \\(\\boxed{\\text{B}}\\).",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "Original Math Practice solution",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "number base; factorial; modular arithmetic",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/1999/solutions",
-    "SourceSHA256": "5664c40e95bc33fb4d01b3d777d225038efb24a1d715bec37a9b870d445d8167",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 30,
-    "HistoricalSeries": "AHSME",
-    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "answer": {
+    "accepted": [
+      "B"
     ],
-    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
-    "SolutionReview": {
-      "status": "reviewed",
-      "solutionSHA256": "700f0053ea1719916238498e6b067be03e658676a9a61cb57bf5f217352e63f3",
-      "questionContentHash": "b6dcca53c746ec8aa4d68c1e41ceedb2585e1e23232bbd2d000035ab1d85ee92",
-      "evidence": {
-        "path": "knowledge-graph/evidence/solutions-2026-11-06/1999_AMC_12_Q25.json",
-        "sha256": "a67fc2b2ce11aba22d09a262d60b0b70abb3e3f60802bd0580956fb5893194de"
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "math:integer-diophantine-equations"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
+  },
+  "id": "1999_AMC_12_Q25",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(8\\)",
+        "id": "A"
       },
-      "author": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
+      {
+        "content": "\\(9\\)",
+        "id": "B"
       },
-      "reviewer": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
+      {
+        "content": "\\(10\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(11\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(12\\)",
+        "id": "E"
       }
+    ],
+    "prompt": "There are unique integers \\(a_2,\\) \\(a_3,\\) \\(a_4,\\) \\(a_5,\\) \\(a_6,\\) \\(a_7\\) such that\n\n\\[ \\begin{aligned} &\\frac{5}{7} = \\frac{a_2}{2!} + \\frac{a_3}{3!} + \\frac{a_4}{4!} \\\\ &\\quad {}+ \\frac{a_5}{5!} + \\frac{a_6}{6!} + \\frac{a_7}{7!}, \\end{aligned} \\]\n\nwhere \\(0 \\le a_i \\lt i\\) for \\(i = 2,\\) \\(3,\\) \\(\\ldots,\\) \\(7.\\) Find \\(a_2 + a_3 + a_4 + a_5 + a_6 + a_7.\\)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "math:modular-congruence"
+      ],
+      "explanation": "Multiplying by \\(7!=5040\\) turns the factorial fractions into integers:\n\\[\n3600=2520a_2+840a_3+210a_4+42a_5+7a_6+a_7.\n\\]\nEvery term on the right except \\(a_7\\) is divisible by 7. Since \\(a_7\\) is an integer with \\(0\\le a_7<7\\), it must be the remainder when 3600 is divided by 7. Thus \\(a_7=2\\). Subtracting 2 and dividing by 7 gives\n\\[\n514=360a_2+120a_3+30a_4+6a_5+a_6.\n\\]\nNow every term except \\(a_6\\) is divisible by 6, and \\(0\\le a_6<6\\), so \\(a_6\\) is the remainder on division by 6. The same structure continues: remove the last coefficient and divide to expose the next one. The successive divisions are\n\\[\n\\begin{aligned}\n3600&=7\\cdot514+2 &&\\Rightarrow a_7=2,\\\\\n514&=6\\cdot85+4 &&\\Rightarrow a_6=4,\\\\\n85&=5\\cdot17+0 &&\\Rightarrow a_5=0,\\\\\n17&=4\\cdot4+1 &&\\Rightarrow a_4=1,\\\\\n4&=3\\cdot1+1 &&\\Rightarrow a_3=1.\n\\end{aligned}\n\\]\nThe last quotient is \\(a_2=1\\). Each remainder is uniquely forced by its stated range. The resulting coefficients satisfy all the bounds, and\n\\[\n2520+840+210+0+28+2=3600,\n\\]\nwhich verifies the original equation after multiplication by \\(7!\\).\n\nTheir sum is \\(1+1+1+0+4+2=\\boxed9\\), choice \\(\\boxed{\\text{B}}\\).",
+      "id": "successive-remainders",
+      "sourceRef": "amc/1999_AMC_12_Q25#successive-remainders",
+      "title": "Work backward using remainders"
+    },
+    {
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "math:floor-ceiling",
+        "math:telescoping",
+        "cnm_p177"
+      ],
+      "explanation": "The bounds \\(0\\le a_i<i\\) make each coefficient recoverable from the integer part of a scaled remainder. To justify this, let \\(T_k\\) be the sum of the terms after \\(a_k/k!\\), for \\(2\\le k\\le7\\). Then\n\\[\n0\\le T_k\\le\\sum_{i=k+1}^{7}\\frac{i-1}{i!}.\n\\]\nThe identity\n\\[\n\\frac{i-1}{i!}=\\frac1{(i-1)!}-\\frac1{i!}\n\\]\nmakes consecutive terms cancel, giving\n\\[\n0\\le T_k\\le\\frac1{k!}-\\frac1{7!}<\\frac1{k!}.\n\\]\nFor \\(k=7\\), the sum is empty and \\(T_7=0\\), so the same bound holds.\n\nAfter earlier terms have been removed, multiplying what remains by \\(k!\\) therefore gives \\(a_k+k!T_k\\), with \\(0\\le k!T_k<1\\). Its integer part is exactly \\(a_k\\).\n\nWe can implement this by starting with \\(5/7\\), multiplying by 2, keeping the integer part, and then multiplying the fractional remainder by 3. Continue with multipliers 4 through 7:\n\\[\n\\begin{aligned}\n2\\cdot\\frac57&=1+\\frac37 &&\\Rightarrow a_2=1,\\\\\n3\\cdot\\frac37&=1+\\frac27 &&\\Rightarrow a_3=1,\\\\\n4\\cdot\\frac27&=1+\\frac17 &&\\Rightarrow a_4=1,\\\\\n5\\cdot\\frac17&=0+\\frac57 &&\\Rightarrow a_5=0,\\\\\n6\\cdot\\frac57&=4+\\frac27 &&\\Rightarrow a_6=4,\\\\\n7\\cdot\\frac27&=2 &&\\Rightarrow a_7=2.\n\\end{aligned}\n\\]\nThe tail bound forces every extracted coefficient. All coefficients obey their required ranges, and the final fractional remainder is zero, confirming exact equality. Their sum is \\(\\boxed9\\), choice \\(\\boxed{\\text{B}}\\).",
+      "id": "bounded-tail-extraction",
+      "sourceRef": "amc/1999_AMC_12_Q25#bounded-tail-extraction",
+      "title": "Work forward using bounded tails"
+    },
+    {
+      "directNodeIds": [
+        "math:floor-ceiling",
+        "cnm_p177"
+      ],
+      "id": "successive-digit-extraction",
+      "sourceRef": "amc/1999_AMC_12_Q25#successive-digit-extraction",
+      "title": "Extract bounded digits successively"
+    },
+    {
+      "directNodeIds": [
+        "math:modular-congruence"
+      ],
+      "id": "clear-factorials-and-reduce",
+      "sourceRef": "amc/1999_AMC_12_Q25#clear-factorials-and-reduce",
+      "title": "Clear factorials and use remainders"
     }
-  },
-  "ID": "1999_AMC_12_Q25",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "b6dcca53c746ec8aa4d68c1e41ceedb2585e1e23232bbd2d000035ab1d85ee92",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:integer-diophantine-equations"
-    ],
-    "supportIds": [
-      "math:factorial-notation",
-      "cnm_p177"
-    ],
-    "routes": [
-      {
-        "id": "successive-digit-extraction",
-        "label": "Extract bounded digits successively",
-        "nodeIds": [
-          "math:floor-ceiling",
-          "cnm_p177"
-        ]
-      },
-      {
-        "id": "clear-factorials-and-reduce",
-        "label": "Clear factorials and use remainders",
-        "nodeIds": [
-          "math:modular-congruence"
-        ]
-      },
-      {
-        "id": "successive-remainders",
-        "label": "Work backward using remainders",
-        "nodeIds": [
-          "math:integer-diophantine-equations",
-          "math:modular-congruence",
-          "math:factorial-notation",
-          "cnm_p050",
-          "cnm_p153",
-          "cnm_p177"
-        ]
-      },
-      {
-        "id": "bounded-tail-extraction",
-        "label": "Work forward using bounded tails",
-        "nodeIds": [
-          "math:integer-diophantine-equations",
-          "math:floor-ceiling",
-          "math:telescoping",
-          "cnm_p177",
-          "math:factorial-notation",
-          "cnm_p173",
-          "cnm_096"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  ],
+  "sourceRef": "amc/1999_AMC_12_Q25"
 }

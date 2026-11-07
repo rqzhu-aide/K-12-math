@@ -1,12 +1,9 @@
-# Processed Chinese curriculum bank 1.0.0
+# Processed Chinese curriculum bank 2.0.0
 
-This distribution includes 3,355 English question records and their worked
-solutions. Each `questions/*.json` record preserves its Chinese source under
-`Meta.Original`. The browser uses the included `bank.js`; no rebuild or model
-call is needed to begin practice.
+All 3,355 English questions and their worked solutions use the [compact 3.0 question schema](../../question-bank-template/question-v3.schema.json). Each question has a `sourceRef` in the [bank source index](source-index.json). Its entry preserves the original Chinese question and explanation under `meta.Original`. Each solution method also identifies its source. The browser reads the included `bank.js` for offline practice.
 
 `figures/` contains 156 English display diagrams and 156 original Chinese
-diagrams. `taxonomy/` and `schema/` describe topic labels and the record format.
+diagrams. `taxonomy/` describes the topic labels. `schema/` documents the earlier 2.0 record format.
 The local backend reads `questions/` for reference answers and deeper review.
 
 This is a processed snapshot. Raw upstream checkouts, translation tools, and

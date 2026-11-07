@@ -266,7 +266,9 @@ def normalize_question(record, *, root=ROOT, bank_root=None, source_index=None):
         if 'evidence' in provenance:
             provenance['evidence'] = _evidence_summary(provenance['evidence'])
         methods.append({'id':method['id'], 'label':method['title'],
-            **{k:deepcopy(method[k]) for k in ('explanation','directNodeIds') if k in method}, 'provenance':provenance})
+            **{k:deepcopy(method[k]) for k in ('explanation','directNodeIds') if k in method},
+            **({'legacyRouteId':method_source['legacyRouteId']} if method_source.get('legacyRouteId') else {}),
+            'provenance':provenance})
     choices = {c['id']:c['content'] for c in record['question'].get('choices', [])}
     written = [m for m in methods if m.get('explanation')]
     topic_ids = classification.get('topicIds', [])
@@ -312,6 +314,8 @@ def normalize_question(record, *, root=ROOT, bank_root=None, source_index=None):
         result['Answer Rubric'] = answer['rubric']
     if 'gradingNote' in answer:
         result.update(GradingStatus='disputed', GradingNote=answer['gradingNote'])
+    if source.get('sourceContentNote'):
+        result['Source Content Note'] = source['sourceContentNote']
     return result
 
 
@@ -334,22 +338,49 @@ def fingerprint_payload(question):
 
 
 def mapping_for_v3(question, root=ROOT, baseline=None, *, known_node_ids=None):
-    """Project direct method sets into the unchanged graph schema, retaining history."""
+    """Retain reviewed learning routes and distinguish each method's direct use."""
     from knowledge_graph import question_fingerprint, validate_mapping, GraphError
     question = normalize_question(question, root=root)
     if not is_v3(question):
         raise QuestionFormatError('mapping_for_v3 requires a v3 question.')
     raw = raw_question(question)
+    has_baseline = bool(baseline)
     mapping = deepcopy(baseline or {})
     fingerprint = question_fingerprint(question, root)
-    routes = [{'id':m['id'], 'label':m['title'], 'nodeIds':deepcopy(m['directNodeIds'])}
-              for m in raw['solutions'] if m.get('directNodeIds')]
+    routes = deepcopy(mapping.get('routes', []))
+    by_id = {route['id']:route for route in routes}
+    previous_methods = {method_id:route['id'] for route in routes
+                        for method_id in route.get('methodDirectNodeIds', {})}
+    for route in routes:
+        route['methodDirectNodeIds'] = {}
+    for method in question['SolutionMethods']:
+        legacy_id = method.get('legacyRouteId') if has_baseline else None
+        route_id = legacy_id if legacy_id in by_id else None
+        route_id = route_id or previous_methods.get(method['id']) or (method['id'] if method['id'] in by_id else None)
+        direct = deepcopy(method.get('directNodeIds', []))
+        if route_id is None:
+            if not direct:
+                continue
+            route_id = method['id']
+            route = {'id':route_id,'label':method['label'],'nodeIds':[], 'methodDirectNodeIds':{}}
+            routes.append(route)
+            by_id[route_id] = route
+        route = by_id[route_id]
+        route['methodDirectNodeIds'][method['id']] = direct
+        route['nodeIds'] = list(dict.fromkeys([*route['nodeIds'], *direct]))
+    for route in routes:
+        if not route['methodDirectNodeIds']:
+            route.pop('methodDirectNodeIds')
+            route.pop('contextNodeIds', None)
+            continue
+        immediate = {node for ids in route['methodDirectNodeIds'].values() for node in ids}
+        route['contextNodeIds'] = [node for node in route['nodeIds'] if node not in immediate]
     old_status = mapping.get('status')
     mapping.update(questionId=raw['id'], bank=raw['bank'], **fingerprint,
-        assessedIds=deepcopy(raw['assessedNodeIds']), supportIds=[], routes=routes,
+        assessedIds=deepcopy(raw['assessedNodeIds']), supportIds=deepcopy(mapping.get('supportIds', [])), routes=routes,
         reviewStatus=mapping.get('reviewStatus', 'user_asserted'),
         flags=deepcopy(mapping.get('flags', [])), answerCheck=deepcopy(mapping.get('answerCheck', {'status':'not_independently_reviewed'})),
-        rationale='Format 3 projection: question assessed concepts and exact per-method direct concepts. Historical shared tags are not promoted to method requirements.',
+        rationale='Format 3 projection preserves reviewed route identities and optional learning context. methodDirectNodeIds gives each compact method immediate concepts; contextNodeIds retains the rest of its route package separately. Shared support roles remain shared support.',
         reviews=deepcopy(mapping.get('reviews', [])))
     if old_status == 'non_diagnostic':
         if mapping['assessedIds'] or routes:

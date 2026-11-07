@@ -1,111 +1,75 @@
 {
-  "Year": 2009,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 25,
-  "Question": "The first two terms of a sequence are \\(a_1 = 1\\) and \\(a_2 = \\dfrac{1}{\\sqrt{3}}.\\) For \\(n \\ge 1,\\) \\[a_{n+2} = \\dfrac{a_n + a_{n+1}}{1 - a_n a_{n+1}}.\\] What is \\(|a_{2009}|?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(0\\)",
-    "B": "\\(2 - \\sqrt{3}\\)",
-    "C": "\\(\\dfrac{1}{\\sqrt{3}}\\)",
-    "D": "\\(1\\)",
-    "E": "\\(2 + \\sqrt{3}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "The recurrence uses two preceding terms, so repeating one value is not enough to establish a cycle. We look for a repeated consecutive pair, because that pair determines every subsequent term.\n\nTo keep the arithmetic short, write\n\\[\nr=\\sqrt3,\\qquad p=2+r,\\qquad q=2-r.\n\\]\nThen \\(r^2=3\\), \\(pq=1\\), and \\(p>r>1\\). The first new terms are\n\\[\na_3=\\frac{1+1/r}{1-1/r}=\\frac{r+1}{r-1}=p,\n\\]\n\\[\na_4=\\frac{1/r+p}{1-p/r}=-p,\n\\qquad\n a_5=\\frac{p-p}{1+p^2}=0.\n\\]\nContinuing the same substitutions, simplifying with \\(r^2=3\\) and \\(pq=1\\), gives\n\\[\n(a_1,\\ldots,a_6)=(1,1/r,p,-p,0,-p),\n\\]\n\\[\n(a_7,\\ldots,a_{12})=(-p,1/r,-1,-q,-r,-p),\n\\]\n\\[\n(a_{13},\\ldots,a_{18})=(1,-1/r,q,-q,0,-q),\n\\]\n\\[\n(a_{19},\\ldots,a_{24})=(-q,-1/r,-1,-p,r,-q),\n\\]\nand finally\n\\[\n(a_{25},a_{26})=(1,1/r)=(a_1,a_2).\n\\]\nFor example, the transition from the two consecutive values \\(-p,-p\\) is simplified by\n\\[\n\\frac{-2p}{1-p^2}=\\frac{2p}{p^2-1}=\\frac1r,\n\\]\nsince \\(p^2-1=2rp\\).\n\nWe must check that none of these steps divides by zero. Among the consecutive products in the displayed cycle, every positive product belongs to one of these two lists:\n\\[\n1/r,\\ q,\\ qr,\\ q^2,\\ q/r<1,\n\\]\n\\[\np,\\ p/r,\\ pr,\\ p^2>1.\n\\]\nThese comparisons follow from \\(p>r>1\\) and \\(q=1/p\\); in particular, \\(qr=r/p<1\\). Every other consecutive product is nonpositive. Thus no consecutive product equals \\(1\\), so every recurrence denominator is nonzero.\n\nThe initial pair has returned after 24 steps. Since every pair determines the next pair and all denominators in the cycle are valid, the same block repeats indefinitely:\n\\[\na_{n+24}=a_n\\qquad(n\\ge1).\n\\]\nNow \\(2009=24\\cdot83+17\\), and the displayed values give \\(a_{17}=0\\). Therefore \\(|a_{2009}|=\\boxed{0}\\), choice \\(\\mathrm{A}\\).",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "Original Math Practice solution",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "trigonometric identity; recursion; modular arithmetic",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2009A/solutions",
-    "SourceSHA256": "cd06c436054582e196fba2cfb2e6e56605dbd5f68569558d77e96dd10bd346ea",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "answer": {
+    "accepted": [
+      "A"
     ],
-    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
-    "SolutionReview": {
-      "status": "reviewed",
-      "solutionSHA256": "41b74eccbad6a9766523476844e39c006eda356cbe462dfcc7354054eee55837",
-      "questionContentHash": "ed6086c66d9b2b6cdbc0fd5bc8b97f10f82ef547ad152bdfbf67ff84ac80bc1c",
-      "evidence": {
-        "path": "knowledge-graph/evidence/solutions-2026-11-06/2009_AMC_12A_Q25.json",
-        "sha256": "106084bfea8758426c12514d6e01b4d1892dfb7ab49c5f9972b2dbe3ad886d9a"
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "cnm_h200"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
+  },
+  "id": "2009_AMC_12A_Q25",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(0\\)",
+        "id": "A"
       },
-      "author": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
+      {
+        "content": "\\(2 - \\sqrt{3}\\)",
+        "id": "B"
       },
-      "reviewer": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
+      {
+        "content": "\\(\\dfrac{1}{\\sqrt{3}}\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(1\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(2 + \\sqrt{3}\\)",
+        "id": "E"
       }
+    ],
+    "prompt": "The first two terms of a sequence are \\(a_1 = 1\\) and \\(a_2 = \\dfrac{1}{\\sqrt{3}}.\\) For \\(n \\ge 1,\\) \\[a_{n+2} = \\dfrac{a_n + a_{n+1}}{1 - a_n a_{n+1}}.\\] What is \\(|a_{2009}|?\\)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "cnm_h200",
+        "math:function-composition-iteration"
+      ],
+      "explanation": "The recurrence uses two preceding terms, so repeating one value is not enough to establish a cycle. We look for a repeated consecutive pair, because that pair determines every subsequent term.\n\nTo keep the arithmetic short, write\n\\[\nr=\\sqrt3,\\qquad p=2+r,\\qquad q=2-r.\n\\]\nThen \\(r^2=3\\), \\(pq=1\\), and \\(p>r>1\\). The first new terms are\n\\[\na_3=\\frac{1+1/r}{1-1/r}=\\frac{r+1}{r-1}=p,\n\\]\n\\[\na_4=\\frac{1/r+p}{1-p/r}=-p,\n\\qquad\n a_5=\\frac{p-p}{1+p^2}=0.\n\\]\nContinuing the same substitutions, simplifying with \\(r^2=3\\) and \\(pq=1\\), gives\n\\[\n(a_1,\\ldots,a_6)=(1,1/r,p,-p,0,-p),\n\\]\n\\[\n(a_7,\\ldots,a_{12})=(-p,1/r,-1,-q,-r,-p),\n\\]\n\\[\n(a_{13},\\ldots,a_{18})=(1,-1/r,q,-q,0,-q),\n\\]\n\\[\n(a_{19},\\ldots,a_{24})=(-q,-1/r,-1,-p,r,-q),\n\\]\nand finally\n\\[\n(a_{25},a_{26})=(1,1/r)=(a_1,a_2).\n\\]\nFor example, the transition from the two consecutive values \\(-p,-p\\) is simplified by\n\\[\n\\frac{-2p}{1-p^2}=\\frac{2p}{p^2-1}=\\frac1r,\n\\]\nsince \\(p^2-1=2rp\\).\n\nWe must check that none of these steps divides by zero. Among the consecutive products in the displayed cycle, every positive product belongs to one of these two lists:\n\\[\n1/r,\\ q,\\ qr,\\ q^2,\\ q/r<1,\n\\]\n\\[\np,\\ p/r,\\ pr,\\ p^2>1.\n\\]\nThese comparisons follow from \\(p>r>1\\) and \\(q=1/p\\); in particular, \\(qr=r/p<1\\). Every other consecutive product is nonpositive. Thus no consecutive product equals \\(1\\), so every recurrence denominator is nonzero.\n\nThe initial pair has returned after 24 steps. Since every pair determines the next pair and all denominators in the cycle are valid, the same block repeats indefinitely:\n\\[\na_{n+24}=a_n\\qquad(n\\ge1).\n\\]\nNow \\(2009=24\\cdot83+17\\), and the displayed values give \\(a_{17}=0\\). Therefore \\(|a_{2009}|=\\boxed{0}\\), choice \\(\\mathrm{A}\\).",
+      "id": "exact-consecutive-pair-cycle",
+      "sourceRef": "amc/2009_AMC_12A_Q25#exact-consecutive-pair-cycle",
+      "title": "Find a repeating pair by exact arithmetic"
+    },
+    {
+      "directNodeIds": [
+        "cnm_h072",
+        "cnm_h064",
+        "cnm_h069",
+        "math:modular-congruence"
+      ],
+      "id": "tangent-angle-residue-cycle",
+      "sourceRef": "amc/2009_AMC_12A_Q25#tangent-angle-residue-cycle",
+      "title": "Use tangent addition"
+    },
+    {
+      "directNodeIds": [
+        "cnm_173"
+      ],
+      "id": "exact-algebraic-pair-cycle",
+      "sourceRef": "amc/2009_AMC_12A_Q25#exact-algebraic-pair-cycle",
+      "title": "Iterate exact value pairs"
     }
-  },
-  "ID": "2009_AMC_12A_Q25",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "ed6086c66d9b2b6cdbc0fd5bc8b97f10f82ef547ad152bdfbf67ff84ac80bc1c",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h200"
-    ],
-    "supportIds": [
-      "cnm_173",
-      "cnm_156"
-    ],
-    "routes": [
-      {
-        "id": "tangent-angle-residue-cycle",
-        "label": "Use tangent addition",
-        "nodeIds": [
-          "cnm_h072",
-          "cnm_h064",
-          "cnm_h069",
-          "math:modular-congruence"
-        ]
-      },
-      {
-        "id": "exact-algebraic-pair-cycle",
-        "label": "Iterate exact value pairs",
-        "nodeIds": [
-          "cnm_173"
-        ]
-      },
-      {
-        "id": "exact-consecutive-pair-cycle",
-        "label": "Find a repeating pair by exact arithmetic",
-        "nodeIds": [
-          "cnm_h200",
-          "math:function-composition-iteration",
-          "cnm_173",
-          "cnm_156",
-          "cnm_h197"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  ],
+  "sourceRef": "amc/2009_AMC_12A_Q25"
 }

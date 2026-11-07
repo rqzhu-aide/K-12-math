@@ -23,6 +23,8 @@ A question can assess more than one concept. Each known solution route lists its
 | [mappings.jsonl](source/mappings.jsonl) | One record per public question, with its content binding, assessed ideas, alternative routes and review history. |
 | [metadata.json](source/metadata.json) | Graph version and provenance. Historical source receipts identify their original inputs. |
 
+For a compact question, each worked method can list the concepts it uses directly in `directNodeIds`. The graph also retains the background associated with each reviewed learning route. Within a route, `methodDirectNodeIds` identifies the immediate concepts for each linked method and `contextNodeIds` records the remaining background. This lets students find a problem through a useful preparation topic while the tutor can still see which concepts the particular solution uses.
+
 The [curriculum manifest](curriculum-manifest.json) records the original and reviewed alignments. The [independent audit](evidence/curricula/us-scope-audit.md) explains the most recent corrections. The release includes the solution and annotation records cited by the shipped questions under `evidence/`. Historical references beginning with `knowledge-graph/`, `amc-bank/` or `cn-math-bank/` use `database/` as their base. Construction inputs referenced by their historical hashes are kept in the development workspace.
 
 Math Practice builds a searchable SQLite database on first launch. From the repository root, you can also build, validate and inspect a question yourself.

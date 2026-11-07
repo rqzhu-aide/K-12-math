@@ -179,6 +179,15 @@ def validate_mapping(mapping, node_ids):
         _strings(route.get('nodeIds'), f'{qid}.route.nodeIds', ids=node_ids)
         if not route['nodeIds']:
             raise GraphError(f'{qid}: an explicit route needs concept references.')
+        if 'methodDirectNodeIds' in route:
+            _object(route['methodDirectNodeIds'], f'{qid}.route.methodDirectNodeIds')
+            for method_id, direct in route['methodDirectNodeIds'].items():
+                _text(method_id, f'{qid}.route.methodId')
+                _strings(direct, f'{qid}.route.methodDirectNodeIds', ids=set(route['nodeIds']))
+            _strings(route.get('contextNodeIds'), f'{qid}.route.contextNodeIds', ids=set(route['nodeIds']))
+            immediate = {node for ids in route['methodDirectNodeIds'].values() for node in ids}
+            if route['contextNodeIds'] != [node for node in route['nodeIds'] if node not in immediate]:
+                raise GraphError(f'{qid}: route context must remain separate from immediate method concepts.')
     if mapping['status'] == 'mapped' and not mapping['assessedIds'] and not routes:
         raise GraphError(f'{qid}: a mapped question needs an assessed concept or a complete solution route.')
 
@@ -793,7 +802,7 @@ def _solution_route_order(mapping, question):
     routes = mapping['routes']
     if question.get('SchemaVersion') == '3.0':
         written = {m['id'] for m in question.get('SolutionMethods', []) if m.get('explanation')}
-        return sorted(routes, key=lambda route: route['id'] not in written)
+        return sorted(routes, key=lambda route: not (written & set(route.get('methodDirectNodeIds', {route['id']:[]}))))
     stage = {'amc': 'solution_bound_annotation', 'cn-math': 'cn_solution_bound_annotation'}.get(mapping['bank'])
     solution = question.get('Solution')
     if stage is None or not isinstance(solution, str) or not solution.strip():

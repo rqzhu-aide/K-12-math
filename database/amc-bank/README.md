@@ -1,4 +1,4 @@
-# AMC practice bank 1.0.0
+# AMC practice bank 2.0.0
 
 **5,435 questions and answer keys from 195 papers**, with question and choice
 diagrams. American Mathematics Competitions (AMC) content is credited to the
@@ -72,7 +72,7 @@ third-party solution text, private processing files, and local paths are not
 included. [sources.json](sources.json) lists historical source URLs and hashes
 and the official solution booklets as retrieved.
 
-Records use [schema version 2.0](schema.json). The original prompts, choices,
+The 3,678 questions with stored worked solutions use the [compact 3.0 schema](../../question-bank-template/question-v3.schema.json). Their question and method credits are in [source-index.json](source-index.json). The other 1,757 questions use [schema 2.0](schema.json) and have answer keys. The original prompts, choices,
 LaTeX, figure positions, and reviewed grading metadata are preserved. Domain
 and skill catalogs are in `taxonomy/`; older records with uncurated topics remain
 explicitly unclassified. Structural validation does not constitute a proof

@@ -1,111 +1,74 @@
 {
-  "Year": 2006,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 22,
-  "Question": "Suppose \\(a,\\) \\(b,\\) and \\(c\\) are positive integers with \\(a + b + c = 2006,\\) and \\(a!\\,b!\\,c! = m \\cdot 10^n,\\) where \\(m\\) and \\(n\\) are integers and \\(m\\) is not divisible by \\(10.\\) What is the smallest possible value of \\(n?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(489\\)",
-    "B": "\\(492\\)",
-    "C": "\\(495\\)",
-    "D": "\\(498\\)",
-    "E": "\\(501\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "Each trailing zero needs one factor of \\(2\\) and one factor of \\(5\\). In a factorial, the number of factors of a prime \\(p\\) is found by counting multiples of \\(p\\), then multiples of \\(p^2\\) for their extra factor, and so on. The count for \\(2\\) is at least the count for \\(5\\), since \\(2^j\\le5^j\\) for every positive integer \\(j\\). This remains true when the three factorials are multiplied. Thus \\(n\\) is exactly the total number of factors of \\(5\\).\n\nEach of \\(a,b,c\\) is at most \\(2004<3125=5^5\\). For any one of these integers \\(t\\), its factorial therefore contains\n\\[\nF(t)=\\sum_{j=1}^{4}\\left\\lfloor\\frac{t}{5^j}\\right\\rfloor\n\\]\nfactors of \\(5\\), and \\(n=F(a)+F(b)+F(c)\\).\n\nWe now bound each group of floor quotients. For a positive integer \\(d\\), write\n\\[\na=dq_a+r_a,\n\\quad b=dq_b+r_b,\n\\quad c=dq_c+r_c,\n\\]\nwhere every remainder lies between \\(0\\) and \\(d-1\\). Since the three remainders sum to less than \\(3d\\),\n\\[\n\\left\\lfloor\\frac{2006}{d}\\right\\rfloor\n=q_a+q_b+q_c+\n\\left\\lfloor\\frac{r_a+r_b+r_c}{d}\\right\\rfloor\n\\le q_a+q_b+q_c+2.\n\\]\nConsequently,\n\\[\n\\left\\lfloor\\frac a d\\right\\rfloor+\n\\left\\lfloor\\frac b d\\right\\rfloor+\n\\left\\lfloor\\frac c d\\right\\rfloor\n\\ge\\left\\lfloor\\frac{2006}{d}\\right\\rfloor-2.\n\\]\nUsing \\(d=5,25,125,625\\), respectively, gives contributions of at least \\(399,78,14,1\\). Hence\n\\[\nn\\ge399+78+14+1=492.\n\\]\nTo attain this bound, numbers just below a power of five are useful because their quotients round down at several levels. Take\n\\[\na=b=625-1=624,\n\\qquad c=758.\n\\]\nThese are positive and sum to \\(2006\\). Their factor counts are\n\\[\nF(624)=124+24+4=152,\n\\]\n\\[\nF(758)=151+30+6+1=188.\n\\]\nThus \\(n=2(152)+188=492\\). The universal bound and this attaining triple prove that the smallest value is \\(\\boxed{492}\\), choice B.",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "Original Math Practice solution",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "Legendre’s Formula; trailing zeros; optimization",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2006B/solutions",
-    "SourceSHA256": "4e587bac4f8cb103d7e03322d532fdc58b169d6279388458cc98479974410678",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "answer": {
+    "accepted": [
+      "B"
     ],
-    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
-    "SolutionReview": {
-      "status": "reviewed",
-      "solutionSHA256": "f647cffe0622f72ca05e3ea52b6dcc8a0aa4fd50ec1df4b37dfd9ae17388f7ac",
-      "questionContentHash": "524716ee33c907ee3171f2769830fb8ecd800e16b167befa27ac120ef3401fe6",
-      "evidence": {
-        "path": "knowledge-graph/evidence/solutions-2026-11-06/2006_AMC_12B_Q22.json",
-        "sha256": "48007c37ccd6eb00649c170f3729a4310e451ca43404211413318edcff0d172b"
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "math:prime-valuations-factorials",
+    "math:extremal-principle"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
+  },
+  "id": "2006_AMC_12B_Q22",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(489\\)",
+        "id": "A"
       },
-      "author": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
+      {
+        "content": "\\(492\\)",
+        "id": "B"
       },
-      "reviewer": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
+      {
+        "content": "\\(495\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(498\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(501\\)",
+        "id": "E"
       }
+    ],
+    "prompt": "Suppose \\(a,\\) \\(b,\\) and \\(c\\) are positive integers with \\(a + b + c = 2006,\\) and \\(a!\\,b!\\,c! = m \\cdot 10^n,\\) where \\(m\\) and \\(n\\) are integers and \\(m\\) is not divisible by \\(10.\\) What is the smallest possible value of \\(n?\\)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:prime-valuations-factorials",
+        "math:extremal-principle",
+        "math:floor-ceiling"
+      ],
+      "explanation": "Each trailing zero needs one factor of \\(2\\) and one factor of \\(5\\). In a factorial, the number of factors of a prime \\(p\\) is found by counting multiples of \\(p\\), then multiples of \\(p^2\\) for their extra factor, and so on. The count for \\(2\\) is at least the count for \\(5\\), since \\(2^j\\le5^j\\) for every positive integer \\(j\\). This remains true when the three factorials are multiplied. Thus \\(n\\) is exactly the total number of factors of \\(5\\).\n\nEach of \\(a,b,c\\) is at most \\(2004<3125=5^5\\). For any one of these integers \\(t\\), its factorial therefore contains\n\\[\nF(t)=\\sum_{j=1}^{4}\\left\\lfloor\\frac{t}{5^j}\\right\\rfloor\n\\]\nfactors of \\(5\\), and \\(n=F(a)+F(b)+F(c)\\).\n\nWe now bound each group of floor quotients. For a positive integer \\(d\\), write\n\\[\na=dq_a+r_a,\n\\quad b=dq_b+r_b,\n\\quad c=dq_c+r_c,\n\\]\nwhere every remainder lies between \\(0\\) and \\(d-1\\). Since the three remainders sum to less than \\(3d\\),\n\\[\n\\left\\lfloor\\frac{2006}{d}\\right\\rfloor\n=q_a+q_b+q_c+\n\\left\\lfloor\\frac{r_a+r_b+r_c}{d}\\right\\rfloor\n\\le q_a+q_b+q_c+2.\n\\]\nConsequently,\n\\[\n\\left\\lfloor\\frac a d\\right\\rfloor+\n\\left\\lfloor\\frac b d\\right\\rfloor+\n\\left\\lfloor\\frac c d\\right\\rfloor\n\\ge\\left\\lfloor\\frac{2006}{d}\\right\\rfloor-2.\n\\]\nUsing \\(d=5,25,125,625\\), respectively, gives contributions of at least \\(399,78,14,1\\). Hence\n\\[\nn\\ge399+78+14+1=492.\n\\]\nTo attain this bound, numbers just below a power of five are useful because their quotients round down at several levels. Take\n\\[\na=b=625-1=624,\n\\qquad c=758.\n\\]\nThese are positive and sum to \\(2006\\). Their factor counts are\n\\[\nF(624)=124+24+4=152,\n\\]\n\\[\nF(758)=151+30+6+1=188.\n\\]\nThus \\(n=2(152)+188=492\\). The universal bound and this attaining triple prove that the smallest value is \\(\\boxed{492}\\), choice B.",
+      "id": "factor-count-bound-and-construction",
+      "sourceRef": "amc/2006_AMC_12B_Q22#factor-count-bound-and-construction",
+      "title": "Bound the number of factors of five and attain the bound"
+    },
+    {
+      "directNodeIds": [
+        "math:floor-ceiling"
+      ],
+      "id": "bound-floor-contributions",
+      "sourceRef": "amc/2006_AMC_12B_Q22#bound-floor-contributions",
+      "title": "Bound each factorial valuation contribution"
+    },
+    {
+      "directNodeIds": [
+        "cnm_024"
+      ],
+      "id": "count-base-five-carries",
+      "sourceRef": "amc/2006_AMC_12B_Q22#count-base-five-carries",
+      "title": "Use base-five digit sums and carries"
     }
-  },
-  "ID": "2006_AMC_12B_Q22",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "524716ee33c907ee3171f2769830fb8ecd800e16b167befa27ac120ef3401fe6",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:prime-valuations-factorials",
-      "math:extremal-principle"
-    ],
-    "supportIds": [
-      "math:factorial-notation",
-      "math:prime-factorization",
-      "cnm_p050"
-    ],
-    "routes": [
-      {
-        "id": "bound-floor-contributions",
-        "label": "Bound each factorial valuation contribution",
-        "nodeIds": [
-          "math:floor-ceiling"
-        ]
-      },
-      {
-        "id": "count-base-five-carries",
-        "label": "Use base-five digit sums and carries",
-        "nodeIds": [
-          "cnm_024"
-        ]
-      },
-      {
-        "id": "factor-count-bound-and-construction",
-        "label": "Bound the number of factors of five and attain the bound",
-        "nodeIds": [
-          "math:prime-valuations-factorials",
-          "math:extremal-principle",
-          "math:floor-ceiling",
-          "math:factorial-notation",
-          "math:prime-factorization",
-          "cnm_p050"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  ],
+  "sourceRef": "amc/2006_AMC_12B_Q22"
 }

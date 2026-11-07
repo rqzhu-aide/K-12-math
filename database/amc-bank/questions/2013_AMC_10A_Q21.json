@@ -1,113 +1,66 @@
 {
-  "Year": 2013,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 21,
-  "Question": "A group of \\(12\\) pirates agree to divide a treasure chest of gold coins among themselves as follows. The \\(k^{\\text{th}}\\) pirate to take a share takes \\(\\dfrac{k}{12}\\) of the coins that remain in the chest. The number of coins initially in the chest is the smallest number for which this arrangement will allow each pirate to receive a positive whole number of coins. How many coins does the \\(12^{\\text{th}}\\) pirate receive?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(720\\)",
-    "B": "\\(1296\\)",
-    "C": "\\(1728\\)",
-    "D": "\\(1925\\)",
-    "E": "\\(3850\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "The last pirate takes everything left, so let \\(m\\) be that pirate's share. Working backward makes each earlier amount a fixed multiple of \\(m\\), allowing us to find exactly which values make every share integral.\n\nFor \\(j=0,1,\\ldots,11\\), let \\(T_j\\) be the number of coins just before pirate \\(12-j\\) takes a share. Thus \\(T_0=m\\), and \\(T_{11}\\) is the initial treasure. Pirate \\(12-j\\) leaves the fraction \\(j/12\\) for the next pirate, so\n\\[\nT_j=\\frac{12}{j}T_{j-1}\n\\qquad(1\\le j\\le11).\n\\]\nFor example, \\(T_1=12m\\), \\(T_2=72m\\), and \\(T_3=288m\\). Continuing gives\n\\[\nT_j=m\\frac{12^j}{j!},\n\\]\nwhere \\(j!=1\\cdot2\\cdots j\\) and \\(0!=1\\).\n\nEach next coefficient is obtained by multiplying the preceding one by \\(12/j\\). Reducing these coefficients gives denominators \\(1,1,1,1,1,5,5\\) for \\(j=0\\) through \\(6\\), and \\(35,35,35,175,1925\\) for \\(j=7\\) through \\(11\\). In particular,\n\\[\nT_5=\\frac{10368m}{5},\n\\qquad\nT_{11}=\\frac{35831808m}{1925}.\n\\]\nThe last fraction is reduced: its numerator is \\(2^{14}3^7\\), whereas \\(1925=5^2\\cdot7\\cdot11\\). Thus integrality of the initial amount forces \\(m\\) to be a multiple of \\(1925\\). Conversely, every denominator in the list divides \\(1925\\), so choosing \\(m=1925\\) makes every \\(T_j\\) a positive integer.\n\nFor this choice, each earlier pirate receives \\(T_j-T_{j-1}\\), a positive integer because \\(12/j>1\\) for \\(1\\le j\\le11\\). The last pirate receives \\(m\\). Finally, the initial amount \\(T_{11}\\) is a fixed positive multiple of \\(m\\), so minimizing the initial treasure also minimizes the feasible positive value of \\(m\\).\n\nThe twelfth pirate therefore receives \\(\\boxed{1925}\\) coins, choice \\(\\text{D}\\).",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "Original Math Practice solution",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "divisibility; prime factorization; work backwards",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2013A/solutions",
-    "SourceSHA256": "149c65140e4167524eef8e720816ccf0ad75716f50f264f23748ee7baad775b0",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "answer": {
+    "accepted": [
+      "D"
     ],
-    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
-    "SolutionReview": {
-      "status": "reviewed",
-      "solutionSHA256": "3a81bf14c7610b689501a6dc1813454b1b2ad8b2456d2102055c07bb1d2f53f0",
-      "questionContentHash": "d615f702a8d7460216367d2a481fde551c96ef4b8a4db6a638000b682e5295e8",
-      "evidence": {
-        "path": "knowledge-graph/evidence/solutions-2026-11-06/2013_AMC_10A_Q21.json",
-        "sha256": "7b1b004e0c24f4a44a778d32b9caae340daa8c66f9ef0b25357daa84d78aa0c7"
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "math:integer-diophantine-equations"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 10"
+  },
+  "id": "2013_AMC_10A_Q21",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(720\\)",
+        "id": "A"
       },
-      "author": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
+      {
+        "content": "\\(1296\\)",
+        "id": "B"
       },
-      "reviewer": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
+      {
+        "content": "\\(1728\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(1925\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(3850\\)",
+        "id": "E"
       }
+    ],
+    "prompt": "A group of \\(12\\) pirates agree to divide a treasure chest of gold coins among themselves as follows. The \\(k^{\\text{th}}\\) pirate to take a share takes \\(\\dfrac{k}{12}\\) of the coins that remain in the chest. The number of coins initially in the chest is the smallest number for which this arrangement will allow each pirate to receive a positive whole number of coins. How many coins does the \\(12^{\\text{th}}\\) pirate receive?"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "cnm_p183",
+        "cnm_p168",
+        "cnm_p159"
+      ],
+      "explanation": "The last pirate takes everything left, so let \\(m\\) be that pirate's share. Working backward makes each earlier amount a fixed multiple of \\(m\\), allowing us to find exactly which values make every share integral.\n\nFor \\(j=0,1,\\ldots,11\\), let \\(T_j\\) be the number of coins just before pirate \\(12-j\\) takes a share. Thus \\(T_0=m\\), and \\(T_{11}\\) is the initial treasure. Pirate \\(12-j\\) leaves the fraction \\(j/12\\) for the next pirate, so\n\\[\nT_j=\\frac{12}{j}T_{j-1}\n\\qquad(1\\le j\\le11).\n\\]\nFor example, \\(T_1=12m\\), \\(T_2=72m\\), and \\(T_3=288m\\). Continuing gives\n\\[\nT_j=m\\frac{12^j}{j!},\n\\]\nwhere \\(j!=1\\cdot2\\cdots j\\) and \\(0!=1\\).\n\nEach next coefficient is obtained by multiplying the preceding one by \\(12/j\\). Reducing these coefficients gives denominators \\(1,1,1,1,1,5,5\\) for \\(j=0\\) through \\(6\\), and \\(35,35,35,175,1925\\) for \\(j=7\\) through \\(11\\). In particular,\n\\[\nT_5=\\frac{10368m}{5},\n\\qquad\nT_{11}=\\frac{35831808m}{1925}.\n\\]\nThe last fraction is reduced: its numerator is \\(2^{14}3^7\\), whereas \\(1925=5^2\\cdot7\\cdot11\\). Thus integrality of the initial amount forces \\(m\\) to be a multiple of \\(1925\\). Conversely, every denominator in the list divides \\(1925\\), so choosing \\(m=1925\\) makes every \\(T_j\\) a positive integer.\n\nFor this choice, each earlier pirate receives \\(T_j-T_{j-1}\\), a positive integer because \\(12/j>1\\) for \\(1\\le j\\le11\\). The last pirate receives \\(m\\). Finally, the initial amount \\(T_{11}\\) is a fixed positive multiple of \\(m\\), so minimizing the initial treasure also minimizes the feasible positive value of \\(m\\).\n\nThe twelfth pirate therefore receives \\(\\boxed{1925}\\) coins, choice \\(\\text{D}\\).",
+      "id": "backward-denominator-lcm",
+      "sourceRef": "amc/2013_AMC_10A_Q21#backward-denominator-lcm",
+      "title": "Work backward and clear the denominators"
+    },
+    {
+      "directNodeIds": [
+        "math:prime-valuations-factorials"
+      ],
+      "id": "forward-prime-valuations",
+      "sourceRef": "amc/2013_AMC_10A_Q21#forward-prime-valuations",
+      "title": "Track prime exponents forward"
     }
-  },
-  "ID": "2013_AMC_10A_Q21",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "d615f702a8d7460216367d2a481fde551c96ef4b8a4db6a638000b682e5295e8",
-    "status": "mapped",
-    "reviewStatus": "machine_adjudicated",
-    "assessedIds": [
-      "math:integer-diophantine-equations"
-    ],
-    "supportIds": [
-      "cnm_p179",
-      "cnm_p153"
-    ],
-    "routes": [
-      {
-        "id": "backward-denominator-lcm",
-        "label": "Undo shares and clear denominators",
-        "nodeIds": [
-          "cnm_p183",
-          "cnm_p168",
-          "cnm_p159"
-        ]
-      },
-      {
-        "id": "forward-prime-valuations",
-        "label": "Track prime exponents forward",
-        "nodeIds": [
-          "math:prime-valuations-factorials"
-        ]
-      },
-      {
-        "id": "solution:backward-denominator-lcm:3a81bf14c761",
-        "label": "Work backward and clear the denominators",
-        "nodeIds": [
-          "math:integer-diophantine-equations",
-          "cnm_p183",
-          "cnm_p168",
-          "cnm_p159",
-          "cnm_p179",
-          "cnm_p153",
-          "math:factorial-notation",
-          "math:prime-factorization"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  ],
+  "sourceRef": "amc/2013_AMC_10A_Q21"
 }

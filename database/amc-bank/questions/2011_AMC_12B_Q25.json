@@ -1,117 +1,76 @@
 {
-  "Year": 2011,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 25,
-  "Question": "For every \\(m\\) and \\(k\\) integers with \\(k\\) odd, denote by \\(\\left[\\dfrac{m}{k}\\right]\\) the integer closest to \\(\\dfrac{m}{k}.\\) For every odd integer \\(k,\\) let \\(P(k)\\) be the probability that \\[\\left[\\dfrac{n}{k}\\right]+\\left[\\dfrac{100-n}{k}\\right]=\\left[\\dfrac{100}{k}\\right]\\] for an integer \\(n\\) randomly chosen from the interval \\(1\\le n\\le99!.\\) What is the minimum possible value of \\(P(k)\\) over the odd integers \\(k\\) in the interval \\(1\\le k\\le99?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{1}{2}\\)",
-    "B": "\\(\\dfrac{50}{99}\\)",
-    "C": "\\(\\dfrac{44}{87}\\)",
-    "D": "\\(\\dfrac{34}{67}\\)",
-    "E": "\\(\\dfrac{7}{13}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "The useful observation is that rounding a fraction with denominator \\(k\\) amounts to finding the nearest multiple of \\(k\\) to its numerator. Because \\(k\\) is odd, there are no ties: if \\(m/k\\) were halfway between integers \\(j\\) and \\(j+1\\), then \\(2m=k(2j+1)\\), which would equate an even integer with an odd integer.\n\nFix an allowed \\(k\\), and let \\(h=(k-1)/2\\). Write\n\\[\nq=\\left[\\frac{n}{k}\\right],\\qquad a=\\left[\\frac{100}{k}\\right],\n\\]\nso that\n\\[\nn=kq+r,\\qquad 100=ka+s,\n\\]\nwhere \\(r\\) and \\(s\\) are integers between \\(-h\\) and \\(h\\), inclusive. These remainders measure the differences from the nearest multiples of \\(k\\).\n\nSince \\(k\\le99\\), the product \\(99!=1\\cdot2\\cdots99\\) is divisible by \\(k\\). Thus the possible values of \\(n\\) split into complete blocks of \\(k\\) consecutive integers. Each block contains one representative of every remainder class upon division by \\(k\\). Consequently, each of the \\(k\\) possible values \\(-h,-h+1,\\ldots,h\\) of \\(r\\) is equally likely.\n\nNow\n\\[\n\\frac{100-n}{k}=a-q+\\frac{s-r}{k}.\n\\]\nThe required equality holds exactly when this expression rounds to \\(a-q\\), or equivalently when \\((s-r)/k\\) rounds to zero. Since \\(s-r\\) is an integer and \\(k\\) is odd, this means\n\\[\n-h\\le s-r\\le h,\n\\]\nwhich is the same as \\(s-h\\le r\\le s+h\\). We must count the integers satisfying this condition and \\(-h\\le r\\le h\\).\n\nIf \\(s\\ge0\\), the successful remainders run from \\(s-h\\) through \\(h\\), giving \\(2h-s+1=k-s\\) values. If \\(s<0\\), they run from \\(-h\\) through \\(s+h\\), giving \\(k+s\\) values. These cases cover every possible \\(s\\), and each successful remainder is counted once. Therefore\n\\[\nP(k)=\\frac{k-|s|}{k}=1-\\frac{|s|}{k}.\n\\]\n\nTo minimize this probability, first consider \\(1\\le k\\le67\\). The bound \\(|s|\\le(k-1)/2\\) gives\n\\[\nP(k)\\ge\\frac{k+1}{2k}\n=\\frac12+\\frac{1}{2k}\n\\ge\\frac12+\\frac{1}{134}\n=\\frac{34}{67}.\n\\]\nFor \\(67\\le k\\le99\\), we have \\(1<100/k<3/2\\), so \\(a=1\\) and \\(s=100-k\\). Hence\n\\[\nP(k)=2-\\frac{100}{k}\n\\ge2-\\frac{100}{67}\n=\\frac{34}{67}.\n\\]\nThese ranges cover every allowed odd \\(k\\), including \\(k=1\\). At \\(k=67\\), the remainder is \\(s=33\\), so \\(P(67)=(67-33)/67=34/67\\). Thus the minimum is \\(\\boxed{\\frac{34}{67}}\\), choice \\(\\text{D}\\).",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "Original Math Practice solution",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "modular arithmetic; floor and ceiling functions; basic probability",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2011B/solutions",
-    "SourceSHA256": "9e4c9d11195c7f1ee47a36ec726826f869ba911bf741446ca4e0418781f7556e",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "answer": {
+    "accepted": [
+      "D"
     ],
-    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
-    "SolutionReview": {
-      "status": "reviewed",
-      "solutionSHA256": "bf8c6f816beb011b0106bb70aa8bb7ff49981d54a01ea425c0df6d24760b8d24",
-      "questionContentHash": "ab7ab06ba3f48ade2ea1236fd1af614a0925eb10cb87f2716338ec17fbbdb523",
-      "evidence": {
-        "path": "knowledge-graph/evidence/solutions-2026-11-06/2011_AMC_12B_Q25.json",
-        "sha256": "d3cdf23befa638854fcc7182d5dd2e8455b40deea43b2a778fa3f233c8751972"
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "math:modular-congruence",
+    "cnm_285",
+    "math:extremal-principle"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
+  },
+  "id": "2011_AMC_12B_Q25",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(\\dfrac{1}{2}\\)",
+        "id": "A"
       },
-      "author": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
+      {
+        "content": "\\(\\dfrac{50}{99}\\)",
+        "id": "B"
       },
-      "reviewer": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
+      {
+        "content": "\\(\\dfrac{44}{87}\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(\\dfrac{34}{67}\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(\\dfrac{7}{13}\\)",
+        "id": "E"
       }
+    ],
+    "prompt": "For every \\(m\\) and \\(k\\) integers with \\(k\\) odd, denote by \\(\\left[\\dfrac{m}{k}\\right]\\) the integer closest to \\(\\dfrac{m}{k}.\\) For every odd integer \\(k,\\) let \\(P(k)\\) be the probability that \\[\\left[\\dfrac{n}{k}\\right]+\\left[\\dfrac{100-n}{k}\\right]=\\left[\\dfrac{100}{k}\\right]\\] for an integer \\(n\\) randomly chosen from the interval \\(1\\le n\\le99!.\\) What is the minimum possible value of \\(P(k)\\) over the odd integers \\(k\\) in the interval \\(1\\le k\\le99?\\)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:modular-congruence",
+        "cnm_h020",
+        "cnm_285",
+        "math:extremal-principle"
+      ],
+      "explanation": "The useful observation is that rounding a fraction with denominator \\(k\\) amounts to finding the nearest multiple of \\(k\\) to its numerator. Because \\(k\\) is odd, there are no ties: if \\(m/k\\) were halfway between integers \\(j\\) and \\(j+1\\), then \\(2m=k(2j+1)\\), which would equate an even integer with an odd integer.\n\nFix an allowed \\(k\\), and let \\(h=(k-1)/2\\). Write\n\\[\nq=\\left[\\frac{n}{k}\\right],\\qquad a=\\left[\\frac{100}{k}\\right],\n\\]\nso that\n\\[\nn=kq+r,\\qquad 100=ka+s,\n\\]\nwhere \\(r\\) and \\(s\\) are integers between \\(-h\\) and \\(h\\), inclusive. These remainders measure the differences from the nearest multiples of \\(k\\).\n\nSince \\(k\\le99\\), the product \\(99!=1\\cdot2\\cdots99\\) is divisible by \\(k\\). Thus the possible values of \\(n\\) split into complete blocks of \\(k\\) consecutive integers. Each block contains one representative of every remainder class upon division by \\(k\\). Consequently, each of the \\(k\\) possible values \\(-h,-h+1,\\ldots,h\\) of \\(r\\) is equally likely.\n\nNow\n\\[\n\\frac{100-n}{k}=a-q+\\frac{s-r}{k}.\n\\]\nThe required equality holds exactly when this expression rounds to \\(a-q\\), or equivalently when \\((s-r)/k\\) rounds to zero. Since \\(s-r\\) is an integer and \\(k\\) is odd, this means\n\\[\n-h\\le s-r\\le h,\n\\]\nwhich is the same as \\(s-h\\le r\\le s+h\\). We must count the integers satisfying this condition and \\(-h\\le r\\le h\\).\n\nIf \\(s\\ge0\\), the successful remainders run from \\(s-h\\) through \\(h\\), giving \\(2h-s+1=k-s\\) values. If \\(s<0\\), they run from \\(-h\\) through \\(s+h\\), giving \\(k+s\\) values. These cases cover every possible \\(s\\), and each successful remainder is counted once. Therefore\n\\[\nP(k)=\\frac{k-|s|}{k}=1-\\frac{|s|}{k}.\n\\]\n\nTo minimize this probability, first consider \\(1\\le k\\le67\\). The bound \\(|s|\\le(k-1)/2\\) gives\n\\[\nP(k)\\ge\\frac{k+1}{2k}\n=\\frac12+\\frac{1}{2k}\n\\ge\\frac12+\\frac{1}{134}\n=\\frac{34}{67}.\n\\]\nFor \\(67\\le k\\le99\\), we have \\(1<100/k<3/2\\), so \\(a=1\\) and \\(s=100-k\\). Hence\n\\[\nP(k)=2-\\frac{100}{k}\n\\ge2-\\frac{100}{67}\n=\\frac{34}{67}.\n\\]\nThese ranges cover every allowed odd \\(k\\), including \\(k=1\\). At \\(k=67\\), the remainder is \\(s=33\\), so \\(P(67)=(67-33)/67=34/67\\). Thus the minimum is \\(\\boxed{\\frac{34}{67}}\\), choice \\(\\text{D}\\).",
+      "id": "balanced-remainders",
+      "sourceRef": "amc/2011_AMC_12B_Q25#balanced-remainders",
+      "title": "Count the rounding errors"
+    },
+    {
+      "directNodeIds": [
+        "cnm_h020"
+      ],
+      "id": "balanced-remainder-overlap",
+      "sourceRef": "amc/2011_AMC_12B_Q25#balanced-remainder-overlap",
+      "title": "Count overlapping balanced-residue intervals"
+    },
+    {
+      "directNodeIds": [
+        "math:floor-ceiling"
+      ],
+      "id": "floor-carry-count",
+      "sourceRef": "amc/2011_AMC_12B_Q25#floor-carry-count",
+      "title": "Express nearest integers using floor carries"
     }
-  },
-  "ID": "2011_AMC_12B_Q25",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "ab7ab06ba3f48ade2ea1236fd1af614a0925eb10cb87f2716338ec17fbbdb523",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:modular-congruence",
-      "cnm_285",
-      "math:extremal-principle"
-    ],
-    "supportIds": [
-      "math:factorial-notation",
-      "cnm_p153",
-      "cnm_p156",
-      "cnm_h017",
-      "cnm_p169"
-    ],
-    "routes": [
-      {
-        "id": "balanced-remainder-overlap",
-        "label": "Count overlapping balanced-residue intervals",
-        "nodeIds": [
-          "cnm_h020"
-        ]
-      },
-      {
-        "id": "floor-carry-count",
-        "label": "Express nearest integers using floor carries",
-        "nodeIds": [
-          "math:floor-ceiling"
-        ]
-      },
-      {
-        "id": "balanced-remainders",
-        "label": "Count the rounding errors",
-        "nodeIds": [
-          "math:modular-congruence",
-          "cnm_h020",
-          "cnm_285",
-          "math:extremal-principle",
-          "math:factorial-notation",
-          "cnm_p153",
-          "cnm_p156",
-          "cnm_h017",
-          "cnm_p169"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  ],
+  "sourceRef": "amc/2011_AMC_12B_Q25"
 }

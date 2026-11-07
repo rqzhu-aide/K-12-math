@@ -1,125 +1,86 @@
 {
-  "Year": 2014,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 24,
-  "Question": "Let \\(f_0(x)=x+|x-100|\\) \\(-|x+100|,\\) and for \\(n\\ge1,\\) let \\(f_n(x)=|f_{n-1}(x)|-1.\\) For how many values of \\(x\\) is \\(f_{100}(x)=0?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(299\\)",
-    "B": "\\(300\\)",
-    "C": "\\(301\\)",
-    "D": "\\(302\\)",
-    "E": "\\(303\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "Method 1: Follow the descent and the two-step cycle\n\nLet \\(g(t)=|t|-1\\) and \\(T=f_0(x)\\). We need the value obtained after \\(100\\) applications of \\(g\\) to be \\(0\\). The useful observation is that positive integers decrease by \\(1\\), while \\(0\\) and \\(-1\\) alternate.\n\nAn integer output of \\(g\\) can only come from an integer input: if \\(|t|-1\\) is an integer, then \\(|t|\\), and hence \\(t\\), is an integer. Working backward from the final \\(0\\), we see that \\(T\\) must be an integer.\n\nSet \\(a=|T|\\). If \\(a>0\\), the first output is \\(a-1\\), and the values then decrease by \\(1\\) until reaching \\(0\\) after \\(a\\) applications. If \\(a>100\\), the value after \\(100\\) applications is still positive. Once \\(0\\) is reached, the cycle is\n\\[\n0\\longmapsto-1\\longmapsto0.\n\\]\nThis also covers \\(a=0\\), where the starting value is already \\(0\\). Thus the final value is \\(0\\) exactly when \\(a\\le100\\) and \\(100-a\\) is even. Equivalently,\n\\[\nT\\in\\{-100,-98,\\ldots,98,100\\}.\n\\]\nNow simplify the initial function on disjoint intervals:\n\\[\nf_0(x)=\n\\begin{cases}\nx+200,&x<-100,\\\\\n-x,&-100\\le x\\le100,\\\\\nx-200,&x>100.\n\\end{cases}\n\\]\nFor each target \\(-100<T<100\\), its three solutions are \\(x=T-200,-T,T+200\\), one in each branch. There are \\(99\\) such even targets. At \\(T=-100\\), the distinct solutions are \\(-300,100\\); at \\(T=100\\), they are \\(-100,300\\). The branch endpoints have been counted only once.\n\nTherefore the number of values of \\(x\\) is\n\\[\n99\\cdot3+2\\cdot2=\\boxed{301},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).\n\nMethod 2: Work backward from zero\n\nLet \\(g(t)=|t|-1\\), and let \\(S_j\\) be the set of starting values whose output is \\(0\\) after \\(j\\) applications of \\(g\\). Starting with \\(S_0=\\{0\\}\\), we can find each preceding set by solving \\(|t|-1=u\\).\n\nA target \\(u<-1\\) has no predecessor. For \\(u\\ge-1\\), its predecessors are \\(t=\\pm(u+1)\\), with just one value, \\(0\\), when \\(u=-1\\). This gives\n\\[\nS_1=\\{-1,1\\},\\qquad S_2=\\{-2,0,2\\}.\n\\]\nThe general pattern is\n\\[\nS_j=\\{-j,-j+2,\\ldots,j-2,j\\}.\n\\]\nHere is why the pattern continues. If \\(j\\) is even, the usable targets in this set are \\(0,2,\\ldots,j\\); their predecessors are exactly \\(\\pm1,\\pm3,\\ldots,\\pm(j+1)\\). If \\(j\\) is odd, the usable targets are \\(-1,1,3,\\ldots,j\\); their predecessors are exactly \\(0,\\pm2,\\ldots,\\pm(j+1)\\). Starting from \\(S_0\\), these two transitions prove the pattern for every \\(j\\), including all possible predecessors.\n\nThus \\(f_{100}(x)=0\\) exactly when \\(f_0(x)\\) is one of the \\(101\\) even integers from \\(-100\\) to \\(100\\).\n\nThe initial function is\n\\[\nf_0(x)=\n\\begin{cases}\nx+200,&x<-100,\\\\\n-x,&-100\\le x\\le100,\\\\\nx-200,&x>100.\n\\end{cases}\n\\]\nEach branch is one-to-one. The left branch has range \\(( -\\infty,100)\\), so it reaches \\(100\\) of the target values, excluding only \\(100\\). The middle branch reaches all \\(101\\) targets. The right branch has range \\((-100,\\infty)\\), so it reaches \\(100\\) targets, excluding only \\(-100\\). These input branches are disjoint, so their counts add without duplication.\n\nThe total is \\(100+101+100=\\boxed{301}\\), choice \\(\\boxed{\\text{C}}\\).",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "Original Math Practice solution",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "absolute value; recursion; counting intersections",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2014A/solutions",
-    "SourceSHA256": "332edea09188694850b326a2c8ad34934c8ca7eab4912178e66a4c7c53bdc55c",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "answer": {
+    "accepted": [
+      "C"
     ],
-    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
-    "SolutionReview": {
-      "status": "reviewed",
-      "solutionSHA256": "1ac975294ba15445bb40c177b63295503ee7c89464c58ca11777628d9827efb9",
-      "questionContentHash": "20d7660cc15fdae0bc6521d27807f2134ca9020e63fa733e13b592c009de08e4",
-      "evidence": {
-        "path": "knowledge-graph/evidence/solutions-2026-11-06/2014_AMC_12A_Q24.json",
-        "sha256": "710ba96c2cf3bdda5501329bf20c902677a4e7914c00857514a5c2d0b4dfc483"
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "cnm_h049",
+    "math:function-composition-iteration"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
+  },
+  "id": "2014_AMC_12A_Q24",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(299\\)",
+        "id": "A"
       },
-      "author": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
+      {
+        "content": "\\(300\\)",
+        "id": "B"
       },
-      "reviewer": {
-        "model": "gpt-6.1-sol",
-        "effort": "xhigh"
+      {
+        "content": "\\(301\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(302\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(303\\)",
+        "id": "E"
       }
+    ],
+    "prompt": "Let \\(f_0(x)=x+|x-100|\\) \\(-|x+100|,\\) and for \\(n\\ge1,\\) let \\(f_n(x)=|f_{n-1}(x)|-1.\\) For how many values of \\(x\\) is \\(f_{100}(x)=0?\\)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:function-composition-iteration",
+        "cnm_h049",
+        "cnm_h031"
+      ],
+      "explanation": "Let \\(g(t)=|t|-1\\) and \\(T=f_0(x)\\). We need the value obtained after \\(100\\) applications of \\(g\\) to be \\(0\\). The useful observation is that positive integers decrease by \\(1\\), while \\(0\\) and \\(-1\\) alternate.\n\nAn integer output of \\(g\\) can only come from an integer input: if \\(|t|-1\\) is an integer, then \\(|t|\\), and hence \\(t\\), is an integer. Working backward from the final \\(0\\), we see that \\(T\\) must be an integer.\n\nSet \\(a=|T|\\). If \\(a>0\\), the first output is \\(a-1\\), and the values then decrease by \\(1\\) until reaching \\(0\\) after \\(a\\) applications. If \\(a>100\\), the value after \\(100\\) applications is still positive. Once \\(0\\) is reached, the cycle is\n\\[\n0\\longmapsto-1\\longmapsto0.\n\\]\nThis also covers \\(a=0\\), where the starting value is already \\(0\\). Thus the final value is \\(0\\) exactly when \\(a\\le100\\) and \\(100-a\\) is even. Equivalently,\n\\[\nT\\in\\{-100,-98,\\ldots,98,100\\}.\n\\]\nNow simplify the initial function on disjoint intervals:\n\\[\nf_0(x)=\n\\begin{cases}\nx+200,&x<-100,\\\\\n-x,&-100\\le x\\le100,\\\\\nx-200,&x>100.\n\\end{cases}\n\\]\nFor each target \\(-100<T<100\\), its three solutions are \\(x=T-200,-T,T+200\\), one in each branch. There are \\(99\\) such even targets. At \\(T=-100\\), the distinct solutions are \\(-300,100\\); at \\(T=100\\), they are \\(-100,300\\). The branch endpoints have been counted only once.\n\nTherefore the number of values of \\(x\\) is\n\\[\n99\\cdot3+2\\cdot2=\\boxed{301},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+      "id": "forward-descent-and-cycle",
+      "sourceRef": "amc/2014_AMC_12A_Q24#forward-descent-and-cycle",
+      "title": "Follow the descent and the two-step cycle"
+    },
+    {
+      "directNodeIds": [
+        "math:function-composition-iteration",
+        "cnm_h049",
+        "cnm_h031"
+      ],
+      "explanation": "Let \\(g(t)=|t|-1\\), and let \\(S_j\\) be the set of starting values whose output is \\(0\\) after \\(j\\) applications of \\(g\\). Starting with \\(S_0=\\{0\\}\\), we can find each preceding set by solving \\(|t|-1=u\\).\n\nA target \\(u<-1\\) has no predecessor. For \\(u\\ge-1\\), its predecessors are \\(t=\\pm(u+1)\\), with just one value, \\(0\\), when \\(u=-1\\). This gives\n\\[\nS_1=\\{-1,1\\},\\qquad S_2=\\{-2,0,2\\}.\n\\]\nThe general pattern is\n\\[\nS_j=\\{-j,-j+2,\\ldots,j-2,j\\}.\n\\]\nHere is why the pattern continues. If \\(j\\) is even, the usable targets in this set are \\(0,2,\\ldots,j\\); their predecessors are exactly \\(\\pm1,\\pm3,\\ldots,\\pm(j+1)\\). If \\(j\\) is odd, the usable targets are \\(-1,1,3,\\ldots,j\\); their predecessors are exactly \\(0,\\pm2,\\ldots,\\pm(j+1)\\). Starting from \\(S_0\\), these two transitions prove the pattern for every \\(j\\), including all possible predecessors.\n\nThus \\(f_{100}(x)=0\\) exactly when \\(f_0(x)\\) is one of the \\(101\\) even integers from \\(-100\\) to \\(100\\).\n\nThe initial function is\n\\[\nf_0(x)=\n\\begin{cases}\nx+200,&x<-100,\\\\\n-x,&-100\\le x\\le100,\\\\\nx-200,&x>100.\n\\end{cases}\n\\]\nEach branch is one-to-one. The left branch has range \\(( -\\infty,100)\\), so it reaches \\(100\\) of the target values, excluding only \\(100\\). The middle branch reaches all \\(101\\) targets. The right branch has range \\((-100,\\infty)\\), so it reaches \\(100\\) targets, excluding only \\(-100\\). These input branches are disjoint, so their counts add without duplication.\n\nThe total is \\(100+101+100=\\boxed{301}\\), choice \\(\\boxed{\\text{C}}\\).",
+      "id": "backward-preimage-sets",
+      "sourceRef": "amc/2014_AMC_12A_Q24#backward-preimage-sets",
+      "title": "Work backward from zero"
+    },
+    {
+      "directNodeIds": [
+        "math:recursive-counting-probability"
+      ],
+      "id": "backward-preimage-recursion",
+      "sourceRef": "amc/2014_AMC_12A_Q24#backward-preimage-recursion",
+      "title": "Backward preimages"
+    },
+    {
+      "directNodeIds": [
+        "cnm_h200",
+        "math:modular-congruence"
+      ],
+      "id": "forward-orbit-parity",
+      "sourceRef": "amc/2014_AMC_12A_Q24#forward-orbit-parity",
+      "title": "Forward orbit and parity"
     }
-  },
-  "ID": "2014_AMC_12A_Q24",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "20d7660cc15fdae0bc6521d27807f2134ca9020e63fa733e13b592c009de08e4",
-    "status": "mapped",
-    "reviewStatus": "machine_adjudicated",
-    "assessedIds": [
-      "cnm_h049",
-      "math:function-composition-iteration"
-    ],
-    "supportIds": [
-      "cnm_008",
-      "cnm_h031",
-      "cnm_h200",
-      "cnm_p156"
-    ],
-    "routes": [
-      {
-        "id": "backward-preimage-recursion",
-        "label": "Backward preimages",
-        "nodeIds": [
-          "math:recursive-counting-probability"
-        ]
-      },
-      {
-        "id": "forward-orbit-parity",
-        "label": "Forward orbit and parity",
-        "nodeIds": [
-          "cnm_h200",
-          "math:modular-congruence"
-        ]
-      },
-      {
-        "id": "forward-descent-and-cycle",
-        "label": "Follow the descent and the two-step cycle",
-        "nodeIds": [
-          "math:function-composition-iteration",
-          "cnm_h049",
-          "cnm_h031",
-          "cnm_008",
-          "cnm_h200",
-          "cnm_p156"
-        ]
-      },
-      {
-        "id": "backward-preimage-sets",
-        "label": "Work backward from zero",
-        "nodeIds": [
-          "math:function-composition-iteration",
-          "cnm_h049",
-          "cnm_h031",
-          "cnm_008",
-          "cnm_h200",
-          "cnm_p156"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  ],
+  "sourceRef": "amc/2014_AMC_12A_Q24"
 }
