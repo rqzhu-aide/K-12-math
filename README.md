@@ -1,4 +1,4 @@
-# K-12-math
+# K-12-Math knowledge graph, questions and practice UI
 
 [![Knowledge graph 1.0.0](https://img.shields.io/badge/Knowledge_graph-1.0.0-245984)](database/knowledge-graph/source/metadata.json)
 [![CN bank 1.0.0](https://img.shields.io/badge/CN_bank-1.0.0-427354)](database/cn-math-bank/VERSION)
