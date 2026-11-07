@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1994_AMC_8_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "f48147bfa2f254d87d6a81156c73162958b3a26fbf117f68bd76a7f5bf876119",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "c47b424981643e3b784086d4b7e432acb248d472b6df34a0a62563648885ff84",
+  "solutionFigureHashes": {},
+  "candidateHash": "7bab1b99d8d2e36fa9717e2871bc67758baad7e532f40c0cfcb9eb11d9578ad8",
+  "candidate": {
+    "questionId": "1994_AMC_8_Q24",
+    "derivedAnswer": "B, \\(6\\)",
+    "answerStatus": "matches",
+    "answerReason": "There are 1, 1, 2, 1, and 1 valid paintings with zero through four green squares, respectively, for a total of 6.",
+    "methods": [
+      {
+        "id": "count-green-squares",
+        "label": "Count by the number of green squares",
+        "explanation": "A green square forces its neighbor directly above and its neighbor directly to the right, whenever present, to be green. Following these requirements, any painting with green squares must have a green top-right square. Also, a green bottom-left square forces all four squares to be green.\n\nWith zero green squares, there is one painting: all red.\n\nWith one green square, it must be the top-right square, giving one painting.\n\nWith two green squares, one is top-right. The other can be top-left or bottom-right, giving two paintings. It cannot be bottom-left, since that would force all four squares to be green.\n\nWith three green squares, bottom-left must be the red square, giving one painting.\n\nWith four green squares, there is one painting: all green.\n\nEach listed painting obeys the rule. The cases cover every possible number of green squares, and no painting belongs to two cases. Hence the total is\n\\[\n1+1+2+1+1=\\boxed{6},\n\\]\nchoice \\(\\text{B}\\).",
+        "nodeIds": [
+          "math:graph-coloring",
+          "cnm_h003",
+          "cnm_h230"
+        ],
+        "prerequisiteIds": [
+          "cnm_p015"
+        ],
+        "levelReason": "The solution applies the stated directional rule and exhaustively lists a small number of cases, within AMC 8 counting."
+      },
+      {
+        "id": "corner-forcing",
+        "label": "Use the two opposite corners",
+        "explanation": "Whenever a square is green, any square immediately above it or immediately to its right must also be green. This makes the bottom-left and top-right corners useful places to split the count.\n\nIf bottom-left is green, its neighbors and then top-right are forced green. This gives one painting, all green.\n\nIf top-right is red, every square must be red. Any green square elsewhere would force a chain of green squares going up or right to top-right. This gives one painting, all red.\n\nIn every remaining valid painting, bottom-left is red and top-right is green. Top-left and bottom-right may now each be either color independently. If either is green, its only neighbor above or to the right inside the square is the already-green top-right square. Thus this case gives\n\\[\n2\\times2=4\n\\]\npaintings.\n\nThese cases are disjoint and include every valid painting, so the total is\n\\[\n1+1+4=\\boxed{6},\n\\]\nchoice \\(\\text{B}\\).",
+        "nodeIds": [
+          "math:graph-coloring",
+          "cnm_h230",
+          "cnm_h231"
+        ],
+        "prerequisiteIds": [
+          "cnm_p015",
+          "cnm_p038"
+        ],
+        "levelReason": "Corner implications reduce the problem to two independent binary choices, using only elementary casework and multiplication."
+      }
+    ],
+    "assessedIds": [
+      "math:graph-coloring"
+    ],
+    "supportIds": [
+      "cnm_p015",
+      "cnm_h230"
+    ],
+    "annotationRationale": "The target is counting cell colorings under the actual top/right adjacency restriction. Both methods use directional positions and addition of disjoint cases. The first uses exhaustive listing by green count, fitting cnm_h003. The second uses independent choices for two remaining cells, fitting cnm_h231, with multiplication meaning kept local to that route. A formal graph model is unnecessary.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1994_AMC_8_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "The rule forces green neighbors above and right. Counting by green population gives 1,1,2,1,1 valid paintings. Independently, the corner cases give one all-green painting, one all-red painting, and four paintings with bottom-left red and top-right green.",
+    "levelCheck": "Both explanations justify completeness and avoid duplication using accessible AMC 8 casework.",
+    "methodDistinctness": "The second method adds a useful independent-choice argument instead of enumerating by green count.",
+    "annotationCheck": "The coloring target respects the directional restriction. Shared positional and addition supports are justified; enumeration and multiplication principles remain method-local.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-green-squares": "count-green-squares",
+    "corner-forcing": "corner-forcing"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "ef7a06ac30f3597bbfb3b20a50a0f3c28e4b2a0ae8bf0d2846ea7fcf7cc62b3a",
+    "inputHash": "878b1af1424206c3f6f9045b60ebbb7f51ecd3478b6b9d9d801880181581c0cb",
+    "authorInputHash": "88159d0fb377c0e2996f88b2a34bbea833b7f6f65c25a64370924d0350a51820",
+    "reviewInputHash": "acc644ca8dd9519585e97ee9b3b7e66a04f94463a881d1951ee02dd8a94a7c92",
+    "authorResponseHash": "9c6716ccc7aa8e440556ef762f4730d37b161e150b1dfda2e5cd7b0a7e9e35d7",
+    "reviewerResponseHash": "4ec9613e4ff2513afd0c11691291d279968553077a4f9e1dab6d683aa3d5d850",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

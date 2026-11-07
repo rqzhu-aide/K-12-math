@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2015_AMC_10A_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "02e5d744bb4bdeedf2ea982ca8d1878bb15be952568c4db3acf839514b2c9ae5",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "4742105dcc133da0879d606e4630de40ad39d5e7fdd7103c005f8ebd66822e4e",
+  "solutionFigureHashes": {},
+  "candidateHash": "99f85d41660a63676431022ebfc1294f8683802d426f55963780b78a930dd615",
+  "candidate": {
+    "questionId": "2015_AMC_10A_Q22",
+    "derivedAnswer": "\\(\\dfrac{47}{256}\\), choice A",
+    "answerStatus": "matches",
+    "answerReason": "Exactly 47 of the 256 equally likely assignments of heads and tails have no adjacent heads, including across the circular boundary.",
+    "methods": [
+      {
+        "id": "row-recurrence-and-circle-split",
+        "label": "Count rows, then close the circle",
+        "explanation": "Breaking the circle at one chosen person reduces the adjacency restriction to a row. First let \\(F_m\\) count assignments of heads and tails to a row of \\(m\\) people with no adjacent heads. There is one empty assignment, so \\(F_0=1\\), and \\(F_1=2\\).\n\nFor \\(m\\ge2\\), an assignment beginning with tails leaves any valid row of length \\(m-1\\). An assignment beginning with heads must next have tails, leaving any valid row of length \\(m-2\\). These cases are disjoint and exhaustive, and each remaining row determines one assignment. Hence\n\\[\nF_m=F_{m-1}+F_{m-2}.\n\\]\nSuccessive values are\n\\[\n(F_0,F_1,\\ldots,F_7)=(1,2,3,5,8,13,21,34).\n\\]\nNow number the people \\(1\\) through \\(8\\) around the table. If person \\(1\\) flips tails, people \\(2\\) through \\(8\\) form a row with \\(F_7=34\\) valid assignments. If person \\(1\\) flips heads, people \\(2\\) and \\(8\\) must flip tails, leaving the five-person row \\(3\\) through \\(7\\), with \\(F_5=13\\) assignments. This split also enforces the adjacency between people \\(8\\) and \\(1\\).\n\nThe independent fair flips produce \\(2^8=256\\) equally likely outcomes. There are \\(34+13=47\\) valid outcomes, so the probability is \\(\\boxed{47/256}\\), choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_h137",
+          "math:recursive-counting-probability",
+          "cnm_h230"
+        ],
+        "prerequisiteIds": [
+          "cnm_h231",
+          "cnm_h140"
+        ],
+        "levelReason": "Derives a finite counting recurrence directly from two elementary cases."
+      },
+      {
+        "id": "count-by-heads",
+        "label": "Count by the number standing",
+        "explanation": "Count outcomes according to the number of heads. Every head must have a tail immediately clockwise from it, and different heads have different clockwise neighbors. Thus there must be at least as many tails as heads, so at most four people can stand.\n\nWith zero heads there is \\(1\\) outcome, and with one head there are \\(8\\). With two heads, there are \\(\\binom82=28\\) pairs of people, of which exactly \\(8\\) are adjacent pairs. This gives \\(28-8=20\\) valid outcomes.\n\nFor three heads, mark one of the heads and read clockwise. Record the numbers of tails between successive heads. These three gap lengths are positive integers summing to \\(5\\), so they are a permutation of \\((3,1,1)\\) or \\((2,2,1)\\). Each type has three permutations, giving six ordered gap triples. Choosing the marked person in \\(8\\) ways and a gap triple in \\(6\\) ways determines a unique marked outcome. Every unmarked outcome is counted three times, once for each possible marked head. Therefore there are\n\\[\n\\frac{8\\cdot6}{3}=16\n\\]\nvalid outcomes with three heads.\n\nWith four heads, each of the four gaps must contain exactly one tail. Heads and tails must alternate, giving exactly \\(2\\) outcomes. These cases exhaust all possibilities and are disjoint because they have different numbers of heads. The total is\n\\[\n1+8+20+16+2=47.\n\\]\nThe eight independent fair flips have \\(2^8=256\\) equally likely outcomes at the distinct people. Therefore the probability is \\(\\boxed{47/256}\\), choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_h137",
+          "cnm_h230",
+          "cnm_h237",
+          "math:double-counting"
+        ],
+        "prerequisiteIds": [
+          "cnm_h231",
+          "cnm_h140",
+          "cnm_h236"
+        ],
+        "levelReason": "Uses elementary combinations, a six-case gap enumeration, and an explicitly justified multiplicity correction."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h137"
+    ],
+    "supportIds": [
+      "cnm_h231",
+      "cnm_h140"
+    ],
+    "annotationRationale": "The common target is a probability computed from equally likely outcomes under a circular adjacency restriction. Both routes use independent flips and the multiplication principle. The first constructs a row-count recurrence; the second partitions by the number of heads and uses combinations and marked-outcome double counting. The second route enumerates its six gap triples directly rather than invoking a general separator formula.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2015_AMC_10A_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "The justified row recurrence gives F₇ = 34 and F₅ = 13; conditioning on one person's result enforces the circular boundary and yields 47 outcomes. Independently, counting by heads gives 1, 8, 20, 16, and 2 outcomes. The three-head count correctly divides 8·6 marked outcomes by multiplicity 3. Both give 47/256.",
+    "levelCheck": "Both methods explain completeness and multiplicity using accessible AMC 10 counting. Neither requires advanced recurrence theory or a general composition formula.",
+    "methodDistinctness": "The row recurrence and the classification by number of heads are genuinely distinct elementary approaches.",
+    "annotationCheck": "Classical probability is route-neutral, and independence and multiplication are shared support. Recursion, addition, combinations, and double counting match the respective methods. Omitting a stars-and-bars annotation is justified by the direct gap enumeration.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "row-recurrence-and-circle-split": "row-recurrence-and-circle-split",
+    "count-by-heads": "count-by-heads"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "15ff5cd7018fc5afa697027ef55accd17efdc2c3ac1bb63a96e75ecaef43ae61",
+    "inputHash": "5b38b10886c23cc520a1eda279d45e5b800543742aea95661e1a276773d2b5f8",
+    "authorInputHash": "30d8d2f0e1daef02d42013b0f3dd6cd39e437172e2b2e260cf3542ca40fbeaba",
+    "reviewInputHash": "615599db8daef3b9f64371f9a6493b65ffc5c81a4458d2e277da80f7ed675d34",
+    "authorResponseHash": "89e25ecdd3ece7e00171981893b18bb1bdc1f11260db7620cd3fccea35b10b98",
+    "reviewerResponseHash": "9d6bd97c4783e73ac048af0e8d5950ab7cdb47d8cd391cea823e3d578eba4494",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

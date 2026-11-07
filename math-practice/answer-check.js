@@ -26,6 +26,7 @@
     return text;
   }
   function formFeedback(q, answer) {
+    if (typeof answer !== 'string') return '';
     var text=formText(answer);
     if (q.answerForm==='decimal' && !/^[+-]?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)$/.test(text)) return 'Write your final answer as a decimal numeral rather than a fraction or expression.';
     if (q.answerForm==='standard-monomial' && !/^[+-]?(?:[0-9]+(?:\.[0-9]*)?)?[a-z]+$/.test(text)) return 'Write the numerical coefficient first and omit multiplication signs between the coefficient and letters.';
@@ -44,18 +45,27 @@
   }
   function enforceForm(q, answer, category) { return category==='correct' && formFeedback(q,answer) ? 'partial' : category; }
   function gradingNotice(q) {
+    if (typeof q.gradingNote === 'string' && q.gradingNote.trim()) return q.gradingNote;
     var source=q.gradingStatus==='disputed'?q:q.knowledgeGraph;
     return source && source.gradingStatus==='disputed'
       ? source.gradingNote || 'This problem is available for study without grading.' : null;
   }
   function classify(q, answer) {
     if (gradingNotice(q)!==null) return 'not_graded';
-    if ((q.rejectedAnswers || []).some(function(x){return normal(x)===normal(answer);})) return 'wrong';
     var kind = q.responseType || 'choice';
-    if (kind === 'choice') return answer === q.answer ? 'correct' : 'wrong';
+    var accepted = responses(q);
+    if (kind === 'multiSelect') {
+      if (!Array.isArray(answer)) return 'wrong';
+      if (!answer.length) return null;
+      if (new Set(answer).size !== answer.length || answer.some(function(id){return typeof id !== 'string' || !Object.prototype.hasOwnProperty.call(q.choices || {}, id);})) return 'wrong';
+      if (accepted.some(function(set){return same(answer,set);})) return 'correct';
+      return accepted.some(function(set){return answer.length < set.length && answer.every(function(id){return set.indexOf(id)>=0;});}) ? 'partial' : 'wrong';
+    }
+    if (typeof answer !== 'string') return null;
+    if ((q.rejectedAnswers || []).some(function(x){return normal(x)===normal(answer);})) return 'wrong';
+    if (kind === 'choice') return accepted.indexOf(answer)>=0 ? 'correct' : 'wrong';
     if (kind === 'self') return null;
     if (kind === 'short') {
-      var accepted=[q.answer].concat(q.acceptedAnswers || []);
       if (accepted.some(function(x){return normal(x)===normal(answer);})) return enforceForm(q,answer,'correct');
       if (q.answerForm==='standard-monomial') {
         var withoutSigns=formText(answer).replace(/\*|·|×|\\times|\\cdot/g,'');
@@ -64,6 +74,13 @@
       return null;
     }
     if (kind !== 'numeric') return null;
+    var rank={wrong:0, unresolved:1, partial:2, correct:3};
+    return accepted.reduce(function(best,expected){
+      var category=numericCategory(Object.assign({},q,{answer:expected}),answer);
+      return rank[category || 'unresolved']>rank[best || 'unresolved'] ? category : best;
+    }, accepted.length ? 'wrong' : null);
+  }
+  function numericCategory(q, answer) {
     var a,b;
     try { a=numbers(answer);b=numbers(q.answer); } catch (_) { return null; }
     var close = function(x,y) { var d=x.n*y.d-y.n*x.d; return (d<0n?-d:d)*1000000000n<=x.d*y.d; };
@@ -82,7 +99,25 @@
     if (a.length === b.length && a.every(function (x, i) { return close(x,b[i]); })) return enforceForm(q,answer,'correct');
     return 'wrong';
   }
+  function responses(q) {
+    if (Array.isArray(q.acceptedResponses)) return q.acceptedResponses;
+    return [q.answer].concat(q.responseType==='short' ? q.acceptedAnswers || [] : []).filter(function(x){return typeof x==='string' && x.length;});
+  }
+  function same(a,b) {
+    if (!Array.isArray(a) || !Array.isArray(b)) return a===b;
+    if (a.length!==b.length) return false;
+    var left=a.slice().sort(),right=b.slice().sort();
+    return left.every(function(value,i){return value===right[i];});
+  }
+  function hasAnswer(value) { return Array.isArray(value) ? value.length>0 : typeof value==='string' && !!value.trim(); }
+  function copy(value) { return Array.isArray(value) ? value.slice() : value; }
+  function format(value) { return Array.isArray(value) ? value.join(', ') : value || ''; }
+  function choiceIds(q) {
+    var choices=q.choices || {};
+    return Array.isArray(q.choiceOrder) ? q.choiceOrder.filter(function(id){return Object.prototype.hasOwnProperty.call(choices,id);}) : Object.keys(choices);
+  }
   function check(q, answer) { var category=classify(q,answer);return category==='correct'?true:category==='wrong'?false:null; }
-  root.MathPracticeAnswers = {check: check, classify: classify, formFeedback: formFeedback, enforceForm: enforceForm, gradingNotice: gradingNotice};
+  root.MathPracticeAnswers = {check: check, classify: classify, formFeedback: formFeedback, enforceForm: enforceForm, gradingNotice: gradingNotice,
+    responses:responses,same:same,hasAnswer:hasAnswer,copy:copy,format:format,choiceIds:choiceIds};
   if (typeof module !== 'undefined') module.exports = root.MathPracticeAnswers;
 })(typeof window === 'undefined' ? globalThis : window);

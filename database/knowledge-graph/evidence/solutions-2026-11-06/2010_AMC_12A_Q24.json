@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2010_AMC_12A_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "492b62d795aba8e9c04b33e472218694c8a4e093967ef4007eac8a58d62b70a8",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "f03be9bd0d8c60b95e494e2eec9bd3acda643d1f350ea13f1502cd7b27b2d21d",
+  "solutionFigureHashes": {},
+  "candidateHash": "fadfed77fee699124a6c0ee44b30be87677162f585031187382e792edb9c8f6c",
+  "candidate": {
+    "questionId": "2010_AMC_12A_Q24",
+    "derivedAnswer": "12, choice B",
+    "answerStatus": "matches",
+    "answerReason": "The sine product is positive on six intervals in (0, 1/2), with six reflected intervals in (1/2, 1). The midpoint and endpoints are excluded zeros, giving 12 disjoint domain intervals.",
+    "methods": [
+      {
+        "id": "half-interval-sign-analysis",
+        "label": "Track signs on half the interval",
+        "explanation": "A real logarithm requires a positive argument. Write\n\\[\nP(x)=\\prod_{k=1}^{8}\\sin(k\\pi x).\n\\]\nWe must count the open intervals on which \\(P(x)>0\\). Negative sine factors are allowed, provided their product is positive.\n\nFirst use symmetry to reduce the work. For each integer \\(k\\),\n\\[\n\\sin(k\\pi(1-x))=(-1)^{k+1}\\sin(k\\pi x).\n\\]\nThe eight signs multiply to \\((-1)^{2+3+\\cdots+9}=(-1)^{44}=1\\), so \\(P(1-x)=P(x)\\). Also, \\(P(0)=P(1/2)=P(1)=0\\). Thus every positive interval in \\((0,1/2)\\) has a separate reflected interval in \\((1/2,1)\\).\n\nA factor \\(\\sin(k\\pi x)\\) vanishes exactly when \\(kx\\) is an integer. Consequently, every zero in \\((0,1/2)\\), when written as a reduced fraction, has denominator at most 8. Listing these fractions in increasing order gives\n\\[\n\\begin{gathered}\n\\frac18,\\ \\frac17,\\ \\frac16,\\ \\frac15,\\ \\frac14,\\\\\n\\frac27,\\ \\frac13,\\ \\frac38,\\ \\frac25,\\ \\frac37.\n\\end{gathered}\n\\]\nThis list is exhaustive: for each denominator from 2 through 8, take the positive numerators less than half that denominator and retain only reduced fractions.\n\nAt a reduced fraction \\(p/q\\), exactly those factors whose indices are multiples of \\(q\\) vanish. At \\(1/4\\), two factors vanish, with indices 4 and 8; at \\(1/3\\), two vanish, with indices 3 and 6. At every other listed zero, exactly one factor vanishes. Each vanishing sine changes sign as we cross its zero. Thus the product keeps its sign at \\(1/4\\) and \\(1/3\\), and changes sign at each of the other eight zeros. All zeros themselves remain excluded.\n\nFor \\(0<x<1/8\\), every sine factor is positive. Following the sign changes through the ordered list, the positive intervals are exactly\n\\[\n\\begin{gathered}\n(0,\\tfrac18),\\quad(\\tfrac17,\\tfrac16),\\\\\n(\\tfrac15,\\tfrac14),\\quad(\\tfrac14,\\tfrac27),\\\\\n(\\tfrac38,\\tfrac25),\\quad(\\tfrac37,\\tfrac12).\n\\end{gathered}\n\\]\nBetween consecutive zeros, every factor has constant sign, so no further intervals can occur. Notice that the excluded zero \\(1/4\\) separates two positive intervals even though the product does not change sign there.\n\nThere are six intervals on this half, and symmetry gives six more. Because \\(1/2\\) is excluded, none join across the midpoint. Therefore \\(n=6+6=\\boxed{12}\\), choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_h028",
+          "cnm_h049",
+          "cnm_h061",
+          "cnm_h064"
+        ],
+        "prerequisiteIds": [
+          "cnm_h046",
+          "cnm_h060"
+        ],
+        "levelReason": "All steps use high-school logarithm domains, sine zeros and signs, a trigonometric reflection identity, and elementary interval counting."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h028",
+      "cnm_h061"
+    ],
+    "supportIds": [
+      "cnm_h046",
+      "cnm_h060"
+    ],
+    "annotationRationale": "The task-level targets are determining the domain through positivity and analyzing trigonometric signs. The written method additionally locates zeros and uses a reduction identity to reflect the half-interval count. Logarithm-domain knowledge and the unit-circle meaning of sine support the method. Coincident zeros are treated explicitly so that excluded points are counted correctly.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2010_AMC_12A_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "The ten listed zeros exhaust (0, 1/2). Only 1/4 and 1/3 have two vanishing factors; the other eight change the product's sign. The six stated positive intervals are correct, including the split at 1/4. Reflection gives six more, separated by the excluded midpoint.",
+    "levelCheck": "High-school logarithm domains and trigonometric signs suffice. The explanation handles coincident zeros and excluded endpoints explicitly.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Domain and trigonometric signs are appropriate assessed targets. Zeros and reduction formulas are correctly method-local, with logarithm-domain and sine-definition support.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "half-interval-sign-analysis": "half-interval-sign-analysis"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "ecb251b15072ce941489a5efdd26b6adcccc9742a8f2dbd9d6ca8af2dfe7a6a9",
+    "inputHash": "a3f479e64854bf4b4a32c71b8ecb40496c95c3d3e7f126114d4528cc93a26aef",
+    "authorInputHash": "2a577471c33cf575eb34bfc1d86eb8b01d4f89dfbe9c3c8e23101ec8bff86980",
+    "reviewInputHash": "cf049a7b1a5ff70a1b1d396fa6075d18607beb6400d7f15627465c23d128c677",
+    "authorResponseHash": "55c045d329a3f87e7d2957b9e43a9237295e623fcc63a9c40f97d8acafb4058d",
+    "reviewerResponseHash": "fb3457e6bd501871494b80402af8934fe893dd8c856bc84f14f8f0f678e694bf",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

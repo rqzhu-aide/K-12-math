@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1976_AMC_12_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "8dabf50941eaf0515d4c6a87f3f2e627e95f6b0c52cf9009a69b7714bf2e0c64",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "aea03c41ebb2f1c22aca057b3a942d4214f553f56d01fa60882ecc3020e758d2",
+  "solutionFigureHashes": {},
+  "candidateHash": "51e63a0d0c9ea7311825cc9809ae60eb97ecd65f0607278d0813ce1af8d586a6",
+  "candidate": {
+    "questionId": "1976_AMC_12_Q23",
+    "derivedAnswer": "A; the expression is an integer for every allowed \\(k,n\\).",
+    "answerStatus": "matches",
+    "answerReason": "The expression equals \\(\\binom n{k+1}-\\binom nk\\), a difference of two integers throughout \\(1\\le k<n\\).",
+    "methods": [
+      {
+        "id": "adjacent-binomial-difference",
+        "label": "Recognize a difference of binomial coefficients",
+        "explanation": "The denominator \\(k+1\\) suggests comparing \\(\\binom nk\\) with \\(\\binom n{k+1}\\). From the factorial formula,\n\\[\n\\frac{n-k}{k+1}\\binom nk\n=\\frac{n!}{(k+1)!(n-k-1)!}\n=\\binom n{k+1}.\n\\]\nThese factorials are defined because \\(1\\le k<n\\), so \\(k+1\\le n\\) and \\(n-k-1\\ge0\\). Also, \\(k+1>0\\), so no division by zero occurs.\n\nNow split the given numerator as\n\\[\nn-2k-1=(n-k)-(k+1).\n\\]\nIt follows that\n\\[\n\\begin{aligned}\n\\frac{n-2k-1}{k+1}\\binom nk\n&=\\left(\\frac{n-k}{k+1}-1\\right)\\binom nk\\\\\n&=\\binom n{k+1}-\\binom nk.\n\\end{aligned}\n\\]\nEach binomial coefficient is an integer because it counts selections of the indicated size from \\(n\\) distinct objects. Both selection sizes are allowed here, including the endpoint \\(k=n-1\\), when \\(\\binom n{k+1}=\\binom nn=1\\). Their difference is therefore always an integer. The answer is \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_h237"
+        ],
+        "prerequisiteIds": [
+          "cnm_h236",
+          "math:factorial-notation"
+        ],
+        "levelReason": "The proof uses the supplied factorial formula and the elementary counting meaning of a binomial coefficient."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h237"
+    ],
+    "supportIds": [
+      "cnm_h236",
+      "math:factorial-notation"
+    ],
+    "annotationRationale": "The factorial formula is used symbolically to identify the expression as a difference of neighboring combination numbers. The combination concept justifies integrality, while factorial notation supports cancellation and the endpoint involving 0!. No parity or prime-divisibility method is needed.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1976_AMC_12_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "Factorial cancellation gives (n-k)C(n,k)/(k+1)=C(n,k+1), so the expression equals C(n,k+1)-C(n,k). Both counts are integers, including k=n-1; all factorial arguments and denominators are valid.",
+    "levelCheck": "The factorial manipulation and counting interpretation are elementary and sufficiently explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The combination formula, selection-count interpretation, and factorial prerequisites match the actual argument.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "adjacent-binomial-difference": "adjacent-binomial-difference"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "196e5bc8a9e7b62dda1999613b2075faaed7cbfcaf08e6526106dd65758d196f",
+    "inputHash": "e1554e9911f6d2f1db1caf6bf8efc47fc3f32b45a7db893d20621f0d39971725",
+    "authorInputHash": "118eb018c0d7042d9ec75f4e78e15078634b57b9c87ebd4624ce51cacda3512f",
+    "reviewInputHash": "2306ac67b12640880116be3602c0759623aa20979f596f4727edf43bb26a14df",
+    "authorResponseHash": "efa927e327737293d4b96cbf9b9e162a5464a56c4bb64a4c3aba29350e738909",
+    "reviewerResponseHash": "4e83df28e704d4275e3c4a3eea883ef7e5d410dcb6c7d2b78edb078409c65542",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

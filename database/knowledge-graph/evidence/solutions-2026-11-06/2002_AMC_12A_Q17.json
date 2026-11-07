@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2002_AMC_12A_Q17",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "6b6a01bc73116adc00cff80688849b730cd57d2567bd269fe783f0b2e10ef8a5",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "59e31a92aa0da4727f7934b6b09b62410e7a64d1b42a233ad4a5a4b6d5a595fc",
+  "solutionFigureHashes": {},
+  "candidateHash": "3520de20abdc58b7f8e787f5e44ce0e4f261f0e662c62adececc95a5b77be553",
+  "candidate": {
+    "questionId": "2002_AMC_12A_Q17",
+    "derivedAnswer": "207, choice B",
+    "answerStatus": "matches",
+    "answerReason": "Digits 4, 6, and 8 must occupy tens or higher positions, forcing a total of at least 207. The prime set {2,5,7,43,61,89} attains that total.",
+    "methods": [
+      {
+        "id": "place-value-lower-bound",
+        "label": "Bound the cost of the even digits",
+        "explanation": "To minimize the sum, we want digits in low place values. The restriction that every number is prime forces some digits into higher positions.\n\nThe only even prime is \\(2\\), so none of the digits \\(4,6,8\\) can be the units digit of a prime, including a one-digit prime. Each must therefore occupy a tens or higher position, contributing at least ten times its face value.\n\nThe sum of all nine digit values is \\(1+2+\\cdots+9=45\\). Every digit contributes at least its face value, and the digits \\(4,6,8\\) contribute at least nine additional copies of their values. If \\(S\\) is the sum of the primes, then\n\\[\nS\\ge45+9(4+6+8)=207.\n\\]\nHigher positions can only increase these contributions, so this bound applies to every allowed set.\n\nThe set\n\\[\n\\{2,5,7,43,61,89\\}\n\\]\nuses each nonzero digit exactly once and sums to \\(207\\). Its entries are prime: the three two-digit entries are below \\(100\\) and have no prime divisor among \\(2,3,5,7\\), the only possible prime divisors below \\(10\\). Thus the bound is attained, and the smallest sum is \\(\\boxed{207}\\), choice B.",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_p157"
+        ],
+        "prerequisiteIds": [
+          "cnm_p096",
+          "cnm_p154",
+          "cnm_p153"
+        ],
+        "levelReason": "The proof uses decimal place value, elementary divisibility, and an explicit construction, all within elementary contest number theory."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle",
+      "cnm_p157"
+    ],
+    "supportIds": [
+      "cnm_p096",
+      "cnm_p154",
+      "cnm_p153"
+    ],
+    "annotationRationale": "The central targets are using primality restrictions and proving an attained minimum. Base-ten place value supports the contribution bound, the even-ending divisibility test forces 4, 6, and 8 out of units positions, and factor knowledge supports verification of the constructed primes.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2002_AMC_12A_Q17",
+    "decision": "accept",
+    "mathematicalCheck": "Digits 4, 6, and 8 cannot end a prime, so their place values force S≥45+9(4+6+8)=207. The set {2,5,7,43,61,89} contains primes, uses every nonzero digit once, and sums to 207.",
+    "levelCheck": "The place-value bound and small-prime checks are elementary and suitable for AMC 12.",
+    "methodDistinctness": "One complete lower-bound and attaining-construction argument is sufficient.",
+    "annotationCheck": "Primality and an attained extremum are appropriate targets. Decimal place value, divisibility, and factors support the actual argument.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "place-value-lower-bound": "place-value-lower-bound"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "6c99cebeaa3ad921db1a9d4059dd2eb549300c6468e3d444a94efcea546055c1",
+    "inputHash": "b75f4f6f85ed57c1f69ed2b0ab10ce4de321edc6feae738fb249a00f81074848",
+    "authorInputHash": "62c059cfd5a484d3693240bb232f3cc28414a4b18acf33fe64526e1c7fb255f7",
+    "reviewInputHash": "56f3428a842357ca79bd02cd7c4bc9bd7489f3fa8a3ae8b32d1e407377064e7b",
+    "authorResponseHash": "2b82e0ff6f50fdf03f03898ae675bb26a133153ae935e609705ecdd521eec258",
+    "reviewerResponseHash": "110f6c5627eca8e2a08341af69bd6ccb18f612d4bdfa8c1b4c4d2518b51bd36f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

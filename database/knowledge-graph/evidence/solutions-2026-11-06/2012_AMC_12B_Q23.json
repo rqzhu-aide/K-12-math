@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2012_AMC_12B_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ea09a9f91ca8d75a8498d23fe8140690b11e681ca5fb18736bdc8cd25c71eea3",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "98589baa742249361dd7eb21679382f20f14364efef9a54c1cdf037df9af1baa",
+  "solutionFigureHashes": {},
+  "candidateHash": "5ff0f6e09366a8e2981d3fb6f315f9905ef11163c8bb10047bc6b96ac75363fb",
+  "candidate": {
+    "questionId": "2012_AMC_12B_Q23",
+    "derivedAnswer": "B (92)",
+    "answerStatus": "matches",
+    "answerReason": "The unit-circle condition permits five polynomials from differences supported on indices 2 and 4, one supported on index 3, and one supported on index 5. Their P(1) values sum to 60 + 12 + 20 = 92.",
+    "methods": [
+      {
+        "id": "coefficient-differences-and-real-parts",
+        "label": "Turn ordered coefficients into nonnegative differences",
+        "explanation": "The ordered coefficients suggest looking at their successive differences, because those differences are nonnegative. Define\n\\[\n(u_1,u_2,u_3,u_4,u_5)\n=(4-a,a-b,b-c,c-d,d).\n\\]\nThese are nonnegative integers with sum \\(4\\). Conversely, every such vector uniquely recovers allowed coefficients by summing from the right, for example \\(d=u_5\\), \\(c=u_4+u_5\\), and so on.\n\nLet \\(z\\) be a zero with \\(|z|=1\\). Since \\(P(1)\\ge4\\), we have \\(z\\ne1\\); also \\(z\\ne0\\). Multiplying by \\(1-z\\) makes the successive differences appear:\n\\[\n(1-z)P(z)=-4z^5+\\sum_{j=1}^{5}u_jz^{5-j}.\n\\]\nAt the zero, division by \\(z^5\\) gives\n\\[\n4=\\sum_{j=1}^{5}u_jz^{-j}.\n\\]\n\nEvery \\(z^{-j}\\) has modulus \\(1\\), so its real part is at most \\(1\\), with equality only when \\(z^{-j}=1\\). Taking real parts and using \\(\\sum u_j=4\\), we obtain\n\\[\n0=\\sum_{j=1}^{5}u_j\\bigl(1-\\operatorname{Re}(z^{-j})\\bigr).\n\\]\nEvery summand is nonnegative. Consequently,\n\\[\nu_j>0\\quad\\Longrightarrow\\quad z^j=1.\n\\]\n\nAt least one \\(u_j\\) is positive, so \\(z\\) is a root of unity. Let \\(k\\) be the least positive integer with \\(z^k=1\\). Then \\(2\\le k\\le5\\). Moreover, \\(k\\) divides every index \\(j\\) for which \\(u_j>0\\): writing \\(j=qk+r\\), with \\(0\\le r<k\\), would otherwise give \\(z^r=1\\) with a smaller positive exponent.\n\nThere are therefore only these possibilities:\n\nIf \\(k=2\\), positive differences can occur only at indices \\(2,4\\). Thus \\(u_2=t\\), \\(u_4=4-t\\), and the others are zero, where \\(t=0,1,2,3,4\\).\n\nIf \\(k=3\\), only \\(u_3\\) can be positive, giving \\(u_3=4\\).\n\nIf \\(k=4\\), only \\(u_4\\) can be positive. This vector is already included in the first family, so it contributes no new polynomial.\n\nIf \\(k=5\\), only \\(u_5\\) can be positive, giving \\(u_5=4\\).\n\nAll these vectors do work. Choose \\(z=-1\\) for the first family, a nontrivial cube root of unity for the second, and a nontrivial fifth root of unity for the third. In each case all positive \\(u_j\\) have \\(z^j=1\\), so the displayed identity gives \\((1-z)P(z)=0\\). Because \\(z\\ne1\\), this proves \\(P(z)=0\\). The three families of difference vectors are disjoint, so they give exactly seven distinct polynomials.\n\nTo evaluate their contributions, notice that \\(u_j\\) occurs in exactly \\(j\\) of the five coefficients \\(4,a,b,c,d\\). Hence\n\\[\nP(1)=u_1+2u_2+3u_3+4u_4+5u_5.\n\\]\nThe first family gives \\(16-2t\\), namely \\(16,14,12,10,8\\), whose sum is \\(60\\). The other two polynomials give \\(12\\) and \\(20\\). Both occurrences of \\(12\\) are included because they come from different polynomials. The requested sum is\n\\[\n60+12+20=\\boxed{92},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "math:roots-of-unity",
+          "math:integer-diophantine-equations",
+          "math:nonnegative-sum-zero"
+        ],
+        "prerequisiteIds": [
+          "cnm_146",
+          "cnm_h098",
+          "cnm_h100",
+          "cnm_029"
+        ],
+        "levelReason": "Uses finite polynomial algebra, real parts of unit complex numbers, elementary roots of unity, and a small exhaustive integer classification."
+      }
+    ],
+    "assessedIds": [
+      "math:roots-of-unity",
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_146",
+      "cnm_h098",
+      "cnm_029"
+    ],
+    "annotationRationale": "The mathematical targets are classifying the unit-root possibilities and the compatible integer coefficient choices. The actual method introduces coefficient differences and applies the zero-sum criterion to nonnegative real-part deficits. Polynomial expansion, complex modulus, and expression evaluation are supporting knowledge.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2012_AMC_12B_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "The polynomial identity is correct. Nonnegative real-part deficits force z^j=1 at every positive difference. The resulting supports give five vectors on indices 2 and 4, one on index 3, and one on index 5. Sufficiency is verified, and their contributions total 60+12+20=92, counting both distinct polynomials with value 12.",
+    "levelCheck": "Elementary complex-number algebra and roots of unity are appropriate for AMC 12. The decisive equality condition and exhaustive classification are explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Roots of unity and integer classification fit the targets. The nonnegative-sum-zero node accurately describes the method, and the supporting polynomial and complex-number nodes are justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "coefficient-differences-and-real-parts": "coefficient-differences-and-real-parts"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "484756d600d46bb153727bf8189df7d44fd9588c228f02c09ae50843c2426538",
+    "inputHash": "de040839f9b4f487f4876f30810cfe6e97ec085ceca47500c8379e9efa26a95a",
+    "authorInputHash": "accd9834480f248fc2750eb24a5206b789f18cbb6526201a57ab6f2bf704782f",
+    "reviewInputHash": "d69ba8c8aeb90a443de7b93fdeac605e3d45dc1d622023b85508b257a92b6a1f",
+    "authorResponseHash": "7cf43bb9028259cddd15bceef82b6151446c2ab559755d8629210101df6c0a15",
+    "reviewerResponseHash": "15371afe91fbe183e38b8134321e63acff64a76ef03f9291c3373cbbffb22e12",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

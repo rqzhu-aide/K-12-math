@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1976_AMC_12_Q30",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "0042eeb1007c8522ba4199a30b5fb6319faef25cc16530574b6be9256536ab98",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "fbeefaab94ab217ef7f630459121f3e232a0d2ec4ce4a39bbd3b2f3c08687780",
+  "solutionFigureHashes": {},
+  "candidateHash": "515b3833b5674c337c5a539b40617fe874e9d662d3a6a1e0471c1f4d28745ba5",
+  "candidate": {
+    "questionId": "1976_AMC_12_Q30",
+    "derivedAnswer": "There are \\(6\\) distinct ordered triples, choice E.",
+    "answerStatus": "matches",
+    "answerReason": "The invertible substitution \\(X=x\\), \\(Y=2y\\), \\(Z=4z\\) forces the transformed coordinates to be 2, 4, and 6 in any order. All six orderings work and give distinct original triples.",
+    "methods": [
+      {
+        "id": "scaled-symmetric-root-polynomial",
+        "label": "Rescale the variables and recover them as roots",
+        "explanation": "The coefficients in the first equation suggest setting\n\\[\nX=x,\\qquad Y=2y,\\qquad Z=4z.\n\\]\nThis also makes the other equations symmetric: \\(XY+YZ+ZX\\) is twice the original second left side, and \\(XYZ=8xyz\\). Thus\n\\[\nX+Y+Z=12,\\qquad XY+YZ+ZX=44,\\qquad XYZ=48.\n\\]\nThese three expressions determine the coefficients of a polynomial whose roots are \\(X,Y,Z\\). Indeed, multiplying gives\n\\[\n\\begin{aligned}\n(t-X)(t-Y)(t-Z)\n&=t^3-(X+Y+Z)t^2\\\\\n&\\quad +(XY+YZ+ZX)t-XYZ\\\\\n&=t^3-12t^2+44t-48.\n\\end{aligned}\n\\]\nTo factor this cubic, testing \\(t=2\\) gives zero, so \\(t-2\\) is a factor. Division and then quadratic factorization give\n\\[\n\\begin{aligned}\nt^3-12t^2+44t-48\n&=(t-2)(t^2-10t+24)\\\\\n&=(t-2)(t-4)(t-6).\n\\end{aligned}\n\\]\nTherefore \\(X,Y,Z\\) must be \\(2,4,6\\), each appearing once. In particular, each of the three distinct numbers \\(2,4,6\\) makes \\((t-X)(t-Y)(t-Z)\\) zero, so each must equal one of its three listed roots.\n\nConversely, every ordering of \\(2,4,6\\) has sum \\(12\\), pairwise-product sum \\(44\\), and product \\(48\\), so every such ordering satisfies the transformed equations. There are \\(3\\) choices for \\(X\\), then \\(2\\) for \\(Y\\), and \\(1\\) for \\(Z\\), giving\n\\[\n3\\cdot2\\cdot1=6.\n\\]\nThe inverse substitution \\(x=X\\), \\(y=Y/2\\), \\(z=Z/4\\) is unique and reverses every transformation, so these orderings give all original solutions without duplication. The answer is \\(\\boxed{6}\\), choice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "math:polynomial-roots-coefficients",
+          "math:polynomial-remainder-factor"
+        ],
+        "prerequisiteIds": [
+          "cnm_146",
+          "cnm_029",
+          "cnm_032",
+          "cnm_h231",
+          "cnm_h233"
+        ],
+        "levelReason": "The polynomial identity is derived by direct multiplication. Polynomial factorization and elementary ordered counting are within historical AHSME scope."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_h231",
+      "cnm_h233",
+      "cnm_032"
+    ],
+    "annotationRationale": "The task-level target is determining the exact number of ordered real solutions of a nonlinear polynomial system. The catalog lacks a suitable route-neutral node for that target, so assessedIds is empty and a missing node is proposed. Polynomial root and coefficient identities remain method-local: this method uses them after rescaling, but elimination could solve the problem without them. The factor theorem and polynomial division describe the actual factorization step. Polynomial structure, ordered-arrangement meaning, and the multiplication principle support the written method; polynomial multiplication and evaluation are its local algebraic prerequisites.",
+    "needsNewNodes": [
+      {
+        "name": "Counting ordered real solutions of polynomial systems",
+        "description": "Determine the exact finite number of ordered real tuples satisfying simultaneous polynomial equations. Prove that all solutions are included, verify that every counted candidate satisfies the original system, and count distinct coordinate assignments without duplication.",
+        "reason": "The available system-solving nodes cover linear systems or a restricted two-variable quadratic setting. Neither covers this three-variable nonlinear system. Polynomial identities, elimination, and bijective counting describe possible methods rather than the route-neutral solution-count target."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1976_AMC_12_Q30",
+    "decision": "accept",
+    "mathematicalCheck": "The substitution gives sum 12, pairwise-product sum 44, and product 48. The resulting polynomial factors correctly as (t-2)(t-4)(t-6), forcing the transformed coordinates to contain each distinct root exactly once. Every ordering satisfies the transformed system, and the unique inverse substitution gives exactly 3·2·1=6 original triples without duplication.",
+    "levelCheck": "Direct polynomial expansion, factorization, and elementary counting fit historical AHSME scope. The explanation motivates the substitution and justifies both completeness and the converse.",
+    "methodDistinctness": "One complete, accessible method is sufficient; no additional method is needed.",
+    "annotationCheck": "The method nodes, prerequisites, and support IDs match the written reasoning. Keeping root-coefficient identities method-local is appropriate. The empty assessedIds and proposed node honestly identify the missing route-neutral system-solution counting scope without asserting an unsupported catalog equivalence.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "scaled-symmetric-root-polynomial": "scaled-symmetric-root-polynomial"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "32e7e97c91a0715bb4c407e5ce91e8576a7985d4d82028bc7c71faa2faa9212a",
+    "inputHash": "e1554e9911f6d2f1db1caf6bf8efc47fc3f32b45a7db893d20621f0d39971725",
+    "authorInputHash": "b62699a9fa662b0553666e6b4a6c83031769d175ca887894fd2ba70874d0328f",
+    "reviewInputHash": "8f7f92b5f4a8b35c275ae188985346f83f737688e228f4518365f5ce4a8a3f48",
+    "authorResponseHash": "a98ef7fe895dd4e72f02dfd6ddb8ea20e493aaec8f5abc0175a5d383440f461f",
+    "reviewerResponseHash": "0831632387f02cff865831bea2e10ddcb90673b2e776d9db3613dfb6260bedf2",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,110 @@
+{
+  "Year": 2010,
+  "Level": "AMC 12",
+  "Batch": "A",
+  "Area": "Unclassified",
+  "Number": 18,
+  "Question": "A \\(16\\)-step path is to go from \\((-4,-4)\\) to \\((4,4)\\) with each step increasing either the \\(x\\)-coordinate or the \\(y\\)-coordinate by \\(1.\\) How many such paths stay outside or on the boundary of the square \\(-2\\le x\\le2,\\) \\(-2\\le y\\le2\\) at each step?",
+  "Question Type": "text",
+  "Choices": {
+    "A": "\\(92\\)",
+    "B": "\\(144\\)",
+    "C": "\\(1568\\)",
+    "D": "\\(1698\\)",
+    "E": "\\(12{,}800\\)"
+  },
+  "Choices Type": "text",
+  "Correct Answer": "D",
+  "Solution": "Add \\(4\\) to both coordinates. The path now goes from \\((0,0)\\) to \\((8,8)\\), and the square becomes \\(2\\le x\\le6\\), \\(2\\le y\\le6\\). Its forbidden interior lattice points have both coordinates in \\(\\{3,4,5\\}\\); its boundary is allowed.\n\nEvery path reaches the lines \\(x=3\\) and \\(y=3\\), and one is reached first because a step changes only one coordinate. First count paths reaching \\(x=3\\) before \\(y=3\\). When such a path first reaches \\(y=3\\), its \\(x\\)-coordinate is already at least \\(3\\). To avoid the interior, that coordinate must be \\(k\\in\\{6,7,8\\}\\). Thus its first step into \\(y=3\\) is uniquely\n\\[\n(k,2)\\longrightarrow(k,3).\n\\]\nBefore this step, the path stays at \\(y\\le2\\), so every path from \\((0,0)\\) to \\((k,2)\\) is allowed. Choosing the positions of its two upward steps gives \\(\\binom{k+2}{2}\\) possibilities. After the fixed crossing step, the path stays at \\(x\\ge6\\), so every continuation to \\((8,8)\\) is allowed. Such a continuation has five upward steps among \\(13-k\\) steps, giving \\(\\binom{13-k}{5}\\) possibilities.\n\nThe three values of \\(k\\) specify disjoint cases, and the crossing uniquely separates each path into its two counted pieces. Their total is\n\\[\n\\begin{aligned}\n&\\binom82\\binom75+\n\\binom92\\binom65+\n\\binom{10}2\\binom55\\\\\n&\\qquad=28\\cdot21+36\\cdot6+45\n=849.\n\\end{aligned}\n\\]\nSwapping \\(x\\) and \\(y\\) gives a reversible correspondence with paths reaching \\(y=3\\) first. These are the other exhaustive, disjoint case, so the required total is \\(2\\cdot849=\\boxed{1698}\\), choice \\(\\boxed{\\text{D}}\\).",
+  "Meta": {
+    "QuestionSource": "live-poshenloh",
+    "AnswerSource": "live-poshenloh-answer-key",
+    "SolutionSource": "Original Math Practice solution",
+    "AreaSource": "Pending topic curation",
+    "Concepts": "lattice paths; combinations; symmetry",
+    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2010A/solutions",
+    "SourceSHA256": "31e09e39a0978a0561c52553aad4f1f80611c6d64f556f0a75395496f4e5b550",
+    "Figures": [],
+    "FigureSources": {},
+    "SourceQuestionCount": 25,
+    "HistoricalSeries": "AMC 12",
+    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+    "Copyright": "Copyright Mathematical Association of America",
+    "License": "CC-BY-NC-SA-4.0",
+    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "TranscriptionSource": "LIVE by Po-Shen Loh",
+    "Modifications": [
+      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
+      "Third-party worked solution and solution-only figures omitted from the public distribution"
+    ],
+    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+    "SolutionReview": {
+      "status": "reviewed",
+      "solutionSHA256": "1a30f64bb0e0cf77a3a87bc3b48f4ffcc5d819f0f1b15cd8ac17389fbd33c5bf",
+      "questionContentHash": "0f45e4c18b0349ad41dc962995301bc7810099aad16771996353ce5795d63ea6",
+      "evidence": {
+        "path": "knowledge-graph/evidence/solutions-2026-11-06/2010_AMC_12A_Q18.json",
+        "sha256": "465f43c004c910e1401ff9b5fa98099109330e0e869daea2574e283fe586b769"
+      },
+      "author": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "reviewer": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      }
+    }
+  },
+  "ID": "2010_AMC_12A_Q18",
+  "Bank": "amc",
+  "SchemaVersion": "2.0",
+  "ResponseType": "choice",
+  "Language": "en",
+  "domain": [],
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "1.0.0",
+    "contentHash": "0f45e4c18b0349ad41dc962995301bc7810099aad16771996353ce5795d63ea6",
+    "status": "mapped",
+    "reviewStatus": "machine_scope_audited",
+    "assessedIds": [
+      "cnm_h232"
+    ],
+    "supportIds": [
+      "cnm_h236",
+      "cnm_082"
+    ],
+    "routes": [
+      {
+        "id": "boundary-crossing-count",
+        "label": "Partition by the boundary crossing",
+        "nodeIds": [
+          "cnm_h237"
+        ]
+      },
+      {
+        "id": "grid-state-recurrence",
+        "label": "Dynamic programming on allowed vertices",
+        "nodeIds": [
+          "math:recursive-counting-probability"
+        ]
+      },
+      {
+        "id": "solution:boundary-crossing-count:1a30f64bb0e0",
+        "label": "Count paths by their first crossing",
+        "nodeIds": [
+          "cnm_h232",
+          "cnm_h237",
+          "math:bijective-counting",
+          "cnm_h230",
+          "cnm_h231",
+          "cnm_h236",
+          "cnm_082"
+        ]
+      }
+    ],
+    "flags": []
+  }
+}

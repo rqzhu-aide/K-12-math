@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1997_AMC_12_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "d53e8dbdb304536e67464d48c15af7dca1422c2ba77a37a135f6dc728bfd4a8d",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "4196f9148a3c4989360c2e41ec7671f912add984d3edf173df3166fbb82aae28",
+  "solutionFigureHashes": {},
+  "candidateHash": "8c2658ea125a7f5053fa856a5549b1dfd149c8ecda90e615860dafdea9dc1974",
+  "candidate": {
+    "questionId": "1997_AMC_12_Q24",
+    "derivedAnswer": "B: digit 5",
+    "answerStatus": "matches",
+    "answerReason": "The first 96 entries consist of 70 beginning with 1, 20 beginning with 23, and 6 beginning with 245. The next entry is 24678, which omits 5.",
+    "methods": [
+      {
+        "id": "prefix-block-counting",
+        "label": "Count consecutive blocks by their leading digits",
+        "explanation": "A five-digit rising number uses five distinct digits from 1 through 9. Zero cannot occur: it cannot lead the number, and it would be smaller than any digit preceding it. Once five digits are chosen, their increasing order is forced.\n\nNumbers of equal length are ordered by their first differing digit. This lets us skip entire blocks with the same leading digits.\n\nThe numbers beginning with 1 come first. Their remaining four digits are chosen from \\(2,3,\\ldots,9\\), giving\n\\[\n\\binom84=70\n\\]\nnumbers. Thus the desired entry is the 27th after this block.\n\nThe next block begins with 23, since 3 is the smallest possible second digit after 2. Choosing its last three digits from \\(4,5,\\ldots,9\\) gives\n\\[\n\\binom63=20\n\\]\nnumbers. We have now passed \\(70+20=90\\) entries.\n\nNext come numbers beginning with 24, and the first block among these begins with 245. Its last two digits are chosen from \\(6,7,8,9\\), giving\n\\[\n\\binom42=6\n\\]\nmore entries. These disjoint blocks account for exactly the first 96 numbers, without repetition because each digit selection has only one increasing arrangement.\n\nThe next number uses the next prefix, 246, followed by the smallest available digits, 7 and 8. Therefore the 97th number is \\(24678\\), which does not contain \\(\\boxed{5}\\), choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_h239"
+        ],
+        "prerequisiteIds": [
+          "cnm_h237",
+          "cnm_h230"
+        ],
+        "levelReason": "The method uses combinations and disjoint counting blocks, with ordinary decimal comparison to establish their order."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h239"
+    ],
+    "supportIds": [
+      "cnm_h237",
+      "cnm_h230"
+    ],
+    "annotationRationale": "The central target is counting digit selections whose internal order is forced. Combination-number evaluation supports each block count, and the addition principle combines the disjoint blocks preceding the requested rank.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1997_AMC_12_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "The consecutive prefix blocks 1, 23, and 245 contain 70, 20, and 6 numbers, respectively. They exhaust exactly the first 96 entries. The next entry is 24678, so 5 is the missing digit among the choices.",
+    "levelCheck": "The solution explains why digit selections determine unique numbers and why the counted blocks occur consecutively, resolving both multiplicity and ranking.",
+    "methodDistinctness": "One complete prefix-counting method is sufficient.",
+    "annotationCheck": "Combination applications are the main target. Combination evaluation and addition of disjoint counts support the actual method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "prefix-block-counting": "prefix-block-counting"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "58c547961ea51c227099261c9ad4a0505e9fb555d8e7efe2291a4aec4a178fc4",
+    "inputHash": "a00f12ef7270d9b17723488f102177cf2c8506dd706a916d78bfd2354213efc3",
+    "authorInputHash": "2086f3d111bfbde48dda206f3d0174c6900c824459d17cbcf1e11bbeffcdeb7d",
+    "reviewInputHash": "9eb560cb22244134d063229f03a5e5ef7dcd979997daf9bcee124547b69010b3",
+    "authorResponseHash": "5b53fb0bbe881d9df8e52146f6d7581ae4b371d20329c38fece04954b12118a4",
+    "reviewerResponseHash": "ea6c7d746dc1fa09d253bc5e7917984072c941048f51740c72ff7120b8546ce1",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

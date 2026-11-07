@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2013_AMC_12A_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "6835836cc3546a97150ef9de4c70d48caa01d054cac3a7563eeee5ebdb997aff",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "fe5b64353f053cd1816b24c7441f9ece39093bf1dab1eb65fb994a25e323eeca",
+  "solutionFigureHashes": {},
+  "candidateHash": "69293272a0f1b3f87b8fa673a647750d6cae15c2153fb180b11cf22d23bd56df",
+  "candidate": {
+    "questionId": "2013_AMC_12A_Q24",
+    "derivedAnswer": "223/286 (E)",
+    "answerStatus": "matches",
+    "answerReason": "Exactly 10080 of the C(66,3)=45760 segment selections fail the strict triangle inequality, leaving probability 223/286.",
+    "methods": [
+      {
+        "id": "chord-types-and-failed-triangle-inequalities",
+        "label": "Count the length combinations that fail",
+        "explanation": "Only the three lengths matter; the chosen segments need not meet. Scale the circumradius of the regular \\(12\\)-gon to \\(1\\), which preserves every triangle inequality. Let \\(d_k\\) be the length of a chord joining vertices \\(k\\) steps apart along the shorter arc, for \\(1\\le k\\le6\\). Its central angle is \\(30k^\\circ\\), so the cosine law gives\n\\[\nd_k^2=2-2\\cos(30k^\\circ).\n\\]\nUsing the special-angle cosine values, the six lengths in increasing order are\n\\[\n\\begin{gathered}\nd_1=\\sqrt{2-\\sqrt3},\\quad d_2=1,\\quad d_3=\\sqrt2,\\\\\nd_4=\\sqrt3,\\quad d_5=\\sqrt{2+\\sqrt3},\\quad d_6=2.\n\\end{gathered}\n\\]\nThere are \\(12\\) segments of each type \\(1\\) through \\(5\\): start at any vertex and move forward \\(k\\) steps. Type \\(6\\) consists of the six diameters, since that construction counts each diameter from both endpoints. Thus there are \\(5\\cdot12+6=66\\) segments, and \\(\\binom{66}{3}\\) equally likely selections.\n\nFor sorted types \\(i\\le j\\le k\\), the lengths fail to form a triangle of positive area exactly when \\(d_i+d_j\\le d_k\\). We need the following exact thresholds:\n\\[\n\\begin{gathered}\nd_2<2d_1<d_3,\\qquad d_3<d_1+d_2<d_4,\\\\\nd_1+d_3=d_5,\\qquad d_1+d_4>d_6,\\\\\n2d_2=d_6,\\qquad d_2+d_3>d_6.\n\\end{gathered}\n\\]\nHere is a verification of the less immediate comparisons. From \\(3/2<\\sqrt3<7/4\\), we obtain \\(1/2<d_1<1/\\sqrt2\\). Also,\n\\[\n(\\sqrt3-1)^2-d_1^2=2-\\sqrt3>0,\n\\]\nso \\(1+d_1<\\sqrt3\\). Together with \\(\\sqrt2<3/2\\), these bounds give the first two thresholds and \\(d_1+\\sqrt3>2\\). Finally, \\(d_1d_5=1\\) and \\(d_1^2+d_5^2=4\\), so \\((d_5-d_1)^2=2\\). Since \\(d_5>d_1\\), this proves \\(d_5=d_1+\\sqrt2\\).\n\nThe thresholds give the complete list of failed sorted types:\n\n• \\((1,1,k)\\) with \\(k=3,4,5,6\\), contributing \\(\\binom{12}{2}(12+12+12+6)=\\binom{12}{2}\\cdot42\\).\n\n• \\((1,2,k)\\) with \\(k=4,5,6\\), contributing \\(12\\cdot12(12+12+6)=144\\cdot30\\).\n\n• \\((1,3,k)\\) with \\(k=5,6\\), contributing \\(12\\cdot12(12+6)=144\\cdot18\\).\n\n• \\((2,2,6)\\), contributing \\(\\binom{12}{2}\\cdot6\\).\n\nThere are no others: if the smallest type is \\(1\\), a second type of at least \\(4\\) already makes the sum exceed the largest possible length \\(2\\). If the smallest type is \\(2\\), a second type of at least \\(3\\) does the same. If the smallest type is at least \\(3\\), the sum is at least \\(2\\sqrt2>2\\). Each selection has a unique sorted type list, so the cases do not overlap. The combination factors choose distinct segments even when their lengths agree.\n\nThe failed count is\n\\[\n\\binom{12}{2}\\cdot42+144\\cdot30\n+144\\cdot18+\\binom{12}{2}\\cdot6\n=10080.\n\\]\nConsequently the desired probability is\n\\[\n1-\\frac{10080}{\\binom{66}{3}}\n=1-\\frac{10080}{45760}\n=\\boxed{\\frac{223}{286}},\n\\]\nchoice \\(\\text{E}\\).",
+        "nodeIds": [
+          "cnm_111",
+          "cnm_h137",
+          "cnm_h239",
+          "cnm_h139",
+          "math:general-cosine-law-application"
+        ],
+        "prerequisiteIds": [
+          "cnm_266",
+          "cnm_277",
+          "cnm_h065",
+          "cnm_h237",
+          "cnm_309"
+        ],
+        "levelReason": "This uses high-school chord geometry and cosine values, followed by strict triangle inequalities and elementary combinations. All failure cases and equality cases are checked."
+      }
+    ],
+    "assessedIds": [
+      "cnm_111",
+      "cnm_h137"
+    ],
+    "supportIds": [
+      "cnm_266",
+      "cnm_277",
+      "cnm_h239"
+    ],
+    "annotationRationale": "Triangle feasibility and classical probability are the route-neutral targets. The written route obtains chord lengths by the general cosine law, then counts the complementary event using length multiplicities and combinations. The existing sine-difference label is unnecessary for this method.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2013_AMC_12A_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "The chord multiplicities are 12,12,12,12,12,6. The exact comparisons, including d_1+d_3=d_5 and 2d_2=d_6, establish all four failure families and exclude equality cases correctly. Their 10080 selections out of C(66,3)=45760 give 223/286.",
+    "levelCheck": "The chord calculations, radical comparisons, and exhaustive counting are appropriate for AMC 12 and sufficiently explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Triangle feasibility and classical probability are route-neutral targets. General cosine-law applications cover the non-diameter chords, while combinations and complementary-event counting match the written route.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "chord-types-and-failed-triangle-inequalities": "chord-types-and-failed-triangle-inequalities"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "96cd550b551d9de9d9f2d248f84613ca49324e4d95d041203b9cce8111f90007",
+    "inputHash": "942ef01f4f961e30e18917136e2df0c223d6d1d6f37966a239da32992f2ceac2",
+    "authorInputHash": "31eb045d8cb4ac4e36ec2ad1102f608e83838b92508382d64960f3f8376bce35",
+    "reviewInputHash": "500ffc61e877f57d05a6f9d81fa9d0eb95cb575aa6ed8cf8717b9d461a3251c6",
+    "authorResponseHash": "b1d819c9d92c47997b6dd54a507a48da606dfddfbbbd51d4470bd8a7d3715e82",
+    "reviewerResponseHash": "d767a4fad4d034c06980203ddcaf4bda3f2cd9526a752a8ceded3cd71437ea6b",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1968_AMC_12_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "31e3691589491999df28ec3e3009881bebdf05f8da08fbcb065ef401feb9d57c",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "19ba339172654cce8713d0807adf307aeea87f4e46b794c7227fe69bca238b48",
+  "solutionFigureHashes": {},
+  "candidateHash": "62cfc44e9ee835ee2ec57f145936f9c2afb37bfd74d9ece1c8dc41ce86b5ddb6",
+  "candidate": {
+    "questionId": "1968_AMC_12_Q22",
+    "derivedAnswer": "E: Each segment is less than 1/2.",
+    "answerStatus": "matches",
+    "answerReason": "Four positive lengths form a nondegenerate simple quadrilateral exactly when the longest is shorter than the sum of the other three. With total length 1, this is equivalent to every length being less than 1/2.",
+    "methods": [
+      {
+        "id": "prove-side-feasibility",
+        "label": "Prove necessity and construct a shared diagonal",
+        "explanation": "A side must be shorter than the broken path formed by the other three sides. We will also show that this restriction is enough to construct a quadrilateral.\n\nLabel the four positive lengths \\(a\\ge b\\ge c\\ge d>0\\), with\n\\[\na+b+c+d=1.\n\\]\nIf they form a nondegenerate quadrilateral, the longest side satisfies\n\\[\na<b+c+d=1-a,\n\\]\nso \\(a<\\tfrac12\\). Thus every side is less than \\(\\tfrac12\\). Equality would force the three-side path to lie along the longest side, giving a degenerate figure.\n\nConversely, suppose every length is less than \\(\\tfrac12\\). We seek a diagonal of length \\(t\\) that can be shared by triangles with side lengths \\(a,b,t\\) and \\(c,d,t\\). The strict triangle inequalities require\n\\[\na-b<t<a+b,\n\\qquad c-d<t<c+d.\n\\]\nBecause \\(a<\\tfrac12\\), we have \\(a<b+c+d\\), hence \\(a-b<c+d\\). Also \\(c-d<c+d\\), since \\(d>0\\), and \\(c+d\\le a+b\\). Therefore the open interval\n\\[\n\\max(a-b,c-d)<t<c+d\n\\]\nis nonempty, and every \\(t\\) in it allows both nondegenerate triangles.\n\nJoin the triangles on opposite sides of their common diagonal. Their boundary has the four prescribed side lengths and cannot cross itself. We can choose \\(t\\) so neither joined endpoint is a straight vertex: a straight vertex would fix the other diagonal as the sum of two given sides, fixing the remaining triangle by its three side lengths and hence fixing \\(t\\). Each endpoint therefore excludes at most one value, and the open interval contains other choices. Such a choice gives a nondegenerate simple quadrilateral.\n\nBoth directions are proved, so the necessary and sufficient condition is that each segment be \\(\\boxed{\\text{less than }\\tfrac12}\\), choice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "math:quadrilateral-side-feasibility"
+        ],
+        "prerequisiteIds": [
+          "cnm_111",
+          "cnm_054",
+          "cnm_122",
+          "cnm_180"
+        ],
+        "levelReason": "The proof uses the shortest-path property of a segment, strict triangle inequalities, and elementary triangle construction and congruence."
+      }
+    ],
+    "assessedIds": [
+      "math:quadrilateral-side-feasibility"
+    ],
+    "supportIds": [
+      "cnm_111",
+      "cnm_054",
+      "cnm_122",
+      "cnm_180"
+    ],
+    "annotationRationale": "The catalog contains the precise necessary-and-sufficient quadrilateral side condition. The method proves necessity through the three-side path and sufficiency through overlapping diagonal ranges. Triangle side inequalities support the construction, and SSS justifies avoiding the isolated straight-vertex cases. Positivity and the strict half-perimeter endpoint are retained.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1968_AMC_12_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "Necessity gives a<1-a. For sufficiency, both lower diagonal bounds are strictly below c+d, which is at most a+b. Opposite-side triangles give a simple boundary, and the isolated straight-vertex choices can be avoided.",
+    "levelCheck": "Triangle inequalities, elementary construction, and SSS suffice and are appropriate.",
+    "methodDistinctness": "One complete method proves both necessity and sufficiency.",
+    "annotationCheck": "The catalog's quadrilateral-feasibility node precisely matches the result. The triangle inequalities, shortest-segment fact, SSS, and polygon concepts support the proof.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "prove-side-feasibility": "prove-side-feasibility"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "f3f52d1f0264593adeb41f488295feb85098ad46fe5bf74d154c33ab74740213",
+    "inputHash": "c3bc278949352fe6614fdef591be5d97fc0f138339c3816863d6ff6d068c60ae",
+    "authorInputHash": "3c704c7d44e0bf9d5ca920a2ea58d687ecf24550e2f168d055a957e14acc0e1a",
+    "reviewInputHash": "aa60ac2e907f1c42f2c631df1f02698f33755303ac3ce2909aadf9b016196e52",
+    "authorResponseHash": "96759d7d9057aa4f74bf71b08fbaf0622c8c40c0c8c9c3463e465776cc4e67e1",
+    "reviewerResponseHash": "9ef1724365f458d74c5f96f5fa2724a15f8b29a6b492f0a682b1daec0de0e4be",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

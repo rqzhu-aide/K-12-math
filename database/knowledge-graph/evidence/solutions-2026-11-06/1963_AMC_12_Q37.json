@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1963_AMC_12_Q37",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "c923cd353ef0b78aba66ccb363e91337372b53ed93b6c2eb5540c59130239cf3",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "63dfaa772fd92e9c4c4c7254c3e47c713cfe9d59bfc8a51ba72232ec5b95d8b2",
+  "solutionFigureHashes": {},
+  "candidateHash": "7373ca5e32a6939c993874fe1233eb1f28b9f08e4cbd9bca56a0be32daec067f",
+  "candidate": {
+    "questionId": "1963_AMC_12_Q37",
+    "derivedAnswer": "D, at \\(P_4\\).",
+    "answerStatus": "matches",
+    "answerReason": "Pairing the outer points gives three fixed lower bounds on paired distances. At \\(P_4\\), all bounds are attained and \\(PP_4=0\\); every other point adds a strictly positive \\(PP_4\\).",
+    "methods": [
+      {
+        "id": "pair-the-outer-points",
+        "label": "Pair the outer points",
+        "explanation": "Pair the first point with the last, the second with the sixth, and the third with the fifth. For any two points \\(A,B\\) on the line,\n\\[\nPA+PB\\ge AB.\n\\]\nIf \\(P\\) lies between \\(A\\) and \\(B\\), segment addition gives equality; outside that segment, the trip through \\(P\\) is longer.\n\nApplying this observation to the three pairs gives\n\\[\n\\begin{aligned}\nPP_1+PP_7&\\ge P_1P_7,\\\\\nPP_2+PP_6&\\ge P_2P_6,\\\\\nPP_3+PP_5&\\ge P_3P_5.\n\\end{aligned}\n\\]\nLet \\(S_0=P_1P_7+P_2P_6+P_3P_5\\). Adding the three bounds and the remaining distance yields\n\\[\ns\\ge S_0+PP_4.\n\\]\nAt \\(P=P_4\\), the point lies between the endpoints of every pair, so all three bounds are equalities and \\(PP_4=0\\). Hence \\(s=S_0\\).\n\nIf \\(P\\ne P_4\\), then \\(PP_4>0\\), and the displayed bound gives \\(s>S_0\\). Therefore the minimum occurs if and only if \\(P=P_4\\), choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:median-absolute-distance-minimum",
+          "cnm_054",
+          "cnm_055"
+        ],
+        "prerequisiteIds": [
+          "cnm_053"
+        ],
+        "levelReason": "Pairing segment lengths proves both minimality and uniqueness using elementary geometry."
+      }
+    ],
+    "assessedIds": [
+      "math:median-absolute-distance-minimum"
+    ],
+    "supportIds": [
+      "cnm_054",
+      "cnm_055"
+    ],
+    "annotationRationale": "The task asks for the unique location minimizing total undirected distance, which is the median-distance target. The written proof establishes this through paired segment bounds and their equality conditions. It uses only ordering and segment arithmetic, with no equal-spacing assumption, absolute-value calculation, or slope analysis.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1963_AMC_12_Q37",
+    "decision": "accept",
+    "mathematicalCheck": "Pairing outer points gives \\(s\\ge S_0+PP_4\\). At P4 all pair bounds are attained; elsewhere the remaining distance is positive. This proves both minimality and uniqueness without equal spacing.",
+    "levelCheck": "Elementary segment addition and comparison fully justify the result.",
+    "methodDistinctness": "The single pairing proof is complete and accessible.",
+    "annotationCheck": "The median-distance target and segment-geometry supports match the actual proof without imposing the unused absolute-value route.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "pair-the-outer-points": "pair-the-outer-points"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "f29ec939be249f57b60503869accd72673370dfb952b9a8cec859eb91d1adee7",
+    "inputHash": "275b15af1a7695405c742e54c88058d3ef3266d3c60f416828b9124fee9b3dd8",
+    "authorInputHash": "d9db71662ca090f5bf483772d4a8a557d50b52373f08f68cdfb5e521694d6d03",
+    "reviewInputHash": "85b83abe6df54e3eb9effad4b4b9b1301917ce12ad2542940da4e7fa752a8572",
+    "authorResponseHash": "359c785586136a49492071009cd981538c8db09948c93e1814c0cf7e9a234417",
+    "reviewerResponseHash": "a7f5578f6b1f578e135450d303448a811c3da1fe5dae7bb88becc9834e517a6d",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

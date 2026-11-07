@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2007_AMC_10B_Q13",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "eae5963d87a8571f793cd8249caf9dc322e6c8ff587b8ca1841261d413a69dd4",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "4042f1592d9781f51f68791a0c9cf0100de6cbfb53e069174ef1df20805f6996",
+  "solutionFigureHashes": {},
+  "candidateHash": "d03aa9309b537bfbc201ce31a80870131acc0640e212d89e130703a0e007837e",
+  "candidate": {
+    "questionId": "2007_AMC_10B_Q13",
+    "derivedAnswer": "D: 2(π−2)",
+    "answerStatus": "matches",
+    "answerReason": "The overlap consists of two equal circular segments. Each is a radius-2 quarter circle of area π minus a right triangle of area 2, giving 2(π−2).",
+    "methods": [
+      {
+        "id": "sector-minus-triangle",
+        "label": "Split the overlap into circular segments",
+        "explanation": "Let the centers be \\(O_1=(2,0)\\) and \\(O_2=(0,2)\\). The points \\(P=(0,0)\\) and \\(Q=(2,2)\\) are each \\(2\\) units from both centers, so \\(PQ\\) is a common chord. At either center, the radii to \\(P\\) and \\(Q\\) are perpendicular: one is horizontal and the other vertical. Thus each relevant sector has central angle \\(90^\\circ\\).\n\nLine \\(PQ\\) is the perpendicular bisector of \\(O_1O_2\\). On the side containing \\(O_2\\), points are closer to \\(O_2\\) than to \\(O_1\\). Consequently, the portion of the first disk on that side lies inside both disks. Exchanging the centers gives the other half of the overlap. These two pieces meet along the chord, and each is a circular segment formed by removing a right triangle from a quarter-circle sector.\n\nEach sector has area\n\\[\n\\frac{90}{360}\\pi(2)^2=\\pi,\n\\]\nand each removed triangle has perpendicular legs of length \\(2\\), so its area is\n\\[\n\\frac12\\cdot2\\cdot2=2.\n\\]\nThe intersection therefore has area\n\\[\n\\boxed{2(\\pi-2)},\n\\]\nchoice \\(\\mathrm{D}\\). Including or excluding the boundary curves does not change this area.",
+        "nodeIds": [
+          "cnm_257",
+          "cnm_p150"
+        ],
+        "prerequisiteIds": [
+          "cnm_084",
+          "cnm_133",
+          "cnm_p148",
+          "cnm_p192"
+        ],
+        "levelReason": "Coordinate lengths, perpendicular bisectors, quarter-circle areas, and right-triangle areas provide an elementary geometric solution."
+      },
+      {
+        "id": "quarter-disks-cover-square",
+        "label": "Count the overlap inside a square",
+        "explanation": "Consider the square with vertices \\(P=(0,0)\\), \\(O_1=(2,0)\\), \\(Q=(2,2)\\), and \\(O_2=(0,2)\\). Its side length is \\(2\\), so its area is \\(4\\).\n\nAny point in both disks must have \\(0\\le x\\le2\\) and \\(0\\le y\\le2\\). Indeed, the disk centered at \\((2,0)\\) requires \\(x\\ge0\\) and \\(y\\le2\\), while the disk centered at \\((0,2)\\) requires \\(x\\le2\\) and \\(y\\ge0\\). Thus the entire overlap lies in this square.\n\nWithin the square, each disk occupies a quarter circle of radius \\(2\\), with area \\(\\pi\\). These two quarter disks cover the square: the one centered at \\(O_1\\) contains triangle \\(PO_1Q\\), and the one centered at \\(O_2\\) contains triangle \\(PO_2Q\\). Those two triangles fill the square.\n\nAdding the quarter-disk areas counts every part of the square once and their overlap one extra time. Hence\n\\[\n\\text{overlap area}=\\pi+\\pi-4\n=\\boxed{2(\\pi-2)},\n\\]\nchoice \\(\\mathrm{D}\\). Boundary curves have no effect on the area.",
+        "nodeIds": [
+          "cnm_257",
+          "cnm_p150"
+        ],
+        "prerequisiteIds": [
+          "cnm_084",
+          "cnm_p089",
+          "cnm_p192",
+          "cnm_p193"
+        ],
+        "levelReason": "This alternative uses only quarter-circle and square areas, together with an elementary explanation of overlapping area counts."
+      }
+    ],
+    "assessedIds": [
+      "cnm_257"
+    ],
+    "supportIds": [
+      "cnm_084",
+      "cnm_p192"
+    ],
+    "annotationRationale": "The target is using sector areas to find the irregular common region. Both methods interpret the coordinates and use quarter-circle areas. The first subtracts triangles from sectors and uses a perpendicular bisector; the second proves that two quarter disks cover a square and removes the area counted once too often.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2007_AMC_10B_Q13",
+    "decision": "accept",
+    "mathematicalCheck": "The common chord endpoints are \\((0,0)\\) and \\((2,2)\\), producing two 90-degree sectors. Each segment has area \\(\\pi-2\\). Independently, the overlap lies in the side-two square, which the two quarter disks cover, giving \\(2\\pi-4\\). Both decompositions are justified.",
+    "levelCheck": "Both methods use accessible coordinate geometry and elementary area reasoning. Boundary inclusion does not affect the requested area.",
+    "methodDistinctness": "Segment subtraction and quarter-disk overlap counting offer distinct geometric insights without increasing the required level.",
+    "annotationCheck": "Sector area is a suitable shared target. Coordinate interpretation and circle area support both methods; triangle and perpendicular-bisector reasoning remain local to the first route, and square-area reasoning to the second.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "sector-minus-triangle": "sector-minus-triangle",
+    "quarter-disks-cover-square": "quarter-disks-cover-square"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c8fb577b9163b62d6002b94ffe01bca9052c5817c974a69e1a2dbc867cffb24b",
+    "inputHash": "e4ce6d96f3d4b01d8deb7c26552de9a97aa3945d5111ef015d02e4b25bce1de9",
+    "authorInputHash": "cce4f87a1ee7caa64aaf1e05067eec33b40a972e481a8988ce42daa40d760144",
+    "reviewInputHash": "7819239444d3e0b110b1edc936e78091902c681331126f51265a614affb1873b",
+    "authorResponseHash": "40498ad480df74db1d1cfc96d9e892805b0dfe605c5301bb89296b4a29b1b9ea",
+    "reviewerResponseHash": "b510b1905bb863dd398601677fda1c7ab5e50dc38a589d43a140e3537447dd81",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

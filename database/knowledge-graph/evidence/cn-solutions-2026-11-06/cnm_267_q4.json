@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "kind": "cn_preservation_review",
+  "questionId": "cnm_267_q4",
+  "bank": "cn-math",
+  "questionFingerprint": {
+    "contentHash": "e217a044ea82e429afd0f330b6bb6077f8c4157e109a823c42cfc1f7dea47bee",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "0a94464e9b6097ae8d217b935f8906d0f316cd13f5009556f94de1fecc76f27f",
+  "candidateHash": "81cc441f91a2d8abefa48c8076efd31d9063a0cd48be718e7e46eea65888bfdf",
+  "candidate": {
+    "questionId": "cnm_267_q4",
+    "derivedAnswer": "1125",
+    "answerStatus": "matches",
+    "answerReason": "Profit is 1125 − 5(x − 5)², and the optimizer x = 5 is an allowed integer increase. Selling 75 units at a 15 yuan margin gives 1125 yuan.",
+    "methods": [
+      {
+        "id": "quadratic-profit",
+        "label": "Complete the profit square",
+        "explanation": "Let the price increase be \\(x\\) yuan. The profit is \\(P=(10+x)(100-5x)=-5x^2+50x+1000=-5(x-5)^2+1125\\). The maximum is 1125 when \\(x=5\\).",
+        "nodeIds": [
+          "cnm_236",
+          "math:completing-square-expression",
+          "cnm_235"
+        ],
+        "prerequisiteIds": [
+          "cnm_146",
+          "cnm_148"
+        ],
+        "levelReason": "Quadratic profit modeling and completing the square are Grade 9 procedures."
+      },
+      {
+        "id": "consecutive-profit-comparisons",
+        "label": "Compare consecutive integer increases",
+        "explanation": "Because the price increase must be a whole number of yuan, compare profits at consecutive allowed increases. Let \\(k\\) be the increase in yuan. Nonnegative sales give \\(k=0,1,\\ldots,20\\), and daily profit is \\(P(k)=(10+k)(100-5k)\\).\n\nFor \\(k=0,1,\\ldots,19\\),\n\\[\nP(k+1)-P(k)=(11+k)(95-5k)-(10+k)(100-5k)=45-10k.\n\\]\nThis difference is positive for \\(k=0,\\ldots,4\\) and negative for \\(k=5,\\ldots,19\\). These comparisons cover every consecutive pair of feasible increases, so profit rises up to \\(k=5\\) and then falls. At \\(k=5\\), the margin is \\(15\\) yuan and sales are \\(75\\) units. The maximum daily profit is therefore \\(15\\times75=1125\\) yuan.",
+        "nodeIds": [
+          "cnm_146",
+          "cnm_036"
+        ],
+        "prerequisiteIds": [
+          "cnm_195",
+          "cnm_009"
+        ],
+        "levelReason": "The method uses polynomial expansion and subtraction, signed-number comparisons and the practical integer range, all accessible by Grade 9."
+      }
+    ],
+    "assessedIds": [
+      "cnm_267"
+    ],
+    "supportIds": [
+      "cnm_027",
+      "cnm_p111"
+    ],
+    "annotationRationale": "The route-neutral target is maximizing daily profit under the stated pricing rule. Both methods translate the quantities into margin times sales. The retained route uses quadratic extrema; the alternative uses consecutive integer profit differences, with polynomial operations kept local to that route. Attribution for the retained main explanation: xiaoyang111222/cn-math-taxonomy contributors, https://github.com/xiaoyang111222/cn-math-taxonomy, revision 62b341d4b66b175413d6e3f697e37639fd96aa2d, CC-BY-NC-4.0 (https://creativecommons.org/licenses/by-nc/4.0/). Supplied main explanation is AI-generated, machine-translated and not teacher reviewed. The alternative is newly derived from the supplied question.",
+    "needsNewNodes": [
+      {
+        "name": "Consecutive-difference tests for finite integer optimization",
+        "description": "For a function on a finite interval of consecutive integers, use the signs of F(k+1) − F(k) to determine increases, decreases and attained extrema, including possible ties.",
+        "reason": "The catalog covers the optimization goal and the polynomial arithmetic, but lacks the consecutive-difference extremum test used by the alternative."
+      }
+    ],
+    "limitations": [],
+    "intent": "retain",
+    "changeReason": "The profit model and completed-square identity are correct, and x = 5 satisfies the integer pricing condition. Retain the main explanation; the optional alternative illustrates optimization directly on the integer domain."
+  },
+  "review": {
+    "questionId": "cnm_267_q4",
+    "decision": "accept",
+    "mathematicalCheck": "The main method correctly gives P = 1125 − 5(x − 5)²; x = 5 is feasible and integral, giving 75 sales at a 15 yuan margin. Independently, the alternative covers k = 0 through 20 and correctly obtains P(k+1) − P(k) = 45 − 10k. Its signs prove a unique maximum at k = 5.",
+    "levelCheck": "Both methods use Grade 9 or earlier algebra. The alternative explains consecutive comparisons without advanced machinery.",
+    "methodDistinctness": "Consecutive integer comparisons provide a distinct, useful approach to the explicit integer restriction.",
+    "annotationCheck": "cnm_267 is the shared optimization target, while cnm_027 and cnm_p111 support both models. Each route's algebra and prerequisites match its steps. The proposed missing node honestly identifies the consecutive-difference argument without asserting an unsupported existing equivalence.",
+    "issues": [],
+    "preservationCheck": "The first method preserves the current explanation byte for byte, and compiledSolution appends the optional alternative. The addition has a concrete purpose: reasoning directly over feasible integer increases.",
+    "provenanceCheck": "The retained main method keeps upstream attribution, source revision, CC-BY-NC-4.0 and AI translation qualifications. The alternative is separately identified as project-added AI writing from the question. No adaptation or wholly original authorship claim is substituted for the retained source."
+  },
+  "provenanceIntent": {
+    "change": "extended",
+    "preserveExistingAttribution": true,
+    "existingProvenance": {
+      "SolutionSource": "cn-math-taxonomy (AI-generated; not teacher reviewed)",
+      "SourceURL": "https://github.com/xiaoyang111222/cn-math-taxonomy",
+      "SourceRevision": "62b341d4b66b175413d6e3f697e37639fd96aa2d",
+      "SourceQuestionID": "cnm_267_q4",
+      "License": "CC-BY-NC-4.0",
+      "LicenseURL": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "Attribution": "xiaoyang111222/cn-math-taxonomy contributors",
+      "Modifications": [
+        "Converted to learning-harness schema",
+        "English translation"
+      ],
+      "Translation": {
+        "status": "machine-translated",
+        "humanReviewed": false,
+        "model": "gpt-6.1-sol (xhigh)"
+      }
+    },
+    "preserveOriginalAndLicense": true,
+    "projectContribution": "AI-authored alternative methods added to attributed existing explanation",
+    "teacherReviewed": false,
+    "claimWhollyOriginalProjectSolution": false
+  },
+  "preservedRecordHash": "d24d0d6dde2ed982bf2b5a79e2667d11168fcaeeb7c55a0ae4d147aaaac2c9e8",
+  "originalMutableMetadata": {
+    "SolutionSource": "cn-math-taxonomy (AI-generated; not teacher reviewed)",
+    "Modifications": [
+      "Converted to learning-harness schema",
+      "English translation"
+    ]
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "quadratic-profit": "solution:quadratic-profit:0a94464e9b60",
+    "consecutive-profit-comparisons": "consecutive-profit-comparisons"
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "0aec2945bdb563f502a1f0c5363b684f5c69d1e7684e123effb9e93574b70e09",
+    "manifestHash": "eca03e81b7e66846ea9c1d0e37aac221343b03c79d572c11247598bd7da18a3f",
+    "questionInputHash": "362ec6738cf24ac38f2f277d1c4c124eea8e8db70eb6efdd74d5bc9f5a271453",
+    "recordSHA256": "ed57c1a5aeb3e0e24b169f6262adaaa0e432fbfb1274ddd5960c1435c6ed1f3d",
+    "originalSolutionSHA256": "1fa1db5d5b408531d498825ce9ed230b132dd4bba999ecc2c339e02366d1b497",
+    "originalProvenanceHash": "49ed619e42d875414b13b4525418400c1140d14ea55edff2e70a19c580b165b4",
+    "originalMappingHash": "c4502e7963eb94da9b0769773ed2254502cff469e03b7c4aaeb3badeef77313a",
+    "authorInputHash": "02aaed102365e7e8494c23a22e5b80ceb29f676db84ef68d92b691f54619ff6f",
+    "reviewerInputHash": "31e0e0d572100871295c951cb647d6160f94c56121bac3bcb93424036b3e0fee",
+    "authorResponseHash": "128ceb8a05a9635518e2398dddc7152326d432ba30aa114f6104b75930bfede6",
+    "reviewerResponseHash": "641d824131c518a7aed8971cd48cb6b87bf56ea99c48875e722fa328412a43c9",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "43bae808f1776329acfe6eda3287bb9d9b7bc3e991834b8c85ce988a04e9835c",
+    "executionCodeHash": "412c14d4570fbe8e8847186c6d16c4400fed67c3d99fe6336499bea691116953"
+  },
+  "reviewMeaning": "Review of attributed existing prose, with any new project alternatives or adaptation identified separately. Separate fresh AI threads of the same model family; not teacher validation.",
+  "modelSelectionEvidence": "Model and effort explicitly requested on separate fresh SDK threads; no separate returned-model field is exposed."
+}

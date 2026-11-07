@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1983_AMC_12_Q26",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "f64e000955131cbb8bb3b8ba22861e3b91ada7ac3c931fec26ae239478b88c7f",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "8f306e3660d5bc41b215ce26b08b54a5387f51f35047a9573abd9640a47d2bd7",
+  "solutionFigureHashes": {},
+  "candidateHash": "bfa211b9544f900a94b87bdb32956a9b82acefef057a75d2f747f6ee5251c165",
+  "candidate": {
+    "questionId": "1983_AMC_12_Q26",
+    "derivedAnswer": "D. \\([\\frac5{12},\\frac23]\\)",
+    "answerStatus": "matches",
+    "answerReason": "The intersection is at most \\(P(B)=2/3\\), while the union bound gives an intersection of at least \\(5/12\\). Every value between these bounds is attainable.",
+    "methods": [
+      {
+        "id": "bound-and-realize-overlap",
+        "label": "Bound the overlap and prove sharpness",
+        "explanation": "The event that both \\(A\\) and \\(B\\) occur is contained in \\(B\\), so\n\\[\np\\le P(B)=\\frac23.\n\\]\nFor the lower bound, adding \\(P(A)\\) and \\(P(B)\\) counts their overlap twice. Subtracting it once gives\n\\[\nP(A\\cup B)=\\frac34+\\frac23-p\n=\\frac{17}{12}-p.\n\\]\nA probability cannot exceed 1, so\n\\[\n\\frac{17}{12}-p\\le1,\n\\qquad p\\ge\\frac5{12}.\n\\]\n\nTo show that this interval cannot be shortened, take any \\(p\\) between these bounds. Assign probabilities to the four possible occurrence patterns as follows:\n\\[\n\\begin{aligned}\nP(\\text{both})&=p,\\\\\nP(\\text{only }A)&=\\frac34-p,\\\\\nP(\\text{only }B)&=\\frac23-p,\\\\\nP(\\text{neither})&=p-\\frac5{12}.\n\\end{aligned}\n\\]\nThroughout the proposed interval, these four numbers are nonnegative and sum to 1. They give the required probabilities \\(P(A)=3/4\\) and \\(P(B)=2/3\\). Thus every value in the interval, including both endpoints, is possible. The smallest necessary interval is \\(\\boxed{[\\frac5{12},\\frac23]}\\), choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_h138"
+        ],
+        "prerequisiteIds": [
+          "cnm_h136",
+          "cnm_308"
+        ],
+        "levelReason": "Uses elementary event inclusion, addition of probabilities, and a four-outcome construction."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h138"
+    ],
+    "supportIds": [
+      "cnm_h136",
+      "cnm_308"
+    ],
+    "annotationRationale": "The target is using probability addition to determine the sharp possible range of an overlap. Event operations and probability bounds support the argument. The four-region construction establishes attainability without requiring independence or equally likely outcomes.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1983_AMC_12_Q26",
+    "decision": "accept",
+    "mathematicalCheck": "Event inclusion gives p≤2/3, and P(A∪B)=17/12-p≤1 gives p≥5/12. The four assigned occurrence-pattern probabilities are nonnegative and sum to 1 throughout this interval, with the required marginals, proving sharpness.",
+    "levelCheck": "The bounds and attainability construction use accessible elementary probability.",
+    "methodDistinctness": "The bounds and construction are complementary parts of one complete method.",
+    "annotationCheck": "Probability addition is the correct assessed target; event operations and probability bounds support both the inequalities and construction.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "bound-and-realize-overlap": "bound-and-realize-overlap"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "1afedc291dbb7944eb613e3172abb675780eaad79f2b27106e061c02126f710f",
+    "inputHash": "47a6be08150ce5c162e429d61bd7e90cdd5cd4eb3aab3c8fac530eb9718470ee",
+    "authorInputHash": "ab9b00c43b27012a4e52f64757a996757d4b5887c57f92a9fb8f76c22405b4f9",
+    "reviewInputHash": "ef361ed10f2eff975c6fedd40c9cf6391f57913d068ca034e30ebb11ab23cb3b",
+    "authorResponseHash": "0e2fb78e5132285d28013b444ea685a32053629b2ebb29e774093563954ee6f0",
+    "reviewerResponseHash": "4c0ee1f9a96fab5aee3d196199922aed6ea469e724313d63b86ec7e943ede80d",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

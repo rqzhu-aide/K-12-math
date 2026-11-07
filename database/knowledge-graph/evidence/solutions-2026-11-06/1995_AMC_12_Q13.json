@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1995_AMC_12_Q13",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "4b8f2817c9d705e2ac79bda13f313ddbb0608ec619a3128e4e95cc4496d8b44e",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "422975214df80065ea02273db3e23b42a9ee25374182c46baeaeb108d50bdada",
+  "solutionFigureHashes": {},
+  "candidateHash": "796ecacb36dc0d4dd53258e1958c756c6f305555576515de6e6bb060a3df5bb3",
+  "candidate": {
+    "questionId": "1995_AMC_12_Q13",
+    "derivedAnswer": "C, \\(d+e=8\\)",
+    "answerStatus": "matches",
+    "answerReason": "The unique replacement is every 2 by 6. It gives \\(746586+869430=1616016\\), so \\(d+e=2+6=8\\).",
+    "methods": [
+      {
+        "id": "column-carries",
+        "label": "Use columns to restrict the changed digit",
+        "explanation": "When adding two decimal numbers, each carry is either \\(0\\) or \\(1\\), since two digits and an incoming carry total at most \\(19\\). Consider the ten-thousands column: its addend digits are \\(4\\) and \\(2\\), but its displayed result digit is \\(1\\). If none of those digits changed, the column total would be \\(6\\) or \\(7\\), which cannot end in \\(1\\). Therefore \\(d\\) must be \\(1\\), \\(2\\), or \\(4\\).\n\nIf \\(d=1\\), the units column remains \\(6+0=6\\), with no carry. The tens column is then \\(8+3=11\\), so its result digit must be \\(1\\). Replacing that displayed \\(1\\) by \\(e\\) would force \\(e=1\\), contrary to the requirement that \\(e\\) be another digit.\n\nIf \\(d=4\\), the units and tens columns are unchanged, so the tens column carries \\(1\\). The hundreds column becomes \\(5+e+1\\), while its result digit remains \\(0\\). Because \\(0\\le e\\le9\\), the total lies between \\(6\\) and \\(15\\). The only possible total ending in \\(0\\) is \\(10\\), forcing \\(e=4\\), again disallowed.\n\nConsequently \\(d=2\\). The unchanged tens and hundreds columns each carry \\(1\\). The thousands column becomes\n\\[\ne+9+1=e+10,\n\\]\nwhich has result digit \\(e\\) and carries \\(1\\). The ten-thousands column therefore totals \\(4+e+1=e+5\\). Its result digit is still \\(1\\); since \\(5\\le e+5\\le14\\), this total must be \\(11\\). Hence \\(e=6\\).\n\nThe complete replacement gives\n\\[\n746{,}586+869{,}430=1{,}616{,}016,\n\\]\nso it works in every column. The cases above exclude every other original digit. Thus \\(\\boxed{d+e=8}\\), choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_p096",
+          "math:integer-diophantine-equations"
+        ],
+        "prerequisiteIds": [
+          "cnm_p053",
+          "cnm_p071",
+          "cnm_p145"
+        ],
+        "levelReason": "The method uses decimal place value, ordinary carries, and small equations restricted to digit values."
+      },
+      {
+        "id": "positional-change",
+        "label": "Track changes in the discrepancy",
+        "explanation": "First measure the error in the displayed addition:\n\\[\n742{,}586+829{,}430-1{,}212{,}016=360{,}000.\n\\]\nCall the addends minus the displayed sum the discrepancy. Let \\(t=e-d\\). Since \\(d\\) and \\(e\\) are different digits, \\(t\\) is a nonzero integer with \\(|t|\\le9\\). Replacing a digit in a place worth \\(w\\) changes that number by \\(wt\\). Its signed contribution to the change in the discrepancy is \\(+wt\\) for an occurrence in an addend and \\(-wt\\) for an occurrence in the displayed sum.\n\nFor \\(d\\) among \\(0,3,4,5,6,9\\), the total place weight of all occurrences is at most \\(10{,}100\\). The two \\(4\\)s occupy places worth \\(10{,}000\\) and \\(100\\); every other digit in this group occurs at most twice, in places worth at most \\(1000\\). Their replacements therefore change the discrepancy in magnitude by at most\n\\[\n9\\cdot10{,}100=90{,}900,\n\\]\nwhich cannot remove the error. Only \\(d=1,2,7,8\\) remain.\n\nAll three \\(1\\)s occur in the displayed sum, with total place weight \\(1{,}010{,}010\\). Any nonzero replacement changes the discrepancy in magnitude by at least that amount, which is too large. Thus \\(d\\ne1\\).\n\nThe digit \\(7\\) occurs only in a place worth \\(100{,}000\\). The two \\(8\\)s have total place weight \\(100{,}010\\), both in addends. Removing the discrepancy would require \\(360{,}000\\) to be an integer multiple of the corresponding weight. Neither is possible, because\n\\[\n3(100{,}000)<360{,}000<4(100{,}000)\n\\]\nand\n\\[\n3(100{,}010)<360{,}000<4(100{,}010).\n\\]\nTherefore \\(d=2\\). Counting addend occurrences positively and displayed-sum occurrences negatively, its net place weight is\n\\[\n(1000+10{,}000)-(100{,}000+1000)=-90{,}000.\n\\]\nThe corrected discrepancy must be zero, so\n\\[\n360{,}000-90{,}000t=0.\n\\]\nHence \\(t=4\\) and \\(e=2+4=6\\), a valid digit. Replacing every \\(2\\) confirms\n\\[\n746{,}586+869{,}430=1{,}616{,}016.\n\\]\nAll ten possibilities for \\(d\\) have been covered, so this replacement is unique. The answer is \\(\\boxed{d+e=8}\\), choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_p096",
+          "math:integer-diophantine-equations",
+          "cnm_027"
+        ],
+        "prerequisiteIds": [
+          "cnm_p053",
+          "cnm_p071",
+          "cnm_p145"
+        ],
+        "levelReason": "The method uses place-value changes, bounded integer differences, and a simple equation. The signed contributions are explained directly."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p096",
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_p053",
+      "cnm_p071"
+    ],
+    "annotationRationale": "The task assesses decimal place value and determining all digit replacements satisfying an arithmetic equation under integer restrictions. The first method uses local carry constraints. The second models the global discrepancy through signed place weights, additionally using cnm_027. Basic place values and the column-alignment and carry knowledge in written addition support both methods; simple equation solving is recorded in both prerequisite lists. These alternative routes do not require formal congruence methods.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1995_AMC_12_Q13",
+    "decision": "accept",
+    "mathematicalCheck": "The carry argument restricts d to 1, 2 or 4, excludes 1 and 4, and forces e=6 when d=2. Independently, the discrepancy method correctly excludes every other digit and obtains 360000−90000(e−2)=0. The replacement verifies 746586+869430=1616016, so the unique answer is d+e=8, choice C.",
+    "levelCheck": "Both explanations are complete and accessible using decimal place value, carries, integer bounds and simple equations.",
+    "methodDistinctness": "Local carry constraints and global changes in the discrepancy provide genuinely distinct elementary approaches.",
+    "annotationCheck": "The assessed IDs describe place value and exhaustive digit-restricted equation solving across both routes. Shared supports and method prerequisites are justified; expression modeling is appropriately confined to the second method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "column-carries": "column-carries",
+    "positional-change": "positional-change"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "04d9f05b7b9b4c7dd595260e69c174732e8af58e1d88f63162f795f4e00c25a7",
+    "inputHash": "d48915f69079139efcff3b830b28266d490ec07f94d99a6ba1285c5427ee5a95",
+    "authorInputHash": "bdbeb07f3d2285f265e524f96c5b99838c7170ec120af0296ff9a544a445c262",
+    "reviewInputHash": "673ebf30db9811a9743f11360cfe94c841a3777938f9b06f4c5c257e504f345d",
+    "authorResponseHash": "ec3fe6280c125d1ff36f04f686fb4fda541425c5a223ad6fe539314d43af8c4c",
+    "reviewerResponseHash": "25b2ab949e5d786a311d2110b0b787a0ea1f4568acd63a76e00ea4169fc4eabe",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

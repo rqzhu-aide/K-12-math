@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1986_AMC_12_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "accdca2f22edbc8d5c20d502754d9956f116a09e5974a9d8bfd33e84f4a8f170",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "e8183922930eae0a0e1406820d175f39acab00ae2f65533303bdbeb1f9762492",
+  "solutionFigureHashes": {},
+  "candidateHash": "84ae7dcd0db56127e740f28ff938548a3355364122248f7912ecddd8edfa4aec",
+  "candidate": {
+    "questionId": "1986_AMC_12_Q25",
+    "derivedAnswer": "\\(8204\\) (B)",
+    "answerStatus": "matches",
+    "answerReason": "For each k from 0 through 9, exactly 2^k integers have floor(log₂N) = k, and N = 1024 contributes 10. Their total is 8204.",
+    "methods": [
+      {
+        "id": "powers-of-two-blocks",
+        "label": "Group integers between consecutive powers of two",
+        "explanation": "The floor changes only when \\(N\\) reaches a power of two. For each integer \\(k\\) from \\(0\\) through \\(9\\),\n\\[\n\\lfloor\\log_2N\\rfloor=k\n\\quad\\text{when}\\quad\n2^k\\le N<2^{k+1}.\n\\]\nThe integers in this block run from \\(2^k\\) through \\(2^{k+1}-1\\), so there are exactly \\(2^k\\) of them. Each contributes \\(k\\), giving a block contribution of \\(k2^k\\).\n\nThese disjoint blocks cover \\(1\\) through \\(1023\\). The remaining endpoint, \\(1024=2^{10}\\), contributes \\(10\\). Thus, writing the requested sum as \\(S\\),\n\\[\n\\begin{aligned}\nS&=\\sum_{k=0}^{9}k2^k+10\\\\\n&=2+8+24+64+160+384\\\\\n&\\quad+896+2048+4608+10\\\\\n&=8204.\n\\end{aligned}\n\\]\nThe sum is \\(8204\\), choice B.",
+        "nodeIds": [
+          "math:floor-ceiling",
+          "cnm_h043",
+          "cnm_h230"
+        ],
+        "prerequisiteIds": [
+          "cnm_h047"
+        ],
+        "levelReason": "Uses logarithms as exponents, exact floor intervals, and a finite partition followed by arithmetic."
+      },
+      {
+        "id": "count-threshold-pairs",
+        "label": "Count how many powers of two each integer reaches",
+        "explanation": "For a positive integer \\(N\\), the value \\(\\lfloor\\log_2N\\rfloor\\) counts how many of the thresholds \\(2,4,8,\\ldots\\) do not exceed \\(N\\). Indeed, if \\(2^k\\le N<2^{k+1}\\), exactly the first \\(k\\) thresholds have been reached.\n\nCount pairs of integers \\((N,j)\\) satisfying\n\\[\n1\\le N\\le1024,\\qquad 1\\le j\\le10,\\qquad 2^j\\le N.\n\\]\nFor each fixed \\(N\\), the number of pairs is \\(\\lfloor\\log_2N\\rfloor\\), so the total number of pairs is the requested sum \\(S\\).\n\nAlternatively, fix \\(j\\). The allowed values of \\(N\\) run from \\(2^j\\) through \\(1024\\), including both endpoints, so there are \\(1025-2^j\\) pairs. Counting the same pairs this way gives\n\\[\n\\begin{aligned}\nS&=\\sum_{j=1}^{10}(1025-2^j)\\\\\n&=10\\cdot1025-\\sum_{j=1}^{10}2^j.\n\\end{aligned}\n\\]\nThe powers form a geometric sequence with ratio \\(2\\), whose sum is\n\\[\n\\sum_{j=1}^{10}2^j=2(2^{10}-1)=2046.\n\\]\nTherefore \\(S=10250-2046=8204\\), choice B.",
+        "nodeIds": [
+          "math:floor-ceiling",
+          "cnm_h043",
+          "math:double-counting",
+          "cnm_h210"
+        ],
+        "prerequisiteIds": [
+          "cnm_h047",
+          "cnm_h207"
+        ],
+        "levelReason": "Uses an elementary count of finite pairs and a finite geometric sum."
+      }
+    ],
+    "assessedIds": [
+      "math:floor-ceiling",
+      "cnm_h043"
+    ],
+    "supportIds": [
+      "cnm_h047"
+    ],
+    "annotationRationale": "The shared targets are interpreting a logarithm through powers of two and translating its floor into exact integer ranges. Logarithm monotonicity supports both interpretations. One method partitions the integers into disjoint blocks; the other double counts explicitly defined pairs and uses a geometric sum. Those summation tools remain method-specific.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1986_AMC_12_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The blocks 2^k≤N<2^(k+1), for k=0 through 9, contain 2^k integers each, and 1024 separately contributes 10. The alternative count correctly totals pairs with 2^j≤N as 10·1025−2046=8204, with both endpoints included.",
+    "levelCheck": "Logarithm intervals, elementary finite counting, and a geometric sum fit AMC 12 without advanced machinery.",
+    "methodDistinctness": "Grouping equal summands and counting crossed thresholds offer distinct, useful ways to organize the sum.",
+    "annotationCheck": "Floor interpretation and logarithm meaning are route-neutral targets; logarithm monotonicity supports both. Partition counting, double counting, and geometric summation are correctly kept method-specific.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "powers-of-two-blocks": "powers-of-two-blocks",
+    "count-threshold-pairs": "count-threshold-pairs"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "066c0016930e552ebef2ebec1d78dd8ffb005607d278e1d91c1a5214bf9ad1f2",
+    "inputHash": "4d24ee6843519d49c6b499efd3f20d83209d469c237bf4632191227138fe83f8",
+    "authorInputHash": "5c7bb0099f81cffaa4c0daabff5573e7c4338c05a0af874da693e21233c7fe46",
+    "reviewInputHash": "60eb49f1cf973691388d59fc37be9284e56b2dbd57ab8c44e587277a95fd6ccd",
+    "authorResponseHash": "f91e271b9a31e2f242c7656e28e64c5670b71aecb8b60823b8dba363d983e337",
+    "reviewerResponseHash": "1a45c2697bef61cfcfb71b2ec53b52bfc5af0ea5d3c0836202cfbe5c9446f197",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

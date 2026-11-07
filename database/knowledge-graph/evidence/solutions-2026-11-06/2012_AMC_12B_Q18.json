@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2012_AMC_12B_Q18",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "419b6c16b9d4565532d7f77c4d0ae4df9353ee97d941050c7d57cdd66014b46b",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "99d7d5ac7fab381b6c92094630a507151c614bc69e97dd40cdf7983559fc6581",
+  "solutionFigureHashes": {},
+  "candidateHash": "5a69b43663c18b7663fefd34f2509c80c06b837dd303fa191040266ac55c49d4",
+  "candidate": {
+    "questionId": "2012_AMC_12B_Q18",
+    "derivedAnswer": "512 (B)",
+    "answerStatus": "matches",
+    "answerReason": "Every prefix consists of consecutive integers. Reversing a valid list therefore removes an endpoint at each of nine stages, giving exactly 2^9=512 deletion histories.",
+    "methods": [
+      {
+        "id": "reverse-endpoint-deletion",
+        "label": "Method 1: Read the list backward",
+        "explanation": "The condition forces the numbers already listed to form an interval of consecutive integers. To see this, the first entry forms a one-number interval. If the current entries are \\(\\ell,\\ell+1,\\ldots,r\\), an unused number having a neighbor among them must be \\(\\ell-1\\) or \\(r+1\\). Adding either extends the interval by one.\n\nNow read a valid list backward, starting with the full interval \\(1,2,\\ldots,10\\). The last entry must be an endpoint, either \\(1\\) or \\(10\\), because deleting an interior number would leave a gap in the preceding prefix. The same reasoning applies after every deletion.\n\nWhenever at least two numbers remain, there are exactly two distinct endpoints to choose from. There are nine such deletions, after which the remaining number is forced. Thus there are \\(2^9\\) possible deletion histories.\n\nConversely, every history of endpoint deletions gives a valid list when reversed: each restored endpoint differs by \\(1\\) from an endpoint already present. Different histories give different lists, and every valid list supplies exactly one history. Hence the required count is\n\\[\n2^9=\\boxed{512},\n\\]\nchoice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "math:bijective-counting",
+          "cnm_h231"
+        ],
+        "prerequisiteIds": [],
+        "levelReason": "The argument constructs an elementary reversible encoding by nine binary choices, without advanced combinatorics."
+      },
+      {
+        "id": "fix-first-entry-and-interleave",
+        "label": "Method 2: Choose positions for the smaller entries",
+        "explanation": "Every prefix must consist of consecutive integers: starting with one number, the next unused number can only extend the current interval at its lower or upper end.\n\nFix the first entry as \\(a_1=k\\), where \\(1\\le k\\le10\\). The smaller numbers must then appear in the order\n\\[\nk-1,k-2,\\ldots,1,\n\\]\nand the larger numbers must appear in the order\n\\[\nk+1,k+2,\\ldots,10.\n\\]\nTheir two internal orders are forced, but the two groups can be interleaved. Choose which \\(k-1\\) of the remaining nine positions contain smaller numbers; filling those positions in decreasing order and the others in increasing order gives exactly one valid list. Thus there are \\(\\binom9{k-1}\\) lists starting with \\(k\\). This also handles \\(k=1\\) and \\(k=10\\), when one group is empty.\n\nThe possible first entries give disjoint cases, so the total is\n\\[\n\\sum_{k=1}^{10}\\binom9{k-1}\n=\\sum_{j=0}^{9}\\binom9j.\n\\]\nThis sum counts all subsets of nine positions, grouped by their size. Each position is either chosen or unchosen, so there are \\(2^9\\) subsets. Consequently the number of lists is \\(\\boxed{512}\\), choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "math:bijective-counting",
+          "cnm_h236",
+          "cnm_h242"
+        ],
+        "prerequisiteIds": [
+          "cnm_h230",
+          "cnm_h231"
+        ],
+        "levelReason": "This uses forced internal orders, position subsets, and an elementary counting proof of the binomial-coefficient sum."
+      }
+    ],
+    "assessedIds": [
+      "math:bijective-counting"
+    ],
+    "supportIds": [
+      "cnm_h231"
+    ],
+    "annotationRationale": "The central target is a complete reversible correspondence for the restricted lists. One route encodes a list by endpoint deletions; the other fixes its first entry and encodes an interleaving by a subset of positions. Combination concepts and the binomial-coefficient sum are local to the second route.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2012_AMC_12B_Q18",
+    "decision": "accept",
+    "mathematicalCheck": "Every prefix is an integer interval, so reversing a valid list deletes an endpoint at each of nine stages. Every such deletion history reverses to a valid list uniquely, giving 2^9=512. Fixing the first entry k independently gives C(9,k−1) interleavings, whose sum is also 512.",
+    "levelCheck": "Both encodings are elementary, and the binomial sum is justified directly by counting subsets.",
+    "methodDistinctness": "Reverse endpoint deletion and fixed-first-entry interleaving are distinct encodings despite sharing the interval observation.",
+    "annotationCheck": "Bijective counting accurately captures both methods, including their inverses and completeness checks. Multiplication is shared; combinations and the binomial sum are appropriately local to the second route.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "reverse-endpoint-deletion": "solution:reverse-endpoint-deletion:99d7d5ac7fab",
+    "fix-first-entry-and-interleave": "fix-first-entry-and-interleave"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "2a401bb6c308319d775d90dff73aa809e7c0697c4186a14a47c9e7165d9b701a",
+    "inputHash": "4ebd27f43afeaf67da3b485ca7b745000fd60c129dee460df814fe62fca25692",
+    "authorInputHash": "170a81e073bde9606e9030179b437a78eca59223507a68b0f85fbf21fa2f0a0f",
+    "reviewInputHash": "4388eae04f732e590cd277c472a8bc895d4d7c25a8231d4597fde239729f576e",
+    "authorResponseHash": "44fed41d2bb20fc037f8bd734ec5e4ba1dc1e197aff8692b11c101e66dc9962b",
+    "reviewerResponseHash": "a624734952d900464f943cdec646db5798585f34ee6a154058b1af25b6430c0f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

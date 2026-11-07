@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1987_AMC_12_Q29",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "92b472787917233bb9a2a0e1455c4469bd296b26a22e974ccaedf162165984e4",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "a9533733dd2496f3aea8767f78ca6014407af60f282a256f16ac8803c4f10c26",
+  "solutionFigureHashes": {},
+  "candidateHash": "4d1bafd0943b4eb090b374e6ffa1be197b998ccd9cef208a2a3ef24d9838b76c",
+  "candidate": {
+    "questionId": "1987_AMC_12_Q29",
+    "derivedAnswer": "\\(15\\), choice A; the index is \\(n=1905\\)",
+    "answerStatus": "matches",
+    "answerReason": "The value's position above or below 1 determines the index parity, allowing the recurrence to be reversed uniquely. Reconstruction gives n=1905, whose digits sum to 15.",
+    "methods": [
+      {
+        "id": "reverse-the-recurrence",
+        "label": "Recover the index by working backward",
+        "explanation": "To recover an index from a value, first look for a way to distinguish the two recurrence rules. All terms are positive, because the initial term is positive and both adding \\(1\\) and taking a reciprocal preserve positivity. For every positive integer \\(k\\), the rules give\n\\[\nt_{2k}=1+t_k>1,\n\\qquad\nt_{2k+1}=\\frac1{1+t_k}<1.\n\\]\nThus values above \\(1\\) have even indices, values below \\(1\\) have odd indices, and the value \\(1\\) occurs only at index \\(1\\).\n\nThis tells us how to reverse a step. If the current value is \\(v>1\\), replace it by \\(v-1\\) and replace its index \\(n\\) by \\(n/2\\). If \\(0<v<1\\), replace it by \\(1/v-1\\) and replace its index by \\((n-1)/2\\). Both replacement values are positive in their stated cases.\n\nStarting with the given value, these forced steps give\n\\[\n\\begin{aligned}\n\\frac{19}{87}&\\longrightarrow\\frac{68}{19}\n\\longrightarrow\\frac{49}{19}\n\\longrightarrow\\frac{30}{19},\\\\\n\\frac{30}{19}&\\longrightarrow\\frac{11}{19}\n\\longrightarrow\\frac8{11}\n\\longrightarrow\\frac38,\\\\\n\\frac38&\\longrightarrow\\frac53\n\\longrightarrow\\frac23\n\\longrightarrow\\frac12\n\\longrightarrow1.\n\\end{aligned}\n\\]\nFor example, the first replacement is \\(87/19-1=68/19\\).\n\nNow read the value chain backward, starting at index \\(1\\). A step from \\(u\\) to \\(1+u\\) doubles the index; a step from \\(u\\) to \\(1/(1+u)\\) doubles the index and adds \\(1\\). The corresponding indices are\n\\[\n\\begin{aligned}\n1&\\longrightarrow3\\longrightarrow7\\longrightarrow14\n\\longrightarrow29\\longrightarrow59,\\\\\n59&\\longrightarrow119\\longrightarrow238\\longrightarrow476\n\\longrightarrow952\\longrightarrow1905.\n\\end{aligned}\n\\]\nEvery backward choice was forced, and reversing those choices applies the original recurrence, so \\(1905\\) is the unique required index. Its digit sum is\n\\[\n1+9+0+5=\\boxed{15},\n\\]\nchoice A.",
+        "nodeIds": [
+          "cnm_h200"
+        ],
+        "prerequisiteIds": [
+          "cnm_h197",
+          "cnm_016",
+          "cnm_p156",
+          "cnm_p173"
+        ],
+        "levelReason": "Uses positive rational arithmetic, parity, comparison with 1, and reversal of the supplied recurrence."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_016",
+      "cnm_p156",
+      "cnm_h197"
+    ],
+    "annotationRationale": "The written method applies the recurrence, so cnm_h200 is a method node. The displayed task specifically asks for an index from a term value, requiring branch identification, inversion, and uniqueness rather than ordinary forward term generation. That more precise target is missing from the catalog. Reciprocals, parity, sequence indexing, and fraction arithmetic support the method.",
+    "needsNewNodes": [
+      {
+        "name": "Recovering indices in branching recursive sequences",
+        "description": "Recover an index from a recursively generated term value by distinguishing the ranges of the recurrence branches, reversing the value and index transformations, and reaching a known base case. Justify that the recovered index exists and is unique.",
+        "reason": "The simple-recurrence node covers generating terms from earlier terms. No supplied node covers reversing a branching recurrence to determine an unknown index."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1987_AMC_12_Q29",
+    "decision": "accept",
+    "mathematicalCheck": "Positivity separates even-index values above 1 from odd-index values below 1, while only the first term equals 1. All reverse transformations and reconstructed indices check, giving the unique index \\(1905\\) and digit sum \\(15\\).",
+    "levelCheck": "The decisive branch identification, inversion, and uniqueness argument are explained using rational arithmetic and parity.",
+    "methodDistinctness": "One complete reversal method is sufficient.",
+    "annotationCheck": "The proposed missing target accurately distinguishes recovering an index from ordinary forward recurrence evaluation. The recurrence method node and supporting reciprocal, parity, indexing, and fraction-arithmetic prerequisites are justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "reverse-the-recurrence": "reverse-the-recurrence"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c52f25b56bb55a8362edb456dfc888c6d3409cbdc89b1f0d2bf0da6debfe7842",
+    "inputHash": "059dff7b287689b391345639f761e67e3236f417d36b1f6b244cc38972200e1a",
+    "authorInputHash": "24425e58e3e6f7ac261f72299b8b8a96053e275295c28ea06166989f0345b352",
+    "reviewInputHash": "434138fe877284ff5fca18110110c728da5946363758201a04126b8beac6c261",
+    "authorResponseHash": "8263296f338a8bd40623f028376d0ed4d6724c80a056996d1820b3f86aa7eb0e",
+    "reviewerResponseHash": "3d844a157935d331f7a030bd7327e3b371567d314981253cfbdde0d2cc904836",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

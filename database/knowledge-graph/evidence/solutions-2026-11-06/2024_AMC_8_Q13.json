@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2024_AMC_8_Q13",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "2857629f1345a67ed69054c58ad3f76d3415611ab9c6e439039145a98d8734bd",
+    "figureHashes": {
+      "figures/2024_AMC_8_Q13_fig1.png": "b4ff23be2a3659e7cfd0123c5517777098370ca5824d5fdd6b3c893c1b0877ea"
+    }
+  },
+  "solutionSHA256": "29753e2d906574a077d32e6df38eee2865f71346e1ea2ab765e743c4afe6ac60",
+  "solutionFigureHashes": {},
+  "candidateHash": "4d4854222cc53cd7788f092e6fbd646fd469de94dc929517095c042a539a2be2",
+  "candidate": {
+    "questionId": "2024_AMC_8_Q13",
+    "derivedAnswer": "B: 5",
+    "answerStatus": "matches",
+    "answerReason": "A six-hop return requires three up-hops and three down-hops without ever going below ground. Exhaustive casework gives five valid sequences, matching choice B.",
+    "methods": [
+      {
+        "id": "systematic-casework",
+        "label": "Count by the second hop",
+        "explanation": "To return to ground, Buzz needs equally many up-hops and down-hops, so he must make three of each. Write \\(U\\) for an up-hop and \\(D\\) for a down-hop. He cannot go below ground, so his first hop must be \\(U\\), and his final hop must be \\(D\\).\n\nGroup the sequences by the second hop.\n\nIf the second hop is \\(D\\), Buzz begins with \\(UD\\) and is back on the ground. The remaining four hops must start with \\(U\\) and end with \\(D\\). The two middle hops must be one \\(U\\) and one \\(D\\), in either order. Both orders are allowed, giving\n\\[\n\\mathrm{UDUUDD},\\qquad \\mathrm{UDUDUD}.\n\\]\n\nIf the second hop is \\(U\\), Buzz begins with \\(UU\\). If his third hop is also \\(U\\), all three remaining hops must be \\(D\\). If his third hop is \\(D\\), he is on the first stair with one up-hop and two down-hops left. Their possible orders are \\(UDD\\), \\(DUD\\), and \\(DDU\\), but \\(DDU\\) would take him below ground. This gives\n\\[\n\\mathrm{UUUDDD},\\qquad \\mathrm{UUDUDD},\\qquad \\mathrm{UUDDUD}.\n\\]\n\nThe two cases cover every possible second hop and cannot overlap. The five listed sequences are distinct and all stay at or above ground. Thus there are \\(2+3=\\boxed{5}\\) ways, choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_h230"
+        ],
+        "prerequisiteIds": [
+          "cnm_p010"
+        ],
+        "levelReason": "The method uses elementary reasoning about opposite hops, a short exhaustive list of cases, and addition within 10, all appropriate for AMC 8."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h230"
+    ],
+    "supportIds": [
+      "cnm_p010"
+    ],
+    "annotationRationale": "The mathematical target is counting valid sequences by combining exhaustive, disjoint cases, which fits cnm_h230. The written method applies this principle to the second hop and adds the two case counts; cnm_p010 supplies the supporting arithmetic. The existing combined addition-and-multiplication label is unnecessary because no multiplication of choices is needed. These assignments describe the task and method, not student mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2024_AMC_8_Q13",
+    "decision": "accept",
+    "mathematicalCheck": "Six hops returning to ground require three up-hops and three down-hops. The disjoint prefixes UD and UU yield exactly two and three valid completions, respectively. The excluded DDU completion from height one goes below ground. All five listed sequences are distinct and valid, giving choice B. The figure provides enough stairs for the maximum required height of three.",
+    "levelCheck": "The elementary casework fits AMC 8. The explanation justifies the hop balance, case completeness, and exclusion without requiring advanced counting formulas.",
+    "methodDistinctness": "One complete, accessible method is sufficient; no additional method is needed.",
+    "annotationCheck": "cnm_h230 appropriately describes counting through exhaustive, disjoint cases, and cnm_p010 supports the final addition. The annotations do not require multiplication or recurrence and make no unsupported catalog equivalence.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "systematic-casework": "systematic-casework"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "2c14cba11bb0e90443ef23a9519f117980473a97128280b17bd8c74752d909e3",
+    "inputHash": "f6a18974cf3f455086c7805f57f4e938e7177af8ab043118652e881af46bd7fb",
+    "authorInputHash": "e764b2b5028f4ea9e718a34e0937f7c04b24c85f48cdc46e622a78b4869b9464",
+    "reviewInputHash": "f7e3feb43c92d326f2ac5c33c23d96ff826b58397415501a04d689551d1b11d9",
+    "authorResponseHash": "a79474758e75606502106a87964082e27367740c640b25b70d80f2b31bdd7adc",
+    "reviewerResponseHash": "e7090d1dceace051bf1b556b00904b432546863f83ddb6c64a880c24733b655b",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

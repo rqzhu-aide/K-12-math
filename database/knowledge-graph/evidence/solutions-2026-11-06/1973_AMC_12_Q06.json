@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1973_AMC_12_Q06",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "2c302b9d9483f2fb92b2d3f73d36c3ea53112d54c9536031196cda9bfcf142c2",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "5ec783dfa516c3bef5713e09b4a11d95a2a63df09344e852a53d302fe26a5f04",
+  "solutionFigureHashes": {},
+  "candidateHash": "8c563f5ea8d91ee80b8cdb00fa8db46db94f7cb4e0ef7c8540ee49fc3a4c0771",
+  "candidate": {
+    "questionId": "1973_AMC_12_Q06",
+    "derivedAnswer": "\\(12\\), choice C",
+    "answerStatus": "matches",
+    "answerReason": "Place-value expansion gives \\((b-12)(b+1)=0\\). A valid base must be an integer greater than 5, leaving only \\(b=12\\).",
+    "methods": [
+      {
+        "id": "1973_AMC_12_Q06_m1",
+        "label": "Use a place-value equation",
+        "explanation": "Expressing both numerals by their place values turns the condition into an equation for the base. Since the digit \\(5\\) appears, \\(b\\) must be an integer with \\(b\\ge6\\).\n\nThe values represented by \\((24)_b\\) and \\((554)_b\\) are \\(2b+4\\) and \\(5b^2+5b+4\\), respectively. Therefore\n\\[\n(2b+4)^2=5b^2+5b+4.\n\\]\nExpanding and collecting terms gives\n\\[\n4b^2+16b+16=5b^2+5b+4,\n\\]\nso\n\\[\nb^2-11b-12=(b-12)(b+1)=0.\n\\]\nThus \\(b=12\\) or \\(b=-1\\). The latter is not an allowed base, whereas \\(12\\ge6\\) makes every displayed digit valid. Hence \\(\\boxed{b=12}\\), choice C.",
+        "nodeIds": [
+          "cnm_024",
+          "cnm_224"
+        ],
+        "prerequisiteIds": [
+          "cnm_148",
+          "cnm_036",
+          "cnm_020"
+        ],
+        "levelReason": "Place-value expansion and solving a factorable quadratic are standard school algebra within historical AHSME scope."
+      },
+      {
+        "id": "1973_AMC_12_Q06_m2",
+        "label": "Use the units digit and carrying",
+        "explanation": "The last digit sharply restricts the possible bases. First, \\(b\\) is an integer greater than \\(5\\), because \\(5\\) is one of the displayed digits.\n\nWhen \\((24)_b\\) is squared, the units calculation is \\(4\\cdot4=16\\). Every other place-value contribution is a multiple of \\(b\\). For the answer to end in \\(4\\), division of \\(16\\) by \\(b\\) must therefore leave remainder \\(4\\). Thus, for some nonnegative integer carry \\(q\\),\n\\[\n16=qb+4,\n\\qquad qb=12.\n\\]\nThe only positive divisors of \\(12\\) greater than \\(5\\) are \\(6\\) and \\(12\\), so these are the only possible bases.\n\nFor \\(b=6\\),\n\\[\n(24)_6=16,\n\\qquad (554)_6=5\\cdot36+5\\cdot6+4=214,\n\\]\nand \\(16^2=256\\ne214\\), so this base fails.\n\nFor \\(b=12\\),\n\\[\n(24)_{12}=28,\n\\qquad (554)_{12}=5\\cdot144+5\\cdot12+4=784=28^2.\n\\]\nThis base satisfies the original condition. Therefore \\(\\boxed{b=12}\\), choice C.",
+        "nodeIds": [
+          "cnm_024",
+          "cnm_p153"
+        ],
+        "prerequisiteIds": [
+          "cnm_p050",
+          "cnm_020"
+        ],
+        "levelReason": "This alternative uses elementary carrying, remainders, factors, and direct arithmetic, providing a prerequisite path without quadratic equations."
+      }
+    ],
+    "assessedIds": [
+      "cnm_024"
+    ],
+    "supportIds": [
+      "cnm_020"
+    ],
+    "annotationRationale": "Both methods assess positional numeral systems and the requirement that digits be smaller than the base. The first route uses quadratic factoring, supported by expansion and collecting terms. The second uses a units-digit remainder and positive factors to obtain an exhaustive candidate list. Squaring is shared supporting knowledge.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1973_AMC_12_Q06",
+    "decision": "accept",
+    "mathematicalCheck": "Place values give \\((b-12)(b+1)=0\\), and the integer restriction \\(b>5\\) leaves 12. Independently, the units calculation gives \\(b\\mid12\\), leaving 6 and 12; direct evaluation rejects 6 and verifies \\(28^2=784=(554)_{12}\\).",
+    "levelCheck": "Both explanations are complete school-level arguments with valid digit restrictions.",
+    "methodDistinctness": "Quadratic factoring and units-digit carrying provide genuinely distinct approaches. The alternative requires less algebra.",
+    "annotationCheck": "Numeral systems is a route-neutral target. Factoring and remainder/factor knowledge remain method-specific, with squaring correctly shared.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "1973_AMC_12_Q06_m1": "1973_AMC_12_Q06_m1",
+    "1973_AMC_12_Q06_m2": "1973_AMC_12_Q06_m2"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "3ead3bdc936e87f78cacccea719898f9ecbe1a0fd052554023276e62f476896e",
+    "inputHash": "2151ae737e4aa7dece020718df1d1d7edaa61894ebdb38fbea9ffa1a019d97b8",
+    "authorInputHash": "765ef510dad4d4867679c9746aa4d9efab5a8b500a42820f173db8d26c991826",
+    "reviewInputHash": "7aff99c37ff10ee6eb955ce68f2fb24750d5c37bec4c57f14ad9045bd17ce3e5",
+    "authorResponseHash": "c84627981e5d3bbb4c6134cbf7d2c1bd3f0080bca4c1f9d3f790cad4b9c64f35",
+    "reviewerResponseHash": "caaa3596b4d83f7ef80839f675e58acdd2ae07093f11a05cf904ee82391ca4e5",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

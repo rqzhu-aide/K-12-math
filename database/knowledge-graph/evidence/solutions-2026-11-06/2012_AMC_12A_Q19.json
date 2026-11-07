@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2012_AMC_12A_Q19",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "f3b0ab2ff195de7b3872550d09138b451f6d5e9990eed48693f27cde7d968448",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "e21c1797aa0985bbc810186eeee323a55522e01007571b2fcbcc5425a87d431d",
+  "solutionFigureHashes": {},
+  "candidateHash": "3c0ae731304a4c5ee4b19e475ac199499046921b7abdc79034ff4d2757b09b6f",
+  "candidate": {
+    "questionId": "2012_AMC_12A_Q19",
+    "derivedAnswer": "170 (B)",
+    "answerStatus": "matches",
+    "answerReason": "The counts for common friendship degrees 1, 2, 3, and 4 are respectively 15, 70, 70, and 15, totaling 170.",
+    "methods": [
+      {
+        "id": "complements-and-cycle-types",
+        "label": "Pair complementary friendship patterns",
+        "explanation": "Represent each person by a vertex and each friendship by an edge joining two vertices. Let \\(d\\) be the common number of friends. Since some friendships exist but not every pair is friends, \\(d\\) is one of \\(1,2,3,4\\).\n\nReplacing every friendship by a nonfriendship changes each person's number of friends from \\(d\\) to \\(5-d\\). Doing this twice restores the original pattern, so the numbers of patterns for degrees \\(1\\) and \\(4\\) are equal, as are those for degrees \\(2\\) and \\(3\\). We need only count degrees \\(1\\) and \\(2\\).\n\nIf \\(d=1\\), the people form three disjoint pairs. Choose Adam's partner in \\(5\\) ways, then choose the partner of the first remaining person in \\(3\\) ways. The final pair is forced. This counts each pairing once and gives\n\\[\n5\\cdot3\\cdot1=15.\n\\]\n\nIf \\(d=2\\), every connected group must be a cycle: following friendships eventually closes a loop, and each vertex on that loop already has its two friends, leaving no possible branches. Each cycle has at least three vertices. With six vertices, the only possibilities are one cycle of length six or two triangles.\n\nFor a six-person cycle, start at Adam and arrange the other five people around the cycle. There are \\(5!\\) orders, but traversing the same cycle in the opposite direction describes the same friendships. Thus there are \\(5!/2=60\\) such cycles. For two triangles, choose Adam's two triangle partners in \\(\\binom{5}{2}=10\\) ways; the remaining triangle is then determined. Consequently the degree-\\(2\\) count is \\(60+10=70\\).\n\nThe four degree cases are disjoint and exhaustive, so the total is\n\\[\n2(15+70)=\\boxed{170},\n\\]\nwhich is choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "math:graph-models",
+          "cnm_h232",
+          "math:bijective-counting",
+          "math:symmetry-counting",
+          "cnm_h234",
+          "cnm_h239"
+        ],
+        "prerequisiteIds": [
+          "cnm_h231",
+          "cnm_h230",
+          "cnm_h233",
+          "cnm_h237",
+          "math:factorial-notation"
+        ],
+        "levelReason": "The argument uses elementary graph modeling, pairing, permutations, combinations, and a reversible correspondence, all within AMC 12 counting."
+      }
+    ],
+    "assessedIds": [
+      "math:graph-models",
+      "cnm_h232"
+    ],
+    "supportIds": [
+      "cnm_h231",
+      "cnm_h230"
+    ],
+    "annotationRationale": "The task requires translating equal friendship counts into equal vertex degrees and organizing an exhaustive count. Complementation is the method's bijection, reversal accounts for duplicate cycle descriptions, and permutations and combinations calculate its two cycle cases.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2012_AMC_12A_Q19",
+    "decision": "accept",
+    "mathematicalCheck": "Complementation pairs degrees 1 with 4 and 2 with 3. Pairings contribute 15; degree-2 patterns contribute 60 six-cycles and 10 pairs of triangles. The exhaustive total is 170, with all multiplicities justified.",
+    "levelCheck": "Elementary graph reasoning and counting fit AMC 12. The cycle classification and reversal adjustment are explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The assessed IDs are route neutral. Bijection, symmetry counting, permutations, combinations, and the support/prerequisite IDs match the argument.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "complements-and-cycle-types": "solution:complements-and-cycle-types:e21c1797aa09"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "3bca379a0d3d0bf71d3cd8eda678b19d3eba22e8bf213a3a6c12bd6082a4a493",
+    "inputHash": "d72e7747326af1c505511af086300f493ef675e901d57cf845ab70daaee6fb0a",
+    "authorInputHash": "217ed61007597acf91feb05f90d96fd3de6c40bbb395666e370e058710ef1e4b",
+    "reviewInputHash": "f143c5abce0dd4c5fc9b2bf6850cbe2c878b4b0c7fbffe419d9465edca1d5002",
+    "authorResponseHash": "16561e987222304bd53d80980bcd016a4557fa1530b2bfb6aacb476f114e0500",
+    "reviewerResponseHash": "2bfd0d454918b6a2c4238bf97f23a3926709f26e34d4a7b6100445c6c1e9feb2",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

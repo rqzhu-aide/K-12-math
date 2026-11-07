@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2015_AMC_10A_Q18",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "8bdc5ebc7b2ca921a2d820abb32498d1bd43aaa620aab12f5c1e9d1da2dd7743",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "f38796a44c8dac4839042ed7d0bbbc6fef1e561efdae6c68b2c566a7950fb0fb",
+  "solutionFigureHashes": {},
+  "candidateHash": "716ca731d216b22747cdc48349b4f8daa38ec6f773cbc977b51db3d05b73dd54",
+  "candidate": {
+    "questionId": "2015_AMC_10A_Q18",
+    "derivedAnswer": "\\(21\\), choice E",
+    "answerStatus": "matches",
+    "answerReason": "There are \\(399\\) qualifying positive integers, and the decimal digits of \\(399\\) sum to \\(21\\).",
+    "methods": [
+      {
+        "id": "padded-hexadecimal-digits",
+        "label": "Count three-position hexadecimal strings",
+        "explanation": "Using leading zeros lets us count short hexadecimal representations together. Since \\(16^2=256\\) and \\(4\\cdot256=1024>1000\\), every integer under consideration has at most three hexadecimal digits, and its first digit after padding to three positions is at most \\(3\\).\n\nFor a representation containing only numeric digits, the first position therefore has four choices, \\(0,1,2,3\\), and each remaining position has ten choices, \\(0\\) through \\(9\\). Every such string is within the upper bound: the largest is\n\\[\n(399)_{16}=3\\cdot256+9\\cdot16+9=921<1000.\n\\]\nThus no additional cutoff cases need to be removed.\n\nEach integer has exactly one three-position representation, so the product \\(4\\cdot10\\cdot10\\) counts each eligible integer once. Removing \\(000\\), which represents zero, gives\n\\[\nn=4\\cdot10\\cdot10-1=399.\n\\]\nThe requested digit sum is \\(3+9+9=\\boxed{21}\\), choice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_024",
+          "cnm_h231"
+        ],
+        "prerequisiteIds": [
+          "cnm_020"
+        ],
+        "levelReason": "Uses positional place values and independent digit choices, with an explicit check of the upper endpoint."
+      }
+    ],
+    "assessedIds": [
+      "cnm_024",
+      "cnm_h231"
+    ],
+    "supportIds": [
+      "cnm_020"
+    ],
+    "annotationRationale": "The mathematical targets are interpreting base-16 place values and counting independent digit choices. Computing the square of the base supports the place-value calculation. Fixed-length padding makes uniqueness and exclusion of zero explicit.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2015_AMC_10A_Q18",
+    "decision": "accept",
+    "mathematicalCheck": "Since 1000 < 4·16², the padded leading digit is at most 3. Every numeric-only string with leading digit 0 through 3 qualifies because its maximum value is (399)₁₆ = 921. Unique padding gives 4·10·10 − 1 = 399 positive integers, whose decimal digit sum is 21.",
+    "levelCheck": "The place-value bound, uniqueness, and exclusion of zero are clearly explained using elementary counting.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Numeral systems and the multiplication principle are appropriate assessed targets. Computing powers is a justified supporting prerequisite.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "padded-hexadecimal-digits": "padded-hexadecimal-digits"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "cb27bc776a8a169b1a84330462007f9b9106ecfaada9204db85649faa6eb17b9",
+    "inputHash": "5b38b10886c23cc520a1eda279d45e5b800543742aea95661e1a276773d2b5f8",
+    "authorInputHash": "30d8d2f0e1daef02d42013b0f3dd6cd39e437172e2b2e260cf3542ca40fbeaba",
+    "reviewInputHash": "615599db8daef3b9f64371f9a6493b65ffc5c81a4458d2e277da80f7ed675d34",
+    "authorResponseHash": "89e25ecdd3ece7e00171981893b18bb1bdc1f11260db7620cd3fccea35b10b98",
+    "reviewerResponseHash": "9d6bd97c4783e73ac048af0e8d5950ab7cdb47d8cd391cea823e3d578eba4494",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1990_AMC_12_Q18",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "e462183c952b588782bacffee783260d67c339fe21902e8024fe6a0e9f91331e",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "cde6526300da6418995ff6da133d8fe8650322657c135ba37107d6a9e962523d",
+  "solutionFigureHashes": {},
+  "candidateHash": "a784112f5a33c52834b0a708b3e9fd7d4e4d9b33cac62c721caeb7dfc22f383c",
+  "candidate": {
+    "questionId": "1990_AMC_12_Q18",
+    "derivedAnswer": "\\(\\frac{3}{16}\\), choice C",
+    "answerStatus": "matches",
+    "answerReason": "The two power sequences each have four equally frequent units digits. Exactly three of the sixteen ordered digit pairs give a sum ending in 8.",
+    "methods": [
+      {
+        "id": "units-digit-cycles",
+        "label": "Count pairs of units digits",
+        "explanation": "Only the units digits of the powers affect the units digit of their sum. Successive powers of \\(3\\) have units digits\n\\[\n3,9,7,1,3,9,7,1,\\ldots,\n\\]\nand successive powers of \\(7\\) have units digits\n\\[\n7,9,3,1,7,9,3,1,\\ldots.\n\\]\nEach cycle repeats because multiplying its final digit, \\(1\\), by the base starts the same sequence again. Since \\(100=25\\cdot4\\), each of the digits \\(1,3,7,9\\) occurs exactly \\(25\\) times for each power.\n\nThe two selections give \\(100^2\\) equally likely ordered pairs \\((a,b)\\). Among the possible units digits, the only ordered pairs whose sum ends in \\(8\\) are\n\\[\n(1,7),\\qquad (7,1),\\qquad (9,9).\n\\]\nThe first two sums equal \\(8\\), and the last equals \\(18\\). These three cases are disjoint, and each corresponds to \\(25\\cdot25\\) exponent pairs. Therefore the probability is\n\\[\n\\frac{3\\cdot25^2}{100^2}=\\boxed{\\frac{3}{16}},\n\\]\nwhich is choice C.",
+        "nodeIds": [
+          "math:modular-powers",
+          "cnm_h137"
+        ],
+        "prerequisiteIds": [
+          "math:modular-congruence",
+          "cnm_h231",
+          "cnm_309"
+        ],
+        "levelReason": "The argument uses elementary units-digit cycles and counting equally likely outcomes; no exponent theorem is needed."
+      }
+    ],
+    "assessedIds": [
+      "math:modular-powers",
+      "cnm_h137"
+    ],
+    "supportIds": [
+      "math:modular-congruence",
+      "cnm_h231",
+      "cnm_309"
+    ],
+    "annotationRationale": "The task combines periodic power remainders with a finite probability calculation. The method expresses remainder arithmetic through units digits, justifies the cycles, and uses multiplication counting to establish the equal sizes of the digit-pair classes.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1990_AMC_12_Q18",
+    "decision": "accept",
+    "mathematicalCheck": "Both units-digit cycles have length four, so each digit occurs 25 times. Exactly (1,7), (7,1), and (9,9) are favorable ordered digit pairs, giving 3·25²/100² = 3/16.",
+    "levelCheck": "Elementary digit cycles and counting are appropriate. The explanation establishes periodicity and equal likelihood.",
+    "methodDistinctness": "One complete counting method is sufficient.",
+    "annotationCheck": "The assessed power-cycle and classical-probability nodes fit. Remainder arithmetic, multiplication counting, and equal-likelihood identification support the written method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "units-digit-cycles": "units-digit-cycles"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "9e0620452d3805fdfbfc274bf95e0c9f066fd97b96fb85a25e6433c0baddc229",
+    "inputHash": "4374bb7ef94d76f6c74ccfc15030863f259c4bd6665cc331079d34c359a420cf",
+    "authorInputHash": "2b7c185c96991c946ef7c009541f8f26b410436e85796fc5b2a7dff09a8e0077",
+    "reviewInputHash": "18f47b54c21086a15077ea251a33c4ce02a192f656f80047deccb5d2b79f9ad5",
+    "authorResponseHash": "aeffd4459b7341f2e901ddb487b090567b18c8522030eb74b266f516473e16ba",
+    "reviewerResponseHash": "f36546cf06e28dfd684a2f2a1ddab6d106123dff2362af66a83d72b8828e5942",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

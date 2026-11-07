@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2002_AMC_12B_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "d0fa6ebb9f296c713127b69daa659438fa8504be7ff5baed5ab76c467c21765c",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "ea190b6e89bdef2c6a7f4e803a57e2a196f373d41e07f42c6b98fe33dde37a21",
+  "solutionFigureHashes": {},
+  "candidateHash": "08a346f92ef8a66d8d33e7f9ac21fbdfd9bc7276058cefb44c78acd59141924a",
+  "candidate": {
+    "questionId": "2002_AMC_12B_Q24",
+    "derivedAnswer": "E. \\(4(36+\\sqrt{113})\\)",
+    "answerStatus": "matches",
+    "answerReason": "The given area attains the sum of the four radial triangles' area bounds, forcing right angles at P. The four sides are 40, 4√113, 53, and 51.",
+    "methods": [
+      {
+        "id": "radial-triangle-area-bounds",
+        "label": "Bound the four triangle areas",
+        "explanation": "Join \\(P\\) to the four vertices. Because the quadrilateral is convex and \\(P\\) is inside it, the four triangles fill the quadrilateral without overlapping interiors.\n\nA triangle with two sides of lengths \\(r\\) and \\(s\\) has area at most \\(rs/2\\): using the first side as its base, its height is at most the second side's length. Equality holds exactly when those two sides are perpendicular. This bound is useful here because all four pairs of radial lengths are known.\n\nWriting \\(K\\) for the quadrilateral's area, we obtain\n\\[\n\\begin{aligned}\nK&\\le \\frac{24\\cdot32+32\\cdot28}{2}\\\\\n&\\quad+\\frac{28\\cdot45+45\\cdot24}{2}\\\\\n&=2002.\n\\end{aligned}\n\\]\nThe given area is exactly \\(2002\\). Since no triangle can exceed its own bound, their sum reaches this bound only if every triangle reaches its bound. Thus all four angles at \\(P\\) are right angles.\n\nThe Pythagorean theorem now gives\n\\[\n\\begin{aligned}\nAB&=\\sqrt{24^2+32^2}=40,\\\\\nBC&=\\sqrt{32^2+28^2}=4\\sqrt{113},\\\\\nCD&=\\sqrt{28^2+45^2}=53,\\\\\nDA&=\\sqrt{45^2+24^2}=51.\n\\end{aligned}\n\\]\nTherefore the perimeter is\n\\[\n40+4\\sqrt{113}+53+51\n=4(36+\\sqrt{113}),\n\\]\nwhich is choice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_p150",
+          "cnm_p148",
+          "cnm_065",
+          "math:nonnegative-sum-zero",
+          "cnm_174"
+        ],
+        "prerequisiteIds": [
+          "cnm_064",
+          "cnm_075",
+          "cnm_171"
+        ],
+        "levelReason": "The argument uses elementary triangle area, perpendicular distance, equality in summed bounds, and the Pythagorean theorem."
+      },
+      {
+        "id": "diagonal-area-comparison",
+        "label": "Compare the diagonals",
+        "explanation": "Let \\(O\\) be the intersection of the diagonals. Convexity ensures that \\(O\\) lies inside the quadrilateral. Using \\(AC\\) as the common base of triangles \\(ABC\\) and \\(ADC\\), their heights are at most \\(BO\\) and \\(DO\\), respectively. Thus the area \\(K\\) satisfies\n\\[\nK\\le \\frac12 AC(BO+DO)\n=\\frac12 AC\\cdot BD.\n\\]\nEquality holds exactly when the diagonals are perpendicular.\n\nThe paths from opposite vertices through \\(P\\) also give\n\\[\nAC\\le PA+PC=52,\n\\qquad BD\\le PB+PD=77.\n\\]\nCombining these bounds with the given area yields\n\\[\n2002=K\\le\\frac12 AC\\cdot BD\n\\le\\frac12\\cdot52\\cdot77=2002.\n\\]\nEvery inequality must therefore be an equality. In particular, \\(AC=52\\), \\(BD=77\\), and the diagonals are perpendicular. Equality in \\(AC\\le AP+PC\\) means that \\(P\\) lies on segment \\(AC\\); equality in the other diagonal bound puts \\(P\\) on segment \\(BD\\). Hence \\(P=O\\), so the four radial triangles are right triangles.\n\nApplying the Pythagorean theorem,\n\\[\n\\begin{aligned}\nAB&=\\sqrt{24^2+32^2}=40,\\\\\nBC&=\\sqrt{32^2+28^2}=4\\sqrt{113},\\\\\nCD&=\\sqrt{28^2+45^2}=53,\\\\\nDA&=\\sqrt{45^2+24^2}=51.\n\\end{aligned}\n\\]\nTheir sum is \\(144+4\\sqrt{113}=4(36+\\sqrt{113})\\), so the answer is \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_p150",
+          "cnm_p148",
+          "cnm_065",
+          "cnm_054",
+          "cnm_055",
+          "cnm_174"
+        ],
+        "prerequisiteIds": [
+          "cnm_064",
+          "cnm_075",
+          "cnm_171"
+        ],
+        "levelReason": "This alternative uses elementary diagonal lengths and triangle heights to establish the same right-triangle configuration."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p150",
+      "cnm_174"
+    ],
+    "supportIds": [
+      "cnm_064",
+      "cnm_075",
+      "cnm_171"
+    ],
+    "annotationRationale": "The common targets are decomposing the quadrilateral's area and recovering its sides by the Pythagorean theorem. The first route bounds four triangle areas and uses the zero-sum principle for their nonnegative shortfalls. The second route bounds diagonal lengths and compares triangle heights with diagonal pieces. Perpendicularity and square-root calculations support both routes; their distinct bounding procedures remain method-local.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2002_AMC_12B_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "The four triangle bounds sum to 2002, so equality forces every adjacent radial pair perpendicular. Independently, K <= AC·BD/2 <= 52·77/2 = 2002 forces perpendicular diagonals meeting at P. Both routes give sides 40, 4√113, 53, 51 and perimeter 4(36+√113).",
+    "levelCheck": "Both explanations use elementary area, segment bounds and the Pythagorean theorem, appropriate for AMC 12.",
+    "methodDistinctness": "The diagonal bounds provide a distinct geometric argument from bounding the four radial triangles.",
+    "annotationCheck": "The shared assessed targets and supports fit both routes. The nonnegative-shortfall argument is correctly local to the first method; all listed nodes fit their catalog scopes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "radial-triangle-area-bounds": "solution:radial-triangle-area-bounds:ea190b6e89bd",
+    "diagonal-area-comparison": "solution:diagonal-area-comparison:ea190b6e89bd"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "eeaf41c359272c3f065ac8a6ddc6ef70f7fb2414aa9329e22aee875be42b7920",
+    "inputHash": "3ab8dcaadb98c2665bdcb56f6e3d9e261392485a31d1f80abb738cf84e61ad0f",
+    "authorInputHash": "23271c912bfec0e95b841832892056ed30b68c9d37774e4ac253f06ac7e07e11",
+    "reviewInputHash": "9c307fd16b563559a902d260e835ac00e56cf7c40d35a18581dfaa91ae8c6a4b",
+    "authorResponseHash": "47b4886feaa69f907e7ed6bdd06095cae7e0970313b45f05f3a3d9b3113f794e",
+    "reviewerResponseHash": "626cf2d33f828f79918024e354931e2681af4f6d62e63eb2ff23eaf6fd870418",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

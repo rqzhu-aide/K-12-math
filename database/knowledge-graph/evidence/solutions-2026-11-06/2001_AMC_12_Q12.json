@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2001_AMC_12_Q12",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "63a98cc5d6816c60195df0827ef5300e64b92324c1447f92207151709218073a",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "af67e260a0105d28b94dca7b4194ce7b29601fcdff9c586c731639c4ef750519",
+  "solutionFigureHashes": {},
+  "candidateHash": "fb6582afa40585bd3cac1aea02a70d5bb86126b05f699a8bd858d8a0c79f508c",
+  "candidate": {
+    "questionId": "2001_AMC_12_Q12",
+    "derivedAnswer": "B: 801",
+    "answerStatus": "matches",
+    "answerReason": "There are 1001 multiples of 3 or 4 in the stated interval. Exactly 200 of these are also multiples of 5, leaving 801, which matches choice B.",
+    "methods": [
+      {
+        "id": "count-and-exclude-multiples",
+        "label": "Count the multiples and remove those divisible by 5",
+        "explanation": "First count the positive integers up to and including \\(2001\\) that are multiples of \\(3\\) or \\(4\\). There are \\(667\\) multiples of \\(3\\), including \\(2001\\), and \\(500\\) multiples of \\(4\\). The \\(166\\) multiples of \\(12\\) belong to both groups, so adding the first two counts counts each of them twice. Subtracting one copy gives\n\\[\n667+500-166=1001.\n\\]\nWe must now remove exactly those counted numbers that are also multiples of \\(5\\). Such numbers are multiples of \\(15\\) or \\(20\\). There are \\(133\\) multiples of \\(15\\) and \\(100\\) multiples of \\(20\\) not exceeding \\(2001\\). Their overlap consists of the \\(33\\) multiples of \\(60\\), so the number to remove is\n\\[\n133+100-33=200.\n\\]\nEach overlap correction ensures that the relevant numbers are counted once. The desired count is\n\\[\n1001-200=\\boxed{801},\n\\]\nchoice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "cnm_h009",
+          "cnm_h010",
+          "cnm_p159"
+        ],
+        "prerequisiteIds": [
+          "cnm_h008",
+          "cnm_p050",
+          "cnm_p153"
+        ],
+        "levelReason": "Uses integer quotients, least common multiples, and two-set overlap corrections."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h009",
+      "cnm_h010"
+    ],
+    "supportIds": [
+      "cnm_p159",
+      "cnm_p050"
+    ],
+    "annotationRationale": "The task targets counting a finite union without duplication and excluding its prohibited subset. Least common multiples identify the overlaps, while integer quotients count multiples within the inclusive upper bound. The written method does not require floor-function theory.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2001_AMC_12_Q12",
+    "decision": "accept",
+    "mathematicalCheck": "The inclusive counts give 667+500-166=1001 multiples of 3 or 4. Those also divisible by 5 are exactly the multiples of 15 or 20, numbering 133+100-33=200. Subtracting leaves 801, with both overlaps corrected once.",
+    "levelCheck": "Integer quotients and two-set overlap corrections are appropriate. The explanation identifies what each subtraction removes.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Union and complement are justified targets. Least common multiples, division with remainders, and intersection knowledge fit the written reasoning; floor-function theory is unnecessary.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-and-exclude-multiples": "count-and-exclude-multiples"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "2ab8a58726b3efdf7d9f149b5f42439df900e5dbae31ffeb243ea9c91aa2dc61",
+    "inputHash": "f671160b829bae5813cce05ecb2e0834fc6fbb23195242da2b889d922fc6583d",
+    "authorInputHash": "007206c7ec7208407ae3d6112d807ca707365b867beaa103f99f147b400d52d1",
+    "reviewInputHash": "8438e39fa96a9dc5c3065c3601b11ecbf5fb8e5a5b6930100cba5ad6ec86a812",
+    "authorResponseHash": "4513fac6e288612516a7f119b0f011c87b8d3bb5100be8b9033694a69ca89539",
+    "reviewerResponseHash": "998a53936b7314ce7fad4625551f0336700e7447b75fbb25a0c83e6a89aa76ab",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

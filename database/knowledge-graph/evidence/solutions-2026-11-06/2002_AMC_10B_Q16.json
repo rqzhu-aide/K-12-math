@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2002_AMC_10B_Q16",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "082f41a364ad53c545d7328322d5e78592a284db8a208a2df16e13291355fbd6",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "044ec439058baab06aadc32f855eabeddff27aaeb21b5db42d730b4acc87148d",
+  "solutionFigureHashes": {},
+  "candidateHash": "8b32fea3749c86eefe7b2a8e3c20dd0b0595b081b5ef0aa044c8816f6721e1f4",
+  "candidate": {
+    "questionId": "2002_AMC_10B_Q16",
+    "derivedAnswer": "D. \\(4\\)",
+    "answerStatus": "matches",
+    "answerReason": "Exactly n=0, 10, 16, and 18 work, producing the squares 0, 1, 4, and 9.",
+    "methods": [
+      {
+        "id": "possible-denominators",
+        "label": "Test the possible denominators",
+        "explanation": "An integer square is nonnegative. If \\(n<0\\) or \\(n>20\\), the fraction is negative, while \\(n=20\\) makes its denominator zero. Thus any solution must satisfy \\(0\\le n<20\\).\n\nLet \\(d=20-n\\), a positive integer. Rewriting the fraction gives\n\\[\n\\frac{n}{20-n}=\\frac{20-d}{d}=\\frac{20}{d}-1.\n\\]\nFor this to be an integer square, \\(20/d\\) must be an integer. Hence \\(d\\) must be one of the positive divisors\n\\[\n1,2,4,5,10,20.\n\\]\nThe corresponding values of \\(20/d-1\\) are, in the same order,\n\\[\n19,9,4,3,1,0.\n\\]\nThe squares occur exactly when \\(d=2,4,10,20\\). Using \\(n=20-d\\), these give \\(n=18,16,10,0\\), respectively.\n\nEach selected denominator gives a valid, distinct integer \\(n\\), and every possible denominator has been tested. Therefore there are \\(\\boxed{4}\\) integers, choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_p153"
+        ],
+        "prerequisiteIds": [
+          "cnm_156",
+          "cnm_020",
+          "cnm_017"
+        ],
+        "levelReason": "The method reduces the search to the six divisors of 20, using only fraction arithmetic, signs, and small integer squares."
+      },
+      {
+        "id": "bounded-square-enumeration",
+        "label": "Bound and test the squares",
+        "explanation": "A square cannot be negative, so \\(n<0\\) and \\(n>20\\) are impossible. Also, \\(n=20\\) is excluded because the denominator would be zero. Thus \\(n\\) is one of the integers from \\(0\\) through \\(19\\). In this range, \\(20-n\\ge1\\), so\n\\[\n0\\le\\frac{n}{20-n}\\le19.\n\\]\nWrite the fraction as \\(k^2\\), choosing \\(k\\) to be a nonnegative integer. The bound shows that only \\(k=0,1,2,3,4\\) are possible.\n\nSince \\(20-n\\ne0\\), we may multiply the equation by its denominator:\n\\[\nn=k^2(20-n),\n\\qquad\nn=\\frac{20k^2}{1+k^2}.\n\\]\nThe denominator \\(1+k^2\\) is always positive. For \\(k=0,1,2,3,4\\), the resulting values of \\(n\\) are respectively\n\\[\n0,\\quad10,\\quad16,\\quad18,\\quad\\frac{320}{17}.\n\\]\nThe last value is not an integer. The other four values have nonzero original denominators and give ratios \\(0,1,4,9\\), respectively. Since every possible nonnegative square root was tested and the four accepted values of \\(n\\) are distinct, the count is \\(\\boxed{4}\\), choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_h020",
+          "cnm_165"
+        ],
+        "prerequisiteIds": [
+          "cnm_156",
+          "cnm_020",
+          "cnm_017",
+          "cnm_040"
+        ],
+        "levelReason": "This route uses a finite bound, five small squares, and simple equation solving. It requires no advanced number theory."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_156",
+      "cnm_020",
+      "cnm_017"
+    ],
+    "annotationRationale": "The route-neutral target is finding and counting all solutions under an integer restriction. Both methods use fraction-domain conditions, signs, and integer squares. The first method uses divisibility to enumerate denominators; the second uses a finite bound and clears a rational equation. These are alternative routes, not joint requirements.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2002_AMC_10B_Q16",
+    "decision": "accept",
+    "mathematicalCheck": "Both methods correctly restrict n to 0 through 19 and exclude the zero denominator. Divisor testing gives exactly n=0,10,16,18. Independently, the bound on the ratio permits only square roots 0 through 4, yielding the same four integers without double counting signs.",
+    "levelCheck": "Both explanations justify their finite searches using elementary fraction arithmetic, bounds and small squares.",
+    "methodDistinctness": "Enumerating divisors of the denominator and bounding possible square values provide distinct, accessible approaches.",
+    "annotationCheck": "The integer-solution target is route-neutral. Shared domain, square and division skills are justified; divisibility and rational-equation solving remain specific to their respective methods.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "possible-denominators": "possible-denominators",
+    "bounded-square-enumeration": "solution:bounded-square-enumeration:044ec439058b"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "940c64644a150e06be36f0396191b534426edca9cddbcda36d1d918401311442",
+    "inputHash": "adf64ee5b7e2024040a014aebde40ef4e6dd80529b8273e97a7adaeffad6b6d3",
+    "authorInputHash": "10296ec0b0974b749160097b78f4709829a29d3be3878cb9bcfdb09f8e886752",
+    "reviewInputHash": "7c8e39fc5736bb3374322a5962119d089cd158edff2fe4c0a53d1cabf8fe3eed",
+    "authorResponseHash": "abc9a0b8afe0673e63bfd877e34f52f3d3a0f0e410b1ff28a14e2c463c5d233c",
+    "reviewerResponseHash": "b75176e830df396cbc2d84d4cd58cab1c2ae62b97c784a116b877176f6730c80",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1992_AMC_12_Q29",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "8fc1d0ab936f30012731e5bc6b90e8a5e595348ba09fe318dd79bee1a1483413",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "f044245d694cd9e5bb68c771bfac54c8118030715bd3ec7f9b78084d1b739a69",
+  "solutionFigureHashes": {},
+  "candidateHash": "f0ef735370bc2f91676c11ff3d59391ebcf73c16ad466e7ae2d8e8081fbf91b7",
+  "candidate": {
+    "questionId": "1992_AMC_12_Q29",
+    "derivedAnswer": "D, \\(\\frac12\\left(1+\\frac1{3^{50}}\\right)\\)",
+    "answerStatus": "matches",
+    "answerReason": "Under the standard independent-toss model, the even and odd probabilities sum to 1 and differ by \\((-1/3)^{50}=3^{-50}\\). The resulting even probability agrees with choice D.",
+    "methods": [
+      {
+        "id": "parity-state-recurrence",
+        "label": "Track even and odd probabilities",
+        "explanation": "Use the usual model of independent tosses, each with heads probability \\(2/3\\). Only whether the current number of heads is even or odd matters: a tail preserves this status, while a head switches it.\n\nLet \\(E_n\\) and \\(O_n\\) be the probabilities of an even and an odd number of heads after \\(n\\) tosses. Initially, \\(E_0=1\\) and \\(O_0=0\\), because zero is even. For \\(0\\le n<50\\), independence gives\n\\[\n\\begin{aligned}\nE_{n+1}&=\\frac13E_n+\\frac23O_n,\\\\\nO_{n+1}&=\\frac13O_n+\\frac23E_n.\n\\end{aligned}\n\\]\nFor example, an even count results from an even count followed by a tail, or an odd count followed by a head. These possibilities are disjoint.\n\nSubtracting the equations is useful because the same difference reappears:\n\\[\nE_{n+1}-O_{n+1}=-\\frac13(E_n-O_n).\n\\]\nStarting with \\(E_0-O_0=1\\), each toss multiplies the difference by \\(-1/3\\). Thus\n\\[\nE_{50}-O_{50}=\\left(-\\frac13\\right)^{50}=\\frac1{3^{50}}.\n\\]\nEvery count is either even or odd, so \\(E_{50}+O_{50}=1\\). Adding these last two equations gives\n\\[\nE_{50}=\\frac12\\left(1+\\frac1{3^{50}}\\right).\n\\]\nThe answer is \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:recursive-counting-probability",
+          "cnm_h208",
+          "cnm_h138"
+        ],
+        "prerequisiteIds": [
+          "cnm_h254",
+          "cnm_h140",
+          "cnm_h139"
+        ],
+        "levelReason": "Uses elementary probability transitions and repeated multiplication in a finite geometric sequence, appropriate for AMC 12."
+      },
+      {
+        "id": "binomial-parity-sum",
+        "label": "Cancel the odd binomial terms",
+        "explanation": "Assume independent tosses, and write \\(p=2/3\\) for the heads probability and \\(q=1/3\\) for the tails probability. For exactly \\(k\\) heads, there are \\(\\binom{50}{k}\\) choices of head positions. Each choice describes a distinct sequence with probability \\(p^kq^{50-k}\\). Therefore the desired probability is the sum of these terms for \\(k=0,2,4,\\ldots,50\\).\n\nThe binomial theorem lets us collect all those even terms without calculating them separately. In the expansions of \\((q+p)^{50}\\) and \\((q-p)^{50}\\), the terms containing an odd power of \\(p\\) have opposite signs, while those containing an even power have the same sign. Adding the expansions cancels the odd terms and doubles precisely the desired terms. Hence the probability is\n\\[\n\\begin{aligned}\n\\frac{(q+p)^{50}+(q-p)^{50}}2\n&=\\frac{1+(-1/3)^{50}}2\\\\\n&=\\frac12\\left(1+\\frac1{3^{50}}\\right).\n\\end{aligned}\n\\]\nThe sum includes both zero heads and fifty heads, so all even possibilities are covered. The answer is \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_h255",
+          "cnm_h240",
+          "cnm_h138"
+        ],
+        "prerequisiteIds": [
+          "cnm_h254",
+          "cnm_h140",
+          "cnm_h139",
+          "cnm_h236"
+        ],
+        "levelReason": "Uses the high-school binomial theorem, elementary combinations, and independent-event probabilities."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h138"
+    ],
+    "supportIds": [
+      "cnm_h254",
+      "cnm_h140",
+      "cnm_h139"
+    ],
+    "annotationRationale": "The route-neutral probability target is combining disjoint possibilities for an even head count. Repeated independent trials and complementary outcomes support both methods. The first route constructs parity-state recurrences and evaluates their geometric difference. The second route uses binomial probabilities and sign cancellation in binomial expansions. These are alternative methods, not joint requirements.",
+    "needsNewNodes": [],
+    "limitations": [
+      "Uses the standard interpretation that the tosses are independent and have the same heads probability on every toss."
+    ]
+  },
+  "review": {
+    "questionId": "1992_AMC_12_Q29",
+    "decision": "accept",
+    "mathematicalCheck": "The recurrence correctly gives E_n-O_n=(-1/3)^n from the initial difference 1. Together with E_50+O_50=1, this yields choice D. Independently, adding the two binomial expansions doubles exactly the even-head probabilities, including zero and fifty heads. Both explanations establish their decisive steps.",
+    "levelCheck": "Both methods use accessible high-school probability and algebra appropriate for AMC 12.",
+    "methodDistinctness": "State transitions and cancellation in binomial expansions provide genuinely distinct approaches.",
+    "annotationCheck": "Disjoint probability addition is route-neutral. Independence, Bernoulli trials, and complementary outcomes support both methods; recurrence, geometric sequences, and binomial knowledge are correctly kept method-local. The independence qualification is explicit.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "parity-state-recurrence": "solution:parity-state-recurrence:f044245d694c",
+    "binomial-parity-sum": "solution:binomial-parity-sum:f044245d694c"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "2583c573709b8a700304379d8d939f57617b17b23832f8893970764c36095d99",
+    "inputHash": "6388e61cda720c5ed83d911b598a9e78b1939709d9d61d2d362f24c4358aa6de",
+    "authorInputHash": "0b3e1d3de1eaeda6c894eefc83f53ab789cf367a15ef1592d84ea469d7e17199",
+    "reviewInputHash": "bea72289699a83d61697a407f365017ea47bf7842fc4970a72aa784ee8d86d22",
+    "authorResponseHash": "d885e80cee778c5e8528823cd5d4de7ce522d3061f7b79e76954d329d84948ad",
+    "reviewerResponseHash": "d0f57ce130c1cb4e7e7e2ffad29a40f460ef9606e7b9b288e076b51b8979c7b8",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

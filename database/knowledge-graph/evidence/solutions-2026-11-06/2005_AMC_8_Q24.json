@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2005_AMC_8_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "4b810b5d10a7a75f97dbe7b7627090cb1f19fc0081c61953ac8e7e27a17ba38e",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "33822eb3e396bfa605134d335cdfe0c519051ae16410e9114ca1d344497aaa9d",
+  "solutionFigureHashes": {},
+  "candidateHash": "ede6087c77d815b03f90ea29ea8cc35b5007fe6fb8a1dd82490115282dda6aec",
+  "candidate": {
+    "questionId": "2005_AMC_8_Q24",
+    "derivedAnswer": "B (9 keystrokes)",
+    "answerStatus": "matches",
+    "answerReason": "A nine-keystroke route reaches 200. Any route using at most eight strokes would force 25 to be reached within five strokes, requiring 24 within four, although four strokes can reach at most 16.",
+    "methods": [
+      {
+        "id": "maximum-displays-and-predecessors",
+        "label": "Bound the displays and force the final steps",
+        "explanation": "First, nine keystrokes are possible using the following displays:\n\\[\n\\begin{aligned}\n1&\\to2\\to3\\to6\\to12\\\\\n &\\to24\\to25\\to50\\to100\\to200.\n\\end{aligned}\n\\]\nEach of the nine arrows is either an addition of \\(1\\) or a doubling. To prove this is the fewest, we must rule out every route using at most eight strokes.\n\nEvery display is a positive integer. For a display \\(x\\ge1\\), we have \\(x+1\\le2x\\), so doubling gives the largest possible next display. Repeated doubling therefore bounds the displays after four, five, six, and seven strokes by \\(16,32,64,128\\), respectively.\n\nSuppose a route reached \\(200\\) in at most eight strokes. Its final key could not be \\([+1]\\), because that would require reaching \\(199\\) in at most seven strokes, exceeding the bound \\(128\\). Thus it must double \\(100\\), which must be reached within seven strokes.\n\nSimilarly, reaching \\(100\\) within seven strokes must finish by doubling \\(50\\), since the alternative predecessor \\(99\\) exceeds the six-stroke bound \\(64\\). Reaching \\(50\\) within six strokes must finish by doubling \\(25\\), since \\(49\\) exceeds the five-stroke bound \\(32\\).\n\nThis would reach \\(25\\) within five strokes. Since \\(25\\) is odd, its last step must add \\(1\\) to \\(24\\). But \\(24\\) cannot be reached within four strokes, whose maximum is \\(16\\). This contradiction rules out eight or fewer strokes. The minimum is therefore \\(\\boxed{9}\\), choice B.",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_p110",
+          "cnm_p156"
+        ],
+        "prerequisiteIds": [
+          "cnm_p073"
+        ],
+        "levelReason": "The proof uses repeated doubling, inverse arithmetic operations, and the fact that doubling an integer produces an even number."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_p073"
+    ],
+    "annotationRationale": "The minimum requires both a lower bound on every allowed route and a construction attaining it, fitting math:extremal-principle. Inverse-operation reasoning identifies possible predecessors, and parity forces the predecessor of 25. These are method-local nodes. The meaning of doubling supports the display bounds.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2005_AMC_8_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "The displayed route uses nine valid strokes. Since each stroke at most doubles a positive display, an eight-stroke route must force predecessors 100, 50, and 25 within seven, six, and five strokes. Reaching odd 25 then requires 24 within four strokes, exceeding the maximum 16. This excludes every shorter route.",
+    "levelCheck": "The lower-bound argument is fully explained through elementary doubling bounds, inverse operations, and parity, fitting AMC 8.",
+    "methodDistinctness": "The single method supplies both an attaining route and a complete minimality proof.",
+    "annotationCheck": "math:extremal-principle captures the route-neutral minimum. Inverse operations and parity correctly remain method-local, with cnm_p073 supporting doubling.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "maximum-displays-and-predecessors": "maximum-displays-and-predecessors"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "ed2d52ee7af1014d5340296355523db6ff8c289d0658df338dea38023c650050",
+    "inputHash": "dbdfe44a9d498d1f891fe74d6c621660fa30a3a6ce2667d0b52a55040eb3a0cf",
+    "authorInputHash": "da94d1c05f7124e68113f0ec90581c111ec764c51d25f6fbe5684d0f4073f504",
+    "reviewInputHash": "e3e889b108fabfff8667367ad61a3ed135963ced05e139e587bc1ac1e0e4dcf1",
+    "authorResponseHash": "17572b0a26150486170c4e5f02ecaf49c624337ccaf1778743857c565d8f495b",
+    "reviewerResponseHash": "06cdd2d91fbfa4245789c1ea04450e6f658e61bebdf689b9c6753b1de5018e14",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

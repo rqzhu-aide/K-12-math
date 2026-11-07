@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1982_AMC_12_Q09",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "730d20e00a5950594536d7f6fcb763b76e8471164e023dc6f986c264abb93fea",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "6b180a1be2988d41bf4d74d4658215e933e6b0d80615ed2e0f40be040c291aca",
+  "solutionFigureHashes": {},
+  "candidateHash": "e41e7476957cde783550314527f1359a8b867ac8446089e3d174b0a77e75bbde",
+  "candidate": {
+    "questionId": "1982_AMC_12_Q09",
+    "derivedAnswer": "x=3.0 (B)",
+    "answerStatus": "matches",
+    "answerReason": "The triangle has area 4. Requiring the region to the right of the cut to have area 2 gives the unique admissible cut x=3, agreeing with choice B.",
+    "methods": [
+      {
+        "id": "coordinate-triangle-area",
+        "label": "Find the area to the right of the cut",
+        "explanation": "The horizontal side from \\((1,1)\\) to \\((9,1)\\) has length \\(8\\), and its corresponding height is \\(1\\). Thus the triangle's area is \\(\\frac12\\cdot8\\cdot1=4\\), so each region must have area \\(2\\).\n\nWrite the cutting line as \\(x=t\\). The part of the triangle with \\(x\\le1\\) fits inside a unit square, so its area is at most \\(1\\). Therefore an equal-area cut must have \\(t>1\\). It must also have \\(t<9\\), since otherwise the region to its right has zero area.\n\nThe side through \\((0,0)\\) and \\((9,1)\\) has equation \\(y=kx\\), where \\(9k=1\\), so \\(y=x/9\\). Consequently, the region to the right of \\(x=t\\) is a right triangle with horizontal leg \\(9-t\\) and vertical leg \\(1-t/9\\). Its area must satisfy\n\\[\n\\frac12(9-t)\\left(1-\\frac t9\\right)=2,\n\\]\nwhich simplifies to\n\\[\n(9-t)^2=36.\n\\]\nBecause \\(t<9\\), the length \\(9-t\\) is positive, so \\(9-t=6\\) and \\(t=3\\). This lies in \\((1,9)\\) and gives the required area \\(2\\). The line is \\(\\boxed{x=3.0}\\), choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "cnm_084",
+          "cnm_205",
+          "cnm_220"
+        ],
+        "prerequisiteIds": [
+          "cnm_p148",
+          "cnm_201",
+          "cnm_075"
+        ],
+        "levelReason": "This uses coordinate lengths, the triangle area formula, a linear equation for a side, and a square-root equation."
+      },
+      {
+        "id": "similar-enclosing-triangle",
+        "label": "Compare similar right triangles",
+        "explanation": "Let \\(O=(0,0)\\), \\(A=(1,1)\\), and \\(B=(9,1)\\). The area of \\(OAB\\) is \\(\\frac12\\cdot8\\cdot1=4\\), so each desired region has area \\(2\\).\n\nWrite the cut as \\(x=t\\). For \\(t\\le1\\), the left-hand region fits inside a unit square and cannot have area \\(2\\). For \\(t\\ge9\\), the right-hand region has zero area. Hence \\(1<t<9\\).\n\nAdd the point \\(C=(0,1)\\). The enclosing right triangle \\(BCO\\) has area \\(\\frac12\\cdot9\\cdot1=9/2\\). Let the cut meet \\(CB\\) at \\(P=(t,1)\\) and \\(OB\\) at \\(Q\\). The right-hand region is triangle \\(BPQ\\). It is similar to \\(BCO\\), since both have a right angle and share the angle at \\(B\\).\n\nFor similar triangles, the area ratio is the square of the corresponding side ratio. Therefore\n\\[\n\\left(\\frac{BP}{BC}\\right)^2\n=\\frac{2}{9/2}=\\frac49.\n\\]\nLengths are positive, so \\(BP/BC=2/3\\). Since \\(BC=9\\), we get \\(BP=6\\), placing \\(P\\) at horizontal coordinate \\(9-6=3\\). This cut gives a right-hand area of \\(2\\), and therefore equal halves. The answer is \\(\\boxed{x=3.0}\\), choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "cnm_084",
+          "cnm_271",
+          "cnm_272"
+        ],
+        "prerequisiteIds": [
+          "cnm_p148",
+          "cnm_270",
+          "cnm_075"
+        ],
+        "levelReason": "This uses elementary coordinate geometry, AA similarity, and the squared area ratio of similar triangles."
+      }
+    ],
+    "assessedIds": [
+      "cnm_084"
+    ],
+    "supportIds": [
+      "cnm_p148",
+      "cnm_075"
+    ],
+    "annotationRationale": "The task asks for an area-bisecting line in a coordinate triangle, matching coordinate lengths and areas in cnm_084. Both methods use triangle area and positive square roots. The first method finds a side's linear equation and solves a squared-length equation. The second instead establishes AA similarity and uses its area-scaling property. These are alternative routes.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1982_AMC_12_Q09",
+    "decision": "accept",
+    "mathematicalCheck": "Both methods correctly exclude cuts outside 1<t<9. The total area is 4, and the right-hand area is (9-t)^2/18, so halving requires uniquely t=3. The similarity argument independently obtains the correct length ratio 2/3.",
+    "levelCheck": "Both explanations are complete and use appropriate elementary algebra and geometry.",
+    "methodDistinctness": "Finding a boundary equation and comparing similar triangles provide distinct, accessible approaches.",
+    "annotationCheck": "The coordinate-area target is route-neutral. Triangle area and square roots support both methods; coefficient finding and similarity remain method-specific.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "coordinate-triangle-area": "solution:coordinate-triangle-area:6b180a1be298",
+    "similar-enclosing-triangle": "similar-enclosing-triangle"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "f93673d743005240c5c9152932d0fa7b49d86763d1921fae175f3328a519d316",
+    "inputHash": "c8d41099b017ee63d5feef82ef63ddfabf6af795757242a2113877c6785aac86",
+    "authorInputHash": "761ac9956905b0231a01ba42992df0abd1da379ae5cd32dcc985eb7f8766e8bc",
+    "reviewInputHash": "d3de07b15b68c9e45ebbee4486744f5c6edf335be1a085a065b8576c229348b8",
+    "authorResponseHash": "77f42ae78c99eb162556564e210fed6d345e54cc7ba7204e5661290a5777c380",
+    "reviewerResponseHash": "36a6c936c2d4f9f67840d1837632e8af233f1c65461570ce9189742c21e572fa",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

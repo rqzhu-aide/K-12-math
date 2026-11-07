@@ -1,0 +1,122 @@
+{
+  "Year": 2006,
+  "Level": "AMC 12",
+  "Batch": "B",
+  "Area": "Unclassified",
+  "Number": 18,
+  "Question": "An object in the plane moves from one lattice point to another. At each step, the object may move one unit to the right, one unit to the left, one unit up, or one unit down. If the object starts at the origin and takes a ten-step path, how many different points could be the final point?",
+  "Question Type": "text",
+  "Choices": {
+    "A": "\\(120\\)",
+    "B": "\\(121\\)",
+    "C": "\\(221\\)",
+    "D": "\\(230\\)",
+    "E": "\\(231\\)"
+  },
+  "Choices Type": "text",
+  "Correct Answer": "B",
+  "Solution": "Method 1: Count endpoints by distance\n\nFor an endpoint \\((x,y)\\), let \\(d=|x|+|y|\\), the minimum number of horizontal and vertical unit moves needed to reach it. Each allowed move changes \\(d\\) by \\(1\\), either increasing or decreasing it. Starting from \\(d=0\\), after ten moves \\(d\\) must therefore be even and at most \\(10\\).\n\nThese restrictions are also sufficient. Reach any such point in \\(d\\) moves by making the required horizontal and vertical moves. Then add \\((10-d)/2\\) pairs of opposite moves, such as right followed by left. Each pair adds two steps without changing the endpoint.\n\nIt remains to count points at distances \\(0,2,4,6,8,10\\). Distance \\(0\\) gives only the origin. For any positive distance \\(d\\), there are four points on the coordinate axes. At every other point, \\(|x|\\) can be any integer from \\(1\\) to \\(d-1\\); then \\(|y|=d-|x|\\), and the two coordinates have four possible sign combinations. Thus there are\n\\[\n4+4(d-1)=4d\n\\]\npoints at distance \\(d\\). Each point has a unique distance, absolute-coordinate pair, and sign choice, so none is repeated. The total is\n\\[\n1+8+16+24+32+40=\\boxed{121},\n\\]\nchoice (B).\n\nMethod 2: Encode each move by two signs\n\nFor a point \\((x,y)\\), define\n\\[\nu=x+y,\\qquad v=x-y.\n\\]\nThis is useful because right, left, up, and down change \\((u,v)\\), respectively, by\n\\[\n(1,1),\\ (-1,-1),\\ (1,-1),\\ (-1,1).\n\\]\nAll four combinations of signs are allowed. Thus, after ten steps, each of \\(u\\) and \\(v\\) is a sum of ten numbers that are each \\(1\\) or \\(-1\\). Each can take any of the eleven values\n\\[\n-10,-8,-6,\\ldots,8,10.\n\\]\n\nEvery pair of these values is possible. To obtain a desired \\(u\\), choose \\((10+u)/2\\) positive signs among its ten signs; this is an integer between \\(0\\) and \\(10\\). Do the same independently for \\(v\\). Pairing the two sign lists step by step produces ten legal moves.\n\nFinally, the pair \\((u,v)\\) determines exactly one endpoint through\n\\[\nx=\\frac{u+v}{2},\\qquad y=\\frac{u-v}{2}.\n\\]\nThese coordinates are integers because \\(u\\) and \\(v\\) are even. Hence all pairs are represented, and different pairs give different endpoints. There are therefore\n\\[\n11\\cdot11=\\boxed{121}\n\\]\npossible endpoints, choice (B).",
+  "Meta": {
+    "QuestionSource": "live-poshenloh",
+    "AnswerSource": "live-poshenloh-answer-key",
+    "SolutionSource": "Original Math Practice solution",
+    "AreaSource": "Pending topic curation",
+    "Concepts": "lattice point; parity; basic counting",
+    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2006B/solutions",
+    "SourceSHA256": "4e587bac4f8cb103d7e03322d532fdc58b169d6279388458cc98479974410678",
+    "Figures": [],
+    "FigureSources": {},
+    "SourceQuestionCount": 25,
+    "HistoricalSeries": "AMC 12",
+    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+    "Copyright": "Copyright Mathematical Association of America",
+    "License": "CC-BY-NC-SA-4.0",
+    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "TranscriptionSource": "LIVE by Po-Shen Loh",
+    "Modifications": [
+      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
+      "Third-party worked solution and solution-only figures omitted from the public distribution"
+    ],
+    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+    "SolutionReview": {
+      "status": "reviewed",
+      "solutionSHA256": "008324b8160a6262c3d7b9d62bcbc16232ac6bda7eb5067cfad17bcfa2e0be55",
+      "questionContentHash": "42d34f065818ac7d342b1993cfd516cc57e3505b324117dcf0792b48513e0feb",
+      "evidence": {
+        "path": "knowledge-graph/evidence/solutions-2026-11-06/2006_AMC_12B_Q18.json",
+        "sha256": "5de92327b4fddf6d2ad00339bb2d3cfb9890059a441120fcd96fb9952fe03a1e"
+      },
+      "author": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "reviewer": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      }
+    }
+  },
+  "ID": "2006_AMC_12B_Q18",
+  "Bank": "amc",
+  "SchemaVersion": "2.0",
+  "ResponseType": "choice",
+  "Language": "en",
+  "domain": [],
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "1.0.0",
+    "contentHash": "42d34f065818ac7d342b1993cfd516cc57e3505b324117dcf0792b48513e0feb",
+    "status": "mapped",
+    "reviewStatus": "machine_scope_audited",
+    "assessedIds": [
+      "math:lattice-counting"
+    ],
+    "supportIds": [
+      "cnm_p156",
+      "cnm_082"
+    ],
+    "routes": [
+      {
+        "id": "count-distance-shells",
+        "label": "Count even-distance shells",
+        "nodeIds": [
+          "cnm_h230",
+          "cnm_h204"
+        ]
+      },
+      {
+        "id": "rotate-integer-coordinates",
+        "label": "Encode endpoints by x+y and x-y",
+        "nodeIds": [
+          "math:bijective-counting",
+          "cnm_h231"
+        ]
+      },
+      {
+        "id": "count-even-distance-groups",
+        "label": "Count endpoints by distance",
+        "nodeIds": [
+          "math:lattice-counting",
+          "cnm_h230",
+          "cnm_h231",
+          "cnm_p156",
+          "cnm_082",
+          "cnm_007"
+        ]
+      },
+      {
+        "id": "encode-moves-by-sign-pairs",
+        "label": "Encode each move by two signs",
+        "nodeIds": [
+          "math:lattice-counting",
+          "math:bijective-counting",
+          "cnm_h231",
+          "cnm_p156",
+          "cnm_082"
+        ]
+      }
+    ],
+    "flags": []
+  }
+}

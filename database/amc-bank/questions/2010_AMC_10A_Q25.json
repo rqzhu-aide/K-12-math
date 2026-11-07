@@ -1,0 +1,94 @@
+{
+  "Year": 2010,
+  "Level": "AMC 10",
+  "Batch": "A",
+  "Area": "Unclassified",
+  "Number": 25,
+  "Question": "Jim starts with a positive integer \\(n\\) and creates a sequence of numbers. Each successive number is obtained by subtracting the largest possible integer square less than or equal to the current number until zero is reached. For example, if Jim starts with \\(n = 55,\\) then his sequence contains \\(5\\) numbers: \\[\\begin{array}{ccccc} {}&{}&{}&{}&55\\\\ 55&-&7^2&=&6\\\\ 6&-&2^2&=&2\\\\ 2&-&1^2&=&1\\\\ 1&-&1^2&=&0\\\\ \\end{array}\\] Let \\(N\\) be the smallest number for which Jim’s sequence has \\(8\\) numbers. What is the units digit of \\(N?\\)",
+  "Question Type": "text",
+  "Choices": {
+    "A": "\\(1\\)",
+    "B": "\\(3\\)",
+    "C": "\\(5\\)",
+    "D": "\\(7\\)",
+    "E": "\\(9\\)"
+  },
+  "Choices Type": "text",
+  "Correct Answer": "B",
+  "Solution": "The example counts both the starting number and the final zero. Working backward lets us find the smallest starting number for each possible sequence length.\n\nSuppose a positive integer \\(x\\) has next term \\(r>0\\), obtained by subtracting \\(k^2\\). For \\(k^2\\) to be the largest square at most \\(x\\), we need\n\\[\nx=k^2+r<(k+1)^2=k^2+2k+1.\n\\]\nThus \\(r<2k+1\\), which is equivalent to \\(r\\leq2k\\) because the quantities are integers. The smallest possible \\(k\\) is therefore \\(\\lceil r/2\\rceil\\), where \\(\\lceil t\\rceil\\) is the smallest integer at least \\(t\\). Hence the smallest predecessor of \\(r>0\\) is\n\\[\ng(r)=r+\\left\\lceil\\frac r2\\right\\rceil^2.\n\\]\nThis choice satisfies \\(k^2\\leq x<(k+1)^2\\), so it really does produce \\(r\\) under Jim's rule.\n\nAs \\(r\\) increases, \\(\\lceil r/2\\rceil\\) cannot decrease, so \\(g(r)\\) increases. Therefore, among all remainders having a required sequence length, the smallest remainder also has the smallest possible predecessor. This proves that repeatedly taking smallest predecessors gives the minimum starting value at every length.\n\nLet \\(a_j\\) be the smallest starting value for a sequence containing exactly \\(j\\) numbers, allowing the auxiliary one-number sequence \\((0)\\). Then \\(a_1=0\\). The smallest positive predecessor of zero is \\(1\\), so \\(a_2=1\\). Applying \\(g\\) after that gives\n\\[\n\\begin{aligned}\na_3&=1+1^2=2,\\\\\na_4&=2+1^2=3,\\\\\na_5&=3+2^2=7,\\\\\na_6&=7+4^2=23,\\\\\na_7&=23+12^2=167,\\\\\na_8&=167+84^2=7223.\n\\end{aligned}\n\\]\nThe resulting sequence is \\(7223,167,23,7,3,2,1,0\\), with exactly eight numbers. The smallest possible \\(N\\) is therefore \\(7223\\), whose units digit is \\(\\boxed{3}\\), choice \\(\\text{B}\\).",
+  "Meta": {
+    "QuestionSource": "live-poshenloh",
+    "AnswerSource": "live-poshenloh-answer-key",
+    "SolutionSource": "Original Math Practice solution",
+    "AreaSource": "Pending topic curation",
+    "Concepts": "perfect square; recursion; work backwards",
+    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2010A/solutions",
+    "SourceSHA256": "813d7492aa69898e62a0d0d2535b6df90040fcd9f59dc67e4c5da9b6faa97d90",
+    "Figures": [],
+    "FigureSources": {},
+    "SourceQuestionCount": 25,
+    "HistoricalSeries": "AMC 10",
+    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+    "Copyright": "Copyright Mathematical Association of America",
+    "License": "CC-BY-NC-SA-4.0",
+    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "TranscriptionSource": "LIVE by Po-Shen Loh",
+    "Modifications": [
+      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
+      "Third-party worked solution and solution-only figures omitted from the public distribution"
+    ],
+    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+    "SolutionReview": {
+      "status": "reviewed",
+      "solutionSHA256": "5bcfd859ee5a5092106ce45813337f8d82291447339ee3575406911b856deacc",
+      "questionContentHash": "4b0cce1016d0b8d4becf947ea1a422f7988fdfca70b9e643a8d503a3bccbe346",
+      "evidence": {
+        "path": "knowledge-graph/evidence/solutions-2026-11-06/2010_AMC_10A_Q25.json",
+        "sha256": "4a6218af8a6158a395d0bb3b1d8e8bc5a8a047a90607d79661c88b3253a2c440"
+      },
+      "author": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "reviewer": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      }
+    }
+  },
+  "ID": "2010_AMC_10A_Q25",
+  "Bank": "amc",
+  "SchemaVersion": "2.0",
+  "ResponseType": "choice",
+  "Language": "en",
+  "domain": [],
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "1.0.0",
+    "contentHash": "4b0cce1016d0b8d4becf947ea1a422f7988fdfca70b9e643a8d503a3bccbe346",
+    "status": "mapped",
+    "reviewStatus": "machine_scope_audited",
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_h197",
+      "cnm_148"
+    ],
+    "routes": [
+      {
+        "id": "smallest-predecessors",
+        "label": "Build the smallest sequence backward",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_h200",
+          "math:floor-ceiling",
+          "cnm_h197",
+          "cnm_148"
+        ]
+      }
+    ],
+    "flags": []
+  }
+}

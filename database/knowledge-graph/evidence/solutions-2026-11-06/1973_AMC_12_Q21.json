@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1973_AMC_12_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "2892e41744db8ca59756cad62a058a769331bc0bf7a1a10cc744781c6f493173",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "f5b7dca4952a2547219f95d20e7c5f24bef402cd10fce673cb4b4b2c74c833fc",
+  "solutionFigureHashes": {},
+  "candidateHash": "bc3ab205dec5b37267d531cef44aa0458f1b476d2c7ae45f59a905b8a90b6bc6",
+  "candidate": {
+    "questionId": "1973_AMC_12_Q21",
+    "derivedAnswer": "2 sets, choice B",
+    "answerStatus": "matches",
+    "answerReason": "The only possible lengths giving positive integer starting terms are 5 and 8, producing the sets from 18 through 22 and from 9 through 16.",
+    "methods": [
+      {
+        "id": "bounded-length-divisors",
+        "label": "Bound the length and test its possible divisors",
+        "explanation": "A set of consecutive integers is determined by its smallest member and its length. Let these be positive integers \\(a\\) and \\(k\\), where \\(k\\ge2\\). Pairing the first and last terms gives\n\\[\n100=\\frac{k(2a+k-1)}2,\n\\]\nso\n\\[\nk(2a+k-1)=200.\n\\]\nThus \\(k\\) must divide \\(200\\). Also, fourteen positive consecutive integers have sum at least\n\\[\n1+2+\\cdots+14=105,\n\\]\nso \\(2\\le k\\le13\\).\n\nThe divisors of \\(200\\) in this range are \\(2,4,5,8,10\\). For each one, the starting term must be\n\\[\na=\\frac{200/k-k+1}{2}.\n\\]\nFor \\(k=2,4,10\\), this gives \\(99/2,47/2,11/2\\), respectively, which are not integers. For \\(k=5\\), it gives \\(a=18\\), and for \\(k=8\\), it gives \\(a=9\\).\n\nThe two resulting sets have sums\n\\[\n18+19+20+21+22=100\n\\]\nand\n\\[\n9+10+\\cdots+16=\\frac{8(9+16)}2=100.\n\\]\nEvery possible length has been considered, and each length determines at most one starting term, so there is no omission or double counting. There are \\(\\boxed{2}\\) sets, choice B.",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_h204"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_h201",
+          "cnm_042"
+        ],
+        "levelReason": "The argument uses an elementary consecutive-integer sum, a finite bound, and divisibility, all within AMC 12 scope."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_p153",
+      "cnm_h201"
+    ],
+    "annotationRationale": "The central target is to find all admissible integer starting terms and lengths and justify completeness. Arithmetic-sequence summation belongs to the written method; factors and constant differences provide supporting knowledge.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1973_AMC_12_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "The sum equation gives k(2a+k-1)=200, and positivity bounds k between 2 and 13. Testing all divisors in that range leaves exactly (a,k)=(18,5) and (9,8). Each pair determines one distinct set.",
+    "levelCheck": "Elementary divisibility, arithmetic sums, and the completeness argument are appropriate and clearly explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The integer-solution assessment fits the exhaustive classification. Arithmetic summation, factors, and arithmetic-sequence meaning accurately describe the method and support.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "bounded-length-divisors": "bounded-length-divisors"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "4ad5ef871271119678b28bbbecefbb8e7df72be154e67e213c4e2dfd62c9fc3a",
+    "inputHash": "c52ad9ebb9acdbfe4e291ff59b6531204ef50314da0db3886b9dd1861cbdbaef",
+    "authorInputHash": "060e65e8bf473e3d9d3e701b53b63badca26fc2aa1a678a910da91e5a374d53e",
+    "reviewInputHash": "e2450cb281a368d3e74c29a68accf9f1cb46302dbe813a543e8b30c10dfe3508",
+    "authorResponseHash": "ea0d3408dd65a102eebd563f9050f3d8317d3419ea4aa2e146999ac4357bedd8",
+    "reviewerResponseHash": "0c9accb6def3980bf34c1a94a4d3bf1e7341cc211ec8ddbe9ee3b188058d6341",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

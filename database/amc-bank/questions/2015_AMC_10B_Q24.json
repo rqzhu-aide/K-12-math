@@ -1,0 +1,121 @@
+{
+  "Year": 2015,
+  "Level": "AMC 10",
+  "Batch": "B",
+  "Area": "Unclassified",
+  "Number": 24,
+  "Question": "Aaron the ant walks on the coordinate plane according to the following rules.\n\nHe starts at the origin \\(p_0=(0,0)\\) facing to the east and walks one unit, arriving at \\(p_1=(1,0).\\)\n\nFor \\(n=1,\\) \\(2,\\) \\(3,\\) \\(\\dots,\\) right after arriving at the point \\(p_n,\\) if Aaron can turn \\(90^\\circ\\) left and walk one unit to an unvisited point \\(p_{n+1},\\) he does that. Otherwise, he walks one unit straight ahead to reach \\(p_{n+1}.\\) Thus the sequence of points continues \\[ \\begin{aligned} &p_2=(1,1),\\; p_3=(0,1), \\\\ &p_4=(-1,1),\\; p_5=(-1,0),\\;\\ldots \\end{aligned} \\] in a counterclockwise spiral pattern. What is \\(p_{2015}?\\)",
+  "Question Type": "text",
+  "Choices": {
+    "A": "\\( (-22,-13) \\)",
+    "B": "\\( (-13,-22) \\)",
+    "C": "\\( (-13,22) \\)",
+    "D": "\\( (13,-22) \\)",
+    "E": "\\( (22,-13) \\)"
+  },
+  "Choices Type": "text",
+  "Correct Answer": "D",
+  "Solution": "Method 1: Count points in completed squares\n\nCount the spiral at moments when it has filled a complete square of integer-coordinate points. After Aaron first reaches \\((r,-r)\\), for each nonnegative integer \\(r\\), he has visited exactly the points satisfying \\(-r\\le x,y\\le r\\), and he faces east.\n\nHere is why this pattern continues. It holds initially for \\(r=0\\). From a completed square, the next step goes east to \\((r+1,-r)\\). The rule then takes Aaron north to \\((r+1,r+1)\\), west to \\((-r-1,r+1)\\), south to \\((-r-1,-r-1)\\), and east to \\((r+1,-r-1)\\). Along each straight stretch, the point to his left has already been visited until he reaches the next outer corner. These moves fill precisely the new square boundary, establishing the same pattern for \\(r+1\\).\n\nThere are \\(2r+1\\) choices for each coordinate in a completed square, so it contains \\((2r+1)^2\\) points. Because the starting point is \\(p_0\\), its last point has index\n\\[\n(2r+1)^2-1.\n\\]\nFor \\(r=22\\), this gives\n\\[\np_{45^2-1}=p_{2024}=(22,-22).\n\\]\nThe final side of this square is an eastward stretch of \\(44\\) steps. Since \\(2024-2015=9<44\\), the requested point is nine units west of its endpoint:\n\\[\np_{2015}=(22-9,-22)=\\boxed{(13,-22)},\n\\]\nchoice \\(\\mathrm{D}\\).\n\nMethod 2: Add the lengths of straight stretches\n\nInstead of counting enclosed points, count the lengths of Aaron's straight stretches. The first four stretches go east, north, west, and south with lengths \\(1,1,2,2\\), ending at \\((-1,-1)\\).\n\nMore generally, after the southward stretch ending at \\((-j,-j)\\), the visited points fill the square \\([-j,j]^2\\) except for the bottom-row points to the right of that corner. The next stretches must therefore have lengths \\(2j+1\\) east, \\(2j+1\\) north, \\(2j+2\\) west, and \\(2j+2\\) south. On each stretch, a left turn would enter a visited point until its endpoint. The result has the same shape with \\(j\\) increased by one. This proves that the stretch lengths continue as\n\\[\n1,1,2,2,3,3,4,4,\\ldots.\n\\]\nEach group of four stretches with lengths \\(2j-1,2j-1,2j,2j\\) moves Aaron one unit west and one unit south overall. After \\(22\\) such groups, or \\(88\\) stretches, he is at \\((-22,-22)\\). The number of unit steps taken is\n\\[\n2(1+2+\\cdots+44)=44\\cdot45=1980,\n\\]\nwhere pairing the first and last terms gives the sum.\n\nThe next stretch goes east for \\(45\\) units. Since \\(2015-1980=35<45\\), Aaron is \\(35\\) units into that stretch:\n\\[\np_{2015}=(-22+35,-22)=\\boxed{(13,-22)},\n\\]\nchoice \\(\\mathrm{D}\\).",
+  "Meta": {
+    "QuestionSource": "live-poshenloh",
+    "AnswerSource": "live-poshenloh-answer-key",
+    "SolutionSource": "Original Math Practice solution",
+    "AreaSource": "Pending topic curation",
+    "Concepts": "coordinate geometry; pattern recognition; perfect square",
+    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2015B/solutions",
+    "SourceSHA256": "f11f24070443f9aba328ba188c1acd0452762aca6aa23069997cd80e74ad2d82",
+    "Figures": [],
+    "FigureSources": {},
+    "SourceQuestionCount": 25,
+    "HistoricalSeries": "AMC 10",
+    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+    "Copyright": "Copyright Mathematical Association of America",
+    "License": "CC-BY-NC-SA-4.0",
+    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "TranscriptionSource": "LIVE by Po-Shen Loh",
+    "Modifications": [
+      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
+      "Third-party worked solution and solution-only figures omitted from the public distribution"
+    ],
+    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+    "SolutionReview": {
+      "status": "reviewed",
+      "solutionSHA256": "2d353f4315c56d7e48c5990e69a12010301b36aeceb7a9bc6166a9c446e72a1e",
+      "questionContentHash": "87ef324676d78f54730619c019cede0009fd6ccc87847009bb7649b827a9e598",
+      "evidence": {
+        "path": "knowledge-graph/evidence/solutions-2026-11-06/2015_AMC_10B_Q24.json",
+        "sha256": "333f2c4e5977a615749970000e270d810231955f947f892de2818a280b185ce7"
+      },
+      "author": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "reviewer": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      }
+    }
+  },
+  "ID": "2015_AMC_10B_Q24",
+  "Bank": "amc",
+  "SchemaVersion": "2.0",
+  "ResponseType": "choice",
+  "Language": "en",
+  "domain": [],
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "1.0.0",
+    "contentHash": "87ef324676d78f54730619c019cede0009fd6ccc87847009bb7649b827a9e598",
+    "status": "mapped",
+    "reviewStatus": "machine_scope_audited",
+    "assessedIds": [
+      "cnm_030",
+      "cnm_086"
+    ],
+    "supportIds": [
+      "cnm_082",
+      "cnm_010"
+    ],
+    "routes": [
+      {
+        "id": "sum-spiral-leg-lengths",
+        "label": "Sum repeated leg lengths",
+        "nodeIds": [
+          "cnm_h204"
+        ]
+      },
+      {
+        "id": "count-square-layers",
+        "label": "Count square spiral layers",
+        "nodeIds": [
+          "math:lattice-counting"
+        ]
+      },
+      {
+        "id": "completed-square-layers",
+        "label": "Count points in completed squares",
+        "nodeIds": [
+          "cnm_030",
+          "cnm_086",
+          "math:lattice-counting",
+          "cnm_082",
+          "cnm_010",
+          "cnm_h231"
+        ]
+      },
+      {
+        "id": "sum-straight-stretches",
+        "label": "Add the lengths of straight stretches",
+        "nodeIds": [
+          "cnm_030",
+          "cnm_086",
+          "cnm_h204",
+          "cnm_082",
+          "cnm_010"
+        ]
+      }
+    ],
+    "flags": []
+  }
+}

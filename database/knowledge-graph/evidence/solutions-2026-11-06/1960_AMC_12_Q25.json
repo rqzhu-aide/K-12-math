@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1960_AMC_12_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "421dda20d41a9fd055dd6fb105a12a236e8d6c15c0506e3acade0fa545bbd8b6",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "a60924c7a78d3b8ccbc0249455495dfb8aa721e9d59a8f99caaec3a3895550b1",
+  "solutionFigureHashes": {},
+  "candidateHash": "af459c6527bf9312c68b14cc1415c3ae46dfc620916d05f569f86ee71dd28847",
+  "candidate": {
+    "questionId": "1960_AMC_12_Q25",
+    "derivedAnswer": "D; \\(8\\).",
+    "answerStatus": "matches",
+    "answerReason": "Every allowed difference is divisible by 8, and the permitted example m=3,n=1 gives exactly 8. Therefore no larger positive integer can divide every difference.",
+    "methods": [
+      {
+        "id": "factor-and-use-parity",
+        "label": "Factor and examine the even factors",
+        "explanation": "A difference of squares factors as\n\\[\nm^2-n^2=(m-n)(m+n).\n\\]\nSince \\(m,n\\) are odd integers, both factors are even. Write \\(m-n=2u\\) and \\(m+n=2v\\), where \\(u,v\\) are integers. Adding gives \\(u+v=m\\), which is odd, so one of \\(u,v\\) is even and the other is odd. Therefore \\(uv\\) is even, and\n\\[\nm^2-n^2=4uv\n\\]\nis divisible by 8. This reasoning also allows negative or zero values of the factors.\n\nTo prove that 8 is the largest common divisor, use the allowed pair \\(m=3,n=1\\):\n\\[\n3^2-1^2=8.\n\\]\nAny integer dividing every allowed difference must divide this particular value, so no positive common divisor can exceed 8. Hence the answer is \\(\\boxed{8}\\), choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_152",
+          "cnm_p156"
+        ],
+        "prerequisiteIds": [
+          "cnm_147",
+          "cnm_p153"
+        ],
+        "levelReason": "The proof uses difference-of-squares factorization, odd/even arithmetic, and one example establishing maximality."
+      },
+      {
+        "id": "odd-square-expansion",
+        "label": "Find the remainder of every odd square",
+        "explanation": "Write any odd integer as \\(t=2k+1\\), where \\(k\\) is an integer. Expanding gives\n\\[\nt^2=4k^2+4k+1=4k(k+1)+1.\n\\]\nOf the consecutive integers \\(k,k+1\\), one is even. Thus \\(k(k+1)\\) is even, making \\(4k(k+1)\\) a multiple of 8. Every odd square is consequently one more than a multiple of 8.\n\nBoth \\(m^2\\) and \\(n^2\\) have this form, so subtracting them cancels the extra 1 and leaves a multiple of 8. Hence 8 divides every allowed difference.\n\nThe allowed example \\(m=3,n=1\\) gives \\(m^2-n^2=8\\). Every common divisor must divide 8 itself, so none larger than 8 is possible. Therefore the largest integer is \\(\\boxed{8}\\), choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_148",
+          "cnm_p156"
+        ],
+        "prerequisiteIds": [
+          "cnm_025",
+          "cnm_p153"
+        ],
+        "levelReason": "Expanding an odd square and using consecutive-integer parity gives an elementary remainder argument without formal congruence machinery."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p158"
+    ],
+    "supportIds": [
+      "cnm_p153",
+      "cnm_p156"
+    ],
+    "annotationRationale": "The common-divisor and greatest-value meaning of cnm_p158 represents the task target. Both methods require factors/multiples and odd/even knowledge. The first route uses difference-of-squares factorization; the second uses the perfect-square expansion to establish the remainder of an odd square. Each proves universal divisibility and uses an attainable value to establish maximality, without making either route a requirement for the other.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1960_AMC_12_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The first method gives m^2-n^2=4uv with u+v odd, so uv is even. The second proves every odd square is one more than a multiple of 8. Both establish universal divisibility, including signed inputs, and the allowed difference 3^2-1^2=8 proves maximality.",
+    "levelCheck": "Both proofs use elementary identities and parity, with the universal claim and sharp bound explained.",
+    "methodDistinctness": "Factoring the difference and studying individual odd-square remainders provide distinct, equally accessible insights.",
+    "annotationCheck": "cnm_p158 captures the common-divisor and greatest-value meaning. Shared factors/multiples and parity support both routes; factorization and square expansion remain method-specific.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "factor-and-use-parity": "solution:factor-and-use-parity:a60924c7a78d",
+    "odd-square-expansion": "odd-square-expansion"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "794f28a1fd6edf5cae559a4a7fdf9fbeb6de1dafc714a0dbcd51510770a8bc97",
+    "inputHash": "522a0a14de4ad3ef2b56154710fcd5118a28a93138fd9281b9a70f59078cb5d8",
+    "authorInputHash": "326dccc50767b49125533fcdffcfde07d3f48994d59c0192f9280216136fad2d",
+    "reviewInputHash": "f94f24a0450c7ab39b385024b2ee19b011db7e5246528e01c3f8b40d78f8a88e",
+    "authorResponseHash": "fd9114ec19e2aa187932f275464c8d3f4ddb320e90e5fe6bc0beb665df5c31ff",
+    "reviewerResponseHash": "63048b5e6dfdb6600a5e405e799f0950e3e20101c511b6d961984de95b134b15",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

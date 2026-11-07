@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2007_AMC_10A_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "e2c0d828edd21d539c5fcbc7b56d0c9bfc3879ca7f2aa0d7e9a35d1b80c9319f",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "a33a122c5502a6d0d6de30b26cdad00922c0b80d3bd46d715dbbe432232bd585",
+  "solutionFigureHashes": {},
+  "candidateHash": "06b0040ae5005e26665a1d171d04cd5de6ea6b67fc490d7dd954d73ace4381c3",
+  "candidate": {
+    "questionId": "2007_AMC_10A_Q25",
+    "derivedAnswer": "D: 4",
+    "answerStatus": "matches",
+    "answerReason": "Exactly n=1977, 1980, 1983, and 2001 satisfy the equation, agreeing with choice D.",
+    "methods": [
+      {
+        "id": "digit_bounds_and_cases",
+        "label": "Bound n and separate digit-sum cases",
+        "explanation": "The two digit sums are small compared with \\(2007\\), so first use them to confine \\(n\\) to a short interval. Both digit sums are positive, giving \\(n\\le2005\\). For \\(n\\le1999\\), its digit sum is at most \\(1+9+9+9=28\\); for \\(2000\\le n\\le2005\\), it is at most \\(7\\). Thus \\(S(n)\\le28\\). Every positive integer at most \\(28\\) has digit sum at most \\(10\\), so\n\\[\n1969=2007-28-10\\le n\\le2005.\n\\]\n\nIf \\(2000\\le n\\le2005\\), write \\(n=2000+d\\), where \\(0\\le d\\le5\\). Then \\(S(n)=2+d\\) is a single digit, so \\(S(S(n))=2+d\\). The equation becomes\n\\[\n2004+3d=2007,\n\\]\nwhich gives \\(d=1\\) and \\(n=2001\\).\n\nFor the remaining interval \\(1969\\le n\\le1999\\), write\n\\[\nn=1900+10a+b,\n\\]\nwhere \\(a\\in\\{6,7,8,9\\}\\) and \\(b\\) is a digit. Then \\(S(n)=10+a+b\\). Its digit sum depends on whether \\(a+b\\) reaches \\(10\\).\n\nIf \\(a+b\\le9\\), then \\(S(S(n))=1+a+b\\). Substitution gives\n\\[\n1911+12a+3b=2007,\n\\qquad 4a+b=32.\n\\]\nFor \\(a=6,7,8,9\\), respectively, the required values of \\(b\\) are \\(8,4,0,-4\\). Only \\((a,b)=(8,0)\\) satisfies both the digit restrictions and \\(a+b\\le9\\). This gives \\(n=1980\\).\n\nIf \\(a+b\\ge10\\), then \\(S(n)=20+(a+b-10)\\), so \\(S(S(n))=a+b-8\\). Now\n\\[\n1902+12a+3b=2007,\n\\qquad 4a+b=35.\n\\]\nFor \\(a=6,7,8,9\\), the required values of \\(b\\) are \\(11,7,3,-1\\). The valid pairs are \\((7,7)\\) and \\((8,3)\\), giving \\(n=1977\\) and \\(n=1983\\).\n\nThe four resulting values satisfy the original equation:\n\\[\n\\begin{aligned}\n1977+24+6&=2007,\\\\\n1980+18+9&=2007,\\\\\n1983+21+3&=2007,\\\\\n2001+3+3&=2007.\n\\end{aligned}\n\\]\nThe bounds and disjoint digit cases cover every possibility, and each decimal representation is unique. Therefore there are \\(4\\) values, choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_042"
+        ],
+        "prerequisiteIds": [
+          "cnm_p055"
+        ],
+        "levelReason": "The solution uses decimal place value, finite bounds, and simple linear equations, all within AMC 10 scope."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_p055"
+    ],
+    "annotationRationale": "The assessed target is finding and counting every integer satisfying the equation. Decimal decomposition supports the digit-sum bounds and cases. The method's linear-equation node records the algebra used within those cases; no congruence method is required.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2007_AMC_10A_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The digit-sum bounds imply 1969≤n≤2005. The 2000+d case gives 2001; the two remaining digit-sum cases give 1980 and {1977,1983}. All four satisfy the original equation, and the cases exhaust all possibilities.",
+    "levelCheck": "Decimal decomposition, elementary bounds, and simple equations are appropriate for AMC 10. The decisive digit-sum cases are explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Integer solutions is an appropriate assessed target. Decimal composition supports the method, and cnm_042 correctly records its linear-equation calculations.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "digit_bounds_and_cases": "digit_bounds_and_cases"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c8a855ee2a6d1e8663467cadd0e6547ff3ed7af36f2c213c51ec8af29db49dd3",
+    "inputHash": "730cafcce09278314c9ed916c7c079bfd2d8d6365fbfa5c14cd06a0e3af41b36",
+    "authorInputHash": "80390595677287a999f5d9936266fa1170cb2f7c052a8766e6dde6333bb2fcfc",
+    "reviewInputHash": "5f30925049011bc738efcb614ee4ef59c44af1be459daecce27c087a68f8aa65",
+    "authorResponseHash": "4d17a1ec70c1494d3ea38ad9a21f7a982d1014c2c00403e47ced445d2b0d07ea",
+    "reviewerResponseHash": "0e53cf0f67f60a0b79942c785d5e4d4e5cad33d6f9605890976aa47d0a3bf94e",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

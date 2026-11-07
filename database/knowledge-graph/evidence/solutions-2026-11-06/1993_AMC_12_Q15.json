@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1993_AMC_12_Q15",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "72c881fbc9a27f658b2aaeaaef5e33dee093c5e3d65f14ca6ee2e5d96cdd9816",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "d1ae4da6cddb6a38333c5d5274df752aeeac3a30df89b2473818b51831309a3b",
+  "solutionFigureHashes": {},
+  "candidateHash": "b43a6326cad14910a4f60346e1ec12c1cc01c7d3c2d8cd4f35527f4323ff1efb",
+  "candidate": {
+    "questionId": "1993_AMC_12_Q15",
+    "derivedAnswer": "D, \\(22\\)",
+    "answerStatus": "matches",
+    "answerReason": "Integral interior angles occur exactly when n is a divisor of 360 with n≥3. There are 24 positive divisors of 360; removing 1 and 2 leaves 22.",
+    "methods": [
+      {
+        "id": "prime-exponent-count",
+        "label": "Count divisors using prime exponents",
+        "explanation": "For an integer \\(n\\ge3\\), the equal interior angles of a regular \\(n\\)-gon each measure\n\\[\n\\frac{180(n-2)}{n}=180-\\frac{360}{n}\n\\]\ndegrees. This is an integer exactly when \\(360/n\\) is an integer, so we need to count the positive divisors of \\(360\\), excluding \\(1\\) and \\(2\\).\n\nFactor\n\\[\n360=2^3\\cdot3^2\\cdot5.\n\\]\nEvery positive divisor has exactly one expression \\(2^i3^j5^k\\), where\n\\[\n0\\le i\\le3,\\qquad 0\\le j\\le2,\\qquad 0\\le k\\le1.\n\\]\nThere are \\(4\\) choices for \\(i\\), \\(3\\) for \\(j\\), and \\(2\\) for \\(k\\), giving \\(4\\cdot3\\cdot2=24\\) divisors. Unique prime factorization ensures that all divisors occur and none is counted twice. Removing \\(n=1\\) and \\(n=2\\), which do not form polygons, leaves \\(\\boxed{22}\\), choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_181",
+          "cnm_p153",
+          "math:divisor-count-and-sum"
+        ],
+        "prerequisiteIds": [
+          "cnm_180",
+          "math:prime-factorization",
+          "cnm_h231"
+        ],
+        "levelReason": "The argument combines the elementary polygon angle formula with prime factorization and independent exponent choices."
+      },
+      {
+        "id": "factor-pair-list",
+        "label": "List complementary factor pairs",
+        "explanation": "The exterior angles of a regular \\(n\\)-gon are equal and sum to \\(360^\\circ\\), so each is \\(360/n\\) degrees. An interior angle and its adjacent exterior angle add to \\(180^\\circ\\). Thus the interior angles have integral degree measures exactly when \\(360/n\\) is an integer: \\(n\\) must divide \\(360\\), with \\(n\\ge3\\).\n\nWe can count these divisors by pairing each divisor \\(d\\) with \\(360/d\\). Since\n\\[\n18^2<360<19^2,\n\\]\nevery pair has exactly one member at most \\(18\\). Checking the integers from \\(1\\) through \\(18\\) gives all the pairs:\n\\[\n\\begin{gathered}\n(1,360),\\ (2,180),\\ (3,120),\\\\\n(4,90),\\ (5,72),\\ (6,60),\\\\\n(8,45),\\ (9,40),\\ (10,36),\\\\\n(12,30),\\ (15,24),\\ (18,20).\n\\end{gathered}\n\\]\nThere are \\(12\\) pairs, each containing two distinct divisors. Every divisor belongs to exactly one pair, so there are \\(24\\) divisors altogether. Excluding \\(1\\) and \\(2\\) leaves \\(\\boxed{22}\\) possible side counts, choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_182",
+          "cnm_062",
+          "cnm_p153"
+        ],
+        "prerequisiteIds": [
+          "cnm_180",
+          "cnm_059"
+        ],
+        "levelReason": "This route uses exterior angles and an exhaustive factor-pair list, avoiding a divisor-count formula."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p153"
+    ],
+    "supportIds": [
+      "cnm_180"
+    ],
+    "annotationRationale": "The common target is identifying all admissible side counts as factors of 360. The interior-angle formula and prime-exponent divisor count belong to the first route; exterior-angle reasoning and factor-pair enumeration belong to the second. Prime factorization is therefore not imposed as a shared prerequisite.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1993_AMC_12_Q15",
+    "decision": "accept",
+    "mathematicalCheck": "An interior angle is integral exactly when n divides 360, with n≥3. Prime-exponent choices give 24 divisors. Independently, the second method lists all 12 distinct factor pairs using 18²<360<19². Both counts exclude 1 and 2 to obtain 22.",
+    "levelCheck": "Both methods use appropriate school geometry and elementary counting. Completeness and absence of duplicate counting are explained.",
+    "methodDistinctness": "Prime-exponent counting and bounded factor-pair enumeration provide genuinely distinct, accessible counting methods.",
+    "annotationCheck": "Factors and multiples are common to both routes. Polygon meaning is shared support, while the angle formulas, prime factorization, and multiplication principle remain method-specific.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "prime-exponent-count": "prime-exponent-count",
+    "factor-pair-list": "factor-pair-list"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "b1732f34a072814609d5f27d37d536165d44de9ba0e4304fdfc0b9d866c2ef09",
+    "inputHash": "e63d7bd624dc01058ed16489862f4018d94a6ad3fe1f83a0e518b96087daa694",
+    "authorInputHash": "987c39caa5ddbac728956dc65625330457c93844e31bb77d47fa2e883335d6f0",
+    "reviewInputHash": "c7aec97cc7276b4910827866da64e45320c2729d9e504386ae939e3681ded798",
+    "authorResponseHash": "d9df06bdf2cef66cc00de699b8ddacf17de2ff17b10d7809788aa97a6269cda3",
+    "reviewerResponseHash": "dbf6a543ddc447f902e500e8b46b054ac36b6a84b7d72b429c78dde41239e4b0",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

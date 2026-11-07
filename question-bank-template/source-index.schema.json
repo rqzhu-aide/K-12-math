@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "K-12 Math Practice source index, schema 3.0",
+  "description": "Bank-local question and method sources. The importer checks that each sourceRef resolves; the index may also preserve original records and review history.",
+  "type": "object",
+  "required": ["schemaVersion", "bank", "sources"],
+  "properties": {
+    "schemaVersion": {"const": "3.0"},
+    "bank": {"type": "string", "minLength": 1},
+    "sources": {
+      "type": "object",
+      "propertyNames": {"type": "string", "minLength": 1, "pattern": "\\S"},
+      "additionalProperties": {"$ref": "#/$defs/source"}
+    }
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "source": {
+      "type": "object",
+      "properties": {
+        "kind": {"$ref": "#/$defs/text"},
+        "label": {"$ref": "#/$defs/text"},
+        "attribution": {"$ref": "#/$defs/text"},
+        "license": {"$ref": "#/$defs/text"},
+        "licenseURL": {"type": "string"},
+        "sourceURL": {"type": "string"},
+        "revision": {"type": "string"},
+        "questionRef": {"$ref": "#/$defs/text"},
+        "position": {
+          "type": "object",
+          "description": "Original browsing position. The runtime reads batch, number, and year when supplied.",
+          "properties": {
+            "batch": {"$ref": "#/$defs/text"},
+            "number": {"type": "integer", "minimum": 1},
+            "year": {"type": "integer"}
+          }
+        },
+        "topicLabels": {
+          "type": "object",
+          "description": "Map classification.topicIds to readable labels. Converted indexes may retain legacy topic-label objects."
+        },
+        "meta": {
+          "type": "object",
+          "description": "Optional original metadata retained when adapting an earlier record."
+        },
+        "provenance": {
+          "type": "object",
+          "description": "Method authorship and actual review status displayed beside its explanation.",
+          "properties": {
+            "source": {"$ref": "#/$defs/text"},
+            "reviewStatus": {"$ref": "#/$defs/text"},
+            "attribution": {"$ref": "#/$defs/text"},
+            "license": {"$ref": "#/$defs/text"},
+            "licenseURL": {"type": "string"},
+            "sourceURL": {"type": "string"},
+            "sourceRevision": {"type": "string"}
+          }
+        },
+        "assets": {
+          "type": "array",
+          "description": "Bank-relative figures with alt text and separate source credits.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {"$ref": "#/$defs/text"},
+              "alt": {"type": "string"},
+              "attribution": {"type": "string"},
+              "license": {"type": "string"},
+              "licenseURL": {"type": "string"},
+              "sourceURL": {"type": "string"}
+            }
+          }
+        }
+      }
+    }
+  }
+}

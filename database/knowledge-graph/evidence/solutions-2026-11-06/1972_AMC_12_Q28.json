@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1972_AMC_12_Q28",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "0d281e342102d85ad3718084997e580ec529e262521b6bcc6b11da47bd586896",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "4702a4bb94117613b2bb7efe16de2944ccd79f72c6378bba2c1c770e5c84be87",
+  "solutionFigureHashes": {},
+  "candidateHash": "2ec441a06fc4d243029f13b829bd89c971767dad590ae2ce99062a105cfba0ce",
+  "candidate": {
+    "questionId": "1972_AMC_12_Q28",
+    "derivedAnswer": "E, 32 squares",
+    "answerStatus": "matches",
+    "answerReason": "A square is covered exactly when its farthest corner is within the disc. In each quadrant, the allowable positive integer corner coordinates give 3 + 3 + 2 + 0 = 8 squares, for 32 altogether.",
+    "methods": [
+      {
+        "id": "farthest-corner-count",
+        "label": "Count farthest corners in one quadrant",
+        "explanation": "Use the side of one checkerboard square as the unit of length. The board then has side length \\(8\\), and the disc has radius \\(4\\). Because the board has eight rows and columns, its two central grid lines divide it into four congruent \\(4\\times4\\) blocks. Symmetry lets us count one block and multiply by four.\n\nPut the origin at the common center, with the coordinate axes along those central grid lines. In the first quadrant, label a square by its farthest corner \\((i,j)\\), where \\(i,j\\in\\{1,2,3,4\\}\\). Every point \\((u,v)\\) of this square satisfies \\(0\\le u\\le i\\) and \\(0\\le v\\le j\\), so its squared distance from the center is at most \\(i^2+j^2\\). Thus the entire square is covered exactly when\n\\[\ni^2+j^2\\le 16.\n\\]\nFor \\(i=1\\), the possible values of \\(j\\) are \\(1,2,3\\). For \\(i=2\\), they are again \\(1,2,3\\). For \\(i=3\\), they are \\(1,2\\), and for \\(i=4\\), there are none. These lists include every square in the block exactly once.\n\nThere are therefore \\(3+3+2=8\\) covered squares per block. Each checkerboard square has its interior in exactly one of the four blocks, so the total is\n\\[\n4\\cdot8=\\boxed{32},\n\\]\nchoice \\(\\text{E}\\).",
+        "nodeIds": [
+          "math:lattice-counting",
+          "cnm_259",
+          "cnm_174"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_250",
+          "cnm_p127"
+        ],
+        "levelReason": "The method uses symmetry, elementary coordinates, the Pythagorean theorem, and a short exhaustive count."
+      }
+    ],
+    "assessedIds": [
+      "math:lattice-counting"
+    ],
+    "supportIds": [
+      "cnm_259",
+      "cnm_174"
+    ],
+    "annotationRationale": "Each square corresponds uniquely to its farthest integer-coordinate corner, making exact lattice counting the main target. Point-to-circle distance and the Pythagorean theorem support the coverage test. Coordinates, circle terminology, and reflection symmetry are local prerequisites; square-root calculations are unnecessary.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1972_AMC_12_Q28",
+    "decision": "accept",
+    "mathematicalCheck": "The farthest corner criterion is necessary and sufficient. The bounds i²+j²≤16 give quadrant counts 3,3,2,0, totaling 32 after multiplication by four, without duplicating squares.",
+    "levelCheck": "The coordinates, distance comparison, and exhaustive count are elementary and clearly explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Lattice counting is the main target; circle position, the Pythagorean theorem, coordinates, and reflection symmetry accurately describe the supporting knowledge.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "farthest-corner-count": "farthest-corner-count"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c87b43b6dd249f0eee0ad8513914668844b419888794e9c031cfeee81bf3b645",
+    "inputHash": "9e65631683b6f15a8a59bf84a87f813a34cd0dc3d86d310c4931b44521d678bd",
+    "authorInputHash": "f7b8ff7ff9bb20e804c03fcc6c2c0b5118d9e0036badecfa5e0224f8fe022805",
+    "reviewInputHash": "44fe02e0ad219308fec02d37d49a980f5f07ba33230e7fd498ea8ec2cee69a12",
+    "authorResponseHash": "8cd3e0924c221c6f38d52f44940e1aa7fb6eca998052c5c7aca8c6da6197ada4",
+    "reviewerResponseHash": "597ae822edd664c025c1db6b8673aeef421ecc51502c45d1e07f48bb6346478b",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

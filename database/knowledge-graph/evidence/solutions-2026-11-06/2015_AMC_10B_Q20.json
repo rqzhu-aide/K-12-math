@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2015_AMC_10B_Q20",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "73cd1bc14fa237b1abac7c316623d17d9e307e9ca8dcd43745b29663de850edf",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "796c433312dafa3d24284843ff5425dfbaec5d0bab1644e016f089810c9409df",
+  "solutionFigureHashes": {},
+  "candidateHash": "db415a614860c252ff5101381e1ea1d19338a55257e8819b11a6d971b17d9d85",
+  "candidate": {
+    "questionId": "2015_AMC_10B_Q20",
+    "derivedAnswer": "\\(6\\), choice A",
+    "answerStatus": "matches",
+    "answerReason": "Parity forces the final corner to be opposite the starting corner. Each of the 3 first-edge choices and 2 second-edge choices has exactly one valid completion, giving 6 paths.",
+    "methods": [
+      {
+        "id": "parity-and-forced-path",
+        "label": "Find the endpoint, then force the path",
+        "explanation": "First determine where Erin must finish. Label the cube's corners by triples of zeros and ones, with the starting corner labeled \\(000\\). Two corners share an edge exactly when their labels differ in one position.\n\nEach move changes the number of ones from even to odd or from odd to even. After \\(7\\) moves, the endpoint therefore has an odd number of ones. The four such corners are \\(100,010,001,111\\). The first three are adjacent to \\(000\\), so the condition that Erin cannot return along one edge forces her endpoint to be \\(111\\).\n\nThere are \\(3\\) choices for the first edge. At the next corner, there are \\(2\\) choices that do not immediately revisit the start. For any such two choices, we can name the three directions so that the beginning is\n\\[\n000\\longrightarrow100\\longrightarrow110.\n\\]\nAt \\(110\\), the only unvisited neighbors are \\(010\\) and \\(111\\). Since \\(111\\) must be saved for the last corner, Erin must choose \\(010\\). From \\(010\\), the only unvisited neighbor is \\(011\\). From \\(011\\), she must choose \\(001\\), again saving \\(111\\) for last. The rest is then forced:\n\\[\n010\\longrightarrow011\\longrightarrow001\n\\longrightarrow101\\longrightarrow111.\n\\]\nThis path visits all eight corners exactly once. Relabeling the directions gives a valid completion for every first-and-second-edge choice, and different initial choices produce different paths. Thus every valid path is counted exactly once, giving\n\\[\n3\\cdot2=\\boxed6,\n\\]\nchoice \\(\\mathrm{A}\\).",
+        "nodeIds": [
+          "math:graph-models",
+          "cnm_h231"
+        ],
+        "prerequisiteIds": [
+          "cnm_p156",
+          "cnm_p160"
+        ],
+        "levelReason": "Binary corner labels, odd-even reasoning, and a short forced enumeration require only elementary spatial reasoning and counting."
+      }
+    ],
+    "assessedIds": [
+      "math:graph-models",
+      "cnm_h231"
+    ],
+    "supportIds": [
+      "cnm_p156",
+      "cnm_p160"
+    ],
+    "annotationRationale": "The task asks for paths subject to cube-edge adjacency and visit restrictions, followed by a justified product count. Odd-even reasoning restricts the endpoint, while knowledge of cube corners and edges supports the model. The enumeration proves both completeness and absence of duplicate counts.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2015_AMC_10B_Q20",
+    "decision": "accept",
+    "mathematicalCheck": "Seven moves force an odd-parity endpoint, and 111 is the only such corner not adjacent to the start. After any first two admissible edges, the displayed completion is forced and visits every corner once. The 3·2 initial choices therefore give exactly 6 paths.",
+    "levelCheck": "The corner labels, parity argument, and forced enumeration are accessible at AMC 10 level.",
+    "methodDistinctness": "One complete counting method is sufficient.",
+    "annotationCheck": "Graph modeling and the multiplication principle describe the central reasoning; parity and cube structure are justified supporting concepts.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "parity-and-forced-path": "parity-and-forced-path"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c7c107f5bd20b46da71615ca8f141ec5edac62a2883895bed3051b9cb13bca1b",
+    "inputHash": "c1e3f86fe313b412b3a972dcefe394e455655d72b0d3b47d42afca962d716c53",
+    "authorInputHash": "3941c491e4eeebeef78d008e8dcc7cc493688b7465f36e032b02d00d32769484",
+    "reviewInputHash": "fa04e00e6f405046aec108f8d457c1ae777e01e16e9f439b32c2b6701542aafb",
+    "authorResponseHash": "ac3dfcdfc4f0682eca8289904c6d53a00cbc1f70ba33cc59904635f5eb864534",
+    "reviewerResponseHash": "1f62a0f5f84b0302d045645d0fb8930588150fb5ba1485dc0118d4be08257b4d",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

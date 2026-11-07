@@ -1,0 +1,125 @@
+{
+  "Year": 2012,
+  "Level": "AMC 12",
+  "Batch": "B",
+  "Area": "Unclassified",
+  "Number": 14,
+  "Question": "Bernardo and Silvia play the following game. An integer between \\(0\\) and \\(999,\\) inclusive, is selected and given to Bernardo. Whenever Bernardo receives a number, he doubles it and passes the result to Silvia. Whenever Silvia receives a number, she adds \\(50\\) to it and passes the result to Bernardo. The winner is the last person who produces a number less than \\(1000.\\) Let \\(N\\) be the smallest initial number that results in a win for Bernardo. What is the sum of the digits of \\(N?\\)",
+  "Question Type": "text",
+  "Choices": {
+    "A": "\\(7\\)",
+    "B": "\\(8\\)",
+    "C": "\\(9\\)",
+    "D": "\\(10\\)",
+    "E": "\\(11\\)"
+  },
+  "Choices Type": "text",
+  "Correct Answer": "A",
+  "Solution": "Method 1: Method 1: Work backward from a winning turn\n\nBernardo wins when his output is below \\(1000\\), but Silvia's next output reaches or exceeds \\(1000\\). Since Silvia adds \\(50\\), Bernardo's final output must be between \\(950\\) and \\(999\\), inclusive.\n\nIf Bernardo receives an integer \\(x\\) on that turn, he produces \\(2x\\). Thus he wins immediately exactly when\n\\[\n950\\le2x<1000,\n\\qquad\\text{or}\\qquad\n475\\le x\\le499.\n\\]\nTo find starting numbers that win one turn later, undo one complete round. If Bernardo receives \\(x\\), the next number he receives is \\(2x+50\\). For example,\n\\[\n475\\le2x+50\\le499\n\\]\ngives \\(212.5\\le x\\le224.5\\), whose integer solutions are \\(213\\) through \\(224\\).\n\nRepeating this reversal gives all initial ranges for a win on successive Bernardo turns:\n\\[\n\\begin{aligned}\n\\text{First turn:}&\\quad475\\le N\\le499,\\\\\n\\text{Second turn:}&\\quad213\\le N\\le224,\\\\\n\\text{Third turn:}&\\quad82\\le N\\le87,\\\\\n\\text{Fourth turn:}&\\quad16\\le N\\le18.\n\\end{aligned}\n\\]\nUndoing another round gives \\(-17\\le N\\le-16\\). Further reversals remain negative, so there are no additional nonnegative starting ranges. Each preceding round in the listed ranges stays below \\(1000\\), because its final number lies in the next listed range, which is below \\(500\\).\n\nThe smallest possible initial number is therefore \\(16\\). Its play is\n\\[\n16\\to32\\to82\\to164\\to214\\to428\\to478\\to956\\to1006.\n\\]\nBernardo produces \\(956\\), and Silvia then produces \\(1006\\), confirming his win. The digit sum is \\(1+6=\\boxed7\\), choice \\(\\mathrm{A}\\).\n\nMethod 2: Method 2: Turn the output recurrence into repeated doubling\n\nLet \\(b_k\\) be Bernardo's output on his \\(k\\)th turn, continuing the arithmetic rule formally if necessary. His first output is \\(b_1=2N\\). Between two Bernardo turns, Silvia adds \\(50\\) and Bernardo doubles, so\n\\[\nb_{k+1}=2(b_k+50)=2b_k+100.\n\\]\nAdding \\(100\\) makes the recurrence a pure doubling rule:\n\\[\nb_{k+1}+100=2(b_k+100).\n\\]\nStarting from \\(b_1+100=2(N+50)\\), repeated doubling therefore gives\n\\[\nb_k=2^k(N+50)-100.\n\\]\nBernardo wins exactly when one of his outputs satisfies \\(950\\le b_k<1000\\). All outputs are nondecreasing for \\(N\\ge0\\), so such an output guarantees that no earlier turn ended the game. The winning condition becomes\n\\[\n1050\\le2^k(N+50)<1100.\n\\]\nFor \\(k\\ge5\\), the middle expression is at least \\(32\\cdot50=1600\\), so only \\(k=1,2,3,4\\) are possible. Solving for integer \\(N\\) gives\n\\[\n\\begin{aligned}\nk=1:&\\quad475\\le N\\le499,\\\\\nk=2:&\\quad213\\le N\\le224,\\\\\nk=3:&\\quad82\\le N\\le87,\\\\\nk=4:&\\quad16\\le N\\le18.\n\\end{aligned}\n\\]\nThus the minimum is \\(N=16\\). Indeed, \\(b_4=16\\cdot66-100=956\\), and Silvia next produces \\(1006\\). The requested digit sum is \\(\\boxed7\\), choice \\(\\mathrm{A}\\).",
+  "Meta": {
+    "QuestionSource": "live-poshenloh",
+    "AnswerSource": "live-poshenloh-answer-key",
+    "SolutionSource": "Original Math Practice solution",
+    "AreaSource": "Pending topic curation",
+    "Concepts": "work backwards; inequality",
+    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2012B/solutions",
+    "SourceSHA256": "4bd5efbe7bf94eb63b06d8711b413495b92982db90fad375fe553d262487b635",
+    "Figures": [],
+    "FigureSources": {},
+    "SourceQuestionCount": 25,
+    "HistoricalSeries": "AMC 12",
+    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+    "Copyright": "Copyright Mathematical Association of America",
+    "License": "CC-BY-NC-SA-4.0",
+    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "TranscriptionSource": "LIVE by Po-Shen Loh",
+    "Modifications": [
+      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
+      "Third-party worked solution and solution-only figures omitted from the public distribution"
+    ],
+    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+    "SolutionReview": {
+      "status": "reviewed",
+      "solutionSHA256": "5cf53964e3aab425f8b136bec3f0688800e50f2b0b3749fac4bb6abaffae98ac",
+      "questionContentHash": "bd3356dd296aeb5eecceb1ee8e4c07470cc0a2b8ed868eb4292381b37a9934e5",
+      "evidence": {
+        "path": "knowledge-graph/evidence/solutions-2026-11-06/2012_AMC_12B_Q14.json",
+        "sha256": "15147d3e740bdf9070bdc531b96c62a8dd31daf97fbb45774ba793f18817eed3"
+      },
+      "author": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "reviewer": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      }
+    }
+  },
+  "ID": "2012_AMC_12B_Q14",
+  "Bank": "amc",
+  "SchemaVersion": "2.0",
+  "ResponseType": "choice",
+  "Language": "en",
+  "domain": [],
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "1.0.0",
+    "contentHash": "bd3356dd296aeb5eecceb1ee8e4c07470cc0a2b8ed868eb4292381b37a9934e5",
+    "status": "mapped",
+    "reviewStatus": "machine_scope_audited",
+    "assessedIds": [
+      "cnm_h200",
+      "cnm_h020"
+    ],
+    "supportIds": [
+      "cnm_097",
+      "cnm_h197"
+    ],
+    "routes": [
+      {
+        "id": "shifted-geometric-recurrence",
+        "label": "Solve the forward recurrence",
+        "nodeIds": [
+          "cnm_h208",
+          "cnm_099"
+        ]
+      },
+      {
+        "id": "backward-winning-intervals",
+        "label": "Take preimages of winning intervals",
+        "nodeIds": [
+          "cnm_h200",
+          "cnm_099"
+        ]
+      },
+      {
+        "id": "backward-winning-ranges",
+        "label": "Method 1: Work backward from a winning turn",
+        "nodeIds": [
+          "cnm_h200",
+          "cnm_h020",
+          "cnm_099",
+          "cnm_097",
+          "cnm_h197"
+        ]
+      },
+      {
+        "id": "shift-to-doubling",
+        "label": "Method 2: Turn the output recurrence into repeated doubling",
+        "nodeIds": [
+          "cnm_h200",
+          "cnm_h208",
+          "cnm_h020",
+          "cnm_099",
+          "cnm_097",
+          "cnm_h197",
+          "cnm_h199",
+          "cnm_h207"
+        ]
+      }
+    ],
+    "flags": []
+  }
+}

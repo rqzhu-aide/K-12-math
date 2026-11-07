@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2014_AMC_12B_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "1fea18efabc7acafffddaf32aeb850039a35a512000efcc30824a1746f636783",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "b017025001da0b593f346ad93c50e5bc58027550e4880643f527b04d4603baf5",
+  "solutionFigureHashes": {},
+  "candidateHash": "025b0dbe61d009980e7b289be08c2d92d1d32197f9ed4fbf6705e53187fa7eed",
+  "candidate": {
+    "questionId": "2014_AMC_12B_Q24",
+    "derivedAnswer": "Diagonal sum \\(\\dfrac{385}{6}\\); \\(m+n=391\\), choice D",
+    "answerStatus": "matches",
+    "answerReason": "The three diagonals AC, BD, and CE have length 12. Ptolemy's theorem then gives AD=27/2 and BE=44/3. Their total is 385/6 in lowest terms, so m+n=391.",
+    "methods": [
+      {
+        "id": "equal-arcs-and-ptolemy",
+        "label": "Equal arcs and cyclic quadrilateral equations",
+        "explanation": "The repeated side lengths suggest first looking for equal diagonals. The consecutive arcs \\(AB\\) and \\(CD\\) have equal measures, as do \\(BC\\) and \\(DE\\). To justify this even when considering major arcs, equal chords give either equal arc measures or measures adding to a full circle. The second possibility is impossible for either pair here because the other three consecutive arcs have positive measures.\n\nAdding adjacent arc measures shows that the arcs \\(ABC\\), \\(BCD\\), and \\(CDE\\) are equal. Their chords are therefore equal. Set\n\\[\nAC=BD=CE=t,\\qquad AD=u,\\qquad BE=v,\n\\]\nwhere all three variables are positive lengths.\n\nPtolemy's theorem states that, in a convex cyclic quadrilateral, the product of the diagonals equals the sum of the products of opposite sides. The quadrilaterals \\(ABCD\\), \\(ACDE\\), and \\(ABCE\\) all have their vertices on the given circle. Applying the theorem to them, respectively, gives\n\\[\n\\begin{aligned}\nt^2&=9+10u,\\\\\ntu&=10t+42,\\\\\ntv&=3t+140.\n\\end{aligned}\n\\]\nThe first two equations determine \\(t\\). Since \\(t>0\\), the second gives \\(u=10+42/t\\). Substitution into the first yields\n\\[\nt^2=109+\\frac{420}{t},\n\\]\nand hence\n\\[\nt^3-109t-420=0.\n\\]\nSubstitution shows that \\(12\\) is a root. Dividing by \\(t-12\\) and factoring the resulting quadratic gives\n\\[\n(t-12)(t+5)(t+7)=0.\n\\]\nThe roots \\(-5\\) and \\(-7\\) cannot be lengths, so \\(t=12\\). The other two diagonals are then\n\\[\nu=10+\\frac{42}{12}=\\frac{27}{2},\n\\qquad\nv=3+\\frac{140}{12}=\\frac{44}{3}.\n\\]\nThe five diagonals are \\(AC,AD,BD,BE,CE\\), so their sum is\n\\[\n3t+u+v\n=36+\\frac{27}{2}+\\frac{44}{3}\n=\\frac{385}{6}.\n\\]\nSince \\(385\\) is divisible by neither \\(2\\) nor \\(3\\), this fraction is in lowest terms. Thus \\(m+n=385+6=\\boxed{391}\\), choice D.",
+        "nodeIds": [
+          "math:ptolemy-theorem",
+          "math:polynomial-remainder-factor"
+        ],
+        "prerequisiteIds": [
+          "cnm_252"
+        ],
+        "levelReason": "Uses elementary circle geometry, Ptolemy's theorem, and polynomial factorization, all appropriate to AMC 12."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_252"
+    ],
+    "annotationRationale": "The task-level target is recovering and summing diagonal lengths from cyclic side data. The catalog supplies Ptolemy as a particular procedure rather than a route-neutral target, so it is attached to the written method and a missing target is proposed. Arc-chord relationships support the equal-diagonal deduction, while polynomial factorization records the algebra actually used.",
+    "needsNewNodes": [
+      {
+        "name": "Diagonal lengths of cyclic polygons from side data",
+        "description": "Determine unknown diagonal lengths or their requested sum in a convex polygon inscribed in a circle from given side-length conditions, justifying the metric relationships and retaining only admissible lengths.",
+        "reason": "The catalog has individual circle properties and Ptolemy's theorem, but lacks a specific route-neutral target for determining cyclic polygon diagonals from side data."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2014_AMC_12B_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "The disjoint consecutive arcs justify the equal diagonals. Ptolemy gives all three stated equations, and elimination yields \\((t-12)(t+5)(t+7)=0\\). Positivity forces \\(t=12\\), giving the other diagonals \\(27/2\\) and \\(44/3\\). Their total is the reduced fraction \\(385/6\\), so \\(m+n=391\\).",
+    "levelCheck": "The arc argument, stated Ptolemy theorem, and polynomial factorization are appropriate for AMC 12 and explain the decisive deductions.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Ptolemy and polynomial factoring are correctly attached to the method. Arc-chord support fits, and the proposed missing route-neutral target honestly avoids forcing an unrelated assessed ID.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "equal-arcs-and-ptolemy": "equal-arcs-and-ptolemy"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "0c2e0ef1ebca2958ab62529f02c81f7341b5381c08b7abb43177e027723179d1",
+    "inputHash": "349ded56b4846f61ec92d31549e40f62a770b40e27d88974375ce4c22e0b4452",
+    "authorInputHash": "b7a992dd79cab62a8f3031c99e3925810bca5b47b3785a645d66ca4b0ee5b76f",
+    "reviewInputHash": "55965a851e6a4660ea1727133a995917bd6dcbda7a775abb7426973d095f1086",
+    "authorResponseHash": "bdcc47003e1ddce389ed6e1c9ed1175ecb6bca3e0c72b47dceb8fe15dfafa4c1",
+    "reviewerResponseHash": "bca9156776ec29bf7a97937c7326563930df39fd5c66e3df826d95e824a18071",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

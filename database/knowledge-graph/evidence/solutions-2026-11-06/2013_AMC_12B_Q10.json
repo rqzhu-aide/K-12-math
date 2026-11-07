@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2013_AMC_12B_Q10",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "c8b66cd517cfb4ed64cf3982771c9a4296fe4a56fc78429286ef57adbd634464",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "fa315ced2586e7f45b386150506257bb50af1e0c79cd03b25625e809451e4d9a",
+  "solutionFigureHashes": {},
+  "candidateHash": "eab60ae4f1919f0321d7a390facd0e4580035bc85e1e61d559c97088998bba6c",
+  "candidate": {
+    "questionId": "2013_AMC_12B_Q10",
+    "derivedAnswer": "103 silver tokens (E)",
+    "answerStatus": "matches",
+    "answerReason": "Both trades preserve the value obtained by assigning red, blue, and silver tokens values 4, 3, and 5. The only reachable terminal colored-token counts consistent with total value 525 are one red and two blue, leaving 103 silver tokens, agreeing with choice E.",
+    "methods": [
+      {
+        "id": "preserved-token-value",
+        "label": "Find a value preserved by both trades",
+        "explanation": "To handle any order of exchanges, assign token values so that both booths preserve the total value. The value of one silver token must equal both two reds minus one blue and three blues minus one red. Equating these expressions says that three reds should have the value of four blues. We can therefore assign values \\(4\\) to red, \\(3\\) to blue, and \\(5\\) to silver. Both trades preserve value because\n\\[\n2\\cdot4=5+3,\n\\qquad 3\\cdot3=5+4.\n\\]\nThe initial total value is \\(75\\cdot4+75\\cdot3=525\\), so it remains \\(525\\) throughout.\n\nEach exchange decreases the number of colored tokens by either one or two, so the process must stop. Let \\(r,b,s\\) be the final numbers of red, blue, and silver tokens. No exchange being possible means\n\\[\nr\\in\\{0,1\\},\\qquad b\\in\\{0,1,2\\}.\n\\]\nThe preserved value gives\n\\[\n4r+3b+5s=525.\n\\]\nThus \\(4r+3b\\) must be a multiple of \\(5\\). Its six possible values are \\(0,3,6,4,7,10\\), of which only \\(0\\) and \\(10\\) are multiples of \\(5\\).\n\nThe value \\(0\\) would mean no colored tokens remain. That cannot happen: the collection starts with colored tokens, and every exchange returns a colored token. Hence \\(4r+3b=10\\), corresponding to \\(r=1\\) and \\(b=2\\). Therefore\n\\[\ns=\\frac{525-10}{5}=103.\n\\]\nEvery legal order of exchanges therefore ends with \\(103\\) silver tokens, choice E.",
+        "nodeIds": [
+          "math:invariant-reasoning",
+          "math:integer-diophantine-equations"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153"
+        ],
+        "levelReason": "The method uses elementary weighted counting, divisibility by 5, and an exhaustive check of six terminal possibilities."
+      }
+    ],
+    "assessedIds": [
+      "math:invariant-reasoning"
+    ],
+    "supportIds": [
+      "cnm_p153"
+    ],
+    "annotationRationale": "The target is constraining the final outcome despite freedom in the exchange order. The written method verifies a preserved quantity for both moves and uses bounded integer possibilities to determine the endpoint. Divisibility supports the final restriction. Termination and the impossibility of an empty colored-token collection are justified separately, so conservation alone is not treated as sufficient for reachability.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2013_AMC_12B_Q10",
+    "decision": "accept",
+    "mathematicalCheck": "Both trades preserve 4r+3b+5s=525 and strictly decrease the colored-token count, ensuring termination. Terminal bounds allow colored values only 0 or 10 divisible by 5. Every trade returns a colored token, excluding 0. Thus the final counts are r=1,b=2 and s=103, choice E, regardless of trade order.",
+    "levelCheck": "The weight construction, preservation checks, termination argument, and six-case endpoint check are accessible and complete.",
+    "methodDistinctness": "One complete invariant method is sufficient.",
+    "annotationCheck": "Invariant reasoning is the assessed target. Bounded integer-equation reasoning is used locally, and factors and multiples support the divisibility restriction without requiring formal congruences.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "preserved-token-value": "preserved-token-value"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "3aac85d002f62d3cd4581971fde6b7d693f2a5d38cff763481d068156d025f3e",
+    "inputHash": "ed89557fc99d803aa0c0c9ec35a716b929624c68b5db67b7c8a30fbf1a2feb19",
+    "authorInputHash": "7778207039f074ebf95059549b4f819e174ec5ce6afad933f44cf2149f64590e",
+    "reviewInputHash": "075a533ab1ecc17256e813ce6b2cd1b1fe80d0d2c226761b354b00b076a70912",
+    "authorResponseHash": "393f79b4ecb9fbe34678a0aefc0e9118a15cc4ea46b104eba1671716ddcc4465",
+    "reviewerResponseHash": "6fbdbf96d75e18cd61a6736f1bbe3830f5411b3e2a15bdb4ec7cf1eb09732762",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2013_AMC_12B_Q14",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "3cb5bd8627af224c80f996843dfd5a06031f72ae27070e0380d872aa74d3bc85",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "de537c176f8bc0fd7b602598733396c2b08f43e1ac436308e42f0106b2f58ee4",
+  "solutionFigureHashes": {},
+  "candidateHash": "c96af3c5ded15c3d436b960cf25843104c9e29f37a737eeb9f7d25193e52e95b",
+  "candidate": {
+    "questionId": "2013_AMC_12B_Q14",
+    "derivedAnswer": "C. 104",
+    "answerStatus": "matches",
+    "answerReason": "Equal seventh terms force the initial pairs to differ by multiples of (8,-5). Nondecreasing initial terms then give N at least 104, attained by initial pairs (0,13) and (8,8).",
+    "methods": [
+      {
+        "id": "initial-pair-bound",
+        "label": "Express the seventh term using the initial pair",
+        "explanation": "The recurrence lets us express the seventh term directly in terms of the first two. Starting with \\(a,b\\), the first seven terms are\n\\[\na,\\ b,\\ a+b,\\ a+2b,\\ 2a+3b,\\ 3a+5b,\\ 5a+8b.\n\\]\nThe sequence is nonnegative and nondecreasing exactly when its initial pair satisfies \\(0\\le a\\le b\\): these conditions are necessary, and thereafter adding the preceding nonnegative term cannot decrease the sequence.\n\nLet the two initial pairs be \\((a,b)\\) and \\((c,d)\\), choosing their names so that \\(a<c\\). Their equal seventh terms imply\n\\[\n5a+8b=5c+8d,\n\\qquad 5(c-a)=8(b-d).\n\\]\nBecause \\(5\\) and \\(8\\) have no common factor greater than \\(1\\), there is a positive integer \\(k\\) such that\n\\[\nc-a=8k,\\qquad b-d=5k.\n\\]\nNow the second sequence must satisfy \\(d\\ge c=a+8k\\). Hence\n\\[\nb=d+5k\\ge a+13k.\n\\]\nThis gives a bound valid for every allowed pair of sequences:\n\\[\nN=5a+8b\\ge13a+104k\\ge104,\n\\]\nsince \\(a\\ge0\\) and \\(k\\ge1\\).\n\nThe bound is attained by the sequences\n\\[\n0,13,13,26,39,65,104,\\ldots\n\\]\nand\n\\[\n8,8,16,24,40,64,104,\\ldots.\n\\]\nTheir first terms differ, both are nonnegative and nondecreasing, and both have seventh term \\(104\\). Thus the smallest possible value is \\(\\boxed{104}\\), choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_h200",
+          "math:integer-diophantine-equations",
+          "math:extremal-principle"
+        ],
+        "prerequisiteIds": [
+          "cnm_h197",
+          "cnm_p153"
+        ],
+        "levelReason": "Only repeated addition, elementary divisibility, and a lower bound with an attaining construction are used."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h200",
+      "math:integer-diophantine-equations",
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_h197",
+      "cnm_p153"
+    ],
+    "annotationRationale": "Computing the seventh term assesses recurrence manipulation. Integrality restricts differences between initial pairs, and the requested minimum requires both a universal bound and an allowed construction. Sequence indexing and divisibility are supporting knowledge; no closed formula for all terms is needed.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2013_AMC_12B_Q14",
+    "decision": "accept",
+    "mathematicalCheck": "The seventh term is 5a+8b. Equal seventh terms with a<c force c-a=8k and b-d=5k for an integer k>=1. Nondecreasing initial pairs give N>=13a+104k>=104, attained by (0,13) and (8,8).",
+    "levelCheck": "Recurrence expansion, elementary divisibility, and an attaining construction fit AMC 12.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The recurrence, integer-equation, and discrete-extremum assessed nodes match the argument. Sequence indexing and factors/multiples are appropriate supports.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "initial-pair-bound": "initial-pair-bound"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "5a0b2c29b23edbd09989332b77cccb9c9bd8bead9de2691bee37ac947e492219",
+    "inputHash": "4d20ee3d2181e5ad1e7e5d412d7da876f508768304ad5782ad84581eec1d3cd5",
+    "authorInputHash": "b886a1ecbd499f79c715fca8996cf8220870932e4dd2bfe2f2581230dc23f157",
+    "reviewInputHash": "ea2c2cc82e768094c7aacb7a2cc07273b638c42a2b6255e5d95811bfd48b9f2a",
+    "authorResponseHash": "b03cded1437305a7ef5d06b2c247686b33815e00a3125471290fb1a6ceaf34e6",
+    "reviewerResponseHash": "13905b705d4904ddbbb6ffaf570bf82f81295d26bb1122e9016e0319aa5f800e",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2012_AMC_10B_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "86730ea2c3592d272a2b4227ead55cfa817bfc611aa502d1e6896440e6c0592b",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "3a6add4390a5f228b69d1a1bed816e1af08044356e2c4be5510d7fa79c9c209d",
+  "solutionFigureHashes": {},
+  "candidateHash": "aed8cbb0780de707888286799deacc0874b34682ba6151f1ab2db3bf3f7d5fe4",
+  "candidate": {
+    "questionId": "2012_AMC_10B_Q23",
+    "derivedAnswer": "D, \\(\\frac{2\\sqrt3}{3}\\).",
+    "answerStatus": "matches",
+    "answerReason": "The removed corner tetrahedron has volume 1/6 and cut-face area √3/2, so its perpendicular height is 1/√3. The opposite cube vertex is twice that distance above the cut face and is the highest point.",
+    "methods": [
+      {
+        "id": "corner-tetrahedron-height",
+        "label": "Find the corner height using volume",
+        "explanation": "The three cut vertices are the three neighbors of one cube vertex. To see this, the two diagonal endpoints on the chosen face share its two other corners as neighbors. Either allowed vertex on the opposite face lies directly above one of those corners. Call that corner \\(O\\), and call the three cut vertices \\(A,B,C\\). The removed tetrahedron is \\(OABC\\), and \\(OA,OB,OC\\) are mutually perpendicular unit edges.\n\nFirst find the perpendicular distance \\(h\\) from \\(O\\) to the cut plane \\(ABC\\). Using \\(OAB\\) as a base, its area is \\(1/2\\), and the perpendicular height \\(OC\\) is \\(1\\). Thus the tetrahedron's volume is\n\\[\nV=\\frac13\\cdot\\frac12\\cdot1=\\frac16.\n\\]\nEach side of \\(ABC\\) is a diagonal of a unit square, so each has length \\(\\sqrt2\\). Its altitude bisects the opposite side, giving the cut-face area\n\\[\nK=\\frac12\\cdot\\sqrt2\\cdot\n\\sqrt{2-\\left(\\frac{\\sqrt2}{2}\\right)^2}\n=\\frac{\\sqrt3}{2}.\n\\]\nNow use this cut face as the tetrahedron's base:\n\\[\n\\frac16=\\frac13\\cdot\\frac{\\sqrt3}{2}\\cdot h,\n\\qquad h=\\frac1{\\sqrt3}.\n\\]\nTo find the height of the retained object, imagine its cut face on the table at height \\(0\\). The discarded vertex \\(O\\) has height \\(-h\\), while \\(A,B,C\\) each have height \\(0\\). Therefore a full unit step in any of the three cube-edge directions from \\(O\\) raises height by \\(h\\).\n\nVertical changes add. Taking all three edge steps reaches the opposite cube vertex, whose height is \\(-h+3h=2h\\). Every point of the original cube uses at most one full step in each of these directions, so none can be higher. The opposite vertex is retained, so this bound is attained.\n\nThe object's height is therefore\n\\[\n2h=\\frac2{\\sqrt3}=\\boxed{\\frac{2\\sqrt3}{3}},\n\\]\nchoice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_h111",
+          "cnm_p148",
+          "cnm_174",
+          "cnm_282"
+        ],
+        "prerequisiteIds": [
+          "cnm_p160",
+          "cnm_137",
+          "cnm_171"
+        ],
+        "levelReason": "The solution uses pyramid volume, triangle area, the Pythagorean theorem, and additive vertical projections. It requires no trigonometry or spatial vector formulas."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_p160"
+    ],
+    "annotationRationale": "The route-neutral target is the maximum perpendicular height of the retained polyhedron above its new supporting face. The catalog's cnm_h163 specifically assesses a coordinate formula using a normal vector, which the written elementary method does not use. A geometric height concept is therefore proposed. The method's actual tools are pyramid volume, triangle area, Pythagorean lengths, and perpendicular projection.",
+    "needsNewNodes": [
+      {
+        "name": "Height of a convex polyhedron relative to a supporting face",
+        "description": "Interpret the height of a convex polyhedron resting on a face as the greatest perpendicular distance above that face's plane. Identify a highest vertex and justify that no point of the solid is higher using elementary geometric or projection reasoning.",
+        "reason": "The catalog lacks this geometric height target. Its point-to-plane distance node is specifically a normal-vector coordinate procedure, while the available volume and projection nodes describe supporting methods rather than the requested maximum height."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2012_AMC_10B_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "The allowed cut vertices are the three neighbors of a corner O. The corner tetrahedron has volume 1/6 and cut-face area √3/2, so O's perpendicular distance is h=1/√3. Each inward unit edge direction raises height by h; every cube point uses fractions between zero and one of these steps. The retained opposite vertex attains height 2h=2√3/3.",
+    "levelCheck": "Pyramid volume, triangle area, Pythagorean lengths, and additive vertical changes give a complete elementary AMC 10 argument.",
+    "methodDistinctness": "One complete geometric method is sufficient.",
+    "annotationCheck": "The volume, area, Pythagorean, and projection annotations support the method. The proposed geometric-height target honestly avoids claiming equivalence with the catalog's normal-vector distance procedure.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "corner-tetrahedron-height": "corner-tetrahedron-height"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "3934c480aed7a083353d7e8a06ad7ee3a79e8782cca464bb7367e11f7a8d4eeb",
+    "inputHash": "9015dda1a985c46b6c00f6618ff78364b6179f4df0ca90ca79b031b5d59da3c0",
+    "authorInputHash": "2373b0dbe9fccdab8bb32feff6c1d7ac639a64f50c8e2861fd530187515b17a9",
+    "reviewInputHash": "1ed0917ab898ae1ce3473925bb6e96b7f00f71027f2b53d6983ce5f1403a8dd6",
+    "authorResponseHash": "51062fefc935a5370dad6ad4c76b8344111291e21f5eae70d5650b07827bfe07",
+    "reviewerResponseHash": "ff4c9ff54f9e687d1bf2dddbee2b69bf3119208af3c1c8df4210cfade018b8dd",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

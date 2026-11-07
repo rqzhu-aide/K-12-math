@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1997_AMC_12_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "13ed025550fd6dc587da0372b1014c3f3014e53182dbe0b59c66c17a3cf9a7b2",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "e2999829c95215fa5d8547796b322d42e65497d23e279f26d4352bf6b0ef308f",
+  "solutionFigureHashes": {},
+  "candidateHash": "b1caa2d890725d43e4d04115c4d6d60aebb4677cfb6d288c90316bb93edb0564",
+  "candidate": {
+    "questionId": "1997_AMC_12_Q22",
+    "derivedAnswer": "E: $10",
+    "answerStatus": "matches",
+    "answerReason": "The signed differences around the five people must balance. Their magnitudes split uniquely into equal totals as {19,4} and {7,5,11}. Of the two resulting orientations, only one gives whole-dollar amounts, namely (21,2,9,14,10).",
+    "methods": [
+      {
+        "id": "signed-difference-cycle",
+        "label": "Balance the increases and decreases",
+        "explanation": "Let \\(A,B,C,D,E\\) be the five amounts in dollars, in the order given. Going from Ashley to Betty to Carlos to Dick to Elgin and back to Ashley returns to the starting amount, so\n\\[\n(B-A)+(C-B)+(D-C)+(E-D)+(A-E)=0.\n\\]\nThe magnitudes of these five differences are \\(19,7,5,4,11\\), whose sum is 46. Therefore the positive differences and the negative differences must each have total magnitude 23.\n\nThe group containing 19 needs another 4 to reach 23. The only way to supply that 4 is the difference of magnitude 4 itself. Thus the two groups must be\n\\[\n19+4=7+5+11=23.\n\\]\nChoosing which group is positive gives exactly two cases.\n\nIf \\(B-A=19\\), the differences force\n\\[\n(A,B,C,D,E)=(t,t+19,t+12,t+7,t+11).\n\\]\nTheir total is \\(5t+49=56\\), giving \\(t=7/5\\), which is not a whole number.\n\nIf \\(B-A=-19\\), all the signs reverse, giving\n\\[\n(A,B,C,D,E)=(t,t-19,t-12,t-7,t-11).\n\\]\nNow \\(5t-49=56\\), so \\(t=21\\). The amounts are consequently\n\\[\n(21,2,9,14,10).\n\\]\nThey are nonnegative whole numbers, sum to 56, and have all five required absolute differences. Elgin had \\(\\boxed{\\$10}\\), choice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations"
+        ],
+        "prerequisiteIds": [
+          "cnm_008",
+          "cnm_042"
+        ],
+        "levelReason": "The solution uses signed differences, a complete two-case analysis, and linear equations with whole-number restrictions."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_008",
+      "cnm_042"
+    ],
+    "annotationRationale": "The task asks for amounts subject to simultaneous integer restrictions. The method exhausts the possible signs of the absolute differences through their balanced totals, then uses integrality to select the valid assignment. Absolute-value simplification and linear equations are supporting knowledge.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1997_AMC_12_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "Cycle closure partitions the difference magnitudes into two totals of 23. The group containing 19 must contain precisely 4, leaving exactly two sign assignments. Their totals give t=7/5 or t=21; only the latter gives whole-dollar amounts, namely (21,2,9,14,10), satisfying every condition.",
+    "levelCheck": "The balanced-differences idea, exhaustive cases, and integrality check are accessible and clearly motivated.",
+    "methodDistinctness": "One complete signed-difference method is sufficient.",
+    "annotationCheck": "Integer-constrained equations are the central target. Absolute-value simplification and linear equations are appropriate supports.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "signed-difference-cycle": "signed-difference-cycle"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "834f2fddfd22c84bea1d6b4dd01be0f13c8614077705d620fd747276d80d11ae",
+    "inputHash": "a00f12ef7270d9b17723488f102177cf2c8506dd706a916d78bfd2354213efc3",
+    "authorInputHash": "2086f3d111bfbde48dda206f3d0174c6900c824459d17cbcf1e11bbeffcdeb7d",
+    "reviewInputHash": "9eb560cb22244134d063229f03a5e5ef7dcd979997daf9bcee124547b69010b3",
+    "authorResponseHash": "5b53fb0bbe881d9df8e52146f6d7581ae4b371d20329c38fece04954b12118a4",
+    "reviewerResponseHash": "ea6c7d746dc1fa09d253bc5e7917984072c941048f51740c72ff7120b8546ce1",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

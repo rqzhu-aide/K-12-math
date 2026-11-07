@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1958_AMC_12_Q49",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "27ce32bcf45181e42482409c93d4ac50341272504db4c52c98e6f437aa3a1851",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "134f7709eee97517622fa15ca4968dd28e72ac06529de6bfef772c1cc05c9091",
+  "solutionFigureHashes": {},
+  "candidateHash": "43250556ec0ef77b3be1df65de9575b0ddd41c11fabc50778108a2d7a684c04e",
+  "candidate": {
+    "questionId": "1958_AMC_12_Q49",
+    "derivedAnswer": "D, 66",
+    "answerStatus": "matches",
+    "answerReason": "Distinct monomials correspond exactly to nonnegative integer exponent triples summing to 10. Grouping by one exponent gives 11+10+⋯+1=66.",
+    "methods": [
+      {
+        "id": "count-by-c-exponent",
+        "label": "Group terms by the exponent of c",
+        "explanation": "A term is determined by how many of the ten factors contribute \\(a\\), \\(b\\), and \\(c\\). Thus each dissimilar term has the form \\(a^i b^j c^k\\), where \\(i,j,k\\) are nonnegative integers satisfying\n\\[\ni+j+k=10.\n\\]\nEvery such triple occurs by choosing the indicated letters from the ten factors. All resulting coefficients are positive, so combining like terms cannot cancel a monomial.\n\nFix the exponent \\(k\\) of \\(c\\). Then \\(i+j=10-k\\), so \\(i\\) can be any integer from 0 through \\(10-k\\), with \\(j\\) determined. This gives \\(11-k\\) dissimilar terms. Different values of \\(k\\) give disjoint groups because their powers of \\(c\\) differ, and \\(k=0,1,\\ldots,10\\) includes every possibility.\n\nThe total is therefore\n\\[\n11+10+\\cdots+1\n=\\frac{11(11+1)}2\n=66.\n\\]\nThe answer is \\(\\boxed{66}\\), choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_h230",
+          "cnm_h204"
+        ],
+        "prerequisiteIds": [
+          "cnm_033",
+          "cnm_146"
+        ],
+        "levelReason": "The method uses exponent patterns, an exhaustive division into cases, and a short arithmetic sum."
+      },
+      {
+        "id": "separator-encoding",
+        "label": "Encode exponent triples with separators",
+        "explanation": "Each dissimilar term is specified by a triple of nonnegative integers \\((i,j,k)\\) with \\(i+j+k=10\\), giving the monomial \\(a^i b^j c^k\\). Every triple occurs by selecting those numbers of \\(a\\)'s, \\(b\\)'s, and \\(c\\)'s from the ten factors. Its coefficient is positive, so the monomial remains after like terms are combined.\n\nRepresent a triple by ten identical stars and two separators. The numbers of stars before the first separator, between the separators, and after the second separator are \\(i,j,k\\), respectively. Adjacent separators and separators at the ends allow zero exponents. Each triple has exactly one such representation, and every representation gives one valid triple.\n\nThere are twelve positions in the resulting string. Choosing the two separator positions gives\n\\[\n\\binom{12}{2}=\\frac{12\\cdot11}{2}=66.\n\\]\nThe division by 2 removes the two orders in which the same pair of positions could be selected. Hence there are \\(\\boxed{66}\\) dissimilar terms, choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "math:stars-and-bars",
+          "cnm_h237"
+        ],
+        "prerequisiteIds": [
+          "cnm_033",
+          "cnm_146",
+          "cnm_h236"
+        ],
+        "levelReason": "The separator correspondence is explained completely, and its count reduces to choosing two positions. Only elementary counting is required."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_033",
+      "cnm_146"
+    ],
+    "annotationRationale": "Both routes characterize and count all bounded nonnegative integer exponent solutions of i+j+k=10. This is the scoped integer-solution target, independent of the counting route. Like-term recognition and expansion support both methods. Case addition and arithmetic summation belong to the first route; separators and combinations belong only to the alternative.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1958_AMC_12_Q49",
+    "decision": "accept",
+    "mathematicalCheck": "Distinct surviving monomials correspond exactly to nonnegative exponent triples i+j+k=10. Fixing k gives 11-k terms, totaling 66. Independently, the separator encoding is bijective, permits zero exponents, and gives C(12,2)=66.",
+    "levelCheck": "Both methods explain completeness and avoid confusing monomials with their coefficients. The separator count is derived using elementary counting.",
+    "methodDistinctness": "Classification by one exponent and a separator correspondence offer genuinely different, accessible counting ideas.",
+    "annotationCheck": "The integer-solution target is shared by both routes. Case addition and summation remain local to the first method; separators and combinations remain local to the second. Shared polynomial support is justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-by-c-exponent": "count-by-c-exponent",
+    "separator-encoding": "separator-encoding"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "caa8f5affbe32ed43d383b612ce5bf5ec4df0f29a961f209c1198ee7542b4ffa",
+    "inputHash": "98aa5a5767233cdbeb880d89721c8db5b99e29257538a01ab1b0ceb459cb1731",
+    "authorInputHash": "e7e877457dd29bd9bdf94a00da91015d3576c8fea94c4b0b1040bf393910352b",
+    "reviewInputHash": "d2fde6b990d7c57810d1571b216f9992f73b22daedec3ebbd2c75e67f74d3016",
+    "authorResponseHash": "18b163647d5b113a81edc6c9163479a1c861c7a75af4f193c2e15e8025642e82",
+    "reviewerResponseHash": "1ed918ebbdee9b2fc694d2b8d8fbc3dca3b8d4c4a3c47b0e822c30df70ecfa3d",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

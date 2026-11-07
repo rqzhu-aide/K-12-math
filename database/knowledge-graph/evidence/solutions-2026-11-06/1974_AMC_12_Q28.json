@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1974_AMC_12_Q28",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "c606900e9a9cd2f25b4025fa2eb98152dc8b13158ba034a55b693e1c8c629c99",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "d53d531ce7465eedadc5d4e9739afe68013885670a045c187cd4c7bde60833b4",
+  "solutionFigureHashes": {},
+  "candidateHash": "add380341edec14d06d20884ef20f5c127ba8eade0f2a16903caaa6f77536563",
+  "candidate": {
+    "questionId": "1974_AMC_12_Q28",
+    "derivedAnswer": "D: \\(0\\le x<\\frac13\\) or \\(\\frac23\\le x<1\\).",
+    "answerStatus": "matches",
+    "answerReason": "The terms after the first contribute at most \\(\\frac13-\\frac1{3^{25}}<\\frac13\\). Adding either allowed first term, \\(0\\) or \\(\\frac23\\), gives the intervals in D.",
+    "methods": [
+      {
+        "id": "bound-tail-and-split-first-coefficient",
+        "label": "Bound the remaining terms",
+        "explanation": "The first term is either \\(0\\) or \\(2/3\\). To locate \\(x\\), we can therefore bound how much all the remaining terms contribute. Write\n\\[\nx=\\frac{a_1}{3}+R,\n\\qquad R=\\frac{a_2}{3^2}+\\cdots+\\frac{a_{25}}{3^{25}}.\n\\]\nEvery term of \\(R\\) is nonnegative, and replacing every remaining coefficient by \\(2\\) gives its largest possible value. The resulting sum has \\(24\\) terms, first term \\(2/9\\), and common ratio \\(1/3\\). By the finite geometric sum formula,\n\\[\n0\\le R\\le\\frac29\\cdot\\frac{1-(1/3)^{24}}{1-1/3}\n=\\frac13-\\frac1{3^{25}}<\\frac13.\n\\]\nIf \\(a_1=0\\), this gives \\(0\\le x<1/3\\). If \\(a_1=2\\), it gives\n\\[\n\\frac23\\le x\\le 1-\\frac1{3^{25}}<1.\n\\]\nThese two cases cover every allowed choice, so D always holds. To eliminate the other choices, taking all coefficients to be zero gives \\(x=0\\), which rules out B, C, and E. Taking \\(a_1=2\\) and all other coefficients zero gives \\(x=2/3\\), which rules out A. Thus the answer is \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_h210"
+        ],
+        "prerequisiteIds": [
+          "cnm_096",
+          "cnm_h207"
+        ],
+        "levelReason": "Uses a finite geometric sum, elementary inequality bounds, and two exhaustive cases, all within historical AHSME scope."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_096"
+    ],
+    "annotationRationale": "The task-level target is establishing interval bounds that hold for every allowed restricted-coefficient sum. A missing node is proposed because the catalog does not directly represent this target. cnm_h210 belongs to this method: the maximum possible tail is geometric, although the displayed sum need not be. cnm_h207 is its local prerequisite for recognizing the common ratio. cnm_096 supports bounding each term and adding the first term while preserving inequalities. The containing intervals are not claimed to be the exact set of attainable values.",
+    "needsNewNodes": [
+      {
+        "name": "Universal bounds for finite sums with restricted coefficients",
+        "description": "Establish interval bounds valid for every permitted value of a finite weighted sum whose coefficients have specified allowed values. Handle separate coefficient cases and strict or weak endpoints, distinguishing containing intervals from the exact set of attainable values.",
+        "reason": "The catalog includes inequality transformations and particular summation procedures, but lacks a direct route-neutral target for bounding all values of a finite sum with restricted coefficients."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1974_AMC_12_Q28",
+    "decision": "accept",
+    "mathematicalCheck": "The 24-term tail satisfies \\(0\\le R\\le(2/9)(1-3^{-24})/(1-1/3)=1/3-3^{-25}<1/3\\). The exhaustive cases \\(a_1=0\\) and \\(a_1=2\\) therefore establish D with the correct endpoints. The allowed values 0 and 2/3 eliminate every other choice.",
+    "levelCheck": "Finite geometric sums and elementary inequality bounds fit historical AHSME scope. The explanation motivates the first-term split and clearly justifies the decisive tail bound.",
+    "methodDistinctness": "One complete method is supplied. No additional method is needed.",
+    "annotationCheck": "cnm_h210 correctly describes the geometric maximum-tail calculation, with cnm_h207 as a local prerequisite and cnm_096 supporting inequality operations. The proposed missing node honestly captures the route-neutral bounding target without forcing an unrelated assessedId or claiming the containing intervals are the exact attainable set.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "bound-tail-and-split-first-coefficient": "bound-tail-and-split-first-coefficient"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "b1ffe586c31e8d4e344220714b6fcf58fdc1ea574b48baecd7f5bef6e495f967",
+    "inputHash": "447fce618e11fe496efd7a6cd3004d14b668df7d8acaaa67406f14eccc48827e",
+    "authorInputHash": "0d75b13655ea8d7661025a83d4334568db86911cd5c0ff0f406aeed46ecc33a2",
+    "reviewInputHash": "65c89cd5f57c8e9cffdfac2513730f3eb5a4c3ef599dee4654054d37b994a43a",
+    "authorResponseHash": "80d65af007286ce52dbb7089e3d810e6541bc3daf0951398c15db37af4531b51",
+    "reviewerResponseHash": "a3ada336aeffd89eaa8b3993e15add05a155e9439beb5e019bcc050a668a35d5",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

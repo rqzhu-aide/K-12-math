@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1971_AMC_12_Q32",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "0b4fabcb092ca169275436408091ee5384994667d67c144d5a635a9c7600bbee",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "c2c8f6abd876d016d9610ad4cdc9ead86d24ad8303ea10aea4e3fcefa6aba424",
+  "solutionFigureHashes": {},
+  "candidateHash": "30f923d2b933251fa11984745191ca8f48a19c1a15a86efef74591d59e5e07d9",
+  "candidate": {
+    "questionId": "1971_AMC_12_Q32",
+    "derivedAnswer": "A: 1/[2(1-2^(-1/32))]",
+    "answerStatus": "matches",
+    "answerReason": "Multiplying by 1-2^(-1/32) collapses the product through repeated differences of squares, leaving 1-2^(-1)=1/2.",
+    "methods": [
+      {
+        "id": "successive-differences-of-squares",
+        "label": "Collapse the product by differences of squares",
+        "explanation": "The exponents double from one factor to the next, suggesting repeated use of \\((1-u)(1+u)=1-u^2\\). Let\n\\[\nt=2^{-1/32}.\n\\]\nThen \\(0<t<1\\), and the product becomes\n\\[\ns=(1+t)(1+t^2)(1+t^4)(1+t^8)(1+t^{16}).\n\\]\nMultiplying by \\(1-t\\) makes the first two factors a difference of squares. The resulting factor combines with the next one in the same way:\n\\[\n\\begin{aligned}\n(1-t)s\n&=(1-t^2)(1+t^2)(1+t^4)(1+t^8)(1+t^{16})\\\\\n&=(1-t^4)(1+t^4)(1+t^8)(1+t^{16})\\\\\n&=1-t^{32}.\n\\end{aligned}\n\\]\nHere the last line continues the same identity through the remaining factors. Since \\(t^{32}=2^{-1}=\\tfrac12\\), we obtain \\((1-t)s=\\tfrac12\\). Also \\(1-t>0\\), so division is valid:\n\\[\ns=\\boxed{\\frac{1}{2(1-2^{-1/32})}}.\n\\]\nThis is choice \\(\\mathrm{A}\\).",
+        "nodeIds": [
+          "math:telescoping"
+        ],
+        "prerequisiteIds": [
+          "cnm_147",
+          "cnm_h039",
+          "math:real-exponent-laws"
+        ],
+        "levelReason": "Uses fractional exponents and repeated applications of the elementary difference-of-squares identity."
+      }
+    ],
+    "assessedIds": [
+      "math:telescoping"
+    ],
+    "supportIds": [
+      "cnm_147",
+      "cnm_h039",
+      "math:real-exponent-laws"
+    ],
+    "annotationRationale": "The main target is exposing a finite product's cancellation structure and keeping its surviving endpoint. Difference of squares supplies the collapse, while fractional-exponent meaning and positive-base power laws justify the substitution and endpoint evaluation. The nonzero divisor is checked explicitly.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1971_AMC_12_Q32",
+    "decision": "accept",
+    "mathematicalCheck": "With t=2^(−1/32), repeated differences of squares give (1−t)s=1−t³²=1/2. Since 0<t<1, division by 1−t is valid, yielding choice A.",
+    "levelCheck": "Fractional powers and repeated difference-of-squares identities are appropriate. The displayed calculations explain the collapse and check the divisor.",
+    "methodDistinctness": "One complete product-collapse method is sufficient.",
+    "annotationCheck": "The telescoping assessment and difference-of-squares, fractional-exponent, and positive-base power-law supports accurately describe the actual reasoning.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "successive-differences-of-squares": "successive-differences-of-squares"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "77c5246d167e070a803cd14f92e5cf1fbab11a143641e9cbaafb3467554d932c",
+    "inputHash": "3180667fe2770811008e210dc67b075df4e39ba4f924eca5f0671d0e1770e0dc",
+    "authorInputHash": "2fb288c3f25b5b3324e9b16993b36a6da76da525b6eb8f140bb78b82ce9de0ae",
+    "reviewInputHash": "101297a23abd4550d6a9b5cbabbcd83dc11a216039fb21f06525f99ab3a0ae1c",
+    "authorResponseHash": "efa741011f1f60399ca7d7cdd602e38b7e2756f2bf8109d8a75031ab8151e76d",
+    "reviewerResponseHash": "d5ce9c2a9d3abc3e826ebb5fc0975b0273af20e23f6f6ffbe5a80316eb5d4aa4",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1978_AMC_12_Q11",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "1015afc6ae8b4ebe561931227bf05999fdcf16c23d0f636d1b176785ce6468c0",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "c7cf3fdc58f5619f2dae868450b7bcd4d9594d4806ad81e883f976b6b94929a5",
+  "solutionFigureHashes": {},
+  "candidateHash": "72389426a3c137f2092e0d3cabd34f7f84152829c2635632d9391cf85895e845",
+  "candidate": {
+    "questionId": "1978_AMC_12_Q11",
+    "derivedAnswer": "\\(r=2\\), choice C",
+    "answerStatus": "matches",
+    "answerReason": "The circle has radius sqrt(r), while the perpendicular distance from its center to the line is r/sqrt(2). Equating these positive lengths gives r²/2=r, and r>0 leaves r=2.",
+    "methods": [
+      {
+        "id": "intercept-triangle-distance",
+        "label": "Method 1: Find the distance using an intercept triangle",
+        "explanation": "The circle has center \\(O=(0,0)\\) and radius \\(\\sqrt r\\). For tangency, the perpendicular distance from \\(O\\) to the line must equal this radius.\n\nThe line meets the coordinate axes at \\(U=(r,0)\\) and \\(V=(0,r)\\). Since \\(r>0\\), triangle \\(OUV\\) is a right triangle with both legs equal to \\(r\\). Thus its hypotenuse is \\(UV=r\\sqrt2\\), and its area is \\(r^2/2\\).\n\nLet \\(h\\) be the perpendicular distance from \\(O\\) to line \\(UV\\). Computing the same triangle's area with base \\(UV\\) gives\n\\[\n\\frac{r^2}{2}=\\frac{r\\sqrt2\\,h}{2},\n\\qquad h=\\frac r{\\sqrt2}.\n\\]\nTangency therefore requires\n\\[\n\\frac r{\\sqrt2}=\\sqrt r,\n\\qquad \\frac{r^2}{2}=r.\n\\]\nBoth lengths are positive, so squaring preserves equality. Dividing by \\(r>0\\) gives \\(r=2\\). For this value, both the radius and the perpendicular distance are \\(\\sqrt2\\), confirming tangency. Hence \\(\\boxed{r=2}\\), choice C.",
+        "nodeIds": [
+          "cnm_260",
+          "cnm_h176",
+          "cnm_174",
+          "cnm_p148"
+        ],
+        "prerequisiteIds": [
+          "cnm_250",
+          "cnm_039",
+          "cnm_065",
+          "cnm_040"
+        ],
+        "levelReason": "The distance calculation uses only the Pythagorean theorem and triangle area, together with the standard circle equation."
+      },
+      {
+        "id": "one-intersection-discriminant",
+        "label": "Method 2: Require exactly one intersection",
+        "explanation": "A tangent line has exactly one point in common with a circle. Substitution turns that geometric condition into a condition on the number of real roots.\n\nFrom the line equation, \\(y=r-x\\). Substituting into the circle equation gives\n\\[\nx^2+(r-x)^2=r,\n\\]\nor\n\\[\n2x^2-2rx+r^2-r=0.\n\\]\nEach real root \\(x\\) determines exactly one intersection point, because \\(y=r-x\\). The leading coefficient is always \\(2\\), so this quadratic has exactly one real root precisely when its discriminant is zero:\n\\[\n\\Delta=(-2r)^2-4\\cdot2(r^2-r)\n=4r(2-r)=0.\n\\]\nSince \\(r>0\\), this gives \\(r=2\\). At \\(r=2\\), the intersection equation becomes \\(2(x-1)^2=0\\), yielding only \\((x,y)=(1,1)\\), so the line is indeed tangent. Therefore \\(\\boxed{r=2}\\), choice C.",
+        "nodeIds": [
+          "cnm_260",
+          "math:quadratic-system-elimination",
+          "cnm_223"
+        ],
+        "prerequisiteIds": [
+          "cnm_250",
+          "cnm_039",
+          "cnm_040"
+        ],
+        "levelReason": "The alternative uses affine substitution and the discriminant of a quadratic, both standard school algebra."
+      }
+    ],
+    "assessedIds": [
+      "cnm_260"
+    ],
+    "supportIds": [
+      "cnm_250",
+      "cnm_039"
+    ],
+    "annotationRationale": "The route-neutral target is line-circle tangency, covered by cnm_260 through distance comparison and common-point counts. The first method reads the circle's parameters and computes distance using a right triangle and area. The second eliminates a variable and applies the discriminant. Circle concepts and equation-solution meaning are shared support; the two computational routes remain separate.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1978_AMC_12_Q11",
+    "decision": "accept",
+    "mathematicalCheck": "The intercept triangle gives perpendicular distance r/sqrt(2), while the circle radius is sqrt(r). Equality yields r=2 after excluding zero. Independently, substitution gives discriminant 4r(2-r), whose only positive zero is 2; the resulting intersection is uniquely (1,1).",
+    "levelCheck": "Both methods are complete and use appropriate school geometry and algebra. Positivity and the root-to-intersection correspondence are explained.",
+    "methodDistinctness": "The area-based distance argument and the discriminant argument provide genuinely different approaches.",
+    "annotationCheck": "cnm_260 covers both distance comparisons and common-point counts. Circle equations, Pythagorean reasoning, triangle area, quadratic elimination, and discriminants are correctly assigned to their respective methods.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "intercept-triangle-distance": "intercept-triangle-distance",
+    "one-intersection-discriminant": "one-intersection-discriminant"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "f442196df5a783f9e081886d873e2a71d6239ab2a1f81aefc6dc3f615f9459a4",
+    "inputHash": "3ca7c5de404811865dc5940e0e713eb2c5be13bee0675003447bc7b6ae7bc039",
+    "authorInputHash": "edc4bba56a7c606de2fb5eba6f3ae8cf88402d7b002866a9ceb3ec368743702e",
+    "reviewInputHash": "90bd373ab5c11f35ae236ed5bbd7ffc99f5ef9fa3249d88369383f1090519dd8",
+    "authorResponseHash": "4c7b51012937bfc2fddd038b18ca62be74d646ab5ab0dea8759cf9d32514ccd0",
+    "reviewerResponseHash": "2e665a44004a129e7791f1ddaf134582ebdfcdb39e520bbed0f0943fdec25fe8",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

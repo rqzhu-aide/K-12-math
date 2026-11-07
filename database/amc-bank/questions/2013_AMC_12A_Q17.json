@@ -1,0 +1,112 @@
+{
+  "Year": 2013,
+  "Level": "AMC 12",
+  "Batch": "A",
+  "Area": "Unclassified",
+  "Number": 17,
+  "Question": "A group of \\(12\\) pirates agree to divide a treasure chest of gold coins among themselves as follows. The \\(k\\)th pirate to take a share takes \\(\\dfrac{k}{12}\\) of the coins that remain in the chest. The number of coins initially in the chest is the smallest number for which this arrangement will allow each pirate to receive a positive whole number of coins. How many coins does the \\(12\\)th pirate receive?",
+  "Question Type": "text",
+  "Choices": {
+    "A": "\\(720\\)",
+    "B": "\\(1296\\)",
+    "C": "\\(1728\\)",
+    "D": "\\(1925\\)",
+    "E": "\\(3850\\)"
+  },
+  "Choices Type": "text",
+  "Correct Answer": "D",
+  "Solution": "Working backward makes the remaining fractions especially simple. Let \\(m\\) be the positive integer number of coins received by the twelfth pirate. This is also the amount remaining just before that pirate takes a share.\n\nThe eleventh pirate leaves \\(1/12\\) of the previous remainder, so there were \\(12m\\) coins before that pirate's turn. The tenth pirate leaves \\(2/12\\), so the amount before that turn was \\((12/2)(12m)\\). Continuing backward, let \\(R_j\\) be the amount obtained after undoing \\(j\\) turns, where \\(R_0=m\\). Then\n\\[\nR_j=\\frac{m\\,12^j}{j!},\\qquad 0\\le j\\le11,\n\\]\nwhere \\(j!=1\\cdot2\\cdots j\\) and \\(0!=1\\). In particular, the initial amount is\n\\[\nN=R_{11}=\\frac{m\\,12^{11}}{11!}.\n\\]\nFactoring the finite product \\(11!\\) gives\n\\[\n11!=2^8\\cdot3^4\\cdot5^2\\cdot7\\cdot11\n=12^4\\cdot1925.\n\\]\nHence\n\\[\nN=\\frac{m\\,12^7}{1925}.\n\\]\nSince \\(1925=5^2\\cdot7\\cdot11\\) has no prime factors in common with \\(12\\), integrality of \\(N\\) forces \\(m\\) to be a multiple of \\(1925\\). Also, \\(N\\) is a fixed positive multiple of \\(m\\), so minimizing \\(N\\) is equivalent to minimizing the feasible \\(m\\).\n\nIt remains to check that \\(m=1925\\) makes every turn work, not just the initial amount. For \\(0\\le j\\le3\\), the denominator \\(j!\\) divides \\(12^j\\), so \\(R_j\\) is an integer. For \\(4\\le j\\le11\\), use \\(1925=11!/12^4\\) to write\n\\[\nR_j=\\frac{11!}{j!}\\,12^{j-4},\n\\]\nwhich is also an integer. All these amounts are positive. Moreover,\n\\[\nR_j=\\frac{12}{j}R_{j-1}>R_{j-1}\n\\qquad(1\\le j\\le11).\n\\]\nThus, in forward order, each of the first eleven pirates receives a positive integer difference of consecutive remainders, and the last receives \\(m\\). This proves feasibility as well as minimality.\n\nThe twelfth pirate therefore receives \\(\\boxed{1925}\\) coins, choice \\(\\boxed{\\text{D}}\\).",
+  "Meta": {
+    "QuestionSource": "live-poshenloh",
+    "AnswerSource": "live-poshenloh-answer-key",
+    "SolutionSource": "Original Math Practice solution",
+    "AreaSource": "Pending topic curation",
+    "Concepts": "divisibility; prime factorization; factorial",
+    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2013A/solutions",
+    "SourceSHA256": "18c22c15aefb1a767b8ad1e647cf03c1a8599cc1da7c7c07f2f71f0a7bba7ad6",
+    "Figures": [],
+    "FigureSources": {},
+    "SourceQuestionCount": 25,
+    "HistoricalSeries": "AMC 12",
+    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+    "Copyright": "Copyright Mathematical Association of America",
+    "License": "CC-BY-NC-SA-4.0",
+    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "TranscriptionSource": "LIVE by Po-Shen Loh",
+    "Modifications": [
+      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
+      "Third-party worked solution and solution-only figures omitted from the public distribution"
+    ],
+    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+    "SolutionReview": {
+      "status": "reviewed",
+      "solutionSHA256": "37d2b52f3e1c063e7683b6912ddb649fe2fecade4c01767e5ab6270355dd3009",
+      "questionContentHash": "b4be03825139c87ccc7a8844095b75888035c9a30374f0ea4153602afedfdb2b",
+      "evidence": {
+        "path": "knowledge-graph/evidence/solutions-2026-11-06/2013_AMC_12A_Q17.json",
+        "sha256": "3338db7ecaec62c0c92bc0b8b6f4655ec6d84fb852bbd25b9dfd794d5f2d93d5"
+      },
+      "author": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "reviewer": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      }
+    }
+  },
+  "ID": "2013_AMC_12A_Q17",
+  "Bank": "amc",
+  "SchemaVersion": "2.0",
+  "ResponseType": "choice",
+  "Language": "en",
+  "domain": [],
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "1.0.0",
+    "contentHash": "b4be03825139c87ccc7a8844095b75888035c9a30374f0ea4153602afedfdb2b",
+    "status": "mapped",
+    "reviewStatus": "machine_scope_audited",
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "math:factorial-notation",
+      "cnm_p153"
+    ],
+    "routes": [
+      {
+        "id": "backward-factorial-divisibility",
+        "label": "Work backward from the last share",
+        "nodeIds": [
+          "math:prime-valuations-factorials",
+          "math:prime-factorization"
+        ]
+      },
+      {
+        "id": "forward-remainder-denominators",
+        "label": "Combine forward denominator conditions",
+        "nodeIds": [
+          "cnm_h200",
+          "cnm_p159",
+          "math:prime-factorization"
+        ]
+      },
+      {
+        "id": "reverse-remainders-and-divisibility",
+        "label": "Work backward from the final share",
+        "nodeIds": [
+          "cnm_h200",
+          "math:prime-factorization",
+          "math:integer-diophantine-equations",
+          "math:factorial-notation",
+          "cnm_p153",
+          "cnm_p157"
+        ]
+      }
+    ],
+    "flags": []
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2015_AMC_12A_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "f90afda023ddf33dffa1037b6e8f3310d6fd0afe70ac3b9095c3fb093e7c3597",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "df750b166d3794a2056fb48cda3fc9048bdfd341e93dafdfd299aca33e001a44",
+  "solutionFigureHashes": {},
+  "candidateHash": "777c44d3261d764c6a1830715e439d55e2f608eae3ac6b83a0a1ea7ff62dca82",
+  "candidate": {
+    "questionId": "2015_AMC_12A_Q22",
+    "derivedAnswer": "D, \\(8\\)",
+    "answerStatus": "matches",
+    "answerReason": "A final-run decomposition gives the three-term recurrence. Its residues have period 4 modulo 4 and period 13 modulo 3, implying \\(S(2015)\\equiv0\\pmod4\\) and \\(S(2015)\\equiv2\\pmod3\\). The remainder modulo 12 is 8.",
+    "methods": [
+      {
+        "id": "final-run-recurrence-residue-periods",
+        "label": "Build a recurrence and prove residue periods",
+        "explanation": "The useful feature to track is the last uninterrupted run of equal letters. For \\(n\\ge4\\), this run has length \\(j=1,2,\\) or \\(3\\). Deleting the whole last run leaves a nonempty valid sequence of length \\(n-j\\). Conversely, any valid sequence of length \\(n-j\\) has exactly one extension whose final run has length \\(j\\): append \\(j\\) copies of the letter opposite to its last letter. These three cases are disjoint and include every valid sequence. Therefore\n\\[\nS(n)=S(n-1)+S(n-2)+S(n-3)\\qquad(n\\ge4).\n\\]\nEvery sequence of length at most three is allowed, so\n\\[\nS(1)=2,\\qquad S(2)=4,\\qquad S(3)=8.\n\\]\n\nTo find a remainder modulo \\(12\\), we can first find the remainders modulo \\(4\\) and modulo \\(3\\). Reducing each recurrence calculation modulo \\(4\\) gives\n\\[\n(S(1),\\ldots,S(7))\n\\equiv(2,0,0,2,2,0,0)\\pmod4.\n\\]\nThe triple at positions \\(5,6,7\\) equals the triple at positions \\(1,2,3\\). Since three consecutive terms determine every following term, this proves that the residues repeat with period \\(4\\). As \\(2015=4\\cdot503+3\\),\n\\[\nS(2015)\\equiv S(3)\\equiv0\\pmod4.\n\\]\n\nThe corresponding calculations modulo \\(3\\) give\n\\[\n(S(1),\\ldots,S(8))\n\\equiv(2,1,2,2,2,0,1,0)\\pmod3,\n\\]\n\\[\n(S(9),\\ldots,S(16))\n\\equiv(1,2,0,0,2,2,1,2)\\pmod3.\n\\]\nNow the triple at positions \\(14,15,16\\) equals the initial triple. The same recurrence argument proves period \\(13\\). Since \\(2015=13\\cdot154+13\\),\n\\[\nS(2015)\\equiv S(13)\\equiv2\\pmod3.\n\\]\nThe remainders between \\(0\\) and \\(11\\) divisible by \\(4\\) are \\(0,4,8\\). Only \\(8\\) has remainder \\(2\\) upon division by \\(3\\). Thus the requested remainder is \\(\\boxed{8}\\), choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:recursive-counting-probability",
+          "math:modular-congruence",
+          "math:simultaneous-congruences"
+        ],
+        "prerequisiteIds": [
+          "cnm_h200",
+          "cnm_p153"
+        ],
+        "levelReason": "The proof uses a finite counting recurrence, direct remainder calculations, and repetition of recurrence states. It requires no matrix methods or advanced recurrence formulas."
+      }
+    ],
+    "assessedIds": [
+      "math:recursive-counting-probability",
+      "math:modular-congruence"
+    ],
+    "supportIds": [
+      "cnm_h200",
+      "cnm_p153"
+    ],
+    "annotationRationale": "Constructing an exhaustive recurrence from the run restriction and computing its distant remainder are the task-level targets. Iterating a recurrence and understanding multiples support the method. Combining the two smaller remainder conditions is recorded locally as simultaneous congruences. The repeated triples establish the periods rather than merely suggesting them.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2015_AMC_12A_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "Deleting the complete final run gives a bijection establishing S(n)=S(n−1)+S(n−2)+S(n−3) for n≥4, with initial values 2,4,8. Both residue tables are correct. Repeated initial triples prove periods 4 modulo 4 and 13 modulo 3, yielding residues 0 and 2 for S(2015). Among 0,4,8, only 8 satisfies both conditions.",
+    "levelCheck": "The recurrence and finite remainder calculations are suitable for AMC 12. The solution proves periodicity rather than extrapolating individual repeated terms.",
+    "methodDistinctness": "The modulo 4 and modulo 3 calculations are complementary parts of one complete method.",
+    "annotationCheck": "Recursive counting and modular congruence are justified assessed targets. Recurrence iteration and multiples are appropriate support, and the local simultaneous-congruence annotation matches the final enumeration.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "final-run-recurrence-residue-periods": "final-run-recurrence-residue-periods"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "45894bde57d8b89976eb4c42a6ca478722bb3cb205c1e1dfee5520a600d5658a",
+    "inputHash": "93a52cf2ff1bd3d16e7ce422ae519ab3265d6292726ac33fdcfa9cf0142661f8",
+    "authorInputHash": "e4db466bc5b774106fd36879029636db8d78fa31d12f89b779b220c7995b2b87",
+    "reviewInputHash": "b826de093fa762ccb8bd608c5aa4c2317628c9781cb302e6374cd2a878180dfd",
+    "authorResponseHash": "325c6bc006ffa7136232afb49b33308d1cb6ba5f8d75a74f63a3816987eeed48",
+    "reviewerResponseHash": "05d3dcba7a1afa585edd5e1e7ae5446bc72b88588f0205b3dc9bfb83964aa56e",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

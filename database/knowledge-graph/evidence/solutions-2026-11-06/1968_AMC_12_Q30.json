@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1968_AMC_12_Q30",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "24fe79907f97fb2c26b907b137ecbbaac949d38622465c42bfac7bfbc0cdf736",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "cc78e5e609a7221dbe1fb567af83d1072e86550d1e51b0202e0a037010e5380b",
+  "solutionFigureHashes": {},
+  "candidateHash": "3385ee22e5e47326c55bbd1d526d69bfc490bc9842db10d35cca1e7cb5e61f65",
+  "candidate": {
+    "questionId": "1968_AMC_12_Q30",
+    "derivedAnswer": "\\(2n_1\\), choice A, counting boundary intersections.",
+    "answerStatus": "matches",
+    "answerReason": "Under the recorded boundary-intersection interpretation, convexity gives an upper bound of two intersections per side of P1. Interlaced regular polygons attain the bound, and corner cuts allow any larger prescribed side count for P2.",
+    "methods": [
+      {
+        "id": "convex-bound-and-construction",
+        "label": "Prove a bound and attain it",
+        "explanation": "We use the recorded interpretation that intersections are common points of the polygon boundaries, and that the boundaries share no line segment. Write \\(m=n_1\\), so \\(n_2\\ge m\\ge3\\).\n\nFirst find an upper bound. Convexity means that a line cuts the filled region enclosed by \\(P_2\\) in a single interval, a point, or nothing. When the line passes through the interior, its boundary intersections are the entrance and exit points. A line along the boundary is also harmless here, because a side of \\(P_1\\) cannot share a boundary segment with \\(P_2\\). Thus each side of \\(P_1\\) contains at most two common boundary points.\n\nEvery intersection belongs to at least one of the \\(m\\) sides of \\(P_1\\), so there are at most \\(2m\\) intersections. A common vertex might be counted on two sides in this sum, which only makes the upper bound larger.\n\nTo attain the bound when \\(n_2=m\\), place \\(2m\\) equally spaced points on a circle. Join the alternate points to form \\(P_1\\), and join the remaining points to form another convex \\(m\\)-gon \\(Q\\).\n\nEach side of \\(P_1\\) has exactly one vertex of \\(Q\\) on the short circular arc between its endpoints. Both edges of \\(Q\\) incident to that vertex cross the chosen side of \\(P_1\\). Indeed, the endpoints of each pair of chords alternate around the circle, placing the endpoints of either chord on opposite sides of the line through the other. The two crossings are distinct and lie inside the side. Different sides of \\(P_1\\) therefore contribute different crossing points, giving exactly \\(2m\\) intersections. There are no overlapping sides, since all vertices are distinct points of the same circle.\n\nIf \\(n_2>m\\), choose a small neighborhood of one vertex of \\(Q\\) lying entirely outside the filled region enclosed by \\(P_1\\). Cut off that corner with a short segment. This preserves convexity and replaces one vertex by two, increasing the number of sides by one. It changes no intersections with \\(P_1\\). Further small corner cuts can be made at the new vertices within the same neighborhood. After \\(n_2-m\\) cuts, the resulting polygon has \\(n_2\\) sides and still has \\(2m\\) intersections with \\(P_1\\).\n\nThe bound is therefore attainable for every allowed pair of side counts. The maximum is \\(\\boxed{2n_1}\\), choice A.",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_266"
+        ],
+        "prerequisiteIds": [
+          "cnm_180",
+          "cnm_250"
+        ],
+        "levelReason": "The proof uses elementary convex geometry, chords, regular polygons, and a finite construction. It requires no trigonometry or advanced geometric theorem."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_180",
+      "cnm_250"
+    ],
+    "annotationRationale": "A maximum requires both a universal bound and an attaining construction, matching the extremal target. Basic polygon and circle vocabulary support the proof. Regular polygons on a circle belong to the chosen construction. The essential convex line-section property lacks a specific supplied catalog node.",
+    "needsNewNodes": [
+      {
+        "name": "Convexity and line sections of polygons",
+        "description": "A plane region is convex when it contains the segment joining any two of its points. Its intersection with a line is empty, a point, or an interval; use this to bound isolated intersections with its boundary, accounting for shared boundary segments.",
+        "reason": "The upper bound depends directly on this property. The supplied polygon nodes cover terminology, angles, and regular polygons, but do not specifically cover convexity or line sections."
+      }
+    ],
+    "limitations": [
+      "The solution follows the recorded qualification that intersections and shared segments refer to polygon boundaries."
+    ]
+  },
+  "review": {
+    "questionId": "1968_AMC_12_Q30",
+    "decision": "accept",
+    "mathematicalCheck": "Under the explicitly retained boundary interpretation, convexity and the exclusion of shared segments give at most two intersections per side of P1, hence at most 2n1 distinct points. Alternating vertices on a circle produce two distinct interior crossings on each side. Finite small corner cuts outside P1 preserve those crossings while increasing P2's side count to any prescribed n2≥n1.",
+    "levelCheck": "The line-section argument, alternating-chord construction, and corner cuts use elementary geometry and explain the decisive steps.",
+    "methodDistinctness": "The bound and attaining construction are complementary parts of one complete extremal proof.",
+    "annotationCheck": "math:extremal-principle matches both required proof components. Polygon and circle supports and the regular-polygon construction node are appropriate. The proposed convexity node honestly identifies missing coverage, and the boundary qualification is preserved.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "convex-bound-and-construction": "convex-bound-and-construction"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "499d445ff35c9ec3869e07b3e301be93de729dd7426db0b47628f26ffa703f5d",
+    "inputHash": "8cb14b005c839e081a041abcacbd6054185002f3ae1a1936a0a226c55c3883f1",
+    "authorInputHash": "a0863a2fcbe002284d6345b95441c14efb64546fa0f1843bf9c1ad4e0105b0f3",
+    "reviewInputHash": "ca905f010a84036f8408cc81733c9a2a7bb34e0ffe34ccee27e7224fe27370d3",
+    "authorResponseHash": "e4fba8c598c28123bc7c1e3c99e975a135b475c6c0b567ca7982bcbb14e93145",
+    "reviewerResponseHash": "0fe553e6e39bfcd4e6e3fa922885ad1f172102e963fc22cd8e7495fd220b5bd1",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

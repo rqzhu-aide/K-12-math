@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1970_AMC_12_Q33",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ae281d337015b5110303f4339623f56d05a743e079b074699b6fbadce51f87a7",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "ae59650b897ed6fb4a00964a4e05b802dbac08a7e28715e533cbe35703d36ddd",
+  "solutionFigureHashes": {},
+  "candidateHash": "ed6674fec10886c90cd8cd0b9b656a1e8da2c20dac8eecd601c468c846696ec6",
+  "candidate": {
+    "questionId": "1970_AMC_12_Q33",
+    "derivedAnswer": "A. \\(180{,}001\\)",
+    "answerStatus": "matches",
+    "answerReason": "The digit sum from 0000 through 9999 is 180000. The omitted zero contributes nothing, and 10000 contributes one more.",
+    "methods": [
+      {
+        "id": "1970_AMC_12_Q33_m1",
+        "label": "Total the digits one position at a time",
+        "explanation": "Counting contributions by digit position avoids adding the digit sums of ten thousand separate numbers. First consider \\(0000\\) through \\(9999\\), writing leading zeros when needed. These zeros do not change any digit sum.\n\nFix one of the four positions and a digit \\(d\\). The other three positions each have \\(10\\) choices, so \\(d\\) appears in the fixed position exactly \\(10^3=1000\\) times. This includes every four-digit string exactly once for that fixed digit. The total contributed by one position is therefore\n\\[\n1000(0+1+\\cdots+9)=1000\\cdot45.\n\\]\nThere are four positions, and each digit occurrence belongs to exactly one of them. Thus the total is\n\\[\n4\\cdot1000\\cdot45=180000.\n\\]\nRemoving \\(0000\\) changes nothing. Adding \\(10000\\) contributes \\(1\\), so the requested sum is \\(\\boxed{180001}\\), choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "math:double-counting",
+          "cnm_h231"
+        ],
+        "prerequisiteIds": [
+          "cnm_p053",
+          "cnm_p112"
+        ],
+        "levelReason": "The argument uses decimal positions and independent choices for three digits, followed by elementary arithmetic."
+      },
+      {
+        "id": "1970_AMC_12_Q33_m2",
+        "label": "Pair complementary numerals",
+        "explanation": "Pairs whose corresponding digits add to \\(9\\) have a constant combined digit sum. Write all integers from \\(0\\) through \\(9999\\) with four digits, allowing leading zeros, and pair\n\\[\nn\\quad\\text{with}\\quad9999-n\n\\]\nfor \\(n=0,1,\\ldots,4999\\). The partners run from \\(9999\\) down to \\(5000\\), so these \\(5000\\) pairs contain every integer in the range exactly once.\n\nSubtracting a four-digit string from \\(9999\\) requires no borrowing: each digit \\(d\\) becomes \\(9-d\\). Corresponding digits in a pair therefore sum to \\(9\\), and the combined digit sum of each pair is \\(4\\cdot9=36\\). Consequently, the total digit sum from \\(0\\) through \\(9999\\) is\n\\[\n5000\\cdot36=180000.\n\\]\nZero contributes nothing, and \\(10000\\) contributes \\(1\\). The required sum is \\(\\boxed{180001}\\), choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "math:double-counting"
+        ],
+        "prerequisiteIds": [
+          "cnm_p053",
+          "cnm_p114",
+          "cnm_p112"
+        ],
+        "levelReason": "Complementary digit pairs give an alternative using only decimal subtraction, regrouping, and multiplication."
+      }
+    ],
+    "assessedIds": [
+      "math:double-counting"
+    ],
+    "supportIds": [
+      "cnm_p053",
+      "cnm_p112"
+    ],
+    "annotationRationale": "The target is aggregating the same digit contributions through an exact regrouped count. The first method groups by position and uses the multiplication principle; the second groups by complementary pairs. Decimal place value and arithmetic support both, while the two groupings are alternative routes rather than cumulative requirements.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1970_AMC_12_Q33",
+    "decision": "accept",
+    "mathematicalCheck": "Method 1 counts each digit 1000 times in each of four positions, giving 4·1000·45 = 180000. Method 2 partitions 0 through 9999 into 5000 distinct complementary pairs, each contributing 36. Both correctly remove zero and add the digit sum 1 of 10000, obtaining 180001.",
+    "levelCheck": "Both methods use elementary decimal place value, counting, and arithmetic. Neither introduces unnecessary advanced machinery.",
+    "methodDistinctness": "Position-frequency counting and complementary pairing provide distinct, independently complete insights.",
+    "annotationCheck": "Both routes account for every digit contribution exactly once, supporting the double-counting annotation. Shared place-value and arithmetic supports are appropriate, and the multiplication principle remains method-local.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "1970_AMC_12_Q33_m1": "1970_AMC_12_Q33_m1",
+    "1970_AMC_12_Q33_m2": "1970_AMC_12_Q33_m2"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "af53ff661615c4662e474d1462bd352c0829615c931796ffc0c383b3f644683c",
+    "inputHash": "0aba12e53d8483c00799be0bba87ee309cd407b15ecdfc4f5db8700cd52ea32f",
+    "authorInputHash": "e85e0660965b05941b5dfb37aefcc3bbd4d590583ac1ca7a2e3a2539c9197dfa",
+    "reviewInputHash": "04fc958bed1506b1eb3c6be9282f2c2b04d99b55bbff9f1d47d68a79c6f35f01",
+    "authorResponseHash": "10968d3a1c2970c740aad552aafe0921fc7e9480ddeec6183acfbc57e7f93212",
+    "reviewerResponseHash": "faa41aee39298d6c7af2ad9f94c81b30da632f2aca112d2b7169462acd0f93ba",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

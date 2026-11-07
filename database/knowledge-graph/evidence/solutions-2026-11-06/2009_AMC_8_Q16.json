@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2009_AMC_8_Q16",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "24ab484543ef3d6bbf0f5f9dcb6afe065831067313364c5707fb6e5a714dedc8",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "a4bcdf2e911ba6aa13dd26dc164b2d262994bf45e242ab98691e54b898c72b7a",
+  "solutionFigureHashes": {},
+  "candidateHash": "ede7020290b3a7487cb4526cf108f7d33a6457e840cfeea9425c78d53e46abef",
+  "candidate": {
+    "questionId": "2009_AMC_8_Q16",
+    "derivedAnswer": "D (21 integers)",
+    "answerStatus": "matches",
+    "answerReason": "The possible digit collections are (1,3,8), (1,4,6), (2,3,4), and (2,2,6). They yield 6 + 6 + 6 + 3 = 21 distinct integers.",
+    "methods": [
+      {
+        "id": "factor-triples",
+        "label": "Find digit collections, then arrange them",
+        "explanation": "No digit can be \\(0\\), since the product is \\(24\\). First list each possible collection of digits in increasing order, allowing repeated digits. This keeps different arrangements of the same digits together.\n\nThe smallest digit must be \\(1\\) or \\(2\\): if all three digits were at least \\(3\\), their product would be at least \\(3\\cdot3\\cdot3=27\\).\n\nIf the smallest digit is \\(1\\), the other two must multiply to \\(24\\). Its factor pairs are \\((1,24),(2,12),(3,8),(4,6)\\); only \\((3,8)\\) and \\((4,6)\\) contain two digits.\n\nIf the smallest digit is \\(2\\), the other two must multiply to \\(12\\) and both be at least \\(2\\). The possibilities are \\((2,6)\\) and \\((3,4)\\).\n\nThus the complete list of digit collections is\n\\[\n(1,3,8),\\quad(1,4,6),\\quad(2,2,6),\\quad(2,3,4).\n\\]\nFor each collection with three different digits, there are \\(3\\) choices for the hundreds digit and then \\(2\\) choices for the tens digit. The units digit is forced, giving \\(3\\cdot2=6\\) arrangements. For \\((2,2,6)\\), choosing the position of the \\(6\\) gives exactly \\(3\\) arrangements.\n\nEvery arrangement is a valid three-digit integer. Each integer has exactly one increasing digit collection, so the groups do not overlap. The total is\n\\[\n6+6+3+6=\\boxed{21},\n\\]\nchoice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_h230",
+          "cnm_h231"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153"
+        ],
+        "levelReason": "Small factor lists and direct choices of digit positions keep the counting within AMC 8."
+      },
+      {
+        "id": "hundreds-digit",
+        "label": "Fix the hundreds digit",
+        "explanation": "Fixing the hundreds digit leaves a two-digit product to check. No digit is \\(0\\), and the hundreds digit must divide \\(24\\), so it can only be \\(1,2,3,4,6,\\) or \\(8\\).\n\nFor each hundreds digit, divide \\(24\\) by it and list all possible last two digits whose product equals that quotient:\n\n- Hundreds digit \\(1\\): \\(38,46,64,83\\), giving \\(4\\) integers.\n- Hundreds digit \\(2\\): \\(26,34,43,62\\), giving \\(4\\) integers.\n- Hundreds digit \\(3\\): \\(18,24,42,81\\), giving \\(4\\) integers.\n- Hundreds digit \\(4\\): \\(16,23,32,61\\), giving \\(4\\) integers.\n- Hundreds digit \\(6\\): \\(14,22,41\\), giving \\(3\\) integers.\n- Hundreds digit \\(8\\): \\(13,31\\), giving \\(2\\) integers.\n\nThese lists include every ordered pair of digits with the required product. Every valid integer appears in its unique hundreds-digit group, so nothing is omitted or counted twice. The total is\n\\[\n4+4+4+4+3+2=\\boxed{21},\n\\]\nchoice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_h230"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153"
+        ],
+        "levelReason": "The method uses only one-digit factor pairs and addition of disjoint case counts."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h230"
+    ],
+    "supportIds": [
+      "cnm_p153"
+    ],
+    "annotationRationale": "The shared target is an exhaustive count using disjoint cases, supported by factor-pair knowledge. The first method additionally uses sequential choices to arrange three distinct digits. The second directly lists suffixes after fixing the hundreds digit. Neither written method uses a permutation formula or factorial adjustment for repeated elements.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2009_AMC_8_Q16",
+    "decision": "accept",
+    "mathematicalCheck": "The smallest digit must be 1 or 2, yielding exactly the four listed digit collections. Their arrangement counts are \\(6+6+3+6=21\\). The second method independently gives disjoint hundreds-digit counts \\(4+4+4+4+3+2=21\\).",
+    "levelCheck": "Both methods use small factor lists and elementary counting. Completeness and repeated-digit multiplicities are explained.",
+    "methodDistinctness": "Counting arrangements of digit collections and directly listing suffixes after fixing the hundreds digit provide useful different counting organizations.",
+    "annotationCheck": "The shared addition principle and factor knowledge are justified. Multiplication is correctly confined to the first method, and neither method claims use of permutation formulas.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "factor-triples": "factor-triples",
+    "hundreds-digit": "hundreds-digit"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "2c1af9ed8e7e012c22cd53639eb6f1be754406dc634825c02f4f3fb598a28f1f",
+    "inputHash": "42880d57b55f7d61e7b6fb52e59eccde06f57a8f844f45372a06110e3441a215",
+    "authorInputHash": "1521e4e31f940700bd83d9da4ebf98f03bf0b3ed3d3702d2209de98997887557",
+    "reviewInputHash": "64f8fc00cf89175bf0be45ee06892b9f84c8bfd9432bd900e7d1ada16d01cc02",
+    "authorResponseHash": "099af54123c2257b35cbfd849f431897ba8e2eb6389d842a16da6f88a40d258f",
+    "reviewerResponseHash": "51dbb8df695318ebe6b2b182f37fdd04cbe3d637ae1f1f6a7c6b1776aae48847",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

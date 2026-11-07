@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2015_AMC_12A_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "485b74748752a8a595957101dc960d0624236d4e10322dc03de24662d52309a4",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "66fad506a5a8c450195d69e6825fc831e7d39c7c3b6597f742c4b44c63657860",
+  "solutionFigureHashes": {},
+  "candidateHash": "cef2d4e8ba94d2b8efe1c3fa4ea07556f8e8db943e4b9f48a2df0f21136ff285",
+  "candidate": {
+    "questionId": "2015_AMC_12A_Q23",
+    "derivedAnswer": "A, \\(59\\)",
+    "answerStatus": "matches",
+    "answerReason": "Under the recorded uniform arclength interpretation, the probability is \\((26-\\pi)/32\\). Thus \\((a,b,c)=(26,1,32)\\) and their sum is 59.",
+    "methods": [
+      {
+        "id": "side-classes-and-parameter-areas",
+        "label": "Separate the three possible side relationships",
+        "explanation": "Use the usual interpretation that each point is chosen uniformly along the square's perimeter, independently of the other point. Each side then has probability \\(1/4\\); vertices have probability zero. Relative to the first point's side, the second point lies on the same side, an adjacent side, or the opposite side with probabilities \\(1/4,1/2,1/4\\), respectively. These three cases cover all possibilities without overlap except at vertices.\n\nFor points on the same side, let \\(u,v\\in[0,1]\\) be their distances from one endpoint. Independence makes \\((u,v)\\) uniform in the unit square. The distance is \\(|u-v|\\), so the favorable region \\(|u-v|\\ge1/2\\) consists of two right triangles, each with legs \\(1/2\\). Its total area, and hence the probability within this case, is\n\\[\n2\\left(\\frac12\\cdot\\frac12\\cdot\\frac12\\right)=\\frac14.\n\\]\n\nFor points on adjacent sides, let \\(u,v\\in[0,1]\\) be their distances from the shared corner. Their distance is \\(\\sqrt{u^2+v^2}\\). The distance is less than \\(1/2\\) precisely in a quarter disk of radius \\(1/2\\) in the unit parameter square. Its area is\n\\[\n\\frac14\\pi\\left(\\frac12\\right)^2=\\frac{\\pi}{16}.\n\\]\nThus the probability of distance at least \\(1/2\\) within this case is \\(1-\\pi/16\\).\n\nFor points on opposite sides, the distance is at least \\(1\\), so every pair succeeds. Weighting the three cases gives\n\\[\nP=\\frac14\\cdot\\frac14\n+\\frac12\\left(1-\\frac{\\pi}{16}\\right)\n+\\frac14\n=\\frac{26-\\pi}{32}.\n\\]\nThe equality-distance boundaries have area zero, so their inclusion does not change these probabilities. Since \\(\\gcd(26,1,32)=1\\), the required sum is \\(26+1+32=\\boxed{59}\\), choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "math:geometric-probability",
+          "cnm_h246",
+          "cnm_h139"
+        ],
+        "prerequisiteIds": [
+          "cnm_174",
+          "cnm_p148",
+          "cnm_p089",
+          "cnm_257"
+        ],
+        "levelReason": "The solution uses elementary parameter squares, triangle and quarter-circle areas, and weighted probability cases. No calculus is needed."
+      }
+    ],
+    "assessedIds": [
+      "math:geometric-probability"
+    ],
+    "supportIds": [
+      "cnm_174",
+      "cnm_p148",
+      "cnm_p089",
+      "cnm_257"
+    ],
+    "annotationRationale": "The central target is translating independent uniform boundary choices into favorable areas in parameter squares. Pythagoras and elementary area formulas support those computations. Total probability and complementary events belong to the written side-class method. Vertices, equality boundaries, and the sampling convention are explicitly handled.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The result uses the recorded ordinary uniform arclength sampling convention on the square's boundary. Independence is explicit in the question."
+    ]
+  },
+  "review": {
+    "questionId": "2015_AMC_12A_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "Under the explicitly stated uniform arclength interpretation, the side-case weights are 1/4,1/2,1/4. Same-side success occupies area 1/4 of its parameter square; adjacent-side failure occupies a quarter disk of area π/16; opposite-side success is certain. Their weighted sum is (26−π)/32, and 26+1+32=59. Vertices and equality boundaries do not change the probability.",
+    "levelCheck": "Elementary areas, Pythagoras and weighted probability cases suffice. No calculus or advanced measure theory is used.",
+    "methodDistinctness": "The single side-class method is complete; a second parameter-space presentation is unnecessary.",
+    "annotationCheck": "Uniform geometric probability is the central target. The area and Pythagorean support nodes and method-local total-probability and complement nodes match the solution. The recorded sampling caveat is preserved.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "side-classes-and-parameter-areas": "side-classes-and-parameter-areas"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "cff3efa4a30117383888b00bcc45ff546ad3c71bd619aad1e45160c2d3c13e53",
+    "inputHash": "93a52cf2ff1bd3d16e7ce422ae519ab3265d6292726ac33fdcfa9cf0142661f8",
+    "authorInputHash": "e4db466bc5b774106fd36879029636db8d78fa31d12f89b779b220c7995b2b87",
+    "reviewInputHash": "b826de093fa762ccb8bd608c5aa4c2317628c9781cb302e6374cd2a878180dfd",
+    "authorResponseHash": "325c6bc006ffa7136232afb49b33308d1cb6ba5f8d75a74f63a3816987eeed48",
+    "reviewerResponseHash": "05d3dcba7a1afa585edd5e1e7ae5446bc72b88588f0205b3dc9bfb83964aa56e",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

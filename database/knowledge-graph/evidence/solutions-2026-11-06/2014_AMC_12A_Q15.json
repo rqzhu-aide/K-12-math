@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2014_AMC_12A_Q15",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "61fc957ef750e146bf45eec1d70f79b5dd82fd2f10bde480cbf3f11b0c933a90",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "a236e3ab45cc3fd048d45550e67ca580d8a24ebcdae08c6b9579b59f463938e5",
+  "solutionFigureHashes": {},
+  "candidateHash": "ff7e1f8fe17f075728c90c3ff49612f630a58e0df8d8504a17201aa5e068ac4b",
+  "candidate": {
+    "questionId": "2014_AMC_12A_Q15",
+    "derivedAnswer": "B: 18",
+    "answerStatus": "matches",
+    "answerReason": "The sum of all 900 five-digit palindromes is 49,500,000. Its digit sum is 4+9+5=18.",
+    "methods": [
+      {
+        "id": "sum-place-value-contributions",
+        "label": "Add the contributions of each digit position",
+        "explanation": "Rather than list the palindromes, track how often each digit contributes to the total. The leading digit \\(a\\) has \\(9\\) choices, while \\(b\\) and \\(c\\) each have \\(10\\). Every such triple determines exactly one five-digit palindrome, so there are \\(9\\cdot10\\cdot10=900\\) palindromes.\n\nBy place value,\n\\[\n\\begin{aligned}\n\\overline{abcba}\n&=(10000+1)a+(1000+10)b+100c\\\\\n&=10001a+1010b+100c.\n\\end{aligned}\n\\]\nEach value of \\(a\\) occurs \\(10\\cdot10=100\\) times. Each value of \\(b\\) occurs \\(9\\cdot10=90\\) times, and the same is true for \\(c\\). Since\n\\[\n1+2+\\cdots+9=0+1+\\cdots+9=45,\n\\]\nthe sums of the \\(a\\), \\(b\\), and \\(c\\) digits over all palindromes are respectively \\(4500\\), \\(4050\\), and \\(4050\\). Adding their place-value contributions gives\n\\[\n\\begin{aligned}\nS&=10001\\cdot4500+1010\\cdot4050\\\\\n&\\quad+100\\cdot4050\\\\\n&=49{,}500{,}000.\n\\end{aligned}\n\\]\nIts digit sum is \\(4+9+5=\\boxed{18}\\), choice B.",
+        "nodeIds": [
+          "cnm_h231",
+          "cnm_027"
+        ],
+        "prerequisiteIds": [
+          "cnm_p096",
+          "cnm_p116"
+        ],
+        "levelReason": "Independent digit choices and decimal place-value arithmetic give the exact sum without advanced counting or number theory."
+      },
+      {
+        "id": "pair-complementary-digits",
+        "label": "Pair palindromes with a constant sum",
+        "explanation": "Pairing palindromes so that every pair has the same sum lets us find the total without adding them individually. There are \\(9\\cdot10\\cdot10=900\\) palindromes, because the first three digits determine the entire number uniquely.\n\nFor a palindrome with digits \\(a,b,c,b,a\\), define a partner with digits\n\\[\na',b',c',b',a',\n\\qquad\n a'=10-a,\\quad b'=9-b,\\quad c'=9-c.\n\\]\nBecause \\(1\\le a\\le9\\), the digit \\(a'\\) is also between \\(1\\) and \\(9\\). Likewise, \\(b'\\) and \\(c'\\) are between \\(0\\) and \\(9\\). Thus the partner is another valid five-digit palindrome.\n\nThe two outer positions have combined place value \\(10001\\), the next two positions have combined place value \\(1010\\), and the center has place value \\(100\\). Therefore each palindrome and its partner sum to\n\\[\n\\begin{aligned}\n10001(a+a')+1010(b+b')+100(c+c')\n&=10001\\cdot10+1010\\cdot9+100\\cdot9\\\\\n&=110000.\n\\end{aligned}\n\\]\nApplying the partner rule twice returns the original palindrome. No palindrome is its own partner, because that would require \\(b=9-b\\), or \\(b=4.5\\), which is not a digit. Hence all \\(900\\) palindromes split into exactly \\(450\\) distinct pairs, with none omitted or repeated. Their sum is\n\\[\nS=450\\cdot110000=49{,}500{,}000.\n\\]\nThe requested digit sum is \\(4+9+5=\\boxed{18}\\), choice B.",
+        "nodeIds": [
+          "cnm_h231",
+          "cnm_027",
+          "cnm_p117"
+        ],
+        "prerequisiteIds": [
+          "cnm_p096",
+          "cnm_p116",
+          "cnm_p114"
+        ],
+        "levelReason": "The alternative uses a reversible digit-pairing rule and elementary regrouping of a finite sum."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h231",
+      "cnm_027"
+    ],
+    "supportIds": [
+      "cnm_p096",
+      "cnm_p116"
+    ],
+    "annotationRationale": "Both methods count the independent digit choices and express the palindromes through their place values, supporting cnm_h231 and cnm_027 as common targets. Decimal place value and distribution support both routes. The first method aggregates digit frequencies; the alternative uses efficient regrouping into constant-sum pairs, with addition rearrangement kept as a local prerequisite.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2014_AMC_12A_Q15",
+    "decision": "accept",
+    "mathematicalCheck": "There are 900 palindromes, with digit frequencies 100 for each leading digit and 90 for each other free digit. Their weighted contributions total 49,500,000. Independently, the partner rule preserves valid digits, reverses itself, has no fixed palindrome, and creates 450 pairs of sum 110,000. Both methods give digit sum 18.",
+    "levelCheck": "Both explanations use accessible place value and finite counting. The pairing method explicitly establishes validity and complete pairing.",
+    "methodDistinctness": "Aggregating digit frequencies and constructing constant-sum pairs provide distinct useful ideas.",
+    "annotationCheck": "Independent choices and place-value expressions justify the common targets. Place value and distribution support both methods; efficient regrouping and addition rearrangement appropriately support the pairing route.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "sum-place-value-contributions": "sum-place-value-contributions",
+    "pair-complementary-digits": "pair-complementary-digits"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "5d3ee0ba1cd540de2b9d7f74c351a013392d9aafe53b8df18faaaa15c6844758",
+    "inputHash": "941bd726f94504cba53d5fe1039733a9f65f9b433f645ce3444f61f8422d1dcf",
+    "authorInputHash": "daa923440ad545b71f1973187d2147882884e5ad89bcc88958981c89d1e6e55b",
+    "reviewInputHash": "7143a69c87a2f6f85e2eeb34c688fa4b0de1002b359e7253264d01563edb42cd",
+    "authorResponseHash": "73fe1b7aff114344e1685d983b04379867a5b285eb46dcc9cb60c492facaa1d8",
+    "reviewerResponseHash": "46a64ca473dc5ac1f8917eaa06dc8215d627ecaf8387538bad825c741e128df9",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

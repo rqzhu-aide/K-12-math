@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2014_AMC_12A_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "45a6621b190823d02487cd6ddf05331bf423eceb1607a97ab09225cdd55641d7",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "f8e3f2010f796298d1ee981359d5dff170670ef80184a0a78dedd6d284eb199b",
+  "solutionFigureHashes": {},
+  "candidateHash": "293f361b6f6ab6eb50c6354227f94d8ec1e54a5fe9de9aebd056dcf62994ccda",
+  "candidate": {
+    "questionId": "2014_AMC_12A_Q25",
+    "derivedAnswer": "B (40 points)",
+    "answerStatus": "matches",
+    "answerReason": "The conditions allow two parabolas, but reflection through the origin gives a bijection between their eligible integer-coordinate points. Each has 40 such points, so the requested count is uniquely determined and agrees with B.",
+    "methods": [
+      {
+        "id": "focus-directrix-integer-parameter",
+        "label": "Find the directrix and parameterize the integer points",
+        "explanation": "The two given points are each 5 units from the focus. The focus-directrix definition therefore requires their distances from the directrix to be 5. We first use this to find every possible directrix.\n\nWrite the directrix as \\(ax+by=c\\), where \\((a,b)\\ne(0,0)\\). Also \\(c\\ne0\\), because the focus of a nondegenerate parabola does not lie on its directrix. The two distance conditions give\n\\[\n(4a+3b-c)^2=25(a^2+b^2)\n\\]\nand\n\\[\n(-4a-3b-c)^2=25(a^2+b^2).\n\\]\nSubtracting eliminates the common squared terms and yields \\(c(4a+3b)=0\\). Thus \\(4a+3b=0\\), so the directrix has the form \\(3x-4y=h\\). Both given points satisfy \\(3x-4y=0\\), making their distance from this line \\(|h|/5\\). Consequently \\(|h|=25\\).\n\nThere are therefore two possible parabolas, with directrices \\(3x-4y=25\\) and \\(3x-4y=-25\\). Reflection through the origin exchanges them, preserves integer coordinates, and preserves \\(|4x+3y|\\). It is enough to count for the directrix \\(3x-4y=25\\).\n\nThe expression in the bound suggests defining\n\\[\nU=4x+3y,\\qquad V=-3x+4y.\n\\]\nThese expressions also satisfy\n\\[\nU^2+V^2=25(x^2+y^2).\n\\]\nThe focus-directrix equation is\n\\[\n\\sqrt{x^2+y^2}=\\frac{|V+25|}{5}.\n\\]\nBoth sides are nonnegative, so squaring is equivalent to the original equation. Using the identity above gives\n\\[\nU^2+V^2=(V+25)^2,\n\\qquad U^2=625+50V.\n\\]\n\nNow suppose \\(x,y\\) are integers. Then \\(U,V\\) are integers. A square divisible by 5 has a root divisible by 5, since the square of a nonmultiple of 5 has remainder 1 or 4 upon division by 5. Because \\(25\\mid U^2\\), write \\(U=5k\\) for an integer \\(k\\). The identity\n\\[\n4U-3V=25x\n\\]\nthen shows that \\(5\\mid V\\). Dividing the parabola equation by 25 gives\n\\[\nk^2=25+2V.\n\\]\nIts right side is divisible by 5 and is odd. Thus \\(k\\) is both divisible by 5 and odd. We may write \\(k=5r\\), where \\(r\\) is an odd integer. It follows that\n\\[\nU=25r,\\qquad V=25\\frac{r^2-1}{2}.\n\\]\n\nWe must also check that every odd integer \\(r\\) really gives an integer-coordinate point. Set \\(t=(r^2-1)/2\\), which is an integer, and define\n\\[\nx=4r-3t,\\qquad y=3r+4t.\n\\]\nThese coordinates give \\(U=25r\\) and \\(V=25t\\), which satisfy \\(U^2=625+50V\\). Hence the point lies on the parabola. Different values of \\(r\\) give different values of \\(U\\), so no point is counted twice.\n\nFinally, the required bound becomes\n\\[\n|25r|\\le1000,\\qquad |r|\\le40.\n\\]\nThe allowed odd integers are \\(\\pm1,\\pm3,\\ldots,\\pm39\\): 20 positive and 20 negative values. Thus each possible parabola has \\(\\boxed{40}\\) eligible points, choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_h192",
+          "math:lattice-counting",
+          "math:modular-congruence",
+          "cnm_249"
+        ],
+        "prerequisiteIds": [
+          "cnm_h173",
+          "cnm_h174",
+          "cnm_h171",
+          "cnm_090",
+          "cnm_p156"
+        ],
+        "levelReason": "The method uses the focus-directrix definition, coordinate distance formulas, elementary elimination, and divisibility and parity arguments, all within AMC 12 scope."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h192",
+      "math:lattice-counting"
+    ],
+    "supportIds": [
+      "cnm_h173",
+      "cnm_h174",
+      "cnm_h171"
+    ],
+    "annotationRationale": "The task assesses using the distance definition of a parabola and counting its integer-coordinate points under an exact bound. Distance formulas support finding the directrix and the curve equation. The written route uses remainders to restrict the integer parameter, parity to select its values, and origin reflection to handle both possible parabolas. The explicit inverse parameterization establishes completeness and prevents double counting.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The focus and the two specified points determine two parabolas rather than one. Their requested counts are equal."
+    ]
+  },
+  "review": {
+    "questionId": "2014_AMC_12A_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The distance conditions give exactly the directrices 3x-4y=±25. Origin reflection preserves the requested count. For either parabola, the parameterization gives a bijection between eligible lattice points and odd integers r with |r|≤40, yielding 40 points. Necessity, converse construction, and distinctness are established.",
+    "levelCheck": "Coordinate distances, elementary elimination, divisibility, and parity are appropriate for AMC 12.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The parabola and lattice-counting targets fit. Distance formulas, remainders, parity, origin symmetry, and coordinate elimination support the written method. The two-parabola qualification is justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "focus-directrix-integer-parameter": "focus-directrix-integer-parameter"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "1584fb4fdd4e892bf99fcdce21abd48568692928140da41705edf8b5128333da",
+    "inputHash": "40592d17138d752bff5719ae0c1d471f8640cdee6f58c7119f009cd2fc3980de",
+    "authorInputHash": "ae67dff0690d0819851d638bb03226ee6646412547e7e8f1b667d7b4771c94e3",
+    "reviewInputHash": "355f57a6de522a0c773cd300ecc11892fe597726199ca2a565979c56a1d41a1d",
+    "authorResponseHash": "f899a5847a43b3a12db0f8171e092d1f9a2e8e194a1e00a834960c5fddc56d36",
+    "reviewerResponseHash": "f9d8a1752ae74762907fbda3df2cd50162ed1bb225fb344398de939d8373a66c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

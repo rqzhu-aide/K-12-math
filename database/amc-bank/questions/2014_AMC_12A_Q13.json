@@ -1,0 +1,122 @@
+{
+  "Year": 2014,
+  "Level": "AMC 12",
+  "Batch": "A",
+  "Area": "Unclassified",
+  "Number": 13,
+  "Question": "A fancy bed and breakfast inn has \\(5\\) rooms, each with a distinctive color-coded decor. One day \\(5\\) friends arrive to spend the night. There are no other guests that night. The friends can room in any combination they wish, but with no more than \\(2\\) friends per room. In how many ways can the innkeeper assign the guests to the rooms?",
+  "Question Type": "text",
+  "Choices": {
+    "A": "\\(2100\\)",
+    "B": "\\(2220\\)",
+    "C": "\\(3000\\)",
+    "D": "\\(3120\\)",
+    "E": "\\(3125\\)"
+  },
+  "Choices Type": "text",
+  "Correct Answer": "B",
+  "Solution": "Method 1: Classify by the number of shared rooms\n\nThe friends and the five rooms are distinct. Since each room holds at most two friends, there can be \\(0\\), \\(1\\), or \\(2\\) two-person rooms. These cases cover every valid assignment and cannot overlap.\n\nIf there are no two-person rooms, every friend gets a separate room. Assigning rooms to the five friends in a fixed order gives\n\\[\n5\\cdot4\\cdot3\\cdot2\\cdot1=120\n\\]\nassignments.\n\nIf there is exactly one two-person room, choose its pair of friends in \\(5\\cdot4/2=10\\) ways. The division by \\(2\\) removes the two orders of the same pair. Choose their room in \\(5\\) ways, then assign the other three friends to different rooms in \\(4\\cdot3\\cdot2\\) ways. This gives\n\\[\n10\\cdot5\\cdot4\\cdot3\\cdot2=1200\n\\]\nassignments.\n\nIf there are two two-person rooms, choose the friend sleeping alone in \\(5\\) ways. To split the other four friends into two pairs, take the first of those friends in a fixed ordering. There are \\(3\\) choices for that friend's partner, and the other pair is then forced. This counts each division into pairs once. The singleton and the two pairs are three distinct groups, which can be assigned to distinct rooms in \\(5\\cdot4\\cdot3\\) ways. The count is\n\\[\n5\\cdot3\\cdot5\\cdot4\\cdot3=900.\n\\]\nEvery assignment determines its groups and their rooms uniquely, so none is counted twice within a case. Adding the three cases gives\n\\[\n120+1200+900=\\boxed{2220},\n\\]\nchoice B.\n\nMethod 2: Subtract assignments with an overfull room\n\nFirst allow any number of friends in a room. Each of the five distinct friends has five room choices, so there are \\(5^5=3125\\) unrestricted assignments. We will subtract those in which some room has at least three friends.\n\nThere can be at most one such room, because two rooms with at least three friends each would require at least six friends. Thus every invalid assignment has a unique overfull room, which can be chosen in \\(5\\) ways.\n\nFor one chosen room, count according to its exact occupancy. If it contains exactly three friends, its occupants can be chosen in \\(10\\) ways: choosing the three occupants is equivalent to choosing the two excluded friends, giving \\(5\\cdot4/2=10\\). Each excluded friend then has \\(4\\) room choices, for \\(10\\cdot4^2\\) assignments.\n\nIf the room contains exactly four friends, choose the excluded friend in \\(5\\) ways and that friend's room in \\(4\\) ways, giving \\(5\\cdot4\\). If it contains all five friends, there is \\(1\\) assignment.\n\nThese exact-occupancy cases are disjoint, and the unique overfull room prevents duplication across room choices. Therefore the invalid count is\n\\[\n5\\left(10\\cdot4^2+5\\cdot4+1\\right)=905.\n\\]\nThe valid count is consequently\n\\[\n3125-905=\\boxed{2220},\n\\]\nchoice B.",
+  "Meta": {
+    "QuestionSource": "live-poshenloh",
+    "AnswerSource": "live-poshenloh-answer-key",
+    "SolutionSource": "Original Math Practice solution",
+    "AreaSource": "Pending topic curation",
+    "Concepts": "casework; combinations; multiplication principle",
+    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2014A/solutions",
+    "SourceSHA256": "332edea09188694850b326a2c8ad34934c8ca7eab4912178e66a4c7c53bdc55c",
+    "Figures": [],
+    "FigureSources": {},
+    "SourceQuestionCount": 25,
+    "HistoricalSeries": "AMC 12",
+    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+    "Copyright": "Copyright Mathematical Association of America",
+    "License": "CC-BY-NC-SA-4.0",
+    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "TranscriptionSource": "LIVE by Po-Shen Loh",
+    "Modifications": [
+      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
+      "Third-party worked solution and solution-only figures omitted from the public distribution"
+    ],
+    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+    "SolutionReview": {
+      "status": "reviewed",
+      "solutionSHA256": "07284d5785ee3beebc9c14338af032a23cd6b6b50bd2660be22aab29cff7e306",
+      "questionContentHash": "87d7fbfbd293054ed8ad229f26d0b3abc138f93cd44414720ec2fecd0d1cc8a3",
+      "evidence": {
+        "path": "knowledge-graph/evidence/solutions-2026-11-06/2014_AMC_12A_Q13.json",
+        "sha256": "86f39838a87f6b669b6a90aaeae368ce51763b8505521fc20f4abeadb8e7a6a9"
+      },
+      "author": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "reviewer": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      }
+    }
+  },
+  "ID": "2014_AMC_12A_Q13",
+  "Bank": "amc",
+  "SchemaVersion": "2.0",
+  "ResponseType": "choice",
+  "Language": "en",
+  "domain": [],
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "1.0.0",
+    "contentHash": "87d7fbfbd293054ed8ad229f26d0b3abc138f93cd44414720ec2fecd0d1cc8a3",
+    "status": "mapped",
+    "reviewStatus": "machine_examined",
+    "assessedIds": [
+      "cnm_h232"
+    ],
+    "supportIds": [
+      "cnm_h231",
+      "cnm_h236"
+    ],
+    "routes": [
+      {
+        "id": "classify-room-occupancies",
+        "label": "Classify occupancy patterns",
+        "nodeIds": [
+          "cnm_h239",
+          "cnm_h234"
+        ]
+      },
+      {
+        "id": "exclude-overfull-rooms",
+        "label": "Exclude overfull rooms",
+        "nodeIds": [
+          "cnm_h010",
+          "cnm_h239"
+        ]
+      },
+      {
+        "id": "classify-two-person-rooms",
+        "label": "Classify by the number of shared rooms",
+        "nodeIds": [
+          "cnm_h232",
+          "cnm_h239",
+          "cnm_h235",
+          "cnm_h231",
+          "cnm_h236",
+          "cnm_h233"
+        ]
+      },
+      {
+        "id": "subtract-overfull-rooms",
+        "label": "Subtract assignments with an overfull room",
+        "nodeIds": [
+          "cnm_h232",
+          "cnm_h239",
+          "cnm_h010",
+          "cnm_h231",
+          "cnm_h236"
+        ]
+      }
+    ],
+    "flags": []
+  }
+}

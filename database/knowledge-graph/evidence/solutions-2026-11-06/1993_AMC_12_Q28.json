@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1993_AMC_12_Q28",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "49b2ec1ba5e62d665f99f177c36ad3b73b4cb762d4b4f81d511bfc868382ae6e",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "785b5ade2c2677db4b07201f3fd6dfe473d501159c2b340c6ab1c6dbf32cfdda",
+  "solutionFigureHashes": {},
+  "candidateHash": "26d00db0e66a753c50ade88e88d801f7c7e5e2963c5531bc0c70dbe9d64c32db",
+  "candidate": {
+    "questionId": "1993_AMC_12_Q28",
+    "derivedAnswer": "516 (D)",
+    "answerStatus": "matches",
+    "answerReason": "There are 560 unordered triples of grid points and exactly 44 collinear triples, leaving 516 positive-area triangles.",
+    "methods": [
+      {
+        "id": "subtract-collinear-triples",
+        "label": "Subtract all collinear vertex sets",
+        "explanation": "There are \\(4\\cdot4=16\\) allowed points. Any three distinct points form a positive-area triangle unless they are collinear. Since the order of the vertices does not change the triangle, begin with\n\\[\n\\binom{16}{3}=\\frac{16\\cdot15\\cdot14}{6}=560\n\\]\nunordered triples, then subtract the collinear ones.\n\nEach of the four rows and four columns contains four points. These eight lines contribute\n\\[\n8\\binom43=8\\cdot4=32\n\\]\ncollinear triples.\n\nWe must justify which other directions can contain three points. Consider a collinear triple on a line that is neither horizontal nor vertical, and list its points in increasing order of \\(x\\). Its three distinct integer \\(x\\)-coordinates lie between 1 and 4. Their two successive gaps are positive integers with total at most 3, so at least one gap equals 1. The slope \\(s\\) is therefore the corresponding nonzero integer change in \\(y\\). Between the first and last points, the horizontal change is at least 2 and the vertical change is at most 3. Hence\n\\[\n2|s|\\le3.\n\\]\nSince \\(s\\) is a nonzero integer, \\(s=1\\) or \\(s=-1\\). Thus these are the only additional slopes to count.\n\nFor slope 1, the lines containing at least three points are \\(y-x=-1,0,1\\), containing 3, 4, and 3 points, respectively. They contribute\n\\[\n\\binom33+\\binom43+\\binom33=1+4+1=6.\n\\]\nFor slope \\(-1\\), the lines \\(y+x=4,5,6\\) likewise contain 3, 4, and 3 points, contributing another 6.\n\nThe direction argument exhausts all collinear triples. None is counted twice, because three distinct collinear points determine a unique line. Therefore the required number is\n\\[\n560-(32+6+6)=\\boxed{516},\n\\]\nchoice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_h239",
+          "math:lattice-counting",
+          "cnm_h010",
+          "cnm_h230",
+          "cnm_h167"
+        ],
+        "prerequisiteIds": [
+          "cnm_h237",
+          "cnm_082",
+          "cnm_054",
+          "cnm_110"
+        ],
+        "levelReason": "The count uses combinations, elementary coordinate differences, and an exhaustive classification of possible collinear directions."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h239"
+    ],
+    "supportIds": [
+      "cnm_h237",
+      "cnm_082",
+      "cnm_054",
+      "cnm_110"
+    ],
+    "annotationRationale": "The task counts unordered selections of three vertices subject to nondegeneracy. The method uses complementary counting and disjoint line classes. Lattice counting records the exact integer-coordinate restrictions, while the slope formula supports the proof that the line classification is exhaustive.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1993_AMC_12_Q28",
+    "decision": "accept",
+    "mathematicalCheck": "Of 560 vertex triples, rows and columns contribute 32 collinear triples and slopes 1 and -1 contribute 12. The unit horizontal-gap argument correctly excludes every other nonhorizontal, nonvertical slope. Unique supporting lines prevent double counting, leaving 516.",
+    "levelCheck": "Combinations and elementary coordinate differences are appropriate.",
+    "methodDistinctness": "One exhaustive complementary count is sufficient.",
+    "annotationCheck": "Combination selection is the assessed target. Lattice-point counts, complements, disjoint cases, slope calculations, and the stated geometric prerequisites are supported.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "subtract-collinear-triples": "subtract-collinear-triples"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "d207237ac0ae07671fe26a1148d6f3768ad6d4287d58407302aeaaf6bbd07d45",
+    "inputHash": "732a1fbda2f78d84b968826e7449b006dccc4070ab6dedae13891b2703ca8d57",
+    "authorInputHash": "bbf5b106a67ac847ff439b6f64163a855ab4d73e367685a0b8a929da6e403716",
+    "reviewInputHash": "1d605c00523f41511800a94a7558c0bb3ceb160e9dafcd2732bc396e3a779403",
+    "authorResponseHash": "ad3b3ee8edbef32b86ce622b859f4239726b9edd815a6f33f7357e68ee90866a",
+    "reviewerResponseHash": "cf693bab81ed73493358dfeb1914d5112500074531903caa7fbd0543c59f4d81",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

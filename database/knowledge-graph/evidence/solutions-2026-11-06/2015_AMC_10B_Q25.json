@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2015_AMC_10B_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "08a6b9df2a785c4f0ef311af36a395cb56ab0fc01c236ceb894eacb2d947c94e",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "cf1d6ad535e8bcac733bef191cece2283d5d972bfb103f9a7548d5038327d463",
+  "solutionFigureHashes": {},
+  "candidateHash": "ddf440b540f388007246122c2c883ececec708e77bd2282353694b5212787fc7",
+  "candidate": {
+    "questionId": "2015_AMC_10B_Q25",
+    "derivedAnswer": "\\(10\\) ordered triples, choice B",
+    "answerStatus": "matches",
+    "answerReason": "The smallest dimension must be 3, 4, 5, or 6. These cases yield respectively 5, 3, 1, and 1 triples, for a total of 10, matching choice B.",
+    "methods": [
+      {
+        "id": "bounded-factor-pairs",
+        "label": "Bound the smallest side and count factor pairs",
+        "explanation": "The volume is \\(abc\\), and the surface area is \\(2(ab+ac+bc)\\). Because all dimensions are positive, dividing their equality by \\(2abc\\) is valid and gives\n\\[\n\\frac1a+\\frac1b+\\frac1c=\\frac12.\n\\]\nThe other two reciprocals are positive, so \\(1/a<1/2\\), giving \\(a>2\\). Also, \\(a\\le b\\le c\\) implies\n\\[\n\\frac12=\\frac1a+\\frac1b+\\frac1c\\le\\frac3a,\n\\]\nso \\(a\\le6\\). Thus only \\(a=3,4,5,6\\) need consideration.\n\nIf \\(a=3\\), then \\(1/b+1/c=1/6\\). Each reciprocal is strictly less than \\(1/6\\), so \\(b,c>6\\). Multiplying by \\(6bc\\) and adding \\(36\\) reveals a product:\n\\[\nbc=6b+6c\n\\quad\\Longleftrightarrow\\quad\n(b-6)(c-6)=36.\n\\]\nSince \\(b\\le c\\), the positive factor pairs are \\((1,36),(2,18),(3,12),(4,9),(6,6)\\). Each gives exactly one admissible pair \\((b,c)\\), for \\(5\\) triples.\n\nIf \\(a=4\\), the same reasoning gives \\(b,c>4\\) and\n\\[\n(b-4)(c-4)=16.\n\\]\nThe positive factor pairs in increasing order are \\((1,16),(2,8),(4,4)\\), giving \\(3\\) triples.\n\nIf \\(a=5\\), then\n\\[\n\\frac3{10}=\\frac1b+\\frac1c\\le\\frac2b.\n\\]\nThus \\(5\\le b\\le20/3\\), leaving \\(b=5\\) or \\(6\\). These give \\(c=10\\) and \\(c=15/2\\), respectively. Only the integer triple \\((5,5,10)\\) works.\n\nIf \\(a=6\\), all three reciprocals are at most \\(1/6\\). Their sum equals \\(1/2\\) only when all three equal \\(1/6\\), giving \\((6,6,6)\\).\n\nThe four cases exhaust the possible smallest dimensions. The transformations are reversible for the positive dimensions listed, and requiring the smaller factor first enforces \\(b\\le c\\), so no permutations are counted twice. The total is\n\\[\n5+3+1+1=\\boxed{10},\n\\]\nchoice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_p161",
+          "cnm_p163",
+          "cnm_p153"
+        ],
+        "prerequisiteIds": [
+          "cnm_096",
+          "cnm_040",
+          "cnm_p160"
+        ],
+        "levelReason": "Positive reciprocal bounds and small factor-pair enumerations provide a complete elementary integer-solution argument suitable for AMC 10."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations",
+      "cnm_p161",
+      "cnm_p163"
+    ],
+    "supportIds": [
+      "cnm_096"
+    ],
+    "annotationRationale": "The displayed task combines rectangular-prism volume and surface area with exhaustive integer-solution counting. Inequality properties support the finite bound on a. Factor-pair enumeration is the method-specific procedure used after fixing the smallest dimension; equality operations and prism structure are local prerequisites.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2015_AMC_10B_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "Division by positive 2abc gives the reciprocal equation and the complete bound 3≤a≤6. The reversible shifted products yield 5 and 3 admissible pairs for a=3 and 4. The remaining cases give only (5,5,10) and (6,6,6), totaling 10 triples under the required ordering.",
+    "levelCheck": "The reciprocal bounds and small factor-pair enumerations form a complete AMC 10 argument.",
+    "methodDistinctness": "One complete method combining bounds and factor pairs is sufficient.",
+    "annotationCheck": "Integer-solution counting and prism volume and surface area are justified assessed targets. Factor pairs are method-specific, and the inequality, equality, and prism-structure prerequisites fit.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "bounded-factor-pairs": "bounded-factor-pairs"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "7c422391e9c545400ad4dfe1db239817e112ccd28fb4d62cc68850f97c0a384f",
+    "inputHash": "c1e3f86fe313b412b3a972dcefe394e455655d72b0d3b47d42afca962d716c53",
+    "authorInputHash": "3941c491e4eeebeef78d008e8dcc7cc493688b7465f36e032b02d00d32769484",
+    "reviewInputHash": "fa04e00e6f405046aec108f8d457c1ae777e01e16e9f439b32c2b6701542aafb",
+    "authorResponseHash": "ac3dfcdfc4f0682eca8289904c6d53a00cbc1f70ba33cc59904635f5eb864534",
+    "reviewerResponseHash": "1f62a0f5f84b0302d045645d0fb8930588150fb5ba1485dc0118d4be08257b4d",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1953_AMC_12_Q47",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "e9748ca06e2a8e5fb8cba1ba35afab61ea22d40450d1bafafe346cddd6518486",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "0a0ee11a84525da8ce377a6d69c0d222f92897c4295b4ef542f99104c0c0ae1c",
+  "solutionFigureHashes": {},
+  "candidateHash": "7dda063fdfedd535c19a074fda2bbb5d078a9efe25d2c68de9b8774b803f71a9",
+  "candidate": {
+    "questionId": "1953_AMC_12_Q47",
+    "derivedAnswer": "D for common logarithms; E for base 2. Without a logarithm convention, there is no unique unconditional choice.",
+    "answerStatus": "disputed",
+    "answerReason": "The keyed inequality is correct for common logarithms and also for natural logarithms. However, the base is unstated. With base 2, none of A through D holds for every positive x, so the answer would instead be E.",
+    "methods": [
+      {
+        "id": "elementary-common-log-bound",
+        "label": "Use integer powers and check the base",
+        "explanation": "Assume first that \\(\\log\\) means the common logarithm \\(\\log_{10}\\). We will prove the inequality using integer powers.\n\nFor a positive integer \\(n\\), the binomial theorem gives a useful bound. For \\(1\\le j\\le n\\),\n\\[\n\\binom nj n^{-j}\n\\le \\frac{1}{1\\cdot2\\cdots j}\n\\le 2^{1-j}.\n\\]\nThe first inequality follows because each numerator factor in the binomial coefficient is at most \\(n\\). The second follows because every denominator factor after the first is at least \\(2\\). Summing these bounds gives the finite geometric sum\n\\[\n\\left(1+\\frac1n\\right)^n\n\\le 1+\\sum_{j=1}^{n}2^{1-j}\n=3-2^{1-n}<3<\\sqrt{10}.\n\\]\n\nNow let \\(0<u\\le1\\), and let \\(n=\\lfloor1/u\\rfloor\\), the greatest integer at most \\(1/u\\). Then \\(n\\ge1\\) and\n\\[\n\\frac{1}{n+1}<u\\le\\frac1n,\n\\qquad \\frac1{2n}\\le\\frac1{n+1}<u.\n\\]\nSince common logarithms are increasing, the integer-power bound implies\n\\[\nn\\log_{10}(1+u)<\\frac12.\n\\]\nThus \\(\\log_{10}(1+u)<\\frac1{2n}<u\\).\n\nFor any \\(x>0\\), choose a positive integer \\(m\\ge x\\) and put \\(u=x/m\\). Then \\(0<u\\le1\\). The binomial expansion has nonnegative terms, so\n\\[\n1+x=1+mu\\le(1+u)^m.\n\\]\nTaking common logarithms now gives\n\\[\n\\log_{10}(1+x)\n\\le m\\log_{10}(1+u)<mu=x.\n\\]\nTherefore D holds for every positive \\(x\\) under this convention. At \\(x=9\\), the values \\(\\log_{10}10=1\\), \\(9/10\\), and \\(9\\) rule out A, B, and C.\n\nThe unspecified base matters. If the base is \\(2\\), then \\(x=1\\) gives \\(\\log_2 2=1\\), ruling out A, B, and D as universal statements. Also, \\(x=3\\) gives \\(\\log_2 4=2<3\\), ruling out C. Thus base \\(2\\) gives E. The conditional answer is D for common logarithms, but the displayed statement needs a base convention for a unique answer.",
+        "nodeIds": [
+          "math:logarithmic-linear-bound",
+          "cnm_h240",
+          "cnm_h210",
+          "cnm_h044",
+          "cnm_h047",
+          "math:floor-ceiling"
+        ],
+        "prerequisiteIds": [
+          "cnm_h043",
+          "cnm_h018"
+        ],
+        "levelReason": "The proof uses the binomial theorem, a finite geometric sum, integer bounds, and logarithm properties. It uses no calculus."
+      }
+    ],
+    "assessedIds": [
+      "math:logarithmic-linear-bound"
+    ],
+    "supportIds": [
+      "cnm_h043",
+      "cnm_h018"
+    ],
+    "annotationRationale": "The task concerns a logarithmic-versus-linear bound and the effect of the logarithm base. The written proof uses binomial estimates and logarithm monotonicity, so those procedures are method-local. The derivative nodes in the recorded context are not used.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The logarithm base is not specified. D agrees with the usual common and natural logarithm conventions, but it is not valid for every admissible base."
+    ]
+  },
+  "review": {
+    "questionId": "1953_AMC_12_Q47",
+    "decision": "accept",
+    "mathematicalCheck": "The coefficient estimates establish (1+1/n)^n<√10. For n=floor(1/u), the stated bounds give log10(1+u)<1/(2n)<u. The integer-power expansion then extends the inequality to every x>0. The base-2 examples correctly refute each competing universal relationship and justify the conditional answer.",
+    "levelCheck": "The proof is substantial but complete and uses only permitted precalculus knowledge. The coefficient and interval estimates are explained.",
+    "methodDistinctness": "There is one proof with a necessary discussion of the unspecified base.",
+    "annotationCheck": "The assessed node's base-comparison criterion applies. The binomial, finite geometric-sum, logarithm and floor nodes accurately describe the method; derivative prerequisites are appropriately omitted.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "elementary-common-log-bound": "elementary-common-log-bound"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "1e72720cf7aeb8b07459b2c591f01dede8c5f301bccda0901ae504e868ad5a93",
+    "inputHash": "e606de7d32619519c37c9e29f46c3b905fb474ad6a96a59256cdd4a2617517eb",
+    "authorInputHash": "a4e1cc60e5fc88ef1175d8489274037b8bd44dcacb8bcc6e2164100565bcba4e",
+    "reviewInputHash": "d68e35640b3335dd59262c22df2c8ec345ef6cdcf0d29c792e1aae56f308a018",
+    "authorResponseHash": "fd6edf4e60f327fea5a53a0356c9a7345f6d2d9f69da9d2df7fd5312dad68913",
+    "reviewerResponseHash": "1f70d1e8e2acabec4e3662a86bc8dfa60ee1064a36983eae3f5f9a54dc4fa703",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

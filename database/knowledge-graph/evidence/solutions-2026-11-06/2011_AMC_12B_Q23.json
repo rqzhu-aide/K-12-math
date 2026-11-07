@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2011_AMC_12B_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "378bae0deecc215a79611ef083b54e6e4131393bee73bacab4adbc1960555e7e",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "730baf50b6644a3052098a079fedb706505f5949ea0c90f63a3575ae9becadbb",
+  "solutionFigureHashes": {},
+  "candidateHash": "8e3a752c1273c48a60275dfdbe2669ddf4738580b8737639b855d10e125f0977",
+  "candidate": {
+    "questionId": "2011_AMC_12B_Q23",
+    "derivedAnswer": "C, \\(195\\)",
+    "answerStatus": "matches",
+    "answerReason": "A point lies on an allowed path exactly when its horizontal and vertical distances outside the rectangle \\([-3,3]\\times[-2,2]\\) sum to at most 5. Counting the resulting integer rows gives 195 points.",
+    "methods": [
+      {
+        "id": "count-horizontal-rows",
+        "label": "Find the reachable region and count its rows",
+        "explanation": "For a point \\(P=(x,y)\\), first find the shortest permitted path from \\(A\\) to \\(B\\) that passes through \\(P\\). Between any two points, horizontal travel must total at least the absolute horizontal displacement, and vertical travel must total at least the absolute vertical displacement. These bounds are attained by moving horizontally and then vertically.\n\nIt follows that the shortest path through \\(P\\) has length\n\\[\nL=|x+3|+|x-3|+|y-2|+|y+2|.\n\\]\nJoining shortest paths from \\(A\\) to \\(P\\) and from \\(P\\) to \\(B\\) attains this length, so \\(P\\) lies on an allowed path exactly when \\(L\\le20\\).\n\nLet\n\\[\nu=\\max(|x|-3,0),\\qquad v=\\max(|y|-2,0).\n\\]\nThese measure how far the coordinates lie outside the intervals \\([-3,3]\\) and \\([-2,2]\\). Between \\(-3\\) and 3, the two horizontal distances sum to 6; outside that interval, each extra unit contributes twice. Similarly, the vertical distances sum to \\(4+2v\\). Thus\n\\[\nL=10+2(u+v),\n\\]\nand the condition becomes \\(u+v\\le5\\).\n\nFor the five integer rows \\(-2\\le y\\le2\\), we have \\(v=0\\). Hence \\(|x|\\le8\\), giving 17 points per row, or \\(5\\cdot17=85\\) points.\n\nThe remaining possible rows are \\(y=\\pm(2+k)\\), where \\(k=1,2,3,4,5\\). On either row in such a pair, \\(v=k\\), so \\(|x|\\le8-k\\). The counts per row are therefore\n\\[\n15,\\quad13,\\quad11,\\quad9,\\quad7.\n\\]\nRows with \\(|y|>7\\) are impossible because they already have \\(v>5\\).\n\nThese row classes include every eligible integer point, and each point belongs to exactly one row. Including the boundary where \\(L=20\\), the total is\n\\[\n85+2(15+13+11+9+7)=\\boxed{195},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "math:lattice-counting",
+          "math:absolute-value-inequalities",
+          "cnm_h230"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_084",
+          "cnm_007"
+        ],
+        "levelReason": "Uses coordinate differences, absolute-value distance bounds, and counting disjoint integer rows."
+      }
+    ],
+    "assessedIds": [
+      "math:lattice-counting"
+    ],
+    "supportIds": [
+      "cnm_084",
+      "cnm_007"
+    ],
+    "annotationRationale": "The target is counting integer-coordinate points under the path-length restriction. Axis-parallel segment lengths and absolute-value distance meanings support the necessary-and-sufficient reachability condition. The method solves the resulting absolute-value inequality by rows and adds disjoint counts. No arithmetic-series formula or probability procedure is used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2011_AMC_12B_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "Concatenating shortest axis-parallel paths proves the necessary-and-sufficient length condition L=10+2(u+v)≤20. The five central rows contribute 85 points, and the five outer row pairs contribute 2(15+13+11+9+7)=110. The disjoint row count includes the boundary and totals 195.",
+    "levelCheck": "The distance lower bound, attaining paths, and exhaustive row count are elementary and understandable.",
+    "methodDistinctness": "One complete reachability and counting method is sufficient.",
+    "annotationCheck": "Lattice counting is the assessed target. Coordinate lengths and absolute-value meaning support the argument; absolute-value inequalities and disjoint addition accurately describe the method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-horizontal-rows": "solution:count-horizontal-rows:730baf50b664"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "d61f9cedc6c8c2e03e4b86b3a5cf6c870cc11179568627be65a0cc6477de4f55",
+    "inputHash": "1782b8e064249aaca5289632809bc68a1b348f005f08c5d697ed4678b1c5983f",
+    "authorInputHash": "0cb0cfc5c9fbdad76c8ef32bfb58fe539499ca31ce5dc1f99e7a2eb3e7573d29",
+    "reviewInputHash": "19555fdce50a033b3770cbd5d9a488c242764502be49e3ecb99503b225b30722",
+    "authorResponseHash": "df22f1f2a2518db08914661587b6bbb894befe7b74ed3d6974b98dd124e93267",
+    "reviewerResponseHash": "38ce837bb9979392cee38640d18664531aa60d3fc3ced1cbb75b9acc4488261c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

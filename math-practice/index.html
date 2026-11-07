@@ -924,6 +924,7 @@ summary { cursor: pointer; }
 .q-choice.answer-opt:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .q-choice.sel .badge { background: var(--illini-orange); color: var(--choice-badge-ink); }
 .q-choice .badge { flex: none; }
+.q-choice .choice-id { width: auto; max-width: 40%; height: auto; min-height: 24px; padding: 2px 6px; border-radius: 6px; overflow-wrap: anywhere; }
 .q-choice .opt-text { display: block; flex: 1; min-width: 0; }
 .choice-figure { display: block; margin: 4px 0 8px; }
 .choice-figure img { display: block; max-width: 100%; max-height: 220px; height: auto; object-fit: contain; background: var(--figure-surface); border-radius: 6px; }
@@ -1028,6 +1029,8 @@ footer .source-credits p { margin: 0; }
 .modal { background: var(--surface); }
 .modal-title { font-family: var(--font); }
 .solution-reflection { padding-top: 22px; margin-top: 28px; border-top: 1px solid var(--hairline); color: var(--accent-deep); font: 400 1.125rem/1.6 var(--book-serif); }
+.solution-method + .solution-method { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--hairline); }
+.solution-method-title { margin: 0 0 12px; font-size: 1.0625rem; line-height: 1.5; }
 @media (max-width: 1050px) {
   .page { max-width: 850px; display: block; padding: 24px; }
   .practice-rail { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 28px; margin-top: 28px; }
@@ -1121,7 +1124,9 @@ footer .source-credits p { margin: 0; }
       <div class="field-inline path-concept"><label id="pathConceptLabel" for="pathConcept">Mathematical concept</label><select id="pathConcept" disabled><option>Loading concepts…</option></select></div>
       <button type="button" class="ghost" id="pathFind" disabled>Find practice</button>
       <p class="pool-hint path-copy" id="pathDescription"></p>
+      <p class="pool-hint path-copy" id="pathAttribution" hidden><a href="https://www.thecorestandards.org/public-license/" target="_blank" rel="noopener noreferrer">© Copyright 2010. National Governors Association Center for Best Practices and Council of Chief State School Officers. All rights reserved.</a></p>
       <p class="pool-hint path-copy" id="pathStatus" role="status"></p>
+      <div class="field-inline" id="pathPageField" hidden><label for="pathPage">Results page</label><select id="pathPage" aria-controls="pathResults"></select></div>
       <div class="path-results" id="pathResults"></div>
     </div>
     <p class="pool-hint" id="poolCount"></p>
@@ -1255,8 +1260,8 @@ footer .source-credits p { margin: 0; }
   </footer>
 </div>
 
-<script src="../cn-math-bank/bank.js"></script>
-<script src="../amc-bank/bank.js"></script>
+<script src="../database/cn-math-bank/bank.js"></script>
+<script src="../database/amc-bank/bank.js"></script>
 <script src="../custom-banks/banks.js"></script>
 <script src="answer-check.js"></script>
 <script src="vendor/katex/katex.min.js"></script>
@@ -1271,6 +1276,7 @@ footer .source-credits p { margin: 0; }
 
   var LETTERS = ["A", "B", "C", "D", "E"];
   var $ = function (id) { return document.getElementById(id); };
+  var answerTools = window.MathPracticeAnswers;
   var els = {
     thoughts: $("thoughts"), thoughtsSubmit: $("thoughtsSubmit"), thoughtsClear: $("thoughtsClear"),
     answerOpts: $("answerOpts"), resultsBody: $("resultsBody"),
@@ -1297,13 +1303,13 @@ footer .source-credits p { margin: 0; }
   function saveAttempt(edited) {
     if (!currentQuestion) return;
     var previous = attempts[currentQuestion.id] || {};
-    var changed = (previous.thoughts || '') !== els.thoughts.value || (previous.answer || null) !== (selectedAnswer || null);
-    attempts[currentQuestion.id] = { thoughts: els.thoughts.value, answer: selectedAnswer, originalSpeech: feedback ? feedback.evidence : null,
+    var changed = (previous.thoughts || '') !== els.thoughts.value || !answerTools.same(previous.answer || null, selectedAnswer || null);
+    attempts[currentQuestion.id] = { thoughts: els.thoughts.value, answer: answerTools.copy(selectedAnswer), originalSpeech: feedback ? feedback.evidence : null,
       tutorContext: feedback ? feedback.state() : previous.tutorContext || null };
     try { localStorage.setItem(ATTEMPTS_KEY, JSON.stringify(attempts)); saveFailures.draft = false; }
     catch (_) { saveFailures.draft = true; }
     var entry = notebook[currentQuestion.id] || {};
-    if (els.thoughts.value.trim() || selectedAnswer || (entry.removed && edited && changed)) {
+    if (els.thoughts.value.trim() || answerTools.hasAnswer(selectedAnswer) || (entry.removed && edited && changed)) {
       if (edited && changed) entry.removed = false;
       entry.touched = Date.now(); notebook[currentQuestion.id] = entry;
       saveNotebook();
@@ -1317,6 +1323,11 @@ footer .source-credits p { margin: 0; }
   /* ---------- Question pool ---------- */
 
   var customBanks = Array.isArray(window.CUSTOM_MATH_BANKS) ? window.CUSTOM_MATH_BANKS : [];
+  if (window.CN_MATH_BANK) window.CN_MATH_BANK.figuresBase = '../database/cn-math-bank/figures/';
+  if (window.AMC_BANK) window.AMC_BANK.figuresBase = '../database/amc-bank/figures/';
+  function publishedBankURL(value) {
+    return typeof value === 'string' ? value.replace(/^\.\.\/(amc-bank|cn-math-bank)\//, '../database/$1/') : value;
+  }
   var BANKS = [window.CN_MATH_BANK, window.AMC_BANK].concat(customBanks).filter(function (b) { return b && Array.isArray(b.questions) && b.questions.length; });
   var BANK = BANKS[0] || { id: 'cn-math', questions: [] };
   function usesGradeNavigation(bank) { return bank !== window.AMC_BANK; }
@@ -1325,7 +1336,7 @@ footer .source-credits p { margin: 0; }
   BANKS.forEach(function (bank) { bank.questions.forEach(function (q) { questionIndex[q.id] = { question: q, bank: bank }; }); });
   Object.keys(attempts).forEach(function (id) {
     var draft = attempts[id];
-    if (!notebook[id] && questionIndex[id] && draft && (draft.thoughts || draft.answer)) notebook[id] = {touched: 1};
+    if (!notebook[id] && questionIndex[id] && draft && (draft.thoughts || answerTools.hasAnswer(draft.answer))) notebook[id] = {touched: 1};
   });
   var pool = {
     bank: $("selBank"),
@@ -1403,7 +1414,7 @@ footer .source-credits p { margin: 0; }
     $('attemptNote').hidden = !entry.submissions;
     $('attemptNote').textContent = entry.submissions ? entry.submissions + (entry.submissions === 1 ? ' approach tried. What might you try next?' : ' approaches tried. Notice what has changed.') : '';
     $('earlierAttempt').hidden = !entry.first;
-    $('earlierAnswer').textContent = entry.first ? (entry.first.answer ? 'Your first answer: ' + entry.first.answer : 'No answer recorded for this approach.') : '';
+    $('earlierAnswer').textContent = entry.first ? (answerTools.hasAnswer(entry.first.answer) ? 'Your first answer: ' + answerTools.format(entry.first.answer) : 'No answer recorded for this approach.') : '';
     $('earlierWork').textContent = entry.first ? entry.first.thoughts : '';
     var group = qsIn(pool.level.value, +pool.year.value, pool.batch.value).slice().sort(function (a,b) { return a.number - b.number; });
     var index = group.findIndex(function (item) { return item.id === q.id; });
@@ -1567,17 +1578,20 @@ footer .source-credits p { margin: 0; }
 
   var FIGRE = /\[Figure (\d+)\]\(([^)]+)\)/g;
 
-  function typeset(node) {
+  function typeset(node, explicitDelimitersOnly = false) {
     /* render $...$, \(..\), $$..$$, \[..\] with self-hosted KaTeX; context stays raw */
     if (window.renderMathInElement) {
+      var mathDelimiters = [
+        { left: "$$", right: "$$", display: true },
+        { left: "\\[", right: "\\]", display: true },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "$", right: "$", display: false }
+      ];
       try {
         renderMathInElement(node, {
-          delimiters: [
-            { left: "$$", right: "$$", display: true },
-            { left: "\\[", right: "\\]", display: true },
-            { left: "\\(", right: "\\)", display: false },
-            { left: "$", right: "$", display: false }
-          ],
+          delimiters: explicitDelimitersOnly ? mathDelimiters.filter(function (delimiter) {
+            return delimiter.left !== '$' && delimiter.left !== '$$';
+          }) : mathDelimiters,
           throwOnError: false
         });
         /* Auto-render wraps block math in an inline span. Preserved source
@@ -1611,7 +1625,7 @@ footer .source-credits p { margin: 0; }
     return paths;
   }
   function hasFigures(q) {
-    return [q.question].concat(Object.keys(q.choices).map(function (L) { return q.choices[L]; })).some(function (s) { return figurePaths(s).length > 0; });
+    return [q.question].concat(answerTools.choiceIds(q).map(function (L) { return q.choices[L]; })).some(function (s) { return figurePaths(s).length > 0; });
   }
   function figEl(path, q, selectable) {
     var wrap = el(selectable ? "span" : "a", selectable ? "choice-figure" : "figure-link");
@@ -1651,12 +1665,13 @@ footer .source-credits p { margin: 0; }
     if (speechInput) speechInput.sync('');
     var attempt = attempts[q.id] || {};
     els.thoughts.value = typeof attempt.thoughts === "string" ? attempt.thoughts : "";
-    selectedAnswer = q.responseType && q.responseType !== 'choice' ? (typeof attempt.answer === 'string' ? attempt.answer : '') : Object.prototype.hasOwnProperty.call(q.choices, attempt.answer) ? attempt.answer : null;
+    selectedAnswer = q.responseType === 'multiSelect' ? answerTools.choiceIds(q).filter(function(id){return Array.isArray(attempt.answer) && attempt.answer.indexOf(id)>=0;})
+      : q.responseType && q.responseType !== 'choice' ? (typeof attempt.answer === 'string' ? attempt.answer : '') : Object.prototype.hasOwnProperty.call(q.choices || {}, attempt.answer) ? attempt.answer : null;
     buildAnswerButtons(q);
     emptyResults();
     $("figureNotice").hidden = !hasFigures(q);
     if (feedback) {
-      feedback.restoreTurn(attempt.tutorContext, !!(attempt.answer || attempt.thoughts || notebook[q.id] && notebook[q.id].last));
+      feedback.restoreTurn(attempt.tutorContext, !!(answerTools.hasAnswer(attempt.answer) || attempt.thoughts || notebook[q.id] && notebook[q.id].last));
       feedback.restore(attempt.originalSpeech);
     }
     updateChips();
@@ -1676,7 +1691,7 @@ footer .source-credits p { margin: 0; }
     head.appendChild(right);
     box.appendChild(head);
 
-    var labels = "ABCDE".split("").filter(function (L) { return q.choices[L]; });
+    var labels = answerTools.choiceIds(q);
     // Legacy combined choice sheets are shared by every A-E entry. Show once.
     var shared = labels.length === 5 ? figurePaths(q.choices[labels[0]]).filter(function (p) {
       return labels.every(function (L) { return figurePaths(q.choices[L]).indexOf(p) >= 0; });
@@ -1687,9 +1702,11 @@ footer .source-credits p { margin: 0; }
         (!plain || /^(?:Image|Graph|Figure|Histogram)\s+\(?[A-E]\)?\s+(?:shown\s+)?in$/i.test(plain));
     })) shared = []; // Shared diagrams with distinct text/images are still individual choices.
     box.appendChild(richContent(q.question, q, "q-text", shared));
-    if (q.gradingStatus === 'disputed') box.appendChild(el('p', 'pool-hint', 'Not graded. ' + q.gradingNote));
+    var gradingNotice = window.MathPracticeAnswers.gradingNotice(q);
+    if (gradingNotice !== null) box.appendChild(el('p', 'pool-hint', 'Not graded. ' + gradingNotice));
     if (labels.length) {
       box.appendChild(el("hr", "q-divider"));
+      if (q.responseType === 'multiSelect') box.appendChild(el('p', 'pool-hint', 'Select all answers that apply.'));
       if (shared.length) {
         box.appendChild(el("div", "q-cap", "Answer choices (A to E):"));
         shared.forEach(function (p) { box.appendChild(figEl(p, q)); });
@@ -1703,7 +1720,7 @@ footer .source-credits p { margin: 0; }
           var row = list.children[index];
           row.classList.add("q-choice");
           row.replaceChildren();
-          row.appendChild(el("span", "badge", L));
+          row.appendChild(el("span", L.length > 2 ? 'badge choice-id' : 'badge', L));
           row.appendChild(richContent(q.choices[L], q, "opt-text", null, true));
         });
         box.appendChild(list);
@@ -1734,33 +1751,93 @@ footer .source-credits p { margin: 0; }
       solBody = $("solBody"), solClose = $("solClose");
   var solReturnFocus = null, inertSiblings = [];
 
+  function solutionSourceURL(source) {
+    var url = httpURL(source.sourceURL || source.url);
+    if (url) return url;
+    var booklet = source.officialSolution;
+    if (booklet && typeof booklet.url === 'string' && /^\.\.\/(?:database\/)?amc-bank\/official-solutions\/AMC(?:8|10A)_[\w]+_Solutions\.pdf$/.test(booklet.url)) {
+      return publishedBankURL(booklet.url) + (Number.isInteger(booklet.page) && booklet.page >= 1 ? '#page=' + booklet.page : '');
+    }
+    return null;
+  }
+  function methodCredit(source) {
+    if (!source) return null;
+    var label = typeof source.source === 'string' ? source.source : typeof source.label === 'string' ? source.label : '';
+    var status = typeof source.reviewStatus === 'string' ? source.reviewStatus : '';
+    var license = typeof source.license === 'string' ? source.license : '';
+    if (!label && !status && !license) return null;
+    var line = el('p', 'pool-hint', label ? 'Source: ' : '');
+    var url = solutionSourceURL(source);
+    if (label && url) {
+      var link = el('a', null, label); link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer'; line.appendChild(link);
+    } else if (label) line.appendChild(document.createTextNode(label));
+    if (status) line.appendChild(document.createTextNode((label ? '. ' : '') + status));
+    if (license) line.appendChild(document.createTextNode((label || status ? '. ' : '') + license));
+    return line;
+  }
+  function answerReference(q, held) {
+    if (q.responseType === 'self' && q.answerRubric) return 'Review criteria: ' + q.answerRubric;
+    if (!Array.isArray(q.acceptedResponses)) return q.answer ? (q.responseType && q.responseType !== 'choice' ? 'Reference answer: ' + q.answer : 'Correct answer: (' + q.answer + ')') : 'Answer not yet verified';
+    var values = answerTools.responses(q).map(function(value){return answerTools.format(value);});
+    if (!values.length) return 'Answer not yet verified';
+    var kind = q.responseType || 'choice';
+    if (held) return 'Recorded reference: ' + values.map(function(value){return kind === 'choice' || kind === 'multiSelect' ? '(' + value + ')' : value;}).join(' or ');
+    if (kind === 'choice') return (values.length > 1 ? 'Accepted answers: ' : 'Correct answer: ') + values.map(function(value){return '(' + value + ')';}).join(' or ');
+    if (kind === 'multiSelect') return 'Accepted selections: ' + values.map(function(value){return '(' + value + ')';}).join(' or ');
+    return 'Reference answer' + (values.length > 1 ? 's: ' : ': ') + values.join(' or ');
+  }
+  function displaySolution(text) {
+    return text.replace(/(^|\r?\n\r?\n)(Method ([1-3]):[ \t]*)Method \3:[ \t]*(?=\S)/g, "$1$2");
+  }
   function openSolution(q, opener) {
     if (feedback && currentQuestion && currentQuestion.id === q.id) feedback.solutionOpened();
     solReturnFocus = opener || null;
     solTitle.textContent = questionTitle(q) + '. Solution';
     var body = el("div");
-    body.appendChild(el("span", "sol-answer",
-      q.gradingStatus === 'disputed' ? 'Not graded. Historical printed key: (' + q.answer + ').' : q.answer ? (q.responseType && q.responseType !== 'choice' ? 'Reference answer: ' + q.answer : "Correct answer: (" + q.answer + ")") : "Answer not yet verified"));
-    if (q.gradingStatus === 'disputed' && q.gradingNote) body.appendChild(el('p', 'pool-hint', q.gradingNote));
-    var sol = q.solution || "";
+    var gradingNotice = window.MathPracticeAnswers.gradingNotice(q);
+    var reference = gradingNotice !== null ? (Array.isArray(q.acceptedResponses) ? 'Not graded. ' + answerReference(q, true) : 'Not graded. Historical printed key: (' + q.answer + ').') : answerReference(q);
+    body.appendChild(Array.isArray(q.acceptedResponses) || q.answerRubric ? richContent(reference, q, 'sol-answer') : el('span', 'sol-answer', reference));
+    if (gradingNotice !== null) body.appendChild(el('p', 'pool-hint', gradingNotice));
+    var methods = Array.isArray(q.solutionMethods) ? q.solutionMethods : null;
+    var written = methods && methods.filter(function(method){return typeof method.explanation === 'string' && method.explanation.trim();});
+    var sol = methods ? written.map(function(method){return method.explanation;}).join('\n\n') : q.solution || "";
+    // Presentation only: preserve the reviewed solution bytes and their hashes.
+    var displaySol = displaySolution(sol);
     var amcSolutionOmitted = !sol && questionIndex[q.id].bank === window.AMC_BANK;
     var officialSolutionURL = questionIndex[q.id].bank === window.AMC_BANK && q.officialSolution && [
-      '../amc-bank/official-solutions/AMC8_2023_Solutions.pdf',
-      '../amc-bank/official-solutions/AMC8_2022_Solutions.pdf',
-      '../amc-bank/official-solutions/AMC8_2020_Solutions.pdf',
-      '../amc-bank/official-solutions/AMC8_2019_Solutions.pdf',
-      '../amc-bank/official-solutions/AMC8_2018_Solutions.pdf',
-      '../amc-bank/official-solutions/AMC10A_2022_Solutions.pdf',
-      '../amc-bank/official-solutions/AMC10A_2021_Spring_Solutions.pdf',
-      '../amc-bank/official-solutions/AMC10A_2021_Fall_Solutions.pdf'
-    ].indexOf(q.officialSolution.url) >= 0 ? q.officialSolution.url : null;
+      '../database/amc-bank/official-solutions/AMC8_2023_Solutions.pdf',
+      '../database/amc-bank/official-solutions/AMC8_2022_Solutions.pdf',
+      '../database/amc-bank/official-solutions/AMC8_2020_Solutions.pdf',
+      '../database/amc-bank/official-solutions/AMC8_2019_Solutions.pdf',
+      '../database/amc-bank/official-solutions/AMC8_2018_Solutions.pdf',
+      '../database/amc-bank/official-solutions/AMC10A_2022_Solutions.pdf',
+      '../database/amc-bank/official-solutions/AMC10A_2021_Spring_Solutions.pdf',
+      '../database/amc-bank/official-solutions/AMC10A_2021_Fall_Solutions.pdf'
+    ].indexOf(publishedBankURL(q.officialSolution.url)) >= 0 ? publishedBankURL(q.officialSolution.url) : null;
     var solutionMessage = amcSolutionOmitted ? "A worked solution for this problem is not included." : "No solution is available for this question.";
     if (officialSolutionURL) solutionMessage = "Official MAA solutions are available in the original booklet.";
-    body.appendChild(richContent(sol || solutionMessage, q, "q-text"));
+    if (methods && written.length) {
+      written.forEach(function(method){
+        var section = el('section', 'solution-method');
+        section.appendChild(el('h3', 'solution-method-title', method.label || method.title || 'Worked explanation'));
+        section.appendChild(richContent(displaySolution(method.explanation), q, 'q-text'));
+        var credit = methodCredit(method.provenance);
+        if (credit) section.appendChild(credit);
+        typeset(section, method.provenance && method.provenance.source === 'Original Math Practice solution');
+        body.appendChild(section);
+      });
+    } else body.appendChild(richContent(displaySol || solutionMessage, q, "q-text"));
+    if (!methods && sol && Array.isArray(q.optionalSolutionMethods) && q.optionalSolutionProvenance) {
+      q.optionalSolutionMethods.forEach(function (method, index) {
+        body.appendChild(richContent('Optional method ' + (index + 1) + ': ' + method.label + '\n\n' + method.explanation, q, 'q-text'));
+      });
+      var optionalSource = q.optionalSolutionProvenance;
+      body.appendChild(el('p', 'pool-hint', 'Optional methods source: ' + optionalSource.source + '. ' + optionalSource.reviewStatus + '.'));
+    }
     if (sol) body.appendChild(el('p', 'solution-reflection', 'Which idea made this solution work? Look for a step you could use in another problem.'));
 
     if (officialSolutionURL) {
-      var officialLine = el('p', 'pool-hint', sol ? 'Adapted by Math Practice from MAA official solutions. ' : '');
+      var officialLine = el('p', 'pool-hint', sol && !methods ? 'Adapted by Math Practice from MAA official solutions. ' : '');
       var officialLink = el('a', null, 'Read official MAA solutions (PDF)');
       officialLink.href = officialSolutionURL;
       var officialPage = q.officialSolution.page;
@@ -1768,7 +1845,7 @@ footer .source-credits p { margin: 0; }
       officialLink.target = '_blank'; officialLink.rel = 'noopener noreferrer';
       officialLine.appendChild(officialLink);
       body.appendChild(officialLine);
-    } else if (sol && q.solutionSource) {
+    } else if (!methods && sol && q.solutionSource) {
       var sourceLine = el("p", "pool-hint", "Solution source: ");
       var sourceText = q.solutionSource;
       var sourceURL = httpURL(q.solutionSourceURL || q.sourceURL);
@@ -1781,7 +1858,7 @@ footer .source-credits p { margin: 0; }
       body.appendChild(sourceLine);
     }
     solBody.replaceChildren(body);
-    typeset(solBody);
+    typeset(solBody, !!methods || q.solutionSource === 'Original Math Practice solution');
     solModal.hidden = false;
     inertSiblings = Array.prototype.filter.call(solModal.parentElement.children, function (n) { return n !== solModal && !n.inert; });
     inertSiblings.forEach(function (n) { n.inert = true; });
@@ -1878,7 +1955,7 @@ footer .source-credits p { margin: 0; }
         notice.appendChild(amcLicense);
         notice.appendChild(document.createTextNode('. Formatting and selected corrections applied. No MAA endorsement. '));
         var amcNotes = el('a', null, 'Source notes');
-        amcNotes.href = 'https://github.com/rqzhu-aide/math-practice/blob/main/amc-bank/NOTICE.md';
+        amcNotes.href = '../database/amc-bank/NOTICE.md';
         amcNotes.target = '_blank'; amcNotes.rel = 'noopener noreferrer';
         notice.appendChild(amcNotes);
       }
@@ -1967,8 +2044,8 @@ footer .source-credits p { margin: 0; }
     if (feedback) feedback.revisionChanged();
     if (!lastSubmitted) { els.submissionNote.textContent = ""; return; }
     var saved = saveFailures.draft || saveFailures.notebook ? '' : 'Your work is saved. ';
-    if (currentQuestion && currentQuestion.gradingStatus === 'disputed') { els.submissionNote.textContent = saved + 'This disputed problem has no score or automatic grading.'; return; }
-    var edited = els.thoughts.value.trim() !== lastSubmitted.thoughts || selectedAnswer !== lastSubmitted.answer;
+    if (currentQuestion && window.MathPracticeAnswers.gradingNotice(currentQuestion) !== null) { els.submissionNote.textContent = saved + 'This disputed problem has no score or automatic grading.'; return; }
+    var edited = els.thoughts.value.trim() !== lastSubmitted.thoughts || !answerTools.same(selectedAnswer, lastSubmitted.answer);
     els.submissionNote.textContent = edited ? "You have edited your work. Submit again to update the answer and reasoning checks." : running ? "Answer submitted. Checking your answer and thinking..." : feedback && feedback.mathState === "error" ? saved + "The check is unavailable; submit again to retry." : "Submitted. You can revise your answer or thinking and try again.";
   }
   function cancelRun() {
@@ -1979,7 +2056,7 @@ footer .source-credits p { margin: 0; }
     running = on;
     els.thoughtsSubmit.disabled = on;
     els.thoughtsSubmit.setAttribute("aria-busy", on ? "true" : "false");
-    $('submitLabel').textContent = on ? "Checking..." : currentQuestion && currentQuestion.gradingStatus === 'disputed' ? 'Save work' : "Submit answer";
+    $('submitLabel').textContent = on ? "Checking..." : currentQuestion && window.MathPracticeAnswers.gradingNotice(currentQuestion) !== null ? 'Save work' : "Submit answer";
     if (speechInput) speechInput.sync();
   }
   document.addEventListener("keydown", function (e) {
@@ -1995,44 +2072,49 @@ footer .source-credits p { margin: 0; }
   });
 
   function buildAnswerButtons(q) {
-    var free = q.responseType && q.responseType !== 'choice';
+    var multi = q.responseType === 'multiSelect';
+    var free = q.responseType && q.responseType !== 'choice' && !multi;
     var open = q.responseType === 'self';
     $('writtenAnswer').hidden = !free;
     $('writtenAnswerLabel').setAttribute('for', open ? 'openAnswer' : 'freeAnswer');
     $('freeAnswer').hidden = !free || open; $('openAnswer').hidden = !open; els.answerOpts.hidden = !!free;
     els.answerOpts.className = 'answer-opts';
+    els.answerOpts.setAttribute('role', multi ? 'group' : 'radiogroup');
+    els.answerOpts.setAttribute('aria-label', multi ? 'Your answers. Select all that apply.' : 'Your answer');
     $('freeAnswer').value = free && !open ? selectedAnswer || '' : '';
     $('openAnswer').value = open ? selectedAnswer || '' : '';
     $('freeAnswer').placeholder = q.answerForm === 'decimal' ? 'Enter a decimal numeral' : q.answerForm === 'ordered-list' ? 'List values in the requested order, separated by commas' : q.responseType === 'numeric' ? 'Number or fraction; separate multiple values with commas' : 'Enter an expression or a short answer';
     els.answerOpts.replaceChildren.apply(els.answerOpts,
-      "ABCDE".split("").filter(function (L) { return q.choices && q.choices[L]; })
+      answerTools.choiceIds(q)
         .map(function (L, index) {
           var b = el("button", "answer-opt", L);
           b.type = "button";
           b.dataset.answer = L;
-          b.setAttribute("role", "radio");
-          b.setAttribute("aria-checked", selectedAnswer === L ? "true" : "false");
-          b.classList.toggle("sel", selectedAnswer === L);
-          b.tabIndex = selectedAnswer ? (selectedAnswer === L ? 0 : -1) : (index === 0 ? 0 : -1);
+          var selected = multi ? selectedAnswer.indexOf(L)>=0 : selectedAnswer === L;
+          b.setAttribute("role", multi ? 'checkbox' : 'radio');
+          b.setAttribute("aria-checked", selected ? "true" : "false");
+          b.classList.toggle("sel", selected);
+          b.tabIndex = multi ? 0 : selectedAnswer ? (selected ? 0 : -1) : (index === 0 ? 0 : -1);
           function choose(value) {
-            selectedAnswer = value;
+            selectedAnswer = multi ? answerTools.choiceIds(q).filter(function(id){return id === value ? selectedAnswer.indexOf(id)<0 : selectedAnswer.indexOf(id)>=0;}) : value;
             Array.prototype.forEach.call(els.answerOpts.children, function (c, i) {
-              var on = c.dataset.answer === selectedAnswer;
+              var on = multi ? selectedAnswer.indexOf(c.dataset.answer)>=0 : c.dataset.answer === selectedAnswer;
               c.classList.toggle("sel", on);
               c.setAttribute("aria-checked", on ? "true" : "false");
-              c.tabIndex = selectedAnswer ? (on ? 0 : -1) : (i === 0 ? 0 : -1);
+              c.tabIndex = multi ? 0 : selectedAnswer ? (on ? 0 : -1) : (i === 0 ? 0 : -1);
             });
             saveAttempt(true);
             updateSubmissionNote();
           }
-          b.addEventListener("click", function () { choose(selectedAnswer === L ? null : L); });
+          b.addEventListener("click", function () { choose(!multi && selectedAnswer === L ? null : L); });
           b.addEventListener("keydown", function (e) {
             var step = e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : e.key === "ArrowLeft" || e.key === "ArrowUp" ? -1 : 0;
             if (!step) return;
             e.preventDefault();
             var buttons = Array.prototype.slice.call(els.answerOpts.children);
             var next = buttons[(buttons.indexOf(b) + step + buttons.length) % buttons.length];
-            choose(next.dataset.answer); next.focus();
+            if (!multi) choose(next.dataset.answer);
+            next.focus();
           });
 
           return b;
@@ -2054,11 +2136,11 @@ footer .source-credits p { margin: 0; }
     graphEvidence: function (row) { if (window.MathPracticeGraph) window.MathPracticeGraph.record(row); },
     submitted: function (snapshot) {
       lastSubmitted = snapshot;
-      if (!snapshot.answer && !snapshot.thoughts.trim()) { saveAttempt(); updateSubmissionNote(); return; }
+      if (!answerTools.hasAnswer(snapshot.answer) && !snapshot.thoughts.trim()) { saveAttempt(); updateSubmissionNote(); return; }
       var entry = notebook[currentQuestion.id] || {};
-      var approach = {answer: snapshot.answer, thoughts: snapshot.thoughts};
+      var approach = {answer: answerTools.copy(snapshot.answer), thoughts: snapshot.thoughts};
       if (!entry.first) entry.first = approach;
-      if (!entry.last || entry.last.answer !== approach.answer || entry.last.thoughts !== approach.thoughts) {
+      if (!entry.last || !answerTools.same(entry.last.answer, approach.answer) || entry.last.thoughts !== approach.thoughts) {
         entry.submissions = (entry.submissions || 0) + 1;
         entry.removed = false;
       }

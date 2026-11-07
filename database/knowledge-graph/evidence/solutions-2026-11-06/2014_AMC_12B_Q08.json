@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2014_AMC_12B_Q08",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ab7cad21ddfa3fca3d1b26fd59fa914ddd08e4f766aadc976fb88cb2a82fdeb3",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "7bf6ef203798916d6e9afaacfe7d8da36250d902d0c7e36e590672118cdce8bc",
+  "solutionFigureHashes": {},
+  "candidateHash": "838882e64ee48e39b76e3503f6053d7442c7abd753ef6429ac5c1be4a758e53d",
+  "candidate": {
+    "questionId": "2014_AMC_12B_Q08",
+    "derivedAnswer": "C (7 possible values)",
+    "answerStatus": "matches",
+    "answerReason": "The addition forces C=0 and D=A+B≤9. Distinct nonzero A and B give D≥3, and every D from 3 through 9 is attainable.",
+    "methods": [
+      {
+        "id": "compare-units-and-leading-columns",
+        "label": "Compare the units and leading columns",
+        "explanation": "The units column and the leftmost column both add \\(A+B\\). Comparing their carries is useful because both produce the digit \\(D\\).\n\nIn the units column, either \\(A+B=D\\) or \\(A+B=D+10\\). In the leftmost column, \\(A+B\\), together with any incoming carry, equals \\(D\\), since the result has no sixth digit. Thus \\(A+B\\le D\\). Combining these observations forces\n\\[\nA+B=D,\n\\]\nwith no carry from the units column and no carry into the leftmost column.\n\nThe tens column now adds \\(C+D\\) and produces the digit \\(D\\). Therefore \\(C\\) must be 0: any positive digit \\(C\\le9\\) would change the units digit of \\(C+D\\). With \\(C=0\\) and \\(A+B=D\\), the hundreds and thousands columns also work without carries.\n\nSince the digits are distinct, \\(A\\) and \\(B\\) are distinct nonzero digits. Their smallest possible sum is \\(1+2=3\\), while \\(D\\) is at most 9. Hence only \\(D=3,4,\\ldots,9\\) can occur.\n\nEvery one of these values works: choose \\(A=1\\), \\(B=D-1\\), and \\(C=0\\). These four digits are distinct, and every column satisfies the addition. We are counting the possible values of \\(D\\), so this gives exactly \\(\\boxed{7}\\) values, choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations"
+        ],
+        "prerequisiteIds": [
+          "cnm_p096"
+        ],
+        "levelReason": "Decimal place value, carries, and bounded digit reasoning suffice; no advanced number theory is used."
+      },
+      {
+        "id": "place-value-equation-and-bound",
+        "label": "Expand by place value",
+        "explanation": "Writing each five-digit number by place value lets us collect all occurrences of each letter. Here an overline denotes the number formed by the displayed digits:\n\\[\n\\begin{aligned}\n\\overline{ABBCB}&=10000A+1101B+10C,\\\\\n\\overline{BCADA}&=101A+10000B+1000C+10D,\\\\\n\\overline{DBDDD}&=10111D+1000B.\n\\end{aligned}\n\\]\nSubstituting these expressions into the addition and collecting terms gives\n\\[\n10101(A+B)+1010C=10101D,\n\\]\nor\n\\[\n10101(D-A-B)=1010C.\n\\]\nBecause \\(C\\) is a digit,\n\\[\n0\\le1010C\\le9090<10101.\n\\]\nThe left side is an integer multiple of 10101. The only such multiple in this range is 0, so \\(C=0\\) and \\(D=A+B\\).\n\nDistinctness now makes \\(A\\) and \\(B\\) distinct positive digits. Consequently \\(3\\le D\\le9\\). Conversely, for each \\(D\\) in this range, choose \\(A=1\\), \\(B=D-1\\), and \\(C=0\\). The digits are distinct and satisfy the collected equation, which is equivalent to the original addition. Thus every listed value is attainable, and there are exactly \\(\\boxed{7}\\) possible values of \\(D\\), choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_027"
+        ],
+        "prerequisiteIds": [
+          "cnm_p096",
+          "cnm_034"
+        ],
+        "levelReason": "The alternative uses decimal expansions, collection of like terms, and an elementary bound on an integer multiple, all within school algebra."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_p096"
+    ],
+    "annotationRationale": "The task assesses finding every possible digit value under integer equations and distinctness restrictions. Decimal place value supports both routes. The first method constrains carries locally; the second translates the full numbers into expressions and bounds an integer multiple. Expression writing and collecting terms remain local to the second method. Both methods supply a construction for every eligible D and count values rather than digit assignments.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2014_AMC_12B_Q08",
+    "decision": "accept",
+    "mathematicalCheck": "The units and leading columns force A+B=D without their adjacent carries, after which the tens column forces C=0. Independently, the place-value expansion correctly gives 10101(D-A-B)=1010C; its bounds force both sides to vanish. Distinctness gives 3≤D≤9, and A=1, B=D-1, C=0 realizes every value, yielding seven.",
+    "levelCheck": "Both decimal-carry reasoning and the elementary place-value equation are appropriate for AMC 12.",
+    "methodDistinctness": "The methods offer distinct accessible ideas: local carry constraints and a global integer-multiple bound.",
+    "annotationCheck": "The integer-constraint target and shared decimal-place-value support fit both methods. Expression writing and combining like terms correctly remain local to the second method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "compare-units-and-leading-columns": "compare-units-and-leading-columns",
+    "place-value-equation-and-bound": "place-value-equation-and-bound"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "683a17d47cb13291a1793b3c03c88fbaa8160fa5167cbf9e9740cfd20b86e856",
+    "inputHash": "40592d17138d752bff5719ae0c1d471f8640cdee6f58c7119f009cd2fc3980de",
+    "authorInputHash": "ae67dff0690d0819851d638bb03226ee6646412547e7e8f1b667d7b4771c94e3",
+    "reviewInputHash": "355f57a6de522a0c773cd300ecc11892fe597726199ca2a565979c56a1d41a1d",
+    "authorResponseHash": "f899a5847a43b3a12db0f8171e092d1f9a2e8e194a1e00a834960c5fddc56d36",
+    "reviewerResponseHash": "f9d8a1752ae74762907fbda3df2cd50162ed1bb225fb344398de939d8373a66c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

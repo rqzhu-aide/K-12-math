@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2011_AMC_12A_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "c521ef6e6a6b7ed2128bd71f3961925c0ba12384fb0a8c32d0b20b0775597b8a",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "74e46c6d77418d32f7b6a4f4ee9519fedf8d9ad5f11eed1482e0fc674facf8f0",
+  "solutionFigureHashes": {},
+  "candidateHash": "cd9d6aa19c376d8569c10bb4baaa8bf95140a59822ef7056d2356aeaa57062fa",
+  "candidate": {
+    "questionId": "2011_AMC_12A_Q23",
+    "derivedAnswer": "√3 - 1 (C)",
+    "answerStatus": "matches",
+    "answerReason": "For nonconstant f, the identity forces b=-1 or b²+2a+1=0. These give 1≤|b|≤√3, and both endpoints are attained. The literal domain qualification also permits a=b=-1, whose |b| is 1, so it does not change the answer.",
+    "methods": [
+      {
+        "id": "compose-and-bound-the-modulus",
+        "label": "Compose the rational functions and bound the modulus",
+        "explanation": "First handle the possibility that \\(f\\) is constant. If \\(a=b\\), then \\(f(z)=1\\) wherever it is defined. When \\(b\\ne-1\\), all later iterates also equal \\(1\\), so they cannot equal every allowed input \\(z\\). When \\(a=b=-1\\), however, \\(f(z)=1\\) for \\(z\\ne1\\), while \\(f(1)\\) is undefined. Thus \\(g\\) has empty domain, and the stated identity holds because there are no inputs to check. This allowed case has \\(|b|=1\\).\n\nNow assume \\(a\\ne b\\). Cross-multiplication shows that \\(f(u)=f(v)\\) implies \\((b-a)(u-v)=0\\), so \\(f\\) is one-to-one on its domain. At each of four successive evaluations, at most one additional starting input can reach the forbidden value \\(-b\\). Therefore \\(g(g(z))\\) is defined for infinitely many \\(z\\), which allows its identity to impose coefficient conditions.\n\nComposing \\(f\\) with itself gives\n\\[\ng(z)=\\frac{(1+a)z+a(1+b)}{(1+b)z+a+b^2}.\n\\]\nFor shorter calculations, put\n\\[\np=1+a,\\quad q=a(1+b),\\quad\nr=1+b,\\quad s=a+b^2.\n\\]\nThen, at inputs where the original compositions are defined,\n\\[\ng(g(z))=\n\\frac{(p^2+qr)z+q(p+s)}{r(p+s)z+rq+s^2}.\n\\]\nSetting this equal to \\(z\\) and clearing the nonzero denominator yields\n\\[\nr(p+s)z^2+(s^2-p^2)z-q(p+s)=0.\n\\]\nA nonzero polynomial of degree at most two cannot vanish at infinitely many inputs. In particular, its quadratic coefficient must be zero, giving\n\\[\n(1+b)(1+2a+b^2)=0.\n\\]\nThus either \\(b=-1\\), which gives \\(|b|=1\\), or\n\\[\nb^2+1=-2a.\n\\]\nIn the second case, \\(|a|=1\\) implies \\(|b^2+1|=2\\). Using the triangle inequality and \\(|b^2|=|b|^2\\), we obtain\n\\[\n2\\le |b|^2+1,\n\\qquad\n|b|^2=|(b^2+1)-1|\\le2+1.\n\\]\nHence every allowed case satisfies\n\\[\n1\\le |b|\\le\\sqrt3.\n\\]\n\nBoth endpoints actually occur. Take \\(a=1,b=-1\\). Then \\(g(z)=z\\) wherever the original composition is defined, so \\(|b|=1\\) is possible. For the other endpoint, take \\(a=1,b=i\\sqrt3\\). Here\n\\[\np=2,\\quad s=-2,\\quad q=r=1+i\\sqrt3.\n\\]\nThus \\(p+s=0\\) and \\(p^2+qr=2+2i\\sqrt3\\ne0\\). The displayed composition formula therefore reduces to \\(g(g(z))=z\\) on its original domain, establishing \\(|b|=\\sqrt3\\).\n\nThe difference between the largest and smallest values is consequently \\(\\boxed{\\sqrt3-1}\\), choice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "math:functional-equations",
+          "math:function-composition-iteration",
+          "cnm_162",
+          "cnm_h098",
+          "cnm_h102"
+        ],
+        "prerequisiteIds": [
+          "cnm_h101",
+          "cnm_h097",
+          "cnm_156"
+        ],
+        "levelReason": "The argument uses direct rational composition, elementary polynomial coefficient reasoning, and complex-modulus inequalities. It requires no linear algebra or advanced theory of complex transformations."
+      }
+    ],
+    "assessedIds": [
+      "math:functional-equations",
+      "cnm_h098"
+    ],
+    "supportIds": [
+      "cnm_h101",
+      "cnm_h097",
+      "cnm_156"
+    ],
+    "annotationRationale": "The task constrains a parameterized function by an identity and asks for extrema of a complex modulus. Composition and rational-expression arithmetic produce the parameter restriction; modulus inequalities give universal bounds, and complex multiplication verifies an attaining example. The proof explicitly handles inherited denominator restrictions and the constant-function case. Equality of complex numbers by comparing real and imaginary parts is not used.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The qualification 'for all z for which g(g(z)) is defined' permits a=b=-1 even though the iterated expression is nowhere defined. This recorded caveat adds |b|=1 and does not change the extrema or choice C."
+    ]
+  },
+  "review": {
+    "questionId": "2011_AMC_12A_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "For a ≠ b, injectivity ensures that only finitely many inputs are excluded. The composition identity therefore forces (1+b)(1+2a+b²) = 0. This yields 1 ≤ |b| ≤ √3, and the supplied examples attain both endpoints. The constant case a = b = −1 is correctly retained under the literal domain qualification.",
+    "levelCheck": "Direct rational composition, elementary polynomial reasoning, and complex-modulus inequalities remain within AMC 12 scope.",
+    "methodDistinctness": "One complete algebraic method is sufficient; no advanced transformation theory is introduced.",
+    "annotationCheck": "The functional-equation, composition, rational-expression, modulus, and denominator annotations are supported. The empty-domain caveat is explicitly preserved.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "compose-and-bound-the-modulus": "compose-and-bound-the-modulus"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "3c79780274bbd8562d05b5f581b4eaee9bd16bc6df70aba5f42a7c5eef4fd60c",
+    "inputHash": "e56d5ad0e5e2b9d60de0fdef867281dfe72a24b62a0a1404603361328da9b673",
+    "authorInputHash": "a06a686d80119e9f04a800fab2fbad2ca6db050479b3bf5173d3b5901be4bad1",
+    "reviewInputHash": "00b2c64359b2ff6269382180c371c913869a54ababa3b2234b9cd71b4aa22c23",
+    "authorResponseHash": "98d549db7e611a3477ed724585ef133bd4b54b5cf8d70489c329c18295162a05",
+    "reviewerResponseHash": "b8a8f878bf26c3278f3a6aa1e8418a6a3c71930318dcd9cc5c5a00955193fffc",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

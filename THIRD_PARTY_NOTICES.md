@@ -1,36 +1,18 @@
-# Third-party material
+# Source credits and licenses
 
-- **American Mathematics Competitions (AMC):** question content, answer keys,
-  included original diagrams, and official solution booklets are credited to the
-  [Mathematical Association of America (MAA)](https://maa.org/student-programs/amc/).
-  Shared with MAA's permission under [CC BY-NC-SA 4.0](amc-bank/LICENSE), which also
-  covers this project's adaptations of AMC material. Transcription provenance
-  credits [LIVE by Po-Shen Loh](https://live.poshenloh.com/past-contests).
-  Its copied solution text and solution-only diagrams are not distributed.
-  Eight official MAA solution booklets cover 200 questions, and all 200
-  questions have [reviewed project adaptations](amc-bank/ADAPTATIONS.md). Source links,
-  modification details, and license scope are in [AMC NOTICE.md](amc-bank/NOTICE.md).
-- **Processed Chinese curriculum bank:** adapted from
-  [xiaoyang111222/cn-math-taxonomy](https://github.com/xiaoyang111222/cn-math-taxonomy),
-  revision `62b341d4b66b175413d6e3f697e37639fd96aa2d`. Data and its adaptations
-  retain [CC BY-NC 4.0](cn-math-bank/LICENSE). Attribution and modification details
-  are in [NOTICE.md](cn-math-bank/NOTICE.md).
-- **KaTeX:** bundled locally under its existing MIT license. The distribution
-  and its fonts retain the notices under `math-practice/vendor/katex/`.
-- **Mathematics knowledge graph:** the pinned Chinese taxonomy nodes and proposed
-  dependencies retain their source attribution and CC BY-NC 4.0 terms. Typed
-  revisions, review history, and question mappings are documented in
-  [knowledge-graph/README.md](knowledge-graph/README.md). AMC-specific mappings
-  and adaptations retain the AMC CC BY-NC-SA 4.0 terms.
-- **US curriculum layer:** standards and learning connections are retained from
-  the [Achieve the Core Common Core Coherence Map](https://tools.achievethecore.org/coherence-map/).
-  The source URL, retrieval time, snapshot hash, and edge meanings are recorded in
-  `knowledge-graph/source/curricula.json`. This distribution includes the attributed
-  snapshot. The external dataset's redistribution terms remain unverified; the
-  source-code repository's CC0 notice is not treated as a license for that dataset.
-- The ChatGPT sign-in button uses OpenAI's official logo. [OpenAI sign-in button formats](https://developers.openai.com/siwc/website)
+The original [K-12-math knowledge graph](database/knowledge-graph/NOTICE.md) is licensed under [CC BY-NC 4.0](database/knowledge-graph/LICENSE). Original project code, documentation, the template and original sample questions also use [CC BY-NC 4.0](LICENSE). Source-specific licenses apply to the following materials.
 
-The repository's [CC BY-NC 4.0 license](LICENSE) covers original project material.
-It does not replace third-party licenses or their attribution requirements.
-In particular, AMC material and its adaptations remain under CC BY-NC-SA 4.0;
-they are not relicensed under the original app's CC BY-NC 4.0 license.
+| Material | Credit and terms |
+|---|---|
+| Chinese question bank and source taxonomy | Adapted from [xiaoyang111222/cn-math-taxonomy](https://github.com/xiaoyang111222/cn-math-taxonomy), revision `62b341d4b66b175413d6e3f697e37639fd96aa2d`, under [CC BY-NC 4.0](database/cn-math-bank/LICENSE). English translations, diagrams and question records carry [modification notices](database/cn-math-bank/NOTICE.md). |
+| AMC questions, answer keys, original problem illustrations and official solution booklets | Copyright [Mathematical Association of America](https://maa.org/student-programs/amc/). Shared with MAA permission under [CC BY-NC-SA 4.0](database/amc-bank/LICENSE). The same terms apply to AMC adaptations, including question-specific annotations. [Bank notice](database/amc-bank/NOTICE.md) and [official solution adaptations](database/amc-bank/ADAPTATIONS.md). |
+| AMC transcription and figure provenance | [LIVE by Po-Shen Loh](https://live.poshenloh.com/past-contests) supplied typesetting and transcription sources. Three original problem illustrations retain [Art of Problem Solving](https://artofproblemsolving.com/) source URLs in the question records. The public collection excludes copied LIVE explanations and solution-only figures. |
+| Common Core mathematics standards | The National Governors Association Center for Best Practices and the Council of Chief State School Officers are the sole owners and developers of the standards. Standard text is included for educational use supporting the initiative, under the [Common Core Public License](https://www.thecorestandards.org/public-license/). The license has its own terms for examples. |
+| US learning connections | [Student Achievement Partners, Math Coherence Map](https://tools.achievethecore.org/coherence-map/). Learning Commons identifies SAP as the source and documents **CC0** for these learning progressions. The graph retains directional links and related pairs and expresses their direction explicitly. [Dataset description](https://docs.learningcommons.org/knowledge-graph/datasets/learning-progressions/math-coherence-map) and [dataset license](https://docs.learningcommons.org/knowledge-graph/resources/license). |
+| Sources consulted for US concept review | [Illustrative Mathematics legacy tasks](https://tasks.illustrativemathematics.org/) (CC BY-NC-SA 4.0), the [Progressions for the Common Core State Standards in Mathematics writing team](https://archive.math.arizona.edu/ime/progressions/), and [Marble Skill Taxonomy, Generative Spark, Inc.](https://github.com/withmarbleapp/os-taxonomy) (ODbL 1.0 database, CC BY-SA 4.0 authored text). Review records cite these sources for specific comparisons and give the project's own concept definitions and teaching judgments. |
+| Math rendering | [KaTeX](https://katex.org/) contributors, MIT license, with the [bundled license and font notices](math-practice/vendor/katex/). |
+| Sign-in artwork | OpenAI's official ChatGPT sign-in logo is used for the account connection button. [OpenAI sign-in button guidance](https://developers.openai.com/siwc/website). |
+
+**Common Core standards notice.** © Copyright 2010. National Governors Association Center for Best Practices and Council of Chief State School Officers. All rights reserved.
+
+Attribution and source links identify the materials used. They do not imply endorsement or grant trademark rights.

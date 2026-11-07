@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1951_AMC_12_Q09",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "abce35f6da78a20af52720aa268a53b5359d365a2ab5a1d3985e56dfa67ca659",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "ae267f9378e6ba4150b1f922ce4f860317638df1185d01528936bbbdfbac341c",
+  "solutionFigureHashes": {},
+  "candidateHash": "f5cdc243079f5070dc7d07823e9ba6a249349ba14ee08f2d1f216fc17fead848",
+  "candidate": {
+    "questionId": "1951_AMC_12_Q09",
+    "derivedAnswer": "D, 6a",
+    "answerStatus": "matches",
+    "answerReason": "Each perimeter is half the preceding perimeter, and the limiting sum beginning with 3a is 6a.",
+    "methods": [
+      {
+        "id": "1951_AMC_12_Q09_m1",
+        "label": "Sum the successively halved perimeters",
+        "explanation": "Let \\(a>0\\) be the original side length. A segment joining two side midpoints is half the length of the third side. Thus each new triangle has half the side length, and hence half the perimeter, of the preceding triangle. Including the original triangle, the perimeters are\n\\[\n3a,\\quad \\frac{3a}{2},\\quad \\frac{3a}{4},\\quad\\ldots.\n\\]\nLet \\(S_n\\) be the sum of the first \\(n\\) perimeters, where \\(n\\ge1\\). Multiplying this sum by \\(\\frac12\\) shifts the terms one place. Subtracting cancels all the intermediate terms:\n\\[\nS_n-\\frac12S_n=3a-\\frac{3a}{2^n}.\n\\]\nConsequently,\n\\[\nS_n=6a\\left(1-\\frac1{2^n}\\right).\n\\]\nAs \\(n\\) increases, \\(2^{-n}\\) tends to zero, so the limiting sum is \\(6a\\), choice D.",
+        "nodeIds": [
+          "cnm_185",
+          "cnm_h210",
+          "math:infinite-geometric-series"
+        ],
+        "prerequisiteIds": [
+          "cnm_055",
+          "cnm_p122",
+          "cnm_040"
+        ],
+        "levelReason": "Triangle midsegments and a finite geometric-sum calculation give an elementary precalculus argument."
+      }
+    ],
+    "assessedIds": [
+      "cnm_185",
+      "math:infinite-geometric-series"
+    ],
+    "supportIds": [
+      "cnm_055",
+      "cnm_p122",
+      "cnm_040"
+    ],
+    "annotationRationale": "The task combines the midpoint construction's half-length relation with a limiting geometric sum. The written method derives the finite sum using cnm_h210 before taking its limit. Midpoint meaning, equal sides of an equilateral triangle, and equality operations provide local support.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1951_AMC_12_Q09",
+    "decision": "accept",
+    "mathematicalCheck": "Midsegments halve each successive perimeter. Including the original triangle gives \\(S_n=6a(1-2^{-n})\\), whose limit is \\(6a\\), choice D. The cancellation endpoints are correct.",
+    "levelCheck": "The finite-sum subtraction is explained and establishes convergence using appropriate elementary precalculus.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The assessed midsegment and infinite-series nodes fit. cnm_h210 describes the method's finite-sum calculation, and the listed prerequisites support the written steps.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "1951_AMC_12_Q09_m1": "1951_AMC_12_Q09_m1"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "973983fefe91f553406fb8e61ea2f02900f440ba5e84372413223ac0521a8655",
+    "inputHash": "d0fb6d025d623c922e1b07218ba73ede82a63879c138dcaa2d8715bcacd876fb",
+    "authorInputHash": "801389a40f8b33c5fdf4d090e764f16267537de611de9632414d76ba0f899227",
+    "reviewInputHash": "c51e5736f9ded935e60becd8727526e6ba893e40e42bfef2a0736fc69fd4eba5",
+    "authorResponseHash": "d12fcc494ba793e1832b08ad3d45d921a2c988a0450f17160641f65c5e0f32c5",
+    "reviewerResponseHash": "a5f0a2834b0e35405706f6ea4a5bc9275b4f125c4ac93df663ac3b11c6f9418e",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

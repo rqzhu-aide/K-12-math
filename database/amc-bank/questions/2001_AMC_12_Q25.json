@@ -1,0 +1,95 @@
+{
+  "Year": 2001,
+  "Level": "AMC 12",
+  "Batch": "NA",
+  "Area": "Unclassified",
+  "Number": 25,
+  "Question": "Consider sequences of positive real numbers of the form \\(x,\\) \\(2000,\\) \\(y,\\) \\(\\ldots,\\) in which every term after the first is \\(1\\) less than the product of its two immediate neighbors. For how many different values of \\(x\\) does the term \\(2001\\) appear somewhere in the sequence?",
+  "Question Type": "text",
+  "Choices": {
+    "A": "\\(1\\)",
+    "B": "\\(2\\)",
+    "C": "\\(3\\)",
+    "D": "\\(4\\)",
+    "E": "more than \\(4\\)"
+  },
+  "Choices Type": "text",
+  "Correct Answer": "D",
+  "Solution": "The neighbor condition determines each new term from the previous two, so computing several terms may reveal all possible values that appear. Write the sequence as \\(a_1,a_2,\\ldots\\), with \\(a_1=x>0\\) and \\(a_2=2000\\). The condition says\n\\[\na_n=a_{n-1}a_{n+1}-1\\qquad(n\\ge2),\n\\]\nor\n\\[\na_{n+1}=\\frac{a_n+1}{a_{n-1}}.\n\\]\nStarting with two positive terms, this rule always produces another positive term. Thus every \\(x>0\\) gives a well-defined positive sequence, and all denominators below are nonzero.\n\nThe next two terms are\n\\[\na_3=\\frac{2001}{x},\\qquad\na_4=\\frac{x+2001}{2000x}.\n\\]\nFor the fifth term, combining the numerator first exposes a cancellation:\n\\[\na_5=\\frac{a_4+1}{a_3}\n=\\frac{2001(x+1)}{2000x}\\cdot\\frac{x}{2001}\n=\\frac{x+1}{2000}.\n\\]\nContinuing gives\n\\[\na_6=\\frac{(x+2001)/2000}{(x+2001)/(2000x)}=x,\n\\]\n\\[\na_7=\\frac{x+1}{(x+1)/2000}=2000.\n\\]\nThe pair \\((a_6,a_7)\\) equals \\((a_1,a_2)\\). Since each next term is uniquely determined by the preceding pair, all later terms repeat in blocks of five. Hence \\(2001\\) must occur among\n\\[\nx,\\quad 2000,\\quad \\frac{2001}{x},\\quad\n\\frac{x+2001}{2000x},\\quad \\frac{x+1}{2000}.\n\\]\nThe second entry cannot equal \\(2001\\). Setting each of the other entries equal to \\(2001\\) gives\n\\[\n\\begin{aligned}\na_1=2001&:\\quad x=2001,\\\\\na_3=2001&:\\quad x=1,\\\\\na_4=2001&:\\quad 2001=4001999x,\\\\\na_5=2001&:\\quad x=4001999.\n\\end{aligned}\n\\]\nThus the possible starting values are\n\\[\n\\frac{2001}{4001999},\\quad 1,\\quad 2001,\\quad 4001999.\n\\]\nThey are all positive and are listed in strictly increasing order, so they are four distinct admissible values. The repeating block proves there are no others. The answer is \\(\\boxed{4}\\), choice \\(\\mathrm{D}\\).",
+  "Meta": {
+    "QuestionSource": "live-poshenloh",
+    "AnswerSource": "live-poshenloh-answer-key",
+    "SolutionSource": "Original Math Practice solution",
+    "AreaSource": "Pending topic curation",
+    "Concepts": "recursion; casework",
+    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2001/solutions",
+    "SourceSHA256": "2b02bbb4fa7c03d6feb33f4029b193567405d734e7ddb997db6e54838a876cea",
+    "Figures": [],
+    "FigureSources": {},
+    "SourceQuestionCount": 25,
+    "HistoricalSeries": "AMC 12",
+    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+    "Copyright": "Copyright Mathematical Association of America",
+    "License": "CC-BY-NC-SA-4.0",
+    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "TranscriptionSource": "LIVE by Po-Shen Loh",
+    "Modifications": [
+      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
+      "Third-party worked solution and solution-only figures omitted from the public distribution"
+    ],
+    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+    "SolutionReview": {
+      "status": "reviewed",
+      "solutionSHA256": "9e3d9409b71ded7e15af1b84490042b638f2e0ddddf2eec074f41b469437833a",
+      "questionContentHash": "0f805b10251e3a45020ac97da87740cfb33f95120065e5636bd277306b95958a",
+      "evidence": {
+        "path": "knowledge-graph/evidence/solutions-2026-11-06/2001_AMC_12_Q25.json",
+        "sha256": "66f21d9ffc3ad8f574bfa3844be7564179dc58ca336ba59d78fbf0dfa56202ea"
+      },
+      "author": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "reviewer": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      }
+    }
+  },
+  "ID": "2001_AMC_12_Q25",
+  "Bank": "amc",
+  "SchemaVersion": "2.0",
+  "ResponseType": "choice",
+  "Language": "en",
+  "domain": [],
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "1.0.0",
+    "contentHash": "0f805b10251e3a45020ac97da87740cfb33f95120065e5636bd277306b95958a",
+    "status": "mapped",
+    "reviewStatus": "machine_examined",
+    "assessedIds": [
+      "cnm_h200"
+    ],
+    "supportIds": [
+      "cnm_162",
+      "cnm_165"
+    ],
+    "routes": [
+      {
+        "id": "five-term-cycle",
+        "label": "Find and prove a repeating block",
+        "nodeIds": [
+          "cnm_h200",
+          "math:function-composition-iteration",
+          "cnm_162",
+          "cnm_165",
+          "cnm_h197",
+          "cnm_156"
+        ]
+      }
+    ],
+    "flags": []
+  }
+}

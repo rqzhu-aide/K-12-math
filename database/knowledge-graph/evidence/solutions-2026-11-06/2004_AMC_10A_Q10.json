@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2004_AMC_10A_Q10",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "2e547bbb0e4094e82a9a5f353e3aa034280b6a3a395dd4229b2e3e103b471b05",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "e75af33d991963b7bc569c30ad86876df396a67430197c4740a923486b004319",
+  "solutionFigureHashes": {},
+  "candidateHash": "3cefa4d75e4f8c2dd54f1031752c8f9b313488ee45d3c5be9fb4e26bde4b3d66",
+  "candidate": {
+    "questionId": "2004_AMC_10A_Q10",
+    "derivedAnswer": "D. 35/128",
+    "answerStatus": "matches",
+    "answerReason": "Exactly 35 of the 128 equally likely seven-flip outcomes give the same head count for both coins.",
+    "methods": [
+      {
+        "id": "matching-head-counts",
+        "label": "Count each possible common head total",
+        "explanation": "The head counts can agree only at \\(0,1,2,\\) or \\(3\\), since coin \\(A\\) is flipped just three times. The seven independent fair flips have \\(2^7=128\\) equally likely complete outcomes.\n\nFor coin \\(A\\), the numbers of sequences with \\(0,1,2,3\\) heads are \\(1,3,3,1\\). For coin \\(B\\), the corresponding counts are \\(1,4,6,4\\). These counts come from choosing the head positions: for example, two heads among four flips can occupy \\(4\\cdot3\\div2=6\\) pairs of positions. Three heads among four flips are determined by the position of the lone tail.\n\nFor each common head total, multiply the two sequence counts. Then add the four disjoint cases:\n\\[\n1\\cdot1+3\\cdot4+3\\cdot6+1\\cdot4=35.\n\\]\nEvery matching outcome has exactly one common head total, and its two coin sequences specify it uniquely. Thus the probability is\n\\[\n\\boxed{\\frac{35}{128}},\n\\]\nchoice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "cnm_h137",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_h140",
+          "cnm_h231",
+          "cnm_h236",
+          "cnm_h230"
+        ],
+        "levelReason": "Uses small position counts, multiplication, addition of disjoint counts, and equally likely outcomes."
+      },
+      {
+        "id": "reverse-b-labels",
+        "label": "Exchange heads and tails for coin B",
+        "explanation": "A reversible change of labels turns the matching condition into a single total-head condition. Keep coin \\(A\\)’s three results, but exchange heads and tails in all four results for coin \\(B\\).\n\nSuppose the original head counts are \\(a\\) for \\(A\\) and \\(b\\) for \\(B\\). After the exchange, the combined seven results contain\n\\[\na+(4-b)\n\\]\nheads. This equals \\(4\\) exactly when \\(a=b\\). Exchanging the labels again recovers the original outcome, so this gives a one-to-one correspondence between matching outcomes and seven-result sequences containing exactly four heads.\n\nSuch a sequence is determined by its three tail positions. There are\n\\[\n\\frac{7\\cdot6\\cdot5}{3\\cdot2\\cdot1}=35\n\\]\nchoices: the numerator chooses three distinct positions in order, and division removes the six orders of each set of positions.\n\nThe seven independent fair flips have \\(2^7=128\\) equally likely outcomes. Therefore the desired probability is \\(\\boxed{35/128}\\), choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "cnm_h137",
+          "math:bijective-counting",
+          "cnm_h237"
+        ],
+        "prerequisiteIds": [
+          "cnm_h140",
+          "cnm_h231",
+          "cnm_h236"
+        ],
+        "levelReason": "Uses a reversible relabeling and derives the needed combination count directly from ordered position choices."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h137"
+    ],
+    "supportIds": [
+      "cnm_h140",
+      "cnm_h231",
+      "cnm_h236"
+    ],
+    "annotationRationale": "The task-level target is probability from favorable and total equally likely outcome counts. Independence, multiplication counting, and unordered position selection support both methods. The first method uses combined counting over four disjoint cases. The second uses a bijection and a combination formula. Neither written method requires the binomial distribution.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2004_AMC_10A_Q10",
+    "decision": "accept",
+    "mathematicalCheck": "The common head totals give 1+12+18+4=35 favorable outcomes among 128 equally likely outcomes. Independently, reversing B's labels is an involution taking equal head counts exactly to seven-result sequences with four heads, counted by 7·6·5/6=35.",
+    "levelCheck": "Both methods explain their counting and multiplicities using elementary reasoning appropriate for AMC 10.",
+    "methodDistinctness": "The reversible relabeling supplies a genuinely distinct insight from counting four separate cases.",
+    "annotationCheck": "cnm_h137 is route-neutral. Shared supports are used by both methods, while combined counting and bijection/combination-formula knowledge remain method-local. No binomial-distribution annotation is needed.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "matching-head-counts": "matching-head-counts",
+    "reverse-b-labels": "reverse-b-labels"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "6f82a10896c55f05515ac2589283a22424f11628f80af4900676702d54348c85",
+    "inputHash": "689f498a8a18b8599e8c94ec2441f6baf25dbbf2deb7097bc02daf5a204e7309",
+    "authorInputHash": "46ba709756e33930e1b565c639f281865300dac47e45da22e400535394a40501",
+    "reviewInputHash": "65c2457ba35602a4a5f183fb3a433daf9cd987fbddfb5081d277b69ca9ccb14f",
+    "authorResponseHash": "0bf3965dc3471e4473cc827da71696d77018bbe28a4cebf852d371b7d09ede3a",
+    "reviewerResponseHash": "b3e2498cf22c9f4cab6826036ba1258c6667234ed7f0638c402218d3b15c0927",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

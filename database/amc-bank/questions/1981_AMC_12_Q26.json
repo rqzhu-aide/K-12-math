@@ -1,0 +1,122 @@
+{
+  "Year": 1981,
+  "Level": "AMC 12",
+  "Batch": "NA",
+  "Area": "Unclassified",
+  "Number": 26,
+  "Question": "Alice, Bob, and Carol repeatedly take turns tossing a die. Alice begins; Bob always follows Alice; Carol always follows Bob; and Alice always follows Carol. Find the probability that Carol will be the first one to toss a six. (The probability of obtaining a six on any toss is \\(\\frac16,\\) independent of the outcome of any other toss.)",
+  "Question Type": "text",
+  "Choices": {
+    "A": "\\(\\frac13\\)",
+    "B": "\\(\\frac29\\)",
+    "C": "\\(\\frac5{18}\\)",
+    "D": "\\(\\frac{25}{91}\\)",
+    "E": "\\(\\frac{36}{91}\\)"
+  },
+  "Choices Type": "text",
+  "Correct Answer": "D",
+  "Solution": "Method 1: Restart after an unsuccessful round\n\nGroup the tosses into rounds consisting of Alice's toss, Bob's toss, and Carol's toss. If all three miss a six, Alice starts again, and independence makes the remaining game identical to the original one.\n\nLet \\(p\\) be the probability that Carol gets the first six. She wins in the first round precisely when Alice and Bob miss and she succeeds. This has probability\n\\[\n\\left(\\frac56\\right)^2\\frac16=\\frac{25}{216}.\n\\]\nThe probability that all three miss is\n\\[\n\\left(\\frac56\\right)^3=\\frac{125}{216}.\n\\]\nAfter that event, Carol's chance of eventually winning is again \\(p\\). If Alice or Bob gets the first six in the first round, Carol's chance is zero. These disjoint first-round cases cover every possibility, so\n\\[\np=\\frac{25}{216}+\\frac{125}{216}p.\n\\]\nSolving gives\n\\[\n\\frac{91}{216}p=\\frac{25}{216},\n\\qquad p=\\boxed{\\frac{25}{91}},\n\\]\nchoice \\(\\boxed{\\text{D}}\\).\n\nMethod 2: Sum over Carol's possible winning tosses\n\nCarol tosses on tosses \\(3,6,9,\\ldots\\). To get the first six on toss \\(3m+3\\), where \\(m\\ge0\\), all preceding \\(3m+2\\) tosses must miss, and that toss must be a six. Independence gives probability\n\\[\n\\left(\\frac56\\right)^{3m+2}\\frac16.\n\\]\nThese events are mutually exclusive, and every outcome in which Carol gets the first six belongs to exactly one of them. Therefore the required probability is\n\\[\n\\sum_{m=0}^{\\infty}\n\\left(\\frac56\\right)^{3m+2}\\frac16.\n\\]\nThis is a geometric series with first term \\(25/216\\) and common ratio \\(125/216\\). The ratio is between \\(0\\) and \\(1\\), so the series converges, and its sum is\n\\[\n\\frac{25/216}{1-125/216}\n=\\boxed{\\frac{25}{91}},\n\\]\nchoice \\(\\boxed{\\text{D}}\\).",
+  "Meta": {
+    "QuestionSource": "live-poshenloh",
+    "AnswerSource": "live-poshenloh-answer-key",
+    "SolutionSource": "Original Math Practice solution",
+    "AreaSource": "Pending topic curation",
+    "Concepts": "dice (probability); geometric distribution; independent events",
+    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/1981/solutions",
+    "SourceSHA256": "c6ce7f738599c6031ac5c5d72d3b942196e165311f2d4a2376f35275ef654332",
+    "Figures": [],
+    "FigureSources": {},
+    "SourceQuestionCount": 30,
+    "HistoricalSeries": "AHSME",
+    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+    "Copyright": "Copyright Mathematical Association of America",
+    "License": "CC-BY-NC-SA-4.0",
+    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "TranscriptionSource": "LIVE by Po-Shen Loh",
+    "Modifications": [
+      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
+      "Third-party worked solution and solution-only figures omitted from the public distribution"
+    ],
+    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+    "SolutionReview": {
+      "status": "reviewed",
+      "solutionSHA256": "604c95ffc2b27bdcb79a8a7fee18d1a235ef5c59f5a13ad4bfa1eae37e144087",
+      "questionContentHash": "6c08fc32f0bfdfec63c2be9e39e19e927969c0a34694b942bc41e84b345d39db",
+      "evidence": {
+        "path": "knowledge-graph/evidence/solutions-2026-11-06/1981_AMC_12_Q26.json",
+        "sha256": "d99d7164d7e7b86d494a93552f74919596b1e0a7b98346ad8adf34fe88841c67"
+      },
+      "author": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "reviewer": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      }
+    }
+  },
+  "ID": "1981_AMC_12_Q26",
+  "Bank": "amc",
+  "SchemaVersion": "2.0",
+  "ResponseType": "choice",
+  "Language": "en",
+  "domain": [],
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "1.0.0",
+    "contentHash": "6c08fc32f0bfdfec63c2be9e39e19e927969c0a34694b942bc41e84b345d39db",
+    "status": "mapped",
+    "reviewStatus": "machine_scope_audited",
+    "assessedIds": [
+      "cnm_h141"
+    ],
+    "supportIds": [
+      "cnm_h140",
+      "cnm_h138"
+    ],
+    "routes": [
+      {
+        "id": "geometric-probability-series",
+        "label": "Sum over completed rounds",
+        "nodeIds": [
+          "math:infinite-geometric-series",
+          "cnm_h138"
+        ]
+      },
+      {
+        "id": "round-reset-recursion",
+        "label": "Restart after a failed round",
+        "nodeIds": [
+          "math:recursive-counting-probability",
+          "cnm_h246"
+        ]
+      },
+      {
+        "id": "restart-after-failed-round",
+        "label": "Restart after an unsuccessful round",
+        "nodeIds": [
+          "cnm_h141",
+          "math:recursive-counting-probability",
+          "cnm_h246",
+          "cnm_h140",
+          "cnm_h138",
+          "cnm_042"
+        ]
+      },
+      {
+        "id": "sum-winning-tosses",
+        "label": "Sum over Carol's possible winning tosses",
+        "nodeIds": [
+          "cnm_h141",
+          "cnm_h138",
+          "math:infinite-geometric-series",
+          "cnm_h140",
+          "cnm_h207"
+        ]
+      }
+    ],
+    "flags": []
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2004_AMC_12A_Q17",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "a2693bc77ad15e8810d018321d2d2482a070d972b04d4dd3555a0a0d94ed5ad6",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "6eb593cdb3c1eb58e718b31190d4841f1fb8612cf1e61175dc9037b735419290",
+  "solutionFigureHashes": {},
+  "candidateHash": "387709aa9bd0008f4284d8c6ac52d34c058e33d28c68bde2eb224c6ac2795c33",
+  "candidate": {
+    "questionId": "2004_AMC_12A_Q17",
+    "derivedAnswer": "\\(2^{4950}\\), choice D",
+    "answerStatus": "matches",
+    "answerReason": "Repeated halving produces factors \\(2^{99},2^{98},\\ldots,2,1\\), followed by \\(f(1)=1\\). Their exponents sum to \\(1+2+\\cdots+99=4950\\), agreeing with D.",
+    "methods": [
+      {
+        "id": "unfold-recurrence",
+        "label": "Repeatedly halve the input",
+        "explanation": "The input is a power of 2, so repeatedly applying the rule will eventually reach the known value \\(f(1)=1\\). First choose \\(n=2^{99}\\):\n\\[\nf(2^{100})=2^{99}f(2^{99}).\n\\]\nThe next application contributes a factor \\(2^{98}\\), and each further application halves the input again. Continuing all the way to 1 gives\n\\[\nf(2^{100})\n=2^{99}\\cdot2^{98}\\cdots2\\cdot1\\cdot f(1).\n\\]\nMultiplying powers with the same base adds their exponents. Since \\(f(1)=1\\), this becomes\n\\[\nf(2^{100})=2^{1+2+\\cdots+99}.\n\\]\nTo sum the exponents, pair them from the ends: \\(1+99=100\\), \\(2+98=100\\), and so on. There are 49 such pairs and the middle term 50, giving\n\\[\n1+2+\\cdots+99=49(100)+50=4950.\n\\]\nTherefore \\(f(2^{100})=\\boxed{2^{4950}}\\), choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_h200",
+          "cnm_142",
+          "cnm_h204"
+        ],
+        "prerequisiteIds": [
+          "cnm_019",
+          "cnm_h197"
+        ],
+        "levelReason": "The recurrence is unfolded finitely, and its product is evaluated using elementary power laws and a paired arithmetic sum."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h200"
+    ],
+    "supportIds": [
+      "cnm_142",
+      "cnm_h204"
+    ],
+    "annotationRationale": "The requested values along powers of two form a recurrence determined by the supplied initial value. Multiplication of same-base powers and summation of consecutive exponents support its evaluation. The method needs neither a general formula for all inputs nor additional information about odd inputs.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2004_AMC_12A_Q17",
+    "decision": "accept",
+    "mathematicalCheck": "Repeated valid substitutions contribute factors \\(2^{99},2^{98},\\ldots,2,1\\) and terminate at \\(f(1)=1\\). Their exponent sum is \\(49\\cdot100+50=4950\\), uniquely determining \\(f(2^{100})=2^{4950}\\).",
+    "levelCheck": "Finite recurrence unfolding, power multiplication, and paired summation are appropriate and clearly explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The recurrence target and power-law and arithmetic-sum supports match the method. No values at other odd inputs or general formula for the entire function are required.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "unfold-recurrence": "unfold-recurrence"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "a99a5eaa34ff979d4ca7cf3796a22d30dcecc2032afeb07016719abf9f7b1db0",
+    "inputHash": "3c122ea262495423afcd8f559d942768a991f89040bc94be8b1cd2225aa57166",
+    "authorInputHash": "ea915996ad5d668ec2dead4c68dce4d79a5849b503790c01cb334a2755204ef8",
+    "reviewInputHash": "788a05b0c5edf8563cd0299f99f024b7a2dd42bfe7f804a0797ae91075111f48",
+    "authorResponseHash": "49901f1a707612a209e165e61a696d80c6f50ffa507f08ff96bda9c1a78aa8d3",
+    "reviewerResponseHash": "567cead57752b39d61b20fca412569e10d54118dfbda9241c04d65c59b0ca18d",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

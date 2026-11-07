@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2010_AMC_10A_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "4b0cce1016d0b8d4becf947ea1a422f7988fdfca70b9e643a8d503a3bccbe346",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "5bcfd859ee5a5092106ce45813337f8d82291447339ee3575406911b856deacc",
+  "solutionFigureHashes": {},
+  "candidateHash": "1525635587af384b216867d865c1fe956b2a1a215d0df45e146699c368e39ebc",
+  "candidate": {
+    "questionId": "2010_AMC_10A_Q25",
+    "derivedAnswer": "B: 3",
+    "answerStatus": "matches",
+    "answerReason": "The smallest starting values for sequences of lengths 1 through 8 are 0, 1, 2, 3, 7, 23, 167, and 7223. Thus N has units digit 3.",
+    "methods": [
+      {
+        "id": "smallest-predecessors",
+        "label": "Build the smallest sequence backward",
+        "explanation": "The example counts both the starting number and the final zero. Working backward lets us find the smallest starting number for each possible sequence length.\n\nSuppose a positive integer \\(x\\) has next term \\(r>0\\), obtained by subtracting \\(k^2\\). For \\(k^2\\) to be the largest square at most \\(x\\), we need\n\\[\nx=k^2+r<(k+1)^2=k^2+2k+1.\n\\]\nThus \\(r<2k+1\\), which is equivalent to \\(r\\leq2k\\) because the quantities are integers. The smallest possible \\(k\\) is therefore \\(\\lceil r/2\\rceil\\), where \\(\\lceil t\\rceil\\) is the smallest integer at least \\(t\\). Hence the smallest predecessor of \\(r>0\\) is\n\\[\ng(r)=r+\\left\\lceil\\frac r2\\right\\rceil^2.\n\\]\nThis choice satisfies \\(k^2\\leq x<(k+1)^2\\), so it really does produce \\(r\\) under Jim's rule.\n\nAs \\(r\\) increases, \\(\\lceil r/2\\rceil\\) cannot decrease, so \\(g(r)\\) increases. Therefore, among all remainders having a required sequence length, the smallest remainder also has the smallest possible predecessor. This proves that repeatedly taking smallest predecessors gives the minimum starting value at every length.\n\nLet \\(a_j\\) be the smallest starting value for a sequence containing exactly \\(j\\) numbers, allowing the auxiliary one-number sequence \\((0)\\). Then \\(a_1=0\\). The smallest positive predecessor of zero is \\(1\\), so \\(a_2=1\\). Applying \\(g\\) after that gives\n\\[\n\\begin{aligned}\na_3&=1+1^2=2,\\\\\na_4&=2+1^2=3,\\\\\na_5&=3+2^2=7,\\\\\na_6&=7+4^2=23,\\\\\na_7&=23+12^2=167,\\\\\na_8&=167+84^2=7223.\n\\end{aligned}\n\\]\nThe resulting sequence is \\(7223,167,23,7,3,2,1,0\\), with exactly eight numbers. The smallest possible \\(N\\) is therefore \\(7223\\), whose units digit is \\(\\boxed{3}\\), choice \\(\\text{B}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_h200",
+          "math:floor-ceiling"
+        ],
+        "prerequisiteIds": [
+          "cnm_h197",
+          "cnm_148"
+        ],
+        "levelReason": "The proof uses consecutive-square comparisons, integer rounding, and an elementary recurrence, with a direct argument establishing minimality."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_h197",
+      "cnm_148"
+    ],
+    "annotationRationale": "The central target is proving a smallest attainable starting integer, rather than merely exhibiting an eight-number sequence. The method derives a predecessor bound and attains it, then uses an increasing recurrence to preserve minimality. Ceiling notation and recurrence computation belong to this route. Ordered-sequence meaning and expansion of consecutive squares provide local support.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2010_AMC_10A_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "A predecessor k^2+r is valid exactly when r ≤ 2k, giving the minimum predecessor g(r)=r+ceil(r/2)^2 for r>0. Its strict increase justifies preserving minimality at each sequence length. The separately handled zero case and subsequent calculations give 0, 1, 2, 3, 7, 23, 167, 7223, so the units digit is 3.",
+    "levelCheck": "Consecutive-square comparisons and the elementary recurrence are within AMC 10 scope. The explanation establishes minimality as well as attainability.",
+    "methodDistinctness": "One complete backward-construction method is sufficient.",
+    "annotationCheck": "The extremal target is justified by the universal predecessor bound and its attainment. Recurrence and ceiling concepts are correctly method-local; sequence meaning and the square expansion are suitable support.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "smallest-predecessors": "smallest-predecessors"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "0b896eb0e5fe02f811c4a0f7a09f4ebc324ca8179be720ede07337c41ccf779f",
+    "inputHash": "52fffa57cf68b879f1f68413ef0a55225ca44fcc1ece67e1a2c40dfd4d3f377e",
+    "authorInputHash": "f53666b2e4ceafeec59880243285bd1f6715bd026636164d7675b17ad40b2633",
+    "reviewInputHash": "7af361467ff7182daf0f57db1bba5bf4256539982bf52c7c1ab548d3fbc2cdb7",
+    "authorResponseHash": "37ea8d935384ab21df7e4a23d319020dd66e76cacd588c9ac5515b46e39134c7",
+    "reviewerResponseHash": "0967d81731674aad06cfc45460175229a4276b8ae2f122e3e693c6e5f883c7d6",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

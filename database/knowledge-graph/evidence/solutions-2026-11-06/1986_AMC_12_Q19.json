@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1986_AMC_12_Q19",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "550b8769cb4bfa17f348adbafa1bfc42d5e4f2dc621d04524d25d6e864fa97cd",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "91654a123b35ce6d8da160b562bb4fcfdf3b915f7fffe76d01c3e8ebee6c61d1",
+  "solutionFigureHashes": {},
+  "candidateHash": "fefbf30eecf618b1d6bdd6734ab268cba66905c08314e4d89c0ea02ff86cff2f",
+  "candidate": {
+    "questionId": "1986_AMC_12_Q19",
+    "derivedAnswer": "\\(\\sqrt{13}\\) km (A)",
+    "answerStatus": "matches",
+    "answerReason": "After 5 km Alice is halfway along the third side. Regular-hexagon geometry gives a right triangle with squared legs 12 and 1, so her squared distance from the start is 13.",
+    "methods": [
+      {
+        "id": "diameter-right-triangles",
+        "label": "Use a diameter to find right triangles",
+        "explanation": "Label the consecutive vertices \\(A,B,C,D,E,F\\) in Alice's direction of travel, with \\(A\\) her starting point. Since \\(5=2+2+1\\), she ends at the midpoint \\(M\\) of \\(CD\\), so \\(CM=1\\).\n\nLet \\(O\\) be the hexagon's center. Joining \\(O\\) to the vertices gives six equilateral triangles: their central angles are \\(360^\\circ/6=60^\\circ\\), and each has two equal radii. Therefore the circumradius equals the side length, \\(2\\). The opposite vertices \\(A\\) and \\(D\\) are endpoints of a diameter, so \\(AD=4\\).\n\nBecause \\(C\\) lies on the circumcircle, the angle \\(ACD\\) subtended by diameter \\(AD\\) is a right angle. Hence\n\\[\nAC^2=AD^2-CD^2=4^2-2^2=12.\n\\]\nSince \\(M\\) lies on \\(CD\\), triangle \\(ACM\\) is also right at \\(C\\). Thus\n\\[\nAM^2=AC^2+CM^2=12+1=13.\n\\]\nAlice is \\(\\sqrt{13}\\) km from her starting point, choice A.",
+        "nodeIds": [
+          "cnm_266",
+          "cnm_176",
+          "cnm_254"
+        ],
+        "prerequisiteIds": [
+          "cnm_174",
+          "cnm_139",
+          "cnm_250",
+          "cnm_055"
+        ],
+        "levelReason": "Uses equilateral triangles in a regular hexagon, the angle subtended by a diameter, and Pythagoras."
+      },
+      {
+        "id": "coordinate-endpoint",
+        "label": "Locate the endpoint with coordinates",
+        "explanation": "Coordinates make Alice's halfway point easy to locate. Measure coordinates in kilometers, put the hexagon's center at \\((0,0)\\), and choose the orientation so Alice starts at \\(A=(-2,0)\\) and walks along the lower half.\n\nThe six triangles formed by joining the center to the vertices are equilateral, with side length \\(2\\). An altitude bisects a side into lengths \\(1\\) and \\(1\\), so its height is\n\\[\n\\sqrt{2^2-1^2}=\\sqrt3.\n\\]\nThe next three vertices are consequently\n\\[\nB=(-1,-\\sqrt3),\\qquad C=(1,-\\sqrt3),\\qquad D=(2,0).\n\\]\nAfter two complete sides and one more kilometer, Alice is halfway from \\(C\\) to \\(D\\), at\n\\[\nM=\\left(\\frac32,-\\frac{\\sqrt3}{2}\\right).\n\\]\nThe coordinate distance formula now gives\n\\[\nAM^2=\\left(\\frac32+2\\right)^2\n+\\left(-\\frac{\\sqrt3}{2}\\right)^2\n=\\frac{49}{4}+\\frac34=13.\n\\]\nThus her distance from the start is \\(\\sqrt{13}\\) km, choice A.",
+        "nodeIds": [
+          "cnm_266",
+          "cnm_176",
+          "cnm_h173",
+          "cnm_137"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_174",
+          "cnm_139",
+          "cnm_055"
+        ],
+        "levelReason": "Uses equilateral-triangle altitudes and the coordinate distance formula, which follows from Pythagoras; no trigonometry is needed."
+      }
+    ],
+    "assessedIds": [
+      "cnm_266",
+      "cnm_176"
+    ],
+    "supportIds": [
+      "cnm_055"
+    ],
+    "annotationRationale": "The task combines the metric structure of a regular hexagon with finding a straight-line distance from a perimeter journey. Segment addition and midpoint lengths support both methods. The first route uses the angle subtended by a diameter; the second uses coordinate placement and distance. These route-specific tools are alternatives, not joint requirements.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1986_AMC_12_Q19",
+    "decision": "accept",
+    "mathematicalCheck": "Alice reaches the midpoint of the third side. Method 1 correctly obtains AC²=16−4=12 and AM²=12+1=13. Method 2 gives displacement (7/2,−√3/2), whose squared length is also 13.",
+    "levelCheck": "Both methods use accessible school geometry and Pythagorean reasoning; the coordinate route needs no trigonometry.",
+    "methodDistinctness": "The diameter and inscribed-angle construction differs meaningfully from locating the endpoint with coordinates.",
+    "annotationCheck": "Regular-hexagon geometry and practical Pythagorean distance are shared targets. Segment calculations support both methods, while inscribed angles and coordinate distance remain method-specific.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "diameter-right-triangles": "diameter-right-triangles",
+    "coordinate-endpoint": "coordinate-endpoint"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "a48c6ba9cecb47e4002a4b8ce5e0b6c7aef90cf5b170cb1ccecbd963e06ebee2",
+    "inputHash": "4d24ee6843519d49c6b499efd3f20d83209d469c237bf4632191227138fe83f8",
+    "authorInputHash": "5c7bb0099f81cffaa4c0daabff5573e7c4338c05a0af874da693e21233c7fe46",
+    "reviewInputHash": "60eb49f1cf973691388d59fc37be9284e56b2dbd57ab8c44e587277a95fd6ccd",
+    "authorResponseHash": "f91e271b9a31e2f242c7656e28e64c5670b71aecb8b60823b8dba363d983e337",
+    "reviewerResponseHash": "1a45c2697bef61cfcfb71b2ec53b52bfc5af0ea5d3c0836202cfbe5c9446f197",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

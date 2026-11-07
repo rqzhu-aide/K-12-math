@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1997_AMC_8_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "bfbc8ded32b19905b1ff65dc28fd85608cf5435842af7dcf408825dd2af573a8",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "ec8c414ca9982bb70318c9dfc688ac9dd6db32dc9725d69e7d4f254994067812",
+  "solutionFigureHashes": {},
+  "candidateHash": "f485839bc9186cba6ab4f63e61bd32f65330f930673812e69d4db89ef40e4bf3",
+  "candidate": {
+    "questionId": "1997_AMC_8_Q23",
+    "derivedAnswer": "C: 36",
+    "answerStatus": "matches",
+    "answerReason": "There can be at most four digits. The only four-digit possibility is 1236, whose squared digits sum to 50 and whose digit product is 36.",
+    "methods": [
+      {
+        "id": "1997_AMC_8_Q23_m1",
+        "label": "Bound the number of digits",
+        "explanation": "The increasing order makes all digits distinct. None can be \\(0\\), because \\(0\\) would have to be the first digit of the integer.\n\nFive or more digits would have squared sum at least\n\\[\n1^2+2^2+3^2+4^2+5^2=55>50.\n\\]\nThus there are at most four digits. Any four-digit integer is larger than every integer with fewer digits, so we look for a four-digit solution.\n\nLet \\(d\\) be its last and largest digit. If \\(d\\ge7\\), even the three smallest other digits give\n\\[\n1^2+2^2+3^2+7^2=63>50,\n\\]\nwhich is impossible.\n\nIf \\(d\\le5\\), the four digits must be four of \\(1,2,3,4,5\\). Their squares total \\(55\\) before one digit is omitted. To leave \\(50\\), the omitted digit would need square \\(5\\), which no digit has.\n\nTherefore \\(d=6\\). The other three squared digits must sum to \\(50-36=14\\). Their smallest possible sum is already\n\\[\n1^2+2^2+3^2=14,\n\\]\nso those digits must be \\(1,2,3\\). Hence \\(1236\\) satisfies both conditions and is the largest qualifying integer. Its digit product is\n\\[\n1\\cdot2\\cdot3\\cdot6=\\boxed{36},\n\\]\nchoice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "math:extremal-principle"
+        ],
+        "prerequisiteIds": [
+          "cnm_020",
+          "cnm_p054"
+        ],
+        "levelReason": "The proof uses small digit squares, comparisons by digit count, and an exhaustive split according to the largest digit."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_020",
+      "cnm_p054"
+    ],
+    "annotationRationale": "The task requires proving that a valid integer is largest, so the extremal target fits. The method bounds the digit count, exhausts the possible largest digits, and constructs the attaining integer. Computing squares and comparing integers by digit count are supporting knowledge.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1997_AMC_8_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "Zero is excluded by increasing digits and the absence of leading zeros. Five digits require squared sum at least 55. For four digits, a largest digit at least 7 forces at least 63, while digits at most 5 would require omitting a square equal to 5 from 55. A largest digit of 6 forces the remaining digits to be 1,2,3. Thus 1236 is the unique four-digit solution and the largest overall, with digit product 36.",
+    "levelCheck": "The digit bounds and exhaustive largest-digit cases use elementary AMC 8 reasoning. The decisive comparisons and uniqueness argument are explicit.",
+    "methodDistinctness": "One complete bounds-and-construction method is sufficient.",
+    "annotationCheck": "The extremal target matches proving largestness. Computing squares and comparing integers by digit count are justified supports.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "1997_AMC_8_Q23_m1": "1997_AMC_8_Q23_m1"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "2fcc39966805f9bac60cfa02d2d4459ee50d4191c6f6371b31fb0ad6368d35cf",
+    "inputHash": "7e20cb676cc7407fa7bf4c38461a0ac73cd06737d5fdca67b64c0629f0a53507",
+    "authorInputHash": "60377b0d27f68dc3c63e798966c95c197bbd49b37e264aa7cb9bdc4573d540d4",
+    "reviewInputHash": "17dfafbedc305631928a7142562f2627cfe9823e1e05bd8ccf4257873a14da0d",
+    "authorResponseHash": "a0e6c58fbf42dd59048ad2422c0e25c900c9eaf2e0ae7d86e7b7f27a96ed63fe",
+    "reviewerResponseHash": "dca51ca1eab992ba20f5cb8c11e17d81ba6d06751b4e6837eef8349c485ac43b",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

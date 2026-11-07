@@ -1,0 +1,119 @@
+{
+  "Year": 2012,
+  "Level": "AMC 10",
+  "Batch": "B",
+  "Area": "Unclassified",
+  "Number": 22,
+  "Question": "Let \\((a_1,a_2,\\ldots,a_{10})\\) be a list of the first \\(10\\) positive integers such that for each \\(2\\le i\\le10\\) either \\(a_i + 1\\) or \\(a_i-1\\) or both appear somewhere before \\(a_i\\) in the list. How many such lists are there?",
+  "Question Type": "text",
+  "Choices": {
+    "A": "\\( \\ 120 \\)",
+    "B": "\\( 512 \\)",
+    "C": "\\( \\ 1024 \\)",
+    "D": "\\(181{,}440\\)",
+    "E": "\\(362{,}880\\)"
+  },
+  "Choices Type": "text",
+  "Correct Answer": "B",
+  "Solution": "Method 1: Build the list backward\n\nThe neighbor condition forces the numbers already listed to form a consecutive block. Initially there is just one number. If the current block is \\(L,L+1,\\ldots,R\\), an unused number with a neighbor in that block can only be \\(L-1\\) or \\(R+1\\), when that number is between \\(1\\) and \\(10\\). Adding it preserves a consecutive block.\n\nThis makes the backward process simpler. Start with all the numbers \\(1,2,\\ldots,10\\). The last entry of a valid list must be one endpoint of this block, because deleting it must leave a consecutive block. The same reasoning applies repeatedly: remove either the smallest or the largest remaining number until only one remains.\n\nThere are exactly two distinct endpoint choices at each of the first nine removals. The final remaining number is forced, so the multiplication principle gives\n\\[\n2^9=512\n\\]\nremoval histories.\n\nEvery such history produces a valid list: write the surviving number first, then write the removed numbers in reverse removal order. Each new number then extends the current block by one neighboring integer. Conversely, a valid list determines its removal history uniquely by reading it backward. Thus no valid list is omitted or counted twice.\n\nThere are \\(\\boxed{512}\\) lists, choice \\(\\boxed{\\text{B}}\\).\n\nMethod 2: Choose positions for the smaller entries\n\nFix the first entry to be \\(k\\), where \\(1\\le k\\le10\\). At every stage, the entries already used form a consecutive block: starting with \\(k\\), the next unused entry with a neighbor in the block must extend its lower or upper endpoint by one.\n\nConsequently, the numbers smaller than \\(k\\) must occur in the order\n\\[\nk-1,k-2,\\ldots,1,\n\\]\nand the numbers larger than \\(k\\) must occur in the order\n\\[\nk+1,k+2,\\ldots,10.\n\\]\nWe may interleave these two ordered groups in any way. Every such interleaving is valid because the next number taken from either group extends the current block.\n\nAmong the nine positions after the first entry, choose the \\(k-1\\) positions occupied by smaller numbers. Once those positions are chosen, both groups have forced orders, so they determine exactly one list. There are \\(\\binom9{k-1}\\) choices, including one choice when \\(k=1\\) or \\(k=10\\), where one group is empty.\n\nLists with different first entries are disjoint, so the total is\n\\[\n\\sum_{k=1}^{10}\\binom9{k-1}.\n\\]\nThis sum counts all subsets of nine positions, grouped according to their size. Each position is either selected or not selected, giving \\(2^9=512\\) subsets. The choice of positions and the forced orders also show that no list is repeated.\n\nThus there are \\(\\boxed{512}\\) lists, choice \\(\\boxed{\\text{B}}\\).",
+  "Meta": {
+    "QuestionSource": "live-poshenloh",
+    "AnswerSource": "live-poshenloh-answer-key",
+    "SolutionSource": "Original Math Practice solution",
+    "AreaSource": "Pending topic curation",
+    "Concepts": "arrangements with restrictions; recursive counting; work backwards",
+    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2012B/solutions",
+    "SourceSHA256": "f9d2f6920458eec7c19f539eda6c328ce627ae836c9e30836fc3f8e9465eec3f",
+    "Figures": [],
+    "FigureSources": {},
+    "SourceQuestionCount": 25,
+    "HistoricalSeries": "AMC 10",
+    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+    "Copyright": "Copyright Mathematical Association of America",
+    "License": "CC-BY-NC-SA-4.0",
+    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "TranscriptionSource": "LIVE by Po-Shen Loh",
+    "Modifications": [
+      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
+      "Third-party worked solution and solution-only figures omitted from the public distribution"
+    ],
+    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+    "SolutionReview": {
+      "status": "reviewed",
+      "solutionSHA256": "bfc61efb94e5b868e9b861ab43e6a1b62845d75149c4384fbd9dc3aaa3775572",
+      "questionContentHash": "8046e959646e6c0a1911f3e4fc52b1401aa0c76615780e2a33ac06c5056f56a7",
+      "evidence": {
+        "path": "knowledge-graph/evidence/solutions-2026-11-06/2012_AMC_10B_Q22.json",
+        "sha256": "27d38f54bd896227bca7a392a5a3b36b9cfd816777bb4948ea8c30e9309f0c11"
+      },
+      "author": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "reviewer": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      }
+    }
+  },
+  "ID": "2012_AMC_10B_Q22",
+  "Bank": "amc",
+  "SchemaVersion": "2.0",
+  "ResponseType": "choice",
+  "Language": "en",
+  "domain": [],
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "1.0.0",
+    "contentHash": "8046e959646e6c0a1911f3e4fc52b1401aa0c76615780e2a33ac06c5056f56a7",
+    "status": "mapped",
+    "reviewStatus": "machine_scope_audited",
+    "assessedIds": [
+      "math:bijective-counting"
+    ],
+    "supportIds": [
+      "cnm_h231",
+      "cnm_h233"
+    ],
+    "routes": [
+      {
+        "id": "reverse-endpoint-removal",
+        "label": "Remove interval endpoints",
+        "nodeIds": [
+          "cnm_h231"
+        ]
+      },
+      {
+        "id": "fixed-first-entry",
+        "label": "Count left-right interleavings",
+        "nodeIds": [
+          "cnm_h237",
+          "cnm_h242"
+        ]
+      },
+      {
+        "id": "solution:reverse-endpoint-removal:bfc61efb94e5",
+        "label": "Build the list backward",
+        "nodeIds": [
+          "math:bijective-counting",
+          "cnm_h231",
+          "cnm_h233"
+        ]
+      },
+      {
+        "id": "solution:fixed-first-entry:bfc61efb94e5",
+        "label": "Choose positions for the smaller entries",
+        "nodeIds": [
+          "math:bijective-counting",
+          "cnm_h236",
+          "cnm_h242",
+          "cnm_h230",
+          "cnm_h231",
+          "cnm_h233"
+        ]
+      }
+    ],
+    "flags": []
+  }
+}

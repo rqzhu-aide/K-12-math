@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2011_AMC_12B_Q11",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "f75bafb149d6eb6a4e01039b214577840ca2222b112c5de39adcd7700770422e",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "fda347e3a3b7054b78be7422642e3ce31c3e67ac22d3b6b386f353311e9c91bf",
+  "solutionFigureHashes": {},
+  "candidateHash": "59a64c2fe9e215b880e9299a2f1a71dcd39641016018a90998b3fe85290258fc",
+  "candidate": {
+    "questionId": "2011_AMC_12B_Q11",
+    "derivedAnswer": "B, \\(3\\) jumps",
+    "answerStatus": "matches",
+    "answerReason": "Zero and one jump cannot reach the endpoint, and a two-jump intermediate lattice point would have to lie on x = 1/2. Three length-5 jumps work through (3,4) and (6,0).",
+    "methods": [
+      {
+        "id": "perpendicular-bisector-obstruction",
+        "label": "Rule out two jumps by equal distances",
+        "explanation": "To prove a smallest number, we must both rule out shorter trips and construct a trip that works. Zero jumps leave the frog at the starting point, and one jump cannot reach \\((1,0)\\), which is only \\(1\\) unit away.\n\nIf two jumps were possible, the intermediate point would be \\(5\\) units from both \\((0,0)\\) and \\((1,0)\\). A point equidistant from two endpoints lies on their perpendicular bisector. Here that line is\n\\[\nx=\\frac12,\n\\]\nso it contains no point with integer coordinates. Thus two jumps are impossible.\n\nThree jumps do work:\n\\[\n(0,0)\\longrightarrow(3,4)\n\\longrightarrow(6,0)\\longrightarrow(1,0).\n\\]\nThe first two jumps have coordinate changes \\((3,4)\\) and \\((3,-4)\\), so each has length \\(\\sqrt{3^2+4^2}=5\\). The last jump is \\(5\\) horizontal units. Therefore the minimum is \\(\\boxed{3}\\), choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_133",
+          "cnm_084"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_174"
+        ],
+        "levelReason": "A perpendicular bisector rules out two jumps, and the Pythagorean theorem verifies an explicit three-jump path."
+      },
+      {
+        "id": "odd-even-coordinate-sum",
+        "label": "Track the parity of the coordinate sum",
+        "explanation": "For any jump, let \\(a\\) and \\(b\\) be the integer changes in the two coordinates. Its length is \\(5\\), so the Pythagorean theorem gives\n\\[\na^2+b^2=25.\n\\]\nAn integer and its square have the same parity. Since the sum above is odd, exactly one of \\(a,b\\) is odd. Consequently, \\(a+b\\) is odd, so every jump changes the parity of \\(x+y\\).\n\nThe starting coordinate sum is \\(0\\), which is even, and the ending sum is \\(1\\), which is odd. Thus the frog must make an odd number of jumps. One jump is impossible because the endpoints are only \\(1\\) unit apart. The smallest remaining possibility is three.\n\nThe path\n\\[\n(0,0)\\longrightarrow(3,4)\n\\longrightarrow(6,0)\\longrightarrow(1,0)\n\\]\nrealizes three jumps: their lengths are \\(\\sqrt{9+16}=5\\), \\(\\sqrt{9+16}=5\\), and \\(5\\). Hence the minimum is \\(\\boxed{3}\\), choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_p156"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_174"
+        ],
+        "levelReason": "The alternative uses ordinary odd-even reasoning about integer squares, without formal congruence notation."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_082",
+      "cnm_174"
+    ],
+    "annotationRationale": "Both methods prove a lower bound and give a path attaining it, so discrete extremal reasoning is the common target. Coordinates and the Pythagorean theorem support both. Equal-distance perpendicular-bisector reasoning is local to the first method; parity is local to the second. The parity argument does not require the broader formal modular-congruence node.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2011_AMC_12B_Q11",
+    "decision": "accept",
+    "mathematicalCheck": "A two-jump intermediate point would lie on x=1/2, excluding integer coordinates. Independently, every allowed displacement has odd coordinate sum, so the jump count must be odd. One jump fails, while the displayed path has lengths 5,5,5 and reaches (1,0).",
+    "levelCheck": "Both lower-bound arguments and the construction are understandable using elementary coordinates, parity, and Pythagoras.",
+    "methodDistinctness": "The perpendicular-bisector obstruction and parity obstruction are genuinely distinct.",
+    "annotationCheck": "The extremal assessment and shared coordinate and Pythagorean support are justified. Perpendicular-bisector and odd-even concepts remain local to their methods.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "perpendicular-bisector-obstruction": "perpendicular-bisector-obstruction",
+    "odd-even-coordinate-sum": "odd-even-coordinate-sum"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c913f219ccc8cc946bf9738d9964de896340fe5a3126836b88501f26a3065b7b",
+    "inputHash": "cfbc7d24f35c7548ee7ab8671f97766109e69d152dfc98ae902d700e935c31fe",
+    "authorInputHash": "2bcc1fac2d3edee67d3e79e1dc64d3e65714ff6e791a775d7e11535457b9ab18",
+    "reviewInputHash": "43488a3f92e73b62c92b3b530bbaa877b315dc2dc859345de978acb5031dbfa3",
+    "authorResponseHash": "9d13eb0cec246c01e51023fba5133c78497a0fa70030364b42f2f8d0db9f2b3d",
+    "reviewerResponseHash": "590feacc838ee7d3b6f91f716ed5ffc89c42ac984dd7e20ce0d4f73ed8fe761f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

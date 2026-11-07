@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2003_AMC_12B_Q12",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "19f0aca48c745327f88c4101a5b7a0ac992993b52fa3356affad2411f0289c7a",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "5a7cfab5e051da0582af9f949cfd05fc9fcc859c8de4ecf1c7ad8600a57a9aba",
+  "solutionFigureHashes": {},
+  "candidateHash": "648cd3196ab1a8f1e757878d5fb826672328e7532b4d4e4e550e54128b05e84f",
+  "candidate": {
+    "questionId": "2003_AMC_12B_Q12",
+    "derivedAnswer": "D. 15",
+    "answerStatus": "matches",
+    "answerReason": "Every allowed product is divisible by 15. The products at n = 10 and n = 22 have greatest common factor 15, so no larger integer divides every allowed product.",
+    "methods": [
+      {
+        "id": "universal-divisibility-and-bound",
+        "label": "Find a common divisor and prove maximality",
+        "explanation": "Let \\(P(n)=(n+1)(n+3)(n+5)(n+7)(n+9)\\). Since \\(n\\) is even, the factors are five consecutive odd integers. We must find a divisor that always occurs, then rule out every larger divisor.\n\nAdding \\(2\\) repeatedly cycles through the remainders \\(0,2,1\\) when dividing by \\(3\\), starting at whichever remainder the first factor has. Thus the first three factors include a multiple of \\(3\\). Similarly, adding \\(2\\) cycles through the five remainders \\(0,2,4,1,3\\) when dividing by \\(5\\), so the five factors include a multiple of \\(5\\). Because \\(3\\) and \\(5\\) are distinct primes, every allowed product is divisible by \\(15\\).\n\nTo bound a divisor common to all the products, it is enough to compare two carefully chosen allowed inputs. We have\n\\[\n\\begin{aligned}\nP(10)&=11\\cdot13\\cdot15\\cdot17\\cdot19\\\\\n&=3\\cdot5\\cdot11\\cdot13\\cdot17\\cdot19,\n\\end{aligned}\n\\]\nand\n\\[\n\\begin{aligned}\nP(22)&=23\\cdot25\\cdot27\\cdot29\\cdot31\\\\\n&=3^3\\cdot5^2\\cdot23\\cdot29\\cdot31.\n\\end{aligned}\n\\]\nThe only primes appearing in both factorizations are \\(3\\) and \\(5\\), and each appears only once in \\(P(10)\\). Therefore these two products have greatest common factor \\(15\\). Any positive integer dividing every allowed product must divide both of these, so it cannot exceed \\(15\\).\n\nSince \\(15\\) divides every allowed product and no larger integer can do so, the answer is \\(\\boxed{15}\\), choice D.",
+        "nodeIds": [
+          "math:modular-congruence",
+          "math:prime-factorization",
+          "cnm_p158"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_p156",
+          "cnm_p157"
+        ],
+        "levelReason": "Remainder cycles, elementary prime factorizations, and the greatest common factor of two integers give a complete proof within AMC 12 scope."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_p153",
+      "cnm_p156"
+    ],
+    "annotationRationale": "The task asks for the largest divisor common to every value in an infinite family, including proof of universal divisibility and maximality. The supplied catalog lacks a node with that specific scope, so assessedIds is empty and a missing node is proposed. The two-number greatest-common-factor node cnm_p158 is method-local, applying only to the comparison of P(10) and P(22). Remainder cycles and prime-exponent comparisons are also method-local. Factors, multiples, and parity provide supporting knowledge; recognizing primes supports the factorization step. These annotations describe the task and written reasoning, not student mastery.",
+    "needsNewNodes": [
+      {
+        "name": "Largest divisor common to every value of an integer expression",
+        "description": "Determine the largest positive integer dividing an integer expression for every input in a prescribed integer domain. Prove divisibility for all admissible inputs and establish maximality, for example by restrictions from selected values.",
+        "reason": "cnm_p158 covers common factors and the greatest common factor of two integers. It supports the two-product comparison but does not cover the universal-divisor target over all positive even inputs. No other supplied node specifically covers that target."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2003_AMC_12B_Q12",
+    "decision": "accept",
+    "mathematicalCheck": "Adding 2 visits every remainder modulo 3 and modulo 5, proving that every product is divisible by 15. The correct prime factorizations at the admissible inputs n=10 and n=22 have greatest common factor 15, proving maximality.",
+    "levelCheck": "The elementary remainder cycles and prime-factor comparison are complete, clearly explained, and appropriate for AMC 12.",
+    "methodDistinctness": "One complete method is supplied and is sufficient.",
+    "annotationCheck": "The method nodes and prerequisites match the reasoning, and shared supports are justified. Empty assessedIds with the proposed universal-divisor node honestly reflects the catalog gap without overstating the two-number greatest-common-factor scope.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "universal-divisibility-and-bound": "universal-divisibility-and-bound"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "409cb7656b2a88f3c75bb16faca6f76937271e6721d65b12bb1f12180205a1e7",
+    "inputHash": "bec22d4322fdf1a0aa845d2d706f554e29ad48f5fa886e6cc7b9775a30cbd9a3",
+    "authorInputHash": "1834d4b5650c9150341fea11392ae57d7c1ab02152bdd671092f2b22f56ff1ea",
+    "reviewInputHash": "2d7b024181996c332cb5ced0b5592af4654dd7fa72a6895e53029b3f0b8af387",
+    "authorResponseHash": "df913783b42055c72f0bdfd30f8997589d79eac1451bb903bd308963beefecfe",
+    "reviewerResponseHash": "9ca1a34ac24c545e9eff784e990d86e285b9fb92ba4d5c6a4235b02f3740170a",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

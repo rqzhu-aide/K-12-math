@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2014_AMC_10A_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "10fe1656f3b415f526c6c0e425ec7c33f1767081a44433139485eccfffb36a47",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "ea6404c5e1b9f188d7e267d1fe9ab02e22252c9d6884145cd4cde07ac788f158",
+  "solutionFigureHashes": {},
+  "candidateHash": "c53ef8aa6acdd871a600be10f747eba6f84677b9052667bde82d0a88cbdbd09f",
+  "candidate": {
+    "questionId": "2014_AMC_10A_Q25",
+    "derivedAnswer": "B: 279",
+    "answerStatus": "matches",
+    "answerReason": "The 867 intervals between 1 and 5^867 contain 2013 positive powers of 2, with two or three in each interval. Exactly 2013−2·867=279 intervals contain three, and each gives one admissible pair.",
+    "methods": [
+      {
+        "id": "count-three-power-intervals",
+        "label": "Method 1: Count powers in each interval",
+        "explanation": "The required inequalities say that three consecutive powers \\(2^m,2^{m+1},2^{m+2}\\) must fit between consecutive powers of \\(5\\). We can count the intervals that contain three powers of \\(2\\).\n\nEvery valid pair has \\(0\\leq n\\leq866\\). If \\(n<0\\), then \\(5^{n+1}\\leq1\\), which cannot exceed \\(2^{m+2}\\). If \\(n\\geq867\\), then \\(5^n\\geq5^{867}>2^{2013}>2^m\\), contradicting the first inequality.\n\nConsider the \\(867\\) open intervals\n\\[\n(5^n,5^{n+1}),\\qquad n=0,1,\\ldots,866.\n\\]\nThe given bounds on \\(5^{867}\\) show that these intervals contain exactly the \\(2013\\) powers \\(2^1,2^2,\\ldots,2^{2013}\\). None lies on an interval endpoint, because a positive power of \\(2\\) is even and a power of \\(5\\) is odd.\n\nEach interval contains either two or three powers of \\(2\\). To see the lower bound, let \\(p\\) be the smallest power of \\(2\\) greater than \\(5^n\\). Its preceding power satisfies \\(p/2\\leq5^n\\), so \\(p\\leq2\\cdot5^n\\). Thus both \\(p\\) and \\(2p\\) lie in the interval, since\n\\[\n2p\\leq4\\cdot5^n<5^{n+1}.\n\\]\nFour powers cannot fit: the fourth is at least eight times the first, whereas the interval's upper endpoint is only five times its lower endpoint.\n\nLet \\(t\\) be the number of intervals containing three powers. Counting all the powers by interval gives\n\\[\n2(867-t)+3t=2013,\n\\]\nso \\(t=2013-1734=279\\).\n\nEach three-power interval gives exactly one valid pair, using its smallest power as \\(2^m\\). Its largest power is at most \\(2^{2013}\\), so \\(1\\leq m\\leq2011\\), within the required range. Conversely, every valid pair needs three powers in one interval, so none is omitted or counted twice. The answer is \\(\\boxed{279}\\), choice B.",
+        "nodeIds": [
+          "math:lattice-counting",
+          "math:double-counting"
+        ],
+        "prerequisiteIds": [
+          "cnm_h042",
+          "cnm_142",
+          "cnm_164"
+        ],
+        "levelReason": "Uses integer-power comparisons, the ratios 4, 5, and 8, and elementary finite counting, all within AMC 10."
+      },
+      {
+        "id": "subtract-excluded-starts",
+        "label": "Method 2: Count excluded starting exponents",
+        "explanation": "For each starting exponent \\(m=1,\\ldots,2012\\), there is exactly one interval between consecutive powers of \\(5\\) containing \\(2^m\\), because\n\\[\n1<2^m<5^{867}.\n\\]\nThere is no endpoint equality: positive powers of \\(2\\) are even, while powers of \\(5\\) are odd. Thus each \\(m\\) determines exactly one possible \\(n\\).\n\nThis start fails precisely when some positive power of \\(5\\) lies between \\(2^m\\) and \\(2^{m+2}\\). We count these excluded starts. A single such interval cannot contain two powers of \\(5\\): its endpoint ratio is \\(4\\), whereas consecutive powers of \\(5\\) have ratio \\(5\\).\n\nFor \\(j=1,\\ldots,866\\), we have\n\\[\n4<5^j\\leq5^{866}\n<\\frac{2^{2014}}5<2^{2012}.\n\\]\nChoose the integer \\(r\\) such that \\(2^r<5^j<2^{r+1}\\). These bounds give \\(2\\leq r\\leq2011\\). This power of \\(5\\) lies inside exactly two intervals of the form \\((2^m,2^{m+2})\\): those with\n\\[\nm=r-1\\quad\\text{or}\\quad m=r.\n\\]\nBoth starts are in the allowed range. Earlier starts have upper endpoint at most \\(2^r\\), and later starts have lower endpoint at least \\(2^{r+1}\\), so there are no others.\n\nThe remaining boundary \\(5^{867}\\) lies between \\(2^{2013}\\) and \\(2^{2014}\\), so among the allowed starts it excludes only \\(m=2012\\). Higher powers of \\(5\\) cannot matter, since\n\\[\n5^{868}>5\\cdot2^{2013}>2^{2014},\n\\]\nthe largest possible upper endpoint.\n\nThe excluded starts do not overlap between powers of \\(5\\), by the ratio argument above. Their number is therefore \\(2\\cdot866+1=1733\\). Each remaining start gives exactly one valid pair, so the answer is\n\\[\n2012-1733=\\boxed{279},\n\\]\nchoice B.",
+        "nodeIds": [
+          "math:lattice-counting",
+          "cnm_h010"
+        ],
+        "prerequisiteIds": [
+          "cnm_h042",
+          "cnm_142",
+          "cnm_164"
+        ],
+        "levelReason": "Uses the same elementary power comparisons as the first method, with complementary counting of excluded starts."
+      }
+    ],
+    "assessedIds": [
+      "math:lattice-counting"
+    ],
+    "supportIds": [
+      "cnm_h042",
+      "cnm_142",
+      "cnm_164"
+    ],
+    "annotationRationale": "The task-level target is an exact count of integer pairs constrained by strict inequalities, matching math:lattice-counting. The first method counts the same powers individually and by interval, so double counting is method-specific. The second subtracts excluded starts, so complement counting is local to that route. Ordering powers and integer exponent rules support both.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2014_AMC_10A_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The 867 intervals contain exactly 2013 positive powers of 2, with two or three per interval. Thus 2013-2·867=279 intervals give admissible triples, each with starting exponent at most 2011. Independently, the complement method excludes 2·866+1=1733 distinct starts, leaving 279. Both methods handle strict endpoints and boundary powers correctly.",
+    "levelCheck": "Both methods use elementary integer-power comparisons and counting, without logarithms or other advanced shortcuts.",
+    "methodDistinctness": "Counting three-power intervals and counting excluded starts offer distinct, accessible counting perspectives.",
+    "annotationCheck": "The integer-pair counting target fits the exact bounds. Double counting and complement counting remain method-specific, while the shared power-comparison prerequisites support both methods.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-three-power-intervals": "count-three-power-intervals",
+    "subtract-excluded-starts": "solution:subtract-excluded-starts:ea6404c5e1b9"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "90d17180b0dc25dacbd987f88001e9f8677bf06c81c489974d50ce60a1c44c65",
+    "inputHash": "ba37357e57c5d4fb782d9042ac43d0e5dd9f7ce14315047771930f662d057f64",
+    "authorInputHash": "e2cc645f80d5962cd18ecda3050097337ff6d344fe49d894355f98f5edc96a1e",
+    "reviewInputHash": "b801f1ad43c9f8a8d53499dfe82d0b9cdcd49a6bcbd4c38c45970ddb28851f79",
+    "authorResponseHash": "238f5709580cb1f030156abab42cf2666868b90a61af49ef7a9cd7253d9eadce",
+    "reviewerResponseHash": "79859daba548f6879ed1f133df3f475a3c863d058d6c8655b6d9e314da626884",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

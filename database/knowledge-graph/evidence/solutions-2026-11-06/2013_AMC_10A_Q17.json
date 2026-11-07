@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2013_AMC_10A_Q17",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ee86cb2846e30593311f222a833fff14d3bdb5f10689cb22987dddda6642246a",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "99d922cf3cdf6bd42e29afd156028cae3841c6db3e2923b8ac135577bfe18fec",
+  "solutionFigureHashes": {},
+  "candidateHash": "d9b41285d533f07d35553ede60a81e87401b401a79ee5aeb4f00009b443a9ceb",
+  "candidate": {
+    "questionId": "2013_AMC_10A_Q17",
+    "derivedAnswer": "B: 54 days",
+    "answerStatus": "matches",
+    "answerReason": "The three pairs contribute 72 visit coincidences. Each of the 6 triple-visit days contributes three of these, leaving 72−18=54 days with exactly two visitors.",
+    "methods": [
+      {
+        "id": "pair-visit-incidences",
+        "label": "Count pair visits and remove triples",
+        "explanation": "Label yesterday day \\(0\\), so the period we count consists of days \\(1\\) through \\(365\\). Two friends visit together whenever the day number is a common multiple of their visiting intervals.\n\nAlice and Beatrix visit together every \\(\\operatorname{lcm}(3,4)=12\\) days, Alice and Claire every \\(15\\) days, and Beatrix and Claire every \\(20\\) days. Among days \\(1\\) through \\(365\\), these pairs visit together \\(30\\), \\(24\\), and \\(18\\) times, respectively. Thus there are\n\\[\n30+24+18=72\n\\]\npair occurrences.\n\nA day with exactly two visitors contributes once to this count. A day with all three visitors contributes three times, once for each pair, and must contribute nothing to our answer. All three visit together every \\(\\operatorname{lcm}(3,4,5)=60\\) days, giving \\(6\\) such days in the period. Days with fewer than two visitors were never counted. Therefore the required number is\n\\[\n72-3\\cdot6=\\boxed{54},\n\\]\nwhich is choice \\(\\text{B}\\).",
+        "nodeIds": [
+          "cnm_p159",
+          "math:double-counting"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153"
+        ],
+        "levelReason": "Uses least common multiples and elementary counting with explicitly tracked multiplicities, within AMC 10 scope."
+      },
+      {
+        "id": "sixty-day-cycles",
+        "label": "Count one repeating block",
+        "explanation": "Label yesterday day \\(0\\). Because \\(60\\) is a multiple of \\(3\\), \\(4\\), and \\(5\\), all three visiting schedules repeat every \\(60\\) days.\n\nWithin days \\(1\\) through \\(60\\), the days with exactly two visitors are:\n\nAlice and Beatrix only: \\(12,24,36,48\\).\n\nAlice and Claire only: \\(15,30,45\\).\n\nBeatrix and Claire only: \\(20,40\\).\n\nThese lists come from the multiples of \\(12\\), \\(15\\), and \\(20\\), with day \\(60\\) removed because all three friends visit then. Every day with exactly two visitors belongs to exactly one of the three lists, so the block contains \\(4+3+2=9\\) qualifying days.\n\nSince\n\\[\n365=6\\cdot60+5,\n\\]\nthere are six complete blocks and five remaining days. Those remaining days have the same visiting pattern as days \\(1\\) through \\(5\\), when no two friends visit together. Thus the answer is\n\\[\n6\\cdot9=\\boxed{54},\n\\]\nchoice \\(\\text{B}\\).",
+        "nodeIds": [
+          "cnm_p159",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_h231"
+        ],
+        "levelReason": "Uses a finite repeating schedule, a short exhaustive list, and multiplication; formal modular arithmetic is unnecessary."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p159"
+    ],
+    "supportIds": [
+      "cnm_p153"
+    ],
+    "annotationRationale": "Least common multiples identify the coincidence periods in both routes. The first method uses incidence multiplicities, so double counting is local to that method. The second enumerates disjoint pair cases and multiplies a block count, so combined counting belongs to that route. Both require the meaning of multiples.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2013_AMC_10A_Q17",
+    "decision": "accept",
+    "mathematicalCheck": "The pair counts are 30+24+18=72. Each of the six triple days contributes three pair occurrences, so exactly-two days total 72−18=54. Independently, each 60-day block contains nine qualifying days, and the five remaining days contain none.",
+    "levelCheck": "Both methods explain their decisive counting steps using elementary multiples and counting appropriate for AMC 10.",
+    "methodDistinctness": "Global incidence counting and exhaustive counting within repeating blocks offer distinct, useful approaches.",
+    "annotationCheck": "LCM is a justified shared target. Incidence counting and combined counting are correctly assigned to their respective methods; formal congruences are unnecessary.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "pair-visit-incidences": "solution:pair-visit-incidences:99d922cf3cdf",
+    "sixty-day-cycles": "solution:sixty-day-cycles:99d922cf3cdf"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "759b34d5aebcfa8f7b7bfb2a88d268b8146f2db98fc84cdba98a93f2f7d6e8e9",
+    "inputHash": "063f75679383427179c0c11122b49a03a98dab3ad5166f7a53f8afc77f3d2883",
+    "authorInputHash": "1432a4ac8a6105ec5c978d29d434a99d21aff7cfdda90398698a81822e19076c",
+    "reviewInputHash": "a2857044dc4c5d7b97765f3293ff97164a9944b0ea24b2c526265db354341432",
+    "authorResponseHash": "bc3310254815c60b444b5d59e0fa62eb6835d55f45562044a53b7fad2347e920",
+    "reviewerResponseHash": "dcebcdf3e8cf738e702e8d7b60704ef273c9533ccecfb626f66e7a7fe4a3732f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1984_AMC_12_Q29",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "27f71aa131fd3a0db90bb714733e6f0bd7c1b9b75a68af81bb31577c9649db62",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "79930d1a1d62e9161baac7022e6a46cb7fd594bbf2460ccb9eae261180002095",
+  "solutionFigureHashes": {},
+  "candidateHash": "f9e11b7020bbb46bdd0e01f46f66d7efc5a511e6d350341ee6fdd5b27d385912",
+  "candidate": {
+    "questionId": "1984_AMC_12_Q29",
+    "derivedAnswer": "A. \\(3+2\\sqrt2\\)",
+    "answerStatus": "matches",
+    "answerReason": "Every feasible ratio lies between \\(3-2\\sqrt2\\) and \\(3+2\\sqrt2\\), and the upper endpoint is attained, agreeing with A.",
+    "methods": [
+      {
+        "id": "slope-substitution",
+        "label": "Test real intersections using a discriminant",
+        "explanation": "The equation describes a circle with center \\((3,3)\\) and radius \\(\\sqrt6\\). Every point on it has \\(x\\ge3-\\sqrt6>0\\), so the ratio is always defined. Set \\(m=y/x\\), the slope of the line from the origin to the point. Substituting \\(y=mx\\) turns the search for possible slopes into a real-root question:\n\\[\n(x-3)^2+(mx-3)^2=6,\n\\]\nwhich expands to\n\\[\n(1+m^2)x^2-6(1+m)x+12=0.\n\\]\n\nThe leading coefficient \\(1+m^2\\) is positive. For a real point to exist, the discriminant must be nonnegative:\n\\[\n\\begin{aligned}\n\\Delta\n&=36(1+m)^2-48(1+m^2)\\\\\n&=12\\bigl(8-(m-3)^2\\bigr)\\ge0.\n\\end{aligned}\n\\]\nThus\n\\[\n3-2\\sqrt2\\le m\\le3+2\\sqrt2.\n\\]\n\nThe upper bound is attained at \\((x,y)=(2-\\sqrt2,2+\\sqrt2)\\). Its squared offsets from the center are \\(3+2\\sqrt2\\) and \\(3-2\\sqrt2\\), which sum to \\(6\\), and\n\\[\n\\frac{y}{x}=\\frac{2+\\sqrt2}{2-\\sqrt2}=3+2\\sqrt2.\n\\]\nTherefore the largest value is \\(\\boxed{3+2\\sqrt2}\\), choice A.",
+        "nodeIds": [
+          "cnm_223",
+          "cnm_h024"
+        ],
+        "prerequisiteIds": [
+          "cnm_h176",
+          "cnm_h167"
+        ],
+        "levelReason": "A slope substitution, the quadratic discriminant, and a quadratic inequality establish the bound; an explicit point proves attainment."
+      },
+      {
+        "id": "tangent-distance",
+        "label": "Compare the center-to-line distance with the radius",
+        "explanation": "The circle has center \\(C=(3,3)\\) and radius \\(\\sqrt6\\). Since \\(x\\ge3-\\sqrt6>0\\) on the circle, every ratio \\(m=y/x\\) is the slope of a line \\(y=mx\\) through the origin.\n\nA slope is possible exactly when this line meets the circle. The perpendicular distance from \\(C\\) to the line \\(mx-y=0\\) is\n\\[\nd=\\frac{|3m-3|}{\\sqrt{m^2+1}}.\n\\]\nA line meets a circle exactly when its distance from the center is at most the radius, so\n\\[\n\\frac{|3m-3|}{\\sqrt{m^2+1}}\\le\\sqrt6.\n\\]\nThe denominator is positive and both sides are nonnegative. Squaring and simplifying therefore preserves equivalence:\n\\[\n\\begin{aligned}\n9(m-1)^2&\\le6(m^2+1),\\\\\nm^2-6m+1&\\le0,\\\\\n(m-3)^2&\\le8.\n\\end{aligned}\n\\]\nHence \\(m\\le3+2\\sqrt2\\). At \\(m=3+2\\sqrt2\\), equality holds in the distance condition, so the line is tangent to the circle and has a point of contact. That point has positive x-coordinate, as every point of the circle does, and its ratio is exactly this slope. Thus the largest value is \\(\\boxed{3+2\\sqrt2}\\), choice A.",
+        "nodeIds": [
+          "cnm_h174",
+          "cnm_h179",
+          "cnm_h024"
+        ],
+        "prerequisiteIds": [
+          "cnm_h176",
+          "cnm_h167",
+          "cnm_h171",
+          "cnm_065"
+        ],
+        "levelReason": "This distinct geometric route uses the standard point-to-line distance formula and the circle intersection criterion, both within high-school analytic geometry."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_h176",
+      "cnm_h167"
+    ],
+    "annotationRationale": "The route-neutral target is the attainable range of a coordinate ratio on a circle, which the catalog does not specifically cover. Circle recognition and slope interpretation support both methods. Discriminants belong to the algebraic route; perpendicular distance and circle-line position belong to the geometric route, so neither route's techniques are imposed as universal assessment targets.",
+    "needsNewNodes": [
+      {
+        "name": "Range of a linear ratio on a circle",
+        "description": "Determine the range or extrema of a ratio of affine coordinate expressions for real points on a circle. Check denominator zeros, prove a bound for every allowed point, and establish endpoint attainment.",
+        "reason": "The catalog's extrema nodes concern quadratic functions on intervals, particular inequality methods, or discrete configurations. Its circle-line position node describes one method rather than this common constrained-ratio target."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1984_AMC_12_Q29",
+    "decision": "accept",
+    "mathematicalCheck": "Every circle point has \\(x>0\\). Both methods correctly yield \\((m-3)^2\\le8\\). The point \\((2-\\sqrt2,2+\\sqrt2)\\) lies on the circle and attains \\(m=3+2\\sqrt2\\); the geometric method independently establishes endpoint attainment through tangency.",
+    "levelCheck": "Both arguments use appropriate high-school algebra and analytic geometry.",
+    "methodDistinctness": "Discriminant feasibility and perpendicular-distance geometry provide distinct, useful explanations.",
+    "annotationCheck": "Shared circle and slope support is appropriate; route-specific techniques remain local. The missing target node is honestly proposed without forcing an unrelated assessed ID.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "slope-substitution": "solution:slope-substitution:79930d1a1d62",
+    "tangent-distance": "solution:tangent-distance:79930d1a1d62"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "22a902339dd83c617fb842eada6d418a41f2a144f89e35d80afaaba42d8e1a0b",
+    "inputHash": "45b48f6fb7a4edeebd0a449b1fcf6a131093a9534c6cec3e1f02dfaf9a782ee2",
+    "authorInputHash": "7276621706e4240765270cbfb9de12735d21711e31fe28f6a06d2e40d0c3be1a",
+    "reviewInputHash": "ca2ff3e9560b36d24052a04d928f3118cb9a7f95d9fdf9ca1834335db0944d75",
+    "authorResponseHash": "32692d32be4c63e295a2d1202863c5b888261ea6876f3a37d3c79abdeebc95c4",
+    "reviewerResponseHash": "e76f74d5c376ff69d8931de9f26bfb19505da88c32a3daffbb5ca167fc4b96bb",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

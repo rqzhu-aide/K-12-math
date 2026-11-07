@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1992_AMC_12_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "2bd3bff759085ed2181b013b79aeadfc33ba0ad229925d3ef45716e19909e310",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "2710cc803539680f8f0447cf9124268934ead8df1e05a8e416070103483d89a4",
+  "solutionFigureHashes": {},
+  "candidateHash": "003104bb1722fac577c505880a6ad7c5520c5b8a113570fe7981c56dee8ab9e4",
+  "candidate": {
+    "questionId": "1992_AMC_12_Q22",
+    "derivedAnswer": "B, 450",
+    "answerStatus": "matches",
+    "answerReason": "There are 450 crossing pairs, and the endpoints can be chosen so that no three segments meet in the quadrant's interior. Thus all 450 intersections can be distinct.",
+    "methods": [
+      {
+        "id": "count-crossings-and-attain-bound",
+        "label": "Choose four endpoints and attain the bound",
+        "explanation": "First count pairs of segments that cross. We must then show that their crossings can all occur at different points.\n\nChoose two selected points \\(X_1,X_2\\) on the positive \\(x\\)-axis, in increasing order of distance from the origin, and similarly choose \\(Y_1,Y_2\\) on the positive \\(y\\)-axis. These four points form the convex quadrilateral \\(X_1X_2Y_2Y_1\\). Its diagonals \\(X_1Y_2\\) and \\(X_2Y_1\\) cross in the first quadrant. The other pairing, \\(X_1Y_1\\) and \\(X_2Y_2\\), consists of disjoint sides.\n\nSegments sharing an endpoint cannot meet again in their interiors. Consequently, every crossing pair uses two distinct points from each axis, and each such selection gives exactly one crossing pair. There are therefore\n\\[\n\\binom{10}{2}\\binom{5}{2}\n=\\frac{10\\cdot9}{2}\\cdot\\frac{5\\cdot4}{2}\n=450\n\\]\ncrossing pairs. Several pairs might cross at the same point, so \\(450\\) is an upper bound on the number of distinct intersection points.\n\nTo attain it, fix five distinct positive \\(y\\)-axis points and select the \\(x\\)-axis points one at a time. Whenever a new point is selected, avoid drawing a new segment through any existing interior intersection. This excludes only finitely many positions: each existing intersection and each selected \\(y\\)-axis point determine a line, which meets the \\(x\\)-axis in at most one position. There are still positive positions available, even beyond all previously selected points.\n\nNew segments share their new \\(x\\)-axis endpoint, so they cannot meet one another inside the quadrant. If a new segment passed through a crossing of two older segments, that position was excluded. Thus this construction prevents every interior meeting of three or more segments. All \\(450\\) crossing pairs then give distinct points.\n\nThe maximum is \\(\\boxed{450}\\), choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "math:bijective-counting",
+          "cnm_h239"
+        ],
+        "prerequisiteIds": [
+          "cnm_h236",
+          "cnm_h237",
+          "cnm_h231"
+        ],
+        "levelReason": "The proof uses elementary convex geometry, combinations, and a finite forbidden-position construction."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_h231"
+    ],
+    "annotationRationale": "The route-neutral target is a maximum proved by both an upper bound and an attaining configuration. This method counts crossing pairs through a bijection with endpoint selections, using combinations locally. The finite avoidance argument supplies the necessary attainment proof.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1992_AMC_12_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "Every selection of two endpoints from each axis gives exactly one interior crossing pair, totaling 45·10=450. The finite forbidden-position construction prevents triple concurrence, so these 450 crossings can all be distinct and the bound is attained.",
+    "levelCheck": "Convex-quadrilateral geometry, combinations, and avoiding finitely many endpoint positions are appropriate and sufficiently explained.",
+    "methodDistinctness": "The counting and attainment arguments are complementary parts of one complete extremal proof.",
+    "annotationCheck": "Extremal reasoning is correctly assessed. Bijection and combination knowledge remain method-local, and the multiplication principle supports the count.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-crossings-and-attain-bound": "count-crossings-and-attain-bound"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "941009f70479e920f19a2d020e84c1ab42852bd810fb0791bf563a2b05ebb7f9",
+    "inputHash": "0d88fe76860aa9477b841794bf0becce95705224c8704819ba9f0eff9ab530a5",
+    "authorInputHash": "4ff5d752bebf6b6881b086c12ced138aee88d60e8829902e2f1748d88cca67c8",
+    "reviewInputHash": "3c7713fb9734d8486164da177cf802161205a66c71f8fb2432e67cc2985fb8cc",
+    "authorResponseHash": "cfa6ff648c03bf23033540cfa1da85cc96e84eaa97c0f6911cbab20c63125b2f",
+    "reviewerResponseHash": "30ba5595d250a710581629f081aa5683e19b361f1a813557c32561dc9c9aa281",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

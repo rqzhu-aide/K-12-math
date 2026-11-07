@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2008_AMC_12B_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "5cf08571e74581acc5b78579639b51b41af033f3985a0420aa798f421861a6c7",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "4a1583a9100dbc8f653d3e51700f0b432ccfac56e540264f9c93178e924a3534",
+  "solutionFigureHashes": {},
+  "candidateHash": "992eccd23fa037de09724cc27a1107bc62f4c54a9634022b43ee5cbffd9fdd07",
+  "candidate": {
+    "questionId": "2008_AMC_12B_Q24",
+    "derivedAnswer": "C: 17",
+    "answerStatus": "matches",
+    "answerReason": "The conditions force A_n=(n(n+1)/3,0). The distances at n=16 and n=17 are 272/3 and 102, respectively, so the least index is 17.",
+    "methods": [
+      {
+        "id": "signed-step-recurrence",
+        "label": "Find the progression of horizontal steps",
+        "explanation": "Track signed horizontal steps so that the direction of motion follows from the conditions. Write \\(A_n=(x_n,0)\\), with \\(x_0=0\\), and define \\(d_n=x_n-x_{n-1}\\).\n\nThe altitude of an equilateral triangle bisects its base. By the Pythagorean theorem, a base of length \\(|d_n|\\) has altitude \\(\\sqrt{3}|d_n|/2\\). Each triangle is nondegenerate, and its apex \\(B_n\\) lies on \\(y=\\sqrt{x}\\), so the apex is above the axis. Its coordinates therefore satisfy\n\\[\nB_n=\\left(\\frac{x_{n-1}+x_n}{2},\\frac{\\sqrt{3}}2|d_n|\\right).\n\\]\nSubstituting into \\(y^2=x\\) gives\n\\[\n3d_n^2=2(x_{n-1}+x_n).\n\\]\nFor the first triangle, this says \\(3x_1^2=2x_1\\). The root \\(x_1=0\\) would give a degenerate triangle, so \\(d_1=x_1=2/3\\).\n\nTo relate consecutive steps, subtract the equation for triangle \\(n\\) from the equation for triangle \\(n+1\\):\n\\[\n3(d_{n+1}^2-d_n^2)=2(d_{n+1}+d_n).\n\\]\nFactoring reveals the two possibilities:\n\\[\n(d_{n+1}+d_n)\\bigl(3(d_{n+1}-d_n)-2\\bigr)=0.\n\\]\nIf \\(d_{n+1}=-d_n\\), then \\(x_{n+1}=x_{n-1}\\). The two triangles would have the same base endpoints and hence the same unique equilateral apex above the axis. That would make \\(B_{n+1}=B_n\\), contrary to distinctness. Thus\n\\[\nd_{n+1}=d_n+\\frac23,\n\\qquad d_n=\\frac{2n}{3}.\n\\]\nAdding these positive steps yields\n\\[\nx_n=\\frac23(1+2+\\cdots+n)=\\frac{n(n+1)}3.\n\\]\nThese positions are attainable: the corresponding apices are \\(B_n=(n^2/3,n/\\sqrt{3})\\). They lie on \\(y=\\sqrt{x}\\), have the required midpoint positions and equilateral altitudes, and all the points in each sequence are distinct.\n\nSince \\(x_n\\) increases, it remains to check the crossing of \\(100\\):\n\\[\nA_0A_{16}=\\frac{16\\cdot17}{3}=\\frac{272}{3}<100,\n\\qquad\nA_0A_{17}=\\frac{17\\cdot18}{3}=102\\ge100.\n\\]\nThe least index is \\(\\boxed{17}\\), choice \\(\\text{C}\\).",
+        "nodeIds": [
+          "cnm_139",
+          "cnm_h200",
+          "cnm_h202",
+          "cnm_h204"
+        ],
+        "prerequisiteIds": [
+          "cnm_084",
+          "cnm_137",
+          "cnm_174",
+          "cnm_147"
+        ],
+        "levelReason": "Uses coordinate geometry, equilateral-triangle altitudes, elementary factoring, and arithmetic progressions. No advanced curve theory is needed."
+      }
+    ],
+    "assessedIds": [
+      "cnm_139",
+      "cnm_h200"
+    ],
+    "supportIds": [
+      "cnm_084",
+      "cnm_137",
+      "cnm_174"
+    ],
+    "annotationRationale": "The mathematical targets are translating equilateral-triangle geometry into the successive-point relation and resolving that recurrence. Coordinates, the coincident altitude and median, and the Pythagorean theorem support the geometry. The written method additionally uses a difference-of-squares factorization and arithmetic-progression formulas. Distinctness is explicitly used to reject the backward branch.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2008_AMC_12B_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "The apex condition gives 3d_n^2=2(x_{n-1}+x_n). Subtraction yields either backtracking, which repeats an apex, or d_{n+1}=d_n+2/3. Thus x_n=n(n+1)/3. The supplied apices verify attainability, and x_16=272/3<100 while x_17=102.",
+    "levelCheck": "The signed steps, branch exclusion, and existence check are clearly explained using appropriate school mathematics.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The geometric and recurrence targets fit the question. Coordinates, isosceles-triangle properties, Pythagoras, factorization, and arithmetic-progression annotations match the method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "signed-step-recurrence": "signed-step-recurrence"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "7fe8ee4692492655c03d7afb564268dd02fe068f4468bcf7e3c9803d7baba9c9",
+    "inputHash": "adf72023edf44e5159eda0c4afe66ed9783c982307ce14f06b0146e6e0fe5815",
+    "authorInputHash": "a919786451485a260db0cf00fdb4aaeb73152f0497a5b80377be757b69ddf516",
+    "reviewInputHash": "f1bc670326d20369056b28aa6bbfbabce3848849a4c7ca6388cf1781dfd0c58d",
+    "authorResponseHash": "3bb86a06ceb445c447151a4aa05b47a4d1153acc58abf964ba2505a3741d1f61",
+    "reviewerResponseHash": "431e5855dfae4bf7e0918e26fbae8dd1f164cb61520aed00cf9faca6783dc9bb",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

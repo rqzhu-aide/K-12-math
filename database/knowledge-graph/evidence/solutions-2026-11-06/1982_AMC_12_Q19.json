@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1982_AMC_12_Q19",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "6d8025c6ce03cf71ea923e6affb2eb9f3d542cb7acc0b5e64b389be499bb9b6f",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "3086d1f281697d9d94e5c1996c273bc8618a22ab69b45040d862742a428f6521",
+  "solutionFigureHashes": {},
+  "candidateHash": "8f29083ebc6fd6f5d763dc93282e10fdc83921f9f8405cbc0bb015aa15fd03f1",
+  "candidate": {
+    "questionId": "1982_AMC_12_Q19",
+    "derivedAnswer": "2 (B)",
+    "answerStatus": "matches",
+    "answerReason": "On the specified interval, the minimum value is 0 and the maximum is 2. Their sum is 2, agreeing with choice B.",
+    "methods": [
+      {
+        "id": "piecewise-linear-values",
+        "label": "Split where the absolute values change sign",
+        "explanation": "An absolute-value expression changes its algebraic form where its inside expression is zero. Here those points are \\(2\\), \\(3\\), and \\(4\\). Splitting the given interval at these points gives\n\\[\nf(x)=\n\\begin{cases}\n2x-4,&2\\le x\\le3,\\\\\n8-2x,&3<x<4,\\\\\n0,&4\\le x\\le8.\n\\end{cases}\n\\]\nFor example, on \\([2,3]\\), the three absolute values are \\(x-2\\), \\(4-x\\), and \\(6-2x\\), so their stated combination is \\(2x-4\\). On \\((3,4)\\), the last absolute value becomes \\(2x-6\\), giving \\(8-2x\\). For \\(x\\ge4\\), all three inside expressions are nonnegative and the terms cancel.\n\nThe first branch increases from \\(0\\) at \\(x=2\\) to \\(2\\) at \\(x=3\\). The middle branch stays strictly between \\(0\\) and \\(2\\), and the last branch equals \\(0\\), including both \\(x=4\\) and \\(x=8\\). Thus the smallest value is \\(0\\) and the largest is \\(2\\). Their sum is \\(\\boxed{2}\\), choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "cnm_008",
+          "cnm_h031",
+          "cnm_203"
+        ],
+        "prerequisiteIds": [
+          "cnm_194",
+          "cnm_006"
+        ],
+        "levelReason": "Absolute-value sign cases reduce the problem to increasing, decreasing, and constant linear expressions."
+      },
+      {
+        "id": "endpoint-and-midpoint-distances",
+        "label": "Interpret the terms as distances",
+        "explanation": "The quantities \\(|x-2|\\) and \\(|x-4|\\) are distances from \\(x\\) to the endpoints \\(2\\) and \\(4\\). Also, \\(|2x-6|=2|x-3|\\) is twice the distance to their midpoint \\(3\\).\n\nWhen \\(2\\le x\\le4\\), the two endpoint distances add to the segment length \\(4-2=2\\). Therefore\n\\[\nf(x)=2-2|x-3|.\n\\]\nOn this interval, \\(0\\le|x-3|\\le1\\), so \\(0\\le f(x)\\le2\\). The upper bound is attained at \\(x=3\\), and the lower bound is attained at \\(x=2\\) and \\(x=4\\).\n\nWhen \\(4\\le x\\le8\\), the distance to \\(2\\) is \\((x-3)+1\\), while the distance to \\(4\\) is \\((x-3)-1\\). Their sum is \\(2(x-3)\\), exactly twice the distance to \\(3\\), so \\(f(x)=0\\).\n\nThese two intervals cover the entire domain. Hence the largest value is \\(2\\), the smallest is \\(0\\), and their sum is \\(\\boxed{2}\\), choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "cnm_007",
+          "cnm_055"
+        ],
+        "prerequisiteIds": [
+          "cnm_194",
+          "cnm_096"
+        ],
+        "levelReason": "This uses number-line distances, midpoint relations, and elementary bounds, providing a geometric alternative to sign cases."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h029"
+    ],
+    "supportIds": [
+      "cnm_194"
+    ],
+    "annotationRationale": "The task-level target is determining the extreme outputs on a specified interval, covered by cnm_h029. Both methods use the function input-output meaning. The first uses absolute-value simplification, piecewise rules, and linear monotonicity. The second uses distance interpretation and segment addition around a midpoint. These method-specific prerequisites are alternatives rather than joint requirements.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1982_AMC_12_Q19",
+    "decision": "accept",
+    "mathematicalCheck": "The three branches are correctly 2x-4, 8-2x, and 0, with all domain endpoints covered. Both methods establish the attained minimum 0 and maximum 2, whose sum is 2.",
+    "levelCheck": "Both explanations justify the bounds and attainment using elementary absolute values, linear expressions, and distances.",
+    "methodDistinctness": "The midpoint-distance argument supplies a useful geometric insight distinct from the algebraic sign cases.",
+    "annotationCheck": "The range/extrema target and shared function-concept support fit. Absolute-value simplification and linear monotonicity are separated appropriately from the distance and midpoint route.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "piecewise-linear-values": "piecewise-linear-values",
+    "endpoint-and-midpoint-distances": "endpoint-and-midpoint-distances"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "9031a26c353d85be25e0c4df16eb7fc4e0bff6dfbaa623bdd2f0104d423ba977",
+    "inputHash": "c8d41099b017ee63d5feef82ef63ddfabf6af795757242a2113877c6785aac86",
+    "authorInputHash": "761ac9956905b0231a01ba42992df0abd1da379ae5cd32dcc985eb7f8766e8bc",
+    "reviewInputHash": "d3de07b15b68c9e45ebbee4486744f5c6edf335be1a085a065b8576c229348b8",
+    "authorResponseHash": "77f42ae78c99eb162556564e210fed6d345e54cc7ba7204e5661290a5777c380",
+    "reviewerResponseHash": "36a6c936c2d4f9f67840d1837632e8af233f1c65461570ce9189742c21e572fa",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

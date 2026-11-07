@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2012_AMC_12A_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "d86c60ecd0cff213ce4628de7cb63d251ed3587b6a520eaa9c60e273eff86c29",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "f9c21f702a80c22946ced6dfa62861f9c823ec2df28464c113725cd372f310b2",
+  "solutionFigureHashes": {},
+  "candidateHash": "5fda9ed499e54c90dbe8fb10ef06427853147f8bb77d697937e6c6c0cbddae00",
+  "candidate": {
+    "questionId": "2012_AMC_12A_Q23",
+    "derivedAnswer": "0.16 (C)",
+    "answerStatus": "matches",
+    "answerReason": "Only horizontally or vertically neighboring lattice points can lie together in the square. Each orientation contributes area 0.08 per unit cell, and the two contributions are disjoint.",
+    "methods": [
+      {
+        "id": "neighboring-pair-overlap",
+        "label": "Find the possible pairs and their overlap areas",
+        "explanation": "Integer translations of the center do not change the number of integer-coordinate points inside the square. The event therefore repeats in every unit cell. Since \\(2012\\) is an integer, the sampling region consists of \\(2012^2\\) unit cells with the same favorable area. We can compute the probability in just one cell.\n\nThe other two vertices of \\(S\\) are \\((-0.7,0.1)\\) and \\((0.7,-0.1)\\), since a square's diagonals are equal, perpendicular, and bisect each other. Its side length is\n\\[\n\\sqrt{0.6^2+0.8^2}=1,\n\\]\nand its diagonal length is \\(\\sqrt2\\).\n\nTwo interior points are strictly less than \\(\\sqrt2\\) apart. For two distinct integer-coordinate points, the squared distance is a positive integer, so it must be \\(1\\). Thus any two lattice points inside the square must be horizontal or vertical neighbors. There cannot be three: relative to one point, two different neighboring lattice points are at least \\(\\sqrt2\\) apart. Consequently every favorable square contains one uniquely determined neighboring pair.\n\nFor a fixed lattice point \\(q\\), the centers that place \\(q\\) inside \\(T(v)\\) form the interior of \\(q+S\\). Indeed, \\(q\\in v+S\\) is equivalent to \\(v\\in q-S=q+S\\), because \\(S\\) is symmetric about the origin. Thus the centers containing both \\((0,0)\\) and \\((1,0)\\) form the overlap of \\(S\\) with its horizontal unit translate.\n\nMeasure coordinates along the square's perpendicular unit sides. Specifically, use\n\\[\ns=0.6x-0.8y,\n\\qquad t=0.8x+0.6y.\n\\]\nThese coordinates come from rotating the axes, so lengths and areas are unchanged, and \\(S\\) becomes \\(-\\tfrac12\\le s,t\\le\\tfrac12\\). A horizontal unit translation changes \\((s,t)\\) by \\((0.6,0.8)\\). The overlap is therefore a rectangle with side lengths \\(1-0.6\\) and \\(1-0.8\\), giving area\n\\[\n0.4\\cdot0.2=0.08.\n\\]\nA vertical unit translation changes \\((s,t)\\) by \\((-0.8,0.6)\\), so vertical neighboring pairs give the same overlap area.\n\nTo account for all horizontal pairs within one unit cell, take the overlap rectangle for \\((0,0),(1,0)\\), cut it along the integer grid, and translate its pieces by integer amounts into that cell. These pieces exhaust the horizontal-pair possibilities, since every horizontal pair is an integer translate of this pair. They cannot overlap in their interiors: an overlap would produce a center whose square contains two different pairs, hence at least three lattice points. Their total area is therefore still \\(0.08\\). The vertical contribution is likewise \\(0.08\\), and the two orientations cannot overlap either.\n\nCenters placing a lattice point on a square boundary lie on finitely many line segments within the sampling region and have area zero. Thus the strict interior condition gives probability\n\\[\n\\frac{0.08+0.08}{1}=\\boxed{0.16},\n\\]\nchoice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "math:geometric-probability",
+          "math:lattice-counting",
+          "cnm_h173",
+          "cnm_084",
+          "cnm_245",
+          "cnm_p150"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_072",
+          "cnm_p089",
+          "cnm_174",
+          "cnm_191"
+        ],
+        "levelReason": "Distance bounds, rotated square coordinates, rectangle areas, and translation dissections are all elementary high-school geometry; no integration is needed."
+      }
+    ],
+    "assessedIds": [
+      "math:geometric-probability",
+      "math:lattice-counting"
+    ],
+    "supportIds": [
+      "cnm_072",
+      "cnm_p089",
+      "cnm_174"
+    ],
+    "annotationRationale": "The task asks for an area probability subject to an exact interior lattice-point count. The method bounds possible lattice configurations by distance, computes overlaps using coordinates parallel to the square's sides, and combines translated pieces without duplication.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2012_AMC_12A_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "The square has side 1, so distinct interior lattice points must be unit neighbors and three are impossible. Coordinates along its perpendicular unit sides give overlap area 0.08 for each neighboring-pair orientation. The translation dissection justifies these areas per unit cell without duplication; boundary cases have zero area. The probability is 0.16.",
+    "levelCheck": "Distance bounds, rotated coordinates, and elementary area dissection fit AMC 12. The periodic counting step is explicitly justified.",
+    "methodDistinctness": "One complete geometric method is sufficient.",
+    "annotationCheck": "Geometric probability and lattice counting fit the task. Coordinate geometry, rotations, distances, translations, and area support match the method without claiming an advanced equivalence.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "neighboring-pair-overlap": "neighboring-pair-overlap"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "5d768a2ddb0650bef8a869993189e391fe91219e9e50fd9ba8ac079f70717f6d",
+    "inputHash": "d72e7747326af1c505511af086300f493ef675e901d57cf845ab70daaee6fb0a",
+    "authorInputHash": "217ed61007597acf91feb05f90d96fd3de6c40bbb395666e370e058710ef1e4b",
+    "reviewInputHash": "f143c5abce0dd4c5fc9b2bf6850cbe2c878b4b0c7fbffe419d9465edca1d5002",
+    "authorResponseHash": "16561e987222304bd53d80980bcd016a4557fa1530b2bfb6aacb476f114e0500",
+    "reviewerResponseHash": "2bfd0d454918b6a2c4238bf97f23a3926709f26e34d4a7b6100445c6c1e9feb2",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

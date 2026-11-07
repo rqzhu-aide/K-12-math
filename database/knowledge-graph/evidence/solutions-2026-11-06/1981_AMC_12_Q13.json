@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1981_AMC_12_Q13",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "c9f090e85221d797752cac0d8893e7bbc3da5bcfb74293cf33866559f1bf95ad",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "17c9c9c3ec220266e039a360b5bd4e33fa2290088c3edeee0b793824e7671de3",
+  "solutionFigureHashes": {},
+  "candidateHash": "d0346e10f20d6a1c5b8e76fe47ba3eea905b6ed35bd5652e6be11fcc5a7fa0e6",
+  "candidate": {
+    "questionId": "1981_AMC_12_Q13",
+    "derivedAnswer": "E: \\(22\\)",
+    "answerStatus": "matches",
+    "answerReason": "Exact bounds show that more than one tenth of the original value remains after 21 years and less than one tenth remains after 22 years. The remaining value decreases each year, so 22 is the smallest qualifying integer.",
+    "methods": [
+      {
+        "id": "exact-power-bounds",
+        "label": "Bound the remaining value at consecutive years",
+        "explanation": "Each year the money retains \\(90\\%\\) of its previous value. Measured as a fraction of its original value, the amount remaining after \\(n\\) years is\n\\[\nv_n=\\left(\\frac9{10}\\right)^n.\n\\]\nLosing at least \\(90\\%\\) means \\(v_n\\le1/10\\). To find the first qualifying year, we can compare the remaining values at consecutive years using exact bounds.\n\nSquaring \\((0.9)^5=0.59049\\) gives\n\\[\n\\frac13<(0.9)^{10}=0.3486784401<\\frac7{20}.\n\\]\nThe lower bound shows that after \\(21\\) years,\n\\[\n(0.9)^{21}\n=\\frac9{10}\\bigl((0.9)^{10}\\bigr)^2\n>\\frac9{10}\\left(\\frac13\\right)^2\n=\\frac1{10}.\n\\]\nThe upper bound shows that after \\(22\\) years,\n\\[\n\\begin{aligned}\n(0.9)^{22}\n&=\\frac{81}{100}\\bigl((0.9)^{10}\\bigr)^2\\\\\n&<\\frac{81}{100}\\left(\\frac7{20}\\right)^2\n=\\frac{3969}{40000}\n<\\frac1{10}.\n\\end{aligned}\n\\]\nThe remaining value decreases every year because it is multiplied by \\(9/10\\). Thus every year through \\(21\\) fails the requirement, while year \\(22\\) satisfies it. The smallest integer is \\(22\\), choice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "cnm_h212",
+          "cnm_h208",
+          "cnm_020",
+          "cnm_143"
+        ],
+        "prerequisiteIds": [
+          "cnm_p196",
+          "cnm_h207",
+          "cnm_096"
+        ],
+        "levelReason": "Exact rational powers and inequalities give a complete elementary solution without relying on rounded logarithms."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h212"
+    ],
+    "supportIds": [
+      "cnm_p196",
+      "cnm_h207"
+    ],
+    "annotationRationale": "The target is modeling fixed-percentage decay and finding its first qualifying integer time. The method constructs a geometric term, calculates an integer power, and regroups powers to obtain exact bounds. Percentage calculations and the common-ratio meaning support the model; logarithms are not used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1981_AMC_12_Q13",
+    "decision": "accept",
+    "mathematicalCheck": "The exact bounds \\(1/3<0.9^{10}<7/20\\) imply \\(0.9^{21}>1/10\\) and \\(0.9^{22}<3969/40000<1/10\\). Strict yearly decrease establishes that 22 is minimal.",
+    "levelCheck": "The rational bounds and integer-power calculations are elementary and complete; the supplied logarithm approximation is unnecessary.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Geometric decay, term construction and power manipulation fit the cited nodes. No unused logarithmic route is imposed.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "exact-power-bounds": "exact-power-bounds"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "3cfd401a6d6311113b9026aa0c4ada3ce7faff805f9566f3330b1b53c698cb0f",
+    "inputHash": "519d7b90f7ef64fc33e022e19c0a0b9ab902e60b7b9d14d73871158e7e2c0a0f",
+    "authorInputHash": "d19b8899b729b10a701ea2d71ff5d951d7fda9e87e5c343f3eac81adcbdbe7e9",
+    "reviewInputHash": "168fa7dc87984352252ea7c1a5e4adb333a4803c483008de328a2516c9437629",
+    "authorResponseHash": "cc11872195074c392967b8acce651e870c7b368e8cd85a4e1dd4223cdcd210d4",
+    "reviewerResponseHash": "ca3171137f4a0023eb430604247370cc8c553fb08fd00ebdfe21c6f1a49fc85c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

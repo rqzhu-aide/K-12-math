@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2015_AMC_10A_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "972974bc87713ab22812b121ddf1b283cfe10cd6b8ce51fd6cfe4ace646b63ec",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "c16e8e845efeebfd6e9e6eaff34b7ba250a4876712d4f2e289f4f75629bc29ae",
+  "solutionFigureHashes": {},
+  "candidateHash": "4f8127705f6c0861921ea4e2d470df7acb16fcce17874236b5b5610809a30055",
+  "candidate": {
+    "questionId": "2015_AMC_10A_Q24",
+    "derivedAnswer": "\\(31\\), choice B",
+    "answerStatus": "matches",
+    "answerReason": "Every admissible perimeter has the form \\(2k^2+2k+4\\) for a positive integer k. Exactly \\(k=1,\\ldots,31\\) give values below 2015.",
+    "methods": [
+      {
+        "id": "pythagorean-integer-parameter",
+        "label": "Parameterize the integer side lengths",
+        "explanation": "The two right angles make \\(AB\\) and \\(CD\\) parallel, so a right-triangle distance calculation relates the remaining sides. Write \\(CD=AD=x\\) and \\(BC=y\\), where \\(x,y\\) are positive integers. Place\n\\[\nB=(0,0),\\qquad C=(y,0),\\qquad A=(0,2).\n\\]\nThe right angle at \\(C\\) puts \\(D\\) at either \\((y,x)\\) or \\((y,-x)\\). The second position is impossible: its vertical distance from \\(A\\) would be \\(x+2\\), already greater than the required length \\(AD=x\\). Thus \\(D=(y,x)\\).\n\nThe horizontal and vertical changes from \\(A\\) to \\(D\\) are \\(y\\) and \\(x-2\\). By the Pythagorean theorem,\n\\[\nx^2=y^2+(x-2)^2,\n\\qquad y^2=4(x-1).\n\\]\nThis equation also covers \\(x=2\\). Since \\(y>0\\), it forces \\(x>1\\). Moreover, \\(y\\) must be even, because an odd integer has an odd square. Write \\(y=2k\\) with \\(k\\) a positive integer. Then\n\\[\nx=k^2+1,\n\\qquad p=2+y+2x=2k^2+2k+4.\n\\]\nEvery positive integer \\(k\\) really works. The coordinates above with \\(y=2k\\) and \\(x=k^2+1\\) give a simple nondegenerate quadrilateral with the two required right angles, and\n\\[\nAD^2=(2k)^2+(k^2-1)^2=(k^2+1)^2.\n\\]\nThus all its sides have the required positive integer lengths. In particular, \\(k=1\\) gives an allowed square.\n\nThe perimeter strictly increases with \\(k\\), since\n\\[\np(k+1)-p(k)=4k+4>0.\n\\]\nAt the cutoff,\n\\[\np(31)=1988<2015,\\qquad p(32)=2116>2015.\n\\]\nTherefore exactly \\(k=1,2,\\ldots,31\\) work, and their perimeters are all distinct. There are \\(\\boxed{31}\\) possible values, choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_174",
+          "math:integer-diophantine-equations",
+          "cnm_084",
+          "cnm_h020"
+        ],
+        "prerequisiteIds": [
+          "cnm_055",
+          "cnm_p156",
+          "cnm_148"
+        ],
+        "levelReason": "Uses a coordinate right-triangle calculation, parity, and an elementary increasing integer parameterization."
+      }
+    ],
+    "assessedIds": [
+      "cnm_174",
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_055",
+      "cnm_p156"
+    ],
+    "annotationRationale": "The targets are converting the right-angle geometry into a Pythagorean relation and solving the resulting integer restrictions exhaustively. Coordinates organize the geometry, parity produces an integer parameter, and the cutoff count includes both a construction for every parameter and a proof that different parameters give different perimeters.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2015_AMC_10A_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "The opposite-side placement of D is impossible because its vertical separation from A would exceed AD. The remaining placement gives y² = 4(x − 1), forcing y = 2k and x = k² + 1. Every positive integer k produces an admissible quadrilateral, including the square at k = 1. Perimeters increase strictly as 2k² + 2k + 4; p(31) = 1988 and p(32) = 2116, so exactly 31 distinct values qualify.",
+    "levelCheck": "Coordinates, parity, the construction, and the endpoint count are elementary and fully explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Pythagorean geometry and exhaustive integer feasibility are appropriate assessed targets. Coordinate geometry and integer-inequality counting fit the route; segment arithmetic, parity, and perfect-square expansion are justified prerequisites.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "pythagorean-integer-parameter": "pythagorean-integer-parameter"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "503d505c4932a71b122cc604febf14e468786ad5be38ec15f32649176a516c04",
+    "inputHash": "5b38b10886c23cc520a1eda279d45e5b800543742aea95661e1a276773d2b5f8",
+    "authorInputHash": "30d8d2f0e1daef02d42013b0f3dd6cd39e437172e2b2e260cf3542ca40fbeaba",
+    "reviewInputHash": "615599db8daef3b9f64371f9a6493b65ffc5c81a4458d2e277da80f7ed675d34",
+    "authorResponseHash": "89e25ecdd3ece7e00171981893b18bb1bdc1f11260db7620cd3fccea35b10b98",
+    "reviewerResponseHash": "9d6bd97c4783e73ac048af0e8d5950ab7cdb47d8cd391cea823e3d578eba4494",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2014_AMC_10B_Q17",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "af7169b7c100a8f7b0c11cbd740271da2763885bdac59d3d3fdd94ba0dc63859",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "47d356907dd3b78d2b646793e160476da3fce440e6a4f5af3ad69f4e57897f6a",
+  "solutionFigureHashes": {},
+  "candidateHash": "542a3d5d587b73195b076b3089a965a61db6fc90f7c0988c82bea96048044221",
+  "candidate": {
+    "questionId": "2014_AMC_10B_Q17",
+    "derivedAnswer": "2^1005, choice D",
+    "answerStatus": "matches",
+    "answerReason": "Factoring out 2^1002 leaves 25^501-1, which has exactly three factors of 2. Thus the greatest power dividing the expression is 2^1005.",
+    "methods": [
+      {
+        "id": "telescoping-and-parity",
+        "label": "Factor the remaining difference and check parity",
+        "explanation": "First separate the powers of \\(2\\) already visible in both terms:\n\\[\n10^{1002}-4^{501}=2^{1002}(25^{501}-1).\n\\]\nWe must find exactly how many more factors of \\(2\\) occur in the parentheses.\n\nLet\n\\[\nS=1+25+25^2+\\cdots+25^{500}.\n\\]\nMultiplying \\(S\\) by \\(25\\) and subtracting \\(S\\) cancels all the middle terms, giving\n\\[\n24S=25^{501}-1.\n\\]\nThe sum \\(S\\) contains \\(501\\) odd terms, so \\(S\\) is odd. Therefore\n\\[\n10^{1002}-4^{501}\n=2^{1002}\\cdot24S\n=2^{1005}(3S).\n\\]\nSince \\(3S\\) is odd, no further factor of \\(2\\) is available. The greatest power is \\(\\boxed{2^{1005}}\\), choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "math:prime-factorization",
+          "math:telescoping"
+        ],
+        "prerequisiteIds": [
+          "cnm_143",
+          "cnm_151",
+          "cnm_142",
+          "cnm_p156"
+        ],
+        "levelReason": "The finite cancellation identity is derived directly, and exact divisibility follows from elementary exponent laws and parity."
+      },
+      {
+        "id": "remainders-modulo-sixteen",
+        "label": "Find the remainder after division by 16",
+        "explanation": "Factor out the common power of \\(2\\):\n\\[\n10^{1002}-4^{501}=2^{1002}(25^{501}-1).\n\\]\nTo show that the remaining factor contains exactly three factors of \\(2\\), it is enough to show that it leaves remainder \\(8\\) when divided by \\(16\\).\n\nWe have\n\\[\n25^2=625=16\\cdot39+1.\n\\]\nProducts of integers that each leave remainder \\(1\\) on division by \\(16\\) also leave remainder \\(1\\). Thus \\(25^{500}=(25^2)^{250}\\) leaves remainder \\(1\\), and \\(25^{501}\\) leaves the same remainder as \\(25\\), namely \\(9\\). Consequently \\(25^{501}-1\\) has the form\n\\[\n16k+8=8(2k+1)\n\\]\nfor an integer \\(k\\). The factor \\(2k+1\\) is odd, so\n\\[\n10^{1002}-4^{501}=2^{1005}(2k+1).\n\\]\nThe greatest power of \\(2\\) dividing it is therefore \\(\\boxed{2^{1005}}\\), choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "math:prime-factorization",
+          "math:modular-powers"
+        ],
+        "prerequisiteIds": [
+          "cnm_143",
+          "cnm_151",
+          "cnm_142",
+          "cnm_p156",
+          "math:modular-congruence"
+        ],
+        "levelReason": "The method uses a two-step remainder pattern for integer powers, justified through ordinary multiplication."
+      }
+    ],
+    "assessedIds": [
+      "math:prime-factorization"
+    ],
+    "supportIds": [
+      "cnm_143",
+      "cnm_151",
+      "cnm_142",
+      "cnm_p156"
+    ],
+    "annotationRationale": "The route-neutral target is identifying the exact exponent of the prime 2 in an integer. The factorial-valuation node is unnecessary because no factorial occurs. Both methods use common-factor extraction, integer exponent laws, and parity. The first derives a telescoping factorization; the second uses power remainders, with congruence knowledge confined to that route.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2014_AMC_10B_Q17",
+    "decision": "accept",
+    "mathematicalCheck": "Both methods establish exactly three additional factors of 2 after extracting 2^1002. In Method 1, 25^501−1=24S with S a sum of 501 odd terms. In Method 2, 25^501−1 leaves remainder 8 modulo 16. Each proves an odd remaining cofactor and hence the greatest power 2^1005.",
+    "levelCheck": "The cancellation identity and remainder multiplication are explained using elementary AMC 10 mathematics.",
+    "methodDistinctness": "Finite cancellation with parity and a remainder calculation give genuinely distinct, accessible approaches.",
+    "annotationCheck": "Prime-exponent structure is an appropriate shared target. Telescoping and modular powers remain method-local, while the shared supports apply to both methods.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "telescoping-and-parity": "telescoping-and-parity",
+    "remainders-modulo-sixteen": "remainders-modulo-sixteen"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "7597608a75b558a605df6967364131b1bd1920d70e2b2f85d3474db0e8cbccb7",
+    "inputHash": "0c4294b4877ff6e02b9836be15ac66d94628edcf9c46639eec361a5b9fac4b05",
+    "authorInputHash": "0bea591a7c21a6bf7c9d99396808e45094785cc8166ba44a29d07bcc856725d2",
+    "reviewInputHash": "b48750b4d5921c3ede6ec3ddcc32e35626127c00f955d9d1035d82e06ce7a22c",
+    "authorResponseHash": "45afad5c0f3c2d4f3985e4444379b46a87ccd805f1e1e22951c47fa9acf4fc7a",
+    "reviewerResponseHash": "d1411dba24aa03ef60a8f2dcdd0c31575564be12df03ee482e434fb8ea43ddf8",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

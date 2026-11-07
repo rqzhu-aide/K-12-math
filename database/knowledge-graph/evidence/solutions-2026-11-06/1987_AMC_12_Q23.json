@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1987_AMC_12_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "41edfcd0c6aadedc5aeca042a78417f9ca64ed02cd027597e10af53a195554cb",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "b6dc34bbbbe3b76113358a3751a63ed46ab407a27906b50fd6f6bbe04ac9d47a",
+  "solutionFigureHashes": {},
+  "candidateHash": "691b752e82ceacf1045ba553c085b95afa4578949aeb3a62e94738f1754bd6ac",
+  "candidate": {
+    "questionId": "1987_AMC_12_Q23",
+    "derivedAnswer": "D: p = 37",
+    "answerStatus": "matches",
+    "answerReason": "Integrality and prime divisibility reduce the possibilities to p = 2, 3, or 37. Only p = 37 works, giving integer roots 111 and -148; hence 31 < p ≤ 41.",
+    "methods": [
+      {
+        "id": "integer-root-divisibility",
+        "label": "Use prime divisibility of the roots",
+        "explanation": "Let the integer roots be \\(u\\) and \\(v\\). Expanding\n\\[\n(x-u)(x-v)=x^2-(u+v)x+uv\n\\]\nand comparing with the given quadratic gives\n\\[\nu+v=-p,\\qquad uv=-444p.\n\\]\nThese relations let us use the fact that \\(p\\) is prime. Since \\(p\\) divides \\(uv\\), it divides at least one of \\(u,v\\), as follows from their prime factorizations. Their sum is divisible by \\(p\\), so the other root is divisible by \\(p\\) as well.\n\nWrite \\(u=pa\\) and \\(v=pb\\), where \\(a,b\\) are integers. Then\n\\[\na+b=-1,\\qquad pab=-444.\n\\]\nThus \\(p\\) must be a prime factor of\n\\[\n444=2^2\\cdot3\\cdot37,\n\\]\nso \\(p\\) is \\(2,3\\), or \\(37\\).\n\nThe product \\(ab\\) is negative. Label the positive one \\(a=t\\), where \\(t\\) is a positive integer. Since \\(a+b=-1\\), we have \\(b=-(t+1)\\), and hence\n\\[\nt(t+1)=\\frac{444}{p}.\n\\]\nFor \\(p=2\\), the required value is \\(222\\), but\n\\[\n14\\cdot15<222<15\\cdot16.\n\\]\nFor \\(p=3\\), the required value is \\(148\\), but\n\\[\n11\\cdot12<148<12\\cdot13.\n\\]\nThe products \\(t(t+1)\\) strictly increase for positive integer \\(t\\), so neither case is possible. For \\(p=37\\), the required value is \\(12=3\\cdot4\\), giving roots \\(111\\) and \\(-148\\). Indeed,\n\\[\nx^2+37x-444\\cdot37=(x-111)(x+148).\n\\]\nTherefore \\(p=37\\), so \\(\\boxed{31<p\\le41}\\), choice \\(\\text{D}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_226",
+          "math:prime-factorization"
+        ],
+        "prerequisiteIds": [
+          "cnm_p157",
+          "cnm_p153",
+          "cnm_146"
+        ],
+        "levelReason": "The proof uses an explained roots-and-coefficients relation, elementary prime divisibility, and consecutive integer products."
+      },
+      {
+        "id": "integer-square-condition",
+        "label": "Complete the square and test integrality",
+        "explanation": "Completing the square exposes a necessary condition for an integer root. Multiplying the equation by \\(4\\) and adding \\(p^2\\) gives the equivalent equation\n\\[\n(2x+p)^2=p^2+1776p=p(p+1776).\n\\]\nIf \\(x\\) is an integer, the right side is an integer square. Let \\(m=2x+p\\). Since the prime \\(p\\) divides \\(m^2\\), prime factorization shows that \\(p\\) divides \\(m\\). Write \\(m=pk\\) with integer \\(k\\). Then\n\\[\np^2k^2=p(p+1776).\n\\]\nBecause \\(p>0\\), division by \\(p\\) is valid and gives\n\\[\np(k^2-1)=1776.\n\\]\nTherefore \\(p\\) is a prime factor of \\(1776=2^4\\cdot3\\cdot37\\), leaving only \\(2,3,37\\).\n\nFor \\(p=2\\), the square would have to equal \\(3556\\), but\n\\[\n59^2=3481<3556<3600=60^2.\n\\]\nFor \\(p=3\\), it would have to equal \\(5337\\), but\n\\[\n73^2=5329<5337<5476=74^2.\n\\]\nNeither is a square. For \\(p=37\\), however,\n\\[\np(p+1776)=67081=259^2.\n\\]\nThus \\(2x+37=\\pm259\\), giving \\(x=111\\) or \\(x=-148\\). Both roots are integers, so this candidate works.\n\nThe only possible prime is \\(37\\), and \\(\\boxed{31<p\\le41}\\), choice \\(\\text{D}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_221",
+          "math:prime-factorization"
+        ],
+        "prerequisiteIds": [
+          "cnm_p157",
+          "cnm_p153",
+          "cnm_075"
+        ],
+        "levelReason": "Completing the square and elementary prime-factor arguments provide a distinct high-school route without requiring the quadratic formula."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_p157",
+      "cnm_p153"
+    ],
+    "annotationRationale": "The target is using integer restrictions to determine all admissible prime parameters. Both routes use prime factorization. The first uses roots-and-coefficients relations and consecutive products; the second uses completing the square and perfect-square tests. Their method-specific algebra remains in the respective routes.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1987_AMC_12_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "Primality and the root sum force both roots to be divisible by \\(p\\), hence \\(p\\mid444\\). The consecutive-product bounds exclude 2 and 3. The second method independently obtains \\(p\\mid1776\\) and correctly tests the three candidates. For \\(p=37\\), roots 111 and -148 satisfy the original equation.",
+    "levelCheck": "Both methods explain their decisive integrality arguments using school algebra and elementary prime factorization.",
+    "methodDistinctness": "Root divisibility with consecutive products and completing the square with square tests give genuinely distinct, accessible routes.",
+    "annotationCheck": "The integer-equation target is route-neutral. Prime and divisor supports are shared, while the roots-and-coefficients and completing-square procedures remain local.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "integer-root-divisibility": "solution:integer-root-divisibility:b6dc34bbbbe3",
+    "integer-square-condition": "integer-square-condition"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c59b50b99edc889fa57799f32d5f6a4a91cba872a648d77cbfbfe03c15d8eccb",
+    "inputHash": "3e3e6d9233c56286096277d0263e7e687883629fcec66a957cb1ef6035e192ed",
+    "authorInputHash": "3eb18e6fd0e08597e81606d97edc84ee20128197fcab00d4c799de4bded6be44",
+    "reviewInputHash": "fff120de748834e4bc23fbfc9101d5aa29cd33d97e86bf2dee2685461165fa31",
+    "authorResponseHash": "5e24a280d10aac4c591ea3a01a43b6379c32d8a0de03dc86f0ec5c287b60ec0f",
+    "reviewerResponseHash": "eac58b2f848603a8f3d0c0e53b953fcf6c0c1617e64cab0e433401fb139f1fb9",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

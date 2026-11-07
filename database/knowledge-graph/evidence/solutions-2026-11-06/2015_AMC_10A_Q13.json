@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2015_AMC_10A_Q13",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "19a6bc1b9e9fe0a7ccd1aeacc6d42fa176bb3c4980f5c66848a8e9deb6032f3a",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "01044e1b3e94f065867572e823aa78a666416d235c0e9ebdb200e9f10635840a",
+  "solutionFigureHashes": {},
+  "candidateHash": "cc1ed7b0ba2782f4be8c47f490c1c471ee40b00695017159fb160e54b6fd5beb",
+  "candidate": {
+    "questionId": "2015_AMC_10A_Q13",
+    "derivedAnswer": "C. 5 ten-cent coins",
+    "answerStatus": "matches",
+    "answerReason": "With at least one five-cent coin, the attainable positive amounts are every multiple of five through the total value. In five-cent units there are 12 + t such amounts, where t is the number of ten-cent coins, giving t = 5.",
+    "methods": [
+      {
+        "id": "attainable-value-range",
+        "label": "Count amounts in five-cent units",
+        "explanation": "Count distinct amounts by measuring them in units of \\(5\\) cents. Let \\(t\\) be the number of ten-cent coins and \\(n=12-t\\) the number of five-cent coins. These coins have values \\(2\\) and \\(1\\) in our chosen units.\n\nIf \\(n=0\\), all twelve coins are ten-cent coins, and the only positive amounts are obtained by taking \\(1,2,\\ldots,12\\) coins. That gives only \\(12\\) values, so \\(n\\geq 1\\).\n\nFor any fixed number \\(j\\) of ten-cent coins, where \\(0\\leq j\\leq t\\), adding anywhere from \\(0\\) to \\(n\\) five-cent coins produces all integer amounts\n\\[\n2j,\\ 2j+1,\\ldots,\\ 2j+n.\n\\]\nThe next such range starts at \\(2j+2\\). Since \\(n\\geq1\\), this is at most one more than the preceding range's last value. Thus there are no missing integers between successive ranges. Together they give every integer from \\(0\\) through\n\\[\n2t+n=12+t.\n\\]\nNo larger amount is possible, since this endpoint uses all the coins. Excluding \\(0\\), there are exactly \\(12+t\\) distinct positive values. Each value is counted once, regardless of how many coin selections produce it.\n\nTherefore \\(12+t=17\\), so \\(t=5\\). Claudia has \\(\\boxed{5}\\) ten-cent coins, choice \\(\\text{C}\\).",
+        "nodeIds": [
+          "cnm_045",
+          "cnm_h020"
+        ],
+        "prerequisiteIds": [
+          "cnm_027",
+          "cnm_042"
+        ],
+        "levelReason": "The argument uses integer ranges and a simple linear equation. The all-ten-cent case is handled separately, and attainability is proved before counting."
+      }
+    ],
+    "assessedIds": [
+      "cnm_045"
+    ],
+    "supportIds": [
+      "cnm_027",
+      "cnm_h020"
+    ],
+    "annotationRationale": "One-variable modeling captures the equation determining the number of ten-cent coins. Writing expressions supports the coin counts, and integer-range counting supports the final count after coverage has been established. The central proof that every intermediate amount is attainable is a separate catalog gap recorded below.",
+    "needsNewNodes": [
+      {
+        "name": "Distinct attainable totals from bounded collections",
+        "description": "Determine the distinct sums obtainable from bounded numbers of items with specified values. Prove coverage and bounds, distinguishing the number of attainable totals from the number of selections producing them.",
+        "reason": "The catalog covers integer-range counting and equation modeling, but lacks a direct target for proving which bounded subset sums are attainable and whether gaps occur."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2015_AMC_10A_Q13",
+    "decision": "accept",
+    "mathematicalCheck": "The all-ten-cent case gives only 12 values. Otherwise n≥1 makes the integer ranges from 2j through 2j+n join without gaps, covering exactly 0 through 12+t. Excluding zero gives 12+t=17, uniquely yielding t=5.",
+    "levelCheck": "The integer-range argument and simple equation fit AMC 10. Coverage, bounds, and the distinction between totals and coin selections are clearly justified.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The modeling and integer-range annotations fit their stated roles. The proposed attainable-total node honestly records the separate coverage argument without claiming an unsupported existing equivalence.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "attainable-value-range": "attainable-value-range"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "9560aa221a1eb3b9af854a713cee6b87f566fa0091195ca00c0ad4c68e145045",
+    "inputHash": "cde067ed6ec26f71d40552e3c372c2f8c34ac1ad4aed5e731cd6b2e7f132b22e",
+    "authorInputHash": "049836ac5ca78aa22b7ce86355f129606cfd761af05289717ac57019f65e5217",
+    "reviewInputHash": "fd91d69d000588d4d6dc048d4510ac5969198eec7494c02c7afcc953dc747980",
+    "authorResponseHash": "29f6a23ac93e1af8382bf45b8c1ddc9a2bd2c12024ef199a3ad47f2875cfd106",
+    "reviewerResponseHash": "3145f2add0f9e1445b6b71f14949943aebdd113cf8ecd8a3539e9da9722958a9",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

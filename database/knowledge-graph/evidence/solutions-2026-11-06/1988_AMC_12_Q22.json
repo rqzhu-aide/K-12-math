@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1988_AMC_12_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "5eb7cac8f2eb32406d0fdac6eb686d5095ecba317bfd7b14b93dc2e4af6087a0",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "434ae60722807cdfd719483a70a33a3cb648309485744277b12fbe80cfb4d4d6",
+  "solutionFigureHashes": {},
+  "candidateHash": "ce0f85107fa56e535a7daf5be36cb8688333ebb98db61c9cf66b2413eb4eef42",
+  "candidate": {
+    "questionId": "1988_AMC_12_Q22",
+    "derivedAnswer": "\\(4\\) integers, choice A.",
+    "answerStatus": "matches",
+    "answerReason": "The acute-angle conditions reduce to \\(476<x^2<676\\). The positive integers satisfying them are \\(22,23,24,25\\), and all four satisfy the triangle inequalities.",
+    "methods": [
+      {
+        "id": "pythagorean-side-comparisons",
+        "label": "Compare the squares of the sides",
+        "explanation": "Side-square comparisons let us test whether angles are acute without finding their measures. First, the triangle inequalities require\n\\[\n24-10<x<24+10,\n\\]\nso \\(14<x<34\\).\n\nIn a nondegenerate triangle, an angle opposite side \\(c\\), between sides \\(a\\) and \\(b\\), is acute exactly when \\(c^2<a^2+b^2\\). To see why, drop a perpendicular from the other endpoint of side \\(a\\) to the line containing side \\(b\\). Let its length be \\(h\\), and let \\(t\\) be the signed distance from the angle's vertex to the foot, positive in the direction of side \\(b\\). The Pythagorean theorem gives\n\\[\na^2=t^2+h^2,\\qquad c^2=(b-t)^2+h^2.\n\\]\nSubtracting yields \\(c^2=a^2+b^2-2bt\\). Since \\(b>0\\), the inequality \\(c^2<a^2+b^2\\) is equivalent to \\(t>0\\), which means that the angle is acute.\n\nApply this test to all three angles of the given triangle:\n\\[\n\\begin{aligned}\n10^2&<24^2+x^2,\\\\\n24^2&<10^2+x^2,\\\\\nx^2&<10^2+24^2.\n\\end{aligned}\n\\]\nThe first inequality always holds. The other two become\n\\[\n476<x^2<676.\n\\]\nBecause \\(x\\) is positive and\n\\[\n21^2=441<476<484=22^2,\\qquad 26^2=676,\n\\]\nthe possible integers are exactly \\(22,23,24,25\\). Each lies between \\(14\\) and \\(34\\), so each forms a triangle and satisfies all three acute-angle tests. There are \\(\\boxed{4}\\) such integers, choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_110",
+          "cnm_h020",
+          "cnm_111",
+          "cnm_174",
+          "cnm_079"
+        ],
+        "prerequisiteIds": [
+          "cnm_112",
+          "cnm_148",
+          "cnm_p101"
+        ],
+        "levelReason": "Derives the angle test from the Pythagorean theorem and counts the possibilities by comparing integer squares."
+      }
+    ],
+    "assessedIds": [
+      "cnm_110",
+      "cnm_h020"
+    ],
+    "supportIds": [
+      "cnm_111",
+      "cnm_079"
+    ],
+    "annotationRationale": "The task asks for acute-triangle classification and an exhaustive integer count. Triangle feasibility and square-root bounds support that count. The written route derives the angle comparison using perpendicular distances and the Pythagorean theorem; it does not use general quadratic sign analysis, vectors, or trigonometry.",
+    "needsNewNodes": [
+      {
+        "name": "Angle classification by side-square comparisons",
+        "description": "For positive lengths forming a nondegenerate triangle, classify the angle opposite c as acute, right, or obtuse according as c² is less than, equal to, or greater than a²+b². Classify the whole triangle using its longest side.",
+        "reason": "The catalog covers triangle classification and the equality case of the Pythagorean converse, but lacks this precise elementary comparison criterion. The method derives it explicitly."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1988_AMC_12_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "The perpendicular construction correctly derives \\(c^2=a^2+b^2-2bt\\), with the angle acute exactly when \\(t>0\\). Applying all three tests gives \\(476<x^2<676\\). Exactly \\(22,23,24,25\\) satisfy these bounds and the triangle inequalities, giving A.",
+    "levelCheck": "The Pythagorean derivation and integer-square comparisons are elementary and complete.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Triangle classification and integer-solution counting are appropriate assessed targets. The proposed side-square comparison node honestly identifies missing scope without claiming equivalence to the Pythagorean converse.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "pythagorean-side-comparisons": "pythagorean-side-comparisons"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "9dcdef2f2ad0b4d988d51e2641e2e7e961eed1174740ccdfc3d0c7c3650e0deb",
+    "inputHash": "14446e95c0eb0075fc0ebe69c6327f4a5cbfe6587e97f9e187cb1f0c815befc8",
+    "authorInputHash": "20abda42ae70040e1a173cda05b5dc261d2912397ae4194c95af720a89a0a0c1",
+    "reviewInputHash": "ccff6ec20b11820228c4a8a692acb20453efe7282c474a60087292a759d6dcd5",
+    "authorResponseHash": "c24764cea0262393a2a8ad2b94a9b562600fed67be88f9be336ee4d6b57b1d15",
+    "reviewerResponseHash": "c762f9973feb8391285474ad059112407b4203d12a264f6f3a6b2aa29686c632",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

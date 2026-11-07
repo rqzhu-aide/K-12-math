@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2011_AMC_10B_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "66b1dfd0f7a6d8b6ee26c0b08f8379de65e08bae6bea4c6b14fb86aaf3fa5ae6",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "d349294b24f3abe7b800f41117720b640ba68e8648635dc83e783bbe9702d7d2",
+  "solutionFigureHashes": {},
+  "candidateHash": "9ed15bc96dc91acb74fa0e6f9ff991a543c0d33ffd20431b8ddd99b392db1d0e",
+  "candidate": {
+    "questionId": "2011_AMC_10B_Q24",
+    "derivedAnswer": "B, 50/99",
+    "answerStatus": "matches",
+    "answerReason": "The smallest slope above 1/2 producing an allowed lattice point is 50/99, attained at (99,52). The open interval may end there but cannot extend beyond it.",
+    "methods": [
+      {
+        "id": "denominator-parity-bound",
+        "label": "Find the first slope that reaches a lattice point",
+        "explanation": "The largest possible endpoint is the smallest slope greater than \\(1/2\\) for which an allowed lattice point appears. Suppose \\((x,y)\\) is such a point, and put \\(p=y-2\\). Then \\(x,p\\) are integers, \\(1\\le x\\le100\\), and\n\\[\nm=\\frac{p}{x}>\\frac12.\n\\]\nBecause \\(x>0\\), this means \\(p>x/2\\). The smallest possible integer \\(p\\) depends on whether \\(x\\) is even or odd.\n\nIf \\(x\\) is even, then \\(x/2\\) is an integer, so \\(p\\ge x/2+1\\). Thus\n\\[\nm\\ge\\frac12+\\frac1x\\ge\\frac12+\\frac1{100}.\n\\]\nIf \\(x\\) is odd, then \\(x\\le99\\), and the next integer above \\(x/2\\) is \\((x+1)/2\\). Therefore\n\\[\nm\\ge\\frac12+\\frac1{2x}\n\\ge\\frac12+\\frac1{198}=\\frac{50}{99}.\n\\]\nThese cases cover every allowed \\(x\\). Since \\(1/100>1/198\\), every slope producing an allowed lattice point is at least \\(50/99\\).\n\nThis bound is attained: when \\(m=50/99\\) and \\(x=99\\),\n\\[\ny=\\frac{50}{99}\\cdot99+2=52.\n\\]\nThus \\(a=50/99\\) works because the condition \\(m<a\\) excludes this endpoint. Any larger \\(a\\) includes the slope \\(50/99\\), which produces the lattice point \\((99,52)\\). The maximum is \\(\\boxed{\\frac{50}{99}}\\), choice B.",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_p156"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_p169",
+          "cnm_096"
+        ],
+        "levelReason": "Integer coordinates, an exhaustive parity split, and elementary fraction inequalities suffice within AMC 10 scope."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_082",
+      "cnm_p169",
+      "cnm_096"
+    ],
+    "annotationRationale": "The central target is an extremal bound with an attaining example and correct open-endpoint reasoning. Parity is specific to the written route. Coordinate interpretation and fraction inequalities support it. The lattice-counting label is omitted because the solution locates the first forbidden slope rather than counting integer-coordinate points.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2011_AMC_10B_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "For even x, a forbidden slope exceeds 1/2 by at least 1/100. For odd x, the excess is at least 1/198, attained at x=99 and y=52. Thus 50/99 is the first forbidden slope above 1/2; the open upper endpoint permits exactly this maximum a.",
+    "levelCheck": "The exhaustive parity split and fraction comparisons are appropriate and clearly explained.",
+    "methodDistinctness": "One complete method suffices.",
+    "annotationCheck": "The extremal target, method-local parity node, and coordinate and inequality supports fit their scopes. Omitting lattice-counting is justified because no point count is required.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "denominator-parity-bound": "solution:denominator-parity-bound:d349294b24f3"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "142a7eb80a7c2c314c49612ddab018d8860d3137909fbb0207d469907d5ff14f",
+    "inputHash": "c6f4ba20565a10c27d1708f9696b09b100f50450e74fabebd8338d073d3209c7",
+    "authorInputHash": "7d1100b4f5f5fcd54f89fb6f4f43cf928525bd46950d4d3e2513d1d290562126",
+    "reviewInputHash": "7b378c0c8caad64e90cbf09e17f644186732a37bba8cc68386a45c0df2b5cdeb",
+    "authorResponseHash": "4d0e00b618ca071081e1f8d2a0bd739cffc22462806f6d2100b9fcea31c66fa9",
+    "reviewerResponseHash": "e4bea2e5c0bf5612a65ac5c136b335ec5e148b127afd2945153a420f61b97f50",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

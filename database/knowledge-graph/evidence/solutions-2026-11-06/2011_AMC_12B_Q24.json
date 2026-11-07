@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2011_AMC_12B_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "12a1a23e295779508af46261260dfdca18847ea1f53858b40da53589d68edd85",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "d495bc8865f8b41d28da63c4a4f1456b5537c94462add9f63148b6e4f7f6670c",
+  "solutionFigureHashes": {},
+  "candidateHash": "985966021ef5d991c0c49c8b37475939286981b62d4b7565c83f1438b45b7abd",
+  "candidate": {
+    "questionId": "2011_AMC_12B_Q24",
+    "derivedAnswer": "B, \\(8\\sqrt2\\)",
+    "answerStatus": "matches",
+    "answerReason": "The roots are the four axis points at unit distance from the origin and the four points \\((\\pm a,\\pm a)\\), where \\(a=(1+\\sqrt3)/2\\). Every distance between distinct roots is at least \\(\\sqrt2\\), and joining them in order around the origin attains that length on all eight edges.",
+    "methods": [
+      {
+        "id": "cartesian-distance-bound",
+        "label": "Locate the roots and bound every edge",
+        "explanation": "A lower bound for every possible edge will give a lower bound for every polygon's perimeter. We first locate all eight roots.\n\nLet \\(q=2+\\sqrt3\\), so \\(q^2=7+4\\sqrt3\\). The polynomial factors as\n\\[\nP(z)=(z^4-1)(z^4+q^2).\n\\]\nThe equation \\(z^4=1\\) gives \\(z=1,-1,i,-i\\), corresponding to the four points \\((\\pm1,0)\\) and \\((0,\\pm1)\\).\n\nFor the other factor,\n\\[\nz^4+q^2=(z^2-iq)(z^2+iq),\n\\]\nso \\(z^2=iq\\) or \\(z^2=-iq\\). Set \\(a=(1+\\sqrt3)/2\\); then \\(2a^2=q\\), and\n\\[\n(a+ai)^2=iq,\\qquad (a-ai)^2=-iq.\n\\]\nTaking both square roots in each case gives the four points \\((\\pm a,\\pm a)\\), with the signs chosen independently. The factorizations account for all roots, and these eight points are distinct because \\(a>1\\).\n\nNow compare all types of pairs. Among the four axis points, the smallest distance is \\(\\sqrt2\\). Among the four corner points \\((\\pm a,\\pm a)\\), the smallest distance is \\(2a>\\sqrt2\\). For an axis point and a corner point, symmetry reduces the squared distance to one of\n\\[\na^2+(a-1)^2=2\n\\quad\\text{or}\\quad\na^2+(a+1)^2>2.\n\\]\nThus every edge joining distinct roots has length at least \\(\\sqrt2\\). Any eight-sided polygon using the roots therefore has perimeter at least \\(8\\sqrt2\\).\n\nTo attain the bound, join the points in their order around the origin, alternating axis points and corner points. Every consecutive pair is a nearest axis-corner pair, so all eight edges have length \\(\\sqrt2\\). Each edge stays in the \\(45^\\circ\\) sector between its endpoint rays, so nonadjacent edges do not cross. This is a valid eight-sided polygon attaining the bound.\n\nThe minimum perimeter is \\(\\boxed{8\\sqrt2}\\), choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "math:roots-of-unity",
+          "math:extremal-principle",
+          "cnm_h173",
+          "cnm_152"
+        ],
+        "prerequisiteIds": [
+          "cnm_h097",
+          "cnm_h098",
+          "cnm_h102",
+          "cnm_173"
+        ],
+        "levelReason": "Uses elementary complex multiplication and factorization, Cartesian distances, and an attained edge-length bound. Polar formulas and advanced optimization are unnecessary."
+      }
+    ],
+    "assessedIds": [
+      "math:roots-of-unity",
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_h097",
+      "cnm_h098",
+      "cnm_h102"
+    ],
+    "annotationRationale": "The targets are locating the distinct complex roots and proving a minimum through a universal bound and an attaining construction. The written route uses rectangular complex arithmetic, difference-of-squares factorization, and Cartesian pairwise distances. Basic complex-number concepts and their plane representation support the argument; polar form and cosine-law methods are not requirements of this route.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2011_AMC_12B_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "The factorization produces exactly the four unit axis roots and four roots (±a,±a), with a=(1+√3)/2. Exhaustive pair types give minimum distance √2 because a²+(a-1)²=2. Every polygon therefore has perimeter at least 8√2, and the angular ordering gives a simple eight-sided polygon attaining that bound.",
+    "levelCheck": "Elementary complex factorization, Cartesian distances, and the explicit construction fit AMC 12 without advanced optimization.",
+    "methodDistinctness": "One complete lower-bound and construction method is sufficient.",
+    "annotationCheck": "The complex-root and extremal targets match their catalog scopes. Rectangular complex arithmetic and plane representation are appropriate supports; distance and factorization nodes describe the actual route without imposing polar methods.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "cartesian-distance-bound": "solution:cartesian-distance-bound:d495bc8865f8"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "257e78903e2b3810f4c3384f85fc67fb3b1bd4f7c0a11f743bd1a566ea6ef6ae",
+    "inputHash": "1782b8e064249aaca5289632809bc68a1b348f005f08c5d697ed4678b1c5983f",
+    "authorInputHash": "0cb0cfc5c9fbdad76c8ef32bfb58fe539499ca31ce5dc1f99e7a2eb3e7573d29",
+    "reviewInputHash": "19555fdce50a033b3770cbd5d9a488c242764502be49e3ecb99503b225b30722",
+    "authorResponseHash": "df22f1f2a2518db08914661587b6bbb894befe7b74ed3d6974b98dd124e93267",
+    "reviewerResponseHash": "38ce837bb9979392cee38640d18664531aa60d3fc3ced1cbb75b9acc4488261c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

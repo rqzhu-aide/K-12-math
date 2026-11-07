@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2011_AMC_10A_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "5a07c7f521c5d45e22c36c44a6c91ea2ef0c85c583610ad9ebfe8b07ec990f84",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "526a3ddaa9ca2e21b5479534be72da5b961b0d6118d68429ac336be8ee49427e",
+  "solutionFigureHashes": {},
+  "candidateHash": "564e9fba83340ee9287f5127fbd39adeee6848001202b6b7a74dcf0b01142578",
+  "candidate": {
+    "questionId": "2011_AMC_10A_Q23",
+    "derivedAnswer": "\\(365\\), choice C",
+    "answerStatus": "matches",
+    "answerReason": "Each student leaves entries numbered 2, 5, 8, and so on in the current list. After six rounds, the remaining progression begins at 365 with spacing 729; its next term is 1094, beyond 1000.",
+    "methods": [
+      {
+        "id": "track-first-term-and-spacing",
+        "label": "Track the remaining list",
+        "explanation": "Track the numbers left unsaid, since those are exactly the numbers passed to the next student. Each student leaves the second, fifth, eighth, and subsequent corresponding entries of her list.\n\nSuppose the current list begins\n\\[\na,\\ a+d,\\ a+2d,\\ a+3d,\\ldots.\n\\]\nThe entries left unsaid begin\n\\[\na+d,\\ a+4d,\\ a+7d,\\ldots.\n\\]\nThus the new first entry is \\(a+d\\), and the new spacing is \\(3d\\). Starting with first entry \\(1\\) and spacing \\(1\\), we obtain the following pairs, each recording the first entry and spacing:\n\\[\n\\begin{aligned}\n\\text{After Alice:}&\\quad (2,3),\\\\\n\\text{After Barbara:}&\\quad (5,9),\\\\\n\\text{After Candice:}&\\quad (14,27),\\\\\n\\text{After Debbie:}&\\quad (41,81),\\\\\n\\text{After Eliza:}&\\quad (122,243),\\\\\n\\text{After Fatima:}&\\quad (365,729).\n\\end{aligned}\n\\]\nThe finite list lengths are successively \\(1000,333,111,37,12,4,1\\). Any incomplete final group here has just one entry, so it contributes no middle entry to the next list.\n\nAfter Fatima, the remaining numbers would therefore be \\(365,1094,\\ldots\\), but only numbers through \\(1000\\) are allowed. Exactly one number remains, so George says \\(\\boxed{365}\\), choice C.",
+        "nodeIds": [
+          "cnm_h200",
+          "cnm_h202"
+        ],
+        "prerequisiteIds": [
+          "cnm_h197",
+          "cnm_h201"
+        ],
+        "levelReason": "A simple recurrence for the first entry and spacing avoids formal congruences or a general formula for repeated composition."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h200"
+    ],
+    "supportIds": [
+      "cnm_h202"
+    ],
+    "annotationRationale": "The main target is modeling and carrying out the repeated selection rule through a recurrence. Arithmetic-sequence indexing explains why selecting positions 2, 5, 8, and so on changes the first term and triples the spacing. Ordered lists and common differences are the local prerequisites.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2011_AMC_10A_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "Selecting positions 2, 5, 8, and so on changes first entry a and spacing d to a+d and 3d. Six rounds give first entry 365 and spacing 729. The stated finite lengths end at one, and the next possible entry, 1094, exceeds 1000.",
+    "levelCheck": "The short recurrence and arithmetic-progression reasoning are appropriate for AMC 10.",
+    "methodDistinctness": "One complete method adequately explains the process.",
+    "annotationCheck": "The recurrence assessment is justified. Arithmetic-sequence indexing, ordered lists, and common differences support the actual argument.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "track-first-term-and-spacing": "track-first-term-and-spacing"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "35898a77abb19a4002a10aa0c060eac326ff22b0177f5336533466d65dd81b1e",
+    "inputHash": "990ef7aa610a85f4cd8f9d31738ce66357465f9566a8eddf136a9fde51ab2005",
+    "authorInputHash": "2ea7f74f2695a70e3eb960e4b6e9a1a2a2c991937ddc469dcbb70ef2bf2743d6",
+    "reviewInputHash": "d89cecc41409a9e310afcb5719281910e7a1e68a2e586ea556b52989f08aaaf9",
+    "authorResponseHash": "d745bc39f4cd343621b08c8564a67d15939bf26204928d5d2568647b10526fa3",
+    "reviewerResponseHash": "9bc6068c01d96a61eae1dea47d69155f46e9ef9992eaabcc23cb4534ec5f0997",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

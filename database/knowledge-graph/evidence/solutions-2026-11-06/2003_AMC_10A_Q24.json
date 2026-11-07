@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2003_AMC_10A_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "63d03fb749e96d8bfde86d987a293aaf400681e9fbb52f28e4ecd50dd09b429a",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "350521a1ad9cdb0062afd8b0d7ecb214af1e47e6462c2e2072d85fcd95330666",
+  "solutionFigureHashes": {},
+  "candidateHash": "04b19f8052d2ef904ec10a720b12e4601d1bcc1876ab97bb926b918ec284676c",
+  "candidate": {
+    "questionId": "2003_AMC_10A_Q24",
+    "derivedAnswer": "\\(12\\), choice E.",
+    "answerStatus": "matches",
+    "answerReason": "The conditions force the stack R5, B5, R1, B3, R3, B6, R2, B4, R4, or its reverse. Its middle three numbers are 3, 3, and 6.",
+    "methods": [
+      {
+        "id": "force-endpoints-and-work-inward",
+        "label": "Force the endpoints and work inward",
+        "explanation": "Write \\(R_k\\) for the red card numbered \\(k\\), and \\(B_k\\) for the blue card numbered \\(k\\). With five red cards and four blue cards, alternation forces the color pattern\n\\[\nR,B,R,B,R,B,R,B,R.\n\\]\nThe card \\(R_5\\) can neighbor only \\(B_5\\), and \\(R_4\\) can neighbor only \\(B_4\\). An interior red card needs two distinct blue neighbors, so \\(R_5\\) and \\(R_4\\) must occupy the two ends.\n\nReversing the stack does not change its middle three cards, so start with \\(R_5\\). The next card must be \\(B_5\\), whose other red neighbor must be \\(R_1\\). Thus the first three cards are \\(R_5,B_5,R_1\\).\n\nAt the other end, \\(R_4\\) must neighbor \\(B_4\\). The inner red neighbor of \\(B_4\\) must be \\(R_1\\) or \\(R_2\\). Since \\(R_1\\) already occupies the third position, this neighbor is \\(R_2\\).\n\nThe only remaining red card, \\(R_3\\), occupies the fifth position. The blue card between \\(R_3\\) and \\(R_2\\) must be divisible by both \\(3\\) and \\(2\\), so it is \\(B_6\\). The remaining blue card is \\(B_3\\). Therefore the stack is forced to be\n\\[\nR_5,B_5,R_1,B_3,R_3,B_6,R_2,B_4,R_4,\n\\]\nor its reverse. Every neighboring pair in this stack satisfies the stated divisibility rule, establishing that the forced arrangement is possible.\n\nThe middle three cards are \\(B_3,R_3,B_6\\), so their sum is \\(3+3+6=12\\), choice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "math:finite-constraint-deduction",
+          "cnm_p153"
+        ],
+        "prerequisiteIds": [
+          "cnm_p038"
+        ],
+        "levelReason": "The argument uses small-number divisibility and direct deductions about neighboring cards, with no formal graph theory required."
+      }
+    ],
+    "assessedIds": [
+      "math:finite-constraint-deduction",
+      "cnm_p153"
+    ],
+    "supportIds": [
+      "cnm_p038"
+    ],
+    "annotationRationale": "The task requires applying divisibility to finite adjacency constraints and proving that the middle cards are forced. The written method identifies endpoints and propagates restrictions inward, matching finite-constraint deduction rather than requiring a graph representation. Multiplication supplies the underlying factor-and-multiple relationship.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2003_AMC_10A_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "Red 5 and red 4 each have only one possible blue neighbor, forcing the endpoints. Working inward forces R5,B5,R1,B3,R3,B6,R2,B4,R4 up to reversal. Every adjacency is valid, and the middle three sum to 12.",
+    "levelCheck": "Small-number divisibility and positional deductions are appropriate. The explanation establishes both uniqueness up to reversal and existence.",
+    "methodDistinctness": "One complete constraint-deduction method is sufficient.",
+    "annotationCheck": "Finite-constraint deduction and factors and multiples match the actual reasoning. Formal graph modeling is unnecessary; multiplication meaning is a justified support.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "force-endpoints-and-work-inward": "force-endpoints-and-work-inward"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "8fc1d252efe211355b79531ea4ee1817dd8902ff813afd5497385f42cd45f09c",
+    "inputHash": "210128e7ecc4ed00d2fe71f25675cf5f0f3215a2bd5c5491d3ef9f6bf7efffa0",
+    "authorInputHash": "9201ff288cd54aabed300596f6a1735f53f995eb279e1b44a516f82ed2247094",
+    "reviewInputHash": "30a142afe4fc99267e1e40783f1cb1b5857413a1b2370522e2bb32cef2659323",
+    "authorResponseHash": "e70b8fedd6f64bc601dd4b95747b532dd876b1453800d3bf198321794af06d9a",
+    "reviewerResponseHash": "b98491f6bd0417f9a91711d0612383635b21835aef4af4d12fbcf81c39d43fbb",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

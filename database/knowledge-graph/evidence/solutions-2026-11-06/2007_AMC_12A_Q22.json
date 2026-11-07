@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2007_AMC_12A_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "72c5e5427c7494a52a88a979bbd5c5141d80ad59aedc9b465a8bfad7ee911e39",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "86869b2b4aa660223411decca007209e68d4138f684954a43ab3a9cd98af429a",
+  "solutionFigureHashes": {},
+  "candidateHash": "838f8fac9061b0b469ff82baf7c05adbf393345c17c3ee4f531f74c09f0537dd",
+  "candidate": {
+    "questionId": "2007_AMC_12A_Q22",
+    "derivedAnswer": "D, 4",
+    "answerStatus": "matches",
+    "answerReason": "Bounding the digit sums and examining the possible decimal blocks gives exactly n=1977, 1980, 1983, and 2001.",
+    "methods": [
+      {
+        "id": "bound-and-split-decimal-blocks",
+        "label": "Bound n and examine its final digits",
+        "explanation": "Digit sums are small, so the equation forces \\(n\\) close to \\(2007\\). Both digit sums are positive, giving \\(n\\le2005\\). For numbers below \\(2007\\), the largest digit sum is \\(28\\), attained at \\(1999\\). A number from \\(1\\) through \\(28\\) has digit sum at most \\(10\\). Therefore\n\\[\n1969=2007-28-10\\le n\\le2005.\n\\]\nThe endpoint \\(1969\\) gives \\(1969+25+7=2001\\), so it is not a solution. Also, for \\(1990\\le n\\le1999\\), we have \\(S(n)\\ge19\\), making the total at least \\(1990+19+1=2010\\). We only need the following three blocks.\n\nFor \\(n=1970+u\\), where \\(0\\le u\\le9\\) is an integer, \\(S(n)=17+u\\). When \\(u\\le2\\), its digit sum is \\(8+u\\); when \\(u\\ge3\\), it is \\(u-1\\). Thus\n\\[\nn+S(n)+S(S(n))=\n\\begin{cases}\n1995+3u,&0\\le u\\le2,\\\\\n1986+3u,&3\\le u\\le9.\n\\end{cases}\n\\]\nSetting these equal to \\(2007\\) gives \\(u=4\\), outside the first range, or \\(u=7\\), valid in the second. This yields \\(n=1977\\).\n\nFor \\(n=1980+u\\), \\(S(n)=18+u\\). Its digit sum changes form at \\(u=2\\), giving\n\\[\nn+S(n)+S(S(n))=\n\\begin{cases}\n2007+3u,&0\\le u\\le1,\\\\\n1998+3u,&2\\le u\\le9.\n\\end{cases}\n\\]\nThe solutions are \\(u=0\\) and \\(u=3\\), yielding \\(1980\\) and \\(1983\\).\n\nFinally, for \\(n=2000+u\\), with \\(0\\le u\\le5\\), both digit sums equal \\(2+u\\). The equation becomes \\(2004+3u=2007\\), so \\(u=1\\), yielding \\(2001\\).\n\nThe four candidates satisfy the original equation:\n\\[\n\\begin{aligned}\n1977+24+6&=2007,\\\\\n1980+18+9&=2007,\\\\\n1983+21+3&=2007,\\\\\n2001+3+3&=2007.\n\\end{aligned}\n\\]\nThe disjoint blocks exhaust the bounded interval, so there are exactly \\(\\boxed{4}\\) solutions, choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_p055",
+          "cnm_042"
+        ],
+        "prerequisiteIds": [
+          "cnm_p053",
+          "cnm_029"
+        ],
+        "levelReason": "Uses decimal place value, finite bounds, and simple linear equations."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_p055"
+    ],
+    "annotationRationale": "The target is finding every positive integer solution and justifying completeness. Decimal decomposition supplies the digit-sum formulas, while bounded casework and linear equations find the candidates. Congruences are not used in the written method.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2007_AMC_12A_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "The digit-sum bounds give 1969≤n≤2005. The endpoint check, exclusion of the 1990s, and correctly split digit formulas exhaust this interval and yield exactly 1977, 1980, 1983, and 2001. Each satisfies the original equation.",
+    "levelCheck": "Decimal place value, finite bounds, and simple equations are appropriate and the case transitions are explained.",
+    "methodDistinctness": "One exhaustive method is sufficient; a congruence alternative is unnecessary.",
+    "annotationCheck": "The integer-equation synthesis, decimal decomposition, linear-equation procedure, and prerequisites match the actual method. Omitting congruence annotations is appropriate.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "bound-and-split-decimal-blocks": "bound-and-split-decimal-blocks"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "ebd60f6d7194b526927add17d969782ef88507a545bbc2cfa7a22692ab1bdb0e",
+    "inputHash": "4aea22a222fc30944365d4f481fe87db23eb8d06cd0a17a69abf19294fd5b896",
+    "authorInputHash": "6794eb01888d914c1aa8f018b4ffbc4113f86f31e4a2cd0f04fbec6c43d9516d",
+    "reviewInputHash": "f0ed2d296f5a74becbf6fe0557d957d512e03680870af7b55d90b007c7d75e52",
+    "authorResponseHash": "6425a94d0e7467929f5982c24644042438e5b91b08b3ce01e7297b2ea242d79e",
+    "reviewerResponseHash": "960a36986739a101e09a21997d8620860b461baf0257a772392b34b9cc883dca",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

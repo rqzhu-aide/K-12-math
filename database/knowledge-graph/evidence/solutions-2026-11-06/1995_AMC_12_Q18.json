@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1995_AMC_12_Q18",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "d7fe7ab5f6071235771cc36b44d037500bf8863739becc27d7f694a4f38ce815",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "d3859769c0500178f444bdb964892d58cb05de2fa636b8a71d9183fc73c9fe30",
+  "solutionFigureHashes": {},
+  "candidateHash": "69e42c14559003aa7c99100a6257125be7ad43b262243687288c8fe2c1648adb",
+  "candidate": {
+    "questionId": "1995_AMC_12_Q18",
+    "derivedAnswer": "D: 2",
+    "answerStatus": "matches",
+    "answerReason": "The perpendicular distance from B to the ray assigned to A is OB/2, so AB=1 implies OB≤2. Equality occurs when A is the perpendicular foot and OB=2, agreeing with choice D.",
+    "methods": [
+      {
+        "id": "perpendicular-distance",
+        "label": "Perpendicular distance",
+        "explanation": "For a fixed point \\(B\\), the perpendicular distance to the other ray gives the shortest possible length of \\(AB\\). This will bound how far \\(B\\) can lie from \\(O\\).\n\nIf \\(B=O\\), then \\(OB=0\\). Otherwise, let \\(H\\) be the perpendicular foot from \\(B\\) to the line containing the ray assigned to \\(A\\). Since the given \\(30^\\circ\\) angle is acute, \\(H\\) lies on that forward ray. In the right triangle \\(OBH\\), the side opposite the \\(30^\\circ\\) angle is half the hypotenuse, so\n\\[\nBH=\\frac{OB}{2}.\n\\]\nThe perpendicular segment is shortest. Thus, for every allowed point \\(A\\),\n\\[\n1=AB\\ge BH=\\frac{OB}{2},\n\\]\nwhich gives \\(OB\\le2\\).\n\nTo attain this bound, choose \\(B\\) with \\(OB=2\\) and choose \\(A=H\\). Then \\(A\\) lies on the required ray and \\(AB=BH=1\\). Therefore the maximum is \\(\\boxed{2}\\), choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "cnm_065",
+          "cnm_140"
+        ],
+        "prerequisiteIds": [
+          "cnm_053",
+          "cnm_110",
+          "cnm_064"
+        ],
+        "levelReason": "This uses elementary perpendicular-distance geometry and the half-hypotenuse property of a right triangle with a 30-degree angle."
+      },
+      {
+        "id": "reflection",
+        "label": "Reflection",
+        "explanation": "Reflecting \\(B\\) across the line containing the other ray creates another segment of length \\(1\\) and turns the given \\(30^\\circ\\) angle into a \\(60^\\circ\\) angle.\n\nIf \\(B=O\\), then \\(OB=0\\). Otherwise, reflect \\(B\\) across the line containing the ray assigned to \\(A\\), and call its image \\(B'\\). Reflection fixes \\(O\\) and \\(A\\) and preserves lengths and angles. Hence\n\\[\nOB'=OB,\\qquad AB'=AB=1,\n\\]\nand \\(\\angle BOB'=60^\\circ\\). An isosceles triangle with a \\(60^\\circ\\) vertex angle is equilateral, so \\(BB'=OB\\).\n\nA straight segment is no longer than a broken path with the same endpoints. Applying this to the path from \\(B\\) through \\(A\\) to \\(B'\\) gives\n\\[\nOB=BB'\\le BA+AB'=2.\n\\]\nTo attain equality, choose \\(OB=2\\) and let \\(A\\) be the midpoint of \\(BB'\\). The midpoint lies on the reflection line and inside \\(\\angle BOB'\\), so it lies on the required forward ray. Since the equilateral triangle has \\(BB'=2\\), this choice gives \\(AB=1\\). Therefore the maximum is \\(\\boxed{2}\\), choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "cnm_132",
+          "cnm_139",
+          "cnm_054"
+        ],
+        "prerequisiteIds": [
+          "cnm_053",
+          "cnm_110",
+          "cnm_131",
+          "cnm_058",
+          "cnm_055"
+        ],
+        "levelReason": "Reflection, equilateral-triangle recognition, and the shortest-segment principle supply a distinct elementary geometry argument with no more advanced prerequisites."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_053",
+      "cnm_110"
+    ],
+    "annotationRationale": "The task-level target is finding a maximum geometric length by proving a universal bound and constructing an allowed configuration attaining it. The catalog lacks this target for continuously varying geometric configurations, so it is proposed as a missing node. cnm_267 requires everyday-life modeling, while math:extremal-principle is explicitly discrete. Lines, rays, segments, and triangle classification support both methods. The first method uses perpendicular-shortest distance and the 30-degree right-triangle property, with perpendicularity as local supporting knowledge. The second uses reflection properties, equilateral-triangle recognition, and the shortest-segment principle, including the straight-path equality case; reflection concepts, angle calculations, and midpoint knowledge support that route.",
+    "needsNewNodes": [
+      {
+        "name": "Geometric extrema by bounds and attaining constructions",
+        "description": "Determine a maximum or minimum length or area over continuously varying Euclidean configurations by proving a bound valid for every allowed configuration and exhibiting an allowed configuration attaining it.",
+        "reason": "This is the route-neutral target of the question. The existing everyday-life optimization and discrete extremal nodes do not cover its scope."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1995_AMC_12_Q18",
+    "decision": "accept",
+    "mathematicalCheck": "The perpendicular foot H lies on the required forward ray, and BH=OB/2≤AB=1, proving OB≤2. Taking OB=2 and A=H attains equality. Independently, reflection produces an equilateral triangle OBB', so OB=BB'≤BA+AB'=2. Its base midpoint supplies an allowed equality configuration. Both methods handle B=O.",
+    "levelCheck": "Both proofs use elementary geometry appropriate for AMC 12 and clearly explain the bound and its attainment.",
+    "methodDistinctness": "Reflection supplies a distinct accessible construction using an equilateral triangle and a broken-path bound, while the first method uses perpendicular distance.",
+    "annotationCheck": "The method nodes and prerequisites match the arguments, and cnm_053 and cnm_110 support both routes. The proposed continuous geometric-extrema node honestly captures the route-neutral target; leaving assessedIds empty avoids forcing an unrelated existing scope.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "perpendicular-distance": "perpendicular-distance",
+    "reflection": "reflection"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "503c30086ee7fb7140a2ea4d5f2e1e0da2b63946e6e3046fa439cb53f41af48b",
+    "inputHash": "26d37429b32fa3af12298e1fadadf8d09b85c0b9e18af11d10de7cd054f6aca2",
+    "authorInputHash": "e522a03ec99e43803f2e9dc5105757f0699b1321fb919a497cc942695f553f11",
+    "reviewInputHash": "1c30e3fb68744ec9b250a3d9ec6372f9fbd9c1c484c6d06d13e7b58f66466d4d",
+    "authorResponseHash": "0953ca9e061a53a6783208c95d91ad8f4d3705175aa9b4711e64a692a4cf04a9",
+    "reviewerResponseHash": "44dd311e0c2f128520b65c0c742dd9e4a2bb3f421c7ce9572df62b4dff6a5925",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

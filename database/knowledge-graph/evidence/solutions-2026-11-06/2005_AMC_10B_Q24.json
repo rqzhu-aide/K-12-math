@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2005_AMC_10B_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "9acc516a5365e1b4d1005ad25c5e897cdf4c5d8d874f436599b6e0591a87d72b",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "dd696556245488640d1f19ce502a5303cdbfa47482ce85b3779ef7ba19a227fd",
+  "solutionFigureHashes": {},
+  "candidateHash": "464e5894874ae587b21b7ed23871854a3e6f783b039b1e310459ecc802d194dc",
+  "candidate": {
+    "questionId": "2005_AMC_10B_Q24",
+    "derivedAnswer": "E: 154",
+    "answerStatus": "matches",
+    "answerReason": "The digit restrictions force x=65, y=56, and m=33, giving x+y+m=154.",
+    "methods": [
+      {
+        "id": "digit-factorization",
+        "label": "Factor using the digits",
+        "explanation": "Writing the numbers in terms of their digits makes the reversal condition easy to use. Let \\(a\\) and \\(b\\) be the tens and ones digits of \\(x\\), respectively. Since both numbers have two digits,\n\\[\nx=10a+b,\\qquad y=10b+a,\\qquad 1\\le a,b\\le9.\n\\]\nBecause \\(m>0\\), we have \\(x^2>y^2\\). Both numbers are positive, so \\(x>y\\), which means \\(a>b\\).\n\nFactoring the difference of squares gives\n\\[\nm^2=(x-y)(x+y)=99(a-b)(a+b).\n\\]\nEvery prime factor of a perfect square occurs an even number of times. Since \\(99=3^2\\cdot11\\) supplies one factor of \\(11\\), the product \\((a-b)(a+b)\\) must supply another. But \\(1\\le a-b\\le8\\), so \\(a-b\\) is not divisible by \\(11\\). As \\(11\\) is prime, \\(a+b\\) must be divisible by \\(11\\). The digit bounds give \\(3\\le a+b\\le17\\), so\n\\[\na+b=11.\n\\]\nSubstituting this back gives\n\\[\nm^2=33^2(a-b).\n\\]\nThus \\(33\\) divides \\(m\\), and \\(a-b=(m/33)^2\\) is an integer square. Also, \\(a+b\\) is odd, so one digit is odd and the other is even; hence \\(a-b\\) is odd. The only odd square from \\(1\\) through \\(8\\) is \\(1\\). Therefore \\(a-b=1\\).\n\nThe equations \\(a+b=11\\) and \\(a-b=1\\) give \\(a=6\\) and \\(b=5\\). Hence \\(x=65\\), \\(y=56\\), and \\(m=33\\). These values satisfy the original condition because\n\\[\n65^2-56^2=9\\cdot121=33^2.\n\\]\nTherefore \\(x+y+m=65+56+33=\\boxed{154}\\), choice \\(\\text{E}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_152",
+          "math:prime-factorization"
+        ],
+        "prerequisiteIds": [
+          "cnm_p017",
+          "cnm_p153",
+          "cnm_p157",
+          "cnm_p156"
+        ],
+        "levelReason": "The argument uses decimal place value, difference-of-squares factoring, elementary prime divisibility, parity, and bounded integer squares, all within AMC 10 scope."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_p017"
+    ],
+    "annotationRationale": "The task asks for an integer solution under digit restrictions, with completeness established by eliminating all other possibilities. Place value supports interpreting the reversal condition. The written method uses difference-of-squares factoring and prime-exponent conditions for squares; factors, primes, and parity are its local supporting knowledge.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2005_AMC_10B_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "Factoring gives m^2=99(a-b)(a+b). The square condition and digit bounds force a+b=11; then a-b must be an odd square at most 8, hence 1. This uniquely gives x=65, y=56, m=33 and total 154, with direct verification.",
+    "levelCheck": "The elementary divisibility, parity, and factoring steps are explained sufficiently for AMC 10.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The integer-equation target is appropriate. Method concepts and prerequisites correctly describe place value, factoring, prime factors, and parity.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "digit-factorization": "digit-factorization"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "b359d2877bf4d3b87ace4f13683294e08feabbeb48927f8c828807b19561d1e0",
+    "inputHash": "ad298734c53c16d1c58d01fc68612905dc6f8dd50c3c8b69d49e222fce6857a8",
+    "authorInputHash": "6e0b0ec1e1b8c7d817f880516379f374bb35e97ab91341bfed372b0aa3dae976",
+    "reviewInputHash": "0ea9b7a9e4d997e326a8e2ec90bbc70f26b0485dd87ce017a96a64ed935da40d",
+    "authorResponseHash": "6923ed0badb756ba9444c55efbb0025ab6b0d3b59f2d37b3979a7ccae5fa1f15",
+    "reviewerResponseHash": "ee7ec01a1ad6595fec0aa177c086d58e394916bc6cbb57f5b15a7156c7ae7257",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

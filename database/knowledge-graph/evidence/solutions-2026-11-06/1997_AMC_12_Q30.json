@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1997_AMC_12_Q30",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "5518f8f29c693404d7b332021b9d5fbc0fd1d27d75d5e8d79470581a272a8cf8",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "5eddaa1835045b517947ffc3449aef00afb05b4aa90e4b3e2f0a9ae09b23bac4",
+  "solutionFigureHashes": {},
+  "candidateHash": "5449060fd7e5f24abb2c77db765bd08d6ad936324475c0ee2a3e30c7e92e6a52",
+  "candidate": {
+    "questionId": "1997_AMC_12_Q30",
+    "derivedAnswer": "26, choice C",
+    "answerStatus": "matches",
+    "answerReason": "There are 20 qualifying numbers with at most six binary digits, five qualifying seven-digit numbers beginning with 10, and the additional number 97.",
+    "methods": [
+      {
+        "id": "1997_AMC_12_Q30_m1",
+        "label": "Choose the two places where digits change",
+        "explanation": "A positive integer's binary representation begins with \\(1\\). Once we choose the gaps where its digits change, every remaining digit is determined: keep the same digit at other gaps and switch between \\(0\\) and \\(1\\) at the chosen gaps. Thus a binary representation with exactly two changes consists of a block of ones, a block of zeros, and a final block of ones, all nonempty.\n\nFor a representation with \\(k\\) digits, there are \\(k-1\\) gaps between adjacent digits. Choosing two of these gaps gives exactly one qualifying representation, and its two change positions recover that choice. Therefore there are \\(\\binom{k-1}{2}\\) such numbers.\n\nOne- and two-digit representations cannot have two changes. Every representation with three through six digits represents a number below \\(64\\), so all are within the required range. They contribute\n\\[\n\\binom22+\\binom32+\\binom42+\\binom52\n=1+3+6+10=20.\n\\]\nSince \\(97=1100001_2\\) lies between \\(64\\) and \\(127\\), the remaining possibilities have seven digits.\n\nIf a seven-digit representation begins with \\(10\\), its first gap is already a change. Choose exactly one of the remaining five gaps for the second change. This gives five numbers, all below \\(1100000_2=96\\), so all qualify for the bound.\n\nIf it begins with \\(11\\), its first two digits already contribute \\(96\\). To stay at most \\(97\\), the only possibilities are \\(1100000_2\\) and \\(1100001_2\\). The first has one change; the second has two.\n\nThese cases exhaust the possible lengths and prefixes and do not overlap. The total is\n\\[\n20+5+1=\\boxed{26},\n\\]\nchoice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "cnm_024",
+          "cnm_h239",
+          "math:bijective-counting"
+        ],
+        "prerequisiteIds": [
+          "cnm_h237",
+          "cnm_h230"
+        ],
+        "levelReason": "Choosing digit-change positions and separating binary prefixes uses elementary combinations and positional notation within AMC 12 scope."
+      }
+    ],
+    "assessedIds": [
+      "cnm_024"
+    ],
+    "supportIds": [
+      "cnm_h230",
+      "cnm_h237"
+    ],
+    "annotationRationale": "Binary representation and the numerical bound are task-level content. Choosing change positions is a method-local bijection evaluated with combinations; the addition principle joins disjoint length and prefix cases. A route-neutral target for counting restricted digit strings is absent from the catalog.",
+    "needsNewNodes": [
+      {
+        "name": "Counting digit strings under local restrictions",
+        "description": "Count numeral representations satisfying digit or adjacent-digit restrictions, with a fixed length or numerical upper bound. Account for leading-digit conventions, boundary prefixes, omissions, and repeated counts.",
+        "reason": "The numeral-system node covers representation and conversion, while combination and bijection nodes describe particular solution routes rather than the restricted-digit counting target itself."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1997_AMC_12_Q30",
+    "decision": "accept",
+    "mathematicalCheck": "Choosing two change gaps uniquely determines a binary string beginning with 1. Lengths three through six contribute 1 + 3 + 6 + 10 = 20. Seven-digit strings beginning with 10 contribute five; among those beginning with 11, only 97 qualifies. The exhaustive, disjoint count is 26.",
+    "levelCheck": "Binary place value and elementary combinations fit AMC 12, and the correspondence and boundary cases are explained.",
+    "methodDistinctness": "One complete counting method is sufficient.",
+    "annotationCheck": "Numeral systems is an appropriate assessed node. Combinations and bijective counting remain method-local, and the proposed restricted-digit counting node honestly identifies the missing task-level scope.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "1997_AMC_12_Q30_m1": "1997_AMC_12_Q30_m1"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "20166d4e9fb23658833a9439be7c02b6d87bd75efc5aa357c19f374b02532152",
+    "inputHash": "00fc054b2688fa1f86e1ae41b087eeed2e9206dee17a71135e2c2263137ef081",
+    "authorInputHash": "6e1996ca312e7d74ed78fc6b10b514a9ff55a26febdaa6686488b2a86f01fc99",
+    "reviewInputHash": "50111f9beac28d4ee34148ebf0d7a8060250f9f39d7e3538a621a2e95f11688c",
+    "authorResponseHash": "ee47d0d8eb50f3d6166c0761ad88b2c2529ea1eee4d4970d411404cef72ade28",
+    "reviewerResponseHash": "473a9a03ced49ad124aa913dba5c4f717a32d292eae237337dff330b53ab9c50",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

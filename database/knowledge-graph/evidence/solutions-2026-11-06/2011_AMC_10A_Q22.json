@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2011_AMC_10A_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "5db1564d0055f35e197ea97fe4b5b157a22dedd72ce5d15a0ad2c34e3a7ac4c0",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "5b50d276bf473087bde0eb75e953249239906cbc692ea9e3bd655884d80403e9",
+  "solutionFigureHashes": {},
+  "candidateHash": "ed8d799d98a6a1dfc0388d388201d3fad7e745823b7b0513320a80759a1e7cc4",
+  "candidate": {
+    "questionId": "2011_AMC_10A_Q22",
+    "derivedAnswer": "\\(3120\\), choice C",
+    "answerStatus": "matches",
+    "answerReason": "Classifying by five, four, or three distinct colors gives 720, 1800, and 600 valid colorings. Their sum is 3120.",
+    "methods": [
+      {
+        "id": "classify-repeated-colors",
+        "label": "Classify the repeated colors",
+        "explanation": "Two vertices may share a color only when they are adjacent along the pentagon, since every nonadjacent pair is joined by a diagonal. No color can occur on three vertices: if three vertices avoided diagonals between them, the other two would both have to be neighbors of one vertex, but those two neighbors are themselves joined by a diagonal.\n\nThus each color occurs at most twice, and we can classify all colorings by the number of distinct colors used.\n\nWith five distinct colors, assign colors to the five labeled vertices in order. There are\n\\[\n6\\cdot5\\cdot4\\cdot3\\cdot2=720\n\\]\ncolorings.\n\nWith four distinct colors, exactly one adjacent pair shares a color. Choose that pair in \\(5\\) ways. The pair and the three remaining vertices form four distinguishable groups, which must receive distinct colors. This gives\n\\[\n5(6\\cdot5\\cdot4\\cdot3)=1800\n\\]\ncolorings.\n\nWith three distinct colors, there must be two disjoint adjacent pairs and one singleton vertex. Choose the singleton in \\(5\\) ways. Removing it leaves a chain of four vertices; its only division into two adjacent pairs pairs the first two and the last two. Assign distinct colors to the two pairs and the singleton in \\(6\\cdot5\\cdot4\\) ways. The count is\n\\[\n5(6\\cdot5\\cdot4)=600.\n\\]\nThese cases exhaust the possibilities because five vertices cannot be colored with fewer than three colors when each color occurs at most twice. There is no double counting: a coloring uniquely determines its repeated pairs and singleton vertices. Therefore the total is\n\\[\n720+1800+600=\\boxed{3120},\n\\]\nwhich is choice C.",
+        "nodeIds": [
+          "math:graph-coloring",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_180",
+          "cnm_h231"
+        ],
+        "levelReason": "The solution uses elementary adjacency restrictions and short, exhaustive counting cases."
+      },
+      {
+        "id": "follow-diagonal-cycle",
+        "label": "Follow the cycle of diagonals",
+        "explanation": "The five diagonals form the closed chain\n\\[\nA,C,E,B,D,A.\n\\]\nThus we can color in that order, requiring successive vertices in the chain to have different colors. This order makes each diagonal restriction easy to track.\n\nChoose the colors of \\(A\\) and \\(C\\) in \\(6\\cdot5\\) ways. The color of \\(E\\) must differ from \\(C\\), and there are two cases.\n\nIf \\(E\\) has the same color as \\(A\\), then \\(B\\) has \\(5\\) choices. Because \\(B\\) differs from \\(A\\), vertex \\(D\\), which must differ from both, has \\(4\\) choices. This gives \\(5\\cdot4=20\\) completions for each choice of \\(A\\) and \\(C\\).\n\nIf \\(E\\) differs from both \\(A\\) and \\(C\\), it has \\(4\\) choices. For each such choice, \\(B\\) must differ from \\(E\\). If \\(B\\) matches \\(A\\), there is one choice for \\(B\\) and \\(5\\) choices for \\(D\\). If \\(B\\) differs from both \\(A\\) and \\(E\\), there are \\(4\\) choices for \\(B\\) and then \\(4\\) choices for \\(D\\). Hence this case gives\n\\[\n4(1\\cdot5+4\\cdot4)=84\n\\]\ncompletions.\n\nEvery coloring appears in exactly one case, and all five diagonal restrictions have been imposed. Therefore the number of colorings is\n\\[\n6\\cdot5(20+84)=\\boxed{3120},\n\\]\nwhich is choice C.",
+        "nodeIds": [
+          "math:graph-coloring",
+          "math:graph-models",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_180",
+          "cnm_h231"
+        ],
+        "levelReason": "Reading the diagonals as a five-vertex cycle requires only elementary graph modeling and the addition and multiplication principles."
+      }
+    ],
+    "assessedIds": [
+      "math:graph-coloring"
+    ],
+    "supportIds": [
+      "cnm_180",
+      "cnm_h231"
+    ],
+    "annotationRationale": "The task assesses counting colorings under the stated pairwise restrictions. Both methods use the meaning of a diagonal and stepwise multiplication. The main method classifies color multiplicities directly on the pentagon. The alternative explicitly models the diagonal relation as a cycle, so graph modeling belongs to that method rather than being a universal requirement.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2011_AMC_10A_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "A color can occur at most twice, and repeated pairs must be pentagon sides. The five-, four-, and three-color cases contribute 720, 1800, and 600 without duplication. The diagonal-cycle method independently gives 30(20+84) = 3120 and imposes all five restrictions.",
+    "levelCheck": "Both methods use elementary geometry and addition and multiplication of counts.",
+    "methodDistinctness": "Global color-multiplicity classification and sequential coloring along the diagonal cycle offer genuinely different organizing ideas.",
+    "annotationCheck": "The coloring assessment and shared diagonal and multiplication support are appropriate. Graph modeling is correctly confined to the cycle method; no recurrence annotation is claimed for that method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "classify-repeated-colors": "classify-repeated-colors",
+    "follow-diagonal-cycle": "follow-diagonal-cycle"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "06a6e94b7b0da74ea9485baab6f7cd39f4f6bfde3b58c1949d892039c2b2fb77",
+    "inputHash": "990ef7aa610a85f4cd8f9d31738ce66357465f9566a8eddf136a9fde51ab2005",
+    "authorInputHash": "2ea7f74f2695a70e3eb960e4b6e9a1a2a2c991937ddc469dcbb70ef2bf2743d6",
+    "reviewInputHash": "d89cecc41409a9e310afcb5719281910e7a1e68a2e586ea556b52989f08aaaf9",
+    "authorResponseHash": "d745bc39f4cd343621b08c8564a67d15939bf26204928d5d2568647b10526fa3",
+    "reviewerResponseHash": "9bc6068c01d96a61eae1dea47d69155f46e9ef9992eaabcc23cb4534ec5f0997",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

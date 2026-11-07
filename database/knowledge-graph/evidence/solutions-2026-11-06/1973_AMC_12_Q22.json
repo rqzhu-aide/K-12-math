@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1973_AMC_12_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "fb4ce5dda7f078c4816d437b08236bda66965bb01b87f0bad4b5086a29a6b212",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "b9580e0f268ca5731b09b23b575b02548d40c1ed545bf5d19e6f2be9e29041a0",
+  "solutionFigureHashes": {},
+  "candidateHash": "5f6866650add51fd8d2a23a20e038d07ab463a788fe6388e651c91c609fe5460",
+  "candidate": {
+    "questionId": "1973_AMC_12_Q22",
+    "derivedAnswer": "-3 < x < 2, choice A",
+    "answerStatus": "matches",
+    "answerReason": "The sum of distances is 3 between -2 and 1 and increases by twice the distance traveled beyond either endpoint. The strict upper bound excludes -3 and 2.",
+    "methods": [
+      {
+        "id": "number-line-distances",
+        "label": "Interpret the absolute values as distances",
+        "explanation": "The quantities \\(|x-1|\\) and \\(|x+2|\\) are the distances from \\(x\\) to \\(1\\) and \\(-2\\) on the number line. Those two fixed points are \\(3\\) units apart.\n\nWhen \\(-2\\le x\\le1\\), the two distances add to \\(3\\), so every such \\(x\\) satisfies the inequality. If \\(x\\) lies \\(t>0\\) units beyond either endpoint, its distances to the two fixed points are \\(t\\) and \\(t+3\\). Their sum is therefore \\(3+2t\\).\n\nThe condition becomes\n\\[\n3+2t<5,\n\\]\nwhich means \\(t<1\\). Thus we may extend less than one unit to the left of \\(-2\\) and less than one unit to the right of \\(1\\). The boundary points \\(-3\\) and \\(2\\) give a sum of exactly \\(5\\), so they are excluded. The solution set is \\(\\boxed{-3<x<2}\\), choice A.",
+        "nodeIds": [
+          "math:absolute-value-inequalities",
+          "cnm_007",
+          "cnm_055",
+          "cnm_097"
+        ],
+        "prerequisiteIds": [
+          "cnm_004",
+          "cnm_096"
+        ],
+        "levelReason": "Number-line distances and a simple linear inequality give a complete elementary solution."
+      },
+      {
+        "id": "absolute-value-sign-intervals",
+        "label": "Split where the expressions change sign",
+        "explanation": "The expressions inside the absolute values change sign at \\(-2\\) and \\(1\\). Splitting there lets us remove both absolute-value signs correctly:\n\\[\n|x-1|+|x+2|=\n\\begin{cases}\n-2x-1,&x<-2,\\\\\n3,&-2\\le x\\le1,\\\\\n2x+1,&x>1.\n\\end{cases}\n\\]\nFor \\(x<-2\\), the inequality \\(-2x-1<5\\) gives \\(x>-3\\), so this case contributes \\(-3<x<-2\\).\n\nFor \\(-2\\le x\\le1\\), the sum is \\(3<5\\), so the entire interval is included.\n\nFor \\(x>1\\), the inequality \\(2x+1<5\\) gives \\(x<2\\), so this case contributes \\(1<x<2\\).\n\nThese three cases cover every real number. Combining their solutions gives \\(\\boxed{-3<x<2}\\), choice A. The endpoints are excluded because the original inequality is strict.",
+        "nodeIds": [
+          "math:absolute-value-inequalities",
+          "cnm_008",
+          "cnm_097",
+          "cnm_099"
+        ],
+        "prerequisiteIds": [
+          "cnm_007",
+          "cnm_096"
+        ],
+        "levelReason": "The method uses sign-based absolute-value simplification and linear inequalities, with all interval endpoints checked."
+      }
+    ],
+    "assessedIds": [
+      "math:absolute-value-inequalities"
+    ],
+    "supportIds": [
+      "cnm_007",
+      "cnm_096"
+    ],
+    "annotationRationale": "The route-neutral target is the complete solution set of an absolute-value inequality, including strict endpoints. Distance addition is specific to the first route; sign rewriting and intersecting branch conditions are specific to the second. Absolute-value meaning and inequality properties support both.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1973_AMC_12_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "The distance sum is 3 between -2 and 1 and 3+2t outside, so the allowed extension is t<1. Independently, the three sign intervals produce (-3,-2), [-2,1], and (1,2), whose union is (-3,2).",
+    "levelCheck": "Both methods explain their decisive steps and preserve strict endpoints using elementary reasoning.",
+    "methodDistinctness": "Distance geometry and sign-based algebra offer genuinely distinct, accessible approaches.",
+    "annotationCheck": "The assessed absolute-value inequality node is route-neutral. Shared absolute-value meaning and inequality properties are justified, while distance addition and sign-interval operations remain method-specific.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "number-line-distances": "solution:number-line-distances:b9580e0f268c",
+    "absolute-value-sign-intervals": "solution:absolute-value-sign-intervals:b9580e0f268c"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "ab8a64b85e1998e36944403270165c75c282c3445c91b5d9af061c350ea091ef",
+    "inputHash": "c52ad9ebb9acdbfe4e291ff59b6531204ef50314da0db3886b9dd1861cbdbaef",
+    "authorInputHash": "060e65e8bf473e3d9d3e701b53b63badca26fc2aa1a678a910da91e5a374d53e",
+    "reviewInputHash": "e2450cb281a368d3e74c29a68accf9f1cb46302dbe813a543e8b30c10dfe3508",
+    "authorResponseHash": "ea0d3408dd65a102eebd563f9050f3d8317d3419ea4aa2e146999ac4357bedd8",
+    "reviewerResponseHash": "0c9accb6def3980bf34c1a94a4d3bf1e7341cc211ec8ddbe9ee3b188058d6341",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

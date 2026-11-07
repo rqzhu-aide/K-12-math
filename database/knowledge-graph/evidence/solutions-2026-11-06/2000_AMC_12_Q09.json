@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2000_AMC_12_Q09",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "1c7359d27bdb6edb0d4e39143bcf16bf65025e5375654dae56f318353779f6e6",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "8dbe4d5de3910fa7d36796bddc617ff0becbc6f6b89dca58d93b2fc30ed314e2",
+  "solutionFigureHashes": {},
+  "candidateHash": "ddcb0ace7402e3d47eb4eccf4cc1564b378a2ab1e645a3115ab40c58c0c09124",
+  "candidate": {
+    "questionId": "2000_AMC_12_Q09",
+    "derivedAnswer": "C: 80",
+    "answerStatus": "matches",
+    "answerReason": "Divisibility of the first four scores leaves only 76 or 80 as the last entry. Ending with 76 makes an integer average after three entries impossible. Ending with 80 is achieved by the order 76, 82, 91, 71, 80.",
+    "methods": [
+      {
+        "id": "work-backward-from-prefix-sums",
+        "label": "Use divisibility of the running totals",
+        "explanation": "After \\(k\\) scores have been entered, their average is an integer exactly when their sum is divisible by \\(k\\). This lets us work backward from the total\n\\[\n71+76+80+82+91=400.\n\\]\nLet \\(L\\) be the last score entered. The first four scores sum to \\(400-L\\), which must be divisible by \\(4\\). Since \\(400\\) is divisible by \\(4\\), so is \\(L\\). Among the given scores, only \\(76\\) and \\(80\\) satisfy this condition.\n\nSuppose \\(76\\) were last. The first four scores would then sum to \\(324\\). Removing the fourth score must leave a first-three total divisible by \\(3\\). Because \\(324\\) is itself divisible by \\(3\\), the fourth score would also have to be divisible by \\(3\\). But none of the available scores \\(71,80,82,91\\) is divisible by \\(3\\). Thus \\(76\\) cannot be last.\n\nTo verify that \\(80\\) can be last, use the order\n\\[\n76,82,91,71,80.\n\\]\nThe successive averages are\n\\[\n76,\\quad\\frac{158}{2}=79,\\quad\n\\frac{249}{3}=83,\\quad\n\\frac{320}{4}=80,\\quad\n\\frac{400}{5}=80.\n\\]\nAll are integers. Therefore the last score was \\(\\boxed{80}\\), choice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "cnm_p129",
+          "math:finite-constraint-deduction"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_p155"
+        ],
+        "levelReason": "The reasoning uses the elementary mean formula, divisibility, and elimination of two candidates, followed by an explicit valid order."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p129",
+      "math:finite-constraint-deduction"
+    ],
+    "supportIds": [
+      "cnm_p153"
+    ],
+    "annotationRationale": "The mean node supplies the total-divided-by-count relationship. Finite constraint deduction captures proving which final entry is forced, rather than merely finding a possible order. Elementary divisibility supports the method, with the multiple-of-3 test used locally. Formal congruence notation is unnecessary.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2000_AMC_12_Q09",
+    "decision": "accept",
+    "mathematicalCheck": "The total 400 forces the last score to be 76 or 80. Ending with 76 would require a fourth score divisible by 3 among 71, 80, 82, and 91, which is impossible. The exhibited order ending in 80 has successive integer averages 76, 79, 83, 80, and 80.",
+    "levelCheck": "The solution explains the divisibility constraints, the elimination, and the existence check using elementary reasoning.",
+    "methodDistinctness": "One backward-deduction method is sufficient and establishes a forced answer rather than merely a possible order.",
+    "annotationCheck": "The elementary mean node and finite-constraint deduction node fit the assessment. Factor and multiple knowledge and the local divisibility-by-3 test are appropriate; formal congruences are unnecessary.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "work-backward-from-prefix-sums": "work-backward-from-prefix-sums"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "a93a1d932efc0d3b2a2e980b27476ad00f71ef2df6e8dc33b25a9d0aceb02544",
+    "inputHash": "e7ef7999299b6bcf3d907b571b220c77a6ec73c31103bcb267bf001c743d67a6",
+    "authorInputHash": "ec76482875ab8f80627c6ea15f757383fee577be3c1d9db54c223dc3cb7942d0",
+    "reviewInputHash": "adc11a0f35d461d425896262cdbcdc29c3257b1f81786f55730328d947bd72c1",
+    "authorResponseHash": "0aeeed626ac8346792e620a6ed0a47cdadf4b8c47e769619c2f4d3a8ee53701f",
+    "reviewerResponseHash": "93dce2fa0f1d2b2819d7845ed5a9794f5c1dc6808ee97b450e970abf798996a0",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2024_AMC_12A_Q20",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "80b74cd0b7131e95203c3f14d3ea3b32cd8d94c1dd633d626304e2266c3e2b71",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "19de0d306e8085a8efb73e78c1fe5e9488a64d73352d8be39ca0649e3854ea9b",
+  "solutionFigureHashes": {},
+  "candidateHash": "c5b479af484a7bb54e75f5a4011ccbd9e7bf834363a90b0171b5cefb31eebf3b",
+  "candidate": {
+    "questionId": "2024_AMC_12A_Q20",
+    "derivedAnswer": "D; the probability p satisfies 3/4 < p ≤ 7/8.",
+    "answerStatus": "matches",
+    "answerReason": "Representing the independent side positions by a uniform point in the unit square makes the triangle area ratio xy. The complementary region xy ≥ 1/2 has area at least 1/8 and strictly less than 1/4.",
+    "methods": [
+      {
+        "id": "bound-complementary-area",
+        "label": "Bound the complementary region",
+        "explanation": "Only an interval is requested, so bounding the probability will suffice. Let\n\\[\nx=\\frac{AP}{AB},\\qquad y=\\frac{AQ}{AC},\n\\]\nwhere \\(0\\le x,y\\le1\\), and write \\([XYZ]\\) for the area of triangle \\(XYZ\\). Triangles \\(APQ\\) and \\(ABQ\\) have the same height to line \\(AB\\), while triangles \\(ABQ\\) and \\(ABC\\) have the same height to line \\(AC\\). Therefore\n\\[\n[APQ]=x[ABQ],\\qquad [ABQ]=y[ABC],\n\\]\nso \\([APQ]/[ABC]=xy\\). These equalities also hold when either small triangle has zero area.\n\nThe independent uniform choices make \\((x,y)\\) uniform in the unit square, whose area is \\(1\\). Thus probabilities equal areas there. Let \\(q\\) be the probability of the complementary event \\(xy\\ge\\tfrac12\\), including equality.\n\nIf \\(xy\\ge\\tfrac12\\), both coordinates must be at least \\(\\tfrac12\\), so this region lies in the square \\([\\tfrac12,1]^2\\), of area \\(\\tfrac14\\). However, the smaller square \\([\\tfrac12,\\tfrac23]^2\\) is excluded, since throughout it\n\\[\nxy\\le\\frac49<\\frac12.\n\\]\nThat excluded square has positive area \\(\\tfrac1{36}\\), giving\n\\[\nq\\le\\frac14-\\frac1{36}=\\frac29<\\frac14.\n\\]\nFor a bound in the other direction, observe that throughout the unit square,\n\\[\nxy=x+y-1+(1-x)(1-y)\\ge x+y-1.\n\\]\nConsequently every point with \\(x+y\\ge\\tfrac32\\) belongs to the complementary event. Those points form the upper-right corner triangle with perpendicular legs of length \\(\\tfrac12\\), whose area is \\(\\tfrac18\\). Hence \\(q\\ge\\tfrac18\\).\n\nThe desired probability is \\(p=1-q\\), so\n\\[\n\\frac18\\le q<\\frac14\n\\quad\\Longrightarrow\\quad\n\\frac34<p\\le\\frac78.\n\\]\nThis is choice \\(\\boxed{\\mathrm{D}}\\).",
+        "nodeIds": [
+          "math:geometric-probability",
+          "cnm_h018"
+        ],
+        "prerequisiteIds": [
+          "cnm_p148",
+          "cnm_p089",
+          "cnm_h140",
+          "cnm_h139",
+          "cnm_146"
+        ],
+        "levelReason": "The argument uses common-height area ratios, independence, elementary inequalities, and square and triangle areas, all within precalculus."
+      }
+    ],
+    "assessedIds": [
+      "math:geometric-probability"
+    ],
+    "supportIds": [
+      "cnm_p148",
+      "cnm_p089",
+      "cnm_h140",
+      "cnm_h139"
+    ],
+    "annotationRationale": "The task assesses translating uniform independent geometric choices into a planar probability region and locating its probability within an interval. Triangle area, rectangle area, independence, and complementary probability support the solution. The particular route uses an elementary product inequality and polynomial expansion to enclose the complementary region. Common-height comparisons establish the area ratio without requiring similar triangles or a perfect-square identity.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2024_AMC_12A_Q20",
+    "decision": "accept",
+    "mathematicalCheck": "Successive common-height comparisons give area ratio xy. Independence makes the coordinate pair uniform in the unit square. The complementary region contains a triangle of area 1/8 and lies in a square of area 1/4 excluding a square of area 1/36. Thus 1/8 ≤ q ≤ 2/9 < 1/4, proving 3/4 < 1-q ≤ 7/8.",
+    "levelCheck": "The complete argument uses elementary geometry, probability, expansion, and inequalities within AMC 12 scope. Both bounding constructions are justified.",
+    "methodDistinctness": "One complete interval-bounding method is sufficient.",
+    "annotationCheck": "Geometric probability is the appropriate assessed concept. Area formulas, independence, complementary events, inequality manipulation, and polynomial expansion match the actual steps.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "bound-complementary-area": "bound-complementary-area"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "d13840d264ffe8163b9e60f242e6cc433ecf00252f572d346035010b66731b19",
+    "inputHash": "895dd41e097641215a89808fdabaa8126b73fe4530bc7b5bc5d416d19544b28a",
+    "authorInputHash": "53b94af6b6418cd44c6b91caa8ecf649fbda03fdddade5ca5005d6dbaa772d9e",
+    "reviewInputHash": "31434ee938dff14ce308809b5cf90997334c9c327aa1cde9d259163c08051e9e",
+    "authorResponseHash": "39e7dcfd4e91210594285850968b3e4c3d474b43f09d65160ea3b3ac8a5a1af6",
+    "reviewerResponseHash": "508ba953addf3d6b2d3656e3e773fff37576b0713776a8c3a16ed6942379a1d5",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

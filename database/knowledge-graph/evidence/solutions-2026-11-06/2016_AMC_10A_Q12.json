@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_10A_Q12",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "bb918b81b724201889410b36d135987f59c7e224b369d70de260e7df917fe26d",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "2344cca9ae962a46ccfd4d899bdfa2a866ab2f7134dbb70faf7f0fffe3a63d5a",
+  "solutionFigureHashes": {},
+  "candidateHash": "9522d0e67a06b00e5930926fa083bcfc45137e725c627dc104d1e382fd0194f4",
+  "candidate": {
+    "questionId": "2016_AMC_10A_Q12",
+    "derivedAnswer": "A: p<1/8",
+    "answerStatus": "matches",
+    "answerReason": "All three selected integers must be odd. Their successive probabilities are 1/2, 1007/2015, and 1006/2014; the last two are each strictly less than 1/2.",
+    "methods": [
+      {
+        "id": "successive-odd-selections",
+        "label": "Track the remaining odd integers",
+        "explanation": "A product of integers is odd exactly when every factor is odd. There are \\(1008\\) odd integers among \\(1,2,\\ldots,2016\\).\n\nImagine selecting the three integers one at a time without replacement. Each unordered selection can arise in exactly six orders, so this gives the same probability as selecting three distinct integers together.\n\nThe first selection is odd with probability \\(1008/2016=1/2\\). If it is odd, then \\(1007\\) of the remaining \\(2015\\) integers are odd. If the first two selections are odd, then \\(1006\\) of the remaining \\(2014\\) integers are odd. Therefore\n\\[\np=\\frac12\\cdot\\frac{1007}{2015}\\cdot\\frac{1006}{2014}.\n\\]\nRemoving odd integers makes each later odd-selection probability less than one-half. Indeed,\n\\[\n2(1007)<2015,\n\\qquad 2(1006)<2014.\n\\]\nConsequently,\n\\[\np<\\frac12\\cdot\\frac12\\cdot\\frac12=\\frac18.\n\\]\nThe correct statement is choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_h137",
+          "cnm_h245"
+        ],
+        "prerequisiteIds": [
+          "cnm_p156",
+          "cnm_309",
+          "cnm_h244"
+        ],
+        "levelReason": "Uses elementary parity and probabilities obtained by counting the remaining eligible choices after each selection."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h137"
+    ],
+    "supportIds": [
+      "cnm_p156",
+      "cnm_309"
+    ],
+    "annotationRationale": "The task targets probability in a finite equally likely selection model, supported by parity and recognition of equal likelihood. The written route multiplies conditional probabilities, so the multiplication rule and reduced-sample-space meaning of conditional probability are method-local. No distribution theory is used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_10A_Q12",
+    "decision": "accept",
+    "mathematicalCheck": "An odd product requires three odd selections. Equal sixfold ordering multiplicity justifies sequential sampling, giving p=(1/2)(1007/2015)(1006/2014). Both later factors are positive and strictly below 1/2, so p<1/8.",
+    "levelCheck": "The remaining-choice argument explains the conditional probabilities using elementary counting appropriate for AMC 10.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The assessed classical probability model and shared parity/equal-likelihood supports fit. Conditional probability and its multiplication rule are correctly confined to the written method; no distribution theory is claimed.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "successive-odd-selections": "successive-odd-selections"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "ee432ee9d32f66445894b46750ad90ac4bcc8621780b055268f8b521d8650fe2",
+    "inputHash": "69d381786b1ef8fc66716059adfb3f5c9042a96b7c2d00b95df54e2798c780c1",
+    "authorInputHash": "3680b0b1c190c41a6345cd36a0e351498f9765e7e0f510efff0244a6c74baf0b",
+    "reviewInputHash": "30430b4463884f1fca42bc2cfef3a2d7b41a5e7aa3176390d99c88fb023f5f9d",
+    "authorResponseHash": "7710eeadfba5b37831f4be4fca263b201f8faeb5e0a7f6268edf5a596b29792c",
+    "reviewerResponseHash": "0b6804ea8d1818bfd3207667ad3a19e47edc4e6d12561baf3f1c84a31e5729c7",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

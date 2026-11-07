@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2013_AMC_10A_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "d615f702a8d7460216367d2a481fde551c96ef4b8a4db6a638000b682e5295e8",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "3a81bf14c7610b689501a6dc1813454b1b2ad8b2456d2102055c07bb1d2f53f0",
+  "solutionFigureHashes": {},
+  "candidateHash": "16a49e8cc09336766e8995815ca6ed9570db604f98957e37cba902ff39cc7d13",
+  "candidate": {
+    "questionId": "2013_AMC_10A_Q21",
+    "derivedAnswer": "D: 1925 coins",
+    "answerStatus": "matches",
+    "answerReason": "Working backward from a last share m gives amounts m·12^j/j! for j=0 through 11. Their reduced denominators have least common multiple 1925, so the smallest feasible last share is 1925.",
+    "methods": [
+      {
+        "id": "backward-denominator-lcm",
+        "label": "Work backward and clear the denominators",
+        "explanation": "The last pirate takes everything left, so let \\(m\\) be that pirate's share. Working backward makes each earlier amount a fixed multiple of \\(m\\), allowing us to find exactly which values make every share integral.\n\nFor \\(j=0,1,\\ldots,11\\), let \\(T_j\\) be the number of coins just before pirate \\(12-j\\) takes a share. Thus \\(T_0=m\\), and \\(T_{11}\\) is the initial treasure. Pirate \\(12-j\\) leaves the fraction \\(j/12\\) for the next pirate, so\n\\[\nT_j=\\frac{12}{j}T_{j-1}\n\\qquad(1\\le j\\le11).\n\\]\nFor example, \\(T_1=12m\\), \\(T_2=72m\\), and \\(T_3=288m\\). Continuing gives\n\\[\nT_j=m\\frac{12^j}{j!},\n\\]\nwhere \\(j!=1\\cdot2\\cdots j\\) and \\(0!=1\\).\n\nEach next coefficient is obtained by multiplying the preceding one by \\(12/j\\). Reducing these coefficients gives denominators \\(1,1,1,1,1,5,5\\) for \\(j=0\\) through \\(6\\), and \\(35,35,35,175,1925\\) for \\(j=7\\) through \\(11\\). In particular,\n\\[\nT_5=\\frac{10368m}{5},\n\\qquad\nT_{11}=\\frac{35831808m}{1925}.\n\\]\nThe last fraction is reduced: its numerator is \\(2^{14}3^7\\), whereas \\(1925=5^2\\cdot7\\cdot11\\). Thus integrality of the initial amount forces \\(m\\) to be a multiple of \\(1925\\). Conversely, every denominator in the list divides \\(1925\\), so choosing \\(m=1925\\) makes every \\(T_j\\) a positive integer.\n\nFor this choice, each earlier pirate receives \\(T_j-T_{j-1}\\), a positive integer because \\(12/j>1\\) for \\(1\\le j\\le11\\). The last pirate receives \\(m\\). Finally, the initial amount \\(T_{11}\\) is a fixed positive multiple of \\(m\\), so minimizing the initial treasure also minimizes the feasible positive value of \\(m\\).\n\nThe twelfth pirate therefore receives \\(\\boxed{1925}\\) coins, choice \\(\\text{D}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_p183",
+          "cnm_p168",
+          "cnm_p159"
+        ],
+        "prerequisiteIds": [
+          "cnm_p179",
+          "cnm_p153",
+          "math:factorial-notation",
+          "math:prime-factorization"
+        ],
+        "levelReason": "Uses reverse fraction operations, fraction reduction, and divisibility. The finite factorial products are handled directly without a prime-valuation formula."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_p179",
+      "cnm_p153"
+    ],
+    "annotationRationale": "The task's central requirement is simultaneous integrality together with minimality. The written route reverses fractional shares, reduces coefficients, and takes a least common multiple of their denominators. Factorial notation and prime factorization support the displayed coefficient calculation; formal factorial valuations are not used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2013_AMC_10A_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "The backward recurrence correctly gives T_j=m·12^j/j!. The listed reduced denominators are correct, and T_11=35831808m/1925 is reduced. Thus 1925 must divide m, while m=1925 makes every intermediate amount and every positive share integral. Since the initial treasure is proportional to m, this also proves minimality.",
+    "levelCheck": "The recurrence and factorial notation are explained. Direct fraction reduction and divisibility provide a complete AMC 10 argument without advanced valuation machinery.",
+    "methodDistinctness": "The single backward method establishes both necessity and sufficiency.",
+    "annotationCheck": "The integrality target and the fraction-division, reduction, and LCM route match the solution. Factorial notation and prime factorization are justified prerequisites.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "backward-denominator-lcm": "solution:backward-denominator-lcm:3a81bf14c761"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "9b3fe76fd0661302778cc4948852c10e6ff6176c4f66421bc16839afea4ab17e",
+    "inputHash": "063f75679383427179c0c11122b49a03a98dab3ad5166f7a53f8afc77f3d2883",
+    "authorInputHash": "1432a4ac8a6105ec5c978d29d434a99d21aff7cfdda90398698a81822e19076c",
+    "reviewInputHash": "a2857044dc4c5d7b97765f3293ff97164a9944b0ea24b2c526265db354341432",
+    "authorResponseHash": "bc3310254815c60b444b5d59e0fa62eb6835d55f45562044a53b7fad2347e920",
+    "reviewerResponseHash": "dcebcdf3e8cf738e702e8d7b60704ef273c9533ccecfb626f66e7a7fe4a3732f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

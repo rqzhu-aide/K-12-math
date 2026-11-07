@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1991_AMC_12_Q30",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "090caec3f40523270a2b41c98d42ae8695fd2d140d5ab677a7e15594029102e6",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "33465a4f99f238e1fa38090c5e13e27c400275b13d70b6292406585fdeb2c68b",
+  "solutionFigureHashes": {},
+  "candidateHash": "a70fe1aa66031a3386639ea9a20d84b5de6a7245cb11c7c0ea6f67485964410a",
+  "candidate": {
+    "questionId": "1991_AMC_12_Q30",
+    "derivedAnswer": "Under the recorded finite-set interpretation, \\(97\\), choice B. If infinite cardinal counts are allowed, the minimum is \\(0\\).",
+    "answerStatus": "disputed",
+    "answerReason": "The key B is correct under the packet's recorded finite-count convention. The displayed phrase 'any set' does not explicitly impose finiteness. With infinite cardinal counts admitted, an infinite C disjoint from A and B can satisfy the equation with empty triple intersection, so the numerical key needs the recorded qualification.",
+    "methods": [
+      {
+        "id": "count-missing-elements",
+        "label": "Count missing elements",
+        "explanation": "Use the packet's recorded interpretation that all subset counts are finite. This assumption matters: the wording says “any set,” and allowing infinite cardinal counts can instead give minimum \\(0\\). The following numerical answer is conditional on finite counts.\n\nA set with \\(m\\) elements has \\(2^m\\) subsets, because each element can independently be included or excluded. Let\n\\[\nU=A\\cup B\\cup C,\\qquad c=|C|,\\qquad u=|U|.\n\\]\nThe given equation becomes\n\\[\n2^{101}+2^c=2^u.\n\\]\nIf \\(c<101\\), the left side lies strictly between \\(2^{101}\\) and \\(2^{102}\\), so it cannot be an integer power of \\(2\\). If \\(c>101\\), it lies strictly between \\(2^c\\) and \\(2^{c+1}\\), which is also impossible. Therefore \\(c=101\\), and then \\(u=102\\).\n\nNow count elements missing from the sets, using \\(U\\) as the universe. The sets \\(A,B,C\\) omit respectively\n\\[\n102-100=2,\\qquad2,\\qquad102-101=1\n\\]\nelements. An element fails to belong to the triple intersection precisely when at least one set omits it. These omissions involve at most \\(2+2+1=5\\) distinct elements, so\n\\[\n|A\\cap B\\cap C|\\ge102-5=97.\n\\]\nTo attain this bound, take \\(U=\\{1,2,\\ldots,102\\}\\) and set\n\\[\n\\begin{aligned}\nA&=U\\setminus\\{1,2\\},\\\\\nB&=U\\setminus\\{3,4\\},\\\\\nC&=U\\setminus\\{5\\}.\n\\end{aligned}\n\\]\nTheir union is \\(U\\), their sizes are \\(100,100,101\\), and their subset counts satisfy the given equation. Their triple intersection is \\(\\{6,7,\\ldots,102\\}\\), containing \\(97\\) elements.\n\nUnder the finite-count interpretation, the minimum is therefore \\(\\boxed{97}\\), choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_h010",
+          "cnm_h009"
+        ],
+        "prerequisiteIds": [
+          "cnm_h231",
+          "cnm_h040",
+          "cnm_h008"
+        ],
+        "levelReason": "The conditional finite proof uses independent binary choices, comparisons of integer powers of 2, and elementary complement counts."
+      },
+      {
+        "id": "count-set-memberships",
+        "label": "Count set memberships",
+        "explanation": "Assume the finite-count interpretation recorded in the packet. For a finite set \\(S\\), each element has two independent choices, inclusion or exclusion, so \\(n(S)=2^{|S|}\\).\n\nLet \\(c=|C|\\) and \\(u=|A\\cup B\\cup C|\\). The equation is\n\\[\n2^{101}+2^c=2^u.\n\\]\nTwo unequal powers of \\(2\\) have a sum strictly between the larger power and twice that power. Such a sum cannot itself be an integer power of \\(2\\). Thus the two exponents on the left must agree, giving \\(c=101\\) and \\(u=102\\).\n\nCount all memberships in the three sets: count an element once for each set containing it. Counting by sets gives\n\\[\n|A|+|B|+|C|=100+100+101=301.\n\\]\nLet \\(t=|A\\cap B\\cap C|\\). Each of these \\(t\\) elements contributes three memberships. Each of the other \\(102-t\\) elements of the union contributes at most two. Therefore\n\\[\n301\\le3t+2(102-t)=204+t,\n\\]\nso \\(t\\ge97\\).\n\nTo attain \\(97\\), put \\(97\\) common elements in all three sets. Add five distinct new elements: put two in \\(B,C\\) only, two in \\(A,C\\) only, and one in \\(A,B\\) only. The resulting sizes are\n\\[\n|A|=100,\\quad |B|=100,\\quad |C|=101,\n\\]\nand the union has \\(102\\) elements. These sizes satisfy the subset-count equation, and exactly the original \\(97\\) elements belong to all three sets.\n\nUnder the finite-count interpretation, the minimum is \\(\\boxed{97}\\), choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "math:double-counting"
+        ],
+        "prerequisiteIds": [
+          "cnm_h231",
+          "cnm_h040",
+          "cnm_h008"
+        ],
+        "levelReason": "The alternative uses elementary membership counting to obtain the bound and an explicit finite construction to attain it."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_h231",
+      "cnm_h040",
+      "cnm_h008"
+    ],
+    "annotationRationale": "The common target is an extremal finite-set count requiring both a universal lower bound and an attaining construction. Independent subset choices, operations with powers, and intersection meaning support both methods. Complement and union reasoning belong to the first route; double counting belongs to the second. These annotations describe the recorded finite-count grading interpretation.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The recorded review accepts the intended finite-set interpretation. The dispute concerns the unrestricted wording, not the finite calculation.",
+      "For an explicit infinite-cardinality counterexample, take A=B={1,...,100} and C={101,102,...}. Their triple intersection is empty. The union and C can be relabeled one-to-one, which also matches their subset collections. Adding the finite 2^101 objects counted by n(A)+n(B) does not change the size of the subset collection of C: send those extra objects to its first 2^101 singleton subsets, shift each original singleton forward by that many places, and leave every nonsingleton subset fixed. Thus the displayed equation holds under cardinal addition, and the minimum in that interpretation is 0."
+    ]
+  },
+  "review": {
+    "questionId": "1991_AMC_12_Q30",
+    "decision": "accept",
+    "mathematicalCheck": "Under finite counts, \\(2^{101}+2^c=2^u\\) forces \\((c,u)=(101,102)\\). Both bounds give an intersection of at least 97, and both constructions attain it. The supplied infinite example has empty triple intersection; its relabeling and singleton-shift correspondences verify the cardinal-count equality, supporting the qualified alternative 0.",
+    "levelCheck": "Both finite methods use elementary set counting and integer powers. The separate infinite-set qualification is supported by explicit correspondences without invoking an advanced theorem.",
+    "methodDistinctness": "Counting omitted elements and counting memberships offer distinct, accessible interpretations of the lower bound. Each independently supplies an attaining construction.",
+    "annotationCheck": "The annotations correctly describe the conditional finite problem. Shared support applies to both methods, while complement and membership-counting concepts remain method-local. The existing finiteness caveat is preserved.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-missing-elements": "count-missing-elements",
+    "count-set-memberships": "count-set-memberships"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "0fd8ff65eb0e60d6022cd90c16f1f766b886644629fdccd6060d21a6337351c0",
+    "inputHash": "ce3728da047f868361dc800c0c485b8715e13252044ce9ba9c3860c25a9e3956",
+    "authorInputHash": "daf05a46b9d88b3dc9361dd1e955724cdb251935305b9d462eb5c4e61333e1ea",
+    "reviewInputHash": "566d8419234b65c5c3924171378e27b2535045783d2e65f6c79be10912d8bb35",
+    "authorResponseHash": "8dbfa4dc8ce2b815f3bc3970dd14951a9f543c45f350a212d15a86c49a58b838",
+    "reviewerResponseHash": "1da2fbb51c5341c82fa169f58944c83d0ed1407b2b5c8bbfa967d651e4b71951",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

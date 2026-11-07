@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2013_AMC_12B_Q18",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ae0a86742892b57234aace5782933c147ba6eca2409514192583f73fe71048c3",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "5346ef8aa4af2a0aedd6945e4f0b7b3b2c879a05d7aca69f3020a19e9b16fb14",
+  "solutionFigureHashes": {},
+  "candidateHash": "53c58b651d5d012bcc6e7b8d924cc2e41d812cf001e8a0d8f7fcde194f557459",
+  "candidate": {
+    "questionId": "2013_AMC_12B_Q18",
+    "derivedAnswer": "B. Jenna wins with 2013 coins; whoever goes first wins with 2014 coins",
+    "answerStatus": "matches",
+    "answerReason": "Explicit replies making successive pairs of moves remove five coins give Jenna a win from either 2013-coin starting turn, and give the starter a win with 2014 coins.",
+    "methods": [
+      {
+        "id": "five-coin-replies",
+        "label": "Make pairs of turns remove five coins",
+        "explanation": "The allowed removals suggest pairing a removal of \\(2\\) with \\(3\\), or a removal of \\(4\\) with \\(1\\). Each pair removes exactly five coins, so we can control the small ending reached by repeated pairs.\n\nFirst consider some endings on Barbara's turn. With one coin she must pass, and Jenna takes it. With three coins Barbara must take two, leaving Jenna the last coin. With five coins Barbara takes either two or four, and Jenna takes the remaining three or one. Thus Jenna wins all three endings.\n\nWhen there are more than five coins on Barbara's turn, Jenna can answer Barbara's removal of two by taking three, and answer a removal of four by taking one. Both replies are legal, and the pile decreases by five before Barbara's next turn.\n\nIf the game starts with \\(2013\\) coins and Barbara goes first, Jenna uses these replies. Since\n\\[\n2013=5\\cdot402+3,\n\\]\nthe game reaches three coins on Barbara's turn, and Jenna wins. If Jenna goes first, she takes three coins, leaving \\(2010\\), a multiple of five, on Barbara's turn. The same replies eventually leave five coins on Barbara's turn, another Jenna win. Therefore Jenna wins with \\(2013\\) coins regardless of the coin flip.\n\nNow suppose there are \\(2014\\) coins. If Jenna starts, she takes one, leaving the already established winning situation of \\(2013\\) coins on Barbara's turn.\n\nIf Barbara starts, she takes four, leaving \\(2010\\) coins on Jenna's turn. Barbara then answers Jenna's removal of one by taking four, or Jenna's removal of three by taking two. Each pair removes five coins and again leaves a multiple of five on Jenna's turn. Eventually Jenna faces five coins, removes one or three, and Barbara takes the remaining four or two. Barbara therefore wins when she starts.\n\nThus Jenna wins with \\(2013\\) coins, and whoever goes first wins with \\(2014\\) coins, choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "math:subtraction-game-strategies",
+          "math:modular-congruence"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153"
+        ],
+        "levelReason": "The proof uses legal reply strategies, multiples of five, and explicit small endings, including the stated pass rule."
+      }
+    ],
+    "assessedIds": [
+      "math:subtraction-game-strategies"
+    ],
+    "supportIds": [
+      "cnm_p153"
+    ],
+    "annotationRationale": "The target is proving optimal outcomes in an asymmetric subtraction game while retaining the player to move and the terminal rules. Remainders and multiples of five belong to this particular reply strategy and are recorded at method level. The explicit responses prove the pattern rather than extrapolating a small table.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2013_AMC_12B_Q18",
+    "decision": "accept",
+    "mathematicalCheck": "The complementary replies remove five coins per pair and remain legal until the explicitly checked endings. They force Jenna's win from either starting turn with 2013 coins. With 2014 coins, Jenna can leave 2013, while Barbara can leave a multiple of five on Jenna's turn and force the final removal.",
+    "levelCheck": "Explicit strategies, multiples of five, and small endings fit AMC 12. The pass rule is handled correctly.",
+    "methodDistinctness": "One complete reply-strategy method covers all four starting cases.",
+    "annotationCheck": "The game-strategy node is route neutral. Remainder reasoning is correctly kept at method level, with factors and multiples as support.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "five-coin-replies": "five-coin-replies"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "6c35792e5a52f125c2e8f804992000eb5c540f1c4b59b8f08d7446bfe1525074",
+    "inputHash": "4d20ee3d2181e5ad1e7e5d412d7da876f508768304ad5782ad84581eec1d3cd5",
+    "authorInputHash": "b886a1ecbd499f79c715fca8996cf8220870932e4dd2bfe2f2581230dc23f157",
+    "reviewInputHash": "ea2c2cc82e768094c7aacb7a2cc07273b638c42a2b6255e5d95811bfd48b9f2a",
+    "authorResponseHash": "b03cded1437305a7ef5d06b2c247686b33815e00a3125471290fb1a6ceaf34e6",
+    "reviewerResponseHash": "13905b705d4904ddbbb6ffaf570bf82f81295d26bb1122e9016e0319aa5f800e",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

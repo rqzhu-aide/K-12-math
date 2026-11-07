@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1983_AMC_12_Q27",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "c7c2cfdb6efe4f3b398ae91b50fc75945a06134f895eae33ca5e3e09366f75a8",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "59d5e52fe45d73a2da29cf9e2f026765a942ba4223d98bf8525d97c76c706288",
+  "solutionFigureHashes": {},
+  "candidateHash": "8f0784f0cb2ff521299103f33048f12f0d027db07b995ff0b5d71b51c07e7f5f",
+  "candidate": {
+    "questionId": "1983_AMC_12_Q27",
+    "derivedAnswer": "E. \\(10\\sqrt5-20\\) meters",
+    "answerStatus": "matches",
+    "answerReason": "The meter stick fixes a horizontal-to-vertical ray ratio of 2:1. Tangency and right-triangle geometry give \\(10=(20+r)/\\sqrt5\\), hence \\(r=10\\sqrt5-20\\).",
+    "methods": [
+      {
+        "id": "tangent-length-and-similar-triangles",
+        "label": "Use tangent lengths and similar triangles",
+        "explanation": "We can work in the vertical plane through the sphere’s center along the shadow direction. Indeed, each horizontal slice of the sphere projects to a ground disk whose center is shifted along that direction; the point of each disk farthest from the ground contact lies in this plane.\n\nLet \\(O\\) be the ground contact, \\(C\\) the sphere’s center, \\(S\\) the far shadow tip, and \\(r>0\\) the radius. Then \\(CO=r\\) and \\(OS=10\\). The boundary ray from \\(S\\) touches the circular cross-section at a point \\(T\\). A tangent is perpendicular to the radius at its point of contact, so triangles \\(COS\\) and \\(CTS\\) are right triangles. By the Pythagorean theorem,\n\\[\nST^2=CS^2-r^2=OS^2=100,\n\\]\nso \\(ST=10\\).\n\nThe meter stick shows that a ray rises 1 unit for every 2 units of horizontal travel. Its corresponding right triangle has hypotenuse \\(\\sqrt5\\). Thus the horizontal length along \\(TS\\) is \\(20/\\sqrt5\\). Since \\(CT\\) is perpendicular to the ray, its horizontal-to-vertical ratio is \\(1:2\\), and its horizontal length is \\(r/\\sqrt5\\).\n\nThe upper tangent point \\(T\\) lies above and toward the shadow side of \\(C\\). Therefore these two horizontal lengths add to \\(OS\\):\n\\[\n10=\\frac{r}{\\sqrt5}+\\frac{20}{\\sqrt5}.\n\\]\nIt follows that\n\\[\nr=10\\sqrt5-20>0.\n\\]\nThe radius is \\(\\boxed{10\\sqrt5-20}\\) meters, choice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_281",
+          "cnm_262",
+          "cnm_272",
+          "cnm_174"
+        ],
+        "prerequisiteIds": [
+          "cnm_260",
+          "cnm_271"
+        ],
+        "levelReason": "Uses a planar cross-section, tangent perpendicularity, the Pythagorean theorem, and elementary similar triangles."
+      },
+      {
+        "id": "reflect-ray-and-sum-areas",
+        "label": "Reflect the ray and compare areas",
+        "explanation": "Consider the vertical cross-section through the sphere’s center along the rays. It contains the farthest shadow tip because the sphere’s horizontal slices project to disks centered along the shadow direction.\n\nLet \\(O\\) be the ground contact, \\(S\\) the shadow tip with \\(OS=10\\), and \\(C\\) the center of the circular cross-section, of radius \\(r\\). The upper boundary ray through \\(S\\) is tangent to this circle. The meter stick gives a horizontal-to-vertical ray ratio of \\(2:1\\), so extending this ray backward to the vertical line through \\(O\\) reaches a point \\(V\\) at height 5.\n\nReflect the boundary ray across that vertical line. Reflection preserves the circle, so the reflected line is also tangent to it. It meets the ground at a point \\(S'\\) located 10 meters on the other side of \\(O\\). The circle is therefore inside triangle \\(VS'S\\), tangent to all three sides.\n\nThis triangle has base 20, height 5, and equal sloping sides\n\\[\n\\sqrt{10^2+5^2}=5\\sqrt5.\n\\]\nIts area is \\(20\\cdot5/2=50\\). Joining \\(C\\) to its three vertices divides it into three triangles. Each has altitude \\(r\\), since a tangent is perpendicular to the radius at contact. Adding their areas gives\n\\[\n50=\\frac r2\\left(20+10\\sqrt5\\right).\n\\]\nHence\n\\[\nr=\\frac{10}{2+\\sqrt5}\n=\\frac{10(\\sqrt5-2)}{5-4}\n=10\\sqrt5-20.\n\\]\nThe radius is \\(\\boxed{10\\sqrt5-20}\\) meters, choice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_281",
+          "cnm_262",
+          "cnm_132",
+          "math:triangle-area-radius-relations",
+          "cnm_171"
+        ],
+        "prerequisiteIds": [
+          "cnm_260",
+          "cnm_p148",
+          "cnm_174"
+        ],
+        "levelReason": "Uses reflection, the Pythagorean theorem, and elementary triangle areas. The needed area-radius relation is derived by partitioning the triangle."
+      }
+    ],
+    "assessedIds": [
+      "cnm_281",
+      "cnm_262"
+    ],
+    "supportIds": [
+      "cnm_260",
+      "cnm_174"
+    ],
+    "annotationRationale": "The shared targets are modeling the shadow by parallel rays and using tangency to recover the radius. Tangency meaning and Pythagorean geometry support both methods. Similar-triangle components belong to the first route; reflection, the derived area-radius relation, and denominator rationalization belong to the second.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1983_AMC_12_Q27",
+    "decision": "accept",
+    "mathematicalCheck": "The slice projection argument places the farthest tip in the chosen vertical plane. Tangency gives ST=OS=10, and horizontal lengths give 10=(r+20)/√5. Independently, the reflected triangle has area 50 and semiperimeter 10+5√5, yielding the same positive radius 10√5-20.",
+    "levelCheck": "Both methods use elementary spatial reasoning, tangency, and triangle geometry. The area-radius relation is derived where used.",
+    "methodDistinctness": "The tangent-length and similarity argument is distinct from the reflection and area-partition argument.",
+    "annotationCheck": "Projection and tangent properties are shared targets, with tangency meaning and Pythagoras as shared supports. Similarity, reflection, area-radius relations, and rationalization are appropriately method-local.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "tangent-length-and-similar-triangles": "tangent-length-and-similar-triangles",
+    "reflect-ray-and-sum-areas": "reflect-ray-and-sum-areas"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "44fc9891b9166153b282f0d999ceaaca4b0e76c2f12b9ade9885773bbdac2a7b",
+    "inputHash": "47a6be08150ce5c162e429d61bd7e90cdd5cd4eb3aab3c8fac530eb9718470ee",
+    "authorInputHash": "ab9b00c43b27012a4e52f64757a996757d4b5887c57f92a9fb8f76c22405b4f9",
+    "reviewInputHash": "ef361ed10f2eff975c6fedd40c9cf6391f57913d068ca034e30ebb11ab23cb3b",
+    "authorResponseHash": "0e2fb78e5132285d28013b444ea685a32053629b2ebb29e774093563954ee6f0",
+    "reviewerResponseHash": "4c0ee1f9a96fab5aee3d196199922aed6ea469e724313d63b86ec7e943ede80d",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

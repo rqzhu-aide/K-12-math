@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1956_AMC_12_Q36",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "cc2d4e19f8d7aaf9ae08b30b18391bb0a2ab3471a7ee632ebb7dab31788ba5f6",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "1c3022621685d59b473308d0c1be936d624c3b80c2d36b5452d98d960e896c53",
+  "solutionFigureHashes": {},
+  "candidateHash": "29ad886b12670cd8d16c1fc2f50432deba7f7c97f0ad5b23f11bff3fbb9c0ba9",
+  "candidate": {
+    "questionId": "1956_AMC_12_Q36",
+    "derivedAnswer": "Under the nonnegative-integer convention for \\(N\\), \\(K=1,8,49\\), choice E. Without that convention, additional values such as \\(K=288\\) satisfy the wording.",
+    "answerStatus": "disputed",
+    "answerReason": "The key is correct if \\(N\\) denotes the nonnegative integer square root. The statement does not explicitly require this: \\(K=288\\) gives a sum of \\(41616=(-204)^2\\), and \\(-204<100\\). Thus the finite list in E is conditional.",
+    "methods": [
+      {
+        "id": "bounded-coprime-square-factors",
+        "label": "Bound the search and split coprime factors",
+        "explanation": "First assume that \\(N\\) is the nonnegative integer square root. This assumption matters: if negative integers are allowed, then\n\\[\n1+2+\\cdots+288=\\frac{288\\cdot289}{2}\n=41616=(-204)^2,\n\\]\nand \\(-204<100\\). Thus, without the nonnegative convention, none of the listed choices gives all possible values of \\(K\\).\n\nUnder the stated convention, \\(K\\) is a positive integer and \\(1\\le N\\le99\\). Pairing the sum with its reverse gives\n\\[\n\\frac{K(K+1)}2=N^2\\le99^2=9801.\n\\]\nSince \\(140\\cdot141/2=9870>9801\\), we have \\(K\\le139\\).\n\nConsecutive integers have no common divisor greater than one: a common divisor would divide their difference, which is one. Dividing their even member by two preserves this property. A product of two coprime positive integers can be a square only if both factors are squares, because each prime occurs in just one factor and must have an even exponent.\n\nIf \\(K\\) is odd, the coprime factors are \\(K\\) and \\((K+1)/2\\). Therefore \\(K=a^2\\) for an odd positive integer \\(a\\le11\\), and \\((a^2+1)/2\\) must also be a square. For \\(a=1,3,5,7,9,11\\), these latter values are respectively\n\\[\n1,\\ 5,\\ 13,\\ 25,\\ 41,\\ 61.\n\\]\nOnly one and twenty-five are squares, giving \\(K=1\\) and \\(K=49\\).\n\nIf \\(K\\) is even, the coprime factors are \\(K/2\\) and \\(K+1\\). Thus \\(K=2a^2\\), where \\(1\\le a\\le8\\), and \\(2a^2+1\\) must be a square. For these eight values of \\(a\\), the candidates are\n\\[\n3,\\ 9,\\ 19,\\ 33,\\ 51,\\ 73,\\ 99,\\ 129.\n\\]\nOnly nine is a square, giving \\(a=2\\) and \\(K=8\\).\n\nThe odd and even cases exhaust the bounded possibilities. Finally,\n\\[\n\\frac{1\\cdot2}{2}=1^2,\\qquad\n\\frac{8\\cdot9}{2}=6^2,\\qquad\n\\frac{49\\cdot50}{2}=35^2.\n\\]\nAll three nonnegative roots are less than one hundred. Under the nonnegative-integer convention for \\(N\\), the answer is therefore \\(\\boxed{K=1,8,49}\\), choice E.",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_h204",
+          "math:prime-factorization",
+          "cnm_075"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_p156",
+          "cnm_074"
+        ],
+        "levelReason": "The complete search uses an elementary sum formula, a finite bound, coprime factors, prime exponents in squares, and short lists of square candidates."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_h204",
+      "cnm_074"
+    ],
+    "annotationRationale": "The target is finding every integer solution within the intended bound and justifying completeness. Arithmetic-sequence summation supplies the equation, and square-root meaning makes the sign qualification explicit. Coprime factor splitting and prime-exponent reasoning belong to this particular method.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The recorded qualification is preserved: the finite answer requires N to be the nonnegative integer square root. Allowing negative integer N makes N<100 ineffective as an upper bound and admits additional values of K."
+    ]
+  },
+  "review": {
+    "questionId": "1956_AMC_12_Q36",
+    "decision": "accept",
+    "mathematicalCheck": "For nonnegative integer N, the bound gives \\(K\\le139\\). Coprime-factor splitting and the complete odd/even candidate lists yield exactly \\(K=1,8,49\\), with roots 1, 6, and 35. The negative-root counterexample \\(K=288,N=-204\\) correctly establishes the wording qualification.",
+    "levelCheck": "The bounded search and explained prime-exponent argument are elementary high-school mathematics. No advanced equation-solving theorem is needed.",
+    "methodDistinctness": "One complete bounded method is sufficient.",
+    "annotationCheck": "The integer-solution target is route-neutral. Summation and square-root meaning support the task, while prime factorization and square checks describe this particular route. The existing sign caveat is preserved.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "bounded-coprime-square-factors": "bounded-coprime-square-factors"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "29e2f92ac1a89f90ebb9f94698d8c42405650ef075500351ff238be53012d10a",
+    "inputHash": "7fc9d539096843f91499f34a5f22c17feae48448dc2ecbb5c9f1bad01ea60654",
+    "authorInputHash": "f60ff4ab4aceb47149abe9d2422e230383b02645498982d6323e96b8447f157b",
+    "reviewInputHash": "52140425c1c81a275695c1df602dcedf379423d43f2cea257b49a176ecaba3d2",
+    "authorResponseHash": "8085a12899ebb32f761ff46c455970b3f350e0391b9cc90c881415058e060624",
+    "reviewerResponseHash": "b0b8d1d4320ae8c526fc86b938b3882cc9c4a9b65605e4e0271a80d53caeafb2",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

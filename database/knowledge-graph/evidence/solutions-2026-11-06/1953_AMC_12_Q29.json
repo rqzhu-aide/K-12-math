@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1953_AMC_12_Q29",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "215d24aaa6814abf76e4bc047dd32f03336130e32773802042ad4417dcc459bc",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "8a21c9ec870ad778c8d1bac96b978d7e048d001b54ec22ee9b877dfbfe7af13f",
+  "solutionFigureHashes": {},
+  "candidateHash": "72de00df1b5a0b607e3f629d0a1bc2833221550788515c180a3af02ab1c09c1e",
+  "candidate": {
+    "questionId": "1953_AMC_12_Q29",
+    "derivedAnswer": "Not uniquely determined as worded; D (5 significant digits) under the inferred-side-precision interpretation.",
+    "answerStatus": "disputed",
+    "answerReason": "The rounded area determines a side report of 1.0500 inches, with five significant digits, but does not determine the precision of the original side measurement. Original measurements with more significant digits can produce the same rounded area.",
+    "methods": [
+      {
+        "id": "rounding-bounds",
+        "label": "Distinguish original precision from inferred precision",
+        "explanation": "A rounded area can bound the side, but it cannot reveal how many digits were recorded in the original measurement. For example, the side reports \\(1.05000\\) and \\(1.050000\\) inches have six and seven significant digits, respectively, yet squaring and rounding either gives \\(1.1025\\) square inches.\n\nIf the intention is to determine how many significant digits can be reported from the area information alone, let \\(s>0\\) be the side length in inches. Rounding the area to the nearest \\(0.0001\\) gives the bounds\n\\[\n1.10245\\le s^2\\le1.10255.\n\\]\nThese weak bounds allow either rule for rounding an exact midpoint. To see how the side rounds, compare the squares of the rounding boundaries around \\(1.0500\\):\n\\[\n1.04995^2=1.1023950025<1.10245,\n\\]\n\\[\n1.05005^2=1.1026050025>1.10255.\n\\]\nSince positive numbers preserve their order when squared, every permissible side satisfies \\(1.04995<s<1.05005\\). Thus every such side rounds to \\(1.0500\\) inches, which has five significant digits.\n\nSix significant digits are not fixed: \\(1.04998^2=1.1024580004\\) and \\(1.05002^2=1.1025420004\\) both round to the stated area, but their six-significant-digit side reports differ. Therefore the inferred-precision interpretation gives \\(5\\), choice D; the original measurement's significant-digit count remains unspecified.",
+        "nodeIds": [
+          "cnm_023",
+          "cnm_079"
+        ],
+        "prerequisiteIds": [
+          "cnm_074",
+          "cnm_p089",
+          "cnm_p133"
+        ],
+        "levelReason": "Uses decimal rounding, exact squaring, and elementary bounds for a positive square root."
+      }
+    ],
+    "assessedIds": [
+      "cnm_023"
+    ],
+    "supportIds": [
+      "cnm_074",
+      "cnm_p089",
+      "cnm_p133"
+    ],
+    "annotationRationale": "Significant figures and stated accuracy are the task-level target. The method bounds the positive square root by comparing squares, so cnm_079 describes the actual root reasoning. Square area, principal-root meaning, and decimal multiplication support the calculation.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The statement does not specify whether it asks for the original measurement's precision or a side report inferred from the rounded area. Choice D is justified only under the latter interpretation."
+    ]
+  },
+  "review": {
+    "questionId": "1953_AMC_12_Q29",
+    "decision": "accept",
+    "mathematicalCheck": "The boundary squares correctly force every compatible positive side to round to 1.0500. The six-digit examples demonstrate that greater inferred precision is unavailable, while differently precise original reports establish the wording ambiguity. Choice D is appropriately conditional.",
+    "levelCheck": "Decimal rounding, exact multiplication, and comparison of positive squares are appropriate and clearly explained.",
+    "methodDistinctness": "One complete method suffices.",
+    "annotationCheck": "The significant-figure target, square-root estimation route, and listed supporting concepts match their catalog scopes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "rounding-bounds": "rounding-bounds"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "1c382be15ee4612fe06c610724ada145ef2e2f59d4da1984b9b0a69deeb7ba9f",
+    "inputHash": "e858991ab89a0b7bc4c0b2478e3d4bf72f4c32ba361b9bafafa2b09bb9cac7d0",
+    "authorInputHash": "993aa2fe73b46b59253e256fab746ad2dd3a029d73328df54754028e26f7b99c",
+    "reviewInputHash": "a371a0b44c16592b4010b2a293241b4c9c2d17e33b44c415509bb9f43bf2006e",
+    "authorResponseHash": "205d9da42a43ccbcd43491ddf05559395ffb334a3e7b31c7cab14f752507096b",
+    "reviewerResponseHash": "6a11259040fb96118f3686bee81d185c6e4a4232cb0268b072e85f7de63a7a45",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

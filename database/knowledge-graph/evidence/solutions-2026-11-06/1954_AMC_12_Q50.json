@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1954_AMC_12_Q50",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "e1a8fa1f2f2981c9a152b1ed0e5a698dd926e96998f23d16eacd3c419abedfa0",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "6b9190ea247ebe7cc3c00372c0d536963edd1d9c3fad037c19e63db08c21ad80",
+  "solutionFigureHashes": {},
+  "candidateHash": "7b2b14a8f0bc86fe2aa8e66fbbf55db6998d6afca600d77b3d56346c198964eb",
+  "candidate": {
+    "questionId": "1954_AMC_12_Q50",
+    "derivedAnswer": "A, 7:23 and 7:53",
+    "answerStatus": "matches",
+    "answerReason": "The exact times are 252/11 and 588/11 minutes after 7, which round to 23 and 53 minutes.",
+    "methods": [
+      {
+        "id": "angular-difference",
+        "label": "Track the difference between the hand positions",
+        "explanation": "Both hands move, so we track their angular positions from 12. The minute hand moves \\(360/60=6^\\circ\\) per minute, while the hour hand moves \\(30/60=\\frac12^\\circ\\) per minute.\n\nLet \\(t\\) be the number of minutes after 7, with \\(0<t<60\\). The minute hand is at \\(6t\\) degrees, and the hour hand is at \\(210+t/2\\) degrees. Their signed difference is therefore\n\\[\n6t-\\left(210+\\frac t2\\right)=\\frac{11t}{2}-210.\n\\]\nDuring this hour, that difference increases from \\(-210^\\circ\\) toward \\(120^\\circ\\). An \\(84^\\circ\\) smaller angle occurs when the difference is \\(-84^\\circ\\) or \\(84^\\circ\\). Differences of \\(\\pm276^\\circ\\), which would give the same smaller angle, are outside this range, as are any further full-turn possibilities.\n\nSolving the two equations gives\n\\[\n\\begin{aligned}\n\\frac{11t}{2}-210=-84\n&\\quad\\Longrightarrow\\quad t=\\frac{252}{11}\\approx22.91,\\\\\n\\frac{11t}{2}-210=84\n&\\quad\\Longrightarrow\\quad t=\\frac{588}{11}\\approx53.45.\n\\end{aligned}\n\\]\nBoth values lie between 0 and 60. The signed difference increases steadily, so each equation gives exactly one time and these are all the possibilities. Rounding to the nearest minute gives \\(\\boxed{7{:}23\\text{ and }7{:}53}\\), choice \\(\\text{A}\\).",
+        "nodeIds": [
+          "cnm_045",
+          "cnm_058"
+        ],
+        "prerequisiteIds": [
+          "cnm_027",
+          "cnm_042",
+          "cnm_p062",
+          "cnm_023"
+        ],
+        "levelReason": "The method uses elementary angle arithmetic, constant rates, two linear equations, and rounding."
+      }
+    ],
+    "assessedIds": [
+      "cnm_058",
+      "cnm_045"
+    ],
+    "supportIds": [
+      "cnm_023",
+      "cnm_p062"
+    ],
+    "annotationRationale": "The mathematical targets are calculating the angle between moving hands and translating the time condition into linear equations. Expression writing and linear-equation solving support the model. Time-unit conversion supplies the hand rates, and approximation supplies the requested minute precision. Angular degree-minute-second conversion is not used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1954_AMC_12_Q50",
+    "decision": "accept",
+    "mathematicalCheck": "The signed hand-position difference is 11t/2−210, ranging between −210 and 120 degrees. Only differences −84 and 84 produce the requested smaller angle in that range. Their unique solutions are 252/11 and 588/11 minutes, rounding to 7:23 and 7:53. The range argument excludes additional times.",
+    "levelCheck": "Constant rates, angle subtraction, linear equations, and rounding fit the intended level and are sufficiently explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The angle-calculation and linear-modeling targets fit cnm_058 and cnm_045. Time conversion and approximation are appropriate support; angular minute-second conversion is correctly omitted.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "angular-difference": "angular-difference"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "b8be81b5ab97f68c35c422c1a3dd3186da388a8f87c582a9dcb54e889bb78528",
+    "inputHash": "884cec901f512481726aa1173e6dca6fc360c9313aa5c464b5227ba54849e313",
+    "authorInputHash": "c4342b38373402aaad55e3b8d0a0d2f6a12e74c71aabc90e31b4cd4da21a1efa",
+    "reviewInputHash": "7330358e82464f09d76d6e10e688c65c05cfbc1740d5b96ee93f6e3c4d7f0105",
+    "authorResponseHash": "dbb1d7ece1536e77ff1a8161a623b1fecfeb803094bc97c629f228f654fac781",
+    "reviewerResponseHash": "1526abf123edd2129cf2fd50cc004ff5eb9db36aecd3bcd84dee04002002612e",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

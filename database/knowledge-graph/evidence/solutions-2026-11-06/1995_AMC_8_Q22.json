@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1995_AMC_8_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "0379aba36d5f4db356ed2580ef4058cac57e026d055f3ce515709c047d86cdcc",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "1a7ba736c5f849f24393785ec22bc69fc12a9dfa37bd88b0d5f045029b09606b",
+  "solutionFigureHashes": {},
+  "candidateHash": "10bd52876b9978399b8f4410e916cfe01f2692657d0010d7f2e6f433ce8bc5f4",
+  "candidate": {
+    "questionId": "1995_AMC_8_Q22",
+    "derivedAnswer": "A: 162",
+    "answerStatus": "matches",
+    "answerReason": "The only two-digit factor pair is 77 and 85. Their product is 6545 and their sum is 162, matching A.",
+    "methods": [
+      {
+        "id": "bounded-ending-five-search",
+        "label": "Narrow the factor search",
+        "explanation": "The two-digit condition sharply limits the search. Each factor is at most \\(99\\), so neither can be \\(66\\) or smaller, because\n\\[\n66\\cdot99=6534<6545.\n\\]\nThus both factors must lie between \\(67\\) and \\(99\\).\n\nSince \\(6545\\) is odd, both factors are odd. Multiplying two odd units digits from \\(1,3,7,9\\) never gives a units digit of \\(5\\), so at least one factor must end in \\(5\\). In our range, that factor can only be \\(75\\), \\(85\\), or \\(95\\). Check these three possibilities:\n\\[\n\\begin{aligned}\n6545&=75\\cdot87+20,\\\\\n6545&=85\\cdot77,\\\\\n6545&=95\\cdot68+85.\n\\end{aligned}\n\\]\nThe nonzero remainders eliminate \\(75\\) and \\(95\\). Therefore the pair is \\(85\\) and \\(77\\), both of which are two-digit numbers. Their sum is\n\\[\n85+77=\\boxed{162},\n\\]\nchoice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_p154"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_p156"
+        ],
+        "levelReason": "The method uses whole-number bounds, odd and even numbers, units digits, and three arithmetic checks. It needs no formal congruences or prime-factorization machinery."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_p153"
+    ],
+    "annotationRationale": "Finding the integer factor pair within two-digit bounds, with an exhaustive search, fits math:integer-diophantine-equations. Factor meaning is supporting knowledge. The method locally uses parity and the units-digit test for multiples of five to reduce the search to three candidates.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1995_AMC_8_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "Since 66·99=6534, both factors must be between 67 and 99. Both are odd, and at least one must end in 5. Checking 75, 85 and 95 leaves only 85·77=6545, proving uniqueness up to order and giving the sum 162.",
+    "levelCheck": "The bounds, units-digit reasoning and three arithmetic checks are appropriate for AMC 8.",
+    "methodDistinctness": "One exhaustive elementary search is sufficient.",
+    "annotationCheck": "The bounded integer-solution target, factor support, and local parity and divisibility annotations match the argument without importing prime-factorization machinery.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "bounded-ending-five-search": "bounded-ending-five-search"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c03a21082caebbd738bdff066f9741338013b8f0e6e84d7838f44f4b1682c4b7",
+    "inputHash": "e10a4c5de10f82ed62dfde601558389b5e58dbd44a464c7ca07931e0b25c13df",
+    "authorInputHash": "94f8cdaf77378022821282adfac5abfec6eab0a6d889234f6b090ef2c198d79f",
+    "reviewInputHash": "c008348dd7ec589be8fa10411d89829596581308f1b64b4cd68aa7c81934af28",
+    "authorResponseHash": "6594104065de478a75cdf404e5647217f19c79ff548611fe556299457505a4bf",
+    "reviewerResponseHash": "290c53299bbf61d8c27c932bd27221d174c18beff86ee3674c3d2b1a8e1dc754",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

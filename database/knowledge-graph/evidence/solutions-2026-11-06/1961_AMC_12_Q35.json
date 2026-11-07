@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1961_AMC_12_Q35",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "c8db1b37e7de7186665fcccb6b8bd88e83e8a646f78d1525b5d681c9a35f2891",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "e84a2448b3afd105f80f00fe37ef956c5a7692039799d75515b67b85a1694840",
+  "solutionFigureHashes": {},
+  "candidateHash": "38b7e68f1540f116c5c797b3677faadb89534314b8671672ed691b96a923d122",
+  "candidate": {
+    "questionId": "1961_AMC_12_Q35",
+    "derivedAnswer": "D, a4=3",
+    "answerStatus": "matches",
+    "answerReason": "The digit bounds force a5=5, leaving 95. The terms below 4! can contribute at most 23, so 95=3·24+23 forces a4=3.",
+    "methods": [
+      {
+        "id": "bound-the-lower-digits",
+        "label": "Bound what the smaller places can hold",
+        "explanation": "The digit restrictions limit how much the smaller factorial places can contribute. This lets us determine larger digits without guessing.\n\nSince \\(6!=720>695\\) and every summand is nonnegative, every term from \\(6!\\) onward must be zero. The terms through \\(4!\\) have maximum total\n\\[\n1+2\\cdot2!+3\\cdot3!+4\\cdot4!=119.\n\\]\nThus the \\(5!\\) term must be present. If \\(a_5\\le4\\), the entire sum would be at most\n\\[\n4\\cdot120+119=599<695.\n\\]\nSince \\(a_5\\le5\\), we must have \\(a_5=5\\), leaving \\(695-600=95\\).\n\nNow write\n\\[\n95=24a_4+T,\n\\qquad T=a_1+2a_2+6a_3.\n\\]\nThe smaller digit bounds give \\(0\\le T\\le1+4+18=23\\), so\n\\[\n72\\le24a_4\\le95<96.\n\\]\nThe only possible integer digit is \\(a_4=3\\). It is achievable, since\n\\[\n695=1+2\\cdot2!+3\\cdot3!+3\\cdot4!+5\\cdot5!,\n\\]\nand all these digits satisfy their restrictions. Therefore \\(a_4=3\\), choice D.",
+        "nodeIds": [
+          "cnm_024",
+          "math:integer-diophantine-equations"
+        ],
+        "prerequisiteIds": [
+          "math:factorial-notation",
+          "cnm_p112"
+        ],
+        "levelReason": "The method uses factorial evaluation, nonnegative digit bounds, and elementary integer arithmetic."
+      },
+      {
+        "id": "successive-remainders",
+        "label": "Extract the digits by successive division",
+        "explanation": "Factorial place values can be grouped in a nested form:\n\\[\n695=a_1+2\\bigl(a_2+3\\bigl(a_3+4(a_4+5T)\\bigr)\\bigr),\n\\]\nwhere \\(T\\) is an integer collecting the remaining factorial terms.\n\nBecause \\(0\\le a_1<2\\), the first digit is the remainder when \\(695\\) is divided by \\(2\\). After removing that digit and dividing by \\(2\\), the next digit is the remainder on division by \\(3\\), because \\(0\\le a_2<3\\). The same reasoning continues with divisors \\(4\\) and \\(5\\).\n\nThe divisions are\n\\[\n\\begin{aligned}\n695&=2\\cdot347+1,\\\\\n347&=3\\cdot115+2,\\\\\n115&=4\\cdot28+3,\\\\\n28&=5\\cdot5+3.\n\\end{aligned}\n\\]\nThus the successive remainders are \\(a_1=1\\), \\(a_2=2\\), \\(a_3=3\\), and \\(a_4=3\\). Each remainder is forced because its permitted digit range is exactly from zero to one less than the divisor.\n\nThe remaining quotient \\(5\\) can be taken as \\(a_5=5\\), with all higher digits zero. These digits give \\(1+4+18+72+600=695\\), verifying the representation. Hence \\(a_4=3\\), choice D.",
+        "nodeIds": [
+          "cnm_024",
+          "cnm_p050",
+          "cnm_p083"
+        ],
+        "prerequisiteIds": [
+          "math:factorial-notation",
+          "cnm_p112",
+          "cnm_p116"
+        ],
+        "levelReason": "This route uses the supplied factorial definition, the distributive property, and ordinary division with remainders."
+      }
+    ],
+    "assessedIds": [
+      "cnm_024"
+    ],
+    "supportIds": [
+      "math:factorial-notation",
+      "cnm_p112"
+    ],
+    "annotationRationale": "The task target is interpreting and converting a numeral representation with factorial place values, fitting the catalog's exploration of numeral systems. The first method uses finite integer bounds on the digits. The second uses nested place values and successive remainders. Those procedures remain method-specific, while factorial meaning and arithmetic are shared prerequisites.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1961_AMC_12_Q35",
+    "decision": "accept",
+    "mathematicalCheck": "Nonnegativity eliminates terms from 6! onward. The lower-place capacity 119 forces \\(a_5=5\\); the remaining 95 and capacity 23 below 4! force \\(a_4=3\\). Independently, successive division by 2, 3, 4, and 5 forces remainders 1, 2, 3, 3. Both verify an admissible representation.",
+    "levelCheck": "Both methods use elementary arithmetic, factorial meaning, and digit restrictions.",
+    "methodDistinctness": "Bounding lower-place capacity and extracting digits by successive remainders are genuinely distinct approaches.",
+    "annotationCheck": "Numeral-system exploration fits the task. Bounds and remainder procedures remain method-specific, while factorial meaning and arithmetic support both routes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "bound-the-lower-digits": "bound-the-lower-digits",
+    "successive-remainders": "successive-remainders"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "f2bd07afb6d2ef133f56e236539ddbc7d612688781d378f04d281606c7bd1869",
+    "inputHash": "2e6ef7a8cd9b653fa14870728cfdf443217f6ecfa567236b088b7ae137582267",
+    "authorInputHash": "e1dd9626dcddebdd0a6eb7481a6d8378f300fdad7328d5ed1141136e3c40dfc3",
+    "reviewInputHash": "c45d188e80018432a5614f2835571f1be2b22d7b1cc63f3a29c846b88af7f9b5",
+    "authorResponseHash": "574378361b4f35da162f07df4792a760cdf4fb1e9eb976651a2ae20f8b90a469",
+    "reviewerResponseHash": "56abd55d500078536befb27032d73d9d4b7055ba9dbacb902146870c56e4c43f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

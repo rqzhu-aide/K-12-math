@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2007_AMC_12B_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "fe729e2e05622ff61d077b1de85d63568e8314ed866df26ba11e879d0a7708ae",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "ea5bff2858e38c75a7ad607ccf6edbb5e3452aa18fb7e444d2fd2b7a7c879d3d",
+  "solutionFigureHashes": {},
+  "candidateHash": "2ae526cb4e6c5ddb6af4199fee555ba482834674757471472f18edd821880d7c",
+  "candidate": {
+    "questionId": "2007_AMC_12B_Q24",
+    "derivedAnswer": "A (4)",
+    "answerStatus": "matches",
+    "answerReason": "Coprimality forces a to divide 14 and b to divide 9. Only b=3 works, and a=1,2,7,14 each gives an integer, producing four pairs.",
+    "methods": [
+      {
+        "id": "coprime-divisibility-and-candidate-check",
+        "label": "Restrict both numbers to divisor lists",
+        "explanation": "Coprimality makes divisibility especially useful: prime factors from \\(a\\) cannot be supplied by \\(b\\), or vice versa. If the expression is an integer \\(k\\), then, since \\(a,b>0\\), we may clear its nonzero denominators to obtain\n\\[\n9a^2+14b^2=9kab.\n\\]\nThis implies \\(a\\mid14b^2\\). Because \\(\\gcd(a,b)=1\\), every prime power in \\(a\\) must come from \\(14\\), so \\(a\\mid14\\). Similarly, \\(b\\mid9a^2\\) and coprimality imply \\(b\\mid9\\). Therefore\n\\[\na\\in\\{1,2,7,14\\},\\qquad b\\in\\{1,3,9\\}.\n\\]\nCheck the three possible denominators:\n\nIf \\(b=1\\), the expression is \\(a+14/(9a)\\). Its integrality would require \\(9a\\mid14\\), which is impossible.\n\nIf \\(b=9\\), it is \\(a/9+14/a\\). The second term is an integer because \\(a\\mid14\\), but the first is not an integer for any listed \\(a\\).\n\nIf \\(b=3\\), it becomes\n\\[\n\\frac{a+14/a}{3}.\n\\]\nFor \\(a=1,2,7,14\\), the numerators are respectively \\(15,9,9,15\\), giving integer values \\(5,3,3,5\\). Each of these \\(a\\)'s is coprime to \\(3\\).\n\nThus every candidate has been checked, and the four distinct ordered pairs are \\((1,3),(2,3),(7,3),(14,3)\\). The answer is \\(4\\), choice \\(\\mathrm{A}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations"
+        ],
+        "prerequisiteIds": [
+          "math:prime-factorization",
+          "cnm_p153",
+          "cnm_p158"
+        ],
+        "levelReason": "Uses elementary prime-factor cancellation under coprimality and a complete finite check; formal congruences are unnecessary."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "math:prime-factorization",
+      "cnm_p153",
+      "cnm_p158"
+    ],
+    "annotationRationale": "The target is to determine all coprime integer pairs satisfying integrality. Prime-factor cancellation bounds the candidates, and substitution proves sufficiency. Modular-congruence knowledge is not used in this route.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2007_AMC_12B_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "Clearing positive denominators and using coprimality correctly forces \\(a\\mid14\\) and \\(b\\mid9\\). The checks exclude \\(b=1,9\\); for \\(b=3\\), all four divisors of 14 work and remain coprime to 3. Thus exactly four ordered pairs qualify.",
+    "levelCheck": "Elementary prime-power divisibility and a complete finite check are appropriate and clearly explained.",
+    "methodDistinctness": "One complete method is sufficient; formal congruences add no necessary idea.",
+    "annotationCheck": "The integer-equation assessment and prime-factorization, factor, and greatest-common-factor supports accurately reflect this route.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "coprime-divisibility-and-candidate-check": "coprime-divisibility-and-candidate-check"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "2a5a251edfea0699025771290eb29f6f0b5b8903b254502ebf8845a0b4c2f7e1",
+    "inputHash": "11f276b3dc004f597eec4ba9dfa60022faeac1ae5f3e17b0316468be9dd6bcd5",
+    "authorInputHash": "07c41c213e4900a33afe24d119bd6307759af076f88c9381af4aa2b58f19582d",
+    "reviewInputHash": "895c0b2b191e5584e601e6b61abdccfc0c9386e7c7cc57634bc0e1cfa324d147",
+    "authorResponseHash": "d6dc375ec533495a41dad66a6b01141c39bd4edbf2b8c818a7dabaaf0d1d4680",
+    "reviewerResponseHash": "33616cf90137f01c5b5754581233838e152808bdd5d4bdc8a4709a4bc4e63d34",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

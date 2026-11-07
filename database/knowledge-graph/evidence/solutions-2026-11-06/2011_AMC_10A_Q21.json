@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2011_AMC_10A_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "f785a153545fca5f8a82bb370ec61d7c436bada89b9625c1fbc373e3775f89ef",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "f35eae74111b87eb4518ce6c1a3bc4423e04a5b3d2e2eda0f0181f9f651dbb61",
+  "solutionFigureHashes": {},
+  "candidateHash": "c759147d97305f9f51057713215b1c4389ff664f55e79918731443ea6e22f78e",
+  "candidate": {
+    "questionId": "2011_AMC_10A_Q21",
+    "derivedAnswer": "\\(\\frac{15}{19}\\), choice D",
+    "answerStatus": "matches",
+    "answerReason": "Equal pair weights require either four genuine coins or one counterfeit in each pair. These cases have 420 and 112 equally likely ordered pair selections, respectively, so the conditional probability is 420/532 = 15/19.",
+    "methods": [
+      {
+        "id": "count-pair-selections",
+        "label": "Count the possible pair selections",
+        "explanation": "The weight information tells us which selections remain possible. Let \\(g\\) be a genuine coin's weight and \\(f\\ne g\\) a counterfeit coin's weight. A pair containing \\(k\\) counterfeit coins weighs\n\\[\n2g+k(f-g).\n\\]\nBecause \\(f-g\\ne0\\), two pairs have equal weight exactly when they contain the same number of counterfeit coins. There are only two counterfeits altogether, so the equal-weight cases are four genuine coins, or one counterfeit in each pair.\n\nTreat the coins as individually distinguishable for counting. Every choice of a first unordered pair followed by a second unordered pair has the same probability: there are always \\(\\binom{10}{2}\\) choices first and \\(\\binom82\\) choices second.\n\nFor four genuine coins, choose the first pair from the eight genuine coins and the second from the six genuine coins left:\n\\[\n\\binom82\\binom62=28\\cdot15=420.\n\\]\nFor one counterfeit in each pair, the first pair has \\(2\\cdot8\\) choices. After that, the second pair has \\(1\\cdot7\\) choices:\n\\[\n(2\\cdot8)(1\\cdot7)=112.\n\\]\nThe two cases are disjoint and exhaust all equal-weight selections. Each selection is counted once because the first and second pairs are distinguished, while order within a pair is ignored. Restricting to these equal-weight outcomes gives\n\\[\n\\frac{420}{420+112}=\\boxed{\\frac{15}{19}},\n\\]\nwhich is choice D.",
+        "nodeIds": [
+          "cnm_h244",
+          "cnm_h137",
+          "cnm_h239"
+        ],
+        "prerequisiteIds": [
+          "cnm_h237",
+          "cnm_309",
+          "cnm_h136",
+          "cnm_310"
+        ],
+        "levelReason": "This is elementary conditional probability computed by combinations and two exhaustive cases."
+      },
+      {
+        "id": "sequential-probabilities",
+        "label": "Multiply the drawing probabilities",
+        "explanation": "Let \\(g\\) and \\(f\\ne g\\) be the genuine and counterfeit weights. A pair with \\(k\\) counterfeits weighs \\(2g+k(f-g)\\), so equal pair weights require equal counterfeit counts. With only two counterfeits available, either all four selected coins are genuine or each pair contains one counterfeit.\n\nImagine drawing the coins one at a time, with the first two forming the first pair. The probability that all four are genuine is\n\\[\np=\\frac8{10}\\cdot\\frac79\\cdot\\frac68\\cdot\\frac57\n=\\frac13.\n\\]\nThe denominators and numerators decrease because no coins are replaced.\n\nFor the other equal-weight case, the first pair can be counterfeit–genuine or genuine–counterfeit. These disjoint orders have equal probability, so the probability of a mixed first pair is\n\\[\n2\\cdot\\frac2{10}\\cdot\\frac89=\\frac{16}{45}.\n\\]\nAfter such a pair, one counterfeit and seven genuine coins remain. The probability that the second pair is also mixed is\n\\[\n2\\cdot\\frac18\\cdot\\frac77=\\frac14.\n\\]\nThus the probability of one counterfeit in each pair is\n\\[\nq=\\frac{16}{45}\\cdot\\frac14=\\frac4{45}.\n\\]\nThe two equal-weight cases are disjoint, so their total probability is \\(p+q=19/45>0\\). Given that the weights are equal, the desired probability is\n\\[\n\\frac{p}{p+q}\n=\\frac{1/3}{19/45}\n=\\boxed{\\frac{15}{19}},\n\\]\nwhich is choice D.",
+        "nodeIds": [
+          "cnm_h244",
+          "cnm_h245",
+          "cnm_h138"
+        ],
+        "prerequisiteIds": [
+          "cnm_285",
+          "cnm_h136",
+          "cnm_310"
+        ],
+        "levelReason": "Sequential fractions provide a complete AMC 10 route without combination formulas or distribution theory."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h244"
+    ],
+    "supportIds": [
+      "cnm_h136",
+      "cnm_310"
+    ],
+    "annotationRationale": "The central target is conditional probability after learning that the pair weights agree. Both methods identify the conditioning event and respect sampling without replacement. The counting route uses equally likely pair selections and combinations; the sequential route instead uses conditional multiplication and addition of disjoint probabilities. Those alternative techniques are method-local.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2011_AMC_10A_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "A pair with k counterfeits weighs 2g+k(f-g), so equal weights require equal counterfeit counts. The exhaustive cases have 420 and 112 equally likely pair selections, giving 420/532 = 15/19. The sequential method independently obtains probabilities 1/3 and 4/45 and the same conditional ratio.",
+    "levelCheck": "Both combination counting and sequential sampling fractions fit AMC 10.",
+    "methodDistinctness": "Counting pair selections and multiplying sequential probabilities provide distinct, accessible approaches.",
+    "annotationCheck": "Conditional probability is route-neutral. Combinations and classical counting remain local to the first method; probability multiplication and addition remain local to the second. Shared event operations and sampling without replacement are justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-pair-selections": "solution:count-pair-selections:f35eae74111b",
+    "sequential-probabilities": "solution:sequential-probabilities:f35eae74111b"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "3d09184461bb2ca4650286191ea849a25e6f440d1e46fa47719b8bf6c68a7885",
+    "inputHash": "990ef7aa610a85f4cd8f9d31738ce66357465f9566a8eddf136a9fde51ab2005",
+    "authorInputHash": "2ea7f74f2695a70e3eb960e4b6e9a1a2a2c991937ddc469dcbb70ef2bf2743d6",
+    "reviewInputHash": "d89cecc41409a9e310afcb5719281910e7a1e68a2e586ea556b52989f08aaaf9",
+    "authorResponseHash": "d745bc39f4cd343621b08c8564a67d15939bf26204928d5d2568647b10526fa3",
+    "reviewerResponseHash": "9bc6068c01d96a61eae1dea47d69155f46e9ef9992eaabcc23cb4534ec5f0997",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

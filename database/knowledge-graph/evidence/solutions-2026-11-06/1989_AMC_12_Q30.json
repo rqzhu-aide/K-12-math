@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1989_AMC_12_Q30",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "4bcdb6d1d21f6e9398e174952e9f74c42b81de6f89605726a5e203ea75ac9c47",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "5d27156b8b2fe52ee855b251f322233d1eacafc95b629a4340021523d08afd7a",
+  "solutionFigureHashes": {},
+  "candidateHash": "b7880dd7871748961354584e30a9759725e96faf23cceef5ef918d2f1f0afc63",
+  "candidate": {
+    "questionId": "1989_AMC_12_Q30",
+    "derivedAnswer": "The exact average is 9.1, closest to 9 (A).",
+    "answerStatus": "matches",
+    "answerReason": "Counting contributions from the 19 neighboring position-pairs gives an average of 91/10 = 9.1, so A is correct.",
+    "methods": [
+      {
+        "id": "count-neighboring-positions",
+        "label": "Count contributions from neighboring positions",
+        "explanation": "There are \\(19\\) pairs of neighboring positions. We can find how often each pair contributes to \\(S\\), then combine those contributions.\n\nFix one pair of neighboring positions. The \\(20\\cdot19\\) ordered choices of two distinct people for these positions occur equally often among all orders: each choice leaves the remaining people to be arranged in the same number of ways. There are \\(7\\cdot13\\) choices with a boy first and a girl second, and \\(13\\cdot7\\) with a girl first and a boy second. Thus the fraction of orders in which these positions contribute to \\(S\\) is\n\\[\n\\frac{7\\cdot13+13\\cdot7}{20\\cdot19}=\\frac{91}{190}.\n\\]\nLet \\(N\\) be the number of all possible orders. Across those orders, each neighboring position-pair contributes \\(N\\cdot91/190\\) to the total of all the \\(S\\) values. Adding the contributions from all \\(19\\) pairs counts every boy-girl adjacency exactly once, at its own neighboring positions. Dividing that total by \\(N\\), the average is\n\\[\n19\\cdot\\frac{91}{190}=\\frac{91}{10}=9.1.\n\\]\nThe closest listed value is \\(9\\), choice \\(\\mathrm{A}\\).",
+        "nodeIds": [
+          "cnm_211",
+          "math:double-counting",
+          "cnm_285"
+        ],
+        "prerequisiteIds": [
+          "cnm_h231",
+          "cnm_h230"
+        ],
+        "levelReason": "Uses elementary counting, equally likely outcomes, and arithmetic averages. The addition of contributions is justified directly."
+      },
+      {
+        "id": "count-person-pairs",
+        "label": "Count orders containing a chosen adjacent pair",
+        "explanation": "Instead of fixing neighboring positions, fix one particular boy and one particular girl. There are \\(7\\cdot13=91\\) such boy-girl pairs.\n\nThere are \\(20!\\) orders of the distinct people, where \\(k!\\) counts the orders of \\(k\\) distinct objects. To count orders in which our chosen pair stands together, treat the pair as one block. The block and the remaining \\(18\\) people form \\(19\\) objects, which have \\(19!\\) orders. The two people within the block have \\(2\\) possible orders, giving \\(2\\cdot19!\\) orders. Every order containing this adjacent pair is obtained exactly once, since compressing the pair uniquely recovers the block arrangement and its internal order.\n\nNow count occurrences of adjacent boy-girl pairs across all orders. Each of the \\(91\\) person-pairs occurs adjacently in \\(2\\cdot19!\\) orders, so the total is \\(91\\cdot2\\cdot19!\\). A row with value \\(S\\) contributes exactly \\(S\\) occurrences, since each of its counted neighboring places determines one boy-girl pair. Therefore the average is\n\\[\n\\frac{91\\cdot2\\cdot19!}{20!}\n=\\frac{182}{20}=9.1.\n\\]\nThe closest listed value is \\(9\\), choice \\(\\mathrm{A}\\).",
+        "nodeIds": [
+          "cnm_211",
+          "math:double-counting",
+          "cnm_h234"
+        ],
+        "prerequisiteIds": [
+          "cnm_h231",
+          "cnm_h233",
+          "math:factorial-notation"
+        ],
+        "levelReason": "Uses standard high-school permutations and a reversible adjacent-block construction, within AMC 12 scope."
+      }
+    ],
+    "assessedIds": [
+      "cnm_211"
+    ],
+    "supportIds": [
+      "cnm_h231"
+    ],
+    "annotationRationale": "The task asks for an arithmetic mean over all orders. Both methods count adjacency contributions and divide their total by the number of orders. Multiplication counting supports both routes. Equally likely outcome counting belongs to the position-based method; permutation formulas and factorial notation belong only to the person-pair block method.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1989_AMC_12_Q30",
+    "decision": "accept",
+    "mathematicalCheck": "Each neighboring position-pair is mixed in 182/380 of all orders, giving average 19 × 182/380 = 9.1. Independently, each of 91 boy-girl pairs is adjacent in exactly 2 × 19! orders. Both methods justify contribution multiplicities and yield A.",
+    "levelCheck": "Both explanations use accessible high-school counting and arithmetic means within AMC 12 scope.",
+    "methodDistinctness": "The methods offer distinct viewpoints: fixing neighboring positions versus fixing people and forming a reversible block.",
+    "annotationCheck": "Mean is an appropriate route-neutral target. Multiplication counting supports both methods, while probability and factorial permutations remain method-local.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-neighboring-positions": "count-neighboring-positions",
+    "count-person-pairs": "count-person-pairs"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "fbf0249735d2d3af68c1131ec78094658642737fd4ec6fd32a228a0a5189289e",
+    "inputHash": "0ff368fdde9bf759fb25f3a5b3cff697891b80e00c1ee957492a993cbb22e18e",
+    "authorInputHash": "80af22636f62ba8957fefd0a745789d8e56a5884325d8324d4d4184e2012ca2c",
+    "reviewInputHash": "56b2a75ba1f06460766fcb12bd1cf465b71ee6064fe4af9c232ff73e7372ead9",
+    "authorResponseHash": "210c9c0a57a3045c09ee5408003c59181ee979212b7c39d5c2921db899550ed3",
+    "reviewerResponseHash": "9bb7e24b785a003cf8d269869e6e6fbdc198c0fe8c949cbd609207a31cf99581",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

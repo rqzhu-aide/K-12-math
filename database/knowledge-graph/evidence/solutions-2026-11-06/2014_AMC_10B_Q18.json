@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2014_AMC_10B_Q18",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "184c8879f0d81365ee5be2df0b5d5f7336a78b01681435aa53677ecf4a63c9cd",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "32ce55fac7866d315b12b11d84a133f6f625950a776c1bd960579c5489324bc2",
+  "solutionFigureHashes": {},
+  "candidateHash": "fb5badc293fe31cbac686fe7c12e5d847a3a0d9c76b335358854603f0a7323c5",
+  "candidate": {
+    "questionId": "2014_AMC_10B_Q18",
+    "derivedAnswer": "35, choice E",
+    "answerStatus": "matches",
+    "answerReason": "The ten smallest entries must sum to at least 75, so the largest is at most 35. The list 1,1,8,8,8,9,9,10,10,11,35 attains this bound.",
+    "methods": [
+      {
+        "id": "mode-frequency-bounds",
+        "label": "Minimize the sum of the other ten entries",
+        "explanation": "The mean fixes the total sum at \\(11\\cdot10=110\\). Thus maximizing the largest entry means minimizing the sum of the other ten entries.\n\nWrite the list in increasing order as \\(x_1\\le\\cdots\\le x_{11}\\). The median condition gives \\(x_6=9\\). Let \\(m\\) be the number of occurrences of \\(8\\). Since \\(9\\) occurs and \\(8\\) is the unique mode, \\(m\\ge2\\). Every \\(8\\) lies among the first five entries, so \\(m\\le5\\). Also, every other value occurs at most \\(m-1\\) times.\n\nIf \\(m=2\\), all other values are distinct. The first five entries therefore sum to at least \\(1+2+3+8+8=22\\). The next five, \\(x_6\\) through \\(x_{10}\\), are distinct integers at least \\(9\\), so their sum is at least \\(9+10+11+12+13=55\\). The ten smallest entries sum to at least \\(77\\).\n\nIf \\(m=3\\), the first five entries sum to at least \\(1+1+8+8+8=26\\). Among the next five, each value can appear at most twice, so their smallest possible values are \\(9,9,10,10,11\\), with sum \\(49\\). This gives a lower bound of \\(26+49=75\\).\n\nIf \\(m=4\\) or \\(5\\), at least four of the first five entries are \\(8\\), and every entry is positive. Their sum is therefore at least \\(4\\cdot8+1=33\\). The next five are all at least \\(9\\), giving a combined lower bound of \\(33+45=78\\).\n\nThese cases cover every possible frequency of \\(8\\), and each gives\n\\[\nx_1+\\cdots+x_{10}\\ge75.\n\\]\nHence \\(x_{11}\\le110-75=35\\). The list\n\\[\n1,1,8,8,8,9,9,10,10,11,35\n\\]\nhas total \\(110\\), sixth entry \\(9\\), and unique mode \\(8\\), which occurs three times while every other value occurs at most twice. It attains the bound, so the largest possible entry is \\(\\boxed{35}\\), choice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_213"
+        ],
+        "prerequisiteIds": [
+          "cnm_211"
+        ],
+        "levelReason": "The proof uses the definitions of mean, median, and unique mode, followed by a finite case split and an explicit construction."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle",
+      "cnm_213"
+    ],
+    "supportIds": [
+      "cnm_211"
+    ],
+    "annotationRationale": "The task combines interpretation of median and unique mode with an attained discrete maximum. The method proves a universal bound by exhausting the possible mode frequencies and then constructs a list attaining it. The mean supplies the fixed total as supporting knowledge.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2014_AMC_10B_Q18",
+    "decision": "accept",
+    "mathematicalCheck": "The frequency of 8 must lie between 2 and 5. The stated cases give valid lower bounds 77, 75, and 78 for the sum of the ten smallest entries, establishing a maximum of at most 35. The displayed list attains 35 with total 110, sixth entry 9, and unique mode 8.",
+    "levelCheck": "The finite case split explains the frequency restrictions and supplies both a universal bound and an attaining example.",
+    "methodDistinctness": "One complete extremal argument is sufficient.",
+    "annotationCheck": "The extremal-bound and median/mode targets are supported directly; mean appropriately supplies the fixed total.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "mode-frequency-bounds": "mode-frequency-bounds"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "ff77fe999bd7bcc73ee5d7038baf848f7aba2bb449e5a42ac507e883703e1618",
+    "inputHash": "0c4294b4877ff6e02b9836be15ac66d94628edcf9c46639eec361a5b9fac4b05",
+    "authorInputHash": "0bea591a7c21a6bf7c9d99396808e45094785cc8166ba44a29d07bcc856725d2",
+    "reviewInputHash": "b48750b4d5921c3ede6ec3ddcc32e35626127c00f955d9d1035d82e06ce7a22c",
+    "authorResponseHash": "45afad5c0f3c2d4f3985e4444379b46a87ccd805f1e1e22951c47fa9acf4fc7a",
+    "reviewerResponseHash": "d1411dba24aa03ef60a8f2dcdd0c31575564be12df03ee482e434fb8ea43ddf8",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

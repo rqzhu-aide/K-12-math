@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1952_AMC_12_Q42",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "c9afac66507bf22d576c97f0c6f0a312ad7f1f2f4ba8f5d06a02ae786d794e4a",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "d7ab587cd2fe774802121f9c2aa44522acd9c04b980bf782ac41d8594803b424",
+  "solutionFigureHashes": {},
+  "candidateHash": "9a4aa5b4e1ce0fc38e0df8f4ee68b7c04701d09d8d3c2fb5e1f2d01c91fb9ea6",
+  "candidate": {
+    "questionId": "1952_AMC_12_Q42",
+    "derivedAnswer": "Choice D under the convention \\(D=0.PQQQ\\ldots\\). Without that convention, the wording does not guarantee one incorrect expression.",
+    "answerStatus": "disputed",
+    "answerReason": "The key's D is correct under the digit-block convention used by the choices. The stem does not explicitly require a zero integer part; allowing a nonzero integer part makes several choices incorrect.",
+    "methods": [
+      {
+        "id": "align-repeating-tails",
+        "label": "Align and subtract the repeating tails",
+        "explanation": "Assume the convention used by the choices: \\(D=0.PQQQ\\ldots\\), and juxtaposed blocks such as \\(PQ\\) mean digit concatenation. Also use \\(P\\) and \\(Q\\) for the integer values of their blocks, preserving any leading zeros in their lengths \\(r\\) and \\(s\\). Here \\(s\\ge1\\); if \\(r=0\\), the empty prefix has value \\(P=0\\).\n\nLet \\(T=0.QQQ\\ldots\\). Multiplication by a power of ten moves the decimal point, so\n\\[\n\\begin{aligned}\n10^rD&=P+T,\\\\\n10^{r+s}D&=10^sP+Q+T,\\\\\n10^{r+2s}D&=10^{2s}P+10^sQ+Q+T.\n\\end{aligned}\n\\]\nThese are exactly the decimal shifts described in B, C, and E; A is the assumed block representation.\n\nSubtracting the first equation from the second cancels the entire repeating tail:\n\\[\n10^r(10^s-1)D=P(10^s-1)+Q.\n\\]\nThus the correct right side is \\(P(10^s-1)+Q\\), rather than \\(Q(P-1)\\). For example, \\(D=0.1\\overline2\\) gives \\(P=1\\), \\(Q=2\\), and \\(r=s=1\\). The left side in choice D is \\(11\\), while its proposed right side is \\(0\\). Under the stated convention, the answer is choice D.\n\nThe unrestricted wording has an issue: it only calls \\(D\\) a repeating decimal. For \\(D=1.2\\overline3\\), with decimal blocks \\(P=2\\), \\(Q=3\\), and \\(r=s=1\\), A is false because \\(D\\ne0.2\\overline3\\). Choice D is also false: its left side is \\(90D=111\\), while its right side is \\(3\\). Consequently, without a zero-integer-part convention, there need not be just one incorrect expression. Choice D is therefore a conditional answer.",
+        "nodeIds": [
+          "math:repeating-decimal-fractions",
+          "cnm_p120"
+        ],
+        "prerequisiteIds": [
+          "cnm_040",
+          "cnm_027",
+          "cnm_p118"
+        ],
+        "levelReason": "Decimal place value and subtraction of aligned repeating tails provide a complete elementary argument; no infinite-series formula is needed."
+      }
+    ],
+    "assessedIds": [
+      "math:repeating-decimal-fractions",
+      "cnm_p120"
+    ],
+    "supportIds": [
+      "cnm_040",
+      "cnm_027",
+      "cnm_p118"
+    ],
+    "annotationRationale": "The task concerns decimal shifts and the exact relation obtained by cancelling a repeating tail. The catalog's repeating-decimal conversion node captures that cancellation, while decimal-point movement captures the shifts. Equality operations and translating digit blocks into numerical expressions support the method.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The stem does not explicitly restrict D to a decimal with zero integer part.",
+      "The expressions require the recorded convention that adjacent digit blocks denote concatenation."
+    ]
+  },
+  "review": {
+    "questionId": "1952_AMC_12_Q42",
+    "decision": "accept",
+    "mathematicalCheck": "Under the stated digit-block convention, subtraction gives \\(10^r(10^s-1)D=P(10^s-1)+Q\\), so D is not a valid general identity while A, B, C, and E describe valid shifts. The unrestricted-wording counterexample is also correct: \\(90(1.2\\overline3)=111\\), whereas \\(Q(P-1)=3\\).",
+    "levelCheck": "Decimal shifts and aligned-tail subtraction are elementary and fully explained.",
+    "methodDistinctness": "The example illustrates the failed identity, and the final counterexample supports the qualification rather than presenting a redundant method.",
+    "annotationCheck": "Decimal movement and the aligned-tail cancellation component of repeating-decimal conversion are supported. The solution explicitly preserves the integer-part and concatenation qualifications.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "align-repeating-tails": "align-repeating-tails"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "079662fd220380756c904ffa36ae9b300c037c85a076116c3560b70feb68559f",
+    "inputHash": "f370bd1b28178707ad42a52107c8fd103ffa77780c585f5f23d2d172820c589a",
+    "authorInputHash": "3616be49be0d6e5383855a2068771c5064acba66601a36eed74e24805df47239",
+    "reviewInputHash": "5b1d6ab589a4b53185925318c95d95afd9b396f4091cada2cd238b035be1e932",
+    "authorResponseHash": "492672b2faefbd46efb10e6554227136263cff2f054b66a48e4ce67285d05a86",
+    "reviewerResponseHash": "599d6f3f2146a42362772efd32f9859e5225f2ea0f0ad72098320796bf5ce52c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

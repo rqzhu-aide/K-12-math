@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2003_AMC_12B_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "a02d6552f61a04062de91f05ed2203adca98f699912c44110d9c20131aae57ec",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "c676272c2c7fe9ef36733f39484875bffd9447b61c0471245fd7ce57a1c1315d",
+  "solutionFigureHashes": {},
+  "candidateHash": "d14ec6ba35838d4494159b6b443d468ad31c142e17f5cf4d8c5c0294dac4cb9c",
+  "candidate": {
+    "questionId": "2003_AMC_12B_Q25",
+    "derivedAnswer": "Under independent uniform arc-length sampling, D. \\(\\frac1{12}\\). Independence alone does not determine the probability.",
+    "answerStatus": "disputed",
+    "answerReason": "The keyed value 1/12 follows under the standard uniform arc-length model. The displayed statement specifies independence but does not explicitly specify uniformity. Independent choices restricted to one fixed arc of angular length π/6 instead make the probability 1.",
+    "methods": [
+      {
+        "id": "area-of-angle-pairs",
+        "label": "Find the area of the allowable angle pairs",
+        "explanation": "Assume that all three points are chosen independently and uniformly with respect to arc length. Write \\(r>0\\) for the radius. For a pair with minor central angle \\(0<\\theta<\\pi\\), the altitude in the isosceles triangle formed by the two radii bisects both the angle and the chord. Right-triangle sine therefore gives the chord length as\n\\[\n2r\\sin\\frac\\theta2.\n\\]\nSine increases on \\([0,\\pi/2]\\), and \\(\\sin(\\pi/6)=1/2\\), so the chord is shorter than \\(r\\) exactly when \\(\\theta<\\pi/3\\). Coincident and antipodal pairs can be set aside because they have probability zero under this sampling model.\n\nFix the first point at angular position \\(0\\). Uniform arc length gives uniform angle because arc length is \\(r\\) times central angle. Let \\(u,v\\in(-\\pi,\\pi]\\) be the signed angular positions of the other two points. Independence makes \\((u,v)\\) uniform in a square of area \\(4\\pi^2\\).\n\nPut \\(\\delta=\\pi/3\\). For both remaining points to be close enough to the first, we need \\(-\\delta<u,v<\\delta\\), a smaller square of side \\(2\\delta\\). Within this square, \\(|u-v|<2\\delta<\\pi\\), so their minor angular separation is \\(|u-v|\\). The final condition is therefore \\(|u-v|<\\delta\\). This removes two opposite corner triangles, each with perpendicular legs of length \\(\\delta\\). The favorable area is\n\\[\n(2\\delta)^2-2\\left(\\frac{\\delta^2}{2}\\right)\n=3\\delta^2.\n\\]\nBoundary lines have area zero. Thus the uniform-model probability is\n\\[\n\\frac{3\\delta^2}{4\\pi^2}\n=\\frac{3(\\pi/3)^2}{4\\pi^2}\n=\\boxed{\\frac1{12}},\n\\]\nchoice \\(\\mathrm{D}\\).\n\nThe distribution assumption is necessary. If each point is chosen independently and uniformly on one fixed arc of angular length \\(\\pi/6\\), every pair is closer than the radius and the probability is \\(1\\). Thus \\(\\frac1{12}\\), choice \\(\\mathrm{D}\\), is conditional on uniform sampling over the entire circle.",
+        "nodeIds": [
+          "math:geometric-probability",
+          "cnm_137",
+          "cnm_276",
+          "cnm_277",
+          "cnm_h067",
+          "cnm_p150"
+        ],
+        "prerequisiteIds": [
+          "cnm_250",
+          "cnm_h057",
+          "cnm_h059",
+          "cnm_h060",
+          "cnm_p089",
+          "cnm_p148"
+        ],
+        "levelReason": "The method uses an isosceles altitude, elementary trigonometry, and square-minus-triangles area. The probability calculation is a uniform planar area ratio, without integration."
+      },
+      {
+        "id": "unique-short-arc-start",
+        "label": "Count the three possible starts of the short containing arc",
+        "explanation": "Assume independent uniform choices with respect to arc length, and fix a clockwise direction. If the circle has radius \\(r>0\\), bisecting the isosceles triangle formed by two radii and their chord gives\n\\[\n\\text{chord length}=2r\\sin\\frac\\theta2,\n\\]\nwhere \\(\\theta\\) is the minor central angle. Because sine increases on \\([0,\\pi/2]\\) and \\(\\sin(\\pi/6)=1/2\\), a pairwise distance is less than \\(r\\) exactly when its minor angle is less than \\(\\pi/3\\). Coincidences, antipodal pairs, and exact boundary angles have probability zero under uniform sampling.\n\nFor three distinct points, let \\(g_1,g_2,g_3\\) be the positive angular gaps between successive points clockwise. They sum to \\(2\\pi\\). The endpoints of a gap \\(g_i\\) have minor separation \\(\\min(g_i,2\\pi-g_i)\\). Thus every pairwise distance is short enough precisely when each gap satisfies\n\\[\ng_i<\\frac\\pi3\n\\quad\\text{or}\\quad\ng_i>\\frac{5\\pi}{3}.\n\\]\nAll three gaps cannot be less than \\(\\pi/3\\), since then their sum would be less than \\(\\pi\\). Hence there is a gap greater than \\(5\\pi/3\\), and there can be only one such gap. Its complementary arc has angular length less than \\(\\pi/3\\) and contains all three points. The point immediately after the large gap is its unique clockwise start.\n\nFor any one labeled point to be this start, the other two points must both lie in the next open arc of angle \\(\\pi/3\\). That arc occupies \\(1/6\\) of the circumference, so independence gives probability \\((1/6)^2=1/36\\). Conversely, this placement makes all three pairwise separations less than \\(\\pi/3\\). The three possible labeled starts cover every favorable configuration and are disjoint because the start is unique. Therefore\n\\[\nP=3\\cdot\\frac1{36}=\\boxed{\\frac1{12}},\n\\]\nchoice \\(\\mathrm{D}\\), under uniform sampling.\n\nIndependence alone is insufficient: independent choices on one fixed arc of angular length \\(\\pi/6\\) give probability \\(1\\). Thus the keyed value \\(\\frac1{12}\\), choice \\(\\mathrm{D}\\), requires the uniform whole-circle interpretation.",
+        "nodeIds": [
+          "math:geometric-probability",
+          "cnm_137",
+          "cnm_276",
+          "cnm_277",
+          "cnm_h067",
+          "cnm_h141",
+          "cnm_h138"
+        ],
+        "prerequisiteIds": [
+          "cnm_250",
+          "cnm_h057",
+          "cnm_h059",
+          "cnm_h060"
+        ],
+        "levelReason": "The alternative replaces a planar area calculation with elementary circular-gap reasoning and the multiplication and addition rules for probability."
+      }
+    ],
+    "assessedIds": [
+      "math:geometric-probability"
+    ],
+    "supportIds": [
+      "cnm_137",
+      "cnm_276",
+      "cnm_277",
+      "cnm_h067",
+      "cnm_h059"
+    ],
+    "annotationRationale": "The task target is the favorable region under the intended uniform geometric model. Both methods derive the same chord threshold using an isosceles altitude and right-triangle sine, with arc length connecting angles to uniform sampling. The first method uses a joint angle-pair area and composite-area subtraction. The second uses independent-event multiplication and disjoint-event addition after proving a unique start, so those probability procedures remain method-specific.",
+    "needsNewNodes": [],
+    "limitations": [
+      "Independent uniform sampling with respect to arc length is required for the keyed value; independence alone leaves the sampling distributions unspecified.",
+      "Coincidences and exact 60-degree boundary separations have probability zero under uniform sampling."
+    ]
+  },
+  "review": {
+    "questionId": "2003_AMC_12B_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "Both methods correctly derive the chord threshold θ<π/3. The angle-pair method has favorable area 3(π/3)² within total area 4π², giving 1/12. The gap method proves a unique gap greater than 5π/3 and hence three disjoint start events, each of probability 1/36. Boundaries are handled, and independent sampling on a fixed short arc correctly gives the counterexample probability 1.",
+    "levelCheck": "Both methods use accessible high-school trigonometry, geometry, and probability.",
+    "methodDistinctness": "Planar area and unique circular-start counting provide genuinely distinct insights without an advanced alternative.",
+    "annotationCheck": "Uniform geometric probability is the shared target, and the common geometry support is justified. Composite-area subtraction and independent-event multiplication with disjoint addition remain method-specific. The uniformity qualification is explicit.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "area-of-angle-pairs": "area-of-angle-pairs",
+    "unique-short-arc-start": "unique-short-arc-start"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "0d99dfdc776affdc36033068f315aabbc872e777e1321e7740aaeb04a9773b8b",
+    "inputHash": "ea7961efd122e0070e80f5eb52c3541f69da2c4720e72b4ee3e1d6aa2b0e4011",
+    "authorInputHash": "47b7f076f5247f86dc71035b61e0087bf5ff25a5fea56dfbf276fb2f4f1ce25b",
+    "reviewInputHash": "108ec1674fa1243cbcc61fe965d841f6909298003f4efef8f63785a7ad222d42",
+    "authorResponseHash": "de9e36eaa85bb71285d1bebefe162cf4aa00b2ab204af6dca70dddc35b139829",
+    "reviewerResponseHash": "e68d4d49c7f0d4c2dfc3d8386f289707593283b9361da4e906745591729665df",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

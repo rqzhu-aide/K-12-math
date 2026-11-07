@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1963_AMC_12_Q35",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "6a6dd340a85acc01f9c4e55a43fe01526fffd6a9dbbfa2a8e4c16f15941900a4",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "ac53bc8a46433803a7adb679ca21f94d5e458f2ffe4597c386b5a26e0bb0e4ab",
+  "solutionFigureHashes": {},
+  "candidateHash": "f31ad33a7dc690d4495286a29f83d446d26ebe733fedb47cb1b618b864ca348f",
+  "candidate": {
+    "questionId": "1963_AMC_12_Q35",
+    "derivedAnswer": "B, \\(10\\).",
+    "answerStatus": "matches",
+    "answerReason": "The other two sides can be written as \\(u\\le27-u\\), with \\(4\\le u\\le13\\). Heron's formula gives an integer area only for \\(u=10\\), producing sides 10, 17, 21 and area 84.",
+    "methods": [
+      {
+        "id": "heron-and-finite-square-check",
+        "label": "Use Heron's formula and check the finite possibilities",
+        "explanation": "The two sides other than 21 sum to \\(48-21=27\\). Call them \\(u\\) and \\(27-u\\), choosing \\(u\\le27-u\\) so that each unordered pair is considered once. Then \\(u\\le13\\), because \\(u\\) is an integer. The triangle inequality\n\\[\nu+21>27-u\n\\]\ngives \\(u>3\\). Thus exactly the integers \\(4\\le u\\le13\\) need consideration. The other triangle inequalities hold throughout this range, and \\(u\\) is the shortest side because \\(u\\le13<21\\).\n\nThe semiperimeter is \\(s=48/2=24\\). Heron's formula for the positive area \\(K\\) gives\n\\[\nK^2=24(24-21)(24-u)(u-3)\n=36N,\n\\qquad N=2(u-3)(24-u).\n\\]\nIf \\(K\\) is an integer, \\(36\\mid K^2\\) forces \\(6\\mid K\\), since squaring doubles every prime exponent. Consequently \\(N=(K/6)^2\\) must be a perfect square. Conversely, a perfect-square \\(N\\) gives the integer area \\(6\\sqrt N\\).\n\nFor \\(u=4,5,6,7,8\\), the values of \\(N\\) are\n\\[\n40,\\ 76,\\ 108,\\ 136,\\ 160.\n\\]\nFor \\(u=9,10,11,12,13\\), they are\n\\[\n180,\\ 196,\\ 208,\\ 216,\\ 220.\n\\]\nChecking the integer squares from \\(6^2=36\\) through \\(15^2=225\\), the only square in these lists is \\(196=14^2\\), occurring at \\(u=10\\).\n\nThe resulting sides are \\(10,17,21\\), and their area is \\(6\\cdot14=84\\), an integer. All possible side pairs have been checked, so the shortest side is \\(\\boxed{10}\\), choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "math:heron-formula"
+        ],
+        "prerequisiteIds": [
+          "cnm_111",
+          "cnm_075",
+          "math:prime-factorization"
+        ],
+        "levelReason": "Heron's formula, triangle inequalities, elementary prime-exponent reasoning, and a ten-case square check are within AMC 12 high-school mathematics."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_111",
+      "cnm_075"
+    ],
+    "annotationRationale": "The route-neutral target is determining all feasible integer side lengths under an integer-area restriction. Heron's formula is specific to the written route. Triangle inequalities establish an exhaustive finite range, and square recognition with elementary prime factorization converts area integrality into an exact test.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1963_AMC_12_Q35",
+    "decision": "accept",
+    "mathematicalCheck": "The unordered side pairs are exhausted by integers 4 through 13. Heron's formula gives \\(K^2=36N\\), and integer K is equivalent to square N. The listed values contain only one square, 196 at u=10, giving sides 10,17,21 and area 84.",
+    "levelCheck": "Heron's formula, elementary divisibility, and the ten-case check are within scope.",
+    "methodDistinctness": "One exhaustive method is sufficient.",
+    "annotationCheck": "The integer-solution target is route-neutral; Heron's formula and prime-factor reasoning are correctly attached to the written method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "heron-and-finite-square-check": "heron-and-finite-square-check"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "fe01a21f623bd10fd92f4cd4fa93975ed7e66236b43e1f59e70b9c8a98d278f5",
+    "inputHash": "275b15af1a7695405c742e54c88058d3ef3266d3c60f416828b9124fee9b3dd8",
+    "authorInputHash": "d9db71662ca090f5bf483772d4a8a557d50b52373f08f68cdfb5e521694d6d03",
+    "reviewInputHash": "85b83abe6df54e3eb9effad4b4b9b1301917ce12ad2542940da4e7fa752a8572",
+    "authorResponseHash": "359c785586136a49492071009cd981538c8db09948c93e1814c0cf7e9a234417",
+    "reviewerResponseHash": "a7f5578f6b1f578e135450d303448a811c3da1fe5dae7bb88becc9834e517a6d",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

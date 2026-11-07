@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1993_AMC_12_Q30",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "e8a64dc7eeac85cbaebf331b671793e934eb6861c7152c3db792334b0da8630c",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "0587482068265583a99821fb6ede7a22d6e02d6beb77fb72aca6a9c867f1edf7",
+  "solutionFigureHashes": {},
+  "candidateHash": "49e8400e2b24dd3fe5128c1ca578f79cb81fafd846abf30636209c71653d712a",
+  "candidate": {
+    "questionId": "1993_AMC_12_Q30",
+    "derivedAnswer": "31 (D)",
+    "answerStatus": "matches",
+    "answerReason": "The equality x_5=x_0 holds exactly for x_0=j/31 with j=0,1,...,30, yielding 31 distinct starting values.",
+    "methods": [
+      {
+        "id": "track-integer-subtractions",
+        "label": "Track the integers subtracted",
+        "explanation": "Each step doubles the previous value and subtracts either 0 or 1. Tracking these integer subtractions avoids separating all possible branch patterns.\n\nFirst, every term remains in \\([0,1)\\). Indeed, doubling a number in \\([0,1)\\) gives a number in \\([0,2)\\); the stated rule either keeps a value below 1 or subtracts 1 from a value at least 1. At the boundary where the doubled value equals 1, the rule gives 0.\n\nFor each step, let \\(b_n\\) be the number subtracted, so \\(b_n\\in\\{0,1\\}\\) and\n\\[\nx_n=2x_{n-1}-b_n.\n\\]\nFor example,\n\\[\nx_2=4x_0-(2b_1+b_2).\n\\]\nContinuing this substitution through five steps gives\n\\[\nx_5=32x_0-J,\n\\]\nwhere\n\\[\nJ=16b_1+8b_2+4b_3+2b_4+b_5\n\\]\nis an integer. Therefore, if \\(x_5=x_0\\), then \\(31x_0=J\\). Since \\(0\\le x_0<1\\), every possible solution must have the form\n\\[\nx_0=\\frac{j}{31},\\qquad j=0,1,\\ldots,30.\n\\]\nWe still need to prove that every candidate works. Start with any such \\(x_0=j/31\\) and follow the actual recurrence. Its integer \\(J\\) satisfies\n\\[\nx_5-x_0=31x_0-J=j-J,\n\\]\nso \\(x_5-x_0\\) is an integer. Both values lie in \\([0,1)\\), making their difference strictly between \\(-1\\) and 1. The only integer in that interval is 0, so \\(x_5=x_0\\).\n\nThus all 31 listed candidates work, and they are distinct because their numerators are distinct. The answer is \\(\\boxed{31}\\), choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:function-composition-iteration",
+          "cnm_042",
+          "cnm_h020"
+        ],
+        "prerequisiteIds": [
+          "cnm_h200",
+          "cnm_h031",
+          "cnm_h197",
+          "cnm_040"
+        ],
+        "levelReason": "The argument uses finite substitution in a recurrence, integer subtraction, and an elementary interval bound. It requires no binary expansions or advanced dynamical results."
+      }
+    ],
+    "assessedIds": [
+      "math:function-composition-iteration"
+    ],
+    "supportIds": [
+      "cnm_h200",
+      "cnm_h031",
+      "cnm_h197",
+      "cnm_040"
+    ],
+    "annotationRationale": "The task concerns starting values fixed by a fivefold iteration, so composition and iteration is the assessed target. Reading the recurrence and selecting its piecewise branch are supporting knowledge. The actual method uses a linear fixed-point condition and a bounded integer count; fractional-part and binary-system nodes are unnecessary for this written solution.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1993_AMC_12_Q30",
+    "decision": "accept",
+    "mathematicalCheck": "Iteration preserves \\([0,1)\\) and gives \\(x_5=32x_0-J\\) with integer \\(J\\). Necessity restricts starts to \\(j/31\\), \\(0\\le j\\le30\\). For each candidate, the actual difference \\(x_5-x_0\\) is an integer strictly between -1 and 1, proving sufficiency.",
+    "levelCheck": "Finite substitution and the bounded-integer argument are accessible school mathematics.",
+    "methodDistinctness": "One complete method is sufficient; binary expansions are unnecessary.",
+    "annotationCheck": "Composition and iteration is an appropriate route-neutral target. Recurrence interpretation, branch selection, linear solving, and integer interval counting match the annotations.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "track-integer-subtractions": "track-integer-subtractions"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "5c5a6ef798aca73bdefe2ad7af03b6bf7fa9e447fb8f94849e926fdc565c4614",
+    "inputHash": "732a1fbda2f78d84b968826e7449b006dccc4070ab6dedae13891b2703ca8d57",
+    "authorInputHash": "bbf5b106a67ac847ff439b6f64163a855ab4d73e367685a0b8a929da6e403716",
+    "reviewInputHash": "1d605c00523f41511800a94a7558c0bb3ceb160e9dafcd2732bc396e3a779403",
+    "authorResponseHash": "ad3b3ee8edbef32b86ce622b859f4239726b9edd815a6f33f7357e68ee90866a",
+    "reviewerResponseHash": "cf693bab81ed73493358dfeb1914d5112500074531903caa7fbd0543c59f4d81",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

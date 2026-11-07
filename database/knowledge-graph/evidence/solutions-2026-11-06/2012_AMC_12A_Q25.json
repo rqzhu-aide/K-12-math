@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2012_AMC_12A_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "82a4eef167dbef19c3795e3f7d2b68517ea410c9490e283f24047d200f021647",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "a674058c2ec3ece6f6f6e33591596357a7e5f935ed2ed76656babdfea7fd4f14",
+  "solutionFigureHashes": {},
+  "candidateHash": "3ef01847bf63f71f54ad9542f921da9105ecafbbfc349019ca49453b8acb8e1b",
+  "candidate": {
+    "questionId": "2012_AMC_12A_Q25",
+    "derivedAnswer": "n = 32 (C)",
+    "answerStatus": "matches",
+    "answerReason": "For every positive integer n the equation has exactly 2n² distinct real solutions, including x = n once. The counts at n = 31 and n = 32 are 1922 and 2048.",
+    "methods": [
+      {
+        "id": "triangular-wave-crossing-count",
+        "label": "Count crossings on the function's branches",
+        "explanation": "For every integer \\(m\\), the graph of \\(f\\) joins \\((m,1)\\), \\((m+\\tfrac12,0)\\), and \\((m+1,1)\\) by straight segments. Thus \\(0\\le f\\le1\\), and \\(f\\) is continuous even at integers: the fractional-part jump disappears after taking the absolute value.\n\nFix a positive integer \\(n\\). Every solution satisfies \\(0\\le x\\le n\\). The endpoint \\(x=0\\) is not a solution, while \\(x=n\\) is, since \\(f(n)=1\\). Define\n\\[\ng(x)=xf(x),\n\\qquad H(x)=nf(g(x))-x.\n\\]\nWe will count the zeros of the continuous function \\(H\\) on each unit interval.\n\nFor \\(j=0,1,\\ldots,n-1\\), the inner function has formulas\n\\[\ng(x)=\n\\begin{cases}\nx(2j+1-2x),&j\\le x\\le j+\\tfrac12,\\\\\nx(2x-2j-1),&j+\\tfrac12\\le x\\le j+1.\n\\end{cases}\n\\]\nFor \\(j\\ge1\\), the first piece decreases from \\(j\\) to \\(0\\). For every \\(j\\ge0\\), the second increases from \\(0\\) to \\(j+1\\).\n\nWe also need to know that each crossing is unique. On either of these monotone pieces, if \\(u<v\\), expansion gives\n\\[\n|g(v)-g(u)|\n=(v-u)(2u+2v-2j-1)\n\\ge v-u.\n\\]\nFor the decreasing piece the last factor is at least \\(2j-1\\ge1\\); for the increasing piece it is at least \\(2j+1\\ge1\\).\n\nSplit each piece further whenever \\(g(x)\\) reaches an integer or a half-integer. On each resulting branch, \\(f(g(x))\\) moves strictly between \\(0\\) and \\(1\\). If it increases, its change between \\(u\\) and \\(v\\) is \\(2|g(v)-g(u)|\\), so\n\\[\nH(v)-H(u)\\ge(2n-1)(v-u)>0.\n\\]\nIf it decreases, \\(H\\) also strictly decreases. Thus \\(H\\) is strictly monotone on every such branch.\n\nAt a branch endpoint where \\(f(g(x))=0\\), we have \\(H(x)=-x<0\\). Where \\(f(g(x))=1\\), we have \\(H(x)=n-x>0\\), except at \\(x=n\\), where it is zero. Continuity and strict monotonicity therefore give exactly one zero on each branch, with the final branch contributing the endpoint \\(x=n\\).\n\nFor \\(j\\ge1\\), the decreasing piece takes \\(g\\) from \\(j\\) to \\(0\\), crossing \\(2j\\) half-unit ranges. It contributes \\(2j\\) zeros. The increasing piece takes \\(g\\) from \\(0\\) to \\(j+1\\), crossing \\(2j+2\\) half-unit ranges and contributing \\(2j+2\\) zeros. Together these give \\(4j+2\\).\n\nThe initial piece \\(0\\le x\\le\\tfrac12\\) is the exception to the monotonic description, but it contributes no zeros. Here\n\\[\n0\\le g(x)=\\frac18-2\\left(x-\\frac14\\right)^2\\le\\frac18,\n\\]\nso \\(f(g(x))\\ge\\tfrac34\\). Hence \\(nf(g(x))\\ge\\tfrac34>x\\). The other half of \\([0,1]\\) contributes two zeros, again agreeing with \\(4j+2\\) when \\(j=0\\).\n\nNo shared branch endpoint is a zero except \\(x=n\\): the other endpoint values of \\(H\\) are strictly positive or negative. Thus there is no double counting, and the total number of distinct solutions is\n\\[\n\\sum_{j=0}^{n-1}(4j+2)=2n^2.\n\\]\nFinally,\n\\[\n2\\cdot31^2=1922<2012,\n\\qquad\n2\\cdot32^2=2048\\ge2012.\n\\]\nSince \\(2n^2\\) increases for positive integers \\(n\\), the smallest possible value is \\(\\boxed{32}\\), choice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "math:floor-ceiling",
+          "cnm_h049",
+          "cnm_h031",
+          "cnm_h033",
+          "math:completing-square-expression"
+        ],
+        "prerequisiteIds": [
+          "cnm_008",
+          "cnm_148",
+          "cnm_h204",
+          "cnm_h027"
+        ],
+        "levelReason": "Piecewise linear and quadratic formulas, algebraic difference comparisons, continuity, and an arithmetic sum establish the count without calculus."
+      }
+    ],
+    "assessedIds": [
+      "math:floor-ceiling",
+      "cnm_h049"
+    ],
+    "supportIds": [
+      "cnm_008",
+      "cnm_h204"
+    ],
+    "annotationRationale": "The task requires interpreting fractional-part branches and counting all real roots. The method uses piecewise formulas, proves branch monotonicity by factoring differences, completes a square to handle the exceptional initial piece, and sums the resulting counts. Continuity and shared endpoints are explicitly checked.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2012_AMC_12A_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "All roots lie in [0,n]. The factored differences establish strict monotonicity of H on every relevant half-level branch, giving exactly 4j + 2 roots per unit interval. The initial bump contributes none, and only x = n is a root at a branch endpoint. Thus there are exactly 2n² roots, making 32 the smallest qualifying n.",
+    "levelCheck": "The proof uses elementary piecewise formulas, algebraic monotonicity, continuity, and summation without calculus. Existence, uniqueness, and endpoint counting are explained separately.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Fractional-part interpretation and function zeros are route-neutral targets. Piecewise functions, monotonicity by differences, completing the square, and arithmetic-sum support accurately match the proof.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "triangular-wave-crossing-count": "solution:triangular-wave-crossing-count:a674058c2ec3"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "5b9375d3aaa1497cc92105e7106aba9d414d15163cac86129757e4d90bfd964d",
+    "inputHash": "d72e7747326af1c505511af086300f493ef675e901d57cf845ab70daaee6fb0a",
+    "authorInputHash": "217ed61007597acf91feb05f90d96fd3de6c40bbb395666e370e058710ef1e4b",
+    "reviewInputHash": "f143c5abce0dd4c5fc9b2bf6850cbe2c878b4b0c7fbffe419d9465edca1d5002",
+    "authorResponseHash": "16561e987222304bd53d80980bcd016a4557fa1530b2bfb6aacb476f114e0500",
+    "reviewerResponseHash": "2bfd0d454918b6a2c4238bf97f23a3926709f26e34d4a7b6100445c6c1e9feb2",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

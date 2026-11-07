@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1992_AMC_12_Q28",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "bda7c3fb2d2376ee0f64ac5e46bdfc32c0bf65ca089ac4f9c5ccab7dd73439d1",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "fae49750bda1e05e4e74391331fa0ecd041ba7ecf1f48d38878d71a86665a49c",
+  "solutionFigureHashes": {},
+  "candidateHash": "952651f88286a397c8bc61968df3d512a18a8b50d7ea3cb7a0e225adb869b6e3",
+  "candidate": {
+    "questionId": "1992_AMC_12_Q28",
+    "derivedAnswer": "B, -6",
+    "answerStatus": "matches",
+    "answerReason": "The roots are 3-i and -2+i, whose real parts have product -6.",
+    "methods": [
+      {
+        "id": "complete-square-and-compare-parts",
+        "label": "Complete the square",
+        "explanation": "Completing the square removes the linear term and leaves a complex square to determine. Multiply the original equation by \\(4\\) and add \\(1\\):\n\\[\n(2z-1)^2=21-20i.\n\\]\nWrite \\(2z-1=u+vi\\), where \\(u,v\\) are real. Expanding the square and comparing real and imaginary parts gives\n\\[\nu^2-v^2=21,\\qquad 2uv=-20.\n\\]\nTo find the two squared quantities separately, use\n\\[\n(u^2+v^2)^2=(u^2-v^2)^2+(2uv)^2\n=21^2+20^2=841.\n\\]\nBecause \\(u^2+v^2\\ge0\\), it equals \\(29\\). Combining its sum and difference with \\(u^2-v^2=21\\) yields\n\\[\nu^2=25,\\qquad v^2=4.\n\\]\nAlso \\(uv=-10\\), so the signs must be opposite. The only possibilities are \\((u,v)=(5,-2)\\) and \\((-5,2)\\). Both satisfy the two component equations, so neither is extraneous.\n\nConsequently,\n\\[\nz=\\frac{1+5-2i}{2}=3-i\n\\quad\\text{or}\\quad\nz=\\frac{1-5+2i}{2}=-2+i.\n\\]\nThe real parts have product \\(3(-2)=\\boxed{-6}\\), choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_h099",
+          "cnm_h102"
+        ],
+        "prerequisiteIds": [
+          "cnm_h097",
+          "cnm_148",
+          "cnm_074"
+        ],
+        "levelReason": "Only rectangular complex arithmetic, square identities, and real square roots are used."
+      },
+      {
+        "id": "symmetric-real-part-product",
+        "label": "Use the sum and product of the roots",
+        "explanation": "We can calculate the requested product without finding both roots individually. If the roots are \\(\\alpha\\) and \\(\\beta\\), expanding\n\\[\n(z-\\alpha)(z-\\beta)\n=z^2-(\\alpha+\\beta)z+\\alpha\\beta\n\\]\nand comparing with \\(z^2-z-5+5i\\) gives\n\\[\n\\alpha+\\beta=1,\\qquad \\alpha\\beta=-5+5i.\n\\]\nWrite \\(\\alpha=a+bi\\), where \\(a,b\\) are real. Since the root sum is real, we can write \\(\\beta=c-bi\\), with \\(c\\) real and \\(a+c=1\\). Expanding their product gives\n\\[\n(a+bi)(c-bi)=ac+b^2+i\\,b(c-a).\n\\]\nThus\n\\[\nac+b^2=-5,\\qquad b(c-a)=5.\n\\]\nOur target is \\(ac\\). Set \\(t=b^2\\ge0\\), so \\(ac=-5-t\\). The known sum \\(a+c=1\\) also gives\n\\[\n(c-a)^2=(a+c)^2-4ac=21+4t.\n\\]\nSquaring \\(b(c-a)=5\\) therefore yields\n\\[\nt(21+4t)=25,\n\\]\n\\[\n(t-1)(4t+25)=0.\n\\]\nThe root \\(-25/4\\) is impossible because \\(t\\ge0\\). Hence \\(t=1\\), and the desired product is\n\\[\nac=-5-t=\\boxed{-6},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_h099",
+          "math:polynomial-roots-coefficients",
+          "cnm_h102",
+          "cnm_224"
+        ],
+        "prerequisiteIds": [
+          "cnm_h097",
+          "cnm_032",
+          "cnm_148"
+        ],
+        "levelReason": "The alternative uses an explicitly derived quadratic root-coefficient identity and a factored real quadratic, all within high-school algebra."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h099"
+    ],
+    "supportIds": [
+      "cnm_h097",
+      "cnm_h102",
+      "cnm_148"
+    ],
+    "annotationRationale": "The shared target is extracting real-number constraints from equality of complex numbers. Both methods use rectangular complex arithmetic and square identities. The first recovers the roots by completing a square; root-coefficient identities and real quadratic factorization belong only to the second method and are not universal requirements.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1992_AMC_12_Q28",
+    "decision": "accept",
+    "mathematicalCheck": "Method 1 derives u²=25, v²=4, and uv=−10, giving exactly the roots 3−i and −2+i. Method 2 correctly obtains t=b²≥0 with (t−1)(4t+25)=0, hence t=1 and ac=−6. Both yield the requested product.",
+    "levelCheck": "Both methods use permitted rectangular complex arithmetic and school algebra, with sign restrictions and the decisive identities explained.",
+    "methodDistinctness": "The methods are meaningfully distinct: one determines the roots, while the other uses root-coefficient identities to calculate the real-part product directly.",
+    "annotationCheck": "Complex equality and the shared arithmetic prerequisites fit both methods. Root-coefficient identities and quadratic factorization are correctly confined to the second method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "complete-square-and-compare-parts": "complete-square-and-compare-parts",
+    "symmetric-real-part-product": "symmetric-real-part-product"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "8f261be94c49ed615489fefd22ed042584cce607fae38978f8a6f6735f8c26e3",
+    "inputHash": "0d88fe76860aa9477b841794bf0becce95705224c8704819ba9f0eff9ab530a5",
+    "authorInputHash": "4ff5d752bebf6b6881b086c12ced138aee88d60e8829902e2f1748d88cca67c8",
+    "reviewInputHash": "3c7713fb9734d8486164da177cf802161205a66c71f8fb2432e67cc2985fb8cc",
+    "authorResponseHash": "cfa6ff648c03bf23033540cfa1da85cc96e84eaa97c0f6911cbab20c63125b2f",
+    "reviewerResponseHash": "30ba5595d250a710581629f081aa5683e19b361f1a813557c32561dc9c9aa281",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

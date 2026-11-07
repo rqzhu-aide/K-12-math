@@ -1,0 +1,126 @@
+{
+  "Year": 2010,
+  "Level": "AMC 12",
+  "Batch": "A",
+  "Area": "Unclassified",
+  "Number": 25,
+  "Question": "Two quadrilaterals are considered the same if one can be obtained from the other by a rotation and a translation. How many different convex cyclic quadrilaterals are there with integer sides and perimeter equal to \\(32?\\)",
+  "Question Type": "text",
+  "Choices": {
+    "A": "\\(560\\)",
+    "B": "\\(564\\)",
+    "C": "\\(568\\)",
+    "D": "\\(1498\\)",
+    "E": "\\(2255\\)"
+  },
+  "Choices Type": "text",
+  "Correct Answer": "C",
+  "Solution": "Record the four side lengths counterclockwise as \\((a,b,c,d)\\). To count shapes through these lists, we must first establish which lists are possible and whether one list determines a unique cyclic shape.\n\nEvery side of a nondegenerate quadrilateral is shorter than the other three combined. This follows by drawing a diagonal and applying the triangle inequality twice. Since the perimeter is 32, each integer side must therefore lie between 1 and 15.\n\nConversely, suppose \\(a,b,c,d\\) are positive lengths with each shorter than the other three combined. We will show that they determine exactly one convex cyclic quadrilateral with this counterclockwise side order, up to rotation and translation. Label its proposed sides \\(AB=a\\), \\(BC=b\\), \\(CD=c\\), and \\(DA=d\\), and put\n\\[\nt=\\frac{a^2+b^2-c^2-d^2}{2(ab+cd)}.\n\\]\nThe denominator is positive. The side inequalities imply \\(|a-b|<c+d\\) and \\(|c-d|<a+b\\), so\n\\[\n\\begin{aligned}\n1-t&=\\frac{(c+d)^2-(a-b)^2}{2(ab+cd)}>0,\\\\\n1+t&=\\frac{(a+b)^2-(c-d)^2}{2(ab+cd)}>0.\n\\end{aligned}\n\\]\nThus \\(-1<t<1\\), and there is a unique angle \\(0<\\theta<\\pi\\) with \\(\\cos\\theta=t\\).\n\nConstruct a triangle with sides \\(a,b\\) enclosing angle \\(\\theta\\), and another with sides \\(c,d\\) enclosing angle \\(\\pi-\\theta\\). The cosine law and the definition of \\(t\\) show that their opposite sides have the same length \\(e\\):\n\\[\n\\begin{aligned}\ne^2&=a^2+b^2-2ab\\,t\\\\\n   &=c^2+d^2+2cd\\,t.\n\\end{aligned}\n\\]\nGlue these triangles along that side, placing them on opposite sides of \\(AC\\). Their angles at \\(B\\) and \\(D\\) sum to \\(\\pi\\). The assembled angles at \\(A\\) and \\(C\\) are positive and also sum to \\(\\pi\\), so each is less than \\(\\pi\\). The quadrilateral is therefore convex. A convex quadrilateral with supplementary opposite angles is cyclic.\n\nFor any cyclic realization, the same cosine-law equations force \\(\\cos B=t\\), so they force \\(B=\\theta\\) and the diagonal length \\(e\\). The two triangles are then determined by their three sides. Fixing their counterclockwise order fixes the placement up to rotation and translation. This proves both existence and uniqueness. In particular, every positive integer list summing to 32 with entries at most 15 is eligible.\n\nNow count ordered lists. Placing three separators in the 31 gaps between 32 units gives \\(\\binom{31}{3}\\) positive solutions to \\(a+b+c+d=32\\). If a specified side is at least 16, subtracting 15 from that side gives a positive solution with total 17, counted by \\(\\binom{16}{3}\\). Two sides cannot both be at least 16 because the other two sides are positive. Therefore the eligible ordered count is\n\\[\nN=\\binom{31}{3}-4\\binom{16}{3}\n =4495-2240=2255.\n\\]\n\nChanging the starting vertex cyclically shifts a side list. Rotations and translations preserve counterclockwise order, so these shifts give exactly the identifications required. Reversed lists are identified only when they already differ by a cyclic shift.\n\nUsually there are four distinct starting lists. A one-place or three-place repetition forces all four entries equal; a two-place repetition forces the form \\((a,b,a,b)\\). Such a list satisfies \\(a+b=16\\), giving 15 ordered lists. One is \\((8,8,8,8)\\), with just one distinct shift. The other 14 have two distinct shifts each. Every remaining list has four distinct shifts. Hence the number of shapes is\n\\[\n\\frac{2255-15}{4}+\\frac{14}{2}+1\n=560+7+1=\\boxed{568},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+  "Meta": {
+    "QuestionSource": "live-poshenloh",
+    "AnswerSource": "live-poshenloh-answer-key",
+    "SolutionSource": "Original Math Practice solution",
+    "AreaSource": "Pending topic curation",
+    "Concepts": "Burnside’s Lemma; stars and bars; cyclic quadrilateral",
+    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2010A/solutions",
+    "SourceSHA256": "31e09e39a0978a0561c52553aad4f1f80611c6d64f556f0a75395496f4e5b550",
+    "Figures": [],
+    "FigureSources": {},
+    "SourceQuestionCount": 25,
+    "HistoricalSeries": "AMC 12",
+    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+    "Copyright": "Copyright Mathematical Association of America",
+    "License": "CC-BY-NC-SA-4.0",
+    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "TranscriptionSource": "LIVE by Po-Shen Loh",
+    "Modifications": [
+      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
+      "Third-party worked solution and solution-only figures omitted from the public distribution"
+    ],
+    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+    "SolutionReview": {
+      "status": "reviewed",
+      "solutionSHA256": "18e8fb66472ef7967632492b88220142570a669e15d14737e5d55d92c2eb4a5b",
+      "questionContentHash": "6eaf7211d528c53e6c0044ac92abb05edfeedefc4fc6c6963012b19da2b9f279",
+      "evidence": {
+        "path": "knowledge-graph/evidence/solutions-2026-11-06/2010_AMC_12A_Q25.json",
+        "sha256": "667f12a32dcc909af4a01ca7e1080e54c12d103ab48afc9cf9de9a99e8f1cbb5"
+      },
+      "author": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "reviewer": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      }
+    }
+  },
+  "ID": "2010_AMC_12A_Q25",
+  "Bank": "amc",
+  "SchemaVersion": "2.0",
+  "ResponseType": "choice",
+  "Language": "en",
+  "domain": [],
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "1.0.0",
+    "contentHash": "6eaf7211d528c53e6c0044ac92abb05edfeedefc4fc6c6963012b19da2b9f279",
+    "status": "mapped",
+    "reviewStatus": "machine_adjudicated",
+    "assessedIds": [
+      "math:symmetry-counting",
+      "math:quadrilateral-side-feasibility"
+    ],
+    "supportIds": [
+      "cnm_111",
+      "cnm_122",
+      "cnm_h237",
+      "cnm_h060"
+    ],
+    "routes": [
+      {
+        "id": "shared-diagonal-dot-product-realization",
+        "label": "Derive a unique cyclic realization through a shared diagonal",
+        "nodeIds": [
+          "cnm_111",
+          "cnm_h088",
+          "cnm_h089",
+          "cnm_h049",
+          "cnm_h064",
+          "cnm_255"
+        ]
+      },
+      {
+        "id": "shared-diagonal-cosine-law-realization",
+        "label": "Establish the unique cyclic realization with a shared diagonal and cosine laws",
+        "nodeIds": [
+          "math:general-cosine-law-application",
+          "cnm_111",
+          "cnm_h049",
+          "cnm_h064",
+          "cnm_h067",
+          "cnm_255"
+        ]
+      },
+      {
+        "id": "ordered-sides-and-cyclic-shifts",
+        "label": "Count side lists and account for rotational repetition",
+        "nodeIds": [
+          "math:quadrilateral-side-feasibility",
+          "cnm_255",
+          "math:general-cosine-law-application",
+          "cnm_h064",
+          "math:stars-and-bars",
+          "math:symmetry-counting",
+          "cnm_111",
+          "cnm_122",
+          "cnm_h237",
+          "cnm_h060"
+        ]
+      }
+    ],
+    "flags": []
+  }
+}

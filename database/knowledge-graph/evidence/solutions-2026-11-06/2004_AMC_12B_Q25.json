@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2004_AMC_12B_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "7ff6883aadf08121c04ab01b7be1db2fe80d3c16b2bfa79e9e9b4193a23b541b",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "33c1193bd8037ab2530410dd2a4292e1d1183b3a95d1bc6ed0548f81b92443ba",
+  "solutionFigureHashes": {},
+  "candidateHash": "020343463cf6a6ad090e38832dfb8642864f8ba8567ea2a763ba738a702f3bdf",
+  "candidate": {
+    "questionId": "2004_AMC_12B_Q25",
+    "derivedAnswer": "B, 195",
+    "answerStatus": "matches",
+    "answerReason": "The 2004 powers occupy 603 complete digit-length groups. Each group has three or four powers and contains one leading-4 power exactly when it has four. Thus the count is 2004−3·603=195.",
+    "methods": [
+      {
+        "id": "count-by-digit-length",
+        "label": "Group the powers by digit length",
+        "explanation": "Successive powers of two double, so grouping them by their number of decimal digits lets us control how many powers occur in each group.\n\nThe information about \\(2^{2004}\\) means\n\\[\n10^{603}\\leq2^{2004}<2\\cdot10^{603}.\n\\]\nDividing by \\(2\\) shows that \\(2^{2003}<10^{603}\\). Thus \\(S\\) contains exactly all powers of two below \\(10^{603}\\), grouped into the \\(603\\) possible digit lengths from \\(1\\) through \\(603\\).\n\nConsider one digit length. Write \\(T=10^j\\), so its numbers lie in \\([T,10T)\\), and let \\(p\\) be the smallest power of two in this interval. Then\n\\[\nT\\leq p<2T.\n\\]\nFor \\(T>1\\), the upper bound follows because the preceding power \\(p/2\\) is below \\(T\\); for \\(T=1\\), it follows directly from \\(p=1\\).\n\nThe powers \\(p,2p,4p\\) all lie below \\(10T\\), while \\(16p\\geq16T\\) does not. Hence this digit-length group contains either three powers or four, depending on whether \\(8p<10T\\).\n\nOnly \\(4p\\) can start with \\(4\\): the first two powers are below \\(4T\\), and the possible fourth is at least \\(8T\\). Since \\(4p\\geq4T\\), it starts with \\(4\\) exactly when\n\\[\n4p<5T\n\\quad\\Longleftrightarrow\\quad\n8p<10T.\n\\]\nTherefore each four-power group contains exactly one leading-\\(4\\) power, and each three-power group contains none.\n\nLet \\(N\\) be the number of four-power groups. Counting the same \\(2004\\) powers by their digit-length groups gives\n\\[\n2004=4N+3(603-N)=1809+N.\n\\]\nEvery power belongs to exactly one group, so the desired count is \\(N=\\boxed{195}\\), choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "math:double-counting"
+        ],
+        "prerequisiteIds": [
+          "cnm_019",
+          "cnm_022"
+        ],
+        "levelReason": "Elementary doubling and exact decimal size intervals establish the count without logarithms or approximation."
+      }
+    ],
+    "assessedIds": [
+      "math:double-counting"
+    ],
+    "supportIds": [
+      "cnm_019",
+      "cnm_022"
+    ],
+    "annotationRationale": "The decisive count totals the powers once by their exponents and once by digit-length groups. Powers and decimal normalization support the bounds within each group. The proof handles the initial group, the final cutoff, and the one-to-one correspondence between four-power groups and leading-4 powers.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2004_AMC_12B_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The given leading digit makes \\(2^{2004}\\) the first power with 604 digits. Each of the 603 preceding digit-length groups contains three or four powers. Its sole possible leading-4 member is \\(4p\\), which qualifies exactly when the fourth power \\(8p\\) remains in the group. Thus the count is \\(2004-3\\cdot603=195\\).",
+    "levelCheck": "Exact decimal bounds and elementary doubling provide an accessible, complete proof without logarithms.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Double counting is the decisive step, supported appropriately by exponentiation and decimal normalization.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-by-digit-length": "count-by-digit-length"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "2a5342e9a48188f7e4cdb27dad96238c6d65b98f4c20c1fe1ec4cb261dbecfea",
+    "inputHash": "0cd760d557ea2400a65267aaa353bd8357dc0d87b0d7433589fd70f35151630c",
+    "authorInputHash": "b2212d73d16ebe47251f1f0b8c87225521fb360ae82d88f41ed7662a8bbadf6a",
+    "reviewInputHash": "a365e376b540370152f89a907631787bd8213352fb55519a9270e5f1342a7464",
+    "authorResponseHash": "440478501a22c2f0095b68ecf29b6be0af2b8b10dcc47b826d796a7708e5ba18",
+    "reviewerResponseHash": "53dcf2ac96f24be63acd04e203e1c53baeca2ccfa541df506ffb41c2b65c2337",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

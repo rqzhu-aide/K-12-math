@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2007_AMC_10B_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "6d43d3719ea8d3520fa027cabf3689beaeb1e4d15af235285f72dde1e0a8950d",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "4042b4b2423140dc6cd11d3dd17ab9276f3a7d86d896ff71c5b31ef6d8794a6d",
+  "solutionFigureHashes": {},
+  "candidateHash": "b84b89df8c91b64e784401d301284246510f3089cde29f600781ef955779e1fd",
+  "candidate": {
+    "questionId": "2007_AMC_10B_Q24",
+    "derivedAnswer": "C. 4944",
+    "answerStatus": "matches",
+    "answerReason": "Every eligible number needs at least nine 4s and one 9. The smallest admissible arrangement is 4444444944, whose last four digits are 4944, agreeing with choice C.",
+    "methods": [
+      {
+        "id": "digit-count-bound-and-placement",
+        "label": "Minimize the digit count, then the arrangement",
+        "explanation": "Divisibility by \\(9\\) depends on the digit sum, and each digit \\(9\\) contributes a multiple of \\(9\\). Let \\(f\\ge1\\) be the number of 4s and \\(g\\ge1\\) the number of 9s. The digit sum is \\(4f+9g\\), so \\(4f\\) must be divisible by \\(9\\). It is also a positive multiple of \\(4\\). The least common multiple of \\(4\\) and \\(9\\) is \\(36\\), so\n\\[\n4f\\ge36,\\qquad f\\ge9.\n\\]\nThus every eligible number has at least ten digits. A ten-digit candidate must have exactly nine 4s and one 9.\n\nDivisibility by \\(4\\) depends only on the last two digits, because all earlier digits contribute a multiple of \\(100\\). Among the possible endings \\(44,49,94,99\\), only \\(44\\) is divisible by \\(4\\). Therefore the last two digits must be \\(44\\).\n\nAmong ten-digit candidates, keeping earlier digits equal to \\(4\\) makes the number smaller. Place the single \\(9\\) as far right as permitted, in the hundreds place. This gives\n\\[\nn=4444444944.\n\\]\nIts digit sum is \\(45\\), and it ends in \\(44\\), so it satisfies both divisibility conditions. Shorter numbers are impossible, longer numbers are larger, and this is the smallest allowed ten-digit arrangement. Its last four digits are \\(4944\\), choice \\(C\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "math:modular-congruence",
+          "cnm_p159"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153"
+        ],
+        "levelReason": "Uses elementary digit divisibility, a least common multiple, and decimal ordering to prove minimality."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_p153"
+    ],
+    "annotationRationale": "The task-level target is proving a smallest admissible integer through a universal digit-count bound and a construction attaining it. The written method uses remainder reasoning through digit-sum and last-two-digit tests, together with the least common multiple of 4 and 9.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2007_AMC_10B_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "The positive number of 4s must be at least nine because \\(4f\\) is a common multiple of 4 and 9. At least one 9 therefore forces ten digits. Only ending 44 permits divisibility by 4; placing the sole 9 in the hundreds place gives the smallest ten-digit candidate, 4444444944. Its digit sum is 45, and its last four digits are 4944.",
+    "levelCheck": "Digit divisibility tests, an LCM and decimal ordering provide an elementary, complete minimality argument.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The extremal target is justified by the universal digit-count bound and an attaining construction. Factors, LCM and the method-local remainder reasoning match the actual argument.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "digit-count-bound-and-placement": "digit-count-bound-and-placement"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "eb9488a7544f61422498abddd6e55ab9b97849f2cb182f4ccfb93cc525ad540e",
+    "inputHash": "b0a17958c7de50124f3adef0266679140dc9815596f9bdbdf0cfe7c4b9d4a368",
+    "authorInputHash": "949eabb7aed988b1f0623cf1fc9809f5d8419eeea888b16a67f3fb6575fee1e1",
+    "reviewInputHash": "67ffd1745415432f9305c4a6cf440a891dda56532f54be6c8c6aceaaa5b58555",
+    "authorResponseHash": "06f5ed96e694a874b24591d393bf68e386d288499069ccee32d8a1755cd02195",
+    "reviewerResponseHash": "f1b2d070345809c0adc54706bbc2f458953512c1d2495cb687e34956ae7eb85d",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

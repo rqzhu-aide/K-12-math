@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2004_AMC_12B_Q12",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "0444ef2ff94ffea5ce1054aa9c76247c97050175d148ad84fcb60a3e9e603f34",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "ed220689507b6d4eb432cc58e095672bd144f985fd08f6220e85746c24d7bfdd",
+  "solutionFigureHashes": {},
+  "candidateHash": "8d4cf6b0f0e84f66f483abcf28243a1c6cd76e4e780f3520a0d02de73373abd6",
+  "candidate": {
+    "questionId": "2004_AMC_12B_Q12",
+    "derivedAnswer": "0, choice C",
+    "answerStatus": "matches",
+    "answerReason": "The even-position terms form an arithmetic sequence starting at 2002 with common difference -2. Its 1002nd term, which is the original sequence's 2004th term, is 0.",
+    "methods": [
+      {
+        "id": "even-position-arithmetic-sequence",
+        "label": "Separate the even-position terms",
+        "explanation": "Let \\(a_n\\) denote the \\(n\\)th term. The first few terms are \\(2001,2002,2003,2000,2005,1998\\), suggesting that the even-position terms decrease by \\(2\\). To prove that this continues, use the recurrence twice. For every integer \\(n\\geq1\\),\n\\[\n\\begin{aligned}\na_{n+4}\n&=a_{n+1}+a_{n+2}-a_{n+3}\\\\\n&=a_{n+1}+a_{n+2}-(a_n+a_{n+1}-a_{n+2})\\\\\n&=2a_{n+2}-a_n.\n\\end{aligned}\n\\]\nThus \\(a_{n+4}-a_{n+2}=a_{n+2}-a_n\\): consecutive differences within the even-position terms are equal. Since \\(a_2=2002\\) and \\(a_4=2000\\), these terms form an arithmetic sequence with common difference \\(-2\\).\n\nThe \\(2004\\)th term is the \\(1002\\)nd even-position term, so it is \\(1001\\) decreases after \\(a_2\\). Therefore\n\\[\na_{2004}=2002-2(1001)=\\boxed{0},\n\\]\nwhich is choice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "cnm_h200",
+          "cnm_h201",
+          "cnm_h202"
+        ],
+        "prerequisiteIds": [
+          "cnm_h197"
+        ],
+        "levelReason": "Substitution in the recurrence reveals an arithmetic subsequence; no general recurrence-solving machinery is needed."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h200"
+    ],
+    "supportIds": [
+      "cnm_h197"
+    ],
+    "annotationRationale": "The task asks for a distant term determined by a recurrence. Recognizing and evaluating an arithmetic subsequence belongs to this written route, while understanding term positions supports the entire argument.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2004_AMC_12B_Q12",
+    "decision": "accept",
+    "mathematicalCheck": "Two recurrence substitutions give a_{n+4}=2a_{n+2}-a_n, proving constant differences within each parity subsequence. The even terms start at 2002 with difference -2, so a_2004=2002-2(1001)=0. The indexing and initial terms are correct.",
+    "levelCheck": "The recurrence substitution and arithmetic-sequence calculation are accessible and fully explained at AMC 12 level.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The recurrence assessment, method-local arithmetic-sequence nodes, and shared sequence-position support match their catalog scopes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "even-position-arithmetic-sequence": "even-position-arithmetic-sequence"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "d3b8777f89b75d788bdaee9a2971b4dfeef3ad546dd856af7aa5bcea7ec12a57",
+    "inputHash": "13f5cb01d57a85fc44c3af65a4bc78279956460794c00e57c10dfcf708af3788",
+    "authorInputHash": "ac6b7818f3b2b2563c3ad03c39f621741a1bbe03cae74955eabf8fdc1a629ee4",
+    "reviewInputHash": "78c48a2a1cd66bbd65c69f43903fe6ca395b00b4f678852f47e5631a6c82bce4",
+    "authorResponseHash": "9aff2f8a2227433c54c00bddf7cf62cb236abfe36293245075988b9b59ef1e42",
+    "reviewerResponseHash": "c11a79ce3193f1d8fa194cc4d5ba62d91ec6ec6de3819fedcb344ae73b675c14",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

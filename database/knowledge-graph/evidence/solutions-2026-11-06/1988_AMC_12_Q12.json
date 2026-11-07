@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1988_AMC_12_Q12",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "52b12e3327ac7a96c7becb5170a1b1d4d27beb968f97cd2798c49c9efd550414",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "584ed4ef97f716d37796671684fcd19a35b781e66fc672b9b6ec577917f39e9d",
+  "solutionFigureHashes": {},
+  "candidateHash": "86caa4e16c9e2a1b9407cdffc68f1b0dabb75b71e189550064719ebf6d64fce5",
+  "candidate": {
+    "questionId": "1988_AMC_12_Q12",
+    "derivedAnswer": "A, units digit 0",
+    "answerStatus": "matches",
+    "answerReason": "Among the 81 equally likely ordered pairs, nine produce units digit 0 and eight produce each other units digit.",
+    "methods": [
+      {
+        "id": "missing-units-digit",
+        "label": "Method 1: Fix Jack's number",
+        "explanation": "Because Jack replaces his slip, each of his nine choices can be paired with each of Jill's nine choices. Thus there are \\(9\\cdot9=81\\) equally likely ordered pairs.\n\nSuppose Jack draws \\(j\\), where \\(1\\le j\\le9\\). Jill's choices give the nine consecutive sums\n\\[\nj+1,j+2,\\ldots,j+9.\n\\]\nTheir units digits are all different. None has units digit \\(j\\), because the neighboring numbers with that units digit are \\(j\\) and \\(j+10\\). Thus these sums have every units digit except \\(j\\), each exactly once.\n\nUnits digit \\(0\\) therefore occurs once for each of Jack's nine choices. Any digit \\(d\\) from \\(1\\) through \\(9\\) occurs once for each Jack choice except \\(j=d\\), giving eight occurrences. These counts include every pair once, since Jack's number and the required sum determine Jill's number. Hence \\(0\\) has probability \\(9/81\\), greater than \\(8/81\\) for every other digit. The answer is \\(0\\), choice A.",
+        "nodeIds": [
+          "cnm_307",
+          "cnm_286"
+        ],
+        "prerequisiteIds": [
+          "cnm_285",
+          "cnm_310",
+          "cnm_p017"
+        ],
+        "levelReason": "The argument uses equally likely ordered outcomes and the units digits of consecutive whole numbers."
+      },
+      {
+        "id": "count-by-sum",
+        "label": "Method 2: Count pairs with each sum",
+        "explanation": "Replacement gives \\(81\\) equally likely ordered pairs of draws, so we can compare units digits by counting their pairs. Let \\(s\\) be the sum.\n\nFor \\(2\\le s\\le10\\), the pairs are \\((1,s-1),(2,s-2),\\ldots,(s-1,1)\\), giving \\(s-1\\) pairs. For \\(11\\le s\\le18\\), Jack's number can range from \\(s-9\\) through \\(9\\), giving \\(19-s\\) pairs. Each permitted Jack number determines exactly one Jill number, so these counts have no repetitions.\n\nUnits digit \\(0\\) comes only from sum \\(10\\), giving nine pairs. Units digit \\(1\\) comes only from sum \\(11\\), giving eight pairs, and units digit \\(9\\) comes only from sum \\(9\\), also giving eight pairs. For any digit \\(d\\) from \\(2\\) through \\(8\\), the possible sums are \\(d\\) and \\(d+10\\), giving\n\\[\n(d-1)+\\bigl(19-(d+10)\\bigr)=8\n\\]\npairs. These cases cover all ten units digits, and each pair has exactly one sum. Thus \\(0\\) occurs most often, with probability \\(9/81\\). The answer is choice A.",
+        "nodeIds": [
+          "cnm_307",
+          "cnm_286"
+        ],
+        "prerequisiteIds": [
+          "cnm_285",
+          "cnm_310",
+          "cnm_p017"
+        ],
+        "levelReason": "Counting pairs by their sums uses only finite enumeration and elementary arithmetic."
+      }
+    ],
+    "assessedIds": [
+      "cnm_307"
+    ],
+    "supportIds": [
+      "cnm_285",
+      "cnm_310",
+      "cnm_p017"
+    ],
+    "annotationRationale": "The route-neutral target is comparing event likelihoods. Both methods count equally likely outcomes, supported by replacement and place value. One uses the missing units digit for a fixed first draw; the other groups pairs by their sum. Neither uses a table or tree, so cnm_287 is not assigned.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1988_AMC_12_Q12",
+    "decision": "accept",
+    "mathematicalCheck": "Replacement gives 81 equally likely ordered pairs. For each fixed Jack number j, the nine sums contain every units digit except j. Thus 0 occurs nine times and every other digit eight times. The independent sum-based counts also cover all sums from 2 through 18 without duplication.",
+    "levelCheck": "Both methods use accessible counting and place value, with the decisive completeness arguments explained.",
+    "methodDistinctness": "Fixing the first draw and grouping outcomes by their sum provide genuinely different counting perspectives.",
+    "annotationCheck": "cnm_307 is a suitable route-neutral target. Enumeration is recorded locally, shared supports match both methods, and omitting the table/tree node is justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "missing-units-digit": "missing-units-digit",
+    "count-by-sum": "count-by-sum"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "1f3af2b5a6bf1af3c055519a2422d4c89ec91d3e8ca5bc26231e9d641e4874f2",
+    "inputHash": "2bbc85523054f3c7185ba60390d35616d858d1e8be144fc29024ec66561799f7",
+    "authorInputHash": "28a7875a2f213e7bc65c0b5c4c2ff3ea603440774559764a0817a2eff50b505c",
+    "reviewInputHash": "cfc0e38c6b22375bb09125587f33b378556e10223dc8365c89c5d71ef0c5d4d1",
+    "authorResponseHash": "8e9824503681855bbf42be1a61ec672461e562499626c50fa68bfba265f3980e",
+    "reviewerResponseHash": "aa1d6187f2ea82c7a5dffac430ae972922893a03507c2a6e2ef94d4bcb10add5",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

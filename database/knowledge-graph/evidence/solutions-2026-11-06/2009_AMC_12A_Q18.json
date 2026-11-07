@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2009_AMC_12A_Q18",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "caa2b5102dc0168ef937c6d79db76263c3b6605283cfaea32a45d3a3bc392543",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "b7011795d9eedc69a473142226c195fb818a56c26764463f099df70b6f1cc39f",
+  "solutionFigureHashes": {},
+  "candidateHash": "2cf1316d28168176bd225ea2203e17c53777be1b21180a94c1e128965afe72eb",
+  "candidate": {
+    "questionId": "2009_AMC_12A_Q18",
+    "derivedAnswer": "B: \\(7\\)",
+    "answerStatus": "matches",
+    "answerReason": "Writing \\(t=k+2\\ge3\\), the exponent of \\(2\\) is \\(t\\) for \\(t<6\\), is \\(6\\) for \\(t>6\\), and is \\(7\\) for \\(t=6\\). Thus the maximum is \\(7\\), attained at \\(k=4\\).",
+    "methods": [
+      {
+        "id": "compare-powers-of-two",
+        "label": "Factor until the remaining factor is odd",
+        "explanation": "The digit positions give\n\\[\nI_k=10^{k+2}+64.\n\\]\nPut \\(t=k+2\\), so \\(t\\) is an integer at least \\(3\\). Since \\(10^t=2^t5^t\\) and \\(64=2^6\\), compare \\(t\\) with \\(6\\). Once a power of \\(2\\) has been factored out and the remaining factor is odd, its exponent is exactly \\(N(k)\\).\n\nIf \\(3\\le t<6\\), then\n\\[\nI_k=2^t\\left(5^t+2^{6-t}\\right).\n\\]\nThe factor in parentheses is odd plus even, hence odd. Thus \\(N(k)=t\\le5\\).\n\nIf \\(t>6\\), then\n\\[\nI_k=2^6\\left(2^{t-6}5^t+1\\right).\n\\]\nThe factor in parentheses is even plus one, hence odd. Thus \\(N(k)=6\\).\n\nThe remaining case is \\(t=6\\). Here\n\\[\nI_k=2^6(5^6+1)\n=2^6(15626)\n=2^7(7813).\n\\]\nSince \\(7813\\) is odd, \\(N(k)=7\\).\n\nThese cases cover every allowed \\(k\\). The maximum is therefore \\(\\boxed{7}\\), attained when \\(k=t-2=4\\), choice B.",
+        "nodeIds": [
+          "math:prime-factorization"
+        ],
+        "prerequisiteIds": [
+          "cnm_p156",
+          "cnm_143",
+          "cnm_p153"
+        ],
+        "levelReason": "Uses decimal place value, integer powers, and parity to determine an exact prime exponent."
+      }
+    ],
+    "assessedIds": [
+      "math:prime-factorization"
+    ],
+    "supportIds": [
+      "cnm_p156",
+      "cnm_143"
+    ],
+    "annotationRationale": "The target is determining and maximizing the exponent of a prime in an integer. Parity certifies that no further factors of two remain, while powers of products rewrite the decimal power. The three cases prove an upper bound for all inputs and exhibit an input attaining it.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2009_AMC_12A_Q18",
+    "decision": "accept",
+    "mathematicalCheck": "The digit pattern gives I_k=10^(k+2)+64. With t=k+2, factoring leaves an odd factor and gives exponent t for 3≤t<6 and exponent 6 for t>6. At t=6, I_k=2^7·7813 with 7813 odd. Thus 7 is the maximum, attained at k=4.",
+    "levelCheck": "Place value, powers, and parity provide an elementary and complete bound with an attaining example.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Prime-exponent structure is the correct target. Parity, factors, and powers of products are supported by the actual argument.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "compare-powers-of-two": "compare-powers-of-two"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "580d4b2f2afab6f6fba0bbc32d3205dee8e5c88cca95fa16aa9cd367f772e00c",
+    "inputHash": "f2620081635a0e10e77e64f5c19d5e168fc6902ae9bfa27a1d5d889d49252880",
+    "authorInputHash": "ad51fb6148205396dc62240805b9886756c09feadaebf63265925ef1ffec402e",
+    "reviewInputHash": "139fbbe7637f9c5129c23333af1da311b15cec59cd4b2902f0e983920daec29b",
+    "authorResponseHash": "22c8f98c4f6c5245024b99b18d59af13c25d88107d40ca3383da12b14436e7ca",
+    "reviewerResponseHash": "64c814348d31e48d85860f8238b999ffbea01774b1218b0287e97eefd9065481",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

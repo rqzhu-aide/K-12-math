@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1982_AMC_12_Q26",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "1c8aaed9110561d0fed917cfaf5b92caa95669bfd72aeb3f8bf11c4436de30c4",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "eaf253387603287eca7426a22f5af001192fafaac38029522238fd5ab74c8f28",
+  "solutionFigureHashes": {},
+  "candidateHash": "edaa7077f58f05ac0b744f6f2fce15645d364a1630016f10924cb9a2d2889ebd",
+  "candidate": {
+    "questionId": "1982_AMC_12_Q26",
+    "derivedAnswer": "\\(1\\), choice B",
+    "answerStatus": "matches",
+    "answerReason": "The displayed base-eight digits force the square's remainder modulo 16 to lie between 8 and 15. The only square remainder in that range is 9, forcing c=1.",
+    "methods": [
+      {
+        "id": "square-remainders-modulo-sixteen",
+        "label": "Use the final digits to examine remainders",
+        "explanation": "The final two base-eight digits determine the remainder on division by \\(16\\). If the square is \\(N=(ab3c)_8\\), then\n\\[\nN=512a+64b+24+c.\n\\]\nSince \\(512a\\) and \\(64b\\) are multiples of \\(16\\), the remainder is \\(8+c\\). A base-eight digit satisfies \\(0\\le c\\le7\\), so this remainder lies between \\(8\\) and \\(15\\).\n\nTo find all possible square remainders, write an integer root as \\(8q+r\\), where \\(0\\le r\\le7\\). The difference\n\\[\n(8q+r)^2-r^2=16q(4q+r)\n\\]\nis divisible by \\(16\\). Squaring \\(r=0,1,\\ldots,7\\) therefore shows that the only possible square remainders are \\(0,1,4,9\\).\n\nOnly \\(9\\) lies between \\(8\\) and \\(15\\), so \\(8+c=9\\), giving \\(c=1\\). This digit is attainable: \\(27^2=729=(1331)_8\\). Thus the answer is \\(\\boxed{1}\\), choice B.",
+        "nodeIds": [
+          "cnm_024",
+          "math:modular-congruence"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_020"
+        ],
+        "levelReason": "Base expansion and an exhaustive list of square remainders use only elementary arithmetic and number theory."
+      }
+    ],
+    "assessedIds": [
+      "math:modular-congruence"
+    ],
+    "supportIds": [
+      "cnm_024"
+    ],
+    "annotationRationale": "The decisive target is restricting an unknown digit through integer remainders. Positional notation supplies the supporting base-eight expansion. The method checks all root remainder classes; no theorem about large modular powers is needed.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1982_AMC_12_Q26",
+    "decision": "accept",
+    "mathematicalCheck": "The square has remainder 8+c modulo 16. Squaring root remainders 0 through 7 exhausts the possible square remainders 0,1,4,9, forcing c=1. The example 27²=(1331)₈ verifies attainability.",
+    "levelCheck": "The remainder argument is elementary, complete, and appropriate for AMC 12.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Numeral-system expansion supports the argument, and the integer-remainder node correctly captures the decisive restriction.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "square-remainders-modulo-sixteen": "square-remainders-modulo-sixteen"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "8756ec6625ef83b401a8785b3cf10770bc4fb0b5baa617ff81b6bed9e22b61e4",
+    "inputHash": "082810e943a425dac31fa7e92c730cbf0dc074eb018b34df54eb93501692fbc7",
+    "authorInputHash": "facef598a2dfd1db3d124ef46cd0f117064f0f56cbae1bb59226852bd43705dd",
+    "reviewInputHash": "715612f01cca376a4b190d4bea0e0c372b413fdaea36f552927936d88d84bd38",
+    "authorResponseHash": "ccc3215831cfc6f7bab7b6596b747678101fc22ea626b96080d4690a574b9e2a",
+    "reviewerResponseHash": "8b56de014efb0decefc3b36f6dd22164d624999faadd9c713447b2ec9ce0e8af",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

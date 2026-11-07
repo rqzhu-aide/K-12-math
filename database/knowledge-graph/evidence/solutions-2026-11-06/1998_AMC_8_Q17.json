@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1998_AMC_8_Q17",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "99a271e3516b56534b1d68a0ec38ad69ca1153b2755886a4cf868ddc10047660",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "07f5f801fe5be0a373c31ebf8cc2675e84a5bf811c46fb2971184fef0a1717f2",
+  "solutionFigureHashes": {},
+  "candidateHash": "f2cfe2290807dd52e6fa637a4781dd87e96ba0ca7de0aee5459ae53882956408",
+  "candidate": {
+    "questionId": "1998_AMC_8_Q17",
+    "derivedAnswer": "Not uniquely determined as written; approximately 100 years, choice C, under steady proportional growth.",
+    "answerStatus": "disputed",
+    "answerReason": "The capacity is 16,600 people, and the population after 100 years is 16,200. Choice C follows under steady proportional growth, but the stated tripling rule alone allows growth patterns that first exceed capacity near 125 years, choice D.",
+    "methods": [
+      {
+        "id": "capacity_tripling_and_qualification",
+        "label": "Compare capacity with repeated tripling",
+        "explanation": "First find how many people the land can support. Each person needs at least \\(1.5\\) square miles, so the maximum supported population is\n\\[\n24{,}900\\div1.5=16{,}600.\n\\]\nTripling the initial population at successive \\(25\\)-year dates gives\n\\[\n200\\longrightarrow600\\longrightarrow1800\n\\longrightarrow5400\\longrightarrow16{,}200.\n\\]\nThus after \\(4\\times25=100\\) years, the population is only \\(400\\) below capacity.\n\nTo estimate when capacity is actually reached, assume steady proportional growth: the population increases continuously, and equal-length time intervals multiply it by the same factor. Each half of a \\(25\\)-year period then has the same multiplying factor. This factor must exceed \\(1.5\\), because\n\\[\n1.5\\times1.5=2.25<3.\n\\]\nConsequently, after another \\(12.5\\) years the population exceeds\n\\[\n16{,}200\\times1.5=24{,}300>16{,}600.\n\\]\nUnder this assumption, capacity is reached between \\(100\\) and \\(112.5\\) years. Every time in that interval is closer to \\(100\\) than to any other offered time, so the answer is approximately \\(100\\) years, choice \\(\\boxed{\\text{C}}\\).\n\nHowever, the question does not specify growth between the \\(25\\)-year dates. For example, suppose the population stays constant between tripling jumps at elapsed years \\(24,49,74,99,124,\\ldots\\). It still triples every \\(25\\) years and has exactly the populations calculated above at years \\(25,50,75,100,\\ldots\\). But it stays at \\(16{,}200\\) until year \\(124\\), when it jumps to \\(48{,}600\\), first exceeding capacity. That time is closest to \\(125\\) years, choice D. Therefore C is conditional on the steady-growth interpretation; the wording alone does not determine a unique choice.",
+        "nodeIds": [
+          "cnm_h212",
+          "cnm_p139",
+          "math:numerical-estimation-meaning",
+          "cnm_071"
+        ],
+        "prerequisiteIds": [
+          "cnm_p138",
+          "cnm_p073",
+          "cnm_p132",
+          "cnm_p133"
+        ],
+        "levelReason": "The reasoning uses decimal division, repeated tripling, an elementary comparison of multiplying factors, and a concrete counterexample. No exponential formula or logarithms are needed."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h212"
+    ],
+    "supportIds": [
+      "cnm_p139",
+      "math:numerical-estimation-meaning"
+    ],
+    "annotationRationale": "The principal target is relating repeated multiplicative growth to a population capacity, which fits cnm_h212 without requiring formal sequence formulas. Decimal division supplies the capacity, and numerical estimation distinguishes an approximate elapsed time from an exact value. The method uses understanding of multiples and decimal multiplication and division as local prerequisites. cnm_071 describes the counterexample used to show that the unqualified timing conclusion does not follow from the stated conditions.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The tripling rule determines populations at 25-year checkpoints but does not specify growth between them. This uncertainty can change the closest offered elapsed time, so the supplied key C requires an additional growth assumption."
+    ]
+  },
+  "review": {
+    "questionId": "1998_AMC_8_Q17",
+    "decision": "accept",
+    "mathematicalCheck": "Capacity is 24,900/1.5 = 16,600 people; four triplings give 16,200 after 100 years. Under the explicitly added steady-growth assumption, the half-period factor exceeds 1.5, placing capacity attainment strictly between 100 and 112.5 years, closest to C. The jump example satisfies 25-year tripling and first exceeds capacity at year 124, supporting the stated timing ambiguity.",
+    "levelCheck": "Decimal arithmetic, repeated multiplication, factor comparisons and the concrete counterexample are accessible at AMC 8 level. The decisive comparisons are explained without exponential formulas or logarithms.",
+    "methodDistinctness": "One complete method with a conditional estimate and an ambiguity check is sufficient. No redundant alternative method is included.",
+    "annotationCheck": "The assessed fixed-ratio growth node fits the question. Decimal division and numerical estimation are justified shared support; cnm_071 fits the counterexample. All listed arithmetic prerequisites match their catalog scopes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "capacity_tripling_and_qualification": "capacity_tripling_and_qualification"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "815da7f85cc2d6cdfca61906729ec27e9aa857e0b81a4c8f21ee8d0dce449574",
+    "inputHash": "c99e86f4b42a47f6e479ebfca33dba83890588ae333dbcd197399a17fd1491bb",
+    "authorInputHash": "03d7cc6706e575f4075bfb80595c68951413f9d42498e1aa0ca35c43c4f1993b",
+    "reviewInputHash": "76deea1aadfdd21bbc5b9d3f67ca9cfa01fda17aa9e8e8f7bbe6b0db4a0d1312",
+    "authorResponseHash": "e463e3fbb3b54ae50081ee949a97a81a880999636a069a140446e5f56c8635bc",
+    "reviewerResponseHash": "8d7b3a91997c9aa3409e5f1fc0805b7a16beb2f53643719a2e59380e545ccf38",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

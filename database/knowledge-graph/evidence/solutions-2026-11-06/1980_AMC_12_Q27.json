@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1980_AMC_12_Q27",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "0a3fe595bc72d4db2c3e788746a1f7b0fbe8226d9f595eb76d7cf2579294816c",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "8e5a74fbc263bd8b19c61e51173c99f1581a7d03dd35d7ad3908ff0b0545ba8d",
+  "solutionFigureHashes": {},
+  "candidateHash": "0825a05979ca4c417e9f84520de9161580547b2cc789e6b3b3251ce7824ed86f",
+  "candidate": {
+    "questionId": "1980_AMC_12_Q27",
+    "derivedAnswer": "E: 1",
+    "answerStatus": "matches",
+    "answerReason": "The sum of the two real cube roots is exactly 1, and every numerical choice A through D exceeds 1.",
+    "methods": [
+      {
+        "id": "equation-for-sum",
+        "label": "Find an equation for the sum",
+        "explanation": "The radicands have a simple sum and product, so keep the individual cube roots unnamed numerically. Let\n\\[\nu=\\sqrt[3]{5+2\\sqrt{13}},\n\\qquad\nv=\\sqrt[3]{5-2\\sqrt{13}},\n\\]\nwhere both cube roots are real. Then\n\\[\nu^3+v^3=10,\n\\qquad\n(uv)^3=(5+2\\sqrt{13})(5-2\\sqrt{13})=-27.\n\\]\nThe unique real cube root of \\(-27\\) is \\(-3\\), so \\(uv=-3\\).\n\nSet \\(t=u+v\\). Expanding its cube combines the known sum and product:\n\\[\nt^3=u^3+v^3+3uv(u+v)=10-9t.\n\\]\nThus\n\\[\n0=t^3+9t-10=(t-1)(t^2+t+10).\n\\]\nFor every real \\(t\\),\n\\[\nt^2+t+10=\\left(t+\\frac12\\right)^2+\\frac{39}{4}>0.\n\\]\nTherefore \\(t=1\\).\n\nChoices A and D exceed \\(1\\). Choice B exceeds \\(1\\) because \\(65>4^3\\), and choice C exceeds \\(1\\) because \\(\\sqrt[6]{13}>1\\). Hence the sum is \\(\\boxed1\\), choice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "cnm_080",
+          "math:sum-difference-cubes",
+          "cnm_146",
+          "math:completing-square-expression"
+        ],
+        "prerequisiteIds": [
+          "cnm_076",
+          "cnm_147"
+        ],
+        "levelReason": "Uses real cube-root uniqueness, elementary polynomial identities, and positivity of a square."
+      },
+      {
+        "id": "recognize-real-cubes",
+        "label": "Recognize cubes of square-root expressions",
+        "explanation": "The pair of radicands differs only in the sign of \\(\\sqrt{13}\\), suggesting that their cube roots might also form such a pair. Cubing \\(1\\pm\\sqrt{13}\\) gives\n\\[\n(1\\pm\\sqrt{13})^3\n=1\\pm3\\sqrt{13}+39\\pm13\\sqrt{13}\n=40\\pm16\\sqrt{13}.\n\\]\nBoth terms have a factor of \\(8\\), so\n\\[\n\\left(\\frac{1\\pm\\sqrt{13}}2\\right)^3\n=5\\pm2\\sqrt{13}.\n\\]\nEvery real number has exactly one real cube root. This identifies both roots, including the negative root of \\(5-2\\sqrt{13}\\), and their sum is\n\\[\n\\frac{1+\\sqrt{13}}2+\\frac{1-\\sqrt{13}}2=\\boxed1.\n\\]\nChoices A and D are greater than \\(1\\); B is greater than \\(1\\) since \\(65>64\\); and C is greater than \\(1\\) since \\(\\sqrt[6]{13}>1\\). The answer is therefore \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "cnm_080",
+          "cnm_173",
+          "cnm_146"
+        ],
+        "prerequisiteIds": [
+          "cnm_076",
+          "cnm_148",
+          "cnm_168"
+        ],
+        "levelReason": "Uses direct multiplication of real square-root expressions to identify the cube roots exactly."
+      }
+    ],
+    "assessedIds": [
+      "cnm_080"
+    ],
+    "supportIds": [
+      "cnm_076"
+    ],
+    "annotationRationale": "The common target is exact evaluation of a real radical expression, supported by the uniqueness and sign meaning of real cube roots. The first route uses sum-and-product identities and a positive quadratic factor. The second directly verifies square-root expressions whose cubes are the radicands. A general binomial-theorem requirement is unnecessary for these cubic expansions.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1980_AMC_12_Q27",
+    "decision": "accept",
+    "mathematicalCheck": "The real cube roots have product -3, so their sum t satisfies (t-1)(t²+t+10)=0. The quadratic equals (t+1/2)²+39/4>0, forcing t=1. Independently, ((1±√13)/2)³=5±2√13 verifies both roots. All choices A through D exceed 1, so E follows.",
+    "levelCheck": "Both methods use elementary polynomial identities and real-root properties appropriate for AMC 12. The decisive steps are explained completely.",
+    "methodDistinctness": "The methods offer distinct accessible ideas: determine the sum without evaluating either root, or identify both roots by direct cubing.",
+    "annotationCheck": "The assessed ID is route neutral, and cube-root uniqueness supports both methods. Method annotations fit the equivalent sum-of-cubes relation, polynomial multiplication, completing-square rewrite, and square-root arithmetic. A general binomial-theorem prerequisite is unnecessary.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "equation-for-sum": "equation-for-sum",
+    "recognize-real-cubes": "recognize-real-cubes"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "f1ebf92cf31bedc59c95ece0e6892531ba7734678bde8850188783163bc9acb9",
+    "inputHash": "043fcc0751c4d9c03308845fc17ff5deefbf3ae2b2c0e969d15ab16d4ba02fa0",
+    "authorInputHash": "8dafc9a5424c0a8b4527666abdf8921b049ef4bc43b89169b9a4888ce4d68461",
+    "reviewInputHash": "846608d1bd25c51f9cd2ee128153acb2e8d879e2e1592045cd04dc4852149a7b",
+    "authorResponseHash": "b7fa87acb7cadd057e5b1a58141020b44150412a44b766e6140150d6ed695d0a",
+    "reviewerResponseHash": "a4ea2638ec4ec901fdc8afc02b0747255221f4d23fac6686bef998adc655e5eb",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

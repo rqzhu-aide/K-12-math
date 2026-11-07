@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2011_AMC_12B_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "3eee26e1b18af2f060bfd445ba02f2da40805f580080d7caab71419bb11fc526",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "7174d87daaa757d52f5be76c382c3bbc227f13ebce3bdb6aee816045c0fc61e8",
+  "solutionFigureHashes": {},
+  "candidateHash": "b1eefb7a85f4fca08c1e1c7c3efb560905c661782b9aeddb29b8c64aa6c9b319",
+  "candidate": {
+    "questionId": "2011_AMC_12B_Q21",
+    "derivedAnswer": "D, \\(66\\)",
+    "answerStatus": "matches",
+    "answerReason": "The integer and digit restrictions force arithmetic mean 65 and geometric mean 56. The original integers are 98 and 32, whose difference is 66.",
+    "methods": [
+      {
+        "id": "centered-means",
+        "label": "Center the integers at their arithmetic mean",
+        "explanation": "Write the arithmetic mean as \\(A=10a+b\\), where \\(1\\le a\\le9\\) and \\(0\\le b\\le9\\). Its reversed value is the geometric mean \\(G=10b+a\\). Distinct positive numbers have arithmetic mean strictly greater than geometric mean, so \\(A>G\\), which gives \\(a>b\\).\n\nSince \\(A\\) is an integer, the original integers can be written as \\(A+d\\) and \\(A-d\\), where \\(d\\) is a positive integer. Centering them this way connects their product to their difference:\n\\[\nG^2=(A+d)(A-d)=A^2-d^2.\n\\]\nConsequently,\n\\[\n\\begin{aligned}\nd^2&=A^2-G^2\\\\\n&=(9a-9b)(11a+11b)\\\\\n&=99(a^2-b^2).\n\\end{aligned}\n\\]\nThe factor \\(99=3^2\\cdot11\\) in \\(d^2\\) forces both 3 and 11 to divide \\(d\\), since every prime exponent in a square is even. Write \\(d=33k\\), where \\(k\\) is a positive integer. Then\n\\[\na^2-b^2=11k^2.\n\\]\nThe digit bounds give \\(a^2-b^2\\le81\\), so \\(k\\) can only be 1 or 2.\n\nIf \\(k=1\\), then \\((a-b)(a+b)=11\\). Since \\(0<a-b\\le a+b\\), the only factor pair is \\((1,11)\\), giving \\(a=6\\), \\(b=5\\).\n\nIf \\(k=2\\), then \\((a-b)(a+b)=44\\). Its possible ordered factor pairs with the smaller factor first are \\((1,44)\\), \\((2,22)\\), and \\((4,11)\\). The factors \\(a-b\\) and \\(a+b\\) must have the same parity. Only \\((2,22)\\) does, but it gives \\(a=12\\), which is not a digit. Thus this case is impossible.\n\nWe have \\(A=65\\), \\(G=56\\), and \\(d=33\\). The resulting integers are \\(98\\) and \\(32\\); they are positive and distinct, and their means are indeed 65 and 56. Therefore\n\\[\n|x-y|=2d=\\boxed{66},\n\\]\nchoice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_p129",
+          "cnm_h209",
+          "cnm_147",
+          "cnm_152",
+          "math:prime-factorization"
+        ],
+        "prerequisiteIds": [
+          "cnm_h021",
+          "cnm_p017",
+          "cnm_p153",
+          "cnm_p156"
+        ],
+        "levelReason": "Uses decimal digits, arithmetic and geometric means, difference of squares, prime factors, and a complete two-case integer analysis."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations",
+      "cnm_p129",
+      "cnm_h209"
+    ],
+    "supportIds": [
+      "cnm_h021",
+      "cnm_p017"
+    ],
+    "annotationRationale": "The targets are combining the two mean definitions with integer restrictions. AM-GM supplies the strict digit ordering, while place value expresses reversal. The written route uses centered integers, difference-of-squares identities, prime-exponent restrictions, and exhaustive factor pairs. It does not use quadratic formulas or modular congruences.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2011_AMC_12B_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "The integer arithmetic mean makes the half-difference d integral. Reversed digits give d²=99(a²-b²), hence d=33k and a²-b²=11k². Digit bounds restrict k to 1 or 2; the exhaustive factor-pair analysis leaves only a=6, b=5, k=1. The resulting positive integers 98 and 32 verify both means and give difference 66.",
+    "levelCheck": "Centering, prime-factor restrictions, and the two bounded cases are appropriate and sufficiently explained for AMC 12.",
+    "methodDistinctness": "One complete integer analysis is sufficient.",
+    "annotationCheck": "The mean definitions and integer restrictions match the assessed targets. Place value and strict AM-GM support the setup; both directions of the difference-of-squares identity and prime-factor reasoning occur in the method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "centered-means": "solution:centered-means:7174d87daaa7"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "cb999ac9b445d2ccb01bffdbef7833b705e795ce2ecd9cd7772b4cfc4ffe7ab5",
+    "inputHash": "1782b8e064249aaca5289632809bc68a1b348f005f08c5d697ed4678b1c5983f",
+    "authorInputHash": "0cb0cfc5c9fbdad76c8ef32bfb58fe539499ca31ce5dc1f99e7a2eb3e7573d29",
+    "reviewInputHash": "19555fdce50a033b3770cbd5d9a488c242764502be49e3ecb99503b225b30722",
+    "authorResponseHash": "df22f1f2a2518db08914661587b6bbb894befe7b74ed3d6974b98dd124e93267",
+    "reviewerResponseHash": "38ce837bb9979392cee38640d18664531aa60d3fc3ced1cbb75b9acc4488261c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

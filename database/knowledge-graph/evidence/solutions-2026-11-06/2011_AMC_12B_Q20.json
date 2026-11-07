@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2011_AMC_12B_Q20",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "d7e44948a5ad468c652ef66d841ab144d2e4f9b7bd45fe3c203e73808e746578",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "cdc75e1267075a2cf1394c410b50d3fb28935ccf1a19eaa0eea46de890ba2bf2",
+  "solutionFigureHashes": {},
+  "candidateHash": "4c74f26e036169b15044d7c99ad0491d13a9e4607bc1bb7192fcbac8ca9a635f",
+  "candidate": {
+    "questionId": "2011_AMC_12B_Q20",
+    "derivedAnswer": "C, \\(\\dfrac{195}{8}\\)",
+    "answerStatus": "matches",
+    "answerReason": "The second intersection is the circumcenter of ABC. Its circumradius is \\(65/8\\), so the three requested distances sum to \\(195/8\\).",
+    "methods": [
+      {
+        "id": "perpendicular-bisector-circles",
+        "label": "Recognize the circumcenter",
+        "explanation": "The given midpoints suggest perpendicular bisectors. Let \\(O\\) be the circumcenter of \\(\\triangle ABC\\), with circumradius \\(R\\). The triangle is not right, since its longest side satisfies \\(15^2\\ne13^2+14^2\\). Thus \\(O\\) is not a side midpoint: otherwise that side would be a diameter of the circumcircle, forcing a right angle.\n\nBecause \\(OA=OB=OC\\), the lines \\(OD\\), \\(OE\\), and \\(OF\\) are perpendicular to \\(AB\\), \\(BC\\), and \\(AC\\), respectively. In particular,\n\\[\n\\angle BDO=\\angle BEO=90^\\circ.\n\\]\nHence \\(D\\) and \\(E\\) lie on the circle with diameter \\(BO\\). This is the circumcircle of \\(\\triangle BDE\\), so it contains \\(O\\). Similarly, \\(E\\) and \\(F\\) lie on the circle with diameter \\(CO\\), which is the circumcircle of \\(\\triangle CEF\\).\n\nThese circles are distinct, since their diameter midpoints are distinct. They share \\(E\\) and \\(O\\), and \\(O\\ne E\\), so the specified second intersection is \\(X=O\\). Therefore\n\\[\nXA+XB+XC=3R.\n\\]\n\nThe three known sides let us compute the area \\(K\\) by Heron's formula. The semiperimeter is \\(s=21\\), so\n\\[\nK=\\sqrt{21(21-13)(21-14)(21-15)}=84.\n\\]\nUsing the area-circumradius identity \\(K=abc/(4R)\\), with \\(a,b,c\\) the three side lengths, gives\n\\[\nR=\\frac{13\\cdot14\\cdot15}{4\\cdot84}=\\frac{65}{8}.\n\\]\nThus the required sum is \\(\\boxed{195/8}\\), choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_265",
+          "cnm_133",
+          "cnm_254",
+          "math:heron-formula",
+          "math:triangle-area-radius-relations"
+        ],
+        "prerequisiteIds": [
+          "cnm_055",
+          "cnm_174",
+          "cnm_250"
+        ],
+        "levelReason": "Uses standard high-school circle geometry, Heron's formula, and the triangle area-circumradius identity."
+      },
+      {
+        "id": "coordinate-circle-equations",
+        "label": "Solve for the circle intersections",
+        "explanation": "Place \\(B=(0,0)\\) and \\(C=(14,0)\\), and choose \\(A=(u,v)\\) with \\(v>0\\). The given distances yield\n\\[\nu^2+v^2=169,\\qquad (u-14)^2+v^2=225.\n\\]\nSubtracting eliminates the shared squared terms and gives \\(196-28u=56\\), so \\(u=5\\). Then \\(v^2=144\\), and our choice \\(v>0\\) gives \\(v=12\\). The midpoints are therefore\n\\[\nD=\\left(\\frac52,6\\right),\\quad E=(7,0),\\quad\nF=\\left(\\frac{19}{2},6\\right).\n\\]\n\nA circle can be written as \\(x^2+y^2+Lx+My+N=0\\). Substituting the three points on each circumcircle determines its coefficients, giving\n\\[\n\\begin{aligned}\nBDE:\\quad &x^2+y^2-7x-\\frac{33}{8}y=0,\\\\\nCEF:\\quad &x^2+y^2-21x-\\frac{33}{8}y+98=0.\n\\end{aligned}\n\\]\nSubtracting these equations again removes the shared quadratic terms, leaving \\(-14x+98=0\\). Thus every intersection has \\(x=7\\). Substituting into the first circle gives\n\\[\ny^2-\\frac{33}{8}y=0,\n\\qquad y\\left(y-\\frac{33}{8}\\right)=0.\n\\]\nThe root \\(y=0\\) gives \\(E\\), so the other intersection is \\(X=(7,33/8)\\).\n\nThe distance formula now gives\n\\[\n\\begin{aligned}\nXB=XC&=\\sqrt{7^2+\\left(\\frac{33}{8}\\right)^2}=\\frac{65}{8},\\\\\nXA&=\\sqrt{2^2+\\left(\\frac{63}{8}\\right)^2}=\\frac{65}{8}.\n\\end{aligned}\n\\]\nTheir sum is \\(\\boxed{195/8}\\), choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_265",
+          "cnm_h178",
+          "cnm_h173",
+          "math:quadratic-system-elimination"
+        ],
+        "prerequisiteIds": [
+          "cnm_055",
+          "cnm_174",
+          "cnm_h177",
+          "cnm_224"
+        ],
+        "levelReason": "Uses Cartesian distances, circle equations, elimination, and quadratic factoring, providing a standard school-algebra alternative."
+      }
+    ],
+    "assessedIds": [
+      "cnm_265"
+    ],
+    "supportIds": [
+      "cnm_055",
+      "cnm_174"
+    ],
+    "annotationRationale": "Both methods work with the specified circumcircles and their intersection. Midpoint knowledge and Pythagorean distance reasoning support both. The first route uses perpendicular bisectors and diameter circles to identify the circumcenter, followed by area-radius formulas. The second independently determines circle equations and eliminates shared quadratic terms. These route-specific procedures are alternatives, not a combined requirement.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2011_AMC_12B_Q20",
+    "decision": "accept",
+    "mathematicalCheck": "The circumcenter O lies on both diameter circles BO and CO. These circles are distinct, and O≠E because ABC is not right, so X=O. Heron's formula gives area 84 and circumradius 65/8. Independently, the coordinate equations yield X=(7,33/8), whose three vertex distances are each 65/8.",
+    "levelCheck": "Both explanations use standard high-school geometry and algebra, with the decisive circle identification and elimination steps explained.",
+    "methodDistinctness": "Recognizing the circumcenter and directly solving circle equations provide genuinely distinct, accessible methods.",
+    "annotationCheck": "Circumcircle knowledge is route-neutral. Midpoint and Pythagorean reasoning support both methods, while diameter circles, area formulas, circle equations, and quadratic elimination remain appropriately method-specific.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "perpendicular-bisector-circles": "solution:perpendicular-bisector-circles:cdc75e126707",
+    "coordinate-circle-equations": "solution:coordinate-circle-equations:cdc75e126707"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "28366850889c02c03e30a27439fc0d16f290a8e82aeba784a1062420733f23dd",
+    "inputHash": "1782b8e064249aaca5289632809bc68a1b348f005f08c5d697ed4678b1c5983f",
+    "authorInputHash": "0cb0cfc5c9fbdad76c8ef32bfb58fe539499ca31ce5dc1f99e7a2eb3e7573d29",
+    "reviewInputHash": "19555fdce50a033b3770cbd5d9a488c242764502be49e3ecb99503b225b30722",
+    "authorResponseHash": "df22f1f2a2518db08914661587b6bbb894befe7b74ed3d6974b98dd124e93267",
+    "reviewerResponseHash": "38ce837bb9979392cee38640d18664531aa60d3fc3ced1cbb75b9acc4488261c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

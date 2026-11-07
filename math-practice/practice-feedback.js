@@ -1,6 +1,7 @@
 /* Original speech observations and submitted mathematical work stay separate. */
 (function () {
   'use strict';
+  const Answers = window.MathPracticeAnswers;
   class PracticeFeedback {
     constructor(options) {
       this.o = options; this.serial = 0; this.signalSerial = 0;
@@ -42,9 +43,12 @@
     curriculumNodeId() { return this.o.curriculumNodeId ? this.o.curriculumNodeId() : null; }
     state() { return this.context; }
     previous(value) {
-      if (!value || typeof value.answer !== 'string' || value.answer.length > 2000 || typeof value.thoughts !== 'string' || value.thoughts.length > 12000
+      const validAnswer = value && (typeof value.answer === 'string' && value.answer.length <= 2000
+        || Array.isArray(value.answer) && value.answer.length <= 100 && new Set(value.answer).size === value.answer.length
+          && value.answer.every(id => typeof id === 'string' && id.length > 0 && id.length <= 2000));
+      if (!value || !validAnswer || typeof value.thoughts !== 'string' || value.thoughts.length > 12000
           || typeof value.coach !== 'string' || value.coach.length > 3000 || !(value.openedHint === null || typeof value.openedHint === 'string' && value.openedHint.length <= 3000)) return null;
-      return {answer: value.answer, thoughts: value.thoughts, coach: value.coach, openedHint: value.openedHint};
+      return {answer: Answers.copy(value.answer), thoughts: value.thoughts, coach: value.coach, openedHint: value.openedHint};
     }
     restoreTurn(value, hasHistory) {
       const q = this.o.question();
@@ -75,12 +79,13 @@
     solutionOpened() { this.noteAssistance('solution'); this.o.save(); }
     freeze(question, answer, thoughts) {
       this.ensureContext();
+      answer = Answers.copy(answer);
       const last = this.context.last;
-      if (last && last.answer === answer && last.thoughts === thoughts && (last.curriculumLayer || 'ailleo') === this.layer() && (last.curriculumNodeId || null) === this.curriculumNodeId()) return {question, bank: this.bank(), curriculumLayer: this.layer(), curriculumNodeId: this.curriculumNodeId(), answer, thoughts, turn: last.turn};
+      if (last && Answers.same(last.answer, answer) && last.thoughts === thoughts && (last.curriculumLayer || 'ailleo') === this.layer() && (last.curriculumNodeId || null) === this.curriculumNodeId()) return {question, bank: this.bank(), curriculumLayer: this.layer(), curriculumNodeId: this.curriculumNodeId(), answer, thoughts, turn: last.turn};
       const revisionId = this.id();
-      const previous = last ? {answer: last.answer, thoughts: last.thoughts, coach: last.coach, openedHint: last.openedHint} : null;
+      const previous = last ? {answer: Answers.copy(last.answer), thoughts: last.thoughts, coach: last.coach, openedHint: last.openedHint} : null;
       const turn = {revisionId, action: last ? 'revise' : 'submit', assistance: this.context.assistance, previous};
-      this.context.last = {revisionId, curriculumLayer: this.layer(), curriculumNodeId: this.curriculumNodeId(), answer, thoughts, coach: '', openedHint: null, turn};
+      this.context.last = {revisionId, curriculumLayer: this.layer(), curriculumNodeId: this.curriculumNodeId(), answer: Answers.copy(answer), thoughts, coach: '', openedHint: null, turn};
       return {question, bank: this.bank(), curriculumLayer: this.layer(), curriculumNodeId: this.curriculumNodeId(), answer, thoughts, turn};
     }
     current(serial, submitted, value) {
@@ -214,7 +219,7 @@
       this.o.announce.textContent = 'Learning signals ready from your original speech.';
     }
     edited() {
-      return !this.submitted || !this.o.question() || this.o.question().id !== this.submitted.question.id || this.bank() !== this.submitted.bank || this.layer() !== this.submitted.curriculumLayer || this.curriculumNodeId() !== this.submitted.curriculumNodeId || this.o.answer() !== this.submitted.answer || this.o.draft.value.trim() !== this.submitted.thoughts;
+      return !this.submitted || !this.o.question() || this.o.question().id !== this.submitted.question.id || this.bank() !== this.submitted.bank || this.layer() !== this.submitted.curriculumLayer || this.curriculumNodeId() !== this.submitted.curriculumNodeId || !Answers.same(this.o.answer(), this.submitted.answer) || this.o.draft.value.trim() !== this.submitted.thoughts;
     }
     revisionChanged() {
       const edited = this.edited();
@@ -230,14 +235,14 @@
       }
     }
     async submit() {
-      const question = this.o.question(), answer = this.o.answer(), thoughts = this.o.draft.value.trim();
+      const question = this.o.question(), answer = Answers.copy(this.o.answer()), thoughts = this.o.draft.value.trim();
       const gradingNote = question ? window.MathPracticeAnswers.gradingNotice(question) : null;
       if (gradingNote !== null) {
         this.cancelMath(); this.submitted = this.freeze(question, answer || '', thoughts); this.mathState = 'ready';
         this.o.submitted(this.submitted); this.showNotGraded(gradingNote); this.o.updated();
         return;
       }
-      if (!question || !answer) {
+      if (!question || !Answers.hasAnswer(answer)) {
         this.o.note.textContent = !question ? 'Choose a problem first.' : 'Choose or enter an answer before submitting.';
         return;
       }
@@ -271,11 +276,11 @@
         const value = await this.post('/api/assessment', {bank: submitted.bank, curriculumLayer: submitted.curriculumLayer, curriculumNodeId: submitted.curriculumNodeId, questionId: question.id, answer, thoughts, turn: submitted.turn}, controller);
         if (!this.current(serial, submitted)) return;
         if (!this.current(serial, submitted, value)) throw new Error('The check returned a different submission. Submit again to retry.');
-        if (value.questionId === question.id && value.answer === answer && value.gradingStatus === 'disputed' && value.answerCategory === 'not_graded' && value.answerCorrect === null) {
+        if (value.questionId === question.id && Answers.same(value.answer, answer) && value.gradingStatus === 'disputed' && value.answerCategory === 'not_graded' && value.answerCorrect === null) {
           this.mathState = 'ready'; this.showNotGraded(value.gradingNote); return;
         }
         this.reconcileForm(value);
-        if (value.questionId !== question.id || value.answer !== answer || !this.validAnswer(value) || !['correct', 'wrong', 'partial', 'cannot_judge'].includes(value.category)) throw new Error('The answer and reasoning check returned an incomplete result. Try submitting again.');
+        if (value.questionId !== question.id || !Answers.same(value.answer, answer) || !this.validAnswer(value) || !['correct', 'wrong', 'partial', 'cannot_judge'].includes(value.category)) throw new Error('The answer and reasoning check returned an incomplete result. Try submitting again.');
         this.updateServices(value);
         this.showAnswer(answer, value.answerCorrect, value.answerCategory);
         if (!this.services().decision && !this.services().inference) this.showUnchecked('Add a decision or inference model in Connections for reasoning feedback.', value.answerCategory);
@@ -348,7 +353,8 @@
     }
     showAnswer(answer, correct, category, hasCoach) {
       category = category || (correct === null ? 'cannot_judge' : correct ? 'correct' : 'wrong');
-      const label = this.submitted.question.responseType && this.submitted.question.responseType !== 'choice' ? 'Answer: ' : 'Answer ' + answer + ': ';
+      const kind = this.submitted.question.responseType || 'choice';
+      const label = kind === 'multiSelect' ? 'Answers ' + Answers.format(answer) + ': ' : kind !== 'choice' ? 'Answer: ' : 'Answer ' + answer + ': ';
       const labels = {correct: 'Correct.', wrong: hasCoach ? 'Not quite yet.' : 'Not quite yet. Check your final answer against your working.', partial: hasCoach ? 'Partially correct.' : 'Partially correct. Complete your answer or use the requested form.', cannot_judge: hasCoach ? 'Not checked automatically.' : 'Not checked automatically. Compare with the reference solution.'};
       this.n.answerFeedback.textContent = label + labels[category];
       this.n.answerFeedback.className = 'answer-feedback' + (category === 'correct' ? ' correct' : ' verdict-' + category);
@@ -401,9 +407,9 @@
           this.finishGraph(this.assessment, serial, submitted);
           return;
         }
-        if (value.questionId === submitted.question.id && value.answer === submitted.answer && value.gradingStatus === 'disputed' && value.answerCategory === 'not_graded' && value.answerCorrect === null) { this.showNotGraded(value.gradingNote); return; }
+        if (value.questionId === submitted.question.id && Answers.same(value.answer, submitted.answer) && value.gradingStatus === 'disputed' && value.answerCategory === 'not_graded' && value.answerCorrect === null) { this.showNotGraded(value.gradingNote); return; }
         this.reconcileForm(value);
-        if (value.questionId !== submitted.question.id || value.answer !== submitted.answer || !this.validTutor(value)
+        if (value.questionId !== submitted.question.id || !Answers.same(value.answer, submitted.answer) || !this.validTutor(value)
           || value.category === 'correct' && value.answerCategory === 'correct' && value.hint.trim()) throw new Error('The tutor returned an incomplete or overlong review. Retry the review.');
         this.showAnswer(submitted.answer, value.answerCorrect, value.answerCategory, true);
         this.showVerdict(value.category, value.coach.trim(), value.answerCategory, value.answerFormFeedback); this.hint = value.hint.trim();

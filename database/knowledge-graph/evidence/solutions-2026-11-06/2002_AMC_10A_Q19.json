@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2002_AMC_10A_Q19",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "bc51775cc4df73e5cffce53ce5508eeed2e3ea57d2954f6241ca622a01f6b53d",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "1b8ae8a8e206962d98def5a74c216b90d7d0fc7c92f53a02de552f63c7d1afa6",
+  "solutionFigureHashes": {},
+  "candidateHash": "3efb5cddaf91818bbccba391dfa8d06a1a770113ce10f6873a48c93b582fd7c9",
+  "candidate": {
+    "questionId": "2002_AMC_10A_Q19",
+    "derivedAnswer": "E. \\(3\\pi\\) square yards",
+    "answerStatus": "matches",
+    "answerReason": "The reachable region consists of a 240-degree sector of radius 2 and two additional, disjoint 60-degree sectors of radius 1. Their total area is 3π.",
+    "methods": [
+      {
+        "id": "rope-wrap-sectors",
+        "label": "Follow the rope around the neighboring corners",
+        "explanation": "Let \\(A,B,C,D,E,F\\) be the hexagon's vertices in order, with the rope tied at \\(A\\). The six equal exterior turns total \\(360^\\circ\\), so each is \\(60^\\circ\\) and each interior angle is \\(120^\\circ\\).\n\nA straight rope can sweep the outside angle at \\(A\\), which measures \\(360^\\circ-120^\\circ=240^\\circ\\). This gives a sector of radius \\(2\\).\n\nThe rope can also wrap around \\(B\\). The segment \\(AB\\) uses \\(1\\) yard, leaving \\(1\\) yard beyond \\(B\\). The new region is the \\(60^\\circ\\) sector between the extension of \\(AB\\) past \\(B\\) and the ray \\(BC\\). Wrapping around \\(F\\) similarly adds a \\(60^\\circ\\) sector of radius \\(1\\).\n\nThese sectors exhaust the reachable area. Because the doghouse is convex, a shortest rope path is straight except where it follows sides and turns around vertices. Reaching \\(C\\) along \\(AB\\) and \\(BC\\), or \\(E\\) along \\(AF\\) and \\(FE\\), uses both yards, leaving no rope to sweep any further region. The two small sectors lie inside the wedge blocked at \\(A\\), on opposite sides of its angle bisector. Thus their interiors overlap neither each other nor the original sector.\n\nAdding the three sector areas gives\n\\[\n\\begin{aligned}\nA&=\\frac{240}{360}\\pi(2)^2\n +2\\left(\\frac{60}{360}\\pi(1)^2\\right)\\\\\n &=\\frac{8\\pi}{3}+\\frac{\\pi}{3}=3\\pi.\n\\end{aligned}\n\\]\nThe area is \\(3\\pi\\) square yards, choice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "cnm_257",
+          "cnm_p150"
+        ],
+        "prerequisiteIds": [
+          "cnm_182",
+          "cnm_054"
+        ],
+        "levelReason": "The solution uses exterior angles, elementary shortest-path reasoning, and sector areas, with no trigonometry."
+      }
+    ],
+    "assessedIds": [
+      "cnm_257",
+      "cnm_p150"
+    ],
+    "supportIds": [
+      "cnm_182",
+      "cnm_054"
+    ],
+    "annotationRationale": "The area targets are calculating sectors and combining nonoverlapping pieces. Exterior turns determine the sector angles, while straightening a rope path explains why corner wrapping describes the accessible region. The polygonal-obstacle modeling step warrants a missing-node proposal.",
+    "needsNewNodes": [
+      {
+        "name": "Tethered reach around convex polygonal obstacles",
+        "description": "Describe planar regions reachable by a fixed-length tether around a convex polygon. Track boundary length consumed before each pivot, determine the remaining-radius sectors, and justify coverage and overlap conditions.",
+        "reason": "The catalog covers sector areas and circular-obstacle paths, but lacks the polygonal corner-wrapping model used to identify the reachable region here."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2002_AMC_10A_Q19",
+    "decision": "accept",
+    "mathematicalCheck": "The exterior turn is 60 degrees. The reachable region comprises a 240-degree sector of radius 2 and two disjoint 60-degree sectors of radius 1. The smaller sectors occupy separate portions of the blocked wedge. Reaching either next vertex consumes the entire rope, so the decomposition is exhaustive. Its area is 3π.",
+    "levelCheck": "Sector areas, polygon angles, and elementary rope-straightening reasoning fit AMC 10. The explanation addresses coverage and overlap.",
+    "methodDistinctness": "One complete geometric method is sufficient.",
+    "annotationCheck": "Sector area, composite area, exterior angles, and shortest-segment reasoning are supported. The proposed polygonal-tether node honestly identifies modeling content without claiming equivalence to circular-obstacle paths.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "rope-wrap-sectors": "rope-wrap-sectors"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "21f495ba3cf3852d01c5eb384d312167a4b44b0c70e83e46f0e1d294e2381723",
+    "inputHash": "077354beb9e3bddb2ad7531efa087b21145da400c8dbf27a5a2715f2db61506b",
+    "authorInputHash": "b29fd4c7f553a3f25191e3fd5838c521f457b1754ab7e2672e57bcc5050a6672",
+    "reviewInputHash": "79446c32f191faa70b70bfec96056c6f934dbc0f466e2d6d1f31e906ceff130e",
+    "authorResponseHash": "902821e4f00b3c3b2816693b812c2cafe1f336ac9ecae27ec446e343561c2760",
+    "reviewerResponseHash": "fd2d5fb54f4e50fe01fec894b9568489d6fcc608968982cb212557d69ea1a1db",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

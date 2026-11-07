@@ -2,11 +2,16 @@
 (function () {
   'use strict';
   const KEY = 'math-practice.curriculum-path.v1';
+  const PAGE_SIZE = 30;
+  function rangeLabel(start, total) {
+    const first = start + 1, last = Math.min(start + PAGE_SIZE, total);
+    return (first === last ? first : first + ' to ' + last) + ' of ' + total;
+  }
   class CurriculumPath {
     constructor(options) {
       this.o = options; this.nodes = []; this.serial = 0; this.loadSerial = 0; this.state = {layer: 'ailleo', nodeId: ''};
       this.n = {};
-      for (const id of ['practicePath', 'pathFilter', 'pathConcept', 'pathConceptLabel', 'pathFind', 'pathStatus', 'pathResults', 'pathDescription']) this.n[id] = document.getElementById(id);
+      for (const id of ['practicePath', 'pathFilter', 'pathConcept', 'pathConceptLabel', 'pathFind', 'pathStatus', 'pathResults', 'pathDescription', 'pathPageField', 'pathPage']) this.n[id] = document.getElementById(id);
       try {
         const saved = JSON.parse(localStorage.getItem(KEY) || 'null');
         if (saved && ['ailleo', 'CN', 'US'].includes(saved.layer)) this.state = {layer: saved.layer, nodeId: typeof saved.nodeId === 'string' ? saved.nodeId : ''};
@@ -22,6 +27,7 @@
         if (this.o.changed) this.o.changed();
       });
       this.n.pathFind.addEventListener('click', () => this.find());
+      this.n.pathPage.addEventListener('change', () => this.find(Number(this.n.pathPage.value)));
       this.load();
     }
     layer() { return this.state.layer; }
@@ -29,7 +35,7 @@
     persist() { try { localStorage.setItem(KEY, JSON.stringify(this.state)); } catch (_) {} }
     option(value, label) { const n = document.createElement('option'); n.value = value; n.textContent = label; return n; }
     status(message) { this.n.pathStatus.textContent = message; }
-    clearResults() { this.serial += 1; this.n.pathResults.replaceChildren(); this.status(''); }
+    clearResults() { this.serial += 1; this.n.pathResults.replaceChildren(); this.n.pathPageField.hidden = true; this.status(''); }
     placement(node) {
       if (this.layer() === 'ailleo') return '';
       const p = node.placement || {}, parts = [];
@@ -63,6 +69,8 @@
     }
     async load() {
       this.clearResults(); const serial = ++this.loadSerial, layer = this.layer();
+      const attribution = document.getElementById('pathAttribution');
+      if (attribution) attribution.hidden = layer !== 'US';
       this.nodes = []; this.n.pathConcept.replaceChildren(this.option('', 'Loading concepts…'));
       this.n.pathConcept.disabled = true; this.n.pathFind.disabled = true; this.n.pathDescription.textContent = '';
       this.n.pathConceptLabel.textContent = layer === 'ailleo' ? 'Mathematical concept' : layer === 'CN' ? 'Chinese curriculum concept' : 'Common Core standard';
@@ -77,20 +85,34 @@
         this.status(data.status === 'unavailable' ? 'This curriculum is not installed. Use another path or the question bank below.' : layer === 'ailleo' ? 'Choose by mathematical idea, without a grade level.' : 'Placements follow this curriculum. Related practice may include ideas beyond a standard.');
       } catch (error) { if (serial === this.loadSerial) this.status(error.message); }
     }
-    async find() {
+    async find(offset = 0) {
       const id = this.n.pathConcept.value, layer = this.layer();
       if (!id) return;
-      this.clearResults(); const serial = this.serial; this.n.pathFind.disabled = true; this.status('Finding linked practice…');
+      const serial = ++this.serial; this.n.pathResults.replaceChildren(); this.n.pathFind.disabled = true; this.status('Finding linked practice…');
       try {
         const key = layer === 'ailleo' ? 'nodeId' : 'sourceNodeId';
-        const data = await this.get('/api/knowledge/practice?layer=' + encodeURIComponent(layer) + '&' + key + '=' + encodeURIComponent(id));
+        const data = await this.get('/api/knowledge/practice?layer=' + encodeURIComponent(layer) + '&' + key + '=' + encodeURIComponent(id) + (offset ? '&offset=' + offset : ''));
         if (serial !== this.serial || layer !== this.layer()) return;
+        if (offset && Number.isInteger(data.total) && offset >= data.total) return this.find(0);
+        const paged = data.total > PAGE_SIZE;
+        this.n.pathPageField.hidden = !paged;
+        if (paged) {
+          const options = [];
+          for (let start = 0; start < data.total; start += PAGE_SIZE) {
+            options.push(this.option(String(start), rangeLabel(start, data.total)));
+          }
+          this.n.pathPage.replaceChildren(...options);
+          this.n.pathPage.value = String(offset);
+        }
         const candidates = (data.candidates || []).filter(candidate => this.o.question(candidate.questionId));
         if (!candidates.length) {
-          this.status(data.status === 'unmapped' ? 'No practice is linked to this standard yet. Choose another concept or use the question bank below.' : 'No linked questions are installed for this selection. Use the question bank below.');
+          this.status(paged ? 'No questions on this page are installed. Choose another results page.' : data.status === 'unmapped' ? 'No practice is linked to this standard yet. Choose another concept or use the question bank below.' : 'No linked questions are installed for this selection. Use the question bank below.');
           return;
         }
-        this.status(data.status === 'partial' ? 'Related practice; may include ideas beyond this standard.' : 'Linked questions practise the selected concept. They do not establish mastery of a standard.');
+        const range = paged ? (offset + 1 === data.total ? 'Question ' : 'Questions ') + rangeLabel(offset, data.total) + '. ' : '';
+        this.status(range + (data.status === 'partial'
+          ? 'Related practice; may include ideas beyond this standard. Choose any method the question allows.'
+          : 'These questions give you a chance to use this idea. Other methods may work too.'));
         for (const candidate of candidates) {
           const question = this.o.question(candidate.questionId), button = document.createElement('button');
           button.type = 'button'; button.className = 'ghost path-question';

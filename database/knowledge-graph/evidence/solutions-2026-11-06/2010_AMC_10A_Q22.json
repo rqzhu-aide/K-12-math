@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2010_AMC_10A_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "81894b0547274996155cc63f34ca2057dd1b061ce43aab43291fbd525fc6c11f",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "c5665be8d699d04537a82a0a53ec4cef83d52debadebb963da2f681f4b07f25c",
+  "solutionFigureHashes": {},
+  "candidateHash": "30fefa7a8747aac1302aa32ea01dc8c69c5f2079c3480afb7f35a26251e9d2ba",
+  "candidate": {
+    "questionId": "2010_AMC_10A_Q22",
+    "derivedAnswer": "A: 28",
+    "answerStatus": "matches",
+    "answerReason": "Each eligible triangle corresponds uniquely to six circle points. For six points in cyclic order, the only three pairwise-crossing chords join opposite positions, giving C(8,6)=28 triangles.",
+    "methods": [
+      {
+        "id": "six-endpoint-correspondence",
+        "label": "Count the six endpoints of the supporting chords",
+        "explanation": "Instead of choosing the triangle's interior vertices, consider the three chords containing its sides. Each pair of these chords must cross inside the circle. Two chords sharing an endpoint on the circle cannot also intersect inside, so the three chords have six distinct endpoints.\n\nThe useful geometric fact is that two chords with distinct endpoints cross inside a circle exactly when their endpoints alternate around the circle. Indeed, one chord separates the disk into two parts; the other crosses it precisely when its endpoints lie on opposite arcs.\n\nChoose any six of the eight points and name them \\(P_1,P_2,\\ldots,P_6\\) in cyclic order. Suppose three chords pairing these points cross one another. The chord starting at \\(P_1\\) must leave two of the other endpoints on each side: each of the other two chords needs one endpoint on each side to cross it. Therefore \\(P_1\\) must be joined to \\(P_4\\). Applying the same reasoning at \\(P_2\\) and \\(P_3\\) forces the three chords to be\n\\[\nP_1P_4,\\qquad P_2P_5,\\qquad P_3P_6.\n\\]\nTheir endpoints alternate pairwise, so they do cross pairwise inside the circle. The condition that no three chords meet at one interior point makes their three intersections distinct. These intersections therefore form one nondegenerate triangle whose sides are portions of the drawn chords.\n\nThus every six-point selection produces exactly one eligible triangle. Conversely, each eligible triangle determines its three supporting chords and hence its six endpoints uniquely. No triangle is omitted or counted twice. The number is\n\\[\n\\binom86=\\binom82=\\frac{8\\cdot7}{2}=\\boxed{28},\n\\]\nchoice \\(\\text{A}\\).",
+        "nodeIds": [
+          "math:bijective-counting",
+          "cnm_h239"
+        ],
+        "prerequisiteIds": [
+          "cnm_h237",
+          "cnm_250",
+          "cnm_054"
+        ],
+        "levelReason": "The proof uses cyclic order, elementary chord geometry, and a fully justified correspondence with six-element subsets."
+      }
+    ],
+    "assessedIds": [
+      "math:bijective-counting"
+    ],
+    "supportIds": [
+      "cnm_h239",
+      "cnm_250",
+      "cnm_054"
+    ],
+    "annotationRationale": "The main target is constructing a one-to-one correspondence and proving both exhaustiveness and uniqueness. Combinations evaluate the resulting subset count, while circle and line concepts support the geometry. The cyclic endpoint criterion is proved in the explanation and is a specific catalog gap rather than an application of an unrelated circle theorem.",
+    "needsNewNodes": [
+      {
+        "name": "Interior chord crossings and cyclic endpoint order",
+        "description": "For four distinct points on a circle, two chords intersect in the circle's interior exactly when their endpoints alternate in cyclic order. Use this criterion to identify families of pairwise-crossing chords.",
+        "reason": "The method's decisive geometric step uses endpoint alternation. The supplied circle nodes cover chord definitions and metric or angle relations, but do not describe this crossing criterion."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2010_AMC_10A_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "Every eligible triangle determines three pairwise-crossing chords with six distinct endpoints. For six cyclically ordered endpoints, pairwise crossing uniquely forces P1P4, P2P5, and P3P6. Nonconcurrence makes their intersections a nondegenerate interior triangle, establishing the bijection and count C(8,6)=28.",
+    "levelCheck": "The endpoint-alternation criterion and both directions of the correspondence are explained with elementary geometry and counting.",
+    "methodDistinctness": "One fully justified correspondence is sufficient.",
+    "annotationCheck": "Bijective counting is the main target, and the combination and basic geometry supports fit. The proposed crossing-criterion node honestly identifies a catalog gap without claiming an unrelated equivalence.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "six-endpoint-correspondence": "six-endpoint-correspondence"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "56d16d0b603502a8f06a635e39be84fa3e05f7fba5dc69dfe93b971ad04fd3fb",
+    "inputHash": "6141c2c458ef49e405ce7d9672eac3b9fa4b3a200b9100cf6d200377b1c02ee0",
+    "authorInputHash": "7acb518c732034ddc34d7922a073203849ba1d3dc8294ecbc0fe3c0c5517bc00",
+    "reviewInputHash": "64b2a12f1f446ef95266fe614eac90dcf382948afa308ba5befc21b554ee5fc8",
+    "authorResponseHash": "528a1e03d7797c7481126123d2006179e542ad820d58320cc5619abd1806dace",
+    "reviewerResponseHash": "509e53f66e02c8b707841503d27392bb89b6b87d2eb20dfa6769d222c090b54f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_optional_solution_methods",
+  "questionId": "1971_AMC_12_Q13",
+  "questionContentHash": "94be6d86c88aac2f74593135f990cc3dbf40d528b126f3e047cbf37a6c9e1081",
+  "primarySolutionSHA256": "d2c012963dfe9be5adfbe747f426733c4af4b17329527a42a81c95c2ebc44faa",
+  "methods": [
+    {
+      "id": "binomial-expansion",
+      "label": "Expand the small increment above 1",
+      "explanation": "Because \\(1.0025\\) is close to \\(1\\), its binomial expansion quickly produces small terms. Set \\(t=0.0025\\). The first four terms give\n\\[(1+t)^{10}=1+10t+45t^2+120t^3+R\\]\n\\[=1.025283125+R,\\]\nwhere \\(R\\) is the sum of the terms containing \\(t^4\\) through \\(t^{10}\\).\n\nWe must bound \\(R\\) before deciding how to round. Every remaining term is positive, and \\(t^k\\le t^4\\) for \\(k\\ge4\\), since \\(0<t<1\\). The sum of all binomial coefficients is \\((1+1)^{10}=1024\\), so\n\\[0<R<1024t^4=0.00000004.\\]\nTherefore\n\\[1.025283125<(1.0025)^{10}<1.025283165.\\]\nThis entire interval lies between \\(1.025275\\) and \\(1.025285\\), so the value rounded to five decimal places is \\(1.02528\\).\n\nIts fifth decimal digit is \\(\\boxed{8}\\), choice \\(\\boxed{\\text{E}}\\).",
+      "nodeIds": [
+        "cnm_023",
+        "cnm_h240",
+        "cnm_h242"
+      ],
+      "prerequisiteIds": [
+        "cnm_h237",
+        "cnm_p133",
+        "cnm_p119"
+      ],
+      "levelReason": "The finite binomial theorem and elementary positive-term bounds are within historical AHSME precalculus."
+    }
+  ],
+  "candidateHash": "a3253f5f56396036a2254737c1c999ff89651b2ffaf10ac82f926381df3c1d9d",
+  "reviewCandidateHash": "a3253f5f56396036a2254737c1c999ff89651b2ffaf10ac82f926381df3c1d9d",
+  "review": {
+    "questionId": "1971_AMC_12_Q13",
+    "mathematicalCheck": "Both solutions correctly establish rounding to \\(1.02528\\). The optional expansion gives \\(1.025283125+R\\), with \\(0<R<1024(0.0025)^4=0.00000004\\). Its entire resulting interval lies within the stated rounding boundaries, so the fifth decimal digit is \\(8\\).",
+    "levelCheck": "The finite binomial theorem and elementary remainder bounds are appropriate within historical AHSME scope.",
+    "methodDistinctness": "Uses expansion around 1 and a positive-tail bound, providing distinct learning value from repeated multiplication and squaring bounds.",
+    "annotationCheck": "The binomial route, coefficient-sum and rounding nodes, and combination and decimal prerequisites accurately support the method.",
+    "decision": "accept",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "existingGraphRoute": {
+    "id": "binomial-expansion",
+    "label": "Expand around 1",
+    "nodeIds": [
+      "cnm_h240"
+    ]
+  },
+  "origin": {
+    "authorResponseHash": "d1adedff94f693ced451b3a720f589971f9522c606eb343a1392c627ba8a1984",
+    "authorInputHash": "c498b8bcaec67630047ff2db739c1d710ea7d74e8c4477d7850d86fff92f493d",
+    "reviewerInputHash": "86cbfba824919de1c906ff72c51eddf2adc57424023adbcd0ac5627b584fb7f4",
+    "reviewerResponseHash": "0d5811402087ae6e793303b3bc6d6eb9ce905d8fb9807fc98619c6700d31cda5",
+    "separateFreshReview": true,
+    "restorationRecordSHA256": "f556441f65dadb702022d1aea62290909c141de03ed0dcce54abbbb3a41af124",
+    "priorCandidateHash": "c2942345c67bb9b85994034dceb00544bee881a20718b56cd8e8e956a8d4b99c",
+    "priorReviewHash": "e439cadb3dafaecb90f0811fd0001984625c85a65d1f911eab91805af30caf51",
+    "primaryAcceptedReceiptSHA256": "a6520efba5eb38aa46aa038d299db794d02a6495c9880126e75d9977d5d84291"
+  },
+  "reviewMeaning": "A restored project-authored optional method with a new separate same-family AI review. It supplements the unchanged primary solution; it does not upgrade prior review decisions, source attribution or teacher-review status."
+}

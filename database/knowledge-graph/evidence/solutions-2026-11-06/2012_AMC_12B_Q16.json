@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2012_AMC_12B_Q16",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "7f21ba280f8722189b4df96207a15c23f4d77d160e460a20a5e7594efd58e8b6",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "d7d8ed578e250e576457d739a2520da93177c5071f0a3769a498a0d1b49b0ece",
+  "solutionFigureHashes": {},
+  "candidateHash": "79125d0b5e989ae8a2e36e97f828a210ea8afe67b77ae902026a00e3b58f47ea",
+  "candidate": {
+    "questionId": "2012_AMC_12B_Q16",
+    "derivedAnswer": "132 (B)",
+    "answerStatus": "matches",
+    "answerReason": "Exactly three songs liked by pairs give 96 configurations, and four songs liked by pairs give 36. These disjoint cases total 132.",
+    "methods": [
+      {
+        "id": "classify-number-of-pair-songs",
+        "label": "Method 1: Count three or four songs liked by pairs",
+        "explanation": "Describe each song by the set of girls who like it. Since all three cannot like a song, its liking set is either empty, a single girl, or one of the three pairs. Each pair must occur as a liking set at least once, so at least three of the four songs are liked by exactly two girls.\n\nIf exactly three songs are liked by pairs, the three pair types must each occur once. Choose the remaining song in \\(4\\) ways. It can be liked by nobody or by exactly one of the three girls, giving \\(4\\) possibilities. Assign the three pair types to the other three distinct songs in \\(3\\cdot2\\cdot1=6\\) ways. This case contributes\n\\[\n4\\cdot4\\cdot6=96.\n\\]\nIf all four songs are liked by pairs, one pair type occurs twice and each other pair type occurs once. Choose the repeated type in \\(3\\) ways, its two songs in \\(\\binom42=6\\) ways, and assign the remaining two types in \\(2\\) ways. This contributes\n\\[\n3\\cdot6\\cdot2=36.\n\\]\nThese cases exhaust the possibilities and do not overlap. Within each case, the exceptional song or repeated pair type is uniquely determined, so no configuration is counted twice. The total is\n\\[\n96+36=\\boxed{132},\n\\]\nchoice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "cnm_h232",
+          "cnm_h239",
+          "cnm_h234"
+        ],
+        "prerequisiteIds": [
+          "cnm_h231",
+          "cnm_h233",
+          "cnm_h237"
+        ],
+        "levelReason": "The method uses two exhaustive cases, small unordered selections, and ordered assignments of distinct pair types."
+      },
+      {
+        "id": "exclude-missing-pair-types",
+        "label": "Method 2: Remove configurations missing a required pair",
+        "explanation": "For each song, there are seven allowed liking sets: nobody, one of the three individual girls, or one of the three pairs. Thus \\(7^4\\) assignments satisfy the prohibition on all three girls liking a song.\n\nWe must keep only assignments in which all three pair types occur. If a specified pair type is missing, each song has \\(6\\) choices, giving \\(6^4\\) assignments. There are three possible missing pair types, so first subtract \\(3\\cdot6^4\\).\n\nAn assignment missing two specified pair types was subtracted twice. Add back the \\(5^4\\) assignments for each of the three choices of two missing types. Finally, assignments missing all three pair types were initially counted once, subtracted three times, and added back three times. Subtract their \\(4^4\\) possibilities once more.\n\nConsequently, an assignment with any missing pair type has net count zero, while an assignment with no missing type has count one. The required total is\n\\[\n\\begin{aligned}\n7^4-3\\cdot6^4+3\\cdot5^4-4^4\n&=2401-3888+1875-256\\\\\n&=\\boxed{132}.\n\\end{aligned}\n\\]\nThe answer is choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "cnm_h232",
+          "math:inclusion-exclusion-general"
+        ],
+        "prerequisiteIds": [
+          "cnm_h231",
+          "cnm_h009"
+        ],
+        "levelReason": "Three-set inclusion-exclusion is explained through the contribution of each assignment and uses only finite high-school counting."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h232"
+    ],
+    "supportIds": [
+      "cnm_h231"
+    ],
+    "annotationRationale": "The common task is counting assignments under required-category restrictions. The first method uses pair-type multiplicities, combinations, and permutations. The second uses three-set inclusion-exclusion. Those method-specific procedures remain separate alternatives.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2012_AMC_12B_Q16",
+    "decision": "accept",
+    "mathematicalCheck": "Each required pair needs its own song. Exactly three pair-liked songs contribute 4·4·6=96 configurations; four contribute 3·6·2=36, without duplication. Independently, inclusion-exclusion gives 7^4−3·6^4+3·5^4−4^4=132 with all intersection orders accounted for.",
+    "levelCheck": "Both case counting and the explicitly explained three-set correction are within AMC 12 scope.",
+    "methodDistinctness": "Pair-type multiplicities and exclusion of missing pair types are distinct approaches.",
+    "annotationCheck": "Combined counting and multiplication are suitable shared annotations. Combination and permutation procedures are local to the first route; general inclusion-exclusion is local to the second.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "classify-number-of-pair-songs": "classify-number-of-pair-songs",
+    "exclude-missing-pair-types": "solution:exclude-missing-pair-types:d7d8ed578e25"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "19da5265f4f246784cdf1adac9a39066388c0d985585c6d8245491f6f91b1bc5",
+    "inputHash": "4ebd27f43afeaf67da3b485ca7b745000fd60c129dee460df814fe62fca25692",
+    "authorInputHash": "170a81e073bde9606e9030179b437a78eca59223507a68b0f85fbf21fa2f0a0f",
+    "reviewInputHash": "4388eae04f732e590cd277c472a8bc895d4d7c25a8231d4597fde239729f576e",
+    "authorResponseHash": "44fed41d2bb20fc037f8bd734ec5e4ba1dc1e197aff8692b11c101e66dc9962b",
+    "reviewerResponseHash": "a624734952d900464f943cdec646db5798585f34ee6a154058b1af25b6430c0f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

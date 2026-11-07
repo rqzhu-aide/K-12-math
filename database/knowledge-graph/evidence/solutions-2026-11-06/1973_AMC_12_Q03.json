@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1973_AMC_12_Q03",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ef643d6f50f01b9c341b3d3f1cd57fe3fbd6e175cd03fcf0b6c6673894f4db75",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "12dbe9ae8882fa9f7ff1f42ef9a8e115d409f0bb28b7c9f25396ff1462490166",
+  "solutionFigureHashes": {},
+  "candidateHash": "b7bb89ccb79673fa567e98bb7cfe7f67a24611c354f2192ed145a199814f8ea5",
+  "candidate": {
+    "questionId": "1973_AMC_12_Q03",
+    "derivedAnswer": "B, 100",
+    "answerStatus": "matches",
+    "answerReason": "Every prime smaller than 13 has a composite complement in 126. The pair 13 and 113 consists of distinct primes, so its difference 100 is maximal.",
+    "methods": [
+      {
+        "id": "smallest-prime-complement",
+        "label": "Find the smallest possible prime in the pair",
+        "explanation": "With a fixed sum, the two primes are farthest apart when the smaller prime is as small as possible. Let \\(p<q\\) be primes with \\(p+q=126\\). Then\n\\[\nq-p=126-2p,\n\\]\nwhich decreases as \\(p\\) increases.\n\nThe primes smaller than \\(13\\) are \\(2,3,5,7,11\\). None works, because their required partners are composite:\n\\[\n\\begin{aligned}\n126-2&=124=2\\cdot62,\\\\\n126-3&=123=3\\cdot41,\\\\\n126-5&=121=11^2,\\\\\n126-7&=119=7\\cdot17,\\\\\n126-11&=115=5\\cdot23.\n\\end{aligned}\n\\]\nThe next possibility is \\(p=13\\), giving \\(q=113\\). To verify that \\(113\\) is prime, it is enough to test prime divisors below \\(11\\), since \\(113<11^2\\). Indeed, a composite number must have a prime divisor at most its square root. The number \\(113\\) is divisible by none of \\(2,3,5,7\\); for the last test, \\(113=7\\cdot16+1\\).\n\nThus \\(13\\) and \\(113\\) are an allowed pair, and every smaller candidate for \\(p\\) has been excluded. The maximum difference is\n\\[\n113-13=\\boxed{100},\n\\]\nchoice \\(\\text{B}\\).",
+        "nodeIds": [
+          "cnm_p157",
+          "math:extremal-principle"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_p154",
+          "cnm_p155"
+        ],
+        "levelReason": "The argument uses a fixed-sum comparison, a short exhaustive list of smaller primes, and elementary trial division."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p157",
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_p153"
+    ],
+    "annotationRationale": "Primality and an attained discrete maximum are the central targets. Factor and divisibility knowledge supports excluding all smaller candidates and certifying 113. The method verifies the representation for 126 directly and does not assume the conjecture.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1973_AMC_12_Q03",
+    "decision": "accept",
+    "mathematicalCheck": "For p<q with sum 126, the difference is 126−2p. Every prime below 13 is excluded by an explicitly composite complement. The complement 113 is prime because none of 2,3,5,7 divides it and 113<11². Thus the attained maximum difference is 100.",
+    "levelCheck": "The extremal comparison, exhaustive exclusions, and primality test are complete and appropriate for AMC 12.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Primality and an attained discrete maximum accurately describe the targets. The factor and divisibility prerequisites support the actual argument, which does not assume either conjecture.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "smallest-prime-complement": "smallest-prime-complement"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "42e7a9b9603c08fcbedec51314c2792a697d60432ca3f443626ecfa36e55846b",
+    "inputHash": "9e65631683b6f15a8a59bf84a87f813a34cd0dc3d86d310c4931b44521d678bd",
+    "authorInputHash": "f7b8ff7ff9bb20e804c03fcc6c2c0b5118d9e0036badecfa5e0224f8fe022805",
+    "reviewInputHash": "44fe02e0ad219308fec02d37d49a980f5f07ba33230e7fd498ea8ec2cee69a12",
+    "authorResponseHash": "8cd3e0924c221c6f38d52f44940e1aa7fb6eca998052c5c7aca8c6da6197ada4",
+    "reviewerResponseHash": "597ae822edd664c025c1db6b8673aeef421ecc51502c45d1e07f48bb6346478b",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

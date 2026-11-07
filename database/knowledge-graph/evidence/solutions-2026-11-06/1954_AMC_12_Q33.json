@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1954_AMC_12_Q33",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "1605b9e8bb140180a19efe70318b91d84bfdd3ca16fa98513e5b11d8467fef59",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "d800d07470dd3a9cd0727fd937fe7d8b251e5404abfa02bd9c4be06643faba9e",
+  "solutionFigureHashes": {},
+  "candidateHash": "dd9403174dfba99e39af6dd8ae0f66859c1058a504c65aa81ee6635792cb6ae3",
+  "candidate": {
+    "questionId": "1954_AMC_12_Q33",
+    "derivedAnswer": "D, approximately 9%, under the recorded month-end annual borrowing-rate convention; A, 5%, is the face-value add-on quote.",
+    "answerStatus": "disputed",
+    "answerReason": "The recorded intended choice D is supported when interest rate means the annualized borrowing cost with month-end installments. The displayed wording does not explicitly specify payment timing or the rate quotation convention. The charge divided by the stated face amount is 5%, choice A, which is a different rate measure.",
+    "methods": [
+      {
+        "id": "declining_balance_bounds",
+        "label": "Track the declining loan balance",
+        "explanation": "Assume that payments occur at the end of months \\(1\\) through \\(12\\), and that the requested rate is the annual borrowing rate quoted as \\(12\\) times a constant monthly rate \\(i\\). This rate must use the \\(\\$114\\) actually received and account for the monthly repayments. Its cash-flow equation is\n\\[\n114=\\sum_{k=1}^{12}\\frac{10}{(1+i)^k}.\n\\]\nEach term discounts a payment back by the number of months until it is paid. The right side decreases continuously from \\(120\\) to \\(0\\) as \\(i\\) increases from \\(0\\), so there is one positive monthly rate satisfying the equation.\n\nWe can identify the nearest choice without solving that equation numerically. In the equivalent monthly-interest loan, let \\(B_k\\) be the balance just after payment \\(k\\). Then\n\\[\nB_0=114,\\qquad B_{12}=0,\\qquad\nB_{k+1}=(1+i)B_k-10.\n\\]\nThe total financing cost is \\(12(10)-114=6\\) dollars. After \\(k\\) payments, the balance is \\(114-10k\\) plus interest accumulated so far. That accumulated interest lies between \\(0\\) and \\(6\\), so, for \\(k=0,1,\\ldots,11\\),\n\\[\n114-10k\\le B_k\\le120-10k.\n\\]\nLet \\(S=B_0+B_1+\\cdots+B_{11}\\). Summing these bounds gives\n\\[\n\\frac{12(114+4)}2\\le S\\le\\frac{12(120+10)}2,\n\\qquad 708\\le S\\le780.\n\\]\nEach month's interest is \\(i\\) times its starting balance, so \\(iS=6\\). Therefore the quoted annual rate \\(r=12i\\) satisfies\n\\[\n\\frac{72}{780}\\le r\\le\\frac{72}{708},\n\\]\nor approximately \\(9.23\\%\\le r\\le10.17\\%\\). Throughout this interval, \\(9\\%\\) is the nearest listed rate: its midpoints with the neighboring choices \\(7\\%\\) and \\(15\\%\\) are \\(8\\%\\) and \\(12\\%\\). Thus the borrowing-rate interpretation gives choice D.\n\nThe wording leaves a quotation caveat. If the requested percentage is instead the charge relative to the loan's stated \\(\\$120\\) face amount, then\n\\[\n\\frac6{120}\\cdot100\\%=5\\%,\n\\]\nchoice A. This is the face-value add-on quote. Choice D is the recorded intended answer under the month-end annual borrowing-rate convention; the statement does not explicitly distinguish these measures.",
+        "nodeIds": [
+          "math:installment-loan-cashflows",
+          "cnm_h200",
+          "cnm_h204"
+        ],
+        "prerequisiteIds": [
+          "cnm_p204",
+          "cnm_p195",
+          "cnm_p197"
+        ],
+        "levelReason": "The argument uses dated repayments, a simple balance recurrence, arithmetic-sequence sums, and elementary bounds. It needs neither calculus nor a numerical root-finding algorithm."
+      }
+    ],
+    "assessedIds": [
+      "math:installment-loan-cashflows"
+    ],
+    "supportIds": [
+      "cnm_p204",
+      "cnm_p195"
+    ],
+    "annotationRationale": "The core target is interpreting a rate from net proceeds and dated installment cash flows, including the distinction between borrowing cost and an add-on quote. The written method uses cnm_h200 for the balance recurrence and cnm_h204 to sum balance bounds. Simple interest and percentage conversion support the calculation. A geometric-sum formula is not used.",
+    "needsNewNodes": [],
+    "limitations": [
+      "Payment timing and the rate quotation convention are not explicit in the displayed question. The packet records month-end annual borrowing-rate grading, under which D remains the intended choice."
+    ]
+  },
+  "review": {
+    "questionId": "1954_AMC_12_Q33",
+    "decision": "accept",
+    "mathematicalCheck": "Under the stated month-end convention, the balance recurrence gives total interest iS=6. The balance bounds correctly yield 708≤S≤780, so the nominal annual rate lies between approximately 9.23% and 10.17%, throughout which 9% is the nearest choice. The separate face-value charge percentage is correctly computed as 5%.",
+    "levelCheck": "The finite balance recurrence, arithmetic sums and elementary bounds stay within precalculus; no numerical root-solving or calculus is required.",
+    "methodDistinctness": "There is one complete borrowing-rate method. The face-value calculation explains the wording ambiguity rather than duplicating that method.",
+    "annotationCheck": "The cash-flow target, recurrence and arithmetic-sum nodes match the argument. The solution explicitly preserves the missing timing and rate-convention caveats and presents D conditionally.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "declining_balance_bounds": "declining_balance_bounds"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "d8caf855399a9d9c133a12f67e07398c750d13c5f211a363de5b288b0abaec04",
+    "inputHash": "00665f28520db2dd009d6f06ba4946014d61ed403f61fe948f1a6d31e5557cd1",
+    "authorInputHash": "99e67c4f5c1f65697e38b4835e117a2e32aa68a78909b4cccffe27685d069339",
+    "reviewInputHash": "dc9ebb2e27e53752fb7813f783f6d52b1d6cedea0472cd9b2f314cfdab12facd",
+    "authorResponseHash": "2f12f0fd8a0e262b5950ec38adb61bf0066e380fb243cef2bab84d53956bda98",
+    "reviewerResponseHash": "5afeacbcac984167c2a5fd13279f20e21f9a2fd65327359225c03c6585b02122",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

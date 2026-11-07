@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2005_AMC_12B_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "7c7a71188a8a166ba41a01a4690330f709be476431661e4117f93ded62e2aa41",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "38b2d129e515734dde8a075de27544c262438010212b7866641035dfa342a328",
+  "solutionFigureHashes": {},
+  "candidateHash": "d6f17322a0eef1789bd5c6ec5c85b51c688326d056de265e294288977d5b0302",
+  "candidate": {
+    "questionId": "2005_AMC_12B_Q25",
+    "derivedAnswer": "A, 5/256",
+    "answerStatus": "matches",
+    "answerReason": "Grouping the vertices into three opposite pairs gives 8, 64, and 8 collision-free outcomes in three exhaustive cases. Thus the probability is 80/4^6=5/256.",
+    "methods": [
+      {
+        "id": "opposite-pair-counting",
+        "label": "Group the vertices into opposite pairs",
+        "explanation": "The six vertices of a regular octahedron form three opposite pairs, which we label \\(A,B,C\\). Each vertex is adjacent to all four vertices outside its own pair. Thus each ant must move to one of the other two pairs.\n\nThere are \\(4^6\\) possible complete moves. Independence and the four equally likely choices for each ant make all these outcomes equally likely. If no two ants arrive together, the six destination vertices must each receive exactly one ant, so each opposite pair receives exactly two ants.\n\nLet \\(k\\) be the number of ants from pair \\(A\\) that move to pair \\(B\\), where \\(k=0,1,2\\). The remaining \\(2-k\\) ants from \\(A\\) move to \\(C\\). Since \\(B\\) must receive two ants, it receives \\(2-k\\) from \\(C\\), leaving \\(k\\) ants from \\(C\\) to move to \\(A\\). Pair \\(A\\) must then receive \\(2-k\\) from \\(B\\), leaving \\(k\\) from \\(B\\) to move to \\(C\\). Therefore all movements between pairs are forced once \\(k\\) is known.\n\nFor \\(k=0\\), both ants from each source pair move together to a specified destination pair. At each destination pair, its two incoming ants can occupy its two vertices in \\(2\\) ways. This gives \\(2^3=8\\) outcomes. The case \\(k=2\\) gives another \\(8\\) outcomes in the same way.\n\nFor \\(k=1\\), each source pair sends one ant to each other pair. There are \\(2\\) ways at each source pair to choose which ant goes to the next pair in the order \\(A\\to B\\to C\\to A\\), giving \\(2^3\\) choices. The incoming ants can then be assigned to the destination vertices in another \\(2^3\\) ways, giving \\(64\\) outcomes.\n\nThese three cases exhaust all possibilities. Each counted outcome uniquely determines \\(k\\), the destination pair of each ant, and its destination vertex, so no outcome is counted twice. The desired probability is\n\\[\n\\frac{8+64+8}{4^6}=\\frac{80}{4096}\n=\\boxed{\\frac5{256}},\n\\]\nchoice A.",
+        "nodeIds": [
+          "cnm_h137",
+          "cnm_h232",
+          "math:graph-models"
+        ],
+        "prerequisiteIds": [
+          "cnm_h231",
+          "cnm_h233",
+          "cnm_h140"
+        ],
+        "levelReason": "The count uses elementary adjacency, exhaustive cases, two-object assignments, and equally likely outcomes, within AMC 12 scope."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h137",
+      "cnm_h232"
+    ],
+    "supportIds": [
+      "math:graph-models",
+      "cnm_h231",
+      "cnm_h233",
+      "cnm_h140"
+    ],
+    "annotationRationale": "The assessed targets are forming a favorable-to-total probability ratio and combining exhaustive cases with successive counting stages. The octahedron's adjacency structure supports the opposite-pair model. Independence establishes equal likelihood, while multiplication and small ordered assignments support the count. General combination and permutation formulas are unnecessary for this written method.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2005_AMC_12B_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "Octahedron adjacency permits movement exactly between different opposite pairs. Destination capacities force the inter-pair counts for each \\(k=0,1,2\\). The disjoint cases contain 8, 64, and 8 outcomes, counted uniquely. Thus the probability is \\(80/4^6=5/256\\).",
+    "levelCheck": "The explanation makes the forced movements and counting multiplicities inspectable using elementary counting.",
+    "methodDistinctness": "One complete structural counting method is sufficient.",
+    "annotationCheck": "Classical probability and combined counting are correctly assessed. Adjacency modeling, independence, multiplication, and small ordered assignments support the actual method without requiring general counting formulas.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "opposite-pair-counting": "opposite-pair-counting"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "3b06844be884365060ddfd4d92d20d13960ac6e418e0c4c4e069e44912ab5caf",
+    "inputHash": "99b771434176c1c05d110681b5256bec2acba1a9a808da42b49288e778fa2518",
+    "authorInputHash": "c4ade8364540ebda89cfe409330f16ba3a384530be9f74ab16994eaaa96faf0c",
+    "reviewInputHash": "58b3443f09b533896c736e76768dec92982584e6ef8420bc265d2affe4f4453a",
+    "authorResponseHash": "c894ddb5211753042c1c2b30d261de4c1c04507b9435b01b7cf36861212bbc20",
+    "reviewerResponseHash": "f43a462f099232076a2a0aaeba8b4ba7111ccc9fba0a3ea9654b3a8410138c0d",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1964_AMC_12_Q28",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "22a7deb9ed08e8d0d1fc91cafef656ccd5d651fd749337f41ad2bb2b02527061",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "d03dcad7de6d933fa61bb167f0ac2954acc685a3d5dfc7d57e0a45c1bf1acbe6",
+  "solutionFigureHashes": {},
+  "candidateHash": "655b2ad6a746dffc0bfb827afb9cac9bfb54d8181c3d1d5fce299948c8ee2acf",
+  "candidate": {
+    "questionId": "1964_AMC_12_Q28",
+    "derivedAnswer": "D. \\(5\\)",
+    "answerStatus": "matches",
+    "answerReason": "The sum condition is 153=n(a+n-1), so the admissible term counts are exactly the positive divisors of 153 greater than 1: 3, 9, 17, 51, and 153.",
+    "methods": [
+      {
+        "id": "arithmetic-sum-divisors",
+        "label": "Turn the sum condition into divisibility",
+        "explanation": "Let \\(a\\) be the integer first term. Since the common difference is \\(2\\), the last of the \\(n\\) terms is \\(a+2(n-1)\\). The arithmetic-progression sum formula gives\n\\[\n153=\\frac n2\\bigl(a+a+2(n-1)\\bigr)\n=n(a+n-1).\n\\]\nBecause \\(a+n-1\\) is an integer and \\(n\\) is a positive integer, \\(n\\) must divide \\(153\\).\n\nThis restriction is also sufficient: for any positive divisor \\(n>1\\) of \\(153\\), choose\n\\[\na=\\frac{153}{n}-n+1.\n\\]\nThis is an integer and makes the required sum \\(153\\). The first term need not be positive.\n\nNow \\(153=3^2\\cdot17\\). Every positive divisor has a unique form \\(3^e17^f\\), where \\(e\\) is \\(0,1,2\\) and \\(f\\) is \\(0,1\\). These choices give \\(3\\cdot2=6\\) distinct divisors, with none omitted. Removing \\(n=1\\) leaves\n\\[\nn=3,9,17,51,153.\n\\]\nThere are \\(5\\) possible values, choice D.",
+        "nodeIds": [
+          "cnm_h204",
+          "math:integer-diophantine-equations",
+          "math:divisor-count-and-sum"
+        ],
+        "prerequisiteIds": [
+          "cnm_h202",
+          "cnm_p153",
+          "math:prime-factorization"
+        ],
+        "levelReason": "Uses the arithmetic-sequence sum formula and elementary divisor counting from prime exponents."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h204",
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_h202",
+      "cnm_p153",
+      "math:prime-factorization"
+    ],
+    "annotationRationale": "The task combines an arithmetic-sequence sum with an integer restriction on the first term. The written method proves that admissible n correspond exactly to divisors, then uses independent prime-exponent choices to count them without repetition. Divisor counting is recorded as the method's counting procedure.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1964_AMC_12_Q28",
+    "decision": "accept",
+    "mathematicalCheck": "The sum is n(a+n-1)=153, so n must be a positive divisor of 153. Conversely, a=153/n-n+1 is an admissible integer for every such divisor. Since 153=3^2·17 has six positive divisors, excluding n=1 leaves exactly 3, 9, 17, 51 and 153.",
+    "levelCheck": "The arithmetic-sequence formula and elementary exponent-choice count are appropriate. Completeness and the permission for negative first terms are explicitly explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Arithmetic sums and integer feasibility accurately describe the targets. Divisor counting is recorded in the method, with suitable prime-factorization and sequence support.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "arithmetic-sum-divisors": "arithmetic-sum-divisors"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "35543f76130a4c44f8d47e896fbbece88f9353bed5997f5937cd1399f7f1f06a",
+    "inputHash": "06e279f8d613cf05153742950f0e4a96fbb0cfb370b7b5790612e2c06af3b5c6",
+    "authorInputHash": "7a53b21df5bfb11a04d53ea31c884b9841b71965feac92a6a8c712509a03db10",
+    "reviewInputHash": "b12e3d01d51425f6fa6507b9d0d0c84f6a002cb337d4bf9d901351fb630e9996",
+    "authorResponseHash": "fa0254223718ad4b4c864884c4b9d83be3002403d18f42f838a5b65dfb81bd49",
+    "reviewerResponseHash": "80c5fc83be6305a2b9503dce52abaf25287e577b7f6d0939ea445d81692fb904",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

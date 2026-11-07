@@ -24,6 +24,24 @@ arithmetic question may need only a few connected sentences. A difficult countin
 argument may need a small example and a longer justification. Add words where a
 reader would otherwise have to guess the reason.
 
+## Keep alternative methods within reach
+
+Consider whether the problem admits genuinely different methods, using the
+question and each complete solution to identify the knowledge they need. Include
+an alternative when it offers a useful new way to reason without requiring more
+advanced knowledge than the main method. Explain necessary prerequisites where
+they are used. Do not count a rearranged calculation as a distinct method or add
+an advanced shortcut merely to increase the method count.
+
+In question format 3.0, store each method as a separate object in `solutions`,
+with a useful `title`, its own `explanation`, and any known `directNodeIds` and
+`sourceRef`. For an older 2.0 record, keep the methods in `Solution` prose with
+clear labels and blank lines between sections. Use ordinary text, supported
+LaTeX, and the existing figure notation. Each method must justify the answer
+independently. Graph annotations should reflect the question and the actual
+completed methods, with method-local knowledge kept in separate alternative
+routes rather than merged into a single required checklist.
+
 ## Make the reasoning discoverable
 
 Open with a useful observation or plan. Connect it to the problem: equal spacing
@@ -154,7 +172,7 @@ evidence of a complete argument. These are observations from a known-source,
 AI-assisted editorial comparison, not findings about students' comprehension,
 feelings, preferences, or learning gains.
 
-See the [experiment and concrete revisions](../amc-bank/EXPLANATION_REVIEW.md)
-and [official-source coverage](../amc-bank/ADAPTATIONS.md). The AMC adaptations
+See the [experiment and concrete revisions](../database/amc-bank/EXPLANATION_REVIEW.md)
+and [official-source coverage](../database/amc-bank/ADAPTATIONS.md). The AMC adaptations
 remain under the license and attribution stated there. This guide changes
 authoring advice, not the application's model prompts or feedback behavior.

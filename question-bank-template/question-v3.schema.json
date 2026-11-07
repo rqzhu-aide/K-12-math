@@ -1,0 +1,289 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "K-12 Math Practice compact question format 3.0",
+  "description": "English question record used by template release 1.0.0. The release version and schemaVersion are separate. Source references resolve in the bank-local source-index.json.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "bank",
+    "language",
+    "question",
+    "answer",
+    "classification",
+    "assessedNodeIds",
+    "solutions",
+    "sourceRef"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "3.0"
+    },
+    "id": {
+      "$ref": "#/$defs/nonemptyString"
+    },
+    "bank": {
+      "$ref": "#/$defs/nonemptyString"
+    },
+    "language": {
+      "const": "en"
+    },
+    "question": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["prompt"],
+      "properties": {
+        "prompt": {
+          "$ref": "#/$defs/nonemptyString"
+        },
+        "choices": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/choice"
+          },
+          "$comment": "Distinct choice IDs and membership of accepted choice IDs need a record-level reference check. Standard JSON Schema cannot compare arbitrary IDs in sibling values."
+        }
+      }
+    },
+    "answer": {
+      "$ref": "#/$defs/answer"
+    },
+    "classification": {
+      "$ref": "#/$defs/classification"
+    },
+    "assessedNodeIds": {
+      "$ref": "#/$defs/stringSet",
+      "description": "Concepts the question assesses. An empty array means that no assessed target has been recorded."
+    },
+    "solutions": {
+      "type": "array",
+      "description": "Separate solution methods. Only methods with explanation text count as worked solutions. An empty list means neither explanation nor method annotation is available.",
+      "$comment": "The importer checks that method IDs are distinct and every sourceRef resolves in the bank source index.",
+      "items": {
+        "$ref": "#/$defs/solution"
+      }
+    },
+    "sourceRef": {
+      "$ref": "#/$defs/nonemptyString",
+      "description": "Key of this question's source entry in source-index.json."
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "answer": {
+            "properties": {
+              "type": {
+                "enum": ["choice", "multiSelect"]
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "question": {
+            "required": ["choices"]
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "question": {
+            "not": {
+              "required": ["choices"]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "nonemptyString": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "stringSet": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/nonemptyString"
+      }
+    },
+    "choice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "content"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/nonemptyString"
+        },
+        "content": {
+          "$ref": "#/$defs/nonemptyString"
+        }
+      }
+    },
+    "answer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "enum": ["choice", "multiSelect", "numeric", "short", "self"]
+        },
+        "accepted": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "description": "Each entry is one full accepted response. A multiSelect response is an array of distinct choice IDs; every other response is a string."
+        },
+        "rubric": {
+          "$ref": "#/$defs/nonemptyString"
+        },
+        "rejected": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/nonemptyString"
+          }
+        },
+        "unordered": {
+          "const": true,
+          "description": "For numeric responses only, accept the listed values in any order. Omit when order matters."
+        },
+        "form": {
+          "enum": ["decimal", "standard-monomial", "ordered-list"]
+        },
+        "gradingNote": {
+          "$ref": "#/$defs/nonemptyString",
+          "description": "When present, withhold automatic grading. The text explains the question-specific reason."
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {"const": "multiSelect"}
+            }
+          },
+          "then": {
+            "properties": {
+              "accepted": {
+                "items": {
+                  "type": "array",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "$ref": "#/$defs/nonemptyString"
+                  }
+                }
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "accepted": {
+                "items": {
+                  "$ref": "#/$defs/nonemptyString"
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {"const": "self"}
+            }
+          },
+          "then": {
+            "required": ["rubric"],
+            "not": {"required": ["accepted"]}
+          },
+          "else": {
+            "required": ["accepted"],
+            "not": {
+              "required": ["rubric"]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {"const": "numeric"}
+            }
+          },
+          "else": {
+            "not": {
+              "required": ["unordered"]
+            }
+          }
+        }
+      ]
+    },
+    "classification": {
+      "type": "object",
+      "description": "Known browsing metadata. Omit unknown optional values; an empty object is allowed. Topic display labels and original positions belong in the source index.",
+      "additionalProperties": false,
+      "properties": {
+        "area": {
+          "$ref": "#/$defs/nonemptyString"
+        },
+        "domainIds": {
+          "$ref": "#/$defs/stringSet"
+        },
+        "topicIds": {
+          "$ref": "#/$defs/stringSet"
+        },
+        "skillIds": {
+          "$ref": "#/$defs/stringSet"
+        },
+        "grade": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "level": {
+          "$ref": "#/$defs/nonemptyString"
+        },
+        "unit": {
+          "$ref": "#/$defs/nonemptyString"
+        },
+        "difficulty": {
+          "$ref": "#/$defs/nonemptyString"
+        }
+      }
+    },
+    "solution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/nonemptyString"
+        },
+        "title": {
+          "$ref": "#/$defs/nonemptyString"
+        },
+        "explanation": {
+          "$ref": "#/$defs/nonemptyString"
+        },
+        "directNodeIds": {
+          "$ref": "#/$defs/stringSet",
+          "minItems": 1,
+          "description": "Immediate concepts sufficient for this method at the intended level. Omit when that set is unknown. A method awaiting a written explanation can still have a reviewed node set."
+        },
+        "sourceRef": {
+          "$ref": "#/$defs/nonemptyString"
+        }
+      },
+      "anyOf": [
+        {"required": ["explanation"]},
+        {"required": ["directNodeIds"]}
+      ]
+    }
+  }
+}

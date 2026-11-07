@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2000_AMC_12_Q16",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "e5a429b1095f5f601e21932cf791756e404980e0c4072253f4d6b4bf83807a29",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "95fe4ca996d8f99028399da332aef36c8c6a6ed0807670866c16ff28d0205306",
+  "solutionFigureHashes": {},
+  "candidateHash": "bf56d82cb15c5788c0a6cce330c68a4c38eeeafa60a25d766c5d73743b8606ea",
+  "candidate": {
+    "questionId": "2000_AMC_12_Q16",
+    "derivedAnswer": "D: \\(555\\)",
+    "answerStatus": "matches",
+    "answerReason": "Exactly five squares retain their labels: 1, 56, 111, 166, and 221. Their sum is 555.",
+    "methods": [
+      {
+        "id": "match-board-labels",
+        "label": "Express both labels using row and column",
+        "explanation": "A square's row and column determine its label in either system. Let \\(r\\) be its row, counted from the top, and \\(c\\) its column, counted from the left. Then \\(1\\le r\\le13\\) and \\(1\\le c\\le17\\).\n\nIn the first numbering, \\(r-1\\) complete rows precede the square, so its label is \\(17(r-1)+c\\). In the second numbering, \\(c-1\\) complete columns precede it, so its label is \\(13(c-1)+r\\). Equality requires\n\\[\n17(r-1)+c=13(c-1)+r,\n\\]\nor\n\\[\n4(r-1)=3(c-1).\n\\]\nThe common value is a multiple of both \\(4\\) and \\(3\\), hence a multiple of \\(12\\). Thus\n\\[\nr-1=3k,\\qquad c-1=4k\n\\]\nfor an integer \\(k\\). The row and column bounds give exactly \\(k=0,1,2,3,4\\). Conversely, each of these values gives an allowed square with equal labels. Different values give different rows, so no square is repeated.\n\nThe common label is\n\\[\n17(3k)+(1+4k)=1+55k.\n\\]\nHence the five labels are \\(1,56,111,166,221\\). They form an arithmetic progression, whose sum is\n\\[\n\\frac{5(1+221)}{2}=\\boxed{555},\n\\]\nchoice D.",
+        "nodeIds": [
+          "math:integer-diophantine-equations"
+        ],
+        "prerequisiteIds": [
+          "cnm_027",
+          "cnm_p159",
+          "cnm_h204"
+        ],
+        "levelReason": "The method uses label formulas, common multiples, bounded integer solutions, and an arithmetic-progression sum."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_027",
+      "cnm_p159",
+      "cnm_h204"
+    ],
+    "annotationRationale": "The target is finding every bounded integer row-column pair satisfying equality of the labels. Writing expressions models the numbering systems, common multiples parameterize the solutions, and the arithmetic-sequence sum evaluates the resulting labels. The method proves both completeness and absence of repeated squares.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2000_AMC_12_Q16",
+    "decision": "accept",
+    "mathematicalCheck": "Equality of the two label formulas reduces to 4(r-1)=3(c-1). Consequently r=1+3k and c=1+4k, with exactly k=0,1,2,3,4 permitted. These distinct squares have labels 1,56,111,166,221, summing to 555.",
+    "levelCheck": "The modeling, common-multiple argument, bounds, and arithmetic-progression sum are accessible and sufficiently justified.",
+    "methodDistinctness": "One complete parameterization method is sufficient.",
+    "annotationCheck": "Bounded integer-equation solving is the correct target. Expression modeling, least common multiples, and arithmetic-sequence summation match the supporting steps.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "match-board-labels": "match-board-labels"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "9f87a802ebe47b3278d9beb0d8baff39dec3212732f08a6e75f3e29d9505c61c",
+    "inputHash": "b5fc9f01e81b68e1ea1fbd14f93892a69a096e0416288cddbbefab5ff58661b3",
+    "authorInputHash": "621e183a6008e7905c405ae2d932113aaed106fd6f288079fc5b429b3fbcd253",
+    "reviewInputHash": "970a7abd5a3c59221fced71a62d41e6c407eb580fe24ca758239978bbdc77ce3",
+    "authorResponseHash": "57281e8e69434d506f7fb77fdf2a4fcc38d88e2915e48195884797b66389990c",
+    "reviewerResponseHash": "75e8c7576083e1b933134ab05503b721e6654c0655a6a178ac960d90da375d65",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

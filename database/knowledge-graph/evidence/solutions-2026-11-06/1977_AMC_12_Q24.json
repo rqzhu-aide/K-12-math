@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1977_AMC_12_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ceb65a1487eca97575c479f18e4b433f8dec66a1a682dfddadaac2dd2dac8188",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "2d0bbd46ad7a666842c8faacc8014034d6ea6e04c4199fb9c05b6dbd5df2a5eb",
+  "solutionFigureHashes": {},
+  "candidateHash": "278a752880f398e678fb937377211d485e94cb33fc50488e15aa01e7d408fe29",
+  "candidate": {
+    "questionId": "1977_AMC_12_Q24",
+    "derivedAnswer": "D, \\(\\frac{128}{257}\\).",
+    "answerStatus": "matches",
+    "answerReason": "Splitting each term into half a difference of reciprocals makes all interior terms cancel, leaving (1/2)(1-1/257)=128/257.",
+    "methods": [
+      {
+        "id": "reciprocal-differences",
+        "label": "Cancel consecutive reciprocal terms",
+        "explanation": "The two factors in each denominator differ by \\(2\\), so a difference of reciprocals produces the desired numerator:\n\\[\n\\frac1{(2k-1)(2k+1)}\n=\\frac12\\left(\\frac1{2k-1}-\\frac1{2k+1}\\right).\n\\]\nHere \\(k\\) runs from \\(1\\) through \\(128\\), because \\(2(128)-1=255\\). All denominators are positive.\n\nWriting the sum in this form reveals the cancellation:\n\\[\n\\begin{aligned}\nS=\\frac12\\bigg[&\\left(1-\\frac13\\right)\n+\\left(\\frac13-\\frac15\\right)+\\cdots\\\\\n&+\\left(\\frac1{255}-\\frac1{257}\\right)\\bigg].\n\\end{aligned}\n\\]\nEvery reciprocal from \\(1/3\\) through \\(1/255\\) occurs once positively and once negatively. Only the endpoints remain, so\n\\[\nS=\\frac12\\left(1-\\frac1{257}\\right)\n=\\boxed{\\frac{128}{257}}.\n\\]\nThe answer is \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:telescoping"
+        ],
+        "prerequisiteIds": [
+          "cnm_161",
+          "cnm_018"
+        ],
+        "levelReason": "The solution uses fraction subtraction and cancellation in a finite sum."
+      }
+    ],
+    "assessedIds": [
+      "math:telescoping"
+    ],
+    "supportIds": [
+      "cnm_161",
+      "cnm_018"
+    ],
+    "annotationRationale": "The central target is exposing cancellation and retaining the correct endpoint terms. Subtracting rational expressions establishes the splitting identity, and rational arithmetic evaluates the surviving terms.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1977_AMC_12_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "Each term equals half the difference of its two reciprocal factors. There are 128 terms, all denominators are positive, and cancellation leaves (1-1/257)/2=128/257.",
+    "levelCheck": "The splitting identity, cancellation, and endpoints are explained clearly using elementary fraction operations.",
+    "methodDistinctness": "One complete telescoping method is sufficient.",
+    "annotationCheck": "Telescoping is the assessed target; rational-expression subtraction and rational arithmetic support the written argument within their catalog scopes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "reciprocal-differences": "reciprocal-differences"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "be01e4465a8c7fe150fffecb90658f8113357dc7ad2d497f825362fb9eb936a5",
+    "inputHash": "f306311c2a458ff92e2ebf44faaaa2b7b75066ed28883baa139be5111350f834",
+    "authorInputHash": "07a836e728c5eb35c5ad0b29fc8c32e2185cde25750fd4fc2a1590d540fd7415",
+    "reviewInputHash": "919a3a279962391ec4ab91203e88c94b517ebbfb9acd70a1088f4a277db05eaa",
+    "authorResponseHash": "3102e3359c05ba5901e26da6b38731a2a00fb9018f382837c7c140b882bbaa78",
+    "reviewerResponseHash": "fc89455d5c1469e1a7d8d0c53200b1af4aa4f60fb229647cb3bc94a38c47f55e",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1957_AMC_12_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "7937089eb5280c0723eb08e6e50b7043cfa04180f2681afefd61eab5885e1576",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "68f9f75be3fe93026d0e4da82ca272127bd44762f533d4655f57eedc7fb9bdbd",
+  "solutionFigureHashes": {},
+  "candidateHash": "8b31e5afa3dc085b6de1ea2548931362a4d01d701a6361b803696157d1b0d642",
+  "candidate": {
+    "questionId": "1957_AMC_12_Q24",
+    "derivedAnswer": "B under the nonzero, unequal-digit interpretation; the displayed wording leaves zero-divisor cases undefined.",
+    "answerStatus": "disputed",
+    "answerReason": "Factorization proves the intended answer B when the proposed divisors are nonzero. However, equal digits make the divisor in D zero, and a zero units digit makes the divisor in B zero. The displayed statement does not exclude these cases, so ordinary divisibility needs a qualification.",
+    "methods": [
+      {
+        "id": "factor-digit-reversal-difference",
+        "label": "Expose the guaranteed factors",
+        "explanation": "To interpret every listed divisor using ordinary division, assume first that both digits are nonzero and unequal. Let \\(a\\) be the tens digit and \\(b\\) the units digit, so the original and reversed numbers are \\(10a+b\\) and \\(10b+a\\).\n\nThe difference of their squares factors into their difference times their sum:\n\\[\n\\begin{aligned}\n(10a+b)^2-(10b+a)^2\n&=\\bigl(9a-9b\\bigr)\\bigl(11a+11b\\bigr)\\\\\n&=99(a-b)(a+b).\n\\end{aligned}\n\\]\nThis exhibits the factors \\(9\\), \\(11\\), the digit sum \\(a+b\\), and the nonzero digit difference \\(a-b\\). Thus A, C, D, and E always divide the result under the stated assumption.\n\nThe digit product need not divide it. For example,\n\\[\n21^2-12^2=441-144=297,\n\\]\nwhich is odd and therefore is not divisible by the digit product \\(2\\cdot1=2\\).\n\nThe original wording needs care: for \\(11\\), choice D proposes division of zero by zero. A number such as \\(10\\), if its reversal is read as \\(01=1\\), also gives a zero digit product. These cases are not ordinary division statements. With the qualification that both digits are nonzero and unequal, the answer is B, the product of the digits.",
+        "nodeIds": [
+          "cnm_155",
+          "cnm_152",
+          "cnm_071"
+        ],
+        "prerequisiteIds": [
+          "cnm_p017",
+          "cnm_027",
+          "cnm_p153"
+        ],
+        "levelReason": "Place value, difference-of-squares factoring, and one elementary counterexample suffice."
+      }
+    ],
+    "assessedIds": [
+      "cnm_155"
+    ],
+    "supportIds": [
+      "cnm_p017",
+      "cnm_027",
+      "cnm_p153"
+    ],
+    "annotationRationale": "The mathematical target is explaining guaranteed divisibility through factors. Place value and expression writing encode the reversed numbers. The method uses difference-of-squares factorization and a counterexample to disprove universal divisibility by the digit product. No modular arithmetic is needed.",
+    "needsNewNodes": [],
+    "limitations": [
+      "Equal digits make the proposed divisor in D zero, as noted in the recorded qualification.",
+      "A zero units digit also makes the proposed divisor in B zero unless such reversals are excluded."
+    ]
+  },
+  "review": {
+    "questionId": "1957_AMC_12_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "The identity 99(a-b)(a+b) proves divisibility by the four claimed nonzero factors. The counterexample 21²-12²=297 disproves divisibility by the digit product 2. Equal digits and a zero units digit are explicitly addressed as zero-divisor cases under ordinary division.",
+    "levelCheck": "Place value, factoring, and a parity counterexample are sufficient and clearly explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The factorization target, counterexample node, and supporting place-value and divisibility concepts match the solution. The qualified answer preserves the wording problem.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "factor-digit-reversal-difference": "factor-digit-reversal-difference"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "87062efa80aeda030c988664c917318700af200e6668e808ceec8444e0629e20",
+    "inputHash": "8f8c1c520cad23e2928244e3f6adbb1b9bd189b2811b76d53c1a21cd3d624178",
+    "authorInputHash": "bdb07cb1b10ea3d9dab72d6d90a14423301cf22eafa3a3362e6705c020303e7a",
+    "reviewInputHash": "6fad0899d349d7bc270f9db0f215a6a6b9ae5b5d99d470797eaf6db9521b5be7",
+    "authorResponseHash": "e64dc26d30324c7de6bab3584ae9355396d6343164e4f21b3ebdfec5652a18e9",
+    "reviewerResponseHash": "45527c36a0b5fe000df559e52b4d00e53668bfc4974d2f37d71d0a98917704b7",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

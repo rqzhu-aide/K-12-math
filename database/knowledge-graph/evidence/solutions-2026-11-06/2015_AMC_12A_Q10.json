@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2015_AMC_12A_Q10",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "c71f71d13a09d7117ad7ea1e56970f1cc83bf02d620bb8b4237400506f8d87a5",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "a9688500866721519912591e19d823c1d04f44f6a2d04f84eb9565db4d56d473",
+  "solutionFigureHashes": {},
+  "candidateHash": "6357181cc2e28b42669f9cb344ef056f0abacdab4f38391f56a1c86ff7d82642",
+  "candidate": {
+    "questionId": "2015_AMC_12A_Q10",
+    "derivedAnswer": "E. 26",
+    "answerStatus": "matches",
+    "answerReason": "Adding 1 gives (x+1)(y+1)=81. The only factor pair consistent with x>y>0 is (27,3), giving x=26 and y=2.",
+    "methods": [
+      {
+        "id": "complete-a-product",
+        "label": "Complete a product",
+        "explanation": "Adding \\(1\\) lets the terms form a product, turning the integer equation into a factor-pair problem:\n\\[\n\\begin{aligned}\n81&=xy+x+y+1\\\\\n&=x(y+1)+(y+1)\\\\\n&=(x+1)(y+1).\n\\end{aligned}\n\\]\nSince \\(x>y>0\\), the factors satisfy \\(x+1>y+1\\geq2\\). The positive factor pairs of \\(81\\), written with the larger factor first, are\n\\[\n(81,1),\\qquad(27,3),\\qquad(9,9).\n\\]\nThese exhaust the possibilities: the smaller factor cannot exceed \\(9\\), and the only divisors of \\(81\\) at most \\(9\\) are \\(1,3,9\\).\n\nThe first pair would give \\(y=0\\), and the last would give \\(x=y\\). Thus \\(x+1=27\\) and \\(y+1=3\\), giving \\(x=26\\) and \\(y=2\\). They satisfy \\(26+2+26\\cdot2=80\\) and the required ordering. Therefore \\(\\boxed{x=26}\\), choice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_151"
+        ],
+        "prerequisiteIds": [
+          "cnm_150",
+          "cnm_040",
+          "cnm_p153"
+        ],
+        "levelReason": "Completing a product and checking small positive factor pairs use elementary algebra and divisibility."
+      },
+      {
+        "id": "bound-and-check",
+        "label": "Bound the smaller integer",
+        "explanation": "The ordering gives a short list of possible values for \\(y\\). If \\(y\\geq8\\), then the integer \\(x>y\\) must satisfy \\(x\\geq9\\), giving\n\\[\nx+y+xy\\geq9+8+9\\cdot8=89,\n\\]\nwhich contradicts the required total of \\(80\\). Hence \\(y\\) must be one of \\(1,2,3,4,5,6,7\\).\n\nFor each of these values, substitution into the original equation gives a simple equation for \\(x\\):\n\\[\n\\begin{aligned}\n2x&=79 &&(y=1),\\\\\n3x&=78 &&(y=2),\\\\\n4x&=77 &&(y=3),\\\\\n5x&=76 &&(y=4),\\\\\n6x&=75 &&(y=5),\\\\\n7x&=74 &&(y=6),\\\\\n8x&=73 &&(y=7).\n\\end{aligned}\n\\]\nOnly \\(3x=78\\) has an integer solution, because in every other equation the coefficient of \\(x\\) does not divide the right side. Thus \\(y=2\\) and \\(x=26\\). Each possible \\(y\\) was checked, and each determines at most one \\(x\\), so the search is complete. Since \\(26>2>0\\) and \\(26+2+52=80\\), the answer is \\(\\boxed{26}\\), choice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_h020",
+          "cnm_p145"
+        ],
+        "prerequisiteIds": [
+          "cnm_094",
+          "cnm_040",
+          "cnm_p153"
+        ],
+        "levelReason": "An elementary bound reduces the search to seven integers, followed by simple equations and divisibility checks."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_040",
+      "cnm_p153"
+    ],
+    "annotationRationale": "The route-neutral target is solving an equation subject to integer and ordering restrictions with a complete argument. Both methods use equality operations and elementary divisibility. Completing and factoring a product belongs to the first route; bounding an integer range and solving the resulting simple equations belong to the second.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2015_AMC_12A_Q10",
+    "decision": "accept",
+    "mathematicalCheck": "The product method exhausts the positive factor pairs of 81 and leaves only \\((x,y)=(26,2)\\). Independently, the bound excludes all \\(y\\geq8\\), and all seven remaining substitutions are correct; only \\(y=2\\) yields integral x. Both methods verify the original equation and ordering.",
+    "levelCheck": "Both methods use elementary algebra, small factor checks, and an elementary bound.",
+    "methodDistinctness": "Completing a product and bounding followed by finite enumeration are genuinely distinct accessible methods.",
+    "annotationCheck": "The integer-equation target is route-neutral. Factoring and bounded enumeration remain method-local, while equality operations and divisibility support both methods.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "complete-a-product": "complete-a-product",
+    "bound-and-check": "bound-and-check"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "66f0e8203a734cbe27a16acf2ae4fb8389cba18b29d21793270644e0b88aff93",
+    "inputHash": "0c22f303543615e33cf1fe1a4c627da1b34b6727f63c1eb860d83d5bdebe0333",
+    "authorInputHash": "29a407315cd4d7864f37cefa8a76c4b97acb8b782609d035ab1ba74dfba67683",
+    "reviewInputHash": "bb43d849aa66e43acc0de6e2f987dcf87e72af16d241e9120bb93dcac2723372",
+    "authorResponseHash": "9bb81c9054a76888aa1ee02b0251188823fb5adb29f90a8bbbba385b53d4cdd0",
+    "reviewerResponseHash": "9806df4955665ad748cd7dc6001f5a3b519dcbfd1810011a46bba730a24db513",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,124 @@
+{
+  "Year": 2005,
+  "Level": "AMC 12",
+  "Batch": "B",
+  "Area": "Unclassified",
+  "Number": 22,
+  "Question": "A sequence of complex numbers \\(z_0,\\) \\(z_1,\\) \\(z_2,\\) \\(\\ldots\\) is defined by the rule \\[ z_{n+1} = \\dfrac{i z_n}{\\overline{z_n}}, \\] where \\(\\overline{z_n}\\) is the complex conjugate of \\(z_n\\) and \\(i^2 = -1.\\) Suppose that \\(|z_0| = 1\\) and \\(z_{2005} = 1.\\) How many possible values are there for \\(z_0?\\)",
+  "Question Type": "text",
+  "Choices": {
+    "A": "\\(1\\)",
+    "B": "\\(2\\)",
+    "C": "\\(4\\)",
+    "D": "\\(2005\\)",
+    "E": "\\(2^{2005}\\)"
+  },
+  "Choices Type": "text",
+  "Correct Answer": "E",
+  "Solution": "Method 1: Count predecessors backward\n\nThe condition \\(|z_0|=1\\) keeps the entire sequence on the unit circle. Indeed, whenever \\(|z_n|=1\\), its conjugate is nonzero and\n\\[\n|z_{n+1}|=\\frac{|i|\\,|z_n|}{|\\overline{z_n}|}=1.\n\\]\nAlso, \\(z_n\\overline{z_n}=1\\), so the recurrence is equivalent to\n\\[\nz_{n+1}=iz_n^2.\n\\]\nThis form makes it useful to work backward from \\(z_{2005}=1\\).\n\nFor any target \\(w\\) of modulus \\(1\\), its predecessors satisfy \\(z^2=-iw\\). To see exactly how many there are, write \\(-iw=\\cos\\theta+i\\sin\\theta\\). The double-angle formulas show that\n\\[\nu=\\cos\\frac{\\theta}{2}+i\\sin\\frac{\\theta}{2}\n\\]\nis one square root, and \\(-u\\) is another. They are distinct and both have modulus \\(1\\). There are no others: any other root \\(v\\) satisfies \\((v-u)(v+u)=0\\), hence \\(v=u\\) or \\(v=-u\\).\n\nThus each target has exactly two valid predecessors. Distinct targets cannot share a predecessor, because the rule \\(z\\mapsto iz^2\\) assigns each input only one successor. Consequently the number of possible values doubles at every backward step. Every valid initial value appears in this construction, and every constructed value produces a defined sequence ending at \\(1\\).\n\nAfter \\(2005\\) backward steps there are \\(\\boxed{2^{2005}}\\) possible values of \\(z_0\\), choice E.\n\nMethod 2: Turn the recurrence into repeated squaring\n\nStarting with modulus \\(1\\), every term has modulus \\(1\\), because the numerator and denominator in the recurrence have equal modulus. All denominators are therefore nonzero. Since \\(z_n\\overline{z_n}=1\\), we have \\(z_{n+1}=iz_n^2\\).\n\nTo remove the factor \\(i\\), define \\(w_n=iz_n\\). Then\n\\[\nw_{n+1}=i(iz_n^2)=-z_n^2=(iz_n)^2=w_n^2.\n\\]\nEach step doubles the exponent of the starting value, so \\(w_n=w_0^{2^n}\\). Set \\(N=2^{2005}\\). The condition \\(z_{2005}=1\\) becomes\n\\[\nw_0^N=i.\n\\]\nBecause \\(|w_0|=1\\), write \\(w_0=\\cos\\theta+i\\sin\\theta\\), with \\(0\\leq\\theta<2\\pi\\). The power formula gives exactly the angles\n\\[\n\\theta=\\frac{\\pi/2+2\\pi j}{N},\n\\qquad j=0,1,\\ldots,N-1.\n\\]\nThese are \\(N\\) distinct angles in the required interval, and each produces a solution. They exhaust the possibilities because \\(N\\theta\\) must differ from \\(\\pi/2\\) by an integer multiple of \\(2\\pi\\).\n\nFinally, \\(z_0=-iw_0\\) converts these solutions into distinct valid initial values. Therefore there are \\(\\boxed{2^{2005}}\\) possibilities, choice E.",
+  "Meta": {
+    "QuestionSource": "live-poshenloh",
+    "AnswerSource": "live-poshenloh-answer-key",
+    "SolutionSource": "Original Math Practice solution",
+    "AreaSource": "Pending topic curation",
+    "Concepts": "complex number; roots of unity; recursion",
+    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2005B/solutions",
+    "SourceSHA256": "f8b78cdfce023f8370ac8ce59b2b461230f4da3119a3ad2bbc431af7c124c022",
+    "Figures": [],
+    "FigureSources": {},
+    "SourceQuestionCount": 25,
+    "HistoricalSeries": "AMC 12",
+    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+    "Copyright": "Copyright Mathematical Association of America",
+    "License": "CC-BY-NC-SA-4.0",
+    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "TranscriptionSource": "LIVE by Po-Shen Loh",
+    "Modifications": [
+      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
+      "Third-party worked solution and solution-only figures omitted from the public distribution"
+    ],
+    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+    "SolutionReview": {
+      "status": "reviewed",
+      "solutionSHA256": "27794b62f4d84bc9e51fa740db5efb6b51a53112380d8606562f8682d5b759b9",
+      "questionContentHash": "0ea307e8a7dd4250e1facc667e8c07668be9f9aeebedf50b010992309982f970",
+      "evidence": {
+        "path": "knowledge-graph/evidence/solutions-2026-11-06/2005_AMC_12B_Q22.json",
+        "sha256": "92e667a8a16063c7d7fa24f620c28dec39205f6c1d7287baf74258ba8f724578"
+      },
+      "author": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "reviewer": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      }
+    }
+  },
+  "ID": "2005_AMC_12B_Q22",
+  "Bank": "amc",
+  "SchemaVersion": "2.0",
+  "ResponseType": "choice",
+  "Language": "en",
+  "domain": [],
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "1.0.0",
+    "contentHash": "0ea307e8a7dd4250e1facc667e8c07668be9f9aeebedf50b010992309982f970",
+    "status": "mapped",
+    "reviewStatus": "machine_scope_audited",
+    "assessedIds": [
+      "math:roots-of-unity"
+    ],
+    "supportIds": [
+      "cnm_h098",
+      "cnm_h103",
+      "cnm_h102"
+    ],
+    "routes": [
+      {
+        "id": "polar-recurrence",
+        "label": "Iterate the doubled argument",
+        "nodeIds": [
+          "math:complex-polar-de-moivre",
+          "cnm_h200"
+        ]
+      },
+      {
+        "id": "backward-square-roots",
+        "label": "Count two preimages at every step",
+        "nodeIds": [
+          "math:roots-of-unity",
+          "cnm_h231"
+        ]
+      },
+      {
+        "id": "solution:backward-square-roots:27794b62f4d8",
+        "label": "Count predecessors backward",
+        "nodeIds": [
+          "math:roots-of-unity",
+          "math:complex-polar-de-moivre",
+          "cnm_h231",
+          "cnm_h098",
+          "cnm_h103",
+          "cnm_h102"
+        ]
+      },
+      {
+        "id": "iterate-squaring",
+        "label": "Turn the recurrence into repeated squaring",
+        "nodeIds": [
+          "math:roots-of-unity",
+          "math:complex-polar-de-moivre",
+          "cnm_h200",
+          "cnm_h098",
+          "cnm_h103",
+          "cnm_h102"
+        ]
+      }
+    ],
+    "flags": []
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1976_AMC_12_Q28",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "943649ac643d7915f0bd01faf4d2756dd7ec88b25f659395d07482009245fc1b",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "ee2d03c39915a3ac9a8acfb1a163ee945f0cb3e0c4d33de83438806bf1eab630",
+  "solutionFigureHashes": {},
+  "candidateHash": "9439801522b570d433c2d13252717208717cb6520128eda1cf474ca283a9f34a",
+  "candidate": {
+    "questionId": "1976_AMC_12_Q28",
+    "derivedAnswer": "B; \\(4351\\) distinct intersection points.",
+    "answerStatus": "matches",
+    "answerReason": "Among 4950 line pairs, 300 parallel pairs contribute no point and 300 concurrent pairs contribute only one point. All other pairs can be arranged to produce distinct additional points.",
+    "methods": [
+      {
+        "id": "pair-bound-and-attaining-arrangement",
+        "label": "Count line pairs and show the bound is attainable",
+        "explanation": "Two distinct lines have at most one intersection, so begin by counting unordered pairs of lines. We must then account for pairs that do not intersect and pairs that meet at the same point.\n\nThere are \\(25\\) specified parallel lines, with indices \\(4,8,\\ldots,100\\), and \\(25\\) specified lines through \\(A\\), with indices \\(1,5,\\ldots,97\\). These groups are disjoint. Among all\n\\[\n\\binom{100}{2}=4950\n\\]\nline pairs, the\n\\[\n\\binom{25}{2}=300\n\\]\npairs within the parallel group contribute no intersections. The \\(300\\) pairs within the group through \\(A\\) all contribute the single point \\(A\\).\n\nThe remaining \\(4950-300-300=4350\\) pairs can contribute at most one point each. This proves the upper bound\n\\[\n4350+1=4351.\n\\]\nTo show that this maximum is possible, start with \\(25\\) distinct horizontal lines, none through \\(A\\). Choose \\(25\\) distinct nonhorizontal lines through \\(A\\). These create no triple intersection away from \\(A\\): two lines through \\(A\\) meet only there, and two horizontal lines never meet.\n\nNow add the remaining \\(50\\) lines one at a time. For each new line, choose a direction different from all existing directions and choose its position so that it avoids every existing intersection point. This is possible because there are only finitely many forbidden directions and points. Once a direction is chosen, each forbidden point rules out just one parallel translate of the new line.\n\nEach added line therefore meets all earlier lines at distinct new points. In the completed arrangement, every pair outside the two special groups intersects, and no two such pairs share an intersection point. Together with \\(A\\), this gives exactly \\(\\boxed{4351}\\) points, choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_h239"
+        ],
+        "prerequisiteIds": [
+          "cnm_h237",
+          "cnm_067",
+          "cnm_054"
+        ],
+        "levelReason": "The argument uses elementary pair counting and a finite geometric construction. Both the universal bound and its attainability are proved."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle",
+      "cnm_h239"
+    ],
+    "supportIds": [
+      "cnm_h237",
+      "cnm_067",
+      "cnm_054"
+    ],
+    "annotationRationale": "The maximum requires a bound together with an arrangement attaining it, matching the discrete extremal target. Counting unordered line pairs is an application of combinations. Combination evaluation, nonintersection of parallel lines, and uniqueness of a line through two points support the count and its no-duplication argument.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1976_AMC_12_Q28",
+    "decision": "accept",
+    "mathematicalCheck": "The two disjoint special groups each contain 25 lines. Their internal pairs contribute zero points and one point respectively, yielding the bound 4950-300-300+1=4351. The sequential construction avoids every additional parallelism and concurrence, attaining the bound.",
+    "levelCheck": "Elementary pair counting and finitely many forbidden directions and positions give an accessible, complete argument.",
+    "methodDistinctness": "The bound and attaining construction form one complete extremal method.",
+    "annotationCheck": "The extremal and unordered-pair counting targets are supported. Combination evaluation, parallel-line facts, and line uniqueness appropriately support the proof.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "pair-bound-and-attaining-arrangement": "pair-bound-and-attaining-arrangement"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "a5d2ade0bd70ca4d103e54e35752937d8a0df0ff0eb8722d52f43d74b1fee4aa",
+    "inputHash": "e1554e9911f6d2f1db1caf6bf8efc47fc3f32b45a7db893d20621f0d39971725",
+    "authorInputHash": "118eb018c0d7042d9ec75f4e78e15078634b57b9c87ebd4624ce51cacda3512f",
+    "reviewInputHash": "2306ac67b12640880116be3602c0759623aa20979f596f4727edf43bb26a14df",
+    "authorResponseHash": "efa927e327737293d4b96cbf9b9e162a5464a56c4bb64a4c3aba29350e738909",
+    "reviewerResponseHash": "4e83df28e704d4275e3c4a3eea883ef7e5d410dcb6c7d2b78edb078409c65542",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

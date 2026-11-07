@@ -1,0 +1,118 @@
+{
+  "Year": 2007,
+  "Level": "AMC 12",
+  "Batch": "A",
+  "Area": "Unclassified",
+  "Number": 25,
+  "Question": "Call a set of integers spacy if it contains no more than one out of any three consecutive integers. How many subsets of \\(\\{1,2,3,\\ldots,12\\},\\) including the empty set, are spacy?",
+  "Question Type": "text",
+  "Choices": {
+    "A": "\\(121\\)",
+    "B": "\\(123\\)",
+    "C": "\\(125\\)",
+    "D": "\\(127\\)",
+    "E": "\\(129\\)"
+  },
+  "Choices Type": "text",
+  "Correct Answer": "E",
+  "Solution": "Method 1: Count according to whether the last integer is selected\n\nThe spacy condition means that any two selected integers differ by at least \\(3\\): a pair differing by \\(1\\) or \\(2\\) lies in three consecutive integers, and any two integers in such a triple differ by at most \\(2\\).\n\nLet \\(T_m\\) be the number of spacy subsets of \\(\\{1,\\ldots,m\\}\\), including the empty set. The initial values are \\(T_0=1\\), \\(T_1=2\\), and \\(T_2=3\\); for \\(m=2\\), only the empty set and the two singletons qualify.\n\nFor \\(m\\ge3\\), divide the subsets into two disjoint cases. If \\(m\\) is absent, there are \\(T_{m-1}\\) choices. If \\(m\\) is present, then \\(m-1\\) and \\(m-2\\) must be absent. The remaining elements can be any spacy subset of \\(\\{1,\\ldots,m-3\\}\\), giving \\(T_{m-3}\\) choices. Adding \\(m\\) to any such subset is valid, so every subset in this second case is counted exactly once. Therefore\n\\[\nT_m=T_{m-1}+T_{m-3}.\n\\]\nApplying this recurrence gives\n\\[\n\\begin{aligned}\n(T_0,T_1,T_2)&=(1,2,3),\\\\\n(T_3,T_4,T_5)&=(4,6,9),\\\\\n(T_6,T_7,T_8)&=(13,19,28),\\\\\n(T_9,T_{10},T_{11})&=(41,60,88).\n\\end{aligned}\n\\]\nFinally,\n\\[\nT_{12}=T_{11}+T_9=88+41=\\boxed{129}.\n\\]\nThe answer is choice \\(\\boxed{\\text{E}}\\).\n\nMethod 2: Remove the required gaps and use combinations\n\nA spacy subset has successive selected integers at least \\(3\\) apart. Suppose it contains \\(k\\ge1\\) elements, written in increasing order as\n\\[\n1\\le x_1<x_2<\\cdots<x_k\\le12,\n\\qquad x_{i+1}-x_i\\ge3.\n\\]\nSince \\(x_k\\ge1+3(k-1)\\), there can be at most \\(4\\) selected elements.\n\nTo count the subsets of a fixed size, remove the two mandatory unused positions before each selected element after the first. Define\n\\[\ny_i=x_i-2(i-1).\n\\]\nThen \\(y_{i+1}-y_i\\ge1\\), and\n\\[\n1\\le y_1<\\cdots<y_k\\le14-2k.\n\\]\nThus the \\(y_i\\) form an ordinary \\(k\\)-element subset of \\(\\{1,\\ldots,14-2k\\}\\).\n\nConversely, any such increasing selection gives a valid spacy subset by setting \\(x_i=y_i+2(i-1)\\). Its gaps are at least \\(3\\), and its entries lie between \\(1\\) and \\(12\\). These operations undo each other, so the correspondence omits nothing and counts no subset twice. The number of size-\\(k\\) subsets is therefore \\(\\binom{14-2k}{k}\\).\n\nThe empty set contributes one more choice. Adding the disjoint possibilities for sizes \\(0\\) through \\(4\\) gives\n\\[\n\\begin{aligned}\n1+\\binom{12}{1}+\\binom{10}{2}\n+\\binom83+\\binom64\n&=1+12+45+56+15\\\\\n&=\\boxed{129}.\n\\end{aligned}\n\\]\nThe answer is choice \\(\\boxed{\\text{E}}\\).",
+  "Meta": {
+    "QuestionSource": "live-poshenloh",
+    "AnswerSource": "live-poshenloh-answer-key",
+    "SolutionSource": "Original Math Practice solution",
+    "AreaSource": "Pending topic curation",
+    "Concepts": "recursive counting; subsets",
+    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2007A/solutions",
+    "SourceSHA256": "dd83e449a3b1b2e92c64d13e9a651ba28b1450c98ef3c974f2a004ee473bdc11",
+    "Figures": [],
+    "FigureSources": {},
+    "SourceQuestionCount": 25,
+    "HistoricalSeries": "AMC 12",
+    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+    "Copyright": "Copyright Mathematical Association of America",
+    "License": "CC-BY-NC-SA-4.0",
+    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "TranscriptionSource": "LIVE by Po-Shen Loh",
+    "Modifications": [
+      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
+      "Third-party worked solution and solution-only figures omitted from the public distribution"
+    ],
+    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+    "SolutionReview": {
+      "status": "reviewed",
+      "solutionSHA256": "c0dda9f84372c02e3cbbb5a5fe4d95c1cafdef4bc922acb6a278ee796716d18b",
+      "questionContentHash": "088ee26715895ec187d9d6f84d0ffd7ff112c3274a90ca65b212ea2398277375",
+      "evidence": {
+        "path": "knowledge-graph/evidence/solutions-2026-11-06/2007_AMC_12A_Q25.json",
+        "sha256": "6ea6fd7025e512ec1fafe53fb29a2139df613d0667a1e0e1502f7d04d19948f9"
+      },
+      "author": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "reviewer": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      }
+    }
+  },
+  "ID": "2007_AMC_12A_Q25",
+  "Bank": "amc",
+  "SchemaVersion": "2.0",
+  "ResponseType": "choice",
+  "Language": "en",
+  "domain": [],
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "1.0.0",
+    "contentHash": "088ee26715895ec187d9d6f84d0ffd7ff112c3274a90ca65b212ea2398277375",
+    "status": "mapped",
+    "reviewStatus": "machine_scope_audited",
+    "assessedIds": [
+      "cnm_h230"
+    ],
+    "supportIds": [
+      "cnm_h006"
+    ],
+    "routes": [
+      {
+        "id": "compress-selected-gaps",
+        "label": "Compress gaps and use combinations",
+        "nodeIds": [
+          "math:bijective-counting",
+          "cnm_h237"
+        ]
+      },
+      {
+        "id": "recur-on-last-element",
+        "label": "Recur on the last element",
+        "nodeIds": [
+          "math:recursive-counting-probability"
+        ]
+      },
+      {
+        "id": "solution:recur-on-last-element:c0dda9f84372",
+        "label": "Count according to whether the last integer is selected",
+        "nodeIds": [
+          "cnm_h230",
+          "math:recursive-counting-probability",
+          "cnm_h200",
+          "cnm_h006"
+        ]
+      },
+      {
+        "id": "solution:compress-selected-gaps:c0dda9f84372",
+        "label": "Remove the required gaps and use combinations",
+        "nodeIds": [
+          "cnm_h230",
+          "math:bijective-counting",
+          "cnm_h237",
+          "cnm_h006",
+          "cnm_h236"
+        ]
+      }
+    ],
+    "flags": []
+  }
+}

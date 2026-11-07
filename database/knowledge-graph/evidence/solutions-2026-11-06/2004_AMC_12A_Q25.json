@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2004_AMC_12A_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "80d63df6616c43cc1b1e21a94e7ba433e0bcbe0badc1f5e3fdab3e9ee76b3609",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "71df21fb8a5fdb56b5d08ef5c4f3e9004a0aa48b64b2c66d6717d2bb1aabc5c7",
+  "solutionFigureHashes": {},
+  "candidateHash": "5388fbc1d5527dcafec32ece0fb5c896fa6075de0a326aee476f886bf341009a",
+  "candidate": {
+    "questionId": "2004_AMC_12A_Q25",
+    "derivedAnswer": "\\(962\\), choice E",
+    "answerStatus": "matches",
+    "answerReason": "Writing the repeating base-k expansion as a geometric series produces a telescoping product equal to 962/98!. Multiplying this value by 97! gives 962/98, which is not an integer, ruling out every smaller factorial denominator.",
+    "methods": [
+      {
+        "id": "base-expansion-telescoping",
+        "label": "Convert the repeating blocks and telescope",
+        "explanation": "Use \\(k\\) for the base so that the factorial index \\(n\\) remains separate. The repeating block has value \\(k^{-1}+3k^{-2}+3k^{-3}\\), and each following block is \\(k^{-3}\\) times the previous one. Since \\(k\\ge4\\), this ratio lies strictly between \\(0\\) and \\(1\\). Therefore\n\\[\n\\begin{aligned}\na_k\n&=\\frac{k^{-1}+3k^{-2}+3k^{-3}}{1-k^{-3}}\\\\\n&=\\frac{k^2+3k+3}{k^3-1}.\n\\end{aligned}\n\\]\nThe numerator resembles the quadratic factor of a difference of cubes. Define \\(F(k)=k^2+k+1\\). Then\n\\[\nk^2+3k+3=F(k+1),\n\\qquad k^3-1=(k-1)F(k),\n\\]\nso\n\\[\na_k=\\frac{F(k+1)}{(k-1)F(k)}.\n\\]\nAll these denominators are positive for \\(k\\ge4\\). In the product, the factors \\(F(5),F(6),\\ldots,F(99)\\) cancel, leaving only the endpoints:\n\\[\n\\begin{aligned}\n\\prod_{k=4}^{99}a_k\n&=\\frac{F(100)}{F(4)}\n\\cdot\\frac{1}{3\\cdot4\\cdots98}\\\\\n&=\\frac{10101}{21}\\cdot\\frac{2}{98!}\\\\\n&=\\frac{962}{98!}.\n\\end{aligned}\n\\]\nIt remains to prove that \\(98\\) is the smallest possible factorial index. If some \\(n\\le97\\) gave an integer numerator, multiplying the product by \\(97!\\) would give an integer, because \\(97!/n!\\) is an integer. But\n\\[\n97!\\prod_{k=4}^{99}a_k=\\frac{962}{98},\n\\]\nwhich is not an integer: \\(962=9\\cdot98+80\\). Thus every smaller factorial denominator is impossible. The minimum index is \\(n=98\\), and the requested numerator is \\(\\boxed{962}\\), choice \\(\\text{E}\\).",
+        "nodeIds": [
+          "cnm_024",
+          "math:infinite-geometric-series",
+          "math:sum-difference-cubes",
+          "math:telescoping"
+        ],
+        "prerequisiteIds": [
+          "math:factorial-notation",
+          "cnm_p153",
+          "cnm_160"
+        ],
+        "levelReason": "The argument uses positional notation, a convergent geometric series, polynomial factorization, finite cancellation, and elementary divisibility."
+      }
+    ],
+    "assessedIds": [
+      "cnm_024",
+      "math:telescoping"
+    ],
+    "supportIds": [
+      "math:factorial-notation",
+      "cnm_p153"
+    ],
+    "annotationRationale": "The main targets are interpreting the base-k numeral and exposing cancellation in its product. Infinite-series summation and the difference-of-cubes identity are components of this written route. Factorial notation and divisibility support the proof that the denominator index is minimal.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2004_AMC_12A_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "For k >= 4, the repeating-block series converges and gives a_k=F(k+1)/((k-1)F(k)), with positive denominators. Cancellation yields 962/98!. If any smaller factorial index worked, multiplication by 97! would be integral, contradicting 962/98=9+80/98.",
+    "levelCheck": "Positional notation, geometric series, polynomial factorization, cancellation, and elementary divisibility are appropriate for AMC 12.",
+    "methodDistinctness": "One complete method establishes both the product and the minimum factorial index.",
+    "annotationCheck": "Numeral systems and telescoping are suitable assessed targets. Series summation and cube factorization are method components; factorial notation and divisibility are appropriate shared support.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "base-expansion-telescoping": "base-expansion-telescoping"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "dbbc3b8148b3d775690afda2783a2a2fb483617709d859d0330b367380077b0f",
+    "inputHash": "ad399c5ec562f1650bacb02d98c2a521b9c25160398c16f9a34ebe243cb71508",
+    "authorInputHash": "019610a428a682da41ed25e6bcf1c0f192d018d89a4c64ec64fced8f20ddb164",
+    "reviewInputHash": "6b2f835826b14988ec3b4a78db3fd547d90e7f5e4fd8ffc0cab929a2c82534b6",
+    "authorResponseHash": "09450ab3c74f7af58392eb06359a8dc31ad05328bcb8205cd7623f7fadc11279",
+    "reviewerResponseHash": "8d455fc9ad6f81e347b110bf530f6bce6a0feec818045c0c6964a9137b75ddcf",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

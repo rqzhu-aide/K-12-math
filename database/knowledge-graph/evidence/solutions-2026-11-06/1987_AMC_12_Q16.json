@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1987_AMC_12_Q16",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "7ab9ff9d1c2db4b68b7c43cbb0d3c88afbcea047cbee3bd0a39a3447489c07d2",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "8a69e3adf31a9161dc23ba38fc91ef852ccd588fd9a964c7dc2109044ec0ea4c",
+  "solutionFigureHashes": {},
+  "candidateHash": "f41354b8c4751e2816049a61ef36401e1a66d123a310ad0b20030f42a40c2e48",
+  "candidate": {
+    "questionId": "1987_AMC_12_Q16",
+    "derivedAnswer": "D: 108",
+    "answerStatus": "matches",
+    "answerReason": "The carries uniquely determine X = 4, W = 0, Z = 3, Y = 1, and V = 2. Thus XYZ represents 413 in base 5, which equals 108.",
+    "methods": [
+      {
+        "id": "base-five-carries",
+        "label": "Follow the carries in base 5",
+        "explanation": "A change in a more significant digit when adding \\(1\\) signals a carry. Use each letter also for its associated digit; the five letters represent the distinct digits \\(0,1,2,3,4\\).\n\nFrom \\(VYZ\\) to \\(VYX\\), the first two digits stay fixed, so there is no carry and \\(X=Z+1\\). From \\(VYX\\) to \\(VVW\\), the middle digit changes. Therefore the ones digit must roll from \\(4\\) to \\(0\\), giving\n\\[\nX=4,\\qquad W=0,\\qquad Z=3.\n\\]\nThat carry increases the middle digit from \\(Y\\) to \\(V\\), so \\(V=Y+1\\). The two unused digits are \\(1\\) and \\(2\\), forcing \\(Y=1\\) and \\(V=2\\). The three original codes therefore represent \\((213)_5,(214)_5,(220)_5\\), which are consecutive as required.\n\nThus \\(XYZ\\) represents \\((413)_5\\). Its place values are \\(25,5,1\\), so its base-10 value is\n\\[\n4\\cdot25+1\\cdot5+3=\\boxed{108},\n\\]\nchoice \\(\\text{D}\\).",
+        "nodeIds": [
+          "cnm_024"
+        ],
+        "prerequisiteIds": [],
+        "levelReason": "The argument uses only positional notation, carrying, and elementary arithmetic."
+      }
+    ],
+    "assessedIds": [
+      "cnm_024"
+    ],
+    "supportIds": [],
+    "annotationRationale": "The target is understanding base-5 place values and carrying well enough to recover a digit correspondence and convert the requested number. These are applications of numeral systems; formal congruences are unnecessary.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1987_AMC_12_Q16",
+    "decision": "accept",
+    "mathematicalCheck": "The second increment forces \\(X=4,W=0\\), and the first gives \\(Z=3\\). The remaining digits and \\(V=Y+1\\) force \\(Y=1,V=2\\). The resulting codes are consecutive, and \\((413)_5=108\\).",
+    "levelCheck": "Carrying and positional notation are elementary, and the decisive deductions are explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "cnm_024 covers carrying and conversion in numeral systems, including base 5.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "base-five-carries": "base-five-carries"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "a7ff9923c9d48b054b26d40634154210eaaf933bf94642322f78d15785629731",
+    "inputHash": "3e3e6d9233c56286096277d0263e7e687883629fcec66a957cb1ef6035e192ed",
+    "authorInputHash": "3eb18e6fd0e08597e81606d97edc84ee20128197fcab00d4c799de4bded6be44",
+    "reviewInputHash": "fff120de748834e4bc23fbfc9101d5aa29cd33d97e86bf2dee2685461165fa31",
+    "authorResponseHash": "5e24a280d10aac4c591ea3a01a43b6379c32d8a0de03dc86f0ec5c287b60ec0f",
+    "reviewerResponseHash": "eac58b2f848603a8f3d0c0e53b953fcf6c0c1617e64cab0e433401fb139f1fb9",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

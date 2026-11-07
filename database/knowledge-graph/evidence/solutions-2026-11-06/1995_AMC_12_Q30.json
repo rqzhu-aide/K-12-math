@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1995_AMC_12_Q30",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "d92bdf018f22598bd55bc110fd682741c32d1bb41c5fdfa9a6f8496f8982dbcf",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "9e1eb39eb2bc67da7e087f850bed6e6b3b309b49ed17e48e90617388ec2191be",
+  "solutionFigureHashes": {},
+  "candidateHash": "c433fda4b0973b5f4d725ab7aceb05b79d289f2e95f52c6782eaf395ea841a44",
+  "candidate": {
+    "questionId": "1995_AMC_12_Q30",
+    "derivedAnswer": "D: 19",
+    "answerStatus": "matches",
+    "answerReason": "The cutting plane is x+y+z=9/2. A unit cube indexed by lower-corner coordinates i,j,k is intersected exactly when i+j+k is 2, 3, or 4, leaving 19 cubes.",
+    "methods": [
+      {
+        "id": "1995_AMC_12_Q30_m1",
+        "label": "Describe the plane and count excluded cubes",
+        "explanation": "Coordinates let us test each small cube without having to draw the entire section. The large cube has side length \\(3\\), so place it in \\(0\\le x,y,z\\le3\\), with the chosen diagonal joining \\(A=(0,0,0)\\) to \\(B=(3,3,3)\\).\n\nThe cutting plane is the perpendicular bisector plane of \\(AB\\). Its points are equally distant from \\(A\\) and \\(B\\): the Pythagorean theorem applied through the diagonal's midpoint gives equal squared distances to the two endpoints. Thus its equation is\n\\[\nx^2+y^2+z^2\n=(x-3)^2+(y-3)^2+(z-3)^2.\n\\]\nCanceling the squared terms gives\n\\[\n6(x+y+z)=27,\n\\qquad x+y+z=\\frac92.\n\\]\nIndex a unit cube by its lower corner \\((i,j,k)\\), where each index is \\(0\\), \\(1\\), or \\(2\\), and put \\(s=i+j+k\\). Within this cube, the smallest value of \\(x+y+z\\) is \\(s\\), and the largest is \\(s+3\\). Every value between them occurs along the cube's diagonal from \\((i,j,k)\\) to \\((i+1,j+1,k+1)\\). Therefore the plane intersects the cube exactly when\n\\[\ns\\le\\frac92\\le s+3.\n\\]\nSince \\(s\\) is an integer, this means \\(s=2,3,4\\).\n\nIt is shorter to count the excluded cubes. A sum below \\(2\\) occurs only for \\((0,0,0)\\) and the three placements of \\((1,0,0)\\), giving four cubes. A sum above \\(4\\) occurs only for \\((2,2,2)\\) and the three placements of \\((2,2,1)\\), giving four more.\n\nEvery unit cube has exactly one index triple, and the two excluded groups are disjoint. Hence the number intersected is\n\\[\n27-4-4=\\boxed{19}.\n\\]\nFor every accepted cube, \\(9/2\\) lies strictly between \\(s\\) and \\(s+3\\), so the plane cuts its interior. The answer is choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "math:lattice-counting",
+          "math:line-plane-perpendicular-definition",
+          "cnm_h154"
+        ],
+        "prerequisiteIds": [
+          "cnm_h151",
+          "cnm_p160",
+          "cnm_174"
+        ],
+        "levelReason": "The method derives the plane using equal distances and the Pythagorean theorem, then counts a small collection of integer-coordinate positions. It stays within elementary high-school spatial geometry."
+      }
+    ],
+    "assessedIds": [
+      "math:lattice-counting",
+      "math:line-plane-perpendicular-definition"
+    ],
+    "supportIds": [
+      "cnm_h151",
+      "cnm_p160",
+      "cnm_174"
+    ],
+    "annotationRationale": "The task combines a perpendicular plane condition with exact counting in a cubical grid. Indexing each cube by its lower corner converts the count into integer-coordinate restrictions, fitting lattice counting. The written route uses spatial distance calculations supported by three-dimensional coordinates, cube structure, and Pythagoras. Only the tools actually used in this distance-based route are assigned.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1995_AMC_12_Q30",
+    "decision": "accept",
+    "mathematicalCheck": "The perpendicular bisector plane has equation x+y+z=9/2 by equal endpoint distances. A cube indexed by lower-corner sum s is intersected exactly when s≤9/2≤s+3, so s is 2, 3 or 4. Exactly four cubes lie below this range and four above, leaving 19. Every counted cube is cut through its interior.",
+    "levelCheck": "Spatial coordinates, Pythagoras and finite enumeration fit AMC 12. The explanation supplies the geometric justification and the exact intersection criterion.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Lattice counting fits the explicit encoding of cubes by integer triples. Perpendicularity, spatial distance and the coordinate, cube and Pythagorean support nodes reflect the actual method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "1995_AMC_12_Q30_m1": "1995_AMC_12_Q30_m1"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "235ad6bbe9541db0b9dfc957a2aff02bd26cd6b3a69fb3ca350879b59415c153",
+    "inputHash": "a0a98d27b7e73ea663b2ddf1b18c3139e0eeb5145b102e0841b868e79fabfe90",
+    "authorInputHash": "e91b5679d274f97ef2b64c3efc9fafaf6631b3edaa29678520d93d5e287bd947",
+    "reviewInputHash": "cef51c40131d586b149f6bf8c11a2b7debeabc5454d71ed3474da6f9ac2997f7",
+    "authorResponseHash": "c4cd0fd77e99cbf0a4fd9658b6e7d8534eab66fe1c5a9e8aa56ef86d1bc80d2c",
+    "reviewerResponseHash": "3f1bf4a0177f1792fc003cd887796611765d8580e830c94f6583bae3710bea95",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1963_AMC_12_Q28",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "31d4dc87c63d09fdff5498fae8b5d300d9d6592c4f4674593779fbd6cbf22538",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "f3b04dff066882f6d21bafbf742ca73a1dd46339d164d60f6b2ffc74d0a4dffc",
+  "solutionFigureHashes": {},
+  "candidateHash": "a41d2211f8253ea1a39b28c4e7c8731e4853751e8afb3061644d6ca73d03c539",
+  "candidate": {
+    "questionId": "1963_AMC_12_Q28",
+    "derivedAnswer": "D, \\(k=\\dfrac43\\)",
+    "answerStatus": "matches",
+    "answerReason": "The root product is k/3, and real roots require k at most 4/3. This endpoint is attained by the repeated root 2/3, so the maximizing parameter is k = 4/3.",
+    "methods": [
+      {
+        "id": "discriminant-bound",
+        "label": "Bound the coefficient using real roots",
+        "explanation": "Let \\(u\\) and \\(v\\) be the real roots, counting a repeated root twice. Factoring the quadratic gives\n\\[\n3x^2-4x+k=3(x-u)(x-v).\n\\]\nThe constant term on the right is \\(3uv\\), so \\(uv=k/3\\). Because \\(3>0\\), maximizing the root product is equivalent to maximizing \\(k\\).\n\nThe roots are real exactly when the discriminant is nonnegative:\n\\[\n(-4)^2-4(3)k=16-12k\\ge0.\n\\]\nHence \\(k\\le\\tfrac43\\). This endpoint is allowed, since for \\(k=\\tfrac43\\) the equation becomes\n\\[\n3\\left(x-\\frac23\\right)^2=0.\n\\]\nBoth roots are then \\(\\tfrac23\\), with product \\(\\tfrac49\\). Thus the value of the parameter that maximizes the product is \\(\\boxed{k=\\tfrac43}\\), choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_226",
+          "cnm_223"
+        ],
+        "prerequisiteIds": [
+          "cnm_146",
+          "cnm_096"
+        ],
+        "levelReason": "The method uses quadratic root-coefficient relationships, the discriminant, and a linear inequality."
+      },
+      {
+        "id": "fixed-sum-product",
+        "label": "Bound a product with a fixed sum",
+        "explanation": "Let the real roots be \\(u\\) and \\(v\\), allowing them to be equal. Expanding their linear factors gives\n\\[\n3(x-u)(x-v)=3x^2-3(u+v)x+3uv.\n\\]\nComparing this with \\(3x^2-4x+k\\) shows that\n\\[\nu+v=\\frac43,\\qquad k=3uv.\n\\]\nThe fixed sum lets us bound the product using the nonnegative squared difference:\n\\[\n\\begin{aligned}\n0&\\le(u-v)^2\\\\\n&=(u+v)^2-4uv\\\\\n&=\\frac{16}{9}-4uv.\n\\end{aligned}\n\\]\nTherefore \\(uv\\le\\tfrac49\\). Equality holds exactly when \\(u=v\\); together with their sum, this gives \\(u=v=\\tfrac23\\). These roots are achieved when\n\\[\nk=3uv=3\\cdot\\frac49=\\frac43,\n\\]\nsince the original equation then equals \\(3(x-\\tfrac23)^2=0\\). Thus the maximizing parameter is \\(\\boxed{k=\\tfrac43}\\), choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_226",
+          "cnm_148"
+        ],
+        "prerequisiteIds": [
+          "cnm_146",
+          "cnm_096"
+        ],
+        "levelReason": "The alternative uses a fixed root sum and a nonnegative square, requiring only elementary algebra."
+      }
+    ],
+    "assessedIds": [
+      "cnm_226"
+    ],
+    "supportIds": [
+      "cnm_146",
+      "cnm_096"
+    ],
+    "annotationRationale": "Relating the root product to the parameter is the shared task-level target. Both methods explain the coefficient relationships by expanding linear factors. Polynomial multiplication and inequality manipulation support both routes. The discriminant belongs only to the first method; the perfect-square identity belongs only to the fixed-sum argument.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1963_AMC_12_Q28",
+    "decision": "accept",
+    "mathematicalCheck": "Both methods establish \\(uv=k/3\\). The discriminant gives \\(k\\le4/3\\). Independently, the fixed sum \\(u+v=4/3\\) and nonnegative squared difference give \\(uv\\le4/9\\). Equality is attained uniquely at the repeated roots u=v=2/3, corresponding to k=4/3.",
+    "levelCheck": "Both arguments use elementary algebra, explain the coefficient relationships and check attainment. Neither requires positivity of the roots or advanced optimization.",
+    "methodDistinctness": "The discriminant feasibility bound and the fixed-sum product bound offer distinct, accessible reasoning.",
+    "annotationCheck": "cnm_226 is shared and route-neutral. cnm_146 and cnm_096 support both methods, while cnm_223 and cnm_148 accurately identify their respective method-specific ideas.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "discriminant-bound": "solution:discriminant-bound:f3b04dff0668",
+    "fixed-sum-product": "fixed-sum-product"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "f554aa245b0ac1e3f090074a51d36a7ac33ec468fa9b8703aebd17e2b0c498ce",
+    "inputHash": "dad08e10273a14faa0bbfa9041f4a0f71a33ca376717b82276ed7bc863c87018",
+    "authorInputHash": "c1f177cc55a794ffd9fb6cc3c6ce60a2531b9efb79439c6ebc404fe0d410df54",
+    "reviewInputHash": "45c736866ac9e82d40c4fa21e407d0b817a4310937cebbf73fc28fe67dc73b06",
+    "authorResponseHash": "89fed54166d390ab93a5317bbb9c44e64d07a9c78760b232ea52218dc9d1d824",
+    "reviewerResponseHash": "910656a6fd80986a80f75ab3b5e3e1cd79db20e1aa48154bc693e184a906d824",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

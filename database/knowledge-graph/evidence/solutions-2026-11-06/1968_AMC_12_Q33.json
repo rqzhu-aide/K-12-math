@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1968_AMC_12_Q33",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "4565687b99745528a3787fc10dd9b38faf20196997ec395412d634af8d133428",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "47dd36e1a50eece28991a465443df3738241eb4dc45796b2c04a3ca3796f0a8e",
+  "solutionFigureHashes": {},
+  "candidateHash": "ec3a1a90f89771602d58664137017e7513306faf2b8784f858e48e3d3f2a7c6b",
+  "candidate": {
+    "questionId": "1968_AMC_12_Q33",
+    "derivedAnswer": "\\(0\\), choice A.",
+    "answerStatus": "matches",
+    "answerReason": "Expanding both base representations makes the middle digit a multiple of 8. A base-7 digit is between 0 and 6, so that digit must be 0; a valid representation exists.",
+    "methods": [
+      {
+        "id": "base-expansion-and-multiples",
+        "label": "Expand the place values",
+        "explanation": "Let the base-\\(7\\) representation be \\((abc)_7\\), so the base-\\(9\\) representation is \\((cba)_9\\). The digits satisfy \\(1\\le a,c\\le6\\) and \\(0\\le b\\le6\\); neither representation begins with zero.\n\nExpressing both representations by their place values gives\n\\[\n49a+7b+c=81c+9b+a.\n\\]\nCollecting terms isolates the middle digit:\n\\[\n48a-80c=2b,\n\\qquad b=8(3a-5c).\n\\]\nBecause \\(a\\) and \\(c\\) are integers, \\(b\\) is a multiple of \\(8\\). The only such multiple among the allowed digits \\(0,1,\\ldots,6\\) is \\(0\\).\n\nThis is achievable: choosing \\(a=5\\) and \\(c=3\\) gives\n\\[\n(503)_7=5\\cdot49+3=248,\n\\qquad\n(305)_9=3\\cdot81+5=248.\n\\]\nThus the middle digit is \\(\\boxed{0}\\), choice A.",
+        "nodeIds": [
+          "cnm_024",
+          "math:integer-diophantine-equations"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_042"
+        ],
+        "levelReason": "The solution uses positional notation, a linear rearrangement, and the elementary meaning of a multiple."
+      }
+    ],
+    "assessedIds": [
+      "cnm_024",
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_p153"
+    ],
+    "annotationRationale": "The task combines base-dependent place values with integer digit restrictions. The method derives a bounded multiple and checks existence, directly matching the integer-equation target. Factors and multiples supply the needed divisibility knowledge; formal congruence notation is not used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1968_AMC_12_Q33",
+    "decision": "accept",
+    "mathematicalCheck": "The digit bounds are valid. Equating place-value expansions gives 48a-80c=2b, so b=8(3a-5c). Because 0≤b≤6, necessarily b=0. The example (503)7=(305)9=248 verifies existence, so the requested middle digit is uniquely determined.",
+    "levelCheck": "Place value, linear rearrangement, and bounded multiples provide sufficient elementary reasoning.",
+    "methodDistinctness": "One complete method is sufficient; formal congruences add no needed idea.",
+    "annotationCheck": "Numeral systems and bounded integer-equation reasoning match the assessed nodes. Factors and multiples support the actual argument, and omitting the earlier formal-congruence support is justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "base-expansion-and-multiples": "base-expansion-and-multiples"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "5268ef9e138186f5f3238a2c3a31f0a3e175f6594f695b178dadd53eecd71255",
+    "inputHash": "8cb14b005c839e081a041abcacbd6054185002f3ae1a1936a0a226c55c3883f1",
+    "authorInputHash": "a0863a2fcbe002284d6345b95441c14efb64546fa0f1843bf9c1ad4e0105b0f3",
+    "reviewInputHash": "ca905f010a84036f8408cc81733c9a2a7bb34e0ffe34ccee27e7224fe27370d3",
+    "authorResponseHash": "e4fba8c598c28123bc7c1e3c99e975a135b475c6c0b567ca7982bcbb14e93145",
+    "reviewerResponseHash": "0fe553e6e39bfcd4e6e3fa922885ad1f172102e963fc22cd8e7495fd220b5bd1",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

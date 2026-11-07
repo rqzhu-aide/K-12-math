@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2002_AMC_12A_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ac664d61a7520e7757b1cd36fa78d61d94d3495eca31a150d9ec5952af0dde28",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "924b9116ad23e34fb77b5364f47d96db9051149dda4495ad5123d77898bdc3ac",
+  "solutionFigureHashes": {},
+  "candidateHash": "c1a56b98ead5f5a81f4065133147131d8736266f413c9567605816703fe75916",
+  "candidate": {
+    "questionId": "2002_AMC_12A_Q21",
+    "derivedAnswer": "1999, choice B",
+    "answerStatus": "matches",
+    "answerReason": "A repeating block of twelve terms sums to 60. The sums at indices 1998 and 1999 are respectively 9996 and 10002, so the first threshold crossing occurs at 1999.",
+    "methods": [
+      {
+        "id": "repeated-pair-and-block-sums",
+        "label": "Prove a repeating block and add whole blocks",
+        "explanation": "Because each new term depends on the previous two terms, look for a repeated consecutive pair. Repeating a single term would not be enough to determine what follows.\n\nContinuing the units-digit rule gives the first twelve terms\n\\[\n4,7,1,8,9,7,6,3,9,2,1,3.\n\\]\nThe next two terms are \\(4\\) and \\(7\\), since \\(1+3=4\\) and \\(3+4=7\\). Thus terms \\(13,14\\) repeat the starting pair. The same pair always produces the same next term, so the entire twelve-term block repeats indefinitely.\n\nOne block sums to \\(60\\). Therefore \\(166\\) complete blocks contain \\(166\\cdot12=1992\\) terms and have sum\n\\[\nS_{1992}=166\\cdot60=9960.\n\\]\nThe next block must contribute more than \\(40\\) to cross the threshold. Its first six terms sum to\n\\[\n4+7+1+8+9+7=36,\n\\]\nand its seventh term is \\(6\\). Hence\n\\[\nS_{1998}=9996,\n\\qquad\nS_{1999}=10002.\n\\]\nAll terms are nonnegative, so every earlier partial sum is at most \\(S_{1998}\\). The smallest required index is therefore \\(\\boxed{1999}\\), choice B.",
+        "nodeIds": [
+          "cnm_h200"
+        ],
+        "prerequisiteIds": [
+          "cnm_h197",
+          "cnm_p017"
+        ],
+        "levelReason": "The proof uses direct recurrence calculation, the fact that a repeated determining pair repeats the future, and elementary block arithmetic. Formal congruence machinery is unnecessary."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h200"
+    ],
+    "supportIds": [
+      "cnm_h197",
+      "cnm_p017"
+    ],
+    "annotationRationale": "The existing recurrence node covers generating terms from the preceding pair. Sequence indexing and units-digit place value support the written method. The decisive periodicity proof and block-sum threshold argument need a more precise target than the catalog currently supplies; formal modular congruence is not imposed on this solution.",
+    "needsNewNodes": [
+      {
+        "name": "Periodicity and block sums in deterministic recurrences",
+        "description": "Prove that repeating the complete consecutive-term state determining a recurrence forces the subsequent terms to repeat. Use complete periods and a final partial block to evaluate sums or locate a first threshold crossing.",
+        "reason": "The catalog's simple-recurrence criteria cover computing subsequent terms, but do not capture proving periodicity from a repeated determining state and using that period to sum a long sequence."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2002_AMC_12A_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "The displayed twelve terms sum to 60, and terms 13 and 14 repeat the initial determining pair 4,7, proving repetition. Thus S_1992=9960, S_1998=9996, and S_1999=10002. Nonnegative terms exclude every earlier index.",
+    "levelCheck": "Direct recurrence calculation and block arithmetic give a complete elementary explanation without formal congruences.",
+    "methodDistinctness": "One well-explained periodic-block method is sufficient.",
+    "annotationCheck": "The recurrence and supporting sequence/place-value nodes fit. The proposed periodicity-and-block-sum node honestly identifies content beyond the existing recurrence criteria without claiming an unsupported equivalence.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "repeated-pair-and-block-sums": "repeated-pair-and-block-sums"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c0383f185ab27f64b147cbafbe7fb0a4f6d652e8c5115e173cb386c0930b5277",
+    "inputHash": "b75f4f6f85ed57c1f69ed2b0ab10ce4de321edc6feae738fb249a00f81074848",
+    "authorInputHash": "62c059cfd5a484d3693240bb232f3cc28414a4b18acf33fe64526e1c7fb255f7",
+    "reviewInputHash": "56f3428a842357ca79bd02cd7c4bc9bd7489f3fa8a3ae8b32d1e407377064e7b",
+    "authorResponseHash": "2b82e0ff6f50fdf03f03898ae675bb26a133153ae935e609705ecdd521eec258",
+    "reviewerResponseHash": "110f6c5627eca8e2a08341af69bd6ccb18f612d4bdfa8c1b4c4d2518b51bd36f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

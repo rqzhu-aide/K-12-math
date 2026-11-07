@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1972_AMC_12_Q33",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "78ae0d96cd4d0980fe0bca59cc16d42b12affcde6d94fcfa501978d5570bed23",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "be3dc9c989548676f537d766315925a097eca715af3b597ab062faba599bbdaf",
+  "solutionFigureHashes": {},
+  "candidateHash": "e03159be8b54a12b7b82958a5c4e557686015fd606731527081eec103f8f1f82",
+  "candidate": {
+    "questionId": "1972_AMC_12_Q33",
+    "derivedAnswer": "C, 10.5",
+    "answerStatus": "matches",
+    "answerReason": "Every allowed number N with digit sum S satisfies 2N ≥ 21S. Equality is attained by 189, giving the minimum 189/18 = 10.5.",
+    "methods": [
+      {
+        "id": "linear-lower-bound",
+        "label": "Method 1: Prove a sharp lower bound",
+        "explanation": "A small hundreds digit and a large units digit are promising because place value makes the hundreds digit much more costly in the numerator. The allowed number \\(189\\) gives\n\\[\n\\frac{189}{1+8+9}=\\frac{189}{18}=10.5.\n\\]\nWe will prove that no allowed number has a smaller quotient.\n\nLet \\(a,b,c\\) be the hundreds, tens, and units digits. They are distinct integers from \\(1\\) to \\(9\\). Write\n\\[\nN=100a+10b+c,\\qquad S=a+b+c>0.\n\\]\nTo compare \\(N/S\\) with \\(10.5=21/2\\), clear the positive denominator:\n\\[\n2N-21S=179a-b-19c.\n\\]\nWe have \\(a\\ge1\\). Also, \\(b+19c\\le179\\): if \\(c=9\\), distinctness gives \\(b\\le8\\), so \\(b+19c\\le8+171=179\\). If \\(c\\le8\\), then \\(b+19c\\le9+152=161\\).\n\nIt follows that\n\\[\n2N-21S\\ge179-179=0,\n\\qquad \\frac NS\\ge\\frac{21}{2}.\n\\]\nThe digits of \\(189\\) are distinct and nonzero, and its quotient attains this bound. Thus the minimum is \\(\\boxed{10.5}\\), choice \\(\\text{C}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_096"
+        ],
+        "prerequisiteIds": [
+          "cnm_027",
+          "cnm_p053"
+        ],
+        "levelReason": "The proof uses place value and a linear inequality with two elementary digit cases, followed by an attaining example."
+      },
+      {
+        "id": "digit-replacement-comparisons",
+        "label": "Method 2: Improve the digits one at a time",
+        "explanation": "Let the distinct nonzero digits be \\(a,b,c\\), and define\n\\[\nR(a,b,c)=\\frac{100a+10b+c}{a+b+c}.\n\\]\nFor any fixed three digits, rearranging them leaves the denominator unchanged. The numerator is smallest when the digits increase from left to right: swapping a larger digit in a higher place with a smaller digit in a lower place decreases the number by the positive difference in place values times the positive difference in digits. Thus a minimum must have \\(a<b<c\\).\n\nIf \\(a>1\\), replacing it by \\(1\\) keeps the digits distinct. Comparing the two quotients gives\n\\[\nR(a,b,c)-R(1,b,c)\n=\\frac{(a-1)(90b+99c)}{(a+b+c)(1+b+c)}>0.\n\\]\nAll factors in the denominator are positive. Therefore the minimum has \\(a=1\\).\n\nWith this digit fixed, rewrite the quotient as\n\\[\nR(1,b,c)=1+\\frac{99+9b}{1+b+c}.\n\\]\nFor fixed \\(b\\), the numerator of the fraction is positive, so increasing \\(c\\) decreases the quotient. Because \\(1<b<c\\le9\\), choosing \\(c=9\\) is allowed and is best.\n\nNow \\(b\\) ranges from \\(2\\) to \\(8\\), and\n\\[\nR(1,b,9)=\\frac{109+10b}{b+10}\n=10+\\frac9{b+10}.\n\\]\nThis is smallest when \\(b=8\\), the largest allowed value. Hence \\(189\\) gives the minimum\n\\[\n10+\\frac9{18}=\\boxed{10.5},\n\\]\nchoice \\(\\text{C}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_h019",
+          "cnm_162"
+        ],
+        "prerequisiteIds": [
+          "cnm_027",
+          "cnm_p053",
+          "cnm_096"
+        ],
+        "levelReason": "The method uses elementary exchange comparisons and positive-denominator fraction comparisons, without calculus."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_027",
+      "cnm_p053"
+    ],
+    "annotationRationale": "The route-neutral target is proving an attained discrete minimum. Both methods translate decimal digits into a number and its digit sum. The first route proves a universal linear bound using inequality properties. The second uses rearrangement, subtraction comparisons, and rational-expression simplification to improve candidates. Those route-specific procedures are not combined into a single requirement.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1972_AMC_12_Q33",
+    "decision": "accept",
+    "mathematicalCheck": "Method 1 proves 2N−21S=179a−b−19c≥0 using a≥1 and the complete bound b+19c≤179; 189 attains equality. Method 2 correctly orders the digits, proves that replacing a>1 by 1 decreases the quotient, and then minimizes successively at c=9 and b=8.",
+    "levelCheck": "Both proofs explain their decisive comparisons using accessible school algebra and positive denominators.",
+    "methodDistinctness": "The universal sharp bound and the successive digit improvements provide distinct, useful approaches.",
+    "annotationCheck": "The attained discrete minimum is route neutral. Shared place-value and expression-writing support is justified, while inequality and subtraction procedures remain method specific.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "linear-lower-bound": "solution:linear-lower-bound:be3dc9c98954",
+    "digit-replacement-comparisons": "solution:digit-replacement-comparisons:be3dc9c98954"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "197163635a322e878f8348d048fba70cc97597608be8a11c30106cd1f3b6fc4d",
+    "inputHash": "9e65631683b6f15a8a59bf84a87f813a34cd0dc3d86d310c4931b44521d678bd",
+    "authorInputHash": "f7b8ff7ff9bb20e804c03fcc6c2c0b5118d9e0036badecfa5e0224f8fe022805",
+    "reviewInputHash": "44fe02e0ad219308fec02d37d49a980f5f07ba33230e7fd498ea8ec2cee69a12",
+    "authorResponseHash": "8cd3e0924c221c6f38d52f44940e1aa7fb6eca998052c5c7aca8c6da6197ada4",
+    "reviewerResponseHash": "597ae822edd664c025c1db6b8673aeef421ecc51502c45d1e07f48bb6346478b",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

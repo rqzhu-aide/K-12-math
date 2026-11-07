@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2000_AMC_12_Q01",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "d1fc459b2ac3d63e5494bea8804f2169f31a6791d1195ec5168a5af17886348a",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "3b511f8d3733efdf6b85a6cf0cddb8910f46acaac4b85c9b7a2254506a83f1e8",
+  "solutionFigureHashes": {},
+  "candidateHash": "c17be61674d1e486763be630a094aeb81f61528457ef757b44615ba92fceae2d",
+  "candidate": {
+    "questionId": "2000_AMC_12_Q01",
+    "derivedAnswer": "E: 671",
+    "answerStatus": "matches",
+    "answerReason": "The admissible triples, up to order, have sums 671, 111, 99, and 55. The maximum is 671, attained by 1, 3, and 667.",
+    "methods": [
+      {
+        "id": "enumerate-factor-triples",
+        "label": "List the possible factor triples",
+        "explanation": "Factoring the fixed product makes the possibilities manageable:\n\\[\n2001=3\\cdot23\\cdot29.\n\\]\nThese are three distinct prime factors, each occurring once. Since changing the order does not change the sum, we list each triple in increasing order.\n\nIf none of the integers is \\(1\\), each must receive at least one prime factor. Thus the triple must be \\((3,23,29)\\). If one integer is \\(1\\), the other two must split the three prime factors into one prime and the product of the other two. This gives exactly \\((1,3,667)\\), \\((1,23,87)\\), and \\((1,29,69)\\). There cannot be two entries equal to \\(1\\), because the integers are distinct.\n\nThese cases include every allowed triple without repetition. Their sums are\n\\[\n\\begin{aligned}\n1+3+667&=671,\\\\\n1+23+87&=111,\\\\\n1+29+69&=99,\\\\\n3+23+29&=55.\n\\end{aligned}\n\\]\nTherefore the largest possible sum is \\(\\boxed{671}\\), choice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "math:integer-diophantine-equations",
+          "math:prime-factorization"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_p157"
+        ],
+        "levelReason": "Prime factorization and a short exhaustive case split use elementary arithmetic within AMC 12 scope."
+      },
+      {
+        "id": "concentrate-and-bound",
+        "label": "Increase the sum while preserving the product",
+        "explanation": "Combining factors can preserve the product while increasing the sum. To use this, put the three distinct integers in increasing order, \\(a<b<c\\).\n\nIf \\(a>1\\), replace \\((a,b,c)\\) by \\((1,a,bc)\\). The new integers are still distinct because \\(1<a<bc\\), and their product is still \\(2001\\). The increase in their sum is\n\\[\n(1+a+bc)-(a+b+c)=(b-1)(c-1)>0.\n\\]\nThus a triple with maximum sum must contain \\(1\\).\n\nWrite such a triple as \\((1,u,v)\\), where \\(1<u<v\\) and \\(uv=2001\\). Since the product is odd, both \\(u\\) and \\(v\\) are odd, so each is at least \\(3\\). This makes the following product nonnegative:\n\\[\n\\begin{aligned}\n0&\\le (u-3)(v-3)\\\\\n &=2001-3(u+v)+9.\n\\end{aligned}\n\\]\nConsequently \\(u+v\\le670\\), and the total sum is at most \\(671\\). The distinct positive integers \\(1,3,667\\) have product \\(2001\\) and sum \\(671\\), so this bound is attained. The answer is \\(\\boxed{671}\\), choice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_h019",
+          "cnm_h018"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_p156",
+          "cnm_146",
+          "cnm_096"
+        ],
+        "levelReason": "The argument uses only factor regrouping, polynomial expansion, and basic inequalities; it needs no advanced optimization theorem."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_p153"
+    ],
+    "annotationRationale": "The task asks for an attained maximum over discrete factor triples, so the extremal target is route-neutral. Factor relationships support both methods. The first route uses prime factorization to solve the integer restrictions exhaustively. The second uses comparison by subtraction and elementary inequalities; its parity and expansion knowledge remain local to that route.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2000_AMC_12_Q01",
+    "decision": "accept",
+    "mathematicalCheck": "The factorization 2001 = 3·23·29 yields exactly the four listed unordered admissible triples, whose maximum sum is 671. Independently, the replacement increases the sum while preserving admissibility, and (u−3)(v−3) ≥ 0 proves the attained upper bound 671.",
+    "levelCheck": "Both methods explain their decisive steps using elementary arithmetic and school algebra appropriate for AMC 12.",
+    "methodDistinctness": "Exhaustive factor allocation and an improving replacement followed by a universal bound offer genuinely different insights.",
+    "annotationCheck": "The extremal assessment is route-neutral. Factor knowledge supports both methods, while prime factorization, subtraction comparison, expansion, and inequality properties are correctly assigned locally.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "enumerate-factor-triples": "solution:enumerate-factor-triples:3b511f8d3733",
+    "concentrate-and-bound": "concentrate-and-bound"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "6d723405ece14a65745f9de7bcbb93cbd79e589a835c105c2938785a960ea420",
+    "inputHash": "e7ef7999299b6bcf3d907b571b220c77a6ec73c31103bcb267bf001c743d67a6",
+    "authorInputHash": "ec76482875ab8f80627c6ea15f757383fee577be3c1d9db54c223dc3cb7942d0",
+    "reviewInputHash": "adc11a0f35d461d425896262cdbcdc29c3257b1f81786f55730328d947bd72c1",
+    "authorResponseHash": "0aeeed626ac8346792e620a6ed0a47cdadf4b8c47e769619c2f4d3a8ee53701f",
+    "reviewerResponseHash": "93dce2fa0f1d2b2819d7845ed5a9794f5c1dc6808ee97b450e970abf798996a0",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

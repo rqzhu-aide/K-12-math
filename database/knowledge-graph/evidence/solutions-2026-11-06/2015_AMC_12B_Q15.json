@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2015_AMC_12B_Q15",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "0f7d80b8fb2d68e96d1adb5c7063d9cc337fce56c7cbe00427450eaf8f82a960",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "e6e626a0d49cfed0d2bac46dee9dfa4fe5bb52d0046566d37d7d37a3864ecb1d",
+  "solutionFigureHashes": {},
+  "candidateHash": "453f29d5dbb60d63d44be20601e9564e23614d54ca125233a05f45d1f50a687b",
+  "candidate": {
+    "questionId": "2015_AMC_12B_Q15",
+    "derivedAnswer": "D: \\(\\dfrac{11}{24}\\)",
+    "answerStatus": "matches",
+    "answerReason": "English and History must contribute at least 6 points. Summing the probabilities of the disjoint successful grade cases gives 11/24.",
+    "methods": [
+      {
+        "id": "partition-by-english",
+        "label": "Method 1: Separate the English grades",
+        "explanation": "A GPA of at least \\(3.5\\) requires at least \\(4\\cdot3.5=14\\) total points. Mathematics and Science contribute \\(8\\), so English and History must contribute at least \\(6\\).\n\nSince English must be A, B, or C, its probability of C is\n\\[\n1-\\frac16-\\frac14=\\frac7{12}.\n\\]\nAn A in English succeeds with any allowed History grade. A B in English requires an A or B in History. A C in English requires an A in History. These cases are disjoint and include every successful pair.\n\nThe grades in the two subjects are independent, so we multiply probabilities within each case and add across the cases:\n\\[\n\\begin{aligned}\nP&=\\frac16+\\frac14\\left(\\frac14+\\frac13\\right)\n  +\\frac7{12}\\cdot\\frac14\\\\\n &=\\frac16+\\frac7{48}+\\frac7{48}\n =\\frac{11}{24}.\n\\end{aligned}\n\\]\nThe probability is \\(11/24\\), choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "cnm_h140",
+          "cnm_h138"
+        ],
+        "prerequisiteIds": [
+          "cnm_211",
+          "cnm_h139"
+        ],
+        "levelReason": "Uses the arithmetic mean, independent-event multiplication, and addition over disjoint cases."
+      },
+      {
+        "id": "complement-of-failure",
+        "label": "Method 2: Subtract the probability of failure",
+        "explanation": "The two certain As supply \\(8\\) points, while a GPA of \\(3.5\\) requires \\(14\\). Thus English and History must total at least \\(6\\) points.\n\nAn A in either subject guarantees this total, and two Bs also qualify. Therefore the only failing pairs, with English listed first, are \\((C,C)\\), \\((C,B)\\), and \\((B,C)\\). They are distinct and exhaust all pairs whose point total is below \\(6\\).\n\nThe probabilities of C are\n\\[\nP(\\text{English C})=1-\\frac16-\\frac14=\\frac7{12},\n\\]\n\\[\nP(\\text{History C})=1-\\frac14-\\frac13=\\frac5{12}.\n\\]\nGroup the failures as English C with History B or C, and English B with History C. Independence gives\n\\[\n\\begin{aligned}\nP(\\text{failure})\n&=\\frac7{12}\\left(\\frac13+\\frac5{12}\\right)\n  +\\frac14\\cdot\\frac5{12}\\\\\n&=\\frac7{16}+\\frac5{48}=\\frac{13}{24}.\n\\end{aligned}\n\\]\nHence the desired probability is \\(1-13/24=11/24\\), choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "cnm_h140",
+          "cnm_h138",
+          "cnm_h139"
+        ],
+        "prerequisiteIds": [
+          "cnm_211"
+        ],
+        "levelReason": "Uses the same elementary probability rules as the first method, with a complementary-event calculation."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h140",
+      "cnm_h138"
+    ],
+    "supportIds": [
+      "cnm_211",
+      "cnm_h139"
+    ],
+    "annotationRationale": "Both methods assess multiplying independent grade probabilities and adding disjoint event probabilities. Interpreting the average and recognizing complementary grade events support both routes. The first partitions successful outcomes by English grade; the second identifies every failing pair and takes the complement. These are alternative approaches.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2015_AMC_12B_Q15",
+    "decision": "accept",
+    "mathematicalCheck": "English and History must total at least 6 points. The exhaustive success partition gives 1/6+7/48+7/48=11/24. The three failing pairs have total probability 13/24, independently confirming the complement calculation.",
+    "levelCheck": "Both methods explain the GPA threshold, independence, and disjoint cases at an appropriate level.",
+    "methodDistinctness": "Counting successes directly and using the smaller collection of failures provide useful alternative approaches at the same level.",
+    "annotationCheck": "Independence and probability addition are shared targets. Mean and complementary-event knowledge support both methods, including the calculation of missing grade probabilities.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "partition-by-english": "partition-by-english",
+    "complement-of-failure": "complement-of-failure"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "ef9613d74c79f976f13c04f0ac9e0e9c2c32a9ea431ee22f3a124ecba47cd435",
+    "inputHash": "562779ac291cf32d4acef30b56c5b0aec8b6f5e0ad6d9605eb779be15f95af58",
+    "authorInputHash": "212ec1683a21eaee2d9f8467654ab5fabd1307a9e0effa0228136996a859120d",
+    "reviewInputHash": "e465580f00d0f7d1b5b2e1b03fc6f4e3936f8ec81e49a1a22e837fb01034a0d8",
+    "authorResponseHash": "375170f023333b6f7d801a5619f69e57ea5eb6b366107daff41a200562c47015",
+    "reviewerResponseHash": "360e7110ba8a0392bd3ed8e800b27fc49299b8cf20f085eb5f823e7ca78870d6",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

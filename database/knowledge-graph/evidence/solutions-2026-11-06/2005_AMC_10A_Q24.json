@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2005_AMC_10A_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ffe0332a1b52d3cb496f654b7206a007a00012e04ee043566a4c0eec48a04575",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "558a5be3b8f6a51383782f719a572aaa42a130fc66c3641a8150e78741a4443c",
+  "solutionFigureHashes": {},
+  "candidateHash": "68106d28dfa46692b6ac9ee7f64c4cb974a900e03a9df5270193fd1f740b0eb7",
+  "candidate": {
+    "questionId": "2005_AMC_10A_Q24",
+    "derivedAnswer": "1 (B)",
+    "answerStatus": "matches",
+    "answerReason": "Both conditions require prime squares. The only primes p < q satisfying q² − p² = 48 are p = 11 and q = 13, giving n = 121. Exactly one integer works, matching choice B.",
+    "methods": [
+      {
+        "id": "prime-square-factor-pairs",
+        "label": "Factor the difference of prime squares",
+        "explanation": "We must have \\(n>1\\), since \\(P(1)\\) is undefined. For any integer \\(m>1\\), the condition \\(P(m)=\\sqrt m\\) holds exactly when \\(m\\) is the square of a prime: if \\(p=P(m)=\\sqrt m\\), then \\(m=p^2\\); conversely, the only prime factor of \\(p^2\\) is \\(p\\).\n\nTherefore write \\(n=p^2\\) and \\(n+48=q^2\\), where \\(p<q\\) are primes. Factoring their difference gives\n\\[\n(q-p)(q+p)=48.\n\\]\nSet \\(a=q-p\\) and \\(b=q+p\\). These are positive integers with \\(a<b\\). They have the same parity because \\(b-a=2p\\). Since their product is even, they must both be even.\n\nThe smaller factor is at most \\(6\\), because \\(7^2>48\\). Thus the possible even factor pairs are exactly\n\\[\n(a,b)=(2,24),\\ (4,12),\\ (6,8).\n\\]\nUsing \\(p=(b-a)/2\\) and \\(q=(a+b)/2\\), these give, respectively,\n\\[\n(p,q)=(11,13),\\ (4,8),\\ (1,7).\n\\]\nOnly the first pair consists of two primes. It gives \\(n=11^2=121\\) and \\(n+48=169=13^2\\), which satisfy both original conditions. Every possible factor pair was considered, and each determines just one \\(n\\). Hence exactly \\(\\boxed{1}\\) integer works, choice \\(\\text{B}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_152",
+          "cnm_p156"
+        ],
+        "prerequisiteIds": [
+          "cnm_p157",
+          "cnm_p153",
+          "cnm_074",
+          "cnm_147"
+        ],
+        "levelReason": "Uses prime meaning, difference-of-squares factoring, parity, and a complete list of small factor pairs."
+      },
+      {
+        "id": "prime-square-bound",
+        "label": "Bound the smaller prime and test the possibilities",
+        "explanation": "The expression \\(P(n)\\) requires \\(n>1\\). Since a greatest prime factor is prime, \\(P(m)=\\sqrt m\\) forces \\(m\\) to be a prime square. Conversely, every prime square has this property. Thus we seek primes \\(p<q\\) such that\n\\[\nn=p^2,\\qquad n+48=q^2.\n\\]\nIf \\(p=2\\), then \\(q^2=52\\), which lies strictly between \\(7^2=49\\) and \\(8^2=64\\), so this case is impossible.\n\nOtherwise \\(p\\) is odd. Then \\(q^2=p^2+48\\) is odd, so \\(q\\) is also odd. Distinct odd integers differ by at least \\(2\\), giving \\(q\\ge p+2\\). Consequently,\n\\[\n48=q^2-p^2\\ge(p+2)^2-p^2=4p+4,\n\\]\nso \\(p\\le11\\). The remaining prime possibilities are exactly \\(3,5,7,11\\).\n\nFor these values, \\(q^2=p^2+48\\) is respectively \\(57,73,97,169\\). The first three lie strictly between consecutive squares:\n\\[\n49<57<64,\\qquad64<73<81,\\qquad81<97<100.\n\\]\nThe last is \\(169=13^2\\), with \\(13\\) prime. Hence the sole valid value is \\(n=121\\). The bound includes every possible smaller prime, so the count is \\(\\boxed{1}\\), choice \\(\\text{B}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_p156",
+          "cnm_148",
+          "cnm_097"
+        ],
+        "prerequisiteIds": [
+          "cnm_p157",
+          "cnm_p153",
+          "cnm_074"
+        ],
+        "levelReason": "Uses parity, expansion of a square, a linear bound, and a short exhaustive search, all within AMC 10 mathematics."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_p157",
+      "cnm_p153",
+      "cnm_074"
+    ],
+    "annotationRationale": "The task-level target is exhaustive integer-solution reasoning under prime-square restrictions. Both methods use prime, factor, and square-root meanings to characterize eligible numbers. The first route uses difference-of-squares factorization and parity; the second uses parity, square expansion, and a linear inequality. These route-specific procedures are alternatives.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2005_AMC_10A_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "Both conditions are equivalent to prime squares, with n>1. Method 1 exhausts the even factor pairs of 48 and obtains only the prime pair (11,13). Method 2 excludes p=2, proves p≤11, and checks every remaining prime. Both establish uniquely n=121, so the count is 1.",
+    "levelCheck": "Both explanations justify completeness using elementary number theory and school algebra within AMC 10 scope.",
+    "methodDistinctness": "Factoring into a finite list of factor pairs and bounding the smaller prime before testing are genuinely distinct accessible approaches.",
+    "annotationCheck": "The integer-solution target is route-neutral. Shared prime, factor, and square-root support is justified, and the method annotations correctly identify factoring versus square expansion and inequalities. General prime-factorization machinery is unnecessary.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "prime-square-factor-pairs": "prime-square-factor-pairs",
+    "prime-square-bound": "prime-square-bound"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "47be8bee270b9860efc2200a732ade9b5c58e53c20cef431b3a8c4965b1ec0b1",
+    "inputHash": "8c852b9b3d67e119fbe7d92a661b85c8d2c559af607253c09ab351cfcfd09e60",
+    "authorInputHash": "41befbfee7a19a75849a08675495c942ec28b01521da79592bab604831c041cc",
+    "reviewInputHash": "939ef09e3f8e3fbe39733fa4d15cdda4d2d1f0a1129abd225429d29d16c3a425",
+    "authorResponseHash": "a6403358c5bdc295dcbce2dd761f22b1a074eee903d2c46726d159800bee74e8",
+    "reviewerResponseHash": "79dcd3f74566dc3261eeb885d0d0b8bba0218208aac1c39434c05fe982c7248e",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

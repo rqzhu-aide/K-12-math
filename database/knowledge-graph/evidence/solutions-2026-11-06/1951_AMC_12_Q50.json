@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1951_AMC_12_Q50",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "3d6199f60b8877b029bcfdd5d85dd643a2fb32fca70f7b3836f046ff84f11d4e",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "c04321cf7c7c158245bfcd17ddf04cf4cf74f9fbcfe03d4820fe101becd63cd0",
+  "solutionFigureHashes": {},
+  "candidateHash": "2e6d2e9210de1fd67c4f8b5f599d5c542a699d94bc6fe0d6cf61f2e85e21e719",
+  "candidate": {
+    "questionId": "1951_AMC_12_Q50",
+    "derivedAnswer": "\\(8\\) hours, choice D.",
+    "answerStatus": "matches",
+    "answerReason": "Harry is dropped at mile 75, and Dick is picked up at mile 25. Tom drives 75+50+75=200 miles at 25 mph, taking 8 hours, which is also each passenger's total travel time.",
+    "methods": [
+      {
+        "id": "dropoff-and-pickup",
+        "label": "Track the drop-off and pickup locations",
+        "explanation": "Measure all locations in miles from the start. Let Harry be dropped off at mile \\(s\\), and let Dick be picked up at mile \\(p\\), where \\(0<p<s<100\\). The pickup and the common arrival time give two equations.\n\nBefore picking up Dick, Tom drives \\(s\\) miles forward and \\(s-p\\) miles back, while Dick walks \\(p\\) miles. These trips take the same time, so\n\\[\n\\frac{2s-p}{25}=\\frac p5.\n\\]\nHence \\(2s-p=5p\\), or \\(s=3p\\).\n\nHarry rides \\(s\\) miles and walks \\(100-s\\) miles. Dick walks \\(p\\) miles and rides \\(100-p\\) miles. Since they arrive together,\n\\[\n\\frac s{25}+\\frac{100-s}{5}\n=\\frac p5+\\frac{100-p}{25}.\n\\]\nMultiplying by \\(25\\) and simplifying gives\n\\[\n500-4s=100+4p,\n\\qquad s+p=100.\n\\]\nSubstituting \\(s=3p\\) gives \\(4p=100\\), so \\(p=25\\) and \\(s=75\\).\n\nTom's three driving stages take\n\\[\n\\frac{75}{25}+\\frac{75-25}{25}+\\frac{100-25}{25}\n=3+2+3=8\\text{ hours}.\n\\]\nDick walks \\(25\\) miles during the first \\(5\\) hours, exactly reaching the pickup point. Harry rides for \\(3\\) hours and then walks the final \\(25\\) miles in \\(5\\) hours. Thus the stated simultaneous arrival occurs after \\(8\\) hours, choice D.",
+        "nodeIds": [
+          "cnm_047",
+          "cnm_091",
+          "cnm_089"
+        ],
+        "prerequisiteIds": [
+          "cnm_p111",
+          "cnm_027",
+          "cnm_088",
+          "cnm_035",
+          "cnm_042"
+        ],
+        "levelReason": "This route uses distance equals speed times time, two linear equations, and substitution."
+      },
+      {
+        "id": "total-driving-distance",
+        "label": "Compare total forward and backward driving",
+        "explanation": "First compare how far Harry and Dick ride. A traveler who rides \\(L\\) miles and walks the remaining \\(100-L\\) miles takes\n\\[\n\\frac L{25}+\\frac{100-L}{5}\n=20-\\frac{4L}{25}\\text{ hours}.\n\\]\nSince Harry and Dick cover the same total distance and arrive together, this formula shows that their riding distances must be equal. Call their common riding distance \\(L\\).\n\nTom's two forward drives carry Harry and Dick, respectively, so his total forward distance is \\(2L\\). He finishes \\(100\\) miles ahead of the start, which means his backward distance is \\(2L-100\\). His total driving distance is therefore\n\\[\n2L+(2L-100)=4L-100.\n\\]\nTom's driving time equals Harry's total travel time, so\n\\[\n\\frac{4L-100}{25}\n=\\frac L{25}+\\frac{100-L}{5}.\n\\]\nMultiplying by \\(25\\) gives\n\\[\n4L-100=500-4L,\n\\qquad 8L=600,\n\\qquad L=75.\n\\]\nThus Tom drives \\(4(75)-100=200\\) miles, taking \\(200/25=8\\) hours.\n\nThis distance is feasible: Tom drops Harry at mile \\(75\\) after \\(3\\) hours, returns \\(50\\) miles in \\(2\\) hours, and meets Dick at mile \\(25\\), which Dick reaches by walking for \\(5\\) hours. The final drive takes \\(3\\) hours, while Harry's final walk takes \\(5\\) hours. The trip takes \\(8\\) hours, choice D.",
+        "nodeIds": [
+          "cnm_047",
+          "cnm_045",
+          "cnm_043"
+        ],
+        "prerequisiteIds": [
+          "cnm_p111",
+          "cnm_027",
+          "cnm_035",
+          "cnm_042"
+        ],
+        "levelReason": "This route uses elementary time formulas and forward-minus-backward distance to form one linear equation."
+      }
+    ],
+    "assessedIds": [
+      "cnm_047"
+    ],
+    "supportIds": [
+      "cnm_p111",
+      "cnm_027",
+      "cnm_035",
+      "cnm_042"
+    ],
+    "annotationRationale": "The shared target is modeling a journey with a meeting and a common arrival. The first method models two locations and solves two independent linear equations by substitution. The second uses equal passenger riding distances and Tom's net displacement to form one linear equation. System knowledge remains local to the first route; the one-variable modeling procedure belongs to the second.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1951_AMC_12_Q50",
+    "decision": "accept",
+    "mathematicalCheck": "Method 1 correctly obtains s=3p and s+p=100, hence p=25 and s=75. Method 2 correctly uses equal passenger riding distances and forward-minus-backward displacement to obtain L=75. Both verify the pickup and simultaneous arrival after 8 hours.",
+    "levelCheck": "Both methods use elementary distance, speed, time, and linear equations. Their modeling steps and feasibility checks are complete.",
+    "methodDistinctness": "The second method adds a useful distinct insight through equal riding distances and total forward and backward driving.",
+    "annotationCheck": "Travel modeling is the route-neutral target. System modeling and substitution remain local to Method 1; one-variable modeling remains local to Method 2. Shared supports are justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "dropoff-and-pickup": "dropoff-and-pickup",
+    "total-driving-distance": "total-driving-distance"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "5852ee3a1ec75edd09ee959b84f0ee30b4faddd4b21bde8c2bd48cc8dc78f57c",
+    "inputHash": "ce1fe91fb030aa553bfe660daf18f1612eab6642421f128450aed41a011567af",
+    "authorInputHash": "bc2320bfc710329d6b18d9604e14b1bef60be496d0791877f06c5e2b45229e7c",
+    "reviewInputHash": "d79a2816e667d4b0b7857ae397999bae6073c24f93c097171c86ffddbb5cfa03",
+    "authorResponseHash": "091a38f9d4b1e2fcbb245823b85eb642a52b228f7e64693b0e061acf95281915",
+    "reviewerResponseHash": "d6aaf53b50e5e9af3f766e0d64d335f6973891993fce1d003dec2958eba2b3ad",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

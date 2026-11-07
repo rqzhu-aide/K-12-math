@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1987_AMC_12_Q26",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "1110e9c30ff74eacbe9f8ffdd4b4c4f1a743a0fbc50784698aed4b7a8d7237c8",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "3e285524e53175cb998ecb7950557c8dcf5491291c9c1cd3ef4fb882bc6f8268",
+  "solutionFigureHashes": {},
+  "candidateHash": "12b28499869676b40532c1e0987d34450af8a101655c723cca9b9aac07b1f215",
+  "candidate": {
+    "questionId": "1987_AMC_12_Q26",
+    "derivedAnswer": "\\(\\frac25\\), choice B",
+    "answerStatus": "matches",
+    "answerReason": "Under uniform interval sampling, the favorable split parameters occupy two disjoint intervals of total length 1 within an interval of length 2.5. Unspecified rounding ties have probability zero.",
+    "methods": [
+      {
+        "id": "rounding-intervals",
+        "label": "Find the favorable intervals",
+        "explanation": "Represent the uniform split by choosing \\(x\\) uniformly from \\([0,2.5]\\); the other part is \\(2.5-x\\). There are only finitely many split points at which either part is exactly halfway between integers. Each such point has probability zero, so the unspecified tie-breaking rule does not affect the answer.\n\nAway from these ties, each part rounds to \\(0\\), \\(1\\), or \\(2\\). Their rounded sum is \\(3\\) precisely for the ordered pairs \\((1,2)\\) and \\((2,1)\\).\n\nFor the rounded pair \\((1,2)\\), we need\n\\[\n0.5<x<1.5,\n\\qquad\n1.5<2.5-x<2.5.\n\\]\nThe second condition says \\(0<x<1\\), so the two conditions together give \\(0.5<x<1\\). Exchanging the two parts gives the other favorable interval, \\(1.5<x<2\\).\n\nThese intervals are disjoint and each has length \\(0.5\\). Uniform sampling therefore gives\n\\[\nP=\\frac{0.5+0.5}{2.5}=\\boxed{\\frac25},\n\\]\nchoice B.",
+        "nodeIds": [
+          "math:geometric-probability"
+        ],
+        "prerequisiteIds": [
+          "cnm_p121",
+          "cnm_285"
+        ],
+        "levelReason": "Uses nearest-integer rounding, interval inequalities, and favorable length divided by total length."
+      }
+    ],
+    "assessedIds": [
+      "math:geometric-probability"
+    ],
+    "supportIds": [
+      "cnm_p121"
+    ],
+    "annotationRationale": "The central target is translating a uniform continuous experiment into a length ratio. Rounding determines the event intervals and is supporting knowledge. The solution does not count individual real split points as equally likely finite outcomes.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The half-integer rounding convention is unspecified, but it changes only finitely many split points and therefore does not change the probability."
+    ]
+  },
+  "review": {
+    "questionId": "1987_AMC_12_Q26",
+    "decision": "accept",
+    "mathematicalCheck": "Outside rounding ties, the favorable intervals are exactly \\((0.5,1)\\) and \\((1.5,2)\\). Their total length is 1, giving probability \\(1/2.5=2/5\\). The finitely many ties have probability zero.",
+    "levelCheck": "The interval inequalities and favorable-length calculation are accessible and sufficiently explained for AMC 12.",
+    "methodDistinctness": "One complete interval method is sufficient.",
+    "annotationCheck": "Uniform geometric probability is the assessed target, with rounding as support. The solution preserves the unspecified tie convention and does not misuse finite-outcome counting.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "rounding-intervals": "rounding-intervals"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "af3d83bc7b1563ba8c775a32c6a69a02653fbb528292963e64a2de12c6c9260c",
+    "inputHash": "059dff7b287689b391345639f761e67e3236f417d36b1f6b244cc38972200e1a",
+    "authorInputHash": "24425e58e3e6f7ac261f72299b8b8a96053e275295c28ea06166989f0345b352",
+    "reviewInputHash": "434138fe877284ff5fca18110110c728da5946363758201a04126b8beac6c261",
+    "authorResponseHash": "8263296f338a8bd40623f028376d0ed4d6724c80a056996d1820b3f86aa7eb0e",
+    "reviewerResponseHash": "3d844a157935d331f7a030bd7327e3b371567d314981253cfbdde0d2cc904836",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

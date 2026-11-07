@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2009_AMC_12A_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "d498b2bcf7e59b788bc4cf24fabe2cbc9b1af33852cc87179d1ef7499d2cfd1e",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "b958e78eb0d840b848270e2c72f64c9f6fcbc27b1be61e0ef6306352fa0b861f",
+  "solutionFigureHashes": {},
+  "candidateHash": "c6e1bac3fff0d3cc7a59ab575d9b355c34b677403cf5b02b33108f9e69069120",
+  "candidate": {
+    "questionId": "2009_AMC_12A_Q21",
+    "derivedAnswer": "C: \\(8\\) nonreal zeros",
+    "answerStatus": "matches",
+    "answerReason": "The expression factors as \\((x^4-2009)(x^4-9002)(x^4-(2009+9002\\pi i))\\). The positive-real fourth-power equations contribute two nonreal zeros each, and the nonreal fourth-power equation contributes four, giving eight distinct nonreal zeros.",
+    "methods": [
+      {
+        "id": "factor-and-count-fourth-roots",
+        "label": "Recognize the polynomial as \\(p(x^4)\\)",
+        "explanation": "The exponents \\(12,8,4\\) suggest viewing the expression as \\(p(x^4)\\). This lets us use the known zeros without finding \\(a,b,c\\).\n\nLet \\(\\alpha=2009+9002\\pi i\\). The three prescribed zeros of the monic cubic \\(p\\) are distinct, so the factor theorem gives\n\\[\np(t)=(t-2009)(t-9002)(t-\\alpha).\n\\]\nConsequently,\n\\[\np(x^4)=(x^4-2009)(x^4-9002)(x^4-\\alpha).\n\\]\nEvery zero must therefore satisfy exactly one of the three fourth-power equations.\n\nFor a positive real number \\(t\\), put \\(s=\\sqrt[4]{t}>0\\). The factorization\n\\[\nx^4-t=(x-s)(x+s)(x-is)(x+is)\n\\]\nshows that there are four distinct zeros, exactly two of which are nonreal. Thus \\(t=2009\\) and \\(t=9002\\) contribute two nonreal zeros each.\n\nFor \\(x^4=\\alpha\\), the fundamental theorem of algebra guarantees a complex zero \\(z\\) of \\(x^4-\\alpha\\). Since \\(\\alpha\\ne0\\), we have \\(z\\ne0\\). The numbers\n\\[\nz,\\quad -z,\\quad iz,\\quad -iz\n\\]\nare four distinct fourth roots of \\(\\alpha\\). A polynomial of degree four has at most four distinct zeros, so this list is complete. None is real, because a real number's fourth power is real, whereas \\(\\alpha\\) is nonreal.\n\nThe three groups are disjoint because a number has only one fourth power. Hence the number of nonreal zeros is\n\\[\n2+2+4=\\boxed{8},\n\\]\nchoice C.",
+        "nodeIds": [
+          "math:polynomial-remainder-factor",
+          "math:roots-of-unity",
+          "math:fundamental-theorem-algebra"
+        ],
+        "prerequisiteIds": [
+          "cnm_h097",
+          "cnm_h102",
+          "cnm_029",
+          "cnm_032"
+        ],
+        "levelReason": "Uses high-school polynomial factorization, complex-root existence, and elementary fourth-root symmetry."
+      }
+    ],
+    "assessedIds": [
+      "math:polynomial-remainder-factor",
+      "math:roots-of-unity"
+    ],
+    "supportIds": [
+      "cnm_h097",
+      "cnm_h102"
+    ],
+    "annotationRationale": "The targets are using prescribed polynomial zeros to factor the composed expression and counting distinct complex fourth roots. Complex-number meaning and multiplication support the root classification. The method uses the fundamental theorem of algebra only to guarantee one fourth root of the nonreal value, then explicitly constructs and counts all four. Distinctness and disjointness are justified rather than inferred from degree alone.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2009_AMC_12A_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "The three distinct prescribed cubic zeros give the stated factorization of p(x^4). Each positive-real fourth-power equation contributes two nonreal zeros. Root existence for the nonreal value, followed by multiplication by 1,-1,i,-i, gives four distinct nonreal zeros. The groups are disjoint, producing 12 distinct zeros overall and exactly 8 nonreal zeros.",
+    "levelCheck": "The fundamental theorem of algebra is used only in its standard high-school root-existence form. The remaining factorization and fourth-root symmetry are appropriate, with completeness explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Polynomial factors and cyclic complex roots accurately describe the targets. The catalog explicitly contains the fundamental-theorem node used by the method; complex representation and multiplication are justified supports.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "factor-and-count-fourth-roots": "factor-and-count-fourth-roots"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "150f9141ebf5d2cd56b8436aecddfd2ef64806b1d06247f2c2e260307b6d93c9",
+    "inputHash": "f2620081635a0e10e77e64f5c19d5e168fc6902ae9bfa27a1d5d889d49252880",
+    "authorInputHash": "ad51fb6148205396dc62240805b9886756c09feadaebf63265925ef1ffec402e",
+    "reviewInputHash": "139fbbe7637f9c5129c23333af1da311b15cec59cd4b2902f0e983920daec29b",
+    "authorResponseHash": "22c8f98c4f6c5245024b99b18d59af13c25d88107d40ca3383da12b14436e7ca",
+    "reviewerResponseHash": "64c814348d31e48d85860f8238b999ffbea01774b1218b0287e97eefd9065481",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

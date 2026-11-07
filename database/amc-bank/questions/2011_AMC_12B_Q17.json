@@ -1,0 +1,110 @@
+{
+  "Year": 2011,
+  "Level": "AMC 12",
+  "Batch": "B",
+  "Area": "Unclassified",
+  "Number": 17,
+  "Question": "Let \\(f(x)=10^{10x},\\) \\(g(x)=\\log_{10}\\!\\left(\\dfrac{x}{10}\\right),\\) \\(h_1(x)=g(f(x)),\\) and \\(h_n(x)=h_1(h_{n-1}(x))\\) for integers \\(n\\ge2.\\) What is the sum of the digits of \\(h_{2011}(1)?\\)",
+  "Question Type": "text",
+  "Choices": {
+    "A": "\\(16{,}081\\)",
+    "B": "\\(16{,}089\\)",
+    "C": "\\(18{,}089\\)",
+    "D": "\\(18{,}098\\)",
+    "E": "\\(18{,}099\\)"
+  },
+  "Choices Type": "text",
+  "Correct Answer": "B",
+  "Solution": "First simplify the composition so that we can see what each iteration does. Since \\(10^{10x}>0\\) for every real \\(x\\), the logarithm is always defined, and\n\\[\nh_1(x)=\\log_{10}\\left(\\frac{10^{10x}}{10}\\right)\n=\\log_{10}(10^{10x-1})=10x-1.\n\\]\nThus all the iterates are defined.\n\nLet \\(a_n=h_n(1)\\). Then \\(a_1=9\\), and each subsequent term is obtained by multiplying the previous term by 10 and subtracting 1. The first few terms are\n\\[\n9,\\quad89,\\quad889,\\quad8889.\n\\]\nTo justify this pattern, multiplying a number ending in 9 by 10 makes its ending 90. Subtracting 1 changes that ending to 89, leaving every earlier digit unchanged. Each step therefore adds one more 8 before the final 9.\n\nConsequently, \\(a_n\\) consists of \\(n-1\\) copies of 8 followed by 9. The requested digit sum is\n\\[\n2010\\cdot8+9=\\boxed{16{,}089},\n\\]\nwhich is choice \\(\\boxed{\\text{B}}\\).",
+  "Meta": {
+    "QuestionSource": "live-poshenloh",
+    "AnswerSource": "live-poshenloh-answer-key",
+    "SolutionSource": "Original Math Practice solution",
+    "AreaSource": "Pending topic curation",
+    "Concepts": "logarithm; recursion; digits",
+    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2011B/solutions",
+    "SourceSHA256": "9e4c9d11195c7f1ee47a36ec726826f869ba911bf741446ca4e0418781f7556e",
+    "Figures": [],
+    "FigureSources": {},
+    "SourceQuestionCount": 25,
+    "HistoricalSeries": "AMC 12",
+    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+    "Copyright": "Copyright Mathematical Association of America",
+    "License": "CC-BY-NC-SA-4.0",
+    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "TranscriptionSource": "LIVE by Po-Shen Loh",
+    "Modifications": [
+      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
+      "Third-party worked solution and solution-only figures omitted from the public distribution"
+    ],
+    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+    "SolutionReview": {
+      "status": "reviewed",
+      "solutionSHA256": "22429cdf3c6a0b75baac3bed98640a14c411d69962494cbde4fa6e854f4d86dc",
+      "questionContentHash": "0a7f81fb4a2005bde889dc5ff3877dc6c05b5ef211e0cc488700947b69f3310b",
+      "evidence": {
+        "path": "knowledge-graph/evidence/solutions-2026-11-06/2011_AMC_12B_Q17.json",
+        "sha256": "29caff591fa21ac89931eb768e2b0d70f1a4b035bab640b2f5cac35242397834"
+      },
+      "author": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "reviewer": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      }
+    }
+  },
+  "ID": "2011_AMC_12B_Q17",
+  "Bank": "amc",
+  "SchemaVersion": "2.0",
+  "ResponseType": "choice",
+  "Language": "en",
+  "domain": [],
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "1.0.0",
+    "contentHash": "0a7f81fb4a2005bde889dc5ff3877dc6c05b5ef211e0cc488700947b69f3310b",
+    "status": "mapped",
+    "reviewStatus": "machine_examined",
+    "assessedIds": [
+      "math:function-composition-iteration",
+      "cnm_h200"
+    ],
+    "supportIds": [
+      "cnm_h048",
+      "math:real-exponent-laws"
+    ],
+    "routes": [
+      {
+        "id": "decimal-pattern",
+        "label": "Follow the decimal recurrence",
+        "nodeIds": [
+          "cnm_030"
+        ]
+      },
+      {
+        "id": "finite-geometric-sum",
+        "label": "Expand the recurrence as a geometric sum",
+        "nodeIds": [
+          "cnm_h210"
+        ]
+      },
+      {
+        "id": "solution:decimal-pattern:22429cdf3c6a",
+        "label": "Track how the digits change",
+        "nodeIds": [
+          "math:function-composition-iteration",
+          "cnm_h200",
+          "cnm_030",
+          "cnm_h048",
+          "math:real-exponent-laws",
+          "cnm_h197"
+        ]
+      }
+    ],
+    "flags": []
+  }
+}

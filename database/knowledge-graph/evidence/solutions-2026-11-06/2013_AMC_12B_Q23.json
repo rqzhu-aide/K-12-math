@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2013_AMC_12B_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "d751741665c51b4a7888285b4f4f8bc366962d97c8e988210618dbeacce7b97c",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "62ec44ba6100c80aa5c54456c401020c66e2aadf5acc5986d1dce7fc1510301d",
+  "solutionFigureHashes": {},
+  "candidateHash": "c19ba2a50cc1b57eb2fa2886d564853a36838f3c824f00aad84c817c75ffb16a",
+  "candidate": {
+    "questionId": "2013_AMC_12B_Q23",
+    "derivedAnswer": "E. \\(25\\)",
+    "answerStatus": "matches",
+    "answerReason": "Matching units digits forces \\(N=30k+j\\) with \\(4\\le k\\le33\\) and \\(0\\le j\\le4\\). The tens-digit condition permits exactly \\(k=12,13,24,30,31\\), each with five choices of \\(j\\).",
+    "methods": [
+      {
+        "id": "match-units-then-tens",
+        "label": "Match the units digits first, then the tens digits",
+        "explanation": "Only the last two digits of each written representation can affect the last two digits of \\(S\\). Let \\(a\\) and \\(b\\) be the units digits in the base-5 and base-6 representations, respectively. Then \\(0\\le a\\le4\\), \\(0\\le b\\le5\\), so \\(a+b\\le9\\) and their addition produces no carry.\n\nBecause \\(N=5q+a\\) for an integer \\(q\\), we have \\(2N=10q+2a\\). Its units digit is therefore \\(2a\\). Matching units digits requires\n\\[\na+b=2a,\n\\]\nso \\(a=b=j\\), where \\(0\\le j\\le4\\). Thus \\(N-j\\) is divisible by both 5 and 6, giving\n\\[\nN=30k+j.\n\\]\nThe three-digit restriction is exactly \\(4\\le k\\le33\\): \\(k\\le3\\) gives \\(N\\le94\\), while \\(k\\ge34\\) gives \\(N\\ge1020\\). Every \\(j=0,1,2,3,4\\) works with every \\(k\\) in this interval as far as the units digit is concerned.\n\nLet \\(d\\) and \\(e\\) be the tens digits in the base-5 and base-6 representations. Since\n\\[\nN=5(6k)+j=6(5k)+j,\n\\]\nwe have\n\\[\nd\\equiv k\\pmod5,\\quad 0\\le d\\le4,\n\\]\n\\[\ne\\equiv-k\\pmod6,\\quad 0\\le e\\le5.\n\\]\nThe last two decimal digits of the sum are determined by \\(10(d+e)+2j\\), whereas \\(2N=60k+2j\\). Thus the tens digits match exactly when\n\\[\nd+e\\equiv6k\\pmod{10}.\n\\]\nReducing this condition modulo 5 gives \\(e\\equiv0\\pmod5\\), so \\(e\\) is either 0 or 5. The condition also requires \\(d+e\\) to be even. Conversely, these two requirements make the difference divisible by both 5 and 2, hence by 10, so they are sufficient.\n\nIf \\(e=0\\), then \\(k\\) is a multiple of 6 and \\(d\\) is even. The possible \\(k\\)'s are\n\\[\n6,12,18,24,30,\n\\]\nwhose remainders modulo 5 are \\(1,2,3,4,0\\). This gives \\(k=12,24,30\\).\n\nIf \\(e=5\\), then \\(k\\equiv1\\pmod6\\) and \\(d\\) is odd. The possible \\(k\\)'s are\n\\[\n7,13,19,25,31,\n\\]\nwhose remainders modulo 5 are \\(2,3,4,0,1\\). This gives \\(k=13,31\\).\n\nThese cases exhaust the tens-digit condition. There are five valid values of \\(k\\), each allowing all five values of \\(j\\). Distinct pairs \\((k,j)\\) give distinct integers \\(N\\), so the answer is\n\\[\n5\\cdot5=\\boxed{25},\n\\]\nchoice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_024",
+          "math:simultaneous-congruences",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "math:modular-congruence",
+          "cnm_p159",
+          "cnm_p017",
+          "cnm_p050"
+        ],
+        "levelReason": "The method uses positional notation, elementary remainder conditions, and two short exhaustive lists. It needs no advanced number theory."
+      }
+    ],
+    "assessedIds": [
+      "cnm_024",
+      "math:simultaneous-congruences"
+    ],
+    "supportIds": [
+      "math:modular-congruence",
+      "cnm_p159"
+    ],
+    "annotationRationale": "The task concerns base representations and simultaneous conditions on their final digits. The written method extracts units and tens by division with remainders, combines the resulting congruences, and counts the permitted interval without duplication. Floor functions are not used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2013_AMC_12B_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "The absence of a units carry forces equal final base digits j and hence N=30k+j, with 4≤k≤33 and 0≤j≤4. The tens condition is equivalent to e∈{0,5} and d+e even. The exhaustive lists give k=12,13,24,30,31, each with five distinct choices of j, totaling 25.",
+    "levelCheck": "Positional notation, elementary congruences, and short finite lists fit AMC 12.",
+    "methodDistinctness": "The single units-then-tens method is complete.",
+    "annotationCheck": "Numeral systems and simultaneous remainder conditions match the assessed scopes. Remainders and least common multiples support the argument; omitting floor functions is appropriate.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "match-units-then-tens": "match-units-then-tens"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "6b349116664702e53d3920d304ed6ff692eae1bc0358d6e25ee9d9ece2d1059b",
+    "inputHash": "464bf2422994b5565bcf7d93d3ef0518029750d89a02f382accc25e842a1761b",
+    "authorInputHash": "40fa3754d8f0bf11ccb48e2a008f03543b594d2d4d24a3805b9c4a822201bc10",
+    "reviewInputHash": "f9745daf32b6b9a56e9fb7e8e662be555ef113c3649e914d847ba7cf6ca4915f",
+    "authorResponseHash": "3f7852a0b5dd423477a15b881a45bc54e7e4ac01c08fd24cb7ce9d484bfcc29e",
+    "reviewerResponseHash": "2b0f421c3f9b7e53e7822d5a76349793392f445976c583d6c48f1c3a2c714d84",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

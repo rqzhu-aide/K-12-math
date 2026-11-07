@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1989_AMC_12_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "add98f220278ff07d2a2e01d5d3bdaac8c4678737e0a9ff50b15dfdb1627fb05",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "a8637e827e9314c9ea1af495a5e9e2e67a49123078bb08f5851b3dbb3c948630",
+  "solutionFigureHashes": {},
+  "candidateHash": "4d148c951cbb938d57d8a77c10a191f39b3ffdd2239aaa3f28ba4130c66e00be",
+  "candidate": {
+    "questionId": "1989_AMC_12_Q25",
+    "derivedAnswer": "\\(13\\), choice B",
+    "answerStatus": "matches",
+    "answerReason": "A winning score must be an integer from 15 through 27, and an explicit sequence of legal finishing-place sets realizes every integer in that range. There are 13 such scores.",
+    "methods": [
+      {
+        "id": "score-bounds-and-construction",
+        "label": "Bound the score and realize every value",
+        "explanation": "The two teams' scores always add to the sum of all ten finishing positions:\n\\[\n1+2+\\cdots+10=\\frac{10\\cdot11}{2}=55.\n\\]\nIf the winning score is \\(S\\), the other score is \\(55-S\\). Hence\n\\[\nS<55-S,\n\\qquad S<27.5.\n\\]\nSince scores are integers, \\(S\\le27\\). The smallest possible team score is \\(1+2+3+4+5=15\\). Thus only the integers from \\(15\\) through \\(27\\) can be winning scores.\n\nWe must also show that none of these integers is missing. Begin with a team occupying places \\(\\{1,2,3,4,5\\}\\), whose score is \\(15\\). Increase its largest selected place from \\(5\\) to \\(10\\), one place at a time. This produces every score from \\(15\\) through \\(20\\). Next increase its selected place \\(4\\) to \\(9\\), one place at a time, producing scores \\(21\\) through \\(25\\). Finally increase its selected place \\(3\\) to \\(4\\), then to \\(5\\), producing \\(26\\) and \\(27\\).\n\nAt every step the five selected places remain distinct and lie between \\(1\\) and \\(10\\). Assign the remaining places to the other team. Each constructed score is at most \\(27\\), so it is smaller than the other team's score.\n\nTherefore every integer in the required range occurs, and the number of different winning scores is\n\\[\n27-15+1=\\boxed{13},\n\\]\nchoice B.",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_h020"
+        ],
+        "prerequisiteIds": [
+          "cnm_h204"
+        ],
+        "levelReason": "The argument uses an arithmetic sum, a simple inequality, and explicit constructions of finishing-place sets."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle",
+      "cnm_h020"
+    ],
+    "supportIds": [
+      "cnm_h204"
+    ],
+    "annotationRationale": "The task requires both universal score bounds and proof that every counted integer score is attainable. These are captured by discrete bounds and constructions together with counting integers in a range. The arithmetic-sequence sum supports the fixed total of 55; counting race arrangements is unnecessary.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1989_AMC_12_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The fixed total score is 55, so a winning integer score lies from 15 through 27. The stated legal changes realize every score in that interval while preserving five distinct finishing places, proving that exactly 13 scores occur.",
+    "levelCheck": "The bounds and explicit attainability construction are elementary and clearly connected.",
+    "methodDistinctness": "The bounds and construction are complementary parts of one sufficient method.",
+    "annotationCheck": "Discrete bounds and constructions, integer inequality solutions, and arithmetic-series support accurately describe the reasoning.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "score-bounds-and-construction": "score-bounds-and-construction"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "35e59d5b70c31f8d4d4dd4dd126e41357abef5c137d162cc7ad92ea03f557761",
+    "inputHash": "12ad176446c6aabe52067a5d0011f91dfcad2742cafaafebc4524b905c40ed7b",
+    "authorInputHash": "cd41291011a7ccb3759e2a77679478705a18cc69c5fcd20510ceb850249e4810",
+    "reviewInputHash": "2964c8285ea1b71522b888495e611d7ddb9c5528b133439a22d76d2f5379145a",
+    "authorResponseHash": "9df4814a53e1e83344a539ca9fbed5205903c0941f51bc3994e5f08e327f462d",
+    "reviewerResponseHash": "371253512e9d8b780ca3c6fd54b41ee655f3ccd5a03401020b11b55066faedc8",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

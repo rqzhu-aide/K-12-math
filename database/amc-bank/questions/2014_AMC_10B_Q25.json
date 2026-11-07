@@ -1,0 +1,93 @@
+{
+  "Year": 2014,
+  "Level": "AMC 10",
+  "Batch": "B",
+  "Area": "Unclassified",
+  "Number": 25,
+  "Question": "In a small pond there are eleven lily pads in a row labeled \\(0\\) through \\(10.\\) A frog is sitting on pad \\(1.\\) When the frog is on pad \\(N,\\) where \\(0 < N < 10,\\) it will jump to pad \\(N-1\\) with probability \\(\\frac{N}{10}\\) and to pad \\(N+1\\) with probability \\(1-\\frac{N}{10}.\\) Each jump is independent of the previous jumps.\n\nIf the frog reaches pad \\(0\\) it will be eaten by a patiently waiting snake. If the frog reaches pad \\(10\\) it will exit the pond, never to return. What is the probability that the frog will escape without being eaten by the snake?",
+  "Question Type": "text",
+  "Choices": {
+    "A": "\\( \\dfrac{32}{79} \\)",
+    "B": "\\( \\dfrac{161}{384} \\)",
+    "C": "\\( \\dfrac{63}{146} \\)",
+    "D": "\\( \\dfrac{7}{16} \\)",
+    "E": "\\( \\dfrac{1}{2} \\)"
+  },
+  "Choices Type": "text",
+  "Correct Answer": "C",
+  "Solution": "The current pad determines the frog's future jump probabilities, so let \\(p_n\\) be its probability of eventually escaping when starting on pad \\(n\\). The endpoint conditions are \\(p_0=0\\) and \\(p_{10}=1\\). Splitting according to the next jump gives, for \\(1\\le n\\le9\\),\n\\[\np_n=\\frac{n}{10}p_{n-1}+\\frac{10-n}{10}p_{n+1}.\n\\]\nTo turn these equations into a calculation we can carry from one pad to the next, rearrange them to compare neighboring differences:\n\\[\n(10-n)(p_{n+1}-p_n)=n(p_n-p_{n-1}).\n\\]\nDefine \\(d_n=p_n-p_{n-1}\\) for \\(1\\le n\\le10\\). Then\n\\[\nd_{n+1}=\\frac{n}{10-n}d_n\\qquad(1\\le n\\le9),\n\\]\nwhere every denominator is positive. Put \\(x=d_1=p_1\\). Successive use of the recurrence gives\n\\[\nd_1=x,\\quad d_2=\\frac{x}{9},\\quad d_3=\\frac{x}{36},\n\\]\n\\[\nd_4=\\frac{x}{84},\\qquad d_5=\\frac{x}{126}.\n\\]\nContinuing gives \\(d_6=d_5\\), \\(d_7=d_4\\), \\(d_8=d_3\\), \\(d_9=d_2\\), and \\(d_{10}=d_1\\).\n\nWhen all ten differences are added, the intermediate probabilities cancel. Thus\n\\[\n\\begin{aligned}\n1&=p_{10}-p_0=\\sum_{n=1}^{10}d_n\\\\\n&=2x\\left(1+\\frac19+\\frac1{36}+\\frac1{84}+\\frac1{126}\\right)\\\\\n&=\\frac{146}{63}x.\n\\end{aligned}\n\\]\nTherefore the requested probability is \\(p_1=x=\\boxed{\\frac{63}{146}}\\), choice \\(\\mathrm{C}\\).",
+  "Meta": {
+    "QuestionSource": "live-poshenloh",
+    "AnswerSource": "live-poshenloh-answer-key",
+    "SolutionSource": "Original Math Practice solution",
+    "AreaSource": "Pending topic curation",
+    "Concepts": "random walk; recursive probability; symmetry",
+    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2014B/solutions",
+    "SourceSHA256": "aca5ea298aef76377858fee09fa97854c2355feca4d6a3d1858fef28b630f2b0",
+    "Figures": [],
+    "FigureSources": {},
+    "SourceQuestionCount": 25,
+    "HistoricalSeries": "AMC 10",
+    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+    "Copyright": "Copyright Mathematical Association of America",
+    "License": "CC-BY-NC-SA-4.0",
+    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "TranscriptionSource": "LIVE by Po-Shen Loh",
+    "Modifications": [
+      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
+      "Third-party worked solution and solution-only figures omitted from the public distribution"
+    ],
+    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+    "SolutionReview": {
+      "status": "reviewed",
+      "solutionSHA256": "1aa9e9b0e5176f53233ad831e9b6be4413e900e7d0d1d601a915bf1857421a7a",
+      "questionContentHash": "3181ee63a63a09966de0b6de421a05208f9c9a73fbe8ed613e9d6873e18ef589",
+      "evidence": {
+        "path": "knowledge-graph/evidence/solutions-2026-11-06/2014_AMC_10B_Q25.json",
+        "sha256": "ab89bdf6a582cdfd008d6210e5ee6ffa073b1fac336d69912bb59b4a41200d68"
+      },
+      "author": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "reviewer": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      }
+    }
+  },
+  "ID": "2014_AMC_10B_Q25",
+  "Bank": "amc",
+  "SchemaVersion": "2.0",
+  "ResponseType": "choice",
+  "Language": "en",
+  "domain": [],
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "1.0.0",
+    "contentHash": "3181ee63a63a09966de0b6de421a05208f9c9a73fbe8ed613e9d6873e18ef589",
+    "status": "mapped",
+    "reviewStatus": "machine_scope_audited",
+    "assessedIds": [
+      "math:recursive-counting-probability"
+    ],
+    "supportIds": [
+      "cnm_h246",
+      "cnm_h200"
+    ],
+    "routes": [
+      {
+        "id": "first-step-differences",
+        "label": "First-step probabilities and neighboring differences",
+        "nodeIds": [
+          "math:recursive-counting-probability",
+          "math:telescoping",
+          "cnm_h246",
+          "cnm_h200"
+        ]
+      }
+    ],
+    "flags": []
+  }
+}

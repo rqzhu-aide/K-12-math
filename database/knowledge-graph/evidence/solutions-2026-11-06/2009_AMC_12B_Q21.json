@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2009_AMC_12B_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "1c0217abe9edf6db8daf15a96be8dd3e359dc87df2d44a0701a1b49879d71d61",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "df65223cd86be9e0437ef528b1beb9534a2ff2741862ea8978bee590f3dedd8d",
+  "solutionFigureHashes": {},
+  "candidateHash": "6bbe8e218ec403b68d1c8852327ad603c66a7b94f849b99a98d3cc4f08aa60ef",
+  "candidate": {
+    "questionId": "2009_AMC_12B_Q21",
+    "derivedAnswer": "A: \\(89\\)",
+    "answerStatus": "matches",
+    "answerReason": "Every legal reseating consists of fixed women and disjoint adjacent swaps. Counting by the first fixed seat or swapped pair gives a_n=a_(n-1)+a_(n-2), with a_0=a_1=1, and hence a_10=89.",
+    "methods": [
+      {
+        "id": "first-seat-recursion",
+        "label": "Count by the first woman’s choice",
+        "explanation": "Number the women by their original seats, from left to right. Let \\(a_n\\) be the number of legal reseatings for \\(n\\) women in \\(n\\) consecutive seats under the same rule.\n\nThe first woman has only two possibilities. If she stays in seat \\(1\\), the remaining women have \\(a_{n-1}\\) legal arrangements in the remaining seats. If she moves to seat \\(2\\), then the second woman must occupy seat \\(1\\): no other woman can reach that seat. These two women swap, leaving \\(a_{n-2}\\) arrangements for the remaining women.\n\nThe cases are disjoint and cover every legal reseating. Moreover, every legal arrangement of the remaining women extends in exactly one way within its case. Therefore, for \\(n\\ge2\\),\n\\[\na_n=a_{n-1}+a_{n-2}.\n\\]\nThere is one arrangement of no women and one arrangement of a single woman, so \\(a_0=a_1=1\\). Successively adding the preceding two counts gives\n\\[\n\\begin{aligned}\na_2&=2,&a_3&=3,&a_4&=5,\\\\\na_5&=8,&a_6&=13,&a_7&=21,\\\\\na_8&=34,&a_9&=55,&a_{10}&=89.\n\\end{aligned}\n\\]\nThus there are \\(\\boxed{89}\\) reseatings, choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_h230",
+          "math:recursive-counting-probability",
+          "cnm_h200"
+        ],
+        "prerequisiteIds": [],
+        "levelReason": "Uses a two-case counting recurrence with explicit initial conditions and elementary addition."
+      },
+      {
+        "id": "compress-adjacent-swaps",
+        "label": "Count blocks of adjacent swaps",
+        "explanation": "Every legal reseating consists of women who stay and disjoint adjacent pairs who swap. To prove this, start at the leftmost woman not yet considered. She either stays, or moves one seat right. In the latter case, her neighbor must move into her old seat, since no later woman can reach it. Remove that single woman or swapped pair and repeat along the line.\n\nSuppose there are \\(k\\) swapped pairs, where \\(0\\le k\\le5\\). Treat each swapped pair as a double block and each woman who stays as a single block. There are \\(k\\) double blocks and \\(10-2k\\) single blocks, making \\(10-k\\) blocks altogether. Choosing which \\(k\\) of those block positions are double determines the reseating, giving\n\\[\n\\binom{10-k}{k}\n\\]\npossibilities.\n\nThis correspondence is reversible: read the blocks from left to right, assign the next original woman to a single block, and swap the next two original women in a double block. Thus every reseating is counted once. Different values of \\(k\\) are disjoint cases, so the total is\n\\[\n\\begin{aligned}\n\\sum_{k=0}^{5}\\binom{10-k}{k}\n&=1+9+28+35+15+1\\\\\n&=\\boxed{89}.\n\\end{aligned}\n\\]\nThe answer is \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_h230",
+          "math:bijective-counting",
+          "cnm_h237"
+        ],
+        "prerequisiteIds": [
+          "cnm_h236"
+        ],
+        "levelReason": "Uses an elementary block correspondence and combinations of finitely many positions."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h230"
+    ],
+    "supportIds": [],
+    "annotationRationale": "Both methods partition legal reseatings into exhaustive disjoint cases. The first constructs and evaluates a recurrence. The second establishes a reversible block encoding and counts block positions with combinations. These method-specific ideas remain separate alternatives.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2009_AMC_12B_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "The first woman either stays or swaps with the second, giving exhaustive, disjoint cases and the recurrence with initial counts 1,1; iteration gives 89. The alternative proves the disjoint-swap structure and reversibly encodes k swaps among 10-k blocks, yielding binomial counts 1,9,28,35,15,1, also totaling 89.",
+    "levelCheck": "Both recurrence counting and the explained block correspondence are appropriate AMC 12 methods.",
+    "methodDistinctness": "Recursing on the first block and counting arrangements by their total number of double blocks offer distinct useful approaches.",
+    "annotationCheck": "The addition principle is route-neutral. Recurrence construction and evaluation belong to the first method; bijection and combination concepts belong to the second.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "first-seat-recursion": "solution:first-seat-recursion:df65223cd86b",
+    "compress-adjacent-swaps": "compress-adjacent-swaps"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "0c99adc0e5e4de2d8eb96d62c906ddfd104c03c34c867256f5504e5c16d99573",
+    "inputHash": "f851eda51c4ee8a209b30d36d20b5984a037ba7b1969aae5150669999ec28909",
+    "authorInputHash": "ca1b2d476dfaf677decdf241db348d07719b27a1e7fc99b63c1a61ec8c540a5d",
+    "reviewInputHash": "b30ea904c2ff1e982a03ffa41242cab2a985bbf4375d47ae2d6c82fc8c3b159b",
+    "authorResponseHash": "c45b1be6e27b265a623f687b37840759b459c6142f0e01732665c8ff8482600a",
+    "reviewerResponseHash": "4e3bf9319267678f59a9380a4673973dbfb73a2549e3c21e922077fcad6933d3",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

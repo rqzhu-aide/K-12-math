@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1991_AMC_8_Q17",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "af7344380182782c1bc148f062730d633f7fa1265233e8c8bd45e38cb9706cfc",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "4d1b4c0ec7bf4dbbc154ffe554ca284eef99c7ab57a8fa4b1946795d02162a01",
+  "solutionFigureHashes": {},
+  "candidateHash": "9520bc1ad48d0bb740c985ea6dde5c67cdedce29e51658a515acf2f1320a441d",
+  "candidate": {
+    "questionId": "1991_AMC_8_Q17",
+    "derivedAnswer": "200 students, choice C",
+    "answerStatus": "matches",
+    "answerReason": "Alternating seats maximize each row's occupancy. The capacities of the 20 rows from 10 through 29 seats sum to 200.",
+    "methods": [
+      {
+        "id": "pair-adjacent-seats",
+        "label": "Method 1: Pair adjacent seats",
+        "explanation": "To bound the number of students in a row, group its seats into adjacent pairs. Each pair holds at most one student. An even-length row is entirely paired; an odd-length row has one extra end seat that can hold one more student. Occupying every other seat, starting with the first, attains these bounds.\n\nThe \\(20\\) rows have \\(10,11,\\ldots,29\\) seats. Group consecutive rows as\n\\[\n(10,11),\\ (12,13),\\ \\ldots,\\ (28,29).\n\\]\nTheir maximum student counts are respectively\n\\[\n5+6=11,\\quad6+7=13,\\quad\\ldots,\\quad14+15=29.\n\\]\nThus the total maximum is \\(11+13+\\cdots+29\\). Pairing the first and last terms gives \\(11+29=40\\), the next pair gives \\(13+27=40\\), and so on. There are five such pairs, giving\n\\[\n5\\times40=200.\n\\]\nBecause the restriction applies only within each row, all these row maxima can be attained together. The answer is \\(\\boxed{200}\\), choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_p216"
+        ],
+        "prerequisiteIds": [
+          "cnm_p156",
+          "cnm_p114"
+        ],
+        "levelReason": "Adjacent pairs give a simple counting bound, and alternating seats provide a matching construction."
+      },
+      {
+        "id": "count-empty-gaps",
+        "label": "Method 2: Count the empty gaps",
+        "explanation": "If a row holds \\(s\\) students, there are \\(s-1\\) gaps between consecutive students. Each gap needs at least one empty seat, so at least\n\\[\ns+(s-1)=2s-1\n\\]\nseats are required. Alternating occupied and empty seats achieves this minimum.\n\nFor example, five students need at least nine seats, six need eleven seats, and each additional student requires two more seats. Consequently, the maximum occupancies of the rows with \\(10\\) through \\(29\\) seats are\n\\[\n5,6,6,7,7,\\ldots,14,14,15.\n\\]\nThe first and last values occur once, and each value from \\(6\\) through \\(14\\) occurs twice. Their sum is\n\\[\n(5+15)+2(6+7+\\cdots+14).\n\\]\nIn the inner sum, \\(6+14\\), \\(7+13\\), \\(8+12\\), and \\(9+11\\) each equal \\(20\\), with \\(10\\) left over. Thus the total is\n\\[\n20+2(4\\times20+10)=200.\n\\]\nAlternating seats in every row realizes this total, so the maximum is \\(\\boxed{200}\\), choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_p151"
+        ],
+        "prerequisiteIds": [
+          "cnm_p114"
+        ],
+        "levelReason": "Counting the gaps between students gives an elementary arithmetic bound without a floor or ceiling formula."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_p114"
+    ],
+    "annotationRationale": "Both methods prove an upper bound and give an alternating-seat construction that attains it. The first uses the basic pigeonhole idea on adjacent pairs and distinguishes odd and even row lengths. The second uses the objects-and-gaps relationship in cnm_p151. Regrouping addition supports both totals.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1991_AMC_8_Q17",
+    "decision": "accept",
+    "mathematicalCheck": "Adjacent seat pairs give an upper bound attained by alternating seats. The gap method independently requires at least 2s − 1 seats for s students. Both yield row capacities 5, 6, 6, 7, ..., 14, 14, 15, summing to 200. Independent row constructions attain the total.",
+    "levelCheck": "Both bounds and their attaining arrangements are explained at an elementary AMC 8 level. The short symbolic gap count is useful and accessible.",
+    "methodDistinctness": "Pairing seats and counting required empty gaps give distinct, useful elementary bounds.",
+    "annotationCheck": "The assessed extremal node is shared appropriately. Pigeonhole reasoning supports the adjacent-pair route, and cnm_p151 supports the objects-and-gaps relationship. Shared addition regrouping and method-local parity are justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "pair-adjacent-seats": "solution:pair-adjacent-seats:4d1b4c0ec7bf",
+    "count-empty-gaps": "count-empty-gaps"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "9dc72dd3d1f4af7df21166ab44c18780269fc978e417a5c2b034042f6496a94a",
+    "inputHash": "db93ae1ce79b88fbf44817930abe7a88cbe4c0b2ed689bb1d45ec079d5bc19e8",
+    "authorInputHash": "a516d3dafeb5636612b6f30cb656b6b01d58e862dc03716be0dc1ef0f3a98b91",
+    "reviewInputHash": "43c84fd345d2f13a32949aad719cf4e65199fe974aab29e8ab6f978333768b15",
+    "authorResponseHash": "0a7991ca4d146edb2f5fc1a2b38d664c4edbf9011ea57e59ee5da935e33322b5",
+    "reviewerResponseHash": "af4f416110f3a6e153a315274cf28d6a1b8d18598c2e19eea9f568b8edee79ad",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

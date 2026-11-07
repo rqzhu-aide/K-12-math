@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2003_AMC_10B_Q18",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "cf978e522843b532d0028b6fbcc99f7076a6c214350e5fa54550d35e2b18ee70",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "2bd633bcf05a1a965ac19f9a235ebf4a147cefbd17be87ef4da2faa9b1a7d1d0",
+  "solutionFigureHashes": {},
+  "candidateHash": "ab738a148b02c64d464c09e91e20562c09d2710f6830edf681f85686c8831ba2",
+  "candidate": {
+    "questionId": "2003_AMC_10B_Q18",
+    "derivedAnswer": "D, 15",
+    "answerStatus": "matches",
+    "answerReason": "Every product contains a multiple of 3 and a multiple of 5. The products at n=10 and n=20 have greatest common factor 15, proving that no larger integer divides every product.",
+    "methods": [
+      {
+        "id": "universal-divisor",
+        "label": "Prove divisibility and then prove maximality",
+        "explanation": "Because \\(n\\) is even, the five factors are consecutive odd integers. Odd multiples of \\(3\\) occur every third odd number, so the first three factors include a multiple of \\(3\\). Odd multiples of \\(5\\) occur every fifth odd number, so the five factors include a multiple of \\(5\\). Thus every allowed product is divisible by \\(15\\).\n\nTo prove that \\(15\\) is the largest universal divisor, it is enough to find two allowed products whose greatest common factor is \\(15\\). Let \\(P(n)\\) denote the given product. Taking \\(n=10\\) gives\n\\[\n\\begin{aligned}\nP(10)&=11\\cdot13\\cdot15\\cdot17\\cdot19\\\\\n&=3\\cdot5\\cdot11\\cdot13\\cdot17\\cdot19.\n\\end{aligned}\n\\]\nTaking \\(n=20\\) gives\n\\[\n\\begin{aligned}\nP(20)&=21\\cdot23\\cdot25\\cdot27\\cdot29\\\\\n&=3^4\\cdot5^2\\cdot7\\cdot23\\cdot29.\n\\end{aligned}\n\\]\nTheir only shared prime factors are \\(3\\) and \\(5\\), each appearing just once in \\(P(10)\\), so their greatest common factor is \\(15\\). Any integer dividing every allowed product must divide these two products and hence must divide \\(15\\).\n\nSince \\(15\\) always works and no larger integer can work, the answer is \\(\\boxed{15}\\), choice \\(\\text{D}\\).",
+        "nodeIds": [
+          "cnm_p158",
+          "math:prime-factorization"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_p156",
+          "cnm_p157"
+        ],
+        "levelReason": "Consecutive odd multiples and elementary prime factorizations give a complete AMC 10 proof without formal congruence notation."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p158"
+    ],
+    "supportIds": [
+      "cnm_p153",
+      "cnm_p156",
+      "cnm_p157"
+    ],
+    "annotationRationale": "The requested quantity is the greatest common divisor of all allowed products. The method first proves universal divisibility and then uses prime factorization to bound every common divisor by the greatest common factor of two examples. Prime factorization is a method tool here; formal modular-congruence calculations are not used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2003_AMC_10B_Q18",
+    "decision": "accept",
+    "mathematicalCheck": "Every five consecutive odd factors contain a multiple of 3 and a multiple of 5, ensuring divisibility by 15. The displayed factorizations at n=10 and n=20 are correct and have greatest common factor 15, so every universal divisor must divide 15.",
+    "levelCheck": "The spacing of odd multiples and elementary prime factorizations provide a complete AMC 10 argument without formal congruences.",
+    "methodDistinctness": "One method supplies both universal divisibility and the necessary maximality bound.",
+    "annotationCheck": "The common-factor assessment is justified by the bound using two allowed products. Prime factorization is accurately retained as a method tool, and the support nodes match the argument.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "universal-divisor": "universal-divisor"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "bda761856295194a944b3e34f0a09b9854b585529974146dfe01784aa7bfc5a8",
+    "inputHash": "a692b7ba69a0755d232b6a99ea323f095ebc54ed45b20a59a9285c2e9912fcd6",
+    "authorInputHash": "a5dd9835763d948c67a23ba9fec200bd1c7efa5fde8c6148d35effffefa8d87e",
+    "reviewInputHash": "b2d59219f957e24411c04cd1d41de1e94957455172650c6b246aa7c9eab28909",
+    "authorResponseHash": "8f12bd5f0948eba3cb275b19214d6c6e1a452860a44c630774283baf3ce5f670",
+    "reviewerResponseHash": "63bc8715a2cafcfd09f8789b29ba132d4821daa9b57d4d549fc5cc1d8f072aeb",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

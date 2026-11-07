@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2005_AMC_12A_Q20",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "e35147c6e98344b27951b4980727edd1ef138ea44feff393f8e9a4741d9d746b",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "88cf9ff59ccfb888f0328c7bdf503b738e5b9e4a287b63c70624d4331ed9eb42",
+  "solutionFigureHashes": {},
+  "candidateHash": "93212bd193ad11993cc25a124bb12ed929354d712fe463f7876bc67cbfcdfcc4",
+  "candidate": {
+    "questionId": "2005_AMC_12A_Q20",
+    "derivedAnswer": "2^{2005}, choice E",
+    "answerStatus": "matches",
+    "answerReason": "Every target in (0,1) has exactly two distinct preimages in (0,1). Preimages of different targets cannot overlap, so each of the 2005 backward steps doubles the count.",
+    "methods": [
+      {
+        "id": "backward-doubling",
+        "label": "Work backward through the function",
+        "explanation": "Instead of expanding a composition with 2005 copies of \\(f\\), find all inputs that lead to a given output in one step.\n\nFor any \\(y\\in(0,1)\\), the first branch gives \\(2x=y\\), while the second gives \\(2-2x=y\\). Thus the two inputs are\n\\[\nx=\\frac y2\\qquad\\text{and}\\qquad x=1-\\frac y2.\n\\]\nThe first lies in \\((0,\\tfrac12)\\), and the second lies in \\((\\tfrac12,1)\\). Both satisfy their branch conditions, are distinct, and remain inside \\((0,1)\\).\n\nBegin with the single target \\(\\tfrac12\\). After one backward step we have exactly the solutions of \\(f(x)=\\tfrac12\\); after two steps we have exactly the solutions of \\(f^{[2]}(x)=\\tfrac12\\), and so on. Every current target has two preimages. Moreover, different targets cannot share a preimage, because a function assigns only one output to each input. Therefore every step doubles the number of solutions without omission or duplication.\n\nIf \\(N_n\\) is the number after \\(n\\) backward steps, then\n\\[\nN_0=1,\\qquad N_{n+1}=2N_n,\n\\]\nso \\(N_n=2^n\\). The endpoints introduce no additional solutions: both \\(0\\) and \\(1\\) map to \\(0\\), which stays at \\(0\\). Hence the requested number is \\(\\boxed{2^{2005}}\\), choice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "math:recursive-counting-probability",
+          "math:function-composition-iteration",
+          "cnm_h031",
+          "cnm_h231"
+        ],
+        "prerequisiteIds": [
+          "cnm_h027",
+          "cnm_042",
+          "cnm_h200"
+        ],
+        "levelReason": "Solving the two linear branches and counting a doubling process uses elementary algebra and finite recursion within AMC 12 scope."
+      },
+      {
+        "id": "forward-graph-subdivision",
+        "label": "Count the straight pieces of each iterate",
+        "explanation": "Each straight piece of an iterate that runs between heights \\(0\\) and \\(1\\) contributes exactly one solution at height \\(\\tfrac12\\). We can count these pieces as the function is composed repeatedly.\n\nThe graph of \\(f\\) starts with two straight pieces, joining the points \\((0,0)\\), \\((\\tfrac12,1)\\), and \\((1,0)\\). Each piece rises from \\(0\\) to \\(1\\) or falls from \\(1\\) to \\(0\\).\n\nBecause all the compositions use the same function, we may obtain \\(f^{[n+1]}\\) by applying \\(f\\) to the values of \\(f^{[n]}\\). Consider one straight piece of \\(f^{[n]}\\) running between heights \\(0\\) and \\(1\\). At its midpoint the height is \\(\\tfrac12\\). Applying \\(f\\) sends the two endpoint heights to \\(0\\), since \\(f(0)=f(1)=0\\), and sends the midpoint height to \\(1\\). On either half, the composition is linear. Thus this one piece becomes two straight pieces, each again running between heights \\(0\\) and \\(1\\).\n\nStarting with two pieces, the number therefore doubles at every composition. Consequently \\(f^{[n]}\\) has \\(2^n\\) such pieces covering \\([0,1]\\). Each contains exactly one point at height \\(\\tfrac12\\), strictly inside the piece. Adjacent pieces meet only at heights \\(0\\) or \\(1\\), so no solution is counted twice.\n\nTaking \\(n=2005\\) gives \\(\\boxed{2^{2005}}\\) solutions, choice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "math:recursive-counting-probability",
+          "math:function-composition-iteration",
+          "cnm_h031",
+          "cnm_h032"
+        ],
+        "prerequisiteIds": [
+          "cnm_h027",
+          "cnm_h030",
+          "cnm_h200"
+        ],
+        "levelReason": "The argument uses piecewise linear graphs, repeated composition, and an elementary inductive doubling argument."
+      }
+    ],
+    "assessedIds": [
+      "math:recursive-counting-probability"
+    ],
+    "supportIds": [
+      "cnm_h031",
+      "math:function-composition-iteration",
+      "cnm_h027",
+      "cnm_h200"
+    ],
+    "annotationRationale": "The central target is an exhaustive count under repeated application of a known function. Both methods establish a count recurrence with an initial condition. Piecewise rules and composition are shared supporting knowledge. The backward method uses the multiplication principle for distinct preimages; the forward method uses monotonic straight graph pieces. These route-specific features remain in their respective methods.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2005_AMC_12A_Q20",
+    "decision": "accept",
+    "mathematicalCheck": "Every interior target y has exactly two distinct interior preimages, y/2 and 1-y/2. Different targets have disjoint preimage sets, so 2005 backward steps give 2^2005 solutions. The graph method independently proves that each composition doubles the full-height linear pieces, with one distinct half-height crossing per piece.",
+    "levelCheck": "Both explanations give the decisive doubling argument using elementary algebra and piecewise linear graphs within AMC 12 scope.",
+    "methodDistinctness": "Backward preimage counting and forward graph subdivision provide genuinely different, accessible viewpoints.",
+    "annotationCheck": "The recurrence assessment and shared function, composition, piecewise-rule, and recurrence support are justified. Branch counting and monotonic graph reasoning are appropriately method-local.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "backward-doubling": "backward-doubling",
+    "forward-graph-subdivision": "forward-graph-subdivision"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "79cf9902f8b8dc3bc46e027e1b3a3d802ce8c7692505a4ac1ecce824218cd9a0",
+    "inputHash": "edc37569bd0053fae81c128bb21b142ad13243ba343d1138fdf81849fec2bcad",
+    "authorInputHash": "2b3f14576b00e2e5d65ac4fcc02e41cae3d410609be0118310fa0597e538212c",
+    "reviewInputHash": "9bfe25d96213d3da157f36e2de9d1193e1d9253c4b05f2e979f1938a135e0472",
+    "authorResponseHash": "5ccd17960a7d1bba7b1b86845e2970f07dabfb9127cbb736253c0717a9d5fea0",
+    "reviewerResponseHash": "b06fda227ca7c29c86b3b9079f838510cb6f39f31ae89baedbfe02658cf636a2",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

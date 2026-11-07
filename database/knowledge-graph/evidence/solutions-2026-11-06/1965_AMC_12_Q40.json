@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1965_AMC_12_Q40",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ea3ef8655be424e4689bf66f3e75eab09faa6c06cd9d6aa8655e47478826457e",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "1558c4200b178737bfc0d294e97c506a85ef1f11b438817e70bafa821385e95d",
+  "solutionFigureHashes": {},
+  "candidateHash": "cddcd432f97997446b71d6b02d19042bff149fd4682e5beab3d14cddc1b85b7a",
+  "candidate": {
+    "questionId": "1965_AMC_12_Q40",
+    "derivedAnswer": "\\(n=1\\), choice D; the only qualifying integer is \\(x=10\\).",
+    "answerStatus": "matches",
+    "answerReason": "Comparisons with nearby squares exclude both infinite tails except for \\(x=10\\). Checking the remaining nine integers excludes all of them.",
+    "methods": [
+      {
+        "id": "nearby-integer-squares",
+        "label": "Compare with nearby squares",
+        "explanation": "The leading terms suggest looking for the square of a quadratic. In fact,\n\\[\n(x^2+3x+1)^2=x^4+6x^3+11x^2+6x+1.\n\\]\nThus, if \\(q=x^2+3x+1\\), then\n\\[\nP=q^2+30-3x.\n\\]\nThe remainder is only linear, which makes it possible to trap \\(P\\) between nearby integer squares outside a small range.\n\nIf \\(x\\leq-7\\), put \\(t=-x\\geq7\\). Then \\(q=t(t-3)+1\\geq29\\), and \\(P>q^2\\). Also,\n\\[\n\\begin{aligned}\n(q+1)^2-P\n&=2t^2-9t-27\\\\\n&=t(2t-9)-27\\\\\n&\\geq7\\cdot5-27=8>0.\n\\end{aligned}\n\\]\nTherefore \\(q^2<P<(q+1)^2\\), so \\(P\\) is not an integer square.\n\nIf \\(x\\geq3\\), then \\(q\\geq19\\). We have\n\\[\nP-(q-1)^2=2x^2+3x+31>0\n\\]\nand\n\\[\n\\begin{aligned}\n(q+1)^2-P\n&=2x^2+9x-27\\\\\n&=2x^2+9(x-3)>0.\n\\end{aligned}\n\\]\nHence \\((q-1)^2<P<(q+1)^2\\). The only integer square strictly between these two squares is \\(q^2\\). Consequently, \\(P\\) can be a square in this range only when \\(30-3x=0\\), giving \\(x=10\\). This value works: \\(q=131\\) and \\(P=131^2\\).\n\nIt remains to check \\(x=-6,-5,-4,-3,-2,-1,0,1,2\\). Their corresponding values of \\(P\\), in that order, are\n\\[\n409,166,67,40,37,34,31,52,145.\n\\]\nNone is a square, as the following consecutive-square comparisons show:\n\\[\n\\begin{gathered}\n20^2<409<21^2,\\\\\n12^2<145<166<13^2,\\\\\n8^2<67<9^2,\\\\\n6^2<37<40<7^2,\\\\\n5^2<31<34<6^2,\\\\\n7^2<52<8^2.\n\\end{gathered}\n\\]\nThese disjoint ranges cover every integer \\(x\\), and only \\(x=10\\) works. Therefore \\(\\boxed{n=1}\\), choice \\(\\mathrm D\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_148",
+          "cnm_h019",
+          "cnm_079"
+        ],
+        "prerequisiteIds": [
+          "cnm_029",
+          "cnm_096"
+        ],
+        "levelReason": "Polynomial identities, elementary sign comparisons, and gaps between consecutive integer squares give a complete argument without calculus or advanced number theory."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_148",
+      "cnm_079"
+    ],
+    "annotationRationale": "The target is finding all integer inputs producing a square, including proof of completeness. The method uses a perfect-square identity, subtraction to compare expressions, and consecutive-square bounds. Its sign estimates do not require a general quadratic-inequality solving procedure.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1965_AMC_12_Q40",
+    "decision": "accept",
+    "mathematicalCheck": "The identity P=q^2+30-3x is correct. For x≤-7, the stated bounds place P strictly between consecutive squares. For x≥3, only q^2 lies between the bounding squares, forcing x=10. All nine remaining polynomial values and their nonsquare comparisons are correct. Thus exactly one integer qualifies.",
+    "levelCheck": "The elementary identities and explicit bounds provide a complete, understandable AHSME argument without advanced machinery.",
+    "methodDistinctness": "One complete bounding method is sufficient.",
+    "annotationCheck": "The integer-equation target fits the completeness requirement. The square identity, subtraction comparisons, square bracketing, evaluation, and inequality prerequisites all match their catalog scopes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "nearby-integer-squares": "nearby-integer-squares"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "b2a3ca1440c09c382da4db0144888352c7705fb05c9ebd525f97f46ff3492133",
+    "inputHash": "17b6b6cc15fcf7a9bdd90a5f52537f910ce65df0dc620bbba391ed577ed7ea6d",
+    "authorInputHash": "bf8e18a38797ec4e812f0b740ff910652052889567961e2e2d3e108e0263ead1",
+    "reviewInputHash": "4e18916fa8b09269a1eb3c5b639f00a301259704a8fcaaf5237b7de6d9f8b855",
+    "authorResponseHash": "292ef1e2093012acfa0e9ae4e31e18de7b0db03a1bad8c0d9355c2ff6d669505",
+    "reviewerResponseHash": "39b262618be7123188aa3f084dee82c4a7fa4653bf530652f541100b84f1a7d3",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

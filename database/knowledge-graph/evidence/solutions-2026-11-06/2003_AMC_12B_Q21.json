@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2003_AMC_12B_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "56dcf997b60a5a2d5444fc8047eab49c263f2d7613f11a9778d7019b553ce66f",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "b78119b0d66095aeae00cb29331dd293d9d8023f81793d4cab610ffa021d5776",
+  "solutionFigureHashes": {},
+  "candidateHash": "b0b97e2b8da36e594bb5615284e8f98a3f1084386362772b5f773a43e1feb86a",
+  "candidate": {
+    "questionId": "2003_AMC_12B_Q21",
+    "derivedAnswer": "Under the usual uniform-angle model, D. \\(\\frac13\\). Without a specified distribution, the probability is not uniquely determined.",
+    "answerStatus": "disputed",
+    "answerReason": "The geometry gives AC < 7 exactly when alpha > 2π/3. Uniform sampling on (0,π) gives the keyed probability 1/3, but the statement does not explicitly specify uniformity. A distribution assigning probability 1/2 to each side of this threshold instead gives probability 1/2.",
+    "methods": [
+      {
+        "id": "included-angle-and-cosine-law",
+        "label": "Find the favorable range of turning angles",
+        "explanation": "Assume first that \\(\\alpha\\) is uniformly distributed on \\((0,\\pi)\\), the usual contest interpretation. The useful distinction is that the turn \\(\\alpha\\) is measured from the forward direction, while the triangle's interior angle at \\(B\\) is\n\\[\n\\beta=\\pi-\\alpha.\n\\]\nSince \\(0<\\beta<\\pi\\), the triangle is nondegenerate. The law of cosines gives\n\\[\nAC^2=8^2+5^2-2(8)(5)\\cos\\beta\n=89-80\\cos\\beta.\n\\]\nBoth distances are nonnegative, so \\(AC<7\\) is equivalent to \\(AC^2<49\\). Thus\n\\[\nAC<7\n\\iff \\cos\\beta>\\frac12.\n\\]\nCosine decreases on \\((0,\\pi)\\): this follows from \\(\\cos\\beta=\\sin(\\pi/2-\\beta)\\) and the increase of sine on \\([-\\pi/2,\\pi/2]\\). Since \\(\\cos(\\pi/3)=1/2\\), the favorable condition is\n\\[\n\\beta<\\frac\\pi3,\n\\qquad\\text{or equivalently}\\qquad\n\\alpha>\\frac{2\\pi}{3}.\n\\]\nUnder uniform sampling, the probability is the favorable interval length divided by the total length:\n\\[\n\\frac{\\pi-2\\pi/3}{\\pi}=\\boxed{\\frac13},\n\\]\nchoice \\(\\mathrm{D}\\). The equality angle is excluded by the strict inequality and has probability zero under this model.\n\nUniformity matters. For example, a procedure could select each of \\((0,2\\pi/3)\\) and \\((2\\pi/3,\\pi)\\) with probability \\(1/2\\), then sample uniformly within the selected interval. This still produces an angle in \\((0,\\pi)\\), but its favorable probability is \\(1/2\\). Thus choice \\(\\mathrm{D}\\) follows conditionally from the uniform-angle interpretation.",
+        "nodeIds": [
+          "math:geometric-probability",
+          "math:general-cosine-law-application",
+          "cnm_h064",
+          "cnm_h067",
+          "cnm_277"
+        ],
+        "prerequisiteIds": [
+          "cnm_059",
+          "cnm_h057",
+          "cnm_h060",
+          "cnm_h018"
+        ],
+        "levelReason": "The solution uses school triangle geometry, trigonometric monotonicity, and interval-length probability, all within AMC 12 precalculus."
+      }
+    ],
+    "assessedIds": [
+      "math:geometric-probability"
+    ],
+    "supportIds": [
+      "cnm_059",
+      "cnm_h057"
+    ],
+    "annotationRationale": "The target is translating a distance event into a favorable angular interval and applying a uniform length ratio. General cosine-law application belongs to this method because the included angle is variable. Supplementary angles and radian measure support the setup; reduction formulas and sine monotonicity justify the exact threshold without calculus.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The keyed probability assumes uniform sampling of the turning angle. The displayed statement says only that the angle is chosen at random.",
+      "The threshold angle and the interval endpoints have probability zero under the uniform model."
+    ]
+  },
+  "review": {
+    "questionId": "2003_AMC_12B_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "The interior angle is β=π−α, so AC²=89−80cosβ. Therefore AC<7 exactly when β<π/3, equivalently α>2π/3. Uniform angle sampling gives probability 1/3. The alternative distribution correctly demonstrates why that answer depends on uniformity.",
+    "levelCheck": "The cosine law, elementary trigonometric monotonicity, and interval-length probability fit AMC 12.",
+    "methodDistinctness": "One complete method is sufficient; the distribution example supports the qualification.",
+    "annotationCheck": "The geometric-probability target and general cosine-law route match the solution. Supplementary angles, radians, special values, and monotonicity are appropriately assigned. The uniformity caveat is preserved.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "included-angle-and-cosine-law": "included-angle-and-cosine-law"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "a7d27620f24b67120b047d4273371545e438b9320c34acbb8ee75a804a67bb2d",
+    "inputHash": "ea7961efd122e0070e80f5eb52c3541f69da2c4720e72b4ee3e1d6aa2b0e4011",
+    "authorInputHash": "47b7f076f5247f86dc71035b61e0087bf5ff25a5fea56dfbf276fb2f4f1ce25b",
+    "reviewInputHash": "108ec1674fa1243cbcc61fe965d841f6909298003f4efef8f63785a7ad222d42",
+    "authorResponseHash": "de9e36eaa85bb71285d1bebefe162cf4aa00b2ab204af6dca70dddc35b139829",
+    "reviewerResponseHash": "e68d4d49c7f0d4c2dfc3d8386f289707593283b9361da4e906745591729665df",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

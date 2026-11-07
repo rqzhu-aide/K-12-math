@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2000_AMC_12_Q18",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "b1287fd7d0c108e29166ef34d3a588b73d34def493adb000113a5194195644f9",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "2d4409c9deeb72f95c7447214b86ec5a13342196e0820c53e1dee63cbb290e91",
+  "solutionFigureHashes": {},
+  "candidateHash": "87ec24497473779df2dd3775755242514c8c3fe0d9f93bd1c75cd9c7c92412cd",
+  "candidate": {
+    "questionId": "2000_AMC_12_Q18",
+    "derivedAnswer": "A: Thursday",
+    "answerStatus": "matches",
+    "answerReason": "The two Tuesdays force year N to have 366 days. The requested day is then 565 days, or 80 weeks and 5 days, before Tuesday, making it Thursday.",
+    "methods": [
+      {
+        "id": "count-weekly-cycles",
+        "label": "Count elapsed days in whole weeks",
+        "explanation": "Two dates fall on the same weekday exactly when the number of days between them is a multiple of \\(7\\). Let \\(L\\) be the number of days in year \\(N\\). From its \\(300\\)th day to the \\(200\\)th day of year \\(N+1\\), the elapsed time is\n\\[\n(L-300)+200=L-100.\n\\]\nA year has \\(365\\) or \\(366\\) days, so this difference is \\(265\\) or \\(266\\). Since\n\\[\n265=37\\cdot7+6,\n\\qquad 266=38\\cdot7,\n\\]\nthe two Tuesdays force \\(L=366\\). Thus year \\(N\\) is a leap year, and its preceding year \\(N-1\\) has \\(365\\) days because consecutive years cannot both be leap years.\n\nFrom the \\(100\\)th day of year \\(N-1\\) to the \\(300\\)th day of year \\(N\\), the elapsed time is\n\\[\n(365-100)+300=565=80\\cdot7+5\n\\]\ndays. Therefore Tuesday is five weekdays after the requested day. Five days before Tuesday is \\(\\boxed{\\text{Thursday}}\\), choice A.",
+        "nodeIds": [
+          "math:modular-congruence"
+        ],
+        "prerequisiteIds": [
+          "cnm_p091",
+          "cnm_p153"
+        ],
+        "levelReason": "The method uses ordinary calendar facts and division into whole weeks and remaining days."
+      }
+    ],
+    "assessedIds": [
+      "math:modular-congruence"
+    ],
+    "supportIds": [
+      "cnm_p091",
+      "cnm_p153"
+    ],
+    "annotationRationale": "Weekday equality is a divisibility condition on elapsed-day differences, so integer remainder reasoning is the target even without formal congruence notation. Calendar year lengths and leap-year facts supply the context, while multiples support the seven-day calculations.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2000_AMC_12_Q18",
+    "decision": "accept",
+    "mathematicalCheck": "The two Tuesdays are L-100 days apart. Of 265 and 266, only 266 is divisible by 7, forcing year N to be leap and its preceding year to have 365 days. The requested date is 565=80·7+5 days before Tuesday, hence Thursday.",
+    "levelCheck": "Ordinary calendar facts and whole-week arithmetic are appropriate, with elapsed-day counts explicitly justified.",
+    "methodDistinctness": "One complete calendar-counting method is sufficient.",
+    "annotationCheck": "The remainder target is justified without formal congruence notation. Calendar knowledge and multiples correctly support the argument.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-weekly-cycles": "count-weekly-cycles"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "804dfc42caa20ebd25020d05e1fec437fb4ef1d98163581f9c1a4afc817378c4",
+    "inputHash": "b5fc9f01e81b68e1ea1fbd14f93892a69a096e0416288cddbbefab5ff58661b3",
+    "authorInputHash": "621e183a6008e7905c405ae2d932113aaed106fd6f288079fc5b429b3fbcd253",
+    "reviewInputHash": "970a7abd5a3c59221fced71a62d41e6c407eb580fe24ca758239978bbdc77ce3",
+    "authorResponseHash": "57281e8e69434d506f7fb77fdf2a4fcc38d88e2915e48195884797b66389990c",
+    "reviewerResponseHash": "75e8c7576083e1b933134ab05503b721e6654c0655a6a178ac960d90da375d65",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

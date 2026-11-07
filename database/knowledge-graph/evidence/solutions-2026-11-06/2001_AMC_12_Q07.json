@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2001_AMC_12_Q07",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "d10e5b6e16fde2be3627092cb375bc17c12569a94296b9591529206e65de37fe",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "e5b9883aa5eb22350f830f30eb2efd6e8387b9bf964d9759acfae24854d107e9",
+  "solutionFigureHashes": {},
+  "candidateHash": "1df7072fc0638cbc67afe7d07e028b3297e2697f12431ad9f9aaeef585dde9ac",
+  "candidate": {
+    "questionId": "2001_AMC_12_Q07",
+    "derivedAnswer": "A: $782",
+    "answerStatus": "matches",
+    "answerReason": "The whole-dollar full price must be a divisor of 4002 between 15 and 28, so it is 23. There are 34 full-price tickets, raising $782, which matches choice A.",
+    "methods": [
+      {
+        "id": "integer-ticket-price",
+        "label": "Bound the whole-dollar price",
+        "explanation": "The whole-dollar condition lets us restrict the full price using divisibility. Let \\(p\\) be the positive integer full price in dollars, and let \\(n\\) be the number of full-price tickets. The other \\(140-n\\) tickets cost \\(p/2\\) dollars each, so\n\\[\npn+\\frac p2(140-n)=2001.\n\\]\nMultiplying by \\(2\\) and collecting factors gives\n\\[\np(140+n)=4002.\n\\]\nIn particular, \\(p\\) divides \\(4002\\).\n\nEvery ticket costs between \\(p/2\\) and \\(p\\), so\n\\[\n70p\\le2001\\le140p.\n\\]\nBecause \\(p\\) is an integer, these bounds give \\(15\\le p\\le28\\). Now\n\\[\n4002=2\\cdot3\\cdot23\\cdot29.\n\\]\nA divisor in the required range cannot contain the factor \\(29\\). A divisor using neither \\(23\\) nor \\(29\\) is at most \\(2\\cdot3=6\\), while the only multiple of \\(23\\) between \\(15\\) and \\(28\\) is \\(23\\). Hence \\(p=23\\).\n\nIt follows that \\(140+n=4002/23=174\\), so \\(n=34\\). The full-price tickets raise\n\\[\n23\\cdot34=\\boxed{782}\\text{ dollars}.\n\\]\nThe remaining \\(106\\) tickets raise \\(106\\cdot11.50=1219\\) dollars, and \\(782+1219=2001\\), confirming the conditions. The answer is choice \\(\\mathrm{A}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "math:prime-factorization"
+        ],
+        "prerequisiteIds": [
+          "cnm_p111",
+          "cnm_p153",
+          "cnm_p157"
+        ],
+        "levelReason": "Uses a price-times-quantity equation, elementary bounds, and prime factorization within AMC 12 scope."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_p111",
+      "math:prime-factorization"
+    ],
+    "annotationRationale": "The central target is using integer restrictions and finite bounds to determine the unique feasible ticket price and count. Price-times-quantity relationships provide the model, and prime factorization supplies the supporting divisor argument. The final check verifies the ticket counts and revenue.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2001_AMC_12_Q07",
+    "decision": "accept",
+    "mathematicalCheck": "The revenue equation gives p(140+n)=4002 and 15≤p≤28. Since 4002=2·3·23·29, its only divisor in that interval is 23. Thus n=34 and full-price revenue is 782. The remaining 106 tickets verify the total revenue.",
+    "levelCheck": "Elementary modeling, bounds, and prime factorization fit AMC 12. The decisive divisor elimination establishes uniqueness clearly.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Integer-equation solving is the central target. Price-times-quantity relationships, prime factorization, factors, and prime recognition accurately support the method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "integer-ticket-price": "integer-ticket-price"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "a32d346ff78283991d6faab37329a0b36cf9c33166461b8f1fcbdf44f2672003",
+    "inputHash": "f671160b829bae5813cce05ecb2e0834fc6fbb23195242da2b889d922fc6583d",
+    "authorInputHash": "007206c7ec7208407ae3d6112d807ca707365b867beaa103f99f147b400d52d1",
+    "reviewInputHash": "8438e39fa96a9dc5c3065c3601b11ecbf5fb8e5a5b6930100cba5ad6ec86a812",
+    "authorResponseHash": "4513fac6e288612516a7f119b0f011c87b8d3bb5100be8b9033694a69ca89539",
+    "reviewerResponseHash": "998a53936b7314ce7fad4625551f0336700e7447b75fbb25a0c83e6a89aa76ab",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

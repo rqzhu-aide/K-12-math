@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2002_AMC_12A_Q09",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ca133d88f2afe9b8408811e9ad11853ed3415fc3eebffbbaec6b82017d76cdb7",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "56a8668427683efb0ccfd506d07bdf9f5739428ac5402091459b5183c90f9b1c",
+  "solutionFigureHashes": {},
+  "candidateHash": "f86209822a9cbfd57caf2c36e3c3b9ab68b4c0683f1dd7df0706eadbabdf6cda",
+  "candidate": {
+    "questionId": "2002_AMC_12A_Q09",
+    "derivedAnswer": "B. 13 disks",
+    "answerStatus": "matches",
+    "answerReason": "Twelve disks cannot accommodate all the files under the whole-file restriction, while an explicit packing uses exactly 13 disks.",
+    "methods": [
+      {
+        "id": "effective-capacity-bound",
+        "label": "Bound the usable capacity",
+        "explanation": "Every file size is a multiple of \\(0.1\\) mb, so the total stored on any disk is also a multiple of \\(0.1\\) mb. A disk with capacity \\(1.44\\) mb can therefore hold at most \\(1.4\\) mb of these files.\n\nThe three \\(0.8\\)-mb files must occupy separate disks, since two would require \\(1.6\\) mb. A disk containing a \\(0.8\\)-mb file cannot also contain a \\(0.7\\)-mb file or two \\(0.4\\)-mb files. It holds at most \\(0.8+0.4=1.2\\) mb.\n\nThe files require a total of\n\\[\n3(0.8)+12(0.7)+15(0.4)=16.8\\text{ mb}.\n\\]\nWith twelve disks, the three disks containing the largest files and the nine other disks could hold at most\n\\[\n3(1.2)+9(1.4)=16.2\\text{ mb}.\n\\]\nThis is insufficient, and fewer disks would hold still less. At least thirteen disks are necessary.\n\nThirteen disks suffice with the following packing:\n\nThree disks each hold one \\(0.8\\)-mb file and one \\(0.4\\)-mb file.\n\nSix disks each hold two \\(0.7\\)-mb files.\n\nFour disks each hold three \\(0.4\\)-mb files.\n\nThese groups use all three large files, all twelve medium files, and \\(3+12=15\\) small files. Each disk holds either \\(1.2\\) or \\(1.4\\) mb, within its capacity. Thus the minimum is \\(3+6+4=\\boxed{13}\\) disks, choice B.",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_p132"
+        ],
+        "prerequisiteIds": [
+          "cnm_p118",
+          "cnm_p125",
+          "cnm_p119"
+        ],
+        "levelReason": "The proof combines elementary decimal arithmetic with a universal capacity bound and an explicit packing."
+      },
+      {
+        "id": "file-count-bound",
+        "label": "Count how many files disks can hold",
+        "explanation": "Call the \\(0.8\\)-mb and \\(0.7\\)-mb files the larger files. The three \\(0.8\\)-mb files need separate disks and cannot share a disk with a \\(0.7\\)-mb file, because \\(0.8+0.7=1.5>1.44\\). The twelve \\(0.7\\)-mb files need at least six additional disks, since no disk holds more than two of them. Thus at least nine distinct disks contain a larger file.\n\nAny disk containing a larger file holds at most two files altogether: even a \\(0.7\\)-mb file with two smallest files would require\n\\[\n0.7+0.4+0.4=1.5\\text{ mb}.\n\\]\nEvery other disk holds at most three files, because four smallest files require \\(1.6\\) mb.\n\nIf there were at most twelve disks, choose nine that contain larger files. Those nine hold at most eighteen files, and the at most three remaining disks hold at most nine files. The total would be at most\n\\[\n9(2)+3(3)=27\n\\]\nfiles, fewer than the required thirty. Therefore at least thirteen disks are needed.\n\nTo achieve thirteen, use three disks for \\(0.8+0.4\\), six disks for \\(0.7+0.7\\), and four disks for \\(0.4+0.4+0.4\\), with sizes measured in mb. Each group fits within \\(1.44\\) mb, and the packing uses exactly the stated numbers of all three file sizes. Hence the minimum is \\(\\boxed{13}\\) disks, choice B.",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_p112"
+        ],
+        "prerequisiteIds": [
+          "cnm_p125",
+          "cnm_p119"
+        ],
+        "levelReason": "This alternative counts files using elementary capacity comparisons and integer arithmetic."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_p125",
+      "cnm_p119"
+    ],
+    "annotationRationale": "The task assesses proving a sharp discrete minimum through both a lower bound and an attaining construction. The first method bounds stored memory; the second bounds file counts on distinct groups of disks. Decimal addition and comparison support both, while decimal multiplication and mixed integer arithmetic are kept in their respective routes.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2002_AMC_12A_Q09",
+    "decision": "accept",
+    "mathematicalCheck": "The capacity method bounds twelve disks by 16.2 mb against 16.8 mb required. Independently, nine disks containing larger files hold at most eighteen files, so twelve disks hold at most twenty-seven. The thirteen-disk construction fits every disk and uses exactly all thirty files.",
+    "levelCheck": "Both elementary bounds explain the whole-file restriction and include an attaining construction, establishing minimality.",
+    "methodDistinctness": "The methods provide distinct insights by bounding stored memory and file counts respectively.",
+    "annotationCheck": "The shared extremal node correctly represents a universal bound plus construction. Shared decimal arithmetic and comparison are justified, with decimal multiplication and integer arithmetic kept in their respective routes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "effective-capacity-bound": "effective-capacity-bound",
+    "file-count-bound": "file-count-bound"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "93833024a41e108fc3f7793f9830990205e4916fcfe72df48bf457835811eb90",
+    "inputHash": "7491a3de8f0628d506dfaeda5893bf99221a213e86252e39013b3785a5a78ec1",
+    "authorInputHash": "b81e088abe79cbe9dc440f45c579af18f892f093d96a992099db1e635d6dd29d",
+    "reviewInputHash": "9e80ee659675f0e7e1a183125658ff31a533e3044e39ace6769583a88abf235a",
+    "authorResponseHash": "5cb7c12498f354033db691c9b2a47179447eea137e4597849d57bf30dcf214d4",
+    "reviewerResponseHash": "9235de663bb370704930bbc8a1614e8db7c163f8b466fdf303d26846037f248d",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

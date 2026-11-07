@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2014_AMC_12A_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "20d7660cc15fdae0bc6521d27807f2134ca9020e63fa733e13b592c009de08e4",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "1ac975294ba15445bb40c177b63295503ee7c89464c58ca11777628d9827efb9",
+  "solutionFigureHashes": {},
+  "candidateHash": "a4a7153b4190c414e865162f8c16242aee8032cf88a3823aea012ac5776f9818",
+  "candidate": {
+    "questionId": "2014_AMC_12A_Q24",
+    "derivedAnswer": "C (301)",
+    "answerStatus": "matches",
+    "answerReason": "The initial value f₀(x) must be one of the 101 even integers from −100 through 100. Each interior target has three preimages under f₀, and each endpoint target has two, giving 99·3+2·2=301.",
+    "methods": [
+      {
+        "id": "forward-descent-and-cycle",
+        "label": "Follow the descent and the two-step cycle",
+        "explanation": "Let \\(g(t)=|t|-1\\) and \\(T=f_0(x)\\). We need the value obtained after \\(100\\) applications of \\(g\\) to be \\(0\\). The useful observation is that positive integers decrease by \\(1\\), while \\(0\\) and \\(-1\\) alternate.\n\nAn integer output of \\(g\\) can only come from an integer input: if \\(|t|-1\\) is an integer, then \\(|t|\\), and hence \\(t\\), is an integer. Working backward from the final \\(0\\), we see that \\(T\\) must be an integer.\n\nSet \\(a=|T|\\). If \\(a>0\\), the first output is \\(a-1\\), and the values then decrease by \\(1\\) until reaching \\(0\\) after \\(a\\) applications. If \\(a>100\\), the value after \\(100\\) applications is still positive. Once \\(0\\) is reached, the cycle is\n\\[\n0\\longmapsto-1\\longmapsto0.\n\\]\nThis also covers \\(a=0\\), where the starting value is already \\(0\\). Thus the final value is \\(0\\) exactly when \\(a\\le100\\) and \\(100-a\\) is even. Equivalently,\n\\[\nT\\in\\{-100,-98,\\ldots,98,100\\}.\n\\]\nNow simplify the initial function on disjoint intervals:\n\\[\nf_0(x)=\n\\begin{cases}\nx+200,&x<-100,\\\\\n-x,&-100\\le x\\le100,\\\\\nx-200,&x>100.\n\\end{cases}\n\\]\nFor each target \\(-100<T<100\\), its three solutions are \\(x=T-200,-T,T+200\\), one in each branch. There are \\(99\\) such even targets. At \\(T=-100\\), the distinct solutions are \\(-300,100\\); at \\(T=100\\), they are \\(-100,300\\). The branch endpoints have been counted only once.\n\nTherefore the number of values of \\(x\\) is\n\\[\n99\\cdot3+2\\cdot2=\\boxed{301},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "math:function-composition-iteration",
+          "cnm_h049",
+          "cnm_h031"
+        ],
+        "prerequisiteIds": [
+          "cnm_008",
+          "cnm_h200",
+          "cnm_p156"
+        ],
+        "levelReason": "The proof uses the absolute-value rule, integer parity, an explicitly verified two-step cycle, and inversion of three linear branches."
+      },
+      {
+        "id": "backward-preimage-sets",
+        "label": "Work backward from zero",
+        "explanation": "Let \\(g(t)=|t|-1\\), and let \\(S_j\\) be the set of starting values whose output is \\(0\\) after \\(j\\) applications of \\(g\\). Starting with \\(S_0=\\{0\\}\\), we can find each preceding set by solving \\(|t|-1=u\\).\n\nA target \\(u<-1\\) has no predecessor. For \\(u\\ge-1\\), its predecessors are \\(t=\\pm(u+1)\\), with just one value, \\(0\\), when \\(u=-1\\). This gives\n\\[\nS_1=\\{-1,1\\},\\qquad S_2=\\{-2,0,2\\}.\n\\]\nThe general pattern is\n\\[\nS_j=\\{-j,-j+2,\\ldots,j-2,j\\}.\n\\]\nHere is why the pattern continues. If \\(j\\) is even, the usable targets in this set are \\(0,2,\\ldots,j\\); their predecessors are exactly \\(\\pm1,\\pm3,\\ldots,\\pm(j+1)\\). If \\(j\\) is odd, the usable targets are \\(-1,1,3,\\ldots,j\\); their predecessors are exactly \\(0,\\pm2,\\ldots,\\pm(j+1)\\). Starting from \\(S_0\\), these two transitions prove the pattern for every \\(j\\), including all possible predecessors.\n\nThus \\(f_{100}(x)=0\\) exactly when \\(f_0(x)\\) is one of the \\(101\\) even integers from \\(-100\\) to \\(100\\).\n\nThe initial function is\n\\[\nf_0(x)=\n\\begin{cases}\nx+200,&x<-100,\\\\\n-x,&-100\\le x\\le100,\\\\\nx-200,&x>100.\n\\end{cases}\n\\]\nEach branch is one-to-one. The left branch has range \\(( -\\infty,100)\\), so it reaches \\(100\\) of the target values, excluding only \\(100\\). The middle branch reaches all \\(101\\) targets. The right branch has range \\((-100,\\infty)\\), so it reaches \\(100\\) targets, excluding only \\(-100\\). These input branches are disjoint, so their counts add without duplication.\n\nThe total is \\(100+101+100=\\boxed{301}\\), choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "math:function-composition-iteration",
+          "cnm_h049",
+          "cnm_h031"
+        ],
+        "prerequisiteIds": [
+          "cnm_008",
+          "cnm_h200",
+          "cnm_p156"
+        ],
+        "levelReason": "Backward application of the absolute-value rule gives a fully justified even/odd set pattern, followed by elementary counting on disjoint linear branches."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h049",
+      "math:function-composition-iteration"
+    ],
+    "supportIds": [
+      "cnm_008",
+      "cnm_h031",
+      "cnm_h200",
+      "cnm_p156"
+    ],
+    "annotationRationale": "The task asks for zeros of an iterated known function. Both methods use absolute-value evaluation, piecewise inversion, recurrence notation, and integer parity. The forward method follows descent into a verified cycle; the backward method propagates complete preimage sets. Both preserve the branch endpoints when counting distinct inputs.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2014_AMC_12A_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "Both methods establish that the allowable initial values are exactly the 101 even integers from −100 through 100. The disjoint branches of f₀ have ranges (−∞,100), [−100,100], and (−100,∞), contributing 100, 101, and 100 distinct inputs. The total is 301.",
+    "levelCheck": "Absolute values, integer parity, elementary iteration, and linear branch inversion are appropriate. Both methods explain completeness and endpoint counting.",
+    "methodDistinctness": "Forward descent into a verified cycle and backward propagation of complete preimage sets provide distinct, accessible insights.",
+    "annotationCheck": "Zeros and known-function iteration are appropriate assessed targets. Absolute values, piecewise functions, recurrence notation, and parity support both methods.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "forward-descent-and-cycle": "forward-descent-and-cycle",
+    "backward-preimage-sets": "backward-preimage-sets"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "cfbe6673622562a8f529c393b4b9a3b592fd599bedb1470a8d36c83c709c8d66",
+    "inputHash": "8444337031c8f06ae1791add59492f485b2e589a8d153f4e35fbf0176d128358",
+    "authorInputHash": "6c34b075bdebcecb9787a94b6df4280acc8b40ac27a5ead6dce3c202f679073e",
+    "reviewInputHash": "ba101a6e8c5d490ff98295b0f8ede44268368a2c1dabbe7d04a78a6b0faaf40e",
+    "authorResponseHash": "4429eafb9f8a549e95ad18a372af7879c3255af2fa608ed1c345f8c4b091d7e8",
+    "reviewerResponseHash": "fce9eda2458f64c933be708935e5afca14fb1838c1edb75f52871b5b00716fa0",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1961_AMC_12_Q29",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "8bcbdf4e26bdc8bde2962d36d6ed2af541cc5f817612ad8cc1e48c6804a4ef56",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "98a7c680ad5a43c65cdbee2c307f017a3a752b534e68f301806d3449098afbf3",
+  "solutionFigureHashes": {},
+  "candidateHash": "d0a853f5154a3a4b7802609b822b9672156ce8dec9c3e75322a25ce101a74a5e",
+  "candidate": {
+    "questionId": "1961_AMC_12_Q29",
+    "derivedAnswer": "B, x^2-bx+ac=0",
+    "answerStatus": "matches",
+    "answerReason": "With a≠0, as required for the original equation to be quadratic, the transformed roots have sum b and product ac. Their monic equation is x^2-bx+ac=0, agreeing with choice B.",
+    "methods": [
+      {
+        "id": "transformed-root-sum-product",
+        "label": "Find the new root sum and product",
+        "explanation": "We can construct the new quadratic from the sum and product of its roots without finding \\(r\\) and \\(s\\) separately. Here \\(a\\ne0\\), as required for the original equation to be quadratic.\n\nWriting the original polynomial in terms of its roots and expanding gives\n\\[\nat^2+bt+c=a(t-r)(t-s)\n=at^2-a(r+s)t+ars.\n\\]\nComparing the coefficients of \\(t\\) and the constant terms yields\n\\[\nr+s=-\\frac ba,\\qquad rs=\\frac ca.\n\\]\nLet \\(u=ar+b\\) and \\(v=as+b\\) be the desired roots. Their sum is\n\\[\nu+v=a(r+s)+2b=-b+2b=b,\n\\]\nand their product is\n\\[\n\\begin{aligned}\nuv&=a^2rs+ab(r+s)+b^2\\\\\n&=ac-b^2+b^2=ac.\n\\end{aligned}\n\\]\nTherefore the equation with these roots is\n\\[\n(x-u)(x-v)=x^2-(u+v)x+uv=0.\n\\]\nThis factor construction also covers a repeated root. Substituting the sum and product gives \\(x^2-bx+ac=0\\), choice B.",
+        "nodeIds": [
+          "cnm_226",
+          "cnm_146"
+        ],
+        "prerequisiteIds": [
+          "cnm_219",
+          "cnm_039",
+          "cnm_036"
+        ],
+        "levelReason": "Quadratic factor expansion explains the root-coefficient identities using only school algebra; no explicit root calculation is needed."
+      },
+      {
+        "id": "linear-root-substitution",
+        "label": "Substitute the new root variable",
+        "explanation": "Use \\(t\\) for the original variable and introduce \\(x=at+b\\). Then the old roots \\(t=r,s\\) correspond to the desired new roots \\(x=ar+b,as+b\\).\n\nBecause \\(a\\ne0\\), as required for the original equation to be quadratic, the substitution is reversible:\n\\[\nt=\\frac{x-b}{a}.\n\\]\nSubstituting into \\(at^2+bt+c=0\\) gives\n\\[\na\\left(\\frac{x-b}{a}\\right)^2\n+b\\left(\\frac{x-b}{a}\\right)+c=0.\n\\]\nMultiplying by the nonzero number \\(a\\) clears the denominators:\n\\[\n(x-b)^2+b(x-b)+ac=0.\n\\]\nExpanding and combining terms,\n\\[\nx^2-2bx+b^2+bx-b^2+ac=0,\n\\]\nso the equation becomes\n\\[\nx^2-bx+ac=0.\n\\]\nEvery step is reversible, so the resulting roots are precisely the required transformed roots. A repeated original root gives a repeated transformed root as well. The answer is \\(x^2-bx+ac=0\\), choice B.",
+        "nodeIds": [
+          "cnm_040",
+          "cnm_148",
+          "cnm_145",
+          "cnm_036"
+        ],
+        "prerequisiteIds": [
+          "cnm_219",
+          "cnm_039"
+        ],
+        "levelReason": "This method uses a reversible linear substitution, multiplication by a nonzero constant, and elementary polynomial expansion."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_219",
+      "cnm_039"
+    ],
+    "annotationRationale": "The route-neutral target is constructing a quadratic whose roots are specified affine transforms of given roots. No supplied catalog node precisely describes that target, so assessedIds is empty. Root-coefficient identities belong specifically to the first method, represented by cnm_226, together with polynomial multiplication. The second method uses equality properties, the perfect-square formula, distribution, and combining polynomial terms. Understanding quadratic equations, including a≠0, and the meaning of a root supports both methods. Neither method requires the quadratic formula or a discriminant calculation. These annotations do not establish student mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1961_AMC_12_Q29",
+    "decision": "accept",
+    "mathematicalCheck": "With a≠0, coefficient comparison gives r+s=−b/a and rs=c/a. Thus the transformed roots have sum b and product ac, yielding x²−bx+ac=0. Independently, aP((x−b)/a)=x²−bx+ac verifies the substitution method. Both arguments preserve repeated roots and introduce no extraneous roots.",
+    "levelCheck": "Both methods use accessible school algebra appropriate for historical AHSME. The decisive coefficient comparison and polynomial simplification are explained sufficiently.",
+    "methodDistinctness": "The methods offer distinct useful ideas: construct an equation from root sums and products, or transform the original equation through a reversible substitution.",
+    "annotationCheck": "The method-local nodes match the identities and operations used. cnm_219 and cnm_039 appropriately support both routes. Empty assessedIds honestly reflects the absence of a precise route-neutral target node. Neither method needs the quadratic formula or discriminant.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "transformed-root-sum-product": "solution:transformed-root-sum-product:98a7c680ad5a",
+    "linear-root-substitution": "solution:linear-root-substitution:98a7c680ad5a"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "200dbcf113c1ce66900b8e51380fa1eb924dd0f5ff98e05744c62d43178bf2ca",
+    "inputHash": "2e6ef7a8cd9b653fa14870728cfdf443217f6ecfa567236b088b7ae137582267",
+    "authorInputHash": "2ea0e0ef0909ccf9237045862e59815874e3e9672b648b433f6d42b79c94db80",
+    "reviewInputHash": "6fd63b170d445b1a2f4069f7148e1fb4debc8c3d14d76d72519f5b6ca0d370ff",
+    "authorResponseHash": "c4dff0b8cec54a3080b12fb48ba65ec4b19c4533cc4c048a37827b3719acc47b",
+    "reviewerResponseHash": "35b3e257d774fc9f2f44f25624269305bf053508c909d1c72048ecebfbd2b6be",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

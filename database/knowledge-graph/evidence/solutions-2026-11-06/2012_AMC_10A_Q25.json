@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2012_AMC_10A_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "56081a36ba38ae331ecc5a33d8cfd4c29b1af26621669e17ac13d938ae76e0b8",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "35d717e58b567de7c814c8aa16fb4ab36f348d5c282cb4e9c3d2432b7ab98384",
+  "solutionFigureHashes": {},
+  "candidateHash": "d8e209f6e204344506e9cb836364ee9dbb9a4a6737e490a5e7e6ad09f098b015",
+  "candidate": {
+    "questionId": "2012_AMC_10A_Q25",
+    "derivedAnswer": "D, \\(n=10\\)",
+    "answerStatus": "matches",
+    "answerReason": "For n>2, the probability is ((n-2)/n)^3. It increases with n, is below 1/2 at n=9, and exceeds 1/2 at n=10.",
+    "methods": [
+      {
+        "id": "remove-gaps-and-partition-cubes",
+        "label": "Remove the unit gaps and compare volumes",
+        "explanation": "Ordering the three numbers lets us remove the two required unit gaps. If \\(n\\leq 2\\), two consecutive gaps greater than \\(1\\) cannot fit in the interval, so the desired probability is zero. We therefore consider \\(n>2\\).\n\nIndependence and uniform sampling make \\((x,y,z)\\) a uniform point in the cube \\([0,n]^3\\). Thus the probability is the favorable volume divided by \\(n^3\\). Cases where two coordinates differ by exactly \\(1\\) lie on planes of zero volume, so including these boundary cases does not change the probability.\n\nFirst consider the ordering \\(x\\leq y\\leq z\\). The required conditions are\n\\[0\\leq x,\\qquad x+1\\leq y,\\qquad y+1\\leq z\\leq n.\\]\nThe first and last numbers are then automatically at least \\(2\\) units apart. To remove the two unit gaps, set\n\\[u=x,\\qquad v=y-1,\\qquad w=z-2.\\]\nThe conditions become\n\\[0\\leq u\\leq v\\leq w\\leq n-2.\\]\nThese fixed coordinate shifts translate the region and preserve its volume. Reversing the shifts restores the required gaps and keeps all three original numbers in \\([0,n]\\), so the correspondence works in both directions.\n\nThe cube \\([0,n-2]^3\\) splits into six regions according to the coordinate order. There are \\(3\\cdot2\\cdot1=6\\) orders, and permuting coordinates makes their volumes equal. Every point with distinct coordinates belongs to exactly one region; their shared boundaries have zero volume. Consequently, the region \\(u\\leq v\\leq w\\) has volume \\((n-2)^3/6\\).\n\nThe six possible orders of \\(x,y,z\\) likewise give six equal favorable regions. They exhaust the favorable outcomes without overlap, giving total favorable volume \\((n-2)^3\\). Hence\n\\[P(n)=\\frac{(n-2)^3}{n^3}=\\left(1-\\frac{2}{n}\\right)^3.\\]\nFor \\(n>2\\), the positive factor \\(1-2/n\\) increases as \\(n\\) increases, so its cube also increases. Now\n\\[P(9)=\\frac{343}{729}<\\frac12\\]\nbecause \\(686<729\\), whereas\n\\[P(10)=\\frac{512}{1000}>\\frac12.\\]\nThus every smaller positive integer fails, and the smallest possible value is \\(\\boxed{10}\\), choice D.",
+        "nodeIds": [
+          "math:geometric-probability",
+          "cnm_072",
+          "cnm_h231"
+        ],
+        "prerequisiteIds": [
+          "cnm_p185",
+          "cnm_p163",
+          "cnm_096"
+        ],
+        "levelReason": "Uses elementary geometric probability, translations, cube volumes, symmetry, and exact numerical comparisons, all within AMC 10 scope."
+      }
+    ],
+    "assessedIds": [
+      "math:geometric-probability"
+    ],
+    "supportIds": [
+      "cnm_p185",
+      "cnm_p163",
+      "cnm_096"
+    ],
+    "annotationRationale": "The task assesses translating independent uniform choices into a favorable-volume ratio. The method uses translation to remove mandatory gaps and elementary counting to partition cubes into six equal coordinate-order regions. Ratio meaning, cube volumes, and inequality properties support these steps; general similar-solid scaling is unnecessary for the written calculation.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2012_AMC_10A_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The coordinate shifts give a volume-preserving correspondence with one of six equal ordered regions of the smaller cube. Thus \\(P(n)=((n-2)/n)^3\\) for \\(n>2\\), and the probability is zero otherwise. Monotonicity and the exact comparisons at 9 and 10 establish the minimum.",
+    "levelCheck": "The explanation uses accessible geometric probability, translations, symmetry, and cube volumes within AMC 10 scope.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Geometric probability is the route-neutral target. Translation and multiplication-principle tags describe the method accurately; ratio, cube-volume, and inequality supports are justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "remove-gaps-and-partition-cubes": "remove-gaps-and-partition-cubes"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "a66a3affc95115d04c11ed6ac07076548b1f97ea999d4985e84a0c1383bcf4a8",
+    "inputHash": "84f096e7442fb5662cd2c89f5d116523087e799a2e2a8c6117776dcc2fa011d3",
+    "authorInputHash": "eb920a598b96440b14c4e92a994d59a4712ebf0e1d2a2fafd2b9000b508065b8",
+    "reviewInputHash": "441879b9bb312095ccab140fa73d7e8460a68e0d47942448eafcfb3f1c2c4bad",
+    "authorResponseHash": "4b70eb4fbd46c9867f8d35fb8f298132645a7b08ac8380724bfa11186f28388c",
+    "reviewerResponseHash": "5f44aa9e435153bc7cb87ebbd012b01f10e7f25b73ad16931e2cd5e51b332070",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

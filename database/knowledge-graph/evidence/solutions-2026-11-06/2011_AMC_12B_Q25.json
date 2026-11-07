@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2011_AMC_12B_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ab7ab06ba3f48ade2ea1236fd1af614a0925eb10cb87f2716338ec17fbbdb523",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "bf8c6f816beb011b0106bb70aa8bb7ff49981d54a01ea425c0df6d24760b8d24",
+  "solutionFigureHashes": {},
+  "candidateHash": "5aa7bacd9f69f1c4f2fd40c0713cba958088a52761f98475ead2ed0b9f7ca683",
+  "candidate": {
+    "questionId": "2011_AMC_12B_Q25",
+    "derivedAnswer": "D: 34/67",
+    "answerStatus": "matches",
+    "answerReason": "If s is the difference between 100 and its nearest multiple of k, counting successful remainder classes gives P(k)=1-|s|/k. Elementary bounds show this is at least 34/67 for every allowed k, with equality at k=67. This agrees with choice D.",
+    "methods": [
+      {
+        "id": "balanced-remainders",
+        "label": "Count the rounding errors",
+        "explanation": "The useful observation is that rounding a fraction with denominator \\(k\\) amounts to finding the nearest multiple of \\(k\\) to its numerator. Because \\(k\\) is odd, there are no ties: if \\(m/k\\) were halfway between integers \\(j\\) and \\(j+1\\), then \\(2m=k(2j+1)\\), which would equate an even integer with an odd integer.\n\nFix an allowed \\(k\\), and let \\(h=(k-1)/2\\). Write\n\\[\nq=\\left[\\frac{n}{k}\\right],\\qquad a=\\left[\\frac{100}{k}\\right],\n\\]\nso that\n\\[\nn=kq+r,\\qquad 100=ka+s,\n\\]\nwhere \\(r\\) and \\(s\\) are integers between \\(-h\\) and \\(h\\), inclusive. These remainders measure the differences from the nearest multiples of \\(k\\).\n\nSince \\(k\\le99\\), the product \\(99!=1\\cdot2\\cdots99\\) is divisible by \\(k\\). Thus the possible values of \\(n\\) split into complete blocks of \\(k\\) consecutive integers. Each block contains one representative of every remainder class upon division by \\(k\\). Consequently, each of the \\(k\\) possible values \\(-h,-h+1,\\ldots,h\\) of \\(r\\) is equally likely.\n\nNow\n\\[\n\\frac{100-n}{k}=a-q+\\frac{s-r}{k}.\n\\]\nThe required equality holds exactly when this expression rounds to \\(a-q\\), or equivalently when \\((s-r)/k\\) rounds to zero. Since \\(s-r\\) is an integer and \\(k\\) is odd, this means\n\\[\n-h\\le s-r\\le h,\n\\]\nwhich is the same as \\(s-h\\le r\\le s+h\\). We must count the integers satisfying this condition and \\(-h\\le r\\le h\\).\n\nIf \\(s\\ge0\\), the successful remainders run from \\(s-h\\) through \\(h\\), giving \\(2h-s+1=k-s\\) values. If \\(s<0\\), they run from \\(-h\\) through \\(s+h\\), giving \\(k+s\\) values. These cases cover every possible \\(s\\), and each successful remainder is counted once. Therefore\n\\[\nP(k)=\\frac{k-|s|}{k}=1-\\frac{|s|}{k}.\n\\]\n\nTo minimize this probability, first consider \\(1\\le k\\le67\\). The bound \\(|s|\\le(k-1)/2\\) gives\n\\[\nP(k)\\ge\\frac{k+1}{2k}\n=\\frac12+\\frac{1}{2k}\n\\ge\\frac12+\\frac{1}{134}\n=\\frac{34}{67}.\n\\]\nFor \\(67\\le k\\le99\\), we have \\(1<100/k<3/2\\), so \\(a=1\\) and \\(s=100-k\\). Hence\n\\[\nP(k)=2-\\frac{100}{k}\n\\ge2-\\frac{100}{67}\n=\\frac{34}{67}.\n\\]\nThese ranges cover every allowed odd \\(k\\), including \\(k=1\\). At \\(k=67\\), the remainder is \\(s=33\\), so \\(P(67)=(67-33)/67=34/67\\). Thus the minimum is \\(\\boxed{\\frac{34}{67}}\\), choice \\(\\text{D}\\).",
+        "nodeIds": [
+          "math:modular-congruence",
+          "cnm_h020",
+          "cnm_285",
+          "math:extremal-principle"
+        ],
+        "prerequisiteIds": [
+          "math:factorial-notation",
+          "cnm_p153",
+          "cnm_p156",
+          "cnm_h017",
+          "cnm_p169"
+        ],
+        "levelReason": "The proof uses school algebra, parity, integer remainders, finite probability, and elementary fraction bounds, all appropriate for AMC 12."
+      }
+    ],
+    "assessedIds": [
+      "math:modular-congruence",
+      "cnm_285",
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "math:factorial-notation",
+      "cnm_p153",
+      "cnm_p156",
+      "cnm_h017",
+      "cnm_p169"
+    ],
+    "annotationRationale": "The central targets are reducing the rounding condition to remainder classes, calculating their equally likely probability, and proving an attained minimum. The method uses cnm_h020 to count integer remainders in intersecting intervals. Factorial notation and divisibility justify uniform remainder frequencies; parity excludes rounding ties; elementary inequalities and fraction comparisons support the count and bound.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2011_AMC_12B_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "Oddness excludes rounding ties. Since k divides 99!, the k balanced remainders are equally likely. The interval intersection contains exactly k-|s| successful remainders, giving P(k)=1-|s|/k. The two stated bounds cover every allowed k and yield P(k)≥34/67, attained at k=67. Negative numerators and k=1 are handled correctly.",
+    "levelCheck": "The complete argument uses elementary remainders, interval counting, probability, and algebra appropriate for AMC 12. The decisive counting and optimization steps are explained.",
+    "methodDistinctness": "One complete method is sufficient; no additional route is needed.",
+    "annotationCheck": "The assessed remainder, probability, and extremal nodes fit the proof. Integer interval counting is correctly method-local, and the listed support prerequisites are justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "balanced-remainders": "balanced-remainders"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "f26e2c0b04263acea435e9c89d9fa3c679363dbcf03df7e7c473dca011ad8799",
+    "inputHash": "a2bb25a8c99c9e5fed769fe511bf7d0936ed57b1c168aec423db94ead72892f9",
+    "authorInputHash": "2dfc858d794682ea844409ad048e3a2cf172a483e0e70f152888eae9f2dfd68f",
+    "reviewInputHash": "dbb3c55ae23dd29522f8fe0950c19d6b548834282d72d059d7c976913e150523",
+    "authorResponseHash": "4a97dbd6b59eeb7b73291c88a286efcbc06de5f01e08c11d9f1a0cd094948334",
+    "reviewerResponseHash": "5fddd7833498ffec5ed1e810efff51368f2b087e2b7a1f7eccf4744d87a2934b",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

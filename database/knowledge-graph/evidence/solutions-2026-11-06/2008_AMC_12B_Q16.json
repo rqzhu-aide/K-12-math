@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2008_AMC_12B_Q16",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "079f3b6a0a935efe9450e52c27adeef9cdc1e361aaa14ecb43fb3c0bbc191702",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "6864dea1cb023475944144ba23bf301a296afd4e42abc24b981b86e3c4d15a20",
+  "solutionFigureHashes": {},
+  "candidateHash": "e0c877f520190202d7951738cdf8c004c53bf99c0d906c50fd5263cc8d4fb628",
+  "candidate": {
+    "questionId": "2008_AMC_12B_Q16",
+    "derivedAnswer": "B: \\(2\\)",
+    "answerStatus": "matches",
+    "answerReason": "The only admissible dimension pairs are (5,12) and (6,8), so there are two possibilities.",
+    "methods": [
+      {
+        "id": "shifted-factor-pairs",
+        "label": "Turn the area equation into factor pairs",
+        "explanation": "A border of width \\(1\\) removes \\(2\\) feet from each painted dimension. Thus \\(a>2\\), \\(b>2\\), and the painted rectangle has dimensions \\(a-2\\) and \\(b-2\\). Since the border occupies half the floor, the painted rectangle also occupies half:\n\\[\n(a-2)(b-2)=\\frac{ab}{2}.\n\\]\nExpanding and rearranging gives\n\\[\nab-4a-4b+8=0,\n\\]\nso adding \\(8\\) to both sides completes a product:\n\\[\n(a-4)(b-4)=8.\n\\]\nWe must determine the signs before listing factors. The expanded equation also gives \\(b(a-4)=4(a-2)>0\\). Since \\(b>0\\), we have \\(a>4\\), and hence \\(b>4\\).\n\nTherefore \\(a-4\\) and \\(b-4\\) are positive integers whose product is \\(8\\). Because \\(b>a\\), the first factor must be smaller. The complete list is\n\\[\n(a-4,b-4)=(1,8),\\ (2,4),\n\\]\ngiving \\((a,b)=(5,12)\\) and \\((6,8)\\). Their painted areas are respectively \\(3\\cdot10=30\\), half of \\(60\\), and \\(4\\cdot6=24\\), half of \\(48\\). Both satisfy all conditions. Reversing either pair would violate \\(b>a\\), so there are exactly \\(\\boxed{2}\\) possibilities, choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_146",
+          "cnm_p153"
+        ],
+        "prerequisiteIds": [
+          "cnm_p089",
+          "cnm_040",
+          "cnm_096"
+        ],
+        "levelReason": "Factoring a school-algebra equation and listing the factor pairs of 8 are within AMC 12 scope."
+      },
+      {
+        "id": "bound-shorter-side",
+        "label": "Restrict the shorter side first",
+        "explanation": "The painted fraction of the floor is\n\\[\n\\frac{(a-2)(b-2)}{ab}\n=\\left(1-\\frac2a\\right)\\left(1-\\frac2b\\right)\n=\\frac12,\n\\]\nwhere \\(b>a>2\\). This product lets us restrict \\(a\\) before solving for \\(b\\).\n\nIf \\(a\\le4\\), the first factor is at most \\(1/2\\), while the second factor is positive and less than \\(1\\). Their product would be less than \\(1/2\\), which is impossible.\n\nIf \\(a\\ge7\\), integrality and \\(b>a\\) give \\(b\\ge8\\). Then\n\\[\n\\left(1-\\frac2a\\right)\\left(1-\\frac2b\\right)\n\\ge\\frac57\\cdot\\frac34\n=\\frac{15}{28}>\\frac12,\n\\]\nwhich is also impossible. Hence the only possible shorter sides are \\(a=5\\) and \\(a=6\\).\n\nFor \\(a=5\\), the area equation becomes\n\\[\n3(b-2)=\\frac{5b}{2},\n\\]\nso \\(6b-12=5b\\) and \\(b=12\\). For \\(a=6\\), it becomes \\(4(b-2)=3b\\), giving \\(b=8\\).\n\nBoth pairs have positive painted dimensions and satisfy \\(b>a\\) and the half-area condition. The bounds exclude every other value of \\(a\\), and each remaining value gives exactly one \\(b\\). Thus there are \\(\\boxed{2}\\) possibilities, choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_h020",
+          "cnm_096",
+          "cnm_042"
+        ],
+        "prerequisiteIds": [
+          "cnm_p089",
+          "cnm_p169",
+          "cnm_145"
+        ],
+        "levelReason": "This route uses fraction comparisons and two linear equations, without requiring quadratic inequalities."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_p089"
+    ],
+    "annotationRationale": "The task asks for all integer solutions satisfying geometric restrictions, so integer-equation solving is the route-neutral target. Rectangle area supports both methods. Polynomial expansion and factor pairs belong to the first route; integer bounds, inequality comparisons, and linear equations belong to the second. Neither alternative is a requirement of the other.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2008_AMC_12B_Q16",
+    "decision": "accept",
+    "mathematicalCheck": "The painted-area condition gives (a-4)(b-4)=8. The sign argument establishes a>4, leaving precisely the ordered factor pairs (1,8) and (2,4), hence dimensions (5,12) and (6,8). Independently, the fraction bounds exclude a≤4 and a≥7, and solving the two remaining cases yields the same complete list.",
+    "levelCheck": "Both methods use accessible school algebra and elementary fraction comparisons.",
+    "methodDistinctness": "Factor-pair enumeration and bounding the shorter dimension provide distinct useful approaches.",
+    "annotationCheck": "The integer-equation assessment is route-neutral, rectangle area is shared support, and the method annotations correctly distinguish factoring from integer bounds and linear equations.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "shifted-factor-pairs": "solution:shifted-factor-pairs:6864dea1cb02",
+    "bound-shorter-side": "bound-shorter-side"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "952da7a969edbf5531925c2aad5f76adbdc05bda13d33463970a2861d8de8f82",
+    "inputHash": "a99692c49be767fdd1bcb01b08f9295d55b68c8a2eb4f1e08d218dc5bee04ca3",
+    "authorInputHash": "5b3ed9d9446cafb6265c0a468e31371f4d9eb18fd1513c96d20bd08991c95b91",
+    "reviewInputHash": "d5fe4566e5bcc2262b7e04cc8a82bf325379e6730bd8c5f1660194a3c78f5f75",
+    "authorResponseHash": "7dcfc1939079044258bd99ddc010f66665820cd0f429f5e12cb4267f5f949103",
+    "reviewerResponseHash": "96d4ac193e12d01cd542c55d6864802a4aea3a1ef307c00b4d108da50855897e",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

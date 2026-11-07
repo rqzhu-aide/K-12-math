@@ -1,0 +1,95 @@
+{
+  "Year": 2015,
+  "Level": "AMC 12",
+  "Batch": "A",
+  "Area": "Unclassified",
+  "Number": 22,
+  "Question": "For each positive integer \\(n,\\) let \\(S(n)\\) be the number of sequences of length \\(n\\) consisting solely of the letters \\(A\\) and \\(B,\\) with no more than three \\(A\\)s in a row and no more than three \\(B\\)s in a row. What is the remainder when \\(S(2015)\\) is divided by \\(12?\\)",
+  "Question Type": "text",
+  "Choices": {
+    "A": "\\(0\\)",
+    "B": "\\(4\\)",
+    "C": "\\(6\\)",
+    "D": "\\(8\\)",
+    "E": "\\(10\\)"
+  },
+  "Choices Type": "text",
+  "Correct Answer": "D",
+  "Solution": "The useful feature to track is the last uninterrupted run of equal letters. For \\(n\\ge4\\), this run has length \\(j=1,2,\\) or \\(3\\). Deleting the whole last run leaves a nonempty valid sequence of length \\(n-j\\). Conversely, any valid sequence of length \\(n-j\\) has exactly one extension whose final run has length \\(j\\): append \\(j\\) copies of the letter opposite to its last letter. These three cases are disjoint and include every valid sequence. Therefore\n\\[\nS(n)=S(n-1)+S(n-2)+S(n-3)\\qquad(n\\ge4).\n\\]\nEvery sequence of length at most three is allowed, so\n\\[\nS(1)=2,\\qquad S(2)=4,\\qquad S(3)=8.\n\\]\n\nTo find a remainder modulo \\(12\\), we can first find the remainders modulo \\(4\\) and modulo \\(3\\). Reducing each recurrence calculation modulo \\(4\\) gives\n\\[\n(S(1),\\ldots,S(7))\n\\equiv(2,0,0,2,2,0,0)\\pmod4.\n\\]\nThe triple at positions \\(5,6,7\\) equals the triple at positions \\(1,2,3\\). Since three consecutive terms determine every following term, this proves that the residues repeat with period \\(4\\). As \\(2015=4\\cdot503+3\\),\n\\[\nS(2015)\\equiv S(3)\\equiv0\\pmod4.\n\\]\n\nThe corresponding calculations modulo \\(3\\) give\n\\[\n(S(1),\\ldots,S(8))\n\\equiv(2,1,2,2,2,0,1,0)\\pmod3,\n\\]\n\\[\n(S(9),\\ldots,S(16))\n\\equiv(1,2,0,0,2,2,1,2)\\pmod3.\n\\]\nNow the triple at positions \\(14,15,16\\) equals the initial triple. The same recurrence argument proves period \\(13\\). Since \\(2015=13\\cdot154+13\\),\n\\[\nS(2015)\\equiv S(13)\\equiv2\\pmod3.\n\\]\nThe remainders between \\(0\\) and \\(11\\) divisible by \\(4\\) are \\(0,4,8\\). Only \\(8\\) has remainder \\(2\\) upon division by \\(3\\). Thus the requested remainder is \\(\\boxed{8}\\), choice \\(\\boxed{\\text{D}}\\).",
+  "Meta": {
+    "QuestionSource": "live-poshenloh",
+    "AnswerSource": "live-poshenloh-answer-key",
+    "SolutionSource": "Original Math Practice solution",
+    "AreaSource": "Pending topic curation",
+    "Concepts": "recursive counting; modular arithmetic; Chinese Remainder Theorem",
+    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2015A/solutions",
+    "SourceSHA256": "6e222993308d7c6aa6c9974dcc75bbcd8cf6fe4f2488d4eb39cf0f741bf1d130",
+    "Figures": [],
+    "FigureSources": {},
+    "SourceQuestionCount": 25,
+    "HistoricalSeries": "AMC 12",
+    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+    "Copyright": "Copyright Mathematical Association of America",
+    "License": "CC-BY-NC-SA-4.0",
+    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "TranscriptionSource": "LIVE by Po-Shen Loh",
+    "Modifications": [
+      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
+      "Third-party worked solution and solution-only figures omitted from the public distribution"
+    ],
+    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+    "SolutionReview": {
+      "status": "reviewed",
+      "solutionSHA256": "df750b166d3794a2056fb48cda3fc9048bdfd341e93dafdfd299aca33e001a44",
+      "questionContentHash": "f90afda023ddf33dffa1037b6e8f3310d6fd0afe70ac3b9095c3fb093e7c3597",
+      "evidence": {
+        "path": "knowledge-graph/evidence/solutions-2026-11-06/2015_AMC_12A_Q22.json",
+        "sha256": "00081f649cef16f7c9101b2f036fbf388bd8a91d6e38288c029ff9c11250fd15"
+      },
+      "author": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "reviewer": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      }
+    }
+  },
+  "ID": "2015_AMC_12A_Q22",
+  "Bank": "amc",
+  "SchemaVersion": "2.0",
+  "ResponseType": "choice",
+  "Language": "en",
+  "domain": [],
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "1.0.0",
+    "contentHash": "f90afda023ddf33dffa1037b6e8f3310d6fd0afe70ac3b9095c3fb093e7c3597",
+    "status": "mapped",
+    "reviewStatus": "machine_scope_audited",
+    "assessedIds": [
+      "math:recursive-counting-probability",
+      "math:modular-congruence"
+    ],
+    "supportIds": [
+      "cnm_h200",
+      "cnm_p153"
+    ],
+    "routes": [
+      {
+        "id": "final-run-recurrence-residue-periods",
+        "label": "Build a recurrence and prove residue periods",
+        "nodeIds": [
+          "math:recursive-counting-probability",
+          "math:modular-congruence",
+          "math:simultaneous-congruences",
+          "cnm_h200",
+          "cnm_p153"
+        ]
+      }
+    ],
+    "flags": []
+  }
+}

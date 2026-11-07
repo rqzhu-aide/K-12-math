@@ -1,0 +1,123 @@
+{
+  "Year": 2015,
+  "Level": "AMC 12",
+  "Batch": "A",
+  "Area": "Unclassified",
+  "Number": 17,
+  "Question": "Eight people are sitting around a circular table, each holding a fair coin. All eight people flip their coins and those who flip heads stand while those who flip tails remain seated. What is the probability that no two adjacent people will stand?",
+  "Question Type": "text",
+  "Choices": {
+    "A": "\\(\\dfrac{47}{256}\\)",
+    "B": "\\(\\dfrac{3}{16}\\)",
+    "C": "\\(\\dfrac{49}{256}\\)",
+    "D": "\\(\\dfrac{25}{128}\\)",
+    "E": "\\(\\dfrac{51}{256}\\)"
+  },
+  "Choices Type": "text",
+  "Correct Answer": "A",
+  "Solution": "Method 1: Count by the number who stand\n\nLabel the people \\(1\\) through \\(8\\) in clockwise order. The independent fair flips give \\(2^8=256\\) equally likely head-tail patterns. We count those with no adjacent standing people.\n\nEvery standing person must be followed clockwise by a seated person. These followers are distinct, so at most four people can stand. We can therefore count by the number standing.\n\nWith no one standing, there is \\(1\\) pattern. With one person standing, there are \\(8\\) patterns.\n\nWith two standing, start with the \\(\\binom82=28\\) pairs of people. Exactly \\(8\\) pairs are adjacent, including the pair \\(8,1\\). Thus there are \\(28-8=20\\) valid patterns.\n\nWith three standing, consider the three gaps of seated people between consecutive standing people. Each gap is positive, and their lengths sum to \\(5\\). The gap lengths must therefore be \\(3,1,1\\) or \\(2,2,1\\), in some circular order. For lengths \\(3,1,1\\), choose the standing person immediately following the unique gap of length \\(3\\). There are \\(8\\) choices, and each forces the rest of the pattern. For lengths \\(2,2,1\\), use the standing person immediately following the unique gap of length \\(1\\), again giving \\(8\\) patterns. The two types are disjoint, giving \\(16\\) patterns altogether.\n\nWith four standing, every gap must contain exactly one seated person. The pattern must alternate, giving \\(2\\) choices.\n\nThe cases are exhaustive and disjoint, and the unique-gap choices prevent duplicate counts. The desired probability is\n\\[\n\\frac{1+8+20+16+2}{256}\n=\\boxed{\\frac{47}{256}},\n\\]\nchoice \\(\\boxed{\\text{A}}\\).\n\nMethod 2: Count a row before closing the circle\n\nThe circular restriction becomes easier if we first count patterns in a straight row. Let \\(L_n\\) be the number of standing-seated patterns on \\(n\\) labeled people in a row with no adjacent standing people. The empty row has \\(L_0=1\\) pattern, and \\(L_1=2\\).\n\nFor \\(n\\ge2\\), separate patterns by the first person. If that person sits, the remaining \\(n-1\\) people have \\(L_{n-1}\\) possibilities. If that person stands, the second must sit, leaving \\(L_{n-2}\\) possibilities. These cases cover every valid pattern exactly once, so\n\\[\nL_n=L_{n-1}+L_{n-2}.\n\\]\nStarting from \\(L_0=1\\) and \\(L_1=2\\), this gives\n\\[\nL_2=3,\\ L_3=5,\\ L_4=8,\\ L_5=13,\\ L_6=21,\\ L_7=34.\n\\]\nNow return to the circle and fix person \\(1\\). If person \\(1\\) sits, people \\(2\\) through \\(8\\) form a row with \\(L_7=34\\) possibilities. If person \\(1\\) stands, people \\(2\\) and \\(8\\) must sit, leaving people \\(3\\) through \\(7\\) as a row with \\(L_5=13\\) possibilities. Thus there are \\(34+13=47\\) valid circular patterns.\n\nThe \\(2^8=256\\) outcomes of the independent fair flips are equally likely, so the probability is \\(\\boxed{\\tfrac{47}{256}}\\), choice \\(\\boxed{\\text{A}}\\).",
+  "Meta": {
+    "QuestionSource": "live-poshenloh",
+    "AnswerSource": "live-poshenloh-answer-key",
+    "SolutionSource": "Original Math Practice solution",
+    "AreaSource": "Pending topic curation",
+    "Concepts": "circular arrangements; basic probability; casework",
+    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2015A/solutions",
+    "SourceSHA256": "6e222993308d7c6aa6c9974dcc75bbcd8cf6fe4f2488d4eb39cf0f741bf1d130",
+    "Figures": [],
+    "FigureSources": {},
+    "SourceQuestionCount": 25,
+    "HistoricalSeries": "AMC 12",
+    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+    "Copyright": "Copyright Mathematical Association of America",
+    "License": "CC-BY-NC-SA-4.0",
+    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "TranscriptionSource": "LIVE by Po-Shen Loh",
+    "Modifications": [
+      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
+      "Third-party worked solution and solution-only figures omitted from the public distribution"
+    ],
+    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+    "SolutionReview": {
+      "status": "reviewed",
+      "solutionSHA256": "22507ce4fcf1c75955d190905833db965bb3476b329ab872a6c9572c3036143a",
+      "questionContentHash": "b6d8797278dfce37c84afd30171d36f29ceceed8b649b3a0b70e2e162e36729c",
+      "evidence": {
+        "path": "knowledge-graph/evidence/solutions-2026-11-06/2015_AMC_12A_Q17.json",
+        "sha256": "bdc008dbbae6f35770489f0315645c2553c5e8bf0e0844e320880138a03c4385"
+      },
+      "author": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "reviewer": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      }
+    }
+  },
+  "ID": "2015_AMC_12A_Q17",
+  "Bank": "amc",
+  "SchemaVersion": "2.0",
+  "ResponseType": "choice",
+  "Language": "en",
+  "domain": [],
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "1.0.0",
+    "contentHash": "b6d8797278dfce37c84afd30171d36f29ceceed8b649b3a0b70e2e162e36729c",
+    "status": "mapped",
+    "reviewStatus": "machine_adjudicated",
+    "assessedIds": [
+      "cnm_h137"
+    ],
+    "supportIds": [
+      "cnm_h230",
+      "cnm_h231",
+      "cnm_h140"
+    ],
+    "routes": [
+      {
+        "id": "path-state-recurrence",
+        "label": "Fix one coin and recurse",
+        "nodeIds": [
+          "math:recursive-counting-probability"
+        ]
+      },
+      {
+        "id": "count-by-standing-number",
+        "label": "Count by number standing",
+        "nodeIds": [
+          "math:stars-and-bars",
+          "math:double-counting",
+          "cnm_h237",
+          "cnm_h230"
+        ]
+      },
+      {
+        "id": "count-by-number-standing",
+        "label": "Count by the number who stand",
+        "nodeIds": [
+          "cnm_h137",
+          "cnm_h237",
+          "cnm_h230",
+          "cnm_h231",
+          "cnm_h140"
+        ]
+      },
+      {
+        "id": "line-pattern-recurrence",
+        "label": "Count a row before closing the circle",
+        "nodeIds": [
+          "cnm_h137",
+          "math:recursive-counting-probability",
+          "cnm_h230",
+          "cnm_h231",
+          "cnm_h140"
+        ]
+      }
+    ],
+    "flags": []
+  }
+}

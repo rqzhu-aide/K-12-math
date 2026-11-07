@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1966_AMC_12_Q30",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "7018e587c5631bb664b79b72585d6896c0a2f15e003ea18717991637e10d172e",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "20b62270a2bbc63bf478d9535b311185b5c085d574c7666b9bec8c6e09435968",
+  "solutionFigureHashes": {},
+  "candidateHash": "85a31860f202d4e923c0ba4eac221cb9f9015b39c65a7239398206ecc0317605",
+  "candidate": {
+    "questionId": "1966_AMC_12_Q30",
+    "derivedAnswer": "D, \\(-61\\)",
+    "answerStatus": "matches",
+    "answerReason": "The three root conditions give a=-25, b=60, and c=-36. Thus a+c=-61, agreeing with choice D.",
+    "methods": [
+      {
+        "id": "substitute-three-roots",
+        "label": "Substitute the known roots",
+        "explanation": "A root makes the polynomial equal to zero. Substituting the three given roots turns the problem into linear equations in the unknown coefficients:\n\\[\n\\begin{aligned}\na+b+c&=-1,\\\\\n4a+2b+c&=-16,\\\\\n9a+3b+c&=-81.\n\\end{aligned}\n\\]\nEach equation contains the same \\(c\\), so subtracting consecutive equations eliminates it:\n\\[\n3a+b=-15,\\qquad 5a+b=-65.\n\\]\nSubtracting the first of these equations from the second gives \\(2a=-50\\), hence \\(a=-25\\). Substituting into \\(3a+b=-15\\) then gives \\(b=60\\).\n\nThe first root equation now gives the requested sum without finding \\(c\\) separately:\n\\[\na+c=-1-b=-1-60=\\boxed{-61}.\n\\]\nThe answer is choice D.",
+        "nodeIds": [
+          "cnm_029",
+          "cnm_093"
+        ],
+        "prerequisiteIds": [
+          "cnm_039",
+          "cnm_032",
+          "cnm_021",
+          "cnm_090"
+        ],
+        "levelReason": "Uses substitution, integer powers, and elimination in a three-variable linear system, all within school algebra."
+      },
+      {
+        "id": "linear-factors-coefficients",
+        "label": "Use the missing cubic term",
+        "explanation": "The missing \\(x^3\\) term gives information about the remaining root. Each known root \\(r\\) supplies a factor \\(x-r\\). Since the three roots are distinct and the polynomial has degree four with leading coefficient 1, its remaining factor is linear with leading coefficient 1. For some number \\(t\\),\n\\[\nx^4+ax^2+bx+c=(x-1)(x-2)(x-3)(x-t).\n\\]\nAn \\(x^3\\) term in this product comes from choosing the constant term from one factor and \\(x\\) from each of the other three. Its coefficient is therefore \\(-(1+2+3+t)\\). Because the given cubic coefficient is zero,\n\\[\n1+2+3+t=0,\\qquad t=-6.\n\\]\nSimilarly, an \\(x^2\\) term comes from choosing constants from two factors and \\(x\\) from the other two. Adding the six resulting products gives\n\\[\n\\begin{aligned}\na&=1\\cdot2+1\\cdot3+2\\cdot3-6(1+2+3)\\\\\n&=11-36=-25.\n\\end{aligned}\n\\]\nThe constant term is the product of all four constants:\n\\[\nc=(-1)(-2)(-3)(6)=-36.\n\\]\nThus\n\\[\na+c=-25-36=\\boxed{-61},\n\\]\nwhich is choice D.",
+        "nodeIds": [
+          "math:polynomial-remainder-factor",
+          "math:polynomial-roots-coefficients"
+        ],
+        "prerequisiteIds": [
+          "cnm_039",
+          "cnm_032",
+          "cnm_146"
+        ],
+        "levelReason": "Uses linear factors and derives the needed root-coefficient identities through ordinary polynomial multiplication."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_039",
+      "cnm_032"
+    ],
+    "annotationRationale": "The route-neutral target is determining a polynomial coefficient expression from prescribed roots and fixed polynomial terms. No supplied catalog node covers that target across both methods, so it is proposed in needsNewNodes and assessedIds is left empty. Understanding equation solutions and polynomial structure supports both methods. Method 1 uses expression evaluation and three-variable linear elimination, with subtraction elimination and power arithmetic as local prerequisites. Method 2 uses the factor theorem and all-root coefficient identities, with polynomial multiplication as a local prerequisite. The root-coefficient identity node remains local to Method 2.",
+    "needsNewNodes": [
+      {
+        "name": "Determining polynomial coefficient expressions from prescribed roots",
+        "description": "Use prescribed roots and fixed terms of a polynomial to constrain its unknown coefficients and determine a requested coefficient expression. Allow root substitution or compatible factor forms, and establish that the requested expression is uniquely determined.",
+        "reason": "The catalog has nodes for evaluation, linear systems, factors, and symmetric identities involving all roots, but lacks a route-neutral target for determining coefficient expressions from prescribed roots. The existing root-coefficient identity node does not describe the direct substitution method."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1966_AMC_12_Q30",
+    "decision": "accept",
+    "mathematicalCheck": "Root substitution and elimination uniquely give a=-25, b=60, and c=-36, so a+c=-61. Independently, the missing cubic term forces the fourth root to be -6; pairwise products give a=11-36=-25, and the constant product gives c=-36. Both methods are complete and yield choice D.",
+    "levelCheck": "Both methods use appropriate school algebra. The coefficient identities are explained through ordinary multiplication, with the decisive sign and term selections shown.",
+    "methodDistinctness": "Substitution with linear elimination and factorization with coefficient extraction provide genuinely distinct, accessible approaches.",
+    "annotationCheck": "The method nodes and prerequisites match the actual reasoning, and both shared support nodes apply to both routes. Leaving assessedIds empty while proposing a route-neutral target is justified; the existing symmetric root-coefficient node appropriately remains local to Method 2.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "substitute-three-roots": "solution:substitute-three-roots:20b62270a2bb",
+    "linear-factors-coefficients": "linear-factors-coefficients"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "875ed006020e7a26501ef26b78c1bd99d3be556a2c5f6d800731d3b34871f69e",
+    "inputHash": "b5de0dc8f3069cea6d7c9a3dbba1566712d5754f77eb6f887441077309f97a4e",
+    "authorInputHash": "870d585bc92ac9ffe37443ee824231e16f65f3c05dd3ef25c471cb0261796b4d",
+    "reviewInputHash": "84cbb4fe8be4a165d064109a6051aa7b83b6f6ea25f1061eb7236643ffbc815a",
+    "authorResponseHash": "e80ffa7bc73bbe8af1b0a2342de329f76a4e9130cda4b85b6ee906db21447b5d",
+    "reviewerResponseHash": "2c3e236b3b9f369605dee62cb4b38e5b9101afb4004b125aaf4b4171da535540",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

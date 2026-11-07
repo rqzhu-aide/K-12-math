@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2012_AMC_10B_Q15",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "e802507709ca9fca0dd329a99393326bf0a731714a414ab9ee8a6e0d890228e7",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "b9cd8361c825900b651fba7e47483d448b58669a39e8b2431d3ac38f5016df2f",
+  "solutionFigureHashes": {},
+  "candidateHash": "83d0e2dbe7973ef43caabf29072912eff65037269fb12802a99c2d17fc37401b",
+  "candidate": {
+    "questionId": "2012_AMC_10B_Q15",
+    "derivedAnswer": "D, 5 teams",
+    "answerStatus": "matches",
+    "answerReason": "There are 15 wins altogether, so all six teams cannot have the same integer number of wins. Five teams can each win three games by all defeating the sixth team and each winning two games among themselves.",
+    "methods": [
+      {
+        "id": "total-wins-and-cyclic-construction",
+        "label": "Bound the tie and construct it",
+        "explanation": "To prove a maximum, first rule out a tie among all six teams, then try to arrange a tie among five.\n\nEach team plays \\(5\\) games. Counting games from the teams gives \\(6\\cdot5\\) appearances, with every game counted twice. Thus there are\n\\[\n\\frac{6\\cdot5}{2}=15\n\\]\ngames. Each game contributes exactly one win, so the teams have \\(15\\) wins altogether. If all six teams tied with \\(w\\) wins each, then \\(6w=15\\), giving \\(w=2.5\\). A team cannot win a noninteger number of games, so at most five teams can tie for the most wins.\n\nTo attain five, let one team lose every game. Arrange the other five teams in a circle, and let each beat the next two teams clockwise. For any pair, the clockwise distance in one direction is one or two positions, while the reverse distance is three or four. Thus this rule assigns exactly one winner to every game among the five teams.\n\nEach of these five teams wins twice within the circle and once against the sixth team, finishing with \\(3\\) wins. The sixth team has \\(0\\) wins. Therefore five teams can tie for the most wins, and the maximum is \\(5\\), choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "math:double-counting"
+        ],
+        "prerequisiteIds": [],
+        "levelReason": "The upper bound uses elementary game counting and integrality; the attaining construction uses a five-team circular arrangement."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "math:double-counting"
+    ],
+    "annotationRationale": "The target is a discrete maximum requiring both an upper bound and an attaining tournament. Counting team-game appearances supplies the total-win obstruction, and the circular construction proves feasibility. The written method does not require a combinations formula or graph terminology.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2012_AMC_10B_Q15",
+    "decision": "accept",
+    "mathematicalCheck": "There are 15 games and hence 15 wins, so six equal integer win totals are impossible. Among five teams, beating the next two clockwise assigns exactly one winner per game and gives each two wins. Beating a sixth team that always loses gives five leaders with three wins each, attaining the maximum 5 (D).",
+    "levelCheck": "The total-win obstruction and circular construction are elementary. Both feasibility and the upper bound are explained.",
+    "methodDistinctness": "The bound and construction are complementary parts of one complete method.",
+    "annotationCheck": "The extremal assessed node and double-counting support accurately describe the solution. A combinations formula is not required.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "total-wins-and-cyclic-construction": "total-wins-and-cyclic-construction"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "45b9144ff293687a17a12d52e02cfd580ab654069acf741e934b97318408b4a7",
+    "inputHash": "d04d6d1b289d305420ead6adef5242295d25e4cd56440f6712525dd88ffa88d7",
+    "authorInputHash": "bb661eac70f627f2479e918e128f074f8f7d978f0607e6b356cd7094447b7089",
+    "reviewInputHash": "5d53311e959988478bac748687ba21b5a689f7b573d54ffa17ea54e49bc50906",
+    "authorResponseHash": "6d0b4f09201b7061095e9cf77d2a43c27940f1567e29f59bf1657f570d9ee653",
+    "reviewerResponseHash": "3e4b229753204248c3f3f6ce1558f5c41d43ab9ad39272ff455ae7b3da3544c5",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

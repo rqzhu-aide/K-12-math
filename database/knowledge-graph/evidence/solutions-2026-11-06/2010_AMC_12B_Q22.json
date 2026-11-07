@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2010_AMC_12B_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "68297ede28970b67962471e20226350e0932df6641d72d6a77e13aa125971ae6",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "11f63a64e74bc261948931b63c1d41777d8f41d3ec3967d661dda5679718d0ed",
+  "solutionFigureHashes": {},
+  "candidateHash": "2c9379933deeda4030e0abb08bf0e87119c24897eeba074f45410062f17d4d43",
+  "candidate": {
+    "questionId": "2010_AMC_12B_Q22",
+    "derivedAnswer": "sqrt(425/2), choice D",
+    "answerStatus": "matches",
+    "answerReason": "Supplementary-angle cosine equations give 2BD² equal to the sum of the four side squares. The integer product condition bounds that sum by 425, attained by a feasible cyclic quadrilateral with consecutive sides 6, 7, 12, 14.",
+    "methods": [
+      {
+        "id": "cosine-elimination-and-integer-bound",
+        "label": "Eliminate the angle and bound the integer sides",
+        "explanation": "The equal adjacent-side products allow the unknown angle terms in two cosine-rule equations to cancel. Let\n\\[\na=AB,\\quad b=BC,\\quad c=CD,\\quad d=DA,\\quad e=BD.\n\\]\nThe hypothesis is \\(ad=bc\\). Since the quadrilateral is cyclic, its opposite angles \\(A\\) and \\(C\\) are supplementary. Applying the cosine rule in triangles \\(ABD\\) and \\(BCD\\) gives\n\\[\n\\begin{aligned}\ne^2&=a^2+d^2-2ad\\cos A,\\\\\ne^2&=b^2+c^2+2bc\\cos A.\n\\end{aligned}\n\\]\nAdding and using \\(ad=bc\\), we obtain\n\\[\n2e^2=a^2+b^2+c^2+d^2.\n\\]\nWe can now maximize the sum of the integer side squares, then check geometric attainment.\n\nSort the four distinct side lengths as \\(w<x<y<z\\le14\\). Of the three ways to split them into two pairs, \\(wx<yz\\) and \\(wy<xz\\). Therefore the equal-product condition must be\n\\[\nwz=xy.\n\\]\nLet \\(S=w^2+x^2+y^2+z^2\\).\n\nIf \\(z\\le11\\), distinctness gives\n\\[\nS\\le8^2+9^2+10^2+11^2=366.\n\\]\nIf \\(z=12\\), then \\(y=11\\) is impossible: \\(12w=11x\\) would force \\(12\\mid x\\), whereas \\(x<11\\). Thus \\(y\\le10\\), giving\n\\[\nS\\le8^2+9^2+10^2+12^2=389.\n\\]\nThe case \\(z=13\\) is impossible because the prime \\(13\\) would divide \\(xy\\), although both positive factors are smaller than \\(13\\).\n\nIt remains to consider \\(z=14\\). From \\(14w=xy\\), the prime \\(7\\) divides one of \\(x,y\\). That entry must equal \\(7\\), and the other, say \\(k\\), must be even. We then have \\(w=k/2\\) and \\(k\\le12\\). Consequently,\n\\[\nS=\\left(\\frac{k}{2}\\right)^2+7^2+k^2+14^2\n=245+\\frac54k^2\\le425.\n\\]\nEquality requires the side lengths \\(6,7,12,14\\). Thus every allowed quadrilateral satisfies \\(e^2\\le425/2\\).\n\nTo verify attainment, take \\((a,b,c,d)=(6,7,12,14)\\), which satisfies \\(ad=bc=84\\), and set \\(e=\\sqrt{425/2}\\). Construct triangles \\(ABD\\) and \\(BCD\\) on opposite sides of their common side \\(BD=e\\). They are nondegenerate because\n\\[\n8<e<20,\\qquad 5<e<19.\n\\]\nThe cosine rule gives\n\\[\n\\cos A=\\frac{6^2+14^2-e^2}{2\\cdot6\\cdot14}=\\frac{13}{112},\n\\qquad\n\\cos C=\\frac{7^2+12^2-e^2}{2\\cdot7\\cdot12}=-\\frac{13}{112}.\n\\]\nHence \\(A+C=\\pi\\), so the resulting quadrilateral is cyclic. Its remaining two angles are positive and sum to \\(\\pi\\), ensuring convexity. This constructs an allowed quadrilateral attaining the bound.\n\nThe largest possible diagonal is therefore \\(\\boxed{\\sqrt{425/2}}\\), choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "math:general-cosine-law-application",
+          "cnm_255",
+          "math:integer-diophantine-equations"
+        ],
+        "prerequisiteIds": [
+          "cnm_h064",
+          "math:prime-factorization",
+          "cnm_111",
+          "cnm_253"
+        ],
+        "levelReason": "The solution combines school cosine-rule geometry with elementary prime divisibility and a complete finite bound on integer side lengths."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "math:integer-diophantine-equations",
+      "math:prime-factorization",
+      "cnm_111"
+    ],
+    "annotationRationale": "The maximum requires a universal bound and a feasible construction. The written route eliminates an unknown cosine using supplementary cyclic angles, so the general cosine-law application node fits its scope. Integer product restrictions supply the finite bound, and triangle feasibility and circle-angle facts support attainment.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2010_AMC_12B_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "Supplementary-angle cosine equations give 2BD² equal to the side-square sum. Sorting forces wz=xy, and the exhaustive largest-side cases bound that sum by 425. The sides 6,7,12,14 attain it: both triangles satisfy strict triangle inequalities, and their opposite-angle cosines are ±13/112, establishing a convex cyclic realization.",
+    "levelCheck": "The cosine rule, elementary prime divisibility, and explicit feasibility checks fit AMC 12. The maximization and attainment arguments are inspectable.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The extremal and integer-restriction annotations are justified. The general cosine-law node correctly covers both angle elimination and angle recovery; cyclic-angle and triangle-feasibility knowledge support the construction.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "cosine-elimination-and-integer-bound": "cosine-elimination-and-integer-bound"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "0d46e4531b2788d54a8d653e0736a3e382490336797107be30a5c7acac86d5b7",
+    "inputHash": "09af30ddfc0ea9091a48e009447bb290707d907ce199398c77cec155131144e9",
+    "authorInputHash": "2d8cb175183e18b24eeccf9bf66a83cc8f706a036622c0edf370b49eebf7860f",
+    "reviewInputHash": "fff57d0f510c99ea21499dacd14ba9f8def45e048f0c281d9947cfd8e712b546",
+    "authorResponseHash": "6ff16b7da46df2e36b094155165bc91f9081b09a62daf8e20e40ea277647edc3",
+    "reviewerResponseHash": "fe886190a1d56b08e0d5dafaa5670b6af1acc7f0a79e92b87770c9280e72a825",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

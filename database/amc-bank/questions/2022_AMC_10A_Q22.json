@@ -1,0 +1,105 @@
+{
+  "Year": 2022,
+  "Level": "AMC 10",
+  "Batch": "A",
+  "Area": "Counting & Probability",
+  "Number": 22,
+  "Question": "Suppose that \\(13\\) cards numbered \\(1,\\) \\(2,\\) \\(3,\\) \\(\\cdots,\\) \\(13\\) are arranged in a row. The task is to pick them up in numerically increasing order, working repeatedly from left to right. In the example below, cards \\(1,\\) \\(2,\\) \\(3\\) are picked up on the first pass, \\(4\\) and \\(5\\) on the second pass, \\(6\\) on the third pass, \\(7,\\) \\(8,\\) \\(9,\\) \\(10\\) on the fourth pass, and \\(11,\\) \\(12,\\) \\(13\\) on the fifth pass. For how many of the \\(13!\\) possible orderings of the cards will the \\(13\\) cards be picked up in exactly two passes?\n\n[Figure 1](figures/2022_AMC_10A_Q22_official_question_fig1.svg)",
+  "Question Type": "mixed",
+  "Choices": {
+    "A": "\\(4082\\)",
+    "B": "\\(4095\\)",
+    "C": "\\(4096\\)",
+    "D": "\\(8178\\)",
+    "E": "\\(8191\\)"
+  },
+  "Choices Type": "text",
+  "Correct Answer": "D",
+  "Solution": "Within a pass, the cards we collect must appear from left to right in increasing numerical order. Once we know their positions, their order is forced. We can use this to count choices of positions instead of counting arbitrary rows.\n\nIf exactly two passes are needed, the first picks up \\(1,2,\\ldots,m\\) for some \\(1\\le m\\le12\\). The second picks up \\(m+1,m+2,\\ldots,13\\). Each of these two groups must already appear in increasing order in the row.\n\nTry the construction with five cards. Mark positions \\(2,4,5\\) for the first group. There are three marked positions, so fill them, from left to right, with \\(1,2,3\\). Fill the other positions with \\(4,5\\), also in order. The row becomes\n\n\\[\n4,\\ 1,\\ 5,\\ 2,\\ 3.\n\\]\n\nOn the first pass we collect \\(1,2,3\\). We have already passed \\(4\\), so we return to the left and collect \\(4,5\\) on a second pass. Notice that the marks specify positions, not card numbers.\n\nFor \\(13\\) cards, mark any selection of positions. If there are \\(m\\) marks, fill the marked positions with \\(1,2,\\ldots,m\\), and the others with \\(m+1,m+2,\\ldots,13\\), each group in increasing order. Every position has two independent choices, marked or unmarked, so there are \\(2^{13}\\) marking patterns. We temporarily allow no marks or all positions marked to keep this count simple.\n\nSome patterns give a row needing only one pass. A one-pass row must be \\(1,2,\\ldots,13\\), and our construction produces this row exactly when the marks occupy the first \\(m\\) positions. There are \\(14\\) such patterns, one for each \\(m=0,1,\\ldots,13\\). We subtract \\(14\\), even though they all produce the same sorted row, because \\(2^{13}\\) counts marking patterns.\n\nFor every other pattern, an unmarked position lies before a marked position. Thus the first unmarked position, holding \\(m+1\\), lies to the left of the last marked position, holding \\(m\\). The first pass picks up \\(1\\) through \\(m\\), but by then has already passed \\(m+1\\). The remaining cards are in increasing order, so a second pass picks them all up.\n\nThere is no double counting among these two-pass rows. A row's actual first pass tells us exactly which positions were marked. Conversely, every two-pass row comes from marking those positions. The required count is therefore\n\n\\[\n2^{13}-14=8192-14=\\boxed{8178},\n\\]\n\nwhich is D.\n\nThe clue here is that each group has a fixed internal order. In such problems, try choosing the positions occupied by a group. Then check which choices really give the required behavior and whether the finished arrangement uniquely determines your choices.",
+  "Meta": {
+    "QuestionSource": "live-poshenloh",
+    "AnswerSource": "live-poshenloh-answer-key",
+    "SolutionSource": "Adapted from MAA official solutions",
+    "AreaSource": "jev:0.98",
+    "Concepts": "combinations; complementary counting",
+    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2022A/solutions",
+    "SourceSHA256": "e43e7f220a244ac0aa134865b6717777598543c07095f8a1b5fab987d16c007b",
+    "Figures": [
+      "figures/2022_AMC_10A_Q22_official_question_fig1.svg"
+    ],
+    "FigureSources": {
+      "figures/2022_AMC_10A_Q22_official_question_fig1.svg": {
+        "url": "https://maa.org/wp-content/uploads/2024/08/2022-AMC-10A-solutions.pdf",
+        "page": 16,
+        "alt": "A row of cards numbered, from left to right, 7, 11, 8, 6, 4, 5, 9, 12, 1, 13, 10, 2, 3.",
+        "attribution": "Mathematical Association of America (MAA)",
+        "license": "CC-BY-NC-SA-4.0",
+        "modifications": "Redrawn as SVG from the official card row; also checked against official problem booklet page 5."
+      }
+    },
+    "SolutionStatus": "Reviewed adaptation from official MAA solution",
+    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+    "Copyright": "Copyright Mathematical Association of America",
+    "License": "CC-BY-NC-SA-4.0",
+    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "TranscriptionSource": "LIVE by Po-Shen Loh",
+    "OfficialSolution": {
+      "url": "../amc-bank/official-solutions/AMC10A_2022_Solutions.pdf",
+      "sourceURL": "https://maa.org/wp-content/uploads/2024/08/2022-AMC-10A-solutions.pdf",
+      "label": "2022 AMC 10A",
+      "attribution": "Mathematical Association of America (MAA)",
+      "license": "CC-BY-NC-SA-4.0",
+      "page": 16
+    },
+    "Modifications": [
+      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
+      "Third-party worked solution and solution-only figures omitted from the public distribution",
+      "Added a Math Practice adaptation of the MAA official solution, with expanded explanations and a reusable strategy; independently reviewed against the official source",
+      "Replaced the third-party prompt figure with an SVG redrawn from the official MAA card row",
+      "Added an original Math Practice explanation from the verified official MAA solution; independent expansion review pending"
+    ],
+    "SolutionSourceURL": "https://maa.org/wp-content/uploads/2024/08/2022-AMC-10A-solutions.pdf",
+    "SolutionAdaptation": {
+      "author": "Math Practice",
+      "date": "2026-10-26",
+      "officialPage": 16,
+      "officialPages": [
+        16,
+        17
+      ],
+      "localBooklet": "official-solutions/AMC10A_2022_Solutions.pdf",
+      "officialSHA256": "806a4e74584d2f8329388fdc7ce5870362c430e83dfb889ff129f8522b98c48e",
+      "method": "Encode two ordered card groups by marked positions and remove sorted-row patterns.",
+      "reviewStatus": "reviewed",
+      "authorship": "Original explanation drafted from the question and official MAA argument; archived third-party worked solutions were not read",
+      "changes": "Retained the existing original pilot explanation for a fresh expansion review.",
+      "reviewDate": "2026-10-26",
+      "reviewMethod": "A separate AI agent checked the full mathematical argument and student-facing reasoning against the official solution and relevant figures; both judgments passed",
+      "reviewer": "independent AMC8 author agent",
+      "reviewSolutionSHA256": "a96b8415c75c702697483cf303ee05f2d59926c5366e9cf9df96a37d986a952e"
+    }
+  },
+  "ID": "2022_AMC_10A_Q22",
+  "Bank": "amc",
+  "SchemaVersion": "2.0",
+  "ResponseType": "choice",
+  "Language": "en",
+  "domain": [
+    "domain:counting-probability"
+  ],
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "1.0.0",
+    "contentHash": "cf740a8f9083584838831b7b6f8cb1388c38a0b7d31e2541bfcf40566719f832",
+    "status": "mapped",
+    "reviewStatus": "machine_scope_audited",
+    "assessedIds": [
+      "math:bijective-counting"
+    ],
+    "supportIds": [
+      "cnm_h231"
+    ],
+    "routes": [],
+    "flags": []
+  }
+}

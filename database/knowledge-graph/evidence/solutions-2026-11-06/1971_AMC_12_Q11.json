@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1971_AMC_12_Q11",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "93e85d5e7de99751f00327022b5b288219e26978996fccfd2ebff9ff328f98d8",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "2c440031e0822b046384856564e4e0ae6817a51442239bf796da27bc4fa44654",
+  "solutionFigureHashes": {},
+  "candidateHash": "0ae239b6611fa67ceda4aca83f9b5400e4492521cde1e37395da7c8b3fac823d",
+  "candidate": {
+    "questionId": "1971_AMC_12_Q11",
+    "derivedAnswer": "D: \\(\\mathrm{XXIV}\\), representing \\(24\\)",
+    "answerStatus": "matches",
+    "answerReason": "Both bases must be at least 8. The first admissible integer solution is b=9 and a=15, and larger b gives a larger sum. Thus the minimum sum is 24, or XXIV.",
+    "methods": [
+      {
+        "id": "bounded-base-search",
+        "label": "Test the smallest possible bases",
+        "explanation": "A base must be larger than every digit used in its numerals. Since both numerals contain the digit \\(7\\), we need \\(a\\ge8\\) and \\(b\\ge8\\).\n\nUsing place value, the equality of the two numerals becomes\n\\[4a+7=7b+4,\\qquad a=\\frac{7b-3}{4}.\\]\nIf \\(b=8\\), this gives \\(a=\\frac{53}{4}\\), which is not an integer. The next possibility, \\(b=9\\), gives \\(a=15\\), an allowed base. Indeed,\n\\[4(15)+7=67=7(9)+4.\\]\nTo check minimality, observe that\n\\[a+b=\\frac{11b-3}{4}\\]\nincreases as \\(b\\) increases. We have ruled out the only smaller allowed value of \\(b\\), so \\(15+9=24\\) is the least sum.\n\nIn Roman numerals, \\(20=\\mathrm{XX}\\) and \\(4=\\mathrm{IV}\\), giving \\(\\boxed{\\mathrm{XXIV}}\\), choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_024",
+          "math:integer-diophantine-equations"
+        ],
+        "prerequisiteIds": [
+          "cnm_040"
+        ],
+        "levelReason": "Place value, elementary equation rearrangement, and checking the smallest admissible integer bases suffice."
+      }
+    ],
+    "assessedIds": [
+      "cnm_024",
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_040"
+    ],
+    "annotationRationale": "The task combines interpreting positional numerals with minimizing an integer solution under digit restrictions. The method uses a finite initial search and an increasing expression to prove minimality. Roman numeral notation is a separate required encoding that lacks a specific catalog entry.",
+    "needsNewNodes": [
+      {
+        "name": "Reading and writing Roman numerals",
+        "description": "Interpret Roman numeral symbols and standard additive and subtractive combinations, and convert small positive integers between Roman and decimal notation.",
+        "reason": "The final answer requires recognizing 24 as XXIV. The catalog's positional numeral-system entry does not describe Roman numeral notation."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1971_AMC_12_Q11",
+    "decision": "accept",
+    "mathematicalCheck": "Digit restrictions require both bases to be at least 8. The equality gives a=(7b-3)/4; b=8 fails integrality and b=9 gives a=15. Since a+b=(11b-3)/4 increases with b, 24 is minimal and is XXIV.",
+    "levelCheck": "Place value, elementary equation manipulation, and the minimality comparison are appropriate and complete.",
+    "methodDistinctness": "One complete method is sufficient; congruence machinery is unnecessary.",
+    "annotationCheck": "The assessed nodes capture positional notation and integer restrictions. The Roman-numeral proposal honestly identifies a separate catalog gap.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "bounded-base-search": "solution:bounded-base-search:2c440031e082"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "1713b5caa79b8d803c7160f304f175a498bba4cf7e9ab8619a346d94fd75e3c9",
+    "inputHash": "d251f2ea5e5dc7f78fb746b1b4a1b5617c41093613acfc626c736f408acd500b",
+    "authorInputHash": "c498b8bcaec67630047ff2db739c1d710ea7d74e8c4477d7850d86fff92f493d",
+    "reviewInputHash": "90d8719426535357a2e49aabe2c2fd2bcfba04da27903398dfc7f74f32da0751",
+    "authorResponseHash": "d1adedff94f693ced451b3a720f589971f9522c606eb343a1392c627ba8a1984",
+    "reviewerResponseHash": "68d49706a333c028f3e3c5b9b23efb6d34e25b108b7fd95c2472baa7a7d57910",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

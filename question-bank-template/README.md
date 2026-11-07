@@ -1,68 +1,71 @@
-# Bring your own question bank
+# Question bank template 1.0.0
 
-Use this folder to convert a question collection into the JSON format used by
-Math Practice. The example contains four original Grade 7 questions, covering
-numeric, multiple-choice, short-answer, and explanation responses, plus a diagram.
-The template, original example questions, solutions, and diagram are licensed
-under [CC BY-NC 4.0](../LICENSE), like the project's original code and documentation.
-Use the actual license or permission terms for your own collection; importing
-a bank does not change its license.
+Use this template to prepare an English question bank for K-12 Math Practice.
+It uses the compact format exercised by the 12-question pilot: each question
+file contains its prompt, answer, classification, assessed concepts, and
+separately credited solution methods. The four-question example is ready to
+import and includes numeric, choice, short, and self-assessed responses plus
+a diagram.
 
-The importer accepts prepared JSON and figure files. It does not extract questions
-from PDFs, documents, spreadsheets, or websites. Transcribe or convert those
-sources first, then review the result using the checklist below.
+**Template release:** `1.0.0`, recorded in [VERSION](VERSION).
+**Question and source-index schema:** `3.0`, recorded as `schemaVersion` in JSON.
+These versions describe different things. Keep `schemaVersion: "3.0"` when using
+this release. [question-v3.schema.json](question-v3.schema.json) is the current
+question schema; [question.schema.json](question.schema.json) documents the
+older 2.0 format, which the application can still read.
 
-## Try the example
+The example questions, solutions, and SVG are original project material under
+[CC BY-NC 4.0](../LICENSE). Their credits are in
+[example/source-index.json](example/source-index.json). Use the actual license
+and credits for your own material. The importer reads prepared JSON and images;
+it does not extract or translate PDFs, websites, or documents.
 
-Use Python 3.11 or newer installed for your user or machine. The importer uses
-the standard library, so no packages or project environment are needed. From the
-repository root, run:
+## Import and read the example
 
-```sh
-python scripts/import_question_bank.py question-bank-template/example --check
-python scripts/import_question_bank.py question-bank-template/example
-```
-
-`--check` validates without installing. The second command installs the bank in
-`custom-banks/example/` and rebuilds `custom-banks/banks.js`. Reload Math Practice
-and choose **Example: Grade 7 geometry** in the bank selector.
-
-For the local server, run `python scripts/serve_math_practice.py` and open
-[Math Practice](http://127.0.0.1:8877/math-practice/). If a server was already
-running when you updated the application code, restart it. Imported banks also
-work when opening `math-practice/index.html` directly or serving the repository
-as static files. Optional model features need the local server and configured
-connections.
-
-To replace an installed bank deliberately, use:
+Use Python 3.11 or newer installed for your user or machine. No Python packages
+or project environment are needed. From the repository root, run:
 
 ```sh
-python scripts/import_question_bank.py path/to/your-bank --replace
+python math-practice/runtime/import_question_bank.py question-bank-template/example --check
+python math-practice/runtime/import_question_bank.py question-bank-template/example
+python math-practice/runtime/serve_math_practice.py
 ```
 
-The importer refuses an existing bank ID unless `--replace` is present. Edit your
-source files and reimport; do not edit the generated `banks.js`. Installed banks
-are ignored by Git. The local server exposes the generated browser bundle and
-images; the bundle includes prompts, answers, and solutions. A generic static
-server for the whole checkout may also expose the source JSON. Keep credentials
-and private notes out of bank content. Do not publish an imported bank without
-the necessary rights.
+`--check` validates without changing installed content. The next command copies
+the bank to `custom-banks/example/` and rebuilds `custom-banks/banks.js`. Open
+[Math Practice](http://127.0.0.1:8877/math-practice/), reload if already open, and
+select **Example: Grade 7 geometry** in the bank selector. Read both topics and
+open **Explore solution** to see the explanations and credits. The bank works
+without model connections; optional AI feedback requires a configured server.
 
-## Prepare a bank
+To update an installed bank, edit your source folder and import deliberately:
 
-Copy `example/` to a working folder and use this layout:
+```sh
+python math-practice/runtime/import_question_bank.py path/to/your-bank --check
+python math-practice/runtime/import_question_bank.py path/to/your-bank --replace
+```
+
+Keep question IDs stable so saved practice history can still refer to the same
+questions. Do not edit generated `banks.js`. Installed custom banks are local
+content ignored by Git. Their browser bundle includes answers and explanations,
+so put only material intended for practice in a bank.
+
+## Copy the bank
+
+Copy [example/](example/) to a working folder, then change the manifest, IDs,
+content, and source entries together:
 
 ```text
 your-bank/
   bank.json
+  source-index.json
   questions/
     school_geometry__triangle_area.json
-    school_geometry__rectangle_perimeter.json
   figures/
     triangle-area.svg
 ```
 
-`bank.json` describes the whole collection:
+The manifest describes the collection:
 
 ```json
 {
@@ -73,138 +76,139 @@ your-bank/
 }
 ```
 
-An optional `sourceURL` must be an `http://` or `https://` URL. A license field
-records the terms; it does not establish permission to use someone else's work.
+Choose a bank ID with at most 48 characters, beginning with a lowercase letter.
+Use lowercase letters, digits, and single underscores between nonempty parts.
+Each question ID starts with `<bank-id>__`, uses only letters, digits, and
+underscores, and has at most 120 characters. Save it as `questions/<id>.json`.
+Its `bank` must match `bank.json` and `source-index.json`. An optional manifest
+`sourceURL` must be an HTTP or HTTPS URL.
 
-Choose a stable bank ID with at most 48 characters, beginning with a lowercase
-letter. Use lowercase letters, digits, and single underscores between nonempty
-parts, such as `school_geometry`. Leading, trailing, or repeated underscores
-are not allowed. Give every question a unique ID of the form
-`<bank-id>__<question-name>` and save it as `questions/<ID>.json`. Question names
-may contain letters, digits, and underscores; the complete ID is at most 120
-characters. Every question's `Bank` must equal the manifest `id`.
+See [the annotated worked example](ANNOTATED_EXAMPLE.md) for a complete question
+and its two source entries. JSON has no comments; keep author notes in a separate
+document rather than adding unsupported fields to the question.
 
-## Question field map
+## Question fields
 
-All fields in this table are required. Use the example records as complete,
-copyable starting points.
+The ten top-level fields below are required. Extra top-level fields are rejected.
+Omit unknown optional information rather than writing placeholders.
 
-| Field | Meaning and format |
+| Field | What to write |
 | --- | --- |
-| `ID`, `Bank`, `SchemaVersion` | Namespaced ID, matching bank ID, and the string `"2.0"`. |
-| `ResponseType` | `numeric`, `choice`, `short`, or `self`; see the marking rules below. |
-| `Language` | A nonempty language tag, such as `en` or `zh-CN`. The interface labels remain English. |
-| `Level`, `Grade`, `CurriculumUnit` | Display grouping, such as `"Middle school"`, `7`, and `"Perimeter and area"`. Grade is a nonnegative integer; `0` can represent kindergarten. |
-| `Batch`, `Topic` | Stable topic ID and `{ "id": "area", "label": "Area" }`. `Batch` must equal `Topic.id`. |
-| `Number` | Positive integer giving the question's order within its topic. |
-| `Question` | Nonempty prompt with any supported LaTeX and figure links. |
-| `Choices` | For `choice`, an object with 2 to 5 nonempty entries keyed `A` through `E`. For every other type, use `{}`. |
-| `Correct Answer` | A choice key, numeric answer, short reference answer, or explanation reference, according to response type. |
-| `Solution` | A nonempty worked solution, including the reasoning needed to justify the answer. |
-| `domain` | Nonempty array of broad tags, for example `["domain:geometry"]`. Tags use lowercase letters, digits, and hyphens after `domain:`. |
-| `skill` | Nonempty array of specific skill tags, for example `["skill:geometry:triangle-area"]`. Letters, digits, colons, underscores, and hyphens are allowed after `skill:`. |
-| `Meta` | Object containing nonempty `Attribution`, `License`, and `SolutionSource`. |
+| `schemaVersion` | The string `"3.0"`. |
+| `id`, `bank`, `language` | Stable namespaced ID, matching bank ID, and `"en"`. This compact format is English. |
+| `question` | `{ "prompt": "..." }`, with ordered `choices` only for `choice` or `multiSelect`. Each choice has stable `id` and `content`. |
+| `answer` | Response type and complete accepted responses, or a rubric for `self`. See below. |
+| `classification` | Known browsing information: `area`, `domainIds`, `topicIds`, `skillIds`, `grade`, `level`, `unit`, `difficulty`. ID fields are arrays of distinct strings; grade is a nonnegative integer; other fields are text. `{}` is valid when nothing is known. |
+| `assessedNodeIds` | Concepts the question assesses. `[]` means no assessed target has been recorded. |
+| `solutions` | Method objects with distinct `id`, `title`, and `explanation`, `directNodeIds`, or both. `[]` means neither explanation nor method annotation is available. |
+| `sourceRef` | Key of the question's entry in `source-index.json`. |
 
-Within one bank, keep `CurriculumUnit` consistent for a given `Level` and `Grade`.
-For each `Level`, `Grade`, and `Batch` group, use one `Topic.label` and unique
-`Number` values. Use different topic IDs to distinguish topics. The example has
-two topics within one Grade 7 unit.
+The example uses two topics in one Grade 7 unit. For a given level and grade,
+keep the unit consistent. Keep topic labels consistent and question numbers
+unique within each topic. Topic labels and display positions live in the
+question source's `topicLabels` and `position`, rather than being repeated in
+the compact question.
 
-The existing SchemaVersion 2.0 optional fields remain available:
+### Answers and local checking
 
-| Optional field | Use |
-| --- | --- |
-| `Question Type`, `Choices Type` | Default to `text`. Question type also supports `mixed` and `figure`; choices type also supports `figure`. Use `mixed` for prose with a diagram. |
-| `Accepted Answers` | Additional literal strings for `short` questions. Omit or use `[]` for other response types. |
-| `Rejected Answers` | Explicit strings that must not receive credit. |
-| `Unordered Answers` | Set `true` only when order does not matter in a numeric list. |
-| `Answer Form` | `decimal`, `standard-monomial`, or `ordered-list` when that form is part of the task. Make the requested form clear in the prompt. |
-| `GradingStatus`, `GradingNote` | `gradable` or `disputed`. A disputed item needs a nonempty note and is not automatically marked. |
-| `Year`, `Area`, `Difficulty` | Additional descriptive metadata. `Year` is an integer or `null`. |
-| `Meta.SourceURL` | Optional `http://` or `https://` source link for this question. |
-| Other `Meta` fields | Preserve source IDs, revision, modifications, translation status, figure credits, and review notes as appropriate. `Meta.Original` can hold the original source record before adaptation. |
-
-Describe where the solution came from honestly in `Meta.SolutionSource`, such
-as an official published solution, a teacher's derivation, or an AI-generated
-draft. Record modifications and translation review status when applicable.
-
-Use the [explanation style guide](EXPLANATION_STYLE.md) to write solutions that
-explain why the method fits, connect the important steps, and give the learner a
-useful strategy to recognize again. Review reasoning and student readability
-alongside the mathematical answer.
-
-## Choose the response type deliberately
-
-| Type | Reference answer | Local answer check |
+| `answer.type` | Specification | Local checking |
 | --- | --- | --- |
-| `choice` | One supplied key, such as `"B"`. | Checks the selected key. |
-| `numeric` | A numeral or fraction, such as `"63"` or `"3/4"`; comma-separated numeric lists are supported. Omit units and LaTeX. | Compares numeric values and supported list forms. Use `Unordered Answers` or `Answer Form` only when appropriate. |
-| `short` | A short string, such as `"5x+15"`, with explicit alternatives in `Accepted Answers`. | Recognizes the reference and listed alternatives with basic text normalization. It does not establish general algebraic equivalence. |
-| `self` | A reference explanation or rubric, with a worked `Solution`. | No answer-only automatic mark. The learner can compare with the solution, or use a configured model for review. |
+| `choice` | `"accepted": ["B"]`; `question.choices` contains that ID. `["A", "C"]` accepts either choice. | Compares the selected choice with any accepted ID. |
+| `multiSelect` | `"accepted": [["A", "C"]]` is one complete selection containing both. | Requires an exact accepted set, in either order. |
+| `numeric` | `"accepted": ["63"]`, `["3/4"]`, or `["3,-3"]`. Each string is one complete response without units or LaTeX. | Compares numeric values and supported lists. Add `"unordered": true` only if list order does not matter. |
+| `short` | `"accepted": ["5x+15", "15+5x"]`. List literal valid forms you want recognized. | Basic text normalization; general algebraic equivalence is not established. |
+| `self` | `"rubric": "Explain why ..."`; omit `accepted`. | The learner compares with the rubric and explanation. No answer-only automatic mark. |
 
-For example, the garden question accepts `5x+15` and the listed `15+5x`.
-It does not promise to recognize every equivalent expression. Choose `self`
-for proofs, constructions, or explanations with many valid answers. Model review
-is optional; importing a bank does not configure or verify a model connection.
+For example, `["3,-3", "-3,3"]` lists two complete numeric responses, whereas
+`["3", "-3"]` accepts either single number. A short question can request an
+expanded expression and deliberately omit a valid but unexpanded form.
 
-## Mathematics and diagrams
+Optional answer fields are `rejected` (explicit rejected strings), `form`
+(`decimal`, `standard-monomial`, or `ordered-list`), and `gradingNote`.
+A nonempty `gradingNote` suspends automatic grading and states why. Use it for
+a disputed or unsuitable recorded key; do not invent agreement with the key.
+Make any required answer form explicit in the prompt.
+
+### Solutions and concept annotations
+
+Each solution is its own object. Put its worked text in `explanation` and the
+concepts used directly by that method in `directNodeIds`. Keep alternative
+methods separate, including their sources. The selected curriculum graph
+supplies prerequisite connections; do not copy every lower-level prerequisite
+into every method.
+
+Use canonical IDs from `database/knowledge-graph/source/nodes.json`. An assessed
+target can differ from the knowledge a method uses. If the direct set is unknown,
+omit `directNodeIds`; an empty array is invalid. A method with only node IDs is
+a graph route awaiting written explanation and is not shown as a worked solution.
+A method with only `explanation` remains readable without invented annotations.
+Importing alone does not create reviewed curriculum mappings or establish that
+the concept IDs are appropriate.
+
+Follow [EXPLANATION_STYLE.md](EXPLANATION_STYLE.md): explain why the method fits,
+justify its decisive steps, and keep complete methods within the intended
+learner's reach. Mathematical correctness and student readability need review.
+
+## Sources, credits, and diagrams
+
+Every bank needs `source-index.json` with `schemaVersion: "3.0"`, `bank`, and
+`sources`. Every question and explicit method `sourceRef` must resolve there.
+A method without `sourceRef` inherits the question's source. Use a separate
+method source for different authorship, licensing, or review.
+
+The example includes question credits, license, browsing position, topic labels,
+figure credit and alt text, plus separate solution provenance. Record actual
+source URLs, revisions or pages, translation and modification history, and review
+status when applicable. Distinguish an official solution from a teacher derivation
+or AI-authored explanation. A license label records terms; it does not grant
+permission or prove a review occurred.
+
+Original banks need no migration archive. When converting existing material,
+retain original-language records, correction history, and review evidence in the
+index or a bank-local archive. Indexed `archive/` files must have matching SHA-256
+hashes; the importer checks and copies those references. Do not leave references
+to files that exist only in your private checkout.
 
 Use `\(...\)` for inline mathematics and `\[...\]` for display mathematics.
-Backslashes must be doubled inside JSON strings:
+Double backslashes inside JSON. Use portable prose and supported LaTeX; arbitrary
+source-page HTML is not part of this format.
 
 ```json
 {
-  "Question": "Find the area when \\(b=14\\) and \\(h=9\\).\n\n[Figure 1](figures/triangle-area.svg)",
-  "Solution": "Use \\[A=\\frac{1}{2}bh=63.\\]"
+  "prompt": "Find the area when \\(b=14\\) and \\(h=9\\).\n\n[Figure 1](figures/triangle-area.svg)"
 }
 ```
 
-Use plain prose, supported LaTeX, and the figure-link convention. A source page's
-layout or arbitrary HTML is not a portable question format. Keep the information
-needed to solve the problem in the prompt or its diagram.
+Place diagrams in `figures/` and use `[Figure 1](figures/triangle-area.svg)` in
+prompts, choices, or explanations. Use flat filenames beginning with a letter or
+digit and continuing with letters, digits, underscores, hyphens, or periods.
+Supported extensions are `.svg`, `.png`, `.jpg`, `.jpeg`, and `.webp`. Match case
+exactly. Remote image links and nested figure folders are not supported.
+Each question source's `assets` can record a figure's relative `path`, `alt`,
+attribution, license, and source. Preserve essential labels, perpendicular
+markers, dimensions, and scale caveats.
 
-Place diagrams in the bank's `figures/` folder and refer to them as
-`[Figure 1](figures/triangle-area.svg)`. The same convention can be used in
-choices and solutions. For picture choices, set `Choices Type` to `figure`.
-Use flat filenames beginning with a letter or digit, followed by letters, digits,
-underscores, hyphens, or periods. Supported extensions are `.svg`, `.png`, `.jpg`,
-`.jpeg`, and `.webp`. Match filenames exactly, including case. Subfolders and
-remote image links are not part of this format.
+SVGs must be static and self-contained, without scripts, event handlers,
+external references, embedded HTML, or animation. Use legible scanned crops
+when permitted and preserve their credits. A necessary diagram cannot be replaced
+by a caption. Model review of diagrams needs an image-capable connection and
+must be tested separately.
 
-SVGs must be static and self-contained: no scripts, event handlers, external
-references, embedded HTML, or animation. For scanned material, use a clear raster
-crop when you have permission. Redraw a diagram when that improves legibility,
-and record that change and the original figure's attribution. Check labels,
-right-angle marks, dimensions, and whether a diagram is to scale. Diagram-based
-model review requires a model connection that can receive images.
+## Review before using a bank
 
-## Conversion and review checklist
+1. Establish source identity and permission. Preserve required text and figure
+   credits, revisions, and original identifiers.
+2. Check transcription or translation against the original layout, including
+   signs, fractions, choices, units, tables, and diagrams.
+3. Solve every question. Check each accepted response, rubric, method, annotation,
+   and reason to withhold grading.
+4. Run `--check`, then import. Read every question and revealed method in the UI.
+   Try correct responses, plausible errors, and relevant alternative forms.
+   Check formulas, figures, and source credits.
 
-1. **Check the source and permission.** Identify the author, license or written
-   permission, source URL, edition or revision, and original question IDs. Keep
-   original wording and answers under `Meta.Original` when useful. Preserve
-   required credits for figures separately from question text.
-2. **Read the source layout.** Separate each prompt, choice, answer, solution,
-   table, and diagram. Recheck subscripts, minus signs, fractions, units, and
-   symbols after OCR or translation. Remove page headers and answer leakage.
-3. **Write complete JSON records.** Choose stable IDs, consistent grouping, a
-   suitable response type, and useful domain and skill tags. Preserve provenance
-   and distinguish an official solution from a newly written or generated one.
-4. **Prepare the figures.** Link every required image using the convention
-   above. Verify that each diagram agrees with the text and is readable at the
-   size used in practice. Do not replace a necessary diagram with a caption.
-5. **Review the mathematics and marking.** Solve every item independently.
-   Confirm the choice key, units, assumptions, worked steps, and accepted
-   variants. Try a correct answer, a plausible wrong answer, and an alternate
-   valid form. Use `self` where answer-only checking would be misleading.
-6. **Validate, import, and inspect.** Run `--check`, correct every reported
-   issue, then import. Reload the UI, choose the bank, and inspect every response
-   type, topic, formula, figure, choice, and worked solution. Test any configured
-   model features separately if you intend to rely on them.
-
-[bank.schema.json](bank.schema.json) and
-[question.schema.json](question.schema.json) help editors spot structural errors.
-The importer checks the supported contract, cross-file relationships, and
-figure references without requiring a JSON Schema package. Neither schema
-validation nor successful import proves mathematical correctness, diagram
-accuracy, permission, or live AI teaching quality.
+[bank.schema.json](bank.schema.json),
+[question-v3.schema.json](question-v3.schema.json), and
+[source-index.schema.json](source-index.schema.json) help editors check structure.
+The importer also resolves sources, checks filenames and grouping, and validates
+supported figures. A successful check is structural evidence, not proof of
+mathematical correctness, permission, or teaching quality.

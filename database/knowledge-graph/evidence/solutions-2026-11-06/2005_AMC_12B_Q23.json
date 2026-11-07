@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2005_AMC_12B_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "09f57b37659b50a28e981bf998f04639bf2141552da08dd1401de1e2d29a2edb",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "e373ac6b7aff611b020ab9fb0be460256570eeebba08b79b7c06002c2cc7725f",
+  "solutionFigureHashes": {},
+  "candidateHash": "cd3d8e83e7e95b42ff0ee2df1b05a0b4e7dbc189ece756685de6e28ba8fb19a7",
+  "candidate": {
+    "questionId": "2005_AMC_12B_Q23",
+    "derivedAnswer": "B, 29/2",
+    "answerStatus": "matches",
+    "answerReason": "A feasible triple with z=0 gives x+y=1, x^2+y^2=10, and xy=-9/2. Therefore a+b=x^3+y^3=29/2. The full identity also gives a=-1/2 and b=15.",
+    "methods": [
+      {
+        "id": "evaluate-at-zero",
+        "label": "Choose a feasible value that gives a+b",
+        "explanation": "We only need \\(a+b\\), and setting \\(z=0\\) makes the right side of the given identity exactly that sum. We must first check that such a triple belongs to \\(S\\).\n\nFor \\(z=0\\), the logarithm equations require\n\\[\nx+y=1,\\qquad x^2+y^2=10.\n\\]\nThese would give \\((x-y)^2=2\\cdot10-1^2=19\\). Accordingly, choose\n\\[\nx=\\frac{1+\\sqrt{19}}2,\\qquad\n y=\\frac{1-\\sqrt{19}}2.\n\\]\nTheir sum is \\(1\\), and their difference is \\(\\sqrt{19}\\), so their squared sum is \\((1+19)/2=10\\). Thus both logarithm arguments are positive and the triple with \\(z=0\\) is valid.\n\nThe square-of-a-sum identity now gives\n\\[\nxy=\\frac{(x+y)^2-(x^2+y^2)}2=-\\frac92.\n\\]\nUsing the sum-of-cubes factorization,\n\\[\n\\begin{aligned}\na+b&=x^3+y^3\\\\\n&=(x+y)(x^2-xy+y^2)\\\\\n&=1\\left(10+\\frac92\\right)=\\frac{29}2.\n\\end{aligned}\n\\]\nTherefore \\(\\boxed{a+b=\\frac{29}2}\\), choice B.",
+        "nodeIds": [
+          "math:sum-difference-cubes",
+          "cnm_029"
+        ],
+        "prerequisiteIds": [
+          "cnm_h043",
+          "cnm_148",
+          "cnm_074"
+        ],
+        "levelReason": "The method uses logarithms, square roots, substitution, and elementary polynomial identities, all within AMC 12 scope."
+      },
+      {
+        "id": "derive-the-coefficient-identity",
+        "label": "Derive the full cubic identity",
+        "explanation": "The logarithms specify the sum and the sum of squares, which are exactly the quantities needed to recover the cubic sum. Let \\(t=10^z>0\\). Converting the logarithms to exponential statements gives\n\\[\nx+y=t,\\qquad x^2+y^2=10t.\n\\]\nExpanding \\((x+y)^2\\) therefore yields\n\\[\nxy=\\frac{t^2-10t}{2}.\n\\]\nThe sum-of-cubes factorization now gives\n\\[\n\\begin{aligned}\nx^3+y^3\n&=(x+y)(x^2+y^2-xy)\\\\\n&=t\\left(10t-\\frac{t^2-10t}{2}\\right)\\\\\n&=-\\frac12t^3+15t^2.\n\\end{aligned}\n\\]\nSince \\(10^{3z}=t^3\\) and \\(10^{2z}=t^2\\), this has the required form.\n\nTo verify that the coefficients are determined, note that \\(t=10\\) is feasible with \\((x,y)=(10,0)\\), and \\(t=20\\) is feasible with \\((x,y)=(10,10)\\), taking \\(z=\\log_{10}t\\) in each case. Comparing the two expressions and dividing by \\(t^2>0\\) at these values gives\n\\[\n10a+b=10,\\qquad 20a+b=5.\n\\]\nSubtracting yields \\(a=-\\tfrac12\\), and then \\(b=15\\). Hence \\(\\boxed{a+b=\\frac{29}2}\\), choice B.",
+        "nodeIds": [
+          "math:sum-difference-cubes",
+          "cnm_149"
+        ],
+        "prerequisiteIds": [
+          "cnm_h043",
+          "cnm_148",
+          "math:real-exponent-laws",
+          "cnm_090"
+        ],
+        "levelReason": "The method combines school algebraic identities, logarithm conversion, positive-base exponent laws, and a linear system."
+      }
+    ],
+    "assessedIds": [
+      "math:sum-difference-cubes"
+    ],
+    "supportIds": [
+      "cnm_h043",
+      "cnm_148"
+    ],
+    "annotationRationale": "The shared mathematical target is recovering the symmetric cubic sum from the given sum and square-sum data. Both methods use the sum-of-cubes factorization, supported by logarithm conversion and the perfect-square identity. Feasible special-value evaluation and square roots belong to the first route; general identity manipulation, real exponent laws, and coefficient determination belong to the second.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2005_AMC_12B_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "The displayed real pair makes \\(z=0\\) feasible and gives \\(xy=-9/2\\), so \\(a+b=29/2\\). The general calculation independently gives \\(x^3+y^3=-t^3/2+15t^2\\). Feasible values \\(t=10,20\\) uniquely determine the stated coefficients.",
+    "levelCheck": "Both explanations justify the important algebraic steps and feasibility checks within AMC 12 scope.",
+    "methodDistinctness": "Evaluating at a feasible special value and deriving the general identity offer meaningfully different strategies at comparable school-algebra level.",
+    "annotationCheck": "The cube factorization is shared and correctly assessed. Square roots and substitution remain local to the first route; exponent laws and elimination remain local to the second.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "evaluate-at-zero": "solution:evaluate-at-zero:e373ac6b7aff",
+    "derive-the-coefficient-identity": "solution:derive-the-coefficient-identity:e373ac6b7aff"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "edd852aaa5fb725bb40175f0a9fdc815af8deb320141817c9e9c628eae96bd9b",
+    "inputHash": "99b771434176c1c05d110681b5256bec2acba1a9a808da42b49288e778fa2518",
+    "authorInputHash": "c4ade8364540ebda89cfe409330f16ba3a384530be9f74ab16994eaaa96faf0c",
+    "reviewInputHash": "58b3443f09b533896c736e76768dec92982584e6ef8420bc265d2affe4f4453a",
+    "authorResponseHash": "c894ddb5211753042c1c2b30d261de4c1c04507b9435b01b7cf36861212bbc20",
+    "reviewerResponseHash": "f43a462f099232076a2a0aaeba8b4ba7111ccc9fba0a3ea9654b3a8410138c0d",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

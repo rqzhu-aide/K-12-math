@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2013_AMC_10B_Q18",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "5c348b21b2ae06cfa886ad3e7848489de2873085220d4230198ed6a523bf7ef2",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "abcb7d94920588747686e995a091d7c6e960207bfa87c2169348a17bdb5db184",
+  "solutionFigureHashes": {},
+  "candidateHash": "e70ea9e44bbc981abe510aed7bae52b7c860f20ce9a3d3ea1f2eb72e909e459d",
+  "candidate": {
+    "questionId": "2013_AMC_10B_Q18",
+    "derivedAnswer": "D, 46",
+    "answerStatus": "matches",
+    "answerReason": "There are 45 qualifying integers with thousands digit 1, and only 2002 qualifies between 2000 and 2012. The total is 46.",
+    "methods": [
+      {
+        "id": "digit-casework",
+        "label": "Count by the thousands and hundreds digits",
+        "explanation": "The units digit is determined by the other three digits, so count the possible hundreds and tens digits.\n\nFirst consider numbers with thousands digit \\(1\\). Let their hundreds, tens, and units digits be \\(h,t,u\\). The condition is\n\\[\nu=1+h+t.\n\\]\nSince \\(u\\le9\\), we need \\(h+t\\le8\\). For \\(h=0,1,\\ldots,8\\), there are respectively \\(9,8,\\ldots,1\\) choices for \\(t\\). Each pair determines exactly one units digit, giving\n\\[\n9+8+\\cdots+1=45\n\\]\nqualifying numbers. All exceed \\(1000\\), because their units digit is at least \\(1\\), and all are below \\(2000\\).\n\nThe remaining possible numbers are from \\(2000\\) through \\(2012\\). Their hundreds digit is \\(0\\). If the tens digit is \\(0\\), the required units digit is \\(2\\), giving \\(2002\\). If the tens digit is \\(1\\), the required units digit is \\(3\\), giving \\(2013\\), which is excluded.\n\nThese two thousands-digit cases are disjoint and cover the entire interval. Thus the count is \\(45+1=\\boxed{46}\\), choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_h230"
+        ],
+        "prerequisiteIds": [
+          "cnm_p055"
+        ],
+        "levelReason": "Only decimal place value, digit bounds, and elementary counting by disjoint cases are needed."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h230"
+    ],
+    "supportIds": [
+      "cnm_p055"
+    ],
+    "annotationRationale": "The task assesses exhaustive counting across disjoint digit cases. Decimal composition supports translating the condition into a digit sum. The method fixes the units digit uniquely, so each counted pair gives one number without duplication. Neither stars and bars nor a general arithmetic-sequence formula is required.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2013_AMC_10B_Q18",
+    "decision": "accept",
+    "mathematicalCheck": "For thousands digit 1, each ordered digit pair h,t with h+t≤8 determines one valid number, giving 9+8+⋯+1=45. These all exceed 1000. In 2000 through 2012, only 2002 qualifies; 2013 is correctly excluded. The total is 46.",
+    "levelCheck": "Place value, digit bounds, and disjoint case counting are appropriate and sufficiently explained.",
+    "methodDistinctness": "One direct counting method is sufficient.",
+    "annotationCheck": "Addition-principle assessment and decimal-composition support match the solution. Neither stars and bars nor an arithmetic-series formula is required.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "digit-casework": "solution:digit-casework:abcb7d949205"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "d421f2dc23f77b165707e8d94ba84b2c112130a26b720a874f0b8ab02c6ba434",
+    "inputHash": "a15dcc51d527760c855919054bb51e912ccfac0d394003fa559707c647317f8e",
+    "authorInputHash": "41ec264fdff93627b9ec8e5dc095d23fdbf775d51d5abbb17f1ea2b6d5476554",
+    "reviewInputHash": "a2f4c1518c244bf8792217e3438eb29523bf6a75fbab82880da54be9fe8543d2",
+    "authorResponseHash": "efbcf21477fa721e506925ad1dae2cf6dcb25096871195385b7d7062e3dcafdd",
+    "reviewerResponseHash": "87a3de11c5694f8f27da3aa706c7cc1a09d88d77df5e9b36d78541d256a99e66",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

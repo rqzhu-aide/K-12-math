@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2011_AMC_12A_Q09",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "eccad973de138baa2e6322e2d9690a4fe3d980ba5ab67203312b9246474f6e4a",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "effe95bb326f086bb51df6b00b87d3f22d6feeb7d61fcbc309e2a5d5d789c6f1",
+  "solutionFigureHashes": {},
+  "candidateHash": "92bcb62444ad573db4ebeb389545c46981f630bffa6ca0fad8b87fac2c143554",
+  "candidate": {
+    "questionId": "2011_AMC_12A_Q09",
+    "derivedAnswer": "441 handshakes (B)",
+    "answerStatus": "matches",
+    "answerReason": "There are 18 twins and 18 triplets, with respectively 25 and 24 handshakes per person. Counting both participants of every handshake gives 18(25 + 24), so there are 441 handshakes.",
+    "methods": [
+      {
+        "id": "count-at-each-person",
+        "label": "Count at each person",
+        "explanation": "Count the handshakes involving each person, then correct for counting both participants. There are \\(9\\cdot2=18\\) twins and \\(6\\cdot3=18\\) triplets.\n\nEach twin shakes hands with \\(18-2=16\\) other twins, excluding that person and their sibling, and with \\(18/2=9\\) triplets. Thus each twin participates in \\(25\\) handshakes.\n\nEach triplet shakes hands with \\(18-3=15\\) other triplets, excluding that person and their two siblings, and with \\(9\\) twins. Thus each triplet participates in \\(24\\) handshakes.\n\nThe total number of participations is therefore\n\\[\n18\\cdot25+18\\cdot24=882.\n\\]\nEvery actual handshake contributes exactly two participations, one for each person. Dividing by two counts every handshake once:\n\\[\n\\frac{882}{2}=\\boxed{441}.\n\\]\nThe answer is choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "math:graph-models",
+          "math:double-counting"
+        ],
+        "prerequisiteIds": [
+          "cnm_h231"
+        ],
+        "levelReason": "The two-participant counting argument is explained directly and needs no formal graph terminology."
+      },
+      {
+        "id": "count-by-family-types",
+        "label": "Count by family types",
+        "explanation": "Separate the handshakes into three disjoint types: between two twins, between two triplets, and between a twin and a triplet. Every handshake has exactly one of these types.\n\nFor two twins to shake hands, they must belong to different twin families. There are \\(9\\cdot8/2=36\\) unordered pairs of twin families: choosing a first and second family counts each pair twice. Each family pair contributes \\(2\\cdot2=4\\) handshakes, giving\n\\[\n36\\cdot4=144.\n\\]\nSimilarly, there are \\(6\\cdot5/2=15\\) unordered pairs of triplet families. Each contributes \\(3\\cdot3=9\\) handshakes, giving\n\\[\n15\\cdot9=135.\n\\]\nFinally, there are \\(18\\) twins, and each shakes hands with \\(9\\) triplets. Counting from the twin participant counts each mixed handshake exactly once, so there are \\(18\\cdot9=162\\) mixed handshakes.\n\nAdding the three types gives\n\\[\n144+135+162=\\boxed{441},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "math:graph-models",
+          "math:double-counting",
+          "cnm_h239",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_h231",
+          "cnm_h236"
+        ],
+        "levelReason": "The alternative uses elementary unordered-pair counts, deriving the division by two instead of assuming a combination formula."
+      }
+    ],
+    "assessedIds": [
+      "math:graph-models"
+    ],
+    "supportIds": [
+      "cnm_h231"
+    ],
+    "annotationRationale": "The task concerns counting undirected connections between people under specified restrictions. The first route counts connections at their endpoints and corrects multiplicity. The second partitions connections by participant type and counts unordered family pairs. Combination applications and category counting remain local to that second route.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2011_AMC_12A_Q09",
+    "decision": "accept",
+    "mathematicalCheck": "Each of the 18 twins participates in 16 + 9 = 25 handshakes, and each of the 18 triplets in 15 + 9 = 24. Dividing 882 participations by two gives 441. Independently, the disjoint counts 144, 135, and 162 sum to 441, with all multiplicities justified.",
+    "levelCheck": "Both methods use accessible counting and explicitly explain the divisions by two.",
+    "methodDistinctness": "Counting all participant incidences and counting family-pair categories provide distinct useful approaches.",
+    "annotationCheck": "The shared relation-counting target fits graph models without requiring formal graph terminology. Double counting, combinations, and category counting accurately describe the respective methods; shared multiplication support is justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-at-each-person": "count-at-each-person",
+    "count-by-family-types": "count-by-family-types"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "732acb05b3175faeccded239a5efa00b0df8d59c0f43b5e9ccfc679a0088d21e",
+    "inputHash": "ad487ace2e38c11fb0b3c64b1c1d97403f65b3f1433787cca083e2b1c01de8d2",
+    "authorInputHash": "5aa3595723c681348e46f25f92fdf7b5776957055cf11b4d0e5610cc791c3494",
+    "reviewInputHash": "195b80b9b49303bd3f6b7bf286b2593e6cac0ac1d83c94fbcf342f2becd2699c",
+    "authorResponseHash": "dbbd7b475fffb145db39382c6c624d936a244ac94c1eaa8e0264d3c23aa48427",
+    "reviewerResponseHash": "be10530e488b45289e389037a85d5858c6d1fabc2356843c325449a8212221bc",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2015_AMC_10A_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "6d921cc8d5f626c764842f422338df434772a9699182efc1b08c961feba39f8b",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "bd85a65a10cf2ad8683916787f9d92b7c7156f391e4209e0ba520eedcdcab7df",
+  "solutionFigureHashes": {},
+  "candidateHash": "545ffc78cc32241703d5994ebbac18de5aa28ca34f176b05f20e48dd77e6fe8c",
+  "candidate": {
+    "questionId": "2015_AMC_10A_Q25",
+    "derivedAnswer": "59 (A)",
+    "answerStatus": "matches",
+    "answerReason": "Under the recorded standard convention of uniform sampling along the perimeter, the probability is (26-π)/32. Thus a=26, b=1, c=32, and a+b+c=59.",
+    "methods": [
+      {
+        "id": "ordered-side-pair-areas",
+        "label": "Represent point pairs by areas",
+        "explanation": "Use the standard interpretation that each point is chosen uniformly along the perimeter. Because the four sides have equal length, each point is equally likely to lie on any side. Vertices have probability zero, so they may be assigned to either incident side.\n\nDistinguish the first point from the second. There are \\(4\\cdot4=16\\) equally likely ordered pairs of sides. For any fixed pair of sides, describe the two points by their distances \\(u\\) and \\(v\\) from chosen endpoints, where \\(0\\le u,v\\le1\\). Independence and uniform sampling make \\((u,v)\\) uniform in a unit square, so the probability within that square equals the favorable area.\n\nIf the points are on the same side, measure both coordinates from the same endpoint. Their distance is \\(|u-v|\\). The condition \\(|u-v|\\ge\\tfrac12\\) describes two corner triangles, each with perpendicular legs of length \\(\\tfrac12\\). Their total area is\n\\[\n2\\left(\\frac12\\cdot\\frac12\\cdot\\frac12\\right)=\\frac14.\n\\]\nThere are four ordered pairs of this type.\n\nIf the sides are adjacent, measure \\(u\\) and \\(v\\) from their shared corner. By the Pythagorean theorem, the distance squared is \\(u^2+v^2\\). Thus the points are too close precisely when\n\\[\nu^2+v^2<\\frac14.\n\\]\nWithin the parameter square, this is a quarter disk of radius \\(\\tfrac12\\), with area \\(\\pi/16\\). The favorable area is therefore \\(1-\\pi/16\\). Each first side has two adjacent sides, giving eight ordered pairs of this type.\n\nIf the sides are opposite, their perpendicular separation is \\(1\\), so every pair of points has distance at least \\(1\\). The entire parameter square is favorable. There are four ordered pairs of this type.\n\nThese three types exhaust the sixteen ordered side pairs without overlap, apart from the irrelevant vertex cases. The distance-equality boundaries are line segments or circular arcs and have zero area. Hence the required probability, including equality, is\n\\[\n\\frac{4(1/4)+8(1-\\pi/16)+4}{16}\n=\\frac{26-\\pi}{32}.\n\\]\nSince \\(\\gcd(26,1,32)=1\\), we have \\(a=26\\), \\(b=1\\), and \\(c=32\\). Therefore \\(a+b+c=\\boxed{59}\\), choice A.",
+        "nodeIds": [
+          "math:geometric-probability",
+          "cnm_174",
+          "cnm_p150"
+        ],
+        "prerequisiteIds": [
+          "cnm_285",
+          "cnm_p089",
+          "cnm_p148",
+          "cnm_p192"
+        ],
+        "levelReason": "The argument uses independent uniform coordinates, elementary area ratios, triangle and circle areas, and the Pythagorean theorem, all accessible within AMC 10 mathematics."
+      }
+    ],
+    "assessedIds": [
+      "math:geometric-probability"
+    ],
+    "supportIds": [
+      "cnm_285"
+    ],
+    "annotationRationale": "The target is translating independent uniform boundary choices into favorable-area ratios. The written route uses the Pythagorean theorem to identify a quarter disk and combines areas across disjoint side-pair cases. Square, triangle, and circle area formulas are local prerequisites. The shared probability node is used for probability as a numerical likelihood, rather than counting individual points in a continuous space.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The result uses the recorded standard interpretation that both points are sampled uniformly in arclength along the square's boundary."
+    ]
+  },
+  "review": {
+    "questionId": "2015_AMC_10A_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The 4 same-side, 8 adjacent-side, and 4 opposite-side parameter squares have favorable areas 1/4, 1-π/16, and 1, respectively. Their average is (26-π)/32, yielding 59. The uniform-arclength assumption, independence, vertices, and equality boundaries are addressed.",
+    "levelCheck": "Elementary area ratios and the Pythagorean theorem fit AMC 10. The parameter-square construction and case counts are sufficiently explained.",
+    "methodDistinctness": "One complete area method is sufficient.",
+    "annotationCheck": "The geometric-probability target and method-local geometry nodes fit. The listed circle-area prerequisite suffices for the quarter disk, and cnm_285 is appropriately scoped.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "ordered-side-pair-areas": "ordered-side-pair-areas"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "9421f01fda6ff60e0f01b757304921ec90a9fa6d123682f851311f8e16e770a0",
+    "inputHash": "d5f4506e512039f7ce0fa5db6d78802bfbe1425cb3547add2d7ed018fd3431c3",
+    "authorInputHash": "ec5835638829f8ee1c2a470300a4ff3ed3d53fca7a62d96b5877bf5aa2101c3e",
+    "reviewInputHash": "227cb5a1d9dac8c1847261172633f301e8839da29fddd5ecbe045cd2540233ab",
+    "authorResponseHash": "6a225cecb84d71b3e7bc371e4667e6e8c80963a9bd79a8f71ebf728d63e4106e",
+    "reviewerResponseHash": "940fc3c6b91731c1a02e79e2ff885b29bcbe044437afad94d2dc7d6468acab17",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

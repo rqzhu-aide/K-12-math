@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1976_AMC_12_Q04",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "b54a30385bd205cca844c6fac573b49f15a52e0b535c976de83a6f7afcab1f04",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "5f2fb89ba93f64f96ef539d627b92aefabe4a119da14a40f2a69b0966b94c617",
+  "solutionFigureHashes": {},
+  "candidateHash": "e2deaac2e462823595c0be1bbf7b67f8ed08a64e707e265c388ae2edde8dd6c7",
+  "candidate": {
+    "questionId": "1976_AMC_12_Q04",
+    "derivedAnswer": "C. \\(\\dfrac{s}{r^{n-1}}\\).",
+    "answerStatus": "matches",
+    "answerReason": "Multiplying every reciprocal term by r^(n−1) produces the original terms in reverse order, so the reciprocal sum is s/r^(n−1).",
+    "methods": [
+      {
+        "id": "reverse-and-scale",
+        "label": "Scale the reciprocal terms",
+        "explanation": "The original terms are \\(1,r,r^2,\\ldots,r^{n-1}\\). Multiplying their reciprocals by the last original term produces these same powers in reverse order.\n\nFor \\(n=1\\), both sums equal \\(1\\), and the proposed expression \\(s/r^{n-1}\\) also equals \\(1\\). For \\(n\\ge2\\), let \\(T\\) be the reciprocal sum. Distributing \\(r^{n-1}\\) gives\n\\[\n\\begin{aligned}\nr^{n-1}T\n&=r^{n-1}\\left(1+\\frac1r+\\cdots+\\frac1{r^{n-1}}\\right)\\\\\n&=r^{n-1}+r^{n-2}+\\cdots+r+1\\\\\n&=s.\n\\end{aligned}\n\\]\nEach original term appears exactly once, so reversing the order does not change the sum. Since \\(r\\ne0\\), we may divide by \\(r^{n-1}\\), obtaining\n\\[\nT=\\boxed{\\frac{s}{r^{n-1}}}.\n\\]\nThis argument also applies when \\(r=1\\) or when \\(r\\) is negative. The answer is \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_h208",
+          "cnm_h040"
+        ],
+        "prerequisiteIds": [
+          "cnm_h207",
+          "cnm_016",
+          "cnm_080"
+        ],
+        "levelReason": "Uses explicit geometric terms, integer powers and ordinary laws of finite sums."
+      },
+      {
+        "id": "compare-sum-formulas",
+        "label": "Compare the two geometric-sum formulas",
+        "explanation": "Taking reciprocals changes the common ratio from \\(r\\) to \\(1/r\\). We can therefore compare the finite geometric-sum formulas for these two ratios. Let \\(T\\) denote the reciprocal sum.\n\nIf \\(r=1\\), every term in both progressions is \\(1\\). Thus \\(s=T=n\\), giving \\(T=s/r^{n-1}\\).\n\nIf \\(r\\ne1\\), the original sum is\n\\[\ns=\\frac{r^n-1}{r-1}.\n\\]\nThe reciprocal progression has first term \\(1\\) and common ratio \\(1/r\\), so\n\\[\n\\begin{aligned}\nT\n&=\\frac{(1/r)^n-1}{(1/r)-1}\\\\\n&=\\frac{(1-r^n)/r^n}{(1-r)/r}\\\\\n&=\\frac{r^n-1}{r^{n-1}(r-1)}\\\\\n&=\\frac{s}{r^{n-1}}.\n\\end{aligned}\n\\]\nAll divisions are valid because this case has \\(r\\ne0,1\\). The calculation includes \\(n=1\\) and negative ratios as well. Therefore the answer is \\(\\boxed{\\dfrac{s}{r^{n-1}}}\\), choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_h210",
+          "cnm_162",
+          "cnm_h040"
+        ],
+        "prerequisiteIds": [
+          "cnm_h207",
+          "cnm_016",
+          "cnm_156"
+        ],
+        "levelReason": "Uses the standard finite geometric-sum formula and rational-expression simplification, with the ratio-one case handled separately."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_h207",
+      "cnm_016",
+      "cnm_h040"
+    ],
+    "annotationRationale": "The task-level target is the relationship between a geometric progression's sum and its reciprocal sum. Geometric-sequence meaning, reciprocals and integer exponent laws support both methods. The first method uses explicit terms and reversal after scaling; the second uses the geometric-sum formula and fraction simplification. The formula-use node cnm_h210 belongs only to the second route because its stated criteria are not required by the first. A missing route-neutral target is proposed rather than making that alternative procedure mandatory.",
+    "needsNewNodes": [
+      {
+        "name": "Reciprocal sums of finite geometric progressions",
+        "description": "For a positive integer number of terms and a nonzero real common ratio, determine the relationship between the sum of a finite geometric progression and the sum of its termwise reciprocals. Preserve the first and last terms and include ratio-one and negative-ratio cases.",
+        "reason": "The catalog describes geometric terms and formula-based geometric summation, but lacks this sum relationship as a route-neutral target. The complete scaling-and-reversal method does not require the geometric-sum formula."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1976_AMC_12_Q04",
+    "decision": "accept",
+    "mathematicalCheck": "Scaling the reciprocal sum T by r^(n-1) reproduces all original terms in reverse order, giving T=s/r^(n-1). The formula method independently gives the same expression, handles r=1 separately, and divides only by nonzero quantities. Both cover n=1 and negative ratios.",
+    "levelCheck": "Both approaches use standard high-school sequence and algebra knowledge.",
+    "methodDistinctness": "Scaling and reversing terms supplies a structural argument; comparing finite geometric-sum formulas supplies a distinct standard approach.",
+    "annotationCheck": "The shared support fits both routes. Keeping formula use local to the second method is justified, and the missing route-neutral target is honestly proposed without forcing an unsuitable existing ID.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "reverse-and-scale": "solution:reverse-and-scale:5f2fb89ba93f",
+    "compare-sum-formulas": "compare-sum-formulas"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "f8fc7b857dd92a1786e585c98f58c9e4ab43d130e2319c43d26a48ab245449d3",
+    "inputHash": "dd79ef131260ec0f403d2b69f11a835d37c4a5b8448eaaa88c8a75ba0b060865",
+    "authorInputHash": "9beb78b533677b4079de836a651468f5ac203d60c28e367ad57a4a615a0d2ffc",
+    "reviewInputHash": "17ea8a9119103711aeaa5cf0499d3f31c25b1b8a95acf1d7ae20975e645b4c36",
+    "authorResponseHash": "12faf1102682d766d6d6000172d422d179773de30f810027d7c240ef02d1d79a",
+    "reviewerResponseHash": "5d917c7c7d955eed3e6b669f72c043dc02dd220b6a3bf0d8f08af931f785c628",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

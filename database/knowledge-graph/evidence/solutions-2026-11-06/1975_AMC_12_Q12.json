@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1975_AMC_12_Q12",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "c798842e4466fe9c2173ee23bd9f7443373b79e91f1405565b3004d92c5b7914",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "28ccca41f87d1fcc6a6542baa2bf6d12d7971000110c50cbbc42a6325d713b39",
+  "solutionFigureHashes": {},
+  "candidateHash": "d2f265bea7ced950a08dd95ce8e3de632160249d5e84d50d61180fc4e2c07d4d",
+  "candidate": {
+    "questionId": "1975_AMC_12_Q12",
+    "derivedAnswer": "B. a=3x or a=-2x",
+    "answerStatus": "matches",
+    "answerReason": "Since x=a-b is nonzero, the given equations reduce to a²-ax-6x²=0. Its two possibilities are a=3x and a=-2x, and both satisfy the original conditions with the corresponding b.",
+    "methods": [
+      {
+        "id": "cube-factorization",
+        "label": "Factor the difference of cubes",
+        "explanation": "The relation \\(a-b=x\\) matches the first factor in a difference of cubes. Also, \\(a\\ne b\\) ensures \\(x\\ne0\\), so cancellation by \\(x\\) is allowed. Factoring gives\n\\[\n(a-b)(a^2+ab+b^2)=19x^3,\n\\]\nand therefore\n\\[\na^2+ab+b^2=19x^2.\n\\]\nTo obtain an equation involving only \\(a\\) and \\(x\\), substitute \\(b=a-x\\):\n\\[\na^2+a(a-x)+(a-x)^2=19x^2.\n\\]\nExpanding and collecting terms gives\n\\[\n3a^2-3ax-18x^2=0,\n\\]\nso\n\\[\na^2-ax-6x^2=(a-3x)(a+2x)=0.\n\\]\nThus \\(a=3x\\) or \\(a=-2x\\).\n\nBoth possibilities are admissible. For any \\(x\\ne0\\), the corresponding pairs are \\((a,b)=(3x,2x)\\) and \\((a,b)=(-2x,-3x)\\). Each has difference \\(x\\), and their cube differences are respectively \\((27-8)x^3\\) and \\((-8+27)x^3\\), both equal to \\(19x^3\\). Hence the answer is \\(\\boxed{a=3x\\text{ or }a=-2x}\\), choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "math:quadratic-system-elimination",
+          "math:sum-difference-cubes",
+          "cnm_224"
+        ],
+        "prerequisiteIds": [
+          "cnm_040",
+          "cnm_148",
+          "cnm_145"
+        ],
+        "levelReason": "Uses a standard cube identity, affine substitution, and quadratic factorization while preserving the nonzero condition."
+      },
+      {
+        "id": "expand-complete-square",
+        "label": "Expand and complete a square",
+        "explanation": "Substituting \\(b=a-x\\) directly makes the cubic terms cancel. Because \\(x=a-b\\) and \\(a\\ne b\\), we have \\(x\\ne0\\). The cube equation becomes\n\\[\na^3-(a-x)^3=19x^3.\n\\]\nExpanding the left side gives\n\\[\n3a^2x-3ax^2+x^3=19x^3.\n\\]\nSubtracting \\(x^3\\) and dividing by the nonzero quantity \\(3x\\) yields\n\\[\na^2-ax=6x^2.\n\\]\nTo turn the left side into a square, multiply by 4 and add \\(x^2\\) to both sides:\n\\[\n(2a-x)^2=25x^2=(5x)^2.\n\\]\nEqual squares have equal or opposite bases, so\n\\[\n2a-x=5x\\quad\\text{or}\\quad2a-x=-5x.\n\\]\nThese give \\(a=3x\\) or \\(a=-2x\\). Their corresponding values of \\(b\\) are \\(2x\\) and \\(-3x\\); these pairs have difference \\(x\\) and cube difference \\(19x^3\\), so neither possibility is extraneous. The answer is \\(\\boxed{a=3x\\text{ or }a=-2x}\\), choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "math:quadratic-system-elimination",
+          "cnm_146",
+          "cnm_221",
+          "cnm_220"
+        ],
+        "prerequisiteIds": [
+          "cnm_040",
+          "cnm_148"
+        ],
+        "levelReason": "Uses polynomial expansion and completing the square as an alternative school-algebra path."
+      }
+    ],
+    "assessedIds": [
+      "math:quadratic-system-elimination"
+    ],
+    "supportIds": [
+      "cnm_040",
+      "cnm_148"
+    ],
+    "annotationRationale": "The route-neutral target is eliminating b using an affine relation, obtaining a quadratic condition, and recovering all admissible possibilities with x nonzero. The cube identity and zero-product factoring belong only to the first method. Polynomial expansion, completing the square, and direct square-root solving describe the second method. Equality transformations and the perfect-square identity support both.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1975_AMC_12_Q12",
+    "decision": "accept",
+    "mathematicalCheck": "Since \\(x=a-b\\ne0\\), valid cancellation and substitution give \\((a-3x)(a+2x)=0\\). The second method correctly obtains \\((2a-x)^2=(5x)^2\\). Both recover precisely the two stated possibilities and verify their corresponding b values.",
+    "levelCheck": "Both methods use accessible school algebra and explicitly preserve the nonzero restriction.",
+    "methodDistinctness": "Cube factorization followed by zero-product solving and direct expansion followed by completing the square provide useful distinct algebraic routes.",
+    "annotationCheck": "The route-neutral elimination target fits the reduction to a quadratic. Method-specific identities and solving procedures remain local, and the shared support is justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "cube-factorization": "cube-factorization",
+    "expand-complete-square": "expand-complete-square"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "94a81aaa23cc7e4e18ee3b6e507fb5f1b2e16996e4617c4b54bb33def3b6cc31",
+    "inputHash": "8c4b651d27c6965bc5fb2f0e335965963232244161b2a11a8878861cea47fcdd",
+    "authorInputHash": "38e164a7640de4e36576edb9faf9952cf761e2edbcf887c2ef43465bbc382509",
+    "reviewInputHash": "e90928d7fbf185ac7e6ecdbedbdf7c450785c29df244007032e3ef8e054bf9a8",
+    "authorResponseHash": "0b02eec51dadf5d9dc7a43aa56d3f3bb0e1c2d35d1f10616a20051f80d13ff1b",
+    "reviewerResponseHash": "12fd7d3e4ba1ab6f46447248c26c77b6c05d29b7588a563e57940f88c4d093db",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

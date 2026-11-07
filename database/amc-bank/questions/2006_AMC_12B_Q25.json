@@ -1,0 +1,99 @@
+{
+  "Year": 2006,
+  "Level": "AMC 12",
+  "Batch": "B",
+  "Area": "Unclassified",
+  "Number": 25,
+  "Question": "A sequence \\(a_1,\\) \\(a_2,\\) \\(\\ldots\\) of non-negative integers is defined by the rule \\(a_{n+2} = |a_{n+1} - a_n|\\) for \\(n \\ge 1.\\) If \\(a_1 = 999,\\) \\(a_2 \\lt 999,\\) and \\(a_{2006} = 1,\\) how many different values of \\(a_2\\) are possible?",
+  "Question Type": "text",
+  "Choices": {
+    "A": "\\(165\\)",
+    "B": "\\(324\\)",
+    "C": "\\(495\\)",
+    "D": "\\(499\\)",
+    "E": "\\(660\\)"
+  },
+  "Choices Type": "text",
+  "Correct Answer": "B",
+  "Solution": "The absolute-difference rule preserves common divisors and tends to make the entries smaller. These two observations identify the eventual cycle; parity then tells us which position of that cycle occurs at term \\(2006\\).\n\nLet \\(b=a_2\\), so \\(0\\le b\\le998\\), and let \\(g=\\gcd(999,b)\\ge1\\). A number divides both \\(u\\) and \\(v\\) exactly when it divides both \\(v\\) and \\(|v-u|\\). Therefore the greatest common divisor of every consecutive pair remains \\(g\\).\n\nWe must also show that the repeating part begins soon enough. A pair \\((u,v)\\) changes to \\((v,|v-u|)\\). If an entry is zero or the entries are equal, the sequence repeats a rotation of\n\\[\nt,t,0,t,t,0,\\ldots.\n\\]\nOtherwise, both entries are positive and unequal. If \\(u>v\\), both entries of the next pair, \\((v,u-v)\\), are smaller than \\(u\\). If \\(v>u\\), the next two pairs are\n\\[\n(v,v-u),\\qquad(v-u,u),\n\\]\nand both entries of the latter are smaller than \\(v\\). Thus, outside the repeating part, the largest entry drops by at least \\(1\\) within two transitions.\n\nThe initial largest entry is \\(999\\). After at most \\(2(999-1)=1996\\) transitions, either a repeating pair has already appeared or the largest entry is \\(1\\), which itself forces a repeating pair. Hence the sequence is repeating by the pair \\((a_{1997},a_{1998})\\). The preserved greatest common divisor shows that \\(t=g\\), so \\(a_{2006}\\) is either \\(0\\) or \\(g\\). In particular, obtaining \\(1\\) requires \\(g=1\\).\n\nTo determine the phase, an absolute difference has the same parity as the sum of its inputs. Consequently, \\(a_{n+3}\\) has the parity of \\(a_{n+2}+a_{n+1}\\), which has the parity of \\(a_n+2a_{n+1}\\), and hence of \\(a_n\\). Parity therefore repeats every three terms. Since\n\\[\n2006=3\\cdot668+2,\n\\]\n\\(a_{2006}\\) has the parity of \\(b\\). When \\(g=1\\), its only possible values are \\(0\\) and \\(1\\), so it equals \\(1\\) exactly when \\(b\\) is odd.\n\nWe have proved both directions: the valid starting values are exactly the odd integers from \\(1\\) through \\(997\\) that are coprime to \\(999\\). Since\n\\[\n999=3^3\\cdot37,\n\\]\nwe must exclude multiples of \\(3\\) or \\(37\\). There are \\(499\\) odd candidates. Among them, \\(166\\) are multiples of \\(3\\), corresponding to odd quotients from \\(1\\) through \\(331\\); \\(13\\) are multiples of \\(37\\), corresponding to odd quotients from \\(1\\) through \\(25\\). The \\(4\\) odd multiples of \\(111=3\\cdot37\\) were excluded twice and must be added back. Thus the count is\n\\[\n499-166-13+4=\\boxed{324},\n\\]\nchoice B.",
+  "Meta": {
+    "QuestionSource": "live-poshenloh",
+    "AnswerSource": "live-poshenloh-answer-key",
+    "SolutionSource": "Original Math Practice solution",
+    "AreaSource": "Pending topic curation",
+    "Concepts": "greatest common divisor; parity; inclusion-exclusion",
+    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2006B/solutions",
+    "SourceSHA256": "4e587bac4f8cb103d7e03322d532fdc58b169d6279388458cc98479974410678",
+    "Figures": [],
+    "FigureSources": {},
+    "SourceQuestionCount": 25,
+    "HistoricalSeries": "AMC 12",
+    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+    "Copyright": "Copyright Mathematical Association of America",
+    "License": "CC-BY-NC-SA-4.0",
+    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "TranscriptionSource": "LIVE by Po-Shen Loh",
+    "Modifications": [
+      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
+      "Third-party worked solution and solution-only figures omitted from the public distribution"
+    ],
+    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+    "SolutionReview": {
+      "status": "reviewed",
+      "solutionSHA256": "cd98db058405e703c21785f6e27c56303d8b93ddce5e3c818f4c0052237deac2",
+      "questionContentHash": "b5eeaf1efb9a6ac8f50b1bb323256b59f106e4ef9f9070f69e58ee869340575d",
+      "evidence": {
+        "path": "knowledge-graph/evidence/solutions-2026-11-06/2006_AMC_12B_Q25.json",
+        "sha256": "f45205206ba061ae19474a2fff1e4a3b50e2959ad926895c0943200464b7ae0f"
+      },
+      "author": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "reviewer": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      }
+    }
+  },
+  "ID": "2006_AMC_12B_Q25",
+  "Bank": "amc",
+  "SchemaVersion": "2.0",
+  "ResponseType": "choice",
+  "Language": "en",
+  "domain": [],
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "1.0.0",
+    "contentHash": "b5eeaf1efb9a6ac8f50b1bb323256b59f106e4ef9f9070f69e58ee869340575d",
+    "status": "mapped",
+    "reviewStatus": "machine_scope_audited",
+    "assessedIds": [
+      "math:invariant-reasoning",
+      "cnm_h200"
+    ],
+    "supportIds": [
+      "cnm_p158",
+      "cnm_p156",
+      "math:prime-factorization",
+      "cnm_h009"
+    ],
+    "routes": [
+      {
+        "id": "gcd-descent-parity-count",
+        "label": "Find the eventual cycle, then use parity",
+        "nodeIds": [
+          "math:invariant-reasoning",
+          "cnm_h200",
+          "cnm_h009",
+          "cnm_p158",
+          "cnm_p156",
+          "math:prime-factorization",
+          "cnm_008"
+        ]
+      }
+    ],
+    "flags": []
+  }
+}

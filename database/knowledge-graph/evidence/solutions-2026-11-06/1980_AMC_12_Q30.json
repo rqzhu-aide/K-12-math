@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1980_AMC_12_Q30",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "24821ba439a2b56f0b2bc1626ef9e6f590f8071a91d39e244e0f6a0ce6a0bdf9",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "befdef7a670bbd7dc7e6f5c3fa1aadd290686547a2983dc7c728c00e8395f931",
+  "solutionFigureHashes": {},
+  "candidateHash": "1708d424e9503aa98e0b2ef04e0fcbb85b0af8e9206af445dd1463fe2be0b297",
+  "candidate": {
+    "questionId": "1980_AMC_12_Q30",
+    "derivedAnswer": "B: 2",
+    "answerStatus": "matches",
+    "answerReason": "The block conditions force the positive square root to be 408 or 804. Their squares are 166464 and 646416, and both satisfy every condition.",
+    "methods": [
+      {
+        "id": "square-root-and-blocks",
+        "label": "Use the first block to constrain the square root",
+        "explanation": "The two-digit perfect squares are\n\\[\n16,25,36,49,64,81,\n\\]\nand none contains a zero. These are therefore the possible values of each block.\n\nLet a squarish number be \\(N=m^2\\), choosing its positive integer square root \\(m\\). Write its first block as \\(k^2\\), where \\(4\\le k\\le9\\). The first block gives\n\\[\n10000k^2\\le m^2<10000(k^2+1).\n\\]\nThus \\(m=100k+r\\) for an integer \\(r\\ge0\\). Expanding and using \\(k\\ge4\\), we obtain\n\\[\n10000>200kr+r^2\\ge800r,\n\\]\nso \\(0\\le r\\le12\\). This reduces the possible endings of the square root to a short list.\n\nThe last two digits of \\(m^2\\) are the last two digits of \\(r^2\\). For \\(r=0,1,2,3,10,11,12\\), these are respectively \\(00,01,04,09,00,21,44\\), all forbidden. Hence \\(r\\) must be one of \\(4,5,6,7,8,9\\).\n\nNow \\(r^2<100\\), so the expansion\n\\[\nN=10000k^2+100(2kr)+r^2\n\\]\nshows that the middle block is \\(2kr\\). Indeed, the first-block restriction ensures \\(2kr<100\\), so there is no carry into that block. Since \\(2kr\\ge32\\) and it is even, its only allowed square values are \\(36\\) and \\(64\\).\n\nIf \\(2kr=36\\), then \\(kr=18\\). Its positive factor pairs are \\((1,18),(2,9),(3,6)\\), none having both entries between \\(4\\) and \\(9\\). If \\(2kr=64\\), then \\(kr=32\\), whose only factor pair in that range is \\(4\\cdot8\\). Thus\n\\[\n(k,r)=(4,8)\\quad\\text{or}\\quad(8,4).\n\\]\nThe resulting squares are\n\\[\n408^2=166464,\\qquad804^2=646416.\n\\]\nTheir blocks are \\((16,64,64)\\) and \\((64,64,16)\\), so both qualify. Every possible positive square root was covered, and distinct positive roots give distinct squares. Therefore there are exactly \\(2\\) squarish numbers, choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_079",
+          "cnm_148"
+        ],
+        "prerequisiteIds": [
+          "cnm_020",
+          "cnm_p096",
+          "cnm_p153"
+        ],
+        "levelReason": "Bounding an integer square root, expanding a square, tracking decimal blocks, and checking factor pairs are elementary contest methods within AMC 12 scope."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_020",
+      "cnm_p096"
+    ],
+    "annotationRationale": "The target is an exhaustive count of integers satisfying simultaneous square and digit restrictions. The method uses square comparisons to bound the root and the perfect-square expansion to identify the middle block. Computing squares and understanding decimal place value support the argument; factor pairs complete this particular route. Formal modular-power machinery is not used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1980_AMC_12_Q30",
+    "decision": "accept",
+    "mathematicalCheck": "The first block gives m=100k+r with 4≤k≤9 and 0≤r≤12. The last block restricts r to 4 through 9. Then r²<100 and the first-block bound ensures 2kr<100, so the middle block is exactly 2kr. Its only possible square values are 36 and 64; their factor restrictions leave precisely (k,r)=(4,8),(8,4). Both resulting squares qualify and are distinct.",
+    "levelCheck": "The root bound, decimal-block expansion, and exhaustive factor checks are clear and appropriate for AMC 12.",
+    "methodDistinctness": "One complete structural counting method is sufficient.",
+    "annotationCheck": "The assessed integer restrictions and method-local root comparisons and square expansion match their catalog scopes. Powers, decimal place value, and factor-pair prerequisites are justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "square-root-and-blocks": "square-root-and-blocks"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "0c894209f8d458602d2fa2570b4f4dd2b2ce634c9221813c9654c9d348c1bc9f",
+    "inputHash": "1cc7d8e80cf71b5715e1f707800516345816bacfaa1572abb3009b26befe0657",
+    "authorInputHash": "7f43c781f6736081d96b60f961e174c61039cd19b11fefe1f48219d2fe065924",
+    "reviewInputHash": "dc3ac3cd405b3942180dce20fb7b5831a3f071e639f8e6dc94e690036610969f",
+    "authorResponseHash": "8429c60a512ebc8ce585991d9f291abdeb2f877e90739afb4a37d68aaf925478",
+    "reviewerResponseHash": "0c065fdb98e90f494125fdf9ac654b988856b3529fd87bb5c213b05d123870a6",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

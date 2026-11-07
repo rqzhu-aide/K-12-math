@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2004_AMC_12B_Q08",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "83890569ac273dd4e967c54275d70a23ce93e0867b3972a2455d688332e4984f",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "a60ac4446b7c65cfffc0d0d91a8cda2e9788e8c052f64a6dc641a52dcae6691f",
+  "solutionFigureHashes": {},
+  "candidateHash": "15539f65f31bef249b6218c17487d90f82a6db1764a2065fb7ba72443e9463eb",
+  "candidate": {
+    "questionId": "2004_AMC_12B_Q08",
+    "derivedAnswer": "D, 10 rows",
+    "answerStatus": "matches",
+    "answerReason": "The row sizes are consecutive odd numbers, and the first ten sum to 100. Since each added row contributes a positive number of cans, ten is the unique possible row count.",
+    "methods": [
+      {
+        "id": "sum-row-counts",
+        "label": "Method 1: Add the odd row sizes",
+        "explanation": "Starting with \\(1\\) can and adding \\(2\\) for each lower row gives row sizes \\(1,3,5,\\ldots\\). We can list and add these until the total reaches \\(100\\).\n\nThe first ten row sizes are \\(1,3,5,7,9,11,13,15,17,19\\). Pairing the first with the last, the second with the next-to-last, and so on gives\n\\[\n\\begin{aligned}\n1+3+\\cdots+19\n&=(1+19)+(3+17)+(5+15)\\\\\n&\\quad +(7+13)+(9+11)\\\\\n&=5\\cdot20=100.\n\\end{aligned}\n\\]\nFewer rows would contain fewer cans, and any additional row would make the total exceed \\(100\\). Therefore the display contains \\(10\\) rows, choice D.",
+        "nodeIds": [
+          "cnm_h206",
+          "cnm_p114"
+        ],
+        "prerequisiteIds": [
+          "cnm_p060"
+        ],
+        "levelReason": "Listing ten odd numbers and pairing their sums gives a complete arithmetic solution without a sequence formula."
+      },
+      {
+        "id": "square-layers",
+        "label": "Method 2: Build square layers",
+        "explanation": "Represent each can by a unit square. The row sizes are \\(1,3,5,\\ldots\\), and these groups of unit squares can form successive layers of a larger square.\n\nStart with one unit square. For any integer \\(k\\ge2\\), enlarge a \\((k-1)\\)-by-\\((k-1)\\) square to a \\(k\\)-by-\\(k\\) square by adding a new row of \\(k\\) unit squares and a new column of \\(k-1\\) more. The shared corner is included only in the new row, so the added layer contains\n\\[\nk+(k-1)=2k-1\n\\]\nunit squares. This is exactly the number of cans in display row \\(k\\).\n\nConsequently, \\(n\\) display rows correspond to an \\(n\\)-by-\\(n\\) square containing \\(n^2\\) unit squares. Since \\(n^2=100\\) and \\(n\\) is positive, \\(n=10\\). The display contains \\(10\\) rows, choice D.",
+        "nodeIds": [
+          "cnm_h206",
+          "cnm_p200",
+          "cnm_p089"
+        ],
+        "prerequisiteIds": [
+          "cnm_p060",
+          "cnm_p088"
+        ],
+        "levelReason": "The square-layer construction uses elementary spatial counting and square area, with no formal summation theorem."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h206"
+    ],
+    "supportIds": [
+      "cnm_p060"
+    ],
+    "annotationRationale": "The task models row counts with a constant increase and recovers the number of rows from their total, matching an arithmetic-sequence application. Both methods recognize the additive pattern. The first uses paired addition; the second uses a geometric number pattern and square area. General-term and arithmetic-series formulas are not used or required by these methods.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2004_AMC_12B_Q08",
+    "decision": "accept",
+    "mathematicalCheck": "The first ten row counts pair into five sums of 20, totaling 100; positivity excludes every other row count. Independently, enlarging a (k-1)-square to a k-square adds k + (k-1) = 2k-1 units, so n rows total n² cans and n = 10, choice D.",
+    "levelCheck": "Both arguments are elementary and complete. The square-layer construction explains its general step without requiring formal induction.",
+    "methodDistinctness": "Paired arithmetic addition and geometric square layers offer genuinely distinct insights.",
+    "annotationCheck": "The arithmetic-sequence application target is route-neutral. Constant-change recognition is shared; paired addition and geometric area reasoning remain local. Unused sequence formulas are correctly omitted.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "sum-row-counts": "sum-row-counts",
+    "square-layers": "square-layers"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "d2aa5d76f1fd580b1bb30d19df5f2c581a33895cb8c7abb87f0ba08dc39d1210",
+    "inputHash": "2351c25d089d362957d11817761ff65c9ff824b6d4b2d2f7cb959c7810c5b585",
+    "authorInputHash": "4b9a8560dead3076e5c6b0ed318134f3d061c1f67c704d6f96b782210f42162b",
+    "reviewInputHash": "b1498aa2576d35e270b2090df57da8482ad4a894b5ab4ada576ee44ad628fb5e",
+    "authorResponseHash": "ea9e42b6a4cae1cc96f3281aeb6afce96f13c39d9bd4b63091e2ef43010be601",
+    "reviewerResponseHash": "dc2dbc6feabec16704ba29f34f3e89d3ea4ac99fd453d85198de8ec0b2e1e92a",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

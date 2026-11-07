@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2011_AMC_8_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "220c78c10dcd9caab921f5743eba65d0b4cc92df7cc6fc4604f7c619c2e75072",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "2506c5a1bb7aeef81c5329749c41496fb8544ff4b6f5288f725e5e78100942da",
+  "solutionFigureHashes": {},
+  "candidateHash": "5b2c95a187c741a981f574c4820240201adf27536e2ec99db58409a5f9ecfb30",
+  "candidate": {
+    "questionId": "2011_AMC_8_Q22",
+    "derivedAnswer": "\\(4\\), choice D",
+    "answerStatus": "matches",
+    "answerReason": "The last two digits repeat as 07, 49, 43, 01. Exponent 2011 occupies the third position in this four-term cycle.",
+    "methods": [
+      {
+        "id": "last-two-digit-cycle",
+        "label": "Track the last two digits",
+        "explanation": "To find the tens digit, track the last two digits of successive powers. When multiplying by \\(7\\), any whole hundreds contribute another multiple of \\(100\\), so only the previous last two digits affect the next last two digits.\n\nThe first four powers are\n\\[\n7^1=7,\\quad 7^2=49,\\quad\n7^3=343,\\quad 7^4=2401.\n\\]\nTheir last two digits are \\(07,49,43,01\\). Multiplying a number ending in \\(01\\) by \\(7\\) produces one ending in \\(07\\), returning to the first pair. Since each next pair is determined by the current pair, the cycle repeats every four powers.\n\nNow\n\\[\n2011=4\\cdot502+3.\n\\]\nAfter \\(502\\) complete cycles, the exponent is at the third position, whose last two digits are \\(43\\). Therefore the tens digit is \\(4\\), choice D.",
+        "nodeIds": [
+          "math:modular-powers"
+        ],
+        "prerequisiteIds": [
+          "cnm_019",
+          "cnm_p017",
+          "cnm_p050"
+        ],
+        "levelReason": "Uses ordinary decimal multiplication and a justified repeating digit cycle, without formal congruence notation or exponent theorems."
+      }
+    ],
+    "assessedIds": [
+      "math:modular-powers"
+    ],
+    "supportIds": [
+      "cnm_019",
+      "cnm_p017",
+      "cnm_p050"
+    ],
+    "annotationRationale": "The verified last-two-digit cycle fits the residue-cycle part of math:modular-powers. The actual explanation uses exponent meaning, tens-and-ones place value, and division with a remainder. Formal congruence notation is not a prerequisite of this written route.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2011_AMC_8_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "Multiplication by 7 sends the last-two-digit pairs through 07,49,43,01 and back to 07. The deterministic transition proves repetition. Since 2011=4·502+3, the ending is 43 and the tens digit is 4, choice D.",
+    "levelCheck": "The solution explains the cycle through decimal multiplication and division with remainder, without requiring formal congruence notation.",
+    "methodDistinctness": "One justified digit-cycle method is sufficient.",
+    "annotationCheck": "The verified power cycle fits the residue-cycle scope of math:modular-powers. Exponent meaning, tens-and-ones place value, and remainder meaning accurately describe the supports.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "last-two-digit-cycle": "last-two-digit-cycle"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c3c29b6f22736ffeb39afbee40b6a8d3969ec34f402274705851fb84425c5648",
+    "inputHash": "7a27cfa9c78009729227c8313e3c343dde7b69962cba2fbee106b68bc5a8683e",
+    "authorInputHash": "ebefbf777d431ef14367d3a680afd780812d7b62cacd498c5fb0db444335b89b",
+    "reviewInputHash": "f3d01a37012d668f24c32c3745ed83f8c70ac81ca67a9ec563fe948ef29b8085",
+    "authorResponseHash": "7c428e7e7b2d8ca149766300878b9eacac3837dd276aacf0cc9a34582c610bce",
+    "reviewerResponseHash": "c17d150753d4d880c50b407d834c968593cbdcfef4854c3318454cc8394dd95e",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

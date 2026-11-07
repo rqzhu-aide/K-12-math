@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1979_AMC_12_Q26",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "632b92f168cd1ace9c293857a3cef84f38b77ecc8e5d9fae2b9f0a9a66231f32",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "6b7244ad080523a89c8481db1b7b15559655da865e299bc542a5cd48c6ee8578",
+  "solutionFigureHashes": {},
+  "candidateHash": "b743536176bdcf72e8f4eae94ef53048aa99f9adb5a627d985766ba4c1b879f3",
+  "candidate": {
+    "questionId": "1979_AMC_12_Q26",
+    "derivedAnswer": "\\(1\\), choice B",
+    "answerStatus": "matches",
+    "answerReason": "Every integer n satisfies \\(f(n)=(n^2+3n-2)/2\\). Hence \\(f(n)=n\\) holds exactly for \\(n=1,-2\\), leaving one integer after excluding 1.",
+    "methods": [
+      {
+        "id": "integer-step-recurrence",
+        "label": "Link consecutive integer inputs",
+        "explanation": "Setting one input equal to 1 links values at consecutive integers, which is enough for this question. First, taking \\(x=y=0\\) gives\n\\[\n2f(0)=f(0)-1,\n\\qquad f(0)=-1.\n\\]\nNext, use \\(y=1\\) and \\(f(1)=1\\):\n\\[\nf(x+1)=f(x)+x+2.\n\\]\nIn particular, the successive integer values have increments \\(n+2\\). Since these increments are linear in \\(n\\), look for a quadratic expression matching them. Define\n\\[\nP(n)=\\frac{n^2+3n-2}{2}.\n\\]\nIt has \\(P(0)=-1\\), and\n\\[\nP(n+1)-P(n)=\\frac{2n+4}{2}=n+2.\n\\]\nThus \\(f(n)-P(n)\\) is unchanged at every step from \\(n\\) to \\(n+1\\). Its value at 0 is zero. Moving forward or backward by integer steps proves that\n\\[\nf(n)=\\frac{n^2+3n-2}{2}\n\\]\nfor every integer \\(n\\), including negative integers.\n\nConsequently,\n\\[\n\\begin{aligned}\nf(n)=n\n&\\iff n^2+n-2=0\\\\\n&\\iff(n-1)(n+2)=0.\n\\end{aligned}\n\\]\nThe only possibilities are \\(n=1\\) and \\(n=-2\\), and both satisfy the derived integer formula. Excluding 1 leaves exactly \\(\\boxed{1}\\) integer, choice B.",
+        "nodeIds": [
+          "math:functional-equations",
+          "cnm_h200"
+        ],
+        "prerequisiteIds": [
+          "cnm_h027",
+          "cnm_224"
+        ],
+        "levelReason": "Uses substitutions in a functional equation, an elementary recurrence valid in both integer directions, and quadratic factorization."
+      },
+      {
+        "id": "additive-normalization",
+        "label": "Remove the mixed product",
+        "explanation": "The term \\(xy\\) suggests subtracting a quadratic, because the expansion of \\((x+y)^2/2\\) contains exactly that mixed term. Define\n\\[\ng(x)=f(x)-\\frac{x^2}{2}+1.\n\\]\nThe functional equation gives\n\\[\n\\begin{aligned}\ng(x+y)-g(x)-g(y)\n&=f(x+y)-f(x)-f(y)-xy-1\\\\\n&=0.\n\\end{aligned}\n\\]\nThus \\(g(x+y)=g(x)+g(y)\\) for all real inputs. Also,\n\\[\ng(1)=1-\\frac12+1=\\frac32.\n\\]\nRepeated addition shows that \\(g(n)=3n/2\\) for positive integers \\(n\\). The same identity gives \\(g(0)=0\\) and \\(g(-n)=-g(n)\\), so this formula holds for every integer. Therefore\n\\[\nf(n)=\\frac{n^2}{2}+\\frac{3n}{2}-1.\n\\]\nIt follows that\n\\[\nf(n)=n\n\\iff n^2+n-2=(n-1)(n+2)=0.\n\\]\nThe integer solutions are exactly \\(1\\) and \\(-2\\). After excluding 1, there is \\(\\boxed{1}\\) qualifying integer, choice B.",
+        "nodeIds": [
+          "math:functional-equations",
+          "cnm_148"
+        ],
+        "prerequisiteIds": [
+          "cnm_h027",
+          "cnm_224"
+        ],
+        "levelReason": "Uses the square-of-a-sum identity and repeated addition on integers, without imposing any regularity assumption on the function."
+      }
+    ],
+    "assessedIds": [
+      "math:functional-equations"
+    ],
+    "supportIds": [
+      "cnm_h027",
+      "cnm_224"
+    ],
+    "annotationRationale": "The task assesses extracting all relevant integer values from a universally quantified functional identity. Function meaning and zero-product factorization support both methods. The recurrence is local to the first route; quadratic normalization is local to the second. Neither method assumes that the function is a polynomial on all real inputs.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1979_AMC_12_Q26",
+    "decision": "accept",
+    "mathematicalCheck": "The recurrence gives \\(f(0)=-1\\) and \\(f(n+1)-f(n)=n+2\\); the verified quadratic therefore determines every integer value in both directions. The additive normalization independently gives the same formula. Thus \\(f(n)=n\\) exactly when \\((n-1)(n+2)=0\\), leaving only \\(-2\\) after exclusion.",
+    "levelCheck": "Both arguments use school algebra and elementary repeated addition without regularity assumptions.",
+    "methodDistinctness": "Integer-step recurrence and removal of the mixed quadratic term offer distinct, accessible insights.",
+    "annotationCheck": "Functional equations form the route-neutral target. Recurrence and square expansion are method-local, with function meaning and factorization as justified shared support.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "integer-step-recurrence": "solution:integer-step-recurrence:6b7244ad0805",
+    "additive-normalization": "solution:additive-normalization:6b7244ad0805"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "9f169207c4da75aa098782bd959ad9059257b8d712659991c56aab495e13a530",
+    "inputHash": "3f882e50ec2f0048a3f9901a28092faf05b02ace7377cfae77428e5ac131284a",
+    "authorInputHash": "ba8b533d713f87b694721b471de4cb9d658e8234d3af084e0287668e31a0a4be",
+    "reviewInputHash": "50b9c9d012e794a3ed6fa4fb1c3fd82e1f0542c4f0d8d4b095a624e5d20bd95c",
+    "authorResponseHash": "636c6167be984b13ef81a9a922436123aa67c2b49f5d6b1a1f2ae0f88f63465d",
+    "reviewerResponseHash": "90deee4501868f2200307d39277613463f7483bedc0ac230a2d19b3e4abdf0eb",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

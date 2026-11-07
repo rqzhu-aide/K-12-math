@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1996_AMC_12_Q20",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "48ccb68c1480719d2420178b555b9d1fc2fad5673d2decb18007358be5974ad8",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "bd4794e1f4412fb6913c8fa98092c2fd7aada3c5d4ce6f9f5d9a0732ec3301d4",
+  "solutionFigureHashes": {},
+  "candidateHash": "aae51496f1728daa17cb8f27161ee6f94fa573d8ec7207e8adb76c5796f233ff",
+  "candidate": {
+    "questionId": "1996_AMC_12_Q20",
+    "derivedAnswer": "\\(10\\sqrt3+\\dfrac{5\\pi}{3}\\), choice C",
+    "answerStatus": "matches",
+    "answerReason": "Two tangent segments have total length \\(10\\sqrt3\\), and their joining 60-degree boundary arc has length \\(5\\pi/3\\). A lower bound for every admissible path proves that this route is shortest, addressing the recorded minimality qualification.",
+    "methods": [
+      {
+        "id": "tangent-arc-with-lower-bound",
+        "label": "Construct a route and prove it is shortest",
+        "explanation": "Let \\(A=(0,0)\\), \\(B=(12,16)\\), and \\(O=(6,8)\\). The forbidden interior belongs to a circle of radius \\(5\\). Its center is the midpoint of \\(AB\\), and\n\\[\nAO=BO=\\sqrt{6^2+8^2}=10.\n\\]\nThe direct segment passes through the circle, so we need a route around it.\n\nChoose tangent points \\(T\\) from \\(A\\) and \\(U\\) from \\(B\\) on the same side of line \\(AB\\). Tangent radii are perpendicular to their tangents, giving\n\\[\nAT=BU=\\sqrt{10^2-5^2}=5\\sqrt3.\n\\]\nThe angle \\(\\angle AOT\\) is \\(60^\\circ\\). To see this without trigonometry, reflect \\(O\\) across \\(T\\) to a point \\(O'\\). Then \\(OO'=10\\), and the two right triangles on either side of \\(AT\\) give \\(AO'=AO=10\\). Thus \\(AOO'\\) is equilateral. Likewise, \\(\\angle BOU=60^\\circ\\).\n\nSince \\(OA\\) and \\(OB\\) are opposite rays, the joining arc from \\(T\\) to \\(U\\) on the chosen side has central angle\n\\[\n180^\\circ-60^\\circ-60^\\circ=60^\\circ.\n\\]\nTraveling along \\(AT\\), this boundary arc, and \\(UB\\) is allowed. Its length is\n\\[\n2(5\\sqrt3)+\\frac{60}{360}(2\\pi\\cdot5)\n=10\\sqrt3+\\frac{5\\pi}{3}.\n\\]\nWe must also show that no allowed path is shorter. Follow any such path from \\(A\\) to \\(B\\). Its direction from \\(O\\) changes between opposite rays, so it must pass, in order, through the two tangent rays on one side of the circle, possibly making additional turns. Call the corresponding path points \\(P\\) and \\(Q\\), on rays \\(OT\\) and \\(OU\\).\n\nThe portion before \\(P\\) has length at least \\(AP\\), which is at least \\(AT\\), because \\(AT\\) is perpendicular to line \\(OT\\). Similarly, the portion after \\(Q\\) has length at least \\(UB\\).\n\nFor the middle portion, move every point radially inward onto the circle. This cannot increase length. Here is the elementary distance comparison behind that fact. For outside points \\(X,Y\\) with \\(OX\\ge OY\\ge5\\), move \\(X\\) inward to \\(Z\\) with \\(OZ=OY\\). The perpendicular foot of \\(Y\\) on line \\(OX\\) lies at or before \\(Z\\), so the Pythagorean theorem gives \\(XY\\ge ZY\\). Scaling \\(Z\\) and \\(Y\\) together by \\(5/OY\\le1\\) then puts them on the circle and shortens their distance again. Thus radial projection cannot increase any chord length, and consequently cannot increase path length.\n\nThe projected middle portion joins \\(T\\) to \\(U\\) along the circle, so it is at least the shorter arc length \\(5\\pi/3\\). Every allowed path therefore has length at least\n\\[\nAT+\\frac{5\\pi}{3}+UB\n=10\\sqrt3+\\frac{5\\pi}{3}.\n\\]\nOur constructed route attains this bound. The shortest length is \\(\\boxed{10\\sqrt3+\\frac{5\\pi}{3}}\\), choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "math:circular-obstacle-shortest-path",
+          "cnm_262",
+          "cnm_174",
+          "cnm_139",
+          "cnm_256",
+          "cnm_275"
+        ],
+        "prerequisiteIds": [
+          "cnm_h176",
+          "cnm_h173",
+          "cnm_054",
+          "cnm_065",
+          "cnm_250"
+        ],
+        "levelReason": "The construction and minimality proof use elementary Euclidean geometry, radial scaling, and a degree-based arc-length calculation. No calculus or advanced shortest-path theorem is assumed."
+      }
+    ],
+    "assessedIds": [
+      "math:circular-obstacle-shortest-path"
+    ],
+    "supportIds": [
+      "cnm_h176",
+      "cnm_h173",
+      "cnm_054",
+      "cnm_065"
+    ],
+    "annotationRationale": "The target is a shortest path around a circular obstacle, including a proof of minimality. Circle and distance formulas identify the geometry; shortest-segment and perpendicular-distance facts support the lower bound. The method locally uses tangency, Pythagoras, an equilateral-triangle construction for the angles, radial scaling, and the degree-based arc formula. The recorded minimality flag is resolved by comparing every admissible path with the constructed route.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1996_AMC_12_Q20",
+    "decision": "accept",
+    "mathematicalCheck": "Both endpoints are 10 from the center, so each tangent segment has length 5√3. The equilateral construction establishes the 60-degree joining arc, of length 5π/3. For every admissible path, ordered tangent-ray crossings and the proved distance contraction under radial projection give the same lower bound, which the constructed tangent-arc route attains.",
+    "levelCheck": "The longer minimality argument is justified by the problem. Its projection comparison is derived using elementary geometry and scaling, without calculus or an assumed advanced theorem.",
+    "methodDistinctness": "Construction and the universal lower bound form one complete method.",
+    "annotationCheck": "The shortest-path target includes the required minimality proof, which is supplied. The geometry, equilateral-triangle, degree-based arc-length and local homothety annotations fit; the recorded minimality concern is resolved.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "tangent-arc-with-lower-bound": "tangent-arc-with-lower-bound"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "408b3b401af21ef95417fc2962a24c67177d7f1336b542ece39dbcac728f8317",
+    "inputHash": "8d243ee8d502165619a824822b15c3ddb16ccf1badfbcc6ed183904ec0e7e992",
+    "authorInputHash": "b31491de59895c711fe0cd8b1bc7dec711138e969e0465602ac76db6d09b576f",
+    "reviewInputHash": "8b964041ea64fd4f41705c924089381e7a761a87014385566d1a61ee3aa343c4",
+    "authorResponseHash": "7af68ed19dbf19e6cfa710d8133d4a33de0951e547d0f6c4ce6e094b264fd371",
+    "reviewerResponseHash": "f08d6345bb5dc6a6454c7985e56a8f36e5ea2147c657568315a7d4197d5f2fac",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

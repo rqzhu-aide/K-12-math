@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2006_AMC_12A_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "851f846900cda51c0f61eb9617d8df6d8dea8a00a00aad69e303164581e7b98a",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "6e832a0a5ef4b2c70b2baacabc858e3cf11461f62db6fb6839d5a1a007d75787",
+  "solutionFigureHashes": {},
+  "candidateHash": "5e2fa307e2360e447bbc376c2c4cf9dd876e41c9916c79cffec7c19a8ae1e9f9",
+  "candidate": {
+    "questionId": "2006_AMC_12A_Q24",
+    "derivedAnswer": "D: 1,008,016",
+    "answerStatus": "matches",
+    "answerReason": "Only even powers of \\(y+z\\) survive. For total \\(y,z\\)-degree \\(2k\\), there are \\(2k+1\\) distinct terms, giving \\(1+3+\\cdots+2007=1004^2=1,008,016\\).",
+    "methods": [
+      {
+        "id": "cancel-odd-grouped-powers",
+        "label": "Group y and z before expanding",
+        "explanation": "Treating \\(y+z\\) as one quantity makes the cancellation easier to see. By the binomial theorem, the term involving \\((y+z)^j\\) in \\((x+y+z)^{2006}\\) is\n\\[\n\\binom{2006}{j}x^{2006-j}(y+z)^j.\n\\]\nIn \\((x-y-z)^{2006}=(x-(y+z))^{2006}\\), the corresponding term has the additional factor \\((-1)^j\\). Thus odd \\(j\\) terms cancel, while even \\(j\\) terms double.\n\nWrite the surviving degrees as \\(j=2k\\), where \\(0\\le k\\le1003\\). Expanding \\((y+z)^{2k}\\) gives exactly the \\(2k+1\\) monomials\n\\[\ny^i z^{2k-i},\\qquad 0\\le i\\le2k,\n\\]\nall with positive coefficients. These remain distinct after multiplication by \\(x^{2006-2k}\\). Terms from different values of \\(k\\) have different powers of \\(x\\), so they cannot combine with one another. Consequently every counted monomial survives and is counted once.\n\nThere are \\(1004\\) possible values of \\(k\\), and the total number of terms is\n\\[\n\\begin{aligned}\n1+3+\\cdots+2007\n&=\\frac{1004(1+2007)}2\\\\\n&=1004^2\\\\\n&=\\boxed{1{,}008{,}016}.\n\\end{aligned}\n\\]\nThe answer is choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_h240",
+          "cnm_034"
+        ],
+        "prerequisiteIds": [
+          "cnm_033",
+          "cnm_h236",
+          "cnm_h204"
+        ],
+        "levelReason": "The solution uses the binomial theorem, coefficient cancellation, and an arithmetic sum."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h240",
+      "cnm_034"
+    ],
+    "supportIds": [
+      "cnm_033",
+      "cnm_h204"
+    ],
+    "annotationRationale": "The targets are determining the terms in an expansion and which coefficients survive combining like terms. The method applies the binomial theorem first to the grouped expression and then to powers of y+z. Like-term recognition and an arithmetic-series sum support the count. Binomial coefficients are interpreted as selection counts; their factorial formula is unnecessary.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2006_AMC_12A_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "Odd total degrees in y and z cancel, while even degrees 2k have positive doubled coefficients. Each contributes 2k+1 distinct monomials, and different k have different x exponents. The count is 1+3+...+2007 = 1004^2 = 1,008,016.",
+    "levelCheck": "Both the cancellation and the absence of duplicate surviving terms are explained. The binomial theorem and arithmetic sum are appropriate for AMC 12.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Binomial expansion and combining like terms are justified assessed targets. Like-term recognition, combination meaning, and arithmetic-series summation fit the supporting annotations.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "cancel-odd-grouped-powers": "cancel-odd-grouped-powers"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "50ed06d7d1fe7becae08034e499da081ce683bf90f427a40ca8c249745cb01d7",
+    "inputHash": "168ed7f1ac133539b298e0b81cd9dc49ee1f41b2d7d42eac875786e395a24636",
+    "authorInputHash": "50872dbc7e0a07a4287f3b14acc00386462b1ece6f9b2678322c89c7c8694701",
+    "reviewInputHash": "482f69ba376ad03c4562e25ca29a350ff153e8aafce80696e2fb75e3d1634f6c",
+    "authorResponseHash": "a48dfc255c70ba9282e7268bffc310a06d224f6063584f2a7ccfb772057ca802",
+    "reviewerResponseHash": "36a5d0ac5cf6f05b66231cf20b09f87be18f160bc902aaf0528e244643e59ef9",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

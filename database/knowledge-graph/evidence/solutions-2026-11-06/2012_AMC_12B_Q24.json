@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2012_AMC_12B_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "f506ab12839e83a496e87d8f94fd36e21036ef50d507f00685a201881e38bfb3",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "02bf1057938d30376f2a933216304dc84d231f73ef496067210822038e30e56b",
+  "solutionFigureHashes": {},
+  "candidateHash": "8fb698bf04096710e1ff5cc7c53c431c39914ec5098d5216eabf0e62e54bbf8b",
+  "candidate": {
+    "questionId": "2012_AMC_12B_Q24",
+    "derivedAnswer": "D (18)",
+    "answerStatus": "matches",
+    "answerReason": "There are 12 multiples of 32 and 4 multiples of 81 below 401, with no overlap. The only additional starting values yielding unbounded sequences are 343 and 400, for a total of 18.",
+    "methods": [
+      {
+        "id": "two-step-exponents-and-repeated-prime-cases",
+        "label": "Track prime exponents two steps at a time",
+        "explanation": "Write \\(F=f_1\\). Including the starting value \\(N\\) in the sequence does not affect boundedness, since adding one initial term cannot make a bounded sequence unbounded. The useful quantities to track are the prime exponents, because the definition transforms prime powers directly.\n\nFirst consider \\(n=2^a3^b\\), where \\(a,b\\) are nonnegative integers. For a real number \\(t\\), write \\(t_+=\\max(t,0)\\). An absent prime contributes nothing, and a prime with exponent \\(1\\) disappears. Therefore\n\\[\nF(2^a3^b)=2^{2(b-1)_+}3^{(a-1)_+}.\n\\]\nApplying this again gives\n\\[\nF(F(2^a3^b))\n=2^{(2a-4)_+}3^{(2b-3)_+}.\n\\]\nThus every two applications transform the exponents independently by\n\\[\na\\longmapsto\\max(2a-4,0),\n\\qquad b\\longmapsto\\max(2b-3,0).\n\\]\n\nIf \\(a\\ge5\\), the positive excess \\(a-4\\) doubles every two steps. In particular, the exponent increases by at least \\(1\\) each time and becomes arbitrarily large. Likewise, if \\(b\\ge4\\), the positive excess \\(b-3\\) doubles. Either condition makes the original integer sequence unbounded.\n\nIf instead \\(a\\le4\\) and \\(b\\le3\\), the formula for one application of \\(F\\) shows that the next exponents also satisfy these bounds. Every later integer is therefore at most \\(2^4 3^3=432\\). We have proved the exact criterion\n\\[\n2^a3^b\\text{ has an unbounded sequence}\n\\quad\\Longleftrightarrow\\quad\n a\\ge5\\text{ or }b\\ge4.\n\\]\n\nNow return to \\(N\\le400\\). If every prime factor at least \\(5\\) occurs only once, those factors all disappear in the first application. Such an \\(N\\) therefore has an unbounded sequence exactly when it is divisible by \\(32\\) or \\(81\\). There are \\(12\\) multiples of \\(32\\) and \\(4\\) multiples of \\(81\\) in the range. There is no overlap because \\(32\\cdot81>400\\). None of these multiples can contain a repeated prime at least \\(5\\), since even \\(32\\cdot25>400\\).\n\nIt remains to check repeated primes at least \\(5\\). Such a prime must be one of \\(5,7,11,13,17,19\\), because its square is at most \\(400\\). Two different primes from this list cannot both be repeated, since \\(5^2 7^2>400\\). The following cases therefore exhaust the remaining possibilities without overlap.\n\nFor an exact factor \\(5^2\\), write \\(N=25\\cdot2^a3^b s\\), where every prime factor of \\(s\\) occurs once and is different from \\(2,3,5\\). Since \\(2^a3^b s\\le16\\), we have \\(a\\le4\\), \\(b\\le2\\), and\n\\[\nF(N)=2^{1+2(b-1)_+}3^{1+(a-1)_+}.\n\\]\nThe exponent of \\(2\\) is at most \\(3\\). The exponent of \\(3\\) reaches the growth threshold \\(4\\) only when \\(a=4\\). The size bound then forces \\(N=25\\cdot16=400\\), which does work: \\(F(400)=2\\cdot3^4\\). If the exact factor is \\(5^3\\), the remaining multiplier is \\(1,2,\\) or \\(3\\), so \\(F(N)=36\\), which is in the bounded range. Higher powers of \\(5\\) exceed \\(400\\).\n\nFor an exact factor \\(7^2\\), the remaining multiplier is at most \\(8\\), so its exponents satisfy \\(a\\le3\\), \\(b\\le1\\). Consequently\n\\[\nF(N)=2^3 3^{(a-1)_+},\n\\]\nwhich is in the bounded range. An exact factor \\(7^3\\) is possible only for \\(N=343\\). Here \\(F(343)=8^2=2^6\\), so the sequence is unbounded.\n\nFor each of \\(p=11,13,17,19\\), the only possible repeated exponent is \\(2\\), and the remaining multiplier is at most \\(3\\). That multiplier has no repeated prime factor, so \\(F(N)=p+1\\). These four starting outputs are bounded, as the complete chains show:\n\\[\n12\\to3\\to1,\\qquad 14\\to1,\n\\]\n\\[\n18\\to4\\to3\\to1,\\qquad 20\\to3\\to1.\n\\]\nAfter reaching \\(1\\), the sequence stays there.\n\nThe only extra values are therefore \\(400\\) and \\(343\\). The total is\n\\[\n12+4+2=\\boxed{18},\n\\]\nchoice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:prime-factorization",
+          "math:function-composition-iteration",
+          "cnm_h200",
+          "cnm_h020"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_p157"
+        ],
+        "levelReason": "Uses prime factorization, elementary two-step recurrences, integer growth, and exhaustive size bounds. The proof of unboundedness does not require limits or calculus."
+      }
+    ],
+    "assessedIds": [
+      "math:prime-factorization",
+      "math:function-composition-iteration"
+    ],
+    "supportIds": [
+      "cnm_p153",
+      "cnm_p157"
+    ],
+    "annotationRationale": "Prime-exponent structure and iteration of the supplied function are task-level targets. The method derives a two-step exponent recurrence and uses integer bounds to classify every possible repeated prime. The catalog covers recurrence calculations and composition, but lacks the central boundedness-versus-unboundedness target, which is proposed separately.",
+    "needsNewNodes": [
+      {
+        "name": "Boundedness and unboundedness of recursive integer sequences",
+        "description": "Determine whether iterates of a rule on positive integers stay below one fixed bound or exceed every integer bound. Justify a bounded set preserved by the rule or an unbounded subsequence, and account for finite initial segments and cycles.",
+        "reason": "The supplied recurrence and function-iteration nodes cover forming iterates and verifying periods, but do not directly cover proving boundedness or arbitrarily large growth, which is essential here."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2012_AMC_12B_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "Two iterations correctly send the exponents to max(2a-4,0) and max(2b-3,0). This proves growth exactly when a≥5 or b≥4, with a preserved bounded region otherwise. The repeated-prime cases are exhaustive and add only 343 and 400. The disjoint count is 12+4+2=18.",
+    "levelCheck": "Appropriate elementary number theory and recurrence reasoning. Both boundedness and arbitrarily large growth are justified without calculus.",
+    "methodDistinctness": "One complete classification method is sufficient.",
+    "annotationCheck": "Prime factorization, function iteration, recurrence calculations, and integer bounds fit the solution. The proposed boundedness node honestly addresses content beyond merely computing iterates.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "two-step-exponents-and-repeated-prime-cases": "two-step-exponents-and-repeated-prime-cases"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "b040aff9b50a1acb77b57749f50f9a3fe5f46ffae20f5dd6eb2f9f9729c9c69b",
+    "inputHash": "de040839f9b4f487f4876f30810cfe6e97ec085ceca47500c8379e9efa26a95a",
+    "authorInputHash": "accd9834480f248fc2750eb24a5206b789f18cbb6526201a57ab6f2bf704782f",
+    "reviewInputHash": "d69ba8c8aeb90a443de7b93fdeac605e3d45dc1d622023b85508b257a92b6a1f",
+    "authorResponseHash": "7cf43bb9028259cddd15bceef82b6151446c2ab559755d8629210101df6c0a15",
+    "reviewerResponseHash": "15371afe91fbe183e38b8134321e63acff64a76ef03f9291c3373cbbffb22e12",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

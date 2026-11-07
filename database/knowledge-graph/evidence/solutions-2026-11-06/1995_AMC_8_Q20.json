@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1995_AMC_8_Q20",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "1950eb4f990260c250bba9cb95b36fca5309742f0414251bb4807a8415875999",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "a37d23d06475f3bb47e36f15df5048d62beaa0f9c554ba90a64dc3f601dce6a4",
+  "solutionFigureHashes": {},
+  "candidateHash": "898ca5aae5ff401f2cd81d1f379d42e8eab613b037dc5a516b5a0348a08aa3f1",
+  "candidate": {
+    "questionId": "1995_AMC_8_Q20",
+    "derivedAnswer": "B: 5/12",
+    "answerStatus": "matches",
+    "answerReason": "Of the 36 equally likely ordered roll pairs, 15 have Diana's number larger than Apollo's. Thus the probability is 15/36 = 5/12, matching B.",
+    "methods": [
+      {
+        "id": "count-by-diana-roll",
+        "label": "Count by Diana's roll",
+        "explanation": "Keep track of which person rolled each number. There are \\(6\\) possibilities for Diana and \\(6\\) for Apollo, giving \\(6\\cdot6=36\\) equally likely ordered pairs.\n\nIf Diana rolls \\(1\\), there are no smaller Apollo rolls. If she rolls \\(2\\), Apollo can roll only \\(1\\). Continuing this way, Diana's rolls \\(1,2,3,4,5,6\\) give respectively \\(0,1,2,3,4,5\\) favorable possibilities. These cases cover every Diana roll without overlap, so there are\n\\[\n0+1+2+3+4+5=15\n\\]\nfavorable pairs. The probability is therefore\n\\[\n\\frac{15}{36}=\\boxed{\\frac{5}{12}},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_285",
+          "cnm_286"
+        ],
+        "prerequisiteIds": [
+          "cnm_p095",
+          "cnm_p168"
+        ],
+        "levelReason": "The solution uses elementary pairing, exhaustive counting by six simple cases, and fraction reduction."
+      },
+      {
+        "id": "pair-nontied-outcomes",
+        "label": "Pair the non-tied outcomes",
+        "explanation": "There are \\(6\\cdot6=36\\) equally likely ordered roll pairs. Exactly six are ties: both people roll \\(1\\), both roll \\(2\\), and so on through \\(6\\). This leaves \\(36-6=30\\) non-tied outcomes.\n\nFor every outcome in which Diana's number is larger, swapping the two numbers gives an outcome in which Apollo's number is larger. Swapping again returns the original outcome, so this pairing misses no outcomes and repeats none. The two kinds of wins therefore occur equally often, giving Diana \\(30\\div2=15\\) winning outcomes.\n\nHer probability of rolling the larger number is\n\\[\n\\frac{15}{36}=\\boxed{\\frac{5}{12}},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_285",
+          "math:bijective-counting"
+        ],
+        "prerequisiteIds": [
+          "cnm_p095",
+          "cnm_p168"
+        ],
+        "levelReason": "The symmetry argument is a concrete exchange of two die results, requiring only elementary counting and division."
+      }
+    ],
+    "assessedIds": [
+      "cnm_285"
+    ],
+    "supportIds": [
+      "cnm_p095",
+      "cnm_p168"
+    ],
+    "annotationRationale": "The route-neutral target is probability from equally likely outcomes, cnm_285. The first method uses enumeration, cnm_286. The second constructs a reversible correspondence between the two kinds of wins, fitting math:bijective-counting. Both use ordered pair counts and fraction reduction. No table or tree diagram is used, so cnm_287 is not assigned.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1995_AMC_8_Q20",
+    "decision": "accept",
+    "mathematicalCheck": "There are 36 equally likely ordered pairs. Direct counting gives 0+1+2+3+4+5=15 wins. Independently, removing six ties and pairing opposite wins gives 30/2=15. Both yield 5/12 and justify completeness.",
+    "levelCheck": "Both methods use accessible AMC 8 counting. The concrete swapping argument requires no advanced machinery.",
+    "methodDistinctness": "Counting by Diana's roll and pairing non-tied outcomes provide distinct useful ideas.",
+    "annotationCheck": "The route-neutral probability target, method-local enumeration and bijection nodes, and shared pairing and fraction-reduction support are justified. Omitting the table/tree node is appropriate.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-by-diana-roll": "count-by-diana-roll",
+    "pair-nontied-outcomes": "pair-nontied-outcomes"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "ad836c3585b5346f996d05735a101a37dea37dcc63a61fdfc87c0bcc32dce6f5",
+    "inputHash": "e10a4c5de10f82ed62dfde601558389b5e58dbd44a464c7ca07931e0b25c13df",
+    "authorInputHash": "94f8cdaf77378022821282adfac5abfec6eab0a6d889234f6b090ef2c198d79f",
+    "reviewInputHash": "c008348dd7ec589be8fa10411d89829596581308f1b64b4cd68aa7c81934af28",
+    "authorResponseHash": "6594104065de478a75cdf404e5647217f19c79ff548611fe556299457505a4bf",
+    "reviewerResponseHash": "290c53299bbf61d8c27c932bd27221d174c18beff86ee3674c3d2b1a8e1dc754",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

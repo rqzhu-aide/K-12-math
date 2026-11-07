@@ -1,0 +1,94 @@
+{
+  "Year": 1997,
+  "Level": "AMC 12",
+  "Batch": "NA",
+  "Area": "Unclassified",
+  "Number": 30,
+  "Question": "For positive integers \\(n,\\) denote by \\(D(n)\\) the number of pairs of different adjacent digits in the binary (base two) representation of \\(n.\\) For example, \\(D(3)=D(11_2)=0,\\) \\(D(21)=D(10101_2)=4,\\) and \\(D(97)=D(1100001_2)=2.\\) For how many positive integers \\(n\\) less than or equal to \\(97\\) does \\(D(n)=2?\\)",
+  "Question Type": "text",
+  "Choices": {
+    "A": "\\(16\\)",
+    "B": "\\(20\\)",
+    "C": "\\(26\\)",
+    "D": "\\(30\\)",
+    "E": "\\(35\\)"
+  },
+  "Choices Type": "text",
+  "Correct Answer": "C",
+  "Solution": "A positive integer's binary representation begins with \\(1\\). Once we choose the gaps where its digits change, every remaining digit is determined: keep the same digit at other gaps and switch between \\(0\\) and \\(1\\) at the chosen gaps. Thus a binary representation with exactly two changes consists of a block of ones, a block of zeros, and a final block of ones, all nonempty.\n\nFor a representation with \\(k\\) digits, there are \\(k-1\\) gaps between adjacent digits. Choosing two of these gaps gives exactly one qualifying representation, and its two change positions recover that choice. Therefore there are \\(\\binom{k-1}{2}\\) such numbers.\n\nOne- and two-digit representations cannot have two changes. Every representation with three through six digits represents a number below \\(64\\), so all are within the required range. They contribute\n\\[\n\\binom22+\\binom32+\\binom42+\\binom52\n=1+3+6+10=20.\n\\]\nSince \\(97=1100001_2\\) lies between \\(64\\) and \\(127\\), the remaining possibilities have seven digits.\n\nIf a seven-digit representation begins with \\(10\\), its first gap is already a change. Choose exactly one of the remaining five gaps for the second change. This gives five numbers, all below \\(1100000_2=96\\), so all qualify for the bound.\n\nIf it begins with \\(11\\), its first two digits already contribute \\(96\\). To stay at most \\(97\\), the only possibilities are \\(1100000_2\\) and \\(1100001_2\\). The first has one change; the second has two.\n\nThese cases exhaust the possible lengths and prefixes and do not overlap. The total is\n\\[\n20+5+1=\\boxed{26},\n\\]\nchoice \\(\\mathrm{C}\\).",
+  "Meta": {
+    "QuestionSource": "live-poshenloh",
+    "AnswerSource": "live-poshenloh-answer-key",
+    "SolutionSource": "Original Math Practice solution",
+    "AreaSource": "Pending topic curation",
+    "Concepts": "binary representation; combinations",
+    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/1997/solutions",
+    "SourceSHA256": "e1bdaed886ff824d80e3eb8e4e87dd3b6a239c8d7218a36b95d0c933a4dc3960",
+    "Figures": [],
+    "FigureSources": {},
+    "SourceQuestionCount": 30,
+    "HistoricalSeries": "AHSME",
+    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+    "Copyright": "Copyright Mathematical Association of America",
+    "License": "CC-BY-NC-SA-4.0",
+    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "TranscriptionSource": "LIVE by Po-Shen Loh",
+    "Modifications": [
+      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
+      "Third-party worked solution and solution-only figures omitted from the public distribution"
+    ],
+    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+    "SolutionReview": {
+      "status": "reviewed",
+      "solutionSHA256": "5eddaa1835045b517947ffc3449aef00afb05b4aa90e4b3e2f0a9ae09b23bac4",
+      "questionContentHash": "5518f8f29c693404d7b332021b9d5fbc0fd1d27d75d5e8d79470581a272a8cf8",
+      "evidence": {
+        "path": "knowledge-graph/evidence/solutions-2026-11-06/1997_AMC_12_Q30.json",
+        "sha256": "00d04de2d0e52bddfae23b8df26b601f55ec539aa2897e4bc224638fdd5d741d"
+      },
+      "author": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "reviewer": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      }
+    }
+  },
+  "ID": "1997_AMC_12_Q30",
+  "Bank": "amc",
+  "SchemaVersion": "2.0",
+  "ResponseType": "choice",
+  "Language": "en",
+  "domain": [],
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "1.0.0",
+    "contentHash": "5518f8f29c693404d7b332021b9d5fbc0fd1d27d75d5e8d79470581a272a8cf8",
+    "status": "mapped",
+    "reviewStatus": "machine_examined",
+    "assessedIds": [
+      "cnm_024"
+    ],
+    "supportIds": [
+      "cnm_h230",
+      "cnm_h237"
+    ],
+    "routes": [
+      {
+        "id": "1997_AMC_12_Q30_m1",
+        "label": "Choose the two places where digits change",
+        "nodeIds": [
+          "cnm_024",
+          "cnm_h239",
+          "math:bijective-counting",
+          "cnm_h237",
+          "cnm_h230"
+        ]
+      }
+    ],
+    "flags": []
+  }
+}

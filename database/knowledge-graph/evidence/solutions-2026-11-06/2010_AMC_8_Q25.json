@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2010_AMC_8_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ff66a50bfab5a51607da92a76bce6b825c9868911dfe167bc861f1241d1188d6",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "03f3cd5f173bffff4b75cc4629411a8c150e05a9ba38f9bf2fda3d62cbd4dfef",
+  "solutionFigureHashes": {},
+  "candidateHash": "e4f0e138605254b223ea8102c0be4f8847fa5c85ae53982b89e34e7432d1b25d",
+  "candidate": {
+    "questionId": "2010_AMC_8_Q25",
+    "derivedAnswer": "24 ways, choice E.",
+    "answerStatus": "matches",
+    "answerReason": "Counting by the last move gives counts 1, 2, 4, 7, 13, 24 for flights of one through six stairs. Direct classification by move sizes also gives 24.",
+    "methods": [
+      {
+        "id": "last-move-recurrence",
+        "label": "Build the count from shorter flights",
+        "explanation": "Every climb ends with a move of \\(1\\), \\(2\\), or \\(3\\) stairs. This lets us count a longer climb using shorter ones.\n\nLet \\(F(n)\\) be the number of ways to climb exactly \\(n\\) stairs using the allowed moves. Set \\(F(0)=1\\), representing the single way to take no moves. Also, \\(F(1)=1\\) and \\(F(2)=2\\), since two stairs can be climbed as \\((1,1)\\) or \\((2)\\).\n\nFor \\(n\\ge3\\), removing the last move leaves a climb of \\(n-1\\), \\(n-2\\), or \\(n-3\\) stairs. Conversely, appending the corresponding last move produces one valid climb. These three cases include every climb and cannot overlap because their last moves differ. Hence\n\\[\nF(n)=F(n-1)+F(n-2)+F(n-3).\n\\]\nNow calculate\n\\[\n\\begin{aligned}\nF(3)&=2+1+1=4,\\\\\nF(4)&=4+2+1=7,\\\\\nF(5)&=7+4+2=13,\\\\\nF(6)&=13+7+4=24.\n\\end{aligned}\n\\]\nJo can climb the stairs in \\(\\boxed{24}\\) ways, choice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_h230",
+          "math:recursive-counting-probability"
+        ],
+        "prerequisiteIds": [
+          "cnm_h200"
+        ],
+        "levelReason": "Derives a finite counting recurrence from three possible last moves and evaluates it using small additions."
+      },
+      {
+        "id": "move-size-cases",
+        "label": "Count by the number of three-stair moves",
+        "explanation": "An ordered list of moves determines one climb. Classify the lists by how many \\(3\\)-stair moves they contain; there can be zero, one, or two.\n\nWith no \\(3\\)-stair moves, there can be \\(0\\), \\(1\\), \\(2\\), or \\(3\\) moves of size \\(2\\). Six \\(1\\)'s give one list. One \\(2\\) and four \\(1\\)'s give five lists, according to the position of the \\(2\\). Two \\(2\\)'s and two \\(1\\)'s give six lists: choose the two positions for the \\(2\\)'s in \\(4\\cdot3/2=6\\) ways, dividing by \\(2\\) because each pair of positions was chosen in both orders. Three \\(2\\)'s give one list. This case contributes\n\\[\n1+5+6+1=13.\n\\]\nWith one \\(3\\)-stair move, the other moves must total \\(3\\). They are either three \\(1\\)'s, giving four positions for the \\(3\\), or one \\(2\\) and one \\(1\\), giving \\(3\\cdot2=6\\) orders. This contributes \\(4+6=10\\).\n\nWith two \\(3\\)-stair moves, the only list is \\((3,3)\\), contributing one way.\n\nThe cases are exhaustive, and their different move counts prevent double counting. The total is\n\\[\n13+10+1=\\boxed{24},\n\\]\nchoice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_h230",
+          "cnm_h231"
+        ],
+        "prerequisiteIds": [
+          "cnm_h236"
+        ],
+        "levelReason": "Uses a short exhaustive case split and small position counts. The unordered-pair count is derived without factorial formulas."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h230"
+    ],
+    "supportIds": [],
+    "annotationRationale": "Both methods count ordered climbs by adding mutually exclusive, exhaustive cases. The first builds a counting recurrence with explicit initial conditions, with recurrence evaluation as local support. The second uses multiplication and a small unordered position selection; those prerequisites remain local to that alternative.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2010_AMC_8_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "Removing and appending the last move partitions climbs without omission or duplication, giving counts 1, 2, 4, 7, 13, 24. The second method independently exhausts zero, one, and two three-stair moves, contributing 13, 10, and 1. Its position counts correctly handle identical moves.",
+    "levelCheck": "The finite recurrence is derived explicitly, and the alternative uses small position counts with the division by two explained. Both are appropriate elementary counting.",
+    "methodDistinctness": "Counting by the last move and counting by move multiplicities are genuinely distinct approaches.",
+    "annotationCheck": "The addition principle is shared assessed content. Recursion and its evaluation remain local to the first method; multiplication and unordered position selection remain local to the second. No factorial-based multiset procedure is falsely claimed.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "last-move-recurrence": "last-move-recurrence",
+    "move-size-cases": "move-size-cases"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "0a39740d3ae41591fc16a2e7440e401839963f934d0ff02fd9564be4133545dd",
+    "inputHash": "5b79a0b48aaa7297704c5accfbd551c6f69794fca8d8b37839de8d83bba01567",
+    "authorInputHash": "78c36366c1565102db4daa8245590375b7ebde06113d460f2ccbc33013ff6248",
+    "reviewInputHash": "42b893b6e692dcf18c75417580bde74aff163268c0ad597b4d458ef4e4b75ccf",
+    "authorResponseHash": "59c2695887ce75f21fa92a7f19b5e3880a734e6ccb939c1e2ec22f7941e538f3",
+    "reviewerResponseHash": "241797e5e4d04a69d8f7707cfd4b00845250b0fdb5a4efee86364ffeaf9ac325",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

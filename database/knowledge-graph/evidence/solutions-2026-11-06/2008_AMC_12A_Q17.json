@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2008_AMC_12A_Q17",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "46b49ec01841a5a27cd208c0ea1c5977ecec4dd7b687dd5a5fb4ef7d3365b5ca",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "7538f29b3b667b9c83e3061ab48d8eafaefb5fe44b40d9dd2fbfcbf60b6b76d7",
+  "solutionFigureHashes": {},
+  "candidateHash": "8495a7927e3fb62e9b199a3f25b2baeeb03f76b219f043f7b4f540e34898e851",
+  "candidate": {
+    "questionId": "2008_AMC_12A_Q17",
+    "derivedAnswer": "\\(502\\), choice D",
+    "answerStatus": "matches",
+    "answerReason": "Exactly the starting values of the form 4q+3 succeed. The allowed values correspond to q=0 through 501, giving 502 starting values.",
+    "methods": [
+      {
+        "id": "parity-and-remainders",
+        "label": "Follow the parity of the next three terms",
+        "explanation": "Let \\(m=a_1\\). If \\(m\\) is even, then \\(a_2=m/2<m\\), so every even starting value fails.\n\nFor odd \\(m\\), the next two terms are\n\\[\na_2=3m+1,\\qquad a_3=\\frac{3m+1}{2}.\n\\]\nBoth exceed \\(m\\), since \\(m>0\\). Thus only the comparison with \\(a_4\\) remains. Every positive odd integer has exactly one of the following forms, with a unique integer \\(q\\ge0\\).\n\nIf \\(m=4q+1\\), then \\(a_3=6q+2\\) is even, so\n\\[\na_4=3q+1\\le4q+1=m.\n\\]\nThis case fails, including \\(q=0\\), when equality occurs.\n\nIf \\(m=4q+3\\), then \\(a_3=6q+5\\) is odd, so\n\\[\na_4=3(6q+5)+1=18q+16>4q+3=m.\n\\]\nEvery starting value in this case succeeds.\n\nThe successful values are therefore exactly \\(4q+3\\le2008\\). This holds for \\(q=0,1,\\ldots,501\\), giving \\(\\boxed{502}\\) distinct starting values, choice D. The even case and the two odd cases exhaust all positive integers.",
+        "nodeIds": [
+          "cnm_h200",
+          "math:modular-congruence",
+          "cnm_h020"
+        ],
+        "prerequisiteIds": [
+          "cnm_h197",
+          "cnm_p156",
+          "cnm_p153"
+        ],
+        "levelReason": "Uses three applications of the recurrence, elementary parity and remainder cases, and counting consecutive integer parameters."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h200",
+      "math:modular-congruence"
+    ],
+    "supportIds": [
+      "cnm_p156"
+    ],
+    "annotationRationale": "The task requires tracing a parity-dependent recurrence and identifying which remainder classes satisfy all three strict comparisons. The method establishes necessity and sufficiency for each case, then counts the admissible integer parameter values directly.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2008_AMC_12A_Q17",
+    "decision": "accept",
+    "mathematicalCheck": "Even starts fail immediately. For odd starts, a2 and a3 exceed the start. Starts 4q+1 give a4=3q+1≤4q+1, while starts 4q+3 give a4=18q+16>4q+3. Exactly q=0 through 501 satisfy the bound, yielding 502 distinct starts.",
+    "levelCheck": "The parity cases are elementary, exhaustive, and explain the strict comparison at the boundary.",
+    "methodDistinctness": "One complete recurrence-and-remainder analysis is sufficient.",
+    "annotationCheck": "The recurrence and remainder assessments fit. Parity support and the method-local integer-inequality counting node accurately describe the solution.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "parity-and-remainders": "parity-and-remainders"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "f94730b13556553b111731b256dcb241b0ce9245afcf12190bffd12ba43fa557",
+    "inputHash": "8caf6905c3cb3fa1c6f33bad1e05fd4fe2b7be0489f72a3788b060c8d9879144",
+    "authorInputHash": "9024c2ac5d910d5af8b2777e2049ccafddc78187b01358d9c556cc6021769039",
+    "reviewInputHash": "7dae28b111bff28f386b9141bd6cfa1da6c8afb95c57596d32d7e9a23629b8a1",
+    "authorResponseHash": "0db7c2d951fc86b48374daab9d2a870f8cbb545768bea9fe31517e8a267b6a78",
+    "reviewerResponseHash": "bbb4de3248b440f3732f7dc7ccb063527f8f980b789694e4d4ef8efcf7b6e312",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

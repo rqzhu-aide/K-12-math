@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2014_AMC_12B_Q12",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ca3a236016c926cd16d0112e565ca3cce0da4f2dc1de8193d50f5f73cd4d7515",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "80ae4ae88d385964f4e1d85358912beedb7640a0d20c747a0d17b9ba82f56cbc",
+  "solutionFigureHashes": {},
+  "candidateHash": "ee76f4fea4cb968b099dcf9d824486624cf0d0f45e30141a978d296b56861193",
+  "candidate": {
+    "questionId": "2014_AMC_12B_Q12",
+    "derivedAnswer": "B, 9",
+    "answerStatus": "matches",
+    "answerReason": "There are 13 congruence classes of eligible triangles. Their side ratios form nine similarity classes, and one representative from each class can be selected.",
+    "methods": [
+      {
+        "id": "enumerate-side-ratios",
+        "label": "List triangles and compare side ratios",
+        "explanation": "A triangle is determined up to congruence by its three side lengths. Write them in sorted order \\(x\\le y\\le z\\) so that rearranging the same lengths does not create another entry. Each length is one of \\(1,2,3,4\\), and the triangle inequality reduces to \\(x+y>z\\).\n\nFor fixed \\(z\\) and \\(y\\), the possible integers \\(x\\) satisfy \\(z-y+1\\le x\\le y\\). This gives the complete list:\n\n- \\(z=1\\): \\((1,1,1)\\).\n- \\(z=2\\): \\((1,2,2)\\), \\((2,2,2)\\).\n- \\(z=3\\): \\((1,3,3)\\), \\((2,2,3)\\), \\((2,3,3)\\), \\((3,3,3)\\).\n- \\(z=4\\): \\((1,4,4)\\), \\((2,3,4)\\), \\((2,4,4)\\), \\((3,3,4)\\), \\((3,4,4)\\), \\((4,4,4)\\).\n\nThere are \\(1+2+4+6=13\\) entries. Every eligible triangle appears because all possible largest sides and corresponding smaller sides were included. Sorted order and side-side-side congruence ensure that no congruence class appears twice.\n\nWe must now identify similar triangles. Dividing all three lengths by their greatest common factor records the side ratio without its scale; two integer triples have proportional sides exactly when these reduced triples agree. The four equilateral triples all reduce to \\((1,1,1)\\), so they contribute one similarity class instead of four. Also, \\((2,4,4)\\) reduces to \\((1,2,2)\\). Every other listed triple is already in its smallest whole-number ratio, and those ratios are different. Thus there are\n\\[\n13-3-1=9\n\\]\nsimilarity classes.\n\nAt most one triangle from each class can belong to \\(S\\). Selecting one representative from each of the nine classes satisfies all the conditions, so the largest possible size is \\(\\boxed{9}\\), choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "cnm_111",
+          "cnm_271",
+          "cnm_h003",
+          "math:extremal-principle"
+        ],
+        "prerequisiteIds": [
+          "cnm_122",
+          "cnm_p186"
+        ],
+        "levelReason": "Uses a short exhaustive enumeration, the triangle inequality, SSS congruence, and proportional-side similarity."
+      }
+    ],
+    "assessedIds": [
+      "cnm_111",
+      "cnm_271",
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_122",
+      "cnm_p186"
+    ],
+    "annotationRationale": "Triangle feasibility and similarity determine the eligible classes. The maximum is proved by allowing at most one representative per similarity class and then selecting one from every class. Finite listing is used in this method, with SSS and ratio reduction supplying the supporting identification rules.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2014_AMC_12B_Q12",
+    "decision": "accept",
+    "mathematicalCheck": "The sorted triangle triples are exhaustively counted by largest side as 1, 2, 4, and 6. Among the 13 triples, the four equilateral triples form one similarity class, and (1,2,2) and (2,4,4) form another repeated class. The remaining reduced ratios are distinct, leaving nine classes. Selecting one representative from each attains nine.",
+    "levelCheck": "Triangle inequalities, finite listing, and proportional-side similarity provide accessible and complete reasoning.",
+    "methodDistinctness": "One enumeration and classification method is sufficient.",
+    "annotationCheck": "The assessed geometry and extremal nodes fit. SSS and ratio simplification support identification, while the method-local roster node accurately reflects the exhaustive listing.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "enumerate-side-ratios": "enumerate-side-ratios"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "21c4f4dcdb54cce5b2f12c6750da648cc04e72a34251fd67d6f53661e3be3c62",
+    "inputHash": "ac4a6532cbb707eb1d497266242f912d2787ffe2b6b287cb53fedc25a1f95d8e",
+    "authorInputHash": "89924649c4b65805520c8960becf47836853c2bc97e01e3b7feb11e351be7217",
+    "reviewInputHash": "21307f936a223dcf8790a81c3e7a460fc3b8801b155145ff78a926bb248e82be",
+    "authorResponseHash": "ac8e6cccdde4071e3f3d5bc7f0d19190ade9a1c6c63bade9068a2ea3f4c55476",
+    "reviewerResponseHash": "a560336b79945c23d104519af86451c458a0eac2059d177e5ed83ed7076b14c3",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

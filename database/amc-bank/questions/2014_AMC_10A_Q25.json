@@ -1,0 +1,122 @@
+{
+  "Year": 2014,
+  "Level": "AMC 10",
+  "Batch": "A",
+  "Area": "Unclassified",
+  "Number": 25,
+  "Question": "The number \\(5^{867}\\) is between \\(2^{2013}\\) and \\(2^{2014}.\\) How many pairs of integers \\((m,n)\\) are there such that \\(1\\leq m\\leq 2012\\) and \\[5^n < 2^m < 2^{m+2} < 5^{n+1}?\\]",
+  "Question Type": "text",
+  "Choices": {
+    "A": "\\(278\\)",
+    "B": "\\(279\\)",
+    "C": "\\(280\\)",
+    "D": "\\(281\\)",
+    "E": "\\(282\\)"
+  },
+  "Choices Type": "text",
+  "Correct Answer": "B",
+  "Solution": "Method 1: Method 1: Count powers in each interval\n\nThe required inequalities say that three consecutive powers \\(2^m,2^{m+1},2^{m+2}\\) must fit between consecutive powers of \\(5\\). We can count the intervals that contain three powers of \\(2\\).\n\nEvery valid pair has \\(0\\leq n\\leq866\\). If \\(n<0\\), then \\(5^{n+1}\\leq1\\), which cannot exceed \\(2^{m+2}\\). If \\(n\\geq867\\), then \\(5^n\\geq5^{867}>2^{2013}>2^m\\), contradicting the first inequality.\n\nConsider the \\(867\\) open intervals\n\\[\n(5^n,5^{n+1}),\\qquad n=0,1,\\ldots,866.\n\\]\nThe given bounds on \\(5^{867}\\) show that these intervals contain exactly the \\(2013\\) powers \\(2^1,2^2,\\ldots,2^{2013}\\). None lies on an interval endpoint, because a positive power of \\(2\\) is even and a power of \\(5\\) is odd.\n\nEach interval contains either two or three powers of \\(2\\). To see the lower bound, let \\(p\\) be the smallest power of \\(2\\) greater than \\(5^n\\). Its preceding power satisfies \\(p/2\\leq5^n\\), so \\(p\\leq2\\cdot5^n\\). Thus both \\(p\\) and \\(2p\\) lie in the interval, since\n\\[\n2p\\leq4\\cdot5^n<5^{n+1}.\n\\]\nFour powers cannot fit: the fourth is at least eight times the first, whereas the interval's upper endpoint is only five times its lower endpoint.\n\nLet \\(t\\) be the number of intervals containing three powers. Counting all the powers by interval gives\n\\[\n2(867-t)+3t=2013,\n\\]\nso \\(t=2013-1734=279\\).\n\nEach three-power interval gives exactly one valid pair, using its smallest power as \\(2^m\\). Its largest power is at most \\(2^{2013}\\), so \\(1\\leq m\\leq2011\\), within the required range. Conversely, every valid pair needs three powers in one interval, so none is omitted or counted twice. The answer is \\(\\boxed{279}\\), choice B.\n\nMethod 2: Method 2: Count excluded starting exponents\n\nFor each starting exponent \\(m=1,\\ldots,2012\\), there is exactly one interval between consecutive powers of \\(5\\) containing \\(2^m\\), because\n\\[\n1<2^m<5^{867}.\n\\]\nThere is no endpoint equality: positive powers of \\(2\\) are even, while powers of \\(5\\) are odd. Thus each \\(m\\) determines exactly one possible \\(n\\).\n\nThis start fails precisely when some positive power of \\(5\\) lies between \\(2^m\\) and \\(2^{m+2}\\). We count these excluded starts. A single such interval cannot contain two powers of \\(5\\): its endpoint ratio is \\(4\\), whereas consecutive powers of \\(5\\) have ratio \\(5\\).\n\nFor \\(j=1,\\ldots,866\\), we have\n\\[\n4<5^j\\leq5^{866}\n<\\frac{2^{2014}}5<2^{2012}.\n\\]\nChoose the integer \\(r\\) such that \\(2^r<5^j<2^{r+1}\\). These bounds give \\(2\\leq r\\leq2011\\). This power of \\(5\\) lies inside exactly two intervals of the form \\((2^m,2^{m+2})\\): those with\n\\[\nm=r-1\\quad\\text{or}\\quad m=r.\n\\]\nBoth starts are in the allowed range. Earlier starts have upper endpoint at most \\(2^r\\), and later starts have lower endpoint at least \\(2^{r+1}\\), so there are no others.\n\nThe remaining boundary \\(5^{867}\\) lies between \\(2^{2013}\\) and \\(2^{2014}\\), so among the allowed starts it excludes only \\(m=2012\\). Higher powers of \\(5\\) cannot matter, since\n\\[\n5^{868}>5\\cdot2^{2013}>2^{2014},\n\\]\nthe largest possible upper endpoint.\n\nThe excluded starts do not overlap between powers of \\(5\\), by the ratio argument above. Their number is therefore \\(2\\cdot866+1=1733\\). Each remaining start gives exactly one valid pair, so the answer is\n\\[\n2012-1733=\\boxed{279},\n\\]\nchoice B.",
+  "Meta": {
+    "QuestionSource": "live-poshenloh",
+    "AnswerSource": "live-poshenloh-answer-key",
+    "SolutionSource": "Original Math Practice solution",
+    "AreaSource": "Pending topic curation",
+    "Concepts": "exponent; counting integers in a range; system of equations",
+    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2014A/solutions",
+    "SourceSHA256": "a81cda04759dee226bb7e09dcfc835cfb05e56d5161973019b0368a6751650de",
+    "Figures": [],
+    "FigureSources": {},
+    "SourceQuestionCount": 25,
+    "HistoricalSeries": "AMC 10",
+    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+    "Copyright": "Copyright Mathematical Association of America",
+    "License": "CC-BY-NC-SA-4.0",
+    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "TranscriptionSource": "LIVE by Po-Shen Loh",
+    "Modifications": [
+      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
+      "Third-party worked solution and solution-only figures omitted from the public distribution"
+    ],
+    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+    "SolutionReview": {
+      "status": "reviewed",
+      "solutionSHA256": "ea6404c5e1b9f188d7e267d1fe9ab02e22252c9d6884145cd4cde07ac788f158",
+      "questionContentHash": "10fe1656f3b415f526c6c0e425ec7c33f1767081a44433139485eccfffb36a47",
+      "evidence": {
+        "path": "knowledge-graph/evidence/solutions-2026-11-06/2014_AMC_10A_Q25.json",
+        "sha256": "e1613e544c57a30c0e08dcba1286d53ad7940860500369b886b002be02c20e17"
+      },
+      "author": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "reviewer": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      }
+    }
+  },
+  "ID": "2014_AMC_10A_Q25",
+  "Bank": "amc",
+  "SchemaVersion": "2.0",
+  "ResponseType": "choice",
+  "Language": "en",
+  "domain": [],
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "1.0.0",
+    "contentHash": "10fe1656f3b415f526c6c0e425ec7c33f1767081a44433139485eccfffb36a47",
+    "status": "mapped",
+    "reviewStatus": "machine_scope_audited",
+    "assessedIds": [
+      "math:lattice-counting"
+    ],
+    "supportIds": [
+      "cnm_h042",
+      "cnm_142",
+      "cnm_164"
+    ],
+    "routes": [
+      {
+        "id": "count-three-power-gaps",
+        "label": "Count gaps containing three powers",
+        "nodeIds": [
+          "math:double-counting"
+        ]
+      },
+      {
+        "id": "subtract-excluded-starts",
+        "label": "Count excluded starting exponents",
+        "nodeIds": [
+          "cnm_h043",
+          "math:floor-ceiling",
+          "cnm_h010"
+        ]
+      },
+      {
+        "id": "count-three-power-intervals",
+        "label": "Method 1: Count powers in each interval",
+        "nodeIds": [
+          "math:lattice-counting",
+          "math:double-counting",
+          "cnm_h042",
+          "cnm_142",
+          "cnm_164"
+        ]
+      },
+      {
+        "id": "solution:subtract-excluded-starts:ea6404c5e1b9",
+        "label": "Method 2: Count excluded starting exponents",
+        "nodeIds": [
+          "math:lattice-counting",
+          "cnm_h010",
+          "cnm_h042",
+          "cnm_142",
+          "cnm_164"
+        ]
+      }
+    ],
+    "flags": []
+  }
+}

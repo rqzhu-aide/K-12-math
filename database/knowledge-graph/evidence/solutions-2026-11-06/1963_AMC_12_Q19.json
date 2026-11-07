@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1963_AMC_12_Q19",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "37fb201c9410eec3b8644c0400ecb99cd6889280b810afed4705faa6779db686",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "2bd4fa22d3ea2dc878f0b4364bea4cfa1ca08ad2c08dd3d38ec572a19fd26803",
+  "solutionFigureHashes": {},
+  "candidateHash": "95ea87f1217f09b94d37ba5724cfe0e883c8b3dde748447c42763960280e0cc9",
+  "candidate": {
+    "questionId": "1963_AMC_12_Q19",
+    "derivedAnswer": "210 (B) under an exact overall seven-in-eight proportion; 241 if a final incomplete group is allowed.",
+    "answerStatus": "disputed",
+    "answerReason": "The key is correct under the usual exact-proportion reading. If seven in every eight instead describes complete consecutive groups and counting may end with an incomplete group, 241 balls are possible. The wording does not explicitly settle the treatment of that final group.",
+    "methods": [
+      {
+        "id": "exact-proportion-reading",
+        "label": "Assuming an exact overall proportion",
+        "explanation": "Assume that exactly \\(\\frac78\\) of all balls counted after the first \\(50\\) are red. Their red-to-black ratio is then \\(7:1\\), so write their counts as \\(7m\\) red and \\(m\\) black, where \\(m\\) is a nonnegative integer. Thus\n\\[\nn=50+8m,\n\\qquad \\text{red count}=49+7m.\n\\]\nThe requirement that at least \\(90\\%\\) are red becomes\n\\[\n49+7m\\ge\\frac9{10}(50+8m).\n\\]\nMultiplying by \\(10\\) and simplifying gives\n\\[\n490+70m\\ge450+72m,\n\\qquad m\\le20.\n\\]\nAt \\(m=20\\), there are \\(210\\) balls, of which \\(189\\) are red, exactly \\(90\\%\\). Under this exact-proportion reading, the maximum is therefore \\(\\boxed{210}\\), choice \\(\\boxed{\\text{B}}\\).\n\nThis calculation requires the stated proportion to apply to the entire later count, rather than only to completed groups of eight.",
+        "nodeIds": [
+          "cnm_098"
+        ],
+        "prerequisiteIds": [
+          "cnm_097",
+          "cnm_p195",
+          "cnm_p196",
+          "cnm_p185"
+        ],
+        "levelReason": "Uses a whole-number ratio model and a linear percentage inequality."
+      },
+      {
+        "id": "incomplete-final-group-reading",
+        "label": "Allowing an incomplete final group",
+        "explanation": "Suppose instead that each complete group of eight balls after the first \\(50\\) contains seven red balls, and counting may stop partway through another group. Write the later count uniquely as \\(8k+r\\), where \\(k\\ge0\\) is an integer and \\(0\\le r\\le7\\).\n\nThe complete groups contain \\(7k\\) red balls. Even if all \\(r\\) balls in the final partial group are red, the total red count is at most \\(49+7k+r\\). Therefore a necessary condition for reaching \\(90\\%\\) is\n\\[\n49+7k+r\\ge\\frac9{10}(50+8k+r).\n\\]\nThis simplifies to\n\\[\n2k\\le40+r\\le47.\n\\]\nHence \\(k\\le23\\), and every allowed count satisfies\n\\[\nn=50+8k+r\\le50+8(23)+7=241.\n\\]\nThis bound is attainable. After the first \\(50\\) balls, use \\(23\\) repetitions of seven red balls followed by one black ball, then seven more red balls. Every complete group of eight has seven red balls; this repeating pattern also satisfies the condition for every consecutive eight-ball window among the later balls. The total is \\(241\\) balls with\n\\[\n49+23(7)+7=217\n\\]\nred balls. Since \\(2170>9(241)=2169\\), more than \\(90\\%\\) are red.\n\nUnder this reading the maximum is \\(\\boxed{241}\\), which is absent from the choices. Thus an exact overall proportion, or a requirement to finish a complete group, is needed to force choice B.",
+        "nodeIds": [
+          "cnm_098"
+        ],
+        "prerequisiteIds": [
+          "cnm_097",
+          "cnm_p195",
+          "cnm_p196",
+          "cnm_p050"
+        ],
+        "levelReason": "Uses quotient and remainder, a linear inequality, and an explicit construction attaining the bound."
+      }
+    ],
+    "assessedIds": [
+      "cnm_098"
+    ],
+    "supportIds": [
+      "cnm_097",
+      "cnm_p195",
+      "cnm_p196"
+    ],
+    "annotationRationale": "Both readings require translating a percentage threshold into a linear inequality and checking an attainable integer maximum. Ratio notation supports the exact-proportion reading; quotient and remainder are local to the incomplete-group reading.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The statement does not explicitly specify whether counting may end with an incomplete final group of eight."
+    ]
+  },
+  "review": {
+    "questionId": "1963_AMC_12_Q19",
+    "decision": "accept",
+    "mathematicalCheck": "Under an exact later proportion, the inequality gives m≤20 and the attainable maximum 210. With a partial final group, the necessary bound 2k≤40+r≤47 gives n≤241. The stated periodic construction attains 241 with 217 red balls and also satisfies every later consecutive eight-ball window.",
+    "levelCheck": "Both conditional arguments use accessible integer counting and linear inequalities, with bounds and attainability explained.",
+    "methodDistinctness": "These are useful analyses of two explicitly distinguished readings of the wording.",
+    "annotationCheck": "The shared inequality and percentage annotations fit both readings. Ratio and remainder concepts remain method-specific. The qualification honestly preserves the wording ambiguity and makes the historical answer conditional.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "exact-proportion-reading": "exact-proportion-reading",
+    "incomplete-final-group-reading": "incomplete-final-group-reading"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "b86e2461c867f0c26179a583b3296fc246974ba8d9b7591529c2211853df96c6",
+    "inputHash": "4f3ca6ef885581b066f6341cf4447dc9b1c780563a19cf087d9a995003f3a9aa",
+    "authorInputHash": "99a0933f5647fc6c5de6f9906f060dded75a35df8d54235c6acc44a4480af724",
+    "reviewInputHash": "3b9648bc6db4350fc3dfe4a5fa51d979f8e627df39e96492cf6583cda5a8b97c",
+    "authorResponseHash": "f88285a148b7f0499920c6cac3ccb27f2c91bd675ae2d26cea0c26f21a21740a",
+    "reviewerResponseHash": "e816c75ad68867705ca1e8c34872d248659c7024c1c8f51603ebe5244b3ed5a1",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

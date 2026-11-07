@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2014_AMC_12B_Q11",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "477f122ed5316b351968ff5295d8c350a1a59b5b62fd5838dbe70d18bbb491de",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "4e816589febb64030d5d2476d48c8e01940500a824297a01b616d6970d6753c0",
+  "solutionFigureHashes": {},
+  "candidateHash": "f8579d65e67448b6b4a2bab0b7b3ecae775725f7d39bc9fc794c2a01c21b6d67",
+  "candidate": {
+    "questionId": "2014_AMC_12B_Q11",
+    "derivedAnswer": "E, 35",
+    "answerStatus": "matches",
+    "answerReason": "The total is 110, and the first ten terms in sorted order have sum at least 75. A valid list attaining a largest term of 35 is 1,1,8,8,8,9,9,10,10,11,35.",
+    "methods": [
+      {
+        "id": "minimize-other-ten",
+        "label": "Minimize the other ten integers",
+        "explanation": "The mean fixes the total at \\(11\\cdot10=110\\). To make the largest entry as large as possible, we must make the sum of the other ten entries as small as the median and mode allow.\n\nWrite the list in increasing order as \\(x_1\\le\\cdots\\le x_{11}\\). The median condition says \\(x_6=9\\). Let \\(k\\) be the number of occurrences of \\(8\\). All occurrences of \\(8\\) are among the first five entries, so \\(k\\le5\\). A unique mode must occur at least twice, so \\(2\\le k\\le5\\). Every value other than \\(8\\) can occur at most \\(k-1\\) times.\n\nFor each possible \\(k\\), fill the first five positions with the required copies of \\(8\\) and the smallest permitted positive integers. Fill positions six through ten with the smallest permitted integers starting at \\(9\\). These choices give the following lower bounds:\n\n- If \\(k=2\\), the first five are at least \\(1,2,3,8,8\\), and the next five are at least \\(9,10,11,12,13\\). Their combined sum is at least \\(77\\).\n- If \\(k=3\\), the first five are at least \\(1,1,8,8,8\\), and the next five are at least \\(9,9,10,10,11\\). Their combined sum is at least \\(75\\).\n- If \\(k=4\\), the first five are at least \\(1,8,8,8,8\\), and the next five are at least \\(9,9,9,10,10\\). Their combined sum is at least \\(80\\).\n- If \\(k=5\\), the first five are all \\(8\\), and the next five are at least \\(9,9,9,9,10\\). Their combined sum is at least \\(86\\).\n\nThese four cases exhaust the possible frequencies of \\(8\\). Consequently, \\(x_1+\\cdots+x_{10}\\ge75\\), so\n\\[\nx_{11}\\le110-75=35.\n\\]\nThe list\n\\[\n1,1,8,8,8,9,9,10,10,11,35\n\\]\nhas sum \\(110\\), sixth entry \\(9\\), and unique mode \\(8\\), which occurs three times while every other value occurs at most twice. Thus the bound is attained, and the largest possible integer is \\(\\boxed{35}\\), choice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "cnm_211",
+          "cnm_213",
+          "math:extremal-principle"
+        ],
+        "prerequisiteIds": [],
+        "levelReason": "Uses the definitions of mean, median, and unique mode, followed by four elementary cases and an attaining example."
+      }
+    ],
+    "assessedIds": [
+      "cnm_211",
+      "cnm_213",
+      "math:extremal-principle"
+    ],
+    "supportIds": [],
+    "annotationRationale": "The mean determines the fixed sum, while the median and unique mode impose position and multiplicity restrictions. The extremal target is demonstrated by a bound valid for every list and a construction attaining it. The frequency cases are parts of one method.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2014_AMC_12B_Q11",
+    "decision": "accept",
+    "mathematicalCheck": "The total is 110. The median places every 8 among the first five entries, so its frequency is 2 through 5. The corresponding lower bounds for the first ten entries are correctly 77, 75, 80, and 86. Hence the largest entry is at most 35. The supplied list attains 35 and satisfies the sum, median, and unique-mode conditions.",
+    "levelCheck": "The frequency cases are elementary, exhaustive, and sufficiently explained for AMC 12.",
+    "methodDistinctness": "The four cases form one coherent extremal method.",
+    "annotationCheck": "Mean, median and mode, and a discrete bound with an attaining construction accurately describe the assessed content.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "minimize-other-ten": "minimize-other-ten"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "2514e55edd9d09c0bbf884111f8083cd352c984d81e61c594e83390bcc181c99",
+    "inputHash": "ac4a6532cbb707eb1d497266242f912d2787ffe2b6b287cb53fedc25a1f95d8e",
+    "authorInputHash": "89924649c4b65805520c8960becf47836853c2bc97e01e3b7feb11e351be7217",
+    "reviewInputHash": "21307f936a223dcf8790a81c3e7a460fc3b8801b155145ff78a926bb248e82be",
+    "authorResponseHash": "ac8e6cccdde4071e3f3d5bc7f0d19190ade9a1c6c63bade9068a2ea3f4c55476",
+    "reviewerResponseHash": "a560336b79945c23d104519af86451c458a0eac2059d177e5ed83ed7076b14c3",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

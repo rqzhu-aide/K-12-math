@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2011_AMC_12B_Q13",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "3e6ac9cb1b6d3d4a6c9ec632bedb541cc0509ed65b806bfb6d07acc7222bf359",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "adb00ab348f35e2e28290f5de327e6655a6512b3419b0846647dab262dd8c39e",
+  "solutionFigureHashes": {},
+  "candidateHash": "3b47be885746bf2504263631ae8267a15fc5ad7dc69fdd2d2cc570956b573010",
+  "candidate": {
+    "questionId": "2011_AMC_12B_Q13",
+    "derivedAnswer": "B, \\(31\\)",
+    "answerStatus": "matches",
+    "answerReason": "The only translated configurations are {0,3,4,9} and {0,5,6,9}. The sum condition gives largest values 16 and 15, whose sum is 31.",
+    "methods": [
+      {
+        "id": "translate-and-reconstruct",
+        "label": "Reconstruct the numbers from the endpoints",
+        "explanation": "Subtracting the smallest number \\(z\\) from every number preserves all pairwise differences. The largest difference is \\(w-z=9\\), so the translated numbers have the form\n\\[\n0<a<b<9,\n\\]\nwith endpoints \\(0\\) and \\(9\\), where \\(a=y-z\\) and \\(b=x-z\\).\n\nEach interior number \\(t\\) gives two endpoint differences, \\(t\\) and \\(9-t\\). Among the supplied differences, the only pairs adding to \\(9\\) are \\(3,6\\) and \\(4,5\\). Thus \\(a,b\\) belong to \\(\\{3,4,5,6\\}\\).\n\nNo interior number is \\(1\\) unit from either endpoint. Therefore the required difference \\(1\\) must be \\(b-a\\). The complete list of candidate pairs is\n\\[\n(a,b)=(3,4),\\ (4,5),\\ (5,6).\n\\]\nThe middle pair produces only the difference values \\(1,4,5,9\\), missing \\(3\\) and \\(6\\). Each of the other two pairs gives exactly the six required differences. Hence the only translated sets are\n\\[\n\\{0,3,4,9\\}\\quad\\text{and}\\quad\\{0,5,6,9\\}.\n\\]\nFor the first set, the original sum gives \\(4z+16=44\\), so \\(z=7\\) and \\(w=16\\). For the second, \\(4z+20=44\\), so \\(z=6\\) and \\(w=15\\). These give the valid ordered quadruples \\((16,11,10,7)\\) and \\((15,12,11,6)\\), respectively.\n\nThe candidate list was exhaustive, and the two largest values are distinct. Their sum is\n\\[\n16+15=\\boxed{31},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations"
+        ],
+        "prerequisiteIds": [
+          "cnm_p145"
+        ],
+        "levelReason": "Translation reduces the problem to three finite candidates, followed by simple linear equations."
+      },
+      {
+        "id": "sum-adjacent-gap-contributions",
+        "label": "Use the sum of all six differences",
+        "explanation": "Let the positive integer gaps between consecutive numbers be\n\\[\na=w-x,\\qquad b=x-y,\\qquad c=y-z.\n\\]\nThe largest difference is \\(a+b+c=9\\). All six differences are\n\\[\na,\\ b,\\ c,\\ a+b,\\ b+c,\\ a+b+c.\n\\]\nAdding them counts each outer gap three times and the middle gap four times. Since the supplied differences sum to \\(28\\),\n\\[\n28=3(a+b+c)+b=27+b,\n\\]\nso \\(b=1\\) and \\(a+c=8\\).\n\nThe four remaining differences \\(a,c,a+1,c+1\\) must be exactly \\(3,4,5,6\\). The value \\(3\\) cannot be \\(a+1\\), since that would make \\(a=2\\), an unlisted difference. The same reasoning excludes \\(c+1=3\\). Thus one of \\(a,c\\) is \\(3\\), and their sum forces the other to be \\(5\\). Both orders give exactly the required six differences.\n\nIf \\((a,b,c)=(3,1,5)\\), the numbers in increasing order are\n\\[\nz,\\ z+5,\\ z+6,\\ z+9.\n\\]\nTheir sum gives \\(4z+20=44\\), so \\(z=6\\) and \\(w=15\\).\n\nIf \\((a,b,c)=(5,1,3)\\), the numbers are \\(z,z+3,z+4,z+9\\). Now \\(4z+16=44\\), so \\(z=7\\) and \\(w=16\\).\n\nThese two gap orders exhaust the possibilities and yield different values of \\(w\\). The requested sum is \\(15+16=\\boxed{31}\\), choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_027",
+          "cnm_034"
+        ],
+        "prerequisiteIds": [
+          "cnm_p145"
+        ],
+        "levelReason": "The method uses elementary expressions for adjacent gaps and a linear sum relation, all within school algebra."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_p145"
+    ],
+    "annotationRationale": "The target is an exhaustive classification of the allowed integer configurations and resulting largest values. Simple equations recover the translation in both methods. The first route filters endpoint distances; the second forms and combines adjacent-gap expressions to isolate the middle gap. These are distinct deductions rather than reordered versions of one calculation.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2011_AMC_12B_Q13",
+    "decision": "accept",
+    "mathematicalCheck": "Endpoint differences restrict the translated interior pair to (3,4), (4,5), or (5,6); only the first and last give the required six differences. Alternatively, summing gap contributions gives 28=27+b, forcing gaps (3,1,5) or (5,1,3). The sum condition then gives w=15 or 16, totaling 31.",
+    "levelCheck": "Both methods explain their exhaustive restrictions using finite cases and simple equations.",
+    "methodDistinctness": "Endpoint reconstruction and the weighted sum of adjacent gaps use distinct decisive deductions.",
+    "annotationCheck": "The integer-configuration target and shared equation support fit both routes. Expression formation and combining terms correctly describe the second method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "translate-and-reconstruct": "translate-and-reconstruct",
+    "sum-adjacent-gap-contributions": "sum-adjacent-gap-contributions"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "cd3596904021b1eb374467f5ec1b9dee05dda99347e9d274e188ed776a9c1d85",
+    "inputHash": "cfbc7d24f35c7548ee7ab8671f97766109e69d152dfc98ae902d700e935c31fe",
+    "authorInputHash": "2bcc1fac2d3edee67d3e79e1dc64d3e65714ff6e791a775d7e11535457b9ab18",
+    "reviewInputHash": "43488a3f92e73b62c92b3b530bbaa877b315dc2dc859345de978acb5031dbfa3",
+    "authorResponseHash": "9d13eb0cec246c01e51023fba5133c78497a0fa70030364b42f2f8d0db9f2b3d",
+    "reviewerResponseHash": "590feacc838ee7d3b6f91f716ed5ffc89c42ac984dd7e20ce0d4f73ed8fe761f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

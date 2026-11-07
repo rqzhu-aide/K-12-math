@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2007_AMC_10B_Q08",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "c51689f6bb001bc45c6df05b2d4302cd95cd7d542912089a16b3c1b55354eaa2",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "0ad7eba19119493cc2acdd2e650886c8071b4d270739ce2b4dbdcdd8dc5dc7ba",
+  "solutionFigureHashes": {},
+  "candidateHash": "ebaecb40483d8015c3dc088f108a82cf090c4550b9db4d25489da61855b86625",
+  "candidate": {
+    "questionId": "2007_AMC_10B_Q08",
+    "derivedAnswer": "D: 20",
+    "answerStatus": "matches",
+    "answerReason": "The average condition makes the three digits equally spaced. Counting the possible positive gaps gives 8+6+4+2=20 numbers.",
+    "methods": [
+      {
+        "id": "count-by-digit-gap",
+        "label": "Count by the gap between digits",
+        "explanation": "Because \\(b\\) is the average of \\(a\\) and \\(c\\), the gaps \\(b-a\\) and \\(c-b\\) are equal. Let their common value be the positive integer \\(d\\). Then\n\\[\nb=a+d,\\qquad c=a+2d.\n\\]\nThe digit restriction \\(c\\le 9\\), together with \\(a\\ge 0\\), gives \\(2d\\le 9\\). Thus \\(d\\) can only be \\(1,2,3,4\\).\n\nFor a fixed \\(d\\), the possible values of \\(a\\) are all the integers from \\(0\\) through \\(9-2d\\), inclusive. Therefore:\n\nFor \\(d=1\\), there are \\(8\\) choices for \\(a\\).\n\nFor \\(d=2\\), there are \\(6\\) choices.\n\nFor \\(d=3\\), there are \\(4\\) choices.\n\nFor \\(d=4\\), there are \\(2\\) choices.\n\nEach choice produces exactly one number of the form \\(bbcac\\). Its leading digit is nonzero because \\(b=a+d\\ge 1\\). Conversely, every valid number determines its own \\(a\\) and \\(d=b-a\\), so no number is omitted or counted twice. The total is\n\\[\n8+6+4+2=\\boxed{20},\n\\]\nwhich is choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_h203",
+          "cnm_h230"
+        ],
+        "prerequisiteIds": [
+          "cnm_p129"
+        ],
+        "levelReason": "This uses equal spacing, bounds on digits, and four elementary counting cases."
+      },
+      {
+        "id": "choose-same-parity-endpoints",
+        "label": "Choose endpoints of the same parity",
+        "explanation": "The equation \\(b=(a+c)/2\\) shows that \\(b\\) is an integer exactly when \\(a+c\\) is even. Thus \\(a\\) and \\(c\\) must both be even or both be odd.\n\nThe even digits are \\(0,2,4,6,8\\), and the odd digits are \\(1,3,5,7,9\\). Choose any two distinct digits from either list. Assign the smaller one to \\(a\\) and the larger one to \\(c\\); their average uniquely determines \\(b\\). Since the average lies strictly between the endpoints, all the required inequalities hold. In particular, \\(b>0\\), so the resulting number has five digits.\n\nWithin either five-digit list, there are \\(4\\) pairs using the smallest digit as the smaller endpoint, then \\(3\\), then \\(2\\), then \\(1\\). Hence each list supplies\n\\[\n4+3+2+1=10\n\\]\npairs. The even and odd cases are disjoint, and every valid number determines exactly one endpoint pair. Therefore the number of valid numbers is\n\\[\n10+10=\\boxed{20},\n\\]\nchoice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_h203",
+          "cnm_p156",
+          "cnm_h239",
+          "cnm_h230"
+        ],
+        "prerequisiteIds": [
+          "cnm_p129",
+          "cnm_h236"
+        ],
+        "levelReason": "Parity and a direct count of unordered pairs provide an elementary alternative without a combination formula."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_h203",
+      "cnm_h230",
+      "cnm_p129"
+    ],
+    "annotationRationale": "The task asks for a complete count of bounded integer digit solutions to the average equation. Both methods use the arithmetic mean and addition of disjoint counts. The first classifies positive gaps; the second uses parity and unordered endpoint selection, which remain specific to that method.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2007_AMC_10B_Q08",
+    "decision": "accept",
+    "mathematicalCheck": "Equal gaps give \\(c=a+2d\\), with \\(d=1,2,3,4\\) contributing \\(8,6,4,2\\) possibilities. The parity method independently counts ten even endpoint pairs and ten odd pairs. Both establish uniqueness, completeness, and a nonzero leading digit.",
+    "levelCheck": "Both explanations use elementary reasoning appropriate for AMC 10.",
+    "methodDistinctness": "Counting by gaps and selecting same-parity endpoints provide distinct, useful approaches.",
+    "annotationCheck": "The integer-solution target fits both routes. Shared mean and addition-principle annotations are justified; parity and unordered selection remain method-local.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-by-digit-gap": "solution:count-by-digit-gap:0ad7eba19119",
+    "choose-same-parity-endpoints": "solution:choose-same-parity-endpoints:0ad7eba19119"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "e6fd97fcf3f8611fc0df6df40106dbd2b1cd7550a14448ed2158e150c87a35ff",
+    "inputHash": "e4ce6d96f3d4b01d8deb7c26552de9a97aa3945d5111ef015d02e4b25bce1de9",
+    "authorInputHash": "cce4f87a1ee7caa64aaf1e05067eec33b40a972e481a8988ce42daa40d760144",
+    "reviewInputHash": "7819239444d3e0b110b1edc936e78091902c681331126f51265a614affb1873b",
+    "authorResponseHash": "40498ad480df74db1d1cfc96d9e892805b0dfe605c5301bb89296b4a29b1b9ea",
+    "reviewerResponseHash": "b510b1905bb863dd398601677fda1c7ab5e50dc38a589d43a140e3537447dd81",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

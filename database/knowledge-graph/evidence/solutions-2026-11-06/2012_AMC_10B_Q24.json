@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2012_AMC_10B_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "c0b8aff50d2482ac7156cef502d047c37795bb1d6ad7dc129d98d834c74d2b01",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "f0898b08bda6478205d5e32f105a243a22d898e10a16106d0f2d17f79a9b65dd",
+  "solutionFigureHashes": {},
+  "candidateHash": "9eecd98e515361d2f412dd29e06c05f74826eb0872c1c9c890c45192e1303453",
+  "candidate": {
+    "questionId": "2012_AMC_10B_Q24",
+    "derivedAnswer": "B, \\(132\\).",
+    "answerStatus": "matches",
+    "answerReason": "Exactly three songs liked by pairs give 4·4·6=96 assignments. Four songs liked by pairs give 3·6·2=36 assignments. These disjoint cases total 132.",
+    "methods": [
+      {
+        "id": "classify-pair-song-count",
+        "label": "Count according to the number of pair-liked songs",
+        "explanation": "For each song, record exactly which girls like it. The three required pair patterns are Amy and Beth only, Amy and Jo only, and Beth and Jo only. These patterns must each appear at least once, so at least three of the four songs are liked by exactly two girls.\n\nThere are two possible cases.\n\nIf exactly three songs are liked by pairs, each required pair pattern appears once. Choose the remaining song in \\(4\\) ways. It can be liked by nobody or by just Amy, Beth, or Jo, giving \\(4\\) possibilities. Assign the three pair patterns to the other three distinct songs in \\(3\\cdot2\\cdot1=6\\) ways. This gives\n\\[\n4\\cdot4\\cdot6=96\n\\]\nassignments. Each is counted once because its non-pair song and all four patterns are determined.\n\nIf all four songs are liked by pairs, one pair pattern appears twice and the other two appear once each. Choose the repeated pattern in \\(3\\) ways. Choose its two songs in \\(4\\cdot3/2=6\\) ways, dividing by \\(2\\) because the order of those two songs does not matter. Assign the two remaining patterns to the remaining songs in \\(2\\) ways. This gives\n\\[\n3\\cdot6\\cdot2=36\n\\]\nassignments. Here the repeated pattern and its two songs are uniquely determined, so there is no duplication.\n\nThese cases exhaust the possibilities and cannot overlap. Therefore the total is\n\\[\n96+36=\\boxed{132},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_h232",
+          "cnm_h236"
+        ],
+        "prerequisiteIds": [
+          "cnm_h230",
+          "cnm_h231"
+        ],
+        "levelReason": "Two exhaustive cases reduce the problem to small ordered assignments and an unordered choice of two songs, all explained by elementary counting."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h232"
+    ],
+    "supportIds": [
+      "cnm_h230",
+      "cnm_h231"
+    ],
+    "annotationRationale": "The target is combining disjoint cases with sequential choices under the preference restrictions. The written method uses a small combination count for the two songs receiving a repeated pattern. It does not require a multiset-permutation formula or general inclusion-exclusion.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2012_AMC_10B_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "The three required pair patterns require at least three pair-liked songs. Exactly three give 4·4·6=96 assignments. Four give multiplicities 2,1,1 and 3·6·2=36 assignments. These cases are exhaustive, disjoint, and counted uniquely, totaling 132.",
+    "levelCheck": "The small combination count and sequential assignments are explained accessibly within AMC 10 counting.",
+    "methodDistinctness": "One complete case-counting method is sufficient.",
+    "annotationCheck": "Combined addition and multiplication is the target; choosing the repeated pair's two songs justifies the combination concept. No unsupported advanced counting procedure is claimed.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "classify-pair-song-count": "classify-pair-song-count"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "19d9ad7be9eacbc68b882df5d8fa1e4bfa8c5af180cefe9c7845d1d22d32c713",
+    "inputHash": "9015dda1a985c46b6c00f6618ff78364b6179f4df0ca90ca79b031b5d59da3c0",
+    "authorInputHash": "2373b0dbe9fccdab8bb32feff6c1d7ac639a64f50c8e2861fd530187515b17a9",
+    "reviewInputHash": "1ed0917ab898ae1ce3473925bb6e96b7f00f71027f2b53d6983ce5f1403a8dd6",
+    "authorResponseHash": "51062fefc935a5370dad6ad4c76b8344111291e21f5eae70d5650b07827bfe07",
+    "reviewerResponseHash": "ff4c9ff54f9e687d1bf2dddbee2b69bf3119208af3c1c8df4210cfade018b8dd",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

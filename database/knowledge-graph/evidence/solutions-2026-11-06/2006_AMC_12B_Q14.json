@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2006_AMC_12B_Q14",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "146a89c57b3cf653cf9e7aca5629dfe7fcd5f25779ccc7178604c94553b84e16",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "975e50bfdcb41ec5be4412c28f1c529bd78108147ff30ef577f9544e98614ffe",
+  "solutionFigureHashes": {},
+  "candidateHash": "ad4e999a8a6a4a4cc158dbf671791eba56be89e25c3758a1d014d9ba1020f7fc",
+  "candidate": {
+    "questionId": "2006_AMC_12B_Q14",
+    "derivedAnswer": "$1.65 (D)",
+    "answerStatus": "matches",
+    "answerReason": "The integer cost equation has the unique positive solution N = 11, B = 2, J = 3. The jam therefore costs 165 cents.",
+    "methods": [
+      {
+        "id": "factor-total-cost",
+        "label": "Factor the total cost",
+        "explanation": "Work in cents so that all quantities are integers. Each sandwich costs \\(4B+5J\\) cents, giving\n\\[\nN(4B+5J)=253=11\\cdot23.\n\\]\nSince \\(11\\) and \\(23\\) are prime, the positive divisors of \\(253\\) are \\(1,11,23,253\\). We know \\(N>1\\), and \\(B,J\\ge1\\) makes each sandwich cost at least \\(9\\) cents. These conditions leave only \\(N=11\\) or \\(N=23\\).\n\nIf \\(N=23\\), then \\(4B+5J=11\\). Positivity forces \\(J=1\\), but that leaves \\(4B=6\\), impossible for an integer \\(B\\).\n\nIf \\(N=11\\), then \\(4B+5J=23\\). Since \\(4B\\ge4\\), we have \\(5J\\le19\\), so \\(J\\) is \\(1,2\\), or \\(3\\). The corresponding values of \\(4B\\) are \\(18,13\\), and \\(8\\). Only \\(8\\) is divisible by \\(4\\), giving \\(B=2\\) and \\(J=3\\).\n\nThese exhaust the possible sandwich counts and ingredient amounts. The total jam cost is\n\\[\n5NJ=5\\cdot11\\cdot3=165\\text{ cents},\n\\]\nor \\(\\boxed{\\$1.65}\\), choice (D).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "math:prime-factorization"
+        ],
+        "prerequisiteIds": [
+          "cnm_p111",
+          "cnm_p153",
+          "cnm_p157"
+        ],
+        "levelReason": "Small-number factorization and a bounded search for positive integer solutions suffice; formal congruence machinery is unnecessary."
+      },
+      {
+        "id": "test-common-batch-sizes",
+        "label": "Test common sandwich counts",
+        "explanation": "Every sandwich uses the same number of globs and blobs. Therefore the total peanut butter glob count and the total jam blob count must both be divisible by the sandwich count \\(N>1\\).\n\nIf a proposed jam cost is \\(c\\) cents, the two total ingredient counts are\n\\[\n\\frac{253-c}{4}\\quad\\text{and}\\quad\\frac{c}{5}.\n\\]\nFor choices (A) through (E), respectively, these ordered pairs are\n\\[\n(37,21),\\ (32,25),\\ (27,29),\\ (22,33),\\ (17,37).\n\\]\nTheir greatest common factors are, respectively,\n\\[\n1,\\ 1,\\ 1,\\ 11,\\ 1.\n\\]\nThus only choice (D) permits a common sandwich count greater than \\(1\\).\n\nIt also works: take \\(N=11\\), giving \\(22/11=2\\) peanut butter globs and \\(33/11=3\\) jam blobs per sandwich. The total cost is \\(11(4\\cdot2+5\\cdot3)=253\\) cents. Hence the jam costs \\(\\boxed{\\$1.65}\\), choice (D).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_p158"
+        ],
+        "prerequisiteIds": [
+          "cnm_p111",
+          "cnm_p153"
+        ],
+        "levelReason": "This alternative uses elementary total-cost calculations and greatest common factors to inspect all five choices."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_p111",
+      "cnm_p153"
+    ],
+    "annotationRationale": "The route-neutral target is enforcing positive integer restrictions on the cost model. Both methods use total-cost relationships and divisibility. Prime factorization belongs to the first route, while greatest common factors belong to the option-based route.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2006_AMC_12B_Q14",
+    "decision": "accept",
+    "mathematicalCheck": "The factorization N(4B+5J)=253 restricts N to 11 or 23. Exhausting the positive ingredient possibilities leaves only (N,B,J)=(11,2,3), giving 165 cents of jam. Independently, the option-based ingredient pairs have greatest common factors 1,1,1,11,1, and the fourth pair supplies a valid construction.",
+    "levelCheck": "Both methods use elementary cost relationships, divisibility, and small finite calculations.",
+    "methodDistinctness": "Factoring the total and testing common batch sizes provide genuinely different, accessible approaches.",
+    "annotationCheck": "The integer-constraint target is route-neutral. Prime factorization and greatest common factors are correctly kept method-local, with appropriate shared cost and divisibility support.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "factor-total-cost": "solution:factor-total-cost:975e50bfdcb4",
+    "test-common-batch-sizes": "test-common-batch-sizes"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "1d55cd0e85129c2ea748a87a290b8265d59a9f705c624700cd81041f34852e53",
+    "inputHash": "e13077edb625ca7026e64e1ed044d2a6020575d011cb8d3aeec5d345287e5e20",
+    "authorInputHash": "e1872a63fc878d4f6fe9f8c1cd3f60ea1fb78b0e1c6a7c6927921900abd5e41f",
+    "reviewInputHash": "31d4612adf2aa5339e25d16b06b4bbb4b693e917c08d181bd575f6955aa32107",
+    "authorResponseHash": "a59e43919807c066b17ea8dbd80cb176280cafca11332d8da3b46bd5fe328da8",
+    "reviewerResponseHash": "08d133fa66076243431fa1e7000c8df755d56b6c7f6ea5a58741748a65723d9b",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

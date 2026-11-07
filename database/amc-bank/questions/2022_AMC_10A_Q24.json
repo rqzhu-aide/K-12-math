@@ -1,0 +1,116 @@
+{
+  "Year": 2022,
+  "Level": "AMC 10",
+  "Batch": "A",
+  "Area": "Counting & Probability",
+  "Number": 24,
+  "Question": "How many strings of length \\(5\\) formed from the digits \\(0,\\) \\(1,\\) \\(2,\\) \\(3,\\) \\(4,\\) are there such that for each \\(j \\in \\{1,2,3,4\\},\\) at least \\(j\\) of the digits are less than \\(j?\\)\n\n(For example, \\(02214\\) satisfies this condition because it contains at least \\(1\\) digit less than \\(1,\\) at least \\(2\\) digits less than \\(2,\\) at least \\(3\\) digits less than \\(3,\\) and at least \\(4\\) digits less than \\(4.\\) The string \\(23404\\) does not satisfy the condition because it does not contain at least \\(2\\) digits less than \\(2.\\))",
+  "Question Type": "text",
+  "Choices": {
+    "A": "\\(500\\)",
+    "B": "\\(625\\)",
+    "C": "\\(1089\\)",
+    "D": "\\(1199\\)",
+    "E": "\\(1296\\)"
+  },
+  "Choices Type": "text",
+  "Correct Answer": "E",
+  "Solution": "The condition depends on which digits occur, not on their order. Sort them first as \\(d_1\\le\\cdots\\le d_5\\). Having at least \\(j\\) digits less than \\(j\\) means exactly that the \\(j\\)th smallest digit is less than \\(j\\). Thus the bounds are\n\\[\nd_1=0,\\quad d_2\\le1,\\quad d_3\\le2,\n\\quad d_4\\le3,\\quad d_5\\le4.\n\\]\n\nGroup the sorted choices by how often each digit occurs. For example, pattern \\((3,1,1)\\) means three copies of one digit and one copy of each of two other digits. These seven patterns exhaust all ways to split five positions into equal-digit groups.\n\nLet \\(N\\) count valid sorted choices of a pattern, and let \\(W\\) count the different orders of each choice. If the multiplicities are \\(m_1,m_2,\\ldots\\), then\n\\[\nW=\\frac{5!}{m_1!m_2!\\cdots}:\n\\]\nstart with \\(5!\\) orders and divide out the rearrangements of identical digits. For example, pattern \\((3,1,1)\\) has \\(W=5!/3!=20\\). We will justify the sorted counts in this table using the bounds above:\n\\[\n\\begin{array}{c|r|r}\n\\text{pattern}&N&W\\\\\\hline\n(5)&1&1\\\\\n(4,1)&5&5\\\\\n(3,2)&5&10\\\\\n(3,1,1)&10&20\\\\\n(2,2,1)&10&30\\\\\n(2,1,1,1)&10&60\\\\\n(1,1,1,1,1)&1&120\n\\end{array}\n\\]\n\nEvery sorted choice contains zero. For pattern \\((5)\\), all five digits must therefore be zero. If all five digits differ, they must be \\(0,1,2,3,4\\). Each gives one sorted choice.\n\nFor \\((4,1)\\), four zeros allow any positive digit \\(1,2,3,4\\). If zero occurs just once, the repeated positive digit must be \\(1\\), because \\(d_2\\le1\\). This gives \\(4+1=5\\) choices.\n\nFor \\((3,2)\\), three zeros allow the other digit to be \\(1,2,3\\), because it occupies position \\(4\\). Two zeros allow the tripled digit to be \\(1,2\\), because it occupies position \\(3\\). This gives \\(3+2=5\\).\n\nFor \\((3,1,1)\\), three zeros allow any two distinct positive digits: \\(\\binom42=6\\) choices. Otherwise zero occurs once. If the tripled digit is smaller than the other positive digit, \\(d_2\\le1\\) forces it to be \\(1\\), leaving \\(2,3,4\\) for the singleton. If it is larger, \\(d_2\\le1\\) forces the singleton to be \\(1\\), and \\(d_3\\le2\\) forces the tripled digit to be \\(2\\). Total: \\(6+3+1=10\\).\n\nFor \\((2,2,1)\\), first suppose zero occurs twice. Call the other doubled digit \\(a\\) and the singleton \\(b\\). If \\(a<b\\), the bound \\(d_3\\le2\\) allows \\(a=1\\) with \\(b=2,3,4\\), or \\(a=2\\) with \\(b=3,4\\): five choices. If \\(b<a\\), the bounds \\(d_3\\le2\\), \\(d_4\\le3\\) allow \\((b,a)=(1,2),(1,3),(2,3)\\): three choices. If zero occurs once instead, the sorted form is \\(0,a,a,b,b\\), with \\(a<b\\). The bounds force \\(a=1\\) and \\(b=2\\) or \\(3\\): two choices. Total: \\(5+3+2=10\\).\n\nFor \\((2,1,1,1)\\), two zeros allow any three positive digits: \\(\\binom43=4\\) choices. If zero occurs once, the three distinct positive digits must include \\(1\\), since \\(d_2\\le1\\). Their possible sets are \\(\\{1,2,3\\}\\), \\(\\{1,2,4\\}\\), and \\(\\{1,3,4\\}\\). The repeated digit can be any of the three in the first set; only \\(1\\) or \\(2\\) in the second, since repeating \\(4\\) makes \\(d_4=4\\); and only \\(1\\) in the third, since otherwise \\(d_3=3\\). Total: \\(4+3+2+1=10\\).\n\nMultiply each row's \\(N\\) by its \\(W\\), then add:\n\\[\n\\begin{aligned}\n1+5\\cdot5+5\\cdot10+10\\cdot20\\\\\n{}+10\\cdot30+10\\cdot60+120\n&=\\boxed{1296}.\n\\end{aligned}\n\\]\nThe answer is E. Sorting handles the restrictions, while multiplicities keep identical digits from being counted as different arrangements.",
+  "Meta": {
+    "QuestionSource": "live-poshenloh",
+    "AnswerSource": "live-poshenloh-answer-key",
+    "SolutionSource": "Adapted from MAA official solutions",
+    "AreaSource": "jev:0.99",
+    "Concepts": "parking functions; circular counting; arrangements with restrictions",
+    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2022A/solutions",
+    "SourceSHA256": "e43e7f220a244ac0aa134865b6717777598543c07095f8a1b5fab987d16c007b",
+    "Figures": [],
+    "FigureSources": {},
+    "SolutionStatus": "Reviewed adaptation from official MAA solution",
+    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+    "Copyright": "Copyright Mathematical Association of America",
+    "License": "CC-BY-NC-SA-4.0",
+    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "TranscriptionSource": "LIVE by Po-Shen Loh",
+    "OfficialSolution": {
+      "url": "../amc-bank/official-solutions/AMC10A_2022_Solutions.pdf",
+      "sourceURL": "https://maa.org/wp-content/uploads/2024/08/2022-AMC-10A-solutions.pdf",
+      "label": "2022 AMC 10A",
+      "attribution": "Mathematical Association of America (MAA)",
+      "license": "CC-BY-NC-SA-4.0",
+      "page": 20
+    },
+    "Modifications": [
+      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
+      "Third-party worked solution and solution-only figures omitted from the public distribution",
+      "Added an original Math Practice explanation from the verified official MAA solution; independent expansion review pending",
+      "Editorial comparison revision: Replaced forty-two literal strings with a compact multiplicity table and exhaustive bounded-choice derivations for every count; kept the official strategy. Independent recheck pending."
+    ],
+    "SolutionSourceURL": "https://maa.org/wp-content/uploads/2024/08/2022-AMC-10A-solutions.pdf",
+    "SolutionAdaptation": {
+      "author": "Math Practice",
+      "date": "2026-10-26",
+      "officialPage": 20,
+      "officialPages": [
+        20,
+        21
+      ],
+      "localBooklet": "official-solutions/AMC10A_2022_Solutions.pdf",
+      "officialSHA256": "806a4e74584d2f8329388fdc7ce5870362c430e83dfb889ff129f8522b98c48e",
+      "method": "Classify sorted strings by multiplicity and count their distinct arrangements.",
+      "reviewStatus": "reviewed",
+      "authorship": "Original explanation drafted from the question and official MAA argument; archived third-party worked solutions were not read",
+      "changes": "Added connected explanatory prose, the reason for the method, and justification of decisive deductions.",
+      "reviewer": "official_amc8_sources",
+      "reviewSolutionSHA256": "e7f8a8454513dccca628b4e041914bfdf5b3d3c976b90363dbdb86ddd5d2ab42",
+      "reviewDate": "2026-10-26"
+    }
+  },
+  "ID": "2022_AMC_10A_Q24",
+  "Bank": "amc",
+  "SchemaVersion": "2.0",
+  "ResponseType": "choice",
+  "Language": "en",
+  "domain": [
+    "domain:counting-probability"
+  ],
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "1.0.0",
+    "contentHash": "30542cdfd450a07ac3fba68784028de6af121a473e6a039a19b81c34290d705b",
+    "status": "mapped",
+    "reviewStatus": "machine_scope_audited",
+    "assessedIds": [
+      "cnm_h232"
+    ],
+    "supportIds": [],
+    "routes": [
+      {
+        "id": "circular-parking",
+        "label": "Circular parking and rotation classes",
+        "nodeIds": [
+          "math:bijective-counting",
+          "math:symmetry-counting",
+          "cnm_h231"
+        ]
+      },
+      {
+        "id": "threshold-count-recursion",
+        "label": "Recursion on digit thresholds",
+        "nodeIds": [
+          "math:recursive-counting-probability",
+          "cnm_h237"
+        ]
+      },
+      {
+        "id": "sorted-multiplicity-cases",
+        "label": "Enumerate sorted multiplicities and count their orders",
+        "nodeIds": [
+          "math:multiset-permutations",
+          "cnm_h236"
+        ]
+      }
+    ],
+    "flags": []
+  }
+}

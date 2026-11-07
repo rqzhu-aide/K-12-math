@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1985_AMC_12_Q29",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "403429e1bd645d1baf642af57ef467fd3e845712cc5391276ce34c9c0a47acfc",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "95125ff2a8352967abcf03d974dd78f45f4b8d42c537be7f8296ff22e831878c",
+  "solutionFigureHashes": {},
+  "candidateHash": "827336889618cef97bd02dc1f99016ddff2cb49c8a6e02780d38205dceb68192",
+  "candidate": {
+    "questionId": "1985_AMC_12_Q29",
+    "derivedAnswer": "C, 17865",
+    "answerStatus": "matches",
+    "answerReason": "The product has 1984 fours, then 3, then 1984 fives, then 60. Its digit sum is 9 times 1985, or 17865.",
+    "methods": [
+      {
+        "id": "decimal-block-subtraction",
+        "label": "Subtract in decimal blocks",
+        "explanation": "Multiplication by \\(9\\) turns a string of ones into a string of nines, which is one less than a power of ten. This lets us replace the long multiplication by a subtraction.\n\nLet \\(k=1985\\), and let \\(R\\) be the integer with \\(k\\) digits, all equal to \\(1\\). Then \\(a=8R\\), \\(b=5R\\), and \\(9R=10^k-1\\). Let \\(T=4R\\), so \\(T\\) consists of \\(k\\) fours. We obtain\n\\[\n9ab=360R^2=10T(10^k-1).\n\\]\nIt remains to find the digits of \\(T10^k-T\\), then append a zero.\n\nBorrowing one unit from the upper block of \\(k\\) digits gives the exact identity\n\\[\nT10^k-T=(T-1)10^k+(10^k-T).\n\\]\nThe upper block, \\(T-1\\), consists of \\(k-1\\) fours followed by \\(3\\). For the lower block, write\n\\[\n10^k-T=(10^k-1-T)+1.\n\\]\nSubtracting \\(k\\) fours from \\(k\\) nines gives \\(k\\) fives. Adding \\(1\\) changes only the final digit to \\(6\\). Thus the lower block consists of \\(k-1\\) fives followed by \\(6\\). It has exactly \\(k\\) digits, so the two blocks concatenate without further carrying.\n\nTherefore \\(9ab\\) consists of \\(k-1\\) fours, then \\(3\\), then \\(k-1\\) fives, then \\(6\\), and finally \\(0\\). Its digit sum is\n\\[\n4(k-1)+3+5(k-1)+6+0=9k=\\boxed{17865}.\n\\]\nThe answer is choice C.",
+        "nodeIds": [
+          "math:repdigit-product-digits"
+        ],
+        "prerequisiteIds": [
+          "cnm_p096",
+          "cnm_p116"
+        ],
+        "levelReason": "Uses decimal place value, distributivity, and justified borrowing between digit blocks."
+      }
+    ],
+    "assessedIds": [
+      "math:repdigit-product-digits"
+    ],
+    "supportIds": [
+      "cnm_p096",
+      "cnm_p116"
+    ],
+    "annotationRationale": "The target is proving the exact decimal digits of a repdigit product before summing them. The method encodes the repeated digits through 9R = 10^k - 1 and verifies both decimal blocks by borrowing. Decimal place value and distributivity are its supporting knowledge.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1985_AMC_12_Q29",
+    "decision": "accept",
+    "mathematicalCheck": "With 9R=10^k-1 and T=4R, the identity 9ab=10T(10^k-1) is exact. Borrowing verifies the blocks T-1 and 10^k-T as k-1 fours followed by 3, and k-1 fives followed by 6. Appending zero gives digit sum 9k=17865.",
+    "levelCheck": "Decimal place value, distributivity, and borrowing are elementary. Both blocks and the absence of further carrying are justified.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The repdigit-digit assessment fits the exact digit proof. The decimal-place-value portion of cnm_p096 and distributivity in cnm_p116 provide appropriate support.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "decimal-block-subtraction": "decimal-block-subtraction"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "5d919c4d38abfc4aa8ccfc46a497f02dcb4a295af5f5589545368ba79a2b6e52",
+    "inputHash": "2fbfc732a6c9a879f922df769f09b8bf61e9e392f926f11bc1128a5355580280",
+    "authorInputHash": "cd4565399c0cc34c5a6e6fd7585795ec0f6da180606d725a8ecb22dd5899efc4",
+    "reviewInputHash": "6b55365e208c4454706360218c9fdb3402685510647b39b7807f281c93485ff7",
+    "authorResponseHash": "44bea0f10bd51458514acb5af9b396df1734c54ce87fe1b497a7e3e32e658dc3",
+    "reviewerResponseHash": "e8aecd268dd01b11876c1fc63762e4ffd5dd87b6f8695b00ab6d18902a901ad3",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1981_AMC_12_Q18",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "3222a52f9d2ce4513d829c9ffb37349ed05fb26c3ecf971dd647b3c5a6f24496",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "4998fa8c51c3c927b845be5a803555101d89c4346cd108d18c7c6040bb9d286d",
+  "solutionFigureHashes": {},
+  "candidateHash": "4064ec96173fcb421672288eecbcf94037d20ed7556cf01f2021cf4ab78a2f8a",
+  "candidate": {
+    "questionId": "1981_AMC_12_Q18",
+    "derivedAnswer": "63, choice C",
+    "answerStatus": "matches",
+    "answerReason": "There are 31 positive solutions, 31 corresponding negative solutions, and the solution x=0.",
+    "methods": [
+      {
+        "id": "half-waves-and-symmetry",
+        "label": "Count positive half-waves and use symmetry",
+        "explanation": "Since \\(|\\sin x|\\le 1\\), every solution satisfies \\(|x|\\le 100\\). Also, both sides are odd functions, so every positive solution has a distinct negative partner. The number \\(0\\) is a solution; it remains to count the positive ones.\n\nFor positive \\(x\\), the sine must be positive. Since \\(31\\pi<100<32\\pi\\), the only possible positive half-waves are\n\\[\n2k\\pi<x<(2k+1)\\pi,\n\\qquad k=0,1,\\ldots,15.\n\\]\nThe stated bounds follow, for example, from \\(3.14<\\pi<22/7\\).\n\nWe need to know that a straight line meets each of these half-waves at most twice. Here is a trigonometric justification. For \\(0\\le u<v\\le\\pi\\), the addition formulas give\n\\[\n\\frac{\\sin u+\\sin v}{2}\n=\\sin\\frac{u+v}{2}\\cos\\frac{v-u}{2}\n<\\sin\\frac{u+v}{2}.\n\\]\nThus the midpoint of the sine graph lies strictly above the midpoint of every chord. Repeated bisection gives the non-strict chord inequality at all dyadic subdivision points, and continuity extends it to every point. The strict midpoint inequality then makes the chord inequality strict everywhere inside the interval: on either side of the midpoint, compare with the chord joining that midpoint to the corresponding endpoint. Consequently, three intersections with a line are impossible, because the middle intersection would have to lie strictly above the chord joining the other two. Translating by \\(2k\\pi\\) gives the same conclusion for every positive half-wave.\n\nLet \\(f(x)=\\sin x-x/100\\). On the first half-wave, \\(f(0)=0\\), \\(f(\\pi/2)>0\\), and \\(f(\\pi)<0\\). Continuity gives a root between \\(\\pi/2\\) and \\(\\pi\\). The two-intersection bound, counting the root at \\(0\\), shows that this is the only positive root in the first half-wave.\n\nFor each \\(k=1,\\ldots,15\\), both endpoints of the half-wave have negative \\(f\\)-values, while its midpoint \\(m_k=(2k+\\tfrac12)\\pi\\) satisfies\n\\[\nf(m_k)=1-\\frac{m_k}{100}>0,\n\\]\nbecause \\(m_k\\le 30.5\\pi<100\\). Continuity therefore gives one root on each side of the midpoint, and the intersection bound makes these exactly two. No positive multiple of \\(\\pi\\) is a solution, and the remaining intervals have nonpositive sine.\n\nThere are therefore \\(1+15\\cdot2=31\\) positive solutions. Including their negative partners and zero gives\n\\[\n2\\cdot31+1=\\boxed{63},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "math:sine-line-root-counting",
+          "cnm_h049",
+          "cnm_h036"
+        ],
+        "prerequisiteIds": [
+          "cnm_h066",
+          "cnm_h060"
+        ],
+        "levelReason": "The half-wave uniqueness bound is proved using trigonometric identities, bisection, and continuity. The argument stays within precalculus."
+      }
+    ],
+    "assessedIds": [
+      "math:sine-line-root-counting"
+    ],
+    "supportIds": [
+      "cnm_h066",
+      "cnm_h060"
+    ],
+    "annotationRationale": "The target is an exhaustive sine-line intersection count, including a per-half-wave upper bound. The method uses continuous sign changes for existence and odd symmetry to pair roots. Sine range and periodicity bound the relevant intervals, while unit-circle properties justify the cosine inequality in the chord argument.",
+    "needsNewNodes": [
+      {
+        "name": "General sine and cosine addition identities",
+        "description": "Apply sine and cosine addition and subtraction formulas at arbitrary real angles, including deriving sum-to-product identities and multiple-angle recurrences.",
+        "reason": "The chord proof uses an addition-formula identity at arbitrary angles. The supplied addition-formula nodes restrict their applications to special-angle numerical evaluations."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1981_AMC_12_Q18",
+    "decision": "accept",
+    "mathematicalCheck": "The strict midpoint inequality correctly extends to a strict chord inequality, excluding three line intersections on a positive half-wave. Endpoint and midpoint signs then give one positive root in the first half-wave and two in each of the next fifteen. The bounds exclude all remaining intervals, and odd symmetry gives 2(31)+1=63.",
+    "levelCheck": "The necessary intersection bound is proved using elementary trigonometry, bisection, and continuity, without calculus.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The synthesis target and supporting sine properties fit the solution. The proposed general addition-identity node honestly addresses the narrower scope of existing special-angle nodes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "half-waves-and-symmetry": "half-waves-and-symmetry"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "17b4b7c0a4a2b16e06bb7219fdc766361d335aea22cc11804f1ff01bdbb4fed7",
+    "inputHash": "e8d76385717a2cf62a9d26106c8efb2d2f00a1263630402160635b900298e116",
+    "authorInputHash": "177239096f5b52bf09cf9117c1cd21ec0a46950cdefb5c87553886593db873fd",
+    "reviewInputHash": "a4853126088d4de99c14dcc811543e305dd5be30e52724173f7e7e0de31c6e9b",
+    "authorResponseHash": "aa009f8b1ae968b3347b8c4f2d42ed410c435d32ebb5916872a86371f4e683f6",
+    "reviewerResponseHash": "07a79fbd995f7dbf4c3acafa37ce3da5cadaf92eb7e97b27be6453da04d3b1ad",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,106 @@
+{
+  "Year": 2004,
+  "Level": "AMC 12",
+  "Batch": "A",
+  "Area": "Unclassified",
+  "Number": 7,
+  "Question": "A game is played with tokens according to the following rule. In each round, the player with the most tokens gives one token to each of the other players and also places one token into a discard pile. The game ends when some player runs out of tokens. Players \\(A,\\) \\(B,\\) and \\(C\\) start with \\(15,\\) \\(14,\\) and \\(13\\) tokens, respectively. How many rounds will there be in the game?",
+  "Question Type": "text",
+  "Choices": {
+    "A": "\\(36\\)",
+    "B": "\\(37\\)",
+    "C": "\\(38\\)",
+    "D": "\\(39\\)",
+    "E": "\\(40\\)"
+  },
+  "Choices Type": "text",
+  "Correct Answer": "B",
+  "Solution": "Each round removes \\(3\\) tokens from the leader: one for each other player and one for the discard pile. Look for a short block after which the relative counts return to their starting pattern.\n\nList counts in the order \\((A,B,C)\\). For an integer \\(n\\ge2\\), a block beginning with \\((n+2,n+1,n)\\) proceeds as follows:\n\\[\n\\begin{aligned}\n\\text{start: }&(n+2,n+1,n),\\\\\n\\text{after 1 round: }&(n-1,n+2,n+1),\\\\\n\\text{after 2 rounds: }&(n,n-1,n+2),\\\\\n\\text{after 3 rounds: }&(n+1,n,n-1).\n\\end{aligned}\n\\]\nThe leaders are uniquely \\(A\\), then \\(B\\), then \\(C\\). Every count stays positive because \\(n-1\\ge1\\). Thus three rounds reduce every player's count by \\(1\\) and reproduce the same pattern.\n\nInitially \\(n=13\\). Twelve such blocks, beginning with \\(n=13,12,\\ldots,2\\), are all valid and leave\n\\[\n(A,B,C)=(3,2,1)\n\\]\nafter \\(12\\cdot3=36\\) rounds. In round \\(37\\), \\(A\\) gives away its three tokens, producing \\((0,3,2)\\). This is the first zero, so the game lasts \\(37\\) rounds, choice \\(\\mathrm{B}\\).",
+  "Meta": {
+    "QuestionSource": "live-poshenloh",
+    "AnswerSource": "live-poshenloh-answer-key",
+    "SolutionSource": "Original Math Practice solution",
+    "AreaSource": "Pending topic curation",
+    "Concepts": "process simulation; invariant",
+    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2004A/solutions",
+    "SourceSHA256": "ad6482ab45e62b62b89c20685923515acef2198626a63aa3e0b92ee1fc937d8e",
+    "Figures": [],
+    "FigureSources": {},
+    "SourceQuestionCount": 25,
+    "HistoricalSeries": "AMC 12",
+    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+    "Copyright": "Copyright Mathematical Association of America",
+    "License": "CC-BY-NC-SA-4.0",
+    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "TranscriptionSource": "LIVE by Po-Shen Loh",
+    "Modifications": [
+      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
+      "Third-party worked solution and solution-only figures omitted from the public distribution"
+    ],
+    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+    "SolutionReview": {
+      "status": "reviewed",
+      "solutionSHA256": "cf73c9c0da3e37bfbb9892acef51a0f1c67d2348fa31a4d3e441155999566d8a",
+      "questionContentHash": "927bd3735f71fcc4aa01d1b5e94427280f524f7c32fa1ed710d672f6a6e78258",
+      "evidence": {
+        "path": "knowledge-graph/evidence/solutions-2026-11-06/2004_AMC_12A_Q07.json",
+        "sha256": "077b67cd8ceb10f8ed72bf1885c1340b4ff9ae699c006794215a09b38883e07a"
+      },
+      "author": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "reviewer": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      }
+    }
+  },
+  "ID": "2004_AMC_12A_Q07",
+  "Bank": "amc",
+  "SchemaVersion": "2.0",
+  "ResponseType": "choice",
+  "Language": "en",
+  "domain": [],
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "1.0.0",
+    "contentHash": "927bd3735f71fcc4aa01d1b5e94427280f524f7c32fa1ed710d672f6a6e78258",
+    "status": "mapped",
+    "reviewStatus": "machine_scope_audited",
+    "assessedIds": [
+      "cnm_h200"
+    ],
+    "supportIds": [
+      "cnm_p060"
+    ],
+    "routes": [
+      {
+        "id": "three-round-state-cycle",
+        "label": "Three-round state cycle",
+        "nodeIds": [
+          "cnm_h202"
+        ]
+      },
+      {
+        "id": "residue-and-range-invariant",
+        "label": "Residues and balance-range invariant",
+        "nodeIds": [
+          "math:invariant-reasoning",
+          "math:modular-congruence"
+        ]
+      },
+      {
+        "id": "three-round-state-pattern",
+        "label": "Find a repeating three-round pattern",
+        "nodeIds": [
+          "cnm_h200",
+          "cnm_025",
+          "cnm_p060"
+        ]
+      }
+    ],
+    "flags": []
+  }
+}

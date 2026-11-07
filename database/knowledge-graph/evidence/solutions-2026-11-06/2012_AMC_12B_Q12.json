@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2012_AMC_12B_Q12",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "5404de88134e8931aa81758e66b29cb9e4b549c6032d141e3605dcb87d107a37",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "a32fdc5af5baaae37bedaa9d6480e4172523ae06b69d93264b29b7831d0bb0f7",
+  "solutionFigureHashes": {},
+  "candidateHash": "47cc0f68988afb517355a09a6079dcb466400fe578aefb1f1ae08120f86fe0a7",
+  "candidate": {
+    "questionId": "2012_AMC_12B_Q12",
+    "derivedAnswer": "382 (E)",
+    "answerStatus": "matches",
+    "answerReason": "There are 210 sequences with a nonempty single zero block and 210 with a nonempty single one block. Their overlap contains 38 sequences, giving 210+210-38=382.",
+    "methods": [
+      {
+        "id": "count-block-families",
+        "label": "Method 1: Count two overlapping families",
+        "explanation": "Count sequences with a single block of zeros, then sequences with a single block of ones, correcting for sequences counted twice.\n\nLet \\(Z\\) consist of sequences containing at least one zero, with all zeros consecutive. If the zero block has length \\(k\\), where \\(1\\le k\\le20\\), its first position has \\(21-k\\) possibilities. Every position outside that block must contain a one, so each placement determines exactly one sequence. Hence\n\\[\n|Z|=20+19+\\cdots+1=\\frac{20\\cdot21}{2}=210.\n\\]\nSimilarly, the family \\(O\\) containing a nonempty single block of ones has \\(210\\) sequences. Both constant sequences are included: the all-zero sequence belongs to \\(Z\\), and the all-one sequence belongs to \\(O\\).\n\nA sequence in both families contains both digits, each in one block. It must therefore consist of a zero block followed by a one block, or the reverse. There are \\(19\\) possible boundaries and \\(2\\) choices for the first digit, giving \\(38\\) sequences in the overlap. Every requested sequence belongs to at least one family, so the required count is\n\\[\n210+210-38=\\boxed{382},\n\\]\nchoice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "cnm_h232",
+          "cnm_h009"
+        ],
+        "prerequisiteIds": [
+          "cnm_h008",
+          "cnm_h204",
+          "cnm_h231"
+        ],
+        "levelReason": "This uses elementary block placement, an arithmetic sum, and the two-set inclusion-exclusion formula."
+      },
+      {
+        "id": "count-runs",
+        "label": "Method 2: Count changes of digit",
+        "explanation": "A run is a maximal consecutive block of equal digits. For example, \\(0011100\\) has three runs.\n\nA sequence qualifies exactly when it has at most three runs. With one or two runs, every occurring digit occupies one block. With three runs, the middle run contains every occurrence of one digit, so that digit is consecutive. With four or more runs, alternation forces both digits to occupy at least two separate blocks, so neither is consecutive.\n\nThere are \\(19\\) gaps between the \\(20\\) positions. Choosing which gaps contain changes, together with the first digit, determines a sequence uniquely. Thus there are \\(2\\) sequences with one run, \\(2\\cdot19\\) with two runs, and\n\\[\n2\\binom{19}{2}=2\\cdot\\frac{19\\cdot18}{2}=342\n\\]\nwith three runs. The cases are disjoint and cover every qualifying sequence, giving\n\\[\n2+38+342=\\boxed{382},\n\\]\nchoice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "cnm_h232",
+          "cnm_h239"
+        ],
+        "prerequisiteIds": [
+          "cnm_h231",
+          "cnm_h236",
+          "cnm_h237"
+        ],
+        "levelReason": "The method uses runs and unordered choices of two gaps, requiring only elementary counting."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h232"
+    ],
+    "supportIds": [
+      "cnm_h231"
+    ],
+    "annotationRationale": "The common target is counting restricted sequences through exhaustive cases and sequential choices. Two-set inclusion-exclusion and arithmetic summation belong to the first method; choosing change positions by combinations belongs to the second. Neither alternative is a requirement for the other.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2012_AMC_12B_Q12",
+    "decision": "accept",
+    "mathematicalCheck": "Each nonempty block family has 210 sequences, and their intersection has 2·19=38 sequences. Both constant sequences are included exactly once in the union. Independently, qualifying sequences have at most three runs, giving 2+38+2·171=382.",
+    "levelCheck": "Both methods use accessible elementary counting and explain the decisive completeness and multiplicity checks.",
+    "methodDistinctness": "Overlapping block families and choosing digit-change positions provide distinct counting approaches.",
+    "annotationCheck": "Combined counting and multiplication are shared appropriately. Inclusion-exclusion and arithmetic summation remain local to the first method, while combinations remain local to the second.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-block-families": "count-block-families",
+    "count-runs": "count-runs"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "75c63bc4305ae373afe4de2ad3109ee925bf27e3ff7b32028a3f73aa54a0a5d3",
+    "inputHash": "4ebd27f43afeaf67da3b485ca7b745000fd60c129dee460df814fe62fca25692",
+    "authorInputHash": "170a81e073bde9606e9030179b437a78eca59223507a68b0f85fbf21fa2f0a0f",
+    "reviewInputHash": "4388eae04f732e590cd277c472a8bc895d4d7c25a8231d4597fde239729f576e",
+    "authorResponseHash": "44fed41d2bb20fc037f8bd734ec5e4ba1dc1e197aff8692b11c101e66dc9962b",
+    "reviewerResponseHash": "a624734952d900464f943cdec646db5798585f34ee6a154058b1af25b6430c0f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

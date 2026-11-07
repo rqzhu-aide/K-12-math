@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1996_AMC_12_Q27",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "f601fe837d4265896e7f8903be4ad5db4ec254574eada573c2b056d8e6244653",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "43a202d93bcea81c6aae19cb13ce4e1b969c2df70a61a6a5dd65d43855769bde",
+  "solutionFigureHashes": {},
+  "candidateHash": "690234dddb15dd639cef9151c0a6af248a980946defd05486d9b62ce03a1d384",
+  "candidate": {
+    "questionId": "1996_AMC_12_Q27",
+    "derivedAnswer": "13, choice D",
+    "answerStatus": "matches",
+    "answerReason": "The only possible integer height is z=5. At that height the intersection requires x²+y²≤17/4, equivalent for integer coordinates to x²+y²≤4, which contains 13 points.",
+    "methods": [
+      {
+        "id": "one-horizontal-slice",
+        "label": "Restrict the height, then count rows",
+        "explanation": "First use the vertical positions of the balls to restrict \\(z\\). The ball centered at height \\(21/2\\) extends from \\(9/2\\) to \\(33/2\\), while the other extends from \\(-7/2\\) to \\(11/2\\). A point in both must therefore satisfy\n\\[\n\\frac92\\le z\\le\\frac{11}{2}.\n\\]\nThe only integer in this interval is \\(z=5\\).\n\nUsing squared distances from the two centers, a point at this height belongs to both solid balls exactly when\n\\[\nx^2+y^2\\le36-\\left(5-\\frac{21}{2}\\right)^2\n=\\frac{23}{4}\n\\]\nand\n\\[\nx^2+y^2\\le\\frac{81}{4}-(5-1)^2\n=\\frac{17}{4}.\n\\]\nThe second condition is tighter. Since \\(x^2+y^2\\) is an integer, it is equivalent to \\(x^2+y^2\\le4\\).\n\nCount by the integer value of \\(y\\):\n\nFor \\(y=0\\), the five possibilities are \\(x=-2,-1,0,1,2\\).\n\nFor each of \\(y=1\\) and \\(y=-1\\), the three possibilities are \\(x=-1,0,1\\).\n\nFor each of \\(y=2\\) and \\(y=-2\\), only \\(x=0\\) works.\n\nNo \\(|y|\\ge3\\) can work because then \\(y^2>4\\). These rows are disjoint and include every possible point, so the total is\n\\[\n5+2\\cdot3+2\\cdot1=\\boxed{13}.\n\\]\nThe answer is choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "math:lattice-counting",
+          "cnm_h154"
+        ],
+        "prerequisiteIds": [
+          "cnm_h151"
+        ],
+        "levelReason": "The solution uses spatial distance squares and a small exhaustive count in one horizontal plane."
+      }
+    ],
+    "assessedIds": [
+      "math:lattice-counting"
+    ],
+    "supportIds": [
+      "cnm_h154"
+    ],
+    "annotationRationale": "The assessed target is translating the intersection into exact integer-coordinate restrictions and counting all eligible points once. Spatial distance supplies the inequalities. The solid-ball boundaries are included through weak inequalities; no sphere-volume formula is involved.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1996_AMC_12_Q27",
+    "decision": "accept",
+    "mathematicalCheck": "The common vertical range is [9/2,11/2], forcing z=5. The tighter slice inequality is x²+y²≤17/4, equivalent for integer coordinates to x²+y²≤4. The exhaustive disjoint rows contain 5+3+3+1+1=13 points.",
+    "levelCheck": "Squared spatial distances and a small row count are appropriate and clearly presented.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The lattice-counting target, spatial-distance support, and three-dimensional-coordinate prerequisite match the solution. Boundary inclusion is handled correctly.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "one-horizontal-slice": "one-horizontal-slice"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "d87f76c2708375c019e4c009a1e34da9f6a787032d6ad98d0794d6a6acc37a09",
+    "inputHash": "459eb3e87dde78af8b31b022a75b119be5af954d354e35fc89ac5bdcdd59e53c",
+    "authorInputHash": "ba7cec683e9a0b919911d134dda7d6bafc936333ff568baef45d304f41eac91d",
+    "reviewInputHash": "4e3058988c59284cc173429ff25b5056da6c68e7ecd13b363f871a918ec45626",
+    "authorResponseHash": "32ca50ce56798df12d0256239eedc880177caf2a698a2a87cf06e7c928d1b07b",
+    "reviewerResponseHash": "5678d3293c21b6aa6fefdc9267f60db614007e718a992cdc47aff4c89dfc9488",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

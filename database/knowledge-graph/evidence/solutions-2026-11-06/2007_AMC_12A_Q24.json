@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2007_AMC_12A_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "dc792025ea83257c99dfc7da89b37053590467a3d8c3167432dcf1c109f9c032",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "546d7a22739b9aef8150eaa49b3c62adbde952060267eea6045200c96eada69a",
+  "solutionFigureHashes": {},
+  "candidateHash": "5ec4a498ef4bec8eb5e5cfc86377f65db872d67267829e5129999c207a5c67bd",
+  "candidate": {
+    "questionId": "2007_AMC_12A_Q24",
+    "derivedAnswer": "D, 2016532",
+    "answerStatus": "matches",
+    "answerReason": "The two equal-sine solution families contain n+1 entries altogether. Their only possible overlap is π/2, occurring exactly for n=5,9,…,2005. Subtracting these 501 repetitions from 2017033 gives 2016532.",
+    "methods": [
+      {
+        "id": "unit-circle-families-and-overlaps",
+        "label": "Count the two equal-sine families",
+        "explanation": "On the unit circle, sine is the vertical coordinate. Points with the same vertical coordinate have angles \\(x\\) and \\(\\pi-x\\), allowing whole turns of \\(2\\pi\\). These account for every point with that height, so \\(\\sin x=\\sin nx\\) holds exactly when\n\\[\nnx=x+2k\\pi\n\\quad\\text{or}\\quad\nnx=\\pi-x+2j\\pi,\n\\]\nwhere \\(k,j\\) are integers. Since \\(n>1\\), solving these equations gives two families:\n\\[\nx=\\frac{2k\\pi}{n-1},\n\\qquad\nx=\\frac{(2j+1)\\pi}{n+1}.\n\\]\nThe closed interval \\([0,\\pi]\\) imposes\n\\[\n0\\le k\\le\\frac{n-1}{2},\n\\qquad\n0\\le j\\le\\frac n2.\n\\]\nThese non-strict bounds include all endpoint solutions.\n\nIf \\(n=2m\\), the families contain \\(m\\) and \\(m+1\\) entries. If \\(n=2m+1\\), they contain \\(m+1\\) entries each. Either way, their counts add to \\(n+1\\). Within each family, different indices give different values.\n\nWe must still remove any value appearing in both families. If both angle equations hold, subtracting them gives\n\\[\n2x=\\pi+2(j-k)\\pi.\n\\]\nThe only such value in \\([0,\\pi]\\) is \\(x=\\pi/2\\). It belongs to both families exactly when \\(k=j=(n-1)/4\\) is an integer, that is, when \\(n=4r+1\\) for an integer \\(r\\ge1\\). Thus \\(F(n)=n+1\\), with one subtraction for each such \\(n\\).\n\nSumming the initial counts gives\n\\[\n\\sum_{n=2}^{2007}(n+1)\n=\\frac{2006(3+2008)}2\n=2{,}017{,}033.\n\\]\nThe indices requiring a subtraction are \\(5,9,\\ldots,2005\\), of which there are\n\\[\n\\frac{2005-5}{4}+1=501.\n\\]\nTherefore the requested sum is\n\\[\n2{,}017{,}033-501=\\boxed{2{,}016{,}532},\n\\]\nchoice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_h060",
+          "cnm_h064",
+          "cnm_h066",
+          "cnm_h009",
+          "cnm_h204"
+        ],
+        "prerequisiteIds": [
+          "cnm_h057",
+          "cnm_042",
+          "cnm_p156"
+        ],
+        "levelReason": "Uses unit-circle trigonometry, periodicity, finite counting, and arithmetic sums within AMC 12 precalculus."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_h057",
+      "cnm_042",
+      "cnm_p156"
+    ],
+    "annotationRationale": "The task-level target is an exhaustive count of solutions to a periodic trigonometric equation, which has no precise existing catalog node. The method uses unit-circle heights, sine symmetry and periodicity to obtain all solutions. Union counting removes duplicates, and arithmetic-sequence summation combines the counts. No monotonicity or floor-function procedure is used.",
+    "needsNewNodes": [
+      {
+        "name": "Solving and counting equal-sine equations",
+        "description": "Characterize sin(u)=sin(v) by u=v+2kπ or u=π−v+2kπ for integer k. Apply interval restrictions and count distinct solutions, including endpoints and overlaps between the two families.",
+        "reason": "The catalog separately covers unit-circle definitions, sine symmetry, periodicity, and finite unions, but lacks their synthesis into complete trigonometric solution families and interval counts. The sine-line intersection node concerns a different equation type."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2007_AMC_12A_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "The two complete equal-sine families have n+1 entries before deduplication. Their only possible common value is π/2, occurring precisely when n=4r+1. There are 501 such indices, so the total is 2,017,033−501=2,016,532. Endpoints are counted correctly.",
+    "levelCheck": "Unit-circle symmetry, periodicity, parity counting, and arithmetic sums fit AMC 12 precalculus. The decisive overlap argument is explicit.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The trigonometric, union-counting, and summation annotations match the proof. The proposed synthesis node honestly addresses the catalog gap without forcing the unrelated sine-line node.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "unit-circle-families-and-overlaps": "unit-circle-families-and-overlaps"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "b31377a40d38f8957ab8102a03ef45275e68f9acc27927a5f0c267a11e0f92d8",
+    "inputHash": "4aea22a222fc30944365d4f481fe87db23eb8d06cd0a17a69abf19294fd5b896",
+    "authorInputHash": "6794eb01888d914c1aa8f018b4ffbc4113f86f31e4a2cd0f04fbec6c43d9516d",
+    "reviewInputHash": "f0ed2d296f5a74becbf6fe0557d957d512e03680870af7b55d90b007c7d75e52",
+    "authorResponseHash": "6425a94d0e7467929f5982c24644042438e5b91b08b3ce01e7297b2ea242d79e",
+    "reviewerResponseHash": "960a36986739a101e09a21997d8620860b461baf0257a772392b34b9cc883dca",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

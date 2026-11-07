@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2011_AMC_12A_Q16",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "59f3c0451bfa116612691563f821514924e72d80399d654758a3c4c4d722e59d",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "ee18f1c435480ce02c883bb28cea7b2798f06f5d5c4cf227acf10cd129a36023",
+  "solutionFigureHashes": {},
+  "candidateHash": "20a405aa08806fe722a2590b8033820b922d92de54eb1a666fbaed41eb40c0e0",
+  "candidate": {
+    "questionId": "2011_AMC_12A_Q16",
+    "derivedAnswer": "3120 (C)",
+    "answerStatus": "matches",
+    "answerReason": "Classifying colorings by their repeated-color groups gives 720 + 1800 + 600 = 3120, agreeing with choice C.",
+    "methods": [
+      {
+        "id": "color-multiplicity-cases",
+        "label": "Classify repeated-color groups",
+        "explanation": "Two vertices can have the same color only if they are joined by a side, since every other pair forms a diagonal. Moreover, no color can occur at three vertices: a vertex's two side neighbors are joined to each other by a diagonal. Thus every color occurs once or twice, and the possible numbers of colors used are \\(5\\), \\(4\\), and \\(3\\).\n\nIf all five colors are different, assigning colors to the five labeled vertices gives\n\\[\n6\\cdot5\\cdot4\\cdot3\\cdot2=720\n\\]\ncolorings.\n\nIf exactly four colors occur, there is one same-color pair. Choose its side in \\(5\\) ways, then assign different colors to that pair and the three remaining vertices. This gives\n\\[\n5(6\\cdot5\\cdot4\\cdot3)=1800.\n\\]\n\nIf exactly three colors occur, the group sizes must be \\(2,2,1\\). Choose the singleton vertex in \\(5\\) ways. The other four vertices have a unique pairing into two sides: after removing the singleton, they form a path, whose endpoint must be paired with its only remaining neighbor. The other pair is then forced. Assigning different colors to these three distinguished groups gives\n\\[\n5(6\\cdot5\\cdot4)=600.\n\\]\n\nEvery valid coloring belongs to exactly one case, and its same-color groups uniquely determine the choices counted there. Therefore the total is\n\\[\n720+1800+600=\\boxed{3120},\n\\]\nwhich is choice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "math:graph-coloring",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_h231",
+          "cnm_180"
+        ],
+        "levelReason": "The argument uses elementary adjacency restrictions, exhaustive cases, and successive color choices."
+      },
+      {
+        "id": "follow-the-diagonal-cycle",
+        "label": "Follow the cycle of diagonals",
+        "explanation": "The five diagonals connect the vertices in the cyclic order\n\\[\nA,C,E,B,D,A.\n\\]\nThus the restriction says that consecutive vertices in this order must have different colors. Color them in this order, keeping track of whether the last vertex will face one or two forbidden colors.\n\nThere are \\(6\\) choices for \\(A\\) and \\(5\\) for \\(C\\). Now split according to the color of \\(E\\).\n\nIf \\(E\\) has the color of \\(A\\), then \\(B\\) has \\(5\\) choices. Its color differs from \\(A\\), so \\(D\\), which must differ from both \\(B\\) and \\(A\\), has \\(4\\) choices. This contributes\n\\[\n6\\cdot5\\cdot5\\cdot4=600.\n\\]\n\nIf \\(E\\) differs from both \\(A\\) and \\(C\\), it has \\(4\\) choices. There are two possibilities for \\(B\\):\n\nIf \\(B\\) has the color of \\(A\\), there is \\(1\\) choice for \\(B\\) and \\(5\\) for \\(D\\). If \\(B\\) differs from both \\(A\\) and \\(E\\), there are \\(4\\) choices for \\(B\\) and \\(4\\) for \\(D\\). Together these contribute\n\\[\n6\\cdot5\\cdot4(1\\cdot5+4\\cdot4)=2520.\n\\]\n\nThese cases are disjoint and include every coloring of the diagonal cycle. Every diagonal restriction is checked when its later endpoint is colored. Hence the answer is\n\\[\n600+2520=\\boxed{3120},\n\\]\nchoice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "math:graph-coloring",
+          "math:graph-models",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_h231",
+          "cnm_180"
+        ],
+        "levelReason": "Recognizing the five-cycle allows a direct finite case count without a graph-coloring formula or recurrence."
+      }
+    ],
+    "assessedIds": [
+      "math:graph-coloring"
+    ],
+    "supportIds": [
+      "cnm_h231",
+      "cnm_180"
+    ],
+    "annotationRationale": "The target is counting color assignments under exactly the stated diagonal restrictions. The first method classifies repeated-color groups; the second represents the restrictions as a cycle. Both combine disjoint cases with successive choices. State recursion and counting up to symmetry are not used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2011_AMC_12A_Q16",
+    "decision": "accept",
+    "mathematicalCheck": "Repeated-color groups have sizes at most two. The exhaustive multiplicity cases give 720 + 1800 + 600 = 3120 without duplication. Independently, the diagonal-cycle cases give 600 + 2520 = 3120.",
+    "levelCheck": "Both explanations use accessible elementary counting appropriate for AMC 12.",
+    "methodDistinctness": "Multiplicity classification and sequential coloring of the diagonal cycle provide genuinely different counting approaches.",
+    "annotationCheck": "The assessed coloring node, shared prerequisites, and method-local graph modeling accurately reflect the solutions. Neither recursion nor symmetry identification is claimed.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "color-multiplicity-cases": "solution:color-multiplicity-cases:ee18f1c43548",
+    "follow-the-diagonal-cycle": "follow-the-diagonal-cycle"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "8abd97deb7b3e5246b73439f930fc3ff7f42e7dfbaec4baaaaa5e98378006d0d",
+    "inputHash": "e56d5ad0e5e2b9d60de0fdef867281dfe72a24b62a0a1404603361328da9b673",
+    "authorInputHash": "a06a686d80119e9f04a800fab2fbad2ca6db050479b3bf5173d3b5901be4bad1",
+    "reviewInputHash": "00b2c64359b2ff6269382180c371c913869a54ababa3b2234b9cd71b4aa22c23",
+    "authorResponseHash": "98d549db7e611a3477ed724585ef133bd4b54b5cf8d70489c329c18295162a05",
+    "reviewerResponseHash": "b8a8f878bf26c3278f3a6aa1e8418a6a3c71930318dcd9cc5c5a00955193fffc",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

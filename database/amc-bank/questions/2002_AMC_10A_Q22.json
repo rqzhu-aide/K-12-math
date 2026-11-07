@@ -1,0 +1,100 @@
+{
+  "Year": 2002,
+  "Level": "AMC 10",
+  "Batch": "A",
+  "Area": "Unclassified",
+  "Number": 22,
+  "Question": "A set of tiles numbered \\(1\\) through \\(100\\) is modified repeatedly by the following operation: remove all tiles numbered with a perfect square, and renumber the remaining tiles consecutively starting with \\(1.\\) How many times must the operation be performed to reduce the number of tiles in the set to one?",
+  "Question Type": "text",
+  "Choices": {
+    "A": "\\(10\\)",
+    "B": "\\(11\\)",
+    "C": "\\(18\\)",
+    "D": "\\(19\\)",
+    "E": "\\(20\\)"
+  },
+  "Choices Type": "text",
+  "Correct Answer": "C",
+  "Solution": "Method 1: Track the number of tiles\n\nRenumbering means that only the current number of tiles matters. If there are \\(N\\) tiles and \\(k^2\\) is the largest perfect square no greater than \\(N\\), then the square labels are exactly \\(1^2,2^2,\\ldots,k^2\\). The operation removes \\(k\\) tiles, leaving \\(N-k\\).\n\nFor example, \\(100\\) tiles lose \\(10\\) tiles, leaving \\(90\\). Since \\(9^2\\le90<10^2\\), the next operation removes \\(9\\), leaving \\(81\\). Applying the same rule throughout gives\n\\[\n100\\to90\\to81\\to72\\to64\\to56\\to49,\n\\]\n\\[\n49\\to42\\to36\\to30\\to25\\to20\\to16,\n\\]\n\\[\n16\\to12\\to9\\to6\\to4\\to2\\to1.\n\\]\nEach arrow represents one operation. There are six arrows in each row, for \\(18\\) operations altogether. Every earlier count exceeds \\(1\\), so we stop after exactly \\(18\\) operations, choice \\(\\mathrm{C}\\).\n\nMethod 2: Group operations between consecutive squares\n\nLook at what happens when the tile count is a perfect square. With \\(k^2\\) tiles, where \\(k\\ge2\\) is an integer, there are exactly \\(k\\) square labels. One operation therefore leaves \\(k^2-k\\) tiles.\n\nThis new count lies strictly between \\((k-1)^2\\) and \\(k^2\\), because\n\\[\nk^2-k-(k-1)^2=k-1>0\n\\]\nand \\(k^2-k<k^2\\). Thus its square labels are exactly \\(1^2,2^2,\\ldots,(k-1)^2\\). The next operation removes \\(k-1\\) tiles and leaves\n\\[\nk^2-k-(k-1)=(k-1)^2.\n\\]\nSo the pattern\n\\[\nk^2\\longrightarrow k^2-k\\longrightarrow(k-1)^2\n\\]\nalways takes exactly two operations.\n\nStarting at \\(100=10^2\\), we pass through the squares with roots \\(10,9,\\ldots,1\\). There are nine decreases of the root, each requiring two operations. No intermediate count is \\(1\\), since \\(k^2-k\\ge2\\) for \\(k\\ge2\\). Hence the first arrival at one tile occurs after \\(2\\cdot9=18\\) operations, choice \\(\\mathrm{C}\\).",
+  "Meta": {
+    "QuestionSource": "live-poshenloh",
+    "AnswerSource": "live-poshenloh-answer-key",
+    "SolutionSource": "Original Math Practice solution",
+    "AreaSource": "Pending topic curation",
+    "Concepts": "perfect square; recursion; pattern recognition",
+    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2002A/solutions",
+    "SourceSHA256": "ef646e1f0b9601b2c9e841baac72737fe537eefb4bdf0c7f325c9a1033d0e76c",
+    "Figures": [],
+    "FigureSources": {},
+    "SourceQuestionCount": 25,
+    "HistoricalSeries": "AMC 10",
+    "SolutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+    "Copyright": "Copyright Mathematical Association of America",
+    "License": "CC-BY-NC-SA-4.0",
+    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "TranscriptionSource": "LIVE by Po-Shen Loh",
+    "Modifications": [
+      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
+      "Third-party worked solution and solution-only figures omitted from the public distribution"
+    ],
+    "SolutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+    "SolutionReview": {
+      "status": "reviewed",
+      "solutionSHA256": "b6123ca8dafd50e88762f32cb42709595208b222453725b2dc4f6cc13a3bbfb6",
+      "questionContentHash": "901c57066e097eee83cf22a47dac061088c5058c8fa201743f6fe289572cd920",
+      "evidence": {
+        "path": "knowledge-graph/evidence/solutions-2026-11-06/2002_AMC_10A_Q22.json",
+        "sha256": "22332ce6670c37d31a572cebd5f6c61cec12ff521b9a0e77e99b6b23dc0f8c1e"
+      },
+      "author": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      },
+      "reviewer": {
+        "model": "gpt-6.1-sol",
+        "effort": "xhigh"
+      }
+    }
+  },
+  "ID": "2002_AMC_10A_Q22",
+  "Bank": "amc",
+  "SchemaVersion": "2.0",
+  "ResponseType": "choice",
+  "Language": "en",
+  "domain": [],
+  "skill": [],
+  "KnowledgeGraph": {
+    "version": "1.0.0",
+    "contentHash": "901c57066e097eee83cf22a47dac061088c5058c8fa201743f6fe289572cd920",
+    "status": "mapped",
+    "reviewStatus": "machine_scope_audited",
+    "assessedIds": [
+      "cnm_h200"
+    ],
+    "supportIds": [
+      "cnm_020"
+    ],
+    "routes": [
+      {
+        "id": "successive-tile-counts",
+        "label": "Track the number of tiles",
+        "nodeIds": [
+          "cnm_h200",
+          "cnm_020"
+        ]
+      },
+      {
+        "id": "two-steps-between-squares",
+        "label": "Group operations between consecutive squares",
+        "nodeIds": [
+          "cnm_h200",
+          "cnm_020",
+          "cnm_148",
+          "cnm_096"
+        ]
+      }
+    ],
+    "flags": []
+  }
+}

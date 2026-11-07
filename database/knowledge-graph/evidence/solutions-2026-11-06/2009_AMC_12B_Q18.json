@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2009_AMC_12B_Q18",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "cd6f47915245562d56271c5c39a6490b5ceab20ed0098f47593e811c873551cd",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "b5c21379f66ce0fd0e0bb6516436fa143c61d789cdb871180ce80a295ac68523",
+  "solutionFigureHashes": {},
+  "candidateHash": "7184cf1e6c888eb3cbbb8fbedc3a96510d6a9f9c73c42ba7be9647581e033707",
+  "candidate": {
+    "questionId": "2009_AMC_12B_Q18",
+    "derivedAnswer": "C: \\(\\frac{3}{16}\\)",
+    "answerStatus": "matches",
+    "answerReason": "Under the recorded uniform-time interpretation, both runners are visible from 630 to 641.25 seconds. This interval has length 11.25 seconds out of the 60-second sampling interval, giving 3/16.",
+    "methods": [
+      {
+        "id": "intersect-visibility-intervals",
+        "label": "Find when both runners are visible",
+        "explanation": "Use the standard interpretation that the photograph time is uniformly distributed between \\(10\\) and \\(11\\) minutes. In seconds, the sampling interval is \\([600,660]\\). Both runners must be visible at the same time, so we find the overlap of their visibility intervals.\n\nThe photographed quarter of the track extends one-eighth of a lap to each side of the starting line. A runner with lap time \\(T\\) is therefore visible from \\(T/8\\) seconds before each starting-line crossing until \\(T/8\\) seconds afterward. The opposite running directions do not change these intervals because the photographed arc is centered on the starting line.\n\nRachel crosses the starting line at multiples of \\(90\\) seconds. Only her crossing at \\(630\\) seconds has a visibility interval meeting \\([600,660]\\). Since \\(90/8=11.25\\), her interval is\n\\[\n[618.75,641.25].\n\\]\nRobert crosses at multiples of \\(80\\) seconds. Only his crossing at \\(640\\) seconds contributes. Since \\(80/8=10\\), his interval is\n\\[\n[630,650].\n\\]\nTheir overlap is \\([630,641.25]\\), of length \\(11.25\\) seconds. Consequently,\n\\[\nP=\\frac{11.25}{660-600}=\\boxed{\\frac{3}{16}}.\n\\]\nIncluding or excluding individual boundary times does not change this probability. The answer is \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "math:geometric-probability",
+          "cnm_p111",
+          "cnm_099"
+        ],
+        "prerequisiteIds": [
+          "cnm_p062",
+          "cnm_p063",
+          "cnm_094",
+          "cnm_285"
+        ],
+        "levelReason": "Uses constant-rate travel, time intervals, and a favorable-length probability ratio."
+      }
+    ],
+    "assessedIds": [
+      "math:geometric-probability"
+    ],
+    "supportIds": [
+      "cnm_p062",
+      "cnm_p063"
+    ],
+    "annotationRationale": "The target is probability from the length of a favorable time set. The method translates lap fractions into visibility windows and intersects their time bounds. Time conversion and elapsed-time calculations support the computation.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The photograph time is interpreted as uniform over the stated minute, preserving the qualification recorded in the packet."
+    ]
+  },
+  "review": {
+    "questionId": "2009_AMC_12B_Q18",
+    "decision": "accept",
+    "mathematicalCheck": "Within [600,660], Rachel is visible on [618.75,641.25] and Robert on [630,650]; neighboring starting-line crossings contribute no other windows. Their overlap lasts 11.25 seconds, giving 11.25/60=3/16 under uniform sampling. Boundary inclusion does not affect the result.",
+    "levelCheck": "The time-window reasoning and favorable-length ratio are accessible and appropriate for AMC 12.",
+    "methodDistinctness": "One complete interval method is sufficient.",
+    "annotationCheck": "Uniform geometric probability is the correct target. Rate relationships, intersecting interval bounds, time conversion, and elapsed time fit the method. The uniform-time qualification is preserved.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "intersect-visibility-intervals": "intersect-visibility-intervals"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "be042f14e968aae85df8a3d3ba19d0784a4c6ae633f28ef6ba75b60c2961615b",
+    "inputHash": "f851eda51c4ee8a209b30d36d20b5984a037ba7b1969aae5150669999ec28909",
+    "authorInputHash": "ca1b2d476dfaf677decdf241db348d07719b27a1e7fc99b63c1a61ec8c540a5d",
+    "reviewInputHash": "b30ea904c2ff1e982a03ffa41242cab2a985bbf4375d47ae2d6c82fc8c3b159b",
+    "authorResponseHash": "c45b1be6e27b265a623f687b37840759b459c6142f0e01732665c8ff8482600a",
+    "reviewerResponseHash": "4e3bf9319267678f59a9380a4673973dbfb73a2549e3c21e922077fcad6933d3",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

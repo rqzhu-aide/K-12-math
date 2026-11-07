@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2004_AMC_12A_Q07",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "927bd3735f71fcc4aa01d1b5e94427280f524f7c32fa1ed710d672f6a6e78258",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "cf73c9c0da3e37bfbb9892acef51a0f1c67d2348fa31a4d3e441155999566d8a",
+  "solutionFigureHashes": {},
+  "candidateHash": "91802131ddbbab5849f2d2b05a6b090a4a71b7b21fd307ae166eda2922cfb77d",
+  "candidate": {
+    "questionId": "2004_AMC_12A_Q07",
+    "derivedAnswer": "B, 37 rounds",
+    "answerStatus": "matches",
+    "answerReason": "Each valid three-round block lowers every player's balance by one. Twelve blocks reach (3,2,1) without an earlier zero, and round 37 makes A's balance zero.",
+    "methods": [
+      {
+        "id": "three-round-state-pattern",
+        "label": "Find a repeating three-round pattern",
+        "explanation": "Each round removes \\(3\\) tokens from the leader: one for each other player and one for the discard pile. Look for a short block after which the relative counts return to their starting pattern.\n\nList counts in the order \\((A,B,C)\\). For an integer \\(n\\ge2\\), a block beginning with \\((n+2,n+1,n)\\) proceeds as follows:\n\\[\n\\begin{aligned}\n\\text{start: }&(n+2,n+1,n),\\\\\n\\text{after 1 round: }&(n-1,n+2,n+1),\\\\\n\\text{after 2 rounds: }&(n,n-1,n+2),\\\\\n\\text{after 3 rounds: }&(n+1,n,n-1).\n\\end{aligned}\n\\]\nThe leaders are uniquely \\(A\\), then \\(B\\), then \\(C\\). Every count stays positive because \\(n-1\\ge1\\). Thus three rounds reduce every player's count by \\(1\\) and reproduce the same pattern.\n\nInitially \\(n=13\\). Twelve such blocks, beginning with \\(n=13,12,\\ldots,2\\), are all valid and leave\n\\[\n(A,B,C)=(3,2,1)\n\\]\nafter \\(12\\cdot3=36\\) rounds. In round \\(37\\), \\(A\\) gives away its three tokens, producing \\((0,3,2)\\). This is the first zero, so the game lasts \\(37\\) rounds, choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "cnm_h200"
+        ],
+        "prerequisiteIds": [
+          "cnm_025",
+          "cnm_p060"
+        ],
+        "levelReason": "Uses integer arithmetic and a repeating pattern justified with a simple balance parameter, within the AMC 12 scope."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h200"
+    ],
+    "supportIds": [
+      "cnm_p060"
+    ],
+    "annotationRationale": "The task assesses following a deterministic recurrence to its first stopping state, represented by cnm_h200. The method verifies a general three-round transition and checks positivity throughout each repeated block. Constant-change pattern recognition (cnm_p060) supports counting the blocks, while using a letter for a changing balance (cnm_025) supports the parameterized calculation. The parameter denotes a token balance rather than a sequence position, so cnm_030 is not assigned.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2004_AMC_12A_Q07",
+    "decision": "accept",
+    "mathematicalCheck": "The displayed transitions correctly follow leaders A, B, C and reduce each balance by one per three-round block. For n≥2, all intermediate balances remain positive and every leader is unique. Twelve blocks reach (3,2,1) after 36 rounds; round 37 produces (0,3,2), establishing the first zero.",
+    "levelCheck": "Integer arithmetic, a simple balance parameter, and a fully justified repeating pattern are appropriate for AMC 12. The explanation makes the repetition and stopping condition clear.",
+    "methodDistinctness": "One complete method is included and is sufficient.",
+    "annotationCheck": "cnm_h200 fits the successive balance updates. Support cnm_p060 fits the constant decrease across three-round blocks, and prerequisite cnm_025 fits the balance parameter. These assignments respect the catalog scopes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "three-round-state-pattern": "three-round-state-pattern"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "b27af2828dcba771b9046465276a458f85e040f2c68518bcfc1fce2d1779563d",
+    "inputHash": "1211f91e6562380c662ed7345bf927224e05b4639f28fe9966b1479fdb704b69",
+    "authorInputHash": "44bb862429f405d8583881af61e3b67ec077b1ea58b002c42cf131744a2cdfde",
+    "reviewInputHash": "52de0752cdee47480a835e9a04cea708e58e9a07232a482500a53e9562e3635c",
+    "authorResponseHash": "e167ec3766e9fdf87b2abdcf62c2452103b162e962dadc0b81c1d995a398116c",
+    "reviewerResponseHash": "5d18c66769bcf349f11155c921f9da51b496ba74eafc1c8b9311eee090445522",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

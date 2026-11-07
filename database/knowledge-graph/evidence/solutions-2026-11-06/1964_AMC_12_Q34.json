@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1964_AMC_12_Q34",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "991265b995081fc5b269638de34607163389436f45b1f271a9028b36809b1c61",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "8c204bcf559717f8fd9a9ab14b49dcd4ff47e8d854fc42a6c3fbe20b9e3c8fea",
+  "solutionFigureHashes": {},
+  "candidateHash": "b66aa73fee658566c35b29b30353a033e797a2aee76a7384620b075df8bcc46a",
+  "candidate": {
+    "questionId": "1964_AMC_12_Q34",
+    "derivedAnswer": "C. \\(\\dfrac{n+2-ni}{2}\\)",
+    "answerStatus": "matches",
+    "answerReason": "The powers of i repeat in groups of four. Each four-term block contributes -2-2i, and the final term contributes n+1.",
+    "methods": [
+      {
+        "id": "four-term-blocks",
+        "label": "Group terms using the four-power cycle",
+        "explanation": "The condition that \\(n\\) is a multiple of \\(4\\) fits the repeating cycle\n\\[\ni^0=1,\\qquad i^1=i,\\qquad i^2=-1,\\qquad i^3=-i,\\qquad i^4=1.\n\\]\nWrite \\(n=4m\\), where \\(m\\) is a nonnegative integer. For each integer \\(j\\) from \\(0\\) through \\(m-1\\), a block of four consecutive terms is\n\\[\n\\begin{aligned}\n&(4j+1)i^{4j}+(4j+2)i^{4j+1}\\\\\n&\\quad +(4j+3)i^{4j+2}+(4j+4)i^{4j+3}\\\\\n&=(4j+1)+(4j+2)i-(4j+3)-(4j+4)i\\\\\n&=-2-2i.\n\\end{aligned}\n\\]\nThese \\(m\\) blocks contain every term through \\(ni^{n-1}\\), leaving only \\((n+1)i^n=n+1\\). Therefore\n\\[\ns=m(-2-2i)+(n+1)\n=\\frac{n+2-ni}{2}.\n\\]\nIf \\(n=0\\) is allowed, there are no four-term blocks and the same formula gives \\(s=1\\). The answer is \\(\\boxed{\\dfrac{n+2-ni}{2}}\\), choice C.",
+        "nodeIds": [
+          "cnm_h104",
+          "cnm_h100"
+        ],
+        "prerequisiteIds": [
+          "cnm_h097",
+          "cnm_h102"
+        ],
+        "levelReason": "The method uses elementary complex-number powers and addition, appropriate for historical AHSME and AMC 12."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h104",
+      "cnm_h100"
+    ],
+    "supportIds": [
+      "cnm_h097",
+      "cnm_h102"
+    ],
+    "annotationRationale": "Evaluating the sum requires reducing powers of i and combining real and imaginary parts. The written method uses those two targets directly. Complex-number representation and multiplication support the four-power cycle; no polar form or general roots-of-unity machinery is needed.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1964_AMC_12_Q34",
+    "decision": "accept",
+    "mathematicalCheck": "Each four-term block equals -2-2i. There are n/4 blocks and one remaining term n+1, giving (n+2-ni)/2. The n=0 case is also handled correctly.",
+    "levelCheck": "The four-power cycle and componentwise addition are appropriate, and the block calculation explains the decisive step.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The assessed powers and addition nodes fit directly; complex representation and multiplication support the cycle.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "four-term-blocks": "four-term-blocks"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "e77fceb0a3a6d385453872511b5d5f84d8cebdaefb01c0fd413ef6ff8de850fe",
+    "inputHash": "7d2114c085e230f5ab3276d43b83c3be6f1ed5d367e05444fb37969c1a44d86a",
+    "authorInputHash": "888d29991e5ed3285bbeaab87d173b48201f37d3a1f9bc49da1219f340b277fd",
+    "reviewInputHash": "dc7c1f6a09d9fc85757c8d05ff81bea98fe1e4bae16e4db466c87b0fa98770fa",
+    "authorResponseHash": "0b6ea1fea994e9f6f5791e3a53588a4bd0da4a940a2a01eb57d8dae17b868be3",
+    "reviewerResponseHash": "f20b12469d5aaf8192c63b02061db04aeddf097d3820b0d9e9e1a61234ae27d0",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

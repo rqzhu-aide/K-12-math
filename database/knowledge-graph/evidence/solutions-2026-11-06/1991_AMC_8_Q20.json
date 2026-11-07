@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1991_AMC_8_Q20",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "2e9ec28ab6b86bb8aaf4840e6cedfff2e86c9abdac7fc9cd90c4faddfaa72e59",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "d3843ce14fd6d0daaad0eb3ea0203732d894fc9035c8e341d0e592f658260620",
+  "solutionFigureHashes": {},
+  "candidateHash": "b280f754c5413664a14b24921f484bde676e6a6cdfae00087660738c5c9bf5cc",
+  "candidate": {
+    "questionId": "1991_AMC_8_Q20",
+    "derivedAnswer": "C = 1, choice A",
+    "answerStatus": "matches",
+    "answerReason": "The digit constraints force A = 2, B = 7, and C = 1, giving 271 + 27 + 2 = 300.",
+    "methods": [
+      {
+        "id": "track-column-carries",
+        "label": "Method 1: Track the carries",
+        "explanation": "The zeros in the result make the column carries useful. Let \\(u\\) be the carry from the ones column. Adding three digits gives at most \\(27\\), so \\(u\\) is \\(0\\), \\(1\\), or \\(2\\).\n\nThe tens-column sum is \\(A+B+u\\). Since \\(A\\) and \\(B\\) are different digits, their sum is positive and at most \\(9+8=17\\). The tens-column sum is therefore positive and at most \\(19\\). It ends in zero, so it must equal \\(10\\), carrying \\(1\\) into the hundreds column. Hence\n\\[\nA+1=3,\n\\]\nso \\(A=2\\).\n\nNow the ones-column sum \\(2+B+C\\) is positive and at most \\(2+9+8=19\\), since \\(B\\) and \\(C\\) are different. It also ends in zero, so it equals \\(10\\) and \\(u=1\\). The tens column then gives\n\\[\n2+B+1=10,\n\\]\nso \\(B=7\\). The ones column gives \\(2+7+C=10\\), so \\(C=1\\).\n\nThe digits are distinct, and \\(271+27+2=300\\) verifies the addition. Thus \\(\\boxed{C=1}\\), choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_p071"
+        ],
+        "prerequisiteIds": [
+          "cnm_p055"
+        ],
+        "levelReason": "Digit sums and ordinary carrying restrict all possibilities using elementary arithmetic."
+      },
+      {
+        "id": "place-value-equation",
+        "label": "Method 2: Write a place-value equation",
+        "explanation": "Place value lets us express the entire addition in one equation. The three numbers are \\(100A+10B+C\\), \\(10A+B\\), and \\(A\\), so\n\\[\n111A+11B+C=300.\n\\]\nHere \\(A,B,C\\) are different digits between \\(0\\) and \\(9\\).\n\nIf \\(A\\leq1\\), the left side is at most \\(111+99+9=219\\), which is too small. If \\(A\\geq3\\), it is at least \\(333\\), which is too large. Therefore \\(A=2\\), leaving\n\\[\n11B+C=78.\n\\]\nIf \\(B\\leq6\\), this sum is at most \\(66+9=75\\). If \\(B\\geq8\\), it is at least \\(88\\). Thus \\(B=7\\), and \\(C=78-77=1\\).\n\nThese digits are distinct and satisfy \\(271+27+2=300\\). Therefore \\(\\boxed{C=1}\\), choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_027"
+        ],
+        "prerequisiteIds": [
+          "cnm_p055",
+          "cnm_034"
+        ],
+        "levelReason": "A simple place-value equation and finite digit bounds fit AMC 8 algebra."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_p055"
+    ],
+    "annotationRationale": "The shared target is solving the addition's equations under bounded, distinct integer-digit restrictions. Decimal composition supports both methods. Carrying belongs to the first route; forming an algebraic expression and combining like terms belong to the second.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1991_AMC_8_Q20",
+    "decision": "accept",
+    "mathematicalCheck": "The tens-column sum is a positive multiple of ten no greater than 19, so its carry is 1 and A = 2. The ones sum then forces carry 1, B = 7, and C = 1. Independently, the equation 111A + 11B + C = 300 and the stated digit bounds uniquely force the same digits. The verification 271 + 27 + 2 = 300 is valid.",
+    "levelCheck": "Both explanations justify the decisive bounds. Ordinary carrying and a simple place-value equation are accessible AMC 8 approaches without advanced number theory.",
+    "methodDistinctness": "Column carries and bounds on the whole place-value equation provide genuinely different elementary approaches.",
+    "annotationCheck": "Bounded integer solutions form a valid shared target, with decimal composition as shared support. Carrying, expression formation, and combining like terms are correctly kept method-local.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "track-column-carries": "solution:track-column-carries:d3843ce14fd6",
+    "place-value-equation": "solution:place-value-equation:d3843ce14fd6"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "39e7d3ce37dbcaa1ebfcdec7d4754e3f4d489634a23b455b7f867b80ccc271ab",
+    "inputHash": "db93ae1ce79b88fbf44817930abe7a88cbe4c0b2ed689bb1d45ec079d5bc19e8",
+    "authorInputHash": "a516d3dafeb5636612b6f30cb656b6b01d58e862dc03716be0dc1ef0f3a98b91",
+    "reviewInputHash": "43c84fd345d2f13a32949aad719cf4e65199fe974aab29e8ab6f978333768b15",
+    "authorResponseHash": "0a7991ca4d146edb2f5fc1a2b38d664c4edbf9011ea57e59ee5da935e33322b5",
+    "reviewerResponseHash": "af4f416110f3a6e153a315274cf28d6a1b8d18598c2e19eea9f568b8edee79ad",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1977_AMC_12_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ecd0ca79073907d03c756a1907eb48700ac10960586e1c17ea2b94b411789406",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "7c1e3e6fe4acc3da49948c9864a6b3cbf1bad47f41217c35a612f72fa48dc785",
+  "solutionFigureHashes": {},
+  "candidateHash": "ad0ba17bd625aa23cc54b8c8bc47d4174a31fb19d575ebd9fa252b4d3962a9b4",
+  "candidate": {
+    "questionId": "1977_AMC_12_Q23",
+    "derivedAnswer": "B, \\(p=m^3-3mn\\).",
+    "answerStatus": "matches",
+    "answerReason": "The original roots have sum -m and product n. Their cubes have sum -m^3+3mn, which equals -p.",
+    "methods": [
+      {
+        "id": "symmetric-cube-sum",
+        "label": "Express the cube sum using the root sum and product",
+        "explanation": "Let \\(r\\) and \\(s\\) be the roots of \\(x^2+mx+n=0\\), counted with multiplicity. We can use their sum and product without finding the roots individually. Expanding\n\\[\n(x-r)(x-s)=x^2-(r+s)x+rs\n\\]\nand comparing coefficients gives\n\\[\nr+s=-m,\\qquad rs=n.\n\\]\nThe other quadratic has roots \\(r^3\\) and \\(s^3\\), so the same coefficient comparison gives \\(r^3+s^3=-p\\).\n\nTo express this cube sum using quantities we know, factor and then use the square of the sum:\n\\[\n\\begin{aligned}\nr^3+s^3\n&=(r+s)(r^2-rs+s^2)\\\\\n&=(r+s)\\bigl((r+s)^2-3rs\\bigr)\\\\\n&=(-m)(m^2-3n)\\\\\n&=-m^3+3mn.\n\\end{aligned}\n\\]\nTherefore \\(-p=-m^3+3mn\\), giving \\(\\boxed{p=m^3-3mn}\\), choice \\(\\boxed{\\text{B}}\\). These identities involve no division by a root or by \\(n\\), so zero and repeated roots cause no exception.",
+        "nodeIds": [
+          "cnm_226",
+          "math:sum-difference-cubes",
+          "cnm_148"
+        ],
+        "prerequisiteIds": [
+          "cnm_032",
+          "cnm_146"
+        ],
+        "levelReason": "Factoring monic quadratics and using elementary multiplication identities are within high-school algebra."
+      },
+      {
+        "id": "reduce-root-powers",
+        "label": "Reduce cubes using the root equation",
+        "explanation": "Let \\(r,s\\) be the roots of the original quadratic, counted with multiplicity. The expansion\n\\[\n(x-u)(x-v)=x^2-(u+v)x+uv\n\\]\nshows that \\(r+s=-m\\). Applied to the quadratic with roots \\(r^3,s^3\\), it also shows that \\(r^3+s^3=-p\\).\n\nThe original equation lets us replace a root's square by a linear expression. For either root \\(t\\),\n\\[\nt^2=-mt-n.\n\\]\nMultiplying by \\(t\\) and replacing \\(t^2\\) again gives\n\\[\n\\begin{aligned}\nt^3&=-mt^2-nt\\\\\n&=-m(-mt-n)-nt\\\\\n&=(m^2-n)t+mn.\n\\end{aligned}\n\\]\nUse this formula once for each root and add:\n\\[\n\\begin{aligned}\n-p=r^3+s^3\n&=(m^2-n)(r+s)+2mn\\\\\n&=(m^2-n)(-m)+2mn\\\\\n&=-m^3+3mn.\n\\end{aligned}\n\\]\nThus \\(\\boxed{p=m^3-3mn}\\), choice \\(\\boxed{\\text{B}}\\). No division was used, so the calculation also applies to zero or repeated roots.",
+        "nodeIds": [
+          "cnm_226",
+          "math:polynomial-roots-coefficients"
+        ],
+        "prerequisiteIds": [
+          "cnm_032",
+          "cnm_146"
+        ],
+        "levelReason": "This method uses coefficient comparison and repeated substitution into a quadratic root equation, without requiring a general theorem about higher-degree polynomials."
+      }
+    ],
+    "assessedIds": [
+      "cnm_226"
+    ],
+    "supportIds": [
+      "cnm_032",
+      "cnm_146"
+    ],
+    "annotationRationale": "Relating quadratic coefficients to expressions in the roots is the common assessed target. The first method uses cube factorization and the perfect-square identity; the second uses root equations to reduce higher powers. Polynomial structure and expansion support both methods. The quadratic formula and discriminant are not needed in either written argument.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1977_AMC_12_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "Coefficient comparison gives r+s=-m and rs=n. Method 1 yields r^3+s^3=-m^3+3mn. Method 2 independently obtains the same sum from t^3=(m^2-n)t+mn. Thus p=m^3-3mn. Neither method divides by a root, and multiplicities are handled.",
+    "levelCheck": "Both methods use accessible high-school algebra and explain their decisive transformations.",
+    "methodDistinctness": "Cube-sum factorization and reduction using the root equation provide genuinely different, equally accessible ideas.",
+    "annotationCheck": "The shared quadratic root-coefficient target is appropriate. Cube identities and root-power reduction remain method-specific, with justified shared support.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "symmetric-cube-sum": "symmetric-cube-sum",
+    "reduce-root-powers": "reduce-root-powers"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "112fbf4e086e3d8c7866c42d9a67de7303f2fa51e2c0612d2abafd2541651e3d",
+    "inputHash": "f306311c2a458ff92e2ebf44faaaa2b7b75066ed28883baa139be5111350f834",
+    "authorInputHash": "07a836e728c5eb35c5ad0b29fc8c32e2185cde25750fd4fc2a1590d540fd7415",
+    "reviewInputHash": "919a3a279962391ec4ab91203e88c94b517ebbfb9acd70a1088f4a277db05eaa",
+    "authorResponseHash": "3102e3359c05ba5901e26da6b38731a2a00fb9018f382837c7c140b882bbaa78",
+    "reviewerResponseHash": "fc89455d5c1469e1a7d8d0c53200b1af4aa4f60fb229647cb3bc94a38c47f55e",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

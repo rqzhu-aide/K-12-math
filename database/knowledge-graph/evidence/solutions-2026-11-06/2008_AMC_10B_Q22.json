@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2008_AMC_10B_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "e69063e0e676b443fb82253fc46709f66ff1f5796e0a2113c63cf5079ab7252b",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "ef9f651ce720de61444e3eade1e45c2c7dfaabeca766435c76525d8823b5c95d",
+  "solutionFigureHashes": {},
+  "candidateHash": "095708191801e539ca869a1a38d54e7b80d56ae31128f81faf28a34d3dcba5fd",
+  "candidate": {
+    "questionId": "2008_AMC_10B_Q22",
+    "derivedAnswer": "\\(\\frac{1}{6}\\), choice C",
+    "answerStatus": "matches",
+    "answerReason": "There are 60 equally likely color orders and 10 orders without equal neighboring colors, so the probability is 10/60 = 1/6.",
+    "methods": [
+      {
+        "id": "nonred-gaps",
+        "label": "Insert red beads into gaps",
+        "explanation": "Temporarily distinguish all six beads. There are \\(6!\\) equally likely orders, and each color order represents exactly \\(3!\\cdot2!\\) of them, from permuting the red beads and the white beads among themselves. Thus the number of equally likely color orders is\n\\[\n\\frac{6!}{3!\\,2!}=60.\n\\]\nTo count the valid orders, first arrange the three nonred beads. Their possible color orders are \\(WWB\\), \\(WBW\\), and \\(BWW\\), where \\(W\\) means white and \\(B\\) means blue.\n\nEach nonred order has four gaps: before it, after it, and between consecutive beads. To separate the three red beads, put them in three different gaps, leaving exactly one gap empty.\n\nFor \\(WWB\\), the gap between the whites must contain a red bead. Any of the other three gaps may be the empty one, giving \\(3\\) valid orders.\n\nFor \\(WBW\\), the whites are already separated by blue. Any of the four gaps may be empty, giving \\(4\\) valid orders.\n\nFor \\(BWW\\), the gap between the whites again must be occupied, giving \\(3\\) valid orders.\n\nEvery valid arrangement is counted exactly once: deleting its red beads recovers its nonred order and the three occupied gaps. Consequently,\n\\[\nP=\\frac{3+4+3}{60}=\\boxed{\\frac16},\n\\]\nchoice \\(\\text{C}\\).",
+        "nodeIds": [
+          "cnm_h137",
+          "math:multiset-permutations",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_309",
+          "cnm_h234",
+          "cnm_h230",
+          "cnm_h231"
+        ],
+        "levelReason": "The method uses elementary permutations with repeated colors and a three-case gap count, all within AMC 10 counting and probability."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h137"
+    ],
+    "supportIds": [
+      "cnm_309"
+    ],
+    "annotationRationale": "The route-neutral target is the probability of the stated adjacency event. The written route uses multiset permutations to establish an equally likely color sample space and combined counting to count valid gap placements. Permutation counts and the addition and multiplication principles support those local steps; no combination formula is used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2008_AMC_10B_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "Every color order corresponds to exactly 3! × 2! labeled orders, so the 60 color orders are equally likely. The three nonred orders yield 3, 4, and 3 valid gap placements, each counted once. Hence the probability is 10/60 = 1/6.",
+    "levelCheck": "The factorial quotient is justified, and the gap argument uses accessible AMC 10 counting.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Classical probability is route neutral. Multiset permutations and combined counting describe the written route, while cnm_309 supports the equally likely sample space.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "nonred-gaps": "nonred-gaps"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "2dc253160ba696ed0fc95298854ff888ec280a777a31728c065b010f99039b65",
+    "inputHash": "a12467cc8086e789814091cc4a2c090dc1b353e75c444871615729add4d32d4f",
+    "authorInputHash": "eb3f768c1b1daf5f0212cb906cfc4ebf85cbf360d7a05f6ec19779cdd54a88c6",
+    "reviewInputHash": "82a1fdab8b837947dc4bf9e72c5fde5724994ade1daa9b0230de5bdd4d9533fd",
+    "authorResponseHash": "e8a26b33aee6563fc39800ada9b32c3b1c51f6a2905390b81d41deb38739be63",
+    "reviewerResponseHash": "043c22f15bd04d1a76560da11529673a1cf1858d7fb1cf74c339e086e1dde868",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}
