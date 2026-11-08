@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2017_AMC_8_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "c7dd723dedd0af614ec060b4e59a9fe81d81431e3f923123927b9cab1ba25116",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "9873016a2b28baec275c7d9d3d7efce210c9fc296abbe35700c32981f07bd74f",
+  "solutionFigureHashes": {},
+  "candidateHash": "97f836bf0edebed17f84a1b00618752985a40aad9e5eb9a2b63a92b5b1e7bac3",
+  "candidate": {
+    "questionId": "2017_AMC_8_Q24",
+    "derivedAnswer": "146 days, choice D",
+    "answerStatus": "matches",
+    "answerReason": "Numbering the 365 days of 2017 from 1, call days are precisely the multiples of 3, 4, or 5. There are 219 such days, leaving 146 days without calls, agreeing with the key.",
+    "methods": [
+      {
+        "id": "count_overlapping_call_days",
+        "label": "Count call days and correct the overlaps",
+        "explanation": "The year \\(2017\\) is not a leap year, so it has \\(365\\) days. Number January 1 as day \\(1\\), January 2 as day \\(2\\), and so on, with December 31, 2016 as day \\(0\\). The grandchildren call on multiples of \\(3\\), \\(4\\), and \\(5\\), respectively.\n\nFirst count each grandchild's call days separately. There are \\(121\\) multiples of \\(3\\), \\(91\\) multiples of \\(4\\), and \\(73\\) multiples of \\(5\\) among days \\(1\\) through \\(365\\). For example, \\(3\\cdot121=363\\), while the next multiple is beyond the year.\n\nAdding these counts repeats days with more than one call. Two grandchildren call together every \\(12\\), \\(15\\), or \\(20\\) days, the least common multiples of their calling intervals. There are respectively \\(30\\), \\(24\\), and \\(18\\) such days, so subtract these three overlap counts.\n\nA day when all three call was initially counted three times and then subtracted three times, leaving it uncounted. Add those days back once. All three call every \\(60\\) days, giving \\(6\\) such days. Consequently, the number of days with at least one call is\n\\[\n121+91+73-30-24-18+6=219.\n\\]\nA day with exactly one, two, or three callers now contributes exactly once, so no call day is omitted or repeated. The remaining days have no calls:\n\\[\n365-219=\\boxed{146}.\n\\]\nThe answer is choice \\(\\text{D}\\).",
+        "nodeIds": [
+          "math:inclusion-exclusion-general",
+          "cnm_p153",
+          "cnm_p159",
+          "cnm_h010"
+        ],
+        "prerequisiteIds": [
+          "cnm_p091",
+          "cnm_h009",
+          "cnm_p050"
+        ],
+        "levelReason": "The overlap correction is explained by counting each day's contribution, without requiring formal set notation or an unexplained formula."
+      },
+      {
+        "id": "repeating_sixty_day_blocks",
+        "label": "Use repeating blocks of 60 days",
+        "explanation": "Number the days after December 31, 2016 starting with day \\(1\\). A call occurs exactly when the day number is divisible by \\(3\\), \\(4\\), or \\(5\\). Since \\(60\\) is divisible by all three numbers, adding \\(60\\) to a day number preserves whether each grandchild calls. Thus the pattern repeats in blocks of \\(60\\) days.\n\nTo count no-call days in the first block, first avoid multiples of \\(3\\) and \\(4\\). In days \\(1\\) through \\(12\\), the remaining numbers are\n\\[\n1,2,5,7,10,11.\n\\]\nThis pattern repeats every \\(12\\) days. The five disjoint blocks of \\(12\\) days within days \\(1\\) through \\(60\\) therefore contain \\(5\\cdot6=30\\) days without calls from those two grandchildren.\n\nAmong these \\(30\\) days, the multiples of \\(5\\) are exactly\n\\[\n5,10,25,35,50,55.\n\\]\nRemoving these six days leaves \\(30-6=24\\) days with no calls in each \\(60\\)-day block. Every day was checked first for divisibility by \\(3\\) or \\(4\\), then by \\(5\\), so these are precisely the no-call days.\n\nThe year \\(2017\\) has \\(365=6\\cdot60+5\\) days. Its first \\(360\\) days contain six complete blocks, giving \\(6\\cdot24=144\\) no-call days. The final five days follow the same calling pattern as days \\(1\\) through \\(5\\). Only days \\(1\\) and \\(2\\) have no calls, adding two more.\n\nThus the total is \\(144+2=\\boxed{146}\\) days, choice \\(\\text{D}\\).",
+        "nodeIds": [
+          "cnm_p153",
+          "cnm_p159",
+          "cnm_h003",
+          "cnm_h010"
+        ],
+        "prerequisiteIds": [
+          "cnm_p091",
+          "cnm_p050"
+        ],
+        "levelReason": "This alternative uses small exhaustive lists, common multiples, and repeated blocks, providing an elementary path without three-set overlap correction."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p153",
+      "cnm_h010"
+    ],
+    "supportIds": [
+      "cnm_p159",
+      "cnm_p091",
+      "cnm_p050"
+    ],
+    "annotationRationale": "Across both routes, the task is to identify call dates through multiples and count the complementary dates with no calls. Common multiples, the calendar's length, and quotient-remainder reasoning support both methods. Inclusion-exclusion belongs only to the first method; exhaustive listing within repeated blocks belongs to the second. Neither alternative is a requirement of the other, and the catalog's level labels do not require advanced presentation.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2017_AMC_8_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "Days 1 through 365 correctly represent 2017. Inclusion-exclusion gives 121+91+73-30-24-18+6=219 call days, hence 146 without calls. Independently, each 60-day block has 30 days avoiding multiples of 3 and 4, of which exactly six are multiples of 5. Six blocks and the final five days therefore give 6(24)+2=146.",
+    "levelCheck": "Both methods use elementary counting. The first explains overlap multiplicities; the second justifies periodicity, its exhaustive lists, and the remaining days.",
+    "methodDistinctness": "Overlap correction and direct counting in repeating blocks provide distinct, useful elementary approaches.",
+    "annotationCheck": "The assessed multiples and complement nodes are route-neutral. Common multiples, calendar length, and quotient-remainder reasoning support both routes. Inclusion-exclusion and roster enumeration are correctly kept method-local.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count_overlapping_call_days": "count_overlapping_call_days",
+    "repeating_sixty_day_blocks": "repeating_sixty_day_blocks"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c570c463a1b0afafd2b09e4aa2989dd7ea5bc1571e5ff18c761443e7829e71a7",
+    "acceptedAt": "2026-11-08T16:51:29.573819+00:00",
+    "inputHash": "261984da3bb1c7e28e51a41d6495685f5fbff948ab1f534b7cb394d704c4f39f",
+    "authorInputHash": "2a4645d51e4a0ac875b01eb560489ff7354ce15e4e7b5d64cca31636f305469b",
+    "reviewInputHash": "8dbf461da7d75365260ca364e1141f9c464bc7a880ecf7235a7cad11aea9aa51",
+    "authorResponseHash": "410fcf111ff38efb26987e1e101bdac1d9deb1d145301c6a847f37d0600b46a0",
+    "reviewerResponseHash": "e2614b63f06535ca06ff85acf6b25fec3363c52f211e4ddaf30557ec892f32b8",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

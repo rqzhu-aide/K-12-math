@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2026_AMC_8_Q20",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "369c9a3d6875f3efbf2456792e110ce7832240868c96b09cdef7a6d25336d75f",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "8685df3ab1127fe21f8a10a946dc2b49131c921d960b3d80632e9963216859d8",
+  "solutionFigureHashes": {},
+  "candidateHash": "dda38feddfedd4d39be6fa2e1f8b9c96788b0f32435be26954dc36743d1ffcea",
+  "candidate": {
+    "questionId": "2026_AMC_8_Q20",
+    "derivedAnswer": "D: 13",
+    "answerStatus": "matches",
+    "answerReason": "Stacks with zero, one, or two silver coins contribute 1, 6, and 6 arrangements, respectively, for a total of 13.",
+    "methods": [
+      {
+        "id": "silver-count-cases",
+        "label": "Count by the number of silver coins",
+        "explanation": "Count separately according to the number of silver coins, since that determines how many gold coins are needed. Three silver coins would already be \\(9\\) mm tall, so there can only be zero, one, or two.\n\nWith no silver coins, the stack consists of eight gold coins. There is \\(1\\) arrangement.\n\nWith one silver coin, the remaining \\(5\\) mm requires five gold coins. There are six coins altogether, and the silver coin can occupy any of the six positions, giving \\(6\\) arrangements.\n\nWith two silver coins, the remaining \\(2\\) mm requires two gold coins. Number the four coin positions from bottom to top. The silver positions can be\n\\[\n(1,2),\\ (1,3),\\ (1,4),\\ (2,3),\\ (2,4),\\ (3,4).\n\\]\nThese are all six pairs of positions: the lower silver coin is in position \\(1\\), \\(2\\), or \\(3\\), giving three, two, or one choices for the higher silver coin. Each pair determines exactly one stack because the other positions contain gold coins.\n\nEvery valid stack belongs to exactly one of these three cases. Thus the total is\n\\[\n1+6+6=\\boxed{13},\n\\]\nwhich is choice \\(\\text{D}\\).",
+        "nodeIds": [
+          "cnm_h230",
+          "cnm_h236"
+        ],
+        "prerequisiteIds": [],
+        "levelReason": "Uses elementary case counting and explicitly lists the small position selections; no combination formula is required."
+      },
+      {
+        "id": "height-recurrence",
+        "label": "Build counts from shorter stacks",
+        "explanation": "A stack ends with either a gold coin or a silver coin. Removing that top coin leaves a shorter stack, so we can use counts for smaller heights.\n\nLet \\(a_h\\) be the number of arrangements of height \\(h\\) mm. Set \\(a_0=1\\), representing the empty stack. Also, \\(a_1=a_2=1\\), since these heights allow only gold coins.\n\nFor \\(h\\geq3\\), a stack with a gold coin on top comes from exactly one stack of height \\(h-1\\). A stack with a silver coin on top comes from exactly one stack of height \\(h-3\\). Conversely, adding the indicated top coin to any such shorter stack produces a valid stack. These two cases are disjoint and include every stack, so\n\\[\na_h=a_{h-1}+a_{h-3}.\n\\]\nWe now calculate successively:\n\\[\n\\begin{aligned}\na_3&=1+1=2,\\\\\na_4&=2+1=3,\\\\\na_5&=3+1=4,\\\\\na_6&=4+2=6,\\\\\na_7&=6+3=9,\\\\\na_8&=9+4=13.\n\\end{aligned}\n\\]\nTherefore there are \\(\\boxed{13}\\) arrangements, choice \\(\\text{D}\\).",
+        "nodeIds": [
+          "cnm_h230",
+          "math:recursive-counting-probability"
+        ],
+        "prerequisiteIds": [
+          "cnm_h200"
+        ],
+        "levelReason": "The counting recurrence is derived by removing one coin and evaluated using addition only, making it accessible within AMC 8."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h230"
+    ],
+    "supportIds": [],
+    "annotationRationale": "The shared target is counting all arrangements by adding exhaustive, disjoint cases. The first method uses the combination concept only to select a small set of silver positions, with direct enumeration instead of the factorial formula. The second constructs a height-based counting recurrence and uses simple recurrence evaluation as local supporting knowledge. Neither optional route is required by the other.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2026_AMC_8_Q20",
+    "decision": "accept",
+    "mathematicalCheck": "Zero, one, and two silver coins give 1, 6, and 6 stacks, respectively, totaling 13. The position enumeration is exhaustive without duplication. Independently, removing the top coin gives a_h=a_{h-1}+a_{h-3}; the stated initial conditions and all computed values through a_8=13 are correct.",
+    "levelCheck": "Both methods explain their decisive counting steps using elementary reasoning appropriate for AMC 8. The recurrence is derived concretely and requires only successive addition.",
+    "methodDistinctness": "Classifying complete stacks by silver count and building counts from shorter heights provide distinct, accessible insights.",
+    "annotationCheck": "The shared addition-principle assessment is route-neutral. Combination concept accurately describes the position selections without claiming use of the combination formula. Recurrence construction and evaluation are correctly kept method-local.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "silver-count-cases": "solution:silver-count-cases:8685df3ab112",
+    "height-recurrence": "solution:height-recurrence:8685df3ab112"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "044df36b4e145c287bee9b980947eca3119c723d974a78b7ee599d977224887c",
+    "acceptedAt": "2026-11-08T16:53:00.585566+00:00",
+    "inputHash": "7df0d3431b1705f2e031c527c3cfd93491bf5d6ab8a5f35ebdfb663b0b521362",
+    "authorInputHash": "8c348951dbf6cec6bab5164afa5ab6f646ea9132649bc45ada604d22d17a9254",
+    "reviewInputHash": "eba7d57968bf97b649eb1640d4df497002fade659cebc3ff94d7f139fb018734",
+    "authorResponseHash": "f25fa845acd15a9ce950a8d9676cebd02fc175b744f1f2127ebac463e9c7f85f",
+    "reviewerResponseHash": "19c06819aec968830b380cf4154477c7161789194ac09a6e2fd6cc75a4877dd5",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

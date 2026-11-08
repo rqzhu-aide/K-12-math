@@ -1,77 +1,77 @@
 {
-  "Year": 2026,
-  "Level": "AMC 8",
-  "Batch": "NA",
-  "Area": "Number Theory",
-  "Number": 24,
-  "Question": "The notation \\(n!\\) (read “\\(n\\) factorial”) is defined as the product of the first \\(n\\) positive integers. (For example, \\(3! = 1 \\cdot 2 \\cdot 3 = 6.\\)) Define the superfactorial of a positive integer, denoted by \\(n^!,\\) to be the product of the factorials of the first \\(n\\) integers. (For example, \\(3^! = 1! \\cdot 2! \\cdot 3! = 12.\\)) How many factors of \\(7\\) appear in the prime factorization of \\(51^!,\\) the superfactorial of \\(51?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(147\\)",
-    "B": "\\(150\\)",
-    "C": "\\(156\\)",
-    "D": "\\(168\\)",
-    "E": "\\(171\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "reviewed-source-concepts",
-    "Concepts": "Legendre’s Formula; factorial",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
-    "SourceSHA256": "997a01d6ec8a18ac16f2308e24f60e385587b33a3d2987240e5f21ab434f659a",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2026_AMC_8_Q24",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:number-theory"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "dcc4115ece475ec6b5d745f5ce71b8e0d542f9e634ae39dbdf94627be37bf121",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:prime-valuations-factorials"
+  "answer": {
+    "accepted": [
+      "E"
     ],
-    "supportIds": [],
-    "routes": [
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "math:prime-valuations-factorials"
+  ],
+  "bank": "amc",
+  "classification": {
+    "area": "Number Theory",
+    "domainIds": [
+      "domain:number-theory"
+    ],
+    "level": "AMC 8"
+  },
+  "id": "2026_AMC_8_Q24",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "factorial-valuations",
-        "label": "Sum factorial valuations",
-        "nodeIds": [
-          "math:prime-valuations-factorials"
-        ]
+        "content": "\\(147\\)",
+        "id": "A"
       },
       {
-        "id": "repeated-integer-factors",
-        "label": "Count repeated integer factors",
-        "nodeIds": [
-          "math:double-counting",
-          "cnm_h204"
-        ]
+        "content": "\\(150\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(156\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(168\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(171\\)",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "The notation \\(n!\\) (read “\\(n\\) factorial”) is defined as the product of the first \\(n\\) positive integers. (For example, \\(3! = 1 \\cdot 2 \\cdot 3 = 6.\\)) Define the superfactorial of a positive integer, denoted by \\(n^!,\\) to be the product of the factorials of the first \\(n\\) integers. (For example, \\(3^! = 1! \\cdot 2! \\cdot 3! = 12.\\)) How many factors of \\(7\\) appear in the prime factorization of \\(51^!,\\) the superfactorial of \\(51?\\)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:prime-valuations-factorials",
+        "math:double-counting"
+      ],
+      "explanation": "Expanding \\(51^!=1!\\cdot2!\\cdots51!\\) repeats many integer factors. We can count the factors of \\(7\\) by tracking those repeated integers instead of calculating the enormous product.\n\nFor example, the integer \\(7\\) appears once in every factorial from \\(7!\\) through \\(51!\\). That is\n\\[\n51-7+1=45\n\\]\nappearances. More generally, an integer \\(k\\) appears once in each factorial from \\(k!\\) through \\(51!\\), for \\(52-k\\) appearances.\n\nOnly multiples of \\(7\\) contribute factors of \\(7\\). The multiples at most \\(51\\), with their numbers of appearances, are\n\\[\n\\begin{aligned}\n7&:\\ 45, &14&:\\ 38,\\\\\n21&:\\ 31, &28&:\\ 24,\\\\\n35&:\\ 17, &42&:\\ 10,\\\\\n49&:\\ 3.\n\\end{aligned}\n\\]\nEach occurrence of the first six multiples contributes exactly one factor of \\(7\\). Each occurrence of \\(49=7^2\\) contributes two. There are no other multiples of \\(7\\) at most \\(51\\), so these contributions include every factor of \\(7\\) in the expanded product, with its correct multiplicity.\n\nThe total number is therefore\n\\[\n\\begin{aligned}\n&(45+38+31)+(24+17+10)+2\\cdot3\\\\\n&\\qquad=114+51+6=\\boxed{171}.\n\\end{aligned}\n\\]\nThe answer is choice \\(\\text{E}\\).",
+      "id": "count-repeated-multiples",
+      "sourceRef": "amc/2026_AMC_8_Q24#count-repeated-multiples",
+      "title": "Count how often each multiple of seven appears"
+    },
+    {
+      "directNodeIds": [
+        "math:prime-valuations-factorials"
+      ],
+      "id": "factorial-valuations",
+      "sourceRef": "amc/2026_AMC_8_Q24#factorial-valuations",
+      "title": "Sum factorial valuations"
+    },
+    {
+      "directNodeIds": [
+        "math:double-counting",
+        "cnm_h204"
+      ],
+      "id": "repeated-integer-factors",
+      "sourceRef": "amc/2026_AMC_8_Q24#repeated-integer-factors",
+      "title": "Count repeated integer factors"
+    }
+  ],
+  "sourceRef": "amc/2026_AMC_8_Q24"
 }

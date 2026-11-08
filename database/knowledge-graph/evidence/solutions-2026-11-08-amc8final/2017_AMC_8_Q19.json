@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2017_AMC_8_Q19",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "c40750fe7b638c168006268f2e581d78ce60d9b40557ea90bc8d756f8b2dafa7",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "cf1a31537779c13dbc28185f3fe3948db72c4501835719356dd56e0037e308ae",
+  "solutionFigureHashes": {},
+  "candidateHash": "7f590d5327757968fc3a4ec446e4acbec3bbebb701f603dbe6bbeaf835002a96",
+  "candidate": {
+    "questionId": "2017_AMC_8_Q19",
+    "derivedAnswer": "26, choice D",
+    "answerStatus": "matches",
+    "answerReason": "The sum equals 98!·10000. The factorial contributes exactly 22 factors of 5 and 10000 contributes exactly four, so the largest exponent is 26, agreeing with choice D.",
+    "methods": [
+      {
+        "id": "factor-and-count-fives",
+        "label": "Factor the sum and count factors of five",
+        "explanation": "The three factorials share the factor \\(98!\\). Factoring it out turns the sum into a product whose factors of \\(5\\) we can count:\n\\[\n\\begin{aligned}\n98!+99!+100!\n&=98!\\bigl(1+99+100\\cdot99\\bigr)\\\\\n&=98!\\cdot10000.\n\\end{aligned}\n\\]\nIn \\(98!=1\\cdot2\\cdots98\\), only multiples of \\(5\\) contribute factors of \\(5\\). There are \\(19\\) such multiples, namely \\(5,10,\\ldots,95\\), contributing one factor each. The numbers \\(25,50,75\\) each contribute one additional factor because they are multiples of \\(25=5^2\\). No number in the product is a multiple of \\(125=5^3\\), so there are no further factors of \\(5\\).\n\nThus \\(98!\\) contains exactly \\(19+3=22\\) factors of \\(5\\). Also,\n\\[\n10000=10^4=2^4\\cdot5^4,\n\\]\nso the other factor contributes four more. The sum therefore contains exactly \\(22+4=26\\) factors of \\(5\\). It is divisible by \\(5^{26}\\), and after removing those factors the remaining integer is not divisible by \\(5\\), so \\(5^{27}\\) cannot divide it.\n\nThe largest integer is \\(n=26\\), choice \\(\\text{D}\\).",
+        "nodeIds": [
+          "cnm_p116",
+          "math:prime-valuations-factorials"
+        ],
+        "prerequisiteIds": [
+          "math:factorial-notation",
+          "math:prime-factorization"
+        ],
+        "levelReason": "Derives the factor count directly from the multiples of 5 and 25. It uses no formal valuation notation or general factorial-exponent formula."
+      }
+    ],
+    "assessedIds": [
+      "math:prime-valuations-factorials"
+    ],
+    "supportIds": [
+      "cnm_p116",
+      "math:factorial-notation",
+      "math:prime-factorization"
+    ],
+    "annotationRationale": "The target is the exact exponent of a prime dividing an expression involving factorials. The factorial-divisibility node fits the elementary counting of prime-power multiples used here, despite its broader catalog scope. The distributive property exposes the product, while factorial meaning and prime-exponent structure support counting and proving maximality. General floor-function theory is not used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2017_AMC_8_Q19",
+    "decision": "accept",
+    "mathematicalCheck": "The sum factors as 98!(1+99+9900)=98!·10000. The factorial has exactly 19+3=22 factors of 5, and 10000 contributes four more. The remaining cofactor is not divisible by 5, proving that 26 is maximal.",
+    "levelCheck": "The solution derives the count using explicit multiples of 5 and 25. This is elementary AMC 8 reasoning despite the catalog node's broader title and level.",
+    "methodDistinctness": "The single factor-and-count method is complete and appropriate.",
+    "annotationCheck": "The factorial-divisibility node directly covers counting successive prime-power multiples. Distribution, factorial meaning, and prime-exponent structure are justified supports; no general floor-function theory is claimed.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "factor-and-count-fives": "factor-and-count-fives"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "947ce77449467c29c3c643d5840b7d36cb89e4cdf337fdfbc336b4d728a77500",
+    "acceptedAt": "2026-11-08T16:51:02.970612+00:00",
+    "inputHash": "e7df64b4a64b2a1f0c75f520b1f96e4d73b41ee2cf7b57d7fc463661f028c4aa",
+    "authorInputHash": "49445f95c155d2d5fa4d4be4676e4ba35e73e99f6c9423ea5504332e258384fc",
+    "reviewInputHash": "9a93b08e58d1ef3584d0f6b94a7868c1df72300d9c9754c67cf6548a42926828",
+    "authorResponseHash": "4a83976964ef239e0eec42ff74998226f945e3a1dcbf51930e0a367798afdcc1",
+    "reviewerResponseHash": "aeee3f15dbbf90f3dd4160d7c0106d2597864f00036e9ce1c8f5f8fb3140f7d8",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

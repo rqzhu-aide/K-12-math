@@ -662327,14 +662327,17 @@ window.AMC_BANK = {
 {
 "id": "2017_AMC_8_Q01",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2017,
 "level": "AMC 8",
 "batch": "NA",
 "number": 1,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Which of the following values is largest?",
 "questionType": "text",
 "choices": {
@@ -662344,24 +662347,107 @@ window.AMC_BANK = {
 "D": "\\( 2+0+1 \\times 7 \\)",
 "E": "\\( 2 \\times 0 \\times 1 \\times 7 \\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "A",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"acceptedResponses": [
+"A"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Perform multiplication before addition. Remember that multiplying by \\(0\\) gives \\(0\\), and multiplying by \\(1\\) leaves a number unchanged. Thus the choices have values\n\\[\n\\begin{aligned}\n\\text{A: }&2+0+1+7=10,\\\\\n\\text{B: }&0+1+7=8,\\\\\n\\text{C: }&2+0+7=9,\\\\\n\\text{D: }&2+0+7=9,\\\\\n\\text{E: }&0.\n\\end{aligned}\n\\]\nThe largest value is \\(10\\), so the answer is \\(\\boxed{\\text{A}}\\).",
+"solutionMethods": [
+{
+"id": "method_1",
+"label": "Evaluate using the order of operations",
+"explanation": "Perform multiplication before addition. Remember that multiplying by \\(0\\) gives \\(0\\), and multiplying by \\(1\\) leaves a number unchanged. Thus the choices have values\n\\[\n\\begin{aligned}\n\\text{A: }&2+0+1+7=10,\\\\\n\\text{B: }&0+1+7=8,\\\\\n\\text{C: }&2+0+7=9,\\\\\n\\text{D: }&2+0+7=9,\\\\\n\\text{E: }&0.\n\\end{aligned}\n\\]\nThe largest value is \\(10\\), so the answer is \\(\\boxed{\\text{A}}\\).",
+"directNodeIds": [
+"cnm_p057"
+],
+"legacyRouteId": "method_1",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2017_AMC_8_Q01#method_1",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2017_AMC_8_Q01.json",
+"sha256": "4a559ff6da3da6a64667d9f3aae892e0fd2d25392d7fe3f23cc0eff306e8201e",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2017_AMC_8_Q01",
+"position": {
+"year": 2017,
+"level": "AMC 8",
+"batch": "NA",
+"number": 1
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2017_AMC_8_Q01",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "92a7994b0d729573a3ef2f17e4591f5b3c3a58125f78fc293fd991466874053b",
+"contentHash": "86dc08a98d2466184f548de85f46481235c2b5b3d62e09c151ac846b7aeb4b0b",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_p057"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_p010",
+"cnm_p009",
+"math:nonnegative-integer-products"
+],
+"routes": [
+{
+"id": "method_1",
+"label": "Evaluate using the order of operations",
+"nodeIds": [
+"cnm_p057",
+"cnm_p010",
+"cnm_p009",
+"math:nonnegative-integer-products"
+],
+"methodDirectNodeIds": {
+"method_1": [
+"cnm_p057"
+]
+},
+"contextNodeIds": [
+"cnm_p010",
+"cnm_p009",
+"math:nonnegative-integer-products"
+]
+}
+],
 "flags": []
 }
 },
@@ -662507,14 +662593,17 @@ window.AMC_BANK = {
 {
 "id": "2017_AMC_8_Q03",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2017,
 "level": "AMC 8",
 "batch": "NA",
 "number": 3,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "What is the value of the expression \\(\\sqrt{16\\sqrt{8\\sqrt{4}}}?\\)",
 "questionType": "text",
 "choices": {
@@ -662524,38 +662613,121 @@ window.AMC_BANK = {
 "D": "\\( 8\\sqrt{2} \\)",
 "E": "\\( 16 \\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Start with the innermost square root, since its value determines what is inside the next root. The symbol \\(\\sqrt{a}\\) means the nonnegative square root of \\(a\\). Because \\(2^2=4\\), we have \\(\\sqrt{4}=2\\). Therefore\n\\[\n\\sqrt{16\\sqrt{8\\sqrt{4}}}\n=\\sqrt{16\\sqrt{8\\cdot2}}\n=\\sqrt{16\\cdot4}\n=\\sqrt{64}\n=8.\n\\]\nThe value is \\(\\boxed{8}\\), choice \\(\\boxed{\\text{C}}\\).",
+"solutionMethods": [
+{
+"id": "method_1",
+"label": "Work from the innermost square root",
+"explanation": "Start with the innermost square root, since its value determines what is inside the next root. The symbol \\(\\sqrt{a}\\) means the nonnegative square root of \\(a\\). Because \\(2^2=4\\), we have \\(\\sqrt{4}=2\\). Therefore\n\\[\n\\sqrt{16\\sqrt{8\\sqrt{4}}}\n=\\sqrt{16\\sqrt{8\\cdot2}}\n=\\sqrt{16\\cdot4}\n=\\sqrt{64}\n=8.\n\\]\nThe value is \\(\\boxed{8}\\), choice \\(\\boxed{\\text{C}}\\).",
+"directNodeIds": [
+"cnm_075"
+],
+"legacyRouteId": "method_1",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2017_AMC_8_Q03#method_1",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2017_AMC_8_Q03.json",
+"sha256": "bec7da2809baea908a23642643918a9186494643b94fa8ccb479f296db3dddec",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2017_AMC_8_Q03",
+"position": {
+"year": 2017,
+"level": "AMC 8",
+"batch": "NA",
+"number": 3
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2017_AMC_8_Q03",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "7515c1df9d38215fdcafde264e497a0ce0a98b84cd81fc5a8801478e91ee12c0",
+"contentHash": "1ecf8fa382a0ca1bbe9cc15004e3de42444f0315fc39141c711b076c183982fe",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
 "cnm_075"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_074",
+"math:nonnegative-integer-products"
+],
+"routes": [
+{
+"id": "method_1",
+"label": "Work from the innermost square root",
+"nodeIds": [
+"cnm_075",
+"cnm_074",
+"math:nonnegative-integer-products"
+],
+"methodDirectNodeIds": {
+"method_1": [
+"cnm_075"
+]
+},
+"contextNodeIds": [
+"cnm_074",
+"math:nonnegative-integer-products"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2017_AMC_8_Q04",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2017,
 "level": "AMC 8",
 "batch": "NA",
 "number": 4,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "When \\(0.000315\\) is multiplied by \\(7{,}928{,}564\\) the product is closest to which of the following?",
 "questionType": "text",
 "choices": {
@@ -662565,39 +662737,122 @@ window.AMC_BANK = {
 "D": "\\(2{,}400\\)",
 "E": "\\(24{,}000\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Use nearby easy numbers to trap the product in a short interval. Both factors are positive, and\n\\[\n0.0003<0.000315<0.00032,\n\\]\n\\[\n7{,}900{,}000<7{,}928{,}564<8{,}000{,}000.\n\\]\nMultiplying the two lower bounds gives a smaller product, and multiplying the two upper bounds gives a larger product. If \\(P\\) is the requested product, then\n\\[\n2370=0.0003\\cdot7{,}900{,}000\n<P\n<0.00032\\cdot8{,}000{,}000=2560.\n\\]\nThroughout this interval, \\(P\\) is less than \\(160\\) away from \\(2400\\). Choices A, B, and C are all at most \\(2100\\), so they are more than \\(2370-2100=270\\) away. Choice E is more than \\(24{,}000-2560=21{,}440\\) away. Thus the closest value is \\(\\boxed{2400}\\), choice \\(\\boxed{\\text{D}}\\).",
+"solutionMethods": [
+{
+"id": "method_1",
+"label": "Bound the product with easy numbers",
+"explanation": "Use nearby easy numbers to trap the product in a short interval. Both factors are positive, and\n\\[\n0.0003<0.000315<0.00032,\n\\]\n\\[\n7{,}900{,}000<7{,}928{,}564<8{,}000{,}000.\n\\]\nMultiplying the two lower bounds gives a smaller product, and multiplying the two upper bounds gives a larger product. If \\(P\\) is the requested product, then\n\\[\n2370=0.0003\\cdot7{,}900{,}000\n<P\n<0.00032\\cdot8{,}000{,}000=2560.\n\\]\nThroughout this interval, \\(P\\) is less than \\(160\\) away from \\(2400\\). Choices A, B, and C are all at most \\(2100\\), so they are more than \\(2370-2100=270\\) away. Choice E is more than \\(24{,}000-2560=21{,}440\\) away. Thus the closest value is \\(\\boxed{2400}\\), choice \\(\\boxed{\\text{D}}\\).",
+"directNodeIds": [
+"cnm_p132",
+"cnm_096"
+],
+"legacyRouteId": "method_1",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2017_AMC_8_Q04#method_1",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2017_AMC_8_Q04.json",
+"sha256": "74a7a1343f32d08aadfed4fd57875acf7b2e347ab0ab81f07a7b491169e8c0cc",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2017_AMC_8_Q04",
+"position": {
+"year": 2017,
+"level": "AMC 8",
+"batch": "NA",
+"number": 4
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2017_AMC_8_Q04",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "336cdcf35802bdc5325d1a0dd4a2ff4332496cc19fa0642391819cfa7b8d7586",
+"contentHash": "caf27ed1f560e60119f0cdf77edb771448e550bb8ef9e1dbd12d3f2d3ce02dc0",
 "status": "mapped",
 "reviewStatus": "machine_examined",
-"assessedIds": [
-"cnm_p132",
-"cnm_023"
+"assessedIds": [],
+"supportIds": [
+"cnm_p119",
+"cnm_p120"
 ],
-"supportIds": [],
-"routes": [],
+"routes": [
+{
+"id": "method_1",
+"label": "Bound the product with easy numbers",
+"nodeIds": [
+"cnm_p132",
+"cnm_096",
+"cnm_p119",
+"cnm_p120"
+],
+"methodDirectNodeIds": {
+"method_1": [
+"cnm_p132",
+"cnm_096"
+]
+},
+"contextNodeIds": [
+"cnm_p119",
+"cnm_p120"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2017_AMC_8_Q05",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2017,
 "level": "AMC 8",
 "batch": "NA",
 "number": 5,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "What is the value of the expression \\[\\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdot 5 \\cdot 6 \\cdot 7 \\cdot 8}{1+2+3+4+5+6+7+8}?\\]",
 "questionType": "text",
 "choices": {
@@ -662607,38 +662862,130 @@ window.AMC_BANK = {
 "D": "\\( 2240 \\)",
 "E": "\\( 3360 \\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "B",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"acceptedResponses": [
+"B"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "First find the denominator by pairing the smallest and largest terms:\n\\[\n1+2+3+4+5+6+7+8\n=(1+8)+(2+7)+(3+6)+(4+5)\n=4\\cdot9=36.\n\\]\nBefore multiplying the entire numerator, notice that its factors \\(2\\), \\(3\\), and \\(6\\) also multiply to \\(36\\). Regrouping those factors lets us cancel the denominator, which is nonzero:\n\\[\n\\frac{(2\\cdot3\\cdot6)(1\\cdot4\\cdot5\\cdot7\\cdot8)}{36}\n=1\\cdot4\\cdot5\\cdot7\\cdot8\n=20\\cdot56\n=1120.\n\\]\nThe value is \\(\\boxed{1120}\\), choice \\(\\boxed{\\text{B}}\\).",
+"solutionMethods": [
+{
+"id": "method_1",
+"label": "Find the denominator and cancel matching factors",
+"explanation": "First find the denominator by pairing the smallest and largest terms:\n\\[\n1+2+3+4+5+6+7+8\n=(1+8)+(2+7)+(3+6)+(4+5)\n=4\\cdot9=36.\n\\]\nBefore multiplying the entire numerator, notice that its factors \\(2\\), \\(3\\), and \\(6\\) also multiply to \\(36\\). Regrouping those factors lets us cancel the denominator, which is nonzero:\n\\[\n\\frac{(2\\cdot3\\cdot6)(1\\cdot4\\cdot5\\cdot7\\cdot8)}{36}\n=1\\cdot4\\cdot5\\cdot7\\cdot8\n=20\\cdot56\n=1120.\n\\]\nThe value is \\(\\boxed{1120}\\), choice \\(\\boxed{\\text{B}}\\).",
+"directNodeIds": [
+"cnm_p112",
+"cnm_p114",
+"cnm_p115",
+"cnm_p168"
+],
+"legacyRouteId": "method_1",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2017_AMC_8_Q05#method_1",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2017_AMC_8_Q05.json",
+"sha256": "a7ee81789c77c77c0e848bebb43ff343032a9cb7a6553ccb1a826407b993aea7",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2017_AMC_8_Q05",
+"position": {
+"year": 2017,
+"level": "AMC 8",
+"batch": "NA",
+"number": 5
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2017_AMC_8_Q05",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "409c9e581d027a24035ff06190ae8f38bbf060f20ad6e22f35ce4ede0290ce4c",
+"contentHash": "4d265190a5b39e28915de61e07caccf619433924b1da3ca30af261130d4285a3",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
 "cnm_p112"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_p167",
+"math:nonnegative-integer-products"
+],
+"routes": [
+{
+"id": "method_1",
+"label": "Find the denominator and cancel matching factors",
+"nodeIds": [
+"cnm_p112",
+"cnm_p114",
+"cnm_p115",
+"cnm_p168",
+"cnm_p167",
+"math:nonnegative-integer-products"
+],
+"methodDirectNodeIds": {
+"method_1": [
+"cnm_p112",
+"cnm_p114",
+"cnm_p115",
+"cnm_p168"
+]
+},
+"contextNodeIds": [
+"cnm_p167",
+"math:nonnegative-integer-products"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2017_AMC_8_Q06",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2017,
 "level": "AMC 8",
 "batch": "NA",
 "number": 6,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "If the degree measures of the angles of a triangle are in the ratio \\(3:3:4,\\) what is the degree measure of the largest angle of the triangle?",
 "questionType": "text",
 "choices": {
@@ -662648,39 +662995,122 @@ window.AMC_BANK = {
 "D": "\\( 72 \\)",
 "E": "\\( 90 \\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The three angles of a triangle add to \\(180^\\circ\\). The ratio \\(3:3:4\\) divides this total into \\(3+3+4=10\\) equal parts, so each part measures\n\\[\n180^\\circ\\div 10=18^\\circ.\n\\]\nThe largest angle corresponds to \\(4\\) parts, giving \\(4\\times18^\\circ=72^\\circ\\). The answer is \\(\\boxed{72^\\circ}\\), choice \\(\\text{D}\\).",
+"solutionMethods": [
+{
+"id": "equal-ratio-parts",
+"label": "Divide the angle sum into equal parts",
+"explanation": "The three angles of a triangle add to \\(180^\\circ\\). The ratio \\(3:3:4\\) divides this total into \\(3+3+4=10\\) equal parts, so each part measures\n\\[\n180^\\circ\\div 10=18^\\circ.\n\\]\nThe largest angle corresponds to \\(4\\) parts, giving \\(4\\times18^\\circ=72^\\circ\\). The answer is \\(\\boxed{72^\\circ}\\), choice \\(\\text{D}\\).",
+"directNodeIds": [
+"cnm_p124",
+"cnm_p187"
+],
+"legacyRouteId": "equal-ratio-parts",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2017_AMC_8_Q06#equal-ratio-parts",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2017_AMC_8_Q06.json",
+"sha256": "585be417c39f0beaaf70335ee6b1dfcc8607ad9a393f4d781d8f85447383ec5b",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2017_AMC_8_Q06",
+"position": {
+"year": 2017,
+"level": "AMC 8",
+"batch": "NA",
+"number": 6
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2017_AMC_8_Q06",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "a903b65c206ea7d812a3cfb371f5369e6adb659a82a60030cae5e59e1643700c",
+"contentHash": "a08ff49f29472b84e8b06631101462d081f17728f8f076a65159cc1897dca2eb",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
 "cnm_p124",
 "cnm_p187"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_p185"
+],
+"routes": [
+{
+"id": "equal-ratio-parts",
+"label": "Divide the angle sum into equal parts",
+"nodeIds": [
+"cnm_p124",
+"cnm_p187",
+"cnm_p185"
+],
+"methodDirectNodeIds": {
+"equal-ratio-parts": [
+"cnm_p124",
+"cnm_p187"
+]
+},
+"contextNodeIds": [
+"cnm_p185"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2017_AMC_8_Q07",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2017,
 "level": "AMC 8",
 "batch": "NA",
 "number": 7,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Let \\(Z\\) be a \\(6\\)-digit positive integer, such as \\(247247,\\) whose first three digits are the same as its last three digits taken in the same order. Which of the following numbers must be a factor of \\(Z?\\)",
 "questionType": "text",
 "choices": {
@@ -662690,41 +663120,127 @@ window.AMC_BANK = {
 "D": "\\( 111 \\)",
 "E": "\\( 1111 \\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "A",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"acceptedResponses": [
+"A"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The repeated block suggests treating its three digits as one number. Let \\(n\\) be that three-digit integer, so \\(100\\leq n\\leq999\\). In \\(Z\\), the first copy of the block has been shifted three places to the left, making its value \\(1000n\\). The last copy contributes \\(n\\). Therefore\n\\[\nZ=1000n+n=1001n.\n\\]\nSince \\(1001=11\\times91\\), we have\n\\[\nZ=11(91n).\n\\]\nThe quantity \\(91n\\) is an integer, so every allowed \\(Z\\) is a multiple of \\(11\\). The answer is \\(\\boxed{11}\\), choice \\(\\text{A}\\).",
+"solutionMethods": [
+{
+"id": "repeated-block-place-value",
+"label": "Use the repeated three-digit block",
+"explanation": "The repeated block suggests treating its three digits as one number. Let \\(n\\) be that three-digit integer, so \\(100\\leq n\\leq999\\). In \\(Z\\), the first copy of the block has been shifted three places to the left, making its value \\(1000n\\). The last copy contributes \\(n\\). Therefore\n\\[\nZ=1000n+n=1001n.\n\\]\nSince \\(1001=11\\times91\\), we have\n\\[\nZ=11(91n).\n\\]\nThe quantity \\(91n\\) is an integer, so every allowed \\(Z\\) is a multiple of \\(11\\). The answer is \\(\\boxed{11}\\), choice \\(\\text{A}\\).",
+"directNodeIds": [
+"cnm_p153",
+"cnm_027"
+],
+"legacyRouteId": "repeated-block-place-value",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2017_AMC_8_Q07#repeated-block-place-value",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2017_AMC_8_Q07.json",
+"sha256": "2ce2b56369b1252fde23c45a0b3c393b7efae18071702e55e2f07a8d801de48f",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2017_AMC_8_Q07",
+"position": {
+"year": 2017,
+"level": "AMC 8",
+"batch": "NA",
+"number": 7
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2017_AMC_8_Q07",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "cc61d075ca1585b0b4c1c6454621dbfc06f0e949f8832bc33a49c65e6d6f4b4e",
+"contentHash": "aee8a3f8b849640ba449349b02f2c9de4d68fd323a04d9e80f9cbbad399e8d83",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_p153"
 ],
 "supportIds": [
-"cnm_027",
-"math:prime-factorization"
+"cnm_p096",
+"cnm_p116",
+"cnm_p142"
 ],
-"routes": [],
+"routes": [
+{
+"id": "repeated-block-place-value",
+"label": "Use the repeated three-digit block",
+"nodeIds": [
+"cnm_p153",
+"cnm_027",
+"cnm_p096",
+"cnm_p116",
+"cnm_p142"
+],
+"methodDirectNodeIds": {
+"repeated-block-place-value": [
+"cnm_p153",
+"cnm_027"
+]
+},
+"contextNodeIds": [
+"cnm_p096",
+"cnm_p116",
+"cnm_p142"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2017_AMC_8_Q08",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2017,
 "level": "AMC 8",
 "batch": "NA",
 "number": 8,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Malcolm wants to visit Isabella after school today and knows the street where she lives but doesn’t know her house number. She tells him, “My house number has two digits, and exactly three of the following four statements about it are true.”\n\n\\((1)\\) It is prime.\n\n\\((2)\\) It is even.\n\n\\((3)\\) It is divisible by \\(7.\\)\n\n\\((4)\\) One of its digits is \\(9.\\)\n\nThis information allows Malcolm to determine Isabella’s house number. What is its units digit?",
 "questionType": "text",
 "choices": {
@@ -662734,40 +663250,128 @@ window.AMC_BANK = {
 "D": "\\( 8 \\)",
 "E": "\\( 9 \\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Exactly three statements are true, so only one can be false. Start with the prime statement: a two-digit prime cannot be even, because it would have \\(2\\) as a factor besides \\(1\\) and itself. It also cannot be divisible by \\(7\\), because it is larger than \\(7\\). Thus, if statement \\((1)\\) were true, statements \\((2)\\) and \\((3)\\) would both be false, contradicting the condition.\n\nTherefore statement \\((1)\\) is false, and statements \\((2)\\), \\((3)\\), and \\((4)\\) are all true. The two-digit even multiples of \\(7\\) are\n\\[\n14,\\ 28,\\ 42,\\ 56,\\ 70,\\ 84,\\ 98.\n\\]\nThis list includes every possibility: the multiples of \\(7\\) alternate between odd and even, so the even ones occur every \\(14\\), from \\(14\\) through \\(98\\). Only \\(98\\) contains a digit \\(9\\). It is composite, even, and divisible by \\(7\\), so it satisfies exactly the required three statements. Its units digit is \\(\\boxed{8}\\), choice \\(\\text{D}\\).",
+"solutionMethods": [
+{
+"id": "identify-false-statement",
+"label": "Determine which statement must be false",
+"explanation": "Exactly three statements are true, so only one can be false. Start with the prime statement: a two-digit prime cannot be even, because it would have \\(2\\) as a factor besides \\(1\\) and itself. It also cannot be divisible by \\(7\\), because it is larger than \\(7\\). Thus, if statement \\((1)\\) were true, statements \\((2)\\) and \\((3)\\) would both be false, contradicting the condition.\n\nTherefore statement \\((1)\\) is false, and statements \\((2)\\), \\((3)\\), and \\((4)\\) are all true. The two-digit even multiples of \\(7\\) are\n\\[\n14,\\ 28,\\ 42,\\ 56,\\ 70,\\ 84,\\ 98.\n\\]\nThis list includes every possibility: the multiples of \\(7\\) alternate between odd and even, so the even ones occur every \\(14\\), from \\(14\\) through \\(98\\). Only \\(98\\) contains a digit \\(9\\). It is composite, even, and divisible by \\(7\\), so it satisfies exactly the required three statements. Its units digit is \\(\\boxed{8}\\), choice \\(\\text{D}\\).",
+"directNodeIds": [
+"math:finite-constraint-deduction",
+"cnm_p157"
+],
+"legacyRouteId": "identify-false-statement",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2017_AMC_8_Q08#identify-false-statement",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2017_AMC_8_Q08.json",
+"sha256": "4d6b76f2f809b34f32881318832bc2fd681b2ff45497bf20f7b44639ded43e16",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2017_AMC_8_Q08",
+"position": {
+"year": 2017,
+"level": "AMC 8",
+"batch": "NA",
+"number": 8
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2017_AMC_8_Q08",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "c13b0962c7114b4b7ad358555d90c13f3b3c6390f74da11e33fbe862032c5e64",
+"contentHash": "c9ebde80501eeca97ca5f57e3ad2ca5c40d4a5f64f5146da2e48776d5abae23c",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
+"math:finite-constraint-deduction",
+"cnm_p157"
+],
+"supportIds": [
+"cnm_p156",
+"cnm_p153",
+"cnm_p017"
+],
+"routes": [
+{
+"id": "identify-false-statement",
+"label": "Determine which statement must be false",
+"nodeIds": [
+"math:finite-constraint-deduction",
 "cnm_p157",
 "cnm_p156",
-"cnm_p153"
+"cnm_p153",
+"cnm_p017"
 ],
-"supportIds": [],
-"routes": [],
+"methodDirectNodeIds": {
+"identify-false-statement": [
+"math:finite-constraint-deduction",
+"cnm_p157"
+]
+},
+"contextNodeIds": [
+"cnm_p156",
+"cnm_p153",
+"cnm_p017"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2017_AMC_8_Q09",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2017,
 "level": "AMC 8",
 "batch": "NA",
 "number": 9,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "All of Marcy’s marbles are blue, red, green, or yellow. One third of her marbles are blue, one fourth of them are red, and six of them are green. What is the smallest number of yellow marbles that Marcy could have?",
 "questionType": "text",
 "choices": {
@@ -662777,24 +663381,123 @@ window.AMC_BANK = {
 "D": "\\( 4 \\)",
 "E": "\\( 5 \\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The blue and red counts must be whole numbers, so the total must be divisible by both \\(3\\) and \\(4\\). Thus the possible totals are \\(12,24,36,\\ldots\\).\n\nWith \\(12\\) marbles, there would be \\(12\\div3=4\\) blue and \\(12\\div4=3\\) red, leaving only\n\\[\n12-4-3=5\n\\]\nfor green and yellow together. This cannot accommodate the six green marbles.\n\nThe next possible total is \\(24\\). It gives \\(8\\) blue and \\(6\\) red, so the yellow count is\n\\[\n24-8-6-6=4.\n\\]\nThese counts satisfy every condition. To see why a larger total cannot give fewer yellow marbles, each additional \\(12\\) marbles requires \\(4\\) more blue and \\(3\\) more red, leaving \\(5\\) more for green and yellow. Since the green count stays at six, the yellow count increases by \\(5\\). Therefore the smallest possible yellow count is \\(\\boxed{4}\\), choice \\(\\text{D}\\).",
+"solutionMethods": [
+{
+"id": "check-common-multiple-totals",
+"label": "Use whole-number color counts",
+"explanation": "The blue and red counts must be whole numbers, so the total must be divisible by both \\(3\\) and \\(4\\). Thus the possible totals are \\(12,24,36,\\ldots\\).\n\nWith \\(12\\) marbles, there would be \\(12\\div3=4\\) blue and \\(12\\div4=3\\) red, leaving only\n\\[\n12-4-3=5\n\\]\nfor green and yellow together. This cannot accommodate the six green marbles.\n\nThe next possible total is \\(24\\). It gives \\(8\\) blue and \\(6\\) red, so the yellow count is\n\\[\n24-8-6-6=4.\n\\]\nThese counts satisfy every condition. To see why a larger total cannot give fewer yellow marbles, each additional \\(12\\) marbles requires \\(4\\) more blue and \\(3\\) more red, leaving \\(5\\) more for green and yellow. Since the green count stays at six, the yellow count increases by \\(5\\). Therefore the smallest possible yellow count is \\(\\boxed{4}\\), choice \\(\\text{D}\\).",
+"directNodeIds": [
+"math:extremal-principle",
+"cnm_p159",
+"cnm_p179"
+],
+"legacyRouteId": "check-common-multiple-totals",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2017_AMC_8_Q09#check-common-multiple-totals",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2017_AMC_8_Q09.json",
+"sha256": "f1fabfbb5626bf77364430ad573db13b9f7bb176510dad2e1ff0d88ecc3cd2f7",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "total-multiples",
+"label": "Use multiples of 12",
+"directNodeIds": [
+"cnm_p159",
+"cnm_p179"
+],
+"legacyRouteId": "total-multiples",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L4319",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2017_AMC_8_Q09#total-multiples",
+"evidence": []
+}
+},
+{
+"id": "yellow-congruence",
+"label": "Use a congruence for yellow",
+"directNodeIds": [
+"math:modular-congruence"
+],
+"legacyRouteId": "yellow-congruence",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L4319",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2017_AMC_8_Q09#yellow-congruence",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2017_AMC_8_Q09",
+"position": {
+"year": 2017,
+"level": "AMC 8",
+"batch": "NA",
+"number": 9
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2017_AMC_8_Q09",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "2bd4b454456ece68f3c8ab6bfe918fcab4c1d40b2a9e9ed485f37a3687b5ae11",
+"contentHash": "dca2930035d89fb5a90b76947f2cb0a2bbd67874c96df074b636bc65e3a0baf5",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
-"math:integer-diophantine-equations"
+"math:extremal-principle"
 ],
 "supportIds": [
-"cnm_p174"
+"cnm_p153",
+"cnm_p165",
+"cnm_p035"
 ],
 "routes": [
 {
@@ -662803,13 +663506,50 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_p159",
 "cnm_p179"
+],
+"methodDirectNodeIds": {
+"total-multiples": [
+"cnm_p159",
+"cnm_p179"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "yellow-congruence",
 "label": "Use a congruence for yellow",
 "nodeIds": [
 "math:modular-congruence"
+],
+"methodDirectNodeIds": {
+"yellow-congruence": [
+"math:modular-congruence"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "check-common-multiple-totals",
+"label": "Use whole-number color counts",
+"nodeIds": [
+"math:extremal-principle",
+"cnm_p159",
+"cnm_p179",
+"cnm_p153",
+"cnm_p165",
+"cnm_p035"
+],
+"methodDirectNodeIds": {
+"check-common-multiple-totals": [
+"math:extremal-principle",
+"cnm_p159",
+"cnm_p179"
+]
+},
+"contextNodeIds": [
+"cnm_p153",
+"cnm_p165",
+"cnm_p035"
 ]
 }
 ],
@@ -662819,14 +663559,17 @@ window.AMC_BANK = {
 {
 "id": "2017_AMC_8_Q10",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2017,
 "level": "AMC 8",
 "batch": "NA",
 "number": 10,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "A box contains five cards, numbered \\(1,\\) \\(2,\\) \\(3,\\) \\(4,\\) and \\(5.\\) Three cards are selected randomly without replacement from the box. What is the probability that \\(4\\) is the largest value selected?",
 "questionType": "text",
 "choices": {
@@ -662836,38 +663579,120 @@ window.AMC_BANK = {
 "D": "\\( \\dfrac{2}{5} \\)",
 "E": "\\( \\dfrac{1}{2} \\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Since only the largest card matters, we can list each selection in increasing order. The possible selections are\n\\[\n\\begin{gathered}\n(1,2,3),\\ (1,2,4),\\ (1,2,5),\\ (1,3,4),\\ (1,3,5),\\ (1,4,5),\\\\\n(2,3,4),\\ (2,3,5),\\ (2,4,5),\\ (3,4,5).\n\\end{gathered}\n\\]\nThis list is exhaustive: it groups selections by their smallest card, which can only be \\(1\\), \\(2\\), or \\(3\\). Writing the cards in increasing order prevents counting the same selection twice. These ten selections are equally likely because each can be drawn in the same six orders, and every ordered draw has the same probability.\n\nFor \\(4\\) to be the largest card, we must select \\(4\\), exclude \\(5\\), and choose two cards from \\(1,2,3\\). The favorable selections are \\((1,2,4)\\), \\((1,3,4)\\), and \\((2,3,4)\\). Thus the probability is\n\\[\n\\frac{\\text{favorable selections}}{\\text{all selections}}=\\frac{3}{10},\n\\]\nwhich is choice \\(\\boxed{\\text{C}}\\).",
+"solutionMethods": [
+{
+"id": "enumeration",
+"label": "List the possible selections",
+"explanation": "Since only the largest card matters, we can list each selection in increasing order. The possible selections are\n\\[\n\\begin{gathered}\n(1,2,3),\\ (1,2,4),\\ (1,2,5),\\ (1,3,4),\\ (1,3,5),\\ (1,4,5),\\\\\n(2,3,4),\\ (2,3,5),\\ (2,4,5),\\ (3,4,5).\n\\end{gathered}\n\\]\nThis list is exhaustive: it groups selections by their smallest card, which can only be \\(1\\), \\(2\\), or \\(3\\). Writing the cards in increasing order prevents counting the same selection twice. These ten selections are equally likely because each can be drawn in the same six orders, and every ordered draw has the same probability.\n\nFor \\(4\\) to be the largest card, we must select \\(4\\), exclude \\(5\\), and choose two cards from \\(1,2,3\\). The favorable selections are \\((1,2,4)\\), \\((1,3,4)\\), and \\((2,3,4)\\). Thus the probability is\n\\[\n\\frac{\\text{favorable selections}}{\\text{all selections}}=\\frac{3}{10},\n\\]\nwhich is choice \\(\\boxed{\\text{C}}\\).",
+"directNodeIds": [
+"cnm_286"
+],
+"legacyRouteId": "enumeration",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2017_AMC_8_Q10#enumeration",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2017_AMC_8_Q10.json",
+"sha256": "3c3c7605ed1d42c2e85f5b862d5e9089ba45d99d5569ce475b7b17e5f7a3501f",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2017_AMC_8_Q10",
+"position": {
+"year": 2017,
+"level": "AMC 8",
+"batch": "NA",
+"number": 10
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2017_AMC_8_Q10",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "d22d65f566641ce98e4e385ae89f7c5e038d5309a3ac8a4336ef8311a27f9456",
+"contentHash": "cc21f5b148afdcdc2ee8e7b4a90733f5c82a0be3439721af5553d4b1f3c02add",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
-"cnm_286"
+"cnm_285"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_309"
+],
+"routes": [
+{
+"id": "enumeration",
+"label": "List the possible selections",
+"nodeIds": [
+"cnm_286",
+"cnm_285",
+"cnm_309"
+],
+"methodDirectNodeIds": {
+"enumeration": [
+"cnm_286"
+]
+},
+"contextNodeIds": [
+"cnm_285",
+"cnm_309"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2017_AMC_8_Q11",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2017,
 "level": "AMC 8",
 "batch": "NA",
 "number": 11,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "A square-shaped floor is covered with congruent square tiles. If the total number of tiles that lie on the two diagonals is \\(37,\\) how many tiles cover the floor?",
 "questionType": "text",
 "choices": {
@@ -662877,41 +663702,125 @@ window.AMC_BANK = {
 "D": "\\( 1296 \\)",
 "E": "\\( 1369 \\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Let \\(n\\) be the positive integer number of tiles along each side. The floor has \\(n\\) rows of \\(n\\) tiles, and each diagonal passes through the interiors of \\(n\\) tiles. Adding the two diagonal counts gives \\(2n\\), but any tile on both diagonals must be counted only once.\n\nIf \\(n\\) is even, the diagonals meet at a corner of the four middle tiles and share no tile interiors. Their total is then \\(2n\\), an even number, so it cannot be \\(37\\).\n\nIf \\(n\\) is odd, both diagonals pass through the central tile, and this is their only shared tile. Therefore\n\\[\n2n-1=37,\n\\qquad n=\\frac{37+1}{2}=19.\n\\]\nThere are \\(19\\) rows with \\(19\\) tiles in each, so the floor contains\n\\[\n19\\times19=\\boxed{361}\n\\]\ntiles, choice \\(\\boxed{\\text{C}}\\).",
+"solutionMethods": [
+{
+"id": "diagonal-overlap",
+"label": "Count the shared central tile once",
+"explanation": "Let \\(n\\) be the positive integer number of tiles along each side. The floor has \\(n\\) rows of \\(n\\) tiles, and each diagonal passes through the interiors of \\(n\\) tiles. Adding the two diagonal counts gives \\(2n\\), but any tile on both diagonals must be counted only once.\n\nIf \\(n\\) is even, the diagonals meet at a corner of the four middle tiles and share no tile interiors. Their total is then \\(2n\\), an even number, so it cannot be \\(37\\).\n\nIf \\(n\\) is odd, both diagonals pass through the central tile, and this is their only shared tile. Therefore\n\\[\n2n-1=37,\n\\qquad n=\\frac{37+1}{2}=19.\n\\]\nThere are \\(19\\) rows with \\(19\\) tiles in each, so the floor contains\n\\[\n19\\times19=\\boxed{361}\n\\]\ntiles, choice \\(\\boxed{\\text{C}}\\).",
+"directNodeIds": [
+"cnm_h009",
+"math:rectangle-square-grids"
+],
+"legacyRouteId": "diagonal-overlap",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2017_AMC_8_Q11#diagonal-overlap",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2017_AMC_8_Q11.json",
+"sha256": "5a50a7954fe58cb774daca6c3c2b940e5f93ed04387a60a4a2c5f028eca88280",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2017_AMC_8_Q11",
+"position": {
+"year": 2017,
+"level": "AMC 8",
+"batch": "NA",
+"number": 11
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2017_AMC_8_Q11",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "6ab1d8c1cab0a645753f118827c59f972e18eebb4aa83940555af820aeb14f73",
+"contentHash": "b0f1c472ce8e7c37068abb45a35b062224d88c66df56133016b8e4cba4aa356f",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
 "cnm_h009",
-"cnm_p089"
+"math:rectangle-square-grids"
 ],
 "supportIds": [
+"cnm_h008",
 "cnm_p156"
 ],
-"routes": [],
+"routes": [
+{
+"id": "diagonal-overlap",
+"label": "Count the shared central tile once",
+"nodeIds": [
+"cnm_h009",
+"math:rectangle-square-grids",
+"cnm_h008",
+"cnm_p156"
+],
+"methodDirectNodeIds": {
+"diagonal-overlap": [
+"cnm_h009",
+"math:rectangle-square-grids"
+]
+},
+"contextNodeIds": [
+"cnm_h008",
+"cnm_p156"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2017_AMC_8_Q12",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2017,
 "level": "AMC 8",
 "batch": "NA",
 "number": 12,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "The smallest positive integer greater than \\(1\\) that leaves a remainder of \\(1\\) when divided by \\(4,\\) \\(5,\\) and \\(6\\) lies between which of the following pairs of numbers?",
 "questionType": "text",
 "choices": {
@@ -662921,40 +663830,121 @@ window.AMC_BANK = {
 "D": "\\(60\\) and \\(79\\)",
 "E": "\\(80\\) and \\(124\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "A number that leaves remainder \\(1\\) is one more than a multiple of the divisor. Therefore, subtracting \\(1\\) from the requested integer must give a common multiple of \\(4\\), \\(5\\), and \\(6\\). Because the integer must be greater than \\(1\\), this common multiple must be positive.\n\nThe positive numbers at most \\(60\\) that are multiples of both \\(4\\) and \\(6\\) are\n\\[\n12,\\ 24,\\ 36,\\ 48,\\ 60.\n\\]\nThe first of these that is also divisible by \\(5\\) is \\(60\\). Hence \\(60\\) is the least positive common multiple of all three divisors, and the smallest requested integer is\n\\[\n60+1=61.\n\\]\nIndeed, \\(61=4\\cdot15+1=5\\cdot12+1=6\\cdot10+1\\), so all three remainders are \\(1\\). Since \\(60<61<79\\), the answer is choice \\(\\boxed{\\text{D}}\\).",
+"solutionMethods": [
+{
+"id": "subtract-the-remainder",
+"label": "Subtract the common remainder",
+"explanation": "A number that leaves remainder \\(1\\) is one more than a multiple of the divisor. Therefore, subtracting \\(1\\) from the requested integer must give a common multiple of \\(4\\), \\(5\\), and \\(6\\). Because the integer must be greater than \\(1\\), this common multiple must be positive.\n\nThe positive numbers at most \\(60\\) that are multiples of both \\(4\\) and \\(6\\) are\n\\[\n12,\\ 24,\\ 36,\\ 48,\\ 60.\n\\]\nThe first of these that is also divisible by \\(5\\) is \\(60\\). Hence \\(60\\) is the least positive common multiple of all three divisors, and the smallest requested integer is\n\\[\n60+1=61.\n\\]\nIndeed, \\(61=4\\cdot15+1=5\\cdot12+1=6\\cdot10+1\\), so all three remainders are \\(1\\). Since \\(60<61<79\\), the answer is choice \\(\\boxed{\\text{D}}\\).",
+"directNodeIds": [
+"cnm_p159"
+],
+"legacyRouteId": "subtract-the-remainder",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2017_AMC_8_Q12#subtract-the-remainder",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2017_AMC_8_Q12.json",
+"sha256": "07b68e935e39726060b4e9a7105993901976129d79aaaa4b6c8f61da5a244f89",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2017_AMC_8_Q12",
+"position": {
+"year": 2017,
+"level": "AMC 8",
+"batch": "NA",
+"number": 12
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2017_AMC_8_Q12",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "743e260a9cc1ed216390f49ab55b9897a0dcd545649b2535e5781307b08e2487",
+"contentHash": "0569ba77c0c02aed227263549ab47523ca8b58d0e6b22677519ee9d1c1342982",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
-"math:simultaneous-congruences"
-],
-"supportIds": [
 "cnm_p159"
 ],
-"routes": [],
+"supportIds": [
+"cnm_p050",
+"cnm_p153"
+],
+"routes": [
+{
+"id": "subtract-the-remainder",
+"label": "Subtract the common remainder",
+"nodeIds": [
+"cnm_p159",
+"cnm_p050",
+"cnm_p153"
+],
+"methodDirectNodeIds": {
+"subtract-the-remainder": [
+"cnm_p159"
+]
+},
+"contextNodeIds": [
+"cnm_p050",
+"cnm_p153"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2017_AMC_8_Q13",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2017,
 "level": "AMC 8",
 "batch": "NA",
 "number": 13,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Peter, Emma, and Kyler played chess with each other. Peter won \\(4\\) games and lost \\(2\\) games. Emma won \\(3\\) games and lost \\(3\\) games. If Kyler lost \\(3\\) games, how many games did he win?",
 "questionType": "text",
 "choices": {
@@ -662964,38 +663954,118 @@ window.AMC_BANK = {
 "D": "\\( 3 \\)",
 "E": "\\( 4 \\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "B",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"acceptedResponses": [
+"B"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Each game with a winner contributes exactly one win and one loss among these three players. A drawn game contributes neither, so draws do not affect the equality between total wins and total losses.\n\nTheir total number of losses is\n\\[\n2+3+3=8.\n\\]\nThus they also have \\(8\\) wins altogether. Peter and Emma won \\(4+3=7\\) games between them, leaving\n\\[\n8-7=\\boxed{1}\n\\]\nwin for Kyler, choice \\(\\boxed{\\text{B}}\\).",
+"solutionMethods": [
+{
+"id": "balance-wins-and-losses",
+"label": "Match every win with a loss",
+"explanation": "Each game with a winner contributes exactly one win and one loss among these three players. A drawn game contributes neither, so draws do not affect the equality between total wins and total losses.\n\nTheir total number of losses is\n\\[\n2+3+3=8.\n\\]\nThus they also have \\(8\\) wins altogether. Peter and Emma won \\(4+3=7\\) games between them, leaving\n\\[\n8-7=\\boxed{1}\n\\]\nwin for Kyler, choice \\(\\boxed{\\text{B}}\\).",
+"directNodeIds": [
+"math:double-counting"
+],
+"legacyRouteId": "balance-wins-and-losses",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2017_AMC_8_Q13#balance-wins-and-losses",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2017_AMC_8_Q13.json",
+"sha256": "ccefbcb46ba0ef78a4396d85ec28e326e37bd0f4305ee96eace05418e8eedf9d",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2017_AMC_8_Q13",
+"position": {
+"year": 2017,
+"level": "AMC 8",
+"batch": "NA",
+"number": 13
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2017_AMC_8_Q13",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "567b9f8418bc4c757897b618c1ec357b5ace7b068d3d329ec9f23e3be7c5f0cb",
+"contentHash": "7bc900916297be69f2931c945ef439dc5d3aa5dce97acd37a9acdc76dfbb1744",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "math:double-counting"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_p035"
+],
+"routes": [
+{
+"id": "balance-wins-and-losses",
+"label": "Match every win with a loss",
+"nodeIds": [
+"math:double-counting",
+"cnm_p035"
+],
+"methodDirectNodeIds": {
+"balance-wins-and-losses": [
+"math:double-counting"
+]
+},
+"contextNodeIds": [
+"cnm_p035"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2017_AMC_8_Q14",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2017,
 "level": "AMC 8",
 "batch": "NA",
 "number": 14,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Chloe and Zoe are both students in Ms. Demeanor’s math class. Last night they each solved half of the problems in their homework assignment alone and then solved the other half together. Chloe had correct answers to only \\(80\\%\\) of the problems she solved alone, but overall \\(88\\%\\) of her answers were correct. Zoe had correct answers to \\(90\\%\\) of the problems she solved alone. What was Zoe’s overall percentage of correct answers?",
 "questionType": "text",
 "choices": {
@@ -663005,23 +664075,148 @@ window.AMC_BANK = {
 "D": "\\( 96 \\)",
 "E": "\\( 98 \\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Each half contains the same number of problems, so the overall percentage correct is the average of the percentages for the two halves. Also, Chloe and Zoe have the same answers on the half they solved together.\n\nLet \\(t\\) be their percentage correct on that shared half. Chloe's results give\n\\[\n\\frac{80\\%+t}{2}=88\\%,\n\\]\nso\n\\[\nt=2\\cdot88\\%-80\\%=96\\%.\n\\]\nZoe's two halves were therefore \\(90\\%\\) correct and \\(96\\%\\) correct. Her overall percentage was\n\\[\n\\frac{90\\%+96\\%}{2}=93\\%.\n\\]\nThe answer is \\(93\\%\\), choice \\(\\text{C}\\).",
+"solutionMethods": [
+{
+"id": "recover-shared-percentage",
+"label": "Find the percentage correct together",
+"explanation": "Each half contains the same number of problems, so the overall percentage correct is the average of the percentages for the two halves. Also, Chloe and Zoe have the same answers on the half they solved together.\n\nLet \\(t\\) be their percentage correct on that shared half. Chloe's results give\n\\[\n\\frac{80\\%+t}{2}=88\\%,\n\\]\nso\n\\[\nt=2\\cdot88\\%-80\\%=96\\%.\n\\]\nZoe's two halves were therefore \\(90\\%\\) correct and \\(96\\%\\) correct. Her overall percentage was\n\\[\n\\frac{90\\%+96\\%}{2}=93\\%.\n\\]\nThe answer is \\(93\\%\\), choice \\(\\text{C}\\).",
+"directNodeIds": [
+"cnm_p129",
+"cnm_p110",
+"cnm_p197"
+],
+"legacyRouteId": "recover-shared-percentage",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2017_AMC_8_Q14#recover-shared-percentage",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2017_AMC_8_Q14.json",
+"sha256": "db9c2e39846242ab88aa69938448c2cb56689741ed8bbb3cc795623a7a5d1eba",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "compare-solo-results",
+"label": "Compare their overall results directly",
+"explanation": "The answers on the half solved together contribute equally to Chloe's and Zoe's totals. Thus any difference in their overall percentages comes entirely from the half they solved alone.\n\nOn that half, Zoe's percentage correct exceeds Chloe's by \\(90-80=10\\) percentage points. Because this half contains only half of all the problems, the difference over the whole assignment is \\(10\\div2=5\\) percentage points.\n\nZoe's overall percentage was therefore\n\\[\n88\\%+5\\%=93\\%.\n\\]\nThe answer is \\(93\\%\\), choice \\(\\text{C}\\).",
+"directNodeIds": [
+"cnm_p179",
+"cnm_p197"
+],
+"legacyRouteId": "compare-solo-results",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2017_AMC_8_Q14#compare-solo-results",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2017_AMC_8_Q14.json",
+"sha256": "db9c2e39846242ab88aa69938448c2cb56689741ed8bbb3cc795623a7a5d1eba",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "recover-shared-accuracy",
+"label": "Recover the shared rate using equal-half averages",
+"directNodeIds": [
+"cnm_211",
+"cnm_p110"
+],
+"legacyRouteId": "recover-shared-accuracy",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L4324",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2017_AMC_8_Q14#recover-shared-accuracy",
+"evidence": []
+}
+},
+{
+"id": "compare-solo-accuracies",
+"label": "Apply half of the solo percentage-point difference",
+"directNodeIds": [
+"cnm_p179"
+],
+"legacyRouteId": "compare-solo-accuracies",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L4324",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2017_AMC_8_Q14#compare-solo-accuracies",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2017_AMC_8_Q14",
+"position": {
+"year": 2017,
+"level": "AMC 8",
+"batch": "NA",
+"number": 14
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2017_AMC_8_Q14",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "9759b7d27e77b1dfe6121bb3e6098358c81e6b1f65cb55a7da69a6ea7dc1b0ef",
+"contentHash": "a163021cbedaedd3ebde96a16ae97681d0c26155a5417f7c81347b8a6a57fb5b",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
 "cnm_p197"
 ],
-"supportIds": [],
+"supportIds": [
+"cnm_p194",
+"cnm_p165"
+],
 "routes": [
 {
 "id": "recover-shared-accuracy",
@@ -663029,13 +664224,68 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_211",
 "cnm_p110"
+],
+"methodDirectNodeIds": {
+"recover-shared-accuracy": [
+"cnm_211",
+"cnm_p110"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "compare-solo-accuracies",
 "label": "Apply half of the solo percentage-point difference",
 "nodeIds": [
 "cnm_p179"
+],
+"methodDirectNodeIds": {
+"compare-solo-accuracies": [
+"cnm_p179"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "recover-shared-percentage",
+"label": "Find the percentage correct together",
+"nodeIds": [
+"cnm_p129",
+"cnm_p110",
+"cnm_p197",
+"cnm_p194",
+"cnm_p165"
+],
+"methodDirectNodeIds": {
+"recover-shared-percentage": [
+"cnm_p129",
+"cnm_p110",
+"cnm_p197"
+]
+},
+"contextNodeIds": [
+"cnm_p194",
+"cnm_p165"
+]
+},
+{
+"id": "compare-solo-results",
+"label": "Compare their overall results directly",
+"nodeIds": [
+"cnm_p179",
+"cnm_p197",
+"cnm_p194",
+"cnm_p165"
+],
+"methodDirectNodeIds": {
+"compare-solo-results": [
+"cnm_p179",
+"cnm_p197"
+]
+},
+"contextNodeIds": [
+"cnm_p194",
+"cnm_p165"
 ]
 }
 ],
@@ -663321,14 +664571,17 @@ window.AMC_BANK = {
 {
 "id": "2017_AMC_8_Q17",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2017,
 "level": "AMC 8",
 "batch": "NA",
 "number": 17,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Starting with some gold coins and some empty treasure chests, I tried to put \\(9\\) gold coins in each treasure chest, but that left \\(2\\) treasure chests empty. So instead I put \\(6\\) gold coins in each treasure chest, but then I had \\(3\\) gold coins left over. How many gold coins did I have?",
 "questionType": "text",
 "choices": {
@@ -663338,23 +664591,106 @@ window.AMC_BANK = {
 "D": "\\( 63 \\)",
 "E": "\\( 81 \\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Start with the arrangement having \\(6\\) coins in every chest and \\(3\\) coins left over. To reach the arrangement with two empty chests, empty two of these chests. This releases \\(2\\cdot6=12\\) coins.\n\nTogether with the \\(3\\) leftover coins, there are now \\(15\\) coins available to increase the contents of the remaining chests from \\(6\\) to \\(9\\). Each remaining chest needs \\(9-6=3\\) more coins, so there must be\n\\[\n15\\div3=5\n\\]\nremaining chests. All the coins are in those five chests in the nine-coin arrangement, giving\n\\[\n5\\cdot9=45\n\\]\ngold coins.\n\nThere are \\(5+2=7\\) chests altogether, and \\(6\\cdot7+3=45\\), which also satisfies the six-coin condition. The answer is \\(45\\), choice \\(\\text{C}\\).",
+"solutionMethods": [
+{
+"id": "redistribute-coins",
+"label": "Move coins between the arrangements",
+"explanation": "Start with the arrangement having \\(6\\) coins in every chest and \\(3\\) coins left over. To reach the arrangement with two empty chests, empty two of these chests. This releases \\(2\\cdot6=12\\) coins.\n\nTogether with the \\(3\\) leftover coins, there are now \\(15\\) coins available to increase the contents of the remaining chests from \\(6\\) to \\(9\\). Each remaining chest needs \\(9-6=3\\) more coins, so there must be\n\\[\n15\\div3=5\n\\]\nremaining chests. All the coins are in those five chests in the nine-coin arrangement, giving\n\\[\n5\\cdot9=45\n\\]\ngold coins.\n\nThere are \\(5+2=7\\) chests altogether, and \\(6\\cdot7+3=45\\), which also satisfies the six-coin condition. The answer is \\(45\\), choice \\(\\text{C}\\).",
+"directNodeIds": [
+"cnm_p111",
+"cnm_p110",
+"cnm_p084"
+],
+"legacyRouteId": "solution:redistribute-coins:a2c1bfa749ac",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2017_AMC_8_Q17#redistribute-coins",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2017_AMC_8_Q17.json",
+"sha256": "1259bd85305f2de68f821a32ed0ad4f40ebc24cfb50e9d858417515532f75704",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "equate-coin-totals",
+"label": "Equate totals using the number of chests",
+"directNodeIds": [
+"cnm_045",
+"cnm_043"
+],
+"legacyRouteId": "equate-coin-totals",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L4327",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2017_AMC_8_Q17#equate-coin-totals",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2017_AMC_8_Q17",
+"position": {
+"year": 2017,
+"level": "AMC 8",
+"batch": "NA",
+"number": 17
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2017_AMC_8_Q17",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "3faf977e3e88ffb81aae4af3c0a2d31f4e444ee945b69d655d22e6cd60cc3ea8",
+"contentHash": "e154f60f3b6f9bf45db1493b66de375c47add7e59365ef6cea79da5cca2512bd",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
 "cnm_p111"
 ],
-"supportIds": [],
+"supportIds": [
+"cnm_p038",
+"cnm_p035",
+"cnm_p043"
+],
 "routes": [
 {
 "id": "equate-coin-totals",
@@ -663362,7 +664698,14 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_045",
 "cnm_043"
+],
+"methodDirectNodeIds": {
+"equate-coin-totals": [
+"cnm_045",
+"cnm_043"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "redistribute-coins",
@@ -663370,6 +664713,30 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_p110",
 "cnm_p112"
+]
+},
+{
+"id": "solution:redistribute-coins:a2c1bfa749ac",
+"label": "Move coins between the arrangements",
+"nodeIds": [
+"cnm_p111",
+"cnm_p110",
+"cnm_p084",
+"cnm_p038",
+"cnm_p035",
+"cnm_p043"
+],
+"methodDirectNodeIds": {
+"redistribute-coins": [
+"cnm_p111",
+"cnm_p110",
+"cnm_p084"
+]
+},
+"contextNodeIds": [
+"cnm_p038",
+"cnm_p035",
+"cnm_p043"
 ]
 }
 ],
@@ -663584,14 +664951,17 @@ window.AMC_BANK = {
 {
 "id": "2017_AMC_8_Q19",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2017,
 "level": "AMC 8",
 "batch": "NA",
 "number": 19,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "For any positive integer \\(M,\\) the notation \\(M!\\) denotes the product of the integers \\(1\\) through \\(M.\\) What is the largest integer \\(n\\) for which \\(5^n\\) is a factor of the sum: \\[98!+99!+100!\\]",
 "questionType": "text",
 "choices": {
@@ -663601,40 +664971,125 @@ window.AMC_BANK = {
 "D": "\\( 26 \\)",
 "E": "\\( 27 \\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The three factorials share the factor \\(98!\\). Factoring it out turns the sum into a product whose factors of \\(5\\) we can count:\n\\[\n\\begin{aligned}\n98!+99!+100!\n&=98!\\bigl(1+99+100\\cdot99\\bigr)\\\\\n&=98!\\cdot10000.\n\\end{aligned}\n\\]\nIn \\(98!=1\\cdot2\\cdots98\\), only multiples of \\(5\\) contribute factors of \\(5\\). There are \\(19\\) such multiples, namely \\(5,10,\\ldots,95\\), contributing one factor each. The numbers \\(25,50,75\\) each contribute one additional factor because they are multiples of \\(25=5^2\\). No number in the product is a multiple of \\(125=5^3\\), so there are no further factors of \\(5\\).\n\nThus \\(98!\\) contains exactly \\(19+3=22\\) factors of \\(5\\). Also,\n\\[\n10000=10^4=2^4\\cdot5^4,\n\\]\nso the other factor contributes four more. The sum therefore contains exactly \\(22+4=26\\) factors of \\(5\\). It is divisible by \\(5^{26}\\), and after removing those factors the remaining integer is not divisible by \\(5\\), so \\(5^{27}\\) cannot divide it.\n\nThe largest integer is \\(n=26\\), choice \\(\\text{D}\\).",
+"solutionMethods": [
+{
+"id": "factor-and-count-fives",
+"label": "Factor the sum and count factors of five",
+"explanation": "The three factorials share the factor \\(98!\\). Factoring it out turns the sum into a product whose factors of \\(5\\) we can count:\n\\[\n\\begin{aligned}\n98!+99!+100!\n&=98!\\bigl(1+99+100\\cdot99\\bigr)\\\\\n&=98!\\cdot10000.\n\\end{aligned}\n\\]\nIn \\(98!=1\\cdot2\\cdots98\\), only multiples of \\(5\\) contribute factors of \\(5\\). There are \\(19\\) such multiples, namely \\(5,10,\\ldots,95\\), contributing one factor each. The numbers \\(25,50,75\\) each contribute one additional factor because they are multiples of \\(25=5^2\\). No number in the product is a multiple of \\(125=5^3\\), so there are no further factors of \\(5\\).\n\nThus \\(98!\\) contains exactly \\(19+3=22\\) factors of \\(5\\). Also,\n\\[\n10000=10^4=2^4\\cdot5^4,\n\\]\nso the other factor contributes four more. The sum therefore contains exactly \\(22+4=26\\) factors of \\(5\\). It is divisible by \\(5^{26}\\), and after removing those factors the remaining integer is not divisible by \\(5\\), so \\(5^{27}\\) cannot divide it.\n\nThe largest integer is \\(n=26\\), choice \\(\\text{D}\\).",
+"directNodeIds": [
+"cnm_p116",
+"math:prime-valuations-factorials"
+],
+"legacyRouteId": "factor-and-count-fives",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2017_AMC_8_Q19#factor-and-count-fives",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2017_AMC_8_Q19.json",
+"sha256": "190fca90837357b1c9b9b63e65701aabacb1631539445731b17ce03690d4ec00",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2017_AMC_8_Q19",
+"position": {
+"year": 2017,
+"level": "AMC 8",
+"batch": "NA",
+"number": 19
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2017_AMC_8_Q19",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "c40750fe7b638c168006268f2e581d78ce60d9b40557ea90bc8d756f8b2dafa7",
+"contentHash": "2a8f089f7c4dfc9b4967e0f630ffd10fc0d7fb24f25a39d299f62f669d9945c0",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "math:prime-valuations-factorials"
 ],
 "supportIds": [
-"cnm_p116"
+"cnm_p116",
+"math:factorial-notation",
+"math:prime-factorization"
 ],
-"routes": [],
+"routes": [
+{
+"id": "factor-and-count-fives",
+"label": "Factor the sum and count factors of five",
+"nodeIds": [
+"cnm_p116",
+"math:prime-valuations-factorials",
+"math:factorial-notation",
+"math:prime-factorization"
+],
+"methodDirectNodeIds": {
+"factor-and-count-fives": [
+"cnm_p116",
+"math:prime-valuations-factorials"
+]
+},
+"contextNodeIds": [
+"math:factorial-notation",
+"math:prime-factorization"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2017_AMC_8_Q20",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2017,
 "level": "AMC 8",
 "batch": "NA",
 "number": 20,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "An integer between \\(1000\\) and \\(9999,\\) inclusive, is chosen at random. What is the probability that it is an odd integer whose digits are all distinct?",
 "questionType": "text",
 "choices": {
@@ -663644,41 +665099,128 @@ window.AMC_BANK = {
 "D": "\\( \\dfrac{7}{25} \\)",
 "E": "\\( \\dfrac{9}{25} \\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "B",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"acceptedResponses": [
+"B"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "There are\n\\[\n9999-1000+1=9000\n\\]\nintegers in the stated range, all equally likely. To count the favorable integers, choose the units digit first because it determines whether the number is odd.\n\nThe units digit has \\(5\\) choices: \\(1,3,5,7,9\\). The thousands digit must be nonzero and different from the units digit, leaving \\(8\\) choices. The hundreds digit can be any of the \\(8\\) unused digits, including zero if it is still unused. Finally, the tens digit has \\(7\\) unused choices.\n\nThese choices produce every odd four-digit integer with distinct digits. Each is counted once because its four digits specify exactly one sequence of choices. The number of favorable integers is therefore\n\\[\n5\\cdot8\\cdot8\\cdot7=2240.\n\\]\nDividing the favorable count by the total count gives\n\\[\n\\frac{2240}{9000}=\\frac{56}{225}.\n\\]\nThe probability is \\(\\frac{56}{225}\\), choice \\(\\text{B}\\).",
+"solutionMethods": [
+{
+"id": "choose-units-first",
+"label": "Choose the odd units digit first",
+"explanation": "There are\n\\[\n9999-1000+1=9000\n\\]\nintegers in the stated range, all equally likely. To count the favorable integers, choose the units digit first because it determines whether the number is odd.\n\nThe units digit has \\(5\\) choices: \\(1,3,5,7,9\\). The thousands digit must be nonzero and different from the units digit, leaving \\(8\\) choices. The hundreds digit can be any of the \\(8\\) unused digits, including zero if it is still unused. Finally, the tens digit has \\(7\\) unused choices.\n\nThese choices produce every odd four-digit integer with distinct digits. Each is counted once because its four digits specify exactly one sequence of choices. The number of favorable integers is therefore\n\\[\n5\\cdot8\\cdot8\\cdot7=2240.\n\\]\nDividing the favorable count by the total count gives\n\\[\n\\frac{2240}{9000}=\\frac{56}{225}.\n\\]\nThe probability is \\(\\frac{56}{225}\\), choice \\(\\text{B}\\).",
+"directNodeIds": [
+"cnm_285",
+"cnm_h231"
+],
+"legacyRouteId": "choose-units-first",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2017_AMC_8_Q20#choose-units-first",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2017_AMC_8_Q20.json",
+"sha256": "288aff36ea17c4b2813dd1e85701a2364e8bff75d7494e21e4f59ff534bf1697",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2017_AMC_8_Q20",
+"position": {
+"year": 2017,
+"level": "AMC 8",
+"batch": "NA",
+"number": 20
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2017_AMC_8_Q20",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "7681cf51682ab01c9e640e5d4b69e36b9e6646fc965edf19f1afeb69894d7593",
+"contentHash": "aab9ff1a381e3024efad5c30a65e21849197355139a320af052675daab79f787",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
-"cnm_h137",
-"cnm_h235"
-],
-"supportIds": [
+"cnm_285",
 "cnm_h231"
 ],
-"routes": [],
+"supportIds": [
+"cnm_p053",
+"cnm_p156",
+"cnm_p168"
+],
+"routes": [
+{
+"id": "choose-units-first",
+"label": "Choose the odd units digit first",
+"nodeIds": [
+"cnm_285",
+"cnm_h231",
+"cnm_p053",
+"cnm_p156",
+"cnm_p168"
+],
+"methodDirectNodeIds": {
+"choose-units-first": [
+"cnm_285",
+"cnm_h231"
+]
+},
+"contextNodeIds": [
+"cnm_p053",
+"cnm_p156",
+"cnm_p168"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2017_AMC_8_Q21",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2017,
 "level": "AMC 8",
 "batch": "NA",
 "number": 21,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Suppose \\(a,\\) \\(b,\\) and \\(c\\) are nonzero real numbers, and \\(a+b+c=0.\\) What are the possible value(s) for \\[\\dfrac{a}{|a|}+\\dfrac{b}{|b|}+\\dfrac{c}{|c|}+\\dfrac{abc}{|abc|}?\\]",
 "questionType": "text",
 "choices": {
@@ -663688,25 +665230,111 @@ window.AMC_BANK = {
 "D": "\\(0\\), \\(2\\), and \\(-2\\)",
 "E": "\\(0\\), \\(1\\), and \\(-1\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "A",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"acceptedResponses": [
+"A"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "For any nonzero real number \\(x\\), the quotient \\(x/|x|\\) equals \\(1\\) if \\(x>0\\) and \\(-1\\) if \\(x<0\\). Thus only the signs of \\(a,b,c\\) matter. All denominators are positive because the numbers and their product are nonzero.\n\nSince \\(a+b+c=0\\), the three numbers cannot all be positive or all be negative. There are exactly two possibilities:\n\nIf two numbers are positive and one is negative, the first three quotients sum to \\(1+1-1=1\\). The product \\(abc\\) is negative, so the full expression is \\(1-1=0\\).\n\nIf one number is positive and two are negative, the first three quotients sum to \\(1-1-1=-1\\). The product \\(abc\\) is positive, so the full expression is \\(-1+1=0\\).\n\nThese cases cover every allowed triple, and allowed triples exist, such as \\((1,1,-2)\\). Therefore the only possible value is \\(\\boxed{0}\\), choice \\(\\text{A}\\).",
+"solutionMethods": [
+{
+"id": "sign_cases",
+"label": "Consider the two possible sign patterns",
+"explanation": "For any nonzero real number \\(x\\), the quotient \\(x/|x|\\) equals \\(1\\) if \\(x>0\\) and \\(-1\\) if \\(x<0\\). Thus only the signs of \\(a,b,c\\) matter. All denominators are positive because the numbers and their product are nonzero.\n\nSince \\(a+b+c=0\\), the three numbers cannot all be positive or all be negative. There are exactly two possibilities:\n\nIf two numbers are positive and one is negative, the first three quotients sum to \\(1+1-1=1\\). The product \\(abc\\) is negative, so the full expression is \\(1-1=0\\).\n\nIf one number is positive and two are negative, the first three quotients sum to \\(1-1-1=-1\\). The product \\(abc\\) is positive, so the full expression is \\(-1+1=0\\).\n\nThese cases cover every allowed triple, and allowed triples exist, such as \\((1,1,-2)\\). Therefore the only possible value is \\(\\boxed{0}\\), choice \\(\\text{A}\\).",
+"directNodeIds": [
+"cnm_008",
+"cnm_015"
+],
+"legacyRouteId": "sign_cases",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2017_AMC_8_Q21#sign_cases",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2017_AMC_8_Q21.json",
+"sha256": "079356c84726e1181b7fa59377b98894e5de61198b1d39ac0017d1af0d1f24d3",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2017_AMC_8_Q21",
+"position": {
+"year": 2017,
+"level": "AMC 8",
+"batch": "NA",
+"number": 21
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2017_AMC_8_Q21",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "c7e2e89220f50e3779616fa7e722978cbfdf8c3ba1365a52651efce35839ae2a",
+"contentHash": "50d47e82bb6d3435d69cbd5ec30f13b88b7ea6034ff76b8821865b20ea3dcfbd",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
 "cnm_008",
 "cnm_015"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_010",
+"cnm_014",
+"cnm_017"
+],
+"routes": [
+{
+"id": "sign_cases",
+"label": "Consider the two possible sign patterns",
+"nodeIds": [
+"cnm_008",
+"cnm_015",
+"cnm_010",
+"cnm_014",
+"cnm_017"
+],
+"methodDirectNodeIds": {
+"sign_cases": [
+"cnm_008",
+"cnm_015"
+]
+},
+"contextNodeIds": [
+"cnm_010",
+"cnm_014",
+"cnm_017"
+]
+}
+],
 "flags": []
 }
 },
@@ -663924,14 +665552,17 @@ window.AMC_BANK = {
 {
 "id": "2017_AMC_8_Q23",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2017,
 "level": "AMC 8",
 "batch": "NA",
 "number": 23,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Each day for four days, Linda traveled for one hour at a speed that resulted in her traveling one mile in an integer number of minutes. Each day after the first, her speed decreased so that the number of minutes to travel one mile increased by \\(5\\) minutes over the preceding day. Each of the four days, her distance traveled was also an integer number of miles. What was the total number of miles for the four trips?",
 "questionType": "text",
 "choices": {
@@ -663941,17 +665572,77 @@ window.AMC_BANK = {
 "D": "\\( 50 \\)",
 "E": "\\( 82 \\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Each trip lasts \\(60\\) minutes. If Linda takes \\(m\\) minutes per mile, she travels \\(60/m\\) miles. Since both \\(m\\) and the distance must be positive integers, \\(m\\) must be a positive divisor of \\(60\\).\n\nThe positive divisors of \\(60\\), found from its factor pairs, are\n\\[\n1,2,3,4,5,6,10,12,15,20,30,60.\n\\]\nWe need four numbers from this list, increasing by \\(5\\) each day. The only possible first values whose next value is also in the list are \\(1,5,10,15\\). Starting at \\(1\\) fails because the third value would be \\(11\\). Starting at \\(10\\) or \\(15\\) fails because the four values would include \\(25\\). Starting at \\(5\\) gives\n\\[\n5,10,15,20,\n\\]\nall of which divide \\(60\\). This checks every possible start, so the daily times are uniquely determined.\n\nThe total distance is therefore\n\\[\n\\frac{60}{5}+\\frac{60}{10}+\\frac{60}{15}+\\frac{60}{20}\n=12+6+4+3=25.\n\\]\nLinda traveled \\(\\boxed{25}\\) miles, choice \\(\\text{C}\\).",
+"solutionMethods": [
+{
+"id": "divisors_of_sixty",
+"label": "Find the possible minutes per mile",
+"explanation": "Each trip lasts \\(60\\) minutes. If Linda takes \\(m\\) minutes per mile, she travels \\(60/m\\) miles. Since both \\(m\\) and the distance must be positive integers, \\(m\\) must be a positive divisor of \\(60\\).\n\nThe positive divisors of \\(60\\), found from its factor pairs, are\n\\[\n1,2,3,4,5,6,10,12,15,20,30,60.\n\\]\nWe need four numbers from this list, increasing by \\(5\\) each day. The only possible first values whose next value is also in the list are \\(1,5,10,15\\). Starting at \\(1\\) fails because the third value would be \\(11\\). Starting at \\(10\\) or \\(15\\) fails because the four values would include \\(25\\). Starting at \\(5\\) gives\n\\[\n5,10,15,20,\n\\]\nall of which divide \\(60\\). This checks every possible start, so the daily times are uniquely determined.\n\nThe total distance is therefore\n\\[\n\\frac{60}{5}+\\frac{60}{10}+\\frac{60}{15}+\\frac{60}{20}\n=12+6+4+3=25.\n\\]\nLinda traveled \\(\\boxed{25}\\) miles, choice \\(\\text{C}\\).",
+"directNodeIds": [
+"cnm_p153",
+"cnm_p111",
+"cnm_p060"
+],
+"legacyRouteId": "divisors_of_sixty",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2017_AMC_8_Q23#divisors_of_sixty",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2017_AMC_8_Q23.json",
+"sha256": "3c6cf8ccad5c8c97bcaa36f59e0c2f158f6ca4ae5148658c794c75fc43737b2e",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2017_AMC_8_Q23",
+"position": {
+"year": 2017,
+"level": "AMC 8",
+"batch": "NA",
+"number": 23
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2017_AMC_8_Q23",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "fda8c3924996b39ad957db9ccc9aa43371cf3c79c83debf0cf5f0fa5471b83f2",
+"contentHash": "7aeb634194e93a5c2b0f80f60bbe2cef95cbd2bec6a05d9c4e360916caf06280",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -663959,23 +665650,50 @@ window.AMC_BANK = {
 "cnm_p111"
 ],
 "supportIds": [
-"cnm_p062"
+"cnm_p062",
+"cnm_p110"
 ],
-"routes": [],
+"routes": [
+{
+"id": "divisors_of_sixty",
+"label": "Find the possible minutes per mile",
+"nodeIds": [
+"cnm_p153",
+"cnm_p111",
+"cnm_p060",
+"cnm_p062",
+"cnm_p110"
+],
+"methodDirectNodeIds": {
+"divisors_of_sixty": [
+"cnm_p153",
+"cnm_p111",
+"cnm_p060"
+]
+},
+"contextNodeIds": [
+"cnm_p062",
+"cnm_p110"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2017_AMC_8_Q24",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2017,
 "level": "AMC 8",
 "batch": "NA",
 "number": 24,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Mrs. Sanders has three grandchildren, who call her regularly. One calls her every three days, one calls her every four days, and one calls her every five days. All three called her on December \\(31,\\) \\(2016.\\) On how many days during the next year did she not receive a phone call from any of her grandchildren?",
 "questionType": "text",
 "choices": {
@@ -663985,28 +665703,168 @@ window.AMC_BANK = {
 "D": "\\( 146 \\)",
 "E": "\\( 152 \\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The year \\(2017\\) is not a leap year, so it has \\(365\\) days. Number January 1 as day \\(1\\), January 2 as day \\(2\\), and so on, with December 31, 2016 as day \\(0\\). The grandchildren call on multiples of \\(3\\), \\(4\\), and \\(5\\), respectively.\n\nFirst count each grandchild's call days separately. There are \\(121\\) multiples of \\(3\\), \\(91\\) multiples of \\(4\\), and \\(73\\) multiples of \\(5\\) among days \\(1\\) through \\(365\\). For example, \\(3\\cdot121=363\\), while the next multiple is beyond the year.\n\nAdding these counts repeats days with more than one call. Two grandchildren call together every \\(12\\), \\(15\\), or \\(20\\) days, the least common multiples of their calling intervals. There are respectively \\(30\\), \\(24\\), and \\(18\\) such days, so subtract these three overlap counts.\n\nA day when all three call was initially counted three times and then subtracted three times, leaving it uncounted. Add those days back once. All three call every \\(60\\) days, giving \\(6\\) such days. Consequently, the number of days with at least one call is\n\\[\n121+91+73-30-24-18+6=219.\n\\]\nA day with exactly one, two, or three callers now contributes exactly once, so no call day is omitted or repeated. The remaining days have no calls:\n\\[\n365-219=\\boxed{146}.\n\\]\nThe answer is choice \\(\\text{D}\\).",
+"solutionMethods": [
+{
+"id": "count_overlapping_call_days",
+"label": "Count call days and correct the overlaps",
+"explanation": "The year \\(2017\\) is not a leap year, so it has \\(365\\) days. Number January 1 as day \\(1\\), January 2 as day \\(2\\), and so on, with December 31, 2016 as day \\(0\\). The grandchildren call on multiples of \\(3\\), \\(4\\), and \\(5\\), respectively.\n\nFirst count each grandchild's call days separately. There are \\(121\\) multiples of \\(3\\), \\(91\\) multiples of \\(4\\), and \\(73\\) multiples of \\(5\\) among days \\(1\\) through \\(365\\). For example, \\(3\\cdot121=363\\), while the next multiple is beyond the year.\n\nAdding these counts repeats days with more than one call. Two grandchildren call together every \\(12\\), \\(15\\), or \\(20\\) days, the least common multiples of their calling intervals. There are respectively \\(30\\), \\(24\\), and \\(18\\) such days, so subtract these three overlap counts.\n\nA day when all three call was initially counted three times and then subtracted three times, leaving it uncounted. Add those days back once. All three call every \\(60\\) days, giving \\(6\\) such days. Consequently, the number of days with at least one call is\n\\[\n121+91+73-30-24-18+6=219.\n\\]\nA day with exactly one, two, or three callers now contributes exactly once, so no call day is omitted or repeated. The remaining days have no calls:\n\\[\n365-219=\\boxed{146}.\n\\]\nThe answer is choice \\(\\text{D}\\).",
+"directNodeIds": [
+"math:inclusion-exclusion-general",
+"cnm_p153",
+"cnm_p159",
+"cnm_h010"
+],
+"legacyRouteId": "count_overlapping_call_days",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2017_AMC_8_Q24#count_overlapping_call_days",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2017_AMC_8_Q24.json",
+"sha256": "dd2cdfd4a99a126132c8c3d68056631ecb2d7115a96bff97170951b150004e07",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "repeating_sixty_day_blocks",
+"label": "Use repeating blocks of 60 days",
+"explanation": "Number the days after December 31, 2016 starting with day \\(1\\). A call occurs exactly when the day number is divisible by \\(3\\), \\(4\\), or \\(5\\). Since \\(60\\) is divisible by all three numbers, adding \\(60\\) to a day number preserves whether each grandchild calls. Thus the pattern repeats in blocks of \\(60\\) days.\n\nTo count no-call days in the first block, first avoid multiples of \\(3\\) and \\(4\\). In days \\(1\\) through \\(12\\), the remaining numbers are\n\\[\n1,2,5,7,10,11.\n\\]\nThis pattern repeats every \\(12\\) days. The five disjoint blocks of \\(12\\) days within days \\(1\\) through \\(60\\) therefore contain \\(5\\cdot6=30\\) days without calls from those two grandchildren.\n\nAmong these \\(30\\) days, the multiples of \\(5\\) are exactly\n\\[\n5,10,25,35,50,55.\n\\]\nRemoving these six days leaves \\(30-6=24\\) days with no calls in each \\(60\\)-day block. Every day was checked first for divisibility by \\(3\\) or \\(4\\), then by \\(5\\), so these are precisely the no-call days.\n\nThe year \\(2017\\) has \\(365=6\\cdot60+5\\) days. Its first \\(360\\) days contain six complete blocks, giving \\(6\\cdot24=144\\) no-call days. The final five days follow the same calling pattern as days \\(1\\) through \\(5\\). Only days \\(1\\) and \\(2\\) have no calls, adding two more.\n\nThus the total is \\(144+2=\\boxed{146}\\) days, choice \\(\\text{D}\\).",
+"directNodeIds": [
+"cnm_p153",
+"cnm_p159",
+"cnm_h003",
+"cnm_h010"
+],
+"legacyRouteId": "repeating_sixty_day_blocks",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2017_AMC_8_Q24#repeating_sixty_day_blocks",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2017_AMC_8_Q24.json",
+"sha256": "dd2cdfd4a99a126132c8c3d68056631ecb2d7115a96bff97170951b150004e07",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2017_AMC_8_Q24",
+"position": {
+"year": 2017,
+"level": "AMC 8",
+"batch": "NA",
+"number": 24
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2017_AMC_8_Q24",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "c7dd723dedd0af614ec060b4e59a9fe81d81431e3f923123927b9cab1ba25116",
+"contentHash": "892aeb704db8291870c4e8ef45d5879fd5972f5028adbbfc74bd90a6e184eb27",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
-"math:inclusion-exclusion-general"
+"cnm_p153",
+"cnm_h010"
 ],
 "supportIds": [
-"cnm_h010",
 "cnm_p159",
-"cnm_p091"
+"cnm_p091",
+"cnm_p050"
 ],
-"routes": [],
+"routes": [
+{
+"id": "count_overlapping_call_days",
+"label": "Count call days and correct the overlaps",
+"nodeIds": [
+"math:inclusion-exclusion-general",
+"cnm_p153",
+"cnm_p159",
+"cnm_h010",
+"cnm_p091",
+"cnm_h009",
+"cnm_p050"
+],
+"methodDirectNodeIds": {
+"count_overlapping_call_days": [
+"math:inclusion-exclusion-general",
+"cnm_p153",
+"cnm_p159",
+"cnm_h010"
+]
+},
+"contextNodeIds": [
+"cnm_p091",
+"cnm_h009",
+"cnm_p050"
+]
+},
+{
+"id": "repeating_sixty_day_blocks",
+"label": "Use repeating blocks of 60 days",
+"nodeIds": [
+"cnm_p153",
+"cnm_p159",
+"cnm_h003",
+"cnm_h010",
+"cnm_p091",
+"cnm_p050"
+],
+"methodDirectNodeIds": {
+"repeating_sixty_day_blocks": [
+"cnm_p153",
+"cnm_p159",
+"cnm_h003",
+"cnm_h010"
+]
+},
+"contextNodeIds": [
+"cnm_p091",
+"cnm_p050"
+]
+}
+],
 "flags": []
 }
 },
@@ -744589,16 +746447,20 @@ window.AMC_BANK = {
 {
 "id": "2024_AMC_8_Q02",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:prealgebra"
-],
-"skill": [],
 "year": 2024,
 "level": "AMC 8",
 "batch": "NA",
 "number": 2,
 "area": "Prealgebra",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:prealgebra"
+],
+"skill": [],
+"responseType": "choice",
 "question": "What is the value of this expression in decimal form? \\[ \\frac{44}{11} + \\frac{110}{44} + \\frac{44}{1100} \\]",
 "questionType": "text",
 "choices": {
@@ -744608,25 +746470,111 @@ window.AMC_BANK = {
 "D": "\\(6.9\\)",
 "E": "\\(6.94\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Convert each term separately so that the final addition uses decimal place values. The first term is \\(44/11=4\\). For the other two terms, simplify and use denominators of \\(10\\) or \\(100\\):\n\\[\n\\frac{110}{44}=\\frac{5}{2}=\\frac{25}{10}=2.5,\n\\qquad\n\\frac{44}{1100}=\\frac{4}{100}=0.04.\n\\]\nThe last term is four hundredths. Aligning the decimal places gives\n\\[\n4.00+2.50+0.04=\\boxed{6.54}.\n\\]\nThe answer is choice \\(\\text{C}\\).",
+"solutionMethods": [
+{
+"id": "convert_then_add",
+"label": "Write each fraction as a decimal",
+"explanation": "Convert each term separately so that the final addition uses decimal place values. The first term is \\(44/11=4\\). For the other two terms, simplify and use denominators of \\(10\\) or \\(100\\):\n\\[\n\\frac{110}{44}=\\frac{5}{2}=\\frac{25}{10}=2.5,\n\\qquad\n\\frac{44}{1100}=\\frac{4}{100}=0.04.\n\\]\nThe last term is four hundredths. Aligning the decimal places gives\n\\[\n4.00+2.50+0.04=\\boxed{6.54}.\n\\]\nThe answer is choice \\(\\text{C}\\).",
+"directNodeIds": [
+"cnm_p168",
+"cnm_p167",
+"cnm_p170",
+"cnm_p125"
+],
+"legacyRouteId": "convert_then_add",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2024_AMC_8_Q02#convert_then_add",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2024_AMC_8_Q02.json",
+"sha256": "283034635b7667e8b0d59cffd4c1b0b01c58a26562f6a544943acd1d56d10574",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2024_AMC_8_Q02",
+"position": {
+"year": 2024,
+"level": "AMC 8",
+"batch": "NA",
+"number": 2
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2024_AMC_8_Q02",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "991a63423e2bca74bd537e70831151fc6da85fdc1712bf21fc31712772d5dc31",
+"contentHash": "7287243e178d6477adc322169a728bef9aaca2b7aec34af36faee1e4ab9a2245",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
-"cnm_p137",
+"cnm_p170",
 "cnm_p125"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_p118"
+],
+"routes": [
+{
+"id": "convert_then_add",
+"label": "Write each fraction as a decimal",
+"nodeIds": [
+"cnm_p168",
+"cnm_p167",
+"cnm_p170",
+"cnm_p125",
+"cnm_p118"
+],
+"methodDirectNodeIds": {
+"convert_then_add": [
+"cnm_p168",
+"cnm_p167",
+"cnm_p170",
+"cnm_p125"
+]
+},
+"contextNodeIds": [
+"cnm_p118"
+]
+}
+],
 "flags": []
 }
 },
@@ -744767,16 +746715,20 @@ window.AMC_BANK = {
 {
 "id": "2024_AMC_8_Q04",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:prealgebra"
-],
-"skill": [],
 "year": 2024,
 "level": "AMC 8",
 "batch": "NA",
 "number": 4,
 "area": "Prealgebra",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:prealgebra"
+],
+"skill": [],
+"responseType": "choice",
 "question": "When Yunji added all the integers from \\(1\\) to \\(9,\\) she mistakenly left out a number. Her incorrect sum turned out to be a square number. Which number did Yunji leave out?",
 "questionType": "text",
 "choices": {
@@ -744786,17 +746738,77 @@ window.AMC_BANK = {
 "D": "\\(8\\)",
 "E": "\\(9\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "E",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions",
+"acceptedResponses": [
+"E"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "First find the correct sum by pairing numbers that add to \\(10\\):\n\\[\n1+2+\\cdots+9=(1+9)+(2+8)+(3+7)+(4+6)+5=45.\n\\]\nLeaving out one number from \\(1\\) through \\(9\\) makes the sum at least \\(45-9=36\\) and at most \\(45-1=44\\). The neighboring squares are \\(5^2=25\\), \\(6^2=36\\), and \\(7^2=49\\), so the only square from \\(36\\) through \\(44\\) is \\(36\\).\n\nThe omitted number is the difference between the correct and incorrect sums:\n\\[\n45-36=9.\n\\]\nThus Yunji left out \\(9\\), choice \\(\\mathrm{E}\\).",
+"solutionMethods": [
+{
+"id": "pair-and-bound",
+"label": "Find the full sum and the possible square",
+"explanation": "First find the correct sum by pairing numbers that add to \\(10\\):\n\\[\n1+2+\\cdots+9=(1+9)+(2+8)+(3+7)+(4+6)+5=45.\n\\]\nLeaving out one number from \\(1\\) through \\(9\\) makes the sum at least \\(45-9=36\\) and at most \\(45-1=44\\). The neighboring squares are \\(5^2=25\\), \\(6^2=36\\), and \\(7^2=49\\), so the only square from \\(36\\) through \\(44\\) is \\(36\\).\n\nThe omitted number is the difference between the correct and incorrect sums:\n\\[\n45-36=9.\n\\]\nThus Yunji left out \\(9\\), choice \\(\\mathrm{E}\\).",
+"directNodeIds": [
+"cnm_p110",
+"cnm_020",
+"cnm_p114"
+],
+"legacyRouteId": "pair-and-bound",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2024_AMC_8_Q04#pair-and-bound",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2024_AMC_8_Q04.json",
+"sha256": "17fad1a43ce66769c37e25cb720fd885c43fa34d574f194ce58214e8ae2bb0e7",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2024_AMC_8_Q04",
+"position": {
+"year": 2024,
+"level": "AMC 8",
+"batch": "NA",
+"number": 4
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2024_AMC_8_Q04",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "3f9bc531b34dbde755eca0da356f3b0cdd55b84af9340f85e84397f5fb94d0d4",
+"contentHash": "5624963821a9867c70fa52c3f7f0cbce6ff024287d7fd1513b1586d23c9e708f",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -744804,25 +746816,51 @@ window.AMC_BANK = {
 "cnm_020"
 ],
 "supportIds": [
-"cnm_p114"
+"cnm_p114",
+"cnm_019"
 ],
-"routes": [],
+"routes": [
+{
+"id": "pair-and-bound",
+"label": "Find the full sum and the possible square",
+"nodeIds": [
+"cnm_p110",
+"cnm_020",
+"cnm_p114",
+"cnm_019"
+],
+"methodDirectNodeIds": {
+"pair-and-bound": [
+"cnm_p110",
+"cnm_020",
+"cnm_p114"
+]
+},
+"contextNodeIds": [
+"cnm_019"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2024_AMC_8_Q05",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:prealgebra"
-],
-"skill": [],
 "year": 2024,
 "level": "AMC 8",
 "batch": "NA",
 "number": 5,
 "area": "Prealgebra",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:prealgebra"
+],
+"skill": [],
+"responseType": "choice",
 "question": "Aaliyah rolls two standard \\(6\\)-sided dice. She notices that the product of the two numbers rolled is a multiple of \\(6.\\) Which of the following integers cannot be the sum of the two numbers?",
 "questionType": "text",
 "choices": {
@@ -744832,24 +746870,107 @@ window.AMC_BANK = {
 "D": "\\(8\\)",
 "E": "\\(9\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "B",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions",
+"acceptedResponses": [
+"B"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "A sum is possible only if some pair of dice numbers gives that sum and has a product that is a multiple of \\(6\\).\n\nFor a sum of \\(6\\), the possible pairs, ignoring order, are\n\\[\n(1,5),\\quad (2,4),\\quad (3,3).\n\\]\nThese include every pair: choosing the smaller number as \\(1\\), \\(2\\), or \\(3\\) determines the other number. Reversing a pair changes neither its sum nor its product. Their products are \\(5\\), \\(8\\), and \\(9\\), respectively, so none qualifies.\n\nEach other listed sum does occur with a suitable product:\n\\[\n\\begin{aligned}\n2+3&=5, &2\\times3&=6,\\\\\n1+6&=7, &1\\times6&=6,\\\\\n2+6&=8, &2\\times6&=12,\\\\\n3+6&=9, &3\\times6&=18.\n\\end{aligned}\n\\]\nAll four products are multiples of \\(6\\). Therefore the sum that cannot occur is \\(6\\), choice \\(\\mathrm{B}\\).",
+"solutionMethods": [
+{
+"id": "check-sums",
+"label": "Check the possible pairs for each sum",
+"explanation": "A sum is possible only if some pair of dice numbers gives that sum and has a product that is a multiple of \\(6\\).\n\nFor a sum of \\(6\\), the possible pairs, ignoring order, are\n\\[\n(1,5),\\quad (2,4),\\quad (3,3).\n\\]\nThese include every pair: choosing the smaller number as \\(1\\), \\(2\\), or \\(3\\) determines the other number. Reversing a pair changes neither its sum nor its product. Their products are \\(5\\), \\(8\\), and \\(9\\), respectively, so none qualifies.\n\nEach other listed sum does occur with a suitable product:\n\\[\n\\begin{aligned}\n2+3&=5, &2\\times3&=6,\\\\\n1+6&=7, &1\\times6&=6,\\\\\n2+6&=8, &2\\times6&=12,\\\\\n3+6&=9, &3\\times6&=18.\n\\end{aligned}\n\\]\nAll four products are multiples of \\(6\\). Therefore the sum that cannot occur is \\(6\\), choice \\(\\mathrm{B}\\).",
+"directNodeIds": [
+"cnm_p153",
+"cnm_p095"
+],
+"legacyRouteId": "check-sums",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2024_AMC_8_Q05#check-sums",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2024_AMC_8_Q05.json",
+"sha256": "77251c24bad968527208d2ff90f33afd1811bf491b9b3750a9c86f63949d014f",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2024_AMC_8_Q05",
+"position": {
+"year": 2024,
+"level": "AMC 8",
+"batch": "NA",
+"number": 5
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2024_AMC_8_Q05",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "5bc31dc8c11a7d879b10b2524dac56da78de5677c3fb8d5e607d7fa07a21b0ce",
+"contentHash": "a1a0e6e291e1ff211edcb63470f8d4dff7ddc9e0997d443e507e87cb2ab32ff3",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
 "cnm_p153"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_p038",
+"cnm_p039"
+],
+"routes": [
+{
+"id": "check-sums",
+"label": "Check the possible pairs for each sum",
+"nodeIds": [
+"cnm_p153",
+"cnm_p095",
+"cnm_p038",
+"cnm_p039"
+],
+"methodDirectNodeIds": {
+"check-sums": [
+"cnm_p153",
+"cnm_p095"
+]
+},
+"contextNodeIds": [
+"cnm_p038",
+"cnm_p039"
+]
+}
+],
 "flags": []
 }
 },
@@ -745198,16 +747319,20 @@ window.AMC_BANK = {
 {
 "id": "2024_AMC_8_Q08",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:counting-probability"
-],
-"skill": [],
 "year": 2024,
 "level": "AMC 8",
 "batch": "NA",
 "number": 8,
 "area": "Counting & Probability",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:counting-probability"
+],
+"skill": [],
+"responseType": "choice",
 "question": "On Monday Taye has \\(\\$2.\\) Every day, he either gains \\(\\$3\\) or doubles the amount of money he had on the previous day. How many different dollar amounts could Taye have on Thursday, \\(3\\) days later?",
 "questionType": "text",
 "choices": {
@@ -745217,40 +747342,124 @@ window.AMC_BANK = {
 "D": "\\(6\\)",
 "E": "\\(7\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Track the different balances each day, applying both allowed choices to every balance. If two paths reach the same balance, keep that balance only once: the next day's choices depend only on the money Taye currently has.\n\nStarting with \\(2\\) dollars on Monday, Tuesday's possibilities are \\(2+3=5\\) and \\(2\\times2=4\\) dollars.\n\nOn Wednesday, \\(4\\) dollars can become \\(7\\) or \\(8\\), while \\(5\\) dollars can become \\(8\\) or \\(10\\). Thus the distinct Wednesday balances are \\(7\\), \\(8\\), and \\(10\\) dollars.\n\nApply both choices once more for Thursday:\n\\[\n\\begin{aligned}\n7&\\longrightarrow 10\\text{ or }14,\\\\\n8&\\longrightarrow 11\\text{ or }16,\\\\\n10&\\longrightarrow 13\\text{ or }20.\n\\end{aligned}\n\\]\nEvery possible balance is included because we applied both choices to every balance from the previous day. The resulting amounts are\n\\[\n10,\\ 11,\\ 13,\\ 14,\\ 16,\\ 20,\n\\]\nwith no repeats. There are \\(6\\) different amounts, choice \\(\\mathrm{D}\\).",
+"solutionMethods": [
+{
+"id": "list-balances",
+"label": "List the different balances day by day",
+"explanation": "Track the different balances each day, applying both allowed choices to every balance. If two paths reach the same balance, keep that balance only once: the next day's choices depend only on the money Taye currently has.\n\nStarting with \\(2\\) dollars on Monday, Tuesday's possibilities are \\(2+3=5\\) and \\(2\\times2=4\\) dollars.\n\nOn Wednesday, \\(4\\) dollars can become \\(7\\) or \\(8\\), while \\(5\\) dollars can become \\(8\\) or \\(10\\). Thus the distinct Wednesday balances are \\(7\\), \\(8\\), and \\(10\\) dollars.\n\nApply both choices once more for Thursday:\n\\[\n\\begin{aligned}\n7&\\longrightarrow 10\\text{ or }14,\\\\\n8&\\longrightarrow 11\\text{ or }16,\\\\\n10&\\longrightarrow 13\\text{ or }20.\n\\end{aligned}\n\\]\nEvery possible balance is included because we applied both choices to every balance from the previous day. The resulting amounts are\n\\[\n10,\\ 11,\\ 13,\\ 14,\\ 16,\\ 20,\n\\]\nwith no repeats. There are \\(6\\) different amounts, choice \\(\\mathrm{D}\\).",
+"directNodeIds": [
+"cnm_h003"
+],
+"legacyRouteId": "list-balances",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2024_AMC_8_Q08#list-balances",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2024_AMC_8_Q08.json",
+"sha256": "186a2961c52227ff7242d17d3e4870a64edd3f35380efa9841cda97ae456e0f4",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2024_AMC_8_Q08",
+"position": {
+"year": 2024,
+"level": "AMC 8",
+"batch": "NA",
+"number": 8
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2024_AMC_8_Q08",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "d887d8bdb175a5e5106db6f36b90947fc4358d448bc0320fa6c7d46e1b2fd9f5",
+"contentHash": "fdb44b8bb6c4eea866da501ccb17c7ea4344370623efa6a76516bf62728d3a4d",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
 "cnm_h003"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_p031",
+"cnm_p073"
+],
+"routes": [
+{
+"id": "list-balances",
+"label": "List the different balances day by day",
+"nodeIds": [
+"cnm_h003",
+"cnm_p031",
+"cnm_p073"
+],
+"methodDirectNodeIds": {
+"list-balances": [
+"cnm_h003"
+]
+},
+"contextNodeIds": [
+"cnm_p031",
+"cnm_p073"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2024_AMC_8_Q09",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:prealgebra"
-],
-"skill": [],
 "year": 2024,
 "level": "AMC 8",
 "batch": "NA",
 "number": 9,
 "area": "Prealgebra",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:prealgebra"
+],
+"skill": [],
+"responseType": "choice",
 "question": "All of the marbles in Maria’s collection are red, green, or blue. Maria has half as many red marbles as green marbles and twice as many blue marbles as green marbles. Which of the following could be the total number of marbles in Maria’s collection?",
 "questionType": "text",
 "choices": {
@@ -745260,41 +747469,128 @@ window.AMC_BANK = {
 "D": "\\(27\\)",
 "E": "\\(28\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "E",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions",
+"acceptedResponses": [
+"E"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Use the red marbles as one part. Since Maria has half as many red marbles as green marbles, the green marbles make two equal parts. She has twice as many blue marbles as green marbles, so the blue marbles make four parts. Thus\n\\[\n\\text{red}:\\text{green}:\\text{blue}=1:2:4.\n\\]\nThe collection has \\(1+2+4=7\\) equal parts altogether. Each part contains a whole number of marbles because one part is exactly the red-marble count. Therefore the total must be a multiple of \\(7\\).\n\nThe consecutive multiples \\(21\\) and \\(28\\) show that \\(24\\), \\(25\\), \\(26\\), and \\(27\\) do not qualify. For a total of \\(28\\), each part contains \\(28\\div7=4\\) marbles. This gives \\(4\\) red, \\(8\\) green, and \\(16\\) blue marbles, satisfying both stated relationships. The possible total is \\(28\\), choice \\(\\mathrm{E}\\).",
+"solutionMethods": [
+{
+"id": "equal-parts",
+"label": "Express the collection in equal parts",
+"explanation": "Use the red marbles as one part. Since Maria has half as many red marbles as green marbles, the green marbles make two equal parts. She has twice as many blue marbles as green marbles, so the blue marbles make four parts. Thus\n\\[\n\\text{red}:\\text{green}:\\text{blue}=1:2:4.\n\\]\nThe collection has \\(1+2+4=7\\) equal parts altogether. Each part contains a whole number of marbles because one part is exactly the red-marble count. Therefore the total must be a multiple of \\(7\\).\n\nThe consecutive multiples \\(21\\) and \\(28\\) show that \\(24\\), \\(25\\), \\(26\\), and \\(27\\) do not qualify. For a total of \\(28\\), each part contains \\(28\\div7=4\\) marbles. This gives \\(4\\) red, \\(8\\) green, and \\(16\\) blue marbles, satisfying both stated relationships. The possible total is \\(28\\), choice \\(\\mathrm{E}\\).",
+"directNodeIds": [
+"cnm_p187",
+"cnm_p153"
+],
+"legacyRouteId": "equal-parts",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2024_AMC_8_Q09#equal-parts",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2024_AMC_8_Q09.json",
+"sha256": "3acd2f5927f634b1a3adadb20b0871a445fbc3bf81cdfb43cc0d1d80129ad182",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2024_AMC_8_Q09",
+"position": {
+"year": 2024,
+"level": "AMC 8",
+"batch": "NA",
+"number": 9
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2024_AMC_8_Q09",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "82aaed78d467d932f74b19c2536246391f69cd982506f6626ab0c97e0990fab2",
+"contentHash": "f5c64e04386d77f7a01886fd6507521fe68bf0d0f038dcc2d0a9e42d51cbb64f",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
 "cnm_p187",
 "cnm_p153"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_p185",
+"cnm_p073"
+],
+"routes": [
+{
+"id": "equal-parts",
+"label": "Express the collection in equal parts",
+"nodeIds": [
+"cnm_p187",
+"cnm_p153",
+"cnm_p185",
+"cnm_p073"
+],
+"methodDirectNodeIds": {
+"equal-parts": [
+"cnm_p187",
+"cnm_p153"
+]
+},
+"contextNodeIds": [
+"cnm_p185",
+"cnm_p073"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2024_AMC_8_Q10",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:algebra"
-],
-"skill": [],
 "year": 2024,
 "level": "AMC 8",
 "batch": "NA",
 "number": 10,
 "area": "Algebra",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:algebra"
+],
+"skill": [],
+"responseType": "choice",
 "question": "In January \\(1980\\) the Mauna Loa Observatory recorded carbon dioxide CO\\({}_{2}\\) levels of \\(338\\) ppm (parts per million). Over the years the average CO\\({}_{2}\\) reading has increased by about \\(1.515\\) ppm each year. What is the expected CO\\({}_{2}\\) level in ppm in January \\(2030?\\) Round your answer to the nearest integer.",
 "questionType": "text",
 "choices": {
@@ -745304,17 +747600,76 @@ window.AMC_BANK = {
 "D": "\\(444\\)",
 "E": "\\(459\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "B",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions",
+"acceptedResponses": [
+"B"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "From January \\(1980\\) to January \\(2030\\), there are \\(2030-1980=50\\) years of increase. Using the given average annual increase, the total increase is\n\\[\n50\\cdot1.515=75.75\\text{ ppm}.\n\\]\nAdd this to the starting reading:\n\\[\n338+75.75=413.75\\text{ ppm}.\n\\]\nThe tenths digit is \\(7\\), so rounding to the nearest integer gives \\(\\boxed{414}\\) ppm, choice \\(\\boxed{\\text{B}}\\).",
+"solutionMethods": [
+{
+"id": "annual-increase",
+"label": "Add the increase over 50 years",
+"explanation": "From January \\(1980\\) to January \\(2030\\), there are \\(2030-1980=50\\) years of increase. Using the given average annual increase, the total increase is\n\\[\n50\\cdot1.515=75.75\\text{ ppm}.\n\\]\nAdd this to the starting reading:\n\\[\n338+75.75=413.75\\text{ ppm}.\n\\]\nThe tenths digit is \\(7\\), so rounding to the nearest integer gives \\(\\boxed{414}\\) ppm, choice \\(\\boxed{\\text{B}}\\).",
+"directNodeIds": [
+"cnm_p134",
+"cnm_p121"
+],
+"legacyRouteId": "annual-increase",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2024_AMC_8_Q10#annual-increase",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2024_AMC_8_Q10.json",
+"sha256": "2e60402c224ccef709dc0ceccf0c7ce50588fcda6ba868a53eeabc29423f333a",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2024_AMC_8_Q10",
+"position": {
+"year": 2024,
+"level": "AMC 8",
+"batch": "NA",
+"number": 10
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2024_AMC_8_Q10",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "0c2a7cfa5dbad28cb478ffff0c40cc37d1b7b630efa1eb3ee4495752e9a9a1a4",
+"contentHash": "671b42484a5c65b7686a48c7029fe24cbd08f93a1710155b5770eba718755485",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -745322,9 +747677,34 @@ window.AMC_BANK = {
 "cnm_p121"
 ],
 "supportIds": [
-"cnm_p125"
+"cnm_p132",
+"cnm_p125",
+"cnm_p118"
 ],
-"routes": [],
+"routes": [
+{
+"id": "annual-increase",
+"label": "Add the increase over 50 years",
+"nodeIds": [
+"cnm_p134",
+"cnm_p121",
+"cnm_p132",
+"cnm_p125",
+"cnm_p118"
+],
+"methodDirectNodeIds": {
+"annual-increase": [
+"cnm_p134",
+"cnm_p121"
+]
+},
+"contextNodeIds": [
+"cnm_p132",
+"cnm_p125",
+"cnm_p118"
+]
+}
+],
 "flags": []
 }
 },
@@ -745468,16 +747848,20 @@ window.AMC_BANK = {
 {
 "id": "2024_AMC_8_Q12",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:prealgebra"
-],
-"skill": [],
 "year": 2024,
 "level": "AMC 8",
 "batch": "NA",
 "number": 12,
 "area": "Prealgebra",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:prealgebra"
+],
+"skill": [],
+"responseType": "choice",
 "question": "Rohan keeps a total of \\(90\\) guppies in \\(4\\) fish tanks.\n\n• There is \\(1\\) more guppy in the \\(2\\)nd tank than in the \\(1\\)st tank.\n\n• There are \\(2\\) more guppies in the \\(3\\)rd tank than in the \\(2\\)nd tank.\n\n• There are \\(3\\) more guppies in the \\(4\\)th tank than in the \\(3\\)rd tank.\n\nHow many guppies are in the \\(4\\)th tank?",
 "questionType": "text",
 "choices": {
@@ -745487,23 +747871,123 @@ window.AMC_BANK = {
 "D": "\\(24\\)",
 "E": "\\(26\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "E",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions",
+"acceptedResponses": [
+"E"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The fourth tank has \\(3\\) more guppies than the third, \\(3+2=5\\) more than the second, and \\(3+2+1=6\\) more than the first.\n\nImagine adding \\(6\\), \\(5\\), and \\(3\\) guppies to the first, second, and third tanks, respectively. All four tanks would then have as many guppies as the fourth tank. Their new total would be\n\\[\n90+6+5+3=104.\n\\]\nThese four equal groups each contain \\(104\\div4=26\\) guppies. The original tank counts are therefore \\(20,21,23,26\\), which have the stated differences and sum to \\(90\\). Thus the fourth tank contains \\(\\boxed{26}\\) guppies, choice \\(\\boxed{\\text{E}}\\).",
+"solutionMethods": [
+{
+"id": "equalize-to-fourth",
+"label": "Make all four tanks match the fourth",
+"explanation": "The fourth tank has \\(3\\) more guppies than the third, \\(3+2=5\\) more than the second, and \\(3+2+1=6\\) more than the first.\n\nImagine adding \\(6\\), \\(5\\), and \\(3\\) guppies to the first, second, and third tanks, respectively. All four tanks would then have as many guppies as the fourth tank. Their new total would be\n\\[\n90+6+5+3=104.\n\\]\nThese four equal groups each contain \\(104\\div4=26\\) guppies. The original tank counts are therefore \\(20,21,23,26\\), which have the stated differences and sum to \\(90\\). Thus the fourth tank contains \\(\\boxed{26}\\) guppies, choice \\(\\boxed{\\text{E}}\\).",
+"directNodeIds": [
+"cnm_p111",
+"cnm_p084"
+],
+"legacyRouteId": "equalize-to-fourth",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2024_AMC_8_Q12#equalize-to-fourth",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2024_AMC_8_Q12.json",
+"sha256": "d05362a64df59d94425775ea634f70e8d8199ecdf7de8e09854d2e7440e9ad7a",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "equalize-the-tanks",
+"label": "Equalize all four quantities",
+"directNodeIds": [
+"cnm_p110",
+"cnm_p112"
+],
+"legacyRouteId": "equalize-the-tanks",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L5272",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2024_AMC_8_Q12#equalize-the-tanks",
+"evidence": []
+}
+},
+{
+"id": "one-variable-equation",
+"label": "Model the fourth tank with an equation",
+"directNodeIds": [
+"cnm_p146",
+"cnm_p145"
+],
+"legacyRouteId": "one-variable-equation",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L5272",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2024_AMC_8_Q12#one-variable-equation",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2024_AMC_8_Q12",
+"position": {
+"year": 2024,
+"level": "AMC 8",
+"batch": "NA",
+"number": 12
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2024_AMC_8_Q12",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "c16b5f969ddb179b4394b51e8d989f677b7560adb4fb2f224d79f1b93e266d23",
+"contentHash": "29e67895ee2579470ddf399caabf5801bcc66ffd3b3ef8a9d6cf2839ee842db9",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
 "cnm_p111"
 ],
-"supportIds": [],
+"supportIds": [
+"cnm_p110",
+"cnm_p083"
+],
 "routes": [
 {
 "id": "equalize-the-tanks",
@@ -745511,7 +747995,14 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_p110",
 "cnm_p112"
+],
+"methodDirectNodeIds": {
+"equalize-the-tanks": [
+"cnm_p110",
+"cnm_p112"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "one-variable-equation",
@@ -745519,6 +748010,33 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_p146",
 "cnm_p145"
+],
+"methodDirectNodeIds": {
+"one-variable-equation": [
+"cnm_p146",
+"cnm_p145"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "equalize-to-fourth",
+"label": "Make all four tanks match the fourth",
+"nodeIds": [
+"cnm_p111",
+"cnm_p084",
+"cnm_p110",
+"cnm_p083"
+],
+"methodDirectNodeIds": {
+"equalize-to-fourth": [
+"cnm_p111",
+"cnm_p084"
+]
+},
+"contextNodeIds": [
+"cnm_p110",
+"cnm_p083"
 ]
 }
 ],
@@ -745881,16 +748399,20 @@ window.AMC_BANK = {
 {
 "id": "2024_AMC_8_Q15",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:number-theory"
-],
-"skill": [],
 "year": 2024,
 "level": "AMC 8",
 "batch": "NA",
 "number": 15,
 "area": "Number Theory",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:number-theory"
+],
+"skill": [],
+"responseType": "choice",
 "question": "Let the letters \\(F,\\) \\(L,\\) \\(Y,\\) \\(B,\\) \\(U,\\) \\(G\\) represent distinct digits. Suppose \\(\\text{FLYFLY}\\) is the greatest number that satisfies the equation \\[ 8 \\cdot \\text{FLYFLY} = \\text{BUGBUG}. \\] What is the value of \\(\\text{FLY} + \\text{BUG}?\\)",
 "questionType": "text",
 "choices": {
@@ -745900,24 +748422,125 @@ window.AMC_BANK = {
 "D": "\\(1116\\)",
 "E": "\\(1125\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Repeating a three-digit block places one copy in the thousands and leaves one copy at the end. Let \\(a\\) be the three-digit number \\(\\text{FLY}\\), and let \\(b\\) be the three-digit number \\(\\text{BUG}\\). Then\n\\[\n\\text{FLYFLY}=1000a+a=1001a,\n\\]\nand similarly \\(\\text{BUGBUG}=1001b\\). The given equation becomes \\(8\\cdot1001a=1001b\\). Dividing both sides by the nonzero number \\(1001\\) gives\n\\[\n8a=b.\n\\]\nBecause \\(b\\) has three digits and \\(8\\cdot125=1000\\), the integer \\(a\\) is at most \\(124\\). Also, maximizing \\(1001a\\) is the same as maximizing \\(a\\), since the multiplier \\(1001\\) is positive.\n\nStart with the largest possible candidate. If \\(a=124\\), then \\(b=992\\), which repeats the digit \\(9\\) and violates the distinct-digit condition. The next candidate is \\(a=123\\), giving\n\\[\n8\\cdot123=984.\n\\]\nThe six digits \\(1,2,3,9,8,4\\) are all distinct, so this candidate is valid. It gives \\(8\\cdot123123=984984\\), and every larger candidate has already been ruled out. Therefore\n\\[\n\\text{FLY}+\\text{BUG}=123+984=\\boxed{1107},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+"solutionMethods": [
+{
+"id": "repeated-block-bound",
+"label": "Reduce to three digits and check the largest candidates",
+"explanation": "Repeating a three-digit block places one copy in the thousands and leaves one copy at the end. Let \\(a\\) be the three-digit number \\(\\text{FLY}\\), and let \\(b\\) be the three-digit number \\(\\text{BUG}\\). Then\n\\[\n\\text{FLYFLY}=1000a+a=1001a,\n\\]\nand similarly \\(\\text{BUGBUG}=1001b\\). The given equation becomes \\(8\\cdot1001a=1001b\\). Dividing both sides by the nonzero number \\(1001\\) gives\n\\[\n8a=b.\n\\]\nBecause \\(b\\) has three digits and \\(8\\cdot125=1000\\), the integer \\(a\\) is at most \\(124\\). Also, maximizing \\(1001a\\) is the same as maximizing \\(a\\), since the multiplier \\(1001\\) is positive.\n\nStart with the largest possible candidate. If \\(a=124\\), then \\(b=992\\), which repeats the digit \\(9\\) and violates the distinct-digit condition. The next candidate is \\(a=123\\), giving\n\\[\n8\\cdot123=984.\n\\]\nThe six digits \\(1,2,3,9,8,4\\) are all distinct, so this candidate is valid. It gives \\(8\\cdot123123=984984\\), and every larger candidate has already been ruled out. Therefore\n\\[\n\\text{FLY}+\\text{BUG}=123+984=\\boxed{1107},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+"directNodeIds": [
+"math:integer-diophantine-equations",
+"cnm_027",
+"cnm_040"
+],
+"legacyRouteId": "repeated-block-bound",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2024_AMC_8_Q15#repeated-block-bound",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2024_AMC_8_Q15.json",
+"sha256": "739f5f04d09d38c83068f80ad273f4ee4de8479ce929b96084cd284f4ae59180",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "repeated-block-reduction",
+"label": "Cancel the repeated-block factor",
+"directNodeIds": [
+"cnm_027",
+"cnm_040",
+"cnm_097"
+],
+"legacyRouteId": "repeated-block-reduction",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L5275",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2024_AMC_8_Q15#repeated-block-reduction",
+"evidence": []
+}
+},
+{
+"id": "digit-carry-constraints",
+"label": "Maximize digits using carry constraints",
+"directNodeIds": [
+"math:integer-diophantine-equations",
+"cnm_p074"
+],
+"legacyRouteId": "digit-carry-constraints",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L5275",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2024_AMC_8_Q15#digit-carry-constraints",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2024_AMC_8_Q15",
+"position": {
+"year": 2024,
+"level": "AMC 8",
+"batch": "NA",
+"number": 15
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2024_AMC_8_Q15",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "762c8f6878b13c1d41623b5939b7d81aa73dc933f50618c9b96ef61c4cde4f46",
+"contentHash": "a6b304dcb60c44d75189b3451c0dd1cf5630d438ad6dec6bc3579da60a6c250c",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "math:integer-diophantine-equations"
 ],
 "supportIds": [
-"cnm_p096"
+"cnm_p096",
+"cnm_p074",
+"cnm_p116"
 ],
 "routes": [
 {
@@ -745927,7 +748550,15 @@ window.AMC_BANK = {
 "cnm_027",
 "cnm_040",
 "cnm_097"
+],
+"methodDirectNodeIds": {
+"repeated-block-reduction": [
+"cnm_027",
+"cnm_040",
+"cnm_097"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "digit-carry-constraints",
@@ -745935,6 +748566,37 @@ window.AMC_BANK = {
 "nodeIds": [
 "math:integer-diophantine-equations",
 "cnm_p074"
+],
+"methodDirectNodeIds": {
+"digit-carry-constraints": [
+"math:integer-diophantine-equations",
+"cnm_p074"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "repeated-block-bound",
+"label": "Reduce to three digits and check the largest candidates",
+"nodeIds": [
+"math:integer-diophantine-equations",
+"cnm_027",
+"cnm_040",
+"cnm_p096",
+"cnm_p074",
+"cnm_p116"
+],
+"methodDirectNodeIds": {
+"repeated-block-bound": [
+"math:integer-diophantine-equations",
+"cnm_027",
+"cnm_040"
+]
+},
+"contextNodeIds": [
+"cnm_p096",
+"cnm_p074",
+"cnm_p116"
 ]
 }
 ],
@@ -745944,16 +748606,20 @@ window.AMC_BANK = {
 {
 "id": "2024_AMC_8_Q16",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:number-theory"
-],
-"skill": [],
 "year": 2024,
 "level": "AMC 8",
 "batch": "NA",
 "number": 16,
 "area": "Number Theory",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:number-theory"
+],
+"skill": [],
+"responseType": "choice",
 "question": "Minh enters the numbers \\(1\\) through \\(81\\) into the cells of a \\(9 \\times 9\\) grid in some order. She calculates the product of the numbers in each row and column. What is the least number of rows and columns that could have a product divisible by \\(3?\\)",
 "questionType": "text",
 "choices": {
@@ -745963,17 +748629,114 @@ window.AMC_BANK = {
 "D": "\\(11\\)",
 "E": "\\(12\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "A row or column has a product divisible by \\(3\\) exactly when it contains a multiple of \\(3\\), because \\(3\\) is prime. Among the numbers \\(1\\) through \\(81\\), there are \\(81\\div3=27\\) multiples of \\(3\\). We therefore want to place these \\(27\\) numbers in as few rows and columns altogether as possible.\n\nSuppose they occupy \\(r\\) rows and \\(c\\) columns. Each of their cells is an intersection of one of those rows and one of those columns. There are \\(c\\) such cells in each of the \\(r\\) rows, with no cell counted twice, so\n\\[\nrc\\ge27.\n\\]\nCould \\(r+c\\) be at most \\(10\\)? Interchanging the roles of rows and columns if needed, take \\(r\\le c\\). Both are positive, so \\(r\\) must be one of \\(1,2,3,4,5\\). Since \\(c\\le10-r\\), the corresponding upper bounds for \\(rc\\) are\n\\[\n1\\cdot9=9,\\quad2\\cdot8=16,\\quad3\\cdot7=21,\n\\]\n\\[\n4\\cdot6=24,\\quad5\\cdot5=25.\n\\]\nThese cases cover every possibility with \\(r+c\\le10\\), and none provides the \\(27\\) required cells. Thus at least \\(11\\) rows and columns must qualify.\n\nTo attain \\(11\\), choose a block of \\(4\\) rows and \\(7\\) columns. Put \\(21\\) multiples of \\(3\\) in its first three complete rows, and the remaining \\(6\\) multiples in six cells of its fourth row. Fill every other cell of the grid with the \\(54\\) nonmultiples of \\(3\\). Every one of the selected four rows and seven columns contains a multiple of \\(3\\), and no other row or column does. Hence the least total is\n\\[\n4+7=\\boxed{11},\n\\]\nchoice \\(\\boxed{\\text{D}}\\).",
+"solutionMethods": [
+{
+"id": "capacity-and-construction",
+"label": "Bound the available cells, then attain the bound",
+"explanation": "A row or column has a product divisible by \\(3\\) exactly when it contains a multiple of \\(3\\), because \\(3\\) is prime. Among the numbers \\(1\\) through \\(81\\), there are \\(81\\div3=27\\) multiples of \\(3\\). We therefore want to place these \\(27\\) numbers in as few rows and columns altogether as possible.\n\nSuppose they occupy \\(r\\) rows and \\(c\\) columns. Each of their cells is an intersection of one of those rows and one of those columns. There are \\(c\\) such cells in each of the \\(r\\) rows, with no cell counted twice, so\n\\[\nrc\\ge27.\n\\]\nCould \\(r+c\\) be at most \\(10\\)? Interchanging the roles of rows and columns if needed, take \\(r\\le c\\). Both are positive, so \\(r\\) must be one of \\(1,2,3,4,5\\). Since \\(c\\le10-r\\), the corresponding upper bounds for \\(rc\\) are\n\\[\n1\\cdot9=9,\\quad2\\cdot8=16,\\quad3\\cdot7=21,\n\\]\n\\[\n4\\cdot6=24,\\quad5\\cdot5=25.\n\\]\nThese cases cover every possibility with \\(r+c\\le10\\), and none provides the \\(27\\) required cells. Thus at least \\(11\\) rows and columns must qualify.\n\nTo attain \\(11\\), choose a block of \\(4\\) rows and \\(7\\) columns. Put \\(21\\) multiples of \\(3\\) in its first three complete rows, and the remaining \\(6\\) multiples in six cells of its fourth row. Fill every other cell of the grid with the \\(54\\) nonmultiples of \\(3\\). Every one of the selected four rows and seven columns contains a multiple of \\(3\\), and no other row or column does. Hence the least total is\n\\[\n4+7=\\boxed{11},\n\\]\nchoice \\(\\boxed{\\text{D}}\\).",
+"directNodeIds": [
+"math:extremal-principle",
+"cnm_p038"
+],
+"legacyRouteId": "capacity-and-construction",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2024_AMC_8_Q16#capacity-and-construction",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2024_AMC_8_Q16.json",
+"sha256": "2d859b8d5af9d18cda66a8c50d217a31c375256b3f1a77c4cfb1c0f18489b14c",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "capacity-and-am-gm",
+"label": "Bound capacity using AM-GM",
+"directNodeIds": [
+"cnm_h231",
+"cnm_h022"
+],
+"legacyRouteId": "capacity-and-am-gm",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L5276",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2024_AMC_8_Q16#capacity-and-am-gm",
+"evidence": []
+}
+},
+{
+"id": "integer-capacity-cases",
+"label": "Check integer row and column capacities",
+"directNodeIds": [
+"cnm_h231",
+"math:floor-ceiling"
+],
+"legacyRouteId": "integer-capacity-cases",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L5276",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2024_AMC_8_Q16#integer-capacity-cases",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2024_AMC_8_Q16",
+"position": {
+"year": 2024,
+"level": "AMC 8",
+"batch": "NA",
+"number": 16
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2024_AMC_8_Q16",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "2883a6b6f56456affdc769989611d2c56e674ad515b5696cc1f74fe19732a07e",
+"contentHash": "00616ab6079244eeb31003f50dde289afcda562fb5875cb677870748718ef612",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -745981,7 +748744,7 @@ window.AMC_BANK = {
 ],
 "supportIds": [
 "cnm_p153",
-"math:prime-factorization"
+"cnm_p157"
 ],
 "routes": [
 {
@@ -745990,7 +748753,14 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_h231",
 "cnm_h022"
+],
+"methodDirectNodeIds": {
+"capacity-and-am-gm": [
+"cnm_h231",
+"cnm_h022"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "integer-capacity-cases",
@@ -745998,6 +748768,33 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_h231",
 "math:floor-ceiling"
+],
+"methodDirectNodeIds": {
+"integer-capacity-cases": [
+"cnm_h231",
+"math:floor-ceiling"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "capacity-and-construction",
+"label": "Bound the available cells, then attain the bound",
+"nodeIds": [
+"math:extremal-principle",
+"cnm_p038",
+"cnm_p153",
+"cnm_p157"
+],
+"methodDirectNodeIds": {
+"capacity-and-construction": [
+"math:extremal-principle",
+"cnm_p038"
+]
+},
+"contextNodeIds": [
+"cnm_p153",
+"cnm_p157"
 ]
 }
 ],
@@ -746679,16 +749476,20 @@ window.AMC_BANK = {
 {
 "id": "2024_AMC_8_Q21",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:prealgebra"
-],
-"skill": [],
 "year": 2024,
 "level": "AMC 8",
 "batch": "NA",
 "number": 21,
 "area": "Prealgebra",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:prealgebra"
+],
+"skill": [],
+"responseType": "choice",
 "question": "A group of frogs (called an army) is living in a tree. A frog turns green when in the shade and turns yellow when in the sun. Initially, the ratio of green to yellow frogs was \\(3 : 1.\\) Then \\(3\\) green frogs moved to the sunny side and \\(5\\) yellow frogs moved to the shady side. Now the ratio is \\(4 : 1.\\) What is the difference between the number of green frogs and yellow frogs now?",
 "questionType": "text",
 "choices": {
@@ -746698,24 +749499,148 @@ window.AMC_BANK = {
 "D": "\\(20\\)",
 "E": "\\(24\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "E",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions",
-"figureSources": {},
-"editorialNote": "",
-"knowledgeGraph": {
-"version": "1.0.0",
-"contentHash": "ab6f6bee0e5397afd31dde044f611288f02dfa89881cd1f0b73e2fcd7e2a356f",
-"status": "mapped",
-"reviewStatus": "machine_examined",
-"assessedIds": [
+"acceptedResponses": [
+"E"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The frogs change color, but the total number of frogs stays the same. Express both ratios using the same total number of equal parts:\n\\[\n3:1=15:5,\\qquad 4:1=16:4.\n\\]\nBoth descriptions have \\(20\\) parts altogether, so a part represents the same number of frogs before and after the moves.\n\nThe green count increases by \\(5-3=2\\) frogs. In the ratios above, it increases from \\(15\\) parts to \\(16\\) parts, so one part contains \\(2\\) frogs. The final difference between green and yellow is therefore\n\\[\n(16-4)\\times2=24.\n\\]\nIndeed, the initial counts are \\(30\\) green and \\(10\\) yellow, and the moves give \\(32\\) green and \\(8\\) yellow. The answer is \\(\\boxed{24}\\), choice \\(\\text{E}\\).",
+"solutionMethods": [
+{
+"id": "common-total-parts",
+"label": "Use equal parts of the unchanged total",
+"explanation": "The frogs change color, but the total number of frogs stays the same. Express both ratios using the same total number of equal parts:\n\\[\n3:1=15:5,\\qquad 4:1=16:4.\n\\]\nBoth descriptions have \\(20\\) parts altogether, so a part represents the same number of frogs before and after the moves.\n\nThe green count increases by \\(5-3=2\\) frogs. In the ratios above, it increases from \\(15\\) parts to \\(16\\) parts, so one part contains \\(2\\) frogs. The final difference between green and yellow is therefore\n\\[\n(16-4)\\times2=24.\n\\]\nIndeed, the initial counts are \\(30\\) green and \\(10\\) yellow, and the moves give \\(32\\) green and \\(8\\) yellow. The answer is \\(\\boxed{24}\\), choice \\(\\text{E}\\).",
+"directNodeIds": [
 "cnm_p185",
 "cnm_p187"
 ],
-"supportIds": [],
+"legacyRouteId": "common-total-parts",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2024_AMC_8_Q21#common-total-parts",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2024_AMC_8_Q21.json",
+"sha256": "7f6625948faebd33a0e8be4102e5b8289d6b8e0c3f571d12fd7327fb7e7b3442",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "compare-three-times-yellow",
+"label": "Compare green with three times yellow",
+"explanation": "Initially, the green count equals three times the yellow count. The moves increase green by \\(5-3=2\\) and decrease yellow by \\(5-3=2\\). Thus three times the yellow count decreases by \\(3\\times2=6\\), while green increases by \\(2\\). Green now exceeds three times yellow by\n\\[\n6+2=8.\n\\]\nBut the final ratio is \\(4:1\\), so green equals four times yellow. The difference between four times yellow and three times yellow is exactly the yellow count. Hence there are now \\(8\\) yellow frogs and \\(4\\times8=32\\) green frogs.\n\nThese counts come from \\(10\\) yellow and \\(30\\) green frogs initially, so the stated moves are possible. The requested difference is \\(32-8=\\boxed{24}\\), choice \\(\\text{E}\\).",
+"directNodeIds": [
+"cnm_p185",
+"cnm_p059"
+],
+"legacyRouteId": "compare-three-times-yellow",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2024_AMC_8_Q21#compare-three-times-yellow",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2024_AMC_8_Q21.json",
+"sha256": "7f6625948faebd33a0e8be4102e5b8289d6b8e0c3f571d12fd7327fb7e7b3442",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "initial-ratio-unit-equation",
+"label": "Equation using an initial ratio unit",
+"directNodeIds": [
+"cnm_045",
+"cnm_043"
+],
+"legacyRouteId": "initial-ratio-unit-equation",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L5281",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2024_AMC_8_Q21#initial-ratio-unit-equation",
+"evidence": []
+}
+},
+{
+"id": "fixed-total-fractions",
+"label": "Compare fractions of the fixed total",
+"directNodeIds": [
+"cnm_p173",
+"cnm_p184",
+"cnm_p179"
+],
+"legacyRouteId": "fixed-total-fractions",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L5281",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2024_AMC_8_Q21#fixed-total-fractions",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2024_AMC_8_Q21",
+"position": {
+"year": 2024,
+"level": "AMC 8",
+"batch": "NA",
+"number": 21
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2024_AMC_8_Q21",
+"figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+"editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"knowledgeGraph": {
+"version": "1.0.0",
+"contentHash": "505c9f7d080c92292a77c36a16a3cfe86814c85dab6c06e2692e3cb7e663aad2",
+"status": "mapped",
+"reviewStatus": "machine_examined",
+"assessedIds": [
+"cnm_p185"
+],
+"supportIds": [
+"cnm_p073"
+],
 "routes": [
 {
 "id": "initial-ratio-unit-equation",
@@ -746723,7 +749648,14 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_045",
 "cnm_043"
+],
+"methodDirectNodeIds": {
+"initial-ratio-unit-equation": [
+"cnm_045",
+"cnm_043"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "fixed-total-fractions",
@@ -746732,6 +749664,50 @@ window.AMC_BANK = {
 "cnm_p173",
 "cnm_p184",
 "cnm_p179"
+],
+"methodDirectNodeIds": {
+"fixed-total-fractions": [
+"cnm_p173",
+"cnm_p184",
+"cnm_p179"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "common-total-parts",
+"label": "Use equal parts of the unchanged total",
+"nodeIds": [
+"cnm_p185",
+"cnm_p187",
+"cnm_p073"
+],
+"methodDirectNodeIds": {
+"common-total-parts": [
+"cnm_p185",
+"cnm_p187"
+]
+},
+"contextNodeIds": [
+"cnm_p073"
+]
+},
+{
+"id": "compare-three-times-yellow",
+"label": "Compare green with three times yellow",
+"nodeIds": [
+"cnm_p185",
+"cnm_p059",
+"cnm_p073"
+],
+"methodDirectNodeIds": {
+"compare-three-times-yellow": [
+"cnm_p185",
+"cnm_p059"
+]
+},
+"contextNodeIds": [
+"cnm_p073"
 ]
 }
 ],
@@ -756376,16 +759352,20 @@ window.AMC_BANK = {
 {
 "id": "2025_AMC_8_Q03",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:prealgebra"
-],
-"skill": [],
 "year": 2025,
 "level": "AMC 8",
 "batch": "NA",
 "number": 3,
 "area": "Prealgebra",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:prealgebra"
+],
+"skill": [],
+"responseType": "choice",
 "question": "Buffalo Shuffle-o is a card game in which all the cards are distributed evenly among all players at the start of the game. When Annika and \\(3\\) of her friends play Buffalo Shuffle-o, each player is dealt \\(15\\) cards. Suppose \\(2\\) more friends join the next game. How many cards will be dealt to each player?",
 "questionType": "text",
 "choices": {
@@ -756395,42 +759375,124 @@ window.AMC_BANK = {
 "D": "\\(11\\)",
 "E": "\\(12\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Annika and her \\(3\\) friends make \\(4\\) players, so the total number of cards is\n\\[\n4\\times15=60.\n\\]\nWith \\(2\\) more friends, there are \\(4+2=6\\) players. Sharing the same \\(60\\) cards evenly gives\n\\[\n60\\div6=10\n\\]\ncards per player, with none left over. The answer is \\(\\boxed{10}\\), choice \\(\\text{C}\\).",
+"solutionMethods": [
+{
+"id": "find-total-and-share",
+"label": "Find the deck size and divide",
+"explanation": "Annika and her \\(3\\) friends make \\(4\\) players, so the total number of cards is\n\\[\n4\\times15=60.\n\\]\nWith \\(2\\) more friends, there are \\(4+2=6\\) players. Sharing the same \\(60\\) cards evenly gives\n\\[\n60\\div6=10\n\\]\ncards per player, with none left over. The answer is \\(\\boxed{10}\\), choice \\(\\text{C}\\).",
+"directNodeIds": [
+"cnm_p084"
+],
+"legacyRouteId": "find-total-and-share",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2025_AMC_8_Q03#find-total-and-share",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2025_AMC_8_Q03.json",
+"sha256": "dd371b28a2ecc2aac5df766215ac9864a631ad5ee4ea870c5a2f9f7e7ddcc93e",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2025_AMC_8_Q03",
+"position": {
+"year": 2025,
+"level": "AMC 8",
+"batch": "NA",
+"number": 3
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2025_AMC_8_Q03",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "98cc478d82188d8481dd40db8de5181a7249781e72e4ac188647f7049ededf6b",
+"contentHash": "6812be566a0f6f972a8c985e637854be0660fb951ed991e559193e45a8099039",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_p084"
 ],
 "supportIds": [
-"cnm_p074"
+"cnm_p074",
+"cnm_p083"
 ],
-"routes": [],
+"routes": [
+{
+"id": "find-total-and-share",
+"label": "Find the deck size and divide",
+"nodeIds": [
+"cnm_p084",
+"cnm_p074",
+"cnm_p083"
+],
+"methodDirectNodeIds": {
+"find-total-and-share": [
+"cnm_p084"
+]
+},
+"contextNodeIds": [
+"cnm_p074",
+"cnm_p083"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2025_AMC_8_Q04",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:prealgebra"
-],
-"skill": [],
 "year": 2025,
 "level": "AMC 8",
 "batch": "NA",
 "number": 4,
 "area": "Prealgebra",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:prealgebra"
+],
+"skill": [],
+"responseType": "choice",
 "question": "Lucius is counting backward by \\(7\\)s. His first three numbers are \\(100,\\) \\(93,\\) and \\(86.\\) What is his \\(10\\)th number?",
 "questionType": "text",
 "choices": {
@@ -756440,24 +759502,104 @@ window.AMC_BANK = {
 "D": "\\(44\\)",
 "E": "\\(47\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "B",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions",
+"acceptedResponses": [
+"B"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The starting number \\(100\\) is already the first number. Reaching the tenth number therefore takes \\(10-1=9\\) backward steps. Each step subtracts \\(7\\), so the total decrease is \\(9\\times7=63\\). Thus the tenth number is\n\\[\n100-9\\times7=100-63=\\boxed{37},\n\\]\nchoice \\(\\text{B}\\).",
+"solutionMethods": [
+{
+"id": "count-decreases",
+"label": "Count the steps from first to tenth",
+"explanation": "The starting number \\(100\\) is already the first number. Reaching the tenth number therefore takes \\(10-1=9\\) backward steps. Each step subtracts \\(7\\), so the total decrease is \\(9\\times7=63\\). Thus the tenth number is\n\\[\n100-9\\times7=100-63=\\boxed{37},\n\\]\nchoice \\(\\text{B}\\).",
+"directNodeIds": [
+"cnm_p060",
+"cnm_p057"
+],
+"legacyRouteId": "count-decreases",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2025_AMC_8_Q04#count-decreases",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2025_AMC_8_Q04.json",
+"sha256": "10906635f729abf4decedb02f9ec596c74b0558f8e0e3a2a87ad23866684fb35",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2025_AMC_8_Q04",
+"position": {
+"year": 2025,
+"level": "AMC 8",
+"batch": "NA",
+"number": 4
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2025_AMC_8_Q04",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "5dd179d80d875bac4c168762704bba36b6920f5d8d080c38e1f2d520e4c41c2d",
+"contentHash": "a959ac9e4ce8e420f6dc1d9114812df487ffdedc4b627530c9eb59171eaf2b9f",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
 "cnm_p060"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_p042"
+],
+"routes": [
+{
+"id": "count-decreases",
+"label": "Count the steps from first to tenth",
+"nodeIds": [
+"cnm_p060",
+"cnm_p057",
+"cnm_p042"
+],
+"methodDirectNodeIds": {
+"count-decreases": [
+"cnm_p060",
+"cnm_p057"
+]
+},
+"contextNodeIds": [
+"cnm_p042"
+]
+}
+],
 "flags": []
 }
 },
@@ -756598,16 +759740,20 @@ window.AMC_BANK = {
 {
 "id": "2025_AMC_8_Q06",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:number-theory"
-],
-"skill": [],
 "year": 2025,
 "level": "AMC 8",
 "batch": "NA",
 "number": 6,
 "area": "Number Theory",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:number-theory"
+],
+"skill": [],
+"responseType": "choice",
 "question": "Sekou writes the numbers \\(15,\\) \\(16,\\) \\(17,\\) \\(18,\\) \\(19.\\) After he erases one of the numbers, the sum of the remaining four numbers is a multiple of \\(4.\\) Which number did he erase?",
 "questionType": "text",
 "choices": {
@@ -756617,17 +759763,76 @@ window.AMC_BANK = {
 "D": "\\(18\\)",
 "E": "\\(19\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "First find the sum before any number is erased:\n\\[\n15+16+17+18+19=85.\n\\]\nErasing the largest number leaves \\(85-19=66\\), and erasing the smallest leaves \\(85-15=70\\). Thus every possible remaining sum is between \\(66\\) and \\(70\\), inclusive.\n\nConsecutive multiples of \\(4\\) around this range are\n\\[\n4\\times16=64,\\qquad4\\times17=68,\\qquad4\\times18=72.\n\\]\nOnly \\(68\\) lies in the required range, so the erased number must be \\(85-68=17\\). This number is on the list, and erasing it does leave the multiple \\(68\\). Therefore the answer is \\(\\boxed{17}\\), choice \\(\\text{C}\\).",
+"solutionMethods": [
+{
+"id": "total-and-possible-multiple",
+"label": "Find the possible remaining sum",
+"explanation": "First find the sum before any number is erased:\n\\[\n15+16+17+18+19=85.\n\\]\nErasing the largest number leaves \\(85-19=66\\), and erasing the smallest leaves \\(85-15=70\\). Thus every possible remaining sum is between \\(66\\) and \\(70\\), inclusive.\n\nConsecutive multiples of \\(4\\) around this range are\n\\[\n4\\times16=64,\\qquad4\\times17=68,\\qquad4\\times18=72.\n\\]\nOnly \\(68\\) lies in the required range, so the erased number must be \\(85-68=17\\). This number is on the list, and erasing it does leave the multiple \\(68\\). Therefore the answer is \\(\\boxed{17}\\), choice \\(\\text{C}\\).",
+"directNodeIds": [
+"cnm_p153",
+"cnm_p035"
+],
+"legacyRouteId": "total-and-possible-multiple",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2025_AMC_8_Q06#total-and-possible-multiple",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2025_AMC_8_Q06.json",
+"sha256": "834efdf975f188d6c9eb34aff4b1b7d75bf2520a5ee856abc32b21fa9cb9f578",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2025_AMC_8_Q06",
+"position": {
+"year": 2025,
+"level": "AMC 8",
+"batch": "NA",
+"number": 6
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2025_AMC_8_Q06",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "4f755f0c34341e495f0065c361006d9d32505b101d1f928196ec69261f9fa853",
+"contentHash": "04c9d4d4d72fc733283235ecc5b18a3b36b5fd6f26ec30eb0fbf7686c7f3f31c",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -756636,23 +759841,46 @@ window.AMC_BANK = {
 "supportIds": [
 "cnm_p035"
 ],
-"routes": [],
+"routes": [
+{
+"id": "total-and-possible-multiple",
+"label": "Find the possible remaining sum",
+"nodeIds": [
+"cnm_p153",
+"cnm_p035",
+"cnm_p038"
+],
+"methodDirectNodeIds": {
+"total-and-possible-multiple": [
+"cnm_p153",
+"cnm_p035"
+]
+},
+"contextNodeIds": [
+"cnm_p038"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2025_AMC_8_Q07",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:prealgebra"
-],
-"skill": [],
 "year": 2025,
 "level": "AMC 8",
 "batch": "NA",
 "number": 7,
 "area": "Prealgebra",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:prealgebra"
+],
+"skill": [],
+"responseType": "choice",
 "question": "On the most recent exam in Prof. Xochi’s class,\n\n• \\(5\\) students earned a score of at least \\(95\\%,\\)\n\n• \\(13\\) students earned a score of at least \\(90\\%,\\)\n\n• \\(27\\) students earned a score of at least \\(85\\%,\\) and\n\n• \\(50\\) students earned a score of at least \\(80\\%.\\)\n\nHow many students earned a score of at least \\(80\\%\\) and less than \\(90\\%?\\)",
 "questionType": "text",
 "choices": {
@@ -756662,24 +759890,96 @@ window.AMC_BANK = {
 "D": "\\(37\\)",
 "E": "\\(45\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The \\(50\\) students who scored at least \\(80\\%\\) fall into two separate groups: those scoring less than \\(90\\%\\), and those scoring at least \\(90\\%\\). The second group contains \\(13\\) students, including anyone who scored exactly \\(90\\%\\). Removing that group leaves exactly the students requested:\n\\[\n50-13=37.\n\\]\nThe answer is \\(\\boxed{37}\\) students, choice \\(\\text{D}\\).",
+"solutionMethods": [
+{
+"id": "subtract-included-group",
+"label": "Remove the higher scores",
+"explanation": "The \\(50\\) students who scored at least \\(80\\%\\) fall into two separate groups: those scoring less than \\(90\\%\\), and those scoring at least \\(90\\%\\). The second group contains \\(13\\) students, including anyone who scored exactly \\(90\\%\\). Removing that group leaves exactly the students requested:\n\\[\n50-13=37.\n\\]\nThe answer is \\(\\boxed{37}\\) students, choice \\(\\text{D}\\).",
+"directNodeIds": [
+"cnm_p035"
+],
+"legacyRouteId": "subtract-included-group",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2025_AMC_8_Q07#subtract-included-group",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2025_AMC_8_Q07.json",
+"sha256": "d2ccf9420fc9b08a477a40ac98ec91fbabf24815e80f7d26a5b043679062f430",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2025_AMC_8_Q07",
+"position": {
+"year": 2025,
+"level": "AMC 8",
+"batch": "NA",
+"number": 7
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2025_AMC_8_Q07",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "dec1e49875400f603efc23867a74c1f6c9c1fab1bd7b997a9a2a1be3e415019d",
+"contentHash": "348cf16fc3d9430c06671d00d46a2dea0a01f490d9c91851fd93897678f1e217",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
 "cnm_p035"
 ],
 "supportIds": [],
-"routes": [],
+"routes": [
+{
+"id": "subtract-included-group",
+"label": "Remove the higher scores",
+"nodeIds": [
+"cnm_p035"
+],
+"methodDirectNodeIds": {
+"subtract-included-group": [
+"cnm_p035"
+]
+},
+"contextNodeIds": []
+}
+],
 "flags": []
 }
 },
@@ -757675,16 +760975,20 @@ window.AMC_BANK = {
 {
 "id": "2025_AMC_8_Q14",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:prealgebra"
-],
-"skill": [],
 "year": 2025,
 "level": "AMC 8",
 "batch": "NA",
 "number": 14,
 "area": "Prealgebra",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:prealgebra"
+],
+"skill": [],
+"responseType": "choice",
 "question": "A number \\(N\\) is inserted into the list \\(2,\\) \\(6,\\) \\(7,\\) \\(7,\\) \\(28.\\) The mean is now twice as great as the median. What is \\(N?\\)",
 "questionType": "text",
 "choices": {
@@ -757694,17 +760998,76 @@ window.AMC_BANK = {
 "D": "\\(28\\)",
 "E": "\\(34\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "E",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions",
+"acceptedResponses": [
+"E"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "After inserting \\(N\\), there are six numbers, so the median is the average of the third and fourth numbers in increasing order. First we determine where \\(N\\) can lie.\n\nIf \\(N<7\\), the third number is at least \\(6\\) and the fourth is \\(7\\). Thus the median is at least \\(6.5\\), and twice the median is at least \\(13\\). But the original numbers sum to\n\\[\n2+6+7+7+28=50,\n\\]\nso the new mean would be less than \\((50+7)/6=9.5\\). It cannot equal twice the median. Therefore \\(N\\geq7\\).\n\nFor \\(N\\geq7\\), the middle two numbers are both \\(7\\), including when \\(N=7\\). The median is therefore \\(7\\), and the required mean is \\(14\\). Six numbers with mean \\(14\\) have total \\(6\\cdot14=84\\), giving\n\\[\nN=84-50=34.\n\\]\nIndeed, \\(2,6,7,7,28,34\\) has median \\(7\\) and mean \\(84/6=14\\). Thus \\(\\boxed{34}\\), choice \\(\\text{E}\\), satisfies the condition.",
+"solutionMethods": [
+{
+"id": "determine-median-then-total",
+"label": "Find the median before the missing number",
+"explanation": "After inserting \\(N\\), there are six numbers, so the median is the average of the third and fourth numbers in increasing order. First we determine where \\(N\\) can lie.\n\nIf \\(N<7\\), the third number is at least \\(6\\) and the fourth is \\(7\\). Thus the median is at least \\(6.5\\), and twice the median is at least \\(13\\). But the original numbers sum to\n\\[\n2+6+7+7+28=50,\n\\]\nso the new mean would be less than \\((50+7)/6=9.5\\). It cannot equal twice the median. Therefore \\(N\\geq7\\).\n\nFor \\(N\\geq7\\), the middle two numbers are both \\(7\\), including when \\(N=7\\). The median is therefore \\(7\\), and the required mean is \\(14\\). Six numbers with mean \\(14\\) have total \\(6\\cdot14=84\\), giving\n\\[\nN=84-50=34.\n\\]\nIndeed, \\(2,6,7,7,28,34\\) has median \\(7\\) and mean \\(84/6=14\\). Thus \\(\\boxed{34}\\), choice \\(\\text{E}\\), satisfies the condition.",
+"directNodeIds": [
+"cnm_211",
+"cnm_213"
+],
+"legacyRouteId": "determine-median-then-total",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2025_AMC_8_Q14#determine-median-then-total",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2025_AMC_8_Q14.json",
+"sha256": "e861f7f915483c5689d90d0edc4d11ed1e2adf805fa7713b83bf2529d5c75778",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2025_AMC_8_Q14",
+"position": {
+"year": 2025,
+"level": "AMC 8",
+"batch": "NA",
+"number": 14
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2025_AMC_8_Q14",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "ed0f6476d10022f9bed9f12d3be3c5fec0045cf8f27f7d2ae4c48c781ec46315",
+"contentHash": "50842f0a7be2e213ea4c51e681455934b3559d54b8a3e9c5d82df4eed8f079bb",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -757714,7 +761077,26 @@ window.AMC_BANK = {
 "supportIds": [
 "cnm_p110"
 ],
-"routes": [],
+"routes": [
+{
+"id": "determine-median-then-total",
+"label": "Find the median before the missing number",
+"nodeIds": [
+"cnm_211",
+"cnm_213",
+"cnm_p110"
+],
+"methodDirectNodeIds": {
+"determine-median-then-total": [
+"cnm_211",
+"cnm_213"
+]
+},
+"contextNodeIds": [
+"cnm_p110"
+]
+}
+],
 "flags": []
 }
 },
@@ -757858,16 +761240,20 @@ window.AMC_BANK = {
 {
 "id": "2025_AMC_8_Q16",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:counting-probability"
-],
-"skill": [],
 "year": 2025,
 "level": "AMC 8",
 "batch": "NA",
 "number": 16,
 "area": "Counting & Probability",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:counting-probability"
+],
+"skill": [],
+"responseType": "choice",
 "question": "Five distinct integers from \\(1\\) to \\(10\\) are chosen, and five distinct integers from \\(11\\) to \\(20\\) are chosen. No two numbers differ by exactly \\(10.\\) What is the sum of the ten chosen numbers?",
 "questionType": "text",
 "choices": {
@@ -757877,26 +761263,101 @@ window.AMC_BANK = {
 "D": "\\(110\\)",
 "E": "\\(115\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The restriction suggests grouping each smaller number with the number that is \\(10\\) larger:\n\\[\n(1,11),(2,12),\\ldots,(10,20).\n\\]\nThese ten pairs contain every available number exactly once. At most one number can be chosen from each pair, because the two members differ by \\(10\\). Since ten numbers are chosen from ten pairs, every pair must contribute exactly one number. Otherwise, at most nine numbers could be chosen.\n\nStart with the smaller member of each pair. Their sum is\n\\[\n1+2+\\cdots+10\n=(1+10)+(2+9)+\\cdots+(5+6)\n=5\\cdot11=55.\n\\]\nChoosing the larger member instead adds \\(10\\). Exactly five chosen numbers are from \\(11\\) through \\(20\\), so exactly five such additions occur. Hence the sum is always\n\\[\n55+5\\cdot10=\\boxed{105},\n\\]\nchoice \\(\\text{C}\\).",
+"solutionMethods": [
+{
+"id": "one-number-per-pair",
+"label": "Group the forbidden partners",
+"explanation": "The restriction suggests grouping each smaller number with the number that is \\(10\\) larger:\n\\[\n(1,11),(2,12),\\ldots,(10,20).\n\\]\nThese ten pairs contain every available number exactly once. At most one number can be chosen from each pair, because the two members differ by \\(10\\). Since ten numbers are chosen from ten pairs, every pair must contribute exactly one number. Otherwise, at most nine numbers could be chosen.\n\nStart with the smaller member of each pair. Their sum is\n\\[\n1+2+\\cdots+10\n=(1+10)+(2+9)+\\cdots+(5+6)\n=5\\cdot11=55.\n\\]\nChoosing the larger member instead adds \\(10\\). Exactly five chosen numbers are from \\(11\\) through \\(20\\), so exactly five such additions occur. Hence the sum is always\n\\[\n55+5\\cdot10=\\boxed{105},\n\\]\nchoice \\(\\text{C}\\).",
+"directNodeIds": [
+"math:finite-constraint-deduction"
+],
+"legacyRouteId": "one-number-per-pair",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2025_AMC_8_Q16#one-number-per-pair",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2025_AMC_8_Q16.json",
+"sha256": "4ce47382f397dda78528a3a1b94dab16fb35f378e5197f3af570aa53d7d699eb",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2025_AMC_8_Q16",
+"position": {
+"year": 2025,
+"level": "AMC 8",
+"batch": "NA",
+"number": 16
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2025_AMC_8_Q16",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "a9679488ec8012ea80beb14f3f5454c7c96dcbcb65934a20345cf0cdc88e729b",
+"contentHash": "94fc08eeb5f3aeff3a1d0f47afd24709d1147a403a89b696da2c83a7f3c05125",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
-"cnm_p216"
+"math:finite-constraint-deduction"
 ],
 "supportIds": [
 "cnm_p117"
 ],
-"routes": [],
+"routes": [
+{
+"id": "one-number-per-pair",
+"label": "Group the forbidden partners",
+"nodeIds": [
+"math:finite-constraint-deduction",
+"cnm_p117"
+],
+"methodDirectNodeIds": {
+"one-number-per-pair": [
+"math:finite-constraint-deduction"
+]
+},
+"contextNodeIds": [
+"cnm_p117"
+]
+}
+],
 "flags": []
 }
 },
@@ -758490,16 +761951,20 @@ window.AMC_BANK = {
 {
 "id": "2025_AMC_8_Q20",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:prealgebra"
-],
-"skill": [],
 "year": 2025,
 "level": "AMC 8",
 "batch": "NA",
 "number": 20,
 "area": "Prealgebra",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:prealgebra"
+],
+"skill": [],
+"responseType": "choice",
 "question": "Sarika, Dev, and Rajiv are sharing a large block of cheese. They take turns cutting off half of what remains and eating it: first Sarika eats half of the cheese, then Dev eats half of the remaining half, then Rajiv eats half of what remains, then back to Sarika, and so on. They stop when the cheese is too small to see. About what fraction of the original block of cheese does Sarika eat in total?",
 "questionType": "text",
 "choices": {
@@ -758509,36 +761974,207 @@ window.AMC_BANK = {
 "D": "\\(\\dfrac{3}{4}\\)",
 "E": "\\(\\dfrac{7}{8}\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "A",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions",
-"figureSources": {},
-"editorialNote": "",
-"knowledgeGraph": {
-"version": "1.0.0",
-"contentHash": "3acfe31f7a2275563ed22cbd8c1d6a26ebce2667dabe7d53f42c5479f5d4955a",
-"status": "mapped",
-"reviewStatus": "machine_adjudicated",
-"assessedIds": [
+"acceptedResponses": [
+"A"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Group the turns into rounds containing one turn each for Sarika, Dev, and Rajiv. If a round starts with an amount \\(R\\) of cheese, they eat\n\\[\n\\frac{R}{2},\\qquad \\frac{R}{4},\\qquad \\frac{R}{8},\n\\]\nrespectively. These amounts are in the ratio \\(4:2:1\\). Thus Sarika eats \\(4\\) of the \\(4+2+1=7\\) equal parts consumed in every complete round, or \\(4/7\\) of that round's eaten cheese.\n\nCombining complete rounds preserves this same share: Sarika's amounts are always \\(4/7\\) of the corresponding amounts eaten by everyone together. Each round leaves only \\(1/8\\) of its starting cheese. Repeating the rounds makes the leftover as small as desired, so the share of the original block eaten by Sarika approaches \\(4/7\\).\n\nFor the actual stopping point, imagine continuing the turns afterward. Sarika could gain no more than all the tiny amount left when they stopped. Therefore her finite total is close to the continuing-process value, though its exact value depends on the visibility cutoff. She eats approximately \\(\\boxed{\\frac47}\\), choice \\(\\text{A}\\).",
+"solutionMethods": [
+{
+"id": "ratio-in-each-round",
+"label": "Compare the shares in each round",
+"explanation": "Group the turns into rounds containing one turn each for Sarika, Dev, and Rajiv. If a round starts with an amount \\(R\\) of cheese, they eat\n\\[\n\\frac{R}{2},\\qquad \\frac{R}{4},\\qquad \\frac{R}{8},\n\\]\nrespectively. These amounts are in the ratio \\(4:2:1\\). Thus Sarika eats \\(4\\) of the \\(4+2+1=7\\) equal parts consumed in every complete round, or \\(4/7\\) of that round's eaten cheese.\n\nCombining complete rounds preserves this same share: Sarika's amounts are always \\(4/7\\) of the corresponding amounts eaten by everyone together. Each round leaves only \\(1/8\\) of its starting cheese. Repeating the rounds makes the leftover as small as desired, so the share of the original block eaten by Sarika approaches \\(4/7\\).\n\nFor the actual stopping point, imagine continuing the turns afterward. Sarika could gain no more than all the tiny amount left when they stopped. Therefore her finite total is close to the continuing-process value, though its exact value depends on the visibility cutoff. She eats approximately \\(\\boxed{\\frac47}\\), choice \\(\\text{A}\\).",
+"directNodeIds": [
+"cnm_p187"
+],
+"legacyRouteId": "ratio-in-each-round",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2025_AMC_8_Q20#ratio-in-each-round",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2025_AMC_8_Q20.json",
+"sha256": "07f88e8b29445f2000c218930fbd999c63ba4d782e808ca4ea6b12b088bc4184",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "restart-after-one-round",
+"label": "Use the repeated situation",
+"explanation": "To estimate the total, imagine continuing the turns indefinitely. The remaining cheese is repeatedly halved, so it becomes as small as desired. Let \\(x\\) be the fraction of a starting block that Sarika eventually eats in this continuing process.\n\nSarika first eats \\(1/2\\) of the block. After Dev and Rajiv take their turns, \\(1/8\\) of the original block remains, and it is Sarika's turn again. The sharing rule now repeats on this smaller amount. Since every serving scales with the starting amount, Sarika eventually eats the same fraction \\(x\\) of that remaining \\(1/8\\). Consequently,\n\\[\nx=\\frac12+\\frac{x}{8}.\n\\]\nMultiplying every term by \\(8\\) gives\n\\[\n8x=4+x,\\qquad 7x=4,\\qquad x=\\frac47.\n\\]\nIf they stop with a tiny amount remaining, continuing could add at most that entire amount to Sarika's total. Her actual share is therefore approximately \\(\\boxed{\\frac47}\\), choice \\(\\text{A}\\); an exact finite total would require the stopping cutoff.",
+"directNodeIds": [
+"cnm_p146",
+"cnm_044"
+],
+"legacyRouteId": "restart-after-one-round",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2025_AMC_8_Q20#restart-after-one-round",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2025_AMC_8_Q20.json",
+"sha256": "07f88e8b29445f2000c218930fbd999c63ba4d782e808ca4ea6b12b088bc4184",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "geometric-series-sum",
+"label": "Sum Sarika's servings",
+"directNodeIds": [
 "math:infinite-geometric-series"
 ],
-"supportIds": [],
+"legacyRouteId": "geometric-series-sum",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L5405",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2025_AMC_8_Q20#geometric-series-sum",
+"evidence": []
+}
+},
+{
+"id": "self-similar-share-equation",
+"label": "Use the repeated three-turn cycle",
+"directNodeIds": [
+"cnm_044"
+],
+"legacyRouteId": "self-similar-share-equation",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L5405",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2025_AMC_8_Q20#self-similar-share-equation",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2025_AMC_8_Q20",
+"position": {
+"year": 2025,
+"level": "AMC 8",
+"batch": "NA",
+"number": 20
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2025_AMC_8_Q20",
+"figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+"editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"knowledgeGraph": {
+"version": "1.0.0",
+"contentHash": "e5673bf16e35b9b605783c182c9d9776a9d6758d13a93b1a63ccc1ec3d7ff963",
+"status": "mapped",
+"reviewStatus": "machine_adjudicated",
+"assessedIds": [],
+"supportIds": [
+"cnm_p179"
+],
 "routes": [
 {
 "id": "geometric-series-sum",
 "label": "Sum Sarika's servings",
 "nodeIds": [
 "math:infinite-geometric-series"
+],
+"methodDirectNodeIds": {
+"geometric-series-sum": [
+"math:infinite-geometric-series"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "self-similar-share-equation",
 "label": "Use the repeated three-turn cycle",
 "nodeIds": [
 "cnm_044"
+],
+"methodDirectNodeIds": {
+"self-similar-share-equation": [
+"cnm_044"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "ratio-in-each-round",
+"label": "Compare the shares in each round",
+"nodeIds": [
+"cnm_p187",
+"cnm_p179",
+"cnm_p185",
+"cnm_p186"
+],
+"methodDirectNodeIds": {
+"ratio-in-each-round": [
+"cnm_p187"
+]
+},
+"contextNodeIds": [
+"cnm_p179",
+"cnm_p185",
+"cnm_p186"
+]
+},
+{
+"id": "restart-after-one-round",
+"label": "Use the repeated situation",
+"nodeIds": [
+"cnm_p146",
+"cnm_044",
+"cnm_p179",
+"cnm_040"
+],
+"methodDirectNodeIds": {
+"restart-after-one-round": [
+"cnm_p146",
+"cnm_044"
+]
+},
+"contextNodeIds": [
+"cnm_p179",
+"cnm_040"
 ]
 }
 ],
@@ -758682,16 +762318,20 @@ window.AMC_BANK = {
 {
 "id": "2025_AMC_8_Q22",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:number-theory"
-],
-"skill": [],
 "year": 2025,
 "level": "AMC 8",
 "batch": "NA",
 "number": 22,
 "area": "Number Theory",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:number-theory"
+],
+"skill": [],
+"responseType": "choice",
 "question": "A classroom has a row of \\(35\\) coat hooks. Paulina likes coats to be equally spaced, so that there is the same number of empty hooks before the first coat, after the last coat, and between every coat and the next one. Suppose there is at least \\(1\\) coat and at least \\(1\\) empty hook. How many different numbers of coats can satisfy Paulina’s pattern?",
 "questionType": "text",
 "choices": {
@@ -758701,25 +762341,121 @@ window.AMC_BANK = {
 "D": "\\(7\\)",
 "E": "\\(9\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Equal spacing suggests counting the gaps, including the two end gaps. Let \\(c\\) be the number of coats and \\(e\\) the number of empty hooks in each gap. There are \\(c+1\\) gaps. Both \\(c\\) and \\(e\\) are positive integers, since at least one coat and one empty hook are required.\n\nImagine adding one extra hook with a coat just after the row. Now each gap of \\(e\\) empty hooks is followed by a coat, so the enlarged row consists of \\(c+1\\) equal groups of \\(e+1\\) hooks. Thus\n\\[\n36=(c+1)(e+1).\n\\]\nBoth factors must be at least \\(2\\). The factor pairs of \\(36\\) are\n\\[\n1\\cdot36,\\quad 2\\cdot18,\\quad 3\\cdot12,\\quad 4\\cdot9,\\quad 6\\cdot6.\n\\]\nThis list is complete because the smaller factor cannot exceed \\(6\\), and \\(5\\) does not divide \\(36\\). Excluding the factors \\(1\\) and \\(36\\), the possible values of \\(c+1\\) are\n\\[\n2,3,4,6,9,12,18.\n\\]\nSubtracting \\(1\\) gives the coat counts\n\\[\n1,2,3,5,8,11,17.\n\\]\nEach works: form the corresponding equal groups and remove the final added coat and hook. This leaves the required equal empty gaps on exactly \\(35\\) hooks. Different listed values give different coat counts, so there are exactly \\(\\boxed{7}\\) possibilities, choice \\(\\mathrm{D}\\).",
+"solutionMethods": [
+{
+"id": "equal-groups-and-factors",
+"label": "Make equal groups by adding one hook",
+"explanation": "Equal spacing suggests counting the gaps, including the two end gaps. Let \\(c\\) be the number of coats and \\(e\\) the number of empty hooks in each gap. There are \\(c+1\\) gaps. Both \\(c\\) and \\(e\\) are positive integers, since at least one coat and one empty hook are required.\n\nImagine adding one extra hook with a coat just after the row. Now each gap of \\(e\\) empty hooks is followed by a coat, so the enlarged row consists of \\(c+1\\) equal groups of \\(e+1\\) hooks. Thus\n\\[\n36=(c+1)(e+1).\n\\]\nBoth factors must be at least \\(2\\). The factor pairs of \\(36\\) are\n\\[\n1\\cdot36,\\quad 2\\cdot18,\\quad 3\\cdot12,\\quad 4\\cdot9,\\quad 6\\cdot6.\n\\]\nThis list is complete because the smaller factor cannot exceed \\(6\\), and \\(5\\) does not divide \\(36\\). Excluding the factors \\(1\\) and \\(36\\), the possible values of \\(c+1\\) are\n\\[\n2,3,4,6,9,12,18.\n\\]\nSubtracting \\(1\\) gives the coat counts\n\\[\n1,2,3,5,8,11,17.\n\\]\nEach works: form the corresponding equal groups and remove the final added coat and hook. This leaves the required equal empty gaps on exactly \\(35\\) hooks. Different listed values give different coat counts, so there are exactly \\(\\boxed{7}\\) possibilities, choice \\(\\mathrm{D}\\).",
+"directNodeIds": [
+"math:integer-diophantine-equations",
+"cnm_p153"
+],
+"legacyRouteId": "equal-groups-and-factors",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2025_AMC_8_Q22#equal-groups-and-factors",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2025_AMC_8_Q22.json",
+"sha256": "73735bd6227e7f6d252ba351d4fb6574bd046cc6b75c87f6b915f7716e6a2321",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "enumerate-valid-divisors",
+"label": "List the admissible divisors",
+"directNodeIds": [
+"cnm_p153"
+],
+"legacyRouteId": "enumerate-valid-divisors",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L5407",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2025_AMC_8_Q22#enumerate-valid-divisors",
+"evidence": []
+}
+},
+{
+"id": "prime-exponent-divisor-count",
+"label": "Count divisors by prime exponents",
+"directNodeIds": [
+"math:prime-factorization",
+"math:divisor-count-and-sum"
+],
+"legacyRouteId": "prime-exponent-divisor-count",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L5407",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2025_AMC_8_Q22#prime-exponent-divisor-count",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2025_AMC_8_Q22",
+"position": {
+"year": 2025,
+"level": "AMC 8",
+"batch": "NA",
+"number": 22
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2025_AMC_8_Q22",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "5cbd0e75337254dd2e9a7335fb79fea62e00e85ea608a260d0a879ad735ab6d3",
+"contentHash": "5f1a230ecd9fa38a3f4810d27b65c979ee44bffc665f8e36df6cdb9b6cf31b01",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "math:integer-diophantine-equations"
 ],
 "supportIds": [
-"cnm_027",
-"cnm_151"
+"cnm_p038",
+"cnm_p142"
 ],
 "routes": [
 {
@@ -758727,7 +762463,13 @@ window.AMC_BANK = {
 "label": "List the admissible divisors",
 "nodeIds": [
 "cnm_p153"
+],
+"methodDirectNodeIds": {
+"enumerate-valid-divisors": [
+"cnm_p153"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "prime-exponent-divisor-count",
@@ -758735,6 +762477,33 @@ window.AMC_BANK = {
 "nodeIds": [
 "math:prime-factorization",
 "math:divisor-count-and-sum"
+],
+"methodDirectNodeIds": {
+"prime-exponent-divisor-count": [
+"math:prime-factorization",
+"math:divisor-count-and-sum"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "equal-groups-and-factors",
+"label": "Make equal groups by adding one hook",
+"nodeIds": [
+"math:integer-diophantine-equations",
+"cnm_p153",
+"cnm_p038",
+"cnm_p142"
+],
+"methodDirectNodeIds": {
+"equal-groups-and-factors": [
+"math:integer-diophantine-equations",
+"cnm_p153"
+]
+},
+"contextNodeIds": [
+"cnm_p038",
+"cnm_p142"
 ]
 }
 ],
@@ -758744,16 +762513,20 @@ window.AMC_BANK = {
 {
 "id": "2025_AMC_8_Q23",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:number-theory"
-],
-"skill": [],
 "year": 2025,
 "level": "AMC 8",
 "batch": "NA",
 "number": 23,
 "area": "Number Theory",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:number-theory"
+],
+"skill": [],
+"responseType": "choice",
 "question": "How many four-digit numbers have all three of the following properties?\n\n(I) The tens digit and ones digit are both \\(9.\\)\n\n(II) The number is \\(1\\) less than a perfect square.\n\n(III) The number is the product of exactly two prime numbers.",
 "questionType": "text",
 "choices": {
@@ -758763,17 +762536,95 @@ window.AMC_BANK = {
 "D": "\\(3\\)",
 "E": "\\(4\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "B",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions",
+"acceptedResponses": [
+"B"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Adding \\(1\\) to a number ending in \\(99\\) produces a number ending in \\(00\\). Write the desired number as \\(N=s^2-1\\), where \\(s\\) is a positive integer. Since \\(N\\) has four digits,\n\\[\n1001\\leq s^2\\leq10000.\n\\]\nBecause \\(31^2=961\\) and \\(100^2=10000\\), we have \\(32\\leq s\\leq100\\). A square ends in \\(0\\) only when its root ends in \\(0\\), as checking the squares of the ten possible ones digits shows. Therefore the complete list of possible roots is\n\\[\ns=40,50,60,70,80,90,100.\n\\]\nEach of these roots does give a four-digit number ending in \\(99\\).\n\nTo test the prime condition, use the two neighbors of \\(s\\):\n\\[\n(s-1)(s+1)=s^2-s+s-1=s^2-1=N.\n\\]\nBoth factors exceed \\(1\\). Consequently, \\(N\\) is a product of exactly two primes precisely when both neighbors are prime. If either neighbor is composite, splitting it into factors already gives at least three prime factors in the product, counting repetitions.\n\nSix roots fail because one neighbor is composite:\n\\[\n\\begin{aligned}\ns=40 &: \\quad 39=3\\cdot13,\\\\\ns=50 &: \\quad 49=7\\cdot7,\\\\\ns=70 &: \\quad 69=3\\cdot23,\\\\\ns=80 &: \\quad 81=9\\cdot9,\\\\\ns=90 &: \\quad 91=7\\cdot13,\\\\\ns=100 &: \\quad 99=9\\cdot11.\n\\end{aligned}\n\\]\nFor \\(s=60\\), the neighbors are \\(59\\) and \\(61\\). Neither is divisible by \\(2,3,5,\\) or \\(7\\), so both are prime. These checks suffice: a composite number below \\(64=8^2\\) has a factor below \\(8\\), and hence a prime divisor among \\(2,3,5,7\\).\n\nThus the only qualifying number is\n\\[\n60^2-1=3599=59\\cdot61.\n\\]\nEvery possible positive root has been checked, and different positive roots give different numbers. The count is \\(\\boxed{1}\\), choice \\(\\mathrm{B}\\).",
+"solutionMethods": [
+{
+"id": "square-neighbors",
+"label": "Check the two neighbors of the square root",
+"explanation": "Adding \\(1\\) to a number ending in \\(99\\) produces a number ending in \\(00\\). Write the desired number as \\(N=s^2-1\\), where \\(s\\) is a positive integer. Since \\(N\\) has four digits,\n\\[\n1001\\leq s^2\\leq10000.\n\\]\nBecause \\(31^2=961\\) and \\(100^2=10000\\), we have \\(32\\leq s\\leq100\\). A square ends in \\(0\\) only when its root ends in \\(0\\), as checking the squares of the ten possible ones digits shows. Therefore the complete list of possible roots is\n\\[\ns=40,50,60,70,80,90,100.\n\\]\nEach of these roots does give a four-digit number ending in \\(99\\).\n\nTo test the prime condition, use the two neighbors of \\(s\\):\n\\[\n(s-1)(s+1)=s^2-s+s-1=s^2-1=N.\n\\]\nBoth factors exceed \\(1\\). Consequently, \\(N\\) is a product of exactly two primes precisely when both neighbors are prime. If either neighbor is composite, splitting it into factors already gives at least three prime factors in the product, counting repetitions.\n\nSix roots fail because one neighbor is composite:\n\\[\n\\begin{aligned}\ns=40 &: \\quad 39=3\\cdot13,\\\\\ns=50 &: \\quad 49=7\\cdot7,\\\\\ns=70 &: \\quad 69=3\\cdot23,\\\\\ns=80 &: \\quad 81=9\\cdot9,\\\\\ns=90 &: \\quad 91=7\\cdot13,\\\\\ns=100 &: \\quad 99=9\\cdot11.\n\\end{aligned}\n\\]\nFor \\(s=60\\), the neighbors are \\(59\\) and \\(61\\). Neither is divisible by \\(2,3,5,\\) or \\(7\\), so both are prime. These checks suffice: a composite number below \\(64=8^2\\) has a factor below \\(8\\), and hence a prime divisor among \\(2,3,5,7\\).\n\nThus the only qualifying number is\n\\[\n60^2-1=3599=59\\cdot61.\n\\]\nEvery possible positive root has been checked, and different positive roots give different numbers. The count is \\(\\boxed{1}\\), choice \\(\\mathrm{B}\\).",
+"directNodeIds": [
+"math:integer-diophantine-equations",
+"cnm_p157",
+"cnm_152"
+],
+"legacyRouteId": "square-neighbors",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2025_AMC_8_Q23#square-neighbors",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2025_AMC_8_Q23.json",
+"sha256": "d1238701752fb8e90948508bcb6c76216fdfe6b6e4e6dc5cdec9a72244061da5",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "neighboring-prime-factors",
+"label": "Factor one less than a square",
+"directNodeIds": [
+"cnm_152"
+],
+"legacyRouteId": "neighboring-prime-factors",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L5408",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2025_AMC_8_Q23#neighboring-prime-factors",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2025_AMC_8_Q23",
+"position": {
+"year": 2025,
+"level": "AMC 8",
+"batch": "NA",
+"number": 23
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2025_AMC_8_Q23",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "247baad137fe274c119c7719686083d5b17b415c434d8ecc2bc795f3da8668ce",
+"contentHash": "f6658e97062c82c72b1b88e67e7c9bb440aa0d8f798d6d17c7ac2f89a0c8c427",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -758781,7 +762632,8 @@ window.AMC_BANK = {
 "cnm_p157"
 ],
 "supportIds": [
-"math:modular-congruence"
+"cnm_p053",
+"cnm_p153"
 ],
 "routes": [
 {
@@ -758789,6 +762641,36 @@ window.AMC_BANK = {
 "label": "Factor one less than a square",
 "nodeIds": [
 "cnm_152"
+],
+"methodDirectNodeIds": {
+"neighboring-prime-factors": [
+"cnm_152"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "square-neighbors",
+"label": "Check the two neighbors of the square root",
+"nodeIds": [
+"math:integer-diophantine-equations",
+"cnm_p157",
+"cnm_152",
+"cnm_p053",
+"cnm_p153",
+"cnm_p116"
+],
+"methodDirectNodeIds": {
+"square-neighbors": [
+"math:integer-diophantine-equations",
+"cnm_p157",
+"cnm_152"
+]
+},
+"contextNodeIds": [
+"cnm_p053",
+"cnm_p153",
+"cnm_p116"
 ]
 }
 ],
@@ -759161,16 +763043,20 @@ window.AMC_BANK = {
 {
 "id": "2026_AMC_8_Q01",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:prealgebra"
-],
-"skill": [],
 "year": 2026,
 "level": "AMC 8",
 "batch": "NA",
 "number": 1,
 "area": "Prealgebra",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:prealgebra"
+],
+"skill": [],
+"responseType": "choice",
 "question": "What is the value of the following expression? \\[ 1 + 2 - 3 + 4 + 5 - 6 + 7 + 8 - 9 + 10 + 11 - 12 \\]",
 "questionType": "text",
 "choices": {
@@ -759180,40 +763066,121 @@ window.AMC_BANK = {
 "D": "\\(27\\)",
 "E": "\\(30\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "A",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"acceptedResponses": [
+"A"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The signs repeat as two additions followed by a subtraction, so group the expression into consecutive triples:\n\\[\n(1+2-3)+(4+5-6)+(7+8-9)+(10+11-12).\n\\]\nEach group is added to the next, so this grouping preserves every sign. Evaluating the groups gives\n\\[\n0+3+6+9=\\boxed{18}.\n\\]\nThe answer is choice \\(\\mathrm{A}\\).",
+"solutionMethods": [
+{
+"id": "group-consecutive-triples",
+"label": "Group the repeating three-term pattern",
+"explanation": "The signs repeat as two additions followed by a subtraction, so group the expression into consecutive triples:\n\\[\n(1+2-3)+(4+5-6)+(7+8-9)+(10+11-12).\n\\]\nEach group is added to the next, so this grouping preserves every sign. Evaluating the groups gives\n\\[\n0+3+6+9=\\boxed{18}.\n\\]\nThe answer is choice \\(\\mathrm{A}\\).",
+"directNodeIds": [
+"cnm_013"
+],
+"legacyRouteId": "group-consecutive-triples",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2026_AMC_8_Q01#group-consecutive-triples",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2026_AMC_8_Q01.json",
+"sha256": "82f79c0d665e1648071a29e05994a8637876ab2e3e5a08c6d07b1a8da090097d",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2026_AMC_8_Q01",
+"position": {
+"year": 2026,
+"level": "AMC 8",
+"batch": "NA",
+"number": 1
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2026_AMC_8_Q01",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "4cc89465913e85815c909801f63a5ba396a03fb8cefbdd722db34f9298af8539",
+"contentHash": "4eef170960d97303b2de70ad7321e8f6a669faa243662f5913f4f88772ca5c49",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
 "cnm_013"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_p114"
+],
+"routes": [
+{
+"id": "group-consecutive-triples",
+"label": "Group the repeating three-term pattern",
+"nodeIds": [
+"cnm_013",
+"cnm_p114"
+],
+"methodDirectNodeIds": {
+"group-consecutive-triples": [
+"cnm_013"
+]
+},
+"contextNodeIds": [
+"cnm_p114"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2026_AMC_8_Q02",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:prealgebra"
-],
-"skill": [],
 "year": 2026,
 "level": "AMC 8",
 "batch": "NA",
 "number": 2,
 "area": "Prealgebra",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:prealgebra"
+],
+"skill": [],
+"responseType": "choice",
 "question": "In the array shown below, three \\(3\\)s are surrounded by \\(2\\)s, which are in turn surrounded by a border of \\(1\\)s. What is the sum of the numbers in the array?\n\n\\[ \\begin{array}{ccccccc} 1 & 1 & 1 & 1 & 1 & 1 & 1 \\\\ 1 & 2 & 2 & 2 & 2 & 2 & 1 \\\\ 1 & 2 & 3 & 3 & 3 & 2 & 1 \\\\ 1 & 2 & 2 & 2 & 2 & 2 & 1 \\\\ 1 & 1 & 1 & 1 & 1 & 1 & 1 \\\\ \\end{array} \\]",
 "questionType": "text",
 "choices": {
@@ -759223,40 +763190,124 @@ window.AMC_BANK = {
 "D": "\\(55\\)",
 "E": "\\(57\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Count equal entries together so that multiplication can replace repeated addition. The top and bottom rows contain \\(7\\) ones each. The other three rows have a \\(1\\) at each end, giving another \\(6\\) ones. Thus there are\n\\[\n7+7+6=20\n\\]\nones. Counting the end entries only in the middle three rows avoids counting the corners twice.\n\nThe second and fourth rows contain \\(5\\) twos each, and the middle row contains \\(2\\) twos. Thus there are \\(5+5+2=12\\) twos. The remaining entries are the \\(3\\) threes shown in the middle row. These groups account for all \\(20+12+3=35\\) entries of the \\(5\\)-by-\\(7\\) array.\n\nTheir sum is\n\\[\n20+12\\cdot2+3\\cdot3\n=20+24+9\n=\\boxed{53}.\n\\]\nThe answer is choice \\(\\mathrm{C}\\).",
+"solutionMethods": [
+{
+"id": "count-by-value",
+"label": "Count each kind of entry",
+"explanation": "Count equal entries together so that multiplication can replace repeated addition. The top and bottom rows contain \\(7\\) ones each. The other three rows have a \\(1\\) at each end, giving another \\(6\\) ones. Thus there are\n\\[\n7+7+6=20\n\\]\nones. Counting the end entries only in the middle three rows avoids counting the corners twice.\n\nThe second and fourth rows contain \\(5\\) twos each, and the middle row contains \\(2\\) twos. Thus there are \\(5+5+2=12\\) twos. The remaining entries are the \\(3\\) threes shown in the middle row. These groups account for all \\(20+12+3=35\\) entries of the \\(5\\)-by-\\(7\\) array.\n\nTheir sum is\n\\[\n20+12\\cdot2+3\\cdot3\n=20+24+9\n=\\boxed{53}.\n\\]\nThe answer is choice \\(\\mathrm{C}\\).",
+"directNodeIds": [
+"cnm_p037",
+"cnm_p112"
+],
+"legacyRouteId": "count-by-value",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2026_AMC_8_Q02#count-by-value",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2026_AMC_8_Q02.json",
+"sha256": "bbddc720d7ff5a06f7a703feb3990ded9fe5baf386341c59d6dcbd1aa45c8267",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2026_AMC_8_Q02",
+"position": {
+"year": 2026,
+"level": "AMC 8",
+"batch": "NA",
+"number": 2
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2026_AMC_8_Q02",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "dceb785be98825cf81381f00aebd91b30e77ce1cac09ec63ee9f4441bbb70ce8",
+"contentHash": "f4902d32fe7e2c51ce3754ed72c086be9158d9803aa3401d6fc04e077a7f865c",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
 "cnm_p112"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_p038"
+],
+"routes": [
+{
+"id": "count-by-value",
+"label": "Count each kind of entry",
+"nodeIds": [
+"cnm_p037",
+"cnm_p112",
+"cnm_p038"
+],
+"methodDirectNodeIds": {
+"count-by-value": [
+"cnm_p037",
+"cnm_p112"
+]
+},
+"contextNodeIds": [
+"cnm_p038"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2026_AMC_8_Q03",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:geometry"
-],
-"skill": [],
 "year": 2026,
 "level": "AMC 8",
 "batch": "NA",
 "number": 3,
 "area": "Geometry",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:geometry"
+],
+"skill": [],
+"responseType": "choice",
 "question": "Haruki has a piece of wire that is \\(24\\) centimeters long. He wants to bend it to form each of the following shapes, one at a time.\n\nA regular hexagon with side length \\(5\\) cm.\n\nA square of area \\(36\\) cm².\n\nA right triangle whose legs are \\(6\\) and \\(8\\) cm long.\n\nWhich of the shapes can Haruki make?",
 "questionType": "text",
 "choices": {
@@ -759266,17 +763317,77 @@ window.AMC_BANK = {
 "D": "Square and triangle only",
 "E": "Hexagon, triangle, and square"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Bending the wire changes its shape but preserves its length, so compare each shape’s perimeter with \\(24\\) cm.\n\nA regular hexagon has six equal sides. Its perimeter is \\(6\\times5=30\\) cm, so the wire is too short.\n\nThe square has side length \\(6\\) cm because \\(6\\times6=36\\). Its perimeter is \\(4\\times6=24\\) cm, so Haruki can make it.\n\nFor the right triangle, the Pythagorean theorem gives the hypotenuse length as\n\\[\n\\sqrt{6^2+8^2}=\\sqrt{36+64}=\\sqrt{100}=10\\text{ cm}.\n\\]\nWe take the positive square root because this is a length. The triangle’s perimeter is \\(6+8+10=24\\) cm, so Haruki can make it too.\n\nTherefore, he can make the square and triangle only, choice \\(\\boxed{\\text{D}}\\).",
+"solutionMethods": [
+{
+"id": "perimeters",
+"label": "Compare the required perimeters",
+"explanation": "Bending the wire changes its shape but preserves its length, so compare each shape’s perimeter with \\(24\\) cm.\n\nA regular hexagon has six equal sides. Its perimeter is \\(6\\times5=30\\) cm, so the wire is too short.\n\nThe square has side length \\(6\\) cm because \\(6\\times6=36\\). Its perimeter is \\(4\\times6=24\\) cm, so Haruki can make it.\n\nFor the right triangle, the Pythagorean theorem gives the hypotenuse length as\n\\[\n\\sqrt{6^2+8^2}=\\sqrt{36+64}=\\sqrt{100}=10\\text{ cm}.\n\\]\nWe take the positive square root because this is a length. The triangle’s perimeter is \\(6+8+10=24\\) cm, so Haruki can make it too.\n\nTherefore, he can make the square and triangle only, choice \\(\\boxed{\\text{D}}\\).",
+"directNodeIds": [
+"cnm_p078",
+"cnm_p089",
+"cnm_174"
+],
+"legacyRouteId": "perimeters",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2026_AMC_8_Q03#perimeters",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2026_AMC_8_Q03.json",
+"sha256": "45e88f2db28e6a218a35c03f5de6665886324bc81fa7d2dc46f747db9838fe44",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2026_AMC_8_Q03",
+"position": {
+"year": 2026,
+"level": "AMC 8",
+"batch": "NA",
+"number": 3
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2026_AMC_8_Q03",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "ef6d1325e46a1d9532f0fe6c554f79ec3d8cd061799df02baed8c684edebdec6",
+"contentHash": "045aec975c019ae92283932b328a4d52c4d7a0c2be56c5ef45263f8c28d14aff",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -759284,24 +763395,60 @@ window.AMC_BANK = {
 "cnm_p089",
 "cnm_174"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_p077",
+"cnm_075",
+"cnm_180",
+"cnm_110"
+],
+"routes": [
+{
+"id": "perimeters",
+"label": "Compare the required perimeters",
+"nodeIds": [
+"cnm_p078",
+"cnm_p089",
+"cnm_174",
+"cnm_p077",
+"cnm_075",
+"cnm_180",
+"cnm_110"
+],
+"methodDirectNodeIds": {
+"perimeters": [
+"cnm_p078",
+"cnm_p089",
+"cnm_174"
+]
+},
+"contextNodeIds": [
+"cnm_p077",
+"cnm_075",
+"cnm_180",
+"cnm_110"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2026_AMC_8_Q04",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:prealgebra"
-],
-"skill": [],
 "year": 2026,
 "level": "AMC 8",
 "batch": "NA",
 "number": 4,
 "area": "Prealgebra",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:prealgebra"
+],
+"skill": [],
+"responseType": "choice",
 "question": "Brynn’s savings decreased by \\(20\\%\\) in July, then increased by \\(50\\%\\) in August. Brynn’s savings are now what percent of the original amount?",
 "questionType": "text",
 "choices": {
@@ -759311,42 +763458,128 @@ window.AMC_BANK = {
 "D": "\\(110\\)",
 "E": "\\(120\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "E",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"acceptedResponses": [
+"E"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Because percentage changes scale with the starting amount, we may represent the original positive savings by \\(100\\) units. A \\(20\\%\\) decrease removes \\(20\\) units, leaving \\(80\\).\n\nThe August increase is \\(50\\%\\) of the savings remaining after July. Half of \\(80\\) is \\(40\\), so the final savings are\n\\[\n80+40=120\\text{ units}.\n\\]\nSince the original savings were \\(100\\) units, the final savings are \\(\\boxed{120\\%}\\) of the original amount, choice \\(\\boxed{\\text{E}}\\).",
+"solutionMethods": [
+{
+"id": "hundred-units",
+"label": "Represent the original savings by 100 units",
+"explanation": "Because percentage changes scale with the starting amount, we may represent the original positive savings by \\(100\\) units. A \\(20\\%\\) decrease removes \\(20\\) units, leaving \\(80\\).\n\nThe August increase is \\(50\\%\\) of the savings remaining after July. Half of \\(80\\) is \\(40\\), so the final savings are\n\\[\n80+40=120\\text{ units}.\n\\]\nSince the original savings were \\(100\\) units, the final savings are \\(\\boxed{120\\%}\\) of the original amount, choice \\(\\boxed{\\text{E}}\\).",
+"directNodeIds": [
+"cnm_p205",
+"cnm_p196"
+],
+"legacyRouteId": "hundred-units",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2026_AMC_8_Q04#hundred-units",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2026_AMC_8_Q04.json",
+"sha256": "4fc4a99c57d228d9c99dd43a65480c114b783d8c229f3ba95b6f2574d1b8bd4f",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2026_AMC_8_Q04",
+"position": {
+"year": 2026,
+"level": "AMC 8",
+"batch": "NA",
+"number": 4
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2026_AMC_8_Q04",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "2004d0fa12b9d076eb2bdd48aec1341acddba5bc34c6b3512e60dca2ff9eb57e",
+"contentHash": "2540c1cd0a83f14a2c04a328193657fc3cba29ab0bb19a88bd151e59216276c1",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
 "cnm_p205"
 ],
 "supportIds": [
-"cnm_p196"
+"cnm_p196",
+"cnm_p194",
+"cnm_p195"
 ],
-"routes": [],
+"routes": [
+{
+"id": "hundred-units",
+"label": "Represent the original savings by 100 units",
+"nodeIds": [
+"cnm_p205",
+"cnm_p196",
+"cnm_p194",
+"cnm_p195"
+],
+"methodDirectNodeIds": {
+"hundred-units": [
+"cnm_p205",
+"cnm_p196"
+]
+},
+"contextNodeIds": [
+"cnm_p194",
+"cnm_p195"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2026_AMC_8_Q05",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:prealgebra"
-],
-"skill": [],
 "year": 2026,
 "level": "AMC 8",
 "batch": "NA",
 "number": 5,
 "area": "Prealgebra",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:prealgebra"
+],
+"skill": [],
+"responseType": "choice",
 "question": "Casey went on a road trip that covered \\(100\\) miles, stopping only for a lunch break along the way. The trip took \\(3\\) hours in total and her average speed while driving was \\(40\\) miles per hour. In minutes, how long was the lunch break?",
 "questionType": "text",
 "choices": {
@@ -759356,26 +763589,105 @@ window.AMC_BANK = {
 "D": "\\(45\\)",
 "E": "\\(60\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "B",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"acceptedResponses": [
+"B"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The total trip time consists of driving and lunch, so first find how much time Casey spent driving. Average driving speed equals distance divided by driving time, giving\n\\[\n\\text{driving time}=\\frac{100}{40}=2.5\\text{ hours}.\n\\]\nLunch was her only stop, so the lunch break lasted \\(3-2.5=0.5\\) hour. Since one hour contains \\(60\\) minutes, this is\n\\[\n0.5\\times60=\\boxed{30\\text{ minutes}},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+"solutionMethods": [
+{
+"id": "subtract-driving-time",
+"label": "Find the driving time first",
+"explanation": "The total trip time consists of driving and lunch, so first find how much time Casey spent driving. Average driving speed equals distance divided by driving time, giving\n\\[\n\\text{driving time}=\\frac{100}{40}=2.5\\text{ hours}.\n\\]\nLunch was her only stop, so the lunch break lasted \\(3-2.5=0.5\\) hour. Since one hour contains \\(60\\) minutes, this is\n\\[\n0.5\\times60=\\boxed{30\\text{ minutes}},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+"directNodeIds": [
+"cnm_p111",
+"cnm_p062"
+],
+"legacyRouteId": "subtract-driving-time",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2026_AMC_8_Q05#subtract-driving-time",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2026_AMC_8_Q05.json",
+"sha256": "8d7a16da794569fa2c9e6cd20df777b3fbba709d627bd094805e219f6b8e59e4",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2026_AMC_8_Q05",
+"position": {
+"year": 2026,
+"level": "AMC 8",
+"batch": "NA",
+"number": 5
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2026_AMC_8_Q05",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "dd88f2e6ec4c29f9a7bd9c11477f29ac2b5c047a042b40fcdb316b6e8133c1e7",
+"contentHash": "bf0da25bdc75c03c7a0f2aa756cc541333ce954c0edcf857d6927f993ca6dc45",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
 "cnm_p111"
 ],
 "supportIds": [
-"cnm_p062"
+"cnm_p062",
+"cnm_p110"
 ],
-"routes": [],
+"routes": [
+{
+"id": "subtract-driving-time",
+"label": "Find the driving time first",
+"nodeIds": [
+"cnm_p111",
+"cnm_p062",
+"cnm_p110"
+],
+"methodDirectNodeIds": {
+"subtract-driving-time": [
+"cnm_p111",
+"cnm_p062"
+]
+},
+"contextNodeIds": [
+"cnm_p110"
+]
+}
+],
 "flags": []
 }
 },
@@ -759523,16 +763835,20 @@ window.AMC_BANK = {
 {
 "id": "2026_AMC_8_Q07",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:prealgebra"
-],
-"skill": [],
 "year": 2026,
 "level": "AMC 8",
 "batch": "NA",
 "number": 7,
 "area": "Prealgebra",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:prealgebra"
+],
+"skill": [],
+"responseType": "choice",
 "question": "Mika would like to estimate how far she can ride a new model of electric bike on a fully charged battery. She completed two trips totaling \\(40\\) miles. The first trip used \\(\\frac{1}{2}\\) of the total battery power, while the second trip used \\(\\frac{3}{10}\\) of the total battery power. How many miles can this electric bike go on a fully charged battery?",
 "questionType": "text",
 "choices": {
@@ -759542,26 +763858,108 @@ window.AMC_BANK = {
 "D": "\\(52\\)",
 "E": "\\(55\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "For this estimate, assume the average miles traveled per fraction of a full charge stays the same. Because both battery fractions refer to a full charge, the total fraction used is\n\\[\n\\frac12+\\frac3{10}=\\frac5{10}+\\frac3{10}=\\frac8{10}=\\frac45.\n\\]\nThus \\(40\\) miles corresponds to \\(\\frac45\\) of the estimated full-charge range. To recover the whole range, divide by that fraction:\n\\[\n40\\div\\frac45=40\\times\\frac54=50.\n\\]\nThe estimated range on a fully charged battery is \\(\\boxed{50\\text{ miles}}\\), choice \\(\\boxed{\\text{C}}\\).",
+"solutionMethods": [
+{
+"id": "recover-full-charge",
+"label": "Find the distance for one full charge",
+"explanation": "For this estimate, assume the average miles traveled per fraction of a full charge stays the same. Because both battery fractions refer to a full charge, the total fraction used is\n\\[\n\\frac12+\\frac3{10}=\\frac5{10}+\\frac3{10}=\\frac8{10}=\\frac45.\n\\]\nThus \\(40\\) miles corresponds to \\(\\frac45\\) of the estimated full-charge range. To recover the whole range, divide by that fraction:\n\\[\n40\\div\\frac45=40\\times\\frac54=50.\n\\]\nThe estimated range on a fully charged battery is \\(\\boxed{50\\text{ miles}}\\), choice \\(\\boxed{\\text{C}}\\).",
+"directNodeIds": [
+"cnm_p184",
+"cnm_p173"
+],
+"legacyRouteId": "recover-full-charge",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2026_AMC_8_Q07#recover-full-charge",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2026_AMC_8_Q07.json",
+"sha256": "51210db448d3b602338451671e40286a4bcefd7da4c3cb312d67aba4629e103d",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2026_AMC_8_Q07",
+"position": {
+"year": 2026,
+"level": "AMC 8",
+"batch": "NA",
+"number": 7
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2026_AMC_8_Q07",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "58908771086ff27d481a4af0995298cef8d1a41f2281135b2109835922005a81",
+"contentHash": "2c2c81530971169b8fd243bef0efc7cd7bdf1d82524a3528d730f18dc0e03626",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
 "cnm_p184"
 ],
 "supportIds": [
-"cnm_p173"
+"cnm_p173",
+"cnm_p183",
+"cnm_p213"
 ],
-"routes": [],
+"routes": [
+{
+"id": "recover-full-charge",
+"label": "Find the distance for one full charge",
+"nodeIds": [
+"cnm_p184",
+"cnm_p173",
+"cnm_p183",
+"cnm_p213"
+],
+"methodDirectNodeIds": {
+"recover-full-charge": [
+"cnm_p184",
+"cnm_p173"
+]
+},
+"contextNodeIds": [
+"cnm_p183",
+"cnm_p213"
+]
+}
+],
 "flags": [
 "The estimate assumes the observed average distance per unit of battery energy also applies to a full charge."
 ]
@@ -759570,16 +763968,20 @@ window.AMC_BANK = {
 {
 "id": "2026_AMC_8_Q08",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:number-theory"
-],
-"skill": [],
 "year": 2026,
 "level": "AMC 8",
 "batch": "NA",
 "number": 8,
 "area": "Number Theory",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:number-theory"
+],
+"skill": [],
+"responseType": "choice",
 "question": "A poll asked a number of people if they liked solving mathematics problems. Exactly \\(74\\%\\) answered “yes.” What is the fewest possible number of people who could have been asked the question?",
 "questionType": "text",
 "choices": {
@@ -759589,17 +763991,75 @@ window.AMC_BANK = {
 "D": "\\(50\\)",
 "E": "\\(100\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The numbers of people must be whole numbers, so write the exact percentage as a fraction in lowest terms:\n\\[\n74\\%=\\frac{74}{100}=\\frac{37}{50}.\n\\]\nLet \\(n>0\\) be the total number asked and \\(y\\) the number who answered yes. The fraction \\(y/n\\) must reduce to \\(37/50\\). Since reducing a fraction divides its denominator by a whole number, \\(n\\) must be \\(50\\) times a positive integer. Thus at least \\(50\\) people are needed.\n\nThis minimum is possible: \\(37\\) yes answers out of \\(50\\) people gives exactly \\(74\\%\\). Therefore the fewest possible number is \\(\\boxed{50}\\), choice \\(\\mathrm{D}\\).",
+"solutionMethods": [
+{
+"id": "reduced-fraction",
+"label": "Reduce the exact percentage",
+"explanation": "The numbers of people must be whole numbers, so write the exact percentage as a fraction in lowest terms:\n\\[\n74\\%=\\frac{74}{100}=\\frac{37}{50}.\n\\]\nLet \\(n>0\\) be the total number asked and \\(y\\) the number who answered yes. The fraction \\(y/n\\) must reduce to \\(37/50\\). Since reducing a fraction divides its denominator by a whole number, \\(n\\) must be \\(50\\) times a positive integer. Thus at least \\(50\\) people are needed.\n\nThis minimum is possible: \\(37\\) yes answers out of \\(50\\) people gives exactly \\(74\\%\\). Therefore the fewest possible number is \\(\\boxed{50}\\), choice \\(\\mathrm{D}\\).",
+"directNodeIds": [
+"math:integer-diophantine-equations"
+],
+"legacyRouteId": "reduced-fraction",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2026_AMC_8_Q08#reduced-fraction",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2026_AMC_8_Q08.json",
+"sha256": "a5514f01da2c24b24414e6f15d84319ffa6308083ca3e96f50601e2c7d83cb27",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2026_AMC_8_Q08",
+"position": {
+"year": 2026,
+"level": "AMC 8",
+"batch": "NA",
+"number": 8
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2026_AMC_8_Q08",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "623d57f6c9c97fd20bff23ec2b0b8d74606440c7b16c264bfbfdbb40fd9a9e57",
+"contentHash": "334e7638e780cc4959c125224c1f03cac4d9e9c6da040d9d5aaf61f7eb390b8f",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -759607,25 +764067,51 @@ window.AMC_BANK = {
 ],
 "supportIds": [
 "cnm_p195",
-"cnm_p168"
+"cnm_p168",
+"cnm_p167"
 ],
-"routes": [],
+"routes": [
+{
+"id": "reduced-fraction",
+"label": "Reduce the exact percentage",
+"nodeIds": [
+"math:integer-diophantine-equations",
+"cnm_p195",
+"cnm_p168",
+"cnm_p167"
+],
+"methodDirectNodeIds": {
+"reduced-fraction": [
+"math:integer-diophantine-equations"
+]
+},
+"contextNodeIds": [
+"cnm_p195",
+"cnm_p168",
+"cnm_p167"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2026_AMC_8_Q09",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:prealgebra"
-],
-"skill": [],
 "year": 2026,
 "level": "AMC 8",
 "batch": "NA",
 "number": 9,
 "area": "Prealgebra",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:prealgebra"
+],
+"skill": [],
+"responseType": "choice",
 "question": "What is the value of this expression? \\[ \\frac{\\sqrt{16\\sqrt{81}}}{\\sqrt{81\\sqrt{16}}} \\]",
 "questionType": "text",
 "choices": {
@@ -759635,40 +764121,124 @@ window.AMC_BANK = {
 "D": "\\(\\dfrac{3}{2}\\)",
 "E": "\\(\\dfrac{9}{4}\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "B",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"acceptedResponses": [
+"B"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Evaluate the inner square roots first, because their values determine the numbers under the outer radicals. Since \\(\\sqrt{81}=9\\) and \\(\\sqrt{16}=4\\),\n\\[\n\\frac{\\sqrt{16\\sqrt{81}}}{\\sqrt{81\\sqrt{16}}}\n=\\frac{\\sqrt{16\\cdot9}}{\\sqrt{81\\cdot4}}\n=\\frac{\\sqrt{144}}{\\sqrt{324}}\n=\\frac{12}{18}\n=\\boxed{\\frac23}.\n\\]\nThe radical symbol gives the nonnegative square root, and the denominator is \\(18>0\\). The answer is choice \\(\\mathrm{B}\\).",
+"solutionMethods": [
+{
+"id": "inside-out",
+"label": "Evaluate the square roots from inside outward",
+"explanation": "Evaluate the inner square roots first, because their values determine the numbers under the outer radicals. Since \\(\\sqrt{81}=9\\) and \\(\\sqrt{16}=4\\),\n\\[\n\\frac{\\sqrt{16\\sqrt{81}}}{\\sqrt{81\\sqrt{16}}}\n=\\frac{\\sqrt{16\\cdot9}}{\\sqrt{81\\cdot4}}\n=\\frac{\\sqrt{144}}{\\sqrt{324}}\n=\\frac{12}{18}\n=\\boxed{\\frac23}.\n\\]\nThe radical symbol gives the nonnegative square root, and the denominator is \\(18>0\\). The answer is choice \\(\\mathrm{B}\\).",
+"directNodeIds": [
+"cnm_075"
+],
+"legacyRouteId": "inside-out",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2026_AMC_8_Q09#inside-out",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2026_AMC_8_Q09.json",
+"sha256": "dd3d2a162120505581a906c5ec1311f6954a16fc3240937b22cb683253e5d684",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2026_AMC_8_Q09",
+"position": {
+"year": 2026,
+"level": "AMC 8",
+"batch": "NA",
+"number": 9
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2026_AMC_8_Q09",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "8c0fc99d391106000bddb2b1a181fd01b1935d29289565f9b6797735b33ff384",
+"contentHash": "6d63fb8753392ec78b306398f7f56b61cda89d761582086eb566e0fa82111938",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
 "cnm_075"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_074",
+"cnm_p168"
+],
+"routes": [
+{
+"id": "inside-out",
+"label": "Evaluate the square roots from inside outward",
+"nodeIds": [
+"cnm_075",
+"cnm_074",
+"cnm_p168"
+],
+"methodDirectNodeIds": {
+"inside-out": [
+"cnm_075"
+]
+},
+"contextNodeIds": [
+"cnm_074",
+"cnm_p168"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2026_AMC_8_Q10",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:prealgebra"
-],
-"skill": [],
 "year": 2026,
 "level": "AMC 8",
 "batch": "NA",
 "number": 10,
 "area": "Prealgebra",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:prealgebra"
+],
+"skill": [],
+"responseType": "choice",
 "question": "Five runners completed the grueling Xmarathon: Luke, Melina, Nico, Olympia, and Pedro.\n\n• Nico finished \\(11\\) minutes behind Pedro.\n\n• Olympia finished \\(2\\) minutes ahead of Melina, but \\(3\\) minutes behind Pedro.\n\n• Olympia finished \\(6\\) minutes ahead of Luke.\n\nWhich runner finished fourth?",
 "questionType": "text",
 "choices": {
@@ -759678,26 +764248,104 @@ window.AMC_BANK = {
 "D": "Olympia",
 "E": "Pedro"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "A",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"acceptedResponses": [
+"A"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Compare all finishing times with Pedro's so that every clue uses the same reference. Olympia finished \\(3\\) minutes after Pedro. Melina finished \\(2\\) minutes after Olympia, so she finished \\(3+2=5\\) minutes after Pedro. Luke finished \\(6\\) minutes after Olympia, so he finished \\(3+6=9\\) minutes after Pedro. Nico finished \\(11\\) minutes after Pedro.\n\nThe delays after Pedro are therefore\n\\[\n0<3<5<9<11.\n\\]\nA smaller delay means an earlier finish, so the order is Pedro, Olympia, Melina, Luke, Nico. Thus \\(\\boxed{\\text{Luke}}\\) finished fourth, choice \\(\\mathrm{A}\\).",
+"solutionMethods": [
+{
+"id": "common-reference",
+"label": "Compare everyone with Pedro",
+"explanation": "Compare all finishing times with Pedro's so that every clue uses the same reference. Olympia finished \\(3\\) minutes after Pedro. Melina finished \\(2\\) minutes after Olympia, so she finished \\(3+2=5\\) minutes after Pedro. Luke finished \\(6\\) minutes after Olympia, so he finished \\(3+6=9\\) minutes after Pedro. Nico finished \\(11\\) minutes after Pedro.\n\nThe delays after Pedro are therefore\n\\[\n0<3<5<9<11.\n\\]\nA smaller delay means an earlier finish, so the order is Pedro, Olympia, Melina, Luke, Nico. Thus \\(\\boxed{\\text{Luke}}\\) finished fourth, choice \\(\\mathrm{A}\\).",
+"directNodeIds": [
+"math:finite-constraint-deduction"
+],
+"legacyRouteId": "common-reference",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2026_AMC_8_Q10#common-reference",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2026_AMC_8_Q10.json",
+"sha256": "e378bbc3fc09fff9461ef6f2c88d2a1490ed036a0eeaf4a5444cdf98ff4fb317",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2026_AMC_8_Q10",
+"position": {
+"year": 2026,
+"level": "AMC 8",
+"batch": "NA",
+"number": 10
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2026_AMC_8_Q10",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "b9b90745a4268ed998f868ba39de0358730ce2c3183e0330fc58071e255554ae",
+"contentHash": "1f8157fd75214cf807bdc83bbbb86f4bed6c863faad809a9fd97fb548335e135",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
-"cnm_p029"
+"math:finite-constraint-deduction"
 ],
 "supportIds": [
-"cnm_p010"
+"cnm_p010",
+"cnm_p029"
 ],
-"routes": [],
+"routes": [
+{
+"id": "common-reference",
+"label": "Compare everyone with Pedro",
+"nodeIds": [
+"math:finite-constraint-deduction",
+"cnm_p010",
+"cnm_p029"
+],
+"methodDirectNodeIds": {
+"common-reference": [
+"math:finite-constraint-deduction"
+]
+},
+"contextNodeIds": [
+"cnm_p010",
+"cnm_p029"
+]
+}
+],
 "flags": []
 }
 },
@@ -760204,16 +764852,20 @@ window.AMC_BANK = {
 {
 "id": "2026_AMC_8_Q14",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:algebra"
-],
-"skill": [],
 "year": 2026,
 "level": "AMC 8",
 "batch": "NA",
 "number": 14,
 "area": "Algebra",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:algebra"
+],
+"skill": [],
+"responseType": "choice",
 "question": "Jami picked three equally spaced integer numbers on the number line. The sum of the first and the second numbers is \\(40,\\) while the sum of the second and third numbers is \\(60.\\) What is the sum of all three numbers?",
 "questionType": "text",
 "choices": {
@@ -760223,23 +764875,120 @@ window.AMC_BANK = {
 "D": "\\(85\\)",
 "E": "\\(90\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "B",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"acceptedResponses": [
+"B"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Equal spacing means the first number is as far below the middle number as the third is above it. Those equal differences cancel when the outer numbers are added, so their sum is twice the middle number.\n\nLet \\(m\\) be the middle number. Adding the two given sums counts each outer number once and the middle number twice. Hence\n\\[\n40+60=2m+2m=4m,\n\\]\nso \\(m=25\\). The sum of all three numbers is the outer sum plus the middle number:\n\\[\n2m+m=3\\cdot25=\\boxed{75}.\n\\]\nIndeed, the three numbers are \\(15,25,35\\), which are equally spaced integers with the required pair sums. The answer is choice \\(\\mathrm{B}\\).",
+"solutionMethods": [
+{
+"id": "balanced-middle",
+"label": "Use the balance around the middle number",
+"explanation": "Equal spacing means the first number is as far below the middle number as the third is above it. Those equal differences cancel when the outer numbers are added, so their sum is twice the middle number.\n\nLet \\(m\\) be the middle number. Adding the two given sums counts each outer number once and the middle number twice. Hence\n\\[\n40+60=2m+2m=4m,\n\\]\nso \\(m=25\\). The sum of all three numbers is the outer sum plus the middle number:\n\\[\n2m+m=3\\cdot25=\\boxed{75}.\n\\]\nIndeed, the three numbers are \\(15,25,35\\), which are equally spaced integers with the required pair sums. The answer is choice \\(\\mathrm{B}\\).",
+"directNodeIds": [
+"cnm_h203"
+],
+"legacyRouteId": "balanced-middle",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2026_AMC_8_Q14#balanced-middle",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2026_AMC_8_Q14.json",
+"sha256": "9dc23678980a6d71fdf5ac3e0e227d5e05cc7fc3cf3d50064450343c29f292a5",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "middle-number-relation",
+"label": "Use the middle-number relation",
+"directNodeIds": [
+"cnm_h203",
+"cnm_p145"
+],
+"legacyRouteId": "middle-number-relation",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L5424",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2026_AMC_8_Q14#middle-number-relation",
+"evidence": []
+}
+},
+{
+"id": "three-variable-system",
+"label": "Solve a linear system",
+"directNodeIds": [
+"cnm_093"
+],
+"legacyRouteId": "three-variable-system",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L5424",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2026_AMC_8_Q14#three-variable-system",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2026_AMC_8_Q14",
+"position": {
+"year": 2026,
+"level": "AMC 8",
+"batch": "NA",
+"number": 14
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2026_AMC_8_Q14",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "340d0ae0fb1323259b8c2b71fe34c6dd31d6b20e2e279f54103c1bc2b5742c34",
+"contentHash": "bef47746bfa621351d2f1fc915d76b0ff361fe67b7d834c7d5568b88fc7f3ce4",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_h203"
 ],
-"supportIds": [],
+"supportIds": [
+"cnm_p145"
+],
 "routes": [
 {
 "id": "middle-number-relation",
@@ -760247,13 +764996,42 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_h203",
 "cnm_p145"
+],
+"methodDirectNodeIds": {
+"middle-number-relation": [
+"cnm_h203",
+"cnm_p145"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "three-variable-system",
 "label": "Solve a linear system",
 "nodeIds": [
 "cnm_093"
+],
+"methodDirectNodeIds": {
+"three-variable-system": [
+"cnm_093"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "balanced-middle",
+"label": "Use the balance around the middle number",
+"nodeIds": [
+"cnm_h203",
+"cnm_p145"
+],
+"methodDirectNodeIds": {
+"balanced-middle": [
+"cnm_h203"
+]
+},
+"contextNodeIds": [
+"cnm_p145"
 ]
 }
 ],
@@ -760438,16 +765216,20 @@ window.AMC_BANK = {
 {
 "id": "2026_AMC_8_Q16",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:number-theory"
-],
-"skill": [],
 "year": 2026,
 "level": "AMC 8",
 "batch": "NA",
 "number": 16,
 "area": "Number Theory",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:number-theory"
+],
+"skill": [],
+"responseType": "choice",
 "question": "Consider all positive four-digit integers consisting of only even digits. What fraction of these integers are divisible by \\(4?\\)",
 "questionType": "text",
 "choices": {
@@ -760457,41 +765239,134 @@ window.AMC_BANK = {
 "D": "\\(\\dfrac{3}{5}\\)",
 "E": "\\(\\dfrac{3}{4}\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The even digits are \\(0,2,4,6,8\\). The thousands digit cannot be zero, so there are \\(4\\) choices for it and \\(5\\) choices for each remaining digit. Thus the total number of eligible integers is\n\\[\n4\\cdot5\\cdot5\\cdot5=500.\n\\]\nTo determine divisibility by \\(4\\), consider what each place contributes. The thousands and hundreds contributions are multiples of \\(4\\). Because the tens digit is even, its contribution is a multiple of \\(20\\), which is also divisible by \\(4\\). Therefore the whole number is divisible by \\(4\\) exactly when its units digit is divisible by \\(4\\).\n\nThe units digit must consequently be \\(0,4,\\) or \\(8\\). There are\n\\[\n4\\cdot5\\cdot5\\cdot3=300\n\\]\nsuch integers. Every eligible integer has exactly one sequence of four digits, so these products omit none and count none twice. The requested fraction is\n\\[\n\\frac{300}{500}=\\boxed{\\frac35},\n\\]\nwhich is choice \\(\\text{D}\\).",
+"solutionMethods": [
+{
+"id": "digit-choices",
+"label": "Count the allowed digit choices",
+"explanation": "The even digits are \\(0,2,4,6,8\\). The thousands digit cannot be zero, so there are \\(4\\) choices for it and \\(5\\) choices for each remaining digit. Thus the total number of eligible integers is\n\\[\n4\\cdot5\\cdot5\\cdot5=500.\n\\]\nTo determine divisibility by \\(4\\), consider what each place contributes. The thousands and hundreds contributions are multiples of \\(4\\). Because the tens digit is even, its contribution is a multiple of \\(20\\), which is also divisible by \\(4\\). Therefore the whole number is divisible by \\(4\\) exactly when its units digit is divisible by \\(4\\).\n\nThe units digit must consequently be \\(0,4,\\) or \\(8\\). There are\n\\[\n4\\cdot5\\cdot5\\cdot3=300\n\\]\nsuch integers. Every eligible integer has exactly one sequence of four digits, so these products omit none and count none twice. The requested fraction is\n\\[\n\\frac{300}{500}=\\boxed{\\frac35},\n\\]\nwhich is choice \\(\\text{D}\\).",
+"directNodeIds": [
+"cnm_p153",
+"cnm_h231"
+],
+"legacyRouteId": "digit-choices",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2026_AMC_8_Q16#digit-choices",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2026_AMC_8_Q16.json",
+"sha256": "2710e8c599261bc74b17fa702b6a6a050d6ba72c644a0facabebde522f277427",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2026_AMC_8_Q16",
+"position": {
+"year": 2026,
+"level": "AMC 8",
+"batch": "NA",
+"number": 16
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2026_AMC_8_Q16",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "f4d53fac758ea98ff801975d90c4e32577b3b04ce094e7a798f4de39cace69c0",
+"contentHash": "188b258a5053bd0e5aa3bfc0bb3f8aba5da738a89e9bc93db11013243d8a0b1f",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
-"math:modular-congruence",
+"cnm_p153",
 "cnm_h231"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_p055",
+"cnm_p156",
+"cnm_p165",
+"cnm_p168"
+],
+"routes": [
+{
+"id": "digit-choices",
+"label": "Count the allowed digit choices",
+"nodeIds": [
+"cnm_p153",
+"cnm_h231",
+"cnm_p055",
+"cnm_p156",
+"cnm_p165",
+"cnm_p168"
+],
+"methodDirectNodeIds": {
+"digit-choices": [
+"cnm_p153",
+"cnm_h231"
+]
+},
+"contextNodeIds": [
+"cnm_p055",
+"cnm_p156",
+"cnm_p165",
+"cnm_p168"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2026_AMC_8_Q17",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:counting-probability"
-],
-"skill": [],
 "year": 2026,
 "level": "AMC 8",
 "batch": "NA",
 "number": 17,
 "area": "Counting & Probability",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:counting-probability"
+],
+"skill": [],
+"responseType": "choice",
 "question": "Four students are seated in a row. They chat with the people sitting next to them, then rearrange themselves so that they are no longer seated next to any of the same people. How many rearrangements are possible?",
 "questionType": "text",
 "choices": {
@@ -760501,21 +765376,99 @@ window.AMC_BANK = {
 "D": "\\(12\\)",
 "E": "\\(24\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "A",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"acceptedResponses": [
+"A"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Label the students \\(A,B,C,D\\) in their original left-to-right order. The pairs \\(AB,BC,CD\\) may no longer sit together, regardless of which member of a pair sits on the left.\n\nStudent \\(B\\) cannot sit next to \\(A\\) or \\(C\\), so \\(B\\)'s only possible neighbor is \\(D\\). An interior seat has two different neighbors, so \\(B\\) must sit at an end. Similarly, \\(C\\)'s only possible neighbor is \\(A\\), so \\(C\\) must occupy the other end.\n\nIf \\(C\\) sits at the left end, \\(A\\) must sit next to \\(C\\), and \\(D\\) must sit next to \\(B\\). This forces the order\n\\[\nC,A,D,B.\n\\]\nIf \\(B\\) sits at the left end, the same restrictions force\n\\[\nB,D,A,C.\n\\]\nBoth orders use only the neighbor pairs \\(AC,AD,BD\\), all of which are allowed. Every valid arrangement must have \\(B\\) and \\(C\\) at opposite ends, and each choice of their ends forces exactly one order. Thus there are exactly \\(\\boxed{2}\\) rearrangements, choice \\(\\text{A}\\).",
+"solutionMethods": [
+{
+"id": "forced-endpoints",
+"label": "Find the students who must sit at the ends",
+"explanation": "Label the students \\(A,B,C,D\\) in their original left-to-right order. The pairs \\(AB,BC,CD\\) may no longer sit together, regardless of which member of a pair sits on the left.\n\nStudent \\(B\\) cannot sit next to \\(A\\) or \\(C\\), so \\(B\\)'s only possible neighbor is \\(D\\). An interior seat has two different neighbors, so \\(B\\) must sit at an end. Similarly, \\(C\\)'s only possible neighbor is \\(A\\), so \\(C\\) must occupy the other end.\n\nIf \\(C\\) sits at the left end, \\(A\\) must sit next to \\(C\\), and \\(D\\) must sit next to \\(B\\). This forces the order\n\\[\nC,A,D,B.\n\\]\nIf \\(B\\) sits at the left end, the same restrictions force\n\\[\nB,D,A,C.\n\\]\nBoth orders use only the neighbor pairs \\(AC,AD,BD\\), all of which are allowed. Every valid arrangement must have \\(B\\) and \\(C\\) at opposite ends, and each choice of their ends forces exactly one order. Thus there are exactly \\(\\boxed{2}\\) rearrangements, choice \\(\\text{A}\\).",
+"directNodeIds": [
+"cnm_h233",
+"math:finite-constraint-deduction"
+],
+"legacyRouteId": "forced-endpoints",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2026_AMC_8_Q17#forced-endpoints",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2026_AMC_8_Q17.json",
+"sha256": "818f28ee98f8468a801f634c2685691738423292ae3aa94ed82fb344ef4beea2",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "allowed-neighbor-path",
+"label": "Model allowed neighbor pairs",
+"directNodeIds": [
+"math:graph-models"
+],
+"legacyRouteId": "allowed-neighbor-path",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L5427",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2026_AMC_8_Q17#allowed-neighbor-path",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2026_AMC_8_Q17",
+"position": {
+"year": 2026,
+"level": "AMC 8",
+"batch": "NA",
+"number": 17
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2026_AMC_8_Q17",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "2d37741e93b958787af69cf3ec6eeafba09a9f61e3d83814c1831314b1417e09",
+"contentHash": "926c092407b44a413789320013d7b6461915973bd950a2c6b341a17b1cfa25b0",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
-"cnm_h235"
+"cnm_h233",
+"math:finite-constraint-deduction"
 ],
 "supportIds": [],
 "routes": [
@@ -760524,7 +765477,28 @@ window.AMC_BANK = {
 "label": "Model allowed neighbor pairs",
 "nodeIds": [
 "math:graph-models"
+],
+"methodDirectNodeIds": {
+"allowed-neighbor-path": [
+"math:graph-models"
 ]
+},
+"contextNodeIds": []
+},
+{
+"id": "forced-endpoints",
+"label": "Find the students who must sit at the ends",
+"nodeIds": [
+"cnm_h233",
+"math:finite-constraint-deduction"
+],
+"methodDirectNodeIds": {
+"forced-endpoints": [
+"cnm_h233",
+"math:finite-constraint-deduction"
+]
+},
+"contextNodeIds": []
 }
 ],
 "flags": []
@@ -760533,16 +765507,20 @@ window.AMC_BANK = {
 {
 "id": "2026_AMC_8_Q18",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:number-theory"
-],
-"skill": [],
 "year": 2026,
 "level": "AMC 8",
 "batch": "NA",
 "number": 18,
 "area": "Number Theory",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:number-theory"
+],
+"skill": [],
+"responseType": "choice",
 "question": "In how many ways can \\(60\\) be written as the sum of two or more consecutive odd positive integers that are arranged in increasing order?",
 "questionType": "text",
 "choices": {
@@ -760552,23 +765530,125 @@ window.AMC_BANK = {
 "D": "\\(4\\)",
 "E": "\\(5\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "B",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"acceptedResponses": [
+"B"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "An odd number of odd terms has an odd sum. Since \\(60\\) is even, any required representation must have an even number of terms.\n\nThere cannot be eight or more terms: even the smallest eight consecutive positive odd integers have sum\n\\[\n1+3+5+7+9+11+13+15=64>60.\n\\]\nStarting higher or adding more positive terms only increases this sum. Therefore the only possible numbers of terms are \\(2,4,6\\).\n\nLet \\(a\\) be the first term, which must be a positive odd integer. Consecutive odd terms increase by \\(2\\), so we can check all three lengths:\n\nFor two terms,\n\\[\na+(a+2)=60,\n\\]\nso \\(a=29\\), giving \\(29+31=60\\).\n\nFor four terms,\n\\[\na+(a+2)+(a+4)+(a+6)=4a+12=60,\n\\]\nso \\(a=12\\). This is even, so it does not give an allowed representation.\n\nFor six terms,\n\\[\n6a+(2+4+6+8+10)=6a+30=60,\n\\]\nso \\(a=5\\), giving\n\\[\n5+7+9+11+13+15=60.\n\\]\nEach possible length determines exactly one first term, and different lengths give different representations. Thus the list is complete and contains exactly \\(\\boxed{2}\\) ways, choice \\(\\text{B}\\).",
+"solutionMethods": [
+{
+"id": "bound-and-check-lengths",
+"label": "Limit the number of terms",
+"explanation": "An odd number of odd terms has an odd sum. Since \\(60\\) is even, any required representation must have an even number of terms.\n\nThere cannot be eight or more terms: even the smallest eight consecutive positive odd integers have sum\n\\[\n1+3+5+7+9+11+13+15=64>60.\n\\]\nStarting higher or adding more positive terms only increases this sum. Therefore the only possible numbers of terms are \\(2,4,6\\).\n\nLet \\(a\\) be the first term, which must be a positive odd integer. Consecutive odd terms increase by \\(2\\), so we can check all three lengths:\n\nFor two terms,\n\\[\na+(a+2)=60,\n\\]\nso \\(a=29\\), giving \\(29+31=60\\).\n\nFor four terms,\n\\[\na+(a+2)+(a+4)+(a+6)=4a+12=60,\n\\]\nso \\(a=12\\). This is even, so it does not give an allowed representation.\n\nFor six terms,\n\\[\n6a+(2+4+6+8+10)=6a+30=60,\n\\]\nso \\(a=5\\), giving\n\\[\n5+7+9+11+13+15=60.\n\\]\nEach possible length determines exactly one first term, and different lengths give different representations. Thus the list is complete and contains exactly \\(\\boxed{2}\\) ways, choice \\(\\text{B}\\).",
+"directNodeIds": [
+"math:integer-diophantine-equations",
+"cnm_p156"
+],
+"legacyRouteId": "bound-and-check-lengths",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2026_AMC_8_Q18#bound-and-check-lengths",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2026_AMC_8_Q18.json",
+"sha256": "c8ef6efa375d1760ea65598659d087d50895e413ab1f72733e20d99d998c74a5",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "number-of-terms",
+"label": "Bound and test the term count",
+"directNodeIds": [
+"cnm_h204",
+"cnm_p156"
+],
+"legacyRouteId": "number-of-terms",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L5428",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2026_AMC_8_Q18#number-of-terms",
+"evidence": []
+}
+},
+{
+"id": "difference-of-squares",
+"label": "Factor a difference of squares",
+"directNodeIds": [
+"cnm_h204",
+"cnm_152",
+"cnm_p153"
+],
+"legacyRouteId": "difference-of-squares",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L5428",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2026_AMC_8_Q18#difference-of-squares",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2026_AMC_8_Q18",
+"position": {
+"year": 2026,
+"level": "AMC 8",
+"batch": "NA",
+"number": 18
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2026_AMC_8_Q18",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "cdf2a00e59353fb92210347e0e495ba007a6f7f81bcc5bcee05a8967433e593f",
+"contentHash": "3393dbbce6f489cf7970481172c296a64fc68cabe97f7fd9beacd5952d60909e",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "math:integer-diophantine-equations"
 ],
-"supportIds": [],
+"supportIds": [
+"cnm_p156",
+"cnm_p145",
+"cnm_p060"
+],
 "routes": [
 {
 "id": "number-of-terms",
@@ -760576,7 +765656,14 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_h204",
 "cnm_p156"
+],
+"methodDirectNodeIds": {
+"number-of-terms": [
+"cnm_h204",
+"cnm_p156"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "difference-of-squares",
@@ -760585,6 +765672,34 @@ window.AMC_BANK = {
 "cnm_h204",
 "cnm_152",
 "cnm_p153"
+],
+"methodDirectNodeIds": {
+"difference-of-squares": [
+"cnm_h204",
+"cnm_152",
+"cnm_p153"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "bound-and-check-lengths",
+"label": "Limit the number of terms",
+"nodeIds": [
+"math:integer-diophantine-equations",
+"cnm_p156",
+"cnm_p145",
+"cnm_p060"
+],
+"methodDirectNodeIds": {
+"bound-and-check-lengths": [
+"math:integer-diophantine-equations",
+"cnm_p156"
+]
+},
+"contextNodeIds": [
+"cnm_p145",
+"cnm_p060"
 ]
 }
 ],
@@ -760594,16 +765709,20 @@ window.AMC_BANK = {
 {
 "id": "2026_AMC_8_Q19",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:prealgebra"
-],
-"skill": [],
 "year": 2026,
 "level": "AMC 8",
 "batch": "NA",
 "number": 19,
 "area": "Prealgebra",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:prealgebra"
+],
+"skill": [],
+"responseType": "choice",
 "question": "Miguel is walking with his dog, Luna. When they reach the entrance to a park, Miguel throws a ball straight ahead and continues to walk at a steady pace. Luna sprints toward the ball, which stops by a tree. As soon as the dog reaches the ball, she brings it back to Miguel. Luna runs \\(5\\) times faster than Miguel walks. What fraction of the distance between the entrance and the tree does Miguel cover by the time Luna brings him the ball?",
 "questionType": "text",
 "choices": {
@@ -760613,23 +765732,149 @@ window.AMC_BANK = {
 "D": "\\(\\dfrac{1}{3}\\)",
 "E": "\\(\\dfrac{2}{5}\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The useful observation is that Miguel and Luna travel for the same amount of time. Since Luna runs at five times Miguel's speed, her total distance is five times his total distance.\n\nLet \\(D>0\\) be the distance from the entrance to the tree. Luna travels \\(D\\) on her outward trip. When she brings the ball back, her return distance and Miguel's entire walking distance together make another \\(D\\): they cover the two parts from the entrance to their meeting point and from that point to the tree.\n\nThus their combined distance is \\(2D\\). Divide this combined distance into six equal parts. Luna travels five of the parts and Miguel travels one, so Miguel's distance is\n\\[\n\\frac{2D}{6}=\\frac D3.\n\\]\nTherefore Miguel covers \\(\\boxed{\\frac13}\\) of the entrance-to-tree distance, choice \\(\\text{D}\\).",
+"solutionMethods": [
+{
+"id": "combined-distance",
+"label": "Compare their total distances",
+"explanation": "The useful observation is that Miguel and Luna travel for the same amount of time. Since Luna runs at five times Miguel's speed, her total distance is five times his total distance.\n\nLet \\(D>0\\) be the distance from the entrance to the tree. Luna travels \\(D\\) on her outward trip. When she brings the ball back, her return distance and Miguel's entire walking distance together make another \\(D\\): they cover the two parts from the entrance to their meeting point and from that point to the tree.\n\nThus their combined distance is \\(2D\\). Divide this combined distance into six equal parts. Luna travels five of the parts and Miguel travels one, so Miguel's distance is\n\\[\n\\frac{2D}{6}=\\frac D3.\n\\]\nTherefore Miguel covers \\(\\boxed{\\frac13}\\) of the entrance-to-tree distance, choice \\(\\text{D}\\).",
+"directNodeIds": [
+"cnm_047",
+"cnm_p213",
+"cnm_p187"
+],
+"legacyRouteId": "combined-distance",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2026_AMC_8_Q19#combined-distance",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2026_AMC_8_Q19.json",
+"sha256": "c2b6bc2b56f21ab9da68eb2202980229310e3743875902e6286c420bcef5b520",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "two-travel-stages",
+"label": "Track the outward trip and return",
+"explanation": "We can choose convenient measurement units because changing units does not change the requested fraction. Measure the entrance-to-tree distance as \\(30\\) distance units, and choose a time unit in which Miguel walks \\(1\\) distance unit. Luna then runs \\(5\\) distance units per time unit.\n\nLuna reaches the tree after\n\\[\n30\\div5=6\n\\]\ntime units. Miguel has then walked \\(6\\) distance units, leaving a gap of \\(30-6=24\\) between them.\n\nOn Luna's return they move toward each other. In each time unit, Luna closes \\(5\\) units of the gap and Miguel closes \\(1\\), so the gap shrinks by \\(6\\) units. They meet after another\n\\[\n24\\div6=4\n\\]\ntime units. Miguel has walked for \\(6+4=10\\) time units altogether, covering \\(10\\) distance units. The requested fraction is therefore\n\\[\n\\frac{10}{30}=\\boxed{\\frac13},\n\\]\nchoice \\(\\text{D}\\).",
+"directNodeIds": [
+"cnm_047"
+],
+"legacyRouteId": "two-travel-stages",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2026_AMC_8_Q19#two-travel-stages",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2026_AMC_8_Q19.json",
+"sha256": "c2b6bc2b56f21ab9da68eb2202980229310e3743875902e6286c420bcef5b520",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "total-distance-ratio",
+"label": "Compare total distances",
+"directNodeIds": [
+"cnm_p213",
+"cnm_042"
+],
+"legacyRouteId": "total-distance-ratio",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L5429",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2026_AMC_8_Q19#total-distance-ratio",
+"evidence": []
+}
+},
+{
+"id": "outbound-and-return",
+"label": "Separate the two travel stages",
+"directNodeIds": [
+"cnm_047",
+"cnm_p111"
+],
+"legacyRouteId": "outbound-and-return",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L5429",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2026_AMC_8_Q19#outbound-and-return",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2026_AMC_8_Q19",
+"position": {
+"year": 2026,
+"level": "AMC 8",
+"batch": "NA",
+"number": 19
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2026_AMC_8_Q19",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "b17d0892f497997d2b1e2a9428a6611439611aba166ad16531f7190831ebeedd",
+"contentHash": "26b96cffbc043daf2e9ff4426863bcd883dc4f8a637cf84af8b53747f8e36cbc",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_047"
 ],
-"supportIds": [],
+"supportIds": [
+"cnm_p111",
+"cnm_p185",
+"cnm_p168"
+],
 "routes": [
 {
 "id": "total-distance-ratio",
@@ -760637,7 +765882,14 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_p213",
 "cnm_042"
+],
+"methodDirectNodeIds": {
+"total-distance-ratio": [
+"cnm_p213",
+"cnm_042"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "outbound-and-return",
@@ -760645,6 +765897,57 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_047",
 "cnm_p111"
+],
+"methodDirectNodeIds": {
+"outbound-and-return": [
+"cnm_047",
+"cnm_p111"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "combined-distance",
+"label": "Compare their total distances",
+"nodeIds": [
+"cnm_047",
+"cnm_p213",
+"cnm_p187",
+"cnm_p111",
+"cnm_p185",
+"cnm_p168"
+],
+"methodDirectNodeIds": {
+"combined-distance": [
+"cnm_047",
+"cnm_p213",
+"cnm_p187"
+]
+},
+"contextNodeIds": [
+"cnm_p111",
+"cnm_p185",
+"cnm_p168"
+]
+},
+{
+"id": "two-travel-stages",
+"label": "Track the outward trip and return",
+"nodeIds": [
+"cnm_047",
+"cnm_p111",
+"cnm_p185",
+"cnm_p168"
+],
+"methodDirectNodeIds": {
+"two-travel-stages": [
+"cnm_047"
+]
+},
+"contextNodeIds": [
+"cnm_p111",
+"cnm_p185",
+"cnm_p168"
 ]
 }
 ],
@@ -760654,16 +765957,20 @@ window.AMC_BANK = {
 {
 "id": "2026_AMC_8_Q20",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:counting-probability"
-],
-"skill": [],
 "year": 2026,
 "level": "AMC 8",
 "batch": "NA",
 "number": 20,
 "area": "Counting & Probability",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:counting-probability"
+],
+"skill": [],
+"responseType": "choice",
 "question": "The land of Catania uses gold coins and silver coins. Gold coins are \\(1\\) mm thick and silver coins are \\(3\\) mm thick. In how many ways can Taylor make a stack of coins that is \\(8\\) mm tall using any arrangement of gold and silver coins, assuming order matters?",
 "questionType": "text",
 "choices": {
@@ -760673,17 +765980,101 @@ window.AMC_BANK = {
 "D": "\\(13\\)",
 "E": "\\(16\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Count separately according to the number of silver coins, since that determines how many gold coins are needed. Three silver coins would already be \\(9\\) mm tall, so there can only be zero, one, or two.\n\nWith no silver coins, the stack consists of eight gold coins. There is \\(1\\) arrangement.\n\nWith one silver coin, the remaining \\(5\\) mm requires five gold coins. There are six coins altogether, and the silver coin can occupy any of the six positions, giving \\(6\\) arrangements.\n\nWith two silver coins, the remaining \\(2\\) mm requires two gold coins. Number the four coin positions from bottom to top. The silver positions can be\n\\[\n(1,2),\\ (1,3),\\ (1,4),\\ (2,3),\\ (2,4),\\ (3,4).\n\\]\nThese are all six pairs of positions: the lower silver coin is in position \\(1\\), \\(2\\), or \\(3\\), giving three, two, or one choices for the higher silver coin. Each pair determines exactly one stack because the other positions contain gold coins.\n\nEvery valid stack belongs to exactly one of these three cases. Thus the total is\n\\[\n1+6+6=\\boxed{13},\n\\]\nwhich is choice \\(\\text{D}\\).",
+"solutionMethods": [
+{
+"id": "silver-count-cases",
+"label": "Count by the number of silver coins",
+"explanation": "Count separately according to the number of silver coins, since that determines how many gold coins are needed. Three silver coins would already be \\(9\\) mm tall, so there can only be zero, one, or two.\n\nWith no silver coins, the stack consists of eight gold coins. There is \\(1\\) arrangement.\n\nWith one silver coin, the remaining \\(5\\) mm requires five gold coins. There are six coins altogether, and the silver coin can occupy any of the six positions, giving \\(6\\) arrangements.\n\nWith two silver coins, the remaining \\(2\\) mm requires two gold coins. Number the four coin positions from bottom to top. The silver positions can be\n\\[\n(1,2),\\ (1,3),\\ (1,4),\\ (2,3),\\ (2,4),\\ (3,4).\n\\]\nThese are all six pairs of positions: the lower silver coin is in position \\(1\\), \\(2\\), or \\(3\\), giving three, two, or one choices for the higher silver coin. Each pair determines exactly one stack because the other positions contain gold coins.\n\nEvery valid stack belongs to exactly one of these three cases. Thus the total is\n\\[\n1+6+6=\\boxed{13},\n\\]\nwhich is choice \\(\\text{D}\\).",
+"directNodeIds": [
+"cnm_h230",
+"cnm_h236"
+],
+"legacyRouteId": "solution:silver-count-cases:8685df3ab112",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2026_AMC_8_Q20#silver-count-cases",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2026_AMC_8_Q20.json",
+"sha256": "934b262095f99c426c64c8e28bef20ad12abf66c9587c995aa506cada9a5fb61",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "height-recurrence",
+"label": "Build counts from shorter stacks",
+"explanation": "A stack ends with either a gold coin or a silver coin. Removing that top coin leaves a shorter stack, so we can use counts for smaller heights.\n\nLet \\(a_h\\) be the number of arrangements of height \\(h\\) mm. Set \\(a_0=1\\), representing the empty stack. Also, \\(a_1=a_2=1\\), since these heights allow only gold coins.\n\nFor \\(h\\geq3\\), a stack with a gold coin on top comes from exactly one stack of height \\(h-1\\). A stack with a silver coin on top comes from exactly one stack of height \\(h-3\\). Conversely, adding the indicated top coin to any such shorter stack produces a valid stack. These two cases are disjoint and include every stack, so\n\\[\na_h=a_{h-1}+a_{h-3}.\n\\]\nWe now calculate successively:\n\\[\n\\begin{aligned}\na_3&=1+1=2,\\\\\na_4&=2+1=3,\\\\\na_5&=3+1=4,\\\\\na_6&=4+2=6,\\\\\na_7&=6+3=9,\\\\\na_8&=9+4=13.\n\\end{aligned}\n\\]\nTherefore there are \\(\\boxed{13}\\) arrangements, choice \\(\\text{D}\\).",
+"directNodeIds": [
+"cnm_h230",
+"math:recursive-counting-probability"
+],
+"legacyRouteId": "solution:height-recurrence:8685df3ab112",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2026_AMC_8_Q20#height-recurrence",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2026_AMC_8_Q20.json",
+"sha256": "934b262095f99c426c64c8e28bef20ad12abf66c9587c995aa506cada9a5fb61",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2026_AMC_8_Q20",
+"position": {
+"year": 2026,
+"level": "AMC 8",
+"batch": "NA",
+"number": 20
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2026_AMC_8_Q20",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "369c9a3d6875f3efbf2456792e110ce7832240868c96b09cdef7a6d25336d75f",
+"contentHash": "bfb515d648c1efb95cfc84746eb4a4d70236127af948834b7ecc813d1aa1c80b",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -760703,6 +766094,39 @@ window.AMC_BANK = {
 "label": "Recur on stack height",
 "nodeIds": [
 "math:recursive-counting-probability"
+]
+},
+{
+"id": "solution:silver-count-cases:8685df3ab112",
+"label": "Count by the number of silver coins",
+"nodeIds": [
+"cnm_h230",
+"cnm_h236"
+],
+"methodDirectNodeIds": {
+"silver-count-cases": [
+"cnm_h230",
+"cnm_h236"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "solution:height-recurrence:8685df3ab112",
+"label": "Build counts from shorter stacks",
+"nodeIds": [
+"cnm_h230",
+"math:recursive-counting-probability",
+"cnm_h200"
+],
+"methodDirectNodeIds": {
+"height-recurrence": [
+"cnm_h230",
+"math:recursive-counting-probability"
+]
+},
+"contextNodeIds": [
+"cnm_h200"
 ]
 }
 ],
@@ -760853,16 +766277,20 @@ window.AMC_BANK = {
 {
 "id": "2026_AMC_8_Q22",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:counting-probability"
-],
-"skill": [],
 "year": 2026,
 "level": "AMC 8",
 "batch": "NA",
 "number": 22,
 "area": "Counting & Probability",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:counting-probability"
+],
+"skill": [],
+"responseType": "choice",
 "question": "The integers from \\(1\\) through \\(25\\) are arbitrarily separated into five groups of \\(5\\) numbers each. The median of each group is identified. Let \\(M\\) equal the median of the five medians. What is the least possible value of \\(M?\\)",
 "questionType": "text",
 "choices": {
@@ -760872,25 +766300,105 @@ window.AMC_BANK = {
 "D": "\\(13\\)",
 "E": "\\(14\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "A",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"acceptedResponses": [
+"A"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The median of five numbers is the third number when they are put in increasing order. Applying this fact twice tells us how many of the original integers must be at most \\(M\\).\n\nAt least three of the five group medians are at most \\(M\\). In each of those groups, the two numbers below its median and the median itself are all at most \\(M\\). Since the groups share no numbers, this gives at least\n\\[\n3\\cdot3=9\n\\]\ndistinct integers at most \\(M\\). There are only eight positive integers below \\(9\\), so \\(M\\geq9\\).\n\nTo show that \\(9\\) is possible, use the following five groups, each displayed in increasing order:\n\\[\n\\begin{gathered}\n\\{1,2,3,10,11\\},\\\\\n\\{4,5,6,12,13\\},\\\\\n\\{7,8,9,14,15\\},\\\\\n\\{16,17,18,19,20\\},\\\\\n\\{21,22,23,24,25\\}.\n\\end{gathered}\n\\]\nThese groups use every integer from \\(1\\) through \\(25\\) exactly once. Their medians are \\(3,6,9,18,23\\), whose median is \\(9\\).\n\nThus the least possible value is \\(\\boxed{9}\\), choice \\(\\text{A}\\).",
+"solutionMethods": [
+{
+"id": "median-bound-and-construction",
+"label": "Bound the median and attain the bound",
+"explanation": "The median of five numbers is the third number when they are put in increasing order. Applying this fact twice tells us how many of the original integers must be at most \\(M\\).\n\nAt least three of the five group medians are at most \\(M\\). In each of those groups, the two numbers below its median and the median itself are all at most \\(M\\). Since the groups share no numbers, this gives at least\n\\[\n3\\cdot3=9\n\\]\ndistinct integers at most \\(M\\). There are only eight positive integers below \\(9\\), so \\(M\\geq9\\).\n\nTo show that \\(9\\) is possible, use the following five groups, each displayed in increasing order:\n\\[\n\\begin{gathered}\n\\{1,2,3,10,11\\},\\\\\n\\{4,5,6,12,13\\},\\\\\n\\{7,8,9,14,15\\},\\\\\n\\{16,17,18,19,20\\},\\\\\n\\{21,22,23,24,25\\}.\n\\end{gathered}\n\\]\nThese groups use every integer from \\(1\\) through \\(25\\) exactly once. Their medians are \\(3,6,9,18,23\\), whose median is \\(9\\).\n\nThus the least possible value is \\(\\boxed{9}\\), choice \\(\\text{A}\\).",
+"directNodeIds": [
+"cnm_213",
+"math:extremal-principle"
+],
+"legacyRouteId": "median-bound-and-construction",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2026_AMC_8_Q22#median-bound-and-construction",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2026_AMC_8_Q22.json",
+"sha256": "d94a3ead920c727d222a693815774511668521a263ac5b9dbf3e25c8bee8529d",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2026_AMC_8_Q22",
+"position": {
+"year": 2026,
+"level": "AMC 8",
+"batch": "NA",
+"number": 22
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2026_AMC_8_Q22",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "368a9b8b43fb30a32521ababbc719c5aadab1d4a5f9b602ae4bd51f055434603",
+"contentHash": "545f2a54f9138aa3518e2bdc30af82b8d360563f4815c663f246c4d644ddef5c",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_213",
 "math:extremal-principle"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_p054"
+],
+"routes": [
+{
+"id": "median-bound-and-construction",
+"label": "Bound the median and attain the bound",
+"nodeIds": [
+"cnm_213",
+"math:extremal-principle",
+"cnm_p054"
+],
+"methodDirectNodeIds": {
+"median-bound-and-construction": [
+"cnm_213",
+"math:extremal-principle"
+]
+},
+"contextNodeIds": [
+"cnm_p054"
+]
+}
+],
 "flags": []
 }
 },
@@ -761047,16 +766555,20 @@ window.AMC_BANK = {
 {
 "id": "2026_AMC_8_Q24",
 "bank": "amc",
-"responseType": "choice",
-"domain": [
-"domain:number-theory"
-],
-"skill": [],
 "year": 2026,
 "level": "AMC 8",
 "batch": "NA",
 "number": 24,
 "area": "Number Theory",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [
+"domain:number-theory"
+],
+"skill": [],
+"responseType": "choice",
 "question": "The notation \\(n!\\) (read “\\(n\\) factorial”) is defined as the product of the first \\(n\\) positive integers. (For example, \\(3! = 1 \\cdot 2 \\cdot 3 = 6.\\)) Define the superfactorial of a positive integer, denoted by \\(n^!,\\) to be the product of the factorials of the first \\(n\\) integers. (For example, \\(3^! = 1! \\cdot 2! \\cdot 3! = 12.\\)) How many factors of \\(7\\) appear in the prime factorization of \\(51^!,\\) the superfactorial of \\(51?\\)",
 "questionType": "text",
 "choices": {
@@ -761066,30 +766578,135 @@ window.AMC_BANK = {
 "D": "\\(168\\)",
 "E": "\\(171\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "E",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"acceptedResponses": [
+"E"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Expanding \\(51^!=1!\\cdot2!\\cdots51!\\) repeats many integer factors. We can count the factors of \\(7\\) by tracking those repeated integers instead of calculating the enormous product.\n\nFor example, the integer \\(7\\) appears once in every factorial from \\(7!\\) through \\(51!\\). That is\n\\[\n51-7+1=45\n\\]\nappearances. More generally, an integer \\(k\\) appears once in each factorial from \\(k!\\) through \\(51!\\), for \\(52-k\\) appearances.\n\nOnly multiples of \\(7\\) contribute factors of \\(7\\). The multiples at most \\(51\\), with their numbers of appearances, are\n\\[\n\\begin{aligned}\n7&:\\ 45, &14&:\\ 38,\\\\\n21&:\\ 31, &28&:\\ 24,\\\\\n35&:\\ 17, &42&:\\ 10,\\\\\n49&:\\ 3.\n\\end{aligned}\n\\]\nEach occurrence of the first six multiples contributes exactly one factor of \\(7\\). Each occurrence of \\(49=7^2\\) contributes two. There are no other multiples of \\(7\\) at most \\(51\\), so these contributions include every factor of \\(7\\) in the expanded product, with its correct multiplicity.\n\nThe total number is therefore\n\\[\n\\begin{aligned}\n&(45+38+31)+(24+17+10)+2\\cdot3\\\\\n&\\qquad=114+51+6=\\boxed{171}.\n\\end{aligned}\n\\]\nThe answer is choice \\(\\text{E}\\).",
+"solutionMethods": [
+{
+"id": "count-repeated-multiples",
+"label": "Count how often each multiple of seven appears",
+"explanation": "Expanding \\(51^!=1!\\cdot2!\\cdots51!\\) repeats many integer factors. We can count the factors of \\(7\\) by tracking those repeated integers instead of calculating the enormous product.\n\nFor example, the integer \\(7\\) appears once in every factorial from \\(7!\\) through \\(51!\\). That is\n\\[\n51-7+1=45\n\\]\nappearances. More generally, an integer \\(k\\) appears once in each factorial from \\(k!\\) through \\(51!\\), for \\(52-k\\) appearances.\n\nOnly multiples of \\(7\\) contribute factors of \\(7\\). The multiples at most \\(51\\), with their numbers of appearances, are\n\\[\n\\begin{aligned}\n7&:\\ 45, &14&:\\ 38,\\\\\n21&:\\ 31, &28&:\\ 24,\\\\\n35&:\\ 17, &42&:\\ 10,\\\\\n49&:\\ 3.\n\\end{aligned}\n\\]\nEach occurrence of the first six multiples contributes exactly one factor of \\(7\\). Each occurrence of \\(49=7^2\\) contributes two. There are no other multiples of \\(7\\) at most \\(51\\), so these contributions include every factor of \\(7\\) in the expanded product, with its correct multiplicity.\n\nThe total number is therefore\n\\[\n\\begin{aligned}\n&(45+38+31)+(24+17+10)+2\\cdot3\\\\\n&\\qquad=114+51+6=\\boxed{171}.\n\\end{aligned}\n\\]\nThe answer is choice \\(\\text{E}\\).",
+"directNodeIds": [
+"math:prime-valuations-factorials",
+"math:double-counting"
+],
+"legacyRouteId": "count-repeated-multiples",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2026_AMC_8_Q24#count-repeated-multiples",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-amc8final/2026_AMC_8_Q24.json",
+"sha256": "7357e660a2afa472263672d9c04eead4bacebeee0e7d1c062e75d69299a5968c",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "factorial-valuations",
+"label": "Sum factorial valuations",
+"directNodeIds": [
+"math:prime-valuations-factorials"
+],
+"legacyRouteId": "factorial-valuations",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L5434",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2026_AMC_8_Q24#factorial-valuations",
+"evidence": []
+}
+},
+{
+"id": "repeated-integer-factors",
+"label": "Count repeated integer factors",
+"directNodeIds": [
+"math:double-counting",
+"cnm_h204"
+],
+"legacyRouteId": "repeated-integer-factors",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d36b5a2937013ce678c99fef5c6d7237e0c63bc1/database/knowledge-graph/source/mappings.jsonl#L5434",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2026_AMC_8_Q24#repeated-integer-factors",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2026_AMC_8_Q24",
+"position": {
+"year": 2026,
+"level": "AMC 8",
+"batch": "NA",
+"number": 24
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2026_AMC_8_Q24",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "dcc4115ece475ec6b5d745f5ce71b8e0d542f9e634ae39dbdf94627be37bf121",
+"contentHash": "92c39bdcf64f8d05d5f8e14c35858b98c227926314b2194e10b76b952960a960",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "math:prime-valuations-factorials"
 ],
-"supportIds": [],
+"supportIds": [
+"math:factorial-notation",
+"math:prime-factorization"
+],
 "routes": [
 {
 "id": "factorial-valuations",
 "label": "Sum factorial valuations",
 "nodeIds": [
 "math:prime-valuations-factorials"
+],
+"methodDirectNodeIds": {
+"factorial-valuations": [
+"math:prime-valuations-factorials"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "repeated-integer-factors",
@@ -761097,6 +766714,33 @@ window.AMC_BANK = {
 "nodeIds": [
 "math:double-counting",
 "cnm_h204"
+],
+"methodDirectNodeIds": {
+"repeated-integer-factors": [
+"math:double-counting",
+"cnm_h204"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "count-repeated-multiples",
+"label": "Count how often each multiple of seven appears",
+"nodeIds": [
+"math:prime-valuations-factorials",
+"math:double-counting",
+"math:factorial-notation",
+"math:prime-factorization"
+],
+"methodDirectNodeIds": {
+"count-repeated-multiples": [
+"math:prime-valuations-factorials",
+"math:double-counting"
+]
+},
+"contextNodeIds": [
+"math:factorial-notation",
+"math:prime-factorization"
 ]
 }
 ],

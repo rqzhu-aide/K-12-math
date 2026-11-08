@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2025_AMC_8_Q20",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "3acfe31f7a2275563ed22cbd8c1d6a26ebce2667dabe7d53f42c5479f5d4955a",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "f9ff33feba052b638fb7fb487ea2469918864c19bcf643882c485423e7f8e41a",
+  "solutionFigureHashes": {},
+  "candidateHash": "604947f2b51535586d86fefa60fe7e49ab84cfaf70a246c0bbc1d9a2f94511ef",
+  "candidate": {
+    "questionId": "2025_AMC_8_Q20",
+    "derivedAnswer": "Approximately 4/7, choice A",
+    "answerStatus": "matches",
+    "answerReason": "In every complete three-turn round, Sarika, Dev, and Rajiv eat in the ratio 4:2:1. The uneaten amount repeatedly shrinks to one eighth, so Sarika's share approaches 4/7. The unspecified visibility cutoff prevents an exact finite-stop fraction.",
+    "methods": [
+      {
+        "id": "ratio-in-each-round",
+        "label": "Compare the shares in each round",
+        "explanation": "Group the turns into rounds containing one turn each for Sarika, Dev, and Rajiv. If a round starts with an amount \\(R\\) of cheese, they eat\n\\[\n\\frac{R}{2},\\qquad \\frac{R}{4},\\qquad \\frac{R}{8},\n\\]\nrespectively. These amounts are in the ratio \\(4:2:1\\). Thus Sarika eats \\(4\\) of the \\(4+2+1=7\\) equal parts consumed in every complete round, or \\(4/7\\) of that round's eaten cheese.\n\nCombining complete rounds preserves this same share: Sarika's amounts are always \\(4/7\\) of the corresponding amounts eaten by everyone together. Each round leaves only \\(1/8\\) of its starting cheese. Repeating the rounds makes the leftover as small as desired, so the share of the original block eaten by Sarika approaches \\(4/7\\).\n\nFor the actual stopping point, imagine continuing the turns afterward. Sarika could gain no more than all the tiny amount left when they stopped. Therefore her finite total is close to the continuing-process value, though its exact value depends on the visibility cutoff. She eats approximately \\(\\boxed{\\frac47}\\), choice \\(\\text{A}\\).",
+        "nodeIds": [
+          "cnm_p187"
+        ],
+        "prerequisiteIds": [
+          "cnm_p179",
+          "cnm_p185",
+          "cnm_p186"
+        ],
+        "levelReason": "This derives the cumulative share using elementary fractions and ratios, with a shrinking-leftover argument instead of an infinite-series formula."
+      },
+      {
+        "id": "restart-after-one-round",
+        "label": "Use the repeated situation",
+        "explanation": "To estimate the total, imagine continuing the turns indefinitely. The remaining cheese is repeatedly halved, so it becomes as small as desired. Let \\(x\\) be the fraction of a starting block that Sarika eventually eats in this continuing process.\n\nSarika first eats \\(1/2\\) of the block. After Dev and Rajiv take their turns, \\(1/8\\) of the original block remains, and it is Sarika's turn again. The sharing rule now repeats on this smaller amount. Since every serving scales with the starting amount, Sarika eventually eats the same fraction \\(x\\) of that remaining \\(1/8\\). Consequently,\n\\[\nx=\\frac12+\\frac{x}{8}.\n\\]\nMultiplying every term by \\(8\\) gives\n\\[\n8x=4+x,\\qquad 7x=4,\\qquad x=\\frac47.\n\\]\nIf they stop with a tiny amount remaining, continuing could add at most that entire amount to Sarika's total. Her actual share is therefore approximately \\(\\boxed{\\frac47}\\), choice \\(\\text{A}\\); an exact finite total would require the stopping cutoff.",
+        "nodeIds": [
+          "cnm_p146",
+          "cnm_044"
+        ],
+        "prerequisiteIds": [
+          "cnm_p179",
+          "cnm_040"
+        ],
+        "levelReason": "The repeated situation gives a simple linear equation. Its derivation and denominator clearing require only elementary fraction reasoning and school algebra."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_p179"
+    ],
+    "annotationRationale": "The route-neutral target is determining a cumulative share in repeated proportional allocation while accounting for a negligible remainder. The catalog lacks that elementary target, so it is proposed separately rather than assigning the formal infinite-geometric-series procedure to methods that do not use it. Both methods use fraction-of-a-quantity reasoning, cnm_p179. The first method uses proportional allocation, cnm_p187, with ratio interpretation and simplification as local prerequisites. The second models the repeated situation with an equation, cnm_p146, and clears numerical denominators, cnm_044. These alternatives do not make both ratio work and equation solving required.",
+    "needsNewNodes": [
+      {
+        "name": "Cumulative shares in repeated proportional allocation",
+        "description": "Determine total shares when a fixed cycle repeatedly allocates fractions of the remaining quantity. Use constant within-cycle ratios or a justified repeated-situation equation, and explain why a shrinking leftover permits an approximate total.",
+        "reason": "The catalog includes fraction operations, ratio allocation, equation modeling, and a formal infinite-series procedure, but no elementary route-neutral target for cumulative sharing with a negligible remainder."
+      }
+    ],
+    "limitations": [
+      "The visibility cutoff is unspecified. The value 4/7 is the continuing-process share and an approximation to the finite-stop share, not an exact finite-stop fraction."
+    ]
+  },
+  "review": {
+    "questionId": "2025_AMC_8_Q20",
+    "decision": "accept",
+    "mathematicalCheck": "Each complete round allocates R/2, R/4, R/8 in ratio 4:2:1 and leaves R/8, so Sarika's cumulative share approaches 4/7. Independently, restarting after a round gives x=1/2+x/8 and x=4/7. At any finite stop, her additional possible consumption is bounded by the remaining cheese, justifying the qualified approximation.",
+    "levelCheck": "Elementary ratios, shrinking remainders, and the explicitly derived simple equation fit AMC 8 without requiring an infinite-series formula.",
+    "methodDistinctness": "The constant allocation ratio and repeated-situation equation provide distinct, useful elementary approaches.",
+    "annotationCheck": "Shared fraction multiplication and method-local ratio and equation nodes match the explanations. The proposed missing target honestly supports leaving assessedIds empty, and the unspecified stopping cutoff remains explicit.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "ratio-in-each-round": "ratio-in-each-round",
+    "restart-after-one-round": "restart-after-one-round"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "d4c48c0e51c47bb1e904c37822e57eb991deaf1e6e5d1de39ba8c11aea351298",
+    "acceptedAt": "2026-11-08T16:51:06.765711+00:00",
+    "inputHash": "b1aa59bc2b53acc502fed4f374a275d2a03453081eb3cce0f0c9683c0a2a1a2b",
+    "authorInputHash": "d3a35b81e6bab37727e4a5560bde3ea9a591a678be9731858d1e1b5187d49988",
+    "reviewInputHash": "1921664827e97d73138517e3fd90c8d7ffb909b87013ca424914fe9728718c37",
+    "authorResponseHash": "348eefd48a1da91779a0d048e23046ce209cfb4e22b04a2623b9e3882ed5d920",
+    "reviewerResponseHash": "c1328f3a20407b6c8102828b32d3de615ad5cefd45b63787fe85107abd6dbdbe",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

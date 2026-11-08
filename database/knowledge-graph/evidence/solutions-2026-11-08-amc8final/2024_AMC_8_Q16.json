@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2024_AMC_8_Q16",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "2883a6b6f56456affdc769989611d2c56e674ad515b5696cc1f74fe19732a07e",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "1b5b6247611f9ea6f0bc8e6c2f3c35c5eae99c9cbba84df2074a488c087939be",
+  "solutionFigureHashes": {},
+  "candidateHash": "3d7eab069860356c5d63ed3340673e64c03dcc6a1f54ebb176d78e13fd3291e5",
+  "candidate": {
+    "questionId": "2024_AMC_8_Q16",
+    "derivedAnswer": "11 rows and columns in total, choice D",
+    "answerStatus": "matches",
+    "answerReason": "There are 27 multiples of 3. If they occupy r rows and c columns, their cells fit within rc intersections. Ten or fewer rows and columns provide at most 25 such intersections. Placing the multiples in 27 cells of a 4-by-7 block attains a total of 11.",
+    "methods": [
+      {
+        "id": "capacity-and-construction",
+        "label": "Bound the available cells, then attain the bound",
+        "explanation": "A row or column has a product divisible by \\(3\\) exactly when it contains a multiple of \\(3\\), because \\(3\\) is prime. Among the numbers \\(1\\) through \\(81\\), there are \\(81\\div3=27\\) multiples of \\(3\\). We therefore want to place these \\(27\\) numbers in as few rows and columns altogether as possible.\n\nSuppose they occupy \\(r\\) rows and \\(c\\) columns. Each of their cells is an intersection of one of those rows and one of those columns. There are \\(c\\) such cells in each of the \\(r\\) rows, with no cell counted twice, so\n\\[\nrc\\ge27.\n\\]\nCould \\(r+c\\) be at most \\(10\\)? Interchanging the roles of rows and columns if needed, take \\(r\\le c\\). Both are positive, so \\(r\\) must be one of \\(1,2,3,4,5\\). Since \\(c\\le10-r\\), the corresponding upper bounds for \\(rc\\) are\n\\[\n1\\cdot9=9,\\quad2\\cdot8=16,\\quad3\\cdot7=21,\n\\]\n\\[\n4\\cdot6=24,\\quad5\\cdot5=25.\n\\]\nThese cases cover every possibility with \\(r+c\\le10\\), and none provides the \\(27\\) required cells. Thus at least \\(11\\) rows and columns must qualify.\n\nTo attain \\(11\\), choose a block of \\(4\\) rows and \\(7\\) columns. Put \\(21\\) multiples of \\(3\\) in its first three complete rows, and the remaining \\(6\\) multiples in six cells of its fourth row. Fill every other cell of the grid with the \\(54\\) nonmultiples of \\(3\\). Every one of the selected four rows and seven columns contains a multiple of \\(3\\), and no other row or column does. Hence the least total is\n\\[\n4+7=\\boxed{11},\n\\]\nchoice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_p038"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_p157"
+        ],
+        "levelReason": "The proof uses elementary divisibility, equal-row cell counting, five small integer cases, and an explicit arrangement. It stays within AMC 8 arithmetic and spatial reasoning."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_p153",
+      "cnm_p157"
+    ],
+    "annotationRationale": "The task asks for an attainable minimum, so the route-neutral target is a universal lower bound together with a construction attaining it. The method counts intersection cells as r equal groups of c, using the meaning of multiplication. Factors, multiples, and the primality of 3 support the product-divisibility observation. The finite capacity cases require neither AM-GM nor floor and ceiling functions, and no prime exponent calculation is performed. These annotations describe the solution rather than establish student mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2024_AMC_8_Q16",
+    "decision": "accept",
+    "mathematicalCheck": "Exactly 27 entries are multiples of 3. If they occupy r rows and c columns, they require rc ≥ 27 intersection cells. For r + c ≤ 10, the exhaustive smaller-dimension cases give maximum capacities 9, 16, 21, 24, and 25, all insufficient. The stated placement in a 4-by-7 block uses 27 cells and makes exactly four rows and seven columns qualify, attaining 11.",
+    "levelCheck": "Elementary divisibility, array counting, five small cases, and an explicit construction are appropriate for AMC 8. Both the lower bound and attainment are understandable.",
+    "methodDistinctness": "The bound and construction are complementary parts of one complete extremal method.",
+    "annotationCheck": "The route-neutral extremal target matches the required bound and construction. Multiplication meaning, factors and multiples, and primality support the method. No unsupported AM-GM, floor-function, or prime-exponent annotation is retained.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "capacity-and-construction": "capacity-and-construction"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "1b07c9adbff0a4843c90ea0aae1914acf3a34407f78da0b57665db218d1e907a",
+    "acceptedAt": "2026-11-08T16:51:09.144535+00:00",
+    "inputHash": "f71af28733f313835074c7a9011f8c5e0b9701c3fb0cd51f36482034646bfc8c",
+    "authorInputHash": "fbd9b3fe475bcfc1db4e0d02f6a3fc4fcde32542146c07d3dc6529a445fa773d",
+    "reviewInputHash": "3bea76120b2157bb4586d7e964c9bafab4b57b0d4e1720f1676e4724c9670d6b",
+    "authorResponseHash": "d69f45ed110b79e89bffc361c53c06f2657dbfeaa7bff7fef0a7bd34eef89f96",
+    "reviewerResponseHash": "a3b5c7ad2305208c09dd204bb8f37c83911a7f34d6c69ef0c4b469e9d64a107e",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

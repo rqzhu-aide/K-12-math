@@ -1,65 +1,71 @@
 {
-  "Year": 2017,
-  "Level": "AMC 8",
-  "Batch": "NA",
-  "Area": "Unclassified",
-  "Number": 24,
-  "Question": "Mrs. Sanders has three grandchildren, who call her regularly. One calls her every three days, one calls her every four days, and one calls her every five days. All three called her on December \\(31,\\) \\(2016.\\) On how many days during the next year did she not receive a phone call from any of her grandchildren?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\( 78 \\)",
-    "B": "\\( 80 \\)",
-    "C": "\\( 144 \\)",
-    "D": "\\( 146 \\)",
-    "E": "\\( 152 \\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "inclusion-exclusion; least common multiple",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc8/2017/solutions",
-    "SourceSHA256": "69c8d4f984f27e2c4c31e965101e53695e508734be52fd1e54f86129dd3ef9ea",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 8",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2017_AMC_8_Q24",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "c7dd723dedd0af614ec060b4e59a9fe81d81431e3f923123927b9cab1ba25116",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:inclusion-exclusion-general"
+  "answer": {
+    "accepted": [
+      "D"
     ],
-    "supportIds": [
-      "cnm_h010",
-      "cnm_p159",
-      "cnm_p091"
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "cnm_p153",
+    "cnm_h010"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 8"
+  },
+  "id": "2017_AMC_8_Q24",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\( 78 \\)",
+        "id": "A"
+      },
+      {
+        "content": "\\( 80 \\)",
+        "id": "B"
+      },
+      {
+        "content": "\\( 144 \\)",
+        "id": "C"
+      },
+      {
+        "content": "\\( 146 \\)",
+        "id": "D"
+      },
+      {
+        "content": "\\( 152 \\)",
+        "id": "E"
+      }
     ],
-    "routes": [],
-    "flags": []
-  }
+    "prompt": "Mrs. Sanders has three grandchildren, who call her regularly. One calls her every three days, one calls her every four days, and one calls her every five days. All three called her on December \\(31,\\) \\(2016.\\) On how many days during the next year did she not receive a phone call from any of her grandchildren?"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:inclusion-exclusion-general",
+        "cnm_p153",
+        "cnm_p159",
+        "cnm_h010"
+      ],
+      "explanation": "The year \\(2017\\) is not a leap year, so it has \\(365\\) days. Number January 1 as day \\(1\\), January 2 as day \\(2\\), and so on, with December 31, 2016 as day \\(0\\). The grandchildren call on multiples of \\(3\\), \\(4\\), and \\(5\\), respectively.\n\nFirst count each grandchild's call days separately. There are \\(121\\) multiples of \\(3\\), \\(91\\) multiples of \\(4\\), and \\(73\\) multiples of \\(5\\) among days \\(1\\) through \\(365\\). For example, \\(3\\cdot121=363\\), while the next multiple is beyond the year.\n\nAdding these counts repeats days with more than one call. Two grandchildren call together every \\(12\\), \\(15\\), or \\(20\\) days, the least common multiples of their calling intervals. There are respectively \\(30\\), \\(24\\), and \\(18\\) such days, so subtract these three overlap counts.\n\nA day when all three call was initially counted three times and then subtracted three times, leaving it uncounted. Add those days back once. All three call every \\(60\\) days, giving \\(6\\) such days. Consequently, the number of days with at least one call is\n\\[\n121+91+73-30-24-18+6=219.\n\\]\nA day with exactly one, two, or three callers now contributes exactly once, so no call day is omitted or repeated. The remaining days have no calls:\n\\[\n365-219=\\boxed{146}.\n\\]\nThe answer is choice \\(\\text{D}\\).",
+      "id": "count_overlapping_call_days",
+      "sourceRef": "amc/2017_AMC_8_Q24#count_overlapping_call_days",
+      "title": "Count call days and correct the overlaps"
+    },
+    {
+      "directNodeIds": [
+        "cnm_p153",
+        "cnm_p159",
+        "cnm_h003",
+        "cnm_h010"
+      ],
+      "explanation": "Number the days after December 31, 2016 starting with day \\(1\\). A call occurs exactly when the day number is divisible by \\(3\\), \\(4\\), or \\(5\\). Since \\(60\\) is divisible by all three numbers, adding \\(60\\) to a day number preserves whether each grandchild calls. Thus the pattern repeats in blocks of \\(60\\) days.\n\nTo count no-call days in the first block, first avoid multiples of \\(3\\) and \\(4\\). In days \\(1\\) through \\(12\\), the remaining numbers are\n\\[\n1,2,5,7,10,11.\n\\]\nThis pattern repeats every \\(12\\) days. The five disjoint blocks of \\(12\\) days within days \\(1\\) through \\(60\\) therefore contain \\(5\\cdot6=30\\) days without calls from those two grandchildren.\n\nAmong these \\(30\\) days, the multiples of \\(5\\) are exactly\n\\[\n5,10,25,35,50,55.\n\\]\nRemoving these six days leaves \\(30-6=24\\) days with no calls in each \\(60\\)-day block. Every day was checked first for divisibility by \\(3\\) or \\(4\\), then by \\(5\\), so these are precisely the no-call days.\n\nThe year \\(2017\\) has \\(365=6\\cdot60+5\\) days. Its first \\(360\\) days contain six complete blocks, giving \\(6\\cdot24=144\\) no-call days. The final five days follow the same calling pattern as days \\(1\\) through \\(5\\). Only days \\(1\\) and \\(2\\) have no calls, adding two more.\n\nThus the total is \\(144+2=\\boxed{146}\\) days, choice \\(\\text{D}\\).",
+      "id": "repeating_sixty_day_blocks",
+      "sourceRef": "amc/2017_AMC_8_Q24#repeating_sixty_day_blocks",
+      "title": "Use repeating blocks of 60 days"
+    }
+  ],
+  "sourceRef": "amc/2017_AMC_8_Q24"
 }

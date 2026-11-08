@@ -1,81 +1,78 @@
 {
-  "Year": 2024,
-  "Level": "AMC 8",
-  "Batch": "NA",
-  "Area": "Number Theory",
-  "Number": 16,
-  "Question": "Minh enters the numbers \\(1\\) through \\(81\\) into the cells of a \\(9 \\times 9\\) grid in some order. She calculates the product of the numbers in each row and column. What is the least number of rows and columns that could have a product divisible by \\(3?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(8\\)",
-    "B": "\\(9\\)",
-    "C": "\\(10\\)",
-    "D": "\\(11\\)",
-    "E": "\\(12\\)"
+  "answer": {
+    "accepted": [
+      "D"
+    ],
+    "type": "choice"
   },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.88",
-    "Concepts": "divisibility; optimization; extremal argument",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions",
-    "SourceSHA256": "1a2407993ccdaa6eee3004d193f536c4c887811942bd85eec25ce8f2d9db569d",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2024_AMC_8_Q16",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:number-theory"
+  "assessedNodeIds": [
+    "math:extremal-principle"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "2883a6b6f56456affdc769989611d2c56e674ad515b5696cc1f74fe19732a07e",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:extremal-principle"
+  "bank": "amc",
+  "classification": {
+    "area": "Number Theory",
+    "domainIds": [
+      "domain:number-theory"
     ],
-    "supportIds": [
-      "cnm_p153",
-      "math:prime-factorization"
-    ],
-    "routes": [
+    "level": "AMC 8"
+  },
+  "id": "2024_AMC_8_Q16",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "capacity-and-am-gm",
-        "label": "Bound capacity using AM-GM",
-        "nodeIds": [
-          "cnm_h231",
-          "cnm_h022"
-        ]
+        "content": "\\(8\\)",
+        "id": "A"
       },
       {
-        "id": "integer-capacity-cases",
-        "label": "Check integer row and column capacities",
-        "nodeIds": [
-          "cnm_h231",
-          "math:floor-ceiling"
-        ]
+        "content": "\\(9\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(10\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(11\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(12\\)",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "Minh enters the numbers \\(1\\) through \\(81\\) into the cells of a \\(9 \\times 9\\) grid in some order. She calculates the product of the numbers in each row and column. What is the least number of rows and columns that could have a product divisible by \\(3?\\)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:extremal-principle",
+        "cnm_p038"
+      ],
+      "explanation": "A row or column has a product divisible by \\(3\\) exactly when it contains a multiple of \\(3\\), because \\(3\\) is prime. Among the numbers \\(1\\) through \\(81\\), there are \\(81\\div3=27\\) multiples of \\(3\\). We therefore want to place these \\(27\\) numbers in as few rows and columns altogether as possible.\n\nSuppose they occupy \\(r\\) rows and \\(c\\) columns. Each of their cells is an intersection of one of those rows and one of those columns. There are \\(c\\) such cells in each of the \\(r\\) rows, with no cell counted twice, so\n\\[\nrc\\ge27.\n\\]\nCould \\(r+c\\) be at most \\(10\\)? Interchanging the roles of rows and columns if needed, take \\(r\\le c\\). Both are positive, so \\(r\\) must be one of \\(1,2,3,4,5\\). Since \\(c\\le10-r\\), the corresponding upper bounds for \\(rc\\) are\n\\[\n1\\cdot9=9,\\quad2\\cdot8=16,\\quad3\\cdot7=21,\n\\]\n\\[\n4\\cdot6=24,\\quad5\\cdot5=25.\n\\]\nThese cases cover every possibility with \\(r+c\\le10\\), and none provides the \\(27\\) required cells. Thus at least \\(11\\) rows and columns must qualify.\n\nTo attain \\(11\\), choose a block of \\(4\\) rows and \\(7\\) columns. Put \\(21\\) multiples of \\(3\\) in its first three complete rows, and the remaining \\(6\\) multiples in six cells of its fourth row. Fill every other cell of the grid with the \\(54\\) nonmultiples of \\(3\\). Every one of the selected four rows and seven columns contains a multiple of \\(3\\), and no other row or column does. Hence the least total is\n\\[\n4+7=\\boxed{11},\n\\]\nchoice \\(\\boxed{\\text{D}}\\).",
+      "id": "capacity-and-construction",
+      "sourceRef": "amc/2024_AMC_8_Q16#capacity-and-construction",
+      "title": "Bound the available cells, then attain the bound"
+    },
+    {
+      "directNodeIds": [
+        "cnm_h231",
+        "cnm_h022"
+      ],
+      "id": "capacity-and-am-gm",
+      "sourceRef": "amc/2024_AMC_8_Q16#capacity-and-am-gm",
+      "title": "Bound capacity using AM-GM"
+    },
+    {
+      "directNodeIds": [
+        "cnm_h231",
+        "math:floor-ceiling"
+      ],
+      "id": "integer-capacity-cases",
+      "sourceRef": "amc/2024_AMC_8_Q16#integer-capacity-cases",
+      "title": "Check integer row and column capacities"
+    }
+  ],
+  "sourceRef": "amc/2024_AMC_8_Q16"
 }

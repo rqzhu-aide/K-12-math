@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2026_AMC_8_Q17",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "2d37741e93b958787af69cf3ec6eeafba09a9f61e3d83814c1831314b1417e09",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "72e9edb793090ce3588c069a3525b03b35bcbb809c3559df1fda5ae7fdfe0de4",
+  "solutionFigureHashes": {},
+  "candidateHash": "5e1eb8b560181bd9ceb074c93bc61a96c7c37c7535823d1f7cec1a00872b27b6",
+  "candidate": {
+    "questionId": "2026_AMC_8_Q17",
+    "derivedAnswer": "A: \\(2\\)",
+    "answerStatus": "matches",
+    "answerReason": "Labeling the original order A, B, C, D, the only valid new orders are CADB and BDAC.",
+    "methods": [
+      {
+        "id": "forced-endpoints",
+        "label": "Find the students who must sit at the ends",
+        "explanation": "Label the students \\(A,B,C,D\\) in their original left-to-right order. The pairs \\(AB,BC,CD\\) may no longer sit together, regardless of which member of a pair sits on the left.\n\nStudent \\(B\\) cannot sit next to \\(A\\) or \\(C\\), so \\(B\\)'s only possible neighbor is \\(D\\). An interior seat has two different neighbors, so \\(B\\) must sit at an end. Similarly, \\(C\\)'s only possible neighbor is \\(A\\), so \\(C\\) must occupy the other end.\n\nIf \\(C\\) sits at the left end, \\(A\\) must sit next to \\(C\\), and \\(D\\) must sit next to \\(B\\). This forces the order\n\\[\nC,A,D,B.\n\\]\nIf \\(B\\) sits at the left end, the same restrictions force\n\\[\nB,D,A,C.\n\\]\nBoth orders use only the neighbor pairs \\(AC,AD,BD\\), all of which are allowed. Every valid arrangement must have \\(B\\) and \\(C\\) at opposite ends, and each choice of their ends forces exactly one order. Thus there are exactly \\(\\boxed{2}\\) rearrangements, choice \\(\\text{A}\\).",
+        "nodeIds": [
+          "cnm_h233",
+          "math:finite-constraint-deduction"
+        ],
+        "prerequisiteIds": [],
+        "levelReason": "Forced neighbors and endpoint reasoning give an exhaustive count using elementary logic. No permutation formula or graph theorem is needed."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h233",
+      "math:finite-constraint-deduction"
+    ],
+    "supportIds": [],
+    "annotationRationale": "The question asks for distinct ordered arrangements satisfying adjacency restrictions. The small-permutation concept and finite constraint deduction fit those targets. The method forces the endpoints and checks both resulting orders; it does not use permutation-number formulas or explicitly construct a graph. No additional catalog prerequisite is needed beyond ordinary understanding of a row and neighboring seats. These assignments do not establish mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2026_AMC_8_Q17",
+    "decision": "accept",
+    "mathematicalCheck": "B can neighbor only D, and C can neighbor only A, so B and C must occupy opposite ends. Each assignment of those endpoints forces one arrangement, CADB or BDAC. Both avoid every original neighboring pair, giving exactly two arrangements.",
+    "levelCheck": "The endpoint deduction and completeness argument are explicit and accessible at AMC 8 level.",
+    "methodDistinctness": "The single forced-endpoint method is complete; another method is unnecessary.",
+    "annotationCheck": "The permutation-concept and finite-constraint nodes accurately describe the assessed content. No permutation formula or explicit graph construction is used, so omitting those annotations is appropriate.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "forced-endpoints": "forced-endpoints"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "18319d87459fa3d08f6fa4963c1bc8961d0ff8fbf004f5515cfa59bd461be58b",
+    "acceptedAt": "2026-11-08T16:54:05.072639+00:00",
+    "inputHash": "4dc4763d271e8c7e7b6d237c5cd27879f902fbc1deb4de2c4b0d1a722796925d",
+    "authorInputHash": "5bea97215cfaea4a556c8a2eb232cc0f87fdbe3a04eb66501f337cbff53c22b8",
+    "reviewInputHash": "5bd69110cac1fa0b64bb5a357d33572c88e4e3296228bc8ff0f7b51c167eaede",
+    "authorResponseHash": "74f96fdf243d6d9ad294a1deef36879834b307e37dc5a14990444730bd7e800b",
+    "reviewerResponseHash": "7dbca29c114b1b9b4f33ab0d1d339947d0ade133b86d8f1b53adc1453d001644",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

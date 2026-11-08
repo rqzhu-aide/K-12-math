@@ -1,72 +1,70 @@
 {
-  "Year": 2025,
-  "Level": "AMC 8",
-  "Batch": "NA",
-  "Area": "Number Theory",
-  "Number": 23,
-  "Question": "How many four-digit numbers have all three of the following properties?\n\n(I) The tens digit and ones digit are both \\(9.\\)\n\n(II) The number is \\(1\\) less than a perfect square.\n\n(III) The number is the product of exactly two prime numbers.",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(0\\)",
-    "B": "\\(1\\)",
-    "C": "\\(2\\)",
-    "D": "\\(3\\)",
-    "E": "\\(4\\)"
+  "answer": {
+    "accepted": [
+      "B"
+    ],
+    "type": "choice"
   },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "reviewed-source-concepts",
-    "Concepts": "difference of squares; prime",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions",
-    "SourceSHA256": "3fefd3e2f52a1f66cca5fddfea5e72e1eaf2845ff5bcb3d1b16c03b549d9f04f",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2025_AMC_8_Q23",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:number-theory"
+  "assessedNodeIds": [
+    "math:integer-diophantine-equations",
+    "cnm_p157"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "247baad137fe274c119c7719686083d5b17b415c434d8ecc2bc795f3da8668ce",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:integer-diophantine-equations",
-      "cnm_p157"
+  "bank": "amc",
+  "classification": {
+    "area": "Number Theory",
+    "domainIds": [
+      "domain:number-theory"
     ],
-    "supportIds": [
-      "math:modular-congruence"
-    ],
-    "routes": [
+    "level": "AMC 8"
+  },
+  "id": "2025_AMC_8_Q23",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "neighboring-prime-factors",
-        "label": "Factor one less than a square",
-        "nodeIds": [
-          "cnm_152"
-        ]
+        "content": "\\(0\\)",
+        "id": "A"
+      },
+      {
+        "content": "\\(1\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(2\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(3\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(4\\)",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "How many four-digit numbers have all three of the following properties?\n\n(I) The tens digit and ones digit are both \\(9.\\)\n\n(II) The number is \\(1\\) less than a perfect square.\n\n(III) The number is the product of exactly two prime numbers."
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "cnm_p157",
+        "cnm_152"
+      ],
+      "explanation": "Adding \\(1\\) to a number ending in \\(99\\) produces a number ending in \\(00\\). Write the desired number as \\(N=s^2-1\\), where \\(s\\) is a positive integer. Since \\(N\\) has four digits,\n\\[\n1001\\leq s^2\\leq10000.\n\\]\nBecause \\(31^2=961\\) and \\(100^2=10000\\), we have \\(32\\leq s\\leq100\\). A square ends in \\(0\\) only when its root ends in \\(0\\), as checking the squares of the ten possible ones digits shows. Therefore the complete list of possible roots is\n\\[\ns=40,50,60,70,80,90,100.\n\\]\nEach of these roots does give a four-digit number ending in \\(99\\).\n\nTo test the prime condition, use the two neighbors of \\(s\\):\n\\[\n(s-1)(s+1)=s^2-s+s-1=s^2-1=N.\n\\]\nBoth factors exceed \\(1\\). Consequently, \\(N\\) is a product of exactly two primes precisely when both neighbors are prime. If either neighbor is composite, splitting it into factors already gives at least three prime factors in the product, counting repetitions.\n\nSix roots fail because one neighbor is composite:\n\\[\n\\begin{aligned}\ns=40 &: \\quad 39=3\\cdot13,\\\\\ns=50 &: \\quad 49=7\\cdot7,\\\\\ns=70 &: \\quad 69=3\\cdot23,\\\\\ns=80 &: \\quad 81=9\\cdot9,\\\\\ns=90 &: \\quad 91=7\\cdot13,\\\\\ns=100 &: \\quad 99=9\\cdot11.\n\\end{aligned}\n\\]\nFor \\(s=60\\), the neighbors are \\(59\\) and \\(61\\). Neither is divisible by \\(2,3,5,\\) or \\(7\\), so both are prime. These checks suffice: a composite number below \\(64=8^2\\) has a factor below \\(8\\), and hence a prime divisor among \\(2,3,5,7\\).\n\nThus the only qualifying number is\n\\[\n60^2-1=3599=59\\cdot61.\n\\]\nEvery possible positive root has been checked, and different positive roots give different numbers. The count is \\(\\boxed{1}\\), choice \\(\\mathrm{B}\\).",
+      "id": "square-neighbors",
+      "sourceRef": "amc/2025_AMC_8_Q23#square-neighbors",
+      "title": "Check the two neighbors of the square root"
+    },
+    {
+      "directNodeIds": [
+        "cnm_152"
+      ],
+      "id": "neighboring-prime-factors",
+      "sourceRef": "amc/2025_AMC_8_Q23#neighboring-prime-factors",
+      "title": "Factor one less than a square"
+    }
+  ],
+  "sourceRef": "amc/2025_AMC_8_Q23"
 }

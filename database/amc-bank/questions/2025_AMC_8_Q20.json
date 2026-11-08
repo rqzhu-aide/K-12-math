@@ -1,78 +1,83 @@
 {
-  "Year": 2025,
-  "Level": "AMC 8",
-  "Batch": "NA",
-  "Area": "Prealgebra",
-  "Number": 20,
-  "Question": "Sarika, Dev, and Rajiv are sharing a large block of cheese. They take turns cutting off half of what remains and eating it: first Sarika eats half of the cheese, then Dev eats half of the remaining half, then Rajiv eats half of what remains, then back to Sarika, and so on. They stop when the cheese is too small to see. About what fraction of the original block of cheese does Sarika eat in total?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{4}{7}\\)",
-    "B": "\\(\\dfrac{3}{5}\\)",
-    "C": "\\(\\dfrac{2}{3}\\)",
-    "D": "\\(\\dfrac{3}{4}\\)",
-    "E": "\\(\\dfrac{7}{8}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "reviewed-source-concepts",
-    "Concepts": "geometric sequence; summation",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc8/2025/solutions",
-    "SourceSHA256": "3fefd3e2f52a1f66cca5fddfea5e72e1eaf2845ff5bcb3d1b16c03b549d9f04f",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2025_AMC_8_Q20",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:prealgebra"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "3acfe31f7a2275563ed22cbd8c1d6a26ebce2667dabe7d53f42c5479f5d4955a",
-    "status": "mapped",
-    "reviewStatus": "machine_adjudicated",
-    "assessedIds": [
-      "math:infinite-geometric-series"
+  "answer": {
+    "accepted": [
+      "A"
     ],
-    "supportIds": [],
-    "routes": [
+    "type": "choice"
+  },
+  "assessedNodeIds": [],
+  "bank": "amc",
+  "classification": {
+    "area": "Prealgebra",
+    "domainIds": [
+      "domain:prealgebra"
+    ],
+    "level": "AMC 8"
+  },
+  "id": "2025_AMC_8_Q20",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "geometric-series-sum",
-        "label": "Sum Sarika's servings",
-        "nodeIds": [
-          "math:infinite-geometric-series"
-        ]
+        "content": "\\(\\dfrac{4}{7}\\)",
+        "id": "A"
       },
       {
-        "id": "self-similar-share-equation",
-        "label": "Use the repeated three-turn cycle",
-        "nodeIds": [
-          "cnm_044"
-        ]
+        "content": "\\(\\dfrac{3}{5}\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(\\dfrac{2}{3}\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(\\dfrac{3}{4}\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(\\dfrac{7}{8}\\)",
+        "id": "E"
       }
     ],
-    "flags": [
-      "The visibility cutoff is unspecified, so 4/7 is the limiting share rather than an exact finite-stop fraction."
-    ]
-  }
+    "prompt": "Sarika, Dev, and Rajiv are sharing a large block of cheese. They take turns cutting off half of what remains and eating it: first Sarika eats half of the cheese, then Dev eats half of the remaining half, then Rajiv eats half of what remains, then back to Sarika, and so on. They stop when the cheese is too small to see. About what fraction of the original block of cheese does Sarika eat in total?"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "cnm_p187"
+      ],
+      "explanation": "Group the turns into rounds containing one turn each for Sarika, Dev, and Rajiv. If a round starts with an amount \\(R\\) of cheese, they eat\n\\[\n\\frac{R}{2},\\qquad \\frac{R}{4},\\qquad \\frac{R}{8},\n\\]\nrespectively. These amounts are in the ratio \\(4:2:1\\). Thus Sarika eats \\(4\\) of the \\(4+2+1=7\\) equal parts consumed in every complete round, or \\(4/7\\) of that round's eaten cheese.\n\nCombining complete rounds preserves this same share: Sarika's amounts are always \\(4/7\\) of the corresponding amounts eaten by everyone together. Each round leaves only \\(1/8\\) of its starting cheese. Repeating the rounds makes the leftover as small as desired, so the share of the original block eaten by Sarika approaches \\(4/7\\).\n\nFor the actual stopping point, imagine continuing the turns afterward. Sarika could gain no more than all the tiny amount left when they stopped. Therefore her finite total is close to the continuing-process value, though its exact value depends on the visibility cutoff. She eats approximately \\(\\boxed{\\frac47}\\), choice \\(\\text{A}\\).",
+      "id": "ratio-in-each-round",
+      "sourceRef": "amc/2025_AMC_8_Q20#ratio-in-each-round",
+      "title": "Compare the shares in each round"
+    },
+    {
+      "directNodeIds": [
+        "cnm_p146",
+        "cnm_044"
+      ],
+      "explanation": "To estimate the total, imagine continuing the turns indefinitely. The remaining cheese is repeatedly halved, so it becomes as small as desired. Let \\(x\\) be the fraction of a starting block that Sarika eventually eats in this continuing process.\n\nSarika first eats \\(1/2\\) of the block. After Dev and Rajiv take their turns, \\(1/8\\) of the original block remains, and it is Sarika's turn again. The sharing rule now repeats on this smaller amount. Since every serving scales with the starting amount, Sarika eventually eats the same fraction \\(x\\) of that remaining \\(1/8\\). Consequently,\n\\[\nx=\\frac12+\\frac{x}{8}.\n\\]\nMultiplying every term by \\(8\\) gives\n\\[\n8x=4+x,\\qquad 7x=4,\\qquad x=\\frac47.\n\\]\nIf they stop with a tiny amount remaining, continuing could add at most that entire amount to Sarika's total. Her actual share is therefore approximately \\(\\boxed{\\frac47}\\), choice \\(\\text{A}\\); an exact finite total would require the stopping cutoff.",
+      "id": "restart-after-one-round",
+      "sourceRef": "amc/2025_AMC_8_Q20#restart-after-one-round",
+      "title": "Use the repeated situation"
+    },
+    {
+      "directNodeIds": [
+        "math:infinite-geometric-series"
+      ],
+      "id": "geometric-series-sum",
+      "sourceRef": "amc/2025_AMC_8_Q20#geometric-series-sum",
+      "title": "Sum Sarika's servings"
+    },
+    {
+      "directNodeIds": [
+        "cnm_044"
+      ],
+      "id": "self-similar-share-equation",
+      "sourceRef": "amc/2025_AMC_8_Q20#self-similar-share-equation",
+      "title": "Use the repeated three-turn cycle"
+    }
+  ],
+  "sourceRef": "amc/2025_AMC_8_Q20"
 }
