@@ -1,64 +1,61 @@
 {
-  "Year": 2024,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Counting & Probability",
-  "Number": 20,
-  "Question": "Let \\(S\\) be a subset of \\(\\{1, 2, 3, \\ldots, 2024\\}\\) such that the following two conditions hold:\n\n• If \\(x\\) and \\(y\\) are distinct elements of \\(S,\\) then \\(|x - y| \\gt 2.\\)\n\n• If \\(x\\) and \\(y\\) are distinct odd elements of \\(S,\\) then \\(|x - y| \\gt 6.\\)\n\nWhat is the maximum possible number of elements in \\(S?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(436\\)",
-    "B": "\\(506\\)",
-    "C": "\\(608\\)",
-    "D": "\\(654\\)",
-    "E": "\\(675\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.89",
-    "Concepts": "arrangements with restrictions; extremal argument; optimization",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2024A/solutions",
-    "SourceSHA256": "5fed52d29857ed2e73b79316a935cba357bf2b5edda16ac2add7780e78466254",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2024_AMC_10A_Q20",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Let \\(S\\) be a subset of \\(\\{1, 2, 3, \\ldots, 2024\\}\\) such that the following two conditions hold:\n\n• If \\(x\\) and \\(y\\) are distinct elements of \\(S,\\) then \\(|x - y| \\gt 2.\\)\n\n• If \\(x\\) and \\(y\\) are distinct odd elements of \\(S,\\) then \\(|x - y| \\gt 6.\\)\n\nWhat is the maximum possible number of elements in \\(S?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(436\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(506\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(608\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(654\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(675\\)"
+      }
     ]
   },
-  "ID": "2024_AMC_10A_Q20",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:extremal-principle"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "ebebe0ae489f80d496e45f978e119b28f009bcf2aa82de12aaa5b231dac5c7b9",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:extremal-principle"
-    ],
-    "supportIds": [
-      "cnm_p156",
-      "math:modular-congruence"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "ten-number-blocks",
+      "title": "Bound each block of ten",
+      "explanation": "A block of ten consecutive integers is useful because four selected numbers in such a block would be forced into a very specific pattern.\n\nSuppose four selected numbers in one block are \\(x_1<x_2<x_3<x_4\\). Each gap is at least \\(3\\), so\n\\[\nx_4-x_1\\ge3+3+3=9.\n\\]\nThe entire block has span \\(9\\), so equality must hold. The selected numbers must occupy positions \\(1,4,7,10\\) of the block. If the block starts with an odd number, positions \\(1\\) and \\(7\\) are odd; if it starts with an even number, positions \\(4\\) and \\(10\\) are odd. Either way, two selected odd numbers differ by \\(6\\), which is forbidden. Thus every block of ten contains at most three elements of \\(S\\).\n\nPartition \\(1,2,\\ldots,2020\\) into \\(202\\) disjoint blocks of ten. These contribute at most \\(202\\cdot3=606\\) elements. The final four numbers \\(2021,2022,2023,2024\\) contribute at most two, since three numbers with gaps at least \\(3\\) would have span at least \\(6\\). Therefore\n\\[\n|S|\\le606+2=608.\n\\]\n\nTo attain this bound, select all numbers congruent to \\(1,4,\\) or \\(8\\) modulo \\(10\\):\n\\[\nS=\\{1,4,8,11,14,18,\\ldots,2021,2024\\}.\n\\]\nThe consecutive gaps repeat \\(3,4,3\\), so any two selected numbers differ by at least \\(3\\). The odd selected numbers are exactly those congruent to \\(1\\) modulo \\(10\\), so distinct odd elements differ by at least \\(10\\). Both conditions hold.\n\nThere are three selected numbers in each of the first \\(202\\) blocks, followed by \\(2021\\) and \\(2024\\). Hence the maximum is \\(\\boxed{608}\\), choice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "math:extremal-principle",
+        "cnm_p156",
+        "math:modular-congruence"
+      ],
+      "sourceRef": "amc/2024_AMC_10A_Q20#ten-number-blocks"
+    }
+  ],
+  "sourceRef": "amc/2024_AMC_10A_Q20"
 }

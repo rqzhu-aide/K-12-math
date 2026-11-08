@@ -1,61 +1,59 @@
 {
-  "Year": 2022,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Counting & Probability",
-  "Number": 10,
-  "Question": "What is the number of ways the numbers from \\(1\\) to \\(14\\) can be split into \\(7\\) pairs such that for each pair, the greater number is at least \\(2\\) times the smaller number?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(108\\)",
-    "B": "\\(120\\)",
-    "C": "\\(126\\)",
-    "D": "\\(132\\)",
-    "E": "\\(144\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.98",
-    "Concepts": "arrangements with restrictions; multiplication principle",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2022A/solutions",
-    "SourceSHA256": "25afecb70d053b546e2a70288716895c648653913bd0416ce4795c52ef2097e0",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2022_AMC_12A_Q10",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "What is the number of ways the numbers from \\(1\\) to \\(14\\) can be split into \\(7\\) pairs such that for each pair, the greater number is at least \\(2\\) times the smaller number?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(108\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(120\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(126\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(132\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(144\\)"
+      }
     ]
   },
-  "ID": "2022_AMC_12A_Q10",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "E"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h231"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "dc2a163b6393093e984c3e9149a7784157fbaa67a09a31ea26c29a82102b5a28",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_h231"
-    ],
-    "supportIds": [],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "descending-partner-count",
+      "title": "Choose the most restricted partners first",
+      "explanation": "The smaller member of any pair must be at most \\(7\\): if it were at least \\(8\\), its partner would have to be at least \\(16\\). There are seven pairs with seven distinct smaller members, so those members must be exactly \\(1,2,\\ldots,7\\). Their partners are therefore exactly \\(8,9,\\ldots,14\\).\n\nChoose partners for the smaller numbers in descending order, handling the strongest restrictions first:\n\n- \\(7\\) must pair with \\(14\\), giving \\(1\\) choice.\n- \\(6\\) can pair with \\(12\\) or \\(13\\), giving \\(2\\) choices.\n- \\(5\\) needs a partner in \\(\\{10,11,12,13,14\\}\\). The two partners already used both belong to this set, leaving \\(5-2=3\\) choices.\n- \\(4\\) can pair with any number from \\(8\\) through \\(14\\). Three have been used, leaving \\(7-3=4\\) choices.\n- For \\(3,2,1\\), every remaining partner works, since each is at least \\(8\\), which is already more than twice \\(3\\). These steps have \\(3,2,1\\) choices, respectively.\n\nThese counts hold regardless of the earlier choices, and every sequence can be completed. Every valid splitting is counted exactly once because each smaller number's partner is selected at its fixed step. By the multiplication principle, the total is\n\\[\n1\\cdot2\\cdot3\\cdot4\\cdot3\\cdot2\\cdot1\n=\\boxed{144}.\n\\]\nThe answer is \\(\\text{E}\\).",
+      "directNodeIds": [
+        "cnm_h231"
+      ],
+      "sourceRef": "amc/2022_AMC_12A_Q10#descending-partner-count"
+    }
+  ],
+  "sourceRef": "amc/2022_AMC_12A_Q10"
 }

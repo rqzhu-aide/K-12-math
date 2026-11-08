@@ -1,81 +1,82 @@
 {
-  "Year": 2025,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Counting & Probability",
-  "Number": 23,
-  "Question": "Call a positive integer fair if no digit is used more than once, it has no \\(0\\)s, and no digit is adjacent to two greater digits. For example, \\(196,\\) \\(23,\\) and \\(12463\\) are fair, but \\(1546,\\) \\(320,\\) and \\(34321\\) are not fair. How many fair positive integers are there?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(511\\)",
-    "B": "\\(2584\\)",
-    "C": "\\(9841\\)",
-    "D": "\\(17711\\)",
-    "E": "\\(19682\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "reviewed-source-concepts",
-    "Concepts": "arrangements with restrictions; binomial theorem",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2025A/solutions",
-    "SourceSHA256": "ba7a6860f4d04021d5c9f61f05d33b3cfddca239176293ee411babae6573c53c",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2025_AMC_12A_Q23",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "475e0d251718f7be58ebd8806cedb0546b2907bc6c6db397a3e0aed690433827",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h232"
-    ],
-    "supportIds": [
-      "math:bijective-counting"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2025_AMC_12A_Q23",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Call a positive integer fair if no digit is used more than once, it has no \\(0\\)s, and no digit is adjacent to two greater digits. For example, \\(196,\\) \\(23,\\) and \\(12463\\) are fair, but \\(1546,\\) \\(320,\\) and \\(34321\\) are not fair. How many fair positive integers are there?",
+    "choices": [
       {
-        "id": "condition-on-largest-digit",
-        "label": "Count by largest digit",
-        "nodeIds": [
-          "cnm_h231",
-          "cnm_h210"
-        ]
+        "id": "A",
+        "content": "\\(511\\)"
       },
       {
-        "id": "condition-on-number-length",
-        "label": "Count by length",
-        "nodeIds": [
-          "cnm_h239",
-          "cnm_h231",
-          "cnm_h240"
-        ]
+        "id": "B",
+        "content": "\\(2584\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(9841\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(17711\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(19682\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:bijective-counting",
+    "cnm_h240"
+  ],
+  "solutions": [
+    {
+      "id": "choose-digits-and-sides",
+      "title": "Choose digits and their sides",
+      "explanation": "The key restriction forbids a decrease immediately followed by an increase, since the digit at that turn would have greater neighbors on both sides. Once the digits start decreasing, they therefore cannot later increase: the first such increase would create exactly this forbidden turn.\n\nConsequently, every fair number increases up to its greatest digit and then decreases. Either side of the greatest digit may be empty. Conversely, any arrangement of distinct nonzero digits with this shape is fair, because it has no digit smaller than both neighbors.\n\nNow fix a length \\(k\\), where \\(1\\le k\\le9\\). Choose the digits in \\(\\binom9k\\) ways, and let \\(m\\) be the greatest chosen digit. Each of the other \\(k-1\\) digits has two choices: go before \\(m\\) or after \\(m\\). Once these choices are made, the order is forced: the digits before \\(m\\) must increase, and those after \\(m\\) must decrease. Hence there are\n\\[\n\\binom9k2^{k-1}\n\\]\nfair numbers of length \\(k\\).\n\nThis counts each fair number exactly once, since the number itself determines both its chosen digit set and which digits precede its greatest digit. Summing over all possible lengths and applying the binomial theorem gives\n\\[\n\\begin{aligned}\n\\sum_{k=1}^{9}\\binom9k2^{k-1}\n&=\\frac12\\left(\\sum_{k=0}^{9}\\binom9k2^k1^{9-k}-1\\right)\\\\\n&=\\frac{(2+1)^9-1}{2}\\\\\n&=\\frac{19683-1}{2}\\\\\n&=\\boxed{9841}.\n\\end{aligned}\n\\]\nThe answer is choice \\(\\text{C}\\).",
+      "directNodeIds": [
+        "math:bijective-counting",
+        "cnm_h239",
+        "cnm_h231",
+        "cnm_h240"
+      ],
+      "sourceRef": "amc/2025_AMC_12A_Q23#choose-digits-and-sides"
+    },
+    {
+      "id": "condition-on-largest-digit",
+      "title": "Count by largest digit",
+      "directNodeIds": [
+        "cnm_h231",
+        "cnm_h210"
+      ],
+      "sourceRef": "amc/2025_AMC_12A_Q23#condition-on-largest-digit"
+    },
+    {
+      "id": "condition-on-number-length",
+      "title": "Count by length",
+      "directNodeIds": [
+        "cnm_h239",
+        "cnm_h231",
+        "cnm_h240"
+      ],
+      "sourceRef": "amc/2025_AMC_12A_Q23#condition-on-number-length"
+    }
+  ],
+  "sourceRef": "amc/2025_AMC_12A_Q23"
 }

@@ -1,79 +1,66 @@
 {
-  "Year": 2018,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 22,
-  "Question": "Consider polynomials \\(P(x)\\) of degree at most \\(3,\\) each of whose coefficients is an element of \\(\\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\\}.\\) How many such polynomials satisfy \\(P(-1)=-9?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(110\\)",
-    "B": "\\(143\\)",
-    "C": "\\(165\\)",
-    "D": "\\(220\\)",
-    "E": "\\(286\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "stars and bars; substitution",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2018B/solutions",
-    "SourceSHA256": "7b19d55a7f39ed9e41e7c3089b150018fb57149e9bb7f71f22ca8618e1d02cb2",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2018_AMC_12B_Q22",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "a2587ebbefe93088659d82c8e132d1f0dc54af3580cab0d0ce57e90c68d8f522",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:integer-diophantine-equations"
-    ],
-    "supportIds": [
-      "cnm_029"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2018_AMC_12B_Q22",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Consider polynomials \\(P(x)\\) of degree at most \\(3,\\) each of whose coefficients is an element of \\(\\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\\}.\\) How many such polynomials satisfy \\(P(-1)=-9?\\)",
+    "choices": [
       {
-        "id": "complement-digits-and-separators",
-        "label": "Complement digits and use separators",
-        "nodeIds": [
-          "math:stars-and-bars",
-          "cnm_h237"
-        ]
+        "id": "A",
+        "content": "\\(110\\)"
       },
       {
-        "id": "classify-coefficient-pair-sums",
-        "label": "Classify coefficient-pair sums",
-        "nodeIds": [
-          "cnm_h232"
-        ]
+        "id": "B",
+        "content": "\\(143\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(165\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(220\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(286\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "level": "AMC 12"
+  },
+  "assessedNodeIds": [
+    "math:stars-and-bars",
+    "math:bijective-counting"
+  ],
+  "solutions": [
+    {
+      "id": "complement-digits-and-separators",
+      "title": "Complement digits and use separators",
+      "explanation": "Replacing the coefficients that appear with minus signs by their complements to \\(9\\) turns the condition into a nonnegative sum.\n\nWrite\n\\[\nP(x)=ax^3+bx^2+cx+d,\n\\qquad a,b,c,d\\in\\{0,1,\\ldots,9\\}.\n\\]\nAllowing \\(a=0\\) includes polynomials of degree below \\(3\\). The condition is\n\\[\n-a+b-c+d=-9,\n\\]\nor equivalently\n\\[\n(9-a)+b+(9-c)+d=9.\n\\]\nSet \\(x_1=9-a\\), \\(x_2=b\\), \\(x_3=9-c\\), and \\(x_4=d\\). We need to count nonnegative integer solutions of\n\\[\nx_1+x_2+x_3+x_4=9.\n\\]\nEvery variable is automatically at most \\(9\\), so all such solutions meet the digit bounds. Conversely, each solution gives exactly one polynomial through\n\\[\na=9-x_1,\\qquad b=x_2,\\qquad c=9-x_3,\\qquad d=x_4.\n\\]\nThus no eligible polynomial is omitted or counted twice.\n\nRepresent the sum by nine stars and use three bars to separate them into four groups. The group sizes are \\(x_1,x_2,x_3,x_4\\); adjacent bars or bars at the ends allow zero-sized groups. Choosing the three bar positions among twelve positions gives\n\\[\n\\binom{12}{3}=\\frac{12\\cdot11\\cdot10}{3\\cdot2\\cdot1}\n=\\boxed{220}.\n\\]\nThe answer is choice \\(\\text{D}\\).",
+      "directNodeIds": [
+        "math:stars-and-bars",
+        "math:bijective-counting",
+        "cnm_h237"
+      ],
+      "sourceRef": "amc/2018_AMC_12B_Q22#complement-digits-and-separators"
+    },
+    {
+      "id": "classify-coefficient-pair-sums",
+      "title": "Classify coefficient-pair sums",
+      "directNodeIds": [
+        "cnm_h232"
+      ],
+      "sourceRef": "amc/2018_AMC_12B_Q22#classify-coefficient-pair-sums"
+    }
+  ],
+  "sourceRef": "amc/2018_AMC_12B_Q22"
 }

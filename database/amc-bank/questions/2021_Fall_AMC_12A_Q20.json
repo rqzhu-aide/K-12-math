@@ -1,64 +1,62 @@
 {
-  "Year": 2021,
-  "Level": "AMC 12",
-  "Batch": "Fall A",
-  "Area": "Number Theory",
-  "Number": 20,
-  "Question": "For each positive integer \\(n,\\) let \\(f_1(n)\\) be twice the number of positive integer divisors of \\(n,\\) and for \\(j \\ge 2,\\) let \\(f_j(n) = f_1(f_{j-1}(n)).\\) For how many values of \\(n \\le 50\\) is \\(f_{50}(n) = 12?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(7\\)",
-    "B": "\\(8\\)",
-    "C": "\\(9\\)",
-    "D": "\\(10\\)",
-    "E": "\\(11\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.79",
-    "Concepts": "factor counting; recursion",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2021C/solutions",
-    "SourceSHA256": "e0d194663bebed49e91b5fc44ab962a7b781e51eb50e22fa813a19393e2d7f87",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2021_Fall_AMC_12A_Q20",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "For each positive integer \\(n,\\) let \\(f_1(n)\\) be twice the number of positive integer divisors of \\(n,\\) and for \\(j \\ge 2,\\) let \\(f_j(n) = f_1(f_{j-1}(n)).\\) For how many values of \\(n \\le 50\\) is \\(f_{50}(n) = 12?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(7\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(8\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(9\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(10\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(11\\)"
+      }
     ]
   },
-  "ID": "2021_Fall_AMC_12A_Q20",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:number-theory"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Number Theory",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:number-theory"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:divisor-count-and-sum",
+    "math:function-composition-iteration"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "5ef243967e99fa4a8ff22b35883cd4cba31a0d83c94939ceb1e07e01b907c3b4",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:divisor-count-and-sum",
-      "cnm_h200"
-    ],
-    "supportIds": [
-      "math:prime-factorization"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "prime-pattern-iteration",
+      "title": "Follow divisor counts by prime pattern",
+      "explanation": "The useful observation is that repeated divisor counting quickly reaches a value that stops changing. Write \\(F(n)=f_1(n)\\). In particular,\n\\[\nF(8)=2(4)=8,\\qquad F(12)=2(6)=12.\n\\]\nOnce an iterate reaches either value, every later iterate stays there.\n\nIf \\(n=p_1^{a_1}\\cdots p_k^{a_k}\\), a divisor independently chooses an exponent from \\(0\\) through \\(a_i\\) for each prime. Thus\n\\[\nF(n)=2(a_1+1)\\cdots(a_k+1).\n\\]\nWe can therefore classify inputs by their prime exponents. Below, \\(p,q,r\\) denote distinct primes, and each arrow means another application of \\(F\\).\n\n| Form of \\(n\\) | Successive values under \\(F\\) |\n| --- | --- |\n| \\(1\\) | \\(2\\to4\\to6\\to8\\) |\n| \\(p\\) | \\(4\\to6\\to8\\) |\n| \\(p^2\\) | \\(6\\to8\\) |\n| \\(p^3\\) | \\(8\\) |\n| \\(p^4\\) | \\(10\\to8\\) |\n| \\(p^5\\) | \\(12\\) |\n| \\(pq\\) | \\(8\\) |\n| \\(p^2q\\) | \\(12\\) |\n| \\(p^3q\\) | \\(16\\to10\\to8\\) |\n| \\(p^4q\\) | \\(20\\to12\\) |\n| \\(p^2q^2\\) | \\(18\\to12\\) |\n| \\(pqr\\) | \\(16\\to10\\to8\\) |\n\nThese forms cover every positive integer at most \\(50\\):\n\n- With one distinct prime, the exponent is at most \\(5\\), since \\(2^6=64>50\\).\n- With two distinct primes, an exponent of at least \\(5\\) would give at least \\(2^5\\cdot3=96\\). Exponents at least \\(3\\) and \\(2\\) would give at least \\(2^3\\cdot3^2=72\\). This leaves exactly the five two-prime forms in the table.\n- With three distinct primes, increasing any exponent above \\(1\\) gives at least \\(2^2\\cdot3\\cdot5=60\\).\n- Four distinct primes give at least \\(2\\cdot3\\cdot5\\cdot7=210\\).\n\nEvery row reaches \\(8\\) or \\(12\\) within four applications, so the fiftieth iterate is \\(12\\) exactly for the forms \\(p^2q,p^5,p^2q^2,p^4q\\). Count them as follows:\n\n- For \\(p^2q\\), the squared prime can only be \\(2,3,5\\), since \\(7^2\\cdot2>50\\). Taking \\(p=2\\) gives \\(12,20,28,44\\); taking \\(p=3\\) gives \\(18,45\\); taking \\(p=5\\) gives \\(50\\). There are \\(7\\) numbers.\n- For \\(p^5\\), only \\(2^5=32\\) fits, since \\(3^5>50\\).\n- For \\(p^2q^2=(pq)^2\\), only \\(pq=2\\cdot3\\) fits: the next possible distinct-prime product is \\(2\\cdot5=10\\), whose square exceeds \\(50\\). This gives \\(36\\).\n- For \\(p^4q\\), \\(p\\) must be \\(2\\), since \\(3^4\\cdot2>50\\). Then \\(q\\le50/16\\) and \\(q\\ne2\\), so \\(q=3\\), giving \\(48\\).\n\nUnique prime factorization ensures that these four forms do not overlap. The requested count is\n\\[\n7+1+1+1=\\boxed{10},\n\\]\nwhich is choice \\(\\mathrm{D}\\).",
+      "directNodeIds": [
+        "math:divisor-count-and-sum",
+        "math:function-composition-iteration",
+        "math:prime-factorization"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_12A_Q20#prime-pattern-iteration"
+    }
+  ],
+  "sourceRef": "amc/2021_Fall_AMC_12A_Q20"
 }

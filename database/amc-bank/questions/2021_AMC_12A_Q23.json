@@ -1,77 +1,78 @@
 {
-  "Year": 2021,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Counting & Probability",
-  "Number": 23,
-  "Question": "Frieda the frog begins a sequence of hops on a \\(3\\times 3\\) grid of squares, moving one square on each hop and choosing at random the direction of each hop: up, down, left, or right. She does not hop diagonally. When the direction of a hop would take Frieda off the grid, she “wraps around” and jumps to the opposite edge. For example, if Frieda begins in the center square and makes two hops “up,” the first hop places her in the top row middle square, and the second hop causes her to jump to the opposite edge, landing in the bottom row middle square. Suppose Frieda starts from the center square, makes at most four hops at random, and stops hopping if she lands on a corner square. What is the probability that she reaches a corner square on one of the four hops?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{9}{16}\\)",
-    "B": "\\(\\dfrac{5}{8}\\)",
-    "C": "\\(\\dfrac{3}{4}\\)",
-    "D": "\\(\\dfrac{25}{32}\\)",
-    "E": "\\(\\dfrac{13}{16}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.97",
-    "Concepts": "recursive probability; random walk",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2021A/solutions",
-    "SourceSHA256": "d60ce8314d8d1d85a398299f05f7fffa6b1d5d75e968634cd640caf112a0f2d2",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2021_AMC_12A_Q23",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "21e8510be29777d112ffd9d8167c14555eefb936132b444bf07783196dc05eba",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_285"
-    ],
-    "supportIds": [],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2021_AMC_12A_Q23",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Frieda the frog begins a sequence of hops on a \\(3\\times 3\\) grid of squares, moving one square on each hop and choosing at random the direction of each hop: up, down, left, or right. She does not hop diagonally. When the direction of a hop would take Frieda off the grid, she “wraps around” and jumps to the opposite edge. For example, if Frieda begins in the center square and makes two hops “up,” the first hop places her in the top row middle square, and the second hop causes her to jump to the opposite edge, landing in the bottom row middle square. Suppose Frieda starts from the center square, makes at most four hops at random, and stops hopping if she lands on a corner square. What is the probability that she reaches a corner square on one of the four hops?",
+    "choices": [
       {
-        "id": "symmetry-state-recursion",
-        "label": "Track center and edge states",
-        "nodeIds": [
-          "math:recursive-counting-probability"
-        ]
+        "id": "A",
+        "content": "\\(\\dfrac{9}{16}\\)"
       },
       {
-        "id": "four-hop-path-enumeration",
-        "label": "Count four-direction sequences",
-        "nodeIds": [
-          "cnm_311",
-          "cnm_h231"
-        ]
+        "id": "B",
+        "content": "\\(\\dfrac{5}{8}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac{3}{4}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac{25}{32}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac{13}{16}\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h138",
+    "cnm_h245"
+  ],
+  "solutions": [
+    {
+      "id": "square-type-paths",
+      "title": "Group hops by square type",
+      "explanation": "Only the type of square matters: all four noncorner edge squares have the same transition probabilities. Denote the center by \\(m\\), a noncorner edge square by \\(e\\), and a corner by \\(c\\).\n\nFrom \\(m\\), every hop reaches an \\(e\\). From any \\(e\\), two directions reach corners, one reaches the center, and one wraps around to another \\(e\\). Thus\n\\[\nP(e\\to c)=\\frac12,\\qquad\nP(e\\to m)=\\frac14,\\qquad\nP(e\\to e)=\\frac14.\n\\]\nWe can now list the square-type sequences that first reach a corner within four hops:\n\\[\n\\begin{array}{c|c}\n\\text{Sequence, including the starting square}&\\text{Probability}\\\\ \\hline\nm\\to e\\to c&1\\cdot\\frac12=\\frac12\\\\\nm\\to e\\to e\\to c&1\\cdot\\frac14\\cdot\\frac12=\\frac18\\\\\nm\\to e\\to m\\to e\\to c&1\\cdot\\frac14\\cdot1\\cdot\\frac12=\\frac18\\\\\nm\\to e\\to e\\to e\\to c&1\\cdot\\frac14\\cdot\\frac14\\cdot\\frac12=\\frac1{32}\n\\end{array}\n\\]\nThese cases are exhaustive. A corner cannot be reached on hop one. To reach a corner on hop two or three, the preceding squares must be \\(me\\) or \\(mee\\), respectively. To first reach one on hop four, hop three must end at \\(e\\), and hop two can have ended only at \\(m\\) or \\(e\\), giving the last two sequences.\n\nThe four cases are disjoint because they specify different square-type histories up to the first corner. Their probabilities therefore add:\n\\[\n\\frac12+\\frac18+\\frac18+\\frac1{32}\n=\\boxed{\\frac{25}{32}}.\n\\]\nThe answer is choice \\(\\text{D}\\).",
+      "directNodeIds": [
+        "cnm_h245",
+        "cnm_h138"
+      ],
+      "sourceRef": "amc/2021_AMC_12A_Q23#square-type-paths"
+    },
+    {
+      "id": "symmetry-state-recursion",
+      "title": "Track center and edge states",
+      "directNodeIds": [
+        "math:recursive-counting-probability"
+      ],
+      "sourceRef": "amc/2021_AMC_12A_Q23#symmetry-state-recursion"
+    },
+    {
+      "id": "four-hop-path-enumeration",
+      "title": "Count four-direction sequences",
+      "directNodeIds": [
+        "cnm_311",
+        "cnm_h231"
+      ],
+      "sourceRef": "amc/2021_AMC_12A_Q23#four-hop-path-enumeration"
+    }
+  ],
+  "sourceRef": "amc/2021_AMC_12A_Q23"
 }

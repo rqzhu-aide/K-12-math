@@ -1,63 +1,63 @@
 {
-  "Year": 2024,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 10,
-  "Question": "A list of \\(9\\) real numbers consists of \\(1,\\) \\(2.2,\\) \\(3.2,\\) \\(5.2,\\) \\(6.2,\\) and \\(7,\\) as well as \\(x,\\) \\(y,\\) \\(z\\) with \\(x \\le y \\le z.\\) The range of the list is \\(7,\\) and the mean and median are both positive integers. How many ordered triples \\((x, y, z)\\) are possible?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(1\\)",
-    "B": "\\(2\\)",
-    "C": "\\(3\\)",
-    "D": "\\(4\\)",
-    "E": "infinitely many"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.54",
-    "Concepts": "mean; median (data); range; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2024B/solutions",
-    "SourceSHA256": "d4c4afd69ead6e9babb327526e913666b05a6c9bb5b0632e9ea7809ec564c295",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2024_AMC_12B_Q10",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "A list of \\(9\\) real numbers consists of \\(1,\\) \\(2.2,\\) \\(3.2,\\) \\(5.2,\\) \\(6.2,\\) and \\(7,\\) as well as \\(x,\\) \\(y,\\) \\(z\\) with \\(x \\le y \\le z.\\) The range of the list is \\(7,\\) and the mean and median are both positive integers. How many ordered triples \\((x, y, z)\\) are possible?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(1\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(2\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(3\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(4\\)"
+      },
+      {
+        "id": "E",
+        "content": "infinitely many"
+      }
     ]
   },
-  "ID": "2024_AMC_12B_Q10",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_211",
+    "cnm_213",
+    "cnm_215"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "4088b60e502dc2998a5881c78c13e27a5059bfed3e73432cf54cd747233971b9",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_215",
-      "cnm_211",
-      "cnm_213"
-    ],
-    "supportIds": [],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "integer-median-cases",
+      "title": "Split by the integer median",
+      "explanation": "The integer median gives a useful way to divide the possibilities into a few cases.\n\nBecause the list contains both \\(1\\) and \\(7\\) and has range \\(7\\), every entry lies in \\([0,8]\\). There can be at most four entries below \\(2.2\\), and at most four above \\(6.2\\). Thus the fifth entry, the median, lies between \\(2.2\\) and \\(6.2\\). Its possible integer values are \\(3,4,5,6\\), each of which must be one of \\(x,y,z\\).\n\nThe six fixed entries sum to \\(24.8\\). Since one unknown is between \\(3\\) and \\(6\\) and the other two lie in \\([0,8]\\), the total sum \\(S\\) satisfies\n\\[\n27.8\\le S=24.8+x+y+z\\le46.8.\n\\]\nThe mean is an integer, so \\(S\\) is a multiple of \\(9\\). Therefore\n\\[\nS\\in\\{36,45\\},\\qquad x+y+z\\in\\{11.2,20.2\\}.\n\\]\nNow consider each median.\n\n1. If the median is \\(3\\), only two fixed entries are below it. All three unknowns must therefore be at most \\(3\\), giving \\(x+y+z\\le9\\). This is impossible.\n\n2. If the median is \\(4\\), three fixed entries are below it and three are above it, so \\(y=4\\). Since \\(x\\le4\\) and \\(z\\le8\\), the unknowns sum to at most \\(16\\). Hence their sum is \\(11.2\\), giving \\(x+z=7.2\\). If the minimum were \\(1\\), the maximum would be \\(8\\), forcing \\(z=8\\) and \\(x=-0.8\\), impossible. If the maximum were \\(7\\), the minimum would be \\(0\\), forcing \\(x=0\\) and \\(z=7.2\\), also impossible. Thus the extremes are \\(x,z\\), with \\(z-x=7\\). Combining this with \\(x+z=7.2\\) gives \\(2z=14.2\\), so the triple is \\((0.1,4,7.1)\\).\n\n3. If the median is \\(5\\), the same rank count gives \\(y=5\\). The unknowns sum to at most \\(5+5+8=18\\), so their sum is \\(11.2\\). Thus \\(x+z=6.2\\). Since \\(x\\ge0\\), we have \\(z\\le6.2\\), making \\(7\\) the maximum. The minimum must then be \\(0\\), so the triple is \\((0,5,6.2)\\).\n\n4. If the median is \\(6\\), four fixed entries are below it. Every unknown must be at least \\(6\\), and \\(x=6\\). Their sum is at least \\(18\\), so it must be \\(20.2\\), giving \\(y+z=14.2\\). The minimum is \\(1\\), so the maximum must be \\(8\\). Hence \\(z=8\\), and the triple is \\((6,6.2,8)\\).\n\nThe three surviving triples have range \\(7\\), medians \\(4,5,6\\), and means \\(4,4,5\\), respectively. The median cases are exhaustive and disjoint, so there are exactly \\(\\boxed{3}\\) ordered triples, choice \\(\\text{C}\\).",
+      "directNodeIds": [
+        "cnm_211",
+        "cnm_213",
+        "cnm_215"
+      ],
+      "sourceRef": "amc/2024_AMC_12B_Q10#integer-median-cases"
+    }
+  ],
+  "sourceRef": "amc/2024_AMC_12B_Q10"
 }

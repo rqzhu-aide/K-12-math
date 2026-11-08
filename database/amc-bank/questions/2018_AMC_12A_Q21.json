@@ -1,82 +1,78 @@
 {
-  "Year": 2018,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 21,
-  "Question": "Which of the following polynomials has the greatest real root?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(x^{19} + 2018x^{11} + 1\\)",
-    "B": "\\(x^{17} + 2018x^{11} + 1\\)",
-    "C": "\\(x^{19} + 2018x^{13} + 1\\)",
-    "D": "\\(x^{17} + 2018x^{13} + 1\\)",
-    "E": "\\(2019x + 2018\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "polynomial; inequality; bounding to limit cases",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2018A/solutions",
-    "SourceSHA256": "64f36c5fcc42ad50f73e25ea243f68a61be5a407a8e7deed744d4065a363f384",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2018_AMC_12A_Q21",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "6edeb927a02282350511274d3e8b57a3b271c0ca16df846b9ab5b71286797980",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_h049"
-    ],
-    "supportIds": [
-      "cnm_h019",
-      "cnm_042"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2018_AMC_12A_Q21",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Which of the following polynomials has the greatest real root?",
+    "choices": [
       {
-        "id": "algebraic-power-order",
-        "label": "Compare powers and prove monotonicity",
-        "nodeIds": [
-          "cnm_h033",
-          "cnm_h018"
-        ]
+        "id": "A",
+        "content": "\\(x^{19} + 2018x^{11} + 1\\)"
       },
       {
-        "id": "derivative-monotonicity",
-        "label": "Establish monotonicity with derivatives",
-        "nodeIds": [
-          "cnm_h221",
-          "cnm_h222",
-          "cnm_h224"
-        ]
+        "id": "B",
+        "content": "\\(x^{17} + 2018x^{11} + 1\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(x^{19} + 2018x^{13} + 1\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(x^{17} + 2018x^{13} + 1\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(2019x + 2018\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "level": "AMC 12"
+  },
+  "assessedNodeIds": [
+    "cnm_h049",
+    "cnm_h032"
+  ],
+  "solutions": [
+    {
+      "id": "monotone-root-comparison",
+      "title": "Compare increasing polynomials",
+      "explanation": "The productive observation is that we can compare the locations of the roots without solving for them. Write \\(f_A,f_B,f_C,f_D,f_E\\) for the five polynomials.\n\nEvery odd power of \\(x\\) is strictly increasing on the real line. Thus each listed polynomial is strictly increasing. For choices A through D, the values at \\(-1\\) and \\(0\\) are \\(-2018\\) and \\(1\\); for E, they are \\(-1\\) and \\(2018\\). By continuity and strict increase, each polynomial has exactly one real root, and it lies in \\((-1,0)\\).\n\nOn this interval, increasing an odd exponent makes the power less negative. In particular,\n\\[\nx^{19}>x^{17},\\qquad x^{13}>x^{11}.\n\\]\nIt follows that\n\\[\nf_C(x)>f_A(x)>f_B(x),\\qquad f_D(x)>f_B(x).\n\\]\nAt the root of \\(f_B\\), the other three polynomials are positive. Since they are increasing, their roots must lie to its left. This eliminates A, C, and D.\n\nTo compare with E, first note that \\(0<x^6<1\\), so\n\\[\nx^6+2018>2019x^6.\n\\]\nMultiplying by \\(x^{11}<0\\) reverses the inequality, giving\n\\[\nf_B(x)=x^{11}(x^6+2018)+1<2019x^{17}+1.\n\\]\nThe root of E is\n\\[\nr_E=-\\frac{2018}{2019}=-\\left(1-\\frac1{2019}\\right).\n\\]\nWe use Bernoulli's inequality, \\((1-u)^n\\ge 1-nu\\) for \\(0<u<1\\) and positive integers \\(n\\). For completeness, the case \\(n=1\\) is equality, and the induction step is\n\\[\n(1-u)^{n+1}\\ge(1-nu)(1-u)\n=1-(n+1)u+nu^2\\ge1-(n+1)u.\n\\]\nApplying this with \\(u=\\tfrac1{2019}\\) and \\(n=17\\), we obtain\n\\[\n\\begin{aligned}\nf_B(r_E)\n&<1-2019\\left(1-\\frac1{2019}\\right)^{17}\\\\\n&\\le1-2019\\left(1-\\frac{17}{2019}\\right)\\\\\n&=-2001<0.\n\\end{aligned}\n\\]\nBecause \\(f_B\\) is increasing, its root lies to the right of \\(r_E\\) as well. Therefore the polynomial with the greatest real root is\n\\[\n\\boxed{x^{17}+2018x^{11}+1},\n\\]\nchoice \\(\\mathrm{B}\\).",
+      "directNodeIds": [
+        "cnm_h049",
+        "cnm_h032",
+        "cnm_h018",
+        "cnm_h214"
+      ],
+      "sourceRef": "amc/2018_AMC_12A_Q21#monotone-root-comparison"
+    },
+    {
+      "id": "algebraic-power-order",
+      "title": "Compare powers and prove monotonicity",
+      "directNodeIds": [
+        "cnm_h033",
+        "cnm_h018"
+      ],
+      "sourceRef": "amc/2018_AMC_12A_Q21#algebraic-power-order"
+    },
+    {
+      "id": "derivative-monotonicity",
+      "title": "Establish monotonicity with derivatives",
+      "directNodeIds": [
+        "cnm_h221",
+        "cnm_h222",
+        "cnm_h224"
+      ],
+      "sourceRef": "amc/2018_AMC_12A_Q21#derivative-monotonicity"
+    }
+  ],
+  "sourceRef": "amc/2018_AMC_12A_Q21"
 }

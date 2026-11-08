@@ -1,64 +1,58 @@
 {
-  "Year": 2019,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 14,
-  "Question": "Let \\(S\\) be the set of all positive integer divisors of \\(100{,}000.\\) How many numbers are the product of two distinct elements of \\(S?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(98\\)",
-    "B": "\\(100\\)",
-    "C": "\\(117\\)",
-    "D": "\\(119\\)",
-    "E": "\\(121\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "factor; prime factorization; complementary counting",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2019B/solutions",
-    "SourceSHA256": "81a29c86c88dc45161237b74c8248a0d917fb568aef2ba00f04fd8a9bf4a5599",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2019_AMC_12B_Q14",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Let \\(S\\) be the set of all positive integer divisors of \\(100{,}000.\\) How many numbers are the product of two distinct elements of \\(S?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(98\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(100\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(117\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(119\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(121\\)"
+      }
     ]
   },
-  "ID": "2019_AMC_12B_Q14",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "fa4e14c7ce0dc8ba797242afebad3bd9773c39b38d88d21525f6223d0f297236",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:prime-factorization",
-      "cnm_h231"
-    ],
-    "supportIds": [
-      "cnm_h010"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "level": "AMC 12"
+  },
+  "assessedNodeIds": [
+    "math:prime-factorization",
+    "cnm_h231"
+  ],
+  "solutions": [
+    {
+      "id": "count-product-exponents",
+      "title": "Count possible prime exponents",
+      "explanation": "The useful observation is that prime exponents identify each possible product uniquely. Since\n\\[\n100{,}000=2^5 5^5,\n\\]\nevery divisor in \\(S\\) has the form \\(2^i5^j\\), where \\(0\\le i,j\\le5\\). A product of two such divisors therefore has the form \\(2^a5^b\\), with \\(0\\le a,b\\le10\\). There are \\(11\\cdot11=121\\) candidate exponent pairs.\n\nFour pairs are impossible when the factors must be distinct:\n\\[\n(0,0),\\quad(0,10),\\quad(10,0),\\quad(10,10).\n\\]\nIndeed, an exponent sum of \\(0\\) forces both corresponding exponents to be \\(0\\), and a sum of \\(10\\) forces both to be \\(5\\). At each of these four corners, the two factors must therefore be equal.\n\nTo prove that every remaining pair works, use these factorizations:\n\\[\n\\begin{array}{c|c|c}\n\\text{Range}&\\text{First factor}&\\text{Second factor}\\\\ \\hline\n0\\le a\\le5,\\ 0\\le b\\le5&1&2^a5^b\\\\\n6\\le a\\le10,\\ 0\\le b\\le5&2^5&2^{a-5}5^b\\\\\n0\\le a\\le5,\\ 6\\le b\\le10&5^5&2^a5^{b-5}\\\\\n6\\le a\\le10,\\ 6\\le b\\le10&2^55^5&2^{a-5}5^{b-5}\n\\end{array}\n\\]\nBoth factors in each row belong to \\(S\\), and they are equal only at the excluded corner in that row. The four ranges cover all exponent pairs without overlap. Also, unique prime factorization ensures that different pairs give different products.\n\nThus the number of products is\n\\[\n121-4=\\boxed{117},\n\\]\nwhich is choice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "math:prime-factorization",
+        "cnm_h231",
+        "cnm_h010"
+      ],
+      "sourceRef": "amc/2019_AMC_12B_Q14#count-product-exponents"
+    }
+  ],
+  "sourceRef": "amc/2019_AMC_12B_Q14"
 }

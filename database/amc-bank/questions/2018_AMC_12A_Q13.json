@@ -1,65 +1,58 @@
 {
-  "Year": 2018,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 13,
-  "Question": "How many nonnegative integers can be written in the form\n\n\\[ \\begin{aligned} &a_7 \\cdot 3^7 + a_6 \\cdot 3^6 + a_5 \\cdot 3^5 \\\\ &\\quad {}+ a_4 \\cdot 3^4 + a_3 \\cdot 3^3 + a_2 \\cdot 3^2 \\\\ &\\quad {}+ a_1 \\cdot 3^1 + a_0 \\cdot 3^0, \\end{aligned} \\]\n\nwhere \\(a_i \\in \\{-1, 0, 1\\}\\) for \\(0 \\le i \\le 7?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(512\\)",
-    "B": "\\(729\\)",
-    "C": "\\(1094\\)",
-    "D": "\\(3281\\)",
-    "E": "\\(59{,}048\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "number base; bijection; symmetry",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2018A/solutions",
-    "SourceSHA256": "64f36c5fcc42ad50f73e25ea243f68a61be5a407a8e7deed744d4065a363f384",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2018_AMC_12A_Q13",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "How many nonnegative integers can be written in the form\n\n\\[ \\begin{aligned} &a_7 \\cdot 3^7 + a_6 \\cdot 3^6 + a_5 \\cdot 3^5 \\\\ &\\quad {}+ a_4 \\cdot 3^4 + a_3 \\cdot 3^3 + a_2 \\cdot 3^2 \\\\ &\\quad {}+ a_1 \\cdot 3^1 + a_0 \\cdot 3^0, \\end{aligned} \\]\n\nwhere \\(a_i \\in \\{-1, 0, 1\\}\\) for \\(0 \\le i \\le 7?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(512\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(729\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(1094\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(3281\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(59{,}048\\)"
+      }
     ]
   },
-  "ID": "2018_AMC_12A_Q13",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "ad0a673f4d408b474ef58648f00e245dff207aefb361723207ae8a4c798b7cf8",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_024",
-      "math:bijective-counting"
-    ],
-    "supportIds": [
-      "cnm_h231",
-      "cnm_h210"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "level": "AMC 12"
+  },
+  "assessedNodeIds": [
+    "cnm_024",
+    "math:bijective-counting"
+  ],
+  "solutions": [
+    {
+      "id": "shift-to-ternary",
+      "title": "Shift the digits to base 3",
+      "explanation": "Adding \\(1\\) to each coefficient changes the allowed digits \\(-1,0,1\\) into the ordinary base-\\(3\\) digits \\(0,1,2\\). This lets us count distinct values without counting the same integer twice.\n\nWrite a represented integer as \\(N=a_7 3^7+\\cdots+a_0\\), and let \\(C=3^7+\\cdots+3+1\\). Then\n\\[\nN+C=(a_7+1)3^7+\\cdots+(a_1+1)3+(a_0+1).\n\\]\nThe right side is an eight-digit base-\\(3\\) representation, allowing leading zeros. Every such digit string is possible, and subtracting \\(1\\) from each digit recovers its coefficients. Uniqueness of ordinary base-\\(3\\) representation means different strings give different values of \\(N+C\\), and hence different values of \\(N\\).\n\nThere are three choices for each of the eight digits, so there are \\(3^8=6561\\) represented integers when negative values are included.\n\nZero is represented by taking all coefficients to be zero. Negating every coefficient changes \\(N\\) into \\(-N\\), so the nonzero represented values pair into one positive and one negative value. The number of nonnegative values is therefore\n\\[\n1+\\frac{6561-1}{2}=1+3280=3281.\n\\]\nThe answer is \\(\\boxed{3281}\\), choice \\(\\text{D}\\).",
+      "directNodeIds": [
+        "cnm_024",
+        "math:bijective-counting",
+        "cnm_h231"
+      ],
+      "sourceRef": "amc/2018_AMC_12A_Q13#shift-to-ternary"
+    }
+  ],
+  "sourceRef": "amc/2018_AMC_12A_Q13"
 }

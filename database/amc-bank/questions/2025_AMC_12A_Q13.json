@@ -1,79 +1,71 @@
 {
-  "Year": 2025,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Counting & Probability",
-  "Number": 13,
-  "Question": "Let \\(C = \\{1, 2, 3, \\ldots, 13\\}.\\) Let \\(N\\) be the greatest integer such that there exists a subset of \\(C\\) with \\(N\\) elements that does not contain five consecutive integers. Suppose \\(N\\) integers are chosen at random from \\(C\\) without replacement. What is the probability that the chosen elements do not include five consecutive integers?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{3}{130}\\)",
-    "B": "\\(\\dfrac{3}{143}\\)",
-    "C": "\\(\\dfrac{5}{143}\\)",
-    "D": "\\(\\dfrac{1}{26}\\)",
-    "E": "\\(\\dfrac{5}{78}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "reviewed-source-concepts",
-    "Concepts": "combinations; basic probability; extremal argument",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2025A/solutions",
-    "SourceSHA256": "ba7a6860f4d04021d5c9f61f05d33b3cfddca239176293ee411babae6573c53c",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2025_AMC_12A_Q13",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "647d50b07db927d4590c952b939d2c93322eafc63b06c1b236ce51ff28d70ebc",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:extremal-principle",
-      "cnm_h137"
-    ],
-    "supportIds": [
-      "cnm_h237"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2025_AMC_12A_Q13",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Let \\(C = \\{1, 2, 3, \\ldots, 13\\}.\\) Let \\(N\\) be the greatest integer such that there exists a subset of \\(C\\) with \\(N\\) elements that does not contain five consecutive integers. Suppose \\(N\\) integers are chosen at random from \\(C\\) without replacement. What is the probability that the chosen elements do not include five consecutive integers?",
+    "choices": [
       {
-        "id": "enumerate-omitted-pairs",
-        "label": "Enumerate omitted pairs",
-        "nodeIds": [
-          "cnm_h232"
-        ]
+        "id": "A",
+        "content": "\\(\\dfrac{3}{130}\\)"
       },
       {
-        "id": "count-run-deficits",
-        "label": "Count deficits in chosen runs",
-        "nodeIds": [
-          "math:stars-and-bars"
-        ]
+        "id": "B",
+        "content": "\\(\\dfrac{3}{143}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac{5}{143}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac{1}{26}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac{5}{78}\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:extremal-principle",
+    "cnm_h137"
+  ],
+  "solutions": [
+    {
+      "id": "enumerate-omitted-pairs",
+      "title": "Count the omitted pairs",
+      "explanation": "It is useful to track the omitted integers: each block of five consecutive integers must contain an omission.\n\nOmitting \\(5\\) and \\(10\\) leaves consecutive runs of lengths \\(4,4,3\\), so a valid subset with \\(11\\) elements exists. A subset with at least \\(12\\) elements omits at most one integer. It therefore cannot interrupt both disjoint blocks \\(\\{1,2,3,4,5\\}\\) and \\(\\{9,10,11,12,13\\}\\), so it contains one of these entire blocks. Hence \\(N=11\\).\n\nNow exactly two integers are omitted. One must lie in \\(\\{1,2,3,4,5\\}\\), and the other must lie in \\(\\{9,10,11,12,13\\}\\). Call them \\(a\\) and \\(b\\), respectively. In particular, \\(6,7,8\\) are all chosen.\n\nTo interrupt \\(\\{4,5,6,7,8\\}\\), we must have \\(a=4\\) or \\(a=5\\).\n\n- If \\(a=4\\), then \\(5,6,7,8\\) are chosen, so \\(b=9\\) is necessary to interrupt \\(\\{5,6,7,8,9\\}\\).\n- If \\(a=5\\), then \\(6,7,8\\) are chosen, so interrupting \\(\\{6,7,8,9,10\\}\\) requires \\(b=9\\) or \\(b=10\\).\n\nThus the only possible omitted pairs are\n\\[\n\\{4,9\\},\\qquad \\{5,9\\},\\qquad \\{5,10\\}.\n\\]\nTheir consecutive chosen runs have lengths \\((3,4,4)\\), \\((4,3,4)\\), and \\((4,4,3)\\), respectively. All three work. Distinct omitted pairs give distinct subsets, so there are exactly three favorable subsets.\n\nAll subsets of size \\(11\\) are equally likely, and their number is\n\\[\n\\binom{13}{11}=\\binom{13}{2}=\\frac{13\\cdot12}{2}=78.\n\\]\nThe required probability is \\(\\frac{3}{78}=\\boxed{\\frac{1}{26}}\\), choice D.",
+      "directNodeIds": [
+        "math:extremal-principle",
+        "cnm_h230",
+        "cnm_h137",
+        "cnm_h237"
+      ],
+      "sourceRef": "amc/2025_AMC_12A_Q13#enumerate-omitted-pairs"
+    },
+    {
+      "id": "count-run-deficits",
+      "title": "Count deficits in chosen runs",
+      "directNodeIds": [
+        "math:stars-and-bars"
+      ],
+      "sourceRef": "amc/2025_AMC_12A_Q13#count-run-deficits"
+    }
+  ],
+  "sourceRef": "amc/2025_AMC_12A_Q13"
 }

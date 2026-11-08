@@ -1,64 +1,58 @@
 {
-  "Year": 2019,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 18,
-  "Question": "Henry decides one morning to do a workout, and he walks \\(\\tfrac{3}{4}\\) of the way from his home to his gym. The gym is \\(2\\) kilometers away from Henry’s home. At that point, he changes his mind and walks \\(\\tfrac{3}{4}\\) of the way from where he is back toward home. When he reaches that point, he changes his mind again and walks \\(\\tfrac{3}{4}\\) of the distance from there back toward the gym. If Henry keeps changing his mind when he has walked \\(\\tfrac{3}{4}\\) of the distance toward either the gym or home from the point where he last changed his mind, he will get very close to walking back and forth between a point \\(A\\) kilometers from home and a point \\(B\\) kilometers from home. What is \\(|A-B|?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\( \\frac{2}{3} \\)",
-    "B": "\\( 1 \\)",
-    "C": "\\( 1 \\frac{1}{5} \\)",
-    "D": "\\( 1 \\frac{1}{4} \\)",
-    "E": "\\( 1 \\frac{1}{2} \\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "recursion; linear equation",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2019B/solutions",
-    "SourceSHA256": "00050f6f55ecb76e75cb08e2b26558071c82d79be2f0de76517969fb677a2e97",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2019_AMC_10B_Q18",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Henry decides one morning to do a workout, and he walks \\(\\tfrac{3}{4}\\) of the way from his home to his gym. The gym is \\(2\\) kilometers away from Henry’s home. At that point, he changes his mind and walks \\(\\tfrac{3}{4}\\) of the way from where he is back toward home. When he reaches that point, he changes his mind again and walks \\(\\tfrac{3}{4}\\) of the distance from there back toward the gym. If Henry keeps changing his mind when he has walked \\(\\tfrac{3}{4}\\) of the distance toward either the gym or home from the point where he last changed his mind, he will get very close to walking back and forth between a point \\(A\\) kilometers from home and a point \\(B\\) kilometers from home. What is \\(|A-B|?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\( \\frac{2}{3} \\)"
+      },
+      {
+        "id": "B",
+        "content": "\\( 1 \\)"
+      },
+      {
+        "id": "C",
+        "content": "\\( 1 \\frac{1}{5} \\)"
+      },
+      {
+        "id": "D",
+        "content": "\\( 1 \\frac{1}{4} \\)"
+      },
+      {
+        "id": "E",
+        "content": "\\( 1 \\frac{1}{2} \\)"
+      }
     ]
   },
-  "ID": "2019_AMC_10B_Q18",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "20796ac816115767f1da1fdcd3ca0efc323c0bcae428344e1f7f8f2b2c503f20",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:infinite-geometric-series"
-    ],
-    "supportIds": [
-      "cnm_h200",
-      "cnm_p179"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "level": "AMC 10"
+  },
+  "assessedNodeIds": [
+    "cnm_h200",
+    "math:infinite-geometric-series"
+  ],
+  "solutions": [
+    {
+      "id": "two-walk-recurrence",
+      "title": "Combine pairs of walks",
+      "explanation": "Walking \\(\\tfrac34\\) of the way toward a destination leaves \\(\\tfrac14\\) of the original distance to that destination. Combining one gymward walk with one homeward walk gives a useful recurrence.\n\nLet \\(a_k\\) be Henry's distance from home after his \\(k\\)th gymward walk, and let \\(b_k\\) be his distance from home after his \\(k\\)th homeward walk. Set \\(b_0=0\\). Then\n\\[\na_k=b_{k-1}+\\frac34(2-b_{k-1})\n=\\frac32+\\frac14b_{k-1}.\n\\]\nOn the following homeward walk, he keeps one-quarter of this distance from home, so\n\\[\nb_k=\\frac14a_k=\\frac38+\\frac1{16}b_{k-1}.\n\\]\nStarting from \\(b_0=0\\), repeated substitution gives\n\\[\nb_k=\\frac38\\left(1+\\frac1{16}+\\cdots+\\left(\\frac1{16}\\right)^{k-1}\\right).\n\\]\nSince the common ratio \\(\\tfrac1{16}\\) is less than \\(1\\), the homeward stopping points approach\n\\[\nB=\\frac{\\tfrac38}{1-\\tfrac1{16}}\n=\\frac38\\cdot\\frac{16}{15}=\\frac25.\n\\]\nThe gymward stopping points therefore approach\n\\[\nA=\\frac32+\\frac14B\n=\\frac32+\\frac1{10}=\\frac85.\n\\]\nHence\n\\[\n|A-B|=\\frac85-\\frac25=\\boxed{\\frac65\\text{ kilometers}},\n\\]\nwhich is \\(1\\tfrac15\\) kilometers, choice \\(\\mathrm{C}\\).",
+      "directNodeIds": [
+        "cnm_h200",
+        "math:infinite-geometric-series",
+        "cnm_p179"
+      ],
+      "sourceRef": "amc/2019_AMC_10B_Q18#two-walk-recurrence"
+    }
+  ],
+  "sourceRef": "amc/2019_AMC_10B_Q18"
 }

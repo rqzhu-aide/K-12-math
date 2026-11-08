@@ -1,80 +1,77 @@
 {
-  "Year": 2018,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 21,
-  "Question": "Mary chose an even \\(4\\)-digit number \\(n.\\) She wrote down all the divisors of \\(n\\) in increasing order from left to right: \\(1,\\) \\(2,\\) \\(\\ldots,\\) \\(\\frac{n}{2},\\) \\(n.\\) At some moment Mary wrote \\(323\\) as a divisor of \\(n.\\) What is the smallest possible value of the next divisor written to the right of \\(323?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(324\\)",
-    "B": "\\(330\\)",
-    "C": "\\(340\\)",
-    "D": "\\(361\\)",
-    "E": "\\(646\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "factor; least common multiple; prime factorization",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2018B/solutions",
-    "SourceSHA256": "4a6ded1649dafce105e5a8443fb92e73eb35400613d2c1885c50fa03dd6eab45",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2018_AMC_10B_Q21",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "13c91e2c9ccb0d9a48a464041c835ebf4ef2b5f1106850f540e1a2797d793bcc",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:extremal-principle"
-    ],
-    "supportIds": [
-      "math:prime-factorization"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2018_AMC_10B_Q21",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Mary chose an even \\(4\\)-digit number \\(n.\\) She wrote down all the divisors of \\(n\\) in increasing order from left to right: \\(1,\\) \\(2,\\) \\(\\ldots,\\) \\(\\frac{n}{2},\\) \\(n.\\) At some moment Mary wrote \\(323\\) as a divisor of \\(n.\\) What is the smallest possible value of the next divisor written to the right of \\(323?\\)",
+    "choices": [
       {
-        "id": "least-common-multiple-bound",
-        "label": "Bound the common multiple",
-        "nodeIds": [
-          "cnm_p159",
-          "math:prime-factorization"
-        ]
+        "id": "A",
+        "content": "\\(324\\)"
       },
       {
-        "id": "bounded-complementary-divisor",
-        "label": "Bound the complementary divisor",
-        "nodeIds": [
-          "math:prime-factorization",
-          "math:extremal-principle"
-        ]
+        "id": "B",
+        "content": "\\(330\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(340\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(361\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(646\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "level": "AMC 10"
+  },
+  "assessedNodeIds": [
+    "math:extremal-principle",
+    "math:prime-factorization"
+  ],
+  "solutions": [
+    {
+      "id": "bound-divisor-gap",
+      "title": "Bound the gap between divisors",
+      "explanation": "The four-digit limit forces \\(323\\) and the next divisor to share a factor. Let that next divisor be \\(d\\). If \\(\\gcd(d,323)=1\\), their least common multiple would be \\(323d\\). Since both divide \\(n\\), this would imply\n\\[\nn\\ge 323d>323^2>10000,\n\\]\nwhich is impossible.\n\nTherefore \\(g=\\gcd(d,323)>1\\). Because \\(323=17\\cdot19\\), we have \\(g\\ge17\\). Also, \\(g\\) divides the positive difference \\(d-323\\), so\n\\[\nd-323\\ge g\\ge17.\n\\]\nConsequently, \\(d\\ge340\\).\n\nThis bound is attained by the even four-digit number\n\\[\nn=17\\cdot19\\cdot20=6460.\n\\]\nIndeed, \\(6460/323=20\\) and \\(6460/340=19\\), so both numbers are divisors. The bound already proved rules out any divisor between them.\n\nThe smallest possible next divisor is \\(\\boxed{340}\\), choice \\(\\text{C}\\).",
+      "directNodeIds": [
+        "math:extremal-principle",
+        "math:prime-factorization",
+        "cnm_p158",
+        "cnm_p159"
+      ],
+      "sourceRef": "amc/2018_AMC_10B_Q21#bound-divisor-gap"
+    },
+    {
+      "id": "least-common-multiple-bound",
+      "title": "Bound the common multiple",
+      "directNodeIds": [
+        "cnm_p159",
+        "math:prime-factorization"
+      ],
+      "sourceRef": "amc/2018_AMC_10B_Q21#least-common-multiple-bound"
+    },
+    {
+      "id": "bounded-complementary-divisor",
+      "title": "Bound the complementary divisor",
+      "directNodeIds": [
+        "math:prime-factorization",
+        "math:extremal-principle"
+      ],
+      "sourceRef": "amc/2018_AMC_10B_Q21#bounded-complementary-divisor"
+    }
+  ],
+  "sourceRef": "amc/2018_AMC_10B_Q21"
 }

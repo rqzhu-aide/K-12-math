@@ -1,63 +1,60 @@
 {
-  "Year": 2024,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Counting & Probability",
-  "Number": 6,
-  "Question": "What is the minimum number of successive swaps of adjacent letters in the string ABCDEF that are needed to change the string to FEDCBA?\n\n(For example, \\(3\\) swaps are required to change ABC to CBA; one such sequence of swaps is ABC \\(\\to\\) BAC \\(\\to\\) BCA \\(\\to\\) CBA.)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(6\\)",
-    "B": "\\(10\\)",
-    "C": "\\(12\\)",
-    "D": "\\(15\\)",
-    "E": "\\(24\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.92",
-    "Concepts": "permutations; counting pairs; invariant",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2024A/solutions",
-    "SourceSHA256": "5fed52d29857ed2e73b79316a935cba357bf2b5edda16ac2add7780e78466254",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2024_AMC_10A_Q06",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "What is the minimum number of successive swaps of adjacent letters in the string ABCDEF that are needed to change the string to FEDCBA?\n\n(For example, \\(3\\) swaps are required to change ABC to CBA; one such sequence of swaps is ABC \\(\\to\\) BAC \\(\\to\\) BCA \\(\\to\\) CBA.)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(6\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(10\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(12\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(15\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(24\\)"
+      }
     ]
   },
-  "ID": "2024_AMC_10A_Q06",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:extremal-principle"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "284ad09bcfbaa38ac674c300f679352e85c9895b760a2cd2aa8fb2f7f2a2159d",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:extremal-principle"
-    ],
-    "supportIds": [
-      "cnm_h236"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "pair-order-bound",
+      "title": "Count pairs that must reverse",
+      "explanation": "Every pair of letters must reverse its left-to-right order. An adjacent swap reverses the order of only the two swapped letters: every other letter stays on the same side of both of them.\n\nThere are \\(5\\) pairs involving A, then \\(4\\) additional pairs involving B, and so on, for a total of\n\\[\n5+4+3+2+1=15\n\\]\npairs. Since each swap reverses only one pair, at least \\(15\\) swaps are necessary.\n\nWe can achieve this bound. Move A rightward past the other five letters, using \\(5\\) swaps to obtain BCDEFA. Next move B past C, D, E, and F, using \\(4\\) swaps to obtain CDEFBA. Then move C past D, E, and F, move D past E and F, and finally move E past F. These steps require \\(3\\), \\(2\\), and \\(1\\) swaps and produce FEDCBA.\n\nThus the minimum is \\(\\boxed{15}\\), choice \\(\\boxed{\\text{D}}\\).",
+      "directNodeIds": [
+        "math:extremal-principle",
+        "cnm_h236"
+      ],
+      "sourceRef": "amc/2024_AMC_10A_Q06#pair-order-bound"
+    }
+  ],
+  "sourceRef": "amc/2024_AMC_10A_Q06"
 }

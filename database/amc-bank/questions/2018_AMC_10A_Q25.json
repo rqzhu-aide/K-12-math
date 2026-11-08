@@ -1,80 +1,75 @@
 {
-  "Year": 2018,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 25,
-  "Question": "For a positive integer \\(n\\) and nonzero digits \\(a,\\) \\(b,\\) and \\(c,\\) let \\(A_n\\) be the \\(n\\)-digit integer each of whose digits is equal to \\(a\\); let \\(B_n\\) be the \\(n\\)-digit integer each of whose digits is equal to \\(b\\); and let \\(C_n\\) be the \\(2n\\)-digit (not \\(n\\)-digit) integer each of whose digits is equal to \\(c.\\) What is the greatest possible value of \\(a + b + c\\) for which there are at least two values of \\(n\\) such that \\[C_n - B_n = A_n^2?\\]",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(12\\)",
-    "B": "\\(14\\)",
-    "C": "\\(16\\)",
-    "D": "\\(18\\)",
-    "E": "\\(20\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "digits; geometric sequence; algebraic manipulation",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2018A/solutions",
-    "SourceSHA256": "3e69adfbaaaa95cdb4eba9d96dcc00a587379840da2f2bbc7417514de81682ae",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2018_AMC_10A_Q25",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "d59cff9e48d6b54bf5ae4e1af3d4b96b4ac270e0debb7e6de9e028ebbb640d2f",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:integer-diophantine-equations"
-    ],
-    "supportIds": [
-      "cnm_075"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2018_AMC_10A_Q25",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "For a positive integer \\(n\\) and nonzero digits \\(a,\\) \\(b,\\) and \\(c,\\) let \\(A_n\\) be the \\(n\\)-digit integer each of whose digits is equal to \\(a\\); let \\(B_n\\) be the \\(n\\)-digit integer each of whose digits is equal to \\(b\\); and let \\(C_n\\) be the \\(2n\\)-digit (not \\(n\\)-digit) integer each of whose digits is equal to \\(c.\\) What is the greatest possible value of \\(a + b + c\\) for which there are at least two values of \\(n\\) such that \\[C_n - B_n = A_n^2?\\]",
+    "choices": [
       {
-        "id": "normalize-by-repunit",
-        "label": "Reduce to a linear relation in a repunit",
-        "nodeIds": [
-          "cnm_h210",
-          "cnm_042"
-        ]
+        "id": "A",
+        "content": "\\(12\\)"
       },
       {
-        "id": "polynomial-root-count",
-        "label": "Use polynomial factors and distinct roots",
-        "nodeIds": [
-          "cnm_h210",
-          "math:polynomial-remainder-factor"
-        ]
+        "id": "B",
+        "content": "\\(14\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(16\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(18\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(20\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "level": "AMC 10"
+  },
+  "assessedNodeIds": [
+    "cnm_h210",
+    "math:integer-diophantine-equations"
+  ],
+  "solutions": [
+    {
+      "id": "compare-two-lengths",
+      "title": "Compare two digit lengths",
+      "explanation": "A repeated-digit integer is its digit multiplied by \\(1+10+\\cdots+10^{n-1}\\). Writing this geometric sum in closed form will let us compare two different digit lengths.\n\nSet \\(t=10^n\\). Then\n\\[\nA_n=a\\frac{t-1}{9},\\qquad\nB_n=b\\frac{t-1}{9},\\qquad\nC_n=c\\frac{t^2-1}{9}.\n\\]\nSubstituting into \\(C_n-B_n=A_n^2\\) and multiplying by \\(81\\) gives\n\\[\n9c(t^2-1)-9b(t-1)=a^2(t-1)^2.\n\\]\nSince \\(n\\) is positive, \\(t>1\\), so we may divide by \\(t-1\\):\n\\[\n9c(t+1)-9b=a^2(t-1).\n\\]\nCollecting terms yields\n\\[\n(9c-a^2)t=9b-9c-a^2.\n\\]\nFor fixed digits \\(a,b,c\\), this must hold at two distinct values \\(t_1=10^{n_1}\\) and \\(t_2=10^{n_2}\\). Subtracting the two equations gives\n\\[\n(9c-a^2)(t_1-t_2)=0.\n\\]\nBecause \\(t_1\\ne t_2\\), we obtain \\(a^2=9c\\). Substituting back gives \\(9b=18c\\), so \\(b=2c\\).\n\nAmong the digits \\(1\\) through \\(9\\), only \\(a=3,6,9\\) have squares divisible by \\(9\\). The resulting triples \\((a,b,c)\\) are\n\\[\n(3,2,1),\\qquad(6,8,4),\\qquad(9,18,9).\n\\]\nThe last triple is invalid because \\(18\\) is not a digit. For either remaining triple, both sides of the linear relation are zero for every positive \\(n\\). All the transformations were reversible, so both triples satisfy the original equation for every positive \\(n\\).\n\nTheir sums are \\(6\\) and \\(18\\). The greatest possible value is therefore \\(\\boxed{18}\\), choice \\(\\boxed{\\text{D}}\\).",
+      "directNodeIds": [
+        "cnm_h210",
+        "math:integer-diophantine-equations"
+      ],
+      "sourceRef": "amc/2018_AMC_10A_Q25#compare-two-lengths"
+    },
+    {
+      "id": "normalize-by-repunit",
+      "title": "Reduce to a linear relation in a repunit",
+      "directNodeIds": [
+        "cnm_h210",
+        "cnm_042"
+      ],
+      "sourceRef": "amc/2018_AMC_10A_Q25#normalize-by-repunit"
+    },
+    {
+      "id": "polynomial-root-count",
+      "title": "Use polynomial factors and distinct roots",
+      "directNodeIds": [
+        "cnm_h210",
+        "math:polynomial-remainder-factor"
+      ],
+      "sourceRef": "amc/2018_AMC_10A_Q25#polynomial-root-count"
+    }
+  ],
+  "sourceRef": "amc/2018_AMC_10A_Q25"
 }

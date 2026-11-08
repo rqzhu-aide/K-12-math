@@ -1,78 +1,81 @@
 {
-  "Year": 2024,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Counting & Probability",
-  "Number": 24,
-  "Question": "A bee is moving in three-dimensional space. A fair six-sided die with faces labeled \\(A^+,\\) \\(A^-,\\) \\(B^+,\\) \\(B^-,\\) \\(C^+,\\) and \\(C^-\\) is rolled. Suppose the bee occupies the point \\((a, b, c).\\) If the die shows \\(A^+,\\) then the bee moves to the point \\((a + 1, b, c),\\) and if the die shows \\(A^-,\\) then the bee moves to the point \\((a - 1, b, c).\\) Analogous moves are made with the other four outcomes.\n\nSuppose the bee starts at the point \\((0, 0, 0)\\) and the die is rolled four times. What is the probability that the bee traverses four distinct edges of some unit cube?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{1}{54}\\)",
-    "B": "\\(\\dfrac{7}{54}\\)",
-    "C": "\\(\\dfrac{1}{6}\\)",
-    "D": "\\(\\dfrac{5}{18}\\)",
-    "E": "\\(\\dfrac{2}{5}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.91",
-    "Concepts": "basic probability; cube geometry; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2024A/solutions",
-    "SourceSHA256": "5fed52d29857ed2e73b79316a935cba357bf2b5edda16ac2add7780e78466254",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2024_AMC_10A_Q24",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "bafa6f2a6e10d881a698e8934bce29e40f8d0d2a74b8218456bfca2c0ca2fe0a",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h137"
-    ],
-    "supportIds": [],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2024_AMC_10A_Q24",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "A bee is moving in three-dimensional space. A fair six-sided die with faces labeled \\(A^+,\\) \\(A^-,\\) \\(B^+,\\) \\(B^-,\\) \\(C^+,\\) and \\(C^-\\) is rolled. Suppose the bee occupies the point \\((a, b, c).\\) If the die shows \\(A^+,\\) then the bee moves to the point \\((a + 1, b, c),\\) and if the die shows \\(A^-,\\) then the bee moves to the point \\((a - 1, b, c).\\) Analogous moves are made with the other four outcomes.\n\nSuppose the bee starts at the point \\((0, 0, 0)\\) and the die is rolled four times. What is the probability that the bee traverses four distinct edges of some unit cube?",
+    "choices": [
       {
-        "id": "count-axis-patterns",
-        "label": "Count direction patterns",
-        "nodeIds": [
-          "cnm_h232"
-        ]
+        "id": "A",
+        "content": "\\(\\dfrac{1}{54}\\)"
       },
       {
-        "id": "count-cube-path-incidences",
-        "label": "Count paths within cubes",
-        "nodeIds": [
-          "math:graph-models",
-          "math:double-counting",
-          "cnm_h231"
-        ]
+        "id": "B",
+        "content": "\\(\\dfrac{7}{54}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac{1}{6}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac{5}{18}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac{2}{5}\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h232",
+    "cnm_h137"
+  ],
+  "solutions": [
+    {
+      "id": "count-successive-moves",
+      "title": "Count the possible turns",
+      "explanation": "The key restriction is that consecutive distinct edges of a cube must meet at right angles. Reversing direction repeats an edge, while continuing straight cannot follow another edge of the same cube. Once the first two edges follow different coordinate axes, the cube's edges must follow the three coordinate directions, and each coordinate can vary by at most \\(1\\).\n\nThere are \\(6\\) choices for the first roll. By symmetry, consider a first roll of \\(A^+\\). The second roll can be \\(B^+,B^-,C^+,\\) or \\(C^-\\), giving \\(4\\) choices. Relabeling axes and reversing signs shows that each has the same number of completions, so examine the beginning \\(A^+,B^+\\). The bee is now at \\((1,1,0)\\).\n\nThe third roll cannot be \\(B^-\\), which retraces the second edge, or \\(A^+\\) or \\(B^+\\), which makes a coordinate span \\(2\\). Thus there are two cases:\n\n1. **The third roll is \\(C^+\\) or \\(C^-\\).** These are \\(2\\) choices. For \\(C^+\\), the bee reaches \\((1,1,1)\\), and the cube is fixed with all coordinates between \\(0\\) and \\(1\\). The fourth roll can only be \\(A^-\\) or \\(B^-\\): both follow new cube edges, whereas \\(C^-\\) retraces the third edge and every positive move leaves the cube. The case \\(C^-\\) likewise has \\(2\\) completions.\n\n2. **The third roll is \\(A^-\\).** The bee reaches \\((0,1,0)\\), having followed three sides of a unit square. The fourth roll can be \\(B^-\\), completing the square, or either \\(C^+\\) or \\(C^-\\), extending along a cube edge on either side of the square. These \\(3\\) choices all work. The other moves either repeat an edge or make a coordinate span \\(2\\).\n\nThese cases exhaust the possible third rolls. We count roll sequences, so completing a square is counted once even though that square belongs to two cubes.\n\nThe number of successful sequences is therefore\n\\[\n6\\cdot4\\bigl(2\\cdot2+1\\cdot3\\bigr)=168.\n\\]\nAll \\(6^4=1296\\) roll sequences are equally likely, so the probability is\n\\[\n\\frac{168}{1296}=\\boxed{\\frac{7}{54}}.\n\\]\nThe answer is **B**.",
+      "directNodeIds": [
+        "cnm_h232",
+        "cnm_h137",
+        "cnm_p160",
+        "cnm_h151"
+      ],
+      "sourceRef": "amc/2024_AMC_10A_Q24#count-successive-moves"
+    },
+    {
+      "id": "count-axis-patterns",
+      "title": "Count direction patterns",
+      "directNodeIds": [
+        "cnm_h232"
+      ],
+      "sourceRef": "amc/2024_AMC_10A_Q24#count-axis-patterns"
+    },
+    {
+      "id": "count-cube-path-incidences",
+      "title": "Count paths within cubes",
+      "directNodeIds": [
+        "math:graph-models",
+        "math:double-counting",
+        "cnm_h231"
+      ],
+      "sourceRef": "amc/2024_AMC_10A_Q24#count-cube-path-incidences"
+    }
+  ],
+  "sourceRef": "amc/2024_AMC_10A_Q24"
 }

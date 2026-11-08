@@ -1,80 +1,79 @@
 {
-  "Year": 2021,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Number Theory",
-  "Number": 25,
-  "Question": "Let \\(d(n)\\) denote the number of positive integers that divide \\(n,\\) including \\(1\\) and \\(n.\\) For example, \\(d(1) = 1,\\) \\(d(2) = 2,\\) and \\(d(12) = 6.\\) (This function is known as the divisor function.) Let \\[ f(n) = \\frac{d(n)}{\\sqrt[3]{n}}. \\]\n\nThere is a unique positive integer \\(N\\) such that \\(f(N) \\gt f(n)\\) for all positive integers \\(n \\ne N.\\) What is the sum of the digits of \\(N?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(5\\)",
-    "B": "\\(6\\)",
-    "C": "\\(7\\)",
-    "D": "\\(8\\)",
-    "E": "\\(9\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.91",
-    "Concepts": "factor counting; prime factorization; optimization",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2021A/solutions",
-    "SourceSHA256": "d60ce8314d8d1d85a398299f05f7fffa6b1d5d75e968634cd640caf112a0f2d2",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2021_AMC_12A_Q25",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:number-theory"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "5b305da473f1bc571f19b0b2a8c87913ca754174cf064dd6a602ac31292753cb",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:extremal-principle",
-      "math:divisor-count-and-sum"
-    ],
-    "supportIds": [
-      "math:prime-factorization"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2021_AMC_12A_Q25",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Let \\(d(n)\\) denote the number of positive integers that divide \\(n,\\) including \\(1\\) and \\(n.\\) For example, \\(d(1) = 1,\\) \\(d(2) = 2,\\) and \\(d(12) = 6.\\) (This function is known as the divisor function.) Let \\[ f(n) = \\frac{d(n)}{\\sqrt[3]{n}}. \\]\n\nThere is a unique positive integer \\(N\\) such that \\(f(N) \\gt f(n)\\) for all positive integers \\(n \\ne N.\\) What is the sum of the digits of \\(N?\\)",
+    "choices": [
       {
-        "id": "adjacent-exponent-comparison",
-        "label": "Compare adjacent exponent factors",
-        "nodeIds": [
-          "cnm_h019"
-        ]
+        "id": "A",
+        "content": "\\(5\\)"
       },
       {
-        "id": "continuous-exponent-relaxation",
-        "label": "Locate peaks and check nearby integers",
-        "nodeIds": [
-          "cnm_h224",
-          "cnm_h226"
-        ]
+        "id": "B",
+        "content": "\\(6\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(7\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(8\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(9\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "E"
+    ]
+  },
+  "classification": {
+    "area": "Number Theory",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:number-theory"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:divisor-count-and-sum",
+    "math:extremal-principle"
+  ],
+  "solutions": [
+    {
+      "id": "prime-exponent-ratios",
+      "title": "Optimize each prime exponent",
+      "explanation": "The useful observation is that prime factorization turns \\(f(n)\\) into a product whose factors can be maximized separately.\n\nWrite\n\\[\nn=\\prod_p p^{a_p},\n\\]\nwhere each \\(a_p\\) is a nonnegative integer and only finitely many are nonzero. A divisor chooses its exponent of each prime independently from \\(0,1,\\ldots,a_p\\), so\n\\[\nd(n)=\\prod_p(a_p+1).\n\\]\nTherefore\n\\[\nf(n)=\\prod_p F_p(a_p),\n\\qquad F_p(a)=\\frac{a+1}{p^{a/3}}.\n\\]\nFor a fixed prime \\(p\\), compare consecutive exponents:\n\\[\n\\frac{F_p(a+1)}{F_p(a)}\n=\\frac{a+2}{a+1}\\,p^{-1/3}.\n\\]\nThus increasing the exponent from \\(a\\) to \\(a+1\\) improves the factor exactly when\n\\[\n\\left(\\frac{a+2}{a+1}\\right)^3>p.\n\\]\nThe left side strictly decreases as \\(a\\) increases, since \\(\\frac{a+2}{a+1}=1+\\frac1{a+1}\\). Once an increase makes the factor smaller, every later increase does too. The first four thresholds are\n\\[\n8,\\qquad\\frac{27}{8},\\qquad\\frac{64}{27},\\qquad\\frac{125}{64}.\n\\]\nThese determine every optimal prime exponent:\n\n- For any prime \\(p>7\\), we have \\(p\\ge11>8\\). Even the first increase makes the factor smaller, so its best exponent is \\(0\\).\n- For \\(p=5\\) or \\(7\\), we have \\(8>p>\\frac{27}{8}\\). The factor increases from exponent \\(0\\) to \\(1\\), then decreases, so its best exponent is \\(1\\).\n- For \\(p=3\\), we have \\(\\frac{27}{8}>3>\\frac{64}{27}\\). The factor increases through exponent \\(2\\), then decreases, so its best exponent is \\(2\\).\n- For \\(p=2\\), we have \\(\\frac{64}{27}>2>\\frac{125}{64}\\). The factor increases through exponent \\(3\\), then decreases, so its best exponent is \\(3\\).\n\nAll these maxima are strict. Choosing them simultaneously produces an integer, and any other integer changes at least one factor away from its strict maximum. Hence\n\\[\nN=2^3\\cdot3^2\\cdot5\\cdot7=2520.\n\\]\nIts digit sum is\n\\[\n2+5+2+0=\\boxed{9}.\n\\]\nThe answer is choice \\(\\text{E}\\).",
+      "directNodeIds": [
+        "math:divisor-count-and-sum",
+        "math:extremal-principle",
+        "math:prime-factorization"
+      ],
+      "sourceRef": "amc/2021_AMC_12A_Q25#prime-exponent-ratios"
+    },
+    {
+      "id": "adjacent-exponent-comparison",
+      "title": "Compare adjacent exponent factors",
+      "directNodeIds": [
+        "cnm_h019"
+      ],
+      "sourceRef": "amc/2021_AMC_12A_Q25#adjacent-exponent-comparison"
+    },
+    {
+      "id": "continuous-exponent-relaxation",
+      "title": "Locate peaks and check nearby integers",
+      "directNodeIds": [
+        "cnm_h224",
+        "cnm_h226"
+      ],
+      "sourceRef": "amc/2021_AMC_12A_Q25#continuous-exponent-relaxation"
+    }
+  ],
+  "sourceRef": "amc/2021_AMC_12A_Q25"
 }

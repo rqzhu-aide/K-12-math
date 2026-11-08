@@ -1,62 +1,61 @@
 {
-  "Year": 2024,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Number Theory",
-  "Number": 10,
-  "Question": "Consider the following operation. Given a positive integer \\(n,\\) if \\(n\\) is a multiple of \\(3,\\) then you replace \\(n\\) by \\(\\tfrac{n}{3}.\\) If \\(n\\) is not a multiple of \\(3,\\) then you replace \\(n\\) by \\(n + 10.\\) Then continue this process. For example, beginning with \\(n = 4,\\) this procedure gives \\(4 \\to 14 \\to 24 \\to 8\\) \\(\\to 18 \\to 6 \\to 2 \\to 12 \\to \\cdots.\\)\n\nSuppose you start with \\(n = 100.\\) What value results if you perform this operation exactly \\(100\\) times?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(10\\)",
-    "B": "\\(20\\)",
-    "C": "\\(30\\)",
-    "D": "\\(40\\)",
-    "E": "\\(50\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.60",
-    "Concepts": "recursion; modular arithmetic; process simulation; pattern recognition",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2024A/solutions",
-    "SourceSHA256": "5fed52d29857ed2e73b79316a935cba357bf2b5edda16ac2add7780e78466254",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2024_AMC_10A_Q10",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Consider the following operation. Given a positive integer \\(n,\\) if \\(n\\) is a multiple of \\(3,\\) then you replace \\(n\\) by \\(\\tfrac{n}{3}.\\) If \\(n\\) is not a multiple of \\(3,\\) then you replace \\(n\\) by \\(n + 10.\\) Then continue this process. For example, beginning with \\(n = 4,\\) this procedure gives \\(4 \\to 14 \\to 24 \\to 8\\) \\(\\to 18 \\to 6 \\to 2 \\to 12 \\to \\cdots.\\)\n\nSuppose you start with \\(n = 100.\\) What value results if you perform this operation exactly \\(100\\) times?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(10\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(20\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(30\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(40\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(50\\)"
+      }
     ]
   },
-  "ID": "2024_AMC_10A_Q10",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:number-theory"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "area": "Number Theory",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:number-theory"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:function-composition-iteration",
+    "math:modular-congruence"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "078edacb8daa7f9d2780147f01b7b7cd405de786bbba6fce3db6c070cb0c11a7",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h200",
-      "math:modular-congruence"
-    ],
-    "supportIds": [],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "three-step-cycle",
+      "title": "Find and count the repeating cycle",
+      "explanation": "A repeating cycle lets us skip most of the operations. Starting from \\(100\\), the first six operations give\n\\[\n100\\to110\\to120\\to40\\to50\\to60\\to20.\n\\]\nFrom \\(20\\), the next operations are\n\\[\n20\\to30\\to10\\to20.\n\\]\nIndeed, \\(20\\) and \\(10\\) are not divisible by \\(3\\), so each increases by \\(10\\), while \\(30\\) is replaced by \\(30/3=10\\). Returning to \\(20\\) means this three-operation cycle repeats indefinitely.\n\nAfter the first six operations, there are\n\\[\n100-6=94=31\\cdot3+1\n\\]\noperations left. The \\(31\\) complete cycles return us to \\(20\\), and the final operation gives \\(30\\).\n\nThe result is \\(\\boxed{30}\\), choice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "math:function-composition-iteration",
+        "math:modular-congruence"
+      ],
+      "sourceRef": "amc/2024_AMC_10A_Q10#three-step-cycle"
+    }
+  ],
+  "sourceRef": "amc/2024_AMC_10A_Q10"
 }

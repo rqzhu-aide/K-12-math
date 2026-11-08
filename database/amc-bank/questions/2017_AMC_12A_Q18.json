@@ -1,61 +1,55 @@
 {
-  "Year": 2017,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 18,
-  "Question": "Let \\(S(n)\\) equal the sum of the digits of positive integer \\(n.\\) For example, \\(S(1507)=13.\\) For a particular positive integer \\(n,\\) \\(S(n)=1274.\\) Which of the following could be the value of \\(S(n+1)?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(1\\)",
-    "B": "\\(3\\)",
-    "C": "\\(12\\)",
-    "D": "\\(1239\\)",
-    "E": "\\(1265\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "digits; modular arithmetic",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2017A/solutions",
-    "SourceSHA256": "9851a379d19dd89c5a720d67318b0086118281cd29fc174d19ad16623bc3b63c",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2017_AMC_12A_Q18",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Let \\(S(n)\\) equal the sum of the digits of positive integer \\(n.\\) For example, \\(S(1507)=13.\\) For a particular positive integer \\(n,\\) \\(S(n)=1274.\\) Which of the following could be the value of \\(S(n+1)?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(1\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(3\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(12\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(1239\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(1265\\)"
+      }
     ]
   },
-  "ID": "2017_AMC_12A_Q18",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "f8bb0762778e78eeef540069ad449c0641f3f4b09a55dc7ffe1525b053cad6fd",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:modular-congruence"
-    ],
-    "supportIds": [],
-    "routes": [],
-    "flags": []
-  }
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "level": "AMC 12"
+  },
+  "assessedNodeIds": [
+    "math:modular-congruence"
+  ],
+  "solutions": [
+    {
+      "id": "trailing-nine-carries",
+      "title": "Track the carries",
+      "explanation": "The change in digit sum depends on how many 9s occur at the end of \\(n\\). If there are exactly \\(k\\) trailing 9s, adding 1 turns them into zeros and increases the preceding digit by 1. Therefore\n\\[\nS(n+1)=S(n)+1-9k=1275-9k.\n\\]\nThus \\(S(n+1)\\) must have remainder 6 when divided by 9. The choices \\(1,3,12,1239,1265\\) have remainders \\(1,3,3,6,5\\), respectively, so only \\(1239\\) qualifies.\n\nTo verify that it can occur, take \\(n\\) to consist of 1238 ones followed by four 9s. Then\n\\[\nS(n)=1238+4\\cdot9=1274.\n\\]\nAdding 1 changes the ending \\(19999\\) to \\(20000\\), leaving 1237 ones before it. Hence\n\\[\nS(n+1)=1237+2=\\boxed{1239}.\n\\]\nThe answer is D.",
+      "directNodeIds": [
+        "math:modular-congruence"
+      ],
+      "sourceRef": "amc/2017_AMC_12A_Q18#trailing-nine-carries"
+    }
+  ],
+  "sourceRef": "amc/2017_AMC_12A_Q18"
 }

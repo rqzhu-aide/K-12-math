@@ -1,79 +1,71 @@
 {
-  "Year": 2024,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Algebra",
-  "Number": 12,
-  "Question": "The first three terms of a geometric sequence are the integers \\(a,\\) \\(720,\\) and \\(b,\\) where \\(a\\lt720\\lt b.\\) What is the sum of the digits of the least possible value of \\(b?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(9\\)",
-    "B": "\\(12\\)",
-    "C": "\\(16\\)",
-    "D": "\\(18\\)",
-    "E": "\\(21\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.60",
-    "Concepts": "geometric sequence; factor; optimization",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2024A/solutions",
-    "SourceSHA256": "9875ffc0649d84c28198568c6d6972f9569a76bcf8751c85f132d0a01bfb9b8a",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2024_AMC_12A_Q12",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:algebra"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "1d164d36230a1fb4f40fb21b02bc11606dea3c99104f23305163ab40b8d60d70",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h207",
-      "math:integer-diophantine-equations"
-    ],
-    "supportIds": [],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2024_AMC_12A_Q12",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "The first three terms of a geometric sequence are the integers \\(a,\\) \\(720,\\) and \\(b,\\) where \\(a\\lt720\\lt b.\\) What is the sum of the digits of the least possible value of \\(b?\\)",
+    "choices": [
       {
-        "id": "geometric-mean-divisors",
-        "label": "Search divisors of the middle term squared",
-        "nodeIds": [
-          "cnm_h209",
-          "math:prime-factorization"
-        ]
+        "id": "A",
+        "content": "\\(9\\)"
       },
       {
-        "id": "reduced-common-ratio",
-        "label": "Restrict a reduced rational common ratio",
-        "nodeIds": [
-          "cnm_p168",
-          "math:prime-factorization"
-        ]
+        "id": "B",
+        "content": "\\(12\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(16\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(18\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(21\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "E"
+    ]
+  },
+  "classification": {
+    "area": "Algebra",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:algebra"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h207",
+    "math:prime-factorization"
+  ],
+  "solutions": [
+    {
+      "id": "reduced-common-ratio",
+      "title": "Restrict the common ratio",
+      "explanation": "The integer terms restrict both the numerator and denominator of the common ratio. Write that ratio as \\(r=m/n\\) in lowest terms. Since \\(r=b/720>1\\), we have \\(m>n>0\\), and\n\\[\na=\\frac{720n}{m},\\qquad b=\\frac{720m}{n}.\n\\]\nBecause \\(m\\) and \\(n\\) are relatively prime, these are integers only if both \\(m\\) and \\(n\\) divide\n\\[\n720=2^4\\cdot3^2\\cdot5.\n\\]\n\nThe ratio \\(16/15\\) works: it produces\n\\[\na=720\\cdot\\frac{15}{16}=675,\n\\qquad b=720\\cdot\\frac{16}{15}=768.\n\\]\nTo prove this gives the smallest \\(b\\), suppose a valid ratio satisfies\n\\[\n1<\\frac mn<\\frac{16}{15}.\n\\]\nSince \\(m\\ge n+1\\),\n\\[\n1+\\frac1n\\le\\frac mn<1+\\frac1{15},\n\\]\nso \\(n>15\\). If \\(n=16\\), the inequality forces \\(m=17\\), which does not divide \\(720\\). Also, \\(n\\ne17\\), since \\(17\\) does not divide \\(720\\). Thus \\(n\\ge18\\) and \\(m\\ge19\\).\n\nA divisor of \\(720\\) with just one distinct prime factor is at most \\(16\\): the largest allowed powers of \\(2,3,5\\) are \\(16,9,5\\). Therefore both \\(m\\) and \\(n\\) must have at least two distinct prime factors. Their relative primality means these prime factors cannot overlap, requiring at least four distinct primes. But \\(720\\) has only three. This contradiction rules out every smaller ratio.\n\nThe least possible \\(b\\) is therefore \\(768\\), whose digit sum is\n\\[\n7+6+8=\\boxed{21}.\n\\]\nThe answer is \\(\\boxed{\\text{E}}\\).",
+      "directNodeIds": [
+        "cnm_h207",
+        "math:prime-factorization",
+        "cnm_p168"
+      ],
+      "sourceRef": "amc/2024_AMC_12A_Q12#reduced-common-ratio"
+    },
+    {
+      "id": "geometric-mean-divisors",
+      "title": "Search divisors of the middle term squared",
+      "directNodeIds": [
+        "cnm_h209",
+        "math:prime-factorization"
+      ],
+      "sourceRef": "amc/2024_AMC_12A_Q12#geometric-mean-divisors"
+    }
+  ],
+  "sourceRef": "amc/2024_AMC_12A_Q12"
 }

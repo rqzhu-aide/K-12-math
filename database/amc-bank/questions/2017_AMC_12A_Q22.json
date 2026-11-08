@@ -1,64 +1,57 @@
 {
-  "Year": 2017,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 22,
-  "Question": "A square is drawn in the Cartesian coordinate plane with vertices at \\((2,2),\\) \\((-2,2),\\) \\((-2,-2),\\) and \\((2,-2).\\) A particle starts at \\((0,0).\\) Every second it moves with equal probability to one of the eight lattice points (points with integer coordinates) closest to its current position, independently of its previous moves. In other words, the probability is \\(\\dfrac{1}{8}\\) that the particle will move from \\((x,y)\\) to each of \\((x,y+1),\\) \\((x+1,y+1),\\) \\((x+1,y),\\) \\((x+1,y-1),\\) \\((x,y-1),\\) \\((x-1,y-1),\\) \\((x-1,y),\\) or \\((x-1,y+1).\\) The particle will eventually hit the square for the first time, either at one of the \\(4\\) corners of the square or at one of the \\(12\\) lattice points in the interior of one of the sides of the square. The probability that it will hit at a corner rather than at an interior point of a side is \\(\\dfrac{m}{n},\\) where \\(m\\) and \\(n\\) are relatively prime positive integers. What is \\(m+n?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(4\\)",
-    "B": "\\(5\\)",
-    "C": "\\(7\\)",
-    "D": "\\(15\\)",
-    "E": "\\(39\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "random walk; recursive probability; symmetry",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2017A/solutions",
-    "SourceSHA256": "9851a379d19dd89c5a720d67318b0086118281cd29fc174d19ad16623bc3b63c",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2017_AMC_12A_Q22",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "A square is drawn in the Cartesian coordinate plane with vertices at \\((2,2),\\) \\((-2,2),\\) \\((-2,-2),\\) and \\((2,-2).\\) A particle starts at \\((0,0).\\) Every second it moves with equal probability to one of the eight lattice points (points with integer coordinates) closest to its current position, independently of its previous moves. In other words, the probability is \\(\\dfrac{1}{8}\\) that the particle will move from \\((x,y)\\) to each of \\((x,y+1),\\) \\((x+1,y+1),\\) \\((x+1,y),\\) \\((x+1,y-1),\\) \\((x,y-1),\\) \\((x-1,y-1),\\) \\((x-1,y),\\) or \\((x-1,y+1).\\) The particle will eventually hit the square for the first time, either at one of the \\(4\\) corners of the square or at one of the \\(12\\) lattice points in the interior of one of the sides of the square. The probability that it will hit at a corner rather than at an interior point of a side is \\(\\dfrac{m}{n},\\) where \\(m\\) and \\(n\\) are relatively prime positive integers. What is \\(m+n?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(4\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(5\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(7\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(15\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(39\\)"
+      }
     ]
   },
-  "ID": "2017_AMC_12A_Q22",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "3c854929e12bba6f170ecd0d75a8b6d0130c62441ef86fc48ee7dc88673e0dbf",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:recursive-counting-probability"
-    ],
-    "supportIds": [
-      "cnm_h246",
-      "cnm_093"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "E"
+    ]
+  },
+  "classification": {
+    "level": "AMC 12"
+  },
+  "assessedNodeIds": [
+    "math:recursive-counting-probability"
+  ],
+  "solutions": [
+    {
+      "id": "three-state-first-step",
+      "title": "Group positions by symmetry",
+      "explanation": "Before reaching the boundary, the particle can occupy only the nine points whose coordinates lie in \\(\\{-1,0,1\\}\\). Rotations and reflections preserve both the moves and the corner target, so these points fall into three types with equal probabilities within each type:\n\\[\n\\begin{aligned}\nC&=\\{(0,0)\\},\\\\\nA&=\\{(1,0),(0,1),(-1,0),(0,-1)\\},\\\\\nI&=\\{(1,1),(-1,1),(-1,-1),(1,-1)\\}.\n\\end{aligned}\n\\]\nLet \\(a,c,i\\) be the probabilities of first hitting the boundary at a corner when starting from a point of type \\(A,C,I\\), respectively. Independence means that earlier moves do not affect these probabilities.\n\nCount the eight destinations from a representative of each type. From \\((1,0)\\), there are two destinations in \\(A\\), one in \\(C\\), two in \\(I\\), and three side-interior destinations: \\((2,-1),(2,0),(2,1)\\). From the center, four destinations lie in \\(A\\) and four in \\(I\\). From \\((1,1)\\), the interior destinations are \\((1,0),(0,1),(0,0)\\); one destination is the corner \\((2,2)\\); and the other four are side interiors. Thus the destination counts are\n\\[\n\\begin{array}{c|ccccc}\n\\text{starting type}&A&C&I&\\text{corner}&\\text{side interior}\\\\ \\hline\nA&2&1&2&0&3\\\\\nC&4&0&4&0&0\\\\\nI&2&1&0&1&4\n\\end{array}\n\\]\nEach row accounts for all eight equally likely moves. A direct corner hit contributes success probability 1, while a side-interior hit contributes 0. Conditioning on the next move gives\n\\[\n\\begin{aligned}\na&=\\frac{2a+c+2i}{8},\\\\\nc&=\\frac{4a+4i}{8},\\\\\ni&=\\frac{2a+c+1}{8}.\n\\end{aligned}\n\\]\nThe middle equation gives \\(i=2c-a\\). Substituting this into \\(6a=c+2i\\), the first equation rearranged, yields\n\\[\n6a=c+2(2c-a),\\qquad 8a=5c.\n\\]\nTherefore\n\\[\na=\\frac{5c}{8},\\qquad i=2c-a=\\frac{11c}{8}.\n\\]\nSubstitute these into \\(8i=2a+c+1\\):\n\\[\n11c=\\frac54c+c+1,\n\\qquad \\frac{35}{4}c=1,\n\\qquad c=\\frac4{35}.\n\\]\nThe particle starts at the center, so the required probability is \\(c\\). Since 4 and 35 are relatively prime,\n\\[\nm+n=4+35=\\boxed{39}.\n\\]\nThe answer is E.",
+      "directNodeIds": [
+        "math:recursive-counting-probability",
+        "cnm_h246",
+        "cnm_093"
+      ],
+      "sourceRef": "amc/2017_AMC_12A_Q22#three-state-first-step"
+    }
+  ],
+  "sourceRef": "amc/2017_AMC_12A_Q22"
 }

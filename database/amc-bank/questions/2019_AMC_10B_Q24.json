@@ -1,71 +1,72 @@
 {
-  "Year": 2019,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 24,
-  "Question": "Define a sequence recursively by \\(x_0=5\\) and \\[x_{n+1}=\\frac{x_n^2+5x_n+4}{x_n+6}\\] for all nonnegative integers \\(n.\\) Let \\(m\\) be the least positive integer such that \\[x_m\\leq 4+\\frac{1}{2^{20}}.\\] In which of the following intervals does \\(m\\) lie?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\( [9,26] \\)",
-    "B": "\\( [27,80] \\)",
-    "C": "\\( [81,242] \\)",
-    "D": "\\( [243,728] \\)",
-    "E": "\\( [729,\\infty) \\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "recursion; inequality; bounding to limit cases",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2019B/solutions",
-    "SourceSHA256": "00050f6f55ecb76e75cb08e2b26558071c82d79be2f0de76517969fb677a2e97",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2019_AMC_10B_Q24",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Define a sequence recursively by \\(x_0=5\\) and \\[x_{n+1}=\\frac{x_n^2+5x_n+4}{x_n+6}\\] for all nonnegative integers \\(n.\\) Let \\(m\\) be the least positive integer such that \\[x_m\\leq 4+\\frac{1}{2^{20}}.\\] In which of the following intervals does \\(m\\) lie?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\( [9,26] \\)"
+      },
+      {
+        "id": "B",
+        "content": "\\( [27,80] \\)"
+      },
+      {
+        "id": "C",
+        "content": "\\( [81,242] \\)"
+      },
+      {
+        "id": "D",
+        "content": "\\( [243,728] \\)"
+      },
+      {
+        "id": "E",
+        "content": "\\( [729,\\infty) \\)"
+      }
     ]
   },
-  "ID": "2019_AMC_10B_Q24",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "6d7ffdd79bcf0849fc15784252bd2fc69466911eecd3f53fe26ad65711407083",
-    "status": "mapped",
-    "reviewStatus": "machine_adjudicated",
-    "assessedIds": [],
-    "supportIds": [],
-    "routes": [
-      {
-        "id": "geometric-comparison-by-induction",
-        "label": "Bound the recursive error by geometric sequences",
-        "nodeIds": [
-          "cnm_162",
-          "cnm_h200",
-          "cnm_h018",
-          "cnm_h208",
-          "cnm_h213"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "level": "AMC 10"
+  },
+  "assessedNodeIds": [
+    "cnm_h200",
+    "cnm_h208",
+    "cnm_h213"
+  ],
+  "solutions": [
+    {
+      "id": "geometric-error-bounds",
+      "title": "Bound the excess by geometric sequences",
+      "explanation": "The target is close to \\(4\\), so track the excess above \\(4\\) by setting \\(y_n=x_n-4\\). Then \\(y_0=1\\), and\n\\[\ny_{n+1}\n=\\frac{x_n^2+5x_n+4-4(x_n+6)}{x_n+6}\n=\\frac{(x_n-4)(x_n+5)}{x_n+6}\n=\\frac{y_n(y_n+9)}{y_n+10}.\n\\]\nWe seek the first positive index \\(m\\) for which \\(y_m\\le 2^{-20}\\).\n\nIf \\(0<y_n\\le1\\), then\n\\[\n0<y_{n+1}=y_n\\left(1-\\frac1{y_n+10}\\right)<y_n\\le1.\n\\]\nStarting from \\(y_0=1\\), induction shows that every term is positive and the sequence strictly decreases. Also, \\(10<y_n+10\\le11\\), so\n\\[\n\\frac9{10}<\\frac{y_{n+1}}{y_n}\\le\\frac{10}{11}.\n\\]\nMultiplying these bounds over the first \\(n\\) steps gives, for \\(n\\ge1\\),\n\\[\n\\left(\\frac9{10}\\right)^n<y_n\\le\\left(\\frac{10}{11}\\right)^n.\n\\]\n\nTo bound the first possible index, observe that\n\\[\n\\left(\\frac9{10}\\right)^4=\\frac{6561}{10000}>\\frac12.\n\\]\nTherefore\n\\[\ny_{80}>\\left(\\frac9{10}\\right)^{80}\n=\\left[\\left(\\frac9{10}\\right)^4\\right]^{20}\n>\\frac1{2^{20}}.\n\\]\nSince the sequence decreases, \\(m>80\\).\n\nFor an upper bound, expanding \\((1+1/10)^{10}\\) gives constant term \\(1\\), linear term \\(10/10=1\\), and positive remaining terms. Thus\n\\[\n\\left(\\frac{11}{10}\\right)^{10}>2,\n\\qquad\n\\left(\\frac{10}{11}\\right)^{10}<\\frac12.\n\\]\nConsequently,\n\\[\ny_{200}\\le\\left(\\frac{10}{11}\\right)^{200}\n=\\left[\\left(\\frac{10}{11}\\right)^{10}\\right]^{20}\n<\\frac1{2^{20}},\n\\]\nso \\(m\\le200\\).\n\nWe have proved \\(81\\le m\\le200\\), which places \\(m\\) in \\(\\boxed{[81,242]}\\), choice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "cnm_h200",
+        "cnm_h208",
+        "cnm_h213",
+        "cnm_h240"
+      ],
+      "sourceRef": "amc/2019_AMC_10B_Q24#geometric-error-bounds"
+    },
+    {
+      "id": "geometric-comparison-by-induction",
+      "title": "Bound the recursive error by geometric sequences",
+      "directNodeIds": [
+        "cnm_162",
+        "cnm_h200",
+        "cnm_h018",
+        "cnm_h208",
+        "cnm_h213"
+      ],
+      "sourceRef": "amc/2019_AMC_10B_Q24#geometric-comparison-by-induction"
+    }
+  ],
+  "sourceRef": "amc/2019_AMC_10B_Q24"
 }

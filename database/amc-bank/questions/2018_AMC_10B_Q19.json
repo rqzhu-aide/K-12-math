@@ -1,65 +1,56 @@
 {
-  "Year": 2018,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 19,
-  "Question": "Joey and Chloe and their daughter Zoe all have the same birthday. Joey is \\(1\\) year older than Chloe, and Zoe is exactly \\(1\\) year old today. Today is the first of the \\(9\\) birthdays on which Chloe’s age will be an integral multiple of Zoe’s age. What will be the sum of the two digits of Joey’s age the next time his age is a multiple of Zoe’s age?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(7\\)",
-    "B": "\\(8\\)",
-    "C": "\\(9\\)",
-    "D": "\\(10\\)",
-    "E": "\\(11\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "factor counting; divisibility; digits",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2018B/solutions",
-    "SourceSHA256": "4a6ded1649dafce105e5a8443fb92e73eb35400613d2c1885c50fa03dd6eab45",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2018_AMC_10B_Q19",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Joey and Chloe and their daughter Zoe all have the same birthday. Joey is \\(1\\) year older than Chloe, and Zoe is exactly \\(1\\) year old today. Today is the first of the \\(9\\) birthdays on which Chloe’s age will be an integral multiple of Zoe’s age. What will be the sum of the two digits of Joey’s age the next time his age is a multiple of Zoe’s age?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(7\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(8\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(9\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(10\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(11\\)"
+      }
     ]
   },
-  "ID": "2018_AMC_10B_Q19",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "1e89f93d642b788dcb7d01686f5130641026b6d6904b2d72f2c88ca09857d7ea",
-    "status": "mapped",
-    "reviewStatus": "machine_adjudicated",
-    "assessedIds": [
-      "math:divisor-count-and-sum"
-    ],
-    "supportIds": [
-      "math:prime-factorization"
-    ],
-    "routes": [],
-    "flags": [
-      "Uniqueness uses the question's explicit two-digit condition. The nine-birthday condition alone permits other age differences."
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "E"
     ]
-  }
+  },
+  "classification": {
+    "level": "AMC 10"
+  },
+  "assessedNodeIds": [
+    "math:divisor-count-and-sum"
+  ],
+  "solutions": [
+    {
+      "id": "age-differences-and-divisors",
+      "title": "Turn age multiples into divisor counts",
+      "explanation": "The age difference stays fixed, so the birthdays when one age divides another can be counted using divisors.\n\nLet Chloe's age today be \\(n\\). In \\(y\\) years, where \\(y\\) is a nonnegative integer, her age divided by Zoe's age will be\n\\[\n\\frac{n+y}{1+y}=1+\\frac{n-1}{1+y}.\n\\]\nThis is an integer exactly when \\(1+y\\) divides \\(n-1\\). As \\(y\\) runs through the nonnegative integers, \\(1+y\\) runs through all positive integers. Thus the nine specified birthdays mean that \\(n-1\\) has exactly nine positive divisors.\n\nIf an integer has prime factorization \\(p_1^{e_1}\\cdots p_r^{e_r}\\), each divisor independently chooses an exponent from 0 through \\(e_i\\). Its divisor count is therefore \\((e_1+1)\\cdots(e_r+1)\\). Since \\(9=9=3\\cdot3\\), we must have\n\\[\nn-1=p^8\\quad\\text{or}\\quad n-1=p^2q^2,\n\\]\nwhere \\(p,q\\) are distinct primes in the second case.\n\nThe question specifies that Joey's age at the next qualifying birthday has two digits. His current age is \\(n+1\\), so \\(n-1<100\\). The first form is impossible because \\(p^8\\ge2^8=256\\). For the second form, the smallest product of distinct primes is \\(2\\cdot3=6\\); every other such product is at least \\(2\\cdot5=10\\). Hence the only possibility below 100 is\n\\[\nn-1=2^2\\cdot3^2=36.\n\\]\nChloe is 37 today, and Joey is 38.\n\nFor Joey, the corresponding age ratio in \\(y\\) years is\n\\[\n\\frac{38+y}{1+y}=1+\\frac{37}{1+y}.\n\\]\nSince 37 is prime, its positive divisors are 1 and 37. These give \\(y=0\\) and \\(y=36\\), so the next qualifying birthday is 36 years from today. Joey will be \\(38+36=74\\), whose digit sum is \\(7+4=\\boxed{11}\\), choice \\(\\text{E}\\).",
+      "directNodeIds": [
+        "math:divisor-count-and-sum",
+        "math:prime-factorization"
+      ],
+      "sourceRef": "amc/2018_AMC_10B_Q19#age-differences-and-divisors"
+    }
+  ],
+  "sourceRef": "amc/2018_AMC_10B_Q19"
 }

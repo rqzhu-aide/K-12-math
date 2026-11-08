@@ -1,81 +1,68 @@
 {
-  "Year": 2019,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 21,
-  "Question": "Debra flips a fair coin repeatedly, keeping track of how many heads and how many tails she has seen in total, until she gets either two heads in a row or two tails in a row, at which point she stops flipping. What is the probability that she gets two heads in a row but she sees a second tail before she sees a second head?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\( \\dfrac{1}{36} \\)",
-    "B": "\\( \\dfrac{1}{24} \\)",
-    "C": "\\( \\dfrac{1}{18} \\)",
-    "D": "\\( \\dfrac{1}{12} \\)",
-    "E": "\\( \\dfrac{1}{6} \\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "basic probability; geometric sequence",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2019B/solutions",
-    "SourceSHA256": "00050f6f55ecb76e75cb08e2b26558071c82d79be2f0de76517969fb677a2e97",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2019_AMC_10B_Q21",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "26110731356146b62111e2ff4251021c168461abbd26342201e450c56b9b4f12",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h138",
-      "cnm_h245"
-    ],
-    "supportIds": [
-      "cnm_h141"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2019_AMC_10B_Q21",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Debra flips a fair coin repeatedly, keeping track of how many heads and how many tails she has seen in total, until she gets either two heads in a row or two tails in a row, at which point she stops flipping. What is the probability that she gets two heads in a row but she sees a second tail before she sees a second head?",
+    "choices": [
       {
-        "id": "alternating-history-sum",
-        "label": "Sum alternating winning histories",
-        "nodeIds": [
-          "math:infinite-geometric-series"
-        ]
+        "id": "A",
+        "content": "\\( \\dfrac{1}{36} \\)"
       },
       {
-        "id": "last-flip-recursion",
-        "label": "Recur on the last flip",
-        "nodeIds": [
-          "math:recursive-counting-probability",
-          "cnm_h246",
-          "cnm_089"
-        ]
+        "id": "B",
+        "content": "\\( \\dfrac{1}{24} \\)"
+      },
+      {
+        "id": "C",
+        "content": "\\( \\dfrac{1}{18} \\)"
+      },
+      {
+        "id": "D",
+        "content": "\\( \\dfrac{1}{12} \\)"
+      },
+      {
+        "id": "E",
+        "content": "\\( \\dfrac{1}{6} \\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "level": "AMC 10"
+  },
+  "assessedNodeIds": [
+    "math:infinite-geometric-series",
+    "cnm_h138"
+  ],
+  "solutions": [
+    {
+      "id": "alternating-history-sum",
+      "title": "Sum the successful flip sequences",
+      "explanation": "Before the final repeated pair, the flips must alternate. If a sequence ends in \\(HH\\) and starts with \\(H\\), alternation forces the second head to appear before a second tail can appear. Thus a successful sequence must start with \\(THT\\), so that the second tail appears while only one head has appeared.\n\nAfter that prefix, the flips must continue alternating until the final \\(HH\\). Consequently, the successful stopping sequences are exactly\n\\[\nTHTHH,\\quad THTHTHH,\\quad THTHTHTHH,\\quad\\ldots.\n\\]\nEquivalently, they consist of \\(n\\) copies of \\(TH\\), followed by one extra \\(H\\), for \\(n\\ge2\\). Each has no earlier repeated pair, so every listed sequence satisfies the stopping rule. Different stopping sequences are mutually exclusive.\n\nA specified sequence of \\(m\\) independent fair flips has probability \\(2^{-m}\\). The probabilities above are therefore\n\\[\n\\frac1{2^5},\\quad\\frac1{2^7},\\quad\\frac1{2^9},\\quad\\ldots.\n\\]\nThis geometric series has first term \\(\\tfrac1{32}\\) and common ratio \\(\\tfrac14<1\\), so the desired probability is\n\\[\n\\frac{\\tfrac1{32}}{1-\\tfrac14}\n=\\frac1{32}\\cdot\\frac43\n=\\boxed{\\frac1{24}}.\n\\]\nThe answer is choice \\(\\mathrm{B}\\).",
+      "directNodeIds": [
+        "math:infinite-geometric-series",
+        "cnm_h138",
+        "cnm_h141"
+      ],
+      "sourceRef": "amc/2019_AMC_10B_Q21#alternating-history-sum"
+    },
+    {
+      "id": "last-flip-recursion",
+      "title": "Recur on the last flip",
+      "directNodeIds": [
+        "math:recursive-counting-probability",
+        "cnm_h246",
+        "cnm_089"
+      ],
+      "sourceRef": "amc/2019_AMC_10B_Q21#last-flip-recursion"
+    }
+  ],
+  "sourceRef": "amc/2019_AMC_10B_Q21"
 }

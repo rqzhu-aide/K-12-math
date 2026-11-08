@@ -1,66 +1,64 @@
 {
-  "Year": 2022,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Geometry",
-  "Number": 18,
-  "Question": "Let \\(T_k\\) be the transformation of the coordinate plane that first rotates the plane \\(k\\) degrees counterclockwise around the origin and then reflects the plane across the \\(y\\)-axis. What is the least positive integer \\(n\\) such that performing the sequence of transformations \\(T_1,\\) \\(T_2,\\) \\(T_3,\\) \\(\\ldots,\\) \\(T_n\\) returns the point \\((1,0)\\) back to itself?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(359\\)",
-    "B": "\\(360\\)",
-    "C": "\\(719\\)",
-    "D": "\\(720\\)",
-    "E": "\\(721\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.91",
-    "Concepts": "transformation; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2022A/solutions",
-    "SourceSHA256": "25afecb70d053b546e2a70288716895c648653913bd0416ce4795c52ef2097e0",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2022_AMC_12A_Q18",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Let \\(T_k\\) be the transformation of the coordinate plane that first rotates the plane \\(k\\) degrees counterclockwise around the origin and then reflects the plane across the \\(y\\)-axis. What is the least positive integer \\(n\\) such that performing the sequence of transformations \\(T_1,\\) \\(T_2,\\) \\(T_3,\\) \\(\\ldots,\\) \\(T_n\\) returns the point \\((1,0)\\) back to itself?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(359\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(360\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(719\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(720\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(721\\)"
+      }
     ]
   },
-  "ID": "2022_AMC_12A_Q18",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:geometry"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "A"
+    ]
+  },
+  "classification": {
+    "area": "Geometry",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:geometry"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_245",
+    "cnm_136",
+    "cnm_h200"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "271852ad9016bbbe367d52c379edacf71d05418bf7c39347c828304a5e1cde0f",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_245",
-      "cnm_136"
-    ],
-    "supportIds": [
-      "cnm_h200",
-      "cnm_h056",
-      "math:modular-congruence"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "two-step-angle-recurrence",
+      "title": "Track angles two steps at a time",
+      "explanation": "Rotations about the origin and reflections across the \\(y\\)-axis preserve distance from the origin. Thus the point stays on the unit circle, and we can track its position using its angle from the positive \\(x\\)-axis.\n\nLet \\(\\theta_k\\) be such an angle, in degrees, after the first \\(k\\) transformations, with \\(\\theta_0=0\\). Allow negative angles; angles differing by a multiple of \\(360\\) represent the same point.\n\nA rotation by \\(k+1\\) adds \\(k+1\\) to the angle. Reflection across the \\(y\\)-axis sends an angle \\(\\alpha\\) to \\(180-\\alpha\\). Hence we may choose\n\\[\n\\theta_{k+1}=180-(\\theta_k+k+1).\n\\]\nApplying the next transformation gives a particularly simple relation:\n\\[\n\\begin{aligned}\n\\theta_{k+2}\n&=180-(\\theta_{k+1}+k+2)\\\\\n&=180-\\bigl(180-(\\theta_k+k+1)+k+2\\bigr)\\\\\n&=\\theta_k-1.\n\\end{aligned}\n\\]\nSo every two steps decrease the angle by \\(1\\) degree. Since \\(\\theta_0=0\\) and \\(\\theta_1=179\\), repeated use of this relation gives\n\\[\n\\theta_{2m}=-m,\n\\qquad\n\\theta_{2m+1}=179-m\n\\quad(m\\ge0).\n\\]\nReturning to \\((1,0)\\) requires an angle that is a multiple of \\(360\\).\n\nFor a positive even index, \\(-m\\) first becomes such a multiple at \\(m=360\\), giving \\(n=720\\). For an odd index, \\(179-m\\) first becomes such a multiple at \\(m=179\\), when it equals zero. This gives\n\\[\nn=2\\cdot179+1=\\boxed{359}.\n\\]\nBecause \\(359<720\\), this is the first return. The answer is \\(\\text{A}\\).",
+      "directNodeIds": [
+        "cnm_245",
+        "cnm_136",
+        "cnm_h200",
+        "cnm_h056"
+      ],
+      "sourceRef": "amc/2022_AMC_12A_Q18#two-step-angle-recurrence"
+    }
+  ],
+  "sourceRef": "amc/2022_AMC_12A_Q18"
 }

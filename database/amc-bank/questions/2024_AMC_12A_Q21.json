@@ -1,83 +1,84 @@
 {
-  "Year": 2024,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Algebra",
-  "Number": 21,
-  "Question": "Suppose that \\(a_1=2\\) and the sequence \\((a_n)\\) satisfies the recurrence relation \\[ \\frac{a_n-1}{n-1}=\\frac{a_{n-1}+1}{(n-1)+1} \\] for all \\(n\\ge2.\\) What is the greatest integer less than or equal to \\[ \\sum_{n=1}^{100}a_n^2? \\]",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(338{,}550\\)",
-    "B": "\\(338{,}551\\)",
-    "C": "\\(338{,}552\\)",
-    "D": "\\(338{,}553\\)",
-    "E": "\\(338{,}554\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.93",
-    "Concepts": "recursion; sum of first n squares; bounding to limit cases",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2024A/solutions",
-    "SourceSHA256": "9875ffc0649d84c28198568c6d6972f9569a76bcf8751c85f132d0a01bfb9b8a",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2024_AMC_12A_Q21",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:algebra"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "ebb884c3c507bd707f3962db30abc8a247aa430382dea6d8053cf0de04f0f88a",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h200",
-      "math:floor-ceiling"
-    ],
-    "supportIds": [
-      "cnm_148"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2024_AMC_12A_Q21",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Suppose that \\(a_1=2\\) and the sequence \\((a_n)\\) satisfies the recurrence relation \\[ \\frac{a_n-1}{n-1}=\\frac{a_{n-1}+1}{(n-1)+1} \\] for all \\(n\\ge2.\\) What is the greatest integer less than or equal to \\[ \\sum_{n=1}^{100}a_n^2? \\]",
+    "choices": [
       {
-        "id": "weighted-recurrence-telescoping",
-        "label": "Telescope the weighted recurrence",
-        "nodeIds": [
-          "cnm_h199",
-          "math:telescoping",
-          "cnm_h204"
-        ]
+        "id": "A",
+        "content": "\\(338{,}550\\)"
       },
       {
-        "id": "inductive-formula-verification",
-        "label": "Verify the formula by induction",
-        "nodeIds": [
-          "cnm_h199",
-          "cnm_h214",
-          "math:telescoping"
-        ]
+        "id": "B",
+        "content": "\\(338{,}551\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(338{,}552\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(338{,}553\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(338{,}554\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "area": "Algebra",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:algebra"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h200",
+    "math:telescoping",
+    "math:floor-ceiling"
+  ],
+  "solutions": [
+    {
+      "id": "induction-and-telescoping-bound",
+      "title": "Verify the formula and bound the sum",
+      "explanation": "The first few terms are\n\\[\na_1=2,\\qquad a_2=\\frac52,\\qquad a_3=\\frac{10}{3},\\qquad a_4=\\frac{17}{4}.\n\\]\nTheir numerators suggest the formula \\(a_n=\\frac{n^2+1}{n}=n+\\frac1n\\).\n\nWe can verify this by induction. It holds at \\(n=1\\). If \\(a_{n-1}=(n-1)+\\frac1{n-1}\\), the given recurrence yields\n\\[\n\\begin{aligned}\na_n\n&=1+\\frac{n-1}{n}(a_{n-1}+1)\\\\\n&=1+\\frac{n-1}{n}\\left(n+\\frac1{n-1}\\right)\\\\\n&=n+\\frac1n.\n\\end{aligned}\n\\]\nThus the formula holds for every positive integer \\(n\\).\n\nSquaring and summing gives\n\\[\n\\begin{aligned}\n\\sum_{n=1}^{100}a_n^2\n&=\\sum_{n=1}^{100}\\left(n^2+2+\\frac1{n^2}\\right)\\\\\n&=\\frac{100\\cdot101\\cdot201}{6}+200+r\\\\\n&=338{,}550+r,\n\\end{aligned}\n\\]\nwhere \\(r=\\sum_{n=1}^{100}\\frac1{n^2}\\). Here we used the sum-of-squares formula \\(\\sum_{n=1}^{N}n^2=\\frac{N(N+1)(2N+1)}6\\).\n\nWe only need to locate \\(r\\) between consecutive integers. Its first term is \\(1\\), and all other terms are positive, so \\(r>1\\). For \\(n\\ge2\\),\n\\[\n\\frac1{n^2}<\\frac1{n(n-1)}=\\frac1{n-1}-\\frac1n.\n\\]\nTherefore the upper bound telescopes:\n\\[\n\\begin{aligned}\nr\n&<1+\\sum_{n=2}^{100}\\left(\\frac1{n-1}-\\frac1n\\right)\\\\\n&=1+1-\\frac1{100}<2.\n\\end{aligned}\n\\]\nHence\n\\[\n338{,}551<\\sum_{n=1}^{100}a_n^2<338{,}552.\n\\]\nThe requested greatest integer is \\(\\boxed{338{,}551}\\), choice \\(\\text{B}\\).",
+      "directNodeIds": [
+        "cnm_h200",
+        "cnm_h214",
+        "math:telescoping",
+        "math:floor-ceiling"
+      ],
+      "sourceRef": "amc/2024_AMC_12A_Q21#induction-and-telescoping-bound"
+    },
+    {
+      "id": "weighted-recurrence-telescoping",
+      "title": "Telescope the weighted recurrence",
+      "directNodeIds": [
+        "cnm_h199",
+        "math:telescoping",
+        "cnm_h204"
+      ],
+      "sourceRef": "amc/2024_AMC_12A_Q21#weighted-recurrence-telescoping"
+    },
+    {
+      "id": "inductive-formula-verification",
+      "title": "Verify the formula by induction",
+      "directNodeIds": [
+        "cnm_h199",
+        "cnm_h214",
+        "math:telescoping"
+      ],
+      "sourceRef": "amc/2024_AMC_12A_Q21#inductive-formula-verification"
+    }
+  ],
+  "sourceRef": "amc/2024_AMC_12A_Q21"
 }

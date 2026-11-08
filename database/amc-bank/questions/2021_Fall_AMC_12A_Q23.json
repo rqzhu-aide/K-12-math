@@ -1,81 +1,81 @@
 {
-  "Year": 2021,
-  "Level": "AMC 12",
-  "Batch": "Fall A",
-  "Area": "Algebra",
-  "Number": 23,
-  "Question": "A quadratic polynomial with real coefficients and leading coefficient \\(1\\) is called disrespectful if the equation \\(p(p(x)) = 0\\) is satisfied by exactly three real numbers. Among all the disrespectful quadratic polynomials, there is a unique such polynomial \\(\\tilde{p}(x)\\) for which the sum of the roots is maximized. What is \\(\\tilde{p}(1)?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{5}{16}\\)",
-    "B": "\\(\\dfrac{1}{2}\\)",
-    "C": "\\(\\dfrac{5}{8}\\)",
-    "D": "\\(1\\)",
-    "E": "\\(\\dfrac{9}{8}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.98",
-    "Concepts": "polynomial; quadratic; optimization",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2021C/solutions",
-    "SourceSHA256": "e0d194663bebed49e91b5fc44ab962a7b781e51eb50e22fa813a19393e2d7f87",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2021_Fall_AMC_12A_Q23",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:algebra"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "337277f34ab76be7f8a22e401c3aa3df271f3cc4d14bee5301b39ac0520ee6e3",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_234",
-      "cnm_226",
-      "cnm_h029"
-    ],
-    "supportIds": [
-      "cnm_232"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2021_Fall_AMC_12A_Q23",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "A quadratic polynomial with real coefficients and leading coefficient \\(1\\) is called disrespectful if the equation \\(p(p(x)) = 0\\) is satisfied by exactly three real numbers. Among all the disrespectful quadratic polynomials, there is a unique such polynomial \\(\\tilde{p}(x)\\) for which the sum of the roots is maximized. What is \\(\\tilde{p}(1)?\\)",
+    "choices": [
       {
-        "id": "root-gap-and-vertex",
-        "label": "Root gap and quadratic maximum",
-        "nodeIds": [
-          "math:completing-square-expression",
-          "cnm_235"
-        ]
+        "id": "A",
+        "content": "\\(\\dfrac{5}{16}\\)"
       },
       {
-        "id": "coefficient-discriminant-bound",
-        "label": "Bound coefficients by a discriminant",
-        "nodeIds": [
-          "cnm_223"
-        ]
+        "id": "B",
+        "content": "\\(\\dfrac{1}{2}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac{5}{8}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(1\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac{9}{8}\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "A"
+    ]
+  },
+  "classification": {
+    "area": "Algebra",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:algebra"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:function-composition-iteration",
+    "cnm_223",
+    "cnm_235"
+  ],
+  "solutions": [
+    {
+      "id": "double-root-discriminant-bound",
+      "title": "Use a double root to bound the sum",
+      "explanation": "The key observation is that a solution of \\(p(p(x))=0\\) must make \\(p(x)\\) equal to a root of \\(p\\).\n\nThe polynomial \\(p\\) must have real roots; otherwise the composition has no real zeros. It cannot have just one repeated root \\(r\\), because then \\(p(p(x))=0\\) reduces to the quadratic equation \\(p(x)=r\\), which has at most two distinct solutions. Thus write\n\\[\np(x)=(x-r)(x-s),\\qquad r\\ne s,\n\\]\nwith \\(r,s\\) real. Now\n\\[\np(p(x))=0\n\\quad\\Longleftrightarrow\\quad\np(x)=r\\ \\text{or}\\ p(x)=s.\n\\]\nThese equations have no common solution, since \\(r\\ne s\\). For their solution counts to total three, one quadratic must have exactly one distinct real solution and the other exactly two. Name the roots so that \\(p(x)=r\\) has the single solution.\n\nExpanding that equation gives\n\\[\nx^2-(r+s)x+r(s-1)=0.\n\\]\nIts discriminant must be zero, so\n\\[\n0=(r+s)^2-4r(s-1)=(r-s)^2+4r.\n\\]\nBecause \\(r\\ne s\\), this forces \\(r<0\\). Set \\(r=-t^2\\), where \\(t>0\\). The discriminant equation then yields\n\\[\ns=-t^2\\pm2t.\n\\]\nConsequently, the sum of the roots satisfies\n\\[\n\\begin{aligned}\nr+s&=-2t^2\\pm2t\\\\\n&\\le-2t^2+2t\\\\\n&=\\frac12-2\\left(t-\\frac12\\right)^2\\\\\n&\\le\\frac12.\n\\end{aligned}\n\\]\nEquality requires the plus sign and \\(t=\\tfrac12\\), giving \\(r=-\\tfrac14\\) and \\(s=\\tfrac34\\). These determine a unique monic polynomial:\n\\[\n\\tilde p(x)=\\left(x+\\frac14\\right)\\left(x-\\frac34\\right)\n=\\left(x-\\frac14\\right)^2-\\frac14.\n\\]\nWe must check that it is disrespectful. The equation \\(\\tilde p(x)=-\\tfrac14\\) gives only \\(x=\\tfrac14\\), while \\(\\tilde p(x)=\\tfrac34\\) gives \\(x=\\tfrac14\\pm1\\). Thus the composition has exactly three distinct real zeros, as required.\n\nFinally,\n\\[\n\\tilde p(1)=\\left(1+\\frac14\\right)\\left(1-\\frac34\\right)\n=\\frac54\\cdot\\frac14=\\boxed{\\frac5{16}},\n\\]\nwhich is choice \\(\\mathrm{A}\\).",
+      "directNodeIds": [
+        "math:function-composition-iteration",
+        "cnm_223",
+        "math:completing-square-expression",
+        "cnm_235"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_12A_Q23#double-root-discriminant-bound"
+    },
+    {
+      "id": "root-gap-and-vertex",
+      "title": "Root gap and quadratic maximum",
+      "directNodeIds": [
+        "math:completing-square-expression",
+        "cnm_235"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_12A_Q23#root-gap-and-vertex"
+    },
+    {
+      "id": "coefficient-discriminant-bound",
+      "title": "Bound coefficients by a discriminant",
+      "directNodeIds": [
+        "cnm_223"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_12A_Q23#coefficient-discriminant-bound"
+    }
+  ],
+  "sourceRef": "amc/2021_Fall_AMC_12A_Q23"
 }

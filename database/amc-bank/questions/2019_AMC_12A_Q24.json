@@ -1,65 +1,59 @@
 {
-  "Year": 2019,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 24,
-  "Question": "For how many integers \\(n\\) between \\(1\\) and \\(50,\\) inclusive, is \\[ \\dfrac{(n^2 - 1)!}{(n!)^n} \\] an integer? (Recall that \\(0! = 1.\\))",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(31\\)",
-    "B": "\\(32\\)",
-    "C": "\\(33\\)",
-    "D": "\\(34\\)",
-    "E": "\\(35\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "Legendre’s Formula; prime; digits",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2019A/solutions",
-    "SourceSHA256": "2ef8020f0812f33b73f055ce7dc57d54b70f1e7a9010597534e8e2e616d80a2b",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2019_AMC_12A_Q24",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "For how many integers \\(n\\) between \\(1\\) and \\(50,\\) inclusive, is \\[ \\dfrac{(n^2 - 1)!}{(n!)^n} \\] an integer? (Recall that \\(0! = 1.\\))",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(31\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(32\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(33\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(34\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(35\\)"
+      }
     ]
   },
-  "ID": "2019_AMC_12A_Q24",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "7e1fa3652fc15624f2118efc4f6277b8084a41eccc28672fd9c78d2a8f30a19c",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:prime-valuations-factorials"
-    ],
-    "supportIds": [
-      "cnm_h237",
-      "cnm_p153",
-      "cnm_p157"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "level": "AMC 12"
+  },
+  "assessedNodeIds": [
+    "math:prime-valuations-factorials",
+    "math:double-counting"
+  ],
+  "solutions": [
+    {
+      "id": "factorial-partition-count",
+      "title": "Prove divisibility by counting groups",
+      "explanation": "Let\n\\[\nA_n=\\frac{(n^2-1)!}{(n!)^n}.\n\\]\nA useful factorization is\n\\[\nA_n=\\frac{(n^2)!}{(n!)^{n+1}}\\cdot\\frac{n!}{n^2}.\n\\]\nThe first factor has a counting interpretation that guarantees it is an integer.\n\nArrange \\(n^2\\) distinct objects in a line and split them into \\(n\\) consecutive groups of size \\(n\\). Each partition into unordered groups arises from exactly \\((n!)^n n!\\) arrangements: there are \\(n!\\) orders within each group and \\(n!\\) orders of the groups. Therefore,\n\\[\n\\frac{(n^2)!}{(n!)^{n+1}}\n\\]\ncounts these partitions and is an integer.\n\nNext suppose \\(n\\) is composite and \\(n>4\\). We will show that the second factor,\n\\[\n\\frac{n!}{n^2}=\\frac{(n-1)!}{n},\n\\]\nis also an integer.\n\nIf \\(n=ab\\) for distinct integers \\(a,b>1\\), then both \\(a\\) and \\(b\\) occur among the factors of \\((n-1)!\\). Their product is \\(n\\), so \\(n\\) divides \\((n-1)!\\).\n\nIf no such distinct factor pair exists, choose a prime divisor \\(p\\) of \\(n\\). Its complementary factor must also be \\(p\\), so \\(n=p^2\\). Since \\(n>4\\), we have \\(p\\ge3\\). The distinct numbers \\(p\\) and \\(2p\\) are both less than \\(p^2\\), so \\((n-1)!\\) contains at least two factors of \\(p\\). Hence it is divisible by \\(p^2=n\\).\n\nThus every composite \\(n>4\\) works. To complete the classification, check the remaining possibilities:\n\n- For \\(n=1\\), \\(A_1=0!/(1!)=1\\), so it works.\n- For prime \\(n=p\\), the numerator \\((p^2-1)!\\) contains exactly \\(p-1\\) factors of \\(p\\), from the multiples \\(p,2p,\\ldots,(p-1)p\\). The denominator \\((p!)^p\\) contains \\(p\\) factors of \\(p\\), so the quotient is not an integer.\n- For \\(n=4\\), the numerator \\(15!\\) contains \\(7+3+1=11\\) factors of \\(2\\), counting multiples of \\(2,4,8\\). The denominator \\((4!)^4\\) contains \\(4(2+1)=12\\), so this quotient is not an integer either.\n\nThe primes at most \\(50\\) are\n\\[\n2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,\n\\]\nwhich gives \\(15\\) excluded values. The only additional exclusion is \\(4\\). Therefore the answer is\n\\[\n50-15-1=\\boxed{34},\n\\]\nchoice \\(\\text{D}\\).",
+      "directNodeIds": [
+        "math:prime-valuations-factorials",
+        "math:double-counting",
+        "cnm_p157",
+        "cnm_h234"
+      ],
+      "sourceRef": "amc/2019_AMC_12A_Q24#factorial-partition-count"
+    }
+  ],
+  "sourceRef": "amc/2019_AMC_12A_Q24"
 }

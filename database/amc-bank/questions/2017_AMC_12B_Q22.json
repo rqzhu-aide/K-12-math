@@ -1,81 +1,69 @@
 {
-  "Year": 2017,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 22,
-  "Question": "Abby, Bernardo, Carl, and Debra play a game in which each of them starts with four coins. The game consists of four rounds. In each round, four balls are placed in an urn—one green, one red, and two white. The players each draw a ball at random without replacement. Whoever gets the green ball gives one coin to whoever gets the red ball. What is the probability that, at the end of the fourth round, each of the players has four coins?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{7}{576}\\)",
-    "B": "\\(\\dfrac{5}{192}\\)",
-    "C": "\\(\\dfrac{1}{36}\\)",
-    "D": "\\(\\dfrac{5}{144}\\)",
-    "E": "\\(\\dfrac{7}{48}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "basic probability; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2017B/solutions",
-    "SourceSHA256": "023d67fa8eae757999e7f1df5d06e47615fd251edfeef4ae2c5d880a8d61bfce",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2017_AMC_12B_Q22",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "aefdcf1c2ca5ff89320117ad3392de11910468bfd9a0e936ff2320d01a3bd6cc",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h137"
-    ],
-    "supportIds": [
-      "cnm_h231"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2017_AMC_12B_Q22",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Abby, Bernardo, Carl, and Debra play a game in which each of them starts with four coins. The game consists of four rounds. In each round, four balls are placed in an urn—one green, one red, and two white. The players each draw a ball at random without replacement. Whoever gets the green ball gives one coin to whoever gets the red ball. What is the probability that, at the end of the fourth round, each of the players has four coins?",
+    "choices": [
       {
-        "id": "balanced-transfer-cycles",
-        "label": "Count balanced transfer patterns",
-        "nodeIds": [
-          "cnm_h232",
-          "cnm_h234",
-          "cnm_h239",
-          "math:multiset-permutations"
-        ]
+        "id": "A",
+        "content": "\\(\\dfrac{7}{576}\\)"
       },
       {
-        "id": "net-balance-recursion",
-        "label": "Net-balance state recurrence",
-        "nodeIds": [
-          "math:recursive-counting-probability"
-        ]
+        "id": "B",
+        "content": "\\(\\dfrac{5}{192}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac{1}{36}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac{5}{144}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac{7}{48}\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "level": "AMC 12"
+  },
+  "assessedNodeIds": [
+    "cnm_h137",
+    "cnm_h232",
+    "math:multiset-permutations"
+  ],
+  "solutions": [
+    {
+      "id": "balanced-transfer-cycles",
+      "title": "Count balanced transfer patterns",
+      "explanation": "The useful observation is that everyone finishes with four coins exactly when each player gives as many coins as they receive. Represent a transfer from one player to another by an arrow.\n\nIn each round, the green-ball player can be any of the four players, and the red-ball player can be any of the remaining three. These \\(12\\) ordered pairs are equally likely. The rounds are independent, so there are \\(12^4\\) equally likely transfer sequences.\n\nTo classify the successful sequences, temporarily ignore the order of the four transfers. Whenever incoming and outgoing arrow counts balance at every player, the arrows can be separated into directed cycles: follow arrows until a player repeats, remove that cycle, and repeat with the remaining arrows. No cycle has length one because nobody transfers a coin to themselves. Thus four arrows must form either one cycle of length four or two cycles of length two. The two shorter cycles can use disjoint pairs, the same pair, or pairs sharing one player.\n\n1. A cycle through all four players. Starting the cycle at Abby avoids counting the same cycle from different starting points. Choose her recipient in \\(3\\) ways, then the next recipient in \\(2\\) ways. The remaining transfers are forced. Each of these \\(6\\) cycles has four distinct transfers, which can occur in \\(4!=24\\) orders. This gives \\(6\\cdot24=144\\) sequences.\n\n2. Exchanges between two disjoint pairs. Abby's partner determines the pairing, giving \\(3\\) pairings. The four directed transfers are distinct, so there are \\(3\\cdot24=72\\) sequences.\n\n3. Two exchanges between the same two players. Choose the players in \\(\\binom{4}{2}=6\\) ways. Each direction occurs twice, so the number of orders is\n\\[\n\\frac{4!}{2!2!}=6.\n\\]\nThis gives \\(6\\cdot6=36\\) sequences.\n\n4. Exchanges between two pairs sharing one player. Choose the shared player in \\(4\\) ways and their two exchange partners in \\(\\binom{3}{2}=3\\) ways. The four directed transfers are distinct, giving \\(4\\cdot3\\cdot24=288\\) sequences.\n\nThese cases are disjoint, and the cycle classification shows that they cover every successful sequence. Within each case, the cycle, pairing, repeated pair, or shared player is uniquely determined by the transfers. Therefore the required probability is\n\\[\n\\frac{144+72+36+288}{12^4}\n=\\frac{540}{20736}\n=\\boxed{\\frac{5}{192}}.\n\\]\nThe answer is choice \\(\\mathrm{B}\\).",
+      "directNodeIds": [
+        "cnm_h137",
+        "cnm_h232",
+        "cnm_h234",
+        "cnm_h237",
+        "math:multiset-permutations"
+      ],
+      "sourceRef": "amc/2017_AMC_12B_Q22#balanced-transfer-cycles"
+    },
+    {
+      "id": "net-balance-recursion",
+      "title": "Net-balance state recurrence",
+      "directNodeIds": [
+        "math:recursive-counting-probability"
+      ],
+      "sourceRef": "amc/2017_AMC_12B_Q22#net-balance-recursion"
+    }
+  ],
+  "sourceRef": "amc/2017_AMC_12B_Q22"
 }

@@ -1,78 +1,79 @@
 {
-  "Year": 2024,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 16,
-  "Question": "A group of \\(16\\) people will be partitioned into \\(4\\) indistinguishable \\(4\\)-person committees. Each committee will have one chairperson and one secretary. The number of different ways to make these assignments can be written as \\(3^r M,\\) where \\(r\\) and \\(M\\) are positive integers and \\(M\\) is not divisible by \\(3.\\) What is \\(r?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(5\\)",
-    "B": "\\(6\\)",
-    "C": "\\(7\\)",
-    "D": "\\(8\\)",
-    "E": "\\(9\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.98",
-    "Concepts": "multiplication principle; Legendre’s Formula",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2024B/solutions",
-    "SourceSHA256": "d4c4afd69ead6e9babb327526e913666b05a6c9bb5b0632e9ea7809ec564c295",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2024_AMC_12B_Q16",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "78619f028eb92c5474856414f1de38625aba7fd4b3f50862ee33d52c3dd3fcb4",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h231",
-      "math:prime-valuations-factorials"
-    ],
-    "supportIds": [],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2024_AMC_12B_Q16",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "A group of \\(16\\) people will be partitioned into \\(4\\) indistinguishable \\(4\\)-person committees. Each committee will have one chairperson and one secretary. The number of different ways to make these assignments can be written as \\(3^r M,\\) where \\(r\\) and \\(M\\) are positive integers and \\(M\\) is not divisible by \\(3.\\) What is \\(r?\\)",
+    "choices": [
       {
-        "id": "chairs-first",
-        "label": "Choose chairs, then fill committees",
-        "nodeIds": [
-          "cnm_h239",
-          "cnm_h235"
-        ]
+        "id": "A",
+        "content": "\\(5\\)"
       },
       {
-        "id": "ordered-slots-overcount",
-        "label": "Arrange role slots and remove overcount",
-        "nodeIds": [
-          "cnm_h234"
-        ]
+        "id": "B",
+        "content": "\\(6\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(7\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(8\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(9\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "A"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h231",
+    "math:prime-valuations-factorials"
+  ],
+  "solutions": [
+    {
+      "id": "partition-then-roles",
+      "title": "Form committees, then assign roles",
+      "explanation": "First count the committee partitions, then assign the roles. We only need to track factors of \\(3\\), so there is no need to evaluate the full count.\n\nArrange the \\(16\\) people in a row and split the row into four consecutive blocks of four. There are \\(16!\\) arrangements. Each partition into indistinguishable committees appears exactly\n\\[\n(4!)^4\\cdot4!=(4!)^5\n\\]\ntimes: the members within each block can be reordered in \\(4!\\) ways, and the four blocks can be reordered in \\(4!\\) ways. Thus there are \\(16!/(4!)^5\\) partitions.\n\nWithin each committee, there are \\(4\\) choices for chairperson and then \\(3\\) choices for secretary. The total number of assignments is therefore\n\\[\nA=\\frac{16!\\cdot4^4\\cdot3^4}{(4!)^5}.\n\\]\nIn \\(16!\\), the multiples \\(3,6,9,12,15\\) each contribute a factor of \\(3\\), and \\(9\\) contributes one additional factor. Thus \\(16!\\) contains exactly \\(6\\) factors of \\(3\\). The factor \\(3^4\\) contributes four more, while \\(4^4\\) contributes none.\n\nEach \\(4!=24\\) contains exactly one factor of \\(3\\), so the denominator removes five factors. The exponent remaining is\n\\[\nr=6+4-5=\\boxed{5}.\n\\]\nThe answer is choice \\(\\text{A}\\).",
+      "directNodeIds": [
+        "cnm_h231",
+        "cnm_h234",
+        "math:prime-valuations-factorials"
+      ],
+      "sourceRef": "amc/2024_AMC_12B_Q16#partition-then-roles"
+    },
+    {
+      "id": "chairs-first",
+      "title": "Choose chairs, then fill committees",
+      "directNodeIds": [
+        "cnm_h239",
+        "cnm_h235"
+      ],
+      "sourceRef": "amc/2024_AMC_12B_Q16#chairs-first"
+    },
+    {
+      "id": "ordered-slots-overcount",
+      "title": "Arrange role slots and remove overcount",
+      "directNodeIds": [
+        "cnm_h234"
+      ],
+      "sourceRef": "amc/2024_AMC_12B_Q16#ordered-slots-overcount"
+    }
+  ],
+  "sourceRef": "amc/2024_AMC_12B_Q16"
 }

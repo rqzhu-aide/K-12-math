@@ -1,65 +1,64 @@
 {
-  "Year": 2024,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 15,
-  "Question": "A list of \\(9\\) real numbers consists of \\(1,\\) \\(2.2,\\) \\(3.2,\\) \\(5.2,\\) \\(6.2,\\) \\(7,\\) as well as \\(x,\\) \\(y,\\) \\(z\\) with \\(x \\le y \\le z.\\) The range of the list is \\(7,\\) and the mean and median are both positive integers. How many ordered triples \\((x, y, z)\\) are possible?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(1\\)",
-    "B": "\\(2\\)",
-    "C": "\\(3\\)",
-    "D": "\\(4\\)",
-    "E": "infinitely many"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.55",
-    "Concepts": "mean; median (data); range; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2024B/solutions",
-    "SourceSHA256": "2671c8998a9a67627ff232acd1dfac260f51b807965eab592a796f27906e4ae2",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2024_AMC_10B_Q15",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "A list of \\(9\\) real numbers consists of \\(1,\\) \\(2.2,\\) \\(3.2,\\) \\(5.2,\\) \\(6.2,\\) \\(7,\\) as well as \\(x,\\) \\(y,\\) \\(z\\) with \\(x \\le y \\le z.\\) The range of the list is \\(7,\\) and the mean and median are both positive integers. How many ordered triples \\((x, y, z)\\) are possible?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(1\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(2\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(3\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(4\\)"
+      },
+      {
+        "id": "E",
+        "content": "infinitely many"
+      }
     ]
   },
-  "ID": "2024_AMC_10B_Q15",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_211",
+    "cnm_213",
+    "cnm_215"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "ee1a0e9c0d7312e626eb0018622104e55975578f1f1540d3f19859885df56840",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_211",
-      "cnm_213",
-      "cnm_215"
-    ],
-    "supportIds": [
-      "cnm_042"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "integer-median-cases",
+      "title": "Split by the median",
+      "explanation": "The integer median greatly restricts where the three new numbers can lie. Since \\(1\\) and \\(7\\) are already present and the range is \\(7\\), every entry lies in \\([0,8]\\).\n\nThe median is the fifth entry after sorting. At most four entries can be below \\(2.2\\), and at most four can be above \\(6.2\\), so the median lies in \\([2.2,6.2]\\). Its possible integer values are therefore \\(3,4,5,6\\). None of these is a fixed entry, so the median must be one of \\(x,y,z\\).\n\nThe six fixed numbers sum to \\(24.8\\). Because one of the new numbers is between \\(3\\) and \\(6\\), while the other two lie in \\([0,8]\\),\n\\[\n3\\le x+y+z\\le22.\n\\]\nThus the total sum \\(S\\) satisfies \\(27.8\\le S\\le46.8\\). An integer mean requires \\(S\\) to be a multiple of \\(9\\), giving\n\\[\nS=36\\text{ or }45,\n\\qquad\nx+y+z=11.2\\text{ or }20.2.\n\\]\nWe now consider each possible median.\n\nIf the median is \\(3\\), only two fixed entries are at most \\(3\\). To have five entries at most \\(3\\), all three new entries must be at most \\(3\\). Then \\(x+y+z\\le9\\), which is impossible.\n\nIf the median is \\(4\\), three fixed entries lie below \\(4\\) and three above it. At least two new entries must be at most \\(4\\), and at least two must be at least \\(4\\), forcing \\(y=4\\). Since \\(x\\le4\\) and \\(z\\le8\\), their total is at most \\(16\\), so it must be \\(11.2\\). Therefore \\(x+z=7.2\\). If the fixed \\(7\\) is the maximum, the minimum must be \\(0\\), giving \\(x=0\\) and \\(z=7.2\\), a contradiction. If the fixed \\(1\\) is the minimum, the maximum must be \\(8\\), giving \\(z=8\\) and \\(x=-0.8\\), also impossible. Otherwise \\(x\\) and \\(z\\) are the minimum and maximum, so\n\\[\nx+z=7.2,\\qquad z-x=7.\n\\]\nThese equations give \\((x,y,z)=(0.1,4,7.1)\\).\n\nIf the median is \\(5\\), the same count of fixed entries on either side forces \\(y=5\\). Now \\(x+y+z\\le5+5+8=18\\), so the sum must be \\(11.2\\), giving \\(x+z=6.2\\). Because \\(x\\ge0\\), we have \\(z\\le6.2\\), so the maximum remains \\(7\\). The minimum must therefore be \\(0\\), yielding \\((x,y,z)=(0,5,6.2)\\).\n\nIf the median is \\(6\\), four fixed entries are below \\(6\\), so no new entry can be below \\(6\\). Since the median is a new entry, \\(x=6\\). Thus \\(x+y+z\\ge18\\), so the sum must be \\(20.2\\), giving \\(y+z=14.2\\). The minimum is \\(1\\), so the maximum must be \\(8\\). Hence \\(z=8\\), \\(y=6.2\\), and \\((x,y,z)=(6,6.2,8)\\).\n\nThe three resulting triples have range \\(7\\), medians \\(4,5,6\\), and means \\(4,4,5\\), respectively. The median cases cover all possibilities and are disjoint. Therefore there are \\(\\boxed{3}\\) triples, choice C.",
+      "directNodeIds": [
+        "cnm_211",
+        "cnm_213",
+        "cnm_215",
+        "cnm_042"
+      ],
+      "sourceRef": "amc/2024_AMC_10B_Q15#integer-median-cases"
+    }
+  ],
+  "sourceRef": "amc/2024_AMC_10B_Q15"
 }

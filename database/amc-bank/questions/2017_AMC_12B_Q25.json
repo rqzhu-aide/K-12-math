@@ -1,65 +1,60 @@
 {
-  "Year": 2017,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 25,
-  "Question": "A set of \\(n\\) people participate in an online video basketball tournament. Each person may be a member of any number of \\(5\\)-player teams, but no two teams may have exactly the same \\(5\\) members. The site statistics show a curious fact: The average, over all subsets of size \\(9\\) of the set of \\(n\\) participants, of the number of complete teams whose members are among those \\(9\\) people is equal to the reciprocal of the average, over all subsets of size \\(8\\) of the set of \\(n\\) participants, of the number of complete teams whose members are among those \\(8\\) people. How many values \\(n,\\) \\(9 \\le n \\le 2017,\\) can be the number of participants?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(477\\)",
-    "B": "\\(482\\)",
-    "C": "\\(487\\)",
-    "D": "\\(557\\)",
-    "E": "\\(562\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "double counting; divisibility; Chinese Remainder Theorem",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2017B/solutions",
-    "SourceSHA256": "023d67fa8eae757999e7f1df5d06e47615fd251edfeef4ae2c5d880a8d61bfce",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2017_AMC_12B_Q25",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "A set of \\(n\\) people participate in an online video basketball tournament. Each person may be a member of any number of \\(5\\)-player teams, but no two teams may have exactly the same \\(5\\) members. The site statistics show a curious fact: The average, over all subsets of size \\(9\\) of the set of \\(n\\) participants, of the number of complete teams whose members are among those \\(9\\) people is equal to the reciprocal of the average, over all subsets of size \\(8\\) of the set of \\(n\\) participants, of the number of complete teams whose members are among those \\(8\\) people. How many values \\(n,\\) \\(9 \\le n \\le 2017,\\) can be the number of participants?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(477\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(482\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(487\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(557\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(562\\)"
+      }
     ]
   },
-  "ID": "2017_AMC_12B_Q25",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "c82c917ea682fb4df34b7ddfd59ef8a05376bfa63e3074d4f169ba9420ba54e9",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:double-counting",
-      "math:prime-valuations-factorials",
-      "math:simultaneous-congruences"
-    ],
-    "supportIds": [
-      "cnm_h237"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "level": "AMC 12"
+  },
+  "assessedNodeIds": [
+    "math:double-counting",
+    "math:prime-factorization",
+    "math:simultaneous-congruences"
+  ],
+  "solutions": [
+    {
+      "id": "double-count-and-congruences",
+      "title": "Count incidences, then allowed residues",
+      "explanation": "The key observation is that every fixed team belongs to the same number of subsets of a given size. This lets us compute the two averages using only the total number of teams.\n\nLet \\(T>0\\) be the number of teams, and let \\(M_k\\) be the average number of complete teams in a \\(k\\)-person subset. A fixed team belongs to exactly \\(\\binom{n-5}{k-5}\\) such subsets, since its five players are already chosen. Counting pairs consisting of a team and a subset containing it gives\n\\[\nM_k=\\frac{T\\binom{n-5}{k-5}}{\\binom nk}\n=T\\frac{\\binom k5}{\\binom n5}.\n\\]\nIn particular,\n\\[\nM_9=\\frac{126T}{\\binom n5},\\qquad\nM_8=\\frac{56T}{\\binom n5}.\n\\]\nThe reciprocal condition says \\(M_9M_8=1\\). Since \\(126\\cdot56=84^2\\), it follows that\n\\[\nT=\\frac{\\binom n5}{84}\n=\\frac{n(n-1)(n-2)(n-3)(n-4)}{2^5\\cdot3^2\\cdot5\\cdot7}.\n\\]\nFor \\(n\\ge9\\), this condition is also sufficient whenever \\(T\\) is an integer: it lies between \\(1\\) and \\(\\binom n5\\), so we can choose that many distinct teams, and the computed averages have product one.\n\nSet\n\\[\nN=n(n-1)(n-2)(n-3)(n-4).\n\\]\nWe must count when \\(N\\) is divisible by \\(32\\cdot9\\cdot5\\cdot7\\). Five consecutive integers always include a multiple of \\(5\\), so that factor imposes no restriction.\n\nFor divisibility by \\(7\\), the five factors must include a multiple of \\(7\\). This occurs exactly when\n\\[\nn\\equiv0,1,2,3,4\\pmod7.\n\\]\n\nFor divisibility by \\(9\\), a multiple of \\(9\\) occurs when \\(n\\equiv0,1,2,3,4\\pmod9\\). The residues \\(6,7\\) also work because the five factors then include two multiples of \\(3\\). For residues \\(5,8\\), there is just one multiple of \\(3\\), and it is not divisible by \\(9\\). Thus the allowed residues are\n\\[\nn\\equiv0,1,2,3,4,6,7\\pmod9.\n\\]\n\nFor divisibility by \\(32=2^5\\), count the factors of \\(2\\) supplied by the even terms:\n\n- If \\(n\\) is odd, the even terms are \\(n-1,n-3\\). One has exactly one factor of \\(2\\), so the other must be divisible by \\(16\\). This gives \\(n\\equiv1,3\\pmod{16}\\).\n- If \\(n\\equiv0\\pmod4\\), then \\(n,n-4\\) are both divisible by \\(4\\), and \\(n-2\\) is even. Together they supply at least five factors of \\(2\\), so all these values work.\n- If \\(n\\equiv2\\pmod4\\), then \\(n,n-4\\) each supply exactly one factor of \\(2\\). Therefore \\(n-2\\) must be divisible by \\(8\\), giving \\(n\\equiv2,10\\pmod{16}\\).\n\nCombining these cases, the eight allowed residues are\n\\[\nn\\equiv0,1,2,3,4,8,10,12\\pmod{16}.\n\\]\n\nThe moduli \\(7,9,16\\) are pairwise coprime. By the Chinese remainder theorem, each choice of one allowed residue for each modulus determines exactly one residue modulo\n\\[\n7\\cdot9\\cdot16=1008.\n\\]\nConsequently, each block of \\(1008\\) consecutive integers contains exactly\n\\[\n5\\cdot7\\cdot8=280\n\\]\nsolutions to the divisibility conditions.\n\nThe interval \\(1\\le n\\le2016\\) contains two complete blocks, giving \\(560\\) solutions. Among \\(1,2,\\ldots,8\\), exactly \\(1,2,3,4\\) satisfy the residue conditions, so remove these four. Finally, \\(2017\\equiv1\\pmod{1008}\\) satisfies all three conditions and contributes one more value. The requested count is\n\\[\n560-4+1=\\boxed{557}.\n\\]\nThe answer is choice \\(\\mathrm{D}\\).",
+      "directNodeIds": [
+        "math:double-counting",
+        "cnm_h237",
+        "math:prime-factorization",
+        "math:simultaneous-congruences"
+      ],
+      "sourceRef": "amc/2017_AMC_12B_Q25#double-count-and-congruences"
+    }
+  ],
+  "sourceRef": "amc/2017_AMC_12B_Q25"
 }

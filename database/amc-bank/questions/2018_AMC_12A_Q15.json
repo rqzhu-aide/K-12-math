@@ -1,62 +1,59 @@
 {
-  "Year": 2018,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 15,
-  "Question": "A scanning code consists of a \\(7 \\times 7\\) grid of squares, with some of its squares colored black and the rest colored white. There must be at least one square of each color in this grid of \\(49\\) squares. A scanning code is called symmetric if its look does not change when the entire square is rotated by a multiple of \\(90^\\circ\\) counterclockwise around its center, nor when it is reflected across a line joining opposite corners or a line joining midpoints of opposite sides. What is the total number of possible symmetric scanning codes?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(510\\)",
-    "B": "\\(1022\\)",
-    "C": "\\(8190\\)",
-    "D": "\\(8192\\)",
-    "E": "\\(65{,}534\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "symmetry; basic counting",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2018A/solutions",
-    "SourceSHA256": "64f36c5fcc42ad50f73e25ea243f68a61be5a407a8e7deed744d4065a363f384",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2018_AMC_12A_Q15",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "A scanning code consists of a \\(7 \\times 7\\) grid of squares, with some of its squares colored black and the rest colored white. There must be at least one square of each color in this grid of \\(49\\) squares. A scanning code is called symmetric if its look does not change when the entire square is rotated by a multiple of \\(90^\\circ\\) counterclockwise around its center, nor when it is reflected across a line joining opposite corners or a line joining midpoints of opposite sides. What is the total number of possible symmetric scanning codes?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(510\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(1022\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(8190\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(8192\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(65{,}534\\)"
+      }
     ]
   },
-  "ID": "2018_AMC_12A_Q15",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "a98a18b5cfa4b7fe5283c1cc795e323c714bb9c766a0bf0eaf66284bbbfb92cc",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:symmetry-counting",
-      "cnm_h231"
-    ],
-    "supportIds": [],
-    "routes": [],
-    "flags": []
-  }
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "level": "AMC 12"
+  },
+  "assessedNodeIds": [
+    "cnm_136",
+    "cnm_244",
+    "cnm_h231"
+  ],
+  "solutions": [
+    {
+      "id": "color-symmetry-orbits",
+      "title": "Color groups forced by symmetry",
+      "explanation": "Squares that can be carried to one another by the required symmetries must have the same color. We can count these groups without drawing every possible code.\n\nLabel each square by its center coordinates \\((u,v)\\), placing the central square at \\((0,0)\\) and adjacent centers one unit apart. Both coordinates range from \\(-3\\) to \\(3\\). The allowed reflections and rotations can change either coordinate's sign and interchange the coordinates.\n\nConsequently, every square can be mapped to a representative \\((a,b)\\) satisfying\n\\[\n0\\le b\\le a\\le 3.\n\\]\nDifferent representatives cannot map to one another, because the transformations preserve the unordered pair of absolute coordinate values. Thus these representatives describe all the groups, with no duplicates.\n\nFor \\(a=0,1,2,3\\), there are respectively \\(1,2,3,4\\) possible values of \\(b\\). Hence there are\n\\[\n1+2+3+4=10\n\\]\ngroups.\n\nChoose black or white independently for each group and give every square in that group the chosen color. This produces a symmetric code, and every symmetric code is obtained uniquely this way. There are therefore \\(2^{10}\\) colorings before imposing the requirement that both colors appear. Removing the all-black and all-white colorings gives\n\\[\n2^{10}-2=1024-2=\\boxed{1022}.\n\\]\nThe answer is choice B.",
+      "directNodeIds": [
+        "cnm_136",
+        "cnm_244",
+        "cnm_h231"
+      ],
+      "sourceRef": "amc/2018_AMC_12A_Q15#color-symmetry-orbits"
+    }
+  ],
+  "sourceRef": "amc/2018_AMC_12A_Q15"
 }

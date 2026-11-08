@@ -1,63 +1,56 @@
 {
-  "Year": 2019,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 23,
-  "Question": "Travis has to babysit the terrible Thompson triplets. Knowing that they love big numbers, Travis devises a counting game for them. First Tadd will say the number \\(1,\\) then Todd must say the next two numbers (\\(2\\) and \\(3\\)), then Tucker must say the next three numbers (\\(4,\\) \\(5,\\) \\(6\\)), then Tadd must say the next four numbers (\\(7,\\) \\(8,\\) \\(9,\\) \\(10\\)), and the process continues to rotate through the three children in order, each saying one more number than the previous child did, until the number \\(10{,}000\\) is reached. What is the \\(2019\\)th number said by Tadd?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(5743\\)",
-    "B": "\\(5885\\)",
-    "C": "\\(5979\\)",
-    "D": "\\(6001\\)",
-    "E": "\\(6011\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "arithmetic sequence; triangular number; summation",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2019A/solutions",
-    "SourceSHA256": "e6550106e4914e2e8b625bb61f1464705ba54cdd0deb008b72982f50d42b413e",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2019_AMC_10A_Q23",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Travis has to babysit the terrible Thompson triplets. Knowing that they love big numbers, Travis devises a counting game for them. First Tadd will say the number \\(1,\\) then Todd must say the next two numbers (\\(2\\) and \\(3\\)), then Tucker must say the next three numbers (\\(4,\\) \\(5,\\) \\(6\\)), then Tadd must say the next four numbers (\\(7,\\) \\(8,\\) \\(9,\\) \\(10\\)), and the process continues to rotate through the three children in order, each saying one more number than the previous child did, until the number \\(10{,}000\\) is reached. What is the \\(2019\\)th number said by Tadd?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(5743\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(5885\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(5979\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(6001\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(6011\\)"
+      }
     ]
   },
-  "ID": "2019_AMC_10A_Q23",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "a50360551519f20898887f6f03bc3c8d099169424c65bf5626562d9baf2b225c",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_h204"
-    ],
-    "supportIds": [
-      "cnm_h202"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "level": "AMC 10"
+  },
+  "assessedNodeIds": [
+    "cnm_h204"
+  ],
+  "solutions": [
+    {
+      "id": "rounds-and-arithmetic-sums",
+      "title": "Count complete rounds",
+      "explanation": "Group the turns into rounds, each consisting of Tadd's turn, Todd's turn, and Tucker's turn. Tadd's turn lengths are \\(1,4,7,\\ldots\\), an arithmetic sequence with common difference \\(3\\).\n\nIn round \\(k\\), the three children say \\(3k-2\\), \\(3k-1\\), and \\(3k\\) numbers, respectively. Thus Tadd's total after \\(N\\) rounds is\n\\[\nT_N=\\frac{N(1+3N-2)}2=\\frac{N(3N-1)}2.\n\\]\nSince\n\\[\nT_{36}=\\frac{36\\cdot107}{2}=1926,\n\\qquad\nT_{37}=\\frac{37\\cdot110}{2}=2035,\n\\]\nTadd says his \\(2019\\)th number during round \\(37\\). It is his\n\\[\n2019-1926=93\\text{rd}\n\\]\nnumber in that round.\n\nThe combined round totals are \\(6,15,24,\\ldots\\), with round \\(N\\) containing \\(9N-3\\) numbers. After \\(36\\) rounds, the children have therefore counted through\n\\[\n\\frac{36(6+(9\\cdot36-3))}{2}\n=\\frac{36\\cdot327}{2}\n=5886.\n\\]\nTadd goes first in round \\(37\\), so his \\(93\\)rd number in that round is\n\\[\n5886+93=\\boxed{5979}.\n\\]\nThe answer is \\(\\textbf{(C)}\\).",
+      "directNodeIds": [
+        "cnm_h202",
+        "cnm_h204"
+      ],
+      "sourceRef": "amc/2019_AMC_10A_Q23#rounds-and-arithmetic-sums"
+    }
+  ],
+  "sourceRef": "amc/2019_AMC_10A_Q23"
 }

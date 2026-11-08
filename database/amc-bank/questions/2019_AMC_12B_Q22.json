@@ -1,70 +1,68 @@
 {
-  "Year": 2019,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 22,
-  "Question": "Define a sequence recursively by \\(x_0=5\\) and\n\n\\[ x_{n+1}=\\dfrac{x_n^2+5x_n+4}{x_n+6} \\]\n\nfor all nonnegative integers \\(n.\\) Let \\(m\\) be the least positive integer such that\n\n\\[ x_m\\le4+\\dfrac{1}{2^{20}}. \\]\n\nIn which of the following intervals does \\(m\\) lie?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\([9,26]\\)",
-    "B": "\\([27,80]\\)",
-    "C": "\\([81,242]\\)",
-    "D": "\\([243,728]\\)",
-    "E": "\\([729,\\infty)\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "recursion; telescoping; bounding to limit cases",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2019B/solutions",
-    "SourceSHA256": "81a29c86c88dc45161237b74c8248a0d917fb568aef2ba00f04fd8a9bf4a5599",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2019_AMC_12B_Q22",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Define a sequence recursively by \\(x_0=5\\) and\n\n\\[ x_{n+1}=\\dfrac{x_n^2+5x_n+4}{x_n+6} \\]\n\nfor all nonnegative integers \\(n.\\) Let \\(m\\) be the least positive integer such that\n\n\\[ x_m\\le4+\\dfrac{1}{2^{20}}. \\]\n\nIn which of the following intervals does \\(m\\) lie?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\([9,26]\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\([27,80]\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\([81,242]\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\([243,728]\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\([729,\\infty)\\)"
+      }
     ]
   },
-  "ID": "2019_AMC_12B_Q22",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "70615d373f658d4eafae503fd57d494730b1d50e245063849f114736316e58f7",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_h200"
-    ],
-    "supportIds": [],
-    "routes": [
-      {
-        "id": "geometric-comparison",
-        "label": "Bounds by geometric sequences",
-        "nodeIds": [
-          "cnm_096",
-          "cnm_h208"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "level": "AMC 12"
+  },
+  "assessedNodeIds": [
+    "cnm_h200",
+    "cnm_h208"
+  ],
+  "solutions": [
+    {
+      "id": "geometric-bounds",
+      "title": "Bound the excess above four",
+      "explanation": "Because the target is close to \\(4\\), track the excess above \\(4\\). Set \\(y_n=x_n-4\\). Then \\(y_0=1\\), and\n\\[\ny_{n+1}\n=\\frac{x_n^2+5x_n+4-4(x_n+6)}{x_n+6}\n=\\frac{(x_n-4)(x_n+5)}{x_n+6}\n=\\frac{y_n(y_n+9)}{y_n+10}.\n\\]\nFor \\(y_n>0\\), the multiplier \\(\\frac{y_n+9}{y_n+10}\\) is positive and less than \\(1\\). Therefore the sequence remains positive and decreases, so \\(0<y_n\\le1\\). Consequently,\n\\[\n\\frac9{10}\\le\\frac{y_{n+1}}{y_n}\n=1-\\frac1{y_n+10}\n\\le\\frac{10}{11}.\n\\]\nStarting from \\(y_0=1\\) and multiplying these bounds gives\n\\[\n\\left(\\frac9{10}\\right)^n\\le y_n\\le\n\\left(\\frac{10}{11}\\right)^n.\n\\]\nWe only need bounds strong enough to select an interval for \\(m\\).\n\nFirst,\n\\[\n\\left(\\frac9{10}\\right)^4=\\frac{6561}{10000}>\\frac12,\n\\]\nso\n\\[\ny_{80}\\ge\\left(\\frac9{10}\\right)^{80}\n=\\left[\\left(\\frac9{10}\\right)^4\\right]^{20}\n>\\frac1{2^{20}}.\n\\]\nSince \\(y_n\\) decreases, the threshold cannot be reached by index \\(80\\). Thus \\(m>80\\).\n\nFor an upper bound, the binomial expansion has positive terms beyond its first two, so\n\\[\n\\left(\\frac{11}{10}\\right)^{10}\n=\\left(1+\\frac1{10}\\right)^{10}\n>1+10\\cdot\\frac1{10}=2.\n\\]\nTaking reciprocals gives \\(\\left(\\frac{10}{11}\\right)^{10}<\\frac12\\). Therefore\n\\[\ny_{200}\\le\\left(\\frac{10}{11}\\right)^{200}\n=\\left[\\left(\\frac{10}{11}\\right)^{10}\\right]^{20}\n<\\frac1{2^{20}}.\n\\]\nThus \\(m\\le200\\). We have proved \\(81\\le m\\le200\\), which lies within \\(\\boxed{[81,242]}\\), choice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "cnm_h200",
+        "cnm_h208",
+        "cnm_096",
+        "cnm_h240"
+      ],
+      "sourceRef": "amc/2019_AMC_12B_Q22#geometric-bounds"
+    },
+    {
+      "id": "geometric-comparison",
+      "title": "Bounds by geometric sequences",
+      "directNodeIds": [
+        "cnm_096",
+        "cnm_h208"
+      ],
+      "sourceRef": "amc/2019_AMC_12B_Q22#geometric-comparison"
+    }
+  ],
+  "sourceRef": "amc/2019_AMC_12B_Q22"
 }

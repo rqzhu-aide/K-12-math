@@ -1,80 +1,71 @@
 {
-  "Year": 2021,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Counting & Probability",
-  "Number": 15,
-  "Question": "A choir director must select a group of singers from among his \\(6\\) tenors and \\(8\\) basses. The only requirements are that the difference between the number of tenors and basses must be a multiple of \\(4,\\) and the group must have at least one singer. Let \\(N\\) be the number of groups that can be selected. What is the remainder when \\(N\\) is divided by \\(100?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(47\\)",
-    "B": "\\(48\\)",
-    "C": "\\(83\\)",
-    "D": "\\(95\\)",
-    "E": "\\(96\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.98",
-    "Concepts": "roots of unity; combinations; binomial theorem",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2021A/solutions",
-    "SourceSHA256": "d60ce8314d8d1d85a398299f05f7fffa6b1d5d75e968634cd640caf112a0f2d2",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2021_AMC_12A_Q15",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "620c254362c8905f2ddcaf901cc17fa7d0aaec3d248cd5c34afeae1cfc3ae73a",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h239",
-      "math:modular-congruence"
-    ],
-    "supportIds": [
-      "cnm_h237"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2021_AMC_12A_Q15",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "A choir director must select a group of singers from among his \\(6\\) tenors and \\(8\\) basses. The only requirements are that the difference between the number of tenors and basses must be a multiple of \\(4,\\) and the group must have at least one singer. Let \\(N\\) be the number of groups that can be selected. What is the remainder when \\(N\\) is divided by \\(100?\\)",
+    "choices": [
       {
-        "id": "matching-residue-classes",
-        "label": "Count matching residue classes",
-        "nodeIds": [
-          "cnm_h232"
-        ]
+        "id": "A",
+        "content": "\\(47\\)"
       },
       {
-        "id": "complement-bass-selection",
-        "label": "Complement the bass selection",
-        "nodeIds": [
-          "math:bijective-counting",
-          "cnm_h230"
-        ]
+        "id": "B",
+        "content": "\\(48\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(83\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(95\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(96\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:bijective-counting",
+    "math:modular-congruence",
+    "cnm_h239"
+  ],
+  "solutions": [
+    {
+      "id": "complement-bass-selection",
+      "title": "Count the unselected basses",
+      "explanation": "Counting the basses who do not sing turns the difference condition into a condition on the size of one subset.\n\nFor a choir containing \\(t\\) tenors and \\(b\\) basses, form an auxiliary subset consisting of the selected tenors and the unselected basses. Its size is\n\\[\nk=t+(8-b)=8+(t-b).\n\\]\nThus \\(t-b\\) is a multiple of \\(4\\) exactly when \\(k\\) is a multiple of \\(4\\).\n\nThis correspondence is reversible: from an auxiliary subset, select its tenors and all basses outside it. Consequently, every choir satisfying the difference condition corresponds to exactly one such subset, with no omissions or duplicates.\n\nThere are \\(14\\) singers, so the possible auxiliary subset sizes are \\(0,4,8,12\\). We must exclude the empty choir. It corresponds to the single auxiliary subset containing all eight basses and no tenors. Therefore\n\\[\nN=\\binom{14}{0}+\\binom{14}{4}+\\binom{14}{8}+\\binom{14}{12}-1.\n\\]\nUsing \\(\\binom{14}{8}=\\binom{14}{6}\\) and \\(\\binom{14}{12}=\\binom{14}{2}\\), we obtain\n\\[\n\\begin{aligned}\nN\n&=1+\\frac{14\\cdot13\\cdot12\\cdot11}{4\\cdot3\\cdot2\\cdot1}\n+\\frac{14\\cdot13\\cdot12\\cdot11\\cdot10\\cdot9}{6\\cdot5\\cdot4\\cdot3\\cdot2\\cdot1}\n+\\frac{14\\cdot13}{2}-1\\\\\n&=1+1001+3003+91-1\\\\\n&=4095.\n\\end{aligned}\n\\]\nSince \\(4095=40\\cdot100+95\\), the requested remainder is \\(\\boxed{95}\\), choice \\(\\text{D}\\).",
+      "directNodeIds": [
+        "math:bijective-counting",
+        "math:modular-congruence",
+        "cnm_h239"
+      ],
+      "sourceRef": "amc/2021_AMC_12A_Q15#complement-bass-selection"
+    },
+    {
+      "id": "matching-residue-classes",
+      "title": "Count matching residue classes",
+      "directNodeIds": [
+        "cnm_h232"
+      ],
+      "sourceRef": "amc/2021_AMC_12A_Q15#matching-residue-classes"
+    }
+  ],
+  "sourceRef": "amc/2021_AMC_12A_Q15"
 }

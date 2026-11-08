@@ -1,4 +1,4 @@
-# AMC practice bank 2.4.0
+# AMC practice bank 2.5.0
 
 **5,435 questions and answer keys from 195 papers**, with question and choice
 diagrams. American Mathematics Competitions (AMC) content is credited to the
@@ -18,7 +18,7 @@ papers. Historical series names remain in record metadata.
 
 ## Questions and solutions
 
-[Download the 4,622 questions with worked solutions, their figures, and their source credits](https://github.com/rqzhu-aide/K-12-math/releases/download/amc-bank-v2.4.0/amc-bank-2.4.0-compact-4622.zip).
+[Download the 5,030 questions with worked solutions, their figures, and their source credits](https://github.com/rqzhu-aide/K-12-math/releases/download/amc-bank-v2.5.0/amc-bank-2.5.0-compact-5030.zip).
 
 Choose **AMC contests** in Math Practice, then a level, year, batch, and problem.
 Answer checking works without models. Disputed questions retain their historical
@@ -38,19 +38,20 @@ in each paper also have a reviewed, learner-facing adaptation:
 | 2021 Fall AMC 10A | [Solutions](official-solutions/AMC10A_2021_Fall_Solutions.pdf) |
 | 2022 AMC 10A | [Solutions](official-solutions/AMC10A_2022_Solutions.pdf) |
 
-The **200 explanations** work without models and supply reference text to optional
+The original **200 explanations** work without models and supply reference text to optional
 feedback models. Matching questions also link to the worked solution's first page
 in its booklet. Each PDF preserves MAA's mathematics, diagrams, authorship, and
 copyright notices. Six booklets were obtained from mirrors of the MAA originals;
 the source checks and retrieval hashes are documented in [sources.json](sources.json).
 See [adaptation sources and review scope](ADAPTATIONS.md).
 
+Another **408 explanations** follow official MAA methods, with independent AI reviews of the mathematics, source-method fidelity and ailleo, CN and US annotations. Each links to its public source PDF, one-based page and source question number, including shared questions that use a different competition number. No additional standalone PDF files are included. See [the source inventory and review scope](ADAPTATIONS.md).
+
 The other questions retain their original keys and transcription credits. Where
 a new worked explanation has been added, its source is **Original Math Practice
 solution**. Its review record binds the explanation to the displayed question
 and figures. A separate AI review checks the mathematics, level and method
-annotations. These explanations have not been teacher reviewed. Only the 200
-official-source adaptations above carry an `OfficialSolution` PDF reference.
+annotations. These explanations have not been teacher reviewed. The 608 official-source adaptations carry an `OfficialSolution` reference. The original 200 link to the included booklets; 408 new adaptations link to public source pages.
 **Copied LIVE by Po-Shen Loh worked solutions and 119 solution-only diagrams are
 not included.**
 
@@ -74,12 +75,12 @@ third-party solution text, private processing files, and local paths are not
 included. [sources.json](sources.json) lists historical source URLs and hashes
 and the official solution booklets as retrieved.
 
-The 4,622 questions with stored worked solutions use the [compact 3.0 schema](../../question-bank-template/question-v3.schema.json). Their question and method credits are in [source-index.json](source-index.json). The other 813 questions use [schema 2.0](schema.json) and have answer keys. The original prompts, choices,
-LaTeX, figure positions, and reviewed grading metadata are preserved. Domain
+The 5,030 questions with stored worked solutions use the [compact 3.0 schema](../../question-bank-template/question-v3.schema.json). Their question and method credits are in [source-index.json](source-index.json). The other 405 questions use [schema 2.0](schema.json) and have answer keys. The original prompts, choices,
+LaTeX, figure positions, and reviewed grading metadata are preserved, except for the [source-verified correction of choice C in 2024 AMC 10A problem 3](ADAPTATIONS.md#additional-official-source-adaptations). Domain
 and skill catalogs are in `taxonomy/`; older records with uncurated topics remain
 explicitly unclassified. Structural validation does not constitute a proof
 audit of every problem or answer key.
 
-Of the 5,435 questions, 4,622 have stored worked solutions. These comprise 200 adaptations of official MAA solutions and 4,422 additional questions with project-authored explanations. Every question in the 41 AMC 8 papers has a worked solution. All 146 papers from 1950 through 2016 also have a worked solution for every question. All 5,435 questions have answer keys and graph annotations. Open the [Math Practice UI](../../math-practice/) to use the bundled browser data. To prepare an additional collection, see the [question-bank template](../../question-bank-template/).
+Of the 5,435 questions, 5,030 have stored worked solutions. These comprise 608 adaptations of official MAA solutions and 4,422 additional questions with project-authored explanations. Every question in the 41 AMC 8 papers has a worked solution. All 146 papers from 1950 through 2016 also have a worked solution for every question. All 5,435 questions have answer keys and graph annotations. Open the [Math Practice UI](../../math-practice/) to use the bundled browser data. To prepare an additional collection, see the [question-bank template](../../question-bank-template/).
 
 See [NOTICE.md](NOTICE.md) for attribution, modifications, and license scope.

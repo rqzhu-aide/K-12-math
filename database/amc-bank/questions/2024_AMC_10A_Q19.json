@@ -1,79 +1,82 @@
 {
-  "Year": 2024,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Algebra",
-  "Number": 19,
-  "Question": "The first three terms of a geometric sequence are the integers \\(a,\\) \\(720,\\) and \\(b,\\) where \\(a \\lt 720 \\lt b.\\) What is the sum of the digits of the least possible value of \\(b?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(9\\)",
-    "B": "\\(12\\)",
-    "C": "\\(16\\)",
-    "D": "\\(18\\)",
-    "E": "\\(21\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.56",
-    "Concepts": "geometric sequence; divisibility; optimization",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2024A/solutions",
-    "SourceSHA256": "5fed52d29857ed2e73b79316a935cba357bf2b5edda16ac2add7780e78466254",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2024_AMC_10A_Q19",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:algebra"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "135b90a4bba71be3626ea3f6d3e73407e1045a276d3af2f152ba04dffa046b4b",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h209",
-      "math:integer-diophantine-equations"
-    ],
-    "supportIds": [],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2024_AMC_10A_Q19",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "The first three terms of a geometric sequence are the integers \\(a,\\) \\(720,\\) and \\(b,\\) where \\(a \\lt 720 \\lt b.\\) What is the sum of the digits of the least possible value of \\(b?\\)",
+    "choices": [
       {
-        "id": "nearest-divisor-search",
-        "label": "Find the next eligible divisor",
-        "nodeIds": [
-          "math:prime-factorization"
-        ]
+        "id": "A",
+        "content": "\\(9\\)"
       },
       {
-        "id": "reduced-common-ratio",
-        "label": "Enumerate coprime ratio factors",
-        "nodeIds": [
-          "cnm_h207",
-          "cnm_p168",
-          "math:prime-factorization"
-        ]
+        "id": "B",
+        "content": "\\(12\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(16\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(18\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(21\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "E"
+    ]
+  },
+  "classification": {
+    "area": "Algebra",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:algebra"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h207",
+    "math:integer-diophantine-equations",
+    "math:prime-factorization"
+  ],
+  "solutions": [
+    {
+      "id": "coprime-common-ratio",
+      "title": "Restrict the common ratio",
+      "explanation": "To minimize \\(b\\), we should make the common ratio as close to \\(1\\) as the integer conditions allow. Because \\(b>720\\), the common ratio is positive and greater than \\(1\\). Write it in lowest terms as\n\\[\nr=\\frac mn>1,\n\\]\nwhere \\(m,n\\) are relatively prime positive integers. Then\n\\[\na=\\frac{720n}{m},\\qquad b=\\frac{720m}{n}.\n\\]\nSince these are integers and \\(m,n\\) have no common prime factors, both \\(m\\) and \\(n\\) must divide\n\\[\n720=2^4\\cdot3^2\\cdot5.\n\\]\n\nThe coprime divisors \\(16\\) and \\(15\\) suggest \\(r=16/15\\). This gives\n\\[\na=720\\cdot\\frac{15}{16}=675,\\qquad\nb=720\\cdot\\frac{16}{15}=768.\n\\]\nWe must prove that no admissible ratio lies strictly between \\(1\\) and \\(16/15\\).\n\nSuppose such a ratio exists. Since \\(m-n\\ge1\\),\n\\[\n\\frac1n\\le\\frac{m-n}{n}=r-1<\\frac1{15},\n\\]\nso \\(n>15\\). If \\(n=16\\), then \\(16<m<256/15\\), forcing \\(m=17\\), which does not divide \\(720\\). Also, \\(n=17\\) is impossible because \\(17\\) does not divide \\(720\\). Hence \\(n\\ge18\\) and \\(m\\ge19\\).\n\nHowever, a divisor of \\(720\\) involving just one distinct prime is at most \\(16\\): the largest available powers are \\(2^4=16\\), \\(3^2=9\\), and \\(5\\). Thus both \\(m\\) and \\(n\\) would need at least two distinct prime factors. Their prime factors cannot overlap because they are relatively prime. That would require at least four distinct primes, but only \\(2,3,5\\) are available. This is impossible.\n\nTherefore the least possible \\(b\\) is \\(768\\), whose digit sum is \\(7+6+8=\\boxed{21}\\), choice \\(\\boxed{\\text{E}}\\).",
+      "directNodeIds": [
+        "cnm_h207",
+        "math:integer-diophantine-equations",
+        "math:prime-factorization",
+        "cnm_p168"
+      ],
+      "sourceRef": "amc/2024_AMC_10A_Q19#coprime-common-ratio"
+    },
+    {
+      "id": "nearest-divisor-search",
+      "title": "Find the next eligible divisor",
+      "directNodeIds": [
+        "math:prime-factorization"
+      ],
+      "sourceRef": "amc/2024_AMC_10A_Q19#nearest-divisor-search"
+    },
+    {
+      "id": "reduced-common-ratio",
+      "title": "Enumerate coprime ratio factors",
+      "directNodeIds": [
+        "cnm_h207",
+        "cnm_p168",
+        "math:prime-factorization"
+      ],
+      "sourceRef": "amc/2024_AMC_10A_Q19#reduced-common-ratio"
+    }
+  ],
+  "sourceRef": "amc/2024_AMC_10A_Q19"
 }

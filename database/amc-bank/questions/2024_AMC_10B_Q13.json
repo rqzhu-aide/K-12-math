@@ -1,80 +1,84 @@
 {
-  "Year": 2024,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Number Theory",
-  "Number": 13,
-  "Question": "Positive integers \\(x\\) and \\(y\\) satisfy the equation \\(\\sqrt{x} + \\sqrt{y} = \\sqrt{1183}.\\) What is the minimum possible value of \\(x + y?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(585\\)",
-    "B": "\\(595\\)",
-    "C": "\\(623\\)",
-    "D": "\\(700\\)",
-    "E": "\\(791\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.65",
-    "Concepts": "radical; prime factorization; optimization",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2024B/solutions",
-    "SourceSHA256": "2671c8998a9a67627ff232acd1dfac260f51b807965eab592a796f27906e4ae2",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2024_AMC_10B_Q13",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:number-theory"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "7d08a3092c195382f7da0b16cf79ce505526aa5e0a7bb35d34f1cee8da3391d6",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:integer-diophantine-equations",
-      "math:radical-equations"
-    ],
-    "supportIds": [],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2024_AMC_10B_Q13",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Positive integers \\(x\\) and \\(y\\) satisfy the equation \\(\\sqrt{x} + \\sqrt{y} = \\sqrt{1183}.\\) What is the minimum possible value of \\(x + y?\\)",
+    "choices": [
       {
-        "id": "common-squarefree-part",
-        "label": "Squarefree reduction and balancing",
-        "nodeIds": [
-          "math:prime-factorization",
-          "math:completing-square-expression"
-        ]
+        "id": "A",
+        "content": "\\(585\\)"
       },
       {
-        "id": "amgm-and-integer-root-check",
-        "label": "AM-GM bound and integer-root checks",
-        "nodeIds": [
-          "cnm_h021",
-          "cnm_222",
-          "cnm_p156"
-        ]
+        "id": "B",
+        "content": "\\(595\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(623\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(700\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(791\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "area": "Number Theory",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:number-theory"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:radical-equations",
+    "math:integer-diophantine-equations",
+    "cnm_235"
+  ],
+  "solutions": [
+    {
+      "id": "common-radical-quadratic",
+      "title": "Reduce the radicals and minimize",
+      "explanation": "The useful factorization is\n\\[\n1183=7\\cdot13^2,\n\\]\nso the equation becomes \\(\\sqrt{x}+\\sqrt{y}=13\\sqrt7\\). We first show that both radicals must be integer multiples of \\(\\sqrt7\\).\n\nIsolating \\(\\sqrt y\\) and squaring gives\n\\[\ny=1183+x-26\\sqrt{7x},\n\\qquad\n\\sqrt{7x}=\\frac{1183+x-y}{26}.\n\\]\nThus \\(\\sqrt{7x}\\) is rational. A rational number whose square is an integer must be an integer: when a fraction is in lowest terms, its square still has no cancellation between numerator and denominator. Write \\(\\sqrt{7x}=k\\), where \\(k\\) is a positive integer. Since \\(k^2=7x\\) and \\(7\\) is prime, \\(7\\) divides \\(k\\). Therefore \\(k=7a\\) and \\(x=7a^2\\) for a positive integer \\(a\\).\n\nThe original equation now gives\n\\[\n\\sqrt y=(13-a)\\sqrt7.\n\\]\nConsequently \\(y=7b^2\\), where \\(b=13-a\\) is a positive integer. In particular, \\(a+b=13\\).\n\nWe minimize the resulting quadratic:\n\\[\n\\begin{aligned}\nx+y\n&=7\\bigl(a^2+(13-a)^2\\bigr)\\\\\n&=14\\left(a-\\frac{13}{2}\\right)^2+\\frac{1183}{2}.\n\\end{aligned}\n\\]\nAmong integers, \\(a=6\\) and \\(a=7\\) are closest to \\(13/2\\), so the minimum occurs when \\(\\{a,b\\}=\\{6,7\\}\\). It equals\n\\[\n7(6^2+7^2)=7(36+49)=\\boxed{595}.\n\\]\nThis is attained by \\(x=252\\), \\(y=343\\), whose square roots sum to \\(6\\sqrt7+7\\sqrt7=\\sqrt{1183}\\). The answer is choice B.",
+      "directNodeIds": [
+        "math:radical-equations",
+        "math:integer-diophantine-equations",
+        "math:prime-factorization",
+        "math:completing-square-expression",
+        "cnm_235"
+      ],
+      "sourceRef": "amc/2024_AMC_10B_Q13#common-radical-quadratic"
+    },
+    {
+      "id": "common-squarefree-part",
+      "title": "Squarefree reduction and balancing",
+      "directNodeIds": [
+        "math:prime-factorization",
+        "math:completing-square-expression"
+      ],
+      "sourceRef": "amc/2024_AMC_10B_Q13#common-squarefree-part"
+    },
+    {
+      "id": "amgm-and-integer-root-check",
+      "title": "AM-GM bound and integer-root checks",
+      "directNodeIds": [
+        "cnm_h021",
+        "cnm_222",
+        "cnm_p156"
+      ],
+      "sourceRef": "amc/2024_AMC_10B_Q13#amgm-and-integer-root-check"
+    }
+  ],
+  "sourceRef": "amc/2024_AMC_10B_Q13"
 }

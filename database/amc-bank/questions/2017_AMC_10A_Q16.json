@@ -1,78 +1,72 @@
 {
-  "Year": 2017,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 16,
-  "Question": "There are \\(10\\) horses, named Horse \\(1,\\) Horse \\(2,\\) and so on through Horse \\(10.\\) They get their names from how many minutes it takes them to run one lap around a circular race track: Horse \\(k\\) runs one lap in exactly \\(k\\) minutes. At time \\(0\\) all the horses are together at the starting point on the track. The horses start running in the same direction, and they keep running around the circular track at their constant speeds.\n\nThe least time \\(S > 0,\\) in minutes, at which all \\(10\\) horses will again simultaneously be at the starting point is \\(S=2520.\\) Let \\(T > 0\\) be the least time, in minutes, such that at least \\(5\\) of the horses are again at the starting point. What is the sum of the digits of \\(T?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(2\\)",
-    "B": "\\(3\\)",
-    "C": "\\(4\\)",
-    "D": "\\(5\\)",
-    "E": "\\(6\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "divisibility; least common multiple",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2017A/solutions",
-    "SourceSHA256": "d039f971090f56fa50c26505dcfb6e76af5d69301008a30cda1d94ced4eb7599",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2017_AMC_10A_Q16",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "f13ecd3d0c5af37a4440715b191e7d99efd946d070e274770f1290a087fbcd4c",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_p153",
-      "math:extremal-principle"
-    ],
-    "supportIds": [],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2017_AMC_10A_Q16",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "There are \\(10\\) horses, named Horse \\(1,\\) Horse \\(2,\\) and so on through Horse \\(10.\\) They get their names from how many minutes it takes them to run one lap around a circular race track: Horse \\(k\\) runs one lap in exactly \\(k\\) minutes. At time \\(0\\) all the horses are together at the starting point on the track. The horses start running in the same direction, and they keep running around the circular track at their constant speeds.\n\nThe least time \\(S > 0,\\) in minutes, at which all \\(10\\) horses will again simultaneously be at the starting point is \\(S=2520.\\) Let \\(T > 0\\) be the least time, in minutes, such that at least \\(5\\) of the horses are again at the starting point. What is the sum of the digits of \\(T?\\)",
+    "choices": [
       {
-        "id": "search-early-return-times",
-        "label": "Check the first integer return times",
-        "nodeIds": [
-          "cnm_p153"
-        ]
+        "id": "A",
+        "content": "\\(2\\)"
       },
       {
-        "id": "bound-divisor-count",
-        "label": "Use prime exponents to bound divisor counts",
-        "nodeIds": [
-          "math:prime-factorization",
-          "math:divisor-count-and-sum"
-        ]
+        "id": "B",
+        "content": "\\(3\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(4\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(5\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(6\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "level": "AMC 10"
+  },
+  "assessedNodeIds": [
+    "cnm_p153"
+  ],
+  "solutions": [
+    {
+      "id": "check-integer-return-times",
+      "title": "Count horses using divisors",
+      "explanation": "Horse \\(k\\) returns to the start at times \\(k,2k,3k,\\ldots\\). Thus every return occurs at an integer time, and at a positive integer time \\(t\\), Horse \\(k\\) is at the start exactly when \\(k\\) divides \\(t\\).\n\nWe therefore count the divisors of each candidate time that lie between \\(1\\) and \\(10\\):\n\\[\n\\begin{array}{c|rrrrrrrrrrrr}\nt&1&2&3&4&5&6&7&8&9&10&11&12\\\\\n\\hline\n\\text{count}&1&2&2&3&2&4&2&4&3&4&1&5\n\\end{array}\n\\]\nAt \\(t=12\\), the five horses at the start are Horses \\(1,2,3,4,6\\). Every smaller positive integer time has fewer than five horses at the start, and no noninteger time can have a returning horse.\n\nHence \\(T=12\\), whose digit sum is \\(1+2=\\boxed{3}\\), choice \\(\\text{B}\\).",
+      "directNodeIds": [
+        "cnm_p153"
+      ],
+      "sourceRef": "amc/2017_AMC_10A_Q16#check-integer-return-times"
+    },
+    {
+      "id": "search-early-return-times",
+      "title": "Check the first integer return times",
+      "directNodeIds": [
+        "cnm_p153"
+      ],
+      "sourceRef": "amc/2017_AMC_10A_Q16#search-early-return-times"
+    },
+    {
+      "id": "bound-divisor-count",
+      "title": "Use prime exponents to bound divisor counts",
+      "directNodeIds": [
+        "math:prime-factorization",
+        "math:divisor-count-and-sum"
+      ],
+      "sourceRef": "amc/2017_AMC_10A_Q16#bound-divisor-count"
+    }
+  ],
+  "sourceRef": "amc/2017_AMC_10A_Q16"
 }

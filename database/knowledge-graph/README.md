@@ -21,7 +21,7 @@ A question can assess more than one concept. Each known solution route lists its
 | [curricula.json](source/curricula.json) | Separate CN and US inventories, placements, and native connections. |
 | [alignments.json](source/alignments.json) | Links between a shared concept and a native curriculum entry, with exact, narrower, broader or partial scope. |
 | [mappings.jsonl](source/mappings.jsonl) | One record per public question, with its content binding, assessed ideas, alternative routes and review history. |
-| [metadata.json](source/metadata.json) | Graph version and provenance. Historical source receipts identify their original inputs. |
+| [metadata.json](source/metadata.json) | Graph version, question-data revision and provenance. Historical source receipts identify their original inputs. |
 
 For a compact question, each worked method can list the concepts it uses directly in `directNodeIds`. The graph also retains the background associated with each reviewed learning route. Within a route, `methodDirectNodeIds` identifies the immediate concepts for each linked method and `contextNodeIds` records the remaining background. This lets students find a problem through a useful preparation topic while the tutor can still see which concepts the particular solution uses.
 

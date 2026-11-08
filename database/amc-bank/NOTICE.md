@@ -45,9 +45,10 @@ file hashes, and source checks are recorded in [sources.json](sources.json).
 A saved-file hash identifies the retrieved copy; publisher reference hashes
 were not available for the six mirror files.
 
-Two hundred learner-facing solutions are adapted by Math Practice from these official
-booklets under the same CC BY-NC-SA 4.0 terms. They are project adaptations, not
-MAA-authored or MAA-reviewed explanations. [ADAPTATIONS.md](ADAPTATIONS.md) lists
+The original 200 learner-facing solutions are adapted by Math Practice from these official
+booklets under the same CC BY-NC-SA 4.0 terms. Another 408 explanations adapt official MAA methods from the public sources listed in [sources.json](sources.json). No additional standalone PDFs are included. Sources outside the original eight included booklets remain linked at their hosts under their printed copyright notices and host terms.
+
+All 608 explanations are project adaptations, not MAA-authored or MAA-reviewed explanations. [ADAPTATIONS.md](ADAPTATIONS.md) lists
 the questions, source pages, modifications, and review scope. New solution
 figures are cropped from official pages or drawn to support the adapted
 argument; their per-record metadata identifies which.
@@ -64,8 +65,7 @@ Separate solution-review metadata identifies the author and reviewer models and
 efforts, the reviewed solution and question hashes, and packaged review evidence.
 The project source link identifies Math Practice rather than the historical
 question-transcription page. These solutions remain adaptations of AMC material
-under the bank's CC BY-NC-SA 4.0 terms. Official-source adaptations keep their
-existing source labels and booklet links.
+under the bank's CC BY-NC-SA 4.0 terms. Official-source adaptations identify MAA and retain their source URL, page and source question number.
 
 This provenance format supports future additions; it does not state that all
 missing worked solutions have been completed or that AI review certifies their

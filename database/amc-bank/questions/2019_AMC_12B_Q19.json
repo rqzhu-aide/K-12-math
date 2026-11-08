@@ -1,63 +1,58 @@
 {
-  "Year": 2019,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 19,
-  "Question": "Raashan, Sylvia, and Ted play the following game. Each starts with \\(\\$1.\\) A bell rings every \\(15\\) seconds, at which time each of the players who currently have money simultaneously chooses one of the other two players independently and at random and gives \\(\\$1\\) to that player. What is the probability that after the bell has rung \\(2019\\) times, each player will have \\(\\$1?\\) (For example, Raashan and Ted may each decide to give \\(\\$1\\) to Sylvia, and Sylvia may decide to give her dollar to Ted, at which point Raashan will have \\(\\$0,\\) Sylvia will have \\(\\$2,\\) and Ted will have \\(\\$1,\\) and that is the end of the first round of play. In the second round Raashan has no money to give, but Sylvia and Ted might choose each other to give their \\(\\$1\\) to, and the holdings will be the same at the end of the second round.)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{1}{7}\\)",
-    "B": "\\(\\dfrac{1}{4}\\)",
-    "C": "\\(\\dfrac{1}{3}\\)",
-    "D": "\\(\\dfrac{1}{2}\\)",
-    "E": "\\(\\dfrac{2}{3}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "recursive probability; symmetry; invariant",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2019B/solutions",
-    "SourceSHA256": "81a29c86c88dc45161237b74c8248a0d917fb568aef2ba00f04fd8a9bf4a5599",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2019_AMC_12B_Q19",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Raashan, Sylvia, and Ted play the following game. Each starts with \\(\\$1.\\) A bell rings every \\(15\\) seconds, at which time each of the players who currently have money simultaneously chooses one of the other two players independently and at random and gives \\(\\$1\\) to that player. What is the probability that after the bell has rung \\(2019\\) times, each player will have \\(\\$1?\\) (For example, Raashan and Ted may each decide to give \\(\\$1\\) to Sylvia, and Sylvia may decide to give her dollar to Ted, at which point Raashan will have \\(\\$0,\\) Sylvia will have \\(\\$2,\\) and Ted will have \\(\\$1,\\) and that is the end of the first round of play. In the second round Raashan has no money to give, but Sylvia and Ted might choose each other to give their \\(\\$1\\) to, and the holdings will be the same at the end of the second round.)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(\\dfrac{1}{7}\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(\\dfrac{1}{4}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac{1}{3}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac{1}{2}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac{2}{3}\\)"
+      }
     ]
   },
-  "ID": "2019_AMC_12B_Q19",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "72a86b1df634417ea1d3d743784fcd8adfcbfc778ef24695a7665b1a565c583b",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:recursive-counting-probability"
-    ],
-    "supportIds": [
-      "cnm_285"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "level": "AMC 12"
+  },
+  "assessedNodeIds": [
+    "math:recursive-counting-probability",
+    "cnm_h246"
+  ],
+  "solutions": [
+    {
+      "id": "equal-transition-probabilities",
+      "title": "Compare the two money distributions",
+      "explanation": "The key is to examine the possible money distributions before just one round. The total stays at 3 dollars, and nobody can finish a round with all 3: a player who starts with money sends a dollar that finishes with someone else, while a player who starts with none can receive at most two dollars. Thus, up to relabeling the players, the only states are \\((1,1,1)\\) and \\((2,1,0)\\).\n\nSuppose a round starts at \\((1,1,1)\\). If Raashan gives to Sylvia, then Sylvia already receives one dollar, so Ted must give to Raashan. Sylvia must then give to Ted. Those two required choices are independent, giving probability\n\\[\n\\frac12\\cdot\\frac12=\\frac14.\n\\]\nIf Raashan instead gives to Ted, the same reasoning gives probability \\(\\frac14\\).\n\nNow suppose Raashan has 2 dollars, Sylvia has 1, and Ted has 0. After giving, Raashan keeps one dollar, so Sylvia must avoid giving to him and must give to Ted. Raashan must then give to Sylvia. Again, the probability is\n\\[\n\\frac12\\cdot\\frac12=\\frac14.\n\\]\nRelabeling the players does not change this calculation.\n\nTherefore every possible starting state gives a \\(\\frac14\\) chance of ending the next round with one dollar each. If \\(p\\) is the probability that round 2019 starts in state \\((1,1,1)\\), the desired probability is\n\\[\np\\cdot\\frac14+(1-p)\\cdot\\frac14=\\boxed{\\frac14}.\n\\]\nThe answer is choice \\(\\boxed{\\text{B}}\\).",
+      "directNodeIds": [
+        "math:recursive-counting-probability",
+        "cnm_h246",
+        "cnm_h140"
+      ],
+      "sourceRef": "amc/2019_AMC_12B_Q19#equal-transition-probabilities"
+    }
+  ],
+  "sourceRef": "amc/2019_AMC_12B_Q19"
 }

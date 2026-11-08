@@ -1,64 +1,67 @@
 {
-  "Year": 2024,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Geometry",
-  "Number": 13,
-  "Question": "Two transformations are said to commute if applying the first followed by the second gives the same result as applying the second followed by the first. Consider these four transformations of the coordinate plane:\n\n• a translation \\(2\\) units to the right,\n\n• a \\(90^\\circ\\) rotation counterclockwise about the origin,\n\n• a reflection across the \\(x\\)-axis, and\n\n• a dilation centered at the origin with scale factor \\(2.\\)\n\nOf the \\(6\\) pairs of distinct transformations from this list, how many commute?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(1\\)",
-    "B": "\\(2\\)",
-    "C": "\\(3\\)",
-    "D": "\\(4\\)",
-    "E": "\\(5\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.95",
-    "Concepts": "transformation; function; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2024A/solutions",
-    "SourceSHA256": "5fed52d29857ed2e73b79316a935cba357bf2b5edda16ac2add7780e78466254",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2024_AMC_10A_Q13",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Two transformations are said to commute if applying the first followed by the second gives the same result as applying the second followed by the first. Consider these four transformations of the coordinate plane:\n\n• a translation \\(2\\) units to the right,\n\n• a \\(90^\\circ\\) rotation counterclockwise about the origin,\n\n• a reflection across the \\(x\\)-axis, and\n\n• a dilation centered at the origin with scale factor \\(2.\\)\n\nOf the \\(6\\) pairs of distinct transformations from this list, how many commute?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(1\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(2\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(3\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(4\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(5\\)"
+      }
     ]
   },
-  "ID": "2024_AMC_10A_Q13",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:geometry"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "area": "Geometry",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:geometry"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:function-composition-iteration",
+    "cnm_086",
+    "cnm_136",
+    "cnm_244",
+    "cnm_275"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "3f99a851d596ebbf1e1f1205a3abb4f35bafdad50600753b885546db39b97165",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_086",
-      "cnm_136",
-      "cnm_245",
-      "cnm_275"
-    ],
-    "supportIds": [],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "compare-coordinate-compositions",
+      "title": "Compare both transformation orders",
+      "explanation": "Write each transformation as a coordinate rule so that we can compare the two possible orders. Let \\(T,R,F,D\\) denote translation, rotation, reflection, and dilation, respectively. A \\(90^\\circ\\) counterclockwise rotation sends a horizontal displacement \\(x\\) to a vertical displacement \\(x\\), and a vertical displacement \\(y\\) to a horizontal displacement \\(-y\\), so \\((x,y)\\) maps to \\((-y,x)\\). Then\n\\[\n\\begin{aligned}\nT(x,y)&=(x+2,y),\\\\\nR(x,y)&=(-y,x),\\\\\nF(x,y)&=(x,-y),\\\\\nD(x,y)&=(2x,2y).\n\\end{aligned}\n\\]\nTwo transformations commute only if their compositions agree for every point \\((x,y)\\). In a composition such as \\(T(R(x,y))\\), the inner transformation \\(R\\) is applied first.\n\nComputing both orders for each of the six pairs gives:\n\n| Pair | First composition | Reverse composition | Commute? |\n| --- | --- | --- | --- |\n| \\(T,R\\) | \\(T(R(x,y))=(-y+2,x)\\) | \\(R(T(x,y))=(-y,x+2)\\) | No |\n| \\(T,F\\) | \\(T(F(x,y))=(x+2,-y)\\) | \\(F(T(x,y))=(x+2,-y)\\) | Yes |\n| \\(T,D\\) | \\(T(D(x,y))=(2x+2,2y)\\) | \\(D(T(x,y))=(2x+4,2y)\\) | No |\n| \\(R,F\\) | \\(R(F(x,y))=(y,x)\\) | \\(F(R(x,y))=(-y,-x)\\) | No |\n| \\(R,D\\) | \\(R(D(x,y))=(-2y,2x)\\) | \\(D(R(x,y))=(-2y,2x)\\) | Yes |\n| \\(F,D\\) | \\(F(D(x,y))=(2x,-2y)\\) | \\(D(F(x,y))=(2x,-2y)\\) | Yes |\n\nThe commuting pairs are \\(T,F\\), \\(R,D\\), and \\(F,D\\). Thus the answer is \\(\\boxed{3}\\), choice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "math:function-composition-iteration",
+        "cnm_086",
+        "cnm_136",
+        "cnm_244",
+        "cnm_275"
+      ],
+      "sourceRef": "amc/2024_AMC_10A_Q13#compare-coordinate-compositions"
+    }
+  ],
+  "sourceRef": "amc/2024_AMC_10A_Q13"
 }

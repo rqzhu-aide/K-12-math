@@ -1,63 +1,61 @@
 {
-  "Year": 2024,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 20,
-  "Question": "Three different pairs of shoes are placed in a row so that no left shoe is next to a right shoe from a different pair. In how many ways can these six shoes be lined up?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(60\\)",
-    "B": "\\(72\\)",
-    "C": "\\(90\\)",
-    "D": "\\(108\\)",
-    "E": "\\(120\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.99",
-    "Concepts": "arrangements with restrictions; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2024B/solutions",
-    "SourceSHA256": "2671c8998a9a67627ff232acd1dfac260f51b807965eab592a796f27906e4ae2",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2024_AMC_10B_Q20",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Three different pairs of shoes are placed in a row so that no left shoe is next to a right shoe from a different pair. In how many ways can these six shoes be lined up?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(60\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(72\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(90\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(108\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(120\\)"
+      }
     ]
   },
-  "ID": "2024_AMC_10B_Q20",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "A"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h232",
+    "cnm_h235"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "20335072ba578f61d42f96b58e11ac7a34da5c8609626f68cdd77869f9e81ce4",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_h235"
-    ],
-    "supportIds": [
-      "cnm_h232"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "classify-left-right-patterns",
+      "title": "Classify the left-right patterns",
+      "explanation": "First record only whether each position contains a left shoe, \\(L\\), or a right shoe, \\(R\\). Whenever adjacent letters differ, those two shoes must belong to the same pair.\n\nA pattern containing \\(LRL\\) is impossible: the middle right shoe would have to match two different left shoes. Similarly, \\(RLR\\) is impossible. Therefore, every run of identical letters that lies between two other runs must have length at least two.\n\nThis gives a short, exhaustive list of possible patterns. There must be at least two runs because both letters occur. Five or more runs would require at least \\(1+2+2+2+1=8\\) positions, so there are at most four runs.\n\n1. With two runs, the patterns are \\(LLLRRR\\) and \\(RRRLLL\\). In either pattern, the two shoes at the boundary must be a pair. Choose that pair in \\(3\\) ways, then arrange the remaining two left shoes and two right shoes in \\(2!\\cdot2!\\) ways. These patterns contribute\n\\[\n2\\cdot3\\cdot2!\\cdot2!=24.\n\\]\n\n2. With three runs, one letter occupies the entire middle run. The other letter splits between the two end runs as \\(1+2\\) or \\(2+1\\). The four patterns are\n\\[\nLRRRLL,\\quad LLRRRL,\\quad RLLLRR,\\quad RRLLLR.\n\\]\nFor each pattern, place the three left shoes in \\(3!=6\\) ways. The two boundaries then force two right shoes into their matching positions, and the remaining right shoe fills the last right position. Thus these patterns contribute\n\\[\n4\\cdot3!=24.\n\\]\n\n3. With four runs, the two internal runs must each have length two, leaving one shoe in each end run. The patterns are \\(LRRLLR\\) and \\(RLLRRL\\). Their three boundaries use all six shoes, so all three adjacent left-right pairs must match. Assign the three shoe pairs to these positions in \\(3!\\) ways, giving\n\\[\n2\\cdot3!=12.\n\\]\n\nEvery lineup has exactly one of these patterns, and each assignment within a pattern is counted once. The total is\n\\[\n24+24+12=\\boxed{60},\n\\]\nso the answer is \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "cnm_h232",
+        "cnm_h235"
+      ],
+      "sourceRef": "amc/2024_AMC_10B_Q20#classify-left-right-patterns"
+    }
+  ],
+  "sourceRef": "amc/2024_AMC_10B_Q20"
 }

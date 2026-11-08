@@ -1,65 +1,62 @@
 {
-  "Year": 2024,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Algebra",
-  "Number": 23,
-  "Question": "Integers \\(a,\\) \\(b,\\) and \\(c\\) satisfy\n\n\\[ \\begin{aligned} ab + c &= 100, \\\\ bc + a &= 87, \\\\ ca + b &= 60. \\end{aligned} \\]\n\nWhat is \\(ab + bc + ca?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(212\\)",
-    "B": "\\(247\\)",
-    "C": "\\(258\\)",
-    "D": "\\(276\\)",
-    "E": "\\(284\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.86",
-    "Concepts": "system of equations; factoring; Diophantine Equation",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2024A/solutions",
-    "SourceSHA256": "5fed52d29857ed2e73b79316a935cba357bf2b5edda16ac2add7780e78466254",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2024_AMC_10A_Q23",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Integers \\(a,\\) \\(b,\\) and \\(c\\) satisfy\n\n\\[ \\begin{aligned} ab + c &= 100, \\\\ bc + a &= 87, \\\\ ca + b &= 60. \\end{aligned} \\]\n\nWhat is \\(ab + bc + ca?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(212\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(247\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(258\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(276\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(284\\)"
+      }
     ]
   },
-  "ID": "2024_AMC_10A_Q23",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:algebra"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Algebra",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:algebra"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:integer-diophantine-equations"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "f73cf6f58ccb6e3ba5321b39920caf02bca1204449966da42986e78cc9093c18",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:integer-diophantine-equations"
-    ],
-    "supportIds": [
-      "cnm_151",
-      "cnm_p153",
-      "cnm_089"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "prime-factor-cases",
+      "title": "Factor a difference of equations",
+      "explanation": "The first two right-hand sides differ by the prime number \\(13\\). Subtracting those equations creates a product of integers with very few possibilities:\n\\[\n\\begin{aligned}\n13&=(ab+c)-(bc+a)\\\\\n&=b(a-c)-(a-c)\\\\\n&=(b-1)(a-c).\n\\end{aligned}\n\\]\nBecause \\(13\\) is prime, \\(b-1\\) must be one of \\(-1,1,13,-13\\). We check all four cases.\n\n- If \\(b-1=-1\\), then \\(b=0\\). The first two equations give \\(c=100\\) and \\(a=87\\), but the third would require \\(ca=60\\), which is impossible.\n- If \\(b-1=1\\), then \\(b=2\\), \\(a-c=13\\), and \\(ca=58\\). The positive factor pairs of \\(58\\) are \\((1,58)\\) and \\((2,29)\\), with differences \\(57\\) and \\(27\\). Negative factor pairs have the same absolute differences, so none can satisfy \\(a-c=13\\).\n- If \\(b-1=13\\), then \\(b=14\\), \\(a-c=1\\), and \\(ca=46\\). The positive factor pairs \\((1,46)\\) and \\((2,23)\\) have differences \\(45\\) and \\(21\\). Again, negative pairs have the same absolute differences, so this case is impossible.\n- If \\(b-1=-13\\), then \\(b=-12\\), \\(a-c=-1\\), and \\(ca=72\\). Substituting \\(a=c-1\\) gives\n\\[\nc(c-1)=72,\n\\qquad (c-9)(c+8)=0.\n\\]\nThus \\((a,c)=(8,9)\\) or \\((-9,-8)\\). The first pair fails the first equation because \\(8(-12)+9=-87\\). The second pair works:\n\\[\n108-8=100,\\qquad96-9=87,\\qquad72-12=60.\n\\]\n\nAll possible integer cases have been checked, so \\((a,b,c)=(-9,-12,-8)\\). Therefore\n\\[\nab+bc+ca=108+96+72=\\boxed{276},\n\\]\nwhich is choice \\(\\boxed{\\text{D}}\\).",
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "cnm_151",
+        "cnm_p153",
+        "cnm_224"
+      ],
+      "sourceRef": "amc/2024_AMC_10A_Q23#prime-factor-cases"
+    }
+  ],
+  "sourceRef": "amc/2024_AMC_10A_Q23"
 }

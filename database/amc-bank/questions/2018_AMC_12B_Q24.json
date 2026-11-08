@@ -1,79 +1,76 @@
 {
-  "Year": 2018,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 24,
-  "Question": "Let \\(\\lfloor x\\rfloor\\) denote the greatest integer less than or equal to \\(x.\\) How many real numbers \\(x\\) satisfy the equation \\(x^2+10{,}000\\lfloor x\\rfloor=10{,}000x?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(197\\)",
-    "B": "\\(198\\)",
-    "C": "\\(199\\)",
-    "D": "\\(200\\)",
-    "E": "\\(201\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "floor and ceiling functions; counting intersections",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2018B/solutions",
-    "SourceSHA256": "7b19d55a7f39ed9e41e7c3089b150018fb57149e9bb7f71f22ca8618e1d02cb2",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2018_AMC_12B_Q24",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "d1e5190ccd96d9f850d349fd33ae9b7aad0997c5629198f8b72c7c70beba183d",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:floor-ceiling"
-    ],
-    "supportIds": [
-      "cnm_h020"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2018_AMC_12B_Q24",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Let \\(\\lfloor x\\rfloor\\) denote the greatest integer less than or equal to \\(x.\\) How many real numbers \\(x\\) satisfy the equation \\(x^2+10{,}000\\lfloor x\\rfloor=10{,}000x?\\)",
+    "choices": [
       {
-        "id": "count-monotone-quadratic-levels",
-        "label": "Count integer levels of a quadratic",
-        "nodeIds": [
-          "cnm_232"
-        ]
+        "id": "A",
+        "content": "\\(197\\)"
       },
       {
-        "id": "solve-on-floor-intervals",
-        "label": "Quadratic roots on floor intervals",
-        "nodeIds": [
-          "cnm_222",
-          "cnm_h024"
-        ]
+        "id": "B",
+        "content": "\\(198\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(199\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(200\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(201\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "level": "AMC 12"
+  },
+  "assessedNodeIds": [
+    "math:floor-ceiling",
+    "cnm_h033"
+  ],
+  "solutions": [
+    {
+      "id": "count-parabola-step-intersections",
+      "title": "Count one solution per floor interval",
+      "explanation": "The useful observation is that \\(x-\\lfloor x\\rfloor\\), the fractional part of \\(x\\), always lies in \\([0,1)\\). Rearranging the equation gives\n\\[\nx^2=10{,}000\\bigl(x-\\lfloor x\\rfloor\\bigr),\n\\]\nso every solution satisfies \\(0\\le x^2<10{,}000\\). Consequently,\n\\[\n-100<x<100.\n\\]\nDefine \\(P(x)=10{,}000x-x^2\\). The original equation is equivalent to\n\\[\nP(x)=10{,}000\\lfloor x\\rfloor.\n\\]\nWe will count solutions separately on the intervals \\([k,k+1)\\), where \\(k=-100,-99,\\ldots,99\\). On each such interval, the right side is the constant \\(10{,}000k\\).\n\nFirst, \\(P\\) is strictly increasing throughout \\([-100,100]\\). Indeed, if \\(-100\\le u<v\\le100\\), then\n\\[\nP(v)-P(u)=(v-u)(10{,}000-u-v)>0,\n\\]\nsince both factors are positive. Thus each interval contains at most one solution.\n\nAt its left endpoint,\n\\[\nP(k)=10{,}000k-k^2\\le10{,}000k.\n\\]\nAt its excluded right endpoint,\n\\[\nP(k+1)=10{,}000k+10{,}000-(k+1)^2.\n\\]\nBecause \\(P\\) is continuous and strictly increasing, it reaches \\(10{,}000k\\) within \\([k,k+1)\\) exactly when\n\\[\nP(k+1)>10{,}000k,\n\\]\nwhich is equivalent to\n\\[\n(k+1)^2<10{,}000\n\\quad\\Longleftrightarrow\\quad\n-101<k<99.\n\\]\nAmong the candidate integers, these are precisely \\(k=-100,-99,\\ldots,98\\). Each contributes one solution. This includes \\(x=0\\) at the left endpoint of \\([0,1)\\); the half-open intervals ensure that no solution is counted twice.\n\nTherefore the number of solutions is\n\\[\n98-(-100)+1=\\boxed{199},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "math:floor-ceiling",
+        "cnm_h033",
+        "cnm_h049",
+        "cnm_h020"
+      ],
+      "sourceRef": "amc/2018_AMC_12B_Q24#count-parabola-step-intersections"
+    },
+    {
+      "id": "count-monotone-quadratic-levels",
+      "title": "Count integer levels of a quadratic",
+      "directNodeIds": [
+        "cnm_232"
+      ],
+      "sourceRef": "amc/2018_AMC_12B_Q24#count-monotone-quadratic-levels"
+    },
+    {
+      "id": "solve-on-floor-intervals",
+      "title": "Quadratic roots on floor intervals",
+      "directNodeIds": [
+        "cnm_222",
+        "cnm_h024"
+      ],
+      "sourceRef": "amc/2018_AMC_12B_Q24#solve-on-floor-intervals"
+    }
+  ],
+  "sourceRef": "amc/2018_AMC_12B_Q24"
 }

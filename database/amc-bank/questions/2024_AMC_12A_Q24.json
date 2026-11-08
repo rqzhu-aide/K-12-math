@@ -1,85 +1,87 @@
 {
-  "Year": 2024,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Geometry",
-  "Number": 24,
-  "Question": "A disphenoid is a tetrahedron whose triangular faces are congruent to one another. What is the least total surface area of a disphenoid whose faces are scalene triangles with integer side lengths?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\sqrt3\\)",
-    "B": "\\(3\\sqrt{15}\\)",
-    "C": "\\(15\\)",
-    "D": "\\(15\\sqrt7\\)",
-    "E": "\\(24\\sqrt6\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.95",
-    "Concepts": "3D geometry; Heron’s Formula",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2024A/solutions",
-    "SourceSHA256": "9875ffc0649d84c28198568c6d6972f9569a76bcf8751c85f132d0a01bfb9b8a",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2024_AMC_12A_Q24",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:geometry"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "7981e7b2bc6de2e0b637236ac6f529e80f28434e9928aa2247f97a6294ded878",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:extremal-principle"
-    ],
-    "supportIds": [
-      "cnm_h146",
-      "cnm_h154"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2024_AMC_12A_Q24",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "A disphenoid is a tetrahedron whose triangular faces are congruent to one another. What is the least total surface area of a disphenoid whose faces are scalene triangles with integer side lengths?",
+    "choices": [
       {
-        "id": "acute-angle-area-bound",
-        "label": "Bound area using the largest angle",
-        "nodeIds": [
-          "cnm_p148",
-          "cnm_276",
-          "cnm_277",
-          "cnm_h067",
-          "math:heron-formula"
-        ]
+        "id": "A",
+        "content": "\\(\\sqrt3\\)"
       },
       {
-        "id": "squared-heron-comparison",
-        "label": "Compare squared Heron expressions",
-        "nodeIds": [
-          "math:heron-formula",
-          "cnm_h019",
-          "cnm_146"
-        ]
+        "id": "B",
+        "content": "\\(3\\sqrt{15}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(15\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(15\\sqrt7\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(24\\sqrt6\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Geometry",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:geometry"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:general-cosine-law-application",
+    "math:heron-formula",
+    "math:extremal-principle"
+  ],
+  "solutions": [
+    {
+      "id": "hinge-acuteness-heron",
+      "title": "Unfold the faces and compare areas",
+      "explanation": "The useful observation is that the faces must be acute triangles. We can see this by unfolding two faces along their common edge.\n\nWrite the face side lengths as positive integers \\(a<b<c\\). Each length occurs on exactly two tetrahedron edges, since each of the four faces contains it once and each edge belongs to two faces. Equal edges cannot meet, because their shared face would be isosceles. Thus equal edges are opposite. Label the vertices so that\n\\[\nAB=CD=c,\\qquad AC=BD=a,\\qquad BC=AD=b.\n\\]\nUnfold faces \\(ABC\\) and \\(ABD\\) onto opposite sides of \\(AB\\). They form the parallelogram \\(ACBD\\), with diagonal \\(AB=c\\). Let its other diagonal have length \\(d\\). The cosine law gives\n\\[\nd^2=2a^2+2b^2-c^2.\n\\]\nLet \\(O\\) be the midpoint of \\(AB\\). Since parallelogram diagonals bisect each other, \\(OC=OD=d/2\\). Folding preserves these two distances. In a nonflat tetrahedron, however, \\(C,O,D\\) are not collinear, so the triangle inequality gives\n\\[\nCD<OC+OD=d.\n\\]\nWe need \\(CD=c\\), so \\(d>c\\). Therefore\n\\[\n2a^2+2b^2-c^2>c^2,\n\\qquad\\text{or}\\qquad a^2+b^2>c^2.\n\\]\nBy the cosine law, the angle opposite the longest side \\(c\\) is acute, so every face angle is acute.\n\nConversely, an acute triangle can produce the required tetrahedron. Its unfolded parallelogram has \\(d>c\\). Fold the two faces all the way onto the same side of \\(AB\\), and call the perpendicular feet of \\(C,D\\) on \\(AB\\) respectively \\(P,Q\\). The congruent triangles have equal altitudes, and acuteness places both feet inside \\(AB\\). Thus, in this final flat position, \\(CD=PQ<c\\). As the faces fold continuously, their third vertices therefore reach separation \\(c\\) at a nonflat position. All four faces then have sides \\(a,b,c\\).\n\nNow restrict the integer side lengths. Because \\(c\\ge b+1\\) and \\(b\\ge a+1\\), acuteness requires\n\\[\na^2>c^2-b^2\\ge 2b+1\\ge 2a+3.\n\\]\nNone of \\(a=1,2,3\\) satisfies this inequality. Hence \\(a\\ge4\\) and \\(b\\ge5\\). The triple \\((4,5,6)\\) is acute because\n\\[\n4^2+5^2=41>36=6^2.\n\\]\nIts semiperimeter is \\(s=15/2\\). By Heron's formula, its total surface area is\n\\[\n4\\sqrt{\\frac{15}{2}\\cdot\\frac72\\cdot\\frac52\\cdot\\frac32}\n=\\sqrt{15\\cdot7\\cdot5\\cdot3}\n=15\\sqrt7.\n\\]\n\nWe must also check that larger side lengths cannot give a smaller area. Let \\(K\\) be the area of any eligible face. Rewriting Heron's formula gives\n\\[\n\\begin{aligned}\n(4K)^2\n&=[(a+b)^2-c^2][c^2-(b-a)^2]\\\\\n&=4a^2b^2-(a^2+b^2-c^2)^2.\n\\end{aligned}\n\\]\nAcuteness and \\(c>b\\) imply\n\\[\n0<a^2+b^2-c^2<a^2.\n\\]\nSince \\(a<b\\), it follows that\n\\[\n(4K)^2>4a^2b^2-a^4>3a^2b^2.\n\\]\nIf \\(b=5\\), then \\(a=4\\), and \\(5<c<\\sqrt{41}\\) forces \\(c=6\\). Every other eligible triple therefore has \\(b\\ge6\\), giving\n\\[\n(4K)^2>3\\cdot4^2\\cdot6^2=1728\n>1575=(15\\sqrt7)^2.\n\\]\nThus the least total surface area is \\(\\boxed{15\\sqrt7}\\), choice \\(\\boxed{\\text{D}}\\).",
+      "directNodeIds": [
+        "cnm_121",
+        "cnm_183",
+        "math:general-cosine-law-application",
+        "math:heron-formula",
+        "math:extremal-principle"
+      ],
+      "sourceRef": "amc/2024_AMC_12A_Q24#hinge-acuteness-heron"
+    },
+    {
+      "id": "acute-angle-area-bound",
+      "title": "Bound area using the largest angle",
+      "directNodeIds": [
+        "cnm_p148",
+        "cnm_276",
+        "cnm_277",
+        "cnm_h067",
+        "math:heron-formula"
+      ],
+      "sourceRef": "amc/2024_AMC_12A_Q24#acute-angle-area-bound"
+    },
+    {
+      "id": "squared-heron-comparison",
+      "title": "Compare squared Heron expressions",
+      "directNodeIds": [
+        "math:heron-formula",
+        "cnm_h019",
+        "cnm_146"
+      ],
+      "sourceRef": "amc/2024_AMC_12A_Q24#squared-heron-comparison"
+    }
+  ],
+  "sourceRef": "amc/2024_AMC_12A_Q24"
 }

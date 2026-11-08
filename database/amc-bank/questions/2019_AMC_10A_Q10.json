@@ -1,63 +1,58 @@
 {
-  "Year": 2019,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 10,
-  "Question": "A rectangular floor that is \\(10\\) feet wide and \\(17\\) feet long is tiled with \\(170\\) one-foot square tiles. A bug walks from one corner to the opposite corner in a straight line. Including the first and the last tile, how many tiles does the bug visit?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(17\\)",
-    "B": "\\(25\\)",
-    "C": "\\(26\\)",
-    "D": "\\(27\\)",
-    "E": "\\(28\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "greatest common divisor; counting intersections",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2019A/solutions",
-    "SourceSHA256": "e6550106e4914e2e8b625bb61f1464705ba54cdd0deb008b72982f50d42b413e",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2019_AMC_10A_Q10",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "A rectangular floor that is \\(10\\) feet wide and \\(17\\) feet long is tiled with \\(170\\) one-foot square tiles. A bug walks from one corner to the opposite corner in a straight line. Including the first and the last tile, how many tiles does the bug visit?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(17\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(25\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(26\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(27\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(28\\)"
+      }
     ]
   },
-  "ID": "2019_AMC_10A_Q10",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "795176637b7d80cd13c00bd9caaf93acd759df41d2753d8cbdb89cac1d7bbc0d",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h230"
-    ],
-    "supportIds": [
-      "math:lattice-counting"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "level": "AMC 10"
+  },
+  "assessedNodeIds": [
+    "math:lattice-counting",
+    "cnm_h230"
+  ],
+  "solutions": [
+    {
+      "id": "count-grid-crossings",
+      "title": "Count entries into new tiles",
+      "explanation": "Each time the bug crosses an interior grid line, it enters another tile, unless it crosses a horizontal and vertical line simultaneously at a tile corner. We first rule out that possibility.\n\nPlace the starting corner at \\((0,0)\\) and the opposite corner at \\((17,10)\\). The diagonal satisfies\n\\[\n17y=10x.\n\\]\nAt a tile corner, both coordinates are integers. Since \\(10\\) and \\(17\\) are relatively prime, this equation forces \\(x\\) to be a multiple of \\(17\\). There is no such integer with \\(0<x<17\\), so the diagonal passes through no interior tile corner.\n\nThe bug crosses each of the \\(16\\) interior vertical grid lines and each of the \\(9\\) interior horizontal grid lines exactly once. These are \\(16+9=25\\) separate crossings. Each enters a new tile, and the straight path never returns to an earlier tile.\n\nIncluding the starting tile, the total is\n\\[\n1+16+9=\\boxed{26}.\n\\]\nThe answer is choice \\(\\text{C}\\).",
+      "directNodeIds": [
+        "math:lattice-counting",
+        "cnm_h230",
+        "cnm_p158"
+      ],
+      "sourceRef": "amc/2019_AMC_10A_Q10#count-grid-crossings"
+    }
+  ],
+  "sourceRef": "amc/2019_AMC_10A_Q10"
 }

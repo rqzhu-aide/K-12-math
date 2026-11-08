@@ -1,78 +1,76 @@
 {
-  "Year": 2017,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 23,
-  "Question": "Let \\[N=123456789101112\\dots4344\\] be the \\(79\\)-digit number that is formed by writing the integers from \\(1\\) to \\(44\\) in order, one after the other. What is the remainder when \\(N\\) is divided by \\(45?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(1 \\)",
-    "B": "\\(4 \\)",
-    "C": "\\(9 \\)",
-    "D": "\\(18 \\)",
-    "E": "\\(44 \\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "modular arithmetic; Chinese Remainder Theorem; digits",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2017B/solutions",
-    "SourceSHA256": "152723128a60684f48116e65fba43f0896f163fc01b4a613a58d2a4469f6042c",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2017_AMC_10B_Q23",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "8b8346ca660777be334e0eafb8561d1ffad0b26aa767e503838b329f737da47c",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:modular-congruence"
-    ],
-    "supportIds": [],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2017_AMC_10B_Q23",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Let \\[N=123456789101112\\dots4344\\] be the \\(79\\)-digit number that is formed by writing the integers from \\(1\\) to \\(44\\) in order, one after the other. What is the remainder when \\(N\\) is divided by \\(45?\\)",
+    "choices": [
       {
-        "id": "split-moduli",
-        "label": "Combine remainders modulo 5 and 9",
-        "nodeIds": [
-          "math:simultaneous-congruences",
-          "cnm_h204"
-        ]
+        "id": "A",
+        "content": "\\(1 \\)"
       },
       {
-        "id": "reduce-concatenation-powers",
-        "label": "Reduce powers of 10 modulo 45",
-        "nodeIds": [
-          "math:modular-powers",
-          "cnm_h204"
-        ]
+        "id": "B",
+        "content": "\\(4 \\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(9 \\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(18 \\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(44 \\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "level": "AMC 10"
+  },
+  "assessedNodeIds": [
+    "math:modular-congruence",
+    "math:simultaneous-congruences"
+  ],
+  "solutions": [
+    {
+      "id": "digit-sum-and-divisibility",
+      "title": "Use divisibility by 5 and 9",
+      "explanation": "Because \\(45=5\\cdot9\\), the last digit and the digit sum provide useful divisibility information.\n\nTo count the digit sum, temporarily include the integer \\(0\\), which contributes nothing. In the four blocks \\(0\\) through \\(9\\), \\(10\\) through \\(19\\), \\(20\\) through \\(29\\), and \\(30\\) through \\(39\\), the units digits contribute four copies of \\(0+1+\\cdots+9\\). The tens digits contribute ten copies each of \\(1,2,3\\). Finally, \\(40\\) through \\(44\\) contribute five tens digits equal to \\(4\\), along with units digits \\(0,1,2,3,4\\). Thus the digit sum is\n\\[\n4(0+1+\\cdots+9)+10(1+2+3)+5\\cdot4+(0+1+2+3+4)\n=180+60+20+10=270.\n\\]\nSince \\(270=9\\cdot30\\), the digit-sum rule shows that \\(N\\) is divisible by \\(9\\). Therefore \\(N-9\\) is also divisible by \\(9\\).\n\nThe last two digits of \\(N\\) are \\(44\\), so \\(N-9\\) ends in \\(35\\) and is divisible by \\(5\\). Since \\(5\\) and \\(9\\) are relatively prime, \\(N-9\\) is divisible by \\(45\\). As \\(0\\le9<45\\), the remainder is \\(\\boxed{9}\\), choice \\(\\text{C}\\).",
+      "directNodeIds": [
+        "math:modular-congruence",
+        "math:simultaneous-congruences",
+        "cnm_p154"
+      ],
+      "sourceRef": "amc/2017_AMC_10B_Q23#digit-sum-and-divisibility"
+    },
+    {
+      "id": "split-moduli",
+      "title": "Combine remainders modulo 5 and 9",
+      "directNodeIds": [
+        "math:simultaneous-congruences",
+        "cnm_h204"
+      ],
+      "sourceRef": "amc/2017_AMC_10B_Q23#split-moduli"
+    },
+    {
+      "id": "reduce-concatenation-powers",
+      "title": "Reduce powers of 10 modulo 45",
+      "directNodeIds": [
+        "math:modular-powers",
+        "cnm_h204"
+      ],
+      "sourceRef": "amc/2017_AMC_10B_Q23#reduce-concatenation-powers"
+    }
+  ],
+  "sourceRef": "amc/2017_AMC_10B_Q23"
 }

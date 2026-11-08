@@ -1,80 +1,80 @@
 {
-  "Year": 2024,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Number Theory",
-  "Number": 7,
-  "Question": "The product of three integers is \\(60.\\) What is the least possible positive sum of the three integers?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(2\\)",
-    "B": "\\(3\\)",
-    "C": "\\(5\\)",
-    "D": "\\(6\\)",
-    "E": "\\(13\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.63",
-    "Concepts": "factor; optimization; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2024A/solutions",
-    "SourceSHA256": "5fed52d29857ed2e73b79316a935cba357bf2b5edda16ac2add7780e78466254",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2024_AMC_10A_Q07",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:number-theory"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "e5d556c182c12181c36a45549c1d2405c2adfc26a6a87a3e06064adbfae2f8c1",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:integer-diophantine-equations",
-      "math:extremal-principle"
-    ],
-    "supportIds": [
-      "cnm_015"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2024_AMC_10A_Q07",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "The product of three integers is \\(60.\\) What is the least possible positive sum of the three integers?",
+    "choices": [
       {
-        "id": "enumerate-factor-triples",
-        "label": "Enumerate signed factor triples",
-        "nodeIds": [
-          "cnm_p153"
-        ]
+        "id": "A",
+        "content": "\\(2\\)"
       },
       {
-        "id": "bound-the-positive-factor",
-        "label": "Use integer product bounds",
-        "nodeIds": [
-          "cnm_h021",
-          "cnm_p153"
-        ]
+        "id": "B",
+        "content": "\\(3\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(5\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(6\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(13\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "area": "Number Theory",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:number-theory"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:integer-diophantine-equations",
+    "math:extremal-principle"
+  ],
+  "solutions": [
+    {
+      "id": "signed-factor-enumeration",
+      "title": "List the signed factor triples",
+      "explanation": "Negative factors are allowed. In particular,\n\\[\n10(-1)(-6)=60,\\qquad 10-1-6=3.\n\\]\nSo it remains to show that a positive sum smaller than \\(3\\) is impossible.\n\nIf all three integers are positive, their sum is at least \\(3\\). Otherwise, a positive product requires one positive integer \\(p\\) and two negative integers \\(-a,-b\\), where we may take \\(1\\le a\\le b\\). We need\n\\[\npab=60,\\qquad p-a-b>0.\n\\]\nThe positive-sum condition implies \\(a,b<p\\). If \\(p\\le4\\), then \\(a,b\\le3\\), giving \\(pab\\le4\\cdot3\\cdot3=36\\), which is too small.\n\nAlso, \\(p\\) must divide \\(60\\). The table lists every remaining possibility with \\(a\\le b<p\\), together with its sum:\n\\[\n\\begin{array}{c|c|c}\np&(a,b)&p-a-b\\\\ \\hline\n5&(3,4)&-2\\\\\n6&(2,5)&-1\\\\\n10&(1,6),\\ (2,3)&3,\\ 5\\\\\n12&(1,5)&6\\\\\n15&(1,4),\\ (2,2)&10,\\ 11\\\\\n20&(1,3)&16\\\\\n30&(1,2)&27\\\\\n60&(1,1)&58\n\\end{array}\n\\]\nFor each \\(p\\), the pairs come from \\(ab=60/p\\); requiring \\(a\\le b\\) avoids repeating a pair in reverse order. Thus every possible positive sum has been covered, and the smallest is \\(\\boxed{3}\\), choice \\(\\boxed{\\text{B}}\\).",
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "math:extremal-principle",
+        "cnm_p153",
+        "cnm_015"
+      ],
+      "sourceRef": "amc/2024_AMC_10A_Q07#signed-factor-enumeration"
+    },
+    {
+      "id": "enumerate-factor-triples",
+      "title": "Enumerate signed factor triples",
+      "directNodeIds": [
+        "cnm_p153"
+      ],
+      "sourceRef": "amc/2024_AMC_10A_Q07#enumerate-factor-triples"
+    },
+    {
+      "id": "bound-the-positive-factor",
+      "title": "Use integer product bounds",
+      "directNodeIds": [
+        "cnm_h021",
+        "cnm_p153"
+      ],
+      "sourceRef": "amc/2024_AMC_10A_Q07#bound-the-positive-factor"
+    }
+  ],
+  "sourceRef": "amc/2024_AMC_10A_Q07"
 }

@@ -1,78 +1,76 @@
 {
-  "Year": 2018,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 19,
-  "Question": "Mary chose an even \\(4\\)-digit number \\(n.\\) She wrote down all the divisors of \\(n\\) in increasing order from left to right: \\(1,\\) \\(2,\\) \\(\\ldots,\\) \\(\\tfrac{n}{2},\\) \\(n.\\) At some moment Mary wrote \\(323\\) as a divisor of \\(n.\\) What is the smallest possible value of the next divisor written to the right of \\(323?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(324\\)",
-    "B": "\\(330\\)",
-    "C": "\\(340\\)",
-    "D": "\\(361\\)",
-    "E": "\\(646\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "divisibility; greatest common divisor; prime factorization",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2018B/solutions",
-    "SourceSHA256": "7b19d55a7f39ed9e41e7c3089b150018fb57149e9bb7f71f22ca8618e1d02cb2",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2018_AMC_12B_Q19",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "317d15cc15021a9327be43fe9d0860922f7daeb6c637ee8dea78233685b441be",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:extremal-principle"
-    ],
-    "supportIds": [
-      "math:prime-factorization"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2018_AMC_12B_Q19",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Mary chose an even \\(4\\)-digit number \\(n.\\) She wrote down all the divisors of \\(n\\) in increasing order from left to right: \\(1,\\) \\(2,\\) \\(\\ldots,\\) \\(\\tfrac{n}{2},\\) \\(n.\\) At some moment Mary wrote \\(323\\) as a divisor of \\(n.\\) What is the smallest possible value of the next divisor written to the right of \\(323?\\)",
+    "choices": [
       {
-        "id": "least-common-multiple-bound",
-        "label": "LCM bound and construction",
-        "nodeIds": [
-          "cnm_p159"
-        ]
+        "id": "A",
+        "content": "\\(324\\)"
       },
       {
-        "id": "enumerate-admissible-multiples",
-        "label": "Enumerate bounded multiples",
-        "nodeIds": [
-          "math:integer-diophantine-equations"
-        ]
+        "id": "B",
+        "content": "\\(330\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(340\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(361\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(646\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "level": "AMC 12"
+  },
+  "assessedNodeIds": [
+    "cnm_p158",
+    "cnm_p159",
+    "math:extremal-principle"
+  ],
+  "solutions": [
+    {
+      "id": "common-divisor-gap-bound",
+      "title": "Bound the gap between divisors",
+      "explanation": "Two coprime divisors have their product dividing \\(n\\), which would be too large here. To use this restriction, let \\(d\\) be any divisor of \\(n\\) greater than \\(323\\), and set \\(g=\\gcd(d,323)\\).\n\nIf \\(g=1\\), then \\(323d\\) divides \\(n\\). But\n\\[\nn\\ge323d>323^2=104329>9999,\n\\]\ncontradicting the four-digit condition. Therefore \\(g>1\\).\n\nSince \\(323=17\\cdot19\\), every divisor of \\(323\\) greater than \\(1\\) is at least \\(17\\), so \\(g\\ge17\\). Also, \\(g\\) divides the positive integer \\(d-323\\). Hence\n\\[\nd-323\\ge g\\ge17,\n\\qquad d\\ge340.\n\\]\nThis bound can be attained. Choose\n\\[\nn=17\\cdot19\\cdot20=6460.\n\\]\nThis is an even four-digit number, and both \\(323\\) and \\(340=17\\cdot20\\) divide it. The bound above rules out every divisor strictly between them, so \\(340\\) is the next divisor after \\(323\\).\n\nThe smallest possible next divisor is \\(\\boxed{340}\\), choice \\(\\text{C}\\).",
+      "directNodeIds": [
+        "cnm_p158",
+        "cnm_p159",
+        "math:prime-factorization",
+        "math:extremal-principle"
+      ],
+      "sourceRef": "amc/2018_AMC_12B_Q19#common-divisor-gap-bound"
+    },
+    {
+      "id": "least-common-multiple-bound",
+      "title": "LCM bound and construction",
+      "directNodeIds": [
+        "cnm_p159"
+      ],
+      "sourceRef": "amc/2018_AMC_12B_Q19#least-common-multiple-bound"
+    },
+    {
+      "id": "enumerate-admissible-multiples",
+      "title": "Enumerate bounded multiples",
+      "directNodeIds": [
+        "math:integer-diophantine-equations"
+      ],
+      "sourceRef": "amc/2018_AMC_12B_Q19#enumerate-admissible-multiples"
+    }
+  ],
+  "sourceRef": "amc/2018_AMC_12B_Q19"
 }

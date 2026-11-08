@@ -1,65 +1,63 @@
 {
-  "Year": 2025,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Counting & Probability",
-  "Number": 18,
-  "Question": "How many ordered triples \\((x, y, z)\\) of distinct nonnegative integers less than or equal to \\(8\\) satisfy \\(xy \\gt z,\\) \\(zx \\gt y,\\) and \\(yz \\gt x?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(36\\)",
-    "B": "\\(84\\)",
-    "C": "\\(186\\)",
-    "D": "\\(336\\)",
-    "E": "\\(486\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "reviewed-source-concepts",
-    "Concepts": "inequality; permutations; symmetry",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2025A/solutions",
-    "SourceSHA256": "ba7a6860f4d04021d5c9f61f05d33b3cfddca239176293ee411babae6573c53c",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2025_AMC_12A_Q18",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "How many ordered triples \\((x, y, z)\\) of distinct nonnegative integers less than or equal to \\(8\\) satisfy \\(xy \\gt z,\\) \\(zx \\gt y,\\) and \\(yz \\gt x?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(36\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(84\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(186\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(336\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(486\\)"
+      }
     ]
   },
-  "ID": "2025_AMC_12A_Q18",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h020",
+    "cnm_h239",
+    "cnm_h235"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "75bc05e17d8afba8ddb0808b5ac4bcc6de4e9dd6dfbf631e3ef641abe6ee7ec0",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_h232",
-      "cnm_h235"
-    ],
-    "supportIds": [
-      "cnm_h237",
-      "cnm_h020"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "sort-exclude-permute",
+      "title": "Count sorted triples first",
+      "explanation": "The inequalities are unchanged when the variables are permuted, so first count triples with \\(x<y<z\\).\n\nIf \\(x=0\\), then \\(zx=0\\) cannot exceed \\(y\\). If \\(x=1\\), then \\(xy=y<z\\). Thus all three entries must come from \\(\\{2,3,4,5,6,7,8\\}\\).\n\nFor these increasing triples, two inequalities hold automatically:\n\\[\nxz\\ge 2z>y,\n\\qquad yz\\ge 2z>x.\n\\]\nWe only need to check \\(xy>z\\). There are initially\n\\[\n\\binom{7}{3}=\\frac{7\\cdot6\\cdot5}{3\\cdot2\\cdot1}=35\n\\]\nchoices of three entries.\n\nA failure requires \\(xy\\le z\\le8\\). If \\(x\\ge3\\), then \\(y\\ge4\\), so \\(xy\\ge12\\). If \\(x=2\\) and \\(y\\ge5\\), then \\(xy\\ge10\\). Therefore only two pairs can cause failures:\n\n- For \\((x,y)=(2,3)\\), the failing values are \\(z=6,7,8\\).\n- For \\((x,y)=(2,4)\\), the only failing value is \\(z=8\\).\n\nThese are four distinct failures, leaving \\(35-4=31\\) valid increasing triples. Each has three distinct entries and therefore \\(3!=6\\) different orderings. Every valid ordered triple has exactly one increasing rearrangement, so the answer is\n\\[\n31\\cdot6=\\boxed{186},\n\\]\nchoice \\(\\text{C}\\).",
+      "directNodeIds": [
+        "cnm_h020",
+        "cnm_h239",
+        "cnm_h235"
+      ],
+      "sourceRef": "amc/2025_AMC_12A_Q18#sort-exclude-permute"
+    }
+  ],
+  "sourceRef": "amc/2025_AMC_12A_Q18"
 }

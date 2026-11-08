@@ -1,80 +1,77 @@
 {
-  "Year": 2018,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 25,
-  "Question": "Let \\(\\lfloor x \\rfloor\\) denote the greatest integer less than or equal to \\(x.\\) How many real numbers \\(x\\) satisfy the equation \\(x^2 + 10{,}000\\lfloor x \\rfloor = 10{,}000x?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(197\\)",
-    "B": "\\(198\\)",
-    "C": "\\(199\\)",
-    "D": "\\(200\\)",
-    "E": "\\(201\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "floor and ceiling functions; counting integers in a range",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2018B/solutions",
-    "SourceSHA256": "4a6ded1649dafce105e5a8443fb92e73eb35400613d2c1885c50fa03dd6eab45",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2018_AMC_10B_Q25",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "d8927c7b413662f49d8b322f9eeb3e04b128c50444d21fe27d751012e0e2cd86",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:floor-ceiling"
-    ],
-    "supportIds": [
-      "cnm_h020"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2018_AMC_10B_Q25",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Let \\(\\lfloor x \\rfloor\\) denote the greatest integer less than or equal to \\(x.\\) How many real numbers \\(x\\) satisfy the equation \\(x^2 + 10{,}000\\lfloor x \\rfloor = 10{,}000x?\\)",
+    "choices": [
       {
-        "id": "unit-interval-root-count",
-        "label": "Monotonicity and endpoint signs",
-        "nodeIds": [
-          "cnm_h033",
-          "cnm_h049"
-        ]
+        "id": "A",
+        "content": "\\(197\\)"
       },
       {
-        "id": "quadratic-formula-filter",
-        "label": "Quadratic formula with floor-interval filtering",
-        "nodeIds": [
-          "cnm_222",
-          "cnm_h024"
-        ]
+        "id": "B",
+        "content": "\\(198\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(199\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(200\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(201\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "level": "AMC 10"
+  },
+  "assessedNodeIds": [
+    "math:floor-ceiling",
+    "cnm_h033",
+    "cnm_h049"
+  ],
+  "solutions": [
+    {
+      "id": "fractional-part-interval-count",
+      "title": "Count one solution per unit interval",
+      "explanation": "The useful observation is that the fractional part \\(\\{x\\}=x-\\lfloor x\\rfloor\\) lies in \\([0,1)\\), and equals \\(x-k\\) whenever \\(k\\le x<k+1\\) for an integer \\(k\\).\n\nRearranging the given equation gives\n\\[\n\\frac{x^2}{10{,}000}=\\{x\\}.\n\\]\nConsequently, every solution satisfies\n\\[\n0\\le\\frac{x^2}{10{,}000}<1,\n\\qquad\\text{so}\\qquad -100<x<100.\n\\]\nWe therefore need to examine only the unit intervals \\([k,k+1)\\) with \\(k=-100,-99,\\ldots,99\\).\n\nOn \\([k,k+1)\\), the equation becomes \\(H_k(x)=0\\), where\n\\[\nH_k(x)=x-k-\\frac{x^2}{10{,}000}.\n\\]\nTo show that each interval contains at most one solution, take \\(-100\\le u<v\\le100\\). Then\n\\[\nH_k(v)-H_k(u)\n=(v-u)\\left(1-\\frac{u+v}{10{,}000}\\right)>0,\n\\]\nbecause \\(v-u>0\\) and \\(u+v\\le200<10{,}000\\). Thus \\(H_k\\) is strictly increasing throughout the relevant range.\n\nFor every integer \\(k\\) from \\(-100\\) through \\(98\\), the endpoint values of this continuous polynomial are\n\\[\nH_k(k)=-\\frac{k^2}{10{,}000}\\le0,\n\\qquad\nH_k(k+1)=1-\\frac{(k+1)^2}{10{,}000}>0.\n\\]\nThe second inequality holds because \\(-99\\le k+1\\le99\\). Continuity gives a zero in \\([k,k+1)\\), and strict increase makes it unique. When \\(k=0\\), this zero is the included left endpoint \\(x=0\\).\n\nFor the remaining interval \\([99,100)\\), we have \\(H_{99}(100)=0\\). Strict increase implies \\(H_{99}(x)<0\\) for every \\(99\\le x<100\\), so this interval contributes no solution.\n\nThe half-open intervals are disjoint and cover every possible solution, so there is no double counting. The number of solutions is\n\\[\n98-(-100)+1=\\boxed{199}.\n\\]\nThe answer is \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "math:floor-ceiling",
+        "cnm_h033",
+        "cnm_h049"
+      ],
+      "sourceRef": "amc/2018_AMC_10B_Q25#fractional-part-interval-count"
+    },
+    {
+      "id": "unit-interval-root-count",
+      "title": "Monotonicity and endpoint signs",
+      "directNodeIds": [
+        "cnm_h033",
+        "cnm_h049"
+      ],
+      "sourceRef": "amc/2018_AMC_10B_Q25#unit-interval-root-count"
+    },
+    {
+      "id": "quadratic-formula-filter",
+      "title": "Quadratic formula with floor-interval filtering",
+      "directNodeIds": [
+        "cnm_222",
+        "cnm_h024"
+      ],
+      "sourceRef": "amc/2018_AMC_10B_Q25#quadratic-formula-filter"
+    }
+  ],
+  "sourceRef": "amc/2018_AMC_10B_Q25"
 }

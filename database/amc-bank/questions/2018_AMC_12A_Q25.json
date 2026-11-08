@@ -1,64 +1,58 @@
 {
-  "Year": 2018,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 25,
-  "Question": "For a positive integer \\(n\\) and nonzero digits \\(a,\\) \\(b,\\) and \\(c,\\) let \\(A_n\\) be the \\(n\\)-digit integer each of whose digits is equal to \\(a;\\) let \\(B_n\\) be the \\(n\\)-digit integer each of whose digits is equal to \\(b;\\) and let \\(C_n\\) be the \\(2n\\)-digit (not \\(n\\)-digit) integer each of whose digits is equal to \\(c.\\) What is the greatest possible value of \\(a + b + c\\) for which there are at least two values of \\(n\\) such that \\(C_n - B_n = A_n^2?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(12\\)",
-    "B": "\\(14\\)",
-    "C": "\\(16\\)",
-    "D": "\\(18\\)",
-    "E": "\\(20\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "digits; algebraic manipulation",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2018A/solutions",
-    "SourceSHA256": "64f36c5fcc42ad50f73e25ea243f68a61be5a407a8e7deed744d4065a363f384",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2018_AMC_12A_Q25",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "For a positive integer \\(n\\) and nonzero digits \\(a,\\) \\(b,\\) and \\(c,\\) let \\(A_n\\) be the \\(n\\)-digit integer each of whose digits is equal to \\(a;\\) let \\(B_n\\) be the \\(n\\)-digit integer each of whose digits is equal to \\(b;\\) and let \\(C_n\\) be the \\(2n\\)-digit (not \\(n\\)-digit) integer each of whose digits is equal to \\(c.\\) What is the greatest possible value of \\(a + b + c\\) for which there are at least two values of \\(n\\) such that \\(C_n - B_n = A_n^2?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(12\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(14\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(16\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(18\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(20\\)"
+      }
     ]
   },
-  "ID": "2018_AMC_12A_Q25",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "9472f59edaceff65b19f723aaab523c1da4255d5d7e468c73562547a0ecc6faa",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:integer-diophantine-equations"
-    ],
-    "supportIds": [
-      "cnm_h210",
-      "cnm_090"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "level": "AMC 12"
+  },
+  "assessedNodeIds": [
+    "math:integer-diophantine-equations",
+    "cnm_h210"
+  ],
+  "solutions": [
+    {
+      "id": "repdigits-two-lengths",
+      "title": "Compare two digit lengths",
+      "explanation": "Repeated-digit numbers are multiples of the geometric sum\n\\[\n1+10+\\cdots+10^{n-1}=\\frac{10^n-1}{9}.\n\\]\nUsing this representation will turn the given equation into one that is linear in \\(10^n\\).\n\nWe have\n\\[\nA_n=a\\frac{10^n-1}{9},\\qquad\nB_n=b\\frac{10^n-1}{9},\\qquad\nC_n=c\\frac{10^{2n}-1}{9}.\n\\]\nThus the required equality becomes\n\\[\nc\\frac{10^{2n}-1}{9}-b\\frac{10^n-1}{9}\n=a^2\\frac{(10^n-1)^2}{81}.\n\\]\nMultiply by \\(81\\). Since \\(n>0\\), we can divide by \\(10^n-1\\), using\n\\(10^{2n}-1=(10^n-1)(10^n+1)\\). This gives\n\\[\n9c(10^n+1)-9b=a^2(10^n-1),\n\\]\nor\n\\[\n(9c-a^2)10^n=9b-9c-a^2.\n\\]\n\nSuppose this holds for distinct positive integers \\(n_1\\) and \\(n_2\\). Subtracting the two equations gives\n\\[\n(9c-a^2)(10^{n_1}-10^{n_2})=0.\n\\]\nThe powers of \\(10\\) are different, so \\(9c-a^2=0\\). Substituting back also makes the right side zero. Therefore\n\\[\na^2=9c,\\qquad 9b=9c+a^2=18c,\n\\]\nso \\(c=a^2/9\\) and \\(b=2c\\).\n\nBecause \\(9\\) divides \\(a^2\\), the digit \\(a\\) must be divisible by \\(3\\). The possibilities \\(a=3,6,9\\) give, respectively,\n\\[\n(a,b,c)=(3,2,1),\\quad (6,8,4),\\quad (9,18,9).\n\\]\nThe last triple is invalid because \\(b\\) must be a digit. For either remaining triple, the rearranged equation is \\(0=0\\) for every positive \\(n\\). All the transformations were reversible, so both triples satisfy the original equation for at least two values of \\(n\\).\n\nTheir sums are \\(6\\) and \\(18\\). Hence the greatest possible value is \\(\\boxed{18}\\), choice \\(\\text{(D)}\\).",
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "cnm_h210",
+        "cnm_090"
+      ],
+      "sourceRef": "amc/2018_AMC_12A_Q25#repdigits-two-lengths"
+    }
+  ],
+  "sourceRef": "amc/2018_AMC_12A_Q25"
 }
