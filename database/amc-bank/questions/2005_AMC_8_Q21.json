@@ -1,83 +1,82 @@
 {
-  "Year": 2005,
-  "Level": "AMC 8",
-  "Batch": "NA",
-  "Area": "Unclassified",
-  "Number": 21,
-  "Question": "How many distinct triangles can be drawn using three of the dots below as vertices?\n\n[Figure 1](figures/2005_AMC_8_Q21_question_fig1.svg)",
-  "Question Type": "mixed",
-  "Choices": {
-    "A": "\\(9\\)",
-    "B": "\\(12\\)",
-    "C": "\\(18\\)",
-    "D": "\\(20\\)",
-    "E": "\\(24\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "combinations; complementary counting",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc8/2005/solutions",
-    "SourceSHA256": "e0f2ed8fb2b7768fa3893fe0fafaf6cc650456ec91b029ce146256d27a3c3482",
-    "Figures": [
-      "figures/2005_AMC_8_Q21_question_fig1.svg"
+  "answer": {
+    "accepted": [
+      "C"
     ],
-    "FigureSources": {
-      "figures/2005_AMC_8_Q21_question_fig1.svg": {
-        "url": "https://live.poshenloh.com/images/past-contests/amc8/2005/21.svg",
-        "alt": ""
-      }
-    },
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 8",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
+    "type": "choice"
   },
-  "ID": "2005_AMC_8_Q21",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "162aaf1d816b39adcc0b47ee738fe978f7d5d8f33ef174005d6190f388649dc3",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h239"
-    ],
-    "supportIds": [],
-    "routes": [
+  "assessedNodeIds": [
+    "cnm_h239"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 8"
+  },
+  "id": "2005_AMC_8_Q21",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "exclude-collinear-triples",
-        "label": "All triples minus straight rows",
-        "nodeIds": [
-          "cnm_h237"
-        ]
+        "content": "\\(9\\)",
+        "id": "A"
       },
       {
-        "id": "split-by-horizontal-row",
-        "label": "Choose two vertices on one row",
-        "nodeIds": [
-          "cnm_h232"
-        ]
+        "content": "\\(12\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(18\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(20\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(24\\)",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "How many distinct triangles can be drawn using three of the dots below as vertices?\n\n[Figure 1](figures/2005_AMC_8_Q21_question_fig1.svg)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "cnm_h239",
+        "cnm_h232"
+      ],
+      "explanation": "The dots lie in two horizontal rows of three. Three dots in the same row cannot form a triangle, so every triangle must have exactly two vertices in one row and one in the other.\n\nFirst count triangles with two top vertices. The top pair can be left-middle, left-right, or middle-right, giving three choices. For each pair, any of the three bottom dots can be the third vertex. Each choice forms a triangle because the bottom dot is outside the horizontal line through the top pair. This gives\n\\[\n3\\times3=9\n\\]\ntriangles.\n\nThe same reasoning gives nine triangles with two bottom vertices and one top vertex. Every triangle belongs to exactly one of these two groups, determined by which row contains two of its vertices. Within each group, its pair and third vertex determine it uniquely. Thus the total is\n\\[\n9+9=\\boxed{18},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+      "id": "split-by-row",
+      "sourceRef": "amc/2005_AMC_8_Q21#split-by-row",
+      "title": "Choose two vertices from one row"
+    },
+    {
+      "directNodeIds": [
+        "cnm_h239",
+        "cnm_h237"
+      ],
+      "explanation": "A triangle is determined by three dots that do not lie on one straight line. We can first count every selection of three dots, then remove the selections that fail this condition.\n\nChoosing three different dots in order gives six choices for the first, five for the second, and four for the third:\n\\[\n6\\times5\\times4=120.\n\\]\nBut any fixed group of three dots appears in \\(3\\times2\\times1=6\\) orders. Since changing the order does not change the selected vertices, the number of distinct three-dot selections is\n\\[\n\\frac{120}{6}=20.\n\\]\nExactly two selections lie on a straight line: the complete top row and the complete bottom row. Every other selection has two dots in one horizontal row and one in the other. The line through the same-row pair is horizontal and cannot contain the dot in the other row, so each remaining selection forms a triangle.\n\nTherefore the number of triangles is\n\\[\n20-2=\\boxed{18},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+      "id": "all-triples-minus-rows",
+      "sourceRef": "amc/2005_AMC_8_Q21#all-triples-minus-rows",
+      "title": "Count all triples and remove straight rows"
+    },
+    {
+      "directNodeIds": [
+        "cnm_h237"
+      ],
+      "id": "exclude-collinear-triples",
+      "sourceRef": "amc/2005_AMC_8_Q21#exclude-collinear-triples",
+      "title": "All triples minus straight rows"
+    },
+    {
+      "directNodeIds": [
+        "cnm_h232"
+      ],
+      "id": "split-by-horizontal-row",
+      "sourceRef": "amc/2005_AMC_8_Q21#split-by-horizontal-row",
+      "title": "Choose two vertices on one row"
+    }
+  ],
+  "sourceRef": "amc/2005_AMC_8_Q21"
 }

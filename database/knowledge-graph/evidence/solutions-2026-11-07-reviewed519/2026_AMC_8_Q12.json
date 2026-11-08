@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2026_AMC_8_Q12",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "579144585707d5728c5330241f4449cfd9a2ad070c9b03a09dbdedc25e56c35b",
+    "figureHashes": {
+      "figures/2026_AMC_8_Q12_question_fig1.svg": "ec788881105d8f1daec8e05673768f0a11717a70cff9cba1e55ad173b1e2938d"
+    }
+  },
+  "solutionSHA256": "c5b44ed3023a20e1b114b7c145301e12456f626d17cbe9af93f0bfab25b4ff81",
+  "solutionFigureHashes": {
+    "figures/2026_AMC_8_Q12_question_fig1.svg": "ec788881105d8f1daec8e05673768f0a11717a70cff9cba1e55ad173b1e2938d"
+  },
+  "candidateHash": "30fd6ee2c1ea1ce55f15cab02f4141071362c0f0ff82d2653140fb91ecbc5c52",
+  "candidate": {
+    "questionId": "2026_AMC_8_Q12",
+    "derivedAnswer": "5 (D)",
+    "answerStatus": "matches",
+    "answerReason": "The sum 10 forces the pair 4 and 6. Placing 6 in the middle circle on the left repeats a digit, so that circle must contain 4 and the top must contain 5. A complete valid filling exists.",
+    "methods": [
+      {
+        "id": "distinct-digit-cases",
+        "label": "Start with the sum 10",
+        "explanation": "Start with the largest neighboring sum, \\(10\\), because there are very few ways to make it using the allowed digits.\n\n[Figure 1](figures/2026_AMC_8_Q12_question_fig1.svg)\n\nThe two circles next to the box labeled \\(10\\) must contain \\(4\\) and \\(6\\). The other possibility, \\(5+5\\), repeats a digit, and any digit smaller than \\(4\\) would require a partner greater than \\(6\\).\n\nSuppose the middle circle on the left contained \\(6\\). Then the bottom-left circle would contain \\(10-6=4\\), and the bottom-middle circle would contain \\(8-4=4\\). This repeats \\(4\\), so this placement is impossible.\n\nTherefore the middle circle on the left contains \\(4\\), making the top digit\n\\[\n9-4=5.\n\\]\nA complete filling, read clockwise from the top, is \\(5,1,3,2,6,4\\). These use each digit exactly once and give successive neighboring sums \\(6,4,5,8,10,9\\), matching all six boxes. Thus the required digit is \\(5\\), choice D.",
+        "nodeIds": [
+          "math:finite-constraint-deduction",
+          "cnm_p110"
+        ],
+        "prerequisiteIds": [
+          "cnm_p010",
+          "cnm_p011"
+        ],
+        "levelReason": "The reasoning uses only bounded digit choices, the no-repeat condition, and elementary addition and subtraction."
+      }
+    ],
+    "assessedIds": [
+      "math:finite-constraint-deduction"
+    ],
+    "supportIds": [
+      "cnm_p010",
+      "cnm_p011"
+    ],
+    "annotationRationale": "The target is a forced digit assignment under neighboring-sum and distinctness constraints. The method exhausts the possible pair making 10, rejects one orientation, and uses the relationship between addition and subtraction to recover neighboring digits. Arithmetic within 10 supports the deductions and the existence check.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2026_AMC_8_Q12",
+    "decision": "accept",
+    "mathematicalCheck": "The figure confirms the stated neighboring sums. Distinct digits summing to 10 must be 4 and 6. Putting 6 in the middle-left circle forces two other circles to contain 4, so middle-left is 4 and top is 5. The clockwise filling 5,1,3,2,6,4 uses every digit once and satisfies all six sums.",
+    "levelCheck": "Elementary arithmetic and case elimination fit AMC 8. The decisive contradiction and existence check are clearly explained.",
+    "methodDistinctness": "One complete method is included; another method is unnecessary.",
+    "annotationCheck": "The catalog's finite-constraint-deduction node accurately captures the assessed task. cnm_p110 describes recovering an addend by subtraction, and the shared arithmetic support IDs fit the actual calculations.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "distinct-digit-cases": "solution:distinct-digit-cases:c5b44ed3023a"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "482d94ff10900e902d5c97bcbab2982948a9a43ae71d1bcfbe7dab9707694832",
+    "acceptedAt": "2026-11-07T07:50:41.576747+00:00",
+    "inputHash": "15634beb2ddd9da6edb383876de2b7ffd3aca584ce23f3393f0374732569e36e",
+    "authorInputHash": "c7b850662258a85d6b95559759b27afbd69385b4e8e06cf80b7c891be26ca5fb",
+    "reviewInputHash": "1d5fbb22bc17c238396188aa5b93d6d1ac7c9b3be205f0494569e69a9cddf49c",
+    "authorResponseHash": "69e91749c1a11a750a0439e3ed0f9200783b8ebdace21c507e2c7c39fc404b5c",
+    "reviewerResponseHash": "db1af463a189873d120f1c5cb2b1a5cdbda42cd0562ba8066f9100d1a71bc5f2",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

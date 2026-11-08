@@ -1,64 +1,58 @@
 {
-  "Year": 2016,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 24,
-  "Question": "How many four-digit positive integers \\(abcd,\\) with \\(a \\neq 0,\\) have the property that the three two-digit integers \\(ab < bc < cd\\) form an increasing arithmetic sequence?\n\nOne such number is \\(4692,\\) where \\(a=4,\\) \\(b=6,\\) \\(c=9,\\) and \\(d=2.\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\( \\ 9 \\)",
-    "B": "\\( \\ 15 \\)",
-    "C": "\\( \\ 16 \\)",
-    "D": "\\( \\ 17 \\)",
-    "E": "\\( \\ 20 \\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "arithmetic sequence; digits; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2016B/solutions",
-    "SourceSHA256": "d064f39d73c772de6b03b7072941c2ad29e4fe0859ad097ac8e93c6b29c2246e",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2016_AMC_10B_Q24",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "315ccfcb6f07541e4a986e51dfc823aace1dba5f5927c1496503467725cfabce",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:integer-diophantine-equations"
+  "answer": {
+    "accepted": [
+      "D"
     ],
-    "supportIds": [
-      "cnm_h203",
-      "cnm_027"
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "math:integer-diophantine-equations"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 10"
+  },
+  "id": "2016_AMC_10B_Q24",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\( \\ 9 \\)",
+        "id": "A"
+      },
+      {
+        "content": "\\( \\ 15 \\)",
+        "id": "B"
+      },
+      {
+        "content": "\\( \\ 16 \\)",
+        "id": "C"
+      },
+      {
+        "content": "\\( \\ 17 \\)",
+        "id": "D"
+      },
+      {
+        "content": "\\( \\ 20 \\)",
+        "id": "E"
+      }
     ],
-    "routes": [],
-    "flags": []
-  }
+    "prompt": "How many four-digit positive integers \\(abcd,\\) with \\(a \\neq 0,\\) have the property that the three two-digit integers \\(ab < bc < cd\\) form an increasing arithmetic sequence?\n\nOne such number is \\(4692,\\) where \\(a=4,\\) \\(b=6,\\) \\(c=9,\\) and \\(d=2.\\)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "cnm_h201",
+        "cnm_027",
+        "cnm_h020"
+      ],
+      "explanation": "Because the two-digit numbers overlap, it helps to track the changes between neighboring digits. Comparing tens digits in \\(ab<bc<cd\\) shows that\n\\[\na\\le b\\le c.\n\\]\nIn particular, \\(b\\) and \\(c\\) are nonzero, as required for \\(bc\\) and \\(cd\\) to be two-digit integers.\n\nDefine\n\\[\nu=b-a,\\qquad v=c-b,\\qquad w=d-c.\n\\]\nThen \\(u,v\\ge0\\). Using place value, the two successive gaps are\n\\[\n\\begin{aligned}\n(10b+c)-(10a+b)&=10u+v,\\\\\n(10c+d)-(10b+c)&=10v+w.\n\\end{aligned}\n\\]\nThe arithmetic-sequence condition says these gaps are equal, so\n\\[\n10(u-v)=w-v.\n\\]\nSince all digits lie between 0 and 9, we have \\(-9\\le w\\le9\\) and \\(0\\le v\\le9\\). Therefore\n\\[\n-18\\le w-v\\le9.\n\\]\nThe only multiples of 10 in this interval are \\(-10\\) and 0. Thus either \\(v=u\\) or \\(v=u+1\\), which gives two exhaustive, disjoint cases.\n\nIf \\(v=u\\), the gap equation gives \\(w=u\\), so the digits are\n\\[\na,\\ a+u,\\ a+2u,\\ a+3u.\n\\]\nStrict increase of the two-digit numbers requires \\(u\\ge1\\). The last digit must be at most 9, giving \\(1\\le a\\le9-3u\\). For \\(u=1\\), there are 6 choices of \\(a\\); for \\(u=2\\), there are 3; larger \\(u\\) give none. This case contributes \\(6+3=9\\).\n\nIf \\(v=u+1\\), then \\(w=u-9\\), and the digits are\n\\[\na,\\ a+u,\\ a+2u+1,\\ a+3u-8.\n\\]\nThe bounds \\(c\\le9\\), \\(d\\ge0\\), and \\(a\\ge1\\) become\n\\[\n\\max(1,8-3u)\\le a\\le8-2u.\n\\]\nThese bounds require \\(u=0,1,2,3\\). Their possibilities are:\n\nFor \\(u=0\\), only \\(a=8\\) works, giving 1 number.\n\nFor \\(u=1\\), \\(a=5,6\\), giving 2 numbers.\n\nFor \\(u=2\\), \\(a=2,3,4\\), giving 3 numbers.\n\nFor \\(u=3\\), \\(a=1,2\\), giving 2 numbers.\n\nHere \\(d-c=u-9<0\\), so \\(d\\le9\\) follows from \\(c\\le9\\). The common two-digit gap is \\(10u+v=11u+1>0\\), so every listed choice satisfies strict increase. This case contributes \\(1+2+3+2=8\\).\n\nEach choice of \\(a,u,v\\) determines exactly one four-digit number. The two cases do not overlap, so the total is \\(9+8=\\boxed{17}\\), choice \\(\\boxed{D}\\).",
+      "id": "successive-digit-differences",
+      "sourceRef": "amc/2016_AMC_10B_Q24#successive-digit-differences",
+      "title": "Restrict the changes between neighboring digits"
+    }
+  ],
+  "sourceRef": "amc/2016_AMC_10B_Q24"
 }

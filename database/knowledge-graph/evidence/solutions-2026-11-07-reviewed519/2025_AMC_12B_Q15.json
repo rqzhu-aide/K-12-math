@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2025_AMC_12B_Q15",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "d94156f31b0d05c446f0ea7f5901e1db3be29e296389fb05042b598acc141f8d",
+    "figureHashes": {
+      "figures/2025_AMC_12B_Q15_question_fig1.svg": "ad6feddb3a292ca300a390b0cf68433f298f782004adc3f3b5b6d7678f570081"
+    }
+  },
+  "solutionSHA256": "8f7a71bd1eb47e0c43c42a22498a210767e9fbe3fb64f1eb6a436efd72dbf2cc",
+  "solutionFigureHashes": {
+    "figures/2025_AMC_12B_Q15_question_fig1.svg": "ad6feddb3a292ca300a390b0cf68433f298f782004adc3f3b5b6d7678f570081"
+  },
+  "candidateHash": "a8f114b03a88941c17c6df8b5ea407ffe0e57db6e2aaae72402a50f3778e60ea",
+  "candidate": {
+    "questionId": "2025_AMC_12B_Q15",
+    "derivedAnswer": "95 more minutes (D)",
+    "answerStatus": "matches",
+    "answerReason": "Completing the container to a pyramid gives nested pyramids with linear scales 1:2:3 and volumes 1:8:27. The lower and upper container portions therefore have volume ratio 7:19, so the remaining time is 35·19/7=95 minutes.",
+    "methods": [
+      {
+        "id": "complete-the-pyramid",
+        "label": "Compare nested similar pyramids",
+        "explanation": "At a constant flow rate, filling time is proportional to water volume. We therefore need the ratio of the volumes above and below the trapezoids' midlines, rather than the container's actual height.\n\n[Figure 1](figures/2025_AMC_12B_Q15_question_fig1.svg)\n\nExtend the four sloping side edges downward past the square bottom to complete a square pyramid. Sections parallel to its base have side lengths proportional to their distances from the apex, by similar triangles.\n\nLet \\(h>0\\) be the distance from the apex to the container's bottom. Since the bottom and top square side lengths are \\(1\\) and \\(3\\), the top is \\(3h\\) from the apex. The container therefore has height \\(2h\\). Each trapezoid's midline joins the midpoints of its sloping edges, so the water surface is halfway up the container. It is \\(2h\\) from the apex and is a square of side length \\(2\\).\n\nThe three nested pyramids ending at the bottom, water surface, and top are similar, with linear scales \\(1:2:3\\). Scaling every length by a factor \\(k\\) scales volume by \\(k^3\\), so their volumes are in the ratio\n\\[\n1^3:2^3:3^3=1:8:27.\n\\]\nLet the smallest pyramid have volume \\(V>0\\). The water already added occupies the difference between the middle and smallest pyramids, namely \\(8V-V=7V\\). The remaining space occupies \\(27V-8V=19V\\).\n\nIf \\(t\\) is the additional filling time in minutes, constant flow gives\n\\[\n\\frac{t}{35}=\\frac{19V}{7V}=\\frac{19}{7}.\n\\]\nThus\n\\[\nt=35\\cdot\\frac{19}{7}=\\boxed{95}\\text{ minutes},\n\\]\nwhich is choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_p215",
+          "math:similar-solid-volume-scaling"
+        ],
+        "prerequisiteIds": [
+          "cnm_269",
+          "cnm_p213",
+          "cnm_p211"
+        ],
+        "levelReason": "The method uses elementary similarity of parallel pyramid sections, cubic volume scaling, and direct proportion, all within AMC 12 scope."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p215"
+    ],
+    "supportIds": [
+      "cnm_269",
+      "cnm_p213",
+      "cnm_p211"
+    ],
+    "annotationRationale": "The task-level target cnm_p215 captures determining additional filling time from a volume comparison at constant flow. The chosen geometric route is recorded locally as math:similar-solid-volume-scaling: the completed pyramids have uniform linear scales 1:2:3. Proportional sections, direct proportion, and solving the resulting proportion support the method. The simple-solid volume-formula node cnm_h111 is omitted because the solution does not apply a prism or cone volume formula.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2025_AMC_12B_Q15",
+    "decision": "accept",
+    "mathematicalCheck": "The midline section has side length 2. Completing the depicted frustum gives nested similar pyramids with linear scales 1:2:3 and volumes 1:8:27. The filled and remaining volumes are therefore 7V and 19V, with V>0. Constant flow gives 35 × 19/7 = 95 additional minutes, choice D.",
+    "levelCheck": "Parallel sections, similar-solid volume scaling, and direct proportion are appropriate for AMC 12 and are explained sufficiently.",
+    "methodDistinctness": "The single similar-pyramid method is complete and sufficient.",
+    "annotationCheck": "cnm_p215 is a valid route-neutral target. The local volume-scaling node and the proportional-section and proportion supports match the method. Omitting cnm_h111 is justified because no explicit solid-volume formula is applied.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "complete-the-pyramid": "complete-the-pyramid"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "8b2d03b8f015140f253297d57f68db0b3cd6c0a7bec6ce7ecf4e50c6911956a9",
+    "acceptedAt": "2026-11-07T07:57:08.087738+00:00",
+    "inputHash": "8cbae04a2bbf353df804e9dc298dbe472af210f0d989a078803c7741857c36da",
+    "authorInputHash": "e50bbf15a2b73ab57fc3b478c3a8afa564f45cb7930ac2d899b943cebc6266ef",
+    "reviewInputHash": "844d2ebbf1b1d1636ba770c8de8aed6c4335db3049c5a910f4cbb34388ec5fc4",
+    "authorResponseHash": "124a8c783803fe58b9256204343f5bff3e254ced2cefabc0fb3e065406ef9a22",
+    "reviewerResponseHash": "83ff76f98eb23864e45ec0fe42f251cb44ba7f96dfbd3c7c3389aa1d3594e8b4",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

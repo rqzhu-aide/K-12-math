@@ -1,85 +1,75 @@
 {
-  "Year": 2009,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 11,
-  "Question": "The figures \\(F_1,\\) \\(F_2,\\) \\(F_3,\\) and \\(F_4\\) shown are the first in a sequence of figures. For \\(n \\ge 3,\\) \\(F_n\\) is constructed from \\(F_{n-1}\\) by surrounding it with a square and placing one more diamond on each side of the new square than \\(F_{n-1}\\) had on each side of its outside square. For example, figure \\(F_3\\) has \\(13\\) diamonds. How many diamonds are there in figure \\(F_{20}?\\)\n\n[Figure 1](figures/2009_AMC_12A_Q11_question_fig1.svg)",
-  "Question Type": "mixed",
-  "Choices": {
-    "A": "\\(401\\)",
-    "B": "\\(485\\)",
-    "C": "\\(585\\)",
-    "D": "\\(626\\)",
-    "E": "\\(761\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "arithmetic sequence; summation",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2009A/solutions",
-    "SourceSHA256": "cd06c436054582e196fba2cfb2e6e56605dbd5f68569558d77e96dd10bd346ea",
-    "Figures": [
-      "figures/2009_AMC_12A_Q11_question_fig1.svg"
+  "answer": {
+    "accepted": [
+      "E"
     ],
-    "FigureSources": {
-      "figures/2009_AMC_12A_Q11_question_fig1.svg": {
-        "url": "https://live.poshenloh.com/images/past-contests/amc12/2009A/11.svg",
-        "alt": ""
-      }
-    },
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
+    "type": "choice"
   },
-  "ID": "2009_AMC_12A_Q11",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "1d0b1a1dfb9947f924afe48f82f5118cf6d0110eec31791cbafc386d554907b2",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_030"
-    ],
-    "supportIds": [],
-    "routes": [
+  "assessedNodeIds": [
+    "cnm_030"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
+  },
+  "id": "2009_AMC_12A_Q11",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "sum-added-square-layers",
-        "label": "Sum the arithmetic sequence of new layers",
-        "nodeIds": [
-          "cnm_h200",
-          "cnm_h204"
-        ]
+        "content": "\\(401\\)",
+        "id": "A"
       },
       {
-        "id": "interlaced-square-arrays",
-        "label": "Count two interlaced square arrays",
-        "nodeIds": [
-          "math:lattice-counting",
-          "cnm_h231"
-        ]
+        "content": "\\(485\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(585\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(626\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(761\\)",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "The figures \\(F_1,\\) \\(F_2,\\) \\(F_3,\\) and \\(F_4\\) shown are the first in a sequence of figures. For \\(n \\ge 3,\\) \\(F_n\\) is constructed from \\(F_{n-1}\\) by surrounding it with a square and placing one more diamond on each side of the new square than \\(F_{n-1}\\) had on each side of its outside square. For example, figure \\(F_3\\) has \\(13\\) diamonds. How many diamonds are there in figure \\(F_{20}?\\)\n\n[Figure 1](figures/2009_AMC_12A_Q11_question_fig1.svg)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "cnm_030",
+        "math:double-counting",
+        "cnm_h204"
+      ],
+      "explanation": "Count the diamonds on each newly added square separately. In \\(F_2\\), each side has two diamonds, its two corners. Each later square has one more diamond per side, so the outside square of \\(F_k\\) has \\(k\\) diamonds on each side for every integer \\(k\\ge 2\\).\n\nCounting its four sides gives \\(4k\\), but this counts each of the four corner diamonds twice. Subtracting one extra count for each corner, the new square contributes\n\\[\n4k-4=4(k-1)\n\\]\ndiamonds. Every diamond belongs either to the original center or to exactly one added square, so adding these layer counts omits none and counts none twice.\n\nFrom \\(F_2\\) through \\(F_{20}\\), there are \\(19\\) added squares, contributing\n\\[\n4+8+12+\\cdots+76.\n\\]\nTo sum them, write the terms in reverse order beneath the original order. Each corresponding pair sums to \\(80\\), so twice the sum is \\(19\\cdot80\\). Including the central diamond, the total is\n\\[\n1+\\frac{19(4+76)}{2}\n=1+760\n=761.\n\\]\nThus \\(F_{20}\\) has \\(761\\) diamonds, choice \\(\\boxed{\\text{E}}\\).",
+      "id": "count-and-sum-square-layers",
+      "sourceRef": "amc/2009_AMC_12A_Q11#count-and-sum-square-layers",
+      "title": "Count the added square layers"
+    },
+    {
+      "directNodeIds": [
+        "cnm_h200",
+        "cnm_h204"
+      ],
+      "id": "sum-added-square-layers",
+      "sourceRef": "amc/2009_AMC_12A_Q11#sum-added-square-layers",
+      "title": "Sum the arithmetic sequence of new layers"
+    },
+    {
+      "directNodeIds": [
+        "math:lattice-counting",
+        "cnm_h231"
+      ],
+      "id": "interlaced-square-arrays",
+      "sourceRef": "amc/2009_AMC_12A_Q11#interlaced-square-arrays",
+      "title": "Count two interlaced square arrays"
+    }
+  ],
+  "sourceRef": "amc/2009_AMC_12A_Q11"
 }

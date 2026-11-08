@@ -1,72 +1,75 @@
 {
-  "Year": 2023,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Geometry",
-  "Number": 15,
-  "Question": "An even number of circles are nested, starting with a radius of \\(1\\) and increasing by \\(1\\) each time, all sharing a common point. The region between every other circle is shaded, starting with the region inside the circle of radius \\(2\\) but outside the circle of radius \\(1.\\) An example showing \\(8\\) circles is displayed below. What is the least number of circles needed to make the total shaded area at least \\(2023\\pi?\\)\n\n[Figure 1](figures/2023_AMC_10A_Q15_question_fig1.svg)",
-  "Question Type": "mixed",
-  "Choices": {
-    "A": "\\(46\\)",
-    "B": "\\(48\\)",
-    "C": "\\(56\\)",
-    "D": "\\(60\\)",
-    "E": "\\(64\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.91",
-    "Concepts": "circle area; arithmetic sequence; summation",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2023A/solutions",
-    "SourceSHA256": "971ce13217f703d7fce4f9708498a2defc20377d359d8d1cc9ee28b098f4e7d6",
-    "Figures": [
-      "figures/2023_AMC_10A_Q15_question_fig1.svg"
+  "answer": {
+    "accepted": [
+      "E"
     ],
-    "FigureSources": {
-      "figures/2023_AMC_10A_Q15_question_fig1.svg": {
-        "url": "https://live.poshenloh.com/images/past-contests/amc10/2023A/15.svg",
-        "alt": ""
-      }
-    },
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
+    "type": "choice"
   },
-  "ID": "2023_AMC_10A_Q15",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:geometry"
+  "assessedNodeIds": [
+    "cnm_p150",
+    "cnm_h026"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "b84d331bc29fc078fea157566fc83220e4af8aebb5aebecc0890eeb90a36b91f",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_p150",
-      "cnm_h204",
-      "cnm_h026"
+  "bank": "amc",
+  "classification": {
+    "area": "Geometry",
+    "domainIds": [
+      "domain:geometry"
     ],
-    "supportIds": [
-      "cnm_p192"
+    "level": "AMC 10"
+  },
+  "id": "2023_AMC_10A_Q15",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(46\\)",
+        "id": "A"
+      },
+      {
+        "content": "\\(48\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(56\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(60\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(64\\)",
+        "id": "E"
+      }
     ],
-    "routes": [],
-    "flags": []
-  }
+    "prompt": "An even number of circles are nested, starting with a radius of \\(1\\) and increasing by \\(1\\) each time, all sharing a common point. The region between every other circle is shaded, starting with the region inside the circle of radius \\(2\\) but outside the circle of radius \\(1.\\) An example showing \\(8\\) circles is displayed below. What is the least number of circles needed to make the total shaded area at least \\(2023\\pi?\\)\n\n[Figure 1](figures/2023_AMC_10A_Q15_question_fig1.svg)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "cnm_p150",
+        "cnm_147",
+        "cnm_h204",
+        "cnm_h026"
+      ],
+      "explanation": "Because the disks are nested, each shaded band's area is the larger disk's area minus the smaller disk's area. The different circle centers do not affect this subtraction.\n\nWrite the even number of circles as \\(2m\\), where \\(m\\) is a positive integer. The \\(k\\)th shaded band lies between radii \\(2k-1\\) and \\(2k\\), for \\(1\\le k\\le m\\). Using the difference of squares, its area is\n\\[\n\\pi\\bigl((2k)^2-(2k-1)^2\\bigr)=(4k-1)\\pi.\n\\]\nThe shaded bands have no overlapping interiors, and every shaded region is included. Their total area is therefore\n\\[\nS_m=(3+7+11+\\cdots+(4m-1))\\pi.\n\\]\nTo sum the coefficients, add the list to a reversed copy. Each of the \\(m\\) pairs has sum \\(3+(4m-1)=4m+2\\). Dividing by two gives\n\\[\nS_m=\\frac{m(4m+2)}{2}\\pi=m(2m+1)\\pi.\n\\]\nWe need \\(m(2m+1)\\ge2023\\). The consecutive values\n\\[\n31(63)=1953<2023,\\qquad 32(65)=2080\\ge2023\n\\]\nlocate the threshold. Each additional pair of circles adds a positive shaded area, so every smaller value of \\(m\\) also fails. The least value is \\(m=32\\), giving \\(\\boxed{64}\\) circles, choice \\(\\boxed{\\text{E}}\\).",
+      "id": "sum-shaded-band-areas",
+      "sourceRef": "amc/2023_AMC_10A_Q15#sum-shaded-band-areas",
+      "title": "Add the shaded band areas"
+    },
+    {
+      "directNodeIds": [
+        "cnm_p150",
+        "cnm_147",
+        "cnm_090",
+        "cnm_h026"
+      ],
+      "explanation": "Pair each shaded band with the unshaded region immediately inside it. The first pair consists of the radius-1 disk and the shaded band between radii 1 and 2. These pairs fill the outer disk without overlapping interiors.\n\nSuppose there are \\(2m\\) circles, with \\(m\\) a positive integer. For \\(1\\le k\\le m\\), the shaded member of pair \\(k\\) has area\n\\[\n\\pi\\bigl((2k)^2-(2k-1)^2\\bigr)=(4k-1)\\pi.\n\\]\nIts unshaded partner has area\n\\[\n\\pi\\bigl((2k-1)^2-(2k-2)^2\\bigr)=(4k-3)\\pi.\n\\]\nFor \\(k=1\\), subtracting zero simply gives the innermost disk's area. Thus every pair contains exactly \\(2\\pi\\) more shaded area than unshaded area.\n\nLet \\(S\\) and \\(U\\) be the total shaded and unshaded areas inside the outer circle. The \\(m\\) pairs give \\(S-U=2m\\pi\\), while the outer disk gives \\(S+U=4m^2\\pi\\). Adding eliminates \\(U\\):\n\\[\n2S=(4m^2+2m)\\pi,\n\\qquad S=m(2m+1)\\pi.\n\\]\nAt \\(m=31\\), the shaded area is \\(1953\\pi<2023\\pi\\). At \\(m=32\\), it is \\(2080\\pi\\ge2023\\pi\\). Since adding another pair of circles always adds positive shaded area, \\(m=32\\) is the first qualifying value. Hence the least number is \\(\\boxed{64}\\) circles, choice \\(\\boxed{\\text{E}}\\).",
+      "id": "compare-shaded-and-unshaded-areas",
+      "sourceRef": "amc/2023_AMC_10A_Q15#compare-shaded-and-unshaded-areas",
+      "title": "Compare shaded and unshaded areas"
+    }
+  ],
+  "sourceRef": "amc/2023_AMC_10A_Q15"
 }

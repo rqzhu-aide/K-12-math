@@ -1,69 +1,58 @@
 {
-  "Year": 2013,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 12,
-  "Question": "Cities \\(A,\\) \\(B,\\) \\(C,\\) \\(D,\\) and \\(E\\) are connected by roads \\(AB,\\) \\(AD,\\) \\(AE,\\) \\(BC,\\) \\(BD,\\) \\(CD,\\) and \\(DE.\\) How many different routes are there from \\(A\\) to \\(B\\) that use each road exactly once? (Such a route will necessarily visit some cities more than once.)\n\n[Figure 1](figures/2013_AMC_12B_Q12_question_fig1.svg)",
-  "Question Type": "mixed",
-  "Choices": {
-    "A": "\\(7\\)",
-    "B": "\\(9\\)",
-    "C": "\\(12\\)",
-    "D": "\\(16\\)",
-    "E": "\\(18\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "graph theory; casework; multiplication principle",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2013B/solutions",
-    "SourceSHA256": "831691f38aebd9646b9f79e35b327036b667d19b5ea84da8ce1ccbf282ad3acc",
-    "Figures": [
-      "figures/2013_AMC_12B_Q12_question_fig1.svg"
+  "answer": {
+    "accepted": [
+      "D"
     ],
-    "FigureSources": {
-      "figures/2013_AMC_12B_Q12_question_fig1.svg": {
-        "url": "https://live.poshenloh.com/images/past-contests/amc12/2013B/12.svg",
-        "alt": ""
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "math:graph-models",
+    "cnm_h232"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
+  },
+  "id": "2013_AMC_12B_Q12",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(7\\)",
+        "id": "A"
+      },
+      {
+        "content": "\\(9\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(12\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(16\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(18\\)",
+        "id": "E"
       }
-    },
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2013_AMC_12B_Q12",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "0ed76205e94e8bb07cba61d5edd0dc839a1966816a3e84b6d61465b0c83c26ef",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:graph-models",
-      "cnm_h232"
     ],
-    "supportIds": [],
-    "routes": [],
-    "flags": []
-  }
+    "prompt": "Cities \\(A,\\) \\(B,\\) \\(C,\\) \\(D,\\) and \\(E\\) are connected by roads \\(AB,\\) \\(AD,\\) \\(AE,\\) \\(BC,\\) \\(BD,\\) \\(CD,\\) and \\(DE.\\) How many different routes are there from \\(A\\) to \\(B\\) that use each road exactly once? (Such a route will necessarily visit some cities more than once.)\n\n[Figure 1](figures/2013_AMC_12B_Q12_question_fig1.svg)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:graph-models",
+        "cnm_h232",
+        "math:bijective-counting"
+      ],
+      "explanation": "Cities \\(C\\) and \\(E\\) each have only two roads. Since neither is the starting or ending city, entering either city forces an immediate departure on its other road. We may therefore treat \\(A\\to E\\to D\\) as one connection and \\(D\\to C\\to B\\) as another, allowing either connection to be traveled in reverse.\n\nThe reduced network has two distinct connections between \\(A\\) and \\(D\\), two between \\(D\\) and \\(B\\), and the road \\(AB\\). We must use all five connections exactly once.\n\nFirst ignore which connection of each pair is used first. If the route begins with \\(AB\\), it must next go to \\(D\\). Returning immediately to \\(B\\) would leave no unused way to depart \\(B\\), with the connections to \\(A\\) still unused. Thus the entire pattern is forced:\n\\[\nA\\to B\\to D\\to A\\to D\\to B.\n\\]\nOtherwise, the route starts \\(A\\to D\\). From \\(D\\), the next city is either \\(A\\) or \\(B\\).\n\nIf it is \\(A\\), both connections between \\(A\\) and \\(D\\) have been used, forcing\n\\[\nA\\to D\\to A\\to B\\to D\\to B.\n\\]\nIf it is \\(B\\), the next city can be \\(A\\) or \\(D\\). In each case the remaining connections force the rest:\n\\[\n\\begin{gathered}\nA\\to D\\to B\\to A\\to D\\to B,\\\\\nA\\to D\\to B\\to D\\to A\\to B.\n\\end{gathered}\n\\]\nThese cases cover every possible continuation and give four different patterns.\n\nFor each pattern, there are \\(2\\) choices for which connection between \\(A\\) and \\(D\\) is used first, and independently \\(2\\) choices for which connection between \\(D\\) and \\(B\\) is used first. The second connection of each pair is then determined, giving \\(2\\cdot2=4\\) routes per pattern.\n\nExpanding the connections through \\(E\\) and \\(C\\) gives a unique original route. Conversely, compressing any original route recovers its pattern and choices, so no route is omitted or counted twice. The total is\n\\[\n4\\cdot4=\\boxed{16},\n\\]\nwhich is choice \\(\\boxed{\\text{D}}\\).",
+      "id": "compress-forced-passages",
+      "sourceRef": "amc/2013_AMC_12B_Q12#compress-forced-passages",
+      "title": "Combine forced passages"
+    }
+  ],
+  "sourceRef": "amc/2013_AMC_12B_Q12"
 }

@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_12B_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "0a24c12cc26a77349ab6e1baf4693c8988da3f19cd530468c0cb5de12a096931",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "a2dd9792bc699da0ea0ad2e6466e99fd0fefe07a790ff1cff1adec7df5123ee8",
+  "solutionFigureHashes": {},
+  "candidateHash": "0926ac643e74cae44592d8200910df2d1dbd61fc985de0e18f78f5b770733f52",
+  "candidate": {
+    "questionId": "2016_AMC_12B_Q24",
+    "derivedAnswer": "D (27,720), assuming a, b, c, and d are positive integers",
+    "answerStatus": "disputed",
+    "answerReason": "The intended positive-integer interpretation gives 27,720, matching choice D. The displayed stem does not specify that domain. If arbitrary signed integers are counted with the usual nonnegative gcd and lcm, every positive-lcm count is divisible by 16, whereas 77,000 is not.",
+    "methods": [
+      {
+        "id": "count-prime-exponents",
+        "label": "Count exponent choices and minimize the lcm",
+        "explanation": "Assume, as intended, that \\(a,b,c,d\\) are positive integers. Since their gcd is \\(77\\), write\n\\[\n(a,b,c,d)=77(u,v,w,t),\\qquad m=\\frac n{77}.\n\\]\nThis is a one-to-one correspondence with positive ordered quadruples having gcd \\(1\\) and lcm \\(m\\). We seek the smallest such \\(m\\). The case \\(m=1\\) gives only the quadruple \\((1,1,1,1)\\), so \\(m>1\\).\n\nConsider a prime whose exponent in \\(m\\) is \\(e\\ge1\\). Its exponents in \\(u,v,w,t\\) must lie between \\(0\\) and \\(e\\). Their minimum must be \\(0\\), to make the gcd \\(1\\), and their maximum must be \\(e\\), to give the required lcm. There are \\((e+1)^4\\) unrestricted exponent choices. Subtract the \\(e^4\\) choices missing \\(0\\) and the \\(e^4\\) choices missing \\(e\\), then restore the \\((e-1)^4\\) choices missing both. The allowed count is\n\\[\n\\begin{aligned}\nf(e)&=(e+1)^4-2e^4+(e-1)^4\\\\\n&=12e^2+2=2(6e^2+1).\n\\end{aligned}\n\\]\nChoices for different primes are independent. Unique prime factorization ensures that these choices produce every eligible ordered quadruple exactly once, so their counts multiply.\n\nEach \\(f(e)\\) contains exactly one factor of \\(2\\), since \\(6e^2+1\\) is odd. As\n\\[\n77000=2^3\\cdot5^3\\cdot7\\cdot11,\n\\]\nthere must be exactly three distinct primes in \\(m\\). Each contributes at least \\(f(1)=14\\). If any exponent were at least \\(6\\), the count would be at least\n\\[\nf(6)\\cdot14^2=434\\cdot196=85064>77000.\n\\]\nThus every exponent is at most \\(5\\). The possible contributions are\n\\[\n\\begin{aligned}\nf(1)&=14=2\\cdot7,\\\\\nf(2)&=50=2\\cdot5^2,\\\\\nf(3)&=110=2\\cdot5\\cdot11,\\\\\nf(4)&=194=2\\cdot97,\\\\\nf(5)&=302=2\\cdot151.\n\\end{aligned}\n\\]\nThe last two introduce prime factors absent from \\(77000\\), so they are impossible. Exactly one contribution must be \\(14\\) to supply the single factor of \\(7\\), and exactly one must be \\(110\\) to supply the factor of \\(11\\). The remaining contribution is \\(50\\). Hence the three exponents are \\(3,2,1\\).\n\nTo minimize the number, larger exponents must go on smaller primes. Indeed, if \\(p<q\\) and \\(e>f\\), then\n\\[\n\\frac{p^e q^f}{p^f q^e}\n=\\left(\\frac pq\\right)^{e-f}<1.\n\\]\nUsing the three smallest primes therefore gives the universal lower bound\n\\[\nm\\ge2^3\\cdot3^2\\cdot5=360.\n\\]\nThis value attains the required count because \\(110\\cdot50\\cdot14=77000\\). Consequently,\n\\[\nn=77\\cdot360=\\boxed{27720},\n\\]\nwhich is choice \\(\\text{D}\\) under the positive-integer assumption.\n\nThe domain qualification matters. If arbitrary signed integers were allowed, every quadruple with positive lcm would have \\(16\\) independent sign choices, so its total count would be divisible by \\(16\\). But \\(77000\\) is not divisible by \\(16\\). If zeros are allowed and the lcm is defined to be zero, the quadruples \\((0,77,77t,77)\\), for positive integers \\(t\\), already give infinitely many possibilities. Thus the displayed statement needs the intended positive-integer convention.",
+        "nodeIds": [
+          "math:prime-factorization",
+          "math:extremal-principle",
+          "cnm_h009",
+          "cnm_h231"
+        ],
+        "prerequisiteIds": [
+          "cnm_p158",
+          "cnm_p159",
+          "cnm_p153"
+        ],
+        "levelReason": "Uses prime exponents, two-set inclusion-exclusion, bounded enumeration, and an elementary exchange argument for the minimum."
+      }
+    ],
+    "assessedIds": [
+      "math:prime-factorization",
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_h009",
+      "cnm_h231",
+      "cnm_p158",
+      "cnm_p159"
+    ],
+    "annotationRationale": "Prime-exponent minima and maxima encode the gcd and lcm restrictions. Inclusion-exclusion counts the allowed exponent choices, and the multiplication principle combines primes. The extremal target requires both a bound valid for every admissible exponent assignment and a construction attaining it. The recorded domain caveat is preserved explicitly.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The stem omits the domain of the quadruple entries. Choice D follows under the intended positive-integer convention; allowing arbitrary signed integers changes the counting problem."
+    ]
+  },
+  "review": {
+    "questionId": "2016_AMC_12B_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "For positive entries, inclusion-exclusion gives f(e)=12e²+2 per prime. The factor-of-two count forces three distinct primes; the bound and contribution table exhaustively force exponents 3,2,1. Assigning these to 2,3,5 attains m=360 and n=27720. The signed-integer and zero-entry caveats are also correct.",
+    "levelCheck": "Prime exponents, two-set inclusion-exclusion, finite bounds, and the exchange argument are appropriate for AMC 12 and adequately explained.",
+    "methodDistinctness": "One complete counting and minimization method is sufficient.",
+    "annotationCheck": "The prime-factorization and extremal targets are justified, with appropriate counting and gcd/lcm supports. The answer remains explicitly conditional on the omitted positive-integer domain.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-prime-exponents": "count-prime-exponents"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "2cb7f4895aef138fe048646fe57fb29d868da4f2eb15ffa10af5d2480818de46",
+    "acceptedAt": "2026-11-07T10:53:28.284586+00:00",
+    "inputHash": "0d0131a91a47c1bca43b8d7e06a0baec352bf614b7b58c93468ec9b4b8d51e87",
+    "authorInputHash": "4c10c342e70d8e4cb3df76f1d5aa45594fe15f306adfaa846952dedb35fc69db",
+    "reviewInputHash": "0462f535de992ac8ea129f63ca6c8d4bdf43b196b9a103ff437d288b208e6a1a",
+    "authorResponseHash": "fdb9b6b5fe4f6421d90211b75aa6ee897943f748c79feb7f6ae3b6cff71f766e",
+    "reviewerResponseHash": "1cfef22949f553267aa656c2a1dd330894bf953b0d728866ad52bf97d765a41c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

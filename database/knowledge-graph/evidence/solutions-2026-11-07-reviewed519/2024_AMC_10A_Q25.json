@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2024_AMC_10A_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "9ead92980dba1c0b790733517c31616987e9488a5ee3efa713b421126bb64315",
+    "figureHashes": {
+      "figures/2024_AMC_10A_Q25_question_fig1.svg": "9d8f5f956ef71391965c744cad58b565b03a5498f71fe2174185ece8631279d1"
+    }
+  },
+  "solutionSHA256": "cb8839e3cb2a553cf5707ce3a94b792c31297ec6925320718665a224ec2e613e",
+  "solutionFigureHashes": {},
+  "candidateHash": "6c83a7ed6ac54d08e432123e1e41f3c3ac8c8f0ba807d077f2dd77c7f381dfa0",
+  "candidate": {
+    "questionId": "2024_AMC_10A_Q25",
+    "derivedAnswer": "\\(146\\), choice C",
+    "answerStatus": "matches",
+    "answerReason": "There are 2 loops enclosing no middle-row cells. Otherwise, the enclosed middle cells form one run whose first column is 1 or 2 and whose last column is 7 or 8. The four cases contribute 64, 32, 32, and 16 loops, for a total of 146.",
+    "methods": [
+      {
+        "id": "inside-cell-encoding",
+        "label": "Count the sets of enclosed cells",
+        "explanation": "Instead of choosing toothpicks one at a time, record which cells lie inside the loop. A side carries a toothpick exactly when it separates an inside cell from an outside cell, treating everything beyond the grid as outside. Thus the enclosed cells determine the toothpicks uniquely. Moreover, the enclosed cells must be connected through shared sides; a connection only at a corner would make the boundary meet itself.\n\nNumber the columns \\(1\\) through \\(8\\). Every middle-row cell has exactly one covered side. If that cell is outside, exactly one of its four neighboring positions is inside. If it is inside, exactly one neighboring position is outside.\n\nFirst suppose no middle-row cell is inside. Each column must then have exactly one of its top and bottom cells inside. Since the middle row separates the top and bottom rows, connectivity forces all eight chosen cells to be in the same row. Enclosing the entire top row or the entire bottom row gives \\(2\\) loops.\n\nNow suppose some middle-row cells are inside. An outside middle cell next to an inside middle cell already has its one covered side. Its top and bottom neighbors must therefore be outside, making its entire column outside. Such a column cannot separate two groups of enclosed cells. Consequently the inside middle cells form one consecutive run.\n\nLet \\(s\\) and \\(e\\) be the first and last columns of that run. If \\(s\\ge3\\), column \\(s-1\\) is entirely outside. The middle cell in column \\(s-2\\) has no inside middle neighbor, so its clue forces one of its top and bottom neighbors to be inside. That cell would be disconnected from the run by column \\(s-1\\), which is impossible. Thus \\(s\\) is \\(1\\) or \\(2\\). The same argument at the right end shows that \\(e\\) is \\(7\\) or \\(8\\).\n\nAt either endpoint of the run, the middle cell has one outside horizontal neighbor. Its top and bottom neighbors must both be inside. At every other column of the run, both horizontal neighbors are inside, so exactly one of the top and bottom cells must be inside. Each such interior column therefore gives two independent choices. Any omitted end column is entirely outside.\n\nThese choices all produce valid loops. They form a solid middle strip with squares attached above or below it. The strip keeps the region connected and prevents corner-only contacts. Every unchosen top or bottom cell touches the exterior of the grid, and any omitted end column also touches the exterior, so there are no holes. The resulting boundary is one loop that does not intersect itself, and the stated neighbor counts verify every clue.\n\nFor \\((s,e)=(1,8),(1,7),(2,8),(2,7)\\), the run lengths are \\(8,7,7,6\\). With both endpoint columns fixed, the counts are respectively\n\\[\n2^6,\\qquad 2^5,\\qquad 2^5,\\qquad 2^4.\n\\]\nThe cases are disjoint, and different choices give different enclosed cells and hence different toothpick placements. Including the two loops with no enclosed middle cells, the total is\n\\[\n2+64+32+32+16=\\boxed{146},\n\\]\nwhich is choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_h232",
+          "math:bijective-counting",
+          "math:graph-models"
+        ],
+        "prerequisiteIds": [
+          "cnm_h230",
+          "cnm_h231"
+        ],
+        "levelReason": "Uses elementary inside-outside reasoning, connectivity through shared sides, and counting by disjoint cases and independent binary choices."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h232"
+    ],
+    "supportIds": [
+      "cnm_h230",
+      "cnm_h231"
+    ],
+    "annotationRationale": "The task-level target is a complete count combining case addition with independent choices. The method pairs each loop with its enclosed cells and proves the inverse boundary construction, supporting math:bijective-counting. Shared-side connectivity rules out separated enclosed regions, supporting math:graph-models within this route. The basic addition and multiplication principles support the final count; no mastery claim follows from these annotations.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2024_AMC_10A_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The figure has eight middle-row clues of 1 and no other clues. Encoding by enclosed cells determines every toothpick uniquely. Connectivity forces either an entire outer row, giving 2 loops, or one middle-row run starting in column 1 or 2 and ending in column 7 or 8. Its endpoints force both outer neighbors inside; each interior column allows exactly two choices. The resulting regions have no holes or boundary self-contacts. Thus the exhaustive, nonduplicating count is 2+2^6+2^5+2^5+2^4=146.",
+    "levelCheck": "The connectivity and inside-outside reasoning are explained concretely and remain within elementary AMC 10 counting.",
+    "methodDistinctness": "The single encoding method is complete and useful.",
+    "annotationCheck": "Combined counting is an appropriate route-neutral target. The encoding and inverse justify bijective counting, and shared-side adjacency and connectivity fit the graph-model scope. Addition and multiplication are valid support annotations.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "inside-cell-encoding": "solution:inside-cell-encoding:cb8839e3cb2a"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "4a68ce70e378a89c7c261149ab6c6d7e8535c5d5e1ffe029ed1782be73529002",
+    "acceptedAt": "2026-11-07T08:12:30.774876+00:00",
+    "inputHash": "02d6fb0718ff3ee2f0f7108d6480519cdd4482fc16050a47546018593ed2102d",
+    "authorInputHash": "2d0744e664e0336da7812676cfaed6bf1c603116b738042d117a80667848b54f",
+    "reviewInputHash": "d037f89b425abb12cb9f97b3fd7dd70d0587ea12d567b47472f8e5938ef64b62",
+    "authorResponseHash": "5886d7800cdfa8405907ec31b8e2584b67062bd9e48d649fb4ccefcbd664b12b",
+    "reviewerResponseHash": "311ceb8599a93b062e927542c375eee470871e9cb06dab479351983c45e03235",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2015_AMC_12A_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "8cfe63e178771ac3e46bc141191fac93ff8101b4ed4221e7a8c8f2292cd44e6e",
+    "figureHashes": {
+      "figures/2015_AMC_12A_Q25_question_fig1.svg": "a8ed080367ca66a43cc63fcd188a2156bcfd7b17148118373fa0df56dc14126d"
+    }
+  },
+  "solutionSHA256": "4ca60ec0a15d01e0bee60bfa826a9e56d0b9333981cc70a64f5971a49cf7961b",
+  "solutionFigureHashes": {},
+  "candidateHash": "1470cd553b499e83605cd1a089bef57a7e56a4408ba92636bf17ed232480f3d6",
+  "candidate": {
+    "questionId": "2015_AMC_12A_Q25",
+    "derivedAnswer": "D: \\(\\dfrac{143}{14}\\), for the in-gap construction depicted",
+    "answerStatus": "matches",
+    "answerReason": "For the in-gap placement shown in the supplied figure, reciprocal square-root radii add upon insertion, and successive layer sums triple. The total is 365(1/70+1/73)=143/14. The wording alone does not specify the tangent-circle branch; this answer uses the depicted placement.",
+    "methods": [
+      {
+        "id": "additive-weights-and-layer-sums",
+        "label": "Additive circle weights",
+        "explanation": "Use the in-gap construction depicted in the figure: each new circle has its point of tangency with the \\(x\\)-axis between those of its two parents. This placement matters because external tangency alone can also allow a circle outside that interval.\n\nGive a circle of radius \\(r>0\\) the weight\n\\[\nw=\\frac{1}{\\sqrt r}.\n\\]\nThis is the quantity requested in the problem, and we will show that a new circle's weight is the sum of its parents' weights.\n\nConsider two externally tangent circles of radii \\(r,s>0\\), both tangent to the \\(x\\)-axis. Their centers have heights \\(r\\) and \\(s\\), and their center distance is \\(r+s\\). If \\(h\\) is the horizontal distance between their centers, the Pythagorean theorem gives\n\\[\nh^2+(r-s)^2=(r+s)^2,\n\\]\nso \\(h=2\\sqrt{rs}\\).\n\nNow insert a circle of radius \\(t>0\\) into their gap. Its two horizontal separations from the parent centers add to the original separation. Thus\n\\[\n2\\sqrt{rt}+2\\sqrt{st}=2\\sqrt{rs}.\n\\]\nDividing by the positive quantity \\(2\\sqrt{rst}\\) gives\n\\[\n\\frac{1}{\\sqrt t}\n=\\frac{1}{\\sqrt r}+\\frac{1}{\\sqrt s}.\n\\]\nThis determines a unique positive radius for the circle inserted into that gap.\n\nLet\n\\[\ne=\\frac1{70}+\\frac1{73}\n=\\frac{143}{5110},\n\\]\nand let \\(W_k\\) be the total weight in layer \\(L_k\\). Then \\(W_1=e\\).\n\nTo see how the layer sums change, consider a gap whose endpoint circles have weights \\(p\\) and \\(q\\). Its inserted circle has weight \\(p+q\\). At the following step, the two new gaps receive circles of weights\n\\[\np+(p+q)=2p+q,\n\\qquad\n(p+q)+q=p+2q.\n\\]\nTheir total is \\(3(p+q)\\). Every old gap splits into exactly these two new gaps, so summing over all gaps gives\n\\[\nW_{k+1}=3W_k,\n\\qquad\nW_k=3^{k-1}e\\quad(k\\ge1).\n\\]\nEvery insertion lies strictly inside a previously empty interval between tangency points. Thus distinct gaps produce distinct new circles, and no earlier circle is counted again.\n\nThe original two circles contribute \\(e\\), and layers \\(L_1\\) through \\(L_6\\) contribute six terms of a geometric sequence. Therefore the requested sum is\n\\[\ne+e\\frac{3^6-1}{3-1}\n=365e\n=365\\frac{143}{70\\cdot73}\n=\\boxed{\\frac{143}{14}}.\n\\]\nFor the depicted in-gap construction, the answer is choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_174",
+          "cnm_h200",
+          "cnm_h208",
+          "cnm_h210",
+          "math:double-counting"
+        ],
+        "prerequisiteIds": [
+          "cnm_262",
+          "cnm_h181",
+          "cnm_h207"
+        ],
+        "levelReason": "The proof derives the tangency relation using a right triangle, then uses finite contribution counting and a geometric-series sum. It requires only high-school mathematics permitted on AMC 12."
+      }
+    ],
+    "assessedIds": [
+      "cnm_174",
+      "cnm_h210"
+    ],
+    "supportIds": [
+      "cnm_262",
+      "cnm_h181"
+    ],
+    "annotationRationale": "The geometric target is obtaining the horizontal separation of tangent circles from their radii; the summation target is evaluating the resulting geometric layer totals. Tangent-radius perpendicularity and the radius-sum condition for external tangency support the geometry. The method additionally constructs a recurrence, obtains its geometric terms, and tracks each gap's contributions without omission or duplication. No advanced circle-packing theorem is used, and the annotations imply no mastery judgment.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The prose alone does not require the new circle's tangency point to lie between its parents' tangency points. The calculation follows the in-gap placement shown in the supplied figure; an exterior tangent-circle branch would require a different construction."
+    ]
+  },
+  "review": {
+    "questionId": "2015_AMC_12A_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "For the in-gap placement shown, the Pythagorean theorem gives horizontal separation 2√(rs), yielding w_new=w_left+w_right with all divisors positive. Each gap's two child insertions have total weight 3(p+q), so W_k=3^(k−1)e. Distinct insertion intervals prevent duplicate circles, and the total is e[1+(3^6−1)/2]=365e=143/14. The exterior-branch caveat is valid and preserved.",
+    "levelCheck": "The derived tangency relation, elementary recurrence, and finite geometric sum are appropriate for AMC 12 and sufficiently explained.",
+    "methodDistinctness": "The single method provides a complete geometric and summation argument.",
+    "annotationCheck": "The Pythagorean, recurrence, and geometric-sequence nodes fit their uses. Tangency facts support the geometry, and the double-counting annotation is supported by tracking parent-weight contribution multiplicities.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "additive-weights-and-layer-sums": "additive-weights-and-layer-sums"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "03c5bf717711b433535edce1cb6e4e1eeee5ef2a4c858cbbada75bd381117d0b",
+    "acceptedAt": "2026-11-07T08:45:07.588213+00:00",
+    "inputHash": "b1e9ff7953da11bac03418ec4b523a8a82460051bd78d2144a3634715a7425bb",
+    "authorInputHash": "618a1a59c529a616c83230559056034e42c79e5ac9c8f4c8a21b2740965ab4b2",
+    "reviewInputHash": "50d6049f64b8f64464f2a4cbbd16b2685631f65a51694fcb9ab04f468f885e7d",
+    "authorResponseHash": "0d7af55a7ea83b56b04efcdb54bafbaf0e7d4803d349700c8a0bfcfa68e6b9dd",
+    "reviewerResponseHash": "ad89d2ab2c3d9bf40d9bbcdf92bf77e274fdc3e06f33d686283b1a7ebae83d0a",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

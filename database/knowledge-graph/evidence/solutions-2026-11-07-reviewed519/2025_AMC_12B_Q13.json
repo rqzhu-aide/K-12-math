@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2025_AMC_12B_Q13",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "11ed2079eb704258093a83bebecf5e186e1ad71b43a1f255fa19b1c0588b9f64",
+    "figureHashes": {
+      "figures/2025_AMC_12B_Q13_question_fig1.svg": "df5f10164bfa4802e438a18d79992edf00fa398dcb1a8f9437b0699b058fc6a3"
+    }
+  },
+  "solutionSHA256": "049f190d58eb580e7d7f011b8f130e26e0490195041cf85bf95c0bbd6c03332a",
+  "solutionFigureHashes": {
+    "figures/2025_AMC_12B_Q13_question_fig1.svg": "df5f10164bfa4802e438a18d79992edf00fa398dcb1a8f9437b0699b058fc6a3"
+  },
+  "candidateHash": "aa560888fd421f5c6802090172e06e7c865b05c84beb4f83b4f7c4bf94d5235c",
+  "candidate": {
+    "questionId": "2025_AMC_12B_Q13",
+    "derivedAnswer": "24 colorings (D)",
+    "answerStatus": "matches",
+    "answerReason": "With one fixed sector red, its second red sector can occupy positions 3, 4, or 5, giving 2, 4, and 2 completions. The three possible colors of the fixed sector give 3(2+4+2)=24.",
+    "methods": [
+      {
+        "id": "fix-first-color",
+        "label": "Place the second occurrence of one color",
+        "explanation": "The sectors have different sizes, so we count colors on fixed sectors without identifying rotations or reflections. Label the sectors \\(1,2,\\ldots,6\\) clockwise, starting at any fixed sector. Remember that sectors \\(6\\) and \\(1\\) are neighbors.\n\n[Figure 1](figures/2025_AMC_12B_Q13_question_fig1.svg)\n\nThe three choices for the color of sector \\(1\\) give equal counts by relabeling colors. First suppose sector \\(1\\) is red. The other red sector cannot be \\(2\\) or \\(6\\), so it must be \\(3\\), \\(4\\), or \\(5\\).\n\nIf the other red sector is \\(3\\), sector \\(2\\) can be green or blue. Sectors \\(4,5,6\\) must alternate between green and blue. Since each color must occur twice, their order is forced once sector \\(2\\) is chosen. For example, if sector \\(2\\) is green, sectors \\(4,5,6\\) must be blue, green, blue. This gives \\(2\\) completions.\n\nIf the other red sector is \\(4\\), the remaining sectors form two adjacent pairs, \\((2,3)\\) and \\((5,6)\\). Each pair must contain one green and one blue, in either order. This gives \\(2\\cdot2=4\\) completions, all using each color twice.\n\nIf the other red sector is \\(5\\), sector \\(6\\) can be green or blue, and the alternating order on sectors \\(2,3,4\\) is then forced by the color totals. This gives \\(2\\) completions.\n\nThese cases exhaust the possible positions of the second red sector and do not overlap. Restoring all three choices for sector \\(1\\), the total is\n\\[\n3(2+4+2)=\\boxed{24},\n\\]\nwhich is choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:graph-coloring",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_h230",
+          "cnm_h231"
+        ],
+        "levelReason": "The solution uses fixed cyclic positions and elementary addition and multiplication of exhaustive cases."
+      },
+      {
+        "id": "three-position-pairs",
+        "label": "Find a matching color three positions later",
+        "explanation": "Label the six fixed sectors \\(1,2,\\ldots,6\\) clockwise. Their different sizes make these distinguishable positions. Consider the three pairs\n\\[\n(1,4),\\qquad(2,5),\\qquad(3,6).\n\\]\nThese pairs are defined by positions in the list, not by geometric angles in the circle.\n\nAt least one of these pairs must have matching colors. To see why, suppose none does. Each color occurs twice, and its two sectors cannot be neighbors. If they also are not three positions apart, they must occupy either two odd-numbered positions or two even-numbered positions. The three odd-numbered positions would then have to be filled in groups of two, which is impossible.\n\nIf two of the displayed pairs have matching colors, those two colors are used up, so the last pair must match as well. Thus a valid coloring has either exactly one matching pair or all three.\n\nIf all three pairs match, assign the three different colors to the three pairs in \\(3\\cdot2\\cdot1=6\\) ways. Every neighboring pair of sectors then has different colors.\n\nIf exactly one pair matches, choose that pair in \\(3\\) ways and its color in \\(3\\) ways. The remaining four sectors form two adjacent pairs between its endpoints. Each adjacent pair must contain the other two colors, one of each. There are two orders for the first adjacent pair. For either order, exactly one order of the second adjacent pair makes all three displayed pairs match; the other order leaves exactly one matching pair. Therefore there are \\(2\\) completions for each choice of the unique matching pair and its color.\n\nThe two cases are disjoint and exhaustive, and the unique matching pair identifies each coloring in the second case exactly once. Hence the total is\n\\[\n6+3\\cdot3\\cdot2=\\boxed{24},\n\\]\nwhich is choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:graph-coloring",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_p156",
+          "cnm_h230",
+          "cnm_h231"
+        ],
+        "levelReason": "This distinct structural argument uses only odd and even positions together with elementary case counting."
+      }
+    ],
+    "assessedIds": [
+      "math:graph-coloring"
+    ],
+    "supportIds": [
+      "cnm_h230",
+      "cnm_h231"
+    ],
+    "annotationRationale": "The route-neutral target is counting color assignments with both adjacency restrictions and specified color totals, captured by math:graph-coloring. Both methods use combined addition and multiplication counting, represented locally by cnm_h232 and supported by cnm_h230 and cnm_h231. The second method additionally uses parity, so cnm_p156 is local to that method. Formal graph degrees, symmetry quotients, repeated-element permutation formulas, and inclusion-exclusion are not used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2025_AMC_12B_Q13",
+    "decision": "accept",
+    "mathematicalCheck": "With sector 1 red, placing the other red at positions 3, 4, or 5 gives exactly 2, 4, or 2 completions, hence 3(2+4+2)=24. Independently, the parity argument forces at least one matching pair three positions apart; exactly one matching pair gives 18 colorings and all three gives 6. Both counts exhaust the possibilities without duplication.",
+    "levelCheck": "Both explanations use elementary counting and parity within AMC 12 scope.",
+    "methodDistinctness": "The second method supplies a distinct structural classification by matching pairs, rather than repeating the first method's position cases.",
+    "annotationCheck": "The route-neutral coloring target, method-local combined counting, shared addition and multiplication supports, and second-method odd/even prerequisite match the actual reasoning.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "fix-first-color": "fix-first-color",
+    "three-position-pairs": "three-position-pairs"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "d31c05213e89e990a76b1087b0205838df797a678a6ae366fdf2745f169f09fd",
+    "acceptedAt": "2026-11-07T07:57:08.085011+00:00",
+    "inputHash": "8cbae04a2bbf353df804e9dc298dbe472af210f0d989a078803c7741857c36da",
+    "authorInputHash": "e50bbf15a2b73ab57fc3b478c3a8afa564f45cb7930ac2d899b943cebc6266ef",
+    "reviewInputHash": "844d2ebbf1b1d1636ba770c8de8aed6c4335db3049c5a910f4cbb34388ec5fc4",
+    "authorResponseHash": "124a8c783803fe58b9256204343f5bff3e254ced2cefabc0fb3e065406ef9a22",
+    "reviewerResponseHash": "83ff76f98eb23864e45ec0fe42f251cb44ba7f96dfbd3c7c3389aa1d3594e8b4",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

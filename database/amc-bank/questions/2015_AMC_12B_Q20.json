@@ -1,64 +1,57 @@
 {
-  "Year": 2015,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 20,
-  "Question": "For every positive integer \\(n,\\) let \\(\\operatorname{mod}_5(n)\\) be the remainder obtained when \\(n\\) is divided by \\(5.\\) Define a function \\(f : \\{0, 1, 2, 3, \\ldots\\}\\) \\(\\times \\{0, 1, 2, 3, 4\\}\\) \\(\\to \\{0, 1, 2, 3, 4\\}\\) recursively as follows:\n\n\\[ \\tiny f(i, j) = \\begin{cases} \\operatorname{mod}_5(j + 1) & \\text{if } i = 0 \\text{ and } 0 \\le j \\le 4, \\\\ f(i - 1, 1) & \\text{if } i \\ge 1 \\text{ and } j = 0, \\text{ and} \\\\ f(i - 1, f(i, j - 1)) & \\text{if } i \\ge 1 \\text{ and } 1 \\le j \\le 4. \\end{cases} \\]\n\nWhat is \\(f(2015, 2)?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(0\\)",
-    "B": "\\(1\\)",
-    "C": "\\(2\\)",
-    "D": "\\(3\\)",
-    "E": "\\(4\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "recursion; pattern recognition; modular arithmetic",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2015B/solutions",
-    "SourceSHA256": "3de1c927b38b42bdac03c322415241f9ed2409e71303748ebd213ab04409ed60",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2015_AMC_12B_Q20",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "71bc757774cdbd914544689d887f3c23bfc90fe7b4d5b1e04aff60c6601028d5",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:functional-equations"
+  "answer": {
+    "accepted": [
+      "B"
     ],
-    "supportIds": [
-      "cnm_h200",
-      "math:modular-congruence"
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "cnm_h200"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
+  },
+  "id": "2015_AMC_12B_Q20",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(0\\)",
+        "id": "A"
+      },
+      {
+        "content": "\\(1\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(2\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(3\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(4\\)",
+        "id": "E"
+      }
     ],
-    "routes": [],
-    "flags": []
-  }
+    "prompt": "For every positive integer \\(n,\\) let \\(\\operatorname{mod}_5(n)\\) be the remainder obtained when \\(n\\) is divided by \\(5.\\) Define a function \\(f : \\{0, 1, 2, 3, \\ldots\\}\\) \\(\\times \\{0, 1, 2, 3, 4\\}\\) \\(\\to \\{0, 1, 2, 3, 4\\}\\) recursively as follows:\n\n\\[ \\tiny f(i, j) = \\begin{cases} \\operatorname{mod}_5(j + 1) & \\text{if } i = 0 \\text{ and } 0 \\le j \\le 4, \\\\ f(i - 1, 1) & \\text{if } i \\ge 1 \\text{ and } j = 0, \\text{ and} \\\\ f(i - 1, f(i, j - 1)) & \\text{if } i \\ge 1 \\text{ and } 1 \\le j \\le 4. \\end{cases} \\]\n\nWhat is \\(f(2015, 2)?\\)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "cnm_h200",
+        "math:function-composition-iteration",
+        "cnm_h213"
+      ],
+      "explanation": "For each fixed \\(i\\), there are only five values to track. Write them in order as\n\\[\nR_i=(f(i,0),f(i,1),f(i,2),f(i,3),f(i,4)).\n\\]\nOnce the preceding row is known, the recursion determines the next row from left to right. Its first entry is the preceding row's entry with index \\(1\\). Each subsequent entry is found by using the value just obtained as an index into the preceding row. All these indices belong to \\(\\{0,1,2,3,4\\}\\), as required.\n\nFor example, when \\(R_1=(2,3,4,0,1)\\), the next row starts with\n\\[\n\\begin{aligned}\nf(2,0)&=f(1,1)=3,\\\\\nf(2,1)&=f(1,3)=0,\\\\\nf(2,2)&=f(1,0)=2.\n\\end{aligned}\n\\]\nContinuing the same lookup rule gives\n\\[\n\\begin{aligned}\nR_0&=(1,2,3,4,0),\\\\\nR_1&=(2,3,4,0,1),\\\\\nR_2&=(3,0,2,4,1),\\\\\nR_3&=(0,3,4,1,0),\\\\\nR_4&=(3,1,3,1,3),\\\\\nR_5&=(1,1,1,1,1).\n\\end{aligned}\n\\]\nIf a row consists entirely of \\(1\\)'s, the next row starts with \\(1\\), and every later lookup also returns \\(1\\). Thus an all-1 row always produces another all-1 row. Starting with \\(R_5\\), this proves that every row with index at least \\(5\\) is all \\(1\\)'s. Therefore \\(f(2015,2)=\\boxed{1}\\), choice \\(\\mathrm{B}\\).",
+      "id": "recursive-row-evaluation",
+      "sourceRef": "amc/2015_AMC_12B_Q20#recursive-row-evaluation",
+      "title": "Compute rows until they stabilize"
+    }
+  ],
+  "sourceRef": "amc/2015_AMC_12B_Q20"
 }

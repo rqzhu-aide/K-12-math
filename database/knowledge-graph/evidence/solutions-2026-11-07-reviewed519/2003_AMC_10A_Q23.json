@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2003_AMC_10A_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "2bb9c77b754f8f98dd8c0168acf91f37ed2e01ea525cdf699e3f1092b3562619",
+    "figureHashes": {
+      "figures/2003_AMC_10A_Q23_question_fig1.svg": "bb21f95cce57c838f4724a78d753bf8994cd13c4a36a9141cc1c9192479d90c1"
+    }
+  },
+  "solutionSHA256": "e6f0d919c9e41b5e2145e7d3dd332c8d97d45228a915f38d11cc3ee22b1f5b69",
+  "solutionFigureHashes": {
+    "figures/2003_AMC_10A_Q23_question_fig1.svg": "bb21f95cce57c838f4724a78d753bf8994cd13c4a36a9141cc1c9192479d90c1"
+  },
+  "candidateHash": "c1a781549119e26b7c9ac5d4311ef173cdeabc7f10ad0e14a5bbd4850f8f173e",
+  "candidate": {
+    "questionId": "2003_AMC_10A_Q23",
+    "derivedAnswer": "C. 1,507,509 toothpicks",
+    "answerStatus": "matches",
+    "answerReason": "With n rows, the base row contains 2n−1 small triangles. Thus n=1002, and counting toothpicks gives 3n(n+1)/2=1,507,509, matching C.",
+    "methods": [
+      {
+        "id": "sum-by-edge-direction",
+        "label": "Count toothpicks by direction",
+        "explanation": "Counting separately in the three toothpick directions avoids counting shared triangle sides twice.\n\n[Figure 1](figures/2003_AMC_10A_Q23_question_fig1.svg)\n\nLet \\(n\\) be the number of rows. The base row has \\(n\\) upward-pointing triangles alternating with \\(n-1\\) downward-pointing triangles. Therefore\n\\[\n2n-1=2003,\\qquad n=1002.\n\\]\nEach outside side of the large triangle consists of \\(n\\) toothpicks.\n\nThe horizontal lines contain \\(1,2,\\ldots,n\\) toothpicks, from top to bottom. Using either sloping side as the base gives the same count for toothpicks parallel to that side. Thus each of the three directions contributes the sum \\(S=1+2+\\cdots+n\\).\n\nTo evaluate \\(S\\), add it to a copy written in reverse order. There are \\(n\\) pairs, each totaling \\(n+1\\), so\n\\[\n2S=n(n+1),\\qquad S=\\frac{n(n+1)}2.\n\\]\nEvery toothpick belongs to exactly one of the three directions, so all are included exactly once. The total is\n\\[\n3S=\\frac{3\\cdot1002\\cdot1003}{2}\n=1{,}507{,}509.\n\\]\nThe answer is \\(\\boxed{1{,}507{,}509}\\) toothpicks, choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_030",
+          "cnm_h204"
+        ],
+        "prerequisiteIds": [
+          "cnm_027",
+          "cnm_029"
+        ],
+        "levelReason": "Uses a triangular-grid pattern, a simple equation, and consecutive-integer summation derived by pairing, all within AMC 10 scope."
+      },
+      {
+        "id": "triangle-edge-incidences",
+        "label": "Count triangle sides and correct for sharing",
+        "explanation": "Each small triangle has three sides, but an interior toothpick serves two triangles. We can count all triangle-side appearances and then account for this sharing.\n\nLet \\(n\\) be the number of rows. Row \\(k\\) contains \\(k\\) upward-pointing and \\(k-1\\) downward-pointing small triangles, for a total of \\(2k-1\\). The base row therefore gives\n\\[\n2n-1=2003,\\qquad n=1002.\n\\]\nThe total number \\(N\\) of small triangles is\n\\[\nN=1+3+\\cdots+(2n-1).\n\\]\nAdding this sum to a reversed copy gives \\(n\\) pairs of \\(2n\\). Hence \\(2N=2n^2\\), so \\(N=n^2\\).\n\nLet \\(T\\) be the number of toothpicks. Counting three side appearances for each small triangle gives \\(3n^2\\) appearances. There are \\(n\\) toothpicks on each outside side, so \\(3n\\) boundary toothpicks appear once each. Every other toothpick appears twice, once for each adjacent small triangle. These two categories include every toothpick, so\n\\[\n3n^2=3n+2(T-3n)=2T-3n.\n\\]\nSolving gives\n\\[\nT=\\frac{3n(n+1)}2\n=\\frac{3\\cdot1002\\cdot1003}{2}\n=1{,}507{,}509.\n\\]\nThus the answer is \\(\\boxed{1{,}507{,}509}\\) toothpicks, choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_030",
+          "cnm_h204",
+          "math:double-counting"
+        ],
+        "prerequisiteIds": [
+          "cnm_027",
+          "cnm_029"
+        ],
+        "levelReason": "Uses an odd-number sum derived by pairing and elementary counting of shared sides. No graph theory or advanced counting theorem is needed."
+      }
+    ],
+    "assessedIds": [
+      "cnm_030"
+    ],
+    "supportIds": [
+      "cnm_027",
+      "cnm_029"
+    ],
+    "annotationRationale": "The task asks for a numerical prediction from a growing geometric pattern, matching cnm_030. Writing and evaluating expressions support both methods. Both routes evaluate arithmetic sums, so cnm_h204 records that procedure. Only the second route counts triangle-toothpick incidences with different boundary and interior multiplicities, so math:double-counting remains method-specific.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2003_AMC_10A_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "The displayed grid supports 2n−1 triangles in the base row, giving n=1002. Direction counting gives 3n(n+1)/2 toothpicks. Independently, n² small triangles and 3n boundary toothpicks give 3n²=2T−3n. Both correctly yield 1,507,509, choice C.",
+    "levelCheck": "Both explanations are complete and appropriate for AMC 10. The sums are derived by elementary pairing, and boundary and interior multiplicities are explained.",
+    "methodDistinctness": "The methods offer distinct insights: partitioning toothpicks by direction and counting triangle-side appearances with sharing corrections.",
+    "annotationCheck": "The pattern assessment and expression supports fit both methods. Arithmetic summation is accurately recorded in both routes, with double counting specific to the second.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "sum-by-edge-direction": "solution:sum-by-edge-direction:e6f0d919c9e4",
+    "triangle-edge-incidences": "solution:triangle-edge-incidences:e6f0d919c9e4"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "17366b8014394db66b7d59bcb82ecc93f5b8bf94469f03efc4494ae340922827",
+    "acceptedAt": "2026-11-07T10:55:11.822443+00:00",
+    "inputHash": "1c7f37915e5ccdf47753f3b84caff6d424086a6e46db8f6683e106d087d0701f",
+    "authorInputHash": "c3b365978f75e76bf654b12dfb80f956d27bd0449ab33c30267c524657d7ce73",
+    "reviewInputHash": "2333546336afa949ba4935a90fd89ca634727ca30e50f4d56cac79178443b8c9",
+    "authorResponseHash": "a21f10ad799e063cfaac889d63421fee39396d61f04086995de18b92a7400cdf",
+    "reviewerResponseHash": "e1edc10ab567228bb941d594d7a028424e950dd4d74ea6b25ea01e9e16572a33",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

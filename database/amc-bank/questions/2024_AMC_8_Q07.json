@@ -1,88 +1,70 @@
 {
-  "Year": 2024,
-  "Level": "AMC 8",
-  "Batch": "NA",
-  "Area": "Geometry",
-  "Number": 7,
-  "Question": "A \\(3 \\times 7\\) rectangle is covered without overlap by \\(3\\) shapes of tiles: \\(2 \\times 2,\\) \\(1 \\times 4,\\) and \\(1 \\times 1,\\) shown below. What is the minimum possible number of \\(1 \\times 1\\) tiles used?\n\n[Figure 1](figures/2024_AMC_8_Q07_question_fig1.svg)",
-  "Question Type": "mixed",
-  "Choices": {
-    "A": "\\(1\\)",
-    "B": "\\(2\\)",
-    "C": "\\(3\\)",
-    "D": "\\(4\\)",
-    "E": "\\(5\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.69",
-    "Concepts": "tiling; parity; extremal argument",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions",
-    "SourceSHA256": "1a2407993ccdaa6eee3004d193f536c4c887811942bd85eec25ce8f2d9db569d",
-    "Figures": [
-      "figures/2024_AMC_8_Q07_question_fig1.svg"
+  "answer": {
+    "accepted": [
+      "E"
     ],
-    "FigureSources": {
-      "figures/2024_AMC_8_Q07_question_fig1.svg": {
-        "url": "https://live.poshenloh.com/images/past-contests/amc8/2024/7.svg",
-        "alt": ""
-      }
-    },
-    "PreviousAnswer": "A",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
+    "type": "choice"
   },
-  "ID": "2024_AMC_8_Q07",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:geometry"
+  "assessedNodeIds": [
+    "math:extremal-principle"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "36dd5ef21e34d02a3dd6d612f202c5e73b1b3b55e95cfde2e96259ae299c8bf4",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:extremal-principle"
+  "bank": "amc",
+  "classification": {
+    "area": "Geometry",
+    "domainIds": [
+      "domain:geometry"
     ],
-    "supportIds": [
-      "cnm_p089"
-    ],
-    "routes": [
+    "level": "AMC 8"
+  },
+  "id": "2024_AMC_8_Q07",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "alternating-column-invariant",
-        "label": "Column coloring and area residues",
-        "nodeIds": [
-          "math:invariant-reasoning",
-          "math:modular-congruence"
-        ]
+        "content": "\\(1\\)",
+        "id": "A"
       },
       {
-        "id": "middle-row-packing",
-        "label": "Middle-row packing and pigeonhole",
-        "nodeIds": [
-          "cnm_p216",
-          "math:extremal-principle"
-        ]
+        "content": "\\(2\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(3\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(4\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(5\\)",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "A \\(3 \\times 7\\) rectangle is covered without overlap by \\(3\\) shapes of tiles: \\(2 \\times 2,\\) \\(1 \\times 4,\\) and \\(1 \\times 1,\\) shown below. What is the minimum possible number of \\(1 \\times 1\\) tiles used?\n\n[Figure 1](figures/2024_AMC_8_Q07_question_fig1.svg)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:extremal-principle",
+        "math:invariant-reasoning"
+      ],
+      "explanation": "A \\(1\\times4\\) tile must be horizontal because it cannot fit vertically in three rows. Alternating column colors are useful because both larger tile shapes then cover the two colors equally.\n\nColor columns \\(1,3,5,7\\) gray and columns \\(2,4,6\\) white. There are \\(4\\cdot3=12\\) gray cells and \\(3\\cdot3=9\\) white cells. Each \\(2\\times2\\) tile covers two cells of each color, as does each horizontal \\(1\\times4\\) tile. Thus the larger tiles cannot account for the three extra gray cells. The \\(1\\times1\\) tiles must cover three more gray cells than white cells, so at least three unit tiles are needed.\n\nThe rectangle has \\(21\\) cells, and every larger tile covers \\(4\\) cells. Area therefore restricts the number of unit tiles to \\(1,5,9,13,17,21\\). The smallest number on this list that is at least three is \\(5\\).\n\nTo attain five, place three \\(2\\times2\\) tiles in the top two rows, covering column pairs \\(1,2\\), \\(3,4\\), and \\(5,6\\). Place one \\(1\\times4\\) tile in the bottom row, covering columns \\(1\\) through \\(4\\). The two cells in column \\(7\\) of the top two rows and the last three cells of the bottom row remain. Fill them with five unit tiles. Therefore the minimum is \\(\\boxed{5}\\), choice \\(\\text{E}\\).",
+      "id": "alternating-column-invariant",
+      "sourceRef": "amc/2024_AMC_8_Q07#alternating-column-invariant",
+      "title": "Column coloring and tile areas"
+    },
+    {
+      "directNodeIds": [
+        "math:extremal-principle",
+        "cnm_p216"
+      ],
+      "explanation": "The middle row limits how many large tiles can fit. Every \\(2\\times2\\) tile covers two cells in that row, so there can be at most three such tiles. Every \\(1\\times4\\) tile must be horizontal, and a seven-cell row can hold at most one of them.\n\nConsider all possible numbers of \\(2\\times2\\) tiles.\n\n- With at most one \\(2\\times2\\) tile, there are at most three \\(1\\times4\\) tiles, one per row. This gives at most four larger tiles altogether.\n\n- With two \\(2\\times2\\) tiles, four middle-row cells are occupied. Only three remain, so no \\(1\\times4\\) tile fits in the middle row. At most two fit in the outer rows, again giving at most four larger tiles.\n\n- With three \\(2\\times2\\) tiles, six middle-row cells are occupied, so no \\(1\\times4\\) tile fits there. Each square tile also touches either the top or bottom row. Among three square tiles, at least two must touch the same outer row. They occupy four cells of that row, leaving too little room for a \\(1\\times4\\) tile. Only the other outer row can hold one, giving at most four larger tiles.\n\nThese cases exhaust the possibilities. Since each larger tile covers four cells, they cover at most \\(4\\cdot4=16\\) of the rectangle's \\(21\\) cells. At least \\(21-16=5\\) unit tiles are necessary.\n\nFive are achievable: put three \\(2\\times2\\) tiles across the first six columns of the top two rows and one \\(1\\times4\\) tile across the first four columns of the bottom row. Fill the five remaining cells with unit tiles. The minimum is therefore \\(\\boxed{5}\\), choice \\(\\text{E}\\).",
+      "id": "middle-row-packing",
+      "sourceRef": "amc/2024_AMC_8_Q07#middle-row-packing",
+      "title": "Count tiles through the middle row"
+    }
+  ],
+  "sourceRef": "amc/2024_AMC_8_Q07"
 }

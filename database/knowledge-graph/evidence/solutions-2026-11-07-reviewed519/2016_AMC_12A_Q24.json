@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_12A_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "4da32b31ab9bd784c7bead576fdc96affa680c9c1f24197ea24488c59cc7ffb1",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "8065a726eb066b5c793c98324fceb58689e57b6807af8f600b6eed81a759dbdf",
+  "solutionFigureHashes": {},
+  "candidateHash": "56d08a4f7d9c057bdd36992b834a50e2a0a02bd4d5e74f315ccd692277a91f70",
+  "candidate": {
+    "questionId": "2016_AMC_12A_Q24",
+    "derivedAnswer": "b = 9 (B); the smallest a is 3√3",
+    "answerStatus": "matches",
+    "answerReason": "Root-coefficient identities and squared-difference inequalities force a ≥ 3√3. Equality is attained by (x − √3)^3, and at that value the inequalities force b = 9, agreeing with B.",
+    "methods": [
+      {
+        "id": "root-identities-and-squares",
+        "label": "Bound the coefficients using the roots",
+        "explanation": "The same coefficient \\(a\\) appears twice, suggesting a relation between the sum and product of the roots. First, the roots must be positive: for \\(x\\le0\\), every term of \\(x^3-ax^2+bx-a\\) is nonpositive and the constant term is strictly negative, since \\(a,b>0\\). Thus no nonpositive number is a root.\n\nWrite the three real roots, including multiplicity, as \\(r,s,t>0\\). Expanding their linear factors gives\n\\[\n(x-r)(x-s)(x-t)\n=x^3-(r+s+t)x^2+(rs+rt+st)x-rst.\n\\]\nHere choosing one constant term from the factors produces the coefficient of \\(x^2\\), choosing two produces the coefficient of \\(x\\), and choosing all three produces the constant term. Comparing coefficients yields\n\\[\nr+s+t=rst=a,\n\\qquad rs+rt+st=b.\n\\]\nTo eliminate the individual roots, use the identity\n\\[\n(u+v+w)^2-3(uv+uw+vw)\n=\\frac{(u-v)^2+(v-w)^2+(w-u)^2}{2}\n\\ge0.\n\\]\nApplying it first to \\(r,s,t\\) gives \\(a^2\\ge3b\\). Applying it to \\(rs,rt,st\\), whose pairwise products sum to \\(rst(r+s+t)=a^2\\), gives\n\\[\nb^2\\ge3a^2.\n\\]\nBecause \\(a,b>0\\), this means \\(b\\ge\\sqrt3a\\). Combining the bounds and dividing by \\(a>0\\),\n\\[\na^2\\ge3b\\ge3\\sqrt3a\n\\quad\\Longrightarrow\\quad a\\ge3\\sqrt3.\n\\]\nThis lower bound is attainable, since\n\\[\n(x-\\sqrt3)^3\n=x^3-3\\sqrt3x^2+9x-3\\sqrt3\n\\]\nhas three real roots counted with multiplicity and has positive coefficients \\(a=3\\sqrt3\\), \\(b=9\\).\n\nFinally, when \\(a=3\\sqrt3\\), our bounds require\n\\[\n9=\\sqrt3a\\le b\\le\\frac{a^2}{3}=9.\n\\]\nThus \\(b\\) is uniquely \\(9\\). Equality in the first squared-difference identity also forces \\(r=s=t=\\sqrt3\\), because a sum of nonnegative squares can vanish only when every square vanishes. The answer is \\(\\boxed{9}\\), choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "math:polynomial-roots-coefficients",
+          "math:nonnegative-sum-zero"
+        ],
+        "prerequisiteIds": [
+          "cnm_032",
+          "cnm_146",
+          "cnm_148",
+          "cnm_096"
+        ],
+        "levelReason": "Uses expansion of a cubic's linear factors and inequalities proved directly from nonnegative squares. It handles the extremum without calculus."
+      }
+    ],
+    "assessedIds": [
+      "math:polynomial-roots-coefficients"
+    ],
+    "supportIds": [
+      "cnm_032",
+      "cnm_148",
+      "cnm_096"
+    ],
+    "annotationRationale": "The central target is translating real-root conditions into coefficient identities. Polynomial expansion and inequality manipulation support that translation and the lower bound. The zero-sum criterion is local to the equality analysis. The inequalities are proved by expanding squared differences, so neither a Cauchy-Schwarz prerequisite nor the recorded derivative route is required.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_12A_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "The polynomial is strictly negative for nonpositive inputs, so all real roots are positive. Coefficient comparison gives sum and product \\(a\\), and pairwise-product sum \\(b\\). The squared-difference identities yield \\(a^2\\ge3b\\) and \\(b^2\\ge3a^2\\), forcing \\(a\\ge3\\sqrt3\\). The displayed cube attains this bound, where the bounds uniquely force \\(b=9\\).",
+    "levelCheck": "A complete elementary algebraic extremum proof appropriate for AMC 12. Multiplicity, attainment, and uniqueness are handled without calculus.",
+    "methodDistinctness": "One complete root-based method is sufficient.",
+    "annotationCheck": "Root-coefficient identities are central. Expansion, square identities, inequality manipulation, and the nonnegative zero-sum equality criterion are correctly scoped. No advanced inequality or derivative prerequisite is claimed.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "root-identities-and-squares": "root-identities-and-squares"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "d6a17e93c63aa2a1b34d52e4f54aede251d955c9c8586484dd8533359da5088b",
+    "acceptedAt": "2026-11-07T10:49:45.215265+00:00",
+    "inputHash": "c4524420b4feebb3535a5a8c723fabfe565ccaf8928705131a1140af04cf6c1d",
+    "authorInputHash": "0a1f15ee8413a41d539be1a9d987f7d2bc2b37594fe3e9086e1b88d67caebdbf",
+    "reviewInputHash": "2187e3cc6c7632d8f5bed0b68b27de517c1eaa2751357c29309e4e915e5bcc38",
+    "authorResponseHash": "f6b11cef5baefe69eef0826354f5db227776b8c8b200a714dd677396185dac55",
+    "reviewerResponseHash": "2362f04073a187311ccacc0596ec014482783d1d24d06cd672b13649e908155f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

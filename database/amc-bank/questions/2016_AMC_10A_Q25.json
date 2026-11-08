@@ -1,62 +1,58 @@
 {
-  "Year": 2016,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 25,
-  "Question": "How many ordered triples \\((x,y,z)\\) of positive integers satisfy \\[\\text{lcm}(x,y) = 72,\\]\\[ \\text{lcm}(x,z) = 600,\\] and \\[\\text{lcm}(y,z)=900?\\]",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(15\\)",
-    "B": "\\(16\\)",
-    "C": "\\(24\\)",
-    "D": "\\(27\\)",
-    "E": "\\(64\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "least common multiple; prime factorization; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2016A/solutions",
-    "SourceSHA256": "b65e1707329813ed6e08481325ea7da9526096f14a7b14cdefe54ae464e5e4d4",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2016_AMC_10A_Q25",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "03b7a37af82387702f83cb416e89319e9fcfb468e3ebf0dd2a71fc57bb1af79d",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:prime-factorization",
-      "cnm_h231"
+  "answer": {
+    "accepted": [
+      "A"
     ],
-    "supportIds": [],
-    "routes": [],
-    "flags": []
-  }
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "math:prime-factorization",
+    "cnm_h231"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 10"
+  },
+  "id": "2016_AMC_10A_Q25",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(15\\)",
+        "id": "A"
+      },
+      {
+        "content": "\\(16\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(24\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(27\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(64\\)",
+        "id": "E"
+      }
+    ],
+    "prompt": "How many ordered triples \\((x,y,z)\\) of positive integers satisfy \\[\\text{lcm}(x,y) = 72,\\]\\[ \\text{lcm}(x,z) = 600,\\] and \\[\\text{lcm}(y,z)=900?\\]"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:prime-factorization",
+        "cnm_h231",
+        "cnm_h010"
+      ],
+      "explanation": "An LCM takes the larger exponent of each prime from its two inputs. Factor the three prescribed LCMs:\n\\[\n72=2^3 3^2,\\qquad\n600=2^3 3\\cdot5^2,\\qquad\n900=2^2 3^2 5^2.\n\\]\nNo other prime can divide \\(x,y,z\\), since it would then appear in a prescribed LCM.\n\nFor the prime \\(2\\), let \\(a,b,c\\) be its exponents in \\(x,y,z\\), respectively. The requirements are\n\\[\n\\max(a,b)=3,\\quad\n\\max(a,c)=3,\\quad\n\\max(b,c)=2.\n\\]\nThe last condition gives \\(b,c\\le2\\), so the first two force \\(a=3\\). We may choose \\(b,c\\) from \\(\\{0,1,2\\}\\), provided at least one is \\(2\\). Of the \\(3^2\\) ordered pairs, exactly \\(2^2\\) have neither entry equal to \\(2\\). Thus there are \\(9-4=5\\) choices.\n\nFor the prime \\(3\\), let the exponents be \\(u,v,w\\). Now\n\\[\n\\max(u,v)=2,\\quad\n\\max(u,w)=1,\\quad\n\\max(v,w)=2.\n\\]\nThe middle condition gives \\(u,w\\le1\\), and the other two force \\(v=2\\). There are \\(2^2\\) ordered pairs \\((u,w)\\) from \\(\\{0,1\\}\\); only \\((0,0)\\) is excluded. This gives \\(4-1=3\\) choices.\n\nFinally, \\(\\operatorname{lcm}(x,y)=72\\) forces the exponents of \\(5\\) in both \\(x\\) and \\(y\\) to be zero. The other LCMs then force its exponent in \\(z\\) to be \\(2\\), giving one choice.\n\nThe choices for different primes are independent. Every combination satisfies all three maximum-exponent conditions, and unique prime factorization makes different exponent assignments give different ordered triples. Therefore the total is\n\\[\n5\\cdot3\\cdot1=\\boxed{15},\n\\]\nchoice \\(\\text{A}\\).",
+      "id": "independent-prime-exponent-counts",
+      "sourceRef": "amc/2016_AMC_10A_Q25#independent-prime-exponent-counts",
+      "title": "Count each prime's exponents"
+    }
+  ],
+  "sourceRef": "amc/2016_AMC_10A_Q25"
 }

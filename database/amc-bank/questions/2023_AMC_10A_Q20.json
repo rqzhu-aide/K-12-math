@@ -1,71 +1,69 @@
 {
-  "Year": 2023,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Counting & Probability",
-  "Number": 20,
-  "Question": "Each square in a \\(3 \\times 3\\) grid of squares is colored red, white, blue, or green so that every \\(2 \\times 2\\) square contains one square of each color. One such coloring is shown on the right below. How many different colorings are possible?\n\n[Figure 1](figures/2023_AMC_10A_Q20_question_fig1.svg)",
-  "Question Type": "mixed",
-  "Choices": {
-    "A": "\\(24\\)",
-    "B": "\\(48\\)",
-    "C": "\\(60\\)",
-    "D": "\\(72\\)",
-    "E": "\\(96\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.98",
-    "Concepts": "arrangements with restrictions; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2023A/solutions",
-    "SourceSHA256": "971ce13217f703d7fce4f9708498a2defc20377d359d8d1cc9ee28b098f4e7d6",
-    "Figures": [
-      "figures/2023_AMC_10A_Q20_question_fig1.svg"
+  "answer": {
+    "accepted": [
+      "D"
     ],
-    "FigureSources": {
-      "figures/2023_AMC_10A_Q20_question_fig1.svg": {
-        "url": "https://live.poshenloh.com/images/past-contests/amc10/2023A/20.svg",
-        "alt": ""
-      }
-    },
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
+    "type": "choice"
   },
-  "ID": "2023_AMC_10A_Q20",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "assessedNodeIds": [
+    "math:graph-coloring"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "00809c7da2a35ee4067a4d463eae9aa82f4e365760be107fb8f283a162055988",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:graph-coloring"
+  "bank": "amc",
+  "classification": {
+    "area": "Counting & Probability",
+    "domainIds": [
+      "domain:counting-probability"
     ],
-    "supportIds": [
-      "cnm_h234",
-      "cnm_h231"
+    "level": "AMC 10"
+  },
+  "id": "2023_AMC_10A_Q20",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(24\\)",
+        "id": "A"
+      },
+      {
+        "content": "\\(48\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(60\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(72\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(96\\)",
+        "id": "E"
+      }
     ],
-    "routes": [],
-    "flags": []
-  }
+    "prompt": "Each square in a \\(3 \\times 3\\) grid of squares is colored red, white, blue, or green so that every \\(2 \\times 2\\) square contains one square of each color. One such coloring is shown on the right below. How many different colorings are possible?\n\n[Figure 1](figures/2023_AMC_10A_Q20_question_fig1.svg)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:graph-coloring"
+      ],
+      "explanation": "Start with the upper-left \\(2\\times2\\) block, which must contain all four colors. Its four fixed positions can be filled in\n\\[\n4\\cdot3\\cdot2\\cdot1=24\n\\]\nways. For any one assignment, call its colors \\(a,b,c,d\\) and write the whole grid as\n\\[\n\\begin{array}{ccc}\na&b&x\\\\\nc&d&y\\\\\nu&v&w\n\\end{array}.\n\\]\nHere \\(a,b,c,d\\) are all distinct.\n\nThe upper-right block already contains \\(b,d\\), so \\(x,y\\) must be \\(a,c\\) in some order. Similarly, the lower-left block already contains \\(c,d\\), so \\(u,v\\) must be \\(a,b\\) in some order.\n\nConsequently, the possible pairs \\((y,v)\\) are\n\\[\n(a,a),\\quad(a,b),\\quad(c,a),\\quad(c,b).\n\\]\nThe pair \\((a,a)\\) repeats a color in the lower-right block and is invalid. In each other pair, \\(d,y,v\\) are three distinct colors, so \\(w\\) is forced to be the fourth color. Once \\(y,v\\) are chosen, \\(x,u\\) are also forced by their blocks. Thus exactly three completions work for each initial block.\n\nAll four \\(2\\times2\\) blocks have now been checked. Every valid coloring determines one initial block and one of these three completions, so none is omitted or counted twice. The total is\n\\[\n24\\cdot3=\\boxed{72},\n\\]\nchoice \\(\\boxed{\\text{D}}\\).",
+      "id": "fix-one-block-and-complete",
+      "sourceRef": "amc/2023_AMC_10A_Q20#fix-one-block-and-complete",
+      "title": "Fix one block and complete the grid"
+    },
+    {
+      "directNodeIds": [
+        "math:graph-coloring",
+        "cnm_h232"
+      ],
+      "explanation": "Each \\(2\\times2\\) block contains the center, two neighboring side-middle cells, and one corner. If those first three cells have distinct colors, the corner is forced to be the missing fourth color. This suggests choosing the center and side-middle colors first.\n\nChoose the center color in 4 ways and the top-middle color in 3 ways. The middle-left and middle-right cells must each avoid both chosen colors, since each shares a block with the center and top-middle cell. Thus each has the same two available colors.\n\nThere are two cases for the middle-left and middle-right cells:\n\nIf their colors agree, there are 2 choices for their shared color. The bottom-middle cell must avoid that color and the center color, leaving 2 choices. This case gives \\(2\\cdot2=4\\) possibilities.\n\nIf their colors differ, there are 2 ordered assignments of the two available colors. The bottom-middle cell must avoid both of them and the center color, so it is forced to match the top-middle color. This case gives \\(2\\cdot1=2\\) possibilities.\n\nIn every possibility, the center and the two side-middle cells in each block have three distinct colors. Each corner is therefore uniquely determined. A corner belongs to only one \\(2\\times2\\) block, so these forced choices create no further conflicts.\n\nThe two cases are disjoint and cover every assignment to the middle-left and middle-right cells. Every completed coloring uniquely recovers all the choices, so the total is\n\\[\n4\\cdot3\\cdot(4+2)=\\boxed{72},\n\\]\nchoice \\(\\boxed{\\text{D}}\\).",
+      "id": "center-and-side-middle-cells",
+      "sourceRef": "amc/2023_AMC_10A_Q20#center-and-side-middle-cells",
+      "title": "Choose the center and side-middle colors"
+    }
+  ],
+  "sourceRef": "amc/2023_AMC_10A_Q20"
 }

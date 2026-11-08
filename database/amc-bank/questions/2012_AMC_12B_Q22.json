@@ -1,86 +1,73 @@
 {
-  "Year": 2012,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 22,
-  "Question": "A bug travels from \\(A\\) to \\(B\\) along the segments in the hexagonal lattice pictured below. The segments marked with an arrow can be traveled only in the direction of the arrow, and the bug never travels the same segment more than once. How many different paths are there?\n\n[Figure 1](figures/2012_AMC_12B_Q22_question_fig1.svg)",
-  "Question Type": "mixed",
-  "Choices": {
-    "A": "\\(2112\\)",
-    "B": "\\(2304\\)",
-    "C": "\\(2368\\)",
-    "D": "\\(2384\\)",
-    "E": "\\(2400\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "casework; multiplication principle",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2012B/solutions",
-    "SourceSHA256": "4bd5efbe7bf94eb63b06d8711b413495b92982db90fad375fe553d262487b635",
-    "Figures": [
-      "figures/2012_AMC_12B_Q22_question_fig1.svg"
+  "answer": {
+    "accepted": [
+      "E"
     ],
-    "FigureSources": {
-      "figures/2012_AMC_12B_Q22_question_fig1.svg": {
-        "url": "https://live.poshenloh.com/images/past-contests/amc12/2012B/22.svg",
-        "alt": ""
-      }
-    },
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
+    "gradingNote": "A review found a mathematical inconsistency in this question or its answer key. You can study it without grading.",
+    "type": "choice"
   },
-  "ID": "2012_AMC_12B_Q22",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "9550c8322bada0d37409c2c53f4d104b7ef2898f0430fd4d4512155024762bb4",
-    "status": "mapped",
-    "reviewStatus": "machine_adjudicated",
-    "assessedIds": [],
-    "supportIds": [],
-    "routes": [
+  "assessedNodeIds": [
+    "cnm_h230"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
+  },
+  "id": "2012_AMC_12B_Q22",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "directed-layer-addition",
-        "label": "Add directed path counts through the displayed lattice",
-        "nodeIds": [
-          "cnm_h230"
-        ]
+        "content": "\\(2112\\)",
+        "id": "A"
       },
       {
-        "id": "actual-arrow-state-recursion",
-        "label": "Count legal transitions with the actual arrow and used-edge rules",
-        "nodeIds": [
-          "math:recursive-counting-probability"
-        ]
+        "content": "\\(2304\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(2368\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(2384\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(2400\\)",
+        "id": "E"
       }
     ],
-    "flags": [
-      "Every displayed solid and hollow arrow is binding under the stem; the resulting10 paths are absent from the choices. No display repair or alternate arrow convention has been approved.",
-      "confirmed_answer_conflict"
-    ],
-    "gradingStatus": "disputed",
-    "gradingNote": "A review found a mathematical inconsistency in this question or its answer key. You can study it without grading."
-  }
+    "prompt": "A bug travels from \\(A\\) to \\(B\\) along the segments in the hexagonal lattice pictured below. The segments marked with an arrow can be traveled only in the direction of the arrow, and the bug never travels the same segment more than once. How many different paths are there?\n\n[Figure 1](figures/2012_AMC_12B_Q22_question_fig1.svg)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "cnm_h230",
+        "math:recursive-counting-probability"
+      ],
+      "explanation": "The direction rule applies to every arrowhead shown, including the small solid ones. These solid arrows point rightward along their segments; the three hollow arrows on the middle horizontal line point leftward.\n\n[Figure 1](figures/2012_AMC_12B_Q22_question_fig1.svg)\n\nAt the right endpoint of each hollow arrow, all three incident arrows point away from that vertex. The bug cannot reach such a vertex from \\(A\\). At the left endpoint, all three incident arrows point into the vertex, so a bug arriving there cannot continue to \\(B\\). Consequently no successful path uses a middle horizontal segment or any of its endpoints.\n\nRemoving those unusable middle vertices separates successful paths into two cases: paths above \\(AB\\) and paths below \\(AB\\). We can count the upper case by writing the number of paths reaching the right endpoint of each horizontal segment. At a merge, add the incoming counts: the possible final incoming segments are different, so these cases do not overlap. At a split, carry the current count to each available continuation.\n\nThere are seven successive columns of horizontal segments above \\(AB\\). Listing the counts from top to bottom within each column gives\n\\[\n(1),\\quad(1),\\quad(1,1),\\quad(1,2),\n\\]\n\\[\n(3,2),\\quad(5),\\quad(5).\n\\]\nHere the lower entry in the fourth column is \\(1+1=2\\). In the fifth column, the upper entry is \\(1+2=3\\), while the lower entry carries forward \\(2\\). These merge in the sixth column to give \\(3+2=5\\), and the final column carries those five paths to \\(B\\).\n\nThe lower half has the same branching and merging pattern, so it also contributes five paths. Every successful path belongs to exactly one of these two cases. Moreover, every usable move goes strictly rightward, so none can repeat a segment. Thus the displayed conditions give\n\\[\n5+5=\\boxed{10}\n\\]\npaths. This is absent from the choices and conflicts with the supplied key \\(\\text{E}:2400\\).",
+      "id": "displayed-arrow-path-counts",
+      "sourceRef": "amc/2012_AMC_12B_Q22#displayed-arrow-path-counts",
+      "title": "Follow every displayed arrow and add path counts"
+    },
+    {
+      "directNodeIds": [
+        "cnm_h230"
+      ],
+      "id": "directed-layer-addition",
+      "sourceRef": "amc/2012_AMC_12B_Q22#directed-layer-addition",
+      "title": "Add directed path counts through the displayed lattice"
+    },
+    {
+      "directNodeIds": [
+        "math:recursive-counting-probability"
+      ],
+      "id": "actual-arrow-state-recursion",
+      "sourceRef": "amc/2012_AMC_12B_Q22#actual-arrow-state-recursion",
+      "title": "Count legal transitions with the actual arrow and used-edge rules"
+    }
+  ],
+  "sourceRef": "amc/2012_AMC_12B_Q22"
 }

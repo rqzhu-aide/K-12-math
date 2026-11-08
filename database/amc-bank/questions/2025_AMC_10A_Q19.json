@@ -1,87 +1,90 @@
 {
-  "Year": 2025,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Algebra",
-  "Number": 19,
-  "Question": "An array of numbers is constructed beginning with the numbers \\(-1,\\) \\(3,\\) \\(1\\) in the top row. Each adjacent pair of numbers is summed to produce a number in the next row. Each row will begin and end with the numbers \\(-1\\) and \\(1,\\) respectively. The first three rows are shown below.\n\n[Figure 1](figures/2025_AMC_10A_Q19_question_fig1.svg)\n\nIf the process continues, one of the rows will sum to \\(12{,}288.\\) In that row, what is the third number from the left?",
-  "Question Type": "mixed",
-  "Choices": {
-    "A": "\\(-29\\)",
-    "B": "\\(-21\\)",
-    "C": "\\(-14\\)",
-    "D": "\\(-8\\)",
-    "E": "\\(-3\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "reviewed-source-concepts",
-    "Concepts": "recursion; triangular number; pattern recognition",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2025A/solutions",
-    "SourceSHA256": "350b51b60ad5412aed0b1ee553318652ce98a1146e87d70a05b069091b08270c",
-    "Figures": [
-      "figures/2025_AMC_10A_Q19_question_fig1.svg"
+  "answer": {
+    "accepted": [
+      "A"
     ],
-    "FigureSources": {
-      "figures/2025_AMC_10A_Q19_question_fig1.svg": {
-        "url": "https://live.poshenloh.com/images/past-contests/amc10/2025A/19.svg",
-        "alt": ""
-      }
-    },
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
+    "type": "choice"
   },
-  "ID": "2025_AMC_10A_Q19",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:algebra"
+  "assessedNodeIds": [
+    "cnm_h200"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "d8474f4f3c69fc2e48ca9ec828f81f89720ffa5dbc154823420b6815423cca46",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h200"
+  "bank": "amc",
+  "classification": {
+    "area": "Algebra",
+    "domainIds": [
+      "domain:algebra"
     ],
-    "supportIds": [
-      "cnm_h208"
-    ],
-    "routes": [
+    "level": "AMC 10"
+  },
+  "id": "2025_AMC_10A_Q19",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "column-recurrences",
-        "label": "Track the first three columns",
-        "nodeIds": [
-          "cnm_h202",
-          "cnm_h204"
-        ]
+        "content": "\\(-29\\)",
+        "id": "A"
       },
       {
-        "id": "binomial-coefficients",
-        "label": "Expand the row polynomial",
-        "nodeIds": [
-          "cnm_h240",
-          "cnm_h241"
-        ]
+        "content": "\\(-21\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(-14\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(-8\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(-3\\)",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "An array of numbers is constructed beginning with the numbers \\(-1,\\) \\(3,\\) \\(1\\) in the top row. Each adjacent pair of numbers is summed to produce a number in the next row. Each row will begin and end with the numbers \\(-1\\) and \\(1,\\) respectively. The first three rows are shown below.\n\n[Figure 1](figures/2025_AMC_10A_Q19_question_fig1.svg)\n\nIf the process continues, one of the rows will sum to \\(12{,}288.\\) In that row, what is the third number from the left?"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "cnm_h200",
+        "cnm_h202",
+        "cnm_h204"
+      ],
+      "explanation": "We can track the row sum and the requested entry without constructing the rest of the array. Number the top row as row \\(0\\), so row \\(n\\) is reached after \\(n\\) transitions.\n\nEach interior entry contributes to two adjacent-pair sums in the next row. Each endpoint contributes to one adjacent-pair sum and also reappears as an endpoint. Thus every old entry is counted twice in the new row sum. The initial sum is \\(-1+3+1=3\\), so row \\(n\\) has sum\n\\[\nS_n=3\\cdot2^n.\n\\]\nSince\n\\[\n12{,}288=3\\cdot4096=3\\cdot2^{12},\n\\]\nthe desired row is reached after \\(12\\) transitions. These positive sums double each time, so this row is unique.\n\nLet \\(b_j\\) and \\(c_j\\) be the second and third entries after \\(j\\) transitions. The first entry stays \\(-1\\), so the second entry decreases by \\(1\\) each time:\n\\[\nb_0=3,\n\\qquad b_{j+1}=b_j-1,\n\\qquad b_j=3-j.\n\\]\nThe next third entry is the sum of the current second and third entries. Thus \\(c_{j+1}=c_j+b_j\\), starting with \\(c_0=1\\).\n\nTo reach row \\(12\\), we therefore add the twelve second entries from rows \\(0\\) through \\(11\\), namely \\(3,2,1,0,-1,\\ldots,-8\\). Pairing the first with the last, the second with the next-to-last, and so on gives six pairs, each summing to \\(-5\\). Hence\n\\[\nc_{12}=1+6(-5)=\\boxed{-29},\n\\]\nchoice \\(\\boxed{\\text{A}}\\).",
+      "id": "track-left-columns",
+      "sourceRef": "amc/2025_AMC_10A_Q19#track-left-columns",
+      "title": "Track the row sum and the first three entries"
+    },
+    {
+      "directNodeIds": [
+        "cnm_h200",
+        "cnm_h231",
+        "cnm_h236"
+      ],
+      "explanation": "View each entry as a sum of contributions from the three starting numbers. At each transition, an entry sends one copy of its value to the same numbered position and another copy one position to the right. Adding the copies that arrive at each position reproduces the adjacent-pair rule, including the endpoints.\n\nEvery value is copied twice, so the row sum doubles. Starting from sum \\(3\\), the sum after \\(n\\) transitions is \\(3\\cdot2^n\\). Because\n\\[\n12{,}288=3\\cdot2^{12},\n\\]\nthe required row is reached after exactly \\(12\\) transitions.\n\nA contribution's route is determined by choosing, at each transition, whether it stays in the same numbered position or moves one position right. To end in the third position after twelve transitions:\n\nFrom the first starting position, a contribution must move right exactly twice. Choose the two transition numbers in \\(12\\cdot11\\) ordered ways, then divide by \\(2\\), since each pair was counted in both orders. There are \\(66\\) routes, each carrying the starting value \\(-1\\).\n\nFrom the second starting position, a contribution must move right exactly once. There are \\(12\\) choices of transition, each carrying the starting value \\(3\\).\n\nFrom the third starting position, it must never move right. There is one route, carrying the starting value \\(1\\).\n\nThese cases include every contribution, since each originates at one of the three starting positions. Each route is counted once by its set of right-moving transitions; a route with too many right moves cannot return to the third position. Therefore the third entry is\n\\[\n(-1)(66)+3(12)+1=\\boxed{-29},\n\\]\nchoice \\(\\boxed{\\text{A}}\\).",
+      "id": "count-contribution-paths",
+      "sourceRef": "amc/2025_AMC_10A_Q19#count-contribution-paths",
+      "title": "Count contributions from the starting numbers"
+    },
+    {
+      "directNodeIds": [
+        "cnm_h202",
+        "cnm_h204"
+      ],
+      "id": "column-recurrences",
+      "sourceRef": "amc/2025_AMC_10A_Q19#column-recurrences",
+      "title": "Track the first three columns"
+    },
+    {
+      "directNodeIds": [
+        "cnm_h240",
+        "cnm_h241"
+      ],
+      "id": "binomial-coefficients",
+      "sourceRef": "amc/2025_AMC_10A_Q19#binomial-coefficients",
+      "title": "Expand the row polynomial"
+    }
+  ],
+  "sourceRef": "amc/2025_AMC_10A_Q19"
 }

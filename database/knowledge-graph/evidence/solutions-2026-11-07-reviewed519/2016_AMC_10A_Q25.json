@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_10A_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "03b7a37af82387702f83cb416e89319e9fcfb468e3ebf0dd2a71fc57bb1af79d",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "2bcb89154ff16ae89842d8ff1deb2717eb96c6bf14f5e76e3353c19a4d962b09",
+  "solutionFigureHashes": {},
+  "candidateHash": "85d38525473255f839c3d07618e7b933f5499b240f887b91b5d83e02e43349fb",
+  "candidate": {
+    "questionId": "2016_AMC_10A_Q25",
+    "derivedAnswer": "A: 15",
+    "answerStatus": "matches",
+    "answerReason": "Prime-exponent constraints give 5 choices for the powers of 2, 3 choices for the powers of 3, and a forced assignment for the powers of 5. Independent choices therefore give 15 ordered triples.",
+    "methods": [
+      {
+        "id": "independent-prime-exponent-counts",
+        "label": "Count each prime's exponents",
+        "explanation": "An LCM takes the larger exponent of each prime from its two inputs. Factor the three prescribed LCMs:\n\\[\n72=2^3 3^2,\\qquad\n600=2^3 3\\cdot5^2,\\qquad\n900=2^2 3^2 5^2.\n\\]\nNo other prime can divide \\(x,y,z\\), since it would then appear in a prescribed LCM.\n\nFor the prime \\(2\\), let \\(a,b,c\\) be its exponents in \\(x,y,z\\), respectively. The requirements are\n\\[\n\\max(a,b)=3,\\quad\n\\max(a,c)=3,\\quad\n\\max(b,c)=2.\n\\]\nThe last condition gives \\(b,c\\le2\\), so the first two force \\(a=3\\). We may choose \\(b,c\\) from \\(\\{0,1,2\\}\\), provided at least one is \\(2\\). Of the \\(3^2\\) ordered pairs, exactly \\(2^2\\) have neither entry equal to \\(2\\). Thus there are \\(9-4=5\\) choices.\n\nFor the prime \\(3\\), let the exponents be \\(u,v,w\\). Now\n\\[\n\\max(u,v)=2,\\quad\n\\max(u,w)=1,\\quad\n\\max(v,w)=2.\n\\]\nThe middle condition gives \\(u,w\\le1\\), and the other two force \\(v=2\\). There are \\(2^2\\) ordered pairs \\((u,w)\\) from \\(\\{0,1\\}\\); only \\((0,0)\\) is excluded. This gives \\(4-1=3\\) choices.\n\nFinally, \\(\\operatorname{lcm}(x,y)=72\\) forces the exponents of \\(5\\) in both \\(x\\) and \\(y\\) to be zero. The other LCMs then force its exponent in \\(z\\) to be \\(2\\), giving one choice.\n\nThe choices for different primes are independent. Every combination satisfies all three maximum-exponent conditions, and unique prime factorization makes different exponent assignments give different ordered triples. Therefore the total is\n\\[\n5\\cdot3\\cdot1=\\boxed{15},\n\\]\nchoice \\(\\text{A}\\).",
+        "nodeIds": [
+          "math:prime-factorization",
+          "cnm_h231",
+          "cnm_h010"
+        ],
+        "prerequisiteIds": [
+          "cnm_p159",
+          "cnm_p157",
+          "cnm_p153"
+        ],
+        "levelReason": "The solution uses elementary prime factorizations, the maximum-exponent rule for LCMs, and finite counting with the multiplication principle."
+      }
+    ],
+    "assessedIds": [
+      "math:prime-factorization",
+      "cnm_h231"
+    ],
+    "supportIds": [
+      "cnm_p159"
+    ],
+    "annotationRationale": "The task requires translating simultaneous LCM conditions into prime-exponent constraints and multiplying independent counts. Complement counting is a local procedure for the two small exponent families. The explanation establishes exhaustiveness and absence of duplicate triples through unique prime factorization.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_10A_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The LCM maximum-exponent conditions force the 2-exponent in x to be 3 and leave five ordered choices for the other two. They force the 3-exponent in y to be 2 and leave three choices for the other two. The 5-exponents are (0,0,2), and other primes are excluded. Independent assignments therefore give exactly 5·3=15 distinct ordered triples.",
+    "levelCheck": "Prime factorization, small complement counts, and the multiplication principle are appropriate for AMC 10 and fully explained.",
+    "methodDistinctness": "One complete exponent-counting method is sufficient.",
+    "annotationCheck": "Prime-exponent structure and multiplication counting are central targets. LCM knowledge supports the method, and complement counting accurately describes the local subcounts.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "independent-prime-exponent-counts": "independent-prime-exponent-counts"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "adce6f550f179f0c72a5eb53a2f38a30691da740724cc7f875e9c93a96ab2aa6",
+    "acceptedAt": "2026-11-07T10:43:32.609495+00:00",
+    "inputHash": "5c1abbab6cb3e358c76d1354cdeccc20d6b7181683deba29deed581357df01e7",
+    "authorInputHash": "ada876b6b0160c39d8746a106c26e33954e8c327c11f0d2b47e7de540afde69e",
+    "reviewInputHash": "73269b4a972d85d335cf85c05b124c370772a8c2637e49a10c3f4e0a2f60f7e7",
+    "authorResponseHash": "79f237dfdf4250c4fe8a48b0b5a19bf5bc2ac45cfc68691676bea7dd48790332",
+    "reviewerResponseHash": "ae01002d134c9483950bc9187d4115243b3cffcaac3c2a47b551e60cbe9e7505",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

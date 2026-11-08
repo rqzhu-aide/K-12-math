@@ -1,85 +1,81 @@
 {
-  "Year": 2018,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 8,
-  "Question": "Sara makes a staircase out of toothpicks as shown:\n\n[Figure 1](figures/2018_AMC_10B_Q08_question_fig1.svg)\n\nThis is a \\(3\\)-step staircase and uses \\(18\\) toothpicks. How many steps would be in a staircase that used \\(180\\) toothpicks?",
-  "Question Type": "mixed",
-  "Choices": {
-    "A": "\\(10\\)",
-    "B": "\\(11\\)",
-    "C": "\\(12\\)",
-    "D": "\\(24\\)",
-    "E": "\\(30\\)"
+  "answer": {
+    "accepted": [
+      "C"
+    ],
+    "type": "choice"
   },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "quadratic; summation; pattern recognition",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2018B/solutions",
-    "SourceSHA256": "4a6ded1649dafce105e5a8443fb92e73eb35400613d2c1885c50fa03dd6eab45",
-    "Figures": [
-      "figures/2018_AMC_10B_Q08_question_fig1.svg"
-    ],
-    "FigureSources": {
-      "figures/2018_AMC_10B_Q08_question_fig1.svg": {
-        "url": "https://live.poshenloh.com/images/past-contests/amc10/2018B/8.svg",
-        "alt": ""
-      }
-    },
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
+  "assessedNodeIds": [
+    "cnm_030"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 10"
   },
-  "ID": "2018_AMC_10B_Q08",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "eb7e32224b9987ef61b3d179f4426e1e917f4ca05c6ed428972f6449d4af97ff",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_030"
-    ],
-    "supportIds": [
-      "cnm_h204"
-    ],
-    "routes": [
+  "id": "2018_AMC_10B_Q08",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "factor-the-count-equation",
-        "label": "Solve by factoring",
-        "nodeIds": [
-          "cnm_224"
-        ]
+        "content": "\\(10\\)",
+        "id": "A"
       },
       {
-        "id": "quadratic-formula",
-        "label": "Use the quadratic formula",
-        "nodeIds": [
-          "cnm_222"
-        ]
+        "content": "\\(11\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(12\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(24\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(30\\)",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "Sara makes a staircase out of toothpicks as shown:\n\n[Figure 1](figures/2018_AMC_10B_Q08_question_fig1.svg)\n\nThis is a \\(3\\)-step staircase and uses \\(18\\) toothpicks. How many steps would be in a staircase that used \\(180\\) toothpicks?"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "cnm_030"
+      ],
+      "explanation": "Let \\(n\\) be the positive integer number of steps. Counting horizontal and vertical toothpicks separately avoids counting any shared side twice.\n\nThere are \\(n\\) horizontal toothpicks along the bottom. The horizontal levels above it contain \\(n,n-1,\\ldots,1\\) toothpicks. Thus the horizontal total is \\(n+S\\), where\n\\[\nS=1+2+\\cdots+n.\n\\]\nAdding this sum to itself in reverse order gives \\(n\\) pairs, each totaling \\(n+1\\), so \\(S=\\frac{n(n+1)}2\\).\n\nVertically, the left edge contains \\(n\\) toothpicks, and the remaining vertical lines contain \\(n,n-1,\\ldots,1\\). Every toothpick belongs to exactly one of these horizontal or vertical groups. Hence the total is\n\\[\nT=2(n+S)=2n+n(n+1)=n(n+3).\n\\]\nWe need \\(n(n+3)=180\\). Since \\(12\\cdot15=180\\), \\(n=12\\) works. As positive \\(n\\) increases, both positive factors \\(n\\) and \\(n+3\\) increase, so their product strictly increases. Therefore this is the only possible step count: \\(\\boxed{12}\\), choice \\(\\mathrm{C}\\).",
+      "id": "count-by-orientation",
+      "sourceRef": "amc/2018_AMC_10B_Q08#count-by-orientation",
+      "title": "Count horizontal and vertical toothpicks"
+    },
+    {
+      "directNodeIds": [
+        "cnm_030",
+        "math:double-counting"
+      ],
+      "explanation": "Let \\(n\\geq1\\) be the integer number of steps, and let \\(T\\) be the number of toothpicks. The rows contain \\(1,2,\\ldots,n\\) cells, for a total of\n\\[\nS=1+2+\\cdots+n=\\frac{n(n+1)}2.\n\\]\nThe sum formula follows by adding the sum to itself in reverse order: each of the \\(n\\) pairs totals \\(n+1\\).\n\nCounting four sides for every cell gives \\(4S\\). This counts each interior toothpick twice, because it borders two cells, and each outer boundary toothpick once. The outer boundary contains \\(n\\) toothpicks along the bottom, \\(n\\) along the left, and \\(n\\) horizontal plus \\(n\\) vertical toothpicks along the stepped edge. Its total is therefore \\(4n\\).\n\nAdding this boundary count to \\(4S\\) makes every toothpick counted exactly twice. Consequently,\n\\[\n2T=4S+4n,\n\\qquad\nT=n(n+1)+2n=n(n+3).\n\\]\nFor \\(T=180\\), the factor pair \\(12\\cdot15\\) gives \\(n=12\\). Both positive factors \\(n\\) and \\(n+3\\) strictly increase with \\(n\\), so no other positive step count gives the same total. The answer is \\(\\boxed{12}\\) steps, choice \\(\\mathrm{C}\\).",
+      "id": "count-cell-sides",
+      "sourceRef": "amc/2018_AMC_10B_Q08#count-cell-sides",
+      "title": "Count cell sides and correct for shared toothpicks"
+    },
+    {
+      "directNodeIds": [
+        "cnm_224"
+      ],
+      "id": "factor-the-count-equation",
+      "sourceRef": "amc/2018_AMC_10B_Q08#factor-the-count-equation",
+      "title": "Solve by factoring"
+    },
+    {
+      "directNodeIds": [
+        "cnm_222"
+      ],
+      "id": "quadratic-formula",
+      "sourceRef": "amc/2018_AMC_10B_Q08#quadratic-formula",
+      "title": "Use the quadratic formula"
+    }
+  ],
+  "sourceRef": "amc/2018_AMC_10B_Q08"
 }

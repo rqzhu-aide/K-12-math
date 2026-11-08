@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2015_AMC_8_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "dae2ed7362733d035f4d046a73354b2355a3d31929ce19b655212ffc9b51b065",
+    "figureHashes": {
+      "figures/2015_AMC_8_Q25_question_fig1.svg": "040d44cbd54ca78a7162f78edaa69071db8c545e8cfd281498a10dd1a3403c0e"
+    }
+  },
+  "solutionSHA256": "9adc378ffb1c43b3e6c1cf4b3d8262dd64174cad9185414a14c88762aa27982d",
+  "solutionFigureHashes": {},
+  "candidateHash": "2a2bed574453d77c0a7d29fb3d7f28ea696961591775c493c05a1fa8ab96c793",
+  "candidate": {
+    "questionId": "2015_AMC_8_Q25",
+    "derivedAnswer": "15 square inches, choice C",
+    "answerStatus": "matches",
+    "answerReason": "For a tilted fitting square, its area equals the product of its horizontal span and the side length of its concentric inscribed square parallel to the original square. These lengths are at most 5 and 3. An explicit placement attains area 15.",
+    "methods": [
+      {
+        "id": "nested-square-area-bound",
+        "label": "Bound the area using an inscribed square",
+        "explanation": "A tilted square might fit better than one whose sides are parallel to the original square, so we need a bound that covers every orientation.\n\nFirst, any fitting square with sides parallel to the original has side length at most \\(3\\). If its side were longer than \\(3\\), it would extend into a left or right one-inch strip and also into a top or bottom one-inch strip. The overlap of those strips inside the square would occupy part of a removed corner. Such a square therefore has area at most \\(9\\).\n\nNow take any tilted fitting square, and let \\(L\\) be its horizontal span. A quarter-turn exchanges its horizontal and vertical spans, so both spans equal \\(L\\), with \\(L\\le5\\). Inside it, expand a square with the same center and sides parallel to the original square until its four corners meet the tilted square's sides. Let its side length be \\(t\\). This inner square also fits in the remaining space, so \\(t\\le3\\).\n\nThe four pieces between these two squares are triangles. Each has base \\(t\\) and perpendicular height \\((L-t)/2\\), measured from an inner side to the corresponding outermost vertex. Hence the tilted square's area is\n\\[\nA=t^2+4\\left(\\frac12t\\cdot\\frac{L-t}{2}\\right)=tL.\n\\]\nConsequently,\n\\[\nA\\le3\\cdot5=15.\n\\]\n\nWe must also show that \\(15\\) can actually be attained. Choose positive lengths\n\\[\np=\\frac{5-\\sqrt5}{2},\\qquad q=\\frac{5+\\sqrt5}{2}.\n\\]\nThey satisfy \\(p+q=5\\) and \\(pq=(25-5)/4=5\\). On each side of the original square, mark the point \\(p\\) inches clockwise from its starting corner, then join successive marked points. Quarter-turns about the original center take each joining segment to the next, so these segments form a square with the same center.\n\nThe four triangles outside this constructed square have perpendicular legs \\(p\\) and \\(q\\). Its area is therefore\n\\[\n25-4\\left(\\frac12pq\\right)=25-10=15.\n\\]\nIts horizontal and vertical spans are both \\(5\\). Applying the area identity above, its concentric inscribed square parallel to the original has side \\(t=15/5=3\\). Its corners are exactly the four inner corners of the cutouts. Thus each side of the constructed square passes through the corresponding inner corner, with the entire unit cutout lying in the corner triangle outside that side. The constructed square fits.\n\nThe largest possible area is \\(\\boxed{15}\\) square inches, choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_267",
+          "cnm_p150",
+          "cnm_p148"
+        ],
+        "prerequisiteIds": [
+          "cnm_p077",
+          "cnm_p089",
+          "cnm_p171",
+          "cnm_074",
+          "cnm_080"
+        ],
+        "levelReason": "The bound comes from an elementary triangle dissection and quarter-turn symmetry. Attainment is verified by square and triangle areas with simple square-root arithmetic; no trigonometry or general optimization theorem is needed."
+      }
+    ],
+    "assessedIds": [
+      "cnm_267"
+    ],
+    "supportIds": [
+      "cnm_p077",
+      "cnm_p089",
+      "cnm_p171",
+      "cnm_074",
+      "cnm_080"
+    ],
+    "annotationRationale": "The route-neutral target is proving a maximum area by establishing a bound for every placement and constructing a placement attaining it. The written method uses composite-area decomposition and triangle areas to prove A=tL. Square properties and quarter-turns support that decomposition and the construction, while square-root arithmetic verifies the chosen lengths. The argument does not assume that an arbitrary maximal square can be centered.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2015_AMC_8_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "Any axis-aligned fitting square has side at most 3. For an arbitrary tilted fitting square, the four-triangle dissection correctly gives A=tL, where t≤3 and L≤5, hence A≤15. The construction has p+q=5 and pq=5, giving area 15 and a concentric axis-aligned inscribed square of side 3. Its sides pass through the cutouts' inner corners and exclude each entire cutout, proving attainment.",
+    "levelCheck": "The universal bound and attainment argument are complete and understandable through elementary geometry. Checking the explicitly supplied lengths requires only square-root arithmetic.",
+    "methodDistinctness": "The bound and construction are complementary parts of one complete optimization method.",
+    "annotationCheck": "The optimization target is route-neutral. Composite-area and triangle-area nodes describe the method, and the listed square, elementary rotation, and arithmetic support nodes are justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "nested-square-area-bound": "nested-square-area-bound"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "569a8fa678ba2e1e29363e86f09899a2e74666d7369b18b64174eda2fcf767de",
+    "acceptedAt": "2026-11-07T08:48:37.692360+00:00",
+    "inputHash": "d3245b10de8e02766a2b67ae0ba85344ad59dc649a30dd00db7c7e4dc0409ecc",
+    "authorInputHash": "6ec31e27d41ee8d9d3812b3656b95848122bb59d07c4a9ca9451c7b4cf8b0bf0",
+    "reviewInputHash": "50eb16e8811e849443e7431f2b7bd0ef03a1d99b59412ef9a080af06fbc41729",
+    "authorResponseHash": "717f5c7cd670e1773e3568841e3442f3979b74133cdf4ad9b073ec376fc2f9e6",
+    "reviewerResponseHash": "1655e347394b45d6cfca6b9c59ba0fdabfd74bf547e891697a20a4b970914d0f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

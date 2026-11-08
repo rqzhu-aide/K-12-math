@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_12A_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "c389a86329c17f756cfe63c7fbbdb52d88a1931043f81beb76de902d8a84401b",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "239518f17b028c2ddcf64191285f2787e7a55e9f071cde762ea0e799cd524e8b",
+  "solutionFigureHashes": {},
+  "candidateHash": "24424fd30f6a80fdf827ad6c43fe3d65a38f24dd62cc95b6351c04b1707c14a1",
+  "candidate": {
+    "questionId": "2016_AMC_12A_Q23",
+    "derivedAnswer": "1/2 (C), under independent uniform sampling",
+    "answerStatus": "matches",
+    "answerReason": "Under the recorded uniform interpretation, each triangle-inequality failure occupies a tetrahedron of volume 1/6 in the unit cube. The three failures overlap only in zero-volume sets, leaving probability 1/2, agreeing with C.",
+    "methods": [
+      {
+        "id": "failure-tetrahedra",
+        "label": "Subtract the three ways to fail",
+        "explanation": "Interpret the random choices in the usual uniform sense: each number is uniformly distributed on \\([0,1]\\), and the three selections are independent. The ordered triple \\((x,y,z)\\) is then a uniform point in the unit cube, whose volume is \\(1\\).\n\nThree nonnegative lengths form a triangle with positive area exactly when all three triangle inequalities are strict. It is easier to measure the failures:\n\\[\nx\\ge y+z,\\qquad y\\ge x+z,\\qquad z\\ge x+y.\n\\]\nConsider the first failure. Its region is a tetrahedron with vertex \\((0,0,0)\\) and base in the plane \\(x=1\\). The base consists of points with \\(y,z\\ge0\\) and \\(y+z\\le1\\), a right triangle with both legs of length \\(1\\). Its area is \\(1/2\\), and the tetrahedron's height is \\(1\\). Its volume is therefore\n\\[\n\\frac13\\cdot\\frac12\\cdot1=\\frac16.\n\\]\nExchanging coordinates shows that each other failure has the same volume.\n\nWe must check overlap before adding these volumes. If both \\(x\\ge y+z\\) and \\(y\\ge x+z\\), adding gives \\(z=0\\), and then \\(x=y\\). Thus their intersection is only a line segment, with zero volume. The other pairs behave the same way. Equality boundaries, including degenerate triangles and zero side lengths, also have zero volume.\n\nThe total failure probability is consequently \\(3/6=1/2\\). The desired probability is\n\\[\n1-\\frac12=\\boxed{\\frac12},\n\\]\nchoice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "cnm_111",
+          "math:geometric-probability",
+          "cnm_h111",
+          "cnm_p148",
+          "cnm_h138",
+          "cnm_h139"
+        ],
+        "prerequisiteIds": [
+          "cnm_110",
+          "cnm_p163",
+          "cnm_285"
+        ],
+        "levelReason": "Uses strict triangle inequalities, uniform probability as a volume ratio, and the elementary pyramid-volume formula. No integration is needed."
+      }
+    ],
+    "assessedIds": [
+      "cnm_111",
+      "math:geometric-probability"
+    ],
+    "supportIds": [
+      "cnm_110",
+      "cnm_p163",
+      "cnm_285"
+    ],
+    "annotationRationale": "The task targets triangle feasibility and continuous uniform geometric probability. The written method keeps triangle area, pyramid volume, addition of failure probabilities, and complementation within its route. The support from cnm_285 concerns probability as numerical likelihood only; its finite-outcome counting rule is not used. The proof explicitly checks independence, boundary volumes, and overlaps.",
+    "needsNewNodes": [],
+    "limitations": [
+      "Uses the recorded ordinary interpretation that the independent random selections are uniform on [0,1]."
+    ]
+  },
+  "review": {
+    "questionId": "2016_AMC_12A_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "Under the explicitly stated independent uniform interpretation, each triangle-inequality failure is a tetrahedron of volume \\(1/6\\). Pairwise overlaps are line segments of zero volume, and equality boundaries also have zero volume. Thus the positive-area probability is \\(1-3/6=1/2\\).",
+    "levelCheck": "The volume argument uses elementary solid geometry and requires no calculus. The sampling model and overlap check are understandable.",
+    "methodDistinctness": "One complete geometric complement method is sufficient.",
+    "annotationCheck": "Triangle inequalities and geometric probability are correctly assessed. Area, solid volume, probability addition, and complementation fit the route. The limited numerical-probability use of cnm_285 is stated honestly, and the uniform-sampling qualification is preserved.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "failure-tetrahedra": "failure-tetrahedra"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "27af3239acd8014863357272319d89a96bf2acac8879d8f413d72e9686f7282f",
+    "acceptedAt": "2026-11-07T10:49:45.213068+00:00",
+    "inputHash": "c4524420b4feebb3535a5a8c723fabfe565ccaf8928705131a1140af04cf6c1d",
+    "authorInputHash": "0a1f15ee8413a41d539be1a9d987f7d2bc2b37594fe3e9086e1b88d67caebdbf",
+    "reviewInputHash": "2187e3cc6c7632d8f5bed0b68b27de517c1eaa2751357c29309e4e915e5bcc38",
+    "authorResponseHash": "f6b11cef5baefe69eef0826354f5db227776b8c8b200a714dd677396185dac55",
+    "reviewerResponseHash": "2362f04073a187311ccacc0596ec014482783d1d24d06cd672b13649e908155f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

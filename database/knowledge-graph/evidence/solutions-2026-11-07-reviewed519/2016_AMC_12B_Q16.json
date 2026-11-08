@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_12B_Q16",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "1afe20bc1827557855b2798c7edf76d12684ff62aaebc15922134df566c18747",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "19726c1673f3e0a965cef2df7d06a564f9404f2c34ced720934dd0c12bff042d",
+  "solutionFigureHashes": {},
+  "candidateHash": "a106e0f4dd941864ca76620c2e0294b664dbf98491d5091fb34da69bb4a59451",
+  "candidate": {
+    "questionId": "2016_AMC_12B_Q16",
+    "derivedAnswer": "E (7 representations)",
+    "answerStatus": "matches",
+    "answerReason": "The possible sequence lengths are 2, 3, 5, 6, 10, 15, and 23. Each determines exactly one positive integer starting term, giving seven representations.",
+    "methods": [
+      {
+        "id": "factor-pairs-and-length-bound",
+        "label": "Bound and list the possible lengths",
+        "explanation": "Let \\(a\\ge1\\) be the first integer and \\(n\\ge2\\) the number of terms. The arithmetic-series sum formula gives\n\\[\n345=\\frac{n(2a+n-1)}2,\n\\qquad n(2a+n-1)=690.\n\\]\nIn particular, \\(n\\) must divide \\(690\\). Positivity gives a useful length bound: the smallest sum of \\(n\\) consecutive positive integers is \\(1+2+\\cdots+n\\). Since\n\\[\n\\frac{26\\cdot27}{2}=351>345,\n\\]\nwe must have \\(n\\le25\\).\n\nNow \\(690=2\\cdot3\\cdot5\\cdot23\\). Its divisors between \\(2\\) and \\(25\\) are exactly\n\\[\n2,3,5,6,10,15,23.\n\\]\nFor each candidate, the starting integer is forced by\n\\[\na=\\frac{690/n-n+1}{2}.\n\\]\nThe resulting pairs are\n\\[\n\\begin{aligned}\n(n,a)&=(2,172),(3,114),(5,67),(6,55),\\\\\n&\\quad(10,30),(15,16),(23,4).\n\\end{aligned}\n\\]\nAll seven starting values are positive integers, so each pair gives a valid sum of \\(345\\). Every representation must have a listed length, and each length determines only one starting value. Thus there are exactly \\(\\boxed{7}\\) representations, choice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "math:prime-factorization"
+        ],
+        "prerequisiteIds": [
+          "cnm_h204",
+          "cnm_p153"
+        ],
+        "levelReason": "An arithmetic-sum equation, a positivity bound, and elementary factorization give an exhaustive finite search."
+      },
+      {
+        "id": "odd-divisor-correspondence",
+        "label": "Pair factors instead of listing lengths",
+        "explanation": "Temporarily allow a sequence with just one term. If its first term is \\(a\\ge1\\) and its length is \\(n\\ge1\\), then\n\\[\n690=n(2a+n-1).\n\\]\nWrite \\(m=2a+n-1\\). The two factors \\(n\\) and \\(m\\) have opposite parity, and \\(m>n\\), since \\(m-n=2a-1\\ge1\\).\n\nConversely, take any factor pair \\(n<m\\) of \\(690\\) with opposite parity. Then\n\\[\na=\\frac{m-n+1}{2}\n\\]\nis a positive integer. The sequence of \\(n\\) consecutive integers starting at \\(a\\) has sum\n\\[\n\\frac{n(2a+n-1)}2=\\frac{nm}{2}=345.\n\\]\nThus these factor pairs correspond exactly to positive consecutive-integer representations, without omissions or repetitions.\n\nBecause \\(690=2\\cdot3\\cdot5\\cdot23\\), every factor pair has one odd factor and one even factor. The odd factor uniquely identifies the pair and can be any divisor of \\(345=3\\cdot5\\cdot23\\). Independently including or omitting each of these three primes gives \\(2^3=8\\) odd divisors, hence eight representations when one-term sequences are allowed.\n\nExactly one pair, \\((1,690)\\), gives a one-term sequence. Removing it leaves\n\\[\n8-1=\\boxed{7},\n\\]\nwhich is choice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "math:bijective-counting",
+          "math:prime-factorization",
+          "math:divisor-count-and-sum"
+        ],
+        "prerequisiteIds": [
+          "cnm_h204",
+          "cnm_p153",
+          "cnm_p156",
+          "cnm_h231"
+        ],
+        "levelReason": "The correspondence is proved directly using factor pairs and parity; the divisor count uses only independent include-or-omit choices."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_h204",
+      "cnm_p153"
+    ],
+    "annotationRationale": "The common target is finding all positive integer starting terms and admissible lengths. Both methods use the arithmetic-series equation and divisibility. The first bounds the length and checks candidates; the second proves a reversible factor-pair correspondence and counts odd divisors. Bijection and divisor-counting knowledge belong only to the second route.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_12B_Q16",
+    "decision": "accept",
+    "mathematicalCheck": "The sum equation is \\(n(2a+n-1)=690\\). The positivity bound gives \\(2\\le n\\le25\\), and exactly the seven listed divisors yield positive integer starts. Independently, the second method proves a reversible correspondence with opposite-parity factor pairs: eight odd divisors identify eight pairs, and removing the unique one-term case leaves seven.",
+    "levelCheck": "Both methods use appropriate high-school arithmetic, factorization, parity, and counting. Positivity, uniqueness, and completeness are justified.",
+    "methodDistinctness": "The bounded enumeration and the proved factor-pair correspondence offer distinct useful counting ideas without an advanced shortcut.",
+    "annotationCheck": "The integer-equation target and shared sum/divisibility support are appropriate. Bijection, divisor counting, parity, and multiplication choices are accurately assigned to the second method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "factor-pairs-and-length-bound": "solution:factor-pairs-and-length-bound:19726c1673f3",
+    "odd-divisor-correspondence": "solution:odd-divisor-correspondence:19726c1673f3"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c1eb8eb87f14a687531407cbcf2bf73dd1d354505cba6a4874e21f74821435cf",
+    "acceptedAt": "2026-11-07T10:53:34.743994+00:00",
+    "inputHash": "2c6ba1f691c85473ba4fe968600eb13b5b55045511102d20f313e6e831c296b5",
+    "authorInputHash": "f11d5de56ca288a888febe37bc4285e31c6295242cd3c24a6db0b611ff3bb304",
+    "reviewInputHash": "48f8328c3eaa6d9c630cf0480a07e5ef530aff49480f2b7bedebad02ae6aaa2d",
+    "authorResponseHash": "e488555e5a20d8d6b7c565d2425e7f7c95d9f60b3487e48b6c69f4fa6f9ab021",
+    "reviewerResponseHash": "c46e39a08692c848a3b615960974fa6fd8ab8d56e10e799b529903add94b82a1",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

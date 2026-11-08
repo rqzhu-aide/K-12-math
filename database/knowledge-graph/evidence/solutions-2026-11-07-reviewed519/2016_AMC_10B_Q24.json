@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_10B_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "315ccfcb6f07541e4a986e51dfc823aace1dba5f5927c1496503467725cfabce",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "52e6c717ab1300cf10b21eefd913b5369e654d6358a4c84855500b50c3e30ccb",
+  "solutionFigureHashes": {},
+  "candidateHash": "0836764d45d18f04cef50e3d50533da720d3e48f34309d11127937211ee951b3",
+  "candidate": {
+    "questionId": "2016_AMC_10B_Q24",
+    "derivedAnswer": "D (17)",
+    "answerStatus": "matches",
+    "answerReason": "Equal two-digit gaps force the successive digit changes to satisfy either v=u or v=u+1. These disjoint cases give 9 and 8 admissible numbers, respectively.",
+    "methods": [
+      {
+        "id": "successive-digit-differences",
+        "label": "Restrict the changes between neighboring digits",
+        "explanation": "Because the two-digit numbers overlap, it helps to track the changes between neighboring digits. Comparing tens digits in \\(ab<bc<cd\\) shows that\n\\[\na\\le b\\le c.\n\\]\nIn particular, \\(b\\) and \\(c\\) are nonzero, as required for \\(bc\\) and \\(cd\\) to be two-digit integers.\n\nDefine\n\\[\nu=b-a,\\qquad v=c-b,\\qquad w=d-c.\n\\]\nThen \\(u,v\\ge0\\). Using place value, the two successive gaps are\n\\[\n\\begin{aligned}\n(10b+c)-(10a+b)&=10u+v,\\\\\n(10c+d)-(10b+c)&=10v+w.\n\\end{aligned}\n\\]\nThe arithmetic-sequence condition says these gaps are equal, so\n\\[\n10(u-v)=w-v.\n\\]\nSince all digits lie between 0 and 9, we have \\(-9\\le w\\le9\\) and \\(0\\le v\\le9\\). Therefore\n\\[\n-18\\le w-v\\le9.\n\\]\nThe only multiples of 10 in this interval are \\(-10\\) and 0. Thus either \\(v=u\\) or \\(v=u+1\\), which gives two exhaustive, disjoint cases.\n\nIf \\(v=u\\), the gap equation gives \\(w=u\\), so the digits are\n\\[\na,\\ a+u,\\ a+2u,\\ a+3u.\n\\]\nStrict increase of the two-digit numbers requires \\(u\\ge1\\). The last digit must be at most 9, giving \\(1\\le a\\le9-3u\\). For \\(u=1\\), there are 6 choices of \\(a\\); for \\(u=2\\), there are 3; larger \\(u\\) give none. This case contributes \\(6+3=9\\).\n\nIf \\(v=u+1\\), then \\(w=u-9\\), and the digits are\n\\[\na,\\ a+u,\\ a+2u+1,\\ a+3u-8.\n\\]\nThe bounds \\(c\\le9\\), \\(d\\ge0\\), and \\(a\\ge1\\) become\n\\[\n\\max(1,8-3u)\\le a\\le8-2u.\n\\]\nThese bounds require \\(u=0,1,2,3\\). Their possibilities are:\n\nFor \\(u=0\\), only \\(a=8\\) works, giving 1 number.\n\nFor \\(u=1\\), \\(a=5,6\\), giving 2 numbers.\n\nFor \\(u=2\\), \\(a=2,3,4\\), giving 3 numbers.\n\nFor \\(u=3\\), \\(a=1,2\\), giving 2 numbers.\n\nHere \\(d-c=u-9<0\\), so \\(d\\le9\\) follows from \\(c\\le9\\). The common two-digit gap is \\(10u+v=11u+1>0\\), so every listed choice satisfies strict increase. This case contributes \\(1+2+3+2=8\\).\n\nEach choice of \\(a,u,v\\) determines exactly one four-digit number. The two cases do not overlap, so the total is \\(9+8=\\boxed{17}\\), choice \\(\\boxed{D}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_h201",
+          "cnm_027",
+          "cnm_h020"
+        ],
+        "prerequisiteIds": [
+          "cnm_p017",
+          "cnm_026"
+        ],
+        "levelReason": "The proof uses decimal place value, equal arithmetic-sequence gaps, and a short exhaustive analysis of bounded integer cases."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_h201",
+      "cnm_027",
+      "cnm_p017"
+    ],
+    "annotationRationale": "The assessed target is an exhaustive count of integer digit assignments satisfying an equation and strict bounds. The method uses place value to express the overlapping two-digit numbers and the equal-gap definition of an arithmetic sequence. Bounded integer enumeration completes the count. The general term or arithmetic-series sum formulas are unnecessary.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_10B_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "Strict increase implies a≤b≤c. Equal gaps give 10(u−v)=w−v; the stated digit bounds restrict this multiple of 10 to −10 or 0. The resulting disjoint cases yield 9 and 8 valid numbers. All digit bounds and positive common differences are checked, and the parameterization prevents duplication.",
+    "levelCheck": "Place value, linear equations, and bounded integer enumeration are appropriate for AMC 10.",
+    "methodDistinctness": "One exhaustive method is sufficient.",
+    "annotationCheck": "The integer-solution target is appropriate. Arithmetic-sequence definition, algebraic modeling, place value, and integer inequality counting accurately describe the method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "successive-digit-differences": "successive-digit-differences"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c13f90fa0a6428b5c779456417e9b1a00dcc7c651a68ca1964927bcff2ce8651",
+    "acceptedAt": "2026-11-07T10:45:50.552665+00:00",
+    "inputHash": "86fa27bec51ab034bb2b7f1a5bbad6fda7dc0292437490130aab084a8243655f",
+    "authorInputHash": "6eedd2127e5befdfc5456040aa4b0d4a52f5ae54b529cc3c0d801a78481795a2",
+    "reviewInputHash": "8918b8eaf5a3ba6d896154c30f0a5b2eae98c07587500cd9da995d5c9cefa4ea",
+    "authorResponseHash": "b0f2e2639d30ae9c68d0c0ff062e3faccd05994da7c5710ffe37f263f2ced415",
+    "reviewerResponseHash": "8c21af3191c8010119d88bfa40e6f0d9d1b82541a8857c9aeeb7e057343eb558",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

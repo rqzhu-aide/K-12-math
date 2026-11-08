@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_10B_Q15",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "cf3e7012003033420f755ae3807cdec969e8f044c11edb1f741c67d7516ca3a7",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "81973fb2a071474d084c49b3887a927f394a010e0465e814b91b0d2cd666f9cc",
+  "solutionFigureHashes": {},
+  "candidateHash": "812ef68e7e70da9c094d61c6b70e1df5348feaa74b05923e6e3b58dcaaf832b8",
+  "candidate": {
+    "questionId": "2016_AMC_10B_Q15",
+    "derivedAnswer": "C (7)",
+    "answerStatus": "matches",
+    "answerReason": "Checkerboard colors alternate along consecutive labels. The five odd labels must occupy the four corners and center, whose total is 25. Subtracting the corner sum 18 leaves 7 in the center, matching choice C.",
+    "methods": [
+      {
+        "id": "checkerboard-parity",
+        "label": "Match cell colors with number parity",
+        "explanation": "Color the four corners and the center black, and color the other four cells white. Every move across a shared edge changes color.\n\nNow follow the cells containing \\(1,2,\\ldots,9\\). At each step, both the cell color and the odd/even status of the label change, so their correspondence stays the same. Thus \\(1,3,5,7,9\\) all occupy one color, while \\(2,4,6,8\\) occupy the other.\n\nThere are five odd labels, so their color must be black, which has five cells. Therefore the four corners and center contain exactly the odd numbers, whose sum is\n\\[\n1+3+5+7+9=25.\n\\]\nSubtracting the given corner sum leaves \\(25-18=7\\) in the center.\n\nFor example, the arrangement\n\\[\n\\begin{array}{ccc}\n1&2&3\\\\\n8&7&4\\\\\n9&6&5\n\\end{array}\n\\]\nsatisfies every adjacency condition and has corner sum \\(18\\), confirming that the forced value is attainable. The center is \\(7\\), choice C.",
+        "nodeIds": [
+          "math:finite-constraint-deduction",
+          "math:invariant-reasoning"
+        ],
+        "prerequisiteIds": [
+          "cnm_p156"
+        ],
+        "levelReason": "Uses elementary checkerboard coloring, odd/even alternation, and a sum of five small integers."
+      }
+    ],
+    "assessedIds": [
+      "math:finite-constraint-deduction"
+    ],
+    "supportIds": [
+      "cnm_p156"
+    ],
+    "annotationRationale": "The task asks for a forced entry under distinctness, adjacency, and sum constraints. The method uses an invariant correspondence between label parity and checkerboard color: both switch at every allowed step. Odd/even knowledge is supporting. An explicit valid arrangement verifies feasibility; graph degree or path theorems are not used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_10B_Q15",
+    "decision": "accept",
+    "mathematicalCheck": "Edge adjacency alternates checkerboard color along labels 1 through 9. The five odd labels must occupy the five cells consisting of the corners and center. Their sum is 25, forcing center 25−18=7. The supplied arrangement satisfies every consecutive adjacency and has corner sum 18.",
+    "levelCheck": "The coloring correspondence and cell-count argument are clearly explained with elementary parity reasoning. The example verifies attainability.",
+    "methodDistinctness": "The arrangement is a feasibility check within the single method, not a separate method.",
+    "annotationCheck": "Finite constraint deduction is a justified route-neutral target. The preserved parity-color correspondence supports the method's invariant annotation, and odd/even knowledge is appropriate support.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "checkerboard-parity": "checkerboard-parity"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "e87070352ea970c989316614b8d11980b460b4749b172b1660b45c7c72f14330",
+    "acceptedAt": "2026-11-07T10:41:21.986859+00:00",
+    "inputHash": "3ba6d42aa636330243078424c79829e8daabfa644b2fda9ed956ec87015beca5",
+    "authorInputHash": "f2eb4b7e0e2a1b07e5013fa5d13e12154d7bc69171d2a9442815c0e572a2b18b",
+    "reviewInputHash": "de6b8b234693bf2c003e6b3651c28246d4e7cd82191ba6f4f117a5c365645979",
+    "authorResponseHash": "df0f828333c278fd0ae33bf4e392708ce842d8ae59c713d4a325fef444313107",
+    "reviewerResponseHash": "024edf05009b8e7dee348d645dc6444f4b292e0481bfb854c349ad150230454c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

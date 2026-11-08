@@ -1,80 +1,68 @@
 {
-  "Year": 2016,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 16,
-  "Question": "In how many ways can \\(345\\) be written as the sum of an increasing sequence of two or more consecutive positive integers?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(1\\)",
-    "B": "\\(3\\)",
-    "C": "\\(5\\)",
-    "D": "\\(6\\)",
-    "E": "\\(7\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "arithmetic sequence; factor counting; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2016B/solutions",
-    "SourceSHA256": "a8ab53099f4933ea938d99c5cb2b2aa657861acb8ccb1d8f569d837ab749c7c5",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2016_AMC_12B_Q16",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "1afe20bc1827557855b2798c7edf76d12684ff62aaebc15922134df566c18747",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:integer-diophantine-equations"
+  "answer": {
+    "accepted": [
+      "E"
     ],
-    "supportIds": [
-      "cnm_h204"
-    ],
-    "routes": [
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "math:integer-diophantine-equations"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
+  },
+  "id": "2016_AMC_12B_Q16",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "factor-pairs-and-length-bound",
-        "label": "Factor pairs with a length bound",
-        "nodeIds": [
-          "math:prime-factorization"
-        ]
+        "content": "\\(1\\)",
+        "id": "A"
       },
       {
-        "id": "odd-divisor-correspondence",
-        "label": "Count through odd divisors",
-        "nodeIds": [
-          "math:bijective-counting",
-          "math:divisor-count-and-sum",
-          "math:prime-factorization"
-        ]
+        "content": "\\(3\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(5\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(6\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(7\\)",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "In how many ways can \\(345\\) be written as the sum of an increasing sequence of two or more consecutive positive integers?"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "math:prime-factorization"
+      ],
+      "explanation": "Let \\(a\\ge1\\) be the first integer and \\(n\\ge2\\) the number of terms. The arithmetic-series sum formula gives\n\\[\n345=\\frac{n(2a+n-1)}2,\n\\qquad n(2a+n-1)=690.\n\\]\nIn particular, \\(n\\) must divide \\(690\\). Positivity gives a useful length bound: the smallest sum of \\(n\\) consecutive positive integers is \\(1+2+\\cdots+n\\). Since\n\\[\n\\frac{26\\cdot27}{2}=351>345,\n\\]\nwe must have \\(n\\le25\\).\n\nNow \\(690=2\\cdot3\\cdot5\\cdot23\\). Its divisors between \\(2\\) and \\(25\\) are exactly\n\\[\n2,3,5,6,10,15,23.\n\\]\nFor each candidate, the starting integer is forced by\n\\[\na=\\frac{690/n-n+1}{2}.\n\\]\nThe resulting pairs are\n\\[\n\\begin{aligned}\n(n,a)&=(2,172),(3,114),(5,67),(6,55),\\\\\n&\\quad(10,30),(15,16),(23,4).\n\\end{aligned}\n\\]\nAll seven starting values are positive integers, so each pair gives a valid sum of \\(345\\). Every representation must have a listed length, and each length determines only one starting value. Thus there are exactly \\(\\boxed{7}\\) representations, choice \\(\\mathrm{E}\\).",
+      "id": "factor-pairs-and-length-bound",
+      "sourceRef": "amc/2016_AMC_12B_Q16#factor-pairs-and-length-bound",
+      "title": "Bound and list the possible lengths"
+    },
+    {
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "math:bijective-counting",
+        "math:prime-factorization",
+        "math:divisor-count-and-sum"
+      ],
+      "explanation": "Temporarily allow a sequence with just one term. If its first term is \\(a\\ge1\\) and its length is \\(n\\ge1\\), then\n\\[\n690=n(2a+n-1).\n\\]\nWrite \\(m=2a+n-1\\). The two factors \\(n\\) and \\(m\\) have opposite parity, and \\(m>n\\), since \\(m-n=2a-1\\ge1\\).\n\nConversely, take any factor pair \\(n<m\\) of \\(690\\) with opposite parity. Then\n\\[\na=\\frac{m-n+1}{2}\n\\]\nis a positive integer. The sequence of \\(n\\) consecutive integers starting at \\(a\\) has sum\n\\[\n\\frac{n(2a+n-1)}2=\\frac{nm}{2}=345.\n\\]\nThus these factor pairs correspond exactly to positive consecutive-integer representations, without omissions or repetitions.\n\nBecause \\(690=2\\cdot3\\cdot5\\cdot23\\), every factor pair has one odd factor and one even factor. The odd factor uniquely identifies the pair and can be any divisor of \\(345=3\\cdot5\\cdot23\\). Independently including or omitting each of these three primes gives \\(2^3=8\\) odd divisors, hence eight representations when one-term sequences are allowed.\n\nExactly one pair, \\((1,690)\\), gives a one-term sequence. Removing it leaves\n\\[\n8-1=\\boxed{7},\n\\]\nwhich is choice \\(\\mathrm{E}\\).",
+      "id": "odd-divisor-correspondence",
+      "sourceRef": "amc/2016_AMC_12B_Q16#odd-divisor-correspondence",
+      "title": "Pair factors instead of listing lengths"
+    }
+  ],
+  "sourceRef": "amc/2016_AMC_12B_Q16"
 }

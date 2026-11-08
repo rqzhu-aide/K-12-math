@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2015_AMC_12B_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "7e676eeebf8e56f211455f037736b484e5907aeb4210ee4cc7abf1ea0469467f",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "ad539ceaa735db7903a25d44c4a712a11ccb9fa8b161c4415dfb6082b7cb17d8",
+  "solutionFigureHashes": {},
+  "candidateHash": "3bc311f2341b5d16063d7af61112fe8eb4f47458f99ab76e0992f35799e0eb14",
+  "candidate": {
+    "questionId": "2015_AMC_12B_Q22",
+    "derivedAnswer": "D: \\(20\\)",
+    "answerStatus": "matches",
+    "answerReason": "Counting by the number moving between alternating chair groups gives 4+9+6+1=20 valid rearrangements.",
+    "methods": [
+      {
+        "id": "parity-crossing-cases",
+        "label": "Count moves between alternating chair groups",
+        "explanation": "Label the chairs \\(1,2,\\ldots,6\\) around the table, and identify each person by the chair initially occupied. Each person may move two, three, or four positions around the circle. Thus there are two allowed destinations of the same parity and just one of the opposite parity: the chair directly opposite.\n\nLet \\(k\\) be the number of people moving from odd chairs to even chairs. Since both groups contain three chairs and all chairs must remain occupied, exactly \\(k\\) people must also move from even chairs to odd chairs. We count the four possible values of \\(k\\).\n\nIf \\(k=0\\), everyone stays within the original parity group. Within a group of three chairs, nobody may keep the original chair, so the three people must cycle in one of two directions. The two groups can be arranged independently, giving \\(2\\cdot2=4\\) possibilities.\n\nIf \\(k=1\\), choose the odd-chair person and the even-chair person who cross groups. There are \\(3\\cdot3=9\\) choices, and each crossing destination is forced to be the opposite chair. In either group, two people and two available chairs remain. Either both people's original chairs are available, forcing a swap, or exactly one person's original chair is available. In the latter case, that person must take the other available chair, forcing the final person's seat. Thus every choice has exactly one completion, giving \\(9\\) possibilities.\n\nIf \\(k=2\\), choose the one odd-chair person and one even-chair person who do not cross groups. There are initially \\(9\\) choices. After the other four people take their opposite chairs, the remaining available chairs are opposite these two chosen people's original chairs. If the chosen people started opposite each other, both would have to return to their original chairs, which is forbidden. There are \\(3\\) such choices. For each of the other \\(6\\) choices, the remaining seats are forced and allowed, giving \\(6\\) possibilities.\n\nIf \\(k=3\\), everyone takes the opposite chair, giving \\(1\\) possibility.\n\nEvery valid rearrangement belongs to exactly one of these cases, and the choices within each case identify it uniquely. The total is\n\\[\n4+9+6+1=\\boxed{20},\n\\]\nchoice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "cnm_h233",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_h230",
+          "cnm_h231"
+        ],
+        "levelReason": "The proof uses small permutation counts and exhaustive cases with the addition and multiplication principles."
+      },
+      {
+        "id": "relabel-as-cycle-matchings",
+        "label": "Shift destinations and count adjacent swaps",
+        "explanation": "Label the chairs \\(0,1,\\ldots,5\\) cyclically, with labels wrapping around after \\(5\\). A person starting at \\(i\\) may move to \\(i+2\\), \\(i+3\\), or \\(i+4\\). Replace every destination by the chair three positions backward. The allowed transformed destinations become \\(i-1\\), \\(i\\), and \\(i+1\\).\n\nThis replacement is a one-to-one correspondence: shifting all destinations preserves the condition that each chair receives one person, and shifting three positions forward reverses the transformation. We may therefore count these transformed assignments.\n\nFollow each assignment from a person to the person whose original chair is the destination, continuing until returning to the start. This separates the assignment into disjoint cycles. A one-person cycle stays in place, and a two-person cycle swaps adjacent chairs. In a cycle involving at least three people, after the first step the next step cannot turn back, since that would close a two-person swap. It must continue in the same direction around the circle. Such a cycle can close only after using all six chairs. There are exactly two of these full cycles, one in each direction.\n\nAll other assignments consist of disjoint adjacent swaps, with everyone else staying in place. Count them by the number of swaps:\n\nWith no swaps, there is \\(1\\) assignment. With one swap, any of the \\(6\\) neighboring chair pairs may be chosen.\n\nWith two swaps, there are \\(6\\cdot5/2=15\\) unordered pairs of neighboring chair pairs. Exactly \\(6\\) share a chair, one for each possible shared chair, and cannot be simultaneous swaps. This leaves \\(15-6=9\\).\n\nWith three swaps, chair \\(0\\) may be paired with either neighbor. Once that choice is made, the remaining four chairs are forced into two adjacent pairs. This gives \\(2\\) assignments.\n\nThese cases are disjoint and include every transformed assignment. Adding the two full cycles gives\n\\[\n1+6+9+2+2=\\boxed{20},\n\\]\nchoice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "cnm_h233",
+          "math:bijective-counting",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_h230",
+          "cnm_h231"
+        ],
+        "levelReason": "The destination correspondence and cycle classification are proved directly using the six-chair circle, without requiring general graph-counting formulas."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h233",
+      "cnm_h232"
+    ],
+    "supportIds": [
+      "cnm_h230",
+      "cnm_h231"
+    ],
+    "annotationRationale": "The task counts distinct assignments of people to fixed chairs under restrictions, using exhaustive combined counting. The first method classifies parity crossings. The second adds a reversible destination correspondence and counts disjoint swaps or full cycles. The permutation concept fits the written reasoning; neither method relies on the general permutation-number formula.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2015_AMC_12B_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "The parity cases contribute 4,9,6,1. The destination shift is reversible, and transformed permutations consist of disjoint adjacent swaps and fixed points, or one of two full six-cycles. Their counts are 1+6+9+2+2=20. Both methods exhaust the assignments without duplication.",
+    "levelCheck": "Both arguments fit AMC 12 counting. The unique completions in the parity cases and the cycle classification are sufficiently explained.",
+    "methodDistinctness": "Parity crossing cases and a reversible destination shift offer distinct elementary insights.",
+    "annotationCheck": "Permutation meaning and combined counting are appropriate common targets. Addition and multiplication support both methods, while bijective counting is correctly local to the second.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "parity-crossing-cases": "solution:parity-crossing-cases:ad539ceaa735",
+    "relabel-as-cycle-matchings": "solution:relabel-as-cycle-matchings:ad539ceaa735"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "18db0cadd028f0e2e97c188002995c94d210921ab6ad7448362a0df6e50934ea",
+    "acceptedAt": "2026-11-07T10:39:27.889569+00:00",
+    "inputHash": "df63fca0c8ec68a94a6611496dee1ba742df69d04ab420a2ec00f355183bcc49",
+    "authorInputHash": "ef5cac990e0b724ad31388e81decdfda7cdedb63ab35b4c2b6dbbbf79d5b4665",
+    "reviewInputHash": "fc5b31ed7813838040f9311573cc28428b1ead67b5db24d04dff5359e54d0f5b",
+    "authorResponseHash": "e53188fa632710c19e3b93d794d45928cda2485a2bd2499562b2f0f1844d8a71",
+    "reviewerResponseHash": "d8b855b9921ea77715ab9b0054f082f201995760c41cace1a12b5d3e0a0dc83f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

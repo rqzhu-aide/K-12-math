@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2025_AMC_10B_Q16",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "34c118e16ffb1754fe1d5d6cd384d0ebf42a8d38387a6ed4ec91ae3369f566e4",
+    "figureHashes": {
+      "figures/2025_AMC_10B_Q16_question_fig1.svg": "19c0cc3d569144d6a728219108584e243426879567378c2d9285344da4acb004"
+    }
+  },
+  "solutionSHA256": "cd06ee87eef77224a870b77374ebcacd06fc437176c1f3447ca08e06c4ab82dc",
+  "solutionFigureHashes": {
+    "figures/2025_AMC_10B_Q16_question_fig1.svg": "19c0cc3d569144d6a728219108584e243426879567378c2d9285344da4acb004"
+  },
+  "candidateHash": "a3eaac14d8fb3acdb39a14cc3909ee4b1e78426fa294fefda1f088bf69609277",
+  "candidate": {
+    "questionId": "2025_AMC_10B_Q16",
+    "derivedAnswer": "24 (D)",
+    "answerStatus": "matches",
+    "answerReason": "Three red pairs leave two gaps of length 2, each allowing 4 completions. Six red pairs leave gaps of lengths 1 and 3, each allowing 2 completions. Thus there are 3·4+6·2=24 colorings.",
+    "methods": [
+      {
+        "id": "red-sector-separation",
+        "label": "Classify the positions of the red sectors",
+        "explanation": "The different sector sizes make the six positions distinguishable. Number them \\(1\\) through \\(6\\) clockwise, with sectors \\(6\\) and \\(1\\) also neighboring. First choose the two red positions; this leaves only green and blue to arrange.\n\n[Figure 1](figures/2025_AMC_10B_Q16_question_fig1.svg)\n\nThe red sectors cannot be neighbors. Consequently, the numbers of sectors between them in the two directions must be either \\(2\\) and \\(2\\), or \\(1\\) and \\(3\\).\n\nFor gaps of lengths \\(2\\) and \\(2\\), the red pairs are \\(\\{1,4\\},\\{2,5\\},\\{3,6\\}\\), giving \\(3\\) choices. Each two-sector gap must be colored green-blue or blue-green. These choices are independent, and together they automatically use two sectors of each color. This case contributes\n\\[\n3\\cdot 2\\cdot 2=12.\n\\]\n\nFor gaps of lengths \\(1\\) and \\(3\\), there are \\(6\\) red pairs: choosing the unique sector in the one-sector gap determines the red sectors on either side of it. The three-sector gap must alternate, so it is green-blue-green or blue-green-blue. The single remaining sector must then receive the color used only once in the longer gap. Thus each red pair allows exactly \\(2\\) completions, contributing\n\\[\n6\\cdot 2=12.\n\\]\n\nEvery valid coloring has exactly one red pair and belongs to exactly one of these cases. Therefore the total is \\(12+12=24\\) colorings, choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "math:graph-coloring",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_h230",
+          "cnm_h231"
+        ],
+        "levelReason": "The argument uses a small exhaustive case split and the addition and multiplication principles, all within AMC 10 counting."
+      }
+    ],
+    "assessedIds": [
+      "math:graph-coloring"
+    ],
+    "supportIds": [
+      "cnm_h230",
+      "cnm_h231"
+    ],
+    "annotationRationale": "The task asks for color assignments satisfying both cyclic adjacency restrictions and fixed color counts, matching the coloring target. The written method classifies red-sector gaps and combines sequential choices within disjoint cases, so combined counting is method-specific. Formal graph terminology and symmetry-equivalence counting are unnecessary.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2025_AMC_10B_Q16",
+    "decision": "accept",
+    "mathematicalCheck": "The nonadjacent red pairs split exhaustively into 3 pairs with gaps 2 and 2, and 6 pairs with gaps 1 and 3. These allow respectively 4 and 2 completions respecting both adjacency and color counts. Each coloring is counted once, giving \\(3\\cdot4+6\\cdot2=24\\).",
+    "levelCheck": "The elementary case split and counting principles are appropriate for AMC 10, and the completion counts are clearly explained.",
+    "methodDistinctness": "One complete method is supplied; another is unnecessary.",
+    "annotationCheck": "The coloring assessedId is route-neutral. Combined counting is correctly method-specific, and the addition and multiplication supportIds match the reasoning.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "red-sector-separation": "solution:red-sector-separation:cd06ee87eef7"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "5ff14fe9e47ee79391e58724784915563bb14aa95c7a9199192deaa516249785",
+    "acceptedAt": "2026-11-07T07:58:10.852973+00:00",
+    "inputHash": "94852ab20a7f7104718ce0a8ac1c540f714f955295bfb6737d836c655964cce2",
+    "authorInputHash": "e2fa8b2906c8d2ce3b6ad5dd51b660eb0a84d7a1588712f3e15b1b763ff21b23",
+    "reviewInputHash": "ecaf3721e3d55086af248f93ce2e86967bd067b14ef354de586c50e08895ae7a",
+    "authorResponseHash": "4755e9112918a8993ce1f93445742a2a74968f8cd72252f9c92db253d0e28138",
+    "reviewerResponseHash": "5ed17f6cebdcf3fd08955d286c1d3e5fda64dc017a2b3f0c1242e68fe695b1a5",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

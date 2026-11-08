@@ -1,63 +1,56 @@
 {
-  "Year": 2016,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 14,
-  "Question": "How many squares whose sides are parallel to the axes and whose vertices have coordinates that are integers lie entirely within the region bounded by the line \\(y=\\pi x,\\) the line \\(y=-0.1\\) and the line \\(x=5.1?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\( \\ 30 \\)",
-    "B": "\\( \\ 41 \\)",
-    "C": "\\( \\ 45 \\)",
-    "D": "\\( \\ 50 \\)",
-    "E": "\\( \\ 57 \\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "lattice point; counting shapes in figures; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2016B/solutions",
-    "SourceSHA256": "d064f39d73c772de6b03b7072941c2ad29e4fe0859ad097ac8e93c6b29c2246e",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2016_AMC_10B_Q14",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "852c67e43578639b3923ef9e994de2422bac26d29a9d33638014784567c3f7f7",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:lattice-counting"
+  "answer": {
+    "accepted": [
+      "D"
     ],
-    "supportIds": [
-      "math:floor-ceiling"
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "math:lattice-counting"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 10"
+  },
+  "id": "2016_AMC_10B_Q14",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\( \\ 30 \\)",
+        "id": "A"
+      },
+      {
+        "content": "\\( \\ 41 \\)",
+        "id": "B"
+      },
+      {
+        "content": "\\( \\ 45 \\)",
+        "id": "C"
+      },
+      {
+        "content": "\\( \\ 50 \\)",
+        "id": "D"
+      },
+      {
+        "content": "\\( \\ 57 \\)",
+        "id": "E"
+      }
     ],
-    "routes": [],
-    "flags": []
-  }
+    "prompt": "How many squares whose sides are parallel to the axes and whose vertices have coordinates that are integers lie entirely within the region bounded by the line \\(y=\\pi x,\\) the line \\(y=-0.1\\) and the line \\(x=5.1?\\)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:lattice-counting",
+        "math:linear-half-plane-systems"
+      ],
+      "explanation": "The region lies above \\(y=-0.1\\), below \\(y=\\pi x\\), and to the left of \\(x=5.1\\). Describe a square by its lower-left corner \\((a,b)\\) and side length \\(k\\). Integer vertices and sides parallel to the axes mean that \\(a,b,k\\) are integers with \\(k\\ge1\\).\n\nThe bottom and right edges satisfy the region's bounds exactly when \\(b\\ge0\\) and \\(a+k\\le5\\). For the sloping boundary, the upper-left corner is the most restrictive point: it has the greatest height and the smallest horizontal coordinate. Thus the complete containment conditions are\n\\[\nb\\ge0,\\qquad a+k\\le5,\\qquad b+k\\le\\pi a.\n\\]\nThese conditions are also sufficient, since every point of the square has \\(y\\le b+k\\) and \\(x\\ge a\\).\n\nBecause \\(b+k>0\\), the last inequality forces \\(a\\ge1\\). Hence \\(a\\le4\\) and \\(k\\le4\\). Using \\(3<\\pi<13/4\\), we have\n\\[\n3a<\\pi a<3a+1\\qquad(1\\le a\\le4).\n\\]\nSince \\(b+k\\) is an integer, its upper bound is therefore \\(3a\\). For fixed \\(a,k\\), the possible bottom coordinates are \\(b=0,1,\\ldots,3a-k\\), giving \\(3a-k+1\\) squares when \\(3a\\ge k\\).\n\nFor \\(k=1\\), the possible values \\(a=1,2,3,4\\) give \\(3+6+9+12=30\\) squares.\n\nFor \\(k=2\\), the values \\(a=1,2,3\\) give \\(2+5+8=15\\) squares.\n\nFor \\(k=3\\), the values \\(a=1,2\\) give \\(1+4=5\\) squares.\n\nFor \\(k=4\\), only \\(a=1\\) could fit horizontally, but then \\(b+4\\le\\pi\\) is impossible because \\(b\\ge0\\) and \\(\\pi<4\\).\n\nEvery eligible square has exactly one triple \\((a,b,k)\\), so these cases include every square once. The total is \\(30+15+5=50\\), choice D.",
+      "id": "count-by-square-side-length",
+      "sourceRef": "amc/2016_AMC_10B_Q14#count-by-square-side-length",
+      "title": "Count squares by side length"
+    }
+  ],
+  "sourceRef": "amc/2016_AMC_10B_Q14"
 }

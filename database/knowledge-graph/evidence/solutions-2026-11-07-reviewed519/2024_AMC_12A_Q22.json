@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2024_AMC_12A_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "3b636b45e54bd7690d35e2c3e2774f02d4f76b981bbb15b4fda9b395dbaca30a",
+    "figureHashes": {
+      "figures/2024_AMC_12A_Q22_question_fig1.svg": "0b16c4719ac72628a3c763f8158350a7721073bded839f80b75e333e647f1b42"
+    }
+  },
+  "solutionSHA256": "656fc96b6055b84148e3f5d396ab02ddf1a2e36e352bd846c34dfb356bd52753",
+  "solutionFigureHashes": {},
+  "candidateHash": "79af7c3b9d688e4030d0e6e87a5f96f8d280f64f173c0bf168f5e7424aea12be",
+  "candidate": {
+    "questionId": "2024_AMC_12A_Q22",
+    "derivedAnswer": "146 ways, choice C",
+    "answerStatus": "matches",
+    "answerReason": "Encoding loops by their enclosed cells gives two cases with no enclosed middle cell and 2^6 + 2·2^5 + 2^4 cases with a nonempty middle run, totaling 146.",
+    "methods": [
+      {
+        "id": "enclosed-cell-bijection",
+        "label": "Count the enclosed cells",
+        "explanation": "Instead of choosing toothpicks individually, record which squares are inside the loop. Call these squares included. A toothpick lies on an edge exactly when that edge separates an included square from an outside square, treating everything beyond the grid as outside. Thus the included squares determine all the toothpicks uniquely.\n\nThe included squares must be connected through shared sides, because a single loop that does not intersect itself encloses one connected region. Each middle-row square has exactly one neighboring square with the opposite inclusion status, counting the exterior as a neighbor at the left and right ends.\n\nFirst suppose no middle-row square is included. Each column must then have exactly one of its top and bottom squares included. The included squares in the top and bottom rows cannot connect through the empty middle row, so connectivity forces either the entire top row or the entire bottom row to be included. Both give valid rectangular loops, for \\(2\\) possibilities.\n\nNow suppose at least one middle-row square is included. Whenever two neighboring middle-row squares have different statuses, the outside square already has its one toothpick along their common edge. Its top and bottom neighbors must therefore also be outside. Hence its entire column is empty.\n\nIt follows that the included middle squares form one consecutive run. Otherwise, an empty column in a gap would separate included squares on its two sides. Number the columns \\(1\\) through \\(8\\). The run cannot start at column \\(3\\) or later: the column immediately before the run would be empty, while the first middle square, having both horizontal neighbors outside, would force a top or bottom square in column \\(1\\) to be included. These included squares could not connect across the empty column. Similarly, the run must end at column \\(7\\) or \\(8\\). Thus it starts at \\(1\\) or \\(2\\) and ends at \\(7\\) or \\(8\\).\n\nAt each endpoint of this run, the middle square has one horizontal neighbor outside, so both its top and bottom neighbors must be included. At each internal column of the run, both horizontal neighbors are included, so exactly one of the top and bottom squares must be included. Any omitted end column is entirely outside.\n\nConversely, every configuration just described satisfies all eight clues and produces one allowed loop. Its solid middle strip keeps its upper and lower boundary paths separate; these step paths join at the two ends without crossing or touching elsewhere. The enclosed squares recover every choice uniquely, so this correspondence neither omits nor repeats a loop.\n\nIf both end middle squares are included, the run has \\(8\\) columns and \\(6\\) internal columns, giving \\(2^6\\) choices. If exactly one end middle square is omitted, there are \\(2\\) choices of which end and \\(2^5\\) choices within the run. If both are omitted, there are \\(2^4\\) choices. These cases are disjoint and exhaustive, so the total is\n\\[\n2+2^6+2\\cdot2^5+2^4\n=2+64+64+16\n=\\boxed{146}.\n\\]\nThe answer is choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_h232",
+          "math:bijective-counting",
+          "math:graph-models"
+        ],
+        "prerequisiteIds": [
+          "cnm_h230",
+          "cnm_h231"
+        ],
+        "levelReason": "The argument uses elementary connectivity, local edge constraints, and independent two-way choices. It requires no advanced graph or topological theorem."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h232"
+    ],
+    "supportIds": [
+      "cnm_h230",
+      "cnm_h231"
+    ],
+    "annotationRationale": "The route-neutral target is an exhaustive count combining disjoint cases and independent choices. The written route specifically uses a bijection between loops and enclosed-cell configurations, with cell adjacency and connectivity providing the graph-model component. Addition and multiplication principles support the final count.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2024_AMC_12A_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "The figure has eight middle-row clues equal to 1. The boundary encoding correctly translates each clue into exactly one neighboring opposite status. Connectivity forces either the two configurations with no included middle cells or a single run starting at column 1 or 2 and ending at column 7 or 8. The endpoint constraints and independent internal choices give 2 + 64 + 32 + 32 + 16 = 146. The converse boundary argument establishes valid single loops and prevents duplication.",
+    "levelCheck": "The connectivity and counting reasoning is elementary and sufficiently explained for AMC 12.",
+    "methodDistinctness": "The single enclosed-cell counting method provides a complete argument.",
+    "annotationCheck": "Combined counting is a justified route-neutral target. Bijection and cell-adjacency connectivity fit the method-local nodes; addition and multiplication are appropriate support.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "enclosed-cell-bijection": "enclosed-cell-bijection"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "eb678528553a87398c6e25191b698dad5dcbb61596426daf421ac4687ebd9b6c",
+    "acceptedAt": "2026-11-07T08:09:08.053604+00:00",
+    "inputHash": "6a241f2c8ef5f6ee13a68747a2f247f8043e2ee9d1deee161096f37e031e24eb",
+    "authorInputHash": "2a5292d7227078c6cc6761b6f826ce0517655961d0656cdc42565d046864bb3e",
+    "reviewInputHash": "12b9c07918d872fae786454a6263e5cfcf5064ca3fbe906738436bafbb10e65b",
+    "authorResponseHash": "7cc72f04d84f7f0deceaa9e0a33a2e805d5a38868143622909c93a638ce1f194",
+    "reviewerResponseHash": "0f4dd047da831f981ccccaec3e2f825edb8ae97d7492e95cd55855edb91b6925",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,63 +1,58 @@
 {
-  "Year": 2016,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 18,
-  "Question": "Each vertex of a cube is to be labeled with an integer \\(1\\) through \\(8,\\) with each integer being used once, in such a way that the sum of the four numbers on the vertices of a face is the same for each face. Arrangements that can be obtained from each other through rotations of the cube are considered to be the same. How many different arrangements are possible?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(1\\)",
-    "B": "\\(3\\)",
-    "C": "\\(6\\)",
-    "D": "\\(12\\)",
-    "E": "\\(24\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "cube geometry; casework; symmetry",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2016A/solutions",
-    "SourceSHA256": "b65e1707329813ed6e08481325ea7da9526096f14a7b14cdefe54ae464e5e4d4",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2016_AMC_10A_Q18",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "b76147914b61d4b82f9b3212dc2b4197768d2bede369868c36d32dc16e1a7fb6",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:symmetry-counting"
+  "answer": {
+    "accepted": [
+      "C"
     ],
-    "supportIds": [
-      "cnm_h234"
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "math:symmetry-counting"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 10"
+  },
+  "id": "2016_AMC_10A_Q18",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(1\\)",
+        "id": "A"
+      },
+      {
+        "content": "\\(3\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(6\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(12\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(24\\)",
+        "id": "E"
+      }
     ],
-    "routes": [],
-    "flags": []
-  }
+    "prompt": "Each vertex of a cube is to be labeled with an integer \\(1\\) through \\(8,\\) with each integer being used once, in such a way that the sum of the four numbers on the vertices of a face is the same for each face. Arrangements that can be obtained from each other through rotations of the cube are considered to be the same. How many different arrangements are possible?"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:symmetry-counting",
+        "math:finite-constraint-deduction",
+        "cnm_h234",
+        "cnm_h232"
+      ],
+      "explanation": "Two opposite faces partition the eight vertices. Since the labels sum to \\(36\\), every face must sum to \\(18\\).\n\nColor the vertices black and white so that every edge joins different colors. There are four vertices of each color. Call the black labels \\(a,b,c,d\\), and call their respective opposite-vertex labels \\(a',b',c',d'\\). Any two black vertices lie on one face, together with the white partners of the other two black vertices. For example, comparing two face sums gives\n\\[\na+b+c'+d'=a+c+b'+d',\n\\]\nso \\(b-b'=c-c'\\). Comparing faces with other shared black vertices in the same way gives\n\\[\na-a'=b-b'=c-c'=d-d'.\n\\]\nThus all four opposite pairs have the same positive difference \\(k\\), and their four smaller labels occupy one color class.\n\nLet \\(S\\) be the sum of those smaller labels. The larger labels sum to \\(S+4k\\), so\n\\[\n2S+4k=36,\n\\qquad S=18-2k.\n\\]\nThe four smaller labels are distinct positive integers, so \\(S\\ge1+2+3+4=10\\). Therefore \\(1\\le k\\le4\\).\n\nFor a fixed difference, the smallest unused number must be paired with the number \\(k\\) larger. This forces the following pairings:\n\\[\n\\begin{aligned}\nk=1:&\\ (1,2),(3,4),(5,6),(7,8),\\\\\nk=2:&\\ (1,3),(2,4),(5,7),(6,8),\\\\\nk=4:&\\ (1,5),(2,6),(3,7),(4,8).\n\\end{aligned}\n\\]\nFor \\(k=3\\), the forced pairs \\((1,4),(2,5),(3,6)\\) leave \\(7\\) and \\(8\\), which cannot be paired. Thus exactly three pairings are possible.\n\nConversely, each displayed pairing produces valid labelings. Choose either color class for the smaller labels, arrange them on its four vertices, and put each larger partner opposite its smaller partner. Every face contains one endpoint from each pair, with exactly two larger endpoints. Its sum is therefore \\(S+2k=18\\).\n\nFor each pairing there are\n\\[\n2\\cdot(4\\cdot3\\cdot2\\cdot1)=48\n\\]\nlabelings of a fixed cube. These choices neither omit nor repeat a labeling, because its opposite pairs and smaller-label color class are determined by its labels. Altogether there are \\(3\\cdot48=144\\) labelings.\n\nA cube has \\(8\\cdot3=24\\) rotations: choose the image of one vertex, then the image of one of its incident edges. Since every label is different, no nonidentity rotation preserves a labeling. Each arrangement is therefore counted exactly \\(24\\) times, giving\n\\[\n\\frac{144}{24}=\\boxed{6},\n\\]\nchoice \\(\\text{C}\\).",
+      "id": "opposite-pairs-and-rotations",
+      "sourceRef": "amc/2016_AMC_10A_Q18#opposite-pairs-and-rotations",
+      "title": "Opposite pairs and rotations"
+    }
+  ],
+  "sourceRef": "amc/2016_AMC_10A_Q18"
 }

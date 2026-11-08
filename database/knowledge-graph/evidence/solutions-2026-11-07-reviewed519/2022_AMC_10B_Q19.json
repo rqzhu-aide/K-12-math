@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2022_AMC_10B_Q19",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "a692b2e879dab01b5226614b08b0d6183f7b1bc19e37d80a130bb41480fd1336",
+    "figureHashes": {
+      "figures/2022_AMC_10B_Q19_question_fig1.svg": "2aa73f71b05ea1ce7794296b5347af2679c970acd63b333afaa51b135d8c1d49",
+      "figures/2022_AMC_10B_Q19_question_fig2.svg": "ea6127f02acd85ff961e4e20daac70aa399d7a2908991578b5482be24b56a4ce"
+    }
+  },
+  "solutionSHA256": "130fa5c3c908ed06ca0d908e2d7393aa77cb090df66d5226f08ab1bc4fff182b",
+  "solutionFigureHashes": {},
+  "candidateHash": "3e4fde4fb832e22003f7a24c562e22342db551d636f9594cee388396b23ff4e3",
+  "candidate": {
+    "questionId": "2022_AMC_10B_Q19",
+    "derivedAnswer": "22, choice C",
+    "answerStatus": "matches",
+    "answerReason": "No configuration with four filled squares works. With three filled squares, the required transformation occurs exactly when those squares reach both extreme rows and both extreme columns of the inner subgrid. There are 14+4+4=22 such triples.",
+    "methods": [
+      {
+        "id": "2022_AMC_10B_Q19_m1",
+        "label": "Count triples that reach all four sides",
+        "explanation": "The center neighbors every other square of the inner \\(3\\times3\\) subgrid. If it starts empty, it needs exactly three filled neighbors. If it starts filled, it needs two or three filled neighbors. Thus there must initially be either three filled squares, or four filled squares including the center. All neighbor counts refer to the initial grid.\n\nFirst rule out four filled squares. Besides the center, there would be three filled squares around it. If any two of those three are neighbors, each has at least two and at most three filled neighbors, including the center, so an unwanted square survives. Therefore those three squares must be pairwise nonneighboring.\n\nIf all three are corners, two occupy the ends of one side of the subgrid. If one is a side midpoint, its only nonneighbors around the center are the three squares on the opposite side; the only nonneighboring pair among those is the two corners. In either situation, two filled corners lie on the same side, and the midpoint between them is empty. That midpoint neighbors those two corners and the center, but not the third outer filled square. It therefore becomes filled. So four filled squares cannot work.\n\nNow suppose exactly three squares start filled. A square is filled after the transformation exactly when the square together with its neighbors contains all three initial filled squares: an initially empty square then has three filled neighbors, while an initially filled square has two.\n\nConsequently, the three chosen squares must reach both the top and bottom rows, and both the left and right columns, of the inner subgrid. These conditions are sufficient because a neighborhood containing squares in both extreme rows must be centered in the middle row; the same argument forces its column to be the middle column. They are also necessary. For example, if the top row contains no filled square, the neighborhood of the square immediately below the center also contains all three initial filled squares, producing an extra filled square. The other missing sides work similarly. This argument also checks the surrounding border.\n\nCount triples satisfying these four conditions.\n\nIf a triple contains two diagonally opposite corners, choose that corner pair in \\(2\\) ways and the third square in \\(7\\) ways. A triple cannot contain both opposite-corner pairs, so this gives \\(2\\cdot7=14\\) configurations.\n\nSuppose there is no opposite-corner pair. There must be at least one corner, because without corners, reaching all four sides would require all four side midpoints. There cannot be three corners, because any three corners contain an opposite pair.\n\nWith exactly two corners, they must be the endpoints of one side. The third square must reach the opposite side, and either corner there would create an opposite-corner pair. Thus it must be that side's midpoint. There are \\(4\\) choices for the side containing the two corners.\n\nWith exactly one corner, the other two squares must be the midpoints of the two sides opposite that corner. For example, the upper-left corner requires the bottom and right midpoints. There are \\(4\\) choices for the corner.\n\nThese cases are exhaustive and disjoint, and the choices count different orientations separately. The total is\n\\[\n14+4+4=\\boxed{22},\n\\]\nwhich is choice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "math:graph-coloring",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_h230",
+          "cnm_h231"
+        ],
+        "levelReason": "The method uses elementary neighborhood reasoning and an exhaustive count by cases, within AMC 10 scope."
+      }
+    ],
+    "assessedIds": [
+      "math:graph-coloring"
+    ],
+    "supportIds": [
+      "cnm_h230",
+      "cnm_h231"
+    ],
+    "annotationRationale": "The target is counting cell assignments under a specified local adjacency rule, which fits the catalog's broader coloring description. The method combines disjoint cases and sequential choices through cnm_h232, supported by the addition and multiplication principles. It does not require formal graph modeling or counting arrangements up to symmetry.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2022_AMC_10B_Q19",
+    "decision": "accept",
+    "mathematicalCheck": "The center condition permits only three filled cells or four including the center. In the four-cell case, adjacent outer cells survive; pairwise nonneighboring outer cells force an unwanted birth between two corners. With three cells, the unique resulting filled cell is the center exactly when the triple reaches both extreme inner rows and columns. This also excludes border births. The exhaustive, disjoint counts 14+4+4 give 22.",
+    "levelCheck": "Elementary neighborhood reasoning and case counting fit AMC 10. The decisive necessity, sufficiency, and counting steps are explained.",
+    "methodDistinctness": "One complete method is supplied and is sufficient.",
+    "annotationCheck": "The catalog explicitly includes cell assignments under local adjacency rules within math:graph-coloring. Combined counting and its addition and multiplication prerequisites fit the method; formal graph modeling is unnecessary.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "2022_AMC_10B_Q19_m1": "2022_AMC_10B_Q19_m1"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "8599ee53e0c4061dfe34851ab3c5f65bdbf9bff23aeac404738877ff504457db",
+    "acceptedAt": "2026-11-07T08:18:09.824769+00:00",
+    "inputHash": "84ce152dde3d2e6afde3f0884678c2902e36a7f72d1d38e90e1e6324b725f769",
+    "authorInputHash": "77b0789e61b900253304674c305fc5ef6ea13999f31f34d76405f9d3d7f5b642",
+    "reviewInputHash": "f28f381bedc16738ff64a23e537974da7f74745c598091b14ffd19a076ee6299",
+    "authorResponseHash": "c9b4c5cfe689efd549001339ef4e4f6059c274c6968ddf103973e7aa64592295",
+    "reviewerResponseHash": "603b23db0e1c103ebf5d86cbbc6876810c044f2e4af5607e769c0104f216d0ca",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

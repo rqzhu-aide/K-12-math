@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2024_AMC_8_Q14",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "cf0354c4e4181c4a7c2836f1f0b9c045b194c7272a68bac1ab9c73b29c9ceea5",
+    "figureHashes": {
+      "figures/2024_AMC_8_Q14_question_fig1.svg": "7ef346788e8defb34444769068994613ea54d2a429194eabee2e1e28431ce464"
+    }
+  },
+  "solutionSHA256": "f171d9883c60c4b5bdc1eb57d421e4a539338302adc8e7bae62e57043d182494",
+  "solutionFigureHashes": {},
+  "candidateHash": "d474f4effcd32a4a1593c64b6263700e0a096c28b097cd476dc7803471702b3d",
+  "candidate": {
+    "questionId": "2024_AMC_8_Q14",
+    "derivedAnswer": "28 km (A)",
+    "answerStatus": "matches",
+    "answerReason": "Comparing all incoming routes successively gives minimum distances 5, 7, 13, and 18 to X, M, Y, and C. The minimum distance to Z is 28, attained along A to X to M to Y to C to Z.",
+    "methods": [
+      {
+        "id": "successive-shortest-distances",
+        "label": "Find the least distance to each town",
+        "explanation": "Every arrow leads forward in the order \\(A,X,M,Y,C,Z\\), so we can find the least distances in that order. For any fixed final leg, taking a longer route to its starting town can only increase the total. Thus we only need the least distances already found when comparing incoming routes.\n\n- To \\(X\\), the only incoming route is from \\(A\\), giving \\(5\\) kilometers.\n\n- To \\(M\\), compare the direct distance \\(8\\) with \\(5+2=7\\) through \\(X\\). The least distance is \\(7\\).\n\n- To \\(Y\\), compare \\(5+10=15\\) through \\(X\\) with \\(7+6=13\\) through \\(M\\). The least distance is \\(13\\).\n\n- To \\(C\\), compare \\(7+14=21\\) through \\(M\\) with \\(13+5=18\\) through \\(Y\\). The least distance is \\(18\\).\n\nThe final arrow into \\(Z\\) must come from \\(M\\), \\(Y\\), or \\(C\\). The least totals for these three possibilities are\n\\[\n\\begin{aligned}\n\\text{through }M &: 7+25=32,\\\\\n\\text{through }Y &: 13+17=30,\\\\\n\\text{through }C &: 18+10=28.\n\\end{aligned}\n\\]\nThese comparisons include every incoming arrow at each town, so no allowed route is missed. The smallest total is attained by \\(A\\to X\\to M\\to Y\\to C\\to Z\\), whose length is\n\\[\n5+2+6+5+10=\\boxed{28}\\text{ kilometers}.\n\\]\nThe answer is choice \\(\\text{A}\\).",
+        "nodeIds": [
+          "cnm_p181",
+          "math:extremal-principle"
+        ],
+        "prerequisiteIds": [
+          "cnm_p029",
+          "cnm_p064"
+        ],
+        "levelReason": "Uses directed route reading, addition of distances, and exhaustive comparisons of small whole-number totals."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p181",
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_p029",
+      "cnm_p064"
+    ],
+    "annotationRationale": "Reading the allowed routes and summing their lengths is captured by cnm_p181. The optimization target also requires proving that every route is at least as long as the claimed minimum and displaying a route attaining it, matching the extremal node. Number comparison and mental addition support the calculations. Successive comparison of all incoming routes supplies the proof of minimality.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2024_AMC_8_Q14",
+    "decision": "accept",
+    "mathematicalCheck": "The figure confirms every stated arrow and distance, all forward in the proposed order. Comparing every incoming route gives minimum distances 5, 7, 13, and 18 to X, M, Y, and C. The three possible final legs give totals 32, 30, and 28. The displayed route attains 28, and the successive comparisons prove no route is shorter.",
+    "levelCheck": "The method explains why shorter prefixes suffice and uses only route reading, addition, and elementary comparisons suitable for AMC 8.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Route reading and discrete minimization are justified route-neutral assessments. Number comparison and mental addition fit the supplied support-node scopes. The annotations do not claim an unsupported directed-graph equivalence.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "successive-shortest-distances": "successive-shortest-distances"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "7eac3a5cb7620eeae38e8a59d467d5646d91d750ceb3b16b638c74c2fc28be8d",
+    "acceptedAt": "2026-11-07T08:04:11.543918+00:00",
+    "inputHash": "1f847fb7b9ea20f729692b034044ba7ac95f16170c3e09377c4899f33134c633",
+    "authorInputHash": "6da818b33b86c686ffad0e75b219ba7e39af53b85ab6348a19265e2d936befb5",
+    "reviewInputHash": "884431becca5d0ac14d1b65f1dab750de01a8d61243b7f5d57bd99efcd0c7596",
+    "authorResponseHash": "10f20c6ac70547c369a0a57cb22cefc26141effaca9bdb18b16e3b2b549b4e2c",
+    "reviewerResponseHash": "7edec2ff6c9d827daf75f10c8fa6d25a25182935451bce84abe16b57cf32e911",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

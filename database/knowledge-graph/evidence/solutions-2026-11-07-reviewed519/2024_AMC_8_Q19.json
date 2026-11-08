@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2024_AMC_8_Q19",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "f4fa14fa40e3bf65b6c9030e14c1477cbf1b3641946286034603f088eaa89c65",
+    "figureHashes": {
+      "figures/2024_AMC_8_Q19_fig1.png": "5da7ba0ab4827779e38ad33ad6bc49d93eae58e9f2d8a7aecc539d837d1078bc"
+    }
+  },
+  "solutionSHA256": "8180d7a8059a838de8bdc4238e77d2772cc0ca11423dfd6a1c2a3ff655b6e22e",
+  "solutionFigureHashes": {},
+  "candidateHash": "83f32e7229cd88cef18113664aa3e3d5e55ef93938f26d84598d4fa887046b39",
+  "candidate": {
+    "questionId": "2024_AMC_8_Q19",
+    "derivedAnswer": "C: 4/15",
+    "answerStatus": "matches",
+    "answerReason": "There are 9 red pairs, 6 white pairs, and 10 high-top pairs. At most 6 high-top pairs can be white, so at least 4 must be red. A collection with 4 red high-top, 5 red low-top, and 6 white high-top pairs attains this bound, giving 4/15 and choice C.",
+    "methods": [
+      {
+        "id": "use-white-pairs-first",
+        "label": "Method 1: Use as many white high-tops as possible",
+        "explanation": "To make the number of red high-top pairs as small as possible, make as many high-top pairs white as the color totals allow.\n\nThe collection contains\n\\[\n\\frac35\\cdot15=9\\text{ red pairs},\\qquad\n\\frac23\\cdot15=10\\text{ high-top pairs}.\n\\]\nThere are only \\(15-9=6\\) white pairs. Thus at most \\(6\\) of the \\(10\\) high-top pairs can be white, forcing at least \\(10-6=4\\) high-top pairs to be red.\n\nThis minimum can actually occur: take \\(6\\) white high-top pairs, \\(4\\) red high-top pairs, and \\(5\\) red low-top pairs. These give exactly \\(15\\) pairs, including \\(9\\) red pairs and \\(10\\) high-top pairs, as required.\n\nTherefore the least possible fraction is \\(\\boxed{\\frac4{15}}\\), choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "math:extremal-principle"
+        ],
+        "prerequisiteIds": [
+          "cnm_p179",
+          "cnm_p035",
+          "cnm_p165"
+        ],
+        "levelReason": "The lower bound follows from an elementary capacity argument and subtraction. An explicit collection proves that the bound is attainable."
+      },
+      {
+        "id": "count-repeated-pairs",
+        "label": "Method 2: Count the overlap",
+        "explanation": "The red pairs and high-top pairs together give more counts than there are pairs in the collection. That forces some pairs to have both properties.\n\nThere are \\(\\frac35\\cdot15=9\\) red pairs and \\(\\frac23\\cdot15=10\\) high-top pairs. Count each red pair once and each high-top pair once. This produces\n\\[\n9+10=19\\text{ counts}.\n\\]\nA red high-top pair is counted twice. Every other pair is counted at most once. Since there are only \\(15\\) pairs, at most \\(15\\) of the \\(19\\) counts can be first counts. At least \\(19-15=4\\) must therefore be second counts, each coming from a different red high-top pair. So there must be at least \\(4\\) red high-top pairs.\n\nTo attain this bound, use \\(4\\) red high-top pairs, \\(5\\) red low-top pairs, and \\(6\\) white high-top pairs, with no white low-top pairs. This gives \\(15\\) pairs in total, \\(9\\) red pairs, and \\(10\\) high-top pairs.\n\nThe least possible fraction is thus \\(\\boxed{\\frac4{15}}\\), choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_p081"
+        ],
+        "prerequisiteIds": [
+          "cnm_p179",
+          "cnm_p035",
+          "cnm_p165"
+        ],
+        "levelReason": "Counting pairs twice when they have both properties is elementary overlap reasoning. The method uses only whole-number counts and fractions."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_p179",
+      "cnm_p035",
+      "cnm_p165"
+    ],
+    "annotationRationale": "The task asks for a sharp minimum, so the assessed target is proving a universal bound and exhibiting a collection attaining it. Both methods use fractional parts to obtain category totals, part-whole relations, and the meaning of the final fraction. The first bounds the available white high-top pairs. The second additionally tracks duplicate counts in overlapping categories, so cnm_p081 belongs only to that method.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2024_AMC_8_Q19",
+    "decision": "accept",
+    "mathematicalCheck": "There are 9 red, 6 white, and 10 high-top pairs. At most 6 high-tops can be white, forcing at least 4 red high-tops. The second method independently obtains the same bound from 19 category counts among 15 pairs, with each pair counted at most twice. Both attain the bound using 4 red high-top, 5 red low-top, 6 white high-top, and 0 white low-top pairs, establishing the minimum fraction 4/15.",
+    "levelCheck": "Both proofs explain the bound and its attainment using elementary counts and fractions suitable for AMC 8.",
+    "methodDistinctness": "The capacity argument and duplicate-count argument offer distinct, accessible perspectives.",
+    "annotationCheck": "math:extremal-principle is route-neutral and supported by both bound-and-construction proofs. The shared fraction and part-whole support IDs are justified; cnm_p081 appropriately remains local to the overlap method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "use-white-pairs-first": "use-white-pairs-first",
+    "count-repeated-pairs": "count-repeated-pairs"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "7ae17f19263e523a200bf8b6c5d0ed75dfc727bcfb18ec082399b5c932fd0b4e",
+    "acceptedAt": "2026-11-07T08:01:00.386859+00:00",
+    "inputHash": "bddbcb22e286d1e8ecb49f82d33cf070599f6acc864baffffd2f8cda6cc37b70",
+    "authorInputHash": "11e74ce38b405a4814f65d4b9463bad8f3e9089f4573a33150ee2338d79b7a81",
+    "reviewInputHash": "ff9c1f04c2cd73c3c2942f45d20f4781c6cc7aef9715eef288182092b92ea47f",
+    "authorResponseHash": "485d948ab8116ce64f4e096976eca232806de2004c3d9d9bec57a70c699a4f83",
+    "reviewerResponseHash": "2a6f3056afb73083c6a016d2788ea4a0d6b7e6d80ddce55b6557d604c7c00905",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

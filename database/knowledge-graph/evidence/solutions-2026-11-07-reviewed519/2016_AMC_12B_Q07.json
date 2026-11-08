@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_12B_Q07",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "4b541e1abdd56d4653d3fe288f0e5448e4f5c3414f7c92fdc75c6ee65841bab2",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "cffec13cc25980e9c9854f376ec4960b5ed598dde12ddbe75ac245260a957d38",
+  "solutionFigureHashes": {},
+  "candidateHash": "27de67914a94da9375eed8cebd950bf1c44df748cc78bd9f26b97c792d347f2e",
+  "candidate": {
+    "questionId": "2016_AMC_12B_Q07",
+    "derivedAnswer": "64 (D)",
+    "answerStatus": "matches",
+    "answerReason": "Each pass keeps the even-numbered positions of the current list. Successive survivor lists have doubled spacing, and the final two passes reduce 16,32,48,64,80,96 to 32,64,96 and then to 64, agreeing with choice D.",
+    "methods": [
+      {
+        "id": "successive-survivors",
+        "label": "Track how each pass changes the survivors",
+        "explanation": "Each pass crosses out the first, third, fifth, and subsequent odd-numbered positions of the current list. It keeps exactly the even-numbered positions.\n\nIf the current list is \\(d,2d,3d,\\ldots\\), containing all positive multiples of \\(d\\) up to \\(100\\), the next pass keeps exactly \\(2d,4d,6d,\\ldots\\) up to \\(100\\). Thus each pass doubles the spacing, and this description includes every survivor.\n\nStarting with \\(d=1\\), the first four passes leave all multiples of \\(2\\), then \\(4\\), then \\(8\\), then \\(16\\), respectively. After the fourth pass, the complete list is\n\\[\n16,\\ 32,\\ 48,\\ 64,\\ 80,\\ 96.\n\\]\nThe fifth pass leaves \\(32,64,96\\). On the sixth pass, Josh crosses out \\(32\\), skips \\(64\\), and crosses out \\(96\\). Exactly one number remains: \\(64\\), choice D.",
+        "nodeIds": [
+          "cnm_p153",
+          "cnm_p156"
+        ],
+        "prerequisiteIds": [
+          "cnm_p003",
+          "cnm_p073"
+        ],
+        "levelReason": "The method uses positional counting, odd and even positions, and repeated doubling. It requires neither a general sequence formula nor formal induction."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_p003",
+      "cnm_p073"
+    ],
+    "annotationRationale": "The task's target is tracking repeated positional deletion in a finite ordered list, for which the catalog has no precise node. That target is proposed below rather than replaced by a formal recurrence label. The written method uses multiples and position parity; ordinal positions and the meaning of doubling support those steps.",
+    "needsNewNodes": [
+      {
+        "name": "Repeated elimination from an ordered list",
+        "description": "Determine survivors when a finite ordered list is repeatedly filtered by a stated positional rule. Track where each pass restarts, the end of the list, and the stopping condition, and justify that the survivor description is exhaustive.",
+        "reason": "The catalog contains numerical recurrence relations and stack-specific simulations, but neither precisely covers repeated alternating deletion from a list that restarts at its first remaining entry."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_12B_Q07",
+    "decision": "accept",
+    "mathematicalCheck": "Each restarted pass retains exactly the even positions, converting all multiples of \\(d\\) through 100 into all multiples of \\(2d\\). Survivor counts are \\(100,50,25,12,6,3,1\\); the final lists are \\(32,64,96\\) and then \\(64\\).",
+    "levelCheck": "The explanation justifies every survivor through positional counting and repeated doubling without advanced machinery.",
+    "methodDistinctness": "One exhaustive survivor-tracking method is sufficient.",
+    "annotationCheck": "Multiples, position parity, ordinal positions, and doubling match their nodes. The empty assessedIds and proposed elimination node honestly identify a catalog gap without claiming equivalence to numerical recurrences or stack operations.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "successive-survivors": "successive-survivors"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "1a8f338f12e4fc06ff6d592e499a7926377d6703f147227db07c661baf2770e8",
+    "acceptedAt": "2026-11-07T10:46:41.362540+00:00",
+    "inputHash": "972e7448a2d68a45a52824bdab8960fb66d8af995d399c7ce637d358ec53f389",
+    "authorInputHash": "7f43009c50a143b707fb28b1053499df15ca8e5cb4f1980f81af173fb78a5df2",
+    "reviewInputHash": "566e7de8758dd14e90289fae75114f5f4074a82c338ca41d9347898eef76ea61",
+    "authorResponseHash": "f2aa5c39395a2e46590d73fbff30a64b293e0e05d76afc9c12287253fbcfbadc",
+    "reviewerResponseHash": "349bf96f5c3ed37cfb217a28512a3123b1a616e6c234ef16b578f816fd0b21a7",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

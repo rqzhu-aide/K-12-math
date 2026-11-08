@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2025_AMC_8_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "cdefdefea5a1d089274464e807b1b2ae24c3645821ae58b95db7c5826d611064",
+    "figureHashes": {
+      "figures/2025_AMC_8_Q21_question_fig1.svg": "a0d9db5b398c37187ac0a225e640ea4a80195f341249d054361d84fc2c071805"
+    }
+  },
+  "solutionSHA256": "66922649ea14b9ec671eeeadad618e53edc9005496b053cab122b6f95fd783a7",
+  "solutionFigureHashes": {},
+  "candidateHash": "9dd45ce3d234b4501d94b7e971966975dc7dbf4f9dc8b3ba077455bc6ad379d5",
+  "candidate": {
+    "questionId": "2025_AMC_8_Q21",
+    "derivedAnswer": "A: 12",
+    "answerStatus": "matches",
+    "answerReason": "The walkways force C and F to receive grades 1 and 7, D and G to receive grades 2 and 6, and E to receive grade 4. The requested sum is therefore 12.",
+    "methods": [
+      {
+        "id": "consecutive-grade-constraints",
+        "label": "Use pods with few missing connections",
+        "explanation": "Consecutive grades must occupy pods without a connecting walkway. This makes pods with very few missing connections especially useful.\n\nReading the figure, \\(C\\) is connected to every other pod except \\(G\\), and \\(F\\) is connected to every other pod except \\(D\\). Any grade from \\(2\\) through \\(6\\) has two distinct consecutive grades, one below it and one above it. Its pod must therefore lack walkways to at least two other pods. Since \\(C\\) and \\(F\\) each lack only one connection, they must receive grades \\(1\\) and \\(7\\), in some order.\n\nThe grade consecutive to the grade in \\(C\\) must be in \\(G\\), its only unconnected pod. Likewise, the grade consecutive to the grade in \\(F\\) must be in \\(D\\). Thus \\(D\\) and \\(G\\) receive grades \\(2\\) and \\(6\\), in some order.\n\nThis leaves grades \\(3,4,5\\) for \\(A,B,E\\). There is a walkway between \\(A\\) and \\(B\\), so their grades must differ by at least \\(2\\). The only possible pair among \\(3,4,5\\) is \\(3\\) and \\(5\\), leaving grade \\(4\\) for \\(E\\).\n\nThese restrictions are consistent: assign grades \\(1\\) through \\(7\\), respectively, to\n\\[\nF,\\ D,\\ A,\\ E,\\ B,\\ G,\\ C.\n\\]\nEach consecutive-grade pair then occupies pods without a walkway, which rules out every possible violation.\n\nTherefore, the sum of the grades in \\(C,E,F\\) is\n\\[\n1+4+7=12,\n\\]\nchoice \\(\\mathrm{A}\\).",
+        "nodeIds": [
+          "math:finite-constraint-deduction",
+          "math:graph-models"
+        ],
+        "prerequisiteIds": [],
+        "levelReason": "Uses consecutive integers, counts of available pod connections, and elementary elimination. No formal graph-theory theorem is needed."
+      }
+    ],
+    "assessedIds": [
+      "math:finite-constraint-deduction"
+    ],
+    "supportIds": [],
+    "annotationRationale": "The task asks for a forced value in a finite assignment with distinctness and adjacency restrictions, matching finite-constraint deduction. The method also uses graph-model reasoning by counting each pod's missing connections and checking a sequence of consecutive-grade pairs. Formal graph terminology is optional, so it is recorded as method content rather than imposed as a separate task-level requirement.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2025_AMC_8_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "The figure confirms that C lacks only connection G, F lacks only connection D, and A connects to B. Thus C and F must receive 1 and 7, D and G receive 2 and 6, and E receives 4. The displayed assignment has no walkway between any consecutive-grade pair, establishing existence and the forced sum 12.",
+    "levelCheck": "The decisive elimination steps are explained through elementary counting and consecutive integers, appropriate for AMC 8.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Finite-constraint deduction accurately describes the assessed task. The method-local graph annotation is supported by counting missing connections and checking consecutive-grade pairs.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "consecutive-grade-constraints": "consecutive-grade-constraints"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "e92d4f027eb8132fc1578df016cc9a630ea528f3f11138fcb4f46ee6e5f89d33",
+    "acceptedAt": "2026-11-07T07:51:14.244445+00:00",
+    "inputHash": "e5eeeaa5498fb398992f81f47f6088ffed26ca10518b7769706bfbce31759704",
+    "authorInputHash": "2fa8e77ce0b90716f19329f6d42fc66195222650c3314aeff4118dbd6290b65b",
+    "reviewInputHash": "734b9778f755fabc4f29c5207f6ef2568a740b3da55380d9aeedcc612a32f1a5",
+    "authorResponseHash": "04a1d7648f43ddd64772aae45764307160c0a43e21da443b5e65d45db8abdb49",
+    "reviewerResponseHash": "eaf1299a29c3d30888a619b78fa2b6fd5bc95a77afa7887b15a97c113c927059",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

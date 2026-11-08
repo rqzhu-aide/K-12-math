@@ -1,84 +1,87 @@
 {
-  "Year": 2025,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 13,
-  "Question": "A circle has been divided into \\(6\\) sectors of different sizes. Then \\(2\\) of the sectors are painted red, \\(2\\) painted green, and \\(2\\) painted blue so that no two neighboring sectors are painted the same color. One such coloring is shown below.\n\n[Figure 1](figures/2025_AMC_12B_Q13_question_fig1.svg)\n\nHow many different colorings are possible?",
-  "Question Type": "mixed",
-  "Choices": {
-    "A": "\\(12\\)",
-    "B": "\\(16\\)",
-    "C": "\\(18\\)",
-    "D": "\\(24\\)",
-    "E": "\\(28\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "reviewed-source-concepts",
-    "Concepts": "graph theory; multiplication principle",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2025B/solutions",
-    "SourceSHA256": "9f851f1eb8b824abb334e0df4c017e663fc0135d4113cd5b6b5926fe4794110d",
-    "Figures": [
-      "figures/2025_AMC_12B_Q13_question_fig1.svg"
+  "answer": {
+    "accepted": [
+      "D"
     ],
-    "FigureSources": {
-      "figures/2025_AMC_12B_Q13_question_fig1.svg": {
-        "url": "https://live.poshenloh.com/images/past-contests/amc12/2025B/13.svg",
-        "alt": ""
-      }
-    },
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
+    "type": "choice"
   },
-  "ID": "2025_AMC_12B_Q13",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "assessedNodeIds": [
+    "math:graph-coloring"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "11ed2079eb704258093a83bebecf5e186e1ad71b43a1f255fa19b1c0588b9f64",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:graph-coloring"
+  "bank": "amc",
+  "classification": {
+    "area": "Counting & Probability",
+    "domainIds": [
+      "domain:counting-probability"
     ],
-    "supportIds": [],
-    "routes": [
+    "level": "AMC 12"
+  },
+  "id": "2025_AMC_12B_Q13",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "place-the-repeated-color",
-        "label": "Fix one sector and place its color mate",
-        "nodeIds": [
-          "cnm_h232"
-        ]
+        "content": "\\(12\\)",
+        "id": "A"
       },
       {
-        "id": "exclude-equal-color-neighbors",
-        "label": "Inclusion-exclusion on adjacent equal pairs",
-        "nodeIds": [
-          "math:multiset-permutations",
-          "math:inclusion-exclusion-general"
-        ]
+        "content": "\\(16\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(18\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(24\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(28\\)",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "A circle has been divided into \\(6\\) sectors of different sizes. Then \\(2\\) of the sectors are painted red, \\(2\\) painted green, and \\(2\\) painted blue so that no two neighboring sectors are painted the same color. One such coloring is shown below.\n\n[Figure 1](figures/2025_AMC_12B_Q13_question_fig1.svg)\n\nHow many different colorings are possible?"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:graph-coloring",
+        "cnm_h232"
+      ],
+      "explanation": "The sectors have different sizes, so we count colors on fixed sectors without identifying rotations or reflections. Label the sectors \\(1,2,\\ldots,6\\) clockwise, starting at any fixed sector. Remember that sectors \\(6\\) and \\(1\\) are neighbors.\n\n[Figure 1](figures/2025_AMC_12B_Q13_question_fig1.svg)\n\nThe three choices for the color of sector \\(1\\) give equal counts by relabeling colors. First suppose sector \\(1\\) is red. The other red sector cannot be \\(2\\) or \\(6\\), so it must be \\(3\\), \\(4\\), or \\(5\\).\n\nIf the other red sector is \\(3\\), sector \\(2\\) can be green or blue. Sectors \\(4,5,6\\) must alternate between green and blue. Since each color must occur twice, their order is forced once sector \\(2\\) is chosen. For example, if sector \\(2\\) is green, sectors \\(4,5,6\\) must be blue, green, blue. This gives \\(2\\) completions.\n\nIf the other red sector is \\(4\\), the remaining sectors form two adjacent pairs, \\((2,3)\\) and \\((5,6)\\). Each pair must contain one green and one blue, in either order. This gives \\(2\\cdot2=4\\) completions, all using each color twice.\n\nIf the other red sector is \\(5\\), sector \\(6\\) can be green or blue, and the alternating order on sectors \\(2,3,4\\) is then forced by the color totals. This gives \\(2\\) completions.\n\nThese cases exhaust the possible positions of the second red sector and do not overlap. Restoring all three choices for sector \\(1\\), the total is\n\\[\n3(2+4+2)=\\boxed{24},\n\\]\nwhich is choice \\(\\boxed{\\text{D}}\\).",
+      "id": "fix-first-color",
+      "sourceRef": "amc/2025_AMC_12B_Q13#fix-first-color",
+      "title": "Place the second occurrence of one color"
+    },
+    {
+      "directNodeIds": [
+        "math:graph-coloring",
+        "cnm_h232"
+      ],
+      "explanation": "Label the six fixed sectors \\(1,2,\\ldots,6\\) clockwise. Their different sizes make these distinguishable positions. Consider the three pairs\n\\[\n(1,4),\\qquad(2,5),\\qquad(3,6).\n\\]\nThese pairs are defined by positions in the list, not by geometric angles in the circle.\n\nAt least one of these pairs must have matching colors. To see why, suppose none does. Each color occurs twice, and its two sectors cannot be neighbors. If they also are not three positions apart, they must occupy either two odd-numbered positions or two even-numbered positions. The three odd-numbered positions would then have to be filled in groups of two, which is impossible.\n\nIf two of the displayed pairs have matching colors, those two colors are used up, so the last pair must match as well. Thus a valid coloring has either exactly one matching pair or all three.\n\nIf all three pairs match, assign the three different colors to the three pairs in \\(3\\cdot2\\cdot1=6\\) ways. Every neighboring pair of sectors then has different colors.\n\nIf exactly one pair matches, choose that pair in \\(3\\) ways and its color in \\(3\\) ways. The remaining four sectors form two adjacent pairs between its endpoints. Each adjacent pair must contain the other two colors, one of each. There are two orders for the first adjacent pair. For either order, exactly one order of the second adjacent pair makes all three displayed pairs match; the other order leaves exactly one matching pair. Therefore there are \\(2\\) completions for each choice of the unique matching pair and its color.\n\nThe two cases are disjoint and exhaustive, and the unique matching pair identifies each coloring in the second case exactly once. Hence the total is\n\\[\n6+3\\cdot3\\cdot2=\\boxed{24},\n\\]\nwhich is choice \\(\\boxed{\\text{D}}\\).",
+      "id": "three-position-pairs",
+      "sourceRef": "amc/2025_AMC_12B_Q13#three-position-pairs",
+      "title": "Find a matching color three positions later"
+    },
+    {
+      "directNodeIds": [
+        "cnm_h232"
+      ],
+      "id": "place-the-repeated-color",
+      "sourceRef": "amc/2025_AMC_12B_Q13#place-the-repeated-color",
+      "title": "Fix one sector and place its color mate"
+    },
+    {
+      "directNodeIds": [
+        "math:multiset-permutations",
+        "math:inclusion-exclusion-general"
+      ],
+      "id": "exclude-equal-color-neighbors",
+      "sourceRef": "amc/2025_AMC_12B_Q13#exclude-equal-color-neighbors",
+      "title": "Inclusion-exclusion on adjacent equal pairs"
+    }
+  ],
+  "sourceRef": "amc/2025_AMC_12B_Q13"
 }

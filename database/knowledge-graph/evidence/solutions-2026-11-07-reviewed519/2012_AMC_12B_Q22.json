@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2012_AMC_12B_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "9550c8322bada0d37409c2c53f4d104b7ef2898f0430fd4d4512155024762bb4",
+    "figureHashes": {
+      "figures/2012_AMC_12B_Q22_question_fig1.svg": "5254c38335ac4097c2b675a6518a9f6a9d8fc5e70e8dc3737a5601bee418e099"
+    }
+  },
+  "solutionSHA256": "208170425f9a492c9f905e570e66530e61e0635f323018b11c3575e12c764dcc",
+  "solutionFigureHashes": {
+    "figures/2012_AMC_12B_Q22_question_fig1.svg": "5254c38335ac4097c2b675a6518a9f6a9d8fc5e70e8dc3737a5601bee418e099"
+  },
+  "candidateHash": "16b0530ffe4582461b649be46d1c9a96d1ff82704e53da7b8e46c55e94bc479a",
+  "candidate": {
+    "questionId": "2012_AMC_12B_Q22",
+    "derivedAnswer": "\\(10\\) paths; none of the listed choices.",
+    "answerStatus": "disputed",
+    "answerReason": "Every displayed arrow is binding under the wording, including the small solid arrowheads. The actual directed lattice has five successful paths above AB and five below, giving 10. This confirms the recorded figure/key conflict: 10 is absent from the choices, while the supplied source key is E (2400). Preserve that key record and withhold automatic grading; no alternate arrow convention or figure repair is assumed.",
+    "methods": [
+      {
+        "id": "displayed-arrow-path-counts",
+        "label": "Follow every displayed arrow and add path counts",
+        "explanation": "The direction rule applies to every arrowhead shown, including the small solid ones. These solid arrows point rightward along their segments; the three hollow arrows on the middle horizontal line point leftward.\n\n[Figure 1](figures/2012_AMC_12B_Q22_question_fig1.svg)\n\nAt the right endpoint of each hollow arrow, all three incident arrows point away from that vertex. The bug cannot reach such a vertex from \\(A\\). At the left endpoint, all three incident arrows point into the vertex, so a bug arriving there cannot continue to \\(B\\). Consequently no successful path uses a middle horizontal segment or any of its endpoints.\n\nRemoving those unusable middle vertices separates successful paths into two cases: paths above \\(AB\\) and paths below \\(AB\\). We can count the upper case by writing the number of paths reaching the right endpoint of each horizontal segment. At a merge, add the incoming counts: the possible final incoming segments are different, so these cases do not overlap. At a split, carry the current count to each available continuation.\n\nThere are seven successive columns of horizontal segments above \\(AB\\). Listing the counts from top to bottom within each column gives\n\\[\n(1),\\quad(1),\\quad(1,1),\\quad(1,2),\n\\]\n\\[\n(3,2),\\quad(5),\\quad(5).\n\\]\nHere the lower entry in the fourth column is \\(1+1=2\\). In the fifth column, the upper entry is \\(1+2=3\\), while the lower entry carries forward \\(2\\). These merge in the sixth column to give \\(3+2=5\\), and the final column carries those five paths to \\(B\\).\n\nThe lower half has the same branching and merging pattern, so it also contributes five paths. Every successful path belongs to exactly one of these two cases. Moreover, every usable move goes strictly rightward, so none can repeat a segment. Thus the displayed conditions give\n\\[\n5+5=\\boxed{10}\n\\]\npaths. This is absent from the choices and conflicts with the supplied key \\(\\text{E}:2400\\).",
+        "nodeIds": [
+          "cnm_h230",
+          "math:recursive-counting-probability"
+        ],
+        "prerequisiteIds": [],
+        "levelReason": "The count uses only arrow directions, elimination of unreachable vertices and dead ends, and addition of small path counts. The remaining rightward graph needs no used-edge history."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h230"
+    ],
+    "supportIds": [],
+    "annotationRationale": "The task targets an exhaustive count of legal paths through disjoint cases, represented by the addition principle. The written route also uses a current-junction counting recurrence. After the unreachable sources and terminal sinks are removed, all remaining moves go right, which justifies retaining only the current junction rather than a used-edge set. Integer lattice-point counting and probability are not used.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The supplied figure and answer key conflict. The recorded qualification requires withholding automatic grading while preserving source key E (2400); no display repair or alternate arrow convention has been approved."
+    ]
+  },
+  "review": {
+    "questionId": "2012_AMC_12B_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "The actual figure shows rightward solid arrows and three leftward hollow arrows. Each hollow segment connects an unreachable source to a terminal sink, excluding its endpoints from successful paths. Independently following the upper branching pattern gives counts (1), (1), (1,1), (1,2), (3,2), (5), (5). Reflection gives 10 total paths. Strict rightward movement prevents repeated edges. The stated conflict with the choices and key is justified.",
+    "levelCheck": "The source/sink reasoning and addition of small path counts are accessible and sufficiently explained for AMC 12.",
+    "methodDistinctness": "One complete counting method is supplied; the recurrence describes that same method.",
+    "annotationCheck": "The addition-principle target and method-local counting recurrence fit their scopes. The current junction retains sufficient information because usable moves go rightward. The qualification preserves the figure/key conflict and appropriately withholds automatic grading.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "displayed-arrow-path-counts": "displayed-arrow-path-counts"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "ed2dda6a8af66289d8048d2ecc764556d373d6e2033f80b2f7508db39b339a84",
+    "acceptedAt": "2026-11-07T09:42:11.491701+00:00",
+    "inputHash": "9ffcf0186f400b7e8ec0e7507c10fa0b1fb70731b6d166e4c7d68580f543a787",
+    "authorInputHash": "c67cc650760dea9feb3eafc8e83abac9f30c4ba621db13ce715dda0378484fae",
+    "reviewInputHash": "58ce1529619a1425bb0872b1776153d3bb3d8a4afbb685fb41bd218a258c2605",
+    "authorResponseHash": "9f3aa3557ce1cb1db15f70afb1083bbd8a721a3495cbcd2881d86586b36431d5",
+    "reviewerResponseHash": "5031028b89743c6e47396688a7229bdb4d858f74843ab2ab369985165872508f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

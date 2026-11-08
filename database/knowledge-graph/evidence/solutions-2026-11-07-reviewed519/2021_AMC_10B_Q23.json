@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2021_AMC_10B_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "fe391c333b17c6d5cbbd29642c6476b0e637e382551492375a7e7d4dd5de089a",
+    "figureHashes": {
+      "figures/2021_AMC_10B_Q23_question_fig1.svg": "c4279fdf36a794c68bd173cc1587184b95bb9cfa9b72e98839169448747e0ff4"
+    }
+  },
+  "solutionSHA256": "971b7fde36c87f34ff6449a269e5a85cfc3ba7d113e7b9db573d8d2a405c68f6",
+  "solutionFigureHashes": {},
+  "candidateHash": "c3ec4549076fade8684603ad2eb97e3f665eed188d4f48bdbabce986e5efc375",
+  "candidate": {
+    "questionId": "2021_AMC_10B_Q23",
+    "derivedAnswer": "C. 68, under the usual uniform-center interpretation",
+    "answerStatus": "matches",
+    "answerReason": "Under the ordinary uniform-area interpretation of random location, the favorable center area is \\(11+6\\sqrt2+\\frac\\pi4\\), out of total area 49. Thus the probability is \\(\\frac{44+24\\sqrt2+\\pi}{196}\\), giving \\(a+b=68\\), choice C. The recorded qualification that the center density is not explicitly stated is retained.",
+    "methods": [
+      {
+        "id": "allowed-and-favorable-center-areas",
+        "label": "Areas of possible coin centers",
+        "explanation": "Use the usual geometric-probability interpretation: the coin's center is uniformly distributed over all positions that keep the coin inside the square. The coin has radius \\(\\frac12\\), so its center must stay at least \\(\\frac12\\) from every outer edge. Its allowed positions form a square of side \\(8-1=7\\), with area \\(49\\).\n\nPlace the outer square at \\([0,8]\\times[0,8]\\). The central square diamond has vertices \\((4,2)\\), \\((6,4)\\), \\((4,6)\\), and \\((2,4)\\). A coin reaches this diamond exactly when its center is inside the diamond or within distance \\(\\frac12\\) of its boundary.\n\nThese centers form the diamond itself, four outward rectangles along its sides, and four quarter-disks around its vertices. The pieces have disjoint interiors: outside the diamond, the nearest point lies either on a side or at a vertex. Their total area is\n\\[\n(2\\sqrt2)^2\n+4(2\\sqrt2)\\left(\\frac12\\right)\n+\\pi\\left(\\frac12\\right)^2\n=8+4\\sqrt2+\\frac\\pi4.\n\\]\nThis entire region lies inside \\([\\frac32,\\frac{13}{2}]^2\\), so none is excluded by the allowed-center square.\n\nNext consider the lower-left black triangle, described by \\(x,y\\ge0\\) and \\(x+y\\le2\\). Its sloping edge makes a \\(45^\\circ\\) angle with the axes. By Pythagoras, moving that edge outward by perpendicular distance \\(\\frac12\\) increases each axis intercept by \\(\\frac{\\sqrt2}{2}\\). Thus the relevant parallel boundary is\n\\[\nx+y=2+\\frac{\\sqrt2}{2}.\n\\]\nWithin the allowed-center region, the centers reaching this corner triangle are exactly\n\\[\nx\\ge\\frac12,\\qquad y\\ge\\frac12,\n\\qquad x+y\\le2+\\frac{\\sqrt2}{2}.\n\\]\nTo check that the finite sloping edge suffices, these inequalities give\n\\[\n|x-y|\\le x+y-1\n\\le1+\\frac{\\sqrt2}{2}<2.\n\\]\nHence the perpendicular foot on \\(x+y=2\\) lies on the actual edge between \\((2,0)\\) and \\((0,2)\\). Centers already inside the black triangle also satisfy the displayed inequalities.\n\nThe favorable region at this corner is therefore an isosceles right triangle with legs \\(1+\\frac{\\sqrt2}{2}\\). All four corners contribute\n\\[\n4\\cdot\\frac12\\left(1+\\frac{\\sqrt2}{2}\\right)^2\n=3+2\\sqrt2.\n\\]\n\nThere is no overlap between regions associated with different black components. Distinct corner triangles are at least \\(4\\) apart. A corner triangle and the central diamond have facing parallel edges separated by \\(2\\sqrt2\\); for example, the lower-left pair lies on \\(x+y=2\\) and \\(x+y=6\\). Both distances exceed the coin's diameter \\(1\\), so one coin cannot reach two different components.\n\nThe total favorable center area is\n\\[\n8+4\\sqrt2+\\frac\\pi4+3+2\\sqrt2\n=11+6\\sqrt2+\\frac\\pi4.\n\\]\nTangencies and other boundary positions have area zero, so whether touching counts does not change the probability. Under the uniform-center model,\n\\[\nP=\\frac{11+6\\sqrt2+\\pi/4}{49}\n=\\frac{44+24\\sqrt2+\\pi}{196}.\n\\]\nThus \\(a=44\\), \\(b=24\\), and \\(a+b=\\boxed{68}\\), choice \\(\\text{C}\\).",
+        "nodeIds": [
+          "math:geometric-probability",
+          "cnm_p150"
+        ],
+        "prerequisiteIds": [
+          "cnm_065",
+          "cnm_174",
+          "cnm_257",
+          "cnm_p148",
+          "cnm_p089"
+        ],
+        "levelReason": "The method uses an elementary area ratio, perpendicular distances at 45 degrees, and areas of triangles, rectangles, squares, and quarter-disks. It derives the expanded regions by decomposition without using an advanced offset-area theorem."
+      }
+    ],
+    "assessedIds": [
+      "math:geometric-probability"
+    ],
+    "supportIds": [
+      "cnm_065",
+      "cnm_174",
+      "cnm_257",
+      "cnm_p148",
+      "cnm_p089"
+    ],
+    "annotationRationale": "The main target is modeling the allowed and favorable locations of a uniformly distributed coin center and taking their area ratio. Composite-area decomposition is the written computational route. Perpendicular distance and Pythagoras establish the corner boundary; triangle, rectangle, square, and sector areas supply the component areas. The solution checks containment, exhaustiveness, disjointness, and boundary conventions rather than applying finite-outcome counting.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The probability calculation uses the conventional uniform-area distribution of the feasible coin center. The wording does not explicitly specify that density; an arbitrary nonuniform placement rule need not give this probability."
+    ]
+  },
+  "review": {
+    "questionId": "2021_AMC_10B_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "The allowed center area is 49. The central contribution is 8+4√2+π/4, and the four corner contributions total 3+2√2. Containment, finite-edge projection, and separation checks justify adding these areas. The resulting probability is (44+24√2+π)/196, giving a+b=68 under the stated uniform-center interpretation.",
+    "levelCheck": "The area decomposition and perpendicular-distance reasoning fit AMC 10 and explain the decisive geometric steps without advanced formulas.",
+    "methodDistinctness": "One complete area-based method is sufficient.",
+    "annotationCheck": "Uniform geometric probability, composite area, and the listed geometric prerequisites match the solution. The existing qualification about the unspecified placement density is explicitly preserved.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "allowed-and-favorable-center-areas": "allowed-and-favorable-center-areas"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "e08325c74501975cdd7db8636257ff258e5ec2b4a28608c3353253a03b0b70b6",
+    "acceptedAt": "2026-11-07T08:25:55.051432+00:00",
+    "inputHash": "5b680aec1d8a2238418570f0dc272a7126ff35ad91669bbaa222c907b3a2d1b7",
+    "authorInputHash": "7f91e9a8012da4ee7bd46a0fc1b1942b67c0aec9270e69bf7c0beb4766feaad4",
+    "reviewInputHash": "ea125c55a0b1423e90ff3793a29a6dcf345b8ef800882afc9f8a5f1033fa372f",
+    "authorResponseHash": "51a92ab3b96f1aa710892b2f59e5cebb1627b370fe5d2cbfefbd2a5c0f07bd30",
+    "reviewerResponseHash": "7c882b263b1e0e86128cc14f606a1ae5f3fe7f7ca836e634b2d836e5ddac7537",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

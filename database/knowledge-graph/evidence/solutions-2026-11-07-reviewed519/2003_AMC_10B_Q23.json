@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2003_AMC_10B_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "43824703691699dc3140b57a3bab199dd3aa33317a9388e610e2a93623fdab9d",
+    "figureHashes": {
+      "figures/2003_AMC_10B_Q23_question_fig1.svg": "fef61b62d0c612e7d041d91375c999c7c55eceba1322787b2c700661400929d1"
+    }
+  },
+  "solutionSHA256": "bb39d63534a4eb2203ac3a20eb888b1ed6086c050643b45e945b8c3dadc143ce",
+  "solutionFigureHashes": {
+    "figures/2003_AMC_10B_Q23_question_fig1.svg": "fef61b62d0c612e7d041d91375c999c7c55eceba1322787b2c700661400929d1"
+  },
+  "candidateHash": "0229ade9d3b9c69d5e30ac189044cae60383da19aabea51864974103dbbdbd0c",
+  "candidate": {
+    "questionId": "2003_AMC_10B_Q23",
+    "derivedAnswer": "\\(\\dfrac12\\) square unit, choice D",
+    "answerStatus": "matches",
+    "answerReason": "The rectangle has exactly half the octagon's area: for side length \\(s\\) and center-to-side distance \\(a\\), their areas are \\(2sa\\) and \\(4sa\\). Thus the requested area is \\(1/2\\), agreeing with D.",
+    "methods": [
+      {
+        "id": "central-triangle-decomposition",
+        "label": "Method 1: Triangles from the center",
+        "explanation": "[Figure 1](figures/2003_AMC_10B_Q23_question_fig1.svg)\n\nWe only need to compare the two areas, so we can leave the octagon's lengths unknown. Let \\(O\\) be its center, \\(s>0\\) its side length, and \\(a>0\\) the perpendicular distance from \\(O\\) to any side. Regularity makes this distance the same for all eight sides.\n\nJoin \\(O\\) to every vertex. This divides the octagon into eight triangles, each with base \\(s\\) and height \\(a\\). Their interiors do not overlap, so\n\\[\n1=8\\left(\\frac12sa\\right)=4sa.\n\\]\nThe opposite sides \\(AB\\) and \\(EF\\) are parallel, with \\(O\\) midway between their supporting lines. Each line is distance \\(a\\) from \\(O\\), so the rectangle \\(ABEF\\) has height \\(2a\\) and width \\(s\\). Hence its area is\n\\[\ns(2a)=2sa=\\frac12(4sa)=\\boxed{\\frac12}\n\\]\nsquare unit. The answer is choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "cnm_p089",
+          "cnm_p150",
+          "cnm_266",
+          "cnm_p148"
+        ],
+        "prerequisiteIds": [
+          "cnm_p077",
+          "cnm_065"
+        ],
+        "levelReason": "Derives the area comparison using regular-polygon symmetry and elementary triangle and rectangle area formulas."
+      },
+      {
+        "id": "square-corner-decomposition",
+        "label": "Method 2: Complete a surrounding square",
+        "explanation": "Complete the octagon to a surrounding square by extending the lines containing \\(AB,CD,EF,GH\\). Each interior angle of the regular octagon is\n\\[\n\\frac{(8-2)180^\\circ}{8}=135^\\circ.\n\\]\nThus consecutive extended sides of the square are perpendicular, and the four removed corners are congruent right triangles with two \\(45^\\circ\\) angles.\n\nLet \\(s>0\\) be the octagon's side length and \\(t>0\\) the equal leg lengths of a corner triangle. Its hypotenuse is an octagon side, so the Pythagorean theorem gives\n\\[\ns^2=2t^2.\n\\]\nIf \\(L\\) is the surrounding square's side length, its top side consists of \\(AB\\) and one corner leg at each end. Therefore \\(L=s+2t\\).\n\nThe octagon fills the square except for the four corner triangles, whose interiors are disjoint. Its area is consequently\n\\[\n1=L^2-4\\left(\\frac12t^2\\right)\n=(s+2t)^2-2t^2.\n\\]\nExpanding and using \\(2t^2=s^2\\) gives\n\\[\n1=s^2+4st+2t^2\n=2s(s+2t)=2sL.\n\\]\nThe rectangle \\(ABEF\\) has width \\(s\\), and its height is the full distance \\(L\\) between the square's top and bottom sides. Its area is therefore\n\\[\nsL=\\boxed{\\frac12}\n\\]\nsquare unit, choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "cnm_p089",
+          "cnm_p150",
+          "cnm_181",
+          "cnm_174",
+          "cnm_p148"
+        ],
+        "prerequisiteIds": [
+          "cnm_p077",
+          "cnm_138",
+          "cnm_148"
+        ],
+        "levelReason": "Uses polygon angle sums, right isosceles triangles, the Pythagorean theorem, and elementary area subtraction and algebra."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p089",
+      "cnm_p150"
+    ],
+    "supportIds": [
+      "cnm_p148",
+      "cnm_p077"
+    ],
+    "annotationRationale": "The task targets rectangle area through an area comparison with a composite polygon. Both routes use triangle area and basic rectangle or square properties. The central decomposition uses the regular polygon's center and equal center-to-side distances. The square-completion route instead uses polygon angles and the Pythagorean theorem, with equal-angle triangle facts and square expansion as local prerequisites.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2003_AMC_10B_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "The displayed vertex order makes AB and EF opposite sides of the rectangle. Eight central triangles give octagon area 4sa, while the rectangle has area 2sa. The independent square construction also works: s² = 2t² and L = s + 2t imply octagon area L² − 2t² = 2sL, twice the rectangle area. Both yield 1/2 square unit, choice D.",
+    "levelCheck": "Both methods explain their decisive area comparison using elementary geometry and algebra within AMC 10 scope.",
+    "methodDistinctness": "Central-triangle decomposition and subtraction of corner triangles from a surrounding square offer distinct insights without advanced machinery.",
+    "annotationCheck": "Rectangle and composite-area assessments apply to both routes. Triangle area and rectangle/square properties are genuinely shared supports. The regular-polygon concepts and the square method's angle, Pythagorean, and expansion prerequisites match the actual reasoning.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "central-triangle-decomposition": "solution:central-triangle-decomposition:bb39d63534a4",
+    "square-corner-decomposition": "solution:square-corner-decomposition:bb39d63534a4"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "f2134cd615d90d3905db551ac4654c7d2b4248b4360942ee45eef22183bf6a5d",
+    "acceptedAt": "2026-11-07T10:54:12.996372+00:00",
+    "inputHash": "432d39d575724026e328d956b5f43a05c28232cc033533cb3d1133019681b1ef",
+    "authorInputHash": "79c041c6260e5b24bd35ffcc4887bc20ff67aefb1786ca8d4746362bc48cf3d7",
+    "reviewInputHash": "f589b0097f4c6ff6140601ad867367bc61ce815ba561608e4a90dd54f5a5cbf4",
+    "authorResponseHash": "48d0a56a91a9692e70eb9714896deab36b0f0244231f66ae6733fcb765aee326",
+    "reviewerResponseHash": "747695b50544e1b3c7f12deaef68055a79bb45fdc6de76d8b2cfbbc960afe96d",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

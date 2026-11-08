@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2009_AMC_10A_Q15",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "2b916128e67ef59a032b40e3f70431379198f5498af079bea336008d18a0e979",
+    "figureHashes": {
+      "figures/2009_AMC_10A_Q15_question_fig1.svg": "6526b1cf037d6ad3aac238b0116463a339d768f6c6648b6c000f655493228448"
+    }
+  },
+  "solutionSHA256": "fd1c91edbe99ef35087995986de8dc74f8640793498a808e58969e1cda041c3f",
+  "solutionFigureHashes": {},
+  "candidateHash": "f8c293beca21b4886381ec4a6ec0fd76afc4bb2af0e7b1c9fe025fd38ceeb282",
+  "candidate": {
+    "questionId": "2009_AMC_10A_Q15",
+    "derivedAnswer": "E: 761",
+    "answerStatus": "matches",
+    "answerReason": "The kth square layer adds 4(k−1) diamonds. Starting with the central diamond, F20 contains 1 + 4(1 + 2 + ⋯ + 19) = 761 diamonds.",
+    "methods": [
+      {
+        "id": "count-and-sum-layers",
+        "label": "Count the diamonds in each new layer",
+        "explanation": "Count the diamonds added on each new square, since all the earlier diamonds remain. The figure \\(F_1\\) has one central diamond. The outside square of \\(F_2\\) has two diamonds on each side, at its corners. Each later square has one more diamond per side, so the outside square of \\(F_k\\) has \\(k\\) diamonds on each side.\n\nFor \\(k\\ge2\\), counting all four sides gives \\(4k\\), but each of the four corner diamonds has been counted twice. Subtracting one extra count per corner gives\n\\[\n4k-4=4(k-1)\n\\]\nnew diamonds. Different square layers contain different diamonds, so adding these counts includes every diamond exactly once.\n\nConsequently, \\(F_{20}\\) contains\n\\[\n1+4(1+2+\\cdots+19)\n\\]\ndiamonds. To evaluate the sum, pair \\(1\\) with \\(19\\), \\(2\\) with \\(18\\), and so on. There are nine pairs totaling \\(20\\) each, with \\(10\\) left in the middle. Thus\n\\[\n1+2+\\cdots+19=9\\cdot20+10=190.\n\\]\nThe total is \\(1+4\\cdot190=\\boxed{761}\\), choice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "cnm_030",
+          "cnm_h204"
+        ],
+        "prerequisiteIds": [
+          "cnm_027",
+          "cnm_029"
+        ],
+        "levelReason": "The method derives the layer count directly from the construction and evaluates the arithmetic sum by pairing. No formal sequence formulas are assumed."
+      }
+    ],
+    "assessedIds": [
+      "cnm_030"
+    ],
+    "supportIds": [
+      "cnm_027",
+      "cnm_029"
+    ],
+    "annotationRationale": "The task assesses expressing a growing figure pattern quantitatively and predicting a later figure's count. The method derives 4(k−1) diamonds per layer, corrects the corner double counts, and sums disjoint layers. Arithmetic-sequence summation is local to this route and is justified by pairing; writing and evaluating expressions are supporting prerequisites.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2009_AMC_10A_Q15",
+    "decision": "accept",
+    "mathematicalCheck": "The figure confirms one central diamond and corner diamonds on each square layer. Layer k has k diamonds per side; subtracting the four duplicated corner counts gives 4(k-1) new diamonds. The disjoint layers therefore total 1+4(1+2+...+19). Nine pairs totaling 20 and the middle term 10 give 190, hence 761. Multiplicities and completeness are explained.",
+    "levelCheck": "Direct layer counting and elementary pairing are appropriate for AMC 10; no formal sequence formula is assumed.",
+    "methodDistinctness": "One complete counting method is sufficient.",
+    "annotationCheck": "cnm_030 matches the quantitative figure pattern. cnm_h204 appropriately records the method-local arithmetic summation, while cnm_027 and cnm_029 support writing and evaluating the expressions.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-and-sum-layers": "count-and-sum-layers"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "4714b425292f3991e14379ab640dfdf1d248306117a8b3e04dbe5d297a6f49b2",
+    "acceptedAt": "2026-11-07T10:10:52.294994+00:00",
+    "inputHash": "5490861a06f6c1c4382005a9cae0630be4844638e17ae8bb970f343827ea95d4",
+    "authorInputHash": "94d2d073e7775ff29c7d216036dcb1aa828fd6bfa0fbe88452e686b32dfefe22",
+    "reviewInputHash": "00a64ed142fc16798309030aa943ab090ef5803f467854351edde7c26ecac6f7",
+    "authorResponseHash": "faf8a10df28999b25fa633e224118955837c5d860c2c31da624085cb791065e8",
+    "reviewerResponseHash": "a2c69a76acf0312c6cf7bfaec278d7a1a8444c3fb31e53e26d84138f58c174c5",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

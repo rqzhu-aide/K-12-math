@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2009_AMC_8_Q20",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "716aed32dbe8fedd0010908c35fb9ee81474584fa3216bac7d26898b9f070c62",
+    "figureHashes": {
+      "figures/2009_AMC_8_Q20_question_fig1.svg": "a7a8e6096431fc2fea1a448c98bb6223fabe7c6578c09c2013211c18ad7b2b68"
+    }
+  },
+  "solutionSHA256": "fcf88ad93c7fffe12b627fbb619f0eefdd08713d6ed0d2151e35f7271c1dca72",
+  "solutionFigureHashes": {},
+  "candidateHash": "cfbcde7674d09092e01a83f603b23fa8aa9c9418dbeace10a74c004413df4bba",
+  "candidate": {
+    "questionId": "2009_AMC_8_Q20",
+    "derivedAnswer": "8 (D)",
+    "answerStatus": "matches",
+    "answerReason": "Horizontal bases of one, two, and three spacings give respectively three, three, and two congruence classes. Their different areas prevent overlap between these groups, giving eight classes.",
+    "methods": [
+      {
+        "id": "horizontal-base-classification",
+        "label": "Classify by the horizontal base",
+        "explanation": "Sliding, turning, or flipping a triangle does not create a new type. We need to count different shapes and sizes.\n\nEvery triangle uses two points from one row and one from the other. Three points in a single row are collinear and do not form a triangle. Choose the side joining the two points in the same row as the horizontal base.\n\nUse one horizontal spacing as the unit of length, and let \\(h>0\\) be the distance between the rows. The base length \\(b\\) is \\(1\\), \\(2\\), or \\(3\\), and the triangle's area is \\(bh/2\\). Thus different base lengths give different areas and cannot produce congruent triangles.\n\nFor each base length, record the two horizontal distances from the third vertex to the base's endpoints. Exchanging the endpoints gives the same pair.\n\n- If the base has length \\(1\\), the third vertex is directly above an endpoint or lies one or two spacings beyond the nearer endpoint. The possible distance pairs are \\((0,1)\\), \\((1,2)\\), and \\((2,3)\\).\n- If the base has length \\(2\\), the third vertex is above the midpoint, above an endpoint, or one spacing beyond an endpoint. The pairs are \\((1,1)\\), \\((0,2)\\), and \\((1,3)\\).\n- If the base has length \\(3\\), it spans all four columns. The third vertex is above an endpoint or one of the two interior columns. The pairs are \\((0,3)\\) and \\((1,2)\\).\n\nThese pairs determine the triangle's side lengths: a side crossing between rows with horizontal distance \\(r\\) has squared length \\(r^2+h^2\\), by the Pythagorean theorem. Consequently, equal pairs give equal side lengths and hence congruent triangles by SSS.\n\nWithin each base case, the largest horizontal distance differs among the listed pairs, so the largest side crossing between rows differs. With the base fixed, their side-length sets are therefore different. Every listed pair occurs in the array, and the cases cover every possible third-vertex column.\n\nThe total number of non-congruent triangles is\n\\[\n3+3+2=\\boxed{8},\n\\]\nchoice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_120",
+          "math:symmetry-counting",
+          "cnm_p148",
+          "cnm_174",
+          "cnm_122"
+        ],
+        "prerequisiteIds": [
+          "cnm_110",
+          "cnm_121"
+        ],
+        "levelReason": "The method uses elementary case counting, triangle areas, the Pythagorean theorem, and SSS, all within AMC 8 scope."
+      }
+    ],
+    "assessedIds": [
+      "cnm_120",
+      "math:symmetry-counting"
+    ],
+    "supportIds": [
+      "cnm_110",
+      "cnm_121"
+    ],
+    "annotationRationale": "The task counts triangles up to congruence. The method supplies justified representatives through a base length and an unordered pair of horizontal distances, fitting symmetry counting without formal orbit calculations. Triangle area separates the base groups; the Pythagorean theorem and SSS justify identification within them. Triangle elements and the equal-side property of congruent triangles are supporting knowledge.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2009_AMC_8_Q20",
+    "decision": "accept",
+    "mathematicalCheck": "The figure has two aligned rows of four equally spaced points. The listed horizontal-distance pairs exhaust all triangles and give 3, 3, and 2 types for base lengths 1, 2, and 3. Areas separate the base groups. Within each group, the common base and differing crossing-side pairs give distinct side-length triples. Pythagoras and SSS justify the classification, totaling 8.",
+    "levelCheck": "The case counting, triangle areas, Pythagorean theorem, and SSS are accessible within AMC 8 scope. Completeness and nonduplication are explained.",
+    "methodDistinctness": "The single classification method is complete; another method is unnecessary.",
+    "annotationCheck": "The congruence and symmetry-counting targets fit the justified representatives. Triangle area, Pythagoras, and SSS are correctly recorded as method knowledge; triangle elements and congruent-triangle properties are relevant support.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "horizontal-base-classification": "horizontal-base-classification"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "826086562d2977016d83a4701f6332ee506bb18873fc560608c53f5c97730323",
+    "acceptedAt": "2026-11-07T09:56:32.197538+00:00",
+    "inputHash": "843acadece50f4263b39e1535f7cea59c5213a5b0e45d5863df2a91c4332a762",
+    "authorInputHash": "edbefbe19cc147e08635667beee004a64383c26f83a6bbe71ffc517f75f7c1f0",
+    "reviewInputHash": "7408b61f4e5cdec09fdc788f9c26b94c18ef74a216e52d25bfe5f7920d18e44d",
+    "authorResponseHash": "dd78d8c7aa84188c9bef59e836ba95387f638b521263848924b08bd5afb19cf2",
+    "reviewerResponseHash": "7463ef560c25c2bccad5a9b38d91d28930388f8edbf896a574d8cbea79851fee",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2020_AMC_10A_Q12",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "a9292bd6e26ccdcef560763749f99b512121f26802601da942c02b8593005cf1",
+    "figureHashes": {
+      "figures/2020_AMC_10A_Q12_question_fig1.svg": "7e2afa898248f5785edded18c29cd787f5519a678166d3839443463cb7104fda"
+    }
+  },
+  "solutionSHA256": "5bae149a6258d304c98c90ed0fd40616b0fd5bd36ada5527dd0a63da2433de53",
+  "solutionFigureHashes": {},
+  "candidateHash": "7194395939764700e12cc69829e1cc1e35466933b867dd08782212c49b1797de",
+  "candidate": {
+    "questionId": "2020_AMC_10A_Q12",
+    "derivedAnswer": "C. \\(96\\)",
+    "answerStatus": "matches",
+    "answerReason": "The centroid gives \\(MP=8\\), making the area of triangle MCU equal to \\(\\frac12(12)(8)=48\\). This is half the requested area, so the answer is 96, choice C.",
+    "methods": [
+      {
+        "id": "centroid-base-height",
+        "label": "Use the centroid to find a height",
+        "explanation": "The perpendicular medians provide a base and height for \\(\\triangle MCU\\), once we find the distance from \\(M\\) to \\(CU\\). Let \\(P\\) be their intersection, as labeled in the figure. The medians meet at the centroid, which divides each median in the ratio \\(2:1\\), with the longer part next to its vertex. Thus\n\\[\nMP=\\frac23 MV=\\frac23(12)=8.\n\\]\nSince \\(MP\\) is perpendicular to \\(CU\\), it is the height of \\(\\triangle MCU\\) corresponding to base \\(CU=12\\). Therefore\n\\[\n\\operatorname{Area}(\\triangle MCU)=\\frac12(12)(8)=48.\n\\]\nBecause \\(CU\\) is a median, \\(U\\) is the midpoint of \\(AM\\). Triangles \\(MCU\\) and \\(ACU\\) have equal bases \\(MU=UA\\) on the same line and share the height from \\(C\\), so they have equal areas. Hence\n\\[\n\\operatorname{Area}(\\triangle AMC)=2(48)=\\boxed{96},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "math:centroid-ratios",
+          "cnm_p148"
+        ],
+        "prerequisiteIds": [
+          "cnm_113",
+          "cnm_064"
+        ],
+        "levelReason": "The centroid's 2:1 median ratio and the base-times-height triangle area formula are elementary AMC 10 geometry."
+      },
+      {
+        "id": "perpendicular-diagonals-area",
+        "label": "Find the area between the midpoints and the base",
+        "explanation": "The medians are the perpendicular diagonals of quadrilateral \\(MUVC\\). Finding its area first lets us use both given lengths directly. Let \\(P\\) be the medians' intersection, and write \\([XYZ]\\) for the area of \\(\\triangle XYZ\\).\n\nThe diagonals divide \\(MUVC\\) into four right triangles. Adding their areas and factoring gives\n\\[\n\\begin{aligned}\n\\operatorname{Area}(MUVC)\n&=\\frac12\\bigl(MP\\cdot PU+PU\\cdot PV\\\\\n&\\qquad\\quad+PV\\cdot PC+PC\\cdot MP\\bigr)\\\\\n&=\\frac12(MP+PV)(PU+PC)\\\\\n&=\\frac12(MV)(CU)\\\\\n&=\\frac12(12)(12)=72.\n\\end{aligned}\n\\]\n\nNow let \\(K=[AMC]\\). Since \\(U\\) is the midpoint of \\(AM\\), triangles \\(AUC\\) and \\(MUC\\) have equal bases and the same height from \\(C\\). Thus \\([AUC]=K/2\\). Since \\(V\\) is the midpoint of \\(AC\\), triangles \\(AUV\\) and \\(CUV\\) likewise have equal areas, so\n\\[\n[AUV]=\\frac12[AUC]=\\frac K4.\n\\]\nRemoving \\(\\triangle AUV\\) from \\(\\triangle AMC\\) leaves exactly quadrilateral \\(MUVC\\). Therefore\n\\[\n\\frac34K=72,\n\\qquad K=72\\cdot\\frac43=\\boxed{96},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_p148",
+          "cnm_p150"
+        ],
+        "prerequisiteIds": [
+          "cnm_113",
+          "cnm_064"
+        ],
+        "levelReason": "This route derives the perpendicular-diagonal area relation by adding four right-triangle areas and uses midpoint area halves. It requires only elementary AMC 10 geometry."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p148"
+    ],
+    "supportIds": [
+      "cnm_113",
+      "cnm_064"
+    ],
+    "annotationRationale": "The route-neutral target is determining triangle area from the given geometry. Both methods require the meaning of medians, their equal-area splits, and perpendicularity. The first method additionally uses the centroid's metric ratio. The second instead combines four right-triangle areas and midpoint area halves, so composite-area reasoning is local to that alternative and the centroid ratio is not a shared requirement.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2020_AMC_10A_Q12",
+    "decision": "accept",
+    "mathematicalCheck": "Method 1 correctly obtains \\(MP=8\\), then \\([MCU]=12\\cdot8/2=48\\), half the requested area. Method 2 correctly derives quadrilateral area \\(MV\\cdot CU/2=72\\); successive midpoint area halves show this quadrilateral occupies three quarters of the original triangle. Both independently give 96 and agree with the figure.",
+    "levelCheck": "Both methods use appropriate AMC 10 geometry and explain their decisive area relationships.",
+    "methodDistinctness": "The second method provides a distinct accessible approach through perpendicular diagonals and midpoint area halves, without the centroid's metric ratio.",
+    "annotationCheck": "Triangle area is a suitable route-neutral target. Median meaning and perpendicularity are shared supports; the centroid ratio and composite-area reasoning remain correctly local to their respective methods.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "centroid-base-height": "centroid-base-height",
+    "perpendicular-diagonals-area": "perpendicular-diagonals-area"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "adb5bf0b3c87de47759be8403bea59901b11a1aaf1a85a75aa964555afde1eba",
+    "acceptedAt": "2026-11-07T08:31:05.598918+00:00",
+    "inputHash": "925e78c48c8e2b5b31a0c204d5be81a22d7858ef97e5e5c2df68654b6126605e",
+    "authorInputHash": "acbd0ab6fe9a2bf1a26a2dc51875dfa3ba53bc59a6f12e173e0ae211fa7d366f",
+    "reviewInputHash": "2faa9562f8d7a6183b88cf0d7220929dfb26a1fc5ea5d35b6d458308d5135bbe",
+    "authorResponseHash": "508c7ddf5342f01f17d49fe520425ef15565f1e4903a1d0ecf2ea02d5218a051",
+    "reviewerResponseHash": "856418254c499c00137ff2f6e3613eb936e0ec5d5b5d9a0d160987aab4c08243",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

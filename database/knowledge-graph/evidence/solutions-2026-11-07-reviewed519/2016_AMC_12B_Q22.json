@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_12B_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "c1b4897a1d674aaf41b35cdbcc85d445412920926d1168836e821ecf55365118",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "3e545420f64718234ec70a659d85f9a373991c50c0db280ba0caee3ab48641d5",
+  "solutionFigureHashes": {},
+  "candidateHash": "7c989b3eec0e01b8bd0cbf1106e27ac418a208e6f4e0345b87e9a31d6589befb",
+  "candidate": {
+    "questionId": "2016_AMC_12B_Q22",
+    "derivedAnswer": "B (n = 297, in [201,400])",
+    "answerStatus": "matches",
+    "answerReason": "The four-digit period restricts n+6 to 101, 303, or 909. Only the resulting candidate n=297 satisfies the six-digit condition, and its exact periods are verified by long division.",
+    "methods": [
+      {
+        "id": "decimal-divisors",
+        "label": "Turn repeating blocks into divisibility conditions",
+        "explanation": "A repeating block gives an integer divisibility condition. If \\(1/d=0.\\overline{R}\\), where the block has \\(p\\) digits and may begin with zeros, shifting the decimal point \\(p\\) places and subtracting gives\n\\[\n\\frac{10^p-1}{d}=R.\n\\]\nThus \\(d\\) divides \\(10^p-1\\). Applying this to the two decimals gives\n\\[\nn\\mid999999,\\qquad n+6\\mid9999.\n\\]\nLet \\(m=n+6\\). Then \\(7\\le m\\le1005\\), and\n\\[\n9999=3^2\\cdot11\\cdot101.\n\\]\nIf \\(101\\) were absent from \\(m\\), then \\(m\\) would divide \\(99\\). In that case \\(1/m\\) could be written with a repeating block of two digits, contradicting its least period of four. Therefore \\(m=101d\\), where \\(d\\) divides \\(99\\). The bound \\(m\\le1005\\) gives \\(d<10\\), so the only possibilities are \\(d=1,3,9\\). Hence\n\\[\nm\\in\\{101,303,909\\},\n\\qquad n\\in\\{95,297,903\\}.\n\\]\nThe number \\(95\\) cannot divide \\(999999\\), since it contains a factor of \\(5\\). Also,\n\\[\n999999=903\\cdot1107+378,\n\\]\nso \\(903\\) does not divide it either. This leaves \\(n=297\\).\n\nTo check the exact periods, we have\n\\[\n\\frac1{297}=0.\\overline{003367},\n\\qquad \\frac1{303}=0.\\overline{0033}.\n\\]\nIn long division, each new digit is determined by multiplying the current remainder by \\(10\\) and dividing by the denominator. For \\(297\\), the successive remainders, including the starting remainder, are\n\\[\n1,10,100,109,199,208,1.\n\\]\nFor \\(303\\), they are\n\\[\n1,10,100,91,1.\n\\]\nThe starting remainder first returns after six digits and four digits, respectively, proving the stated least periods. Therefore \\(n=297\\) lies in \\(\\boxed{[201,400]}\\), choice \\(\\text{B}\\).",
+        "nodeIds": [
+          "math:repeating-decimal-fractions",
+          "math:integer-diophantine-equations",
+          "math:rational-decimal-periods"
+        ],
+        "prerequisiteIds": [
+          "math:prime-factorization",
+          "cnm_p153"
+        ],
+        "levelReason": "Uses decimal shifts, bounded divisor enumeration, and exact long division, all elementary number theory appropriate for AMC 12."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations",
+      "math:rational-decimal-periods"
+    ],
+    "supportIds": [
+      "math:prime-factorization",
+      "cnm_p153"
+    ],
+    "annotationRationale": "The targets are restricting an integer denominator from decimal conditions and verifying the exact repeating periods. Decimal-to-fraction conversion supplies the divisibility equations, while prime factorization makes the bounded candidate list exhaustive. The written method verifies periods through long-division remainders.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_12B_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "The period conditions imply n divides 999999 and n+6 divides 9999. Exact period four and the bound restrict n+6 to 101, 303, or 909. The exclusions leave n=297, and both displayed long-division remainder lists correctly verify the exact periods six and four.",
+    "levelCheck": "Decimal shifts, bounded divisor enumeration, and long division are accessible AMC 12 reasoning.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Integer restrictions, repeating-decimal conversion, exact decimal periods, and prime factorization match the catalog scopes. No unsupported modular-power requirement is retained.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "decimal-divisors": "decimal-divisors"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "4d467b66ae4a9485636a5bcceb2d34754ffba49e8bbacd5fc0f791e005eb0889",
+    "acceptedAt": "2026-11-07T10:53:28.279712+00:00",
+    "inputHash": "0d0131a91a47c1bca43b8d7e06a0baec352bf614b7b58c93468ec9b4b8d51e87",
+    "authorInputHash": "4c10c342e70d8e4cb3df76f1d5aa45594fe15f306adfaa846952dedb35fc69db",
+    "reviewInputHash": "0462f535de992ac8ea129f63ca6c8d4bdf43b196b9a103ff437d288b208e6a1a",
+    "authorResponseHash": "fdb9b6b5fe4f6421d90211b75aa6ee897943f748c79feb7f6ae3b6cff71f766e",
+    "reviewerResponseHash": "1cfef22949f553267aa656c2a1dd330894bf953b0d728866ad52bf97d765a41c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

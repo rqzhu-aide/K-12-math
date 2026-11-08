@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_12A_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "b109c78da0844b101d65829e39ea4feda9003fdfa00f2039a3ef44fe61f364ba",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "02a8b9dd7822c2f67033e25c54ce9745b3ae8fceaf0e8b5ade590ac384ce7009",
+  "solutionFigureHashes": {},
+  "candidateHash": "22e6320104e25b803f44aa2309828adf9f614c5dfb16fcec4fa0217b3ff25edf",
+  "candidate": {
+    "questionId": "2016_AMC_12A_Q21",
+    "derivedAnswer": "500 (E)",
+    "answerStatus": "matches",
+    "answerReason": "The two diagonals each have squared length 140000. Ptolemy's theorem then gives 140000 = 200^2 + 200 times the fourth side, so that side is 500, agreeing with E.",
+    "methods": [
+      {
+        "id": "diagonals-and-ptolemy",
+        "label": "Find a diagonal, then use Ptolemy",
+        "explanation": "Two adjacent equal sides let us determine a diagonal from the circle's radius. We can then use Ptolemy's theorem to recover the fourth side.\n\nMeasure lengths in units of \\(200\\). Label the vertices \\(A,B,C,D\\) in circular order so that \\(AB=BC=CD=1\\); the radius is \\(\\sqrt2\\). Let \\(O\\) be the center, and let \\(E\\) be the point diametrically opposite \\(B\\). Since both \\(B\\) and \\(O\\) are equidistant from \\(A\\) and \\(C\\), line \\(BE\\) is the perpendicular bisector of \\(AC\\). Write \\(M=AC\\cap BE\\), so \\(AM=CM\\).\n\nBecause \\(BE\\) is a diameter, \\(\\angle BAE=90^\\circ\\). Thus \\(AM\\) is the altitude to the hypotenuse of right triangle \\(ABE\\). Triangles \\(ABM\\) and \\(EBA\\) are similar: both are right triangles, and their angles at \\(B\\) are equal. Their corresponding sides give\n\\[\nBM\\cdot BE=AB^2,\n\\qquad BM=\\frac1{2\\sqrt2}.\n\\]\nThe Pythagorean theorem in triangle \\(ABM\\) now gives\n\\[\nAM^2=1-\\frac18=\\frac78,\n\\qquad AC^2=4AM^2=\\frac72.\n\\]\nThe same argument applied to the equal sides \\(BC=CD=1\\) gives \\(BD^2=7/2\\). Both diagonal lengths are positive, so \\(AC\\cdot BD=7/2\\).\n\nFor a convex cyclic quadrilateral, Ptolemy's theorem says that the product of the diagonals equals the sum of the products of opposite sides. Therefore\n\\[\n\\frac72=AC\\cdot BD\n=AB\\cdot CD+BC\\cdot AD\n=1+AD.\n\\]\nHence \\(AD=5/2\\) in our chosen units. Its original length is \\(200(5/2)=\\boxed{500}\\), choice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "cnm_251",
+          "cnm_133",
+          "cnm_254",
+          "cnm_271",
+          "cnm_272",
+          "math:ptolemy-theorem"
+        ],
+        "prerequisiteIds": [
+          "cnm_250",
+          "cnm_174",
+          "cnm_075"
+        ],
+        "levelReason": "Uses elementary circle geometry, right-triangle similarity, the Pythagorean theorem, and the elementary contest theorem of Ptolemy."
+      },
+      {
+        "id": "circle-coordinate-intersections",
+        "label": "Determine the vertices with circle equations",
+        "explanation": "Equal adjacent sides can also be treated as distance conditions. Choosing coordinates along the middle known side makes those conditions easy to subtract.\n\nMeasure lengths in units of \\(100\\). Label the vertices \\(A,B,C,D\\) in circular order with \\(AB=BC=CD=2\\). The circle has radius \\(2\\sqrt2\\). Put its center at the origin and the midpoint of \\(BC\\) on the positive \\(y\\)-axis, with \\(BC\\) horizontal. Half of \\(BC\\) has length \\(1\\), so the Pythagorean theorem gives the midpoint's height as \\(\\sqrt{8-1}=\\sqrt7\\). Thus\n\\[\nB=(-1,\\sqrt7),\\qquad C=(1,\\sqrt7).\n\\]\nLet \\(A=(u,v)\\). Being on the circle and having distance \\(2\\) from \\(B\\) gives\n\\[\nu^2+v^2=8,\n\\qquad (u+1)^2+(v-\\sqrt7)^2=4.\n\\]\nSubtracting the first equation from the second eliminates the squared terms and yields\n\\[\nu-\\sqrt7v=-6.\n\\]\nSubstitute \\(u=\\sqrt7v-6\\) into the circle equation. After simplifying,\n\\[\n2v^2-3\\sqrt7v+7\n=(2v-\\sqrt7)(v-\\sqrt7)=0.\n\\]\nThe root \\(v=\\sqrt7\\) gives \\((u,v)=C\\), which cannot also be \\(A\\). The other root gives\n\\[\nA=\\left(-\\frac52,\\frac{\\sqrt7}{2}\\right).\n\\]\nReflection across the \\(y\\)-axis preserves the circle and exchanges \\(B\\) with \\(C\\). It therefore exchanges their other circle points at distance \\(2\\). Since \\(D\\ne B\\), this gives\n\\[\nD=\\left(\\frac52,\\frac{\\sqrt7}{2}\\right).\n\\]\nConsequently \\(AD=5\\) in units of \\(100\\), so the fourth side has length \\(\\boxed{500}\\), choice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "cnm_251",
+          "cnm_h176",
+          "cnm_h173",
+          "cnm_132",
+          "cnm_224"
+        ],
+        "prerequisiteIds": [
+          "cnm_250",
+          "cnm_174",
+          "cnm_148"
+        ],
+        "levelReason": "Uses school coordinate geometry, subtraction of distance equations, reflection, and a factored quadratic. It avoids trigonometry and supplies a different algebraic route."
+      }
+    ],
+    "assessedIds": [
+      "cnm_251"
+    ],
+    "supportIds": [
+      "cnm_250",
+      "cnm_174"
+    ],
+    "annotationRationale": "The common target is recovering chord lengths through radius, chord bisection, and perpendicular-distance relations, captured by cnm_251. Both methods need circle concepts and Pythagorean reasoning. The synthetic route keeps perpendicular-bisector reasoning, the diameter angle theorem, similarity, and Ptolemy local to that method. The coordinate route instead uses circle and distance equations, reflection, and factoring, including rejection of the root that repeats an existing vertex. Neither method requires an arc or central-angle calculation, so cnm_252 is not assigned.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_12A_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "In units of 200, similarity and Pythagoras give \\(AC^2=BD^2=7/2\\). Circular vertex order permits Ptolemy, yielding \\(AD=5/2\\), hence 500. Independently, the coordinate equations give exactly the existing vertex and the stated alternative intersection; reflection then gives a fourth-side length of 500.",
+    "levelCheck": "Both methods use appropriate high-school geometry and algebra, with their decisive steps explained.",
+    "methodDistinctness": "The coordinate-intersection method supplies a genuinely distinct, accessible alternative to similarity and Ptolemy.",
+    "annotationCheck": "The chord-bisection target and shared circle/Pythagorean support fit both methods. Similarity, Ptolemy, coordinate equations, reflection, and factoring remain method-local.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "diagonals-and-ptolemy": "diagonals-and-ptolemy",
+    "circle-coordinate-intersections": "solution:circle-coordinate-intersections:02a8b9dd7822"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "6689a2ba31626859dde64b88f42e4ea6b9f2f934273afec277e3b01d5983c578",
+    "acceptedAt": "2026-11-07T10:49:45.209085+00:00",
+    "inputHash": "c4524420b4feebb3535a5a8c723fabfe565ccaf8928705131a1140af04cf6c1d",
+    "authorInputHash": "0a1f15ee8413a41d539be1a9d987f7d2bc2b37594fe3e9086e1b88d67caebdbf",
+    "reviewInputHash": "2187e3cc6c7632d8f5bed0b68b27de517c1eaa2751357c29309e4e915e5bcc38",
+    "authorResponseHash": "f6b11cef5baefe69eef0826354f5db227776b8c8b200a714dd677396185dac55",
+    "reviewerResponseHash": "2362f04073a187311ccacc0596ec014482783d1d24d06cd672b13649e908155f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

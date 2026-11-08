@@ -1,78 +1,66 @@
 {
-  "Year": 2016,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 17,
-  "Question": "All the numbers \\(2,\\)\\( 3, \\)\\(4, \\)\\(5,\\)\\( 6,\\)\\( 7\\) are assigned to the six faces of a cube, one number to each face. For each of the eight vertices of the cube, a product of three numbers is computed, where the three numbers are the numbers assigned to the three faces that include that vertex. What is the greatest possible value of the sum of these eight products?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\( \\ 312 \\)",
-    "B": "\\( \\ 343 \\)",
-    "C": "\\( \\ 625 \\)",
-    "D": "\\( \\ 729 \\)",
-    "E": "\\( \\ 1680 \\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "cube geometry; optimization; AM-GM Inequality",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2016B/solutions",
-    "SourceSHA256": "d064f39d73c772de6b03b7072941c2ad29e4fe0859ad097ac8e93c6b29c2246e",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2016_AMC_10B_Q17",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "ddb9e0c48d53ad20c346417cee15f6764945013f92c57d54accb561ecdec68b0",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:extremal-principle"
+  "answer": {
+    "accepted": [
+      "D"
     ],
-    "supportIds": [
-      "cnm_p116"
-    ],
-    "routes": [
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "math:extremal-principle"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 10"
+  },
+  "id": "2016_AMC_10B_Q17",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "integer-balancing",
-        "label": "Balance relaxed integer pair sums",
-        "nodeIds": [
-          "cnm_h019"
-        ]
+        "content": "\\( \\ 312 \\)",
+        "id": "A"
       },
       {
-        "id": "iterated-am-gm",
-        "label": "Apply two-variable AM-GM repeatedly",
-        "nodeIds": [
-          "cnm_h022"
-        ]
+        "content": "\\( \\ 343 \\)",
+        "id": "B"
+      },
+      {
+        "content": "\\( \\ 625 \\)",
+        "id": "C"
+      },
+      {
+        "content": "\\( \\ 729 \\)",
+        "id": "D"
+      },
+      {
+        "content": "\\( \\ 1680 \\)",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "All the numbers \\(2,\\)\\( 3, \\)\\(4, \\)\\(5,\\)\\( 6,\\)\\( 7\\) are assigned to the six faces of a cube, one number to each face. For each of the eight vertices of the cube, a product of three numbers is computed, where the three numbers are the numbers assigned to the three faces that include that vertex. What is the greatest possible value of the sum of these eight products?"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:extremal-principle",
+        "cnm_h019"
+      ],
+      "explanation": "Group the faces into their three opposite pairs, and call their labels \\((a,a')\\), \\((b,b')\\), and \\((c,c')\\). Each vertex belongs to exactly one face from each pair. Conversely, each choice of one face from each pair determines exactly one vertex. Therefore, expanding by the distributive law gives the sum of all eight vertex products as\n\\[\nS=(a+a')(b+b')(c+c').\n\\]\nLet these three pair sums be \\(x,y,z\\). They are positive integers satisfying\n\\[\nx+y+z=2+3+4+5+6+7=27.\n\\]\nTo obtain an upper bound, temporarily allow every positive integer triple with sum 27, including triples that might not come from face labels.\n\nThere are finitely many such triples, so choose one with largest product. If two entries are \\(u\\) and \\(v\\), with \\(u\\ge v+2\\), moving 1 from the larger to the smaller increases their product because\n\\[\n(u-1)(v+1)-uv=u-v-1>0.\n\\]\nThe third entry is positive, so the three-factor product also increases. Thus, at a maximum, all entries differ by at most 1. Since their sum is 27, they must all equal 9. Consequently, every cube labeling satisfies \\(S\\le9^3=729\\).\n\nThis bound is attainable: put \\(2\\) opposite \\(7\\), \\(3\\) opposite \\(6\\), and \\(4\\) opposite \\(5\\). Each opposite pair then sums to 9. The greatest possible sum is therefore \\(\\boxed{729}\\), choice \\(\\boxed{D}\\).",
+      "id": "integer-balancing",
+      "sourceRef": "amc/2016_AMC_10B_Q17#integer-balancing",
+      "title": "Balance the opposite-face sums"
+    },
+    {
+      "directNodeIds": [
+        "math:extremal-principle",
+        "cnm_h022"
+      ],
+      "explanation": "Let the three opposite-face pairs have sums \\(x,y,z\\). Each vertex selects one face from each pair, and the eight possible selections are exactly the eight vertices. Thus the distributive law shows that the required sum is \\(xyz\\). Also,\n\\[\nx+y+z=2+3+4+5+6+7=27,\n\\]\nand all three sums are positive.\n\nWe can bound this product using only the two-variable AM-GM inequality. For positive \\(u,v\\),\n\\[\nu+v\\ge2\\sqrt{uv},\n\\]\nwith equality exactly when \\(u=v\\); this follows by expanding \\((\\sqrt u-\\sqrt v)^2\\ge0\\). Applying this inequality three times gives, for positive \\(p,q,r,s\\),\n\\[\n\\begin{aligned}\np+q+r+s\n&\\ge2\\sqrt{pq}+2\\sqrt{rs}\\\\\n&\\ge4\\sqrt[4]{pqrs}.\n\\end{aligned}\n\\]\nUse \\(p=x,q=y,r=z,s=9\\). Their sum is 36, so\n\\[\n36\\ge4\\sqrt[4]{9xyz}.\n\\]\nBoth sides are positive, and raising to the fourth power yields \\(9xyz\\le9^4\\), or \\(xyz\\le729\\). Equality requires \\(x=y=z=9\\).\n\nAssign the opposite pairs \\((2,7)\\), \\((3,6)\\), and \\((4,5)\\). Their sums are all 9, so equality is possible. The maximum is \\(\\boxed{729}\\), choice \\(\\boxed{D}\\).",
+      "id": "iterated-am-gm",
+      "sourceRef": "amc/2016_AMC_10B_Q17#iterated-am-gm",
+      "title": "Bound the product using two-variable AM-GM"
+    }
+  ],
+  "sourceRef": "amc/2016_AMC_10B_Q17"
 }

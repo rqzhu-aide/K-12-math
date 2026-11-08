@@ -1,63 +1,68 @@
 {
-  "Year": 2016,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 20,
-  "Question": "A set of teams held a round-robin tournament in which every team played every other team exactly once. Every team won \\(10\\) games and lost \\(10\\) games; there were no ties. How many sets of three teams \\(\\{A,B,C\\}\\) were there in which \\(A\\) beat \\(B,\\) \\(B\\) beat \\(C,\\) and \\(C\\) beat \\(A?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(385\\)",
-    "B": "\\(665\\)",
-    "C": "\\(945\\)",
-    "D": "\\(1140\\)",
-    "E": "\\(1330\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "graph theory; complementary counting; combinations",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2016B/solutions",
-    "SourceSHA256": "a8ab53099f4933ea938d99c5cb2b2aa657861acb8ccb1d8f569d837ab749c7c5",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2016_AMC_12B_Q20",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "b980e3b614d6e9312f806be54c14a455a9e1ad2b941f7fa1622073ba6133001f",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:double-counting"
+  "answer": {
+    "accepted": [
+      "A"
     ],
-    "supportIds": [
-      "cnm_h239"
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "math:double-counting"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
+  },
+  "id": "2016_AMC_12B_Q20",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(385\\)",
+        "id": "A"
+      },
+      {
+        "content": "\\(665\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(945\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(1140\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(1330\\)",
+        "id": "E"
+      }
     ],
-    "routes": [],
-    "flags": []
-  }
+    "prompt": "A set of teams held a round-robin tournament in which every team played every other team exactly once. Every team won \\(10\\) games and lost \\(10\\) games; there were no ties. How many sets of three teams \\(\\{A,B,C\\}\\) were there in which \\(A\\) beat \\(B,\\) \\(B\\) beat \\(C,\\) and \\(C\\) beat \\(A?\\)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:double-counting",
+        "cnm_h010",
+        "cnm_h239"
+      ],
+      "explanation": "Each team played \\(10+10=20\\) opponents, so there were \\(21\\) teams. It is easier to count the triples that do not form a cycle and subtract them from all triples.\n\nWithin any triple, there are three games and therefore three wins. If no team wins twice, each team must win once, which gives exactly the cycle in the question. Otherwise, one team beats both others. Such an undefeated team is unique, since two teams cannot both win their game against each other.\n\nFor each of the \\(21\\) teams, choose two of the \\(10\\) teams it defeated. This produces every noncyclic triple exactly once, identified by its unique undefeated team. Thus the required count is\n\\[\n\\binom{21}{3}-21\\binom{10}{2}\n=1330-945=385.\n\\]\nThe answer is \\(\\boxed{385}\\), choice \\(\\text{A}\\).",
+      "id": "complementary-triples",
+      "sourceRef": "amc/2016_AMC_12B_Q20#complementary-triples",
+      "title": "Count triples with an undefeated team"
+    },
+    {
+      "directNodeIds": [
+        "math:double-counting",
+        "cnm_h239",
+        "cnm_h231"
+      ],
+      "explanation": "Every team played \\(20\\) games, so there were \\(21\\) teams and \\(\\binom{21}{3}=1330\\) unordered triples. Count selections consisting of a team \\(T\\), one opponent that \\(T\\) defeated, and one opponent that defeated \\(T\\). Each team gives \\(10\\cdot10\\) selections, for a total of\n\\[\n21\\cdot10\\cdot10=2100.\n\\]\nThe two selected opponents are distinct because a team cannot both beat and lose to the same opponent.\n\nLet \\(c\\) be the number of cyclic triples and \\(t\\) the number of other triples. A cyclic triple contributes three selections, one with each team as \\(T\\). In a noncyclic triple, the teams have respectively two, one, and zero wins within the triple, so only the middle team contributes a selection. These two types exhaust all triples. Consequently,\n\\[\nc+t=1330,\\qquad 3c+t=2100.\n\\]\nSubtracting gives \\(2c=770\\), so \\(c=385\\). The answer is \\(\\boxed{385}\\), choice \\(\\text{A}\\).",
+      "id": "mixed-incidences",
+      "sourceRef": "amc/2016_AMC_12B_Q20#mixed-incidences",
+      "title": "Count a team's win-loss pairs"
+    }
+  ],
+  "sourceRef": "amc/2016_AMC_12B_Q20"
 }

@@ -1,63 +1,56 @@
 {
-  "Year": 2016,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 14,
-  "Question": "Each vertex of a cube is to be labeled with an integer from \\(1\\) through \\(8,\\) with each integer being used once, in such a way that the sum of the four numbers on the vertices of a face is the same for each face. Arrangements that can be obtained from each other through rotations of the cube are considered to be the same. How many different arrangements are possible?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(1\\)",
-    "B": "\\(3\\)",
-    "C": "\\(6\\)",
-    "D": "\\(12\\)",
-    "E": "\\(24\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "cube geometry; casework; symmetry",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2016A/solutions",
-    "SourceSHA256": "27a6f6418745aa5dee96fe52d59162264facbabf8c80671a6ed10fee158c052f",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2016_AMC_12A_Q14",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "202731b880c7426d707518ff87e3ae59771998c4a5adb490029930ea81388219",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:symmetry-counting"
+  "answer": {
+    "accepted": [
+      "C"
     ],
-    "supportIds": [
-      "cnm_h234"
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "math:symmetry-counting"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
+  },
+  "id": "2016_AMC_12A_Q14",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(1\\)",
+        "id": "A"
+      },
+      {
+        "content": "\\(3\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(6\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(12\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(24\\)",
+        "id": "E"
+      }
     ],
-    "routes": [],
-    "flags": []
-  }
+    "prompt": "Each vertex of a cube is to be labeled with an integer from \\(1\\) through \\(8,\\) with each integer being used once, in such a way that the sum of the four numbers on the vertices of a face is the same for each face. Arrangements that can be obtained from each other through rotations of the cube are considered to be the same. How many different arrangements are possible?"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:symmetry-counting",
+        "math:finite-constraint-deduction"
+      ],
+      "explanation": "The labels sum to \\(36\\). Two opposite faces contain all eight vertices, so their common face sum must be \\(36/2=18\\).\n\nRotate the cube so that label \\(1\\) is at a fixed vertex \\(V\\). Let \\(h\\) be the label opposite \\(V\\), and let \\(a,b,c\\) label the three neighbors of \\(V\\). Write \\(a',b',c'\\) for the labels opposite \\(a,b,c\\), respectively. The three faces through \\(V\\) give\n\\[\na'=17-b-c,\\qquad b'=17-a-c,\\qquad c'=17-a-b.\n\\]\nSubstituting these expressions into the total of all eight labels gives\n\\[\n36=1+h+a+b+c+51-2(a+b+c),\n\\]\nso \\(a+b+c=h+16\\). It follows that\n\\[\na'=a+1-h,\\qquad b'=b+1-h,\\qquad c'=c+1-h.\n\\]\nThus every pair of opposite vertices has labels differing by the same positive integer\n\\[\nk=h-1.\n\\]\nMoreover, \\(a,b,c\\) are the larger members of their respective pairs.\n\nWe can now classify the possible pairings of \\(1,2,\\ldots,8\\). In a pairing with difference \\(k\\), the smallest unused number must pair with the number \\(k\\) greater than it. This determines every pair successively.\n\nIf \\(k\\geq5\\), label \\(4\\) has no partner in the range \\(1\\) through \\(8\\). If \\(k=3\\), the forced pair \\((1,4)\\) leaves \\(7\\) without a partner, since its only possible partner in range is the already used \\(4\\). The remaining cases are:\n\nFor \\(k=1\\), the pairs are \\((1,2),(3,4),(5,6),(7,8)\\). Here \\(h=2\\) and the neighbors of \\(1\\) are \\(4,6,8\\).\n\nFor \\(k=2\\), the pairs are \\((1,3),(2,4),(5,7),(6,8)\\). Here \\(h=3\\) and the neighbors are \\(4,7,8\\).\n\nFor \\(k=4\\), the pairs are \\((1,5),(2,6),(3,7),(4,8)\\). Here \\(h=5\\) and the neighbors are \\(6,7,8\\).\n\nEach case really works. Place its three neighbor labels in any order around \\(V\\), then place each partner at the opposite vertex. In every case \\(a+b+c=17+k\\), so a face through \\(V\\) has sum\n\\[\n1+a+b+(c-k)=18.\n\\]\nThe other two faces through \\(V\\) have the same sum, and each opposite face has sum \\(36-18=18\\).\n\nFor each case there are \\(3\\cdot2\\cdot1=6\\) orders of the neighbors. A rotation fixing \\(V\\) also fixes its opposite vertex, so it turns about that body diagonal. The identity and the turns of \\(120^\\circ\\) and \\(240^\\circ\\) cycle the three neighbors. Since their labels are distinct, each group contains exactly three orders. Hence each case gives \\(6/3=2\\) arrangements up to rotation.\n\nDifferent cases cannot be rotated into one another because the label opposite \\(1\\) differs. Therefore the total is\n\\[\n3\\cdot2=\\boxed{6},\n\\]\nwhich is choice \\(\\text{C}\\).",
+      "id": "opposite-pairs-and-rotations",
+      "sourceRef": "amc/2016_AMC_12A_Q14#opposite-pairs-and-rotations",
+      "title": "Find opposite pairs, then account for rotations"
+    }
+  ],
+  "sourceRef": "amc/2016_AMC_12A_Q14"
 }

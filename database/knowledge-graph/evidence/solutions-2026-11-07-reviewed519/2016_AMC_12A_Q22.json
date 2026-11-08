@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_12A_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "1fd374b0b0a8bded553e0ea4db73589d84489f4192821ac5feebbfafc6d83991",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "24f87215d6650fddb7f2505c5adfb6fcac3dd12a9a0f023454d5fed8fd465335",
+  "solutionFigureHashes": {},
+  "candidateHash": "a01f81acb76350bcd14fa97906cc2b1c3eb3b1ccc45248ad3c4af5480dbc5244",
+  "candidate": {
+    "questionId": "2016_AMC_12A_Q22",
+    "derivedAnswer": "15 (A)",
+    "answerStatus": "matches",
+    "answerReason": "The exponent patterns for primes 2, 3, and 5 have respectively 5, 3, and 1 possibilities. Their independent combinations give 15 ordered triples, agreeing with A.",
+    "methods": [
+      {
+        "id": "independent-prime-exponents",
+        "label": "Count the possible exponents prime by prime",
+        "explanation": "In a least common multiple, each prime receives the larger of its two exponents. Factoring the three specified values therefore separates the restrictions into small counting problems:\n\\[\n72=2^3\\cdot3^2,\\qquad\n600=2^3\\cdot3\\cdot5^2,\\qquad\n900=2^2\\cdot3^2\\cdot5^2.\n\\]\nNo other prime can divide \\(x,y,\\) or \\(z\\), since it would then divide one of the given least common multiples. Exponents may be zero, because the integers are positive and need not contain every prime.\n\nFor the prime \\(2\\), let its exponents in \\(x,y,z\\) be \\(\\alpha,\\beta,\\gamma\\). The conditions are\n\\[\n\\max(\\alpha,\\beta)=3,\\quad\n\\max(\\alpha,\\gamma)=3,\\quad\n\\max(\\beta,\\gamma)=2.\n\\]\nThe last equation forces \\(\\beta,\\gamma\\le2\\), so \\(\\alpha=3\\). The ordered pairs \\((\\beta,\\gamma)\\) are exactly\n\\[\n(0,2),(1,2),(2,0),(2,1),(2,2),\n\\]\ngiving \\(5\\) possibilities.\n\nFor the prime \\(3\\), let the corresponding exponents be \\(u,v,w\\). Here\n\\[\n\\max(u,v)=2,\\quad\n\\max(u,w)=1,\\quad\n\\max(v,w)=2.\n\\]\nThus \\(u,w\\le1\\), forcing \\(v=2\\). The pairs \\((u,w)\\) are exactly \\((0,1),(1,0),(1,1)\\), giving \\(3\\) possibilities.\n\nFor the prime \\(5\\), the first least common multiple forces its exponents in \\(x\\) and \\(y\\) to be zero. The other two then force its exponent in \\(z\\) to be \\(2\\). There is only \\(1\\) possibility.\n\nChoices for different primes do not restrict one another. Every combination of these exponent patterns produces a valid ordered triple, and unique prime factorization ensures that different combinations produce different triples. The total is therefore\n\\[\n5\\cdot3\\cdot1=\\boxed{15},\n\\]\nchoice \\(\\mathrm{A}\\).",
+        "nodeIds": [
+          "math:prime-factorization",
+          "cnm_h231"
+        ],
+        "prerequisiteIds": [
+          "cnm_p159",
+          "cnm_p153",
+          "cnm_p157"
+        ],
+        "levelReason": "Uses elementary prime factorization, the maximum-exponent rule for least common multiples, short exhaustive lists, and the multiplication principle."
+      }
+    ],
+    "assessedIds": [
+      "math:prime-factorization",
+      "cnm_h231"
+    ],
+    "supportIds": [
+      "cnm_p159",
+      "cnm_p153",
+      "cnm_p157"
+    ],
+    "annotationRationale": "Prime exponent structure and independent counting are the two central targets. The method explicitly translates each least common multiple into exponent maxima and proves that the resulting combinations are exhaustive and unique. Factors, primes, and the meaning of least common multiple are supporting knowledge. No divisor-count formula or permutation formula is used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_12A_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "The factorizations and maximum-exponent conditions are correct. The exponents of 2 admit five ordered patterns, those of 3 admit three, and those of 5 are forced. Other primes are excluded. Unique factorization makes the independent combinations exhaustive and distinct, giving \\(5\\cdot3=15\\).",
+    "levelCheck": "Elementary number theory and counting suitable for AMC 12. Completeness and multiplicity are explicitly addressed.",
+    "methodDistinctness": "One complete prime-exponent counting method is sufficient.",
+    "annotationCheck": "Prime exponent structure and the multiplication principle are appropriate assessed targets. The listed supporting concepts match their catalog scopes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "independent-prime-exponents": "independent-prime-exponents"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "4b5ce9d765eae4e60ec0393975313df1e7773ec4d9e1dec5f87d65522083baf8",
+    "acceptedAt": "2026-11-07T10:49:45.211436+00:00",
+    "inputHash": "c4524420b4feebb3535a5a8c723fabfe565ccaf8928705131a1140af04cf6c1d",
+    "authorInputHash": "0a1f15ee8413a41d539be1a9d987f7d2bc2b37594fe3e9086e1b88d67caebdbf",
+    "reviewInputHash": "2187e3cc6c7632d8f5bed0b68b27de517c1eaa2751357c29309e4e915e5bcc38",
+    "authorResponseHash": "f6b11cef5baefe69eef0826354f5db227776b8c8b200a714dd677396185dac55",
+    "reviewerResponseHash": "2362f04073a187311ccacc0596ec014482783d1d24d06cd672b13649e908155f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

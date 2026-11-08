@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_10B_Q17",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ddb9e0c48d53ad20c346417cee15f6764945013f92c57d54accb561ecdec68b0",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "1df2c88824947fde5e735c586e78b92b847967ea2eab14e4c621bbbb73e2291c",
+  "solutionFigureHashes": {},
+  "candidateHash": "e0f26085e34bb19dadc47f75061fdc3a6ed4fd0e46f5966a3c006c9941155273",
+  "candidate": {
+    "questionId": "2016_AMC_10B_Q17",
+    "derivedAnswer": "D (729)",
+    "answerStatus": "matches",
+    "answerReason": "The sum equals the product of the three opposite-face sums. These sums total 27, so their product is at most 729, attained by opposite pairs (2,7), (3,6), and (4,5).",
+    "methods": [
+      {
+        "id": "integer-balancing",
+        "label": "Balance the opposite-face sums",
+        "explanation": "Group the faces into their three opposite pairs, and call their labels \\((a,a')\\), \\((b,b')\\), and \\((c,c')\\). Each vertex belongs to exactly one face from each pair. Conversely, each choice of one face from each pair determines exactly one vertex. Therefore, expanding by the distributive law gives the sum of all eight vertex products as\n\\[\nS=(a+a')(b+b')(c+c').\n\\]\nLet these three pair sums be \\(x,y,z\\). They are positive integers satisfying\n\\[\nx+y+z=2+3+4+5+6+7=27.\n\\]\nTo obtain an upper bound, temporarily allow every positive integer triple with sum 27, including triples that might not come from face labels.\n\nThere are finitely many such triples, so choose one with largest product. If two entries are \\(u\\) and \\(v\\), with \\(u\\ge v+2\\), moving 1 from the larger to the smaller increases their product because\n\\[\n(u-1)(v+1)-uv=u-v-1>0.\n\\]\nThe third entry is positive, so the three-factor product also increases. Thus, at a maximum, all entries differ by at most 1. Since their sum is 27, they must all equal 9. Consequently, every cube labeling satisfies \\(S\\le9^3=729\\).\n\nThis bound is attainable: put \\(2\\) opposite \\(7\\), \\(3\\) opposite \\(6\\), and \\(4\\) opposite \\(5\\). Each opposite pair then sums to 9. The greatest possible sum is therefore \\(\\boxed{729}\\), choice \\(\\boxed{D}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_h019"
+        ],
+        "prerequisiteIds": [
+          "cnm_p116",
+          "cnm_p160",
+          "cnm_h018"
+        ],
+        "levelReason": "The proof uses cube face incidence, distribution, and an elementary integer-product comparison. It requires no advanced optimization."
+      },
+      {
+        "id": "iterated-am-gm",
+        "label": "Bound the product using two-variable AM-GM",
+        "explanation": "Let the three opposite-face pairs have sums \\(x,y,z\\). Each vertex selects one face from each pair, and the eight possible selections are exactly the eight vertices. Thus the distributive law shows that the required sum is \\(xyz\\). Also,\n\\[\nx+y+z=2+3+4+5+6+7=27,\n\\]\nand all three sums are positive.\n\nWe can bound this product using only the two-variable AM-GM inequality. For positive \\(u,v\\),\n\\[\nu+v\\ge2\\sqrt{uv},\n\\]\nwith equality exactly when \\(u=v\\); this follows by expanding \\((\\sqrt u-\\sqrt v)^2\\ge0\\). Applying this inequality three times gives, for positive \\(p,q,r,s\\),\n\\[\n\\begin{aligned}\np+q+r+s\n&\\ge2\\sqrt{pq}+2\\sqrt{rs}\\\\\n&\\ge4\\sqrt[4]{pqrs}.\n\\end{aligned}\n\\]\nUse \\(p=x,q=y,r=z,s=9\\). Their sum is 36, so\n\\[\n36\\ge4\\sqrt[4]{9xyz}.\n\\]\nBoth sides are positive, and raising to the fourth power yields \\(9xyz\\le9^4\\), or \\(xyz\\le729\\). Equality requires \\(x=y=z=9\\).\n\nAssign the opposite pairs \\((2,7)\\), \\((3,6)\\), and \\((4,5)\\). Their sums are all 9, so equality is possible. The maximum is \\(\\boxed{729}\\), choice \\(\\boxed{D}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_h022"
+        ],
+        "prerequisiteIds": [
+          "cnm_p116",
+          "cnm_p160",
+          "cnm_h021"
+        ],
+        "levelReason": "The product bound is derived directly from the two-variable AM-GM inequality, within school algebra."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_p116",
+      "cnm_p160"
+    ],
+    "annotationRationale": "The task asks for a universal maximum together with a labeling that attains it, so discrete extremal bounds and constructions is the assessed target. Both routes use cube face incidence and distribution to obtain the product of opposite-face sums. The first route uses comparison by subtraction to balance integer entries; the second uses AM-GM optimization. Their inequality knowledge remains local to the respective methods.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_10B_Q17",
+    "decision": "accept",
+    "mathematicalCheck": "Each vertex corresponds uniquely to one choice from each opposite-face pair, giving S=xyz with x+y+z=27. Integer balancing and the independently derived AM-GM bound both give xyz≤729. Opposite pairs (2,7), (3,6), (4,5) attain equality.",
+    "levelCheck": "Both proofs are complete and accessible within AMC 10 algebra and spatial reasoning.",
+    "methodDistinctness": "Integer balancing and a direct AM-GM bound provide distinct elementary arguments.",
+    "annotationCheck": "The extremal target is route neutral. Cube incidence and distribution are shared support; subtraction and AM-GM remain method local.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "integer-balancing": "solution:integer-balancing:1df2c8882494",
+    "iterated-am-gm": "solution:iterated-am-gm:1df2c8882494"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "02c4975625959d0988769d1a3714cfcc56ac78d0d8d9821d6f566b67e4a97456",
+    "acceptedAt": "2026-11-07T10:45:50.539990+00:00",
+    "inputHash": "86fa27bec51ab034bb2b7f1a5bbad6fda7dc0292437490130aab084a8243655f",
+    "authorInputHash": "6eedd2127e5befdfc5456040aa4b0d4a52f5ae54b529cc3c0d801a78481795a2",
+    "reviewInputHash": "8918b8eaf5a3ba6d896154c30f0a5b2eae98c07587500cd9da995d5c9cefa4ea",
+    "authorResponseHash": "b0f2e2639d30ae9c68d0c0ff062e3faccd05994da7c5710ffe37f263f2ced415",
+    "reviewerResponseHash": "8c21af3191c8010119d88bfa40e6f0d9d1b82541a8857c9aeeb7e057343eb558",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

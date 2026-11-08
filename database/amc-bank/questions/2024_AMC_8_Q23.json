@@ -1,71 +1,68 @@
 {
-  "Year": 2024,
-  "Level": "AMC 8",
-  "Batch": "NA",
-  "Area": "Geometry",
-  "Number": 23,
-  "Question": "Rodrigo has a very large piece of graph paper. First he draws a line segment connecting point \\((0, 4)\\) to point \\((2, 0)\\) and colors the \\(4\\) cells whose interiors intersect the segment, as shown below. Next, Rodrigo draws a line segment connecting point \\((2000, 3000)\\) to point \\((5000, 8000).\\) Again he colors the cells whose interiors intersect the segment. How many cells will he color this time?\n\n[Figure 1](figures/2024_AMC_8_Q23_question_fig1.svg)",
-  "Question Type": "mixed",
-  "Choices": {
-    "A": "\\(6000\\)",
-    "B": "\\(6500\\)",
-    "C": "\\(7000\\)",
-    "D": "\\(7500\\)",
-    "E": "\\(8000\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.54",
-    "Concepts": "greatest common divisor; lattice point",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc8/2024/solutions",
-    "SourceSHA256": "1a2407993ccdaa6eee3004d193f536c4c887811942bd85eec25ce8f2d9db569d",
-    "Figures": [
-      "figures/2024_AMC_8_Q23_question_fig1.svg"
+  "answer": {
+    "accepted": [
+      "C"
     ],
-    "FigureSources": {
-      "figures/2024_AMC_8_Q23_question_fig1.svg": {
-        "url": "https://live.poshenloh.com/images/past-contests/amc8/2024/23.svg",
-        "alt": ""
+    "type": "choice"
+  },
+  "assessedNodeIds": [],
+  "bank": "amc",
+  "classification": {
+    "area": "Geometry",
+    "domainIds": [
+      "domain:geometry"
+    ],
+    "level": "AMC 8"
+  },
+  "id": "2024_AMC_8_Q23",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(6000\\)",
+        "id": "A"
+      },
+      {
+        "content": "\\(6500\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(7000\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(7500\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(8000\\)",
+        "id": "E"
       }
-    },
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
+    ],
+    "prompt": "Rodrigo has a very large piece of graph paper. First he draws a line segment connecting point \\((0, 4)\\) to point \\((2, 0)\\) and colors the \\(4\\) cells whose interiors intersect the segment, as shown below. Next, Rodrigo draws a line segment connecting point \\((2000, 3000)\\) to point \\((5000, 8000).\\) Again he colors the cells whose interiors intersect the segment. How many cells will he color this time?\n\n[Figure 1](figures/2024_AMC_8_Q23_question_fig1.svg)"
   },
-  "ID": "2024_AMC_8_Q23",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:geometry"
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "cnm_p128",
+        "cnm_h230"
+      ],
+      "explanation": "The segment moves\n\\[\n5000-2000=3000\n\\]\nunits right and\n\\[\n8000-3000=5000\n\\]\nunits up. Since \\(3000:5000=3:5\\), divide it into \\(1000\\) pieces, each moving \\(3\\) units right and \\(5\\) units up. Each piece starts at a grid vertex and is an integer translation of the same small segment, so every piece crosses the same number of cell interiors.\n\nMeasure heights from the starting point of one piece. Because the segment is straight, its heights at the two interior vertical grid lines are \\(\\frac53\\) and \\(\\frac{10}3\\).\n\nIn the first column, the height goes from \\(0\\) to \\(\\frac53\\). It crosses the horizontal line at height \\(1\\), so it passes through \\(2\\) cells.\n\nIn the second column, the height goes from \\(\\frac53\\) to \\(\\frac{10}3\\). It crosses the horizontal lines at heights \\(2\\) and \\(3\\), so it passes through \\(3\\) cells.\n\nIn the third column, the height goes from \\(\\frac{10}3\\) to \\(5\\). It crosses the horizontal line at height \\(4\\), so it passes through \\(2\\) cells. The endpoint at height \\(5\\) adds no cell because only interior intersections count.\n\nThus each piece colors \\(2+3+2=7\\) cells. The pieces occupy separate groups of three columns, so their colored cells do not overlap, and together they cover the entire segment. The total is\n\\[\n1000\\cdot7=\\boxed{7000},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+      "id": "method_1",
+      "sourceRef": "amc/2024_AMC_8_Q23#method_1",
+      "title": "Count one repeating piece"
+    },
+    {
+      "directNodeIds": [
+        "cnm_h009",
+        "math:lattice-counting"
+      ],
+      "explanation": "Trace the segment from \\((2000,3000)\\) to \\((5000,8000)\\). It starts inside one cell immediately after leaving its starting vertex. Each later crossing of a grid line enters a new cell. Since both coordinates increase, the segment can never return to a cell it has left.\n\nBetween its endpoints, the segment crosses \\(2999\\) vertical grid lines, with horizontal coordinates \\(2001\\) through \\(4999\\), and \\(4999\\) horizontal grid lines, with vertical coordinates \\(3001\\) through \\(7999\\).\n\nWe must correct for crossings at grid vertices. At such a crossing, a vertical and a horizontal line are crossed together, but the segment enters only one new cell, diagonally opposite the previous cell. The two other cells touch the segment only at that vertex, so they are not colored.\n\nThe rise-to-run ratio is\n\\[\n\\frac{8000-3000}{5000-2000}=\\frac53.\n\\]\nFor an integer horizontal displacement \\(h\\) from the starting point, the vertical displacement is \\(\\frac{5h}{3}\\). This is an integer exactly when \\(h\\) is a multiple of \\(3\\). Thus the interior grid vertices occur at horizontal displacements\n\\[\n3,6,9,\\ldots,2997,\n\\]\nfor a total of \\(2997\\div3=999\\). The starting and ending vertices are excluded from these interior crossings.\n\nSubtracting one duplicate entry for each of those \\(999\\) vertices gives\n\\[\n1+2999+4999-999=\\boxed{7000}\n\\]\ncolored cells, choice \\(\\boxed{\\text{C}}\\).",
+      "id": "method_2",
+      "sourceRef": "amc/2024_AMC_8_Q23#method_2",
+      "title": "Count entries into new cells"
+    }
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "e5c0126110546cfa2a303cbef9688291aedd0b30c22e855a9f9a27582ab261f6",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h009"
-    ],
-    "supportIds": [
-      "math:lattice-counting",
-      "cnm_p158"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "sourceRef": "amc/2024_AMC_8_Q23"
 }

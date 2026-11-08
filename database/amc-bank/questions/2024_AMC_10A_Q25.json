@@ -1,78 +1,61 @@
 {
-  "Year": 2024,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Counting & Probability",
-  "Number": 25,
-  "Question": "The figure below shows a dotted grid \\(8\\) cells wide and \\(3\\) cells tall consisting of \\(1'' \\times 1''\\) squares. Carl places \\(1\\)-inch toothpicks along some of the sides of the squares to create a closed loop that does not intersect itself. The numbers in the cells indicate the number of sides of that square that are to be covered by toothpicks, and any number of toothpicks are allowed if no number is written. In how many ways can Carl place the toothpicks?\n\n[Figure 1](figures/2024_AMC_10A_Q25_question_fig1.svg)",
-  "Question Type": "mixed",
-  "Choices": {
-    "A": "\\(130\\)",
-    "B": "\\(144\\)",
-    "C": "\\(146\\)",
-    "D": "\\(162\\)",
-    "E": "\\(196\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.94",
-    "Concepts": "bijection; casework; systematic listing",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2024A/solutions",
-    "SourceSHA256": "5fed52d29857ed2e73b79316a935cba357bf2b5edda16ac2add7780e78466254",
-    "Figures": [
-      "figures/2024_AMC_10A_Q25_question_fig1.svg"
+  "answer": {
+    "accepted": [
+      "C"
     ],
-    "FigureSources": {
-      "figures/2024_AMC_10A_Q25_question_fig1.svg": {
-        "url": "https://live.poshenloh.com/images/past-contests/amc10/2024A/25.svg",
-        "alt": ""
-      }
-    },
-    "PreviousAnswer": "E",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
+    "type": "choice"
   },
-  "ID": "2024_AMC_10A_Q25",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "assessedNodeIds": [
+    "cnm_h232"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "9ead92980dba1c0b790733517c31616987e9488a5ee3efa713b421126bb64315",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:graph-models",
-      "cnm_h232"
+  "bank": "amc",
+  "classification": {
+    "area": "Counting & Probability",
+    "domainIds": [
+      "domain:counting-probability"
     ],
-    "supportIds": [],
-    "routes": [
+    "level": "AMC 10"
+  },
+  "id": "2024_AMC_10A_Q25",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "inside-cell-encoding",
-        "label": "Encode the enclosed cells",
-        "nodeIds": [
-          "math:bijective-counting"
-        ]
+        "content": "\\(130\\)",
+        "id": "A"
+      },
+      {
+        "content": "\\(144\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(146\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(162\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(196\\)",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "The figure below shows a dotted grid \\(8\\) cells wide and \\(3\\) cells tall consisting of \\(1'' \\times 1''\\) squares. Carl places \\(1\\)-inch toothpicks along some of the sides of the squares to create a closed loop that does not intersect itself. The numbers in the cells indicate the number of sides of that square that are to be covered by toothpicks, and any number of toothpicks are allowed if no number is written. In how many ways can Carl place the toothpicks?\n\n[Figure 1](figures/2024_AMC_10A_Q25_question_fig1.svg)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "cnm_h232",
+        "math:bijective-counting",
+        "math:graph-models"
+      ],
+      "explanation": "Instead of choosing toothpicks one at a time, record which cells lie inside the loop. A side carries a toothpick exactly when it separates an inside cell from an outside cell, treating everything beyond the grid as outside. Thus the enclosed cells determine the toothpicks uniquely. Moreover, the enclosed cells must be connected through shared sides; a connection only at a corner would make the boundary meet itself.\n\nNumber the columns \\(1\\) through \\(8\\). Every middle-row cell has exactly one covered side. If that cell is outside, exactly one of its four neighboring positions is inside. If it is inside, exactly one neighboring position is outside.\n\nFirst suppose no middle-row cell is inside. Each column must then have exactly one of its top and bottom cells inside. Since the middle row separates the top and bottom rows, connectivity forces all eight chosen cells to be in the same row. Enclosing the entire top row or the entire bottom row gives \\(2\\) loops.\n\nNow suppose some middle-row cells are inside. An outside middle cell next to an inside middle cell already has its one covered side. Its top and bottom neighbors must therefore be outside, making its entire column outside. Such a column cannot separate two groups of enclosed cells. Consequently the inside middle cells form one consecutive run.\n\nLet \\(s\\) and \\(e\\) be the first and last columns of that run. If \\(s\\ge3\\), column \\(s-1\\) is entirely outside. The middle cell in column \\(s-2\\) has no inside middle neighbor, so its clue forces one of its top and bottom neighbors to be inside. That cell would be disconnected from the run by column \\(s-1\\), which is impossible. Thus \\(s\\) is \\(1\\) or \\(2\\). The same argument at the right end shows that \\(e\\) is \\(7\\) or \\(8\\).\n\nAt either endpoint of the run, the middle cell has one outside horizontal neighbor. Its top and bottom neighbors must both be inside. At every other column of the run, both horizontal neighbors are inside, so exactly one of the top and bottom cells must be inside. Each such interior column therefore gives two independent choices. Any omitted end column is entirely outside.\n\nThese choices all produce valid loops. They form a solid middle strip with squares attached above or below it. The strip keeps the region connected and prevents corner-only contacts. Every unchosen top or bottom cell touches the exterior of the grid, and any omitted end column also touches the exterior, so there are no holes. The resulting boundary is one loop that does not intersect itself, and the stated neighbor counts verify every clue.\n\nFor \\((s,e)=(1,8),(1,7),(2,8),(2,7)\\), the run lengths are \\(8,7,7,6\\). With both endpoint columns fixed, the counts are respectively\n\\[\n2^6,\\qquad 2^5,\\qquad 2^5,\\qquad 2^4.\n\\]\nThe cases are disjoint, and different choices give different enclosed cells and hence different toothpick placements. Including the two loops with no enclosed middle cells, the total is\n\\[\n2+64+32+32+16=\\boxed{146},\n\\]\nwhich is choice \\(\\boxed{\\text{C}}\\).",
+      "id": "inside-cell-encoding",
+      "sourceRef": "amc/2024_AMC_10A_Q25#inside-cell-encoding",
+      "title": "Count the sets of enclosed cells"
+    }
+  ],
+  "sourceRef": "amc/2024_AMC_10A_Q25"
 }

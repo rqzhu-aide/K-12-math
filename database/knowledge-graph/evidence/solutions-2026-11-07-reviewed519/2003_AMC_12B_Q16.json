@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2003_AMC_12B_Q16",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "17d1d96ab1433ee91750f1acc9fb59a4391bfb4d0333aa6e67354af38f3f8099",
+    "figureHashes": {
+      "figures/2003_AMC_12B_Q16_question_fig1.svg": "7a7851e8e8914eff1089c037658d774e984ce98d9745de869f16320ab1c22350"
+    }
+  },
+  "solutionSHA256": "18adb78ea63c118bacdab295859eeb8a5684e4f67ffaa442589cce9bdf088a23",
+  "solutionFigureHashes": {},
+  "candidateHash": "15583763cf8c0605dd6a797538bac2b51fbc0396c59babebfb27a59765f1fd39",
+  "candidate": {
+    "questionId": "2003_AMC_12B_Q16",
+    "derivedAnswer": "E: \\(\\dfrac{7\\pi}{6}-\\dfrac{\\sqrt{3}}{2}\\)",
+    "answerStatus": "matches",
+    "answerReason": "Each adjacent pair of small semicircles overlaps in area \\(\\pi/3-\\sqrt{3}/4\\). Correcting for these two overlaps gives the shaded area \\(7\\pi/6-\\sqrt{3}/2\\), agreeing with E.",
+    "methods": [
+      {
+        "id": "subtract-overlapping-semicircles",
+        "label": "Subtract the union of the small semicircles",
+        "explanation": "The small semicircles overlap, so we must account for those overlaps before subtracting their area. Name their centers \\(U,O,V\\), in order from \\(A\\) to \\(B\\). Since \\(AB=4\\), the four equal segments each have length \\(1\\), and \\(O\\) is also the large semicircle's center. Each small semicircle lies inside the large one: its center is at most \\(1\\) from \\(O\\), and the triangle inequality places every point within another \\(1\\) of that center at distance at most \\(2\\) from \\(O\\).\n\nConsider the overlap of the semicircles centered at \\(U\\) and \\(O\\), and call their intersection above \\(AB\\) point \\(T\\). The lengths \\(UT,OT,UO\\) all equal \\(1\\), so \\(UOT\\) is equilateral and its angles are \\(60^\\circ\\). Its altitude bisects the unit base, giving height\n\\[\n\\sqrt{1-\\left(\\frac12\\right)^2}=\\frac{\\sqrt3}{2}.\n\\]\nThus its area is \\(\\sqrt3/4\\).\n\nDrawing \\(UT\\) and \\(OT\\) splits the overlap into this triangle and two circular segments. Each segment is a \\(60^\\circ\\) unit sector with the triangle removed. Consequently, the overlap area is\n\\[\nL=2\\left(\\frac{60}{360}\\pi\\right)-\\frac{\\sqrt3}{4}\n=\\frac{\\pi}{3}-\\frac{\\sqrt3}{4}.\n\\]\nThe other adjacent pair has the same overlap. The outer two semicircles meet only at \\(O\\), so there is no other overlap of positive area. Adding the three small areas counts each adjacent overlap twice; subtracting one copy of each gives their union's area.\n\nThe large semicircle has area \\(2\\pi\\), and each small semicircle has area \\(\\pi/2\\). Therefore the shaded area is\n\\[\n2\\pi-\\left(\\frac{3\\pi}{2}-2L\\right)\n=\\frac{7\\pi}{6}-\\frac{\\sqrt3}{2}.\n\\]\nThe answer is \\(\\boxed{\\frac{7\\pi}{6}-\\frac{\\sqrt3}{2}}\\), choice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_p150",
+          "cnm_257"
+        ],
+        "prerequisiteIds": [
+          "cnm_p192",
+          "cnm_139",
+          "cnm_174",
+          "cnm_p148",
+          "cnm_111"
+        ],
+        "levelReason": "The argument uses elementary area accounting, sectors, equilateral triangles, and the Pythagorean theorem, all within AMC 12 scope."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p150",
+      "cnm_257"
+    ],
+    "supportIds": [
+      "cnm_p192",
+      "cnm_139",
+      "cnm_174",
+      "cnm_p148",
+      "cnm_111"
+    ],
+    "annotationRationale": "The task asks for a composite circular area, matching cnm_p150 and the irregular-area application of cnm_257. The method evaluates overlaps using sectors and equilateral triangles. Circle area, equilateral-triangle properties, Pythagorean height calculations, and triangle area support that computation; the triangle inequality verifies containment.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2003_AMC_12B_Q16",
+    "decision": "accept",
+    "mathematicalCheck": "The figure confirms three upper semicircles with consecutive centers one unit apart. Each adjacent overlap has area 2(π/6) − √3/4. All small semicircles are contained in the large one, and the outer pair intersects only at one point. Subtracting their union gives 7π/6 − √3/2, choice E.",
+    "levelCheck": "Sector areas, equilateral triangles, the Pythagorean theorem, and elementary overlap accounting fit AMC 12. The decomposition is explained sufficiently.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The composite-area and sector-area assessed nodes fit the task. All listed supporting nodes correspond to steps actually used, including the triangle inequality for containment.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "subtract-overlapping-semicircles": "subtract-overlapping-semicircles"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "366d4ab0d8a9becea78ecdbe48cf304effb664807b8e149657824698adf610c8",
+    "acceptedAt": "2026-11-07T10:52:37.463101+00:00",
+    "inputHash": "63b01b207e2bac2ba47514d8169de14a37a9137a4d79a481e19b5ced75827eaa",
+    "authorInputHash": "ec4d398c8eb7962f33f5f79906aeac0af4c3ecbab24b1f6c46787323ad242b28",
+    "reviewInputHash": "bb7fba4178c7144b2555d9b5ee01ba9a6ec626546ff1c551bc0b7e46a6037700",
+    "authorResponseHash": "912779e4354e034407834a2c4bb3c5fae976459cf5215e4d693ca35531c6ae19",
+    "reviewerResponseHash": "7bf3f687b280ec2099ff0800b8e2d593474551714495aeb9314b22515e646372",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2024_AMC_8_Q07",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "36dd5ef21e34d02a3dd6d612f202c5e73b1b3b55e95cfde2e96259ae299c8bf4",
+    "figureHashes": {
+      "figures/2024_AMC_8_Q07_question_fig1.svg": "3867e00e1b4449d158d91630e930f0bcecedac0890ffea5566311535ec23760a"
+    }
+  },
+  "solutionSHA256": "d3cc138f7415bd6134ece816e24bd65b0b5f0348546204399b78e7b579c34427",
+  "solutionFigureHashes": {},
+  "candidateHash": "6b6df741ed6414843612b805503f83b1fd6da84c8809d90037b1acb1bc5d1345",
+  "candidate": {
+    "questionId": "2024_AMC_8_Q07",
+    "derivedAnswer": "5 (E)",
+    "answerStatus": "matches",
+    "answerReason": "Color balance and tile areas force at least five unit tiles, and an explicit tiling attains five.",
+    "methods": [
+      {
+        "id": "alternating-column-invariant",
+        "label": "Column coloring and tile areas",
+        "explanation": "A \\(1\\times4\\) tile must be horizontal because it cannot fit vertically in three rows. Alternating column colors are useful because both larger tile shapes then cover the two colors equally.\n\nColor columns \\(1,3,5,7\\) gray and columns \\(2,4,6\\) white. There are \\(4\\cdot3=12\\) gray cells and \\(3\\cdot3=9\\) white cells. Each \\(2\\times2\\) tile covers two cells of each color, as does each horizontal \\(1\\times4\\) tile. Thus the larger tiles cannot account for the three extra gray cells. The \\(1\\times1\\) tiles must cover three more gray cells than white cells, so at least three unit tiles are needed.\n\nThe rectangle has \\(21\\) cells, and every larger tile covers \\(4\\) cells. Area therefore restricts the number of unit tiles to \\(1,5,9,13,17,21\\). The smallest number on this list that is at least three is \\(5\\).\n\nTo attain five, place three \\(2\\times2\\) tiles in the top two rows, covering column pairs \\(1,2\\), \\(3,4\\), and \\(5,6\\). Place one \\(1\\times4\\) tile in the bottom row, covering columns \\(1\\) through \\(4\\). The two cells in column \\(7\\) of the top two rows and the last three cells of the bottom row remain. Fill them with five unit tiles. Therefore the minimum is \\(\\boxed{5}\\), choice \\(\\text{E}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "math:invariant-reasoning"
+        ],
+        "prerequisiteIds": [
+          "cnm_p089",
+          "cnm_p153"
+        ],
+        "levelReason": "Uses unit-cell counting, an elementary color imbalance, and multiples of four, all within AMC 8 scope."
+      },
+      {
+        "id": "middle-row-packing",
+        "label": "Count tiles through the middle row",
+        "explanation": "The middle row limits how many large tiles can fit. Every \\(2\\times2\\) tile covers two cells in that row, so there can be at most three such tiles. Every \\(1\\times4\\) tile must be horizontal, and a seven-cell row can hold at most one of them.\n\nConsider all possible numbers of \\(2\\times2\\) tiles.\n\n- With at most one \\(2\\times2\\) tile, there are at most three \\(1\\times4\\) tiles, one per row. This gives at most four larger tiles altogether.\n\n- With two \\(2\\times2\\) tiles, four middle-row cells are occupied. Only three remain, so no \\(1\\times4\\) tile fits in the middle row. At most two fit in the outer rows, again giving at most four larger tiles.\n\n- With three \\(2\\times2\\) tiles, six middle-row cells are occupied, so no \\(1\\times4\\) tile fits there. Each square tile also touches either the top or bottom row. Among three square tiles, at least two must touch the same outer row. They occupy four cells of that row, leaving too little room for a \\(1\\times4\\) tile. Only the other outer row can hold one, giving at most four larger tiles.\n\nThese cases exhaust the possibilities. Since each larger tile covers four cells, they cover at most \\(4\\cdot4=16\\) of the rectangle's \\(21\\) cells. At least \\(21-16=5\\) unit tiles are necessary.\n\nFive are achievable: put three \\(2\\times2\\) tiles across the first six columns of the top two rows and one \\(1\\times4\\) tile across the first four columns of the bottom row. Fill the five remaining cells with unit tiles. The minimum is therefore \\(\\boxed{5}\\), choice \\(\\text{E}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_p216"
+        ],
+        "prerequisiteIds": [
+          "cnm_p089"
+        ],
+        "levelReason": "Uses row capacities, a complete three-case argument, and the basic pigeonhole principle for three tiles and two outer rows."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_p089"
+    ],
+    "annotationRationale": "The target is a minimum tile count proved by a universal bound and an attaining construction. Rectangle area is shared support. The first method preserves the gray-white cell difference under placement of either larger tile and uses multiples of four for the area restriction. The second method instead uses middle-row capacity and the basic pigeonhole principle. These method-specific ideas are alternative routes.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2024_AMC_8_Q07",
+    "decision": "accept",
+    "mathematicalCheck": "Both proofs are complete. Coloring forces at least three unit tiles, while area restricts their number to 1, 5, 9, 13, 17, or 21, forcing at least five. Independently, the exhaustive middle-row cases bound the number of larger tiles by four. The stated nonoverlapping construction covers sixteen cells with larger tiles and the remaining five with unit tiles.",
+    "levelCheck": "Both methods explain their decisive steps using counting, multiples, row capacities, and basic pigeonhole reasoning appropriate for AMC 8.",
+    "methodDistinctness": "The coloring invariant and the middle-row packing argument provide genuinely different elementary bounds.",
+    "annotationCheck": "The extremal assessment includes both a universal bound and an attaining construction. Rectangle area is shared support; invariant reasoning, multiples, and pigeonhole reasoning are appropriately method-specific. Formal congruence notation is unnecessary.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "alternating-column-invariant": "solution:alternating-column-invariant:d3cc138f7415",
+    "middle-row-packing": "solution:middle-row-packing:d3cc138f7415"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "ed7e356cb72ebe6e0839193ca78b77f8b0c60b4ba3cb9f6a565d19fbb4634240",
+    "acceptedAt": "2026-11-07T08:04:11.540723+00:00",
+    "inputHash": "1f847fb7b9ea20f729692b034044ba7ac95f16170c3e09377c4899f33134c633",
+    "authorInputHash": "6da818b33b86c686ffad0e75b219ba7e39af53b85ab6348a19265e2d936befb5",
+    "reviewInputHash": "884431becca5d0ac14d1b65f1dab750de01a8d61243b7f5d57bd99efcd0c7596",
+    "authorResponseHash": "10f20c6ac70547c369a0a57cb22cefc26141effaca9bdb18b16e3b2b549b4e2c",
+    "reviewerResponseHash": "7edec2ff6c9d827daf75f10c8fa6d25a25182935451bce84abe16b57cf32e911",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

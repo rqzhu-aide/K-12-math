@@ -1,85 +1,70 @@
 {
-  "Year": 2025,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 16,
-  "Question": "A circle has been divided into \\(6\\) sectors of different sizes. Then \\(2\\) of the sectors are painted red, \\(2\\) painted green, and \\(2\\) painted blue so that no two neighboring sectors are painted the same color. One such coloring is shown below.\n\n[Figure 1](figures/2025_AMC_10B_Q16_question_fig1.svg)\n\nHow many different colorings are possible?",
-  "Question Type": "mixed",
-  "Choices": {
-    "A": "\\(12\\)",
-    "B": "\\(16\\)",
-    "C": "\\(18\\)",
-    "D": "\\(24\\)",
-    "E": "\\(28\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "reviewed-source-concepts",
-    "Concepts": "graph theory; complementary counting; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2025B/solutions",
-    "SourceSHA256": "cf9d9f05708ee08cd76252c09e1b652d2dc4bf0d5e2701f607a7f623089b5acb",
-    "Figures": [
-      "figures/2025_AMC_10B_Q16_question_fig1.svg"
+  "answer": {
+    "accepted": [
+      "D"
     ],
-    "FigureSources": {
-      "figures/2025_AMC_10B_Q16_question_fig1.svg": {
-        "url": "https://live.poshenloh.com/images/past-contests/amc10/2025B/16.svg",
-        "alt": ""
-      }
-    },
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
+    "type": "choice"
   },
-  "ID": "2025_AMC_10B_Q16",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "assessedNodeIds": [
+    "math:graph-coloring"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "34c118e16ffb1754fe1d5d6cd384d0ebf42a8d38387a6ed4ec91ae3369f566e4",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:graph-coloring"
+  "bank": "amc",
+  "classification": {
+    "area": "Counting & Probability",
+    "domainIds": [
+      "domain:counting-probability"
     ],
-    "supportIds": [],
-    "routes": [
+    "level": "AMC 10"
+  },
+  "id": "2025_AMC_10B_Q16",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "red-sector-separation",
-        "label": "Classify the two red positions",
-        "nodeIds": [
-          "cnm_h232"
-        ]
+        "content": "\\(12\\)",
+        "id": "A"
       },
       {
-        "id": "exclude-adjacent-color-pairs",
-        "label": "Exclude equal-color neighbors",
-        "nodeIds": [
-          "math:multiset-permutations",
-          "math:inclusion-exclusion-general",
-          "cnm_h231"
-        ]
+        "content": "\\(16\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(18\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(24\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(28\\)",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "A circle has been divided into \\(6\\) sectors of different sizes. Then \\(2\\) of the sectors are painted red, \\(2\\) painted green, and \\(2\\) painted blue so that no two neighboring sectors are painted the same color. One such coloring is shown below.\n\n[Figure 1](figures/2025_AMC_10B_Q16_question_fig1.svg)\n\nHow many different colorings are possible?"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:graph-coloring",
+        "cnm_h232"
+      ],
+      "explanation": "The different sector sizes make the six positions distinguishable. Number them \\(1\\) through \\(6\\) clockwise, with sectors \\(6\\) and \\(1\\) also neighboring. First choose the two red positions; this leaves only green and blue to arrange.\n\n[Figure 1](figures/2025_AMC_10B_Q16_question_fig1.svg)\n\nThe red sectors cannot be neighbors. Consequently, the numbers of sectors between them in the two directions must be either \\(2\\) and \\(2\\), or \\(1\\) and \\(3\\).\n\nFor gaps of lengths \\(2\\) and \\(2\\), the red pairs are \\(\\{1,4\\},\\{2,5\\},\\{3,6\\}\\), giving \\(3\\) choices. Each two-sector gap must be colored green-blue or blue-green. These choices are independent, and together they automatically use two sectors of each color. This case contributes\n\\[\n3\\cdot 2\\cdot 2=12.\n\\]\n\nFor gaps of lengths \\(1\\) and \\(3\\), there are \\(6\\) red pairs: choosing the unique sector in the one-sector gap determines the red sectors on either side of it. The three-sector gap must alternate, so it is green-blue-green or blue-green-blue. The single remaining sector must then receive the color used only once in the longer gap. Thus each red pair allows exactly \\(2\\) completions, contributing\n\\[\n6\\cdot 2=12.\n\\]\n\nEvery valid coloring has exactly one red pair and belongs to exactly one of these cases. Therefore the total is \\(12+12=24\\) colorings, choice \\(\\mathrm{D}\\).",
+      "id": "red-sector-separation",
+      "sourceRef": "amc/2025_AMC_10B_Q16#red-sector-separation",
+      "title": "Classify the positions of the red sectors"
+    },
+    {
+      "directNodeIds": [
+        "math:multiset-permutations",
+        "math:inclusion-exclusion-general",
+        "cnm_h231"
+      ],
+      "id": "exclude-adjacent-color-pairs",
+      "sourceRef": "amc/2025_AMC_10B_Q16#exclude-adjacent-color-pairs",
+      "title": "Exclude equal-color neighbors"
+    }
+  ],
+  "sourceRef": "amc/2025_AMC_10B_Q16"
 }

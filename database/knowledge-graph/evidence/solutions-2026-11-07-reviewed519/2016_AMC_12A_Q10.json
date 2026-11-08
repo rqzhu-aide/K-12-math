@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_12A_Q10",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "7e6dff415fceccf809768a37b1c4fa3e0f7d0261f2e79911179c64c58703b129",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "c658e0369a68d9b411c46986a6ab57bab30c8bdaa85ced502569427064fe67da",
+  "solutionFigureHashes": {},
+  "candidateHash": "130113de8c4b1c1369b811c8ffca5cdea9f8d41208de42a7aa5ddf34aabd2e30",
+  "candidate": {
+    "questionId": "2016_AMC_12A_Q10",
+    "derivedAnswer": "Seat 2 (B)",
+    "answerStatus": "matches",
+    "answerReason": "The other four friends increase their combined seat numbers by 1, so Ada's seat number must decrease by 1. Her final end seat must be 1, making her original seat 2.",
+    "methods": [
+      {
+        "id": "seat-number-sum",
+        "label": "Method 1: Track the sum of the seat numbers",
+        "explanation": "The friends' individual seats change, but the sum of all five seat numbers remains \\(1+2+3+4+5=15\\). Compare the original arrangement with the final arrangement after Ada takes the vacant end seat.\n\nBea's seat number increases by \\(2\\), while Ceci's decreases by \\(1\\). Dee and Edie's combined seat numbers stay unchanged because they swap seats. Thus the other four friends' combined total increases by \\(2-1=1\\), so Ada's seat number must decrease by \\(1\\).\n\nLet \\(a\\) be Ada's original seat number and \\(f\\) her final seat number. Then \\(f=a-1\\). Since \\(f\\) is an end seat, it is \\(1\\) or \\(5\\). Ending in seat \\(5\\) would require starting in seat \\(6\\), which does not exist. Hence \\(f=1\\) and \\(a=2\\).\n\nThis arrangement is possible: the original order Bea, Ada, Ceci, Dee, Edie in seats \\(1\\) through \\(5\\) can become Ada, Ceci, Bea, Edie, Dee, satisfying every stated move. Therefore Ada originally occupied seat \\(2\\), choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "math:invariant-reasoning",
+          "math:finite-constraint-deduction"
+        ],
+        "prerequisiteIds": [
+          "cnm_002",
+          "cnm_p015"
+        ],
+        "levelReason": "The method uses a fixed total, signed changes, and the two possible end seats."
+      },
+      {
+        "id": "follow-destinations",
+        "label": "Method 2: Follow the possible destinations",
+        "explanation": "Dee and Edie occupy the same pair of seats before and after their swap. Consequently, the three seats originally occupied by Ada, Bea, and Ceci must also be the three seats those friends occupy afterward.\n\nLet \\(b\\) be Bea's original seat number. Since she moves two seats right, \\(b\\) is \\(1\\), \\(2\\), or \\(3\\). Her destination \\(b+2\\) must originally have belonged to either Ada or Ceci. These give all possible cases.\n\nIf Bea moves into Ada's original seat, Ceci must move into Bea's original seat: Ada's old seat is now occupied by Bea, and Ceci cannot stay in her own seat. Since Ceci moves one seat left, her original seat was \\(b+1\\). Ada would then take Ceci's old seat, \\(b+1\\). This is one of seats \\(2,3,4\\), so it cannot be the required end seat.\n\nIf Bea moves into Ceci's original seat, Ceci originally sat in \\(b+2\\) and moves to \\(b+1\\). That destination must have been Ada's original seat, because it is neither Bea's original seat nor Ceci's. Ada then takes the remaining seat, Bea's original seat \\(b\\). For this to be an end seat with \\(b\\in\\{1,2,3\\}\\), we must have \\(b=1\\). Ada's original seat was therefore \\(b+1=2\\).\n\nFor existence, the original order Bea, Ada, Ceci, Dee, Edie can become Ada, Ceci, Bea, Edie, Dee. Thus Ada originally occupied seat \\(2\\), choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "math:finite-constraint-deduction"
+        ],
+        "prerequisiteIds": [
+          "cnm_p015"
+        ],
+        "levelReason": "This alternative uses only seat positions and an exhaustive split into two possible destinations."
+      }
+    ],
+    "assessedIds": [
+      "math:finite-constraint-deduction"
+    ],
+    "supportIds": [
+      "cnm_p015"
+    ],
+    "annotationRationale": "The route-neutral target is deducing a forced original position from the finite movement and distinctness constraints. The first method adds invariant reasoning as a local strategy, with signed changes as local support. The second instead exhausts Bea's possible destination types. Interpreting left and right is shared support, and each method supplies a feasible arrangement after proving necessity.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_12A_Q10",
+    "decision": "accept",
+    "mathematicalCheck": "The other four friends' seat-number total increases by 1, so Ada's final seat is one less than her original seat. An end destination therefore forces 2 to 1. The second method exhausts Bea's two possible destination types and reaches the same conclusion. Both verify a feasible arrangement.",
+    "levelCheck": "Both explanations use elementary position constraints and arithmetic, with necessity and feasibility established independently.",
+    "methodDistinctness": "The fixed-total argument and exhaustive destination argument offer genuinely distinct, equally accessible ideas.",
+    "annotationCheck": "Finite constraint deduction is shared by both methods. Invariant reasoning and signed changes remain local to the first method, while left-right interpretation is justified shared support.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "seat-number-sum": "seat-number-sum",
+    "follow-destinations": "follow-destinations"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "0e69e522b8bda640f6126ac2a37033ce0a46b87d313296ceb891dcb19b1118cf",
+    "acceptedAt": "2026-11-07T10:42:44.515476+00:00",
+    "inputHash": "889316d6bd048b44aef84db9f5d53fdc24af9bcd81ac3087d8a3c20f7f24f410",
+    "authorInputHash": "8fd0868fb54e91d63872a5b70fcee14f026e6be3cf09c48d0374eca0301a22fa",
+    "reviewInputHash": "7b47040da0e9868f08f1b30323c63c3514368c7f23ab9ec87db8852dd0363a7b",
+    "authorResponseHash": "bd08398cc8f14c323829c73d185682415b0db590ebf04d568fdf64c08858df5d",
+    "reviewerResponseHash": "8416a757ad6c837ecd369c5dc114674116fb4f7fa152e2f157ebec5faf86de4c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

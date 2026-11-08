@@ -1,68 +1,59 @@
 {
-  "Year": 2021,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 24,
-  "Question": "Arjun and Beth play a game in which they take turns removing one brick or two adjacent bricks from one “wall” among a set of several walls of bricks, with gaps possibly creating new walls. The walls are one brick tall. For example, a set of walls of sizes \\(4\\) and \\(2\\) can be changed into any of the following by one move: \\((3,2),\\) \\((2,1,2),\\) \\((4),\\) \\((4,1),\\) \\((2,2),\\) or \\((1,1,2).\\)\n\n[Figure 1](figures/2021_AMC_10B_Q24_question_fig1.svg)\n\nArjun plays first, and the player who removes the last brick wins. For which starting configuration is there a strategy that guarantees a win for Beth?",
-  "Question Type": "mixed",
-  "Choices": {
-    "A": "\\( (6,1,1) \\)",
-    "B": "\\( (6,2,1) \\)",
-    "C": "\\( (6,2,2) \\)",
-    "D": "\\( (6,3,1) \\)",
-    "E": "\\( (6,3,2) \\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.69",
-    "Concepts": "combinatorial game",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2021B/solutions",
-    "SourceSHA256": "6d6538e38d20bd88576d0b4a0695a28cb5bfcae69b198989fec14f46723adafc",
-    "Figures": [
-      "figures/2021_AMC_10B_Q24_question_fig1.svg"
+  "answer": {
+    "accepted": [
+      "B"
     ],
-    "FigureSources": {
-      "figures/2021_AMC_10B_Q24_question_fig1.svg": {
-        "url": "https://live.poshenloh.com/images/past-contests/amc10/2021B/24.svg",
-        "alt": ""
-      }
-    },
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
+    "type": "choice"
   },
-  "ID": "2021_AMC_10B_Q24",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "assessedNodeIds": [
+    "math:subtraction-game-strategies"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "e3c59e47186e321df052c67f158f7b99543058f534106b8ffca84e2c768922c7",
-    "status": "mapped",
-    "reviewStatus": "machine_adjudicated",
-    "assessedIds": [
-      "math:subtraction-game-strategies"
+  "bank": "amc",
+  "classification": {
+    "area": "Counting & Probability",
+    "domainIds": [
+      "domain:counting-probability"
     ],
-    "supportIds": [],
-    "routes": [],
-    "flags": []
-  }
+    "level": "AMC 10"
+  },
+  "id": "2021_AMC_10B_Q24",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\( (6,1,1) \\)",
+        "id": "A"
+      },
+      {
+        "content": "\\( (6,2,1) \\)",
+        "id": "B"
+      },
+      {
+        "content": "\\( (6,2,2) \\)",
+        "id": "C"
+      },
+      {
+        "content": "\\( (6,3,1) \\)",
+        "id": "D"
+      },
+      {
+        "content": "\\( (6,3,2) \\)",
+        "id": "E"
+      }
+    ],
+    "prompt": "Arjun and Beth play a game in which they take turns removing one brick or two adjacent bricks from one “wall” among a set of several walls of bricks, with gaps possibly creating new walls. The walls are one brick tall. For example, a set of walls of sizes \\(4\\) and \\(2\\) can be changed into any of the following by one move: \\((3,2),\\) \\((2,1,2),\\) \\((4),\\) \\((4,1),\\) \\((2,2),\\) or \\((1,1,2).\\)\n\n[Figure 1](figures/2021_AMC_10B_Q24_question_fig1.svg)\n\nArjun plays first, and the player who removes the last brick wins. For which starting configuration is there a strategy that guarantees a win for Beth?"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:subtraction-game-strategies"
+      ],
+      "explanation": "The useful observation is that pairs of equal walls give the second player a winning strategy. Pair each wall with another of the same length. Whenever the first player removes bricks from one wall, the second player makes the corresponding removal in its partner. Any newly created walls are again paired. The reply is always legal because the partner wall was untouched, so the first player cannot remove the last brick. Thus the second player eventually wins.\n\nWrite a position as a tuple of its nonempty wall lengths, ignoring their order. Call it losing when the player whose turn it is loses against correct play. We will show that every move from \\((6,2,1)\\) allows a reply to paired walls or to a smaller losing position.\n\nTo make the case lists exhaustive, observe that removing \\(k\\) consecutive bricks from a wall of length \\(n\\), where \\(k=1\\) or \\(2\\) and \\(k\\le n\\), leaves lengths \\(a\\) and \\(n-k-a\\), with \\(0\\le a\\le n-k\\). Omit zero lengths. Reversing the wall merely interchanges the two remaining lengths.\n\nFirst consider \\((4,1)\\). The left sides below list every distinct position after one move; the arrows give legal replies:\n\\[\n\\begin{aligned}\n(4)&\\longrightarrow(1,1),\\\\\n(3,1)&\\longrightarrow(1,1),\\\\\n(2,1,1)&\\longrightarrow(1,1),\\\\\n(2,1)&\\longrightarrow(1,1),\\\\\n(1,1,1)&\\longrightarrow(1,1).\n\\end{aligned}\n\\]\nFor example, \\((4)\\longrightarrow(1,1)\\) removes the middle two bricks. The other replies shorten the wall of length \\(3\\) to \\(1\\), remove the entire wall of length \\(2\\), shorten a wall of length \\(2\\) to \\(1\\), or remove a singleton, respectively. Every reply leaves paired walls, so \\((4,1)\\) is losing.\n\nThe same reasoning proves that \\((3,2,1)\\) is losing. Here is its complete response list:\n\\[\n\\begin{aligned}\n(2,2,1)&\\longrightarrow(2,2),\\\\\n(2,1,1,1)&\\longrightarrow(1,1,1,1),\\\\\n(2,1,1)&\\longrightarrow(1,1),\\\\\n(3,1,1)&\\longrightarrow(1,1,1,1),\\\\\n(3,1)&\\longrightarrow(1,1),\\\\\n(3,2)&\\longrightarrow(2,2).\n\\end{aligned}\n\\]\nIn the fourth row, remove the middle brick of the wall of length \\(3\\); all other replies remove end bricks or a whole small wall. Again, every reply leaves paired walls.\n\nNow suppose Arjun starts from \\((6,2,1)\\). Its complete list of first-move results, together with Beth's replies, is\n\\[\n\\begin{aligned}\n(5,2,1)&\\longrightarrow(2,2,1,1),\\\\\n(4,2,1,1)&\\longrightarrow(2,2,1,1),\\\\\n(3,2,2,1)&\\longrightarrow(2,2,1,1),\\\\\n(4,2,1)&\\longrightarrow(2,2,1,1),\\\\\n(3,2,1,1)&\\longrightarrow(2,2,1,1),\\\\\n(2,2,2,1)&\\longrightarrow(2,2,1,1),\\\\\n(6,1,1)&\\longrightarrow(2,2,1,1),\\\\\n(6,1)&\\longrightarrow(4,1),\\\\\n(6,2)&\\longrightarrow(3,2,1).\n\\end{aligned}\n\\]\nThe first six rows come from playing on the wall of length \\(6\\); the last three come from playing on a smaller wall. For the first reply, split the wall of length \\(5\\) into lengths \\(1\\) and \\(2\\) by removing two adjacent bricks. In the fourth row, split the wall of length \\(4\\) into lengths \\(1\\) and \\(2\\) by removing one brick. In the seventh row, remove the middle two bricks of the wall of length \\(6\\). In the last row, remove two adjacent bricks from that wall to leave lengths \\(1\\) and \\(3\\). Thus every listed reply is legal and leaves a position already proved losing for Arjun. Beth can therefore guarantee a win.\n\nFinally, the other choices give Arjun the following winning opening moves:\n\\[\n\\begin{aligned}\n\\text{A: }(6,1,1)&\\longrightarrow(2,2,1,1),\\\\\n\\text{C: }(6,2,2)&\\longrightarrow(2,2,2,2),\\\\\n\\text{D: }(6,3,1)&\\longrightarrow(3,3,1,1),\\\\\n\\text{E: }(6,3,2)&\\longrightarrow(6,2,1).\n\\end{aligned}\n\\]\nThe first two moves remove the middle two bricks of the wall of length \\(6\\). The third splits that wall into lengths \\(1\\) and \\(3\\), and the fourth removes two end bricks from the wall of length \\(3\\). Each leaves Beth a losing position. Hence the required configuration is \\(\\boxed{(6,2,1)}\\), choice \\(\\boxed{\\text{B}}\\).",
+      "id": "paired-walls-and-replies",
+      "sourceRef": "amc/2021_AMC_10B_Q24#paired-walls-and-replies",
+      "title": "Paired walls and complete response lists"
+    }
+  ],
+  "sourceRef": "amc/2021_AMC_10B_Q24"
 }

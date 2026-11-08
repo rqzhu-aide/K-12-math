@@ -1,81 +1,68 @@
 {
-  "Year": 2016,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 22,
-  "Question": "A set of teams held a round-robin tournament in which every team played every other team exactly once. Every team won \\(10\\) games and lost \\(10\\) games; there were no ties. How many sets of three teams \\(\\{A, B, C\\}\\) were there in which \\(A\\) beat \\(B,\\) \\(B\\) beat \\(C,\\) and \\(C\\) beat \\(A?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\( \\ 385 \\)",
-    "B": "\\( \\ 665 \\)",
-    "C": "\\( \\ 945 \\)",
-    "D": "\\( \\ 1140 \\)",
-    "E": "\\( \\ 1330 \\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "graph theory; complementary counting; combinations",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2016B/solutions",
-    "SourceSHA256": "d064f39d73c772de6b03b7072941c2ad29e4fe0859ad097ac8e93c6b29c2246e",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2016_AMC_10B_Q22",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "bfe086ce874899047eeca779f91338be9220365436f13529874cdd7f72198d4c",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:double-counting"
+  "answer": {
+    "accepted": [
+      "A"
     ],
-    "supportIds": [
-      "cnm_h237"
-    ],
-    "routes": [
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "math:double-counting"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 10"
+  },
+  "id": "2016_AMC_10B_Q22",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "unique-winner-complement",
-        "label": "Count triples with a unique winner",
-        "nodeIds": [
-          "math:double-counting",
-          "cnm_h239"
-        ]
+        "content": "\\( \\ 385 \\)",
+        "id": "A"
       },
       {
-        "id": "two-game-win-chains",
-        "label": "Count two-game win chains",
-        "nodeIds": [
-          "math:double-counting",
-          "cnm_h231",
-          "cnm_090"
-        ]
+        "content": "\\( \\ 665 \\)",
+        "id": "B"
+      },
+      {
+        "content": "\\( \\ 945 \\)",
+        "id": "C"
+      },
+      {
+        "content": "\\( \\ 1140 \\)",
+        "id": "D"
+      },
+      {
+        "content": "\\( \\ 1330 \\)",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "A set of teams held a round-robin tournament in which every team played every other team exactly once. Every team won \\(10\\) games and lost \\(10\\) games; there were no ties. How many sets of three teams \\(\\{A, B, C\\}\\) were there in which \\(A\\) beat \\(B,\\) \\(B\\) beat \\(C,\\) and \\(C\\) beat \\(A?\\)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:double-counting",
+        "cnm_h239",
+        "cnm_h010"
+      ],
+      "explanation": "Each team plays \\(10+10=20\\) games against distinct opponents, so there are 21 teams. The total number of unordered sets of three teams is\n\\[\n\\binom{21}{3}=\\frac{21\\cdot20\\cdot19}{6}=1330.\n\\]\nWithin any triple, either one team beats both others or the results form the requested cycle. To see why these exhaust the possibilities, suppose nobody wins twice. The three games give three wins in total, so each team must win exactly once, which is precisely a cycle.\n\nIt is easier to count triples with a team that wins both of its games. Choose that team in 21 ways, then choose two of the 10 teams it defeated. This gives\n\\[\n21\\binom{10}{2}=21\\cdot45=945.\n\\]\nEvery noncyclic triple is included, and each is counted exactly once: two teams cannot both beat everyone else in the triple, since they played each other.\n\nSubtracting these triples from all triples leaves\n\\[\n1330-945=\\boxed{385}\n\\]\ncyclic sets, choice \\(\\boxed{A}\\).",
+      "id": "unique-winner-complement",
+      "sourceRef": "amc/2016_AMC_10B_Q22#unique-winner-complement",
+      "title": "Subtract triples with a two-game winner"
+    },
+    {
+      "directNodeIds": [
+        "math:double-counting",
+        "cnm_h231",
+        "cnm_090"
+      ],
+      "explanation": "Every team plays 20 opponents, so there are 21 teams and\n\\[\n\\binom{21}{3}=1330\n\\]\nunordered triples.\n\nNow count ordered chains \\((A,B,C)\\) in which \\(A\\) beat \\(B\\) and \\(B\\) beat \\(C\\). Choose the middle team \\(B\\) in 21 ways. There are 10 choices for \\(A\\), among the teams that beat \\(B\\), and 10 choices for \\(C\\), among the teams \\(B\\) beat. These choices are automatically distinct, since a team cannot both beat and lose to \\(B\\). Thus there are\n\\[\n21\\cdot10\\cdot10=2100\n\\]\nordered chains.\n\nLet \\(T\\) be the number of noncyclic unordered triples and \\(C\\) the number of cyclic unordered triples. A noncyclic triple has a team that beats both others, a team that loses to both, and a middle team. It contributes exactly one chain, from the winner through the middle team to the loser. In a cyclic triple, each of the three teams can serve as the middle team, and each choice determines one chain. It therefore contributes exactly three chains.\n\nCounting triples and then counting their chain contributions gives\n\\[\nT+C=1330,\\qquad T+3C=2100.\n\\]\nSubtracting eliminates \\(T\\):\n\\[\n2C=770,\\qquad C=\\boxed{385}.\n\\]\nBecause \\(C\\) counts unordered triples, no further division is needed. The answer is choice \\(\\boxed{A}\\).",
+      "id": "two-game-win-chains",
+      "sourceRef": "amc/2016_AMC_10B_Q22#two-game-win-chains",
+      "title": "Count ordered chains of two wins"
+    }
+  ],
+  "sourceRef": "amc/2016_AMC_10B_Q22"
 }

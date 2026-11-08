@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2023_AMC_12A_Q15",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "eb3524eab379ca905b0cbfb8ac37d2c0d524e398597c7610a12f2aa31ea34793",
+    "figureHashes": {
+      "figures/2023_AMC_12A_Q15_question_fig1.svg": "4416ce4d6689087936be9175dcb3e6b21ebd08c1a6df8bca75b74caff7fae062"
+    }
+  },
+  "solutionSHA256": "9e44a2bc177952b6cf7ea88bcfdcf69a358422de3125f0eba1ac8af118eb577c",
+  "solutionFigureHashes": {
+    "figures/2023_AMC_12A_Q15_question_fig1.svg": "4416ce4d6689087936be9175dcb3e6b21ebd08c1a6df8bca75b74caff7fae062"
+  },
+  "candidateHash": "62d956e5d93cf19494f27e1d9a65a03ba7f8f5490335c6aa947ec2095bdac33d",
+  "candidate": {
+    "questionId": "2023_AMC_12A_Q15",
+    "derivedAnswer": "arccos(5/6), choice A",
+    "answerStatus": "matches",
+    "answerReason": "Every segment's forward distance is its length times cos θ. Those forward distances total 100 meters, so 120 cos θ=100, including any final partial crossing.",
+    "methods": [
+      {
+        "id": "sum-forward-distances",
+        "label": "Add the forward distances",
+        "explanation": "The number of turns can stay unknown: every segment makes the same acute angle \\(\\theta\\) with the forward direction along the field's 100-meter length.\n\n[Figure 1](figures/2023_AMC_12A_Q15_question_fig1.svg)\n\nLet the positive segment lengths be \\(\\ell_1,\\ell_2,\\ldots,\\ell_k\\), including the final segment ending on \\(BC\\). By the right-triangle definition of cosine, a segment of length \\(\\ell_i\\) advances \\(\\ell_i\\cos\\theta\\) in the direction of \\(AB\\).\n\nEvery segment moves forward, so these advances add to \\(AB=100\\). The total walking distance is \\(120\\), hence\n\\[\n100=(\\ell_1+\\cdots+\\ell_k)\\cos\\theta\n=120\\cos\\theta.\n\\]\nTherefore\n\\[\n\\cos\\theta=\\frac56,\n\\qquad \\theta=\\boxed{\\arccos\\frac56}.\n\\]\nThis is an acute angle, so the path can be continued forward, turning at the long sides until it reaches \\(BC\\). The calculation includes a final partial crossing and makes no assumption about the number of segments. The answer is choice \\(\\mathrm A\\).",
+        "nodeIds": [
+          "cnm_278",
+          "cnm_055"
+        ],
+        "prerequisiteIds": [
+          "cnm_276",
+          "math:inverse-sine-cosine-principal-branches"
+        ],
+        "levelReason": "Uses only the cosine ratio in right triangles and addition of forward distances, appropriate for AMC 12."
+      },
+      {
+        "id": "unfold-reflected-path",
+        "label": "Unfold the zigzag",
+        "explanation": "Reflecting the field at each turn turns the zigzag into one straight segment while preserving the distance walked.\n\nAt the first turn \\(P\\), reflect the remainder of the field and path across the long side through \\(P\\). Since the incoming and outgoing segments make equal angles with that side, the reflected outgoing segment continues straight along the incoming segment. Repeat this reflection at each later turn. Each reflection preserves lengths, so the resulting straight segment has length \\(120\\).\n\nAll reflections are across lines parallel to \\(AB\\), so they leave forward distances unchanged. The unfolded endpoint is therefore still \\(100\\) meters forward from \\(A\\), even when the last segment crosses only part of the field's width.\n\nThe unfolded segment makes angle \\(\\theta\\) with the forward direction. In the resulting right triangle, its length \\(120\\) is the hypotenuse and its forward distance \\(100\\) is the adjacent leg. Thus\n\\[\n\\cos\\theta=\\frac{100}{120}=\\frac56.\n\\]\nThe required acute angle is \\(\\boxed{\\arccos\\frac56}\\), choice \\(\\mathrm A\\). Folding the copies back produces the required path, regardless of how many long sides the straight segment crosses.",
+        "nodeIds": [
+          "cnm_278",
+          "cnm_132"
+        ],
+        "prerequisiteIds": [
+          "cnm_276",
+          "cnm_131",
+          "math:inverse-sine-cosine-principal-branches"
+        ],
+        "levelReason": "Uses elementary reflection geometry and one right-triangle cosine ratio, with the unfolding explained explicitly."
+      }
+    ],
+    "assessedIds": [
+      "cnm_278"
+    ],
+    "supportIds": [
+      "cnm_276",
+      "math:inverse-sine-cosine-principal-branches"
+    ],
+    "annotationRationale": "Choosing an angle from a prescribed length relationship is the right-triangle-solving target. Both routes use the cosine definition and the acute inverse-cosine value. Adding forward segment lengths is specific to the first route; reflection symmetry is specific to the unfolding route. Neither a fixed number of crossings nor numerical trigonometric evaluation is required.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2023_AMC_12A_Q15",
+    "decision": "accept",
+    "mathematicalCheck": "Every segment advances its length times cos θ, and these advances total 100. Thus 120 cos θ=100 and θ=arccos(5/6). Unfolding independently produces the same right triangle. Both arguments include the final partial crossing and establish a feasible forward path.",
+    "levelCheck": "Right-triangle cosine and elementary reflections are appropriate for AMC 12.",
+    "methodDistinctness": "Adding forward distances and unfolding supply distinct accessible geometric insights.",
+    "annotationCheck": "The right-triangle target, shared cosine and inverse-cosine supports, and method-local segment addition and reflection nodes accurately describe the solutions.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "sum-forward-distances": "sum-forward-distances",
+    "unfold-reflected-path": "unfold-reflected-path"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "794b2cff0caf7f4a717c27feaf411b48040dc7ad33224f7f6535c033a9e2d29c",
+    "acceptedAt": "2026-11-07T08:14:14.922350+00:00",
+    "inputHash": "cbc1a26db73c8bf376145a81e57aafa6e3d7c67b2411349f9f69f2c244c4fb52",
+    "authorInputHash": "93e4780131d07f3c3a49448b2783b72b0f5104a81bf1147aa1dd8651273a78d0",
+    "reviewInputHash": "23142dd3f0f0e88c61b4a011306747758b45c9d1b2bee050422fe9a8d35bc646",
+    "authorResponseHash": "179cdb5c32a172658be98ea8ed47efda0d1de12c818c3392d894e8254a7b91fd",
+    "reviewerResponseHash": "453ce739e36078f76b4a100e0a42cb9c5d746b65728c7d14a1bfa296ad2a9f8c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

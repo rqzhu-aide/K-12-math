@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2015_AMC_12B_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "89c8515a2cc13161ffaf6a3ac20e116f95d5ce980f6a4cae8645b3ecedfa8f47",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "10046433340e70fc2408cefd6a94f1e81c67699994027a8c303c9401fdb3e021",
+  "solutionFigureHashes": {},
+  "candidateHash": "79d832ba65986cc52a93b9b6d5bf28d488ec661714d34c3677970ece1c96e4a1",
+  "candidate": {
+    "questionId": "2015_AMC_12B_Q23",
+    "derivedAnswer": "B: \\(10\\)",
+    "answerStatus": "matches",
+    "answerReason": "The smallest dimension must be 3, 4, 5, or 6. These cases yield respectively 5, 3, 1, and 1 valid ordered triples, for a total of 10.",
+    "methods": [
+      {
+        "id": "shifted-factor-pairs",
+        "label": "Bound the smallest dimension and count factor pairs",
+        "explanation": "The volume and surface-area formulas give\n\\[\nabc=2(ab+ac+bc).\n\\]\nAll dimensions are positive, so division by \\(2abc\\) is valid and gives\n\\[\n\\frac1a+\\frac1b+\\frac1c=\\frac12.\n\\]\nThe other two reciprocals are positive, so \\(1/a<1/2\\), which means \\(a>2\\). Also, \\(a\\le b\\le c\\) implies\n\\[\n\\frac12=\\frac1a+\\frac1b+\\frac1c\\le\\frac3a,\n\\]\nso \\(a\\le6\\). Thus only \\(a=3,4,5,6\\) need consideration.\n\nFor fixed \\(a\\), rewrite the original equation as\n\\[\n(a-2)bc=2a(b+c).\n\\]\nMultiplying by \\(a-2\\) and completing a product gives\n\\[\n\\bigl((a-2)b-2a\\bigr)\n\\bigl((a-2)c-2a\\bigr)=4a^2.\n\\]\nThe first factor is positive because the preceding equation also gives\n\\[\n\\bigl((a-2)b-2a\\bigr)c=2ab>0.\n\\]\nThe second factor is at least the first because \\(b\\le c\\). Positive factor pairs therefore let us list all possibilities.\n\nFor \\(a=3\\), the equation becomes \\((b-6)(c-6)=36\\). The factor pairs with the smaller factor first are\n\\[\n(1,36),(2,18),(3,12),(4,9),(6,6).\n\\]\nThey give\n\\[\n(b,c)=(7,42),(8,24),(9,18),(10,15),(12,12),\n\\]\nso there are \\(5\\) triples.\n\nFor \\(a=4\\), simplifying the product equation gives \\((b-4)(c-4)=16\\). Its factor pairs \\((1,16),(2,8),(4,4)\\) give \\((b,c)=(5,20),(6,12),(8,8)\\), so there are \\(3\\) triples.\n\nFor \\(a=5\\), let \\(u=3b-10\\) and \\(v=3c-10\\). Then \\(uv=100\\). Since \\(b\\ge5\\) and \\(u\\le v\\), we have \\(5\\le u\\le10\\). The only divisors of \\(100\\) in that interval are \\(5\\) and \\(10\\). The value \\(u=10\\) would make \\(b=20/3\\), which is not an integer. The value \\(u=5\\) gives \\(v=20\\), hence \\((b,c)=(5,10)\\). This contributes \\(1\\) triple.\n\nFor \\(a=6\\), each reciprocal is at most \\(1/6\\). Their sum can equal \\(1/2\\) only if \\(a=b=c=6\\), contributing \\(1\\) triple.\n\nAll transformations are reversible for these positive dimensions, so every listed triple satisfies the original equation. Ordering the factors enforces \\(b\\le c\\), and different cases or factor pairs give different triples. The total is \\(5+3+1+1=\\boxed{10}\\), choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_096",
+          "cnm_p153"
+        ],
+        "prerequisiteIds": [
+          "cnm_p161",
+          "cnm_p163",
+          "cnm_146"
+        ],
+        "levelReason": "Prism formulas, positive-fraction inequalities, polynomial expansion, and small factor-pair lists provide a complete school-level argument."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_p161",
+      "cnm_p163"
+    ],
+    "annotationRationale": "The central target is finding every integer solution under the prescribed ordering. The prism formulas supply the equation. The method bounds the smallest dimension with inequalities and then enumerates positive factor pairs, with integrality and ordering checked in each case.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2015_AMC_12B_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "The reciprocal equation and ordering force 3≤a≤6. The shifted product identity is valid, and its factors must be positive and ordered. The four cases yield 5,3,1,1 triples, with the nonintegral a=5 candidate correctly rejected. All listed transformations are reversible, giving 10 triples.",
+    "levelCheck": "The bounds, polynomial manipulation, and small factor lists are appropriate school mathematics. Positivity, integrality, and counting completeness are explained.",
+    "methodDistinctness": "One complete method combining bounds and factor pairs is sufficient.",
+    "annotationCheck": "Integer-solution enumeration is the central target. Prism formulas, inequalities, factors, and polynomial multiplication accurately describe the supporting and method-local knowledge.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "shifted-factor-pairs": "solution:shifted-factor-pairs:10046433340e"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "94d4428a5a8863836d3c1b26d39b9de2f18e7a4b5d938dd0f86f8439e1dbd691",
+    "acceptedAt": "2026-11-07T10:39:27.892031+00:00",
+    "inputHash": "df63fca0c8ec68a94a6611496dee1ba742df69d04ab420a2ec00f355183bcc49",
+    "authorInputHash": "ef5cac990e0b724ad31388e81decdfda7cdedb63ab35b4c2b6dbbbf79d5b4665",
+    "reviewInputHash": "fc5b31ed7813838040f9311573cc28428b1ead67b5db24d04dff5359e54d0f5b",
+    "authorResponseHash": "e53188fa632710c19e3b93d794d45928cda2485a2bd2499562b2f0f1844d8a71",
+    "reviewerResponseHash": "d8b855b9921ea77715ab9b0054f082f201995760c41cace1a12b5d3e0a0dc83f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

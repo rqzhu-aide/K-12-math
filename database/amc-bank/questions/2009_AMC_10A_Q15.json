@@ -1,76 +1,64 @@
 {
-  "Year": 2009,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 15,
-  "Question": "The figures \\(F_1,\\) \\(F_2,\\) \\(F_3,\\) and \\(F_4\\) shown are the first in a sequence of figures. For \\(n \\ge 3,\\) \\(F_n\\) is constructed from \\(F_{n-1}\\) by surrounding it with a square and placing one more diamond on each side of the new square than \\(F_{n-1}\\) had on each side of its outside square. For example, figure \\(F_3\\) has \\(13\\) diamonds. How many diamonds are there in figure \\(F_{20}?\\)\n\n[Figure 1](figures/2009_AMC_10A_Q15_question_fig1.svg)",
-  "Question Type": "mixed",
-  "Choices": {
-    "A": "\\(401\\)",
-    "B": "\\(485\\)",
-    "C": "\\(585\\)",
-    "D": "\\(626\\)",
-    "E": "\\(761\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "recursion; arithmetic sequence; summation",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2009A/solutions",
-    "SourceSHA256": "8743395c50a977dd0ff9655c4ad21e701fac6dac445e7d501d496cb67a4f0bc1",
-    "Figures": [
-      "figures/2009_AMC_10A_Q15_question_fig1.svg"
+  "answer": {
+    "accepted": [
+      "E"
     ],
-    "FigureSources": {
-      "figures/2009_AMC_10A_Q15_question_fig1.svg": {
-        "url": "https://live.poshenloh.com/images/past-contests/amc10/2009A/15.svg",
-        "alt": ""
-      }
-    },
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
+    "type": "choice"
   },
-  "ID": "2009_AMC_10A_Q15",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "2b916128e67ef59a032b40e3f70431379198f5498af079bea336008d18a0e979",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_030"
-    ],
-    "supportIds": [],
-    "routes": [
+  "assessedNodeIds": [
+    "cnm_030"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 10"
+  },
+  "id": "2009_AMC_10A_Q15",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "sum-square-layers",
-        "label": "Sum the added square layers",
-        "nodeIds": [
-          "cnm_h204"
-        ]
+        "content": "\\(401\\)",
+        "id": "A"
+      },
+      {
+        "content": "\\(485\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(585\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(626\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(761\\)",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "The figures \\(F_1,\\) \\(F_2,\\) \\(F_3,\\) and \\(F_4\\) shown are the first in a sequence of figures. For \\(n \\ge 3,\\) \\(F_n\\) is constructed from \\(F_{n-1}\\) by surrounding it with a square and placing one more diamond on each side of the new square than \\(F_{n-1}\\) had on each side of its outside square. For example, figure \\(F_3\\) has \\(13\\) diamonds. How many diamonds are there in figure \\(F_{20}?\\)\n\n[Figure 1](figures/2009_AMC_10A_Q15_question_fig1.svg)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "cnm_030",
+        "cnm_h204"
+      ],
+      "explanation": "Count the diamonds added on each new square, since all the earlier diamonds remain. The figure \\(F_1\\) has one central diamond. The outside square of \\(F_2\\) has two diamonds on each side, at its corners. Each later square has one more diamond per side, so the outside square of \\(F_k\\) has \\(k\\) diamonds on each side.\n\nFor \\(k\\ge2\\), counting all four sides gives \\(4k\\), but each of the four corner diamonds has been counted twice. Subtracting one extra count per corner gives\n\\[\n4k-4=4(k-1)\n\\]\nnew diamonds. Different square layers contain different diamonds, so adding these counts includes every diamond exactly once.\n\nConsequently, \\(F_{20}\\) contains\n\\[\n1+4(1+2+\\cdots+19)\n\\]\ndiamonds. To evaluate the sum, pair \\(1\\) with \\(19\\), \\(2\\) with \\(18\\), and so on. There are nine pairs totaling \\(20\\) each, with \\(10\\) left in the middle. Thus\n\\[\n1+2+\\cdots+19=9\\cdot20+10=190.\n\\]\nThe total is \\(1+4\\cdot190=\\boxed{761}\\), choice \\(\\mathrm{E}\\).",
+      "id": "count-and-sum-layers",
+      "sourceRef": "amc/2009_AMC_10A_Q15#count-and-sum-layers",
+      "title": "Count the diamonds in each new layer"
+    },
+    {
+      "directNodeIds": [
+        "cnm_h204"
+      ],
+      "id": "sum-square-layers",
+      "sourceRef": "amc/2009_AMC_10A_Q15#sum-square-layers",
+      "title": "Sum the added square layers"
+    }
+  ],
+  "sourceRef": "amc/2009_AMC_10A_Q15"
 }

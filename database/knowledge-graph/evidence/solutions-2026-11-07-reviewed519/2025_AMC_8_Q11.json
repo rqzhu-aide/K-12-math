@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2025_AMC_8_Q11",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "630a932bb9e26ea0f0aa556fdf659a2af6de1f2abf6ef996ad36419deedaf181",
+    "figureHashes": {
+      "figures/2025_AMC_8_Q11_question_fig1.svg": "7c45e1dc97bcd637a1074c369a0e5848bbc338f0ed6c0c649f95edb784eb7476"
+    }
+  },
+  "solutionSHA256": "51177fdd53f30b3f6aca32a2fbd07bf918894d6d04b289dcac2cf9748bacf70a",
+  "solutionFigureHashes": {},
+  "candidateHash": "27406d0093b33b974566c67d6e641c92751fef904d14815351b65df619547895",
+  "candidate": {
+    "questionId": "2025_AMC_8_Q11",
+    "derivedAnswer": "C: \\(\\mathrm{L}\\) and \\(\\mathrm{L}\\)",
+    "answerStatus": "matches",
+    "answerReason": "Every placement of an S tile either traps an uncovered corner square or forces the remaining two tiles to be L tiles. Such a tiling exists.",
+    "methods": [
+      {
+        "id": "placement-forcing",
+        "label": "Follow the forced squares",
+        "explanation": "An \\(\\mathrm{S}\\) tile occupies either two rows and three columns or three rows and two columns. These two cases cover every rotation and flip. Write the rectangle as three rows of four squares, and use a dot for an uncovered square.\n\nFirst suppose the \\(\\mathrm{S}\\) occupies two rows. By reflecting the rectangle if necessary, we can put it in the top two rows and the leftmost three columns. There are two possible offsets:\n\\[\n\\begin{array}{cccc}\nS&S&\\cdot&\\cdot\\\\\n\\cdot&S&S&\\cdot\\\\\n\\cdot&\\cdot&\\cdot&\\cdot\n\\end{array}\n\\qquad\n\\begin{array}{cccc}\n\\cdot&S&S&\\cdot\\\\\nS&S&\\cdot&\\cdot\\\\\n\\cdot&\\cdot&\\cdot&\\cdot\n\\end{array}.\n\\]\nThe second arrangement is impossible: the upper-left square has both of its neighboring squares occupied by \\(S\\), so no connected tile can cover it.\n\nIn the first arrangement, the third square in the top row has only one uncovered neighbor, the upper-right square. These two squares must therefore belong to the same tile. To reach four connected squares, that tile must continue down the rightmost column, forming an \\(\\mathrm{L}\\). The four remaining squares also form an \\(\\mathrm{L}\\). Labeling these two tiles \\(X\\) and \\(Y\\) gives\n\\[\n\\begin{array}{cccc}\nS&S&X&X\\\\\nY&S&S&X\\\\\nY&Y&Y&X\n\\end{array}.\n\\]\nNow suppose the \\(\\mathrm{S}\\) occupies all three rows. If it uses the leftmost or rightmost pair of columns, an uncovered corner square has both neighbors occupied by \\(S\\), which is impossible. If it uses the middle two columns, then, up to reflection, the remaining squares split into the following two separate groups:\n\\[\n\\begin{array}{cccc}\nX&X&S&Y\\\\\nX&S&S&Y\\\\\nX&S&Y&Y\n\\end{array}.\n\\]\nEach group has four squares and forms an \\(\\mathrm{L}\\), so each must be one whole tile.\n\nThus every possible tiling containing an \\(\\mathrm{S}\\) uses two \\(\\mathrm{L}\\) tiles. The answer is \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_p024"
+        ],
+        "prerequisiteIds": [
+          "cnm_p023",
+          "cnm_p171",
+          "cnm_131"
+        ],
+        "levelReason": "The method uses grid placement, rotations, reflections, and connected groups of four squares, all within elementary spatial reasoning."
+      },
+      {
+        "id": "color-balance",
+        "label": "Use two color patterns",
+        "explanation": "Color the rectangle like a checkerboard. It has six black and six white squares, so the three tiles together must cover equal numbers of the two colors.\n\nEach \\(\\mathrm{I}\\), \\(\\mathrm{O}\\), \\(\\mathrm{L}\\), or \\(\\mathrm{S}\\) can be split into two pairs of edge-adjacent squares. Each pair contains one square of each color, so each of these tiles covers two black and two white squares in every rotation or flip. A \\(\\mathrm{T}\\), however, covers three squares of one color and one of the other. Therefore a single \\(\\mathrm{T}\\) together with two balanced tiles cannot cover the rectangle. This eliminates choices B and E.\n\nNext color entire columns alternately black and white. Again there are six squares of each color. An \\(\\mathrm{I}\\) must be horizontal because the rectangle has only three rows, so it covers two squares of each color. An \\(\\mathrm{S}\\) also always covers two of each: its column counts are either \\(1,2,1\\) or \\(2,2\\).\n\nAn \\(\\mathrm{L}\\) always covers three squares of one color and one of the other. If its three-square arm is vertical, those three squares share a column color. If that arm is horizontal, its two end squares share a color, and the fourth square has that same color. Thus one \\(\\mathrm{L}\\), together with an \\(\\mathrm{S}\\) and either an \\(\\mathrm{I}\\) or another \\(\\mathrm{S}\\), cannot give equal color totals. This eliminates A and D.\n\nThe remaining choice is two \\(\\mathrm{L}\\) tiles, and it works. Here \\(X\\) and \\(Y\\) are the two separate \\(\\mathrm{L}\\) tiles:\n\\[\n\\begin{array}{cccc}\nS&S&X&X\\\\\nY&S&S&X\\\\\nY&Y&Y&X\n\\end{array}.\n\\]\nThe answer is \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_p024",
+          "math:invariant-reasoning"
+        ],
+        "prerequisiteIds": [
+          "cnm_p023",
+          "cnm_p171",
+          "cnm_131"
+        ],
+        "levelReason": "The two colorings require only counting squares and comparing color totals. The construction verifies that the surviving choice is possible."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p024"
+    ],
+    "supportIds": [
+      "cnm_p023",
+      "cnm_p171",
+      "cnm_131"
+    ],
+    "annotationRationale": "The task asks which shapes compose the rectangle, matching cnm_p024. The first method uses exhaustive placement and forced connectivity. The second adds invariant reasoning: removing balanced tiles preserves the difference between color counts, ruling out an unbalanced remaining tile. Recognizing squares, rotation, and basic reflection support both methods; perpendicular-bisector properties of reflection are unnecessary.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2025_AMC_8_Q11",
+    "decision": "accept",
+    "mathematicalCheck": "The placement cases exhaust all rotations, flips, and positions of S. Each either isolates an uncovered corner or forces two L tiles. Independently, checkerboard counts exclude B and E, alternating-column counts exclude A and D, and the displayed construction verifies C.",
+    "levelCheck": "Both methods use elementary spatial reasoning and square counting appropriate for AMC 8. The decisive deductions are explained.",
+    "methodDistinctness": "Forced placement and color-balance arguments provide genuinely different, accessible insights.",
+    "annotationCheck": "Shape composition is a suitable route-neutral target. Rotation and reflection support both methods, while invariant reasoning is appropriately confined to the coloring route.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "placement-forcing": "solution:placement-forcing:51177fdd53f3",
+    "color-balance": "solution:color-balance:51177fdd53f3"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "316b5a763951c17d79277e73267b4a866cfc8782bfcbf5828534dee380d56e64",
+    "acceptedAt": "2026-11-07T07:51:12.945110+00:00",
+    "inputHash": "6f965d6cde92688e4d5caaf1a4f536f2cd6e3f9fab855aae6f61aad41ac5e208",
+    "authorInputHash": "02b867f40d9b9f14b0c0a3d1203acee2d797a404274136734832c52be9f2371a",
+    "reviewInputHash": "c889b7b531e2367800116fc7558f7aef47dd14f94fb2bbec1a6cd21a5fc7aa3a",
+    "authorResponseHash": "1b145275acb53403cd93505058e826cbc6288b1bb86e8dc03bf90b67d92f57a8",
+    "reviewerResponseHash": "845bd6d424a30cc9d8a29cb22c1204342451aaa31aa15a596735e20e31c7d4e1",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,80 +1,79 @@
 {
-  "Year": 2015,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 21,
-  "Question": "Cozy the Cat and Dash the Dog are going up a staircase with a certain number of steps. However, instead of walking up the steps one at a time, both Cozy and Dash jump. Cozy goes two steps up with each jump (though if necessary, he will just jump the last step). Dash goes five steps up with each jump (though if necessary, he will just jump the last steps if there are fewer than \\(5\\) steps left). Suppose that Dash takes \\(19\\) fewer jumps than Cozy to reach the top of the staircase. Let \\(s\\) denote the sum of all possible numbers of steps this staircase can have. What is the sum of the digits of \\(s?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(9\\)",
-    "B": "\\(11\\)",
-    "C": "\\(12\\)",
-    "D": "\\(13\\)",
-    "E": "\\(15\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "floor and ceiling functions; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2015B/solutions",
-    "SourceSHA256": "3de1c927b38b42bdac03c322415241f9ed2409e71303748ebd213ab04409ed60",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2015_AMC_12B_Q21",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "9592dac8cc38d674b794309c75e7b68eea019191c84f2628a4be9e969e13a49f",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:floor-ceiling",
-      "math:integer-diophantine-equations"
+  "answer": {
+    "accepted": [
+      "D"
     ],
-    "supportIds": [],
-    "routes": [
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "math:floor-ceiling",
+    "math:integer-diophantine-equations"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
+  },
+  "id": "2015_AMC_12B_Q21",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "bound-the-ceiling-equation",
-        "label": "Bound and check step counts",
-        "nodeIds": [
-          "math:floor-ceiling",
-          "cnm_096",
-          "cnm_097"
-        ]
+        "content": "\\(9\\)",
+        "id": "A"
       },
       {
-        "id": "classify-steps-modulo-ten",
-        "label": "Classify residues modulo ten",
-        "nodeIds": [
-          "math:floor-ceiling",
-          "math:modular-congruence"
-        ]
+        "content": "\\(11\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(12\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(13\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(15\\)",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "Cozy the Cat and Dash the Dog are going up a staircase with a certain number of steps. However, instead of walking up the steps one at a time, both Cozy and Dash jump. Cozy goes two steps up with each jump (though if necessary, he will just jump the last step). Dash goes five steps up with each jump (though if necessary, he will just jump the last steps if there are fewer than \\(5\\) steps left). Suppose that Dash takes \\(19\\) fewer jumps than Cozy to reach the top of the staircase. Let \\(s\\) denote the sum of all possible numbers of steps this staircase can have. What is the sum of the digits of \\(s?\\)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:floor-ceiling",
+        "math:integer-diophantine-equations",
+        "cnm_097"
+      ],
+      "explanation": "The final shortened jump means that each animal's jump count is its quotient rounded up. Let \\(N\\) be the positive integer number of steps, and suppose Dash takes \\(d\\) jumps. Then Cozy takes \\(d+19\\) jumps. These counts are equivalent to\n\\[\n5(d-1)<N\\le 5d\n\\]\nand\n\\[\n2(d+18)<N\\le 2(d+19).\n\\]\nFor these intervals to overlap, each lower endpoint must be smaller than the other upper endpoint. Therefore\n\\[\n2(d+18)<5d,\n\\qquad\n5(d-1)<2(d+19).\n\\]\nSolving gives \\(d>12\\) and \\(d<43/3\\). Since \\(d\\) is an integer, only \\(d=13\\) or \\(d=14\\) is possible.\n\nIf \\(d=13\\), the intervals are \\(60<N\\le65\\) and \\(62<N\\le64\\). Their common integer values are \\(63\\) and \\(64\\).\n\nIf \\(d=14\\), the intervals are \\(65<N\\le70\\) and \\(64<N\\le66\\). Their only common integer value is \\(66\\).\n\nThese intervals express the exact jump counts, so all three values work, and the bounds exclude every other possibility. Thus\n\\[\ns=63+64+66=193.\n\\]\nIts digits sum to \\(1+9+3=\\boxed{13}\\), choice \\(\\mathrm{D}\\).",
+      "id": "jump-count-intervals",
+      "sourceRef": "amc/2015_AMC_12B_Q21#jump-count-intervals",
+      "title": "Bound the number of jumps"
+    },
+    {
+      "directNodeIds": [
+        "math:floor-ceiling",
+        "math:integer-diophantine-equations",
+        "math:modular-congruence"
+      ],
+      "explanation": "A group of \\(10\\) steps requires exactly \\(5\\) Cozy jumps and \\(2\\) Dash jumps. This suggests writing the positive integer number of steps uniquely as\n\\[\nN=10q+r,\n\\qquad q\\ge0,\\quad 0\\le r\\le9.\n\\]\nHere \\(q,r\\) are integers. Let \\(\\lceil x\\rceil\\) denote the least integer at least \\(x\\). Cozy takes \\(5q+\\lceil r/2\\rceil\\) jumps, while Dash takes \\(2q+\\lceil r/5\\rceil\\) jumps. When \\(r=0\\), both extra counts are zero.\n\nDefine the difference contributed by the remaining \\(r\\) steps to be\n\\[\ne_r=\\left\\lceil\\frac r2\\right\\rceil-\n\\left\\lceil\\frac r5\\right\\rceil.\n\\]\nFor remainders \\(r=0,1,\\ldots,9\\), direct rounding gives\n\\[\n(e_0,e_1,\\ldots,e_9)\n=(0,0,0,1,1,2,1,2,2,3).\n\\]\nThe required difference is therefore\n\\[\n3q+e_r=19.\n\\]\nAmong \\(0,1,2,3\\), only \\(e_r=1\\) makes \\(19-e_r\\) divisible by \\(3\\). Thus \\(q=6\\). The displayed list shows that \\(e_r=1\\) exactly when \\(r=3,4,6\\), giving \\(N=63,64,66\\).\n\nEvery step count has a unique quotient and remainder on division by \\(10\\), so this classification omits none and repeats none. Hence \\(s=193\\), and its digit sum is \\(\\boxed{13}\\), choice \\(\\mathrm{D}\\).",
+      "id": "classify-steps-modulo-ten",
+      "sourceRef": "amc/2015_AMC_12B_Q21#classify-steps-modulo-ten",
+      "title": "Separate complete groups of ten steps"
+    },
+    {
+      "directNodeIds": [
+        "math:floor-ceiling",
+        "cnm_096",
+        "cnm_097"
+      ],
+      "id": "bound-the-ceiling-equation",
+      "sourceRef": "amc/2015_AMC_12B_Q21#bound-the-ceiling-equation",
+      "title": "Bound and check step counts"
+    }
+  ],
+  "sourceRef": "amc/2015_AMC_12B_Q21"
 }

@@ -1,70 +1,60 @@
 {
-  "Year": 2026,
-  "Level": "AMC 8",
-  "Batch": "NA",
-  "Area": "Counting & Probability",
-  "Number": 21,
-  "Question": "Charlotte the spider is walking along a web shaped like a \\(5\\)-pointed star, shown in the figure below. The web has \\(5\\) outer points and \\(5\\) inner points. Each time Charlotte reaches a point, she randomly chooses a neighboring point and moves to that point. Charlotte starts at one of the outer points and makes \\(3\\) moves (re-visiting points is allowed). What is the probability she is now at one of the outer points of the star?\n\n[Figure 1](figures/2026_AMC_8_Q21_question_fig1.svg)",
-  "Question Type": "mixed",
-  "Choices": {
-    "A": "\\(\\dfrac{1}{5}\\)",
-    "B": "\\(\\dfrac{1}{4}\\)",
-    "C": "\\(\\dfrac{2}{5}\\)",
-    "D": "\\(\\dfrac{1}{2}\\)",
-    "E": "\\(\\dfrac{3}{5}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "reviewed-source-concepts",
-    "Concepts": "random walk; basic probability",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc8/2026/solutions",
-    "SourceSHA256": "997a01d6ec8a18ac16f2308e24f60e385587b33a3d2987240e5f21ab434f659a",
-    "Figures": [
-      "figures/2026_AMC_8_Q21_question_fig1.svg"
+  "answer": {
+    "accepted": [
+      "B"
     ],
-    "FigureSources": {
-      "figures/2026_AMC_8_Q21_question_fig1.svg": {
-        "url": "https://live.poshenloh.com/images/past-contests/amc8/2026/21.svg",
-        "alt": ""
-      }
-    },
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
+    "type": "choice"
   },
-  "ID": "2026_AMC_8_Q21",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "assessedNodeIds": [
+    "math:recursive-counting-probability"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "91e7c72a126f37c6fca70e79c382545ab5bd33606a6405185e43153b1c7ee744",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:recursive-counting-probability"
+  "bank": "amc",
+  "classification": {
+    "area": "Counting & Probability",
+    "domainIds": [
+      "domain:counting-probability"
     ],
-    "supportIds": [
-      "math:graph-models"
+    "level": "AMC 8"
+  },
+  "id": "2026_AMC_8_Q21",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(\\dfrac{1}{5}\\)",
+        "id": "A"
+      },
+      {
+        "content": "\\(\\dfrac{1}{4}\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(\\dfrac{2}{5}\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(\\dfrac{1}{2}\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(\\dfrac{3}{5}\\)",
+        "id": "E"
+      }
     ],
-    "routes": [],
-    "flags": []
-  }
+    "prompt": "Charlotte the spider is walking along a web shaped like a \\(5\\)-pointed star, shown in the figure below. The web has \\(5\\) outer points and \\(5\\) inner points. Each time Charlotte reaches a point, she randomly chooses a neighboring point and moves to that point. Charlotte starts at one of the outer points and makes \\(3\\) moves (re-visiting points is allowed). What is the probability she is now at one of the outer points of the star?\n\n[Figure 1](figures/2026_AMC_8_Q21_question_fig1.svg)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:recursive-counting-probability",
+        "math:graph-models"
+      ],
+      "explanation": "We only need to track whether Charlotte is at an inner or outer point, because all points of the same type have the same numbers of each type of neighbor.\n\n[Figure 1](figures/2026_AMC_8_Q21_question_fig1.svg)\n\nEach outer point has two neighbors, both inner. Each inner point has four neighbors: two inner and two outer. Thus, from any inner point, Charlotte has probability \\(\\frac12\\) of moving to either type.\n\nCharlotte starts at an outer point, so her first move certainly takes her to an inner point. After her second move, she has probability \\(\\frac12\\) of being inner and probability \\(\\frac12\\) of being outer.\n\nOn the third move, every route that was at an outer point moves to an inner point. Of the probability already at inner points, half moves to outer points. These two cases cover every possible route, so the requested probability is\n\\[\n\\frac12\\cdot\\frac12=\\boxed{\\frac14}.\n\\]\nThe answer is \\(\\text{B}\\).",
+      "id": "2026_AMC_8_Q21_m1",
+      "sourceRef": "amc/2026_AMC_8_Q21#2026_AMC_8_Q21_m1",
+      "title": "Track inner and outer points"
+    }
+  ],
+  "sourceRef": "amc/2026_AMC_8_Q21"
 }

@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2022_AMC_12B_Q18",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "0f5dc66b7ddc4f1b9cff457c72e2b9c6b7fe0a4f7bad1042df9bd0047ca7e02e",
+    "figureHashes": {
+      "figures/2022_AMC_12B_Q18_question_fig1.svg": "03a13f0d20ae962d89f1464f3d6a0637363349f0962e9bc9b063442aac775e0b",
+      "figures/2022_AMC_12B_Q18_question_fig2.svg": "567dba950e8db102fd0eb29a35a4cb9939f45d88f6844c36f3f51136326882bc"
+    }
+  },
+  "solutionSHA256": "0beb06c6973453f0561a64f2d6c44319683cac1162ecc56167cfd293de33e2a2",
+  "solutionFigureHashes": {
+    "figures/2022_AMC_12B_Q18_question_fig2.svg": "567dba950e8db102fd0eb29a35a4cb9939f45d88f6844c36f3f51136326882bc"
+  },
+  "candidateHash": "b4a7d545fdf98376db0430fcce62bcec37cef938c193b64dd35d6c985dcaed34",
+  "candidate": {
+    "questionId": "2022_AMC_12B_Q18",
+    "derivedAnswer": "22 (C)",
+    "answerStatus": "matches",
+    "answerReason": "There are 22 valid configurations with exactly three initially filled squares. Every configuration with four initially filled squares that preserves the center also produces another filled square.",
+    "methods": [
+      {
+        "id": "occupied_rows_and_columns",
+        "label": "Count occupied rows and columns",
+        "explanation": "The condition at the center limits how many squares can initially be filled. If the center starts empty, it needs exactly three filled neighbors. If it starts filled, it needs two or three filled neighbors. Thus there are either three or four initially filled squares, and in the four-square case the center must be one of them.\n\n[Figure 2](figures/2022_AMC_12B_Q18_question_fig2.svg)\n\nFirst suppose exactly three squares are initially filled. A square becomes or remains filled precisely when the \\(3\\times3\\) block centered on it, including the square itself, contains all three initially filled squares. Indeed, an initially filled square then has two filled neighbors, while an initially empty square has three. If its block misses any of the three, neither rule can make it filled.\n\nThe center's block always contains all three. For it to be the only filled output square, the initial configuration must meet the top row, bottom row, left column, and right column of the inner \\(3\\times3\\) grid. For example, if its top row is unused, the square immediately below the center also has all three filled squares in its block. Conversely, if all four extreme rows and columns are represented, every square displaced from the center misses an initially filled square on an opposite extreme row or column. This also rules out births on the outer border.\n\nWe can now count triples satisfying those four requirements. Since the top and bottom rows must each contain a filled square, the middle row contains either one or none.\n\nIf the middle row contains one, there is one filled square in each row. There are \\(3^3=27\\) choices of columns. Of these, \\(2^3=8\\) miss the left column, and another \\(8\\) miss the right column. The configuration using only the middle column was subtracted twice, so the count is\n\\[\n27-8-8+1=12.\n\\]\n\nIf the middle row contains none, one outer row contains two filled squares and the other contains one. Choose the row containing two in \\(2\\) ways. If its pair occupies the left and right columns, the remaining square has \\(3\\) choices. If the pair occupies the left and middle columns, the remaining square must be on the right; the middle-and-right pair similarly forces the remaining square to the left. This gives\n\\[\n2(3+1+1)=10.\n\\]\n\nIt remains to exclude four initially filled squares. Here the center is filled, together with three surrounding squares. If any two of those three are neighbors, each has the center and the other as filled neighbors, so both survive. Therefore the three surrounding filled squares would have to be pairwise nonadjacent.\n\nCall the four noncorner positions around the center the side-middle squares. If one of them is filled, pairwise nonadjacency forces the other two filled squares to be the two corners of the opposite side. The side-middle square between those corners is empty and has exactly three filled neighbors: those two corners and the center. It therefore becomes filled. If no side-middle square is filled, the three surrounding squares are corners. Two must be the endpoints of one side, and the side-middle square between them again has exactly those two corners and the center as filled neighbors. Thus this case also produces an unwanted filled square.\n\nThe two counted cases are disjoint and exhaust all valid configurations. Positions were kept fixed throughout, so rotations and reflections are counted separately. The answer is\n\\[\n12+10=\\boxed{22},\n\\]\nchoice \\(\\boxed{C}\\).",
+        "nodeIds": [
+          "math:graph-coloring",
+          "cnm_h232",
+          "cnm_h009"
+        ],
+        "prerequisiteIds": [
+          "cnm_h230",
+          "cnm_h231"
+        ],
+        "levelReason": "The argument uses local neighbor counts, exhaustive cases, and elementary addition, multiplication, and two-set inclusion-exclusion, all within AMC 12 scope."
+      }
+    ],
+    "assessedIds": [
+      "math:graph-coloring"
+    ],
+    "supportIds": [
+      "cnm_h232"
+    ],
+    "annotationRationale": "The task asks for cell assignments satisfying an adjacency-based transformation, which fits the catalog's general local-color-rule target. The method uses combined counting and a two-set overlap correction for missing extreme columns. The cases prove exhaustiveness and retain all rotated and reflected configurations as distinct. No graph-degree or path procedure is used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2022_AMC_12B_Q18",
+    "decision": "accept",
+    "mathematicalCheck": "The center condition restricts the initial total to three or four filled cells. With three, a cell survives or is born exactly when its neighborhood contains all three. Thus occupying both extreme rows and both extreme columns is necessary and sufficient, including exclusion of border births. The exhaustive row cases give 27-8-8+1=12 and 2(3+1+1)=10. With four, adjacent surrounding cells survive, while every pairwise nonadjacent surrounding triple forces an unwanted birth. The total is 22.",
+    "levelCheck": "The local reasoning, case analysis, and two-set overlap correction fit AMC 12. The decisive conditions and counting multiplicities are clearly explained.",
+    "methodDistinctness": "One complete structural counting method is sufficient.",
+    "annotationCheck": "The broad local-color-rule scope of math:graph-coloring fits the task. Combined counting, union overlap correction, and the addition and multiplication prerequisites match the method. Omitting graph-degree and path annotations is justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "occupied_rows_and_columns": "occupied_rows_and_columns"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c7b5d80c89b99603fd4c235ca69b669b05092e1d764db5574a7e84c892e27d88",
+    "acceptedAt": "2026-11-07T08:15:41.366627+00:00",
+    "inputHash": "412a6b855a9d1966ddc731251a3bf5cba9daf634ab5fd0d808466d49a6d41852",
+    "authorInputHash": "fb716896afc3ecd441d49dabb01d93bfe19743be52c26cbc8e131ac7876cc10a",
+    "reviewInputHash": "a06bca4deadec397db95944b1c3202812baf00909f0aefe43b631bcc41731dbc",
+    "authorResponseHash": "f10414efd3ea61e5734153206197eb3afd92f1c323c6d55b564b2a3dd620dcfa",
+    "reviewerResponseHash": "93daa4acdf3459f4a094a22b97f19bbf925f1f888aca0fefb562223807d78d51",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

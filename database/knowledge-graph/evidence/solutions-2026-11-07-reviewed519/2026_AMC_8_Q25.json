@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2026_AMC_8_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "7ce7b769937d68c1518247b50ae115f3a798cc4cab730c14bdf50153796ea430",
+    "figureHashes": {
+      "figures/2026_AMC_8_Q25_question_fig1.svg": "898ae61c8b6c653948108a2f3efdc05dc0d2c6e93e6cba6e00c95397eee61da4"
+    }
+  },
+  "solutionSHA256": "b9fa14bb60627ad57bac2507d2e14fb17eded48022f004c28667b6c20eb5060f",
+  "solutionFigureHashes": {
+    "figures/2026_AMC_8_Q25_question_fig1.svg": "898ae61c8b6c653948108a2f3efdc05dc0d2c6e93e6cba6e00c95397eee61da4"
+  },
+  "candidateHash": "b5eb534d827cdf27b0aee7362f38912b13468c1c132491e9f36dcfe5ef7b09b4",
+  "candidate": {
+    "questionId": "2026_AMC_8_Q25",
+    "derivedAnswer": "E: 8",
+    "answerStatus": "matches",
+    "answerReason": "The example determines the triangle side length as 6. Equilateral corner cuts of sorted positive integer sizes a ≤ b ≤ c leave a valid hexagon exactly when b + c ≤ 5. There are eight such triples, and perimeter and longest-side comparisons show that they produce eight distinct hexagon shapes.",
+    "methods": [
+      {
+        "id": "2026_AMC_8_Q25_m1",
+        "label": "Count the three corner cuts",
+        "explanation": "Describe each hexagon by the three small triangles cut away from the corners of \\(ABC\\). This reduces six side lengths to three numbers.\n\n[Figure 1](figures/2026_AMC_8_Q25_question_fig1.svg)\n\nFirst, every valid hexagon must have exactly two vertices on each side of \\(ABC\\). A hexagon vertex cannot be at \\(A\\), \\(B\\), or \\(C\\), because a \\(120^\\circ\\) angle cannot fit inside a \\(60^\\circ\\) triangle corner. Also, three hexagon vertices on one straight side would give the middle vertex an angle of \\(180^\\circ\\). With six vertices on three sides, there must therefore be two on each side.\n\nEach removed corner triangle has a \\(60^\\circ\\) angle at the triangle corner. Its other two angles supplement the hexagon's \\(120^\\circ\\) angles, so they are also \\(60^\\circ\\). Thus all three corner triangles are equilateral. In the displayed example, the bottom side of \\(ABC\\) consequently has length\n\\[\n1+3+2=6.\n\\]\n\nLet \\(a,b,c\\) be the side lengths of the equilateral triangles removed at the three corners. They are positive integers because their bases are hexagon sides. The other three hexagon sides have lengths\n\\[\n6-a-b,\\qquad 6-b-c,\\qquad 6-c-a.\n\\]\nThey must all be positive. Conversely, positive integer cuts satisfying these conditions leave a six-sided figure with all interior angles \\(120^\\circ\\), so these conditions describe every valid case.\n\nA rotation can choose which corner comes first, and a reflection can interchange the other two corners. We may therefore list the cuts in sorted order,\n\\[\n1\\le a\\le b\\le c.\n\\]\nThe largest pair sum is \\(b+c\\), so all three remaining sides are positive exactly when \\(b+c\\le5\\). Equality is allowed and leaves a side of length \\(1\\).\n\nIf \\(b=1\\), then \\(a=1\\) and \\(c\\) can be \\(1,2,3,4\\). This gives\n\\[\n(1,1,1),\\ (1,1,2),\\ (1,1,3),\\ (1,1,4).\n\\]\nIf \\(b=2\\), then \\(a\\) can be \\(1\\) or \\(2\\), and \\(c\\) can be \\(2\\) or \\(3\\). This gives\n\\[\n(1,2,2),\\ (1,2,3),\\ (2,2,2),\\ (2,2,3).\n\\]\nNo \\(b\\ge3\\) is possible, because then \\(b+c\\ge6\\). These cases exhaust the possibilities.\n\nWe also check that different listed triples do not accidentally give the same hexagon shape. The perimeter is \\(18-(a+b+c)\\), so triples with different sums give different perimeters. The only repeated sums are \\(5\\) and \\(6\\). For sum \\(5\\), the triples \\((1,1,3)\\) and \\((1,2,2)\\) have longest sides \\(4\\) and \\(3\\), respectively. For sum \\(6\\), the triples \\((1,1,4)\\), \\((1,2,3)\\), and \\((2,2,2)\\) have longest sides \\(4,3,2\\), respectively. Rotations and reflections preserve both perimeter and longest side, so all eight shapes are distinct.\n\nThe total is \\(4+2\\cdot2=\\boxed{8}\\), choice \\(\\text{E}\\).",
+        "nodeIds": [
+          "math:symmetry-counting",
+          "cnm_139",
+          "cnm_055",
+          "cnm_h020",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_059",
+          "cnm_h231"
+        ],
+        "levelReason": "The method uses equilateral triangles, segment addition and subtraction, small integer cases, and elementary rotations and reflections. The count is established directly without advanced symmetry formulas."
+      }
+    ],
+    "assessedIds": [
+      "math:symmetry-counting"
+    ],
+    "supportIds": [
+      "cnm_139",
+      "cnm_055",
+      "cnm_h020",
+      "cnm_h232"
+    ],
+    "annotationRationale": "The assessed target is counting geometric arrangements under rotations and reflections. The method encodes each hexagon by equilateral corner cuts, derives positive-length integer restrictions, and lists sorted representatives. Its final perimeter and longest-side comparisons establish that distinct representatives remain distinct as hexagon shapes. Equilateral-triangle facts, segment arithmetic, integer bounds, and addition/multiplication counting support this route.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2026_AMC_8_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The figure gives triangle side length 1 + 3 + 2 = 6. Every valid hexagon has two vertices on each triangle side and three equilateral corner cuts. Positive integer cuts leave positive remaining sides exactly when every pair sum is below 6. Sorting reduces this to b + c ≤ 5, giving four cases for b = 1 and four for b = 2. All constructions are valid. The perimeter formula 18 - (a + b + c) and the stated longest-side comparisons correctly distinguish all eight shapes.",
+    "levelCheck": "Elementary angle reasoning, segment arithmetic, sorting, and small integer casework fit AMC 8. Completeness, existence, and the symmetry identification are adequately explained.",
+    "methodDistinctness": "One complete corner-cut enumeration is sufficient. The final comparisons verify distinctness within that method.",
+    "annotationCheck": "Symmetry counting is correctly assessed through sorted representatives and congruence checks. Equilateral triangles, segment arithmetic, integer bounds, supplementary angles, and addition/multiplication counting support the method without introducing advanced machinery.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "2026_AMC_8_Q25_m1": "2026_AMC_8_Q25_m1"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "183a9988497116c7bcc4462f1d9db0a21b1977b46d8193393e50dc5a46238056",
+    "acceptedAt": "2026-11-07T07:51:30.045141+00:00",
+    "inputHash": "f82c1f3f7ea3188a30c42ea99f0bc51cf2a021be57739520cb026d8d01e43686",
+    "authorInputHash": "e02dd1694b6a84480b4b10bd2f9623ff9e555497edafecd98b922b87ccc46e45",
+    "reviewInputHash": "7dd84e48d7afbaad13d578ba24aabdee2491a5c3ec9d88c3b504cdb675876492",
+    "authorResponseHash": "d50afba7dcc24a71d9d9fc6380a8d9976ec0c92979451eca780e32563b3b32af",
+    "reviewerResponseHash": "44eaea723d8fc09adefdcde01b1e4299706ac5c34cad3fd36a2cd1f5fc302607",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}
