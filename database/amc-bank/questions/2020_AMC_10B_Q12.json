@@ -1,64 +1,71 @@
 {
-  "Year": 2020,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Number Theory",
-  "Number": 12,
-  "Question": "The decimal representation of \\[\\frac{1}{20^{20}}\\] consists of a string of zeros after the decimal point, followed by a \\(9\\) and then several more digits. How many zeros are in that initial string of zeros after the decimal point?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(23\\)",
-    "B": "\\(24\\)",
-    "C": "\\(25\\)",
-    "D": "\\(26\\)",
-    "E": "\\(27\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.72",
-    "Concepts": "decimal; exponent; place value",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2020B/solutions",
-    "SourceSHA256": "9648a27ea075ba7f4dafa98217a82abe8746534a8466216f87e10845e8f85c50",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2020_AMC_10B_Q12",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "The decimal representation of \\[\\frac{1}{20^{20}}\\] consists of a string of zeros after the decimal point, followed by a \\(9\\) and then several more digits. How many zeros are in that initial string of zeros after the decimal point?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(23\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(24\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(25\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(26\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(27\\)"
+      }
     ]
   },
-  "ID": "2020_AMC_10B_Q12",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:number-theory"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Number Theory",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:number-theory"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_164"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "82aae336facfe0e6c7f68b894038f7f787d28ab1b887a0d70de24d40c23ff144",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_164"
-    ],
-    "supportIds": [
-      "cnm_143",
-      "cnm_p120"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "bound-by-powers-of-ten",
+      "title": "Locate the decimal place",
+      "explanation": "We only need to locate the denominator between consecutive powers of ten; its full expansion is unnecessary.\n\nSince \\(2^{10}=1024\\) and \\(1000<1024<2000\\), squaring gives\n\\[\n10^6<2^{20}<4\\cdot10^6<10^7.\n\\]\nConsequently,\n\\[\n10^{26}<20^{20}=2^{20}\\cdot10^{20}<10^{27}.\n\\]\nTaking reciprocals reverses these inequalities because all quantities are positive:\n\\[\n10^{-27}<\\frac{1}{20^{20}}<10^{-26}.\n\\]\nA positive decimal in this interval has its first nonzero digit in the \\(27\\)th place after the decimal point. Thus the given \\(9\\) has \\(26\\) zeros before it.\n\nThe answer is \\(\\boxed{26}\\), choice \\(\\boxed{\\text{D}}\\).",
+      "directNodeIds": [
+        "cnm_164",
+        "cnm_143",
+        "cnm_p120"
+      ],
+      "sourceRef": "amc/2020_AMC_10B_Q12#bound-by-powers-of-ten"
+    },
+    {
+      "id": "construct-terminating-decimal",
+      "title": "Make a power-of-ten denominator",
+      "explanation": "A denominator that is a power of ten makes the decimal placement easy to count. Multiplying the numerator and denominator by \\(5^{20}\\) gives\n\\[\n\\frac{1}{20^{20}}\n=\\frac{5^{20}}{100^{20}}\n=\\frac{5^{20}}{10^{40}}.\n\\]\nRepeated squaring evaluates the numerator:\n\\[\n\\begin{aligned}\n5^5&=3125,\\\\\n5^{10}&=3125^2=9{,}765{,}625,\\\\\n5^{20}&=9{,}765{,}625^2=95{,}367{,}431{,}640{,}625.\n\\end{aligned}\n\\]\nThis numerator has \\(14\\) digits and begins with \\(9\\). Dividing it by \\(10^{40}\\) moves the decimal point \\(40\\) places left. The first \\(14\\) moves put the decimal point immediately before the \\(9\\); the remaining \\(40-14=26\\) moves insert zeros between the decimal point and that \\(9\\).\n\nTherefore, there are \\(\\boxed{26}\\) initial zeros, choice \\(\\boxed{\\text{D}}\\).",
+      "directNodeIds": [
+        "cnm_143",
+        "cnm_p120"
+      ],
+      "sourceRef": "amc/2020_AMC_10B_Q12#construct-terminating-decimal"
+    }
+  ],
+  "sourceRef": "amc/2020_AMC_10B_Q12"
 }

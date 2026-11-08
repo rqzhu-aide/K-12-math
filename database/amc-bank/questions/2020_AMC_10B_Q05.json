@@ -1,78 +1,70 @@
 {
-  "Year": 2020,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 5,
-  "Question": "How many distinguishable arrangements are there of \\(1\\) brown tile, \\(1\\) purple tile, \\(2\\) green tiles, and \\(3\\) yellow tiles in a row from left to right? (Tiles of the same color are indistinguishable.)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(210\\)",
-    "B": "\\(420\\)",
-    "C": "\\(630\\)",
-    "D": "\\(840\\)",
-    "E": "\\(1050\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:1.00",
-    "Concepts": "multiset permutations",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2020B/solutions",
-    "SourceSHA256": "9648a27ea075ba7f4dafa98217a82abe8746534a8466216f87e10845e8f85c50",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2020_AMC_10B_Q05",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "33b3f93da616317b8f2a435b77a13b1d923229c0351f94d6f0efb7ae90ea5be9",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:multiset-permutations"
-    ],
-    "supportIds": [],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2020_AMC_10B_Q05",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "How many distinguishable arrangements are there of \\(1\\) brown tile, \\(1\\) purple tile, \\(2\\) green tiles, and \\(3\\) yellow tiles in a row from left to right? (Tiles of the same color are indistinguishable.)",
+    "choices": [
       {
-        "id": "label-and-divide",
-        "label": "Label tiles and divide repeated counts",
-        "nodeIds": [
-          "cnm_h234",
-          "math:multiset-permutations"
-        ]
+        "id": "A",
+        "content": "\\(210\\)"
       },
       {
-        "id": "choose-color-positions",
-        "label": "Choose positions for each color",
-        "nodeIds": [
-          "cnm_h239",
-          "cnm_h231"
-        ]
+        "id": "B",
+        "content": "\\(420\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(630\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(840\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(1050\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:multiset-permutations"
+  ],
+  "solutions": [
+    {
+      "id": "choose-color-positions",
+      "title": "Choose positions by color",
+      "explanation": "An arrangement is determined by which positions receive each color. Placing the two colors that appear once leaves a small choice for the green tiles.\n\nThere are \\(1+1+2+3=7\\) positions. Choose the brown tile's position in \\(7\\) ways, then the purple tile's position in \\(6\\) ways.\n\nFive positions remain. To choose two for the green tiles, there are \\(5\\cdot4\\) ordered selections. Each pair is selected twice, once in each order, so there are\n\\[\n\\frac{5\\cdot4}{2}=10\n\\]\npossible pairs of green positions. The three remaining positions must contain the yellow tiles.\n\nEvery permitted row determines exactly one set of these choices, so every arrangement is counted once. Multiplying the numbers of choices gives\n\\[\n7\\cdot6\\cdot10=\\boxed{420},\n\\]\nchoice \\(\\textbf{B}\\).",
+      "directNodeIds": [
+        "cnm_h239",
+        "cnm_h231"
+      ],
+      "sourceRef": "amc/2020_AMC_10B_Q05#choose-color-positions"
+    },
+    {
+      "id": "label-and-divide",
+      "title": "Temporarily label the repeated tiles",
+      "explanation": "Giving the repeated tiles temporary labels makes all seven tiles distinct, so we can count those rows first and then remove the extra counts caused by the labels.\n\nLabel the green tiles \\(G_1,G_2\\) and the yellow tiles \\(Y_1,Y_2,Y_3\\). There are \\(7\\) choices for the first position, \\(6\\) for the next, and so on. Thus the number of labeled rows is\n\\[\n7!=7\\cdot6\\cdot5\\cdot4\\cdot3\\cdot2\\cdot1=5040.\n\\]\nHere the factorial symbol \\(!\\) denotes the product of the positive integers up to the indicated number.\n\nFor any fixed color arrangement, the two green labels can be assigned in \\(2!=2\\) ways, and the three yellow labels in \\(3!=6\\) ways. Hence each color arrangement corresponds to exactly \\(2\\cdot6=12\\) labeled rows.\n\nRemoving the labels therefore gives\n\\[\n\\frac{5040}{12}=\\boxed{420}\n\\]\ndistinguishable arrangements, choice \\(\\textbf{B}\\).",
+      "directNodeIds": [
+        "cnm_h234",
+        "math:multiset-permutations"
+      ],
+      "sourceRef": "amc/2020_AMC_10B_Q05#label-and-divide"
+    }
+  ],
+  "sourceRef": "amc/2020_AMC_10B_Q05"
 }

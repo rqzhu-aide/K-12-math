@@ -1,78 +1,72 @@
 {
-  "Year": 2020,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Algebra",
-  "Number": 14,
-  "Question": "Real numbers \\(x\\) and \\(y\\) satisfy \\(x + y = 4\\) and \\(x \\cdot y = -2.\\) What is the value of \\[x + \\frac{x^3}{y^2} + \\frac{y^3}{x^2} + y?\\]",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(360\\)",
-    "B": "\\(400\\)",
-    "C": "\\(420\\)",
-    "D": "\\(440\\)",
-    "E": "\\(480\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.78",
-    "Concepts": "Newton’s Sums; Vieta’s Formulas",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2020A/solutions",
-    "SourceSHA256": "2fd87a2a44e59aff473dcecc5b4e3e5ae93b9a99a198c041311afbf1ff99f250",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2020_AMC_10A_Q14",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:algebra"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "28dbdbab96cb0dd1a5ba446ec0c5f9a9ef75a308a45afbef0194b4bffe234504",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_162"
-    ],
-    "supportIds": [],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2020_AMC_10A_Q14",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Real numbers \\(x\\) and \\(y\\) satisfy \\(x + y = 4\\) and \\(x \\cdot y = -2.\\) What is the value of \\[x + \\frac{x^3}{y^2} + \\frac{y^3}{x^2} + y?\\]",
+    "choices": [
       {
-        "id": "factor-symmetric-expression",
-        "label": "Factor the symmetric expression",
-        "nodeIds": [
-          "cnm_148",
-          "math:sum-difference-cubes"
-        ]
+        "id": "A",
+        "content": "\\(360\\)"
       },
       {
-        "id": "power-sum-recurrence",
-        "label": "Reduce fifth powers recursively",
-        "nodeIds": [
-          "math:polynomial-roots-coefficients",
-          "cnm_h200"
-        ]
+        "id": "B",
+        "content": "\\(400\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(420\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(440\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(480\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Algebra",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:algebra"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_162"
+  ],
+  "solutions": [
+    {
+      "id": "factor-symmetric-expression",
+      "title": "Factor the expression",
+      "explanation": "Writing \\(x=x^3/x^2\\) and \\(y=y^3/y^2\\) lets us group the terms into fractions with matching numerators. These rewrites are valid because \\(xy=-2\\), so neither variable is zero.\n\nLet \\(E\\) denote the requested expression. Then\n\\[\n\\begin{aligned}\nE&=\\left(x+\\frac{y^3}{x^2}\\right)+\\left(y+\\frac{x^3}{y^2}\\right)\\\\\n&=\\frac{x^3+y^3}{x^2}+\\frac{x^3+y^3}{y^2}\\\\\n&=\\frac{(x^3+y^3)(x^2+y^2)}{(xy)^2}.\n\\end{aligned}\n\\]\nBoth sums in the numerator can be found from the given information. First,\n\\[\nx^2+y^2=(x+y)^2-2xy=16-2(-2)=20.\n\\]\nUsing the sum-of-cubes identity,\n\\[\n\\begin{aligned}\nx^3+y^3&=(x+y)(x^2-xy+y^2)\\\\\n&=4\\bigl(20-(-2)\\bigr)=88.\n\\end{aligned}\n\\]\nTherefore,\n\\[\nE=\\frac{88\\cdot20}{(-2)^2}=\\boxed{440},\n\\]\nwhich is choice \\(\\textbf{D}\\).",
+      "directNodeIds": [
+        "cnm_162",
+        "cnm_148",
+        "math:sum-difference-cubes"
+      ],
+      "sourceRef": "amc/2020_AMC_10A_Q14#factor-symmetric-expression"
+    },
+    {
+      "id": "power-sum-recurrence",
+      "title": "Build the power sums",
+      "explanation": "Combining the two fractions produces a fifth-power sum, and the given sum and product provide a rule for building such sums from lower powers.\n\nSince \\(xy=-2\\), both denominators are nonzero. Thus the requested expression is\n\\[\nx+y+\\frac{x^5+y^5}{x^2y^2}=4+\\frac{x^5+y^5}{4}.\n\\]\nTo find the numerator, observe that\n\\[\n(t-x)(t-y)=t^2-(x+y)t+xy=t^2-4t-2.\n\\]\nConsequently, both \\(x\\) and \\(y\\) satisfy \\(t^2=4t+2\\). Multiplying this equation by \\(t^{k-2}\\), for an integer \\(k\\ge2\\), gives\n\\[\nt^k=4t^{k-1}+2t^{k-2}.\n\\]\nLet \\(S_k=x^k+y^k\\) for integers \\(k\\ge0\\). Adding the equations for \\(t=x\\) and \\(t=y\\) gives\n\\[\nS_k=4S_{k-1}+2S_{k-2}.\n\\]\nStarting with \\(S_0=2\\) and \\(S_1=4\\), we obtain\n\\[\n\\begin{aligned}\nS_2&=4(4)+2(2)=20,\\\\\nS_3&=4(20)+2(4)=88,\\\\\nS_4&=4(88)+2(20)=392,\\\\\nS_5&=4(392)+2(88)=1744.\n\\end{aligned}\n\\]\nThe requested value is therefore\n\\[\n4+\\frac{1744}{4}=\\boxed{440},\n\\]\nwhich is choice \\(\\textbf{D}\\).",
+      "directNodeIds": [
+        "cnm_162",
+        "math:polynomial-roots-coefficients",
+        "cnm_h200"
+      ],
+      "sourceRef": "amc/2020_AMC_10A_Q14#power-sum-recurrence"
+    }
+  ],
+  "sourceRef": "amc/2020_AMC_10A_Q14"
 }

@@ -257,6 +257,13 @@ def normalize_question(record, *, root=ROOT, bank_root=None, source_index=None):
         method_source = resolved(method.get('sourceRef', record['sourceRef']))
         provenance = {k:deepcopy(v) for k,v in method_source.get('provenance', {}).items()
             if k in ('source','reviewStatus','sourceURL','sourceRevision','attribution','license','licenseURL','officialSolution','evidence','teacherReviewed','contribution','reviewMeaning')}
+        references = method_source.get('provenance', {}).get('references')
+        if isinstance(references, list):
+            links = [{'title': ref['title'], 'url': ref['url']} for ref in references
+                     if isinstance(ref, dict) and isinstance(ref.get('title'), str) and ref['title'].strip()
+                     and isinstance(ref.get('url'), str) and ref['url'].startswith(('https://', 'http://'))]
+            if links:
+                provenance['references'] = links
         provenance.setdefault('source', method_source.get('label', 'Bank-provided solution; source not specified'))
         provenance.setdefault('reviewStatus', 'Review status not specified')
         provenance['sourceRef'] = method.get('sourceRef', record['sourceRef'])

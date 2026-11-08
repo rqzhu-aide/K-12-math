@@ -1,4 +1,4 @@
-# Official-source explanations
+# Worked explanations and source credits
 
 Math Practice includes **608 official-source explanations**: the original 200 in eight papers and 408 additional explanations linked to public MAA-authored sources.
 Each explanation connects the important deductions and explains how to recognize
@@ -14,6 +14,20 @@ the useful mathematical idea. The explanations work without models.
 | 2021 Spring AMC 10A | 1-25 | [PDF](official-solutions/AMC10A_2021_Spring_Solutions.pdf) |
 | 2021 Fall AMC 10A | 1-25 | [PDF](official-solutions/AMC10A_2021_Fall_Solutions.pdf) |
 | 2022 AMC 10A | 1-25 | [PDF](official-solutions/AMC10A_2022_Solutions.pdf) |
+
+## Source-informed original explanations
+
+This release completes all **1,300 AMC 10 questions** by adding **169 original Math Practice explanations** with **277 written methods**. The explanations were written in new project prose after considering external mathematical references. Per-method source credits distinguish Math Practice authorship from the cited references: [AMC Step by Step](https://amcstep.com/problems/2021_10B_9), [Art of Problem Solving Wiki contributors](https://artofproblemsolving.com/wiki/index.php/2020_AMC_10A_Problems/Problem_6), [LIVE by Po-Shen Loh](https://live.poshenloh.com/past-contests/amc10/2020A/solutions), [Random Math Wiki](https://wiki.randommath.com/en/amc10/2020/part-b/problem-16). These 169 are not additional official MAA adaptations.
+
+The cohort contains **272 reference-informed methods** and **5 independently derived methods**; **104 of the 169 questions** have alternative methods. Each method has its own complete derivation, direct concepts and applicable reference credits. Useful distinct alternatives are stored separately; retained historical graph-only routes are not described as new written proofs. A separate fresh AI reviewer checked every final method, its reference basis, necessary reasoning and immediate ailleo concepts, with separate CN and US alignment judgments. Authors and reviewers requested Sol 6.1 at xhigh effort on distinct threads. These checks are not teacher certification or evidence of student learning.
+
+Question prompts, keys and existing problem figures are retained. Restored choice A in **2023 AMC 10A problem 23** from 11 to 9 using the [printed official contest paper](https://www.thethinkacademy.com/blog/wp-content/uploads/2025/10/2023AMC10A.pdf#page=6), PDF page 6. The correct choice C and its value 15 are unchanged. The corrected question received fresh authoring and independent review.
+
+For 2025 AMC 10B problem 11, an ordinary editorial note makes the intended equally likely one-to-one daily student-to-tutor assignments explicit before answering. For problem 8, the reviewed methods state the customary common whole-cent unit-price interpretation. Their printed wording and historical keys are retained; neither receives a new grading hold. The qualified interpretation records remain in the question source and review evidence.
+
+Updated 13 primary subject labels after review. Separate method concepts retain connections to the mathematical ingredients when a question combines subjects. No third-party explanation text, source-only diagram, raw source page or additional PDF is packaged. Sources retain their own terms; a reference link is not a reuse license.
+
+The [source inventory](sources.json) records method-specific reference use. Public per-question evidence under `knowledge-graph/evidence/solutions-2026-11-08-amc10final/` binds the final methods, question and figure inputs, source and supplement hashes, independent review judgments and requested model settings. Raw private requests, reference prose and source captures remain outside the public release.
 
 ## Additional official-source adaptations
 

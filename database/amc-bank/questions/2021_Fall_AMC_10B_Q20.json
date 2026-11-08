@@ -1,80 +1,93 @@
 {
-  "Year": 2021,
-  "Level": "AMC 10",
-  "Batch": "Fall B",
-  "Area": "Counting & Probability",
-  "Number": 20,
-  "Question": "In a particular game, each of \\(4\\) players rolls a standard \\(6\\)-sided die. The winner is the player who rolls the highest number. If there is a tie for the highest roll, those involved in the tie will roll again and this process will continue until one player wins. Hugo is one of the players in this game. What is the probability that Hugo’s first roll was a \\(5,\\) given that he won the game?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\( \\dfrac{61}{216} \\)",
-    "B": "\\( \\dfrac{367}{1296} \\)",
-    "C": "\\( \\dfrac{41}{144} \\)",
-    "D": "\\( \\dfrac{185}{648} \\)",
-    "E": "\\( \\dfrac{11}{36} \\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.98",
-    "Concepts": "conditional probability; dice (probability); casework; symmetry",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2021D/solutions",
-    "SourceSHA256": "e7a694808b4e341ec6838900327d24b5a32d3bb0ddfdef9e7f6594dbb64b0032",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2021_Fall_AMC_10B_Q20",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "75fb853f71574574e9a8da3b3fb422b90c15e6509ef49d07f5d47f65d9268c6b",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_h244"
-    ],
-    "supportIds": [],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2021_Fall_AMC_10B_Q20",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "In a particular game, each of \\(4\\) players rolls a standard \\(6\\)-sided die. The winner is the player who rolls the highest number. If there is a tie for the highest roll, those involved in the tie will roll again and this process will continue until one player wins. Hugo is one of the players in this game. What is the probability that Hugo’s first roll was a \\(5,\\) given that he won the game?",
+    "choices": [
       {
-        "id": "exchangeability-of-winner",
-        "label": "Winner symmetry and maximum roll",
-        "nodeIds": [
-          "cnm_h137",
-          "cnm_h141"
-        ]
+        "id": "A",
+        "content": "\\( \\dfrac{61}{216} \\)"
       },
       {
-        "id": "condition-on-highest-tie",
-        "label": "Condition on the highest tie",
-        "nodeIds": [
-          "cnm_h247",
-          "cnm_h246",
-          "cnm_h245",
-          "cnm_h239"
-        ]
+        "id": "B",
+        "content": "\\( \\dfrac{367}{1296} \\)"
+      },
+      {
+        "id": "C",
+        "content": "\\( \\dfrac{41}{144} \\)"
+      },
+      {
+        "id": "D",
+        "content": "\\( \\dfrac{185}{648} \\)"
+      },
+      {
+        "id": "E",
+        "content": "\\( \\dfrac{11}{36} \\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h244"
+  ],
+  "solutions": [
+    {
+      "id": "highest-first-roll",
+      "title": "Use the highest first roll",
+      "explanation": "The eventual winner must have been among the players tied for the highest first roll. Thus the winner’s first number is exactly the maximum of the four first rolls.\n\nLet \\(M\\) be that maximum, and let \\(W\\) be the event that Hugo wins. All four players have the same chance of winning, so \\(P(W)=\\frac14\\).\n\nThe same symmetry holds when we consider only games with \\(M=5\\). This restriction does not favor any player: swapping the players’ names preserves both the restriction and the rules. Therefore,\n\\[\nP(W\\mid M=5)=\\frac14.\n\\]\nWhen Hugo wins, his first roll is \\(5\\) exactly when \\(M=5\\). Consequently, the requested conditional probability is\n\\[\n\\frac{P(M=5\\text{ and }W)}{P(W)}\n=\\frac{P(M=5)\\cdot\\frac14}{\\frac14}\n=P(M=5).\n\\]\n\nThere are \\(6^4\\) equally likely ordered outcomes for the four first rolls. Of these, \\(5^4\\) have every roll at most \\(5\\), and \\(4^4\\) have every roll at most \\(4\\). Subtracting leaves precisely those whose maximum is \\(5\\). Hence the answer is\n\\[\n\\frac{5^4-4^4}{6^4}\n=\\frac{625-256}{1296}\n=\\boxed{\\frac{41}{144}},\n\\]\nchoice \\(\\mathrm{C}\\).",
+      "directNodeIds": [
+        "cnm_h244",
+        "cnm_h248",
+        "cnm_h137"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_10B_Q20#highest-first-roll"
+    },
+    {
+      "id": "count-highest-ties",
+      "title": "Count the possible ties",
+      "explanation": "If Hugo first rolls \\(5\\), he can win only if nobody rolls \\(6\\). We can therefore count according to how many opponents also roll \\(5\\).\n\nIf exactly \\(t\\) opponents tie Hugo, the remaining \\(t+1\\) players have equal chances in the rerolling process. Hugo’s probability of eventually winning is \\(\\frac1{t+1}\\), even if further ties occur.\n\nThere are \\(6^4\\) equally likely ordered first-round outcomes. With Hugo’s roll fixed at \\(5\\), the relevant outcomes are counted below.\n\n| Opponents rolling \\(5\\) | Number of first-round outcomes | Hugo’s eventual winning probability |\n|---|---:|---:|\n| \\(0\\) | \\(4^3=64\\) | \\(1\\) |\n| \\(1\\) | \\(3\\cdot4^2=48\\) | \\(\\frac12\\) |\n| \\(2\\) | \\(3\\cdot4=12\\) | \\(\\frac13\\) |\n| \\(3\\) | \\(1\\) | \\(\\frac14\\) |\n\nFor each row, choose which opponents roll \\(5\\); every other opponent has four choices, \\(1\\) through \\(4\\). These cases are disjoint and cover every first round in which Hugo rolls \\(5\\) and can still win.\n\nWeighting each case by Hugo’s winning probability gives\n\\[\nP(\\text{Hugo first rolls }5\\text{ and wins})\n=\\frac{64+48\\left(\\frac12\\right)+12\\left(\\frac13\\right)+\\frac14}{6^4}\n=\\frac{369}{5184}.\n\\]\nBy symmetry, Hugo wins the game with probability \\(\\frac14\\). Conditional probability therefore gives\n\\[\nP(\\text{Hugo first rolls }5\\mid\\text{Hugo wins})\n=\\frac{369/5184}{1/4}\n=\\boxed{\\frac{41}{144}},\n\\]\nchoice \\(\\mathrm{C}\\).",
+      "directNodeIds": [
+        "cnm_h244",
+        "cnm_h246",
+        "cnm_h137",
+        "cnm_h239"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_10B_Q20#count-highest-ties"
+    },
+    {
+      "id": "exchangeability-of-winner",
+      "title": "Winner symmetry and maximum roll",
+      "directNodeIds": [
+        "cnm_h137",
+        "cnm_h141"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_10B_Q20#exchangeability-of-winner"
+    },
+    {
+      "id": "condition-on-highest-tie",
+      "title": "Condition on the highest tie",
+      "directNodeIds": [
+        "cnm_h247",
+        "cnm_h246",
+        "cnm_h245",
+        "cnm_h239"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_10B_Q20#condition-on-highest-tie"
+    }
+  ],
+  "sourceRef": "amc/2021_Fall_AMC_10B_Q20"
 }

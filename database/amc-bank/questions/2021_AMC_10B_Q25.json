@@ -1,63 +1,71 @@
 {
-  "Year": 2021,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Geometry",
-  "Number": 25,
-  "Question": "Let \\(S\\) be the set of lattice points in the coordinate plane, both of whose coordinates are integers between \\(1\\) and \\(30,\\) inclusive. Exactly \\(300\\) points in \\(S\\) lie on or below a line with equation \\(y=mx.\\) The possible values of \\(m\\) lie in an interval of length \\(\\frac ab,\\) where \\(a\\) and \\(b\\) are relatively prime positive integers. What is \\(a+b?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\( 31 \\)",
-    "B": "\\( 47 \\)",
-    "C": "\\( 62 \\)",
-    "D": "\\( 72 \\)",
-    "E": "\\( 85 \\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.51",
-    "Concepts": "lattice point; floor and ceiling functions",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2021B/solutions",
-    "SourceSHA256": "6d6538e38d20bd88576d0b4a0695a28cb5bfcae69b198989fec14f46723adafc",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2021_AMC_10B_Q25",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Let \\(S\\) be the set of lattice points in the coordinate plane, both of whose coordinates are integers between \\(1\\) and \\(30,\\) inclusive. Exactly \\(300\\) points in \\(S\\) lie on or below a line with equation \\(y=mx.\\) The possible values of \\(m\\) lie in an interval of length \\(\\frac ab,\\) where \\(a\\) and \\(b\\) are relatively prime positive integers. What is \\(a+b?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\( 31 \\)"
+      },
+      {
+        "id": "B",
+        "content": "\\( 47 \\)"
+      },
+      {
+        "id": "C",
+        "content": "\\( 62 \\)"
+      },
+      {
+        "id": "D",
+        "content": "\\( 72 \\)"
+      },
+      {
+        "id": "E",
+        "content": "\\( 85 \\)"
+      }
     ]
   },
-  "ID": "2021_AMC_10B_Q25",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:geometry"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "E"
+    ]
+  },
+  "classification": {
+    "area": "Geometry",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:geometry"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:lattice-counting"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "09f6095f6d4622fefc32556c9edcecb7e3e6fac73ceb562b08269c66d3b19283",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:lattice-counting"
-    ],
-    "supportIds": [
-      "math:floor-ceiling"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "count-columns-and-find-next-crossing",
+      "title": "Count columns and find the next point",
+      "explanation": "A point \\((x,y)\\) is counted exactly when \\(m\\ge y/x\\). Thus the count increases only when the line reaches another lattice point. We will find a slope giving exactly \\(300\\) points, then determine the next larger slope where a point enters.\n\nA rough triangular-area estimate suggests testing a line that reaches height \\(20\\) at \\(x=30\\), giving \\(m=2/3\\). To verify the count exactly, let \\(\\lfloor t\\rfloor\\) denote the greatest integer at most \\(t\\). In column \\(x\\), the counted points have heights \\(1,2,\\ldots,\\lfloor 2x/3\\rfloor\\), so their number is \\(\\lfloor 2x/3\\rfloor\\).\n\nGroup the columns into ten blocks. For \\(k=0,1,\\ldots,9\\), the counts in columns \\(3k+1,3k+2,3k+3\\) are respectively\n\\[\n2k,\\qquad 2k+1,\\qquad 2k+2.\n\\]\nEach block contributes \\(6k+3\\), and the blocks cover all \\(30\\) columns without overlap. Hence the total is\n\\[\n3+9+15+\\cdots+57=\\frac{10(3+57)}2=300.\n\\]\nEvery smaller slope excludes the ten points \\((3,2),(6,4),\\ldots,(30,20)\\) on this line and cannot gain any points. Therefore \\(2/3\\) is the included lower endpoint.\n\nNow increase the slope by \\(\\delta\\). At column \\(x\\), the line rises by \\(x\\delta\\). The first new point in that column enters when this rise equals the vertical gap to the next integer height. These gaps depend only on the remainder of \\(x\\) upon division by \\(3\\):\n\\[\n\\begin{array}{c|c|c|c}\n\\text{Remainder}&\\text{Vertical gap}&\\text{Largest }x&\\text{Least slope increase}\\\\ \\hline\n0&1&30&1/30\\\\\n1&1/3&28&1/84\\\\\n2&2/3&29&2/87\n\\end{array}\n\\]\nWithin each row, the vertical gap is fixed, so dividing by the largest possible \\(x\\) gives the smallest slope increase. The smallest entry is \\(1/84\\), attained at \\((28,19)\\).\n\nConsequently, the count stays at \\(300\\) precisely for\n\\[\n\\frac23\\le m<\\frac23+\\frac1{84}=\\frac{19}{28}.\n\\]\nThe upper endpoint is excluded because the new point is counted as soon as the line reaches it. The interval has length \\(1/84\\), so \\(a+b=1+84=\\boxed{85}\\), choice \\(\\boxed{\\text{E}}\\).",
+      "directNodeIds": [
+        "math:lattice-counting",
+        "math:floor-ceiling"
+      ],
+      "sourceRef": "amc/2021_AMC_10B_Q25#count-columns-and-find-next-crossing"
+    },
+    {
+      "id": "rectangle-symmetry-and-integer-gap",
+      "title": "Pair points by symmetry",
+      "explanation": "A half-turn of a rectangle pairs lattice points on opposite sides of its diagonal. This lets us test the slope \\(2/3\\) without adding thirty column counts.\n\nConsider the rectangle with vertices \\((0,0),(30,0),(30,20),(0,20)\\). Including its boundary, it contains\n\\[\n31\\cdot21=651\n\\]\nlattice points. Its diagonal \\(y=2x/3\\) contains exactly the eleven points\n\\[\n(3k,2k),\\qquad k=0,1,\\ldots,10.\n\\]\nA half-turn about the rectangle's center \\((15,10)\\) sends \\((x,y)\\) to \\((30-x,20-y)\\). This preserves integer coordinates and pairs each point strictly below the diagonal with exactly one point strictly above it. Thus there are\n\\[\n\\frac{651-11}{2}=320\n\\]\npoints strictly below the diagonal. Including the eleven diagonal points gives \\(331\\). Removing the \\(31\\) points on the \\(x\\)-axis leaves \\(300\\), exactly the desired count in \\(S\\). No other points need removal: positive points on the \\(y\\)-axis are above the line, and no point with \\(y>20\\) can lie below it when \\(x\\le30\\).\n\nFor every smaller slope, at least \\((3,2)\\) is lost and no new points can enter. Thus \\(2/3\\) is the lower endpoint.\n\nTo find the next larger lattice-point slope, take any allowed point with \\(y/x>2/3\\). Set \\(d=3y-2x\\), which is a positive integer. Then\n\\[\n\\frac yx-\\frac23=\\frac{d}{3x}.\n\\]\nIf \\(d\\ge2\\), the restriction \\(x\\le30\\) gives\n\\[\n\\frac{d}{3x}\\ge\\frac2{90}=\\frac1{45}>\\frac1{84}.\n\\]\nIf \\(d=1\\), then \\(3y=2x+1\\), so \\(x\\) must leave remainder \\(1\\) upon division by \\(3\\). The largest allowed such value is \\(28\\). Therefore\n\\[\n\\frac{d}{3x}=\\frac1{3x}\\ge\\frac1{84},\n\\]\nwith equality at \\((x,y)=(28,19)\\), which belongs to \\(S\\).\n\nHence no new point enters before slope \\(19/28\\), and at that slope at least one does enter. The possible slopes are exactly\n\\[\n\\left[\\frac23,\\frac{19}{28}\\right).\n\\]\nTheir interval has length\n\\[\n\\frac{19}{28}-\\frac23=\\frac1{84},\n\\]\nso \\(a+b=\\boxed{85}\\), choice \\(\\boxed{\\text{E}}\\).",
+      "directNodeIds": [
+        "math:lattice-counting",
+        "cnm_248",
+        "math:modular-congruence"
+      ],
+      "sourceRef": "amc/2021_AMC_10B_Q25#rectangle-symmetry-and-integer-gap"
+    }
+  ],
+  "sourceRef": "amc/2021_AMC_10B_Q25"
 }

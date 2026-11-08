@@ -1,61 +1,71 @@
 {
-  "Year": 2022,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 8,
-  "Question": "Consider the following \\(100\\) sets of \\(10\\) elements each: \\[\\begin{gathered} \\{1,2,3,\\ldots,10\\},\\\\ \\{11,12,13,\\ldots,20\\},\\\\ \\{21,22,23,\\ldots,30\\},\\\\ \\vdots\\\\ \\{991,992,993,\\ldots,1000\\}. \\end{gathered}\\] How many of these sets contain exactly two multiples of \\(7?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\( \\ 40 \\)",
-    "B": "\\( \\ 42 \\)",
-    "C": "\\( \\ 43 \\)",
-    "D": "\\( \\ 49 \\)",
-    "E": "\\( \\ 50 \\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.56",
-    "Concepts": "multiple; modular arithmetic; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2022B/solutions",
-    "SourceSHA256": "638416003009bd307322182a0c63865778c5d089c42ac7aa51f671d1924f3a8b",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2022_AMC_10B_Q08",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Consider the following \\(100\\) sets of \\(10\\) elements each: \\[\\begin{gathered} \\{1,2,3,\\ldots,10\\},\\\\ \\{11,12,13,\\ldots,20\\},\\\\ \\{21,22,23,\\ldots,30\\},\\\\ \\vdots\\\\ \\{991,992,993,\\ldots,1000\\}. \\end{gathered}\\] How many of these sets contain exactly two multiples of \\(7?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\( \\ 40 \\)"
+      },
+      {
+        "id": "B",
+        "content": "\\( \\ 42 \\)"
+      },
+      {
+        "id": "C",
+        "content": "\\( \\ 43 \\)"
+      },
+      {
+        "id": "D",
+        "content": "\\( \\ 49 \\)"
+      },
+      {
+        "id": "E",
+        "content": "\\( \\ 50 \\)"
+      }
     ]
   },
-  "ID": "2022_AMC_10B_Q08",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:double-counting"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "f640b15d78d773d24d9c7022128909ad6573927b22f4d6f1c1154dcb2ef353ad",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:double-counting"
-    ],
-    "supportIds": [],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "count-the-extra-multiples",
+      "title": "Count the extra multiples",
+      "explanation": "Each set contains either one or two multiples of \\(7\\), so counting all the multiples will determine how many sets contain two.\n\nEvery seven consecutive integers contain a multiple of \\(7\\), so each ten-number set contains at least one. Three multiples of \\(7\\) would have their smallest and largest at least \\(14\\) apart, whereas the endpoints of a ten-number set are only \\(9\\) apart. Thus no set contains three.\n\nThere are exactly \\(142\\) multiples of \\(7\\) from \\(1\\) through \\(1000\\), because\n\\[\n7\\cdot142=994\\leq1000<1001=7\\cdot143.\n\\]\nLet \\(t\\) be the number of sets containing two multiples. The other \\(100-t\\) sets each contain one. Since the sets partition the integers from \\(1\\) through \\(1000\\), counting the multiples by set gives\n\\[\n2t+(100-t)=142.\n\\]\nHence \\(t=42\\). The answer is \\(\\boxed{42}\\), choice \\(\\textbf{B}\\).",
+      "directNodeIds": [
+        "math:double-counting",
+        "cnm_p153"
+      ],
+      "sourceRef": "amc/2022_AMC_10B_Q08#count-the-extra-multiples"
+    },
+    {
+      "id": "locate-the-first-multiple",
+      "title": "Locate the earlier multiple",
+      "explanation": "Two multiples of \\(7\\) in the same set are \\(7\\) apart, so the earlier one must occupy one of the first three positions. This identifies the qualifying sets directly.\n\nEach set starts with a number ending in \\(1\\). Its first three positions therefore contain numbers ending in \\(1,2,3\\). A multiple of \\(7\\) in any of these positions has its next multiple seven positions later, still inside the same set. Its preceding multiple lies outside the set.\n\nMultiples of \\(7\\) ending in \\(1,2,3\\), respectively, have the forms\n\\[\n21+70j,\\qquad42+70j,\\qquad63+70j,\n\\]\nwhere \\(j\\) is a nonnegative integer. To see why the step is \\(70\\), note that two multiples with the same units digit differ by a multiple of both \\(7\\) and \\(10\\), hence by a multiple of \\(70\\).\n\nFor each of the three forms, \\(j=0,1,\\ldots,13\\) gives a number at most \\(1000\\), while \\(j=14\\) exceeds \\(1000\\). Thus each form contributes \\(14\\) earlier multiples. Every qualifying set has exactly one such earlier multiple, so no set is missed or counted twice.\n\nThe total is \\(3\\cdot14=\\boxed{42}\\), choice \\(\\textbf{B}\\).",
+      "directNodeIds": [
+        "cnm_p153",
+        "math:modular-congruence",
+        "cnm_h230"
+      ],
+      "sourceRef": "amc/2022_AMC_10B_Q08#locate-the-first-multiple"
+    }
+  ],
+  "sourceRef": "amc/2022_AMC_10B_Q08"
 }

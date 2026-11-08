@@ -1,62 +1,72 @@
 {
-  "Year": 2020,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Number Theory",
-  "Number": 4,
-  "Question": "The acute angles of a right triangle are \\(a^{\\circ}\\) and \\(b^{\\circ},\\) where \\(a>b\\) and both \\(a\\) and \\(b\\) are prime numbers. What is the least possible value of \\(b?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(2\\)",
-    "B": "\\(3\\)",
-    "C": "\\(5\\)",
-    "D": "\\(7\\)",
-    "E": "\\(11\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.45",
-    "Concepts": "prime; angle sum",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2020B/solutions",
-    "SourceSHA256": "9648a27ea075ba7f4dafa98217a82abe8746534a8466216f87e10845e8f85c50",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2020_AMC_10B_Q04",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "The acute angles of a right triangle are \\(a^{\\circ}\\) and \\(b^{\\circ},\\) where \\(a>b\\) and both \\(a\\) and \\(b\\) are prime numbers. What is the least possible value of \\(b?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(2\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(3\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(5\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(7\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(11\\)"
+      }
     ]
   },
-  "ID": "2020_AMC_10B_Q04",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:number-theory"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Number Theory",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:number-theory"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_116",
+    "cnm_p157"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "a64cf6c3867f978afbcb70e2963df699c31f8dc003cca7e48de0e893c653c924",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_116",
-      "cnm_p157"
-    ],
-    "supportIds": [],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "test-primes-in-order",
+      "title": "Test the smallest primes",
+      "explanation": "The acute angles of a right triangle add to \\(90^\\circ\\), so choosing \\(b\\) determines \\(a=90-b\\).\n\nTest prime values of \\(b\\) in increasing order:\n\\[\n\\begin{aligned}\nb=2&\\implies a=88=2\\cdot44,\\\\\nb=3&\\implies a=87=3\\cdot29,\\\\\nb=5&\\implies a=85=5\\cdot17.\n\\end{aligned}\n\\]\nEach of these makes \\(a\\) composite. The next prime is \\(7\\), which gives \\(a=83\\).\n\nTo check that \\(83\\) is prime, only the primes \\(2,3,5,7\\) need testing. A composite number has a prime factor no larger than its square root, and \\(\\sqrt{83}<10\\). None of these four primes divides \\(83\\).\n\nThe angles \\(83^\\circ\\) and \\(7^\\circ\\) are acute and satisfy \\(a>b\\). Since every smaller prime value of \\(b\\) failed, the least possible value is \\(\\boxed{7}\\), choice \\(\\textbf{D}\\).",
+      "directNodeIds": [
+        "cnm_116",
+        "cnm_p157"
+      ],
+      "sourceRef": "amc/2020_AMC_10B_Q04#test-primes-in-order"
+    },
+    {
+      "id": "exclude-prime-divisors",
+      "title": "Use divisibility",
+      "explanation": "Because \\(a\\) and \\(b\\) are different primes, \\(b\\) cannot divide \\(a\\). This lets us rule out several small values of \\(b\\) together.\n\nThe right triangle gives \\(a+b=90\\). If \\(b\\) divided \\(90\\), it would also divide \\(90-b=a\\). Since \\(a\\) is prime and \\(b>1\\), that would force \\(a=b\\), contradicting \\(a>b\\).\n\nThus \\(b\\) cannot be any of \\(2,3,5\\), since each divides \\(90\\). The smallest remaining prime is \\(7\\). Taking \\(b=7\\) gives \\(a=83\\).\n\nThe number \\(83\\) is prime: any composite number has a prime factor at most its square root, but none of the primes \\(2,3,5,7\\) below \\(\\sqrt{83}<10\\) divides it. Both angles are acute, and \\(83>7\\).\n\nTherefore the least possible value is \\(\\boxed{7}\\), choice \\(\\textbf{D}\\).",
+      "directNodeIds": [
+        "cnm_116",
+        "cnm_p157",
+        "cnm_p153"
+      ],
+      "sourceRef": "amc/2020_AMC_10B_Q04#exclude-prime-divisors"
+    }
+  ],
+  "sourceRef": "amc/2020_AMC_10B_Q04"
 }

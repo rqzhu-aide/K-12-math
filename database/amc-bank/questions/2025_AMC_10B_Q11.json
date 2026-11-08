@@ -1,67 +1,74 @@
 {
-  "Year": 2025,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 11,
-  "Question": "On Monday, \\(6\\) students went to the tutoring center at the same time, and each one was randomly assigned to one of the \\(6\\) tutors on duty. On Tuesday, the same \\(6\\) students showed up, the same \\(6\\) tutors were on duty, and the students were again randomly assigned to the tutors. What is the probability that exactly \\(2\\) students met with the same tutor both Monday and Tuesday?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{1}{16}\\)",
-    "B": "\\(\\dfrac{3}{16}\\)",
-    "C": "\\(\\dfrac{1}{4}\\)",
-    "D": "\\(\\dfrac{3}{8}\\)",
-    "E": "\\(\\dfrac{1}{2}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "reviewed-source-concepts",
-    "Concepts": "derangements; permutations; basic probability",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2025B/solutions",
-    "SourceSHA256": "cf9d9f05708ee08cd76252c09e1b652d2dc4bf0d5e2701f607a7f623089b5acb",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2025_AMC_10B_Q11",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "On Monday, \\(6\\) students went to the tutoring center at the same time, and each one was randomly assigned to one of the \\(6\\) tutors on duty. On Tuesday, the same \\(6\\) students showed up, the same \\(6\\) tutors were on duty, and the students were again randomly assigned to the tutors. What is the probability that exactly \\(2\\) students met with the same tutor both Monday and Tuesday?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(\\dfrac{1}{16}\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(\\dfrac{3}{16}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac{1}{4}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac{3}{8}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac{1}{2}\\)"
+      }
     ]
   },
-  "ID": "2025_AMC_10B_Q11",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h137"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "6b495266c863c862af69a3749ac2848f02a3d5bb86840617091b77fd3a59bfd7",
-    "status": "mapped",
-    "reviewStatus": "machine_adjudicated",
-    "assessedIds": [
-      "cnm_h137"
-    ],
-    "supportIds": [
-      "cnm_h239",
-      "cnm_h234",
-      "math:inclusion-exclusion-general"
-    ],
-    "routes": [],
-    "flags": [
-      "Uses the ordinary simultaneous one-to-one assignment of six students to six tutors. Literally allowing independent tutor sharing changes the probability to3125/15552; the adopted model is explicit."
-    ]
-  }
+  "solutions": [
+    {
+      "id": "exchanges-and-rotations",
+      "title": "Count exchanges and rotations",
+      "explanation": "Fixing Monday's assignment lets us count only Tuesday's possibilities. We use the intended one-to-one assignment model, with exactly one student assigned to each tutor each day.\n\nLabel each tutor by the student they met on Monday. On Tuesday there are\n\\[\n6!=720\n\\]\nequally likely assignments: the first student has six available tutors, the second has five, and so on.\n\nChoose the two students who repeat their tutors. There are\n\\[\n\\binom{6}{2}=\\frac{6\\cdot5}{2}=15\n\\]\nchoices. The other four students must be assigned among their four remaining tutors, with nobody receiving their own Monday tutor.\n\nCall these four students \\(A,B,C,D\\). Follow each student's move to the student whose old tutor they receive. Since every tutor is used once, the moves form closed loops. A one-student loop would be a repeat, so there are only two possibilities:\n\n* Two pairs exchange tutors. Choose \\(A\\)'s exchange partner in \\(3\\) ways; the remaining pair must exchange. This gives \\(3\\) assignments.\n* All four students form one loop. Start the loop with \\(A\\), then order the other three students in \\(3!=6\\) ways. Fixing the starting student prevents counting a loop more than once.\n\nThus there are \\(3+6=9\\) ways for the four students all to change tutors. Each favorable assignment has a unique pair of repeating students, so the favorable count is \\(15\\cdot9\\), without double counting.\n\nThe probability is\n\\[\n\\frac{15\\cdot9}{720}=\\boxed{\\frac{3}{16}},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+      "directNodeIds": [
+        "cnm_h137",
+        "cnm_h239",
+        "cnm_h234",
+        "cnm_h232"
+      ],
+      "sourceRef": "amc/2025_AMC_10B_Q11#exchanges-and-rotations"
+    },
+    {
+      "id": "exclude-extra-repeats",
+      "title": "Subtract unwanted repeats",
+      "explanation": "We can count assignments with no repeats by starting with all assignments and correcting for overlapping repeat conditions. As intended, assume each day's assignment is one-to-one, with one student per tutor.\n\nFix Monday's assignment. Select the two students who will keep their tutors on Tuesday in \\(\\binom{6}{2}=15\\) ways. For each such choice, the remaining four students must all change tutors.\n\nThere are initially \\(4!=24\\) assignments of these four students to their four tutors. We remove assignments containing any additional repeat, using inclusion-exclusion:\n\n| Students forced to repeat | Choices of those students | Ways to assign everyone else | Correction |\n|---|---:|---:|---:|\n| One | \\(4\\) | \\(3!=6\\) | \\(-24\\) |\n| Two | \\(\\binom42=6\\) | \\(2!=2\\) | \\(+12\\) |\n| Three | \\(4\\) | \\(1\\) | \\(-4\\) |\n| Four | \\(1\\) | \\(1\\) | \\(+1\\) |\n\nThe signs alternate because subtracting the single-student repeat conditions removes assignments with multiple repeats too many times. Pair intersections restore them, triple intersections correct the next overlap, and the final term corrects the all-four overlap. An assignment with no repeats is never removed; every assignment with a repeat has total contribution zero.\n\nConsequently, the number of assignments in which all four change tutors is\n\\[\n24-24+12-4+1=9.\n\\]\nThere are \\(15\\cdot9\\) favorable Tuesday assignments. No favorable assignment belongs to two choices of the repeating pair, because it has exactly two repeats. Since all \\(6!=720\\) Tuesday assignments are equally likely,\n\\[\nP=\\frac{15\\cdot9}{720}=\\boxed{\\frac{3}{16}},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+      "directNodeIds": [
+        "cnm_h137",
+        "cnm_h239",
+        "cnm_h234",
+        "math:inclusion-exclusion-general"
+      ],
+      "sourceRef": "amc/2025_AMC_10B_Q11#exclude-extra-repeats"
+    }
+  ],
+  "sourceRef": "amc/2025_AMC_10B_Q11"
 }

@@ -1,65 +1,61 @@
 {
-  "Year": 2021,
-  "Level": "AMC 10",
-  "Batch": "Fall B",
-  "Area": "Number Theory",
-  "Number": 10,
-  "Question": "Forty slips of paper numbered \\(1\\) to \\(40\\) are placed in a hat. Alice and Bob each draw one number from the hat without replacement, keeping their numbers hidden from each other. Alice says, “I can’t tell who has the larger number.” Then Bob says, “I know who has the larger number.” Alice says, “You do? Is your number prime?” Bob replies, “Yes.” Alice says, “In that case, if I multiply your number by \\(100\\) and add my number, the result is a perfect square.” What is the sum of the two numbers drawn from the hat?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\( 27 \\)",
-    "B": "\\( 37 \\)",
-    "C": "\\( 47 \\)",
-    "D": "\\( 57 \\)",
-    "E": "\\( 67 \\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.70",
-    "Concepts": "logical deduction; prime; perfect square",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2021D/solutions",
-    "SourceSHA256": "e7a694808b4e341ec6838900327d24b5a32d3bb0ddfdef9e7f6594dbb64b0032",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2021_Fall_AMC_10B_Q10",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Forty slips of paper numbered \\(1\\) to \\(40\\) are placed in a hat. Alice and Bob each draw one number from the hat without replacement, keeping their numbers hidden from each other. Alice says, “I can’t tell who has the larger number.” Then Bob says, “I know who has the larger number.” Alice says, “You do? Is your number prime?” Bob replies, “Yes.” Alice says, “In that case, if I multiply your number by \\(100\\) and add my number, the result is a perfect square.” What is the sum of the two numbers drawn from the hat?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\( 27 \\)"
+      },
+      {
+        "id": "B",
+        "content": "\\( 37 \\)"
+      },
+      {
+        "id": "C",
+        "content": "\\( 47 \\)"
+      },
+      {
+        "id": "D",
+        "content": "\\( 57 \\)"
+      },
+      {
+        "id": "E",
+        "content": "\\( 67 \\)"
+      }
     ]
   },
-  "ID": "2021_Fall_AMC_10B_Q10",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:number-theory"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "A"
+    ]
+  },
+  "classification": {
+    "area": "Number Theory",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:number-theory"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:public-knowledge-elimination"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "88d20064ffa54f4a3c6521c1b82549446d87e921a32263ddbf9046614b9df35f",
-    "status": "mapped",
-    "reviewStatus": "machine_adjudicated",
-    "assessedIds": [
-      "math:public-knowledge-elimination"
-    ],
-    "supportIds": [
-      "cnm_p157",
-      "cnm_075",
-      "math:integer-diophantine-equations"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "public-announcements",
+      "title": "Follow the conversation",
+      "explanation": "Each statement removes possibilities, so we must update what Bob can know after hearing Alice.\n\nLet \\(a\\) be Alice's number and \\(b\\) Bob's number. Their numbers are distinct because the slips are drawn without replacement.\n\nIf Alice had \\(1\\), she would know Bob's number was larger. If she had \\(40\\), she would know hers was larger. For every other value, Bob could have a number on either side of hers. Thus her first statement tells Bob that\n\\[\n2\\le a\\le39.\n\\]\nWith this information, Bob can know the comparison in the following cases:\n\n- If \\(b=1\\) or \\(2\\), Alice's number must be larger. When \\(b=2\\), she cannot also have \\(2\\).\n- If \\(b=39\\) or \\(40\\), Alice's number must be smaller. When \\(b=39\\), she cannot also have \\(39\\).\n\nThese are all the cases: for any \\(3\\le b\\le38\\), Alice could still have either \\(2\\) or \\(39\\), giving opposite comparisons.\n\nTherefore \\(b\\) belongs to \\(\\{1,2,39,40\\}\\). Only \\(2\\) is prime: \\(1\\) is not prime, \\(39=3\\cdot13\\), and \\(40\\) is composite. Hence \\(b=2\\).\n\nNow \\(3\\le a\\le39\\), and Alice's final statement says that \\(200+a\\) is a perfect square between \\(203\\) and \\(239\\). Since\n\\[\n14^2=196,\\qquad15^2=225,\\qquad16^2=256,\n\\]\nthe only possible square is \\(225\\). Thus \\(a=25\\), and the sum is \\(\\boxed{25+2=27}\\), choice \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "math:public-knowledge-elimination",
+        "cnm_p157",
+        "cnm_075"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_10B_Q10#public-announcements"
+    }
+  ],
+  "sourceRef": "amc/2021_Fall_AMC_10B_Q10"
 }

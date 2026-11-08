@@ -1,63 +1,60 @@
 {
-  "Year": 2023,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Number Theory",
-  "Number": 8,
-  "Question": "What is the units digit of \\[2022^{2023} + 2023^{2022}?\\]",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(7\\)",
-    "B": "\\(1\\)",
-    "C": "\\(9\\)",
-    "D": "\\(5\\)",
-    "E": "\\(3\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.94",
-    "Concepts": "units digit; modular arithmetic; pattern recognition",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2023B/solutions",
-    "SourceSHA256": "ac2db544428494b9df231f17a65938616be974766d9bcbd0611bd41f2cd3599f",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2023_AMC_10B_Q08",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "What is the units digit of \\[2022^{2023} + 2023^{2022}?\\]",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(7\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(1\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(9\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(5\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(3\\)"
+      }
     ]
   },
-  "ID": "2023_AMC_10B_Q08",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:number-theory"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "A"
+    ]
+  },
+  "classification": {
+    "area": "Number Theory",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:number-theory"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:modular-powers"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "86981325cf5eb976b75fb8b2c7fc2ea91c9bc96045c16310861beaa675cce065",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:modular-powers"
-    ],
-    "supportIds": [
-      "math:modular-congruence"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "units-digit-cycles",
+      "title": "Follow the repeating digits",
+      "explanation": "The units digit of a product depends only on the units digits of its factors, so we can work with powers of \\(2\\) and \\(3\\).\n\nStarting with exponent \\(1\\), the units digits of powers of \\(2\\) are\n\\[\n2,4,8,6,2,\\ldots.\n\\]\nMultiplying a number ending in \\(6\\) by \\(2\\) returns the units digit to \\(2\\), so these four digits repeat. Since\n\\[\n2023=4\\cdot505+3,\n\\]\n\\(2022^{2023}\\) has the third digit in this cycle, namely \\(8\\).\n\nFor powers of \\(3\\), the corresponding cycle is\n\\[\n3,9,7,1,3,\\ldots.\n\\]\nHere multiplying a number ending in \\(1\\) by \\(3\\) starts the cycle again. Because\n\\[\n2022=4\\cdot505+2,\n\\]\n\\(2023^{2022}\\) ends in \\(9\\).\n\nThe units digit of the sum is therefore the units digit of \\(8+9=17\\), which is \\(\\boxed{7}\\), choice A.",
+      "directNodeIds": [
+        "math:modular-powers",
+        "math:modular-congruence"
+      ],
+      "sourceRef": "amc/2023_AMC_10B_Q08#units-digit-cycles"
+    }
+  ],
+  "sourceRef": "amc/2023_AMC_10B_Q08"
 }

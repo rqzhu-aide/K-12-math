@@ -1,62 +1,71 @@
 {
-  "Year": 2020,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Counting & Probability",
-  "Number": 18,
-  "Question": "Let \\((a,b,c,d)\\) be an ordered quadruple of not necessarily distinct integers, each one of them in the set \\(\\{0,1,2,3\\}.\\) For how many such quadruples is it true that \\(a\\cdot d-b\\cdot c\\) is odd? (For example, \\((0,3,1,1)\\) is one such quadruple, because \\(0\\cdot 1-3\\cdot 1 = -3\\) is odd.)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(48\\)",
-    "B": "\\(64\\)",
-    "C": "\\(96\\)",
-    "D": "\\(128\\)",
-    "E": "\\(192\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.80",
-    "Concepts": "parity; determinant; multiplication principle",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2020A/solutions",
-    "SourceSHA256": "2fd87a2a44e59aff473dcecc5b4e3e5ae93b9a99a198c041311afbf1ff99f250",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2020_AMC_10A_Q18",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Let \\((a,b,c,d)\\) be an ordered quadruple of not necessarily distinct integers, each one of them in the set \\(\\{0,1,2,3\\}.\\) For how many such quadruples is it true that \\(a\\cdot d-b\\cdot c\\) is odd? (For example, \\((0,3,1,1)\\) is one such quadruple, because \\(0\\cdot 1-3\\cdot 1 = -3\\) is odd.)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(48\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(64\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(96\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(128\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(192\\)"
+      }
     ]
   },
-  "ID": "2020_AMC_10A_Q18",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h232",
+    "math:modular-congruence"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "7831be5c367dc2e35372f4854fa08b6196527feb19450490fb864fc87a9376b3",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h232",
-      "math:modular-congruence"
-    ],
-    "supportIds": [],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "count-opposite-product-parities",
+      "title": "Count odd and even products",
+      "explanation": "The difference \\(ad-bc\\) is odd exactly when the two products have opposite parity. This lets us count the ordered pairs \\((a,d)\\) and \\((b,c)\\) separately.\n\nThere are \\(4\\cdot4=16\\) choices for either pair. Its product is odd precisely when both entries belong to \\(\\{1,3\\}\\), giving \\(2\\cdot2=4\\) choices. The remaining \\(16-4=12\\) choices give an even product.\n\nIf \\(ad\\) is odd and \\(bc\\) is even, there are \\(4\\cdot12\\) quadruples. If \\(ad\\) is even and \\(bc\\) is odd, there are \\(12\\cdot4\\). The pairs use separate positions, so their choices can be combined freely. These two cases are disjoint and include every qualifying quadruple.\n\nThus the answer is\n\\[\n4\\cdot12+12\\cdot4=\\boxed{96},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "cnm_h232",
+        "math:modular-congruence"
+      ],
+      "sourceRef": "amc/2020_AMC_10A_Q18#count-opposite-product-parities"
+    },
+    {
+      "id": "count-parity-patterns",
+      "title": "Fix the parities of a and b",
+      "explanation": "Only the remainders modulo \\(2\\) affect whether \\(ad-bc\\) is odd. We can therefore count valid patterns of even and odd entries first.\n\nWrite \\(0\\) for an even entry and \\(1\\) for an odd entry. Fixing the parities of \\(a\\) and \\(b\\) gives the following possibilities:\n\n| Parities of \\((a,b)\\) | Requirement on \\((c,d)\\) | Number of parity choices |\n| --- | --- | --- |\n| \\((0,0)\\) | Impossible, since both products are even | \\(0\\) |\n| \\((1,0)\\) | \\(d\\) odd; \\(c\\) either parity | \\(2\\) |\n| \\((0,1)\\) | \\(c\\) odd; \\(d\\) either parity | \\(2\\) |\n| \\((1,1)\\) | \\(c,d\\) have opposite parity | \\(2\\) |\n\nThese four rows exhaust the possibilities for \\((a,b)\\), so there are \\(6\\) valid parity patterns.\n\nFor each pattern, every even position can be filled with either \\(0\\) or \\(2\\), and every odd position with either \\(1\\) or \\(3\\). Thus each pattern gives \\(2^4=16\\) quadruples. Every quadruple has exactly one parity pattern, so none is counted twice.\n\nThe answer is \\(6\\cdot16=\\boxed{96}\\), choice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "cnm_h232",
+        "math:modular-congruence"
+      ],
+      "sourceRef": "amc/2020_AMC_10A_Q18#count-parity-patterns"
+    }
+  ],
+  "sourceRef": "amc/2020_AMC_10A_Q18"
 }

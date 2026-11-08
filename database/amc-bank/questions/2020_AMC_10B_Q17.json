@@ -1,87 +1,101 @@
 {
-  "Year": 2020,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 17,
-  "Question": "There are \\(10\\) people standing equally spaced around a circle. Each person knows exactly \\(3\\) of the other \\(9\\) people: the \\(2\\) people standing next to her or him, as well as the person directly across the circle. How many ways are there for the \\(10\\) people to split up into \\(5\\) pairs so that the members of each pair know each other?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(11\\)",
-    "B": "\\(12\\)",
-    "C": "\\(13\\)",
-    "D": "\\(14\\)",
-    "E": "\\(15\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.98",
-    "Concepts": "graph theory; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2020B/solutions",
-    "SourceSHA256": "9648a27ea075ba7f4dafa98217a82abe8746534a8466216f87e10845e8f85c50",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2020_AMC_10B_Q17",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "There are \\(10\\) people standing equally spaced around a circle. Each person knows exactly \\(3\\) of the other \\(9\\) people: the \\(2\\) people standing next to her or him, as well as the person directly across the circle. How many ways are there for the \\(10\\) people to split up into \\(5\\) pairs so that the members of each pair know each other?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(11\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(12\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(13\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(14\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(15\\)"
+      }
     ]
   },
-  "ID": "2020_AMC_10B_Q17",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h230"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "658bc18b1b4ea730429a1e2d7ddea7703d9b1504d9528c31fa228c0a235acbef",
-    "status": "mapped",
-    "reviewStatus": "machine_adjudicated",
-    "assessedIds": [],
-    "supportIds": [],
-    "routes": [
-      {
-        "id": "opposite-pair-parity",
-        "label": "Classify opposite pairs using even residual paths",
-        "nodeIds": [
-          "math:graph-models",
-          "cnm_h230",
-          "cnm_p156"
-        ]
-      },
-      {
-        "id": "opposite-pair-congruences",
-        "label": "Express residual-path parity modulo 2",
-        "nodeIds": [
-          "math:graph-models",
-          "cnm_h230",
-          "math:modular-congruence"
-        ]
-      },
-      {
-        "id": "ladder-recurrence",
-        "label": "Branch on one partner and count residual ladders",
-        "nodeIds": [
-          "math:graph-models",
-          "cnm_h232",
-          "math:recursive-counting-probability"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "count-opposite-pairs",
+      "title": "Count by opposite pairs",
+      "explanation": "Every pair consists of either neighbors or opposite people, so we can organize the count by how many opposite pairs are formed.\n\nLabel the people \\(0,1,\\ldots,9\\) in order around the circle. There are five possible opposite pairs:\n\\[\nD_0=(0,5),\\quad D_1=(1,6),\\quad D_2=(2,7),\\quad D_3=(3,8),\\quad D_4=(4,9).\n\\]\nLet \\(k\\) be the number of these pairs used. Once they are removed, everyone remaining must pair with a neighbor. Each remaining consecutive block must therefore have even size. Such a block has exactly one pairing: its endpoint must pair with the next person, and this forces all subsequent pairs.\n\nThe cases are as follows.\n\n| \\(k\\) | Number of pairings | Reason |\n|---|---:|---|\n| \\(0\\) | \\(2\\) | Person \\(0\\) pairs with \\(1\\) or \\(9\\); either choice forces all other neighbor pairs. |\n| \\(1\\) | \\(5\\) | Choose one of the five opposite pairs. Its removal leaves two blocks of four, each with a unique neighbor pairing. |\n| \\(2\\) | \\(0\\) | After the first opposite pair is removed, the second removes one person from each block of four. Three remain on each side, which cannot be paired using only neighbors. |\n| \\(3\\) | \\(5\\) | The two opposite pairs not used must be consecutive in the cyclic list of \\(D_i\\)'s, as explained below. |\n| \\(4\\) | \\(0\\) | The two remaining people are opposite, so pairing them would make five opposite pairs. |\n| \\(5\\) | \\(1\\) | Everyone pairs with the person opposite. |\n\nFor the \\(k=3\\) case, the four remaining people belong to two of the \\(D_i\\)'s. They must form two neighbor pairs. This happens precisely for\n\\[\n\\{D_0,D_1\\},\\ \\{D_1,D_2\\},\\ \\{D_2,D_3\\},\\ \\{D_3,D_4\\},\\ \\{D_4,D_0\\}.\n\\]\nFor example, \\(D_0,D_1\\) leave the forced pairs \\((0,1)\\) and \\((5,6)\\), while \\(D_4,D_0\\) leave \\((4,5)\\) and \\((9,0)\\). Any nonconsecutive choice leaves no neighboring people among the four remaining. Thus there are exactly five completions in this case.\n\nEvery pairing has exactly one value of \\(k\\), so the cases are exhaustive and disjoint. The total is\n\\[\n2+5+0+5+0+1=\\boxed{13},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "cnm_h230",
+        "cnm_p156"
+      ],
+      "sourceRef": "amc/2020_AMC_10B_Q17#count-opposite-pairs"
+    },
+    {
+      "id": "fix-one-partner-and-recur",
+      "title": "Fix one person's partner",
+      "explanation": "Person \\(0\\) has only three possible partners. Counting these three branches turns the problem into smaller pairing problems with a repeating structure.\n\nLabel the people \\(0,1,\\ldots,9\\) around the circle. We first count a useful arrangement: two rows of \\(m\\) people, where allowed connections join people in the same column or consecutive people in the same row. Let \\(L_m\\) be the number of ways to pair everyone using these connections.\n\nConsider the first person in the top row. If they pair with the person below, the remaining arrangement has \\(m-1\\) columns. If they pair with the next person in the top row, the first two people in the bottom row must also pair together, leaving \\(m-2\\) columns. These alternatives are disjoint and cover all possibilities, so\n\\[\nL_m=L_{m-1}+L_{m-2}\\qquad(m\\ge2).\n\\]\nThere is one pairing of an empty arrangement and one pairing of a single column, so \\(L_0=L_1=1\\). Therefore,\n\\[\nL_2=2,\\qquad L_3=3,\\qquad L_4=5.\n\\]\nNow return to person \\(0\\).\n\nIf \\(0\\) pairs with \\(5\\), the remaining people form the two rows \\(1,2,3,4\\) and \\(6,7,8,9\\). Opposite pairs connect corresponding columns, and neighbor pairs connect consecutive people in each row. This gives \\(L_4=5\\) pairings.\n\nIf \\(0\\) pairs with \\(1\\), person \\(5\\) must pair with \\(4\\) or \\(6\\). Pairing \\(5\\) with \\(6\\) leaves the two rows \\(2,3,4\\) and \\(7,8,9\\), giving \\(L_3=3\\) pairings. Pairing \\(5\\) with \\(4\\) forces \\((6,7)\\), then \\((2,3)\\), and finally \\((8,9)\\), giving one pairing. This branch contributes \\(3+1=4\\).\n\nReflecting the circle shows that pairing \\(0\\) with \\(9\\) also contributes \\(4\\). The branches have different partners for person \\(0\\), so no pairing is counted twice. Thus the total is\n\\[\n5+4+4=\\boxed{13},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "math:graph-models",
+        "cnm_h230",
+        "math:recursive-counting-probability"
+      ],
+      "sourceRef": "amc/2020_AMC_10B_Q17#fix-one-partner-and-recur"
+    },
+    {
+      "id": "opposite-pair-parity",
+      "title": "Classify opposite pairs using even residual paths",
+      "directNodeIds": [
+        "math:graph-models",
+        "cnm_h230",
+        "cnm_p156"
+      ],
+      "sourceRef": "amc/2020_AMC_10B_Q17#opposite-pair-parity"
+    },
+    {
+      "id": "opposite-pair-congruences",
+      "title": "Express residual-path parity modulo 2",
+      "directNodeIds": [
+        "math:graph-models",
+        "cnm_h230",
+        "math:modular-congruence"
+      ],
+      "sourceRef": "amc/2020_AMC_10B_Q17#opposite-pair-congruences"
+    },
+    {
+      "id": "ladder-recurrence",
+      "title": "Branch on one partner and count residual ladders",
+      "directNodeIds": [
+        "math:graph-models",
+        "cnm_h232",
+        "math:recursive-counting-probability"
+      ],
+      "sourceRef": "amc/2020_AMC_10B_Q17#ladder-recurrence"
+    }
+  ],
+  "sourceRef": "amc/2020_AMC_10B_Q17"
 }

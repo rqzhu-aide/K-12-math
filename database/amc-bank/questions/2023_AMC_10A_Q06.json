@@ -1,63 +1,70 @@
 {
-  "Year": 2023,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Geometry",
-  "Number": 6,
-  "Question": "An integer is assigned to each vertex of a cube. The value of an edge is defined to be the sum of the values of the two vertices it touches, and the value of a face is defined to be the sum of the values of the four edges surrounding it. The value of the cube is defined as the sum of the values of its six faces. Suppose the sum of the integers assigned to the vertices is \\(21.\\) What is the value of the cube?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(42\\)",
-    "B": "\\(63\\)",
-    "C": "\\(84\\)",
-    "D": "\\(126\\)",
-    "E": "\\(252\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.33",
-    "Concepts": "double counting; cube geometry",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2023A/solutions",
-    "SourceSHA256": "971ce13217f703d7fce4f9708498a2defc20377d359d8d1cc9ee28b098f4e7d6",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2023_AMC_10A_Q06",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "An integer is assigned to each vertex of a cube. The value of an edge is defined to be the sum of the values of the two vertices it touches, and the value of a face is defined to be the sum of the values of the four edges surrounding it. The value of the cube is defined as the sum of the values of its six faces. Suppose the sum of the integers assigned to the vertices is \\(21.\\) What is the value of the cube?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(42\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(63\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(84\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(126\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(252\\)"
+      }
     ]
   },
-  "ID": "2023_AMC_10A_Q06",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:geometry"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:double-counting"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "9edaac75ca0c0582dad44f257607ff2ba72b0aad9c99e7ff7ffbaf3a2a64c32b",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:double-counting"
-    ],
-    "supportIds": [
-      "cnm_p160"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "track-contribution-multiplicities",
+      "title": "Track each contribution",
+      "explanation": "The cube's value depends on how often each vertex label appears in the final sum.\n\nThree edges meet at each vertex. Therefore, adding all edge values includes every vertex label three times, giving a total edge value of\n\\[\n3\\cdot21=63.\n\\]\nEach edge borders two faces. When the six face values are added, every edge value is therefore included twice. The value of the cube is\n\\[\n2\\cdot63=\\boxed{126},\n\\]\nchoice D.",
+      "directNodeIds": [
+        "math:double-counting",
+        "cnm_p160"
+      ],
+      "sourceRef": "amc/2023_AMC_10A_Q06#track-contribution-multiplicities"
+    },
+    {
+      "id": "pair-opposite-faces",
+      "title": "Pair opposite faces",
+      "explanation": "Opposite faces have no vertices in common, and together they contain all eight vertices. Pairing them lets us use the given sum of \\(21\\) directly.\n\nFor any face, name its vertex labels \\(a,b,c,d\\) in order around its boundary. Its value is\n\\[\n(a+b)+(b+c)+(c+d)+(d+a)\n=2(a+b+c+d),\n\\]\nbecause each vertex belongs to two boundary edges.\n\nFor a pair of opposite faces, the sums of their vertex labels add to \\(21\\). Thus their face values add to \\(2\\cdot21=42\\).\n\nThe six faces form three opposite pairs, with every face in exactly one pair. Hence the cube's value is\n\\[\n3\\cdot42=\\boxed{126},\n\\]\nchoice D.",
+      "directNodeIds": [
+        "math:double-counting",
+        "cnm_p160"
+      ],
+      "sourceRef": "amc/2023_AMC_10A_Q06#pair-opposite-faces"
+    }
+  ],
+  "sourceRef": "amc/2023_AMC_10A_Q06"
 }

@@ -1,62 +1,72 @@
 {
-  "Year": 2025,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Number Theory",
-  "Number": 18,
-  "Question": "What is the ones digit of the sum \\(\\lfloor\\sqrt{1}\\rfloor + \\lfloor\\sqrt{2}\\rfloor + \\lfloor\\sqrt{3}\\rfloor\\) \\(+ \\cdots + \\lfloor\\sqrt{2024}\\rfloor\\) \\(+ \\lfloor\\sqrt{2025}\\rfloor?\\) (Recall that \\(\\lfloor x \\rfloor\\) denotes the greatest integer less than or equal to \\(x.\\))",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(1\\)",
-    "B": "\\(2\\)",
-    "C": "\\(3\\)",
-    "D": "\\(5\\)",
-    "E": "\\(8\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "reviewed-source-concepts",
-    "Concepts": "floor and ceiling functions; sum of first n squares",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2025B/solutions",
-    "SourceSHA256": "cf9d9f05708ee08cd76252c09e1b652d2dc4bf0d5e2701f607a7f623089b5acb",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2025_AMC_10B_Q18",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "What is the ones digit of the sum \\(\\lfloor\\sqrt{1}\\rfloor + \\lfloor\\sqrt{2}\\rfloor + \\lfloor\\sqrt{3}\\rfloor\\) \\(+ \\cdots + \\lfloor\\sqrt{2024}\\rfloor\\) \\(+ \\lfloor\\sqrt{2025}\\rfloor?\\) (Recall that \\(\\lfloor x \\rfloor\\) denotes the greatest integer less than or equal to \\(x.\\))",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(1\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(2\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(3\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(5\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(8\\)"
+      }
     ]
   },
-  "ID": "2025_AMC_10B_Q18",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:number-theory"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Number Theory",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:number-theory"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:floor-ceiling",
+    "math:modular-congruence"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "edd64348e49f5af0d05ac1dde0ed3ac7c120f82d3c24e161528dc73b7b18d4c1",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:floor-ceiling",
-      "math:modular-congruence"
-    ],
-    "supportIds": [],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "equal-floor-blocks",
+      "title": "Group equal floor values",
+      "explanation": "The floor stays constant between consecutive perfect squares, so we can collect many equal terms at once.\n\nFor a positive integer \\(m\\),\n\\[\n\\lfloor\\sqrt{t}\\rfloor=m\n\\quad\\text{when}\\quad\nm^2\\le t\\le(m+1)^2-1.\n\\]\nThere are \\((m+1)^2-m^2=2m+1\\) integers in this interval, contributing a total of \\(m(2m+1)\\).\n\nSince \\(2025=45^2\\), the complete intervals correspond to \\(m=1,\\ldots,44\\). The final term contributes \\(45\\). Thus, writing \\(S\\) for the requested sum,\n\\[\nS=45+\\sum_{m=1}^{44}m(2m+1).\n\\]\n\nWe only need ones digits. The ones digit of \\(m(2m+1)\\) depends only on the ones digit of \\(m\\), so its pattern repeats every ten values of \\(m\\). For \\(m=1,2,\\ldots,10\\), these digits are\n\\[\n3,0,1,6,5,8,5,6,1,0.\n\\]\nTheir sum is \\(35\\). The four groups \\(1\\) through \\(10\\), \\(11\\) through \\(20\\), \\(21\\) through \\(30\\), and \\(31\\) through \\(40\\) therefore contribute a ones digit equal to that of \\(4\\cdot35=140\\), namely \\(0\\).\n\nFor \\(m=41,42,43,44\\), the ones digits are \\(3,0,1,6\\), whose sum is \\(10\\). These also contribute a ones digit of \\(0\\). Adding the final \\(45\\) gives ones digit \\(\\boxed{5}\\), choice \\(\\mathrm{D}\\).",
+      "directNodeIds": [
+        "math:floor-ceiling",
+        "math:modular-congruence"
+      ],
+      "sourceRef": "amc/2025_AMC_10B_Q18#equal-floor-blocks"
+    },
+    {
+      "id": "count-square-thresholds",
+      "title": "Count one square at a time",
+      "explanation": "Each floor counts the positive perfect squares that do not exceed its input. This lets us count the sum one square at a time.\n\nFor example, a term equal to \\(3\\) contributes one unit for each of the squares \\(1,4,9\\). More generally, \\(\\lfloor\\sqrt{t}\\rfloor\\) contributes one unit for each positive integer \\(j\\) satisfying \\(j^2\\le t\\).\n\nFix \\(j\\), where \\(1\\le j\\le45\\). The unit associated with \\(j^2\\) occurs in the terms with inputs\n\\[\nj^2,j^2+1,\\ldots,2025,\n\\]\nso it occurs \\(2026-j^2\\) times. Counting every such contribution gives\n\\[\nS=\\sum_{j=1}^{45}(2026-j^2)\n=45\\cdot2026-\\sum_{j=1}^{45}j^2.\n\\]\nEach unit is counted once, identified by its input \\(t\\) and its square \\(j^2\\).\n\nThe ones digits of squares repeat every ten integers. For \\(j=1,2,\\ldots,10\\), they are\n\\[\n1,4,9,6,5,6,9,4,1,0,\n\\]\nwhich sum to \\(45\\). Therefore the squares from \\(1^2\\) through \\(40^2\\) contribute a ones digit equal to that of \\(4\\cdot45=180\\), namely \\(0\\).\n\nThe remaining squares, \\(41^2\\) through \\(45^2\\), have ones digits \\(1,4,9,6,5\\), summing to \\(25\\). Thus the square sum has ones digit \\(5\\). Since \\(45\\cdot2026\\) has ones digit \\(0\\), their difference has ones digit \\(\\boxed{5}\\), choice \\(\\mathrm{D}\\).",
+      "directNodeIds": [
+        "math:floor-ceiling",
+        "math:double-counting",
+        "math:modular-congruence"
+      ],
+      "sourceRef": "amc/2025_AMC_10B_Q18#count-square-thresholds"
+    }
+  ],
+  "sourceRef": "amc/2025_AMC_10B_Q18"
 }

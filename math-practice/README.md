@@ -1,4 +1,4 @@
-# Math Practice UI 2.1.3
+# Math Practice UI 2.1.4
 
 Browse questions, record or type your thinking, and ask for feedback or a hint.
 
@@ -34,6 +34,10 @@ locally; reasoning and unfamiliar symbolic or open answers are not automatically
 judged. Add some thinking to open the answer and available solution. Drafts and your notebook
 stay in the browser. Opening `math-practice/index.html` directly also supports
 practice without model services; microphone input needs the local server.
+
+In **Explore solution**, each worked method lists its author or source. Links under
+**References consulted** let you compare the method with the explanations used to
+develop or check it.
 
 ## Use your own question bank
 

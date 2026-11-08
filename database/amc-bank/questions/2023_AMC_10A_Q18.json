@@ -1,67 +1,71 @@
 {
-  "Year": 2023,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Geometry",
-  "Number": 18,
-  "Question": "A rhombic dodecahedron is a solid with \\(12\\) congruent rhombus faces. At every vertex, \\(3\\) or \\(4\\) edges meet, depending on the vertex. How many vertices have exactly \\(3\\) edges meeting?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(5\\)",
-    "B": "\\(6\\)",
-    "C": "\\(7\\)",
-    "D": "\\(8\\)",
-    "E": "\\(9\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.68",
-    "Concepts": "Euler’s Polyhedron Formula; polyhedron; graph theory; double counting",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2023A/solutions",
-    "SourceSHA256": "971ce13217f703d7fce4f9708498a2defc20377d359d8d1cc9ee28b098f4e7d6",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2023_AMC_10A_Q18",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "A rhombic dodecahedron is a solid with \\(12\\) congruent rhombus faces. At every vertex, \\(3\\) or \\(4\\) edges meet, depending on the vertex. How many vertices have exactly \\(3\\) edges meeting?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(5\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(6\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(7\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(8\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(9\\)"
+      }
     ]
   },
-  "ID": "2023_AMC_10A_Q18",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:geometry"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Geometry",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:geometry"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:euler-convex-polyhedra",
+    "math:double-counting"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "c4e204e9ac8c0d82e9a6a546e4c7edfe13752ebdf0f5dc91dc7d0628f819f532",
-    "status": "mapped",
-    "reviewStatus": "machine_adjudicated",
-    "assessedIds": [
-      "math:euler-convex-polyhedra"
-    ],
-    "supportIds": [
-      "math:double-counting",
-      "math:graph-models",
-      "cnm_090"
-    ],
-    "routes": [],
-    "flags": [
-      "Use the conventional convex rhombic-dodecahedron meaning; Euler is not asserted for an arbitrary holed cell surface."
-    ]
-  }
+  "solutions": [
+    {
+      "id": "euler-and-incidence-counts",
+      "title": "Count edges and vertices",
+      "explanation": "Each edge belongs to two faces, so counting the sides of all the rhombi will give the number of edges.\n\nLet \\(E\\), \\(V\\), and \\(F\\) denote the numbers of edges, vertices, and faces. The \\(12\\) faces contribute \\(12\\cdot4=48\\) face sides, counting each edge twice. Hence\n\\[\nE=\\frac{48}{2}=24.\n\\]\nEuler's formula for a convex polyhedron is \\(V-E+F=2\\). Applying it to this solid gives\n\\[\nV-24+12=2,\\qquad V=14.\n\\]\n\nNow count edge endpoints. Every edge has two endpoints, so altogether there are \\(2\\cdot24=48\\) endpoint occurrences. If all \\(14\\) vertices had four edges meeting, this count would be \\(14\\cdot4=56\\). Each vertex with three edges reduces that total by exactly one. Therefore there are\n\\[\n56-48=\\boxed{8}\n\\]\nvertices with three edges meeting, choice \\(\\textbf{D}\\).",
+      "directNodeIds": [
+        "math:euler-convex-polyhedra",
+        "math:double-counting"
+      ],
+      "sourceRef": "amc/2023_AMC_10A_Q18#euler-and-incidence-counts"
+    },
+    {
+      "id": "face-corners-and-divisibility",
+      "title": "Use divisibility and the choices",
+      "explanation": "Counting the corners of all \\(12\\) faces gives a divisibility condition that distinguishes the answer choices.\n\nLet \\(x\\) be the number of vertices where three edges meet and \\(y\\) the number where four edges meet. At each vertex, the number of incident faces equals the number of incident edges: the faces occur consecutively around that vertex, with an edge between each neighboring pair.\n\nThere are \\(12\\cdot4=48\\) face-corner occurrences. Counting them by vertex instead gives\n\\[\n3x+4y=48.\n\\]\nSince \\(48\\) and \\(4y\\) are divisible by \\(4\\), so is \\(3x\\). The factor \\(3\\) supplies no factor of \\(2\\), so \\(x\\) must itself be divisible by \\(4\\).\n\nAmong the listed possibilities \\(5,6,7,8,9\\), the only multiple of \\(4\\) is \\(\\boxed{8}\\). Thus the answer is choice \\(\\textbf{D}\\).",
+      "directNodeIds": [
+        "math:double-counting",
+        "math:integer-diophantine-equations"
+      ],
+      "sourceRef": "amc/2023_AMC_10A_Q18#face-corners-and-divisibility"
+    }
+  ],
+  "sourceRef": "amc/2023_AMC_10A_Q18"
 }

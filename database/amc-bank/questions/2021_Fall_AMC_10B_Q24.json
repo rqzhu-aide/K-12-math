@@ -1,78 +1,89 @@
 {
-  "Year": 2021,
-  "Level": "AMC 10",
-  "Batch": "Fall B",
-  "Area": "Counting & Probability",
-  "Number": 24,
-  "Question": "A cube is constructed from \\(4\\) white unit cubes and \\(4\\) blue unit cubes. How many different ways are there to construct the \\(2 \\times 2 \\times 2\\) cube using these smaller cubes? (Two constructions are considered the same if one can be rotated to match the other.)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\( 7 \\)",
-    "B": "\\( 8 \\)",
-    "C": "\\( 9 \\)",
-    "D": "\\( 10 \\)",
-    "E": "\\( 11 \\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.86",
-    "Concepts": "Burnside’s Lemma; cube geometry",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2021D/solutions",
-    "SourceSHA256": "e7a694808b4e341ec6838900327d24b5a32d3bb0ddfdef9e7f6594dbb64b0032",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2021_Fall_AMC_10B_Q24",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "b8200e6717b5fea4a9d75e8dd7a6f62b2d816bf3ff17651459e74baf68c9af61",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:symmetry-counting"
-    ],
-    "supportIds": [],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2021_Fall_AMC_10B_Q24",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "A cube is constructed from \\(4\\) white unit cubes and \\(4\\) blue unit cubes. How many different ways are there to construct the \\(2 \\times 2 \\times 2\\) cube using these smaller cubes? (Two constructions are considered the same if one can be rotated to match the other.)",
+    "choices": [
       {
-        "id": "fixed-coloring-average",
-        "label": "Average fixed colorings",
-        "nodeIds": [
-          "cnm_h237",
-          "math:double-counting"
-        ]
+        "id": "A",
+        "content": "\\( 7 \\)"
       },
       {
-        "id": "white-vertex-adjacency",
-        "label": "White-vertex adjacency patterns",
-        "nodeIds": [
-          "math:graph-models",
-          "cnm_245"
-        ]
+        "id": "B",
+        "content": "\\( 8 \\)"
+      },
+      {
+        "id": "C",
+        "content": "\\( 9 \\)"
+      },
+      {
+        "id": "D",
+        "content": "\\( 10 \\)"
+      },
+      {
+        "id": "E",
+        "content": "\\( 11 \\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "A"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:symmetry-counting"
+  ],
+  "solutions": [
+    {
+      "id": "classify-blue-connections",
+      "title": "Classify the blue shapes",
+      "explanation": "The four blue positions determine the entire construction. Connecting blue positions whose small cubes share a face lets us classify shapes that rotations must preserve.\n\nRepresent the eight positions by the vertices of a cube. Label the top face \\(A,B,C,D\\) in cyclic order, and label the positions directly below them \\(E,F,G,H\\), respectively. A group is connected if its blue positions can be reached from one another by following connections.\n\nFirst suppose all four blue positions form one connected group. A connected pattern without branching is a chain or a cycle. If it branches, one position must connect to the other three. Thus there are three possibilities:\n\n1. **A cycle.** Cube edges cannot form a triangle, and a four-edge cycle surrounds a face. All four blue cubes therefore fill one layer, giving one construction.\n\n2. **A position joined to three others.** The blue positions are one cube vertex and its three neighbors. Every choice of that vertex gives the same construction after rotation, so this contributes one.\n\n3. **A chain of four positions.** Rotate its middle edge into position \\(AB\\). The endpoint attached to \\(A\\) is either \\(D\\) or \\(E\\), and the endpoint attached to \\(B\\) is either \\(C\\) or \\(F\\). Choosing \\(D,C\\) or \\(E,F\\) closes a face cycle. The two chain possibilities are therefore\n\\[\n\\{A,B,D,F\\}\\qquad\\text{and}\\qquad\\{A,B,E,C\\}.\n\\]\nThese are different under rotation. Any rotation matching them would have to preserve their unique middle edge \\(AB\\). A rotation fixing both endpoints is the identity. The only rotation swapping the endpoints is the half-turn about the line through the midpoints of \\(AB\\) and \\(GH\\): any second such rotation, combined with this one, would fix both endpoints. This half-turn swaps \\(A,B\\), swaps \\(D,F\\), and swaps \\(E,C\\), so it preserves each displayed set separately. It cannot match the two sets. Hence chains contribute two constructions.\n\nNow consider disconnected blue positions. Their connected groups can have only the following sizes:\n\n- **Three and one.** A connected triple must form an L along two edges of a face. Rotate it to \\(A,B,C\\). Among the other positions, only \\(H\\) shares no face with any of these three. This gives one construction.\n- **A group of two and two remaining positions.** Rotate the connected pair to \\(A,B\\). To stay separate from this pair, the remaining blue positions cannot be \\(C,D,E,F\\), so they must be \\(G,H\\). These form another connected pair. This gives one construction and also shows that a pair with two isolated positions is impossible.\n- **Four isolated positions.** Rotate one blue position to \\(A\\). The other blue positions must lie among \\(C,F,G,H\\). If \\(G\\) were blue, it would exclude all three of \\(C,F,H\\), because each is adjacent to \\(G\\). Therefore the other blue positions are forced to be \\(C,F,H\\), giving one construction.\n\nThe cases exhaust all possible connected groups. Different connection patterns cannot match under rotation, and the two chains have already been distinguished. The total is\n\\[\n1+1+2+1+1+1=\\boxed{7},\n\\]\nwhich is choice \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "math:symmetry-counting",
+        "math:graph-models"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_10B_Q24#classify-blue-connections"
+    },
+    {
+      "id": "average-fixed-colorings",
+      "title": "Average over cube rotations",
+      "explanation": "A rotation that leaves a coloring unchanged forces positions it cycles through to have the same color. Counting these unchanged colorings gives a systematic way to account for symmetry.\n\nRepresent the eight small-cube positions by cube vertices. There are \\(24\\) cube rotations: choose which of six faces goes on top, then choose one of four orientations around the vertical axis.\n\nWe use Burnside's averaging rule: the number of constructions equals the total number of colorings left unchanged by the rotations, divided by \\(24\\). Here is why. Count pairs consisting of a coloring and a rotation that leaves it unchanged. If one construction has \\(m\\) distinct oriented colorings, each is fixed by the same number \\(s\\) of rotations. The \\(24\\) rotations produce those \\(m\\) orientations in equally sized groups of \\(s\\), so \\(ms=24\\). Consequently each construction contributes exactly \\(24\\) pairs.\n\nA cycle of positions means positions carried successively into one another by a rotation. All positions in a cycle must have the same color in an unchanged coloring. Exactly four positions must be blue.\n\n| Rotation | Number | Cycles of positions | Unchanged colorings per rotation |\n|---|---:|---|---:|\n| Identity | 1 | Eight single positions | \\(\\binom84=70\\) |\n| \\(90^\\circ\\) or \\(270^\\circ\\) about opposite face centers | 6 | Two cycles of four | \\(2\\) |\n| \\(180^\\circ\\) about opposite face centers | 3 | Four pairs | \\(\\binom42=6\\) |\n| \\(120^\\circ\\) or \\(240^\\circ\\) about opposite vertices | 8 | Two fixed vertices and two cycles of three | \\(2\\cdot2=4\\) |\n| \\(180^\\circ\\) about opposite edge midpoints | 6 | Four pairs | \\(\\binom42=6\\) |\n\nHere \\(\\binom nk\\) counts choices of \\(k\\) objects from \\(n\\). For a quarter-turn, choose which four-position cycle is blue. For either kind of half-turn, choose two of the four pairs to be blue. For a vertex-axis rotation, choose one three-position cycle and one fixed vertex to be blue.\n\nThe rotation counts come from three pairs of opposite faces, four pairs of opposite vertices, and six pairs of opposite edges. Together with the identity, the table accounts for all \\(24\\) rotations.\n\nTherefore the number of constructions is\n\\[\n\\frac{70+6\\cdot2+3\\cdot6+8\\cdot4+6\\cdot6}{24}\n=\\frac{168}{24}\n=\\boxed{7},\n\\]\nwhich is choice \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "math:symmetry-counting",
+        "math:double-counting",
+        "cnm_h237"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_10B_Q24#average-fixed-colorings"
+    },
+    {
+      "id": "fixed-coloring-average",
+      "title": "Average fixed colorings",
+      "directNodeIds": [
+        "cnm_h237",
+        "math:double-counting"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_10B_Q24#fixed-coloring-average"
+    },
+    {
+      "id": "white-vertex-adjacency",
+      "title": "White-vertex adjacency patterns",
+      "directNodeIds": [
+        "math:graph-models",
+        "cnm_245"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_10B_Q24#white-vertex-adjacency"
+    }
+  ],
+  "sourceRef": "amc/2021_Fall_AMC_10B_Q24"
 }

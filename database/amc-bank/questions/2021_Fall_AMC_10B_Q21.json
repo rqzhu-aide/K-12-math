@@ -1,63 +1,61 @@
 {
-  "Year": 2021,
-  "Level": "AMC 10",
-  "Batch": "Fall B",
-  "Area": "Counting & Probability",
-  "Number": 21,
-  "Question": "Regular polygons with \\(5,\\) \\(6,\\) \\(7,\\) and \\(8\\) sides are inscribed in the same circle. No two of the polygons share a vertex, and no three of their sides intersect at a common point. At how many points inside the circle do two of their sides intersect?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\( 52 \\)",
-    "B": "\\( 56 \\)",
-    "C": "\\( 60 \\)",
-    "D": "\\( 64 \\)",
-    "E": "\\( 68 \\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.54",
-    "Concepts": "counting intersections; regular polygon; counting pairs",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2021D/solutions",
-    "SourceSHA256": "e7a694808b4e341ec6838900327d24b5a32d3bb0ddfdef9e7f6594dbb64b0032",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2021_Fall_AMC_10B_Q21",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Regular polygons with \\(5,\\) \\(6,\\) \\(7,\\) and \\(8\\) sides are inscribed in the same circle. No two of the polygons share a vertex, and no three of their sides intersect at a common point. At how many points inside the circle do two of their sides intersect?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\( 52 \\)"
+      },
+      {
+        "id": "B",
+        "content": "\\( 56 \\)"
+      },
+      {
+        "id": "C",
+        "content": "\\( 60 \\)"
+      },
+      {
+        "id": "D",
+        "content": "\\( 64 \\)"
+      },
+      {
+        "id": "E",
+        "content": "\\( 68 \\)"
+      }
     ]
   },
-  "ID": "2021_Fall_AMC_10B_Q21",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "E"
+    ]
+  },
+  "classification": {
+    "area": "Geometry",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:geometry"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_266",
+    "cnm_h232"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "22ee04ccf54f8836df55040c32cd236f734d3d85250e7436b0db490c39edba2f",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_h232"
-    ],
-    "supportIds": [
-      "cnm_266"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "count-polygon-pairs",
+      "title": "Count crossings for each pair",
+      "explanation": "Count intersections between two polygons first. Their regular spacing will show that the polygon with fewer sides determines the number of crossings.\n\nConsider an \\(m\\)-gon and an \\(n\\)-gon, where \\(m<n\\), and fix a side \\(AB\\) of the \\(m\\)-gon. The short arc from \\(A\\) to \\(B\\) has central angle \\(\\frac{360^\\circ}{m}\\). Consecutive vertices of the \\(n\\)-gon are separated by only \\(\\frac{360^\\circ}{n}\\), so at least one of its vertices lies strictly inside this arc. The other arc is even longer, so it also contains vertices of the \\(n\\)-gon.\n\nThe vertices on the short arc form one consecutive group in the circular order. Exactly two sides of the \\(n\\)-gon connect this group to vertices on the other arc: one enters the group and one leaves it.\n\nThese two sides cross \\(AB\\). Indeed, the two arcs lie on opposite sides of the line through \\(AB\\), so a segment joining them crosses that line inside the circle, hence on \\(AB\\). Every other side has both endpoints on the same side of the line and cannot cross \\(AB\\). Thus each side of the \\(m\\)-gon has exactly two crossings with the \\(n\\)-gon, giving \\(2m\\) crossings for this pair.\n\nApply this to all six pairs:\n\n| Numbers of sides | Intersections |\n|---|---:|\n| \\(5,6\\) | \\(10\\) |\n| \\(5,7\\) | \\(10\\) |\n| \\(5,8\\) | \\(10\\) |\n| \\(6,7\\) | \\(12\\) |\n| \\(6,8\\) | \\(12\\) |\n| \\(7,8\\) | \\(14\\) |\n\nSides of a single polygon do not intersect inside the circle. Also, the condition excluding three sides through one point ensures that no intersection is counted for more than one pair. Therefore the total is\n\\[\n10+10+10+12+12+14=\\boxed{68},\n\\]\nchoice \\(\\mathrm{E}\\).",
+      "directNodeIds": [
+        "cnm_266",
+        "cnm_h232"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_10B_Q21#count-polygon-pairs"
+    }
+  ],
+  "sourceRef": "amc/2021_Fall_AMC_10B_Q21"
 }

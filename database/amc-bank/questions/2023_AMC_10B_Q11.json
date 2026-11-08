@@ -1,80 +1,90 @@
 {
-  "Year": 2023,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 11,
-  "Question": "Suzanne went to the bank and withdrew \\(\\$800.\\) The teller gave her this amount using \\(\\$20\\) bills, \\(\\$50\\) bills, and \\(\\$100\\) bills, with at least one of each denomination. How many different collections of bills could Suzanne have received?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(45\\)",
-    "B": "\\(21\\)",
-    "C": "\\(36\\)",
-    "D": "\\(28\\)",
-    "E": "\\(32\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.90",
-    "Concepts": "Diophantine Equation; parity; basic counting",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2023B/solutions",
-    "SourceSHA256": "ac2db544428494b9df231f17a65938616be974766d9bcbd0611bd41f2cd3599f",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2023_AMC_10B_Q11",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "f85cf429d2bba26edaf351dd6dbee732cba6d8463bf31b1dc8a094bd70088c32",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:integer-diophantine-equations"
-    ],
-    "supportIds": [
-      "cnm_027",
-      "math:modular-congruence"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2023_AMC_10B_Q11",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Suzanne went to the bank and withdrew \\(\\$800.\\) The teller gave her this amount using \\(\\$20\\) bills, \\(\\$50\\) bills, and \\(\\$100\\) bills, with at least one of each denomination. How many different collections of bills could Suzanne have received?",
+    "choices": [
       {
-        "id": "enumerate-bill-counts",
-        "label": "Enumerate positive bill counts",
-        "nodeIds": [
-          "cnm_h230"
-        ]
+        "id": "A",
+        "content": "\\(45\\)"
       },
       {
-        "id": "positive-compositions",
-        "label": "Count positive compositions",
-        "nodeIds": [
-          "math:stars-and-bars",
-          "cnm_h237"
-        ]
+        "id": "B",
+        "content": "\\(21\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(36\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(28\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(32\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:integer-diophantine-equations"
+  ],
+  "solutions": [
+    {
+      "id": "parity-and-case-counting",
+      "title": "Use parity, then count cases",
+      "explanation": "The \\(\\$20\\) and \\(\\$100\\) bills each contribute an even number of tens of dollars, which restricts the number of \\(\\$50\\) bills.\n\nLet \\(a,b,c\\) be the positive integer counts of \\(\\$20\\), \\(\\$50\\), and \\(\\$100\\) bills, respectively. Dividing the total-value equation by \\(10\\) gives\n\\[\n2a+5b+10c=80.\n\\]\nSince all terms except possibly \\(5b\\) are even, \\(b\\) must be even. Write \\(b=2t\\), where \\(t\\ge1\\) is an integer. Then\n\\[\na=40-5t-5c=5(8-t-c).\n\\]\nFor this to be positive, we need \\(t+c\\le7\\).\n\nFor \\(c=1,2,\\ldots,6\\), the possible values of \\(t\\) run from \\(1\\) through \\(7-c\\). These cases therefore contain \\(6,5,4,3,2,1\\) possibilities, respectively. Each choice of \\(t,c\\) determines exactly one positive \\(a\\) and one \\(b=2t\\), so every eligible collection is counted once.\n\nThe total is\n\\[\n6+5+4+3+2+1=\\boxed{21},\n\\]\nchoice B.",
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "math:modular-congruence",
+        "cnm_h230"
+      ],
+      "sourceRef": "amc/2023_AMC_10B_Q11#parity-and-case-counting"
+    },
+    {
+      "id": "hundred-dollar-bundles",
+      "title": "Bundle bills into hundreds",
+      "explanation": "Grouping each denomination into amounts of \\(\\$100\\) would turn the total into eight equal units. First we show that every valid collection permits this grouping.\n\nLet \\(a,b,c\\ge1\\) count the \\(\\$20\\), \\(\\$50\\), and \\(\\$100\\) bills. Then\n\\[\n20a+50b+100c=800.\n\\]\nBecause \\(800\\), \\(50b\\), and \\(100c\\) are multiples of \\(50\\), so is \\(20a\\). It is also a multiple of \\(20\\). The least common multiple of \\(20\\) and \\(50\\) is \\(100\\), so \\(20a=100d\\) for a positive integer \\(d\\), meaning \\(a=5d\\).\n\nNow \\(50b=800-100d-100c\\) is a multiple of \\(100\\), so \\(b=2e\\) for a positive integer \\(e\\). Dividing the total by \\(100\\) gives\n\\[\nd+e+c=8,\\qquad d,e,c\\ge1.\n\\]\nEach such triple corresponds to exactly \\(5d\\) twenty-dollar bills, \\(2e\\) fifty-dollar bills, and \\(c\\) hundred-dollar bills.\n\nTo count these triples, place eight identical marks in a row. Choose two of the seven gaps between marks for dividers. The three positive group sizes, in order, specify \\(d,e,c\\), and every positive triple arises exactly once.\n\nThere are\n\\[\n\\binom{7}{2}=\\frac{7\\cdot6}{2}=\\boxed{21}\n\\]\nchoices of the two gaps, so the answer is choice B.",
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "cnm_p159",
+        "math:stars-and-bars",
+        "cnm_h237"
+      ],
+      "sourceRef": "amc/2023_AMC_10B_Q11#hundred-dollar-bundles"
+    },
+    {
+      "id": "enumerate-bill-counts",
+      "title": "Enumerate positive bill counts",
+      "directNodeIds": [
+        "cnm_h230"
+      ],
+      "sourceRef": "amc/2023_AMC_10B_Q11#enumerate-bill-counts"
+    },
+    {
+      "id": "positive-compositions",
+      "title": "Count positive compositions",
+      "directNodeIds": [
+        "math:stars-and-bars",
+        "cnm_h237"
+      ],
+      "sourceRef": "amc/2023_AMC_10B_Q11#positive-compositions"
+    }
+  ],
+  "sourceRef": "amc/2023_AMC_10B_Q11"
 }

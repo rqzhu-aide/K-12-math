@@ -1,63 +1,71 @@
 {
-  "Year": 2022,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Algebra",
-  "Number": 21,
-  "Question": "Let \\(P(x)\\) be a polynomial with rational coefficients such that when \\(P(x)\\) is divided by the polynomial \\(x^2 + x + 1,\\) the remainder is \\(x+2,\\) and when \\(P(x)\\) is divided by the polynomial \\(x^2+1,\\) the remainder is \\(2x+1.\\) There is a unique polynomial of least degree with these two properties. What is the sum of the squares of the coefficients of that polynomial?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\( \\ 10 \\)",
-    "B": "\\( \\ 13 \\)",
-    "C": "\\( \\ 19 \\)",
-    "D": "\\( \\ 20 \\)",
-    "E": "\\( \\ 23 \\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.97",
-    "Concepts": "polynomial; system of equations",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2022B/solutions",
-    "SourceSHA256": "638416003009bd307322182a0c63865778c5d089c42ac7aa51f671d1924f3a8b",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2022_AMC_10B_Q21",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Let \\(P(x)\\) be a polynomial with rational coefficients such that when \\(P(x)\\) is divided by the polynomial \\(x^2 + x + 1,\\) the remainder is \\(x+2,\\) and when \\(P(x)\\) is divided by the polynomial \\(x^2+1,\\) the remainder is \\(2x+1.\\) There is a unique polynomial of least degree with these two properties. What is the sum of the squares of the coefficients of that polynomial?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\( \\ 10 \\)"
+      },
+      {
+        "id": "B",
+        "content": "\\( \\ 13 \\)"
+      },
+      {
+        "id": "C",
+        "content": "\\( \\ 19 \\)"
+      },
+      {
+        "id": "D",
+        "content": "\\( \\ 20 \\)"
+      },
+      {
+        "id": "E",
+        "content": "\\( \\ 23 \\)"
+      }
     ]
   },
-  "ID": "2022_AMC_10B_Q21",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:algebra"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "E"
+    ]
+  },
+  "classification": {
+    "area": "Algebra",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:algebra"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:polynomial-remainder-factor"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "c9d6717442740d43d73a90068197b0f47f4f5930a70f865e88377986ae532f78",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:polynomial-remainder-factor"
-    ],
-    "supportIds": [
-      "cnm_146"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "find-the-smallest-quotient",
+      "title": "Find the smallest quotient",
+      "explanation": "The first remainder condition already describes most of P. Writing it as a divisor times a quotient lets us search for the lowest possible degree.\n\nThere is a polynomial Q with rational coefficients such that\n\\[\nP(x)=(x^2+x+1)Q(x)+x+2.\n\\]\nIf P had degree at most 2, Q would be a constant c, including the possibility \\(c=0\\). Then\n\\[\nP(x)=c(x^2+1)+(c+1)x+2,\n\\]\nso its remainder upon division by \\(x^2+1\\) would have constant term 2. This cannot equal \\(2x+1\\). Therefore P must have degree at least 3.\n\nTo seek a cubic, set \\(Q(x)=ax+b\\). When computing a remainder modulo \\(x^2+1\\), we may replace \\(x^2\\) by \\(-1\\), because their difference is the divisor. In particular, \\(x^2+x+1\\) has the same remainder as x. Thus P has the same remainder as\n\\[\nx(ax+b)+x+2\n=ax^2+(b+1)x+2.\n\\]\nReplacing \\(x^2\\) by \\(-1\\) gives the remainder\n\\[\n(b+1)x+2-a.\n\\]\nMatching this with \\(2x+1\\) forces \\(b+1=2\\) and \\(2-a=1\\), so \\(a=b=1\\).\n\nThese values uniquely determine a cubic satisfying both conditions:\n\\[\n\\begin{aligned}\nP(x)&=(x^2+x+1)(x+1)+x+2\\\\\n&=x^3+2x^2+3x+3.\n\\end{aligned}\n\\]\nSince lower degrees are impossible, this is the unique polynomial of least degree. The requested sum is\n\\[\n1^2+2^2+3^2+3^2=\\boxed{23}.\n\\]\nThe answer is choice E.",
+      "directNodeIds": [
+        "math:polynomial-remainder-factor",
+        "cnm_146"
+      ],
+      "sourceRef": "amc/2022_AMC_10B_Q21#find-the-smallest-quotient"
+    },
+    {
+      "id": "reduce-to-a-general-cubic",
+      "title": "Reduce to a cubic",
+      "explanation": "Subtracting a multiple of both divisors preserves both remainders. This gives a degree bound before we solve for any coefficients.\n\nLet\n\\[\nH(x)=(x^2+x+1)(x^2+1).\n\\]\nDivide any polynomial satisfying the conditions by H, obtaining\n\\[\nP(x)=H(x)Q(x)+R(x),\n\\qquad \\deg R\\leq 3.\n\\]\nBecause H is divisible by each given divisor, R has exactly the same two remainders as P. Thus the polynomial of least degree has degree at most 3.\n\nWrite a general polynomial of degree at most 3 as\n\\[\nR(x)=ax^3+bx^2+cx+d.\n\\]\nFor division by \\(x^2+x+1\\), the identities\n\\[\nx^2=(x^2+x+1)-x-1,\n\\qquad\nx^3=(x-1)(x^2+x+1)+1\n\\]\nshow that we may replace \\(x^2\\) by \\(-x-1\\) and \\(x^3\\) by 1 when finding the remainder. Therefore this remainder is\n\\[\n(c-b)x+(a-b+d).\n\\]\nFor division by \\(x^2+1\\), we similarly replace \\(x^2\\) by \\(-1\\) and \\(x^3\\) by \\(-x\\). The remainder is\n\\[\n(c-a)x+(d-b).\n\\]\nMatching the required remainders gives\n\\[\n\\begin{aligned}\nc-b&=1, & a-b+d&=2,\\\\\nc-a&=2, & d-b&=1.\n\\end{aligned}\n\\]\nSubtracting the last equation from the second yields \\(a=1\\). Then the third gives \\(c=3\\), the first gives \\(b=2\\), and the last gives \\(d=3\\).\n\nThese uniquely determined coefficients produce both required remainders. Since \\(a=1\\), no polynomial of degree below 3 can satisfy the conditions. Hence the least-degree polynomial is\n\\[\nx^3+2x^2+3x+3,\n\\]\nand the sum of its squared coefficients is\n\\[\n1^2+2^2+3^2+3^2=\\boxed{23}.\n\\]\nThe answer is choice E.",
+      "directNodeIds": [
+        "math:polynomial-remainder-factor",
+        "cnm_146",
+        "cnm_090"
+      ],
+      "sourceRef": "amc/2022_AMC_10B_Q21#reduce-to-a-general-cubic"
+    }
+  ],
+  "sourceRef": "amc/2022_AMC_10B_Q21"
 }

@@ -1,69 +1,71 @@
 {
-  "Year": 2020,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 16,
-  "Question": "Bela and Jenn play the following game on the closed interval \\([0, n]\\) of the real number line, where \\(n\\) is a fixed integer greater than \\(4.\\) They take turns playing, with Bela going first. At his first turn, Bela chooses any real number in the interval \\([0, n].\\) Thereafter, the player whose turn it is chooses a real number that is more than one unit away from all numbers previously chosen by either player. A player unable to choose such a number loses. Using optimal strategy, which player will win the game?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "Bela will always win.",
-    "B": "Jenn will always win.",
-    "C": "Bela will win if and only if \\(n\\) is odd.",
-    "D": "Jenn will win if and only if \\(n\\) is odd.",
-    "E": "Jenn will win if and only if \\(n\\gt8.\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.53",
-    "Concepts": "combinatorial game; symmetry",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2020B/solutions",
-    "SourceSHA256": "9648a27ea075ba7f4dafa98217a82abe8746534a8466216f87e10845e8f85c50",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2020_AMC_10B_Q16",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Bela and Jenn play the following game on the closed interval \\([0, n]\\) of the real number line, where \\(n\\) is a fixed integer greater than \\(4.\\) They take turns playing, with Bela going first. At his first turn, Bela chooses any real number in the interval \\([0, n].\\) Thereafter, the player whose turn it is chooses a real number that is more than one unit away from all numbers previously chosen by either player. A player unable to choose such a number loses. Using optimal strategy, which player will win the game?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "Bela will always win."
+      },
+      {
+        "id": "B",
+        "content": "Jenn will always win."
+      },
+      {
+        "id": "C",
+        "content": "Bela will win if and only if \\(n\\) is odd."
+      },
+      {
+        "id": "D",
+        "content": "Jenn will win if and only if \\(n\\) is odd."
+      },
+      {
+        "id": "E",
+        "content": "Jenn will win if and only if \\(n\\gt8.\\)"
+      }
     ]
   },
-  "ID": "2020_AMC_10B_Q16",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "A"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_248"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "a36d9a793c40e49dead16d48f8335e3ee00ba275143d2576f950e77c32c3f147",
-    "status": "mapped",
-    "reviewStatus": "machine_adjudicated",
-    "assessedIds": [],
-    "supportIds": [],
-    "routes": [
-      {
-        "id": "midpoint-reflection-and-finite-packing",
-        "label": "Use midpoint reflection and a finite separation bound",
-        "nodeIds": [
-          "cnm_248",
-          "cnm_h173",
-          "cnm_h018"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "midpoint-and-mirror-replies",
+      "title": "Answer with a mirror move",
+      "explanation": "Choosing the midpoint leaves two identical halves of the interval, suggesting that Bela can answer Jenn's moves by reflection.\n\nBela first chooses \\(m=n/2\\). Whenever Jenn chooses \\(x\\), Bela responds with \\(y=n-x\\), the number equally far from \\(m\\) on the other side. Because \\(0\\le x\\le n\\), this response also lies in \\([0,n]\\).\n\nWe must check that every response is legal. Before Jenn's first turn, the chosen set consists only of \\(m\\), so it is symmetric about \\(m\\). Suppose the chosen set is symmetric before some Jenn turn. For every previously chosen number \\(z\\), its reflection \\(n-z\\) was also previously chosen. Since Jenn's move is legal,\n\\[\n|y-z|=|(n-x)-z|=|x-(n-z)|>1.\n\\]\nThus Bela's response is far enough from every number chosen before Jenn's current move.\n\nIt must also be far enough from Jenn's new number \\(x\\). Since the midpoint was already chosen, Jenn must have \\(|x-m|>1\\). Consequently,\n\\[\n|y-x|=2|x-m|>2>1.\n\\]\nBela's response is therefore legal, and adding \\(x\\) and \\(y\\) restores symmetry before Jenn's next turn.\n\nFinally, the game must end. If \\(k\\ge2\\) chosen numbers are listed in increasing order as \\(a_1,\\ldots,a_k\\), every consecutive gap exceeds \\(1\\). Hence\n\\[\nk-1<a_k-a_1\\le n,\n\\]\nso \\(k\\le n\\), since \\(k\\) and \\(n\\) are integers. Only finitely many moves are possible.\n\nBela can respond to every legal Jenn move, so Jenn must be the first player unable to move. Thus \\(\\boxed{\\text{Bela will always win}}\\), choice \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "cnm_248",
+        "cnm_007",
+        "cnm_h018"
+      ],
+      "sourceRef": "amc/2020_AMC_10B_Q16#midpoint-and-mirror-replies"
+    },
+    {
+      "id": "midpoint-reflection-and-finite-packing",
+      "title": "Use midpoint reflection and a finite separation bound",
+      "directNodeIds": [
+        "cnm_248",
+        "cnm_h173",
+        "cnm_h018"
+      ],
+      "sourceRef": "amc/2020_AMC_10B_Q16#midpoint-reflection-and-finite-packing"
+    }
+  ],
+  "sourceRef": "amc/2020_AMC_10B_Q16"
 }

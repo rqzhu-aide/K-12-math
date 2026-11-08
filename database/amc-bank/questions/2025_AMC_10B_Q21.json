@@ -1,65 +1,73 @@
 {
-  "Year": 2025,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 21,
-  "Question": "Each of the \\(9\\) squares in a \\(3 \\times 3\\) grid is to be colored red, blue, or yellow in such a way that each red square shares an edge with at least one blue square, each blue square shares an edge with at least one yellow square, and each yellow square shares an edge with at least one red square. Colorings that can be obtained from one another by rotations and/or reflections are to be considered the same. How many different colorings are possible?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(3\\)",
-    "B": "\\(9\\)",
-    "C": "\\(12\\)",
-    "D": "\\(18\\)",
-    "E": "\\(27\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "reviewed-source-concepts",
-    "Concepts": "Burnside’s Lemma; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2025B/solutions",
-    "SourceSHA256": "cf9d9f05708ee08cd76252c09e1b652d2dc4bf0d5e2701f607a7f623089b5acb",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2025_AMC_10B_Q21",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Each of the \\(9\\) squares in a \\(3 \\times 3\\) grid is to be colored red, blue, or yellow in such a way that each red square shares an edge with at least one blue square, each blue square shares an edge with at least one yellow square, and each yellow square shares an edge with at least one red square. Colorings that can be obtained from one another by rotations and/or reflections are to be considered the same. How many different colorings are possible?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(3\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(9\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(12\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(18\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(27\\)"
+      }
     ]
   },
-  "ID": "2025_AMC_10B_Q21",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:graph-coloring",
+    "math:symmetry-counting"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "708b7c157551fa7ff62bd99e83f882693387915ecd6ae0f7f8acc4d4dec8346a",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:graph-coloring",
-      "math:symmetry-counting"
-    ],
-    "supportIds": [
-      "math:graph-models",
-      "cnm_h232"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "force-colors-and-normalize",
+      "title": "Force the colors",
+      "explanation": "A blue square next to a red center needs a yellow corner, and that corner starts a chain of forced colors. This greatly reduces the number of cases.\n\nFirst suppose the center is red. Write \\(R,B,Y\\) for red, blue, yellow. The center needs a blue neighbor, so rotate the grid to put one immediately to its right. That blue square needs a yellow corner above or below it. Reflect across the horizontal middle line if necessary to put a yellow square in the top right corner.\n\nThe top right yellow square needs a red neighbor, forcing the top middle square to be red. That red square needs a blue neighbor, forcing the top left corner to be blue. This blue corner then needs the middle left square to be yellow. Thus the grid has the form\n\\[\n\\begin{array}{ccc}\nB&R&Y\\\\\nY&R&B\\\\\na&t&b\n\\end{array}.\n\\]\nOnly the bottom row remains.\n\nIf \\(t=B\\), it needs a yellow corner beside it. But neither bottom corner could then be yellow: neither would have a red neighbor. This case is impossible.\n\nIf \\(t=Y\\), the bottom left corner \\(a\\) has two yellow neighbors. Its only possible color is blue. The bottom right corner \\(b\\), with blue and yellow neighbors, can be red or blue. Both choices give valid grids, so this case gives two possibilities.\n\nIf \\(t=R\\), the bottom right corner \\(b\\), with red and blue neighbors, can be red or yellow, but cannot be blue because it would have no yellow neighbor. The bottom middle red square therefore needs \\(a=B\\). Both choices for \\(b\\) work, giving two more possibilities.\n\nWe have four normalized grids. In every one, the right middle square is the only blue square next to the center. Consequently, a symmetry taking one normalized grid to another must keep that square on the right. The only possibilities are the identity and reflection across the horizontal middle line.\n\nThree of the four grids have a bottom right corner that is not yellow. Reflecting any of these would remove the yellow square from the top right, so it cannot produce another normalized grid. The remaining grid has bottom row \\(BRY\\), identical to its top row, so reflection fixes it. Thus the four possibilities are all distinct under the allowed symmetries.\n\nCyclically changing the color names \\(R\\to B\\to Y\\to R\\) preserves all the rules. Each of the three center colors therefore gives four classes. Spatial symmetries preserve the center color, so these classes remain distinct. The answer is\n\\[\n3\\cdot4=\\boxed{12},\n\\]\nchoice \\(\\text{C}\\).",
+      "directNodeIds": [
+        "math:graph-coloring",
+        "math:symmetry-counting",
+        "cnm_h232"
+      ],
+      "sourceRef": "amc/2025_AMC_10B_Q21#force-colors-and-normalize"
+    },
+    {
+      "id": "count-oriented-grids-by-symmetry-size",
+      "title": "Count all orientations",
+      "explanation": "Counting grids with fixed top, bottom, left, and right is manageable, provided we separately account for grids that have reflection symmetry.\n\nBegin with a red center. Call the four squares sharing an edge with the center the side squares. At least one side square is blue.\n\nChoose any blue side square. It needs a yellow corner beside it. That yellow corner needs its other neighboring side square to be red. This red side square has a red center and a yellow corner beside it, so its other corner must be blue. That blue corner forces the next side square, opposite our original blue side square, to be yellow.\n\nWe have proved that every blue side square has a yellow side square opposite it. We have also forced a red side square next to our chosen blue one. The fourth side square cannot be blue, since its opposite side square is red. Hence there is exactly one blue side square.\n\nThere are four choices for its position. Put it on the right temporarily. The left side square is yellow, and the top and bottom side squares are either both red, or one red and one yellow. Count the corners in these cases.\n\nIf the top and bottom side squares are both red, the two left corners must be blue so that those red squares have blue neighbors. Each right corner can be red or yellow. The blue right side square needs at least one of them to be yellow, leaving the three ordered pairs\n\\[\n(Y,R),\\quad(R,Y),\\quad(Y,Y).\n\\]\nThus this case gives three fillings.\n\nIf the top side square is red and the bottom side square is yellow, the top left corner must be blue to serve the top red square. The bottom left corner, between two yellow side squares, must also be blue. The bottom right corner cannot be yellow because it would have no red neighbor, so the top right corner must be yellow to serve the blue right side square. The bottom right corner can then be red or blue, giving two fillings. Interchanging top and bottom gives two more.\n\nAll these fillings satisfy the rules. Therefore there are\n\\[\n4(3+2+2)=28\n\\]\ncolorings with a red center and distinguished positions. Cyclic relabeling gives the same count for each center color, for a total of \\(84\\).\n\nNow account for symmetry. The unique side square of the color required by the center prevents every nonidentity rotation from fixing a coloring. It also means the only possible reflection axis passes through that side square and the center.\n\nWith a red center and the blue side square on the right, this is the horizontal axis. Reflection symmetry requires the top and bottom side squares to agree, so both must be red. Among the three corner fillings in that case, only the one with both right corners yellow is symmetric. Thus there are four symmetric colorings for each center color, or \\(12\\) altogether.\n\nEach symmetric coloring belongs to a class of four distinct orientations, while each nonsymmetric coloring belongs to a class of eight. The number of classes is therefore\n\\[\n\\frac{12}{4}+\\frac{84-12}{8}=3+9=\\boxed{12},\n\\]\nchoice \\(\\text{C}\\).",
+      "directNodeIds": [
+        "math:graph-coloring",
+        "math:symmetry-counting",
+        "cnm_h232"
+      ],
+      "sourceRef": "amc/2025_AMC_10B_Q21#count-oriented-grids-by-symmetry-size"
+    }
+  ],
+  "sourceRef": "amc/2025_AMC_10B_Q21"
 }

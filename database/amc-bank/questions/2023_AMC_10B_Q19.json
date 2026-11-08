@@ -1,73 +1,83 @@
 {
-  "Year": 2023,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 19,
-  "Question": "Sonya the frog chooses a point uniformly at random lying within the square \\([0, 6] \\times [0, 6]\\) in the coordinate plane and hops to that point. She then chooses a distance uniformly at random from \\([0, 1]\\) and a direction uniformly at random from \\(\\{\\text{north}, \\text{south}, \\text{east}, \\text{west}\\}.\\) All her choices are independent. She now hops the distance in the chosen direction. What is the probability that she lands outside the square?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{1}{6}\\)",
-    "B": "\\(\\dfrac{1}{12}\\)",
-    "C": "\\(\\dfrac{1}{4}\\)",
-    "D": "\\(\\dfrac{1}{10}\\)",
-    "E": "\\(\\dfrac{1}{9}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.72",
-    "Concepts": "geometric probability; symmetry",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2023B/solutions",
-    "SourceSHA256": "ac2db544428494b9df231f17a65938616be974766d9bcbd0611bd41f2cd3599f",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2023_AMC_10B_Q19",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Sonya the frog chooses a point uniformly at random lying within the square \\([0, 6] \\times [0, 6]\\) in the coordinate plane and hops to that point. She then chooses a distance uniformly at random from \\([0, 1]\\) and a direction uniformly at random from \\(\\{\\text{north}, \\text{south}, \\text{east}, \\text{west}\\}.\\) All her choices are independent. She now hops the distance in the chosen direction. What is the probability that she lands outside the square?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(\\dfrac{1}{6}\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(\\dfrac{1}{12}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac{1}{4}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac{1}{10}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac{1}{9}\\)"
+      }
     ]
   },
-  "ID": "2023_AMC_10B_Q19",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:geometric-probability"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "6df1e563f531011f05f79fb4c9a4f38f575e213ea0655aa12fe37755426382fb",
-    "status": "mapped",
-    "reviewStatus": "machine_adjudicated",
-    "assessedIds": [
-      "math:geometric-probability"
-    ],
-    "supportIds": [
-      "cnm_h246"
-    ],
-    "routes": [
-      {
-        "id": "condition-on-direction-and-use-area",
-        "label": "Condition on a cardinal direction and use a triangular event region",
-        "nodeIds": [
-          "cnm_084",
-          "cnm_p148",
-          "cnm_p089"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "direction-and-triangular-region",
+      "title": "Use a triangular probability region",
+      "explanation": "The square treats all four directions identically, so the escape probability for an eastward hop equals the overall escape probability.\n\nLet \\(x\\) be Sonya's starting horizontal coordinate, and let \\(d\\) be her hop distance. Then \\(x\\) is uniform on \\([0,6]\\), and \\(d\\) is independently uniform on \\([0,1]\\). Thus the pair \\((x,d)\\) is uniform in the rectangle\n\\[\n0\\le x\\le6,\\qquad 0\\le d\\le1,\n\\]\nwhose area is \\(6\\).\n\nOn an eastward hop, her vertical coordinate stays within the square. She lands outside exactly when\n\\[\nx+d>6,\n\\quad\\text{or equivalently}\\quad d>6-x.\n\\]\nInside the rectangle of possible pairs, this is the triangular region above the line joining \\((5,1)\\) and \\((6,0)\\). Its third vertex is \\((6,1)\\), so its perpendicular sides both have length \\(1\\). Its area is therefore \\(\\frac12\\). The equality case lands on the boundary, but the corresponding line has area zero and contributes no probability.\n\nProbability is favorable area divided by total area, giving\n\\[\n\\frac{1/2}{6}=\\boxed{\\frac1{12}}.\n\\]\nAll four directions give this same value, so the answer is choice \\(\\mathrm{B}\\).",
+      "directNodeIds": [
+        "math:geometric-probability",
+        "cnm_h246",
+        "cnm_p148",
+        "cnm_p089"
+      ],
+      "sourceRef": "amc/2023_AMC_10B_Q19#direction-and-triangular-region"
+    },
+    {
+      "id": "partition-starting-regions",
+      "title": "Separate sides and corners",
+      "explanation": "A hop has length at most \\(1\\), so only starting points within \\(1\\) unit of an edge can lead outside. Separating side regions from corner regions accounts for how many directions can work.\n\nPartition the square into four \\(1\\)-by-\\(4\\) side rectangles, four \\(1\\)-by-\\(1\\) corner squares, and the central \\(4\\)-by-\\(4\\) square. These regions fill the square without overlapping interiors. Their boundary lines have probability zero.\n\nWe first need a distance observation. Within a side rectangle or corner square, the distance \\(t\\) to any adjacent outer edge is uniform on \\([0,1]\\). The hop distance \\(d\\) is independently uniform on the same interval. Interchanging \\(t\\) and \\(d\\) shows that \\(d>t\\) and \\(t>d\\) are equally likely. Equality has probability zero, so the chance that the hop is long enough to cross that edge is \\(\\frac12\\).\n\nThe side rectangles have total area \\(4\\cdot1\\cdot4=16\\). At a point in one of them, only the direction toward its nearby outer edge can lead outside. That direction has probability \\(\\frac14\\), so the escape probability within these rectangles is \\(\\frac14\\cdot\\frac12=\\frac18\\).\n\nThe corner squares have total area \\(4\\). Each has two possible outward directions. These direction choices are mutually exclusive, so their escape probabilities add to \\(2\\cdot\\frac14\\cdot\\frac12=\\frac14\\). Points in the central square cannot escape.\n\nWeighting by the starting-region areas gives\n\\[\n\\frac{16}{36}\\cdot\\frac18\n+\\frac4{36}\\cdot\\frac14\n=\\frac1{18}+\\frac1{36}\n=\\boxed{\\frac1{12}},\n\\]\nchoice \\(\\mathrm{B}\\).",
+      "directNodeIds": [
+        "math:geometric-probability",
+        "cnm_h246",
+        "cnm_p089"
+      ],
+      "sourceRef": "amc/2023_AMC_10B_Q19#partition-starting-regions"
+    },
+    {
+      "id": "condition-on-direction-and-use-area",
+      "title": "Condition on a cardinal direction and use a triangular event region",
+      "directNodeIds": [
+        "cnm_084",
+        "cnm_p148",
+        "cnm_p089"
+      ],
+      "sourceRef": "amc/2023_AMC_10B_Q19#condition-on-direction-and-use-area"
+    }
+  ],
+  "sourceRef": "amc/2023_AMC_10B_Q19"
 }

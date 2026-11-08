@@ -914,13 +914,15 @@ summary { cursor: pointer; }
 .q-head { margin-bottom: 18px; gap: 12px; }
 .q-id { font: 600 .875rem/1.5 var(--font); color: var(--ink-2); }
 .q-area { background: transparent; color: var(--ink-2); border: 0; padding: 0; font-size: .8125rem; text-transform: none; letter-spacing: 0; }
-.q-head-right { margin-left: auto; }
+/* Inline radical glyphs in the question can extend above their line box. */
+.q-head-right { margin-left: auto; position: relative; z-index: 1; }
 .sol-btn { font-size: .8125rem; background: transparent; border: 0; text-decoration: underline; text-underline-offset: 4px; color: var(--accent-deep); padding: 4px 0 4px 8px; }
 .sol-btn:hover { background: var(--accent-soft); color: var(--accent-deep); }
 .q-text { font-size: 1.125rem; line-height: 1.85; max-width: 67ch; padding: 0; border: 0; border-radius: 0; background: transparent; }
 .q-divider { margin: 26px 0 20px; border-color: var(--hairline); }
 .q-choices { display: grid; gap: 12px; width: 100%; }
-.q-choices.compact-choices { grid-template-columns: repeat(auto-fit, minmax(94px, 1fr)); }
+.q-choices.compact-choices { display: flex; flex-wrap: wrap; }
+.q-choices.compact-choices .q-choice { flex: 1 1 auto; width: auto; min-width: min(94px, 100%); max-width: 100%; }
 .q-choice.answer-opt { display: flex; align-items: baseline; gap: 10px; padding: 12px; width: 100%; height: auto; min-height: 52px; text-align: left; font-weight: 400; color: var(--ink); background: var(--surface); border: 1px solid var(--field-line); }
 .q-choice.answer-opt:hover { background: var(--accent-soft); border-color: var(--accent); }
 .q-choice.answer-opt.sel { background: var(--choice-selected-surface); border-color: var(--choice-selected-line); color: var(--ink); outline: 1px solid var(--choice-selected-line); outline-offset: -2px; }
@@ -1854,6 +1856,19 @@ footer .source-credits p { margin: 0; }
         section.appendChild(workedContent(displaySolution(method.explanation), q));
         var credit = methodCredit(method.provenance);
         if (credit) section.appendChild(credit);
+        var refs = method.provenance && method.provenance.references;
+        if (Array.isArray(refs)) {
+          var links = el('p', 'pool-hint method-references', 'References consulted: ');
+          refs.forEach(function (ref) {
+            var url = ref && httpURL(ref.url);
+            if (!url || typeof ref.title !== 'string' || !ref.title.trim()) return;
+            if (links.childElementCount) links.appendChild(document.createTextNode('; '));
+            var link = el('a', null, ref.title);
+            link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer';
+            links.appendChild(link);
+          });
+          if (links.childElementCount) section.appendChild(links);
+        }
         typeset(section, method.provenance && method.provenance.source === 'Original Math Practice solution');
         body.appendChild(section);
       });

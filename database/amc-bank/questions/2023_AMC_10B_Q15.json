@@ -1,77 +1,87 @@
 {
-  "Year": 2023,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Number Theory",
-  "Number": 15,
-  "Question": "What is the least positive integer \\(m\\) such that \\(m \\cdot 2! \\cdot 3! \\cdot 4! \\cdot 5! \\cdots 16!\\) is a perfect square?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(30\\)",
-    "B": "\\(30030\\)",
-    "C": "\\(70\\)",
-    "D": "\\(1430\\)",
-    "E": "\\(1001\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.82",
-    "Concepts": "perfect square; prime factorization; factorial; pairing and grouping",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2023B/solutions",
-    "SourceSHA256": "ac2db544428494b9df231f17a65938616be974766d9bcbd0611bd41f2cd3599f",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2023_AMC_10B_Q15",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:number-theory"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "663f865f49d466da5f01e5cacc251ac7e7054aec3846ec21bcb5f56925d01844",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:prime-factorization"
-    ],
-    "supportIds": [],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2023_AMC_10B_Q15",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "What is the least positive integer \\(m\\) such that \\(m \\cdot 2! \\cdot 3! \\cdot 4! \\cdot 5! \\cdots 16!\\) is a perfect square?",
+    "choices": [
       {
-        "id": "direct-prime-valuations",
-        "label": "Sum factorial prime valuations",
-        "nodeIds": [
-          "math:prime-valuations-factorials"
-        ]
+        "id": "A",
+        "content": "\\(30\\)"
       },
       {
-        "id": "regroup-repeated-factors",
-        "label": "Regroup repeated factorial factors",
-        "nodeIds": [
-          "cnm_142",
-          "cnm_143"
-        ]
+        "id": "B",
+        "content": "\\(30030\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(70\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(1430\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(1001\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "area": "Number Theory",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:number-theory"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:prime-factorization"
+  ],
+  "solutions": [
+    {
+      "id": "pair-consecutive-factorials",
+      "title": "Pair consecutive factorials",
+      "explanation": "Pairing consecutive factorials produces large square factors, leaving a much smaller product to examine.\n\nLet \\(N=2!\\cdot3!\\cdots16!\\). We may include \\(1!=1\\) without changing \\(N\\). For each positive integer \\(j\\),\n\\[\n(2j-1)!(2j)!=(2j)\\bigl((2j-1)!\\bigr)^2.\n\\]\nThus, pairing \\(1!\\) with \\(2!\\), then \\(3!\\) with \\(4!\\), and so on gives\n\\[\nN=\\bigl(1!\\cdot3!\\cdot5!\\cdots15!\\bigr)^2\n\\bigl(2\\cdot4\\cdot6\\cdots16\\bigr).\n\\]\nA square has an even exponent on every prime in its factorization. The squared factorial product already contributes only even exponents, so we need to examine the remaining factor:\n\\[\n2\\cdot4\\cdot6\\cdots16=2^8\\cdot8!.\n\\]\nSince\n\\[\n8!=2^7\\cdot3^2\\cdot5\\cdot7,\n\\]\nthis remaining factor is\n\\[\n2^{15}\\cdot3^2\\cdot5\\cdot7\n=70\\bigl(2^7\\cdot3\\bigr)^2.\n\\]\nTherefore, the primes with odd exponents in \\(N\\) are exactly \\(2,5,7\\). Any multiplier that makes \\(N\\) a square must contain each of these primes. Including each once is sufficient, so the least multiplier is\n\\[\n\\boxed{m=2\\cdot5\\cdot7=70},\n\\]\nwhich is choice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "math:prime-factorization",
+        "math:factorial-notation"
+      ],
+      "sourceRef": "amc/2023_AMC_10B_Q15#pair-consecutive-factorials"
+    },
+    {
+      "id": "count-prime-exponents",
+      "title": "Count prime factors directly",
+      "explanation": "We only need to know which prime factors occur an odd number of times, so we can count their contributions without evaluating the factorial product.\n\nLet \\(N=2!\\cdot3!\\cdots16!\\). An integer \\(k\\), where \\(2\\le k\\le16\\), occurs once in each of\n\\[\nk!,\\ (k+1)!,\\ldots,16!,\n\\]\nso it occurs \\(17-k\\) times altogether. For example, \\(8=2^3\\) appears in nine factorials and contributes \\(3\\cdot9=27\\) factors of \\(2\\).\n\nWe count the exponent \\(e_p\\) of each possible prime \\(p\\) in \\(N\\). Each sum below runs through the multiples of that prime in increasing order. A coefficient such as \\(2\\cdot13\\) accounts for the two factors of \\(2\\) in \\(4\\), which appears thirteen times.\n\\[\n\\begin{aligned}\ne_2&=15+2\\cdot13+11+3\\cdot9+7+2\\cdot5+3+4\\cdot1=103,\\\\\ne_3&=14+11+2\\cdot8+5+2=48,\\\\\ne_5&=12+7+2=21,\\\\\ne_7&=10+3=13,\\\\\ne_{11}&=6,\\\\\ne_{13}&=4.\n\\end{aligned}\n\\]\nThere are no other prime factors because all the integers inside these factorials are at most \\(16\\). Hence\n\\[\nN=2^{103}3^{48}5^{21}7^{13}11^6 13^4.\n\\]\nEvery prime exponent in a perfect square is even. Thus \\(m\\) must supply an additional factor of each of \\(2,5,7\\), and multiplying by their product makes every exponent even. Consequently, the least possible value is\n\\[\n\\boxed{m=70},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "math:prime-factorization",
+        "math:prime-valuations-factorials"
+      ],
+      "sourceRef": "amc/2023_AMC_10B_Q15#count-prime-exponents"
+    },
+    {
+      "id": "direct-prime-valuations",
+      "title": "Sum factorial prime valuations",
+      "directNodeIds": [
+        "math:prime-valuations-factorials"
+      ],
+      "sourceRef": "amc/2023_AMC_10B_Q15#direct-prime-valuations"
+    },
+    {
+      "id": "regroup-repeated-factors",
+      "title": "Regroup repeated factorial factors",
+      "directNodeIds": [
+        "cnm_142",
+        "cnm_143"
+      ],
+      "sourceRef": "amc/2023_AMC_10B_Q15#regroup-repeated-factors"
+    }
+  ],
+  "sourceRef": "amc/2023_AMC_10B_Q15"
 }

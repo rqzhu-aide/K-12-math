@@ -1,80 +1,72 @@
 {
-  "Year": 2022,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Algebra",
-  "Number": 7,
-  "Question": "For how many values of the constant \\(k\\) will the polynomial \\(x^{2}+kx+36\\) have two distinct integer roots?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\( \\ 6 \\)",
-    "B": "\\( \\ 8 \\)",
-    "C": "\\( \\ 9 \\)",
-    "D": "\\( \\ 14 \\)",
-    "E": "\\( \\ 16 \\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.71",
-    "Concepts": "Vieta’s Formulas; factor; systematic listing",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2022B/solutions",
-    "SourceSHA256": "638416003009bd307322182a0c63865778c5d089c42ac7aa51f671d1924f3a8b",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2022_AMC_10B_Q07",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:algebra"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "94c37230d4e8beb2046e81e740f1853074d85bed35efa05d08746da0f507ef36",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:integer-diophantine-equations"
-    ],
-    "supportIds": [
-      "cnm_p153"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2022_AMC_10B_Q07",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "For how many values of the constant \\(k\\) will the polynomial \\(x^{2}+kx+36\\) have two distinct integer roots?",
+    "choices": [
       {
-        "id": "integer-root-pairs",
-        "label": "Enumerate root pairs using Vieta",
-        "nodeIds": [
-          "cnm_226"
-        ]
+        "id": "A",
+        "content": "\\( \\ 6 \\)"
       },
       {
-        "id": "square-discriminant",
-        "label": "Require a positive square discriminant",
-        "nodeIds": [
-          "cnm_223",
-          "cnm_222",
-          "cnm_152"
-        ]
+        "id": "B",
+        "content": "\\( \\ 8 \\)"
+      },
+      {
+        "id": "C",
+        "content": "\\( \\ 9 \\)"
+      },
+      {
+        "id": "D",
+        "content": "\\( \\ 14 \\)"
+      },
+      {
+        "id": "E",
+        "content": "\\( \\ 16 \\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "area": "Algebra",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:algebra"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:integer-diophantine-equations"
+  ],
+  "solutions": [
+    {
+      "id": "integer-root-pairs",
+      "title": "List the possible root pairs",
+      "explanation": "The constant term \\(36\\) fixes the product of the roots, so we can find the possible roots before finding \\(k\\).\n\nIf the distinct integer roots are \\(r\\) and \\(s\\), then\n\\[\nx^2+kx+36=(x-r)(x-s)=x^2-(r+s)x+rs.\n\\]\nConsequently, \\(rs=36\\) and \\(k=-(r+s)\\). Since their product is positive, the roots have the same sign.\n\nFor positive roots, write \\(r<s\\). Then \\(r^2<36\\), so \\(r<6\\). The divisors of \\(36\\) below \\(6\\) are \\(1,2,3,4\\), giving exactly the pairs\n\\[\n(1,36),\\quad(2,18),\\quad(3,12),\\quad(4,9).\n\\]\nThe pair \\((6,6)\\) is excluded because the roots must be distinct. The four listed sums give\n\\[\nk=-37,-20,-15,-13.\n\\]\nTaking both roots negative gives the four additional values\n\\[\nk=37,20,15,13.\n\\]\nEach pair supplies a valid polynomial through the displayed factorization, and all eight values of \\(k\\) are different. The answer is \\(\\boxed{8}\\), choice \\(\\textbf{B}\\).",
+      "directNodeIds": [
+        "cnm_226",
+        "math:integer-diophantine-equations"
+      ],
+      "sourceRef": "amc/2022_AMC_10B_Q07#integer-root-pairs"
+    },
+    {
+      "id": "square-discriminant",
+      "title": "Make the discriminant a square",
+      "explanation": "The quadratic formula expresses the difference between the roots as \\(\\sqrt{k^2-144}\\), so integer roots force this square root to be a positive integer.\n\nThe roots are\n\\[\n\\frac{-k+\\sqrt{k^2-144}}2\n\\quad\\text{and}\\quad\n\\frac{-k-\\sqrt{k^2-144}}2.\n\\]\nIf they are integers, their sum shows that \\(k\\) is an integer, and their difference shows that\n\\[\nm=\\sqrt{k^2-144}\n\\]\nis a positive integer. Thus\n\\[\nk^2-m^2=144.\n\\]\nConversely, any integers \\(k,m\\) satisfying this equation with \\(m>0\\) produce distinct integer roots. Indeed, \\(k\\) and \\(m\\) must have the same parity, since otherwise their squares would have an odd difference. Therefore \\((-k\\pm m)/2\\) are integers.\n\nFirst suppose \\(k>0\\). Then \\(k>m\\), and\n\\[\n(k-m)(k+m)=144\n\\]\nis a product of two positive even integers, with \\(k-m<k+m\\). The smaller factor is below \\(\\sqrt{144}=12\\). Checking the positive even integers below \\(12\\) gives exactly\n\\[\n(2,72),\\quad(4,36),\\quad(6,24),\\quad(8,18).\n\\]\nTheir half-sums give \\(k=37,20,15,13\\). The equal pair \\((12,12)\\) would give \\(m=0\\), hence repeated roots, and is excluded.\n\nNegating \\(k\\) preserves the square equation and gives four more valid values. Also, \\(k=0\\) cannot satisfy \\(k^2-m^2=144\\). There are therefore \\(\\boxed{8}\\) values, choice \\(\\textbf{B}\\).",
+      "directNodeIds": [
+        "cnm_222",
+        "cnm_223",
+        "cnm_152",
+        "math:integer-diophantine-equations"
+      ],
+      "sourceRef": "amc/2022_AMC_10B_Q07#square-discriminant"
+    }
+  ],
+  "sourceRef": "amc/2022_AMC_10B_Q07"
 }

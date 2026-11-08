@@ -1,64 +1,62 @@
 {
-  "Year": 2020,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Counting & Probability",
-  "Number": 25,
-  "Question": "Jason rolls three fair standard six-sided dice. Then he looks at the rolls and chooses a subset of the dice (possibly empty, possibly all three dice) to reroll. After rerolling, he wins if and only if the sum of the numbers face up on the three dice is exactly \\(7.\\) Jason always plays to optimize his chances of winning. What is the probability that he chooses to reroll exactly two of the dice?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\displaystyle \\frac{7}{36}\\)",
-    "B": "\\(\\displaystyle \\frac{5}{24}\\)",
-    "C": "\\(\\displaystyle \\frac{2}{9}\\)",
-    "D": "\\(\\displaystyle \\frac{17}{72}\\)",
-    "E": "\\(\\displaystyle \\frac{1}{4}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.98",
-    "Concepts": "dice (probability); optimization; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2020A/solutions",
-    "SourceSHA256": "2fd87a2a44e59aff473dcecc5b4e3e5ae93b9a99a198c041311afbf1ff99f250",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2020_AMC_10A_Q25",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Jason rolls three fair standard six-sided dice. Then he looks at the rolls and chooses a subset of the dice (possibly empty, possibly all three dice) to reroll. After rerolling, he wins if and only if the sum of the numbers face up on the three dice is exactly \\(7.\\) Jason always plays to optimize his chances of winning. What is the probability that he chooses to reroll exactly two of the dice?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(\\displaystyle \\frac{7}{36}\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(\\displaystyle \\frac{5}{24}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\displaystyle \\frac{2}{9}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\displaystyle \\frac{17}{72}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\displaystyle \\frac{1}{4}\\)"
+      }
     ]
   },
-  "ID": "2020_AMC_10A_Q25",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "A"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h244",
+    "cnm_h137"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "4c4f2360adca3e77a138615f35dbc480ba554d2496ccb9441c8a400c78ae965d",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_h244",
-      "cnm_h137"
-    ],
-    "supportIds": [
-      "cnm_h232"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "compare-reroll-options",
+      "title": "Compare the four reroll options",
+      "explanation": "Keeping a smaller face gives two fresh dice more ways to complete a total of \\(7\\). We can use this to identify exactly which initial rolls make a two-dice reroll best.\n\nFirst calculate the relevant winning probabilities, given the initial roll.\n\nIf Jason keeps a die showing \\(k\\) and rerolls two dice, their sum must be \\(7-k\\). For \\(1\\leq k\\leq5\\), the successful ordered pairs are\n\\[\n(1,6-k),(2,5-k),\\ldots,(6-k,1),\n\\]\nso there are \\(6-k\\) successes among \\(36\\) equally likely outcomes. For \\(k=6\\), there are no successes. Thus the probability is \\((6-k)/36\\), and keeping the smallest die is best.\n\nIf Jason rerolls all three dice, fixing the first result as \\(1,2,3,4,5\\) leaves respectively \\(5,4,3,2,1\\) ordered pairs that complete a sum of \\(7\\). A first result of \\(6\\) cannot work. Therefore the winning probability is\n\\[\n\\frac{5+4+3+2+1}{6^3}\n=\\frac{15}{216}\n=\\frac{5}{72}.\n\\]\n\nNow write the initial faces in increasing order as \\(a\\leq b\\leq c\\).\n\nIf their sum is already \\(7\\), Jason keeps all three and wins with certainty. Otherwise, if \\(a+b\\leq6\\), he can keep those two dice and reroll the third. Exactly one face completes the sum, giving probability \\(1/6\\). This exceeds both the largest two-dice reroll probability, \\(5/36\\), and the three-dice probability, \\(5/72\\). Thus he does not reroll exactly two dice in these cases.\n\nIt remains to consider \\(a+b\\geq7\\). Every pair then already sums to at least \\(7\\), so rerolling one die cannot win. Keeping all three also fails. The best two-dice reroll keeps \\(a\\), and it beats rerolling all three exactly when\n\\[\n\\frac{6-a}{36}>\\frac{5}{72},\n\\]\nwhich simplifies to \\(a<7/2\\), or \\(a\\leq3\\). Equality cannot occur for an integer face value, so there is no tie between these reroll sizes.\n\nConsequently, rerolling exactly two dice is optimal precisely when\n\\[\na\\leq3\\qquad\\text{and}\\qquad a+b\\geq7.\n\\]\nCount the initial rolls using the three distinguishable dice:\n\\[\n\\begin{array}{c|c|c}\n\\text{Smallest face}&\\text{Allowed faces on each other die}&\\text{Number of rolls}\\\\\n\\hline\n1&6&3\\cdot1^2=3\\\\\n2&5,6&3\\cdot2^2=12\\\\\n3&4,5,6&3\\cdot3^2=27\n\\end{array}\n\\]\nIn each row the smallest die is unique, so there are three choices for its position. The other two dice independently take any listed face. The rows have different smallest faces, so no roll is counted twice, and the conditions above show that every qualifying roll is included.\n\nAll \\(6^3=216\\) initial ordered rolls are equally likely. Hence the requested probability is\n\\[\n\\frac{3+12+27}{216}\n=\\frac{42}{216}\n=\\boxed{\\frac{7}{36}},\n\\]\nchoice \\(\\mathrm{A}\\).",
+      "directNodeIds": [
+        "cnm_h244",
+        "cnm_h137",
+        "cnm_h232"
+      ],
+      "sourceRef": "amc/2020_AMC_10A_Q25#compare-reroll-options"
+    }
+  ],
+  "sourceRef": "amc/2020_AMC_10A_Q25"
 }

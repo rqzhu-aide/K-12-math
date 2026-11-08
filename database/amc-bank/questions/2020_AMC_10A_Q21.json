@@ -1,63 +1,69 @@
 {
-  "Year": 2020,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Counting & Probability",
-  "Number": 21,
-  "Question": "There exists a unique strictly increasing sequence of nonnegative integers \\(a_1<a_2<\\cdots<a_k\\) such that \\[\\frac{2^{289}+1}{2^{17}+1}=2^{a_1}+2^{a_2}+\\cdots+2^{a_k}.\\] What is \\(k?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(117\\)",
-    "B": "\\(136\\)",
-    "C": "\\(137\\)",
-    "D": "\\(273\\)",
-    "E": "\\(306\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.65",
-    "Concepts": "number base; factoring; pairing and grouping",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2020A/solutions",
-    "SourceSHA256": "2fd87a2a44e59aff473dcecc5b4e3e5ae93b9a99a198c041311afbf1ff99f250",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2020_AMC_10A_Q21",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "There exists a unique strictly increasing sequence of nonnegative integers \\(a_1<a_2<\\cdots<a_k\\) such that \\[\\frac{2^{289}+1}{2^{17}+1}=2^{a_1}+2^{a_2}+\\cdots+2^{a_k}.\\] What is \\(k?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(117\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(136\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(137\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(273\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(306\\)"
+      }
     ]
   },
-  "ID": "2020_AMC_10A_Q21",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "area": "Number Theory",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:number-theory"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_024"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "f2bcf73c57e0780ecc7405da32f608290829bc29e9464fa6eff807be4c5b6f2c",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_024"
-    ],
-    "supportIds": [
-      "cnm_h210"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "alternating-sum-binary-blocks",
+      "title": "Expand into blocks of powers",
+      "explanation": "The number \\(k\\) counts the \\(1\\)-digits in the quotient's binary expansion. Since \\(289=17\\cdot17\\), setting \\(X=2^{17}\\) lets us find those digits without computing the enormous quotient.\n\nWe have\n\\[\n\\frac{2^{289}+1}{2^{17}+1}\n=\\frac{X^{17}+1}{X+1}\n=X^{16}-X^{15}+X^{14}-X^{13}+\\cdots+X^2-X+1.\n\\]\nTo verify the last equality, multiply the alternating sum by \\(X+1\\). All intermediate powers cancel, leaving \\(X^{17}+1\\).\n\nGroup the terms into eight differences and the final \\(1\\):\n\\[\n(X^{16}-X^{15})+(X^{14}-X^{13})+\\cdots+(X^2-X)+1.\n\\]\nEach difference has the form \\(X^{m+1}-X^m\\), where \\(m\\) is one of \\(1,3,5,\\ldots,15\\). Since\n\\[\n2^{17}-1=1+2+2^2+\\cdots+2^{16},\n\\]\nwe get\n\\[\nX^{m+1}-X^m\n=2^{17m}(2^{17}-1)\n=2^{17m}+2^{17m+1}+\\cdots+2^{17m+16}.\n\\]\nThus each difference contributes \\(17\\) distinct powers of \\(2\\).\n\nThe exponent intervals are\n\\[\n17\\text{ through }33,\\quad 51\\text{ through }67,\\quad\\ldots,\\quad255\\text{ through }271.\n\\]\nThey do not overlap, so adding the blocks creates no binary carries. The final \\(1=2^0\\) supplies one more distinct power.\n\nTherefore \\(k=8\\cdot17+1=\\boxed{137}\\), choice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "cnm_024",
+        "cnm_h210"
+      ],
+      "sourceRef": "amc/2020_AMC_10A_Q21#alternating-sum-binary-blocks"
+    },
+    {
+      "id": "binary-addition-and-carries",
+      "title": "Track binary carries",
+      "explanation": "Multiplication by \\(2^{17}+1\\) adds a number to a copy shifted \\(17\\) binary places. Tracking this addition reveals which digits of the quotient are \\(1\\).\n\nCall the quotient \\(N\\). We need\n\\[\nN+2^{17}N=2^{289}+1.\n\\]\nNumber binary positions starting at \\(0\\), so position \\(i\\) has value \\(2^i\\). The required sum has a \\(1\\) only in positions \\(0\\) and \\(289\\).\n\nAt position \\(0\\), the digit of \\(N\\) must be \\(1\\). Its digits in positions \\(1\\) through \\(16\\) must be \\(0\\), since the shifted copy has not yet contributed.\n\nAt position \\(17\\), the shifted copy contributes the original position-\\(0\\) digit, which is \\(1\\). To make the sum's digit \\(0\\), the digit of \\(N\\) must also be \\(1\\). Their sum is \\(2\\), which writes a \\(0\\) and carries \\(1\\) to the next position.\n\nIn positions \\(18\\) through \\(33\\), the shifted digits are \\(0\\). Each incoming carry is \\(1\\), so the corresponding digit of \\(N\\) must be \\(1\\), again producing a \\(0\\) and another carry.\n\nAfter that, each column still has an incoming carry of \\(1\\). To produce a sum digit of \\(0\\), the digit of \\(N\\) must be opposite to the digit \\(17\\) places earlier: choose \\(0\\) when the shifted digit is \\(1\\), and \\(1\\) when it is \\(0\\). Each column totals \\(2\\), so the carry continues. This produces alternating blocks of \\(17\\) zeros and \\(17\\) ones.\n\nThe blocks of ones occupy positions\n\\[\n17+34j\\text{ through }33+34j,\\qquad j=0,1,\\ldots,7.\n\\]\nThe last such block ends at \\(271\\), followed by zeros in positions \\(272\\) through \\(288\\). At position \\(289\\), both number digits are \\(0\\), and the incoming carry supplies the required final \\(1\\). Taking all higher digits to be zero completes the required addition.\n\nThus \\(N\\) has eight blocks of \\(17\\) ones and the lone one at position \\(0\\). Therefore \\(k=8\\cdot17+1=\\boxed{137}\\), choice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "cnm_024"
+      ],
+      "sourceRef": "amc/2020_AMC_10A_Q21#binary-addition-and-carries"
+    }
+  ],
+  "sourceRef": "amc/2020_AMC_10A_Q21"
 }

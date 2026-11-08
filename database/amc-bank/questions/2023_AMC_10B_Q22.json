@@ -1,63 +1,71 @@
 {
-  "Year": 2023,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Algebra",
-  "Number": 22,
-  "Question": "How many distinct values of \\(x\\) satisfy \\[\\lfloor x \\rfloor^2 - 3x + 2 = 0,\\] where \\(\\lfloor x \\rfloor\\) denotes the largest integer less than or equal to \\(x?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "an infinite number",
-    "B": "\\(4\\)",
-    "C": "\\(2\\)",
-    "D": "\\(3\\)",
-    "E": "\\(0\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.74",
-    "Concepts": "floor and ceiling functions; substitution; bounding to limit cases",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2023B/solutions",
-    "SourceSHA256": "ac2db544428494b9df231f17a65938616be974766d9bcbd0611bd41f2cd3599f",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2023_AMC_10B_Q22",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "How many distinct values of \\(x\\) satisfy \\[\\lfloor x \\rfloor^2 - 3x + 2 = 0,\\] where \\(\\lfloor x \\rfloor\\) denotes the largest integer less than or equal to \\(x?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "an infinite number"
+      },
+      {
+        "id": "B",
+        "content": "\\(4\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(2\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(3\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(0\\)"
+      }
     ]
   },
-  "ID": "2023_AMC_10B_Q22",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:algebra"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "area": "Algebra",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:algebra"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:floor-ceiling"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "6f2be43fc9bea004d8954eb4f6cf24ed57890b74ad462d9136b2aceb44131c68",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:floor-ceiling"
-    ],
-    "supportIds": [
-      "cnm_h024"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "bound-and-test-floor-values",
+      "title": "Restrict the integer part",
+      "explanation": "The equation gives \\(3x=\\lfloor x\\rfloor^2+2\\ge2\\), so \\(x\\ge2/3\\). This immediately rules out negative values of the floor.\n\nSet \\(n=\\lfloor x\\rfloor\\). Then \\(n\\) is a nonnegative integer, and the equation determines\n\\[\nx=\\frac{n^2+2}{3}.\n\\]\nWe must also respect the defining interval \\(n\\le x<n+1\\). In particular,\n\\[\n\\frac{n^2+2}{3}<n+1\n\\quad\\Longrightarrow\\quad n(n-3)<1.\n\\]\nIf \\(n\\ge4\\), then \\(n(n-3)\\ge4\\), which is impossible. Thus only \\(n=0,1,2,3\\) need to be checked.\n\nSubstitution gives the pairs\n\\[\n(n,x)=\\left(0,\\frac23\\right),\\ (1,1),\\ (2,2),\\ \\left(3,\\frac{11}{3}\\right).\n\\]\nIn each pair, \\(n\\le x<n+1\\), so the floor really is \\(n\\). Each possible floor value determines only one candidate, and the four candidates are distinct. Therefore there are \\(\\boxed{4}\\) solutions, choice \\(\\boxed{\\text{B}}\\).",
+      "directNodeIds": [
+        "math:floor-ceiling",
+        "cnm_h024"
+      ],
+      "sourceRef": "amc/2023_AMC_10B_Q22#bound-and-test-floor-values"
+    },
+    {
+      "id": "fractional-part-and-parity",
+      "title": "Use the fractional part and parity",
+      "explanation": "Separating the integer and fractional parts produces a product of consecutive integers, whose parity sharply limits the possibilities.\n\nWrite \\(x=n+f\\), where \\(n=\\lfloor x\\rfloor\\) is an integer and \\(0\\le f<1\\). Substituting into the equation gives\n\\[\nn^2-3n+2=3f,\n\\qquad (n-1)(n-2)=3f.\n\\]\nOne of the consecutive integers \\(n-1,n-2\\) is even, so their product is an even integer. Since \\(0\\le3f<3\\), that product can only be \\(0\\) or \\(2\\).\n\nIf the product is \\(0\\), then \\(n=1\\) or \\(2\\), and \\(f=0\\). This gives \\(x=1,2\\).\n\nIf the product is \\(2\\), then\n\\[\nn^2-3n+2=2\n\\quad\\Longrightarrow\\quad n(n-3)=0.\n\\]\nThus \\(n=0\\) or \\(3\\), and \\(f=2/3\\). This gives \\(x=2/3,11/3\\).\n\nAll four constructions have \\(0\\le f<1\\), so their floor values are correct. The exhaustive cases give \\(\\boxed{4}\\) distinct solutions, choice \\(\\boxed{\\text{B}}\\).",
+      "directNodeIds": [
+        "math:floor-ceiling",
+        "cnm_p156",
+        "cnm_224"
+      ],
+      "sourceRef": "amc/2023_AMC_10B_Q22#fractional-part-and-parity"
+    }
+  ],
+  "sourceRef": "amc/2023_AMC_10B_Q22"
 }

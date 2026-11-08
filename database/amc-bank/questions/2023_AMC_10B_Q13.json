@@ -1,64 +1,73 @@
 {
-  "Year": 2023,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Geometry",
-  "Number": 13,
-  "Question": "What is the area of the region in the coordinate plane defined by the inequality \\[\\bigl||x| - 1\\bigr| + \\bigl||y| - 1\\bigr| \\le 1?\\]",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(2\\)",
-    "B": "\\(8\\)",
-    "C": "\\(4\\)",
-    "D": "\\(15\\)",
-    "E": "\\(12\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.95",
-    "Concepts": "absolute value; coordinate geometry; area; symmetry",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2023B/solutions",
-    "SourceSHA256": "ac2db544428494b9df231f17a65938616be974766d9bcbd0611bd41f2cd3599f",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2023_AMC_10B_Q13",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "What is the area of the region in the coordinate plane defined by the inequality \\[\\bigl||x| - 1\\bigr| + \\bigl||y| - 1\\bigr| \\le 1?\\]",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(2\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(8\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(4\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(15\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(12\\)"
+      }
     ]
   },
-  "ID": "2023_AMC_10B_Q13",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:geometry"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "area": "Geometry",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:geometry"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_084"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "3f9b6114660ad9ef09f905f1debf1a0656ba5e5c70cbe324ee746efcd0e62796",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_084"
-    ],
-    "supportIds": [
-      "cnm_008",
-      "cnm_p148"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "quadrant-reflection",
+      "title": "Find one quadrant and reflect",
+      "explanation": "Changing the sign of either coordinate leaves the inequality unchanged, so all four quadrants contribute equal areas.\n\nWhere \\(x,y\\ge0\\), the inequality becomes\n\\[\n|x-1|+|y-1|\\le1.\n\\]\nDivide this region along the lines \\(x=1\\) and \\(y=1\\). In the part where \\(x,y\\ge1\\), put \\(a=x-1\\) and \\(b=y-1\\). The condition is\n\\[\na\\ge0,\\qquad b\\ge0,\\qquad a+b\\le1.\n\\]\nThis describes the right triangle with vertices \\((1,1)\\), \\((2,1)\\), and \\((1,2)\\). Its perpendicular legs both have length \\(1\\), so its area is \\(\\tfrac12\\).\n\nThe other three parts use the other choices of direction from \\((1,1)\\) and give congruent triangles. Together they form the diamond with vertices\n\\[\n(0,1),\\ (1,0),\\ (2,1),\\ (1,2).\n\\]\nIts area is therefore \\(4\\cdot\\tfrac12=2\\).\n\nReflecting this diamond across the coordinate axes gives the entire region. The four copies have disjoint interiors, so shared boundary points do not affect the total area. The answer is\n\\[\n\\boxed{4\\cdot2=8},\n\\]\nchoice \\(\\text{B}\\).",
+      "directNodeIds": [
+        "cnm_084",
+        "cnm_008",
+        "cnm_p148",
+        "cnm_136"
+      ],
+      "sourceRef": "amc/2023_AMC_10B_Q13#quadrant-reflection"
+    },
+    {
+      "id": "unit-square-dissection",
+      "title": "Take half of each unit square",
+      "explanation": "The nested absolute values behave linearly between consecutive integers, which lets us find the included area one unit square at a time.\n\nDefine \\(f(t)=\\bigl||t|-1\\bigr|\\). Since both terms in \\(f(x)+f(y)\\le1\\) are nonnegative, each is at most \\(1\\). Thus \\(|x|,|y|\\le2\\), and the whole region lies in the square \\([-2,2]\\times[-2,2]\\).\n\nOn the four unit intervals, we have\n\n| Interval for \\(t\\) | \\(f(t)\\) |\n|---|---|\n| \\([-2,-1]\\) | \\(-t-1\\) |\n| \\([-1,0]\\) | \\(t+1\\) |\n| \\([0,1]\\) | \\(1-t\\) |\n| \\([1,2]\\) | \\(t-1\\) |\n\nOn each interval, \\(f\\) equals \\(0\\) at one endpoint and \\(1\\) at the other, changing at a constant rate.\n\nThe integer-coordinate grid divides the bounding square into \\(4\\cdot4=16\\) unit squares. In each unit square, exactly one corner has \\(f(x)=f(y)=0\\). Let \\(a,b\\) be the horizontal and vertical distances from that corner. The table shows that \\(f(x)=a\\) and \\(f(y)=b\\), so the condition becomes \\(a+b\\le1\\). This selects a right triangle with legs \\(1\\), exactly half of the unit square.\n\nThese squares cover the bounding square and overlap only along edges. Consequently, the total area is\n\\[\n\\boxed{16\\cdot\\frac12=8},\n\\]\nchoice \\(\\text{B}\\).",
+      "directNodeIds": [
+        "cnm_008",
+        "cnm_084",
+        "cnm_p148"
+      ],
+      "sourceRef": "amc/2023_AMC_10B_Q13#unit-square-dissection"
+    }
+  ],
+  "sourceRef": "amc/2023_AMC_10B_Q13"
 }

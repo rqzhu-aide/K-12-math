@@ -1,78 +1,88 @@
 {
-  "Year": 2023,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 16,
-  "Question": "Define an upno to be a positive integer of \\(2\\) or more digits where the digits are strictly increasing moving left to right. Similarly, define a downno to be a positive integer of \\(2\\) or more digits where the digits are strictly decreasing moving left to right. For instance, the number \\(258\\) is an upno and \\(8620\\) is a downno. Let \\(U\\) equal the total number of upnos and let \\(D\\) equal the total number of downnos. What is \\(|U - D|?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(512\\)",
-    "B": "\\(10\\)",
-    "C": "\\(0\\)",
-    "D": "\\(9\\)",
-    "E": "\\(511\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.92",
-    "Concepts": "subsets; digits",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2023B/solutions",
-    "SourceSHA256": "ac2db544428494b9df231f17a65938616be974766d9bcbd0611bd41f2cd3599f",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2023_AMC_10B_Q16",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "f5199a26077e9b5376601716ee9fa1d3ccc5e97355d5a6850fae8dc35863d3e2",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h239"
-    ],
-    "supportIds": [],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2023_AMC_10B_Q16",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Define an upno to be a positive integer of \\(2\\) or more digits where the digits are strictly increasing moving left to right. Similarly, define a downno to be a positive integer of \\(2\\) or more digits where the digits are strictly decreasing moving left to right. For instance, the number \\(258\\) is an upno and \\(8620\\) is a downno. Let \\(U\\) equal the total number of upnos and let \\(D\\) equal the total number of downnos. What is \\(|U - D|?\\)",
+    "choices": [
       {
-        "id": "count-digit-subsets",
-        "label": "Count eligible digit subsets",
-        "nodeIds": [
-          "cnm_h237",
-          "cnm_h242"
-        ]
+        "id": "A",
+        "content": "\\(512\\)"
       },
       {
-        "id": "pair-by-reversal",
-        "label": "Pair numbers by digit reversal",
-        "nodeIds": [
-          "math:bijective-counting",
-          "cnm_h231"
-        ]
+        "id": "B",
+        "content": "\\(10\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(0\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(9\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(511\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "E"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h239"
+  ],
+  "solutions": [
+    {
+      "id": "pair-by-digit-reversal",
+      "title": "Pair numbers by reversal",
+      "explanation": "Reversing the digits pairs upnos with downnos that contain no zero, so we can find the difference by counting the downnos left over.\n\nAn upno cannot contain \\(0\\): in increasing order, \\(0\\) would have to be its first digit, which is not allowed. Reversing any upno therefore gives a downno with no zero. Conversely, reversing any downno with no zero gives an upno. Reversing twice returns the original number, so this pairing omits and repeats none of these numbers.\n\nThe unpaired downnos are exactly those containing \\(0\\), which must be their last digit. To construct one, choose a nonempty subset of \\(\\{1,2,\\ldots,9\\}\\), write its digits in decreasing order, and append \\(0\\). Every such choice gives a valid downno of at least two digits, and its digits uniquely recover the chosen subset.\n\nEach of the nine nonzero digits can be included or excluded independently, giving \\(2^9\\) subsets. Exclude the empty subset, which would leave only the single digit \\(0\\). Thus there are\n\\[\nD-U=2^9-1=511\n\\]\nextra downnos. Therefore,\n\\[\n\\boxed{|U-D|=511},\n\\]\nchoice \\(\\boxed{\\text{E}}\\).",
+      "directNodeIds": [
+        "math:bijective-counting",
+        "cnm_h231"
+      ],
+      "sourceRef": "amc/2023_AMC_10B_Q16#pair-by-digit-reversal"
+    },
+    {
+      "id": "count-eligible-digit-subsets",
+      "title": "Choose the digits first",
+      "explanation": "Once the digits are chosen, their required order is fixed. We can therefore count digit subsets instead of arranging digits.\n\nStrict increase prevents repeated digits. It also prevents \\(0\\) from appearing in an upno, since \\(0\\) would have to come first. Every subset of \\(\\{1,2,\\ldots,9\\}\\) containing at least two digits produces exactly one upno when written in increasing order. Conversely, every upno determines exactly that subset.\n\nThere are \\(2^9\\) subsets because each digit has two choices: include it or leave it out. Removing the empty subset and the nine one-digit subsets gives\n\\[\nU=2^9-1-9=502.\n\\]\nFor downnos, we may choose from all ten digits \\(\\{0,1,\\ldots,9\\}\\). Any subset containing at least two digits has a nonzero largest digit, so writing it in decreasing order gives a valid number. Again, every eligible subset gives exactly one downno, and every downno is counted once. Excluding the empty subset and the ten single-digit subsets yields\n\\[\nD=2^{10}-1-10=1013.\n\\]\nIt follows that\n\\[\n\\boxed{|U-D|=1013-502=511},\n\\]\nchoice \\(\\boxed{\\text{E}}\\).",
+      "directNodeIds": [
+        "cnm_h239",
+        "cnm_h231"
+      ],
+      "sourceRef": "amc/2023_AMC_10B_Q16#count-eligible-digit-subsets"
+    },
+    {
+      "id": "count-digit-subsets",
+      "title": "Count eligible digit subsets",
+      "directNodeIds": [
+        "cnm_h237",
+        "cnm_h242"
+      ],
+      "sourceRef": "amc/2023_AMC_10B_Q16#count-digit-subsets"
+    },
+    {
+      "id": "pair-by-reversal",
+      "title": "Pair numbers by digit reversal",
+      "directNodeIds": [
+        "math:bijective-counting",
+        "cnm_h231"
+      ],
+      "sourceRef": "amc/2023_AMC_10B_Q16#pair-by-reversal"
+    }
+  ],
+  "sourceRef": "amc/2023_AMC_10B_Q16"
 }

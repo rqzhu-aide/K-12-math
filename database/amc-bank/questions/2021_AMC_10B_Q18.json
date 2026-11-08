@@ -1,76 +1,85 @@
 {
-  "Year": 2021,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 18,
-  "Question": "A fair \\(6\\)-sided die is repeatedly rolled until an odd number appears. What is the probability that every even number appears at least once before the first occurrence of an odd number?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\( \\dfrac{1}{120} \\)",
-    "B": "\\( \\dfrac{1}{32} \\)",
-    "C": "\\( \\dfrac{1}{20} \\)",
-    "D": "\\( \\dfrac{3}{20} \\)",
-    "E": "\\( \\dfrac{1}{6} \\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.99",
-    "Concepts": "dice (probability); basic probability",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2021B/solutions",
-    "SourceSHA256": "6d6538e38d20bd88576d0b4a0695a28cb5bfcae69b198989fec14f46723adafc",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2021_AMC_10B_Q18",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "eb5878a93e1f4498ddd082a8952849f699553db7379d304094533c6d99a6fef5",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h137"
-    ],
-    "supportIds": [],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2021_AMC_10B_Q18",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "A fair \\(6\\)-sided die is repeatedly rolled until an odd number appears. What is the probability that every even number appears at least once before the first occurrence of an odd number?",
+    "choices": [
       {
-        "id": "first-appearance-order",
-        "label": "Count first-appearance orders",
-        "nodeIds": [
-          "cnm_h234"
-        ]
+        "id": "A",
+        "content": "\\( \\dfrac{1}{120} \\)"
       },
       {
-        "id": "state-recursion",
-        "label": "Track distinct even faces already seen",
-        "nodeIds": [
-          "math:recursive-counting-probability"
-        ]
+        "id": "B",
+        "content": "\\( \\dfrac{1}{32} \\)"
+      },
+      {
+        "id": "C",
+        "content": "\\( \\dfrac{1}{20} \\)"
+      },
+      {
+        "id": "D",
+        "content": "\\( \\dfrac{3}{20} \\)"
+      },
+      {
+        "id": "E",
+        "content": "\\( \\dfrac{1}{6} \\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h137"
+  ],
+  "solutions": [
+    {
+      "id": "count-new-face-orders",
+      "title": "Record only new faces",
+      "explanation": "Repeating an even face does not change which even numbers have appeared. This suggests recording faces only when they first appear.\n\nFor this calculation, imagine continuing to roll even after the first odd number. A new face eventually appears with probability \\(1\\), and each unseen face is equally likely to be the next new face. Indeed, repeats merely delay that appearance, and swapping the labels of any two unseen faces leaves all roll probabilities unchanged.\n\nConsequently, the ordered triples of the first three distinct faces are equally likely. There are\n\\[\n6\\cdot5\\cdot4=120\n\\]\nsuch triples: six choices for the first face, five for the second, and four for the third.\n\nThe desired event occurs exactly when these three faces are the three even numbers \\(2,4,6\\). If an odd face appears among them, the original process stops before all three evens have appeared. The favorable triples are the\n\\[\n3\\cdot2\\cdot1=6\n\\]\norders of the even faces.\n\nTherefore the probability is\n\\[\n\\frac{6}{120}=\\boxed{\\frac1{20}},\n\\]\nwhich is choice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "cnm_h137",
+        "cnm_h234"
+      ],
+      "sourceRef": "amc/2021_AMC_10B_Q18#count-new-face-orders"
+    },
+    {
+      "id": "track-even-face-progress",
+      "title": "Track progress after each roll",
+      "explanation": "Only the number of different even faces already seen matters for future success. This allows us to account for repeated rolls directly.\n\nLet \\(p_k\\) be the probability of eventually succeeding when exactly \\(k\\) different even faces have appeared and no odd face has appeared. Future rolls are independent of the past, so the particular even faces do not matter. Once all three have appeared, success is secured, giving \\(p_3=1\\).\n\nFor \\(k<3\\), the next roll has three possible effects. With probability \\(k/6\\), it repeats an even face and leaves the situation unchanged. With probability \\((3-k)/6\\), it produces a new even face. With probability \\(3/6\\), it is odd and success becomes impossible. Thus\n\\[\np_k=\\frac{k}{6}p_k+\\frac{3-k}{6}p_{k+1}.\n\\]\nStarting with \\(p_3=1\\), solve backward:\n\\[\n\\begin{aligned}\np_2&=\\frac26p_2+\\frac16\n&&\\Longrightarrow p_2=\\frac14,\\\\\np_1&=\\frac16p_1+\\frac26\\cdot\\frac14\n&&\\Longrightarrow p_1=\\frac1{10},\\\\\np_0&=\\frac36\\cdot\\frac1{10}\n&&=\\frac1{20}.\n\\end{aligned}\n\\]\nInitially no faces have appeared, so the requested probability is \\(p_0=\\boxed{\\frac1{20}}\\), choice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "math:recursive-counting-probability"
+      ],
+      "sourceRef": "amc/2021_AMC_10B_Q18#track-even-face-progress"
+    },
+    {
+      "id": "first-appearance-order",
+      "title": "Count first-appearance orders",
+      "directNodeIds": [
+        "cnm_h234"
+      ],
+      "sourceRef": "amc/2021_AMC_10B_Q18#first-appearance-order"
+    },
+    {
+      "id": "state-recursion",
+      "title": "Track distinct even faces already seen",
+      "directNodeIds": [
+        "math:recursive-counting-probability"
+      ],
+      "sourceRef": "amc/2021_AMC_10B_Q18#state-recursion"
+    }
+  ],
+  "sourceRef": "amc/2021_AMC_10B_Q18"
 }

@@ -1,77 +1,72 @@
 {
-  "Year": 2023,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Counting & Probability",
-  "Number": 7,
-  "Question": "Janet rolls a standard \\(6\\)-sided die \\(4\\) times and keeps a running total of the numbers she rolls. What is the probability that at some point her running total will equal \\(3?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{2}{9}\\)",
-    "B": "\\(\\dfrac{49}{216}\\)",
-    "C": "\\(\\dfrac{25}{108}\\)",
-    "D": "\\(\\dfrac{17}{72}\\)",
-    "E": "\\(\\dfrac{13}{54}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.98",
-    "Concepts": "dice (probability); casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2023A/solutions",
-    "SourceSHA256": "971ce13217f703d7fce4f9708498a2defc20377d359d8d1cc9ee28b098f4e7d6",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2023_AMC_10A_Q07",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "516346383895e6767eb7e9d04476a4e0f57ff5683db0ec0fb2174b8d9f65f589",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_285"
-    ],
-    "supportIds": [],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2023_AMC_10A_Q07",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Janet rolls a standard \\(6\\)-sided die \\(4\\) times and keeps a running total of the numbers she rolls. What is the probability that at some point her running total will equal \\(3?\\)",
+    "choices": [
       {
-        "id": "disjoint-hit-prefixes",
-        "label": "Disjoint hitting prefixes",
-        "nodeIds": [
-          "cnm_h141",
-          "cnm_h138"
-        ]
+        "id": "A",
+        "content": "\\(\\dfrac{2}{9}\\)"
       },
       {
-        "id": "remaining-target-recursion",
-        "label": "Recurse on the remaining target",
-        "nodeIds": [
-          "math:recursive-counting-probability"
-        ]
+        "id": "B",
+        "content": "\\(\\dfrac{49}{216}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac{25}{108}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac{17}{72}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac{13}{54}\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h141",
+    "cnm_h138"
+  ],
+  "solutions": [
+    {
+      "id": "disjoint-hit-prefixes",
+      "title": "List the possible beginnings",
+      "explanation": "Every roll increases the running total, so Janet can reach \\(3\\) only once, and she must do so within the first three rolls. This lets us list all successful beginnings:\n\n- On the first roll: \\(3\\).\n- On the second roll: \\(1,2\\) or \\(2,1\\).\n- On the third roll: \\(1,1,1\\).\n\nThese are exhaustive because they are all the ordered sequences of positive integers with sum \\(3\\). The fourth roll cannot first produce a total of \\(3\\), since four rolls total at least \\(4\\).\n\nFor a specified beginning of length \\(r\\), independence gives probability \\((1/6)^r\\). Any rolls after reaching \\(3\\) are unrestricted. Also, the four listed beginnings cannot occur together, so we add their probabilities:\n\\[\n\\frac16+\\frac1{36}+\\frac1{36}+\\frac1{216}\n=\\frac{36+6+6+1}{216}\n=\\frac{49}{216}.\n\\]\nThe answer is \\(\\boxed{\\frac{49}{216}}\\), choice \\(\\text{B}\\).",
+      "directNodeIds": [
+        "cnm_h141",
+        "cnm_h138"
+      ],
+      "sourceRef": "amc/2023_AMC_10A_Q07#disjoint-hit-prefixes"
+    },
+    {
+      "id": "remaining-target-recursion",
+      "title": "Work with smaller targets",
+      "explanation": "After a roll below the target, the same problem remains with a smaller target. Because every roll adds at least \\(1\\), reaching any target of at most \\(3\\) takes at most three rolls, so four available rolls are enough.\n\nFor \\(r=0,1,2,3\\), let \\(p_r\\) be the probability that future rolls reach an additional total of exactly \\(r\\) before passing it. We have \\(p_0=1\\), since no additional points are needed.\n\nFor a positive target \\(r\\), a first roll of \\(k\\le r\\) leaves target \\(r-k\\). That first roll has probability \\(1/6\\), and the later rolls are independent of it. A roll larger than \\(r\\) fails. Thus\n\\[\np_1=\\frac{p_0}{6}=\\frac16,\n\\]\n\\[\np_2=\\frac{p_1+p_0}{6}\n=\\frac{1/6+1}{6}=\\frac7{36},\n\\]\nand\n\\[\np_3=\\frac{p_2+p_1+p_0}{6}\n=\\frac{7/36+1/6+1}{6}\n=\\frac{49}{216}.\n\\]\nTherefore the requested probability is \\(\\boxed{\\frac{49}{216}}\\), choice \\(\\text{B}\\).",
+      "directNodeIds": [
+        "math:recursive-counting-probability",
+        "cnm_h141",
+        "cnm_h138"
+      ],
+      "sourceRef": "amc/2023_AMC_10A_Q07#remaining-target-recursion"
+    }
+  ],
+  "sourceRef": "amc/2023_AMC_10A_Q07"
 }

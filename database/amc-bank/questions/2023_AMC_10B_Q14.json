@@ -1,77 +1,88 @@
 {
-  "Year": 2023,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Algebra",
-  "Number": 14,
-  "Question": "How many ordered pairs of integers \\((m, n)\\) satisfy the equation \\[m^2 + mn + n^2 = m^2 n^2?\\]",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(7\\)",
-    "B": "\\(1\\)",
-    "C": "\\(3\\)",
-    "D": "\\(6\\)",
-    "E": "\\(5\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.41",
-    "Concepts": "Diophantine Equation; bounding to limit cases; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2023B/solutions",
-    "SourceSHA256": "ac2db544428494b9df231f17a65938616be974766d9bcbd0611bd41f2cd3599f",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2023_AMC_10B_Q14",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:algebra"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "3b61d6c0581818daccb90970636e02e54398055fbb7a2c814c65b918a7905f65",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:integer-diophantine-equations"
-    ],
-    "supportIds": [],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2023_AMC_10B_Q14",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "How many ordered pairs of integers \\((m, n)\\) satisfy the equation \\[m^2 + mn + n^2 = m^2 n^2?\\]",
+    "choices": [
       {
-        "id": "reciprocal-bound",
-        "label": "Bound reciprocal terms",
-        "nodeIds": [
-          "cnm_096"
-        ]
+        "id": "A",
+        "content": "\\(7\\)"
       },
       {
-        "id": "square-discriminant",
-        "label": "Require a square discriminant",
-        "nodeIds": [
-          "cnm_222",
-          "cnm_079"
-        ]
+        "id": "B",
+        "content": "\\(1\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(3\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(6\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(5\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "area": "Number Theory",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:number-theory"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:integer-diophantine-equations"
+  ],
+  "solutions": [
+    {
+      "id": "bound-reciprocals",
+      "title": "Bound the reciprocal terms",
+      "explanation": "For large absolute values of \\(m\\) and \\(n\\), the product \\(m^2n^2\\) is too large for the equation to hold. Dividing by that product makes this comparison simple.\n\nFirst, if either variable is \\(0\\), the equation forces the other variable to be \\(0\\). This gives \\((0,0)\\).\n\nNow suppose both variables are nonzero. Dividing the equation by \\(m^2n^2\\) gives\n\\[\n\\frac1{n^2}+\\frac1{mn}+\\frac1{m^2}=1.\n\\]\nIf \\(|m|\\ge2\\) and \\(|n|\\ge2\\), then\n\\[\n1=\\frac1{n^2}+\\frac1{mn}+\\frac1{m^2}\n\\le\\frac14+\\frac14+\\frac14=\\frac34,\n\\]\nwhich is impossible. The middle term is at most \\(\\tfrac14\\) even when \\(mn\\) is negative.\n\nThus at least one variable has absolute value \\(1\\). If \\(m^2=1\\), substitution and cancellation give\n\\[\n1+mn+n^2=n^2,\\qquad mn=-1.\n\\]\nIf \\(n^2=1\\), the same cancellation also gives \\(mn=-1\\). The only integer pairs with product \\(-1\\) are \\((1,-1)\\) and \\((-1,1)\\), and both satisfy the original equation.\n\nTogether with \\((0,0)\\), these are all the solutions. There are \\(\\boxed{3}\\) ordered pairs, choice \\(\\text{C}\\).",
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "cnm_096"
+      ],
+      "sourceRef": "amc/2023_AMC_10B_Q14#bound-reciprocals"
+    },
+    {
+      "id": "factor-sum-product",
+      "title": "Factor using the sum and product",
+      "explanation": "Adding \\(mn\\) makes the left side a perfect square, allowing us to use the sum and product of the two integers together.\n\nSet \\(s=m+n\\) and \\(t=mn\\). Adding \\(mn\\) to both sides of the original equation gives\n\\[\ns^2=t^2+t.\n\\]\nMultiplying by \\(4\\), adding \\(1\\), and rearranging yields\n\\[\n(2t+1)^2-(2s)^2=1.\n\\]\nFactor this difference of squares:\n\\[\n(2t+1-2s)(2t+1+2s)=1.\n\\]\nBoth factors are integers. An integer product equals \\(1\\) only when both factors are \\(1\\) or both are \\(-1\\). In either case the factors are equal, so their difference \\(4s\\) is \\(0\\). Hence \\(s=0\\).\n\nNow \\(s^2=t(t+1)\\) gives \\(t=0\\) or \\(t=-1\\). If \\(t=0\\), the conditions \\(mn=0\\) and \\(m+n=0\\) force \\((m,n)=(0,0)\\). If \\(t=-1\\), the integer factor pairs give \\((1,-1)\\) and \\((-1,1)\\), both of which also have sum \\(0\\).\n\nAll three pairs satisfy the original equation, and the factorization excludes every other possibility. The answer is \\(\\boxed{3}\\), choice \\(\\text{C}\\).",
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "cnm_148",
+        "cnm_152"
+      ],
+      "sourceRef": "amc/2023_AMC_10B_Q14#factor-sum-product"
+    },
+    {
+      "id": "reciprocal-bound",
+      "title": "Bound reciprocal terms",
+      "directNodeIds": [
+        "cnm_096"
+      ],
+      "sourceRef": "amc/2023_AMC_10B_Q14#reciprocal-bound"
+    },
+    {
+      "id": "square-discriminant",
+      "title": "Require a square discriminant",
+      "directNodeIds": [
+        "cnm_222",
+        "cnm_079"
+      ],
+      "sourceRef": "amc/2023_AMC_10B_Q14#square-discriminant"
+    }
+  ],
+  "sourceRef": "amc/2023_AMC_10B_Q14"
 }

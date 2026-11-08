@@ -1,63 +1,60 @@
 {
-  "Year": 2023,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Algebra",
-  "Number": 21,
-  "Question": "There is a unique polynomial \\(P(x)\\) of least degree with leading coefficient \\(1\\) satisfying all of the following:\n\n\\(1\\) is a root of \\(P(x) - 1,\\) \\(2\\) is a root of \\(P(x - 2),\\) \\(3\\) is a root of \\(P(3x),\\) and \\(4\\) is a root of \\(4P(x).\\)\n\nAll the roots of \\(P(x)\\) except one are integers. If the one non-integer root can be written as \\(\\frac{m}{n},\\) where \\(m\\) and \\(n\\) are relatively prime positive integers, what is \\(m + n?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(41\\)",
-    "B": "\\(43\\)",
-    "C": "\\(45\\)",
-    "D": "\\(47\\)",
-    "E": "\\(49\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.98",
-    "Concepts": "polynomial; substitution",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2023A/solutions",
-    "SourceSHA256": "971ce13217f703d7fce4f9708498a2defc20377d359d8d1cc9ee28b098f4e7d6",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2023_AMC_10A_Q21",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "There is a unique polynomial \\(P(x)\\) of least degree with leading coefficient \\(1\\) satisfying all of the following:\n\n\\(1\\) is a root of \\(P(x) - 1,\\) \\(2\\) is a root of \\(P(x - 2),\\) \\(3\\) is a root of \\(P(3x),\\) and \\(4\\) is a root of \\(4P(x).\\)\n\nAll the roots of \\(P(x)\\) except one are integers. If the one non-integer root can be written as \\(\\frac{m}{n},\\) where \\(m\\) and \\(n\\) are relatively prime positive integers, what is \\(m + n?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(41\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(43\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(45\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(47\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(49\\)"
+      }
     ]
   },
-  "ID": "2023_AMC_10A_Q21",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:algebra"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Algebra",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:algebra"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:polynomial-remainder-factor"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "e45d9a4de15adb24a3263733d99e9ba68c84964a4f52ac4d7b72e2d1cf9f0b31",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:polynomial-remainder-factor"
-    ],
-    "supportIds": [
-      "cnm_029"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "translate-roots-and-factor",
+      "title": "Translate the conditions into factors",
+      "explanation": "Substituting the stated root into each expression reveals three roots of \\(P\\) itself and one additional value of \\(P\\).\n\nThe four conditions say\n\\[\nP(1)=1,\\qquad P(2-2)=P(0)=0,\n\\]\n\\[\nP(3\\cdot3)=P(9)=0,\\qquad 4P(4)=0.\n\\]\nThus \\(P(4)=0\\), and \\(0,4,9\\) are three distinct roots. By the factor theorem, which says that a root \\(a\\) gives a factor \\(x-a\\), the polynomial \\(P(x)\\) is divisible by\n\\[\nx(x-4)(x-9).\n\\]\n\nIts degree is therefore at least \\(3\\). If its degree were exactly \\(3\\), the leading coefficient \\(1\\) would force\n\\[\nP(x)=x(x-4)(x-9).\n\\]\nBut this gives \\(P(1)=1(-3)(-8)=24\\), contrary to \\(P(1)=1\\).\n\nNext consider degree \\(4\\). Since the remaining factor must be linear with leading coefficient \\(1\\), write\n\\[\nP(x)=x(x-4)(x-9)(x-c),\n\\]\nwhere \\(c\\) is a constant. Evaluating at \\(1\\) gives\n\\[\n24(1-c)=1,\n\\qquad c=1-\\frac1{24}=\\frac{23}{24}.\n\\]\nThis produces a polynomial satisfying every condition, and the equation determines \\(c\\) uniquely. Thus it is the unique polynomial of least degree. Its roots are \\(0,4,9,\\tfrac{23}{24}\\), so the single noninteger root is \\(\\tfrac{23}{24}\\).\n\nSince consecutive integers \\(23\\) and \\(24\\) are relatively prime,\n\\[\nm+n=23+24=\\boxed{47},\n\\]\nchoice \\(\\textbf{D}\\).",
+      "directNodeIds": [
+        "math:polynomial-remainder-factor",
+        "cnm_029"
+      ],
+      "sourceRef": "amc/2023_AMC_10A_Q21#translate-roots-and-factor"
+    }
+  ],
+  "sourceRef": "amc/2023_AMC_10A_Q21"
 }

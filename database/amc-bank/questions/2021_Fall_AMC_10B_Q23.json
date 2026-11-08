@@ -1,66 +1,76 @@
 {
-  "Year": 2021,
-  "Level": "AMC 10",
-  "Batch": "Fall B",
-  "Area": "Counting & Probability",
-  "Number": 23,
-  "Question": "Each of the \\(5\\) sides and the \\(5\\) diagonals of a regular pentagon are randomly and independently colored red or blue with equal probability. What is the probability that there will be a triangle whose vertices are among the vertices of the pentagon such that all of its sides have the same color?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\( \\dfrac 23 \\)",
-    "B": "\\( \\dfrac{105}{128} \\)",
-    "C": "\\( \\dfrac{125}{128} \\)",
-    "D": "\\( \\dfrac{253}{256} \\)",
-    "E": "\\( 1 \\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.92",
-    "Concepts": "graph theory; complementary probability",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2021D/solutions",
-    "SourceSHA256": "e7a694808b4e341ec6838900327d24b5a32d3bb0ddfdef9e7f6594dbb64b0032",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2021_Fall_AMC_10B_Q23",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Each of the \\(5\\) sides and the \\(5\\) diagonals of a regular pentagon are randomly and independently colored red or blue with equal probability. What is the probability that there will be a triangle whose vertices are among the vertices of the pentagon such that all of its sides have the same color?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\( \\dfrac 23 \\)"
+      },
+      {
+        "id": "B",
+        "content": "\\( \\dfrac{105}{128} \\)"
+      },
+      {
+        "id": "C",
+        "content": "\\( \\dfrac{125}{128} \\)"
+      },
+      {
+        "id": "D",
+        "content": "\\( \\dfrac{253}{256} \\)"
+      },
+      {
+        "id": "E",
+        "content": "\\( 1 \\)"
+      }
     ]
   },
-  "ID": "2021_Fall_AMC_10B_Q23",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h137",
+    "math:graph-models"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "7d1c799c5f7dfa907a997a028923169992cd320ba7929d29f21aad49ca995cf4",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h137",
-      "math:graph-models"
-    ],
-    "supportIds": [
-      "cnm_h139",
-      "cnm_h234",
-      "math:double-counting"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "complementary-five-cycles",
+      "title": "Count colorings with no such triangle",
+      "explanation": "It is easier to count colorings with no triangle of a single color. The restriction turns out to force a very specific pattern of red segments.\n\nSuppose three segments from a vertex \\(A\\) to vertices \\(B,C,D\\) are red. To avoid red triangles containing \\(A\\), all three segments \\(BC,BD,CD\\) must be blue. But then \\(BCD\\) is a blue triangle. The same argument applies with the colors exchanged.\n\nThus, in a coloring with no triangle of a single color, every vertex has exactly two red and two blue segments meeting it.\n\nConsider only the red segments as a graph: the pentagon’s vertices are the graph’s vertices, and the red segments are its edges. Because exactly two red edges meet each vertex, the red edges form disjoint cycles. To see why, follow red edges, always taking the edge other than the one just used. The path cannot stop or branch, so it closes into a cycle.\n\nEach cycle needs at least three vertices. Five vertices cannot split into two such cycles, so the red edges form one cycle through all five vertices. Conversely, any red five-vertex cycle gives a valid coloring. If its order is \\(A,B,C,D,E,A\\), the remaining blue edges form the cycle \\(A,C,E,B,D,A\\). Neither color then contains a triangle.\n\nTo count red cycles, fix the starting vertex \\(A\\) and list the other four vertices in traversal order. There are \\(4!=24\\) lists. Each cycle appears twice, once in each direction, with no other duplicate listings. Hence there are\n\\[\n\\frac{4!}{2}=12\n\\]\ncolorings with no triangle of a single color.\n\nAll \\(2^{10}=1024\\) colorings are equally likely. Therefore the requested probability is\n\\[\n1-\\frac{12}{1024}\n=\\boxed{\\frac{253}{256}},\n\\]\nchoice \\(\\mathrm{D}\\).",
+      "directNodeIds": [
+        "math:graph-models",
+        "cnm_h137",
+        "cnm_h139",
+        "cnm_h234",
+        "math:double-counting"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_10B_Q23#complementary-five-cycles"
+    },
+    {
+      "id": "fixed-vertex-completions",
+      "title": "Force the remaining colors",
+      "explanation": "Fix one vertex \\(A\\) and count colorings that avoid a triangle of a single color. Once the four segments from \\(A\\) are colored, most of the remaining choices are forced.\n\nIf three segments from \\(A\\) have the same color, avoiding a triangle of that color forces all three segments joining their other endpoints to have the opposite color. Those endpoints then form a triangle of the opposite color. Therefore exactly two segments from \\(A\\) must be red and two blue.\n\nThere are \\(\\binom42=6\\) choices for the two red segments. For any one choice, name their other endpoints \\(B,C\\), and name the blue endpoints \\(D,E\\). Thus \\(AB,AC\\) are red and \\(AD,AE\\) are blue.\n\nTo avoid a red triangle \\(ABC\\), the segment \\(BC\\) must be blue. To avoid a blue triangle \\(ADE\\), the segment \\(DE\\) must be red. All six triangles containing \\(A\\) now have both colors: the other four each use one red and one blue segment from \\(A\\).\n\nOnly \\(BD,BE,CD,CE\\) remain uncolored. The four triangles not containing \\(A\\) impose these conditions:\n\n* Since \\(DE\\) is red, each of \\(B,C\\) can have at most one red segment to \\(D,E\\), or a red triangle would result.\n* Since \\(BC\\) is blue, each of \\(D,E\\) must have at least one red segment to \\(B,C\\), or a blue triangle would result.\n\nThe first condition allows at most two red segments among the four remaining segments; the second requires at least two. Therefore there are exactly two, one meeting each of \\(B,C,D,E\\). There are precisely two possibilities: make \\(BD,CE\\) red, or make \\(BE,CD\\) red. In each case the other two segments are blue. Both possibilities satisfy all four remaining triangle conditions.\n\nThus there are \\(6\\cdot2=12\\) colorings with no triangle of a single color. Each is counted once, because its red segments at \\(A\\) determine its initial choice. Among the \\(2^{10}\\) equally likely colorings, the desired probability is\n\\[\n1-\\frac{12}{2^{10}}\n=\\boxed{\\frac{253}{256}},\n\\]\nchoice \\(\\mathrm{D}\\).",
+      "directNodeIds": [
+        "cnm_h137",
+        "cnm_h139",
+        "cnm_h239",
+        "cnm_h231"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_10B_Q23#fixed-vertex-completions"
+    }
+  ],
+  "sourceRef": "amc/2021_Fall_AMC_10B_Q23"
 }

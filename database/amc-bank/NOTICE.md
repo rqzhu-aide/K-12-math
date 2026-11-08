@@ -72,6 +72,8 @@ missing worked solutions have been completed or that AI review certifies their
 correctness. Copied LIVE explanations and their solution-only figures remain
 excluded.
 
+The 169 explanations that complete AMC 10 are original project explanations informed by external mathematical references, with per-method credits to the references actually used. They are separate from the 608 official-source adaptations. The cited contributors are [AMC Step by Step](https://amcstep.com/problems/2021_10B_9), [Art of Problem Solving Wiki contributors](https://artofproblemsolving.com/wiki/index.php/2020_AMC_10A_Problems/Problem_6), [LIVE by Po-Shen Loh](https://live.poshenloh.com/past-contests/amc10/2020A/solutions), [Random Math Wiki](https://wiki.randommath.com/en/amc10/2020/part-b/problem-16). Their material is used as private mathematical reference; copied worked prose, raw source pages and solution-only figures are not redistributed. Links and source hashes identify references and do not grant reuse rights to their content.
+
 ## Modifications in Math Practice
 
 We converted problem transcriptions into structured JSON and browser data,

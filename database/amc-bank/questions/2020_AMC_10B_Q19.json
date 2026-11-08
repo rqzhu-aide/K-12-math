@@ -1,63 +1,73 @@
 {
-  "Year": 2020,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 19,
-  "Question": "In a certain card game, a player is dealt a hand of \\(10\\) cards from a deck of \\(52\\) distinct cards. The number of distinct (unordered) hands that can be dealt to the player can be written as \\(158A00A4AA0.\\) What is the digit \\(A?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(2\\)",
-    "B": "\\(3\\)",
-    "C": "\\(4\\)",
-    "D": "\\(6\\)",
-    "E": "\\(7\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.98",
-    "Concepts": "combinations; digits; modular arithmetic",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2020B/solutions",
-    "SourceSHA256": "9648a27ea075ba7f4dafa98217a82abe8746534a8466216f87e10845e8f85c50",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2020_AMC_10B_Q19",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "In a certain card game, a player is dealt a hand of \\(10\\) cards from a deck of \\(52\\) distinct cards. The number of distinct (unordered) hands that can be dealt to the player can be written as \\(158A00A4AA0.\\) What is the digit \\(A?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(2\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(3\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(4\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(6\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(7\\)"
+      }
     ]
   },
-  "ID": "2020_AMC_10B_Q19",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "A"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h239"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "1c817d2d385366fa60566c0ff86fc4d2561fa1c45c03f43052556ef637a794b1",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h239"
-    ],
-    "supportIds": [
-      "cnm_h237"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "find-the-last-nonzero-digit",
+      "title": "Find the digit before the final zero",
+      "explanation": "The digit immediately before the final zero is \\(A\\), so dividing the hand count by \\(10\\) lets us find \\(A\\) using only a units-digit calculation.\n\nLet \\(N\\) be the number of hands. A hand is an unordered selection of ten distinct cards, so\n\\[\nN=\\binom{52}{10}\n=\\frac{52\\cdot51\\cdot50\\cdot49\\cdot48\\cdot47\\cdot46\\cdot45\\cdot44\\cdot43}\n{10\\cdot9\\cdot8\\cdot7\\cdot6\\cdot5\\cdot4\\cdot3\\cdot2\\cdot1}.\n\\]\nThe division by \\(10!\\) removes the different orderings of the same ten cards.\n\nCancel \\(48\\) with \\(8\\cdot6\\) and \\(45\\) with \\(9\\cdot5\\). The remaining denominator factors \\(4,3,10,7,2\\) divide \\(52,51,50,49,44\\), respectively. This gives\n\\[\n\\begin{aligned}\nN&=13\\cdot17\\cdot5\\cdot7\\cdot47\\cdot46\\cdot22\\cdot43\\\\\n&=10\\cdot17\\cdot13\\cdot7\\cdot47\\cdot46\\cdot11\\cdot43.\n\\end{aligned}\n\\]\nSince \\(N\\) has decimal form \\(158A00A4AA0\\), the units digit of \\(N/10\\) is \\(A\\).\n\nA product's units digit depends only on the units digits of its factors. Writing \\(\\equiv\\pmod{10}\\) to mean equal remainders upon division by \\(10\\), we obtain\n\\[\n\\begin{aligned}\n\\frac N{10}\n&\\equiv7\\cdot3\\cdot7\\cdot7\\cdot6\\cdot1\\cdot3\\\\\n&=(7\\cdot3)(7\\cdot3)(7\\cdot6)\\cdot1\\\\\n&\\equiv1\\cdot1\\cdot2\\cdot1=2\\pmod{10}.\n\\end{aligned}\n\\]\nTherefore \\(\\boxed{A=2}\\), choice \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "cnm_h239",
+        "cnm_h237",
+        "math:modular-congruence"
+      ],
+      "sourceRef": "amc/2020_AMC_10B_Q19#find-the-last-nonzero-digit"
+    },
+    {
+      "id": "use-divisibility-tests",
+      "title": "Use divisibility tests",
+      "explanation": "The repeated digit \\(A\\) controls both the final digits and the digit sum, so divisibility tests can determine it without evaluating the entire hand count.\n\nLet \\(N\\) be the number of unordered ten-card hands. Then\n\\[\nN=\\binom{52}{10}\n=\\frac{52\\cdot51\\cdot50\\cdot49\\cdot48\\cdot47\\cdot46\\cdot45\\cdot44\\cdot43}\n{10\\cdot9\\cdot8\\cdot7\\cdot6\\cdot5\\cdot4\\cdot3\\cdot2\\cdot1}.\n\\]\nCancel \\(48\\) with \\(8\\cdot6\\), and \\(45\\) with \\(9\\cdot5\\). The other denominator factors \\(2,3,10,7,4\\) divide \\(52,51,50,49,44\\), respectively, leaving\n\\[\nN=26\\cdot17\\cdot5\\cdot7\\cdot47\\cdot46\\cdot11\\cdot43.\n\\]\nOnly \\(26\\) and \\(46\\) are even, and each contains exactly one factor of \\(2\\). Thus \\(N\\) is divisible by \\(4\\), but not by \\(8\\). None of the displayed factors is divisible by \\(3\\), so neither is \\(N\\).\n\nBecause \\(100\\) is divisible by \\(4\\), divisibility by \\(4\\) depends only on the last two digits. Those digits are \\(A0\\), representing \\(10A\\). Therefore \\(A\\) must be even. Among the listed choices, this leaves \\(2,4,6\\).\n\nIf \\(A=4\\), the last three digits are \\(440\\), which is divisible by \\(8\\). Since \\(1000\\) is also divisible by \\(8\\), this would make \\(N\\) divisible by \\(8\\), a contradiction.\n\nIf \\(A=6\\), the digit sum of \\(158A00A4AA0\\) is\n\\[\n1+5+8+4+4A=18+24=42.\n\\]\nA number is divisible by \\(3\\) exactly when its digit sum is divisible by \\(3\\). This would make \\(N\\) divisible by \\(3\\), another contradiction.\n\nThe only remaining choice is \\(\\boxed{A=2}\\), choice \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "cnm_h239",
+        "cnm_h237",
+        "math:prime-factorization",
+        "cnm_p155"
+      ],
+      "sourceRef": "amc/2020_AMC_10B_Q19#use-divisibility-tests"
+    }
+  ],
+  "sourceRef": "amc/2020_AMC_10B_Q19"
 }

@@ -1,81 +1,92 @@
 {
-  "Year": 2025,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 22,
-  "Question": "A seven-digit positive integer is chosen at random. What is the probability that the number is divisible by \\(11,\\) given that the sum of its digits is \\(61?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{3}{14}\\)",
-    "B": "\\(\\dfrac{3}{11}\\)",
-    "C": "\\(\\dfrac{2}{7}\\)",
-    "D": "\\(\\dfrac{4}{11}\\)",
-    "E": "\\(\\dfrac{3}{7}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "reviewed-source-concepts",
-    "Concepts": "conditional probability; divisibility; stars and bars",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2025B/solutions",
-    "SourceSHA256": "cf9d9f05708ee08cd76252c09e1b652d2dc4bf0d5e2701f607a7f623089b5acb",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2025_AMC_10B_Q22",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "9f34df9e92e11f0b37b2d86f0729d43385e73a2532630e6dba4860ea26a97e5c",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h244",
-      "math:modular-congruence"
-    ],
-    "supportIds": [
-      "cnm_h137"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2025_AMC_10B_Q22",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "A seven-digit positive integer is chosen at random. What is the probability that the number is divisible by \\(11,\\) given that the sum of its digits is \\(61?\\)",
+    "choices": [
       {
-        "id": "digit-deficit-compositions",
-        "label": "Count deficit compositions",
-        "nodeIds": [
-          "math:stars-and-bars",
-          "cnm_h237"
-        ]
+        "id": "A",
+        "content": "\\(\\dfrac{3}{14}\\)"
       },
       {
-        "id": "two-deficit-patterns",
-        "label": "One deficit of 2 or two of 1",
-        "nodeIds": [
-          "cnm_h232",
-          "cnm_h239"
-        ]
+        "id": "B",
+        "content": "\\(\\dfrac{3}{11}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac{2}{7}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac{4}{11}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac{3}{7}\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "A"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h244",
+    "math:modular-congruence"
+  ],
+  "solutions": [
+    {
+      "id": "count-two-digit-deficit-patterns",
+      "title": "Only two digit patterns",
+      "explanation": "The largest possible digit sum is \\(7\\cdot9=63\\), so a sum of \\(61\\) leaves only two units to subtract from seven 9s.\n\nThere are exactly two possible digit patterns:\n\n- One digit is 7 and the other six are 9. There are \\(7\\) choices for the position of the 7.\n- Two digits are 8 and the other five are 9. There are \\(\\binom72=21\\) choices for the positions of the 8s.\n\nThese cases do not overlap and include every possibility. Thus there are \\(7+21=28\\) eligible numbers. Every digit is at least 7, so all are seven-digit numbers.\n\nFor divisibility by 11, use the alternating digit sum, starting with a plus sign on the left. This test works because powers of 10 have alternating remainders \\(1,-1,1,-1,\\ldots\\) upon division by 11. The alternating sum of \\(9999999\\) is \\(9\\).\n\nLet \\(u\\) be the total amount subtracted from positions \\(1,3,5,7\\), and let \\(v\\) be the total amount subtracted from positions \\(2,4,6\\). Since \\(u+v=2\\), the new alternating sum is\n\\[\n9-u+v=11-2u.\n\\]\nFor \\(u=0,1,2\\), this is respectively \\(11,9,7\\). Only \\(11\\) is divisible by 11, so both units must be subtracted from the three even-numbered positions.\n\nWe can put a 7 in one of those three positions, or put 8s in two of them. The favorable count is\n\\[\n3+\\binom32=6.\n\\]\nAll 28 numbers remain equally likely after conditioning on their digit sum. Hence the probability is\n\\[\n\\frac6{28}=\\boxed{\\frac3{14}},\n\\]\nchoice \\(\\text{A}\\).",
+      "directNodeIds": [
+        "cnm_h244",
+        "math:modular-congruence",
+        "cnm_h239"
+      ],
+      "sourceRef": "amc/2025_AMC_10B_Q22#count-two-digit-deficit-patterns"
+    },
+    {
+      "id": "bound-alternating-sums-and-use-separators",
+      "title": "Separate odd and even positions",
+      "explanation": "There are four odd-numbered digit positions and three even-numbered positions. Their maximum sums restrict the alternating digit sum to a very small range.\n\nWrite the digits from left to right as \\(a_1,\\ldots,a_7\\), and define\n\\[\nA=a_1+a_3+a_5+a_7,\\qquad B=a_2+a_4+a_6.\n\\]\nWe know \\(A+B=61\\), while \\(A\\le36\\) and \\(B\\le27\\). Consequently,\n\\[\n34\\le A\\le36,\\qquad 7\\le A-B=2A-61\\le11.\n\\]\nA number is divisible by 11 exactly when its alternating digit sum \\(A-B\\) is a multiple of 11. Indeed, replacing each power of 10 by its remainder modulo 11 gives alternating signs. The only multiple of 11 in this range is 11. Therefore a favorable number must satisfy\n\\[\nA+B=61,\\qquad A-B=11,\n\\]\nwhich gives \\(A=36\\) and \\(B=25\\).\n\nThus all four odd-position digits are 9. The other three digits have total shortfall \\(27-25=2\\) from three 9s.\n\nTo count the ways to distribute two units of shortfall among three positions, arrange two identical marks and two dividers. The numbers of marks before, between, and after the dividers record the three shortfalls. This is a reversible encoding, so there are\n\\[\n\\binom42=6\n\\]\nfavorable numbers.\n\nFor the denominator, every eligible number has seven nonnegative shortfalls \\(9-a_i\\) adding to \\(63-61=2\\). Two marks and six dividers encode these seven shortfalls, giving\n\\[\n\\binom82=28\n\\]\nnumbers. Each shortfall is at most 2, so every resulting digit is valid and the leading digit is nonzero.\n\nThe eligible numbers are equally likely, so the required probability is\n\\[\n\\frac{\\binom42}{\\binom82}=\\frac6{28}=\\boxed{\\frac3{14}},\n\\]\nchoice \\(\\text{A}\\).",
+      "directNodeIds": [
+        "cnm_h244",
+        "math:modular-congruence",
+        "math:stars-and-bars",
+        "cnm_h237"
+      ],
+      "sourceRef": "amc/2025_AMC_10B_Q22#bound-alternating-sums-and-use-separators"
+    },
+    {
+      "id": "digit-deficit-compositions",
+      "title": "Count deficit compositions",
+      "directNodeIds": [
+        "math:stars-and-bars",
+        "cnm_h237"
+      ],
+      "sourceRef": "amc/2025_AMC_10B_Q22#digit-deficit-compositions"
+    },
+    {
+      "id": "two-deficit-patterns",
+      "title": "One deficit of 2 or two of 1",
+      "directNodeIds": [
+        "cnm_h232",
+        "cnm_h239"
+      ],
+      "sourceRef": "amc/2025_AMC_10B_Q22#two-deficit-patterns"
+    }
+  ],
+  "sourceRef": "amc/2025_AMC_10B_Q22"
 }

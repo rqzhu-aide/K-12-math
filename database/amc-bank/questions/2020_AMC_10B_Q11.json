@@ -1,63 +1,70 @@
 {
-  "Year": 2020,
-  "Level": "AMC 10",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 11,
-  "Question": "Ms. Carr asks her students to read any \\(5\\) of the \\(10\\) books on a reading list. Harold randomly selects \\(5\\) books from this list, and Betty does the same. What is the probability that there are exactly \\(2\\) books that they both select?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{1}{8}\\)",
-    "B": "\\(\\dfrac{5}{36}\\)",
-    "C": "\\(\\dfrac{14}{45}\\)",
-    "D": "\\(\\dfrac{25}{63}\\)",
-    "E": "\\(\\dfrac{1}{2}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:1.00",
-    "Concepts": "combinations; basic probability",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2020B/solutions",
-    "SourceSHA256": "9648a27ea075ba7f4dafa98217a82abe8746534a8466216f87e10845e8f85c50",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2020_AMC_10B_Q11",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Ms. Carr asks her students to read any \\(5\\) of the \\(10\\) books on a reading list. Harold randomly selects \\(5\\) books from this list, and Betty does the same. What is the probability that there are exactly \\(2\\) books that they both select?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(\\dfrac{1}{8}\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(\\dfrac{5}{36}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac{14}{45}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac{25}{63}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac{1}{2}\\)"
+      }
     ]
   },
-  "ID": "2020_AMC_10B_Q11",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h257"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "50ca3133d534fa3602f416acf368b89879c5be487bcaf50031138ef34e1dce87",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_h257"
-    ],
-    "supportIds": [
-      "cnm_h239"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "fix-harolds-selection",
+      "title": "Fix Harold's books",
+      "explanation": "Once Harold has chosen his books, the list splits into two groups of five: books he selected and books he did not select. Only these group sizes matter, so the calculation is the same for every possible choice Harold makes.\n\nWrite \\(\\binom{n}{r}\\) for the number of ways to choose \\(r\\) objects from \\(n\\) objects without regard to order. Betty has\n\\[\n\\binom{10}{5}=252\n\\]\nequally likely selections.\n\nTo share exactly two books with Harold, Betty must choose two books from his group and three from the other group. This gives\n\\[\n\\binom{5}{2}\\binom{5}{3}=10\\cdot10=100\n\\]\nfavorable selections. Every favorable selection is counted exactly once, because its two shared books and three unshared books uniquely determine these choices.\n\nTherefore, the probability is\n\\[\n\\frac{100}{252}=\\boxed{\\frac{25}{63}},\n\\]\nwhich is choice \\(\\boxed{\\text{D}}\\).",
+      "directNodeIds": [
+        "cnm_h257",
+        "cnm_h239"
+      ],
+      "sourceRef": "amc/2020_AMC_10B_Q11#fix-harolds-selection"
+    },
+    {
+      "id": "sequential-draw-patterns",
+      "title": "Follow five draws",
+      "explanation": "Imagine Betty drawing her books one at a time without replacement. Every five-book set has the same number of possible draw orders, so this produces the random selection described in the problem.\n\nFix Harold's selection. Call a draw a match if Harold also selected that book. Consider the particular pattern consisting of two matches followed by three nonmatches. Its probability is\n\\[\n\\frac{5}{10}\\cdot\\frac{4}{9}\\cdot\\frac{5}{8}\\cdot\\frac{4}{7}\\cdot\\frac{3}{6}\n=\\frac{5}{126}.\n\\]\nEach factor counts the available books of the required kind divided by all books still available.\n\nAny pattern with two matches and three nonmatches has this same probability: the match numerators are always \\(5,4\\), the nonmatch numerators are always \\(5,4,3\\), and the denominators are always \\(10,9,8,7,6\\).\n\nThere are \\(\\binom{5}{2}=10\\) such patterns, found by choosing the two draw positions that are matches. These patterns are disjoint and cover every way to have exactly two matches. Hence the desired probability is\n\\[\n10\\cdot\\frac{5}{126}=\\boxed{\\frac{25}{63}},\n\\]\nwhich is choice \\(\\boxed{\\text{D}}\\).",
+      "directNodeIds": [
+        "cnm_h245",
+        "cnm_h239"
+      ],
+      "sourceRef": "amc/2020_AMC_10B_Q11#sequential-draw-patterns"
+    }
+  ],
+  "sourceRef": "amc/2020_AMC_10B_Q11"
 }

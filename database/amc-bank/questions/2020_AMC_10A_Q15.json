@@ -1,64 +1,62 @@
 {
-  "Year": 2020,
-  "Level": "AMC 10",
-  "Batch": "A",
-  "Area": "Counting & Probability",
-  "Number": 15,
-  "Question": "A positive integer divisor of \\(12!\\) is chosen at random. The probability that the divisor chosen is a perfect square can be expressed as \\(\\frac{m}{n},\\) where \\(m\\) and \\(n\\) are relatively prime positive integers. What is \\(m+n?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(3\\)",
-    "B": "\\(5\\)",
-    "C": "\\(12\\)",
-    "D": "\\(18\\)",
-    "E": "\\(23\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.72",
-    "Concepts": "factor counting; perfect square; basic probability",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2020A/solutions",
-    "SourceSHA256": "2fd87a2a44e59aff473dcecc5b4e3e5ae93b9a99a198c041311afbf1ff99f250",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2020_AMC_10A_Q15",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "A positive integer divisor of \\(12!\\) is chosen at random. The probability that the divisor chosen is a perfect square can be expressed as \\(\\frac{m}{n},\\) where \\(m\\) and \\(n\\) are relatively prime positive integers. What is \\(m+n?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(3\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(5\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(12\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(18\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(23\\)"
+      }
     ]
   },
-  "ID": "2020_AMC_10A_Q15",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "E"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 10",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:prime-valuations-factorials",
+    "math:divisor-count-and-sum"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "c2b5feac5ada95471f88991825c08f25958636050323f73041a093d8613176ae",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:prime-valuations-factorials",
-      "math:divisor-count-and-sum"
-    ],
-    "supportIds": [
-      "cnm_285"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "count-prime-exponents",
+      "title": "Count prime exponent choices",
+      "explanation": "A divisor is determined by its prime exponents, and it is a perfect square exactly when all those exponents are even. This lets us count divisors without listing them.\n\nIn \\(12!\\), each multiple of a prime contributes one copy of that prime, each multiple of its square contributes an additional copy, and so on. The exponent of \\(2\\) is therefore \\(6+3+1=10\\), and the exponent of \\(3\\) is \\(4+1=5\\). The primes \\(5,7,11\\) occur with exponents \\(2,1,1\\), respectively. Hence\n\\[\n12!=2^{10}3^5 5^2 7\\cdot11.\n\\]\nFor each prime, a divisor can use any exponent from zero through the exponent above. The table counts these possibilities and the even ones:\n\n| Prime | Exponent in \\(12!\\) | All exponent choices | Even exponent choices |\n|---|---:|---:|---|\n| \\(2\\) | \\(10\\) | \\(11\\) | \\(0,2,4,6,8,10\\): \\(6\\) choices |\n| \\(3\\) | \\(5\\) | \\(6\\) | \\(0,2,4\\): \\(3\\) choices |\n| \\(5\\) | \\(2\\) | \\(3\\) | \\(0,2\\): \\(2\\) choices |\n| \\(7\\) | \\(1\\) | \\(2\\) | \\(0\\): \\(1\\) choice |\n| \\(11\\) | \\(1\\) | \\(2\\) | \\(0\\): \\(1\\) choice |\n\nThe choices for different primes can be combined freely. Unique prime factorization guarantees that every divisor is produced exactly once. Thus there are\n\\[\n11\\cdot6\\cdot3\\cdot2\\cdot2=792\n\\]\npositive divisors. Squaring an integer doubles each prime exponent, so the square divisors are exactly the\n\\[\n6\\cdot3\\cdot2\\cdot1\\cdot1=36\n\\]\ndivisors using only even exponents.\n\nBecause all positive divisors are equally likely, the probability is\n\\[\n\\frac{36}{792}=\\frac1{22}.\n\\]\nThis fraction is reduced, so \\(m=1\\), \\(n=22\\), and \\(m+n=\\boxed{23}\\), choice \\(\\textbf{E}\\).",
+      "directNodeIds": [
+        "math:prime-valuations-factorials",
+        "math:divisor-count-and-sum",
+        "cnm_285"
+      ],
+      "sourceRef": "amc/2020_AMC_10A_Q15#count-prime-exponents"
+    }
+  ],
+  "sourceRef": "amc/2020_AMC_10A_Q15"
 }
