@@ -293,7 +293,7 @@ def normalize_question(record, *, root=ROOT, bank_root=None, source_index=None):
         'Solution':written[0]['explanation'] if written else '', 'SolutionMethods':methods, 'SourceInfo':summary,
         'SourceRef':record['sourceRef'], 'Meta':meta, '_QuestionV3':deepcopy(record),
         'Question Type':'mixed' if '[Figure ' in record['question']['prompt'] else 'text',
-        'Choices Type':'figure' if choices and all('[Figure ' in v for v in choices.values()) else 'text',
+        'Choices Type':'figure' if choices and any('[Figure ' in v for v in choices.values()) else 'text',
         'domain':deepcopy(classification.get('domainIds', [])), 'skill':deepcopy(classification.get('skillIds', []))})
     for source_key, target in (('area','Area'),('grade','Grade'),('level','Level'),('unit','CurriculumUnit'),('difficulty','Difficulty')):
         if source_key in classification:

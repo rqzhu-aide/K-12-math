@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1978_AMC_12_Q26",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "fdc36f2f9a142e73ff3d5f7521b1918e73a7382bcde98bfdc06ef8effb23c577",
+    "figureHashes": {
+      "figures/1978_AMC_12_Q26_question_fig1.svg": "e9907f5b3de9be7ca71eaafa4e2ff24ec97ecb2aef11d110dccfb092ef6f19c1"
+    }
+  },
+  "solutionSHA256": "69d337e50531dfa02b88252f3394fc8a6c11bbeaacfa8ab6e7b2e66e43f4ce5e",
+  "solutionFigureHashes": {},
+  "candidateHash": "09a4646b93f86d91734df9fbf12b09f1dde4dbf8775b3e1cea633b56886867dc",
+  "candidate": {
+    "questionId": "1978_AMC_12_Q26",
+    "derivedAnswer": "B: \\(4.8\\)",
+    "answerStatus": "matches",
+    "answerReason": "The minimum circle has diameter equal to the altitude from C to AB, which is 4.8. Since angle QCR is a right angle, QR is also a diameter, giving choice B.",
+    "methods": [
+      {
+        "id": "altitude-diameter-bound",
+        "label": "Bound the diameter and construct the smallest circle",
+        "explanation": "The side lengths reveal a right triangle:\n\\[\n6^2+8^2=10^2,\n\\]\nso \\(\\angle ACB=90^\\circ\\). Let \\(H\\) be the perpendicular foot from \\(C\\) to \\(AB\\), and write \\(h=CH\\). Computing the triangle's area using either the two legs or base \\(AB\\) gives\n\\[\n\\frac12\\cdot6\\cdot8=\\frac12\\cdot10\\cdot h,\n\\qquad h=\\frac{24}{5}.\n\\]\nTo find the smallest possible circle, consider any circle of radius \\(r\\) through \\(C\\) tangent to \\(AB\\) at \\(T\\). The perpendicular distance from \\(C\\) to \\(AB\\) is shortest, so \\(CT\\ge CH=h\\). Also, \\(CT\\) is a chord, and no chord exceeds the diameter. Thus\n\\[\nh\\le CT\\le2r,\n\\qquad r\\ge\\frac h2.\n\\]\nThis bound is attained: the circle with diameter \\(CH\\) passes through \\(C\\), and its radius to \\(H\\) is perpendicular to \\(AB\\), making \\(AB\\) tangent at \\(H\\). Therefore the smallest circle has diameter \\(h=24/5\\). In fact, equality in the bound forces \\(T=H\\) and \\(CH\\) to be a diameter, so this smallest circle is unique.\n\nFinally, \\(Q\\) lies on \\(AC\\) and \\(R\\) lies on \\(BC\\), so \\(\\angle QCR=90^\\circ\\). A chord subtending a right inscribed angle is a diameter. Hence\n\\[\nQR=\\frac{24}{5}=4.8.\n\\]\nThe answer is \\(\\boxed{4.8}\\), choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_065",
+          "cnm_250",
+          "cnm_261",
+          "cnm_254"
+        ],
+        "prerequisiteIds": [
+          "cnm_177",
+          "cnm_p148",
+          "cnm_064",
+          "cnm_260"
+        ],
+        "levelReason": "The proof uses a right-triangle recognition, two area calculations, elementary distance and chord bounds, and the right-inscribed-angle theorem. No calculus or algebraic optimization is needed."
+      }
+    ],
+    "assessedIds": [
+      "cnm_254"
+    ],
+    "supportIds": [
+      "cnm_177",
+      "cnm_p148"
+    ],
+    "annotationRationale": "The final length is determined by recognizing QR as a diameter from its right inscribed angle. Recognizing the 6-8-10 right triangle and computing its altitude are supporting prerequisites. The method's optimization uses perpendicular-shortest distance and the longest-chord property, followed by the tangency criterion to certify attainment. The tangent-radius property cnm_262 is not assigned because the written proof uses the converse construction criterion cnm_261 instead. The continuous geometric minimum is recorded as a catalog gap rather than forced into a discrete-extremum node. No mastery inference follows from these annotations.",
+    "needsNewNodes": [
+      {
+        "name": "Geometric extrema by a bound and an attaining construction",
+        "description": "Prove a maximum or minimum over continuously varying geometric configurations by establishing a bound for every admissible configuration and constructing one that attains it; use equality conditions to determine uniqueness when needed.",
+        "reason": "The minimum-radius condition is central to this question. The catalog's discrete extremal principle is restricted to discrete configurations, and its quadratic-function optimization nodes do not describe this geometric bound-and-construction proof."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1978_AMC_12_Q26",
+    "decision": "accept",
+    "mathematicalCheck": "The 6-8-10 triangle is right at C, and its altitude to AB is 24/5. Every admissible circle satisfies CH ≤ CT ≤ 2r. The circle with diameter CH attains the bound and is uniquely forced by equality. Since ∠QCR = 90°, QR is a diameter and equals 24/5 = 4.8. The figure is consistent with this configuration.",
+    "levelCheck": "The bound, attaining construction, uniqueness argument, and final diameter inference are clearly explained with elementary geometry.",
+    "methodDistinctness": "One complete geometric method is sufficient.",
+    "annotationCheck": "The proof correctly uses tangency criterion cnm_261 rather than tangent property cnm_262. The remaining IDs match their uses, and the proposed geometric-extremum node honestly identifies a catalog gap.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "altitude-diameter-bound": "altitude-diameter-bound"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "b23e7425bfa795c8dcb051de4422ae0b1a9d02d8f68ac10b57fb987b23331f9d",
+    "acceptedAt": "2026-11-08T00:13:16.732877+00:00",
+    "inputHash": "d257834e064c56206043b6f048118a6f431ae67e8a30d9df71e5c1aa1536bfa2",
+    "authorInputHash": "fd86bf9051bc7e90b05f963ba34ee8a2ef197d7710d7a165d60867d7b106c54f",
+    "reviewInputHash": "f9a3f6d9384d48ef070500ce0e6903147b3b64e4ace6b7d193764e274a05edaf",
+    "authorResponseHash": "9e0462bcb3ede166825ad940db463330c9a782ab04e50044c8d5cad7451111cd",
+    "reviewerResponseHash": "bddd153fce769834daaaef1c21650ec6c214560c08148df4ee6e86eddc4e44df",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

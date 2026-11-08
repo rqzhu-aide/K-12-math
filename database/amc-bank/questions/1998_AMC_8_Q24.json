@@ -1,84 +1,72 @@
 {
-  "Year": 1998,
-  "Level": "AMC 8",
-  "Batch": "NA",
-  "Area": "Unclassified",
-  "Number": 24,
-  "Question": "A rectangular board of \\(8\\) columns has squares numbered beginning in the upper left corner and moving left to right so row one is numbered \\(1\\) through \\(8,\\) row two is \\(9\\) through \\(16,\\) and so on. A student shades square \\(1,\\) then skips one square and shades square \\(3,\\) skips two squares and shades square \\(6,\\) skips \\(3\\) squares and shades square \\(10,\\) and continues in this way until there is at least one shaded square in each column.\n\nWhat is the number of the shaded square that first achieves this result?\n\n[Figure 1](figures/1998_AMC_8_Q24_question_fig1.svg)",
-  "Question Type": "mixed",
-  "Choices": {
-    "A": "\\(36 \\)",
-    "B": "\\(64 \\)",
-    "C": "\\(78 \\)",
-    "D": "\\(91 \\)",
-    "E": "\\(120 \\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "triangular number; modular arithmetic",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc8/1998/solutions",
-    "SourceSHA256": "2e364f14095cf4dfb1616f0e80b368bd2581bd87fb4eb2bcfa8b3989fb95189f",
-    "Figures": [
-      "figures/1998_AMC_8_Q24_question_fig1.svg"
+  "answer": {
+    "accepted": [
+      "E"
     ],
-    "FigureSources": {
-      "figures/1998_AMC_8_Q24_question_fig1.svg": {
-        "url": "https://live.poshenloh.com/images/past-contests/amc8/1998/24.svg",
-        "alt": ""
-      }
-    },
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AJHSME",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
+    "type": "choice"
   },
-  "ID": "1998_AMC_8_Q24",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "efc2577583e4479d79a28771b42a8ce585ba81406a5bdabe13b95973afad0aef",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_030",
-      "math:modular-congruence"
-    ],
-    "supportIds": [],
-    "routes": [
+  "assessedNodeIds": [
+    "cnm_p052"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 8"
+  },
+  "id": "1998_AMC_8_Q24",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "successive-increments",
-        "label": "Generate shaded labels",
-        "nodeIds": [
-          "cnm_h200"
-        ]
+        "content": "\\(36 \\)",
+        "id": "A"
       },
       {
-        "id": "triangular-number-formula",
-        "label": "Sum the successive increments",
-        "nodeIds": [
-          "cnm_h204"
-        ]
+        "content": "\\(64 \\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(78 \\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(91 \\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(120 \\)",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "A rectangular board of \\(8\\) columns has squares numbered beginning in the upper left corner and moving left to right so row one is numbered \\(1\\) through \\(8,\\) row two is \\(9\\) through \\(16,\\) and so on. A student shades square \\(1,\\) then skips one square and shades square \\(3,\\) skips two squares and shades square \\(6,\\) skips \\(3\\) squares and shades square \\(10,\\) and continues in this way until there is at least one shaded square in each column.\n\nWhat is the number of the shaded square that first achieves this result?\n\n[Figure 1](figures/1998_AMC_8_Q24_question_fig1.svg)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "cnm_h200",
+        "cnm_p052"
+      ],
+      "explanation": "Each row contains eight squares, so dividing a square's number by \\(8\\) identifies its column: remainders \\(1\\) through \\(7\\) give those columns, and remainder \\(0\\) means column \\(8\\). For example, \\(21=2\\cdot8+5\\), so square \\(21\\) is in column \\(5\\).\n\nSkipping one square moves forward two squares, skipping two moves forward three, and so on. Thus we generate the shaded numbers by adding \\(2,3,4,\\ldots\\) successively. The first seven shaded numbers are\n\\[\n1,3,6,10,15,21,28.\n\\]\nTheir columns, in the same order, are\n\\[\n1,3,6,2,7,5,4.\n\\]\nEvery column except column \\(8\\) has now been reached. To find when that last column is reached, continue adding \\(8,9,\\ldots\\). The next shaded numbers are\n\\[\n36,45,55,66,78,91,105,120,\n\\]\nand their columns are respectively\n\\[\n4,5,7,2,6,3,1,8.\n\\]\nThese lists include every shading step up to \\(120\\). Column \\(8\\) appears for the first time at \\(120\\), when all other columns have already appeared. Therefore the answer is \\(\\boxed{120}\\), choice \\(\\mathrm{E}\\).",
+      "id": "successive-labels-and-columns",
+      "sourceRef": "amc/1998_AMC_8_Q24#successive-labels-and-columns",
+      "title": "Track shaded numbers and their columns"
+    },
+    {
+      "directNodeIds": [
+        "cnm_h200"
+      ],
+      "id": "successive-increments",
+      "sourceRef": "amc/1998_AMC_8_Q24#successive-increments",
+      "title": "Generate shaded labels"
+    },
+    {
+      "directNodeIds": [
+        "cnm_h204"
+      ],
+      "id": "triangular-number-formula",
+      "sourceRef": "amc/1998_AMC_8_Q24#triangular-number-formula",
+      "title": "Sum the successive increments"
+    }
+  ],
+  "sourceRef": "amc/1998_AMC_8_Q24"
 }

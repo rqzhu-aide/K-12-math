@@ -1,71 +1,67 @@
 {
-  "Year": 1982,
-  "Level": "AMC 12",
-  "Batch": "NA",
-  "Area": "Unclassified",
-  "Number": 25,
-  "Question": "The adjoining figure is a map of part of a city: the small rectangles are blocks and the spaces in between are streets. Each morning a student walks from intersection \\(A\\) to intersection \\(B,\\) always walking along streets shown, always going east or south. For variety, at each intersection where he has a choice, he chooses with probability \\(\\frac12\\) (independent of all other choices) whether to go east or south. Find the probability that, on any given morning, he walks through intersection \\(C.\\)\n\n[Figure 1](figures/1982_AMC_12_Q25_question_fig1.svg)",
-  "Question Type": "mixed",
-  "Choices": {
-    "A": "\\(\\frac{11}{32}\\)",
-    "B": "\\(\\frac12\\)",
-    "C": "\\(\\frac47\\)",
-    "D": "\\(\\frac{21}{32}\\)",
-    "E": "\\(\\frac34\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "basic probability; lattice paths; binomial probability",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/1982/solutions",
-    "SourceSHA256": "592192ab8db06b0185cc50fa4dfe731f639d39436734a7e2fbb9156b25082bf4",
-    "Figures": [
-      "figures/1982_AMC_12_Q25_question_fig1.svg"
+  "answer": {
+    "accepted": [
+      "D"
     ],
-    "FigureSources": {
-      "figures/1982_AMC_12_Q25_question_fig1.svg": {
-        "url": "https://live.poshenloh.com/images/past-contests/amc12/1982/25.svg",
-        "alt": ""
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "cnm_h138"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
+  },
+  "id": "1982_AMC_12_Q25",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(\\frac{11}{32}\\)",
+        "id": "A"
+      },
+      {
+        "content": "\\(\\frac12\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(\\frac47\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(\\frac{21}{32}\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(\\frac34\\)",
+        "id": "E"
       }
-    },
-    "SourceQuestionCount": 30,
-    "HistoricalSeries": "AHSME",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
+    ],
+    "prompt": "The adjoining figure is a map of part of a city: the small rectangles are blocks and the spaces in between are streets. Each morning a student walks from intersection \\(A\\) to intersection \\(B,\\) always walking along streets shown, always going east or south. For variety, at each intersection where he has a choice, he chooses with probability \\(\\frac12\\) (independent of all other choices) whether to go east or south. Find the probability that, on any given morning, he walks through intersection \\(C.\\)\n\n[Figure 1](figures/1982_AMC_12_Q25_question_fig1.svg)"
   },
-  "ID": "1982_AMC_12_Q25",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "ebb8f7ae9c3b22beee9dface5ba4c197cbcbc297e1c9833541f7bb5aa2ac62c9",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:recursive-counting-probability"
-    ],
-    "supportIds": [
-      "cnm_h138",
-      "cnm_h140"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "cnm_h138",
+        "cnm_h139",
+        "cnm_h237"
+      ],
+      "explanation": "The boundary streets make some moves compulsory, so complete routes need not have equal probabilities. Instead, count the possible beginnings of routes that miss \\(C\\).\n\nNumber intersections by their eastward and southward steps from \\(A\\). The figure gives \\(A=(0,0)\\), \\(C=(3,3)\\), and \\(B=(3,4)\\). Once the student reaches the eastern boundary before reaching the southern boundary, he must walk south through \\(C\\). Thus he misses \\(C\\) exactly when his fourth southward move occurs before his third eastward move.\n\nSuppose he first reaches the southern boundary after making \\(k\\) eastward moves, where \\(k=0,1,2\\). His last move is south. Before that last move, there are exactly three southward moves and \\(k\\) eastward moves. Every move in this beginning is a fair choice, since neither boundary has yet been reached.\n\nFor \\(k=0\\), there is one beginning, with probability \\(1/2^4\\).\n\nFor \\(k=1\\), the eastward move can occupy any of the first four positions, giving four beginnings, each with probability \\(1/2^5\\).\n\nFor \\(k=2\\), choose two of the first five positions for the eastward moves. There are \\(5\\cdot4/2=10\\) choices, each with probability \\(1/2^6\\).\n\nThese cases are disjoint and include every route that misses \\(C\\), because \\(k\\) records its unique first arrival on the southern boundary. Hence\n\\[\nP(\\text{miss }C)\n=\\frac1{16}+\\frac4{32}+\\frac{10}{64}\n=\\frac{11}{32}.\n\\]\nTherefore\n\\[\nP(\\text{pass }C)=1-\\frac{11}{32}\n=\\boxed{\\frac{21}{32}},\n\\]\nchoice \\(\\boxed{D}\\).",
+      "id": "count-avoiding-routes",
+      "sourceRef": "amc/1982_AMC_12_Q25#count-avoiding-routes",
+      "title": "Count the routes that miss C"
+    },
+    {
+      "directNodeIds": [
+        "math:recursive-counting-probability",
+        "cnm_h138"
+      ],
+      "explanation": "Track the probability of reaching each intersection. This automatically accounts for routes with different numbers of fair choices.\n\nLet \\(p(i,j)\\) be the probability of reaching the intersection \\(i\\) steps east and \\(j\\) steps south of \\(A\\). From the figure, \\(A=(0,0)\\), \\(C=(3,3)\\), and \\(B=(3,4)\\). Only the current intersection matters for the next move, since each available choice is independent of earlier choices.\n\nAt an intersection with two exits, half its probability passes east and half passes south. At the eastern boundary, all its probability passes south. Incoming contributions may be added because a route arrives from exactly one preceding intersection.\n\nAlong the top and western boundaries, before any compulsory exit,\n\\[\np(i,0)=2^{-i},\\qquad p(0,j)=2^{-j}.\n\\]\nFor the interior intersections needed here, each incoming contribution is halved. Starting from these boundary values gives\n\\[\n\\begin{aligned}\np(1,1)&=\\tfrac12(\\tfrac12+\\tfrac12)=\\tfrac12,\\\\\np(2,1)=p(1,2)&=\\tfrac12(\\tfrac14+\\tfrac12)=\\tfrac38,\\\\\np(2,2)&=\\tfrac12(\\tfrac38+\\tfrac38)=\\tfrac38,\\\\\np(1,3)&=\\tfrac12(\\tfrac18+\\tfrac38)=\\tfrac14,\\\\\np(2,3)&=\\tfrac12(\\tfrac14+\\tfrac38)=\\tfrac5{16}.\n\\end{aligned}\n\\]\nNow work down the eastern boundary. Arrivals from the north continue south with probability \\(1\\), while arrivals from the west still require an eastward choice:\n\\[\n\\begin{aligned}\np(3,0)&=\\tfrac18,\\\\\np(3,1)&=\\tfrac18+\\tfrac12\\cdot\\tfrac38=\\tfrac5{16},\\\\\np(3,2)&=\\tfrac5{16}+\\tfrac12\\cdot\\tfrac38=\\tfrac12,\\\\\np(3,3)&=\\tfrac12+\\tfrac12\\cdot\\tfrac5{16}=\\tfrac{21}{32}.\n\\end{aligned}\n\\]\nSince eastward and southward movement prevents revisiting an intersection, \\(p(3,3)\\) is exactly the probability of passing \\(C\\). The answer is \\(\\boxed{\\frac{21}{32}}\\), choice \\(\\boxed{D}\\).",
+      "id": "propagate-probabilities",
+      "sourceRef": "amc/1982_AMC_12_Q25#propagate-probabilities",
+      "title": "Pass probabilities from intersection to intersection"
+    }
+  ],
+  "sourceRef": "amc/1982_AMC_12_Q25"
 }

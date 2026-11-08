@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1992_AMC_12_Q08",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "b71368d7219c4be61ba53fa9c15e27b1b0e3e856eb61ae27bc191509d411c483",
+    "figureHashes": {
+      "figures/1992_AMC_12_Q08_question_fig1.svg": "f807cc53aaff7ea647dcce70d6fdd15b6b2d19af8ac77cf12cab22e919685710"
+    }
+  },
+  "solutionSHA256": "3901a2548cf9bfcd9a22c7da9440b5c23289919a22d88cdcf1af59f6993d1d7e",
+  "solutionFigureHashes": {},
+  "candidateHash": "832ede4aeb567e1b656d158eb5fad1cd99d0f467952033f41e2bcb15cd23f368",
+  "candidate": {
+    "questionId": "1992_AMC_12_Q08",
+    "derivedAnswer": "E: \\(2601\\) tiles",
+    "answerStatus": "matches",
+    "answerReason": "An n by n grid has 2n diagonal tiles when n is even and 2n - 1 when n is odd. The odd count 101 forces n = 51, giving 51 squared = 2601 tiles, choice E.",
+    "methods": [
+      {
+        "id": "diagonal_overlap",
+        "label": "Count the diagonals and correct the overlap",
+        "explanation": "Let \\(n\\) be the positive integer number of tiles along each side of the floor. Each diagonal passes through one tile in each row, so each diagonal contributes \\(n\\) tiles. We must check whether adding these two counts counts any tile twice.\n\nIf \\(n\\) is even, the diagonals meet at a grid vertex in the center, and their tile lists have no tile in common. There would be \\(2n\\) black tiles, an even number, so this cannot give \\(101\\).\n\nIf \\(n\\) is odd, the diagonals pass through the same central tile. This is their only shared tile: in row \\(r\\), the two diagonal tiles are in columns \\(r\\) and \\(n+1-r\\), which agree only in the middle row. Subtracting the one duplicate gives\n\\[\n2n-1=101,\n\\qquad n=51.\n\\]\nThis value is odd, as required. There are \\(51\\) rows of \\(51\\) tiles, so the total is\n\\[\n51\\cdot51=\\boxed{2601},\n\\]\nchoice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_h009"
+        ],
+        "prerequisiteIds": [
+          "cnm_h008",
+          "cnm_p156",
+          "math:rectangle-square-grids",
+          "cnm_p145"
+        ],
+        "levelReason": "The argument uses elementary grid counting, odd and even cases, and a simple equation, all within AMC 12 scope."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h009"
+    ],
+    "supportIds": [
+      "cnm_p156",
+      "math:rectangle-square-grids"
+    ],
+    "annotationRationale": "The task targets counting a union while correcting a shared element, matching the finite-union criterion of cnm_h009. Odd/even reasoning determines whether a shared central tile exists, and the square-grid structure converts a side count into a total. Identifying the common tile and solving the resulting simple equation are local prerequisites of the method. The annotations do not establish mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1992_AMC_12_Q08",
+    "decision": "accept",
+    "mathematicalCheck": "Each diagonal contains n tiles. Their tile lists are disjoint for even n and share exactly the central tile for odd n, as the row-column argument establishes. Therefore 101 requires 2n - 1 = 101, yielding the admissible odd value n = 51 and 51^2 = 2601 tiles. The figure supports the grid interpretation.",
+    "levelCheck": "Elementary grid counting, parity, and a simple equation are appropriate.",
+    "methodDistinctness": "The single method fully handles both parity cases and the overlap.",
+    "annotationCheck": "The finite-union counting criterion of cnm_h009 applies directly. Intersection, parity, square-grid counting, and simple-equation prerequisites are supported by the written argument.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "diagonal_overlap": "diagonal_overlap"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c161130be17694df1212445317deb957e75cf3384a0f5ca380e3b1a747a69bde",
+    "acceptedAt": "2026-11-08T00:22:55.556507+00:00",
+    "inputHash": "fe23291b080f8330fc0a3b685e01432394da7ef465d7fef6654c62167fb80c12",
+    "authorInputHash": "d7882066014151566bcecb74fd97b21928ac3ef0e52bdf6de7fa0ccef299c58d",
+    "reviewInputHash": "5307a37500b52556ccc1aa7cb336281c1ee894a479981d4bdec373ac36f5fbae",
+    "authorResponseHash": "45880d5eca92dbd480aa862aad16110521991c9f8646560173ac9a49006d8ca9",
+    "reviewerResponseHash": "7c7443f62f0a4d7fac2e862730d11f217e24be7ec6ebf1b65492f8ac28069ec3",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

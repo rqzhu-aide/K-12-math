@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1993_AMC_12_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ebf67d18406a5efbf2d9cb02b3c8a8e5e68d924a3aef10b891fd5205a1d7f7bd",
+    "figureHashes": {
+      "figures/1993_AMC_12_Q22_question_fig1.svg": "d3b192c3eebb3da17cb90da84217d88b0e565a407d83d631926f7c6839e96081"
+    }
+  },
+  "solutionSHA256": "a3942d6014a267f6a4c2b2c97e0fc7bbacf7ac0da8982f2c025da3bfea571e65",
+  "solutionFigureHashes": {},
+  "candidateHash": "07dfc9f5aac0de2570941408bdb07fa2e467baf1b60a514821ced5dd046991ae",
+  "candidate": {
+    "questionId": "1993_AMC_12_Q22",
+    "derivedAnswer": "114, choice C.",
+    "answerStatus": "matches",
+    "answerReason": "The bottom blocks contribute with weights 1 at the three corners, 3 at the six other boundary positions, and 6 at the central position. Assigning the smallest labels to the greatest weights gives an attainable minimum of 114.",
+    "methods": [
+      {
+        "id": "trace-contributions-and-minimize",
+        "label": "Trace each block's contribution",
+        "explanation": "A bottom number may enter the top sum several times, so we first determine how many times each position contributes. Call that number the position's weight.\n\nStart with weight \\(1\\) on the top block and work downward. A block's weight is passed to each of its three supporting blocks. If several blocks pass weights to the same block, add those weights. This exactly tracks the expansion of the sums: every route from a bottom block to the top contributes one copy of its number, and each route has a unique next block above it.\n\nThe three blocks just below the top each have weight \\(1\\). Passing these weights down gives the following triangular arrangement on the six-block layer:\n\\[\n\\begin{array}{ccccc}\n&&1&&\\\\\n&2&&2&\\\\\n1&&2&&1\n\\end{array}\n\\]\nPassing them down once more gives the bottom weights:\n\\[\n\\begin{array}{ccccccc}\n&&&1&&&\\\\\n&&3&&3&&\\\\\n&3&&6&&3&\\\\\n1&&3&&3&&1\n\\end{array}\n\\]\nFor example, the center receives \\(2+2+2=6\\), each noncorner boundary position receives \\(1+2=3\\), and each corner receives \\(1\\). These account for all ten bottom positions.\n\nTo minimize the weighted sum, smaller numbers must occupy positions with larger weights. Indeed, suppose weights \\(p>q\\) hold labels \\(x>y\\). Swapping the labels decreases the sum by\n\\[\n(px+qy)-(py+qx)=(p-q)(x-y)>0.\n\\]\nThus a minimum cannot contain such a pair. Put \\(1\\) at the center, \\(2,3,4,5,6,7\\) at the six positions of weight \\(3\\), and \\(8,9,10\\) at the corners. Every label is used exactly once, so this is an allowed arrangement, and the exchange argument proves that no arrangement has a smaller sum.\n\nThe smallest top number is therefore\n\\[\n6\\cdot1+3(2+3+4+5+6+7)+(8+9+10)\n=6+81+27=\\boxed{114},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "math:recursive-counting-probability"
+        ],
+        "prerequisiteIds": [
+          "cnm_p116",
+          "cnm_p112"
+        ],
+        "levelReason": "Finite contribution counting and a two-label exchange argument establish the minimum using elementary arithmetic."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_p116",
+      "cnm_p112"
+    ],
+    "annotationRationale": "The route-neutral target is proving a discrete minimum and exhibiting an arrangement that attains it. The method counts support paths recursively, with each block position retaining the information needed for the next downward step. The distributive property explains why these counts become coefficients, and integer arithmetic evaluates the final sum. Polynomial manipulation is not required by the written method.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1993_AMC_12_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "Passing contribution counts downward produces bottom weights 1 at three corners, 3 at six boundary positions, and 6 at the center, totaling 27 contributions. The exchange calculation proves that larger weights must receive smaller labels in a minimum. The exhibited assignment attains 6+3·27+27=114, establishing both the lower bound and attainability.",
+    "levelCheck": "The contribution diagrams explain the multiplicities, and the elementary exchange argument adequately explains optimality. All reasoning fits the intended level.",
+    "methodDistinctness": "The single method combines contribution counting with minimization and is independently complete.",
+    "annotationCheck": "The extremal assessed node covers the proved bound and attaining arrangement. Position-based recursive counting fits the chosen route node; distributivity and integer arithmetic are justified supports.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "trace-contributions-and-minimize": "trace-contributions-and-minimize"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "6c93bf5c818b0441da04802140b4b77dfccbb1760dff8125ce5589dd52dd196b",
+    "acceptedAt": "2026-11-08T00:24:56.481710+00:00",
+    "inputHash": "14aaad17d5da36e10ef30e356b57e35e54bfeb6f415e9d4f832755c2dd428530",
+    "authorInputHash": "053ecd0f8a33da0c02e98d615bb7775653e1ee97a4bd47fa3c2cad2ee65795a7",
+    "reviewInputHash": "132d2f39d5b8c2ed747c264b6eec88cd96de005a88f39b280d320c58517dc474",
+    "authorResponseHash": "8edef5d25480e4d8a481b3b7f29c420400a2baee4b3d9716f55a0e1432b79aaa",
+    "reviewerResponseHash": "4895e3c448855684a768b9e8f7af9057501f51fffc600f935c455bc1a8d692f7",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1974_AMC_12_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "64363576dec9c2b49fa4600df48908ec4e6df08d0a58cc2a3ce9edcf9b53734a",
+    "figureHashes": {
+      "figures/1974_AMC_12_Q25_question_fig1.svg": "67ab391543504b7e371f7b84f7b82e18ab3a37ddf76413903c2e98cee9541ec9"
+    }
+  },
+  "solutionSHA256": "931ddde2192dc1ac4bcd3b89d8e60d496584a0e6a29bcd510f470133d66ae0f5",
+  "solutionFigureHashes": {},
+  "candidateHash": "10675a8c4e57d5fb6185359147a2d3ca61c70d7622de0c6e94ed9b0176b206c7",
+  "candidate": {
+    "questionId": "1974_AMC_12_Q25",
+    "derivedAnswer": "C, \\(\\frac{9k}{8}\\)",
+    "answerStatus": "matches",
+    "answerReason": "The midpoint conditions give QP=3AB. Similar triangles then place O at three quarters of the parallelogram's height above QP, giving area 9k/8.",
+    "methods": [
+      {
+        "id": "midpoint-similarities",
+        "label": "Similar triangles and heights",
+        "explanation": "The midpoint conditions help us find the long base \\(QP\\), after which another pair of similar triangles determines its corresponding height. Write \\(AB=b>0\\), and let \\(h>0\\) be the perpendicular distance between \\(AB\\) and \\(DC\\). Thus \\(k=bh\\).\n\nBecause \\(QA\\parallel DC\\), triangles \\(QAM\\) and \\(CDM\\) are similar by equal angles. Their corresponding sides \\(AM\\) and \\(DM\\) are equal because \\(M\\) is the midpoint of \\(AD\\). Their scale factor is therefore \\(1\\), so \\(QA=DC=b\\).\n\nLikewise, triangles \\(BNP\\) and \\(CND\\) are similar: their sides lie along the same two intersecting lines through \\(N\\), and \\(BP\\parallel CD\\). Since \\(BN=NC\\), we obtain \\(BP=CD=b\\). Consequently,\n\\[\nQP=QA+AB+BP=3b.\n\\]\nThe segments \\(QC\\) and \\(PD\\) are the diagonals of trapezoid \\(QPCD\\), so their intersection \\(O\\) lies between its parallel bases. Triangles \\(OQP\\) and \\(OCD\\) are similar by equal angles, with corresponding bases in the ratio \\(QP:CD=3:1\\). Their perpendicular heights have the same ratio.\n\nLet \\(t\\) be the distance from \\(O\\) to \\(QP\\). The distance from \\(O\\) to \\(CD\\) is \\(h-t\\), so\n\\[\n\\frac{t}{h-t}=3,\n\\qquad t=\\frac{3h}{4}.\n\\]\nTherefore,\n\\[\n[QPO]=\\frac12(3b)\\left(\\frac{3h}{4}\\right)\n=\\frac98bh=\\boxed{\\frac{9k}{8}}.\n\\]\nThe answer is \\(\\text{C}\\).",
+        "nodeIds": [
+          "cnm_271",
+          "cnm_272",
+          "cnm_p148"
+        ],
+        "prerequisiteIds": [
+          "cnm_270",
+          "cnm_069",
+          "cnm_063",
+          "cnm_055",
+          "cnm_183",
+          "cnm_p147"
+        ],
+        "levelReason": "This uses elementary angle relationships, triangle similarity, and base-height area formulas, all within historical AHSME scope."
+      },
+      {
+        "id": "coordinate-intersections",
+        "label": "Coordinates with an arbitrary slant",
+        "explanation": "Coordinates let us keep the parallelogram's slant arbitrary while finding the height of \\(O\\). Choose\n\\[\nA=(0,0),\\quad B=(b,0),\\quad D=(u,h),\\quad C=(u+b,h),\n\\]\nwhere \\(b,h>0\\) and \\(u\\) is any real number. The parallelogram has area \\(k=bh\\). Its side midpoints are\n\\[\nM=\\left(\\frac u2,\\frac h2\\right),\\qquad\nN=\\left(b+\\frac u2,\\frac h2\\right).\n\\]\nUsing the coordinates of \\(C,M\\), the equation of their line is\n\\[\nCQ:\\quad x=-b+(u+2b)\\frac yh.\n\\]\nIndeed, substituting \\(y=h\\) and \\(y=h/2\\) gives the coordinates of \\(C\\) and \\(M\\). Similarly, the line through \\(D,N\\) is\n\\[\nDP:\\quad x=2b+(u-2b)\\frac yh.\n\\]\nThese forms remain valid even if either line is vertical, since we divide only by \\(h>0\\).\n\nOn \\(AB\\), we have \\(y=0\\). Thus \\(Q=(-b,0)\\) and \\(P=(2b,0)\\), giving \\(QP=3b\\). At the intersection \\(O\\), the two expressions for \\(x\\) agree:\n\\[\n-b+(u+2b)\\frac yh\n=2b+(u-2b)\\frac yh.\n\\]\nThe terms involving \\(u\\) cancel, leaving \\(4by/h=3b\\). Since \\(b>0\\), this gives \\(y=3h/4\\). That is exactly the height of triangle \\(QPO\\) above its horizontal base. Hence\n\\[\n[QPO]=\\frac12(3b)\\frac{3h}{4}\n=\\boxed{\\frac{9k}{8}},\n\\]\nwhich is choice \\(\\text{C}\\).",
+        "nodeIds": [
+          "cnm_084",
+          "cnm_h172",
+          "cnm_p148"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_089",
+          "cnm_055",
+          "cnm_183",
+          "cnm_p147"
+        ],
+        "levelReason": "Ordinary Cartesian coordinates and linear equations provide a school-algebra alternative without assuming the parallelogram is a rectangle."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p148"
+    ],
+    "supportIds": [
+      "cnm_p147",
+      "cnm_183",
+      "cnm_055"
+    ],
+    "annotationRationale": "The task asks for a triangle's area relative to a given parallelogram, so triangle area is the route-neutral target. Both methods use parallelogram properties, midpoint lengths, and parallelogram area. The first method establishes similarities and uses corresponding height ratios. The second represents the full family of parallelograms in coordinates and solves the line-intersection equations. Those alternative techniques remain method-local. These annotations describe the mathematics used, not student mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1974_AMC_12_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The figure agrees with the stated incidences. Midpoint similarities give QA=AB=BP=b, hence QP=3b. The trapezoid diagonals intersect between its bases, and similarity gives t/(h-t)=3, so [QPO]=(3b)(3h/4)/2=9k/8. The coordinate method independently obtains the same base and height for arbitrary slant u; all divisions use positive b or h.",
+    "levelCheck": "Both explanations supply the decisive steps using school geometry and algebra appropriate for historical AHSME.",
+    "methodDistinctness": "Triangle similarity and coordinate line intersections provide genuinely distinct, accessible approaches.",
+    "annotationCheck": "Triangle area is a justified route-neutral target. Shared parallelogram and midpoint support and method-local similarity or coordinate nodes match their catalog scopes and the written reasoning.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "midpoint-similarities": "solution:midpoint-similarities:931ddde2192d",
+    "coordinate-intersections": "solution:coordinate-intersections:931ddde2192d"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "b0374dec844913bc2750bb9dc004e168c576be64d21af23cbefea85a36171226",
+    "acceptedAt": "2026-11-08T00:13:27.898747+00:00",
+    "inputHash": "a21e4c517cbc9795ed1feeac1f5a35f3f8ddc566e417f9e88318a5b12fa0c8bd",
+    "authorInputHash": "8ce6b480a255b24c5af78b265d3bf559c3bb8be22fc9a574498ee9ab1e7c428d",
+    "reviewInputHash": "03f2e2f5e065d350ab3befd33aed20220023e3cfa3ca5a93ee3de2caec158a82",
+    "authorResponseHash": "157059939a483b233358fe7a48f0de639a4594607125b332ed693983abff9626",
+    "reviewerResponseHash": "7f65f1a932352f5c14aa62816b2d5a25d9536c72071e3ac1a150f8b9ef8e2544",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

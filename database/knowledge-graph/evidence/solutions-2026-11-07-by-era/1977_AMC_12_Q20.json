@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1977_AMC_12_Q20",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "2ea98fc05b9056aec849ccf4537b4167fe099a6eb928716e223c748c82302e3c",
+    "figureHashes": {
+      "figures/1977_AMC_12_Q20_question_fig1.svg": "8b0e6680e7f3ba3ec799d942bc510f6dfbdc8a071abebf20ba26232ff590464c"
+    }
+  },
+  "solutionSHA256": "c650ad3a9607646573664cef10d5b378aa79f915c90f81a434ceb7a8625161d4",
+  "solutionFigureHashes": {},
+  "candidateHash": "8377c4387295ddbce579feddf65c29c8319f18cd4ffa5af7adc83eba92b8ca7f",
+  "candidate": {
+    "questionId": "1977_AMC_12_Q20",
+    "derivedAnswer": "E: none of these; \\(127\\) paths",
+    "answerStatus": "matches",
+    "answerReason": "There are 64 reversed paths in each closed half of the diagram, with exactly the central vertical path counted in both halves. The total is \\(64+64-1=127\\).",
+    "methods": [
+      {
+        "id": "reverse-and-split",
+        "label": "Reverse the paths and count the two halves",
+        "explanation": "Read the letters backward, starting from the final \\(T\\). This makes the direction choices especially simple. The only \\(T\\) adjacent to an \\(S\\) is the bottom central \\(T\\), so every complete path must end there.\n\nStarting there and spelling \\(T,S,E,T,N,O,C\\), each move must be upward or horizontally away from the center. A downward move or a horizontal move toward the center gives the wrong next letter. Once a path moves horizontally, it stays on that side of the diagram.\n\nFirst count reversed paths in the left half, including the central column. At each of the six steps, choose either up or left. Every sequence of six choices is valid: after \\(u\\) upward moves and \\(h\\) leftward moves, the current row is \\(6-u\\) rows below the top and the position is \\(h\\) columns left of center. It remains inside the triangular diagram because \\(h\\leq6-u\\) whenever \\(u+h\\leq6\\). Each move supplies the next required letter, and after six moves the path reaches a boundary \\(C\\).\n\nThus there are \\(2^6=64\\) paths in the left half, and likewise 64 in the right half. A choice sequence determines exactly one path, so neither half-count repeats a path. The only path belonging to both halves is the entirely vertical one. All paths lie in at least one half, so the total is\n\\[\n64+64-1=\\boxed{127}.\n\\]\nThis is none of choices A through D, so the answer is \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_h231",
+          "cnm_h009",
+          "math:bijective-counting"
+        ],
+        "prerequisiteIds": [
+          "cnm_h008",
+          "cnm_019"
+        ],
+        "levelReason": "Reversing a path, making six binary choices, and correcting one overlap require only elementary counting."
+      },
+      {
+        "id": "forward-letter-counts",
+        "label": "Add the counts arriving at each letter",
+        "explanation": "Count paths forward by writing at each letter the number of ways to reach it while spelling the required beginning of CONTEST. Give every boundary \\(C\\) the count 1. At each later letter, add the counts at all adjacent letters that can precede it. This includes every path exactly once, because its final step identifies a unique preceding position.\n\nTo organize these additions, number the letter stages \\(0,1,\\ldots,6\\), corresponding to \\(C,O,N,T,E,S,T\\). Each stage has one letter in the central column and, except at the final stage, letters on the two sloping arms below it.\n\nAt stage 0, every count is 1. For an off-center letter at any later stage, the two possible preceding letters are the one directly above it and the one immediately farther from the center. Both are off-center letters of the previous stage. Thus the off-center counts double at each stage: they are \\(1,2,4,8,16,32\\) for \\(C,O,N,T,E,S\\), respectively.\n\nLet \\(t_j\\) be the count at the central letter of stage \\(j\\). Its possible predecessors are the central letter above it and the two letters immediately beside it. Those side letters each have count \\(2^{j-1}\\). Hence\n\\[\nt_0=1,\\qquad t_j=t_{j-1}+2\\cdot2^{j-1}\n=t_{j-1}+2^j.\n\\]\nSuccessive central counts are therefore\n\\[\n1,\\ 3,\\ 7,\\ 15,\\ 31,\\ 63,\\ 127.\n\\]\nThe only possible final \\(T\\) is the bottom central one, since the other \\(T\\)'s are not adjacent to an \\(S\\). Its count is \\(\\boxed{127}\\), giving choice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "math:recursive-counting-probability",
+          "cnm_h230"
+        ],
+        "prerequisiteIds": [
+          "cnm_h200",
+          "cnm_019"
+        ],
+        "levelReason": "The recurrence simply adds incoming path counts and doubles equal counts. No advanced recurrence theory is needed."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h230"
+    ],
+    "supportIds": [],
+    "annotationRationale": "The route-neutral target is combining exhaustive path classes without duplication, represented by the addition principle. The first method encodes reversed paths as binary sequences and corrects the overlap of two halves, so multiplication, bijective counting, and the two-set union formula belong to that method. The second method instead constructs counts from predecessor positions, so state recursion is local to that alternative. Combined addition-and-multiplication counting is not imposed as a requirement on the recurrence route. These assignments do not establish learner mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1977_AMC_12_Q20",
+    "decision": "accept",
+    "mathematicalCheck": "The displayed letters force the final position to be the bottom central T. Reversed paths move upward or outward, and every six-step binary sequence stays within its chosen half. The halves share exactly the vertical path, yielding 64 + 64 − 1 = 127. Independently, off-center counts double and central counts satisfy t_j = t_(j−1) + 2^j, producing 127.",
+    "levelCheck": "Both explanations use accessible elementary counting; the recurrence needs no advanced theory.",
+    "methodDistinctness": "Binary encoding with overlap correction and forward predecessor counting provide distinct useful approaches.",
+    "annotationCheck": "Addition is a defensible shared target. Multiplication, bijection, union counting, and state recursion are correctly kept local to their respective methods.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "reverse-and-split": "reverse-and-split",
+    "forward-letter-counts": "forward-letter-counts"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "97ff0a4eed16cdec5322c715b76831b597238419a9fafb1681a5add59a05ddc7",
+    "acceptedAt": "2026-11-08T00:13:19.193577+00:00",
+    "inputHash": "43fae5266d6fb80fb419bc0bf0e76241014406ed4917a23c7fab38db22f2a46c",
+    "authorInputHash": "e3965140eac096a47d47369572360cff1e247b466055c844ed0af1f950dded33",
+    "reviewInputHash": "955df7311f4d579db088243791c143170fb590cb3dd9ae48f7b7a8417512a26b",
+    "authorResponseHash": "cf67f1c039e947b8991328a06023c1974d6eebe16886b339b7dd8db934b9a87e",
+    "reviewerResponseHash": "5b07aebb0c038d543cfe928891d1dd9e2a65582688366ba736c7cda63605863e",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1985_AMC_8_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ba1d3237ff52a8875a05e4bd73fcb175ced592538708c8e0cc5881e811a500c7",
+    "figureHashes": {
+      "figures/1985_AMC_8_Q24_question_fig1.svg": "b6634ef2036f1c3cc49d313982bb83877e1bfed038061678f1d763ce4d180967"
+    }
+  },
+  "solutionSHA256": "d2ed1604e3d04ec99f2abf25313624f405f9498cadffb26196423b6c2f3626ef",
+  "solutionFigureHashes": {},
+  "candidateHash": "8a94acd66e75e5c7cd27598114d204e548c7db8d469f385c2e16980d2dbf303c",
+  "candidate": {
+    "questionId": "1985_AMC_8_Q24",
+    "derivedAnswer": "D: 39",
+    "answerStatus": "matches",
+    "answerReason": "Every arrangement has a side containing 10, whose sum is at most 10+14+15=39. An arrangement using 13, 14, and 15 at the vertices attains 39 on all three sides.",
+    "methods": [
+      {
+        "id": "bound-side-containing-ten",
+        "label": "Bound the side containing 10",
+        "explanation": "The smallest number, \\(10\\), must lie on at least one side of the triangle. The other two numbers on that side are distinct and cannot have a sum greater than \\(14+15\\). Since every side has the same sum,\n\\[\nS\\leq 10+14+15=39.\n\\]\nTo show that this bound is possible, place \\(13\\) at the top vertex, \\(14\\) at the bottom-left vertex, and \\(15\\) at the bottom-right vertex. Put \\(12\\) in the circle on the left side, \\(11\\) in the circle on the right side, and \\(10\\) in the circle on the bottom side. The side sums are\n\\[\n13+12+14=39,\\qquad\n13+11+15=39,\\qquad\n14+10+15=39.\n\\]\nThis uses every number exactly once and attains the upper bound. Therefore the largest possible sum is \\(\\boxed{39}\\), choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:extremal-principle"
+        ],
+        "prerequisiteIds": [],
+        "levelReason": "A bound from the smallest entry and an explicit arrangement require only whole-number arithmetic and elementary reasoning."
+      },
+      {
+        "id": "add-three-side-sums",
+        "label": "Add all three side sums",
+        "explanation": "Adding the three equal side sums gives \\(3S\\). In that total, each vertex number appears twice because a vertex belongs to two sides. Each number between vertices appears once. Thus every number is counted once, with one extra copy of each vertex number.\n\nThe six numbers have total\n\\[\n10+11+12+13+14+15=75.\n\\]\nLet \\(T\\) be the sum of the three vertex numbers. Then\n\\[\n3S=75+T.\n\\]\nThe largest possible total of three distinct available numbers is \\(13+14+15=42\\), so\n\\[\n3S\\leq 75+42=117,\n\\qquad S\\leq 39.\n\\]\nThis value can be attained: put \\(13\\), \\(14\\), and \\(15\\) at the top, bottom-left, and bottom-right vertices, respectively. Put \\(12\\), \\(11\\), and \\(10\\) on the left, right, and bottom sides, respectively. The three sums are \\(13+12+14=39\\), \\(13+11+15=39\\), and \\(14+10+15=39\\). All six numbers are used exactly once. Therefore the largest possible sum is \\(\\boxed{39}\\), choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "math:double-counting"
+        ],
+        "prerequisiteIds": [],
+        "levelReason": "The contribution of each circle to the three sums is explained directly. Only elementary addition, multiplication, and division are needed."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [],
+    "annotationRationale": "The route-neutral target is proving a maximum by a universal bound and an attaining construction, so math:extremal-principle is assessed. The first method bounds a side containing the smallest number. The second additionally uses math:double-counting to track vertex contributions twice and other contributions once; this is method-specific rather than a requirement of every solution. Neither method needs permutation formulas or the multiplication principle of counting. These assignments do not establish learner mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1985_AMC_8_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "A side containing 10 has sum at most 10+14+15=39. Independently, adding all sides counts vertices twice and other circles once, giving 3S=75+T≤117. Both methods attain 39 using vertices 13,14,15 and intervening entries 12,11,10 in the stated positions. Every entry is used exactly once.",
+    "levelCheck": "Both arguments explain their decisive steps using arithmetic and simple equations appropriate for AMC 8.",
+    "methodDistinctness": "The smallest-entry bound and the total-incidence bound provide genuinely different, accessible insights.",
+    "annotationCheck": "math:extremal-principle correctly describes the shared bound-and-construction target. math:double-counting is appropriately confined to the second method rather than made a shared requirement.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "bound-side-containing-ten": "bound-side-containing-ten",
+    "add-three-side-sums": "add-three-side-sums"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "a8c2eee9304aae246afe75dc81b73382ee4264a36a79c3a42cccbf54c932691a",
+    "acceptedAt": "2026-11-08T00:17:14.162468+00:00",
+    "inputHash": "86ecbcd237c959a04d4c0b29845dee24f2f5437ae334e3f02ce3894019a3c526",
+    "authorInputHash": "406880d0f51d7eabcdeec9c3d1d0ade3936093150b86d08406da16baeae5dfe8",
+    "reviewInputHash": "502ae6cef80a725c3c270e6df4949c812afbd5767049261ff281078995d7120b",
+    "authorResponseHash": "510257620cb37fd95901ef6e77ff13b219fb509d90dde04f552c41b6e58e0068",
+    "reviewerResponseHash": "8a9053de8970f650e17344c3efd2c42a75d4e69b657d81071704cf20b1e61594",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

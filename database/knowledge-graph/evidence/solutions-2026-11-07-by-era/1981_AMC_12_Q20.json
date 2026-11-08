@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1981_AMC_12_Q20",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "8097ac92d8ee90e1d96a06a1201c5e39f4aef21026405067f9577be82a58581a",
+    "figureHashes": {
+      "figures/1981_AMC_12_Q20_question_fig1.svg": "4e84180a01f068b007a46f5de4c4f08d6ae406f965d24e2243070232d196c3fb"
+    }
+  },
+  "solutionSHA256": "c0f817e195ed3bc557145cf4eb3b32d124edbac4c1f8da4808e720306351b5b0",
+  "solutionFigureHashes": {},
+  "candidateHash": "eb65a4d284bd0a815df39ef9fa58f8cc52abbac8f37524cfcf36a71baceea3f1",
+  "candidate": {
+    "questionId": "1981_AMC_12_Q20",
+    "derivedAnswer": "B, \\(10\\)",
+    "answerStatus": "matches",
+    "answerReason": "The incoming angle measured from the boundary ray toward D decreases by 8° at every successive contact. A final perpendicular contact after n ordinary reflections requires the first incoming angle to be 90° + 8°n, which must be less than 172°. Thus n ≤ 10, and a launch angle of 2° attains ten reflections.",
+    "methods": [
+      {
+        "id": "successive-contact-angles",
+        "label": "Track the angle at each contact",
+        "explanation": "The useful quantity is the angle between each arriving segment and the boundary ray pointing toward \\(D\\). The reflection law lets us track this angle from one contact to the next.\n\nWrite \\(R_0=A\\), let \\(R_1,\\ldots,R_n\\) be the ordinary reflection points, and write \\(R_{n+1}=B\\) for the final perpendicular contact. These contacts alternate between the two sides of the \\(8^\\circ\\) wedge shown. Define\n\\[\n\\beta_j=\\angle DR_jR_{j-1}.\n\\]\nAt an ordinary reflection, the two path segments make equal angles with the boundary line. Consequently, their angles with the same boundary ray \\(R_jD\\) are supplementary: the outgoing angle \\(\\angle DR_jR_{j+1}\\) is \\(180^\\circ-\\beta_j\\).\n\nIn \\(\\triangle DR_jR_{j+1}\\), the angle at \\(D\\) is \\(8^\\circ\\). Its angle sum therefore gives\n\\[\n8^\\circ+(180^\\circ-\\beta_j)+\\beta_{j+1}=180^\\circ,\n\\]\nso\n\\[\n\\beta_{j+1}=\\beta_j-8^\\circ.\n\\]\nThere are \\(n\\) such steps from the first contact to the final contact. Since the final strike is perpendicular, \\(\\beta_{n+1}=90^\\circ\\), and hence\n\\[\n\\beta_1=90^\\circ+8^\\circ n.\n\\]\nLet \\(\\alpha=\\angle DAR_1\\) be the launch angle into the wedge. The first triangle, \\(\\triangle DAR_1\\), gives\n\\[\n\\alpha+8^\\circ+\\beta_1=180^\\circ.\n\\]\nA nondegenerate path has \\(\\alpha>0\\), so \\(\\beta_1<172^\\circ\\). Thus\n\\[\n90+8n<172,\n\\qquad n<10.25.\n\\]\nSince \\(n\\) is an integer, \\(n\\le10\\).\n\nTo show that ten reflections are possible, launch the ray at \\(\\alpha=2^\\circ\\) toward the opposite side. The first incoming angle is \\(170^\\circ\\), and successive incoming angles are\n\\[\n170^\\circ,162^\\circ,154^\\circ,\\ldots,98^\\circ,90^\\circ.\n\\]\nEach intermediate contact exists on the opposite boundary ray: the next triangle has angles \\(8^\\circ\\), \\(180^\\circ-\\beta_j\\), and \\(\\beta_j-8^\\circ\\), all positive. The first ten contacts are ordinary reflections, and the eleventh is perpendicular. The light then retraces its path by the same reflection law. Therefore the largest value is \\(\\boxed{10}\\), choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "cnm_058",
+          "cnm_115",
+          "cnm_098",
+          "math:extremal-principle"
+        ],
+        "prerequisiteIds": [
+          "cnm_064",
+          "cnm_059",
+          "cnm_096",
+          "cnm_110"
+        ],
+        "levelReason": "The proof uses only reflection-angle equality, triangle angle sums, a linear inequality, and a construction attaining the integer bound."
+      }
+    ],
+    "assessedIds": [
+      "cnm_058",
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_064"
+    ],
+    "annotationRationale": "The task requires calculating successive angles and proving the largest possible reflection count, matching cnm_058 and the bound-and-construction scope of math:extremal-principle. The written route uses triangle angle sums and translates angle positivity into an integer bound, matching cnm_115 and cnm_098. Perpendicularity supplies the final 90° condition. Supplementary angles, inequality properties, and triangle terminology are local prerequisites. The final perpendicular contact is explicitly excluded from the n ordinary reflections.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1981_AMC_12_Q20",
+    "decision": "accept",
+    "mathematicalCheck": "In the depicted wedge, reflection and triangle angle sums give β(j+1) = βj − 8°. The final perpendicular contact yields β1 = 90° + 8°n, so the first triangle gives α = 82° − 8°n > 0 and n ≤ 10. Launching at 2° produces eleven contacts with incoming angles 170°, 162°, through 90°. The positive triangle angles justify each successive contact, attaining ten ordinary reflections.",
+    "levelCheck": "The proof uses accessible angle chasing and a simple integer bound. It explains the supplementary-angle relation, distinguishes reflections from the final contact, and establishes attainability.",
+    "methodDistinctness": "One complete angle-chasing method supplies both the bound and an attaining construction.",
+    "annotationCheck": "Angle calculation and discrete extremal reasoning fit the assessed scopes. Triangle angle sums, inequality applications, perpendicularity, and the listed prerequisites match the actual proof.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "successive-contact-angles": "successive-contact-angles"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "d33d80cd048acc080a1b6293692fae9d1531591ef3c2e04a72a245867c81f0ae",
+    "acceptedAt": "2026-11-08T00:15:39.692117+00:00",
+    "inputHash": "96c8541aa654d98f01f9af7ea35255eebbebcb205bef74c4d29ff70368717437",
+    "authorInputHash": "6aa612c6f33b947bf44272de1593b17cf05f7814f49cc0d33c01b89754386cb6",
+    "reviewInputHash": "25867d9b659249edc985d559d8da4374db0ca68724de83ee5fce26ce475b59e5",
+    "authorResponseHash": "f17495869a5451b430874171eeb3bdbc19c6ede0cb4d299950f3a1d57ab8e25c",
+    "reviewerResponseHash": "678d8c803096ff1e4464a7167c377af93df086ccf4c8f897e851fc3e53be03cd",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

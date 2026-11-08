@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1972_AMC_12_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "fe6a53b1dd93bfe30b512bec5391f44e88645844b1890257bb479a35ed4bd9a9",
+    "figureHashes": {
+      "figures/1972_AMC_12_Q23_question_fig1.svg": "56e88517df1b793c19ef927acc134bfbf4715a323bf4b31450624f1816b5d4e8"
+    }
+  },
+  "solutionSHA256": "9ce0cc9e4cb7669d4b009840eefee78c1eaac4d3f7fd99019aec4fc7b6880c61",
+  "solutionFigureHashes": {
+    "figures/1972_AMC_12_Q23_question_fig1.svg": "56e88517df1b793c19ef927acc134bfbf4715a323bf4b31450624f1816b5d4e8"
+  },
+  "candidateHash": "a6148d0fa67d9121d9230c4fe1b14ef22f02737406786f7fded9d7c8be0c6d3f",
+  "candidate": {
+    "questionId": "1972_AMC_12_Q23",
+    "derivedAnswer": "D: \\(\\dfrac{5\\sqrt{17}}{16}\\)",
+    "answerStatus": "matches",
+    "answerReason": "The four extreme corners force a radius of at least \\(5\\sqrt{17}/16\\), and a circle with that radius contains all three squares.",
+    "methods": [
+      {
+        "id": "paired-distance-bounds",
+        "label": "Compare distances to paired corners",
+        "explanation": "The symmetry suggests pairing the left and right corners. These pairs give a lower bound that applies even when the circle's center is off the symmetry axis.\n\n[Figure 1](figures/1972_AMC_12_Q23_question_fig1.svg)\n\nPlace the bottom corners at \\((-1,0)\\) and \\((1,0)\\). The upper square then has top corners \\((-\\tfrac12,2)\\) and \\((\\tfrac12,2)\\). Let a containing circle have center \\((s,t)\\) and radius \\(R\\).\n\nEach corner's squared distance from the center is at most \\(R^2\\), so the average for either pair is also at most \\(R^2\\). The distance formula gives\n\\[\nR^2\\ge s^2+1+t^2\\ge1+t^2,\n\\]\nand\n\\[\nR^2\\ge s^2+\\frac14+(2-t)^2\n\\ge\\frac14+(2-t)^2.\n\\]\nMoving the center upward increases its distance to the bottom pair and decreases its distance to the top pair while it stays between their levels. This suggests balancing the two bounds:\n\\[\n1+t^2=\\frac14+(2-t)^2,\n\\qquad 4t=\\frac{13}{4},\n\\qquad t=\\frac{13}{16}.\n\\]\nThis balance really gives a universal minimum. If \\(t\\ge13/16\\), then \\(1+t^2\\ge425/256\\). If \\(t\\le13/16\\), then \\(2-t\\ge19/16\\), so \\(\\tfrac14+(2-t)^2\\ge425/256\\). Thus every containing circle satisfies \\(R^2\\ge425/256\\).\n\nTo show that this bound is attainable, take the center \\((0,13/16)\\). Every point in the bottom two squares satisfies \\(|x|\\le1\\) and \\(0\\le y\\le1\\), so its squared distance is at most\n\\[\n1+\\left(\\frac{13}{16}\\right)^2=\\frac{425}{256}.\n\\]\nEvery point in the upper square satisfies \\(|x|\\le\\tfrac12\\) and \\(1\\le y\\le2\\), giving squared distance at most\n\\[\n\\frac14+\\left(\\frac{19}{16}\\right)^2=\\frac{425}{256}.\n\\]\nConsequently this circle contains the entire figure, and the smallest radius is\n\\[\n\\boxed{R=\\frac{\\sqrt{425}}{16}=\\frac{5\\sqrt{17}}{16}},\n\\]\nwhich is choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "cnm_259",
+          "cnm_h173",
+          "cnm_042",
+          "cnm_h032"
+        ],
+        "prerequisiteIds": [
+          "cnm_250",
+          "cnm_082",
+          "cnm_174",
+          "cnm_148",
+          "cnm_096"
+        ],
+        "levelReason": "The argument uses coordinates, the Pythagorean distance formula, a linear equation, and elementary comparisons of nonnegative squares, all within historical AHSME scope."
+      }
+    ],
+    "assessedIds": [
+      "cnm_259"
+    ],
+    "supportIds": [
+      "cnm_250"
+    ],
+    "annotationRationale": "The task requires translating containment into bounds on distances from the center, which is covered by cnm_259. The written method specifically uses coordinate distances, cancellation to solve a linear equation, and comparisons of squared distances as the center height varies. Basic circle terminology supports the argument. The catalog does not precisely represent the additional target of proving that an enclosing circle has minimum radius.",
+    "needsNewNodes": [
+      {
+        "name": "Smallest enclosing circles of plane figures",
+        "description": "Determine the minimum radius of a disk containing a specified plane figure by proving a lower bound valid for every center and exhibiting a disk that attains it; verify containment of the entire figure.",
+        "reason": "Point-circle position describes containment, but does not capture the required universal minimality proof. The catalog's discrete extremal node does not cover continuously varying circle centers."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1972_AMC_12_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "The pictured squares justify the coordinates. Averaging paired corner distances gives R² ≥ max{1+t², 1/4+(2−t)²}. The two cases around t=13/16 prove the universal bound 425/256, and the stated rectangle bounds verify containment of every point at the proposed center. Thus R=5√17/16.",
+    "levelCheck": "Coordinates, elementary square comparisons, and a linear equation are appropriate. Both minimality and attainment are explained completely.",
+    "methodDistinctness": "One complete method is supplied; no alternative is needed.",
+    "annotationCheck": "The assessed containment concept, supporting circle terminology, and method-specific distance and comparison nodes fit. The proposed enclosing-circle node honestly identifies the additional optimization content.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "paired-distance-bounds": "paired-distance-bounds"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "db8723a8ffa0d3eb801f63cc3d44dcf907138ff018f30f57e0cb8e40188d2b24",
+    "acceptedAt": "2026-11-08T00:13:18.092319+00:00",
+    "inputHash": "41d474c24c1908d790e496f0ba7f64c9f32d42368e9f02490389fde9efe741c8",
+    "authorInputHash": "fcc49567b4ef7dbef02f42df96b4ca4e894d93f82bd9f71f9cc1ea04578ca7fe",
+    "reviewInputHash": "1f1542f444ba6b847345446b89e5c6b40eb3e9fcc8904e9f9fc22e6daa07c1b7",
+    "authorResponseHash": "2df4b190ff582ccefbff208e38672902bbdc59112e6c0fd3938d9237d5f7561d",
+    "reviewerResponseHash": "c85cab12ac935fa14a50524c705df6f527b82c180a0bed78ca6694d752332bf6",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,84 +1,73 @@
 {
-  "Year": 1999,
-  "Level": "AMC 8",
-  "Batch": "NA",
-  "Area": "Unclassified",
-  "Number": 11,
-  "Question": "Each of the five numbers \\(1,\\) \\(4,\\) \\(7,\\) \\(10,\\) and \\(13\\) is placed in one of the five squares so that the sum of the three numbers in the horizontal row equals the sum of the three numbers in the vertical column. The largest possible value for the horizontal or vertical sum is\n\n[Figure 1](figures/1999_AMC_8_Q11_question_fig1.svg)",
-  "Question Type": "mixed",
-  "Choices": {
-    "A": "\\(20\\)",
-    "B": "\\(21\\)",
-    "C": "\\(22\\)",
-    "D": "\\(24\\)",
-    "E": "\\(30\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "optimization; double counting",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc8/1999/solutions",
-    "SourceSHA256": "04d2d255dc830e69954bca25aa04a9fe71ec71839e4ebc225c964dec588a0d6b",
-    "Figures": [
-      "figures/1999_AMC_8_Q11_question_fig1.svg"
+  "answer": {
+    "accepted": [
+      "D"
     ],
-    "FigureSources": {
-      "figures/1999_AMC_8_Q11_question_fig1.svg": {
-        "url": "https://live.poshenloh.com/images/past-contests/amc8/1999/11.svg",
-        "alt": ""
-      }
-    },
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 8",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
+    "type": "choice"
   },
-  "ID": "1999_AMC_8_Q11",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "5e9debc757c0fba31a753f8cdd91c967b2257e47239b2b81a2cc3782524ff0ee",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:extremal-principle"
-    ],
-    "supportIds": [],
-    "routes": [
+  "assessedNodeIds": [
+    "math:extremal-principle"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 8"
+  },
+  "id": "1999_AMC_8_Q11",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "count-the-center-twice",
-        "label": "Bound using the shared center",
-        "nodeIds": [
-          "math:double-counting",
-          "math:extremal-principle"
-        ]
+        "content": "\\(20\\)",
+        "id": "A"
       },
       {
-        "id": "enumerate-center-and-pairings",
-        "label": "Check each center and its pairings",
-        "nodeIds": [
-          "math:extremal-principle"
-        ]
+        "content": "\\(21\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(22\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(24\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(30\\)",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "Each of the five numbers \\(1,\\) \\(4,\\) \\(7,\\) \\(10,\\) and \\(13\\) is placed in one of the five squares so that the sum of the three numbers in the horizontal row equals the sum of the three numbers in the vertical column. The largest possible value for the horizontal or vertical sum is\n\n[Figure 1](figures/1999_AMC_8_Q11_question_fig1.svg)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:extremal-principle"
+      ],
+      "explanation": "The number \\(1\\) must belong to the horizontal row, the vertical column, or both. The other two numbers on any line containing \\(1\\) add to at most \\(10+13\\), since these are the two largest available numbers. Thus that line has sum at most\n\\[\n1+10+13=24.\n\\]\nBecause the horizontal and vertical sums are equal, neither can exceed \\(24\\).\n\nWe can attain this bound. Put \\(13\\) in the center, \\(1\\) and \\(10\\) in the left and right squares, and \\(4\\) and \\(7\\) in the top and bottom squares. This uses each number exactly once and gives\n\\[\n1+13+10=4+13+7=24.\n\\]\nTherefore the largest possible sum is \\(\\boxed{24}\\), choice \\(\\text{D}\\).",
+      "id": "bound-the-line-containing-one",
+      "sourceRef": "amc/1999_AMC_8_Q11#bound-the-line-containing-one",
+      "title": "Use the line containing 1"
+    },
+    {
+      "directNodeIds": [
+        "math:extremal-principle",
+        "math:double-counting"
+      ],
+      "explanation": "Adding the horizontal and vertical sums counts every outer number once and the center number twice. This makes the center the only number whose position affects the combined total.\n\nLet \\(c\\) be the center number and \\(S\\) the common sum. Since the five numbers total \\(35\\), we have\n\\[\n2S=35+c.\n\\]\nThe center cannot exceed \\(13\\), so\n\\[\n2S\\leq35+13=48,\n\\qquad S\\leq24.\n\\]\nTo reach \\(24\\), put \\(13\\) in the center. The remaining numbers can be paired as \\(1+10=11\\) and \\(4+7=11\\). Put one pair in the two horizontal outer squares and the other pair in the two vertical outer squares. Both sums are then \\(13+11=24\\).\n\nThus the largest possible sum is \\(\\boxed{24}\\), choice \\(\\text{D}\\).",
+      "id": "count-the-center-twice",
+      "sourceRef": "amc/1999_AMC_8_Q11#count-the-center-twice",
+      "title": "Add the two equal sums"
+    },
+    {
+      "directNodeIds": [
+        "math:extremal-principle"
+      ],
+      "id": "enumerate-center-and-pairings",
+      "sourceRef": "amc/1999_AMC_8_Q11#enumerate-center-and-pairings",
+      "title": "Check each center and its pairings"
+    }
+  ],
+  "sourceRef": "amc/1999_AMC_8_Q11"
 }

@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1973_AMC_12_Q11",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "e66b8d0cf3a920159bb4ab28b3709393049e3bff87e523c4e6a5c0d2a146bc89",
+    "figureHashes": {
+      "figures/1973_AMC_12_Q11_question_fig1.svg": "d058196438b903052b7972aef2e75d7b5360221a11797761d34b3e0347a37549"
+    }
+  },
+  "solutionSHA256": "5a2066382e340670915ae576b8486379d70d54a271bc920336e6af333a5c955a",
+  "solutionFigureHashes": {},
+  "candidateHash": "c564f96e02f32f7ce8e8112e7b090fef4d561d9af64c63294769abdce21782c8",
+  "candidate": {
+    "questionId": "1973_AMC_12_Q11",
+    "derivedAnswer": "B: Figure \\(\\mathrm{II}\\)",
+    "answerStatus": "matches",
+    "answerReason": "For a positive threshold a, the required containment is an axis-aligned square inside a circular disk inside a square whose vertices lie on the coordinate axes. The supplied pixels show this arrangement in Figure II.",
+    "methods": [
+      {
+        "id": "identify-sublevel-regions",
+        "label": "Identify the three nested regions",
+        "explanation": "The definition in the question reverses the order of the expressions: the largest expression gives the smallest region when all three are bounded by the same number. Take a threshold \\(a>0\\) and identify these regions.\n\nFirst,\n\\[\n2\\max(|x|,|y|)\\le a\n\\]\nmeans that both \\(|x|\\le a/2\\) and \\(|y|\\le a/2\\). This is the filled square with vertices \\((\\pm a/2,\\pm a/2)\\), whose sides are parallel to the coordinate axes.\n\nSecond,\n\\[\n\\sqrt{2(x^2+y^2)}\\le a\n\\quad\\Longleftrightarrow\\quad\nx^2+y^2\\le\\frac{a^2}{2}.\n\\]\nSquaring is valid because both sides are nonnegative. This is the circular disk centered at the origin with radius \\(a/\\sqrt2\\). Each corner of the first square lies on its boundary, since\n\\[\n\\left(\\frac a2\\right)^2+\\left(\\frac a2\\right)^2\n=\\frac{a^2}{2}.\n\\]\nEvery point of that square also satisfies this disk inequality, so the square is inscribed in the circle.\n\nFinally, \\(|x|+|y|\\le a\\) describes the filled square with vertices\n\\[\n(a,0),\\quad(0,a),\\quad(-a,0),\\quad(0,-a).\n\\]\nFor example, in the first quadrant its boundary is the segment \\(x+y=a\\); reflecting this segment into the other quadrants gives the four sides.\n\nTo verify that this last square contains the entire disk, put \\(u=|x|\\) and \\(v=|y|\\). Since\n\\[\n2(u^2+v^2)-(u+v)^2=(u-v)^2\\ge0,\n\\]\na point in the disk satisfies\n\\[\n(u+v)^2\\le2(u^2+v^2)\\le a^2.\n\\]\nThus \\(u+v\\le a\\). Equality occurs at the four points \\((\\pm a/2,\\pm a/2)\\), so the outer square is circumscribed about the circle.\n\nThe required picture therefore has an axis-aligned inner square, the circle, and an outer square whose vertices lie on the axes.\n\nIn the supplied figure, this is \\(\\mathrm{II}\\).\n\nFor completeness, if \\(a=0\\), all three regions consist only of the origin; if \\(a<0\\), all three are empty. These cases preserve the containments. The answer is \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_h006",
+          "cnm_084",
+          "cnm_h176"
+        ],
+        "prerequisiteIds": [
+          "cnm_007",
+          "cnm_082",
+          "cnm_h004",
+          "cnm_148",
+          "cnm_250",
+          "cnm_096"
+        ],
+        "levelReason": "This identifies coordinate regions using absolute values and a circle equation, then verifies containment with a nonnegative square. It avoids norm terminology and general inequality theorems."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h006",
+      "cnm_084",
+      "cnm_h176"
+    ],
+    "supportIds": [
+      "cnm_007",
+      "cnm_082",
+      "cnm_h004"
+    ],
+    "annotationRationale": "The task asks for containment of coordinate-defined sets, so subset reasoning and coordinate descriptions of squares are assessed. Reading the disk's center and radius from its equation also directly supports the requested identification. Absolute value, coordinate notation, and set-builder notation provide supporting knowledge. The written containment verification additionally uses the perfect-square identity and elementary inequality properties, recorded locally. These assignments do not imply learner mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1973_AMC_12_Q11",
+    "decision": "accept",
+    "mathematicalCheck": "For a>0 the regions are the axis-aligned square |x|,|y|≤a/2, the disk x²+y²≤a²/2, and the diamond |x|+|y|≤a. The square lies in the disk by bounding each squared coordinate. The identity 2(u²+v²)−(u+v)²=(u−v)² proves disk containment in the diamond, with the stated four contact points. The actual Figure II shows precisely these orientations. The zero and negative thresholds are handled correctly.",
+    "levelCheck": "Coordinate geometry and a nonnegative-square identity provide a complete high-school explanation without advanced inequality machinery.",
+    "methodDistinctness": "One complete geometric identification method is sufficient.",
+    "annotationCheck": "Subset reasoning, coordinate descriptions, and reading the circle equation are justified assessed targets. Absolute value, coordinate notation, and set-builder notation are valid support; the local algebra and inequality prerequisites fit their scopes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "identify-sublevel-regions": "identify-sublevel-regions"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c7e6b7eb75198edb67f6a926e447385edb7961d8e215e0cd445b2b95be234175",
+    "acceptedAt": "2026-11-08T00:13:14.551727+00:00",
+    "inputHash": "07845d085304046a6e9cad7b691abbd3c009f239f02af46687f39c034cb6ab6c",
+    "authorInputHash": "40c2082e23bb039c421cc33b87c2afde7c803903b4cb7377ba888ef747d01554",
+    "reviewInputHash": "0d97c6f387f079d10b617e063615d265d706927cfa9d37157b440966f03d67c1",
+    "authorResponseHash": "e2b55813a411c1cd69b069047fed4aae7efe3c6d31366b2e2153ac5727fd24b0",
+    "reviewerResponseHash": "03941e7b666765af4bd0aded99c2da2d7259588c442e41ff5108eef06b4e4c31",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

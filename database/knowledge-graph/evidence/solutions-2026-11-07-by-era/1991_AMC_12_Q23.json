@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1991_AMC_12_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "24919b338db40c4ab64964d4f981a80be2d5bb078fbbd69a3d59b2e41fe9f188",
+    "figureHashes": {
+      "figures/1991_AMC_12_Q23_question_fig1.svg": "4f6c3dad63a1a364b657c5d900402fdacb584cb2be6e240c4dbd552891bcd97e"
+    }
+  },
+  "solutionSHA256": "b5ee581178e36e1e2188f2c9b9b6a3966ea0daa40a938009f98baecca5b47a08",
+  "solutionFigureHashes": {},
+  "candidateHash": "c07bed96264fd0333d252b8bf307ea0d48995734cb3ff2c82ce495e3127f9343",
+  "candidate": {
+    "questionId": "1991_AMC_12_Q23",
+    "derivedAnswer": "7/15, choice C",
+    "answerStatus": "matches",
+    "answerReason": "The intersection positions give areas [ABH]=2/3 and [AEI]=1/5. Their difference is the requested quadrilateral area, 7/15.",
+    "methods": [
+      {
+        "id": "coordinate-intersections",
+        "label": "Find the intersections with coordinates",
+        "explanation": "Place the square along the coordinate axes so that distances from \\(AB\\) can serve directly as triangle heights. Set\n\\[\nB=(0,0),\\quad A=(0,2),\\quad C=(2,0),\\quad D=(2,2).\n\\]\nThe midpoint conditions give \\(E=(0,1)\\) and \\(F=(1,0)\\).\n\nThe line through \\(A\\) and \\(F\\) has equation \\(y=2-2x\\). The line through \\(D\\) and \\(E\\) has equation \\(y=1+x/2\\), and the diagonal \\(BD\\) has equation \\(y=x\\). At \\(I\\), the first two expressions for \\(y\\) agree, giving\n\\[\n2-2x=1+\\frac{x}{2},\n\\qquad x=\\frac25,\\quad y=\\frac65.\n\\]\nAt \\(H\\), the equations of \\(AF\\) and \\(BD\\) give\n\\[\n2-2x=x,\n\\qquad x=y=\\frac23.\n\\]\nThus \\(I=(2/5,6/5)\\) and \\(H=(2/3,2/3)\\). These coordinates put \\(A,I,H,F\\) in that order along \\(AF\\), so triangle \\(AEI\\) lies inside triangle \\(ABH\\). Removing it leaves exactly quadrilateral \\(BEIH\\).\n\nWrite \\([XYZ]\\) for the area of triangle \\(XYZ\\). Since \\(AB\\) and \\(AE\\) lie on the vertical axis, their corresponding heights are the horizontal coordinates of \\(H\\) and \\(I\\). Therefore\n\\[\n[ABH]=\\frac12\\cdot2\\cdot\\frac23=\\frac23,\n\\qquad\n[AEI]=\\frac12\\cdot1\\cdot\\frac25=\\frac15.\n\\]\nThe requested area is\n\\[\n[BEIH]=[ABH]-[AEI]\n=\\frac23-\\frac15=\\boxed{\\frac7{15}},\n\\]\nchoice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "cnm_p150",
+          "cnm_084",
+          "cnm_205",
+          "cnm_208"
+        ],
+        "prerequisiteIds": [
+          "cnm_p148",
+          "cnm_p077",
+          "cnm_055",
+          "cnm_082",
+          "cnm_089",
+          "cnm_p173"
+        ],
+        "levelReason": "Coordinates reduce the intersections to elementary linear equations, and the final calculation uses only base-height triangle areas and subtraction."
+      },
+      {
+        "id": "similarity-and-area-ratios",
+        "label": "Use similarity to compare triangle areas",
+        "explanation": "The desired quadrilateral can be obtained by subtracting triangle \\(AEI\\) from triangle \\(ABH\\). We will find these two areas by comparing them with the simple triangle \\(ABF\\), whose area is\n\\[\n[ABF]=\\frac12\\cdot AB\\cdot BF\n=\\frac12\\cdot2\\cdot1=1.\n\\]\nHere brackets denote area.\n\nFirst, \\(AD\\parallel BF\\), while \\(A,H,F\\) are collinear and \\(D,H,B\\) are collinear. Thus \\(\\triangle ADH\\sim\\triangle FBH\\) by equal angles. Corresponding sides give\n\\[\n\\frac{AH}{HF}=\\frac{AD}{FB}=2,\n\\qquad \\frac{AH}{AF}=\\frac23.\n\\]\nTriangles \\(ABH\\) and \\(ABF\\) have bases \\(AH\\) and \\(AF\\) on the same line and the same altitude from \\(B\\). Hence \\([ABH]=\\frac23[ABF]=\\frac23\\).\n\nTo find the position of \\(I\\), extend \\(AF\\) beyond \\(F\\) until it meets the line \\(CD\\) at \\(J\\). Since \\(AB\\parallel CJ\\), triangles \\(ABF\\) and \\(JCF\\) are similar. Also \\(BF=CF=1\\), so their scale factor is \\(1\\). Therefore \\(CJ=AB=2\\) and \\(FJ=AF\\). The point \\(J\\) lies beyond \\(C\\) away from \\(D\\), giving\n\\[\nDJ=DC+CJ=4,\n\\qquad AJ=AF+FJ=2AF.\n\\]\nBecause \\(AE\\parallel DJ\\), and the lines \\(AJ\\) and \\(ED\\) meet at \\(I\\), triangles \\(AEI\\) and \\(JDI\\) are similar. Consequently,\n\\[\n\\frac{AI}{IJ}=\\frac{AE}{JD}=\\frac14.\n\\]\nThus \\(AI=AJ/5=2AF/5\\). Together with \\(AH=2AF/3\\), this confirms the order \\(A,I,H,F\\).\n\nTriangles \\(ABI\\) and \\(ABF\\) share the altitude from \\(B\\) to \\(AF\\), so \\([ABI]=\\frac25[ABF]=\\frac25\\). Triangles \\(AEI\\) and \\(ABI\\) share the altitude from \\(I\\) to \\(AB\\), so\n\\[\n[AEI]=\\frac{AE}{AB}[ABI]\n=\\frac12\\cdot\\frac25=\\frac15.\n\\]\nRemoving triangle \\(AEI\\) from triangle \\(ABH\\) now gives\n\\[\n[BEIH]=\\frac23-\\frac15=\\boxed{\\frac7{15}},\n\\]\nchoice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "cnm_p150",
+          "cnm_271",
+          "cnm_272",
+          "cnm_p148"
+        ],
+        "prerequisiteIds": [
+          "cnm_p077",
+          "cnm_055",
+          "cnm_069",
+          "cnm_063",
+          "cnm_p210",
+          "cnm_p173"
+        ],
+        "levelReason": "This alternative uses parallel-line angle relations, AA similarity, and common-altitude area comparisons. It provides a geometric route using elementary school geometry without coordinate algebra."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p150"
+    ],
+    "supportIds": [
+      "cnm_p148",
+      "cnm_p077",
+      "cnm_055"
+    ],
+    "annotationRationale": "The route-neutral target is finding a composite area by subtracting two triangles, cnm_p150. Both methods need triangle area, square side and angle properties, and midpoint segment lengths. The coordinate route uses cnm_084, cnm_205, and cnm_208 to determine intersection positions. The geometric route instead uses cnm_271 and cnm_272, then derives area ratios from common altitudes using cnm_p148. These routes are alternatives, not a combined list of required techniques.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1991_AMC_12_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "The coordinate intersections are I=(2/5,6/5) and H=(2/3,2/3), giving area 2/3−1/5=7/15. Independently, the geometric similarities give AH/AF=2/3 and AI/AF=2/5, yielding the same two triangle areas. Both methods justify the subtraction region and point order.",
+    "levelCheck": "Both explanations are complete and accessible within school algebra and elementary geometry.",
+    "methodDistinctness": "Coordinate intersections and synthetic similarity provide genuinely different, appropriate routes.",
+    "annotationCheck": "Composite area is a justified route-neutral target. Shared triangle-area, square, and midpoint support is appropriate, while coordinate and similarity concepts are correctly separated by method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "coordinate-intersections": "solution:coordinate-intersections:b5ee581178e3",
+    "similarity-and-area-ratios": "similarity-and-area-ratios"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "de83365a1f3b4d2f4c4ddae3941ed2d29bcc7d325b34a49ff8041e7e004b9f71",
+    "acceptedAt": "2026-11-08T00:22:55.544329+00:00",
+    "inputHash": "761bdc7fa9ad1771008d4ae6604e9a4287d6dc562bd37f807bda4bf712d18ac2",
+    "authorInputHash": "eddc0799de061b28000cc60befad976e4311eef47aa2179872e4ee087b6a3b84",
+    "reviewInputHash": "f92dda69c27259f330671ed29422c683b4219e29d6a495c5b492b8b6e8366059",
+    "authorResponseHash": "4daf2c527ec4d742b13dcbd7b40163eed3676f662ca7be7e979488715d817961",
+    "reviewerResponseHash": "4a7b8559f38bbbc3dafaa50f71ccef867acf056d41204b5d8a77f99a5df00138",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

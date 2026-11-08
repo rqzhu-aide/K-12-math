@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1998_AMC_12_Q27",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "f2a89633fb53f1d6c975b5b9bc726d516abb3154b2136ac58bd2bcdb53084bd8",
+    "figureHashes": {
+      "figures/1998_AMC_12_Q27_question_fig1.svg": "d6d310a0ed84ae1fb9863d814c55ed94d884763d347d7dd20ca9510a395b2b23"
+    }
+  },
+  "solutionSHA256": "660725dcec269a8dc4fba8e961444ac54dceb6da37812a014dd27bd394a43089",
+  "solutionFigureHashes": {
+    "figures/1998_AMC_12_Q27_question_fig1.svg": "d6d310a0ed84ae1fb9863d814c55ed94d884763d347d7dd20ca9510a395b2b23"
+  },
+  "candidateHash": "c126b97e2a31741ae6fc14f5d0907d6b0b378fff0c7d480869aa4c0ebf6f9988",
+  "candidate": {
+    "questionId": "1998_AMC_12_Q27",
+    "derivedAnswer": "1056 square units, choice E",
+    "answerStatus": "matches",
+    "answerReason": "After the first removal there are 72 exposed block faces. The second removal leaves 8 unit squares on each of these faces and creates 24 additional interior unit faces in each of 20 blocks, giving 72·8+20·24=1056.",
+    "methods": [
+      {
+        "id": "track_old_and_new_surfaces",
+        "label": "Track surviving surfaces and new tunnel walls",
+        "explanation": "The same removal pattern occurs at two sizes, so first count the exposed faces in one \\(3\\times3\\times3\\) arrangement of smaller cubes. The remaining cubes occupy its eight corners and twelve edge middles.\n\n[Figure 1](figures/1998_AMC_12_Q27_question_fig1.svg)\n\nOn each of the six outside faces, only the middle square is missing. This leaves \\(6\\cdot8=48\\) exposed smaller-cube faces. Inside, each of the six face-center openings has four side walls, giving another \\(6\\cdot4=24\\) faces. There is no wall at the inner end of an opening because the central cube is also removed. These outside faces and tunnel walls account for every exposed face, giving \\(48+24=72\\).\n\nApply this count to the first stage, where each smaller cube has side length \\(3\\). There are \\(72\\) exposed \\(3\\times3\\) block faces. During the second stage, the central unit square is removed from each such face, leaving eight unit squares. Their surviving area is therefore \\(72\\cdot8=576\\).\n\nEach of the twenty remaining blocks also gains \\(24\\) unit-square tunnel walls inside it. These contribute \\(20\\cdot24=480\\). Neighboring blocks have matching central openings, so their shared boundaries create no additional exposed faces: the eight remaining squares still touch their counterparts.\n\nEvery final surface square either lies on a previously exposed block face or is a new wall inside a block. These two categories do not overlap. Hence the total surface area is\n\\[\n576+480=\\boxed{1056}\n\\]\nsquare units, choice E.",
+        "nodeIds": [
+          "cnm_h107",
+          "math:area-by-unit-squares"
+        ],
+        "prerequisiteIds": [
+          "cnm_p160",
+          "cnm_p089"
+        ],
+        "levelReason": "The solution uses elementary spatial reasoning and counts unit-square faces at two sizes."
+      },
+      {
+        "id": "subtract_shared_faces",
+        "label": "Subtract the faces hidden between blocks",
+        "explanation": "First imagine separating the twenty perforated \\(3\\times3\\times3\\) blocks. We can total their individual surface areas and then remove the faces hidden when neighboring blocks touch.\n\nIn one perforated block, the surviving unit cubes are the eight corner cubes and twelve edge-middle cubes. Each corner cube touches three surviving edge-middle cubes, so three of its six faces are exposed. Each edge-middle cube touches only the two corner cubes on its edge, so four of its faces are exposed. The area of one separated block is therefore\n\\[\n8\\cdot3+12\\cdot4=72.\n\\]\nThe twenty separated blocks have total surface area \\(20\\cdot72=1440\\).\n\nAt the larger scale, the surviving blocks likewise occupy eight corners and twelve edge middles. Every face-sharing pair consists of a corner block and an edge-middle block. Each corner block touches three edge-middle blocks, giving \\(8\\cdot3=24\\) pairs. This counts every pair once, using its unique corner block.\n\nAcross each shared \\(3\\times3\\) face, both blocks have removed the central unit square. The other eight unit squares touch. Each contact hides two faces that were included in the separated total, one from each block. Thus each neighboring pair requires subtracting \\(2\\cdot8=16\\) square units. Every hidden face belongs to exactly one such contact, so the final area is\n\\[\n1440-24\\cdot16\n=1440-384\n=\\boxed{1056}\n\\]\nsquare units, choice E.",
+        "nodeIds": [
+          "cnm_h107",
+          "math:area-by-unit-squares",
+          "math:double-counting"
+        ],
+        "prerequisiteIds": [
+          "cnm_p160",
+          "cnm_p089"
+        ],
+        "levelReason": "Counting cube faces and subtracting two faces per contact requires only elementary geometry and careful counting."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h107"
+    ],
+    "supportIds": [
+      "cnm_p160",
+      "cnm_p089"
+    ],
+    "annotationRationale": "Both routes decompose the composite solid into cube components and use their counts, supporting cnm_h107. Both measure surface area by unit squares, supported by cube structure and square area. The second route additionally tracks the two face incidences hidden by each contact, supporting math:double-counting locally. The catalog's ordinary cube and prism surface-area formulas do not fully describe the principal target of exposed-face accounting in a perforated cube assembly, so that target is proposed separately.",
+    "needsNewNodes": [
+      {
+        "name": "Surface area of solids assembled from cubes",
+        "description": "Find the surface area of a finite cube assembly by counting exposed square faces, including tunnel walls. Account for faces hidden at contacts, using matching subdivisions when component faces are perforated.",
+        "reason": "The catalog covers surface-area formulas for simple solids and general counting, but lacks the exposed-boundary accounting needed for this nonconvex, perforated assembly."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1998_AMC_12_Q27",
+    "decision": "accept",
+    "mathematicalCheck": "A single removal pattern exposes 48 outside faces and 24 tunnel-wall faces. Therefore the final area is 72·8+20·24=1056. Independently, each separated perforated block has area 8·3+12·4=72; there are 24 block contacts, each hiding two sets of eight unit faces, giving 20·72-24·16=1056. Both methods account for matching openings and all boundary faces.",
+    "levelCheck": "Both explanations use elementary spatial reasoning and arithmetic, with completeness and contact multiplicities made explicit.",
+    "methodDistinctness": "The methods offer distinct useful viewpoints: preserving old surfaces and adding new walls, versus totaling separated blocks and subtracting hidden contacts.",
+    "annotationCheck": "Cube decomposition, cube structure, and square area are appropriate. Unit-square measurement applies to the planar face pieces; the proposed new node honestly covers the additional exposed-boundary accounting. Double counting is appropriately local to the second method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "track_old_and_new_surfaces": "track_old_and_new_surfaces",
+    "subtract_shared_faces": "subtract_shared_faces"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "f014bc78755e7686def588217cef4a1906a0941fa2de70dc5326e7e5a9bcaa93",
+    "acceptedAt": "2026-11-08T00:28:22.343005+00:00",
+    "inputHash": "c80e486dda95a963b84ca7da964b1320553f4727160e050a65333e8a92249b1f",
+    "authorInputHash": "4a0e41d717d539f2a7febd004098cf8c53a7fe3ac8b20e94f1ccb9b6e18ff94d",
+    "reviewInputHash": "dd091729dc8af42bab690a2266361ef337e8a0abef41f5540d5a2d31434d059f",
+    "authorResponseHash": "4f23e56348917c29d5cb37c67a5902695ac708027b2a9923b3cbcc228cb2c265",
+    "reviewerResponseHash": "1b9b7137be18978202e6e816c5ded27ff1f0e512ad5f5445c90417471b72ce5c",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

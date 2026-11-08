@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1978_AMC_12_Q28",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "d41807903a60c1448377c38f2dec07d1a031ce9079e6c83e543f41f7c4d312c1",
+    "figureHashes": {
+      "figures/1978_AMC_12_Q28_question_fig1.svg": "b67990f7a9f80efb33eeed1a45bd8b3f87f32ef3e1143a27d1445347b456573b"
+    }
+  },
+  "solutionSHA256": "c2ac8ef9930d080dccbde07d3b6108c41eec341a57ccb22ed6f3a2a9bb255c99",
+  "solutionFigureHashes": {},
+  "candidateHash": "e927807100c37ccc593bea44988c45826723a1c317a2067ef75e694bf65f20de",
+  "candidate": {
+    "questionId": "1978_AMC_12_Q28",
+    "derivedAnswer": "E: \\(120^\\circ\\)",
+    "answerStatus": "matches",
+    "answerReason": "The midpoint construction produces similar ordered triples four indices apart. Thus the requested angle equals angle A4 A5 A3, which is the supplement of 60 degrees.",
+    "methods": [
+      {
+        "id": "four-step-midsegment-similarity",
+        "label": "Show that triangle shapes repeat every four steps",
+        "explanation": "Because the requested points have large indices, look for a repeating triangle shape rather than locate every point. We will show that advancing all three indices by four produces a similar triangle with corresponding vertices in the same order.\n\nTake three consecutive points \\(X=A_n\\), \\(Y=A_{n+1}\\), and \\(Z=A_{n+2}\\). The next four points are\n\\[\nU=A_{n+3},\\quad V=A_{n+4},\\quad W=A_{n+5},\\quad T=A_{n+6}.\n\\]\nBy the given rule, \\(U\\) is the midpoint of \\(XY\\), \\(V\\) is the midpoint of \\(YZ\\), \\(W\\) is the midpoint of \\(ZU\\), and \\(T\\) is the midpoint of \\(UV\\).\n\nThese midpoint relationships reveal all three sides of triangle \\(VWT\\). In triangle \\(ZYU\\), segment \\(VW\\) joins two side midpoints, so\n\\[\nVW=\\frac12 YU=\\frac14 XY.\n\\]\nIn triangle \\(UZV\\), segment \\(WT\\) likewise joins two side midpoints, giving\n\\[\nWT=\\frac12 ZV=\\frac14 YZ.\n\\]\nFinally, \\(UV\\) is a midsegment of triangle \\(XYZ\\), and \\(T\\) is its midpoint, so\n\\[\nTV=\\frac12 UV=\\frac14 ZX.\n\\]\nThus \\(\\triangle VWT\\sim\\triangle XYZ\\) by SSS similarity, with correspondences \\(V\\leftrightarrow X\\), \\(W\\leftrightarrow Y\\), and \\(T\\leftrightarrow Z\\). Starting from a nondegenerate triangle, each four-step triangle is therefore nondegenerate as well.\n\nNow \\(43=3+10\\cdot4\\). Applying this correspondence ten times shows that\n\\[\n\\angle A_{44}A_{45}A_{43}=\\angle A_4A_5A_3.\n\\]\nIt remains to find this early angle. Points \\(A_4\\) and \\(A_5\\) are the midpoints of \\(A_1A_2\\) and \\(A_2A_3\\). The midsegment theorem and the equal original sides show that triangle \\(A_2A_4A_5\\) is equilateral. Hence \\(\\angle A_4A_5A_2=60^\\circ\\). Since \\(A_5\\) lies between \\(A_2\\) and \\(A_3\\), the rays \\(A_5A_2\\) and \\(A_5A_3\\) are opposite, so\n\\[\n\\angle A_4A_5A_3=180^\\circ-60^\\circ=120^\\circ.\n\\]\nTherefore the requested angle is \\(\\boxed{120^\\circ}\\), choice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_185",
+          "cnm_271",
+          "cnm_272"
+        ],
+        "prerequisiteIds": [
+          "cnm_055",
+          "cnm_139",
+          "cnm_062"
+        ],
+        "levelReason": "The four-step repetition is proved using only triangle midsegments and SSS similarity. The final angle uses equilateral-triangle properties and supplementary angles, avoiding vector recurrences."
+      }
+    ],
+    "assessedIds": [
+      "cnm_272"
+    ],
+    "supportIds": [
+      "cnm_055",
+      "cnm_139",
+      "cnm_062"
+    ],
+    "annotationRationale": "The route-neutral geometric target is transferring the requested angle through corresponding angles of similar triangles. The written method proves the four-step correspondence by repeated midsegment applications and SSS similarity, so cnm_185 and cnm_271 are method-local procedures. Midpoint meaning, equilateral-triangle properties, and a linear pair support the construction and the final 120-degree calculation. No vector, homothety, or numerical-sequence machinery is required, and these annotations do not establish student mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1978_AMC_12_Q28",
+    "decision": "accept",
+    "mathematicalCheck": "The midpoint rule gives VW = XY/4, WT = YZ/4, and TV = ZX/4, establishing the stated ordered similarity by SSS. Ten four-index advances transfer the requested angle to ∠A4A5A3. Triangle A2A4A5 is equilateral, and the opposite rays at A5 make this angle 180° − 60° = 120°. The initial configuration and nondegeneracy agree with the figure.",
+    "levelCheck": "Repeated midsegment applications and SSS similarity give a complete elementary explanation suitable for historical AHSME.",
+    "methodDistinctness": "The single geometric method is sufficient and avoids unnecessary recurrence machinery.",
+    "annotationCheck": "The assessed similarity property, method-local midsegment and similarity criteria, and shared midpoint and angle support all match the supplied catalog scopes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "four-step-midsegment-similarity": "four-step-midsegment-similarity"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "955e305710836ab86a6273eb5e8510bdd03ed81cba4d3523dd7c0e30b4f0c295",
+    "acceptedAt": "2026-11-08T00:13:16.742369+00:00",
+    "inputHash": "d257834e064c56206043b6f048118a6f431ae67e8a30d9df71e5c1aa1536bfa2",
+    "authorInputHash": "fd86bf9051bc7e90b05f963ba34ee8a2ef197d7710d7a165d60867d7b106c54f",
+    "reviewInputHash": "f9a3f6d9384d48ef070500ce0e6903147b3b64e4ace6b7d193764e274a05edaf",
+    "authorResponseHash": "9e0462bcb3ede166825ad940db463330c9a782ab04e50044c8d5cad7451111cd",
+    "reviewerResponseHash": "bddd153fce769834daaaef1c21650ec6c214560c08148df4ee6e86eddc4e44df",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

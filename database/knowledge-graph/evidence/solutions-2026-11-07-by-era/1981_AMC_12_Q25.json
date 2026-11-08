@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1981_AMC_12_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "fb5b7e88360c5bca2435cc76c9461d748a37fa33af93594093c1f47b81835385",
+    "figureHashes": {
+      "figures/1981_AMC_12_Q25_question_fig1.svg": "cc2e4afdc4ab67f22953745bac3ccad803e616739fdb352d3b6d361b5df20f93"
+    }
+  },
+  "solutionSHA256": "d6869c97d12c25b99be26a5a7ae354bfd62f449f88eb19f4c6fc6eb9312868db",
+  "solutionFigureHashes": {},
+  "candidateHash": "78b8e110cbb64c662a01a1940f6de4b1d0eb2e076e782b4020277cba6f0deb10",
+  "candidate": {
+    "questionId": "1981_AMC_12_Q25",
+    "derivedAnswer": "A (2√10)",
+    "answerStatus": "matches",
+    "answerReason": "The angle-bisector ratios and squared-distance equations determine the three side lengths as 2√10, 11, and 6√6. Their squares show that 2√10 is the shortest.",
+    "methods": [
+      {
+        "id": "bisectors-and-squared-distances",
+        "label": "Combine angle bisectors with squared distances",
+        "explanation": "Although neither trisector bisects the whole angle at \\(A\\), each bisects a smaller triangle's angle. This turns the three given base segments into useful side ratios.\n\nThe figure places \\(B,D,E,C\\) on one line in that order. Since \\(AD\\) bisects \\(\\angle BAE\\), the angle bisector theorem in triangle \\(ABE\\) gives\n\\[\n\\frac{AB}{AE}=\\frac{BD}{DE}=\\frac23.\n\\]\nSimilarly, \\(AE\\) bisects \\(\\angle DAC\\), so in triangle \\(ADC\\),\n\\[\n\\frac{AD}{AC}=\\frac{DE}{EC}=\\frac12.\n\\]\nTo use both ratios without introducing unknown angles, place\n\\[\nB=(0,0),\\quad D=(2,0),\\quad E=(5,0),\\quad C=(11,0),\n\\]\nand write \\(A=(u,v)\\), where \\(v\\ne0\\) because the triangle is nondegenerate. Set \\(S=u^2+v^2=AB^2\\). All four distances from \\(A\\) share the same vertical contribution, so their squares have simple expressions:\n\\[\nAE^2=S-10u+25,\n\\]\n\\[\nAD^2=S-4u+4,\\qquad AC^2=S-22u+121.\n\\]\nSquaring the positive side ratios gives \\(9AB^2=4AE^2\\) and \\(4AD^2=AC^2\\). Substitution and simplification yield\n\\[\n5S+40u=100,\n\\qquad 3S+6u=105.\n\\]\nMultiply the second equation by \\(20\\) and the first by \\(3\\), then subtract to eliminate \\(u\\):\n\\[\n45S=1800,\n\\qquad S=40.\n\\]\nThe second equation now gives \\(u=-5/2\\), and hence\n\\[\nAC^2=40-22\\left(-\\frac52\\right)+121=216.\n\\]\nThus the three side squares are\n\\[\nAB^2=40,\\qquad BC^2=121,\\qquad AC^2=216.\n\\]\nSince side lengths are positive, their order is the same as the order of their squares. The shortest side is therefore \\(AB=\\sqrt{40}=\\boxed{2\\sqrt{10}}\\), choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "math:angle-bisector-side-ratio",
+          "cnm_h173",
+          "cnm_090"
+        ],
+        "prerequisiteIds": [
+          "cnm_114",
+          "cnm_268",
+          "cnm_082",
+          "cnm_174",
+          "cnm_148",
+          "cnm_042",
+          "cnm_074"
+        ],
+        "levelReason": "The method requires only the internal angle bisector theorem, Cartesian coordinates, the Pythagorean distance formula, and linear elimination. Introducing the shared squared distance avoids solving a quadratic system."
+      }
+    ],
+    "assessedIds": [
+      "math:angle-bisector-side-ratio"
+    ],
+    "supportIds": [
+      "cnm_114",
+      "cnm_268"
+    ],
+    "annotationRationale": "Recognizing the two internal angle bisectors and matching their adjacent sides to the correct divided base segments is the principal geometric target. Coordinates and elimination belong to the written method rather than being universal requirements of the question. The method uses squared distances to make the remaining equations linear in S and u; it does not invoke Stewart's theorem or a median formula.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1981_AMC_12_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The figure confirms B,D,E,C in order. The two angle-bisector ratios are correctly matched. Their squared-distance equations give S=40 and u=−5/2, with v²=135/4>0. The side squares are 40,121,216, so the shortest side is uniquely 2√10.",
+    "levelCheck": "Coordinates, squared distances, and linear elimination are appropriate for AMC 12. The shared squared-distance substitution is motivated and the elimination is shown.",
+    "methodDistinctness": "One complete coordinate method is included; an additional Stewart-theorem route is unnecessary.",
+    "annotationCheck": "The assessed angle-bisector node is route-neutral. Coordinates and elimination are correctly kept method-local, and the prerequisite annotations fit the actual calculations.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "bisectors-and-squared-distances": "bisectors-and-squared-distances"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c89f16ac9a2739d9e0f7fea580e6003894770a16d898d74da3f28e024fb362b2",
+    "acceptedAt": "2026-11-08T00:15:54.633151+00:00",
+    "inputHash": "24d1d793e97edbd602423b85070a5a068bc43f6eac518281db1998134cfbad5d",
+    "authorInputHash": "cd7262c808944d99e5cac6c0f5756345d133b99201ab2e778b897ae97b1fc735",
+    "reviewInputHash": "76b6dfeb7ab5a74a09600efc6d9ee25e047b47371e64246d6e31f0f73a738963",
+    "authorResponseHash": "4acaffdea399af392ccdbddbe83d9e658d292061163a5d2b79f56f3924cdcab4",
+    "reviewerResponseHash": "2b5d2d5e9aca11a59eebe95df8d93ccbaf62a63238deb83ec25903a5c1349db6",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

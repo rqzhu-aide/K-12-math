@@ -1,71 +1,67 @@
 {
-  "Year": 1998,
-  "Level": "AMC 12",
-  "Batch": "NA",
-  "Area": "Unclassified",
-  "Number": 27,
-  "Question": "A \\(9\\times9\\times9\\) cube is composed of twenty-seven \\(3\\times3\\times3\\) cubes. The big cube is “tunneled” as follows: First, the six \\(3\\times3\\times3\\) cubes which make up the center of each face as well as the center \\(3\\times3\\times3\\) cube are removed as shown. Second, each of the twenty remaining \\(3\\times3\\times3\\) cubes is diminished in the same way. That is, the center facial unit cubes as well as each center cube are removed. The surface area of the final figure is\n\n[Figure 1](figures/1998_AMC_12_Q27_question_fig1.svg)",
-  "Question Type": "mixed",
-  "Choices": {
-    "A": "\\(384\\)",
-    "B": "\\(729\\)",
-    "C": "\\(864\\)",
-    "D": "\\(1024\\)",
-    "E": "\\(1056\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "surface area; three-dimensional counting",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/1998/solutions",
-    "SourceSHA256": "cc4a5d74b68a7084ebc611b03b53a5b905ea275cb0a16bcd8cf3fda214a74276",
-    "Figures": [
-      "figures/1998_AMC_12_Q27_question_fig1.svg"
+  "answer": {
+    "accepted": [
+      "E"
     ],
-    "FigureSources": {
-      "figures/1998_AMC_12_Q27_question_fig1.svg": {
-        "url": "https://live.poshenloh.com/images/past-contests/amc12/1998/27.svg",
-        "alt": ""
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "cnm_h107"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
+  },
+  "id": "1998_AMC_12_Q27",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(384\\)",
+        "id": "A"
+      },
+      {
+        "content": "\\(729\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(864\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(1024\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(1056\\)",
+        "id": "E"
       }
-    },
-    "SourceQuestionCount": 30,
-    "HistoricalSeries": "AHSME",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
+    ],
+    "prompt": "A \\(9\\times9\\times9\\) cube is composed of twenty-seven \\(3\\times3\\times3\\) cubes. The big cube is “tunneled” as follows: First, the six \\(3\\times3\\times3\\) cubes which make up the center of each face as well as the center \\(3\\times3\\times3\\) cube are removed as shown. Second, each of the twenty remaining \\(3\\times3\\times3\\) cubes is diminished in the same way. That is, the center facial unit cubes as well as each center cube are removed. The surface area of the final figure is\n\n[Figure 1](figures/1998_AMC_12_Q27_question_fig1.svg)"
   },
-  "ID": "1998_AMC_12_Q27",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "f2a89633fb53f1d6c975b5b9bc726d516abb3154b2136ac58bd2bcdb53084bd8",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h107",
-      "cnm_h110"
-    ],
-    "supportIds": [
-      "math:double-counting"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "cnm_h107",
+        "math:area-by-unit-squares"
+      ],
+      "explanation": "The same removal pattern occurs at two sizes, so first count the exposed faces in one \\(3\\times3\\times3\\) arrangement of smaller cubes. The remaining cubes occupy its eight corners and twelve edge middles.\n\n[Figure 1](figures/1998_AMC_12_Q27_question_fig1.svg)\n\nOn each of the six outside faces, only the middle square is missing. This leaves \\(6\\cdot8=48\\) exposed smaller-cube faces. Inside, each of the six face-center openings has four side walls, giving another \\(6\\cdot4=24\\) faces. There is no wall at the inner end of an opening because the central cube is also removed. These outside faces and tunnel walls account for every exposed face, giving \\(48+24=72\\).\n\nApply this count to the first stage, where each smaller cube has side length \\(3\\). There are \\(72\\) exposed \\(3\\times3\\) block faces. During the second stage, the central unit square is removed from each such face, leaving eight unit squares. Their surviving area is therefore \\(72\\cdot8=576\\).\n\nEach of the twenty remaining blocks also gains \\(24\\) unit-square tunnel walls inside it. These contribute \\(20\\cdot24=480\\). Neighboring blocks have matching central openings, so their shared boundaries create no additional exposed faces: the eight remaining squares still touch their counterparts.\n\nEvery final surface square either lies on a previously exposed block face or is a new wall inside a block. These two categories do not overlap. Hence the total surface area is\n\\[\n576+480=\\boxed{1056}\n\\]\nsquare units, choice E.",
+      "id": "track_old_and_new_surfaces",
+      "sourceRef": "amc/1998_AMC_12_Q27#track_old_and_new_surfaces",
+      "title": "Track surviving surfaces and new tunnel walls"
+    },
+    {
+      "directNodeIds": [
+        "cnm_h107",
+        "math:area-by-unit-squares",
+        "math:double-counting"
+      ],
+      "explanation": "First imagine separating the twenty perforated \\(3\\times3\\times3\\) blocks. We can total their individual surface areas and then remove the faces hidden when neighboring blocks touch.\n\nIn one perforated block, the surviving unit cubes are the eight corner cubes and twelve edge-middle cubes. Each corner cube touches three surviving edge-middle cubes, so three of its six faces are exposed. Each edge-middle cube touches only the two corner cubes on its edge, so four of its faces are exposed. The area of one separated block is therefore\n\\[\n8\\cdot3+12\\cdot4=72.\n\\]\nThe twenty separated blocks have total surface area \\(20\\cdot72=1440\\).\n\nAt the larger scale, the surviving blocks likewise occupy eight corners and twelve edge middles. Every face-sharing pair consists of a corner block and an edge-middle block. Each corner block touches three edge-middle blocks, giving \\(8\\cdot3=24\\) pairs. This counts every pair once, using its unique corner block.\n\nAcross each shared \\(3\\times3\\) face, both blocks have removed the central unit square. The other eight unit squares touch. Each contact hides two faces that were included in the separated total, one from each block. Thus each neighboring pair requires subtracting \\(2\\cdot8=16\\) square units. Every hidden face belongs to exactly one such contact, so the final area is\n\\[\n1440-24\\cdot16\n=1440-384\n=\\boxed{1056}\n\\]\nsquare units, choice E.",
+      "id": "subtract_shared_faces",
+      "sourceRef": "amc/1998_AMC_12_Q27#subtract_shared_faces",
+      "title": "Subtract the faces hidden between blocks"
+    }
+  ],
+  "sourceRef": "amc/1998_AMC_12_Q27"
 }

@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1990_AMC_8_Q18",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "92999a1c65763515528465c30a3f06e20c81627f72908cad6e2cb43a530d13d1",
+    "figureHashes": {
+      "figures/1990_AMC_8_Q18_question_fig1.svg": "a4e8a880f5dd84ecd121a3b2260559f31704f8bed4ec6d7eb3baed5a05f3c2e2"
+    }
+  },
+  "solutionSHA256": "461d47d2cbe8800baff1ea6441a0268d339bd7808d16d87bc970e30aa8133b5a",
+  "solutionFigureHashes": {},
+  "candidateHash": "c57b469237c11df8aaa430b003a0ebec559ed32b8a981e62b7900dd60ac9dea7",
+  "candidate": {
+    "questionId": "1990_AMC_8_Q18",
+    "derivedAnswer": "36 edges, choice C",
+    "answerStatus": "matches",
+    "answerReason": "The small corner cuts leave one portion of each of the original 12 edges and create three new edges at each of eight corners, for 12 + 8 × 3 = 36.",
+    "methods": [
+      {
+        "id": "method1",
+        "label": "Count surviving and new edges",
+        "explanation": "Separate the edges into those left from the original prism and those created by the cuts. A rectangular prism has \\(12\\) edges: four around its top, four around its bottom, and four joining the top to the bottom. The small corner cuts shorten both ends of each edge, leaving one middle portion. This gives \\(12\\) surviving edges.\n\nAt each corner, the slice meets the three edges that originally met there. It creates a triangular face with three new edges, one on each of the three original faces meeting at that corner. The eight separate corner cuts therefore create \\(8\\times3=24\\) new edges.\n\nEvery edge is either a surviving original edge or a side of one of the new triangular faces. These groups do not overlap, and the separate triangular faces do not share edges. Thus the total is\n\\[\n12+24=\\boxed{36},\n\\]\nwhich is choice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "cnm_p160",
+          "math:plane-sections-of-solids",
+          "cnm_p048"
+        ],
+        "prerequisiteIds": [
+          "cnm_p023",
+          "cnm_p038"
+        ],
+        "levelReason": "This is a direct spatial count using the prism's original edges and eight groups of three new edges."
+      },
+      {
+        "id": "method2",
+        "label": "Count edges around the faces",
+        "explanation": "Count the sides of every face, then account for edges shared by two faces. Each of the six original rectangular faces has all four corners clipped. On each such face, four shortened original sides remain and four new sides replace the corners. It is therefore an eight-sided face.\n\nThe eight corner cuts also create eight triangular faces. Counting sides around all the faces gives\n\\[\n6\\times8+8\\times3=48+24=72.\n\\]\nThis includes every edge, but counts each one twice because every edge borders exactly two faces. Consequently the number of edges is\n\\[\n72\\div2=\\boxed{36},\n\\]\nwhich is choice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "math:double-counting",
+          "cnm_p160",
+          "math:plane-sections-of-solids"
+        ],
+        "prerequisiteIds": [
+          "cnm_p023",
+          "cnm_p038",
+          "cnm_p043"
+        ],
+        "levelReason": "The incidence count is explained as counting each edge twice. It requires only elementary spatial reasoning, multiplication, and division, without Euler's formula."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_p160",
+      "cnm_p023",
+      "cnm_p038"
+    ],
+    "annotationRationale": "The route-neutral target is counting edges of a solid after corner cuts. The catalog's prism nodes support counting the original prism's elements but do not directly cover the modified polyhedron. Plane sections describe how each cut creates a triangular face. The first method uses equal groups and a disjoint partition of edges; double counting belongs only to the second method. The catalog's multiplication principle concerns successive choices, so it is not assigned merely because the arithmetic includes multiplication.",
+    "needsNewNodes": [
+      {
+        "name": "Counting edges of polyhedra after corner cuts",
+        "description": "Determine the edges of a polyhedron after separate small planar corner cuts, tracking surviving original edges and newly created edges, or counting face-edge incidences with justified multiplicities.",
+        "reason": "The catalog covers original prism structure, plane sections, and general double counting, but lacks the specific geometric target of counting edges after truncation."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1990_AMC_8_Q18",
+    "decision": "accept",
+    "mathematicalCheck": "The separate small corner cuts preserve one middle segment of each original edge and create three distinct new edges at each of eight corners, giving 12 + 24 = 36. Independently, the six original faces become octagons and eight triangular faces are added, producing 72 face-side incidences. Each geometric edge contributes exactly two incidences, so there are 36 edges.",
+    "levelCheck": "Both methods use elementary spatial reasoning and arithmetic suitable for AMC 8. The second explains its counting multiplicity directly and requires no advanced polyhedron formula.",
+    "methodDistinctness": "The direct partition of edges and the count through face-side incidences provide genuinely distinct, accessible approaches.",
+    "annotationCheck": "Shared supports and method-local concepts reflect the written arguments. Double counting is confined to method 2. The proposed missing node honestly identifies the modified-solid target without forcing equivalence to prism structure or successive-choice counting.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "method1": "method1",
+    "method2": "method2"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "206964820962a99c63c30631801cc9655e78bf6fa55c2087ac6e92f9da52962c",
+    "acceptedAt": "2026-11-08T00:21:23.389819+00:00",
+    "inputHash": "0474591ee9857f8122310788092cc0e5e3e72b5f38ebd606949752f7210ac437",
+    "authorInputHash": "9609100b1e135b79a6d1f7cdf18e6eef484fe330f8cffeb64176c5e580c568d8",
+    "reviewInputHash": "74f8e53a01d3a39cfa24a174bc4d67a3c68f07e8e26bb5c4e4125cf763242890",
+    "authorResponseHash": "d357d84d49497165254c19ed8055673bb45315591279fee814cb8e158070e399",
+    "reviewerResponseHash": "c6030b1897f786378c7f44e9afbb6c8ca1c5f03cb48a499492c2a5cd8b3e158d",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

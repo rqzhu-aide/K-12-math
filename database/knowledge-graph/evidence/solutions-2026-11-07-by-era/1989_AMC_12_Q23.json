@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1989_AMC_12_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "babcb1264fee26c58850f2b4ad6402848fd714f65038e1ddc740685c55168ccb",
+    "figureHashes": {
+      "figures/1989_AMC_12_Q23_question_fig1.svg": "22ea7ab0f9c74faab0bebd64727fec231dba7125dcb74418102a88f7d2c78512"
+    }
+  },
+  "solutionSHA256": "a16dda7300beb8387abdab2938937a4d6bfba4274c1580b7b139e0a5322d19f2",
+  "solutionFigureHashes": {},
+  "candidateHash": "cb0d376a86b922d700a29e5882e8fd33f592c6be77957dd7ae52d0f9c704341e",
+  "candidate": {
+    "questionId": "1989_AMC_12_Q23",
+    "derivedAnswer": "(44,35), choice D",
+    "answerStatus": "matches",
+    "answerReason": "The particle reaches (44,44) at minute 44·45=1980 and then moves downward for 44 minutes. Nine further minutes place it at (44,35).",
+    "methods": [
+      {
+        "id": "diagonal-corner-times",
+        "label": "Track visits to diagonal corners",
+        "explanation": "The points \\((n,n)\\) are useful checkpoints because the particle turns there. From the arrows, it reaches \\((1,1)\\) after \\(2\\) minutes, then \\((2,2)\\) after \\(6\\) minutes, then \\((3,3)\\) after \\(12\\) minutes. We can justify the pattern by tracking the journey between consecutive checkpoints.\n\nFor an odd positive integer \\(n\\), the route from \\((n,n)\\) goes left \\(n\\) units, up \\(1\\), and right \\(n+1\\), reaching \\((n+1,n+1)\\). For even \\(n\\), it goes down \\(n\\), right \\(1\\), and up \\(n+1\\). Either journey takes\n\\[\nn+1+(n+1)=2(n+1)\n\\]\nminutes, since each unit takes one minute. Including the first \\(2\\) minutes, the time of arrival at \\((n,n)\\) is therefore\n\\[\nT_n=2+4+\\cdots+2n=n(n+1).\n\\]\nHere \\(1+2+\\cdots+n=n(n+1)/2\\), obtained by pairing the sum with its reverse.\n\nNow\n\\[\nT_{44}=44\\cdot45=1980,\n\\qquad T_{45}=45\\cdot46=2070.\n\\]\nThus minute \\(1989\\) comes \\(9\\) minutes after the visit to \\((44,44)\\). Because \\(44\\) is even, the next segment goes downward for \\(44\\) minutes. Since \\(9<44\\), the particle is still on that segment, at\n\\[\n(44,44-9)=\\boxed{(44,35)},\n\\]\nchoice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "cnm_030",
+          "cnm_086",
+          "cnm_h204"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_p156",
+          "cnm_029"
+        ],
+        "levelReason": "The argument uses coordinate movements, odd-even cases, and an elementary finite sum whose formula is explained. It requires no advanced sequence machinery."
+      }
+    ],
+    "assessedIds": [
+      "cnm_030",
+      "cnm_086"
+    ],
+    "supportIds": [
+      "cnm_082",
+      "cnm_h204"
+    ],
+    "annotationRationale": "The task requires deriving a timing pattern from the route and updating coordinates for the remaining motion. These correspond to pattern expressions and coordinate translations. The method uses arithmetic summation to calculate checkpoint times, with odd-even cases determining the direction after each checkpoint. The route argument justifies the general pattern instead of extrapolating solely from early examples.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1989_AMC_12_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "The arrows confirm the stated alternating checkpoint journeys, each taking n+1+(n+1)=2(n+1) minutes. Therefore arrival at (n,n) occurs at n(n+1). At minute 1980 the particle reaches (44,44); its next segment is downward for 44 minutes. Nine further minutes give (44,35).",
+    "levelCheck": "Coordinate movements, parity, and the explained finite-sum formula are appropriate. The general timing rule is justified beyond the initial examples.",
+    "methodDistinctness": "One checkpoint method supplies a complete solution; an alternative is unnecessary.",
+    "annotationCheck": "Pattern expressions and coordinate translations are appropriate route-neutral assessed nodes. Arithmetic summation, coordinate meaning, parity, and expression evaluation match the actual method and catalog scopes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "diagonal-corner-times": "diagonal-corner-times"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "2fb83bce23337a4ebc16e06e46ccacbffd6ca370bc50e9782c10aae62ac09a91",
+    "acceptedAt": "2026-11-08T00:20:13.449628+00:00",
+    "inputHash": "2e4dc1b8992056d24cc2f6733c166a7e7c719cab2b607b2a75b821226fa29163",
+    "authorInputHash": "beae22937cea78ef155e51437cd995308bad853d0d03e52d2068d6eee29353e6",
+    "reviewInputHash": "65069e166385d5e9816426273da481e3540e793d246cf02c2817ab8fefc0827b",
+    "authorResponseHash": "6c0b74a55939133361fe8c7416cfe96848208551cec4c9e73b5cb8d6f8d04586",
+    "reviewerResponseHash": "0cb56bbd377293db71624e57bfa3fcdd01a0d8eb90a2fc4894370cbb842d12bb",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

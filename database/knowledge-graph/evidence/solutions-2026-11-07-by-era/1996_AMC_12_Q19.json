@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1996_AMC_12_Q19",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "a96b4b950eebe448db631e8eea0d11a2008c754f4fdfb86864a9b84dc75c5ebb",
+    "figureHashes": {
+      "figures/1996_AMC_12_Q19_question_fig1.svg": "2e47c6783f68a7dba9abc97e251f28300a7e6133e4119a6be7f9cc866cb4320f"
+    }
+  },
+  "solutionSHA256": "9d7eeffeb2805a408901eedf62b9a5ea95cad78ecc8064922a9fc26d50be16c2",
+  "solutionFigureHashes": {},
+  "candidateHash": "17f3b9bee0cb8cd0d2cdc8c58a65721c4d4d53df0df65501ba2aa38831d4e151",
+  "candidate": {
+    "questionId": "1996_AMC_12_Q19",
+    "derivedAnswer": "D (3/4)",
+    "answerStatus": "matches",
+    "answerReason": "The midpoint hexagon has circumradius √3/2 times that of the original hexagon, so corresponding central triangles have area ratio 3/4. Subtracting the six midpoint corner triangles gives the same result.",
+    "methods": [
+      {
+        "id": "central-triangle-comparison",
+        "label": "Compare triangles from the center",
+        "explanation": "Joining the center to the vertices divides a regular hexagon into six equilateral triangles. Comparing these triangles with the six central triangles of the smaller hexagon lets us compare the two areas.\n\nLet \\(O\\) be the center and let the original side length be \\(s>0\\). Each central angle is \\(360^\\circ/6=60^\\circ\\), so the isosceles central triangles are equilateral and their radii have length \\(s\\).\n\nLet \\(M\\) be the midpoint of \\(AB\\). In equilateral triangle \\(OAB\\), the median \\(OM\\) is perpendicular to \\(AB\\). The Pythagorean theorem gives\n\\[\nOM^2=s^2-\\left(\\frac{s}{2}\\right)^2\n=\\frac34s^2,\n\\qquad OM=\\frac{\\sqrt3}{2}s.\n\\]\nA rotation of \\(60^\\circ\\) about \\(O\\) carries each side midpoint to the next. Thus consecutive midpoints are equally far from \\(O\\) and subtend \\(60^\\circ\\), making each central triangle of the smaller hexagon equilateral too.\n\nCorresponding central triangles are therefore similar with length ratio \\(\\sqrt3/2\\). Their area ratio is the square of that ratio. Since each hexagon consists of six such triangles with disjoint interiors, the same ratio holds for the hexagons:\n\\[\n\\frac{\\text{smaller area}}{\\text{original area}}\n=\\left(\\frac{\\sqrt3}{2}\\right)^2\n=\\boxed{\\frac34}.\n\\]\nThe answer is choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_174",
+          "cnm_272",
+          "cnm_p150"
+        ],
+        "prerequisiteIds": [
+          "cnm_266",
+          "cnm_139",
+          "cnm_137",
+          "cnm_075"
+        ],
+        "levelReason": "The argument uses regular-polygon central angles, equilateral triangles, the Pythagorean theorem, and elementary triangle area scaling."
+      },
+      {
+        "id": "subtract-midpoint-corners",
+        "label": "Subtract the six corner triangles",
+        "explanation": "The smaller hexagon leaves one triangle at each original vertex. The midpoint condition makes each removed triangle a fixed fraction of a larger triangle, so we can find the area removed without calculating any lengths.\n\nLet \\(O\\) be the center. Joining \\(O\\) to all six vertices divides the regular hexagon into six equilateral triangles; write \\(T>0\\) for the area of each. The original area is therefore \\(6T\\).\n\nConsider triangle \\(ABC\\). Since triangles \\(OAB\\) and \\(OBC\\) are equilateral, \\(\\angle AOB=\\angle OBC=60^\\circ\\). These alternate interior angles show that \\(AO\\parallel BC\\). Consequently, \\(A\\) and \\(O\\) have the same perpendicular distance from line \\(BC\\). Triangles \\(ABC\\) and \\(OBC\\) have the same base \\(BC\\) and the same height, so triangle \\(ABC\\) also has area \\(T\\).\n\nLet \\(P\\) and \\(Q\\) be the midpoints of \\(AB\\) and \\(BC\\). By the triangle midsegment theorem, \\(PQ\\parallel AC\\), so triangles \\(BPQ\\) and \\(BAC\\) are similar with length ratio \\(1/2\\). Thus the corner triangle at \\(B\\) has area\n\\[\n\\left(\\frac12\\right)^2T=\\frac{T}{4}.\n\\]\nRotational symmetry gives the same area for each of the six corner triangles. Their interiors do not overlap, and together with the smaller hexagon they fill the original hexagon. Hence the desired fraction is\n\\[\n\\frac{6T-6(T/4)}{6T}\n=1-\\frac14\n=\\boxed{\\frac34},\n\\]\nwhich is choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_185",
+          "cnm_272",
+          "cnm_p148",
+          "cnm_p150"
+        ],
+        "prerequisiteIds": [
+          "cnm_266",
+          "cnm_139",
+          "cnm_068",
+          "cnm_271"
+        ],
+        "levelReason": "This alternative uses midpoint similarity, equal-base equal-height area comparisons, and subtraction of non-overlapping regions. It requires no trigonometry or length calculations."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p150"
+    ],
+    "supportIds": [
+      "cnm_266",
+      "cnm_139"
+    ],
+    "annotationRationale": "The common task is to determine an enclosed area fraction through geometric decomposition, represented by composite-figure area. Regular-hexagon central structure and equilateral-triangle properties support both routes. The first route uses Pythagoras and similar-triangle area ratios; the second uses midsegments, similarity, base-height area comparison, and subtraction. Similarity is recorded in the actual methods rather than imposed as the task’s only possible target. These annotations describe the mathematics and do not establish learner mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1996_AMC_12_Q19",
+    "decision": "accept",
+    "mathematicalCheck": "The midpoint radius satisfies OM²=3s²/4, so the corresponding equilateral central triangles have area ratio 3/4. Independently, AO is parallel to BC, giving [ABC]=[OBC]=T. Each midpoint corner triangle has area T/4, so removing six leaves 6T−6T/4, also yielding 3/4. Both decompositions cover the regions without overlapping interiors.",
+    "levelCheck": "Both proofs use appropriate elementary geometry and explain the decisive area comparisons.",
+    "methodDistinctness": "The methods offer distinct insights: comparing central triangles and subtracting midpoint corner triangles. Neither requires advanced machinery.",
+    "annotationCheck": "Composite-figure area is a defensible route-neutral target. Regular-polygon and equilateral-triangle support is shared appropriately; Pythagoras, midsegments, similarity, and base-height comparisons are correctly assigned to their methods.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "central-triangle-comparison": "solution:central-triangle-comparison:9d7eeffeb280",
+    "subtract-midpoint-corners": "solution:subtract-midpoint-corners:9d7eeffeb280"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "67f60efb3dbe8df2d3d1fa6be7946724e8d351a481b91e8bfe9dc0d9f1ca505a",
+    "acceptedAt": "2026-11-08T00:26:53.699632+00:00",
+    "inputHash": "aee3552e1c88bb7dacb23d3a031f9929a3ab3fe4e47dfea6caf9aeae5feef332",
+    "authorInputHash": "a38d1bd992382e88486f136e997f72e042e600a01c764ebf74c45cd25332c56e",
+    "reviewInputHash": "4c75665af730ec4d84dd7d7b11e9d295029831445f6789f3b43f2f23778f5cd9",
+    "authorResponseHash": "e8c079f12f5d8a30d65d5a72d6648c5e4fb6f821e4b8fcfb9be12b1e43e38547",
+    "reviewerResponseHash": "f2cc17dff2bb23e35dff55e713eda53705337b82ee5c7d865f1c307466707c73",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

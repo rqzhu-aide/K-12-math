@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1984_AMC_12_Q17",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "b3bad21980ee520a32169d0d4b47a6aa0c986713d730508402fa4241a20556ba",
+    "figureHashes": {
+      "figures/1984_AMC_12_Q17_question_fig1.svg": "4576be053b919b0020b10c3cc7d5d97240655244cc6d8c39d70eecfa8bdf1bd7"
+    }
+  },
+  "solutionSHA256": "e4fb3e1562cf6b5080978f0b648ad772226386a24f279b4cb15fda8349e10054",
+  "solutionFigureHashes": {},
+  "candidateHash": "d7bba82d141db06117fa1c6c6ba890307151eaa880779bb091216f96ebb8fcef",
+  "candidate": {
+    "questionId": "1984_AMC_12_Q17",
+    "derivedAnswer": "C. 150",
+    "answerStatus": "matches",
+    "answerReason": "The given lengths force AH=9, AB=25, and BC=20. Thus the area is 15·20/2=150, agreeing with choice C.",
+    "methods": [
+      {
+        "id": "altitude-similarity",
+        "label": "Use similar right triangles",
+        "explanation": "The altitude creates smaller right triangles that share acute angles with the original triangle. Their corresponding sides give equations for the missing lengths.\n\nLet \\(x=AH>0\\). Then \\(AB=x+16\\). Triangles \\(AHC\\) and \\(ACB\\) are similar because they have equal angles at \\(A\\) and right angles at \\(H\\) and \\(C\\), respectively. Therefore\n\\[\n\\frac{AH}{AC}=\\frac{AC}{AB},\n\\qquad x(x+16)=15^2.\n\\]\nFactoring gives\n\\[\nx^2+16x-225=(x-9)(x+25)=0.\n\\]\nThe root \\(-25\\) cannot be a length, so \\(AH=9\\) and \\(AB=25\\).\n\nSimilarly, triangles \\(BHC\\) and \\(BCA\\) share angle \\(B\\) and each has a right angle. Their corresponding sides give\n\\[\n\\frac{BH}{BC}=\\frac{BC}{BA},\n\\qquad BC^2=16\\cdot25=400.\n\\]\nSince \\(BC>0\\), we have \\(BC=20\\). The original triangle is right at \\(C\\), so its perpendicular legs are a base and height. Its area is\n\\[\n\\frac12 AC\\cdot BC=\\frac12\\cdot15\\cdot20=\\boxed{150},\n\\]\nwhich is choice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "cnm_p148",
+          "cnm_271",
+          "cnm_272",
+          "cnm_273",
+          "cnm_224"
+        ],
+        "prerequisiteIds": [
+          "cnm_055",
+          "cnm_112",
+          "cnm_268",
+          "cnm_075"
+        ],
+        "levelReason": "Uses elementary right-triangle similarity, a factorable quadratic, and the base-height area formula."
+      },
+      {
+        "id": "pythagorean-equations",
+        "label": "Compare Pythagorean equations",
+        "explanation": "All three triangles are right triangles, so we can relate their side squares without using similarity. Let \\(x=AH>0\\), \\(h=CH>0\\), and \\(b=BC>0\\). Then \\(AB=x+16\\), and the Pythagorean theorem gives\n\\[\nx^2+h^2=225,\n\\qquad b^2=h^2+256,\n\\qquad b^2+225=(x+16)^2.\n\\]\nSubstitute \\(b^2=h^2+256\\) into the last equation and expand:\n\\[\nh^2+225=x^2+32x.\n\\]\nNow replace \\(225\\) by \\(x^2+h^2\\) from the first equation. The \\(x^2\\) terms cancel, leaving \\(2h^2=32x\\), or \\(h^2=16x\\). Substitution into \\(x^2+h^2=225\\) yields\n\\[\nx^2+16x-225=(x-9)(x+25)=0.\n\\]\nBecause \\(x>0\\), we obtain \\(x=9\\). Consequently \\(h^2=144\\), so \\(h=12\\), and \\(AB=25\\). Using \\(AB\\) as the base and \\(CH\\) as its height, the area is\n\\[\n\\frac12\\cdot25\\cdot12=\\boxed{150},\n\\]\nwhich is choice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "cnm_p148",
+          "cnm_174",
+          "cnm_224"
+        ],
+        "prerequisiteIds": [
+          "cnm_055",
+          "cnm_112",
+          "cnm_148",
+          "cnm_040",
+          "cnm_075"
+        ],
+        "levelReason": "Uses only the Pythagorean theorem, elementary equation manipulation, factoring, and triangle area."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p148"
+    ],
+    "supportIds": [
+      "cnm_055",
+      "cnm_112",
+      "cnm_075"
+    ],
+    "annotationRationale": "The route-neutral requested result is a triangle area, represented by cnm_p148. Segment addition, altitude meaning, and positive square-root evaluation support both methods. The first route uses AA similarity and proportional corresponding sides in the hypotenuse-altitude configuration. The second uses Pythagorean equations and cancellation instead. Both explicitly solve a quadratic by factoring; similarity is not a requirement of the second route. These annotations describe the task and written methods, not learner mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1984_AMC_12_Q17",
+    "decision": "accept",
+    "mathematicalCheck": "Similarity gives x(x+16)=225, whose only positive root is x=9. Thus AB=25 and BC²=16·25=400, yielding area 150. Independently, the three Pythagorean equations correctly imply h²=16x, hence h=12 and area 25·12/2=150. The figure agrees with the stated configuration, and both methods handle length positivity correctly.",
+    "levelCheck": "Both explanations are complete and appropriate for historical AHSME: elementary similarity or Pythagorean equations, factoring, and triangle area.",
+    "methodDistinctness": "The similarity argument and elimination of Pythagorean equations provide genuinely different, accessible routes.",
+    "annotationCheck": "The area assessment is route neutral, the shared support IDs apply to both methods, and the method-specific similarity, Pythagorean, factoring, and prerequisite annotations fit their catalog scopes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "altitude-similarity": "altitude-similarity",
+    "pythagorean-equations": "pythagorean-equations"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "5347938a07cc67cce0eceaaa2d4e63a4618382491ea099f1dadd8846fc306882",
+    "acceptedAt": "2026-11-08T00:17:26.630185+00:00",
+    "inputHash": "d9a146c0e1d618cafe87dfb35f059ece0bc1db80c5b89f415e2b9e3ea65a0726",
+    "authorInputHash": "0847627eaf1dd87a394deed2c879b229810b3ca5d25e3c2d2dedf1e9ddb292bd",
+    "reviewInputHash": "9e9b33d06cdb246c649b43cabfe88850c5e62aa434771a088ccbfd3f5f6706fd",
+    "authorResponseHash": "4efee3c6d3ef543f2f130c607ecd548e829f8a9bc67cb19f07d74c24bc3162f7",
+    "reviewerResponseHash": "02b6f7bedfbff83265ff7b23b042ea5cda702c96a08d279102ca9509124c3290",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

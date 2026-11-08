@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1972_AMC_12_Q35",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "a6c6ed3196372f0ffc2e909b331643baea0ad7e0142e75c0ca554f23ce862776",
+    "figureHashes": {
+      "figures/1972_AMC_12_Q35_question_fig1.svg": "de54be69df5ca735dad03ead94bbfde0879cdbd5e6e91b70650b4308919da7ae"
+    }
+  },
+  "solutionSHA256": "f1895f3bcea14740fee8def80c898165f849aa74d878457063bf15aaaef42e79",
+  "solutionFigureHashes": {},
+  "candidateHash": "42d49d36e50a9b0fb3869862c705bb586468abc72576c4a22d302bbc48018c7e",
+  "candidate": {
+    "questionId": "1972_AMC_12_Q35",
+    "derivedAnswer": "D: \\(\\dfrac{40\\pi}{3}\\) inches",
+    "answerStatus": "matches",
+    "answerReason": "Three circuits are required to restore the labeled vertices. Over those circuits, P traverses eight 120-degree arcs and eight 30-degree arcs, all of radius 2.",
+    "methods": [
+      {
+        "id": "track-pivots-and-arcs",
+        "label": "Track the pivots and their arcs",
+        "explanation": "Each rotation keeps its pivot fixed, while the other two vertices travel along circular arcs of radius \\(2\\). We therefore need both the rotation angles and the number of rotations during which \\(P\\) moves.\n\nInitially, \\(B\\) is the midpoint of \\(AX\\), because \\(AB=2\\) and \\(AX=4\\). The ray \\(BP\\) makes an angle of \\(120^\\circ\\) with the ray from \\(B\\) toward \\(X\\). Rotating clockwise about \\(B\\) through \\(120^\\circ\\) brings \\(P\\) to \\(X\\), since \\(BP=BX=2\\).\n\nNext the triangle turns about \\(P\\) at \\(X\\). Its side toward the next vertex makes \\(60^\\circ\\) with the ray from \\(X\\) back along \\(XA\\). The square's corner is \\(90^\\circ\\), so a further clockwise turn of \\(90^\\circ-60^\\circ=30^\\circ\\) puts that vertex at the midpoint of \\(XY\\). The triangle is now in the same geometric position relative to \\(XY\\) that it originally had relative to \\(AX\\).\n\nThus each side of the square contributes one \\(120^\\circ\\) rotation about its midpoint and one \\(30^\\circ\\) rotation about the next corner. One circuit contains four rotations of each kind.\n\nThe triangle's shape returns after one circuit, but its labels do not. To track this, list the labels occupying the starting corner, the next side midpoint, and the interior apex. Initially this list is \\((A,B,P)\\). Each side advances it to \\((P,A,B)\\). After four sides, the successive lists at the original location are therefore\n\\[\n(A,B,P)\\longrightarrow(P,A,B)\n\\longrightarrow(B,P,A)\n\\longrightarrow(A,B,P),\n\\]\nwhere each arrow now represents one complete circuit. The original geometric position occurs once per circuit, so the first return of all three labeled vertices is after three circuits.\n\nAcross these three circuits there are twelve \\(120^\\circ\\) rotations and twelve \\(30^\\circ\\) rotations. At any corresponding step of the three circuits, the pivot labels cycle through all three vertices. Consequently, \\(P\\) is stationary for four rotations of each kind and moves for the other eight of each kind. This accounts for every rotation exactly once.\n\nUsing the fraction of a full circumference for each arc, the total distance traveled by \\(P\\) is\n\\[\n8\\left(\\frac{120}{360}\\cdot 2\\pi\\cdot2\\right)\n+8\\left(\\frac{30}{360}\\cdot 2\\pi\\cdot2\\right)\n=\\frac{32\\pi}{3}+\\frac{8\\pi}{3}\n=\\boxed{\\frac{40\\pi}{3}}.\n\\]\nThe answer is \\(\\boxed{\\text{D}}\\), in inches.",
+        "nodeIds": [
+          "cnm_245",
+          "cnm_256"
+        ],
+        "prerequisiteIds": [
+          "cnm_244",
+          "cnm_139",
+          "cnm_058",
+          "cnm_191",
+          "cnm_250"
+        ],
+        "levelReason": "The reasoning uses equilateral-triangle angles, square corners, elementary tracking of labels, and the degree-based arc-length formula. It needs neither trigonometry nor advanced machinery for permutations."
+      }
+    ],
+    "assessedIds": [
+      "cnm_245",
+      "cnm_256"
+    ],
+    "supportIds": [
+      "cnm_139",
+      "cnm_058",
+      "cnm_191"
+    ],
+    "annotationRationale": "The central targets are recognizing the circular paths created by rotations and adding their arc lengths. Equilateral-triangle properties and square angles determine the two rotation angles. Tracking corresponding vertices under rotation establishes the first labeled return and which arcs contribute to P's path. The rotation definition and circle vocabulary are local prerequisites. The annotation describes the mathematics of the method, not demonstrated student mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1972_AMC_12_Q35",
+    "decision": "accept",
+    "mathematicalCheck": "The displayed placement gives a 120° midpoint rotation followed by a 30° corner rotation on each side. Each side changes the corner, midpoint, apex labels from (A,B,P) to (P,A,B), so four sides produce that same cyclic shift and three circuits first restore all labels. Across these circuits P moves during eight rotations of each angle, giving 8(4π/3)+8(π/3)=40π/3 inches. Stationary pivot intervals are correctly excluded.",
+    "levelCheck": "Equilateral-triangle angles, square corners, explicit label tracking, and degree-based arc lengths are appropriate. The explanation makes both the return period and arc multiplicities understandable.",
+    "methodDistinctness": "One complete method is supplied and is sufficient.",
+    "annotationCheck": "Rotation properties and arc length are appropriate assessed targets. Equilateral-triangle properties, angle arithmetic, and square properties support the method; the listed prerequisites match their actual uses.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "track-pivots-and-arcs": "track-pivots-and-arcs"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "519de2ea3c564cfd5010691bf346cb5855e4728f3eca14f93289ff19de0aaa91",
+    "acceptedAt": "2026-11-08T00:13:14.544545+00:00",
+    "inputHash": "07845d085304046a6e9cad7b691abbd3c009f239f02af46687f39c034cb6ab6c",
+    "authorInputHash": "40c2082e23bb039c421cc33b87c2afde7c803903b4cb7377ba888ef747d01554",
+    "reviewInputHash": "0d97c6f387f079d10b617e063615d265d706927cfa9d37157b440966f03d67c1",
+    "authorResponseHash": "e2b55813a411c1cd69b069047fed4aae7efe3c6d31366b2e2153ac5727fd24b0",
+    "reviewerResponseHash": "03941e7b666765af4bd0aded99c2da2d7259588c442e41ff5108eef06b4e4c31",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

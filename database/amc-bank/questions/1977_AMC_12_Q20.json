@@ -1,84 +1,84 @@
 {
-  "Year": 1977,
-  "Level": "AMC 12",
-  "Batch": "NA",
-  "Area": "Unclassified",
-  "Number": 20,
-  "Question": "For how many paths consisting of a sequence of horizontal and/or vertical line segments, with each segment connecting a pair of adjacent letters in the diagram below, is the word CONTEST spelled out as the path is traversed from beginning to end?\n\n[Figure 1](figures/1977_AMC_12_Q20_question_fig1.svg)",
-  "Question Type": "mixed",
-  "Choices": {
-    "A": "\\(63\\)",
-    "B": "\\(128\\)",
-    "C": "\\(129\\)",
-    "D": "\\(255\\)",
-    "E": "none of these"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "lattice paths; symmetry; basic counting",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/1977/solutions",
-    "SourceSHA256": "3adbfe6449bb09329d8b90945b6a6d2cda8e5bebc6f4bca4959b8adbe62ab0e1",
-    "Figures": [
-      "figures/1977_AMC_12_Q20_question_fig1.svg"
+  "answer": {
+    "accepted": [
+      "E"
     ],
-    "FigureSources": {
-      "figures/1977_AMC_12_Q20_question_fig1.svg": {
-        "url": "https://live.poshenloh.com/images/past-contests/amc12/1977/20.svg",
-        "alt": ""
-      }
-    },
-    "SourceQuestionCount": 30,
-    "HistoricalSeries": "AHSME",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
+    "type": "choice"
   },
-  "ID": "1977_AMC_12_Q20",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "2ea98fc05b9056aec849ccf4537b4167fe099a6eb928716e223c748c82302e3c",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h232"
-    ],
-    "supportIds": [],
-    "routes": [
+  "assessedNodeIds": [
+    "cnm_h230"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
+  },
+  "id": "1977_AMC_12_Q20",
+  "language": "en",
+  "question": {
+    "choices": [
       {
-        "id": "binary-steps-in-two-halves",
-        "label": "Count each half and subtract the overlap",
-        "nodeIds": [
-          "cnm_h231",
-          "cnm_h009"
-        ]
+        "content": "\\(63\\)",
+        "id": "A"
       },
       {
-        "id": "letter-state-recursion",
-        "label": "Sum incoming path counts",
-        "nodeIds": [
-          "math:recursive-counting-probability"
-        ]
+        "content": "\\(128\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(129\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(255\\)",
+        "id": "D"
+      },
+      {
+        "content": "none of these",
+        "id": "E"
       }
     ],
-    "flags": []
-  }
+    "prompt": "For how many paths consisting of a sequence of horizontal and/or vertical line segments, with each segment connecting a pair of adjacent letters in the diagram below, is the word CONTEST spelled out as the path is traversed from beginning to end?\n\n[Figure 1](figures/1977_AMC_12_Q20_question_fig1.svg)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "cnm_h231",
+        "cnm_h009",
+        "math:bijective-counting"
+      ],
+      "explanation": "Read the letters backward, starting from the final \\(T\\). This makes the direction choices especially simple. The only \\(T\\) adjacent to an \\(S\\) is the bottom central \\(T\\), so every complete path must end there.\n\nStarting there and spelling \\(T,S,E,T,N,O,C\\), each move must be upward or horizontally away from the center. A downward move or a horizontal move toward the center gives the wrong next letter. Once a path moves horizontally, it stays on that side of the diagram.\n\nFirst count reversed paths in the left half, including the central column. At each of the six steps, choose either up or left. Every sequence of six choices is valid: after \\(u\\) upward moves and \\(h\\) leftward moves, the current row is \\(6-u\\) rows below the top and the position is \\(h\\) columns left of center. It remains inside the triangular diagram because \\(h\\leq6-u\\) whenever \\(u+h\\leq6\\). Each move supplies the next required letter, and after six moves the path reaches a boundary \\(C\\).\n\nThus there are \\(2^6=64\\) paths in the left half, and likewise 64 in the right half. A choice sequence determines exactly one path, so neither half-count repeats a path. The only path belonging to both halves is the entirely vertical one. All paths lie in at least one half, so the total is\n\\[\n64+64-1=\\boxed{127}.\n\\]\nThis is none of choices A through D, so the answer is \\(\\boxed{\\text{E}}\\).",
+      "id": "reverse-and-split",
+      "sourceRef": "amc/1977_AMC_12_Q20#reverse-and-split",
+      "title": "Reverse the paths and count the two halves"
+    },
+    {
+      "directNodeIds": [
+        "math:recursive-counting-probability",
+        "cnm_h230"
+      ],
+      "explanation": "Count paths forward by writing at each letter the number of ways to reach it while spelling the required beginning of CONTEST. Give every boundary \\(C\\) the count 1. At each later letter, add the counts at all adjacent letters that can precede it. This includes every path exactly once, because its final step identifies a unique preceding position.\n\nTo organize these additions, number the letter stages \\(0,1,\\ldots,6\\), corresponding to \\(C,O,N,T,E,S,T\\). Each stage has one letter in the central column and, except at the final stage, letters on the two sloping arms below it.\n\nAt stage 0, every count is 1. For an off-center letter at any later stage, the two possible preceding letters are the one directly above it and the one immediately farther from the center. Both are off-center letters of the previous stage. Thus the off-center counts double at each stage: they are \\(1,2,4,8,16,32\\) for \\(C,O,N,T,E,S\\), respectively.\n\nLet \\(t_j\\) be the count at the central letter of stage \\(j\\). Its possible predecessors are the central letter above it and the two letters immediately beside it. Those side letters each have count \\(2^{j-1}\\). Hence\n\\[\nt_0=1,\\qquad t_j=t_{j-1}+2\\cdot2^{j-1}\n=t_{j-1}+2^j.\n\\]\nSuccessive central counts are therefore\n\\[\n1,\\ 3,\\ 7,\\ 15,\\ 31,\\ 63,\\ 127.\n\\]\nThe only possible final \\(T\\) is the bottom central one, since the other \\(T\\)'s are not adjacent to an \\(S\\). Its count is \\(\\boxed{127}\\), giving choice \\(\\boxed{\\text{E}}\\).",
+      "id": "forward-letter-counts",
+      "sourceRef": "amc/1977_AMC_12_Q20#forward-letter-counts",
+      "title": "Add the counts arriving at each letter"
+    },
+    {
+      "directNodeIds": [
+        "cnm_h231",
+        "cnm_h009"
+      ],
+      "id": "binary-steps-in-two-halves",
+      "sourceRef": "amc/1977_AMC_12_Q20#binary-steps-in-two-halves",
+      "title": "Count each half and subtract the overlap"
+    },
+    {
+      "directNodeIds": [
+        "math:recursive-counting-probability"
+      ],
+      "id": "letter-state-recursion",
+      "sourceRef": "amc/1977_AMC_12_Q20#letter-state-recursion",
+      "title": "Sum incoming path counts"
+    }
+  ],
+  "sourceRef": "amc/1977_AMC_12_Q20"
 }

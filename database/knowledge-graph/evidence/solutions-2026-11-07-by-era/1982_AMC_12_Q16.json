@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1982_AMC_12_Q16",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "9cbe624205f9e145180ceb487a8b7eb1c4b49cbf1c4082e82c76ef1c38da05cd",
+    "figureHashes": {
+      "figures/1982_AMC_12_Q16_question_fig1.svg": "6d91235bc315cfff9bccee1ebbf28f2a9655251f8570d1ad370bf7e705b2fd4c"
+    }
+  },
+  "solutionSHA256": "7001390ee75e51bcd260346153da4e17b47edc7d204af88985e4afddd157bf0c",
+  "solutionFigureHashes": {},
+  "candidateHash": "e8ac54e39ccad95c90567769b63050397d8aa75fc1a802f326c4250d33dbfdc3",
+  "candidate": {
+    "questionId": "1982_AMC_12_Q16",
+    "derivedAnswer": "72 square meters, choice B",
+    "answerStatus": "matches",
+    "answerReason": "The remaining exterior area is 48 square meters. The six tunnel arms contribute 24 square meters of interior walls, for a total of 72.",
+    "methods": [
+      {
+        "id": "1982_AMC_12_Q16_m1",
+        "label": "Separate exterior faces and tunnel walls",
+        "explanation": "Count the remaining outside surface and the newly exposed tunnel walls separately. The three perpendicular tunnels overlap exactly in the central cube of side \\(1\\) meter.\n\nEach of the original six faces has area \\(3^2=9\\) square meters and loses a square opening of area \\(1\\). Thus the remaining exterior contributes\n\\[\n6(9-1)=48\n\\]\nsquare meters.\n\nOutside the central cube, the tunnels form six arms, one leading to each face. Centering leaves each arm with length \\((3-1)/2=1\\) meter. Each arm has four square walls, each \\(1\\) meter by \\(1\\) meter, so the interior area is\n\\[\n6\\cdot4\\cdot1=24\n\\]\nsquare meters. Both ends of each arm are open. All six faces of the central cube open into these arms, so there is no additional wall at the central crossing.\n\nThese outside faces and interior wall panels cover the entire surface, and distinct panels share at most edges, which contribute no area. The total is\n\\[\n48+24=\\boxed{72\\text{ m}^2},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_h107",
+          "cnm_p089",
+          "cnm_p150"
+        ],
+        "prerequisiteIds": [
+          "cnm_p160",
+          "cnm_p088"
+        ],
+        "levelReason": "The argument requires only visualizing rectangular tunnel pieces and adding or subtracting square areas."
+      },
+      {
+        "id": "1982_AMC_12_Q16_m2",
+        "label": "Count exposed unit-cube faces",
+        "explanation": "Imagine dividing the original cube into \\(27\\) cubes of side \\(1\\) meter. The centered square tunnels follow this division exactly. They remove the central cube and the six cubes at the centers of the large cube's faces. The remaining cubes are precisely the eight corner cubes and the twelve cubes at the middles of its edges.\n\nEach corner cube has three faces on the outside. Its other three faces touch the neighboring edge cubes, so it contributes exactly three exposed square faces.\n\nEach edge-middle cube has two faces on the outside. Of its other four faces, two touch the corner cubes at the ends of that edge, and two face removed face-center cubes. Thus it contributes exactly four exposed square faces, including its two tunnel walls.\n\nEvery surface panel is an exposed face of exactly one remaining unit cube, so this counts the whole surface without duplication. Each such face has area \\(1\\) square meter. Therefore the surface area is\n\\[\n8\\cdot3+12\\cdot4=24+48=\\boxed{72\\text{ m}^2},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_h107",
+          "math:area-by-unit-squares"
+        ],
+        "prerequisiteIds": [
+          "cnm_p160",
+          "cnm_p088"
+        ],
+        "levelReason": "This method uses elementary spatial reasoning and counts equal square panels; it needs no volume formula or advanced counting."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h107"
+    ],
+    "supportIds": [
+      "cnm_p160",
+      "cnm_p088"
+    ],
+    "annotationRationale": "Both methods analyze the solid by identifying and counting simple component pieces, which fits cnm_h107. The first method calculates square and composite planar areas; the second measures surface area by counting exposed unit squares. Cube structure and the meaning of area support both routes. The catalog's single-prism surface-area nodes do not fully express the central target of distinguishing exposed cavity walls from internal interfaces, so a missing target is proposed. These assignments do not establish learner mastery.",
+    "needsNewNodes": [
+      {
+        "name": "Surface area of composite polyhedral solids",
+        "description": "Determine the total exposed area of polyhedral solids formed by joining or removing rectangular pieces, including cavity and tunnel walls. Exclude internal interfaces and count each boundary panel once.",
+        "reason": "The catalog covers decomposition into simple solids and surface area of individual prisms, but lacks explicit coverage of boundary accounting for composite solids with holes."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1982_AMC_12_Q16",
+    "decision": "accept",
+    "mathematicalCheck": "Method 1 counts 6(9−1)=48 exterior square meters and six open tunnel arms with four unit wall panels each, adding 24. The central crossing adds no wall. Method 2 independently identifies the seven removed unit cubes and counts 8·3+12·4=72 exposed faces. Both explain completeness and avoid duplication.",
+    "levelCheck": "Both methods use elementary spatial reasoning and square areas, with sufficient explanation of the hidden surfaces.",
+    "methodDistinctness": "The exterior/interior decomposition and the classification of remaining unit cubes provide distinct, useful counting approaches at the same accessible level.",
+    "annotationCheck": "cnm_h107 supports component decomposition, while the method-specific area nodes fit their respective calculations. The proposed missing node honestly identifies the additional boundary-accounting target without claiming that ordinary prism surface area fully covers it.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "1982_AMC_12_Q16_m1": "1982_AMC_12_Q16_m1",
+    "1982_AMC_12_Q16_m2": "1982_AMC_12_Q16_m2"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "22560ac5474883ea9496b0f975f1cdcc591f2f4fb9e299fcba89eeebc6d7f753",
+    "acceptedAt": "2026-11-08T00:15:41.307778+00:00",
+    "inputHash": "74170c38074ba6923821225681175f866632fe6a2457364e9bab827b0bcb8bd3",
+    "authorInputHash": "749231d037c470f5ce1d08a76001aa2ebbfbbe498ab9dfacc27d5cfa1ef17364",
+    "reviewInputHash": "66b922e8b899e4bce5a8dd6fd102f940a828bbf3a6da9ece4938e90de465f7b3",
+    "authorResponseHash": "32816e69c70ec1d1b39da261a76f0c608c4baea9c9b61bc131fd3122413a22ff",
+    "reviewerResponseHash": "e296e22ae32eb56d773e8f42009d58881f5cb82e6ba761e6de81b8e50d3e1ea9",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

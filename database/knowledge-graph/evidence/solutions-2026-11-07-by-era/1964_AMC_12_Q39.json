@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1964_AMC_12_Q39",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "9a81579749ca7aed35621937d1351c3a5b3ff33cd094903dc9b148ee72ae0534",
+    "figureHashes": {
+      "figures/1964_AMC_12_Q39_question_fig1.svg": "0ffd352e153384ddcc62dedc3c9c624ef35114a9d03729b3a9c8b2d9b43a6f3e"
+    }
+  },
+  "solutionSHA256": "0d591c91b4ddf006bd7f870b1a5f2e78df945faf7248b3eb516470585e6da413",
+  "solutionFigureHashes": {},
+  "candidateHash": "e2078d5802ecd205f00480e234bc50146be3148d9ae6524098c3c5c2bc7b0697",
+  "candidate": {
+    "questionId": "1964_AMC_12_Q39",
+    "derivedAnswer": "A, \\(s<2a+b\\)",
+    "answerStatus": "matches",
+    "answerReason": "A segment from a triangle's vertex to an interior point of the opposite side is strictly shorter than the longer adjacent side. Hence \\(AA'<b\\), \\(BB'<a\\), and \\(CC'<a\\), so \\(s<2a+b\\).",
+    "methods": [
+      {
+        "id": "perpendicular-projection-bound",
+        "label": "Compare distances using an altitude",
+        "explanation": "The figure labels \\(BC=a\\), \\(CA=b\\), and \\(AB=c\\), with \\(c\\le b\\le a\\). Because \\(P\\) is interior, each of \\(A',B',C'\\) lies strictly between the endpoints of its side. We can bound the three lengths separately.\n\nFirst consider any nondegenerate triangle \\(XYZ\\), with \\(D\\) strictly between \\(Y\\) and \\(Z\\). Drop the perpendicular from \\(X\\) to line \\(YZ\\), with foot \\(H\\). On this line,\n\\[\nHD<\\max\\{HY,HZ\\}.\n\\]\nIndeed, if \\(H\\) is outside the segment, distances increase toward the farther endpoint. If \\(H\\) is on the segment, \\(D\\) lies between \\(H\\) and an endpoint, or equals \\(H\\), and the same strict bound follows.\n\nFor any point \\(U\\) on line \\(YZ\\), Pythagoras gives \\(XU^2=XH^2+HU^2\\); when \\(U=H\\), this is simply an identity. Therefore\n\\[\n\\begin{aligned}\nXD^2&=XH^2+HD^2\\\\\n&<XH^2+\\max\\{HY^2,HZ^2\\}\\\\\n&=\\max\\{XY^2,XZ^2\\}.\n\\end{aligned}\n\\]\nComparing positive lengths yields \\(XD<\\max\\{XY,XZ\\}\\). This argument also covers triangles whose altitude foot lies outside the opposite side.\n\nApply the bound at the three vertices:\n\\[\n\\begin{aligned}\nAA'&<\\max\\{AB,AC\\}=b,\\\\\nBB'&<\\max\\{BA,BC\\}=a,\\\\\nCC'&<\\max\\{CA,CB\\}=a.\n\\end{aligned}\n\\]\nAdding gives \\(\\boxed{s<2a+b}\\), choice \\(\\boxed{\\text{A}}\\). The inequalities remain strict even when some side lengths are equal, because the side intersections are interior.",
+        "nodeIds": [
+          "cnm_112",
+          "cnm_174"
+        ],
+        "prerequisiteIds": [
+          "cnm_055",
+          "cnm_064",
+          "cnm_110",
+          "cnm_096"
+        ],
+        "levelReason": "An altitude reduces the comparison to distances on a line, followed by the Pythagorean theorem. No optimization machinery is needed."
+      },
+      {
+        "id": "parallel-triangle-inequality-bound",
+        "label": "Use a parallel and the triangle inequality",
+        "explanation": "A parallel construction lets us compare each cevian with a broken path whose length is a weighted average of the two adjacent sides.\n\nIn a nondegenerate triangle \\(XYZ\\), let \\(D\\) lie strictly between \\(Y\\) and \\(Z\\), and put\n\\[\nt=\\frac{YD}{YZ},\\qquad 0<t<1.\n\\]\nThrough \\(D\\), draw the parallel to \\(XY\\), meeting \\(XZ\\) at \\(E\\). The proportional-segment theorem gives\n\\[\nZE=(1-t)XZ,\\qquad ED=(1-t)XY.\n\\]\nThus \\(XE=tXZ\\). The triangle inequality in triangle \\(XED\\) now gives\n\\[\nXD<XE+ED=tXZ+(1-t)XY.\n\\]\nBoth coefficients are positive and sum to \\(1\\), so the expression on the right is at most the larger of \\(XY\\) and \\(XZ\\). Consequently,\n\\[\nXD<\\max\\{XY,XZ\\}.\n\\]\nIn the given figure, \\(BC=a\\), \\(CA=b\\), and \\(AB=c\\). Since \\(P\\) is interior, all three opposite-side intersections are interior, so this bound applies to each cevian:\n\\[\nAA'<b,\\qquad BB'<a,\\qquad CC'<a.\n\\]\nThese bounds use only \\(c\\le b\\le a\\); equal side lengths cause no exception because the triangle inequality above is strict. Adding yields \\(\\boxed{s<2a+b}\\), choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_111",
+          "cnm_269"
+        ],
+        "prerequisiteIds": [
+          "cnm_268",
+          "cnm_110",
+          "cnm_096"
+        ],
+        "levelReason": "The construction uses proportional segments cut by a parallel, the triangle inequality, and an elementary weighted-average comparison."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_110",
+      "cnm_096"
+    ],
+    "annotationRationale": "The common target is a strict endpoint-distance bound applied to three cevians. The catalog does not contain that route-neutral target, so a node is proposed instead of assigning either proof technique as universally required. The first method uses an altitude and Pythagoras; the second uses parallel-line proportions and the triangle inequality. Triangle-side identification and addition of inequalities support both methods.",
+    "needsNewNodes": [
+      {
+        "name": "Strict endpoint-distance bound along a segment",
+        "description": "For distinct points Y and Z and a point D strictly between them, the distance from any fixed plane point X satisfies XD<max(XY,XZ). Apply this bound to cevians and combine resulting length bounds. At segment endpoints, only the corresponding non-strict bound is universal.",
+        "reason": "The catalog supplies the individual proof tools but lacks the endpoint-distance comparison that is the common mathematical target of both methods."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1964_AMC_12_Q39",
+    "decision": "accept",
+    "mathematicalCheck": "Both methods prove \\(XD<\\max\\{XY,XZ\\}\\) for an interior side point D. The altitude proof handles exterior perpendicular feet correctly. The parallel proof correctly obtains \\(XD<tXZ+(1-t)XY\\), with \\(0<t<1\\). Therefore \\(AA'<b\\), \\(BB'<a\\), and \\(CC'<a\\), so \\(s<2a+b\\), choice A. Strictness survives equal side lengths.",
+    "levelCheck": "Both proofs use accessible school geometry and explain the decisive comparisons without advanced optimization.",
+    "methodDistinctness": "The altitude and squared-distance proof is genuinely distinct from the parallel construction and triangle-inequality proof. Both offer useful elementary reasoning.",
+    "annotationCheck": "The proposed endpoint-distance node is mathematically valid and honestly captures the common target. Empty assessedIds avoid forcing either proof technique into that role. Shared supportIds and method-specific nodes match their catalog scopes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "perpendicular-projection-bound": "perpendicular-projection-bound",
+    "parallel-triangle-inequality-bound": "parallel-triangle-inequality-bound"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "4941b77ed362e1b7b98ede41387710d3e428a28581be95a3b711626d3eba60cb",
+    "acceptedAt": "2026-11-08T00:05:38.188022+00:00",
+    "inputHash": "abfceeb45787c32877cf9bc7fd3e5b5017ba7f23a3aa5ad5f9a346039621fd26",
+    "authorInputHash": "d0a107e6326b2226db34d8fc6e6d7f25eab9b0a74227cad768dca373a2a6d8dd",
+    "reviewInputHash": "adb46ae5dbee0037f9f353f363acc14feca2f09984300bdcbee3ee840e415b8b",
+    "authorResponseHash": "62a4770a0073310018cc57923a07de3de4c6a0efe2592a5b17212e78f2234a18",
+    "reviewerResponseHash": "5f18275f0c9cbd5331a90d53e4aa7b1ad41c8f2f6173243d42e14f0f6933681d",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}
