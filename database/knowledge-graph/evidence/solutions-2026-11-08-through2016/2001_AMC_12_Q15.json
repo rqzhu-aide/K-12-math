@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2001_AMC_12_Q15",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "f874681676e26e2c407ecbc42a3f18c69cf7918f969872aa856f5914341a5089",
+    "figureHashes": {
+      "figures/2001_AMC_12_Q15_question_fig1.svg": "3c82ec9bc9f67a2f66c7ac887169e0966c05080151bc45ef32a68c5d9555ce02"
+    }
+  },
+  "solutionSHA256": "8fc13aff3e6dd857cf616630ca553dc67d01b8aa696901d32043dc1ad47679a2",
+  "solutionFigureHashes": {},
+  "candidateHash": "1b3bc55e2cbd12f08c941cdcb1fe62e66b7e3415adaa86151d864244fe2a0b46",
+  "candidate": {
+    "questionId": "2001_AMC_12_Q15",
+    "derivedAnswer": "B: 1",
+    "answerStatus": "matches",
+    "answerReason": "Unfolding two adjacent faces produces a valid path of length 1. Every surface path must meet an edge joining the two opposite endpoint edges, and a straight-segment comparison in the corresponding two-face unfolding proves that every such path has length at least 1.",
+    "methods": [
+      {
+        "id": "unfold-and-bound-all-paths",
+        "label": "Unfold two faces and prove minimality",
+        "explanation": "Label the tetrahedron's vertices \\(A,B,C,D\\), with starting point \\(P\\) the midpoint of \\(AB\\) and destination \\(Q\\) the midpoint of \\(CD\\). Unfold faces \\(ABC\\) and \\(ACD\\) along their common edge \\(AC\\). Unfolding preserves lengths on each face and makes it possible to compare paths with a straight segment.\n\nWrite \\(D'\\) and \\(Q'\\) for the unfolded positions of \\(D\\) and \\(Q\\). The two equilateral triangles form a rhombus \\(ABCD'\\) of side length \\(1\\). Let \\(N\\) be the midpoint of \\(AC\\). In triangle \\(ABC\\), the midpoint theorem gives\n\\[\nPN=\\frac{BC}{2}=\\frac12,\n\\qquad PN\\parallel BC.\n\\]\nIn triangle \\(ACD'\\), it gives\n\\[\nNQ'=\\frac{AD'}2=\\frac12,\n\\qquad NQ'\\parallel AD'.\n\\]\nOpposite sides of the rhombus are parallel, so \\(P,N,Q'\\) lie on one straight line. Since the two triangles lie on opposite sides of \\(AC\\), \\(N\\) lies between \\(P\\) and \\(Q'\\). Hence\n\\[\nPQ'=PN+NQ'=1.\n\\]\nFolding this segment back gives an allowed surface trip of length \\(1\\).\n\nTo prove that no other route is shorter, consider any surface trip from \\(P\\) to \\(Q\\). It must pass from one of the two faces containing \\(AB\\) to one of the two faces containing \\(CD\\). Therefore it meets at least one of \\(AC,AD,BC,BD\\), possibly at a vertex. Call such a point \\(X\\). By interchanging the names within the pairs \\(A,B\\) and \\(C,D\\), we may call that edge \\(AC\\).\n\nThe portion before \\(X\\) has length at least the straight distance \\(PX\\), and the portion after it has length at least \\(XQ\\). These segments lie in faces \\(ABC\\) and \\(ACD\\). Unfold those faces as above. The triangle inequality in the plane gives\n\\[\n\\text{trip length}\\ge PX+XQ'\n\\ge PQ'=1.\n\\]\nThis also covers trips through vertices or across additional faces. A length of \\(1\\) is attainable and no smaller length is possible, so the answer is \\(\\boxed{1}\\), choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_051",
+          "cnm_054",
+          "cnm_185",
+          "cnm_183",
+          "cnm_190"
+        ],
+        "prerequisiteIds": [
+          "cnm_055",
+          "cnm_139"
+        ],
+        "levelReason": "The proof uses elementary unfolding, triangle midsegments, rhombus properties, and the fact that straight segments minimize distance. The lower bound treats every surface route without calculus or spatial coordinates."
+      }
+    ],
+    "assessedIds": [
+      "cnm_054"
+    ],
+    "supportIds": [
+      "cnm_055",
+      "cnm_139"
+    ],
+    "annotationRationale": "The route-neutral target is proving a shortest distance by both a universal lower bound and an attainable path; cnm_054 captures the decisive straight-segment comparison. Unfolding is method-specific spatial knowledge represented by cnm_051. Triangle midsegments and rhombus/parallelogram facts compute the unfolded length. Midpoint meanings and equilateral-triangle properties support the construction. The catalog lacks a specific target for minimizing paths constrained to polyhedral surfaces, so that gap is proposed separately. No mastery inference is made.",
+    "needsNewNodes": [
+      {
+        "name": "Shortest paths on polyhedral surfaces",
+        "description": "Determine a shortest path constrained to the faces of a polyhedron by constructing an admissible route and proving a lower bound covering every possible face-crossing route, using length-preserving unfoldings where helpful.",
+        "reason": "The catalog's nets node concerns representations of solids, while its reflection shortest-path node concerns planar reflected paths. Neither specifically captures global minimality for paths constrained to a polyhedral surface."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2001_AMC_12_Q15",
+    "decision": "accept",
+    "mathematicalCheck": "The unfolded midsegments are collinear and each has length 1/2, giving an admissible trip of length 1. Every surface trip meets AC, AD, BC, or BD. At such a point X, spatial straight-distance bounds followed by the corresponding two-face unfolding give trip length ≥ PX+XQ′ ≥ PQ′=1, including vertex crossings and additional faces.",
+    "levelCheck": "The elementary unfolding and universal lower bound are complete and understandable at AMC 12 level.",
+    "methodDistinctness": "One method supplies both an attainable path and a bound covering every route.",
+    "annotationCheck": "The straight-segment target and method-local geometry annotations fit their catalog scopes. The proposed polyhedral-surface shortest-path node honestly identifies the more specific missing scope.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "unfold-and-bound-all-paths": "unfold-and-bound-all-paths"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "3b2c01d7a621bc102a12ad1ddb43ee2d75d3c20194ca0fc61f72e057a5d2e669",
+    "acceptedAt": "2026-11-08T15:01:44.756567+00:00",
+    "inputHash": "7e23c65877cc0b89b7d7582b5e4b17d50affdee476405f3853e12289750c3fe5",
+    "authorInputHash": "6cd25dc97b1005d3857c085ae2b74fec8e2b85936c1ccfda3bddf69b8bd2dcbe",
+    "reviewInputHash": "60e8d8ef8fcef06778f92a129d9c76f3c5f9f99e27fcfc59ce2fec6f999e7b60",
+    "authorResponseHash": "349d791b6d7b6e7d1aa4e00db36536fe39f1c5ae1dd74f84dbf84eae4ebb5dad",
+    "reviewerResponseHash": "878e7e4ea0d2cf093e2d4e809f544c051f5832674d5917994291c8cdf0823c94",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,70 +1,65 @@
 {
-  "Year": 2001,
-  "Level": "AMC 10",
-  "Batch": "NA",
-  "Area": "Unclassified",
-  "Number": 11,
-  "Question": "Consider the dark square in an array of unit squares, part of which is shown. The first ring of squares around this center square contains \\(8\\) unit squares. The second ring contains \\(16\\) unit squares. If we continue this process, the number of unit squares in the \\(100\\)th ring is\n\n[Figure 1](figures/2001_AMC_10_Q11_question_fig1.svg)",
-  "Question Type": "mixed",
-  "Choices": {
-    "A": "\\(396\\)",
-    "B": "\\(404\\)",
-    "C": "\\(800\\)",
-    "D": "\\(10{,}000\\)",
-    "E": "\\(10{,}404\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "difference of squares; pattern recognition",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2001/solutions",
-    "SourceSHA256": "8f07680711b91b40d30b53711e126b75ea10c362a98414bf6deb9ff13cf933b8",
-    "Figures": [
-      "figures/2001_AMC_10_Q11_question_fig1.svg"
+  "answer": {
+    "accepted": [
+      "C"
     ],
-    "FigureSources": {
-      "figures/2001_AMC_10_Q11_question_fig1.svg": {
-        "url": "https://live.poshenloh.com/images/past-contests/amc10/2001/11.svg",
-        "alt": ""
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "cnm_030"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 10"
+  },
+  "id": "2001_AMC_10_Q11",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(396\\)",
+        "id": "A"
+      },
+      {
+        "content": "\\(404\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(800\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(10{,}000\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(10{,}404\\)",
+        "id": "E"
       }
-    },
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
+    ],
+    "prompt": "Consider the dark square in an array of unit squares, part of which is shown. The first ring of squares around this center square contains \\(8\\) unit squares. The second ring contains \\(16\\) unit squares. If we continue this process, the number of unit squares in the \\(100\\)th ring is\n\n[Figure 1](figures/2001_AMC_10_Q11_question_fig1.svg)"
   },
-  "ID": "2001_AMC_10_Q11",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "e7051051f8bcca94ba1a18ec8722e149ba301faacfd215b862b7058b7cd540ec",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_030"
-    ],
-    "supportIds": [
-      "cnm_p089"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "cnm_030"
+      ],
+      "explanation": "Each new ring extends the array by one square in every direction. Thus the center together with the first \\(n\\) rings forms a square with \\(2n+1\\) squares along each side, where \\(n\\) is a positive integer.\n\nCount the top and bottom rows of the \\(n\\)th ring first. Each contains \\(2n+1\\) squares. The left and right sides each contribute another \\(2n-1\\) squares after their corner squares are excluded. These four groups cover the ring, and excluding the corners from the side groups prevents counting them twice.\n\nTherefore the number of squares in the \\(n\\)th ring is\n\\[\n2(2n+1)+2(2n-1)=8n.\n\\]\nFor \\(n=100\\), this gives \\(8\\cdot100=\\boxed{800}\\) unit squares, choice \\(\\mathrm{C}\\).",
+      "id": "count_boundary_rows",
+      "sourceRef": "amc/2001_AMC_10_Q11#count_boundary_rows",
+      "title": "Count the four sides without repeating corners"
+    },
+    {
+      "directNodeIds": [
+        "cnm_030",
+        "cnm_p089"
+      ],
+      "explanation": "The \\(n\\)th ring is the part added when the square array grows from the first \\(n-1\\) rings to the first \\(n\\) rings. Each ring adds one row or column on each side, so these two filled square arrays have side lengths \\(2n-1\\) and \\(2n+1\\), respectively.\n\nA square array with \\(s\\) rows and \\(s\\) unit squares per row contains \\(s^2\\) unit squares. Consequently, the \\(n\\)th ring contains\n\\[\n(2n+1)^2-(2n-1)^2\n\\]\nsquares. Subtracting removes exactly the center and all earlier rings, leaving each square of the requested ring once.\n\nFor the 100th ring, the outer array has side length \\(201\\), and the inner array has side length \\(199\\). Hence the count is\n\\[\n201^2-199^2=40{,}401-39{,}601=\\boxed{800}.\n\\]\nThe answer is \\(\\mathrm{C}\\).",
+      "id": "subtract_square_arrays",
+      "sourceRef": "amc/2001_AMC_10_Q11#subtract_square_arrays",
+      "title": "Subtract the inner square array"
+    }
+  ],
+  "sourceRef": "amc/2001_AMC_10_Q11"
 }

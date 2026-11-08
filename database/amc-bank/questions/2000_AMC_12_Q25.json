@@ -1,71 +1,56 @@
 {
-  "Year": 2000,
-  "Level": "AMC 12",
-  "Batch": "NA",
-  "Area": "Unclassified",
-  "Number": 25,
-  "Question": "Eight congruent equilateral triangles, each of a different color, are used to construct a regular octahedron. How many distinguishable ways are there to construct the octahedron? (Two colored octahedrons are distinguishable if neither can be rotated to look just like the other.)\n\n[Figure 1](figures/2000_AMC_12_Q25_question_fig1.svg)",
-  "Question Type": "mixed",
-  "Choices": {
-    "A": "\\(210\\)",
-    "B": "\\(560\\)",
-    "C": "\\(840\\)",
-    "D": "\\(1260\\)",
-    "E": "\\(1680\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "Burnside’s Lemma; permutations; symmetry",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2000/solutions",
-    "SourceSHA256": "1a716ed394e2e4f5e585c9f7a428c27334aecc3908d5342980acf25396892d78",
-    "Figures": [
-      "figures/2000_AMC_12_Q25_question_fig1.svg"
+  "answer": {
+    "accepted": [
+      "E"
     ],
-    "FigureSources": {
-      "figures/2000_AMC_12_Q25_question_fig1.svg": {
-        "url": "https://live.poshenloh.com/images/past-contests/amc12/2000/25.svg",
-        "alt": ""
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "math:symmetry-counting"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 12"
+  },
+  "id": "2000_AMC_12_Q25",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(210\\)",
+        "id": "A"
+      },
+      {
+        "content": "\\(560\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(840\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(1260\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(1680\\)",
+        "id": "E"
       }
-    },
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
+    ],
+    "prompt": "Eight congruent equilateral triangles, each of a different color, are used to construct a regular octahedron. How many distinguishable ways are there to construct the octahedron? (Two colored octahedrons are distinguishable if neither can be rotated to look just like the other.)\n\n[Figure 1](figures/2000_AMC_12_Q25_question_fig1.svg)"
   },
-  "ID": "2000_AMC_12_Q25",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "f1f4a40004a386627440e0d5fcf234d59b76ade3f9fcf584287fbd6d08017d97",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:symmetry-counting"
-    ],
-    "supportIds": [
-      "cnm_h234",
-      "cnm_h231"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:symmetry-counting",
+        "cnm_h234"
+      ],
+      "explanation": "First imagine that the octahedron is held in a fixed position, so its eight face positions are distinguished. Assigning the eight different colors to those positions gives \\(8!\\) possibilities. We must determine how many of these represent the same colored octahedron after rotation.\n\nChoose one face to track. A rotation can send it to any of the eight faces. Once its destination is chosen, its three vertices can be aligned in three cyclic orders. All three occur by turning through \\(0^\\circ\\), \\(120^\\circ\\), or \\(240^\\circ\\) about the line through the centers of that face and its opposite face. Regularity lets us send the chosen face to any destination, and specifying its vertex alignment determines the entire rotation. Thus there are exactly\n\\[\n8\\cdot3=24\n\\]\nrotations, including leaving the octahedron in place.\n\nThese 24 rotations produce 24 different assignments for every coloring. To see why, a rotation preserving a coloring would have to leave every face in its original position, since every color is different. It would then fix each vertex, which is the intersection of its incident faces, so it could only be the rotation that leaves everything in place.\n\nConsequently, the \\(8!\\) assignments split into disjoint groups of exactly 24, one group for each distinguishable colored octahedron. The required number is\n\\[\n\\frac{8!}{24}=\\frac{40320}{24}=1680.\n\\]\nThe answer is \\(\\boxed{1680}\\), choice E.",
+      "id": "rotation_classes",
+      "sourceRef": "amc/2000_AMC_12_Q25#rotation_classes",
+      "title": "Count assignments and remove rotational duplicates"
+    }
+  ],
+  "sourceRef": "amc/2000_AMC_12_Q25"
 }

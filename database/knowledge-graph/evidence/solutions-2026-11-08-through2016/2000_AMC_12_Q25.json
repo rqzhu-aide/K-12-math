@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2000_AMC_12_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "f1f4a40004a386627440e0d5fcf234d59b76ade3f9fcf584287fbd6d08017d97",
+    "figureHashes": {
+      "figures/2000_AMC_12_Q25_question_fig1.svg": "e353e1d40e589ef5ea7b09142832ee66e5b104b7adc7bcc20586237255d8f682"
+    }
+  },
+  "solutionSHA256": "342d98cd6b0d38556c1ffc401f8ce4e1d9e1083c839be342e497803aef1d6a33",
+  "solutionFigureHashes": {},
+  "candidateHash": "b9abed517ebb2e4c4484cfbcf3edcff65dc599cffca184403465b05cf5a5af87",
+  "candidate": {
+    "questionId": "2000_AMC_12_Q25",
+    "derivedAnswer": "1680, choice E",
+    "answerStatus": "matches",
+    "answerReason": "The eight distinct colors have 8! assignments to fixed faces. Each distinguishable coloring has exactly 24 assignments related by rotation, giving 8!/24 = 1680.",
+    "methods": [
+      {
+        "id": "rotation_classes",
+        "label": "Count assignments and remove rotational duplicates",
+        "explanation": "First imagine that the octahedron is held in a fixed position, so its eight face positions are distinguished. Assigning the eight different colors to those positions gives \\(8!\\) possibilities. We must determine how many of these represent the same colored octahedron after rotation.\n\nChoose one face to track. A rotation can send it to any of the eight faces. Once its destination is chosen, its three vertices can be aligned in three cyclic orders. All three occur by turning through \\(0^\\circ\\), \\(120^\\circ\\), or \\(240^\\circ\\) about the line through the centers of that face and its opposite face. Regularity lets us send the chosen face to any destination, and specifying its vertex alignment determines the entire rotation. Thus there are exactly\n\\[\n8\\cdot3=24\n\\]\nrotations, including leaving the octahedron in place.\n\nThese 24 rotations produce 24 different assignments for every coloring. To see why, a rotation preserving a coloring would have to leave every face in its original position, since every color is different. It would then fix each vertex, which is the intersection of its incident faces, so it could only be the rotation that leaves everything in place.\n\nConsequently, the \\(8!\\) assignments split into disjoint groups of exactly 24, one group for each distinguishable colored octahedron. The required number is\n\\[\n\\frac{8!}{24}=\\frac{40320}{24}=1680.\n\\]\nThe answer is \\(\\boxed{1680}\\), choice E.",
+        "nodeIds": [
+          "math:symmetry-counting",
+          "cnm_h234"
+        ],
+        "prerequisiteIds": [
+          "cnm_h231",
+          "cnm_h233",
+          "math:factorial-notation"
+        ],
+        "levelReason": "The method uses school-level permutations and an elementary geometric count of rotations, with no group-theoretic theorem required."
+      }
+    ],
+    "assessedIds": [
+      "math:symmetry-counting"
+    ],
+    "supportIds": [
+      "cnm_h234",
+      "cnm_h231"
+    ],
+    "annotationRationale": "The target is counting face arrangements under the specified rotational equivalence. The method counts permutations and proves the constant duplication factor, including why distinct colors prevent smaller rotation classes. Permutation meaning, multiplication counting, and factorial evaluation support that argument. There is no adjacency restriction requiring graph coloring.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2000_AMC_12_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "There are 8! assignments to fixed faces and exactly 8 × 3 = 24 rotations. Distinct colors force any coloring-preserving rotation to fix every face and hence every vertex, so every equivalence class has 24 assignments. Thus 8!/24 = 1680, choice E. The explanation justifies both the rotation count and the division.",
+    "levelCheck": "Elementary permutations and spatial symmetry reasoning are appropriate for AMC 12.",
+    "methodDistinctness": "One complete method is sufficient; no alternative is needed.",
+    "annotationCheck": "The symmetry-counting assessment and permutation, multiplication-principle, and factorial support match the actual reasoning and catalog scopes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "rotation_classes": "rotation_classes"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "3dae4a4d709547fde1a442400441dea18e3adc78491676ca55613c7b62005e82",
+    "acceptedAt": "2026-11-08T14:59:05.659786+00:00",
+    "inputHash": "b5cecf95d8c4e3663a827b2d3063801ce134a7728faa2bb2d686e98265a5fbcb",
+    "authorInputHash": "519a4fbfc2bbd1ad1dc98648f99e414878c42e8663d12240721e11595c25f21d",
+    "reviewInputHash": "0dff6f8d7b1ae9eaa8957fa633c6a6a4f0cce7e70a5a1512404e3254df91d261",
+    "authorResponseHash": "8be8f1541374ccfc05acf5d5f3e9e306ef73176b61d5658555a7cd554c412df3",
+    "reviewerResponseHash": "28f69b3e371c2b65ce83fa3cf6d7c9a22339f5095163f708e2aa57a655e26788",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

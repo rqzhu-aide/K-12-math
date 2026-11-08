@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2000_AMC_8_Q18",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "14468b63c99d155753a34657840553be24be0d70c0a4ac45ac7b1034aafdcf98",
+    "figureHashes": {
+      "figures/2000_AMC_8_Q18_question_fig1.svg": "738f886b66fc51179786abad9fe0fb7f95c801baa5a8f3e1d84d4a29ee8d1be1"
+    }
+  },
+  "solutionSHA256": "c4b64901c52dafbacb43a9966d0a7954d3fcf13af59a32ad38e45fe618800072",
+  "solutionFigureHashes": {
+    "figures/2000_AMC_8_Q18_question_fig1.svg": "738f886b66fc51179786abad9fe0fb7f95c801baa5a8f3e1d84d4a29ee8d1be1"
+  },
+  "candidateHash": "166a0da4714c3a84afaa0bda29b78f67ad89331ed67ce290db77e9086edfb34c",
+  "candidate": {
+    "questionId": "2000_AMC_8_Q18",
+    "derivedAnswer": "E. The quadrilaterals have the same area, but the perimeter of I is less than the perimeter of II.",
+    "answerStatus": "matches",
+    "answerReason": "With adjacent peg spacing equal to 1, both areas are 1. Each perimeter contains two unit-square diagonals and one unit segment; the remaining side is 1 in I and greater than 1 in II.",
+    "methods": [
+      {
+        "id": "equal-areas-matching-sides",
+        "label": "Split the areas and match boundary lengths",
+        "explanation": "[Figure 1](figures/2000_AMC_8_Q18_question_fig1.svg)\n\nUse the distance between adjacent pegs in a row or column as one unit. Quadrilateral \\(I\\) is a parallelogram whose vertical base has length \\(1\\). Its opposite vertical side is \\(1\\) unit away horizontally, so its area is\n\\[\n1\\cdot1=1.\n\\]\nFor quadrilateral \\(II\\), name its vertices \\(P,Q,R,S\\) in boundary order, starting at the leftmost vertex: \\(Q\\) is the upper-right vertex, \\(R\\) is the inward corner, and \\(S\\) is the bottom vertex. Draw the horizontal segment \\(PR\\). It has length \\(1\\) and splits the quadrilateral into triangles \\(PQR\\) and \\(PRS\\). Their vertices \\(Q\\) and \\(S\\) lie one grid row above and below \\(PR\\), respectively. The triangles fill the quadrilateral without overlapping interiors, so its area is\n\\[\n\\frac{1\\cdot1}{2}+\\frac{1\\cdot1}{2}=1.\n\\]\nThus the areas are equal.\n\nFor the perimeters, let \\(d\\) be the length of a diagonal of one grid square and let \\(\\ell=PQ\\). Each figure has two sides of length \\(d\\). The other two sides of \\(I\\) each have length \\(1\\), while those of \\(II\\) have lengths \\(1\\) and \\(\\ell\\). Hence\n\\[\nP_I=2d+2,\\qquad P_{II}=2d+1+\\ell.\n\\]\nThe endpoints of \\(PQ\\) are two grid columns apart. Their horizontal separation is \\(2\\), and a segment cannot be shorter than that perpendicular separation, so \\(\\ell\\ge2>1\\). Therefore\n\\[\nP_{II}-P_I=\\ell-1>0.\n\\]\nThe figures have equal areas, and \\(I\\) has the smaller perimeter, choice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_p150",
+          "cnm_055",
+          "cnm_065"
+        ],
+        "prerequisiteIds": [
+          "cnm_p147",
+          "cnm_p148",
+          "cnm_p105",
+          "cnm_064",
+          "cnm_053"
+        ],
+        "levelReason": "Uses grid spacing, elementary area formulas, decomposition, and perpendicular distance to compare lengths. Exact diagonal lengths and square roots are unnecessary."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p150",
+      "cnm_055"
+    ],
+    "supportIds": [
+      "cnm_p147",
+      "cnm_p148"
+    ],
+    "annotationRationale": "The task targets comparing areas by decomposition and comparing sums of boundary lengths. Parallelogram and triangle area formulas support the area calculation. The written route uses cnm_065 locally to bound the unmatched long side; perpendicularity, parallelogram structure, and segment notation are its supporting knowledge. The Pythagorean theorem is not used or required.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2000_AMC_8_Q18",
+    "decision": "accept",
+    "mathematicalCheck": "The pixels confirm that I has vertical base 1 and horizontal height 1. In II, PR is a unit horizontal interior diagonal, and Q and S have perpendicular heights 1 on opposite sides, giving area 1/2+1/2=1. Both perimeters contain two unit-square diagonals and one unit side. Their remaining sides are 1 and PQ respectively; PQ spans two columns, so PQ≥2>1. Thus II has greater perimeter, choice E.",
+    "levelCheck": "Appropriate for AMC 8. The vertex descriptions, nonoverlapping triangle split, and cancellation of matching lengths explain both decisive comparisons without unnecessary square roots.",
+    "methodDistinctness": "The single route is complete and accessible; exact Pythagorean calculations are unnecessary.",
+    "annotationCheck": "The assessed area-decomposition and segment-comparison nodes fit the task. Shared area-formula support is justified, and cnm_065 correctly records the method-local perpendicular-distance bound. The other listed prerequisites fit their stated uses.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "equal-areas-matching-sides": "equal-areas-matching-sides"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "85d55e98d2ca930c5ecfee8a458d6096ca57e2d61061da23bb5061798e54ad9a",
+    "acceptedAt": "2026-11-08T14:59:32.479956+00:00",
+    "inputHash": "2e7ce888dbfda59ace9aedb9ac6ff7c0a1fbaa4f37acec16ecdf0573859ebe3d",
+    "authorInputHash": "f2674312aba0d4d1001c6b55e456903ef2c8c19545fdf632d451f0c4d87557d6",
+    "reviewInputHash": "c724984df14aa7f4cbfcb57075960788612835f15cc11ec9993f417115b091a7",
+    "authorResponseHash": "107b727f48671f6e61fe2ecbbfd227897d5665a6e4fe74c1c903fdf700ba3e04",
+    "reviewerResponseHash": "0a926f045ed07150f877944ec42633dedfaa611e3e63bed5f185e5bf8134d2a9",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

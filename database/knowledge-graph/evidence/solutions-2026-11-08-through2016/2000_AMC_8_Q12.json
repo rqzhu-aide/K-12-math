@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2000_AMC_8_Q12",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "b1a7b38176fb6cb56581b3223ab89927371c757ba939059a027f6244fff0e7a2",
+    "figureHashes": {
+      "figures/2000_AMC_8_Q12_question_fig1.svg": "76da0c0682f1d0405a508a1abcd81b085a4d12a83c35c09e90b070e0111f3c1e"
+    }
+  },
+  "solutionSHA256": "39a669c3ae5f7eb7f13676800b20c7af7619e8c810989c1a6fac2f27ab828acb",
+  "solutionFigureHashes": {},
+  "candidateHash": "ad0278ee0564c68f977a040f77a2550ca798b16629518c818d2a3c4af871564f",
+  "candidate": {
+    "questionId": "2000_AMC_8_Q12",
+    "derivedAnswer": "353 blocks, choice D",
+    "answerStatus": "matches",
+    "answerReason": "Every row needs at least 50 blocks, and two adjacent rows cannot both use exactly 50. Pairing six rows gives a lower bound of 353 blocks. Alternating four 50-block rows with three 51-block rows attains that bound.",
+    "methods": [
+      {
+        "id": "2000_AMC_8_Q12_m1",
+        "label": "Prove a lower bound and build a wall attaining it",
+        "explanation": "The wall has seven rows because each block is \\(1\\) foot high. To prove a smallest number, we need both a lower bound and an arrangement that reaches it.\n\nEach \\(100\\)-foot row needs at least \\(100\\div2=50\\) blocks, since no block is longer than \\(2\\) feet. A row with exactly \\(50\\) blocks must use only \\(2\\)-foot blocks. Its internal joins are then \\(2,4,6,\\ldots,98\\) feet from the left end. Consequently, two adjacent rows cannot both have exactly \\(50\\) blocks, because their joins would line up.\n\nNumber the rows from bottom to top. Each of the three separate pairs \\((1,2)\\), \\((3,4)\\), and \\((5,6)\\) therefore needs at least \\(50+51=101\\) blocks. Row \\(7\\) needs at least \\(50\\). These groups include every row exactly once, so every allowed wall needs at least\n\\[\n3\\cdot101+50=353\n\\]\nblocks.\n\nWe can attain this bound. Use \\(50\\) two-foot blocks in each of rows \\(1,3,5,7\\). In each of rows \\(2,4,6\\), place a one-foot block at each end with \\(49\\) two-foot blocks between them. Each such row has length \\(1+49\\cdot2+1=100\\) feet and uses \\(51\\) blocks. Its joins are at \\(1,3,5,\\ldots,99\\) feet, so none lines up with a join in an adjacent row. Both ends of the wall are even.\n\nThis construction uses\n\\[\n4\\cdot50+3\\cdot51=\\boxed{353}\n\\]\nblocks, proving that the minimum is \\(353\\), choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "math:extremal-principle"
+        ],
+        "prerequisiteIds": [
+          "cnm_p112"
+        ],
+        "levelReason": "The proof uses elementary row counting, alternating join positions, and whole-number arithmetic. It requires no formal optimization machinery."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_p112"
+    ],
+    "annotationRationale": "The route-neutral target is proving a discrete minimum through a universal lower bound and an allowed construction attaining it. The method pairs adjacent rows to establish the bound and explicitly verifies lengths, staggered joins, and even ends in the construction. Integer arithmetic supports both parts. The catalog's scheduling-oriented simple-optimization node does not describe this proof. These assignments do not establish student mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2000_AMC_8_Q12",
+    "decision": "accept",
+    "mathematicalCheck": "Every row needs at least 50 blocks. Two adjacent 50-block rows would share all internal joins, so each disjoint adjacent pair needs at least 101 blocks. This gives 3 × 101 + 50 = 353. Alternating four 50-block rows with three rows containing 49 long blocks and two short end blocks attains 353, with adjacent joins at even and odd positions and both ends flush.",
+    "levelCheck": "The elementary pairing argument is appropriate for AMC 8. The explanation supplies both the necessary lower bound and a fully checked construction.",
+    "methodDistinctness": "The lower bound and construction are complementary parts of one complete method.",
+    "annotationCheck": "math:extremal-principle precisely fits proving a universal bound and attaining it. cnm_p112 appropriately supports the calculations, and the scheduling-oriented optimization node is correctly avoided.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "2000_AMC_8_Q12_m1": "2000_AMC_8_Q12_m1"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "ee21062d6ec414e774d9f70d247d4c4f2fa7a7642d8db076addbb10f468bbe6d",
+    "acceptedAt": "2026-11-08T14:58:49.425047+00:00",
+    "inputHash": "5353f27faa1ac0e8703497819ac57410661b83384048e277c72fbaaa3e2076d4",
+    "authorInputHash": "6f42149b267782d58384d417861603f62579de39b881b1a66a50d24de0a777e8",
+    "reviewInputHash": "6d9e73a3eef262163148609792abc599194fbe859b4a8e6321ad1bccaf5b7404",
+    "authorResponseHash": "5cf06f974f03ea3380d2734ccbee8b232ead24eb0acacdef11078f32ec2ded8e",
+    "reviewerResponseHash": "5abff37107c7acdcfeec8251bf08bf1db2d8f25add6e472409dc97e5b0b44a5f",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

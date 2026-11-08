@@ -340168,14 +340168,17 @@ window.AMC_BANK = {
 {
 "id": "2000_AMC_10_Q05",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2000,
 "level": "AMC 10",
 "batch": "NA",
 "number": 5,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Points \\(M\\) and \\(N\\) are the midpoints of sides \\(PA\\) and \\(PB\\) of \\(\\triangle PAB.\\) As \\(P\\) moves along a line that is parallel to side \\(AB,\\) how many of the four quantities listed below change?\n\n(a) the length of the segment \\(MN;\\) (b) the perimeter of \\(\\triangle PAB;\\) (c) the area of \\(\\triangle PAB;\\) (d) the area of trapezoid \\(ABNM.\\)\n\n[Figure 1](figures/2000_AMC_10_Q05_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -340185,31 +340188,123 @@ window.AMC_BANK = {
 "D": "\\(3\\)",
 "E": "\\(4\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "B",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2000/solutions",
+"acceptedResponses": [
+"B"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The useful observation is that moving \\(P\\) parallel to \\(AB\\) keeps its perpendicular distance from \\(AB\\) fixed. Write \\(AB=b>0\\) and let this fixed distance be \\(h>0\\).\n\nSince \\(M\\) and \\(N\\) are side midpoints, the triangle midsegment theorem gives\n\\[\nMN=\\frac b2.\n\\]\nThus quantity (a) stays fixed. The area of \\(\\triangle PAB\\) is \\(bh/2\\), so quantity (c) also stays fixed.\n\nTo find the trapezoid's area, subtract \\(\\triangle PMN\\) from \\(\\triangle PAB\\). Triangles \\(PMB\\) and \\(PAB\\) have bases \\(PM\\) and \\(PA\\) on the same line and share the altitude from \\(B\\). Since \\(PM=PA/2\\), the first triangle has half the area of the second. Similarly, triangles \\(PMN\\) and \\(PMB\\) share the altitude from \\(M\\) to line \\(PB\\), and \\(PN=PB/2\\). Consequently, \\(\\triangle PMN\\) has one quarter of the area of \\(\\triangle PAB\\). Therefore\n\\[\n\\operatorname{Area}(ABNM)\n=\\frac34\\cdot\\frac{bh}{2}\n=\\frac{3bh}{8},\n\\]\nwhich is fixed, so quantity (d) does not change.\n\nThe perimeter \\(PA+PB+b\\) does vary. As \\(P\\) travels arbitrarily far along its line, its horizontal separation from \\(A\\) grows without bound, so \\(PA\\) also grows without bound. The perimeter therefore cannot remain constant.\n\nOnly quantity (b) changes. The answer is \\(\\boxed{1}\\), choice \\(\\boxed{\\text{B}}\\).",
+"solutionMethods": [
+{
+"id": "fixed-base-and-height",
+"label": "Track the fixed base and height",
+"explanation": "The useful observation is that moving \\(P\\) parallel to \\(AB\\) keeps its perpendicular distance from \\(AB\\) fixed. Write \\(AB=b>0\\) and let this fixed distance be \\(h>0\\).\n\nSince \\(M\\) and \\(N\\) are side midpoints, the triangle midsegment theorem gives\n\\[\nMN=\\frac b2.\n\\]\nThus quantity (a) stays fixed. The area of \\(\\triangle PAB\\) is \\(bh/2\\), so quantity (c) also stays fixed.\n\nTo find the trapezoid's area, subtract \\(\\triangle PMN\\) from \\(\\triangle PAB\\). Triangles \\(PMB\\) and \\(PAB\\) have bases \\(PM\\) and \\(PA\\) on the same line and share the altitude from \\(B\\). Since \\(PM=PA/2\\), the first triangle has half the area of the second. Similarly, triangles \\(PMN\\) and \\(PMB\\) share the altitude from \\(M\\) to line \\(PB\\), and \\(PN=PB/2\\). Consequently, \\(\\triangle PMN\\) has one quarter of the area of \\(\\triangle PAB\\). Therefore\n\\[\n\\operatorname{Area}(ABNM)\n=\\frac34\\cdot\\frac{bh}{2}\n=\\frac{3bh}{8},\n\\]\nwhich is fixed, so quantity (d) does not change.\n\nThe perimeter \\(PA+PB+b\\) does vary. As \\(P\\) travels arbitrarily far along its line, its horizontal separation from \\(A\\) grows without bound, so \\(PA\\) also grows without bound. The perimeter therefore cannot remain constant.\n\nOnly quantity (b) changes. The answer is \\(\\boxed{1}\\), choice \\(\\boxed{\\text{B}}\\).",
+"directNodeIds": [
+"cnm_193",
+"cnm_185",
+"cnm_p148",
+"cnm_p150"
+],
+"legacyRouteId": "fixed-base-and-height",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2000_AMC_10_Q05#fixed-base-and-height",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2000_AMC_10_Q05.json",
+"sha256": "cb1ac0ff96696a294884e1e699dc5bba1b0b03e30a47e23c8a00ec794fbed17f",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2000_AMC_10_Q05",
+"position": {
+"year": 2000,
+"level": "AMC 10",
+"batch": "NA",
+"number": 5
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2000/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2000_AMC_10_Q05",
 "figureSources": {
 "figures/2000_AMC_10_Q05_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc10/2000/5.svg",
+"alt": "",
+"sha256": "891e4c4f9b37c57e360336fb9b8d3e0791a274c13ac45e441f7c48a744015d75",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2000/5.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2000/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "d174ded6653c2a527af0761ce2ac523fd4e9d75722e40dc8ee39abaf93aca68f",
+"contentHash": "1bb818460268fded9a13b506d084afbda1014d4556d9aab733017e4ced19ed73",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
+"cnm_193"
+],
+"supportIds": [
+"cnm_055",
+"cnm_112"
+],
+"routes": [
+{
+"id": "fixed-base-and-height",
+"label": "Track the fixed base and height",
+"nodeIds": [
+"cnm_193",
 "cnm_185",
 "cnm_p148",
-"cnm_p149"
+"cnm_p150",
+"cnm_055",
+"cnm_112"
 ],
-"supportIds": [],
-"routes": [],
+"methodDirectNodeIds": {
+"fixed-base-and-height": [
+"cnm_193",
+"cnm_185",
+"cnm_p148",
+"cnm_p150"
+]
+},
+"contextNodeIds": [
+"cnm_055",
+"cnm_112"
+]
+}
+],
 "flags": []
 }
 },
@@ -340340,14 +340435,17 @@ window.AMC_BANK = {
 {
 "id": "2000_AMC_10_Q07",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2000,
 "level": "AMC 10",
 "batch": "NA",
 "number": 7,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "In rectangle \\(ABCD,\\) \\(AD = 1,\\) \\(P\\) is on \\(\\overline{AB},\\) and \\(\\overline{DB}\\) and \\(\\overline{DP}\\) trisect \\(\\angle ADC.\\) What is the perimeter of \\(\\triangle BDP?\\)\n\n[Figure 1](figures/2000_AMC_10_Q07_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -340357,30 +340455,139 @@ window.AMC_BANK = {
 "D": "\\(\\dfrac{3 + 3\\sqrt5}{2}\\)",
 "E": "\\(2 + \\dfrac{5\\sqrt3}{3}\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "B",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2000/solutions",
+"acceptedResponses": [
+"B"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The rectangle's right angle at \\(D\\) is divided into three equal angles, so each is \\(30^\\circ\\). Because \\(P\\) lies between \\(A\\) and \\(B\\), ray \\(DP\\) lies between rays \\(DA\\) and \\(DB\\). Hence\n\\[\n\\angle ADP=30^\\circ,\\qquad\n\\angle PDB=30^\\circ,\\qquad\n\\angle ADB=60^\\circ.\n\\]\n\nTriangle \\(ADB\\) is right at \\(A\\), so \\(\\angle ABD=30^\\circ\\). In a right triangle, the side opposite \\(30^\\circ\\) is half the hypotenuse. Since \\(AD=1\\), this gives \\(DB=2\\).\n\nTo find \\(DP\\), let \\(AP=x>0\\). Triangle \\(ADP\\) is right at \\(A\\), and \\(AP\\) is opposite its \\(30^\\circ\\) angle, so \\(DP=2x\\). The Pythagorean theorem now gives\n\\[\n1+x^2=(2x)^2,\n\\qquad 3x^2=1.\n\\]\nBecause \\(x\\) is a length, \\(x=1/\\sqrt3\\), and therefore\n\\[\nDP=\\frac{2}{\\sqrt3}=\\frac{2\\sqrt3}{3}.\n\\]\n\nRays \\(BP\\) and \\(BA\\) coincide, so \\(\\angle PBD=\\angle ABD=30^\\circ\\). Thus triangle \\(BDP\\) has equal angles at \\(B\\) and \\(D\\), giving \\(PB=DP\\). Its perimeter is\n\\[\nDB+DP+PB\n=2+2\\left(\\frac{2\\sqrt3}{3}\\right)\n=\\boxed{2+\\frac{4\\sqrt3}{3}},\n\\]\nwhich is choice \\(\\boxed{\\text{B}}\\).",
+"solutionMethods": [
+{
+"id": "special-triangles-and-equal-angles",
+"label": "Use 30-degree triangles and equal angles",
+"explanation": "The rectangle's right angle at \\(D\\) is divided into three equal angles, so each is \\(30^\\circ\\). Because \\(P\\) lies between \\(A\\) and \\(B\\), ray \\(DP\\) lies between rays \\(DA\\) and \\(DB\\). Hence\n\\[\n\\angle ADP=30^\\circ,\\qquad\n\\angle PDB=30^\\circ,\\qquad\n\\angle ADB=60^\\circ.\n\\]\n\nTriangle \\(ADB\\) is right at \\(A\\), so \\(\\angle ABD=30^\\circ\\). In a right triangle, the side opposite \\(30^\\circ\\) is half the hypotenuse. Since \\(AD=1\\), this gives \\(DB=2\\).\n\nTo find \\(DP\\), let \\(AP=x>0\\). Triangle \\(ADP\\) is right at \\(A\\), and \\(AP\\) is opposite its \\(30^\\circ\\) angle, so \\(DP=2x\\). The Pythagorean theorem now gives\n\\[\n1+x^2=(2x)^2,\n\\qquad 3x^2=1.\n\\]\nBecause \\(x\\) is a length, \\(x=1/\\sqrt3\\), and therefore\n\\[\nDP=\\frac{2}{\\sqrt3}=\\frac{2\\sqrt3}{3}.\n\\]\n\nRays \\(BP\\) and \\(BA\\) coincide, so \\(\\angle PBD=\\angle ABD=30^\\circ\\). Thus triangle \\(BDP\\) has equal angles at \\(B\\) and \\(D\\), giving \\(PB=DP\\). Its perimeter is\n\\[\nDB+DP+PB\n=2+2\\left(\\frac{2\\sqrt3}{3}\\right)\n=\\boxed{2+\\frac{4\\sqrt3}{3}},\n\\]\nwhich is choice \\(\\boxed{\\text{B}}\\).",
+"directNodeIds": [
+"cnm_140",
+"cnm_174",
+"cnm_138"
+],
+"legacyRouteId": "special-triangles-and-equal-angles",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2000_AMC_10_Q07#special-triangles-and-equal-angles",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2000_AMC_10_Q07.json",
+"sha256": "bb9859b47cc0ada3578a8d5dc56aa6593c1f5d46295503bfb580086b46c24942",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "special-right-triangles",
+"label": "30-degree triangles and equal sides",
+"directNodeIds": [
+"cnm_116",
+"cnm_140",
+"cnm_174",
+"cnm_138"
+],
+"legacyRouteId": "special-right-triangles",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2192",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2000_AMC_10_Q07#special-right-triangles",
+"evidence": []
+}
+},
+{
+"id": "trigonometric-ratios",
+"label": "Special-angle trigonometric ratios",
+"directNodeIds": [
+"cnm_276",
+"cnm_277",
+"cnm_055"
+],
+"legacyRouteId": "trigonometric-ratios",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2192",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2000_AMC_10_Q07#trigonometric-ratios",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2000_AMC_10_Q07",
+"position": {
+"year": 2000,
+"level": "AMC 10",
+"batch": "NA",
+"number": 7
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2000/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2000_AMC_10_Q07",
 "figureSources": {
 "figures/2000_AMC_10_Q07_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc10/2000/7.svg",
+"alt": "",
+"sha256": "6fc1518bb765611708913a13b4e77aa9f88494188277cef00e465cb64fa28285",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2000/7.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2000/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "e3e03e3021bd1a6281a037e8c553877cf96e4b9293c66c7acaef54df23d0580e",
+"contentHash": "6c0f85f8230a8b350c4fc16ff302c2a842894af7c23a6d1ae6f325db0adc4797",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
-"cnm_278"
+"cnm_140"
 ],
 "supportIds": [
 "cnm_186",
-"cnm_058"
+"cnm_058",
+"cnm_116",
+"cnm_171",
+"cnm_172"
 ],
 "routes": [
 {
@@ -340391,7 +340598,16 @@ window.AMC_BANK = {
 "cnm_140",
 "cnm_174",
 "cnm_138"
+],
+"methodDirectNodeIds": {
+"special-right-triangles": [
+"cnm_116",
+"cnm_140",
+"cnm_174",
+"cnm_138"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "trigonometric-ratios",
@@ -340400,6 +340616,42 @@ window.AMC_BANK = {
 "cnm_276",
 "cnm_277",
 "cnm_055"
+],
+"methodDirectNodeIds": {
+"trigonometric-ratios": [
+"cnm_276",
+"cnm_277",
+"cnm_055"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "special-triangles-and-equal-angles",
+"label": "Use 30-degree triangles and equal angles",
+"nodeIds": [
+"cnm_140",
+"cnm_174",
+"cnm_138",
+"cnm_186",
+"cnm_058",
+"cnm_116",
+"cnm_171",
+"cnm_172"
+],
+"methodDirectNodeIds": {
+"special-triangles-and-equal-angles": [
+"cnm_140",
+"cnm_174",
+"cnm_138"
+]
+},
+"contextNodeIds": [
+"cnm_186",
+"cnm_058",
+"cnm_116",
+"cnm_171",
+"cnm_172"
 ]
 }
 ],
@@ -340906,14 +341158,17 @@ window.AMC_BANK = {
 {
 "id": "2000_AMC_10_Q12",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2000,
 "level": "AMC 10",
 "batch": "NA",
 "number": 12,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Figures \\(0,\\) \\(1,\\) \\(2,\\) and \\(3\\) consist of \\(1,\\) \\(5,\\) \\(13,\\) and \\(25\\) nonoverlapping unit squares, respectively. If the pattern were continued, how many nonoverlapping unit squares would there be in figure \\(100?\\)\n\n[Figure 1](figures/2000_AMC_10_Q12_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -340923,45 +341178,134 @@ window.AMC_BANK = {
 "D": "\\(39801\\)",
 "E": "\\(40801\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2000/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The figures grow by adding an outer layer. Counting each new layer is easier than counting all the squares in figure \\(100\\) at once.\n\nIn figure \\(k-1\\), there are \\(2k-1\\) horizontal rows. To obtain figure \\(k\\), the displayed pattern adds one square at each end of every existing row, together with one new square above and one below. Thus step \\(k\\) adds\n\\[\n2(2k-1)+2=4k\n\\]\nsquares. These are all the new squares, and squares added at different steps are distinct.\n\nStarting with the single square in figure \\(0\\), figure \\(n\\) therefore contains\n\\[\n1+4(1+2+\\cdots+n)\n\\]\nsquares. To evaluate the sum, write it once in increasing order and once in decreasing order. Each of the \\(n\\) corresponding pairs sums to \\(n+1\\), giving\n\\[\n1+2+\\cdots+n=\\frac{n(n+1)}2.\n\\]\nHence the number of squares in figure \\(100\\) is\n\\[\n1+4\\cdot\\frac{100\\cdot101}{2}\n=1+20200\n=\\boxed{20201}.\n\\]\nThe answer is choice \\(\\boxed{\\text{C}}\\).",
+"solutionMethods": [
+{
+"id": "count-new-layers",
+"label": "Count the squares added at each step",
+"explanation": "The figures grow by adding an outer layer. Counting each new layer is easier than counting all the squares in figure \\(100\\) at once.\n\nIn figure \\(k-1\\), there are \\(2k-1\\) horizontal rows. To obtain figure \\(k\\), the displayed pattern adds one square at each end of every existing row, together with one new square above and one below. Thus step \\(k\\) adds\n\\[\n2(2k-1)+2=4k\n\\]\nsquares. These are all the new squares, and squares added at different steps are distinct.\n\nStarting with the single square in figure \\(0\\), figure \\(n\\) therefore contains\n\\[\n1+4(1+2+\\cdots+n)\n\\]\nsquares. To evaluate the sum, write it once in increasing order and once in decreasing order. Each of the \\(n\\) corresponding pairs sums to \\(n+1\\), giving\n\\[\n1+2+\\cdots+n=\\frac{n(n+1)}2.\n\\]\nHence the number of squares in figure \\(100\\) is\n\\[\n1+4\\cdot\\frac{100\\cdot101}{2}\n=1+20200\n=\\boxed{20201}.\n\\]\nThe answer is choice \\(\\boxed{\\text{C}}\\).",
+"directNodeIds": [
+"cnm_030",
+"cnm_h204"
+],
+"legacyRouteId": "count-new-layers",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2000_AMC_10_Q12#count-new-layers",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2000_AMC_10_Q12.json",
+"sha256": "ec4621387de1bfc56b86c47130a36df1d0c7ac365d1f4f9fe0ee06c77702eb64",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2000_AMC_10_Q12",
+"position": {
+"year": 2000,
+"level": "AMC 10",
+"batch": "NA",
+"number": 12
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2000/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2000_AMC_10_Q12",
 "figureSources": {
 "figures/2000_AMC_10_Q12_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc10/2000/12.svg",
+"alt": "",
+"sha256": "3715e04f1b2e80afbe91b7d3655604a3493dda1ecafb74d1f3eefc8493586338",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2000/12.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2000/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "54004cca102a5fc071792d5148e6bf2aad37923ce4b6587bf150e438d74b2b05",
+"contentHash": "480e3b4d1e74117eb8cfb75a723f412ea8cef9e504d37b847fd6d9413eaeaf44",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_030"
 ],
 "supportIds": [
-"cnm_h204"
+"cnm_027",
+"cnm_029"
 ],
-"routes": [],
+"routes": [
+{
+"id": "count-new-layers",
+"label": "Count the squares added at each step",
+"nodeIds": [
+"cnm_030",
+"cnm_h204",
+"cnm_027",
+"cnm_029"
+],
+"methodDirectNodeIds": {
+"count-new-layers": [
+"cnm_030",
+"cnm_h204"
+]
+},
+"contextNodeIds": [
+"cnm_027",
+"cnm_029"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2000_AMC_10_Q13",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2000,
 "level": "AMC 10",
 "batch": "NA",
 "number": 13,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "There are \\(5\\) yellow pegs, \\(4\\) red pegs, \\(3\\) green pegs, \\(2\\) blue pegs, and \\(1\\) orange peg to be placed on a triangular peg board. In how many ways can the pegs be placed so that no (horizontal) row or (vertical) column contains two pegs of the same color?\n\n[Figure 1](figures/2000_AMC_10_Q13_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -340971,29 +341315,109 @@ window.AMC_BANK = {
 "D": "\\(\\frac{15!}{5! \\cdot 4! \\cdot 3! \\cdot 2! \\cdot 1!}\\)",
 "E": "\\(15!\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "B",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2000/solutions",
+"acceptedResponses": [
+"B"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Start with yellow, since its five pegs must occupy five different rows. There are exactly five rows, so every row must contain one yellow peg.\n\nThe single hole in the top row must therefore be yellow. In the second row, the first hole cannot be yellow because it is in the same column as the top yellow peg. Thus the second hole is yellow. In the third row, the first two columns already contain yellow pegs, so its yellow peg must occupy the third hole. Continuing this reasoning forces yellow into the rightmost hole of every row.\n\nSet those yellow holes aside. The remaining holes form a smaller triangle with rows of lengths \\(1,2,3,4\\). The four red pegs must occupy different rows of this triangle, so the same reasoning forces red into its rightmost holes. Repeating with green, blue, and orange forces all the remaining positions.\n\nWriting each row from left to right, the result is\n\\[\n\\begin{array}{l}\n\\text{yellow}\\\\\n\\text{red, yellow}\\\\\n\\text{green, red, yellow}\\\\\n\\text{blue, green, red, yellow}\\\\\n\\text{orange, blue, green, red, yellow}.\n\\end{array}\n\\]\nEvery row and every vertical column has distinct colors, and the color totals are correct. Thus this forced arrangement exists, and every valid arrangement must be this one. There is exactly \\(\\boxed{1}\\) placement, choice \\(\\boxed{\\text{B}}\\).",
+"solutionMethods": [
+{
+"id": "forced-colors",
+"label": "Force one color at a time",
+"explanation": "Start with yellow, since its five pegs must occupy five different rows. There are exactly five rows, so every row must contain one yellow peg.\n\nThe single hole in the top row must therefore be yellow. In the second row, the first hole cannot be yellow because it is in the same column as the top yellow peg. Thus the second hole is yellow. In the third row, the first two columns already contain yellow pegs, so its yellow peg must occupy the third hole. Continuing this reasoning forces yellow into the rightmost hole of every row.\n\nSet those yellow holes aside. The remaining holes form a smaller triangle with rows of lengths \\(1,2,3,4\\). The four red pegs must occupy different rows of this triangle, so the same reasoning forces red into its rightmost holes. Repeating with green, blue, and orange forces all the remaining positions.\n\nWriting each row from left to right, the result is\n\\[\n\\begin{array}{l}\n\\text{yellow}\\\\\n\\text{red, yellow}\\\\\n\\text{green, red, yellow}\\\\\n\\text{blue, green, red, yellow}\\\\\n\\text{orange, blue, green, red, yellow}.\n\\end{array}\n\\]\nEvery row and every vertical column has distinct colors, and the color totals are correct. Thus this forced arrangement exists, and every valid arrangement must be this one. There is exactly \\(\\boxed{1}\\) placement, choice \\(\\boxed{\\text{B}}\\).",
+"directNodeIds": [
+"math:graph-coloring",
+"math:finite-constraint-deduction"
+],
+"legacyRouteId": "forced-colors",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2000_AMC_10_Q13#forced-colors",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2000_AMC_10_Q13.json",
+"sha256": "534c58e4d91948bd862dbfad4ffe64bf596ffa83c0e8fdcc6f23ea2d95ec1c5a",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2000_AMC_10_Q13",
+"position": {
+"year": 2000,
+"level": "AMC 10",
+"batch": "NA",
+"number": 13
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2000/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2000_AMC_10_Q13",
 "figureSources": {
 "figures/2000_AMC_10_Q13_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc10/2000/13.svg",
+"alt": "",
+"sha256": "1a786876d4d297f699d04c462a4ba171e1a591e840b32344409b2a37b1050acc",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2000/13.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2000/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "51f6d8a18f52af351336ae5e5f4ad02aca53384e89f68e6d29245269a69e281d",
+"contentHash": "868fbf5849a3916906fa8d96c8d779fc1513f1f35c29f67f0a346cbd35dcc3a2",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "math:graph-coloring"
 ],
 "supportIds": [],
-"routes": [],
+"routes": [
+{
+"id": "forced-colors",
+"label": "Force one color at a time",
+"nodeIds": [
+"math:graph-coloring",
+"math:finite-constraint-deduction"
+],
+"methodDirectNodeIds": {
+"forced-colors": [
+"math:graph-coloring",
+"math:finite-constraint-deduction"
+]
+},
+"contextNodeIds": []
+}
+],
 "flags": []
 }
 },
@@ -341351,14 +341775,17 @@ window.AMC_BANK = {
 {
 "id": "2000_AMC_10_Q16",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2000,
 "level": "AMC 10",
 "batch": "NA",
 "number": 16,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "The diagram shows \\(28\\) lattice points, each one unit from its nearest neighbors. Segment \\(AB\\) meets segment \\(CD\\) at \\(E.\\) Find the length of segment \\(AE.\\)\n\n[Figure 1](figures/2000_AMC_10_Q16_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -341368,28 +341795,142 @@ window.AMC_BANK = {
 "D": "\\(2\\sqrt5\\)",
 "E": "\\(\\dfrac{5\\sqrt{65}}{9}\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "B",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2000/solutions",
+"acceptedResponses": [
+"B"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The horizontal lattice rows suggest constructing parallel bases. Extend \\(DC\\) beyond \\(C\\) to meet the horizontal line through \\(A\\) at \\(F\\).\n\nFrom \\(D\\) to \\(C\\), the line moves two units right and two units up. To reach the row through \\(A\\), it moves one more unit right and one more unit up. Thus \\(F\\) is five units to the right of \\(A\\), giving \\(AF=5\\). Counting along the bottom row gives \\(DB=4\\).\n\nSince \\(AF\\parallel DB\\), the triangles \\(AFE\\) and \\(BDE\\) have equal corresponding angles. Their angles at \\(E\\) are also vertical angles. They are therefore similar, so\n\\[\n\\frac{AE}{EB}=\\frac{AF}{BD}=\\frac54.\n\\]\nConsequently, \\(AE\\) is \\(5/9\\) of \\(AB\\).\n\nThe horizontal and vertical distances from \\(A\\) to \\(B\\) are \\(6\\) and \\(3\\). Applying the Pythagorean theorem to the right triangle with these legs gives\n\\[\nAB=\\sqrt{6^2+3^2}=3\\sqrt5.\n\\]\nTherefore\n\\[\nAE=\\frac59\\cdot3\\sqrt5\n=\\boxed{\\frac{5\\sqrt5}{3}},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+"solutionMethods": [
+{
+"id": "parallel-bases",
+"label": "Use similar triangles",
+"explanation": "The horizontal lattice rows suggest constructing parallel bases. Extend \\(DC\\) beyond \\(C\\) to meet the horizontal line through \\(A\\) at \\(F\\).\n\nFrom \\(D\\) to \\(C\\), the line moves two units right and two units up. To reach the row through \\(A\\), it moves one more unit right and one more unit up. Thus \\(F\\) is five units to the right of \\(A\\), giving \\(AF=5\\). Counting along the bottom row gives \\(DB=4\\).\n\nSince \\(AF\\parallel DB\\), the triangles \\(AFE\\) and \\(BDE\\) have equal corresponding angles. Their angles at \\(E\\) are also vertical angles. They are therefore similar, so\n\\[\n\\frac{AE}{EB}=\\frac{AF}{BD}=\\frac54.\n\\]\nConsequently, \\(AE\\) is \\(5/9\\) of \\(AB\\).\n\nThe horizontal and vertical distances from \\(A\\) to \\(B\\) are \\(6\\) and \\(3\\). Applying the Pythagorean theorem to the right triangle with these legs gives\n\\[\nAB=\\sqrt{6^2+3^2}=3\\sqrt5.\n\\]\nTherefore\n\\[\nAE=\\frac59\\cdot3\\sqrt5\n=\\boxed{\\frac{5\\sqrt5}{3}},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+"directNodeIds": [
+"cnm_271",
+"cnm_272",
+"cnm_174"
+],
+"legacyRouteId": "parallel-bases",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2000_AMC_10_Q16#parallel-bases",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2000_AMC_10_Q16.json",
+"sha256": "ae353f51d609371cbc7a695356c355a56ab91f8b04c52181d2adb380813beb79",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "coordinate-intersection",
+"label": "Find the intersection using coordinates",
+"explanation": "The unit lattice makes coordinates convenient: they let us find the intersection exactly before calculating its distance from \\(A\\). Take the bottom-left lattice point as \\((0,0)\\), with the axes following the horizontal and vertical lattice directions. Reading the marked points gives\n\\[\nA=(0,3),\\quad B=(6,0),\\quad\nC=(4,2),\\quad D=(2,0).\n\\]\nFor line \\(AB\\), write \\(y=kx+b\\). The point \\(A\\) gives \\(b=3\\), and \\(B\\) gives \\(0=6k+3\\), so its equation is\n\\[\ny=3-\\frac{x}{2}.\n\\]\nLine \\(CD\\) rises two units while moving two units right, and it passes through \\((2,0)\\). Its equation is \\(y=x-2\\).\n\nAt their intersection, both expressions for \\(y\\) agree. Hence\n\\[\n3-\\frac{x}{2}=x-2,\n\\qquad x=\\frac{10}{3},\n\\qquad y=\\frac43.\n\\]\nThis point lies between the endpoints of both segments: its horizontal coordinate is between \\(0\\) and \\(6\\), and also between \\(2\\) and \\(4\\).\n\nFrom \\(A\\) to \\(E\\), the horizontal distance is \\(10/3\\) and the vertical distance is \\(3-4/3=5/3\\). The Pythagorean theorem gives\n\\[\nAE=\\sqrt{\\left(\\frac{10}{3}\\right)^2+\n\\left(\\frac53\\right)^2}\n=\\boxed{\\frac{5\\sqrt5}{3}},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+"directNodeIds": [
+"cnm_082",
+"cnm_205",
+"cnm_208",
+"cnm_174"
+],
+"legacyRouteId": "solution:coordinate-intersection:fe03dc3a79a4",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2000_AMC_10_Q16#coordinate-intersection",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2000_AMC_10_Q16.json",
+"sha256": "ae353f51d609371cbc7a695356c355a56ab91f8b04c52181d2adb380813beb79",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "similar-triangle-ratio",
+"label": "Parallel bases and similar triangles",
+"directNodeIds": [
+"cnm_271",
+"cnm_272"
+],
+"legacyRouteId": "similar-triangle-ratio",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2201",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2000_AMC_10_Q16#similar-triangle-ratio",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2000_AMC_10_Q16",
+"position": {
+"year": 2000,
+"level": "AMC 10",
+"batch": "NA",
+"number": 16
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2000/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2000_AMC_10_Q16",
 "figureSources": {
 "figures/2000_AMC_10_Q16_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc10/2000/16.svg",
+"alt": "",
+"sha256": "4e2554b6c3b1f73bdf5b17f4204698731d3d0d6a4e3746e1887eaffa8d1db94a",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2000/16.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2000/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "debc7a8608149ea0dc9100e0cd2a5fc3a3fd3db7608e08a9d0c054829a4ca9c3",
+"contentHash": "2a4939f898ce44399b926521c6efa8d36cee053c25a716c6c3724789f41a480b",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_174"
 ],
-"supportIds": [],
+"supportIds": [
+"cnm_075",
+"cnm_110"
+],
 "routes": [
 {
 "id": "coordinate-intersection",
@@ -341406,6 +341947,67 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_271",
 "cnm_272"
+],
+"methodDirectNodeIds": {
+"similar-triangle-ratio": [
+"cnm_271",
+"cnm_272"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "parallel-bases",
+"label": "Use similar triangles",
+"nodeIds": [
+"cnm_271",
+"cnm_272",
+"cnm_174",
+"cnm_069",
+"cnm_063",
+"cnm_268",
+"cnm_075",
+"cnm_110"
+],
+"methodDirectNodeIds": {
+"parallel-bases": [
+"cnm_271",
+"cnm_272",
+"cnm_174"
+]
+},
+"contextNodeIds": [
+"cnm_069",
+"cnm_063",
+"cnm_268",
+"cnm_075",
+"cnm_110"
+]
+},
+{
+"id": "solution:coordinate-intersection:fe03dc3a79a4",
+"label": "Find the intersection using coordinates",
+"nodeIds": [
+"cnm_082",
+"cnm_205",
+"cnm_208",
+"cnm_174",
+"cnm_089",
+"cnm_075",
+"cnm_110"
+],
+"methodDirectNodeIds": {
+"coordinate-intersection": [
+"cnm_082",
+"cnm_205",
+"cnm_208",
+"cnm_174"
+]
+},
+"contextNodeIds": [
+"cnm_089",
+"cnm_075",
+"cnm_110"
 ]
 }
 ],
@@ -343766,14 +344368,17 @@ window.AMC_BANK = {
 {
 "id": "2000_AMC_12_Q08",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2000,
 "level": "AMC 12",
 "batch": "NA",
 "number": 8,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Figures \\(0,\\) \\(1,\\) \\(2,\\) and \\(3\\) consist of \\(1,\\) \\(5,\\) \\(13,\\) and \\(25\\) nonoverlapping unit squares, respectively. If the pattern were continued, how many nonoverlapping unit squares would there be in figure \\(100?\\)\n\n[Figure 1](figures/2000_AMC_12_Q08_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -343783,31 +344388,117 @@ window.AMC_BANK = {
 "D": "\\(39801\\)",
 "E": "\\(40801\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2000/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The figures grow by adding a layer around the preceding figure. Counting these separate layers avoids having to draw figure \\(100\\).\n\nNumber the layers outward from the central square. For an integer \\(k\\geq1\\), layer \\(k\\) consists of the squares exactly \\(k\\) horizontal or vertical unit steps from the center. It has one top square and one bottom square. In each of the \\(2k-1\\) rows between them, it has two squares, one on each side. Thus layer \\(k\\) contains\n\\[\n2+2(2k-1)=4k\n\\]\nsquares.\n\nFigure \\(n\\), for a nonnegative integer \\(n\\), contains the central square and layers \\(1\\) through \\(n\\). Every square belongs to exactly one layer, so none is omitted or counted twice. Its total is therefore\n\\[\n1+4(1+2+\\cdots+n).\n\\]\nFor \\(n=100\\), pair \\(1\\) with \\(100\\), \\(2\\) with \\(99\\), and so on. There are \\(50\\) pairs, each totaling \\(101\\), so\n\\[\n1+4(1+2+\\cdots+100)\n=1+4\\cdot50\\cdot101\n=\\boxed{20201}.\n\\]\nThe answer is choice \\(\\boxed{\\text{C}}\\).",
+"solutionMethods": [
+{
+"id": "count-layers",
+"label": "Count the added layers",
+"explanation": "The figures grow by adding a layer around the preceding figure. Counting these separate layers avoids having to draw figure \\(100\\).\n\nNumber the layers outward from the central square. For an integer \\(k\\geq1\\), layer \\(k\\) consists of the squares exactly \\(k\\) horizontal or vertical unit steps from the center. It has one top square and one bottom square. In each of the \\(2k-1\\) rows between them, it has two squares, one on each side. Thus layer \\(k\\) contains\n\\[\n2+2(2k-1)=4k\n\\]\nsquares.\n\nFigure \\(n\\), for a nonnegative integer \\(n\\), contains the central square and layers \\(1\\) through \\(n\\). Every square belongs to exactly one layer, so none is omitted or counted twice. Its total is therefore\n\\[\n1+4(1+2+\\cdots+n).\n\\]\nFor \\(n=100\\), pair \\(1\\) with \\(100\\), \\(2\\) with \\(99\\), and so on. There are \\(50\\) pairs, each totaling \\(101\\), so\n\\[\n1+4(1+2+\\cdots+100)\n=1+4\\cdot50\\cdot101\n=\\boxed{20201}.\n\\]\nThe answer is choice \\(\\boxed{\\text{C}}\\).",
+"directNodeIds": [
+"cnm_030",
+"cnm_h204"
+],
+"legacyRouteId": "count-layers",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2000_AMC_12_Q08#count-layers",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2000_AMC_12_Q08.json",
+"sha256": "da1ec548e77aa7d31226c5d46ff909cdb50120470c529c2003f783106b85a058",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2000_AMC_12_Q08",
+"position": {
+"year": 2000,
+"level": "AMC 12",
+"batch": "NA",
+"number": 8
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2000/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2000_AMC_12_Q08",
 "figureSources": {
 "figures/2000_AMC_12_Q08_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc12/2000/8.svg",
+"alt": "",
+"sha256": "b599c29c174dc49287573d3ef5d51fe8df159e9d1171c5c39c45d227d5e9dca2",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2000/8.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2000/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "60c40e8a9cd5b169fe23bd6b1885a5c9d7ea240d34cf9fbb92c3c4880dfe84c0",
+"contentHash": "6a9e9b85c0ffae3861a8bf789c810b48e93bc75db9aa3b9e05402977b8f837bb",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_030"
 ],
 "supportIds": [
-"cnm_h204"
+"cnm_027",
+"cnm_029"
 ],
-"routes": [],
+"routes": [
+{
+"id": "count-layers",
+"label": "Count the added layers",
+"nodeIds": [
+"cnm_030",
+"cnm_h204",
+"cnm_027",
+"cnm_029"
+],
+"methodDirectNodeIds": {
+"count-layers": [
+"cnm_030",
+"cnm_h204"
+]
+},
+"contextNodeIds": [
+"cnm_027",
+"cnm_029"
+]
+}
+],
 "flags": []
 }
 },
@@ -345020,14 +345711,17 @@ window.AMC_BANK = {
 {
 "id": "2000_AMC_12_Q17",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2000,
 "level": "AMC 12",
 "batch": "NA",
 "number": 17,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "A circle centered at \\(O\\) has radius \\(1\\) and contains the point \\(A.\\) Segment \\(AB\\) is tangent to the circle at \\(A\\) and \\(\\angle AOB = \\theta.\\) If point \\(C\\) lies on \\(\\overline{OA}\\) and \\(BC\\) bisects \\(\\angle ABO,\\) then what is \\(OC?\\)\n\n[Figure 1](figures/2000_AMC_12_Q17_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -345037,29 +345731,123 @@ window.AMC_BANK = {
 "D": "\\(\\dfrac{1}{1 + \\sin\\theta}\\)",
 "E": "\\(\\dfrac{\\sin\\theta}{\\cos^2\\theta}\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2000/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The angle bisector is useful because every point on it has equal perpendicular distances to the two sides of the angle. Tangency gives \\(OA\\perp AB\\), so triangle \\(OAB\\) is right and \\(0<\\theta<90^\\circ\\).\n\nLet \\(x=OC\\). The internal bisector meets the interior of \\(OA\\), so \\(0<x<1\\) and \\(CA=1-x\\). Because \\(CA\\perp AB\\), the distance from \\(C\\) to line \\(AB\\) is \\(1-x\\).\n\nDraw \\(CH\\perp OB\\), with \\(H\\) on \\(OB\\). In right triangle \\(OCH\\), the hypotenuse is \\(OC=x\\) and \\(\\angle COH=\\theta\\). Thus \\(CH=x\\sin\\theta\\). Since \\(C\\) lies on the bisector of \\(\\angle ABO\\), its distances to \\(BA\\) and \\(BO\\) are equal. Therefore\n\\[\n1-x=x\\sin\\theta,\n\\qquad x(1+\\sin\\theta)=1.\n\\]\nHere \\(1+\\sin\\theta>0\\), so division is valid. Consequently,\n\\[\nOC=\\frac{1}{1+\\sin\\theta},\n\\]\nwhich is choice D.",
+"solutionMethods": [
+{
+"id": "equal-perpendicular-distances",
+"label": "Equal distances from an angle bisector",
+"explanation": "The angle bisector is useful because every point on it has equal perpendicular distances to the two sides of the angle. Tangency gives \\(OA\\perp AB\\), so triangle \\(OAB\\) is right and \\(0<\\theta<90^\\circ\\).\n\nLet \\(x=OC\\). The internal bisector meets the interior of \\(OA\\), so \\(0<x<1\\) and \\(CA=1-x\\). Because \\(CA\\perp AB\\), the distance from \\(C\\) to line \\(AB\\) is \\(1-x\\).\n\nDraw \\(CH\\perp OB\\), with \\(H\\) on \\(OB\\). In right triangle \\(OCH\\), the hypotenuse is \\(OC=x\\) and \\(\\angle COH=\\theta\\). Thus \\(CH=x\\sin\\theta\\). Since \\(C\\) lies on the bisector of \\(\\angle ABO\\), its distances to \\(BA\\) and \\(BO\\) are equal. Therefore\n\\[\n1-x=x\\sin\\theta,\n\\qquad x(1+\\sin\\theta)=1.\n\\]\nHere \\(1+\\sin\\theta>0\\), so division is valid. Consequently,\n\\[\nOC=\\frac{1}{1+\\sin\\theta},\n\\]\nwhich is choice D.",
+"directNodeIds": [
+"cnm_128",
+"cnm_278",
+"cnm_042"
+],
+"legacyRouteId": "solution:equal-perpendicular-distances:9002661c3261",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2000_AMC_12_Q17#equal-perpendicular-distances",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2000_AMC_12_Q17.json",
+"sha256": "2e5b04d014680c800279fa62981dea88815ea148f39dbec1558e884fc6b79c68",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "angle-bisector-side-ratio",
+"label": "Divide the radius using side ratios",
+"explanation": "The angle-bisector theorem directly relates the two parts of \\(OA\\) to sides of triangle \\(OAB\\). Tangency gives \\(OA\\perp AB\\), so \\(\\theta\\) is acute and\n\\[\n\\sin\\theta=\\frac{AB}{OB}.\n\\]\nLet \\(x=OC\\). Since \\(BC\\) is the internal angle bisector, \\(0<x<1\\) and \\(CA=1-x\\). The angle-bisector theorem matches \\(OC\\) with the adjacent side \\(OB\\), and \\(CA\\) with \\(AB\\), giving\n\\[\n\\frac{x}{1-x}=\\frac{OB}{AB}\n=\\frac{1}{\\sin\\theta}.\n\\]\nBoth denominators are positive. Cross-multiplication gives \\(x\\sin\\theta=1-x\\), hence\n\\[\nOC=x=\\frac{1}{1+\\sin\\theta}.\n\\]\nThe denominator is positive because \\(\\theta\\) is acute. The answer is choice D.",
+"directNodeIds": [
+"math:angle-bisector-side-ratio",
+"cnm_278",
+"cnm_042"
+],
+"legacyRouteId": "solution:angle-bisector-side-ratio:9002661c3261",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2000_AMC_12_Q17#angle-bisector-side-ratio",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2000_AMC_12_Q17.json",
+"sha256": "2e5b04d014680c800279fa62981dea88815ea148f39dbec1558e884fc6b79c68",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2000_AMC_12_Q17",
+"position": {
+"year": 2000,
+"level": "AMC 12",
+"batch": "NA",
+"number": 17
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2000/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2000_AMC_12_Q17",
 "figureSources": {
 "figures/2000_AMC_12_Q17_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc12/2000/17.svg",
+"alt": "",
+"sha256": "b8ebea70ffe2397c4c3d29b26731862e4e6ac7a72755619e3f60b57b208ffd6b",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2000/17.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2000/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "1674fb7733db307d1b4b763d4f6955dd25e80cebfbcc3466f8efe7995bad06a3",
+"contentHash": "0f74f113ff764852995fd1708584b7656cfb6b7815de3943b055a641443b9c2a",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_278"
 ],
 "supportIds": [
-"cnm_262"
+"cnm_262",
+"cnm_276",
+"cnm_042",
+"cnm_055"
 ],
 "routes": [
 {
@@ -345076,6 +345864,64 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_128",
 "cnm_042"
+]
+},
+{
+"id": "solution:equal-perpendicular-distances:9002661c3261",
+"label": "Equal distances from an angle bisector",
+"nodeIds": [
+"cnm_128",
+"cnm_278",
+"cnm_042",
+"cnm_262",
+"cnm_276",
+"cnm_065",
+"cnm_055",
+"cnm_040"
+],
+"methodDirectNodeIds": {
+"equal-perpendicular-distances": [
+"cnm_128",
+"cnm_278",
+"cnm_042"
+]
+},
+"contextNodeIds": [
+"cnm_262",
+"cnm_276",
+"cnm_065",
+"cnm_055",
+"cnm_040"
+]
+},
+{
+"id": "solution:angle-bisector-side-ratio:9002661c3261",
+"label": "Divide the radius using side ratios",
+"nodeIds": [
+"math:angle-bisector-side-ratio",
+"cnm_278",
+"cnm_042",
+"cnm_262",
+"cnm_276",
+"cnm_114",
+"cnm_268",
+"cnm_055",
+"cnm_040"
+],
+"methodDirectNodeIds": {
+"angle-bisector-side-ratio": [
+"math:angle-bisector-side-ratio",
+"cnm_278",
+"cnm_042"
+]
+},
+"contextNodeIds": [
+"cnm_262",
+"cnm_276",
+"cnm_114",
+"cnm_268",
+"cnm_055",
+"cnm_040"
 ]
 }
 ],
@@ -345817,14 +346663,17 @@ window.AMC_BANK = {
 {
 "id": "2000_AMC_12_Q22",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2000,
 "level": "AMC 12",
 "batch": "NA",
 "number": 22,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "The graph below shows a portion of the curve defined by the quartic polynomial \\[P(x) = x^4 + ax^3 + bx^2 + cx + d.\\] Which of the following is the smallest?\n\n[Figure 1](figures/2000_AMC_12_Q22_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -345834,32 +346683,131 @@ window.AMC_BANK = {
 "D": "The sum of the coefficients of \\(P\\)",
 "E": "The sum of the real zeros of \\(P\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2000/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The useful first step is to translate the coefficient and root expressions into quantities that the graph can help us compare.\n\nLet \\(r,s\\) be the two real zeros, and let \\(u,v\\) be the non-real zeros, counted with multiplicity. The displayed graph has all three turning points of the quartic, so its outer branches cannot turn again to produce additional real zeros. Only rough bounds are needed. Reading the intercepts and heights from the graph gives\n\\[\nr>1.9,\\qquad s>3.5,\\qquad 4<P(0)<6,\n\\]\nand also \\(P(-1)>3\\) and \\(P(1)>2\\). These bounds do not assume that a plotted intercept is an exact integer.\n\nBecause the leading coefficient is 1,\n\\[\nP(x)=(x-r)(x-s)(x-u)(x-v).\n\\]\nSetting \\(x=0\\) multiplies four negative root terms, so\n\\[\nP(0)=rsuv.\n\\]\nThus choice B equals \\(P(0)>4\\). Moreover, \\(rs>1.9\\cdot3.5=6.65\\), so choice C satisfies\n\\[\n0<uv=\\frac{P(0)}{rs}<\\frac{6}{6.65}<1.\n\\]\nThe sum of the coefficients is obtained by substituting \\(x=1\\), since every power of 1 equals 1. Hence choice D is \\(P(1)>2\\). Choice A exceeds 3, and choice E is \\(r+s>5.4\\).\n\nTherefore the product of the non-real zeros is smaller than every other listed quantity. The answer is choice C.",
+"solutionMethods": [
+{
+"id": "graph-bounds-and-root-product",
+"label": "Compare quantities using graph bounds",
+"explanation": "The useful first step is to translate the coefficient and root expressions into quantities that the graph can help us compare.\n\nLet \\(r,s\\) be the two real zeros, and let \\(u,v\\) be the non-real zeros, counted with multiplicity. The displayed graph has all three turning points of the quartic, so its outer branches cannot turn again to produce additional real zeros. Only rough bounds are needed. Reading the intercepts and heights from the graph gives\n\\[\nr>1.9,\\qquad s>3.5,\\qquad 4<P(0)<6,\n\\]\nand also \\(P(-1)>3\\) and \\(P(1)>2\\). These bounds do not assume that a plotted intercept is an exact integer.\n\nBecause the leading coefficient is 1,\n\\[\nP(x)=(x-r)(x-s)(x-u)(x-v).\n\\]\nSetting \\(x=0\\) multiplies four negative root terms, so\n\\[\nP(0)=rsuv.\n\\]\nThus choice B equals \\(P(0)>4\\). Moreover, \\(rs>1.9\\cdot3.5=6.65\\), so choice C satisfies\n\\[\n0<uv=\\frac{P(0)}{rs}<\\frac{6}{6.65}<1.\n\\]\nThe sum of the coefficients is obtained by substituting \\(x=1\\), since every power of 1 equals 1. Hence choice D is \\(P(1)>2\\). Choice A exceeds 3, and choice E is \\(r+s>5.4\\).\n\nTherefore the product of the non-real zeros is smaller than every other listed quantity. The answer is choice C.",
+"directNodeIds": [
+"cnm_197",
+"math:polynomial-roots-coefficients",
+"math:polynomial-coefficient-sums",
+"cnm_096"
+],
+"legacyRouteId": "graph-bounds-and-root-product",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2000_AMC_12_Q22#graph-bounds-and-root-product",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2000_AMC_12_Q22.json",
+"sha256": "79c095d0fc23ad58cbbd13b3e05fd919ae55799d483098fa2bac43d037c5e675",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2000_AMC_12_Q22",
+"position": {
+"year": 2000,
+"level": "AMC 12",
+"batch": "NA",
+"number": 22
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2000/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2000_AMC_12_Q22",
 "figureSources": {
 "figures/2000_AMC_12_Q22_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc12/2000/22.svg",
+"alt": "",
+"sha256": "eda49b3eb81937c4668a914cf01c1641989db6ca103888569acec3e20ec60672",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2000/22.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2000/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "e06b4debb11bc0ba63ac30018a756282de77c98b17fa6d78617049c21051fcc3",
+"contentHash": "e82d7e2e4d698b65e62d5c5d57a0a70895e100d92ae229b85214f579d7be2959",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
+"cnm_197",
 "math:polynomial-roots-coefficients",
-"cnm_197"
+"math:polynomial-coefficient-sums"
 ],
 "supportIds": [
-"cnm_029"
+"cnm_029",
+"cnm_096"
 ],
-"routes": [],
+"routes": [
+{
+"id": "graph-bounds-and-root-product",
+"label": "Compare quantities using graph bounds",
+"nodeIds": [
+"cnm_197",
+"math:polynomial-roots-coefficients",
+"math:polynomial-coefficient-sums",
+"cnm_096",
+"cnm_082",
+"cnm_196",
+"cnm_032",
+"cnm_029",
+"cnm_146"
+],
+"methodDirectNodeIds": {
+"graph-bounds-and-root-product": [
+"cnm_197",
+"math:polynomial-roots-coefficients",
+"math:polynomial-coefficient-sums",
+"cnm_096"
+]
+},
+"contextNodeIds": [
+"cnm_082",
+"cnm_196",
+"cnm_032",
+"cnm_029",
+"cnm_146"
+]
+}
+],
 "flags": []
 }
 },
@@ -346004,14 +346952,17 @@ window.AMC_BANK = {
 {
 "id": "2000_AMC_12_Q24",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2000,
 "level": "AMC 12",
 "batch": "NA",
 "number": 24,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "If circular arcs \\(AC\\) and \\(BC\\) have centers at \\(B\\) and \\(A,\\) respectively, then there exists a circle tangent to both arc \\(AC\\) and arc \\(BC,\\) and to \\(\\overline{AB}.\\) If the length of arc \\(BC\\) is \\(12,\\) then what is the circumference of the circle?\n\n[Figure 1](figures/2000_AMC_12_Q24_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -346021,22 +346972,88 @@ window.AMC_BANK = {
 "D": "\\(27\\)",
 "E": "\\(28\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2000/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Joining the centers turns the curved tangencies into distance equations. Let \\(R=AB>0\\). Because arc \\(AC\\) has center \\(B\\), we have \\(BA=BC\\). Because arc \\(BC\\) has center \\(A\\), we have \\(AB=AC\\). Thus triangle \\(ABC\\) is equilateral, and each angle is \\(60^\\circ\\).\n\nThe displayed arc \\(BC\\) is the minor arc centered at \\(A\\), so its length is one-sixth of a circle of radius \\(R\\). Therefore\n\\[\n12=\\frac{60^\\circ}{360^\\circ}\\,2\\pi R\n=\\frac{\\pi R}{3},\n\\qquad \\pi R=36.\n\\]\nLet the smaller circle have center \\(O\\) and radius \\(r\\), where \\(0<r<R\\). As shown, it lies inside both circles supporting the arcs. Internal tangency therefore gives\n\\[\nOA=OB=R-r.\n\\]\nSince \\(O\\) is equidistant from \\(A\\) and \\(B\\), it lies on the perpendicular bisector of \\(AB\\). Let \\(M\\) be the midpoint of \\(AB\\). Then \\(AM=R/2\\) and \\(OM\\perp AB\\). Tangency to \\(AB\\) makes the perpendicular center-to-line distance equal to the radius, so \\(OM=r\\).\n\nApply the Pythagorean theorem to right triangle \\(AMO\\):\n\\[\n\\left(\\frac R2\\right)^2+r^2=(R-r)^2.\n\\]\nExpanding and cancelling \\(r^2\\) gives\n\\[\n\\frac{R^2}{4}=R^2-2Rr,\n\\qquad r=\\frac{3R}{8}.\n\\]\nDivision by \\(R\\) is valid because \\(R>0\\), and this radius satisfies \\(0<r<R\\). Its circumference is\n\\[\n2\\pi r=\\frac34\\pi R\n=\\frac34\\cdot36=27.\n\\]\nThe answer is choice D.",
+"solutionMethods": [
+{
+"id": "center-distances-and-pythagoras",
+"label": "Join the circle centers",
+"explanation": "Joining the centers turns the curved tangencies into distance equations. Let \\(R=AB>0\\). Because arc \\(AC\\) has center \\(B\\), we have \\(BA=BC\\). Because arc \\(BC\\) has center \\(A\\), we have \\(AB=AC\\). Thus triangle \\(ABC\\) is equilateral, and each angle is \\(60^\\circ\\).\n\nThe displayed arc \\(BC\\) is the minor arc centered at \\(A\\), so its length is one-sixth of a circle of radius \\(R\\). Therefore\n\\[\n12=\\frac{60^\\circ}{360^\\circ}\\,2\\pi R\n=\\frac{\\pi R}{3},\n\\qquad \\pi R=36.\n\\]\nLet the smaller circle have center \\(O\\) and radius \\(r\\), where \\(0<r<R\\). As shown, it lies inside both circles supporting the arcs. Internal tangency therefore gives\n\\[\nOA=OB=R-r.\n\\]\nSince \\(O\\) is equidistant from \\(A\\) and \\(B\\), it lies on the perpendicular bisector of \\(AB\\). Let \\(M\\) be the midpoint of \\(AB\\). Then \\(AM=R/2\\) and \\(OM\\perp AB\\). Tangency to \\(AB\\) makes the perpendicular center-to-line distance equal to the radius, so \\(OM=r\\).\n\nApply the Pythagorean theorem to right triangle \\(AMO\\):\n\\[\n\\left(\\frac R2\\right)^2+r^2=(R-r)^2.\n\\]\nExpanding and cancelling \\(r^2\\) gives\n\\[\n\\frac{R^2}{4}=R^2-2Rr,\n\\qquad r=\\frac{3R}{8}.\n\\]\nDivision by \\(R\\) is valid because \\(R>0\\), and this radius satisfies \\(0<r<R\\). Its circumference is\n\\[\n2\\pi r=\\frac34\\pi R\n=\\frac34\\cdot36=27.\n\\]\nThe answer is choice D.",
+"directNodeIds": [
+"cnm_256",
+"cnm_h181",
+"cnm_174",
+"cnm_p190"
+],
+"legacyRouteId": "center-distances-and-pythagoras",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2000_AMC_12_Q24#center-distances-and-pythagoras",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2000_AMC_12_Q24.json",
+"sha256": "af447d57359be57e9382e30c8e2f8accac679b2816b92e46e7784b73862be271",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2000_AMC_12_Q24",
+"position": {
+"year": 2000,
+"level": "AMC 12",
+"batch": "NA",
+"number": 24
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2000/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2000_AMC_12_Q24",
 "figureSources": {
 "figures/2000_AMC_12_Q24_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc12/2000/24.svg",
+"alt": "",
+"sha256": "be84a0ec6260578c0d711923675041ee7f67452c027cfbd37171022e1f66a492",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2000/24.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2000/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "06e3220a1c617c89449ef6103d2c0f68ccf22bf73f91bd9e5e5caf77fe0e800c",
+"contentHash": "46f5546d6420174a0f502b6dcdbbfac994f0868803dbf6ee73a1f7b08c01d5c8",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -346050,21 +347067,59 @@ window.AMC_BANK = {
 "cnm_174",
 "cnm_p190"
 ],
-"routes": [],
+"routes": [
+{
+"id": "center-distances-and-pythagoras",
+"label": "Join the circle centers",
+"nodeIds": [
+"cnm_256",
+"cnm_h181",
+"cnm_174",
+"cnm_p190",
+"cnm_139",
+"cnm_133",
+"cnm_262",
+"cnm_250",
+"cnm_055",
+"cnm_148",
+"cnm_040"
+],
+"methodDirectNodeIds": {
+"center-distances-and-pythagoras": [
+"cnm_256",
+"cnm_h181",
+"cnm_174",
+"cnm_p190"
+]
+},
+"contextNodeIds": [
+"cnm_139",
+"cnm_133",
+"cnm_262",
+"cnm_250",
+"cnm_055",
+"cnm_148",
+"cnm_040"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2000_AMC_12_Q25",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2000,
 "level": "AMC 12",
 "batch": "NA",
 "number": 25,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Eight congruent equilateral triangles, each of a different color, are used to construct a regular octahedron. How many distinguishable ways are there to construct the octahedron? (Two colored octahedrons are distinguishable if neither can be rotated to look just like the other.)\n\n[Figure 1](figures/2000_AMC_12_Q25_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -346074,22 +347129,86 @@ window.AMC_BANK = {
 "D": "\\(1260\\)",
 "E": "\\(1680\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "E",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2000/solutions",
+"acceptedResponses": [
+"E"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "First imagine that the octahedron is held in a fixed position, so its eight face positions are distinguished. Assigning the eight different colors to those positions gives \\(8!\\) possibilities. We must determine how many of these represent the same colored octahedron after rotation.\n\nChoose one face to track. A rotation can send it to any of the eight faces. Once its destination is chosen, its three vertices can be aligned in three cyclic orders. All three occur by turning through \\(0^\\circ\\), \\(120^\\circ\\), or \\(240^\\circ\\) about the line through the centers of that face and its opposite face. Regularity lets us send the chosen face to any destination, and specifying its vertex alignment determines the entire rotation. Thus there are exactly\n\\[\n8\\cdot3=24\n\\]\nrotations, including leaving the octahedron in place.\n\nThese 24 rotations produce 24 different assignments for every coloring. To see why, a rotation preserving a coloring would have to leave every face in its original position, since every color is different. It would then fix each vertex, which is the intersection of its incident faces, so it could only be the rotation that leaves everything in place.\n\nConsequently, the \\(8!\\) assignments split into disjoint groups of exactly 24, one group for each distinguishable colored octahedron. The required number is\n\\[\n\\frac{8!}{24}=\\frac{40320}{24}=1680.\n\\]\nThe answer is \\(\\boxed{1680}\\), choice E.",
+"solutionMethods": [
+{
+"id": "rotation_classes",
+"label": "Count assignments and remove rotational duplicates",
+"explanation": "First imagine that the octahedron is held in a fixed position, so its eight face positions are distinguished. Assigning the eight different colors to those positions gives \\(8!\\) possibilities. We must determine how many of these represent the same colored octahedron after rotation.\n\nChoose one face to track. A rotation can send it to any of the eight faces. Once its destination is chosen, its three vertices can be aligned in three cyclic orders. All three occur by turning through \\(0^\\circ\\), \\(120^\\circ\\), or \\(240^\\circ\\) about the line through the centers of that face and its opposite face. Regularity lets us send the chosen face to any destination, and specifying its vertex alignment determines the entire rotation. Thus there are exactly\n\\[\n8\\cdot3=24\n\\]\nrotations, including leaving the octahedron in place.\n\nThese 24 rotations produce 24 different assignments for every coloring. To see why, a rotation preserving a coloring would have to leave every face in its original position, since every color is different. It would then fix each vertex, which is the intersection of its incident faces, so it could only be the rotation that leaves everything in place.\n\nConsequently, the \\(8!\\) assignments split into disjoint groups of exactly 24, one group for each distinguishable colored octahedron. The required number is\n\\[\n\\frac{8!}{24}=\\frac{40320}{24}=1680.\n\\]\nThe answer is \\(\\boxed{1680}\\), choice E.",
+"directNodeIds": [
+"math:symmetry-counting",
+"cnm_h234"
+],
+"legacyRouteId": "rotation_classes",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2000_AMC_12_Q25#rotation_classes",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2000_AMC_12_Q25.json",
+"sha256": "581e3381ffba12610112bcfbacb851381a7159069f76803f66b0536c1ea2673e",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2000_AMC_12_Q25",
+"position": {
+"year": 2000,
+"level": "AMC 12",
+"batch": "NA",
+"number": 25
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2000/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2000_AMC_12_Q25",
 "figureSources": {
 "figures/2000_AMC_12_Q25_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc12/2000/25.svg",
+"alt": "",
+"sha256": "e353e1d40e589ef5ea7b09142832ee66e5b104b7adc7bcc20586237255d8f682",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2000/25.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2000/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "f1f4a40004a386627440e0d5fcf234d59b76ade3f9fcf584287fbd6d08017d97",
+"contentHash": "9a42eb557ac3611acd973e87afa3db8cd4a9361d08dfdfc378c6166ac4612fe9",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -346099,7 +347218,30 @@ window.AMC_BANK = {
 "cnm_h234",
 "cnm_h231"
 ],
-"routes": [],
+"routes": [
+{
+"id": "rotation_classes",
+"label": "Count assignments and remove rotational duplicates",
+"nodeIds": [
+"math:symmetry-counting",
+"cnm_h234",
+"cnm_h231",
+"cnm_h233",
+"math:factorial-notation"
+],
+"methodDirectNodeIds": {
+"rotation_classes": [
+"math:symmetry-counting",
+"cnm_h234"
+]
+},
+"contextNodeIds": [
+"cnm_h231",
+"cnm_h233",
+"math:factorial-notation"
+]
+}
+],
 "flags": []
 }
 },
@@ -346479,14 +347621,17 @@ window.AMC_BANK = {
 {
 "id": "2000_AMC_8_Q04",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2000,
 "level": "AMC 8",
 "batch": "NA",
 "number": 4,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "In \\(1960\\) only \\(5\\%\\) of the working adults in Carlin City worked at home. By \\(1970\\) the “at-home” work force had increased to \\(8\\%.\\) In \\(1980\\) there were approximately \\(15\\%\\) working at home, and in \\(1990\\) there were \\(30\\%.\\) The graph that best illustrates this is",
 "questionType": "text",
 "choices": {
@@ -346496,45 +347641,147 @@ window.AMC_BANK = {
 "D": "[Figure 4](figures/2000_AMC_8_Q04_choiceD_fig4.svg)",
 "E": "[Figure 5](figures/2000_AMC_8_Q04_choiceE_fig5.svg)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "figure",
 "answer": "E",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions",
+"acceptedResponses": [
+"E"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The correct graph must show all four percentages, so compare the height above each year with the vertical percentage scale. The required values are\n\\[\n1960:5\\%,\\quad 1970:8\\%,\\quad 1980:15\\%,\\quad 1990:30\\%.\n\\]\nGraph A starts at \\(10\\%\\), so it fails the first value. Graphs B and D show \\(10\\%\\) in 1970 instead of \\(8\\%\\). Graph C shows about \\(25\\%\\) in 1980 instead of \\(15\\%\\).\n\nGraph E starts halfway between \\(0\\%\\) and \\(10\\%\\), rises to about \\(8\\%\\), then reaches \\(15\\%\\) and \\(30\\%\\). It matches all four values, so the answer is \\(\\boxed{\\text{E}}\\).",
+"solutionMethods": [
+{
+"id": "compare_graph_heights",
+"label": "Match each year with its percentage",
+"explanation": "The correct graph must show all four percentages, so compare the height above each year with the vertical percentage scale. The required values are\n\\[\n1960:5\\%,\\quad 1970:8\\%,\\quad 1980:15\\%,\\quad 1990:30\\%.\n\\]\nGraph A starts at \\(10\\%\\), so it fails the first value. Graphs B and D show \\(10\\%\\) in 1970 instead of \\(8\\%\\). Graph C shows about \\(25\\%\\) in 1980 instead of \\(15\\%\\).\n\nGraph E starts halfway between \\(0\\%\\) and \\(10\\%\\), rises to about \\(8\\%\\), then reaches \\(15\\%\\) and \\(30\\%\\). It matches all four values, so the answer is \\(\\boxed{\\text{E}}\\).",
+"directNodeIds": [
+"cnm_p175"
+],
+"legacyRouteId": "compare_graph_heights",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2000_AMC_8_Q04#compare_graph_heights",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2000_AMC_8_Q04.json",
+"sha256": "cf8e58df6a9de28a5f9a8caf49a79e7fc6551a3d4dabd9c0e2af75882f8860d0",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2000_AMC_8_Q04",
+"position": {
+"year": 2000,
+"level": "AMC 8",
+"batch": "NA",
+"number": 4
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2000_AMC_8_Q04",
 "figureSources": {
 "figures/2000_AMC_8_Q04_choiceA_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2000/4_A.svg",
-"alt": ""
-},
-"figures/2000_AMC_8_Q04_choiceB_fig2.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc8/2000/4_B.svg",
-"alt": ""
-},
-"figures/2000_AMC_8_Q04_choiceC_fig3.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc8/2000/4_C.svg",
-"alt": ""
-},
-"figures/2000_AMC_8_Q04_choiceD_fig4.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc8/2000/4_D.svg",
-"alt": ""
-},
-"figures/2000_AMC_8_Q04_choiceE_fig5.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc8/2000/4_E.svg",
+"alt": "",
+"sha256": "e935d3119d2eab47c0f9b937c3b1edc47ef66457b997be0a3be1782f406c40e9",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2000/4_A.svg",
 "alt": ""
 }
 },
+"figures/2000_AMC_8_Q04_choiceB_fig2.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2000/4_B.svg",
+"alt": "",
+"sha256": "c5f99609c526c009887cbbbae50a151e41a26b5062032fb7732d3e2d1e990898",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2000/4_B.svg",
+"alt": ""
+}
+},
+"figures/2000_AMC_8_Q04_choiceC_fig3.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2000/4_C.svg",
+"alt": "",
+"sha256": "3e046526fba701a6c1e306028beb0b5cf4773515599b0ab7f07af277abc146db",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2000/4_C.svg",
+"alt": ""
+}
+},
+"figures/2000_AMC_8_Q04_choiceD_fig4.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2000/4_D.svg",
+"alt": "",
+"sha256": "65b580eb854dbc4cda47b3aeab22220c435ace70d57b9306e4be38e9a84129b1",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2000/4_D.svg",
+"alt": ""
+}
+},
+"figures/2000_AMC_8_Q04_choiceE_fig5.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2000/4_E.svg",
+"alt": "",
+"sha256": "4c87f6b1af36c2c0eeb9255362ad11e5acf7d63838c4907b8694cc5e0ee3b0b6",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2000/4_E.svg",
+"alt": ""
+}
+}
+},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "3fd2ab90af1e40acd0e0368b0fe1a24553df9edbe62f78ac18ccac59b29eb625",
+"contentHash": "872c6e6929f3bbda37c2e52f7440395d9d73457ff2eee60c751550826540a317",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_p175"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_p194"
+],
+"routes": [
+{
+"id": "compare_graph_heights",
+"label": "Match each year with its percentage",
+"nodeIds": [
+"cnm_p175",
+"cnm_p194"
+],
+"methodDirectNodeIds": {
+"compare_graph_heights": [
+"cnm_p175"
+]
+},
+"contextNodeIds": [
+"cnm_p194"
+]
+}
+],
 "flags": []
 }
 },
@@ -346659,14 +347906,17 @@ window.AMC_BANK = {
 {
 "id": "2000_AMC_8_Q06",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2000,
 "level": "AMC 8",
 "batch": "NA",
 "number": 6,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Figure \\(ABCD\\) is a square. Inside this square three smaller squares are drawn with side lengths as labeled. The area of the shaded L-shaped region is\n\n[Figure 1](figures/2000_AMC_8_Q06_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -346676,31 +347926,114 @@ window.AMC_BANK = {
 "D": "\\(14\\)",
 "E": "\\(15\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "A",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions",
+"acceptedResponses": [
+"A"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The shaded L becomes a square when we include the central square of side \\(3\\). This makes subtraction of areas useful.\n\nThe upper-left unit square shows that the shaded vertical strip has width \\(1\\). The lower-right unit square shows that the shaded bottom strip has height \\(1\\). Therefore the shaded region together with the central square has width \\(1+3=4\\) and height \\(3+1=4\\).\n\nThis \\(4\\)-by-\\(4\\) square consists exactly of the shaded region and the central \\(3\\)-by-\\(3\\) square, with no overlap of their interiors. Hence the shaded area is\n\\[\n4\\cdot4-3\\cdot3=16-9=7.\n\\]\nThe answer is \\(\\boxed{7}\\) square units, choice A.",
+"solutionMethods": [
+{
+"id": "complete_square",
+"label": "Complete the L to a square",
+"explanation": "The shaded L becomes a square when we include the central square of side \\(3\\). This makes subtraction of areas useful.\n\nThe upper-left unit square shows that the shaded vertical strip has width \\(1\\). The lower-right unit square shows that the shaded bottom strip has height \\(1\\). Therefore the shaded region together with the central square has width \\(1+3=4\\) and height \\(3+1=4\\).\n\nThis \\(4\\)-by-\\(4\\) square consists exactly of the shaded region and the central \\(3\\)-by-\\(3\\) square, with no overlap of their interiors. Hence the shaded area is\n\\[\n4\\cdot4-3\\cdot3=16-9=7.\n\\]\nThe answer is \\(\\boxed{7}\\) square units, choice A.",
+"directNodeIds": [
+"cnm_p150"
+],
+"legacyRouteId": "complete_square",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2000_AMC_8_Q06#complete_square",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2000_AMC_8_Q06.json",
+"sha256": "b343f3ee82c385c1a489d76f4a62866c799f62fbb375c14173d41531a4388505",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2000_AMC_8_Q06",
+"position": {
+"year": 2000,
+"level": "AMC 8",
+"batch": "NA",
+"number": 6
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2000_AMC_8_Q06",
 "figureSources": {
 "figures/2000_AMC_8_Q06_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2000/6.svg",
+"alt": "",
+"sha256": "ed4d53d1c77279959c18e522c47250bce34ca8afdbb0c9c46d8e275071c6715c",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2000/6.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "8cbefa624072d96c015a31978ba747e22e93f30a10021b41786b2233169ddfa8",
+"contentHash": "dc52e384ebd95a341e03092cfa67cecafe04db73f7b9987f1cd38b87da26b9ff",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_p150"
 ],
 "supportIds": [
-"cnm_p089"
+"cnm_p089",
+"cnm_p077"
 ],
-"routes": [],
+"routes": [
+{
+"id": "complete_square",
+"label": "Complete the L to a square",
+"nodeIds": [
+"cnm_p150",
+"cnm_p089",
+"cnm_p077"
+],
+"methodDirectNodeIds": {
+"complete_square": [
+"cnm_p150"
+]
+},
+"contextNodeIds": [
+"cnm_p089",
+"cnm_p077"
+]
+}
+],
 "flags": []
 }
 },
@@ -346831,14 +348164,17 @@ window.AMC_BANK = {
 {
 "id": "2000_AMC_8_Q08",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2000,
 "level": "AMC 8",
 "batch": "NA",
 "number": 8,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Three dice with faces numbered \\(1\\) through \\(6\\) are stacked as shown. Seven of the eighteen faces are visible, leaving eleven faces hidden (back, bottom, between). The total number of dots NOT visible in this view is\n\n[Figure 1](figures/2000_AMC_8_Q08_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -346848,43 +348184,128 @@ window.AMC_BANK = {
 "D": "\\(41\\)",
 "E": "\\(53\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "We can find the hidden total without identifying the hidden faces individually. Each die has one face of each number from \\(1\\) through \\(6\\), so it has\n\\[\n1+2+3+4+5+6=21\n\\]\ndots altogether. The three dice therefore have \\(3\\cdot21=63\\) dots.\n\nOn the top die, the visible faces show \\(1+2+3=6\\) dots. On the middle die they show \\(4+6=10\\), and on the bottom die they show \\(5+1=6\\). Thus the visible total is \\(6+10+6=22\\).\n\nEvery dot is either visible or hidden, so the number hidden is\n\\[\n63-22=\\boxed{41}.\n\\]\nThe answer is choice \\(\\mathrm{D}\\).",
+"solutionMethods": [
+{
+"id": "2000_AMC_8_Q08_m1",
+"label": "Subtract the visible dots from the total",
+"explanation": "We can find the hidden total without identifying the hidden faces individually. Each die has one face of each number from \\(1\\) through \\(6\\), so it has\n\\[\n1+2+3+4+5+6=21\n\\]\ndots altogether. The three dice therefore have \\(3\\cdot21=63\\) dots.\n\nOn the top die, the visible faces show \\(1+2+3=6\\) dots. On the middle die they show \\(4+6=10\\), and on the bottom die they show \\(5+1=6\\). Thus the visible total is \\(6+10+6=22\\).\n\nEvery dot is either visible or hidden, so the number hidden is\n\\[\n63-22=\\boxed{41}.\n\\]\nThe answer is choice \\(\\mathrm{D}\\).",
+"directNodeIds": [
+"cnm_p035"
+],
+"legacyRouteId": "2000_AMC_8_Q08_m1",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2000_AMC_8_Q08#2000_AMC_8_Q08_m1",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2000_AMC_8_Q08.json",
+"sha256": "17d93b9425e9bf24f413a33167d244ed2ef4fc6ec237e963468f936e780220c1",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2000_AMC_8_Q08",
+"position": {
+"year": 2000,
+"level": "AMC 8",
+"batch": "NA",
+"number": 8
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2000_AMC_8_Q08",
 "figureSources": {
 "figures/2000_AMC_8_Q08_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2000/8.svg",
+"alt": "",
+"sha256": "0b9fed85de480042efb0b8f26adddc89a438a13347a12e6dac8103c56f9239bb",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2000/8.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "400ce6aba59ae641a02c60bd14c092cb8165b492a5ebca7e33d02fc3150eff8c",
+"contentHash": "507213c826ed3b54082b066da3cba0010afb895fe418da0daf6692fd6fbcc17b",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
+"cnm_p035"
+],
+"supportIds": [
 "cnm_p112"
 ],
-"supportIds": [],
-"routes": [],
+"routes": [
+{
+"id": "2000_AMC_8_Q08_m1",
+"label": "Subtract the visible dots from the total",
+"nodeIds": [
+"cnm_p035",
+"cnm_p112"
+],
+"methodDirectNodeIds": {
+"2000_AMC_8_Q08_m1": [
+"cnm_p035"
+]
+},
+"contextNodeIds": [
+"cnm_p112"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2000_AMC_8_Q09",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2000,
 "level": "AMC 8",
 "batch": "NA",
 "number": 9,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Three-digit powers of \\(2\\) and \\(5\\) are used in this “cross-number” puzzle. What is the only possible digit for the outlined square? \\[\\begin{array}{lcl} \\textbf{\\text{ACROSS}} & & \\textbf{\\text{DOWN}} \\\\ \\textbf{2. } 2^m & & \\textbf{1. } 5^n \\end{array}\\]\n\n[Figure 1](figures/2000_AMC_8_Q09_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -346894,30 +348315,118 @@ window.AMC_BANK = {
 "D": "\\(6\\)",
 "E": "\\(8\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The shared square connects the two clues: it is the middle digit of the downward entry and the first digit of the across entry. Listing the three-digit powers lets us use this connection.\n\nFor powers of \\(5\\),\n\\[\n5^2=25,\\quad 5^3=125,\\quad 5^4=625,\\quad 5^5=3125.\n\\]\nSuccessive powers increase, so the only three-digit possibilities are \\(125\\) and \\(625\\). Both have tens digit \\(2\\). Therefore the across entry must begin with \\(2\\).\n\nFor powers of \\(2\\),\n\\[\n2^6=64,\\quad 2^7=128,\\quad 2^8=256,\n\\]\n\\[\n2^9=512,\\quad 2^{10}=1024.\n\\]\nThus the complete list of three-digit possibilities is \\(128,256,512\\). Only \\(256\\) begins with \\(2\\), and it works with either downward entry. The outlined square is its units digit, so it contains \\(\\boxed{6}\\), choice \\(\\mathrm{D}\\).",
+"solutionMethods": [
+{
+"id": "2000_AMC_8_Q09_m1",
+"label": "List the powers and match the shared digit",
+"explanation": "The shared square connects the two clues: it is the middle digit of the downward entry and the first digit of the across entry. Listing the three-digit powers lets us use this connection.\n\nFor powers of \\(5\\),\n\\[\n5^2=25,\\quad 5^3=125,\\quad 5^4=625,\\quad 5^5=3125.\n\\]\nSuccessive powers increase, so the only three-digit possibilities are \\(125\\) and \\(625\\). Both have tens digit \\(2\\). Therefore the across entry must begin with \\(2\\).\n\nFor powers of \\(2\\),\n\\[\n2^6=64,\\quad 2^7=128,\\quad 2^8=256,\n\\]\n\\[\n2^9=512,\\quad 2^{10}=1024.\n\\]\nThus the complete list of three-digit possibilities is \\(128,256,512\\). Only \\(256\\) begins with \\(2\\), and it works with either downward entry. The outlined square is its units digit, so it contains \\(\\boxed{6}\\), choice \\(\\mathrm{D}\\).",
+"directNodeIds": [
+"cnm_020",
+"math:finite-constraint-deduction"
+],
+"legacyRouteId": "2000_AMC_8_Q09_m1",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2000_AMC_8_Q09#2000_AMC_8_Q09_m1",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2000_AMC_8_Q09.json",
+"sha256": "e280080b90129374672cfdddb532c5bf3cf983b75628fc582813561f50fa0169",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2000_AMC_8_Q09",
+"position": {
+"year": 2000,
+"level": "AMC 8",
+"batch": "NA",
+"number": 9
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2000_AMC_8_Q09",
 "figureSources": {
 "figures/2000_AMC_8_Q09_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2000/9.svg",
+"alt": "",
+"sha256": "3cc66e0c8439207bbef1a3020c25a53fe07f9fa7d8757582c8405cfdb073d9d6",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2000/9.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "7aaece25c166e1722e54ecb1889bb7c56144821598732a13828e28130c4a893d",
+"contentHash": "c959ce1b45522ab3bfb6f342fd844c762d2a75b83ee96d5fd7c2d53745e01303",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_020",
+"math:finite-constraint-deduction"
+],
+"supportIds": [
+"cnm_019",
 "cnm_p053"
 ],
-"supportIds": [],
-"routes": [],
+"routes": [
+{
+"id": "2000_AMC_8_Q09_m1",
+"label": "List the powers and match the shared digit",
+"nodeIds": [
+"cnm_020",
+"math:finite-constraint-deduction",
+"cnm_019",
+"cnm_p053"
+],
+"methodDirectNodeIds": {
+"2000_AMC_8_Q09_m1": [
+"cnm_020",
+"math:finite-constraint-deduction"
+]
+},
+"contextNodeIds": [
+"cnm_019",
+"cnm_p053"
+]
+}
+],
 "flags": []
 }
 },
@@ -347176,14 +348685,17 @@ window.AMC_BANK = {
 {
 "id": "2000_AMC_8_Q12",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2000,
 "level": "AMC 8",
 "batch": "NA",
 "number": 12,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "A block wall \\(100\\) feet long and \\(7\\) feet high will be constructed using blocks that are \\(1\\) foot high and either \\(2\\) feet long or \\(1\\) foot long (no blocks may be cut). The vertical joins in the blocks must be staggered as shown, and the wall must be even on the ends. What is the smallest number of blocks needed to build this wall?\n\n[Figure 1](figures/2000_AMC_8_Q12_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -347193,22 +348705,85 @@ window.AMC_BANK = {
 "D": "\\(353\\)",
 "E": "\\(356\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The wall has seven rows because each block is \\(1\\) foot high. To prove a smallest number, we need both a lower bound and an arrangement that reaches it.\n\nEach \\(100\\)-foot row needs at least \\(100\\div2=50\\) blocks, since no block is longer than \\(2\\) feet. A row with exactly \\(50\\) blocks must use only \\(2\\)-foot blocks. Its internal joins are then \\(2,4,6,\\ldots,98\\) feet from the left end. Consequently, two adjacent rows cannot both have exactly \\(50\\) blocks, because their joins would line up.\n\nNumber the rows from bottom to top. Each of the three separate pairs \\((1,2)\\), \\((3,4)\\), and \\((5,6)\\) therefore needs at least \\(50+51=101\\) blocks. Row \\(7\\) needs at least \\(50\\). These groups include every row exactly once, so every allowed wall needs at least\n\\[\n3\\cdot101+50=353\n\\]\nblocks.\n\nWe can attain this bound. Use \\(50\\) two-foot blocks in each of rows \\(1,3,5,7\\). In each of rows \\(2,4,6\\), place a one-foot block at each end with \\(49\\) two-foot blocks between them. Each such row has length \\(1+49\\cdot2+1=100\\) feet and uses \\(51\\) blocks. Its joins are at \\(1,3,5,\\ldots,99\\) feet, so none lines up with a join in an adjacent row. Both ends of the wall are even.\n\nThis construction uses\n\\[\n4\\cdot50+3\\cdot51=\\boxed{353}\n\\]\nblocks, proving that the minimum is \\(353\\), choice \\(\\mathrm{D}\\).",
+"solutionMethods": [
+{
+"id": "2000_AMC_8_Q12_m1",
+"label": "Prove a lower bound and build a wall attaining it",
+"explanation": "The wall has seven rows because each block is \\(1\\) foot high. To prove a smallest number, we need both a lower bound and an arrangement that reaches it.\n\nEach \\(100\\)-foot row needs at least \\(100\\div2=50\\) blocks, since no block is longer than \\(2\\) feet. A row with exactly \\(50\\) blocks must use only \\(2\\)-foot blocks. Its internal joins are then \\(2,4,6,\\ldots,98\\) feet from the left end. Consequently, two adjacent rows cannot both have exactly \\(50\\) blocks, because their joins would line up.\n\nNumber the rows from bottom to top. Each of the three separate pairs \\((1,2)\\), \\((3,4)\\), and \\((5,6)\\) therefore needs at least \\(50+51=101\\) blocks. Row \\(7\\) needs at least \\(50\\). These groups include every row exactly once, so every allowed wall needs at least\n\\[\n3\\cdot101+50=353\n\\]\nblocks.\n\nWe can attain this bound. Use \\(50\\) two-foot blocks in each of rows \\(1,3,5,7\\). In each of rows \\(2,4,6\\), place a one-foot block at each end with \\(49\\) two-foot blocks between them. Each such row has length \\(1+49\\cdot2+1=100\\) feet and uses \\(51\\) blocks. Its joins are at \\(1,3,5,\\ldots,99\\) feet, so none lines up with a join in an adjacent row. Both ends of the wall are even.\n\nThis construction uses\n\\[\n4\\cdot50+3\\cdot51=\\boxed{353}\n\\]\nblocks, proving that the minimum is \\(353\\), choice \\(\\mathrm{D}\\).",
+"directNodeIds": [
+"math:extremal-principle"
+],
+"legacyRouteId": "2000_AMC_8_Q12_m1",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2000_AMC_8_Q12#2000_AMC_8_Q12_m1",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2000_AMC_8_Q12.json",
+"sha256": "68a212214a2ee17d3adf33a3861214a04877a757309c5be2cf64db217d15621a",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2000_AMC_8_Q12",
+"position": {
+"year": 2000,
+"level": "AMC 8",
+"batch": "NA",
+"number": 12
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2000_AMC_8_Q12",
 "figureSources": {
 "figures/2000_AMC_8_Q12_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2000/12.svg",
+"alt": "",
+"sha256": "76da0c0682f1d0405a508a1abcd81b085a4d12a83c35c09e90b070e0111f3c1e",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2000/12.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "b1a7b38176fb6cb56581b3223ab89927371c757ba939059a027f6244fff0e7a2",
+"contentHash": "2dc9dfc8a90c54b353201beb04190d93da8ea4b9d0ec06945911d5fc752627fc",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -347217,21 +348792,41 @@ window.AMC_BANK = {
 "supportIds": [
 "cnm_p112"
 ],
-"routes": [],
+"routes": [
+{
+"id": "2000_AMC_8_Q12_m1",
+"label": "Prove a lower bound and build a wall attaining it",
+"nodeIds": [
+"math:extremal-principle",
+"cnm_p112"
+],
+"methodDirectNodeIds": {
+"2000_AMC_8_Q12_m1": [
+"math:extremal-principle"
+]
+},
+"contextNodeIds": [
+"cnm_p112"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2000_AMC_8_Q13",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2000,
 "level": "AMC 8",
 "batch": "NA",
 "number": 13,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "In triangle \\(CAT,\\) we have \\(\\angle ACT =\\angle ATC\\) and \\(\\angle CAT = 36^\\circ.\\) If \\(\\overline{TR}\\) bisects \\(\\angle ATC,\\) then \\(\\angle CRT =\\)\n\n[Figure 1](figures/2000_AMC_8_Q13_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -347241,29 +348836,116 @@ window.AMC_BANK = {
 "D": "\\(90^\\circ\\)",
 "E": "\\(108^\\circ\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "[Figure 1](figures/2000_AMC_8_Q13_question_fig1.svg)\n\nFirst find the two equal angles in triangle \\(CAT\\). Since a triangle's angles sum to \\(180^\\circ\\),\n\\[\n\\angle ACT=\\angle ATC=\\frac{180^\\circ-36^\\circ}{2}=72^\\circ.\n\\]\nThe angle bisector \\(TR\\) divides the angle at \\(T\\) into equal halves, so \\(\\angle CTR=36^\\circ\\). The figure places \\(R\\) on \\(AC\\), which means \\(\\angle RCT=\\angle ACT=72^\\circ\\). Now triangle \\(CRT\\) has two known angles, giving\n\\[\n\\angle CRT=180^\\circ-72^\\circ-36^\\circ=72^\\circ.\n\\]\nThus the answer is \\(\\boxed{72^\\circ}\\), choice C.",
+"solutionMethods": [
+{
+"id": "subtriangle-angle-sum",
+"label": "Find the angles of triangle CRT",
+"explanation": "[Figure 1](figures/2000_AMC_8_Q13_question_fig1.svg)\n\nFirst find the two equal angles in triangle \\(CAT\\). Since a triangle's angles sum to \\(180^\\circ\\),\n\\[\n\\angle ACT=\\angle ATC=\\frac{180^\\circ-36^\\circ}{2}=72^\\circ.\n\\]\nThe angle bisector \\(TR\\) divides the angle at \\(T\\) into equal halves, so \\(\\angle CTR=36^\\circ\\). The figure places \\(R\\) on \\(AC\\), which means \\(\\angle RCT=\\angle ACT=72^\\circ\\). Now triangle \\(CRT\\) has two known angles, giving\n\\[\n\\angle CRT=180^\\circ-72^\\circ-36^\\circ=72^\\circ.\n\\]\nThus the answer is \\(\\boxed{72^\\circ}\\), choice C.",
+"directNodeIds": [
+"cnm_115",
+"cnm_058"
+],
+"legacyRouteId": "solution:subtriangle-angle-sum:d76a53356634",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2000_AMC_8_Q13#subtriangle-angle-sum",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2000_AMC_8_Q13.json",
+"sha256": "b9885a548f5b938c7c1b3bf052adb03383e62020219fbbd3299f1380de5fa666",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "exterior-angle-at-r",
+"label": "Exterior angle of ART",
+"directNodeIds": [
+"cnm_115",
+"cnm_058",
+"cnm_117"
+],
+"legacyRouteId": "exterior-angle-at-r",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2248",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2000_AMC_8_Q13#exterior-angle-at-r",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2000_AMC_8_Q13",
+"position": {
+"year": 2000,
+"level": "AMC 8",
+"batch": "NA",
+"number": 13
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2000_AMC_8_Q13",
 "figureSources": {
 "figures/2000_AMC_8_Q13_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2000/13.svg",
+"alt": "",
+"sha256": "aa56145414f6af4c555ea77c2c2b14a09a4ed5b99cb2a58272c322a4b4af6285",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2000/13.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "0ca792b844fa7d4c46cd2714f7ed3464db6c683207dcfd01dc4c7b9010d5f266",
+"contentHash": "69e434601b6b802c72d53c74916d6452f517e8d8f1f01d18d8c4d30e88f25649",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_115",
 "cnm_058"
 ],
-"supportIds": [],
+"supportIds": [
+"cnm_056",
+"cnm_110"
+],
 "routes": [
 {
 "id": "subtriangle-angle-sum",
@@ -347280,6 +348962,34 @@ window.AMC_BANK = {
 "cnm_115",
 "cnm_058",
 "cnm_117"
+],
+"methodDirectNodeIds": {
+"exterior-angle-at-r": [
+"cnm_115",
+"cnm_058",
+"cnm_117"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "solution:subtriangle-angle-sum:d76a53356634",
+"label": "Find the angles of triangle CRT",
+"nodeIds": [
+"cnm_115",
+"cnm_058",
+"cnm_056",
+"cnm_110"
+],
+"methodDirectNodeIds": {
+"subtriangle-angle-sum": [
+"cnm_115",
+"cnm_058"
+]
+},
+"contextNodeIds": [
+"cnm_056",
+"cnm_110"
 ]
 }
 ],
@@ -347413,14 +349123,17 @@ window.AMC_BANK = {
 {
 "id": "2000_AMC_8_Q15",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2000,
 "level": "AMC 8",
 "batch": "NA",
 "number": 15,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Triangles \\(ABC,\\) \\(ADE,\\) and \\(EFG\\) are all equilateral. Points \\(D\\) and \\(G\\) are midpoints of \\(\\overline{AC}\\) and \\(\\overline{AE},\\) respectively. If \\(AB = 4,\\) what is the perimeter of figure \\(ABCDEFG?\\)\n\n[Figure 1](figures/2000_AMC_8_Q15_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -347430,30 +349143,115 @@ window.AMC_BANK = {
 "D": "\\(18\\)",
 "E": "\\(21\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "[Figure 1](figures/2000_AMC_8_Q15_question_fig1.svg)\n\nEach equilateral triangle has three equal sides, and each midpoint halves a side. These facts let us work from the largest triangle to the smallest.\n\nSince \\(ABC\\) is equilateral, \\(AB=BC=AC=4\\). Because \\(D\\) is the midpoint of \\(AC\\),\n\\[\nAD=DC=2.\n\\]\nTriangle \\(ADE\\) is equilateral, so \\(AE=DE=2\\). Because \\(G\\) is the midpoint of \\(AE\\), we have \\(AG=GE=1\\). Finally, triangle \\(EFG\\) is equilateral, giving \\(EF=FG=1\\).\n\nTrace the outside boundary in the order \\(A,B,C,D,E,F,G,A\\). This includes each boundary segment exactly once and excludes the shared interior segments \\(AD\\) and \\(EG\\). Its perimeter is\n\\[\n\\begin{aligned}\nP&=AB+BC+CD+DE+EF+FG+GA\\\\\n &=4+4+2+2+1+1+1=15.\n\\end{aligned}\n\\]\nThus the perimeter is \\(\\boxed{15}\\), choice C.",
+"solutionMethods": [
+{
+"id": "boundary-side-lengths",
+"label": "Find and add the boundary lengths",
+"explanation": "[Figure 1](figures/2000_AMC_8_Q15_question_fig1.svg)\n\nEach equilateral triangle has three equal sides, and each midpoint halves a side. These facts let us work from the largest triangle to the smallest.\n\nSince \\(ABC\\) is equilateral, \\(AB=BC=AC=4\\). Because \\(D\\) is the midpoint of \\(AC\\),\n\\[\nAD=DC=2.\n\\]\nTriangle \\(ADE\\) is equilateral, so \\(AE=DE=2\\). Because \\(G\\) is the midpoint of \\(AE\\), we have \\(AG=GE=1\\). Finally, triangle \\(EFG\\) is equilateral, giving \\(EF=FG=1\\).\n\nTrace the outside boundary in the order \\(A,B,C,D,E,F,G,A\\). This includes each boundary segment exactly once and excludes the shared interior segments \\(AD\\) and \\(EG\\). Its perimeter is\n\\[\n\\begin{aligned}\nP&=AB+BC+CD+DE+EF+FG+GA\\\\\n &=4+4+2+2+1+1+1=15.\n\\end{aligned}\n\\]\nThus the perimeter is \\(\\boxed{15}\\), choice C.",
+"directNodeIds": [
+"cnm_139",
+"cnm_055"
+],
+"legacyRouteId": "boundary-side-lengths",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2000_AMC_8_Q15#boundary-side-lengths",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2000_AMC_8_Q15.json",
+"sha256": "e148cc075ac5471c1cf277739144a05ed09ef4fafb048549eb6323e2670cbce5",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2000_AMC_8_Q15",
+"position": {
+"year": 2000,
+"level": "AMC 8",
+"batch": "NA",
+"number": 15
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2000_AMC_8_Q15",
 "figureSources": {
 "figures/2000_AMC_8_Q15_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2000/15.svg",
+"alt": "",
+"sha256": "5ecbfbc22e7d33410e29e3792508c41fddcdb935f65eb23017c53445fc08e1e0",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2000/15.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "72a7f14ae36604657fde8ab91bfe062a664715bc86f72f18d3f182c1060f013f",
+"contentHash": "9769376d13148e158dee41a66c623891792dba07ecc29901e01e377371d43469",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_139",
 "cnm_055"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_053"
+],
+"routes": [
+{
+"id": "boundary-side-lengths",
+"label": "Find and add the boundary lengths",
+"nodeIds": [
+"cnm_139",
+"cnm_055",
+"cnm_053"
+],
+"methodDirectNodeIds": {
+"boundary-side-lengths": [
+"cnm_139",
+"cnm_055"
+]
+},
+"contextNodeIds": [
+"cnm_053"
+]
+}
+],
 "flags": []
 }
 },
@@ -347712,14 +349510,17 @@ window.AMC_BANK = {
 {
 "id": "2000_AMC_8_Q18",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2000,
 "level": "AMC 8",
 "batch": "NA",
 "number": 18,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Consider these two geoboard quadrilaterals. Which of the following statements is true?\n\n[Figure 1](figures/2000_AMC_8_Q18_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -347729,22 +349530,125 @@ window.AMC_BANK = {
 "D": "The quadrilaterals have the same area, but the perimeter of\n\\(I\\) is more than the perimeter of \\(II.\\)",
 "E": "The quadrilaterals have the same area, but the\nperimeter of \\(I\\) is less than the perimeter of \\(II.\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "E",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions",
+"acceptedResponses": [
+"E"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "[Figure 1](figures/2000_AMC_8_Q18_question_fig1.svg)\n\nUse the distance between adjacent pegs in a row or column as one unit. Quadrilateral \\(I\\) is a parallelogram whose vertical base has length \\(1\\). Its opposite vertical side is \\(1\\) unit away horizontally, so its area is\n\\[\n1\\cdot1=1.\n\\]\nFor quadrilateral \\(II\\), name its vertices \\(P,Q,R,S\\) in boundary order, starting at the leftmost vertex: \\(Q\\) is the upper-right vertex, \\(R\\) is the inward corner, and \\(S\\) is the bottom vertex. Draw the horizontal segment \\(PR\\). It has length \\(1\\) and splits the quadrilateral into triangles \\(PQR\\) and \\(PRS\\). Their vertices \\(Q\\) and \\(S\\) lie one grid row above and below \\(PR\\), respectively. The triangles fill the quadrilateral without overlapping interiors, so its area is\n\\[\n\\frac{1\\cdot1}{2}+\\frac{1\\cdot1}{2}=1.\n\\]\nThus the areas are equal.\n\nFor the perimeters, let \\(d\\) be the length of a diagonal of one grid square and let \\(\\ell=PQ\\). Each figure has two sides of length \\(d\\). The other two sides of \\(I\\) each have length \\(1\\), while those of \\(II\\) have lengths \\(1\\) and \\(\\ell\\). Hence\n\\[\nP_I=2d+2,\\qquad P_{II}=2d+1+\\ell.\n\\]\nThe endpoints of \\(PQ\\) are two grid columns apart. Their horizontal separation is \\(2\\), and a segment cannot be shorter than that perpendicular separation, so \\(\\ell\\ge2>1\\). Therefore\n\\[\nP_{II}-P_I=\\ell-1>0.\n\\]\nThe figures have equal areas, and \\(I\\) has the smaller perimeter, choice \\(\\boxed{\\text{E}}\\).",
+"solutionMethods": [
+{
+"id": "equal-areas-matching-sides",
+"label": "Split the areas and match boundary lengths",
+"explanation": "[Figure 1](figures/2000_AMC_8_Q18_question_fig1.svg)\n\nUse the distance between adjacent pegs in a row or column as one unit. Quadrilateral \\(I\\) is a parallelogram whose vertical base has length \\(1\\). Its opposite vertical side is \\(1\\) unit away horizontally, so its area is\n\\[\n1\\cdot1=1.\n\\]\nFor quadrilateral \\(II\\), name its vertices \\(P,Q,R,S\\) in boundary order, starting at the leftmost vertex: \\(Q\\) is the upper-right vertex, \\(R\\) is the inward corner, and \\(S\\) is the bottom vertex. Draw the horizontal segment \\(PR\\). It has length \\(1\\) and splits the quadrilateral into triangles \\(PQR\\) and \\(PRS\\). Their vertices \\(Q\\) and \\(S\\) lie one grid row above and below \\(PR\\), respectively. The triangles fill the quadrilateral without overlapping interiors, so its area is\n\\[\n\\frac{1\\cdot1}{2}+\\frac{1\\cdot1}{2}=1.\n\\]\nThus the areas are equal.\n\nFor the perimeters, let \\(d\\) be the length of a diagonal of one grid square and let \\(\\ell=PQ\\). Each figure has two sides of length \\(d\\). The other two sides of \\(I\\) each have length \\(1\\), while those of \\(II\\) have lengths \\(1\\) and \\(\\ell\\). Hence\n\\[\nP_I=2d+2,\\qquad P_{II}=2d+1+\\ell.\n\\]\nThe endpoints of \\(PQ\\) are two grid columns apart. Their horizontal separation is \\(2\\), and a segment cannot be shorter than that perpendicular separation, so \\(\\ell\\ge2>1\\). Therefore\n\\[\nP_{II}-P_I=\\ell-1>0.\n\\]\nThe figures have equal areas, and \\(I\\) has the smaller perimeter, choice \\(\\boxed{\\text{E}}\\).",
+"directNodeIds": [
+"cnm_p150",
+"cnm_055",
+"cnm_065"
+],
+"legacyRouteId": "equal-areas-matching-sides",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2000_AMC_8_Q18#equal-areas-matching-sides",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2000_AMC_8_Q18.json",
+"sha256": "1a818564c97a2c270e69e9a34a043340ae36617673e30fc7c8787853495eda9b",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "cancel-matching-sides",
+"label": "Matching sides and shortest distance",
+"directNodeIds": [
+"cnm_055",
+"cnm_065"
+],
+"legacyRouteId": "cancel-matching-sides",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2253",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2000_AMC_8_Q18#cancel-matching-sides",
+"evidence": []
+}
+},
+{
+"id": "compute-grid-diagonals",
+"label": "Grid lengths by Pythagoras",
+"directNodeIds": [
+"cnm_174",
+"cnm_055"
+],
+"legacyRouteId": "compute-grid-diagonals",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2253",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2000_AMC_8_Q18#compute-grid-diagonals",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2000_AMC_8_Q18",
+"position": {
+"year": 2000,
+"level": "AMC 8",
+"batch": "NA",
+"number": 18
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2000_AMC_8_Q18",
 "figureSources": {
 "figures/2000_AMC_8_Q18_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2000/18.svg",
+"alt": "",
+"sha256": "738f886b66fc51179786abad9fe0fb7f95c801baa5a8f3e1d84d4a29ee8d1be1",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2000/18.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "14468b63c99d155753a34657840553be24be0d70c0a4ac45ac7b1034aafdcf98",
+"contentHash": "fa39593a3a822fbfd85a6ef607e9f59a4e73a9d792ffa1fd7582772bd8142c7b",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -347762,7 +349666,14 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_055",
 "cnm_065"
+],
+"methodDirectNodeIds": {
+"cancel-matching-sides": [
+"cnm_055",
+"cnm_065"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "compute-grid-diagonals",
@@ -347770,6 +349681,41 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_174",
 "cnm_055"
+],
+"methodDirectNodeIds": {
+"compute-grid-diagonals": [
+"cnm_174",
+"cnm_055"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "equal-areas-matching-sides",
+"label": "Split the areas and match boundary lengths",
+"nodeIds": [
+"cnm_p150",
+"cnm_055",
+"cnm_065",
+"cnm_p147",
+"cnm_p148",
+"cnm_p105",
+"cnm_064",
+"cnm_053"
+],
+"methodDirectNodeIds": {
+"equal-areas-matching-sides": [
+"cnm_p150",
+"cnm_055",
+"cnm_065"
+]
+},
+"contextNodeIds": [
+"cnm_p147",
+"cnm_p148",
+"cnm_p105",
+"cnm_064",
+"cnm_053"
 ]
 }
 ],
@@ -347779,14 +349725,17 @@ window.AMC_BANK = {
 {
 "id": "2000_AMC_8_Q19",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2000,
 "level": "AMC 8",
 "batch": "NA",
 "number": 19,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Three circular arcs of radius \\(5\\) units bound the region shown. Arcs \\(AB\\) and \\(AD\\) are quarter-circles, and arc \\(BCD\\) is a semicircle. What is the area, in square units, of the region?\n\n[Figure 1](figures/2000_AMC_8_Q19_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -347796,31 +349745,126 @@ window.AMC_BANK = {
 "D": "\\(50+5\\pi\\)",
 "E": "\\(25\\pi\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Draw the straight segments \\(AB\\), \\(AD\\), and \\(BD\\). This separates the curved region into a semicircle and the part of triangle \\(ABD\\) remaining after two curved pieces are removed.\n\nFirst find the triangle's area. In a quarter-circle, the radii to the endpoints are perpendicular. Since both radii have length \\(5\\), the Pythagorean theorem gives\n\\[\nAB^2=AD^2=5^2+5^2=50.\n\\]\nAlso, \\(BD\\) is the diameter of the semicircle, so \\(BD=10\\). Consequently,\n\\[\nAB^2+AD^2=100=BD^2.\n\\]\nBy the converse of the Pythagorean theorem, triangle \\(ABD\\) is right at \\(A\\). Because \\(AB=AD\\), its area is\n\\[\n\\frac{AB\\cdot AD}{2}=\\frac{AB^2}{2}=25.\n\\]\nEach curved piece removed from this triangle is the segment between a quarter-circle arc and its chord. Its area equals the quarter-disk area minus the area of the right triangle formed by its two radii:\n\\[\n\\frac{25\\pi}{4}-\\frac{5\\cdot5}{2}.\n\\]\nThe figure shows two such pieces, with disjoint interiors. Adding the semicircle above \\(BD\\) and subtracting these two pieces gives\n\\[\n\\frac{25\\pi}{2}+25\n-2\\left(\\frac{25\\pi}{4}-\\frac{25}{2}\\right)\n=50.\n\\]\nThus the area is \\(\\boxed{50}\\) square units, choice \\(\\boxed{\\text{C}}\\).",
+"solutionMethods": [
+{
+"id": "triangle-and-circular-segments",
+"label": "Add a semicircle and subtract circular segments",
+"explanation": "Draw the straight segments \\(AB\\), \\(AD\\), and \\(BD\\). This separates the curved region into a semicircle and the part of triangle \\(ABD\\) remaining after two curved pieces are removed.\n\nFirst find the triangle's area. In a quarter-circle, the radii to the endpoints are perpendicular. Since both radii have length \\(5\\), the Pythagorean theorem gives\n\\[\nAB^2=AD^2=5^2+5^2=50.\n\\]\nAlso, \\(BD\\) is the diameter of the semicircle, so \\(BD=10\\). Consequently,\n\\[\nAB^2+AD^2=100=BD^2.\n\\]\nBy the converse of the Pythagorean theorem, triangle \\(ABD\\) is right at \\(A\\). Because \\(AB=AD\\), its area is\n\\[\n\\frac{AB\\cdot AD}{2}=\\frac{AB^2}{2}=25.\n\\]\nEach curved piece removed from this triangle is the segment between a quarter-circle arc and its chord. Its area equals the quarter-disk area minus the area of the right triangle formed by its two radii:\n\\[\n\\frac{25\\pi}{4}-\\frac{5\\cdot5}{2}.\n\\]\nThe figure shows two such pieces, with disjoint interiors. Adding the semicircle above \\(BD\\) and subtracting these two pieces gives\n\\[\n\\frac{25\\pi}{2}+25\n-2\\left(\\frac{25\\pi}{4}-\\frac{25}{2}\\right)\n=50.\n\\]\nThus the area is \\(\\boxed{50}\\) square units, choice \\(\\boxed{\\text{C}}\\).",
+"directNodeIds": [
+"cnm_p150",
+"cnm_p192",
+"cnm_174",
+"cnm_177"
+],
+"legacyRouteId": "triangle-and-circular-segments",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2000_AMC_8_Q19#triangle-and-circular-segments",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2000_AMC_8_Q19.json",
+"sha256": "0bf799c0a7558cc34ef5efe51f2b02f2f40071ca0629fbfe4c938a3b5bb147a1",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2000_AMC_8_Q19",
+"position": {
+"year": 2000,
+"level": "AMC 8",
+"batch": "NA",
+"number": 19
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2000_AMC_8_Q19",
 "figureSources": {
 "figures/2000_AMC_8_Q19_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2000/19.svg",
+"alt": "",
+"sha256": "744deafe96bd773c3134d01e0006869ad66ffbcfe087d2bc23a3fd5db78ba877",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2000/19.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "60b358dc37f8ae58ed60adbdc25fae1db11f58fe6d06017bd82e2a2acd8b2580",
+"contentHash": "3cc8832c81529695753a5ee36f4e9a359421e7d407c25594b7ed7c1057a26eaf",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
-"cnm_257"
+"cnm_p150"
 ],
 "supportIds": [
-"cnm_p089"
+"cnm_p148",
+"cnm_p188",
+"cnm_p193"
 ],
-"routes": [],
+"routes": [
+{
+"id": "triangle-and-circular-segments",
+"label": "Add a semicircle and subtract circular segments",
+"nodeIds": [
+"cnm_p150",
+"cnm_p192",
+"cnm_174",
+"cnm_177",
+"cnm_p148",
+"cnm_p188",
+"cnm_p193"
+],
+"methodDirectNodeIds": {
+"triangle-and-circular-segments": [
+"cnm_p150",
+"cnm_p192",
+"cnm_174",
+"cnm_177"
+]
+},
+"contextNodeIds": [
+"cnm_p148",
+"cnm_p188",
+"cnm_p193"
+]
+}
+],
 "flags": []
 }
 },
@@ -348154,14 +350198,17 @@ window.AMC_BANK = {
 {
 "id": "2000_AMC_8_Q22",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2000,
 "level": "AMC 8",
 "batch": "NA",
 "number": 22,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "A cube has edge length \\(2.\\) Suppose that we glue a cube of edge length \\(1\\) on top of the big cube so that one of its faces rests entirely on the top face of the larger cube. The percent increase in the surface area (sides, top, and bottom) from the original cube to the new solid formed is closest to\n\n[Figure 1](figures/2000_AMC_8_Q22_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -348171,30 +350218,121 @@ window.AMC_BANK = {
 "D": "\\(21\\)",
 "E": "\\(25\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The useful observation is that the glued faces become hidden inside the solid. The original cube has six square faces, each of area \\(2^2=4\\), so its surface area is\n\\[\n6\\cdot4=24.\n\\]\nThe small cube contributes five exposed faces, each of area \\(1\\). Its bottom face is glued down, and it covers an area of \\(1\\) on the large cube. Therefore the net increase is \\(5-1=4\\) square units, making the new surface area \\(28\\).\n\nA percent increase compares the increase with the original amount. Thus\n\\[\n\\frac{4}{24}\\cdot100\\%\n=16\\frac{2}{3}\\%.\n\\]\nThe closest listed percentage is \\(\\boxed{17\\%}\\), choice \\(\\boxed{\\text{C}}\\).",
+"solutionMethods": [
+{
+"id": "track-exposed-faces",
+"label": "Track the exposed faces",
+"explanation": "The useful observation is that the glued faces become hidden inside the solid. The original cube has six square faces, each of area \\(2^2=4\\), so its surface area is\n\\[\n6\\cdot4=24.\n\\]\nThe small cube contributes five exposed faces, each of area \\(1\\). Its bottom face is glued down, and it covers an area of \\(1\\) on the large cube. Therefore the net increase is \\(5-1=4\\) square units, making the new surface area \\(28\\).\n\nA percent increase compares the increase with the original amount. Thus\n\\[\n\\frac{4}{24}\\cdot100\\%\n=16\\frac{2}{3}\\%.\n\\]\nThe closest listed percentage is \\(\\boxed{17\\%}\\), choice \\(\\boxed{\\text{C}}\\).",
+"directNodeIds": [
+"cnm_p161",
+"cnm_p205"
+],
+"legacyRouteId": "track-exposed-faces",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2000_AMC_8_Q22#track-exposed-faces",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2000_AMC_8_Q22.json",
+"sha256": "43c57a13d5aa1bfa86d87ad89ff6b84cf3776798c095c21fbdd96bc514865e11",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2000_AMC_8_Q22",
+"position": {
+"year": 2000,
+"level": "AMC 8",
+"batch": "NA",
+"number": 22
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2000_AMC_8_Q22",
 "figureSources": {
 "figures/2000_AMC_8_Q22_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2000/22.svg",
+"alt": "",
+"sha256": "d0a5265689148c0fda644e1ae661324f3e63f06bce50171bbe67835f68333060",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2000/22.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "687a14c91d9c05fc100a0f9cff0d3a6755ce8769657160d4c82615225ed8e8aa",
+"contentHash": "74a860896e66509c42abc938546e626a6a3edf0f43febc5e6db9f0c41487a50a",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_p161",
 "cnm_p205"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_p089",
+"cnm_p160",
+"cnm_p197"
+],
+"routes": [
+{
+"id": "track-exposed-faces",
+"label": "Track the exposed faces",
+"nodeIds": [
+"cnm_p161",
+"cnm_p205",
+"cnm_p089",
+"cnm_p160",
+"cnm_p197"
+],
+"methodDirectNodeIds": {
+"track-exposed-faces": [
+"cnm_p161",
+"cnm_p205"
+]
+},
+"contextNodeIds": [
+"cnm_p089",
+"cnm_p160",
+"cnm_p197"
+]
+}
+],
 "flags": []
 }
 },
@@ -348322,14 +350460,17 @@ window.AMC_BANK = {
 {
 "id": "2000_AMC_8_Q24",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2000,
 "level": "AMC 8",
 "batch": "NA",
 "number": 24,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "If \\(\\angle A = 20^\\circ\\) and \\(\\angle AFG =\\angle AGF,\\) then \\(\\angle B+\\angle D =\\)\n\n[Figure 1](figures/2000_AMC_8_Q24_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -348339,28 +350480,133 @@ window.AMC_BANK = {
 "D": "\\(80^\\circ\\)",
 "E": "\\(90^\\circ\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Start with triangle \\(AFG\\), since its angle at \\(A\\) is known and its other two angles are equal. Those equal angles together measure \\(180^\\circ-20^\\circ=160^\\circ\\), so\n\\[\n\\angle AFG=\\angle AGF=80^\\circ.\n\\]\nIn the figure, \\(A,F,D\\) lie on one straight line, with \\(F\\) between \\(A\\) and \\(D\\). Also, \\(F,G,B\\) lie on one straight line, with \\(G\\) between \\(F\\) and \\(B\\). Thus rays \\(FG\\) and \\(FB\\) are the same ray, while rays \\(FA\\) and \\(FD\\) point in opposite directions. Therefore\n\\[\n\\angle BFD=180^\\circ-\\angle AFG=100^\\circ.\n\\]\nThe labeled angles at \\(B\\) and \\(D\\) are the other two angles of triangle \\(BFD\\). Its angle sum gives\n\\[\n\\angle B+\\angle D=180^\\circ-100^\\circ=\\boxed{80^\\circ}.\n\\]\nThe answer is choice \\(\\boxed{\\text{D}}\\).",
+"solutionMethods": [
+{
+"id": "triangle-sums-and-straight-angle",
+"label": "Use triangle sums and a straight angle",
+"explanation": "Start with triangle \\(AFG\\), since its angle at \\(A\\) is known and its other two angles are equal. Those equal angles together measure \\(180^\\circ-20^\\circ=160^\\circ\\), so\n\\[\n\\angle AFG=\\angle AGF=80^\\circ.\n\\]\nIn the figure, \\(A,F,D\\) lie on one straight line, with \\(F\\) between \\(A\\) and \\(D\\). Also, \\(F,G,B\\) lie on one straight line, with \\(G\\) between \\(F\\) and \\(B\\). Thus rays \\(FG\\) and \\(FB\\) are the same ray, while rays \\(FA\\) and \\(FD\\) point in opposite directions. Therefore\n\\[\n\\angle BFD=180^\\circ-\\angle AFG=100^\\circ.\n\\]\nThe labeled angles at \\(B\\) and \\(D\\) are the other two angles of triangle \\(BFD\\). Its angle sum gives\n\\[\n\\angle B+\\angle D=180^\\circ-100^\\circ=\\boxed{80^\\circ}.\n\\]\nThe answer is choice \\(\\boxed{\\text{D}}\\).",
+"directNodeIds": [
+"cnm_115",
+"cnm_062"
+],
+"legacyRouteId": "triangle-sums-and-straight-angle",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2000_AMC_8_Q24#triangle-sums-and-straight-angle",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2000_AMC_8_Q24.json",
+"sha256": "2404208ee512040405ec26fb2a70bf22ac51d2c428df5e60ef68295104c8063c",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "triangle-sums-and-linear-pair",
+"label": "Triangle sums and a linear pair",
+"directNodeIds": [
+"cnm_115",
+"cnm_062"
+],
+"legacyRouteId": "triangle-sums-and-linear-pair",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2259",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2000_AMC_8_Q24#triangle-sums-and-linear-pair",
+"evidence": []
+}
+},
+{
+"id": "exterior-angle-of-bfd",
+"label": "Exterior angle of BFD",
+"directNodeIds": [
+"cnm_115",
+"cnm_117"
+],
+"legacyRouteId": "exterior-angle-of-bfd",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2259",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2000_AMC_8_Q24#exterior-angle-of-bfd",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2000_AMC_8_Q24",
+"position": {
+"year": 2000,
+"level": "AMC 8",
+"batch": "NA",
+"number": 24
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2000_AMC_8_Q24",
 "figureSources": {
 "figures/2000_AMC_8_Q24_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2000/24.svg",
+"alt": "",
+"sha256": "5854033192731873662b6c566c0ae8b8fccbc6c39543ac2cbd6433dd406cb0d7",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2000/24.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "90b29ce7d4ff824e9ccdb2e1e7e3c5e01d40ba526c5d77a2f54608c8a49fbde3",
+"contentHash": "774c46eca70d9c0d861004a36ddf6007c2c4f4fdb637c3196f9a982afab33a7f",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_115"
 ],
-"supportIds": [],
+"supportIds": [
+"cnm_110",
+"cnm_059"
+],
 "routes": [
 {
 "id": "triangle-sums-and-linear-pair",
@@ -348368,7 +350614,14 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_115",
 "cnm_062"
+],
+"methodDirectNodeIds": {
+"triangle-sums-and-linear-pair": [
+"cnm_115",
+"cnm_062"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "exterior-angle-of-bfd",
@@ -348376,6 +350629,33 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_115",
 "cnm_117"
+],
+"methodDirectNodeIds": {
+"exterior-angle-of-bfd": [
+"cnm_115",
+"cnm_117"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "triangle-sums-and-straight-angle",
+"label": "Use triangle sums and a straight angle",
+"nodeIds": [
+"cnm_115",
+"cnm_062",
+"cnm_110",
+"cnm_059"
+],
+"methodDirectNodeIds": {
+"triangle-sums-and-straight-angle": [
+"cnm_115",
+"cnm_062"
+]
+},
+"contextNodeIds": [
+"cnm_110",
+"cnm_059"
 ]
 }
 ],
@@ -348385,14 +350665,17 @@ window.AMC_BANK = {
 {
 "id": "2000_AMC_8_Q25",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2000,
 "level": "AMC 8",
 "batch": "NA",
 "number": 25,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "The area of rectangle \\(ABCD\\) is \\(72\\) square units. If point \\(A\\) and the midpoints of \\(\\overline{BC}\\) and \\(\\overline{CD}\\) are joined to form a triangle, the area of that triangle is\n\n[Figure 1](figures/2000_AMC_8_Q25_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -348402,22 +350685,85 @@ window.AMC_BANK = {
 "D": "\\(36\\)",
 "E": "\\(40\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "B",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions",
+"acceptedResponses": [
+"B"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Let \\(M\\) be the midpoint of \\(BC\\), and let \\(N\\) be the midpoint of \\(CD\\). The desired triangle \\(AMN\\) leaves three right triangles at the corners of the rectangle. Their bases and heights lie along the rectangle's sides, so their areas are easier to calculate.\n\nTriangle \\(ABM\\) has base \\(AB\\) and height \\(BC/2\\). Since \\(AB\\cdot BC=72\\), its area is\n\\[\n\\frac12\\cdot AB\\cdot\\frac{BC}{2}=\\frac{72}{4}=18.\n\\]\nSimilarly, triangle \\(ADN\\) has base \\(DN=CD/2\\) and height \\(AD\\), so its area is also \\(72/4=18\\).\n\nTriangle \\(CMN\\) has perpendicular legs \\(CM=BC/2\\) and \\(CN=CD/2\\). Its area is\n\\[\n\\frac12\\cdot\\frac{BC}{2}\\cdot\\frac{CD}{2}=\\frac{72}{8}=9.\n\\]\nThese three corner triangles and triangle \\(AMN\\) fill the rectangle without overlapping interiors. Therefore the desired area is\n\\[\n72-18-18-9=\\boxed{27}\n\\]\nsquare units, choice \\(\\mathrm{B}\\).",
+"solutionMethods": [
+{
+"id": "corner_subtraction",
+"label": "Subtract the corner triangles",
+"explanation": "Let \\(M\\) be the midpoint of \\(BC\\), and let \\(N\\) be the midpoint of \\(CD\\). The desired triangle \\(AMN\\) leaves three right triangles at the corners of the rectangle. Their bases and heights lie along the rectangle's sides, so their areas are easier to calculate.\n\nTriangle \\(ABM\\) has base \\(AB\\) and height \\(BC/2\\). Since \\(AB\\cdot BC=72\\), its area is\n\\[\n\\frac12\\cdot AB\\cdot\\frac{BC}{2}=\\frac{72}{4}=18.\n\\]\nSimilarly, triangle \\(ADN\\) has base \\(DN=CD/2\\) and height \\(AD\\), so its area is also \\(72/4=18\\).\n\nTriangle \\(CMN\\) has perpendicular legs \\(CM=BC/2\\) and \\(CN=CD/2\\). Its area is\n\\[\n\\frac12\\cdot\\frac{BC}{2}\\cdot\\frac{CD}{2}=\\frac{72}{8}=9.\n\\]\nThese three corner triangles and triangle \\(AMN\\) fill the rectangle without overlapping interiors. Therefore the desired area is\n\\[\n72-18-18-9=\\boxed{27}\n\\]\nsquare units, choice \\(\\mathrm{B}\\).",
+"directNodeIds": [
+"cnm_p150"
+],
+"legacyRouteId": "corner_subtraction",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2000_AMC_8_Q25#corner_subtraction",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2000_AMC_8_Q25.json",
+"sha256": "6f9aaa6bc546b40417457cc30d90fff8c6f9d461cbf7651490da4b8b116034bd",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2000_AMC_8_Q25",
+"position": {
+"year": 2000,
+"level": "AMC 8",
+"batch": "NA",
+"number": 25
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2000_AMC_8_Q25",
 "figureSources": {
 "figures/2000_AMC_8_Q25_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2000/25.svg",
+"alt": "",
+"sha256": "0c6702e9a90833010c0a2e191484dbf13c7d2bfb1d1cb0700addaa1ae42c40ba",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2000/25.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2000/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "246c0443aba029a32d63a88ab1e59ab4043fe2459a2894783a6d49aa5655dd53",
+"contentHash": "3e81bf81d98c56dd19742e20ca15d397a2053b05dcfd0b95d7944e8200fb8781",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -348426,9 +350772,33 @@ window.AMC_BANK = {
 "supportIds": [
 "cnm_p148",
 "cnm_p089",
-"cnm_055"
+"cnm_055",
+"cnm_p077"
 ],
-"routes": [],
+"routes": [
+{
+"id": "corner_subtraction",
+"label": "Subtract the corner triangles",
+"nodeIds": [
+"cnm_p150",
+"cnm_p148",
+"cnm_p089",
+"cnm_055",
+"cnm_p077"
+],
+"methodDirectNodeIds": {
+"corner_subtraction": [
+"cnm_p150"
+]
+},
+"contextNodeIds": [
+"cnm_p148",
+"cnm_p089",
+"cnm_055",
+"cnm_p077"
+]
+}
+],
 "flags": []
 }
 },
@@ -348937,14 +351307,17 @@ window.AMC_BANK = {
 {
 "id": "2001_AMC_10_Q05",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2001,
 "level": "AMC 10",
 "batch": "NA",
 "number": 5,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "How many of the twelve pentominoes pictured below have at least one line of symmetry?\n\n[Figure 1](figures/2001_AMC_10_Q05_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -348954,29 +351327,106 @@ window.AMC_BANK = {
 "D": "\\(6\\)",
 "E": "\\(7\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2001/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "A line of symmetry is a fold line that makes the whole shape coincide with itself. Count each pentomino once if it has any such line, even when it has several.\n\n[Figure 1](figures/2001_AMC_10_Q05_question_fig1.svg)\n\nNumber the columns from left to right. Checking the shapes row by row gives:\n\n- Top row: only column 1 has symmetry. The straight strip folds along its length or across its middle.\n- Middle row: all four have symmetry. Column 1 folds horizontally through its middle row of squares; column 2, the cross, folds vertically or horizontally; column 3 folds diagonally from upper right to lower left; column 4 folds vertically between its two legs.\n- Bottom row: only column 1 has symmetry. Its diagonal fold exchanges the horizontal and vertical arms.\n\nTo check that none are missed, a symmetry axis for these shapes must be horizontal, vertical, or diagonal at \\(45^\\circ\\), because reflection must match the horizontal and vertical boundary edges. Each axis must also pass through the center of the smallest enclosing rectangle. A diagonal axis is possible only when that enclosing rectangle is a square.\n\nFor the three rejected shapes in the top row and column 3 of the bottom row, the enclosing rectangles are not square. Their unequal top and bottom rows rule out a horizontal fold, and their off-center arrangements rule out a vertical fold. For columns 2 and 4 of the bottom row, testing both center lines and both diagonals leaves unmatched squares in every case. Thus the row counts include every symmetric shape exactly once.\n\nThe total is \\(1+4+1=\\boxed{6}\\), choice \\(\\mathrm{D}\\).",
+"solutionMethods": [
+{
+"id": "reflection_tests",
+"label": "Check possible fold lines",
+"explanation": "A line of symmetry is a fold line that makes the whole shape coincide with itself. Count each pentomino once if it has any such line, even when it has several.\n\n[Figure 1](figures/2001_AMC_10_Q05_question_fig1.svg)\n\nNumber the columns from left to right. Checking the shapes row by row gives:\n\n- Top row: only column 1 has symmetry. The straight strip folds along its length or across its middle.\n- Middle row: all four have symmetry. Column 1 folds horizontally through its middle row of squares; column 2, the cross, folds vertically or horizontally; column 3 folds diagonally from upper right to lower left; column 4 folds vertically between its two legs.\n- Bottom row: only column 1 has symmetry. Its diagonal fold exchanges the horizontal and vertical arms.\n\nTo check that none are missed, a symmetry axis for these shapes must be horizontal, vertical, or diagonal at \\(45^\\circ\\), because reflection must match the horizontal and vertical boundary edges. Each axis must also pass through the center of the smallest enclosing rectangle. A diagonal axis is possible only when that enclosing rectangle is a square.\n\nFor the three rejected shapes in the top row and column 3 of the bottom row, the enclosing rectangles are not square. Their unequal top and bottom rows rule out a horizontal fold, and their off-center arrangements rule out a vertical fold. For columns 2 and 4 of the bottom row, testing both center lines and both diagonals leaves unmatched squares in every case. Thus the row counts include every symmetric shape exactly once.\n\nThe total is \\(1+4+1=\\boxed{6}\\), choice \\(\\mathrm{D}\\).",
+"directNodeIds": [
+"cnm_p127"
+],
+"legacyRouteId": "reflection_tests",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2001_AMC_10_Q05#reflection_tests",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2001_AMC_10_Q05.json",
+"sha256": "82132500f26776710513746c017f0dd84702f5b93d551ec22d0b9f4453455ddc",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2001_AMC_10_Q05",
+"position": {
+"year": 2001,
+"level": "AMC 10",
+"batch": "NA",
+"number": 5
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2001/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2001_AMC_10_Q05",
 "figureSources": {
 "figures/2001_AMC_10_Q05_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc10/2001/5.svg",
+"alt": "",
+"sha256": "35861bf0a3066cfc33d71b17b5faf4be4472a314e4c27245351b867b5033ea7b",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2001/5.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2001/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "0faa25288be5ea0bf4a2fc6946176a37149b4207b45eb054930d913c26e39c6b",
+"contentHash": "f947c7b6fd4500908c682b36aeac549722c957b148df8bd8ade5382b3efe9a5b",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_p127"
 ],
 "supportIds": [],
-"routes": [],
+"routes": [
+{
+"id": "reflection_tests",
+"label": "Check possible fold lines",
+"nodeIds": [
+"cnm_p127"
+],
+"methodDirectNodeIds": {
+"reflection_tests": [
+"cnm_p127"
+]
+},
+"contextNodeIds": []
+}
+],
 "flags": []
 }
 },
@@ -349912,14 +352362,17 @@ window.AMC_BANK = {
 {
 "id": "2001_AMC_10_Q11",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2001,
 "level": "AMC 10",
 "batch": "NA",
 "number": 11,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Consider the dark square in an array of unit squares, part of which is shown. The first ring of squares around this center square contains \\(8\\) unit squares. The second ring contains \\(16\\) unit squares. If we continue this process, the number of unit squares in the \\(100\\)th ring is\n\n[Figure 1](figures/2001_AMC_10_Q11_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -349929,31 +352382,161 @@ window.AMC_BANK = {
 "D": "\\(10{,}000\\)",
 "E": "\\(10{,}404\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2001/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Each new ring extends the array by one square in every direction. Thus the center together with the first \\(n\\) rings forms a square with \\(2n+1\\) squares along each side, where \\(n\\) is a positive integer.\n\nCount the top and bottom rows of the \\(n\\)th ring first. Each contains \\(2n+1\\) squares. The left and right sides each contribute another \\(2n-1\\) squares after their corner squares are excluded. These four groups cover the ring, and excluding the corners from the side groups prevents counting them twice.\n\nTherefore the number of squares in the \\(n\\)th ring is\n\\[\n2(2n+1)+2(2n-1)=8n.\n\\]\nFor \\(n=100\\), this gives \\(8\\cdot100=\\boxed{800}\\) unit squares, choice \\(\\mathrm{C}\\).",
+"solutionMethods": [
+{
+"id": "count_boundary_rows",
+"label": "Count the four sides without repeating corners",
+"explanation": "Each new ring extends the array by one square in every direction. Thus the center together with the first \\(n\\) rings forms a square with \\(2n+1\\) squares along each side, where \\(n\\) is a positive integer.\n\nCount the top and bottom rows of the \\(n\\)th ring first. Each contains \\(2n+1\\) squares. The left and right sides each contribute another \\(2n-1\\) squares after their corner squares are excluded. These four groups cover the ring, and excluding the corners from the side groups prevents counting them twice.\n\nTherefore the number of squares in the \\(n\\)th ring is\n\\[\n2(2n+1)+2(2n-1)=8n.\n\\]\nFor \\(n=100\\), this gives \\(8\\cdot100=\\boxed{800}\\) unit squares, choice \\(\\mathrm{C}\\).",
+"directNodeIds": [
+"cnm_030"
+],
+"legacyRouteId": "count_boundary_rows",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2001_AMC_10_Q11#count_boundary_rows",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2001_AMC_10_Q11.json",
+"sha256": "a12c9e08e8d75068b9c9a2afc3549c67b12437397b94fe2d2a671c7a6505eb37",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "subtract_square_arrays",
+"label": "Subtract the inner square array",
+"explanation": "The \\(n\\)th ring is the part added when the square array grows from the first \\(n-1\\) rings to the first \\(n\\) rings. Each ring adds one row or column on each side, so these two filled square arrays have side lengths \\(2n-1\\) and \\(2n+1\\), respectively.\n\nA square array with \\(s\\) rows and \\(s\\) unit squares per row contains \\(s^2\\) unit squares. Consequently, the \\(n\\)th ring contains\n\\[\n(2n+1)^2-(2n-1)^2\n\\]\nsquares. Subtracting removes exactly the center and all earlier rings, leaving each square of the requested ring once.\n\nFor the 100th ring, the outer array has side length \\(201\\), and the inner array has side length \\(199\\). Hence the count is\n\\[\n201^2-199^2=40{,}401-39{,}601=\\boxed{800}.\n\\]\nThe answer is \\(\\mathrm{C}\\).",
+"directNodeIds": [
+"cnm_030",
+"cnm_p089"
+],
+"legacyRouteId": "subtract_square_arrays",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2001_AMC_10_Q11#subtract_square_arrays",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2001_AMC_10_Q11.json",
+"sha256": "a12c9e08e8d75068b9c9a2afc3549c67b12437397b94fe2d2a671c7a6505eb37",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2001_AMC_10_Q11",
+"position": {
+"year": 2001,
+"level": "AMC 10",
+"batch": "NA",
+"number": 11
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2001/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2001_AMC_10_Q11",
 "figureSources": {
 "figures/2001_AMC_10_Q11_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc10/2001/11.svg",
+"alt": "",
+"sha256": "ca31eaede7e7a57d8e46b6aaee9d4f6b69792ea39edd4e8d5db45d9b4a138084",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2001/11.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2001/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "e7051051f8bcca94ba1a18ec8722e149ba301faacfd215b862b7058b7cd540ec",
+"contentHash": "e32bd5b94bbd6fe650108aa666567b6e32c29ee7e34a966bf44971ce6477f070",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_030"
 ],
 "supportIds": [
-"cnm_p089"
+"cnm_027",
+"cnm_029"
 ],
-"routes": [],
+"routes": [
+{
+"id": "count_boundary_rows",
+"label": "Count the four sides without repeating corners",
+"nodeIds": [
+"cnm_030",
+"cnm_027",
+"cnm_029"
+],
+"methodDirectNodeIds": {
+"count_boundary_rows": [
+"cnm_030"
+]
+},
+"contextNodeIds": [
+"cnm_027",
+"cnm_029"
+]
+},
+{
+"id": "subtract_square_arrays",
+"label": "Subtract the inner square array",
+"nodeIds": [
+"cnm_030",
+"cnm_p089",
+"cnm_027",
+"cnm_029",
+"math:area-by-unit-squares"
+],
+"methodDirectNodeIds": {
+"subtract_square_arrays": [
+"cnm_030",
+"cnm_p089"
+]
+},
+"contextNodeIds": [
+"cnm_027",
+"cnm_029",
+"math:area-by-unit-squares"
+]
+}
+],
 "flags": []
 }
 },
@@ -350667,14 +353250,17 @@ window.AMC_BANK = {
 {
 "id": "2001_AMC_10_Q17",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2001,
 "level": "AMC 10",
 "batch": "NA",
 "number": 17,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Which of the cones below can be formed from a \\(252^\\circ\\) sector of a circle of radius \\(10\\) by aligning the two straight sides?\n\n[Figure 1](figures/2001_AMC_10_Q17_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -350684,42 +353270,132 @@ window.AMC_BANK = {
 "D": "[Figure 5](figures/2001_AMC_10_Q17_choiceD_fig5.svg)",
 "E": "[Figure 6](figures/2001_AMC_10_Q17_choiceE_fig6.svg)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "figure",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2001/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "When the straight sides are joined, the sector's center becomes the cone's tip. Each radius of the sector runs along the cone from its tip to its base, so the slant height is \\(10\\).\n\nThe curved edge wraps exactly once around the base. Its length is \\(252/360=7/10\\) of the circumference of the original circle, so it equals\n\\[\n\\frac{252}{360}(2\\pi\\cdot10)=14\\pi.\n\\]\nIf \\(r\\) is the cone's base radius, its circumference is therefore\n\\[\n2\\pi r=14\\pi,\n\\qquad r=7.\n\\]\nWe need the cone labeled with slant height \\(10\\) and base radius \\(7\\). Those are the labels in choice \\(\\boxed{\\text{C}}\\).",
+"solutionMethods": [
+{
+"id": "sector_to_cone",
+"label": "Track the sector's radius and arc",
+"explanation": "When the straight sides are joined, the sector's center becomes the cone's tip. Each radius of the sector runs along the cone from its tip to its base, so the slant height is \\(10\\).\n\nThe curved edge wraps exactly once around the base. Its length is \\(252/360=7/10\\) of the circumference of the original circle, so it equals\n\\[\n\\frac{252}{360}(2\\pi\\cdot10)=14\\pi.\n\\]\nIf \\(r\\) is the cone's base radius, its circumference is therefore\n\\[\n2\\pi r=14\\pi,\n\\qquad r=7.\n\\]\nWe need the cone labeled with slant height \\(10\\) and base radius \\(7\\). Those are the labels in choice \\(\\boxed{\\text{C}}\\).",
+"directNodeIds": [
+"cnm_258",
+"cnm_256",
+"cnm_p190"
+],
+"legacyRouteId": "sector_to_cone",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2001_AMC_10_Q17#sector_to_cone",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2001_AMC_10_Q17.json",
+"sha256": "6f88441efc4f8f089995e7c315f0418c6238fc1719c03b13ea3966df570e176c",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2001_AMC_10_Q17",
+"position": {
+"year": 2001,
+"level": "AMC 10",
+"batch": "NA",
+"number": 17
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2001/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2001_AMC_10_Q17",
 "figureSources": {
 "figures/2001_AMC_10_Q17_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc10/2001/17.svg",
-"alt": ""
-},
-"figures/2001_AMC_10_Q17_choiceA_fig2.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc10/2001/17a.svg",
-"alt": ""
-},
-"figures/2001_AMC_10_Q17_choiceB_fig3.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc10/2001/17b.svg",
-"alt": ""
-},
-"figures/2001_AMC_10_Q17_choiceC_fig4.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc10/2001/17c.svg",
-"alt": ""
-},
-"figures/2001_AMC_10_Q17_choiceD_fig5.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc10/2001/17d.svg",
-"alt": ""
-},
-"figures/2001_AMC_10_Q17_choiceE_fig6.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc10/2001/17e.svg",
+"alt": "",
+"sha256": "b537ae9f9bda48c9f1636f36e65255fe1bf50e0070054252de078aa257fdaca5",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2001/17.svg",
 "alt": ""
 }
 },
+"figures/2001_AMC_10_Q17_choiceA_fig2.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2001/17a.svg",
+"alt": "",
+"sha256": "2ec771ed2739808c8b3ec16f0d6c3a45e3a39f521c08039963775c8cb62b92d2",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2001/17a.svg",
+"alt": ""
+}
+},
+"figures/2001_AMC_10_Q17_choiceB_fig3.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2001/17b.svg",
+"alt": "",
+"sha256": "4ff23d50081e34eb701bb365f0dd777ab1887eec11b3ebff70b5e48e32a3ab24",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2001/17b.svg",
+"alt": ""
+}
+},
+"figures/2001_AMC_10_Q17_choiceC_fig4.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2001/17c.svg",
+"alt": "",
+"sha256": "ec8adc6f8c92441cce1d5328b11a445266d79f9a16a4235f14f060f15966d353",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2001/17c.svg",
+"alt": ""
+}
+},
+"figures/2001_AMC_10_Q17_choiceD_fig5.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2001/17d.svg",
+"alt": "",
+"sha256": "e24b3e739aef16e1d01208cbb8981a116196ab74d9effa881d9b29930b656375",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2001/17d.svg",
+"alt": ""
+}
+},
+"figures/2001_AMC_10_Q17_choiceE_fig6.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2001/17e.svg",
+"alt": "",
+"sha256": "921ff8843c3e048d92f72db1e0ee6e57ab7a4968be736cf2af35c45772e397dd",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2001/17e.svg",
+"alt": ""
+}
+}
+},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2001/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "3f8a21ab220c06721bccaac096ed65a5198d0d430b7cefc2ed505a40f002ee7d",
+"contentHash": "564179eec135250ac7d22cc0f25fcf1b5b2574c730b7d465b38472e141a1db92",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -350729,21 +353405,45 @@ window.AMC_BANK = {
 "cnm_256",
 "cnm_p190"
 ],
-"routes": [],
+"routes": [
+{
+"id": "sector_to_cone",
+"label": "Track the sector's radius and arc",
+"nodeIds": [
+"cnm_258",
+"cnm_256",
+"cnm_p190",
+"cnm_250"
+],
+"methodDirectNodeIds": {
+"sector_to_cone": [
+"cnm_258",
+"cnm_256",
+"cnm_p190"
+]
+},
+"contextNodeIds": [
+"cnm_250"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2001_AMC_10_Q18",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2001,
 "level": "AMC 10",
 "batch": "NA",
 "number": 18,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "The plane is tiled by congruent squares and congruent pentagons as indicated. The percent of the plane that is enclosed by the pentagons is closest to\n\n[Figure 1](figures/2001_AMC_10_Q18_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -350753,22 +353453,87 @@ window.AMC_BANK = {
 "D": "\\(56\\)",
 "E": "\\(58\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2001/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "A repeating block makes the area comparison easier: we can subtract the square tiles from the whole block without calculating each pentagon separately.\n\n[Figure 1](figures/2001_AMC_10_Q18_question_fig1.svg)\n\nFirst assume that the central horizontal and vertical strips have the same width as a square tile's side. This is the intended metric interpretation of the drawing, rather than a marked equality. Let that common length be \\(s>0\\). The upper-left repeating block then has side \\(3s\\), with four square tiles at its corners and four pentagons filling the remainder. Its area is \\(9s^2\\), and its square tiles occupy \\(4s^2\\). Thus the pentagon percentage is\n\\[\n\\frac{9s^2-4s^2}{9s^2}\\times100\\%\n=\\frac59\\times100\\%\n\\approx55.56\\%.\n\\]\nCopies of this block fill the plane without overlapping interiors, so the same percentage applies to the plane. Under this assumption, the closest choice is \\(56\\), choice D.\n\nWe must distinguish an assumption that guarantees D from an assumption required for D. To examine the unmarked width, choose the square side as one unit and let the central strip width be \\(w>0\\). Construct a block of side \\(2+w\\), placing a unit square at each corner. Join each square's inward-facing corner to the center of the block. The remaining region is partitioned into four pentagons. Each consists of a \\(1\\)-by-\\(w\\) rectangle and a triangle with base \\(w\\) and height \\(w/2\\). Quarter-turns about the center carry these pentagons onto one another, so they are congruent for every positive \\(w\\).\n\nRepeating the block horizontally and vertically fills the plane: neighboring blocks have matching boundary segments, and each block is completely partitioned into its four squares and four pentagons. Thus there are no gaps or overlapping interiors. The pentagon percentage is\n\\[\nP(w)=\\left(1-\\frac{4}{(2+w)^2}\\right)100\\%.\n\\]\nThe denominator is positive because \\(w>0\\).\n\nWhen \\(w=1\\), this gives the exact fraction \\(5/9\\). But when \\(w=1.01\\), it gives approximately \\(55.85\\%\\), still closest to D even though the strip width differs from the square side. Equal widths are therefore sufficient, but not necessary, for D to be closest.\n\nOn the other hand, when \\(w=0.9\\), the same construction gives\n\\[\nP(0.9)=\\left(1-\\frac{400}{841}\\right)100\\%\n=\\frac{441}{841}\\times100\\%\n\\approx52.44\\%,\n\\]\nwhose closest choice is B, \\(52\\). Consequently, congruence and the indicated arrangement alone do not determine a unique closest choice when the widths are unspecified. The conditional equal-width result is \\(5/9\\), approximately \\(55.56\\%\\), choice D.",
+"solutionMethods": [
+{
+"id": "m1",
+"label": "A repeating block and the width qualification",
+"explanation": "A repeating block makes the area comparison easier: we can subtract the square tiles from the whole block without calculating each pentagon separately.\n\n[Figure 1](figures/2001_AMC_10_Q18_question_fig1.svg)\n\nFirst assume that the central horizontal and vertical strips have the same width as a square tile's side. This is the intended metric interpretation of the drawing, rather than a marked equality. Let that common length be \\(s>0\\). The upper-left repeating block then has side \\(3s\\), with four square tiles at its corners and four pentagons filling the remainder. Its area is \\(9s^2\\), and its square tiles occupy \\(4s^2\\). Thus the pentagon percentage is\n\\[\n\\frac{9s^2-4s^2}{9s^2}\\times100\\%\n=\\frac59\\times100\\%\n\\approx55.56\\%.\n\\]\nCopies of this block fill the plane without overlapping interiors, so the same percentage applies to the plane. Under this assumption, the closest choice is \\(56\\), choice D.\n\nWe must distinguish an assumption that guarantees D from an assumption required for D. To examine the unmarked width, choose the square side as one unit and let the central strip width be \\(w>0\\). Construct a block of side \\(2+w\\), placing a unit square at each corner. Join each square's inward-facing corner to the center of the block. The remaining region is partitioned into four pentagons. Each consists of a \\(1\\)-by-\\(w\\) rectangle and a triangle with base \\(w\\) and height \\(w/2\\). Quarter-turns about the center carry these pentagons onto one another, so they are congruent for every positive \\(w\\).\n\nRepeating the block horizontally and vertically fills the plane: neighboring blocks have matching boundary segments, and each block is completely partitioned into its four squares and four pentagons. Thus there are no gaps or overlapping interiors. The pentagon percentage is\n\\[\nP(w)=\\left(1-\\frac{4}{(2+w)^2}\\right)100\\%.\n\\]\nThe denominator is positive because \\(w>0\\).\n\nWhen \\(w=1\\), this gives the exact fraction \\(5/9\\). But when \\(w=1.01\\), it gives approximately \\(55.85\\%\\), still closest to D even though the strip width differs from the square side. Equal widths are therefore sufficient, but not necessary, for D to be closest.\n\nOn the other hand, when \\(w=0.9\\), the same construction gives\n\\[\nP(0.9)=\\left(1-\\frac{400}{841}\\right)100\\%\n=\\frac{441}{841}\\times100\\%\n\\approx52.44\\%,\n\\]\nwhose closest choice is B, \\(52\\). Consequently, congruence and the indicated arrangement alone do not determine a unique closest choice when the widths are unspecified. The conditional equal-width result is \\(5/9\\), approximately \\(55.56\\%\\), choice D.",
+"directNodeIds": [
+"cnm_p150",
+"cnm_p197",
+"cnm_h012"
+],
+"legacyRouteId": "m1",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2001_AMC_10_Q18#m1",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2001_AMC_10_Q18.json",
+"sha256": "ee5bcd48f748aa3c8a209a37dccf916564e5536cfddea503fef6382dcdd04d23",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2001_AMC_10_Q18",
+"position": {
+"year": 2001,
+"level": "AMC 10",
+"batch": "NA",
+"number": 18
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2001/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2001_AMC_10_Q18",
 "figureSources": {
 "figures/2001_AMC_10_Q18_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc10/2001/18.svg",
+"alt": "",
+"sha256": "3b075fe057fc64c8a9c4430439cd10e302e8bcd815c554c12afaab656c8077f0",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2001/18.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2001/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "5c462d78e3c1c813898839fbcf672dc703fefd2aa70dc8fd5d20cf168a3c02d1",
+"contentHash": "0c8cbebdc206425b0d2aeb1177cff56df318f10e99b6bc0d4c0f7a99e26bc387",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -350776,9 +353541,40 @@ window.AMC_BANK = {
 "cnm_p197"
 ],
 "supportIds": [
-"cnm_p089"
+"cnm_p089",
+"cnm_p194",
+"cnm_p195"
 ],
-"routes": [],
+"routes": [
+{
+"id": "m1",
+"label": "A repeating block and the width qualification",
+"nodeIds": [
+"cnm_p150",
+"cnm_p197",
+"cnm_h012",
+"cnm_p089",
+"cnm_p194",
+"cnm_p195",
+"cnm_120",
+"cnm_p171"
+],
+"methodDirectNodeIds": {
+"m1": [
+"cnm_p150",
+"cnm_p197",
+"cnm_h012"
+]
+},
+"contextNodeIds": [
+"cnm_p089",
+"cnm_p194",
+"cnm_p195",
+"cnm_120",
+"cnm_p171"
+]
+}
+],
 "flags": [
 "The calculation reads the equal widths of the repeating layout from the unlabelled figure.",
 "diagram_equal_strip_widths_interpreted_as_indicated",
@@ -351303,14 +354099,17 @@ window.AMC_BANK = {
 {
 "id": "2001_AMC_10_Q22",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2001,
 "level": "AMC 10",
 "batch": "NA",
 "number": 22,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "In the magic square shown, the sums of the numbers in each row, column, and diagonal are the same. Five of these numbers are represented by \\(v,\\) \\(w,\\) \\(x,\\) \\(y,\\) and \\(z.\\) Find \\(y+z.\\)\n\n[Figure 1](figures/2001_AMC_10_Q22_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -351320,22 +354119,86 @@ window.AMC_BANK = {
 "D": "\\(46\\)",
 "E": "\\(47\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2001/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Two lines with the same sum are especially useful when they share an entry: subtracting that entry leaves equal sums of the other two entries.\n\nThe top row and left column both contain \\(v\\), so\n\\[\n24+w=18+25,\n\\qquad w=19.\n\\]\nLikewise, the middle column and bottom row both contain \\(z\\), giving\n\\[\n24+x=25+21,\n\\qquad x=22.\n\\]\nNow the diagonal containing \\(w,x,25\\) is completely known. Its sum, and therefore every row and column sum, is\n\\[\n19+22+25=66.\n\\]\nThe middle row and bottom row then give\n\\[\ny=66-18-22=26,\n\\qquad z=66-25-21=20.\n\\]\nThus \\(y+z=26+20=\\boxed{46}\\), choice \\(\\boxed{\\text{D}}\\).",
+"solutionMethods": [
+{
+"id": "compare_shared_entries",
+"label": "Compare lines with a shared entry",
+"explanation": "Two lines with the same sum are especially useful when they share an entry: subtracting that entry leaves equal sums of the other two entries.\n\nThe top row and left column both contain \\(v\\), so\n\\[\n24+w=18+25,\n\\qquad w=19.\n\\]\nLikewise, the middle column and bottom row both contain \\(z\\), giving\n\\[\n24+x=25+21,\n\\qquad x=22.\n\\]\nNow the diagonal containing \\(w,x,25\\) is completely known. Its sum, and therefore every row and column sum, is\n\\[\n19+22+25=66.\n\\]\nThe middle row and bottom row then give\n\\[\ny=66-18-22=26,\n\\qquad z=66-25-21=20.\n\\]\nThus \\(y+z=26+20=\\boxed{46}\\), choice \\(\\boxed{\\text{D}}\\).",
+"directNodeIds": [
+"cnm_p145",
+"cnm_040"
+],
+"legacyRouteId": "compare_shared_entries",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2001_AMC_10_Q22#compare_shared_entries",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2001_AMC_10_Q22.json",
+"sha256": "777d182254fd75392a7e0da2631a2c66b485d2d57495989e1e539bdcf7086531",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2001_AMC_10_Q22",
+"position": {
+"year": 2001,
+"level": "AMC 10",
+"batch": "NA",
+"number": 22
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2001/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2001_AMC_10_Q22",
 "figureSources": {
 "figures/2001_AMC_10_Q22_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc10/2001/22.svg",
+"alt": "",
+"sha256": "275f306525d23b9366722b1fe00869e54a438889b0fce21bcdc2f4e8f8ca8d2e",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2001/22.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2001/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "0335e8e73f50cff0d5adf72dc0736007b0d79aa3ff37a1bf1a06f69d7754b213",
+"contentHash": "3dc129ac47fcd01094a1ef3cc9e0dbee1da780053a357eb14b907083f2c8ac4e",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -351344,7 +354207,28 @@ window.AMC_BANK = {
 "supportIds": [
 "cnm_040"
 ],
-"routes": [],
+"routes": [
+{
+"id": "compare_shared_entries",
+"label": "Compare lines with a shared entry",
+"nodeIds": [
+"cnm_p145",
+"cnm_040",
+"cnm_039",
+"cnm_p112"
+],
+"methodDirectNodeIds": {
+"compare_shared_entries": [
+"cnm_p145",
+"cnm_040"
+]
+},
+"contextNodeIds": [
+"cnm_039",
+"cnm_p112"
+]
+}
+],
 "flags": []
 }
 },
@@ -352913,14 +355797,17 @@ window.AMC_BANK = {
 {
 "id": "2001_AMC_12_Q08",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2001,
 "level": "AMC 12",
 "batch": "NA",
 "number": 8,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Which of the cones below can be formed from a \\(252^\\circ\\) sector of a circle of radius \\(10\\) by aligning the two straight sides?\n\n[Figure 1](figures/2001_AMC_12_Q08_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -352930,42 +355817,131 @@ window.AMC_BANK = {
 "D": "[Figure 5](figures/2001_AMC_12_Q08_choiceD_fig5.svg)",
 "E": "[Figure 6](figures/2001_AMC_12_Q08_choiceE_fig6.svg)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "figure",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2001/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "When the straight sides are joined, the sector's center becomes the cone's vertex. Thus the sector radius becomes the slant height, which is \\(10\\).\n\nThe curved edge wraps once around the base, so its length equals the base circumference. If \\(r\\) is the base radius, then\n\\[\n2\\pi r=\\frac{252}{360}(2\\pi\\cdot10)=14\\pi.\n\\]\nDividing by \\(2\\pi\\) gives \\(r=7\\). The required cone therefore has slant height \\(10\\) and base radius \\(7\\), which is choice \\(\\boxed{\\text{C}}\\).",
+"solutionMethods": [
+{
+"id": "arc-becomes-circumference",
+"label": "Track the sector's radius and arc",
+"explanation": "When the straight sides are joined, the sector's center becomes the cone's vertex. Thus the sector radius becomes the slant height, which is \\(10\\).\n\nThe curved edge wraps once around the base, so its length equals the base circumference. If \\(r\\) is the base radius, then\n\\[\n2\\pi r=\\frac{252}{360}(2\\pi\\cdot10)=14\\pi.\n\\]\nDividing by \\(2\\pi\\) gives \\(r=7\\). The required cone therefore has slant height \\(10\\) and base radius \\(7\\), which is choice \\(\\boxed{\\text{C}}\\).",
+"directNodeIds": [
+"cnm_258",
+"cnm_256"
+],
+"legacyRouteId": "arc-becomes-circumference",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2001_AMC_12_Q08#arc-becomes-circumference",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2001_AMC_12_Q08.json",
+"sha256": "8cb22c241b43e317da44f9d5e3bfd1d38da0debdaa9106fe159bf8df291bdd47",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2001_AMC_12_Q08",
+"position": {
+"year": 2001,
+"level": "AMC 12",
+"batch": "NA",
+"number": 8
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2001/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2001_AMC_12_Q08",
 "figureSources": {
 "figures/2001_AMC_12_Q08_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc12/2001/8.svg",
-"alt": ""
-},
-"figures/2001_AMC_12_Q08_choiceA_fig2.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc12/2001/8A.svg",
-"alt": ""
-},
-"figures/2001_AMC_12_Q08_choiceB_fig3.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc12/2001/8B.svg",
-"alt": ""
-},
-"figures/2001_AMC_12_Q08_choiceC_fig4.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc12/2001/8C.svg",
-"alt": ""
-},
-"figures/2001_AMC_12_Q08_choiceD_fig5.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc12/2001/8D.svg",
-"alt": ""
-},
-"figures/2001_AMC_12_Q08_choiceE_fig6.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc12/2001/8E.svg",
+"alt": "",
+"sha256": "a2d09572bb1c276ab5a2d96ade89ca39b7a19de6c0b1f27cb672a0dec0274e79",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2001/8.svg",
 "alt": ""
 }
 },
+"figures/2001_AMC_12_Q08_choiceA_fig2.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2001/8A.svg",
+"alt": "",
+"sha256": "dcc0909777bf1a52b89410b49c3c70ceba0561e9c55e70cf84d279f58492c993",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2001/8A.svg",
+"alt": ""
+}
+},
+"figures/2001_AMC_12_Q08_choiceB_fig3.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2001/8B.svg",
+"alt": "",
+"sha256": "c6499bad030e733da65a65de4fa413edde344d4c118f60f6b660ddf3a346cad1",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2001/8B.svg",
+"alt": ""
+}
+},
+"figures/2001_AMC_12_Q08_choiceC_fig4.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2001/8C.svg",
+"alt": "",
+"sha256": "6a8b744b54ac39a55e72e7e19f64a391731bcd71609a76a3a1ad41ea7b728a24",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2001/8C.svg",
+"alt": ""
+}
+},
+"figures/2001_AMC_12_Q08_choiceD_fig5.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2001/8D.svg",
+"alt": "",
+"sha256": "c1106de09ecb705fdef0c855348cd47d568dda8fca3ee6d2c839098d70602c1b",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2001/8D.svg",
+"alt": ""
+}
+},
+"figures/2001_AMC_12_Q08_choiceE_fig6.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2001/8E.svg",
+"alt": "",
+"sha256": "41669ef02fa558ac9cbab96446bef311a80ae0057493998f1e36eaa36c795ff2",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2001/8E.svg",
+"alt": ""
+}
+}
+},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2001/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "43673a1eda27b2551d4220dedca3e70eb14dda97c8277bf3ebc890d546065bbb",
+"contentHash": "3bc404fd02ec86ada1ba593ef233254c13890ca1e08a73e6c80ce140e7e31b07",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -352975,7 +355951,28 @@ window.AMC_BANK = {
 "cnm_256",
 "cnm_p190"
 ],
-"routes": [],
+"routes": [
+{
+"id": "arc-becomes-circumference",
+"label": "Track the sector's radius and arc",
+"nodeIds": [
+"cnm_258",
+"cnm_256",
+"cnm_p190",
+"cnm_250"
+],
+"methodDirectNodeIds": {
+"arc-becomes-circumference": [
+"cnm_258",
+"cnm_256"
+]
+},
+"contextNodeIds": [
+"cnm_p190",
+"cnm_250"
+]
+}
+],
 "flags": []
 }
 },
@@ -353106,14 +356103,17 @@ window.AMC_BANK = {
 {
 "id": "2001_AMC_12_Q10",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2001,
 "level": "AMC 12",
 "batch": "NA",
 "number": 10,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "The plane is tiled by congruent squares and congruent pentagons as indicated. The percent of the plane that is enclosed by the pentagons is closest to\n\n[Figure 1](figures/2001_AMC_12_Q10_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -353123,22 +356123,86 @@ window.AMC_BANK = {
 "D": "\\(56\\)",
 "E": "\\(58\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2001/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "A repeating block makes the area comparison easier: subtract the square tiles' area from the block's total area, leaving precisely the area covered by pentagons.\n\nAssume first that the strips between the square tiles have width equal to a square tile's side length. Let that side length be \\(s>0\\). A square repeating block surrounding one meeting point of four pentagons then has side length \\(3s\\), with four square tiles in its corners. The pentagons occupy the remaining area,\n\\[\n(3s)^2-4s^2=5s^2.\n\\]\nCopies of this block fill the plane without gaps or overlapping interiors, so the pentagon percentage equals its percentage within one block:\n\\[\n\\frac{5s^2}{9s^2}\\cdot100\\%\n=55\\frac59\\%.\n\\]\nUnder the equal-width assumption, the closest choice is \\(\\boxed{\\text{D}:56\\%}\\).\n\nThe figure does not mark the strip width as equal to a square's side, and congruence alone does not force that equality. To check this, choose any \\(s>0\\) and \\(w>0\\). Make a square block of side \\(2s+w\\), placing a square of side \\(s\\) in each corner. What remains is four \\(s\\)-by-\\(w\\) rectangles surrounding a central square of side \\(w\\). Join the central square's center to its four corners, and attach each resulting triangle to the rectangle sharing its base. The four resulting shapes are pentagons, and quarter-turns about the block's center carry them onto one another, so they are congruent.\n\nTranslated copies of these blocks tile the plane: the corner squares, rectangles, and central triangles partition every block without gaps or overlapping interiors. Thus this construction preserves the arrangement while allowing the strip width to vary. Its pentagon fraction is\n\\[\n1-\\frac{4s^2}{(2s+w)^2}.\n\\]\nFor \\(w=s\\), this is \\(5/9\\). For \\(w=4s/5\\), it is\n\\[\n1-\\frac{4}{(14/5)^2}\n=1-\\frac{25}{49}\n=\\frac{24}{49}\n\\approx48.98\\%,\n\\]\nwhose closest choice is A, \\(50\\%\\).\n\nConsequently, the unspecified width prevents a unique percentage and closest choice. Some other widths also make D closest; equal widths are simply one sufficient assumption giving the intended fraction \\(5/9\\) and choice \\(\\boxed{\\text{D}:56\\%}\\).",
+"solutionMethods": [
+{
+"id": "repeating-block-and-width-check",
+"label": "Compare areas in a repeating block",
+"explanation": "A repeating block makes the area comparison easier: subtract the square tiles' area from the block's total area, leaving precisely the area covered by pentagons.\n\nAssume first that the strips between the square tiles have width equal to a square tile's side length. Let that side length be \\(s>0\\). A square repeating block surrounding one meeting point of four pentagons then has side length \\(3s\\), with four square tiles in its corners. The pentagons occupy the remaining area,\n\\[\n(3s)^2-4s^2=5s^2.\n\\]\nCopies of this block fill the plane without gaps or overlapping interiors, so the pentagon percentage equals its percentage within one block:\n\\[\n\\frac{5s^2}{9s^2}\\cdot100\\%\n=55\\frac59\\%.\n\\]\nUnder the equal-width assumption, the closest choice is \\(\\boxed{\\text{D}:56\\%}\\).\n\nThe figure does not mark the strip width as equal to a square's side, and congruence alone does not force that equality. To check this, choose any \\(s>0\\) and \\(w>0\\). Make a square block of side \\(2s+w\\), placing a square of side \\(s\\) in each corner. What remains is four \\(s\\)-by-\\(w\\) rectangles surrounding a central square of side \\(w\\). Join the central square's center to its four corners, and attach each resulting triangle to the rectangle sharing its base. The four resulting shapes are pentagons, and quarter-turns about the block's center carry them onto one another, so they are congruent.\n\nTranslated copies of these blocks tile the plane: the corner squares, rectangles, and central triangles partition every block without gaps or overlapping interiors. Thus this construction preserves the arrangement while allowing the strip width to vary. Its pentagon fraction is\n\\[\n1-\\frac{4s^2}{(2s+w)^2}.\n\\]\nFor \\(w=s\\), this is \\(5/9\\). For \\(w=4s/5\\), it is\n\\[\n1-\\frac{4}{(14/5)^2}\n=1-\\frac{25}{49}\n=\\frac{24}{49}\n\\approx48.98\\%,\n\\]\nwhose closest choice is A, \\(50\\%\\).\n\nConsequently, the unspecified width prevents a unique percentage and closest choice. Some other widths also make D closest; equal widths are simply one sufficient assumption giving the intended fraction \\(5/9\\) and choice \\(\\boxed{\\text{D}:56\\%}\\).",
+"directNodeIds": [
+"cnm_p150",
+"cnm_p197"
+],
+"legacyRouteId": "repeating-block-and-width-check",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2001_AMC_12_Q10#repeating-block-and-width-check",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2001_AMC_12_Q10.json",
+"sha256": "d49c40eb0de2d8d00fd59ddd0e3fb017f50b12066dd90d73f74fe4f388aff725",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2001_AMC_12_Q10",
+"position": {
+"year": 2001,
+"level": "AMC 12",
+"batch": "NA",
+"number": 10
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2001/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2001_AMC_12_Q10",
 "figureSources": {
 "figures/2001_AMC_12_Q10_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc12/2001/10.svg",
+"alt": "",
+"sha256": "224bcace326833570b2316783e31c8696783d53fbb78ec867f56d0024853328e",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2001/10.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2001/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "b9b7c641994f35c299f93214100c8f9cc4914e01f84edf34946391a8f373b54e",
+"contentHash": "255353da553f9cc070a337ed04e07ca5c599fc7bcff3df2d97c6c44b56347bb8",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -353146,9 +356210,36 @@ window.AMC_BANK = {
 "cnm_p197"
 ],
 "supportIds": [
-"cnm_p089"
+"cnm_p089",
+"cnm_p194",
+"cnm_p195"
 ],
-"routes": [],
+"routes": [
+{
+"id": "repeating-block-and-width-check",
+"label": "Compare areas in a repeating block",
+"nodeIds": [
+"cnm_p150",
+"cnm_p197",
+"cnm_p089",
+"cnm_p194",
+"cnm_p195",
+"cnm_p171"
+],
+"methodDirectNodeIds": {
+"repeating-block-and-width-check": [
+"cnm_p150",
+"cnm_p197"
+]
+},
+"contextNodeIds": [
+"cnm_p089",
+"cnm_p194",
+"cnm_p195",
+"cnm_p171"
+]
+}
+],
 "flags": [
 "The calculation reads the equal widths of the repeating layout from the unlabelled figure.",
 "diagram_equal_strip_widths_interpreted_as_indicated",
@@ -353763,14 +356854,17 @@ window.AMC_BANK = {
 {
 "id": "2001_AMC_12_Q15",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2001,
 "level": "AMC 12",
 "batch": "NA",
 "number": 15,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "An insect lives on the surface of a regular tetrahedron with edges of length \\(1.\\) It wishes to travel on the surface of the tetrahedron from the midpoint of one edge to the midpoint of the opposite edge. What is the length of the shortest such trip? (Note: Two edges of a tetrahedron are opposite if they have no common endpoint.)\n\n[Figure 1](figures/2001_AMC_12_Q15_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -353780,31 +356874,118 @@ window.AMC_BANK = {
 "D": "\\(\\dfrac{3}{2}\\)",
 "E": "\\(2\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "B",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2001/solutions",
+"acceptedResponses": [
+"B"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Label the tetrahedron's vertices \\(A,B,C,D\\), with starting point \\(P\\) the midpoint of \\(AB\\) and destination \\(Q\\) the midpoint of \\(CD\\). Unfold faces \\(ABC\\) and \\(ACD\\) along their common edge \\(AC\\). Unfolding preserves lengths on each face and makes it possible to compare paths with a straight segment.\n\nWrite \\(D'\\) and \\(Q'\\) for the unfolded positions of \\(D\\) and \\(Q\\). The two equilateral triangles form a rhombus \\(ABCD'\\) of side length \\(1\\). Let \\(N\\) be the midpoint of \\(AC\\). In triangle \\(ABC\\), the midpoint theorem gives\n\\[\nPN=\\frac{BC}{2}=\\frac12,\n\\qquad PN\\parallel BC.\n\\]\nIn triangle \\(ACD'\\), it gives\n\\[\nNQ'=\\frac{AD'}2=\\frac12,\n\\qquad NQ'\\parallel AD'.\n\\]\nOpposite sides of the rhombus are parallel, so \\(P,N,Q'\\) lie on one straight line. Since the two triangles lie on opposite sides of \\(AC\\), \\(N\\) lies between \\(P\\) and \\(Q'\\). Hence\n\\[\nPQ'=PN+NQ'=1.\n\\]\nFolding this segment back gives an allowed surface trip of length \\(1\\).\n\nTo prove that no other route is shorter, consider any surface trip from \\(P\\) to \\(Q\\). It must pass from one of the two faces containing \\(AB\\) to one of the two faces containing \\(CD\\). Therefore it meets at least one of \\(AC,AD,BC,BD\\), possibly at a vertex. Call such a point \\(X\\). By interchanging the names within the pairs \\(A,B\\) and \\(C,D\\), we may call that edge \\(AC\\).\n\nThe portion before \\(X\\) has length at least the straight distance \\(PX\\), and the portion after it has length at least \\(XQ\\). These segments lie in faces \\(ABC\\) and \\(ACD\\). Unfold those faces as above. The triangle inequality in the plane gives\n\\[\n\\text{trip length}\\ge PX+XQ'\n\\ge PQ'=1.\n\\]\nThis also covers trips through vertices or across additional faces. A length of \\(1\\) is attainable and no smaller length is possible, so the answer is \\(\\boxed{1}\\), choice \\(\\boxed{\\text{B}}\\).",
+"solutionMethods": [
+{
+"id": "unfold-and-bound-all-paths",
+"label": "Unfold two faces and prove minimality",
+"explanation": "Label the tetrahedron's vertices \\(A,B,C,D\\), with starting point \\(P\\) the midpoint of \\(AB\\) and destination \\(Q\\) the midpoint of \\(CD\\). Unfold faces \\(ABC\\) and \\(ACD\\) along their common edge \\(AC\\). Unfolding preserves lengths on each face and makes it possible to compare paths with a straight segment.\n\nWrite \\(D'\\) and \\(Q'\\) for the unfolded positions of \\(D\\) and \\(Q\\). The two equilateral triangles form a rhombus \\(ABCD'\\) of side length \\(1\\). Let \\(N\\) be the midpoint of \\(AC\\). In triangle \\(ABC\\), the midpoint theorem gives\n\\[\nPN=\\frac{BC}{2}=\\frac12,\n\\qquad PN\\parallel BC.\n\\]\nIn triangle \\(ACD'\\), it gives\n\\[\nNQ'=\\frac{AD'}2=\\frac12,\n\\qquad NQ'\\parallel AD'.\n\\]\nOpposite sides of the rhombus are parallel, so \\(P,N,Q'\\) lie on one straight line. Since the two triangles lie on opposite sides of \\(AC\\), \\(N\\) lies between \\(P\\) and \\(Q'\\). Hence\n\\[\nPQ'=PN+NQ'=1.\n\\]\nFolding this segment back gives an allowed surface trip of length \\(1\\).\n\nTo prove that no other route is shorter, consider any surface trip from \\(P\\) to \\(Q\\). It must pass from one of the two faces containing \\(AB\\) to one of the two faces containing \\(CD\\). Therefore it meets at least one of \\(AC,AD,BC,BD\\), possibly at a vertex. Call such a point \\(X\\). By interchanging the names within the pairs \\(A,B\\) and \\(C,D\\), we may call that edge \\(AC\\).\n\nThe portion before \\(X\\) has length at least the straight distance \\(PX\\), and the portion after it has length at least \\(XQ\\). These segments lie in faces \\(ABC\\) and \\(ACD\\). Unfold those faces as above. The triangle inequality in the plane gives\n\\[\n\\text{trip length}\\ge PX+XQ'\n\\ge PQ'=1.\n\\]\nThis also covers trips through vertices or across additional faces. A length of \\(1\\) is attainable and no smaller length is possible, so the answer is \\(\\boxed{1}\\), choice \\(\\boxed{\\text{B}}\\).",
+"directNodeIds": [
+"cnm_051",
+"cnm_054",
+"cnm_185",
+"cnm_183",
+"cnm_190"
+],
+"legacyRouteId": "unfold-and-bound-all-paths",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2001_AMC_12_Q15#unfold-and-bound-all-paths",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2001_AMC_12_Q15.json",
+"sha256": "bbcee90c4eb3f70fdd35d85cc73d750682432716a53660caa46d63e396c68772",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "unfold-two-faces",
+"label": "Unfold adjacent faces",
+"directNodeIds": [
+"cnm_051",
+"cnm_054",
+"cnm_185",
+"cnm_183"
+],
+"legacyRouteId": "unfold-two-faces",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2300",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2001_AMC_12_Q15#unfold-two-faces",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2001_AMC_12_Q15",
+"position": {
+"year": 2001,
+"level": "AMC 12",
+"batch": "NA",
+"number": 15
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2001/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2001_AMC_12_Q15",
 "figureSources": {
 "figures/2001_AMC_12_Q15_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc12/2001/15.svg",
+"alt": "",
+"sha256": "3c82ec9bc9f67a2f66c7ac887169e0966c05080151bc45ef32a68c5d9555ce02",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2001/15.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2001/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "f874681676e26e2c407ecbc42a3f18c69cf7918f969872aa856f5914341a5089",
+"contentHash": "1635f42d8a5cd831ad291ccd641a863bfd32d37200160a0d231c86c7ddd54078",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
-"cnm_051",
 "cnm_054"
 ],
 "supportIds": [
-"cnm_185",
-"cnm_183"
+"cnm_055",
+"cnm_139"
 ],
 "routes": [
 {
@@ -353815,6 +356996,41 @@ window.AMC_BANK = {
 "cnm_054",
 "cnm_185",
 "cnm_183"
+],
+"methodDirectNodeIds": {
+"unfold-two-faces": [
+"cnm_051",
+"cnm_054",
+"cnm_185",
+"cnm_183"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "unfold-and-bound-all-paths",
+"label": "Unfold two faces and prove minimality",
+"nodeIds": [
+"cnm_051",
+"cnm_054",
+"cnm_185",
+"cnm_183",
+"cnm_190",
+"cnm_055",
+"cnm_139"
+],
+"methodDirectNodeIds": {
+"unfold-and-bound-all-paths": [
+"cnm_051",
+"cnm_054",
+"cnm_185",
+"cnm_183",
+"cnm_190"
+]
+},
+"contextNodeIds": [
+"cnm_055",
+"cnm_139"
 ]
 }
 ],
@@ -354078,14 +357294,17 @@ window.AMC_BANK = {
 {
 "id": "2001_AMC_12_Q17",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2001,
 "level": "AMC 12",
 "batch": "NA",
 "number": 17,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "A point \\(P\\) is selected at random from the interior of the pentagon with vertices \\(A = (0, 2),\\) \\(B = (4, 0),\\) \\(C = (2\\pi + 1, 0),\\) \\(D = (2\\pi + 1, 4),\\) and \\(E = (0, 4).\\) What is the probability that \\(\\angle APB\\) is obtuse?\n\n[Figure 1](figures/2001_AMC_12_Q17_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -354095,28 +357314,157 @@ window.AMC_BANK = {
 "D": "\\(\\dfrac{3}{8}\\)",
 "E": "\\(\\dfrac{1}{2}\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2001/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "A circle with diameter \\(AB\\) is useful because every other point on that circle sees \\(AB\\) at a right angle. We will show that points inside the circle give obtuse angles, then find how much of its disk lies in the pentagon.\n\nLet \\(\\Gamma\\) be this circle. If \\(P\\) is inside it, extend ray \\(AP\\) to meet \\(\\Gamma\\) again at \\(Q\\). The points occur in the order \\(A,P,Q\\), and \\(\\angle PQB=90^\\circ\\). Thus \\(\\angle APB\\) is an exterior angle of triangle \\(PBQ\\), so\n\\[\n\\angle APB=90^\\circ+\\angle PBQ>90^\\circ.\n\\]\nConversely, suppose \\(P\\) is outside the circle. If ray \\(AP\\) meets the circle again at a forward point \\(Q\\), then \\(Q\\) lies before \\(P\\). Triangle \\(PQB\\) is right at \\(Q\\), so \\(\\angle APB=\\angle QPB\\) is acute. If there is no such forward intersection, then \\(\\angle BAP\\ge90^\\circ\\): otherwise, the perpendicular foot from \\(B\\) to ray \\(AP\\) would be a forward point on \\(\\Gamma\\), by the converse of the diameter theorem. The triangle angle sum again makes \\(\\angle APB\\) acute. Points on \\(\\Gamma\\), other than \\(A,B\\), give right angles. Therefore the desired event is exactly the part of the disk inside the pentagon.\n\nThe midpoint of \\(AB\\) is \\(M=(2,1)\\), and\n\\[\nAB=\\sqrt{4^2+(-2)^2}=2\\sqrt5.\n\\]\nHence the disk is\n\\[\n(x-2)^2+(y-1)^2\\le5.\n\\]\nThe pentagon is the rectangle \\(0\\le x\\le2\\pi+1\\), \\(0\\le y\\le4\\), with the triangle below \\(AB\\) removed. Since \\(AB\\) has equation \\(x+2y=4\\) and passes through \\(M\\), its pentagon side cuts out exactly half the disk, provided no other side clips that half.\n\nTo check this containment, take a disk point satisfying \\(x+2y\\ge4\\). If \\(x<0\\), then \\(y>2\\), giving\n\\[\n(x-2)^2+(y-1)^2>4+1=5,\n\\]\na contradiction. Similarly, if \\(y<0\\), then \\(x>4\\), giving the same contradiction. The other two bounds follow from\n\\[\ny\\le1+\\sqrt5<4,\n\\qquad\nx\\le2+\\sqrt5<5<2\\pi+1.\n\\]\nThus the favorable region really is a semicircle, with area \\(5\\pi/2\\).\n\nThe pentagon's area is\n\\[\n4(2\\pi+1)-\\frac12(4)(2)=8\\pi.\n\\]\nFor uniform selection by area, the probability is therefore\n\\[\n\\frac{5\\pi/2}{8\\pi}=\\boxed{\\frac5{16}},\n\\]\nchoice \\(\\mathrm{C}\\). The circle and polygon boundaries have area zero, so excluding them does not change this probability.",
+"solutionMethods": [
+{
+"id": "diameter-circle-and-area",
+"label": "Locate the obtuse angles using a diameter circle",
+"explanation": "A circle with diameter \\(AB\\) is useful because every other point on that circle sees \\(AB\\) at a right angle. We will show that points inside the circle give obtuse angles, then find how much of its disk lies in the pentagon.\n\nLet \\(\\Gamma\\) be this circle. If \\(P\\) is inside it, extend ray \\(AP\\) to meet \\(\\Gamma\\) again at \\(Q\\). The points occur in the order \\(A,P,Q\\), and \\(\\angle PQB=90^\\circ\\). Thus \\(\\angle APB\\) is an exterior angle of triangle \\(PBQ\\), so\n\\[\n\\angle APB=90^\\circ+\\angle PBQ>90^\\circ.\n\\]\nConversely, suppose \\(P\\) is outside the circle. If ray \\(AP\\) meets the circle again at a forward point \\(Q\\), then \\(Q\\) lies before \\(P\\). Triangle \\(PQB\\) is right at \\(Q\\), so \\(\\angle APB=\\angle QPB\\) is acute. If there is no such forward intersection, then \\(\\angle BAP\\ge90^\\circ\\): otherwise, the perpendicular foot from \\(B\\) to ray \\(AP\\) would be a forward point on \\(\\Gamma\\), by the converse of the diameter theorem. The triangle angle sum again makes \\(\\angle APB\\) acute. Points on \\(\\Gamma\\), other than \\(A,B\\), give right angles. Therefore the desired event is exactly the part of the disk inside the pentagon.\n\nThe midpoint of \\(AB\\) is \\(M=(2,1)\\), and\n\\[\nAB=\\sqrt{4^2+(-2)^2}=2\\sqrt5.\n\\]\nHence the disk is\n\\[\n(x-2)^2+(y-1)^2\\le5.\n\\]\nThe pentagon is the rectangle \\(0\\le x\\le2\\pi+1\\), \\(0\\le y\\le4\\), with the triangle below \\(AB\\) removed. Since \\(AB\\) has equation \\(x+2y=4\\) and passes through \\(M\\), its pentagon side cuts out exactly half the disk, provided no other side clips that half.\n\nTo check this containment, take a disk point satisfying \\(x+2y\\ge4\\). If \\(x<0\\), then \\(y>2\\), giving\n\\[\n(x-2)^2+(y-1)^2>4+1=5,\n\\]\na contradiction. Similarly, if \\(y<0\\), then \\(x>4\\), giving the same contradiction. The other two bounds follow from\n\\[\ny\\le1+\\sqrt5<4,\n\\qquad\nx\\le2+\\sqrt5<5<2\\pi+1.\n\\]\nThus the favorable region really is a semicircle, with area \\(5\\pi/2\\).\n\nThe pentagon's area is\n\\[\n4(2\\pi+1)-\\frac12(4)(2)=8\\pi.\n\\]\nFor uniform selection by area, the probability is therefore\n\\[\n\\frac{5\\pi/2}{8\\pi}=\\boxed{\\frac5{16}},\n\\]\nchoice \\(\\mathrm{C}\\). The circle and polygon boundaries have area zero, so excluding them does not change this probability.",
+"directNodeIds": [
+"math:geometric-probability",
+"cnm_254",
+"cnm_117",
+"cnm_115",
+"cnm_259",
+"cnm_h173",
+"cnm_h176",
+"math:linear-half-plane-systems",
+"cnm_p192",
+"cnm_p150"
+],
+"legacyRouteId": "diameter-circle-and-area",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2001_AMC_12_Q17#diameter-circle-and-area",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2001_AMC_12_Q17.json",
+"sha256": "8f5c39fb01ec4c4e3ac13a6d848da82d739ad655fbdb1537f5a44b9617f4eab6",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "diameter-circle-locus",
+"label": "Use the diameter-circle angle locus and prove semicircle containment",
+"directNodeIds": [
+"cnm_254",
+"cnm_115",
+"cnm_117",
+"cnm_259",
+"cnm_h176",
+"cnm_h173",
+"cnm_257",
+"cnm_p089",
+"cnm_p148",
+"cnm_p150"
+],
+"legacyRouteId": "diameter-circle-locus",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2302",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2001_AMC_12_Q17#diameter-circle-locus",
+"evidence": []
+}
+},
+{
+"id": "negative-dot-product",
+"label": "Use the negative-dot-product disk and the clipped rectangle area",
+"directNodeIds": [
+"cnm_h088",
+"cnm_h061",
+"cnm_h176",
+"cnm_257",
+"cnm_p089",
+"cnm_p148",
+"cnm_p150"
+],
+"legacyRouteId": "negative-dot-product",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2302",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2001_AMC_12_Q17#negative-dot-product",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2001_AMC_12_Q17",
+"position": {
+"year": 2001,
+"level": "AMC 12",
+"batch": "NA",
+"number": 17
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2001/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2001_AMC_12_Q17",
 "figureSources": {
 "figures/2001_AMC_12_Q17_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc12/2001/17.svg",
+"alt": "",
+"sha256": "7f5b131f3481585b2fa17385ba7185210d8f8d9502d4867e50b70cea13f80be3",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2001/17.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2001/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "e7dd4e68d1d13481061afb69cf4bee6b8e0e7d1fe8fcaf3f87fab1cde1dabe62",
+"contentHash": "f30348863442b39b4f5dc9a8b7dc6748ea57f7bb4dc10bc17b9616501d34d44f",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
 "math:geometric-probability"
 ],
-"supportIds": [],
+"supportIds": [
+"cnm_055",
+"cnm_p089",
+"cnm_p148",
+"cnm_p192",
+"cnm_p150"
+],
 "routes": [
 {
 "id": "diameter-circle-locus",
@@ -354132,7 +357480,22 @@ window.AMC_BANK = {
 "cnm_p089",
 "cnm_p148",
 "cnm_p150"
+],
+"methodDirectNodeIds": {
+"diameter-circle-locus": [
+"cnm_254",
+"cnm_115",
+"cnm_117",
+"cnm_259",
+"cnm_h176",
+"cnm_h173",
+"cnm_257",
+"cnm_p089",
+"cnm_p148",
+"cnm_p150"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "negative-dot-product",
@@ -354145,6 +357508,56 @@ window.AMC_BANK = {
 "cnm_p089",
 "cnm_p148",
 "cnm_p150"
+],
+"methodDirectNodeIds": {
+"negative-dot-product": [
+"cnm_h088",
+"cnm_h061",
+"cnm_h176",
+"cnm_257",
+"cnm_p089",
+"cnm_p148",
+"cnm_p150"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "diameter-circle-and-area",
+"label": "Locate the obtuse angles using a diameter circle",
+"nodeIds": [
+"math:geometric-probability",
+"cnm_254",
+"cnm_117",
+"cnm_115",
+"cnm_259",
+"cnm_h173",
+"cnm_h176",
+"math:linear-half-plane-systems",
+"cnm_p192",
+"cnm_p150",
+"cnm_055",
+"cnm_p089",
+"cnm_p148"
+],
+"methodDirectNodeIds": {
+"diameter-circle-and-area": [
+"math:geometric-probability",
+"cnm_254",
+"cnm_117",
+"cnm_115",
+"cnm_259",
+"cnm_h173",
+"cnm_h176",
+"math:linear-half-plane-systems",
+"cnm_p192",
+"cnm_p150"
+]
+},
+"contextNodeIds": [
+"cnm_055",
+"cnm_p089",
+"cnm_p148"
 ]
 }
 ],
@@ -354158,14 +357571,17 @@ window.AMC_BANK = {
 {
 "id": "2001_AMC_12_Q18",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2001,
 "level": "AMC 12",
 "batch": "NA",
 "number": 18,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "A circle centered at \\(A\\) with a radius of \\(1\\) and a circle centered at \\(B\\) with a radius of \\(4\\) are externally tangent. A third circle is tangent to the first two and to one of their common external tangents as shown. The radius of the third circle is\n\n[Figure 1](figures/2001_AMC_12_Q18_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -354175,22 +357591,87 @@ window.AMC_BANK = {
 "D": "\\(\\dfrac{4}{9}\\)",
 "E": "\\(\\dfrac{1}{2}\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2001/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The common tangent turns the circle contacts into right triangles. For two externally tangent circles of positive radii \\(u\\) and \\(v\\), both lying on the same side of a tangent line, their centers are \\(u\\) and \\(v\\) units from that line. The distance between the centers is \\(u+v\\), and their perpendicular separation is \\(|u-v|\\). If \\(d\\) is the distance between their tangency points on the line, the Pythagorean theorem gives\n\\[\nd^2=(u+v)^2-(u-v)^2=4uv,\n\\]\nso \\(d=2\\sqrt{uv}\\).\n\nFor the original circles, these tangency points are therefore\n\\[\n2\\sqrt{1\\cdot4}=4\n\\]\nunits apart. In the supplied figure, the third circle lies in the bounded gap, so its tangency point on the line lies between the original two tangency points.\n\nLet its radius be \\(r>0\\). Applying the same formula to its contacts with the radius-\\(1\\) and radius-\\(4\\) circles gives distances \\(2\\sqrt r\\) and \\(4\\sqrt r\\). These fill the original interval, so\n\\[\n2\\sqrt r+4\\sqrt r=4.\n\\]\nConsequently \\(\\sqrt r=2/3\\), and\n\\[\nr=\\boxed{\\frac49}.\n\\]\nThis positive value gives tangency-point distances \\(4/3\\) and \\(8/3\\), which add to \\(4\\), so it satisfies the pictured placement. The answer is \\(\\mathrm{D}\\).",
+"solutionMethods": [
+{
+"id": "tangency-feet-and-pythagoras",
+"label": "Measure distances along the common tangent",
+"explanation": "The common tangent turns the circle contacts into right triangles. For two externally tangent circles of positive radii \\(u\\) and \\(v\\), both lying on the same side of a tangent line, their centers are \\(u\\) and \\(v\\) units from that line. The distance between the centers is \\(u+v\\), and their perpendicular separation is \\(|u-v|\\). If \\(d\\) is the distance between their tangency points on the line, the Pythagorean theorem gives\n\\[\nd^2=(u+v)^2-(u-v)^2=4uv,\n\\]\nso \\(d=2\\sqrt{uv}\\).\n\nFor the original circles, these tangency points are therefore\n\\[\n2\\sqrt{1\\cdot4}=4\n\\]\nunits apart. In the supplied figure, the third circle lies in the bounded gap, so its tangency point on the line lies between the original two tangency points.\n\nLet its radius be \\(r>0\\). Applying the same formula to its contacts with the radius-\\(1\\) and radius-\\(4\\) circles gives distances \\(2\\sqrt r\\) and \\(4\\sqrt r\\). These fill the original interval, so\n\\[\n2\\sqrt r+4\\sqrt r=4.\n\\]\nConsequently \\(\\sqrt r=2/3\\), and\n\\[\nr=\\boxed{\\frac49}.\n\\]\nThis positive value gives tangency-point distances \\(4/3\\) and \\(8/3\\), which add to \\(4\\), so it satisfies the pictured placement. The answer is \\(\\mathrm{D}\\).",
+"directNodeIds": [
+"cnm_h181",
+"cnm_262",
+"cnm_174"
+],
+"legacyRouteId": "tangency-feet-and-pythagoras",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2001_AMC_12_Q18#tangency-feet-and-pythagoras",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2001_AMC_12_Q18.json",
+"sha256": "d959e05be57a5d854c0423da9ed21011190f381e71a3ada1909ad69a68fd5e0b",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2001_AMC_12_Q18",
+"position": {
+"year": 2001,
+"level": "AMC 12",
+"batch": "NA",
+"number": 18
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2001/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2001_AMC_12_Q18",
 "figureSources": {
 "figures/2001_AMC_12_Q18_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc12/2001/18.svg",
+"alt": "",
+"sha256": "76cfe99c671f908f2dd32c4710fa389f24fb154a2b9037dd18eb99665522124a",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2001/18.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2001/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "dc5c8dd66d1c5765d46feb6c04951e5c9a1d528c6da2f645a9c33315cbe0fd78",
+"contentHash": "2a4c51ebfdbe06fd7c29adf6df88a3e011eb390583c23adb8b935ccfe09a2d23",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -354200,7 +357681,36 @@ window.AMC_BANK = {
 "supportIds": [
 "cnm_174"
 ],
-"routes": [],
+"routes": [
+{
+"id": "tangency-feet-and-pythagoras",
+"label": "Measure distances along the common tangent",
+"nodeIds": [
+"cnm_h181",
+"cnm_262",
+"cnm_174",
+"cnm_260",
+"cnm_075",
+"cnm_148",
+"cnm_172",
+"cnm_042"
+],
+"methodDirectNodeIds": {
+"tangency-feet-and-pythagoras": [
+"cnm_h181",
+"cnm_262",
+"cnm_174"
+]
+},
+"contextNodeIds": [
+"cnm_260",
+"cnm_075",
+"cnm_148",
+"cnm_172",
+"cnm_042"
+]
+}
+],
 "flags": []
 }
 },
@@ -354691,14 +358201,17 @@ window.AMC_BANK = {
 {
 "id": "2001_AMC_12_Q22",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2001,
 "level": "AMC 12",
 "batch": "NA",
 "number": 22,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "In rectangle \\(ABCD,\\) points \\(F\\) and \\(G\\) lie on \\(\\overline{AB}\\) so that \\(AF = FG = GB\\) and \\(E\\) is the midpoint of \\(\\overline{DC}.\\) Also, \\(\\overline{AC}\\) intersects \\(\\overline{EF}\\) at \\(H\\) and \\(\\overline{EG}\\) at \\(J.\\) The area of rectangle \\(ABCD\\) is \\(70.\\) Find the area of triangle \\(EHJ.\\)\n\n[Figure 1](figures/2001_AMC_12_Q22_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -354708,22 +358221,155 @@ window.AMC_BANK = {
 "D": "\\(\\dfrac{7}{2}\\)",
 "E": "\\(\\dfrac{35}{8}\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2001/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Because \\(H\\) and \\(J\\) lie on diagonal \\(AC\\), triangles \\(EHJ\\) and \\(EAC\\) have the same altitude to that diagonal. Their areas are therefore in the ratio \\(HJ:AC\\). We can find this length ratio using the parallel top and bottom sides of the rectangle.\n\nSince \\(AF\\parallel EC\\), triangles \\(AFH\\) and \\(CEH\\) are similar: their angles at \\(H\\) are vertical angles, and another pair comes from the parallel sides. Corresponding sides give\n\\[\n\\frac{AH}{HC}=\\frac{AF}{EC}\n=\\frac{AB/3}{AB/2}=\\frac23.\n\\]\nThus \\(AH\\) is two of the five equal ratio parts of \\(AC\\), so\n\\[\n\\frac{AH}{AC}=\\frac25.\n\\]\nSimilarly, triangles \\(AGJ\\) and \\(CEJ\\) are similar, giving\n\\[\n\\frac{AJ}{JC}=\\frac{AG}{EC}\n=\\frac{2AB/3}{AB/2}=\\frac43,\n\\qquad\n\\frac{AJ}{AC}=\\frac47.\n\\]\nSince \\(2/5<4/7\\), the order on the diagonal is \\(A,H,J,C\\). Hence\n\\[\n\\frac{HJ}{AC}=\\frac47-\\frac25=\\frac6{35}.\n\\]\nWrite \\([XYZ]\\) for the area of triangle \\(XYZ\\). Triangle \\(EAC\\) has base \\(EC=AB/2\\) and height \\(AD\\), so\n\\[\n[EAC]=\\frac12\\cdot\\frac{AB}{2}\\cdot AD\n=\\frac{70}{4}.\n\\]\nUsing the common altitude to \\(AC\\), we obtain\n\\[\n[EHJ]=\\frac{HJ}{AC}[EAC]\n=\\frac6{35}\\cdot\\frac{70}{4}\n=\\boxed3.\n\\]\nThe answer is \\(\\mathrm{C}\\).",
+"solutionMethods": [
+{
+"id": "similarity-and-common-altitude",
+"label": "Find diagonal fractions using similar triangles",
+"explanation": "Because \\(H\\) and \\(J\\) lie on diagonal \\(AC\\), triangles \\(EHJ\\) and \\(EAC\\) have the same altitude to that diagonal. Their areas are therefore in the ratio \\(HJ:AC\\). We can find this length ratio using the parallel top and bottom sides of the rectangle.\n\nSince \\(AF\\parallel EC\\), triangles \\(AFH\\) and \\(CEH\\) are similar: their angles at \\(H\\) are vertical angles, and another pair comes from the parallel sides. Corresponding sides give\n\\[\n\\frac{AH}{HC}=\\frac{AF}{EC}\n=\\frac{AB/3}{AB/2}=\\frac23.\n\\]\nThus \\(AH\\) is two of the five equal ratio parts of \\(AC\\), so\n\\[\n\\frac{AH}{AC}=\\frac25.\n\\]\nSimilarly, triangles \\(AGJ\\) and \\(CEJ\\) are similar, giving\n\\[\n\\frac{AJ}{JC}=\\frac{AG}{EC}\n=\\frac{2AB/3}{AB/2}=\\frac43,\n\\qquad\n\\frac{AJ}{AC}=\\frac47.\n\\]\nSince \\(2/5<4/7\\), the order on the diagonal is \\(A,H,J,C\\). Hence\n\\[\n\\frac{HJ}{AC}=\\frac47-\\frac25=\\frac6{35}.\n\\]\nWrite \\([XYZ]\\) for the area of triangle \\(XYZ\\). Triangle \\(EAC\\) has base \\(EC=AB/2\\) and height \\(AD\\), so\n\\[\n[EAC]=\\frac12\\cdot\\frac{AB}{2}\\cdot AD\n=\\frac{70}{4}.\n\\]\nUsing the common altitude to \\(AC\\), we obtain\n\\[\n[EHJ]=\\frac{HJ}{AC}[EAC]\n=\\frac6{35}\\cdot\\frac{70}{4}\n=\\boxed3.\n\\]\nThe answer is \\(\\mathrm{C}\\).",
+"directNodeIds": [
+"cnm_271",
+"cnm_272",
+"cnm_p148"
+],
+"legacyRouteId": "similarity-and-common-altitude",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2001_AMC_12_Q22#similarity-and-common-altitude",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2001_AMC_12_Q22.json",
+"sha256": "4ac787a5c147883dd008c39be667269285cc18d318935585fa4cff667a5926b4",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "coordinate-intersections-and-area-difference",
+"label": "Find the intersection heights with coordinates",
+"explanation": "Coordinates let us find the heights of \\(H\\) and \\(J\\) while keeping the rectangle's side lengths unknown. Let \\(AB=w>0\\) and \\(AD=h>0\\), so \\(wh=70\\). Place\n\\[\nA=(0,0),\\quad B=(w,0),\\quad\nC=(w,h),\\quad D=(0,h).\n\\]\nThe given divisions then give\n\\[\nF=(w/3,0),\\quad G=(2w/3,0),\\quad E=(w/2,h).\n\\]\nThe diagonal \\(AC\\) has equation \\(y=(h/w)x\\). Using the two known endpoints of each line, we obtain\n\\[\nEF:\\quad y=\\frac{6h}{w}x-2h,\n\\qquad\nEG:\\quad y=-\\frac{6h}{w}x+4h.\n\\]\nAt \\(H\\), the equations of \\(AC\\) and \\(EF\\) agree, so\n\\[\n\\frac hw x=\\frac{6h}{w}x-2h,\n\\]\nwhich gives \\(x=2w/5\\) and \\(y=2h/5\\). At \\(J\\),\n\\[\n\\frac hw x=-\\frac{6h}{w}x+4h,\n\\]\nwhich gives \\(x=4w/7\\) and \\(y=4h/7\\). The divisions are valid because \\(w,h>0\\).\n\nNow use the horizontal segment \\(EC\\), of length \\(w/2\\), as a common base. The heights from \\(H\\) and \\(J\\) to its line are respectively \\(3h/5\\) and \\(3h/7\\). Thus, writing brackets for triangle areas,\n\\[\n[EHC]=\\frac12\\cdot\\frac w2\\cdot\\frac{3h}{5}\n=\\frac{3wh}{20},\n\\]\n\\[\n[EJC]=\\frac12\\cdot\\frac w2\\cdot\\frac{3h}{7}\n=\\frac{3wh}{28}.\n\\]\nThe intersection coordinates show the order \\(A,H,J,C\\), so segment \\(EJ\\) divides triangle \\(EHC\\) into triangles \\(EHJ\\) and \\(EJC\\). Therefore\n\\[\n[EHJ]=\\frac{3wh}{20}-\\frac{3wh}{28}\n=\\frac{3wh}{70}\n=\\boxed3.\n\\]\nThe answer is \\(\\mathrm{C}\\).",
+"directNodeIds": [
+"cnm_084",
+"cnm_205",
+"cnm_208",
+"cnm_p148",
+"cnm_p150"
+],
+"legacyRouteId": "coordinate-intersections-and-area-difference",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2001_AMC_12_Q22#coordinate-intersections-and-area-difference",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2001_AMC_12_Q22.json",
+"sha256": "4ac787a5c147883dd008c39be667269285cc18d318935585fa4cff667a5926b4",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "similar-triangle-ratios",
+"label": "Similarity and common-altitude areas",
+"directNodeIds": [
+"cnm_271",
+"cnm_272",
+"cnm_p148"
+],
+"legacyRouteId": "similar-triangle-ratios",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2307",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2001_AMC_12_Q22#similar-triangle-ratios",
+"evidence": []
+}
+},
+{
+"id": "coordinate-intersections",
+"label": "Coordinates and line intersections",
+"directNodeIds": [
+"cnm_084",
+"cnm_208",
+"cnm_p148"
+],
+"legacyRouteId": "coordinate-intersections",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2307",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2001_AMC_12_Q22#coordinate-intersections",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2001_AMC_12_Q22",
+"position": {
+"year": 2001,
+"level": "AMC 12",
+"batch": "NA",
+"number": 22
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2001/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2001_AMC_12_Q22",
 "figureSources": {
 "figures/2001_AMC_12_Q22_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc12/2001/22.svg",
+"alt": "",
+"sha256": "687ddbba4bd860de76ac7f29cb813cbaf1df8b74519fed08af7ebd529e7f26b5",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2001/22.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2001/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "0ec05339d4d9033963939bd3b9221ffc1de5e0f6f693ec29d6ec60fccf777440",
+"contentHash": "39df939d2288f42320ee78b5623dd58d436b1e55db4363b83adbdd938fee7c0f",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -354731,7 +358377,9 @@ window.AMC_BANK = {
 ],
 "supportIds": [
 "cnm_p089",
-"cnm_055"
+"cnm_055",
+"cnm_p077",
+"cnm_p173"
 ],
 "routes": [
 {
@@ -354741,7 +358389,15 @@ window.AMC_BANK = {
 "cnm_271",
 "cnm_272",
 "cnm_p148"
+],
+"methodDirectNodeIds": {
+"similar-triangle-ratios": [
+"cnm_271",
+"cnm_272",
+"cnm_p148"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "coordinate-intersections",
@@ -354750,6 +358406,78 @@ window.AMC_BANK = {
 "cnm_084",
 "cnm_208",
 "cnm_p148"
+],
+"methodDirectNodeIds": {
+"coordinate-intersections": [
+"cnm_084",
+"cnm_208",
+"cnm_p148"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "similarity-and-common-altitude",
+"label": "Find diagonal fractions using similar triangles",
+"nodeIds": [
+"cnm_271",
+"cnm_272",
+"cnm_p148",
+"cnm_069",
+"cnm_063",
+"cnm_268",
+"cnm_055",
+"cnm_p077",
+"cnm_p089",
+"cnm_p173"
+],
+"methodDirectNodeIds": {
+"similarity-and-common-altitude": [
+"cnm_271",
+"cnm_272",
+"cnm_p148"
+]
+},
+"contextNodeIds": [
+"cnm_069",
+"cnm_063",
+"cnm_268",
+"cnm_055",
+"cnm_p077",
+"cnm_p089",
+"cnm_p173"
+]
+},
+{
+"id": "coordinate-intersections-and-area-difference",
+"label": "Find the intersection heights with coordinates",
+"nodeIds": [
+"cnm_084",
+"cnm_205",
+"cnm_208",
+"cnm_p148",
+"cnm_p150",
+"cnm_055",
+"cnm_p077",
+"cnm_p089",
+"cnm_042",
+"cnm_p173"
+],
+"methodDirectNodeIds": {
+"coordinate-intersections-and-area-difference": [
+"cnm_084",
+"cnm_205",
+"cnm_208",
+"cnm_p148",
+"cnm_p150"
+]
+},
+"contextNodeIds": [
+"cnm_055",
+"cnm_p077",
+"cnm_p089",
+"cnm_042",
+"cnm_p173"
 ]
 }
 ],
@@ -354968,14 +358696,17 @@ window.AMC_BANK = {
 {
 "id": "2001_AMC_12_Q24",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2001,
 "level": "AMC 12",
 "batch": "NA",
 "number": 24,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "In triangle \\(ABC,\\) \\(\\angle ABC = 45^\\circ.\\) Point \\(D\\) is on \\(\\overline{BC}\\) so that \\(2 \\cdot BD = CD\\) and \\(\\angle DAB = 15^\\circ.\\) Find \\(\\angle ACB.\\)\n\n[Figure 1](figures/2001_AMC_12_Q24_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -354985,29 +358716,139 @@ window.AMC_BANK = {
 "D": "\\(75^\\circ\\)",
 "E": "\\(90^\\circ\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2001/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The given \\(15^\\circ\\) angle suggests creating another \\(15^\\circ\\) angle at \\(B\\). Draw a ray inside \\(\\angle ABD\\) making \\(30^\\circ\\) with \\(BD\\), and let it meet \\(AD\\) at \\(F\\). Because \\(\\angle ABD=45^\\circ\\), this intersection lies strictly between \\(A\\) and \\(D\\), and\n\\[\n\\angle ABF=45^\\circ-30^\\circ=15^\\circ.\n\\]\nAlso \\(\\angle BAF=\\angle BAD=15^\\circ\\), so triangle \\(ABF\\) is isosceles and \\(AF=BF\\).\n\nNow use the given length ratio. In triangle \\(ABD\\),\n\\[\n\\angle BDA=180^\\circ-45^\\circ-15^\\circ=120^\\circ.\n\\]\nThus triangle \\(BDF\\) has angles \\(30^\\circ,120^\\circ,30^\\circ\\), giving \\(BD=DF\\).\n\nLet \\(E\\) be the midpoint of \\(DC\\). Since \\(DC=2BD\\), we have \\(DE=EC=BD=DF\\). Moreover, \\(\\angle FDE=60^\\circ\\), because \\(DB\\) and \\(DE\\) are opposite rays. Triangle \\(DEF\\) therefore has two equal sides enclosing a \\(60^\\circ\\) angle, so it is equilateral.\n\nConsequently, \\(\\angle FEC=120^\\circ\\). Triangles \\(BDF\\) and \\(CEF\\) are congruent by side-angle-side: \\(BD=CE\\), \\(DF=EF\\), and their included angles are both \\(120^\\circ\\). Hence \\(BF=CF\\), so \\(AF=CF\\).\n\nFinally, \\(EF=EC\\) makes triangle \\(FEC\\) isosceles, with \\(\\angle EFC=30^\\circ\\). Therefore\n\\[\n\\angle DFC=60^\\circ+30^\\circ=90^\\circ.\n\\]\nSince \\(FA\\) and \\(FD\\) are opposite rays, \\(\\angle AFC=90^\\circ\\) as well. Triangle \\(AFC\\) is a right isosceles triangle, so \\(\\angle FAC=45^\\circ\\). It follows that\n\\[\n\\angle BAC=15^\\circ+45^\\circ=60^\\circ,\n\\qquad\n\\angle ACB=180^\\circ-45^\\circ-60^\\circ=\\boxed{75^\\circ}.\n\\]\nThe answer is choice D.",
+"solutionMethods": [
+{
+"id": "equilateral-and-isosceles-construction",
+"label": "Create matching isosceles triangles",
+"explanation": "The given \\(15^\\circ\\) angle suggests creating another \\(15^\\circ\\) angle at \\(B\\). Draw a ray inside \\(\\angle ABD\\) making \\(30^\\circ\\) with \\(BD\\), and let it meet \\(AD\\) at \\(F\\). Because \\(\\angle ABD=45^\\circ\\), this intersection lies strictly between \\(A\\) and \\(D\\), and\n\\[\n\\angle ABF=45^\\circ-30^\\circ=15^\\circ.\n\\]\nAlso \\(\\angle BAF=\\angle BAD=15^\\circ\\), so triangle \\(ABF\\) is isosceles and \\(AF=BF\\).\n\nNow use the given length ratio. In triangle \\(ABD\\),\n\\[\n\\angle BDA=180^\\circ-45^\\circ-15^\\circ=120^\\circ.\n\\]\nThus triangle \\(BDF\\) has angles \\(30^\\circ,120^\\circ,30^\\circ\\), giving \\(BD=DF\\).\n\nLet \\(E\\) be the midpoint of \\(DC\\). Since \\(DC=2BD\\), we have \\(DE=EC=BD=DF\\). Moreover, \\(\\angle FDE=60^\\circ\\), because \\(DB\\) and \\(DE\\) are opposite rays. Triangle \\(DEF\\) therefore has two equal sides enclosing a \\(60^\\circ\\) angle, so it is equilateral.\n\nConsequently, \\(\\angle FEC=120^\\circ\\). Triangles \\(BDF\\) and \\(CEF\\) are congruent by side-angle-side: \\(BD=CE\\), \\(DF=EF\\), and their included angles are both \\(120^\\circ\\). Hence \\(BF=CF\\), so \\(AF=CF\\).\n\nFinally, \\(EF=EC\\) makes triangle \\(FEC\\) isosceles, with \\(\\angle EFC=30^\\circ\\). Therefore\n\\[\n\\angle DFC=60^\\circ+30^\\circ=90^\\circ.\n\\]\nSince \\(FA\\) and \\(FD\\) are opposite rays, \\(\\angle AFC=90^\\circ\\) as well. Triangle \\(AFC\\) is a right isosceles triangle, so \\(\\angle FAC=45^\\circ\\). It follows that\n\\[\n\\angle BAC=15^\\circ+45^\\circ=60^\\circ,\n\\qquad\n\\angle ACB=180^\\circ-45^\\circ-60^\\circ=\\boxed{75^\\circ}.\n\\]\nThe answer is choice D.",
+"directNodeIds": [
+"cnm_130",
+"cnm_139",
+"cnm_123",
+"cnm_137",
+"cnm_138",
+"cnm_115"
+],
+"legacyRouteId": "equilateral-and-isosceles-construction",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2001_AMC_12_Q24#equilateral-and-isosceles-construction",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2001_AMC_12_Q24.json",
+"sha256": "dea4059e15a633767c078da99079a3ddb4eace0dcafadfb510f7111779aebd59",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "right-triangle-trigonometry",
+"label": "Resolve 45° and 60° directions",
+"directNodeIds": [
+"cnm_278",
+"cnm_277",
+"cnm_h072"
+],
+"legacyRouteId": "right-triangle-trigonometry",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2309",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2001_AMC_12_Q24#right-triangle-trigonometry",
+"evidence": []
+}
+},
+{
+"id": "equilateral-auxiliary-construction",
+"label": "Equilateral construction and congruence",
+"directNodeIds": [
+"cnm_139",
+"cnm_123",
+"cnm_137",
+"cnm_138"
+],
+"legacyRouteId": "equilateral-auxiliary-construction",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2309",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2001_AMC_12_Q24#equilateral-auxiliary-construction",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2001_AMC_12_Q24",
+"position": {
+"year": 2001,
+"level": "AMC 12",
+"batch": "NA",
+"number": 24
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2001/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2001_AMC_12_Q24",
 "figureSources": {
 "figures/2001_AMC_12_Q24_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc12/2001/24.svg",
+"alt": "",
+"sha256": "631ca81c9d915c34dca48f4c4458a49152c1eba4606bb97cbbda6620e17a8bce",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2001/24.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2001/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "5329924a5ceb0f3abd963f3506d9c39f0f044b9beaa31d0d1bfdbe061e7676af",
+"contentHash": "846f5328641529fc23bc97d2b396d752e91efbb31b575bfa1fba32a4e97df83d",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_115"
 ],
 "supportIds": [
-"cnm_055"
+"cnm_055",
+"cnm_058"
 ],
 "routes": [
 {
@@ -355017,7 +358858,15 @@ window.AMC_BANK = {
 "cnm_278",
 "cnm_277",
 "cnm_h072"
+],
+"methodDirectNodeIds": {
+"right-triangle-trigonometry": [
+"cnm_278",
+"cnm_277",
+"cnm_h072"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "equilateral-auxiliary-construction",
@@ -355027,6 +358876,47 @@ window.AMC_BANK = {
 "cnm_123",
 "cnm_137",
 "cnm_138"
+],
+"methodDirectNodeIds": {
+"equilateral-auxiliary-construction": [
+"cnm_139",
+"cnm_123",
+"cnm_137",
+"cnm_138"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "equilateral-and-isosceles-construction",
+"label": "Create matching isosceles triangles",
+"nodeIds": [
+"cnm_130",
+"cnm_139",
+"cnm_123",
+"cnm_137",
+"cnm_138",
+"cnm_115",
+"cnm_055",
+"cnm_058",
+"cnm_062",
+"cnm_121"
+],
+"methodDirectNodeIds": {
+"equilateral-and-isosceles-construction": [
+"cnm_130",
+"cnm_139",
+"cnm_123",
+"cnm_137",
+"cnm_138",
+"cnm_115"
+]
+},
+"contextNodeIds": [
+"cnm_055",
+"cnm_058",
+"cnm_062",
+"cnm_121"
 ]
 }
 ],
@@ -355918,14 +359808,17 @@ window.AMC_BANK = {
 {
 "id": "2001_AMC_8_Q07",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2001,
 "level": "AMC 8",
 "batch": "NA",
 "number": 7,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Problems \\(7,\\) \\(8,\\) and \\(9\\) are about these kites.\n\nTo promote her school’s annual Kite Olympics, Genevieve makes a small kite and a large kite for a bulletin board display. The kites look like the one in the diagram. For her small kite Genevieve draws the kite on a one-inch grid. For the large kite she triples both the height and width of the entire grid.\n\n[Figure 1](figures/2001_AMC_8_Q07_question_fig1.svg)\n\nWhat is the number of square inches in the area of the small kite?",
 "questionType": "mixed",
 "choices": {
@@ -355935,47 +359828,136 @@ window.AMC_BANK = {
 "D": "\\(24\\)",
 "E": "\\(25\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "A",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2001/solutions",
+"acceptedResponses": [
+"A"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Connect the left and right corners to divide the small kite into an upper triangle and a lower triangle. Count the spaces between grid dots: their common base is \\(6\\) inches long. The upper triangle has height \\(2\\) inches, and the lower triangle has height \\(5\\) inches.\n\nThe two triangles fill the kite without overlapping interiors, so add their areas:\n\\[\n\\frac12\\cdot6\\cdot2+\\frac12\\cdot6\\cdot5\n=6+15=\\boxed{21}\n\\]\nsquare inches. The answer is choice A.",
+"solutionMethods": [
+{
+"id": "split-into-two-triangles",
+"label": "Split along the horizontal diagonal",
+"explanation": "Connect the left and right corners to divide the small kite into an upper triangle and a lower triangle. Count the spaces between grid dots: their common base is \\(6\\) inches long. The upper triangle has height \\(2\\) inches, and the lower triangle has height \\(5\\) inches.\n\nThe two triangles fill the kite without overlapping interiors, so add their areas:\n\\[\n\\frac12\\cdot6\\cdot2+\\frac12\\cdot6\\cdot5\n=6+15=\\boxed{21}\n\\]\nsquare inches. The answer is choice A.",
+"directNodeIds": [
+"cnm_p150",
+"cnm_p148"
+],
+"legacyRouteId": "split-into-two-triangles",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2001_AMC_8_Q07#split-into-two-triangles",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2001_AMC_8_Q07.json",
+"sha256": "3b960ecd9bccbc0721bdcd8eb5c2a73cba337b25626dbc62393363d3c868c3b5",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2001_AMC_8_Q07",
+"position": {
+"year": 2001,
+"level": "AMC 8",
+"batch": "NA",
+"number": 7
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2001/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2001_AMC_8_Q07",
 "figureSources": {
 "figures/2001_AMC_8_Q07_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2001/bg.svg",
+"alt": "",
+"sha256": "364be86737a1a941147879a8992ced9112c1771ae850f5430e2371ef64e87fb9",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2001/bg.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2001/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "1c5a8d433b068a6aea06de7185906198bec257cfb2135152ba5d0935f4900940",
+"contentHash": "a8ff38422f71c27e98cdf4f9f7fb9344b27a06067f0f18815d4851371c0b1e33",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_p150"
 ],
 "supportIds": [
-"cnm_p148"
+"cnm_p148",
+"math:length-unit-iteration"
 ],
-"routes": [],
+"routes": [
+{
+"id": "split-into-two-triangles",
+"label": "Split along the horizontal diagonal",
+"nodeIds": [
+"cnm_p150",
+"cnm_p148",
+"math:length-unit-iteration",
+"cnm_p103"
+],
+"methodDirectNodeIds": {
+"split-into-two-triangles": [
+"cnm_p150",
+"cnm_p148"
+]
+},
+"contextNodeIds": [
+"math:length-unit-iteration",
+"cnm_p103"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2001_AMC_8_Q08",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2001,
 "level": "AMC 8",
 "batch": "NA",
 "number": 8,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Problems \\(7,\\) \\(8,\\) and \\(9\\) are about these kites.\n\nTo promote her school’s annual Kite Olympics, Genevieve makes a small kite and a large kite for a bulletin board display. The kites look like the one in the diagram. For her small kite Genevieve draws the kite on a one-inch grid. For the large kite she triples both the height and width of the entire grid.\n\n[Figure 1](figures/2001_AMC_8_Q07_question_fig1.svg)\n\nGenevieve puts bracing on her large kite in the form of a cross connecting opposite corners of the kite. How many inches of bracing material does she need?",
-"questionType": "text",
+"questionType": "mixed",
 "choices": {
 "A": "\\(30\\)",
 "B": "\\(32\\)",
@@ -355983,46 +359965,137 @@ window.AMC_BANK = {
 "D": "\\(38\\)",
 "E": "\\(39\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "E",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2001/solutions",
+"acceptedResponses": [
+"E"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The cross consists of the two segments joining opposite corners. On the small kite's one-inch grid, the horizontal segment spans \\(6\\) spaces and the vertical segment spans \\(7\\) spaces, so their lengths are \\(6\\) and \\(7\\) inches.\n\nTripling the grid's width and height triples these lengths. The large kite therefore needs\n\\[\n3\\cdot6+3\\cdot7=18+21=\\boxed{39}\n\\]\ninches of bracing. The braces cross at a single point, which adds no extra length. The answer is choice E.",
+"solutionMethods": [
+{
+"id": "triple-and-add-diagonals",
+"label": "Scale the two braces",
+"explanation": "The cross consists of the two segments joining opposite corners. On the small kite's one-inch grid, the horizontal segment spans \\(6\\) spaces and the vertical segment spans \\(7\\) spaces, so their lengths are \\(6\\) and \\(7\\) inches.\n\nTripling the grid's width and height triples these lengths. The large kite therefore needs\n\\[\n3\\cdot6+3\\cdot7=18+21=\\boxed{39}\n\\]\ninches of bracing. The braces cross at a single point, which adds no extra length. The answer is choice E.",
+"directNodeIds": [
+"cnm_055",
+"cnm_p073"
+],
+"legacyRouteId": "triple-and-add-diagonals",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2001_AMC_8_Q08#triple-and-add-diagonals",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2001_AMC_8_Q08.json",
+"sha256": "00547e34349eeab42d289da3cb42dcc847c0cbb3dedc020313bd15b2856f35f4",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2001_AMC_8_Q08",
+"position": {
+"year": 2001,
+"level": "AMC 8",
+"batch": "NA",
+"number": 8
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2001/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2001_AMC_8_Q08",
 "figureSources": {
 "figures/2001_AMC_8_Q07_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2001/bg.svg",
+"alt": "",
+"sha256": "364be86737a1a941147879a8992ced9112c1771ae850f5430e2371ef64e87fb9",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2001/bg.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2001/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "b3aa2555f789c606e6a9fd8b613c3cdbd1a35e7bc1f1bdcba6f08c0414780d75",
+"contentHash": "95ccd91519cbf180c292c73a3a0c54caa27e3fb5547189854ebd623d879fa0af",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_055",
 "cnm_p073"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"math:length-unit-iteration",
+"cnm_p038"
+],
+"routes": [
+{
+"id": "triple-and-add-diagonals",
+"label": "Scale the two braces",
+"nodeIds": [
+"cnm_055",
+"cnm_p073",
+"math:length-unit-iteration",
+"cnm_p038"
+],
+"methodDirectNodeIds": {
+"triple-and-add-diagonals": [
+"cnm_055",
+"cnm_p073"
+]
+},
+"contextNodeIds": [
+"math:length-unit-iteration",
+"cnm_p038"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2001_AMC_8_Q09",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2001,
 "level": "AMC 8",
 "batch": "NA",
 "number": 9,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Problems \\(7,\\) \\(8,\\) and \\(9\\) are about these kites.\n\nTo promote her school’s annual Kite Olympics, Genevieve makes a small kite and a large kite for a bulletin board display. The kites look like the one in the diagram. For her small kite Genevieve draws the kite on a one-inch grid. For the large kite she triples both the height and width of the entire grid.\n\n[Figure 1](figures/2001_AMC_8_Q07_question_fig1.svg)\n\nThe large kite is covered with gold foil. The foil is cut from a rectangular piece that just covers the entire grid. How many square inches of waste material are cut off from the four corners?",
-"questionType": "text",
+"questionType": "mixed",
 "choices": {
 "A": "\\(63\\)",
 "B": "\\(72\\)",
@@ -356030,22 +360103,86 @@ window.AMC_BANK = {
 "D": "\\(189\\)",
 "E": "\\(264\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2001/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The waste consists of four right triangles, so we can find their areas directly. Count the gaps between grid dots, rather than the dots themselves. The grid is 6 gaps wide and 7 gaps tall. Tripling its dimensions makes each originally one-inch gap 3 inches long.\n\nThe top and bottom vertices are each 3 horizontal gaps from either side of the rectangle. Thus each corner triangle has a horizontal side of \\(3\\cdot3=9\\) inches. The kite's side vertices are 2 gaps below the top and 5 gaps above the bottom. The upper corner triangles therefore have vertical sides of \\(2\\cdot3=6\\) inches, and the lower ones have vertical sides of \\(5\\cdot3=15\\) inches.\n\nUsing triangle area equal to base times height divided by 2, the total waste is\n\\[\n2\\left(\\frac{9\\cdot6}{2}\\right)\n+2\\left(\\frac{9\\cdot15}{2}\\right)\n=54+135=189.\n\\]\nThese four triangles cover all the material outside the kite without overlapping. The waste is \\(\\boxed{189}\\) square inches, choice \\(\\boxed{\\text{D}}\\).",
+"solutionMethods": [
+{
+"id": "m1",
+"label": "Add the four corner areas",
+"explanation": "The waste consists of four right triangles, so we can find their areas directly. Count the gaps between grid dots, rather than the dots themselves. The grid is 6 gaps wide and 7 gaps tall. Tripling its dimensions makes each originally one-inch gap 3 inches long.\n\nThe top and bottom vertices are each 3 horizontal gaps from either side of the rectangle. Thus each corner triangle has a horizontal side of \\(3\\cdot3=9\\) inches. The kite's side vertices are 2 gaps below the top and 5 gaps above the bottom. The upper corner triangles therefore have vertical sides of \\(2\\cdot3=6\\) inches, and the lower ones have vertical sides of \\(5\\cdot3=15\\) inches.\n\nUsing triangle area equal to base times height divided by 2, the total waste is\n\\[\n2\\left(\\frac{9\\cdot6}{2}\\right)\n+2\\left(\\frac{9\\cdot15}{2}\\right)\n=54+135=189.\n\\]\nThese four triangles cover all the material outside the kite without overlapping. The waste is \\(\\boxed{189}\\) square inches, choice \\(\\boxed{\\text{D}}\\).",
+"directNodeIds": [
+"cnm_p150",
+"cnm_p148"
+],
+"legacyRouteId": "m1",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2001_AMC_8_Q09#m1",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2001_AMC_8_Q09.json",
+"sha256": "1b3cc8768b532424b53c0ea611f65dd1758e566fe83619ef9b402905888d144f",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2001_AMC_8_Q09",
+"position": {
+"year": 2001,
+"level": "AMC 8",
+"batch": "NA",
+"number": 9
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2001/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2001_AMC_8_Q09",
 "figureSources": {
 "figures/2001_AMC_8_Q07_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2001/bg.svg",
+"alt": "",
+"sha256": "364be86737a1a941147879a8992ced9112c1771ae850f5430e2371ef64e87fb9",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2001/bg.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2001/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "a693b3171131ca2365d48e7cb897cd46ea0f9d61867d8b4345194e930fead860",
+"contentHash": "9747b535fa455327fb6d3349f948502aac68da6451aa5e2e24b54864f5d9bdcd",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -356053,10 +360190,31 @@ window.AMC_BANK = {
 "cnm_p148"
 ],
 "supportIds": [
-"cnm_p089",
-"cnm_p073"
+"cnm_p073",
+"cnm_p088"
 ],
-"routes": [],
+"routes": [
+{
+"id": "m1",
+"label": "Add the four corner areas",
+"nodeIds": [
+"cnm_p150",
+"cnm_p148",
+"cnm_p073",
+"cnm_p088"
+],
+"methodDirectNodeIds": {
+"m1": [
+"cnm_p150",
+"cnm_p148"
+]
+},
+"contextNodeIds": [
+"cnm_p073",
+"cnm_p088"
+]
+}
+],
 "flags": []
 }
 },
@@ -356938,14 +361096,17 @@ window.AMC_BANK = {
 {
 "id": "2001_AMC_8_Q16",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2001,
 "level": "AMC 8",
 "batch": "NA",
 "number": 16,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "A square piece of paper, \\(4\\) inches on a side, is folded in half vertically. Both layers are then cut in half parallel to the fold. Three new rectangles are formed, a large one and two small ones. What is the ratio of the perimeter of one of the small rectangles to the perimeter of the large rectangle?\n\n[Figure 1](figures/2001_AMC_8_Q16_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -356955,30 +361116,124 @@ window.AMC_BANK = {
 "D": "\\(\\dfrac{4}{5}\\)",
 "E": "\\(\\dfrac{5}{6}\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "E",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2001/solutions",
+"acceptedResponses": [
+"E"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "First track the widths of the pieces. Folding the \\(4\\)-inch square in half makes a rectangle \\(2\\) inches wide and \\(4\\) inches tall. Cutting this folded rectangle in half parallel to the fold places the cut \\(1\\) inch from the fold.\n\nBecause the cut passes through both layers, unfolding produces two cut lines, one on each side of the original crease and \\(1\\) inch from it. The middle piece stays connected across the crease and has width \\(1+1=2\\) inches. Each outer piece has width \\(1\\) inch. All three pieces are still \\(4\\) inches tall.\n\nA rectangle's perimeter is twice the sum of its length and width. Thus a small rectangle has perimeter \\(2(4+1)=10\\) inches, while the large rectangle has perimeter \\(2(4+2)=12\\) inches. The requested ratio is\n\\[\n\\frac{10}{12}=\\boxed{\\frac56},\n\\]\nchoice \\(\\boxed{\\text{E}}\\).",
+"solutionMethods": [
+{
+"id": "m1",
+"label": "Track the cut when unfolding",
+"explanation": "First track the widths of the pieces. Folding the \\(4\\)-inch square in half makes a rectangle \\(2\\) inches wide and \\(4\\) inches tall. Cutting this folded rectangle in half parallel to the fold places the cut \\(1\\) inch from the fold.\n\nBecause the cut passes through both layers, unfolding produces two cut lines, one on each side of the original crease and \\(1\\) inch from it. The middle piece stays connected across the crease and has width \\(1+1=2\\) inches. Each outer piece has width \\(1\\) inch. All three pieces are still \\(4\\) inches tall.\n\nA rectangle's perimeter is twice the sum of its length and width. Thus a small rectangle has perimeter \\(2(4+1)=10\\) inches, while the large rectangle has perimeter \\(2(4+2)=12\\) inches. The requested ratio is\n\\[\n\\frac{10}{12}=\\boxed{\\frac56},\n\\]\nchoice \\(\\boxed{\\text{E}}\\).",
+"directNodeIds": [
+"cnm_p127",
+"cnm_p078",
+"cnm_p185"
+],
+"legacyRouteId": "m1",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2001_AMC_8_Q16#m1",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2001_AMC_8_Q16.json",
+"sha256": "13ddc713a4f3d88bfab6ffcffd019dabe561275ceba492824661294a0a4b51cd",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2001_AMC_8_Q16",
+"position": {
+"year": 2001,
+"level": "AMC 8",
+"batch": "NA",
+"number": 16
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2001/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2001_AMC_8_Q16",
 "figureSources": {
 "figures/2001_AMC_8_Q16_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2001/16.svg",
+"alt": "",
+"sha256": "a081464b9af3a23d14e33394fc8ba7e4de46a9d2d0118ae2595de849677259ee",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2001/16.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2001/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "23031c69f8e893b4dcdef0fc929a517c56cd34021b5a7ecbca7b8ba897ff41c1",
+"contentHash": "9973b2af4f5308ff2e3a373e838d0013e61bec45f9587308be0bef0904becf1a",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_p078",
 "cnm_p185"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_p077",
+"cnm_p079",
+"cnm_p168"
+],
+"routes": [
+{
+"id": "m1",
+"label": "Track the cut when unfolding",
+"nodeIds": [
+"cnm_p127",
+"cnm_p078",
+"cnm_p185",
+"cnm_p077",
+"cnm_p079",
+"cnm_p168"
+],
+"methodDirectNodeIds": {
+"m1": [
+"cnm_p127",
+"cnm_p078",
+"cnm_p185"
+]
+},
+"contextNodeIds": [
+"cnm_p077",
+"cnm_p079",
+"cnm_p168"
+]
+}
+],
 "flags": []
 }
 },
@@ -357353,14 +361608,17 @@ window.AMC_BANK = {
 {
 "id": "2001_AMC_8_Q19",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2001,
 "level": "AMC 8",
 "batch": "NA",
 "number": 19,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Car \\(M\\) traveled at a constant speed for a given time. This is shown by the dashed line. Car \\(N\\) traveled at twice the speed for the same distance. If Car \\(N\\)’s speed and time are shown as a solid line, which graph illustrates this?",
 "questionType": "text",
 "choices": {
@@ -357370,38 +361628,122 @@ window.AMC_BANK = {
 "D": "[Figure 4](figures/2001_AMC_8_Q19_choiceD_fig4.svg)",
 "E": "[Figure 5](figures/2001_AMC_8_Q19_choiceE_fig5.svg)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "figure",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2001/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Traveling twice as fast means covering the same distance in half the time: in half the time, Car \\(M\\) would cover half the distance, and doubling its speed makes that distance the full trip.\n\nOn these graphs, a segment's height represents speed, while its horizontal length represents travel time. Therefore, Car \\(N\\)'s segment must be twice as high above the time axis and half as long as Car \\(M\\)'s segment.\n\nChoices C and E show \\(N\\) at a lower speed, so they cannot work. A shows the same travel time, and B shows a longer travel time. D shows both the doubled speed and the halved time, so the answer is \\(\\boxed{\\text{D}}\\).\n\nThe supplied figures draw \\(M\\)'s segment as a thin unbroken line; the labels \\(M\\) and \\(N\\) identify the cars despite the stem's reference to a dashed line.",
+"solutionMethods": [
+{
+"id": "m1",
+"label": "Double the speed and halve the time",
+"explanation": "Traveling twice as fast means covering the same distance in half the time: in half the time, Car \\(M\\) would cover half the distance, and doubling its speed makes that distance the full trip.\n\nOn these graphs, a segment's height represents speed, while its horizontal length represents travel time. Therefore, Car \\(N\\)'s segment must be twice as high above the time axis and half as long as Car \\(M\\)'s segment.\n\nChoices C and E show \\(N\\) at a lower speed, so they cannot work. A shows the same travel time, and B shows a longer travel time. D shows both the doubled speed and the halved time, so the answer is \\(\\boxed{\\text{D}}\\).\n\nThe supplied figures draw \\(M\\)'s segment as a thin unbroken line; the labels \\(M\\) and \\(N\\) identify the cars despite the stem's reference to a dashed line.",
+"directNodeIds": [
+"cnm_p214",
+"cnm_197"
+],
+"legacyRouteId": "m1",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2001_AMC_8_Q19#m1",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2001_AMC_8_Q19.json",
+"sha256": "aea67f96b1d62d38f294f57ad876dba9fdcec076876565e546e123c956719919",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2001_AMC_8_Q19",
+"position": {
+"year": 2001,
+"level": "AMC 8",
+"batch": "NA",
+"number": 19
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2001/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2001_AMC_8_Q19",
 "figureSources": {
 "figures/2001_AMC_8_Q19_choiceA_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2001/19_A.svg",
-"alt": ""
-},
-"figures/2001_AMC_8_Q19_choiceB_fig2.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc8/2001/19_B.svg",
-"alt": ""
-},
-"figures/2001_AMC_8_Q19_choiceC_fig3.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc8/2001/19_C.svg",
-"alt": ""
-},
-"figures/2001_AMC_8_Q19_choiceD_fig4.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc8/2001/19_D.svg",
-"alt": ""
-},
-"figures/2001_AMC_8_Q19_choiceE_fig5.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc8/2001/19_E.svg",
+"alt": "",
+"sha256": "8c8ef91f53692f101cb1bba52722978c0dc18a6c035430d080feb0269818a7f5",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2001/19_A.svg",
 "alt": ""
 }
 },
+"figures/2001_AMC_8_Q19_choiceB_fig2.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2001/19_B.svg",
+"alt": "",
+"sha256": "64baa9f2a8262849d856891a1a795a02d02f8a48cd1723e541495bf002b7a51b",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2001/19_B.svg",
+"alt": ""
+}
+},
+"figures/2001_AMC_8_Q19_choiceC_fig3.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2001/19_C.svg",
+"alt": "",
+"sha256": "dc791a38427ed9aae2ddf86be2b18625d8164b63486d58963afedba9036dc4b7",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2001/19_C.svg",
+"alt": ""
+}
+},
+"figures/2001_AMC_8_Q19_choiceD_fig4.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2001/19_D.svg",
+"alt": "",
+"sha256": "bb3571a85ee9a334a6796bdad68346702fd335b0deed6a23f314683cdfb7a8aa",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2001/19_D.svg",
+"alt": ""
+}
+},
+"figures/2001_AMC_8_Q19_choiceE_fig5.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2001/19_E.svg",
+"alt": "",
+"sha256": "dbacc1007be547a0c6985a2003519df9b2b0fd9a6e0f55ed3c061106a1d5c62f",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2001/19_E.svg",
+"alt": ""
+}
+}
+},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2001/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "f750bc295c1062aa94755321e039e420644285e28a6ecd008b0589bae7bd37fd",
+"contentHash": "01ded2f92cba11ae95d07587d8406171976825aa56f6059ff0da2ae29367416e",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -357409,9 +361751,31 @@ window.AMC_BANK = {
 "cnm_197"
 ],
 "supportIds": [
-"cnm_p111"
+"cnm_p111",
+"cnm_p073"
 ],
-"routes": [],
+"routes": [
+{
+"id": "m1",
+"label": "Double the speed and halve the time",
+"nodeIds": [
+"cnm_p214",
+"cnm_197",
+"cnm_p111",
+"cnm_p073"
+],
+"methodDirectNodeIds": {
+"m1": [
+"cnm_p214",
+"cnm_197"
+]
+},
+"contextNodeIds": [
+"cnm_p111",
+"cnm_p073"
+]
+}
+],
 "flags": [
 "The stem calls M's segment dashed, but the supplied choices render it as a thin unbroken segment. The M and N labels still distinguish the cars unambiguously."
 ]
@@ -357822,14 +362186,17 @@ window.AMC_BANK = {
 {
 "id": "2001_AMC_8_Q23",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2001,
 "level": "AMC 8",
 "batch": "NA",
 "number": 23,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Points \\(R,\\) \\(S\\) and \\(T\\) are vertices of an equilateral triangle, and points \\(X,\\) \\(Y\\) and \\(Z\\) are midpoints of its sides. How many noncongruent triangles can be drawn using any three of these six points as vertices?\n\n[Figure 1](figures/2001_AMC_8_Q23_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -357839,48 +362206,146 @@ window.AMC_BANK = {
 "D": "\\(4\\)",
 "E": "\\(20\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2001/solutions",
-"figureSources": {
-"figures/2001_AMC_8_Q23_question_fig1.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc8/2001/23.svg",
-"alt": ""
-}
-},
-"editorialNote": "",
-"knowledgeGraph": {
-"version": "1.0.0",
-"contentHash": "22d0a9370261fc0b6430ebf161c59aeb7cb3373a8e493e1d7e169c8f4d70facb",
-"status": "mapped",
-"reviewStatus": "machine_scope_audited",
-"assessedIds": [
-"cnm_120",
-"cnm_122"
+"acceptedResponses": [
+"D"
 ],
-"supportIds": [
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Triangles in different positions may still be congruent, so we will compare their three side lengths. Choose the unit so that each side of \\(RST\\) has length \\(2\\). As labeled, \\(X,Y,Z\\) are the midpoints of \\(RT,RS,ST\\), respectively. Each half-side has length \\(1\\), and the segments joining midpoints also have length \\(1\\).\n\nWe also need the distance from an original vertex to the opposite midpoint. In an equilateral triangle, that segment is perpendicular to the opposite side. The Pythagorean theorem therefore gives\n\\[\nSX=\\sqrt{2^2-1^2}=\\sqrt3.\n\\]\nThe other two such distances have the same length.\n\nNow classify a selection of three points by how many belong to \\(R,S,T\\).\n\n• Three original vertices give \\(RST\\), with side lengths \\((2,2,2)\\).\n\n• No original vertices give \\(XYZ\\), with side lengths \\((1,1,1)\\).\n\n• Two original vertices can be taken as \\(R,T\\), since the other choices have the same geometry. Choosing \\(X\\) gives three collinear points, so it makes no triangle. Choosing either \\(Y\\) or \\(Z\\) gives side lengths \\((1,\\sqrt3,2)\\).\n\n• One original vertex can be taken as \\(R\\). The midpoint pair \\(X,Y\\) gives side lengths \\((1,1,1)\\). Either pair \\(X,Z\\) or \\(Y,Z\\) gives side lengths \\((1,1,\\sqrt3)\\).\n\nThese cases include every selection. Triangles with the same three side lengths are congruent by SSS, while the four different triples cannot describe congruent triangles. Thus there are \\(\\boxed{4}\\) noncongruent triangles, choice \\(\\mathrm{D}\\).",
+"solutionMethods": [
+{
+"id": "method1",
+"label": "Classify by the number of original vertices",
+"explanation": "Triangles in different positions may still be congruent, so we will compare their three side lengths. Choose the unit so that each side of \\(RST\\) has length \\(2\\). As labeled, \\(X,Y,Z\\) are the midpoints of \\(RT,RS,ST\\), respectively. Each half-side has length \\(1\\), and the segments joining midpoints also have length \\(1\\).\n\nWe also need the distance from an original vertex to the opposite midpoint. In an equilateral triangle, that segment is perpendicular to the opposite side. The Pythagorean theorem therefore gives\n\\[\nSX=\\sqrt{2^2-1^2}=\\sqrt3.\n\\]\nThe other two such distances have the same length.\n\nNow classify a selection of three points by how many belong to \\(R,S,T\\).\n\n• Three original vertices give \\(RST\\), with side lengths \\((2,2,2)\\).\n\n• No original vertices give \\(XYZ\\), with side lengths \\((1,1,1)\\).\n\n• Two original vertices can be taken as \\(R,T\\), since the other choices have the same geometry. Choosing \\(X\\) gives three collinear points, so it makes no triangle. Choosing either \\(Y\\) or \\(Z\\) gives side lengths \\((1,\\sqrt3,2)\\).\n\n• One original vertex can be taken as \\(R\\). The midpoint pair \\(X,Y\\) gives side lengths \\((1,1,1)\\). Either pair \\(X,Z\\) or \\(Y,Z\\) gives side lengths \\((1,1,\\sqrt3)\\).\n\nThese cases include every selection. Triangles with the same three side lengths are congruent by SSS, while the four different triples cannot describe congruent triangles. Thus there are \\(\\boxed{4}\\) noncongruent triangles, choice \\(\\mathrm{D}\\).",
+"directNodeIds": [
+"cnm_120",
+"cnm_122",
 "cnm_185",
 "cnm_137",
 "cnm_174"
 ],
-"routes": [],
+"legacyRouteId": "method1",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2001_AMC_8_Q23#method1",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2001_AMC_8_Q23.json",
+"sha256": "1f9c2400922a990da0f3d0c9cd734c0e08b3e676b578d6a1562582a0c94e70d5",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2001_AMC_8_Q23",
+"position": {
+"year": 2001,
+"level": "AMC 8",
+"batch": "NA",
+"number": 23
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2001/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2001_AMC_8_Q23",
+"figureSources": {
+"figures/2001_AMC_8_Q23_question_fig1.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2001/23.svg",
+"alt": "",
+"sha256": "74d989f9bc1d6e1772b8a59808a1fabd506446a807710d1f2c6bfa3fdeea6c35",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2001/23.svg",
+"alt": ""
+}
+}
+},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2001/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+"editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"knowledgeGraph": {
+"version": "1.0.0",
+"contentHash": "abb5927a6a2801c57710e657f7261db73aeb24d10c2ee3bd8a6d7bca4b3c03ba",
+"status": "mapped",
+"reviewStatus": "machine_scope_audited",
+"assessedIds": [
+"cnm_120"
+],
+"supportIds": [
+"cnm_055",
+"cnm_110",
+"cnm_074"
+],
+"routes": [
+{
+"id": "method1",
+"label": "Classify by the number of original vertices",
+"nodeIds": [
+"cnm_120",
+"cnm_122",
+"cnm_185",
+"cnm_137",
+"cnm_174",
+"cnm_055",
+"cnm_110",
+"cnm_074"
+],
+"methodDirectNodeIds": {
+"method1": [
+"cnm_120",
+"cnm_122",
+"cnm_185",
+"cnm_137",
+"cnm_174"
+]
+},
+"contextNodeIds": [
+"cnm_055",
+"cnm_110",
+"cnm_074"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2001_AMC_8_Q24",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2001,
 "level": "AMC 8",
 "batch": "NA",
 "number": 24,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Each half of this figure is composed of \\(3\\) red triangles, \\(5\\) blue triangles and \\(8\\) white triangles. When the upper half is folded down over the centerline, \\(2\\) pairs of red triangles coincide, as do \\(3\\) pairs of blue triangles. There are \\(2\\) red-white pairs. How many white pairs coincide?\n\n[Figure 1](figures/2001_AMC_8_Q24_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -357890,29 +362355,117 @@ window.AMC_BANK = {
 "D": "\\(7\\)",
 "E": "\\(9\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "B",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2001/solutions",
+"acceptedResponses": [
+"B"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The supplied figure is uncolored, but the color totals and pair counts in the question are enough. After folding, every small triangle belongs to exactly one coinciding pair. A same-color pair uses two triangles of that color; a mixed-color pair uses one of each color.\n\nAcross both halves there are \\(6\\) red triangles. The \\(2\\) red-red pairs use \\(4\\) of them, and the \\(2\\) red-white pairs use the remaining \\(2\\). Consequently, there are no red-blue pairs.\n\nThere are \\(10\\) blue triangles altogether. The \\(3\\) blue-blue pairs use \\(6\\), leaving \\(4\\). Since none can pair with red, these form exactly \\(4\\) blue-white pairs.\n\nFinally, there are \\(16\\) white triangles. The red-white pairs use \\(2\\), and the blue-white pairs use \\(4\\). All remaining white triangles must pair with one another, so the number of white-white pairs is\n\\[\n\\frac{16-2-4}{2}=\\boxed{5}.\n\\]\nEach triangle has been assigned to exactly one pair, so none is omitted or counted twice. The answer is choice \\(\\mathrm{B}\\).",
+"solutionMethods": [
+{
+"id": "method1",
+"label": "Account for each color",
+"explanation": "The supplied figure is uncolored, but the color totals and pair counts in the question are enough. After folding, every small triangle belongs to exactly one coinciding pair. A same-color pair uses two triangles of that color; a mixed-color pair uses one of each color.\n\nAcross both halves there are \\(6\\) red triangles. The \\(2\\) red-red pairs use \\(4\\) of them, and the \\(2\\) red-white pairs use the remaining \\(2\\). Consequently, there are no red-blue pairs.\n\nThere are \\(10\\) blue triangles altogether. The \\(3\\) blue-blue pairs use \\(6\\), leaving \\(4\\). Since none can pair with red, these form exactly \\(4\\) blue-white pairs.\n\nFinally, there are \\(16\\) white triangles. The red-white pairs use \\(2\\), and the blue-white pairs use \\(4\\). All remaining white triangles must pair with one another, so the number of white-white pairs is\n\\[\n\\frac{16-2-4}{2}=\\boxed{5}.\n\\]\nEach triangle has been assigned to exactly one pair, so none is omitted or counted twice. The answer is choice \\(\\mathrm{B}\\).",
+"directNodeIds": [
+"math:double-counting"
+],
+"legacyRouteId": "method1",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2001_AMC_8_Q24#method1",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2001_AMC_8_Q24.json",
+"sha256": "6e2aec79fa54690bb64f1ed8bd57361bdde4aa023bc6e2d0dc7d2df7c2344ed5",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2001_AMC_8_Q24",
+"position": {
+"year": 2001,
+"level": "AMC 8",
+"batch": "NA",
+"number": 24
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2001/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2001_AMC_8_Q24",
 "figureSources": {
 "figures/2001_AMC_8_Q24_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2001/24.svg",
+"alt": "",
+"sha256": "daa1d5d936cfe4a24bdd83abbbe8f4fae835d97fc12e88736248d94d5430c9ef",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2001/24.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2001/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "0868d2068b5a14426a584113d16a505b8b1d2017d306d6cdcbb0b3b432658dbb",
+"contentHash": "e46a6c38f9380aad7cf61a4b6e7da44718c5c77b4a7c7f6166c5efc9d8bf6abe",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
 "math:double-counting"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_p035",
+"cnm_p038",
+"cnm_p043"
+],
+"routes": [
+{
+"id": "method1",
+"label": "Account for each color",
+"nodeIds": [
+"math:double-counting",
+"cnm_p035",
+"cnm_p038",
+"cnm_p043"
+],
+"methodDirectNodeIds": {
+"method1": [
+"math:double-counting"
+]
+},
+"contextNodeIds": [
+"cnm_p035",
+"cnm_p038",
+"cnm_p043"
+]
+}
+],
 "flags": [
 "The figure does not display the stated red and blue coloring, but the supplied color totals and pair counts are sufficient.",
 "The attached figure is uncolored, but the color totals and pair counts supplied in the text are sufficient."
@@ -358544,14 +363097,17 @@ window.AMC_BANK = {
 {
 "id": "2002_AMC_10A_Q05",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2002,
 "level": "AMC 10",
 "batch": "A",
 "number": 5,
-"area": "Unclassified",
+"topic": {
+"id": "A",
+"label": "A"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Each of the small circles in the figure has radius one. The innermost circle is tangent to the six circles that surround it, and each of those circles is tangent to the large circle and to its small-circle neighbors. Find the area of the shaded region.\n\n[Figure 1](figures/2002_AMC_10A_Q05_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -358561,22 +363117,89 @@ window.AMC_BANK = {
 "D": "\\(3\\pi\\)",
 "E": "\\(3.5\\pi\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2002A/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The shaded region is everything inside the large circle except the seven small disks. Thus we need the large radius before subtracting their areas.\n\nLet \\(O\\) be the innermost circle's center. Two externally tangent circles of radius \\(1\\) have centers \\(2\\) units apart. Therefore each surrounding center is \\(2\\) units from \\(O\\), and neighboring surrounding centers are also \\(2\\) units apart. Joining \\(O\\) to two neighboring centers forms an equilateral triangle, so consecutive surrounding centers are spaced by \\(60^\\circ\\) around \\(O\\).\n\nWe must also justify that the large circle has center \\(O\\). Let its center be \\(C\\) and its radius be \\(r\\). Internal tangency to each surrounding unit circle gives a center distance of \\(r-1\\). Thus \\(C\\) is equally distant from all six surrounding centers. The point \\(O\\) is also equally distant from them. Three of those centers are noncollinear, and their perpendicular bisectors have a unique intersection, so \\(C=O\\).\n\nThe distance from the large center to any surrounding center is consequently \\(2\\). Adding the small radius gives\n\\[\nr=2+1=3.\n\\]\nThe seven small disks have disjoint interiors, so their areas can be subtracted once each:\n\\[\nA_{\\text{shaded}}=\\pi(3)^2-7\\pi(1)^2\n=9\\pi-7\\pi=\\boxed{2\\pi}.\n\\]\nThe answer is choice \\(\\mathrm{C}\\).",
+"solutionMethods": [
+{
+"id": "method1",
+"label": "Find the enclosing radius and subtract",
+"explanation": "The shaded region is everything inside the large circle except the seven small disks. Thus we need the large radius before subtracting their areas.\n\nLet \\(O\\) be the innermost circle's center. Two externally tangent circles of radius \\(1\\) have centers \\(2\\) units apart. Therefore each surrounding center is \\(2\\) units from \\(O\\), and neighboring surrounding centers are also \\(2\\) units apart. Joining \\(O\\) to two neighboring centers forms an equilateral triangle, so consecutive surrounding centers are spaced by \\(60^\\circ\\) around \\(O\\).\n\nWe must also justify that the large circle has center \\(O\\). Let its center be \\(C\\) and its radius be \\(r\\). Internal tangency to each surrounding unit circle gives a center distance of \\(r-1\\). Thus \\(C\\) is equally distant from all six surrounding centers. The point \\(O\\) is also equally distant from them. Three of those centers are noncollinear, and their perpendicular bisectors have a unique intersection, so \\(C=O\\).\n\nThe distance from the large center to any surrounding center is consequently \\(2\\). Adding the small radius gives\n\\[\nr=2+1=3.\n\\]\nThe seven small disks have disjoint interiors, so their areas can be subtracted once each:\n\\[\nA_{\\text{shaded}}=\\pi(3)^2-7\\pi(1)^2\n=9\\pi-7\\pi=\\boxed{2\\pi}.\n\\]\nThe answer is choice \\(\\mathrm{C}\\).",
+"directNodeIds": [
+"cnm_p150",
+"cnm_p192",
+"cnm_h181",
+"cnm_139",
+"cnm_265"
+],
+"legacyRouteId": "method1",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_10A_Q05#method1",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_10A_Q05.json",
+"sha256": "89b41065fab5d9b5fd492bdac204639e1ef07be4370942dcd5e1371e240c11ae",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2002_AMC_10A_Q05",
+"position": {
+"year": 2002,
+"level": "AMC 10",
+"batch": "A",
+"number": 5
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2002A/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2002_AMC_10A_Q05",
 "figureSources": {
 "figures/2002_AMC_10A_Q05_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc10/2002A/5.svg",
+"alt": "",
+"sha256": "f3df455ed1b63d66c90be0a5a048678097080166512d02340b0dbd5945fb3a57",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2002A/5.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2002A/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "614a9bdf2e69d397796a418ee2a5b0effbe7c01c726e7be0d4314d8e9a7209ca",
+"contentHash": "23c1b95edbe9ccc8201374741ea43afbe9d0acdbcdc78b6564b91cf010377d6b",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -358584,9 +363207,37 @@ window.AMC_BANK = {
 "cnm_p192"
 ],
 "supportIds": [
-"cnm_h181"
+"cnm_p188",
+"cnm_133"
 ],
-"routes": [],
+"routes": [
+{
+"id": "method1",
+"label": "Find the enclosing radius and subtract",
+"nodeIds": [
+"cnm_p150",
+"cnm_p192",
+"cnm_h181",
+"cnm_139",
+"cnm_265",
+"cnm_p188",
+"cnm_133"
+],
+"methodDirectNodeIds": {
+"method1": [
+"cnm_p150",
+"cnm_p192",
+"cnm_h181",
+"cnm_139",
+"cnm_265"
+]
+},
+"contextNodeIds": [
+"cnm_p188",
+"cnm_133"
+]
+}
+],
 "flags": []
 }
 },
@@ -358915,14 +363566,17 @@ window.AMC_BANK = {
 {
 "id": "2002_AMC_10A_Q08",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2002,
 "level": "AMC 10",
 "batch": "A",
 "number": 8,
-"area": "Unclassified",
+"topic": {
+"id": "A",
+"label": "A"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Betsy designed a flag using blue triangles, small white squares, and a red center square, as shown. Let \\(B\\) be the total area of the blue triangles, \\(W\\) the total area of the white squares, and \\(R\\) the area of the red square. Which of the following is correct?\n\n[Figure 1](figures/2002_AMC_10A_Q08_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -358932,35 +363586,145 @@ window.AMC_BANK = {
 "D": "\\(3B=2R\\)",
 "E": "\\(2R=W\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "A",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2002A/solutions",
+"acceptedResponses": [
+"A"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Use one white square as an area unit. The straight diagonal edges give the white squares the same orientation. Along each side of the flag, the white squares span the same border width, so they have equal diagonals and are congruent. The white squares meeting around each corner share a side, so this common size continues around the flag.\n\n[Figure 1](figures/2002_AMC_10A_Q08_question_fig1.svg)\n\nLet \\(d>0\\) be a white square's diagonal length. Its diagonals divide it into four right triangles with legs \\(d/2\\), so its area is\n\\[\nu=4\\left(\\frac12\\cdot\\frac d2\\cdot\\frac d2\\right)=\\frac{d^2}{2}.\n\\]\nThere are three white squares along each of the four sides, with no square counted on two sides. Thus \\(W=12u\\).\n\nEach smaller blue triangle has base \\(d\\) and height \\(d/2\\), so its area is \\(d^2/4=u/2\\). There are four such triangles along each side, two next to the outer edge and two next to the center square, giving 16 altogether. The remaining four blue triangles occupy the flag's corners. Each has perpendicular legs of length \\(d\\), so each has area \\(d^2/2=u\\). These pieces cover every blue region without overlap. Therefore\n\\[\nB=16\\left(\\frac u2\\right)+4u=12u=W.\n\\]\nHence \\(\\boxed{B=W}\\), choice \\(\\boxed{\\text{A}}\\).",
+"solutionMethods": [
+{
+"id": "compare-triangle-area-units",
+"label": "Compare areas using one white square",
+"explanation": "Use one white square as an area unit. The straight diagonal edges give the white squares the same orientation. Along each side of the flag, the white squares span the same border width, so they have equal diagonals and are congruent. The white squares meeting around each corner share a side, so this common size continues around the flag.\n\n[Figure 1](figures/2002_AMC_10A_Q08_question_fig1.svg)\n\nLet \\(d>0\\) be a white square's diagonal length. Its diagonals divide it into four right triangles with legs \\(d/2\\), so its area is\n\\[\nu=4\\left(\\frac12\\cdot\\frac d2\\cdot\\frac d2\\right)=\\frac{d^2}{2}.\n\\]\nThere are three white squares along each of the four sides, with no square counted on two sides. Thus \\(W=12u\\).\n\nEach smaller blue triangle has base \\(d\\) and height \\(d/2\\), so its area is \\(d^2/4=u/2\\). There are four such triangles along each side, two next to the outer edge and two next to the center square, giving 16 altogether. The remaining four blue triangles occupy the flag's corners. Each has perpendicular legs of length \\(d\\), so each has area \\(d^2/2=u\\). These pieces cover every blue region without overlap. Therefore\n\\[\nB=16\\left(\\frac u2\\right)+4u=12u=W.\n\\]\nHence \\(\\boxed{B=W}\\), choice \\(\\boxed{\\text{A}}\\).",
+"directNodeIds": [
+"cnm_p150",
+"cnm_p148",
+"cnm_191"
+],
+"legacyRouteId": "compare-triangle-area-units",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_10A_Q08#compare-triangle-area-units",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_10A_Q08.json",
+"sha256": "eb5d070b16c443611d09899f80a59d221ff27a0980a85a5e512142f0b716c40b",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "triangle-area-units",
+"label": "Count triangle area units",
+"directNodeIds": [
+"cnm_p148"
+],
+"legacyRouteId": "triangle-area-units",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2343",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2002_AMC_10A_Q08#triangle-area-units",
+"evidence": []
+}
+},
+{
+"id": "subtract-square-areas",
+"label": "Subtract square areas",
+"directNodeIds": [
+"cnm_p089",
+"cnm_174"
+],
+"legacyRouteId": "subtract-square-areas",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2343",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2002_AMC_10A_Q08#subtract-square-areas",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2002_AMC_10A_Q08",
+"position": {
+"year": 2002,
+"level": "AMC 10",
+"batch": "A",
+"number": 8
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2002A/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2002_AMC_10A_Q08",
 "figureSources": {
 "figures/2002_AMC_10A_Q08_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc10/2002A/8.svg",
+"alt": "",
+"sha256": "c055a74799ae17617f0a5f9a61061aee094679a3d9e15754b74adee6a55d7e7f",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2002A/8.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2002A/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "f9c903874ace39bfc5c3823b305b269197212aa6a018a9cf518989c934ac95a1",
+"contentHash": "b496c17460efcb98d180d1959b588153d55a8bece2aa00fdf598c3c36fc833af",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
 "cnm_p150"
 ],
-"supportIds": [],
+"supportIds": [
+"cnm_p088"
+],
 "routes": [
 {
 "id": "triangle-area-units",
 "label": "Count triangle area units",
 "nodeIds": [
 "cnm_p148"
+],
+"methodDirectNodeIds": {
+"triangle-area-units": [
+"cnm_p148"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "subtract-square-areas",
@@ -358968,6 +363732,33 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_p089",
 "cnm_174"
+],
+"methodDirectNodeIds": {
+"subtract-square-areas": [
+"cnm_p089",
+"cnm_174"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "compare-triangle-area-units",
+"label": "Compare areas using one white square",
+"nodeIds": [
+"cnm_p150",
+"cnm_p148",
+"cnm_191",
+"cnm_p088"
+],
+"methodDirectNodeIds": {
+"compare-triangle-area-units": [
+"cnm_p150",
+"cnm_p148",
+"cnm_191"
+]
+},
+"contextNodeIds": [
+"cnm_p088"
 ]
 }
 ],
@@ -360617,14 +365408,17 @@ window.AMC_BANK = {
 {
 "id": "2002_AMC_10A_Q20",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2002,
 "level": "AMC 10",
 "batch": "A",
 "number": 20,
-"area": "Unclassified",
+"topic": {
+"id": "A",
+"label": "A"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Points \\(A,\\) \\(B,\\) \\(C,\\) \\(D,\\) \\(E,\\) and \\(F\\) lie, in that order, on \\(\\overline{AF},\\) dividing it into five segments, each of length \\(1.\\) Point \\(G\\) is not on line \\(AF.\\) Point \\(H\\) lies on \\(\\overline{GD},\\) and point \\(J\\) lies on \\(\\overline{GF}.\\) The line segments \\(\\overline{HC},\\) \\(\\overline{JE},\\) and \\(\\overline{AG}\\) are parallel. Find \\(\\frac{HC}{JE}.\\)\n\n[Figure 1](figures/2002_AMC_10A_Q20_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -360634,32 +365428,120 @@ window.AMC_BANK = {
 "D": "\\(\\dfrac{5}{3}\\)",
 "E": "\\(2\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2002A/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The parallel segments suggest comparing each requested length with the same side, \\(AG\\). Counting the unit intervals gives \\(AD=3\\), \\(AF=5\\), and \\(CD=EF=1\\).\n\nBecause \\(CH\\parallel AG\\), triangles \\(DCH\\) and \\(DAG\\) have equal corresponding angles and are similar. Their corresponding bases are \\(DC\\) and \\(DA\\), so\n\\[\n\\frac{HC}{AG}=\\frac{DC}{DA}=\\frac13.\n\\]\nLikewise, \\(EJ\\parallel AG\\) makes triangles \\(FEJ\\) and \\(FAG\\) similar, giving\n\\[\n\\frac{JE}{AG}=\\frac{FE}{FA}=\\frac15.\n\\]\nSince \\(G\\) is not on line \\(AF\\), \\(AG>0\\); the second equation also shows that \\(JE>0\\). We may therefore divide the two comparisons:\n\\[\n\\frac{HC}{JE}=\\frac{AG/3}{AG/5}=\\frac53.\n\\]\nThe answer is \\(\\boxed{\\frac53}\\), choice \\(\\boxed{\\text{D}}\\).",
+"solutionMethods": [
+{
+"id": "compare-through-common-side",
+"label": "Compare both segments with AG",
+"explanation": "The parallel segments suggest comparing each requested length with the same side, \\(AG\\). Counting the unit intervals gives \\(AD=3\\), \\(AF=5\\), and \\(CD=EF=1\\).\n\nBecause \\(CH\\parallel AG\\), triangles \\(DCH\\) and \\(DAG\\) have equal corresponding angles and are similar. Their corresponding bases are \\(DC\\) and \\(DA\\), so\n\\[\n\\frac{HC}{AG}=\\frac{DC}{DA}=\\frac13.\n\\]\nLikewise, \\(EJ\\parallel AG\\) makes triangles \\(FEJ\\) and \\(FAG\\) similar, giving\n\\[\n\\frac{JE}{AG}=\\frac{FE}{FA}=\\frac15.\n\\]\nSince \\(G\\) is not on line \\(AF\\), \\(AG>0\\); the second equation also shows that \\(JE>0\\). We may therefore divide the two comparisons:\n\\[\n\\frac{HC}{JE}=\\frac{AG/3}{AG/5}=\\frac53.\n\\]\nThe answer is \\(\\boxed{\\frac53}\\), choice \\(\\boxed{\\text{D}}\\).",
+"directNodeIds": [
+"cnm_271",
+"cnm_272"
+],
+"legacyRouteId": "compare-through-common-side",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_10A_Q20#compare-through-common-side",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_10A_Q20.json",
+"sha256": "3b026a4e700a46b2e993278219d62c283b2283ccf7e50f0113e3efbecce6a456",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2002_AMC_10A_Q20",
+"position": {
+"year": 2002,
+"level": "AMC 10",
+"batch": "A",
+"number": 20
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2002A/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2002_AMC_10A_Q20",
 "figureSources": {
 "figures/2002_AMC_10A_Q20_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc10/2002A/20.svg",
+"alt": "",
+"sha256": "17393ac7dd89e9ca7eb8b8639c89f77fcf9a695860cd50a4b639a915ae85b3e2",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2002A/20.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2002A/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "2e8c2b73c2b187a37ea78c51f569f19844589a1cf0b2250ac46ddc8d865b8c9a",
+"contentHash": "e1dc580ff511462b3b94dbb00adeea549c4d65cdc2259a0d6cac4d2b253ac568",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_272"
 ],
 "supportIds": [
-"cnm_271",
-"cnm_055"
+"cnm_055",
+"cnm_069",
+"cnm_p183"
 ],
-"routes": [],
+"routes": [
+{
+"id": "compare-through-common-side",
+"label": "Compare both segments with AG",
+"nodeIds": [
+"cnm_271",
+"cnm_272",
+"cnm_069",
+"cnm_055",
+"cnm_p183"
+],
+"methodDirectNodeIds": {
+"compare-through-common-side": [
+"cnm_271",
+"cnm_272"
+]
+},
+"contextNodeIds": [
+"cnm_069",
+"cnm_055",
+"cnm_p183"
+]
+}
+],
 "flags": []
 }
 },
@@ -360964,14 +365846,17 @@ window.AMC_BANK = {
 {
 "id": "2002_AMC_10A_Q23",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2002,
 "level": "AMC 10",
 "batch": "A",
 "number": 23,
-"area": "Unclassified",
+"topic": {
+"id": "A",
+"label": "A"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Points \\(A,\\) \\(B,\\) \\(C,\\) and \\(D\\) lie on a line, in that order, with \\(AB=CD\\) and \\(BC=12.\\) Point \\(E\\) is not on the line, and \\(BE=CE=10.\\) The perimeter of \\(\\triangle AED\\) is twice the perimeter of \\(\\triangle BEC.\\) Find \\(AB.\\)\n\n[Figure 1](figures/2002_AMC_10A_Q23_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -360981,22 +365866,126 @@ window.AMC_BANK = {
 "D": "\\(9\\)",
 "E": "\\(\\dfrac{19}{2}\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2002A/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The equal sides \\(BE=CE\\) give a useful symmetry: the segment from \\(E\\) to the midpoint of \\(BC\\) is perpendicular to the baseline. This creates right triangles whose lengths we can compare.\n\nLet \\(M\\) be the midpoint of \\(BC\\). Then \\(BM=CM=6\\), and the Pythagorean theorem in \\(\\triangle BME\\) gives\n\\[\nEM^2=10^2-6^2=64,\n\\qquad EM=8.\n\\]\nSet \\(AB=CD=x>0\\). Since \\(AM=x+6=DM\\), the right triangles \\(AME\\) and \\(DME\\) have the same legs, so \\(AE=DE\\).\n\nThe perimeter of \\(\\triangle BEC\\) is \\(10+10+12=32\\). Hence the perimeter of \\(\\triangle AED\\) is 64. Using \\(AD=2x+12\\) and \\(AE=DE\\), we obtain\n\\[\n2AE+2x+12=64,\n\\qquad AE=26-x>0.\n\\]\nNow apply the Pythagorean theorem to \\(\\triangle AME\\). Both its horizontal leg and hypotenuse are expressed in terms of \\(x\\), so this determines the missing length:\n\\[\n(26-x)^2=(x+6)^2+8^2.\n\\]\nExpanding makes the squared terms cancel:\n\\[\n676-52x+x^2=x^2+12x+100,\n\\qquad 576=64x,\n\\qquad x=9.\n\\]\nFor this value, \\(AM=15\\) and \\(AE=\\sqrt{15^2+8^2}=17\\). Thus the outer sides are \\(17,17,30\\), whose perimeter is 64, as required. The value is positive and satisfies the original conditions. Therefore \\(\\boxed{AB=9}\\), choice \\(\\boxed{\\text{D}}\\).",
+"solutionMethods": [
+{
+"id": "shared-altitude-and-perimeter",
+"label": "Use the shared altitude",
+"explanation": "The equal sides \\(BE=CE\\) give a useful symmetry: the segment from \\(E\\) to the midpoint of \\(BC\\) is perpendicular to the baseline. This creates right triangles whose lengths we can compare.\n\nLet \\(M\\) be the midpoint of \\(BC\\). Then \\(BM=CM=6\\), and the Pythagorean theorem in \\(\\triangle BME\\) gives\n\\[\nEM^2=10^2-6^2=64,\n\\qquad EM=8.\n\\]\nSet \\(AB=CD=x>0\\). Since \\(AM=x+6=DM\\), the right triangles \\(AME\\) and \\(DME\\) have the same legs, so \\(AE=DE\\).\n\nThe perimeter of \\(\\triangle BEC\\) is \\(10+10+12=32\\). Hence the perimeter of \\(\\triangle AED\\) is 64. Using \\(AD=2x+12\\) and \\(AE=DE\\), we obtain\n\\[\n2AE+2x+12=64,\n\\qquad AE=26-x>0.\n\\]\nNow apply the Pythagorean theorem to \\(\\triangle AME\\). Both its horizontal leg and hypotenuse are expressed in terms of \\(x\\), so this determines the missing length:\n\\[\n(26-x)^2=(x+6)^2+8^2.\n\\]\nExpanding makes the squared terms cancel:\n\\[\n676-52x+x^2=x^2+12x+100,\n\\qquad 576=64x,\n\\qquad x=9.\n\\]\nFor this value, \\(AM=15\\) and \\(AE=\\sqrt{15^2+8^2}=17\\). Thus the outer sides are \\(17,17,30\\), whose perimeter is 64, as required. The value is positive and satisfies the original conditions. Therefore \\(\\boxed{AB=9}\\), choice \\(\\boxed{\\text{D}}\\).",
+"directNodeIds": [
+"cnm_137",
+"cnm_174",
+"cnm_148",
+"cnm_042"
+],
+"legacyRouteId": "shared-altitude-and-perimeter",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_10A_Q23#shared-altitude-and-perimeter",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_10A_Q23.json",
+"sha256": "11fc0dfb14290c014fb9a95c14937a4ee04590f0fba2326095844228386ef4e9",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "pythagorean-altitude",
+"label": "Shared altitude and Pythagoras",
+"directNodeIds": [
+"cnm_174",
+"cnm_148"
+],
+"legacyRouteId": "pythagorean-altitude",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2358",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2002_AMC_10A_Q23#pythagorean-altitude",
+"evidence": []
+}
+},
+{
+"id": "heron-common-altitude",
+"label": "Heron and common-altitude areas",
+"directNodeIds": [
+"math:heron-formula",
+"cnm_p148"
+],
+"legacyRouteId": "heron-common-altitude",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2358",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2002_AMC_10A_Q23#heron-common-altitude",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2002_AMC_10A_Q23",
+"position": {
+"year": 2002,
+"level": "AMC 10",
+"batch": "A",
+"number": 23
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2002A/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2002_AMC_10A_Q23",
 "figureSources": {
 "figures/2002_AMC_10A_Q23_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc10/2002A/23.svg",
+"alt": "",
+"sha256": "cf97ef6f2850532278e89f2b3f1931d950321bb27597c280d3fae24ab84c6fe0",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2002A/23.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2002A/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "64840f8fd3bbbb442a8f280251764afb0c2fdfda2667e1e3c4e69b69f986e4f9",
+"contentHash": "88bc45ab21d656354cfbe8e81711218252124712af493b389e6ec8e12958c7d9",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -361004,7 +365993,8 @@ window.AMC_BANK = {
 ],
 "supportIds": [
 "cnm_055",
-"cnm_042"
+"cnm_112",
+"cnm_075"
 ],
 "routes": [
 {
@@ -361013,7 +366003,14 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_174",
 "cnm_148"
+],
+"methodDirectNodeIds": {
+"pythagorean-altitude": [
+"cnm_174",
+"cnm_148"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "heron-common-altitude",
@@ -361021,6 +366018,39 @@ window.AMC_BANK = {
 "nodeIds": [
 "math:heron-formula",
 "cnm_p148"
+],
+"methodDirectNodeIds": {
+"heron-common-altitude": [
+"math:heron-formula",
+"cnm_p148"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "shared-altitude-and-perimeter",
+"label": "Use the shared altitude",
+"nodeIds": [
+"cnm_137",
+"cnm_174",
+"cnm_148",
+"cnm_042",
+"cnm_055",
+"cnm_112",
+"cnm_075"
+],
+"methodDirectNodeIds": {
+"shared-altitude-and-perimeter": [
+"cnm_137",
+"cnm_174",
+"cnm_148",
+"cnm_042"
+]
+},
+"contextNodeIds": [
+"cnm_055",
+"cnm_112",
+"cnm_075"
 ]
 }
 ],
@@ -361277,14 +366307,17 @@ window.AMC_BANK = {
 {
 "id": "2002_AMC_10A_Q25",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2002,
 "level": "AMC 10",
 "batch": "A",
 "number": 25,
-"area": "Unclassified",
+"topic": {
+"id": "A",
+"label": "A"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "In trapezoid \\(ABCD\\) with bases \\(\\overline{AB}\\) and \\(\\overline{CD},\\) we have \\(AB=52,\\) \\(BC=12,\\) \\(CD=39,\\) and \\(DA=5.\\) The area of \\(ABCD\\) is\n\n[Figure 1](figures/2002_AMC_10A_Q25_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -361294,22 +366327,137 @@ window.AMC_BANK = {
 "D": "\\(234\\)",
 "E": "\\(260\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2002A/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The difference between the bases is \\(52-39=13\\), which suggests looking for a triangle with sides \\(5,12,13\\). Choose \\(E\\) on \\(AB\\) so that \\(AE=39\\). Since \\(AE\\) and \\(DC\\) are parallel and equal, \\(ADCE\\) is a parallelogram. Thus \\(CE=AD=5\\), while \\(EB=52-39=13\\).\n\nTriangle \\(CEB\\) has sides \\(5,12,13\\). Because\n\\[\n5^2+12^2=13^2,\n\\]\nthe converse of the Pythagorean theorem shows that its angle at \\(C\\) is right. Its area is therefore \\(\\tfrac12(5)(12)=30\\).\n\nLet \\(h\\) be the perpendicular distance between the trapezoid's bases. This is also the altitude of triangle \\(CEB\\) to base \\(EB\\), so\n\\[\n\\frac12(13)h=30,\n\\qquad h=\\frac{60}{13}.\n\\]\nThe trapezoid's area is\n\\[\n\\frac{52+39}{2}\\cdot\\frac{60}{13}=210.\n\\]\nThus the answer is \\(\\boxed{210}\\), choice \\(\\boxed{\\text{C}}\\).",
+"solutionMethods": [
+{
+"id": "auxiliary-right-triangle",
+"label": "Create a 5-12-13 triangle",
+"explanation": "The difference between the bases is \\(52-39=13\\), which suggests looking for a triangle with sides \\(5,12,13\\). Choose \\(E\\) on \\(AB\\) so that \\(AE=39\\). Since \\(AE\\) and \\(DC\\) are parallel and equal, \\(ADCE\\) is a parallelogram. Thus \\(CE=AD=5\\), while \\(EB=52-39=13\\).\n\nTriangle \\(CEB\\) has sides \\(5,12,13\\). Because\n\\[\n5^2+12^2=13^2,\n\\]\nthe converse of the Pythagorean theorem shows that its angle at \\(C\\) is right. Its area is therefore \\(\\tfrac12(5)(12)=30\\).\n\nLet \\(h\\) be the perpendicular distance between the trapezoid's bases. This is also the altitude of triangle \\(CEB\\) to base \\(EB\\), so\n\\[\n\\frac12(13)h=30,\n\\qquad h=\\frac{60}{13}.\n\\]\nThe trapezoid's area is\n\\[\n\\frac{52+39}{2}\\cdot\\frac{60}{13}=210.\n\\]\nThus the answer is \\(\\boxed{210}\\), choice \\(\\boxed{\\text{C}}\\).",
+"directNodeIds": [
+"cnm_184",
+"cnm_183",
+"cnm_177",
+"cnm_p148",
+"cnm_p149"
+],
+"legacyRouteId": "solution:auxiliary-right-triangle:b746884d00fe",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_10A_Q25#auxiliary-right-triangle",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_10A_Q25.json",
+"sha256": "9cd1949c542c740446a9b9da09f47d64b102e64f077c650c95b6d9d8d82a7227",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "height-from-distance-equations",
+"label": "Subtract two Pythagorean equations",
+"explanation": "Both legs span the same height, so their Pythagorean equations contain the same squared height. Subtracting the equations will remove it.\n\nPlace \\(A=(0,0)\\) and \\(B=(52,0)\\), with the other base above \\(AB\\). Write \\(D=(x,h)\\) and \\(C=(x+39,h)\\), where \\(h>0\\) is the trapezoid's height. The coordinate \\(x\\) may initially be any real number, so this setup does not assume that the perpendicular feet lie inside the base.\n\nUsing \\(AD=5\\) and \\(BC=12\\), the Pythagorean theorem gives\n\\[\nx^2+h^2=25,\n\\qquad (13-x)^2+h^2=144.\n\\]\nSubtracting the first equation from the second yields\n\\[\n169-26x=119,\n\\qquad x=\\frac{25}{13}.\n\\]\nSubstituting back,\n\\[\nh^2=25-\\left(\\frac{25}{13}\\right)^2\n=\\frac{3600}{169}.\n\\]\nSince \\(h>0\\), we obtain \\(h=60/13\\). These values also satisfy the second distance equation, since \\(13-x=144/13\\) and\n\\[\n\\left(\\frac{144}{13}\\right)^2+\n\\left(\\frac{60}{13}\\right)^2=144.\n\\]\nThe trapezoid's area is therefore\n\\[\n\\frac{52+39}{2}\\cdot\\frac{60}{13}=210.\n\\]\nThe answer is \\(\\boxed{210}\\), choice \\(\\boxed{\\text{C}}\\).",
+"directNodeIds": [
+"cnm_084",
+"cnm_174",
+"cnm_148",
+"cnm_042",
+"cnm_p149"
+],
+"legacyRouteId": "height-from-distance-equations",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_10A_Q25#height-from-distance-equations",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_10A_Q25.json",
+"sha256": "9cd1949c542c740446a9b9da09f47d64b102e64f077c650c95b6d9d8d82a7227",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "leg-projection-equations",
+"label": "Solve for the height using projections",
+"directNodeIds": [
+"cnm_174",
+"cnm_148",
+"cnm_042"
+],
+"legacyRouteId": "leg-projection-equations",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2360",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2002_AMC_10A_Q25#leg-projection-equations",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2002_AMC_10A_Q25",
+"position": {
+"year": 2002,
+"level": "AMC 10",
+"batch": "A",
+"number": 25
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2002A/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2002_AMC_10A_Q25",
 "figureSources": {
 "figures/2002_AMC_10A_Q25_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc10/2002A/25.svg",
+"alt": "",
+"sha256": "6f9bbc38c8136c1ce6a3e40e49063fdb8f2155e6fb7540e1a48d30727925f9c8",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2002A/25.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2002A/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "fa7f49acd5efc258e3a73be67349b678fb9a2855ea47d86806fd49f550ed6310",
+"contentHash": "71fd735969d24a5875ce0cd98e243e99c0e6b7135c26e4acfa02fb98f8854952",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -361335,6 +366483,70 @@ window.AMC_BANK = {
 "cnm_174",
 "cnm_148",
 "cnm_042"
+],
+"methodDirectNodeIds": {
+"leg-projection-equations": [
+"cnm_174",
+"cnm_148",
+"cnm_042"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "solution:auxiliary-right-triangle:b746884d00fe",
+"label": "Create a 5-12-13 triangle",
+"nodeIds": [
+"cnm_184",
+"cnm_183",
+"cnm_177",
+"cnm_p148",
+"cnm_p149",
+"cnm_055",
+"cnm_067",
+"cnm_112"
+],
+"methodDirectNodeIds": {
+"auxiliary-right-triangle": [
+"cnm_184",
+"cnm_183",
+"cnm_177",
+"cnm_p148",
+"cnm_p149"
+]
+},
+"contextNodeIds": [
+"cnm_055",
+"cnm_067",
+"cnm_112"
+]
+},
+{
+"id": "height-from-distance-equations",
+"label": "Subtract two Pythagorean equations",
+"nodeIds": [
+"cnm_084",
+"cnm_174",
+"cnm_148",
+"cnm_042",
+"cnm_p149",
+"cnm_055",
+"cnm_082",
+"cnm_075"
+],
+"methodDirectNodeIds": {
+"height-from-distance-equations": [
+"cnm_084",
+"cnm_174",
+"cnm_148",
+"cnm_042",
+"cnm_p149"
+]
+},
+"contextNodeIds": [
+"cnm_055",
+"cnm_082",
+"cnm_075"
 ]
 }
 ],
@@ -361892,14 +367104,17 @@ window.AMC_BANK = {
 {
 "id": "2002_AMC_10B_Q05",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2002,
 "level": "AMC 10",
 "batch": "B",
 "number": 5,
-"area": "Unclassified",
+"topic": {
+"id": "B",
+"label": "B"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Circles of radius \\(2\\) and \\(3\\) are externally tangent and are circumscribed by a third circle, as shown in the figure. What is the area of the shaded region?\n\n[Figure 1](figures/2002_AMC_10B_Q05_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -361909,22 +367124,87 @@ window.AMC_BANK = {
 "D": "\\(9\\pi\\)",
 "E": "\\(12\\pi\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "E",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2002B/solutions",
+"acceptedResponses": [
+"E"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "An enclosing circle must be wide enough to contain both small disks. This gives a useful bound without assuming that the enclosing center lies on the line through the two small-circle centers.\n\n[Figure 1](figures/2002_AMC_10B_Q05_question_fig1.svg)\n\nLet \\(A\\) and \\(B\\) be the centers of the circles of radii \\(3\\) and \\(2\\), respectively. External tangency gives \\(AB=3+2=5\\). On line \\(AB\\), let \\(P\\) be the point of the first circle farthest from \\(B\\), and let \\(Q\\) be the point of the second circle farthest from \\(A\\). These points lie in the order \\(P,A,B,Q\\), so\n\\[\nPQ=3+5+2=10.\n\\]\nIf the enclosing circle has center \\(O\\) and radius \\(R\\), both points are in its disk. The straight distance between them cannot exceed the route through \\(O\\), giving\n\\[\n10=PQ\\le PO+OQ\\le 2R.\n\\]\nThus \\(R\\ge5\\). The small disks have no overlapping interior, so the shaded area \\(S\\) is the enclosing area minus their areas:\n\\[\nS=\\pi R^2-\\pi(3^2)-\\pi(2^2)\n\\ge\\pi(25-9-4)=12\\pi.\n\\]\nChoices A through D are all smaller than this bound. Only E can be compatible with the conditions.\n\nWe should also check that equality is possible. Place \\(O\\) between \\(A\\) and \\(B\\), with \\(AO=2\\) and \\(OB=3\\), and give the enclosing circle radius \\(5\\). Then \\(AB=5\\), while \\(AO+3=5\\) and \\(OB+2=5\\). Both disks are contained and internally tangent to the enclosing circle. Their diameters lie end to end along its diameter, giving shaded area \\(12\\pi\\). This is the common-diameter interpretation suggested by the drawing.\n\nThat interpretation is an additional condition if we want a uniquely determined numerical area. To see why the tangencies alone are insufficient, instead construct a right triangle \\(AOB\\) with \\(AO=3\\) and \\(BO=4\\). The Pythagorean theorem gives \\(AB=5\\). Circles of radii \\(3\\) at \\(A\\) and \\(2\\) at \\(B\\) are externally tangent. A circle of radius \\(6\\) centered at \\(O\\) contains and is internally tangent to both, since \\(3+3=6\\) and \\(4+2=6\\). Its shaded area is\n\\[\n\\pi(6^2-3^2-2^2)=23\\pi.\n\\]\nTherefore the explicit tangencies allow different areas, but the unique compatible listed choice is \\(\\boxed{12\\pi}\\), choice \\(\\boxed{\\text{E}}\\).",
+"solutionMethods": [
+{
+"id": "diameter_bound",
+"label": "Bound the diameter and eliminate choices",
+"explanation": "An enclosing circle must be wide enough to contain both small disks. This gives a useful bound without assuming that the enclosing center lies on the line through the two small-circle centers.\n\n[Figure 1](figures/2002_AMC_10B_Q05_question_fig1.svg)\n\nLet \\(A\\) and \\(B\\) be the centers of the circles of radii \\(3\\) and \\(2\\), respectively. External tangency gives \\(AB=3+2=5\\). On line \\(AB\\), let \\(P\\) be the point of the first circle farthest from \\(B\\), and let \\(Q\\) be the point of the second circle farthest from \\(A\\). These points lie in the order \\(P,A,B,Q\\), so\n\\[\nPQ=3+5+2=10.\n\\]\nIf the enclosing circle has center \\(O\\) and radius \\(R\\), both points are in its disk. The straight distance between them cannot exceed the route through \\(O\\), giving\n\\[\n10=PQ\\le PO+OQ\\le 2R.\n\\]\nThus \\(R\\ge5\\). The small disks have no overlapping interior, so the shaded area \\(S\\) is the enclosing area minus their areas:\n\\[\nS=\\pi R^2-\\pi(3^2)-\\pi(2^2)\n\\ge\\pi(25-9-4)=12\\pi.\n\\]\nChoices A through D are all smaller than this bound. Only E can be compatible with the conditions.\n\nWe should also check that equality is possible. Place \\(O\\) between \\(A\\) and \\(B\\), with \\(AO=2\\) and \\(OB=3\\), and give the enclosing circle radius \\(5\\). Then \\(AB=5\\), while \\(AO+3=5\\) and \\(OB+2=5\\). Both disks are contained and internally tangent to the enclosing circle. Their diameters lie end to end along its diameter, giving shaded area \\(12\\pi\\). This is the common-diameter interpretation suggested by the drawing.\n\nThat interpretation is an additional condition if we want a uniquely determined numerical area. To see why the tangencies alone are insufficient, instead construct a right triangle \\(AOB\\) with \\(AO=3\\) and \\(BO=4\\). The Pythagorean theorem gives \\(AB=5\\). Circles of radii \\(3\\) at \\(A\\) and \\(2\\) at \\(B\\) are externally tangent. A circle of radius \\(6\\) centered at \\(O\\) contains and is internally tangent to both, since \\(3+3=6\\) and \\(4+2=6\\). Its shaded area is\n\\[\n\\pi(6^2-3^2-2^2)=23\\pi.\n\\]\nTherefore the explicit tangencies allow different areas, but the unique compatible listed choice is \\(\\boxed{12\\pi}\\), choice \\(\\boxed{\\text{E}}\\).",
+"directNodeIds": [
+"cnm_p150",
+"cnm_p192",
+"cnm_h181"
+],
+"legacyRouteId": "diameter_bound",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_10B_Q05#diameter_bound",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_10B_Q05.json",
+"sha256": "1d2a23b84e98c0b2e9f647d351168e416c6036163bc59d7a72b8d0a5acbb613e",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2002_AMC_10B_Q05",
+"position": {
+"year": 2002,
+"level": "AMC 10",
+"batch": "B",
+"number": 5
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2002B/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2002_AMC_10B_Q05",
 "figureSources": {
 "figures/2002_AMC_10B_Q05_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc10/2002B/5.svg",
+"alt": "",
+"sha256": "d376bbde68c0543dbe103452113bfbbab4dc72b446c1533b52f83e047295bda7",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2002B/5.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2002B/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "7f5dfcd5ba9b3bb394b33599ac382ce8cc720a531079cb3ea2faf8b377ce3f58",
+"contentHash": "a5d60e821638ee7c0da1c6f5825bb7edb71fc1bd8f0f6488814edc4ca9c78243",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -361932,9 +367212,37 @@ window.AMC_BANK = {
 "cnm_p192"
 ],
 "supportIds": [
+"cnm_p188",
 "cnm_h181"
 ],
-"routes": [],
+"routes": [
+{
+"id": "diameter_bound",
+"label": "Bound the diameter and eliminate choices",
+"nodeIds": [
+"cnm_p150",
+"cnm_p192",
+"cnm_h181",
+"cnm_p188",
+"cnm_054",
+"cnm_055",
+"cnm_174"
+],
+"methodDirectNodeIds": {
+"diameter_bound": [
+"cnm_p150",
+"cnm_p192",
+"cnm_h181"
+]
+},
+"contextNodeIds": [
+"cnm_p188",
+"cnm_054",
+"cnm_055",
+"cnm_174"
+]
+}
+],
 "flags": [
 "The enclosing radius 5 relies on the figure's depicted collinear, diametric arrangement. External tangency of the small circles and internal tangency to an enclosing circle, without that alignment, do not uniquely determine the enclosing radius."
 ]
@@ -365988,14 +371296,17 @@ window.AMC_BANK = {
 {
 "id": "2002_AMC_12A_Q05",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2002,
 "level": "AMC 12",
 "batch": "A",
 "number": 5,
-"area": "Unclassified",
+"topic": {
+"id": "A",
+"label": "A"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Each of the small circles in the figure has radius one. The innermost circle is tangent to the six circles that surround it, and each of those circles is tangent to the large circle and to its small-circle neighbors. Find the area of the shaded region.\n\n[Figure 1](figures/2002_AMC_12A_Q05_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -366005,22 +371316,88 @@ window.AMC_BANK = {
 "D": "\\(3\\pi\\)",
 "E": "\\(3.5\\pi\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2002A/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The shaded region is the large disk with the seven unit disks removed, so finding the large radius is enough.\n\nLet \\(O\\) be the innermost circle's center, and let \\(P\\) and \\(R\\) be the large circle's center and radius. Each surrounding circle is externally tangent to the innermost circle, so its center is \\(1+1=2\\) units from \\(O\\). Each is internally tangent to the large circle, so its center is \\(R-1\\) units from \\(P\\).\n\nConsequently, the six surrounding centers lie both on a circle centered at \\(O\\) and on a circle centered at \\(P\\). Three distinct points on a circle are noncollinear, and their perpendicular bisectors meet at a unique circumcenter. Both \\(O\\) and \\(P\\) must be that circumcenter, so \\(P=O\\). Hence\n\\[\nR-1=2,\n\\qquad R=3.\n\\]\nThe seven small disks have disjoint interiors, so their areas can all be subtracted once. The shaded area is\n\\[\n\\pi(3^2)-7\\pi(1^2)\n=9\\pi-7\\pi\n=\\boxed{2\\pi}.\n\\]\nThe answer is choice \\(\\boxed{\\text{C}}\\).",
+"solutionMethods": [
+{
+"id": "centers-and-area-subtraction",
+"label": "Find the large radius from the centers",
+"explanation": "The shaded region is the large disk with the seven unit disks removed, so finding the large radius is enough.\n\nLet \\(O\\) be the innermost circle's center, and let \\(P\\) and \\(R\\) be the large circle's center and radius. Each surrounding circle is externally tangent to the innermost circle, so its center is \\(1+1=2\\) units from \\(O\\). Each is internally tangent to the large circle, so its center is \\(R-1\\) units from \\(P\\).\n\nConsequently, the six surrounding centers lie both on a circle centered at \\(O\\) and on a circle centered at \\(P\\). Three distinct points on a circle are noncollinear, and their perpendicular bisectors meet at a unique circumcenter. Both \\(O\\) and \\(P\\) must be that circumcenter, so \\(P=O\\). Hence\n\\[\nR-1=2,\n\\qquad R=3.\n\\]\nThe seven small disks have disjoint interiors, so their areas can all be subtracted once. The shaded area is\n\\[\n\\pi(3^2)-7\\pi(1^2)\n=9\\pi-7\\pi\n=\\boxed{2\\pi}.\n\\]\nThe answer is choice \\(\\boxed{\\text{C}}\\).",
+"directNodeIds": [
+"cnm_p150",
+"cnm_p192",
+"cnm_h181",
+"cnm_265"
+],
+"legacyRouteId": "centers-and-area-subtraction",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_12A_Q05#centers-and-area-subtraction",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_12A_Q05.json",
+"sha256": "a0ec5f0cd87c2428df129ed1dd58e56b65975a9f22f4dbf812c1d51e610cb979",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2002_AMC_12A_Q05",
+"position": {
+"year": 2002,
+"level": "AMC 12",
+"batch": "A",
+"number": 5
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2002A/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2002_AMC_12A_Q05",
 "figureSources": {
 "figures/2002_AMC_12A_Q05_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc12/2002A/5.svg",
+"alt": "",
+"sha256": "65f545b424fef887ec02bc00c7de54811fbe98fdde69ab2cd9e2188dc457bedd",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2002A/5.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2002A/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "9be5e6fffce05315f2771fc4ecf1426ee954aa5f1390c45101d952c55b017f3b",
+"contentHash": "33ac3c261bf5dab726eed03da3c56e22760ea7dcd36930e1a69c6899442d5a21",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -366028,9 +371405,35 @@ window.AMC_BANK = {
 "cnm_p192"
 ],
 "supportIds": [
-"cnm_h181"
+"cnm_h181",
+"cnm_p188"
 ],
-"routes": [],
+"routes": [
+{
+"id": "centers-and-area-subtraction",
+"label": "Find the large radius from the centers",
+"nodeIds": [
+"cnm_p150",
+"cnm_p192",
+"cnm_h181",
+"cnm_265",
+"cnm_p188",
+"cnm_133"
+],
+"methodDirectNodeIds": {
+"centers-and-area-subtraction": [
+"cnm_p150",
+"cnm_p192",
+"cnm_h181",
+"cnm_265"
+]
+},
+"contextNodeIds": [
+"cnm_p188",
+"cnm_133"
+]
+}
+],
 "flags": []
 }
 },
@@ -366296,14 +371699,17 @@ window.AMC_BANK = {
 {
 "id": "2002_AMC_12A_Q08",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2002,
 "level": "AMC 12",
 "batch": "A",
 "number": 8,
-"area": "Unclassified",
+"topic": {
+"id": "A",
+"label": "A"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Betsy designed a flag using blue triangles, small white squares, and a red center square, as shown. Let \\(B\\) be the total area of the blue triangles, \\(W\\) the total area of the white squares, and \\(R\\) the area of the red square. Which of the following is correct?\n\n[Figure 1](figures/2002_AMC_12A_Q08_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -366313,32 +371719,118 @@ window.AMC_BANK = {
 "D": "\\(3B = 2R\\)",
 "E": "\\(2R = W\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "A",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2002A/solutions",
+"acceptedResponses": [
+"A"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Extend the four sides of the red square to the boundary of the flag. This separates the flag into nine square cells, with the red square as the center cell. Each of the other eight cells contains a white square joining its side midpoints. These midpoint relationships follow from the bisecting diagonals of the white squares and the straight continuations of their sides through the touching vertices.\n\n[Figure 1](figures/2002_AMC_12A_Q08_question_fig1.svg)\n\nLet each cell have side length \\(s>0\\). In an outer cell, the four triangles outside the white square each have perpendicular legs \\(s/2\\), so their combined area is\n\\[\n4\\left(\\frac12\\cdot\\frac{s}{2}\\cdot\\frac{s}{2}\\right)=\\frac{s^2}{2}.\n\\]\nThe white square therefore also has area \\(s^2-s^2/2=s^2/2\\). Thus each of the eight outer cells contains equal blue and white areas. These cells cover every blue and white region without overlapping interiors, so\n\\[\nB=8\\cdot\\frac{s^2}{2}=W.\n\\]\nThe correct choice is \\(\\boxed{\\text{A}}\\).",
+"solutionMethods": [
+{
+"id": "square-cell-dissection",
+"label": "Divide the flag into square cells",
+"explanation": "Extend the four sides of the red square to the boundary of the flag. This separates the flag into nine square cells, with the red square as the center cell. Each of the other eight cells contains a white square joining its side midpoints. These midpoint relationships follow from the bisecting diagonals of the white squares and the straight continuations of their sides through the touching vertices.\n\n[Figure 1](figures/2002_AMC_12A_Q08_question_fig1.svg)\n\nLet each cell have side length \\(s>0\\). In an outer cell, the four triangles outside the white square each have perpendicular legs \\(s/2\\), so their combined area is\n\\[\n4\\left(\\frac12\\cdot\\frac{s}{2}\\cdot\\frac{s}{2}\\right)=\\frac{s^2}{2}.\n\\]\nThe white square therefore also has area \\(s^2-s^2/2=s^2/2\\). Thus each of the eight outer cells contains equal blue and white areas. These cells cover every blue and white region without overlapping interiors, so\n\\[\nB=8\\cdot\\frac{s^2}{2}=W.\n\\]\nThe correct choice is \\(\\boxed{\\text{A}}\\).",
+"directNodeIds": [
+"cnm_p150",
+"cnm_191"
+],
+"legacyRouteId": "square-cell-dissection",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_12A_Q08#square-cell-dissection",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_12A_Q08.json",
+"sha256": "0605e046cfb6695e7f84357a9cb9c797b8cdb8f2f5aa8418e37adeceeeeeb557",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2002_AMC_12A_Q08",
+"position": {
+"year": 2002,
+"level": "AMC 12",
+"batch": "A",
+"number": 8
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2002A/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2002_AMC_12A_Q08",
 "figureSources": {
 "figures/2002_AMC_12A_Q08_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc12/2002A/8.svg",
+"alt": "",
+"sha256": "898a650b5fda7efec8ec3d0e18e08362f877a28d0ea2c080d4b7b005566b3ba3",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2002A/8.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2002A/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "a28606fe8a2e54e639851d30ab698a49a7e65fc95fa4a305cb77f5098b745efb",
+"contentHash": "9b5fbfcbabb7a9358005034dddbe00fdeba2f25f6287b5c29abb5338c325b2d1",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_p150"
 ],
 "supportIds": [
+"cnm_191",
 "cnm_p089",
 "cnm_p148"
 ],
-"routes": [],
+"routes": [
+{
+"id": "square-cell-dissection",
+"label": "Divide the flag into square cells",
+"nodeIds": [
+"cnm_p150",
+"cnm_191",
+"cnm_p089",
+"cnm_p148"
+],
+"methodDirectNodeIds": {
+"square-cell-dissection": [
+"cnm_p150",
+"cnm_191"
+]
+},
+"contextNodeIds": [
+"cnm_p089",
+"cnm_p148"
+]
+}
+],
 "flags": []
 }
 },
@@ -368105,14 +373597,17 @@ window.AMC_BANK = {
 {
 "id": "2002_AMC_12A_Q19",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2002,
 "level": "AMC 12",
 "batch": "A",
 "number": 19,
-"area": "Unclassified",
+"topic": {
+"id": "A",
+"label": "A"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "The graph of the function \\(f\\) is shown below. How many solutions does the equation \\(f(f(x)) = 6\\) have?\n\n[Figure 1](figures/2002_AMC_12A_Q19_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -368122,28 +373617,137 @@ window.AMC_BANK = {
 "D": "\\(6\\)",
 "E": "\\(7\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2002A/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Work backward from the outer function. If \\(t=f(x)\\), then we need \\(f(t)=6\\). The graph reaches height \\(6\\) only at the two labeled peaks, whose inputs are \\(-2\\) and \\(1\\). Therefore\n\\[\nf(f(x))=6\n\\quad\\Longleftrightarrow\\quad\nf(x)=-2\\ \\text{or}\\ f(x)=1.\n\\]\n\n[Figure 1](figures/2002_AMC_12A_Q19_question_fig1.svg)\n\nNow count intersections with these two horizontal levels. The line \\(y=-2\\) crosses each outer segment once. It misses both middle segments, whose heights run from \\(0\\) to \\(6\\). This gives two solutions.\n\nThe line \\(y=1\\) crosses all four segments once, giving four more solutions. Each segment rises or falls strictly, so it contributes at most one intersection at either level. Neither level passes through a joining vertex, so no intersection has been counted twice.\n\nAll six inputs lie in the displayed domain \\([-7,5]\\). Their outputs, \\(-2\\) or \\(1\\), also lie in that domain, so the second evaluation of \\(f\\) is defined. An input cannot have both outputs, so the two groups are disjoint. The total is \\(2+4=\\boxed{6}\\), choice \\(\\boxed{\\text{D}}\\).",
+"solutionMethods": [
+{
+"id": "successive-horizontal-levels",
+"label": "Read the graph twice",
+"explanation": "Work backward from the outer function. If \\(t=f(x)\\), then we need \\(f(t)=6\\). The graph reaches height \\(6\\) only at the two labeled peaks, whose inputs are \\(-2\\) and \\(1\\). Therefore\n\\[\nf(f(x))=6\n\\quad\\Longleftrightarrow\\quad\nf(x)=-2\\ \\text{or}\\ f(x)=1.\n\\]\n\n[Figure 1](figures/2002_AMC_12A_Q19_question_fig1.svg)\n\nNow count intersections with these two horizontal levels. The line \\(y=-2\\) crosses each outer segment once. It misses both middle segments, whose heights run from \\(0\\) to \\(6\\). This gives two solutions.\n\nThe line \\(y=1\\) crosses all four segments once, giving four more solutions. Each segment rises or falls strictly, so it contributes at most one intersection at either level. Neither level passes through a joining vertex, so no intersection has been counted twice.\n\nAll six inputs lie in the displayed domain \\([-7,5]\\). Their outputs, \\(-2\\) or \\(1\\), also lie in that domain, so the second evaluation of \\(f\\) is defined. An input cannot have both outputs, so the two groups are disjoint. The total is \\(2+4=\\boxed{6}\\), choice \\(\\boxed{\\text{D}}\\).",
+"directNodeIds": [
+"math:function-composition-iteration",
+"cnm_197",
+"cnm_196"
+],
+"legacyRouteId": "successive-horizontal-levels",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_12A_Q19#successive-horizontal-levels",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_12A_Q19.json",
+"sha256": "05f8b6f5bbead6100e2671cc1456d9e688036c9b409b086d15fe524adb5b90b9",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "graphical-successive-preimages",
+"label": "Read successive preimages from the graph",
+"directNodeIds": [
+"cnm_197",
+"cnm_196"
+],
+"legacyRouteId": "graphical-successive-preimages",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2404",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2002_AMC_12A_Q19#graphical-successive-preimages",
+"evidence": []
+}
+},
+{
+"id": "piecewise-linear-preimages",
+"label": "Solve on the four line segments",
+"directNodeIds": [
+"cnm_205",
+"cnm_042",
+"cnm_195"
+],
+"legacyRouteId": "piecewise-linear-preimages",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2404",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2002_AMC_12A_Q19#piecewise-linear-preimages",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2002_AMC_12A_Q19",
+"position": {
+"year": 2002,
+"level": "AMC 12",
+"batch": "A",
+"number": 19
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2002A/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2002_AMC_12A_Q19",
 "figureSources": {
 "figures/2002_AMC_12A_Q19_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc12/2002A/19.svg",
+"alt": "",
+"sha256": "95286a61991ed53677c9222002b0ceff69f5e3642d0c3974a1d2d905990dedbe",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2002A/19.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2002A/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "a5feb4ab37f4e489409e5f8b8d525465cbf6cdb5372abb5b4e73edebe70add0e",
+"contentHash": "54c3aeb305221bf21da45f57b7deebe0021752b193b52824299c9d082be340a4",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
 "math:function-composition-iteration"
 ],
-"supportIds": [],
+"supportIds": [
+"cnm_197",
+"cnm_196",
+"cnm_082",
+"cnm_h027"
+],
 "routes": [
 {
 "id": "graphical-successive-preimages",
@@ -368151,7 +373755,14 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_197",
 "cnm_196"
+],
+"methodDirectNodeIds": {
+"graphical-successive-preimages": [
+"cnm_197",
+"cnm_196"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "piecewise-linear-preimages",
@@ -368160,6 +373771,36 @@ window.AMC_BANK = {
 "cnm_205",
 "cnm_042",
 "cnm_195"
+],
+"methodDirectNodeIds": {
+"piecewise-linear-preimages": [
+"cnm_205",
+"cnm_042",
+"cnm_195"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "successive-horizontal-levels",
+"label": "Read the graph twice",
+"nodeIds": [
+"math:function-composition-iteration",
+"cnm_197",
+"cnm_196",
+"cnm_082",
+"cnm_h027"
+],
+"methodDirectNodeIds": {
+"successive-horizontal-levels": [
+"math:function-composition-iteration",
+"cnm_197",
+"cnm_196"
+]
+},
+"contextNodeIds": [
+"cnm_082",
+"cnm_h027"
 ]
 }
 ],
@@ -368502,14 +374143,17 @@ window.AMC_BANK = {
 {
 "id": "2002_AMC_12A_Q22",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2002,
 "level": "AMC 12",
 "batch": "A",
 "number": 22,
-"area": "Unclassified",
+"topic": {
+"id": "A",
+"label": "A"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Triangle \\(ABC\\) is a right triangle with \\(\\angle ACB\\) as its right angle, \\(m\\angle ABC = 60^\\circ,\\) and \\(AB = 10.\\) Let \\(P\\) be randomly chosen inside \\(\\triangle ABC,\\) and extend \\(\\overline{BP}\\) to meet \\(\\overline{AC}\\) at \\(D.\\) What is the probability that \\(BD \\gt 5\\sqrt{2}?\\)\n\n[Figure 1](figures/2002_AMC_12A_Q22_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -368519,22 +374163,123 @@ window.AMC_BANK = {
 "D": "\\(\\dfrac{1}{2}\\)",
 "E": "\\(\\dfrac{5 - \\sqrt{5}}{5}\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2002A/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Interpret the random point as uniformly distributed over the triangle's area. Then the probability is the favorable area divided by the whole area. We first find the ray from \\(B\\) that separates favorable and unfavorable points.\n\n[Figure 1](figures/2002_AMC_12A_Q22_question_fig1.svg)\n\nSince the acute angles of the right triangle sum to \\(90^\\circ\\), we have \\(\\angle A=30^\\circ\\). The leg opposite this angle is half the hypotenuse, so \\(BC=5\\). By the Pythagorean theorem,\n\\[\nAC=\\sqrt{10^2-5^2}=5\\sqrt3.\n\\]\nFor any \\(D\\) on \\(AC\\), triangle \\(BCD\\) is right at \\(C\\), giving\n\\[\nBD^2=25+CD^2.\n\\]\nBecause lengths are nonnegative, \\(BD>5\\sqrt2\\) is equivalent to \\(CD>5\\).\n\nChoose \\(E\\) on \\(AC\\) with \\(CE=5\\). Such a point lies strictly between \\(C\\) and \\(A\\), since \\(AC=5\\sqrt3>5\\). The favorable points \\(P\\) are exactly those inside triangle \\(BAE\\): their rays from \\(B\\) meet \\(AC\\) between \\(E\\) and \\(A\\). Points on \\(BE\\) give equality and are excluded; this line segment has zero area.\n\nTriangles \\(BAE\\) and \\(BAC\\) have bases on the same line and the same altitude from \\(B\\). Writing \\([XYZ]\\) for the area of triangle \\(XYZ\\), the probability is therefore\n\\[\n\\frac{[BAE]}{[BAC]}\n=\\frac{AE}{AC}\n=\\frac{5\\sqrt3-5}{5\\sqrt3}\n=\\boxed{\\frac{3-\\sqrt3}{3}}.\n\\]\nThe denominator is positive, and the ratio lies between \\(0\\) and \\(1\\). The correct choice is \\(\\boxed{\\text{C}}\\).",
+"solutionMethods": [
+{
+"id": "pythagorean-cutoff-area",
+"label": "Find the cutoff ray and compare areas",
+"explanation": "Interpret the random point as uniformly distributed over the triangle's area. Then the probability is the favorable area divided by the whole area. We first find the ray from \\(B\\) that separates favorable and unfavorable points.\n\n[Figure 1](figures/2002_AMC_12A_Q22_question_fig1.svg)\n\nSince the acute angles of the right triangle sum to \\(90^\\circ\\), we have \\(\\angle A=30^\\circ\\). The leg opposite this angle is half the hypotenuse, so \\(BC=5\\). By the Pythagorean theorem,\n\\[\nAC=\\sqrt{10^2-5^2}=5\\sqrt3.\n\\]\nFor any \\(D\\) on \\(AC\\), triangle \\(BCD\\) is right at \\(C\\), giving\n\\[\nBD^2=25+CD^2.\n\\]\nBecause lengths are nonnegative, \\(BD>5\\sqrt2\\) is equivalent to \\(CD>5\\).\n\nChoose \\(E\\) on \\(AC\\) with \\(CE=5\\). Such a point lies strictly between \\(C\\) and \\(A\\), since \\(AC=5\\sqrt3>5\\). The favorable points \\(P\\) are exactly those inside triangle \\(BAE\\): their rays from \\(B\\) meet \\(AC\\) between \\(E\\) and \\(A\\). Points on \\(BE\\) give equality and are excluded; this line segment has zero area.\n\nTriangles \\(BAE\\) and \\(BAC\\) have bases on the same line and the same altitude from \\(B\\). Writing \\([XYZ]\\) for the area of triangle \\(XYZ\\), the probability is therefore\n\\[\n\\frac{[BAE]}{[BAC]}\n=\\frac{AE}{AC}\n=\\frac{5\\sqrt3-5}{5\\sqrt3}\n=\\boxed{\\frac{3-\\sqrt3}{3}}.\n\\]\nThe denominator is positive, and the ratio lies between \\(0\\) and \\(1\\). The correct choice is \\(\\boxed{\\text{C}}\\).",
+"directNodeIds": [
+"math:geometric-probability",
+"cnm_174"
+],
+"legacyRouteId": "pythagorean-cutoff-area",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_12A_Q22#pythagorean-cutoff-area",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_12A_Q22.json",
+"sha256": "17ae3d50dda81e63df7fa4621eb02daaef624dfb3d17aa1bae4a8a31298b7012",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "pythagorean-boundary",
+"label": "Locate the cutoff by a right triangle",
+"directNodeIds": [
+"cnm_174"
+],
+"legacyRouteId": "pythagorean-boundary",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2407",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2002_AMC_12A_Q22#pythagorean-boundary",
+"evidence": []
+}
+},
+{
+"id": "trigonometric-boundary",
+"label": "Locate the cutoff by acute trigonometry",
+"directNodeIds": [
+"cnm_276",
+"cnm_277"
+],
+"legacyRouteId": "trigonometric-boundary",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2407",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2002_AMC_12A_Q22#trigonometric-boundary",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2002_AMC_12A_Q22",
+"position": {
+"year": 2002,
+"level": "AMC 12",
+"batch": "A",
+"number": 22
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2002A/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2002_AMC_12A_Q22",
 "figureSources": {
 "figures/2002_AMC_12A_Q22_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc12/2002A/22.svg",
+"alt": "",
+"sha256": "1dea841cbca98f0c97f824e1a2103c34a718069b970dec9c8c5caeb2bd88b28a",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2002A/22.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2002A/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "4e8b7e1f04f8ad7878522423a8d851d821a800cdbdcc58967dcdc5b88a663bb9",
+"contentHash": "07308fb748cbdc0796791a66e0845c62000ed75abf5b7dbcffd12a8b6fe53224",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -368550,7 +374295,13 @@ window.AMC_BANK = {
 "label": "Locate the cutoff by a right triangle",
 "nodeIds": [
 "cnm_174"
+],
+"methodDirectNodeIds": {
+"pythagorean-boundary": [
+"cnm_174"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "trigonometric-boundary",
@@ -368558,6 +374309,37 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_276",
 "cnm_277"
+],
+"methodDirectNodeIds": {
+"trigonometric-boundary": [
+"cnm_276",
+"cnm_277"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "pythagorean-cutoff-area",
+"label": "Find the cutoff ray and compare areas",
+"nodeIds": [
+"math:geometric-probability",
+"cnm_174",
+"cnm_140",
+"cnm_p148",
+"cnm_116",
+"cnm_171"
+],
+"methodDirectNodeIds": {
+"pythagorean-cutoff-area": [
+"math:geometric-probability",
+"cnm_174"
+]
+},
+"contextNodeIds": [
+"cnm_140",
+"cnm_p148",
+"cnm_116",
+"cnm_171"
 ]
 }
 ],
@@ -368990,14 +374772,17 @@ window.AMC_BANK = {
 {
 "id": "2002_AMC_12A_Q25",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2002,
 "level": "AMC 12",
 "batch": "A",
 "number": 25,
-"area": "Unclassified",
+"topic": {
+"id": "A",
+"label": "A"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "The nonzero coefficients of a polynomial \\(P\\) with real coefficients are all replaced by their mean to form a polynomial \\(Q.\\) Which of the following could be a graph of \\(y = P(x)\\) and \\(y = Q(x)\\) over the interval \\(-4 \\le x \\le 4?\\)",
 "questionType": "text",
 "choices": {
@@ -369007,47 +374792,158 @@ window.AMC_BANK = {
 "D": "[Figure 4](figures/2002_AMC_12A_Q25_choiceD_fig4.svg)",
 "E": "[Figure 5](figures/2002_AMC_12A_Q25_choiceE_fig5.svg)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "figure",
 "answer": "B",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2002A/solutions",
+"acceptedResponses": [
+"B"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The mean preserves the total of the numbers being averaged. To connect that fact to the graphs, evaluate the polynomials at \\(x=1\\): every power of \\(1\\) equals \\(1\\), so a polynomial's value there is the sum of its coefficients.\n\nSuppose \\(P\\) has \\(n\\geq 1\\) nonzero coefficients \\(a_1,\\ldots,a_n\\), with mean\n\\[\nm=\\frac{a_1+\\cdots+a_n}{n}.\n\\]\nThe replacement keeps the same powers of \\(x\\), leaves zero coefficients unchanged, and replaces each of these \\(n\\) coefficients by \\(m\\). Consequently,\n\\[\nP(1)=a_1+\\cdots+a_n=nm=Q(1).\n\\]\nThis remains true if \\(m=0\\). Thus the two graphs must have the same height at \\(x=1\\).\n\nIn choices A, C, D, and E, the purple curve is above the black curve at \\(x=1\\), so those choices are impossible. In choice B, the curves meet at \\(x=1\\). The answer is \\(\\boxed{\\text{B}}\\).",
+"solutionMethods": [
+{
+"id": "coefficient_sum",
+"label": "Evaluate at 1",
+"explanation": "The mean preserves the total of the numbers being averaged. To connect that fact to the graphs, evaluate the polynomials at \\(x=1\\): every power of \\(1\\) equals \\(1\\), so a polynomial's value there is the sum of its coefficients.\n\nSuppose \\(P\\) has \\(n\\geq 1\\) nonzero coefficients \\(a_1,\\ldots,a_n\\), with mean\n\\[\nm=\\frac{a_1+\\cdots+a_n}{n}.\n\\]\nThe replacement keeps the same powers of \\(x\\), leaves zero coefficients unchanged, and replaces each of these \\(n\\) coefficients by \\(m\\). Consequently,\n\\[\nP(1)=a_1+\\cdots+a_n=nm=Q(1).\n\\]\nThis remains true if \\(m=0\\). Thus the two graphs must have the same height at \\(x=1\\).\n\nIn choices A, C, D, and E, the purple curve is above the black curve at \\(x=1\\), so those choices are impossible. In choice B, the curves meet at \\(x=1\\). The answer is \\(\\boxed{\\text{B}}\\).",
+"directNodeIds": [
+"math:polynomial-coefficient-sums",
+"cnm_211",
+"cnm_197"
+],
+"legacyRouteId": "coefficient_sum",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_12A_Q25#coefficient_sum",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_12A_Q25.json",
+"sha256": "70c150f496bf91628fb3c1010372957db45c14f3866b0f7d86615671ef195432",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2002_AMC_12A_Q25",
+"position": {
+"year": 2002,
+"level": "AMC 12",
+"batch": "A",
+"number": 25
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2002A/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2002_AMC_12A_Q25",
 "figureSources": {
 "figures/2002_AMC_12A_Q25_choiceA_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc12/2002A/25A.svg",
-"alt": ""
-},
-"figures/2002_AMC_12A_Q25_choiceB_fig2.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc12/2002A/25B.svg",
-"alt": ""
-},
-"figures/2002_AMC_12A_Q25_choiceC_fig3.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc12/2002A/25C.svg",
-"alt": ""
-},
-"figures/2002_AMC_12A_Q25_choiceD_fig4.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc12/2002A/25D.svg",
-"alt": ""
-},
-"figures/2002_AMC_12A_Q25_choiceE_fig5.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc12/2002A/25E.svg",
+"alt": "",
+"sha256": "fdef3395c1c05dee3671b2989a7d93e453bd7686c91ccb820f6aa2bc7a17f8ba",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2002A/25A.svg",
 "alt": ""
 }
 },
+"figures/2002_AMC_12A_Q25_choiceB_fig2.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2002A/25B.svg",
+"alt": "",
+"sha256": "4983f16e205dbf47f3e95f1a8342d1ec4d2c872d99157dc98197e67908d1755b",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2002A/25B.svg",
+"alt": ""
+}
+},
+"figures/2002_AMC_12A_Q25_choiceC_fig3.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2002A/25C.svg",
+"alt": "",
+"sha256": "af2726fae4cab6e4eaf323a4d08de22d18f81bf63f38f1f7ae83d85a7fe695b9",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2002A/25C.svg",
+"alt": ""
+}
+},
+"figures/2002_AMC_12A_Q25_choiceD_fig4.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2002A/25D.svg",
+"alt": "",
+"sha256": "0acd932963da391c9e5005e47033473b71e0b82e31affa740d409ce08bb0140b",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2002A/25D.svg",
+"alt": ""
+}
+},
+"figures/2002_AMC_12A_Q25_choiceE_fig5.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2002A/25E.svg",
+"alt": "",
+"sha256": "fb6e66385d70071f34d7b302d58ecec2004c18c081efa75014c3e840b0e535c8",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc12/2002A/25E.svg",
+"alt": ""
+}
+}
+},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc12/2002A/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "c3321642afb62e47513b6a23940a26cd59a9cf1df02914c94b4c39cce859510e",
+"contentHash": "c47d76d8dc590b0f62b57c193eabf4c16977368a3f9e30260ac1755207fea0d9",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
+"math:polynomial-coefficient-sums",
 "cnm_211",
-"cnm_029",
 "cnm_197"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_032",
+"cnm_082"
+],
+"routes": [
+{
+"id": "coefficient_sum",
+"label": "Evaluate at 1",
+"nodeIds": [
+"math:polynomial-coefficient-sums",
+"cnm_211",
+"cnm_197",
+"cnm_032",
+"cnm_082"
+],
+"methodDirectNodeIds": {
+"coefficient_sum": [
+"math:polynomial-coefficient-sums",
+"cnm_211",
+"cnm_197"
+]
+},
+"contextNodeIds": [
+"cnm_032",
+"cnm_082"
+]
+}
+],
 "flags": []
 }
 },
@@ -373709,14 +379605,17 @@ window.AMC_BANK = {
 {
 "id": "2002_AMC_8_Q06",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2002,
 "level": "AMC 8",
 "batch": "NA",
 "number": 6,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "A birdbath is designed to overflow so that it will be self-cleaning. Water flows in at the rate of \\(20\\) milliliters per minute and drains at the rate of \\(18\\) milliliters per minute. One of these graphs shows the volume of water in the birdbath during the filling time and continuing into the overflow time. Which one is it?",
 "questionType": "text",
 "choices": {
@@ -373726,61 +379625,167 @@ window.AMC_BANK = {
 "D": "[Figure 4](figures/2002_AMC_8_Q06_choiceD_fig4.svg)",
 "E": "[Figure 5](figures/2002_AMC_8_Q06_choiceE_fig5.svg)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "figure",
 "answer": "A",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions",
+"acceptedResponses": [
+"A"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Track the amount of water inside the birdbath. Before it is full, water enters faster than it drains, so the volume increases by\n\\[\n20-18=2\\text{ milliliters per minute}.\n\\]\nThe same amount is added each minute, so the graph rises along a straight line during filling.\n\nOnce the birdbath is full, the extra \\(2\\) milliliters each minute overflow. The volume inside remains at the birdbath's capacity, so the rising segment joins a horizontal segment. Only graph A shows these two stages. The answer is \\(\\boxed{\\text{A}}\\).",
+"solutionMethods": [
+{
+"id": "filling_then_overflow",
+"label": "Track the water that stays",
+"explanation": "Track the amount of water inside the birdbath. Before it is full, water enters faster than it drains, so the volume increases by\n\\[\n20-18=2\\text{ milliliters per minute}.\n\\]\nThe same amount is added each minute, so the graph rises along a straight line during filling.\n\nOnce the birdbath is full, the extra \\(2\\) milliliters each minute overflow. The volume inside remains at the birdbath's capacity, so the rising segment joins a horizontal segment. Only graph A shows these two stages. The answer is \\(\\boxed{\\text{A}}\\).",
+"directNodeIds": [
+"cnm_209"
+],
+"legacyRouteId": "filling_then_overflow",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_8_Q06#filling_then_overflow",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_8_Q06.json",
+"sha256": "ef337656cf4916775b3d1a61369e76c85dfd2f71095aee7d03e22893e742f30e",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2002_AMC_8_Q06",
+"position": {
+"year": 2002,
+"level": "AMC 8",
+"batch": "NA",
+"number": 6
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2002_AMC_8_Q06",
 "figureSources": {
 "figures/2002_AMC_8_Q06_choiceA_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2002/6_A.svg",
-"alt": ""
-},
-"figures/2002_AMC_8_Q06_choiceB_fig2.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/6_B.svg",
-"alt": ""
-},
-"figures/2002_AMC_8_Q06_choiceC_fig3.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/6_C.svg",
-"alt": ""
-},
-"figures/2002_AMC_8_Q06_choiceD_fig4.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/6_D.svg",
-"alt": ""
-},
-"figures/2002_AMC_8_Q06_choiceE_fig5.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/6_E.svg",
+"alt": "",
+"sha256": "eb1d05e90c8ea4847078b310d5330ea4d8497205cf7099d96a687bc98e865a16",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/6_A.svg",
 "alt": ""
 }
 },
+"figures/2002_AMC_8_Q06_choiceB_fig2.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/6_B.svg",
+"alt": "",
+"sha256": "e324dc1e825f045440debb7e289738d32c9cab3786e6e505a3ebad7a74d6784e",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/6_B.svg",
+"alt": ""
+}
+},
+"figures/2002_AMC_8_Q06_choiceC_fig3.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/6_C.svg",
+"alt": "",
+"sha256": "0377b1ad98ab13079b343e56bff1bec122afededdcff2fbc8cb037ed21d4b1ad",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/6_C.svg",
+"alt": ""
+}
+},
+"figures/2002_AMC_8_Q06_choiceD_fig4.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/6_D.svg",
+"alt": "",
+"sha256": "718b901a330b5c6dcd1be066de41c83dab65c2b5f7305184d351579ce1c29408",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/6_D.svg",
+"alt": ""
+}
+},
+"figures/2002_AMC_8_Q06_choiceE_fig5.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/6_E.svg",
+"alt": "",
+"sha256": "fb0279704dbe90de9941b0301c2f86c75b7bfcf084d5183819e65b4efdaecdb6",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/6_E.svg",
+"alt": ""
+}
+}
+},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "fc8212c38f069b33e2dc5a1d49b6cec20baefc8e37b276d2834314dd1025153e",
+"contentHash": "a2599df92c01be173589f856789ccb7fb1090f5eed58c2d97a5ee2210fb92775",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_209"
 ],
 "supportIds": [
-"cnm_197"
+"cnm_197",
+"cnm_p164"
 ],
-"routes": [],
+"routes": [
+{
+"id": "filling_then_overflow",
+"label": "Track the water that stays",
+"nodeIds": [
+"cnm_209",
+"cnm_197",
+"cnm_p164"
+],
+"methodDirectNodeIds": {
+"filling_then_overflow": [
+"cnm_209"
+]
+},
+"contextNodeIds": [
+"cnm_197",
+"cnm_p164"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2002_AMC_8_Q07",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2002,
 "level": "AMC 8",
 "batch": "NA",
 "number": 7,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "The students in Mrs. Sawyer’s class were asked to do a taste test of five kinds of candy. Each student chose one kind of candy. A bar graph of their preferences is shown. What percent of her class chose candy \\(E?\\)\n\n[Figure 1](figures/2002_AMC_8_Q07_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -373790,44 +379795,138 @@ window.AMC_BANK = {
 "D": "\\(16\\)",
 "E": "\\(20\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "E",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions",
+"acceptedResponses": [
+"E"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The bars show that candies A through E were chosen by \\(6,8,4,2,5\\) students, respectively. Since every student chose exactly one candy, adding these counts includes every student once. The class has\n\\[\n6+8+4+2+5=25\n\\]\nstudents. Of these, \\(5\\) chose candy E, so the percentage is\n\\[\n\\frac{5}{25}=\\frac{20}{100}=20\\%.\n\\]\nThe answer is \\(\\boxed{20\\%}\\), choice \\(\\boxed{\\text{E}}\\).",
+"solutionMethods": [
+{
+"id": "part_over_total",
+"label": "Find candy E's share",
+"explanation": "The bars show that candies A through E were chosen by \\(6,8,4,2,5\\) students, respectively. Since every student chose exactly one candy, adding these counts includes every student once. The class has\n\\[\n6+8+4+2+5=25\n\\]\nstudents. Of these, \\(5\\) chose candy E, so the percentage is\n\\[\n\\frac{5}{25}=\\frac{20}{100}=20\\%.\n\\]\nThe answer is \\(\\boxed{20\\%}\\), choice \\(\\boxed{\\text{E}}\\).",
+"directNodeIds": [
+"cnm_p108",
+"cnm_p197"
+],
+"legacyRouteId": "part_over_total",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_8_Q07#part_over_total",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_8_Q07.json",
+"sha256": "f3ac600cd25a759b84c9c9691d480bc5d752d12de53fc3772192f55606c43429",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2002_AMC_8_Q07",
+"position": {
+"year": 2002,
+"level": "AMC 8",
+"batch": "NA",
+"number": 7
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2002_AMC_8_Q07",
 "figureSources": {
 "figures/2002_AMC_8_Q07_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2002/7.svg",
+"alt": "",
+"sha256": "98ebd4cddf3fbd43e1423fa0d07a7f3bb94e6c3b2293ca4566c8f6f0e3b8f37b",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/7.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "2f42db0a3f9aff279208cc46dab66cafd8729ee9b6fc188e6bf3d9597bd858bc",
+"contentHash": "6af5c1e4c95c08dbf924f05c98ef93ecac15ca0428839ebef2417355c73ced31",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_p108",
 "cnm_p197"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_p035",
+"cnm_p194",
+"cnm_p195"
+],
+"routes": [
+{
+"id": "part_over_total",
+"label": "Find candy E's share",
+"nodeIds": [
+"cnm_p108",
+"cnm_p197",
+"cnm_p035",
+"cnm_p194",
+"cnm_p195"
+],
+"methodDirectNodeIds": {
+"part_over_total": [
+"cnm_p108",
+"cnm_p197"
+]
+},
+"contextNodeIds": [
+"cnm_p035",
+"cnm_p194",
+"cnm_p195"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2002_AMC_8_Q08",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2002,
 "level": "AMC 8",
 "batch": "NA",
 "number": 8,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Problems \\(8,\\) \\(9,\\) and \\(10\\) use the data found in the accompanying paragraph and table.\n\nJuan’s Old Stamping Grounds\n\nJuan organizes the stamps in his collection by country and by the decade in which they were issued. The prices he paid for them at a stamp shop were: Brazil and France, \\(6\\)¢ each, Peru \\(4\\)¢ each, and Spain \\(5\\)¢ each. (Brazil and Peru are South American countries and France and Spain are in Europe.)\n\nNumber of Stamps by Decade\n\n[Figure 1](figures/2002_AMC_8_Q08_question_fig1.svg)\n\nHow many of his European stamps were issued in the ‘\\(80\\)s?",
 "questionType": "mixed",
 "choices": {
@@ -373837,45 +379936,130 @@ window.AMC_BANK = {
 "D": "\\(24\\)",
 "E": "\\(42\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The European countries are France and Spain, so read those two rows in the ’80s column. France has \\(15\\) stamps and Spain has \\(9\\). Together they give\n\\[\n15+9=24\n\\]\nEuropean stamps issued in the ’80s. The answer is \\(24\\), choice D.",
+"solutionMethods": [
+{
+"id": "table_total",
+"label": "Add the European entries",
+"explanation": "The European countries are France and Spain, so read those two rows in the ’80s column. France has \\(15\\) stamps and Spain has \\(9\\). Together they give\n\\[\n15+9=24\n\\]\nEuropean stamps issued in the ’80s. The answer is \\(24\\), choice D.",
+"directNodeIds": [
+"cnm_p085"
+],
+"legacyRouteId": "table_total",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_8_Q08#table_total",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_8_Q08.json",
+"sha256": "389bbf4b707103ff47a6ba2cac6fd9dbba00c2f46fbd915a3dd25c1f89477da3",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2002_AMC_8_Q08",
+"position": {
+"year": 2002,
+"level": "AMC 8",
+"batch": "NA",
+"number": 8
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2002_AMC_8_Q08",
 "figureSources": {
 "figures/2002_AMC_8_Q08_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2002/bg.svg",
+"alt": "",
+"sha256": "8099cd0242090dfee38c0d3713580fcc346cf9d533baa8e2450e076f8bd5451e",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/bg.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "99f4c22575e32841698c9467aa3e1aa5d257ce7c2ffa417cd1075e398b56d1e1",
+"contentHash": "9de566f1167f5db3f80cfc99fa82fe402fd1cbc1eb15091553226156b5baa650",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_p085"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_p031"
+],
+"routes": [
+{
+"id": "table_total",
+"label": "Add the European entries",
+"nodeIds": [
+"cnm_p085",
+"cnm_p031"
+],
+"methodDirectNodeIds": {
+"table_total": [
+"cnm_p085"
+]
+},
+"contextNodeIds": [
+"cnm_p031"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2002_AMC_8_Q09",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2002,
 "level": "AMC 8",
 "batch": "NA",
 "number": 9,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Problems \\(8,\\) \\(9,\\) and \\(10\\) use the data found in the accompanying paragraph and table.\n\nJuan’s Old Stamping Grounds\n\nJuan organizes the stamps in his collection by country and by the decade in which they were issued. The prices he paid for them at a stamp shop were: Brazil and France, \\(6\\)¢ each, Peru \\(4\\)¢ each, and Spain \\(5\\)¢ each. (Brazil and Peru are South American countries and France and Spain are in Europe.)\n\nNumber of Stamps by Decade\n\n[Figure 1](figures/2002_AMC_8_Q08_question_fig1.svg)\n\nHis South American stamps issued before the ‘\\(70\\)s cost him",
-"questionType": "text",
+"questionType": "mixed",
 "choices": {
 "A": "\\(\\$0.40\\)",
 "B": "\\(\\$1.06\\)",
@@ -373883,46 +380067,137 @@ window.AMC_BANK = {
 "D": "\\(\\$2.38\\)",
 "E": "\\(\\$2.64\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "B",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions",
+"acceptedResponses": [
+"B"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The South American countries are Brazil and Peru. “Before the ’70s” selects the ’50s and ’60s columns. These contain \\(4+7=11\\) Brazilian stamps and \\(6+4=10\\) Peruvian stamps.\n\nMultiply each count by its country's price, then add the costs. In cents, the total is\n\\[\n11\\times6+10\\times4=66+40=106.\n\\]\nSince \\(100\\) cents make one dollar, the stamps cost \\(\\$1.06\\), choice B.",
+"solutionMethods": [
+{
+"id": "country_costs",
+"label": "Count and price each country's stamps",
+"explanation": "The South American countries are Brazil and Peru. “Before the ’70s” selects the ’50s and ’60s columns. These contain \\(4+7=11\\) Brazilian stamps and \\(6+4=10\\) Peruvian stamps.\n\nMultiply each count by its country's price, then add the costs. In cents, the total is\n\\[\n11\\times6+10\\times4=66+40=106.\n\\]\nSince \\(100\\) cents make one dollar, the stamps cost \\(\\$1.06\\), choice B.",
+"directNodeIds": [
+"cnm_p085",
+"cnm_p111"
+],
+"legacyRouteId": "country_costs",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_8_Q09#country_costs",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_8_Q09.json",
+"sha256": "038b74e04418fdebef9c125b65c1202b25ec3782deb8c5750053364345851e84",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2002_AMC_8_Q09",
+"position": {
+"year": 2002,
+"level": "AMC 8",
+"batch": "NA",
+"number": 9
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2002_AMC_8_Q09",
 "figureSources": {
 "figures/2002_AMC_8_Q08_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2002/bg.svg",
+"alt": "",
+"sha256": "8099cd0242090dfee38c0d3713580fcc346cf9d533baa8e2450e076f8bd5451e",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/bg.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "7cb7fc34269a384896c8ba5a0d47ec8655dfee6086de9afcbdbe6c9b83b3d126",
+"contentHash": "cea22fcad31b9a27fc21e6c79d5d365364578c131580488fc1228ff44287b7c9",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_p085",
 "cnm_p111"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_p074",
+"math:us-dollar-and-cent-word-problems"
+],
+"routes": [
+{
+"id": "country_costs",
+"label": "Count and price each country's stamps",
+"nodeIds": [
+"cnm_p085",
+"cnm_p111",
+"cnm_p074",
+"math:us-dollar-and-cent-word-problems"
+],
+"methodDirectNodeIds": {
+"country_costs": [
+"cnm_p085",
+"cnm_p111"
+]
+},
+"contextNodeIds": [
+"cnm_p074",
+"math:us-dollar-and-cent-word-problems"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2002_AMC_8_Q10",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2002,
 "level": "AMC 8",
 "batch": "NA",
 "number": 10,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Problems \\(8,\\) \\(9,\\) and \\(10\\) use the data found in the accompanying paragraph and table.\n\nJuan’s Old Stamping Grounds\n\nJuan organizes the stamps in his collection by country and by the decade in which they were issued. The prices he paid for them at a stamp shop were: Brazil and France, \\(6\\)¢ each, Peru \\(4\\)¢ each, and Spain \\(5\\)¢ each. (Brazil and Peru are South American countries and France and Spain are in Europe.)\n\nNumber of Stamps by Decade\n\n[Figure 1](figures/2002_AMC_8_Q08_question_fig1.svg)\n\nThe average price of his ‘\\(70\\)s stamps is closest to",
-"questionType": "text",
+"questionType": "mixed",
 "choices": {
 "A": "\\(3.5\\)¢",
 "B": "\\(4\\)¢",
@@ -373930,22 +380205,87 @@ window.AMC_BANK = {
 "D": "\\(5\\)¢",
 "E": "\\(5.5\\)¢"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "E",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions",
+"acceptedResponses": [
+"E"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Each stamp must count once in the average, so find the total cost of the ’70s stamps and divide by their total number. The ’70s column lists \\(12\\) from Brazil, \\(12\\) from France, \\(6\\) from Peru, and \\(13\\) from Spain. Thus there are\n\\[\n12+12+6+13=43\n\\]\nstamps. Using the price for each country, their total cost in cents is\n\\[\n12\\times6+12\\times6+6\\times4+13\\times5\n=72+72+24+65=233.\n\\]\nThe average price is therefore\n\\[\n\\frac{233}{43}\\approx5.419\\text{ cents}.\n\\]\nThis is about \\(0.081\\) cent from \\(5.5\\) cents and \\(0.419\\) cent from \\(5\\) cents. Every other choice is below \\(5\\) cents and hence farther away. The closest price is \\(5.5\\) cents, choice E.",
+"solutionMethods": [
+{
+"id": "total_cost_average",
+"label": "Divide total cost by total count",
+"explanation": "Each stamp must count once in the average, so find the total cost of the ’70s stamps and divide by their total number. The ’70s column lists \\(12\\) from Brazil, \\(12\\) from France, \\(6\\) from Peru, and \\(13\\) from Spain. Thus there are\n\\[\n12+12+6+13=43\n\\]\nstamps. Using the price for each country, their total cost in cents is\n\\[\n12\\times6+12\\times6+6\\times4+13\\times5\n=72+72+24+65=233.\n\\]\nThe average price is therefore\n\\[\n\\frac{233}{43}\\approx5.419\\text{ cents}.\n\\]\nThis is about \\(0.081\\) cent from \\(5.5\\) cents and \\(0.419\\) cent from \\(5\\) cents. Every other choice is below \\(5\\) cents and hence farther away. The closest price is \\(5.5\\) cents, choice E.",
+"directNodeIds": [
+"cnm_212",
+"cnm_p085",
+"cnm_p111"
+],
+"legacyRouteId": "total_cost_average",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_8_Q10#total_cost_average",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_8_Q10.json",
+"sha256": "7ae8b9138f4075b7750819095c42bdf5203d69be1568a324f0a825e087d4cd54",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2002_AMC_8_Q10",
+"position": {
+"year": 2002,
+"level": "AMC 8",
+"batch": "NA",
+"number": 10
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2002_AMC_8_Q10",
 "figureSources": {
 "figures/2002_AMC_8_Q08_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2002/bg.svg",
+"alt": "",
+"sha256": "8099cd0242090dfee38c0d3713580fcc346cf9d533baa8e2450e076f8bd5451e",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/bg.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "ec22341d61035ca7ea9f4336ab5dd3201a038f0c05666c3b47b2d87a3ec3c85c",
+"contentHash": "6a826bdbbb7a5ccfeea80e8eb1ddda26a329f35c1343e34f14f528cc354f5e99",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -373953,23 +380293,52 @@ window.AMC_BANK = {
 ],
 "supportIds": [
 "cnm_p085",
-"cnm_p111"
+"cnm_p111",
+"cnm_p129"
 ],
-"routes": [],
+"routes": [
+{
+"id": "total_cost_average",
+"label": "Divide total cost by total count",
+"nodeIds": [
+"cnm_212",
+"cnm_p085",
+"cnm_p111",
+"cnm_p129",
+"cnm_p074",
+"cnm_p137"
+],
+"methodDirectNodeIds": {
+"total_cost_average": [
+"cnm_212",
+"cnm_p085",
+"cnm_p111"
+]
+},
+"contextNodeIds": [
+"cnm_p129",
+"cnm_p074",
+"cnm_p137"
+]
+}
+],
 "flags": []
 }
 },
 {
 "id": "2002_AMC_8_Q11",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2002,
 "level": "AMC 8",
 "batch": "NA",
 "number": 11,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "A sequence of squares is made of identical square tiles. The edge of each square is one tile length longer than the edge of the previous square. The first three squares are shown. How many more tiles does the seventh square require than the sixth?\n\n[Figure 1](figures/2002_AMC_8_Q11_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -373979,30 +380348,164 @@ window.AMC_BANK = {
 "D": "\\(14\\)",
 "E": "\\(15\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions",
-"figureSources": {
-"figures/2002_AMC_8_Q11_question_fig1.svg": {
-"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/11.svg",
-"alt": ""
-}
-},
-"editorialNote": "",
-"knowledgeGraph": {
-"version": "1.0.0",
-"contentHash": "e943d3f8cd61f1641aefc0ba8aa8402a8efe187fdc2e2701c142811ea3297e02",
-"status": "mapped",
-"reviewStatus": "machine_scope_audited",
-"assessedIds": [
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The first three squares have side lengths of 1, 2, and 3 tiles. Since each new side is one tile longer, the sixth square has 6 rows of 6 tiles, and the seventh has 7 rows of 7 tiles. Their tile counts are therefore \\(6\\times6=36\\) and \\(7\\times7=49\\).\n\nSubtracting gives the number of additional tiles:\n\\[\n49-36=13.\n\\]\nThe seventh square requires \\(13\\) more tiles, choice \\(\\boxed{\\text{C}}\\).",
+"solutionMethods": [
+{
+"id": "square-tile-counts",
+"label": "Count rows of tiles",
+"explanation": "The first three squares have side lengths of 1, 2, and 3 tiles. Since each new side is one tile longer, the sixth square has 6 rows of 6 tiles, and the seventh has 7 rows of 7 tiles. Their tile counts are therefore \\(6\\times6=36\\) and \\(7\\times7=49\\).\n\nSubtracting gives the number of additional tiles:\n\\[\n49-36=13.\n\\]\nThe seventh square requires \\(13\\) more tiles, choice \\(\\boxed{\\text{C}}\\).",
+"directNodeIds": [
 "cnm_p200",
 "cnm_p089"
 ],
-"supportIds": [],
-"routes": [],
+"legacyRouteId": "square-tile-counts",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_8_Q11#square-tile-counts",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_8_Q11.json",
+"sha256": "0aa419cc1713cbab24dbb96d3516e4a084e18e38023588758d70fb5b373d7725",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "added-row-and-column",
+"label": "Count only the added tiles",
+"explanation": "The figure begins with a square one tile across, so the sixth square is 6 tiles across and the seventh is 7 tiles across.\n\nImagine keeping the sixth square in one corner of the seventh. Add a column of 6 tiles beside it, making a rectangle 6 tiles tall and 7 tiles wide. Then add a row of 7 tiles across the top. These two added pieces fill the larger square, and they do not overlap. Thus the number of new tiles is\n\\[\n6+7=13.\n\\]\nThe answer is \\(13\\) more tiles, choice \\(\\boxed{\\text{C}}\\).",
+"directNodeIds": [
+"cnm_p200",
+"math:rectangle-square-grids"
+],
+"legacyRouteId": "added-row-and-column",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_8_Q11#added-row-and-column",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_8_Q11.json",
+"sha256": "0aa419cc1713cbab24dbb96d3516e4a084e18e38023588758d70fb5b373d7725",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2002_AMC_8_Q11",
+"position": {
+"year": 2002,
+"level": "AMC 8",
+"batch": "NA",
+"number": 11
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2002_AMC_8_Q11",
+"figureSources": {
+"figures/2002_AMC_8_Q11_question_fig1.svg": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/11.svg",
+"alt": "",
+"sha256": "b1d151db6507f109f7a58a896889e9885fadd1c7020ae59c45fa2599af58e7c2",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/11.svg",
+"alt": ""
+}
+}
+},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+"editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"knowledgeGraph": {
+"version": "1.0.0",
+"contentHash": "16c5cd084072806db24d284b1228b15f44e615859d7bfb5103727ba95f403902",
+"status": "mapped",
+"reviewStatus": "machine_scope_audited",
+"assessedIds": [
+"cnm_p200"
+],
+"supportIds": [
+"cnm_p060",
+"cnm_p035"
+],
+"routes": [
+{
+"id": "square-tile-counts",
+"label": "Count rows of tiles",
+"nodeIds": [
+"cnm_p200",
+"cnm_p089",
+"cnm_p060",
+"math:rectangle-square-grids",
+"cnm_p035"
+],
+"methodDirectNodeIds": {
+"square-tile-counts": [
+"cnm_p200",
+"cnm_p089"
+]
+},
+"contextNodeIds": [
+"cnm_p060",
+"math:rectangle-square-grids",
+"cnm_p035"
+]
+},
+{
+"id": "added-row-and-column",
+"label": "Count only the added tiles",
+"nodeIds": [
+"cnm_p200",
+"math:rectangle-square-grids",
+"cnm_p060",
+"cnm_p035"
+],
+"methodDirectNodeIds": {
+"added-row-and-column": [
+"cnm_p200",
+"math:rectangle-square-grids"
+]
+},
+"contextNodeIds": [
+"cnm_p060",
+"cnm_p035"
+]
+}
+],
 "flags": []
 }
 },
@@ -374395,14 +380898,17 @@ window.AMC_BANK = {
 {
 "id": "2002_AMC_8_Q15",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2002,
 "level": "AMC 8",
 "batch": "NA",
 "number": 15,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Which of the following polygons has the largest area?\n\n[Figure 1](figures/2002_AMC_8_Q15_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -374412,28 +380918,134 @@ window.AMC_BANK = {
 "D": "\\(\\text{D}\\)",
 "E": "\\(\\text{E}\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "E",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions",
+"acceptedResponses": [
+"E"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Use one grid spacing as the length unit, so a grid square has area \\(1\\). Splitting along grid lines lets us compare exact areas using rectangles and right triangles. A triangle with perpendicular sides of length \\(1\\) has area \\(\\tfrac12\\).\n\nFor \\(A\\), the bottom band consists of a \\(2\\times1\\) rectangle and two half-square triangles. The narrow stem above it is a \\(1\\times2\\) rectangle. Thus\n\\[\n\\text{Area of }A=2+\\tfrac12+\\tfrac12+2=5.\n\\]\nFor \\(B\\), the bottom band is a \\(4\\times1\\) rectangle. Above it are two half-square triangles, giving\n\\[\n\\text{Area of }B=4+\\tfrac12+\\tfrac12=5.\n\\]\nFor \\(C\\), split along the vertical grid line through the two inward corners. The left piece fills a \\(1\\times4\\) rectangle except for two half-square corners, so its area is \\(4-1=3\\). The right piece fits inside a \\(2\\times3\\) rectangle. Its two missing corners are right triangles, each with base and height \\(2\\), so each has area \\(2\\). Therefore\n\\[\n\\text{Area of }C=(4-1)+(6-2-2)=5.\n\\]\nFor \\(D\\), the middle horizontal band is a \\(3\\times1\\) rectangle. There are two half-square triangles above it and one below it. Hence\n\\[\n\\text{Area of }D=3+3\\left(\\tfrac12\\right)=\\tfrac92.\n\\]\nFor \\(E\\), split along the vertical grid lines through the endpoints of its lower sloping edge. The central piece is a \\(1\\times4\\) rectangle with a half-square triangle removed at the bottom. The upper-left piece is a half-square triangle. The right piece is a \\(1\\times2\\) rectangle with a half-square triangle removed. Thus\n\\[\n\\text{Area of }E=(4-\\tfrac12)+\\tfrac12+(2-\\tfrac12)=\\tfrac{11}{2}.\n\\]\nEach split covers its polygon without overlapping interiors. Since \\(\\tfrac{11}{2}>5>\\tfrac92\\), polygon \\(E\\) has the largest area, choice \\(\\boxed{\\text{E}}\\).",
+"solutionMethods": [
+{
+"id": "grid-piece-areas",
+"label": "Split the polygons into grid pieces",
+"explanation": "Use one grid spacing as the length unit, so a grid square has area \\(1\\). Splitting along grid lines lets us compare exact areas using rectangles and right triangles. A triangle with perpendicular sides of length \\(1\\) has area \\(\\tfrac12\\).\n\nFor \\(A\\), the bottom band consists of a \\(2\\times1\\) rectangle and two half-square triangles. The narrow stem above it is a \\(1\\times2\\) rectangle. Thus\n\\[\n\\text{Area of }A=2+\\tfrac12+\\tfrac12+2=5.\n\\]\nFor \\(B\\), the bottom band is a \\(4\\times1\\) rectangle. Above it are two half-square triangles, giving\n\\[\n\\text{Area of }B=4+\\tfrac12+\\tfrac12=5.\n\\]\nFor \\(C\\), split along the vertical grid line through the two inward corners. The left piece fills a \\(1\\times4\\) rectangle except for two half-square corners, so its area is \\(4-1=3\\). The right piece fits inside a \\(2\\times3\\) rectangle. Its two missing corners are right triangles, each with base and height \\(2\\), so each has area \\(2\\). Therefore\n\\[\n\\text{Area of }C=(4-1)+(6-2-2)=5.\n\\]\nFor \\(D\\), the middle horizontal band is a \\(3\\times1\\) rectangle. There are two half-square triangles above it and one below it. Hence\n\\[\n\\text{Area of }D=3+3\\left(\\tfrac12\\right)=\\tfrac92.\n\\]\nFor \\(E\\), split along the vertical grid lines through the endpoints of its lower sloping edge. The central piece is a \\(1\\times4\\) rectangle with a half-square triangle removed at the bottom. The upper-left piece is a half-square triangle. The right piece is a \\(1\\times2\\) rectangle with a half-square triangle removed. Thus\n\\[\n\\text{Area of }E=(4-\\tfrac12)+\\tfrac12+(2-\\tfrac12)=\\tfrac{11}{2}.\n\\]\nEach split covers its polygon without overlapping interiors. Since \\(\\tfrac{11}{2}>5>\\tfrac92\\), polygon \\(E\\) has the largest area, choice \\(\\boxed{\\text{E}}\\).",
+"directNodeIds": [
+"cnm_p150",
+"cnm_p089",
+"cnm_p148"
+],
+"legacyRouteId": "grid-piece-areas",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_8_Q15#grid-piece-areas",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_8_Q15.json",
+"sha256": "1a20f91f32f19af176a83211b9663fb8bf0d6df2832fc6f86004fd1160c6ee9e",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "unit-grid-dissection",
+"label": "Dissect into rectangles and triangles",
+"directNodeIds": [
+"cnm_p089",
+"cnm_p148"
+],
+"legacyRouteId": "unit-grid-dissection",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2450",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2002_AMC_8_Q15#unit-grid-dissection",
+"evidence": []
+}
+},
+{
+"id": "coordinate-shoelace",
+"label": "Assign grid coordinates and use shoelace",
+"directNodeIds": [
+"cnm_084",
+"math:shoelace-formula"
+],
+"legacyRouteId": "coordinate-shoelace",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L2450",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2002_AMC_8_Q15#coordinate-shoelace",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2002_AMC_8_Q15",
+"position": {
+"year": 2002,
+"level": "AMC 8",
+"batch": "NA",
+"number": 15
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2002_AMC_8_Q15",
 "figureSources": {
 "figures/2002_AMC_8_Q15_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2002/15.svg",
+"alt": "",
+"sha256": "dc7a8e9469d2e376836751e720d69c437458b18b258d2f6efff1e3b3f6920832",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/15.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "8c0e55f2118ae0f5d3a13c205842fe07feed0d878c8ae37076546f9ed38536c4",
+"contentHash": "1365f96e7c96149d4b9a82c4bc56b7392479423a7f206031f1f93c9250e8a4a1",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_p150"
 ],
-"supportIds": [],
+"supportIds": [
+"cnm_p088",
+"cnm_p103"
+],
 "routes": [
 {
 "id": "unit-grid-dissection",
@@ -374441,7 +381053,14 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_p089",
 "cnm_p148"
+],
+"methodDirectNodeIds": {
+"unit-grid-dissection": [
+"cnm_p089",
+"cnm_p148"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "coordinate-shoelace",
@@ -374449,6 +381068,35 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_084",
 "math:shoelace-formula"
+],
+"methodDirectNodeIds": {
+"coordinate-shoelace": [
+"cnm_084",
+"math:shoelace-formula"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "grid-piece-areas",
+"label": "Split the polygons into grid pieces",
+"nodeIds": [
+"cnm_p150",
+"cnm_p089",
+"cnm_p148",
+"cnm_p088",
+"cnm_p103"
+],
+"methodDirectNodeIds": {
+"grid-piece-areas": [
+"cnm_p150",
+"cnm_p089",
+"cnm_p148"
+]
+},
+"contextNodeIds": [
+"cnm_p088",
+"cnm_p103"
 ]
 }
 ],
@@ -374458,14 +381106,17 @@ window.AMC_BANK = {
 {
 "id": "2002_AMC_8_Q16",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2002,
 "level": "AMC 8",
 "batch": "NA",
 "number": 16,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Right isosceles triangles are constructed on the sides of a \\(3-4-5\\) right triangle, as shown. A capital letter represents the area of each triangle. Which one of the following is true?\n\n[Figure 1](figures/2002_AMC_8_Q16_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -374475,29 +381126,114 @@ window.AMC_BANK = {
 "D": "\\(X + W = \\dfrac{1}{2}(Y + Z)\\)",
 "E": "\\(X + Y = Z\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "E",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions",
+"acceptedResponses": [
+"E"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "In a right isosceles triangle, the two perpendicular legs are equal. Taking one leg as the base makes the other leg the height, so if their common length is \\(s\\), the area is \\(\\tfrac12 s\\times s\\).\n\nThe marked right angles show that the sides labeled \\(3\\), \\(4\\), and \\(5\\) are legs of triangles \\(X\\), \\(Y\\), and \\(Z\\), respectively. Thus\n\\[\nX=\\frac{3\\times3}{2}=\\frac92,\\qquad\nY=\\frac{4\\times4}{2}=8,\\qquad\nZ=\\frac{5\\times5}{2}=\\frac{25}{2}.\n\\]\nConsequently,\n\\[\nX+Y=\\frac92+8=\\frac{25}{2}=Z.\n\\]\nTherefore \\(\\boxed{X+Y=Z}\\), choice \\(\\boxed{\\text{E}}\\).",
+"solutionMethods": [
+{
+"id": "equal-perpendicular-legs",
+"label": "Use the equal legs as base and height",
+"explanation": "In a right isosceles triangle, the two perpendicular legs are equal. Taking one leg as the base makes the other leg the height, so if their common length is \\(s\\), the area is \\(\\tfrac12 s\\times s\\).\n\nThe marked right angles show that the sides labeled \\(3\\), \\(4\\), and \\(5\\) are legs of triangles \\(X\\), \\(Y\\), and \\(Z\\), respectively. Thus\n\\[\nX=\\frac{3\\times3}{2}=\\frac92,\\qquad\nY=\\frac{4\\times4}{2}=8,\\qquad\nZ=\\frac{5\\times5}{2}=\\frac{25}{2}.\n\\]\nConsequently,\n\\[\nX+Y=\\frac92+8=\\frac{25}{2}=Z.\n\\]\nTherefore \\(\\boxed{X+Y=Z}\\), choice \\(\\boxed{\\text{E}}\\).",
+"directNodeIds": [
+"cnm_p148"
+],
+"legacyRouteId": "equal-perpendicular-legs",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_8_Q16#equal-perpendicular-legs",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_8_Q16.json",
+"sha256": "8c0db655e49b8ca1d0f75939054550c0976ad5dbfc590c2689f2f508ebe710a9",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2002_AMC_8_Q16",
+"position": {
+"year": 2002,
+"level": "AMC 8",
+"batch": "NA",
+"number": 16
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2002_AMC_8_Q16",
 "figureSources": {
 "figures/2002_AMC_8_Q16_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2002/16.svg",
+"alt": "",
+"sha256": "5a246c9d640ad39c570fbbd456861ba059943f91e621cf9b81f26eae147169cb",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/16.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "914a0257cc3a552e4f6b57422202993b2b5e110ed5c51ae4d25ea09d686341d1",
+"contentHash": "91dcc8022d883199f13f12a99eeae67f6aaa4f671c2fcd19d025cbdef52e4a33",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_p148"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_p122",
+"cnm_p103"
+],
+"routes": [
+{
+"id": "equal-perpendicular-legs",
+"label": "Use the equal legs as base and height",
+"nodeIds": [
+"cnm_p148",
+"cnm_p122",
+"cnm_p103"
+],
+"methodDirectNodeIds": {
+"equal-perpendicular-legs": [
+"cnm_p148"
+]
+},
+"contextNodeIds": [
+"cnm_p122",
+"cnm_p103"
+]
+}
+],
 "flags": []
 }
 },
@@ -374991,14 +381727,17 @@ window.AMC_BANK = {
 {
 "id": "2002_AMC_8_Q20",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2002,
 "level": "AMC 8",
 "batch": "NA",
 "number": 20,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "The area of triangle \\(XYZ\\) is \\(8\\) square inches. Points \\(A\\) and \\(B\\) are midpoints of congruent segments \\(\\overline{XY}\\) and \\(\\overline{XZ}.\\) Altitude \\(\\overline{XC}\\) bisects \\(\\overline{YZ}.\\) The area (in square inches) of the shaded region is\n\n[Figure 1](figures/2002_AMC_8_Q20_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -375008,30 +381747,122 @@ window.AMC_BANK = {
 "D": "\\(3\\)",
 "E": "\\(3 \\frac{1}{2}\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "D",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions",
+"acceptedResponses": [
+"D"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The shaded region becomes easier to measure if we view it as a triangle with its top cut off. Let \\(T\\) be the midpoint of \\(XC\\). In triangles \\(XYC\\) and \\(XZC\\), the segments \\(AT\\) and \\(BT\\) join side midpoints, so both are parallel to \\(YZ\\). Thus \\(A,T,B\\) lie on the same line, and \\(AT=YC/2\\).\n\nBecause \\(YC=CZ\\), triangles \\(XYC\\) and \\(XZC\\) have equal bases and the same height. Therefore triangle \\(XYC\\) has area \\(8/2=4\\) square inches. Triangle \\(XAT\\) has half its base and half its height, so the base-times-height formula gives\n\\[\n\\text{area of }XAT=\\frac12\\cdot\\frac12\\cdot4=1.\n\\]\nThe shaded region is exactly what remains after removing triangle \\(XAT\\) from triangle \\(XYC\\). Its area is \\(4-1=\\boxed{3}\\) square inches, choice \\(\\boxed{\\text{D}}\\).",
+"solutionMethods": [
+{
+"id": "triangle-area-subtraction",
+"label": "Subtract the small triangle",
+"explanation": "The shaded region becomes easier to measure if we view it as a triangle with its top cut off. Let \\(T\\) be the midpoint of \\(XC\\). In triangles \\(XYC\\) and \\(XZC\\), the segments \\(AT\\) and \\(BT\\) join side midpoints, so both are parallel to \\(YZ\\). Thus \\(A,T,B\\) lie on the same line, and \\(AT=YC/2\\).\n\nBecause \\(YC=CZ\\), triangles \\(XYC\\) and \\(XZC\\) have equal bases and the same height. Therefore triangle \\(XYC\\) has area \\(8/2=4\\) square inches. Triangle \\(XAT\\) has half its base and half its height, so the base-times-height formula gives\n\\[\n\\text{area of }XAT=\\frac12\\cdot\\frac12\\cdot4=1.\n\\]\nThe shaded region is exactly what remains after removing triangle \\(XAT\\) from triangle \\(XYC\\). Its area is \\(4-1=\\boxed{3}\\) square inches, choice \\(\\boxed{\\text{D}}\\).",
+"directNodeIds": [
+"cnm_p150",
+"cnm_p148",
+"cnm_185"
+],
+"legacyRouteId": "solution:triangle-area-subtraction:d7597a68bce8",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_8_Q20#triangle-area-subtraction",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_8_Q20.json",
+"sha256": "2c1786bd22b7f8b5530a60bed085d835cd9538e0dc5a91153b2a8b1fc1e3d42d",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "trapezoid-area",
+"label": "Measure the shaded trapezoid",
+"explanation": "The shaded region is a trapezoid, so we can calculate its area directly once we identify its parallel sides and height. Let \\(T\\) be the midpoint of \\(XC\\). The midpoint segments \\(AT\\) in triangle \\(XYC\\) and \\(BT\\) in triangle \\(XZC\\) are both parallel to \\(YZ\\). Hence \\(T\\) lies on \\(AB\\), with \\(AT=YC/2\\).\n\nWrite \\(b=YC\\) and \\(h=XC\\), measured in inches. Since \\(C\\) bisects \\(YZ\\), the whole triangle has base \\(2b\\) and height \\(h\\). Thus\n\\[\n\\frac{(2b)h}{2}=8,\n\\qquad bh=8.\n\\]\nThe shaded trapezoid \\(YATC\\) has parallel sides \\(b\\) and \\(b/2\\). Its height is \\(TC=h/2\\), because \\(XC\\) is perpendicular to \\(YZ\\). Therefore its area is\n\\[\n\\frac{b+b/2}{2}\\cdot\\frac h2\n=\\frac{3bh}{8}\n=\\frac{3\\cdot8}{8}\n=\\boxed{3}\n\\]\nsquare inches, choice \\(\\boxed{\\text{D}}\\).",
+"directNodeIds": [
+"cnm_p149",
+"cnm_p148",
+"cnm_185"
+],
+"legacyRouteId": "solution:trapezoid-area:d7597a68bce8",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_8_Q20#trapezoid-area",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_8_Q20.json",
+"sha256": "2c1786bd22b7f8b5530a60bed085d835cd9538e0dc5a91153b2a8b1fc1e3d42d",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2002_AMC_8_Q20",
+"position": {
+"year": 2002,
+"level": "AMC 8",
+"batch": "NA",
+"number": 20
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2002_AMC_8_Q20",
 "figureSources": {
 "figures/2002_AMC_8_Q20_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2002/20.svg",
+"alt": "",
+"sha256": "5be1b22cd26853d517147acf7662eab4eeaaedf9af2ac1ec76cc24b714f73089",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/20.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "b04dda716a6ded0a172655bbe636352c73356eabee92be81a36245c4ab492a81",
+"contentHash": "b568d1dc3e0c1bfc7a7fc49d355bfae13233fdf5931100f03af02295d96ab491",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_p150"
 ],
 "supportIds": [
+"cnm_p148",
 "cnm_185",
-"cnm_113"
+"cnm_055"
 ],
 "routes": [
 {
@@ -375046,6 +381877,48 @@ window.AMC_BANK = {
 "label": "Evaluate the shaded trapezoid",
 "nodeIds": [
 "cnm_p149"
+]
+},
+{
+"id": "solution:triangle-area-subtraction:d7597a68bce8",
+"label": "Subtract the small triangle",
+"nodeIds": [
+"cnm_p150",
+"cnm_p148",
+"cnm_185",
+"cnm_055"
+],
+"methodDirectNodeIds": {
+"triangle-area-subtraction": [
+"cnm_p150",
+"cnm_p148",
+"cnm_185"
+]
+},
+"contextNodeIds": [
+"cnm_055"
+]
+},
+{
+"id": "solution:trapezoid-area:d7597a68bce8",
+"label": "Measure the shaded trapezoid",
+"nodeIds": [
+"cnm_p149",
+"cnm_p148",
+"cnm_185",
+"cnm_055",
+"cnm_p105"
+],
+"methodDirectNodeIds": {
+"trapezoid-area": [
+"cnm_p149",
+"cnm_p148",
+"cnm_185"
+]
+},
+"contextNodeIds": [
+"cnm_055",
+"cnm_p105"
 ]
 }
 ],
@@ -375254,14 +382127,17 @@ window.AMC_BANK = {
 {
 "id": "2002_AMC_8_Q22",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2002,
 "level": "AMC 8",
 "batch": "NA",
 "number": 22,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Six cubes, each an inch on an edge, are fastened together, as shown. Find the total surface area in square inches. Include the top, bottom, and sides.\n\n[Figure 1](figures/2002_AMC_8_Q22_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -375271,26 +382147,122 @@ window.AMC_BANK = {
 "D": "\\(30\\)",
 "E": "\\(36\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Start by imagining the six cubes separated. Each cube has six faces, each with area \\(1\\cdot1=1\\) square inch, so their combined surface area is \\(6\\cdot6=36\\) square inches.\n\nNow count the places where whole faces meet in the drawing. There are two joins within the central stack of three cubes, one join attaching the cube on the right, and two joins along the lower chain extending toward the left. These are all five full-face joins. A contact only along an edge hides no face area.\n\nEach full-face join hides one face from each of its two cubes, so it removes two square inches. Every face is either exposed or belongs to exactly one such join. Therefore the total surface area, including the bottom and the unseen sides, is\n\\[\n36-2\\cdot5=\\boxed{26}\n\\]\nsquare inches, choice \\(\\boxed{\\text{C}}\\).",
+"solutionMethods": [
+{
+"id": "cancel-internal-face-pairs",
+"label": "Remove the faces hidden at joins",
+"explanation": "Start by imagining the six cubes separated. Each cube has six faces, each with area \\(1\\cdot1=1\\) square inch, so their combined surface area is \\(6\\cdot6=36\\) square inches.\n\nNow count the places where whole faces meet in the drawing. There are two joins within the central stack of three cubes, one join attaching the cube on the right, and two joins along the lower chain extending toward the left. These are all five full-face joins. A contact only along an edge hides no face area.\n\nEach full-face join hides one face from each of its two cubes, so it removes two square inches. Every face is either exposed or belongs to exactly one such join. Therefore the total surface area, including the bottom and the unseen sides, is\n\\[\n36-2\\cdot5=\\boxed{26}\n\\]\nsquare inches, choice \\(\\boxed{\\text{C}}\\).",
+"directNodeIds": [
+"cnm_p160",
+"cnm_p089",
+"cnm_p112"
+],
+"legacyRouteId": "solution:cancel-internal-face-pairs:408b65350818",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_8_Q22#cancel-internal-face-pairs",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_8_Q22.json",
+"sha256": "d485856119c3b9ee301c8a71788f9e471cf1d802b3b975c9cde2eff3639028ee",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "directional-unit-face-enumeration",
+"label": "Count faces in each direction",
+"explanation": "Each exposed face is a square inch. To include every face exactly once, count the faces pointing in the six possible directions: up, down, and the four horizontal directions.\n\nThere are four vertical columns: the central column of height three and three columns of height one. Each column has one exposed top face and one exposed bottom face, giving \\(4+4=8\\) square inches.\n\nNext look along the horizontal direction from the central stack toward the cube attached on its right. In this direction the cubes form five separate rows: one row contains the middle cube and its right neighbor, and the other four cubes each occupy a row of their own. Each row has an exposed face at each end, giving \\(5+5=10\\) square inches.\n\nIn the remaining horizontal direction, the bottom chain forms one row of three cubes. The two higher cubes in the central stack and the right-hand cube each form a separate row. These four rows contribute \\(4+4=8\\) square inches at their ends.\n\nAll these rows are unbroken, so their end faces account for all exposed faces in the corresponding directions. The total is\n\\[\n8+10+8=\\boxed{26}\n\\]\nsquare inches, choice \\(\\boxed{\\text{C}}\\).",
+"directNodeIds": [
+"cnm_p160",
+"cnm_p113",
+"cnm_p089"
+],
+"legacyRouteId": "solution:directional-unit-face-enumeration:408b65350818",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_8_Q22#directional-unit-face-enumeration",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_8_Q22.json",
+"sha256": "d485856119c3b9ee301c8a71788f9e471cf1d802b3b975c9cde2eff3639028ee",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2002_AMC_8_Q22",
+"position": {
+"year": 2002,
+"level": "AMC 8",
+"batch": "NA",
+"number": 22
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2002_AMC_8_Q22",
 "figureSources": {
 "figures/2002_AMC_8_Q22_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2002/22.svg",
+"alt": "",
+"sha256": "8b7aa1138e7da752438bc61291bf9d914568bdee1197b13dd6b74b84d2c514a9",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/22.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "d8d875fdbfe60dc0c85c464d5ef6dbf6847b8e003711a9171f4545c15947208e",
+"contentHash": "a3cdf89c87683cf22e6ea0f894bf8a7b63c717625bbd9d037d0bf5bcafd298c5",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [],
-"supportIds": [],
+"supportIds": [
+"cnm_p160",
+"cnm_p088",
+"cnm_p089",
+"cnm_p077"
+],
 "routes": [
 {
 "id": "directional-unit-face-enumeration",
@@ -375312,6 +382284,50 @@ window.AMC_BANK = {
 "cnm_p089",
 "cnm_p112"
 ]
+},
+{
+"id": "solution:cancel-internal-face-pairs:408b65350818",
+"label": "Remove the faces hidden at joins",
+"nodeIds": [
+"cnm_p160",
+"cnm_p089",
+"cnm_p112",
+"cnm_p088",
+"cnm_p077"
+],
+"methodDirectNodeIds": {
+"cancel-internal-face-pairs": [
+"cnm_p160",
+"cnm_p089",
+"cnm_p112"
+]
+},
+"contextNodeIds": [
+"cnm_p088",
+"cnm_p077"
+]
+},
+{
+"id": "solution:directional-unit-face-enumeration:408b65350818",
+"label": "Count faces in each direction",
+"nodeIds": [
+"cnm_p160",
+"cnm_p113",
+"cnm_p089",
+"cnm_p088",
+"cnm_p077"
+],
+"methodDirectNodeIds": {
+"directional-unit-face-enumeration": [
+"cnm_p160",
+"cnm_p113",
+"cnm_p089"
+]
+},
+"contextNodeIds": [
+"cnm_p088",
+"cnm_p077"
+]
 }
 ],
 "flags": []
@@ -375320,14 +382336,17 @@ window.AMC_BANK = {
 {
 "id": "2002_AMC_8_Q23",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2002,
 "level": "AMC 8",
 "batch": "NA",
 "number": 23,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "A corner of a tiled floor is shown. If the entire floor is tiled in this way and each of the four corners looks like this one, then what fraction of the tiled floor is made of darker tiles?\n\n[Figure 1](figures/2002_AMC_8_Q23_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -375337,30 +382356,122 @@ window.AMC_BANK = {
 "D": "\\(\\dfrac{5}9\\)",
 "E": "\\(\\dfrac{5}8\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "B",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions",
+"acceptedResponses": [
+"B"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The pattern repeats every six rows and every six columns, so we can measure one complete repeating block instead of the entire floor. Use the six-by-six block beginning at the shown upper-left corner. The matching pattern at all four corners means the floor ends at corresponding block boundaries, so it consists of complete blocks of this kind.\n\nTake one small grid square as one unit of area. In the block, the dark areas in the six rows, from top to bottom, are\n\\[\n1,\\quad2,\\quad5,\\quad5,\\quad2,\\quad1.\n\\]\nFor example, the first row contains two dark half-squares, totaling \\(1\\), and the third row contains four full dark squares and two dark half-squares, totaling \\(5\\). Each half-square is a triangle formed by a diagonal, so it has half the area of its square. Counting by rows includes every dark piece once.\n\nThe block therefore has dark area\n\\[\n1+2+5+5+2+1=16\n\\]\nout of total area \\(6\\cdot6=36\\). Every block has the same fraction of dark area, so the entire floor has dark fraction\n\\[\n\\frac{16}{36}=\\boxed{\\frac49},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+"solutionMethods": [
+{
+"id": "count-a-repeating-block",
+"label": "Count the dark area in one repeating block",
+"explanation": "The pattern repeats every six rows and every six columns, so we can measure one complete repeating block instead of the entire floor. Use the six-by-six block beginning at the shown upper-left corner. The matching pattern at all four corners means the floor ends at corresponding block boundaries, so it consists of complete blocks of this kind.\n\nTake one small grid square as one unit of area. In the block, the dark areas in the six rows, from top to bottom, are\n\\[\n1,\\quad2,\\quad5,\\quad5,\\quad2,\\quad1.\n\\]\nFor example, the first row contains two dark half-squares, totaling \\(1\\), and the third row contains four full dark squares and two dark half-squares, totaling \\(5\\). Each half-square is a triangle formed by a diagonal, so it has half the area of its square. Counting by rows includes every dark piece once.\n\nThe block therefore has dark area\n\\[\n1+2+5+5+2+1=16\n\\]\nout of total area \\(6\\cdot6=36\\). Every block has the same fraction of dark area, so the entire floor has dark fraction\n\\[\n\\frac{16}{36}=\\boxed{\\frac49},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+"directNodeIds": [
+"cnm_p150",
+"cnm_p165",
+"cnm_p168"
+],
+"legacyRouteId": "count-a-repeating-block",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2002_AMC_8_Q23#count-a-repeating-block",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2002_AMC_8_Q23.json",
+"sha256": "c8e79eadd01f7634234d6661485e7f9eb305feb4ce974376b0912a0d0dea043c",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2002_AMC_8_Q23",
+"position": {
+"year": 2002,
+"level": "AMC 8",
+"batch": "NA",
+"number": 23
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2002_AMC_8_Q23",
 "figureSources": {
 "figures/2002_AMC_8_Q23_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc8/2002/23.svg",
+"alt": "",
+"sha256": "a45b07f9d057786690add2981ffe387d25e2dbd1a7557daaebe5b44d858cef7e",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc8/2002/23.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2002/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "74e2d75c2cff8b4643ad0fad8a108d2eeb95e87d0ac3ea523fd3a0c3bb25e181",
+"contentHash": "2ed822be137bc8739d6cdf6472983c43896ebf0d3fde995fe1bdb9d09d52b5e5",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_p150",
 "cnm_p165"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_p089",
+"cnm_p079",
+"cnm_p168"
+],
+"routes": [
+{
+"id": "count-a-repeating-block",
+"label": "Count the dark area in one repeating block",
+"nodeIds": [
+"cnm_p150",
+"cnm_p165",
+"cnm_p168",
+"cnm_p089",
+"cnm_p079"
+],
+"methodDirectNodeIds": {
+"count-a-repeating-block": [
+"cnm_p150",
+"cnm_p165",
+"cnm_p168"
+]
+},
+"contextNodeIds": [
+"cnm_p089",
+"cnm_p079"
+]
+}
+],
 "flags": []
 }
 },
@@ -376875,14 +383986,17 @@ window.AMC_BANK = {
 {
 "id": "2003_AMC_10A_Q10",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2003,
 "level": "AMC 10",
 "batch": "A",
 "number": 10,
-"area": "Unclassified",
+"topic": {
+"id": "A",
+"label": "A"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "The polygon enclosed by the solid lines in the figure consists of \\(4\\) congruent squares joined edge-to-edge. One more congruent square is attached to an edge at one of the nine positions indicated. How many of the nine resulting polygons can be folded to form a cube with one face missing?\n\n[Figure 1](figures/2003_AMC_10A_Q10_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -376892,29 +384006,111 @@ window.AMC_BANK = {
 "D": "\\(5\\)",
 "E": "\\(6\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "E",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2003A/solutions",
+"acceptedResponses": [
+"E"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The useful test is whether the five squares cover five different faces after folding. Name the three original squares in the horizontal row \\(L,M,R\\), from left to right, and call the original square below \\(L\\) square \\(S\\).\n\n[Figure 1](figures/2003_AMC_10A_Q10_question_fig1.svg)\n\nHold \\(L\\) as the bottom of a cube. Fold \\(M\\) up to become the right face, then fold \\(R\\) over to become the top. Fold \\(S\\) up to become the front. Thus the four original squares occupy the bottom, right, top, and front faces. The left and back faces remain available.\n\nNow track the added square at each indicated position:\n\n• Position \\(1\\), attached beyond \\(S\\), folds onto the top face already occupied by \\(R\\), so it fails.\n\n• Position \\(2\\) creates a \\(2\\)-by-\\(2\\) block. Its four squares share one vertex, and that connection must remain after folding. Only three cube faces can meet at a vertex, so this position fails.\n\n• Position \\(3\\), attached below \\(R\\), folds onto the front face already occupied by \\(S\\), so it fails.\n\n• Positions \\(4,8,9\\) fold onto the left face, starting from the top, bottom, and front faces, respectively. Each works.\n\n• Positions \\(5,6,7\\) fold onto the back face, starting from the top, right, and bottom faces, respectively. Each works.\n\nOnce the bottom square is fixed, a neighboring square's cube face is determined by its shared edge. Therefore the failed positions cannot be rescued by choosing a different order of folding. The list checks all nine positions exactly once, and the six successful attachments each cover five distinct faces. The answer is \\(\\boxed{6}\\), choice \\(\\boxed{\\text{E}}\\).",
+"solutionMethods": [
+{
+"id": "track-cube-faces",
+"label": "Track which cube face each square covers",
+"explanation": "The useful test is whether the five squares cover five different faces after folding. Name the three original squares in the horizontal row \\(L,M,R\\), from left to right, and call the original square below \\(L\\) square \\(S\\).\n\n[Figure 1](figures/2003_AMC_10A_Q10_question_fig1.svg)\n\nHold \\(L\\) as the bottom of a cube. Fold \\(M\\) up to become the right face, then fold \\(R\\) over to become the top. Fold \\(S\\) up to become the front. Thus the four original squares occupy the bottom, right, top, and front faces. The left and back faces remain available.\n\nNow track the added square at each indicated position:\n\n• Position \\(1\\), attached beyond \\(S\\), folds onto the top face already occupied by \\(R\\), so it fails.\n\n• Position \\(2\\) creates a \\(2\\)-by-\\(2\\) block. Its four squares share one vertex, and that connection must remain after folding. Only three cube faces can meet at a vertex, so this position fails.\n\n• Position \\(3\\), attached below \\(R\\), folds onto the front face already occupied by \\(S\\), so it fails.\n\n• Positions \\(4,8,9\\) fold onto the left face, starting from the top, bottom, and front faces, respectively. Each works.\n\n• Positions \\(5,6,7\\) fold onto the back face, starting from the top, right, and bottom faces, respectively. Each works.\n\nOnce the bottom square is fixed, a neighboring square's cube face is determined by its shared edge. Therefore the failed positions cannot be rescued by choosing a different order of folding. The list checks all nine positions exactly once, and the six successful attachments each cover five distinct faces. The answer is \\(\\boxed{6}\\), choice \\(\\boxed{\\text{E}}\\).",
+"directNodeIds": [
+"cnm_051"
+],
+"legacyRouteId": "track-cube-faces",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2003_AMC_10A_Q10#track-cube-faces",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2003_AMC_10A_Q10.json",
+"sha256": "190826d6d2955388db35e2b8a08ca2e3f487e2109fb92d1090e310874d508e73",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2003_AMC_10A_Q10",
+"position": {
+"year": 2003,
+"level": "AMC 10",
+"batch": "A",
+"number": 10
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2003A/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2003_AMC_10A_Q10",
 "figureSources": {
 "figures/2003_AMC_10A_Q10_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc10/2003A/10.svg",
+"alt": "",
+"sha256": "0765cdb2ecf79cff529c91ce71cb045832461322cb827b1942b8188b10361550",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2003A/10.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2003A/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "17954f57e8d39bb774f7570d65a649525066289b1ee4de34bf813f73d49964e4",
+"contentHash": "58333e507e835898ebbf25e50acfa1959dc9142c86d8e8dfa69f4a018ae22222",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_051"
 ],
-"supportIds": [],
-"routes": [],
+"supportIds": [
+"cnm_p160"
+],
+"routes": [
+{
+"id": "track-cube-faces",
+"label": "Track which cube face each square covers",
+"nodeIds": [
+"cnm_051",
+"cnm_p160"
+],
+"methodDirectNodeIds": {
+"track-cube-faces": [
+"cnm_051"
+]
+},
+"contextNodeIds": [
+"cnm_p160"
+]
+}
+],
 "flags": []
 }
 },
@@ -378179,14 +385375,17 @@ window.AMC_BANK = {
 {
 "id": "2003_AMC_10A_Q19",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2003,
 "level": "AMC 10",
 "batch": "A",
 "number": 19,
-"area": "Unclassified",
+"topic": {
+"id": "A",
+"label": "A"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "A semicircle of diameter \\(1\\) sits at the top of a semicircle of diameter \\(2,\\) as shown. The shaded area inside the smaller semicircle and outside the larger semicircle is called a lune. Determine the area of this lune.\n\n[Figure 1](figures/2003_AMC_10A_Q19_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -378196,26 +385395,91 @@ window.AMC_BANK = {
 "D": "\\(\\dfrac{\\sqrt{3}}{4} + \\dfrac{1}{24}\\pi\\)",
 "E": "\\(\\dfrac{\\sqrt{3}}{4} + \\dfrac{1}{12}\\pi\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2003A/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The lune is the smaller semicircle with a segment of the larger circle removed. To find that segment, join its chord endpoints to the large circle's center.\n\n[Figure 1](figures/2003_AMC_10A_Q19_question_fig1.svg)\n\nLet \\(P,Q\\) be the endpoints of the smaller semicircle's diameter, and let \\(O\\) be the center of the larger semicircle. The figure places \\(P\\) and \\(Q\\) on the larger arc. The larger radius is \\(1\\), and \\(PQ=1\\), so\n\\[\nOP=OQ=PQ=1.\n\\]\nThus \\(OPQ\\) is equilateral and \\(\\angle POQ=60^\\circ\\). The corresponding sector of the larger circle has area\n\\[\n\\frac{60}{360}\\pi(1)^2=\\frac{\\pi}{6}.\n\\]\nThe altitude of the equilateral triangle bisects its base. By the Pythagorean theorem, its height is\n\\[\n\\sqrt{1^2-\\left(\\frac12\\right)^2}\n=\\frac{\\sqrt3}{2},\n\\]\nso its area is \\(\\frac12\\cdot1\\cdot\\frac{\\sqrt3}{2}=\\frac{\\sqrt3}{4}\\). Removing this triangle from the sector leaves the circular segment above \\(PQ\\), whose area is\n\\[\n\\frac{\\pi}{6}-\\frac{\\sqrt3}{4}.\n\\]\nThe smaller semicircle has radius \\(\\frac12\\), so its area is \\(\\frac12\\pi(\\frac12)^2=\\frac{\\pi}{8}\\). Subtracting the overlapping segment gives the lune's area:\n\\[\n\\frac{\\pi}{8}-\\left(\\frac{\\pi}{6}-\\frac{\\sqrt3}{4}\\right)\n=\\boxed{\\frac{\\sqrt3}{4}-\\frac{\\pi}{24}}.\n\\]\nThe answer is choice \\(\\boxed{\\text{C}}\\).",
+"solutionMethods": [
+{
+"id": "subtract-circular-segment",
+"label": "Subtract the overlapping circular segment",
+"explanation": "The lune is the smaller semicircle with a segment of the larger circle removed. To find that segment, join its chord endpoints to the large circle's center.\n\n[Figure 1](figures/2003_AMC_10A_Q19_question_fig1.svg)\n\nLet \\(P,Q\\) be the endpoints of the smaller semicircle's diameter, and let \\(O\\) be the center of the larger semicircle. The figure places \\(P\\) and \\(Q\\) on the larger arc. The larger radius is \\(1\\), and \\(PQ=1\\), so\n\\[\nOP=OQ=PQ=1.\n\\]\nThus \\(OPQ\\) is equilateral and \\(\\angle POQ=60^\\circ\\). The corresponding sector of the larger circle has area\n\\[\n\\frac{60}{360}\\pi(1)^2=\\frac{\\pi}{6}.\n\\]\nThe altitude of the equilateral triangle bisects its base. By the Pythagorean theorem, its height is\n\\[\n\\sqrt{1^2-\\left(\\frac12\\right)^2}\n=\\frac{\\sqrt3}{2},\n\\]\nso its area is \\(\\frac12\\cdot1\\cdot\\frac{\\sqrt3}{2}=\\frac{\\sqrt3}{4}\\). Removing this triangle from the sector leaves the circular segment above \\(PQ\\), whose area is\n\\[\n\\frac{\\pi}{6}-\\frac{\\sqrt3}{4}.\n\\]\nThe smaller semicircle has radius \\(\\frac12\\), so its area is \\(\\frac12\\pi(\\frac12)^2=\\frac{\\pi}{8}\\). Subtracting the overlapping segment gives the lune's area:\n\\[\n\\frac{\\pi}{8}-\\left(\\frac{\\pi}{6}-\\frac{\\sqrt3}{4}\\right)\n=\\boxed{\\frac{\\sqrt3}{4}-\\frac{\\pi}{24}}.\n\\]\nThe answer is choice \\(\\boxed{\\text{C}}\\).",
+"directNodeIds": [
+"cnm_257",
+"cnm_p150"
+],
+"legacyRouteId": "subtract-circular-segment",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2003_AMC_10A_Q19#subtract-circular-segment",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2003_AMC_10A_Q19.json",
+"sha256": "6e6d0a78a2172cabee44dd14ca0b8aaa2c262c9befbdffa3062314be3021bf86",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2003_AMC_10A_Q19",
+"position": {
+"year": 2003,
+"level": "AMC 10",
+"batch": "A",
+"number": 19
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2003A/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2003_AMC_10A_Q19",
 "figureSources": {
 "figures/2003_AMC_10A_Q19_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc10/2003A/19.svg",
+"alt": "",
+"sha256": "8705f250cebebf9fec6b5e08b655b746d823755c3b5bb958002ff839b91b0167",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2003A/19.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2003A/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "cd316cef7b170f24fa43179ac7666555f99bb9e2c1e494bf47907afa2877ad9e",
+"contentHash": "57d94e72d986796258c7d87d1325adb620af9072fc01bef5fa36952755f6d6a9",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
-"cnm_257"
+"cnm_257",
+"cnm_p150"
 ],
 "supportIds": [
 "cnm_p192",
@@ -378223,7 +385487,32 @@ window.AMC_BANK = {
 "cnm_174",
 "cnm_p148"
 ],
-"routes": [],
+"routes": [
+{
+"id": "subtract-circular-segment",
+"label": "Subtract the overlapping circular segment",
+"nodeIds": [
+"cnm_257",
+"cnm_p150",
+"cnm_p192",
+"cnm_139",
+"cnm_174",
+"cnm_p148"
+],
+"methodDirectNodeIds": {
+"subtract-circular-segment": [
+"cnm_257",
+"cnm_p150"
+]
+},
+"contextNodeIds": [
+"cnm_p192",
+"cnm_139",
+"cnm_174",
+"cnm_p148"
+]
+}
+],
 "flags": []
 }
 },
@@ -378606,14 +385895,17 @@ window.AMC_BANK = {
 {
 "id": "2003_AMC_10A_Q22",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2003,
 "level": "AMC 10",
 "batch": "A",
 "number": 22,
-"area": "Unclassified",
+"topic": {
+"id": "A",
+"label": "A"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "In rectangle \\(ABCD,\\) we have \\(AB = 8,\\) \\(BC = 9,\\) \\(H\\) is on \\(\\overline{BC}\\) with \\(BH = 6,\\) \\(E\\) is on \\(AD\\) with \\(DE = 4,\\) line \\(EC\\) intersects line \\(AH\\) at \\(G,\\) and \\(F\\) is on line \\(AD\\) with \\(\\overline{GF} \\perp \\overline{AF}.\\) Find the length \\(\\overline{GF}.\\)\n\n[Figure 1](figures/2003_AMC_10A_Q22_question_fig1.svg)",
 "questionType": "mixed",
 "choices": {
@@ -378623,22 +385915,114 @@ window.AMC_BANK = {
 "D": "\\(28\\)",
 "E": "\\(30\\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "B",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2003A/solutions",
+"acceptedResponses": [
+"B"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The rectangle gives two parallel bases for triangles with the same vertex \\(G\\). Their lengths will determine the ratio of their heights.\n\n[Figure 1](figures/2003_AMC_10A_Q22_question_fig1.svg)\n\nOpposite sides of the rectangle are equal, so \\(AD=BC=9\\). Therefore\n\\[\nAE=9-4=5,\\qquad HC=9-6=3.\n\\]\nSince \\(AE\\parallel HC\\), and the other sides lie on lines \\(AH\\) and \\(EC\\), triangles \\(GAE\\) and \\(GHC\\) are similar by angle-angle similarity. Their corresponding bases are \\(AE\\) and \\(HC\\), so their corresponding heights have ratio \\(5:3\\).\n\nThe endpoints \\(A,E\\) and \\(H,C\\) occur in the same order along the two parallel sides, so the lines meet outside the strip between \\(AD\\) and \\(BC\\). In the similar triangles, the shorter base \\(HC\\) is closer to \\(G\\). Thus \\(G\\) lies beyond \\(BC\\), as shown.\n\nLet \\(h=GF\\). Because \\(GF\\perp AD\\), it measures the height from \\(G\\) to line \\(AD\\). The distance between the parallel lines \\(AD\\) and \\(BC\\) is \\(AB=8\\), so the height from \\(G\\) to \\(HC\\) is \\(h-8\\), with \\(h>8\\). Hence\n\\[\n\\frac{h-8}{h}=\\frac35.\n\\]\nMultiplying by the nonzero quantity \\(5h\\) gives\n\\[\n5h-40=3h,\\qquad 2h=40,\\qquad h=20.\n\\]\nTherefore \\(\\boxed{GF=20}\\), choice \\(\\boxed{\\text{B}}\\).",
+"solutionMethods": [
+{
+"id": "similar-triangle-heights",
+"label": "Compare the heights of similar triangles",
+"explanation": "The rectangle gives two parallel bases for triangles with the same vertex \\(G\\). Their lengths will determine the ratio of their heights.\n\n[Figure 1](figures/2003_AMC_10A_Q22_question_fig1.svg)\n\nOpposite sides of the rectangle are equal, so \\(AD=BC=9\\). Therefore\n\\[\nAE=9-4=5,\\qquad HC=9-6=3.\n\\]\nSince \\(AE\\parallel HC\\), and the other sides lie on lines \\(AH\\) and \\(EC\\), triangles \\(GAE\\) and \\(GHC\\) are similar by angle-angle similarity. Their corresponding bases are \\(AE\\) and \\(HC\\), so their corresponding heights have ratio \\(5:3\\).\n\nThe endpoints \\(A,E\\) and \\(H,C\\) occur in the same order along the two parallel sides, so the lines meet outside the strip between \\(AD\\) and \\(BC\\). In the similar triangles, the shorter base \\(HC\\) is closer to \\(G\\). Thus \\(G\\) lies beyond \\(BC\\), as shown.\n\nLet \\(h=GF\\). Because \\(GF\\perp AD\\), it measures the height from \\(G\\) to line \\(AD\\). The distance between the parallel lines \\(AD\\) and \\(BC\\) is \\(AB=8\\), so the height from \\(G\\) to \\(HC\\) is \\(h-8\\), with \\(h>8\\). Hence\n\\[\n\\frac{h-8}{h}=\\frac35.\n\\]\nMultiplying by the nonzero quantity \\(5h\\) gives\n\\[\n5h-40=3h,\\qquad 2h=40,\\qquad h=20.\n\\]\nTherefore \\(\\boxed{GF=20}\\), choice \\(\\boxed{\\text{B}}\\).",
+"directNodeIds": [
+"cnm_065",
+"cnm_271",
+"cnm_272"
+],
+"legacyRouteId": "solution:similar-triangle-heights:f37d99256e84",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2003_AMC_10A_Q22#similar-triangle-heights",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2003_AMC_10A_Q22.json",
+"sha256": "b699b210f2fbe9fb356f44307c6c5f06c3071c1cdf15e7b80e15377f5ba8cc05",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "coordinate-line-intersection",
+"label": "Find G using equations of lines",
+"explanation": "Coordinates make the rectangle's sides horizontal and vertical. Then finding \\(G\\) becomes solving two line equations, and \\(GF\\) can be read directly from its coordinates.\n\nPlace the rectangle at\n\\[\nA=(0,0),\\quad B=(0,8),\\quad C=(9,8),\\quad D=(9,0).\n\\]\nSince \\(BH=6\\) and \\(DE=4\\), we have\n\\[\nH=(6,8),\\qquad E=(5,0).\n\\]\nA line through \\(A=(0,0)\\) has equation \\(y=mx\\). Substituting \\(H=(6,8)\\) gives \\(m=8/6=4/3\\), so line \\(AH\\) is\n\\[\ny=\\frac43x.\n\\]\nFor line \\(EC\\), write \\(y=px+q\\). Substituting \\(E\\) and \\(C\\) gives\n\\[\n0=5p+q,\\qquad 8=9p+q.\n\\]\nSubtracting yields \\(p=2\\), and then \\(q=-10\\). Thus line \\(EC\\) is \\(y=2x-10\\).\n\nAt their intersection \\(G\\), both equations hold, so\n\\[\n\\frac43x=2x-10.\n\\]\nMultiplying by \\(3\\) and solving gives \\(4x=6x-30\\), hence \\(x=15\\) and \\(y=20\\). Therefore \\(G=(15,20)\\).\n\nLine \\(AD\\) is the horizontal line \\(y=0\\). Its perpendicular through \\(G\\) is vertical, so \\(F=(15,0)\\). Consequently,\n\\[\nGF=|20-0|=\\boxed{20},\n\\]\nwhich is choice \\(\\boxed{\\text{B}}\\).",
+"directNodeIds": [
+"cnm_065",
+"cnm_084",
+"cnm_205",
+"cnm_208"
+],
+"legacyRouteId": "solution:coordinate-line-intersection:f37d99256e84",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2003_AMC_10A_Q22#coordinate-line-intersection",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2003_AMC_10A_Q22.json",
+"sha256": "b699b210f2fbe9fb356f44307c6c5f06c3071c1cdf15e7b80e15377f5ba8cc05",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2003_AMC_10A_Q22",
+"position": {
+"year": 2003,
+"level": "AMC 10",
+"batch": "A",
+"number": 22
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2003A/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2003_AMC_10A_Q22",
 "figureSources": {
 "figures/2003_AMC_10A_Q22_question_fig1.svg": {
 "url": "https://live.poshenloh.com/images/past-contests/amc10/2003A/22.svg",
+"alt": "",
+"sha256": "7f44dfc7d0ecab4298a8490d85dfe643a4aae9213c5a337f223f4b4bb53a2412",
+"source": {
+"url": "https://live.poshenloh.com/images/past-contests/amc10/2003A/22.svg",
 "alt": ""
 }
+}
 },
+"sourceURL": "https://live.poshenloh.com/past-contests/amc10/2003A/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "afc73e66d72389d8a20d230622adea54d2710928e5e0240acdccbbbfc08349d1",
+"contentHash": "e95cbc3e115a8fa391c5ac50b3a0c171979a359e61d2e8797695e2f45e4ff103",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -378646,7 +386030,9 @@ window.AMC_BANK = {
 ],
 "supportIds": [
 "cnm_186",
-"cnm_055"
+"cnm_055",
+"cnm_064",
+"cnm_042"
 ],
 "routes": [
 {
@@ -378664,6 +386050,62 @@ window.AMC_BANK = {
 "cnm_205",
 "cnm_208",
 "cnm_084"
+]
+},
+{
+"id": "solution:similar-triangle-heights:f37d99256e84",
+"label": "Compare the heights of similar triangles",
+"nodeIds": [
+"cnm_065",
+"cnm_271",
+"cnm_272",
+"cnm_186",
+"cnm_055",
+"cnm_064",
+"cnm_069",
+"cnm_042"
+],
+"methodDirectNodeIds": {
+"similar-triangle-heights": [
+"cnm_065",
+"cnm_271",
+"cnm_272"
+]
+},
+"contextNodeIds": [
+"cnm_186",
+"cnm_055",
+"cnm_064",
+"cnm_069",
+"cnm_042"
+]
+},
+{
+"id": "solution:coordinate-line-intersection:f37d99256e84",
+"label": "Find G using equations of lines",
+"nodeIds": [
+"cnm_065",
+"cnm_084",
+"cnm_205",
+"cnm_208",
+"cnm_186",
+"cnm_055",
+"cnm_064",
+"cnm_042"
+],
+"methodDirectNodeIds": {
+"coordinate-line-intersection": [
+"cnm_065",
+"cnm_084",
+"cnm_205",
+"cnm_208"
+]
+},
+"contextNodeIds": [
+"cnm_186",
+"cnm_055",
+"cnm_064",
+"cnm_042"
 ]
 }
 ],
@@ -648284,14 +655726,17 @@ window.AMC_BANK = {
 {
 "id": "2016_AMC_8_Q20",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2016,
 "level": "AMC 8",
 "batch": "NA",
 "number": 20,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "The least common multiple of \\(a\\) and \\(b\\) is \\(12,\\) and the least common multiple of \\(b\\) and \\(c\\) is \\(15.\\) What is the least possible value of the least common multiple of \\(a\\) and \\(c?\\)",
 "questionType": "text",
 "choices": {
@@ -648301,37 +655746,166 @@ window.AMC_BANK = {
 "D": "\\( 120 \\)",
 "E": "\\( 180 \\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "A",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2016/solutions",
+"acceptedResponses": [
+"A"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "A least common multiple is a multiple of each input, so \\(b\\) must divide both \\(12\\) and \\(15\\). Their only common positive divisors are \\(1\\) and \\(3\\), so \\(b\\) is one of these two numbers.\n\nAlso, \\(a\\) must divide \\(12\\), whose divisors are \\(1,2,3,4,6,12\\). Pairing any of \\(1,2,3,6\\) with either possible value of \\(b\\) gives a least common multiple at most \\(6\\). Thus \\(a\\) must be \\(4\\) or \\(12\\), so it is a multiple of \\(4\\).\n\nSimilarly, \\(c\\) divides \\(15\\), so it is \\(1,3,5\\), or \\(15\\). Neither \\(1\\) nor \\(3\\), paired with \\(b\\), can give a least common multiple of \\(15\\). Therefore \\(c\\) is \\(5\\) or \\(15\\), so it is a multiple of \\(5\\).\n\nConsequently, every common multiple of \\(a\\) and \\(c\\) must be a multiple of both \\(4\\) and \\(5\\). The least such positive number is \\(20\\). To show that this lower bound can actually occur, choose\n\\[\n(a,b,c)=(4,3,5).\n\\]\nThen \\(\\operatorname{lcm}(4,3)=12\\), \\(\\operatorname{lcm}(3,5)=15\\), and \\(\\operatorname{lcm}(4,5)=20\\). The least possible value is therefore \\(\\boxed{20}\\), choice \\(\\text{A}\\).",
+"solutionMethods": [
+{
+"id": "divisors-and-minimum",
+"label": "Find the forced factors",
+"explanation": "A least common multiple is a multiple of each input, so \\(b\\) must divide both \\(12\\) and \\(15\\). Their only common positive divisors are \\(1\\) and \\(3\\), so \\(b\\) is one of these two numbers.\n\nAlso, \\(a\\) must divide \\(12\\), whose divisors are \\(1,2,3,4,6,12\\). Pairing any of \\(1,2,3,6\\) with either possible value of \\(b\\) gives a least common multiple at most \\(6\\). Thus \\(a\\) must be \\(4\\) or \\(12\\), so it is a multiple of \\(4\\).\n\nSimilarly, \\(c\\) divides \\(15\\), so it is \\(1,3,5\\), or \\(15\\). Neither \\(1\\) nor \\(3\\), paired with \\(b\\), can give a least common multiple of \\(15\\). Therefore \\(c\\) is \\(5\\) or \\(15\\), so it is a multiple of \\(5\\).\n\nConsequently, every common multiple of \\(a\\) and \\(c\\) must be a multiple of both \\(4\\) and \\(5\\). The least such positive number is \\(20\\). To show that this lower bound can actually occur, choose\n\\[\n(a,b,c)=(4,3,5).\n\\]\nThen \\(\\operatorname{lcm}(4,3)=12\\), \\(\\operatorname{lcm}(3,5)=15\\), and \\(\\operatorname{lcm}(4,5)=20\\). The least possible value is therefore \\(\\boxed{20}\\), choice \\(\\text{A}\\).",
+"directNodeIds": [
+"cnm_p159",
+"math:extremal-principle"
+],
+"legacyRouteId": "divisors-and-minimum",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2016_AMC_8_Q20#divisors-and-minimum",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2016_AMC_8_Q20.json",
+"sha256": "b0034956fc3498d029206da003e74b0742147463effaa06e41d14e09cb9e319d",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "forced-prime-powers",
+"label": "Bound using forced prime powers",
+"directNodeIds": [
+"math:prime-factorization"
+],
+"legacyRouteId": "forced-prime-powers",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L4205",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2016_AMC_8_Q20#forced-prime-powers",
+"evidence": []
+}
+},
+{
+"id": "common-divisor-enumeration",
+"label": "Enumerate possible divisors",
+"directNodeIds": [
+"cnm_p158",
+"cnm_p153"
+],
+"legacyRouteId": "common-divisor-enumeration",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L4205",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2016_AMC_8_Q20#common-divisor-enumeration",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2016_AMC_8_Q20",
+"position": {
+"year": 2016,
+"level": "AMC 8",
+"batch": "NA",
+"number": 20
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2016/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2016_AMC_8_Q20",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2016/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "6d30bb7b00f621b5e54a26aa0be82dc6c13260a244fc20a1e4c69e6b93164695",
+"contentHash": "3e43955bd07839f3b3c534df25621eb12997c88f2e5f9076f3c4478a37587e6f",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
 "cnm_p159",
 "math:extremal-principle"
 ],
-"supportIds": [],
+"supportIds": [
+"cnm_p153"
+],
 "routes": [
 {
 "id": "forced-prime-powers",
 "label": "Bound using forced prime powers",
 "nodeIds": [
 "math:prime-factorization"
+],
+"methodDirectNodeIds": {
+"forced-prime-powers": [
+"math:prime-factorization"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "common-divisor-enumeration",
 "label": "Enumerate possible divisors",
 "nodeIds": [
 "cnm_p158",
+"cnm_p153"
+],
+"methodDirectNodeIds": {
+"common-divisor-enumeration": [
+"cnm_p158",
+"cnm_p153"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "divisors-and-minimum",
+"label": "Find the forced factors",
+"nodeIds": [
+"cnm_p159",
+"math:extremal-principle",
+"cnm_p153"
+],
+"methodDirectNodeIds": {
+"divisors-and-minimum": [
+"cnm_p159",
+"math:extremal-principle"
+]
+},
+"contextNodeIds": [
 "cnm_p153"
 ]
 }
@@ -648342,14 +655916,17 @@ window.AMC_BANK = {
 {
 "id": "2016_AMC_8_Q21",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2016,
 "level": "AMC 8",
 "batch": "NA",
 "number": 21,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "A box contains \\(3\\) red chips and \\(2\\) green chips. Chips are drawn randomly, one at a time without replacement, until all \\(3\\) of the reds are drawn or until both green chips are drawn. What is the probability that the \\(3\\) reds are drawn?",
 "questionType": "text",
 "choices": {
@@ -648359,24 +655936,121 @@ window.AMC_BANK = {
 "D": "\\( \\dfrac{3}{5} \\)",
 "E": "\\( \\dfrac{2}{3} \\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "B",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2016/solutions",
+"acceptedResponses": [
+"B"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Imagine continuing to draw after the stopping rule would end the experiment. This gives a random ordering of all five chips without changing which color was completed first.\n\nIf the last chip in this full ordering is green, all three reds appear before that chip. At the moment the third red appears, at least one green remains, so the original experiment stops with all three reds drawn.\n\nIf the last chip is red, both greens appear before that chip. Thus both greens are drawn before the third red, and the original experiment stops with the greens instead. These two cases cover every ordering.\n\nEach individual chip is equally likely to be last: random drawing without replacement gives no chip a preferred position. Since two of the five chips are green, the requested probability is\n\\[\n\\boxed{\\frac{2}{5}},\n\\]\nchoice \\(\\text{B}\\).",
+"solutionMethods": [
+{
+"id": "last-chip",
+"label": "Imagine drawing all five chips",
+"explanation": "Imagine continuing to draw after the stopping rule would end the experiment. This gives a random ordering of all five chips without changing which color was completed first.\n\nIf the last chip in this full ordering is green, all three reds appear before that chip. At the moment the third red appears, at least one green remains, so the original experiment stops with all three reds drawn.\n\nIf the last chip is red, both greens appear before that chip. Thus both greens are drawn before the third red, and the original experiment stops with the greens instead. These two cases cover every ordering.\n\nEach individual chip is equally likely to be last: random drawing without replacement gives no chip a preferred position. Since two of the five chips are green, the requested probability is\n\\[\n\\boxed{\\frac{2}{5}},\n\\]\nchoice \\(\\text{B}\\).",
+"directNodeIds": [
+"cnm_285",
+"cnm_309"
+],
+"legacyRouteId": "last-chip",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2016_AMC_8_Q21#last-chip",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2016_AMC_8_Q21.json",
+"sha256": "f3c7e94e9e96dbf1cb08867a6562d8c9a37f8661bf1d993d1e98dba7582a0005",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "last-chip-symmetry",
+"label": "Consider the final chip",
+"directNodeIds": [
+"cnm_309"
+],
+"legacyRouteId": "last-chip-symmetry",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L4206",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2016_AMC_8_Q21#last-chip-symmetry",
+"evidence": []
+}
+},
+{
+"id": "successful-draw-orders",
+"label": "Sum successful draw-order probabilities",
+"directNodeIds": [
+"cnm_h245",
+"cnm_h138"
+],
+"legacyRouteId": "successful-draw-orders",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L4206",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2016_AMC_8_Q21#successful-draw-orders",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2016_AMC_8_Q21",
+"position": {
+"year": 2016,
+"level": "AMC 8",
+"batch": "NA",
+"number": 21
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2016/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2016_AMC_8_Q21",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2016/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "e16b65a7a7f3f72413edde8ae3a8e9a2f87d13e94c1d7ac799fde2f73f6289d9",
+"contentHash": "64a5b6194a76097a470c77b100f854b0182134b6a625f278e843a8819246ac08",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
 "cnm_285"
 ],
 "supportIds": [
-"cnm_310"
+"cnm_310",
+"cnm_p165"
 ],
 "routes": [
 {
@@ -648384,7 +656058,13 @@ window.AMC_BANK = {
 "label": "Consider the final chip",
 "nodeIds": [
 "cnm_309"
+],
+"methodDirectNodeIds": {
+"last-chip-symmetry": [
+"cnm_309"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "successful-draw-orders",
@@ -648392,6 +656072,33 @@ window.AMC_BANK = {
 "nodeIds": [
 "cnm_h245",
 "cnm_h138"
+],
+"methodDirectNodeIds": {
+"successful-draw-orders": [
+"cnm_h245",
+"cnm_h138"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "last-chip",
+"label": "Imagine drawing all five chips",
+"nodeIds": [
+"cnm_285",
+"cnm_309",
+"cnm_310",
+"cnm_p165"
+],
+"methodDirectNodeIds": {
+"last-chip": [
+"cnm_285",
+"cnm_309"
+]
+},
+"contextNodeIds": [
+"cnm_310",
+"cnm_p165"
 ]
 }
 ],
@@ -648608,14 +656315,17 @@ window.AMC_BANK = {
 {
 "id": "2016_AMC_8_Q23",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2016,
 "level": "AMC 8",
 "batch": "NA",
 "number": 23,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "Two congruent circles centered at points \\(A\\) and \\(B\\) each pass through the other circle’s center. The line containing both \\(A\\) and \\(B\\) is extended to intersect the circles at points \\(C\\) and \\(D.\\)\n\nThe circles intersect at two points, one of which is \\(E.\\) What is the degree measure of \\(\\angle CED?\\)",
 "questionType": "text",
 "choices": {
@@ -648625,25 +656335,125 @@ window.AMC_BANK = {
 "D": "\\( 135 \\)",
 "E": "\\( 150 \\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "C",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2016/solutions",
+"acceptedResponses": [
+"C"
+],
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "The two new intersections of the extended line lie beyond the centers. Call the point beyond \\(A\\) point \\(C\\), and the point beyond \\(B\\) point \\(D\\), so their order is \\(C,A,B,D\\). Exchanging the names \\(C\\) and \\(D\\) does not change the requested angle.\n\nEach circle passes through the other center, so their common radius equals \\(AB\\). Since \\(E\\) lies on both circles,\n\\[\nAB=AE=BE.\n\\]\nThus triangle \\(ABE\\) is equilateral, and all its angles are \\(60^\\circ\\).\n\nBecause \\(AC\\) and \\(AB\\) point in opposite directions,\n\\[\n\\angle CAE=180^\\circ-60^\\circ=120^\\circ.\n\\]\nAlso, \\(AC=AE\\), since both are radii of the circle centered at \\(A\\). Triangle \\(CAE\\) is therefore isosceles, and its two equal base angles are\n\\[\n\\angle CEA=\\frac{180^\\circ-120^\\circ}{2}=30^\\circ.\n\\]\nAt the other center, \\(BD\\) and \\(BA\\) point in opposite directions, so \\(\\angle EBD=120^\\circ\\). Since \\(BE=BD\\), the same triangle-angle calculation gives \\(\\angle BED=30^\\circ\\).\n\nThe points \\(A\\) and \\(B\\) lie between \\(C\\) and \\(D\\), so the rays \\(EA\\) and \\(EB\\) divide \\(\\angle CED\\) into these three adjacent angles. Hence\n\\[\n\\angle CED=30^\\circ+60^\\circ+30^\\circ=\\boxed{120^\\circ},\n\\]\nchoice \\(\\text{C}\\). The reasoning applies to either circle intersection chosen as \\(E\\).",
+"solutionMethods": [
+{
+"id": "radius-triangles",
+"label": "Use triangles formed by radii",
+"explanation": "The two new intersections of the extended line lie beyond the centers. Call the point beyond \\(A\\) point \\(C\\), and the point beyond \\(B\\) point \\(D\\), so their order is \\(C,A,B,D\\). Exchanging the names \\(C\\) and \\(D\\) does not change the requested angle.\n\nEach circle passes through the other center, so their common radius equals \\(AB\\). Since \\(E\\) lies on both circles,\n\\[\nAB=AE=BE.\n\\]\nThus triangle \\(ABE\\) is equilateral, and all its angles are \\(60^\\circ\\).\n\nBecause \\(AC\\) and \\(AB\\) point in opposite directions,\n\\[\n\\angle CAE=180^\\circ-60^\\circ=120^\\circ.\n\\]\nAlso, \\(AC=AE\\), since both are radii of the circle centered at \\(A\\). Triangle \\(CAE\\) is therefore isosceles, and its two equal base angles are\n\\[\n\\angle CEA=\\frac{180^\\circ-120^\\circ}{2}=30^\\circ.\n\\]\nAt the other center, \\(BD\\) and \\(BA\\) point in opposite directions, so \\(\\angle EBD=120^\\circ\\). Since \\(BE=BD\\), the same triangle-angle calculation gives \\(\\angle BED=30^\\circ\\).\n\nThe points \\(A\\) and \\(B\\) lie between \\(C\\) and \\(D\\), so the rays \\(EA\\) and \\(EB\\) divide \\(\\angle CED\\) into these three adjacent angles. Hence\n\\[\n\\angle CED=30^\\circ+60^\\circ+30^\\circ=\\boxed{120^\\circ},\n\\]\nchoice \\(\\text{C}\\). The reasoning applies to either circle intersection chosen as \\(E\\).",
+"directNodeIds": [
+"cnm_058",
+"cnm_139",
+"cnm_137",
+"cnm_062",
+"cnm_p124"
+],
+"legacyRouteId": "radius-triangles",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2016_AMC_8_Q23#radius-triangles",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2016_AMC_8_Q23.json",
+"sha256": "008da54a870fe636c77ed6768da2da2fad0c3a2d615acfb9c829637d1b2978bd",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+},
+{
+"id": "isosceles-angle-chase",
+"label": "Use the outer isosceles triangles",
+"directNodeIds": [
+"cnm_137",
+"cnm_062",
+"cnm_115"
+],
+"legacyRouteId": "isosceles-angle-chase",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L4208",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2016_AMC_8_Q23#isosceles-angle-chase",
+"evidence": []
+}
+},
+{
+"id": "diameter-right-angles",
+"label": "Use angles subtended by diameters",
+"directNodeIds": [
+"cnm_254"
+],
+"legacyRouteId": "diameter-right-angles",
+"provenance": {
+"source": "Historical concept route; no stored worked explanation",
+"reviewStatus": "Retained baseline mapping; no new method review",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://github.com/rqzhu-aide/K-12-math/blob/d081b47f0ea7aafa4b66653bd91546642a1587e9/database/knowledge-graph/source/mappings.jsonl#L4208",
+"contribution": "Historical route and concept nodes retained from the linked public mapping. The new worked-solution review does not review this separate route.",
+"sourceRef": "amc/2016_AMC_8_Q23#diameter-right-angles",
+"evidence": []
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2016_AMC_8_Q23",
+"position": {
+"year": 2016,
+"level": "AMC 8",
+"batch": "NA",
+"number": 23
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2016/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2016_AMC_8_Q23",
 "figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2016/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
 "editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "5de598b61c2c67a5f8f5982275254807858b5deb64502e466cbf783bbdb2e015",
+"contentHash": "071cfa3e5a6f2cd2b36a17c0301abd09bf536f05663df28b71e337b5cbf9d3ae",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
 "cnm_058"
 ],
 "supportIds": [
-"cnm_250",
-"cnm_139"
+"cnm_p188",
+"cnm_056"
 ],
 "routes": [
 {
@@ -648653,13 +656463,53 @@ window.AMC_BANK = {
 "cnm_137",
 "cnm_062",
 "cnm_115"
+],
+"methodDirectNodeIds": {
+"isosceles-angle-chase": [
+"cnm_137",
+"cnm_062",
+"cnm_115"
 ]
+},
+"contextNodeIds": []
 },
 {
 "id": "diameter-right-angles",
 "label": "Use angles subtended by diameters",
 "nodeIds": [
 "cnm_254"
+],
+"methodDirectNodeIds": {
+"diameter-right-angles": [
+"cnm_254"
+]
+},
+"contextNodeIds": []
+},
+{
+"id": "radius-triangles",
+"label": "Use triangles formed by radii",
+"nodeIds": [
+"cnm_058",
+"cnm_139",
+"cnm_137",
+"cnm_062",
+"cnm_p124",
+"cnm_p188",
+"cnm_056"
+],
+"methodDirectNodeIds": {
+"radius-triangles": [
+"cnm_058",
+"cnm_139",
+"cnm_137",
+"cnm_062",
+"cnm_p124"
+]
+},
+"contextNodeIds": [
+"cnm_p188",
+"cnm_056"
 ]
 }
 ],
@@ -648669,14 +656519,17 @@ window.AMC_BANK = {
 {
 "id": "2016_AMC_8_Q24",
 "bank": "amc",
-"responseType": "choice",
-"domain": [],
-"skill": [],
 "year": 2016,
 "level": "AMC 8",
 "batch": "NA",
 "number": 24,
-"area": "Unclassified",
+"topic": {
+"id": "NA",
+"label": "NA"
+},
+"domain": [],
+"skill": [],
+"responseType": "choice",
 "question": "The digits \\(1,\\) \\(2,\\) \\(3,\\) \\(4,\\) and \\(5\\) are each used once to write a five-digit number \\(PQRST.\\) The three-digit number \\(PQR\\) is divisible by \\(4,\\) the three-digit number \\(QRS\\) is divisible by \\(5,\\) and the three-digit number \\(RST\\) is divisible by \\(3.\\) What is \\(P?\\)",
 "questionType": "text",
 "choices": {
@@ -648686,27 +656539,112 @@ window.AMC_BANK = {
 "D": "\\( 4 \\)",
 "E": "\\( 5 \\)"
 },
+"choiceOrder": [
+"A",
+"B",
+"C",
+"D",
+"E"
+],
 "choicesType": "text",
 "answer": "A",
-"solution": "",
-"solutionSource": "",
-"solutionSourceURL": "",
-"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2016/solutions",
-"figureSources": {},
-"editorialNote": "",
-"knowledgeGraph": {
-"version": "1.0.0",
-"contentHash": "7e8d3baaddc8a92f67935263c015ca82a927382be2e1656b96346ca9b9184cd2",
-"status": "mapped",
-"reviewStatus": "machine_scope_audited",
-"assessedIds": [
-"math:modular-congruence"
+"acceptedResponses": [
+"A"
 ],
-"supportIds": [
+"rejectedAnswers": [],
+"unorderedAnswers": false,
+"solution": "Start with the divisibility-by-\\(5\\) condition because it fixes a digit immediately. A multiple of \\(5\\) ends in \\(0\\) or \\(5\\), and \\(0\\) is unavailable, so \\(S=5\\).\n\nNext, \\(PQR=100P+(10Q+R)\\). Since \\(100P\\) is divisible by \\(4\\), \\(PQR\\) is divisible by \\(4\\) exactly when its last two digits, \\(QR\\), form a multiple of \\(4\\). The digits \\(Q\\) and \\(R\\) are distinct members of \\(1,2,3,4\\). The last digit \\(R\\) must be even. Checking \\(R=2\\) gives \\(QR=12\\) or \\(32\\); checking \\(R=4\\) gives only \\(QR=24\\). Thus these three cases exhaust the possibilities.\n\nA number is divisible by \\(3\\) exactly when its digit sum is divisible by \\(3\\). Apply this to \\(RST\\), whose digit sum is \\(R+5+T\\):\n\n- If \\(QR=12\\), the remaining digits for \\(P,T\\) are \\(3,4\\). The possible sums are \\(2+5+3=10\\) and \\(2+5+4=11\\), so neither works.\n- If \\(QR=32\\), the remaining digits are \\(1,4\\). The sums are \\(8\\) and \\(11\\), so neither works.\n- If \\(QR=24\\), the remaining digits are \\(1,3\\). The sums are \\(10\\) and \\(12\\), so \\(T=3\\) and \\(P=1\\).\n\nThis gives \\(PQRST=12453\\). Indeed, \\(124=4\\cdot31\\), \\(245=5\\cdot49\\), and \\(453=3\\cdot151\\), so every original condition holds. Therefore \\(\\boxed{P=1}\\), choice \\(\\text{A}\\).",
+"solutionMethods": [
+{
+"id": "digit-tests-and-cases",
+"label": "Apply the divisibility tests",
+"explanation": "Start with the divisibility-by-\\(5\\) condition because it fixes a digit immediately. A multiple of \\(5\\) ends in \\(0\\) or \\(5\\), and \\(0\\) is unavailable, so \\(S=5\\).\n\nNext, \\(PQR=100P+(10Q+R)\\). Since \\(100P\\) is divisible by \\(4\\), \\(PQR\\) is divisible by \\(4\\) exactly when its last two digits, \\(QR\\), form a multiple of \\(4\\). The digits \\(Q\\) and \\(R\\) are distinct members of \\(1,2,3,4\\). The last digit \\(R\\) must be even. Checking \\(R=2\\) gives \\(QR=12\\) or \\(32\\); checking \\(R=4\\) gives only \\(QR=24\\). Thus these three cases exhaust the possibilities.\n\nA number is divisible by \\(3\\) exactly when its digit sum is divisible by \\(3\\). Apply this to \\(RST\\), whose digit sum is \\(R+5+T\\):\n\n- If \\(QR=12\\), the remaining digits for \\(P,T\\) are \\(3,4\\). The possible sums are \\(2+5+3=10\\) and \\(2+5+4=11\\), so neither works.\n- If \\(QR=32\\), the remaining digits are \\(1,4\\). The sums are \\(8\\) and \\(11\\), so neither works.\n- If \\(QR=24\\), the remaining digits are \\(1,3\\). The sums are \\(10\\) and \\(12\\), so \\(T=3\\) and \\(P=1\\).\n\nThis gives \\(PQRST=12453\\). Indeed, \\(124=4\\cdot31\\), \\(245=5\\cdot49\\), and \\(453=3\\cdot151\\), so every original condition holds. Therefore \\(\\boxed{P=1}\\), choice \\(\\text{A}\\).",
+"directNodeIds": [
+"math:finite-constraint-deduction",
 "cnm_p154",
 "cnm_p155"
 ],
-"routes": [],
+"legacyRouteId": "digit-tests-and-cases",
+"provenance": {
+"source": "Original Math Practice solution",
+"reviewStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"sourceURL": "https://github.com/rqzhu-aide/math-practice",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceRef": "amc/2016_AMC_8_Q24#digit-tests-and-cases",
+"evidence": [
+{
+"path": "../knowledge-graph/evidence/solutions-2026-11-08-through2016/2016_AMC_8_Q24.json",
+"sha256": "dda572c352cf08b9fd7152da1cea6b24242940bc8bc908aec01d0652a22ee40f",
+"label": "Accepted primary worked-solution review"
+}
+]
+}
+}
+],
+"sourceInfo": {
+"kind": "question",
+"label": "2016_AMC_8_Q24",
+"position": {
+"year": 2016,
+"level": "AMC 8",
+"batch": "NA",
+"number": 24
+},
+"attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
+"license": "CC-BY-NC-SA-4.0",
+"licenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2016/solutions"
+},
+"schemaVersion": "3.0",
+"sourceRef": "amc/2016_AMC_8_Q24",
+"figureSources": {},
+"sourceURL": "https://live.poshenloh.com/past-contests/amc8/2016/solutions",
+"solutionSource": "Original Math Practice solution",
+"solutionSourceURL": "https://github.com/rqzhu-aide/math-practice",
+"editorialNote": "",
+"translationStatus": "",
+"solutionAvailability": "present",
+"solutionOmittedReason": "",
+"solutionStatus": "AI-authored and independently AI-reviewed; not teacher reviewed",
+"knowledgeGraph": {
+"version": "1.0.0",
+"contentHash": "64af2e6426b48d8716c7dd0410e748e90750132e34c8dac4962386dc4910954b",
+"status": "mapped",
+"reviewStatus": "machine_scope_audited",
+"assessedIds": [
+"math:finite-constraint-deduction"
+],
+"supportIds": [
+"cnm_p153",
+"cnm_p053",
+"cnm_p154",
+"cnm_p155"
+],
+"routes": [
+{
+"id": "digit-tests-and-cases",
+"label": "Apply the divisibility tests",
+"nodeIds": [
+"math:finite-constraint-deduction",
+"cnm_p154",
+"cnm_p155",
+"cnm_p153",
+"cnm_p053"
+],
+"methodDirectNodeIds": {
+"digit-tests-and-cases": [
+"math:finite-constraint-deduction",
+"cnm_p154",
+"cnm_p155"
+]
+},
+"contextNodeIds": [
+"cnm_p153",
+"cnm_p053"
+]
+}
+],
 "flags": []
 }
 },

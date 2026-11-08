@@ -1,68 +1,56 @@
 {
-  "Year": 2000,
-  "Level": "AMC 10",
-  "Batch": "NA",
-  "Area": "Unclassified",
-  "Number": 13,
-  "Question": "There are \\(5\\) yellow pegs, \\(4\\) red pegs, \\(3\\) green pegs, \\(2\\) blue pegs, and \\(1\\) orange peg to be placed on a triangular peg board. In how many ways can the pegs be placed so that no (horizontal) row or (vertical) column contains two pegs of the same color?\n\n[Figure 1](figures/2000_AMC_10_Q13_question_fig1.svg)",
-  "Question Type": "mixed",
-  "Choices": {
-    "A": "\\(0\\)",
-    "B": "\\(1\\)",
-    "C": "\\(5! \\cdot 4! \\cdot 3! \\cdot 2! \\cdot 1!\\)",
-    "D": "\\(\\frac{15!}{5! \\cdot 4! \\cdot 3! \\cdot 2! \\cdot 1!}\\)",
-    "E": "\\(15!\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "arrangements with restrictions; logical deduction",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc10/2000/solutions",
-    "SourceSHA256": "b46a56960e8d2a065d4cc3713035506ccb1259d0ce4e3ced04c804812c73c388",
-    "Figures": [
-      "figures/2000_AMC_10_Q13_question_fig1.svg"
+  "answer": {
+    "accepted": [
+      "B"
     ],
-    "FigureSources": {
-      "figures/2000_AMC_10_Q13_question_fig1.svg": {
-        "url": "https://live.poshenloh.com/images/past-contests/amc10/2000/13.svg",
-        "alt": ""
+    "type": "choice"
+  },
+  "assessedNodeIds": [
+    "math:graph-coloring"
+  ],
+  "bank": "amc",
+  "classification": {
+    "level": "AMC 10"
+  },
+  "id": "2000_AMC_10_Q13",
+  "language": "en",
+  "question": {
+    "choices": [
+      {
+        "content": "\\(0\\)",
+        "id": "A"
+      },
+      {
+        "content": "\\(1\\)",
+        "id": "B"
+      },
+      {
+        "content": "\\(5! \\cdot 4! \\cdot 3! \\cdot 2! \\cdot 1!\\)",
+        "id": "C"
+      },
+      {
+        "content": "\\(\\frac{15!}{5! \\cdot 4! \\cdot 3! \\cdot 2! \\cdot 1!}\\)",
+        "id": "D"
+      },
+      {
+        "content": "\\(15!\\)",
+        "id": "E"
       }
-    },
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 10",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2000_AMC_10_Q13",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "51f6d8a18f52af351336ae5e5f4ad02aca53384e89f68e6d29245269a69e281d",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:graph-coloring"
     ],
-    "supportIds": [],
-    "routes": [],
-    "flags": []
-  }
+    "prompt": "There are \\(5\\) yellow pegs, \\(4\\) red pegs, \\(3\\) green pegs, \\(2\\) blue pegs, and \\(1\\) orange peg to be placed on a triangular peg board. In how many ways can the pegs be placed so that no (horizontal) row or (vertical) column contains two pegs of the same color?\n\n[Figure 1](figures/2000_AMC_10_Q13_question_fig1.svg)"
+  },
+  "schemaVersion": "3.0",
+  "solutions": [
+    {
+      "directNodeIds": [
+        "math:graph-coloring",
+        "math:finite-constraint-deduction"
+      ],
+      "explanation": "Start with yellow, since its five pegs must occupy five different rows. There are exactly five rows, so every row must contain one yellow peg.\n\nThe single hole in the top row must therefore be yellow. In the second row, the first hole cannot be yellow because it is in the same column as the top yellow peg. Thus the second hole is yellow. In the third row, the first two columns already contain yellow pegs, so its yellow peg must occupy the third hole. Continuing this reasoning forces yellow into the rightmost hole of every row.\n\nSet those yellow holes aside. The remaining holes form a smaller triangle with rows of lengths \\(1,2,3,4\\). The four red pegs must occupy different rows of this triangle, so the same reasoning forces red into its rightmost holes. Repeating with green, blue, and orange forces all the remaining positions.\n\nWriting each row from left to right, the result is\n\\[\n\\begin{array}{l}\n\\text{yellow}\\\\\n\\text{red, yellow}\\\\\n\\text{green, red, yellow}\\\\\n\\text{blue, green, red, yellow}\\\\\n\\text{orange, blue, green, red, yellow}.\n\\end{array}\n\\]\nEvery row and every vertical column has distinct colors, and the color totals are correct. Thus this forced arrangement exists, and every valid arrangement must be this one. There is exactly \\(\\boxed{1}\\) placement, choice \\(\\boxed{\\text{B}}\\).",
+      "id": "forced-colors",
+      "sourceRef": "amc/2000_AMC_10_Q13#forced-colors",
+      "title": "Force one color at a time"
+    }
+  ],
+  "sourceRef": "amc/2000_AMC_10_Q13"
 }
