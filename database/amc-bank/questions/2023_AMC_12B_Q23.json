@@ -1,66 +1,76 @@
 {
-  "Year": 2023,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 23,
-  "Question": "When \\(n\\) standard six-sided dice are rolled, the product of the numbers rolled can be any of \\(936\\) possible values. What is \\(n?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(11\\)",
-    "B": "\\(6\\)",
-    "C": "\\(8\\)",
-    "D": "\\(10\\)",
-    "E": "\\(9\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.60",
-    "Concepts": "prime factorization; systematic listing",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2023B/solutions",
-    "SourceSHA256": "bd5cd4b39bb27e92ca2207803e39a05a4fafddeca2beceb058c29855f516fe2c",
-    "Figures": [],
-    "FigureSources": {},
-    "PreviousAnswer": "E",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2023_AMC_12B_Q23",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "When \\(n\\) standard six-sided dice are rolled, the product of the numbers rolled can be any of \\(936\\) possible values. What is \\(n?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(11\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(6\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(8\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(10\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(9\\)"
+      }
     ]
   },
-  "ID": "2023_AMC_12B_Q23",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "A"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:prime-factorization",
+    "math:lattice-counting"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "f4c565edff3711009a36f5b3fb83cb31144a913a5640a6bcdf2781ba03174b1b",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:prime-factorization",
-      "math:lattice-counting"
-    ],
-    "supportIds": [
-      "cnm_h230",
-      "cnm_h204"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "prime-exponents-and-symmetric-sum",
+      "title": "Count prime exponents",
+      "explanation": "Different rolls can have the same product, so count prime factorizations rather than arrangements of dice. Every possible product has a unique form \\(2^h3^b5^c\\), with nonnegative integer exponents.\n\nFix \\(b\\) and \\(c\\). Exactly \\(b\\) dice must show \\(3\\) or \\(6\\), and exactly \\(c\\) dice must show \\(5\\). Let\n\\[\nd=n-b-c\n\\]\nbe the number of remaining dice, whose faces are \\(1,2,4\\).\n\nThe largest possible exponent \\(h\\) of \\(2\\) is \\(b+2d\\), obtained by choosing \\(6\\) for all \\(b\\) dice in the first group and \\(4\\) for all \\(d\\) dice in the last group. Every exponent down to \\(0\\) is possible: repeatedly change \\(6\\) to \\(3\\), or change \\(4\\) to \\(2\\) and then to \\(1\\). Each change removes exactly one factor of \\(2\\) while preserving \\(b\\) and \\(c\\). Thus this case contributes\n\\[\nb+2d+1\n\\]\ndistinct products.\n\nLet \\(N(n)\\) be the total number of products. We sum over all nonnegative triples \\((b,c,d)\\) satisfying \\(b+c+d=n\\):\n\\[\nN(n)=\\sum_{b+c+d=n}(b+2d+1).\n\\]\nSwapping \\(c\\) and \\(d\\) leaves the collection of triples unchanged, so the sum of all \\(d\\)'s equals the sum of all \\(c\\)'s. Therefore\n\\[\n\\begin{aligned}\nN(n)\n&=\\sum_{b+c+d=n}(b+c+d+1)\\\\\n&=(n+1)\\,\\#\\{(b,c,d):b+c+d=n\\}.\n\\end{aligned}\n\\]\nFor \\(b=0,1,\\ldots,n\\), the number of choices of \\(c\\) is respectively \\(n+1,n,\\ldots,1\\), and \\(d\\) is then determined. Hence\n\\[\nN(n)=(n+1)\\frac{(n+1)(n+2)}2\n=\\frac{(n+1)^2(n+2)}2.\n\\]\nThis count has no duplication: distinct \\((h,b,c)\\) give distinct products by unique prime factorization, and every possible product was included.\n\nAt \\(n=11\\),\n\\[\nN(11)=\\frac{12^2\\cdot13}{2}=936.\n\\]\nThe formula strictly increases for nonnegative integers \\(n\\), so this is the unique answer. Thus \\(\\boxed{n=11}\\), choice \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "math:prime-factorization",
+        "math:lattice-counting",
+        "cnm_h230",
+        "cnm_h204"
+      ],
+      "sourceRef": "amc/2023_AMC_12B_Q23#prime-exponents-and-symmetric-sum"
+    },
+    {
+      "id": "normalize-face-multisets",
+      "title": "Choose one representation per product",
+      "explanation": "The equalities \\(1\\cdot6=2\\cdot3\\), \\(1\\cdot4=2\\cdot2\\), and \\(2\\cdot6=3\\cdot4\\) let us simplify a collection of faces without changing either its product or its number of dice. We will use them to obtain representations that can be counted without duplication.\n\nStarting with any roll, replace pairs \\(1,6\\) by \\(2,3\\) until no such pair remains. Next replace pairs \\(1,4\\) by \\(2,2\\) until none remain. Finally replace pairs \\(2,6\\) by \\(3,4\\) until none remain. If any \\(1\\)'s survived the first stage, there are no \\(6\\)'s, so the last stage cannot introduce a \\(4\\) alongside a surviving \\(1\\).\n\nConsequently, the resulting faces belong to one of these three types. If a collection fits a type without its required face, assign it to the preceding type.\n\n| Type | Allowed faces | Additional requirement | Number of multisets |\n|---|---|---|---|\n| I | \\(1,2,3,5\\) | None | \\(\\binom{n+3}{3}\\) |\n| II | \\(2,3,4,5\\) | At least one \\(4\\) | \\(\\binom{n+2}{3}\\) |\n| III | \\(3,4,5,6\\) | At least one \\(6\\) | \\(\\binom{n+2}{3}\\) |\n\nThe first count distributes \\(n\\) identical dice among four face counts. Encoding those counts by \\(n\\) marks separated into four groups by three bars gives \\(\\binom{n+3}{3}\\). In Type II, reserve one \\(4\\), then distribute the remaining \\(n-1\\) dice among four counts, giving \\(\\binom{n+2}{3}\\). Reserving one \\(6\\) gives the same count for Type III.\n\nWe must check that these multisets represent distinct products. Write a product as \\(2^h3^i5^j\\), and let \\(x_k\\) denote the number of faces showing \\(k\\).\n\nWithin Type I, the exponents directly determine \\(x_2,x_3,x_5\\), and the remaining faces are \\(1\\)'s. Within Type II, \\(x_3=i\\) and \\(x_5=j\\); the equations\n\\[\nx_2+x_4=n-i-j,\\qquad x_2+2x_4=h\n\\]\ndetermine the other counts. Within Type III, \\(x_5=j\\) and \\(x_3+x_6=i\\), so \\(x_4=n-i-j\\); then \\(h=2x_4+x_6\\) determines the remaining counts. Thus each type contains at most one representation of any product.\n\nThe types cannot overlap in product either:\n\n* In Type I, \\(h+i+j=n-x_1\\le n\\), which also implies \\(h+2i+2j\\le2n\\).\n* In Type II, \\(h+i+j=n+x_4>n\\), while \\(h+2i+2j=2n-x_2\\le2n\\).\n* In Type III, \\(h+2i+2j=2n+x_6>2n\\).\n\nThese inequalities distinguish all three types. The replacements prove that every obtainable product is represented, so the total is exactly\n\\[\n\\begin{aligned}\nN(n)\n&=\\binom{n+3}{3}+2\\binom{n+2}{3}\\\\\n&=\\frac{(n+1)(n+2)(n+3)+2n(n+1)(n+2)}6\\\\\n&=\\frac{(n+1)^2(n+2)}2.\n\\end{aligned}\n\\]\nThis strictly increasing expression equals \\(936\\) at \\(n=11\\), since \\(12^2\\cdot13/2=936\\). Therefore \\(\\boxed{n=11}\\), choice \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "math:prime-factorization",
+        "math:bijective-counting",
+        "math:stars-and-bars",
+        "cnm_h230",
+        "cnm_h237"
+      ],
+      "sourceRef": "amc/2023_AMC_12B_Q23#normalize-face-multisets"
+    }
+  ],
+  "sourceRef": "amc/2023_AMC_12B_Q23"
 }

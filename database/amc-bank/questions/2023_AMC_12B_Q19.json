@@ -1,82 +1,92 @@
 {
-  "Year": 2023,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 19,
-  "Question": "Each of \\(2023\\) balls is placed in one of \\(3\\) bins. Which of the following is closest to the probability that each of the bins will contain an odd number of balls?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{2}{3}\\)",
-    "B": "\\(\\dfrac{3}{10}\\)",
-    "C": "\\(\\dfrac{1}{2}\\)",
-    "D": "\\(\\dfrac{1}{3}\\)",
-    "E": "\\(\\dfrac{1}{4}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.95",
-    "Concepts": "roots of unity; parity; basic probability",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2023B/solutions",
-    "SourceSHA256": "bd5cd4b39bb27e92ca2207803e39a05a4fafddeca2beceb058c29855f516fe2c",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2023_AMC_12B_Q19",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "cc9842317b1c39482010e384fe25bbe73537e7f022ab32baeb52886ee8419120",
-    "status": "mapped",
-    "reviewStatus": "machine_adjudicated",
-    "assessedIds": [
-      "cnm_h137"
-    ],
-    "supportIds": [
-      "cnm_p156"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2023_AMC_12B_Q19",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Each of \\(2023\\) balls is randomly placed into one of \\(3\\) bins. Which of the following is closest to the probability that each of the bins will contain an odd number of balls?",
+    "choices": [
       {
-        "id": "parity-state-recurrence",
-        "label": "Track whether all three bin parities agree",
-        "nodeIds": [
-          "math:recursive-counting-probability",
-          "cnm_h208"
-        ]
+        "id": "A",
+        "content": "\\(\\dfrac{2}{3}\\)"
       },
       {
-        "id": "polynomial-parity-filter",
-        "label": "Extract odd occupancies from a generating polynomial",
-        "nodeIds": [
-          "math:generating-functions",
-          "cnm_h240"
-        ]
+        "id": "B",
+        "content": "\\(\\dfrac{3}{10}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac{1}{2}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac{1}{3}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac{1}{4}\\)"
       }
-    ],
-    "flags": [
-      "The placement law is not explicit. The answer assumes each ball independently chooses each bin with probability 1/3; without a placement law, the literal probability is not determined."
     ]
-  }
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "E"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h137"
+  ],
+  "solutions": [
+    {
+      "id": "two-ball-parity-recursion",
+      "title": "Add two balls at a time",
+      "explanation": "Adding two balls keeps the total odd, so there are only two types of parity patterns to track: all three bins odd, or exactly one bin odd.\n\nUse the intended model: each ball chooses independently among the three bins, with probability \\(1/3\\) for each bin. The printed word “randomly” alone does not explicitly specify independence or equal bin probabilities.\n\nLet \\(p_k\\) be the probability that all three bin counts are odd after \\(2k+1\\) balls. Initially \\(p_0=0\\), since one ball cannot make all three bins odd. For the next two balls, there are nine equally likely ordered pairs of bin choices.\n\n- If all three counts are odd, they remain odd exactly when both balls enter the same bin. There are three such pairs, so the transition probability is \\(1/3\\).\n- If exactly one count is odd, all three become odd exactly when the balls enter the two even bins, one in each. The two possible orders give probability \\(2/9\\).\n\nThese cases are exhaustive because an odd sum has an odd number of odd summands. Hence\n\\[\np_{k+1}=\\frac13p_k+\\frac29(1-p_k)\n=\\frac19p_k+\\frac29.\n\\]\nThe number \\(1/4\\) is unchanged by this recurrence. Subtracting it gives\n\\[\np_{k+1}-\\frac14\n=\\frac19\\left(p_k-\\frac14\\right).\n\\]\nThus the difference from \\(1/4\\) is multiplied by \\(1/9\\) at every step. Since \\(p_0-1/4=-1/4\\),\n\\[\np_k=\\frac14-\\frac{1}{4\\cdot9^k}.\n\\]\nNow \\(2023=2\\cdot1011+1\\), so the exact probability is\n\\[\n\\frac14-\\frac{1}{4\\cdot9^{1011}}.\n\\]\nIt is slightly below \\(1/4\\), and every other listed choice exceeds \\(1/4\\). Therefore the closest choice is \\(\\boxed{\\tfrac14}\\), choice \\(\\boxed{\\text{E}}\\).",
+      "directNodeIds": [
+        "math:recursive-counting-probability",
+        "cnm_h208",
+        "cnm_h137",
+        "cnm_p156"
+      ],
+      "sourceRef": "amc/2023_AMC_12B_Q19#two-ball-parity-recursion"
+    },
+    {
+      "id": "count-odd-bin-incidences",
+      "title": "Count assignments and odd bins",
+      "explanation": "Since \\(2023\\) is odd, an assignment has either one or three bins with odd counts. Counting how many times an odd bin occurs across all assignments will distinguish these possibilities.\n\nAssume that the ball placements are independent and each bin is equally likely for every ball. These are the intended sampling assumptions; the printed word “randomly” by itself does not fully specify them.\n\nLabel the balls by their placement order. There are \\(N=3^{2023}\\) equally likely assignments. Let \\(T\\) be the number of assignments in which all three counts are odd.\n\nCount pairs consisting of an assignment and a selected bin whose count is odd. Each of the \\(N-T\\) assignments with exactly one odd bin contributes one pair, and each of the \\(T\\) all-odd assignments contributes three. The number of pairs is therefore\n\\[\n(N-T)+3T=N+2T.\n\\]\nFor a second count, fix the selected bin. To put exactly \\(k\\) balls in it, choose those balls in \\(\\binom{2023}{k}\\) ways, then give each remaining ball either of the other two bins. The number of assignments where the selected bin is odd is consequently\n\\[\nO=\\sum_{\\substack{0\\le k\\le2023\\\\k\\text{ odd}}}\n\\binom{2023}{k}2^{2023-k}.\n\\]\nIn the binomial expansions of \\((2+1)^{2023}\\) and \\((2-1)^{2023}\\), the even-indexed terms agree and the odd-indexed terms have opposite signs. Subtraction gives\n\\[\n3^{2023}-1=2O,\n\\qquad O=\\frac{N-1}{2}.\n\\]\nThere are three choices for the selected bin, so equating our two counts yields\n\\[\nN+2T=\\frac{3(N-1)}2,\n\\qquad T=\\frac{N-3}{4}.\n\\]\nThus the required probability is\n\\[\n\\frac{T}{N}\n=\\frac14-\\frac{3}{4\\cdot3^{2023}}.\n\\]\nThis lies below \\(1/4\\), while every other listed choice is greater than \\(1/4\\). The closest choice is \\(\\boxed{\\tfrac14}\\), choice \\(\\boxed{\\text{E}}\\).",
+      "directNodeIds": [
+        "cnm_h137",
+        "cnm_h240",
+        "math:double-counting",
+        "cnm_p156"
+      ],
+      "sourceRef": "amc/2023_AMC_12B_Q19#count-odd-bin-incidences"
+    },
+    {
+      "id": "parity-state-recurrence",
+      "title": "Track whether all three bin parities agree",
+      "directNodeIds": [
+        "math:recursive-counting-probability",
+        "cnm_h208"
+      ],
+      "sourceRef": "amc/2023_AMC_12B_Q19#parity-state-recurrence"
+    },
+    {
+      "id": "polynomial-parity-filter",
+      "title": "Extract odd occupancies from a generating polynomial",
+      "directNodeIds": [
+        "math:generating-functions",
+        "cnm_h240"
+      ],
+      "sourceRef": "amc/2023_AMC_12B_Q19#polynomial-parity-filter"
+    }
+  ],
+  "sourceRef": "amc/2023_AMC_12B_Q19"
 }

@@ -1,81 +1,78 @@
 {
-  "Year": 2022,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Number Theory",
-  "Number": 23,
-  "Question": "Let \\(h_n\\) and \\(k_n\\) be the unique relatively prime positive integers such that\n\n\\[\\frac11+\\frac12+\\frac13+\\cdots+\\frac1n=\\frac{h_n}{k_n}.\\]\n\nLet \\(L_n\\) denote the least common multiple of the numbers \\(1,\\) \\(2,\\) \\(3,\\) \\(\\ldots,\\) \\(n.\\) For how many integers \\(n\\) with \\(1\\le n\\le22\\) is \\(k_n\\lt L_n?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(0\\)",
-    "B": "\\(3\\)",
-    "C": "\\(7\\)",
-    "D": "\\(8\\)",
-    "E": "\\(10\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.60",
-    "Concepts": "least common multiple; prime factorization; modular arithmetic",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2022A/solutions",
-    "SourceSHA256": "25afecb70d053b546e2a70288716895c648653913bd0416ce4795c52ef2097e0",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2022_AMC_12A_Q23",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:number-theory"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "77e508474c30306c60f77e58931b125ec6f2268b879098a4b45f825e30c8e827",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_p168",
-      "cnm_p159"
-    ],
-    "supportIds": [
-      "cnm_p158"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2022_AMC_12A_Q23",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Let \\(h_n\\) and \\(k_n\\) be the unique relatively prime positive integers such that\n\n\\[\\frac11+\\frac12+\\frac13+\\cdots+\\frac1n=\\frac{h_n}{k_n}.\\]\n\nLet \\(L_n\\) denote the least common multiple of the numbers \\(1,\\) \\(2,\\) \\(3,\\) \\(\\ldots,\\) \\(n.\\) For how many integers \\(n\\) with \\(1\\le n\\le22\\) is \\(k_n\\lt L_n?\\)",
+    "choices": [
       {
-        "id": "prime-cancellation",
-        "label": "Test cancellation prime by prime",
-        "nodeIds": [
-          "math:prime-factorization",
-          "math:modular-congruence"
-        ]
+        "id": "A",
+        "content": "\\(0\\)"
       },
       {
-        "id": "exact-fraction-recurrence",
-        "label": "Accumulate and reduce fractions",
-        "nodeIds": [
-          "cnm_h200",
-          "cnm_p173"
-        ]
+        "id": "B",
+        "content": "\\(3\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(7\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(8\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(10\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Number Theory",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:number-theory"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:prime-factorization",
+    "math:modular-congruence",
+    "cnm_p159",
+    "cnm_p168"
+  ],
+  "solutions": [
+    {
+      "id": "prime-cancellation",
+      "title": "Test cancellation prime by prime",
+      "explanation": "Writing the sum over the denominator \\(L_n\\) lets us test whether any prime factor cancels. Define the integer\n\\[\nN_n=\\sum_{j=1}^n\\frac{L_n}{j}.\n\\]\nThen\n\\[\nk_n=\\frac{L_n}{\\gcd(N_n,L_n)},\n\\]\nso we need a prime dividing both \\(N_n\\) and \\(L_n\\).\n\nFix a prime \\(p\\le n\\), and let \\(q=p^a\\) be its largest power not exceeding \\(n\\). The prime factorization of \\(L_n\\) contains exactly this power of \\(p\\). Thus \\(L_n/j\\) is divisible by \\(p\\) unless \\(j\\) is a multiple of \\(q\\).\n\nPut \\(t=\\lfloor n/q\\rfloor\\). Since \\(pq>n\\), we have \\(t<p\\). The only terms that matter modulo \\(p\\) therefore have denominators\n\\[\nq,2q,\\ldots,tq.\n\\]\nLet \\(B=L_n/q\\), which is not divisible by \\(p\\). Their sum is\n\\[\nB\\left(1+\\frac12+\\cdots+\\frac1t\\right).\n\\]\nWrite the parenthesized sum in lowest terms as \\(u/v\\). Each \\(j\\le t\\) divides \\(B\\), so \\(v\\) divides \\(B\\). Consequently, the displayed sum is \\((B/v)u\\), where \\(B/v\\) is an integer not divisible by \\(p\\). We conclude that \\(p\\) cancels precisely when \\(p\\mid u\\).\n\nFor \\(n\\le22\\), the values of \\(t\\) needed are at most \\(4\\):\n\n| \\(t\\) | \\(1+1/2+\\cdots+1/t\\) | Reduced numerator |\n|---|---|---|\n| \\(1\\) | \\(1\\) | \\(1\\) |\n| \\(2\\) | \\(3/2\\) | \\(3\\) |\n| \\(3\\) | \\(11/6\\) | \\(11\\) |\n| \\(4\\) | \\(25/12\\) | \\(25\\) |\n\nWe can now check every prime at most \\(22\\):\n\n| Prime \\(p\\) | Possible largest powers \\(q\\) | Possible \\(t\\) | Values of \\(n\\) where \\(p\\) cancels |\n|---|---|---|---|\n| \\(2\\) | \\(2,4,8,16\\) | \\(1\\) | None |\n| \\(3\\) | \\(3,9\\) | \\(1,2\\) | \\(6,7,8,18,19,20,21,22\\) |\n| \\(5\\) | \\(5\\) | \\(1,2,3,4\\) | \\(20,21,22\\) |\n| \\(7\\) | \\(7\\) | \\(1,2,3\\) | None |\n| \\(11\\) | \\(11\\) | \\(1,2\\) | None |\n| \\(13,17,19\\) | \\(p\\) | \\(1\\) | None |\n\nFor example, \\(3\\) cancels when \\(t=2\\): this means \\(6\\le n\\le8\\) for \\(q=3\\), or \\(18\\le n\\le22\\) for \\(q=9\\). Similarly, \\(5\\) cancels only when \\(t=4\\), giving \\(20\\le n\\le22\\). These last three values have already been counted. At \\(n=1\\), both denominators equal \\(1\\).\n\nThus the qualifying integers are\n\\[\n6,7,8,18,19,20,21,22,\n\\]\nfor a total of \\(\\boxed{8}\\), choice \\(\\boxed{\\text{D}}\\).",
+      "directNodeIds": [
+        "math:prime-factorization",
+        "math:modular-congruence",
+        "cnm_p159",
+        "cnm_p168"
+      ],
+      "sourceRef": "amc/2022_AMC_12A_Q23#prime-cancellation"
+    },
+    {
+      "id": "exact-fraction-recurrence",
+      "title": "Build the fractions recursively",
+      "explanation": "There are only \\(22\\) sums to check, so an exact recurrence gives a direct route using fraction arithmetic. Keep each sum over its least common denominator by writing\n\\[\n1+\\frac12+\\cdots+\\frac1n=\\frac{N_n}{L_n},\n\\]\nwithout reducing the fraction.\n\nStarting with \\(L_1=N_1=1\\), adding \\(1/n\\) gives\n\\[\nL_n=\\operatorname{lcm}(L_{n-1},n),\n\\qquad\nN_n=\\frac{L_n}{L_{n-1}}N_{n-1}+\\frac{L_n}{n}.\n\\]\nBoth terms on the right are integers. If \\(d_n=\\gcd(N_n,L_n)\\), then reducing the fraction gives \\(k_n=L_n/d_n\\). Thus a row qualifies exactly when \\(d_n>1\\).\n\nFor example, \\(L_6=60\\) and\n\\[\nN_6=137+\\frac{60}{6}=147,\n\\qquad\n\\gcd(147,60)=3.\n\\]\nApplying the recurrence throughout the requested range gives:\n\n| \\(n\\) | \\(L_n\\) | \\(N_n\\) | \\(d_n\\) |\n|---|---:|---:|---:|\n| 1 | 1 | 1 | 1 |\n| 2 | 2 | 3 | 1 |\n| 3 | 6 | 11 | 1 |\n| 4 | 12 | 25 | 1 |\n| 5 | 60 | 137 | 1 |\n| 6 | 60 | 147 | 3 |\n| 7 | 420 | 1089 | 3 |\n| 8 | 840 | 2283 | 3 |\n| 9 | 2520 | 7129 | 1 |\n| 10 | 2520 | 7381 | 1 |\n| 11 | 27720 | 83711 | 1 |\n| 12 | 27720 | 86021 | 1 |\n| 13 | 360360 | 1145993 | 1 |\n| 14 | 360360 | 1171733 | 1 |\n| 15 | 360360 | 1195757 | 1 |\n| 16 | 720720 | 2436559 | 1 |\n| 17 | 12252240 | 42142223 | 1 |\n| 18 | 12252240 | 42822903 | 3 |\n| 19 | 232792560 | 825887397 | 3 |\n| 20 | 232792560 | 837527025 | 15 |\n| 21 | 232792560 | 848612385 | 45 |\n| 22 | 232792560 | 859193865 | 45 |\n\nThe rows with \\(d_n>1\\) are \\(n=6,7,8,18,19,20,21,22\\). Hence the answer is \\(\\boxed{8}\\), choice \\(\\boxed{\\text{D}}\\).",
+      "directNodeIds": [
+        "cnm_h200",
+        "cnm_p173",
+        "cnm_p159",
+        "cnm_p168",
+        "cnm_p158"
+      ],
+      "sourceRef": "amc/2022_AMC_12A_Q23#exact-fraction-recurrence"
+    }
+  ],
+  "sourceRef": "amc/2022_AMC_12A_Q23"
 }

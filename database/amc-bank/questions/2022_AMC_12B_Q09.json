@@ -1,82 +1,77 @@
 {
-  "Year": 2022,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Algebra",
-  "Number": 9,
-  "Question": "The sequence \\(a_0,\\) \\(a_1,\\) \\(a_2,\\) \\(\\cdots\\) is a strictly increasing arithmetic sequence of positive integers such that \\[2^{a_7} = 2^{27} \\cdot a_7.\\] What is the minimum possible value of \\(a_2?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(8\\)",
-    "B": "\\(12\\)",
-    "C": "\\(16\\)",
-    "D": "\\(17\\)",
-    "E": "\\(22\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.65",
-    "Concepts": "arithmetic sequence; exponent; optimization",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2022B/solutions",
-    "SourceSHA256": "efb71db844024a12187d69e16958d86ad39eb081c9924a1953c2ed60eb149bca",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2022_AMC_12B_Q09",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:algebra"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "b7920d5ca1cbae9f06a92be5f07b61f59dbee68b705b38e3f0a8c38a4542d295",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:integer-diophantine-equations",
-      "cnm_h202",
-      "math:extremal-principle"
-    ],
-    "supportIds": [
-      "cnm_097"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2022_AMC_12B_Q09",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "The sequence \\(a_0,\\) \\(a_1,\\) \\(a_2,\\) \\(\\cdots\\) is a strictly increasing arithmetic sequence of positive integers such that \\[2^{a_7} = 2^{27} \\cdot a_7.\\] What is the minimum possible value of \\(a_2?\\)",
+    "choices": [
       {
-        "id": "power-of-two-reduction",
-        "label": "Reduce to a power of two",
-        "nodeIds": [
-          "math:prime-factorization",
-          "cnm_h019"
-        ]
+        "id": "A",
+        "content": "\\(8\\)"
       },
       {
-        "id": "successive-ratio-comparison",
-        "label": "Compare successive exponential ratios",
-        "nodeIds": [
-          "cnm_163",
-          "cnm_096"
-        ]
+        "id": "B",
+        "content": "\\(12\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(16\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(17\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(22\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "area": "Algebra",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:algebra"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:integer-diophantine-equations",
+    "cnm_h202"
+  ],
+  "solutions": [
+    {
+      "id": "power-of-two-reduction",
+      "title": "Determine the seventh term first",
+      "explanation": "The exponential equation determines \\(a_7\\) before we choose the arithmetic sequence. Let \\(n=a_7\\). Dividing by \\(2^{27}\\) gives\n\\[\nn=2^{n-27}.\n\\]\nThe integer exponent \\(n-27\\) cannot be negative, since that would make \\(n\\) lie strictly between \\(0\\) and \\(1\\). Set \\(k=n-27\\), a nonnegative integer. Then \\(n=2^k\\), so\n\\[\n2^k-k=27.\n\\]\nFor \\(k=0\\), the left side is \\(1\\). For integers \\(k\\geq1\\), increasing \\(k\\) by one changes the left side by\n\\[\n\\bigl(2^{k+1}-(k+1)\\bigr)-(2^k-k)=2^k-1>0.\n\\]\nThus these values strictly increase. Since \\(2^5-5=27\\), the unique possibility is \\(k=5\\), giving \\(a_7=32\\).\n\nLet \\(d\\) be the common difference. It is a positive integer, and\n\\[\na_0=32-7d,\\qquad a_2=32-5d.\n\\]\nTo minimize \\(a_2\\), we must make \\(d\\) as large as possible. Positivity of \\(a_0\\) requires\n\\[\n32-7d\\geq1,\n\\]\nso \\(d\\leq4\\). Taking \\(d=4\\) gives the valid sequence \\(a_n=4+4n\\), whose seventh term is \\(32\\). Therefore the minimum is\n\\[\n\\boxed{a_2=12},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "cnm_163",
+        "cnm_h019",
+        "cnm_h202",
+        "cnm_097"
+      ],
+      "sourceRef": "amc/2022_AMC_12B_Q09#power-of-two-reduction"
+    },
+    {
+      "id": "successive-ratio-comparison",
+      "title": "Compare successive quotients",
+      "explanation": "The equation can be written as \\(2^{a_7}/a_7=2^{27}\\), so comparing successive values of this quotient will establish uniqueness. Because \\(a_0,\\ldots,a_7\\) are eight strictly increasing positive integers, \\(a_7\\geq8\\).\n\nFor positive integers \\(m\\), define\n\\[\nR(m)=\\frac{2^m}{m}.\n\\]\nFor every integer \\(m\\geq2\\),\n\\[\n\\frac{R(m+1)}{R(m)}\n=\\frac{2m}{m+1}>1.\n\\]\nThus \\(R(m)\\) strictly increases over the relevant integers. Since\n\\[\nR(32)=\\frac{2^{32}}{32}=2^{27},\n\\]\nthe given equation forces \\(a_7=32\\).\n\nIf the positive integer common difference is \\(d\\), then\n\\[\na_0=32-7d\\geq1,\n\\]\nwhich implies \\(d\\leq4\\). Consequently,\n\\[\na_2=a_7-5d=32-5d\\geq32-20=12.\n\\]\nEquality is attained by \\(a_n=4+4n\\), a strictly increasing sequence of positive integers satisfying \\(a_7=32\\). Hence the minimum is \\(\\boxed{12}\\), choice \\(\\boxed{\\text{B}}\\).",
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "cnm_163",
+        "cnm_096",
+        "cnm_h202",
+        "cnm_097"
+      ],
+      "sourceRef": "amc/2022_AMC_12B_Q09#successive-ratio-comparison"
+    }
+  ],
+  "sourceRef": "amc/2022_AMC_12B_Q09"
 }

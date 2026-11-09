@@ -1,71 +1,67 @@
 {
-  "Year": 2025,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Algebra",
-  "Number": 24,
-  "Question": "How many real numbers satisfy the equation \\(\\sin(20\\pi x) = \\log_{20}(x)?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(199\\)",
-    "B": "\\(200\\)",
-    "C": "\\(398\\)",
-    "D": "\\(399\\)",
-    "E": "\\(400\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "reviewed-source-concepts",
-    "Concepts": "trigonometry; logarithm; counting intersections",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2025B/solutions",
-    "SourceSHA256": "9f851f1eb8b824abb334e0df4c017e663fc0135d4113cd5b6b5926fe4794110d",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2025_AMC_12B_Q24",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "How many real numbers satisfy the equation \\(\\sin(20\\pi x) = \\log_{20}(x)?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(199\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(200\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(398\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(399\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(400\\)"
+      }
     ]
   },
-  "ID": "2025_AMC_12B_Q24",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:algebra"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Algebra",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:algebra"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h049",
+    "cnm_h075",
+    "cnm_h047"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "7b9be8ed326939b4140d70eb0ee8194ec923035ae7d059d4eec8ab2167cf6ba0",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_h049"
-    ],
-    "supportIds": [],
-    "routes": [
-      {
-        "id": "half-wave-intersections",
-        "label": "Count compatible sine lobes",
-        "nodeIds": [
-          "cnm_h075",
-          "cnm_h066",
-          "cnm_h047"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "half-wave-intersections",
+      "title": "Count the sine arches",
+      "explanation": "The sine range first confines all solutions to a finite interval. Its period then lets us count intersections one arch at a time.\n\nSince \\(-1\\leq\\sin(20\\pi x)\\leq1\\), every solution satisfies\n\\[\n\\frac1{20}\\leq x\\leq20.\n\\]\nWrite \\(L(x)=\\log_{20}x\\) and \\(F(x)=\\sin(20\\pi x)-L(x)\\). Both functions are continuous on this interval. Below \\(1\\), only negative sine arches can meet the negative logarithm; above \\(1\\), only positive arches can meet the positive logarithm.\n\nWe will justify the exact intersection counts without calculus. A graph is called concave when it lies above each chord, and convex when it lies below each chord. The logarithm is strictly concave: AM-GM gives\n\\[\nL\\left(\\frac{a+b}{2}\\right)\\geq\\frac{L(a)+L(b)}2,\n\\]\nwith strict inequality for \\(a\\ne b\\). Repeated bisection and continuity give the corresponding inequality at every point of a chord. Similarly, the identity\n\\[\n\\frac{\\sin\\alpha+\\sin\\beta}{2}\n=\\sin\\left(\\frac{\\alpha+\\beta}{2}\\right)\n\\cos\\left(\\frac{\\beta-\\alpha}{2}\\right)\n\\]\nshows that a positive sine arch is strictly concave and a negative arch is strictly convex.\n\n**Negative arches.** There are \\(10\\) of them, on\n\\[\n\\left[\\frac{k}{10}+\\frac1{20},\\frac{k+1}{10}\\right],\n\\qquad 0\\leq k\\leq9.\n\\]\nAt each left endpoint, \\(F>0\\). At each right endpoint, \\(F>0\\), except that \\(F(1)=0\\). At the midpoint of every arch, the sine equals \\(-1\\) while \\(-1<L(x)<0\\), so \\(F<0\\).\n\nOn each such interval, \\(F\\) is strictly convex because both the negative sine arch and \\(-L\\) are convex. A strictly convex function cannot have three zeros: the middle zero would have to lie strictly below the chord joining the outer two. The endpoint and midpoint signs therefore give exactly two roots per negative arch, counting \\(x=1\\) on the last arch. This contributes \\(20\\) roots.\n\n**Positive arches.** There are \\(190\\) relevant arches, on\n\\[\n\\left[\\frac{k}{10},\\frac{k}{10}+\\frac1{20}\\right],\n\\qquad 10\\leq k\\leq199.\n\\]\nAt their endpoints, \\(F<0\\), except for \\(F(1)=0\\); at every peak, \\(F=1-L(x)>0\\). On each falling half, sine strictly decreases while \\(L\\) strictly increases, giving exactly one root.\n\nIt remains to prove that each rising half has at most one root. For a concave graph, secant slopes decrease as the intervals move right. Thus, for \\(1\\leq u<v\\),\n\\[\n\\frac{L(v)-L(u)}{v-u}\n\\leq\\frac{L(1)-L(1/2)}{1/2}\n=2L(2)<1,\n\\]\nsince \\(4<20\\).\n\nSuppose two roots \\(u<v\\) occur on one rising half. Every such half ends before \\(399/20\\). Comparing logarithm secant slopes on \\([v,20]\\) and \\([20,40]\\) gives\n\\[\n\\frac{1-L(v)}{20-v}\\geq\\frac{L(2)}{20}>\\frac1{100},\n\\]\nbecause \\(2^5>20\\) implies \\(L(2)>1/5\\). As \\(20-v\\geq1/20\\), we obtain \\(L(v)<1999/2000\\).\n\nLet \\(\\theta<\\phi\\) be the sine phases of \\(u,v\\), reduced to \\([0,\\pi/2]\\). Since \\(v\\) is a root,\n\\[\n\\sin\\phi=L(v)<\\frac{1999}{2000},\n\\qquad\n\\cos\\phi>\\frac1{40}.\n\\]\nConcavity of sine on \\([0,\\pi/2]\\) gives the chord bound \\(\\sin t\\geq2t/\\pi\\). The sine difference identity now yields\n\\[\n\\begin{aligned}\n\\sin\\phi-\\sin\\theta\n&=2\\sin\\left(\\frac{\\phi-\\theta}{2}\\right)\n\\cos\\left(\\frac{\\phi+\\theta}{2}\\right)\\\\\n&\\geq\\frac2\\pi(\\phi-\\theta)\\cos\\phi\\\\\n&>\\frac2\\pi\\cdot20\\pi(v-u)\\cdot\\frac1{40}\n=v-u.\n\\end{aligned}\n\\]\nBut the logarithm comparison gave \\(L(v)-L(u)<v-u\\), contradicting that both points are roots. Hence every rising half has at most one root. Continuity supplies one, including the left-endpoint root \\(x=1\\) for the first positive arch.\n\nThe count is therefore:\n\n| Relevant arches | Number of arches | Roots per arch | Roots counted |\n|---|---:|---:|---:|\n| Negative, below \\(1\\) | \\(10\\) | \\(2\\) | \\(20\\) |\n| Positive, above \\(1\\) | \\(190\\) | \\(2\\) | \\(380\\) |\n\nOnly \\(x=1\\) appears in both rows. All other portions of the allowed interval have incompatible signs. Thus the number of distinct solutions is\n\\[\n\\boxed{20+380-1=399},\n\\]\nchoice \\(\\mathrm{D}\\).",
+      "directNodeIds": [
+        "cnm_h049",
+        "cnm_h075",
+        "cnm_h047",
+        "cnm_h066",
+        "cnm_h067",
+        "cnm_h071",
+        "cnm_h021"
+      ],
+      "sourceRef": "amc/2025_AMC_12B_Q24#half-wave-intersections"
+    }
+  ],
+  "sourceRef": "amc/2025_AMC_12B_Q24"
 }

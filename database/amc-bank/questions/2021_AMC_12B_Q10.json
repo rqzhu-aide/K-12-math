@@ -1,80 +1,72 @@
 {
-  "Year": 2021,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Number Theory",
-  "Number": 10,
-  "Question": "Two distinct numbers are selected from the set \\(\\{1,2,3,4,\\ldots,36,37\\}\\) so that the sum of the remaining \\(35\\) numbers is the product of these two numbers. What is the difference of these two numbers?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(5\\)",
-    "B": "\\(7\\)",
-    "C": "\\(8\\)",
-    "D": "\\(9\\)",
-    "E": "\\(10\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.51",
-    "Concepts": "Simon’s Favorite Factoring Trick; arithmetic sequence",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2021B/solutions",
-    "SourceSHA256": "d2bc790b41807ac1b6b89c14f6fa855657cb9b6a641fc524d4fdf476ea4f9f4d",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2021_AMC_12B_Q10",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:number-theory"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "c0b53d2990fd587590b3118cdd6416bd1b1b54cb9af3e83a659935620e1e10b3",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:integer-diophantine-equations"
-    ],
-    "supportIds": [
-      "cnm_h204"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2021_AMC_12B_Q10",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Two distinct numbers are selected from the set \\(\\{1,2,3,4,\\ldots,36,37\\}\\) so that the sum of the remaining \\(35\\) numbers is the product of these two numbers. What is the difference of these two numbers?",
+    "choices": [
       {
-        "id": "shifted-factor-pairs",
-        "label": "Shift to an integer product",
-        "nodeIds": [
-          "math:integer-diophantine-equations",
-          "math:prime-factorization"
-        ]
+        "id": "A",
+        "content": "\\(5\\)"
       },
       {
-        "id": "bounded-integer-search",
-        "label": "Bound and test the smaller integer",
-        "nodeIds": [
-          "math:integer-diophantine-equations",
-          "cnm_h020"
-        ]
+        "id": "B",
+        "content": "\\(7\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(8\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(9\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(10\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "E"
+    ]
+  },
+  "classification": {
+    "area": "Number Theory",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:number-theory"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:integer-diophantine-equations"
+  ],
+  "solutions": [
+    {
+      "id": "shifted-factor-pairs",
+      "title": "Shift to a factor pair",
+      "explanation": "Adding the two selected numbers back to the remaining sum gives a fixed total, which produces a useful integer equation.\n\nLet the selected numbers be \\(a\\) and \\(b\\), with \\(1\\le a<b\\le37\\). The total of all the numbers is\n\\[\n1+2+\\cdots+37=\\frac{37\\cdot38}{2}=703.\n\\]\nThe given condition is therefore\n\\[\n703-a-b=ab,\n\\qquad ab+a+b=703.\n\\]\nAdding \\(1\\) completes a product:\n\\[\n(a+1)(b+1)=704=2^6\\cdot11.\n\\]\nBoth factors must lie between \\(2\\) and \\(38\\). Because \\(11\\) is prime and divides their product, one factor must be a multiple of \\(11\\), so it is \\(11\\), \\(22\\), or \\(33\\).\n\nA factor of \\(11\\) would require the other factor to be \\(64\\), outside the allowed range. A factor of \\(33\\) is impossible because \\(704\\) is not divisible by \\(3\\). Thus the factors must be \\(22\\) and \\(32\\).\n\nConsequently, \\(a=21\\) and \\(b=31\\), and their difference is\n\\[\n31-21=\\boxed{10},\n\\]\nchoice \\(\\boxed{\\text{E}}\\).",
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "math:prime-factorization",
+        "cnm_h204"
+      ],
+      "sourceRef": "amc/2021_AMC_12B_Q10#shifted-factor-pairs"
+    },
+    {
+      "id": "bounded-integer-search",
+      "title": "Bound the smaller number",
+      "explanation": "The upper limit \\(37\\) restricts the smaller selected number enough to make a short integer search possible.\n\nWrite the selected numbers as \\(a<b\\). Since\n\\[\n1+2+\\cdots+37=\\frac{37\\cdot38}{2}=703,\n\\]\nthe condition gives\n\\[\nab+a+b=703.\n\\]\nIf \\(a\\le17\\), then \\(b\\le37\\) implies\n\\[\nab+a+b\\le17\\cdot37+17+37=683<703.\n\\]\nIf \\(a\\ge26\\), distinctness forces \\(b\\ge27\\), so\n\\[\nab+a+b\\ge26\\cdot27+26+27=755>703.\n\\]\nTherefore \\(18\\le a\\le25\\).\n\nSolving the equation for \\(b\\) gives\n\\[\nb=\\frac{703-a}{a+1}.\n\\]\nFor \\(b\\) to be an integer, the numerator must leave remainder zero when divided by the denominator. The complete check is:\n\n| \\(a\\) | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 |\n|---|---|---|---|---|---|---|---|---|\n| Remainder of \\(703-a\\) upon division by \\(a+1\\) | 1 | 4 | 11 | 0 | 14 | 8 | 4 | 2 |\n\nFor example, the first remainder follows from \\(685=19\\cdot36+1\\). Only \\(a=21\\) gives an integer value, namely\n\\[\nb=\\frac{682}{22}=31.\n\\]\nBoth numbers belong to the set and are distinct. Their difference is \\(31-21=\\boxed{10}\\), choice \\(\\boxed{\\text{E}}\\).",
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "cnm_h020",
+        "cnm_h204"
+      ],
+      "sourceRef": "amc/2021_AMC_12B_Q10#bounded-integer-search"
+    }
+  ],
+  "sourceRef": "amc/2021_AMC_12B_Q10"
 }

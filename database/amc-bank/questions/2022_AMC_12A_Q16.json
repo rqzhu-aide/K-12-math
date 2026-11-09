@@ -1,72 +1,81 @@
 {
-  "Year": 2022,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Number Theory",
-  "Number": 16,
-  "Question": "A triangular number is a positive integer that can be expressed in the form \\(t_n=1+2+3+\\cdots+n,\\) for some positive integer \\(n.\\) The three smallest triangular numbers that are also perfect squares are \\(t_1=1=1^2,\\) \\(t_8=36=6^2,\\) and \\(t_{49}=1225=35^2.\\) What is the sum of the digits of the fourth smallest triangular number that is also a perfect square?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(6\\)",
-    "B": "\\(9\\)",
-    "C": "\\(12\\)",
-    "D": "\\(18\\)",
-    "E": "\\(27\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.49",
-    "Concepts": "triangular number; perfect square; recursion",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2022A/solutions",
-    "SourceSHA256": "25afecb70d053b546e2a70288716895c648653913bd0416ce4795c52ef2097e0",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2022_AMC_12A_Q16",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "A triangular number is a positive integer that can be expressed in the form \\(t_n=1+2+3+\\cdots+n,\\) for some positive integer \\(n.\\) The three smallest triangular numbers that are also perfect squares are \\(t_1=1=1^2,\\) \\(t_8=36=6^2,\\) and \\(t_{49}=1225=35^2.\\) What is the sum of the digits of the fourth smallest triangular number that is also a perfect square?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(6\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(9\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(12\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(18\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(27\\)"
+      }
     ]
   },
-  "ID": "2022_AMC_12A_Q16",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:number-theory"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Number Theory",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:number-theory"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:integer-diophantine-equations"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "784378fd724a3851fb26129748719d6aa9d6b510e6c9332ae83c31969bd42267",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:integer-diophantine-equations"
-    ],
-    "supportIds": [
-      "cnm_h204"
-    ],
-    "routes": [
-      {
-        "id": "square-triangular-descent",
-        "label": "Generate solutions by integer descent",
-        "nodeIds": [
-          "math:integer-diophantine-equations",
-          "cnm_h200"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "coprime-factor-search",
+      "title": "Search neighboring squares",
+      "explanation": "Consecutive integers are coprime, which sharply restricts when \\(n(n+1)/2\\) can be a square.\n\nWe have\n\\[\nt_n=\\frac{n(n+1)}2.\n\\]\nDivide the even one of \\(n,n+1\\) by \\(2\\). The resulting two integer factors are coprime, since any common divisor would divide both \\(n\\) and \\(n+1\\). If their product is a square, each factor must be a square: every prime occurs in just one factor and must have an even exponent.\n\nTherefore, for positive integers \\(a,b\\), the even one of \\(n,n+1\\) is \\(2a^2\\), and the odd one is \\(b^2\\). These consecutive numbers satisfy\n\\[\nb^2=2a^2-1\\quad\\text{or}\\quad b^2=2a^2+1.\n\\]\nThe known solution \\(n=49\\) uses \\(2a^2=50\\), so \\(a=5\\). For \\(n>49\\), we need \\(a\\ge5\\). Check the two neighbors of \\(2a^2\\) until another square appears:\n\n| \\(a\\) | \\(2a^2-1\\) | \\(2a^2+1\\) |\n|---|---|---|\n| 5 | \\(49=7^2\\) | 51 |\n| 6 | 71 | 73 |\n| 7 | 97 | 99 |\n| 8 | 127 | 129 |\n| 9 | 161 | 163 |\n| 10 | 199 | 201 |\n| 11 | 241 | 243 |\n| 12 | 287 | \\(289=17^2\\) |\n\nEach unmarked entry lies strictly between consecutive squares. For example, \\(97\\) and \\(99\\) lie between \\(9^2=81\\) and \\(10^2=100\\). The match \\(49\\) is the given third solution; the next match gives \\(n=288\\). Larger \\(a\\) cannot give a smaller index, because \\(n\\) is either \\(2a^2-1\\) or \\(2a^2\\). Thus the table omits no intervening solution.\n\nThe fourth square triangular number is\n\\[\nt_{288}=\\frac{288\\cdot289}{2}=144\\cdot289=204^2=41616.\n\\]\nIts digit sum is \\(4+1+6+1+6=\\boxed{18}\\), choice \\(\\mathrm{D}\\).",
+      "directNodeIds": [
+        "cnm_h204",
+        "math:integer-diophantine-equations",
+        "math:prime-factorization"
+      ],
+      "sourceRef": "amc/2022_AMC_12A_Q16#coprime-factor-search"
+    },
+    {
+      "id": "integer-descent",
+      "title": "Generate every solution by descent",
+      "explanation": "Completing the square converts the triangular-square condition into an integer equation with a reversible step between solutions. Proving that step lets us find the next solution without skipping any.\n\nSuppose \\(t_n=y^2\\), where \\(y\\) is a positive integer. Then\n\\[\n\\frac{n(n+1)}2=y^2\n\\quad\\Longleftrightarrow\\quad\n(2n+1)^2-8y^2=1.\n\\]\nWrite \\(x=2n+1\\), so \\(x^2-8y^2=1\\).\n\nFor any solution with \\(y>1\\), define\n\\[\nx'=3x-8y,\\qquad y'=3y-x.\n\\]\nThese are integers, and expansion shows that\n\\[\n(x')^2-8(y')^2=x^2-8y^2=1.\n\\]\nThey are also positive. Indeed, \\(x^2=8y^2+1\\) gives\n\\[\n\\frac83y<x<3y\\qquad(y>1).\n\\]\nThe left inequality makes \\(x'>0\\), and the right makes \\(y'>0\\). Also \\(x>2y\\), so \\(y'=3y-x<y\\).\n\nThus this operation produces a solution with a smaller positive second coordinate. Repeating it must eventually reach \\(y=1\\), which forces \\(x=3\\). Moreover, \\(x'\\) stays odd, so each step still corresponds to an integer triangular-number index.\n\nThe inverse operation is\n\\[\n(x,y)\\longmapsto(3x+8y,\\ x+3y).\n\\]\nIt preserves the equation and increases \\(y\\). Since every positive solution descends to \\((3,1)\\), reversing the steps generates all solutions in increasing order:\n\\[\n\\begin{aligned}\n(3,1)&\\longmapsto(17,6)\\\\\n&\\longmapsto(99,35)\\\\\n&\\longmapsto(577,204).\n\\end{aligned}\n\\]\nTherefore the fourth square triangular number is \\(204^2=41616\\). Its digit sum is\n\\[\n4+1+6+1+6=\\boxed{18},\n\\]\nchoice \\(\\mathrm{D}\\).",
+      "directNodeIds": [
+        "cnm_h204",
+        "math:integer-diophantine-equations",
+        "cnm_h200"
+      ],
+      "sourceRef": "amc/2022_AMC_12A_Q16#integer-descent"
+    },
+    {
+      "id": "square-triangular-descent",
+      "title": "Generate solutions by integer descent",
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "cnm_h200"
+      ],
+      "sourceRef": "amc/2022_AMC_12A_Q16#square-triangular-descent"
+    }
+  ],
+  "sourceRef": "amc/2022_AMC_12A_Q16"
 }

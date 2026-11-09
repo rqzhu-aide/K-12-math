@@ -1,62 +1,64 @@
 {
-  "Year": 2020,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Algebra",
-  "Number": 17,
-  "Question": "How many polynomials of the form \\(x^5 + ax^4 + bx^3 + cx^2 + dx\\) \\(+ 2020,\\) where \\(a,\\) \\(b,\\) \\(c,\\) and \\(d\\) are real numbers, have the property that whenever \\(r\\) is a root, so is \\(\\dfrac{-1 + i\\sqrt3}{2}\\cdot r?\\) (Note that \\(i = \\sqrt{-1}.\\))",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(0\\)",
-    "B": "\\(1\\)",
-    "C": "\\(2\\)",
-    "D": "\\(3\\)",
-    "E": "\\(4\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.86",
-    "Concepts": "roots of unity; complex number; polynomial",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2020B/solutions",
-    "SourceSHA256": "7a8518eb82190575608f33e835bc9de283d48937d2df6622bac24ccb99e3153b",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2020_AMC_12B_Q17",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "How many polynomials of the form \\(x^5 + ax^4 + bx^3 + cx^2 + dx\\) \\(+ 2020,\\) where \\(a,\\) \\(b,\\) \\(c,\\) and \\(d\\) are real numbers, have the property that whenever \\(r\\) is a root, so is \\(\\dfrac{-1 + i\\sqrt3}{2}\\cdot r?\\) (Note that \\(i = \\sqrt{-1}.\\))",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(0\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(1\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(2\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(3\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(4\\)"
+      }
     ]
   },
-  "ID": "2020_AMC_12B_Q17",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:algebra"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "area": "Algebra",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:algebra"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:roots-of-unity",
+    "math:conjugate-polynomial-roots",
+    "math:polynomial-roots-coefficients"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "8314f6eed7cfc1272887545d94f4ef0ee38a55330b393292c35cea7a382c53c3",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:roots-of-unity",
-      "math:polynomial-roots-coefficients"
-    ],
-    "supportIds": [],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "root-triples-and-multiplicities",
+      "title": "Root triples and repeated roots",
+      "explanation": "The given multiplier has cube equal to \\(1\\), so it groups nonzero roots into triples. A degree-\\(5\\) polynomial can contain only one such triple, making repeated roots essential.\n\nWrite\n\\[\n\\omega=\\frac{-1+i\\sqrt3}{2}.\n\\]\nDirect calculation gives\n\\[\n\\omega^2=\\frac{-1-i\\sqrt3}{2},\\qquad\n\\omega^3=1,\\qquad \\omega+\\omega^2=-1.\n\\]\nLet \\(P\\) be a polynomial satisfying the conditions. Since \\(P(0)=2020\\), none of its roots is zero. Starting with any root \\(z\\), the stated property produces the three distinct roots\n\\[\nz,\\quad \\omega z,\\quad \\omega^2z.\n\\]\nAny root outside this triple would generate another disjoint triple: if the triples shared a member, multiplication by a suitable power of \\(\\omega\\) would show that they were the same triple. Six distinct roots are impossible for a degree-\\(5\\) polynomial. Thus \\(P\\) has exactly three distinct roots.\n\nReal coefficients imply \\(P(\\overline z)=\\overline{P(z)}\\), so nonreal roots occur in conjugate pairs. Among three distinct roots, at least one must therefore be real; call it \\(r\\). The root set is\n\\[\n\\{r,r\\omega,r\\omega^2\\}.\n\\]\nThe last two roots are conjugates and have equal multiplicities, since conjugating the factorization leaves \\(P\\) unchanged.\n\nA degree-\\(5\\) polynomial has five complex roots counted with multiplicity. If \\(r\\) has multiplicity \\(m\\), and each nonreal root has multiplicity \\(k\\), then\n\\[\nm+2k=5,\\qquad m,k\\ge1.\n\\]\nThe only possibilities are\n\\[\n(m,k)=(3,1)\\quad\\text{or}\\quad(1,2).\n\\]\nThe product of all five roots is\n\\[\nr^m(r\\omega)^k(r\\omega^2)^k=r^5,\n\\]\nsince \\(\\omega^{3k}=1\\). For a monic quintic, its constant term is the negative of that product. Consequently\n\\[\nr^5=-2020,\n\\]\nwhich fixes the unique real value \\(r=-\\sqrt[5]{2020}\\).\n\nBoth multiplicity patterns actually work. Using\n\\[\n(x-r\\omega)(x-r\\omega^2)=x^2+rx+r^2,\n\\]\nthey give\n\\[\n(x-r)^3(x^2+rx+r^2)\n\\quad\\text{and}\\quad\n(x-r)(x^2+rx+r^2)^2.\n\\]\nThese are distinct monic quintics with real coefficients, constant term \\(-r^5=2020\\), and the required root triple. Hence there are exactly \\(\\boxed{2}\\) polynomials, choice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "math:roots-of-unity",
+        "math:conjugate-polynomial-roots",
+        "math:polynomial-roots-coefficients",
+        "math:fundamental-theorem-algebra"
+      ],
+      "sourceRef": "amc/2020_AMC_12B_Q17#root-triples-and-multiplicities"
+    }
+  ],
+  "sourceRef": "amc/2020_AMC_12B_Q17"
 }

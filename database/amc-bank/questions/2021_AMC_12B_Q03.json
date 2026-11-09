@@ -1,78 +1,71 @@
 {
-  "Year": 2021,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Geometry",
-  "Number": 3,
-  "Question": "Suppose \\[2+\\cfrac{1}{1+\\cfrac{1}{2+\\cfrac{2}{3+x}}}=\\dfrac{144}{53}.\\]\n\nWhat is the value of \\(x?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{3}{4}\\)",
-    "B": "\\(\\dfrac{7}{8}\\)",
-    "C": "\\(\\dfrac{14}{15}\\)",
-    "D": "\\(\\dfrac{37}{38}\\)",
-    "E": "\\(\\dfrac{52}{53}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.54",
-    "Concepts": "continued fraction; work backwards",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2021B/solutions",
-    "SourceSHA256": "d2bc790b41807ac1b6b89c14f6fa855657cb9b6a641fc524d4fdf476ea4f9f4d",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2021_AMC_12B_Q03",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:geometry"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "198228dcd05598408fb58116dc358a3569853abe10ca13e89ef35c8ae83f0d51",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_165"
-    ],
-    "supportIds": [],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2021_AMC_12B_Q03",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Suppose \\[2+\\cfrac{1}{1+\\cfrac{1}{2+\\cfrac{2}{3+x}}}=\\dfrac{144}{53}.\\]\n\nWhat is the value of \\(x?\\)",
+    "choices": [
       {
-        "id": "undo-nested-operations",
-        "label": "Undo additions and reciprocals",
-        "nodeIds": [
-          "cnm_040",
-          "cnm_016"
-        ]
+        "id": "A",
+        "content": "\\(\\dfrac{3}{4}\\)"
       },
       {
-        "id": "simplify-and-clear-denominators",
-        "label": "Simplify the rational expression",
-        "nodeIds": [
-          "cnm_162",
-          "cnm_042"
-        ]
+        "id": "B",
+        "content": "\\(\\dfrac{7}{8}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac{14}{15}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac{37}{38}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac{52}{53}\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "A"
+    ]
+  },
+  "classification": {
+    "area": "Algebra",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:algebra"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_165"
+  ],
+  "solutions": [
+    {
+      "id": "undo-nested-operations",
+      "title": "Undo the outer layers",
+      "explanation": "The nested fraction can be opened one layer at a time by subtracting the outer constant and then taking reciprocals.\n\nFirst subtract \\(2\\):\n\\[\n\\frac{1}{1+\\frac{1}{2+\\frac{2}{3+x}}}\n=\\frac{144}{53}-2=\\frac{38}{53}.\n\\]\nTaking reciprocals and then subtracting \\(1\\) gives\n\\[\n\\frac{1}{2+\\frac{2}{3+x}}\n=\\frac{53}{38}-1=\\frac{15}{38}.\n\\]\nTake reciprocals again and subtract \\(2\\):\n\\[\n\\frac{2}{3+x}=\\frac{38}{15}-2=\\frac{8}{15}.\n\\]\nTherefore\n\\[\n3+x=\\frac{2\\cdot15}{8}=\\frac{15}{4},\n\\qquad\nx=\\frac{15}{4}-3=\\frac34.\n\\]\nThis positive value makes all the original denominators positive, so it is valid. The answer is \\(\\boxed{\\frac34}\\), choice \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "cnm_040",
+        "cnm_016"
+      ],
+      "sourceRef": "amc/2021_AMC_12B_Q03#undo-nested-operations"
+    },
+    {
+      "id": "simplify-and-clear-denominators",
+      "title": "Simplify from the inside out",
+      "explanation": "Combining the fractions from the inside out turns the entire left side into one rational expression, leaving a linear equation to solve.\n\nFor values where the original expression is defined,\n\\[\n2+\\frac{2}{x+3}=\\frac{2x+8}{x+3},\n\\]\nso the next denominator becomes\n\\[\n1+\\frac{1}{2+\\frac{2}{x+3}}\n=1+\\frac{x+3}{2x+8}\n=\\frac{3x+11}{2x+8}.\n\\]\nConsequently, the given equation simplifies to\n\\[\n2+\\frac{2x+8}{3x+11}\n=\\frac{8x+30}{3x+11}\n=\\frac{144}{53}.\n\\]\nMultiplying by the nonzero denominators gives\n\\[\n53(8x+30)=144(3x+11),\n\\]\nwhich expands to\n\\[\n424x+1590=432x+1584.\n\\]\nThus \\(8x=6\\), so \\(x=\\frac34\\). At this value every denominator in the original expression is positive, so the solution is valid. The answer is \\(\\boxed{\\frac34}\\), choice \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "cnm_162",
+        "cnm_165",
+        "cnm_042"
+      ],
+      "sourceRef": "amc/2021_AMC_12B_Q03#simplify-and-clear-denominators"
+    }
+  ],
+  "sourceRef": "amc/2021_AMC_12B_Q03"
 }

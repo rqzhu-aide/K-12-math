@@ -1,71 +1,63 @@
 {
-  "Year": 2020,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Algebra",
-  "Number": 9,
-  "Question": "How many solutions does the equation \\(\\tan(2x) = \\cos\\left(\\dfrac{x}{2}\\right)\\) have on the interval \\([0, 2\\pi]?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(1\\)",
-    "B": "\\(2\\)",
-    "C": "\\(3\\)",
-    "D": "\\(4\\)",
-    "E": "\\(5\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.97",
-    "Concepts": "trigonometry",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2020A/solutions",
-    "SourceSHA256": "a68eb9465bc973e0fc6d43b1ffd67c8c1fe4a1c69d65d1351fe3480281a0d817",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2020_AMC_12A_Q09",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "How many solutions does the equation \\(\\tan(2x) = \\cos\\left(\\dfrac{x}{2}\\right)\\) have on the interval \\([0, 2\\pi]?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(1\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(2\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(3\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(4\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(5\\)"
+      }
     ]
   },
-  "ID": "2020_AMC_12A_Q09",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:algebra"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "E"
+    ]
+  },
+  "classification": {
+    "area": "Algebra",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:algebra"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h049",
+    "math:tangent-branch-properties"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "ad6564c0d26ae50beb5071dc2f5db7dd39e592188461bac44d0b9c8590daff4a",
-    "status": "mapped",
-    "reviewStatus": "machine_adjudicated",
-    "assessedIds": [
-      "cnm_h049"
-    ],
-    "supportIds": [],
-    "routes": [
-      {
-        "id": "monotone-tangent-branches",
-        "label": "Count roots using tangent branches and sine monotonicity",
-        "nodeIds": [
-          "math:tangent-branch-properties",
-          "cnm_h064",
-          "cnm_h067"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "monotone-tangent-branches",
+      "title": "Count one crossing per branch",
+      "explanation": "Counting crossings is easier than finding the solutions themselves: tangent increases on each continuous branch, while the cosine expression decreases throughout the interval.\n\nThe function \\(\\tan(2x)\\) is undefined when \\(2x=\\pi/2+k\\pi\\), where \\(k\\) is an integer. In the given interval, the excluded values are\n\\[\n\\frac{\\pi}{4},\\quad\\frac{3\\pi}{4},\\quad\\frac{5\\pi}{4},\\quad\\frac{7\\pi}{4}.\n\\]\nBetween these values, tangent is continuous and strictly increasing.\n\nTo justify the other expression's behavior without calculus, write\n\\[\n\\cos\\left(\\frac{x}{2}\\right)=\\sin\\left(\\frac{\\pi-x}{2}\\right).\n\\]\nAs \\(x\\) increases from \\(0\\) to \\(2\\pi\\), the sine argument decreases from \\(\\pi/2\\) to \\(-\\pi/2\\). Sine is strictly increasing on that argument interval, so \\(\\cos(x/2)\\) is continuous and strictly decreasing from \\(1\\) to \\(-1\\).\n\nConsequently,\n\\[\nf(x)=\\tan(2x)-\\cos\\left(\\frac{x}{2}\\right)\n\\]\nis continuous and strictly increasing on each tangent branch. Its endpoint values or one-sided limits are as follows.\n\n| Interval | Left-end value or limit of \\(f\\) | Right-end value or limit of \\(f\\) |\n|---|---|---|\n| \\([0,\\pi/4)\\) | \\(-1\\) | \\(+\\infty\\) |\n| \\((\\pi/4,3\\pi/4)\\) | \\(-\\infty\\) | \\(+\\infty\\) |\n| \\((3\\pi/4,5\\pi/4)\\) | \\(-\\infty\\) | \\(+\\infty\\) |\n| \\((5\\pi/4,7\\pi/4)\\) | \\(-\\infty\\) | \\(+\\infty\\) |\n| \\((7\\pi/4,2\\pi]\\) | \\(-\\infty\\) | \\(1\\) |\n\nThe infinite limits follow because tangent becomes unbounded near its asymptotes while cosine stays between \\(-1\\) and \\(1\\). Thus each interval contains points where \\(f\\) is negative and positive. Continuity guarantees a zero between them, and strict increase guarantees that it is the only zero in that interval.\n\nThe five intervals cover every allowed input, so there are \\(\\boxed{5}\\) solutions, choice \\(\\textbf{E}\\).",
+      "directNodeIds": [
+        "math:tangent-branch-properties",
+        "cnm_h049",
+        "cnm_h064",
+        "cnm_h067"
+      ],
+      "sourceRef": "amc/2020_AMC_12A_Q09#monotone-tangent-branches"
+    }
+  ],
+  "sourceRef": "amc/2020_AMC_12A_Q09"
 }

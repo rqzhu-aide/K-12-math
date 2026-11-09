@@ -1,64 +1,73 @@
 {
-  "Year": 2019,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 13,
-  "Question": "How many ways are there to paint each of the integers \\(2,\\) \\(3,\\) \\(\\ldots,\\) \\(9\\) either red, green, or blue so that each number has a different color from each of its proper divisors?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(144\\)",
-    "B": "\\(216\\)",
-    "C": "\\(256\\)",
-    "D": "\\(384\\)",
-    "E": "\\(432\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "graph theory; divisibility; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2019A/solutions",
-    "SourceSHA256": "2ef8020f0812f33b73f055ce7dc57d54b70f1e7a9010597534e8e2e616d80a2b",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2019_AMC_12A_Q13",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "How many ways are there to paint each of the integers \\(2,\\) \\(3,\\) \\(\\ldots,\\) \\(9\\) either red, green, or blue so that each number has a different color from each of its proper divisors?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(144\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(216\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(256\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(384\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(432\\)"
+      }
     ]
   },
-  "ID": "2019_AMC_12A_Q13",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "0587321ab2689f47fe772531128157ae420f5a702445a0c3e99a3bd43a309416",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:graph-coloring"
-    ],
-    "supportIds": [
-      "cnm_p153",
-      "cnm_h231"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "E"
+    ]
+  },
+  "classification": {
+    "level": "AMC 12",
+    "area": "Counting & Probability",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:graph-coloring"
+  ],
+  "solutions": [
+    {
+      "id": "choose-a-coloring-order",
+      "title": "Choose a helpful coloring order",
+      "explanation": "Coloring \\(6\\) before \\(3\\) makes the number of choices at every step constant, so we can count by multiplication.\n\nAmong the numbers being painted, the complete list of divisor pairs that must receive different colors is\n\\[\n(2,4),\\ (2,6),\\ (2,8),\\ (3,6),\\ (3,9),\\ (4,8).\n\\]\nThe number \\(1\\) is not being painted. In particular, \\(2,4,8\\) must have three different colors, while \\(5\\) and \\(7\\) have no restrictions.\n\nUse the following order:\n\n| Number painted | Choices | Reason |\n|---|---:|---|\n| \\(2\\) | \\(3\\) | Any color is allowed. |\n| \\(4\\) | \\(2\\) | It must differ from \\(2\\). |\n| \\(8\\) | \\(1\\) | It must differ from both \\(2\\) and \\(4\\). |\n| \\(6\\) | \\(2\\) | It must differ from \\(2\\); \\(3\\) is still unpainted. |\n| \\(3\\) | \\(2\\) | It must differ from \\(6\\). |\n| \\(9\\) | \\(2\\) | It must differ from \\(3\\). |\n| \\(5\\) and \\(7\\) | \\(3^2\\) | Each can receive any color. |\n\nEvery listed restriction is enforced when the second number in its pair is painted. Each final coloring arises from exactly one sequence of these choices. Therefore the total is\n\\[\n3\\cdot2\\cdot1\\cdot2\\cdot2\\cdot2\\cdot3^2=432.\n\\]\nThe answer is \\(\\boxed{432}\\), choice \\(\\text{E}\\).",
+      "directNodeIds": [
+        "math:graph-coloring",
+        "cnm_p153",
+        "cnm_h231"
+      ],
+      "sourceRef": "amc/2019_AMC_12A_Q13#choose-a-coloring-order"
+    },
+    {
+      "id": "split-by-colors-of-two-and-three",
+      "title": "Compare the colors of 2 and 3",
+      "explanation": "The choices for \\(6\\) depend on whether \\(2\\) and \\(3\\) have the same color, so those two possibilities give useful cases.\n\nWithin the painted set, the restrictions are that \\(2,4,8\\) have pairwise different colors, \\(6\\) differs from both \\(2\\) and \\(3\\), and \\(9\\) differs from \\(3\\). The numbers \\(5\\) and \\(7\\) are unrestricted because they have no proper divisors or multiples in the set.\n\nFirst count the colorings of \\(2,3,6\\):\n\n| Colors of \\(2\\) and \\(3\\) | Choices for \\((2,3)\\) | Choices for \\(6\\) | Colorings of \\((2,3,6)\\) |\n|---|---:|---:|---:|\n| Same | \\(3\\) | \\(2\\) | \\(6\\) |\n| Different | \\(3\\cdot2=6\\) | \\(1\\) | \\(6\\) |\n\nIn the first row, one color is chosen for both \\(2\\) and \\(3\\), leaving two colors for \\(6\\). In the second row, \\(2\\) and \\(3\\) use two colors, forcing \\(6\\) to use the third. These cases are disjoint and cover every possibility, giving \\(6+6=12\\) colorings of the triple.\n\nFor each such coloring, \\(4\\) has two choices, after which \\(8\\) is forced to use the color different from those of \\(2\\) and \\(4\\). Independently, \\(9\\) has two choices, and \\(5\\) and \\(7\\) each have three. Thus every coloring is counted exactly once, and the total is\n\\[\n12\\cdot2\\cdot1\\cdot2\\cdot3\\cdot3=432.\n\\]\nThe answer is \\(\\boxed{432}\\), choice \\(\\text{E}\\).",
+      "directNodeIds": [
+        "math:graph-coloring",
+        "cnm_p153",
+        "cnm_h231",
+        "cnm_h230"
+      ],
+      "sourceRef": "amc/2019_AMC_12A_Q13#split-by-colors-of-two-and-three"
+    }
+  ],
+  "sourceRef": "amc/2019_AMC_12A_Q13"
 }

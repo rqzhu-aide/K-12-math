@@ -1,63 +1,61 @@
 {
-  "Year": 2019,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 17,
-  "Question": "Let \\(s_k\\) denote the sum of the \\(k\\)th powers of the roots of the polynomial \\(x^3 - 5x^2 + 8x - 13.\\) In particular, \\(s_0 = 3,\\) \\(s_1 = 5,\\) and \\(s_2 = 9.\\) Let \\(a,\\) \\(b,\\) and \\(c\\) be real numbers such that \\(s_{k+1} = a\\,s_k + b\\,s_{k-1} + c\\,s_{k-2}\\) for \\(k = 2,\\) \\(3,\\) \\(\\ldots.\\) What is \\(a + b + c?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(-6\\)",
-    "B": "\\(0\\)",
-    "C": "\\(6\\)",
-    "D": "\\(10\\)",
-    "E": "\\(26\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "Newton’s Sums; polynomial; recursion",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2019A/solutions",
-    "SourceSHA256": "2ef8020f0812f33b73f055ce7dc57d54b70f1e7a9010597534e8e2e616d80a2b",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2019_AMC_12A_Q17",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Let \\(s_k\\) denote the sum of the \\(k\\)th powers of the roots of the polynomial \\(x^3 - 5x^2 + 8x - 13.\\) In particular, \\(s_0 = 3,\\) \\(s_1 = 5,\\) and \\(s_2 = 9.\\) Let \\(a,\\) \\(b,\\) and \\(c\\) be real numbers such that \\(s_{k+1} = a\\,s_k + b\\,s_{k-1} + c\\,s_{k-2}\\) for \\(k = 2,\\) \\(3,\\) \\(\\ldots.\\) What is \\(a + b + c?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(-6\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(0\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(6\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(10\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(26\\)"
+      }
     ]
   },
-  "ID": "2019_AMC_12A_Q17",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "000f015806e1ccbdd20c6f5b9aa8a6e144e9752e01fc13bde5a1ee131d8f846c",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:polynomial-roots-coefficients"
-    ],
-    "supportIds": [
-      "cnm_h200"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "level": "AMC 12",
+    "area": "Algebra",
+    "domainIds": [
+      "domain:algebra"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:polynomial-roots-coefficients"
+  ],
+  "solutions": [
+    {
+      "id": "sum-root-equations",
+      "title": "Use the equation each root satisfies",
+      "explanation": "Each root satisfies the cubic equation, so its higher powers can be rewritten using the previous three powers. Adding these identities will produce the required recurrence.\n\nWrite the roots, counted with multiplicity, as \\(r_1,r_2,r_3\\). For any one of these roots \\(r\\),\n\\[\nr^3=5r^2-8r+13.\n\\]\nMultiplying by \\(r^{k-2}\\), for \\(k\\ge2\\), gives\n\\[\nr^{k+1}=5r^k-8r^{k-1}+13r^{k-2}.\n\\]\nAdding this equation for the three roots yields\n\\[\ns_{k+1}=5s_k-8s_{k-1}+13s_{k-2}.\n\\]\nThus \\((5,-8,13)\\) is a triple of coefficients that works for every required index.\n\nTo verify that these coefficients are forced, first use this recurrence and the given initial values to obtain\n\\[\ns_3=44,\\qquad s_4=213,\\qquad s_5=830.\n\\]\nIf another triple worked, let \\(u,v,w\\) be its differences from \\(5,-8,13\\). Subtracting the two recurrences at \\(k=2,3,4\\) gives\n\\[\n\\begin{aligned}\n9u+5v+3w&=0,\\\\\n44u+9v+5w&=0,\\\\\n213u+44v+9w&=0.\n\\end{aligned}\n\\]\nThree times the second equation minus five times the first gives \\(87u+2v=0\\). The third minus three times the first gives \\(186u+29v=0\\). Multiplying these last two equations by \\(29\\) and \\(2\\), respectively, and subtracting gives \\(2151u=0\\). Therefore \\(u=v=w=0\\), proving uniqueness.\n\nConsequently\n\\[\n\\boxed{a+b+c=5-8+13=10},\n\\]\nchoice \\(\\mathrm{D}\\).",
+      "directNodeIds": [
+        "math:polynomial-roots-coefficients",
+        "cnm_h200",
+        "cnm_093"
+      ],
+      "sourceRef": "amc/2019_AMC_12A_Q17#sum-root-equations"
+    }
+  ],
+  "sourceRef": "amc/2019_AMC_12A_Q17"
 }

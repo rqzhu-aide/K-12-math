@@ -1,67 +1,75 @@
 {
-  "Year": 2020,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Counting & Probability",
-  "Number": 16,
-  "Question": "A point is chosen at random within the square in the coordinate plane whose vertices are \\((0, 0),\\) \\((2020, 0),\\) \\((2020, 2020),\\) and \\((0, 2020).\\) The probability that the point is within \\(d\\) units of a lattice point is \\(\\tfrac12.\\) (A point \\((x, y)\\) is a lattice point if \\(x\\) and \\(y\\) are both integers.) What is \\(d\\) to the nearest tenth?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(0.3\\)",
-    "B": "\\(0.4\\)",
-    "C": "\\(0.5\\)",
-    "D": "\\(0.6\\)",
-    "E": "\\(0.7\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.50",
-    "Concepts": "geometric probability; circle area; lattice point",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2020A/solutions",
-    "SourceSHA256": "a68eb9465bc973e0fc6d43b1ffd67c8c1fe4a1c69d65d1351fe3480281a0d817",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2020_AMC_12A_Q16",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "A point is chosen at random within the square in the coordinate plane whose vertices are \\((0, 0),\\) \\((2020, 0),\\) \\((2020, 2020),\\) and \\((0, 2020).\\) The probability that the point is within \\(d\\) units of a lattice point is \\(\\tfrac12.\\) (A point \\((x, y)\\) is a lattice point if \\(x\\) and \\(y\\) are both integers.) What is \\(d\\) to the nearest tenth?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(0.3\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(0.4\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(0.5\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(0.6\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(0.7\\)"
+      }
     ]
   },
-  "ID": "2020_AMC_12A_Q16",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:geometric-probability"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "41c1a99925831910d327aae8c1c5bdeb0bf2b8bf8240bcf9fbe420b512c03fea",
-    "status": "mapped",
-    "reviewStatus": "machine_adjudicated",
-    "assessedIds": [
-      "math:geometric-probability"
-    ],
-    "supportIds": [
-      "cnm_p192",
-      "cnm_p089",
-      "cnm_p121"
-    ],
-    "routes": [],
-    "flags": [
-      "uniform_area_sampling_convention_explicit"
-    ]
-  }
+  "solutions": [
+    {
+      "id": "unit-square-areas",
+      "title": "Use one unit square",
+      "explanation": "The same lattice pattern appears in every unit square, so we can reduce the probability calculation to one cell.\n\nInterpret the random choice as uniform with respect to area. The large square contains \\(2020^2\\) unit squares, with boundaries of zero area.\n\nFirst consider a radius \\(r\\) with \\(0\\le r\\le\\tfrac12\\). Inside each unit square, the favorable region consists of four quarter-disks centered at its corners. Other lattice points are at least one unit from the cell. Distinct lattice points are at least one unit apart, so these quarter-disks have disjoint interiors. Their total area is\n\\[\n4\\left(\\frac14\\pi r^2\\right)=\\pi r^2.\n\\]\nThis description also holds for cells along the large square's boundary. Therefore the probability is\n\\[\n\\frac{2020^2\\pi r^2}{2020^2}=\\pi r^2.\n\\]\nAt \\(r=\\tfrac12\\), this probability is \\(\\pi/4>\\tfrac12\\). Increasing the radius only enlarges the favorable region, so the required \\(d\\) must be less than \\(\\tfrac12\\). Thus our formula applies:\n\\[\n\\pi d^2=\\frac12,\n\\qquad d=\\sqrt{\\frac1{2\\pi}}\\approx0.3989.\n\\]\nTo the nearest tenth, the answer is \\(\\boxed{0.4}\\), choice \\(\\boxed{\\text{B}}\\).",
+      "directNodeIds": [
+        "math:geometric-probability",
+        "cnm_p192",
+        "cnm_p089",
+        "cnm_p121"
+      ],
+      "sourceRef": "amc/2020_AMC_12A_Q16#unit-square-areas"
+    },
+    {
+      "id": "count-boundary-disk-pieces",
+      "title": "Count whole and partial disks",
+      "explanation": "We can handle the boundary directly by counting how much of each disk lies inside the square.\n\nLet \\(N=2020\\), and initially take \\(0\\le r\\le\\tfrac12\\). Disks of radius \\(r\\) centered at distinct lattice points have disjoint interiors, since their centers are at least one unit apart. Lattice points outside the square contribute nothing, since they are at least one unit from it.\n\nThe disk pieces inside the square fall into three disjoint categories:\n\n| Location of center | Number of centers | Fraction of each disk inside |\n|---|---:|---:|\n| Interior | \\((N-1)^2\\) | \\(1\\) |\n| Side, excluding corners | \\(4(N-1)\\) | \\(\\tfrac12\\) |\n| Corner | \\(4\\) | \\(\\tfrac14\\) |\n\nThere are \\(N-1\\) possible interior integer coordinates in each direction. Likewise, each side has \\(N-1\\) lattice points after its corners are excluded. These categories include every lattice point in the square exactly once.\n\nConsequently, the covered area is\n\\[\n\\begin{aligned}\n\\left((N-1)^2+\\frac{4(N-1)}2+\\frac44\\right)\\pi r^2\n&=\\left((N-1)^2+2(N-1)+1\\right)\\pi r^2\\\\\n&=N^2\\pi r^2.\n\\end{aligned}\n\\]\nFor uniform area sampling, dividing by \\(N^2\\) gives probability \\(\\pi r^2\\).\n\nAt radius \\(\\tfrac12\\), the probability is \\(\\pi/4>\\tfrac12\\). Coverage cannot decrease as the radius increases, so the required radius is less than \\(\\tfrac12\\). Therefore\n\\[\n\\pi d^2=\\frac12\n\\quad\\Longrightarrow\\quad\n d=\\frac1{\\sqrt{2\\pi}}\\approx0.3989.\n\\]\nThe requested rounded value is \\(\\boxed{0.4}\\), choice \\(\\boxed{\\text{B}}\\).",
+      "directNodeIds": [
+        "math:geometric-probability",
+        "math:lattice-counting",
+        "cnm_p192",
+        "cnm_p089",
+        "cnm_p121"
+      ],
+      "sourceRef": "amc/2020_AMC_12A_Q16#count-boundary-disk-pieces"
+    }
+  ],
+  "sourceRef": "amc/2020_AMC_12A_Q16"
 }

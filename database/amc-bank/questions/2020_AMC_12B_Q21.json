@@ -1,64 +1,74 @@
 {
-  "Year": 2020,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 21,
-  "Question": "How many positive integers \\(n\\) satisfy\n\n\\[\\frac{n + 1000}{70} = \\lfloor \\sqrt{n} \\rfloor?\\]\n\n(Recall that \\(\\lfloor x \\rfloor\\) is the greatest integer not exceeding \\(x.\\))",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(2\\)",
-    "B": "\\(4\\)",
-    "C": "\\(6\\)",
-    "D": "\\(30\\)",
-    "E": "\\(32\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.47",
-    "Concepts": "floor and ceiling functions; substitution; inequality",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2020B/solutions",
-    "SourceSHA256": "7a8518eb82190575608f33e835bc9de283d48937d2df6622bac24ccb99e3153b",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2020_AMC_12B_Q21",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "How many positive integers \\(n\\) satisfy\n\n\\[\\frac{n + 1000}{70} = \\lfloor \\sqrt{n} \\rfloor?\\]\n\n(Recall that \\(\\lfloor x \\rfloor\\) is the greatest integer not exceeding \\(x.\\))",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(2\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(4\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(6\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(30\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(32\\)"
+      }
     ]
   },
-  "ID": "2020_AMC_12B_Q21",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "area": "Algebra",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:algebra"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:floor-ceiling",
+    "math:integer-diophantine-equations"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "6a4c58ea35025a639ca71bce092248ae15279f42133d91ad02c91c368410aff5",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:floor-ceiling",
-      "math:integer-diophantine-equations"
-    ],
-    "supportIds": [
-      "cnm_h024"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "integer-square-bounds",
+      "title": "Use the floor value as a variable",
+      "explanation": "Using the integer floor value as the variable turns the equation into exact bounds between consecutive squares.\n\nLet \\(k=\\lfloor\\sqrt n\\rfloor\\), a nonnegative integer. The equation gives\n\\[\nn=70k-1000,\n\\]\nand the floor condition is exactly\n\\[\nk^2\\le n<(k+1)^2.\n\\]\nSubstituting for \\(n\\) in the lower bound gives\n\\[\n\\begin{aligned}\nk^2&\\le70k-1000,\\\\\nk^2-70k+1000&\\le0,\\\\\n(k-35)^2&\\le225.\n\\end{aligned}\n\\]\nHence \\(20\\le k\\le50\\).\n\nThe strict upper bound gives\n\\[\n\\begin{aligned}\n70k-1000&<(k+1)^2,\\\\\nk^2-68k+1001&>0,\\\\\n(k-34)^2&>155.\n\\end{aligned}\n\\]\nSince \\(k-34\\) is an integer and\n\\[\n12^2=144<155<169=13^2,\n\\]\nwe must have \\(|k-34|\\ge13\\). Thus \\(k\\le21\\) or \\(k\\ge47\\).\n\nCombining the restrictions yields exactly\n\\[\nk=20,21,47,48,49,50.\n\\]\nThrough \\(n=70k-1000\\), these give\n\\[\nn=400,470,2290,2360,2430,2500.\n\\]\nAll are positive and distinct. Since the inequalities used are equivalent to the floor condition, all six satisfy the original equation, and no others can.\n\nThe number of solutions is \\(\\boxed{6}\\), choice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "math:floor-ceiling",
+        "math:integer-diophantine-equations",
+        "math:completing-square-expression",
+        "cnm_h020"
+      ],
+      "sourceRef": "amc/2020_AMC_12B_Q21#integer-square-bounds"
+    },
+    {
+      "id": "square-gap-finite-check",
+      "title": "Bound the gap above a square",
+      "explanation": "An integer with floor square root \\(k\\) lies only a bounded distance above \\(k^2\\). We can use this gap to eliminate most possibilities before checking a short list.\n\nLet \\(k=\\lfloor\\sqrt n\\rfloor\\) and write\n\\[\nn=k^2+r,\n\\]\nwhere \\(r\\) is an integer. The next square is \\(k^2+2k+1\\), so the floor condition is exactly\n\\[\n0\\le r\\le2k.\n\\]\nThe original equation becomes \\(k^2+r+1000=70k\\), giving\n\\[\nr=70k-1000-k^2=(k-20)(50-k).\n\\]\nThis product is negative outside \\(20\\le k\\le50\\), so only that interval is possible. In particular,\n\\[\nr\\le2k\\le100.\n\\]\n\nWe can exclude the entire interval \\(24\\le k\\le46\\). Write \\(k=24+u\\), where \\(0\\le u\\le22\\). Then\n\\[\nr=(4+u)(26-u)=104+u(22-u)\\ge104,\n\\]\ncontradicting \\(r\\le100\\).\n\nThe eight remaining integers can be checked directly using the required gap \\(r=(k-20)(50-k)\\).\n\n| \\(k\\) | Required \\(r\\) | Maximum \\(2k\\) | Valid? |\n|---|---:|---:|---|\n| \\(20\\) | \\(0\\) | \\(40\\) | Yes |\n| \\(21\\) | \\(29\\) | \\(42\\) | Yes |\n| \\(22\\) | \\(56\\) | \\(44\\) | No |\n| \\(23\\) | \\(81\\) | \\(46\\) | No |\n| \\(47\\) | \\(81\\) | \\(94\\) | Yes |\n| \\(48\\) | \\(56\\) | \\(96\\) | Yes |\n| \\(49\\) | \\(29\\) | \\(98\\) | Yes |\n| \\(50\\) | \\(0\\) | \\(100\\) | Yes |\n\nExactly six values satisfy the gap condition. Each determines one positive integer \\(n=70k-1000\\), and different values of \\(k\\) give different integers \\(n\\). All other possibilities have been excluded.\n\nThus there are \\(\\boxed{6}\\) solutions, choice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "math:floor-ceiling",
+        "math:integer-diophantine-equations",
+        "cnm_h020"
+      ],
+      "sourceRef": "amc/2020_AMC_12B_Q21#square-gap-finite-check"
+    }
+  ],
+  "sourceRef": "amc/2020_AMC_12B_Q21"
 }

@@ -1,79 +1,91 @@
 {
-  "Year": 2019,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 15,
-  "Question": "Positive real numbers \\(a\\) and \\(b\\) have the property that\n\n\\[ \\begin{aligned} &\\sqrt{\\log a} + \\sqrt{\\log b} \\\\ &\\quad {}+ \\log \\sqrt{a} + \\log \\sqrt{b} = 100 \\end{aligned} \\]\n\nand all four terms on the left are positive integers, where \\(\\log\\) denotes the base \\(10\\) logarithm. What is \\(ab?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(10^{52}\\)",
-    "B": "\\(10^{100}\\)",
-    "C": "\\(10^{144}\\)",
-    "D": "\\(10^{164}\\)",
-    "E": "\\(10^{200}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "logarithm; Diophantine Equation; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2019A/solutions",
-    "SourceSHA256": "2ef8020f0812f33b73f055ce7dc57d54b70f1e7a9010597534e8e2e616d80a2b",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2019_AMC_12A_Q15",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "bf6da82d1123ea0e1da8c5a8964ce35cd22730ee3c3fc08ef86105d4a6fba02c",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h044",
-      "math:integer-diophantine-equations"
-    ],
-    "supportIds": [
-      "cnm_h043"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2019_AMC_12A_Q15",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Positive real numbers \\(a\\) and \\(b\\) have the property that\n\n\\[ \\begin{aligned} &\\sqrt{\\log a} + \\sqrt{\\log b} \\\\ &\\quad {}+ \\log \\sqrt{a} + \\log \\sqrt{b} = 100 \\end{aligned} \\]\n\nand all four terms on the left are positive integers, where \\(\\log\\) denotes the base \\(10\\) logarithm. What is \\(ab?\\)",
+    "choices": [
       {
-        "id": "complete-square-enumeration",
-        "label": "Complete squares and enumerate",
-        "nodeIds": [
-          "math:completing-square-expression"
-        ]
+        "id": "A",
+        "content": "\\(10^{52}\\)"
       },
       {
-        "id": "modulo-five-restriction",
-        "label": "Restrict integer values modulo 5",
-        "nodeIds": [
-          "math:modular-congruence"
-        ]
+        "id": "B",
+        "content": "\\(10^{100}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(10^{144}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(10^{164}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(10^{200}\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "level": "AMC 12",
+    "area": "Algebra",
+    "domainIds": [
+      "domain:algebra"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h044",
+    "math:integer-diophantine-equations"
+  ],
+  "solutions": [
+    {
+      "id": "bounded-integer-search",
+      "title": "Turn logarithms into integers",
+      "explanation": "The integer square-root terms make the logarithms perfect squares, and the other two integer terms force those square roots to be even.\n\nSet\n\\[\np=\\sqrt{\\log a},\\qquad q=\\sqrt{\\log b}.\n\\]\nThen \\(p,q\\) are positive integers, and the logarithm power rule gives\n\\[\n\\log\\sqrt a=\\frac{p^2}{2},\\qquad\n\\log\\sqrt b=\\frac{q^2}{2}.\n\\]\nBecause these are integers, \\(p\\) and \\(q\\) must be even: the square of an odd integer is odd. Write \\(p=2m\\) and \\(q=2n\\), where \\(m,n\\) are positive integers. The given equation becomes\n\\[\n2m+2n+2m^2+2n^2=100,\n\\]\nso\n\\[\nm(m+1)+n(n+1)=50.\n\\]\nNeither variable can exceed \\(6\\), since \\(7\\cdot8>50\\). The complete list of possible summands is\n\n| \\(t\\) | 1 | 2 | 3 | 4 | 5 | 6 |\n|---|---|---|---|---|---|---|\n| \\(t(t+1)\\) | 2 | 6 | 12 | 20 | 30 | 42 |\n\nThe only two entries that sum to \\(50\\) are \\(20\\) and \\(30\\). Thus \\(\\{m,n\\}=\\{4,5\\}\\), and\n\\[\n\\log(ab)=\\log a+\\log b\n=4m^2+4n^2\n=4(16+25)=164.\n\\]\nThe four original terms are then \\(8,10,32,50\\), in some order within their respective pairs, and they sum to \\(100\\). Therefore\n\\[\n\\boxed{ab=10^{164}},\n\\]\nchoice \\(\\mathrm{D}\\).",
+      "directNodeIds": [
+        "cnm_h043",
+        "cnm_h044",
+        "math:integer-diophantine-equations"
+      ],
+      "sourceRef": "amc/2019_AMC_12A_Q15#bounded-integer-search"
+    },
+    {
+      "id": "odd-squares-modulo-five",
+      "title": "Use odd squares modulo 5",
+      "explanation": "Completing squares turns the condition into a sum of two odd squares, and their remainders modulo \\(5\\) leave very few possibilities.\n\nLet \\(p=\\sqrt{\\log a}\\) and \\(q=\\sqrt{\\log b}\\). Both are positive integers. Since\n\\[\n\\log\\sqrt a=\\frac{p^2}{2},\\qquad\n\\log\\sqrt b=\\frac{q^2}{2}\n\\]\nare also integers, \\(p\\) and \\(q\\) are even. Multiplying the original equation by \\(2\\) and completing squares gives\n\\[\np^2+2p+q^2+2q=200,\n\\]\n\\[\n(p+1)^2+(q+1)^2=202.\n\\]\nPut \\(u=p+1\\) and \\(v=q+1\\). These are odd integers at least \\(3\\). Since each square is at most \\(202-3^2=193\\), each variable belongs to\n\\[\n\\{3,5,7,9,11,13\\}.\n\\]\nAn integer square has remainder \\(0,1\\), or \\(4\\) upon division by \\(5\\): these come from squaring remainders \\(0,\\pm1,\\pm2\\). Because \\(202\\) has remainder \\(2\\), both \\(u^2\\) and \\(v^2\\) must have remainder \\(1\\), the only way two square remainders can sum to \\(2\\) modulo \\(5\\).\n\nAmong the six candidates, only \\(9\\) and \\(11\\) have squares with remainder \\(1\\). Moreover,\n\\[\n9^2+11^2=202,\n\\]\nwhile using either value twice gives \\(162\\) or \\(242\\). Consequently \\(\\{u,v\\}=\\{9,11\\}\\), so \\(\\{p,q\\}=\\{8,10\\}\\). Hence\n\\[\n\\log(ab)=p^2+q^2=64+100=164,\n\\]\nand\n\\[\n\\boxed{ab=10^{164}},\n\\]\nchoice \\(\\mathrm{D}\\).",
+      "directNodeIds": [
+        "cnm_h043",
+        "cnm_h044",
+        "math:completing-square-expression",
+        "math:modular-congruence",
+        "math:integer-diophantine-equations"
+      ],
+      "sourceRef": "amc/2019_AMC_12A_Q15#odd-squares-modulo-five"
+    },
+    {
+      "id": "complete-square-enumeration",
+      "title": "Complete squares and enumerate",
+      "directNodeIds": [
+        "math:completing-square-expression"
+      ],
+      "sourceRef": "amc/2019_AMC_12A_Q15#complete-square-enumeration"
+    },
+    {
+      "id": "modulo-five-restriction",
+      "title": "Restrict integer values modulo 5",
+      "directNodeIds": [
+        "math:modular-congruence"
+      ],
+      "sourceRef": "amc/2019_AMC_12A_Q15#modulo-five-restriction"
+    }
+  ],
+  "sourceRef": "amc/2019_AMC_12A_Q15"
 }

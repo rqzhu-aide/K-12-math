@@ -1,71 +1,76 @@
 {
-  "Year": 2024,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Algebra",
-  "Number": 11,
-  "Question": "Let \\(x_n = \\sin^2(n^\\circ).\\) What is the mean of \\(x_1,\\) \\(x_2,\\) \\(x_3,\\) \\(\\ldots,\\) \\(x_{90}?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{11}{45}\\)",
-    "B": "\\(\\dfrac{22}{45}\\)",
-    "C": "\\(\\dfrac{89}{180}\\)",
-    "D": "\\(\\dfrac{1}{2}\\)",
-    "E": "\\(\\dfrac{91}{180}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.69",
-    "Concepts": "trigonometric identity; mean; symmetry",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2024B/solutions",
-    "SourceSHA256": "d4c4afd69ead6e9babb327526e913666b05a6c9bb5b0632e9ea7809ec564c295",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2024_AMC_12B_Q11",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Let \\(x_n = \\sin^2(n^\\circ).\\) What is the mean of \\(x_1,\\) \\(x_2,\\) \\(x_3,\\) \\(\\ldots,\\) \\(x_{90}?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(\\dfrac{11}{45}\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(\\dfrac{22}{45}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac{89}{180}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac{1}{2}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac{91}{180}\\)"
+      }
     ]
   },
-  "ID": "2024_AMC_12B_Q11",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:algebra"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "E"
+    ]
+  },
+  "classification": {
+    "area": "Algebra",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:algebra"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h064",
+    "cnm_h062",
+    "cnm_211"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "a2bbaacfeae24058b6b1e86ed79768086f4f6ab8bde6236a1481ed1e00f23561",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_211"
-    ],
-    "supportIds": [],
-    "routes": [
-      {
-        "id": "complementary-angle-pairing",
-        "label": "Pair complementary angles",
-        "nodeIds": [
-          "cnm_h064",
-          "cnm_h062",
-          "cnm_h060"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "complementary-angle-pairing",
+      "title": "Pair complementary angles",
+      "explanation": "Complementary angles have squared sines that add to \\(1\\), so most terms can be paired without evaluating them individually.\n\nFor \\(1\\le n\\le89\\),\n\\[\nx_n+x_{90-n}\n=\\sin^2(n^\\circ)+\\cos^2(n^\\circ)\n=1.\n\\]\nThe pairs \\((1,89),(2,88),\\ldots,(44,46)\\) are disjoint and account for \\(88\\) terms. They contribute \\(44\\), leaving only \\(x_{45}\\) and \\(x_{90}\\).\n\nThe same identity with \\(n=45\\) gives \\(2x_{45}=1\\), while \\(x_{90}=\\sin^2 90^\\circ=1\\). Thus\n\\[\nx_1+x_2+\\cdots+x_{90}\n=44+\\frac12+1\n=\\frac{91}{2}.\n\\]\nDividing by the original \\(90\\) terms, the mean is\n\\[\n\\frac{91/2}{90}=\\boxed{\\frac{91}{180}},\n\\]\nchoice \\(\\boxed{\\text{E}}\\).",
+      "directNodeIds": [
+        "cnm_h064",
+        "cnm_h062",
+        "cnm_h060",
+        "cnm_211"
+      ],
+      "sourceRef": "amc/2024_AMC_12B_Q11#complementary-angle-pairing"
+    },
+    {
+      "id": "double-angle-cancellation",
+      "title": "Convert to a cosine sum",
+      "explanation": "The double-angle identity converts each squared sine into a constant and a cosine. The resulting cosine terms cancel in pairs.\n\nLet \\(S=x_1+x_2+\\cdots+x_{90}\\). From \\(\\cos(2\\theta)=1-2\\sin^2\\theta\\), we have\n\\[\nS=45-\\frac12\\left(\\cos2^\\circ+\\cos4^\\circ+\\cdots+\\cos180^\\circ\\right).\n\\]\nFor \\(k=1,2,\\ldots,44\\),\n\\[\n\\cos(2k^\\circ)+\\cos\\bigl((180-2k)^\\circ\\bigr)=0,\n\\]\nbecause cosines of supplementary angles are opposites. These pairs cover every term except \\(\\cos90^\\circ=0\\) and \\(\\cos180^\\circ=-1\\). The cosine sum is therefore \\(-1\\), so\n\\[\nS=45-\\frac12(-1)=\\frac{91}{2}.\n\\]\nThe mean of the \\(90\\) terms is\n\\[\n\\frac{S}{90}=\\boxed{\\frac{91}{180}},\n\\]\nchoice \\(\\boxed{\\text{E}}\\).",
+      "directNodeIds": [
+        "cnm_h073",
+        "cnm_h064",
+        "cnm_h060",
+        "cnm_211"
+      ],
+      "sourceRef": "amc/2024_AMC_12B_Q11#double-angle-cancellation"
+    }
+  ],
+  "sourceRef": "amc/2024_AMC_12B_Q11"
 }

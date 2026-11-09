@@ -1,65 +1,75 @@
 {
-  "Year": 2021,
-  "Level": "AMC 12",
-  "Batch": "Fall A",
-  "Area": "Algebra",
-  "Number": 19,
-  "Question": "Let \\(x\\) be the least real number greater than \\(1\\) such that \\(\\sin(x) = \\sin(x^2),\\) where the arguments are in degrees. What is \\(x\\) rounded up to the closest integer?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(10\\)",
-    "B": "\\(13\\)",
-    "C": "\\(14\\)",
-    "D": "\\(19\\)",
-    "E": "\\(20\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.94",
-    "Concepts": "trigonometry; quadratic",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2021C/solutions",
-    "SourceSHA256": "e0d194663bebed49e91b5fc44ab962a7b781e51eb50e22fa813a19393e2d7f87",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2021_Fall_AMC_12A_Q19",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Let \\(x\\) be the least real number greater than \\(1\\) such that \\(\\sin(x) = \\sin(x^2),\\) where the arguments are in degrees. What is \\(x\\) rounded up to the closest integer?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(10\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(13\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(14\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(19\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(20\\)"
+      }
     ]
   },
-  "ID": "2021_Fall_AMC_12A_Q19",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:algebra"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "area": "Algebra",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:algebra"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h064",
+    "math:floor-ceiling"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "a0914198b6b40119c6812b39ee8e6f4734524ac07a8dca39b8120aa833f3fd6f",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h064",
-      "cnm_h066",
-      "math:floor-ceiling"
-    ],
-    "supportIds": [
-      "cnm_222"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "two-equal-sine-families",
+      "title": "Use both equal-sine possibilities",
+      "explanation": "Equal sine values come from equal directions or supplementary directions, allowing whole turns. This gives two families to compare.\n\nOn the unit circle, sine is the vertical coordinate. A horizontal line meets the circle in at most two points, whose angles are supplementary modulo \\(360^\\circ\\). Therefore, with all arguments in degrees,\n\\[\n\\sin a=\\sin b\n\\quad\\Longleftrightarrow\\quad\nb=a+360n\\ \\text{ or }\\ b=180-a+360n\n\\]\nfor some integer \\(n\\). Applying this to the problem gives\n\\[\nx^2-x=360n\n\\quad\\text{or}\\quad\nx^2+x=180+360n.\n\\]\nIn the first family, \\(x>1\\) makes the left side positive, so \\(n\\ge1\\). Since \\(x^2-x\\) increases for \\(x>1\\) and\n\\[\n13^2-13=156<360,\n\\]\nevery admissible solution in this family exceeds 13.\n\nIn the second family, positivity forces \\(n\\ge0\\). Because \\(x^2+x\\) increases for positive \\(x\\), the smallest admissible solution occurs when \\(n=0\\). Solving gives\n\\[\nx^2+x=180,\n\\qquad x=\\frac{-1+\\sqrt{721}}2.\n\\]\nSince \\(25^2<721<27^2\\), this value lies strictly between 12 and 13. It is therefore smaller than every solution in the first family and is the required least value.\n\nRounding up gives \\(\\boxed{13}\\), choice \\(\\boxed{\\text{B}}\\).",
+      "directNodeIds": [
+        "cnm_h064",
+        "cnm_h066",
+        "cnm_222",
+        "math:floor-ceiling"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_12A_Q19#two-equal-sine-families"
+    },
+    {
+      "id": "fold-angles-into-first-quadrant",
+      "title": "Use sine's first-quadrant increase",
+      "explanation": "For \\(1<x\\le13\\), the angle \\(x\\) is acute and \\(x^2<180\\). Sine symmetry lets us compare both angles within the interval where sine is strictly increasing.\n\nThere are two cases, with every angle measured in degrees:\n\n- If \\(x^2\\le90\\), then \\(0<x<x^2\\le90\\). Since sine is strictly increasing from \\(0^\\circ\\) to \\(90^\\circ\\), we have \\(\\sin x<\\sin(x^2)\\), so equality is impossible.\n- If \\(90<x^2\\le169\\), use\n\\[\n\\sin(x^2)=\\sin(180-x^2).\n\\]\nBoth \\(x\\) and \\(180-x^2\\) lie between \\(0^\\circ\\) and \\(90^\\circ\\). Strict increase of sine on that interval means their sines are equal exactly when\n\\[\nx=180-x^2.\n\\]\nThe positive solution of this equation is\n\\[\nr=\\frac{-1+\\sqrt{721}}2.\n\\]\nThe bounds \\(25^2<721<27^2\\) give \\(12<r<13\\). In particular, \\(r^2>144>90\\), so this root belongs to the second case and really satisfies the original equation.\n\nThe two cases cover all \\(1<x\\le13\\), and their only solution is \\(r\\). Thus \\(r\\) is the least solution greater than 1. Rounding it up gives \\(\\boxed{13}\\), choice \\(\\boxed{\\text{B}}\\).",
+      "directNodeIds": [
+        "cnm_h064",
+        "cnm_h067",
+        "cnm_222",
+        "math:floor-ceiling"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_12A_Q19#fold-angles-into-first-quadrant"
+    }
+  ],
+  "sourceRef": "amc/2021_Fall_AMC_12A_Q19"
 }

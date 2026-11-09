@@ -1,76 +1,84 @@
 {
-  "Year": 2023,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Geometry",
-  "Number": 21,
-  "Question": "A lampshade is made in the form of the lateral surface of the frustum of a right circular cone. The height of the frustum is \\(3\\sqrt{3}\\) inches, its top diameter is \\(6\\) inches, and its bottom diameter is \\(12\\) inches. A bug is at the bottom of the lampshade and there is a glob of honey on the top edge of the lampshade at the spot farthest from the bug. The bug wants to crawl to the honey, but it must stay on the surface of the lampshade. What is the length in inches of its shortest path to the honey?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(6+3\\pi\\)",
-    "B": "\\(6+6\\pi\\)",
-    "C": "\\(6\\sqrt{3}\\)",
-    "D": "\\(6\\sqrt{5}\\)",
-    "E": "\\(6\\sqrt{3}+\\pi\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.93",
-    "Concepts": "cone; net (3D geometry); tangent line",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2023B/solutions",
-    "SourceSHA256": "bd5cd4b39bb27e92ca2207803e39a05a4fafddeca2beceb058c29855f516fe2c",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2023_AMC_12B_Q21",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "A lampshade is made in the form of the lateral surface of the frustum of a right circular cone. The height of the frustum is \\(3\\sqrt{3}\\) inches, its top diameter is \\(6\\) inches, and its bottom diameter is \\(12\\) inches. A bug is at the bottom of the lampshade and there is a glob of honey on the top edge of the lampshade at the spot farthest from the bug. The bug wants to crawl to the honey, but it must stay on the surface of the lampshade. What is the length in inches of its shortest path to the honey?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(6+3\\pi\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(6+6\\pi\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(6\\sqrt{3}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(6\\sqrt{5}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(6\\sqrt{3}+\\pi\\)"
+      }
     ]
   },
-  "ID": "2023_AMC_12B_Q21",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:geometry"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "E"
+    ]
+  },
+  "classification": {
+    "area": "Geometry",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:geometry"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_258",
+    "math:circular-obstacle-shortest-path"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "c1307ac65cb5137c54888552149433bb0dc81c210de0aac09f006901c237c8e7",
-    "status": "mapped",
-    "reviewStatus": "machine_adjudicated",
-    "assessedIds": [],
-    "supportIds": [],
-    "routes": [
-      {
-        "id": "cone-development-and-radial-projection-bound",
-        "label": "Develop the cone and prove a tangent-plus-arc lower bound",
-        "nodeIds": [
-          "cnm_258",
-          "cnm_272",
-          "cnm_174",
-          "cnm_262",
-          "cnm_276",
-          "cnm_277",
-          "cnm_h173",
-          "cnm_148",
-          "cnm_h018",
-          "cnm_h059"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "unfold-and-prove-tangent-arc-bound",
+      "title": "Unroll the lampshade",
+      "explanation": "Unrolling the lampshade preserves path lengths, but the removed cone tip becomes a circular hole. This hole prevents us from simply joining the bug and honey by a straight segment.\n\nThe top and bottom radii are \\(3\\) and \\(6\\). In an axial cross section, the slant width of the lampshade is\n\\[\n\\sqrt{(3\\sqrt3)^2+(6-3)^2}=6.\n\\]\nExtend the lampshade to a complete cone. Similar triangles show that the slant distances from its apex to the two rims have ratio \\(1:2\\). Their difference is \\(6\\), so these distances are \\(6\\) and \\(12\\).\n\nWhen the cone is unrolled, its bottom circumference becomes an arc of radius \\(12\\) and length \\(12\\pi\\). Thus the full cone unfolds into a sector of angle\n\\[\n\\frac{12\\pi}{12}=\\pi.\n\\]\nThe lampshade occupies the part with distances from the sector's center between \\(6\\) and \\(12\\).\n\nLet \\(O\\) be that center, \\(A\\) the bug, and \\(B\\) the honey. The farthest point on the top rim is diametrically opposite the bug, halfway around the cone. Consequently, in the unfolding,\n\\[\nOA=12,\\qquad OB=6,\\qquad \\angle AOB=\\frac{\\pi}{2}.\n\\]\n\nDraw the tangent from \\(A\\) to the inner circle on the side toward \\(B\\), and call its point of contact \\(T\\). Because \\(OT\\perp AT\\) and \\(OA=2OT\\), the right triangle \\(AOT\\) gives\n\\[\n\\angle AOT=\\frac{\\pi}{3},\\qquad\nAT=\\sqrt{12^2-6^2}=6\\sqrt3.\n\\]\nFollowing \\(AT\\) and then the inner arc from \\(T\\) to \\(B\\) is allowed. The arc has angle \\(\\pi/2-\\pi/3=\\pi/6\\), so this route has length\n\\[\n6\\sqrt3+6\\left(\\frac{\\pi}{6}\\right)=6\\sqrt3+\\pi.\n\\]\n\nTo prove that no route is shorter, we use an elementary fact: projecting a path radially onto a circle cannot increase its length if the entire path lies outside that circle. Indeed, for two points at radii \\(u,v\\ge r\\), with angle \\(\\delta\\) between their radii, the cosine law gives their squared distance as\n\\[\n(u-v)^2+2uv(1-\\cos\\delta)\n\\ge 2r^2(1-\\cos\\delta).\n\\]\nThe right side is the squared distance between their projections onto the radius-\\(r\\) circle. Applying this comparison to increasingly fine subdivisions gives the same comparison for path lengths.\n\nTrack a possible route's angle continuously as the surface is unrolled. Since a full circuit of the lampshade corresponds to angle \\(\\pi\\), its endpoint has angle \\(\\pi/2+k\\pi\\) for some integer \\(k\\). Reflecting the unfolding if necessary, take this endpoint angle to be at least \\(\\pi/2\\). The route must cross the ray \\(OT\\); let \\(Q\\) be such a crossing. The portion from \\(A\\) to \\(Q\\) has length at least \\(AQ\\), which is at least \\(AT\\), since \\(AT\\) is perpendicular to that ray. The remaining portion projects onto the inner circle with net angular change at least \\(\\pi/6\\), so its length is at least \\(\\pi\\).\n\nThus every route has length at least \\(AT+\\pi\\), and our constructed route attains this bound. The shortest length is \\(\\boxed{6\\sqrt3+\\pi}\\) inches, choice \\(\\boxed{\\text{E}}\\).",
+      "directNodeIds": [
+        "cnm_258",
+        "math:circular-obstacle-shortest-path",
+        "cnm_272",
+        "cnm_174",
+        "cnm_262",
+        "cnm_140",
+        "cnm_h059",
+        "math:general-cosine-law-application"
+      ],
+      "sourceRef": "amc/2023_AMC_12B_Q21#unfold-and-prove-tangent-arc-bound"
+    },
+    {
+      "id": "cone-development-and-radial-projection-bound",
+      "title": "Develop the cone and prove a tangent-plus-arc lower bound",
+      "directNodeIds": [
+        "cnm_258",
+        "cnm_272",
+        "cnm_174",
+        "cnm_262",
+        "cnm_276",
+        "cnm_277",
+        "cnm_h173",
+        "cnm_148",
+        "cnm_h018",
+        "cnm_h059"
+      ],
+      "sourceRef": "amc/2023_AMC_12B_Q21#cone-development-and-radial-projection-bound"
+    }
+  ],
+  "sourceRef": "amc/2023_AMC_12B_Q21"
 }

@@ -1,79 +1,85 @@
 {
-  "Year": 2023,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Counting & Probability",
-  "Number": 17,
-  "Question": "Flora the frog starts at \\(0\\) on the number line and makes a sequence of jumps to the right. In any one jump, independent of previous jumps, Flora leaps a positive integer distance \\(m\\) with probability \\(\\dfrac{1}{2^m}.\\) What is the probability that Flora will eventually land at \\(10?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{5}{512}\\)",
-    "B": "\\(\\dfrac{45}{1024}\\)",
-    "C": "\\(\\dfrac{127}{1024}\\)",
-    "D": "\\(\\dfrac{511}{1024}\\)",
-    "E": "\\(\\dfrac{1}{2}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.97",
-    "Concepts": "recursive probability; recursion",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2023A/solutions",
-    "SourceSHA256": "8ee57a6587e75f919020451b868a6268853063e33eb032717e4af0bf5adccc7a",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2023_AMC_12A_Q17",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "673cdbf156296dfcbf433b0b09e7c6ec9197c551102a1a7a81eab9695237a048",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h138"
-    ],
-    "supportIds": [
-      "cnm_h140"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2023_AMC_12A_Q17",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Flora the frog starts at \\(0\\) on the number line and makes a sequence of jumps to the right. In any one jump, independent of previous jumps, Flora leaps a positive integer distance \\(m\\) with probability \\(\\dfrac{1}{2^m}.\\) What is the probability that Flora will eventually land at \\(10?\\)",
+    "choices": [
       {
-        "id": "landing-subset-count",
-        "label": "Count paths by landing subsets",
-        "nodeIds": [
-          "math:bijective-counting",
-          "cnm_h231"
-        ]
+        "id": "A",
+        "content": "\\(\\dfrac{5}{512}\\)"
       },
       {
-        "id": "first-jump-recursion",
-        "label": "First-jump probability recursion",
-        "nodeIds": [
-          "math:recursive-counting-probability"
-        ]
+        "id": "B",
+        "content": "\\(\\dfrac{45}{1024}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac{127}{1024}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac{511}{1024}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac{1}{2}\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "E"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h138"
+  ],
+  "solutions": [
+    {
+      "id": "landing-subset-count",
+      "title": "Count successful jump histories",
+      "explanation": "Every jump sequence that reaches \\(10\\) has the same probability, because its jump lengths add to \\(10\\). This lets us count successful sequences instead of calculating their probabilities separately.\n\nSuppose Flora reaches \\(10\\) with successive jump lengths \\(m_1,m_2,\\ldots,m_k\\). Independence gives the probability of this initial sequence as\n\\[\n\\frac{1}{2^{m_1}}\\frac{1}{2^{m_2}}\\cdots\\frac{1}{2^{m_k}}\n=\\frac{1}{2^{m_1+\\cdots+m_k}}\n=\\frac{1}{2^{10}}.\n\\]\nHer later jumps are unrestricted.\n\nTo count these histories, choose which of the integers \\(1,2,\\ldots,9\\) Flora lands on before reaching \\(10\\). Each integer can either be included or omitted, giving \\(2^9\\) subsets. Each subset determines exactly one jump sequence: list its elements in increasing order between \\(0\\) and \\(10\\), then take consecutive differences. Conversely, every successful sequence gives exactly one such subset.\n\nThese successful histories are mutually exclusive, since all jumps are positive and Flora cannot return to \\(10\\). Therefore their probabilities add, giving\n\\[\nP(\\text{eventually landing at }10)\n=2^9\\cdot\\frac{1}{2^{10}}\n=\\boxed{\\frac12},\n\\]\nwhich is choice \\(\\boxed{\\text{E}}\\).",
+      "directNodeIds": [
+        "math:bijective-counting",
+        "cnm_h231",
+        "cnm_h140",
+        "cnm_h138"
+      ],
+      "sourceRef": "amc/2023_AMC_12A_Q17#landing-subset-count"
+    },
+    {
+      "id": "first-jump-recursion",
+      "title": "Compare consecutive hitting probabilities",
+      "explanation": "After the first jump, Flora faces the same problem with a smaller remaining distance. We can therefore relate the probabilities of reaching consecutive integers.\n\nLet \\(p_n\\) be the probability of ever reaching \\(n\\) from \\(0\\), and set \\(p_0=1\\). If the first jump has length \\(m\\le n\\), the probability of subsequently reaching \\(n\\) is \\(p_{n-m}\\), because future jumps are independent and follow the same rule. A first jump longer than \\(n\\) makes success impossible. Thus\n\\[\np_n=\\sum_{m=1}^{n}\\frac{p_{n-m}}{2^m}.\n\\]\nFor \\(n\\ge2\\), separate the first term and shift the index in the remaining sum:\n\\[\n\\begin{aligned}\np_n\n&=\\frac{p_{n-1}}2+\\sum_{m=2}^{n}\\frac{p_{n-m}}{2^m}\\\\\n&=\\frac{p_{n-1}}2+\\frac12\\sum_{j=1}^{n-1}\\frac{p_{n-1-j}}{2^j}\\\\\n&=\\frac{p_{n-1}}2+\\frac{p_{n-1}}2\n=p_{n-1}.\n\\end{aligned}\n\\]\nThe last sum is precisely the recurrence for \\(p_{n-1}\\).\n\nFlora can reach \\(1\\) only by jumping \\(1\\) immediately, so \\(p_1=\\tfrac12\\). Consequently,\n\\[\np_{10}=p_9=\\cdots=p_1=\\boxed{\\frac12},\n\\]\nwhich is choice \\(\\boxed{\\text{E}}\\).",
+      "directNodeIds": [
+        "math:recursive-counting-probability",
+        "cnm_h140",
+        "cnm_h138"
+      ],
+      "sourceRef": "amc/2023_AMC_12A_Q17#first-jump-recursion"
+    },
+    {
+      "id": "balance-hit-and-overshoot",
+      "title": "Balance landing and overshooting",
+      "explanation": "From any position below \\(10\\), the probability that the next jump lands exactly at \\(10\\) equals the probability that it goes past \\(10\\). This balances the two possible ways Flora can first reach or pass the target.\n\nIf the remaining distance is the positive integer \\(r\\), then\n\\[\nP(\\text{next jump lands at }10)=\\frac{1}{2^r}.\n\\]\nMeanwhile, the probability of jumping farther than \\(r\\) is the geometric sum\n\\[\n\\sum_{m=r+1}^{\\infty}\\frac{1}{2^m}\n=\\frac{2^{-(r+1)}}{1-\\frac12}\n=\\frac{1}{2^r}.\n\\]\nFor each possible jump history that stays below \\(10\\), multiply these equal probabilities by the probability of that history. This gives equal contributions to landing exactly at \\(10\\) and crossing past it on the next jump. Summing over all possible histories preserves the equality. There is no double counting, because each trajectory has a unique first jump that reaches or passes \\(10\\).\n\nSince every jump is at least \\(1\\), that crossing occurs within at most \\(10\\) jumps. Landing exactly and overshooting therefore exhaust the possibilities, and each has probability\n\\[\n\\boxed{\\frac12},\n\\]\nwhich is choice \\(\\boxed{\\text{E}}\\).",
+      "directNodeIds": [
+        "math:infinite-geometric-series",
+        "cnm_h140",
+        "cnm_h138",
+        "cnm_h139"
+      ],
+      "sourceRef": "amc/2023_AMC_12A_Q17#balance-hit-and-overshoot"
+    }
+  ],
+  "sourceRef": "amc/2023_AMC_12A_Q17"
 }

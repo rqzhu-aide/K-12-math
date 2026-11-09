@@ -1,66 +1,77 @@
 {
-  "Year": 2020,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Geometry",
-  "Number": 14,
-  "Question": "Regular octagon \\(ABCDEFGH\\) has area \\(n.\\) Let \\(m\\) be the area of quadrilateral \\(ACEG.\\) What is \\(\\dfrac{m}{n}?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{\\sqrt{2}}{4}\\)",
-    "B": "\\(\\dfrac{\\sqrt{2}}{2}\\)",
-    "C": "\\(\\dfrac{3}{4}\\)",
-    "D": "\\(\\dfrac{3\\sqrt{2}}{5}\\)",
-    "E": "\\(\\dfrac{2\\sqrt{2}}{3}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.96",
-    "Concepts": "regular polygon; area ratio",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2020A/solutions",
-    "SourceSHA256": "a68eb9465bc973e0fc6d43b1ffd67c8c1fe4a1c69d65d1351fe3480281a0d817",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2020_AMC_12A_Q14",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Regular octagon \\(ABCDEFGH\\) has area \\(n.\\) Let \\(m\\) be the area of quadrilateral \\(ACEG.\\) What is \\(\\dfrac{m}{n}?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(\\dfrac{\\sqrt{2}}{4}\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(\\dfrac{\\sqrt{2}}{2}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac{3}{4}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac{3\\sqrt{2}}{5}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac{2\\sqrt{2}}{3}\\)"
+      }
     ]
   },
-  "ID": "2020_AMC_12A_Q14",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:geometry"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "area": "Geometry",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:geometry"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_266",
+    "cnm_p150"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "e4e7402c3508aae8372efb9d39ff00c8eeb6a0092a52c4d750940b484ea55d4c",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_266",
-      "cnm_p150"
-    ],
-    "supportIds": [
-      "cnm_p148",
-      "cnm_277",
-      "cnm_191"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "split-into-central-triangles",
+      "title": "Use triangles from the center",
+      "explanation": "Both polygons have the same center and circumradius, so splitting them into triangles makes the common radius cancel from the area ratio.\n\nLet \\(O\\) be the octagon's center and let \\(R\\) be its circumradius. Consecutive vertices have central angle\n\\[\n\\angle AOB=\\frac{360^\\circ}{8}=45^\\circ.\n\\]\nUsing \\(OA\\) as the base of triangle \\(OAB\\), its height is \\(R\\sin45^\\circ=R/\\sqrt2\\). The eight congruent central triangles fill the octagon, so\n\\[\nn=8\\left(\\frac12R\\cdot\\frac{R}{\\sqrt2}\\right)=2\\sqrt2\\,R^2.\n\\]\n\nThe vertices \\(A,C,E,G\\) occur at successive \\(90^\\circ\\) intervals around the circumcircle, so they form a square. Joining these vertices to \\(O\\) divides that square into four right triangles, each with perpendicular legs of length \\(R\\). Therefore,\n\\[\nm=4\\left(\\frac12R^2\\right)=2R^2.\n\\]\nIt follows that\n\\[\n\\frac mn=\\frac{2R^2}{2\\sqrt2\\,R^2}\n=\\boxed{\\frac{\\sqrt2}{2}},\n\\]\nchoice \\(\\textbf{B}\\).",
+      "directNodeIds": [
+        "cnm_266",
+        "cnm_p150",
+        "cnm_p148",
+        "cnm_277",
+        "cnm_191"
+      ],
+      "sourceRef": "amc/2020_AMC_12A_Q14#split-into-central-triangles"
+    },
+    {
+      "id": "enclose-the-octagon-in-a-square",
+      "title": "Remove four corner triangles",
+      "explanation": "Extending alternate sides of the octagon produces an enclosing square with four congruent corner triangles removed. This lets us find both areas using the Pythagorean theorem.\n\nLet the octagon's side length be \\(s\\). Extend the lines containing \\(AB,CD,EF,GH\\) until they bound a square. Adjacent sides of a regular octagon turn through \\(45^\\circ\\), so the four removed corner triangles are isosceles right triangles. Their hypotenuses are \\(BC,DE,FG,HA\\), each of length \\(s\\).\n\nLet each corner triangle's leg length be \\(t\\). The Pythagorean theorem gives\n\\[\n2t^2=s^2,\n\\qquad t=\\frac{s}{\\sqrt2}.\n\\]\nEach side of the enclosing square has length \\(s+2t\\). Subtracting the four corner triangles gives the octagon's area:\n\\[\nn=(s+2t)^2-4\\left(\\frac{t^2}{2}\\right)\n=(2+2\\sqrt2)s^2.\n\\]\n\nTo find \\(AC\\), let \\(T\\) be the intersection of the extended lines \\(AB\\) and \\(CD\\). The corner triangle \\(BTC\\) has legs \\(BT=TC=t\\), so \\(AT=s+t\\). Triangle \\(ATC\\) is right, giving\n\\[\nAC^2=(s+t)^2+t^2=(2+\\sqrt2)s^2.\n\\]\nThe vertices \\(A,C,E,G\\) are equally spaced at \\(90^\\circ\\) intervals around the circumcircle, so \\(ACEG\\) is a square. Its area is therefore \\(m=AC^2\\).\n\nConsequently,\n\\[\n\\frac mn=\\frac{2+\\sqrt2}{2+2\\sqrt2}\n=\\boxed{\\frac{\\sqrt2}{2}},\n\\]\nchoice \\(\\textbf{B}\\).",
+      "directNodeIds": [
+        "cnm_266",
+        "cnm_p150",
+        "cnm_p148",
+        "cnm_174",
+        "cnm_191"
+      ],
+      "sourceRef": "amc/2020_AMC_12A_Q14#enclose-the-octagon-in-a-square"
+    }
+  ],
+  "sourceRef": "amc/2020_AMC_12A_Q14"
 }

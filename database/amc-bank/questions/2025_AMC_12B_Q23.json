@@ -1,80 +1,82 @@
 {
-  "Year": 2025,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Number Theory",
-  "Number": 23,
-  "Question": "Let \\(S\\) be the set of all integers \\(z \\gt 1\\) such that for all pairs of nonnegative integers \\((x, y)\\) with \\(x \\lt y \\lt z,\\) the remainder when \\(2025x\\) is divided by \\(z\\) is less than the remainder when \\(2025y\\) is divided by \\(z.\\) What is the sum of the elements of \\(S?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(3041\\)",
-    "B": "\\(3542\\)",
-    "C": "\\(3750\\)",
-    "D": "\\(4044\\)",
-    "E": "\\(4319\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "reviewed-source-concepts",
-    "Concepts": "modular arithmetic; divisibility; sum of factors",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2025B/solutions",
-    "SourceSHA256": "9f851f1eb8b824abb334e0df4c017e663fc0135d4113cd5b6b5926fe4794110d",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2025_AMC_12B_Q23",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:number-theory"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "28cba7f5817a17a3f0d700adbb5a9b9614a937502a3cc365ed90e32a6c11954a",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:modular-congruence",
-      "math:divisor-count-and-sum"
-    ],
-    "supportIds": [
-      "math:prime-factorization"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2025_AMC_12B_Q23",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Let \\(S\\) be the set of all integers \\(z \\gt 1\\) such that for all pairs of nonnegative integers \\((x, y)\\) with \\(x \\lt y \\lt z,\\) the remainder when \\(2025x\\) is divided by \\(z\\) is less than the remainder when \\(2025y\\) is divided by \\(z.\\) What is the sum of the elements of \\(S?\\)",
+    "choices": [
       {
-        "id": "ordered-full-remainder-list",
-        "label": "Order the full remainder list",
-        "nodeIds": [
-          "math:modular-congruence"
-        ]
+        "id": "A",
+        "content": "\\(3041\\)"
       },
       {
-        "id": "positive-residue-increments",
-        "label": "Positive residue increments",
-        "nodeIds": [
-          "math:modular-congruence",
-          "cnm_097"
-        ]
+        "id": "B",
+        "content": "\\(3542\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(3750\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(4044\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(4319\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "E"
+    ]
+  },
+  "classification": {
+    "area": "Number Theory",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:number-theory"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:modular-congruence",
+    "math:divisor-count-and-sum"
+  ],
+  "solutions": [
+    {
+      "id": "ordered-full-remainder-list",
+      "title": "Order all the remainders",
+      "explanation": "There are exactly \\(z\\) possible remainders modulo \\(z\\). Requiring \\(z\\) remainders to appear in strictly increasing order therefore determines every one of them.\n\nLet \\(r_k\\) be the remainder when \\(2025k\\) is divided by \\(z\\), for \\(0\\leq k\\leq z-1\\). The condition says\n\\[\n0=r_0<r_1<\\cdots<r_{z-1}\\leq z-1.\n\\]\nThese are \\(z\\) distinct integers chosen from the \\(z\\) integers \\(0,1,\\ldots,z-1\\). Thus\n\\[\nr_k=k\\quad\\text{for every }k.\n\\]\nIn particular, \\(r_1=1\\), so \\(2025\\) has remainder \\(1\\) upon division by \\(z\\). Equivalently, \\(z\\) divides \\(2024\\).\n\nConversely, if \\(z\\) divides \\(2024\\), then\n\\[\n2025k=2024k+k\n\\]\nhas remainder \\(k\\) for every \\(0\\leq k<z\\). These remainders are strictly increasing, so every divisor \\(z>1\\) of \\(2024\\) belongs to \\(S\\).\n\nNow\n\\[\n2024=2^3\\cdot11\\cdot23.\n\\]\nEach positive divisor is uniquely \\(2^a11^b23^c\\), where \\(0\\leq a\\leq3\\) and \\(b,c\\in\\{0,1\\}\\). Expanding the following product therefore includes every divisor exactly once:\n\\[\n\\sum_{d\\mid2024}d\n=(1+2+4+8)(1+11)(1+23)\n=15\\cdot12\\cdot24=4320.\n\\]\nSince \\(z=1\\) is excluded, the requested sum is\n\\[\n\\boxed{4320-1=4319},\n\\]\nchoice \\(\\mathrm{E}\\).",
+      "directNodeIds": [
+        "math:modular-congruence",
+        "math:prime-factorization",
+        "math:divisor-count-and-sum"
+      ],
+      "sourceRef": "amc/2025_AMC_12B_Q23#ordered-full-remainder-list"
+    },
+    {
+      "id": "first-wraparound",
+      "title": "Find the first wraparound",
+      "explanation": "If the remainder of \\(2025\\) is larger than \\(1\\), repeatedly adding it must eventually make the remainders drop. Finding that first drop gives a direct contradiction.\n\nLet \\(r\\) be the remainder when \\(2025\\) is divided by \\(z\\). The remainder of \\(2025k\\) is then the remainder of \\(kr\\).\n\nIf \\(r=0\\), the inputs \\(0\\) and \\(1\\) both give remainder \\(0\\), violating the condition.\n\nSuppose \\(r\\geq2\\). Let \\(k\\) be the smallest positive integer for which \\(kr\\geq z\\). Because \\(2\\leq r\\leq z-1\\), we have \\(2\\leq k\\leq z-1\\). By the choice of \\(k\\),\n\\[\n(k-1)r<z\\leq kr<z+r<2z.\n\\]\nThus the remainders for inputs \\(k-1\\) and \\(k\\) are respectively\n\\[\n(k-1)r\\quad\\text{and}\\quad kr-z.\n\\]\nTheir difference, second minus first, is \\(r-z<0\\). This contradicts the required increase.\n\nTherefore \\(r=1\\), which means \\(z\\mid2024\\). Conversely, this divisibility condition makes the remainder of \\(2025k\\) equal to \\(k\\) for \\(0\\leq k<z\\), so it is sufficient as well.\n\nUsing \\(2024=2^3\\cdot11\\cdot23\\), the sum of its positive divisors is\n\\[\n(1+2+4+8)(1+11)(1+23)=4320.\n\\]\nThe product sums every divisor once by independently choosing its three prime exponents. Removing the excluded divisor \\(1\\) gives \\(\\boxed{4319}\\), choice \\(\\mathrm{E}\\).",
+      "directNodeIds": [
+        "math:modular-congruence",
+        "math:prime-factorization",
+        "math:divisor-count-and-sum"
+      ],
+      "sourceRef": "amc/2025_AMC_12B_Q23#first-wraparound"
+    },
+    {
+      "id": "positive-residue-increments",
+      "title": "Positive residue increments",
+      "directNodeIds": [
+        "math:modular-congruence",
+        "cnm_097"
+      ],
+      "sourceRef": "amc/2025_AMC_12B_Q23#positive-residue-increments"
+    }
+  ],
+  "sourceRef": "amc/2025_AMC_12B_Q23"
 }

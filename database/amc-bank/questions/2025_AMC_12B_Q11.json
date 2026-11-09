@@ -1,79 +1,89 @@
 {
-  "Year": 2025,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 11,
-  "Question": "Nine athletes, no two of whom are the same height, try out for the basketball team. One at a time, they draw a wristband at random, without replacement, from a bag containing \\(3\\) blue bands, \\(3\\) red bands, and \\(3\\) green bands. They are divided into a blue group, a red group, and a green group. The tallest member of each group is named the group captain. What is the probability that the group captains are the three tallest athletes?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{2}{9}\\)",
-    "B": "\\(\\dfrac{2}{7}\\)",
-    "C": "\\(\\dfrac{9}{28}\\)",
-    "D": "\\(\\dfrac{1}{3}\\)",
-    "E": "\\(\\dfrac{3}{8}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "reviewed-source-concepts",
-    "Concepts": "basic probability; symmetry",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2025B/solutions",
-    "SourceSHA256": "9f851f1eb8b824abb334e0df4c017e663fc0135d4113cd5b6b5926fe4794110d",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2025_AMC_12B_Q11",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "39727313d2dfaba610c480450af4e369455ab43e1aa6876ce1798e020b94f181",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_h137"
-    ],
-    "supportIds": [
-      "cnm_310"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2025_AMC_12B_Q11",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Nine athletes, no two of whom are the same height, try out for the basketball team. One at a time, they draw a wristband at random, without replacement, from a bag containing \\(3\\) blue bands, \\(3\\) red bands, and \\(3\\) green bands. They are divided into a blue group, a red group, and a green group. The tallest member of each group is named the group captain. What is the probability that the group captains are the three tallest athletes?",
+    "choices": [
       {
-        "id": "sequential-conditional-probability",
-        "label": "Sequential conditional probabilities",
-        "nodeIds": [
-          "cnm_h245"
-        ]
+        "id": "A",
+        "content": "\\(\\dfrac{2}{9}\\)"
       },
       {
-        "id": "count-wristband-subsets",
-        "label": "Count wristband subsets",
-        "nodeIds": [
-          "cnm_h237",
-          "cnm_h231"
-        ]
+        "id": "B",
+        "content": "\\(\\dfrac{2}{7}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac{9}{28}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac{1}{3}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac{3}{8}\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h137"
+  ],
+  "solutions": [
+    {
+      "id": "sequential-band-draws",
+      "title": "Follow the three tallest",
+      "explanation": "The three tallest athletes will all be captains exactly when their wristbands have three different colors. Sharing a color would prevent the shorter of two athletes from being captain. With different colors, each of the three is taller than every other athlete in their group.\n\nThe random draws distribute the nine individual bands uniformly among the athletes. Consequently, we can calculate as though the three tallest athletes draw first: rearranging the drawing order does not change the distribution of assignments.\n\nThe tallest athlete can receive any color. Among the eight remaining bands, six have a different color, so the probability that the second tallest receives a different color is \\(6/8\\).\n\nIf those first two colors differ, all three bands of the unused color remain among the seven remaining bands. The third tallest therefore receives that color with conditional probability \\(3/7\\).\n\nMultiplying the successive probabilities gives\n\\[\n\\frac{6}{8}\\cdot\\frac{3}{7}=\\boxed{\\frac{9}{28}}.\n\\]\nThe answer is choice \\(\\mathrm{C}\\).",
+      "directNodeIds": [
+        "cnm_h137",
+        "cnm_h245",
+        "cnm_310"
+      ],
+      "sourceRef": "amc/2025_AMC_12B_Q11#sequential-band-draws"
+    },
+    {
+      "id": "unordered-band-sample",
+      "title": "Count sets of three bands",
+      "explanation": "Only the set of bands received by the three tallest athletes matters, so we can count unordered selections of three bands.\n\nTemporarily give each wristband a distinct label. Every three-band set is equally likely to reach these athletes: each set can be assigned to them in the same number of orders, and the remaining bands can be assigned to the other athletes in the same number of ways.\n\nThe number of possible sets is\n\\[\n\\binom{9}{3}=\\frac{9\\cdot8\\cdot7}{3\\cdot2\\cdot1}=84.\n\\]\nThe denominator removes the six orders in which any particular set could be listed.\n\nFor all three athletes to be captains, their colors must be different. Otherwise, two of them share a group and the shorter cannot be captain. Conversely, three different colors make each athlete the tallest in their group.\n\nA favorable set therefore contains one band of each color. Choosing one of the three blue bands, one of the three red bands, and one of the three green bands gives\n\\[\n3\\cdot3\\cdot3=27\n\\]\nfavorable sets. Each is counted once because its colors distinguish the three selections.\n\nThus the probability is\n\\[\n\\frac{27}{84}=\\boxed{\\frac{9}{28}},\n\\]\nchoice \\(\\mathrm{C}\\).",
+      "directNodeIds": [
+        "cnm_h137",
+        "cnm_h239",
+        "cnm_310"
+      ],
+      "sourceRef": "amc/2025_AMC_12B_Q11#unordered-band-sample"
+    },
+    {
+      "id": "sequential-conditional-probability",
+      "title": "Sequential conditional probabilities",
+      "directNodeIds": [
+        "cnm_h245"
+      ],
+      "sourceRef": "amc/2025_AMC_12B_Q11#sequential-conditional-probability"
+    },
+    {
+      "id": "count-wristband-subsets",
+      "title": "Count wristband subsets",
+      "directNodeIds": [
+        "cnm_h237",
+        "cnm_h231"
+      ],
+      "sourceRef": "amc/2025_AMC_12B_Q11#count-wristband-subsets"
+    }
+  ],
+  "sourceRef": "amc/2025_AMC_12B_Q11"
 }

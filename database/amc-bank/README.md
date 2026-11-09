@@ -1,4 +1,4 @@
-# AMC practice bank 2.6.0
+# AMC practice bank 2.7.0
 
 **5,435 questions and answer keys from 195 papers**, with question and choice
 diagrams. American Mathematics Competitions (AMC) content is credited to the
@@ -18,7 +18,7 @@ papers. Historical series names remain in record metadata.
 
 ## Questions and solutions
 
-[Download the 5,199 questions with worked solutions, their figures, and their source credits](https://github.com/rqzhu-aide/K-12-math/releases/download/amc-bank-v2.6.0/amc-bank-2.6.0-compact-5199.zip).
+[Download the 5,435 questions with worked solutions, their figures, and their source credits](https://github.com/rqzhu-aide/K-12-math/releases/download/amc-bank-v2.7.0/amc-bank-2.7.0-compact-5435.zip).
 
 Choose **AMC contests** in Math Practice, then a level, year, batch, and problem.
 Answer checking works without models. Disputed questions retain their historical
@@ -49,6 +49,8 @@ Another **408 explanations** follow official MAA methods, with independent AI re
 
 The final **169 AMC 10 explanations** contain **277 written methods**: **272 reference-informed methods** and **5 independently derived methods**. All methods have their own immediate concepts and applicable reference credits; **104 of the 169 questions** have alternative methods. The references are not presented as official MAA methods. No third-party worked prose or solution-only figures are reproduced. See [source-informed original explanations](ADAPTATIONS.md#source-informed-original-explanations).
 
+The final **236 AMC 12 explanations** complete the bank. They contain **403 written methods**, with **399 reference-informed methods**, **4 independently derived project methods**, and alternative methods for **158 questions**. Reviewed sister-exam project methods retain their original method credits and receive a fresh question-specific review. See [complete AMC 12 coverage](ADAPTATIONS.md#complete-amc-12-coverage).
+
 The other questions retain their original keys and transcription credits. Where
 a new worked explanation has been added, its source is **Original Math Practice
 solution**. Its review record binds the explanation to the displayed question
@@ -77,12 +79,12 @@ third-party solution text, private processing files, and local paths are not
 included. [sources.json](sources.json) lists historical source URLs and hashes
 and the official solution booklets as retrieved.
 
-The 5,199 questions with stored worked solutions use the [compact 3.0 schema](../../question-bank-template/question-v3.schema.json). Their question and method credits are in [source-index.json](source-index.json). The other 236 questions use [schema 2.0](schema.json) and have answer keys. The original prompts, choices,
-LaTeX, figure positions, and reviewed grading metadata are preserved, except for the [source-verified correction of choice C in 2024 AMC 10A problem 3](ADAPTATIONS.md#additional-official-source-adaptations) and the [correction of choice A in 2023 AMC 10A problem 23](ADAPTATIONS.md#source-informed-original-explanations). This release also updates 13 primary subject labels after review. Domain
+The 5,435 questions with stored worked solutions use the [compact 3.0 schema](../../question-bank-template/question-v3.schema.json). Their question and method credits are in [source-index.json](source-index.json). The original prompts, choices,
+LaTeX, figure positions, and reviewed grading metadata are preserved, except for the [source-verified correction of choice C in 2024 AMC 10A problem 3](ADAPTATIONS.md#additional-official-source-adaptations), the [correction of choice A in 2023 AMC 10A problem 23](ADAPTATIONS.md#source-informed-original-explanations), and the [printed prompt repairs in three 2023 AMC 12 problems](ADAPTATIONS.md#complete-amc-12-coverage). The AMC 10 completion updated 13 primary subject labels; this release updates 35 more after review. Domain
 and skill catalogs are in `taxonomy/`; older records with uncurated topics remain
 explicitly unclassified. Structural validation does not constitute a proof
 audit of every problem or answer key.
 
-Of the 5,435 questions, 5,199 have stored worked solutions. These comprise 608 adaptations of official MAA solutions and 4,591 additional questions with project-authored explanations. Every question in the 41 AMC 8 papers and 52 AMC 10 papers has a worked solution. All 146 papers from 1950 through 2016 also have a worked solution for every question. All 5,435 questions have answer keys and graph annotations. Open the [Math Practice UI](../../math-practice/) to use the bundled browser data. To prepare an additional collection, see the [question-bank template](../../question-bank-template/).
+All 5,435 questions have stored worked solutions. These comprise 608 adaptations of official MAA solutions and 4,827 additional questions with project-authored explanations. Every question in all 195 papers has a worked solution. This includes all 1,300 modern AMC 12 questions and the historical AHSME collection. All 5,435 questions have answer keys and graph annotations. Open the [Math Practice UI](../../math-practice/) to use the bundled browser data. To prepare an additional collection, see the [question-bank template](../../question-bank-template/).
 
 See [NOTICE.md](NOTICE.md) for attribution, modifications, and license scope.

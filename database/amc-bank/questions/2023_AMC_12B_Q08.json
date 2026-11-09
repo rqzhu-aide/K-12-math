@@ -1,64 +1,72 @@
 {
-  "Year": 2023,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 8,
-  "Question": "How many nonempty subsets \\(B\\) of \\(\\{0,1,2,3,\\ldots,12\\}\\) have the property that the number of elements in \\(B\\) is equal to the least element of \\(B?\\) For example, \\(B=\\{4,6,8,11\\}\\) satisfies the condition.",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(256\\)",
-    "B": "\\(136\\)",
-    "C": "\\(108\\)",
-    "D": "\\(144\\)",
-    "E": "\\(156\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.99",
-    "Concepts": "combinations; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2023B/solutions",
-    "SourceSHA256": "bd5cd4b39bb27e92ca2207803e39a05a4fafddeca2beceb058c29855f516fe2c",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2023_AMC_12B_Q08",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "How many nonempty subsets \\(B\\) of \\(\\{0,1,2,3,\\ldots,12\\}\\) have the property that the number of elements in \\(B\\) is equal to the least element of \\(B?\\) For example, \\(B=\\{4,6,8,11\\}\\) satisfies the condition.",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(256\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(136\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(108\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(144\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(156\\)"
+      }
     ]
   },
-  "ID": "2023_AMC_12B_Q08",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h239"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "53f62654d01a20dae0ec245308bad8f3d60dc50aa51827cb6724ddaa5df9d1ba",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_h239"
-    ],
-    "supportIds": [
-      "cnm_h230",
-      "cnm_h237"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "classify-by-least-element",
+      "title": "Fix the least element",
+      "explanation": "Fixing the least element determines the required size of the subset, so we can count separately for each possible least element.\n\nLet \\(m\\) be the least element of \\(B\\). Since \\(B\\) is nonempty and has \\(m\\) elements, \\(m\\geq1\\); in particular, \\(0\\) cannot belong to \\(B\\).\n\nThe element \\(m\\) is mandatory. The remaining \\(m-1\\) elements must be chosen from\n\\[\n\\{m+1,m+2,\\ldots,12\\},\n\\]\nwhich contains \\(12-m\\) elements. Because order does not matter, the number of choices is \\(\\binom{12-m}{m-1}\\).\n\nThere must be enough available elements, so\n\\[\nm-1\\leq12-m,\n\\]\nwhich gives \\(m\\leq6\\). Thus all possibilities are:\n\n| Least element \\(m\\) | Number of subsets | Value |\n|---:|---:|---:|\n| 1 | \\(\\binom{11}{0}\\) | 1 |\n| 2 | \\(\\binom{10}{1}\\) | 10 |\n| 3 | \\(\\binom{9}{2}\\) | 36 |\n| 4 | \\(\\binom{8}{3}\\) | 56 |\n| 5 | \\(\\binom{7}{4}\\) | 35 |\n| 6 | \\(\\binom{6}{5}\\) | 6 |\n\nFor example, when \\(m=4\\), include \\(4\\) and choose three of the eight elements \\(5,6,\\ldots,12\\), giving \\(\\binom{8}{3}=56\\).\n\nEvery eligible subset has exactly one least element, so the cases are exhaustive and do not overlap. Their sum is\n\\[\n1+10+36+56+35+6=\\boxed{144},\n\\]\nchoice \\(\\text{D}\\).",
+      "directNodeIds": [
+        "cnm_h239",
+        "cnm_h230",
+        "cnm_h237"
+      ],
+      "sourceRef": "amc/2023_AMC_12B_Q08#classify-by-least-element"
+    },
+    {
+      "id": "remove-largest-and-shift",
+      "title": "Build a recurrence",
+      "explanation": "Removing the largest allowed element gives a way to relate this count to the same problem on smaller sets.\n\nThe element \\(0\\) cannot occur, because a nonempty subset has positive size. Let \\(a_N\\) count the nonempty subsets of \\(\\{1,2,\\ldots,N\\}\\) whose size equals their least element. We want \\(a_{12}\\).\n\nFor \\(N\\geq2\\), divide the eligible subsets into two groups.\n\nSubsets not containing \\(N\\) are exactly those counted by \\(a_{N-1}\\).\n\nNow consider an eligible subset containing \\(N\\), and let its least element and size be \\(m\\). It cannot have \\(m=1\\), because the only eligible subset with least element \\(1\\) is \\(\\{1\\}\\). Thus \\(m\\geq2\\). Remove \\(N\\), then subtract \\(1\\) from every remaining element. The resulting subset has \\(m-1\\) elements and least element \\(m-1\\), and all its elements lie in \\(\\{1,\\ldots,N-2\\}\\).\n\nThis construction is reversible: take any subset counted by \\(a_{N-2}\\), add \\(1\\) to every element, and adjoin \\(N\\). Its size and least element both increase by \\(1\\). Hence the subsets containing \\(N\\) are counted exactly by \\(a_{N-2}\\).\n\nThe two groups are disjoint and exhaustive, so\n\\[\na_N=a_{N-1}+a_{N-2}.\n\\]\nInitially, \\(a_0=0\\) and \\(a_1=1\\). Repeatedly adding the preceding two values gives\n\\[\n(a_1,a_2,\\ldots,a_{12})\n=(1,1,2,3,5,8,13,21,34,55,89,144).\n\\]\nTherefore the requested count is \\(a_{12}=\\boxed{144}\\), choice \\(\\text{D}\\).",
+      "directNodeIds": [
+        "math:recursive-counting-probability",
+        "math:bijective-counting",
+        "cnm_h230"
+      ],
+      "sourceRef": "amc/2023_AMC_12B_Q08#remove-largest-and-shift"
+    }
+  ],
+  "sourceRef": "amc/2023_AMC_12B_Q08"
 }

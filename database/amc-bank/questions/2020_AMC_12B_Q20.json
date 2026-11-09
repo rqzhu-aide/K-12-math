@@ -1,65 +1,63 @@
 {
-  "Year": 2020,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 20,
-  "Question": "Two different cubes of the same size are to be painted, with the color of each face being chosen independently and at random to be either black or white. What is the probability that after they are painted, the cubes can be rotated to be identical in appearance?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{9}{64}\\)",
-    "B": "\\(\\dfrac{289}{2048}\\)",
-    "C": "\\(\\dfrac{73}{512}\\)",
-    "D": "\\(\\dfrac{147}{1024}\\)",
-    "E": "\\(\\dfrac{589}{4096}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.94",
-    "Concepts": "Burnside’s Lemma; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2020B/solutions",
-    "SourceSHA256": "7a8518eb82190575608f33e835bc9de283d48937d2df6622bac24ccb99e3153b",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2020_AMC_12B_Q20",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Two different cubes of the same size are to be painted, with the color of each face being chosen independently and at random to be either black or white. What is the probability that after they are painted, the cubes can be rotated to be identical in appearance?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(\\dfrac{9}{64}\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(\\dfrac{289}{2048}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac{73}{512}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac{147}{1024}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac{589}{4096}\\)"
+      }
     ]
   },
-  "ID": "2020_AMC_12B_Q20",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:symmetry-counting",
+    "cnm_h137"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "f5819a1d79460f78a77ebc7849fdc59e075ae1fba381ef8e74e046a203fdeb71",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:symmetry-counting",
-      "cnm_h137"
-    ],
-    "supportIds": [
-      "cnm_h237",
-      "cnm_h231"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "rotation-classes",
+      "title": "Count matching rotation classes",
+      "explanation": "Paintings with the same number of black faces need not look alike: two black faces can be adjacent or opposite. We should group paintings by their complete appearance under rotation.\n\nTemporarily distinguish the six face positions of each cube. Each face is independently black or white with probability \\(1/2\\), so there are \\(2^6=64\\) equally likely paintings per cube and \\(64^2=4096\\) equally likely ordered pairs.\n\nCall a set of paintings a rotation class if every painting in it can be rotated into every other. A class containing \\(m\\) paintings contributes \\(m^2\\) matching ordered pairs, because either cube may have any of those \\(m\\) paintings.\n\nWe classify paintings by the number of black faces.\n\n* With zero or one black face, all paintings having that count are equivalent under rotation. Their class sizes are \\(1\\) and \\(6\\).\n* With two black faces, they are either opposite or adjacent. There are three opposite pairs, giving a class of size \\(3\\). The remaining \\(\\binom62-3=12\\) pairs are adjacent, giving a class of size \\(12\\). Rotating the corresponding opposite pair or common edge into a fixed position shows that each type forms one class.\n* With three black faces, either they contain an opposite pair or they do not. If there is no opposite pair, we have chosen one face from each of the three opposite pairs. These three faces meet at one vertex. The eight vertices give eight paintings, all equivalent under rotation. If there is an opposite pair, it is unique; choose it in three ways and the third black face in four ways, giving \\(3\\cdot4=12\\) paintings. These also form one class: rotate the opposite black pair to the top and bottom, then turn the remaining black face to the front.\n\nInterchanging black and white preserves rotational equivalence. Thus the classes for four, five, and six black faces have the same sizes as those for two, one, and zero black faces, respectively.\n\n| Number of black faces | Sizes of the rotation classes |\n|---|---|\n| \\(0\\) | \\(1\\) |\n| \\(1\\) | \\(6\\) |\n| \\(2\\) | \\(3,12\\) |\n| \\(3\\) | \\(8,12\\) |\n| \\(4\\) | \\(3,12\\) |\n| \\(5\\) | \\(6\\) |\n| \\(6\\) | \\(1\\) |\n\nThese cases exhaust all paintings, and different classes cannot match. Therefore the desired probability is\n\\[\n\\frac{2(1^2+6^2+3^2+12^2)+8^2+12^2}{4096}\n=\\frac{588}{4096}\n=\\boxed{\\frac{147}{1024}},\n\\]\nchoice \\(\\boxed{\\text{D}}\\).",
+      "directNodeIds": [
+        "math:symmetry-counting",
+        "cnm_h137",
+        "cnm_h237",
+        "cnm_h231"
+      ],
+      "sourceRef": "amc/2020_AMC_12B_Q20#rotation-classes"
+    }
+  ],
+  "sourceRef": "amc/2020_AMC_12B_Q20"
 }

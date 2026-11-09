@@ -1,75 +1,77 @@
 {
-  "Year": 2021,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Algebra",
-  "Number": 21,
-  "Question": "Let \\(S\\) be the sum of all positive real numbers \\(x\\) for which \\[x^{2^{\\sqrt2}}=\\sqrt2^{\\,2^x}.\\]\n\nWhich of the following statements is true?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(S\\lt\\sqrt2\\)",
-    "B": "\\(S=\\sqrt2\\)",
-    "C": "\\(\\sqrt2\\lt S\\lt 2\\)",
-    "D": "\\(2\\le S\\lt 6\\)",
-    "E": "\\(S\\ge 6\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.60",
-    "Concepts": "logarithm; bounding to limit cases",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2021B/solutions",
-    "SourceSHA256": "d2bc790b41807ac1b6b89c14f6fa855657cb9b6a641fc524d4fdf476ea4f9f4d",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2021_AMC_12B_Q21",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Let \\(S\\) be the sum of all positive real numbers \\(x\\) for which \\[x^{2^{\\sqrt2}}=\\sqrt2^{\\,2^x}.\\]\n\nWhich of the following statements is true?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(S\\lt\\sqrt2\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(S=\\sqrt2\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\sqrt2\\lt S\\lt 2\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(2\\le S\\lt 6\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(S\\ge 6\\)"
+      }
     ]
   },
-  "ID": "2021_AMC_12B_Q21",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:algebra"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Algebra",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:algebra"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h044",
+    "cnm_h049"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "aeab9ce4e2ea10a22392feb9ff0bb6aa0beac87a3c3d4d0aef2ef50e600be2c9",
-    "status": "mapped",
-    "reviewStatus": "machine_adjudicated",
-    "assessedIds": [
-      "cnm_h049"
-    ],
-    "supportIds": [],
-    "routes": [
-      {
-        "id": "amgm-midpoint-root-bound",
-        "label": "Use AM-GM midpoint inequalities and continuity to bound the zeros",
-        "nodeIds": [
-          "cnm_h022",
-          "cnm_h043",
-          "cnm_h044",
-          "cnm_h042",
-          "cnm_h046",
-          "math:elementary-function-limits",
-          "cnm_h213"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "amgm-and-root-bracketing",
+      "title": "Bound and count the roots using AM-GM",
+      "explanation": "Taking logarithms exposes the solution \\(x=\\sqrt2\\) and lets us locate another solution. We must also prove that no additional solutions contribute to \\(S\\).\n\nTaking base-two logarithms of the given equation gives the equivalent equation\n\\[\n2^{\\sqrt2}\\log_2 x=2^x\\log_2\\sqrt2=2^{x-1}.\n\\]\nIts right side is positive, so every solution has \\(x>1\\). Set \\(C=2^{\\sqrt2}\\) and define the continuous function\n\\[\nF(x)=C\\log_2 x-2^{x-1},\\qquad x>1.\n\\]\nWe have\n\\[\nF(\\sqrt2)=C\\cdot\\frac12-2^{\\sqrt2-1}=0.\n\\]\nAlso, \\(1<\\sqrt2<2\\) implies \\(2<C<4\\), so\n\\[\nF(2)=C-2>0,\\qquad F(4)=2C-8<0.\n\\]\nContinuity therefore guarantees a second root \\(t\\) with \\(2<t<4\\).\n\nTo prove that these are the only roots, we will show that \\(F\\) bends strictly above its chords, using only AM-GM. For distinct \\(u,v>1\\), AM-GM and the increasing logarithm give\n\\[\n\\log_2\\frac{u+v}{2}\n>\\log_2\\sqrt{uv}\n=\\frac{\\log_2 u+\\log_2 v}{2}.\n\\]\nApplying AM-GM to \\(2^{u-1}\\) and \\(2^{v-1}\\) also gives\n\\[\n2^{(u+v)/2-1}\n=\\sqrt{2^{u-1}2^{v-1}}\n\\le\\frac{2^{u-1}+2^{v-1}}2.\n\\]\nMultiplying the first inequality by \\(C>0\\) and subtracting the second yields\n\\[\nF\\left(\\frac{u+v}{2}\\right)>\n\\frac{F(u)+F(v)}2.\n\\]\nRepeated bisection now shows that \\(F\\) lies on or above the chord between any two points: first this holds at their midpoint, then at the quarter points, and so on. More precisely,\n\\[\nF((1-s)a+sc)\\ge(1-s)F(a)+sF(c)\n\\]\nfor \\(s=k/2^n\\), where \\(0\\le k\\le2^n\\). Such fractions approximate every number in \\([0,1]\\), so continuity extends the inequality to every \\(s\\) in that interval.\n\nSuppose there were three roots \\(a<b<c\\). The chord inequality would give \\(F(x)\\ge0\\) throughout \\([a,c]\\). Choose \\(h>0\\) small enough that \\(b-h\\) and \\(b+h\\) both lie in this interval. The strict midpoint inequality would then give\n\\[\nF(b)>\\frac{F(b-h)+F(b+h)}2\\ge0,\n\\]\ncontradicting \\(F(b)=0\\). Thus there are at most two roots, and the two already found are all the solutions.\n\nTherefore\n\\[\n2<\\sqrt2+2<S=\\sqrt2+t<\\sqrt2+4<6.\n\\]\nHence \\(\\boxed{2\\le S<6}\\), choice \\(\\boxed{\\text{D}}\\).",
+      "directNodeIds": [
+        "cnm_h044",
+        "cnm_h049",
+        "cnm_h021",
+        "math:elementary-function-limits"
+      ],
+      "sourceRef": "amc/2021_AMC_12B_Q21#amgm-and-root-bracketing"
+    },
+    {
+      "id": "amgm-midpoint-root-bound",
+      "title": "Use AM-GM midpoint inequalities and continuity to bound the zeros",
+      "directNodeIds": [
+        "cnm_h022",
+        "cnm_h043",
+        "cnm_h044",
+        "cnm_h042",
+        "cnm_h046",
+        "math:elementary-function-limits",
+        "cnm_h213"
+      ],
+      "sourceRef": "amc/2021_AMC_12B_Q21#amgm-midpoint-root-bound"
+    }
+  ],
+  "sourceRef": "amc/2021_AMC_12B_Q21"
 }

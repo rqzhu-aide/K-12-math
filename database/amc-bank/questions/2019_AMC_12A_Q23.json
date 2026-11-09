@@ -1,79 +1,83 @@
 {
-  "Year": 2019,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Unclassified",
-  "Number": 23,
-  "Question": "Define binary operations \\(\\diamondsuit\\) and \\(\\heartsuit\\) by\n\n\\[ a \\diamondsuit b = a^{\\log_7(b)} \\] and \\[ a \\heartsuit b = a^{\\frac{1}{\\log_7(b)}} \\]\n\nfor all real numbers \\(a\\) and \\(b\\) for which these expressions are defined. The sequence \\((a_n)\\) is defined recursively by \\(a_3 = 3 \\heartsuit 2\\) and \\[ a_n = (n \\heartsuit (n - 1)) \\diamondsuit a_{n-1} \\] for all integers \\(n \\ge 4.\\) To the nearest integer, what is \\(\\log_7(a_{2019})?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(8\\)",
-    "B": "\\(9\\)",
-    "C": "\\(10\\)",
-    "D": "\\(11\\)",
-    "E": "\\(12\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "custom operation; logarithm; telescoping",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2019A/solutions",
-    "SourceSHA256": "2ef8020f0812f33b73f055ce7dc57d54b70f1e7a9010597534e8e2e616d80a2b",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2019_AMC_12A_Q23",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "72a32b3eb365c9c6f883801dd9c81d3d7c43a721ab59aee17bcc850ab218b220",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h044",
-      "cnm_h200"
-    ],
-    "supportIds": [
-      "cnm_h045"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2019_AMC_12A_Q23",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Define binary operations \\(\\diamondsuit\\) and \\(\\heartsuit\\) by\n\n\\[ a \\diamondsuit b = a^{\\log_7(b)} \\] and \\[ a \\heartsuit b = a^{\\frac{1}{\\log_7(b)}} \\]\n\nfor all real numbers \\(a\\) and \\(b\\) for which these expressions are defined. The sequence \\((a_n)\\) is defined recursively by \\(a_3 = 3 \\heartsuit 2\\) and \\[ a_n = (n \\heartsuit (n - 1)) \\diamondsuit a_{n-1} \\] for all integers \\(n \\ge 4.\\) To the nearest integer, what is \\(\\log_7(a_{2019})?\\)",
+    "choices": [
       {
-        "id": "telescope-logarithmic-ratios",
-        "label": "Telescope logarithmic ratios",
-        "nodeIds": [
-          "math:telescoping"
-        ]
+        "id": "A",
+        "content": "\\(8\\)"
       },
       {
-        "id": "induct-on-closed-form",
-        "label": "Verify a closed form by induction",
-        "nodeIds": [
-          "cnm_h214"
-        ]
+        "id": "B",
+        "content": "\\(9\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(10\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(11\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(12\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "level": "AMC 12",
+    "area": "Algebra",
+    "domainIds": [
+      "domain:algebra"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h044",
+    "cnm_h200"
+  ],
+  "solutions": [
+    {
+      "id": "telescope-logarithmic-ratios",
+      "title": "Telescope the logarithms",
+      "explanation": "Taking base-\\(7\\) logarithms turns the exponents in the defined operations into multiplication and division. The resulting recurrence has consecutive factors that cancel.\n\nAll terms \\(a_n\\) are positive, since the recursion repeatedly raises positive numbers to real powers. Define\n\\[\nb_n=\\log_7(a_n).\n\\]\nThe initial value is\n\\[\nb_3=\\log_7\\left(3^{1/\\log_7 2}\\right)\n=\\frac{\\log_7 3}{\\log_7 2}.\n\\]\nFor \\(n\\ge4\\), substituting the two operation rules gives\n\\[\na_n=\\left(n^{1/\\log_7(n-1)}\\right)^{\\log_7(a_{n-1})}\n=n^{b_{n-1}/\\log_7(n-1)}.\n\\]\nThus\n\\[\nb_n=\\frac{\\log_7 n}{\\log_7(n-1)}\\,b_{n-1}.\n\\]\nIterating this relation produces the telescoping product\n\\[\nb_{2019}\n=\\frac{\\log_7 2019}{\\log_7 2018}\n\\cdot\\frac{\\log_7 2018}{\\log_7 2017}\n\\cdots\n\\frac{\\log_7 4}{\\log_7 3}\n\\cdot\\frac{\\log_7 3}{\\log_7 2}\n=\\frac{\\log_7 2019}{\\log_7 2}.\n\\]\nEvery internal logarithm cancels, and the change of base formula identifies the result as \\(\\log_2 2019\\).\n\nTo justify rounding without a calculator, note that\n\\[\n2^{10.5}=1024\\sqrt2<1536<2019<2048=2^{11},\n\\]\nwhere \\(\\sqrt2<3/2\\). Therefore\n\\[\n10.5<\\log_2 2019<11.\n\\]\nThe nearest integer is \\(\\boxed{11}\\), choice \\(\\mathrm{D}\\).",
+      "directNodeIds": [
+        "cnm_h044",
+        "cnm_h045",
+        "cnm_h200",
+        "math:telescoping"
+      ],
+      "sourceRef": "amc/2019_AMC_12A_Q23#telescope-logarithmic-ratios"
+    },
+    {
+      "id": "induct-on-fixed-power",
+      "title": "Find a fixed-power formula",
+      "explanation": "The first term is a fixed power of \\(3\\). This suggests that every \\(a_n\\) might be the same fixed power of its index, with the logarithms in the recursion canceling to preserve that exponent.\n\nSet\n\\[\nc=\\frac1{\\log_7 2}.\n\\]\nWe will prove \\(a_n=n^c\\) for every integer \\(n\\ge3\\). The initial condition gives \\(a_3=3^c\\), so the claim holds at the starting index.\n\nSuppose it holds at index \\(n-1\\), so that \\(a_{n-1}=(n-1)^c\\). Substituting into the defining operations,\n\\[\n\\begin{aligned}\na_n\n&=\\left(n^{1/\\log_7(n-1)}\\right)^{\\log_7((n-1)^c)}\\\\\n&=n^{\\frac{c\\log_7(n-1)}{\\log_7(n-1)}}\\\\\n&=n^c.\n\\end{aligned}\n\\]\nHere \\(n-1\\ge3\\), so the logarithm in the denominator is nonzero. This proves the formula by induction.\n\nIt follows that\n\\[\n\\log_7(a_{2019})\n=c\\log_7 2019\n=\\frac{\\log_7 2019}{\\log_7 2}\n=\\log_2 2019.\n\\]\nSince \\(\\sqrt2<3/2\\),\n\\[\n2^{10.5}=1024\\sqrt2<1536<2019<2048=2^{11}.\n\\]\nThus the logarithm is between \\(10.5\\) and \\(11\\), and its nearest integer is \\(\\boxed{11}\\), choice \\(\\mathrm{D}\\).",
+      "directNodeIds": [
+        "cnm_h044",
+        "cnm_h045",
+        "cnm_h200",
+        "cnm_h214"
+      ],
+      "sourceRef": "amc/2019_AMC_12A_Q23#induct-on-fixed-power"
+    },
+    {
+      "id": "induct-on-closed-form",
+      "title": "Verify a closed form by induction",
+      "directNodeIds": [
+        "cnm_h214"
+      ],
+      "sourceRef": "amc/2019_AMC_12A_Q23#induct-on-closed-form"
+    }
+  ],
+  "sourceRef": "amc/2019_AMC_12A_Q23"
 }

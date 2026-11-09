@@ -1,61 +1,70 @@
 {
-  "Year": 2019,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Unclassified",
-  "Number": 16,
-  "Question": "There are lily pads in a row numbered \\(0\\) to \\(11,\\) in that order. There are predators on lily pads \\(3\\) and \\(6,\\) and a morsel of food on lily pad \\(10.\\) Fiona the frog starts on pad \\(0,\\) and from any given lily pad, has a \\(\\dfrac12\\) chance to hop to the next pad, and an equal chance to jump \\(2\\) pads. What is the probability that Fiona reaches pad \\(10\\) without landing on either pad \\(3\\) or pad \\(6?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{15}{256}\\)",
-    "B": "\\(\\dfrac{1}{16}\\)",
-    "C": "\\(\\dfrac{15}{128}\\)",
-    "D": "\\(\\dfrac{1}{8}\\)",
-    "E": "\\(\\dfrac{1}{4}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "Pending topic curation",
-    "Concepts": "recursive probability",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2019B/solutions",
-    "SourceSHA256": "81a29c86c88dc45161237b74c8248a0d917fb568aef2ba00f04fd8a9bf4a5599",
-    "Figures": [],
-    "FigureSources": {},
-    "SourceQuestionCount": 25,
-    "HistoricalSeries": "AMC 12",
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2019_AMC_12B_Q16",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "There are lily pads in a row numbered \\(0\\) to \\(11,\\) in that order. There are predators on lily pads \\(3\\) and \\(6,\\) and a morsel of food on lily pad \\(10.\\) Fiona the frog starts on pad \\(0,\\) and from any given lily pad, has a \\(\\dfrac12\\) chance to hop to the next pad, and an equal chance to jump \\(2\\) pads. What is the probability that Fiona reaches pad \\(10\\) without landing on either pad \\(3\\) or pad \\(6?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(\\dfrac{15}{256}\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(\\dfrac{1}{16}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac{15}{128}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac{1}{8}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac{1}{4}\\)"
+      }
     ]
   },
-  "ID": "2019_AMC_12B_Q16",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "852ea273286f542949e0293f23e03b96b6d14092ad93c8b0dbdeb8bb4a42338d",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:recursive-counting-probability"
-    ],
-    "supportIds": [],
-    "routes": [],
-    "flags": []
-  }
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "A"
+    ]
+  },
+  "classification": {
+    "level": "AMC 12",
+    "area": "Counting & Probability",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h245",
+    "cnm_h138"
+  ],
+  "solutions": [
+    {
+      "id": "forced-jumps",
+      "title": "Forced jumps past the predators",
+      "explanation": "To pass a predator using jumps of at most two pads, Fiona must jump from the pad immediately before it to the pad immediately after it. Thus every successful route must include\n\\[\n2\\longrightarrow4\\longrightarrow5\\longrightarrow7.\n\\]\nThe middle move is forced because jumping two pads from pad \\(4\\) would land on the predator at \\(6\\).\n\nFiona can reach pad \\(2\\) either with one two-pad jump or with two one-pad jumps. These are disjoint possibilities, so their total probability is\n\\[\n\\frac12+\\left(\\frac12\\right)^2=\\frac34.\n\\]\nStarting at pad \\(2\\), the three required moves to pad \\(7\\) have probability \\((1/2)^3\\). Therefore the probability of reaching pad \\(7\\) safely is\n\\[\n\\frac34\\cdot\\frac18=\\frac{3}{32}.\n\\]\nFrom pad \\(7\\), the jump lengths that land exactly on pad \\(10\\) are\n\\[\n(1,1,1),\\qquad(1,2),\\qquad(2,1).\n\\]\nThis list is exhaustive because the jump lengths must add to \\(3\\). Their probabilities add to\n\\[\n\\frac18+\\frac14+\\frac14=\\frac58.\n\\]\nWhenever Fiona reaches pad \\(7\\), these subsequent jump probabilities are the same. Multiplying the probability of reaching that pad safely by the conditional probability of reaching the food gives\n\\[\n\\frac{3}{32}\\cdot\\frac58=\\boxed{\\frac{15}{256}},\n\\]\nwhich is choice \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "cnm_h245",
+        "cnm_h138"
+      ],
+      "sourceRef": "amc/2019_AMC_12B_Q16#forced-jumps"
+    },
+    {
+      "id": "safe-arrival-recursion",
+      "title": "Track safe arrival probabilities",
+      "explanation": "A safe arrival at any pad must come from one of the preceding two pads. This lets us build the desired probability one pad at a time.\n\nLet \\(p_n\\) be the probability that Fiona reaches pad \\(n\\) without landing on either predator pad, including on her arrival at \\(n\\). Thus \\(p_0=1\\) and \\(p_3=p_6=0\\). Also set \\(p_{-1}=0\\).\n\nFor each safe pad \\(n\\geq1\\), the last jump comes from either \\(n-1\\) or \\(n-2\\). These cases are disjoint, and each required jump has probability \\(1/2\\), so\n\\[\np_n=\\frac{p_{n-1}+p_{n-2}}2.\n\\]\nApplying this rule at safe pads, and assigning zero at the predator pads, gives\n\n| Pad \\(n\\) | \\(p_n\\) |\n|---|---|\n| \\(0\\) | \\(1\\) |\n| \\(1\\) | \\(1/2\\) |\n| \\(2\\) | \\(3/4\\) |\n| \\(3\\) | \\(0\\) |\n| \\(4\\) | \\(3/8\\) |\n| \\(5\\) | \\(3/16\\) |\n| \\(6\\) | \\(0\\) |\n| \\(7\\) | \\(3/32\\) |\n| \\(8\\) | \\(3/64\\) |\n| \\(9\\) | \\(9/128\\) |\n\nFor example, \\(p_4=(p_3+p_2)/2=3/8\\): only a jump from pad \\(2\\) can contribute a safe arrival at pad \\(4\\).\n\nFinally,\n\\[\np_{10}=\\frac12\\left(\\frac{3}{64}+\\frac{9}{128}\\right)\n=\\boxed{\\frac{15}{256}}.\n\\]\nThe answer is choice \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "math:recursive-counting-probability"
+      ],
+      "sourceRef": "amc/2019_AMC_12B_Q16#safe-arrival-recursion"
+    }
+  ],
+  "sourceRef": "amc/2019_AMC_12B_Q16"
 }

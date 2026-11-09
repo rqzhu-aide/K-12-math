@@ -1,79 +1,90 @@
 {
-  "Year": 2020,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Geometry",
-  "Number": 8,
-  "Question": "How many ordered pairs of integers \\((x, y)\\) satisfy the equation\n\n\\[x^{2020} + y^2 = 2y?\\]",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(1\\)",
-    "B": "\\(2\\)",
-    "C": "\\(3\\)",
-    "D": "\\(4\\)",
-    "E": "infinitely many"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.36",
-    "Concepts": "completing the square; Diophantine Equation; bounding to limit cases",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2020B/solutions",
-    "SourceSHA256": "7a8518eb82190575608f33e835bc9de283d48937d2df6622bac24ccb99e3153b",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2020_AMC_12B_Q08",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:geometry"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "123103c435b8b7696a80a175497ab6c29a79cb7ff984ccf2888fac6cb688b2f1",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:integer-diophantine-equations"
-    ],
-    "supportIds": [
-      "cnm_020"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2020_AMC_12B_Q08",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "How many ordered pairs of integers \\((x, y)\\) satisfy the equation\n\n\\[x^{2020} + y^2 = 2y?\\]",
+    "choices": [
       {
-        "id": "complete-the-square",
-        "label": "Complete the square in y",
-        "nodeIds": [
-          "math:completing-square-expression",
-          "cnm_220"
-        ]
+        "id": "A",
+        "content": "\\(1\\)"
       },
       {
-        "id": "bound-integer-y",
-        "label": "Bound y by a quadratic inequality",
-        "nodeIds": [
-          "cnm_h024"
-        ]
+        "id": "B",
+        "content": "\\(2\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(3\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(4\\)"
+      },
+      {
+        "id": "E",
+        "content": "infinitely many"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Number Theory",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:number-theory"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:integer-diophantine-equations"
+  ],
+  "solutions": [
+    {
+      "id": "complete-square-and-count",
+      "title": "Complete the square",
+      "explanation": "Completing the square in \\(y\\) turns the equation into a sum of nonnegative integers, leaving very few possibilities.\n\nSubtract \\(2y\\) and add \\(1\\) to both sides:\n\\[\nx^{2020}+y^2-2y+1=1,\n\\]\nso\n\\[\nx^{2020}+(y-1)^2=1.\n\\]\nThe exponent \\(2020\\) is even, so both terms on the left are nonnegative integers. They must therefore be \\(0\\) and \\(1\\), in one order or the other.\n\nIf \\(x^{2020}=0\\), then \\(x=0\\). The equation \\((y-1)^2=1\\) gives \\(y-1=\\pm1\\), so \\(y=0\\) or \\(2\\). These produce \\((0,0)\\) and \\((0,2)\\).\n\nIf \\(x^{2020}=1\\), then \\(x=1\\) or \\(-1\\): any integer with absolute value at least \\(2\\) has a larger even power. Now \\((y-1)^2=0\\), so \\(y=1\\). These produce \\((1,1)\\) and \\((-1,1)\\).\n\nThe cases exhaust all possibilities, and the four ordered pairs are distinct. The answer is \\(\\boxed{4}\\), choice \\(\\boxed{\\text{D}}\\).",
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "math:completing-square-expression",
+        "cnm_020"
+      ],
+      "sourceRef": "amc/2020_AMC_12B_Q08#complete-square-and-count"
+    },
+    {
+      "id": "restrict-y-by-signs",
+      "title": "Restrict y first",
+      "explanation": "Because \\(x^{2020}\\) is nonnegative, isolating it gives a restriction on \\(y\\) before we try any integer values.\n\nRewrite the equation as\n\\[\nx^{2020}=2y-y^2=y(2-y).\n\\]\nIf \\(y<0\\), the factors \\(y\\) and \\(2-y\\) have opposite signs. They also have opposite signs if \\(y>2\\). Either situation would make their product negative, which is impossible. Hence\n\\[\n0\\le y\\le2.\n\\]\nThe only integer possibilities are \\(y=0,1,2\\).\n\nFor \\(y=0\\) or \\(y=2\\), the product \\(y(2-y)\\) is zero, forcing \\(x=0\\). This gives \\((0,0)\\) and \\((0,2)\\).\n\nFor \\(y=1\\), we need \\(x^{2020}=1\\). Both \\(x=1\\) and \\(x=-1\\) work because the exponent is even, and no other integer works. This gives \\((1,1)\\) and \\((-1,1)\\).\n\nEvery permitted integer value of \\(y\\) has been checked, yielding exactly \\(\\boxed{4}\\) ordered pairs, choice \\(\\boxed{\\text{D}}\\).",
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "cnm_h024",
+        "cnm_h020",
+        "cnm_020"
+      ],
+      "sourceRef": "amc/2020_AMC_12B_Q08#restrict-y-by-signs"
+    },
+    {
+      "id": "complete-the-square",
+      "title": "Complete the square in y",
+      "directNodeIds": [
+        "math:completing-square-expression",
+        "cnm_220"
+      ],
+      "sourceRef": "amc/2020_AMC_12B_Q08#complete-the-square"
+    },
+    {
+      "id": "bound-integer-y",
+      "title": "Bound y by a quadratic inequality",
+      "directNodeIds": [
+        "cnm_h024"
+      ],
+      "sourceRef": "amc/2020_AMC_12B_Q08#bound-integer-y"
+    }
+  ],
+  "sourceRef": "amc/2020_AMC_12B_Q08"
 }

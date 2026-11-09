@@ -1,66 +1,78 @@
 {
-  "Year": 2021,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 23,
-  "Question": "Three balls are randomly and independently tossed into bins numbered with the positive integers so that for each ball, the probability that it is tossed into bin \\(i\\) is \\(2^{-i}\\) for \\(i=1,\\) \\(2,\\) \\(3,\\) \\(\\ldots.\\) More than one ball is allowed in each bin. The probability that the balls end up evenly spaced in distinct bins is \\(\\dfrac{p}{q},\\) where \\(p\\) and \\(q\\) are relatively prime positive integers. (For example, the balls are evenly spaced if they are tossed into bins \\(3,\\) \\(17,\\) and \\(10.\\)) What is \\(p+q?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(55\\)",
-    "B": "\\(56\\)",
-    "C": "\\(57\\)",
-    "D": "\\(58\\)",
-    "E": "\\(59\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.98",
-    "Concepts": "basic probability; geometric sequence; arithmetic sequence",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2021B/solutions",
-    "SourceSHA256": "d2bc790b41807ac1b6b89c14f6fa855657cb9b6a641fc524d4fdf476ea4f9f4d",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2021_AMC_12B_Q23",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Three balls are randomly and independently tossed into bins numbered with the positive integers so that for each ball, the probability that it is tossed into bin \\(i\\) is \\(2^{-i}\\) for \\(i=1,\\) \\(2,\\) \\(3,\\) \\(\\ldots.\\) More than one ball is allowed in each bin. The probability that the balls end up evenly spaced in distinct bins is \\(\\dfrac{p}{q},\\) where \\(p\\) and \\(q\\) are relatively prime positive integers. (For example, the balls are evenly spaced if they are tossed into bins \\(3,\\) \\(17,\\) and \\(10.\\)) What is \\(p+q?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(55\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(56\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(57\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(58\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(59\\)"
+      }
     ]
   },
-  "ID": "2021_AMC_12B_Q23",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "A"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h140",
+    "math:infinite-geometric-series"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "ea64001e4cc74194fc35c52142cb9ec28e42bb4abd767fa8a4fa8f82ea2035e6",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h140",
-      "math:infinite-geometric-series"
-    ],
-    "supportIds": [
-      "cnm_h138",
-      "cnm_h234",
-      "cnm_h202"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "sum-over-start-and-spacing",
+      "title": "Choose the first bin and the spacing",
+      "explanation": "Three distinct bin numbers are evenly spaced exactly when, in increasing order, they are \\(a,a+d,a+2d\\) for positive integers \\(a,d\\). These two parameters describe every favorable set of bins exactly once.\n\nLabel the balls so that their independent tosses can be distinguished. For one particular assignment to these three bins, independence gives probability\n\\[\n2^{-a}2^{-(a+d)}2^{-(a+2d)}\n=2^{-3a-3d}=8^{-a}8^{-d}.\n\\]\nThere are \\(3!=6\\) assignments of the balls to the three distinct bins, all with this same probability. Different assignments or different pairs \\((a,d)\\) describe disjoint outcomes. Thus the desired probability is\n\\[\nP=6\\sum_{a=1}^{\\infty}\\sum_{d=1}^{\\infty}8^{-a}8^{-d}\n=6\\left(\\sum_{a=1}^{\\infty}8^{-a}\\right)\n\\left(\\sum_{d=1}^{\\infty}8^{-d}\\right).\n\\]\nEach series has first term \\(1/8\\) and common ratio \\(1/8<1\\), so its sum is\n\\[\n\\frac{1/8}{1-1/8}=\\frac17.\n\\]\nTherefore\n\\[\nP=6\\left(\\frac17\\right)^2=\\frac6{49}.\n\\]\nSince \\(6\\) and \\(49\\) are relatively prime, \\(p+q=6+49=\\boxed{55}\\), choice \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "cnm_h140",
+        "math:infinite-geometric-series",
+        "cnm_h202",
+        "cnm_h138",
+        "cnm_h234"
+      ],
+      "sourceRef": "amc/2021_AMC_12B_Q23#sum-over-start-and-spacing"
+    },
+    {
+      "id": "shift-invariance-recurrence",
+      "title": "Shift the bin numbers",
+      "explanation": "Moving every ball one bin to the right preserves equal spacing and multiplies the probability of its placement by \\((1/2)^3=1/8\\). This gives a recurrence for the desired probability.\n\nLet \\(P\\) be the probability of evenly spaced distinct bins, and distinguish the three balls by labels. Divide favorable outcomes into those whose smallest occupied bin is \\(1\\) and those whose smallest occupied bin is at least \\(2\\).\n\nAdding \\(1\\) to each bin number gives a one-to-one correspondence from all favorable outcomes to the second class; subtracting \\(1\\) reverses it. By independence, the probability of every shifted placement is \\(1/8\\) of the original placement's probability. Hence the second class has total probability \\(P/8\\).\n\nIn the first class, the occupied bins must be\n\\[\n1,\\quad 1+d,\\quad 1+2d,\\qquad d=1,2,\\ldots.\n\\]\nFor each \\(d\\), the \\(3!=6\\) assignments of the balls to these distinct bins have combined probability\n\\[\n6\\cdot2^{-1}2^{-(1+d)}2^{-(1+2d)}\n=6\\cdot2^{-3-3d}=\\frac68\\,8^{-d}.\n\\]\nThese possibilities are disjoint, so their total probability is\n\\[\n\\frac68\\sum_{d=1}^{\\infty}8^{-d}\n=\\frac68\\cdot\\frac{1/8}{1-1/8}\n=\\frac3{28}.\n\\]\nThe geometric series converges because its ratio is \\(1/8<1\\). The two classes exhaust all favorable outcomes, giving\n\\[\nP=\\frac P8+\\frac3{28},\n\\qquad\nP=\\frac87\\cdot\\frac3{28}=\\frac6{49}.\n\\]\nThis fraction is in lowest terms, so \\(p+q=\\boxed{55}\\), choice \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "math:recursive-counting-probability",
+        "cnm_h140",
+        "math:infinite-geometric-series",
+        "cnm_h202",
+        "cnm_h138",
+        "cnm_h234"
+      ],
+      "sourceRef": "amc/2021_AMC_12B_Q23#shift-invariance-recurrence"
+    }
+  ],
+  "sourceRef": "amc/2021_AMC_12B_Q23"
 }

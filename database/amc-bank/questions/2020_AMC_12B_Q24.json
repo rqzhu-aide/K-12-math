@@ -1,79 +1,90 @@
 {
-  "Year": 2020,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 24,
-  "Question": "Let \\(D(n)\\) denote the number of ways of writing the positive integer \\(n\\) as a product \\[n = f_1 \\cdot f_2 \\cdots f_k,\\] where \\(k \\ge 1,\\) the \\(f_i\\) are integers strictly greater than \\(1,\\) and the order in which the factors are listed matters (that is, two representations that differ only in the order of the factors are counted as distinct). For example, the number \\(6\\) can be written as \\(6,\\) \\(2 \\cdot 3,\\) and \\(3 \\cdot 2,\\) so \\(D(6) = 3.\\) What is \\(D(96)?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(112\\)",
-    "B": "\\(128\\)",
-    "C": "\\(144\\)",
-    "D": "\\(172\\)",
-    "E": "\\(184\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.83",
-    "Concepts": "recursive counting; factor",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2020B/solutions",
-    "SourceSHA256": "7a8518eb82190575608f33e835bc9de283d48937d2df6622bac24ccb99e3153b",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2020_AMC_12B_Q24",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "5e18bf7b251533963b9dc680124a88c93f00e40550b59a5690b604b34920f538",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h232"
-    ],
-    "supportIds": [
-      "math:prime-factorization"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2020_AMC_12B_Q24",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Let \\(D(n)\\) denote the number of ways of writing the positive integer \\(n\\) as a product \\[n = f_1 \\cdot f_2 \\cdots f_k,\\] where \\(k \\ge 1,\\) the \\(f_i\\) are integers strictly greater than \\(1,\\) and the order in which the factors are listed matters (that is, two representations that differ only in the order of the factors are counted as distinct). For example, the number \\(6\\) can be written as \\(6,\\) \\(2 \\cdot 3,\\) and \\(3 \\cdot 2,\\) so \\(D(6) = 3.\\) What is \\(D(96)?\\)",
+    "choices": [
       {
-        "id": "distribute-prime-exponents",
-        "label": "Distribute prime exponents",
-        "nodeIds": [
-          "math:stars-and-bars",
-          "cnm_h237"
-        ]
+        "id": "A",
+        "content": "\\(112\\)"
       },
       {
-        "id": "first-factor-recursion",
-        "label": "Recur on the first factor",
-        "nodeIds": [
-          "math:recursive-counting-probability"
-        ]
+        "id": "B",
+        "content": "\\(128\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(144\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(172\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(184\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "A"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h232"
+  ],
+  "solutions": [
+    {
+      "id": "insert-the-factor-three",
+      "title": "Build 96 from 32",
+      "explanation": "Because \\(96=3\\cdot32\\) contains just one prime factor of \\(3\\), we can first factor \\(32\\) and then decide where the \\(3\\) belongs.\n\nWrite \\(32=2\\cdot2\\cdot2\\cdot2\\cdot2\\). An ordered factorization of \\(32\\) comes from cutting this row into consecutive nonempty groups and multiplying within each group. To obtain \\(m\\) factors, choose \\(m-1\\) of the four gaps as cuts. This gives \\(\\binom{4}{m-1}\\) factorizations. Each factor's exponent of \\(2\\) records its group length, so different cut choices give different ordered factorizations.\n\nFor each factorization with \\(m\\) factors, we can introduce the \\(3\\) in either of two ways:\n\n- Insert \\(3\\) as a separate factor in one of the \\(m+1\\) positions, including the two ends.\n- Multiply one of the \\(m\\) existing factors by \\(3\\).\n\nThus there are \\(2m+1\\) choices. These produce every factorization of \\(96\\) exactly once: locate its unique factor divisible by \\(3\\), then either remove it if it equals \\(3\\), or divide it by \\(3\\) otherwise. This uniquely recovers the factorization of \\(32\\) and the choice used.\n\nThe counts are:\n\n| Number of factors \\(m\\) in 32 | Factorizations \\(\\binom{4}{m-1}\\) | Choices for 3 | Product |\n|---|---|---|---|\n| 1 | 1 | 3 | 3 |\n| 2 | 4 | 5 | 20 |\n| 3 | 6 | 7 | 42 |\n| 4 | 4 | 9 | 36 |\n| 5 | 1 | 11 | 11 |\n\nTherefore\n\\[\nD(96)=3+20+42+36+11=\\boxed{112},\n\\]\nwhich is choice \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "math:bijective-counting",
+        "cnm_h237",
+        "cnm_h232"
+      ],
+      "sourceRef": "amc/2020_AMC_12B_Q24#insert-the-factor-three"
+    },
+    {
+      "id": "distinguish-three-factor",
+      "title": "Count by the number of factors",
+      "explanation": "The factorization \\(96=2^5\\cdot3\\) tells us that exactly one factor in any ordered product is divisible by \\(3\\). Choosing its position lets us count the powers of \\(2\\) separately.\n\nSuppose the product has \\(k\\) factors. Each factor greater than \\(1\\) uses at least one of the six prime factors of \\(96\\), counted with repetition, so \\(1\\le k\\le6\\). There are \\(k\\) choices for the position containing \\(3\\).\n\nEach of the other \\(k-1\\) positions must receive at least one \\(2\\). Assign one \\(2\\) to each of those positions first. We then have\n\\[\n5-(k-1)=6-k\n\\]\nextra twos to distribute among all \\(k\\) positions, allowing a position to receive none.\n\nTo count these distributions, represent the extra twos by \\(6-k\\) stars and use \\(k-1\\) bars to separate the \\(k\\) positions. The number of stars between bars records the extra twos in that position. Adjacent bars, or bars at the ends, allow zero extra twos. There are always\n\\[\n(6-k)+(k-1)=5\n\\]\nsymbols, so choosing the bar positions gives \\(\\binom{5}{k-1}\\) distributions.\n\nFor each \\(k\\), the count is therefore \\(k\\binom{5}{k-1}\\). Every ordered product uniquely determines \\(k\\), the position containing \\(3\\), and the exponents of \\(2\\), so nothing is omitted or counted twice.\n\n| Number of factors \\(k\\) | Distributions \\(\\binom{5}{k-1}\\) | Total \\(k\\binom{5}{k-1}\\) |\n|---|---|---|\n| 1 | 1 | 1 |\n| 2 | 5 | 10 |\n| 3 | 10 | 30 |\n| 4 | 10 | 40 |\n| 5 | 5 | 25 |\n| 6 | 1 | 6 |\n\nAdding the last column gives\n\\[\nD(96)=1+10+30+40+25+6=\\boxed{112},\n\\]\nwhich is choice \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "math:stars-and-bars",
+        "cnm_h237",
+        "cnm_h232"
+      ],
+      "sourceRef": "amc/2020_AMC_12B_Q24#distinguish-three-factor"
+    },
+    {
+      "id": "first-factor-recursion",
+      "title": "Recur on the first factor",
+      "explanation": "Choosing the first factor leaves a smaller ordered-factorization problem. We can therefore build up the needed counts using divisors of \\(96\\).\n\nFor any \\(n>1\\), the single-factor product \\(n\\) contributes one representation. In every longer product, let \\(d\\) be the product of all factors after the first. Then \\(d\\) is a divisor of \\(n\\) with \\(1<d<n\\), the first factor is \\(n/d\\), and the remaining factors can be chosen in \\(D(d)\\) ways. Hence\n\\[\nD(n)=1+\\sum_{\\substack{d\\mid n\\\\1<d<n}}D(d).\n\\]\nDifferent choices of \\(d\\) give different first factors, and every longer product has exactly one such \\(d\\). Thus the recurrence counts every representation once.\n\nApply it in increasing order. The middle column lists every divisor used in the sum; the last column is one plus the sum of their previously computed counts.\n\n| \\(n\\) | Divisors used | \\(D(n)\\) |\n|---|---|---|\n| 2 | none | 1 |\n| 3 | none | 1 |\n| 4 | 2 | 2 |\n| 6 | 2, 3 | 3 |\n| 8 | 2, 4 | 4 |\n| 12 | 2, 3, 4, 6 | 8 |\n| 16 | 2, 4, 8 | 8 |\n| 24 | 2, 3, 4, 6, 8, 12 | 20 |\n| 32 | 2, 4, 8, 16 | 16 |\n| 48 | 2, 3, 4, 6, 8, 12, 16, 24 | 48 |\n\nFor example, the row for \\(12\\) gives\n\\[\nD(12)=1+D(2)+D(3)+D(4)+D(6)=1+1+1+2+3=8.\n\\]\nFinally, the proper divisors of \\(96\\) greater than \\(1\\) are \\(2,3,4,6,8,12,16,24,32,48\\), so\n\\[\n\\begin{aligned}\nD(96)&=1+1+1+2+3+4+8+8+20+16+48\\\\\n&=\\boxed{112}.\n\\end{aligned}\n\\]\nThe answer is choice \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "math:recursive-counting-probability"
+      ],
+      "sourceRef": "amc/2020_AMC_12B_Q24#first-factor-recursion"
+    },
+    {
+      "id": "distribute-prime-exponents",
+      "title": "Distribute prime exponents",
+      "directNodeIds": [
+        "math:stars-and-bars",
+        "cnm_h237"
+      ],
+      "sourceRef": "amc/2020_AMC_12B_Q24#distribute-prime-exponents"
+    }
+  ],
+  "sourceRef": "amc/2020_AMC_12B_Q24"
 }

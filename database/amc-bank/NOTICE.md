@@ -67,12 +67,12 @@ The project source link identifies Math Practice rather than the historical
 question-transcription page. These solutions remain adaptations of AMC material
 under the bank's CC BY-NC-SA 4.0 terms. Official-source adaptations identify MAA and retain their source URL, page and source question number.
 
-This provenance format supports future additions; it does not state that all
-missing worked solutions have been completed or that AI review certifies their
-correctness. Copied LIVE explanations and their solution-only figures remain
+All 5,435 stored AMC questions now have worked solutions. Copied LIVE explanations and their solution-only figures remain
 excluded.
 
 The 169 explanations that complete AMC 10 are original project explanations informed by external mathematical references, with per-method credits to the references actually used. They are separate from the 608 official-source adaptations. The cited contributors are [AMC Step by Step](https://amcstep.com/problems/2021_10B_9), [Art of Problem Solving Wiki contributors](https://artofproblemsolving.com/wiki/index.php/2020_AMC_10A_Problems/Problem_6), [LIVE by Po-Shen Loh](https://live.poshenloh.com/past-contests/amc10/2020A/solutions), [Random Math Wiki](https://wiki.randommath.com/en/amc10/2020/part-b/problem-16). Their material is used as private mathematical reference; copied worked prose, raw source pages and solution-only figures are not redistributed. Links and source hashes identify references and do not grant reuse rights to their content.
+
+The final 236 AMC 12 explanations complete stored worked-solution coverage. These original project explanations use per-method reference credits, including already reviewed sister-exam project methods and their underlying references where applicable. Each final AMC 12 method received a fresh independent AI review. Third-party worked prose, raw source captures and solution-only diagrams remain excluded. See [complete AMC 12 coverage](ADAPTATIONS.md#complete-amc-12-coverage).
 
 ## Modifications in Math Practice
 

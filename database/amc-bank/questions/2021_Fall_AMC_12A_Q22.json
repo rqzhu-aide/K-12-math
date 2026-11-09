@@ -1,62 +1,61 @@
 {
-  "Year": 2021,
-  "Level": "AMC 12",
-  "Batch": "Fall A",
-  "Area": "Counting & Probability",
-  "Number": 22,
-  "Question": "Azar and Carl play a game of tic-tac-toe. Azar places an \\(X\\) in one of the boxes in a \\(3\\)-by-\\(3\\) array of boxes, then Carl places an \\(O\\) in one of the remaining boxes. After that, Azar places an \\(X\\) in one of the remaining boxes, and so on until all \\(9\\) boxes are filled or one of the players has \\(3\\) of their symbols in a row — horizontal, vertical, or diagonal — whichever comes first, in which case that player wins the game. Suppose the players make their moves at random, rather than trying to follow a rational strategy, and that Carl wins the game when he places his third \\(O.\\) How many ways can the board look after the game is over?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(36\\)",
-    "B": "\\(112\\)",
-    "C": "\\(120\\)",
-    "D": "\\(148\\)",
-    "E": "\\(160\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.96",
-    "Concepts": "casework; combinations; complementary counting",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2021C/solutions",
-    "SourceSHA256": "e0d194663bebed49e91b5fc44ab962a7b781e51eb50e22fa813a19393e2d7f87",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2021_Fall_AMC_12A_Q22",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Azar and Carl play a game of tic-tac-toe. Azar places an \\(X\\) in one of the boxes in a \\(3\\)-by-\\(3\\) array of boxes, then Carl places an \\(O\\) in one of the remaining boxes. After that, Azar places an \\(X\\) in one of the remaining boxes, and so on until all \\(9\\) boxes are filled or one of the players has \\(3\\) of their symbols in a row — horizontal, vertical, or diagonal — whichever comes first, in which case that player wins the game. Suppose the players make their moves at random, rather than trying to follow a rational strategy, and that Carl wins the game when he places his third \\(O.\\) How many ways can the board look after the game is over?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(36\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(112\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(120\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(148\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(160\\)"
+      }
     ]
   },
-  "ID": "2021_Fall_AMC_12A_Q22",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h239",
+    "cnm_h232"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "65ab1998cbb77a12c90bc5ccd8cecca259621433571b08739a21df1bb1cf0464",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h239",
-      "cnm_h232"
-    ],
-    "supportIds": [],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "choose-winning-line",
+      "title": "Choose Carl's winning line",
+      "explanation": "Carl's third \\(O\\) is the sixth move, so the final board contains three \\(O\\)s and three \\(X\\)s. The \\(O\\)s must form a winning line, while the \\(X\\)s must not form one, since Azar would have won on the fifth move.\n\nThese conditions are also sufficient: alternate placing the symbols in their designated cells. Neither player can win with fewer than three symbols, Azar's three cells do not form a line, and Carl completes his line on move six. Thus we can count final placements without counting move orders.\n\nThere are two types of winning line for Carl:\n\n| Carl's line | Number of lines | Valid placements of the three \\(X\\)s |\n|---|---:|---:|\n| Row or column | \\(6\\) | \\(\\binom{6}{3}-2=18\\) |\n| Diagonal | \\(2\\) | \\(\\binom{6}{3}=20\\) |\n\nFor a row or column, the only winning lines disjoint from Carl's cells are the other two parallel rows or columns. Each accounts for one forbidden selection of three \\(X\\) cells. For a diagonal, every winning line meets Carl's diagonal, so no selection of three remaining cells can give Azar a win.\n\nCarl's three cells determine exactly one winning line, so no board is counted twice. The total is\n\\[\n6\\cdot18+2\\cdot20=\\boxed{148},\n\\]\nwhich is choice \\(\\boxed{\\text{D}}\\).",
+      "directNodeIds": [
+        "cnm_h239",
+        "cnm_h232"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_12A_Q22#choose-winning-line"
+    }
+  ],
+  "sourceRef": "amc/2021_Fall_AMC_12A_Q22"
 }

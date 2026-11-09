@@ -1,65 +1,76 @@
 {
-  "Year": 2021,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 19,
-  "Question": "Two fair dice, each with at least \\(6\\) faces are rolled. On each face of each die is printed a distinct integer from \\(1\\) to the number of faces on that die, inclusive. The probability of rolling a sum of \\(7\\) is \\(\\dfrac34\\) of the probability of rolling a sum of \\(10,\\) and the probability of rolling a sum of \\(12\\) is \\(\\dfrac{1}{12}.\\) What is the least possible number of faces on the two dice combined?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(16\\)",
-    "B": "\\(17\\)",
-    "C": "\\(18\\)",
-    "D": "\\(19\\)",
-    "E": "\\(20\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.97",
-    "Concepts": "dice (probability); optimization",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2021B/solutions",
-    "SourceSHA256": "d2bc790b41807ac1b6b89c14f6fa855657cb9b6a641fc524d4fdf476ea4f9f4d",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2021_AMC_12B_Q19",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Two fair dice, each with at least \\(6\\) faces are rolled. On each face of each die is printed a distinct integer from \\(1\\) to the number of faces on that die, inclusive. The probability of rolling a sum of \\(7\\) is \\(\\dfrac34\\) of the probability of rolling a sum of \\(10,\\) and the probability of rolling a sum of \\(12\\) is \\(\\dfrac{1}{12}.\\) What is the least possible number of faces on the two dice combined?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(16\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(17\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(18\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(19\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(20\\)"
+      }
     ]
   },
-  "ID": "2021_AMC_12B_Q19",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_285",
+    "math:extremal-principle"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "2c680501063d6cc3f238579fe33f681e15faca4ade32e13f209839df5f119e26",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_285",
-      "math:extremal-principle"
-    ],
-    "supportIds": [
-      "cnm_286",
-      "cnm_h231"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "bound-and-attain",
+      "title": "Prove a lower bound and attain it",
+      "explanation": "Both dice contain the numbers \\(1\\) through \\(6\\), so the number of outcomes summing to \\(7\\) is fixed. This turns the probability ratio into a counting condition.\n\nLet the dice have \\(a\\le b\\) faces. Their \\(ab\\) ordered outcomes are equally likely. Exactly six outcomes sum to \\(7\\):\n\\[\n(1,6),(2,5),\\ldots,(6,1).\n\\]\nSince the two probabilities have the same denominator, the number of outcomes summing to \\(10\\) must be\n\\[\n6\\div\\frac34=8.\n\\]\n\nFor each value on the smaller die, at most one value on the other die completes a sum of \\(10\\). Thus \\(a\\ge8\\). Moreover, if both dice had at most eight faces, the only possible outcomes summing to \\(10\\) would be\n\\[\n(2,8),(3,7),\\ldots,(8,2),\n\\]\nat most seven outcomes. Therefore \\(b\\ge9\\), giving the universal lower bound\n\\[\na+b\\ge8+9=17.\n\\]\n\nNow take an \\(8\\)-faced die and a \\(9\\)-faced die. There are eight outcomes summing to \\(10\\), namely \\((1,9)\\) through \\((8,2)\\), so the required probability ratio is \\(6/8=3/4\\).\n\nThe outcomes summing to \\(12\\) are \\((3,9),(4,8),\\ldots,(8,4)\\), exactly six. Hence\n\\[\n\\Pr(\\text{sum }12)=\\frac6{8\\cdot9}=\\frac1{12}.\n\\]\nBoth conditions hold, so the least combined number of faces is \\(\\boxed{17}\\), choice \\(\\textbf{B}\\).",
+      "directNodeIds": [
+        "cnm_285",
+        "cnm_286",
+        "cnm_h231",
+        "math:extremal-principle"
+      ],
+      "sourceRef": "amc/2021_AMC_12B_Q19#bound-and-attain"
+    },
+    {
+      "id": "factor-the-sum-twelve-condition",
+      "title": "Factor the sum-of-12 condition",
+      "explanation": "For small face counts, counting the outcomes summing to \\(12\\) produces an equation that factors. We will classify every possibility with at most \\(17\\) faces and check whether \\(17\\) is attainable.\n\nLet \\(6\\le a\\le b\\) be the face counts, and suppose \\(a+b\\le17\\). Then \\(b\\le11\\), so both face counts are less than \\(12\\).\n\nAn outcome summing to \\(12\\) has the form \\((x,12-x)\\). It is allowed exactly when\n\\[\n12-b\\le x\\le a.\n\\]\nEvery integer in this interval gives one distinct outcome, so there are\n\\[\na-(12-b)+1=a+b-11\n\\]\nsuch outcomes. The given probability therefore implies\n\\[\n\\frac{a+b-11}{ab}=\\frac1{12},\n\\qquad ab=12a+12b-132.\n\\]\nAdding \\(144\\) after rearranging gives\n\\[\n(12-a)(12-b)=12.\n\\]\nThe factors are positive integers, with \\(12-a\\ge12-b\\) and \\(12-a\\le6\\). Of the positive factor pairs \\((12,1),(6,2),(4,3)\\), only the last two satisfy these restrictions. Thus the only candidates are\n\\[\n(a,b)=(6,10)\\quad\\text{or}\\quad(8,9).\n\\]\n\nBoth have six outcomes summing to \\(7\\). Their counts for a sum of \\(10\\) are:\n\n| Face counts | Outcomes summing to \\(7\\) | Outcomes summing to \\(10\\) |\n|---|---:|---:|\n| \\((6,10)\\) | 6 | 6 |\n| \\((8,9)\\) | 6 | 8 |\n\nFor the last column, the first die can show any value from \\(1\\) through \\(a\\), and each has exactly one allowed partner completing a sum of \\(10\\). Thus only \\((8,9)\\) gives the required ratio \\(6/8=3/4\\). Its sum-of-12 probability is \\(6/72=1/12\\).\n\nWe have excluded every total below \\(17\\) and found a valid pair totaling \\(17\\). The minimum is therefore \\(\\boxed{17}\\), choice \\(\\textbf{B}\\).",
+      "directNodeIds": [
+        "cnm_285",
+        "cnm_286",
+        "cnm_h231",
+        "math:integer-diophantine-equations",
+        "math:extremal-principle"
+      ],
+      "sourceRef": "amc/2021_AMC_12B_Q19#factor-the-sum-twelve-condition"
+    }
+  ],
+  "sourceRef": "amc/2021_AMC_12B_Q19"
 }

@@ -1,64 +1,73 @@
 {
-  "Year": 2020,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 16,
-  "Question": "An urn contains one red ball and one blue ball. A box of extra red and blue balls lies nearby. George performs the following operation four times: he draws a ball from the urn at random and then takes a ball of the same color from the box and returns those two matching balls to the urn. After the four iterations the urn contains six balls. What is the probability that the urn contains three balls of each color?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac16\\)",
-    "B": "\\(\\dfrac15\\)",
-    "C": "\\(\\dfrac14\\)",
-    "D": "\\(\\dfrac13\\)",
-    "E": "\\(\\dfrac12\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.97",
-    "Concepts": "basic probability; combinations",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2020B/solutions",
-    "SourceSHA256": "7a8518eb82190575608f33e835bc9de283d48937d2df6622bac24ccb99e3153b",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2020_AMC_12B_Q16",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "An urn contains one red ball and one blue ball. A box of extra red and blue balls lies nearby. George performs the following operation four times: he draws a ball from the urn at random and then takes a ball of the same color from the box and returns those two matching balls to the urn. After the four iterations the urn contains six balls. What is the probability that the urn contains three balls of each color?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(\\dfrac16\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(\\dfrac15\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac14\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac13\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac12\\)"
+      }
     ]
   },
-  "ID": "2020_AMC_12B_Q16",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h245"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "12d7bb3d6e90b2c5504d8ff8e13e1686a0fe3b261a562a4371c08bb2888d86ba",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_h245"
-    ],
-    "supportIds": [
-      "cnm_h138",
-      "cnm_h237"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "count-successful-color-orders",
+      "title": "Count the successful draw orders",
+      "explanation": "Each operation adds one ball of the drawn color. Starting with one of each color, George finishes with three of each exactly when the four draws include two reds and two blues.\n\nThe two red positions can be chosen in\n\\[\n\\binom42=6\n\\]\nways. Each such choice specifies exactly one successful color order.\n\nFor example, the order \\(RRBB\\) has probability\n\\[\n\\frac12\\cdot\\frac23\\cdot\\frac14\\cdot\\frac25=\\frac1{30}.\n\\]\nThe fractions change because each operation increases the number of balls of the color drawn.\n\nEvery successful order has the same probability. Before the four draws, the total numbers of balls are always \\(2,3,4,5\\). For either color, there is one ball of that color before its first draw and two before its second draw. Therefore, regardless of the order, multiplying the successive conditional probabilities gives\n\\[\n\\frac{(1\\cdot2)(1\\cdot2)}{2\\cdot3\\cdot4\\cdot5}=\\frac1{30}.\n\\]\nThe six successful orders are mutually exclusive and include every way to obtain three balls of each color. Their probabilities add to\n\\[\n6\\cdot\\frac1{30}=\\boxed{\\frac15},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+      "directNodeIds": [
+        "cnm_h245",
+        "cnm_h138",
+        "cnm_h237"
+      ],
+      "sourceRef": "amc/2020_AMC_12B_Q16#count-successful-color-orders"
+    },
+    {
+      "id": "random-card-insertion",
+      "title": "Model the urn with card insertions",
+      "explanation": "The changing urn probabilities can be modeled by inserting cards on either side of a marker. This turns the problem into counting equally likely card orders.\n\nStart with one marker card. Insert four distinct cards labeled \\(1,2,3,4\\), in that order. At each step, choose uniformly among all insertion gaps, including the gaps before the first card and after the last card.\n\nSuppose \\(r\\) cards currently precede the marker and \\(b\\) follow it. There are \\(r+1\\) gaps before the marker and \\(b+1\\) after it, so the probabilities that the next insertion goes before or after the marker are\n\\[\n\\frac{r+1}{r+b+2}\\qquad\\text{and}\\qquad\\frac{b+1}{r+b+2}.\n\\]\nThese match the probabilities of drawing red or blue from an urn with \\(r+1\\) red balls and \\(b+1\\) blue balls. An insertion before the marker represents adding a red ball; an insertion after it represents adding a blue ball. Initially, \\(r=b=0\\), matching the original urn. Thus the card process has exactly the same successive color probabilities as the urn process.\n\nThere are \\(2,3,4,5\\) available gaps at the four insertions. Every particular insertion history therefore has probability\n\\[\n\\frac12\\cdot\\frac13\\cdot\\frac14\\cdot\\frac15=\\frac1{120}.\n\\]\nEach final card order comes from exactly one history: removing cards \\(4,3,2,1\\) in reverse order recovers their insertion positions. Hence all \\(5!=120\\) final orders are equally likely.\n\nThree balls of each color correspond to two cards on each side of the marker, so the marker must be in the middle position. The four labeled cards can fill the remaining positions in \\(4!=24\\) orders. The required probability is therefore\n\\[\n\\frac{4!}{5!}=\\boxed{\\frac15},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+      "directNodeIds": [
+        "cnm_h245",
+        "cnm_h137",
+        "cnm_h234",
+        "math:bijective-counting"
+      ],
+      "sourceRef": "amc/2020_AMC_12B_Q16#random-card-insertion"
+    }
+  ],
+  "sourceRef": "amc/2020_AMC_12B_Q16"
 }

@@ -1,79 +1,73 @@
 {
-  "Year": 2022,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 12,
-  "Question": "Kayla rolls four fair \\(6\\)-sided dice. What is the probability that at least one of the numbers Kayla rolls is greater than \\(4\\) and at least two of the numbers she rolls are greater than \\(2?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{2}{3}\\)",
-    "B": "\\(\\dfrac{19}{27}\\)",
-    "C": "\\(\\dfrac{59}{81}\\)",
-    "D": "\\(\\dfrac{61}{81}\\)",
-    "E": "\\(\\dfrac{7}{9}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.99",
-    "Concepts": "dice (probability); complementary counting; inclusion-exclusion",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2022B/solutions",
-    "SourceSHA256": "efb71db844024a12187d69e16958d86ad39eb081c9924a1953c2ed60eb149bca",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2022_AMC_12B_Q12",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "72f68f58155ef1987b2136090eea4016435fc2ceb2dc21872d15e99829863963",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_h137"
-    ],
-    "supportIds": [],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2022_AMC_12B_Q12",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Kayla rolls four fair \\(6\\)-sided dice. What is the probability that at least one of the numbers Kayla rolls is greater than \\(4\\) and at least two of the numbers she rolls are greater than \\(2?\\)",
+    "choices": [
       {
-        "id": "disjoint-failure-events",
-        "label": "Subtract disjoint failure cases",
-        "nodeIds": [
-          "cnm_h139",
-          "cnm_h141",
-          "cnm_h138"
-        ]
+        "id": "A",
+        "content": "\\(\\dfrac{2}{3}\\)"
       },
       {
-        "id": "count-by-high-rolls",
-        "label": "Count by the number of high rolls",
-        "nodeIds": [
-          "cnm_h232",
-          "cnm_h239"
-        ]
+        "id": "B",
+        "content": "\\(\\dfrac{19}{27}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac{59}{81}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac{61}{81}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac{7}{9}\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h137",
+    "cnm_h139"
+  ],
+  "solutions": [
+    {
+      "id": "disjoint-failure-events",
+      "title": "Subtract disjoint failure cases",
+      "explanation": "A roll greater than \\(4\\) already supplies one number greater than \\(2\\). This makes it easy to describe exactly how the requirements can fail.\n\nThere are two disjoint failure cases:\n\n1. No die shows a number greater than \\(4\\). Each die must show one of \\(1,2,3,4\\), so independence gives probability\n\\[\n\\left(\\frac46\\right)^4=\\frac{16}{81}.\n\\]\n2. At least one die shows a number greater than \\(4\\), but fewer than two dice show numbers greater than \\(2\\). This means exactly one die shows \\(5\\) or \\(6\\), and the other three show \\(1\\) or \\(2\\). There are four choices for the exceptional die, giving probability\n\\[\n4\\left(\\frac26\\right)\\left(\\frac26\\right)^3=\\frac4{81}.\n\\]\n\nEvery failure belongs to one of these cases, and they cannot overlap because only the second contains a roll greater than \\(4\\). Therefore the desired probability is\n\\[\n1-\\frac{16}{81}-\\frac4{81}=\\boxed{\\frac{61}{81}},\n\\]\nwhich is choice \\(\\boxed{\\text{D}}\\).",
+      "directNodeIds": [
+        "cnm_h139",
+        "cnm_h141",
+        "cnm_h138"
+      ],
+      "sourceRef": "amc/2022_AMC_12B_Q12#disjoint-failure-events"
+    },
+    {
+      "id": "count-by-high-rolls",
+      "title": "Count by the number of high rolls",
+      "explanation": "Only three categories matter: low \\(\\{1,2\\}\\), middle \\(\\{3,4\\}\\), and high \\(\\{5,6\\}\\). Each category has probability \\(1/3\\), so the \\(3^4=81\\) ordered category patterns are equally likely.\n\nCount successful patterns by the number \\(k\\) of high dice. If \\(k\\ge2\\), both requirements hold automatically. Choose the high positions in \\(\\binom4k\\) ways; each remaining position can be low or middle, giving \\(2^{4-k}\\) possibilities.\n\nIf \\(k=1\\), choose the high position in four ways. The remaining three positions may be low or middle, but they cannot all be low: at least one must supply the second number greater than \\(2\\).\n\n| Number of high dice | Successful patterns |\n|---|---:|\n| \\(1\\) | \\(4(2^3-1)=28\\) |\n| \\(2\\) | \\(\\binom42 2^2=24\\) |\n| \\(3\\) | \\(\\binom43 2=8\\) |\n| \\(4\\) | \\(1\\) |\n\nThese cases include every successful pattern exactly once, since each pattern has a unique number of high dice. Thus the probability is\n\\[\n\\frac{28+24+8+1}{81}=\\boxed{\\frac{61}{81}},\n\\]\nwhich is choice \\(\\boxed{\\text{D}}\\).",
+      "directNodeIds": [
+        "cnm_h137",
+        "cnm_h232",
+        "cnm_h239"
+      ],
+      "sourceRef": "amc/2022_AMC_12B_Q12#count-by-high-rolls"
+    }
+  ],
+  "sourceRef": "amc/2022_AMC_12B_Q12"
 }

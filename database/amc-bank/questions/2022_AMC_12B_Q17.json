@@ -1,64 +1,70 @@
 {
-  "Year": 2022,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 17,
-  "Question": "How many \\(4 \\times 4\\) arrays whose entries are \\(0\\)s and \\(1\\)s are there such that the row sums (the sum of the entries in each row) are \\(1,\\) \\(2,\\) \\(3,\\) and \\(4,\\) in some order, and the column sums (the sum of the entries in each column) are also \\(1,\\) \\(2,\\) \\(3,\\) and \\(4,\\) in some order? For example, the array \\[\\begin{bmatrix} 1 & 1 & 1 & 0 \\\\ 0 & 1 & 1 & 0 \\\\ 1 & 1 & 1 & 1 \\\\ 0 & 1 & 0 & 0 \\end{bmatrix}\\] satisfies the condition.",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(144\\)",
-    "B": "\\(240\\)",
-    "C": "\\(336\\)",
-    "D": "\\(576\\)",
-    "E": "\\(624\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "D",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.99",
-    "Concepts": "multiplication principle; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2022B/solutions",
-    "SourceSHA256": "efb71db844024a12187d69e16958d86ad39eb081c9924a1953c2ed60eb149bca",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2022_AMC_12B_Q17",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "How many \\(4 \\times 4\\) arrays whose entries are \\(0\\)s and \\(1\\)s are there such that the row sums (the sum of the entries in each row) are \\(1,\\) \\(2,\\) \\(3,\\) and \\(4,\\) in some order, and the column sums (the sum of the entries in each column) are also \\(1,\\) \\(2,\\) \\(3,\\) and \\(4,\\) in some order? For example, the array \\[\\begin{bmatrix} 1 & 1 & 1 & 0 \\\\ 0 & 1 & 1 & 0 \\\\ 1 & 1 & 1 & 1 \\\\ 0 & 1 & 0 & 0 \\end{bmatrix}\\] satisfies the condition.",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(144\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(240\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(336\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(576\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(624\\)"
+      }
     ]
   },
-  "ID": "2022_AMC_12B_Q17",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "D"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:bijective-counting"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "65c122227b8d1422003fd7555bb775fab445f010c05c0b32d3fbf0e81e784f2a",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:bijective-counting"
-    ],
-    "supportIds": [
-      "cnm_h234",
-      "cnm_h231"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "sort-rows-and-columns",
+      "title": "Sort the row and column sums",
+      "explanation": "Putting the row sums and column sums in increasing order reveals how much of the array is forced.\n\nRearrange the rows so their sums are \\(1,2,3,4\\) from top to bottom, and rearrange the columns so their sums are \\(1,2,3,4\\) from left to right. These rearrangements preserve the required conditions.\n\nThe bottom row and rightmost column must consist entirely of \\(1\\)s. Removing them leaves a \\(3\\times3\\) array whose row sums and column sums are both \\(0,1,2\\), in increasing order. Its top row and leftmost column therefore consist entirely of \\(0\\)s. Removing those leaves a \\(2\\times2\\) array with row sums and column sums \\(1,2\\), in that order. Its bottom row and rightmost column are all \\(1\\)s, forcing its remaining entry to be \\(0\\).\n\nThus the sorted array is uniquely determined:\n\\[\n\\begin{bmatrix}\n0&0&0&1\\\\\n0&0&1&1\\\\\n0&1&1&1\\\\\n1&1&1&1\n\\end{bmatrix}.\n\\]\nConversely, every permutation of its rows and columns satisfies the conditions. There are \\(4!\\) row permutations and \\(4!\\) column permutations. No two pairs of permutations give the same array: the distinct row sums identify the row permutation, and the distinct column sums identify the column permutation.\n\nTherefore the number of arrays is\n\\[\n(4!)^2=24^2=\\boxed{576},\n\\]\nwhich is choice \\(\\mathrm{D}\\).",
+      "directNodeIds": [
+        "math:bijective-counting",
+        "cnm_h234",
+        "cnm_h231"
+      ],
+      "sourceRef": "amc/2022_AMC_12B_Q17#sort-rows-and-columns"
+    },
+    {
+      "id": "count-the-reduced-array",
+      "title": "Remove the all-one row and column",
+      "explanation": "The row and column with sum \\(4\\) are all \\(1\\)s, so removing them leaves a much smaller counting problem.\n\nThere are \\(4\\) choices for the all-one row and \\(4\\) choices for the all-one column. Delete both. Each surviving row and column loses exactly one \\(1\\), so the remaining \\(3\\times3\\) array must have row sums \\(0,1,2\\) and column sums \\(0,1,2\\), each in some order.\n\nChoose the row containing two \\(1\\)s in \\(3\\) ways. Choose its single zero position in \\(3\\) ways. Exactly one more \\(1\\) remains to be placed, since the total of the row sums is \\(3\\).\n\nThat last \\(1\\) must be in one of the other two rows, giving \\(2\\) choices. It must also be in one of the two columns already containing a \\(1\\), giving \\(2\\) choices. Placing it in the empty column would give column sums \\(1,1,1\\), which is forbidden. Each allowed placement gives row sums \\(2,1,0\\) and column sums \\(2,1,0\\).\n\nEvery valid reduced array determines these choices uniquely, and restoring the deleted all-one row and column recovers exactly one original array. Hence the total is\n\\[\n4\\cdot4\\cdot3\\cdot3\\cdot2\\cdot2=\\boxed{576}.\n\\]\nThe answer is choice \\(\\mathrm{D}\\).",
+      "directNodeIds": [
+        "cnm_h231"
+      ],
+      "sourceRef": "amc/2022_AMC_12B_Q17#count-the-reduced-array"
+    }
+  ],
+  "sourceRef": "amc/2022_AMC_12B_Q17"
 }

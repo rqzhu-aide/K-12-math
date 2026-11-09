@@ -1,63 +1,70 @@
 {
-  "Year": 2022,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Counting & Probability",
-  "Number": 5,
-  "Question": "Let the taxicab distance between points \\((x_1,y_1)\\) and \\((x_2,y_2)\\) in the coordinate plane be given by \\(|x_1-x_2|+|y_1-y_2|.\\) For how many points \\(P\\) with integer coordinates is the taxicab distance between \\(P\\) and the origin less than or equal to \\(20?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(441\\)",
-    "B": "\\(761\\)",
-    "C": "\\(841\\)",
-    "D": "\\(921\\)",
-    "E": "\\(924\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.54",
-    "Concepts": "lattice point; arithmetic sequence",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2022A/solutions",
-    "SourceSHA256": "25afecb70d053b546e2a70288716895c648653913bd0416ce4795c52ef2097e0",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2022_AMC_12A_Q05",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Let the taxicab distance between points \\((x_1,y_1)\\) and \\((x_2,y_2)\\) in the coordinate plane be given by \\(|x_1-x_2|+|y_1-y_2|.\\) For how many points \\(P\\) with integer coordinates is the taxicab distance between \\(P\\) and the origin less than or equal to \\(20?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(441\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(761\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(841\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(921\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(924\\)"
+      }
     ]
   },
-  "ID": "2022_AMC_12A_Q05",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:lattice-counting"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "2f49a2410cd2f59c2ae82886b17e07353146241a3d484ce2be2f562083eccc21",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:lattice-counting"
-    ],
-    "supportIds": [
-      "cnm_h204"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "count-distance-levels",
+      "title": "Count by distance",
+      "explanation": "An integer-coordinate point has an integer taxicab distance from the origin, so we can count points separately at distances \\(0,1,\\ldots,20\\).\n\nWrite the point as \\((x,y)\\). At distance \\(k>0\\), we need\n\\[\n|x|+|y|=k.\n\\]\nThere are four points on the coordinate axes: \\((\\pm k,0)\\) and \\((0,\\pm k)\\). For points off the axes, \\(|x|\\) can be any integer from 1 through \\(k-1\\); then \\(|y|=k-|x|\\) is fixed. Each of these \\(k-1\\) choices gives four sign combinations. Thus the number at distance \\(k\\) is\n\\[\n4+4(k-1)=4k.\n\\]\nThe origin is the only point at distance 0. Different distances give disjoint groups, so the total is\n\\[\n1+4(1+2+\\cdots+20)\n=1+4\\cdot\\frac{20\\cdot21}{2}\n=\\boxed{841}.\n\\]\nThe answer is choice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "math:lattice-counting",
+        "cnm_h204"
+      ],
+      "sourceRef": "amc/2022_AMC_12A_Q05#count-distance-levels"
+    },
+    {
+      "id": "count-horizontal-rows",
+      "title": "Count horizontal rows",
+      "explanation": "Fixing the vertical coordinate turns the distance condition into a simple interval of allowed horizontal coordinates.\n\nOn the row \\(y=j\\), the condition is\n\\[\n|x|\\le20-|j|.\n\\]\nThus \\(j\\) must be an integer between \\(-20\\) and 20. On that row, the integer values of \\(x\\) run from \\(-(20-|j|)\\) through \\(20-|j|\\), inclusive, giving\n\\[\n2(20-|j|)+1=41-2|j|\n\\]\npoints.\n\nFor rows \\(j=-20,-19,\\ldots,0\\), these counts are \\(1,3,\\ldots,41\\), with sum\n\\[\n\\frac{21(1+41)}2=441.\n\\]\nFor rows \\(j=1,2,\\ldots,20\\), the counts are \\(39,37,\\ldots,1\\), with sum\n\\[\n\\frac{20(39+1)}2=400.\n\\]\nEvery eligible point belongs to exactly one of these rows, so the total is\n\\[\n441+400=\\boxed{841},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "math:lattice-counting",
+        "cnm_h204"
+      ],
+      "sourceRef": "amc/2022_AMC_12A_Q05#count-horizontal-rows"
+    }
+  ],
+  "sourceRef": "amc/2022_AMC_12A_Q05"
 }

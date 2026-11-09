@@ -1,64 +1,62 @@
 {
-  "Year": 2021,
-  "Level": "AMC 12",
-  "Batch": "Fall B",
-  "Area": "Number Theory",
-  "Number": 25,
-  "Question": "For \\(n\\) a positive integer, let \\(R(n)\\) be the sum of the remainders when \\(n\\) is divided by \\(2,\\) \\(3,\\) \\(4,\\) \\(5,\\) \\(6,\\) \\(7,\\) \\(8,\\) \\(9,\\) and \\(10.\\) For example, \\[ \\begin{aligned} &R(15) = 1 + 0 + 3 + 0 + 3 \\\\ &\\quad {}+ 1 + 7 + 6 + 5 = 26. \\end{aligned} \\] How many two-digit positive integers \\(n\\) satisfy \\[R(n) = R(n + 1)?\\]",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(0\\)",
-    "B": "\\(1\\)",
-    "C": "\\(2\\)",
-    "D": "\\(3\\)",
-    "E": "\\(4\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.94",
-    "Concepts": "modular arithmetic; divisibility",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2021D/solutions",
-    "SourceSHA256": "837b083cd054de58180250da3b759e0ac23595359efda240d31f34748965773c",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2021_Fall_AMC_12B_Q25",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "For \\(n\\) a positive integer, let \\(R(n)\\) be the sum of the remainders when \\(n\\) is divided by \\(2,\\) \\(3,\\) \\(4,\\) \\(5,\\) \\(6,\\) \\(7,\\) \\(8,\\) \\(9,\\) and \\(10.\\) For example, \\[ \\begin{aligned} &R(15) = 1 + 0 + 3 + 0 + 3 \\\\ &\\quad {}+ 1 + 7 + 6 + 5 = 26. \\end{aligned} \\] How many two-digit positive integers \\(n\\) satisfy \\[R(n) = R(n + 1)?\\]",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(0\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(1\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(2\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(3\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(4\\)"
+      }
     ]
   },
-  "ID": "2021_Fall_AMC_12B_Q25",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:number-theory"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "area": "Number Theory",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:number-theory"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:modular-congruence",
+    "math:integer-diophantine-equations"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "0d248e19bef0d11583cb09a2f473d568745419ec94577cf3b947a2eb8a8f08d6",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:modular-congruence",
-      "math:integer-diophantine-equations"
-    ],
-    "supportIds": [
-      "cnm_p153"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "remainder-changes",
+      "title": "Track remainder changes",
+      "explanation": "Adding 1 usually increases each remainder by 1. The exceptions occur precisely when a divisor divides \\(n+1\\), so examining the change in \\(R\\) turns the problem into a divisibility question.\n\nSet \\(t=n+1\\). For a divisor \\(m\\) between 2 and 10, the remainder increases by 1 unless \\(m\\mid t\\). In that case it changes from \\(m-1\\) to 0, a change of \\(1-m\\). Thus we can first count nine increases of 1, then subtract \\(m\\) for every \\(m\\) dividing \\(t\\):\n\\[\nR(n+1)-R(n)=9-\\sum_{\\substack{2\\le m\\le10\\\\m\\mid t}}m.\n\\]\nConsequently, the divisors of \\(t\\) among \\(2,3,\\ldots,10\\) must sum to 9.\n\nThere can be at most three such divisors, since the four smallest sum to \\(2+3+4+5=14\\). The complete list of sets summing to 9 is below. For three elements, only \\(2+3+4\\) works, since the next smallest sum is \\(2+3+5=10\\).\n\n| Possible divisor set | Consequence |\n|---|---|\n| \\(\\{9\\}\\) | Divisibility by 9 also forces divisibility by 3. |\n| \\(\\{2,7\\}\\) | Possible, provided no other divisor from 2 through 10 divides \\(t\\). |\n| \\(\\{3,6\\}\\) | Divisibility by 6 also forces divisibility by 2. |\n| \\(\\{4,5\\}\\) | Divisibility by 4 also forces divisibility by 2. |\n| \\(\\{2,3,4\\}\\) | Divisibility by both 2 and 3 forces divisibility by 6. |\n\nOnly \\(\\{2,7\\}\\) remains. Therefore \\(t\\) must be a multiple of 14 with no additional divisors between 2 and 10.\n\nSince \\(10\\le n\\le99\\), we have \\(11\\le t\\le100\\). The possible multiples of 14 are\n\\[\n14,28,42,56,70,84,98.\n\\]\nThe numbers \\(28,56,84\\) are divisible by 4, \\(42\\) is divisible by 3, and \\(70\\) is divisible by 5. Both 14 and 98 have exactly 2 and 7 as divisors in the specified range, so both work.\n\nThus \\(n=13\\) or \\(n=97\\), giving \\(\\boxed{2}\\) integers, choice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "math:modular-congruence",
+        "math:integer-diophantine-equations",
+        "cnm_p153"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_12B_Q25#remainder-changes"
+    }
+  ],
+  "sourceRef": "amc/2021_Fall_AMC_12B_Q25"
 }

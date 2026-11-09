@@ -1,72 +1,73 @@
 {
-  "Year": 2021,
-  "Level": "AMC 12",
-  "Batch": "Fall B",
-  "Area": "Counting & Probability",
-  "Number": 23,
-  "Question": "What is the average number of pairs of consecutive integers in a randomly selected subset of \\(5\\) distinct integers chosen from the set \\(\\{1, 2, 3, \\ldots, 30\\}?\\) (For example the set \\(\\{1, 17, 18, 19, 30\\}\\) has \\(2\\) pairs of consecutive integers.)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{2}{3}\\)",
-    "B": "\\(\\dfrac{29}{36}\\)",
-    "C": "\\(\\dfrac{5}{6}\\)",
-    "D": "\\(\\dfrac{29}{30}\\)",
-    "E": "\\(1\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.98",
-    "Concepts": "expected value; sampling without replacement",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2021D/solutions",
-    "SourceSHA256": "837b083cd054de58180250da3b759e0ac23595359efda240d31f34748965773c",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2021_Fall_AMC_12B_Q23",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "What is the average number of pairs of consecutive integers in a randomly selected subset of \\(5\\) distinct integers chosen from the set \\(\\{1, 2, 3, \\ldots, 30\\}?\\) (For example the set \\(\\{1, 17, 18, 19, 30\\}\\) has \\(2\\) pairs of consecutive integers.)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(\\dfrac{2}{3}\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(\\dfrac{29}{36}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac{5}{6}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac{29}{30}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(1\\)"
+      }
     ]
   },
-  "ID": "2021_Fall_AMC_12B_Q23",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "A"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h252"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "66b6ed648dcfa4824ea0205ba3bc6d9e639cff0af1b4e1e1cf78131ea8f6725a",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h252"
-    ],
-    "supportIds": [
-      "cnm_h239"
-    ],
-    "routes": [
-      {
-        "id": "incidence-average",
-        "label": "Average by incidence counting",
-        "nodeIds": [
-          "math:double-counting",
-          "cnm_h237"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "incidence-average",
+      "title": "Count all pair appearances",
+      "explanation": "The total number of consecutive pairs across all subsets can be counted one fixed pair at a time, then divided by the number of subsets.\n\nThere are \\(\\binom{30}{5}\\) equally likely subsets. Give each subset one mark for every consecutive pair it contains. Overlapping pairs receive separate marks, as required by the question.\n\nThere are \\(29\\) possible consecutive pairs, from \\(\\{1,2\\}\\) through \\(\\{29,30\\}\\). For any fixed pair, a subset containing it is completed by choosing three of the other \\(28\\) integers. Thus that pair contributes \\(\\binom{28}{3}\\) marks, and the total number of marks is\n\\[\n29\\binom{28}{3}.\n\\]\nEach subset contributes exactly its own number of consecutive pairs to this total. Therefore the desired average is\n\\[\n\\frac{29\\binom{28}{3}}{\\binom{30}{5}}\n=29\\cdot\\frac{5\\cdot4}{30\\cdot29}\n=\\boxed{\\frac23},\n\\]\nchoice \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "math:double-counting",
+        "cnm_h239",
+        "cnm_h252"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_12B_Q23#incidence-average"
+    },
+    {
+      "id": "consecutive-run-distribution",
+      "title": "Count consecutive runs",
+      "explanation": "A run of \\(s\\) selected consecutive integers contributes \\(s-1\\) consecutive pairs. Thus counting subsets by their number of runs gives the full distribution of the pair count.\n\nRepresent a subset by \\(30\\) positions, each marked selected or unselected. A run is a block of selected positions that cannot be extended within the subset. If there are \\(r\\) runs, their lengths sum to \\(5\\), so the number of consecutive pairs is \\(5-r\\).\n\nThere are \\(\\binom{4}{r-1}\\) ordered lists of positive run lengths: place \\(r-1\\) cuts in the four spaces between five selected marks.\n\nThe \\(25\\) unselected marks leave \\(26\\) gaps, including the two ends. Choose \\(r\\) of these gaps and insert the runs in order. There are \\(\\binom{26}{r}\\) choices. Different occupied gaps are separated by an unselected mark, so the runs stay distinct. Conversely, every subset uniquely determines its run lengths and occupied gaps. Hence the number of subsets with \\(r\\) runs is\n\\[\n\\binom{4}{r-1}\\binom{26}{r}.\n\\]\nThis gives all possibilities:\n\n| Runs \\(r\\) | Consecutive pairs \\(5-r\\) | Number of subsets |\n|---:|---:|---:|\n| \\(1\\) | \\(4\\) | \\(26\\) |\n| \\(2\\) | \\(3\\) | \\(1300\\) |\n| \\(3\\) | \\(2\\) | \\(15600\\) |\n| \\(4\\) | \\(1\\) | \\(59800\\) |\n| \\(5\\) | \\(0\\) | \\(65780\\) |\n\nFor example, the \\(r=3\\) entry is \\(\\binom42\\binom{26}{3}=6\\cdot2600=15600\\). Using these counts as weights, the average is\n\\[\n\\frac{4(26)+3(1300)+2(15600)+59800}{\\binom{30}{5}}\n=\\frac{95004}{142506}\n=\\boxed{\\frac23},\n\\]\nchoice \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "math:bijective-counting",
+        "math:stars-and-bars",
+        "cnm_h239",
+        "cnm_h252"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_12B_Q23#consecutive-run-distribution"
+    }
+  ],
+  "sourceRef": "amc/2021_Fall_AMC_12B_Q23"
 }

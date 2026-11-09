@@ -1,64 +1,88 @@
 {
-  "Year": 2023,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Counting & Probability",
-  "Number": 21,
-  "Question": "If \\(A\\) and \\(B\\) are vertices of a polyhedron, define the distance \\(d(A,B)\\) to be the minimum number of edges of the polyhedron one must traverse in order to connect \\(A\\) and \\(B.\\) For example, if \\(\\overline{AB}\\) is an edge of the polyhedron, then \\(d(A,B)=1,\\) but if \\(\\overline{AC}\\) and \\(\\overline{CB}\\) are edges and \\(\\overline{AB}\\) is not an edge, then \\(d(A,B)=2.\\) Let \\(Q,\\) \\(R,\\) and \\(S\\) be randomly chosen distinct vertices of a regular icosahedron (regular polyhedron made up of \\(20\\) equilateral triangles). What is the probability that \\(d(Q,R)\\gt d(R,S)?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{7}{22}\\)",
-    "B": "\\(\\dfrac{1}{3}\\)",
-    "C": "\\(\\dfrac{3}{8}\\)",
-    "D": "\\(\\dfrac{5}{12}\\)",
-    "E": "\\(\\dfrac{1}{2}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.89",
-    "Concepts": "graph theory; basic probability; symmetry",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2023A/solutions",
-    "SourceSHA256": "8ee57a6587e75f919020451b868a6268853063e33eb032717e4af0bf5adccc7a",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2023_AMC_12A_Q21",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "If \\(A\\) and \\(B\\) are vertices of a polyhedron, define the distance \\(d(A,B)\\) to be the minimum number of edges of the polyhedron one must traverse in order to connect \\(A\\) and \\(B.\\) For example, if \\(\\overline{AB}\\) is an edge of the polyhedron, then \\(d(A,B)=1,\\) but if \\(\\overline{AC}\\) and \\(\\overline{CB}\\) are edges and \\(\\overline{AB}\\) is not an edge, then \\(d(A,B)=2.\\) Let \\(Q,\\) \\(R,\\) and \\(S\\) be randomly chosen distinct vertices of a regular icosahedron (regular polyhedron made up of \\(20\\) equilateral triangles). What is the probability that \\(d(Q,R)\\gt d(R,S)?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(\\dfrac{7}{22}\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(\\dfrac{1}{3}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac{3}{8}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac{5}{12}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac{1}{2}\\)"
+      }
     ]
   },
-  "ID": "2023_AMC_12A_Q21",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "A"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:graph-models",
+    "cnm_h137"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "2f227810e0443426c112d63bd593bc8a077ca5e3795521ea744bf39be7a28e8b",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:graph-models",
-      "cnm_h137"
-    ],
-    "supportIds": [
-      "cnm_h232"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "equal-distance-complement",
+      "title": "Count ties and use symmetry",
+      "explanation": "Swapping \\(Q\\) and \\(S\\) reverses the strict inequality, so the two strict comparisons are equally likely. It is enough to count equal distances from \\(R\\).\n\nBy the icosahedron's symmetry, fix \\(R\\) as its top vertex. Its edge structure consists of two pentagonal rings between a top and a bottom vertex. Each tip joins the five vertices of its nearby ring, and a belt of ten triangular faces joins the two rings. Every vertex of the lower ring has neighbors in the upper ring.\n\nConsequently, measured from \\(R\\), the five upper-ring vertices have distance \\(1\\), the five lower-ring vertices have distance \\(2\\), and the bottom vertex has distance \\(3\\). The bottom cannot be reached in two edges because none of its neighbors is adjacent to \\(R\\).\n\nThere are \\(11\\cdot10=110\\) equally likely ordered choices for the distinct vertices \\((Q,S)\\). Equal distances occur when both lie in the upper ring or both lie in the lower ring. Each ring gives \\(5\\cdot4\\) ordered choices. The single bottom vertex cannot supply two distinct choices. Thus\n\\[\nP\\bigl(d(Q,R)=d(R,S)\\bigr)\n=\\frac{5\\cdot4+5\\cdot4}{110}\n=\\frac4{11}.\n\\]\nSwapping \\(Q\\) and \\(S\\) pairs every greater-distance outcome with a less-distance outcome. Hence\n\\[\nP\\bigl(d(Q,R)>d(R,S)\\bigr)\n=\\frac12\\left(1-\\frac4{11}\\right)\n=\\boxed{\\frac7{22}},\n\\]\nwhich is choice \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "math:graph-models",
+        "cnm_h137",
+        "cnm_h139",
+        "cnm_h232"
+      ],
+      "sourceRef": "amc/2023_AMC_12A_Q21#equal-distance-complement"
+    },
+    {
+      "id": "distance-layer-casework",
+      "title": "Count the favorable distance pairs",
+      "explanation": "The desired inequality depends only on the distance layers containing \\(Q\\) and \\(S\\), so we can count favorable pairs of layers directly.\n\nFix \\(R\\) as the top vertex, which is allowed by symmetry. An icosahedron has an upper pentagonal ring, a lower pentagonal ring, and an opposite bottom vertex. The top joins only the upper ring; each lower-ring vertex has an upper-ring neighbor; and the bottom joins only the lower ring. Thus the other vertices have distances \\(1,2,3\\) from \\(R\\), with respective counts \\(5,5,1\\). In particular, the bottom requires three edges, since it has no neighbor adjacent to \\(R\\).\n\nAfter fixing \\(R\\), there are \\(11\\cdot10=110\\) equally likely ordered pairs \\((Q,S)\\). The complete list of favorable distance pairs is:\n\n| \\(d(Q,R)\\) | \\(d(R,S)\\) | Number of ordered pairs |\n|---|---|---|\n| \\(2\\) | \\(1\\) | \\(5\\cdot5=25\\) |\n| \\(3\\) | \\(1\\) | \\(1\\cdot5=5\\) |\n| \\(3\\) | \\(2\\) | \\(1\\cdot5=5\\) |\n\nEach count multiplies the sizes of the two layers. Because the layers are different, \\(Q\\) and \\(S\\) are automatically distinct. The three cases cannot overlap, and they exhaust all strict inequalities among the possible distances \\(1,2,3\\).\n\nTherefore the probability is\n\\[\n\\frac{25+5+5}{110}=\\boxed{\\frac7{22}},\n\\]\nwhich is choice \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "math:graph-models",
+        "cnm_h137",
+        "cnm_h232"
+      ],
+      "sourceRef": "amc/2023_AMC_12A_Q21#distance-layer-casework"
+    },
+    {
+      "id": "eliminate-by-denominators",
+      "title": "Use the answer denominators",
+      "explanation": "Counting the equally likely outcomes restricts the denominator of the probability. This lets us use the answer choices without determining every distance layer.\n\nFirst find the number of vertices. Let \\(V,E,F\\) be the numbers of vertices, edges, and faces. Each of the \\(20\\) triangular faces has three edges, and each edge belongs to two faces, so\n\\[\nE=\\frac{20\\cdot3}{2}=30.\n\\]\nEuler's relation for a convex polyhedron is \\(V-E+F=2\\). Thus\n\\[\nV=2+30-20=12.\n\\]\n\nRotational symmetry makes the desired probability the same for every choice of \\(R\\), so fix \\(R\\). There are \\(11\\) choices for \\(Q\\) and then \\(10\\) choices for \\(S\\). These \\(110\\) ordered pairs are equally likely. Consequently, the probability has the form \\(N/110\\) for an integer \\(N\\). After reduction, its denominator must divide \\(110\\).\n\nChoices B, C, and D have reduced denominators \\(3,8,12\\), respectively. None divides \\(110\\), so these choices are excluded.\n\nTo exclude E, let \\(p\\) be the desired probability and \\(t\\) the probability of equal distances. Exchanging \\(Q\\) and \\(S\\) shows that the reverse strict inequality also has probability \\(p\\). The greater, smaller, and equal comparisons are mutually exclusive and exhaustive, giving\n\\[\n2p+t=1.\n\\]\nThere is a positive chance of a tie: take a triangular face containing \\(R\\) and choose its other two vertices as \\(Q,S\\). Both have distance \\(1\\) from \\(R\\). Thus \\(t>0\\), which implies \\(p<1/2\\), excluding E.\n\nOnly choice A remains, so the probability is \\(\\boxed{\\frac7{22}}\\), choice \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "math:euler-convex-polyhedra",
+        "cnm_h137",
+        "cnm_h231",
+        "cnm_p153",
+        "math:graph-models",
+        "cnm_h139"
+      ],
+      "sourceRef": "amc/2023_AMC_12A_Q21#eliminate-by-denominators"
+    }
+  ],
+  "sourceRef": "amc/2023_AMC_12A_Q21"
 }

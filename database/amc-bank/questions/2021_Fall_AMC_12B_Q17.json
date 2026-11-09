@@ -1,64 +1,74 @@
 {
-  "Year": 2021,
-  "Level": "AMC 12",
-  "Batch": "Fall B",
-  "Area": "Counting & Probability",
-  "Number": 17,
-  "Question": "A bug starts at a vertex of a grid made of equilateral triangles of side length \\(1.\\) At each step the bug moves in one of the \\(6\\) possible directions along the grid lines randomly and independently with equal probability. What is the probability that after \\(5\\) moves the bug never will have been more than \\(1\\) unit away from the starting position?",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{13}{108}\\)",
-    "B": "\\(\\dfrac{7}{54}\\)",
-    "C": "\\(\\dfrac{29}{216}\\)",
-    "D": "\\(\\dfrac{4}{27}\\)",
-    "E": "\\(\\dfrac{1}{16}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.94",
-    "Concepts": "random walk; recursive probability",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2021D/solutions",
-    "SourceSHA256": "837b083cd054de58180250da3b759e0ac23595359efda240d31f34748965773c",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2021_Fall_AMC_12B_Q17",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "A bug starts at a vertex of a grid made of equilateral triangles of side length \\(1.\\) At each step the bug moves in one of the \\(6\\) possible directions along the grid lines randomly and independently with equal probability. What is the probability that after \\(5\\) moves the bug never will have been more than \\(1\\) unit away from the starting position?",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(\\dfrac{13}{108}\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(\\dfrac{7}{54}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac{29}{216}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac{4}{27}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac{1}{16}\\)"
+      }
     ]
   },
-  "ID": "2021_Fall_AMC_12B_Q17",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "A"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:recursive-counting-probability"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "06c784439a2dd48d9cfba7c0653f0a830ec9827ea493f5b4becd2b03fd03d66c",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:recursive-counting-probability"
-    ],
-    "supportIds": [
-      "math:graph-models",
-      "cnm_h137"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "count-safe-paths-by-state",
+      "title": "Count paths by endpoint type",
+      "explanation": "The allowed grid points are just the starting point and its six nearest neighbors. Grouping these points by type makes it possible to count safe paths without listing every direction sequence.\n\nCall the starting point the center. Its six neighbors form a regular hexagon. From the center, all six moves are safe. From any hexagon vertex, exactly three moves are safe: one returns to the center, and two go to adjacent hexagon vertices. A segment joining allowed points stays inside the unit disk, so these moves also satisfy the distance restriction throughout each step.\n\nLet \\(a_n\\) count safe paths of \\(n\\) moves ending at the center, and let \\(b_n\\) count safe paths ending at any of the six surrounding vertices, combined. Then\n\\[\na_{n+1}=b_n,\n\\qquad\nb_{n+1}=6a_n+2b_n.\n\\]\nThe first equation holds because each surrounding endpoint has exactly one move to the center. For the second, each center endpoint has six moves to surrounding vertices, while each surrounding endpoint has two. Every extended path is counted exactly once by its preceding path and final move.\n\nStarting with \\((a_0,b_0)=(1,0)\\), we obtain:\n\n| Moves \\(n\\) | Center endpoints \\(a_n\\) | Surrounding endpoints \\(b_n\\) |\n|---|---:|---:|\n| 0 | 1 | 0 |\n| 1 | 0 | 6 |\n| 2 | 6 | 12 |\n| 3 | 12 | 60 |\n| 4 | 60 | 192 |\n| 5 | 192 | 744 |\n\nThus there are \\(192+744=936\\) safe paths. The \\(6^5\\) direction sequences are equally likely, so the required probability is\n\\[\n\\frac{936}{6^5}=\\frac{936}{7776}=\\boxed{\\frac{13}{108}},\n\\]\nchoice \\(\\boxed{\\mathrm{A}}\\).",
+      "directNodeIds": [
+        "math:recursive-counting-probability",
+        "math:graph-models",
+        "cnm_h137"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_12B_Q17#count-safe-paths-by-state"
+    },
+    {
+      "id": "count-first-exit-cases",
+      "title": "Count the first exit",
+      "explanation": "The first move that takes the bug too far gives a useful way to divide all failures into disjoint cases. A later return cannot undo that first failure.\n\nThe permitted grid points are the center and its six neighbors. Write \\(C\\) for the center, \\(R\\) for any surrounding vertex, and \\(X\\) for the first arrival farther than \\(1\\) unit from the center. Moves between permitted points stay inside the unit disk.\n\nFrom \\(C\\), the next state is always \\(R\\). From \\(R\\), one of the six directions returns to \\(C\\), two go to other surrounding vertices, and three leave the permitted region. Thus\n\\[\nP(R\\to C)=\\frac16,\n\\qquad\nP(R\\to R)=\\frac13,\n\\qquad\nP(R\\to X)=\\frac12.\n\\]\n\nThe following table lists every possible first exit by move \\(5\\). The initial \\(C\\) is omitted, and each pattern stops at its first \\(X\\).\n\n| First exit on move | State patterns | Total probability |\n|---|---|---:|\n| 2 | \\(RX\\) | \\(\\frac12\\) |\n| 3 | \\(RRX\\) | \\(\\frac16\\) |\n| 4 | \\(RRRX,\\ RCRX\\) | \\(\\frac1{18}+\\frac1{12}\\) |\n| 5 | \\(RRRRX,\\ RCRRX,\\ RRCRX\\) | \\(\\frac1{54}+\\frac1{36}+\\frac1{36}\\) |\n\nEach pattern's probability is the product of its successive transition probabilities. For example, \\(RCRRX\\) has probability\n\\[\n1\\cdot\\frac16\\cdot1\\cdot\\frac13\\cdot\\frac12=\\frac1{36}.\n\\]\nThe list is exhaustive: the first state must be \\(R\\), every \\(C\\) must be followed by \\(R\\), and the state just before \\(X\\) must be \\(R\\). These restrictions give exactly the displayed patterns of the required lengths.\n\nThe cases cannot overlap because a path has only one first exit. Their total probability is\n\\[\n\\frac12+\\frac16+\\frac1{18}+\\frac1{12}\n+\\frac1{54}+\\frac1{36}+\\frac1{36}\n=\\frac{95}{108}.\n\\]\nTherefore the probability of remaining within the distance restriction is\n\\[\n1-\\frac{95}{108}=\\boxed{\\frac{13}{108}},\n\\]\nchoice \\(\\boxed{\\mathrm{A}}\\).",
+      "directNodeIds": [
+        "math:graph-models",
+        "cnm_h137",
+        "cnm_h245",
+        "cnm_h138",
+        "cnm_h139"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_12B_Q17#count-first-exit-cases"
+    }
+  ],
+  "sourceRef": "amc/2021_Fall_AMC_12B_Q17"
 }

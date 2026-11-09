@@ -1,79 +1,73 @@
 {
-  "Year": 2021,
-  "Level": "AMC 12",
-  "Batch": "Fall B",
-  "Area": "Geometry",
-  "Number": 16,
-  "Question": "Suppose \\(a,\\) \\(b,\\) \\(c\\) are positive integers such that \\[a + b + c = 23\\] and \\[ \\begin{aligned} &\\gcd(a, b) + \\gcd(b, c) \\\\ &\\quad {}+ \\gcd(c, a) = 9. \\end{aligned} \\] What is the sum of all possible distinct values of \\(a^2 + b^2 + c^2?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(259\\)",
-    "B": "\\(438\\)",
-    "C": "\\(516\\)",
-    "D": "\\(625\\)",
-    "E": "\\(687\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.53",
-    "Concepts": "greatest common divisor; parity; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2021D/solutions",
-    "SourceSHA256": "837b083cd054de58180250da3b759e0ac23595359efda240d31f34748965773c",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2021_Fall_AMC_12B_Q16",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:geometry"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "75c20dadf33d2ff2c82a5875aa229d96721aeaa81f3d49e4e4ae5a750802e14c",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:integer-diophantine-equations"
-    ],
-    "supportIds": [
-      "cnm_p158"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2021_Fall_AMC_12B_Q16",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Suppose \\(a,\\) \\(b,\\) \\(c\\) are positive integers such that \\[a + b + c = 23\\] and \\[ \\begin{aligned} &\\gcd(a, b) + \\gcd(b, c) \\\\ &\\quad {}+ \\gcd(c, a) = 9. \\end{aligned} \\] What is the sum of all possible distinct values of \\(a^2 + b^2 + c^2?\\)",
+    "choices": [
       {
-        "id": "classify-pairwise-gcds",
-        "label": "Classify the pairwise gcds",
-        "nodeIds": [
-          "math:prime-factorization"
-        ]
+        "id": "A",
+        "content": "\\(259\\)"
       },
       {
-        "id": "bounded-triple-enumeration",
-        "label": "Enumerate sorted positive triples",
-        "nodeIds": [
-          "cnm_h020",
-          "cnm_p158"
-        ]
+        "id": "B",
+        "content": "\\(438\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(516\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(625\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(687\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "area": "Number Theory",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:number-theory"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:integer-diophantine-equations"
+  ],
+  "solutions": [
+    {
+      "id": "classify-pairwise-gcds",
+      "title": "Classify the three gcds",
+      "explanation": "Parity reduces the three gcds to just three possible patterns, making a complete case analysis short.\n\nSince \\(a+b+c=23\\) is odd, either all three integers are odd or exactly one is odd. In the latter case, the gcd of the two even integers is even, while each gcd involving the odd integer is odd. Their sum would be even, contradicting \\(9\\). Thus \\(a,b,c\\) are all odd.\n\nTheir three gcds are positive odd integers summing to \\(9\\). Ignoring order, the only possibilities are\n\\[\n(1,1,7),\\qquad(1,3,5),\\qquad(3,3,3).\n\\]\nTo see completeness, if the smallest gcd is at least \\(3\\), all three must equal \\(3\\). Otherwise the smallest is \\(1\\), leaving two odd integers with sum \\(8\\).\n\n- For \\((1,1,7)\\), two of the original integers are odd multiples of \\(7\\). Unless both equal \\(7\\), their sum is at least \\(7+21=28\\), too large. Thus the triple is \\((7,7,9)\\), up to order. Its gcds are indeed \\(7,1,1\\).\n- For \\((1,3,5)\\), relabel so that \\(\\gcd(a,b)=1\\), \\(\\gcd(b,c)=3\\), and \\(\\gcd(c,a)=5\\). Then \\(a\\ge5\\), \\(b\\ge3\\), and \\(c\\) is divisible by both \\(3\\) and \\(5\\), so \\(c\\ge15\\). These lower bounds already sum to \\(23\\), forcing \\((a,b,c)=(5,3,15)\\). Its gcds are \\(1,3,5\\), as required.\n- For \\((3,3,3)\\), all three integers would be divisible by \\(3\\), making their sum divisible by \\(3\\). This is impossible for \\(23\\).\n\nPermuting a triple does not change its square sum. The two possible values are\n\\[\n7^2+7^2+9^2=179,\n\\qquad\n3^2+5^2+15^2=259.\n\\]\nThey are distinct, so the requested sum is \\(179+259=\\boxed{438}\\), choice \\(\\textbf{B}\\).",
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "cnm_p158",
+        "cnm_p156"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_12B_Q16#classify-pairwise-gcds"
+    },
+    {
+      "id": "bounded-triple-enumeration",
+      "title": "List the sorted odd triples",
+      "explanation": "Symmetry lets us sort the integers, and parity makes the resulting list small enough to check completely.\n\nFirst, all three integers must be odd. Otherwise, because their sum is odd, there would be one odd integer and two even integers. The three pairwise gcds would then consist of two odd numbers and one even number, whose sum cannot be \\(9\\).\n\nAssume \\(a\\le b\\le c\\). Then \\(3a\\le23\\), so the possible odd values of \\(a\\) are \\(1,3,5,7\\). For each one, take every odd integer \\(b\\) satisfying\n\\[\na\\le b\\le\\frac{23-a}{2},\n\\qquad c=23-a-b.\n\\]\nThe upper bound ensures \\(b\\le c\\). The table lists every such \\(b\\), with its corresponding gcd sum in the same order.\n\n| \\(a\\) | Possible \\(b\\) values | Corresponding gcd sums |\n|---|---|---|\n| \\(1\\) | \\(1,3,5,7,9,11\\) | \\(3,3,3,3,3,13\\) |\n| \\(3\\) | \\(3,5,7,9\\) | \\(5,9,3,5\\) |\n| \\(5\\) | \\(5,7,9\\) | \\(7,3,11\\) |\n| \\(7\\) | \\(7\\) | \\(9\\) |\n\nFor example, \\(a=1,b=11\\) gives \\(c=11\\) and gcd sum \\(1+11+1=13\\). The entry \\(a=3,b=5\\) gives \\(c=15\\) and gcd sum \\(1+5+3=9\\).\n\nOnly \\((3,5,15)\\) and \\((7,7,9)\\) qualify. Sorting includes every triple up to permutation exactly once, and permutations leave the square sum unchanged. Thus the distinct values are\n\\[\n3^2+5^2+15^2=259,\n\\qquad\n7^2+7^2+9^2=179.\n\\]\nTheir sum is \\(\\boxed{438}\\), choice \\(\\textbf{B}\\).",
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "cnm_h020",
+        "cnm_p158",
+        "cnm_p156"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_12B_Q16#bounded-triple-enumeration"
+    }
+  ],
+  "sourceRef": "amc/2021_Fall_AMC_12B_Q16"
 }

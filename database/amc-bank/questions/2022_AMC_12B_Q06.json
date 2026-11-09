@@ -1,63 +1,71 @@
 {
-  "Year": 2022,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 6,
-  "Question": "Consider the following \\(100\\) sets of \\(10\\) elements each:\n\n\\[\\{1,2,3,\\ldots,10\\},\\] \\[\\{11,12,13,\\ldots,20\\},\\] \\[\\{21,22,23,\\ldots,30\\},\\] \\[\\vdots\\] \\[\\{991,992,993,\\ldots,1000\\}.\\]\n\nHow many of these sets contain exactly two multiples of \\(7?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(40\\)",
-    "B": "\\(42\\)",
-    "C": "\\(43\\)",
-    "D": "\\(49\\)",
-    "E": "\\(50\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.59",
-    "Concepts": "multiple; counting integers in a range",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2022B/solutions",
-    "SourceSHA256": "efb71db844024a12187d69e16958d86ad39eb081c9924a1953c2ed60eb149bca",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2022_AMC_12B_Q06",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Consider the following \\(100\\) sets of \\(10\\) elements each:\n\n\\[\\{1,2,3,\\ldots,10\\},\\] \\[\\{11,12,13,\\ldots,20\\},\\] \\[\\{21,22,23,\\ldots,30\\},\\] \\[\\vdots\\] \\[\\{991,992,993,\\ldots,1000\\}.\\]\n\nHow many of these sets contain exactly two multiples of \\(7?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(40\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(42\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(43\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(49\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(50\\)"
+      }
     ]
   },
-  "ID": "2022_AMC_12B_Q06",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:double-counting"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "41f4632df6e33283581cc49424198a23fb548af69d9e069460b3a898359183a6",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:double-counting"
-    ],
-    "supportIds": [
-      "cnm_p153"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "count-the-extra-multiples",
+      "title": "Count the extra multiples",
+      "explanation": "Each set contains either one or two multiples of \\(7\\), so the total number of multiples determines how many sets contain two.\n\nEvery seven consecutive integers include a multiple of \\(7\\), so every ten-number set contains at least one. Three multiples of \\(7\\) would have their smallest and largest at least \\(14\\) apart, but a ten-number set has endpoints only \\(9\\) apart. Thus no set contains three.\n\nThere are exactly \\(142\\) multiples of \\(7\\) from \\(1\\) through \\(1000\\), since\n\\[\n7\\cdot142=994\\le1000<1001=7\\cdot143.\n\\]\nLet \\(t\\) be the number of sets containing two multiples. The remaining \\(100-t\\) sets contain one each. These sets partition the integers from \\(1\\) through \\(1000\\), so counting the same multiples by set gives\n\\[\n2t+(100-t)=142.\n\\]\nTherefore \\(t=\\boxed{42}\\), choice \\(\\textbf{B}\\).",
+      "directNodeIds": [
+        "math:double-counting",
+        "cnm_p153"
+      ],
+      "sourceRef": "amc/2022_AMC_12B_Q06#count-the-extra-multiples"
+    },
+    {
+      "id": "locate-the-first-multiple",
+      "title": "Locate the earlier multiple",
+      "explanation": "Two multiples of \\(7\\) in one set must be \\(7\\) apart, so the earlier one must occupy one of the first three positions.\n\nIndeed, three multiples would span at least \\(14\\), more than the \\(9\\) between a set's endpoints. Thus any two in a set are consecutive multiples. If the earlier one is in position \\(r\\), the later one is in position \\(r+7\\), requiring \\(r=1,2,3\\). Conversely, a multiple in one of these positions has its next multiple inside the set and its preceding multiple outside.\n\nBecause every set begins with a number ending in \\(1\\), its first three positions have units digits \\(1,2,3\\). The positive multiples of \\(7\\) with these endings are respectively\n\\[\n21+70j,\\qquad42+70j,\\qquad63+70j,\n\\]\nwhere \\(j\\) is a nonnegative integer. To justify these lists, the first ten multiples of \\(7\\) have all ten different units digits; adding \\(70\\) repeats those endings. Equivalently, two multiples of \\(7\\) with the same units digit differ by a multiple of both \\(7\\) and \\(10\\), hence of \\(70\\).\n\nFor each list, \\(j=0,1,\\ldots,13\\) gives a number at most \\(1000\\), whereas \\(j=14\\) exceeds \\(1000\\). Each list therefore contributes \\(14\\) earlier multiples. Every qualifying set has exactly one earlier multiple, so none is missed or counted twice.\n\nThe total is \\(3\\cdot14=\\boxed{42}\\), choice \\(\\textbf{B}\\).",
+      "directNodeIds": [
+        "cnm_p153",
+        "math:modular-congruence",
+        "cnm_h230"
+      ],
+      "sourceRef": "amc/2022_AMC_12B_Q06#locate-the-first-multiple"
+    }
+  ],
+  "sourceRef": "amc/2022_AMC_12B_Q06"
 }

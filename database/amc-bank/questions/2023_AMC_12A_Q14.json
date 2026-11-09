@@ -1,77 +1,90 @@
 {
-  "Year": 2023,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Algebra",
-  "Number": 14,
-  "Question": "How many complex numbers satisfy the equation \\(z^5=\\overline{z},\\) where \\(\\overline{z}\\) is the conjugate of the complex number \\(z?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(2\\)",
-    "B": "\\(3\\)",
-    "C": "\\(5\\)",
-    "D": "\\(6\\)",
-    "E": "\\(7\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.66",
-    "Concepts": "complex number; roots of unity",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2023A/solutions",
-    "SourceSHA256": "8ee57a6587e75f919020451b868a6268853063e33eb032717e4af0bf5adccc7a",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2023_AMC_12A_Q14",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:algebra"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "dec0cf5faf9d3d73c72ebc58b53968ecc69fd986d94a60b7feb720a650dd301b",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:roots-of-unity"
-    ],
-    "supportIds": [],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2023_AMC_12A_Q14",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "How many complex numbers satisfy the equation \\(z^5=\\overline{z},\\) where \\(\\overline{z}\\) is the conjugate of the complex number \\(z?\\)",
+    "choices": [
       {
-        "id": "unit-modulus-reduction",
-        "label": "Modulus and conjugate product",
-        "nodeIds": [
-          "cnm_h098",
-          "cnm_h104"
-        ]
+        "id": "A",
+        "content": "\\(2\\)"
       },
       {
-        "id": "polar-argument",
-        "label": "Polar modulus and argument",
-        "nodeIds": [
-          "math:complex-polar-de-moivre"
-        ]
+        "id": "B",
+        "content": "\\(3\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(5\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(6\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(7\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "E"
+    ]
+  },
+  "classification": {
+    "area": "Algebra",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:algebra"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:roots-of-unity"
+  ],
+  "solutions": [
+    {
+      "id": "modulus-and-algebraic-roots",
+      "title": "Compare moduli, then factor",
+      "explanation": "Conjugation preserves modulus, so comparing the moduli first restricts every nonzero solution to the unit circle.\n\nSet \\(r=|z|\\). Taking moduli of \\(z^5=\\overline z\\) gives\n\\[\nr^5=r.\n\\]\nSince \\(r\\ge0\\), either \\(r=0\\) or \\(r=1\\). The first case gives the solution \\(z=0\\).\n\nFor \\(r=1\\), multiply the original equation by \\(z\\). The identity \\(z\\overline z=|z|^2\\) gives\n\\[\nz^6=1.\n\\]\nWe can count these roots explicitly by factoring:\n\\[\nz^6-1=(z-1)(z+1)(z^2+z+1)(z^2-z+1).\n\\]\nThe linear factors give \\(1\\) and \\(-1\\). Applying the quadratic formula to the two quadratic factors gives\n\\[\n\\frac{-1\\pm i\\sqrt3}{2}\n\\quad\\text{and}\\quad\n\\frac{1\\pm i\\sqrt3}{2}.\n\\]\nThese are six distinct numbers, all of modulus \\(1\\). Each satisfies the original equation: from \\(z^6=1\\) and \\(|z|=1\\), we have\n\\[\nz^5=\\frac1z=\\overline z.\n\\]\nIncluding \\(z=0\\), the number of solutions is \\(\\boxed{7}\\), choice \\(\\boxed{\\text{E}}\\).",
+      "directNodeIds": [
+        "cnm_h098",
+        "cnm_h104",
+        "math:roots-of-unity",
+        "math:complex-quadratic-solutions"
+      ],
+      "sourceRef": "amc/2023_AMC_12A_Q14#modulus-and-algebraic-roots"
+    },
+    {
+      "id": "polar-angle-count",
+      "title": "Compare lengths and angles",
+      "explanation": "Conjugation reverses a complex number's angle, while taking a fifth power multiplies its angle by \\(5\\). This makes polar form useful for counting the solutions.\n\nFirst, \\(z=0\\) works. For a nonzero number, write\n\\[\nz=r(\\cos\\theta+i\\sin\\theta),\n\\qquad r>0,\\quad 0\\le\\theta<2\\pi.\n\\]\nComplex multiplication multiplies moduli and adds angles. Thus \\(z^5\\) has modulus \\(r^5\\) and angle \\(5\\theta\\), while \\(\\overline z\\) has modulus \\(r\\) and angle \\(-\\theta\\).\n\nEqual moduli require \\(r^5=r\\), hence \\(r=1\\). Equal angles, allowing whole turns, require\n\\[\n5\\theta=-\\theta+2\\pi k,\n\\qquad\\text{so}\\qquad\n\\theta=\\frac{k\\pi}{3}\n\\]\nfor an integer \\(k\\). Exactly \\(k=0,1,2,3,4,5\\) give angles in \\([0,2\\pi)\\). They produce six distinct nonzero numbers, and each has the required modulus and angle equality.\n\nAdding the zero solution gives \\(\\boxed{7}\\) solutions, choice \\(\\boxed{\\text{E}}\\).",
+      "directNodeIds": [
+        "cnm_h098",
+        "math:complex-polar-de-moivre",
+        "math:roots-of-unity"
+      ],
+      "sourceRef": "amc/2023_AMC_12A_Q14#polar-angle-count"
+    },
+    {
+      "id": "unit-modulus-reduction",
+      "title": "Modulus and conjugate product",
+      "directNodeIds": [
+        "cnm_h098",
+        "cnm_h104"
+      ],
+      "sourceRef": "amc/2023_AMC_12A_Q14#unit-modulus-reduction"
+    },
+    {
+      "id": "polar-argument",
+      "title": "Polar modulus and argument",
+      "directNodeIds": [
+        "math:complex-polar-de-moivre"
+      ],
+      "sourceRef": "amc/2023_AMC_12A_Q14#polar-argument"
+    }
+  ],
+  "sourceRef": "amc/2023_AMC_12A_Q14"
 }

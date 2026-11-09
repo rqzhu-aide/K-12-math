@@ -1,81 +1,91 @@
 {
-  "Year": 2022,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Geometry",
-  "Number": 21,
-  "Question": "Let \\(S\\) be the set of circles in the coordinate plane that are tangent to each of the three circles with equations \\(x^2 + y^2 = 4,\\) \\(x^2 + y^2 = 64,\\) and \\((x - 5)^2 + y^2 = 3.\\) What is the sum of the areas of all circles in \\(S?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(48\\pi\\)",
-    "B": "\\(68\\pi\\)",
-    "C": "\\(96\\pi\\)",
-    "D": "\\(102\\pi\\)",
-    "E": "\\(136\\pi\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "E",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.96",
-    "Concepts": "tangent circles; circle area; casework",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2022B/solutions",
-    "SourceSHA256": "efb71db844024a12187d69e16958d86ad39eb081c9924a1953c2ed60eb149bca",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2022_AMC_12B_Q21",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:geometry"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "66ec0bdb6cb1a9f085abf10c66c1287b376f86ff08b004d8903acc41893ba6c9",
-    "status": "mapped",
-    "reviewStatus": "machine_examined",
-    "assessedIds": [
-      "cnm_h181",
-      "cnm_p192"
-    ],
-    "supportIds": [
-      "cnm_h176"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2022_AMC_12B_Q21",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Let \\(S\\) be the set of circles in the coordinate plane that are tangent to each of the three circles with equations \\(x^2 + y^2 = 4,\\) \\(x^2 + y^2 = 64,\\) and \\((x - 5)^2 + y^2 = 3.\\) What is the sum of the areas of all circles in \\(S?\\)",
+    "choices": [
       {
-        "id": "center-distance-triangles",
-        "label": "Count centers by triangle feasibility",
-        "nodeIds": [
-          "cnm_111"
-        ]
+        "id": "A",
+        "content": "\\(48\\pi\\)"
       },
       {
-        "id": "coordinate-center-equations",
-        "label": "Solve equations for the centers",
-        "nodeIds": [
-          "cnm_h173",
-          "cnm_042",
-          "cnm_220"
-        ]
+        "id": "B",
+        "content": "\\(68\\pi\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(96\\pi\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(102\\pi\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(136\\pi\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "E"
+    ]
+  },
+  "classification": {
+    "area": "Geometry",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:geometry"
+    ]
+  },
+  "assessedNodeIds": [
+    "cnm_h181"
+  ],
+  "solutions": [
+    {
+      "id": "count-center-locus-intersections",
+      "title": "Count possible centers",
+      "explanation": "The first two circles are concentric, so tangency to them restricts the possible radii before we consider the third circle.\n\nLet \\(O\\) be the origin and let \\(T=(5,0)\\). The given circles have centers \\(O,O,T\\) and radii \\(2,8,s\\), respectively, where \\(s=\\sqrt3\\).\n\nA desired circle must lie inside the radius-\\(8\\) circle. If it were externally tangent to that circle, it could not reach the radius-\\(2\\) circle. If it enclosed the radius-\\(8\\) disk, it would strictly enclose the radius-\\(2\\) disk and could not be tangent to its boundary.\n\nLet \\(r\\) be a desired circle's radius and \\(d\\) its center's distance from \\(O\\). Internal tangency to the radius-\\(8\\) circle gives\n\\[\nd+r=8.\n\\]\nThe desired circle cannot fit inside the radius-\\(2\\) disk. Thus tangency to the radius-\\(2\\) circle means either external tangency, \\(d=r+2\\), or containment of that disk, \\(r=d+2\\). Solving gives exactly two possibilities:\n\\[\n(r,d)=(3,5)\\quad\\text{or}\\quad(5,3).\n\\]\nFor either radius, tangency to the circle centered at \\(T\\) requires the distance \\(q\\) between centers to be\n\\[\nq=r+s\\quad\\text{or}\\quad q=r-s.\n\\]\nThe first is external tangency; the second means the desired circle contains the radius-\\(s\\) disk. Here \\(r>s\\) in both radius cases.\n\nFor fixed \\(r\\) and \\(q\\), the desired center must lie both on the circle of radius \\(d\\) about \\(O\\) and on the circle of radius \\(q\\) about \\(T\\). Since \\(OT=5\\), these two circles intersect at exactly two points when\n\\[\n|d-5|<q<d+5.\n\\]\nThese strict inequalities exclude tangency and containment of the two center loci. The two intersection points are reflections across the \\(x\\)-axis.\n\nSince \\(1<s<2\\), all four cases satisfy the required inequalities:\n\n| Desired radius \\(r\\) | Distance \\(d\\) | Possible \\(q\\) | Required interval | Centers for each \\(q\\) |\n|---|---|---|---|---|\n| \\(3\\) | \\(5\\) | \\(3-s,\\ 3+s\\), both in \\((1,5)\\) | \\(0<q<10\\) | \\(2\\) |\n| \\(5\\) | \\(3\\) | \\(5-s,\\ 5+s\\), both in \\((3,7)\\) | \\(2<q<8\\) | \\(2\\) |\n\nThus each radius has two tangency types, each producing two circles. The types have different center distances from \\(T\\), so none are counted twice. There are four circles of radius \\(3\\) and four of radius \\(5\\), with total area\n\\[\n4\\pi(3^2)+4\\pi(5^2)=\\boxed{136\\pi}.\n\\]\nThe answer is choice \\(\\mathrm{E}\\).",
+      "directNodeIds": [
+        "cnm_h181",
+        "cnm_h176",
+        "cnm_p192"
+      ],
+      "sourceRef": "amc/2022_AMC_12B_Q21#count-center-locus-intersections"
+    },
+    {
+      "id": "solve-center-distance-equations",
+      "title": "Verify centers with coordinates",
+      "explanation": "Tangency gives equations for distances between centers. Subtracting their squared forms will determine the horizontal coordinate of every possible center.\n\nLet a desired circle have center \\((u,v)\\), radius \\(r\\), and center distance \\(d\\) from the origin. It must lie inside the radius-\\(8\\) circle: an externally tangent circle cannot touch the radius-\\(2\\) circle, while a circle enclosing the radius-\\(8\\) disk strictly encloses the radius-\\(2\\) disk. Therefore\n\\[\nd+r=8.\n\\]\nTangency to the radius-\\(2\\) circle requires either \\(d=r+2\\) or \\(r=d+2\\). A desired circle cannot lie inside the radius-\\(2\\) disk because it touches the radius-\\(8\\) circle. Solving the two cases gives\n\\[\n(r,d)=(3,5)\\quad\\text{or}\\quad(5,3).\n\\]\nSet \\(s=\\sqrt3\\). Since \\(r>s\\), tangency to the circle centered at \\((5,0)\\) requires its center distance to be either \\(r+s\\) or \\(r-s\\). Thus the center equations are\n\\[\nu^2+v^2=d^2,\n\\qquad\n(u-5)^2+v^2=(r\\pm s)^2.\n\\]\nSubtracting the first equation from the second gives\n\\[\n25-10u=(r\\pm s)^2-d^2.\n\\]\nFor \\(r=3\\) and \\(d=5\\), the two signs give\n\\[\nu=\\frac{19+3s}{5}\\quad\\text{or}\\quad u=\\frac{19-3s}{5}.\n\\]\nSince \\(0<s<2\\), both values satisfy \\(0<u<5\\). Consequently \\(v^2=25-u^2>0\\), and each \\(u\\) gives exactly two values of \\(v\\), one positive and one negative. This produces four circles of radius \\(3\\).\n\nFor \\(r=5\\) and \\(d=3\\), the two signs give\n\\[\nu=\\frac35+s\\quad\\text{or}\\quad u=\\frac35-s.\n\\]\nAgain \\(0<s<2\\) ensures \\(-3<u<3\\). Thus \\(v^2=9-u^2>0\\), and each \\(u\\) gives exactly two values of \\(v\\). This produces four circles of radius \\(5\\).\n\nThe two horizontal coordinates in each radius case are distinct. Every resulting pair satisfies both squared distance equations, and all required distances \\(r\\pm s\\) are positive, so the original tangency conditions also hold. These are all the circles, with no repetitions. Their total area is\n\\[\n4\\pi(3^2)+4\\pi(5^2)=\\boxed{136\\pi}.\n\\]\nThe answer is choice \\(\\mathrm{E}\\).",
+      "directNodeIds": [
+        "cnm_h181",
+        "cnm_h176",
+        "math:quadratic-system-elimination",
+        "cnm_p192"
+      ],
+      "sourceRef": "amc/2022_AMC_12B_Q21#solve-center-distance-equations"
+    },
+    {
+      "id": "center-distance-triangles",
+      "title": "Count centers by triangle feasibility",
+      "directNodeIds": [
+        "cnm_111"
+      ],
+      "sourceRef": "amc/2022_AMC_12B_Q21#center-distance-triangles"
+    },
+    {
+      "id": "coordinate-center-equations",
+      "title": "Solve equations for the centers",
+      "directNodeIds": [
+        "cnm_h173",
+        "cnm_042",
+        "cnm_220"
+      ],
+      "sourceRef": "amc/2022_AMC_12B_Q21#coordinate-center-equations"
+    }
+  ],
+  "sourceRef": "amc/2022_AMC_12B_Q21"
 }

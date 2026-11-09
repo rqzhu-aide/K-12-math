@@ -1,78 +1,88 @@
 {
-  "Year": 2021,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Algebra",
-  "Number": 20,
-  "Question": "Let \\(Q(z)\\) and \\(R(z)\\) be the unique polynomials such that \\[ \\begin{aligned} &z^{2021}+1 \\\\ &\\quad = (z^2+z+1)Q(z)+R(z) \\end{aligned} \\] and the degree of \\(R\\) is less than \\(2.\\) What is \\(R(z)?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(-z\\)",
-    "B": "\\(-1\\)",
-    "C": "\\(2021\\)",
-    "D": "\\(z+1\\)",
-    "E": "\\(2z+1\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "A",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.95",
-    "Concepts": "polynomial; roots of unity; modular arithmetic",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2021B/solutions",
-    "SourceSHA256": "d2bc790b41807ac1b6b89c14f6fa855657cb9b6a641fc524d4fdf476ea4f9f4d",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2021_AMC_12B_Q20",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:algebra"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "c7399dbcbdfe905f10c7782eaae5b9bc97fda7751a59c28dc3ce5b48df2c4d7d",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "math:polynomial-remainder-factor"
-    ],
-    "supportIds": [],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2021_AMC_12B_Q20",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Let \\(Q(z)\\) and \\(R(z)\\) be the unique polynomials such that \\[ \\begin{aligned} &z^{2021}+1 \\\\ &\\quad = (z^2+z+1)Q(z)+R(z) \\end{aligned} \\] and the degree of \\(R\\) is less than \\(2.\\) What is \\(R(z)?\\)",
+    "choices": [
       {
-        "id": "polynomial-reduction",
-        "label": "Reduce powers using the divisor",
-        "nodeIds": [
-          "math:polynomial-remainder-factor",
-          "math:sum-difference-cubes"
-        ]
+        "id": "A",
+        "content": "\\(-z\\)"
       },
       {
-        "id": "cube-root-evaluation",
-        "label": "Evaluate at the two cube roots",
-        "nodeIds": [
-          "math:polynomial-remainder-factor",
-          "math:roots-of-unity"
-        ]
+        "id": "B",
+        "content": "\\(-1\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(2021\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(z+1\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(2z+1\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "A"
+    ]
+  },
+  "classification": {
+    "area": "Algebra",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:algebra"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:polynomial-remainder-factor"
+  ],
+  "solutions": [
+    {
+      "id": "reduce-exponents-by-three",
+      "title": "Reduce powers three steps at a time",
+      "explanation": "The divisor is a factor of \\(z^3-1\\), so powers whose exponents differ by three have the same remainder.\n\nWrite \\(D(z)=z^2+z+1\\). For every nonnegative integer \\(k\\),\n\\[\nz^{k+3}-z^k=z^k(z^3-1)=z^k(z-1)D(z).\n\\]\nThus replacing \\(z^{k+3}\\) with \\(z^k\\) changes the polynomial by a multiple of the divisor and leaves its remainder unchanged.\n\nSince \\(2021=3\\cdot673+2\\), repeatedly lowering the exponent by three shows that \\(z^{2021}+1\\) has the same remainder as \\(z^2+1\\). Finally,\n\\[\nz^2+1=(z^2+z+1)-z.\n\\]\nThe remaining polynomial \\(-z\\) has degree less than two, as required. Therefore \\(\\boxed{R(z)=-z}\\), choice \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "math:polynomial-remainder-factor",
+        "math:sum-difference-cubes"
+      ],
+      "sourceRef": "amc/2021_AMC_12B_Q20#reduce-exponents-by-three"
+    },
+    {
+      "id": "evaluate-at-cube-roots",
+      "title": "Evaluate at the divisor's roots",
+      "explanation": "Substituting a root of the divisor makes the entire quotient term disappear, giving a value of the remainder directly.\n\nThe two distinct roots of \\(z^2+z+1\\) are\n\\[\n\\alpha=\\frac{-1+i\\sqrt3}{2},\\qquad\n\\beta=\\frac{-1-i\\sqrt3}{2},\n\\]\nwhere \\(i^2=-1\\). For either root \\(r\\), we have \\(r^2=-r-1\\), so\n\\[\nr^3=-r^2-r=1.\n\\]\nConsequently, using \\(2021=3\\cdot673+2\\),\n\\[\nr^{2021}+1=(r^3)^{673}r^2+1=r^2+1=-r.\n\\]\nSubstitution into the given polynomial identity therefore gives \\(R(\\alpha)=-\\alpha\\) and \\(R(\\beta)=-\\beta\\).\n\nThe polynomial \\(R(z)+z\\) has degree at most one and vanishes at both \\(\\alpha\\) and \\(\\beta\\). A nonzero polynomial of degree at most one cannot have two distinct roots, so \\(R(z)+z\\) must be identically zero. Hence \\(\\boxed{R(z)=-z}\\), choice \\(\\boxed{\\text{A}}\\).",
+      "directNodeIds": [
+        "math:polynomial-remainder-factor",
+        "math:roots-of-unity"
+      ],
+      "sourceRef": "amc/2021_AMC_12B_Q20#evaluate-at-cube-roots"
+    },
+    {
+      "id": "polynomial-reduction",
+      "title": "Reduce powers using the divisor",
+      "directNodeIds": [
+        "math:polynomial-remainder-factor",
+        "math:sum-difference-cubes"
+      ],
+      "sourceRef": "amc/2021_AMC_12B_Q20#polynomial-reduction"
+    },
+    {
+      "id": "cube-root-evaluation",
+      "title": "Evaluate at the two cube roots",
+      "directNodeIds": [
+        "math:polynomial-remainder-factor",
+        "math:roots-of-unity"
+      ],
+      "sourceRef": "amc/2021_AMC_12B_Q20#cube-root-evaluation"
+    }
+  ],
+  "sourceRef": "amc/2021_AMC_12B_Q20"
 }

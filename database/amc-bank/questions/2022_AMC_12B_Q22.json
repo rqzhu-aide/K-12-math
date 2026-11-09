@@ -1,66 +1,77 @@
 {
-  "Year": 2022,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Counting & Probability",
-  "Number": 22,
-  "Question": "Ant Amelia starts on the number line at \\(0\\) and crawls in the following manner. For \\(n = 1,\\) \\(2,\\) \\(3,\\) Amelia chooses a time duration \\(t_n\\) and an increment \\(x_n\\) independently and uniformly at random from the interval \\((0, 1).\\) During the \\(n\\)th step of the process, Amelia moves \\(x_n\\) units in the positive direction, using up \\(t_n\\) minutes. If the total elapsed time has exceeded \\(1\\) minute during the \\(n\\)th step, she stops at the end of that step; otherwise, she continues with the next step, taking at most \\(3\\) steps in all. What is the probability that Amelia’s position when she stops will be greater than \\(1?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac13\\)",
-    "B": "\\(\\dfrac12\\)",
-    "C": "\\(\\dfrac23\\)",
-    "D": "\\(\\dfrac34\\)",
-    "E": "\\(\\dfrac56\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.97",
-    "Concepts": "geometric probability; independent events",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2022B/solutions",
-    "SourceSHA256": "efb71db844024a12187d69e16958d86ad39eb081c9924a1953c2ed60eb149bca",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2022_AMC_12B_Q22",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Ant Amelia starts on the number line at \\(0\\) and crawls in the following manner. For \\(n = 1,\\) \\(2,\\) \\(3,\\) Amelia chooses a time duration \\(t_n\\) and an increment \\(x_n\\) independently and uniformly at random from the interval \\((0, 1).\\) During the \\(n\\)th step of the process, Amelia moves \\(x_n\\) units in the positive direction, using up \\(t_n\\) minutes. If the total elapsed time has exceeded \\(1\\) minute during the \\(n\\)th step, she stops at the end of that step; otherwise, she continues with the next step, taking at most \\(3\\) steps in all. What is the probability that Amelia’s position when she stops will be greater than \\(1?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(\\dfrac13\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(\\dfrac12\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac23\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac34\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac56\\)"
+      }
     ]
   },
-  "ID": "2022_AMC_12B_Q22",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:geometric-probability",
+    "cnm_h246"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "45249915376530a39b3cfb76127fa9679e23698e809c539b0b732b090d26e1d4",
-    "status": "mapped",
-    "reviewStatus": "machine_adjudicated",
-    "assessedIds": [
-      "math:geometric-probability",
-      "cnm_h246"
-    ],
-    "supportIds": [
-      "cnm_h140",
-      "cnm_p148",
-      "cnm_h111"
-    ],
-    "routes": [],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "split-by-stopping-step",
+      "title": "Use areas and a volume",
+      "explanation": "Amelia’s number of steps depends only on the times, independently of her distances. This lets us separate the stopping rule from the distance calculation.\n\nBecause \\(t_1<1\\), she always takes at least two steps. She stops after two exactly when \\(t_1+t_2>1\\); otherwise, she takes three steps and stops because of the three-step limit.\n\nThe independent uniform pair \\((t_1,t_2)\\) fills a unit square uniformly. The diagonal \\(t_1+t_2=1\\) divides it into two equal-area triangles, so each possible step count has probability \\(\\tfrac12\\). The diagonal itself has probability zero.\n\nFor two steps, the same square argument applied to \\((x_1,x_2)\\) gives\n\\[\n\\Pr(x_1+x_2>1)=\\frac12.\n\\]\nFor three steps, \\((x_1,x_2,x_3)\\) is uniform in a unit cube. The region where their sum is at most \\(1\\) is the triangular pyramid with vertices\n\\[\n(0,0,0),\\quad(1,0,0),\\quad(0,1,0),\\quad(0,0,1).\n\\]\nIts base in the plane \\(x_3=0\\) is a right triangle with legs \\(1\\), and its perpendicular height is \\(1\\). Thus its volume is\n\\[\n\\frac13\\cdot\\frac12\\cdot1=\\frac16.\n\\]\nSince the cube has volume \\(1\\), the three-step distance exceeds \\(1\\) with probability \\(1-\\tfrac16=\\tfrac56\\).\n\nThe two stopping cases are disjoint and exhaustive. Independence allows us to multiply the probability of each step count by its distance probability, then add:\n\\[\n\\frac12\\cdot\\frac12+\\frac12\\cdot\\frac56\n=\\frac14+\\frac5{12}\n=\\boxed{\\frac23}.\n\\]\nThe answer is choice C.",
+      "directNodeIds": [
+        "math:geometric-probability",
+        "cnm_h246",
+        "cnm_h140",
+        "cnm_p148",
+        "cnm_h111"
+      ],
+      "sourceRef": "amc/2022_AMC_12B_Q22#split-by-stopping-step"
+    },
+    {
+      "id": "condition-on-the-largest-number",
+      "title": "Find the three-step probability by symmetry",
+      "explanation": "The three-step shortfall can be rewritten as one uniform number exceeding the sum of two others. This makes a symmetry argument possible.\n\nSet\n\\[\nU=x_1,\\qquad V=x_2,\\qquad W=1-x_3.\n\\]\nThese are three independent uniform numbers in \\((0,1)\\), and\n\\[\nx_1+x_2+x_3<1\n\\quad\\Longleftrightarrow\\quad U+V<W.\n\\]\nBecause \\(U,V>0\\), this inequality requires \\(W\\) to be the largest of the three numbers. Each number is equally likely to be largest, so this happens with probability \\(\\tfrac13\\). Ties have probability zero.\n\nWithin the region where \\(W\\) is largest, a horizontal slice at \\(W=m\\) is the square\n\\[\n0<U<m,\\qquad 0<V<m.\n\\]\nThe line \\(U+V=m\\) splits this square into two congruent triangles. Indeed, the pairing\n\\[\n(U,V)\\longmapsto(m-U,m-V)\n\\]\nexchanges the portions where \\(U+V<m\\) and \\(U+V>m\\). Thus these portions have equal areas at every height, and therefore equal volumes when the slices are stacked. Exactly half of the region where \\(W\\) is largest satisfies \\(U+V<W\\). Consequently,\n\\[\n\\Pr(x_1+x_2+x_3<1)=\\frac13\\cdot\\frac12=\\frac16.\n\\]\nThe equality plane has probability zero, so the three-step distance exceeds \\(1\\) with probability \\(\\tfrac56\\).\n\nNow consider the stopping rule. Since \\(t_1<1\\), Amelia takes two or three steps. The diagonal \\(t_1+t_2=1\\) bisects the unit square of possible time pairs, so she stops after two steps with probability \\(\\tfrac12\\) and takes three with probability \\(\\tfrac12\\). The same diagonal argument gives \\(\\Pr(x_1+x_2>1)=\\tfrac12\\).\n\nThe step count is independent of the increments, so the required probability is\n\\[\n\\frac12\\cdot\\frac12+\\frac12\\cdot\\frac56\n=\\boxed{\\frac23},\n\\]\nchoice C.",
+      "directNodeIds": [
+        "math:geometric-probability",
+        "cnm_h246",
+        "cnm_h140",
+        "cnm_h244",
+        "cnm_p148"
+      ],
+      "sourceRef": "amc/2022_AMC_12B_Q22#condition-on-the-largest-number"
+    }
+  ],
+  "sourceRef": "amc/2022_AMC_12B_Q22"
 }

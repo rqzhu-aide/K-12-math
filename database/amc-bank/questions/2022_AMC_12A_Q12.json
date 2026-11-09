@@ -1,81 +1,85 @@
 {
-  "Year": 2022,
-  "Level": "AMC 12",
-  "Batch": "A",
-  "Area": "Geometry",
-  "Number": 12,
-  "Question": "Let \\(M\\) be the midpoint of \\(\\overline{AB}\\) in regular tetrahedron \\(ABCD.\\) What is \\(\\cos(\\angle CMD)?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac14\\)",
-    "B": "\\(\\dfrac13\\)",
-    "C": "\\(\\dfrac25\\)",
-    "D": "\\(\\dfrac12\\)",
-    "E": "\\(\\dfrac{\\sqrt3}{2}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "B",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.96",
-    "Concepts": "3D geometry; median (geometry); law of cosines",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2022A/solutions",
-    "SourceSHA256": "25afecb70d053b546e2a70288716895c648653913bd0416ce4795c52ef2097e0",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2022_AMC_12A_Q12",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:geometry"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "442033a9c236f3fc348afcf729cfce63935a6409ff640e5b970ae25916d8d905",
-    "status": "mapped",
-    "reviewStatus": "machine_adjudicated",
-    "assessedIds": [],
-    "supportIds": [
-      "cnm_137",
-      "cnm_139",
-      "cnm_174"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2022_AMC_12A_Q12",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Let \\(M\\) be the midpoint of \\(\\overline{AB}\\) in regular tetrahedron \\(ABCD.\\) What is \\(\\cos(\\angle CMD)?\\)",
+    "choices": [
       {
-        "id": "cosine-law-section",
-        "label": "Apply the cosine law in triangle CMD",
-        "nodeIds": [
-          "math:general-cosine-law-application"
-        ]
+        "id": "A",
+        "content": "\\(\\dfrac14\\)"
       },
       {
-        "id": "spatial-dot-product",
-        "label": "Use edge vectors from A",
-        "nodeIds": [
-          "cnm_h145",
-          "cnm_h146",
-          "cnm_h147",
-          "cnm_277"
-        ]
+        "id": "B",
+        "content": "\\(\\dfrac13\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac25\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac12\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac{\\sqrt3}{2}\\)"
       }
-    ],
-    "flags": []
-  }
+    ]
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "B"
+    ]
+  },
+  "classification": {
+    "area": "Geometry",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:geometry"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:general-cosine-law-application"
+  ],
+  "solutions": [
+    {
+      "id": "cosine-law-section",
+      "title": "Use triangle CMD",
+      "explanation": "The midpoint of an edge gives altitudes in two equilateral faces, so we can find all three sides of \\(\\triangle CMD\\).\n\nScale the tetrahedron so that every edge has length \\(2\\). Since \\(AC=BC\\) and \\(M\\) is the midpoint of \\(AB\\), the median \\(CM\\) is perpendicular to \\(AB\\). Thus the Pythagorean theorem gives\n\\[\nCM=\\sqrt{BC^2-BM^2}=\\sqrt{4-1}=\\sqrt3.\n\\]\nThe same argument in face \\(ABD\\) gives \\(DM=\\sqrt3\\), while \\(CD=2\\).\n\nIn \\(\\triangle CMD\\), the side opposite \\(\\angle CMD\\) is \\(CD\\). Therefore the law of cosines yields\n\\[\n\\cos(\\angle CMD)\n=\\frac{CM^2+DM^2-CD^2}{2(CM)(DM)}\n=\\frac{3+3-4}{2\\sqrt3\\sqrt3}\n=\\boxed{\\frac13}.\n\\]\nThe answer is choice \\(\\mathrm{B}\\).",
+      "directNodeIds": [
+        "cnm_137",
+        "cnm_174",
+        "math:general-cosine-law-application"
+      ],
+      "sourceRef": "amc/2022_AMC_12A_Q12#cosine-law-section"
+    },
+    {
+      "id": "project-to-face-center",
+      "title": "Project onto the opposite face",
+      "explanation": "Projecting \\(D\\) onto face \\(ABC\\) creates a right triangle containing the desired angle.\n\nLet \\(O\\) be the foot of the perpendicular from \\(D\\) to the plane of \\(ABC\\). By the Pythagorean theorem,\n\\[\nOA^2=DA^2-DO^2,\n\\quad OB^2=DB^2-DO^2,\n\\quad OC^2=DC^2-DO^2.\n\\]\nBecause \\(DA=DB=DC\\), we have \\(OA=OB=OC\\). Thus \\(O\\) is the circumcenter of the equilateral triangle \\(ABC\\). Its perpendicular bisectors are also its medians, so \\(O\\) is the centroid. A centroid divides each median in the ratio \\(2:1\\), with the longer part next to the vertex. Consequently, \\(O\\) lies between \\(M\\) and \\(C\\), and\n\\[\nMO=\\frac13 MC.\n\\]\n\nThe equilateral faces \\(ABC\\) and \\(ABD\\) are congruent, so their medians \\(MC\\) and \\(MD\\) have equal lengths. Also, \\(DO\\perp MO\\), because \\(DO\\) is perpendicular to the entire base plane. Since rays \\(MO\\) and \\(MC\\) coincide, the right triangle \\(MOD\\) gives\n\\[\n\\cos(\\angle CMD)\n=\\cos(\\angle OMD)\n=\\frac{MO}{MD}\n=\\frac{MC/3}{MC}\n=\\boxed{\\frac13}.\n\\]\nThe answer is choice \\(\\mathrm{B}\\).",
+      "directNodeIds": [
+        "cnm_174",
+        "cnm_265",
+        "math:centroid-ratios",
+        "cnm_276",
+        "math:line-plane-perpendicular-definition"
+      ],
+      "sourceRef": "amc/2022_AMC_12A_Q12#project-to-face-center"
+    },
+    {
+      "id": "spatial-dot-product",
+      "title": "Use edge vectors from A",
+      "directNodeIds": [
+        "cnm_h145",
+        "cnm_h146",
+        "cnm_h147",
+        "cnm_277"
+      ],
+      "sourceRef": "amc/2022_AMC_12A_Q12#spatial-dot-product"
+    }
+  ],
+  "sourceRef": "amc/2022_AMC_12A_Q12"
 }

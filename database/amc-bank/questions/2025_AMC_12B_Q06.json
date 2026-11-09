@@ -1,73 +1,79 @@
 {
-  "Year": 2025,
-  "Level": "AMC 12",
-  "Batch": "B",
-  "Area": "Number Theory",
-  "Number": 6,
-  "Question": "Emmy says to Max, “I ordered \\(36\\) math club sweatshirts today.” Max asks, “How much did each shirt cost?” Emmy responds, “I’ll give you a hint. The total cost was \\(\\$\\underline{A}\\,\\underline{B}\\,\\underline{B}.\\underline{B}\\,\\underline{A},\\) where \\(A\\) and \\(B\\) are digits and \\(A \\neq 0.\\)” After a pause, Max says, “That was a good price.” What is \\(A + B?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(7\\)",
-    "B": "\\(8\\)",
-    "C": "\\(11\\)",
-    "D": "\\(14\\)",
-    "E": "\\(15\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "reviewed-source-concepts",
-    "Concepts": "place value; divisibility; modular arithmetic",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2025B/solutions",
-    "SourceSHA256": "9f851f1eb8b824abb334e0df4c017e663fc0135d4113cd5b6b5926fe4794110d",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
-    ]
-  },
-  "ID": "2025_AMC_12B_Q06",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:number-theory"
-  ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "d2e64b800ee4afb41af61688c50f8072ebefbfad01257ad0e388d33ac39dee7d",
-    "status": "mapped",
-    "reviewStatus": "machine_adjudicated",
-    "assessedIds": [
-      "math:integer-diophantine-equations"
-    ],
-    "supportIds": [
-      "cnm_027"
-    ],
-    "routes": [
+  "schemaVersion": "3.0",
+  "id": "2025_AMC_12B_Q06",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Emmy says to Max, “I ordered \\(36\\) math club sweatshirts today.” Max asks, “How much did each shirt cost?” Emmy responds, “I’ll give you a hint. The total cost was \\(\\$\\underline{A}\\,\\underline{B}\\,\\underline{B}.\\underline{B}\\,\\underline{A},\\) where \\(A\\) and \\(B\\) are digits and \\(A \\neq 0.\\)” After a pause, Max says, “That was a good price.” What is \\(A + B?\\)",
+    "choices": [
       {
-        "id": "whole-cent-divisibility",
-        "label": "Divisibility by 4 and 9",
-        "nodeIds": [
-          "math:modular-congruence"
-        ]
+        "id": "A",
+        "content": "\\(7\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(8\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(11\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(14\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(15\\)"
       }
-    ],
-    "flags": [
-      "The result assumes all shirts have the same price in whole cents, with no additional charges. The whole-cent unit-price condition is customary but not explicit; without it, A+B is not uniquely determined."
     ]
-  }
+  },
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "area": "Number Theory",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:number-theory"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:integer-diophantine-equations"
+  ],
+  "solutions": [
+    {
+      "id": "digit-divisibility-rules",
+      "title": "Use divisibility rules",
+      "explanation": "Under the usual assumption of a common whole-cent price per sweatshirt, converting the total to cents makes it a multiple of \\(36\\). Its digits are then \\(\\overline{ABBBA}\\), so digit divisibility tests apply.\n\nA multiple of \\(36\\) is divisible by both \\(4\\) and \\(9\\). Divisibility by \\(9\\) requires the digit sum\n\\[\n2A+3B\n\\]\nto be divisible by \\(9\\), and hence by \\(3\\). Since \\(3B\\) is divisible by \\(3\\), \\(2A\\), and therefore \\(A\\), must be divisible by \\(3\\).\n\nAlso, a multiple of \\(4\\) is even, so its last digit \\(A\\) is even. The only nonzero digit that is both even and divisible by \\(3\\) is \\(6\\). Thus \\(A=6\\).\n\nThe digit sum is now \\(12+3B\\). For this to be divisible by \\(9\\), \\(B+4\\) must be divisible by \\(3\\). Among the digits \\(0\\) through \\(9\\), this gives exactly\n\\[\nB=2,5,8.\n\\]\nDivisibility by \\(4\\) depends on the last two digits. The three possibilities are \\(26\\), \\(56\\), and \\(86\\), of which only \\(56\\) is divisible by \\(4\\). Therefore \\(B=5\\).\n\nThis pair works: \\(65556=36\\cdot1821\\), corresponding to \\(\\$18.21\\) per shirt. Hence\n\\[\nA+B=6+5=\\boxed{11},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "cnm_027"
+      ],
+      "sourceRef": "amc/2025_AMC_12B_Q06#digit-divisibility-rules"
+    },
+    {
+      "id": "place-value-reduction",
+      "title": "Reduce the place-value expression",
+      "explanation": "The place-value coefficients of the total are close to multiples of \\(36\\), allowing us to replace the five-digit total by a much smaller divisibility condition.\n\nAssuming a common whole-cent price per sweatshirt, let \\(T\\) be the total in cents. Then\n\\[\nT=10001A+1110B\n\\]\nis divisible by \\(36\\). Since\n\\[\n10001=36\\cdot278-7,\n\\qquad\n1110=36\\cdot31-6,\n\\]\nwe can write\n\\[\nT=36(278A+31B)-(7A+6B).\n\\]\nThe first term is already a multiple of \\(36\\), so \\(T\\) is divisible by \\(36\\) exactly when \\(7A+6B\\) is.\n\nIn particular, \\(7A+6B\\) must be divisible by \\(6\\). But\n\\[\n7A+6B=6(A+B)+A,\n\\]\nso \\(A\\) must be divisible by \\(6\\). Because \\(A\\) is a nonzero digit, \\(A=6\\).\n\nThe remaining condition is that\n\\[\n42+6B=6(B+7)\n\\]\nbe divisible by \\(36\\), meaning \\(B+7\\) is divisible by \\(6\\). As \\(0\\le B\\le9\\), we have \\(7\\le B+7\\le16\\). The only multiple of \\(6\\) in this interval is \\(12\\), so \\(B=5\\).\n\nIndeed, \\(65556=36\\cdot1821\\), so the price is a whole number of cents. Therefore\n\\[\nA+B=\\boxed{11},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "math:integer-diophantine-equations",
+        "math:modular-congruence",
+        "cnm_027"
+      ],
+      "sourceRef": "amc/2025_AMC_12B_Q06#place-value-reduction"
+    },
+    {
+      "id": "whole-cent-divisibility",
+      "title": "Divisibility by 4 and 9",
+      "directNodeIds": [
+        "math:modular-congruence"
+      ],
+      "sourceRef": "amc/2025_AMC_12B_Q06#whole-cent-divisibility"
+    }
+  ],
+  "sourceRef": "amc/2025_AMC_12B_Q06"
 }

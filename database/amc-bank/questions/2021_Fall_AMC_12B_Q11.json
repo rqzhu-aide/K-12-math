@@ -1,72 +1,75 @@
 {
-  "Year": 2021,
-  "Level": "AMC 12",
-  "Batch": "Fall B",
-  "Area": "Counting & Probability",
-  "Number": 11,
-  "Question": "Una rolls \\(6\\) standard \\(6\\)-sided dice simultaneously and calculates the product of the \\(6\\) numbers obtained. What is the probability that the product is divisible by \\(4?\\)",
-  "Question Type": "text",
-  "Choices": {
-    "A": "\\(\\dfrac{3}{4}\\)",
-    "B": "\\(\\dfrac{57}{64}\\)",
-    "C": "\\(\\dfrac{59}{64}\\)",
-    "D": "\\(\\dfrac{187}{192}\\)",
-    "E": "\\(\\dfrac{63}{64}\\)"
-  },
-  "Choices Type": "text",
-  "Correct Answer": "C",
-  "Solution": "",
-  "Meta": {
-    "QuestionSource": "live-poshenloh",
-    "AnswerSource": "live-poshenloh-answer-key",
-    "SolutionSource": "",
-    "AreaSource": "jev:0.86",
-    "Concepts": "dice (probability); complementary probability",
-    "SourceURL": "https://live.poshenloh.com/past-contests/amc12/2021D/solutions",
-    "SourceSHA256": "837b083cd054de58180250da3b759e0ac23595359efda240d31f34748965773c",
-    "Figures": [],
-    "FigureSources": {},
-    "SolutionStatus": "Third-party worked solution not included in this distribution",
-    "Attribution": "American Mathematics Competitions (AMC), Mathematical Association of America (MAA)",
-    "Copyright": "Copyright Mathematical Association of America",
-    "License": "CC-BY-NC-SA-4.0",
-    "LicenseURL": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "TranscriptionSource": "LIVE by Po-Shen Loh",
-    "Modifications": [
-      "Converted to structured JSON and LaTeX for Math Practice; figure references normalized",
-      "Third-party worked solution and solution-only figures omitted from the public distribution"
+  "schemaVersion": "3.0",
+  "id": "2021_Fall_AMC_12B_Q11",
+  "bank": "amc",
+  "language": "en",
+  "question": {
+    "prompt": "Una rolls \\(6\\) standard \\(6\\)-sided dice simultaneously and calculates the product of the \\(6\\) numbers obtained. What is the probability that the product is divisible by \\(4?\\)",
+    "choices": [
+      {
+        "id": "A",
+        "content": "\\(\\dfrac{3}{4}\\)"
+      },
+      {
+        "id": "B",
+        "content": "\\(\\dfrac{57}{64}\\)"
+      },
+      {
+        "id": "C",
+        "content": "\\(\\dfrac{59}{64}\\)"
+      },
+      {
+        "id": "D",
+        "content": "\\(\\dfrac{187}{192}\\)"
+      },
+      {
+        "id": "E",
+        "content": "\\(\\dfrac{63}{64}\\)"
+      }
     ]
   },
-  "ID": "2021_Fall_AMC_12B_Q11",
-  "Bank": "amc",
-  "SchemaVersion": "2.0",
-  "ResponseType": "choice",
-  "Language": "en",
-  "domain": [
-    "domain:counting-probability"
+  "answer": {
+    "type": "choice",
+    "accepted": [
+      "C"
+    ]
+  },
+  "classification": {
+    "area": "Counting & Probability",
+    "level": "AMC 12",
+    "domainIds": [
+      "domain:counting-probability"
+    ]
+  },
+  "assessedNodeIds": [
+    "math:prime-factorization",
+    "cnm_h139",
+    "cnm_h141"
   ],
-  "skill": [],
-  "KnowledgeGraph": {
-    "version": "1.0.0",
-    "contentHash": "11785ddc5fef26c83e9584af61a13c2c27109df58593fdacbe6487ddaf1dbcf0",
-    "status": "mapped",
-    "reviewStatus": "machine_scope_audited",
-    "assessedIds": [
-      "cnm_h137",
-      "math:prime-factorization"
-    ],
-    "supportIds": [],
-    "routes": [
-      {
-        "id": "complementary-factor-count",
-        "label": "Count products with fewer than two factors of 2",
-        "nodeIds": [
-          "cnm_h139",
-          "cnm_h141",
-          "cnm_h138"
-        ]
-      }
-    ],
-    "flags": []
-  }
+  "solutions": [
+    {
+      "id": "count-missing-factors-of-two",
+      "title": "Count the failures",
+      "explanation": "A product divisible by \\(4\\) needs at least two factors of \\(2\\), so count the rolls that supply fewer than two. An odd face supplies none, a \\(2\\) or \\(6\\) supplies one, and a \\(4\\) already supplies two.\n\nThere are exactly two ways for the product to fail:\n\n1. All six dice are odd. Each die has three odd faces, so independence gives probability\n\\[\n\\left(\\frac36\\right)^6=\\frac1{64}.\n\\]\n2. Exactly one die shows \\(2\\) or \\(6\\), and the other five are odd. Choose the unique even die in six ways. For each choice, independence gives probability \\(\\frac26(\\frac36)^5\\), so this case has probability\n\\[\n6\\cdot\\frac26\\left(\\frac36\\right)^5=\\frac1{16}.\n\\]\n\nThese cases are disjoint and exhaustive: any other outcome either contains a \\(4\\) or contains at least two even rolls, providing the required two factors of \\(2\\).\n\nTherefore the desired probability is\n\\[\n1-\\frac1{64}-\\frac1{16}=\\boxed{\\frac{59}{64}},\n\\]\nwhich is choice \\(\\boxed{\\text{C}}\\).",
+      "directNodeIds": [
+        "math:prime-factorization",
+        "cnm_h139",
+        "cnm_h137",
+        "cnm_h141",
+        "cnm_h138"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_12B_Q11#count-missing-factors-of-two"
+    },
+    {
+      "id": "complementary-factor-count",
+      "title": "Count products with fewer than two factors of 2",
+      "directNodeIds": [
+        "cnm_h139",
+        "cnm_h141",
+        "cnm_h138"
+      ],
+      "sourceRef": "amc/2021_Fall_AMC_12B_Q11#complementary-factor-count"
+    }
+  ],
+  "sourceRef": "amc/2021_Fall_AMC_12B_Q11"
 }
