@@ -254,6 +254,7 @@ def build(output, root=ROOT):
         raise ValueError("Choose an empty output folder; the exporter never deletes previous output.")
     inventory = public_inventory(root)
     output.mkdir(parents=True, exist_ok=True)
+    copy_public_assets(root, output, inventory)
     with tempfile.TemporaryDirectory(prefix="math-practice-pages-") as temporary:
         graph_root = Path(temporary)
         source = graph_root / "database/knowledge-graph/source"
@@ -269,7 +270,6 @@ def build(output, root=ROOT):
             db_path=graph_root / "database/knowledge-graph/knowledge.sqlite3", check_bindings=True)
         counts, evidence_count = export_questions(root, output, inventory, graph_root)
         curricula = export_curricula(graph_root, output, sum(counts.values()))
-    copy_public_assets(root, output, inventory)
     hosted_entry(output)
     info = {"schemaVersion": 1, "kind": "math_practice_public_pages",
             "questions": counts, "curriculumNodes": curricula, "evidenceFiles": evidence_count,
