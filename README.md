@@ -13,10 +13,22 @@ K-12-math is a mathematics study collection with **936 knowledge graph nodes (kn
 |---|---|---|
 | [Mathematics knowledge graph](database/knowledge-graph/) | 1.0.0 | Connects 936 concepts through 1,634 accepted relationships and links questions to the concepts they assess or use in a solution. |
 | [Chinese curriculum question bank](database/cn-math-bank/) | 2.0.0 | Contains 3,355 questions in English with answers and worked solutions, alongside the original Chinese material. |
-| [AMC question bank](database/amc-bank/) | 2.7.0 | Contains 5,435 questions and answer keys from 195 competition papers, with stored worked solutions for every question, including all 1,025 AMC 8 questions, 1,300 AMC 10 questions, and 3,110 AMC 12 / AHSME questions. |
+| [AMC question bank](database/amc-bank/) | 2.7.0 | Contains 5,435 questions from 195 competition papers, each with an answer key and a worked solution. |
 | [Math Practice UI](math-practice/) | 2.1.4 | Runs locally so students can browse either bank, explain their thinking, and practice with optional model feedback. |
 
-All 8,790 questions have graph annotations. For 8,780, the annotation identifies an assessed concept or a solution route. The other ten link to definitions for context. The 8,790 solved questions contain 9,780 written methods. Of these questions, 977 have more than one written method, and 608 AMC questions include an adaptation of an official MAA solution. The question banks identify the sources of their explanations.
+## Question counts
+
+The two banks contain **8,790 question entries**, all with worked solutions and graph annotations. Each appearance of a problem on a separate AMC paper counts as one entry.
+
+| CN curriculum | Questions | AMC contest family | Questions |
+|---|---:|---|---:|
+| Primary | 864 | AMC 8 / AJHSME | 1,025 |
+| Middle school | 1,407 | AMC 10 | 1,300 |
+| High school, required | 572 | Modern AMC 12 | 1,300 |
+| High school, elective | 512 | Historical high school, 1950 to 1999 | 1,810 |
+| **CN total** | **3,355** | **AMC total** | **5,435** |
+
+For 8,780 questions, the annotation identifies an assessed concept or a solution route. The other ten link to definitions for context. The banks contain 9,780 written methods, and 977 questions have more than one. Of the AMC questions, 608 include an adaptation of an official MAA solution. The question banks identify the sources of their explanations.
 
 ## Practice with the collection
 
