@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2008_AMC_12A_Q19",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "d99905bdfd6113b0e76537af063b8f8b477fb2e9a9ba7a2582bccb0da9dd00bb",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "81620d5bca88b12c40cd4f56b5da616c4e55e0b0a189feafe3056909af82f703",
+  "solutionFigureHashes": {},
+  "candidateHash": "2a443ad976f6beaaa81b8bbbaf45cbb540b0647744398df363df9f8420ac8256",
+  "candidate": {
+    "questionId": "2008_AMC_12A_Q19",
+    "derivedAnswer": "\\(224\\), choice C",
+    "answerStatus": "matches",
+    "answerReason": "There are 15 squared ordered exponent choices from the two shorter factors. Each determines a valid exponent from the longer factor except the pair (0,0), leaving 224 contributions.",
+    "methods": [
+      {
+        "id": "count-exponent-pairs",
+        "label": "Choose exponents from the two shorter factors",
+        "explanation": "In a polynomial product, each contribution to \\(x^{28}\\) comes from choosing one term from each factor whose exponents sum to \\(28\\). All the chosen terms have coefficient \\(1\\), so the desired coefficient counts these choices.\n\nTreat the two copies of \\(1+x+\\cdots+x^{14}\\) as separate factors. Choose exponents \\(b\\) and \\(c\\) from them, with \\(0\\le b,c\\le14\\). There are \\(15\\cdot15=225\\) ordered pairs. Each pair forces the exponent from the first factor to be\n\\[\na=28-b-c.\n\\]\nBecause \\(b+c\\le28\\), we always have \\(a\\ge0\\). The other requirement, \\(a\\le27\\), is equivalent to \\(b+c\\ge1\\). Exactly one pair fails this condition: \\((b,c)=(0,0)\\), which would require the unavailable term \\(x^{28}\\) from the first factor.\n\nEvery remaining pair determines exactly one valid exponent triple, and every contribution to \\(x^{28}\\) arises this way. Thus the coefficient is\n\\[\n225-1=\\boxed{224},\n\\]\nchoice C.",
+        "nodeIds": [
+          "math:generating-functions",
+          "cnm_h231",
+          "cnm_h010"
+        ],
+        "prerequisiteIds": [
+          "cnm_146",
+          "cnm_142"
+        ],
+        "levelReason": "Uses distributive polynomial expansion, independent finite choices, and removal of one invalid choice."
+      }
+    ],
+    "assessedIds": [
+      "math:generating-functions"
+    ],
+    "supportIds": [
+      "cnm_146"
+    ],
+    "annotationRationale": "The target is interpreting a product coefficient as a count with the correct multiplicity. The method uses ordered choices from the two separate shorter factors, the multiplication principle, and a complement count. Polynomial multiplication explains why these choices contribute to the coefficient.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2008_AMC_12A_Q19",
+    "decision": "accept",
+    "mathematicalCheck": "The two separate short factors give 225 ordered exponent pairs. Each forces a=28-b-c≥0, and a≤27 fails only for (b,c)=(0,0). This correspondence preserves every contribution and its multiplicity, giving coefficient 224.",
+    "levelCheck": "The argument uses elementary polynomial expansion and finite counting. The coefficient interpretation is explained directly.",
+    "methodDistinctness": "One complete counting method is sufficient.",
+    "annotationCheck": "The finite coefficient-encoding assessment matches the catalog scope. Multiplication, complement counting, polynomial multiplication, and exponent-law annotations fit the actual method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-exponent-pairs": "solution:count-exponent-pairs:81620d5bca88"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "b5900e200d755664daad3431fface25148bfa363d4aea64f60341aa94a9d0224",
+    "inputHash": "8caf6905c3cb3fa1c6f33bad1e05fd4fe2b7be0489f72a3788b060c8d9879144",
+    "authorInputHash": "9024c2ac5d910d5af8b2777e2049ccafddc78187b01358d9c556cc6021769039",
+    "reviewInputHash": "7dae28b111bff28f386b9141bd6cfa1da6c8afb95c57596d32d7e9a23629b8a1",
+    "authorResponseHash": "0db7c2d951fc86b48374daab9d2a870f8cbb545768bea9fe31517e8a267b6a78",
+    "reviewerResponseHash": "bbb4de3248b440f3732f7dc7ccb063527f8f980b789694e4d4ef8efcf7b6e312",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

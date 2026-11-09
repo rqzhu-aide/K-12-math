@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1986_AMC_12_Q30",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "3ea7f0b2752a7b7ec9e64b36273ba3d461c9f12df2257206c8a7bd0fbe65729e",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "1605d5f3173679da35cdcf59252b41120d5922b197b1866fb547712d058f512d",
+  "solutionFigureHashes": {},
+  "candidateHash": "ee116af8a4432cea38aa4345c9b60110e3ebff857833f41ec0bdc4da6293cd70",
+  "candidate": {
+    "questionId": "1986_AMC_12_Q30",
+    "derivedAnswer": "B: 2 real solutions, with all four entries equal to sqrt(17) or all four equal to -sqrt(17).",
+    "answerStatus": "matches",
+    "answerReason": "All variables must be nonzero and have the same sign. In a positive cycle, AM-GM bounds every entry below by sqrt(17), after which each step can only decrease. Returning to the starting value forces equality throughout. Negation gives exactly one negative solution.",
+    "methods": [
+      {
+        "id": "bound-and-order-the-cycle",
+        "label": "Bound the entries and close an inequality chain",
+        "explanation": "The equations repeatedly apply the same rule\n\\[\nf(t)=\\frac{t+17/t}{2},\\qquad t\\ne0,\n\\]\nand return to the starting value after four steps. If we find a range where each step can only decrease, returning to the start will force every step to be an equality.\n\nAll four variables must be nonzero because they occur in denominators. Also, \\(t\\) and \\(17/t\\) have the same sign, so \\(f(t)\\) has the sign of \\(t\\). The equations therefore force all four variables to have the same sign.\n\nFirst suppose they are positive. For every \\(t>0\\), AM-GM gives\n\\[\nf(t)=\\frac{t+17/t}{2}\n\\ge\\sqrt{t\\cdot\\frac{17}{t}}=\\sqrt{17}.\n\\]\nEvery variable is an output of this rule, so all four are at least \\(\\sqrt{17}\\). For \\(t\\ge\\sqrt{17}\\), we have \\(17/t\\le t\\), and hence \\(f(t)\\le t\\). Applying this to the four equations gives\n\\[\nx\\ge y\\ge z\\ge w\\ge x.\n\\]\nThus all four values are equal. Calling their common positive value \\(r\\), the first equation becomes\n\\[\n2r=r+\\frac{17}{r},\n\\qquad r^2=17,\n\\]\nso \\(r=\\sqrt{17}\\).\n\nIf all four variables are negative, substituting their negatives produces positive numbers satisfying the same system. The positive-case result shows that the original entries must all equal \\(-\\sqrt{17}\\).\n\nBoth constant tuples satisfy the original equations because \\(17/t=t\\) when \\(t=\\pm\\sqrt{17}\\). These are distinct, and the sign cases exhaust all possibilities. There are exactly \\(\\boxed{2}\\) real solutions, choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "math:function-composition-iteration",
+          "cnm_h021",
+          "cnm_h018",
+          "cnm_220"
+        ],
+        "prerequisiteIds": [
+          "cnm_156",
+          "cnm_074"
+        ],
+        "levelReason": "Uses sign reasoning, two-variable AM-GM, elementary inequality comparisons, and direct square-root solving, all within precalculus."
+      },
+      {
+        "id": "transform-the-iteration",
+        "label": "Turn each step into squaring",
+        "explanation": "Let\n\\[\nf(t)=\\frac{t+17/t}{2},\\qquad t\\ne0,\n\\qquad r=\\sqrt{17}.\n\\]\nThe value \\(r\\) is a natural reference because \\(f(r)=r\\). Factoring \\(f(t)-r\\) and \\(f(t)+r\\) will reveal a quantity whose behavior is especially simple under repeated steps.\n\nFirst, every variable must be nonzero. Since \\(f(t)\\) has the same sign as \\(t\\), all four variables have the same sign. Consider the positive case.\n\nFor \\(t>0\\), using \\(r^2=17\\) gives\n\\[\nf(t)-r=\\frac{(t-r)^2}{2t},\n\\qquad\nf(t)+r=\\frac{(t+r)^2}{2t}.\n\\]\nThus, if we define\n\\[\nq(t)=\\frac{t-r}{t+r},\\qquad t>0,\n\\]\nthen all denominators are positive and\n\\[\nq(f(t))=q(t)^2.\n\\]\nThis quotient is useful because one application of the original rule becomes one squaring. The four equations consequently give\n\\[\nq(y)=q(x)^2,\\quad q(z)=q(y)^2,\n\\]\n\\[\nq(w)=q(z)^2,\\quad q(x)=q(w)^2.\n\\]\nWriting \\(u=q(x)\\), we obtain \\(u=u^{16}\\). Because \\(x,r>0\\), we have \\(-1<u<1\\). The equation \\(u=u^{16}\\) forces \\(u\\ge0\\), while \\(0<u<1\\) would imply \\(u^{16}<u\\). Therefore \\(u=0\\), which means \\(x=r\\). The original equations then force \\(y=z=w=r\\).\n\nNegating all four entries preserves the system, so the all-negative case gives exactly the tuple with every entry \\(-r\\). Both constant tuples satisfy the equations, and mixed signs and zero entries have already been excluded. Hence there are exactly \\(\\boxed{2}\\) solutions, choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "math:function-composition-iteration",
+          "cnm_162",
+          "cnm_h040"
+        ],
+        "prerequisiteIds": [
+          "cnm_156",
+          "cnm_074",
+          "cnm_148",
+          "cnm_096"
+        ],
+        "levelReason": "Uses perfect-square identities, rational-expression simplification, and integer powers to analyze a finite cycle. The substitution is fully derived using school algebra."
+      }
+    ],
+    "assessedIds": [
+      "math:function-composition-iteration"
+    ],
+    "supportIds": [
+      "cnm_156",
+      "cnm_074"
+    ],
+    "annotationRationale": "The route-neutral target is determining which real inputs can return to themselves under four iterations of a known rational rule, with all intermediate evaluations defined. The first method uses AM-GM and a closed inequality chain; the second uses a rational substitution that converts iteration into squaring. Their inequality and algebraic tools remain method-specific. Nonzero-denominator conditions and square-root meanings support both methods.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1986_AMC_12_Q30",
+    "decision": "accept",
+    "mathematicalCheck": "Nonzero inputs preserve sign. In the positive case, AM-GM bounds every entry below by sqrt(17), and the resulting closed decreasing chain forces all entries to equal sqrt(17). Independently, the second method correctly derives q(f(t))=q(t)^2 and u=u^16 with -1<u<1, forcing u=0. Negation handles every negative solution, and both constant tuples satisfy the original system.",
+    "levelCheck": "Both methods use permitted high-school inequalities and algebra. The substitution is derived explicitly without relying on advanced theory.",
+    "methodDistinctness": "The inequality chain and the rational substitution offer genuinely distinct, accessible ideas.",
+    "annotationCheck": "Known-function iteration is a justified route-neutral target. Shared domain and square-root support is appropriate, and the inequality and algebra tools remain method-specific.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "bound-and-order-the-cycle": "solution:bound-and-order-the-cycle:1605d5f31736",
+    "transform-the-iteration": "solution:transform-the-iteration:1605d5f31736"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "0625b7c29a935460b7f2f457abbd898bcdf5c492765892460e7732661db7062d",
+    "inputHash": "1e45172cec35bf7061ee53536460d3fc11e83f1a69eb256557274355513ef61e",
+    "authorInputHash": "ffcbc5d457dd3decaa1297aaa2c5982f304727884477bc2be190a586f81bcf4f",
+    "reviewInputHash": "26cbac5235ec0a9ae9758a280de73d2d534bb7e6bc6b627f39124ec5c3e80eda",
+    "authorResponseHash": "863ceea1ed8656590a4587d554969bfafdb6bd61a67f58d81d94a84f857bb5ec",
+    "reviewerResponseHash": "5f69a5a9bcc9f584c761651fc91d6e7a5bddb803c57fb9b79d38de23fd7883d4",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

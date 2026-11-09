@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1964_AMC_12_Q31",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "8a261ffa3b1d6b5f40650987011848df429ef310d4833bdac0e96070650bcc86",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "bd761b0ef37d2d5e2e2907f185929e6b12fa5ee2ffdd6f7afd10f689c19e42d2",
+  "solutionFigureHashes": {},
+  "candidateHash": "5d3b3a7ab7f3421e934afedeb21166e10e90238ce81991aa562ddb7955c41b59",
+  "candidate": {
+    "questionId": "1964_AMC_12_Q31",
+    "derivedAnswer": "B. \\(f(n)\\), under the recorded integer-index interpretation",
+    "answerStatus": "matches",
+    "answerReason": "For integer indices, both nonzero bases satisfy t²=t+1. Consequently t^(n+1)-t^(n-1)=t^n for each base, giving the keyed identity.",
+    "methods": [
+      {
+        "id": "verify-the-base-identities",
+        "label": "Find an identity shared by the two bases",
+        "explanation": "Take \\(n\\) to be an integer, as in the recorded sequence interpretation. The second base is negative, so an unrestricted real-index interpretation would require further domain information.\n\nEach term of \\(f(n)\\) is a constant times a power. To compare shifted indices, look for an identity involving the square of each base. Write\n\\[\nr=\\frac{1+\\sqrt5}{2},\\qquad\ns=\\frac{1-\\sqrt5}{2},\n\\]\nand let \\(A=\\frac{5+3\\sqrt5}{10}\\), \\(B=\\frac{5-3\\sqrt5}{10}\\). Then \\(f(n)=Ar^n+Bs^n\\).\n\nFor either choice \\(t=r\\) or \\(t=s\\), direct expansion gives\n\\[\nt^2=\\frac{6\\pm2\\sqrt5}{4}\n=\\frac{3\\pm\\sqrt5}{2}\n=t+1.\n\\]\nBoth bases are nonzero, so integer power laws apply even when a shifted exponent is zero or negative. Factoring the lower power now gives\n\\[\n\\begin{aligned}\nt^{n+1}-t^{n-1}\n&=t^{n-1}(t^2-1)\\\\\n&=t^{n-1}t=t^n.\n\\end{aligned}\n\\]\nApplying this identity separately to the two terms yields\n\\[\n\\begin{aligned}\nf(n+1)-f(n-1)\n&=A(r^{n+1}-r^{n-1})\\\\\n&\\quad+B(s^{n+1}-s^{n-1})\\\\\n&=Ar^n+Bs^n=f(n).\n\\end{aligned}\n\\]\nThus, for the recorded integer indices, the answer is \\(f(n)\\), choice B.",
+        "nodeIds": [
+          "cnm_148",
+          "cnm_168",
+          "cnm_172",
+          "cnm_h040",
+          "cnm_151"
+        ],
+        "prerequisiteIds": [
+          "cnm_164"
+        ],
+        "levelReason": "Uses direct radical expansion, common-factor extraction, and integer exponent laws. No advanced recurrence theory is required."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_h040",
+      "cnm_151",
+      "cnm_164"
+    ],
+    "annotationRationale": "The target is deriving a recurrence from an explicit sum of powers. The catalog's simple-recurrence node concerns using an already supplied recurrence, so a more precise missing target is proposed. The actual route verifies a quadratic identity for each base and uses exponent laws and common-factor extraction; it does not invoke the quadratic formula or an unknown-function equation.",
+    "needsNewNodes": [
+      {
+        "name": "Deriving recurrences from explicit sums of powers",
+        "description": "For an integer-indexed sequence expressed as a finite sum of constant multiples of nonzero bases raised to the index, use a polynomial identity shared by the bases to derive a linear relation among shifted sequence values, preserving index-domain conditions.",
+        "reason": "The catalog covers applying given recurrences and manipulating powers, but lacks the specific target of deriving a recurrence from an explicit power-sum formula."
+      }
+    ],
+    "limitations": [
+      "The displayed question does not explicitly specify the domain of n. The solution preserves the recorded interpretation of integer sequence indices; the negative second base prevents an ordinary real-valued definition for every real n."
+    ]
+  },
+  "review": {
+    "questionId": "1964_AMC_12_Q31",
+    "decision": "accept",
+    "mathematicalCheck": "Each nonzero base t satisfies t^2=t+1, giving t^(n+1)-t^(n-1)=t^(n-1)(t^2-1)=t^n for integer n. Applying this separately to both weighted powers proves the identity. The answer is explicitly conditional on integer indices and preserves the missing-domain caveat.",
+    "levelCheck": "Direct radical expansion and integer power laws provide a complete high-school argument without advanced recurrence machinery.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The empty assessedIds and explicit missing-node proposal honestly represent the catalog gap. Power laws, common-factor extraction and negative-exponent support fit the proof.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "verify-the-base-identities": "solution:verify-the-base-identities:bd761b0ef37d"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "425d82fe35a22fe4f564625f5de7af6af5ad30f3d4f0880b4702f53e734520ce",
+    "inputHash": "06e279f8d613cf05153742950f0e4a96fbb0cfb370b7b5790612e2c06af3b5c6",
+    "authorInputHash": "7a53b21df5bfb11a04d53ea31c884b9841b71965feac92a6a8c712509a03db10",
+    "reviewInputHash": "b12e3d01d51425f6fa6507b9d0d0c84f6a002cb337d4bf9d901351fb630e9996",
+    "authorResponseHash": "fa0254223718ad4b4c864884c4b9d83be3002403d18f42f838a5b65dfb81bd49",
+    "reviewerResponseHash": "80c5fc83be6305a2b9503dce52abaf25287e577b7f6d0939ea445d81692fb904",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

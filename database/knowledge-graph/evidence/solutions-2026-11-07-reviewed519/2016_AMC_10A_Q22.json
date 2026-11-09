@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_10A_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "026c7fad9802a80a362a8ef29e37edb88f64cb2dacb78df6339a211dc1018de6",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "c009b13c283261599bb4d737da8cd256dd55e922085984a44be4daf8f64b76d7",
+  "solutionFigureHashes": {},
+  "candidateHash": "7f1a1995cbb017539d6671e1ee86658747983a29accb15e9fe4f0aa10c6b7b30",
+  "candidate": {
+    "questionId": "2016_AMC_10A_Q22",
+    "derivedAnswer": "D: 325",
+    "answerStatus": "matches",
+    "answerReason": "The divisor-count factors force n to use only the primes 2, 5, and 11, with exponents 0, 1, and 3 in some order. Thus 81n⁴ has 5·1·5·13=325 positive divisors.",
+    "methods": [
+      {
+        "id": "divisor-count-factor-constraints",
+        "label": "Constrain the prime exponents",
+        "explanation": "If an integer has prime factorization \\(\\prod p_i^{e_i}\\), a divisor independently chooses an exponent from \\(0\\) through \\(e_i\\) for each prime. Its number of positive divisors is therefore \\(\\prod(e_i+1)\\).\n\nLet \\(a,b,c\\) be the exponents of \\(2,5,11\\), respectively, in \\(n\\). These are nonnegative integers. Since \\(110=2\\cdot5\\cdot11\\), the corresponding exponents in \\(110n^3\\) are \\(3a+1,3b+1,3c+1\\). They contribute the three divisor-count factors\n\\[\n3a+2,\\qquad 3b+2,\\qquad 3c+2,\n\\]\neach at least \\(2\\). Any additional prime with positive exponent \\(e\\) in \\(n\\) would contribute another factor \\(3e+1>1\\).\n\nBut the entire divisor count is\n\\[\n110=2\\cdot5\\cdot11,\n\\]\nwhich has only three prime factors, counted with multiplicity. Each of the three required factors must use at least one of them. Thus those factors must be \\(2,5,11\\) in some order, and there can be no additional prime in \\(n\\). Consequently,\n\\[\n\\{a,b,c\\}=\\{0,1,3\\}.\n\\]\nIn particular, \\(3\\) does not divide \\(n\\). Therefore\n\\[\n81n^4=3^4\\,2^{4a}5^{4b}11^{4c}\n\\]\nhas\n\\[\n(4+1)(4a+1)(4b+1)(4c+1)\n=5\\cdot1\\cdot5\\cdot13\n=\\boxed{325}\n\\]\npositive divisors, regardless of the order of \\(a,b,c\\). This is choice \\(\\text{D}\\).",
+        "nodeIds": [
+          "math:divisor-count-and-sum",
+          "math:prime-factorization"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_p157",
+          "cnm_143",
+          "cnm_h231"
+        ],
+        "levelReason": "The argument derives the divisor-count formula from exponent choices and uses elementary prime factorization to exhaust the possibilities."
+      }
+    ],
+    "assessedIds": [
+      "math:divisor-count-and-sum",
+      "math:prime-factorization"
+    ],
+    "supportIds": [
+      "cnm_h231",
+      "cnm_143"
+    ],
+    "annotationRationale": "Both the divisor-count formula and prime-exponent restrictions are central targets. The written method uses only the counting portion of the divisor-count-and-sum node. Independent choices and power-of-a-power rules support the calculation.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_10A_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "The three obligatory divisor-count factors 3a+2, 3b+2, 3c+2 exceed 1 and must consume the three prime factors of 110 separately. Thus they are 2,5,11, no other prime divides n, and {a,b,c}={0,1,3}. Consequently τ(81n⁴)=5·1·5·13=325 for every permitted assignment.",
+    "levelCheck": "The divisor-count formula is explained through independent exponent choices, and the remaining factorization argument is within AMC 10.",
+    "methodDistinctness": "One complete prime-exponent method is sufficient.",
+    "annotationCheck": "Both assessed nodes are central. The annotation correctly limits the divisor-count-and-sum node to its counting portion, with multiplication counting and power laws as support.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "divisor-count-factor-constraints": "divisor-count-factor-constraints"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "1aa13f40725f3b346d7da37c6900f3c48a114b9c81701b639121567004921cf1",
+    "acceptedAt": "2026-11-07T10:43:32.602850+00:00",
+    "inputHash": "5c1abbab6cb3e358c76d1354cdeccc20d6b7181683deba29deed581357df01e7",
+    "authorInputHash": "ada876b6b0160c39d8746a106c26e33954e8c327c11f0d2b47e7de540afde69e",
+    "reviewInputHash": "73269b4a972d85d335cf85c05b124c370772a8c2637e49a10c3f4e0a2f60f7e7",
+    "authorResponseHash": "79f237dfdf4250c4fe8a48b0b5a19bf5bc2ac45cfc68691676bea7dd48790332",
+    "reviewerResponseHash": "ae01002d134c9483950bc9187d4115243b3cffcaac3c2a47b551e60cbe9e7505",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

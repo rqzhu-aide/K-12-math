@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1982_AMC_12_Q30",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "1f2edcc62a19dc62214eaba91c44b1bc827dff40ed063dcb9514463b56a4b7ba",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "c6edb0b208bf330d1b6fef201288686c044137e7b76d725f9fd270584c91d670",
+  "solutionFigureHashes": {},
+  "candidateHash": "fc3d1484251c0af26f195850ccd18fe36948a44df6c0a66ff2ab5bbbe4f0a31f",
+  "candidate": {
+    "questionId": "1982_AMC_12_Q30",
+    "derivedAnswer": "\\(9\\), choice D",
+    "answerStatus": "matches",
+    "answerReason": "Adding the conjugate powers gives an integer divisible by 10. The omitted conjugate powers have sum strictly between 0 and 1, so the requested expression has integer part one less than that multiple of 10 and therefore units digit 9.",
+    "methods": [
+      {
+        "id": "binomial-conjugate-cancellation",
+        "label": "Cancel the radicals by binomial expansion",
+        "explanation": "Pair each power with the corresponding power of \\(15-\\sqrt{220}\\). Their binomial expansions cancel all terms containing an odd power of the radical.\n\nLet\n\\[\n\\alpha=15+\\sqrt{220},\\qquad\n\\beta=15-\\sqrt{220}.\n\\]\nFor a positive integer \\(n\\), set \\(S_n=\\alpha^n+\\beta^n\\). The binomial theorem gives\n\\[\nS_n=2\\sum_{k=0}^{\\lfloor n/2\\rfloor}\n\\binom n{2k}15^{n-2k}220^k.\n\\]\nThis is an integer divisible by \\(10\\): the \\(k=0\\) term is \\(2\\cdot15^n\\), a multiple of \\(10\\), and every term with \\(k\\ge1\\) contains the factor \\(2\\cdot220\\).\n\nWe must also locate the original expression between consecutive integers. Since\n\\[\n14.5^2<220<15^2,\n\\]\nwe have \\(0<\\beta<1/2\\), and hence\n\\[\n0<\\beta^{19}+\\beta^{82}\n<2^{-19}+2^{-82}<1.\n\\]\nLet \\(M=S_{19}+S_{82}\\), an integer divisible by \\(10\\). Then\n\\[\n\\alpha^{19}+\\alpha^{82}\n=M-(\\beta^{19}+\\beta^{82})\n\\]\nlies strictly between \\(M-1\\) and \\(M\\). Its integer part is therefore \\(M-1\\), whose units digit is \\(\\boxed{9}\\), choice D.",
+        "nodeIds": [
+          "cnm_h240",
+          "math:modular-congruence",
+          "math:floor-ceiling"
+        ],
+        "prerequisiteIds": [
+          "cnm_079",
+          "cnm_p153",
+          "cnm_143"
+        ],
+        "levelReason": "Binomial expansion, divisibility, and exact bounds on a square root are standard high-school tools within AMC 12 scope."
+      },
+      {
+        "id": "conjugate-power-recurrence",
+        "label": "Build a recurrence for the conjugate power sums",
+        "explanation": "The conjugate numbers have a simple sum and product, allowing their power sums to be tracked without expanding large powers. Define\n\\[\n\\alpha=15+\\sqrt{220},\\qquad\n\\beta=15-\\sqrt{220},\\qquad\nS_n=\\alpha^n+\\beta^n.\n\\]\nWe have \\(\\alpha+\\beta=30\\) and \\(\\alpha\\beta=225-220=5\\). Thus each of \\(\\alpha\\) and \\(\\beta\\) satisfies\n\\[\nq^2=30q-5.\n\\]\nMultiplying this identity by \\(q^{n-2}\\) and adding the two resulting identities gives, for \\(n\\ge2\\),\n\\[\nS_n=30S_{n-1}-5S_{n-2}.\n\\]\nThe initial values are\n\\[\nS_0=2,\\qquad S_1=30,\\qquad S_2=890.\n\\]\nBoth \\(S_1\\) and \\(S_2\\) are integers divisible by \\(10\\). Whenever two consecutive positive-index terms have this property, the recurrence gives it to the next term. Induction therefore proves it for every \\(S_n\\) with \\(n\\ge1\\).\n\nSince \\(14.5^2<220<15^2\\), we have \\(0<\\beta<1/2\\), so\n\\[\n0<\\beta^{19}+\\beta^{82}<1.\n\\]\nWriting \\(M=S_{19}+S_{82}\\), we obtain\n\\[\nM-1<\\alpha^{19}+\\alpha^{82}<M.\n\\]\nBecause \\(M\\) is an integer divisible by \\(10\\), the integer part of the requested expression is \\(M-1\\), ending in \\(\\boxed{9}\\). The answer is choice D.",
+        "nodeIds": [
+          "math:polynomial-roots-coefficients",
+          "cnm_h200",
+          "cnm_h214",
+          "math:modular-congruence",
+          "math:floor-ceiling"
+        ],
+        "prerequisiteIds": [
+          "cnm_147",
+          "cnm_032",
+          "cnm_079",
+          "cnm_p153"
+        ],
+        "levelReason": "The recurrence is derived directly from a quadratic identity and its divisibility property is proved by elementary induction. No advanced recurrence theory is used."
+      }
+    ],
+    "assessedIds": [
+      "math:modular-congruence",
+      "math:floor-ceiling"
+    ],
+    "supportIds": [
+      "cnm_079",
+      "cnm_p153"
+    ],
+    "annotationRationale": "Both methods determine a multiple-of-ten integer and then use a strict interval to identify the requested integer part. Those are the shared task targets. Square-root comparisons and divisibility support both methods. Binomial cancellation belongs only to the first route; quadratic root identities, recurrence, and induction belong only to the second.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1982_AMC_12_Q30",
+    "decision": "accept",
+    "mathematicalCheck": "Both methods prove that every positive-index conjugate power sum is an integer divisible by 10. Since 0<β<1/2, the omitted sum β¹⁹+β⁸² lies strictly between 0 and 1. The requested expression therefore has integer part M-1, ending in 9.",
+    "levelCheck": "Binomial expansion and the directly derived recurrence with elementary induction are appropriate for AMC 12. Both methods justify the crucial integer-part step.",
+    "methodDistinctness": "Binomial cancellation and recurrence propagation give genuinely distinct, comparably accessible proofs of divisibility.",
+    "annotationCheck": "The shared remainder and floor targets are route-neutral. Binomial expansion is confined to the first method, and root identities, recurrence, and induction to the second; shared supports are justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "binomial-conjugate-cancellation": "binomial-conjugate-cancellation",
+    "conjugate-power-recurrence": "solution:conjugate-power-recurrence:c6edb0b208bf"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "58ff038eddd7c328b6665584db35426e13eccfc57b97595dfadc27f064d3f491",
+    "inputHash": "082810e943a425dac31fa7e92c730cbf0dc074eb018b34df54eb93501692fbc7",
+    "authorInputHash": "facef598a2dfd1db3d124ef46cd0f117064f0f56cbae1bb59226852bd43705dd",
+    "reviewInputHash": "715612f01cca376a4b190d4bea0e0c372b413fdaea36f552927936d88d84bd38",
+    "authorResponseHash": "ccc3215831cfc6f7bab7b6596b747678101fc22ea626b96080d4690a574b9e2a",
+    "reviewerResponseHash": "8b56de014efb0decefc3b36f6dd22164d624999faadd9c713447b2ec9ce0e8af",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

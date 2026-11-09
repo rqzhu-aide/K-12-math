@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1983_AMC_12_Q28",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "69b6f974ab0d59e49a126da853aa656ee2c7401b60897955d663dd44d72ce518",
+    "figureHashes": {
+      "figures/1983_AMC_12_Q28_question_fig1.svg": "80e6c3cd9babd5da4969399da2d7ed20fac799760f787b4445cf7c9cb1799d22"
+    }
+  },
+  "solutionSHA256": "b4068edd979934485d0c8bdef545e00eb7a1b3a5af824558b4224f0f95f054ae",
+  "solutionFigureHashes": {},
+  "candidateHash": "dee6a30b59614ee3c264eabb5793923beaa9f9d193ee1130e79d65f3854c3d77",
+  "candidate": {
+    "questionId": "1983_AMC_12_Q28",
+    "derivedAnswer": "C: 6",
+    "answerStatus": "matches",
+    "answerReason": "Equal areas imply that DE is parallel to AC, giving BE/BC=BD/BA=3/5. The common area is therefore 3/5 of 10, or 6.",
+    "methods": [
+      {
+        "id": "equal-heights",
+        "label": "Subtract the common triangle",
+        "explanation": "Write \\([PQR]\\) for the area of triangle \\(PQR\\). Drawing \\(DE\\) splits both figures in the given area equality into triangles:\n\\[\n[ABE]=[ADE]+[BDE],\n\\qquad\n[DBEF]=[DEF]+[BDE].\n\\]\nSubtracting their common part \\([BDE]\\) gives \\([ADE]=[DEF]\\).\n\nThese two triangles have the same base \\(DE\\), so their perpendicular heights from \\(A\\) and \\(F\\) are equal. The segment \\(DE\\) cuts off the corner triangle \\(BDE\\); both \\(A\\) and \\(F\\) lie on its other side. Points at a fixed perpendicular distance on one side of a line lie on a parallel line. Thus \\(AF\\parallel DE\\). Since \\(F\\) lies on \\(AC\\) and \\(F\\ne A\\), this means \\(DE\\parallel AC\\).\n\nParallel segments in triangle \\(BAC\\) now give\n\\[\n\\frac{BE}{BC}=\\frac{BD}{BA}=\\frac3{2+3}=\\frac35.\n\\]\nTriangles \\(ABE\\) and \\(ABC\\) have bases \\(BE\\) and \\(BC\\) on the same line and the same height from \\(A\\). Their areas have the same ratio as those bases. Therefore the requested common area is\n\\[\n[ABE]=\\frac35[ABC]=\\frac35\\cdot10=\\boxed6,\n\\]\nchoice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "cnm_p150",
+          "cnm_p148",
+          "math:parallel-line-distance-loci",
+          "cnm_269"
+        ],
+        "prerequisiteIds": [
+          "cnm_065",
+          "cnm_268"
+        ],
+        "levelReason": "Area subtraction, equal-base height comparisons, and proportional segments cut by a parallel line are elementary geometry."
+      },
+      {
+        "id": "area-partition",
+        "label": "Express the remaining areas using AF/AC",
+        "explanation": "Let \\(S\\) be the common area of triangle \\(ABE\\) and quadrilateral \\(DBEF\\), and write \\([PQR]\\) for a triangle's area. Set\n\\[\nt=\\frac{AF}{AC}.\n\\]\nBecause \\(F\\) is strictly between \\(A\\) and \\(C\\), we have \\(0<t<1\\). We will partition the whole triangle into \\(ADF\\), \\(DBEF\\), and \\(CEF\\).\n\nFirst, triangles \\(ADC\\) and \\(ABC\\) share the height from \\(C\\) to \\(AB\\), so\n\\[\n[ADC]=\\frac{AD}{AB}[ABC]=\\frac25\\cdot10=4.\n\\]\nTriangles \\(ADF\\) and \\(ADC\\) have bases \\(AF\\) and \\(AC\\) on the same line and the same height from \\(D\\). Hence \\([ADF]=4t\\).\n\nAlso, \\(AE\\) divides \\(ABC\\) into \\(ABE\\) and \\(ACE\\), giving \\([ACE]=10-S\\). Comparing bases \\(CF\\) and \\(CA\\) with the common height from \\(E\\) gives\n\\[\n[CEF]=(1-t)[ACE]=(1-t)(10-S).\n\\]\nAdding the three pieces of \\(ABC\\), we obtain\n\\[\n10=4t+S+(1-t)(10-S)=10+t(S-6).\n\\]\nThus \\(t(S-6)=0\\). Since \\(t>0\\), division by \\(t\\) is valid and yields \\(S=\\boxed6\\), choice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "cnm_p150",
+          "cnm_p148"
+        ],
+        "prerequisiteIds": [
+          "cnm_268",
+          "cnm_040",
+          "cnm_151"
+        ],
+        "levelReason": "This alternative uses only area partitions, shared-height area ratios, and elementary algebra, providing a path that does not require a parallel-line deduction."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p150",
+      "cnm_p148"
+    ],
+    "supportIds": [
+      "cnm_268"
+    ],
+    "annotationRationale": "Both methods assess decomposing composite figures and applying the triangle area formula through common-base or common-height comparisons. Proportional lengths support both routes. The first method additionally uses the fixed-distance parallel locus and the parallel-segment theorem; the second instead uses equality transformations and common-factor algebra. These method-specific ideas are kept local rather than made joint requirements. No mastery conclusion follows from the annotations.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1983_AMC_12_Q28",
+    "decision": "accept",
+    "mathematicalCheck": "Method 1 correctly subtracts BDE, giving equal areas ADE and DEF. A and F are on the same side of DE, so equal heights imply AF parallel to DE. Thus BE/BC=BD/BA=3/5 and the common area is 6. Independently, Method 2 gives 10=4t+S+(1-t)(10-S)=10+t(S-6); the stated interior-point restriction ensures t>0, so S=6.",
+    "levelCheck": "Both explanations use elementary area comparisons and school geometry or algebra. The same-side condition and the nonzero factor needed for division are explicitly justified.",
+    "methodDistinctness": "The methods offer distinct accessible ideas: an equal-height parallel-line deduction and an area partition that eliminates the position of F algebraically.",
+    "annotationCheck": "The shared assessed area nodes and proportional-length support fit both routes. Parallel-distance loci and parallel-segment proportionality remain local to Method 1; equality transformations and common-factor algebra remain local to Method 2.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "equal-heights": "equal-heights",
+    "area-partition": "area-partition"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "bbeb36c2a8c2b960f15686e15e1cc1cf2f5bb7586e2ec9ce1391f5ba8cc56494",
+    "acceptedAt": "2026-11-08T00:15:49.374190+00:00",
+    "inputHash": "65303600a61e171877e95e267cebbd0721d6416d4b5baf499db14ce7f51cdf02",
+    "authorInputHash": "7d17d795e4a887a9857e9894a9cb4fd0f99755399c574b2e4db7895a76f5ed16",
+    "reviewInputHash": "3867b91c5c2d45d43646d27f4de936cee154905ed31dedcac4e6fe21bb2bca48",
+    "authorResponseHash": "fe4879f0cbe43cdc470cf2d3f2461d0a776ca72776bf370a3b49007e6029551a",
+    "reviewerResponseHash": "7bfb9f9fe244e6a8218366afbfc4d1f70c96c84c693a0c6137fcf7faeae4c2e9",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2010_AMC_10A_Q20",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "272b82c98bcd673e089e60f1d8d7be7567027837516c0d8fed993d61a3809e03",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "df3ca5456cb188447f5bf3d204c603e2c3a7aeaacf1e3f58e6a0c656e64cf1e7",
+  "solutionFigureHashes": {},
+  "candidateHash": "9531ad32dad185680c97c63c96f460b8ebb5df32b41a7b77e5509c0625656985",
+  "candidate": {
+    "questionId": "2010_AMC_10A_Q20",
+    "derivedAnswer": "D: 4√2 + 4√3 meters",
+    "answerStatus": "matches",
+    "answerReason": "At most four of the eight steps can be body diagonals. All other steps have length at most √2, and a valid tour attains four body diagonals and four face diagonals.",
+    "methods": [
+      {
+        "id": "diagonal-bound-and-tour",
+        "label": "Bound the long steps and construct a tour",
+        "explanation": "There are eight steps in the closed journey. Between two different cube corners, a straight segment is an edge, a face diagonal, or a body diagonal. Their lengths are respectively\n\\[\n1,\\qquad \\sqrt{1^2+1^2}=\\sqrt2,\n\\qquad \\sqrt{(\\sqrt2)^2+1^2}=\\sqrt3.\n\\]\nTo maximize the length, we would like as many body diagonals as possible. There are only four such diagonals, and the corner-visit rule prevents using any one twice. If \\(m\\) steps are body diagonals, then \\(m\\le4\\), while every other step has length at most \\(\\sqrt2\\). Therefore the total length \\(L\\) satisfies\n\\[\nL\\le m\\sqrt3+(8-m)\\sqrt2\n\\le4\\sqrt3+4\\sqrt2.\n\\]\nThe second inequality holds because replacing a \\(\\sqrt2\\) step by a \\(\\sqrt3\\) step increases the bound.\n\nWe must also show that one journey reaches this bound. Label the bottom face \\(A,B,C,D\\) in order, and label the corners directly above them \\(A',B',C',D'\\). Take the route\n\\[\nA\\to C'\\to A'\\to C\\to B'\n\\to D\\to B\\to D'\\to A.\n\\]\nIt visits each of the eight corners once before returning to \\(A\\). Its steps alternate between body diagonals and face diagonals: the body diagonals are \\(AC'\\), \\(A'C\\), \\(B'D\\), and \\(BD'\\), and the other four steps are face diagonals. Thus its length is exactly\n\\[\n\\boxed{4\\sqrt2+4\\sqrt3}\n\\]\nmeters, choice \\(\\text{D}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_174"
+        ],
+        "prerequisiteIds": [
+          "cnm_p160",
+          "cnm_075"
+        ],
+        "levelReason": "The solution uses elementary cube geometry, the Pythagorean theorem, and a bound followed by an explicit attaining construction."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_174",
+      "cnm_p160"
+    ],
+    "annotationRationale": "The central target is proving a universal maximum and exhibiting an allowed tour attaining it. Cube structure and Pythagorean diagonal lengths support that argument. The written proof needs neither a general graph theorem nor spatial vector or coordinate-distance machinery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2010_AMC_10A_Q20",
+    "decision": "accept",
+    "mathematicalCheck": "A permitted tour has eight steps and can use at most four body diagonals. Every other step is at most √2, giving the bound 4√3+4√2. The displayed tour visits all eight corners and alternates four body diagonals with four face diagonals, attaining the bound.",
+    "levelCheck": "The Pythagorean lengths, universal bound, and explicitly labeled construction are understandable at AMC 10 level.",
+    "methodDistinctness": "One bound-and-construction method fully establishes the maximum.",
+    "annotationCheck": "The extremal target and cube/Pythagorean supports are justified. General graph and spatial-coordinate procedures are unnecessary for this solution.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "diagonal-bound-and-tour": "diagonal-bound-and-tour"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "92d20e4de87f85985b6eae13df77bcc94b841b851de88c38af392dd1a96844a5",
+    "inputHash": "6141c2c458ef49e405ce7d9672eac3b9fa4b3a200b9100cf6d200377b1c02ee0",
+    "authorInputHash": "7acb518c732034ddc34d7922a073203849ba1d3dc8294ecbc0fe3c0c5517bc00",
+    "reviewInputHash": "64b2a12f1f446ef95266fe614eac90dcf382948afa308ba5befc21b554ee5fc8",
+    "authorResponseHash": "528a1e03d7797c7481126123d2006179e542ad820d58320cc5619abd1806dace",
+    "reviewerResponseHash": "509e53f66e02c8b707841503d27392bb89b6b87d2eb20dfa6769d222c090b54f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

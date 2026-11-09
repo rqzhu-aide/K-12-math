@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2025_AMC_10A_Q19",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "d8474f4f3c69fc2e48ca9ec828f81f89720ffa5dbc154823420b6815423cca46",
+    "figureHashes": {
+      "figures/2025_AMC_10A_Q19_question_fig1.svg": "3ac61f1c3bdc41a57a1558acea0a88a533a67e952eaa1ebc367e3a83232228e7"
+    }
+  },
+  "solutionSHA256": "42ea879768e9fd58bf8c731056b5dc84078b8931b8479e7fb51aa40340aede4c",
+  "solutionFigureHashes": {},
+  "candidateHash": "02fcaf37e887cae8784ce6216e07e0f18adebd5bbb32a142fac391f8665807f8",
+  "candidate": {
+    "questionId": "2025_AMC_10A_Q19",
+    "derivedAnswer": "A, \\(-29\\)",
+    "answerStatus": "matches",
+    "answerReason": "The row sum doubles at every transition, so 12,288 occurs after 12 transitions. The second entries supplying the twelve updates to the third entry are 3,2,...,-8, whose sum is -30. Adding the initial third entry 1 gives -29.",
+    "methods": [
+      {
+        "id": "track-left-columns",
+        "label": "Track the row sum and the first three entries",
+        "explanation": "We can track the row sum and the requested entry without constructing the rest of the array. Number the top row as row \\(0\\), so row \\(n\\) is reached after \\(n\\) transitions.\n\nEach interior entry contributes to two adjacent-pair sums in the next row. Each endpoint contributes to one adjacent-pair sum and also reappears as an endpoint. Thus every old entry is counted twice in the new row sum. The initial sum is \\(-1+3+1=3\\), so row \\(n\\) has sum\n\\[\nS_n=3\\cdot2^n.\n\\]\nSince\n\\[\n12{,}288=3\\cdot4096=3\\cdot2^{12},\n\\]\nthe desired row is reached after \\(12\\) transitions. These positive sums double each time, so this row is unique.\n\nLet \\(b_j\\) and \\(c_j\\) be the second and third entries after \\(j\\) transitions. The first entry stays \\(-1\\), so the second entry decreases by \\(1\\) each time:\n\\[\nb_0=3,\n\\qquad b_{j+1}=b_j-1,\n\\qquad b_j=3-j.\n\\]\nThe next third entry is the sum of the current second and third entries. Thus \\(c_{j+1}=c_j+b_j\\), starting with \\(c_0=1\\).\n\nTo reach row \\(12\\), we therefore add the twelve second entries from rows \\(0\\) through \\(11\\), namely \\(3,2,1,0,-1,\\ldots,-8\\). Pairing the first with the last, the second with the next-to-last, and so on gives six pairs, each summing to \\(-5\\). Hence\n\\[\nc_{12}=1+6(-5)=\\boxed{-29},\n\\]\nchoice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_h200",
+          "cnm_h202",
+          "cnm_h204"
+        ],
+        "prerequisiteIds": [
+          "cnm_h197",
+          "cnm_h208",
+          "cnm_h201"
+        ],
+        "levelReason": "The formulas follow directly from repeated doubling and repeated subtraction. The finite arithmetic sum is evaluated by pairing its terms."
+      },
+      {
+        "id": "count-contribution-paths",
+        "label": "Count contributions from the starting numbers",
+        "explanation": "View each entry as a sum of contributions from the three starting numbers. At each transition, an entry sends one copy of its value to the same numbered position and another copy one position to the right. Adding the copies that arrive at each position reproduces the adjacent-pair rule, including the endpoints.\n\nEvery value is copied twice, so the row sum doubles. Starting from sum \\(3\\), the sum after \\(n\\) transitions is \\(3\\cdot2^n\\). Because\n\\[\n12{,}288=3\\cdot2^{12},\n\\]\nthe required row is reached after exactly \\(12\\) transitions.\n\nA contribution's route is determined by choosing, at each transition, whether it stays in the same numbered position or moves one position right. To end in the third position after twelve transitions:\n\nFrom the first starting position, a contribution must move right exactly twice. Choose the two transition numbers in \\(12\\cdot11\\) ordered ways, then divide by \\(2\\), since each pair was counted in both orders. There are \\(66\\) routes, each carrying the starting value \\(-1\\).\n\nFrom the second starting position, a contribution must move right exactly once. There are \\(12\\) choices of transition, each carrying the starting value \\(3\\).\n\nFrom the third starting position, it must never move right. There is one route, carrying the starting value \\(1\\).\n\nThese cases include every contribution, since each originates at one of the three starting positions. Each route is counted once by its set of right-moving transitions; a route with too many right moves cannot return to the third position. Therefore the third entry is\n\\[\n(-1)(66)+3(12)+1=\\boxed{-29},\n\\]\nchoice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_h200",
+          "cnm_h231",
+          "cnm_h236"
+        ],
+        "prerequisiteIds": [
+          "cnm_h197",
+          "cnm_h208"
+        ],
+        "levelReason": "This uses additive propagation and elementary counting of one or two selected transitions. The two-transition count is derived directly."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h200"
+    ],
+    "supportIds": [
+      "cnm_h197",
+      "cnm_h208"
+    ],
+    "annotationRationale": "The route-neutral target is extracting information from the array's recurrence. Both methods index the rows and use the geometric growth of their sums. The first method develops an arithmetic sequence for the second entries and sums its contributions to the third. The second counts contribution routes using the multiplication principle and unordered selections, so those counting concepts remain local to that alternative.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2025_AMC_10A_Q19",
+    "decision": "accept",
+    "mathematicalCheck": "Endpoint handling correctly makes every old entry contribute twice, giving S_n=3·2^n and uniquely n=12. The column recurrence gives c_12=1+36-66=-29. The independent contribution count gives 66 routes from -1, 12 from 3, and one from 1, again totaling -29, with multiplicities fully justified.",
+    "levelCheck": "Repeated doubling, arithmetic pairing, and the directly derived two-transition count are appropriate for AMC 10. Both explanations justify their decisive steps.",
+    "methodDistinctness": "Tracking column recurrences and counting contribution routes provide genuinely different elementary approaches.",
+    "annotationCheck": "The recurrence target and shared sequence/geometric-growth support fit both methods. Arithmetic-sequence nodes remain local to the first method, and multiplication-principle and combination nodes accurately describe the second.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "track-left-columns": "track-left-columns",
+    "count-contribution-paths": "count-contribution-paths"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "62a8f6fc55c99084b9d2352fe884d677b286fc5127a7f520864c314c6a4d3645",
+    "acceptedAt": "2026-11-07T07:58:22.557492+00:00",
+    "inputHash": "30d9d35051a04858590c6116460fc4d5db33e860b12bf7ea3fc5e1bd33862ecb",
+    "authorInputHash": "3b16d4e560c70cec2eaf2d618351d413035645247a3e80cc60dda1c5d060a1ee",
+    "reviewInputHash": "f2d5a6fc5bdcb7928604fa8410d90016f07989ccb651fdab1440538a27966ff9",
+    "authorResponseHash": "550e8f74f2b6d1dbe24321769a495a311fc02442123de674971bbe815ef86145",
+    "reviewerResponseHash": "efd2c98306d0933c2df1c2352721b203b6545f98981039b98b6c999b6a87c0c9",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

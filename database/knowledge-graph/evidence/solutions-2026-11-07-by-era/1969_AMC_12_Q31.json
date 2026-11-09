@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1969_AMC_12_Q31",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "c9b4e30be732fbfdcb7ed0072038c8583a6ff58374b50c3c71482dd69f9795f5",
+    "figureHashes": {
+      "figures/1969_AMC_12_Q31_choiceA_fig1.svg": "1efa7328c069a7d00a4fb78ec1b362666de85e805e4f6175260521850aecd8e9",
+      "figures/1969_AMC_12_Q31_choiceB_fig2.svg": "f878400e5a130e6c392e3718fb1b80ec1413d253b44a1c01b96c66e8f8d84f2b",
+      "figures/1969_AMC_12_Q31_choiceC_fig3.svg": "8fb6ce3790b4e3a8dadb557c249a544361a8228878e8ea44c0b68568d5fbc4f6",
+      "figures/1969_AMC_12_Q31_choiceD_fig4.svg": "efdfc31459eb0d7ccd0f1da1a5b00ed75557e4796a03fb0933fefa11482ac5aa",
+      "figures/1969_AMC_12_Q31_choiceE_fig5.svg": "5817f07ef86903a78779053a88a51d26bbc3e930ffba208b66c3bfdf05f39849"
+    }
+  },
+  "solutionSHA256": "b0ef1d2c58ca65da8e3fc470e6a557bc0fdfb6a6fa2b24ccd7cb3694a3befe68",
+  "solutionFigureHashes": {},
+  "candidateHash": "342ff8e726d9ff8cdafb5ec21ef76d6495e2f9aa72d3ff98add8b329df6e84b5",
+  "candidate": {
+    "questionId": "1969_AMC_12_Q31",
+    "derivedAnswer": "D: the closed region 0≤v≤2, v²/4−1≤u≤1−v²/4",
+    "answerStatus": "matches",
+    "answerReason": "The full image lies above the u-axis, between two parabolic arcs joining (−1,0) and (1,0) to (0,2). Every point of this region has a preimage in the square. This agrees with the actual figure in choice D.",
+    "methods": [
+      {
+        "id": "boundary-and-algebraic-preimage",
+        "label": "Map the sides and verify the entire region",
+        "explanation": "The square consists of all points with \\(0\\le x,y\\le1\\). Start with its sides: holding one coordinate fixed makes the image boundary easy to describe.\n\nOn \\(y=0\\), the image is \\(v=0\\), \\(0\\le u\\le1\\). On \\(x=0\\), it is \\(v=0\\), \\(-1\\le u\\le0\\). The other two sides give\n\\[\n\\begin{aligned}\nx=1 &: \\quad u=1-\\frac{v^2}{4},\\\\\ny=1 &: \\quad u=\\frac{v^2}{4}-1,\n\\end{aligned}\n\\qquad 0\\le v\\le2.\n\\]\nThese suggest a region bounded by the base segment and two parabolic arcs. We must also check which interior points occur.\n\nFor an image point, put \\(R=\\sqrt{u^2+v^2}\\). The identity\n\\[\n(x^2-y^2)^2+(2xy)^2=(x^2+y^2)^2\n\\]\nshows that \\(R=x^2+y^2\\). Consequently,\n\\[\nR+u=2x^2\\le2,\n\\qquad R-u=2y^2\\le2,\n\\]\nso \\(R+|u|\\le2\\). Since \\(R\\ge|u|\\), this implies \\(|u|\\le1\\). Squaring \\(R\\le2-|u|\\), whose two sides are nonnegative, gives\n\\[\nv^2\\le4(1-|u|).\n\\]\nAlso \\(v=2xy\\ge0\\). Thus every image point satisfies\n\\[\n0\\le v\\le2,\n\\qquad \\frac{v^2}{4}-1\\le u\\le1-\\frac{v^2}{4}.\n\\]\n\nConversely, take any point satisfying these inequalities. They imply \\(|u|\\le1\\) and \\(v^2\\le4(1-|u|)\\). Therefore, with \\(R=\\sqrt{u^2+v^2}\\),\n\\[\n|u|\\le R\\le2-|u|.\n\\]\nDefine\n\\[\nx=\\sqrt{\\frac{R+u}{2}},\n\\qquad y=\\sqrt{\\frac{R-u}{2}}.\n\\]\nThe bounds on \\(R\\) ensure that both radicands lie in \\([0,1]\\), so \\((x,y)\\) belongs to the square. Moreover,\n\\[\nx^2-y^2=u,\n\\qquad (2xy)^2=(R+u)(R-u)=v^2.\n\\]\nBecause \\(2xy\\) and \\(v\\) are nonnegative, \\(2xy=v\\). Every point in the proposed region is therefore attained, including its boundary.\n\nThe image is the entire region above the base from \\((-1,0)\\) to \\((1,0)\\), with two parabolic arcs meeting at \\((0,2)\\). This is choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "math:quadratic-system-elimination",
+          "cnm_220",
+          "cnm_231"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_029",
+          "cnm_096",
+          "cnm_074",
+          "cnm_148",
+          "cnm_147"
+        ],
+        "levelReason": "Uses polynomial identities, inequalities, nonnegative square roots, and quadratic graphs. No reasoning beyond high-school algebra and coordinate geometry is needed."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_082",
+      "cnm_029",
+      "cnm_096"
+    ],
+    "annotationRationale": "Determining the full image of a nonlinear plane transformation is the route-neutral target, and the catalog lacks a suitable node for it. The written method uses quadratic-system elimination to recover feasible squared coordinates, direct square roots to construct a preimage, and quadratic graph properties to identify the boundary. Coordinates, substitution, inequalities, and square identities support these steps.",
+    "needsNewNodes": [
+      {
+        "name": "Images of plane regions under coordinate transformations",
+        "description": "Determine the full image of a specified plane region under formulas u=f(x,y) and v=g(x,y). Derive output restrictions and prove that every point in the proposed image is attained, retaining sign restrictions and boundary cases.",
+        "reason": "The catalog covers particular coordinate motions and scalar function ranges, but neither describes finding the full image of a region under a nonlinear two-coordinate map."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1969_AMC_12_Q31",
+    "decision": "accept",
+    "mathematicalCheck": "With R=√(u²+v²), the identity gives R=x²+y², hence v≥0 and R+|u|≤2. These yield the stated parabolic bounds. Conversely, the constructed square roots lie in [0,1] and satisfy both transformation equations; nonnegativity correctly resolves the sign of v. This proves the entire closed image, including boundary cases. Its outline matches displayed choice D.",
+    "levelCheck": "The argument uses appropriate high-school identities, inequalities and square roots. Necessity and attainment are explained separately and completely.",
+    "methodDistinctness": "The boundary calculation and inverse construction form one complete method. No additional method is needed.",
+    "annotationCheck": "The proposed missing node accurately describes the full region-image target without equating it to a scalar range. Squared-coordinate elimination, square-root recovery, quadratic boundary graphs and the listed supporting concepts are justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "boundary-and-algebraic-preimage": "boundary-and-algebraic-preimage"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "971af369bf9e6d44bcd2dbb2fea844f9668a6208dc8c9dfa2416c22508160719",
+    "acceptedAt": "2026-11-08T00:07:05.007706+00:00",
+    "inputHash": "77b302a9e53da494413f46decc1845cf0fb73258271101bb91fc25a77c7b0125",
+    "authorInputHash": "68f88a4e9a7c2a6db0b975a9d760bf6072dc086a654c9fc5ef43980e08eb9440",
+    "reviewInputHash": "31d4a03f2c270499e3d7dfc3c81fdb24959402aea88a8d087032eb982f1af4c5",
+    "authorResponseHash": "46531f282fd63aa49a52658b46013d2cf8eb4f1a1b8ecc25e30cb6d4251fad14",
+    "reviewerResponseHash": "2c38e86dcd2a917a41d312dbf4cdc7a6ac395f423741b8eb7028499ff6cb0e3c",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

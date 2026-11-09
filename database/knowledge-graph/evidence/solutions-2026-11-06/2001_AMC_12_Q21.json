@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2001_AMC_12_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "d827f54db7206da8b66e93d2db7f135485e2b2d3fda0fcbf145d725bbbd48b4c",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "91a46ea0ebc60918321d13bb3a00b0beaad2c264042b6307427a8ef187f7ee7c",
+  "solutionFigureHashes": {},
+  "candidateHash": "2ff9675b0289cff5f5e786b7ede04f52b041909f8e2fd37703ff1a6af65293df",
+  "candidate": {
+    "questionId": "2001_AMC_12_Q21",
+    "derivedAnswer": "10 (D)",
+    "answerStatus": "matches",
+    "answerReason": "Factoring after adding 1 reduces the integer possibilities to (74,6,20,4) and (24,20,6,14). Only the latter has product 8!=40320, giving a-d=10.",
+    "methods": [
+      {
+        "id": "shift-and-divisors",
+        "label": "Add one and use common divisors",
+        "explanation": "Each expression has the form \\(uv+u+v\\), which becomes a product after adding \\(1\\):\n\\[\nuv+u+v+1=u(v+1)+(v+1)=(u+1)(v+1).\n\\]\nThe three equations therefore become\n\\[\n(a+1)(b+1)=525,\n\\]\n\\[\n(b+1)(c+1)=147,\n\\]\n\\[\n(c+1)(d+1)=105.\n\\]\nThis makes the integer restrictions useful. Set \\(t=b+1\\). Since \\(b\\) is positive, \\(t\\ge2\\). The first two products show that \\(t\\) divides both \\(525\\) and \\(147\\), whose greatest common factor is \\(21\\). Thus\n\\[\nt\\in\\{3,7,21\\}.\n\\]\nThese three cases exhaust the possibilities.\n\nIf \\(t=3\\), then \\(c+1=147/3=49\\). But \\(49\\) does not divide \\(105\\), so the third equation cannot give an integer \\(d\\).\n\nIf \\(t=7\\), the three products give\n\\[\n(a,b,c,d)=(74,6,20,4).\n\\]\nIts product is \\(74\\cdot6\\cdot20\\cdot4=35520\\), so it fails the factorial condition.\n\nIf \\(t=21\\), they give\n\\[\n(a,b,c,d)=(24,20,6,14).\n\\]\nAll four integers are positive, and their product is\n\\[\n24\\cdot20\\cdot6\\cdot14=40320=8!.\n\\]\nThe factorizations were reversible, so this tuple also satisfies all three original equations. Therefore \\(\\boxed{a-d=24-14=10}\\), choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_151",
+          "cnm_p158",
+          "cnm_p153",
+          "math:factorial-notation"
+        ],
+        "prerequisiteIds": [
+          "cnm_150",
+          "cnm_040"
+        ],
+        "levelReason": "Adding one, factoring, and checking a complete short divisor list are elementary algebra and number theory appropriate for AMC 12."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_151",
+      "cnm_p158",
+      "cnm_p153",
+      "math:factorial-notation"
+    ],
+    "annotationRationale": "The task's target is solving the equations under positive-integer restrictions and proving completeness. Factoring exposes divisibility, the greatest common factor bounds the candidate list, and factorial evaluation selects the unique admissible tuple.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2001_AMC_12_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "Adding one produces the three stated product equations. Since \\(t=b+1\\ge2\\) divides both 525 and 147, its complete candidate list is 3, 7, 21. The first fails integrality; the remaining tuples have products 35520 and 40320 respectively. Thus only \\((24,20,6,14)\\) satisfies every condition, giving \\(a-d=10\\).",
+    "levelCheck": "Factoring, common divisors, and a short exhaustive case check fit AMC 12. The factoring move and reversibility are explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Integer-equation solving is the central target. Common-factor extraction, divisibility, greatest common factor, factorial evaluation, and equality transformations are all supported by the actual work.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "shift-and-divisors": "shift-and-divisors"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "d40b6c2d622ba1859260a94427447b93d3b0fa70400858dbe60922cfa4436ae4",
+    "inputHash": "40056912539d0f554997e753b7ae682189f1e4a02595996bd1118c04b6222614",
+    "authorInputHash": "f3f82a903770bccaaa6dc2471d2e5e90423de212a8ddce7493c8309772dffe04",
+    "reviewInputHash": "a2805bac1eb42d2b37710931db9f3c78d7bc15e1075d949b6b81bb9da8eb5fab",
+    "authorResponseHash": "35ebfb303b13a145d79b10493f39c29c3b8b62b3064993b59111f89c2b31deb6",
+    "reviewerResponseHash": "b2b338434a8d6b9dcc3d93bd077794150414703f9c38aa28eccee7e17cf6216c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

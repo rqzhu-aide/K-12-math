@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1968_AMC_12_Q17",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "12b43d8f71ea0f5f22d1bb6c9cd4bd451ca458cc1eaa333441f50349c31b212a",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "f021e50161afab95fc4f320ac544d7ea689e2e0e95722e473a80f1cfdaa7f64b",
+  "solutionFigureHashes": {},
+  "candidateHash": "4068af63dbc7e6db98882d69f478ad449810f7d1da9164856987a359aa890e33",
+  "candidate": {
+    "questionId": "1968_AMC_12_Q17",
+    "derivedAnswer": "\\(\\{0\\}\\cup\\{-1/(2j+1):j=0,1,2,\\ldots\\}\\). Choice C is the intended shorthand, with its negative value restricted to odd \\(n\\).",
+    "answerStatus": "disputed",
+    "answerReason": "The key C captures the intended parity-dependent formula, but the printed set omits the restriction that −1/n occurs only for odd n. If n ranges over all positive integers in that set, it includes −1/2, which is never attained.",
+    "methods": [
+      {
+        "id": "pair-alternating-terms",
+        "label": "Cancel adjacent pairs",
+        "explanation": "The terms are \\(-1,1,-1,1,\\ldots\\), so every adjacent pair has sum \\(0\\). If \\(n\\) is even, all terms pair off. If \\(n\\) is odd, one final \\(-1\\) remains. Therefore\n\\[\nf(n)=\\begin{cases}\n0,&n\\text{ even},\\\\\n-\\dfrac1n,&n\\text{ odd}.\n\\end{cases}\n\\]\nEvery positive integer is either even or odd, so these cases give all possible values. The value \\(0\\) occurs, for example, at \\(n=2\\); each negative value occurs at its corresponding positive odd index. Hence the exact range is\n\\[\n\\boxed{\\{0,-1,-\\tfrac13,-\\tfrac15,\\ldots\\}}.\n\\]\nChoice C is the intended answer only when its \\(-1/n\\) is restricted to odd \\(n\\). As printed, it does not state that restriction. In particular, \\(-1/2\\) cannot occur: a negative output requires odd \\(n\\), whereas \\(-1/n=-1/2\\) would require \\(n=2\\).",
+        "nodeIds": [
+          "cnm_h029"
+        ],
+        "prerequisiteIds": [
+          "cnm_020",
+          "cnm_011",
+          "cnm_p156",
+          "cnm_h027"
+        ],
+        "levelReason": "Uses the sign pattern of powers of −1, pair cancellation, and an exhaustive odd-even split."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h029"
+    ],
+    "supportIds": [
+      "cnm_020",
+      "cnm_011",
+      "cnm_p156",
+      "cnm_h027"
+    ],
+    "annotationRationale": "The task asks for the full range on positive integer inputs. Power signs and regrouping a signed sum support the parity argument, while function meaning connects those cases to attained outputs. Neither geometric-series formulas nor formal telescoping are needed. The annotation retains the range target while distinguishing the exact range from the qualified interpretation of choice C.",
+    "needsNewNodes": [],
+    "limitations": [
+      "Choice C is incomplete as a literal range description. It agrees with the key only as shorthand for 0 at even indices and −1/n at odd indices."
+    ]
+  },
+  "review": {
+    "questionId": "1968_AMC_12_Q17",
+    "decision": "accept",
+    "mathematicalCheck": "Adjacent terms cancel, leaving numerator 0 for even n and -1 for odd n. The exact range is {0, -1, -1/3, -1/5, ...}, with every listed value attained. The solution correctly qualifies choice C and demonstrates why -1/2 is excluded.",
+    "levelCheck": "Pair cancellation and an exhaustive parity split give a complete elementary explanation.",
+    "methodDistinctness": "One complete method is sufficient; sequence-sum formulas would add unnecessary machinery.",
+    "annotationCheck": "The range target and the power-sign, addition, parity, and function supports match the solution. The limitation honestly preserves the printed choice's ambiguity instead of asserting the key unconditionally.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "pair-alternating-terms": "pair-alternating-terms"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "575aca1c7d0995c305acf5ae650d1cae4464cfd3c687920fa84528f25c4cdd07",
+    "inputHash": "114b6075cdaf9fe00c061ab55060ff749664d7c180cbde047e6f859171b3381f",
+    "authorInputHash": "49956b3490d58f53940eb8150e520258cb05508f174e8330bc301d6d5b775a95",
+    "reviewInputHash": "73f990674372d7fd12c4b33be7ac029429ae2443b7bc8a2ddd210f758fb2f110",
+    "authorResponseHash": "57b17a9de07f33622eb7e2d3b57e4333a1702d9c14407899bf75bbad89ee32b7",
+    "reviewerResponseHash": "e9bb46b6bac775b16bcc790e8e87bc1e925867a8f4188648957363b31fb9a5c1",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

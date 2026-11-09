@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2006_AMC_10A_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "b1ee045593585c65f2dcaf3f432b1cdb91690a39bf57a59c6ec6fff0aa2ad9dd",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "69539db5329751d9c4fad5c96f4b30c95e192a98405002155db0392a08c483ff",
+  "solutionFigureHashes": {},
+  "candidateHash": "dff546b45ddd1a0ace86246141af31b759cb776e9ed5ca2a6cf77bcd51b77fe2",
+  "candidate": {
+    "questionId": "2006_AMC_10A_Q21",
+    "derivedAnswer": "E. 5416",
+    "answerStatus": "matches",
+    "answerReason": "There are 9000 four-digit integers, of which 7·8^3=3584 contain neither 2 nor 3. Their complement has 9000−3584=5416 integers.",
+    "methods": [
+      {
+        "id": "count-the-complement",
+        "label": "Count the complement",
+        "explanation": "It is easier to count numbers with neither digit and subtract them from all four-digit integers. There are\n\\[\n9\\cdot10^3=9000\n\\]\nfour-digit integers, since the first digit cannot be zero.\n\nIf neither 2 nor 3 appears, the first digit has seven choices: \\(1,4,5,6,7,8,9\\). Each remaining digit has eight choices, since zero is allowed there. Thus \\(7\\cdot8^3=3584\\) numbers contain neither digit.\n\nEvery four-digit integer either contains a 2 or 3 or contains neither, and these groups do not overlap. Therefore the requested count is\n\\[\n9000-3584=\\boxed{5416},\n\\]\nchoice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_h231",
+          "cnm_h010"
+        ],
+        "prerequisiteIds": [
+          "cnm_p053"
+        ],
+        "levelReason": "The solution uses place-value restrictions, the multiplication principle, and subtraction of a complementary count."
+      },
+      {
+        "id": "classify-first-special-digit",
+        "label": "Locate the first 2 or 3",
+        "explanation": "Classify each desired number by the first position, reading from left to right, that contains a 2 or 3. This avoids counting a number again when it contains several such digits.\n\nAt that first position there are two choices. Earlier positions must avoid 2 and 3: the thousands digit then has seven choices, and any other earlier digit has eight. Later positions can contain any digit, giving ten choices each. The four cases are\n\\[\n\\begin{aligned}\n\\text{Thousands first: }&2\\cdot10^3=2000,\\\\\n\\text{Hundreds first: }&7\\cdot2\\cdot10^2=1400,\\\\\n\\text{Tens first: }&7\\cdot8\\cdot2\\cdot10=1120,\\\\\n\\text{Ones first: }&7\\cdot8^2\\cdot2=896.\n\\end{aligned}\n\\]\nEvery number containing a 2 or 3 has exactly one first such position, so these cases include every desired number exactly once. Adding gives\n\\[\n2000+1400+1120+896=\\boxed{5416},\n\\]\nchoice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_h231",
+          "cnm_h230"
+        ],
+        "prerequisiteIds": [
+          "cnm_p053"
+        ],
+        "levelReason": "The alternative uses elementary digit choices and four disjoint cases, with no more advanced prerequisites than the complement method."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h231"
+    ],
+    "supportIds": [
+      "cnm_p053"
+    ],
+    "annotationRationale": "Both routes assess counting digit assignments with the multiplication principle and use place value to enforce a nonzero leading digit. Complement subtraction belongs only to the first method. The addition principle belongs only to the second method, whose cases are distinguished by the first qualifying digit. These alternative techniques are not simultaneous requirements.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2006_AMC_10A_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "The complement count correctly gives 9000−7·8^3=5416, respecting the nonzero leading digit. The second method partitions numbers uniquely by their first 2 or 3 and obtains 2000+1400+1120+896=5416. Both counts are exhaustive and avoid duplication.",
+    "levelCheck": "Both methods use accessible digit choices and explain their decisive counting steps independently.",
+    "methodDistinctness": "Complement subtraction and classification by the first qualifying position are genuinely distinct, useful methods at the same level.",
+    "annotationCheck": "cnm_h231 is route-neutral and place value is shared support. cnm_h010 belongs to the complement route, while cnm_h230 belongs to the disjoint-case route; the annotations preserve this separation.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-the-complement": "solution:count-the-complement:69539db53297",
+    "classify-first-special-digit": "solution:classify-first-special-digit:69539db53297"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "311c2c45f083753a31b8318cea173181239adb4a7d7c20c10bd9dba73bf8c809",
+    "inputHash": "036bb8cb6297c7a125d28dc7a8847ca4e8beb96ad59f51201a84874442f38862",
+    "authorInputHash": "498ab4458fa0ad664d81264f65a4847ac77cbea34262c7a925668128a5738c5d",
+    "reviewInputHash": "040ceab9624b73d5ad10dd340a445ac9e146fc5a12aacdcff3592f5f5957687e",
+    "authorResponseHash": "6f2d9f37405a92c0a5a76cce00f09645523c30f79abd8bfb71aa9094be10c5f5",
+    "reviewerResponseHash": "ecdac2b3c68e3b91a4c1046bf74372bb98d79f0f5c8e9dc020547243d972ba3b",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

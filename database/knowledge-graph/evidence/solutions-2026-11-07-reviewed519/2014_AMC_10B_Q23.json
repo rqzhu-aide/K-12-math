@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2014_AMC_10B_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "7e035b004fa0546c6e0b77b696063170a6ca3822bca40089875df470f88350b4",
+    "figureHashes": {
+      "figures/2014_AMC_10B_Q23_question_fig1.svg": "a65edce5e46fb019803e74e453143edfca08a37c48d4ec64f9be6fad29059df9"
+    }
+  },
+  "solutionSHA256": "456d1d83e4a9e57a9ee66f24fa4728c813f1ebaa63a644abeb9f6535a35e4aad",
+  "solutionFigureHashes": {},
+  "candidateHash": "9be5e35cb899cf44164c20ea3883f630294b1396d4619ff412631a0e4ddade6d",
+  "candidate": {
+    "questionId": "2014_AMC_10B_Q23",
+    "derivedAnswer": "E, \\(\\dfrac{3+\\sqrt5}{2}\\)",
+    "answerStatus": "matches",
+    "answerReason": "The axial tangent trapezoid gives \\(s^2=Rr\\), where \\(s\\) is the sphere radius and \\(R>r>0\\) are the base radii. The volume comparison becomes \\(R^2+r^2=3Rr\\). Thus \\(R/r\\) is the root greater than 1 of \\(k^2-3k+1=0\\), agreeing with choice E.",
+    "methods": [
+      {
+        "id": "axial-tangents-and-cone-difference",
+        "label": "Use an axial section and subtract cone volumes",
+        "explanation": "A section through the common axis reveals how the inscribed sphere connects the frustum's height to its base radii. Let \\(R>r>0\\) be the bottom and top base radii, respectively, and let \\(s>0\\) be the sphere's radius.\n\nThe axial section is an isosceles trapezoid with bases \\(2R\\) and \\(2r\\), circumscribed about a circle of radius \\(s\\). Because the sphere touches both base planes, the frustum's height is \\(2s\\).\n\nIn this section, the circle touches each parallel base at its midpoint. The two tangent segments from any corner to the circle have equal lengths. Consequently, a sloping leg is split at its tangency point into lengths \\(R\\) and \\(r\\), so its total length is \\(R+r\\). Its horizontal offset is \\(R-r\\), and its vertical height is \\(2s\\). Pythagoras gives\n\\[\n(R+r)^2=(R-r)^2+(2s)^2,\n\\]\nso\n\\[\n4Rr=4s^2,\n\\qquad s^2=Rr.\n\\]\nThis relation will eliminate the sphere's radius from the volume comparison.\n\nTo obtain the frustum's volume, extend its sloping sides to the original cone's apex. Let \\(H\\) be the full cone's height and \\(u\\) the removed cone's height. Similar axial triangles give\n\\[\n\\frac{u}{H}=\\frac rR,\n\\qquad H-u=2s.\n\\]\nSince \\(R-r>0\\), solving gives\n\\[\nH=\\frac{2sR}{R-r},\n\\qquad u=\\frac{2sr}{R-r}.\n\\]\nSubtracting the two cone volumes yields\n\\[\nV_{\\text{frustum}}\n=\\frac{\\pi}{3}(R^2H-r^2u)\n=\\frac{2\\pi s}{3}\\frac{R^3-r^3}{R-r}.\n\\]\nUsing \\(R^3-r^3=(R-r)(R^2+Rr+r^2)\\), this becomes\n\\[\nV_{\\text{frustum}}\n=\\frac{2\\pi s}{3}(R^2+Rr+r^2).\n\\]\nThe sphere's volume is \\(4\\pi s^3/3\\). The stated volume comparison therefore gives\n\\[\n\\frac{2\\pi s}{3}(R^2+Rr+r^2)\n=2\\cdot\\frac{4\\pi s^3}{3}.\n\\]\nCanceling the positive factor \\(2\\pi s/3\\) and using \\(s^2=Rr\\), we obtain\n\\[\nR^2+Rr+r^2=4Rr,\n\\qquad R^2-3Rr+r^2=0.\n\\]\nLet \\(k=R/r>1\\). Division by \\(r^2>0\\) gives\n\\[\nk^2-3k+1=0,\n\\qquad k=\\frac{3\\pm\\sqrt5}{2}.\n\\]\nThe minus root is less than \\(1\\), so it cannot be the bottom-to-top radius ratio. The retained root satisfies the tangency and volume equations, giving\n\\[\n\\boxed{\\frac Rr=\\frac{3+\\sqrt5}{2}}.\n\\]\nThe answer is choice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "math:sphere-volume",
+          "math:sphere-tangency-distances",
+          "cnm_263",
+          "cnm_174",
+          "cnm_272",
+          "cnm_p209",
+          "cnm_222"
+        ],
+        "prerequisiteIds": [
+          "cnm_h106",
+          "cnm_p162",
+          "cnm_p192",
+          "cnm_262",
+          "cnm_271",
+          "math:sum-difference-cubes"
+        ],
+        "levelReason": "The method uses an elementary axial cross-section, equal tangent lengths, Pythagoras, similar triangles, standard solid-volume formulas, and a quadratic equation. No trigonometry or calculus is needed."
+      }
+    ],
+    "assessedIds": [
+      "math:sphere-volume"
+    ],
+    "supportIds": [
+      "cnm_h106",
+      "cnm_p162",
+      "cnm_p192"
+    ],
+    "annotationRationale": "The route-neutral target is constructing and solving a volume comparison involving a sphere. The written method uses sphere-plane tangency for the height, equal tangent lengths and Pythagoras for the insphere relation, similar triangles and cone volumes to derive the frustum volume, and the quadratic formula to recover the admissible ratio. Solid elements, cubic measure, and circular base area are supporting knowledge. The frustum formula is derived from cataloged procedures, so no additional formula node is needed.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2014_AMC_10B_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "The axial incircle gives height 2s and sloping-leg length R+r, so Pythagoras yields s²=Rr. Subtracting the similar cone volumes correctly gives (2πs/3)(R²+Rr+r²). Equating this to twice the sphere volume produces k²−3k+1=0 for k=R/r>1. Only (3+√5)/2 is admissible. All divisions and cancellations respect R>r>0 and s>0.",
+    "levelCheck": "The axial section, tangent lengths, similar triangles, volume formulas, and quadratic equation are appropriate for AMC 10. The frustum-volume formula and decisive tangency relation are explained.",
+    "methodDistinctness": "One complete elementary method is sufficient.",
+    "annotationCheck": "The exact sphere-volume target is appropriate. Sphere-plane tangency, equal tangent lengths, Pythagoras, similarity, cone volume, and quadratic solving match their catalog scopes. Supporting solid, volume-unit, circle-area, and cube-identity annotations are justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "axial-tangents-and-cone-difference": "solution:axial-tangents-and-cone-difference:456d1d83e4a9"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "ef216c64444fbdd324235bde67077f7c8498f45785472acff1281f355592cc99",
+    "acceptedAt": "2026-11-07T08:51:03.882244+00:00",
+    "inputHash": "c57bf7ee5a577b6e7c1e5adad96586cbf4d65ab2d6475760fafd56a8fc2d65d6",
+    "authorInputHash": "72828dc3994eb012c3400ea0d6acf2d417ab2b2aa497de1dd4b6bd6368685603",
+    "reviewInputHash": "cd6e490d720e98a646190be3f5bc1dad5b9132ff870b06ef6af3cc597842938a",
+    "authorResponseHash": "e25a276e9bb8c4fe7187909a66c73b5e9f035a89f4473f39805613e62177252c",
+    "reviewerResponseHash": "c8d3a76fffcbc78a5e2d879c7d2101282afcfb44f5dd9091ffbc8e08bce8df62",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

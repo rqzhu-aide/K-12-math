@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2009_AMC_12B_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "2a19423d7c89bc78eaf095a14842def7b5f20793b85e9a5b31d34321eec67c09",
+    "figureHashes": {
+      "figures/2009_AMC_12B_Q25_question_fig1.svg": "9b23ae60dca7e9f801d74a64919ac64e09e9ee06caba141e866a2d8e8b1ef168"
+    }
+  },
+  "solutionSHA256": "c276896d7b2f5eea1ec03cb8f05601d867c2cc40d0f6ecdfe96ed9b89fe3239f",
+  "solutionFigureHashes": {
+    "figures/2009_AMC_12B_Q25_question_fig1.svg": "9b23ae60dca7e9f801d74a64919ac64e09e9ee06caba141e866a2d8e8b1ef168"
+  },
+  "candidateHash": "69970ddedd686e1502943cd7b6523891422296df5d704f31c442d8abb1659cfe",
+  "candidate": {
+    "questionId": "2009_AMC_12B_Q25",
+    "derivedAnswer": "\\(225\\), choice E",
+    "answerStatus": "matches",
+    "answerReason": "Every eligible square has one vertex in each block. For upper-side rises 0, 1, 2, 3, and 4, the counts are respectively 85, 44, 19, 6, and 1. Reflection supplies the corresponding negative rises, giving 85+2(44+19+6+1)=225.",
+    "methods": [
+      {
+        "id": "upper-side-rise",
+        "label": "Count by the rise of the upper side",
+        "explanation": "First determine where the four vertices must lie. Within any one block, horizontal and vertical differences are at most \\(4\\), so the square of the distance between two points is at most\n\\[\n4^2+4^2=32<6^2.\n\\]\nAny two vertices of a square of side at least \\(6\\) are at least \\(6\\) apart. Thus at most one vertex can lie in each block, and every eligible square has exactly one vertex in each of the four blocks.\n\n[Figure 1](figures/2009_AMC_12B_Q25_question_fig1.svg)\n\nThe two upper vertices must be adjacent. Otherwise their diagonal would lie entirely above the horizontal axis, while the diagonal joining the two lower vertices would lie entirely below it, contradicting the fact that square diagonals intersect. The same argument for the two right-hand vertices shows that the vertices occur around the square in the order upper left, upper right, lower right, lower left. Call them \\(A,B,C,D\\), respectively.\n\nLet \\(k\\) be the vertical rise from \\(A\\) to \\(B\\). Their heights are integers from \\(3\\) through \\(7\\), so \\(-4\\le k\\le4\\). Reflection in the vertical axis pairs squares with rise \\(k\\) with squares with rise \\(-k\\). We can therefore count \\(k=0,1,2,3,4\\), then double the counts for positive rises.\n\nFix such a nonnegative \\(k\\). If the horizontal change along \\(AB\\) is \\(d\\), the clockwise quarter-turn to side \\(BC\\) gives horizontal change \\(k\\) and vertical change \\(-d\\). Accordingly, write the vertices as\n\\[\n\\begin{aligned}\nA&=(-p-k,q),& B&=(r,q+k),\\\\\nC&=(r+k,-s),& D&=(-p,-s-k).\n\\end{aligned}\n\\]\nHere the horizontal change along \\(AB\\) is \\(p+r+k\\), and the downward change along \\(BC\\) is \\(q+s+k\\). These must agree, so\n\\[\np+r=q+s.\n\\]\nThe coordinate restrictions for all four vertices are exactly\n\\[\np,q,r,s\\in\\{3,4,\\ldots,7-k\\}.\n\\]\nFor example, both \\(p\\) and \\(p+k\\) must be between \\(3\\) and \\(7\\), giving \\(3\\le p\\le7-k\\); the other three variables have the same restriction.\n\nConversely, any four integers in this interval satisfying \\(p+r=q+s\\) produce a square: consecutive side changes are \\((d,k)\\) and \\((k,-d)\\), which are quarter-turns of one another, and opposite side changes are their negatives. Its side length is at least \\(d=p+r+k\\ge6\\). Thus these conditions include exactly the eligible squares with rise \\(k\\). Each square determines its four vertices by their blocks and hence determines all five parameters, so none is counted twice.\n\nPut \\(n=5-k\\), the number of integers in the interval. As the sum \\(p+r\\) increases, its numbers of ordered representations are\n\\[\n1,2,\\ldots,n-1,n,n-1,\\ldots,2,1.\n\\]\nIndeed, each increase in a small sum allows one more choice for the first entry; after the middle sum, the counts reverse. For each sum, \\((q,s)\\) independently has the same number of choices. We therefore square each representation count and add. The five counts are\n\\[\n\\begin{aligned}\nN_0&=5^2+2(1^2+2^2+3^2+4^2)=85,\\\\\nN_1&=4^2+2(1^2+2^2+3^2)=44,\\\\\nN_2&=3^2+2(1^2+2^2)=19,\\\\\nN_3&=2^2+2(1^2)=6,\\\\\nN_4&=1^2=1.\n\\end{aligned}\n\\]\nRise zero is counted once, and each positive rise has a distinct reflected partner with negative rise. The exhaustive total is\n\\[\n85+2(44+19+6+1)=\\boxed{225},\n\\]\nwhich is choice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "cnm_h232",
+          "math:lattice-counting",
+          "cnm_245",
+          "cnm_h087",
+          "cnm_136"
+        ],
+        "prerequisiteIds": [
+          "cnm_174",
+          "cnm_191",
+          "cnm_h231"
+        ],
+        "levelReason": "The proof uses a Pythagorean distance bound, elementary square geometry, quarter-turns, reflection, coordinate arithmetic, and finite addition and multiplication counts."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h232",
+      "math:lattice-counting"
+    ],
+    "supportIds": [
+      "cnm_174",
+      "cnm_191"
+    ],
+    "annotationRationale": "The task targets exhaustive counting under integer-coordinate restrictions, combining disjoint cases with independent choices. Square properties and the Pythagorean theorem support the structural reduction to one vertex per block. This method specifically uses quarter-turn coordinate changes and axis reflection. The multiplication principle supports the squared representation counts. Reflection pairs distinct squares here; the problem does not identify squares up to symmetry.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2009_AMC_12B_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "A block's squared diameter is 32<36, forcing one vertex per block. Intersecting diagonals establish the stated cyclic order. For each nonnegative rise k, the parameterization is bijective with p,q,r,s in {3,...,7-k} satisfying p+r=q+s, and every constructed square has side at least 6. Squared ordered-sum multiplicities give 85,44,19,6,1. Reflection pairs distinct positive- and negative-rise cases, yielding 225 without duplication.",
+    "levelCheck": "The structural reduction, parameter correspondence, and multiplicities are fully explained using elementary geometry, coordinate arithmetic, and finite counting appropriate to AMC 12.",
+    "methodDistinctness": "One exhaustive method is sufficient; its geometric reduction and counting stages form a coherent argument.",
+    "annotationCheck": "Combined counting and the exact integer-parameter count support the assessed IDs. Pythagoras and square properties support the reduction. Rotation, coordinate operations, coordinate reflection, and the multiplication principle accurately describe this route. No counting up to symmetry is claimed.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "upper-side-rise": "upper-side-rise"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "3c26cbd21fa25d84455300900905bccc8a9ec225261994f620d691344bf39d54",
+    "acceptedAt": "2026-11-07T10:08:34.875486+00:00",
+    "inputHash": "eee3455ee01b5c2c8e636afb25b666c6d04c57be30f431daddf10e3fbbeeef6d",
+    "authorInputHash": "680bd3bb57c840ce45b4f7f412e40bb3e0b611ef3eff8e7dd644f8668b02d6ac",
+    "reviewInputHash": "77fefc318d6cc0c168106a4f9615e100d8dca9cc719da40e9bd481c32f13e311",
+    "authorResponseHash": "3d1b10ea9089d8b132b437da56ebb311f7f62f5db3723877b47d9205287fbec2",
+    "reviewerResponseHash": "2f888c90651bfd4dc6beee2d35742810da233458922cce58adf97a91322ce73f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1980_AMC_12_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "39dd2b8b292cc2a3f2879f3db508c91a645724759bf98bd0e58faad6b0ff9f35",
+    "figureHashes": {
+      "figures/1980_AMC_12_Q21_question_fig1.svg": "54d0c4a86f6f0150035ff38fdecc6cdd0c5395285f92ea932136ac6e188456fa"
+    }
+  },
+  "solutionSHA256": "f4dea1de9db387de73339d791b6a2b8e62b32d97418d51108f1fab11e61c4cf7",
+  "solutionFigureHashes": {},
+  "candidateHash": "e265d10088798f5068ea335ca9a9bc18c760c90c8795049006f606e6cf4248e3",
+  "candidate": {
+    "questionId": "1980_AMC_12_Q21",
+    "derivedAnswer": "A (1/5)",
+    "answerStatus": "matches",
+    "answerReason": "Equal-height triangle comparisons and area subtraction give [BDF]:[FDCE] = 1:5. The given 72-degree angle is unnecessary.",
+    "methods": [
+      {
+        "id": "median-area-balance",
+        "label": "Compare areas with common heights",
+        "explanation": "The midpoint and the ratio \\(BD:DC=1:2\\) suggest comparing triangle areas: triangles with bases on the same line and the same opposite vertex have areas proportional to their bases.\n\nWrite \\([XYZ]\\) for the area of triangle \\(XYZ\\), and let \\(S=[BDF]>0\\). Draw \\(FC\\). Triangles \\(BDF\\) and \\(CDF\\) have the same height to \\(BC\\), so\n\\[\n[CDF]=2S,\\qquad [BCF]=3S.\n\\]\nSince \\(E\\) is the midpoint of \\(AC\\), the median \\(BE\\) divides \\(ABC\\) into equal areas: \\([ABE]=[CBE]\\). Also, \\([AEF]=[CEF]\\), because their bases \\(AE\\) and \\(CE\\) are equal and their height from \\(F\\) is common. Subtracting these equal small areas from the equal larger areas gives\n\\[\n[ABF]=[CBF]=3S.\n\\]\nThus \\([ABD]=[ABF]+[BDF]=4S\\). Triangles \\(ABD\\) and \\(ACD\\) share the height from \\(A\\) to \\(BC\\), so their areas have ratio \\(BD:DC=1:2\\). Consequently,\n\\[\n[ABC]=3[ABD]=12S,\\qquad [BCE]=6S.\n\\]\nRemoving triangle \\(BDF\\) from triangle \\(BCE\\) leaves quadrilateral \\(FDCE\\), of area \\(6S-S=5S\\). Therefore the required ratio is \\(S/(5S)=\\boxed{\\frac15}\\), choice \\(\\mathrm{A}\\).",
+        "nodeIds": [
+          "cnm_113",
+          "cnm_p148",
+          "cnm_p150"
+        ],
+        "prerequisiteIds": [
+          "cnm_055",
+          "cnm_110",
+          "cnm_112",
+          "cnm_p185"
+        ],
+        "levelReason": "The argument uses only midpoint facts, the base-height area formula, and addition and subtraction of areas."
+      },
+      {
+        "id": "parallel-midsegment",
+        "label": "Use a midsegment to locate F",
+        "explanation": "A midsegment can turn the midpoint information into a useful parallel line. Let \\(M\\) be the midpoint of \\(DC\\), and join \\(E\\) to \\(M\\). In triangle \\(CAD\\), points \\(E\\) and \\(M\\) are side midpoints, so \\(EM\\parallel AD\\).\n\nBecause \\(DC=2BD\\), we have \\(DM=BD\\), and hence \\(BM=2BD\\). In triangle \\(BEM\\), point \\(D\\) lies on \\(BM\\), point \\(F\\) lies on \\(BE\\), and \\(DF\\parallel EM\\). The proportional-segment theorem therefore gives\n\\[\n\\frac{BF}{BE}=\\frac{BD}{BM}=\\frac12.\n\\]\nThus \\(BF=FE\\). Let \\(S=[BDF]>0\\), where brackets denote area. Triangles \\(BDF\\) and \\(EDF\\) have equal bases \\(BF\\) and \\(FE\\) on the same line and the same height from \\(D\\), so \\([EDF]=S\\). Therefore \\([BDE]=2S\\).\n\nTriangles \\(CDE\\) and \\(BDE\\) have bases on \\(BC\\) and a common height from \\(E\\). Since \\(DC=2BD\\),\n\\[\n[CDE]=2[BDE]=4S.\n\\]\nQuadrilateral \\(FDCE\\) consists of triangles \\(FDE\\) and \\(DCE\\), so its area is \\(S+4S=5S\\). The requested ratio is \\(\\boxed{\\frac15}\\), choice \\(\\mathrm{A}\\).",
+        "nodeIds": [
+          "cnm_185",
+          "cnm_269",
+          "cnm_p148",
+          "cnm_p150"
+        ],
+        "prerequisiteIds": [
+          "cnm_055",
+          "cnm_110",
+          "cnm_112",
+          "cnm_268",
+          "cnm_p185"
+        ],
+        "levelReason": "This alternative uses elementary midsegments and proportional segments, followed by common-height area comparisons, all within school geometry."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p148",
+      "cnm_p150"
+    ],
+    "supportIds": [
+      "cnm_055",
+      "cnm_110",
+      "cnm_112",
+      "cnm_p185"
+    ],
+    "annotationRationale": "The task asks for an area ratio obtained by comparing triangular pieces and combining their areas, so triangle area and composite area are the route-neutral targets. Both methods use midpoint and segment meanings, triangle heights, and ratios. The first method uses the equal-area property of a median; the second instead uses a midsegment and proportional segments cut by a parallel line, with segment proportionality kept local to that method. Neither method uses the given angle, centroid ratios, or trigonometry. These annotations describe the mathematics used and do not establish learner mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1980_AMC_12_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "Both methods are complete. In Method 1, setting [BDF]=S gives [BCF]=[ABF]=3S, [ABC]=12S and [BCE]=6S, so [FDCE]=5S. In Method 2, the constructed midsegment gives BF/BE=1/2, hence [FDE]=S and [DCE]=4S. Both yield 1/5. The displayed incidences support the partitions, and the 72-degree angle is unnecessary.",
+    "levelCheck": "Both explanations use accessible school geometry and justify the decisive common-height comparisons and area partitions.",
+    "methodDistinctness": "The second method supplies a distinct elementary construction to locate F, whereas the first balances areas without locating F.",
+    "annotationCheck": "The assessed area nodes are route-neutral, shared support matches both methods, and median, midsegment and parallel-segment knowledge remain appropriately local to their methods. No centroid-ratio equivalence is claimed.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "median-area-balance": "solution:median-area-balance:f4dea1de9db3",
+    "parallel-midsegment": "solution:parallel-midsegment:f4dea1de9db3"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "1db6397cbe3ca417281ea6e2d38b32d08641fc913f489267895e9b1358c97135",
+    "acceptedAt": "2026-11-08T00:15:07.317767+00:00",
+    "inputHash": "981ffad6a4a72f0e4648a5e261317f7f1f0a4348bcc241b15518571c938efc53",
+    "authorInputHash": "4b0452eb4f62c110d9bf6c724dd64579bdce4ee8a5d4341c15b5e5f4edfc61e1",
+    "reviewInputHash": "0555c4632dc8446d5505ff0b633dc5b7073ce5c044476e2e9ba8cf98637f18ca",
+    "authorResponseHash": "d4f7d97ab75e38aaf838ed0efa8cd4c92014b83165f27905b09ffd62f3193b8a",
+    "reviewerResponseHash": "8e4cd96ddd5e037bc3946789b14ca9893703ba8cd893f9b4fa7fd7ba3f7e368d",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

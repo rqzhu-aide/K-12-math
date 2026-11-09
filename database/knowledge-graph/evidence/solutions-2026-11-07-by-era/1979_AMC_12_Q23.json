@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1979_AMC_12_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "302038a20004e22641fc5bf0a1fa153045c3a52eb955623a93cbde18fe02f044",
+    "figureHashes": {
+      "figures/1979_AMC_12_Q23_question_fig1.svg": "1eb28c1a01a14d9f195071e6069917d04a3b0ee102c36fc5bdf4f814ef77e278"
+    }
+  },
+  "solutionSHA256": "1b4a6d0d42e0cb7b3ea700c988828873e5811c8c7e33d32dc2d8f02d36baae97",
+  "solutionFigureHashes": {},
+  "candidateHash": "f1323c7d9f89ebb726aa9d25f0d522a66cba79035fc4353264401dde7845670d",
+  "candidate": {
+    "questionId": "1979_AMC_12_Q23",
+    "derivedAnswer": "C, sqrt(2)/2",
+    "answerStatus": "matches",
+    "answerReason": "The segment joining the midpoints of the opposite edges is perpendicular to both edges and has squared length 1/2. Every other permitted pair has at least this separation.",
+    "methods": [
+      {
+        "id": "midpoint-perpendiculars",
+        "label": "Use the midpoints of opposite edges",
+        "explanation": "The equal edges suggest using midpoints, because a median to the base of an isosceles triangle is perpendicular to that base. Let \\(M\\) and \\(N\\) be the midpoints of \\(AB\\) and \\(CD\\), respectively.\n\nSince \\(AC=BC\\) and \\(AD=BD\\), the medians \\(CM\\) and \\(DM\\) are both perpendicular to \\(AB\\). They are two intersecting lines in plane \\(MCD\\), so \\(AB\\) is perpendicular to that plane. Consequently, for every \\(Q\\) on \\(CD\\), we have \\(AB\\perp MQ\\).\n\nThe Pythagorean theorem in triangles \\(AMC\\) and \\(AMD\\) gives\n\\[\nCM^2=DM^2=1-\\left(\\frac12\\right)^2=\\frac34.\n\\]\nThus triangle \\(CMD\\) is isosceles. Its median \\(MN\\) is perpendicular to \\(CD\\), and\n\\[\nMN^2=CM^2-CN^2\n=\\frac34-\\frac14=\\frac12.\n\\]\nThese perpendiculars show why the midpoints give the minimum. For any permitted \\(P\\) and \\(Q\\), applying the Pythagorean theorem twice yields\n\\[\nPQ^2=PM^2+MQ^2\n=PM^2+NQ^2+MN^2\n\\geq\\frac12.\n\\]\nThe identities remain valid when \\(P=M\\) or \\(Q=N\\), with the corresponding term equal to zero. Equality holds exactly when \\(P=M\\) and \\(Q=N\\), which are allowed points on the edges. Therefore the least distance is \\(\\boxed{\\frac{\\sqrt2}{2}}\\), choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_176",
+          "cnm_137",
+          "cnm_h120",
+          "math:line-plane-perpendicular-definition",
+          "cnm_174"
+        ],
+        "prerequisiteIds": [
+          "cnm_055",
+          "cnm_064",
+          "cnm_075",
+          "cnm_113"
+        ],
+        "levelReason": "This is elementary solid geometry using isosceles-triangle medians, the two-line criterion for perpendicularity to a plane, and the Pythagorean theorem."
+      },
+      {
+        "id": "spatial-coordinate-squares",
+        "label": "Make the fixed separation a coordinate",
+        "explanation": "Choose coordinates that place the two opposite edges in perpendicular horizontal directions, at different heights. Set \\(a=\\sqrt2/2\\) and take\n\\[\n\\begin{aligned}\nA&=(-\\tfrac12,0,0),& B&=(\\tfrac12,0,0),\\\\\nC&=(0,-\\tfrac12,a),& D&=(0,\\tfrac12,a).\n\\end{aligned}\n\\]\nThis represents a regular tetrahedron of side one: \\(AB=CD=1\\), while each of the other four edges has squared length\n\\[\n\\left(\\frac12\\right)^2+\n\\left(\\frac12\\right)^2+a^2\n=\\frac14+\\frac14+\\frac12=1.\n\\]\nEvery point on \\(AB\\) has the form \\(P=(s,0,0)\\), and every point on \\(CD\\) has the form \\(Q=(0,t,a)\\), where\n\\[\n-\\frac12\\leq s,t\\leq\\frac12.\n\\]\nThe spatial distance formula, obtained by applying the Pythagorean theorem in perpendicular directions, gives\n\\[\nPQ^2=s^2+t^2+a^2\n=s^2+t^2+\\frac12\\geq\\frac12.\n\\]\nBoth squares vanish exactly when \\(s=t=0\\), and these values lie in the allowed intervals. They select the two edge midpoints. Hence the least possible distance is \\(\\boxed{\\frac{\\sqrt2}{2}}\\), choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_176",
+          "cnm_h151",
+          "cnm_h154",
+          "math:nonnegative-sum-zero"
+        ],
+        "prerequisiteIds": [
+          "cnm_174",
+          "cnm_075",
+          "cnm_080"
+        ],
+        "levelReason": "The coordinate argument uses only the three-dimensional Pythagorean distance formula and nonnegative squares, without vectors or calculus."
+      }
+    ],
+    "assessedIds": [
+      "cnm_176"
+    ],
+    "supportIds": [
+      "cnm_174",
+      "cnm_075"
+    ],
+    "annotationRationale": "The shared target is a geometric minimum-distance application of the Pythagorean theorem, including proof that the lower bound is attained. The synthetic route establishes perpendiculars through midpoint geometry and a line-plane criterion. The coordinate route instead expresses the squared distance as a fixed term plus two squares. Spatial coordinates and line-plane perpendicularity belong to their respective methods, rather than forming joint requirements. No mastery claim follows from these assignments.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1979_AMC_12_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "The midpoint medians CM and DM establish AB perpendicular to plane MCD. With N the midpoint of CD, CM²=3/4 and MN²=1/2. Therefore PQ²=PM²+NQ²+1/2, proving the lower bound and its unique attainment at the two midpoints. The coordinate method independently verifies all six unit edges and obtains PQ²=s²+t²+1/2 on the permitted intervals. Both give C. The figure places P and Q on the specified opposite edges.",
+    "levelCheck": "Both proofs use appropriate high-school geometry and Pythagorean reasoning. The synthetic proof explains the needed perpendicularity criterion, and both methods explicitly check attainment.",
+    "methodDistinctness": "The midpoint construction and the verified coordinate model offer distinct, accessible geometric and algebraic approaches.",
+    "annotationCheck": "cnm_176 reasonably captures the shared geometric distance application. Shared Pythagorean and square-root support is justified. Plane perpendicularity and spatial coordinates remain method-local, and the cited perpendicularity-definition and nonnegative-sum nodes match their uses.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "midpoint-perpendiculars": "solution:midpoint-perpendiculars:1b4a6d0d42e0",
+    "spatial-coordinate-squares": "spatial-coordinate-squares"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "2c2e284ff491e7bbb28b8fae63db4c48c60fe5ab928e22da6771190655bd0de8",
+    "acceptedAt": "2026-11-08T00:15:14.296976+00:00",
+    "inputHash": "48cced909446c1445442db7f39fd99b788aad17d08dd24790aa9c41af644158b",
+    "authorInputHash": "b1790816b4d96c46704047b6fb751e5cf7100cea91aab5fd763d48b02c0dec35",
+    "reviewInputHash": "e67d892d4b9eab504cb75fcc0907c260e857ff1e8b73c68ffc5405fd00a028db",
+    "authorResponseHash": "9d93fb4faf9e93932a88e8465b5af98347a2e8399081857b80cd515b5934ec0c",
+    "reviewerResponseHash": "decce542f85bc5c5e5749106da7e9b7f683f9c61d751b9caeec411a773b87584",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

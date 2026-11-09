@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1970_AMC_12_Q14",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "4b897871eb775775a698301c11df802bf8a0b0b40f865ec150283ab292e0e134",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "af798b7b9facb97de0453a30026a72f9f1be159e3f0fa8c97e70324974e971d4",
+  "solutionFigureHashes": {},
+  "candidateHash": "5b67a950ee22d6671c3a7515083ffec8266f73d5fdbb08346de800e8097825fc",
+  "candidate": {
+    "questionId": "1970_AMC_12_Q14",
+    "derivedAnswer": "A. p = √(4q+1)",
+    "answerStatus": "matches",
+    "answerReason": "The squared difference of the roots is p²−4q=1. Since p>0, p=√(4q+1).",
+    "methods": [
+      {
+        "id": "root-sum-product",
+        "label": "Relate the root gap to their sum and product",
+        "explanation": "Let the roots be \\(u\\) and \\(v\\), so \\((u-v)^2=1\\). Their sum and product connect them to the coefficients because\n\\[\nx^2+px+q=(x-u)(x-v)\n=x^2-(u+v)x+uv.\n\\]\nComparing coefficients gives \\(u+v=-p\\) and \\(uv=q\\). To use these two quantities, rewrite the squared difference as\n\\[\n(u-v)^2=(u+v)^2-4uv.\n\\]\nTherefore\n\\[\n1=p^2-4q,\n\\qquad\np^2=4q+1.\n\\]\nSince \\(q>0\\), the radicand is positive. The condition \\(p>0\\) selects the positive square root, giving\n\\[\np=\\sqrt{4q+1},\n\\]\nchoice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_226",
+          "cnm_148",
+          "cnm_220"
+        ],
+        "prerequisiteIds": [
+          "cnm_219",
+          "cnm_146",
+          "cnm_074"
+        ],
+        "levelReason": "Expanding the root factors, using a square identity, and selecting a positive square root are elementary quadratic algebra."
+      },
+      {
+        "id": "quadratic-formula-gap",
+        "label": "Subtract the two quadratic-formula roots",
+        "explanation": "The quadratic formula expresses the two real roots as\n\\[\nx_+=\\frac{-p+\\sqrt{p^2-4q}}{2},\n\\qquad\nx_-=\\frac{-p-\\sqrt{p^2-4q}}{2}.\n\\]\nSubtracting is useful because the common term \\(-p\\) cancels. Since the larger root exceeds the smaller by \\(1\\),\n\\[\nx_+-x_-=\\sqrt{p^2-4q}=1.\n\\]\nSquaring gives \\(p^2-4q=1\\), or \\(p^2=4q+1\\). The given condition \\(p>0\\) rules out the negative square root. Thus\n\\[\np=\\sqrt{4q+1},\n\\]\nchoice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_222",
+          "cnm_220"
+        ],
+        "prerequisiteIds": [
+          "cnm_219",
+          "cnm_074"
+        ],
+        "levelReason": "This independent route uses only the school quadratic formula and square-root algebra."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_219",
+      "cnm_074"
+    ],
+    "annotationRationale": "The task-level target is relating a quadratic's root separation to its coefficients. The catalog supplies the two alternative procedures, root sum/product identities and the quadratic formula, but neither should become a requirement for both routes. Quadratic coefficient recognition and square-root meaning support both methods. A precise route-neutral root-separation node is proposed instead of assigning an unsuitable existing target.",
+    "needsNewNodes": [
+      {
+        "name": "Separation of the real roots of a quadratic",
+        "description": "For a real quadratic ax²+bx+c=0 with a≠0 and discriminant Δ=b²−4ac≥0, relate the absolute difference of its roots to √Δ/|a|. Use a specified root separation to constrain coefficients, retaining parameter sign conditions.",
+        "reason": "The discriminant node covers real-root counts, while the quadratic-formula and root-coefficient nodes describe alternative methods. No supplied node explicitly captures the shared root-separation target."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1970_AMC_12_Q14",
+    "decision": "accept",
+    "mathematicalCheck": "Expansion gives u+v = -p and uv = q, so 1 = (u-v)² = p²-4q. The quadratic-formula route independently gives root separation sqrt(p²-4q) = 1. Both correctly use p > 0 to select sqrt(4q+1).",
+    "levelCheck": "Both explanations are complete school-level quadratic algebra and retain the necessary sign condition.",
+    "methodDistinctness": "The symmetric root identity and explicit quadratic-formula roots provide distinct, comparably accessible routes.",
+    "annotationCheck": "The method nodes and shared support fit their stated scopes. Leaving assessedIds empty while honestly proposing a route-neutral root-separation node is justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "root-sum-product": "root-sum-product",
+    "quadratic-formula-gap": "solution:quadratic-formula-gap:af798b7b9fac"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "b1894d5d279c7d6eff48230d9f67ed495afa1e4726270f77e7a28d93d57e1ea5",
+    "inputHash": "105a9ec6df30c604abcf6e1ab39bbc32c7a9c6f189e4df052a7577c1c24ab350",
+    "authorInputHash": "726a5fe05e304ef826041fe92eeec821e060863abada1722240d2e115612eeb1",
+    "reviewInputHash": "2b787d1ae9c901bf2d69e6102944a6d4f5c222834f978ff6b3a0a42d0e141d75",
+    "authorResponseHash": "14b3339b09b343492a20dcb74ce86843a38630e043d308dc714348a486e35da2",
+    "reviewerResponseHash": "bb51cf5b447869e6d4e908cb6f5aa21e5421c4f07f19dac84b1df380702bb4f9",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

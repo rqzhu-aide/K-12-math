@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1962_AMC_12_Q40",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "1a5ce7026c17f0342fa436d1551a1a5f0aee4a008b145f31b387a822eff839b2",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "4728a7ac1ff452e40c6085edc72b49fbc052e5f23829bb635d4b2a238ce41134",
+  "solutionFigureHashes": {},
+  "candidateHash": "2f4b131716bb5331d32c6605e119385c07726bb447a09ef3588fb921e1a58896",
+  "candidate": {
+    "questionId": "1962_AMC_12_Q40",
+    "derivedAnswer": "B: 10/81",
+    "answerStatus": "matches",
+    "answerReason": "Subtracting a shifted finite partial sum leaves a geometric sum and an endpoint term tending to zero. This proves convergence and gives the limit 10/81.",
+    "methods": [
+      {
+        "id": "shift-subtract-partial-sums",
+        "label": "Shift and subtract finite partial sums",
+        "explanation": "Dividing the sum by \\(10\\) shifts its terms so that equal denominators line up. Subtraction then changes the consecutive numerators into differences of \\(1\\). Work first with finite sums so that the last term is retained.\n\nFor a positive integer \\(N\\), let\n\\[\nS_N=\\frac1{10}+\\frac2{10^2}+\\cdots+\\frac N{10^N}.\n\\]\nSubtracting \\(S_N/10\\) gives\n\\[\n\\frac9{10}S_N\n=\\frac1{10}+\\frac1{10^2}+\\cdots+\\frac1{10^N}\n-\\frac N{10^{N+1}}.\n\\]\nIndeed, at denominator \\(10^k\\) for \\(2\\leq k\\leq N\\), the numerator becomes \\(k-(k-1)=1\\); the shifted sum contributes the final negative term.\n\nThe geometric sum on the right has first term \\(1/10\\) and ratio \\(1/10\\), so its limit is\n\\[\n\\frac{1/10}{1-1/10}=\\frac19.\n\\]\nTo check the remaining endpoint, write \\(a_N=N/10^{N+1}\\). For \\(N\\geq1\\),\n\\[\n\\frac{a_{N+1}}{a_N}\n=\\frac{N+1}{10N}\\leq\\frac15.\n\\]\nThus \\(0<a_N\\leq\\frac1{100}(\\frac15)^{N-1}\\), which tends to \\(0\\). The identity for \\(S_N\\) therefore proves that the original series converges. Its sum \\(S\\) satisfies\n\\[\n\\frac9{10}S=\\frac19,\n\\qquad S=\\frac{10}{81}.\n\\]\nThe limiting sum is \\(\\frac{10}{81}\\), choice B.",
+        "nodeIds": [
+          "math:telescoping",
+          "math:infinite-geometric-series"
+        ],
+        "prerequisiteIds": [
+          "cnm_h207",
+          "cnm_018"
+        ],
+        "levelReason": "Finite shift-subtraction and geometric decay establish the limit using precalculus reasoning, without differentiation or unjustified operations on infinite sums."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "math:infinite-geometric-series"
+    ],
+    "annotationRationale": "The displayed series has arithmetic weights n and is not itself geometric. The catalog covers the written route's finite shifted cancellation and geometric-series evaluation, but lacks a route-neutral target for arithmetic-geometric summation. Accordingly, no unsuitable assessed ID is assigned; the missing target is proposed below.",
+    "needsNewNodes": [
+      {
+        "name": "Arithmetic-geometric sums and limiting sums",
+        "description": "Evaluate finite sums and convergent infinite series whose terms are an arithmetic sequence multiplied by geometric powers. Justify convergence and retain terminal terms when using finite identities.",
+        "reason": "The given terms n/10^n form an arithmetic-geometric series. The geometric-series node covers unweighted geometric terms, while telescoping describes a possible method rather than the full summation target."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1962_AMC_12_Q40",
+    "decision": "accept",
+    "mathematicalCheck": "Finite shift-subtraction retains the endpoint N/10^(N+1). Its successive ratios are at most 1/5, so it tends to zero. The remaining geometric sum tends to 1/9, giving S=10/81.",
+    "levelCheck": "Finite identities and geometric decay establish convergence using precalculus reasoning.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The finite-cancellation route and geometric-series support fit. Empty assessedIds and the proposed arithmetic-geometric summation node honestly distinguish the target from its tools.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "shift-subtract-partial-sums": "shift-subtract-partial-sums"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "ee535caf24fbc309c0379e29f1158e17660fee2b3d7cf294fb4aa4b3840d9450",
+    "inputHash": "fc4631e3a04e9a8eb9c16b8b359bbd2b2e30ed426d6c84fd452992607f85e6e8",
+    "authorInputHash": "83cdd4866fe0a4b50617024f0869be0efe4e5cdd91afcdc429c8ee852a8c5c23",
+    "reviewInputHash": "cf580629b2f074ede5355f3c5cefd2d1a215d08c351869b84b96d9220a4a2739",
+    "authorResponseHash": "500f35a9785a274022b91ec5672315e2320aeb344259b47fadaf00b1d89f0540",
+    "reviewerResponseHash": "d5274d1c8e082e338e9250f7507f1320d03b847cfd581eeed06ef9d81fa9a51e",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

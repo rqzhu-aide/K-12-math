@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2003_AMC_12B_Q07",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "a59343c387999b6f2ac6588120f5d61e45638b0f65de90c45caad7ea7ef10b3a",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "4e1908420b9a1c645ba17df56f12993db872d7681c3a58b1d1b4457bc60b6ec0",
+  "solutionFigureHashes": {},
+  "candidateHash": "419ea6051a44c22ff37469a90c15d6cf1bef2b1be920489b9486aad8ba8fbbaa",
+  "candidate": {
+    "questionId": "2003_AMC_12B_Q07",
+    "derivedAnswer": "D. 64",
+    "answerStatus": "matches",
+    "answerReason": "All feasible dime counts have the form 67 − 4q for integers q from 0 through 16. Their largest and smallest values are 67 and 3, whose difference is 64.",
+    "methods": [
+      {
+        "id": "nickel-baseline",
+        "label": "Measure the extra value above 100 nickels",
+        "explanation": "Imagine starting with \\(100\\) nickels, worth \\(500\\) cents. The actual coins are worth \\(835\\) cents, so replacing some nickels by dimes and quarters must add \\(335\\) cents. Each dime adds \\(5\\) cents above a nickel, and each quarter adds \\(20\\) cents.\n\nLet \\(d\\) and \\(q\\) be the numbers of dimes and quarters. Dividing the extra-value equation by \\(5\\) gives\n\\[\nd+4q=67,\n\\qquad d=67-4q.\n\\]\nThe counts must be nonnegative integers. Since \\(67=4\\cdot16+3\\), the possible quarter counts are restricted to \\(0\\le q\\le16\\). Every integer in this range actually works: the required nickel count is\n\\[\n100-d-q=33+3q,\n\\]\nwhich is nonnegative, and the extra-value equation ensures the total is \\(835\\) cents. Thus these cases cover every possible bank.\n\nThe dime count decreases as \\(q\\) increases. Its maximum is \\(67\\), attained with \\(33\\) nickels and no quarters. Its minimum is \\(3\\), attained with \\(81\\) nickels and \\(16\\) quarters. The requested difference is\n\\[\n67-3=64,\n\\]\nchoice D.",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_p111",
+          "cnm_p052"
+        ],
+        "prerequisiteIds": [
+          "cnm_p110",
+          "cnm_p050"
+        ],
+        "levelReason": "A nickel baseline reduces the problem to a simple equation, division with remainder, and checking nonnegative coin counts."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_p111",
+      "cnm_p050"
+    ],
+    "annotationRationale": "The task requires finding extreme feasible integer coin counts. The method derives one equation from value above a nickel baseline, bounds the quarter count using a remainder, and verifies that every remaining integer parameter produces a valid bank. Formal systems of inequalities and algebraic elimination are unnecessary for this route.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2003_AMC_12B_Q07",
+    "decision": "accept",
+    "mathematicalCheck": "The nickel baseline gives d + 4q = 67. Exactly the integers 0 ≤ q ≤ 16 are feasible because d = 67 − 4q and n = 33 + 3q are nonnegative. Thus the dime extrema are 67 and 3, with difference 64, choice D.",
+    "levelCheck": "The baseline, remainder bound, and feasibility check give an accessible elementary solution.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Integer-solution assessment and the quantity, remainder, and arithmetic annotations are supported. Formal elimination and inequality-system annotations are appropriately omitted.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "nickel-baseline": "nickel-baseline"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "fcc14aeceb22404c502dd0f642599ec18a6e66063c5955b9773c084bf4538877",
+    "inputHash": "bec22d4322fdf1a0aa845d2d706f554e29ad48f5fa886e6cc7b9775a30cbd9a3",
+    "authorInputHash": "93f73b35d5c5c750b1d6ae928a15fc578f8e6ff44d289fddaef01100d7599eaf",
+    "reviewInputHash": "b6032cd4c1c07f814e8898943d95c88036b795dc282995b15a4885699175533a",
+    "authorResponseHash": "13f99399c01d86484de6368d4badfd2a01915126b1db32afeddf75a546810df2",
+    "reviewerResponseHash": "fcf9b057a4a4f90288237c30eefee65895667e90b3abb962dbe327f1c382b389",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

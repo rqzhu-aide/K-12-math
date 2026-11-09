@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1967_AMC_12_Q40",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "8c6564ae74a539ad92be80ead829b245292b3b5247ec7038d0ed7f54bb4ecbdd",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "0d23b91f32c683a061bb09ff303ef5eb77a9d29c4fda81efdd8362643216c539",
+  "solutionFigureHashes": {},
+  "candidateHash": "9340188ad665b4df76eb7170fb42e5780d3807e590b23913620d904d9505f2fa",
+  "candidate": {
+    "questionId": "1967_AMC_12_Q40",
+    "derivedAnswer": "D: 79",
+    "answerStatus": "matches",
+    "answerReason": "The equilateral triangle has side square 100+48√3 and exact area 36+25√3, approximately 79.30.",
+    "methods": [
+      {
+        "id": "subtract-coordinate-distance-equations",
+        "label": "Subtract distance equations",
+        "explanation": "Coordinate distance equations are useful here because subtracting them removes their shared squared terms. Let \\(s>0\\) be the equilateral triangle's side length, and place\n\\[\nA=(0,0),\\quad B=(s,0),\\quad\nC=\\left(\\frac{s}{2},\\frac{\\sqrt3s}{2}\\right).\n\\]\nThe height \\(\\sqrt3s/2\\) follows from the Pythagorean theorem after bisecting the equilateral triangle. Write \\(P=(u,v)\\). Since \\(P\\) is inside the triangle, \\(v>0\\).\n\nThe given distances yield\n\\[\n\\begin{aligned}\nu^2+v^2&=64,\\\\\n(u-s)^2+v^2&=36,\\\\\n\\left(u-\\frac{s}{2}\\right)^2+\n\\left(v-\\frac{\\sqrt3s}{2}\\right)^2&=100.\n\\end{aligned}\n\\]\nSubtracting the first equation from the second and third gives\n\\[\n2su=s^2+28,\n\\qquad\nsu+\\sqrt3sv=s^2-36.\n\\]\nBecause \\(s>0\\), we may solve these for\n\\[\nu=\\frac{s^2+28}{2s},\n\\qquad\nv=\\frac{s^2-100}{2\\sqrt3s}.\n\\]\nIn particular, \\(v>0\\) forces \\(t=s^2>100\\). Substituting these expressions into \\(u^2+v^2=64\\) and multiplying by \\(12t>0\\) gives\n\\[\n3(t+28)^2+(t-100)^2=768t.\n\\]\nExpanding and completing the square produces\n\\[\nt^2-200t+3088=0,\n\\qquad\n(t-100)^2=6912.\n\\]\nThus \\(t=100\\pm48\\sqrt3\\). The minus sign would give \\(v<0\\), so it is excluded by the interior condition. Therefore \\(s^2=100+48\\sqrt3\\).\n\nThe area is\n\\[\n\\frac12s\\left(\\frac{\\sqrt3s}{2}\\right)\n=\\frac{\\sqrt3}{4}(100+48\\sqrt3)\n=36+25\\sqrt3\\approx79.30.\n\\]\nTo the nearest integer, the area is \\(\\boxed{79}\\), choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "cnm_139",
+          "cnm_p148",
+          "cnm_h173",
+          "cnm_036",
+          "cnm_221",
+          "cnm_220"
+        ],
+        "prerequisiteIds": [
+          "cnm_174",
+          "cnm_082",
+          "cnm_148",
+          "cnm_075"
+        ],
+        "levelReason": "The method uses Pythagorean distance equations and a quadratic solved by completing the square, all within high-school algebra and geometry."
+      },
+      {
+        "id": "rotation-and-right-triangles",
+        "label": "Create a 6-8-10 right triangle",
+        "explanation": "The distances \\(6,8,10\\) suggest constructing a right triangle, since \\(6^2+8^2=10^2\\). A \\(60^\\circ\\) rotation fits the equilateral triangle and creates the needed sides.\n\nLet \\(s\\) denote the side length. Rotate about \\(A\\) through \\(60^\\circ\\) in the direction taking \\(B\\) to \\(C\\), and let \\(Q\\) be the image of \\(P\\). Rotation preserves distances, so \\(AQ=AP=8\\) and \\(CQ=BP=6\\). Also, \\(\\angle PAQ=60^\\circ\\), making \\(APQ\\) equilateral and giving \\(PQ=8\\).\n\nTriangle \\(PQC\\) therefore has sides \\(8,6,10\\). By the converse of the Pythagorean theorem, \\(QP\\perp QC\\). Since \\(\\angle AQP=60^\\circ\\), the angle \\(\\angle AQC\\) is either \\(30^\\circ\\) or \\(150^\\circ\\).\n\nDrop a perpendicular from \\(C\\) to the line \\(AQ\\), with foot \\(N\\). The resulting \\(30^\\circ\\) right triangle has hypotenuse \\(QC=6\\), so\n\\[\nCN=3,\\qquad QN=3\\sqrt3.\n\\]\nThe foot \\(N\\) can lie toward \\(A\\) from \\(Q\\) or in the opposite direction. Since \\(AQ=8>3\\sqrt3\\), these possibilities give \\(AN=8-3\\sqrt3\\) or \\(AN=8+3\\sqrt3\\). Hence\n\\[\ns^2=AC^2=(8\\pm3\\sqrt3)^2+3^2\n=100\\pm48\\sqrt3.\n\\]\nTo choose the sign, use the fact that \\(P\\) is inside. Extend ray \\(CP\\) to meet \\(AB\\) at \\(T\\), and let \\(M\\) be the midpoint of \\(AB\\). Then \\(CP<CT\\), while\n\\[\nCT^2=CM^2+MT^2\n\\leq\\frac{3s^2}{4}+\\frac{s^2}{4}=s^2.\n\\]\nHere \\(CM=\\sqrt3s/2\\) is the equilateral altitude and \\(MT\\leq s/2\\) because \\(T\\) lies on \\(AB\\). Thus \\(s>CP=10\\), which excludes \\(s^2=100-48\\sqrt3\\).\n\nConsequently the area is\n\\[\n\\frac{\\sqrt3s^2}{4}\n=\\frac{\\sqrt3}{4}(100+48\\sqrt3)\n=36+25\\sqrt3\\approx79.30.\n\\]\nThe nearest integer is \\(\\boxed{79}\\), choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "cnm_139",
+          "cnm_p148",
+          "cnm_247",
+          "cnm_177",
+          "cnm_140"
+        ],
+        "prerequisiteIds": [
+          "cnm_245",
+          "cnm_137",
+          "cnm_174",
+          "cnm_075"
+        ],
+        "levelReason": "This alternative uses rotations, 30-degree right-triangle properties, and the Pythagorean theorem. It requires neither trigonometry nor quadratic-equation solving."
+      }
+    ],
+    "assessedIds": [
+      "cnm_139",
+      "cnm_p148"
+    ],
+    "supportIds": [
+      "cnm_174",
+      "cnm_075"
+    ],
+    "annotationRationale": "Both methods use equilateral-triangle structure to determine its size and then compute its area. Pythagorean geometry and square-root calculations support both routes. Coordinate distances, polynomial subtraction, and completing the square belong to the first route. Rotation, the Pythagorean converse, and 30-degree right triangles belong to the second. Both explicitly use the interior condition to reject the smaller algebraic candidate.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1967_AMC_12_Q40",
+    "decision": "accept",
+    "mathematicalCheck": "Coordinate elimination gives (s²-100)²=6912, and positive interior height selects s²=100+48√3. Independently, rotation creates a 6-8-10 right triangle and yields the same two candidates; CP<s excludes the smaller. The area is 36+25√3≈79.30, rounding to 79.",
+    "levelCheck": "Both methods explain their constructions, algebra, and branch selection using high-school geometry and algebra.",
+    "methodDistinctness": "Distance-equation elimination and a rotation creating a right triangle provide genuinely different insights without advanced machinery.",
+    "annotationCheck": "Equilateral geometry and triangle area are appropriate common targets. Shared Pythagorean and square-root supports and the separate coordinate and rotation annotations fit their scopes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "subtract-coordinate-distance-equations": "subtract-coordinate-distance-equations",
+    "rotation-and-right-triangles": "rotation-and-right-triangles"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "2b0bb8c1b619745f0722aceb28ecb233edaa8bc69fe8c117810e3e133d3c7950",
+    "inputHash": "60270a4f0db971ebdcd15a66601329bd5007299944f087e5f85896b1fbe69825",
+    "authorInputHash": "60b7a7a6ba8c9553382b666164fa59066f0fbef71f34fd6c8345461f95b2150b",
+    "reviewInputHash": "3cc5db7ed6509f5e8307b00325994f826532b0b6a26e85f7bd6d97153d010a9a",
+    "authorResponseHash": "5446814df43f045296dbc82ca72cadb6b4144c937aca8d777539b444815726aa",
+    "reviewerResponseHash": "5e8c15bbea8b25c4d86929add0589aefe21d47db34ece2bf1ef3d32805823e19",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

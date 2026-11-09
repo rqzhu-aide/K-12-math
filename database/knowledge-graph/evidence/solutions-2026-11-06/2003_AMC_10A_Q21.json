@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2003_AMC_10A_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "9e6a86a103908afa4220777c6a12af60e7a60a2e83f971422bf58c053e96ac53",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "e7b113cbcc590eaaed2c525568ca1221f53b6d0a83e6671138e2158f35556b46",
+  "solutionFigureHashes": {},
+  "candidateHash": "9584675ac090945babb87ff9a9df264c36610f84b78870ade720155920a48e0b",
+  "candidate": {
+    "questionId": "2003_AMC_10A_Q21",
+    "derivedAnswer": "\\(28\\), choice D.",
+    "answerStatus": "matches",
+    "answerReason": "Counting by the number of chocolate chip cookies gives 7+6+5+4+3+2+1=28 assortments.",
+    "methods": [
+      {
+        "id": "fix-one-cookie-count",
+        "label": "Fix the number of chocolate chip cookies",
+        "explanation": "An assortment is determined by the number of cookies of each kind; the order of selection does not matter. Because at least six of each kind are available, no possible assortment of six is excluded by the supply.\n\nLet \\(c\\) be the number of chocolate chip cookies. For a fixed \\(c\\), there are \\(6-c\\) cookies left to choose. The oatmeal count can be any integer from \\(0\\) through \\(6-c\\), giving \\(7-c\\) choices. Each choice determines the peanut butter count uniquely.\n\nAs \\(c\\) runs from \\(0\\) through \\(6\\), the numbers of assortments are therefore\n\\[\n7,6,5,4,3,2,1.\n\\]\nEvery assortment has exactly one chocolate chip count and one oatmeal count, so these cases include every assortment exactly once. The total is\n\\[\n7+6+5+4+3+2+1=28.\n\\]\nThe answer is \\(28\\), choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_h230"
+        ],
+        "prerequisiteIds": [
+          "cnm_p035"
+        ],
+        "levelReason": "This is an elementary exhaustive count using seven disjoint cases and the remaining-total relationship."
+      },
+      {
+        "id": "encode-with-two-separators",
+        "label": "Encode the assortment with two separators",
+        "explanation": "Represent the six cookies by six identical dots, and use two separators to divide them into chocolate chip, oatmeal, and peanut butter groups, in that fixed order. For example,\n\\[\n\\bullet\\bullet\\mid\\mid\\bullet\\bullet\\bullet\\bullet\n\\]\nrepresents two chocolate chip cookies, no oatmeal cookies, and four peanut butter cookies.\n\nA separator may appear at an end, and the two separators may be adjacent, so zero cookies of any kind are allowed. Every assortment gives exactly one such arrangement, and every arrangement gives one available assortment because no kind is needed more than six times.\n\nThere are eight positions occupied by six dots and two separators. Choosing the two separator positions determines the arrangement. There are \\(8\\cdot7\\) ordered choices of two distinct positions, but each pair appears twice, once in each order. Consequently the count is\n\\[\n\\binom82=\\frac{8\\cdot7}{2}=28.\n\\]\nThe answer is \\(28\\), choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "math:stars-and-bars",
+          "cnm_h237"
+        ],
+        "prerequisiteIds": [
+          "cnm_h236",
+          "cnm_p035"
+        ],
+        "levelReason": "The separator correspondence and the two-position count are derived directly with elementary counting; no general composition formula is assumed."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_p035"
+    ],
+    "annotationRationale": "The route-neutral target is counting all nonnegative integer triples whose sum is six, an instance of bounded integer solutions. The first method uses disjoint-case addition. The second uses separator encoding and a combination count, so those procedures remain method-specific. The total-as-sum-of-parts relationship supports both methods; an arithmetic-series formula is not required.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2003_AMC_10A_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "Fixing the chocolate chip count gives 7 through 1 possibilities, totaling 28 without overlap. Independently, six dots and two separators correspond bijectively to assortments, including zero counts, and choosing two of eight positions gives 28.",
+    "levelCheck": "Both methods are accessible elementary counting arguments. The separator count is derived rather than assumed.",
+    "methodDistinctness": "Disjoint-case enumeration and separator encoding provide genuinely different, useful perspectives.",
+    "annotationCheck": "Bounded nonnegative integer solutions provide a route-neutral target. Addition counting and separator/combination procedures remain method-specific; parts and total supports both.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "fix-one-cookie-count": "fix-one-cookie-count",
+    "encode-with-two-separators": "encode-with-two-separators"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c8c86bbecb670a684da8b83c59d71ca044badee4bcd89ff027c89822f1c833fe",
+    "inputHash": "210128e7ecc4ed00d2fe71f25675cf5f0f3215a2bd5c5491d3ef9f6bf7efffa0",
+    "authorInputHash": "9201ff288cd54aabed300596f6a1735f53f995eb279e1b44a516f82ed2247094",
+    "reviewInputHash": "30a142afe4fc99267e1e40783f1cb1b5857413a1b2370522e2bb32cef2659323",
+    "authorResponseHash": "e70b8fedd6f64bc601dd4b95747b532dd876b1453800d3bf198321794af06d9a",
+    "reviewerResponseHash": "b98491f6bd0417f9a91711d0612383635b21835aef4af4d12fbcf81c39d43fbb",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

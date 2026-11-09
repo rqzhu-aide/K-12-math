@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2002_AMC_10A_Q11",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "27ce5365dbe6ef4522810d359bb149e78a5cf18ec37a173b479c6fd234305753",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "701c3f464466da29db933c1479e5f824c30794e586ad149df2304501a5a6061b",
+  "solutionFigureHashes": {},
+  "candidateHash": "bb61e6254ea9d23dc9718fb91560eaaaa2f3f61c7b9959f9f385b246521cbd5e",
+  "candidate": {
+    "questionId": "2002_AMC_10A_Q11",
+    "derivedAnswer": "B. \\(13\\) disks",
+    "answerStatus": "matches",
+    "answerReason": "Twelve or fewer disks can hold at most 29 of these files, while an explicit arrangement fits all 30 files on thirteen disks. Thus the minimum is 13, matching choice B.",
+    "methods": [
+      {
+        "id": "bound-file-count-and-pack",
+        "label": "Bound the number of files per disk",
+        "explanation": "Since files cannot be split, consider how many whole files each disk can hold. We will rule out twelve disks and then find an arrangement using thirteen.\n\nEven four of the smallest files require \\(4(0.4)=1.6\\) mb, exceeding the \\(1.44\\)-mb capacity. Thus a disk holds at most three files. Moreover, three files including a \\(0.7\\)-mb or \\(0.8\\)-mb file require at least\n\\[\n0.7+0.4+0.4=1.5\\text{ mb}>1.44\\text{ mb}.\n\\]\nTherefore, every disk holding three files must contain three \\(0.4\\)-mb files. There are only fifteen such files, so at most five disks can hold three files.\n\nTo bound the file count on twelve disks, allow two files per disk, then at most one extra file on each of the at most five three-file disks. The total is at most\n\\[\n12(2)+5=29.\n\\]\nThis upper bound is less than thirty, so twelve disks cannot work. Fewer disks cannot work either, since adding empty disks would give an arrangement on twelve disks.\n\nThirteen disks suffice with the following arrangement:\n\n- Three disks each hold one \\(0.8\\)-mb file and one \\(0.4\\)-mb file.\n- Six disks each hold two \\(0.7\\)-mb files.\n- Four disks each hold three \\(0.4\\)-mb files.\n\nThe disk loads are \\(1.2\\), \\(1.4\\), and \\(1.2\\) mb, respectively, all within capacity. This uses all three large files, all twelve medium files, and \\(3+4(3)=15\\) small files exactly once, on \\(3+6+4=13\\) disks. The minimum is \\(\\boxed{13}\\), choice B.",
+        "nodeIds": [
+          "math:extremal-principle"
+        ],
+        "prerequisiteIds": [
+          "cnm_p125",
+          "cnm_p132",
+          "cnm_p119"
+        ],
+        "levelReason": "The method uses elementary counting, decimal arithmetic, and an explicit packing construction, all within AMC 10 scope."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_p125",
+      "cnm_p132",
+      "cnm_p119"
+    ],
+    "annotationRationale": "The task assesses proving a discrete minimum by combining a universal lower bound with a construction attaining it. The method establishes that twelve disks are insufficient and verifies a thirteen-disk packing, directly matching the extremal node. Decimal addition, multiplication by integers, and comparison support the capacity checks. The count of 29 is used only as an upper bound, without claiming it is attainable.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2002_AMC_10A_Q11",
+    "decision": "accept",
+    "mathematicalCheck": "Each disk holds at most three files, and any three-file disk contains only 0.4-mb files. Thus at most five disks hold three files, so twelve disks hold at most 24+5=29 files. The proposed thirteen-disk arrangement respects capacity and uses every file exactly once, proving the minimum is 13.",
+    "levelCheck": "The elementary counting and decimal arithmetic fit AMC 10. The explanation clearly justifies both impossibility and attainability.",
+    "methodDistinctness": "One complete method is sufficient; no additional method is needed.",
+    "annotationCheck": "The extremal-bound-and-construction assessed node fits the task. All three supportIds and method prerequisites correctly identify the decimal operations and comparisons used.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "bound-file-count-and-pack": "bound-file-count-and-pack"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "b5c17eff7239a80b6d96a4c4b8658b4b129159a6227863eb7685675fbb0dae38",
+    "inputHash": "160c9e0617d57adf0eacfa60de538d1d5d2cbec5d58b5f12ef784a7c352997a6",
+    "authorInputHash": "226af6aecc2fa7bbb6535574fa79146cf4093a75953e0c66aa7dbfa3597a662c",
+    "reviewInputHash": "43f69ff945c63dcd91b71044a74c4217d81ad3e9bca171311baa947b8890195b",
+    "authorResponseHash": "b692f7b30675a19120dee177b22652d839b08dd1c1cba991263dc6ea16d2ee07",
+    "reviewerResponseHash": "7b738df2667531d68061d42ce248005d2d52357a2ac7cb06b80ef5194b1ed5f8",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

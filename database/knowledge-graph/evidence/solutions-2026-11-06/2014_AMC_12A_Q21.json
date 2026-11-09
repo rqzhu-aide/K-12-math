@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2014_AMC_12A_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "e0146694aee5e4c025fd79eeb4f8b141ac38a30a445bcc69f301320a69c12b4d",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "e98d3eb6bd09598cd403c6e0ea5904d2dbc88e136dcead7ed63edb64ce3d8833",
+  "solutionFigureHashes": {},
+  "candidateHash": "fee90bbd0163879317c45aa6c098d048ba025978c2cabc48ef695f617216dde6",
+  "candidate": {
+    "questionId": "2014_AMC_12A_Q21",
+    "derivedAnswer": "A (1)",
+    "answerStatus": "matches",
+    "answerReason": "On the unit interval starting at j, the allowed length is log base 2014 of (j+1)/j. Summing from j=1 through 2013 telescopes to 1.",
+    "methods": [
+      {
+        "id": "unit-intervals-and-telescoping",
+        "label": "Fix the floor on each unit interval",
+        "explanation": "On each interval between consecutive integers, the floor is constant. Write\n\\[\nx=j+t,\\qquad j=1,2,\\ldots,2013,\\quad 0\\le t<1.\n\\]\nThen \\(\\lfloor x\\rfloor=j\\), and the condition becomes\n\\[\nj(2014^t-1)\\le1\n\\iff 2014^t\\le\\frac{j+1}{j}.\n\\]\nSince \\(2014>1\\), its exponential function is increasing. Therefore the allowed values of \\(t\\) are\n\\[\n0\\le t\\le L_j,\n\\qquad L_j=\\log_{2014}\\frac{j+1}{j}.\n\\]\nBecause \\(1<(j+1)/j\\le2<2014\\), we have \\(0<L_j<1\\). Thus each unit interval contributes exactly the closed interval \\([j,j+L_j]\\). These intervals are disjoint, and all lie within \\(1\\le x<2014\\).\n\nTheir total length is\n\\[\n\\begin{aligned}\n\\sum_{j=1}^{2013}L_j\n&=\\sum_{j=1}^{2013}\n\\left(\\log_{2014}(j+1)-\\log_{2014}j\\right)\\\\\n&=\\log_{2014}2014-\\log_{2014}1\\\\\n&=1.\n\\end{aligned}\n\\]\nEvery intermediate logarithm cancels, leaving only the first and last endpoints. The requested sum is \\(\\boxed{1}\\), choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "math:floor-ceiling",
+          "math:telescoping",
+          "cnm_h042",
+          "cnm_h044",
+          "cnm_h048"
+        ],
+        "prerequisiteIds": [
+          "cnm_h043",
+          "cnm_h046"
+        ],
+        "levelReason": "The floor definition reduces the problem to elementary exponential inequalities, logarithm rules, and finite cancellation."
+      }
+    ],
+    "assessedIds": [
+      "math:floor-ceiling",
+      "math:telescoping"
+    ],
+    "supportIds": [
+      "cnm_h042",
+      "cnm_h044",
+      "cnm_h048"
+    ],
+    "annotationRationale": "The problem requires exact floor intervals and aggregation of their lengths. The method translates each floor value into a unit interval and exposes a telescoping logarithmic sum. Exponential monotonicity and logarithmic operations support those two central steps.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2014_AMC_12A_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "For each j=1 through 2013, the allowed interval is [j,j+log_2014((j+1)/j)]. Its length lies strictly between 0 and 1, so the intervals are disjoint and remain inside the required domain. Their lengths telescope to log_2014(2014)=1.",
+    "levelCheck": "Floor intervals, exponential monotonicity, and finite logarithmic cancellation are appropriate for AMC 12 and adequately explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Floor interpretation and telescoping are route-neutral assessed targets. The exponential and logarithmic support matches the deductions.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "unit-intervals-and-telescoping": "unit-intervals-and-telescoping"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "ec79c654d62a6b3afe98cc937e2abc83e136c9e232da2a04c21364f2b9471ca8",
+    "inputHash": "8444337031c8f06ae1791add59492f485b2e589a8d153f4e35fbf0176d128358",
+    "authorInputHash": "6c34b075bdebcecb9787a94b6df4280acc8b40ac27a5ead6dce3c202f679073e",
+    "reviewInputHash": "ba101a6e8c5d490ff98295b0f8ede44268368a2c1dabbe7d04a78a6b0faaf40e",
+    "authorResponseHash": "4429eafb9f8a549e95ad18a372af7879c3255af2fa608ed1c345f8c4b091d7e8",
+    "reviewerResponseHash": "fce9eda2458f64c933be708935e5afca14fb1838c1edb75f52871b5b00716fa0",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

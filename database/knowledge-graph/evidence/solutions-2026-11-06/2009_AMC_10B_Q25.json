@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2009_AMC_10B_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "3664eebb27429c58c5fcc3658b3a6dbafee8973ce0e1efa1179ad90126e33c43",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "ac92dc0155afaba775574e10f38879feeb4d3912c28521f630880f9cfad4e93f",
+  "solutionFigureHashes": {},
+  "candidateHash": "ec37bda2ddbdd7a69465b4f9ab7f6ef676fa87ee17ab17ab5a5333e4a5dedb77",
+  "candidate": {
+    "questionId": "2009_AMC_10B_Q25",
+    "derivedAnswer": "3/16, choice B",
+    "answerStatus": "matches",
+    "answerReason": "Every closed stripe must be one of three four-face belts. Each belt fixes four face orientations and leaves two free, giving 12 distinct successful configurations among 64 equally likely configurations.",
+    "methods": [
+      {
+        "id": "count-face-configurations",
+        "label": "Trace the possible belts and count",
+        "explanation": "First determine what an encircling stripe can look like. Whenever a stripe reaches an edge midpoint, there is only one orientation on the neighboring face that continues it: the stripe through that same midpoint, exiting through the opposite edge.\n\nFor example, start across the front face from its left edge to its right edge. Continuation forces a stripe across the right face from front to back, then across the back face from right to left, then across the left face from back to front. This closes a four-face belt halfway between the top and bottom faces.\n\nTurning the cube puts any starting stripe in the position just described. Therefore every closed stripe must be such a four-face belt. There are exactly three possible belts, one halfway between each pair of opposite faces.\n\nEach square face has two possible stripe orientations. The independent, equally likely choices give \\(2^6=64\\) total configurations. For a specified belt, its four faces must have prescribed orientations, while the other two faces can be painted either way. Thus each belt occurs in \\(2^2=4\\) configurations.\n\nTwo different belts cannot occur together: on their shared faces they require different stripe orientations, but each face receives only one stripe. Consequently the three groups of successful configurations are disjoint, and the probability is\n\\[\n\\frac{3\\cdot4}{64}=\\boxed{\\frac{3}{16}},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_285",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_p160",
+          "cnm_h230",
+          "cnm_h231",
+          "cnm_p165"
+        ],
+        "levelReason": "The proof uses elementary cube visualization and addition and multiplication counting."
+      }
+    ],
+    "assessedIds": [
+      "cnm_285"
+    ],
+    "supportIds": [
+      "cnm_p160",
+      "cnm_p165"
+    ],
+    "annotationRationale": "The task-level target is the fraction of equally likely configurations that succeed. Cube face and edge structure supports the exhaustive tracing argument. The written route uses multiplication within each belt case and addition across disjoint belt cases, so combined counting remains method-local. No counting up to rotational equivalence is used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2009_AMC_10B_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "At each edge midpoint, continuation uniquely forces the neighboring face's orientation. Tracing any starting stripe therefore produces one of exactly three four-face belts. Each belt fixes four orientations and leaves two free, giving four configurations. Different belts conflict on shared faces, so there are 12 successful configurations among 64 equally likely ones, yielding 3/16, choice B.",
+    "levelCheck": "Elementary cube visualization and addition and multiplication counting suffice. The tracing argument establishes completeness before counting.",
+    "methodDistinctness": "One complete method is sufficient; a separate probability-product calculation would add little.",
+    "annotationCheck": "The equally likely probability target, cube and fraction supports, and method-local combined counting all match their catalog scopes. Rotations justify exhaustiveness without identifying distinct painted configurations.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-face-configurations": "solution:count-face-configurations:ac92dc0155af"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "a9da096c613a17b0d44cbaab50780ab3ec499dc35168844ffc4740e61d1b1055",
+    "inputHash": "7eba5daa5f434c2f69f3617916570b6693d767f0a0b8a1e824e4fe7db96d5d3d",
+    "authorInputHash": "aa923d972420a2b32944a23bac6c85c3143a8172f54bd956bad3b093f57fc5eb",
+    "reviewInputHash": "2c8507da53333e73041846633daa5ae8719fa501e11c7ecda2b30d67af6d529c",
+    "authorResponseHash": "e5c380887934c742d39615924b67528aaae1f028337955b817440bbc3ec8b5ca",
+    "reviewerResponseHash": "cf816f2f5b35e173c1779141ecbcbedcf9b865e3d74f6af0cd534daf98c7aadc",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

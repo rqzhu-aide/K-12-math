@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2012_AMC_8_Q16",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "1052a5c363143c8285d9a5680f55a0ea4df62d1734f67d848291ab7427188aab",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "d28888c72236bd806666e1c0cf57343b17fb06a389cef5056267c167221a2735",
+  "solutionFigureHashes": {},
+  "candidateHash": "8c228f2617500c47b899182ec89c6593bdc1f2c2e010b0233c7ea58b6148335c",
+  "candidate": {
+    "questionId": "2012_AMC_8_Q16",
+    "derivedAnswer": "C: 87431",
+    "answerStatus": "matches",
+    "answerReason": "The maximum requires digit pairs {8,9}, {6,7}, {4,5}, {2,3}, and {0,1} in descending place order. Only 87431 fits, and its companion 96520 attains the maximum sum 183951.",
+    "methods": [
+      {
+        "id": "assign-digits-by-place-value",
+        "label": "Put larger digits in higher places",
+        "explanation": "Each digit contributes its place value to the sum. If a larger digit occupies a lower place than a smaller digit, exchanging them increases the sum: the difference between the digits becomes worth more in the higher place.\n\nTherefore the two largest digits must occupy the two ten-thousands places. The next two largest must occupy the thousands places, and so on. The required pairs, from highest place to lowest, are\n\\[\n\\{8,9\\},\\quad \\{6,7\\},\\quad \\{4,5\\},\\quad \\{2,3\\},\\quad \\{0,1\\}.\n\\]\nAny allocation violating this order can be improved by a swap, while every allocation using these pairs has the same sum.\n\nAmong the choices, only \\(87431\\) takes one digit from each pair in the required order. Its companion can be \\(96520\\), and together they use every digit exactly once:\n\\[\n87431+96520=183951.\n\\]\nThus \\(87431\\) can be one of the numbers, choice \\(\\text{C}\\).",
+        "nodeIds": [
+          "math:extremal-principle"
+        ],
+        "prerequisiteIds": [
+          "cnm_p096"
+        ],
+        "levelReason": "Uses decimal place value and an elementary digit-swapping argument."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_p096"
+    ],
+    "annotationRationale": "The task asks for an attainable maximum. The exchange argument establishes the necessary optimal allocation for every arrangement, and the displayed pair attains it. Decimal place value supplies the supporting reason that a swap increases the sum.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2012_AMC_8_Q16",
+    "decision": "accept",
+    "mathematicalCheck": "Swapping a larger digit into a higher place strictly increases the sum and preserves valid five-digit numbers. Consequently the place pairs must be {8,9},{6,7},{4,5},{2,3},{0,1}. Only C fits, and 87431+96520=183951 attains the maximum.",
+    "levelCheck": "The exchange argument explains the decisive optimization step through elementary place value.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The extremal node fits the universal improvement argument and attaining construction; cnm_p096 appropriately supports decimal place value.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "assign-digits-by-place-value": "assign-digits-by-place-value"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "b2a4e114dbe17374dca384ca0c5f3cb180095b61e8eecb5b9198b36cd17cf0f7",
+    "inputHash": "a99413c9ba8f6d9c8a9911e014bea7f2da2622d9fd9ad4a88b2ea3960ce9c7eb",
+    "authorInputHash": "580165d703fecac75d04e3f4bc2936dba38a9176b3bbb00fc648beadc424fe33",
+    "reviewInputHash": "ae11e9c2d6c798ca4bce8aa40a57f835499575cd69f9d88559783cbf65a4f419",
+    "authorResponseHash": "1a4fea5a91633cc7352ab1c004d338be5988010c13fbde25f49f626879a5252a",
+    "reviewerResponseHash": "bb1f7a957da4f3fec4e0939b45d9508e7953c534f21f41da0ebefefb57c657f5",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

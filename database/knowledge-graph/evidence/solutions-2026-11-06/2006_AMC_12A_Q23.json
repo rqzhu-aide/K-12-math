@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2006_AMC_12A_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "b728638dbf063f9a61c930563952e0fbf8e74d46aefa8d91281266e9ef2951c6",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "354c921f41dfb0a104e06fd0402756a232cc42809bd26b04f578cfabd3a9ae66",
+  "solutionFigureHashes": {},
+  "candidateHash": "745a13581c15a59bcecedd3a588c507efb44394410ac0d03a417195827b0a5e5",
+  "candidate": {
+    "questionId": "2006_AMC_12A_Q23",
+    "derivedAnswer": "B: \\(\\sqrt2-1\\)",
+    "answerStatus": "matches",
+    "answerReason": "Each averaging step preserves the ratio \\(x\\) and multiplies the leading term by \\((1+x)/2\\). The final term is therefore \\(((1+x)/2)^{100}\\), and positivity gives the unique solution \\(x=\\sqrt2-1\\).",
+    "methods": [
+      {
+        "id": "preserve-geometric-pattern",
+        "label": "Track the first term through averaging",
+        "explanation": "Adjacent powers share a factor, so averaging preserves their geometric pattern. Set\n\\[\nc=\\frac{1+x}{2}>0.\n\\]\nThe first averaging step gives\n\\[\nA(S)=(c,cx,cx^2,\\ldots,cx^{99}).\n\\]\nMore generally, if a row has first term \\(a\\) and common ratio \\(x\\), each adjacent pair has the form \\(ax^j,ax^{j+1}\\). Its average is\n\\[\n\\frac{ax^j+ax^{j+1}}2=acx^j.\n\\]\nThus every step preserves the common ratio, multiplies the first term by \\(c\\), and removes one term. Starting with first term \\(1\\), after \\(100\\) steps the sole remaining term is \\(c^{100}\\).\n\nThe given condition therefore yields\n\\[\n(1+x)^{100}=\\frac{2^{100}}{2^{50}}\n=2^{50}=(\\sqrt2)^{100}.\n\\]\nSince \\(1+x>0\\), equality of these positive hundredth powers forces \\(1+x=\\sqrt2\\). Hence\n\\[\nx=\\boxed{\\sqrt2-1}.\n\\]\nThis value is positive and makes \\(c=1/\\sqrt2\\), giving the required final value \\(c^{100}=1/2^{50}\\). The answer is choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_h200",
+          "cnm_h207",
+          "cnm_h208"
+        ],
+        "prerequisiteIds": [
+          "cnm_h040",
+          "cnm_h197",
+          "cnm_h199"
+        ],
+        "levelReason": "A geometric-sequence pattern and integer-power laws give a complete school-algebra solution."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h200"
+    ],
+    "supportIds": [
+      "cnm_h040",
+      "cnm_h197"
+    ],
+    "annotationRationale": "The task concerns following a recursively defined averaging process to its final value. The written route derives a scalar recurrence by showing that each row remains geometric, then uses the geometric general-term pattern. Sequence meaning and power laws support the reasoning. Binomial coefficients are not used or required by this route.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2006_AMC_12A_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "Averaging adjacent terms of a geometric row multiplies its first term by c = (1+x)/2 and preserves the ratio x. Thus the final entry is c^100. Positivity makes equality of the hundredth powers force 1+x = sqrt(2), and substitution verifies x = sqrt(2)-1.",
+    "levelCheck": "The preserved pattern and repeated multiplier are explicitly justified using school algebra, with the positivity needed for uniqueness retained.",
+    "methodDistinctness": "One method supplies the useful structural insight; a binomial expansion alternative is unnecessary.",
+    "annotationCheck": "Recurrence iteration, geometric sequences, general terms, sequence meaning, and integer-power operations accurately describe the method and its prerequisites.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "preserve-geometric-pattern": "preserve-geometric-pattern"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "8dce9a9ef687bbdb16f63169967783ab3d8fc2bb529d41c36ebcf16c9926afab",
+    "inputHash": "168ed7f1ac133539b298e0b81cd9dc49ee1f41b2d7d42eac875786e395a24636",
+    "authorInputHash": "50872dbc7e0a07a4287f3b14acc00386462b1ece6f9b2678322c89c7c8694701",
+    "reviewInputHash": "482f69ba376ad03c4562e25ca29a350ff153e8aafce80696e2fb75e3d1634f6c",
+    "authorResponseHash": "a48dfc255c70ba9282e7268bffc310a06d224f6063584f2a7ccfb772057ca802",
+    "reviewerResponseHash": "36a5d0ac5cf6f05b66231cf20b09f87be18f160bc902aaf0528e244643e59ef9",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

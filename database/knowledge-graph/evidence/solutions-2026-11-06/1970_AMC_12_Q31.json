@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1970_AMC_12_Q31",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ed09a1c5b6d593aa1c24e0df49059e5dd6aa8e19c04b8ea9966f39b92cff995a",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "0349b146f7652cdcf2282bae64df022776cd502460efd1487f49110f85d1df00",
+  "solutionFigureHashes": {},
+  "candidateHash": "176e10ab9906b438ccbfb01fbce12fe7a86e8d19c7cab0e7465fabbb78aa0ddf",
+  "candidate": {
+    "questionId": "1970_AMC_12_Q31",
+    "derivedAnswer": "B. \\(\\frac15\\)",
+    "answerStatus": "matches",
+    "answerReason": "There are 15 eligible numbers, obtained by reducing the digits of 99999 by a total of 2. Exactly three have alternating digit sum 11 and are divisible by 11.",
+    "methods": [
+      {
+        "id": "1970_AMC_12_Q31_m1",
+        "label": "Count the reductions from 99999",
+        "explanation": "The greatest possible sum of five digits is \\(45\\), so a digit sum of \\(43\\) is only two below the maximum. Starting with \\(99999\\), there are exactly two possibilities:\n\nOne digit is reduced by \\(2\\), giving one \\(7\\) and four \\(9\\)s. Its position can be chosen in \\(5\\) ways.\n\nTwo digits are each reduced by \\(1\\), giving two \\(8\\)s and three \\(9\\)s. Their positions can be chosen in \\(5\\cdot4/2=10\\) ways. Division by \\(2\\) removes the repeated count from choosing the same two positions in reverse order.\n\nThese cases are disjoint and exhaust a total reduction of \\(2\\). Every digit is at least \\(7\\), so all \\(5+10=15\\) arrangements are valid five-digit numbers.\n\nTo test divisibility by \\(11\\), subtract the sum of the second and fourth digits from the sum of the first, third, and fifth. This alternating sum has the same remainder as the number: the place values \\(10000,1000,100,10,1\\) differ from \\(1,-1,1,-1,1\\), respectively, by multiples of \\(11\\).\n\nLet \\(k\\) be the total reduction occurring in the second and fourth positions. Since the overall reduction is \\(2\\), we have \\(k\\in\\{0,1,2\\}\\), and the alternating sum is\n\\[\n[27-(2-k)]-[18-k]=7+2k.\n\\]\nIts possible values are \\(7,9,11\\). Only \\(11\\) is divisible by \\(11\\), so both units of reduction must occur in the second and fourth positions. The reductions there are exactly \\((2,0),(1,1),(0,2)\\), giving three favorable numbers.\n\nThe \\(15\\) eligible numbers are equally likely, so the probability is\n\\[\n\\frac{3}{15}=\\boxed{\\frac15},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_h137",
+          "math:modular-congruence",
+          "cnm_h239",
+          "cnm_h230"
+        ],
+        "prerequisiteIds": [
+          "cnm_309",
+          "cnm_p153",
+          "cnm_h236"
+        ],
+        "levelReason": "The solution uses two elementary digit-pattern cases, unordered position choices, a place-value derivation of the divisibility test, and favorable outcomes divided by total outcomes."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h137",
+      "math:modular-congruence"
+    ],
+    "supportIds": [
+      "cnm_309",
+      "cnm_p153"
+    ],
+    "annotationRationale": "The targets are an exact finite probability and the divisibility restriction expressed through remainders. The actual counting route uses disjoint digit patterns and unordered position choices, so combination and addition nodes are method-local. Stars and bars and conditional probability are not used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1970_AMC_12_Q31",
+    "decision": "accept",
+    "mathematicalCheck": "A total digit reduction of two gives either one 7 or two 8s, producing 5+10 = 15 distinct valid numbers. The place-value argument proves the divisibility test. The alternating sum is 7+2k, so divisibility requires k = 2, giving exactly three favorable reductions and probability 3/15 = 1/5.",
+    "levelCheck": "Elementary digit patterns, unordered position choices, and an explicitly derived remainder test fit the intended level.",
+    "methodDistinctness": "One complete counting method is sufficient.",
+    "annotationCheck": "Classical probability and remainder reasoning are supported. Combination and addition principles correctly describe the counting route, without imposing stars and bars or conditional probability.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "1970_AMC_12_Q31_m1": "1970_AMC_12_Q31_m1"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "784bd5042b17e3bd22be4513bcf850d6b9652db9f3967b5c1a0202b9a7e96427",
+    "inputHash": "0aba12e53d8483c00799be0bba87ee309cd407b15ecdfc4f5db8700cd52ea32f",
+    "authorInputHash": "e85e0660965b05941b5dfb37aefcc3bbd4d590583ac1ca7a2e3a2539c9197dfa",
+    "reviewInputHash": "04fc958bed1506b1eb3c6be9282f2c2b04d99b55bbff9f1d47d68a79c6f35f01",
+    "authorResponseHash": "10968d3a1c2970c740aad552aafe0921fc7e9480ddeec6183acfbc57e7f93212",
+    "reviewerResponseHash": "faa41aee39298d6c7af2ad9f94c81b30da632f2aca112d2b7169462acd0f93ba",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

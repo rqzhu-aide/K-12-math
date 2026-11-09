@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_12B_Q19",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "852b4992b891d4320da0f70932d028f32994c48d2f93ccd7d6c3f5400d873ae7",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "58e1e6751923c9eb8e87136ec2d1c162634db7a3d7718daba686a53fe38dc2e6",
+  "solutionFigureHashes": {},
+  "candidateHash": "5c03f92c53ed0ebd79255bad89fd4eeb983539baf4d4b0480a526241bbbc520b",
+  "candidate": {
+    "questionId": "2016_AMC_12B_Q19",
+    "derivedAnswer": "B (1/7)",
+    "answerStatus": "matches",
+    "answerReason": "The probability that all three first obtain heads on flip n is 8^(−n). Summing these disjoint possibilities gives (1/8)/(1−1/8)=1/7.",
+    "methods": [
+      {
+        "id": "sum-common-stopping-times",
+        "label": "Sum over the common stopping flip",
+        "explanation": "For one player to stop on flip \\(n\\ge1\\), his first \\(n-1\\) flips must be tails and his next flip must be heads. By independence, this has probability\n\\[\n\\left(\\frac12\\right)^{n-1}\\frac12\n=\\left(\\frac12\\right)^n.\n\\]\nThe three players' flips are independent, so the probability that all three stop on flip \\(n\\) is\n\\[\n\\left(\\left(\\frac12\\right)^n\\right)^3\n=\\left(\\frac18\\right)^n.\n\\]\nDifferent common stopping flips give mutually exclusive events, and they cover every successful outcome. Also, endless flipping has probability zero, since the probability of \\(n\\) initial tails is \\(2^{-n}\\), which tends to zero.\n\nWe therefore add the probabilities over \\(n=1,2,\\ldots\\). This is a convergent geometric series with first term and common ratio both \\(1/8\\):\n\\[\nP=\\frac18+\\frac1{8^2}+\\frac1{8^3}+\\cdots\n=\\frac{1/8}{1-1/8}\n=\\boxed{\\frac17}.\n\\]\nThe answer is choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "cnm_h141",
+          "math:infinite-geometric-series"
+        ],
+        "prerequisiteIds": [
+          "cnm_h140",
+          "cnm_h138"
+        ],
+        "levelReason": "Independent-trial products and a convergent geometric series are standard AMC 12 tools."
+      },
+      {
+        "id": "first-round-reset",
+        "label": "Restart after three tails",
+        "explanation": "Let \\(p\\) be the probability that the three first heads occur on the same flip. Examine the first round, in which all three players flip once.\n\nIf all three get heads, they stop together immediately. This has probability \\((1/2)^3=1/8\\).\n\nIf all three get tails, also with probability \\(1/8\\), everyone continues. Their future flips are independent of the first round. Everyone has used one flip, so whether their final totals agree depends only on the future flips, exactly as at the start. Their remaining chance of success is therefore \\(p\\).\n\nIn every mixed outcome, some players stop after one flip while others need at least two flips. Their totals can never all agree, so these outcomes contribute zero.\n\nThese cases are disjoint and exhaustive, giving\n\\[\np=\\frac18+\\frac18p.\n\\]\nSolving,\n\\[\n\\frac78p=\\frac18,\n\\qquad p=\\boxed{\\frac17}.\n\\]\nThus the answer is choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "cnm_h141",
+          "math:recursive-counting-probability"
+        ],
+        "prerequisiteIds": [
+          "cnm_h140",
+          "cnm_h138",
+          "cnm_042"
+        ],
+        "levelReason": "A three-case first-round argument reduces the probability to a linear equation and requires no infinite-series formula."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h141"
+    ],
+    "supportIds": [
+      "cnm_h140",
+      "cnm_h138"
+    ],
+    "annotationRationale": "The shared target is a coincidence probability for independent repeated trials. Both methods multiply independent probabilities and add disjoint cases. The first sums over stopping times using an infinite geometric series; the second models the unchanged state after three tails and solves a first-step equation. Those alternative tools are kept method-local.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_12B_Q19",
+    "decision": "accept",
+    "mathematicalCheck": "A specified common stopping flip n has probability \\(8^{-n}\\); these disjoint events sum to \\(1/7\\), with endless flipping having probability zero. The independent first-round argument also correctly gives \\(p=1/8+p/8\\), hence \\(p=1/7\\).",
+    "levelCheck": "Both the geometric-series calculation and the explained restart equation are appropriate for AMC 12.",
+    "methodDistinctness": "Summing stopping-time cases and restarting after three tails are genuinely distinct, accessible approaches.",
+    "annotationCheck": "Independent-event probability is shared, as are independence and disjoint addition. Infinite-series summation and state recursion are appropriately kept method-local.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "sum-common-stopping-times": "solution:sum-common-stopping-times:58e1e6751923",
+    "first-round-reset": "solution:first-round-reset:58e1e6751923"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "54ce6a20459054946aaf6b3ff297b6f3021f72caaa8703077b44fad3c69c5fda",
+    "acceptedAt": "2026-11-07T10:53:34.752019+00:00",
+    "inputHash": "2c6ba1f691c85473ba4fe968600eb13b5b55045511102d20f313e6e831c296b5",
+    "authorInputHash": "f11d5de56ca288a888febe37bc4285e31c6295242cd3c24a6db0b611ff3bb304",
+    "reviewInputHash": "48f8328c3eaa6d9c630cf0480a07e5ef530aff49480f2b7bedebad02ae6aaa2d",
+    "authorResponseHash": "e488555e5a20d8d6b7c565d2425e7f7c95d9f60b3487e48b6c69f4fa6f9ab021",
+    "reviewerResponseHash": "c46e39a08692c848a3b615960974fa6fd8ab8d56e10e799b529903add94b82a1",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

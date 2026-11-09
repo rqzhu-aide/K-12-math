@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1966_AMC_12_Q28",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "4c18bb634741e43b0faf08df4965454ce11b4a88cbfdc23cd8fc59ded36da6b7",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "883e1e940f18868a109ee757b81aeaa70eeef4af5e2e1be7b77e87b199520201",
+  "solutionFigureHashes": {},
+  "candidateHash": "4411c4382adc3eeffc1d9b4201617949bb55de6943d6fb2c3622fe11a87c5fcc",
+  "candidate": {
+    "questionId": "1966_AMC_12_Q28",
+    "derivedAnswer": "B, \\(OP=\\dfrac{ac-bd}{a-b+c-d}\\)",
+    "answerStatus": "matches",
+    "answerReason": "Writing the segment lengths in terms of OP and cross-multiplying gives (a−b+c−d)OP=ac−bd. The denominator is −(b−a)−(d−c)<0, so it cannot vanish.",
+    "methods": [
+      {
+        "id": "cross-product-equation",
+        "label": "Write the segment lengths",
+        "explanation": "The order of the points gives \\(0<a<b<c<d\\). Let \\(x=OP\\). Since \\(P\\) is between \\(B\\) and \\(C\\), we have \\(b<x<c\\), and the four relevant lengths are\n\\[\nAP=x-a,\\quad PD=d-x,\\quad BP=x-b,\\quad PC=c-x.\n\\]\nThus the given proportion is\n\\[\n\\frac{x-a}{d-x}=\\frac{x-b}{c-x}.\n\\]\nBoth denominators are positive, so cross-multiplication is valid:\n\\[\n(x-a)(c-x)=(x-b)(d-x).\n\\]\nExpanding reveals matching quadratic terms:\n\\[\n-x^2+(a+c)x-ac=-x^2+(b+d)x-bd.\n\\]\nAfter cancellation and collection,\n\\[\n(a-b+c-d)x=ac-bd.\n\\]\nThe coefficient of \\(x\\) is nonzero because\n\\[\na-b+c-d=-(b-a)-(d-c)<0.\n\\]\nTherefore \\(\\boxed{OP=\\dfrac{ac-bd}{a-b+c-d}}\\), choice B.",
+        "nodeIds": [
+          "cnm_268",
+          "cnm_p210",
+          "cnm_146",
+          "cnm_042"
+        ],
+        "prerequisiteIds": [
+          "cnm_055",
+          "cnm_p185",
+          "cnm_040",
+          "cnm_034"
+        ],
+        "levelReason": "Uses segment subtraction, cross-products, polynomial expansion, and a linear equation."
+      },
+      {
+        "id": "fixed-differences-ratio",
+        "label": "Use the fixed outer segments",
+        "explanation": "The differences \\(AP-BP=AB\\) and \\(PD-PC=CD\\) are fixed, which makes them useful for simplifying the proportion. Let its common ratio be\n\\[\nk=\\frac{AP}{PD}=\\frac{BP}{PC}>0.\n\\]\nThen \\(AP=kPD\\) and \\(BP=kPC\\). Subtracting these equations gives\n\\[\nAB=k\\,CD.\n\\]\nConsequently,\n\\[\n\\frac{BP}{PC}=k=\\frac{AB}{CD}=\\frac{b-a}{d-c}.\n\\]\nSo the segment \\(BC\\), whose length is \\(c-b\\), is divided into the positive ratio parts \\(b-a\\) and \\(d-c\\). Put \\(L=(b-a)+(d-c)>0\\). Then\n\\[\nBP=(c-b)\\frac{b-a}{L}.\n\\]\nBoth ratio parts are positive, so this places \\(P\\) strictly between \\(B\\) and \\(C\\), as required. Finally,\n\\[\nOP=b+BP\n=\\frac{bL+(c-b)(b-a)}{L}\n=\\frac{bd-ac}{L}.\n\\]\nSince \\(L=-(a-b+c-d)\\), this is \\(\\boxed{\\dfrac{ac-bd}{a-b+c-d}}\\), choice B.",
+        "nodeIds": [
+          "cnm_268",
+          "cnm_p187"
+        ],
+        "prerequisiteIds": [
+          "cnm_055",
+          "cnm_p185",
+          "cnm_040"
+        ],
+        "levelReason": "Uses subtraction of proportional quantities and division of a segment in a given ratio."
+      }
+    ],
+    "assessedIds": [
+      "cnm_268"
+    ],
+    "supportIds": [
+      "cnm_055",
+      "cnm_p185"
+    ],
+    "annotationRationale": "The task concerns proportional segment lengths, supported by segment sums and differences and the meaning of ratios. The first method uses cross-products and cancellation to obtain a linear equation. The second identifies a fixed ratio from differences and divides BC in that ratio, avoiding the quadratic expansion.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1966_AMC_12_Q28",
+    "decision": "accept",
+    "mathematicalCheck": "The ordered points justify all segment differences and positive ratio denominators. Cross-multiplication gives (a−b+c−d)OP=ac−bd, with coefficient −(b−a)−(d−c)<0. The second method correctly derives BP:PC=(b−a):(d−c), producing the same unique interior position.",
+    "levelCheck": "Both methods clearly explain the necessary segment and proportion reasoning.",
+    "methodDistinctness": "Polynomial cancellation and subtraction of proportional quantities give distinct useful approaches.",
+    "annotationCheck": "The proportional-segment target is shared appropriately. Expansion and linear solving belong to the first method; division in a given ratio belongs to the second.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "cross-product-equation": "solution:cross-product-equation:883e1e940f18",
+    "fixed-differences-ratio": "fixed-differences-ratio"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "479b004d8e7a52fcfe180d68984e46b5b3d2c2ecaa8e5004c0a950a1d9400cde",
+    "inputHash": "b5de0dc8f3069cea6d7c9a3dbba1566712d5754f77eb6f887441077309f97a4e",
+    "authorInputHash": "fb4a4b315671530a2130d688cfa4ae2f61ffac320819b12dcff8e6a5a5ac2ea7",
+    "reviewInputHash": "399e0a09b3f3f4dabd10462e554e323996138065756cad59d4d390617d0a35ab",
+    "authorResponseHash": "9d54b9d4d7feff7607944a6f6e5049bc92e310893441b99f52fb6a2d9ce8f56d",
+    "reviewerResponseHash": "00e5b2d38bf0363bb50360803603eed1055be68f8a8480aa7989ab9d82239a6b",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1952_AMC_12_Q40",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "994039891c9539e26a6104349fab33ff45b226e06e9660e7dadfb8b9bc5bb839",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "6106d4412c28294fe6546bcf6f2104523acac5ad748e718c9c941dd828a6a526",
+  "solutionFigureHashes": {},
+  "candidateHash": "8f324588d9a756626c1405efd974443bdb7eda976fff72dea6e1d31d052ad26e",
+  "candidate": {
+    "questionId": "1952_AMC_12_Q40",
+    "derivedAnswer": "The incorrect entry is 4227; it should be 4225. Choice E.",
+    "answerStatus": "matches",
+    "answerReason": "Equally spaced inputs to a quadratic have constant second differences. The single error is forced to be the fourth entry, 4227, which is not among choices A through D.",
+    "methods": [
+      {
+        "id": "constant-second-differences",
+        "label": "Compare successive changes",
+        "explanation": "Equal spacing is the useful clue: for a quadratic, successive changes in the function values themselves change by a constant. Indeed, expanding \\(f(x)=ax^2+bx+c\\) gives, for any fixed spacing \\(h>0\\),\n\\[\nf(x+2h)-2f(x+h)+f(x)=2ah^2.\n\\]\nThis quantity is called a second difference.\n\nThe first three displayed entries have second difference\n\\[\n(4096-3969)-(3969-3844)=127-125=2.\n\\]\nThe last three also have second difference\n\\[\n(4761-4624)-(4624-4489)=137-135=2.\n\\]\nThese two groups share no entries. Since exactly one entry is incorrect, at least one group is entirely correct. Therefore the true constant second difference is \\(2\\).\n\nNow the second, third, and fourth entries have displayed second difference\n\\[\n(4227-4096)-(4096-3969)=131-127=4,\n\\]\nso that group contains the error. The fourth, fifth, and sixth entries also have displayed second difference\n\\[\n(4489-4356)-(4356-4227)=133-129=4,\n\\]\nso that group contains the same error. Their only common entry is the fourth, \\(4227\\), which must therefore be incorrect.\n\nThe change from the second entry to the third is \\(127\\), so the next change must be \\(129\\). The correct fourth value is\n\\[\n4096+129=\\boxed{4225}.\n\\]\nAfter this correction, the successive changes are \\(125,127,129,131,133,135,137\\), as required. Since \\(4227\\) is absent from choices A through D, the answer is choice E.",
+        "nodeIds": [
+          "cnm_148",
+          "cnm_h201"
+        ],
+        "prerequisiteIds": [
+          "cnm_196",
+          "cnm_036"
+        ],
+        "levelReason": "The argument derives the needed property by polynomial expansion and uses elementary differences and the stated single-error condition."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_196",
+      "cnm_148",
+      "cnm_036"
+    ],
+    "annotationRationale": "The specific assessed target is checking quadratic data at equally spaced inputs using constant second differences. A precise node for that target is missing. The method uses square expansion and recognizes an arithmetic progression among first differences. General pattern recognition and solving for quadratic coefficients do not precisely describe this completed route.",
+    "needsNewNodes": [
+      {
+        "name": "Constant second differences of quadratic values",
+        "description": "For a polynomial of degree at most two sampled at equally spaced inputs with gap h, derive that each second difference equals 2ah². Use this restriction to check a table and locate or repair an erroneous entry, justifying uniqueness under the stated error assumptions.",
+        "reason": "The catalog includes arithmetic sequences and determining quadratic coefficients, but neither explicitly covers this finite-difference property or its use in checking quadratic tables."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1952_AMC_12_Q40",
+    "decision": "accept",
+    "mathematicalCheck": "The disjoint endpoint triples force the true second difference to be 2. The inconsistent triples at positions 2–4 and 4–6 intersect only at entry 4, forcing 4227 to be the error. Replacing it with 4225 produces first differences 125,127,129,131,133,135,137.",
+    "levelCheck": "The finite-difference property is derived using permitted polynomial algebra, and the single-error deduction is explained.",
+    "methodDistinctness": "One complete method establishes both the error location and its correction.",
+    "annotationCheck": "The proposed second-difference node addresses a genuine scope gap without forcing an unrelated assessed ID. The listed expansion, arithmetic-sequence, and function-value concepts support the method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "constant-second-differences": "constant-second-differences"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "3b1a5ffaa73daf90bb41f61975529da9969a843630c2f9fd22ad815cbaef1859",
+    "inputHash": "f370bd1b28178707ad42a52107c8fd103ffa77780c585f5f23d2d172820c589a",
+    "authorInputHash": "3616be49be0d6e5383855a2068771c5064acba66601a36eed74e24805df47239",
+    "reviewInputHash": "5b1d6ab589a4b53185925318c95d95afd9b396f4091cada2cd238b035be1e932",
+    "authorResponseHash": "492672b2faefbd46efb10e6554227136263cff2f054b66a48e4ce67285d05a86",
+    "reviewerResponseHash": "599d6f3f2146a42362772efd32f9859e5225f2ea0f0ad72098320796bf5ce52c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

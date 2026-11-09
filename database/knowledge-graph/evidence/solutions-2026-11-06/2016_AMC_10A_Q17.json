@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_10A_Q17",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "a0f1c9bf0a3afcec72777a1887b7d4e9536a4cc3f4e4e3ee12cd50aaa32779c1",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "4b142be210ec7b02a364bd7bba14472fb37320e5dc15552615c8a464d1110c6a",
+  "solutionFigureHashes": {},
+  "candidateHash": "5443a87667252a2a2a60f68eda0a96a91773ff05d4becf6f24cce3524fc2e1a5",
+  "candidate": {
+    "questionId": "2016_AMC_10A_Q17",
+    "derivedAnswer": "A: 12, from the least N=480",
+    "answerStatus": "matches",
+    "answerReason": "For N=5m, the favorable red-ball positions number 4m+2 out of 5m+1. The required strict inequality is equivalent to N>479, whose least positive multiple of 5 is 480.",
+    "methods": [
+      {
+        "id": "count-red-ball-positions",
+        "label": "Count the favorable positions of the red ball",
+        "explanation": "Only the red ball's position matters. Write \\(N=5m\\), where \\(m\\) is a positive integer, and let \\(L\\) be the number of green balls to its left. The red ball is equally likely to occupy any of the \\(5m+1\\) positions, so\n\\[\nL=0,1,2,\\ldots,5m\n\\]\nare equally likely possibilities.\n\nAt least \\(3m\\) green balls lie on one side exactly when either \\(L\\ge3m\\), or the number on the right satisfies \\(5m-L\\ge3m\\), meaning \\(L\\le2m\\). Thus the favorable values are\n\\[\n0,1,\\ldots,2m\n\\quad\\text{and}\\quad\n3m,3m+1,\\ldots,5m.\n\\]\nEach range contains \\(2m+1\\) values. They do not overlap because \\(m>0\\), and together they include every favorable position. Therefore\n\\[\nP(N)=\\frac{4m+2}{5m+1}.\n\\]\nSince \\(5m+1>0\\), we may multiply the required inequality by its positive denominators:\n\\[\n\\frac{4m+2}{5m+1}<\\frac{321}{400}\n\\]\n\\[\n1600m+800<1605m+321,\n\\]\nwhich simplifies to \\(5m>479\\), or \\(N>479\\).\n\nThe least multiple of \\(5\\) greater than \\(479\\) is \\(480\\). Its digit sum is \\(4+8+0=12\\), choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_h137",
+          "cnm_098",
+          "cnm_h020",
+          "cnm_h230"
+        ],
+        "prerequisiteIds": [
+          "cnm_309",
+          "cnm_097"
+        ],
+        "levelReason": "Uses equally likely positions, inclusive interval counts, and a linear inequality with a positive denominator."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h137",
+      "cnm_098"
+    ],
+    "supportIds": [
+      "cnm_309",
+      "cnm_h020",
+      "cnm_097"
+    ],
+    "annotationRationale": "The task targets constructing a finite probability and translating its threshold into an inequality with an admissible integer minimum. The written method counts two disjoint ranges using the addition principle for counts. Integer interval counting, recognition of equally likely positions, and linear inequality solving support the argument; the strict bound and multiple-of-five restriction are retained.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_10A_Q17",
+    "decision": "accept",
+    "mathematicalCheck": "For N=5m, the favorable left counts are the disjoint ranges 0 through 2m and 3m through 5m, totaling 4m+2 out of 5m+1 equally likely positions. Positive-denominator cross multiplication gives 5m>479, so the least admissible N is 480 and its digit sum is 12.",
+    "levelCheck": "Equally likely positions, endpoint counting, and a linear inequality provide a complete AMC 10 solution. The strict bound and denominator sign are handled explicitly.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Classical probability and an applied inequality fit the assessed targets. The disjoint counting principle is method-local, and the equal-likelihood, integer-counting, and inequality-solving supports are justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-red-ball-positions": "count-red-ball-positions"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "46d8830619b80bc2a52c06d07756168ba5a9aabd872b53b51c6a3543f44afaac",
+    "inputHash": "69d381786b1ef8fc66716059adfb3f5c9042a96b7c2d00b95df54e2798c780c1",
+    "authorInputHash": "3680b0b1c190c41a6345cd36a0e351498f9765e7e0f510efff0244a6c74baf0b",
+    "reviewInputHash": "30430b4463884f1fca42bc2cfef3a2d7b41a5e7aa3176390d99c88fb023f5f9d",
+    "authorResponseHash": "7710eeadfba5b37831f4be4fca263b201f8faeb5e0a7f6268edf5a596b29792c",
+    "reviewerResponseHash": "0b6804ea8d1818bfd3207667ad3a19e47edc4e6d12561baf3f1c84a31e5729c7",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

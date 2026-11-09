@@ -1,0 +1,1 @@
+window.MATH_PRACTICE_HOSTED={"browse":{"CN":"../data/paths/CN.json","US":"../data/paths/US.json","ailleo":"../data/paths/ailleo.json"},"catalogs":["../data/catalogs/cn-math.json","../data/catalogs/amc.json"]};

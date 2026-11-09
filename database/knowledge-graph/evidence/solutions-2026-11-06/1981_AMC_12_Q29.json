@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1981_AMC_12_Q29",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "da93101459ea0873e0b59b539a274635ddbc2762913888bd908fd6a4a09739c8",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "af701d4f02cf93473da7713bfaed77951f2a8509a3ef49bdfa1f3620755cca04",
+  "solutionFigureHashes": {},
+  "candidateHash": "b9721865f74ce0bd44e7ec340d469e0ca72e647380d99d60238d1bbfe6614790",
+  "candidate": {
+    "questionId": "1981_AMC_12_Q29",
+    "derivedAnswer": "(√(4a−3)−1)/2, choice E",
+    "answerStatus": "matches",
+    "answerReason": "The equation has exactly one real solution. Introducing the inner square root reduces the equation to x²+x+1=a, whose positive root satisfies the original equation.",
+    "methods": [
+      {
+        "id": "introduce-inner-square-root",
+        "label": "Introduce the inner square root",
+        "explanation": "Naming the inner square root lets us compare two equations involving squares. Any real solution has \\(x\\ge0\\), because the outer square root is nonnegative. Set\n\\[\ny=\\sqrt{a+x}.\n\\]\nSince \\(a>1\\) and \\(x\\ge0\\), we have \\(y>0\\). The original equation and the definition of \\(y\\) give\n\\[\nx^2+y=a,\n\\qquad y^2-x=a.\n\\]\nSubtracting the first equation from the second eliminates \\(a\\):\n\\[\ny^2-x^2=x+y,\n\\qquad (y-x)(y+x)=y+x.\n\\]\nHere \\(y+x>0\\), so division is valid and gives \\(y=x+1\\). Substituting into \\(x^2+y=a\\) yields\n\\[\nx^2+x+1=a.\n\\]\nIts roots are\n\\[\nx=\\frac{-1\\pm\\sqrt{4a-3}}2.\n\\]\nBecause \\(a>1\\), the square root exceeds \\(1\\). Exactly one root is nonnegative:\n\\[\nr=\\frac{\\sqrt{4a-3}-1}{2}>0.\n\\]\nTo check the original equation, use \\(a=r^2+r+1\\). Then\n\\[\n\\sqrt{a+r}=\\sqrt{(r+1)^2}=r+1\n\\]\nand\n\\[\n\\sqrt{a-\\sqrt{a+r}}=\\sqrt{r^2}=r.\n\\]\nThus \\(r\\) is valid, and every real solution was forced to equal it. The sum of the real solutions is therefore \\(\\boxed{\\frac{\\sqrt{4a-3}-1}{2}}\\), choice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "math:radical-equations",
+          "cnm_147"
+        ],
+        "prerequisiteIds": [
+          "cnm_167",
+          "cnm_168",
+          "cnm_222"
+        ],
+        "levelReason": "A substitution, difference of squares, and the quadratic formula give a complete school-algebra solution."
+      },
+      {
+        "id": "square-and-filter-factors",
+        "label": "Square twice and use the original signs",
+        "explanation": "Squaring removes the radicals, but we must retain the signs imposed by the original equation. Any real solution has \\(x\\ge0\\). Squaring once and isolating the remaining radical gives\n\\[\n\\sqrt{a+x}=a-x^2.\n\\]\nSince \\(a+x>1\\), the left side is positive, so every solution also satisfies \\(x^2<a\\).\n\nSquaring again produces\n\\[\n(a-x^2)^2=a+x,\n\\]\nwhich rearranges and factors as\n\\[\nx^4-2ax^2-x+a^2-a=0,\n\\]\n\\[\n(x^2+x+1-a)(x^2-x-a)=0.\n\\]\nThe factorization can be verified by expansion. Its second factor cannot vanish for an original solution: it would give \\(x^2=a+x\\ge a\\), contradicting \\(x^2<a\\). Therefore every original solution satisfies \\(x^2+x+1-a=0\\).\n\nThe quadratic formula gives two candidates,\n\\[\n\\frac{-1+\\sqrt{4a-3}}2,\n\\qquad\n\\frac{-1-\\sqrt{4a-3}}2.\n\\]\nFor \\(a>1\\), the first is positive and the second is negative. Only the positive candidate\n\\[\nr=\\frac{\\sqrt{4a-3}-1}{2}\n\\]\ncan satisfy \\(x\\ge0\\). Since \\(a=r^2+r+1\\), direct substitution gives\n\\[\n\\sqrt{a-\\sqrt{a+r}}\n=\\sqrt{a-(r+1)}\n=\\sqrt{r^2}=r.\n\\]\nThe intermediate radicals are defined because \\(a+r=(r+1)^2\\) and the outer radicand is \\(r^2\\). Hence there is exactly one real solution, and its sum is \\(\\boxed{\\frac{\\sqrt{4a-3}-1}{2}}\\), choice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "math:radical-equations",
+          "cnm_146"
+        ],
+        "prerequisiteIds": [
+          "cnm_167",
+          "cnm_168",
+          "cnm_222"
+        ],
+        "levelReason": "Successive squaring, a polynomial factorization, and sign checks use ordinary school algebra."
+      }
+    ],
+    "assessedIds": [
+      "math:radical-equations"
+    ],
+    "supportIds": [
+      "cnm_167",
+      "cnm_168",
+      "cnm_222"
+    ],
+    "annotationRationale": "Both routes solve a real radical equation while preserving principal-root signs and checking the surviving candidate. Radical domains, square-root identities, and quadratic solving are shared support. The first route uses difference of squares after substitution; the second uses polynomial expansion and factor filtering after successive squaring.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1981_AMC_12_Q29",
+    "decision": "accept",
+    "mathematicalCheck": "The substitution method validly divides by y+x>0 and forces x²+x+1=a. In the squaring method, the displayed quartic factorization is correct, and x²<a excludes the second factor. Both methods retain only the positive quadratic root and verify both principal square roots in the original equation, proving uniqueness.",
+    "levelCheck": "Both methods use ordinary school algebra with explicit domain and sign checks.",
+    "methodDistinctness": "Comparing two substituted square relations and squaring twice with factor filtering are meaningfully different approaches.",
+    "annotationCheck": "The radical-equation target and shared domain, square-root, and quadratic-solving support are justified. Difference of squares and polynomial multiplication are correctly method-local.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "introduce-inner-square-root": "introduce-inner-square-root",
+    "square-and-filter-factors": "square-and-filter-factors"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "df78cc79867df18811ec412a6c65b45276b1f65c361e6a648d8f87fb2814a45e",
+    "inputHash": "e8d76385717a2cf62a9d26106c8efb2d2f00a1263630402160635b900298e116",
+    "authorInputHash": "177239096f5b52bf09cf9117c1cd21ec0a46950cdefb5c87553886593db873fd",
+    "reviewInputHash": "a4853126088d4de99c14dcc811543e305dd5be30e52724173f7e7e0de31c6e9b",
+    "authorResponseHash": "aa009f8b1ae968b3347b8c4f2d42ed410c435d32ebb5916872a86371f4e683f6",
+    "reviewerResponseHash": "07a79fbd995f7dbf4c3acafa37ce3da5cadaf92eb7e97b27be6453da04d3b1ad",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2004_AMC_10B_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "b018bd0353210fa9e78c3d0cc3e2bc7718d4a223619cc408b97ade4322145816",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "278c7dcd015cc6054e97cb9e1bcf5024bd3bfbc5019a9c57667375b0c5c9eeb3",
+  "solutionFigureHashes": {},
+  "candidateHash": "247d6b71f34a406ccaad784f1de8630288ea4cf2fe922d93061ac59b2ba63752",
+  "candidate": {
+    "questionId": "2004_AMC_10B_Q23",
+    "derivedAnswer": "B, 5/16",
+    "answerStatus": "matches",
+    "answerReason": "Among 64 equally likely colorings, the successful ones consist of 2 monochromatic colorings, 12 with one minority-color face, and 6 with two opposite minority-color faces. Thus the probability is 20/64 = 5/16.",
+    "methods": [
+      {
+        "id": "minority-color-cases",
+        "label": "Classify the less frequent color",
+        "explanation": "Placing the cube on a face makes that face and its opposite the bottom and top. The remaining four faces are vertical. Thus any faces whose color differs from the desired vertical color must fit into one opposite pair.\n\nCount colorings of six fixed faces before moving the cube. There are \\(2^6=64\\) colorings, each with probability \\((\\tfrac12)^6\\) by independence. Classify them by their color counts.\n\nIf all six faces have one color, the cube works. There are \\(2\\) such colorings.\n\nIf exactly one face has the less frequent color, put that face on the bottom. The four vertical faces then have the other color. Choosing the less frequent color and its face gives \\(2\\cdot6=12\\) colorings.\n\nIf exactly two faces have the less frequent color, they must be the top and bottom, so they must be opposite. Conversely, any opposite pair can be placed that way. A cube has three opposite pairs, giving \\(2\\cdot3=6\\) colorings.\n\nIf there are three faces of each color, neither color supplies four vertical faces, so no placement works.\n\nThese cases cover every coloring and are disjoint. We count each coloring once, even if several placements work. Therefore the probability is\n\\[\n\\frac{2+12+6}{64}=\\frac{20}{64}=\\frac{5}{16}.\n\\]\nThe answer is \\(\\frac5{16}\\), choice B.",
+        "nodeIds": [
+          "cnm_285",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_p160",
+          "cnm_h231",
+          "cnm_h140",
+          "cnm_p165"
+        ],
+        "levelReason": "The solution uses cube face relationships, equally likely independent color choices, and a short exhaustive case count."
+      }
+    ],
+    "assessedIds": [
+      "cnm_285"
+    ],
+    "supportIds": [
+      "cnm_p160",
+      "cnm_h140",
+      "cnm_p165"
+    ],
+    "annotationRationale": "The target is the probability of a geometric event in a finite equally likely space. The method translates a successful placement into a restriction on the less frequent color and combines disjoint cases with sequential choices. Cube structure and independence support the model. Colorings are counted on fixed faces, so counting arrangements up to rotation is not used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2004_AMC_10B_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "The 64 fixed-face colorings are equally likely. Successful colorings comprise 2 monochromatic cases, 12 with one minority face, and 6 with an opposite minority pair. These disjoint cases exhaust success, giving 20/64 = 5/16 without counting placements multiple times.",
+    "levelCheck": "The geometric condition, independence, and exhaustive case count are clearly justified using AMC 10 mathematics.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Equally likely probability is the assessed target. Combined counting is method-local, and cube structure, independence, and fraction meaning are justified support. No counting up to rotation is claimed.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "minority-color-cases": "solution:minority-color-cases:278c7dcd015c"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c5ea1c422ee4b6718c9492114f525225c5dfa53c51abb49be7d7c4bd55b6ae96",
+    "inputHash": "671daf9c9eccf08e2d878d4cef6587da40f51046dff0aa8bbf7608a558490b04",
+    "authorInputHash": "15a78d1753e1c128027231f63062ca4ea96496596f359bd2de8d55ac21401023",
+    "reviewInputHash": "a78c18ac22b7009952603d4c2c0d3a3b998d6bdb4210ea8f98a127f936e3c130",
+    "authorResponseHash": "3c8210b0536ea47e17f0a95f118ab3502015612b99a9ca5bdbe00f203f4ef411",
+    "reviewerResponseHash": "5e01d5e17c4ca18349e184b7712ed855f43884346fa435ab1376c7037ef34057",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2006_AMC_12A_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "64d5555b0c4f5adc534fa35d8522baa6401658a571fd1505e5bc4e214dc2105d",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "7232103ee524c8d4e1ec734d000b4d8705958e057c1ca58736fde248afe323c0",
+  "solutionFigureHashes": {},
+  "candidateHash": "e1d07acb4987f993d860876bddf33e8f3a9b4d13a2d4832117125e9b6b45bcf4",
+  "candidate": {
+    "questionId": "2006_AMC_12A_Q22",
+    "derivedAnswer": "D: \\(3\\sqrt{2}+\\sqrt{6}\\)",
+    "answerStatus": "matches",
+    "answerReason": "Under the recorded uniform-arclength and opaque-hexagon visibility conventions, the probability condition gives a visibility-arc half-angle of \\(75^\\circ\\). Thus \\(r=\\sqrt{3}/\\cos75^\\circ=3\\sqrt{2}+\\sqrt{6}\\), matching D.",
+    "methods": [
+      {
+        "id": "side-visibility-arcs",
+        "label": "Count the arcs for three visible sides",
+        "explanation": "Interpret the random point as uniform along the circle, with ordinary unobstructed visibility of an opaque hexagon. The line containing a side determines where that entire side is visible: the observer must lie across the line from the hexagon's center. From this half-plane, sight segments reach every point of the side without crossing the hexagon. From the center's half-plane, sight to an interior point of the side passes through the hexagon first. Positions exactly on an extended side line form a finite set and do not affect the probability.\n\nLet \\(O\\) be the common center. Joining \\(O\\) to the vertices divides the regular hexagon into six equilateral triangles of side \\(2\\). Its circumradius is therefore \\(2\\), and its apothem, the perpendicular distance from \\(O\\) to a side, is\n\\[\na=\\sqrt{2^2-1^2}=\\sqrt{3}.\n\\]\nDraw the six rays from \\(O\\) through the side midpoints. These outward rays are spaced \\(60^\\circ\\) apart.\n\nEach extended side line cuts the surrounding circle at the endpoints of that side's visibility arc. Let \\(\\beta\\) be half the central angle of this arc. The right triangle formed by \\(O\\), the side midpoint, and an arc endpoint gives\n\\[\n\\cos\\beta=\\frac{\\sqrt{3}}{r}.\n\\]\nBecause the circle surrounds the hexagon, \\(r\\ge2\\), so \\(30^\\circ\\le\\beta<90^\\circ\\). A side is visible precisely when the observer's direction is within \\(\\beta\\) of its outward ray, apart from boundary positions.\n\nThus all visible outward rays lie in an angular interval of width \\(2\\beta<180^\\circ\\). Four rays cannot fit, because four consecutive rays span \\(180^\\circ\\). Three visible rays must be consecutive and span \\(120^\\circ\\). Consequently, if \\(\\beta\\le60^\\circ\\), seeing three sides has probability zero. The given positive probability therefore requires \\(60^\\circ<\\beta<90^\\circ\\).\n\nFix three consecutive outward rays, and let \\(t\\) be the observer's signed angular displacement from the middle ray. To be within \\(\\beta\\) of both outer rays, the observer must satisfy\n\\[\n60^\\circ-\\beta<t<\\beta-60^\\circ.\n\\]\nThese bounds also ensure visibility of the middle side. This triple therefore contributes an arc with central angle \\(2\\beta-120^\\circ\\). There are six possible triples. Their arcs are disjoint because their centers are \\(60^\\circ\\) apart and each arc has angular width less than \\(60^\\circ\\). Every position seeing three sides belongs to exactly one of them.\n\nArc length is proportional to central angle on the same circle, so\n\\[\n\\frac{6(2\\beta-120^\\circ)}{360^\\circ}=\\frac12.\n\\]\nSolving gives \\(\\beta=75^\\circ\\). To evaluate its cosine, use complementary acute angles and the sine-difference formula:\n\\[\n\\begin{aligned}\n\\cos75^\\circ&=\\sin15^\\circ\\\\\n&=\\sin(60^\\circ-45^\\circ)\\\\\n&=\\sin60^\\circ\\cos45^\\circ\n-\\cos60^\\circ\\sin45^\\circ\\\\\n&=\\frac{\\sqrt6-\\sqrt2}{4}.\n\\end{aligned}\n\\]\nThis value is positive, so division is valid. Hence\n\\[\n\\begin{aligned}\nr&=\\frac{4\\sqrt3}{\\sqrt6-\\sqrt2}\\\\\n&=\\frac{4\\sqrt3(\\sqrt6+\\sqrt2)}{6-2}\\\\\n&=\\boxed{3\\sqrt2+\\sqrt6}.\n\\end{aligned}\n\\]\nThis radius exceeds \\(2\\) and gives the required probability. The answer is choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:geometric-probability",
+          "cnm_266",
+          "cnm_278",
+          "cnm_h070"
+        ],
+        "prerequisiteIds": [
+          "cnm_174",
+          "cnm_256",
+          "cnm_276",
+          "cnm_277",
+          "cnm_171"
+        ],
+        "levelReason": "The argument uses regular-hexagon geometry, right-triangle trigonometry, an elementary angle-difference identity, and arc-length ratios, all within AMC 12 precalculus."
+      }
+    ],
+    "assessedIds": [
+      "math:geometric-probability"
+    ],
+    "supportIds": [
+      "cnm_266",
+      "cnm_256"
+    ],
+    "annotationRationale": "The task target is translating the visibility event into disjoint favorable arcs and computing their fraction of the circumference. Regular-polygon geometry supplies the apothem and equally spaced directions, while degree-based arc-length proportionality supplies the probability ratio. The method uses right-triangle cosine and evaluates the special value through sin(60°−45°), which fits cnm_h070. Pythagorean calculation, acute-angle definitions, special trigonometric values, and rationalization support the local calculations.",
+    "needsNewNodes": [],
+    "limitations": [
+      "Uses the recorded interpretations of uniform arclength sampling and unobstructed visibility of an opaque convex hexagon.",
+      "Edge-on positions on extended side lines have probability zero."
+    ]
+  },
+  "review": {
+    "questionId": "2006_AMC_12A_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "The visibility half-plane criterion is justified. The apothem is sqrt(3), so cos(beta)=sqrt(3)/r. Since beta<90 degrees, at most three sides are visible. For beta>60 degrees, the favorable set consists of six disjoint arcs, each of angle 2beta-120 degrees; smaller beta gives probability zero. Thus 6(2beta-120)/360=1/2 gives beta=75 degrees and uniquely r=3sqrt(2)+sqrt(6). The trigonometric evaluation and rationalization are correct, and boundary positions have probability zero.",
+    "levelCheck": "The geometry, arc ratios, right-triangle trigonometry, and sine-difference identity fit AMC 12. The decisive visibility and overlap arguments are explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The geometric-probability assessment and regular-polygon and arc-length support are justified. The method concepts and prerequisites match the calculations, including the sine-difference identity. The sampling and visibility qualifications are preserved.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "side-visibility-arcs": "side-visibility-arcs"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "7c8cfcc4b978019f8da9b353cebd22932f85b8b79695aadda17318fa084a90fb",
+    "inputHash": "168ed7f1ac133539b298e0b81cd9dc49ee1f41b2d7d42eac875786e395a24636",
+    "authorInputHash": "0511be246b39127fba542882d707469cf0633f69ae56bb1e615ceabb1d02483a",
+    "reviewInputHash": "6f3377a632eb14fdf56ca98d0099d1134f958f326aedfb7e4bee45adf4f992ca",
+    "authorResponseHash": "a633ced819d198f272f4534b3a3580deb143c2bd5f3f3fca445da939350f63a1",
+    "reviewerResponseHash": "b41c69a93d5b9fe45dae5cd331a805d52535ff0cf8c56f5582915c7ec7fbf2ca",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

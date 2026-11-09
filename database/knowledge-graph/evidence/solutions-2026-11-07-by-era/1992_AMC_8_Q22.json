@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1992_AMC_8_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "d60cba9c232f16e23c1b98b626e7d3d1f5c61fb8a6dee155fbdb82b7cbd34015",
+    "figureHashes": {
+      "figures/1992_AMC_8_Q22_question_fig1.svg": "385a220dd60c7590f6031ac4aee27e2bbfd92f6645863d85b68ad6d45fc5e3f0"
+    }
+  },
+  "solutionSHA256": "919761c3a268348ccf527034cb7146b49c8ceef29d689f0cefb9a4885a0ecd19",
+  "solutionFigureHashes": {},
+  "candidateHash": "c8318af783778c94873d7e617397b3a64a75387d82ae41d6943a7f9f22c65292",
+  "candidate": {
+    "questionId": "1992_AMC_8_Q22",
+    "derivedAnswer": "C. 18 units",
+    "answerStatus": "matches",
+    "answerReason": "Each tile changes the perimeter by an even number no greater than 2. Thus the new perimeter is even and at most 18. Extending the lower row leftward and the upper row rightward attains 18.",
+    "methods": [
+      {
+        "id": "track_exposed_edges",
+        "label": "Track the change in boundary edges",
+        "explanation": "The useful observation is that a shared side lies inside the figure and contributes nothing to its perimeter.\n\nAdd the tiles one at a time. Suppose an added tile shares \\(k\\) sides with the figure already present. Its attachment removes those \\(k\\) sides from the old boundary and contributes its other \\(4-k\\) sides. The perimeter therefore changes by\n\\[\n(4-k)-k=4-2k.\n\\]\nEach new tile must share a side with an original tile, so \\(k\\geq1\\), even when adding the second tile. Consequently, each addition increases the perimeter by at most \\(2\\), and its change is always even. Starting from \\(14\\), the final perimeter must be even and cannot exceed\n\\[\n14+2+2=18.\n\\]\nThis rules out the odd choices \\(15,17,19\\), as well as \\(20\\).\n\nWe must also show that \\(18\\) is possible. In the displayed figure, place one tile immediately to the left of the lower row and the other immediately to the right of the upper row. Each shares exactly one side with the original figure, and they do not share a side with each other. Each therefore adds \\(2\\) to the perimeter.\n\nThe resulting perimeter is \\(\\boxed{18}\\) units, choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "math:double-counting",
+          "math:extremal-principle"
+        ],
+        "prerequisiteIds": [
+          "cnm_p078",
+          "cnm_p156"
+        ],
+        "levelReason": "The argument counts unit boundary edges, uses even numbers, and exhibits a concrete placement. No advanced counting machinery is needed."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_p078",
+      "cnm_p156"
+    ],
+    "annotationRationale": "The route-neutral target is determining possible perimeters of a figure assembled from unit squares, for which the catalog lacks a precise node. cnm_p078 supplies the meaning of perimeter and the four sides of a square; cnm_p156 supports eliminating odd choices. The method tracks the two boundary contributions lost at each shared edge, fitting math:double-counting, and combines a universal bound with an attaining construction, fitting math:extremal-principle. These method-specific ideas are not imposed as task-level requirements.",
+    "needsNewNodes": [
+      {
+        "name": "Perimeter of figures assembled from unit squares",
+        "description": "Determine the perimeter of a figure made from nonoverlapping unit squares by counting exposed sides, and determine how adding or removing tiles changes that perimeter.",
+        "reason": "The catalog's rectangle-and-square perimeter node does not cover general tiled figures. Double counting and extremal reasoning describe methods rather than the route-neutral geometric target."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1992_AMC_8_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "Adding a tile with k shared sides removes k boundary sides and adds 4-k, giving change 4-2k. Each tile contacts the original figure, so both changes are even and at most 2. Thus the perimeter is even and at most 18. The pictured lower-left and upper-right row extensions each share exactly one side and attain 18.",
+    "levelCheck": "The boundary counting, simple formula, parity argument, and concrete construction are accessible at AMC 8 level.",
+    "methodDistinctness": "One complete method combines the bound with an attaining construction.",
+    "annotationCheck": "The perimeter and parity support nodes fit. Tracking both contributions at shared edges supports incidence counting, and the bound with construction fits the extremal node. The proposed missing node honestly identifies the route-neutral tiled-perimeter target.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "track_exposed_edges": "track_exposed_edges"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "e73a41fa4a4c946f8fbb803d2567e0bee6952a8b61c018dbf774c4ba177223e4",
+    "acceptedAt": "2026-11-08T00:24:28.927802+00:00",
+    "inputHash": "0d620732d9d0ed0b076211850bb9a78dc05478ec9f88704db031f6a7558ffe08",
+    "authorInputHash": "4cdd4b26de587eb0594b5dc3968bf7d4b90dd8a431343fbbd675d691ac6c3603",
+    "reviewInputHash": "8bfb0b7285d83c43a99d4185ebf9908bfca7bbcaf11343c201d240adf68317ca",
+    "authorResponseHash": "4359e82874459ad729787b671f661f9ec74fa84976f2a02e1d8002fdcdb4ec90",
+    "reviewerResponseHash": "08239b08a7fc69e27ec4d369ee28019766303fa0a34795ea8615b3429e36f91a",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

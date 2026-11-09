@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2007_AMC_12B_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "cbd18803f26c16bd6141ea170735508c243bb6d5c4282a156102dfd33a44e97b",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "8aa73fe02fd625973004b1731df32298d4f2a97e6b295f25bdaf4c21bd42a168",
+  "solutionFigureHashes": {},
+  "candidateHash": "55a9b4469392ac93279571ee1d7ccdf77661fa41ac615d94b1b1804d7139e98e",
+  "candidate": {
+    "questionId": "2007_AMC_12B_Q22",
+    "derivedAnswer": "A (\\(1/16\\))",
+    "answerStatus": "matches",
+    "answerReason": "The midpoint traces a triangle and then repeats its path when the particles swap positions. That triangle is similar to ABC with length factor 1/4, giving area ratio 1/16.",
+    "methods": [
+      {
+        "id": "coordinate-midpoint-trace",
+        "label": "Track the turning times with coordinates",
+        "explanation": "The midpoint can change direction only when a particle reaches a vertex. Between those events, both particles move along straight segments at constant speeds, so their midpoint also moves along a straight segment.\n\nScaling the whole configuration preserves the requested area ratio. Choose side length \\(2\\) and coordinates\n\\[\nA=(0,h),\\qquad B=(-1,0),\\qquad C=(1,0),\n\\]\nwhere \\(h>0\\) is the triangle's height. Measure progress by the common distance traveled by each particle.\n\nInitially the particles are at \\(A\\) and the midpoint of \\(BC\\). After distance \\(1\\), they are at the midpoint of \\(AB\\) and at \\(C\\). After distance \\(2\\), they are at \\(B\\) and the midpoint of \\(CA\\). Averaging the corresponding coordinates gives the three midpoint positions\n\\[\nX=\\left(0,\\frac h2\\right),\\qquad\nY=\\left(\\frac14,\\frac h4\\right),\\qquad\nZ=\\left(-\\frac14,\\frac h4\\right).\n\\]\nAfter distance \\(3\\), the particles have exchanged their initial positions, so the midpoint returns to \\(X\\). No other turning events occur in these three intervals. Equal speeds then make the same midpoint path repeat. Hence \\(R\\) is exactly triangle \\(XYZ\\).\n\nShrinking \\(ABC\\) by a factor of \\(1/4\\) and then shifting it upward by \\(h/4\\) gives precisely the vertices \\(X,Z,Y\\). Thus the triangles are similar with length factor \\(1/4\\), and\n\\[\n\\frac{[R]}{[ABC]}=\\left(\\frac14\\right)^2=\\frac1{16}.\n\\]\nThe answer is choice \\(\\mathrm{A}\\).",
+        "nodeIds": [
+          "cnm_272",
+          "cnm_084",
+          "cnm_h087"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_055",
+          "cnm_p111"
+        ],
+        "levelReason": "Uses elementary motion along segments, midpoint coordinates, and the squared area ratio of similar triangles."
+      },
+      {
+        "id": "centroid-homothety",
+        "label": "Find the scale factor along the medians",
+        "explanation": "Let the side length be \\(s\\), and let \\(M_A,M_B,M_C\\) be the midpoints of \\(BC,CA,AB\\), respectively. Let \\(X_A,X_B,X_C\\) be the midpoints of the medians \\(AM_A,BM_B,CM_C\\).\n\nAfter the particles have each traveled distances \\(0,s/2,s,3s/2\\), their respective position pairs are\n\\[\n(A,M_A),\\quad(M_C,C),\\quad(B,M_B),\\quad(M_A,A).\n\\]\nTheir midpoint therefore visits \\(X_A,X_C,X_B,X_A\\), in that order. Between consecutive listed distances, neither particle changes direction, so the midpoint follows the segment joining the listed endpoints. At distance \\(3s/2\\), the particles have swapped their starting positions; their midpoint path consequently repeats. Thus \\(R\\) is triangle \\(X_AX_BX_C\\).\n\nLet \\(G\\) be the centroid of \\(ABC\\). The centroid divides each median in the ratio \\(2:1\\) from the vertex, so\n\\[\nAG=\\frac23 AM_A,\\qquad AX_A=\\frac12 AM_A.\n\\]\nThe point \\(X_A\\) lies between \\(A\\) and \\(G\\), and hence\n\\[\nGX_A=\\left(\\frac23-\\frac12\\right)AM_A\n=\\frac16 AM_A=\\frac14 GA.\n\\]\nThe same reasoning applies to \\(B\\) and \\(C\\). Therefore scaling about \\(G\\) by \\(1/4\\) sends \\(A,B,C\\) to \\(X_A,X_B,X_C\\). The area ratio is the square of this length factor:\n\\[\n\\frac{[R]}{[ABC]}=\\left(\\frac14\\right)^2=\\frac1{16},\n\\]\nchoice \\(\\mathrm{A}\\).",
+        "nodeIds": [
+          "cnm_272",
+          "math:centroid-ratios",
+          "cnm_275"
+        ],
+        "prerequisiteIds": [
+          "cnm_113",
+          "cnm_055",
+          "cnm_p111"
+        ],
+        "levelReason": "Uses elementary median and centroid ratios to obtain a homothety, followed by similar-triangle area scaling."
+      }
+    ],
+    "assessedIds": [
+      "cnm_272"
+    ],
+    "supportIds": [
+      "cnm_055",
+      "cnm_p111"
+    ],
+    "annotationRationale": "Both routes establish a triangular locus and find its area through a length scale of 1/4. Coordinate averaging belongs only to the first route; centroid ratios and homothety belong only to the second. The catalog lacks a direct node for establishing the locus from successive motion events.",
+    "needsNewNodes": [
+      {
+        "name": "Midpoint loci for piecewise linear motion",
+        "description": "For two points moving at constant speeds along polygon edges, identify successive vertex events, prove that their midpoint follows a segment between events, and determine the closed locus and its repetition.",
+        "reason": "Establishing the actual boundary is a central target here. Coordinate operations, centroid ratios, and similarity describe available calculations but do not capture this motion-to-locus reasoning."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2007_AMC_12B_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "The vertex events occur at successive half-side distances, producing exactly three straight midpoint segments before the particles exchange positions. Both methods correctly establish that the resulting triangle has length scale \\(1/4\\) relative to ABC, hence area ratio \\(1/16\\).",
+    "levelCheck": "Both explanations are complete and accessible at AMC 12 level, using coordinate averages or elementary centroid ratios.",
+    "methodDistinctness": "The coordinate computation and synthetic centroid homothety provide distinct, useful ways to establish the scale factor.",
+    "annotationCheck": "Similarity is shared, while coordinate operations and centroid homothety remain method local. Shared midpoint and motion prerequisites are justified, and the proposed motion-locus node honestly identifies an uncovered concept.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "coordinate-midpoint-trace": "solution:coordinate-midpoint-trace:8aa73fe02fd6",
+    "centroid-homothety": "solution:centroid-homothety:8aa73fe02fd6"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "b6763fc5057d3d7c3cf1e54497b600346ad74d5cc10ac24142230bfcfbbdf0be",
+    "inputHash": "11f276b3dc004f597eec4ba9dfa60022faeac1ae5f3e17b0316468be9dd6bcd5",
+    "authorInputHash": "07c41c213e4900a33afe24d119bd6307759af076f88c9381af4aa2b58f19582d",
+    "reviewInputHash": "895c0b2b191e5584e601e6b61abdccfc0c9386e7c7cc57634bc0e1cfa324d147",
+    "authorResponseHash": "d6dc375ec533495a41dad66a6b01141c39bd4edbf2b8c818a7dabaaf0d1d4680",
+    "reviewerResponseHash": "33616cf90137f01c5b5754581233838e152808bdd5d4bdc8a4709a4bc4e63d34",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

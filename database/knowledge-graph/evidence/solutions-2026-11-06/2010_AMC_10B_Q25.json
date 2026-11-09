@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2010_AMC_10B_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "39650efd7753252489baee6f5be637c49aca6e309b7f88af0d7897b0617a391b",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "c47a99f0adddda6f3724828ef368c1759b832deccf331b76f33c3a062e5874b6",
+  "solutionFigureHashes": {},
+  "candidateHash": "012977952aa3f2a82ae7e1c78111262dfea5fffbd45e98039fa77fd4b8cbee25",
+  "candidate": {
+    "questionId": "2010_AMC_10B_Q25",
+    "derivedAnswer": "B, 315",
+    "answerStatus": "matches",
+    "answerReason": "Integer-coefficient factorization forces both 9 and 105 to divide a, hence 315 divides a. An explicit integer-coefficient polynomial attains a = 315.",
+    "methods": [
+      {
+        "id": "root-factors-and-construction",
+        "label": "Obtain a divisibility bound and attain it",
+        "explanation": "Since \\(a=P(1)\\), the number \\(a\\) is a positive integer. The four equal values at odd inputs mean that \\(P(x)-a\\) has roots \\(1,3,5,7\\). Factoring out these roots gives\n\\[\nP(x)-a=A(x)Q(x),\n\\]\nwhere\n\\[\nA(x)=(x-1)(x-3)(x-5)(x-7)\n\\]\nand \\(Q(x)\\) has integer coefficients. To justify the coefficient condition, division by a monic factor \\(x-k\\), with integer \\(k\\), preserves integer coefficients; each remaining distinct root remains a root of the quotient.\n\nAt the even inputs, \\(P(x)-a=-2a\\). Evaluating at \\(4\\) and \\(8\\) yields\n\\[\n-2a=9Q(4),\\qquad -2a=105Q(8).\n\\]\nThus \\(9\\) and \\(105\\) divide \\(2a\\). Both are relatively prime to \\(2\\), so both divide \\(a\\). Therefore\n\\[\n\\operatorname{lcm}(9,105)=315\n\\]\ndivides \\(a\\), proving \\(a\\geq315\\).\n\nWe must also show that \\(315\\) is attainable. For \\(a=315\\), the required even-input values of \\(Q\\) are determined by\n\\[\n\\begin{aligned}\n(A(2),A(4),A(6),A(8))&=(-15,9,-15,105),\\\\\n(Q(2),Q(4),Q(6),Q(8))&=(42,-70,42,-6).\n\\end{aligned}\n\\]\nWe can build \\(Q\\) one input at a time. A term containing \\(x-2\\) leaves its value at \\(2\\) unchanged; a term containing \\((x-2)(x-4)\\) leaves both earlier values unchanged. Continuing this idea gives the integer-coefficient polynomial\n\\[\n\\begin{aligned}\nQ(x)={}&42-56(x-2)\\\\\n&+28(x-2)(x-4)\\\\\n&-8(x-2)(x-4)(x-6).\n\\end{aligned}\n\\]\nIts successive terms produce exactly the four displayed values: \\(42,-70,42,-6\\). Now define\n\\[\nP(x)=315+A(x)Q(x).\n\\]\nThis polynomial has integer coefficients. At each odd input \\(1,3,5,7\\), the factor \\(A(x)\\) is zero, so \\(P(x)=315\\). At the four even inputs, each product \\(A(x)Q(x)\\) equals \\(-630\\), so \\(P(x)=-315\\). Thus all eight conditions hold.\n\nThe smallest possible value is therefore \\(\\boxed{315}\\), choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "math:extremal-principle",
+          "math:polynomial-remainder-factor",
+          "cnm_p159"
+        ],
+        "prerequisiteIds": [
+          "cnm_032",
+          "cnm_029",
+          "cnm_p153"
+        ],
+        "levelReason": "The solution uses polynomial factors at integer roots, elementary divisibility, least common multiples, and a directly verified polynomial construction. No general interpolation theorem is needed."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations",
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_032",
+      "cnm_029",
+      "cnm_p153"
+    ],
+    "annotationRationale": "The task requires restricting an integer parameter and proving its least attainable value, including existence. Root-factor divisibility and the least common multiple are method-specific procedures. Polynomial concepts, evaluation, and basic divisibility support the argument.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2010_AMC_10B_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "Monic root-factor division preserves integer coefficients. Evaluations at 4 and 8 force 9 and 105 to divide a, hence 315 divides a. The constructed Q has values 42, −70, 42, −6 at 2, 4, 6, 8; multiplying by the corresponding A-values gives −630 each time. Thus the integer-coefficient construction attains a=315 and proves minimality.",
+    "levelCheck": "Polynomial factors, elementary divisibility, and a directly explained and verified construction are within AMC 10 scope. No general interpolation theorem is assumed.",
+    "methodDistinctness": "The lower bound and attaining construction are complementary parts of one complete method.",
+    "annotationCheck": "Integer restrictions and an attained discrete minimum justify both assessed nodes. Factor-theorem and least-common-multiple annotations match the route, and the supporting polynomial, evaluation, and divisibility nodes are appropriate.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "root-factors-and-construction": "root-factors-and-construction"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "0822a88ded4101fc35ff366310978cc9c0e8677d07120c7d3b32e2b39e3e2193",
+    "inputHash": "e38c9d94165143871cac92fea4577c3d06fd9eacc06c34406ecfe96d770e54e8",
+    "authorInputHash": "f3a716cd24fba326b7b87c4dca56b275b5cecc0927ca96df9a1e36a3364e24a2",
+    "reviewInputHash": "f0692716b1e52024cc16c7bff118a163a364cc2b416140db8e26ed63cd530740",
+    "authorResponseHash": "067fb1bac15574ffe49e3faf986091c2f2b862f10ea33cbc28983ffdac843250",
+    "reviewerResponseHash": "7e3086bb87ffb6bb61dd866b2985befdaaea7f8a00579e9141242abbab2af955",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

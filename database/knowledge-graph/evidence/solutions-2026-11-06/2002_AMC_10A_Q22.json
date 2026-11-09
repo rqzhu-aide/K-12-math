@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2002_AMC_10A_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "901c57066e097eee83cf22a47dac061088c5058c8fa201743f6fe289572cd920",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "b6123ca8dafd50e88762f32cb42709595208b222453725b2dc4f6cc13a3bbfb6",
+  "solutionFigureHashes": {},
+  "candidateHash": "447953e4ab77a1a4f41c59b0b50bf033b7472a12dd858835c8489a37eb7e1685",
+  "candidate": {
+    "questionId": "2002_AMC_10A_Q22",
+    "derivedAnswer": "C. \\(18\\) operations",
+    "answerStatus": "matches",
+    "answerReason": "Updating the tile count gives 18 operations before it first reaches 1. Structurally, each square count k² reaches (k−1)² in exactly two operations, so 10² reaches 1² in 18 operations.",
+    "methods": [
+      {
+        "id": "successive-tile-counts",
+        "label": "Track the number of tiles",
+        "explanation": "Renumbering means that only the current number of tiles matters. If there are \\(N\\) tiles and \\(k^2\\) is the largest perfect square no greater than \\(N\\), then the square labels are exactly \\(1^2,2^2,\\ldots,k^2\\). The operation removes \\(k\\) tiles, leaving \\(N-k\\).\n\nFor example, \\(100\\) tiles lose \\(10\\) tiles, leaving \\(90\\). Since \\(9^2\\le90<10^2\\), the next operation removes \\(9\\), leaving \\(81\\). Applying the same rule throughout gives\n\\[\n100\\to90\\to81\\to72\\to64\\to56\\to49,\n\\]\n\\[\n49\\to42\\to36\\to30\\to25\\to20\\to16,\n\\]\n\\[\n16\\to12\\to9\\to6\\to4\\to2\\to1.\n\\]\nEach arrow represents one operation. There are six arrows in each row, for \\(18\\) operations altogether. Every earlier count exceeds \\(1\\), so we stop after exactly \\(18\\) operations, choice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "cnm_h200"
+        ],
+        "prerequisiteIds": [
+          "cnm_020"
+        ],
+        "levelReason": "The method requires only counting positive square labels and performing successive integer subtractions."
+      },
+      {
+        "id": "two-steps-between-squares",
+        "label": "Group operations between consecutive squares",
+        "explanation": "Look at what happens when the tile count is a perfect square. With \\(k^2\\) tiles, where \\(k\\ge2\\) is an integer, there are exactly \\(k\\) square labels. One operation therefore leaves \\(k^2-k\\) tiles.\n\nThis new count lies strictly between \\((k-1)^2\\) and \\(k^2\\), because\n\\[\nk^2-k-(k-1)^2=k-1>0\n\\]\nand \\(k^2-k<k^2\\). Thus its square labels are exactly \\(1^2,2^2,\\ldots,(k-1)^2\\). The next operation removes \\(k-1\\) tiles and leaves\n\\[\nk^2-k-(k-1)=(k-1)^2.\n\\]\nSo the pattern\n\\[\nk^2\\longrightarrow k^2-k\\longrightarrow(k-1)^2\n\\]\nalways takes exactly two operations.\n\nStarting at \\(100=10^2\\), we pass through the squares with roots \\(10,9,\\ldots,1\\). There are nine decreases of the root, each requiring two operations. No intermediate count is \\(1\\), since \\(k^2-k\\ge2\\) for \\(k\\ge2\\). Hence the first arrival at one tile occurs after \\(2\\cdot9=18\\) operations, choice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "cnm_h200"
+        ],
+        "prerequisiteIds": [
+          "cnm_020",
+          "cnm_148",
+          "cnm_096"
+        ],
+        "levelReason": "The alternative proves a repeated two-step pattern using elementary squared-binomial algebra and inequalities."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h200"
+    ],
+    "supportIds": [
+      "cnm_020"
+    ],
+    "annotationRationale": "The target is following a deterministic recurrence for the current tile count. Both methods count square labels. The second method additionally uses a squared-binomial identity and inequalities to justify grouping operations. Formal floor notation and general-term formulas are unnecessary for the written solutions.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2002_AMC_10A_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "Every listed transition removes exactly the number of positive square labels, and the three rows contain 18 operations. Independently, for k ≥ 2, k²−k lies strictly between (k−1)² and k², so two operations send k² to (k−1)². Nine such pairs first reach 1 after 18 operations.",
+    "levelCheck": "Both methods fit AMC 10. The structural alternative supplies the needed expansion and inequalities without advanced recurrence machinery.",
+    "methodDistinctness": "Explicit iteration and proving a repeated two-operation pattern offer distinct computational and structural insights.",
+    "annotationCheck": "Simple recurrence relations describe both methods. Square computation is shared support; the identity and inequality prerequisites remain local to the second method. Omitting formal floor notation is justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "successive-tile-counts": "successive-tile-counts",
+    "two-steps-between-squares": "two-steps-between-squares"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "274bc898e50a7f6811cea05a8ae6565fd2238fabb5c5c1cd0bb1834ea5510b56",
+    "inputHash": "077354beb9e3bddb2ad7531efa087b21145da400c8dbf27a5a2715f2db61506b",
+    "authorInputHash": "b29fd4c7f553a3f25191e3fd5838c521f457b1754ab7e2672e57bcc5050a6672",
+    "reviewInputHash": "79446c32f191faa70b70bfec96056c6f934dbc0f466e2d6d1f31e906ceff130e",
+    "authorResponseHash": "902821e4f00b3c3b2816693b812c2cafe1f336ac9ecae27ec446e343561c2760",
+    "reviewerResponseHash": "fd2d5fb54f4e50fe01fec894b9568489d6fcc608968982cb212557d69ea1a1db",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

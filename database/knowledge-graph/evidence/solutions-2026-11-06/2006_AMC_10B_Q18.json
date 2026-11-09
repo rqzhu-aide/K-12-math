@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2006_AMC_10B_Q18",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "9830650033f164427a6fa39cd76db62b56ad250c5aee71a5b06b1230bc7f3363",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "e8c9c3885d430ffc816a5f62bb1e87d9098508a99e454a1c6dfcd4e54290ddd0",
+  "solutionFigureHashes": {},
+  "candidateHash": "48abf9eb7e347c929569670b7f705d9f702698c6d17e96f69cd7eeafd9870107",
+  "candidate": {
+    "questionId": "2006_AMC_10B_Q18",
+    "derivedAnswer": "E. 3",
+    "answerStatus": "matches",
+    "answerReason": "The recurrence produces a repeating six-term block: 2, 3, 3/2, 1/2, 1/3, 2/3. Since 2006 = 6·334 + 2, the requested term is the second entry, 3, agreeing with choice E.",
+    "methods": [
+      {
+        "id": "repeat-a-pair",
+        "label": "Find and justify a repeating block",
+        "explanation": "Because the requested index is large, first compute a few terms to look for repetition. The initial terms are positive, and each new term is a quotient of positive terms, so all terms remain positive and no denominator is zero.\n\nSuccessive use of the recurrence gives the first eight terms:\n\\[\n2,\\quad 3,\\quad \\frac32,\\quad \\frac12,\\quad \\frac13,\\quad \\frac23,\\quad 2,\\quad 3.\n\\]\nThus \\((a_7,a_8)=(a_1,a_2)\\). Each next term is determined by the preceding two terms, so repeating this pair forces every subsequent term to repeat as well. The sequence therefore repeats in blocks of six terms.\n\nSince\n\\[\n2006=6\\cdot334+2,\n\\]\nthe requested term occupies the second position in its block. Hence \\(a_{2006}=a_2=\\boxed{3}\\), choice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_h200",
+          "math:function-composition-iteration"
+        ],
+        "prerequisiteIds": [
+          "cnm_h197",
+          "cnm_p183",
+          "cnm_p052"
+        ],
+        "levelReason": "Uses direct recurrence evaluation, fraction division, and a repeated-pair argument to justify a finite cycle before reducing the index."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h200"
+    ],
+    "supportIds": [
+      "cnm_h197",
+      "cnm_p183",
+      "cnm_p052"
+    ],
+    "annotationRationale": "The task assesses determining terms from a recurrence. The written route additionally uses the verified-cycle part of function iteration: the preceding pair contains all information needed for the next step, so a repeated pair forces repetition. Sequence indexing, fraction division, and division with remainder support locating the distant term.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2006_AMC_10B_Q18",
+    "decision": "accept",
+    "mathematicalCheck": "The computed terms are 2, 3, 3/2, 1/2, 1/3, 2/3, 2, 3. Positivity keeps all denominators nonzero. Repetition of the preceding ordered pair forces all subsequent terms to repeat six positions later. Since 2006=6×334+2, the requested term is 3.",
+    "levelCheck": "Direct fraction calculations and the repeated-pair argument are appropriate for AMC 10. The solution proves repetition instead of extrapolating from a few terms.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "cnm_h200 is the central recurrence target. The repeated ordered pair supplies an iterated state, justifying the cycle component of math:function-composition-iteration. Sequence indexing, fraction division, and remainder applications match the listed support IDs.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "repeat-a-pair": "repeat-a-pair"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "1c4df43daf8db9e9c34b8deda9e5febb438ad03189261ff14e8c95cc04dec8e1",
+    "inputHash": "602a8acaee593e49639f4ba105527dd9b6a406ef527d587c1657f703f76c136c",
+    "authorInputHash": "c4b954ee3db241e19277590f8e3f580887832afe0f67e0ff134346a4e7339cf8",
+    "reviewInputHash": "62dfd2f4a1adadcc8be828e5b5db48546dcb96f0a3ec6f5c98bd3091c163619d",
+    "authorResponseHash": "bb848fe708683a160c07a62d37962cda2ea815b66263fdaa9dc8e12b744b3c51",
+    "reviewerResponseHash": "6a07720b0219ac554158bd234d5be6df9b0ca34705aeac56a9151544169e8a08",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

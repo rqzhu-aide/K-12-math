@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_10B_Q14",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "852c67e43578639b3923ef9e994de2422bac26d29a9d33638014784567c3f7f7",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "668fad6284a72911d5a2c9ae42f9f98af4d40fb26343d727f78748df004f1e2c",
+  "solutionFigureHashes": {},
+  "candidateHash": "2fc9de499086f614fb6a84edc5a4a04a54097c7ff884933a839f2c1c4d16e041",
+  "candidate": {
+    "questionId": "2016_AMC_10B_Q14",
+    "derivedAnswer": "D (50)",
+    "answerStatus": "matches",
+    "answerReason": "Encoding a square by its integer lower-left corner and positive integer side length yields 30 squares of side 1, 15 of side 2, and 5 of side 3. No larger square fits. The total is 50, matching choice D.",
+    "methods": [
+      {
+        "id": "count-by-square-side-length",
+        "label": "Count squares by side length",
+        "explanation": "The region lies above \\(y=-0.1\\), below \\(y=\\pi x\\), and to the left of \\(x=5.1\\). Describe a square by its lower-left corner \\((a,b)\\) and side length \\(k\\). Integer vertices and sides parallel to the axes mean that \\(a,b,k\\) are integers with \\(k\\ge1\\).\n\nThe bottom and right edges satisfy the region's bounds exactly when \\(b\\ge0\\) and \\(a+k\\le5\\). For the sloping boundary, the upper-left corner is the most restrictive point: it has the greatest height and the smallest horizontal coordinate. Thus the complete containment conditions are\n\\[\nb\\ge0,\\qquad a+k\\le5,\\qquad b+k\\le\\pi a.\n\\]\nThese conditions are also sufficient, since every point of the square has \\(y\\le b+k\\) and \\(x\\ge a\\).\n\nBecause \\(b+k>0\\), the last inequality forces \\(a\\ge1\\). Hence \\(a\\le4\\) and \\(k\\le4\\). Using \\(3<\\pi<13/4\\), we have\n\\[\n3a<\\pi a<3a+1\\qquad(1\\le a\\le4).\n\\]\nSince \\(b+k\\) is an integer, its upper bound is therefore \\(3a\\). For fixed \\(a,k\\), the possible bottom coordinates are \\(b=0,1,\\ldots,3a-k\\), giving \\(3a-k+1\\) squares when \\(3a\\ge k\\).\n\nFor \\(k=1\\), the possible values \\(a=1,2,3,4\\) give \\(3+6+9+12=30\\) squares.\n\nFor \\(k=2\\), the values \\(a=1,2,3\\) give \\(2+5+8=15\\) squares.\n\nFor \\(k=3\\), the values \\(a=1,2\\) give \\(1+4=5\\) squares.\n\nFor \\(k=4\\), only \\(a=1\\) could fit horizontally, but then \\(b+4\\le\\pi\\) is impossible because \\(b\\ge0\\) and \\(\\pi<4\\).\n\nEvery eligible square has exactly one triple \\((a,b,k)\\), so these cases include every square once. The total is \\(30+15+5=50\\), choice D.",
+        "nodeIds": [
+          "math:lattice-counting",
+          "math:linear-half-plane-systems"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_h020",
+          "cnm_203"
+        ],
+        "levelReason": "Uses elementary coordinate inequalities and an exhaustive finite count by positive integer side length."
+      }
+    ],
+    "assessedIds": [
+      "math:lattice-counting"
+    ],
+    "supportIds": [
+      "cnm_082",
+      "cnm_h020"
+    ],
+    "annotationRationale": "Squares are encoded uniquely by integer lower-left corners and side lengths, making lattice counting the central target. The written method uses half-plane conditions to establish necessary and sufficient containment. Coordinates and integer inequality bounds support the count; positive-slope monotonicity locally explains why the upper-left corner controls the sloping boundary. Formal floor notation is unnecessary.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_10B_Q14",
+    "decision": "accept",
+    "mathematicalCheck": "Containment is equivalent to b≥0, a+k≤5, and b+k≤πa for integer a,b,k with k≥1. These force 1≤a≤4. The bound 3<π<13/4 gives 3a<πa<3a+1, so the counts for side lengths 1, 2, and 3 are 30, 15, and 5; side length 4 is impossible. Unique triples prevent duplication, giving 50.",
+    "levelCheck": "The controlling corner, sufficiency of the inequalities, integer bounds, and exhaustive cases are explained using AMC 10 coordinate reasoning.",
+    "methodDistinctness": "One complete count by side length is sufficient.",
+    "annotationCheck": "For each side length, eligible lower-left corners are lattice points, supporting the assessed node. Half-plane systems, coordinates, integer inequality solutions, and positive-slope behavior fit the actual method; formal floor notation is unnecessary.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-by-square-side-length": "count-by-square-side-length"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "023ab25dcb53dea71e7e91e61316e59e7b2059942f159acf41e00a0e9c36d784",
+    "acceptedAt": "2026-11-07T10:41:21.984972+00:00",
+    "inputHash": "3ba6d42aa636330243078424c79829e8daabfa644b2fda9ed956ec87015beca5",
+    "authorInputHash": "f2eb4b7e0e2a1b07e5013fa5d13e12154d7bc69171d2a9442815c0e572a2b18b",
+    "reviewInputHash": "de6b8b234693bf2c003e6b3651c28246d4e7cd82191ba6f4f117a5c365645979",
+    "authorResponseHash": "df0f828333c278fd0ae33bf4e392708ce842d8ae59c713d4a325fef444313107",
+    "reviewerResponseHash": "024edf05009b8e7dee348d645dc6444f4b292e0481bfb854c349ad150230454c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

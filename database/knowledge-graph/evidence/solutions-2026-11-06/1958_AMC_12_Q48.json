@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1958_AMC_12_Q48",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "fc6f4ba00cfdb6d4deeec37e09080e9eead682249fb48e2e4b31cc1926c252c3",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "45f307a9a9f985d403c44a4b65fec51d1fafde8348d43f5f1871383d93d94a46",
+  "solutionFigureHashes": {},
+  "candidateHash": "ed718c88a1e74dc31ecb2f49d7b4651a8c4cb0a57a70ba00a61d9f2a796d098c",
+  "candidate": {
+    "questionId": "1958_AMC_12_Q48",
+    "derivedAnswer": "E; the maximum path length is 2√26 units, attained exactly when CP=DP.",
+    "answerStatus": "matches",
+    "answerReason": "The conditions give CP²+DP²=52 for every allowed point P. Therefore (CP+DP)²≤104, with equality exactly when CP=DP. Equality occurs at the endpoints of the diameter perpendicular to AB, confirming E.",
+    "methods": [
+      {
+        "id": "squared-distance-bound",
+        "label": "Find a fixed sum of squared distances",
+        "explanation": "The radius is \\(5\\). Since \\(AC=BD=4\\), the points \\(C\\) and \\(D\\) are each \\(1\\) unit from \\(O\\), on opposite sides. This symmetry suggests adding their squared distances to \\(P\\), because the opposite linear terms will cancel.\n\nChoose coordinates with \\(O=(0,0)\\), \\(A=(-5,0)\\), and \\(B=(5,0)\\). Then \\(C=(-1,0)\\) and \\(D=(1,0)\\). Write \\(P=(x,y)\\). Because \\(OP=5\\), the distance formula gives\n\\[\nx^2+y^2=25.\n\\]\nApplying the same formula to the two path segments gives\n\\[\nCP^2=(x+1)^2+y^2=26+2x,\n\\]\n\\[\nDP^2=(x-1)^2+y^2=26-2x.\n\\]\nThus, for every position of \\(P\\),\n\\[\nCP^2+DP^2=52.\n\\]\nTo bound the sum of the lengths using this fixed quantity, expand the nonnegative square \\((CP-DP)^2\\):\n\\[\n(CP+DP)^2\n=2(CP^2+DP^2)-(CP-DP)^2\n\\le104.\n\\]\nSince a path length is nonnegative, \\(CP+DP\\le2\\sqrt{26}\\). Equality holds exactly when \\(CP=DP\\). From the distance equations, this means \\(4x=0\\), so \\(x=0\\) and \\(y=\\pm5\\). Both points lie on the circle, and each gives \\(CP=DP=\\sqrt{26}\\), so the bound is attained.\n\nTherefore the path is longest exactly when \\(P\\) is equidistant from \\(C\\) and \\(D\\). Its maximum length is \\(\\boxed{2\\sqrt{26}}\\) units, and the answer is \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_h173",
+          "cnm_148",
+          "cnm_096"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_174",
+          "cnm_250"
+        ],
+        "levelReason": "Coordinate distances, binomial-square identities, and the nonnegativity of a square give a complete elementary bound with attainable equality. These are appropriate for historical AHSME."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_250"
+    ],
+    "annotationRationale": "The route-neutral target is determining the global maximum of a geometric distance sum and identifying its equality positions. No supplied catalog node accurately covers that target: cnm_267 requires everyday-life optimization modeling, and math:extremal-principle concerns discrete configurations. Accordingly, assessedIds is empty and the missing target is proposed separately. Circle concepts support the radius and moving-point constraint. The written method uses coordinate distances, perfect-square expansions, and inequality properties; Cartesian coordinates and the Pythagorean theorem are its local prerequisites. These annotations describe the mathematics, not student mastery.",
+    "needsNewNodes": [
+      {
+        "name": "Geometric extrema of distance sums",
+        "description": "Determine a global maximum or minimum of a sum of distances from a moving point on a specified plane locus to fixed points. Prove a bound valid for every allowed position and identify all feasible positions attaining equality.",
+        "reason": "The catalog lacks a route-neutral target for this continuous abstract geometric extremum. Everyday-life modeling, discrete extremal configurations, and method-specific inequality nodes do not accurately represent the displayed task."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1958_AMC_12_Q48",
+    "decision": "accept",
+    "mathematicalCheck": "The coordinates give CP²=26+2x and DP²=26−2x. Thus (CP+DP)²=104−(CP−DP)²≤104. Equality occurs exactly at P=(0,±5), so the attained maximum is 2√26 and choice E follows.",
+    "levelCheck": "Coordinate distances and elementary square expansions are appropriate for historical AHSME. The explanation motivates the cancellation and clearly establishes the bound and all equality positions.",
+    "methodDistinctness": "One complete elementary method is included; another method is unnecessary.",
+    "annotationCheck": "The method nodes, prerequisites, and shared circle support match the proof. Empty assessedIds and the proposed geometric-extremum node honestly represent the catalog gap without claiming an unrelated existing equivalence.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "squared-distance-bound": "squared-distance-bound"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "e7b947f411c0225db6bd6de5e78b06406084c104e449dfdf7e578cfaba1486cb",
+    "inputHash": "98aa5a5767233cdbeb880d89721c8db5b99e29257538a01ab1b0ceb459cb1731",
+    "authorInputHash": "33aaa091ad703bfbad3ea442ef78275d096eec022bb0331b659f74cc4b1bbc52",
+    "reviewInputHash": "b8ce3019cc235530175c18f4b4f1abbdb49f42cf9888abf3fa91f0573470cd3a",
+    "authorResponseHash": "626f168f17ee2d7327218a3df762982d51384aecf99bc961b5c0f97d6a90dc62",
+    "reviewerResponseHash": "6ff4ee78de65a5e9eac1392e78761afe5bd125b5d5465322deb86f422f4d838b",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

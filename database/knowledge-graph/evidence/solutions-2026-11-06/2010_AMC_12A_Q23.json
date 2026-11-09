@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2010_AMC_12A_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "82e12f326722f37a6df66245dcd018fd52c3e4065e928e561735be7ff160606b",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "ab9da8813e4b6cd24c9e4b21ccf8e1e0ebf5e81f82726842745fa7df7ce37cab",
+  "solutionFigureHashes": {},
+  "candidateHash": "55a14b6055f85af5dea530bdf018b54a0c09b03e8fe2a8277b7ebcdae15a954a",
+  "candidate": {
+    "questionId": "2010_AMC_12A_Q23",
+    "derivedAnswer": "12, choice A",
+    "answerStatus": "matches",
+    "answerReason": "Removing the 21 trailing zeros leaves an integer congruent to 12 modulo 100. Its final two digits are both nonzero, so the derived answer agrees with A.",
+    "methods": [
+      {
+        "id": "remove-fives-and-find-remainders",
+        "label": "Remove trailing zeros and track remainders",
+        "explanation": "Each trailing zero comes from a factor of \\(10=2\\cdot5\\). Among the factors of \\(90!\\), the 18 multiples of 5 each supply one factor of 5, and the three multiples of 25 supply one additional factor each. Thus there are exactly \\(18+3=21\\) factors of 5. There are at least 45 factors of 2, one from each even number, so \\(90!\\) has exactly 21 trailing zeros. Let\n\\[\nM=\\frac{90!}{10^{21}}.\n\\]\nWe will determine the final two digits of \\(M\\) by finding its remainders modulo 25 and modulo 4.\n\nLet \\(P(r)\\) be the product of the positive integers at most \\(r\\) that are not divisible by 5. Separating the multiples of 5 twice gives\n\\[\n90!=5^{18}P(90)\\,18!\n     =5^{21}P(90)P(18)\\,3!.\n\\]\nTherefore\n\\[\n2^{21}M=P(90)P(18)\\cdot6.\n\\]\n\nThe four numbers not divisible by 5 in any block of five have a convenient product modulo 25. Indeed,\n\\[\n\\begin{aligned}\n(5j+1)(5j+4)&=25j(j+1)+4,\\\\\n(5j+2)(5j+3)&=25j(j+1)+6.\n\\end{aligned}\n\\]\nTheir product is consequently congruent to \\(4\\cdot6=24\\equiv-1\\pmod{25}\\). There are 18 complete blocks in \\(P(90)\\), whereas \\(P(18)\\) has three complete blocks followed by \\(16,17,18\\). Hence\n\\[\n\\begin{aligned}\nP(90)&\\equiv(-1)^{18}=1\\pmod{25},\\\\\nP(18)&\\equiv(-1)^3\\cdot16\\cdot17\\cdot18\n\\equiv4\\pmod{25}.\n\\end{aligned}\n\\]\nIt follows that \\(2^{21}M\\equiv24\\pmod{25}\\). Since \\(2^{10}=1024\\equiv-1\\pmod{25}\\), we have \\(2^{21}\\equiv2\\pmod{25}\\). Thus \\(2M\\equiv24\\pmod{25}\\), and cancellation of 2 is valid because 2 and 25 have no common factor. Therefore \\(M\\equiv12\\pmod{25}\\).\n\nRemoving the 21 factors of 2 still leaves at least \\(45-21=24\\), so \\(M\\) is divisible by 4. Its possible remainders modulo 100 are \\(12,37,62,87\\), and only 12 is divisible by 4. Thus \\(M\\) ends in 12. The requested number is \\(\\boxed{12}\\), choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "math:prime-valuations-factorials",
+          "math:modular-congruence",
+          "math:modular-powers",
+          "math:simultaneous-congruences"
+        ],
+        "prerequisiteIds": [
+          "math:factorial-notation",
+          "math:prime-factorization"
+        ],
+        "levelReason": "The method uses elementary prime-factor counts, products of remainders, and a short power calculation, all within AMC 12 scope."
+      }
+    ],
+    "assessedIds": [
+      "math:prime-valuations-factorials",
+      "math:modular-congruence"
+    ],
+    "supportIds": [
+      "math:factorial-notation",
+      "math:prime-factorization"
+    ],
+    "annotationRationale": "The task requires removing factorial trailing zeros and recovering decimal digits through remainders. The method counts prime factors, reduces a power of 2, and combines the modulo 25 and modulo 4 conditions. Factorial meaning and prime-exponent structure support those steps; general floor and ceiling theory is unnecessary.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2010_AMC_12A_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "There are exactly 21 factors of 5. The block products give P(90) ≡ 1 and P(18) ≡ 4 modulo 25, hence M ≡ 12 modulo 25. At least 24 factors of 2 remain, so M is divisible by 4. These conditions uniquely give final digits 12.",
+    "levelCheck": "Appropriate for AMC 12. The block identities, valid cancellation, and final residue selection are explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The assessed targets, method-local congruence procedures, and factorial and prime-factorization prerequisites match the reasoning.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "remove-fives-and-find-remainders": "remove-fives-and-find-remainders"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "207df4650996856f32021c680ec2ce81705e6e05357118425d3b73119d18e3b9",
+    "inputHash": "a3f479e64854bf4b4a32c71b8ecb40496c95c3d3e7f126114d4528cc93a26aef",
+    "authorInputHash": "2a577471c33cf575eb34bfc1d86eb8b01d4f89dfbe9c3c8e23101ec8bff86980",
+    "reviewInputHash": "cf049a7b1a5ff70a1b1d396fa6075d18607beb6400d7f15627465c23d128c677",
+    "authorResponseHash": "55c045d329a3f87e7d2957b9e43a9237295e623fcc63a9c40f97d8acafb4058d",
+    "reviewerResponseHash": "fb3457e6bd501871494b80402af8934fe893dd8c856bc84f14f8f0f678e694bf",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

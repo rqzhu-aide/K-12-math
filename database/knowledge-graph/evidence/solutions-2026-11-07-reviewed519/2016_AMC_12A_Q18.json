@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_12A_Q18",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "954c890a3755bc42726a93ecff1151d9f4348275962a12060363aee56a3be8a2",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "e18f0f6b811980a56da26f94a611ed492fa8457d4302db99afb98e850748d28b",
+  "solutionFigureHashes": {},
+  "candidateHash": "9489598f47435d93a6eac7515f61fad4c280eaa24d81b7e792abfa5949130785",
+  "candidate": {
+    "questionId": "2016_AMC_12A_Q18",
+    "derivedAnswer": "325 (D)",
+    "answerStatus": "matches",
+    "answerReason": "The three divisor-count factors associated with primes 2, 5, and 11 must be 2, 5, and 11 in some order, with no other prime in n. Thus n has nonzero prime exponents 1 and 3. The prime exponents in 81n^4 are consequently 4, 4, and 12, giving 5·5·13=325 divisors.",
+    "methods": [
+      {
+        "id": "force-prime-exponents",
+        "label": "Use the prime exponents in the divisor count",
+        "explanation": "A positive divisor of a number with prime factorization \\(p_1^{e_1}\\cdots p_r^{e_r}\\) is determined by choosing each prime exponent independently from \\(0\\) through \\(e_i\\). Thus the number of positive divisors is\n\\[\n(e_1+1)(e_2+1)\\cdots(e_r+1).\n\\]\n\nSince \\(110=2\\cdot5\\cdot11\\), let \\(a,b,c\\) be the respective exponents of \\(2,5,11\\) in \\(n\\). These are nonnegative integers. Their exponents in \\(110n^3\\) are \\(3a+1,3b+1,3c+1\\), so\n\\[\n(3a+2)(3b+2)(3c+2)D=110,\n\\]\nwhere \\(D\\) is the product of the divisor-count factors contributed by any other primes in \\(n\\). We have \\(D=1\\) if there are no such primes, and \\(D>1\\) otherwise.\n\nEach of the first three factors is at least \\(2\\). But \\(110\\) contains exactly three prime factors counted with multiplicity, namely \\(2,5,11\\). Therefore each of those three factors must be a single prime, and there is no prime factor left for \\(D>1\\). Consequently,\n\\[\n\\{3a+2,3b+2,3c+2\\}=\\{2,5,11\\},\\qquad D=1.\n\\]\nSolving these three possible exponent relations shows that \\(a,b,c\\) are \\(0,1,3\\) in some order, and \\(n\\) has no other prime factors.\n\nThus \\(n=pq^3\\) for distinct primes \\(p,q\\) chosen from \\(2,5,11\\). In particular, neither is \\(3\\), so\n\\[\n81n^4=3^4p^4q^{12}.\n\\]\nIts number of positive divisors is\n\\[\n(4+1)(4+1)(12+1)=5\\cdot5\\cdot13=\\boxed{325},\n\\]\nwhich is choice \\(\\text{D}\\).",
+        "nodeIds": [
+          "math:divisor-count-and-sum",
+          "math:prime-factorization"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_p157",
+          "cnm_h231",
+          "cnm_143"
+        ],
+        "levelReason": "Independent exponent choices and elementary unique prime factorization determine the answer."
+      }
+    ],
+    "assessedIds": [
+      "math:divisor-count-and-sum",
+      "math:prime-factorization"
+    ],
+    "supportIds": [
+      "cnm_p153",
+      "cnm_p157"
+    ],
+    "annotationRationale": "Both divisor counting and prime-exponent structure are central targets: the given divisor count constrains n, and those constraints determine the new count. The method derives the divisor formula from independent choices and uses the full prime-factor structure of 110 to exclude additional cases.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_12A_Q18",
+    "decision": "accept",
+    "mathematicalCheck": "The three factors 3a+2, 3b+2, 3c+2 are each at least 2 and must consume all three prime factors of 110. Therefore D=1 and the exponent set is {0,1,3}. Since 3 does not divide n, the nonzero exponents in 81n⁴ are 4,4,12, giving 5·5·13=325 divisors.",
+    "levelCheck": "The divisor formula is derived from independent exponent choices, and the decisive factor argument uses elementary prime factorization.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Divisor counting and prime-exponent structure are both central assessed concepts. The listed factor, prime, multiplication-counting, and power prerequisites are justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "force-prime-exponents": "force-prime-exponents"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "697ab268b092d6503ef28654be04a2bdbcca124dcf03d46a1ba95e56c84e0435",
+    "acceptedAt": "2026-11-07T10:50:26.072005+00:00",
+    "inputHash": "920a6427ba69fa6f99ee17bfb5157e2e61be54c5998d51a910d194b2586f7da2",
+    "authorInputHash": "26828db8bc9a7a514c297ee0656189e06236d50ba8cfc7d545893b441512fda9",
+    "reviewInputHash": "8764b8327fa3128542302ee2425c307fab0c3dc211454535ac95cc53b6139e04",
+    "authorResponseHash": "645f141d6b2904e2d6588edba27a9ff5d082ff6357b6409c937bdecc09c97c28",
+    "reviewerResponseHash": "fce8be0d163852c71b21e80c8093b467826138352ca63cbb79a7ffded0d85a2e",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

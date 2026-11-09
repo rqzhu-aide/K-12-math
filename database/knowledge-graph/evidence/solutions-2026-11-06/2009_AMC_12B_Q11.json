@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2009_AMC_12B_Q11",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "18f0417d49f469559fdb4414ce0144b3ec88b6e707b697706d0eab6b25bb7abc",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "b933951a086fd5656cfd84988953e4876b8e01d9308a86c0df430fdac10e0951",
+  "solutionFigureHashes": {},
+  "candidateHash": "5009725df64085506e229507e6a7f845eff67786912b4b4ed4ac20038f6251ff",
+  "candidate": {
+    "questionId": "2009_AMC_12B_Q11",
+    "derivedAnswer": "D. Friday",
+    "answerStatus": "matches",
+    "answerReason": "Immediately after each addition, nonmillet seeds total 3/4 quart. The millet amounts from Monday through Friday are 1/4, 7/16, 37/64, 175/256, and 781/1024 quarts; Friday is the first to exceed 3/4 quart.",
+    "methods": [
+      {
+        "id": "daily-millet-update",
+        "label": "Track the millet each day",
+        "explanation": "All the nonmillet seeds are eaten each day. Consequently, just after each new quart is added, there are exactly \\(\\frac34\\) quart of nonmillet seeds. Millet makes up more than half of the feeder's contents exactly when its amount exceeds this \\(\\frac34\\) quart.\n\nLet \\(M_n\\) be the millet amount in quarts just after the seeds are added on day \\(n\\), with Monday as day \\(1\\). Initially \\(M_1=\\frac14\\). The birds leave \\(75\\%=\\frac34\\) of that day's millet, and the next addition supplies another \\(\\frac14\\) quart. Therefore\n\\[\nM_{n+1}=\\frac34M_n+\\frac14.\n\\]\nApplying this update gives\n\\[\n\\begin{aligned}\n\\text{Monday: }M_1&=\\frac14<\\frac34,\\\\\n\\text{Tuesday: }M_2&=\\frac7{16}<\\frac{12}{16},\\\\\n\\text{Wednesday: }M_3&=\\frac{37}{64}<\\frac{48}{64},\\\\\n\\text{Thursday: }M_4&=\\frac{175}{256}<\\frac{192}{256},\\\\\n\\text{Friday: }M_5&=\\frac{781}{1024}>\\frac{768}{1024}.\n\\end{aligned}\n\\]\nThe comparison fails on every earlier day and first holds on \\(\\boxed{\\text{Friday}}\\), choice D.",
+        "nodeIds": [
+          "cnm_h200"
+        ],
+        "prerequisiteIds": [
+          "cnm_p196",
+          "cnm_p169",
+          "cnm_h197"
+        ],
+        "levelReason": "Only a finite sequence of percentage updates and exact fraction comparisons is required."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h200"
+    ],
+    "supportIds": [
+      "cnm_p196",
+      "cnm_p169",
+      "cnm_h197"
+    ],
+    "annotationRationale": "The solution models the daily process with a simple recurrence and computes successive terms, matching cnm_h200. Percentage-of-quantity calculations and fraction comparison support the update and the strict majority test. The day index uses the ordered-term meaning of cnm_h197. A general-term formula is not used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2009_AMC_12B_Q11",
+    "decision": "accept",
+    "mathematicalCheck": "Nonmillet is always 3/4 quart immediately after addition, so a millet majority requires M>3/4. The recurrence M_next=(3/4)M+1/4 gives 1/4, 7/16, 37/64, 175/256, and 781/1024; Friday is the first amount above 3/4.",
+    "levelCheck": "The recurrence is derived from the daily process, and exact comparisons establish the first qualifying day without advanced machinery.",
+    "methodDistinctness": "One complete daily-update method is sufficient.",
+    "annotationCheck": "The recurrence node matches the process and computation. Percentage calculation, fraction comparison, and ordered-term meaning are justified support; no general-term formula is claimed.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "daily-millet-update": "daily-millet-update"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c4aee55ecc19c10c18b863987315ad251c248fe0e5f429a0be3ea7cbad0477e2",
+    "inputHash": "fb6f1867450857202ab00f32b8ce4667740b8453cd0652ecc566886bd94f2a6e",
+    "authorInputHash": "914eb2a0c84437a45cc45cb2f18a7386ada997f24a6bbb306508eaa7ab6c86fd",
+    "reviewInputHash": "b106bb73d8b7207503e3ca6a8a0f22719a55da62e7829c4de953db6d07193d71",
+    "authorResponseHash": "c9945238a7f538e0db656b82ea101fabf964972f9b65b5122a5a879480e655d1",
+    "reviewerResponseHash": "b5289ce47bb5d52bdd869c927dbb7f9dade55e2a6ae2d6e40750ca257a4e469d",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

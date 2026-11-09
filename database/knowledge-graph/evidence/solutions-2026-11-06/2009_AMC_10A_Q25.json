@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2009_AMC_10A_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "7bb089dcdbde256b6f206d8c66bb754e294a4862917d69325eda4c3d7449e142",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "a254799e9300e301238267ef6afae9b50c08807a528a9fb4d862ad32d9028e0c",
+  "solutionFigureHashes": {},
+  "candidateHash": "e3473db3c59598d31428953b9e36cc579a3802d48b9a2ba6716cb0c05b12f954",
+  "candidate": {
+    "questionId": "2009_AMC_10A_Q25",
+    "derivedAnswer": "7 (B)",
+    "answerStatus": "matches",
+    "answerReason": "Writing I_k = 10^n + 64 with n = k+2 gives exponents 3, 4, and 5 for n = 3, 4, and 5; exponent 7 for n = 6; and exponent 6 for every n greater than 6. The maximum is 7, attained at k = 4.",
+    "methods": [
+      {
+        "id": "factor-and-check-oddness",
+        "label": "Factor out powers of two",
+        "explanation": "The decimal description gives\n\\[\nI_k=10^{k+2}+64.\n\\]\nLet \\(n=k+2\\), so \\(n\\) is an integer with \\(n\\ge3\\). To find the exact number of factors of \\(2\\), we factor out a power of \\(2\\) and check whether the remaining factor is odd. The useful cases compare \\(n\\) with \\(6\\), because \\(64=2^6\\).\n\nIf \\(3\\le n<6\\), then\n\\[\n10^n+64=2^n\\bigl(5^n+2^{6-n}\\bigr).\n\\]\nInside the parentheses, \\(5^n\\) is odd and \\(2^{6-n}\\) is even. Their sum is odd, so the exponent of \\(2\\) is exactly \\(n\\), giving \\(3\\), \\(4\\), or \\(5\\).\n\nIf \\(n=6\\), then\n\\[\n10^6+64=64(5^6+1)\n=64\\cdot15626\n=128\\cdot7813.\n\\]\nSince \\(7813\\) is odd, the exponent is exactly \\(7\\).\n\nIf \\(n>6\\), then\n\\[\n10^n+64=64\\bigl(2^{n-6}5^n+1\\bigr).\n\\]\nThe factor in parentheses is even plus one, hence odd. The exponent is therefore exactly \\(6\\).\n\nThese cases cover every allowed \\(n\\). The maximum is \\(\\boxed7\\), attained when \\(n=6\\), or \\(k=4\\), so the answer is choice \\(\\text{B}\\).",
+        "nodeIds": [
+          "math:prime-factorization",
+          "cnm_143",
+          "cnm_p156"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_019"
+        ],
+        "levelReason": "Uses decimal place value, integer powers, factoring, and parity, with an exhaustive elementary case split."
+      }
+    ],
+    "assessedIds": [
+      "math:prime-factorization"
+    ],
+    "supportIds": [
+      "cnm_143",
+      "cnm_p156"
+    ],
+    "annotationRationale": "The target is the exact exponent of a prime in an integer. Product-power rules expose the powers of two, and parity certifies that no further factor of two remains. The written method does not use congruences or factorial valuation formulas.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2009_AMC_10A_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The decimal encoding is I_k = 10^(k+2) + 64. For n = k+2, the exact exponents of 2 are n when 3 ≤ n < 6, 7 when n = 6, and 6 when n > 6. Each remaining factor is verified odd. These exhaustive cases establish the maximum 7 at k = 4.",
+    "levelCheck": "Factoring integer powers and checking parity provide a complete elementary AMC 10 solution.",
+    "methodDistinctness": "One complete method is sufficient; a modular alternative is unnecessary.",
+    "annotationCheck": "Prime-exponent structure is the route-neutral target. Product-power rules, parity, factors, and exponentiation accurately describe the method and prerequisites.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "factor-and-check-oddness": "factor-and-check-oddness"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c7fd7c94e39c2dea10bb462014cfe959184298952e55e4df1437613a90e2aec7",
+    "inputHash": "4ec8fbec4bfbbbf82144cf78dd8623722f0d09bafd9104d7cd0a6719771b5e44",
+    "authorInputHash": "f6c402f18e9ce41a0bae4c4b2406875ec196a18118d455302db252e2f04ab92b",
+    "reviewInputHash": "022c91366d36d8deea8b2b5bf5bfef2d8d2764eaac38a9f0d87e6d8b9deb11fc",
+    "authorResponseHash": "38b8f2940f6f19ddf9e0b73c17894e4ee4aee105fecb6353862f8fafcc9a3590",
+    "reviewerResponseHash": "215204f4a15628b40430da86dde475909194c7abbff451ca2c0ae6b351319cdc",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

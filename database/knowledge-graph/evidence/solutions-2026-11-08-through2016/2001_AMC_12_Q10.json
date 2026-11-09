@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2001_AMC_12_Q10",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "b9b7c641994f35c299f93214100c8f9cc4914e01f84edf34946391a8f373b54e",
+    "figureHashes": {
+      "figures/2001_AMC_12_Q10_question_fig1.svg": "224bcace326833570b2316783e31c8696783d53fbb78ec867f56d0024853328e"
+    }
+  },
+  "solutionSHA256": "74228024723e0781ecd9d11fabb2164cbf778850295e06d84299cb7622271180",
+  "solutionFigureHashes": {},
+  "candidateHash": "9ef70d2c40517ec3e46f6ae7441da0995045653e1cc3f43bc17f1bd79a9b35c2",
+  "candidate": {
+    "questionId": "2001_AMC_12_Q10",
+    "derivedAnswer": "D (56%) under the equal-width interpretation; the unmarked strip width otherwise prevents a unique percentage or closest choice.",
+    "answerStatus": "disputed",
+    "answerReason": "Equal strip and square widths give a pentagon fraction of 5/9, approximately 55.56%, nearest to D. However, this width equality is unmarked, and congruent squares and congruent pentagons permit other widths giving different closest choices. Equal widths are sufficient for the intended calculation, but are not necessary for D to be closest.",
+    "methods": [
+      {
+        "id": "repeating-block-and-width-check",
+        "label": "Compare areas in a repeating block",
+        "explanation": "A repeating block makes the area comparison easier: subtract the square tiles' area from the block's total area, leaving precisely the area covered by pentagons.\n\nAssume first that the strips between the square tiles have width equal to a square tile's side length. Let that side length be \\(s>0\\). A square repeating block surrounding one meeting point of four pentagons then has side length \\(3s\\), with four square tiles in its corners. The pentagons occupy the remaining area,\n\\[\n(3s)^2-4s^2=5s^2.\n\\]\nCopies of this block fill the plane without gaps or overlapping interiors, so the pentagon percentage equals its percentage within one block:\n\\[\n\\frac{5s^2}{9s^2}\\cdot100\\%\n=55\\frac59\\%.\n\\]\nUnder the equal-width assumption, the closest choice is \\(\\boxed{\\text{D}:56\\%}\\).\n\nThe figure does not mark the strip width as equal to a square's side, and congruence alone does not force that equality. To check this, choose any \\(s>0\\) and \\(w>0\\). Make a square block of side \\(2s+w\\), placing a square of side \\(s\\) in each corner. What remains is four \\(s\\)-by-\\(w\\) rectangles surrounding a central square of side \\(w\\). Join the central square's center to its four corners, and attach each resulting triangle to the rectangle sharing its base. The four resulting shapes are pentagons, and quarter-turns about the block's center carry them onto one another, so they are congruent.\n\nTranslated copies of these blocks tile the plane: the corner squares, rectangles, and central triangles partition every block without gaps or overlapping interiors. Thus this construction preserves the arrangement while allowing the strip width to vary. Its pentagon fraction is\n\\[\n1-\\frac{4s^2}{(2s+w)^2}.\n\\]\nFor \\(w=s\\), this is \\(5/9\\). For \\(w=4s/5\\), it is\n\\[\n1-\\frac{4}{(14/5)^2}\n=1-\\frac{25}{49}\n=\\frac{24}{49}\n\\approx48.98\\%,\n\\]\nwhose closest choice is A, \\(50\\%\\).\n\nConsequently, the unspecified width prevents a unique percentage and closest choice. Some other widths also make D closest; equal widths are simply one sufficient assumption giving the intended fraction \\(5/9\\) and choice \\(\\boxed{\\text{D}:56\\%}\\).",
+        "nodeIds": [
+          "cnm_p150",
+          "cnm_p197"
+        ],
+        "prerequisiteIds": [
+          "cnm_p089",
+          "cnm_p194",
+          "cnm_p195",
+          "cnm_p171"
+        ],
+        "levelReason": "The reasoning uses square and rectangle areas, subtraction, percentages, and quarter-turns that preserve shape and size. The explicit construction checks the missing condition using elementary geometry."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p150",
+      "cnm_p197"
+    ],
+    "supportIds": [
+      "cnm_p089",
+      "cnm_p194",
+      "cnm_p195"
+    ],
+    "annotationRationale": "The task asks for a composite region's area share expressed as a percentage, supporting cnm_p150 and cnm_p197 as the assessed targets. Square and rectangle area formulas, percentage meaning, and conversion to percent support the calculation. Elementary rotation invariance, cnm_p171, locally supports congruence in the counterexample. The recorded figure caveat is preserved, while the conclusion distinguishes a sufficient equal-width assumption from a necessary condition for choosing D. These annotations do not establish student mastery.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The figure supplies no length labels or equality marks fixing the intervening strip width relative to a square tile's side length; the intended numerical calculation therefore requires an additional interpretation."
+    ]
+  },
+  "review": {
+    "questionId": "2001_AMC_12_Q10",
+    "decision": "accept",
+    "mathematicalCheck": "The repeating block gives pentagon fraction 1-4s²/(2s+w)². Positive s and w ensure a valid partition and nonzero denominator; quarter-turns establish congruence of its four pentagons. Equal widths give 5/9, nearest 56%, while w=4s/5 gives 24/49, nearest 50%. The actual figure has no marks fixing the width ratio, so the qualified conclusion and counterexample are justified.",
+    "levelCheck": "Square areas, subtraction, percentages, and elementary rotations are appropriate for AMC 12. The construction explains the ambiguity completely.",
+    "methodDistinctness": "One area-comparison method is sufficient. The variable-width construction usefully checks its assumption rather than presenting a redundant alternative.",
+    "annotationCheck": "The assessed composite-area and percentage nodes match the task. Area formulas and percentage prerequisites are supported, and cnm_p171 appropriately remains local to the congruence check. The existing figure caveat is preserved.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "repeating-block-and-width-check": "repeating-block-and-width-check"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "63a7df8ee0c5f54ccbfc654a86c5c7bb8c122c992373156de5bba4fa2faa5072",
+    "acceptedAt": "2026-11-08T15:03:33.943034+00:00",
+    "inputHash": "7e23c65877cc0b89b7d7582b5e4b17d50affdee476405f3853e12289750c3fe5",
+    "authorInputHash": "e3a3b7111ca354ba3bfb0b81ccee3f1cdf8672a7c762706d5fe1fee7891eefb7",
+    "reviewInputHash": "aba5a3d65e22d1511920a4cf292550b72c31dfbecfc5da15e7f1df1cb1536c43",
+    "authorResponseHash": "0818e8d9c0668cbcd0cd315e5825be056314dfaedc4e2254163282d2175f61b3",
+    "reviewerResponseHash": "61457814c79a4d54d58f7793d824472a524407efbd31e68828fa3ff3df1e336c",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

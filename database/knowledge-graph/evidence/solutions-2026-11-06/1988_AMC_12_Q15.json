@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1988_AMC_12_Q15",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "50ba4562d80bd57f521b9ae8870b0ac6b1970f1e1fed040746939cbce67f4e8c",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "3df96775e0dd650fdd72131bae20dc9dc0598860e2da7bc362941eb5f151cdd4",
+  "solutionFigureHashes": {},
+  "candidateHash": "ef16a685b3cad0bbb5411a19641147f0249006bc90bbc485bdb6ca17dd9e8d06",
+  "candidate": {
+    "questionId": "1988_AMC_12_Q15",
+    "derivedAnswer": "A, b=-2",
+    "answerStatus": "matches",
+    "answerReason": "The factor condition forces a=1 and b=-2, and (x²-x-1)(x-1)=x³-2x²+1 verifies these integer values.",
+    "methods": [
+      {
+        "id": "match-linear-quotient",
+        "label": "Method 1: Expand the possible quotient",
+        "explanation": "A quadratic factor of a polynomial of degree at most three has a quotient of degree at most one. Thus, for constants \\(u\\) and \\(v\\), the factor condition gives\n\\[\nax^3+bx^2+1=(x^2-x-1)(ux+v).\n\\]\nAllowing \\(u=0\\) also covers a possible lower-degree polynomial. Expanding the right side gives\n\\[\nux^3+(v-u)x^2-(u+v)x-v.\n\\]\nMatching constant terms yields \\(-v=1\\), so \\(v=-1\\). The original polynomial has no \\(x\\) term, so \\(u+v=0\\), giving \\(u=1\\). Consequently, matching the \\(x^2\\) coefficients gives\n\\[\nb=v-u=-1-1=-2.\n\\]\nThe cubic coefficient is \\(a=u=1\\). Both values are integers, and\n\\[\n(x^2-x-1)(x-1)=x^3-2x^2+1\n\\]\nverifies the required factorization. Thus \\(b=-2\\), choice A.",
+        "nodeIds": [
+          "math:polynomial-remainder-factor",
+          "math:factorization-coefficient-comparison"
+        ],
+        "prerequisiteIds": [
+          "cnm_032",
+          "cnm_146",
+          "cnm_042"
+        ],
+        "levelReason": "Degree reasoning, polynomial multiplication, and elementary coefficient equations are standard school algebra."
+      },
+      {
+        "id": "reduce-the-remainder",
+        "label": "Method 2: Find the remainder",
+        "explanation": "A polynomial is divisible by \\(D(x)=x^2-x-1\\) exactly when its remainder on division by \\(D\\) is zero. To find that remainder, replace higher powers by linear expressions plus multiples of \\(D\\). We have\n\\[\n\\begin{aligned}\nx^2&=D(x)+x+1,\\\\\nx^3&=(x+1)D(x)+2x+1.\n\\end{aligned}\n\\]\nThe second identity follows by multiplying the first by \\(x\\), then using the first again for the resulting \\(x^2\\). Thus the remainder of \\(ax^3+bx^2+1\\) is\n\\[\n\\begin{aligned}\nR(x)&=a(2x+1)+b(x+1)+1\\\\\n&=(2a+b)x+(a+b+1).\n\\end{aligned}\n\\]\nThis has degree less than two, as a remainder must. It is the zero polynomial exactly when\n\\[\n2a+b=0,\\qquad a+b+1=0.\n\\]\nSubtracting the second equation from the first gives \\(a-1=0\\), so \\(a=1\\) and \\(b=-2\\). These integer values make both remainder coefficients zero, so they satisfy the factor condition. Therefore \\(b=-2\\), choice A.",
+        "nodeIds": [
+          "math:polynomial-remainder-factor",
+          "cnm_090"
+        ],
+        "prerequisiteIds": [
+          "cnm_032",
+          "cnm_146",
+          "cnm_042"
+        ],
+        "levelReason": "The remainder is derived through elementary polynomial identities, followed by solving two linear equations."
+      }
+    ],
+    "assessedIds": [
+      "math:polynomial-remainder-factor"
+    ],
+    "supportIds": [
+      "cnm_032",
+      "cnm_146",
+      "cnm_042"
+    ],
+    "annotationRationale": "Polynomial divisibility is the common target. The first route determines a factorization by matching coefficients; the second constrains a linear remainder and uses subtraction elimination. Polynomial degree, multiplication, and elementary equation solving support both routes.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1988_AMC_12_Q15",
+    "decision": "accept",
+    "mathematicalCheck": "The quotient expansion forces v=-1 and u=1, hence a=1 and b=-2. Independently, the remainder is (2a+b)x+(a+b+1), whose vanishing gives the same unique values. The displayed factorization verifies sufficiency and integrality.",
+    "levelCheck": "Both routes use standard school algebra and explain the required degree reasoning, identities, and coefficient conditions.",
+    "methodDistinctness": "Determining an unknown quotient and reducing to a linear remainder offer distinct, accessible approaches.",
+    "annotationCheck": "Polynomial divisibility is an appropriate common target. Coefficient comparison and subtraction elimination remain method-local, while the shared support IDs apply to both routes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "match-linear-quotient": "match-linear-quotient",
+    "reduce-the-remainder": "solution:reduce-the-remainder:3df96775e0dd"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "cca77f5e9d440194677beb19d074d22d91056a04702d9f0e59b9a7489815d470",
+    "inputHash": "2bbc85523054f3c7185ba60390d35616d858d1e8be144fc29024ec66561799f7",
+    "authorInputHash": "28a7875a2f213e7bc65c0b5c4c2ff3ea603440774559764a0817a2eff50b505c",
+    "reviewInputHash": "cfc0e38c6b22375bb09125587f33b378556e10223dc8365c89c5d71ef0c5d4d1",
+    "authorResponseHash": "8e9824503681855bbf42be1a61ec672461e562499626c50fa68bfba265f3980e",
+    "reviewerResponseHash": "aa1d6187f2ea82c7a5dffac430ae972922893a03507c2a6e2ef94d4bcb10add5",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

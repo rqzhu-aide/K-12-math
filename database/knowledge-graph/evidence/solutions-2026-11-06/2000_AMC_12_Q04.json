@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2000_AMC_12_Q04",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "87b3fd11e2ca91a34b4279b59ab4771e84e3e355dbf0ae9fb8ed22fb5b5b8a64",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "ecc14a5151cdc9befc292f5b3f4ff9d1643bcd8f43b1b20bb497fd55ae8e6fa3",
+  "solutionFigureHashes": {},
+  "candidateHash": "b326055e158aa2949b17893ef4445245f4f3c7b439109cb38dbed3077d8a0558",
+  "candidate": {
+    "questionId": "2000_AMC_12_Q04",
+    "derivedAnswer": "C: 6",
+    "answerStatus": "matches",
+    "answerReason": "The first 20 Fibonacci terms include every units digit except 6. The 21st term has units digit 6.",
+    "methods": [
+      {
+        "id": "track-units-digits",
+        "label": "Apply the recurrence to the units digits",
+        "explanation": "Only the units digits are needed. When two integers are added, their other digits contribute whole tens, so the new units digit is the units digit of the sum of the preceding two units digits.\n\nLet \\(d_n\\) be the units digit of the \\(n\\)th Fibonacci term. Start with \\(d_1=d_2=1\\), add the preceding two digits, and keep only the units digit. For example, \\(5+8=13\\) gives the next digit \\(3\\). Continuing gives\n\\[\n\\begin{aligned}\nd_1,\\ldots,d_7&=1,1,2,3,5,8,3,\\\\\nd_8,\\ldots,d_{14}&=1,4,5,9,4,3,7,\\\\\nd_{15},\\ldots,d_{21}&=0,7,7,4,1,5,6.\n\\end{aligned}\n\\]\nBefore the final \\(6\\) in this list, the digits \\(0,1,2,3,4,5,7,8,9\\) have all appeared, while \\(6\\) has not. Thus \\(6\\) is the last of the ten digits to appear, and the answer is \\(\\boxed{6}\\), choice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "cnm_h200"
+        ],
+        "prerequisiteIds": [
+          "cnm_h197",
+          "cnm_p017"
+        ],
+        "levelReason": "The solution uses the supplied recurrence and elementary place value. A closed formula or formal congruence notation is unnecessary."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h200"
+    ],
+    "supportIds": [
+      "cnm_h197",
+      "cnm_p017"
+    ],
+    "annotationRationale": "The central procedure is generating successive terms from the preceding two, applied to units digits. Ordered sequence positions and tens-and-ones place value support the written method. It does not use a general-term formula or require formal congruence theory.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2000_AMC_12_Q04",
+    "decision": "accept",
+    "mathematicalCheck": "All 21 listed units digits follow the recurrence correctly. The first 20 contain precisely all digits except 6, which first appears at term 21, establishing choice C.",
+    "levelCheck": "The place-value explanation justifies tracking only units digits, and the short recurrence computation is accessible.",
+    "methodDistinctness": "One direct recurrence method is sufficient.",
+    "annotationCheck": "The recurrence assessment and sequence-position and tens-and-ones support fit the solution. It appropriately avoids claiming assessment of formal congruences or general-term formulas.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "track-units-digits": "track-units-digits"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "3f4c512785ab1369353fc5f5a335aead028684968bb12cbb371b62dd8a78218f",
+    "inputHash": "e7ef7999299b6bcf3d907b571b220c77a6ec73c31103bcb267bf001c743d67a6",
+    "authorInputHash": "ec76482875ab8f80627c6ea15f757383fee577be3c1d9db54c223dc3cb7942d0",
+    "reviewInputHash": "adc11a0f35d461d425896262cdbcdc29c3257b1f81786f55730328d947bd72c1",
+    "authorResponseHash": "0aeeed626ac8346792e620a6ed0a47cdadf4b8c47e769619c2f4d3a8ee53701f",
+    "reviewerResponseHash": "93dce2fa0f1d2b2819d7845ed5a9794f5c1dc6808ee97b450e970abf798996a0",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

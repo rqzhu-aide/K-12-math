@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2023_AMC_12A_Q09",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ab45a5bdcbe0a2e4b00c3456b58473f8bec0a9142fca498380d2cdb5aa92bb2b",
+    "figureHashes": {
+      "figures/2023_AMC_12A_Q09_question_fig1.svg": "7de1f3233e044f23009ecba25fafd8983a8dbc108a150c41f0a40290948dd181"
+    }
+  },
+  "solutionSHA256": "7b5a8aa9310bf8a0beed0259a42a56e2ae9b53d968b37bd972b2e2686de5da1f",
+  "solutionFigureHashes": {
+    "figures/2023_AMC_12A_Q09_question_fig1.svg": "7de1f3233e044f23009ecba25fafd8983a8dbc108a150c41f0a40290948dd181"
+  },
+  "candidateHash": "126e663698c07f445a9c0a74c9f5b80ef023669319bf8e11f3d6a79c30bf069c",
+  "candidate": {
+    "questionId": "2023_AMC_12A_Q09",
+    "derivedAnswer": "2-√3, choice C",
+    "answerStatus": "matches",
+    "answerReason": "The corner-triangle legs satisfy a+b=√3 and ab=1/2. Their difference is 1, giving a/b=2-√3.",
+    "methods": [
+      {
+        "id": "area-and-leg-difference",
+        "label": "Use the leftover area",
+        "explanation": "The difference between the square areas gives the area of all four corner triangles, so it directly determines the product of the two legs.\n\n[Figure 1](figures/2023_AMC_12A_Q09_question_fig1.svg)\n\nLet \\(0<a<b\\) be the shorter and longer leg lengths. Because neighboring sides of the inner square are perpendicular, neighboring congruent corner triangles interchange their leg directions. Each outer side therefore consists of one leg of length \\(a\\) and one of length \\(b\\). The outer square has side length \\(\\sqrt3\\), so\n\\[\na+b=\\sqrt3.\n\\]\nThe four triangles have total area \\(3-2=1\\). Hence each has area \\(1/4\\), giving\n\\[\n\\frac{ab}{2}=\\frac14,\n\\qquad ab=\\frac12.\n\\]\nKnowing the sum and product lets us find the difference:\n\\[\n(b-a)^2=(a+b)^2-4ab=3-2=1.\n\\]\nSince \\(b>a\\), we have \\(b-a=1\\). Combining the sum and difference gives\n\\[\na=\\frac{\\sqrt3-1}{2},\n\\qquad b=\\frac{\\sqrt3+1}{2}.\n\\]\nTherefore the requested ratio is\n\\[\n\\frac ab\n=\\frac{\\sqrt3-1}{\\sqrt3+1}\n=\\frac{(\\sqrt3-1)^2}{3-1}\n=2-\\sqrt3.\n\\]\nThe answer is \\(\\boxed{2-\\sqrt3}\\), choice \\(\\mathrm C\\).",
+        "nodeIds": [
+          "cnm_p185",
+          "cnm_p150",
+          "cnm_p148",
+          "cnm_148",
+          "cnm_220",
+          "cnm_171"
+        ],
+        "prerequisiteIds": [
+          "cnm_p089",
+          "cnm_055",
+          "cnm_121"
+        ],
+        "levelReason": "Uses elementary area subtraction, the triangle-area formula, square identities, and radical simplification."
+      },
+      {
+        "id": "pythagorean-ratio-equation",
+        "label": "Solve directly for the ratio",
+        "explanation": "The outer square determines the sum of the legs, while the inner square determines the hypotenuse. Introducing the requested ratio lets us eliminate the overall size of the triangle.\n\nLet \\(0<a<b\\) be the shorter and longer legs, and let \\(r=a/b\\), so \\(0<r<1\\). Neighboring sides of the inner square are perpendicular, so the neighboring congruent corner triangles interchange their leg directions. Thus the outer side is \\(a+b=\\sqrt3\\). The hypotenuse is a side of the inner square, of length \\(\\sqrt2\\), so the Pythagorean theorem gives \\(a^2+b^2=2\\).\n\nSubstitute \\(a=rb\\) into these two relationships:\n\\[\nb^2(1+r)^2=3,\n\\qquad b^2(1+r^2)=2.\n\\]\nMultiply the first equation by \\(2\\) and the second by \\(3\\). Their right sides become equal, and cancelling the common positive factor \\(b^2\\) gives\n\\[\n2(1+r)^2=3(1+r^2).\n\\]\nExpanding and collecting terms,\n\\[\nr^2-4r+1=0,\n\\qquad (r-2)^2=3.\n\\]\nThus \\(r=2\\pm\\sqrt3\\). Since \\(1<\\sqrt3<2\\), only \\(2-\\sqrt3\\) lies between \\(0\\) and \\(1\\). Therefore the shorter-to-longer leg ratio is \\(\\boxed{2-\\sqrt3}\\), choice \\(\\mathrm C\\).",
+        "nodeIds": [
+          "cnm_p185",
+          "cnm_174",
+          "cnm_148",
+          "cnm_220"
+        ],
+        "prerequisiteIds": [
+          "cnm_p089",
+          "cnm_055",
+          "cnm_121"
+        ],
+        "levelReason": "Uses the Pythagorean theorem and a quadratic equation solved by taking square roots, all within school algebra and geometry."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p185"
+    ],
+    "supportIds": [
+      "cnm_p089",
+      "cnm_055",
+      "cnm_121"
+    ],
+    "annotationRationale": "The requested leg ratio is the route-neutral target. Both methods use square areas to identify side lengths, segment addition, and corresponding legs of the given congruent triangles. Composite-area subtraction and triangle area belong only to the first method; the Pythagorean theorem belongs only to the second. Both use square identities and direct square-root solving, while denominator rationalization occurs only in the first. Alternative procedures are not combined into universal requirements.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2023_AMC_12A_Q09",
+    "decision": "accept",
+    "mathematicalCheck": "The geometry gives a+b=√3. The leftover area gives ab=1/2, hence b-a=1 and a/b=2-√3. Independently, the Pythagorean route yields r²-4r+1=0, whose only root in (0,1) is 2-√3. All divisions use positive denominators.",
+    "levelCheck": "Both explanations use accessible school geometry, square identities and radical calculations appropriate for AMC 12.",
+    "methodDistinctness": "Area subtraction and the Pythagorean ratio equation provide distinct, useful approaches.",
+    "annotationCheck": "The ratio target and shared supports are justified. Area, Pythagorean and rationalization content are correctly kept local to their methods.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "area-and-leg-difference": "solution:area-and-leg-difference:7b5a8aa9310b",
+    "pythagorean-ratio-equation": "solution:pythagorean-ratio-equation:7b5a8aa9310b"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "29ff233b7d74b2eef148d44cf13d7a6a9881cf9772ae91a6c8b1ef989d02316e",
+    "acceptedAt": "2026-11-07T08:14:14.920127+00:00",
+    "inputHash": "cbc1a26db73c8bf376145a81e57aafa6e3d7c67b2411349f9f69f2c244c4fb52",
+    "authorInputHash": "93e4780131d07f3c3a49448b2783b72b0f5104a81bf1147aa1dd8651273a78d0",
+    "reviewInputHash": "23142dd3f0f0e88c61b4a011306747758b45c9d1b2bee050422fe9a8d35bc646",
+    "authorResponseHash": "179cdb5c32a172658be98ea8ed47efda0d1de12c818c3392d894e8254a7b91fd",
+    "reviewerResponseHash": "453ce739e36078f76b4a100e0a42cb9c5d746b65728c7d14a1bfa296ad2a9f8c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

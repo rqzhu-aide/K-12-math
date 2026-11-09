@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1968_AMC_12_Q20",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "b00509530111d8a84a675ef27ab3c930c91eca61017eba1f7b94be818d172ac3",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "b208595fc4ee3e74d6d5b958eb9b204c6a07a068e7b1901446162423e9bb0485",
+  "solutionFigureHashes": {},
+  "candidateHash": "51977a021f5daa03c0bc5173c6e98c182cdf7db50e8554680f6086ad1afdbc54",
+  "candidate": {
+    "questionId": "1968_AMC_12_Q20",
+    "derivedAnswer": "A: 9",
+    "answerStatus": "matches",
+    "answerReason": "The angle-sum condition gives n²+7n-144=(n+16)(n-9)=0. A polygon has at least three sides, so n=9.",
+    "methods": [
+      {
+        "id": "interior-angle-progression",
+        "label": "Method 1: Sum the interior angles",
+        "explanation": "The largest angle and the common difference let us express the smallest angle in terms of the number of sides. List the angles in increasing order and measure them in degrees. Since there are \\(n-1\\) steps of size \\(5\\), the smallest angle is\n\\[\n160-5(n-1)=165-5n.\n\\]\nAn arithmetic progression has sum equal to its number of terms times the average of its first and last terms. The interior-angle sum of an \\(n\\)-gon is \\(180(n-2)\\), so\n\\[\n\\frac{n((165-5n)+160)}{2}=180(n-2).\n\\]\nSimplifying gives\n\\[\n325n-5n^2=360n-720,\n\\]\n\\[\nn^2+7n-144=(n+16)(n-9)=0.\n\\]\nThus \\(n=-16\\) or \\(n=9\\). A polygon has an integer number of sides with \\(n\\ge3\\), so only \\(9\\) is admissible. It gives angles \\(120^\\circ,125^\\circ,\\ldots,160^\\circ\\), all within the required convex range. Therefore \\(n=\\boxed{9}\\), choice \\(\\mathrm{A}\\).",
+        "nodeIds": [
+          "cnm_181",
+          "cnm_h204",
+          "cnm_224"
+        ],
+        "prerequisiteIds": [
+          "cnm_h202",
+          "cnm_180",
+          "cnm_146"
+        ],
+        "levelReason": "This uses polygon interior-angle sums, arithmetic progressions, and a quadratic that factors into integer linear factors."
+      },
+      {
+        "id": "exterior-angle-progression",
+        "label": "Method 2: Sum the exterior turns",
+        "explanation": "For a convex polygon, choose one exterior turning angle at each vertex in a consistent direction. Each is the supplement of its interior angle, and their total is \\(360^\\circ\\). This gives a fixed angle total to use.\n\nThe largest interior angle, \\(160^\\circ\\), corresponds to the smallest exterior angle, \\(20^\\circ\\). Listed in increasing order, the exterior angles therefore form the progression\n\\[\n20,25,\\ldots,20+5(n-1),\n\\]\nwith all measures in degrees. Their sum is\n\\[\n\\frac{n(20+(5n+15))}{2}=360.\n\\]\nConsequently,\n\\[\nn^2+7n-144=(n+16)(n-9)=0.\n\\]\nThe root \\(-16\\) cannot be a side count, leaving \\(n=9\\). The nine exterior angles are \\(20^\\circ,25^\\circ,\\ldots,60^\\circ\\); their supplements have common difference \\(5^\\circ\\) and largest value \\(160^\\circ\\). Thus \\(n=\\boxed{9}\\), choice \\(\\mathrm{A}\\).",
+        "nodeIds": [
+          "cnm_182",
+          "cnm_h204",
+          "cnm_224"
+        ],
+        "prerequisiteIds": [
+          "cnm_h202",
+          "cnm_180",
+          "cnm_146",
+          "cnm_059"
+        ],
+        "levelReason": "This uses the elementary total-turning relation for convex polygons, supplementary angles, arithmetic-progression summation, and factoring."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h204"
+    ],
+    "supportIds": [
+      "cnm_h202",
+      "cnm_180",
+      "cnm_146"
+    ],
+    "annotationRationale": "The shared target is using an arithmetic-progression sum to determine the number of angles. The interior-angle and exterior-angle totals are recorded in their respective methods. Both methods express an endpoint using n and solve the resulting equation by factoring; supplementary angles are local to the exterior-angle method.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1968_AMC_12_Q20",
+    "decision": "accept",
+    "mathematicalCheck": "Both angle-sum equations simplify to (n+16)(n-9)=0. Only n=9 is admissible, giving interior angles 120 through 160 degrees in steps of 5.",
+    "levelCheck": "Both methods use appropriate school geometry, arithmetic progressions, and factoring.",
+    "methodDistinctness": "Interior-angle sums and exterior turning provide distinct elementary geometric viewpoints despite producing the same quadratic.",
+    "annotationCheck": "The shared progression target is route-neutral; the respective polygon-angle totals remain method-local. Shared supports are justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "interior-angle-progression": "interior-angle-progression",
+    "exterior-angle-progression": "exterior-angle-progression"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "372ffdcc16fe818f7bfc4ea4beac8fa06bae13c4ee4690281aa323a9f5c04c84",
+    "inputHash": "c3bc278949352fe6614fdef591be5d97fc0f138339c3816863d6ff6d068c60ae",
+    "authorInputHash": "3c704c7d44e0bf9d5ca920a2ea58d687ecf24550e2f168d055a957e14acc0e1a",
+    "reviewInputHash": "aa60ac2e907f1c42f2c631df1f02698f33755303ac3ce2909aadf9b016196e52",
+    "authorResponseHash": "96759d7d9057aa4f74bf71b08fbaf0622c8c40c0c8c9c3463e465776cc4e67e1",
+    "reviewerResponseHash": "9ef1724365f458d74c5f96f5fa2724a15f8b29a6b492f0a682b1daec0de0e4be",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

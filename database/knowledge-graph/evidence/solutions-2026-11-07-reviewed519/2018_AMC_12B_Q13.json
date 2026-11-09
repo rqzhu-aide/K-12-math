@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2018_AMC_12B_Q13",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "a60e3cde61849e4007c72300a7fb120a095e700f4678ea4662e4c2312e7333f5",
+    "figureHashes": {
+      "figures/2018_AMC_12B_Q13_question_fig1.svg": "c9719ea88777962adc9e059d078a6db4ac3868bdf6e34b84f173265c608a5d35"
+    }
+  },
+  "solutionSHA256": "46692e54eeb16bbc782fa2520a5724b147e109774b7adf62dd03b5617ce0d063",
+  "solutionFigureHashes": {},
+  "candidateHash": "6ea79f353e4f25b5f09775aa9fe981c177c69ac232d87254b849a770b73f30cc",
+  "candidate": {
+    "questionId": "2018_AMC_12B_Q13",
+    "derivedAnswer": "C. \\(200\\)",
+    "answerStatus": "matches",
+    "answerReason": "The centroid quadrilateral is obtained by scaling the side-midpoint quadrilateral by 2/3 about P. The midpoint quadrilateral has area 450, so the required area is (4/9)·450=200, independent of P.",
+    "methods": [
+      {
+        "id": "centroid-scaling",
+        "label": "Scale the side-midpoint quadrilateral",
+        "explanation": "The side midpoints are useful because each centroid lies on the median from \\(P\\) to one of those midpoints. Let \\(M_1,M_2,M_3,M_4\\) be the midpoints of \\(AB,BC,CD,DA\\), respectively, and let \\(G_1,G_2,G_3,G_4\\) be the corresponding triangle centroids.\n\nA centroid divides a median in the ratio \\(2:1\\), measured from the vertex. Thus, for each \\(i\\),\n\\[\nPG_i=\\frac23 PM_i,\n\\]\nwith \\(G_i\\) on segment \\(PM_i\\). The same scaling centered at \\(P\\), with length factor \\(2/3\\), therefore sends the midpoint quadrilateral to the centroid quadrilateral. Both bases and heights scale by \\(2/3\\), so areas scale by \\(4/9\\).\n\nThe midpoint quadrilateral leaves four right triangles at the corners of the original square. Each has legs \\(15\\) and \\(15\\), since the square's side length is \\(30\\). Its area is therefore\n\\[\n30^2-4\\left(\\frac12\\cdot15\\cdot15\\right)=450.\n\\]\nConsequently, the centroid quadrilateral has area\n\\[\n\\left(\\frac23\\right)^2\\cdot450=\\boxed{200}.\n\\]\nThis calculation works for every interior point \\(P\\), so the particular lengths \\(AP=12\\) and \\(BP=26\\) do not affect the area. The answer is \\(\\text{(C)}\\).",
+        "nodeIds": [
+          "math:centroid-ratios",
+          "cnm_275",
+          "math:similar-figure-area-scaling",
+          "cnm_p150"
+        ],
+        "prerequisiteIds": [
+          "cnm_113",
+          "cnm_055",
+          "cnm_p089",
+          "cnm_p148"
+        ],
+        "levelReason": "The argument uses the elementary centroid ratio, a centered scaling, and triangle area subtraction. The squared area factor is explained through scaled bases and heights."
+      },
+      {
+        "id": "centroid-coordinate-averages",
+        "label": "Let the unknown coordinates cancel",
+        "explanation": "Leave \\(P\\)'s coordinates unknown and calculate the centroids. The useful feature is that every centroid receives the same contribution from \\(P\\).\n\nChoose coordinates\n\\[\nA=(0,30),\\quad B=(0,0),\\quad\nC=(30,0),\\quad D=(30,30),\n\\]\nand write \\(P=(x,y)\\), where \\(0<x<30\\) and \\(0<y<30\\). A triangle's centroid coordinates are the averages of its three vertex coordinates. This follows by locating the midpoint of a side and moving two thirds of the way along the median from the opposite vertex.\n\nThe centroids of \\(ABP,BCP,CDP,DAP\\), in that order, are therefore\n\\[\n\\begin{aligned}\nG_1&=\\left(\\frac x3,\\frac y3+10\\right),\\\\\nG_2&=\\left(\\frac x3+10,\\frac y3\\right),\\\\\nG_3&=\\left(\\frac x3+20,\\frac y3+10\\right),\\\\\nG_4&=\\left(\\frac x3+10,\\frac y3+20\\right).\n\\end{aligned}\n\\]\nTheir common offsets \\(x/3\\) and \\(y/3\\) affect only the location of the figure. The listed points are the four side midpoints of a square of side length \\(20\\).\n\nRemoving the four corner right triangles, each with legs \\(10\\), gives the centroid quadrilateral's area:\n\\[\n20^2-4\\left(\\frac12\\cdot10\\cdot10\\right)\n=\\boxed{200}.\n\\]\nNo value of \\(x\\) or \\(y\\) was needed, so the given distances from \\(P\\) do not change the result. The answer is \\(\\text{(C)}\\).",
+        "nodeIds": [
+          "math:centroid-ratios",
+          "cnm_084",
+          "cnm_p150"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_113",
+          "cnm_055",
+          "cnm_p089",
+          "cnm_p148"
+        ],
+        "levelReason": "This alternative uses elementary coordinates, centroid averages, and square and triangle areas. It provides an accessible algebraic explanation of why the position of P disappears."
+      }
+    ],
+    "assessedIds": [
+      "math:centroid-ratios",
+      "cnm_p150"
+    ],
+    "supportIds": [
+      "cnm_113",
+      "cnm_055",
+      "cnm_p089",
+      "cnm_p148"
+    ],
+    "annotationRationale": "Both methods target using centroid relationships to determine the quadrilateral's area, and both calculate an area by removing corner triangles. Median and midpoint knowledge and square and triangle area formulas support both routes. The first method locally uses homothety and squared area scaling; the second locally uses coordinate averages and coordinate descriptions of figures. Neither route requires finding P from AP and BP. The annotations describe the mathematics used, not demonstrated learner mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2018_AMC_12B_Q13",
+    "decision": "accept",
+    "mathematicalCheck": "Each centroid lies two thirds of the way from P to the corresponding side midpoint. Thus the midpoint quadrilateral's area 450 scales by 4/9 to 200. Independently, all four listed centroid coordinates are correct; removing their common offsets gives the side midpoints of a 20-by-20 square, enclosing area 200. Both arguments establish independence from P.",
+    "levelCheck": "Both methods use appropriate elementary geometry and algebra. The centroid-coordinate rule and squared area factor are explained sufficiently.",
+    "methodDistinctness": "Centered scaling and coordinate cancellation offer distinct, accessible explanations of the same positional independence.",
+    "annotationCheck": "The centroid and composite-area targets are shared across both methods. Homothety, similarity area scaling and coordinate geometry remain method-local; shared supports and catalog scopes are justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "centroid-scaling": "centroid-scaling",
+    "centroid-coordinate-averages": "solution:centroid-coordinate-averages:46692e54eeb1"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "b969cca0efb5cc47badf962de268bbe9ef1c3ee7bb8115606f06e443509c4ae3",
+    "acceptedAt": "2026-11-07T08:32:10.536969+00:00",
+    "inputHash": "a6350b229ba2b0b953df52662f44316ccd0a114ee336b6450849b097e733441b",
+    "authorInputHash": "cee134114d6ee7297864b4bb4d885ba92b85a79eca76f1914c54bab184a699fc",
+    "reviewInputHash": "93e422bad00a5032991c711d782d79967dae5d13c327b022425706fcca85d27b",
+    "authorResponseHash": "9705c70284f39312287c6116d038a1eb8dcd2d84d063a1f81695f84c36c6f20c",
+    "reviewerResponseHash": "81e50028303c528c642aa2e8432a4de26fc585b6b560f2346797436982f93163",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

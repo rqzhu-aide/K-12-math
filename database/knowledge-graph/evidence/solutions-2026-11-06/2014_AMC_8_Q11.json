@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2014_AMC_8_Q11",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "60902d67a206d10c2b0ba30e065431f7c9352906c40ace12ccd40cc9cc87c41e",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "bdb7fb4a9521bc4f7a1e9f5722fb3be24efa82a38e96073cce4b0f299093f1cf",
+  "solutionFigureHashes": {},
+  "candidateHash": "dd1bea7497b9c18b53c12a045ba912ead55d0b8f38b2dea518a0fa9ea08698ac",
+  "candidate": {
+    "questionId": "2014_AMC_8_Q11",
+    "derivedAnswer": "4 ways, choice A",
+    "answerStatus": "matches",
+    "answerReason": "Safe routes either start with two eastward blocks, giving three completions, or two northward blocks, giving one completion.",
+    "methods": [
+      {
+        "id": "classify-first-two-moves",
+        "label": "Examine the first two moves",
+        "explanation": "Write \\(E\\) for one block east and \\(N\\) for one block north. Every route to Jill's house must contain three \\(E\\)'s and two \\(N\\)'s. Jack reaches the dangerous intersection exactly when his first two moves are \\(EN\\) or \\(NE\\), since that intersection is one block in each direction from his house.\n\nA safe route must therefore begin with \\(EE\\) or \\(NN\\). After \\(EE\\), Jack is already farther east than the dangerous intersection; after \\(NN\\), he is already farther north. Because he never moves west or south, all completions of these starts remain safe.\n\nStarting with \\(EE\\) leaves one \\(E\\) and two \\(N\\)'s, which can occur as \\(ENN\\), \\(NEN\\), or \\(NNE\\). This gives three routes. Starting with \\(NN\\) leaves only \\(EEE\\), giving one route. These cases cover every safe route and have different starts, so none is counted twice. The total is \\(3+1=4\\) ways, choice \\(\\mathrm{A}\\).",
+        "nodeIds": [
+          "cnm_h230"
+        ],
+        "prerequisiteIds": [
+          "cnm_p049"
+        ],
+        "levelReason": "Uses two disjoint cases and explicit enumeration of at most three completions."
+      },
+      {
+        "id": "subtract-dangerous-routes",
+        "label": "Subtract the routes through the intersection",
+        "explanation": "Write \\(E\\) for one block east and \\(N\\) for one block north. Every five-block route to Jill's house contains three \\(E\\)'s and two \\(N\\)'s. Count all such routes by choosing the positions of the two northward moves. If the earlier \\(N\\) is in position \\(1,2,3,\\) or \\(4\\), the later \\(N\\) has \\(4,3,2,\\) or \\(1\\) possible positions, respectively. Thus there are\n\\[\n4+3+2+1=10\n\\]\nunrestricted routes. Each route determines exactly one pair of northward positions, so this count has no omissions or repetitions.\n\nA route through the dangerous intersection must reach it after two moves, either \\(EN\\) or \\(NE\\). From there, the remaining two eastward moves and one northward move can be ordered as \\(EEN\\), \\(ENE\\), or \\(NEE\\). Each of the two starts has three completions, giving \\(2\\times3=6\\) dangerous routes. Every dangerous route has a unique start and completion, so it is counted once.\n\nRemoving these routes leaves \\(10-6=4\\) safe ways, choice \\(\\mathrm{A}\\).",
+        "nodeIds": [
+          "cnm_h230",
+          "cnm_h231",
+          "cnm_h010"
+        ],
+        "prerequisiteIds": [
+          "cnm_p049"
+        ],
+        "levelReason": "Uses elementary position counting and subtraction, with no combination formula or factorials."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h230"
+    ],
+    "supportIds": [
+      "cnm_p049"
+    ],
+    "annotationRationale": "Disjoint-case counting is shared by both methods. The main method partitions safe routes by their first two moves. The alternative additionally uses multiplication to count forbidden start-completion pairs and complement counting to remove them. These alternative-specific procedures are not universal requirements. Direction knowledge supports interpreting the routes.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2014_AMC_8_Q11",
+    "decision": "accept",
+    "mathematicalCheck": "A forbidden visit occurs exactly when the first two moves are EN or NE. Safe starts EE and NN have respectively three and one completions. Independently, the second method counts 10 unrestricted routes and 2×3=6 forbidden routes, leaving 4. Both counts explain completeness and avoid duplication.",
+    "levelCheck": "Both explanations use accessible case counting and explicit enumeration. Neither requires factorials or a combination formula.",
+    "methodDistinctness": "Direct classification of safe routes and subtraction of forbidden routes provide distinct, equally elementary counting ideas.",
+    "annotationCheck": "Addition counting is shared by both methods. Multiplication and complement counting remain local to the alternative, and the direction support node is appropriate.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "classify-first-two-moves": "classify-first-two-moves",
+    "subtract-dangerous-routes": "subtract-dangerous-routes"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "d547cb2ffa5197dd34889a646e236e2d6d4d98e73004d2de641a684fc6a67789",
+    "inputHash": "fd3d0352dbbe537d0066ffbcea8cfee3a368e6edc54cce82f8d3cfb4a42af984",
+    "authorInputHash": "65b59afb66a71ae4ee8f9564cf1e3aa25f41d657d6addc59e85c879556563b3e",
+    "reviewInputHash": "d1094777f4ab86d165467b0505aad420db95b04a59ac64adfa9cf2e14155ec39",
+    "authorResponseHash": "0d8afd4799ac157b91b45811d1b167673702c62908a7775ea97028557b9495b4",
+    "reviewerResponseHash": "8af5f238f20f03d996b1c567a1fd10ccc0a260b270b211c8d1f903d37de40e2e",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

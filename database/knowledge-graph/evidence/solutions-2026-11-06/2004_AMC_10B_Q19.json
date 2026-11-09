@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2004_AMC_10B_Q19",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "a73b5a9fcfcdf6d964ceedda8c4a15f9fe8de9dd9e1beabd2ca16a402bfbf9a1",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "b43aaf04b58f662e11326bce979de249a39af4a4ab1ffe72cc1c3320b53f049c",
+  "solutionFigureHashes": {},
+  "candidateHash": "506d3157704d57ff0cbed068e5e0f77bc9e702e7cdf95d4e504fedb354d5227c",
+  "candidate": {
+    "questionId": "2004_AMC_10B_Q19",
+    "derivedAnswer": "C, 0",
+    "answerStatus": "matches",
+    "answerReason": "Combining two recurrence updates proves that the even-positioned terms form an arithmetic sequence beginning 2002, 2000 with common difference -2. Its 1002nd term, the original sequence's 2004th term, is 0.",
+    "methods": [
+      {
+        "id": "every-other-term",
+        "label": "Find the pattern in every other term",
+        "explanation": "The recurrence mixes three neighboring terms. Applying it twice helps reveal how terms two positions apart change.\n\nLet \\(a_n\\) denote the \\(n\\)th term. The rule is\n\\[\na_{n+3}=a_n+a_{n+1}-a_{n+2}\n\\qquad(n\\geq1).\n\\]\nSubstitute this expression into the next update:\n\\[\n\\begin{aligned}\na_{n+4}\n&=a_{n+1}+a_{n+2}-a_{n+3}\\\\\n&=a_{n+1}+a_{n+2}-(a_n+a_{n+1}-a_{n+2})\\\\\n&=2a_{n+2}-a_n.\n\\end{aligned}\n\\]\nConsequently,\n\\[\na_{n+4}-a_{n+2}=a_{n+2}-a_n.\n\\]\nThis proves that taking every other term gives a constant difference; it is more than a pattern suggested by a few examples.\n\nThe even-positioned terms begin with \\(a_2=2002\\) and \\(a_4=2000\\), so their common difference is \\(-2\\). The \\(2004\\)th term is the \\(1002\\)nd even-positioned term, which is \\(1001\\) steps after \\(a_2\\). Therefore\n\\[\na_{2004}=2002-2(1001)=0.\n\\]\nThe answer is \\(0\\), choice C.",
+        "nodeIds": [
+          "cnm_h200",
+          "cnm_h202"
+        ],
+        "prerequisiteIds": [
+          "cnm_h197",
+          "cnm_h201",
+          "cnm_035"
+        ],
+        "levelReason": "The recurrence is manipulated with school algebra, and the resulting constant-step sequence is evaluated by counting steps."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h200"
+    ],
+    "supportIds": [
+      "cnm_h197",
+      "cnm_h201"
+    ],
+    "annotationRationale": "The task concerns a distant term of a supplied recurrence. The method proves a simpler recurrence for every other term and then uses arithmetic-sequence term counting. Sequence indexing and constant-difference meaning support the argument; the algebra explicitly justifies the pattern.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2004_AMC_10B_Q19",
+    "decision": "accept",
+    "mathematicalCheck": "Two recurrence updates give a_(n+4) = 2a_(n+2) − a_n, proving constant differences within each parity. The even terms start at 2002 with difference −2, so a_2004 = 2002 − 2 × 1001 = 0.",
+    "levelCheck": "The algebra proves the pattern rather than merely extrapolating it. The indexing and step count are complete and within AMC 10 scope.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Recurrence relations are assessed, while arithmetic-sequence evaluation is method-local. Sequence indexing, constant differences, and removing parentheses support the actual steps.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "every-other-term": "every-other-term"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "3a3e45abbdfa64dcf1e93e044d7dd1c5687638e002e3480e8b27a4b2b39dc3a6",
+    "inputHash": "671daf9c9eccf08e2d878d4cef6587da40f51046dff0aa8bbf7608a558490b04",
+    "authorInputHash": "15a78d1753e1c128027231f63062ca4ea96496596f359bd2de8d55ac21401023",
+    "reviewInputHash": "a78c18ac22b7009952603d4c2c0d3a3b998d6bdb4210ea8f98a127f936e3c130",
+    "authorResponseHash": "3c8210b0536ea47e17f0a95f118ab3502015612b99a9ca5bdbe00f203f4ef411",
+    "reviewerResponseHash": "5e01d5e17c4ca18349e184b7712ed855f43884346fa435ab1376c7037ef34057",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

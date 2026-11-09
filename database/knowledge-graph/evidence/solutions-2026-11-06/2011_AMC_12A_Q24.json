@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2011_AMC_12A_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "a18104222af2cb7af122c7a0919bb3b542610729b9c682ab1440b24f3b9da06f",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "80501b2e67afc26fee36a5cd68b85dc55f9f86ae5e486c88307c9c5ced7b3491",
+  "solutionFigureHashes": {},
+  "candidateHash": "71950382181fa5b68661fd5ffd9c333795a4a9d56de343b91eb3a1bc150f3baa",
+  "candidate": {
+    "questionId": "2011_AMC_12A_Q24",
+    "derivedAnswer": "\\(2\\sqrt{6}\\), choice C",
+    "answerStatus": "matches",
+    "answerReason": "Every admissible quadrilateral containing a radius-r disk satisfies r ≤ 2√6, and a circumscribed quadrilateral with vertex tangent lengths 8, 6, 3, and 4 attains this radius.",
+    "methods": [
+      {
+        "id": "area-bound-and-tangent-construction",
+        "label": "Bound the area and construct a quadrilateral attaining the bound",
+        "explanation": "An area bound can control the radius: a disk inside a convex polygon keeps its center at least its radius away from every supporting side line. We will first obtain this bound, then construct a quadrilateral that attains it.\n\nSuppose a convex quadrilateral contains a disk of radius \\(r>0\\), and let its area be \\(K\\). Joining the disk's center to the four vertices divides the quadrilateral into triangles whose heights are at least \\(r\\). Therefore\n\\[\nK\\ge \\frac r2(14+9+7+12)=21r.\n\\]\nTo bound \\(K\\) from above, let \\(\\alpha=\\angle DAB\\) and \\(\\gamma=\\angle BCD\\). Both angles lie strictly between \\(0^\\circ\\) and \\(180^\\circ\\). Applying the cosine law to the two triangles sharing diagonal \\(BD\\) gives\n\\[\n340-336\\cos\\alpha=130-126\\cos\\gamma,\n\\]\nso\n\\[\n168\\cos\\alpha-63\\cos\\gamma=105.\n\\]\nThe same two triangles give the area equation\n\\[\n2K=168\\sin\\alpha+63\\sin\\gamma.\n\\]\nThese equations have matching sine and cosine terms, so squaring and adding is useful. By Cauchy-Schwarz and \\(\\sin^2\\theta+\\cos^2\\theta=1\\),\n\\[\n\\sin\\alpha\\sin\\gamma-\\cos\\alpha\\cos\\gamma\\le 1.\n\\]\nConsequently,\n\\[\n\\begin{aligned}\n(2K)^2+105^2\n&=168^2+63^2\\\\\n&\\quad+2(168)(63)(\\sin\\alpha\\sin\\gamma-\\cos\\alpha\\cos\\gamma)\\\\\n&\\le (168+63)^2=231^2.\n\\end{aligned}\n\\]\nThus \\(K\\le 42\\sqrt6\\), and the earlier lower bound gives\n\\[\nr\\le \\frac{42\\sqrt6}{21}=2\\sqrt6.\n\\]\nConcave quadrilaterals cannot improve this bound. Their convex hull is a triangle with perimeter at most \\(42\\): its new side is a diagonal no longer than the two sides it replaces. Let this triangle have side lengths \\(u,v,w\\), semiperimeter \\(t\\le21\\), and area \\(T\\). Since it contains the disk, the same triangle-area decomposition gives \\(T\\ge tr\\). Put \\(x=t-u\\), \\(y=t-v\\), and \\(z=t-w\\). These numbers are positive and sum to \\(t\\). Heron's formula gives\n\\[\nr^2\\le \\frac{T^2}{t^2}=\\frac{xyz}{t}\\le\\frac{t^2}{27}\\le\\frac{49}{3}<24.\n\\]\nHere the product bound \\(xyz\\le(t/3)^3\\) follows using only two-term AM-GM. Indeed, with \\(m=t/3>0\\),\n\\[\n\\begin{aligned}\nxyzm&\\le\\left(\\frac{x+y}{2}\\right)^2\\left(\\frac{z+m}{2}\\right)^2\\\\\n&\\le\\left(\\frac{x+y+z+m}{4}\\right)^4=m^4.\n\\end{aligned}\n\\]\nDividing by \\(m\\) proves the bound. A triangular hull arising from collinear vertices satisfies the same argument; a zero-area figure contains no positive-radius disk.\n\nIt remains to attain \\(2\\sqrt6\\). Set \\(\\rho=2\\sqrt6\\), and choose acute angles \\(p,q\\) satisfying\n\\[\n\\tan p=\\frac{\\rho}{8},\\qquad \\tan q=\\frac{\\rho}{6}.\n\\]\nCircumscribe a quadrilateral about a radius-\\(\\rho\\) circle with successive interior half-angles\n\\[\np,\\quad q,\\quad 90^\\circ-p,\\quad 90^\\circ-q.\n\\]\nSuch a quadrilateral exists: the corresponding exterior turns are all between \\(0^\\circ\\) and \\(180^\\circ\\), and they total \\(360^\\circ\\), so successive tangents enclose a convex quadrilateral.\n\nThe two tangent segments from each vertex have equal lengths. A radius to a contact point is perpendicular to the tangent, so the tangent length at a vertex with half-angle \\(\\theta\\) is \\(\\rho/\\tan\\theta\\). The four vertex tangent lengths are therefore\n\\[\n8,\\quad 6,\\quad \\rho\\tan p=3,\\quad \\rho\\tan q=4.\n\\]\nThe consecutive side lengths are \\(8+6=14\\), \\(6+3=9\\), \\(3+4=7\\), and \\(4+8=12\\), exactly as required. This quadrilateral contains the radius-\\(\\rho\\) disk, so the largest possible radius is \\(\\boxed{2\\sqrt6}\\), choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_260",
+          "math:general-cosine-law-application",
+          "math:cauchy-schwarz",
+          "math:heron-formula",
+          "cnm_h021",
+          "cnm_262",
+          "cnm_263"
+        ],
+        "prerequisiteIds": [
+          "cnm_p148",
+          "cnm_065",
+          "cnm_h062",
+          "cnm_276",
+          "cnm_181"
+        ],
+        "levelReason": "The proof uses high-school triangle geometry, cosine-law elimination, elementary inequalities, and right-triangle trigonometry. The concave case and the attaining construction are both justified."
+      }
+    ],
+    "assessedIds": [
+      "cnm_260"
+    ],
+    "supportIds": [
+      "cnm_p148",
+      "cnm_065"
+    ],
+    "annotationRationale": "Circle-to-line clearance is intrinsic to fitting the disk inside the quadrilateral. The cosine law, Cauchy-Schwarz, Heron, and AM-GM supply this method's bounds, while tangent perpendicularity and equal tangent lengths justify its construction. Triangle area and perpendicular distance support the argument. The full radius-optimization target is not represented by the listed local circle concepts.",
+    "needsNewNodes": [
+      {
+        "name": "Optimizing a contained disk over a family of polygons",
+        "description": "Determine the greatest radius of a disk contained in a continuously varying family of simple polygons under prescribed side constraints. Prove a universal bound, examine permitted nonconvex or boundary cases, and construct a polygon attaining the bound.",
+        "reason": "The catalog covers local line-circle positions and tangent calculations, but lacks this global polygon-containment optimization target. The catalog's discrete extremal principle does not cover a continuously varying geometric family."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2011_AMC_12A_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "For convex quadrilaterals, the area decomposition and cosine-law calculation establish \\(21r\\le K\\le42\\sqrt6\\). The triangular-hull argument bounds concave and collinear cases by \\(r^2\\le49/3<24\\). The tangent construction exists and gives successive side lengths 14, 9, 7, 12 while containing a disk of radius \\(2\\sqrt6\\).",
+    "levelCheck": "The trigonometry, Cauchy-Schwarz, Heron's formula, and explicitly derived product bound are appropriate for AMC 12. The decisive bounds and attainment are explained.",
+    "methodDistinctness": "One complete method is supplied; its bound and construction are complementary parts of the proof.",
+    "annotationCheck": "The assessed line-circle clearance concept and supporting area and distance concepts are justified. Method-specific annotations fit their catalog scopes, and the proposed optimization node honestly identifies the broader missing target.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "area-bound-and-tangent-construction": "area-bound-and-tangent-construction"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "3482bfe63548210cadf97d69a27495abdb37bd86475a4496d3e076e1ba26192a",
+    "inputHash": "3f285490abbd8eae40d31957ece428b3c4f84bd576ac1d1587fbdd561157af0e",
+    "authorInputHash": "f048b10d030903f760fc2b90486596f73dd22e6214a68a63bccaa7fa8db41edf",
+    "reviewInputHash": "a678464d0a63fd87da936279f9036b4b3ad1d4d258eebee29004d4d7ab0dfee4",
+    "authorResponseHash": "deec6d4d01516b1b8d404377ffbd77e59e07032826cf3475cac4a9b2f0702153",
+    "reviewerResponseHash": "d9204eea9bdc1fec09f6980ac3b0645b38051aa8aa662a5d8e9c017f686f093e",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

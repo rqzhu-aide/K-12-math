@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1966_AMC_12_Q26",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "41d04be194e30d6467b30ccf9ad6fc2bfe3954018868e1c5f7c22a7d4f8661fa",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "b369c1c083cb6d7f32caa62780464a64309f6cda95dbdd3054b54a98df6b20fe",
+  "solutionFigureHashes": {},
+  "candidateHash": "4db0f488b6285a2e2a11a2f6b10a600ff2fb73622e87eef1b95065641ef60ea5",
+  "candidate": {
+    "questionId": "1966_AMC_12_Q26",
+    "derivedAnswer": "C, \\(6\\) only",
+    "answerStatus": "matches",
+    "answerReason": "Substitution gives (13+11m)x=711. Exhausting the possible positive divisors of 711 shows that only 13+11m=79 works, yielding m=6 and intersection (9,53).",
+    "methods": [
+      {
+        "id": "intersection-divisors",
+        "label": "List the possible divisors",
+        "explanation": "Substitution turns the intersection condition into a divisibility condition. Replacing \\(y\\) by \\(mx-1\\) gives\n\\[\n13x+11(mx-1)=700,\n\\qquad (13+11m)x=711.\n\\]\nBecause \\(m\\) is a positive integer, \\(13+11m\\ge24\\). Consequently, an integer \\(x\\) is possible only if \\(13+11m\\) is a positive divisor of 711.\n\nNow \\(711=3^2\\cdot79\\), where 79 is prime. Its complete list of positive divisors is\n\\[\n1,\\ 3,\\ 9,\\ 79,\\ 237,\\ 711.\n\\]\nOnly \\(79,237,711\\) are at least 24. Setting \\(13+11m\\) equal to these three values gives, respectively,\n\\[\nm=6,\\qquad \\frac{224}{11},\\qquad \\frac{698}{11}.\n\\]\nOnly 6 is an integer. For \\(m=6\\), the intersection is \\(x=711/79=9\\), \\(y=6\\cdot9-1=53\\), and indeed \\(13\\cdot9+11\\cdot53=700\\). Thus \\(\\boxed{m=6\\text{ only}}\\), choice C.",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_089",
+          "math:prime-factorization"
+        ],
+        "prerequisiteIds": [
+          "cnm_088",
+          "cnm_042",
+          "cnm_p153",
+          "cnm_p157"
+        ],
+        "levelReason": "Uses substitution, prime factorization, and an exhaustive divisor list."
+      },
+      {
+        "id": "bounded-coordinate-remainders",
+        "label": "Bound and restrict the coordinates",
+        "explanation": "We can make a short list of possible integer coordinates without factoring 711. Substituting \\(y=mx-1\\) into the other equation gives\n\\[\n(13+11m)x=711.\n\\]\nSince \\(m\\ge1\\), the coefficient is at least 24. Hence \\(x>0\\) and \\(x\\le711/24<30\\), so an integer \\(x\\) lies between 1 and 29.\n\nRemoving multiples of 11 from \\(13x+11y=700\\) shows that \\(2x\\) leaves remainder 7 when divided by 11. Between 2 and 58, the numbers with that remainder are\n\\[\n7,\\ 18,\\ 29,\\ 40,\\ 51.\n\\]\nOnly 18 and 40 are even, so \\(x=9\\) or \\(x=20\\).\n\nFor \\(x=9\\), the first equation gives \\(y=53\\), and \\(m=(y+1)/x=6\\). For \\(x=20\\), it gives \\(y=40\\), and \\(m=41/20\\), which is not an integer. The pair \\((9,53)\\) satisfies both equations when \\(m=6\\). Therefore \\(\\boxed{m=6\\text{ only}}\\), choice C.",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_089",
+          "math:modular-congruence",
+          "cnm_h020"
+        ],
+        "prerequisiteIds": [
+          "cnm_088",
+          "cnm_042",
+          "cnm_p153"
+        ],
+        "levelReason": "Uses a finite coordinate bound and elementary remainder reasoning, without advanced number theory."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_088",
+      "cnm_042",
+      "cnm_p153"
+    ],
+    "annotationRationale": "The task-level target is finding every admissible integer parameter and proving completeness. Both routes use the common-solution meaning of the intersection, linear-equation manipulation, and divisibility. Prime factorization is local to the divisor route; remainder restrictions and integer bounds are local to the coordinate route.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1966_AMC_12_Q26",
+    "decision": "accept",
+    "mathematicalCheck": "Substitution gives (13+11m)x=711. The complete divisor list leaves only coefficient 79, hence m=6. Independently, 1≤x≤29 and the remainder condition restrict x to 9 or 20; only x=9 yields an integer m. The intersection (9,53) verifies existence.",
+    "levelCheck": "Both explanations use accessible school algebra and elementary integer reasoning.",
+    "methodDistinctness": "Divisor enumeration and bounded coordinate remainders offer genuinely different restrictions.",
+    "annotationCheck": "The integer-equation target is route-neutral. Shared support and the separate factorization, remainder, and bounding annotations fit their actual uses.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "intersection-divisors": "solution:intersection-divisors:b369c1c083cb",
+    "bounded-coordinate-remainders": "bounded-coordinate-remainders"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "bb7ddc5192c132f281d753d6b35a8844fa9b58ebbad6119e3df89d616ff2f18d",
+    "inputHash": "b5de0dc8f3069cea6d7c9a3dbba1566712d5754f77eb6f887441077309f97a4e",
+    "authorInputHash": "fb4a4b315671530a2130d688cfa4ae2f61ffac320819b12dcff8e6a5a5ac2ea7",
+    "reviewInputHash": "399e0a09b3f3f4dabd10462e554e323996138065756cad59d4d390617d0a35ab",
+    "authorResponseHash": "9d54b9d4d7feff7607944a6f6e5049bc92e310893441b99f52fb6a2d9ce8f56d",
+    "reviewerResponseHash": "00e5b2d38bf0363bb50360803603eed1055be68f8a8480aa7989ab9d82239a6b",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

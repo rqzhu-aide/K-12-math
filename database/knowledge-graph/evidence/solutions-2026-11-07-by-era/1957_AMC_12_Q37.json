@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1957_AMC_12_Q37",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ec7deec4cf1728512d53f837fcedaed14e97c0cf2c0db7e914937294e8f3c018",
+    "figureHashes": {
+      "figures/1957_AMC_12_Q37_question_fig1.svg": "f37f5198f3030e31b305cbade9d0ea7f5bd85cb5541796cf025cd0e66aced925"
+    }
+  },
+  "solutionSHA256": "23eeb1838becee7d2a01edeec5acb9e07bca5c7387ce751a2a8e9cada916e872",
+  "solutionFigureHashes": {},
+  "candidateHash": "bb7c964fd8be51a031a2863bd6eafad24c1614bc06c6907a996daa6321fd3620",
+  "candidate": {
+    "questionId": "1957_AMC_12_Q37",
+    "derivedAnswer": "C: \\(y=\\dfrac{144-7x}{12}\\)",
+    "answerStatus": "matches",
+    "answerReason": "Similarity gives \\(MN=5x/12\\), while the rectangle gives \\(NP=MC=12-x\\). Their sum is \\((144-7x)/12\\).",
+    "methods": [
+      {
+        "id": "similar-triangle-side-lengths",
+        "label": "Find the two rectangle dimensions",
+        "explanation": "Express each rectangle dimension in terms of \\(x\\), then add them. For a nondegenerate rectangle, \\(0<x<12\\).\n\nOpposite sides of a rectangle are equal, so\n\\[\nNP=MC=AC-AM=12-x.\n\\]\nTo find \\(MN\\), compare triangles \\(AMN\\) and \\(ACB\\). They share the angle at \\(A\\), and both are right triangles, at \\(M\\) and \\(C\\), respectively. They are therefore similar, giving\n\\[\n\\frac{MN}{BC}=\\frac{AM}{AC},\n\\qquad MN=5\\cdot\\frac{x}{12}=\\frac{5x}{12}.\n\\]\nThus\n\\[\ny=MN+NP\n=\\frac{5x}{12}+12-x\n=\\frac{144-7x}{12}.\n\\]\nIf endpoints are admitted as collapsed rectangles, \\(x=0\\) gives \\(y=12\\), and \\(x=12\\) gives \\(y=5\\), also agreeing with this formula. The answer is \\(\\boxed{y=\\frac{144-7x}{12}}\\), choice \\(\\boxed{C}\\).",
+        "nodeIds": [
+          "cnm_271",
+          "cnm_272",
+          "cnm_038"
+        ],
+        "prerequisiteIds": [
+          "cnm_270",
+          "cnm_064",
+          "cnm_p077",
+          "cnm_055",
+          "cnm_036"
+        ],
+        "levelReason": "Uses rectangle side equality, AA similarity, segment subtraction, and simplification of a linear expression."
+      },
+      {
+        "id": "triangle-area-decomposition",
+        "label": "Use the areas on either side of CN",
+        "explanation": "Drawing \\(CN\\) divides the whole triangle into two triangles whose heights are the rectangle dimensions. This gives an equation connecting those dimensions.\n\nFor \\(0<x<12\\), write \\(h=MN\\) and \\(w=NP\\). The rectangle gives\n\\[\nw=MC=12-x.\n\\]\nThe triangles \\(ACN\\) and \\(BCN\\) together fill \\(ABC\\), with no overlapping interiors. Using bases \\(AC\\) and \\(BC\\), their respective heights are \\(h\\) and \\(w\\). Therefore\n\\[\n\\frac12\\cdot12h+\\frac12\\cdot5w\n=\\frac12\\cdot12\\cdot5.\n\\]\nSubstitute \\(w=12-x\\) and multiply by \\(2\\):\n\\[\n12h+5(12-x)=60,\n\\qquad h=\\frac{5x}{12}.\n\\]\nIt follows that\n\\[\ny=h+w=\\frac{5x}{12}+12-x\n=\\frac{144-7x}{12}.\n\\]\nAt the collapsed endpoint cases, \\(x=0\\) gives dimensions \\(0,12\\), and \\(x=12\\) gives dimensions \\(5,0\\); both satisfy the formula. The answer is \\(\\boxed{y=\\frac{144-7x}{12}}\\), choice \\(\\boxed{C}\\).",
+        "nodeIds": [
+          "cnm_p148",
+          "cnm_038"
+        ],
+        "prerequisiteIds": [
+          "cnm_p077",
+          "cnm_055",
+          "cnm_036",
+          "cnm_040"
+        ],
+        "levelReason": "Uses only base-height triangle areas, rectangle properties, and simple equations."
+      }
+    ],
+    "assessedIds": [
+      "cnm_038"
+    ],
+    "supportIds": [
+      "cnm_p077",
+      "cnm_055",
+      "cnm_036"
+    ],
+    "annotationRationale": "The task asks for a simplified algebraic expression for a geometric length sum, so cnm_038 is the shared target. Rectangle opposite-side equality is supported specifically by cnm_p077, and segment subtraction and polynomial addition support both methods. Similarity is local to the first method; base-height area and equality transformations are local to the second.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1957_AMC_12_Q37",
+    "decision": "accept",
+    "mathematicalCheck": "The rectangle gives NP=12−x, and similarity gives MN=5x/12. The independent area decomposition correctly gives 12MN+5NP=60, producing the same dimensions. Thus y=(144−7x)/12 throughout 0<x<12; the conditional collapsed endpoint values also agree.",
+    "levelCheck": "Both methods are complete, understandable, and use elementary geometry and linear algebraic manipulation.",
+    "methodDistinctness": "The area decomposition supplies a useful alternative that avoids triangle similarity.",
+    "annotationCheck": "cnm_038 correctly describes the shared expression-building task. Rectangle side equality, segment subtraction, and polynomial addition are appropriately shared; similarity and triangle area remain method-specific.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "similar-triangle-side-lengths": "solution:similar-triangle-side-lengths:23eeb1838bec",
+    "triangle-area-decomposition": "triangle-area-decomposition"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "de04b315c8f65b2e66fa28079d9b5e77d172bf1b3516787db92dd196418d9d52",
+    "acceptedAt": "2026-11-07T23:56:03.675066+00:00",
+    "inputHash": "a2c783d2645f4140bf0e05d873f5b044d294d0ad7614cfd601823591784e57ec",
+    "authorInputHash": "498eed20f4ef2a04e86243b886b4a6e3df82215d06f7b74368f443fa69de0bac",
+    "reviewInputHash": "8fe90941e92e57c5ac08a838ab775d025985249963f525698e1550ff085a16dc",
+    "authorResponseHash": "56dccd3fad2dd99cffe204e5438ab07ca6f378985bb282a972cecbb2407b2609",
+    "reviewerResponseHash": "fd11e6b11e8289d77ad172b1a41d027e78ecfe1959dfe5444e43a8fd44e43a06",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

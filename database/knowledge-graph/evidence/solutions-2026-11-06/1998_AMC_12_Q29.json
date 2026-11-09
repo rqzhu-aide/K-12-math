@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1998_AMC_12_Q29",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "137d6409f495f7c66decc8de8807324202acf42503129c142d066b9a84603477",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "82cd48dbd94ac63c698bb84244641f56fe6c5a9134272f6db81042ea628f3ad0",
+  "solutionFigureHashes": {},
+  "candidateHash": "8916f09fc55a3cc3725c2eee96d3e53f74e5360c8c26572ab18815b3d2a9567e",
+  "candidate": {
+    "questionId": "1998_AMC_12_Q29",
+    "derivedAnswer": "D, 5.0",
+    "answerStatus": "matches",
+    "answerReason": "Every square with side greater than √5 has at least four interior lattice points. A square of area 5 with exactly three interior lattice points is constructed, so the maximum is 5.",
+    "methods": [
+      {
+        "id": "universal-bound-and-construction",
+        "label": "Bound the side length and construct an example",
+        "explanation": "We need both an upper bound valid for every orientation and a square attaining that bound. We will prove that any square with side greater than \\(\\sqrt5\\) has at least four interior lattice points.\n\nSuppose such a square has center \\((a,b)\\) and half-side length \\(h>\\sqrt5/2\\). Translate the picture by integers and reflect the coordinate axes as needed so that\n\\[\n0\\le a\\le\\frac12,\\qquad 0\\le b\\le\\frac12.\n\\]\nThese operations preserve the lattice and the number of interior lattice points. Each of the three points\n\\[\nO=(0,0),\\qquad U=(1,0),\\qquad V=(0,1)\n\\]\nis at distance at most \\(\\sqrt5/2\\) from the center. For example,\n\\[\n(1-a)^2+b^2\\le1+\\frac14=\\frac54,\n\\]\nand the other two distance bounds follow in the same way. Therefore all three points lie strictly inside the square's inscribed circle, and hence inside the square.\n\nWe now find a fourth point. Interchanging the coordinate axes if necessary, choose perpendicular unit directions along the square's sides as \\((c,s)\\) and \\((-s,c)\\), where\n\\[\n0\\le s\\le c,\\qquad c^2+s^2=1.\n\\]\nFor a point \\((x,y)\\), its coordinates measured from the center along these directions are\n\\[\nX=c(x-a)+s(y-b),\n\\qquad\nY=-s(x-a)+c(y-b).\n\\]\nThese formulas resolve the horizontal and vertical displacement into the two perpendicular directions. A point lies inside the square exactly when \\(|X|<h\\) and \\(|Y|<h\\).\n\nConsider \\(P=(-1,0)\\) and \\(R=(1,1)\\). Their distances in the \\(Y\\) direction satisfy\n\\[\n|Y(P)|=|s(1+a)-cb|\n\\le\\max\\left(\\frac{3s}{2},\\frac c2\\right)\n\\le\\frac{3}{2\\sqrt2}<\\frac{\\sqrt5}{2},\n\\]\nbecause \\(s\\le1/\\sqrt2\\). Also,\n\\[\n|Y(R)|=|c(1-b)-s(1-a)|\\le c\\le1<\\frac{\\sqrt5}{2}.\n\\]\nThus both points already satisfy the required bound in one direction. In the other direction,\n\\[\n|X(P)|=c(1+a)+sb,\n\\qquad\n|X(R)|=c(1-a)+s(1-b).\n\\]\nTheir sum is \\(2c+s\\), and\n\\[\n(2c+s)^2=5-(c-2s)^2\\le5.\n\\]\nConsequently, at least one of \\(|X(P)|\\) and \\(|X(R)|\\) is at most \\(\\sqrt5/2\\). That point has both coordinate distances less than \\(h\\), so it is a fourth interior lattice point. This proves that a square with exactly three interior lattice points has area at most \\(5\\).\n\nTo attain this bound, take the closed region\n\\[\n-2\\le2x+y\\le3,\n\\qquad\n-2\\le-x+2y\\le3.\n\\]\nIts adjacent side displacements are \\((2,1)\\) and \\((-1,2)\\). They are perpendicular and both have length \\(\\sqrt5\\), so the region is a square of area \\(5\\).\n\nFor an interior lattice point, both displayed inequalities are strict. Adding the first linear expression to twice the second gives \\(5y\\), so\n\\[\n-6<5y<9.\n\\]\nThus the only possible integer rows are \\(y=-1,0,1\\). On these rows the allowed open intervals for \\(x\\) are, respectively,\n\\[\n\\left(-\\frac12,0\\right),\\qquad\n\\left(-1,\\frac32\\right),\\qquad\n(-1,1).\n\\]\nThey contain zero, two and one integers. Hence the interior lattice points are exactly \\((0,0),(1,0),(0,1)\\).\n\nThe maximum area is therefore \\(\\boxed{5}\\), closest to \\(5.0\\), choice D.",
+        "nodeIds": [
+          "math:extremal-principle",
+          "math:lattice-counting",
+          "cnm_h086",
+          "cnm_h087",
+          "cnm_h088",
+          "cnm_h090",
+          "cnm_p089"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_174",
+          "cnm_191",
+          "math:unit-vectors"
+        ],
+        "levelReason": "The universal bound is derived using coordinate geometry, perpendicular unit directions, the Pythagorean theorem and a square identity. No general lattice-point bound is assumed."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle",
+      "math:lattice-counting"
+    ],
+    "supportIds": [
+      "cnm_082",
+      "cnm_174",
+      "cnm_191"
+    ],
+    "annotationRationale": "The task requires a universal size bound and an admissible construction, matching the extremal target. Exact interior-point counting requires strict coordinate inequalities and correct endpoints. The written upper bound uses coordinate projections and elementary vector operations; the construction uses perpendicular equal-length sides and square area.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1998_AMC_12_Q29",
+    "decision": "accept",
+    "mathematicalCheck": "The normalization preserves the lattice. The three initial points lie within distance √5/2 of the center. For P and R, both Y distances are below √5/2, while their X distances sum to 2c+s≤√5, so one supplies a fourth interior point whenever h>√5/2. The construction has perpendicular equal sides of length √5 and exactly the three stated interior lattice points. Thus the maximum area is 5.",
+    "levelCheck": "The coordinate projections and square identity provide an elementary high-school proof of the universal bound.",
+    "methodDistinctness": "The upper bound and attaining construction are complementary parts of one complete extremal method.",
+    "annotationCheck": "The extremal and lattice-counting targets fit precisely. The vector, coordinate, square and area annotations describe operations actually used.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "universal-bound-and-construction": "universal-bound-and-construction"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "767300152a6f1f5205c6d9f36b484be056b0d39c9bac94ec43ca69aa8502e82a",
+    "inputHash": "e3a567dd461f38728d01c985149ce3997d58ea3343acd0340b88961e976c5e4f",
+    "authorInputHash": "2a899833cf977f23553b4c93d0b84f3c24833a0baf407b7184f7174ba469e90c",
+    "reviewInputHash": "a364f1e61a26416cde77ac42a0f5146eec27f4d1baedc31d36b56549321e7f21",
+    "authorResponseHash": "af055abd7fcc95fc986574e330a8d3a670e8b1043753142377ac66e9a9865cb3",
+    "reviewerResponseHash": "bfa60a1c40fdfe540b070d7597ac69d70d9ec5826b51b6920ad173d5987be3bc",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

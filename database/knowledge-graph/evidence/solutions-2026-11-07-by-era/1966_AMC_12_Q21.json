@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1966_AMC_12_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "0e8f8ee3929d8d801518aee17e0a0a90fca94e96506d66776ec2c87d3c98a661",
+    "figureHashes": {
+      "figures/1966_AMC_12_Q21_question_fig1.svg": "69e11150286948ce88973064cb7103b83e201d5fc5c7b008d81397fa81646b78"
+    }
+  },
+  "solutionSHA256": "3454d757c949908c5a880a0b88f9071c4407e1bae4fb1a85bf2100fc217d2219",
+  "solutionFigureHashes": {
+    "figures/1966_AMC_12_Q21_question_fig1.svg": "69e11150286948ce88973064cb7103b83e201d5fc5c7b008d81397fa81646b78"
+  },
+  "candidateHash": "e22041561abe07798962a5424f4b0b52ca262e790316cb22cbad4092ff66b238",
+  "candidate": {
+    "questionId": "1966_AMC_12_Q21",
+    "derivedAnswer": "No unique value follows as stated. Under the outward-tip condition, \\(S=180(n-4)\\) degrees, choice E.",
+    "answerStatus": "disputed",
+    "answerReason": "The nonparallelism condition does not guarantee the configuration shown. A valid convex pentagon with consecutive interior angles 60°, 60°, 140°, 140°, 140° produces point angles totaling 300°, whereas a regular pentagon produces 180°. Choice E requires every adjacent pair of polygon interior angles to sum to more than 180°. Preserve the recorded grading caveat: a valid objection to this missing condition is not a mathematical error.",
+    "methods": [
+      {
+        "id": "triangle-angle-sum-with-configuration-check",
+        "label": "Examine the triangles formed by the extended sides",
+        "explanation": "Each pair of extended sides, together with the intervening polygon side, forms a triangle. Its base angles tell us both the point angle and whether the point lies in the configuration shown.\n\n[Figure 1](figures/1966_AMC_12_Q21_question_fig1.svg)\n\nLet the consecutive polygon interior angles be \\(\\alpha_1,\\ldots,\\alpha_n\\), with cyclic indices. Let \\(\\theta_i\\) be the angle at the intersection of the two side lines adjoining the side whose endpoint angles are \\(\\alpha_i\\) and \\(\\alpha_{i+1}\\). We take the angle between the rays leading back toward those two endpoints.\n\nIf \\(\\alpha_i+\\alpha_{i+1}>180^\\circ\\), the intersection lies across the intervening side from the polygon. The triangle's base angles are \\(180^\\circ-\\alpha_i\\) and \\(180^\\circ-\\alpha_{i+1}\\), so\n\\[\n\\theta_i=\\alpha_i+\\alpha_{i+1}-180^\\circ.\n\\]\nIf \\(\\alpha_i+\\alpha_{i+1}<180^\\circ\\), the intersection lies on the polygon's side of that line. The triangle's base angles are now \\(\\alpha_i\\) and \\(\\alpha_{i+1}\\), giving\n\\[\n\\theta_i=180^\\circ-\\alpha_i-\\alpha_{i+1}.\n\\]\nEquality would make the two outer side lines parallel, which the question excludes. Thus, in general,\n\\[\n\\theta_i=\\left|\\alpha_i+\\alpha_{i+1}-180^\\circ\\right|.\n\\]\n\nAssume now that every intersection has the outward-tip configuration shown, so every adjacent angle sum exceeds \\(180^\\circ\\). Summing the first formula counts each polygon angle twice. Since the polygon interior angles total \\(180^\\circ(n-2)\\),\n\\[\nS=2\\cdot180^\\circ(n-2)-180^\\circ n\n =180^\\circ(n-4).\n\\]\nThis gives choice E under that additional assumption.\n\nThe assumption need not hold. To construct a counterexample, take five tangents to a circle whose consecutive tangency points have central-angle gaps \\(120^\\circ,120^\\circ,40^\\circ,40^\\circ,40^\\circ\\). These tangents bound a convex pentagon. The radii to consecutive tangency points are perpendicular to their tangents, so each polygon angle is \\(180^\\circ\\) minus its corresponding central-angle gap. The consecutive interior angles are therefore\n\\[\n60^\\circ,\\ 60^\\circ,\\ 140^\\circ,\\ 140^\\circ,\\ 140^\\circ.\n\\]\nTheir adjacent sums are \\(120^\\circ,200^\\circ,280^\\circ,280^\\circ,200^\\circ\\), none equal to \\(180^\\circ\\), so all required side pairs are nonparallel. The point angles are\n\\[\n60^\\circ,\\ 20^\\circ,\\ 100^\\circ,\\ 100^\\circ,\\ 20^\\circ,\n\\]\nwhose sum is \\(300^\\circ\\). By comparison, a regular pentagon has interior angles \\(108^\\circ\\), producing five \\(36^\\circ\\) point angles and sum \\(180^\\circ\\).\n\nThus the stated construction does not determine a unique sum. The intended value is \\(180(n-4)\\) degrees, choice E, when the outward-tip condition is imposed.",
+        "nodeIds": [
+          "cnm_115",
+          "cnm_181",
+          "cnm_262",
+          "cnm_071"
+        ],
+        "prerequisiteIds": [
+          "cnm_059",
+          "cnm_180",
+          "cnm_250"
+        ],
+        "levelReason": "The argument uses elementary triangle and polygon angle sums. The explicit counterexample uses only radii perpendicular to tangents and ordinary angle arithmetic, all within historical AHSME scope."
+      }
+    ],
+    "assessedIds": [
+      "cnm_115"
+    ],
+    "supportIds": [
+      "cnm_059",
+      "cnm_180"
+    ],
+    "annotationRationale": "The central target is determining the point angles through triangle angle sums. Supplementary angles and polygon vocabulary support that target. The written route uses the polygon interior-angle sum to combine the local results. Tangent properties and counterexample reasoning belong to the verification of the missing configuration condition and are kept within this method.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The keyed formula requires an additional condition ensuring the outward-tip configuration, such as every adjacent pair of polygon interior angles summing to more than 180°."
+    ]
+  },
+  "review": {
+    "questionId": "1966_AMC_12_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "The local triangles give \\(\\theta_i=|\\alpha_i+\\alpha_{i+1}-180^\\circ|\\). When every adjacent sum exceeds 180°, summing gives \\(S=180(n-4)^\\circ\\). The tangent construction produces a valid convex pentagon with the stated angles and nonparallel side pairs. Its point angles total 300°, whereas the regular pentagon gives 180°. The solution correctly preserves the missing-condition caveat.",
+    "levelCheck": "Triangle and polygon angle sums, tangent perpendicularity, and the counterexample construction are appropriate for historical AHSME. The decisive steps are explained.",
+    "methodDistinctness": "One complete method handles both the intended configuration and the counterexample; another method is unnecessary.",
+    "annotationCheck": "The assessed triangle-angle node and supporting angle and polygon concepts fit the solution. Polygon sums, tangent properties, and counterexample reasoning are appropriately identified within the method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "triangle-angle-sum-with-configuration-check": "triangle-angle-sum-with-configuration-check"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "91d8dd86c6a7bf817225dbf2cc6e1f728b15084fdbc0c386ad333c6edc164efa",
+    "acceptedAt": "2026-11-08T00:04:19.049109+00:00",
+    "inputHash": "e44c76c64a0e03a0da4cf98a6b9f86b89f78314ec927ac640e9ec4067dcc7c9c",
+    "authorInputHash": "42acf39d70867839a77db5ee00955ce35365780f9ffef0c5b8901682034c62ec",
+    "reviewInputHash": "ae7741067aa62d33178c9dcd5e63f686b7e10072c3c09048a1eae3d5c382501e",
+    "authorResponseHash": "b11edb83694ee9db8c975a710ec417fea8d9f7ed5b9f97d1d5f49ccc605b9baa",
+    "reviewerResponseHash": "a8ca39c825bb52555587ed31590a5dd294ed6b2ed38bce9d7989a0fa1076cf09",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

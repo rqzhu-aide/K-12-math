@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1985_AMC_12_Q30",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "646d689e6806d1ec254b5c7465351bacc89db16370c73bd6163c6bbbc0b60a58",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "4e1bcf359e39d5b220039750ab849a65c91d90fa4bb4c84a1879ebf4f7bc804f",
+  "solutionFigureHashes": {},
+  "candidateHash": "a2f91185992a8e697f376d6a034b55ceceda7dfba68ce5f94d6528fb30e736d7",
+  "candidate": {
+    "questionId": "1985_AMC_12_Q30",
+    "derivedAnswer": "E, 4 real solutions",
+    "answerStatus": "matches",
+    "answerReason": "The possible floor values are exactly 2, 6, 7, and 8, and each produces one real solution in its required interval.",
+    "methods": [
+      {
+        "id": "integer-part-interval-consistency",
+        "label": "Require the root to have the chosen integer part",
+        "explanation": "Let \\(m=\\lfloor x\\rfloor\\). The definition of the floor function gives the exact interval condition\n\\[\nm\\le x<m+1,\n\\]\nand the equation becomes\n\\[\nx^2=10m-\\frac{51}{4}.\n\\]\nBecause \\(x^2\\ge0\\), the integer \\(m\\) must satisfy \\(m\\ge2\\). Thus \\(x\\ge m\\ge2\\), and only the positive square root can work.\n\nFor a given \\(m\\ge2\\), that root has floor \\(m\\) exactly when\n\\[\nm^2\\le10m-\\frac{51}{4}<(m+1)^2.\n\\]\nSquaring the interval bounds preserves their directions because all quantities are nonnegative. Rearranging and factoring gives\n\\[\n(2m-3)(2m-17)\\le0,\n\\]\n\\[\n(2m-5)(2m-11)>0.\n\\]\nThe first product is nonpositive between its zeros, so \\(3/2\\le m\\le17/2\\). Its integer possibilities are \\(2,3,4,5,6,7,8\\). The second product is positive outside its two zeros, requiring \\(m<5/2\\) or \\(m>11/2\\). Combining these conditions leaves exactly\n\\[\nm=2,6,7,8.\n\\]\nFor each of these four values, the positive square root satisfies \\(m\\le x<m+1\\), so it solves the original equation. Each value produces one root, and the four floor intervals are disjoint, so no root is counted twice. There are \\(\\boxed{4}\\) real solutions, choice E.",
+        "nodeIds": [
+          "math:floor-ceiling",
+          "cnm_h024"
+        ],
+        "prerequisiteIds": [
+          "cnm_h020",
+          "cnm_074"
+        ],
+        "levelReason": "Uses the floor definition, quadratic inequalities solved by factoring, and positive square-root selection."
+      }
+    ],
+    "assessedIds": [
+      "math:floor-ceiling"
+    ],
+    "supportIds": [
+      "cnm_h020",
+      "cnm_074"
+    ],
+    "annotationRationale": "The task target is enforcing floor-function intervals while counting real solutions. This method turns interval consistency into two quadratic inequalities, making cnm_h024 a method component. Integer enumeration and square-root selection support the count, with the strict upper endpoint retained.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1985_AMC_12_Q30",
+    "decision": "accept",
+    "mathematicalCheck": "Setting m=floor(x) forces m≥2 and selects the positive square root. Interval consistency is equivalent to (2m-3)(2m-17)≤0 and (2m-5)(2m-11)>0, leaving exactly m=2,6,7,8. Each gives one valid root in a distinct floor interval, totaling four.",
+    "levelCheck": "Floor intervals, factored quadratic inequalities, and square roots fit AMC 12. Signs, endpoints, sufficiency, and distinctness are explicitly handled.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Floor is an appropriate route-neutral assessment. Quadratic inequalities are correctly recorded as a method component, with integer enumeration and square-root meaning as supports.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "integer-part-interval-consistency": "integer-part-interval-consistency"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "0a7f316763b0a9b0e59620e63d94e3b48ffd924670cad8165dbd35fb065491c6",
+    "inputHash": "2fbfc732a6c9a879f922df769f09b8bf61e9e392f926f11bc1128a5355580280",
+    "authorInputHash": "cd4565399c0cc34c5a6e6fd7585795ec0f6da180606d725a8ecb22dd5899efc4",
+    "reviewInputHash": "6b55365e208c4454706360218c9fdb3402685510647b39b7807f281c93485ff7",
+    "authorResponseHash": "44bea0f10bd51458514acb5af9b396df1734c54ce87fe1b497a7e3e32e658dc3",
+    "reviewerResponseHash": "e8aecd268dd01b11876c1fc63762e4ffd5dd87b6f8695b00ab6d18902a901ad3",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

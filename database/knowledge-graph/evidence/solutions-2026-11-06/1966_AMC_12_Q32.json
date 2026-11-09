@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1966_AMC_12_Q32",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "13601c3207de55c86d37b3d039e0e0a2f7e7a2bec38de62695075a73aee2a2e2",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "bbcd4e6caece38f4a4add2f19d7d2912509fc08e7c480df4dfe524c89a6c4877",
+  "solutionFigureHashes": {},
+  "candidateHash": "7d71ab788820e61a5d65831d77ff22b6eece82ae1e786efb542ce2eac14fe570",
+  "candidate": {
+    "questionId": "1966_AMC_12_Q32",
+    "derivedAnswer": "B, \\(r=\\dfrac12\\), independent of \\(P\\)",
+    "answerStatus": "matches",
+    "answerReason": "The parallel lines give equal areas for triangles PCM and PCD. Subtracting these from triangle BPC shows [BPD]=[BMC], which is half of [ABC] because M is the midpoint of AB.",
+    "methods": [
+      {
+        "id": "equal-area-subtraction",
+        "label": "Subtract equal areas",
+        "explanation": "Write \\([XYZ]\\) for the area of triangle \\(XYZ\\). The parallel condition gives an area equality without requiring any lengths. Triangles \\(PCM\\) and \\(PCD\\) share the base \\(PC\\), and their other vertices \\(M\\) and \\(D\\) lie on the line \\(MD\\), parallel to \\(PC\\). Their heights are therefore equal, so\n\\[\n[PCM]=[PCD].\n\\]\nThe order on \\(AB\\) is \\(A,P,M,B\\). In triangle \\(BPC\\), the segment \\(MC\\) separates off triangle \\(PCM\\), while \\(PD\\) separates off triangle \\(PCD\\). Hence\n\\[\n[BMC]=[BPC]-[PCM]\n\\]\nand\n\\[\n[BPD]=[BPC]-[PCD].\n\\]\nSubtracting equal areas from the same triangle gives \\([BPD]=[BMC]\\).\n\nFinally, \\(CM\\) is a median of \\(ABC\\). Triangles \\(AMC\\) and \\(BMC\\) have equal bases \\(AM=MB\\) and the same height from \\(C\\), so each has half the area of \\(ABC\\). Thus\n\\[\nr=\\frac{[BPD]}{[ABC]}=\\boxed{\\frac12},\n\\]\nindependent of the allowed position of \\(P\\). The answer is choice B.",
+        "nodeIds": [
+          "cnm_p148",
+          "cnm_113"
+        ],
+        "prerequisiteIds": [
+          "cnm_055",
+          "cnm_112",
+          "cnm_067"
+        ],
+        "levelReason": "Uses equal-base equal-height triangle areas, subtraction of areas, and the midpoint condition."
+      },
+      {
+        "id": "similarity-area-ratios",
+        "label": "Use similarity and common heights",
+        "explanation": "Write \\([XYZ]\\) for triangle area. Since \\(P\\) is between \\(A\\) and \\(M\\), the point \\(M\\) lies between \\(B\\) and \\(P\\). In triangle \\(BPC\\), the parallel \\(MD\\parallel PC\\) makes triangles \\(BMD\\) and \\(BPC\\) similar by their equal angles. Their corresponding sides give\n\\[\n\\frac{BD}{BC}=\\frac{BM}{BP}.\n\\]\nWe can connect these side ratios to areas by choosing common heights. Triangles \\(BPD\\) and \\(BPC\\) have bases \\(BD\\) and \\(BC\\) on the same line and share the height from \\(P\\), so\n\\[\n\\frac{[BPD]}{[BPC]}=\\frac{BD}{BC}.\n\\]\nTriangles \\(BPC\\) and \\(ABC\\) share the height from \\(C\\) to \\(AB\\), giving\n\\[\n\\frac{[BPC]}{[ABC]}=\\frac{BP}{BA}.\n\\]\nMultiplying and using similarity, with all lengths positive, yields\n\\[\nr=\\frac{BM}{BP}\\cdot\\frac{BP}{BA}\n=\\frac{BM}{BA}=\\boxed{\\frac12}.\n\\]\nThe dependence on \\(P\\) cancels, so the answer is choice B.",
+        "nodeIds": [
+          "cnm_271",
+          "cnm_272",
+          "cnm_p148"
+        ],
+        "prerequisiteIds": [
+          "cnm_055",
+          "cnm_112",
+          "cnm_069",
+          "cnm_270"
+        ],
+        "levelReason": "Uses elementary triangle similarity and area ratios justified by shared heights."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p148"
+    ],
+    "supportIds": [
+      "cnm_055",
+      "cnm_112"
+    ],
+    "annotationRationale": "The route-neutral target is determining a triangle-area ratio from the stated geometry. Segment order, midpoint lengths, and triangle heights support both routes. The first uses equal areas and the median area relation; the second uses similarity only as a local tool to obtain a side ratio before applying common-height area comparisons.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1966_AMC_12_Q32",
+    "decision": "accept",
+    "mathematicalCheck": "Since M lies inside BP, the parallel construction places D on BC and validates both area partitions. Equal areas [PCM]=[PCD] imply [BPD]=[BMC]=[ABC]/2. Independently, similarity gives BD/BC=BM/BP, and the common-height area ratios cancel BP to yield r=1/2.",
+    "levelCheck": "Area subtraction and AA similarity are appropriate elementary geometry, with the decisive area comparisons explained.",
+    "methodDistinctness": "Equal-area subtraction and similarity-based ratio cancellation provide distinct geometric insights.",
+    "annotationCheck": "Triangle area is a valid shared target. Midpoint lengths and heights support both methods, while median and similarity knowledge remain method-local.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "equal-area-subtraction": "equal-area-subtraction",
+    "similarity-area-ratios": "similarity-area-ratios"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "37135b6e03ae861589c4d238439f207c3cbfef066e527b48152d6529f1d8ff49",
+    "inputHash": "b5de0dc8f3069cea6d7c9a3dbba1566712d5754f77eb6f887441077309f97a4e",
+    "authorInputHash": "fb4a4b315671530a2130d688cfa4ae2f61ffac320819b12dcff8e6a5a5ac2ea7",
+    "reviewInputHash": "399e0a09b3f3f4dabd10462e554e323996138065756cad59d4d390617d0a35ab",
+    "authorResponseHash": "9d54b9d4d7feff7607944a6f6e5049bc92e310893441b99f52fb6a2d9ce8f56d",
+    "reviewerResponseHash": "00e5b2d38bf0363bb50360803603eed1055be68f8a8480aa7989ab9d82239a6b",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

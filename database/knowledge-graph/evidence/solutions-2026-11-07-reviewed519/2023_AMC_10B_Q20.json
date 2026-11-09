@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2023_AMC_10B_Q20",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "33d93ba59b98705fd94bd8f7570c9cc3787e9c100c37bb53babd55f3cffdaafb",
+    "figureHashes": {
+      "figures/2023_AMC_10B_Q20_question_fig1.svg": "d4f7c2dcaf2ed5411abdd5ca0622c8d670c93bff3f3f6592c0ac5dae32a9e377"
+    }
+  },
+  "solutionSHA256": "acc378c7bcf060ec3cfe93b47767e572d358833727f5284fc1e004c5b6299d5d",
+  "solutionFigureHashes": {
+    "figures/2023_AMC_10B_Q20_question_fig1.svg": "d4f7c2dcaf2ed5411abdd5ca0622c8d670c93bff3f3f6592c0ac5dae32a9e377"
+  },
+  "candidateHash": "36e9f24f8cca1e97efd62cb8dbc031941ab0c20634f9ae387f2e0244515a524e",
+  "candidate": {
+    "questionId": "2023_AMC_10B_Q20",
+    "derivedAnswer": "Not uniquely determined: n=32 (A) for the central-square configuration, but n=48 (C) is also possible under the written conditions.",
+    "answerStatus": "disputed",
+    "answerReason": "The central-square step requires an additional condition, such as smooth joins. Neither tangency nor a central square is stated or marked. The construction below gives four congruent semicircles dividing the sphere into congruent regions with n=48, while a central-square construction gives n=32.",
+    "methods": [
+      {
+        "id": "conditional-square-and-counterexample",
+        "label": "The central-square calculation and a counterexample",
+        "explanation": "A semicircle on a sphere need not have the sphere's radius. Its radius depends on its plane, so we must justify any relationship between the four joining points.\n\n[Figure 1](figures/2023_AMC_10B_Q20_question_fig1.svg)\n\nAssume additionally that the four joins form a square centered at the sphere's center. If its side length is \\(s\\), its diagonal is the sphere's diameter, \\(4\\). The Pythagorean theorem gives\n\\[\n2s^2=4^2,\n\\qquad s=2\\sqrt2.\n\\]\nEach semicircle has diameter \\(s\\), so the total curve length is\n\\[\n4\\left(\\frac{\\pi s}{2}\\right)\n=4\\pi\\sqrt2\n=\\pi\\sqrt{32}.\n\\]\nThus this additional assumption gives \\(n=32\\), choice \\(\\mathrm A\\). However, the picture does not mark this square or require smooth joins.\n\nHere is a different configuration satisfying the written conditions. Use three perpendicular coordinate axes with the sphere's center at the origin. Its surface is \\(x^2+y^2+z^2=4\\). Consider the points\n\\[\nA=(1,1,\\sqrt2),\\quad B=(-1,1,-\\sqrt2),\n\\]\n\\[\nC=(-1,-1,\\sqrt2),\\quad D=(1,-1,-\\sqrt2).\n\\]\nAll four lie on the sphere. The plane \\(y=1\\) cuts a circle with center \\((0,1,0)\\) and equation \\(x^2+z^2=3\\), so its radius is \\(\\sqrt3\\). The points \\(A\\) and \\(B\\) are opposite points of this circle. Take the semicircle from \\(A\\) to \\(B\\) satisfying \\(z\\ge\\sqrt2x\\).\n\nApply the map\n\\[\nT(x,y,z)=(-y,x,-z)\n\\]\nto obtain the next three semicircles. This map preserves distances because it only interchanges coordinates and changes signs. It sends \\(A\\) to \\(B\\), then to \\(C\\), then to \\(D\\), then back to \\(A\\). The four congruent semicircles lie in the planes \\(y=1\\), \\(x=-1\\), \\(y=-1\\), and \\(x=1\\).\n\nThese arcs have no extra intersections. For example, the first two supporting circles meet at \\(B\\) and at \\((-1,1,\\sqrt2)\\), but the latter point fails the second semicircle's condition \\(z\\le-\\sqrt2y\\). Applying \\(T\\) proves the same fact at the other joins. Opposite supporting planes are parallel and disjoint. Thus the four arcs form a simple closed curve.\n\nTo check congruence of the two regions, follow the meridian \\(y=0\\), \\(x\\ge0\\) from \\(N=(0,0,2)\\) to \\(S=(0,0,-2)\\). Only the fourth arc meets this meridian. Its condition \\(z\\le\\sqrt2y=0\\) gives exactly one crossing, at \\((1,0,-\\sqrt3)\\). Therefore \\(N\\) and \\(S\\) lie in different regions. Since \\(T\\) preserves the curve and sends \\(N\\) to \\(S\\), it interchanges the regions, proving they are congruent.\n\nThis curve has length\n\\[\n4\\pi\\sqrt3=\\pi\\sqrt{48},\n\\]\nso it gives \\(n=48\\), choice \\(\\mathrm C\\).\n\nFor comparison, start instead with the semicircle \\(y=\\sqrt2\\), \\(z\\ge0\\), and apply the same map \\(T\\). Its radius is \\(\\sqrt2\\); adjacent circles meet only at their joins, and the same meridian argument proves that the regions are congruent. This realizes the central-square case with \\(n=32\\). Consequently, both \\(32\\) and \\(48\\) are possible, so the written conditions do not determine a unique answer.",
+        "nodeIds": [
+          "cnm_256",
+          "cnm_191",
+          "cnm_174",
+          "cnm_h154"
+        ],
+        "prerequisiteIds": [
+          "cnm_250",
+          "cnm_h106",
+          "cnm_h151",
+          "cnm_120"
+        ],
+        "levelReason": "The calculation and counterexample use semicircle lengths, square diagonals, and Pythagorean distances in perpendicular coordinates, with every spatial construction specified explicitly."
+      }
+    ],
+    "assessedIds": [
+      "cnm_256"
+    ],
+    "supportIds": [
+      "cnm_250",
+      "cnm_h106"
+    ],
+    "annotationRationale": "Arc length is the length target, supported by circle and sphere elements. Square properties and the Pythagorean theorem belong to the conditional central-square calculation. Spatial coordinates and distance calculations support the counterexample establishing nonuniqueness; they are local to that argument. The recorded qualification about the central-square step is preserved. These annotations describe the mathematics written here, not student mastery.",
+    "needsNewNodes": [
+      {
+        "name": "Circular plane sections of a sphere",
+        "description": "A plane at perpendicular distance d<R from the center of a sphere of radius R cuts a circle of radius r satisfying r²+d²=R²; the circle's center is the perpendicular foot from the sphere's center.",
+        "reason": "Determining a semicircle's radius from its plane on the sphere requires this relationship. The catalog's sphere-elements and planar-circle nodes do not directly cover it."
+      }
+    ],
+    "limitations": [
+      "The figure suggests smooth joins but contains no tangency markings or identified central square. Those conditions cannot be inferred solely from its appearance."
+    ]
+  },
+  "review": {
+    "questionId": "2023_AMC_10B_Q20",
+    "decision": "accept",
+    "mathematicalCheck": "The counterexample's four radius-√3 semicircles meet only at their consecutive endpoints. The meridian crosses the curve once, separating N and S, and the distance-preserving map T exchanges the regions. This gives n=48; the central-square construction gives n=32. Nonuniqueness is therefore established under the written conditions, with the figure's suggested smoothness explicitly acknowledged.",
+    "levelCheck": "The spatial coordinates, Pythagorean calculations and explained symmetry are elementary enough for AMC 10, although lengthy.",
+    "methodDistinctness": "The conditional calculation and counterexample serve complementary purposes within one qualified solution.",
+    "annotationCheck": "The listed nodes match their uses. Arc length remains the route-neutral target, and the proposed sphere-section node honestly identifies missing catalog coverage.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "conditional-square-and-counterexample": "conditional-square-and-counterexample"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "7fbb8d07ac9e7be93458089b395442d4a8c68a8c6424261ca0e6aa4762c9e979",
+    "acceptedAt": "2026-11-07T08:14:14.917424+00:00",
+    "inputHash": "cbc1a26db73c8bf376145a81e57aafa6e3d7c67b2411349f9f69f2c244c4fb52",
+    "authorInputHash": "93e4780131d07f3c3a49448b2783b72b0f5104a81bf1147aa1dd8651273a78d0",
+    "reviewInputHash": "23142dd3f0f0e88c61b4a011306747758b45c9d1b2bee050422fe9a8d35bc646",
+    "authorResponseHash": "179cdb5c32a172658be98ea8ed47efda0d1de12c818c3392d894e8254a7b91fd",
+    "reviewerResponseHash": "453ce739e36078f76b4a100e0a42cb9c5d746b65728c7d14a1bfa296ad2a9f8c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

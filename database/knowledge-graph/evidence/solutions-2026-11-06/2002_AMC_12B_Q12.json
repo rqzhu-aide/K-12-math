@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2002_AMC_12B_Q12",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "14dd4e5c916d22bca46604eed156d08d5e2d6aba8fb858fcbd93a425fe3e9866",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "cf760afaf3a837f85fad7a9643d3a5a0596befbc59b76223eb1271856e9ca09a",
+  "solutionFigureHashes": {},
+  "candidateHash": "0031314eef0f23a3943b45cf3d78baeae8c924bfd0274720131d0d67c081812d",
+  "candidate": {
+    "questionId": "2002_AMC_12B_Q12",
+    "derivedAnswer": "D: 4",
+    "answerStatus": "matches",
+    "answerReason": "The only qualifying integers are n=0,10,16,18, which give the squares 0,1,4,9, respectively.",
+    "methods": [
+      {
+        "id": "divisor-restriction",
+        "label": "Turn the condition into a factorization of 20",
+        "explanation": "An integer square is nonnegative, which first restricts the fraction's sign. The expression is undefined at \\(n=20\\), negative when \\(n<0\\), and negative when \\(n>20\\). Thus any solution satisfies \\(0\\le n\\le19\\).\n\nLet \\(q\\) be the value of the fraction, so \\(q\\) must be a nonnegative integer square. Then\n\\[\nn=q(20-n),\n\\]\nand adding \\(20-n\\) to both sides gives\n\\[\n20=(q+1)(20-n).\n\\]\nBoth factors are positive integers. Therefore \\(q+1\\) must be one of the positive divisors\n\\[\n1,2,4,5,10,20\n\\]\nof \\(20\\). Subtracting \\(1\\) gives the candidates \\(0,1,3,4,9,19\\) for \\(q\\). Exactly \\(0,1,4,9\\) are integer squares.\n\nUsing \\(n=20-20/(q+1)\\), these four values give, respectively,\n\\[\nn=0,10,16,18.\n\\]\nSubstitution into the original fraction gives \\(0,1,4,9\\), so all four work. The complete divisor list excludes every other possibility, and the four integers are distinct.\n\nThe answer is \\(\\boxed{4}\\), choice D.",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_p153"
+        ],
+        "prerequisiteIds": [
+          "cnm_156",
+          "cnm_020",
+          "cnm_017"
+        ],
+        "levelReason": "A short algebraic rearrangement reduces the problem to listing the divisors of 20."
+      },
+      {
+        "id": "bounded-square-enumeration",
+        "label": "Bound the square and check a short list",
+        "explanation": "First exclude \\(n=20\\), where the denominator is zero. When \\(n<0\\) or \\(n>20\\), the fraction is negative and cannot be an integer square. Hence \\(n\\) must be one of the integers from \\(0\\) through \\(19\\).\n\nIn this range the numerator is at most \\(19\\) and the denominator is at least \\(1\\), so\n\\[\n0\\le\\frac{n}{20-n}\\le19.\n\\]\nThe only integer squares in this interval are\n\\[\nq=0,1,4,9,16,\n\\]\nsince the next square is \\(25\\).\n\nFor each possible value \\(q\\), solve\n\\[\n\\frac{n}{20-n}=q.\n\\]\nBecause \\(q+1>0\\), rearranging gives\n\\[\nn=\\frac{20q}{q+1}.\n\\]\nFor the five listed squares, the corresponding values of \\(n\\) are\n\\[\n0,\\quad10,\\quad16,\\quad18,\\quad\\frac{320}{17}.\n\\]\nThe first four are integers in the allowed range and give the required squares. The last is not an integer. Every possible square was checked, and the four successful values of \\(n\\) are distinct.\n\nThus there are \\(\\boxed{4}\\) integers, choice D.",
+        "nodeIds": [
+          "math:integer-diophantine-equations"
+        ],
+        "prerequisiteIds": [
+          "cnm_156",
+          "cnm_020",
+          "cnm_017"
+        ],
+        "levelReason": "A finite bound leaves only five small squares to check using elementary algebra."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_156",
+      "cnm_020",
+      "cnm_017"
+    ],
+    "annotationRationale": "The target is finding all integer solutions with a completeness argument. Both methods require the fraction's domain, division sign rules, and nonnegative square values. Divisor enumeration is specific to the first method; the second uses a finite bound and checks every possible square.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2002_AMC_12B_Q12",
+    "decision": "accept",
+    "mathematicalCheck": "Both methods correctly restrict n to 0 through 19. The factorization 20=(q+1)(20-n) gives square values q=0,1,4,9. Independently, the bound q<=19 leaves five squares, with q=16 yielding the noninteger 320/17. Both obtain exactly n=0,10,16,18 without counting opposite square roots twice.",
+    "levelCheck": "Both arguments use accessible algebra and short exhaustive lists, with denominator and sign restrictions stated.",
+    "methodDistinctness": "Divisor restriction and bounded square enumeration offer genuinely different ways to establish completeness at the same elementary level.",
+    "annotationCheck": "The integer-solution target is route-neutral, the shared supports fit both methods, and divisor enumeration remains local to the first method. No square-root estimation prerequisite is needed.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "divisor-restriction": "solution:divisor-restriction:cf760afaf3a8",
+    "bounded-square-enumeration": "solution:bounded-square-enumeration:cf760afaf3a8"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "17a42c9d6e6d08f4f34e92d6e4b6aae88cb18e0b8b595f7e636adaf702983601",
+    "inputHash": "65821305f70ced1a26d9bc67e5103dbdae6c657f951b9c3416e12d2850daa47e",
+    "authorInputHash": "d97517a6d9d2a893f23189785a36ff9d00b7c7a8adb506b4aefc7f06a1da5eee",
+    "reviewInputHash": "4c1b031eb90266a65210fddf929e8281b703bff4743bfa8d8e8ce7c9341b9251",
+    "authorResponseHash": "4b73c96970166cbdb40d00b2c2dcd9e800a1f4b3ea37e8552ffbf52d3db2e067",
+    "reviewerResponseHash": "6b68f9f0f814e2c638a935f0c9d4a427d18e1b837f2a48080775cf85fe58e0a6",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

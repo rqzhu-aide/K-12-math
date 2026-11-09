@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1979_AMC_12_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "dce252f6074981ba59111c53ccdaa8fe87c64022e666e600a9beff82590cd723",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "6f56ea8db5523b619822b660a991f66074ba491dd49b16e2696578b269c8074b",
+  "solutionFigureHashes": {},
+  "candidateHash": "1f28d65e1c1fe0ef8189605901d5b7eb0653111c53b81db85b9e10117c43fade",
+  "candidate": {
+    "questionId": "1979_AMC_12_Q25",
+    "derivedAnswer": "\\(-\\frac1{16}\\), choice B",
+    "answerStatus": "matches",
+    "answerReason": "With \\(a=-1/2\\), the first quotient has eight terms that each become \\(a^7\\) at \\(x=a\\). Thus \\(r_2=q_1(a)=8a^7=-1/16\\).",
+    "methods": [
+      {
+        "id": "quotient-evaluation",
+        "label": "Evaluate the first quotient",
+        "explanation": "Let \\(a=-1/2\\), so the divisor is \\(x-a\\). Polynomial division gives\n\\[\nx^8=(x-a)q_1(x)+r_1.\n\\]\nSubstituting \\(x=a\\) yields \\(r_1=a^8\\). We can therefore find the quotient by factoring \\(x^8-a^8\\):\n\\[\n\\begin{aligned}\nq_1(x)&=x^7+ax^6+a^2x^5+a^3x^4\\\\\n&\\quad+a^4x^3+a^5x^2+a^6x+a^7.\n\\end{aligned}\n\\]\nTo verify this expression, multiply it by \\(x-a\\). All the middle terms cancel, leaving \\(x^8-a^8\\).\n\nFor the second division, substituting \\(x=a\\) into \\(q_1(x)=(x-a)q_2(x)+r_2\\) gives \\(r_2=q_1(a)\\). Each of the eight terms in the displayed quotient becomes \\(a^7\\), so\n\\[\nr_2=8a^7\n=8\\left(-\\frac12\\right)^7\n=\\boxed{-\\frac1{16}},\n\\]\nchoice B.",
+        "nodeIds": [
+          "math:polynomial-remainder-factor"
+        ],
+        "prerequisiteIds": [
+          "cnm_029",
+          "cnm_032",
+          "cnm_142",
+          "cnm_146"
+        ],
+        "levelReason": "Uses polynomial division identities, direct factor verification, and evaluation at the divisor's root."
+      },
+      {
+        "id": "shifted-linear-coefficient",
+        "label": "Read the coefficient after shifting",
+        "explanation": "Combining the two division identities places both remainders in one equation:\n\\[\nx^8=\\left(x+\\frac12\\right)^2q_2(x)\n+r_2\\left(x+\\frac12\\right)+r_1.\n\\]\nSet \\(t=x+1/2\\), so \\(x=t-1/2\\). Then\n\\[\n\\left(t-\\frac12\\right)^8\n=t^2q_2\\left(t-\\frac12\\right)+r_2t+r_1.\n\\]\nOn the right, the first term has no constant or linear term because it is a polynomial multiplied by \\(t^2\\). Thus \\(r_2\\) is precisely the coefficient of \\(t\\) on the left.\n\nThe left side is a product of eight factors \\((t-1/2)\\). A linear term is obtained by choosing \\(t\\) from exactly one factor and \\(-1/2\\) from each of the other seven. There are eight choices for that one factor, so the coefficient is\n\\[\nr_2=8\\left(-\\frac12\\right)^7\n=\\boxed{-\\frac1{16}},\n\\]\nchoice B.",
+        "nodeIds": [
+          "math:polynomial-remainder-factor",
+          "cnm_146"
+        ],
+        "prerequisiteIds": [
+          "cnm_029",
+          "cnm_032"
+        ],
+        "levelReason": "Uses a change of variable and elementary polynomial multiplication to identify a linear coefficient."
+      }
+    ],
+    "assessedIds": [
+      "math:polynomial-remainder-factor"
+    ],
+    "supportIds": [
+      "cnm_029",
+      "cnm_032"
+    ],
+    "annotationRationale": "Both methods assess successive polynomial remainders under a linear divisor. Polynomial meaning and evaluation are shared support. The first route explicitly constructs and evaluates the quotient; the second identifies the second remainder as a coefficient in a shifted polynomial and obtains it by ordinary multiplication.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1979_AMC_12_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The first quotient identity is verified by cancellation, and evaluating at \\(a=-1/2\\) gives \\(r_2=8a^7=-1/16\\). Independently, the shifted division identity makes \\(r_2\\) the linear coefficient, obtained from exactly eight single-factor selections.",
+    "levelCheck": "Both methods are elementary polynomial algebra and require no calculus.",
+    "methodDistinctness": "Constructing and evaluating the quotient differs meaningfully from extracting a coefficient after shifting.",
+    "annotationCheck": "Successive polynomial remainders are the shared target. Evaluation, polynomial meaning, power laws, and multiplication are assigned consistently.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "quotient-evaluation": "solution:quotient-evaluation:6f56ea8db552",
+    "shifted-linear-coefficient": "shifted-linear-coefficient"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "40596df628eb5504dd402167ea2bf02c4113de449f7fb1a27c8fc7eddf84084d",
+    "inputHash": "3f882e50ec2f0048a3f9901a28092faf05b02ace7377cfae77428e5ac131284a",
+    "authorInputHash": "ba8b533d713f87b694721b471de4cb9d658e8234d3af084e0287668e31a0a4be",
+    "reviewInputHash": "50b9c9d012e794a3ed6fa4fb1c3fd82e1f0542c4f0d8d4b095a624e5d20bd95c",
+    "authorResponseHash": "636c6167be984b13ef81a9a922436123aa67c2b49f5d6b1a1f2ae0f88f63465d",
+    "reviewerResponseHash": "90deee4501868f2200307d39277613463f7483bedc0ac230a2d19b3e4abdf0eb",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

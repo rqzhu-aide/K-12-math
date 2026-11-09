@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1963_AMC_12_Q27",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "6c3a2b2bcd24fda4d5ad56f0e5fb49f3e5c9bddefadfe876bd0bd830a17ad1af",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "d1df8240d0bd16be631d6ec9ca1052be20b45c0645e999cf05e9e7a207826835",
+  "solutionFigureHashes": {},
+  "candidateHash": "246116a83ece2aa2e7960ee89e5864fdd8c71110c45c3f048a0bdbaf2bef0832",
+  "candidate": {
+    "questionId": "1963_AMC_12_Q27",
+    "derivedAnswer": "C, 22 regions",
+    "answerStatus": "matches",
+    "answerReason": "The successive lines add 1, 2, 3, 4, 5, and 6 regions to the original single region, giving 22.",
+    "methods": [
+      {
+        "id": "add-one-line",
+        "label": "Count what each new line adds",
+        "explanation": "Draw the lines one at a time and count the new regions created by each line. When the \\(n\\)th line is drawn, it meets all \\(n-1\\) earlier lines because none are parallel. These intersection points are distinct because no three lines are concurrent. They divide the new line into \\(n\\) portions, including its two unbounded ends.\n\nEach portion passes through an old region and splits that region into two, adding one region. The portions pass through different old regions: any two portions are separated by an earlier line, and they lie on opposite sides of that line. Thus no old region is counted twice. Each old region is convex, since it is the common part of a choice of sides of the earlier lines, so each straight cut creates exactly two pieces.\n\nLet \\(R_n\\) be the number of regions after \\(n\\) lines. We have established\n\\[\nR_0=1,\\qquad R_n=R_{n-1}+n.\n\\]\nTherefore\n\\[\nR_6=1+1+2+3+4+5+6=\\boxed{22}.\n\\]\nThe answer is \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "math:recursive-counting-probability"
+        ],
+        "prerequisiteIds": [
+          "cnm_h200",
+          "cnm_067"
+        ],
+        "levelReason": "The method uses elementary line geometry to build and apply a finite counting recurrence."
+      }
+    ],
+    "assessedIds": [
+      "math:recursive-counting-probability"
+    ],
+    "supportIds": [
+      "cnm_h200",
+      "cnm_067"
+    ],
+    "annotationRationale": "The target is constructing an incremental count and proving exactly how many regions each step adds. Simple recurrence notation and the meaning of nonparallel coplanar lines support the method. An arithmetic-sequence summation formula is unnecessary for these six increments.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1963_AMC_12_Q27",
+    "decision": "accept",
+    "mathematicalCheck": "The nth line has n-1 distinct intersections and therefore n portions. Earlier lines separate these portions into different old regions. Convexity ensures each affected region splits into exactly two, so the increment is n. Starting from one region gives 1+1+2+3+4+5+6=22.",
+    "levelCheck": "The recurrence and its geometric justification are elementary and appropriate. The explanation establishes the increment rather than merely asserting a pattern.",
+    "methodDistinctness": "One complete incremental-counting method is sufficient.",
+    "annotationCheck": "math:recursive-counting-probability includes constructing this finite counting recurrence. cnm_h200 and cnm_067 support recurrence notation and the intersection condition; an arithmetic-series formula is not claimed.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "add-one-line": "add-one-line"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "14ad9723e3c1a08b53612d5315c294bb1c78a7ac8736f60a14ccc12a4f4e8f17",
+    "inputHash": "dad08e10273a14faa0bbfa9041f4a0f71a33ca376717b82276ed7bc863c87018",
+    "authorInputHash": "c1f177cc55a794ffd9fb6cc3c6ce60a2531b9efb79439c6ebc404fe0d410df54",
+    "reviewInputHash": "45c736866ac9e82d40c4fa21e407d0b817a4310937cebbf73fc28fe67dc73b06",
+    "authorResponseHash": "89fed54166d390ab93a5317bbb9c44e64d07a9c78760b232ea52218dc9d1d824",
+    "reviewerResponseHash": "910656a6fd80986a80f75ab3b5e3e1cd79db20e1aa48154bc693e184a906d824",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

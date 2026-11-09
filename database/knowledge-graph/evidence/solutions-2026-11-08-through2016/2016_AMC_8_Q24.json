@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_8_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "7e8d3baaddc8a92f67935263c015ca82a927382be2e1656b96346ca9b9184cd2",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "0c890d99cc062b2c0879d67bda1c16163c7ce24759a2b461325cc63a03254af8",
+  "solutionFigureHashes": {},
+  "candidateHash": "7d2aef6d9e827455289a0a78f9c7c73458df13f8a675946ca83d618aba99c3a7",
+  "candidate": {
+    "questionId": "2016_AMC_8_Q24",
+    "derivedAnswer": "P=1, choice A",
+    "answerStatus": "matches",
+    "answerReason": "Divisibility by 5 forces S=5. Divisibility by 4 leaves QR=12,24,32. Applying the digit-sum test to RST eliminates the first and third cases and forces T=3 in the second, leaving P=1.",
+    "methods": [
+      {
+        "id": "digit-tests-and-cases",
+        "label": "Apply the divisibility tests",
+        "explanation": "Start with the divisibility-by-\\(5\\) condition because it fixes a digit immediately. A multiple of \\(5\\) ends in \\(0\\) or \\(5\\), and \\(0\\) is unavailable, so \\(S=5\\).\n\nNext, \\(PQR=100P+(10Q+R)\\). Since \\(100P\\) is divisible by \\(4\\), \\(PQR\\) is divisible by \\(4\\) exactly when its last two digits, \\(QR\\), form a multiple of \\(4\\). The digits \\(Q\\) and \\(R\\) are distinct members of \\(1,2,3,4\\). The last digit \\(R\\) must be even. Checking \\(R=2\\) gives \\(QR=12\\) or \\(32\\); checking \\(R=4\\) gives only \\(QR=24\\). Thus these three cases exhaust the possibilities.\n\nA number is divisible by \\(3\\) exactly when its digit sum is divisible by \\(3\\). Apply this to \\(RST\\), whose digit sum is \\(R+5+T\\):\n\n- If \\(QR=12\\), the remaining digits for \\(P,T\\) are \\(3,4\\). The possible sums are \\(2+5+3=10\\) and \\(2+5+4=11\\), so neither works.\n- If \\(QR=32\\), the remaining digits are \\(1,4\\). The sums are \\(8\\) and \\(11\\), so neither works.\n- If \\(QR=24\\), the remaining digits are \\(1,3\\). The sums are \\(10\\) and \\(12\\), so \\(T=3\\) and \\(P=1\\).\n\nThis gives \\(PQRST=12453\\). Indeed, \\(124=4\\cdot31\\), \\(245=5\\cdot49\\), and \\(453=3\\cdot151\\), so every original condition holds. Therefore \\(\\boxed{P=1}\\), choice \\(\\text{A}\\).",
+        "nodeIds": [
+          "math:finite-constraint-deduction",
+          "cnm_p154",
+          "cnm_p155"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_p053"
+        ],
+        "levelReason": "The solution uses elementary digit tests, decimal place value, and three exhaustive cases. Formal congruences are unnecessary."
+      }
+    ],
+    "assessedIds": [
+      "math:finite-constraint-deduction"
+    ],
+    "supportIds": [
+      "cnm_p153",
+      "cnm_p053",
+      "cnm_p154",
+      "cnm_p155"
+    ],
+    "annotationRationale": "The task requires finding a forced digit under simultaneous distinctness and divisibility constraints, fitting finite constraint deduction. The written method uses the tests for multiples of 5 and 3 and derives the last-two-digit test for 4 from decimal place value. The existing modular-congruence label is unnecessary for this elementary reasoning. The catalog lacks a specific node for the divisibility-by-4 test.",
+    "needsNewNodes": [
+      {
+        "name": "Divisibility by 4 from the last two digits",
+        "description": "Determine whether a decimal integer is divisible by 4 by checking the number formed by its last two digits; justify the test because all higher place values are multiples of 100, hence of 4.",
+        "reason": "This test is decisive in reducing the digit assignments to three cases. The catalog's existing divisibility-test nodes cover 2, 5, and 3, while formal modular congruence is broader than the reasoning used."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_8_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "Divisibility by 5 forces S=5. The exhaustive possible suffixes QR divisible by 4 are 12,24,32. Checking every remaining choice of T with the digit-sum test eliminates 12 and 32 and forces T=3 for QR=24, leaving P=1. The explicit checks of 124,245,453 establish existence.",
+    "levelCheck": "The place-value derivation of the divisibility-by-4 test and three short cases provide a complete AMC 8 explanation.",
+    "methodDistinctness": "One complete method is supplied; another would add little.",
+    "annotationCheck": "Finite constraint deduction fits the forced-digit target, and the supporting place-value and divisibility nodes match the solution. The proposed divisibility-by-4 node honestly identifies missing coverage without forcing a modular-congruence annotation.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "digit-tests-and-cases": "digit-tests-and-cases"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c2320cd64c3324f20fd36dd4a3fc50d3ffcfd5c951be1f8a2ad5bdc51c13d951",
+    "acceptedAt": "2026-11-08T14:59:35.476300+00:00",
+    "inputHash": "ece6d16de4f442ad6e8f8d706913fa7a83f114681409e7695cc3c20f843f1046",
+    "authorInputHash": "4fc54c16f063278f0e3fd2288e97b8f2216a77dc296f650b4433daf5cbf77c90",
+    "reviewInputHash": "4cf130ce697b214879f007b508dd7ddbd7b7f631bb21e6d3273f9719bfac10eb",
+    "authorResponseHash": "533bf25d5332a38f372ee5edd69f16f04a3054606f2425230cf6e7cf6c2d69a7",
+    "reviewerResponseHash": "a275e02740b1aa34d18b2323a583acc497e6d9736728f4f3c5bd551429385a7d",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

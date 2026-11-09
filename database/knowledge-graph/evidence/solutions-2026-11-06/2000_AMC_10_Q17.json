@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2000_AMC_10_Q17",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "272ca4a33ccd222d3ce9f906b8a167fbdc55167cbdd55c4725e39095cab49ca2",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "f94d77cbf008c146d77c6d3421fb872068d217e60d95ad473f53bb7f50c8fdc1",
+  "solutionFigureHashes": {},
+  "candidateHash": "36da2e8c559de6b95c3c73e55e3867dd8376af08e5230f68bdca3c22c0f69db7",
+  "candidate": {
+    "questionId": "2000_AMC_10_Q17",
+    "derivedAnswer": "D: $7.45",
+    "answerStatus": "matches",
+    "answerReason": "Every obtainable total is 1+124k cents for a nonnegative integer k. Only 745 cents among the choices has this form, and an explicit legal sequence reaches it.",
+    "methods": [
+      {
+        "id": "track-value-changes",
+        "label": "Track the change in total value",
+        "explanation": "Work in cents and examine how each exchange changes the total value. A quarter becomes five nickels, worth \\(25\\) cents, and a nickel becomes five pennies, worth \\(5\\) cents. These exchanges preserve value. A penny becomes five quarters, worth \\(125\\) cents, so that exchange increases the total by \\(125-1=124\\) cents.\n\nStarting from one cent, after \\(k\\) penny exchanges the total must therefore be\n\\[\n1+124k\n\\]\ncents, where \\(k\\) is a nonnegative integer. The only numbers of this form between the smallest and largest choices, \\(363\\) and \\(907\\) cents, are\n\\[\n373,497,621,745,869.\n\\]\nOnly \\(745\\) cents appears among the choices.\n\nWe must also check that this total can actually be reached. Exchange the initial penny for five quarters, all five quarters for \\(25\\) nickels, and all \\(25\\) nickels for \\(125\\) pennies. Then exchange five of those pennies for \\(25\\) quarters, leaving \\(120\\) pennies. Their total value is\n\\[\n25\\cdot25+120=745\\text{ cents}.\n\\]\nThus Boris could have \\(\\boxed{\\$7.45}\\), choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:invariant-reasoning"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_p112"
+        ],
+        "levelReason": "The method uses elementary coin values, fixed increments, multiples, and a concrete sequence of allowed exchanges."
+      }
+    ],
+    "assessedIds": [
+      "math:invariant-reasoning"
+    ],
+    "supportIds": [
+      "cnm_p153",
+      "cnm_p112"
+    ],
+    "annotationRationale": "The target is constraining reachable states by a property preserved under every allowed exchange. The written method expresses the unchanged remainder through fixed 124-cent increments, using elementary multiples and arithmetic. Its explicit construction verifies reachability rather than treating the necessary condition as sufficient.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2000_AMC_10_Q17",
+    "decision": "accept",
+    "mathematicalCheck": "Quarter and nickel exchanges preserve value, while each penny exchange adds 124 cents. Thus every reachable total is \\(1+124k\\) cents. Only 745 cents among the choices has this form. The legal construction leaves 25 quarters and 120 pennies, totaling 745 cents.",
+    "levelCheck": "Coin arithmetic, fixed increments, and elementary multiples fit AMC 10. The explanation distinguishes the necessary restriction from actual reachability.",
+    "methodDistinctness": "The value restriction and explicit construction together form one complete method.",
+    "annotationCheck": "The invariant node is justified by the unchanged remainder under every exchange. Multiples and mixed integer arithmetic appropriately support the calculation.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "track-value-changes": "track-value-changes"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "d02ad08740323ce2414ab405db5d87cada89054b495d575da96dcf8f8aaeb6bb",
+    "inputHash": "d9d25bfb9341161fa8bce405f645c67f4e08b82986516c5d645cead90ede03b8",
+    "authorInputHash": "02072134bff495322bf07c645d861beac81bcd350c05580e6c9e7ec7ba921b94",
+    "reviewInputHash": "6934719776d90393ded51516821a1886e77967e5ce1e43ee02e9afd95ac3223f",
+    "authorResponseHash": "036d938d97ad893ff86566e3fdc72c6389d219a9fd899cc7432b4c023fe1aec9",
+    "reviewerResponseHash": "6b101677aaf00fe195016eb02275ddbe7d7efdcba4ed303c5dfbd4c4bc542381",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

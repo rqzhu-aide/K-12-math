@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_12B_Q11",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "d67e8e30411cfa8b83ea859bec33e0af4d1c92a270211a5eed3ca5007c7182c5",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "cc26440cbebd7176deb5f10ed85c811711293f0dcef3a3ecab3c085bfc5d1242",
+  "solutionFigureHashes": {},
+  "candidateHash": "a66e74e43d58821ebfcfe910cae691f6083182b9482e7eb401456ec83429bf20",
+  "candidate": {
+    "questionId": "2016_AMC_12B_Q11",
+    "derivedAnswer": "D (50 squares)",
+    "answerStatus": "matches",
+    "answerReason": "Counting by the integer coordinate of the left edge gives 6, 15, 17, and 12 squares, totaling 50.",
+    "methods": [
+      {
+        "id": "integer-left-edge-count",
+        "label": "Count by the left edge",
+        "explanation": "An axis-parallel square with integer vertices has an integer side length. Let its bottom-left vertex be \\((i,b)\\) and its side length be the positive integer \\(k\\).\n\nThe triangular region satisfies \\(y\\ge-0.1\\), \\(x\\le5.1\\), and \\(y\\le\\pi x\\). Integer vertices must therefore have \\(y\\ge0\\) and \\(0\\le x\\le5\\). Because the sloping boundary rises to the right, the top-left corner is the most restrictive point of the square for that boundary. Thus containment is equivalent to\n\\[\nb\\ge0,\\qquad i+k\\le5,\\qquad b+k\\le\\pi i.\n\\]\nThe case \\(i=0\\) is impossible because \\(b+k>0\\), so \\(i\\) can only be \\(1,2,3,4\\).\n\nLet \\(H_i=\\lfloor\\pi i\\rfloor\\), the greatest integer at most \\(\\pi i\\). Using \\(3<\\pi<13/4\\), we obtain\n\\[\nH_1=3,\\quad H_2=6,\\quad H_3=9,\\quad H_4=12.\n\\]\nFor fixed \\(i\\) and \\(k\\), the bottom coordinate can be any integer from \\(0\\) through \\(H_i-k\\), giving \\(H_i-k+1\\) squares. The allowable side lengths satisfy both \\(k\\le5-i\\) and \\(k\\le H_i\\). Consequently,\n\\[\n\\begin{aligned}\ni=1 &: \\quad 3+2+1=6,\\\\\ni=2 &: \\quad 6+5+4=15,\\\\\ni=3 &: \\quad 9+8=17,\\\\\ni=4 &: \\quad 12.\n\\end{aligned}\n\\]\nEvery valid square has exactly one left coordinate, side length, and bottom coordinate, so these cases include every square exactly once. The total is\n\\[\n6+15+17+12=\\boxed{50},\n\\]\nwhich is choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "math:lattice-counting",
+          "math:floor-ceiling"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_h230"
+        ],
+        "levelReason": "The method uses coordinate inequalities, integer bounds, and a short exhaustive count, all within AMC 12 scope."
+      }
+    ],
+    "assessedIds": [
+      "math:lattice-counting"
+    ],
+    "supportIds": [
+      "cnm_082",
+      "cnm_h230"
+    ],
+    "annotationRationale": "The task asks for a count obtained from integer-coordinate restrictions. The method encodes each square uniquely and uses floors to count its vertical positions. Coordinate interpretation and addition across disjoint cases support the count; floor notation is a method component rather than a separate route-neutral target.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_12B_Q11",
+    "decision": "accept",
+    "mathematicalCheck": "Containment is equivalent to the stated integer bounds, with the top-left corner controlling the sloping boundary. The floor values are 3, 6, 9, and 12, producing counts 6, 15, 17, and 12. The unique square encoding establishes completeness without duplication, giving 50.",
+    "levelCheck": "Coordinate inequalities, floors, and finite counting are appropriate for AMC 12. The decisive bounds and counting steps are explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Lattice counting fits the bottom-left-point counts. Floor reasoning is appropriately method-local, while coordinates and disjoint addition support the method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "integer-left-edge-count": "integer-left-edge-count"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "1736dbd9c8593b69d966e803842af28b699d676fe272136b8992342503f250cb",
+    "acceptedAt": "2026-11-07T10:53:34.730621+00:00",
+    "inputHash": "2c6ba1f691c85473ba4fe968600eb13b5b55045511102d20f313e6e831c296b5",
+    "authorInputHash": "f11d5de56ca288a888febe37bc4285e31c6295242cd3c24a6db0b611ff3bb304",
+    "reviewInputHash": "48f8328c3eaa6d9c630cf0480a07e5ef530aff49480f2b7bedebad02ae6aaa2d",
+    "authorResponseHash": "e488555e5a20d8d6b7c565d2425e7f7c95d9f60b3487e48b6c69f4fa6f9ab021",
+    "reviewerResponseHash": "c46e39a08692c848a3b615960974fa6fd8ab8d56e10e799b529903add94b82a1",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

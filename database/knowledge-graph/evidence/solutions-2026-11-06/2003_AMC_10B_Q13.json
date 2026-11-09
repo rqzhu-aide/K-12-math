@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2003_AMC_10B_Q13",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "68873981fbb069ec1094b501ddd5c52c6f13eec7e484e1c14e2e62700d77bd68",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "fec1fb5c550e3142f5531b87df846e4db28705faee58c39d5c96c6d765fd3b8f",
+  "solutionFigureHashes": {},
+  "candidateHash": "d2754d4129bc54d9fd8ccd3df8dcd0bcb46a191ea23caa32bf43ac21d816b668",
+  "candidate": {
+    "questionId": "2003_AMC_10B_Q13",
+    "derivedAnswer": "E, 10",
+    "answerStatus": "matches",
+    "answerReason": "A two-digit number has digit sum between 1 and 18. Only first digit sums 3 and 12 have digit sum 3; they produce 3 and 7 eligible two-digit numbers, totaling 10.",
+    "methods": [
+      {
+        "id": "classify-first-digit-sum",
+        "label": "Find the possible first digit sums",
+        "explanation": "First determine what the inner digit sum can be. Let \\(a\\) and \\(b\\) be the tens and units digits of \\(x\\), so \\(1\\le a\\le9\\) and \\(0\\le b\\le9\\). Then\n\\[\ns=\\clubsuit(x)=a+b\n\\]\nis an integer from \\(1\\) through \\(18\\).\n\nAmong these possible values of \\(s\\), the only ones with digit sum \\(3\\) are \\(3\\) and \\(12\\). Indeed, a single-digit value must itself be \\(3\\); a two-digit value in this range has tens digit \\(1\\), so its units digit must be \\(2\\).\n\nIf \\(a+b=3\\), the possible numbers are \\(12,21,30\\), giving \\(3\\) numbers.\n\nIf \\(a+b=12\\), the tens digit can be any integer from \\(3\\) through \\(9\\), and the units digit is then fixed as \\(12-a\\). This gives \\(39,48,57,66,75,84,93\\), or \\(7\\) numbers.\n\nThese cases exhaust the possible first digit sums and cannot overlap. Therefore the count is\n\\[\n3+7=\\boxed{10},\n\\]\nchoice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_h230",
+          "cnm_p017",
+          "cnm_h003"
+        ],
+        "prerequisiteIds": [],
+        "levelReason": "Bounding the digit sum and listing two small, disjoint cases uses elementary place value and counting."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h230",
+      "cnm_p017"
+    ],
+    "supportIds": [
+      "cnm_h003"
+    ],
+    "annotationRationale": "The task combines tens-and-ones restrictions with counting disjoint digit-sum cases. Systematic enumeration supports the count and verifies that each eligible number appears once. No congruence or digital-root theorem is needed.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2003_AMC_10B_Q13",
+    "decision": "accept",
+    "mathematicalCheck": "The first digit sum lies from 1 through 18, where only 3 and 12 have digit sum 3. These yield respectively 3 and 7 two-digit numbers. The digit bounds and disjoint cases establish the exhaustive total of 10.",
+    "levelCheck": "Place value, small bounds, and systematic enumeration fit AMC 10.",
+    "methodDistinctness": "One complete case-counting method is sufficient.",
+    "annotationCheck": "Tens and ones, disjoint-case addition, and enumeration accurately describe the reasoning without introducing unnecessary number theory.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "classify-first-digit-sum": "classify-first-digit-sum"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "a34cb4db6842dcee5414aa7956d6ea3feb0f4a43b6e34e2e1c941d433a446083",
+    "inputHash": "c9d96acf3a9cf0267736e3b6dd4578f53bab489b541fb2147c00161c5c36c059",
+    "authorInputHash": "8e9c439c9060f2ae972d47c465825eb1486c160fa9b004fbef14e4af926ca65c",
+    "reviewInputHash": "42f3c6e0ea6fe0e681be248723977f208acf739346bd643158c5f40564c7fc10",
+    "authorResponseHash": "056ff438337c068fc0e475ae6c8076d2fdd82918c9c0adb2aa4069981b5c0aa5",
+    "reviewerResponseHash": "d4e2bf9f41cab0c2f72812d15c1eba549408fab7ba185ad8e6266626926a7356",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

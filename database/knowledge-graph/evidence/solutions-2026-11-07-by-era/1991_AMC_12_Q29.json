@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1991_AMC_12_Q29",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "32ca940fa4dabb2564517b52c54edef4a7b3d40e3725dfb6756a4f70e717b46e",
+    "figureHashes": {
+      "figures/1991_AMC_12_Q29_question_fig1.svg": "b502bc8f86bd0851b92e6d8eede2d71eb33056f2267ed5e0c766eecdc6869b15"
+    }
+  },
+  "solutionSHA256": "0ff30d00ff10352466150d5ca32ce6218c49d7dd62265d5a472540e00507cd21",
+  "solutionFigureHashes": {},
+  "candidateHash": "48073be2a2aed1cdd6563d2e74f5c9319c9bdd741320c60dc5b56b6071708b46",
+  "candidate": {
+    "questionId": "1991_AMC_12_Q29",
+    "derivedAnswer": "\\(\\dfrac{7\\sqrt{21}}{20}\\), choice B",
+    "answerStatus": "matches",
+    "answerReason": "The fold fixes P and Q, so PA'=PA and QA'=QA. These equalities determine AP=7/5 and AQ=7/4, which give PQ=7√21/20.",
+    "methods": [
+      {
+        "id": "fold-distances-right-triangles",
+        "label": "Use fold distances and right triangles",
+        "explanation": "Points on the crease stay fixed during the fold. Since the fold carries \\(A\\) to \\(A'\\), it follows that \\(PA'=PA\\) and \\(QA'=QA\\). These equal distances let us determine where the crease meets the sides.\n\nFirst, a useful consequence of the Pythagorean theorem is that if two sides of lengths \\(u,v>0\\) enclose a \\(60^\\circ\\) angle, the opposite side \\(w\\) satisfies\n\\[\nw^2=\\left(v-\\frac u2\\right)^2+\\left(\\frac{\\sqrt3u}{2}\\right)^2\n=u^2+v^2-uv.\n\\]\nTo see why, drop a perpendicular from the endpoint of the side of length \\(u\\) to the line containing the other side. The resulting \\(30^\\circ\\)-\\(60^\\circ\\)-\\(90^\\circ\\) triangle has horizontal leg \\(u/2\\) and perpendicular leg \\(\\sqrt3u/2\\). Squaring the horizontal difference also handles a perpendicular foot outside the side segment.\n\nBecause \\(BC=1+2=3\\), all three sides of the equilateral triangle have length \\(3\\). Set \\(s=AP\\) and \\(t=AQ\\), with \\(0<s,t<3\\). Thus \\(BP=3-s\\) and \\(CQ=3-t\\).\n\nIn triangle \\(BPA'\\), the sides \\(BP\\) and \\(BA'\\) enclose a \\(60^\\circ\\) angle. Using \\(PA'=s\\), the identity gives\n\\[\ns^2=(3-s)^2+1-(3-s)\n=s^2-5s+7.\n\\]\nThe squared terms cancel, leaving \\(s=7/5\\). Similarly, triangle \\(CQA'\\) gives\n\\[\nt^2=(3-t)^2+4-2(3-t)\n=t^2-4t+7,\n\\]\nso \\(t=7/4\\). Both values lie between \\(0\\) and \\(3\\), as required for points on the sides.\n\nFinally, \\(\\angle PAQ=60^\\circ\\), so applying the same identity to triangle \\(APQ\\) yields\n\\[\nPQ^2=\\left(\\frac75\\right)^2+\\left(\\frac74\\right)^2-\\frac75\\cdot\\frac74\n=49\\left(\\frac1{25}+\\frac1{16}-\\frac1{20}\\right)\n=\\frac{49\\cdot21}{400}.\n\\]\nTaking the positive square root, the crease has length \\(\\boxed{\\frac{7\\sqrt{21}}{20}}\\), choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_132",
+          "cnm_176",
+          "cnm_042",
+          "cnm_171"
+        ],
+        "prerequisiteIds": [
+          "cnm_131",
+          "cnm_139",
+          "cnm_140",
+          "cnm_174",
+          "cnm_148"
+        ],
+        "levelReason": "The special 60-degree side identity is derived from right triangles and the Pythagorean theorem. The remaining algebra reduces to linear equations, so no trigonometry is needed."
+      },
+      {
+        "id": "coordinate-equidistance-line",
+        "label": "Find the crease as an equidistance line",
+        "explanation": "The crease is the perpendicular bisector of \\(AA'\\), because folding reflects \\(A\\) to \\(A'\\). In coordinates, we can find this line by requiring each of its points to be equally far from \\(A\\) and \\(A'\\).\n\nChoose\n\\[\nB=(0,0),\\qquad C=(3,0),\\qquad A'=(1,0).\n\\]\nThe altitude of the equilateral triangle bisects its base. By the Pythagorean theorem its height is\n\\[\n\\sqrt{3^2-\\left(\\frac32\\right)^2}=\\frac{3\\sqrt3}{2},\n\\]\nso \\(A=(3/2,3\\sqrt3/2)\\).\n\nA point \\((x,y)\\) on the crease satisfies\n\\[\n\\left(x-\\frac32\\right)^2+\\left(y-\\frac{3\\sqrt3}{2}\\right)^2\n=(x-1)^2+y^2.\n\\]\nExpanding cancels both squared-variable terms and gives the line\n\\[\nx+3\\sqrt3y=8.\n\\]\nEquating squared distances is equivalent to equating distances, since distances are nonnegative.\n\nSide \\(AB\\) has equation \\(y=\\sqrt3x\\). Substitution into the crease equation gives \\(10x=8\\), hence\n\\[\nP=\\left(\\frac45,\\frac{4\\sqrt3}{5}\\right).\n\\]\nSide \\(AC\\) has equation \\(y=\\sqrt3(3-x)\\). Substitution gives \\(x+9(3-x)=8\\), so\n\\[\nQ=\\left(\\frac{19}{8},\\frac{5\\sqrt3}{8}\\right).\n\\]\nThe first point lies between \\(B\\) and \\(A\\), and the second between \\(A\\) and \\(C\\), so these are the crease endpoints on the triangle.\n\nTheir horizontal and vertical differences are \\(63/40\\) and \\(-7\\sqrt3/40\\). Therefore\n\\[\nPQ=\\sqrt{\\left(\\frac{63}{40}\\right)^2+\\left(\\frac{-7\\sqrt3}{40}\\right)^2}\n=\\frac{\\sqrt{4116}}{40}\n=\\boxed{\\frac{7\\sqrt{21}}{20}}.\n\\]\nThe answer is choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_132",
+          "cnm_133",
+          "cnm_h173",
+          "cnm_h172",
+          "cnm_171"
+        ],
+        "prerequisiteIds": [
+          "cnm_131",
+          "cnm_139",
+          "cnm_082",
+          "cnm_174",
+          "cnm_148",
+          "cnm_089"
+        ],
+        "levelReason": "This alternative uses school coordinate geometry, squared-distance equations, and linear substitution. It provides a distinct way to locate the entire crease without introducing more advanced mathematics."
+      }
+    ],
+    "assessedIds": [
+      "cnm_132"
+    ],
+    "supportIds": [
+      "cnm_131",
+      "cnm_139"
+    ],
+    "annotationRationale": "The route-neutral target is using reflection properties to extract length information from a fold. Both methods require understanding the fold correspondence and equilateral-triangle geometry. The first method constructs right-triangle distance relationships, solves the resulting linear equations, and simplifies a radical. The coordinate alternative uses the perpendicular-bisector distance property, line intersections, and the point-distance formula. Those coordinate procedures remain local to that alternative. These annotations describe the task and written methods, not learner mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1991_AMC_12_Q29",
+    "decision": "accept",
+    "mathematicalCheck": "The figure places P on AB and Q on AC. Reflection gives PA'=AP and QA'=AQ. The derived 60-degree identity yields 5AP=7 and 4AQ=7, both within the side length 3. Thus PQ²=49(1/25+1/16-1/20)=1029/400. Independently, the coordinate equidistance equation gives x+3√3y=8; its stated side intersections and their distance are correct.",
+    "levelCheck": "Both explanations are complete and appropriate for AMC 12. The first derives its distance identity using special right triangles and the Pythagorean theorem; the second uses elementary coordinate geometry.",
+    "methodDistinctness": "The methods offer distinct approaches: determining side distances through triangle relationships and locating the crease through its coordinate locus.",
+    "annotationCheck": "The reflection assessment is route-neutral, shared support is justified, and each method's nodes and prerequisites match its actual reasoning. The Pythagorean application annotation is supported by the explicit derivation.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "fold-distances-right-triangles": "fold-distances-right-triangles",
+    "coordinate-equidistance-line": "coordinate-equidistance-line"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "cd23ac34c3d62c78f4987e328c65ab53443c525accc963adb05fb0d644b051e5",
+    "acceptedAt": "2026-11-08T00:22:22.734371+00:00",
+    "inputHash": "81adb841c06945c1a24e24fc9b5f37d75fa5dac9568da3d709050c2d847480ba",
+    "authorInputHash": "27fa55206ec0507c03f708f5b24c579a8ef5db3b75c9def163b58ab72b3698e9",
+    "reviewInputHash": "ea512e0b98320191eba15f93ddb3b914dc3e193e3ae28cf0f02af56d7db4bd3f",
+    "authorResponseHash": "961ee098b3d48d28d0af90e497e27cf7436b24e753e50f7af1ca1d52c0162a6b",
+    "reviewerResponseHash": "e053a7c0fe772b3e532cab13e2bf2035771bbfa0c9b94d3e8da55381dd64185f",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

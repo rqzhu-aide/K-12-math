@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2021_AMC_10B_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "e3c59e47186e321df052c67f158f7b99543058f534106b8ffca84e2c768922c7",
+    "figureHashes": {
+      "figures/2021_AMC_10B_Q24_question_fig1.svg": "ccff2d0114fafb4f44c88b6fad3947f737f5d65e12e324f067c28b530725ffcc"
+    }
+  },
+  "solutionSHA256": "fb068c27e9bd3633927638cc82994e344f7190039936b0caec4b19f9421c3262",
+  "solutionFigureHashes": {},
+  "candidateHash": "c866fbb15289c98cc7a8af9ef3d62d1c4039a0578523e0cd2d926e8e73af9ec0",
+  "candidate": {
+    "questionId": "2021_AMC_10B_Q24",
+    "derivedAnswer": "B. \\((6,2,1)\\)",
+    "answerStatus": "matches",
+    "answerReason": "Every legal first move from (6,2,1) permits a reply to paired equal walls or one of two smaller positions proved losing below. Each other choice gives Arjun an opening move to a losing position.",
+    "methods": [
+      {
+        "id": "paired-walls-and-replies",
+        "label": "Paired walls and complete response lists",
+        "explanation": "The useful observation is that pairs of equal walls give the second player a winning strategy. Pair each wall with another of the same length. Whenever the first player removes bricks from one wall, the second player makes the corresponding removal in its partner. Any newly created walls are again paired. The reply is always legal because the partner wall was untouched, so the first player cannot remove the last brick. Thus the second player eventually wins.\n\nWrite a position as a tuple of its nonempty wall lengths, ignoring their order. Call it losing when the player whose turn it is loses against correct play. We will show that every move from \\((6,2,1)\\) allows a reply to paired walls or to a smaller losing position.\n\nTo make the case lists exhaustive, observe that removing \\(k\\) consecutive bricks from a wall of length \\(n\\), where \\(k=1\\) or \\(2\\) and \\(k\\le n\\), leaves lengths \\(a\\) and \\(n-k-a\\), with \\(0\\le a\\le n-k\\). Omit zero lengths. Reversing the wall merely interchanges the two remaining lengths.\n\nFirst consider \\((4,1)\\). The left sides below list every distinct position after one move; the arrows give legal replies:\n\\[\n\\begin{aligned}\n(4)&\\longrightarrow(1,1),\\\\\n(3,1)&\\longrightarrow(1,1),\\\\\n(2,1,1)&\\longrightarrow(1,1),\\\\\n(2,1)&\\longrightarrow(1,1),\\\\\n(1,1,1)&\\longrightarrow(1,1).\n\\end{aligned}\n\\]\nFor example, \\((4)\\longrightarrow(1,1)\\) removes the middle two bricks. The other replies shorten the wall of length \\(3\\) to \\(1\\), remove the entire wall of length \\(2\\), shorten a wall of length \\(2\\) to \\(1\\), or remove a singleton, respectively. Every reply leaves paired walls, so \\((4,1)\\) is losing.\n\nThe same reasoning proves that \\((3,2,1)\\) is losing. Here is its complete response list:\n\\[\n\\begin{aligned}\n(2,2,1)&\\longrightarrow(2,2),\\\\\n(2,1,1,1)&\\longrightarrow(1,1,1,1),\\\\\n(2,1,1)&\\longrightarrow(1,1),\\\\\n(3,1,1)&\\longrightarrow(1,1,1,1),\\\\\n(3,1)&\\longrightarrow(1,1),\\\\\n(3,2)&\\longrightarrow(2,2).\n\\end{aligned}\n\\]\nIn the fourth row, remove the middle brick of the wall of length \\(3\\); all other replies remove end bricks or a whole small wall. Again, every reply leaves paired walls.\n\nNow suppose Arjun starts from \\((6,2,1)\\). Its complete list of first-move results, together with Beth's replies, is\n\\[\n\\begin{aligned}\n(5,2,1)&\\longrightarrow(2,2,1,1),\\\\\n(4,2,1,1)&\\longrightarrow(2,2,1,1),\\\\\n(3,2,2,1)&\\longrightarrow(2,2,1,1),\\\\\n(4,2,1)&\\longrightarrow(2,2,1,1),\\\\\n(3,2,1,1)&\\longrightarrow(2,2,1,1),\\\\\n(2,2,2,1)&\\longrightarrow(2,2,1,1),\\\\\n(6,1,1)&\\longrightarrow(2,2,1,1),\\\\\n(6,1)&\\longrightarrow(4,1),\\\\\n(6,2)&\\longrightarrow(3,2,1).\n\\end{aligned}\n\\]\nThe first six rows come from playing on the wall of length \\(6\\); the last three come from playing on a smaller wall. For the first reply, split the wall of length \\(5\\) into lengths \\(1\\) and \\(2\\) by removing two adjacent bricks. In the fourth row, split the wall of length \\(4\\) into lengths \\(1\\) and \\(2\\) by removing one brick. In the seventh row, remove the middle two bricks of the wall of length \\(6\\). In the last row, remove two adjacent bricks from that wall to leave lengths \\(1\\) and \\(3\\). Thus every listed reply is legal and leaves a position already proved losing for Arjun. Beth can therefore guarantee a win.\n\nFinally, the other choices give Arjun the following winning opening moves:\n\\[\n\\begin{aligned}\n\\text{A: }(6,1,1)&\\longrightarrow(2,2,1,1),\\\\\n\\text{C: }(6,2,2)&\\longrightarrow(2,2,2,2),\\\\\n\\text{D: }(6,3,1)&\\longrightarrow(3,3,1,1),\\\\\n\\text{E: }(6,3,2)&\\longrightarrow(6,2,1).\n\\end{aligned}\n\\]\nThe first two moves remove the middle two bricks of the wall of length \\(6\\). The third splits that wall into lengths \\(1\\) and \\(3\\), and the fourth removes two end bricks from the wall of length \\(3\\). Each leaves Beth a losing position. Hence the required configuration is \\(\\boxed{(6,2,1)}\\), choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "math:subtraction-game-strategies"
+        ],
+        "prerequisiteIds": [],
+        "levelReason": "The proof uses elementary matching, exhaustive legal-move lists, and the stated last-brick rule, all within AMC 10 scope."
+      }
+    ],
+    "assessedIds": [
+      "math:subtraction-game-strategies"
+    ],
+    "supportIds": [],
+    "annotationRationale": "The target is a guaranteed strategy in a finite removal game. The written method proves losing positions by checking every legal move and supplying a winning reply, with paired equal walls providing the terminal strategy. It does not use random-play probabilities.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2021_AMC_10B_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "The response lists contain all 5, 6, and 9 distinct successors of (4,1), (3,2,1), and (6,2,1), respectively. Every reply is legal and reaches paired equal walls or a previously proved losing position. Mirroring on paired walls guarantees the last move because the brick total decreases. The winning openings for A, C, D, and E are also valid, establishing B uniquely.",
+    "levelCheck": "Elementary pairing and exhaustive move lists fit AMC 10. The explanation justifies both completeness and the guaranteed strategy.",
+    "methodDistinctness": "One complete method combining pairing with explicit replies is sufficient.",
+    "annotationCheck": "The assessed subtraction-game node fits the actual optimal-play argument. The annotations correctly avoid probability and advanced game theory.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "paired-walls-and-replies": "paired-walls-and-replies"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "d9d136f6fdbe492d3df6794421bae81e5dbd4a1257e91eae3f187435b987b2e7",
+    "acceptedAt": "2026-11-07T08:23:44.258429+00:00",
+    "inputHash": "8a37d8beee1e6e491af313b3180d91fb2e3a997c01a8666471ea376419e1ecef",
+    "authorInputHash": "3f61100b912aca3d7edeeb24288bc4518193b810335373c955e10bf19b8f77b4",
+    "reviewInputHash": "613b0dd23c1c5a18ac8d15e37c7b64ca57ed2af999c3163c04cf36b4020bc1eb",
+    "authorResponseHash": "6b0ad8949a2aa9459515b49247378286c4025166e2f70ef735f9beb97f24aeb9",
+    "reviewerResponseHash": "0cfdc35d328893d90995ea10f80a787e830688843b5cfe4d76eccee248f07201",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

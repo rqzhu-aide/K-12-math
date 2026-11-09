@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2006_AMC_12A_Q20",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "75e886fe2a1e1ddfe4301ee25ef4f31cf585c72b817e349da882bb28ab2d546e",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "18c9961562c24b63459bf1d695d5ecd9c431883ff9cbf5b49e2b26c6e89c315f",
+  "solutionFigureHashes": {},
+  "candidateHash": "41021090302a2f20db56ff32300225df504fd3e3ee7fab19d2fa7296a7e085f6",
+  "candidate": {
+    "questionId": "2006_AMC_12A_Q20",
+    "derivedAnswer": "C: \\(\\frac{2}{243}\\)",
+    "answerStatus": "matches",
+    "answerReason": "There are \\(3^7\\) equally likely move sequences and \\(18\\) successful nonrepeating paths from the starting vertex. Their ratio is \\(18/3^7=2/243\\).",
+    "methods": [
+      {
+        "id": "enumerate-cube-paths",
+        "label": "Count paths after fixing the first two moves",
+        "explanation": "Seven moves produce eight visited positions when the starting vertex is included. Since a cube has eight vertices, success means that the path never repeats a vertex.\n\nThere are \\(3^7\\) possible seven-move sequences, all equally likely by the stated independence and equal edge probabilities. To count the successful sequences, there are \\(3\\) choices for the first move and \\(2\\) choices for a second move that does not return to the start.\n\nFor any such two-move beginning, label the face containing those two edges \\(ABCD\\) in cyclic order, so the beginning is \\(A\\to B\\to C\\). Label the opposite face \\(EFGH\\), with connecting edges \\(AE,BF,CG,DH\\). Every allowed two-move beginning has this same arrangement, so we can count its completions once.\n\nAt \\(C\\), the next unvisited vertex is either \\(D\\) or \\(G\\).\n\nIf the bug moves to \\(D\\), it must then move to \\(H\\). All four vertices on the opposite face remain to be traversed, starting at \\(H\\). The two possible orders are \\(H\\to E\\to F\\to G\\) and \\(H\\to G\\to F\\to E\\). This gives two completions.\n\nIf the bug moves from \\(C\\) to \\(G\\), it can next choose \\(F\\) or \\(H\\). Choosing \\(F\\) forces the successful continuation \\(F\\to E\\to H\\to D\\). Choosing \\(H\\) cannot succeed: moving next to \\(D\\) gets stuck with \\(E,F\\) unvisited, while moving next to \\(E\\) forces a move to \\(F\\), where the bug gets stuck with \\(D\\) unvisited. This gives one completion.\n\nThese cases exhaust the unvisited neighbors at every branch and do not overlap. Thus each two-move beginning has \\(2+1=3\\) successful completions, giving\n\\[\n3\\cdot2\\cdot3=18\n\\]\nsuccessful paths. The probability is therefore\n\\[\n\\frac{18}{3^7}=\\boxed{\\frac{2}{243}},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "math:graph-models",
+          "cnm_285",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_p160",
+          "cnm_h231",
+          "cnm_h140"
+        ],
+        "levelReason": "The proof uses cube adjacency, a short exhaustive case analysis, and equally likely outcomes."
+      }
+    ],
+    "assessedIds": [
+      "math:graph-models",
+      "cnm_285"
+    ],
+    "supportIds": [
+      "cnm_p160",
+      "cnm_h231",
+      "cnm_h140"
+    ],
+    "annotationRationale": "The task asks for a probability defined by vertex visits along cube edges, so graph paths and equally likely probability are the targets. The written route combines disjoint branches with multiplicative stages. Cube structure, the multiplication principle, and independence support the model. Symmetry only transfers the completion count between distinct prefixes; paths are not being identified up to symmetry.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2006_AMC_12A_Q20",
+    "decision": "accept",
+    "mathematicalCheck": "For each of the six nonreturning two-move prefixes, the labeled cube has two successful completions through D and one through G. The branches exhaust all unvisited neighbors, giving 18 successful paths among 3^7 equally likely sequences, hence 2/243.",
+    "levelCheck": "The verbal labeling makes the cube adjacency and exhaustive enumeration understandable without a supplied diagram. All reasoning is elementary contest counting.",
+    "methodDistinctness": "The single enumeration method is complete; a recurrence alternative is unnecessary.",
+    "annotationCheck": "Graph paths and equally likely probability are justified assessed targets. Combined counting, cube structure, multiplication, and independence accurately describe the written route.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "enumerate-cube-paths": "enumerate-cube-paths"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "8b143d6d9f9d67e2fbf4012426763b5cec42947acc372888e729d791bd09162b",
+    "inputHash": "168ed7f1ac133539b298e0b81cd9dc49ee1f41b2d7d42eac875786e395a24636",
+    "authorInputHash": "50872dbc7e0a07a4287f3b14acc00386462b1ece6f9b2678322c89c7c8694701",
+    "reviewInputHash": "482f69ba376ad03c4562e25ca29a350ff153e8aafce80696e2fb75e3d1634f6c",
+    "authorResponseHash": "a48dfc255c70ba9282e7268bffc310a06d224f6063584f2a7ccfb772057ca802",
+    "reviewerResponseHash": "36a5d0ac5cf6f05b66231cf20b09f87be18f160bc902aaf0528e244643e59ef9",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_10A_Q18",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "b76147914b61d4b82f9b3212dc2b4197768d2bede369868c36d32dc16e1a7fb6",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "e6a9552effa873c090e19da7ff3868e7015b34a5a5d731b6246c7c9599ff3ae5",
+  "solutionFigureHashes": {},
+  "candidateHash": "15d8523ece53b0fbd5d191410ffe70f0c1959e39939ccc61d6f711ec1b03b513",
+  "candidate": {
+    "questionId": "2016_AMC_10A_Q18",
+    "derivedAnswer": "C: 6",
+    "answerStatus": "matches",
+    "answerReason": "The face conditions force the four opposite-vertex pairs to have a common positive difference of 1, 2, or 4. These give 144 labelings of a fixed cube, with 24 distinct rotations per arrangement, so the answer is 6.",
+    "methods": [
+      {
+        "id": "opposite-pairs-and-rotations",
+        "label": "Opposite pairs and rotations",
+        "explanation": "Two opposite faces partition the eight vertices. Since the labels sum to \\(36\\), every face must sum to \\(18\\).\n\nColor the vertices black and white so that every edge joins different colors. There are four vertices of each color. Call the black labels \\(a,b,c,d\\), and call their respective opposite-vertex labels \\(a',b',c',d'\\). Any two black vertices lie on one face, together with the white partners of the other two black vertices. For example, comparing two face sums gives\n\\[\na+b+c'+d'=a+c+b'+d',\n\\]\nso \\(b-b'=c-c'\\). Comparing faces with other shared black vertices in the same way gives\n\\[\na-a'=b-b'=c-c'=d-d'.\n\\]\nThus all four opposite pairs have the same positive difference \\(k\\), and their four smaller labels occupy one color class.\n\nLet \\(S\\) be the sum of those smaller labels. The larger labels sum to \\(S+4k\\), so\n\\[\n2S+4k=36,\n\\qquad S=18-2k.\n\\]\nThe four smaller labels are distinct positive integers, so \\(S\\ge1+2+3+4=10\\). Therefore \\(1\\le k\\le4\\).\n\nFor a fixed difference, the smallest unused number must be paired with the number \\(k\\) larger. This forces the following pairings:\n\\[\n\\begin{aligned}\nk=1:&\\ (1,2),(3,4),(5,6),(7,8),\\\\\nk=2:&\\ (1,3),(2,4),(5,7),(6,8),\\\\\nk=4:&\\ (1,5),(2,6),(3,7),(4,8).\n\\end{aligned}\n\\]\nFor \\(k=3\\), the forced pairs \\((1,4),(2,5),(3,6)\\) leave \\(7\\) and \\(8\\), which cannot be paired. Thus exactly three pairings are possible.\n\nConversely, each displayed pairing produces valid labelings. Choose either color class for the smaller labels, arrange them on its four vertices, and put each larger partner opposite its smaller partner. Every face contains one endpoint from each pair, with exactly two larger endpoints. Its sum is therefore \\(S+2k=18\\).\n\nFor each pairing there are\n\\[\n2\\cdot(4\\cdot3\\cdot2\\cdot1)=48\n\\]\nlabelings of a fixed cube. These choices neither omit nor repeat a labeling, because its opposite pairs and smaller-label color class are determined by its labels. Altogether there are \\(3\\cdot48=144\\) labelings.\n\nA cube has \\(8\\cdot3=24\\) rotations: choose the image of one vertex, then the image of one of its incident edges. Since every label is different, no nonidentity rotation preserves a labeling. Each arrangement is therefore counted exactly \\(24\\) times, giving\n\\[\n\\frac{144}{24}=\\boxed{6},\n\\]\nchoice \\(\\text{C}\\).",
+        "nodeIds": [
+          "math:symmetry-counting",
+          "math:finite-constraint-deduction",
+          "cnm_h234",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_p160",
+          "cnm_h233",
+          "cnm_040"
+        ],
+        "levelReason": "The argument uses elementary face-sum equations, a complete finite pairing analysis, permutations, and the rotations of a cube, all within AMC 10."
+      }
+    ],
+    "assessedIds": [
+      "math:symmetry-counting"
+    ],
+    "supportIds": [
+      "cnm_h234",
+      "cnm_p160"
+    ],
+    "annotationRationale": "The task asks for arrangements identified by rotations, so symmetry counting is the central target. The written method reduces the face constraints to three forced pairings, counts placements by permutations, and justifies division by 24 using distinct labels. Cube structure and permutation counting support that argument.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_10A_Q18",
+    "decision": "accept",
+    "mathematicalCheck": "The face equations force equal signed differences across opposite vertices, so all smaller endpoints occupy one color class. The bound k≤4 and forced-pair analysis leave exactly k=1,2,4. Each gives 48 labelings, and distinct labels ensure 24 different rotations, yielding 144/24=6.",
+    "levelCheck": "The spatial reasoning, equations, finite case analysis, and rotation count are appropriate for AMC 10 and sufficiently explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Symmetry counting is the central target. Permutations, cube structure, finite constraint deduction, and combined counting fit the stated catalog scopes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "opposite-pairs-and-rotations": "opposite-pairs-and-rotations"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c8851020bb060de32ba1f8ffa143ce473854e9c709a0df760f4079294112dff0",
+    "acceptedAt": "2026-11-07T10:43:32.593571+00:00",
+    "inputHash": "5c1abbab6cb3e358c76d1354cdeccc20d6b7181683deba29deed581357df01e7",
+    "authorInputHash": "ada876b6b0160c39d8746a106c26e33954e8c327c11f0d2b47e7de540afde69e",
+    "reviewInputHash": "73269b4a972d85d335cf85c05b124c370772a8c2637e49a10c3f4e0a2f60f7e7",
+    "authorResponseHash": "79f237dfdf4250c4fe8a48b0b5a19bf5bc2ac45cfc68691676bea7dd48790332",
+    "reviewerResponseHash": "ae01002d134c9483950bc9187d4115243b3cffcaac3c2a47b551e60cbe9e7505",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

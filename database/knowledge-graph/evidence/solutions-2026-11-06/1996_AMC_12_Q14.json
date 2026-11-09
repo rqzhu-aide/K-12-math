@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1996_AMC_12_Q14",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "e9ee6a6ab33525487b2b147f2702e231458ac7438e81d234f387b859b44fe4dc",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "e3069853d0ad73b6bb63e0e171df70c9df4f9267f617713bbd3ab32af73e1a5a",
+  "solutionFigureHashes": {},
+  "candidateHash": "8cbfc66aefb727ab64d3d69a1f41f33a520dd50bdc493a040f8623ff2186e3a8",
+  "candidate": {
+    "questionId": "1996_AMC_12_Q14",
+    "derivedAnswer": "\\(400\\), choice C",
+    "answerStatus": "matches",
+    "answerReason": "Across 00 through 99, each digit occurs ten times in each of two positions. The even-digit contribution is \\(2\\cdot10(0+2+4+6+8)=400\\). Replacing 00 by 100 changes nothing.",
+    "methods": [
+      {
+        "id": "count-digit-contributions",
+        "label": "Count contributions by digit position",
+        "explanation": "Instead of evaluating \\(E\\) separately for every number, count how often each even digit contributes.\n\nWrite the numbers from \\(00\\) through \\(99\\) using two digits. Leading zeros contribute nothing, and both \\(00\\) and \\(100\\) contribute \\(0\\). Thus this list has the same total even-digit contribution as the requested list from \\(1\\) through \\(100\\).\n\nIn the ones position, each digit occurs ten times, once for each possible tens digit. The even digits therefore contribute\n\\[\n10(0+2+4+6+8)=200.\n\\]\nIn the tens position, each digit also occurs ten times, once for each possible ones digit, giving another \\(200\\).\n\nEvery digit occurrence is counted exactly once in its own position. A number such as \\(22\\) correctly contributes twice, once for each \\(2\\). Hence the required sum is\n\\[\n200+200=\\boxed{400},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "math:double-counting",
+          "cnm_h231"
+        ],
+        "prerequisiteIds": [
+          "cnm_p017",
+          "cnm_p156",
+          "cnm_p114"
+        ],
+        "levelReason": "This is elementary place-value counting with uniform digit frequencies and regrouping of a finite sum."
+      }
+    ],
+    "assessedIds": [
+      "math:double-counting"
+    ],
+    "supportIds": [
+      "cnm_p017",
+      "cnm_p156"
+    ],
+    "annotationRationale": "The method counts the same digit contributions first by number and then by position and digit, preserving each occurrence's multiplicity. Tens-and-ones knowledge and parity support the task. The multiplication principle appears locally when fixing one digit and allowing ten choices for the other.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1996_AMC_12_Q14",
+    "decision": "accept",
+    "mathematicalCheck": "Padding 0 through 99 with leading zeros preserves contributions, and replacing 0 with 100 changes the total by zero. Each even digit occurs ten times in each position, giving 2 × 10 × (0 + 2 + 4 + 6 + 8) = 400. Repeated digit occurrences are correctly counted separately.",
+    "levelCheck": "Elementary place-value counting is sufficient, and the explanation makes frequencies and multiplicities explicit.",
+    "methodDistinctness": "One complete contribution-counting method is sufficient.",
+    "annotationCheck": "Double counting accurately describes regrouping the digit contributions. Place value, parity, addition regrouping and the local counting principle fit the method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-digit-contributions": "count-digit-contributions"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "1afc9e72db0c12be4f86a3d5fb967376a2c879038fcb41aa30f5cce50126e9d0",
+    "inputHash": "8d243ee8d502165619a824822b15c3ddb16ccf1badfbcc6ed183904ec0e7e992",
+    "authorInputHash": "b31491de59895c711fe0cd8b1bc7dec711138e969e0465602ac76db6d09b576f",
+    "reviewInputHash": "8b964041ea64fd4f41705c924089381e7a761a87014385566d1a61ee3aa343c4",
+    "authorResponseHash": "7af68ed19dbf19e6cfa710d8133d4a33de0951e547d0f6c4ce6e094b264fd371",
+    "reviewerResponseHash": "f08d6345bb5dc6a6454c7985e56a8f36e5ea2147c657568315a7d4197d5f2fac",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

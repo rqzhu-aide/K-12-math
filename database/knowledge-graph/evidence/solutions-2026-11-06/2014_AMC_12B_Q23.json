@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2014_AMC_12B_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "1cae581b8ff87b24c5f249275c0ce6bca31e0e6dedd73185c0def8621dd0d2db",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "f8435c893bb6a1fa7a4c1302e120544a45bf7aa55560bcd684806c20770ef3ee",
+  "solutionFigureHashes": {},
+  "candidateHash": "a86c69131d337e2fb3d7c17f27b5daea71d1e061711dda3cd6b51e723b6da8f7",
+  "candidate": {
+    "questionId": "2014_AMC_12B_Q23",
+    "derivedAnswer": "\\(1024\\), choice C",
+    "answerStatus": "matches",
+    "answerReason": "Pascal pairing rewrites S as 1 plus binomial coefficients with upper index 2015 and even lower indices. Modulo 2017, these coefficients reduce to 3,5,...,63, whose sum together with 1 is 1024.",
+    "methods": [
+      {
+        "id": "pascal-pairing",
+        "label": "Pair neighboring binomial coefficients",
+        "explanation": "Pairing neighboring terms lets Pascal's identity combine each pair into a single coefficient:\n\\[\n\\binom{2014}{2j-1}+\\binom{2014}{2j}=\\binom{2015}{2j}.\n\\]\nThe pairs with \\(1\\le j\\le31\\) cover all terms from \\(k=1\\) through \\(k=62\\), leaving the \\(k=0\\) term separately. Therefore\n\\[\nS=1+\\sum_{j=1}^{31}\\binom{2015}{2j}.\n\\]\nThe upper index \\(2015\\) is just \\(2\\) less than the prime modulus, making these coefficients easy to reduce.\n\nWrite \\(A\\equiv B\\pmod{2017}\\) when \\(2017\\) divides \\(A-B\\). For an even integer \\(r\\) with \\(2\\le r\\le62\\), the binomial coefficient formula gives\n\\[\n\\begin{aligned}\nr!\\binom{2015}{r}\n&=2015\\cdot2014\\cdots(2016-r)\\\\\n&\\equiv(-2)(-3)\\cdots(-(r+1))\\\\\n&=(r+1)!\\pmod{2017}.\n\\end{aligned}\n\\]\nThe last product is positive because it has the even number \\(r\\) of negative factors. Since \\(2017\\) is prime and every factor of \\(r!\\) is smaller than \\(2017\\), the product \\(r!\\) has no factor \\(2017\\). We may therefore cancel \\(r!\\) in this congruence, obtaining\n\\[\n\\binom{2015}{r}\\equiv r+1\\pmod{2017}.\n\\]\nApplying this to \\(r=2,4,\\ldots,62\\) yields\n\\[\nS\\equiv1+3+5+\\cdots+63\n=\\frac{32(1+63)}2\n=1024\\pmod{2017}.\n\\]\nBecause \\(0\\le1024<2017\\), the requested remainder is \\(\\boxed{1024}\\), choice C.",
+        "nodeIds": [
+          "math:modular-congruence",
+          "cnm_h238"
+        ],
+        "prerequisiteIds": [
+          "cnm_h237",
+          "math:prime-factorization",
+          "cnm_h204"
+        ],
+        "levelReason": "Uses Pascal's identity, factorial products, elementary prime divisibility, and an arithmetic-series sum."
+      }
+    ],
+    "assessedIds": [
+      "math:modular-congruence"
+    ],
+    "supportIds": [
+      "cnm_h237",
+      "math:prime-factorization",
+      "cnm_h204"
+    ],
+    "annotationRationale": "Computing the integer remainder is the task-level target. Pascal pairing is the method-specific simplification. The binomial coefficient formula supplies the products, prime factorization justifies cancellation modulo the prime, and arithmetic-series summation evaluates the resulting odd-number sum.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2014_AMC_12B_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "Pascal pairing covers precisely the terms from 1 through 62. For even \\(r\\le62\\), factorial reduction gives \\(r!\\binom{2015}{r}\\equiv(r+1)!\\pmod{2017}\\); cancellation is valid because the prime 2017 divides no factor of \\(r!\\). The resulting 32 odd numbers sum to 1024, already a valid remainder.",
+    "levelCheck": "The binomial identities and elementary prime-divisibility argument fit AMC 12, with the essential cancellation condition explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Remainder computation is a justified assessed target. Pascal's identity is correctly method-local, and the coefficient formula, prime divisibility, and arithmetic-series support are relevant.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "pascal-pairing": "pascal-pairing"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "8e593206a1d923588154577f8bba1b31bf9f9ab7554566ad29ed618ffca033e5",
+    "inputHash": "349ded56b4846f61ec92d31549e40f62a770b40e27d88974375ce4c22e0b4452",
+    "authorInputHash": "b7a992dd79cab62a8f3031c99e3925810bca5b47b3785a645d66ca4b0ee5b76f",
+    "reviewInputHash": "55965a851e6a4660ea1727133a995917bd6dcbda7a775abb7426973d095f1086",
+    "authorResponseHash": "bdcc47003e1ddce389ed6e1c9ed1175ecb6bca3e0c72b47dceb8fe15dfafa4c1",
+    "reviewerResponseHash": "bca9156776ec29bf7a97937c7326563930df39fd5c66e3df826d95e824a18071",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

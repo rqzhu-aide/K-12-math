@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1968_AMC_12_Q32",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "40b7ade6ead33a7b60ade6c48d0372b29e11c6d9a42abddf11e9ac6764bc0ae1",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "f5f98b13a7faa83201128b0cd41f1b7888feb60d6eb48f9ccd5bff52c27fe88b",
+  "solutionFigureHashes": {},
+  "candidateHash": "674bace1746e8b6f281b36ed1a7fba6a62f4e167b3ae49961e88ae74e5ec303d",
+  "candidate": {
+    "questionId": "1968_AMC_12_Q32",
+    "derivedAnswer": "\\(2:3\\), choice C.",
+    "answerStatus": "matches",
+    "answerReason": "The equality times are 2 and 10 minutes, with B passing O between them. During the intervening eight minutes, A travels four times its first equality distance while B travels six times that distance.",
+    "methods": [
+      {
+        "id": "compare-travel-distances",
+        "label": "Compare distances traveled between the equalities",
+        "explanation": "The second equality occurs at \\(2+8=10\\) minutes. The two equalities must fall on opposite sides of \\(B\\)'s passage through \\(O\\). Before that passage, \\(B\\)'s distance from \\(O\\) decreases while \\(A\\)'s increases, so there is at most one equality. After the passage, the difference of their distances changes at a constant rate from a nonzero value, so there is again at most one equality. Neither equality can occur at the passage itself, because \\(A\\) has already left \\(O\\).\n\nLet \\(d>0\\) be their common distance from \\(O\\) at two minutes. Since \\(A\\) moves uniformly from \\(O\\), its distance at ten minutes is \\(5d\\). Thus \\(B\\) moves from a point \\(d\\) yards short of \\(O\\) to a point \\(5d\\) yards beyond \\(O\\).\n\nDuring these eight minutes, \\(A\\) travels \\(5d-d=4d\\), while \\(B\\) travels \\(d+5d=6d\\). Speeds over the same time interval are in the ratio of the distances traveled, so\n\\[\n\\text{A's speed}:\\text{B's speed}=4d:6d=2:3.\n\\]\nThe answer is \\(\\boxed{2:3}\\), choice C.",
+        "nodeIds": [
+          "cnm_047",
+          "cnm_p213"
+        ],
+        "prerequisiteIds": [
+          "cnm_p111",
+          "cnm_p185"
+        ],
+        "levelReason": "This route uses only uniform motion, proportional distances, and elementary ratios."
+      },
+      {
+        "id": "solve-speed-system",
+        "label": "Form equations for the two times",
+        "explanation": "Let \\(a>0\\) and \\(b>0\\) be the speeds of \\(A\\) and \\(B\\), in yards per minute, and let \\(t\\) be the elapsed time in minutes. Before \\(B\\) reaches \\(O\\), equal distances require\n\\[\nat=500-bt,\n\\quad\\text{or}\\quad (a+b)t=500.\n\\]\nAfter \\(B\\) passes \\(O\\), equal distances require\n\\[\nat=bt-500,\n\\quad\\text{or}\\quad (b-a)t=500.\n\\]\nEach equation can hold at most once: \\(a+b>0\\), and if \\(b-a=0\\), the second equation is impossible. Also, the distances cannot be equal at \\(B\\)'s passage through \\(O\\). Consequently, the equality at two minutes occurs before the passage, and the equality at ten minutes occurs after it.\n\nThe two conditions give\n\\[\n2a+2b=500,\\qquad 10b-10a=500,\n\\]\nso\n\\[\na+b=250,\\qquad b-a=50.\n\\]\nAdding gives \\(2b=300\\), hence \\(b=150\\) and \\(a=100\\). With these speeds, \\(B\\) reaches \\(O\\) at \\(500/150=10/3\\) minutes, between the two equality times, as required.\n\nTherefore \\(a:b=100:150=\\boxed{2:3}\\), choice C.",
+        "nodeIds": [
+          "cnm_047",
+          "cnm_091",
+          "cnm_090"
+        ],
+        "prerequisiteIds": [
+          "cnm_p111",
+          "cnm_p185",
+          "cnm_042",
+          "cnm_088"
+        ],
+        "levelReason": "This alternative uses school-level linear modeling and addition elimination."
+      }
+    ],
+    "assessedIds": [
+      "cnm_047"
+    ],
+    "supportIds": [
+      "cnm_p111",
+      "cnm_p185"
+    ],
+    "annotationRationale": "The shared target is interpreting equal-distance conditions in uniform motion. Distance-speed-time relationships and ratio meaning support both methods. The first method uses direct proportionality; the second models two equations and uses addition elimination, whose algebraic prerequisites remain local.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1968_AMC_12_Q32",
+    "decision": "accept",
+    "mathematicalCheck": "The equality times are 2 and 10 minutes. Each side of B's passage through O permits at most one equality, and equality at the passage is impossible. If the first common distance is d, the second is 5d; during the intervening eight minutes A travels 4d and B travels 6d, giving 2:3. Independently, the equations a+b=250 and b-a=50 give a=100 and b=150, with passage time 10/3 between the equalities.",
+    "levelCheck": "Both approaches use accessible uniform-motion reasoning, ratios, and elementary linear algebraic equations.",
+    "methodDistinctness": "Comparing travel distances and solving for the absolute speeds offer distinct, useful elementary approaches.",
+    "annotationCheck": "cnm_047 is route-neutral, and distance-speed-time and ratio meaning support both methods. Direct proportionality remains local to the first route; system modeling and elimination remain local to the second.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "compare-travel-distances": "compare-travel-distances",
+    "solve-speed-system": "solve-speed-system"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "34dead1fd63946645f72e9d59cb30bfe05aa8d22d66934869002fb2f89bc26f3",
+    "inputHash": "8cb14b005c839e081a041abcacbd6054185002f3ae1a1936a0a226c55c3883f1",
+    "authorInputHash": "a0863a2fcbe002284d6345b95441c14efb64546fa0f1843bf9c1ad4e0105b0f3",
+    "reviewInputHash": "ca905f010a84036f8408cc81733c9a2a7bb34e0ffe34ccee27e7224fe27370d3",
+    "authorResponseHash": "e4fba8c598c28123bc7c1e3c99e975a135b475c6c0b567ca7982bcbb14e93145",
+    "reviewerResponseHash": "0fe553e6e39bfcd4e6e3fa922885ad1f172102e963fc22cd8e7495fd220b5bd1",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

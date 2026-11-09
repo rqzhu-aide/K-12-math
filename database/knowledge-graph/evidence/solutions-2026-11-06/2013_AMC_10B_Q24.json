@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2013_AMC_10B_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "465611fc86c6a747e0d7a331c1ed093bfa45b78b6e06f8bdfda52907b6a97e27",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "9eb988ea6e6aae2e0141c2a77c2bfb866c49469426dc5186d76c44ff53a9210b",
+  "solutionFigureHashes": {},
+  "candidateHash": "4e2ca56410bd7234db045c97d45f0280ba173c79ae21fe0d909952e3b52e68d8",
+  "candidate": {
+    "questionId": "2013_AMC_10B_Q24",
+    "derivedAnswer": "A, 1",
+    "answerStatus": "matches",
+    "answerReason": "An integer with four divisors is a prime cube or a product of two distinct primes. Checking the resulting divisor sums shows that only 2016 is nice.",
+    "methods": [
+      {
+        "id": "four-divisor-classification",
+        "label": "Classify numbers with four divisors",
+        "explanation": "Having exactly four divisors severely restricts \\(m\\). If it has only one prime factor, then \\(m=p^k\\) has divisors \\(1,p,\\ldots,p^k\\), so \\(k=3\\). If it has two distinct prime factors \\(p,q\\), then \\(1,p,q,pq\\) are already four divisors. Thus \\(m\\) must equal \\(pq\\), since otherwise \\(m\\) itself would be a fifth divisor. These observations cover every possibility.\n\nFor \\(m=p^3\\), the divisor sum is\n\\[\n1+p+p^2+p^3.\n\\]\nThis expression increases with the positive integer \\(p\\). Its values at \\(12\\) and \\(13\\) are \\(1885\\) and \\(2380\\), respectively. Therefore it cannot lie between \\(2010\\) and \\(2019\\).\n\nFor \\(m=pq\\), where \\(p\\ne q\\) are primes, the divisor sum is\n\\[\n1+p+q+pq=(p+1)(q+1).\n\\]\nIf one prime is \\(2\\), the other is odd, so this sum is divisible by \\(6\\). If both primes are odd, the sum is divisible by \\(4\\). In the specified interval, the only candidates are consequently\n\\[\n2010,\\quad2012,\\quad2016.\n\\]\n\nFor \\(2010\\), divisibility by \\(4\\) fails, so one prime would have to be \\(2\\). Then \\(3(q+1)=2010\\), giving \\(q=669=3\\cdot223\\), which is not prime.\n\nFor \\(2012\\), divisibility by \\(6\\) fails, so both primes would have to be odd. Dividing their two even factors by \\(2\\) would give\n\\[\n\\frac{p+1}{2}\\cdot\\frac{q+1}{2}=503.\n\\]\nBoth factors are at least \\(2\\), which is impossible because \\(503\\) is prime. To check this primality, its square root is less than \\(23\\); it is not divisible by \\(2,3,5\\), and division by \\(7,11,13,17,19\\) gives remainders \\(6,8,9,10,9\\), respectively.\n\nFinally,\n\\[\n2016=(3+1)(503+1).\n\\]\nThus \\(m=3\\cdot503=1509\\) has exactly the four divisors \\(1,3,503,1509\\), whose sum is \\(2016\\).\n\nOnly \\(2016\\) is nice, so the answer is \\(\\boxed{1}\\), choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "math:divisor-count-and-sum"
+        ],
+        "prerequisiteIds": [
+          "math:prime-factorization",
+          "cnm_p156"
+        ],
+        "levelReason": "The argument uses elementary prime factorization, explicit divisor lists, parity, and finite divisibility checks."
+      }
+    ],
+    "assessedIds": [
+      "math:divisor-count-and-sum"
+    ],
+    "supportIds": [
+      "math:prime-factorization",
+      "cnm_p156"
+    ],
+    "annotationRationale": "The central target is classifying the possible four-divisor structures and computing their divisor sums. Prime factorization supports the exhaustive classification, while odd-even reasoning restricts the candidate sums. The count concerns distinct nice values of n, so the witness for 2016 is counted once regardless of any other possible witnesses.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2013_AMC_10B_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "The four-divisor classification gives precisely p³ or pq with distinct primes. The cube sums jump from 1885 at 12 to 2380 at 13. The product form restricts the interval to 2010, 2012, and 2016; the first two are excluded correctly using compositeness of 669 and primality of 503. The witness 1509 has four divisors summing to 2016.",
+    "levelCheck": "Explicit divisor lists, parity, and finite primality checks are elementary AMC 10 techniques. The classification and exclusions are understandable and complete.",
+    "methodDistinctness": "One classification method is sufficient.",
+    "annotationCheck": "Divisor counting and summation are the central assessment. Prime factorization and odd-even reasoning are justified supports, and the solution correctly counts distinct values of n.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "four-divisor-classification": "four-divisor-classification"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "62a3d4ddc35c963628386ef90bafea21aa6e088ebec6bfa7ddb2884ec211ffe9",
+    "inputHash": "a15dcc51d527760c855919054bb51e912ccfac0d394003fa559707c647317f8e",
+    "authorInputHash": "41ec264fdff93627b9ec8e5dc095d23fdbf775d51d5abbb17f1ea2b6d5476554",
+    "reviewInputHash": "a2f4c1518c244bf8792217e3438eb29523bf6a75fbab82880da54be9fe8543d2",
+    "authorResponseHash": "efbcf21477fa721e506925ad1dae2cf6dcb25096871195385b7d7062e3dcafdd",
+    "reviewerResponseHash": "87a3de11c5694f8f27da3aa706c7cc1a09d88d77df5e9b36d78541d256a99e66",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

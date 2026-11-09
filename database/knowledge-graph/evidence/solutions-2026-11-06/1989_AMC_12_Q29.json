@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1989_AMC_12_Q29",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "1cfedf082abdf23970412ba315f5caf702c3a74fb602f6f5b3921210170865db",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "0025c4d629291684a099fca40ae16f72b1f94f9e6d5040b3d2f63e78bd8094f9",
+  "solutionFigureHashes": {},
+  "candidateHash": "487f228409d394910e504a10ef53a7007b2e29a697158f6a2ec5cbd1fec9176a",
+  "candidate": {
+    "questionId": "1989_AMC_12_Q29",
+    "derivedAnswer": "\\(-2^{49}\\), choice B",
+    "answerStatus": "matches",
+    "answerReason": "The sum is the real part of (1+i)^99. Grouping powers in blocks of four gives (1+i)^99 = 2^48(-2+2i), whose real part is -2^49.",
+    "methods": [
+      {
+        "id": "real-part-binomial-expansion",
+        "label": "Read the sum from a complex binomial expansion",
+        "explanation": "The signs alternate on the even-indexed binomial coefficients. These are exactly the signs produced by even powers of the imaginary unit \\(i\\), where \\(i^2=-1\\):\n\\[\ni^{2k}=(-1)^k.\n\\]\nOdd powers of \\(i\\) are \\(i\\) or \\(-i\\), so they have zero real part.\n\nLet \\(S\\) denote the requested sum. By the binomial theorem,\n\\[\n(1+i)^{99}=\\sum_{j=0}^{99}\\binom{99}{j}i^j.\n\\]\nTaking the real part keeps exactly the even-indexed terms, giving\n\\[\nS=\\operatorname{Re}\\bigl((1+i)^{99}\\bigr),\n\\]\nwhere \\(\\operatorname{Re}\\) means the real part.\n\nTo compute this power, first find a small power that is real:\n\\[\n(1+i)^2=2i,\n\\qquad (1+i)^4=-4.\n\\]\nAlso,\n\\[\n(1+i)^3=2i(1+i)=-2+2i.\n\\]\nSince \\(99=4\\cdot24+3\\), we can group the factors as\n\\[\n\\begin{aligned}\n(1+i)^{99}\n&=\\bigl((1+i)^4\\bigr)^{24}(1+i)^3\\\\\n&=(-4)^{24}(-2+2i)\\\\\n&=2^{48}(-2+2i).\n\\end{aligned}\n\\]\nIts real part is \\(-2\\cdot2^{48}\\). Therefore\n\\[\nS=\\boxed{-2^{49}},\n\\]\nchoice B.",
+        "nodeIds": [
+          "cnm_h240",
+          "cnm_h102",
+          "cnm_h104"
+        ],
+        "prerequisiteIds": [
+          "cnm_h237",
+          "cnm_h097",
+          "cnm_143"
+        ],
+        "levelReason": "The method uses the binomial theorem and elementary complex multiplication and integer powers. It does not require polar form or any university-level result."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h240"
+    ],
+    "supportIds": [
+      "cnm_h237",
+      "cnm_143"
+    ],
+    "annotationRationale": "The assessed target is recognizing and using a binomial expansion to evaluate the displayed coefficient sum. Binomial-coefficient meaning and integer power laws support the calculation. Complex multiplication, powers, and real-part interpretation belong to this particular method rather than to the task-level assessed target.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1989_AMC_12_Q29",
+    "decision": "accept",
+    "mathematicalCheck": "The real part of (1+i)^99 selects exactly the displayed even-indexed terms. Since (1+i)^4=−4 and (1+i)^3=−2+2i, the power equals 2^48(−2+2i), whose real part is −2^49.",
+    "levelCheck": "The binomial theorem and elementary complex arithmetic are appropriate for historical AHSME. Both the term selection and power calculation are explained.",
+    "methodDistinctness": "The single algebraic complex-number method is sufficient.",
+    "annotationCheck": "The binomial theorem is correctly assessed. Complex multiplication, powers, and complex-number meaning are method local; coefficient meaning and exponent laws provide justified support.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "real-part-binomial-expansion": "real-part-binomial-expansion"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "9892ea4bf71803214a0419428303fe9c242b04388747d2af8aa8f5f67eea5e68",
+    "inputHash": "12ad176446c6aabe52067a5d0011f91dfcad2742cafaafebc4524b905c40ed7b",
+    "authorInputHash": "cd41291011a7ccb3759e2a77679478705a18cc69c5fcd20510ceb850249e4810",
+    "reviewInputHash": "2964c8285ea1b71522b888495e611d7ddb9c5528b133439a22d76d2f5379145a",
+    "authorResponseHash": "9df4814a53e1e83344a539ca9fbed5205903c0941f51bc3994e5f08e327f462d",
+    "reviewerResponseHash": "371253512e9d8b780ca3c6fd54b41ee655f3ccd5a03401020b11b55066faedc8",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2022_AMC_12A_Q19",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "391d3233f5e0cc647982b5b272d420004fa866ab4a8be43312a388002c6e8692",
+    "figureHashes": {
+      "figures/2022_AMC_12A_Q19_question_fig1.svg": "1a6ecd2c0d1f9edf4beaf97922dda86ba879b883bc8443736c9bc7d5b494ef68"
+    }
+  },
+  "solutionSHA256": "75cf2a1a96fc5a7e546a908a5ed1b6bdaa7213be262b874ba3a07555f97cfa28",
+  "solutionFigureHashes": {},
+  "candidateHash": "0ce5703a48d432c1e39f81da7e0572c5e9936a4ac0919bc1e0a8181ff9c8ddbe",
+  "candidate": {
+    "questionId": "2022_AMC_12A_Q19",
+    "derivedAnswer": "8178, choice D",
+    "answerStatus": "matches",
+    "answerReason": "For each possible first-pass endpoint k, there are C(13,k)-1 valid arrangements. Summing over 1≤k≤12 gives 2^13-2-12=8178.",
+    "methods": [
+      {
+        "id": "method_1",
+        "label": "Method 1: Choose positions for the two passes",
+        "explanation": "Each pass picks up a consecutive group of card numbers. Suppose the first pass ends with card \\(k\\), where \\(1\\leq k\\leq12\\). Then cards \\(1,\\ldots,k\\) must appear from left to right in increasing order, and so must cards \\(k+1,\\ldots,13\\).\n\nChoose the \\(k\\) positions occupied by the first group. Fill those positions with \\(1,\\ldots,k\\) in order, and fill the remaining positions with \\(k+1,\\ldots,13\\) in order. Thus there are \\(\\binom{13}{k}\\) arrangements with these two internal orders.\n\nFor the first pass to stop at \\(k\\), card \\(k+1\\) must lie to the left of card \\(k\\). If instead \\(k\\) lies before \\(k+1\\), both internal orders force the entire row to be \\(1,2,\\ldots,13\\). This is the only arrangement to exclude. Every other arrangement constructed this way takes exactly two passes: the first collects through \\(k\\), and the second collects the remaining increasing group.\n\nEvery valid arrangement has a unique first-pass endpoint, so the cases neither overlap nor omit any valid row. The required count is therefore\n\\[\n\\sum_{k=1}^{12}\\left(\\binom{13}{k}-1\\right).\n\\]\nThe sum of \\(\\binom{13}{k}\\) over all \\(k=0,\\ldots,13\\) is \\(2^{13}\\), because each of the 13 positions can independently be chosen or not chosen. Removing the empty and full selections, then the one excluded arrangement in each of the 12 cases, gives\n\\[\n2^{13}-2-12=8192-14=8178.\n\\]\nThe answer is \\(\\boxed{8178}\\), choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_h232",
+          "math:bijective-counting",
+          "cnm_h239",
+          "cnm_h242"
+        ],
+        "prerequisiteIds": [
+          "cnm_h230",
+          "cnm_h231",
+          "cnm_h233",
+          "cnm_h236"
+        ],
+        "levelReason": "The argument uses elementary position choices, disjoint cases, and a binomial sum justified by independent choices."
+      },
+      {
+        "id": "method_2",
+        "label": "Method 2: Count by inserting the largest entry",
+        "explanation": "Let \\(p_i\\) be the original position of card \\(i\\), counting positions from the left. After collecting card \\(i\\), we can collect card \\(i+1\\) on the same pass exactly when \\(p_i<p_{i+1}\\). If \\(p_i>p_{i+1}\\), a new pass is needed. Call such a decrease between consecutive entries a descent. Exactly two passes therefore means exactly one descent in the list \\(p_1,\\ldots,p_{13}\\).\n\nThis position list is itself a permutation of \\(1,\\ldots,13\\). Conversely, any such list uniquely specifies the card arrangement by placing card \\(i\\) in position \\(p_i\\). Thus we can count permutations with exactly one descent.\n\nLet \\(a_n\\) be the number of permutations of \\(1,\\ldots,n\\) with exactly one descent. Build these by inserting \\(n\\) into a permutation of \\(1,\\ldots,n-1\\). Inserting \\(n\\) at the end adds no descent; inserting it at the beginning adds one. Between entries \\(u,v\\), it replaces their comparison with \\(u<n>v\\), which has exactly one descent. In particular, insertion never decreases the number of descents.\n\nThere are consequently two possible starting types:\n\nIf the shorter permutation has one descent, inserting \\(n\\) at that descent or at the end preserves exactly one descent. This gives \\(2a_{n-1}\\) possibilities.\n\nIf the shorter permutation has no descent, it is the unique increasing permutation. Any insertion except at the end produces one descent, giving \\(n-1\\) possibilities.\n\nThese cases are exhaustive, and deleting \\(n\\) uniquely recovers the shorter permutation and insertion place, so nothing is counted twice. Hence, for \\(n\\geq2\\),\n\\[\na_n=2a_{n-1}+n-1,\\qquad a_1=0.\n\\]\nTo simplify this recurrence, set \\(b_n=a_n+n+1\\). Then\n\\[\nb_n=2(a_{n-1}+n)=2b_{n-1},\n\\]\nand \\(b_1=2\\). Repeated doubling gives \\(b_n=2^n\\), so\n\\[\na_{13}=2^{13}-13-1=8178.\n\\]\nThe answer is \\(\\boxed{8178}\\), choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_h232",
+          "math:bijective-counting",
+          "math:recursive-counting-probability"
+        ],
+        "prerequisiteIds": [
+          "cnm_h230",
+          "cnm_h231",
+          "cnm_h233"
+        ],
+        "levelReason": "The alternative uses finite insertion counting and elementary recurrence algebra. The position encoding and recurrence are fully derived."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h232"
+    ],
+    "supportIds": [
+      "cnm_h230",
+      "cnm_h231",
+      "cnm_h233"
+    ],
+    "annotationRationale": "The task assesses a constrained arrangement count requiring exhaustive cases and independent choices, fitting combined counting. Both methods use reversible encodings and the addition and multiplication principles. Combinations and the binomial-coefficient sum belong specifically to the first route; insertion recursion belongs specifically to the second. The factorial formulas are unnecessary.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2022_AMC_12A_Q19",
+    "decision": "accept",
+    "mathematicalCheck": "For each endpoint k from 1 through 12, the two increasing groups give C(13,k) arrangements, with only the completely increasing row excluded. The endpoint uniquely classifies every valid row, giving 2^13-2-12=8178. Method 2 correctly derives a_n=2a_{n-1}+n-1 with a_1=0 and solves it as a_n=2^n-n-1.",
+    "levelCheck": "Both explanations are complete and appropriate for AMC 12. The insertion recurrence uses elementary counting and explicitly explained school algebra.",
+    "methodDistinctness": "Position selection and insertion into the inverse permutation provide genuinely different, accessible counting ideas.",
+    "annotationCheck": "The assessed node is route-neutral. Shared counting principles and permutation concepts are justified, while combinations, binomial sums, and recursion are appropriately attached to their respective methods.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "method_1": "method_1",
+    "method_2": "method_2"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "b46d9a55e6788a925fda00e4532e9dc8c80db2b62308a4852ac9389106ff9bc6",
+    "acceptedAt": "2026-11-07T08:14:24.541862+00:00",
+    "inputHash": "30a855202539bc1a6d8f0d9793f3462f83213ab28b307874fec96662f12eb147",
+    "authorInputHash": "385ea22d02f7714b6c8240fc8840322c132d425d34033f06941b6e39eeab763c",
+    "reviewInputHash": "046d31517235a060f3bce82bf03dc95c4a38f09ae70d1be32e08f4114796aeb6",
+    "authorResponseHash": "d8c73383ad68627acbf305aa584ba47df99452175c23e1f0835e15308710ba1d",
+    "reviewerResponseHash": "107a9a974e1a939ed28f86c5527f2f7999c824cf9bd5b9a64539190269feef12",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

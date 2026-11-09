@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2025_AMC_10B_Q03",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "f91089fadfb22b3bd917cb2d9e39ee0099c380926d3787bad985128ea31dc0fc",
+    "figureHashes": {
+      "figures/2025_AMC_10B_Q03_question_fig1.svg": "6829dcae06d6e9562172e58d1ebc04d5d7b42f9115951e6cdb3d45a11ad2aabf"
+    }
+  },
+  "solutionSHA256": "9ef9afa021b6cfb3b59e446121be68ed0f1a625e5ab23f565195b62a93db9ebc",
+  "solutionFigureHashes": {},
+  "candidateHash": "b8c59bb19061acf21ef7d43fc5b13b638fd764b0cc17fb5b753e6ec9b624401a",
+  "candidate": {
+    "questionId": "2025_AMC_10B_Q03",
+    "derivedAnswer": "\\(16\\), choice D",
+    "answerStatus": "matches",
+    "answerReason": "Starting with the second-row total 11, every subsequent row total doubles. The eleventh-row total is 5632, whose digits sum to 16.",
+    "methods": [
+      {
+        "id": "row-total-recurrence",
+        "label": "Track the row totals",
+        "explanation": "We need the total of a row, so we can track totals without calculating every entry. Let \\(S_n\\) denote the sum of the numbers in row \\(n\\). The second row gives \\(S_2=10+1=11\\).\n\nFor any row \\(n\\ge2\\), each interior entry contributes to two adjacent sums in the next row. The endpoints \\(10\\) and \\(1\\) each contribute to only one of those sums. Thus the interior entries of the next row total \\(2S_n-10-1\\). Adding its new endpoints gives\n\\[\nS_{n+1}=(2S_n-10-1)+10+1=2S_n.\n\\]\nTherefore, starting with row \\(2\\), the total doubles at every step:\n\\[\nS_n=11\\cdot2^{n-2}\\qquad(n\\ge2).\n\\]\nThere are \\(11-2=9\\) doublings from the second row to the eleventh row, so\n\\[\nS_{11}=11\\cdot2^9=11\\cdot512=5632.\n\\]\nThe requested digit sum is \\(5+6+3+2=\\boxed{16}\\), choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_030",
+          "cnm_h200"
+        ],
+        "prerequisiteIds": [
+          "cnm_h197",
+          "cnm_019",
+          "cnm_020",
+          "cnm_p053"
+        ],
+        "levelReason": "The argument uses addition, contribution tracking, repeated doubling, and decimal digits. It requires neither binomial coefficients nor a formal geometric-sequence formula."
+      }
+    ],
+    "assessedIds": [
+      "cnm_030"
+    ],
+    "supportIds": [
+      "cnm_020",
+      "cnm_p053"
+    ],
+    "annotationRationale": "The task-level target is expressing a numerical pattern and using it to predict a later value. The actual method establishes a recurrence for row totals and converts repeated doubling into an explicit expression. Powers and four-digit place value support the final calculation. Pascal-triangle coefficient identities are not used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2025_AMC_10B_Q03",
+    "decision": "accept",
+    "mathematicalCheck": "For every transition starting at row 2, interior entries contribute twice and endpoints once to the adjacent sums. Restoring the new endpoints yields S_(n+1)=2S_n. Thus S_11=11·2^9=5632, with digit sum 16.",
+    "levelCheck": "Contribution tracking and repeated doubling are accessible and fully explained. No binomial coefficient machinery is needed.",
+    "methodDistinctness": "The single row-total method supplies a complete and efficient argument.",
+    "annotationCheck": "The pattern-expression assessed node and recurrence method node fit the actual reasoning. Powers and four-digit place value are justified supports; the prerequisites are appropriate.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "row-total-recurrence": "solution:row-total-recurrence:9ef9afa021b6"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "bb8f848a2f347a477e5810240a564bdc172c6dde6712252b19c25512a6239907",
+    "acceptedAt": "2026-11-07T08:02:33.032675+00:00",
+    "inputHash": "5660efca8ec24d90020324517c6619fcf0af140454aef5700dca8f0b3c864cd9",
+    "authorInputHash": "e985c42e3fddbaed1ea2e6c8afe81e61c8c711050c51f7b6a02ae848cda4a21b",
+    "reviewInputHash": "8f3208d13e59bfae49231b6a7f402e8c814a24d69d51124521bb8f83ea9fee86",
+    "authorResponseHash": "413ad86d77e4bcd3deef469a09b34e3bd31f0ac2e3bd141c347a46d149bf16a2",
+    "reviewerResponseHash": "0beff44da723cb311d93b8c943b9679c9209f6f819e13c80fa1f4974f3b6b0c6",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

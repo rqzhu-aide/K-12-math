@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2026_AMC_8_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "dcc4115ece475ec6b5d745f5ce71b8e0d542f9e634ae39dbdf94627be37bf121",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "719a2f97608bbbb14eed6a70b26a576ef3aa327be0be50505e4a5e1dcbda987e",
+  "solutionFigureHashes": {},
+  "candidateHash": "8edeb8ad57c20a1db4fc076cc6139497d89da3dae686a39985f6c87c56deec51",
+  "candidate": {
+    "questionId": "2026_AMC_8_Q24",
+    "derivedAnswer": "E: 171",
+    "answerStatus": "matches",
+    "answerReason": "The multiples 7, 14, 21, 28, 35, 42, and 49 occur in 45, 38, 31, 24, 17, 10, and 3 factorials. Each occurrence contributes one factor of 7, except 49, which contributes two. The total is 171.",
+    "methods": [
+      {
+        "id": "count-repeated-multiples",
+        "label": "Count how often each multiple of seven appears",
+        "explanation": "Expanding \\(51^!=1!\\cdot2!\\cdots51!\\) repeats many integer factors. We can count the factors of \\(7\\) by tracking those repeated integers instead of calculating the enormous product.\n\nFor example, the integer \\(7\\) appears once in every factorial from \\(7!\\) through \\(51!\\). That is\n\\[\n51-7+1=45\n\\]\nappearances. More generally, an integer \\(k\\) appears once in each factorial from \\(k!\\) through \\(51!\\), for \\(52-k\\) appearances.\n\nOnly multiples of \\(7\\) contribute factors of \\(7\\). The multiples at most \\(51\\), with their numbers of appearances, are\n\\[\n\\begin{aligned}\n7&:\\ 45, &14&:\\ 38,\\\\\n21&:\\ 31, &28&:\\ 24,\\\\\n35&:\\ 17, &42&:\\ 10,\\\\\n49&:\\ 3.\n\\end{aligned}\n\\]\nEach occurrence of the first six multiples contributes exactly one factor of \\(7\\). Each occurrence of \\(49=7^2\\) contributes two. There are no other multiples of \\(7\\) at most \\(51\\), so these contributions include every factor of \\(7\\) in the expanded product, with its correct multiplicity.\n\nThe total number is therefore\n\\[\n\\begin{aligned}\n&(45+38+31)+(24+17+10)+2\\cdot3\\\\\n&\\qquad=114+51+6=\\boxed{171}.\n\\end{aligned}\n\\]\nThe answer is choice \\(\\text{E}\\).",
+        "nodeIds": [
+          "math:prime-valuations-factorials",
+          "math:double-counting"
+        ],
+        "prerequisiteIds": [
+          "math:factorial-notation",
+          "math:prime-factorization"
+        ],
+        "levelReason": "Counts repeated multiples directly and explains the extra factor from 49. It requires no general valuation formula, floor notation, or advanced number theory."
+      }
+    ],
+    "assessedIds": [
+      "math:prime-valuations-factorials"
+    ],
+    "supportIds": [
+      "math:factorial-notation",
+      "math:prime-factorization"
+    ],
+    "annotationRationale": "The target is the exponent of a prime in a product of factorials. Factorial meaning and prime-factor multiplicity are necessary supporting concepts. The method counts the factor-of-seven occurrences across the factorials by regrouping them according to their underlying integer factor, so incidence counting captures its treatment of repeated contributions. No arithmetic-sequence summation formula or general floor-function knowledge is used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2026_AMC_8_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "Each integer k from 1 through 51 occurs in exactly 52-k factorials. The only contributors are 7, 14, 21, 28, 35, 42, and 49, with occurrence counts 45, 38, 31, 24, 17, 10, and 3. Accounting for two factors of 7 in each 49 gives 114+51+6=171.",
+    "levelCheck": "The solution explains repeated occurrences and prime-factor multiplicity directly, including the exceptional contribution from 49. It is complete and appropriate for AMC 8 without a general valuation formula.",
+    "methodDistinctness": "One clear method suffices; no additional advanced alternative is needed.",
+    "annotationCheck": "Tracking prime exponents in factorial products fits the assessed node. Regrouping factor occurrences supports the incidence-counting annotation. Factorial notation and prime factorization are justified shared supports, with no unsupported claim of arithmetic-sequence or floor-function use.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-repeated-multiples": "count-repeated-multiples"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c931e1b0e1a57b66afa5ada335ee1d3517bf47b0530207f7b032172518965c91",
+    "acceptedAt": "2026-11-08T16:53:00.588588+00:00",
+    "inputHash": "7df0d3431b1705f2e031c527c3cfd93491bf5d6ab8a5f35ebdfb663b0b521362",
+    "authorInputHash": "8c348951dbf6cec6bab5164afa5ab6f646ea9132649bc45ada604d22d17a9254",
+    "reviewInputHash": "eba7d57968bf97b649eb1640d4df497002fade659cebc3ff94d7f139fb018734",
+    "authorResponseHash": "f25fa845acd15a9ce950a8d9676cebd02fc175b744f1f2127ebac463e9c7f85f",
+    "reviewerResponseHash": "19c06819aec968830b380cf4154477c7161789194ac09a6e2fd6cc75a4877dd5",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

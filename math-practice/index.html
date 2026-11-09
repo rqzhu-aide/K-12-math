@@ -1,0 +1,2293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Math Practice</title>
+<script src="theme.js"></script>
+<link rel="stylesheet" href="vendor/katex/katex.min.css">
+<style>
+
+  * { box-sizing: border-box; }
+  html { scrollbar-width: thin; scrollbar-color: var(--scroll-thumb) transparent; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb { background: var(--scroll-thumb); border-radius: 6px; border: 2px solid var(--ground); }
+  ::selection { background: var(--selection); }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 1.5;
+    caret-color: var(--accent);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 20px 56px;
+  }
+
+  /* ---------- header ---------- */
+
+  header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .header-actions { display: flex; align-items: center; justify-content: flex-end; gap: 12px; flex-wrap: wrap; }
+  .connection-status { display: flex; gap: 8px; }
+  .chip-label, .chip-state { display: block; }
+  .chip-state { margin-top: 2px; font-size: .75rem; font-weight: 400; }
+  @media (max-width: 560px) {
+    .header-actions, .connection-status { width: 100%; }
+    .chip { flex: 1; min-width: 0; }
+  }
+  .settings-link { display: inline-grid; place-items: center; width: 44px; min-height: 44px; border-radius: 8px; color: var(--accent-deep); text-decoration: none; }
+  .settings-link:hover { background: var(--accent-soft); }
+  .settings-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .settings-link svg { display: block; width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+  h1 {
+    margin: 0;
+    font-size: 1.375rem;
+    font-weight: 650;
+    letter-spacing: -0.015em;
+  }
+  .sub {
+    margin: 3px 0 0;
+    color: var(--ink-2);
+    font-size: 0.875rem;
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    min-height: 44px;
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    font: 600 0.8125rem/1.3 var(--font);
+    color: var(--ink-2);
+    cursor: pointer;
+    text-align: left;
+  }
+  .chip:hover { border-color: var(--field-line-hover); color: var(--ink); }
+  .chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--ink-3);
+    flex: none;
+  }
+  .chip[data-state="ok"]    .dot { background: var(--ok); }
+  .chip[data-state="down"]  .dot { background: var(--err); }
+  .chip[data-state="checking"] .dot { animation: pulse 1.2s ease-in-out infinite; }
+  @media (max-width: 360px) {
+    .chip { padding: 8px; }
+    .chip .dot { display: none; }
+    .chip > span:last-child { min-width: 0; overflow-wrap: anywhere; }
+    .chip[data-state="ok"] .chip-state { color: var(--ok); }
+    .chip[data-state="down"] .chip-state { color: var(--err); }
+  }
+  @keyframes pulse { 50% { opacity: .35; } }
+
+  /* ---------- server route picker ---------- */
+
+  .serverbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .seg {
+    display: inline-flex;
+    gap: 4px;
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    padding: 4px;
+  }
+  .seg-btn {
+    border: 0;
+    background: transparent;
+    border-radius: 999px;
+    padding: 7px 14px;
+    font: 600 0.8125rem/1 var(--font);
+    color: var(--ink-2);
+    cursor: pointer;
+    transition: background-color 150ms, color 150ms;
+  }
+  .seg-btn:hover { color: var(--ink); }
+  .seg-btn[aria-checked="true"] {
+    background: var(--accent-soft);
+    color: var(--accent-deep);
+    font-weight: 650;
+  }
+  .seg-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .custom-url {
+    flex: 1;
+    min-width: 200px;
+    max-width: 340px;
+    font-size: 0.875rem;
+    padding: 8px 12px;
+  }
+
+  /* ---------- AMC question pool ---------- */
+
+  .pool-selects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .field-inline { display: flex; flex-direction: column; gap: 6px; }
+  .bank-choice { margin: 0 0 16px; max-width: 350px; }
+  .bank-choice select, .pool-selects select { max-width: 100%; }
+  .pool-selects > .field-inline { max-width: 100%; }
+  .pool-selects[data-navigation="curriculum"] #topicField { flex: 1; min-width: 160px; }
+  .free-answer { min-width: 0; min-height: 44px; width: 100%; max-width: 360px; flex: 1; padding: 10px 12px; border: 1px solid var(--field-line); border-radius: 10px; font: inherit; color: var(--ink); background: var(--input-surface); }
+  .free-answer:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .written-answer textarea.free-answer { max-width: none; min-height: 118px; line-height: 1.5; }
+  .answer-row [hidden] { display: none; }
+  .field-inline label {
+    margin: 0;
+    font-size: 0.6875rem;
+    letter-spacing: .06em;
+  }
+  select {
+    font: inherit;
+    font-size: 0.875rem;
+    color: var(--ink);
+    background: var(--input-surface);
+    border: 1px solid var(--field-line);
+    border-radius: var(--radius);
+    padding: 8px 10px;
+    min-height: 44px;
+    min-width: 110px;
+    cursor: pointer;
+    transition: border-color 150ms, box-shadow 150ms;
+  }
+  select:hover { border-color: var(--field-line-hover); }
+  select:focus { outline: none; border-color: var(--accent); box-shadow: none; outline: 2px solid var(--accent); outline-offset: 2px; }
+  select:disabled { opacity: .55; cursor: not-allowed; }
+  .pool-reset {
+    height: 38px;
+    align-self: flex-end;
+    background: var(--surface);
+    border: 1px solid var(--field-line);
+    color: var(--err);
+  }
+  .pool-reset:hover { border-color: var(--err); background: var(--err-hover); }
+  .pool-reset:focus-visible { outline: 2px solid var(--err); outline-offset: 2px; }
+  .pool-hint { color: var(--ink-3); font-size: 0.875rem; }
+  .q-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .q-head-right { margin-left: auto; }
+  .sol-btn {
+    min-height: 44px;
+    border: 1px solid var(--ok-action);
+    background: var(--ok-action);
+    color: var(--ok-on);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font: 650 0.875rem/1 var(--font);
+    cursor: pointer;
+    transition: background-color 150ms, transform 80ms;
+  }
+  .sol-btn:hover { background: var(--ok-action-hover); border-color: var(--ok-action-hover); }
+  .sol-btn:active { transform: translateY(1px); }
+  .sol-btn:focus-visible { outline: 2px solid var(--ok); outline-offset: 2px; }
+  .sol-btn:disabled { opacity: .5; cursor: not-allowed; }
+
+  /* ---------- solution window ---------- */
+
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: var(--backdrop);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 6vh 16px 16px;
+    z-index: 40;
+  }
+  .modal-backdrop[hidden] { display: none; }  /* explicit display beats the UA's [hidden] */
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    box-shadow: var(--modal-shadow);
+    width: 100%;
+    max-width: 680px;
+    max-height: 82vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .modal-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .modal-title { font-weight: 650; font-size: 1rem; }
+  .modal-close {
+    margin-left: auto;
+    border: 1px solid var(--field-line);
+    background: var(--surface);
+    color: var(--ink-2);
+    border-radius: 8px;
+    width: 44px; height: 44px;
+    flex: none;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .modal-close:hover { border-color: var(--field-line-hover); color: var(--ink); }
+  .modal-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .modal-body { padding: 18px 20px 22px; overflow-y: auto; }
+  .sol-answer {
+    display: inline-block;
+    font: 650 0.875rem/1 var(--font);
+    color: var(--ok);
+    background: var(--ok-soft);
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 14px;
+  }
+  body.modal-open { overflow: hidden; }
+  .q-id { font-weight: 650; font-size: 0.9375rem; }
+  .q-area {
+    font: 650 0.6875rem/1 var(--font);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    background: var(--surface-hover);
+    border-radius: 5px;
+    padding: 4px 7px;
+  }
+  .pool-head-right { margin-left: auto; display: flex; gap: 10px; align-items: center; }
+  .q-text {
+    white-space: pre-wrap;
+    line-height: 1.6;
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+  }
+  .q-choices { margin: 12px 0 0; display: grid; gap: 6px; }
+  .q-choice {
+    display: flex;
+    gap: 10px;
+    font-size: 0.9375rem;
+  }
+  .q-choice .badge { width: 24px; height: 24px; font-size: 0.75rem; }
+  .q-choice.is-correct .badge { background: var(--accent); border-color: var(--accent); color: var(--accent-on); }
+  .q-choice.is-correct .opt-text { font-weight: 650; }
+  .q-figs { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; }
+  .q-figs img {
+    max-width: 300px;
+    max-height: 220px;
+    border: 1px solid var(--hairline);
+    border-radius: 8px;
+    background: var(--figure-surface);
+    padding: 6px;
+  }
+  .fig-missing {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px dashed var(--hairline);
+    border-radius: 8px;
+    background: var(--surface-hover);
+    color: var(--ink-2);
+    font-size: 0.8125rem;
+    padding: 14px 16px;
+  }
+  .q-divider {
+    border: 0;
+    border-top: 1px solid var(--hairline);
+    margin: 16px 0 12px;
+  }
+  .q-cap {
+    font-size: 0.8125rem;
+    font-weight: 650;
+    color: var(--ink-2);
+    margin-bottom: 8px;
+  }
+
+  /* Keep text, formulas, and pictures in their source order. */
+  .rich-content { min-width: 0; overflow-wrap: anywhere; white-space: pre-wrap; }
+  .rich-content .math-block { display: block; margin: 12px 0; white-space: normal; }
+  .rich-content .katex-display { margin: 0; max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+  .rich-content .katex-display > .katex { white-space: normal; }
+  .rich-content .katex-display > .katex > .katex-html { min-width: min-content; }
+  .solution-table-wrap { overflow-x: auto; margin: .75rem 0; }
+  .solution-table-wrap table { width: 100%; border-collapse: collapse; line-height: 1.45; white-space: normal; overflow-wrap: normal; }
+  .solution-table-wrap th, .solution-table-wrap td { border-bottom: 1px solid currentColor; padding: .4em .6em; text-align: left; vertical-align: top; }
+  .q-choice .opt-text { overflow: visible; text-overflow: clip; white-space: pre-wrap; }
+  .q-choices.picture-choices { grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: 16px 12px; }
+  .figure-link { display: block; width: fit-content; max-width: 100%; margin: 12px 0; }
+  .figure-link img { display: block; max-width: 100%; height: auto; max-height: 500px; object-fit: contain; background: var(--figure-surface); border-radius: 6px; }
+  .figure-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .q-choice .figure-link { margin: 0 0 8px; }
+  .q-choice .figure-link img { max-height: 220px; }
+  .submitted-work { white-space: pre-wrap; line-height: 1.6; }
+  .results-head { flex-wrap: wrap; }
+  .opt-head .opt-text { white-space: normal; overflow-wrap: anywhere; }
+  @media (max-width: 560px) {
+    .q-text { padding: 12px; }
+    .q-head { flex-wrap: wrap; }
+    .pool-selects > .field-inline { min-width: 0; }
+    .tag { display: none; }
+  }
+
+  /* ---------- context readiness chips ---------- */
+
+  .label-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .label-row label { margin: 0; }
+  .label-row .spacer { flex: 1; }
+  .ctx-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font: 600 0.6875rem/1 var(--font);
+    letter-spacing: .03em;
+    padding: 4px 9px;
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    color: var(--ink-3);
+    background: var(--surface);
+    white-space: nowrap;
+  }
+  .ctx-chip .cdot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--ink-3);
+    flex: none;
+  }
+  .ctx-chip.ok { color: var(--ok); border-color: var(--ok-line); }
+  .ctx-chip.ok .cdot { background: var(--ok); }
+
+  /* ---------- thoughts card ---------- */
+
+  .thoughts textarea { min-height: 110px; }
+  .thoughts .results-title { text-transform: none; letter-spacing: -0.01em; margin: 0; }
+  .speech-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .speech-controls button { margin-bottom: 8px; }
+  .speech-button.ghost { min-height: 44px; font-size: .8125rem; }
+  .speech-button[hidden] { display: none; }
+  .speech-button:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+  #speechRecord[aria-pressed="true"] { border-color: var(--recording-line); color: var(--recording-ink); background: var(--recording-surface); }
+  .speech-icon { width: 18px; height: 18px; flex: none; }
+  #speechRecord .stop-icon, #speechRecord[aria-pressed="true"] .mic-icon { display: none; }
+  #speechRecord[aria-pressed="true"] .stop-icon { display: block; color: var(--recording-line); }
+  .speech-status { margin: 0 0 6px; color: var(--ink-2); font-size: .8125rem; line-height: 1.5; }
+  .speech-status:empty { display: none; }
+  .speech-status[data-state="recording"] { color: var(--recording-ink); font-variant-numeric: tabular-nums; }
+  .speech-status[data-state="error"] { color: var(--err); }
+  .speech-help { margin: 0 0 12px; color: var(--ink-2); font-size: .75rem; line-height: 1.5; }
+  .speech-help a { color: var(--accent-deep); text-underline-offset: 3px; }
+  .work-feedback { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--thinking-line); }
+  .work-feedback[hidden], .work-feedback [hidden] { display: none; }
+  .work-feedback p { margin: 0 0 10px; font-size: .875rem; }
+  .work-feedback .reasoning-feedback { font-weight: 600; }
+  .work-feedback .review-note, .work-feedback .tutor-status { color: var(--ink-2); font-size: .75rem; }
+  .verdict-wrong { color: var(--err); }
+  .verdict-partial { color: var(--notice-ink); }
+  .work-feedback .hint-body { margin: 12px 0; font-size: .875rem; overflow-wrap: anywhere; }
+  .work-feedback .ghost { margin-bottom: 4px; }
+  .answer-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .answer-label {
+    font-size: 0.8125rem;
+    font-weight: 650;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  .answer-opts {
+    display: flex;
+    gap: 8px;
+  }
+  .answer-opt {
+    width: 44px; height: 44px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--field-line);
+    border-radius: 9px;
+    background: var(--surface);
+    color: var(--ink-2);
+    font: 650 0.9375rem/1 var(--mono);
+    cursor: pointer;
+    transition: background-color 150ms, border-color 150ms, color 150ms;
+  }
+  .answer-opt:hover { border-color: var(--field-line-hover); color: var(--ink); }
+  .answer-opt.sel {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-on);
+  }
+  .answer-opt:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ---------- cards ---------- */
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 18px;
+  }
+  .card.thoughts { background: var(--thinking-surface); --ink-2: var(--thinking-ink-2); --ink-3: var(--thinking-ink-3); }
+  #figureNotice { background: var(--notice-surface); color: var(--notice-ink); padding: 10px 12px; border-radius: 8px; }
+
+  /* ---------- form ---------- */
+
+  .field { margin-bottom: 20px; }
+  .field:last-child { margin-bottom: 0; }
+  label, legend {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 650;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-bottom: 8px;
+  }
+  textarea, input[type="text"], input[type="password"] {
+    width: 100%;
+    font: inherit;
+    color: var(--ink);
+    background: var(--input-surface);
+    border: 1px solid var(--field-line);
+    border-radius: var(--radius);
+    padding: 10px 12px;
+    transition: border-color 150ms, box-shadow 150ms;
+  }
+  textarea { resize: vertical; min-height: 118px; }
+  textarea::placeholder, input::placeholder { color: var(--ink-3); }
+  textarea:hover, input:hover { border-color: var(--field-line-hover); }
+  textarea:focus, input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: none; outline: 2px solid var(--accent); outline-offset: 2px;
+  }
+
+  .options { border: 0; padding: 0; margin: 0; }
+  .opt-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .badge {
+    flex: none;
+    width: 28px; height: 28px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--hairline);
+    border-radius: 8px;
+    font: 650 0.8125rem/1 var(--mono);
+    color: var(--ink-2);
+    background: var(--surface);
+  }
+  .opt-row input { flex: 1; }
+  .hint {
+    margin: 4px 0 0 38px;
+    color: var(--ink-3);
+    font-size: 0.8125rem;
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 22px;
+  }
+  .actions .spacer { flex: 1; }
+
+  button.primary, button.ghost {
+    font: 650 0.9375rem/1 var(--font);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background-color 150ms, border-color 150ms, transform 80ms;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  button.primary {
+    padding: 0 22px;
+    height: 44px;
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    color: var(--accent-on);
+  }
+  button.primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+  button.primary:active { transform: translateY(1px); }
+  button.primary:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+  button.ghost {
+    padding: 0 16px;
+    height: 44px;
+    background: var(--surface);
+    border: 1px solid var(--field-line);
+    color: var(--ink);
+    font-size: 0.875rem;
+  }
+  button.ghost:hover { border-color: var(--field-line-hover); background: var(--surface-hover); }
+  button.ghost:active { transform: translateY(1px); }
+  button.primary:focus-visible, button.ghost:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 2px;
+  }
+  kbd {
+    font: 600 0.6875rem/1 var(--mono);
+    padding: 3px 6px;
+    border-radius: 5px;
+    background: var(--key-surface);
+    border: 1px solid var(--key-line);
+  }
+  .spinner {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    border: 2px solid var(--spinner-track);
+    border-top-color: var(--accent-on);
+    animation: spin .7s linear infinite;
+    flex: none;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ---------- results ---------- */
+
+  .results { padding-top: 20px; }
+  .results-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .results-title { font-size: 1rem; font-weight: 650; letter-spacing: -0.01em; }
+  .results-note { color: var(--ink-2); font-size: 0.8125rem; }
+
+  .banner {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    background: var(--err-bg);
+    border: 1px solid var(--err-line);
+    color: var(--err);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    font-size: 0.875rem;
+    margin-bottom: 18px;
+  }
+
+  .empty {
+    text-align: center;
+    color: var(--ink-2);
+    font-size: 0.9375rem;
+    padding: 40px 12px 36px;
+  }
+  .empty .big { color: var(--ink); font-weight: 650; margin-bottom: 4px; }
+  .empty .tiny { margin-top: 10px; font-size: 0.8125rem; color: var(--ink-3); }
+
+  .opt-result {
+    position: relative;
+    background: var(--track);
+    border-radius: var(--radius);
+    padding: 9px 12px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .opt-result:last-of-type { margin-bottom: 0; }
+  .fill {
+    position: absolute;
+    top: 0; bottom: 0; left: 0;
+    width: 0;
+    border-radius: var(--radius);
+    background: var(--bar-muted);
+    transition: width 650ms cubic-bezier(.16, 1, .3, 1);
+  }
+  .opt-result.best .fill { background: var(--bar-best); }
+  .opt-head {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .opt-text {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.9375rem;
+  }
+  .opt-result.best .opt-text { font-weight: 650; }
+  .opt-result.best .badge {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-on);
+  }
+  .tag {
+    flex: none;
+    font: 650 0.6875rem/1 var(--font);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--accent-on);
+    background: var(--accent);
+    border-radius: 5px;
+    padding: 4px 7px;
+  }
+  .pct {
+    flex: none;
+    font: 650 0.9375rem/1 var(--mono);
+    font-variant-numeric: tabular-nums;
+    min-width: 64px;
+    text-align: right;
+    color: var(--ink-2);
+  }
+  .opt-result.best .pct { color: var(--accent-deep); }
+
+  .readouts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 28px;
+    padding-top: 18px;
+    margin-top: 20px;
+    border-top: 1px solid var(--hairline);
+  }
+  .readout { min-width: 110px; }
+  .readout dt {
+    font-size: 0.6875rem;
+    font-weight: 650;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 4px;
+  }
+  .readout dd {
+    margin: 0;
+    font: 650 0.875rem/1.2 var(--mono);
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+  }
+  .conf-meter {
+    margin-top: 7px;
+    height: 4px;
+    width: 110px;
+    border-radius: 2px;
+    background: var(--track);
+    overflow: hidden;
+  }
+  .conf-fill {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--ink-2);
+    border-radius: 2px;
+    transition: width 650ms cubic-bezier(.16, 1, .3, 1);
+  }
+
+  details.raw { margin-top: 18px; }
+  details.raw pre {
+    margin: 10px 0 0;
+    padding: 14px;
+    background: var(--surface-hover);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    font: 500 0.75rem/1.6 var(--mono);
+    overflow: auto;
+    max-height: 320px;
+    tab-size: 2;
+  }
+
+  /* ---------- settings ---------- */
+
+  details.settings summary {
+    list-style: none;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 650;
+    color: var(--ink-2);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 6px 2px;
+  }
+  details.settings summary::-webkit-details-marker { display: none; }
+  details.settings summary:hover { color: var(--ink); }
+  details.settings summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+  .tw {
+    width: 0; height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid var(--ink-3);
+    transition: transform 200ms;
+  }
+  details[open] .tw { transform: rotate(90deg); }
+  .settings-body { padding: 16px 0 4px 2px; }
+  .settings-body .field { max-width: 460px; }
+  .settings-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 14px;
+  }
+  #connStatus { font-size: 0.8125rem; color: var(--ink-2); }
+  #connStatus.ok { color: var(--ok); font-weight: 600; }
+  #connStatus.err { color: var(--err); font-weight: 600; }
+  .store-note { color: var(--ink-3); font-size: 0.8125rem; margin: 14px 0 0; }
+
+  footer {
+    margin-top: 34px;
+    text-align: center;
+    color: var(--ink-3);
+    font-size: 0.8125rem;
+  }
+  footer .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+  /* ---------- entrance ---------- */
+
+  .results-body.enter { animation: rise 260ms cubic-bezier(.16, 1, .3, 1); }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  @media (max-width: 560px) {
+    .page { padding: 24px 14px 40px; }
+    header { flex-direction: column; align-items: flex-start; }
+    .card { padding: 18px; }
+    .actions { flex-wrap: wrap; }
+    button.primary { flex: 1 1 100%; }
+    .custom-url { max-width: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .chip .dot, .spinner, .signals-loading, .results-body.enter { animation: none; }
+    button, select, textarea, input, .fill, .conf-fill, .tw { transition: none; }
+  }
+
+  /* Student practice with a compact, nonmodal feedback companion. */
+  .page { max-width: 1120px; padding-top: 32px; display: grid; grid-template-columns: minmax(0, 1fr) 280px; column-gap: 24px; }
+  header, footer { grid-column: 1 / -1; }
+  header { align-items: center; }
+  .practice-main { width: 100%; grid-column: 1; grid-row: 2; }
+  .submission-note { margin: 12px 0 0; min-height: 1.5em; color: var(--ink-2); font-size: .8125rem; }
+  .signals-panel { position: sticky; z-index: 20; top: 20px; grid-column: 2; grid-row: 2; align-self: start; width: 280px; max-height: calc(100dvh - 40px); background: var(--signals-surface); --ink-2: var(--signals-ink-2); border: 1px solid var(--hairline); border-radius: 14px; padding: 18px; overflow-y: auto; }
+  .signals-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .signals-head h2 { margin: 0; font-size: .9375rem; font-weight: 650; letter-spacing: -.01em; }
+  .panel-toggle { padding: 6px 0 6px 6px; min-height: 44px; min-width: 44px; border: 0; background: transparent; color: var(--accent-deep); font: 600 .75rem var(--font); cursor: pointer; }
+  .panel-toggle:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .panel-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .signals-status { margin: 1px 0 14px; font-size: .75rem; color: var(--ink-2); }
+  .signals-panel[data-collapsed="true"] .signals-status { margin-bottom: 0; }
+  .signals-empty, .signals-loading { margin: 0; padding: 20px 0 24px; color: var(--ink-2); font-size: .875rem; }
+  .signals-loading { animation: pulse 1.8s ease-in-out infinite; }
+  .signals-question { margin: 0 0 8px; color: var(--ink-2); font-size: .75rem; }
+  .answer-feedback { font-size: .8125rem; color: var(--ink); font-weight: 600; margin: 0 0 10px; }
+  .answer-feedback.correct { color: var(--ok); }
+  .signal-list { margin: 0; }
+  .signal-row { display: grid; grid-template-columns: 82px minmax(0, 1fr); align-items: baseline; gap: 8px; padding: 12px 0; border-top: 1px solid var(--hairline); }
+  .signal-row dt { color: var(--ink-2); font-size: .75rem; margin: 0; }
+  .signal-row dd { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 8px; margin: 0; font-size: .8125rem; font-weight: 650; }
+  .signal-probability { color: var(--accent-deep); font: 500 .75rem var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .signals-footnote { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--hairline); color: var(--ink-2); font-size: .75rem; line-height: 1.5; }
+  .signal-limitation { color: var(--notice-ink); background: var(--notice-surface); padding: 10px 12px; border-radius: 8px; font-size: .75rem; margin: 8px 0 12px; }
+  .signal-details { font-size: .75rem; color: var(--ink-2); margin-top: 10px; }
+  .signal-details summary { cursor: pointer; color: var(--accent-deep); padding: 12px 0; min-height: 44px; }
+  .signal-details summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .signal-details p { margin: 10px 0; }
+  .signal-details strong { display: block; margin-top: 12px; color: var(--ink); }
+  .signal-score { display: flex; justify-content: space-between; gap: 12px; padding: 3px 0; }
+  .signal-score .num { flex: none; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+  .signals-error p { margin: 4px 0 14px; font-size: .8125rem; color: var(--err); }
+  .signals-error .ghost { min-height: 44px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  @media (max-width: 1050px) {
+    .page { max-width: 760px; display: block; }
+    .practice-main { width: 100%; }
+    .signals-panel { position: static; width: 100%; max-height: none; overflow: visible; }
+  }
+  @media (max-width: 560px) {
+    header { gap: 12px; }
+    .signals-panel { padding: 16px; }
+    .answer-label { flex-basis: 100%; }
+    #speechRecord { width: 44px; padding: 0; }
+    .speech-record-label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+    .thoughts .results-head { display: block; }
+    .thoughts .results-note { display: block; margin-top: 4px; }
+  }
+
+</style>
+<link rel="stylesheet" href="theme.css">
+<style id="studyStyles">
+/* Student study surface. The source mathematics keeps its existing renderer. */
+[hidden] { display: none !important; }
+body { line-height: 1.6; }
+.page { max-width: 1240px; padding: 28px 40px 44px; display: grid; grid-template-columns: minmax(0, 1fr) 256px; column-gap: 40px; }
+header { padding-bottom: 20px; margin-bottom: 24px; border-bottom: 1px solid var(--hairline); gap: 20px; }
+.brand { display: flex; align-items: center; gap: 14px; }
+.brand-mark { width: 42px; height: 42px; color: var(--accent); flex: none; }
+.brand-mark circle { fill: var(--illini-orange); stroke: none; }
+h1 { font: 400 1.65rem/1.2 var(--book-serif); letter-spacing: -.025em; }
+.sub { margin-top: 6px; font-size: .8125rem; }
+.header-actions { gap: 14px; flex-wrap: nowrap; }
+.theme-toggle { padding: 0; background: transparent; border: 0; }
+.theme-choice { width: 40px; min-height: 44px; }
+.connections-menu { position: relative; }
+summary { cursor: pointer; }
+.connections-menu > summary { width: 40px; min-height: 44px; display: flex; align-items: center; justify-content: center; color: var(--ink-2); list-style: none; border-radius: 8px; }
+.connections-menu > summary:hover { background: var(--accent-soft); color: var(--accent-deep); }
+.connections-menu > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.connections-menu > summary svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; }
+.connections-menu .connection-status { position: absolute; right: 0; top: 48px; z-index: 30; width: 235px; padding: 12px; display: grid; gap: 8px; border: 1px solid var(--hairline); border-radius: 12px; background: var(--surface); }
+.connection-settings { display: flex; align-items: center; min-height: 44px; padding: 8px 6px; color: var(--accent-deep); font-size: .875rem; font-weight: 600; text-underline-offset: 4px; }
+.settings-link { width: auto; padding: 0 10px; gap: 7px; display: flex; font-size: .8125rem; }
+.settings-link svg { width: 17px; height: 17px; }
+.practice-main { min-width: 0; }
+.save-warning { margin: 0 0 16px; padding: 12px 16px; border-radius: 8px; background: var(--notice-surface); color: var(--notice-ink); font-size: .875rem; }
+.card { padding: 0; border: 0; box-shadow: none; border-radius: 0; background: var(--surface); }
+#poolCard { border-radius: 14px 14px 0 0; margin-bottom: 0; }
+#poolCard:has(#poolDisplay:not([hidden])) { background: var(--question-surface); }
+.problem-picker { padding: 0 30px; border-bottom: 1px solid var(--hairline); }
+.problem-picker > summary { display: flex; justify-content: space-between; align-items: center; gap: 15px; min-height: 58px; list-style: none; font-size: .875rem; font-weight: 600; }
+.problem-picker > summary::-webkit-details-marker, .connections-menu > summary::-webkit-details-marker { display: none; }
+.picker-action { color: var(--accent-deep); font-size: .8125rem; font-weight: 500; white-space: nowrap; }
+.picker-action::after { content: " +"; }
+.problem-picker[open] .picker-action::after { content: " −"; }
+.picker-fields { padding: 10px 0 22px; }
+.practice-path { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; padding: 0 0 20px; margin: 0 0 20px; border-bottom: 1px solid var(--field-line); }
+.practice-path select, .practice-path input { width: 100%; min-width: 0; max-width: none; }
+.practice-path .path-concept, .practice-path .path-copy, .path-results { grid-column: 1 / -1; }
+.practice-path > button { justify-self: start; min-height: 44px; }
+.practice-path .path-copy { margin: 0; overflow-wrap: anywhere; }
+.path-results { display: grid; gap: 8px; }
+.path-question { text-align: left; white-space: normal; overflow-wrap: anywhere; min-height: 44px; }
+@media (max-width: 560px) { .practice-path { grid-template-columns: minmax(0, 1fr); } }
+.bank-choice { max-width: none; }
+.pool-selects { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 0; }
+.pool-selects select { width: 100%; min-width: 0; }
+.pool-selects[data-navigation="curriculum"] #topicField { min-width: 0; }
+.pool-selects[data-navigation="curriculum"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pool-selects[data-navigation="curriculum"] #topicField { grid-column: 1 / -1; }
+.pool-selects[data-navigation="curriculum"] .pool-reset { grid-column: 2; }
+.pool-reset { grid-column: 4; justify-self: end; }
+.field-inline label, .answer-label { text-transform: none; letter-spacing: 0; font-size: .8125rem; font-weight: 600; }
+.pool-hint { font-size: .8125rem; line-height: 1.6; }
+#poolHint { margin: 0; padding: 18px 30px 0; }
+#sourceNotice { margin: 0; padding: 18px 30px; }
+.welcome { padding: 32px 34px 40px; display: grid; grid-template-columns: minmax(0,1fr) 136px; gap: 28px; align-items: center; }
+.welcome h2 { margin: 0 0 15px; font: 400 2.125rem/1.2 var(--book-serif); max-width: 15ch; text-wrap: balance; }
+.welcome p { margin: 0 0 24px; color: var(--ink-2); max-width: 36ch; font-size: .9375rem; }
+.puzzle-geometry { width: 100%; height: auto; color: var(--accent); }
+.welcome .primary { font-size: .875rem; }
+#poolDisplay { padding: 28px 34px 18px; }
+.q-head { margin-bottom: 18px; gap: 12px; }
+.q-id { font: 600 .875rem/1.5 var(--font); color: var(--ink-2); }
+.q-area { background: transparent; color: var(--ink-2); border: 0; padding: 0; font-size: .8125rem; text-transform: none; letter-spacing: 0; }
+/* Inline radical glyphs in the question can extend above their line box. */
+.q-head-right { margin-left: auto; position: relative; z-index: 1; }
+.sol-btn { font-size: .8125rem; background: transparent; border: 0; text-decoration: underline; text-underline-offset: 4px; color: var(--accent-deep); padding: 4px 0 4px 8px; }
+.sol-btn:hover { background: var(--accent-soft); color: var(--accent-deep); }
+.q-text { font-size: 1.125rem; line-height: 1.85; max-width: 67ch; padding: 0; border: 0; border-radius: 0; background: transparent; }
+.q-divider { margin: 26px 0 20px; border-color: var(--hairline); }
+.q-choices { display: grid; gap: 12px; width: 100%; }
+.q-choices.compact-choices { display: flex; flex-wrap: wrap; }
+.q-choices.compact-choices .q-choice { flex: 1 1 auto; width: auto; min-width: min(94px, 100%); max-width: 100%; }
+.q-choice.answer-opt { display: flex; align-items: baseline; gap: 10px; padding: 12px; width: 100%; height: auto; min-height: 52px; text-align: left; font-weight: 400; color: var(--ink); background: var(--surface); border: 1px solid var(--field-line); }
+.q-choice.answer-opt:hover { background: var(--accent-soft); border-color: var(--accent); }
+.q-choice.answer-opt.sel { background: var(--choice-selected-surface); border-color: var(--choice-selected-line); color: var(--ink); outline: 1px solid var(--choice-selected-line); outline-offset: -2px; }
+.q-choice.answer-opt:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.q-choice.sel .badge { background: var(--illini-orange); color: var(--choice-badge-ink); }
+.q-choice .badge { flex: none; }
+.q-choice .choice-id { width: auto; max-width: 40%; height: auto; min-height: 24px; padding: 2px 6px; border-radius: 6px; overflow-wrap: anywhere; }
+.q-choice .opt-text { display: block; flex: 1; min-width: 0; }
+.choice-figure { display: block; margin: 4px 0 8px; }
+.choice-figure img { display: block; max-width: 100%; max-height: 220px; height: auto; object-fit: contain; background: var(--figure-surface); border-radius: 6px; }
+.choice-zoom { display: flex; flex-wrap: wrap; gap: 0 18px; margin-top: 6px; }
+.choice-zoom a { display: inline-flex; align-items: center; min-height: 44px; color: var(--accent-deep); font-size: .8125rem; text-underline-offset: 3px; }
+.choice-zoom a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.written-answer { padding: 10px 34px 0; }
+.written-answer label { display: block; margin-bottom: 8px; font-size: .8125rem; font-weight: 600; color: var(--ink-2); text-transform: none; letter-spacing: 0; }
+.picture-choices .q-choice { align-items: flex-start; }
+.badge { background: var(--accent-soft); color: var(--accent-deep); border: 0; font-family: var(--font); font-weight: 600; border-radius: 5px; }
+.opt-text { font-size: 1rem; }
+.question-tools { display: flex; align-items: center; padding: 0 28px 14px; }
+.question-tools .ghost { font-size: .8125rem; background: transparent; border-color: transparent; padding: 8px 6px; color: var(--ink-2); }
+.question-tools .ghost:hover { background: var(--accent-soft); color: var(--accent-deep); }
+#bookmarkProblem[aria-pressed="true"] { color: var(--accent-deep); background: var(--accent-soft); }
+.problem-navigation { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 22px; padding-top: 14px; border-top: 1px solid var(--hairline); }
+.problem-navigation .ghost { background: transparent; border-color: transparent; padding: 8px 6px; min-height: 44px; font-size: .8125rem; }
+.problem-navigation .ghost:hover { background: var(--accent-soft); }
+#nextProblem { color: var(--accent-deep); font-weight: 650; }
+#thoughtsCard { border-top: 1px solid var(--hairline); border-radius: 0 0 14px 14px; padding: 28px 34px 30px; margin-bottom: 0; }
+.thoughts .results-head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.thinking-heading { flex: 1; }
+.thinking-heading .results-note { display: block; margin-top: 5px; }
+.thoughts .results-title { font: 400 1.5rem/1.3 var(--book-serif); text-transform: none; letter-spacing: -.015em; }
+.thoughts .results-note { font-size: .75rem; }
+.answer-row { gap: 12px; margin-bottom: 20px; }
+.answer-opt { width: 44px; height: 44px; border-radius: 8px; font-family: var(--font); }
+.answer-opt.sel { background: var(--illini-orange); border-color: var(--choice-selected-line); color: var(--choice-badge-ink); }
+.speech-help { margin-bottom: 10px; font-size: .8125rem; }
+#speechRecord { position: relative; overflow: hidden; }
+#speechRecord[aria-pressed="true"] { padding-bottom: 5px; }
+.speech-record-time { margin-left: 4px; font-size: .75rem; font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.speech-record-progress { position: absolute; left: 0; bottom: 0; width: 100%; height: 3px; background: var(--recording-line); transform: scaleX(0); transform-origin: left; transition: transform 250ms linear; pointer-events: none; }
+#thoughts { min-height: 164px; line-height: 1.8; padding: 16px; font-size: .9375rem; border-color: var(--field-line); border-radius: 8px; background: var(--input-surface); }
+.actions { margin-top: 15px; gap: 10px; }
+button.primary { background: var(--accent); color: var(--accent-on); border-radius: 8px; min-height: 46px; }
+button.primary:hover { background: var(--accent-deep); }
+#thoughtsSubmit { min-width: 180px; gap: 10px; }
+.submit-icon { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: transform 180ms cubic-bezier(.16,1,.3,1); }
+.submit-spinner { display: none; }
+#thoughtsSubmit:not(:disabled):focus-visible .submit-icon { transform: translateX(3px); }
+@media (hover: hover) {
+  #thoughtsSubmit:not(:disabled):hover .submit-icon { transform: translateX(3px); }
+}
+#thoughtsSubmit[aria-busy="true"] { opacity: 1; cursor: progress; background: var(--accent); border-color: var(--accent); }
+#thoughtsSubmit[aria-busy="true"] .submit-arrow { display: none; }
+#thoughtsSubmit[aria-busy="true"] .submit-spinner { display: block; }
+#thoughtsSubmit[aria-busy="true"] .submit-icon { animation: submit-turn 900ms linear infinite; }
+@keyframes submit-turn { to { transform: rotate(360deg); } }
+button.ghost { border-radius: 8px; }
+button:disabled { opacity: .55; cursor: not-allowed; }
+.earlier-attempt { font-size: .875rem; margin: 18px 0 0; border-top: 1px solid var(--hairline); }
+.earlier-attempt > summary { color: var(--accent-deep); min-height: 44px; padding: 12px 0; }
+.earlier-attempt p { margin: 0 0 14px; color: var(--ink-2); }
+#earlierWork { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 240px; overflow-y: auto; }
+.work-feedback { border: 0; border-radius: 8px; background: var(--surface-hover); padding: 18px; margin-top: 22px; }
+.work-feedback .answer-feedback, .work-feedback .answer-feedback.correct, .work-feedback .reasoning-feedback { color: var(--ink); }
+.submission-verdict { display: flex; align-items: flex-start; gap: 12px; }
+.submission-details { min-width: 0; }
+.submission-mark { display: block; flex: 0 0 28px; width: 28px; height: 28px; color: var(--notice-ink); }
+.submission-mark svg { display: block; width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 2.25; stroke-linecap: round; stroke-linejoin: round; }
+.submission-mark [data-mark] { display: none; }
+.submission-mark[data-result="correct"] { color: var(--ok); }
+.submission-mark[data-result="wrong"] { color: var(--err); }
+.submission-mark[data-result="correct"] [data-mark="correct"], .submission-mark[data-result="review"] [data-mark="review"], .submission-mark[data-result="wrong"] [data-mark="wrong"] { display: inline; }
+.practice-rail { min-width: 0; grid-column: 2; grid-row: 2; align-self: start; }
+.notebook { padding: 12px 0 24px; }
+.notebook h2 { font: 400 1.375rem/1.3 var(--book-serif); margin: 0 0 12px; }
+.notebook-empty { font-size: .8125rem; color: var(--ink-2); margin: 0 0 18px; }
+.notebook-empty { border-top: 1px solid var(--hairline); padding-top: 17px; }
+.notebook-list { display: grid; }
+.graph-evidence { margin: 2px 0 20px; padding: 0 0 10px; border-bottom: 1px solid var(--hairline); color: var(--ink); }
+.graph-evidence > summary { cursor: pointer; padding: 10px 0; font-size: .88rem; font-weight: 650; }
+.graph-evidence p { margin: 5px 0; }
+.graph-topic { margin: 12px 0 4px; font: 400 1.15rem/1.3 var(--book-serif); }
+.graph-target, .graph-quote { font-size: .825rem; line-height: 1.5; }
+.graph-observations { margin: 12px 0; padding-left: 1.2rem; }
+.graph-observation { padding-left: 2px; margin-bottom: 12px; font-size: .8rem; overflow-wrap: anywhere; }
+.graph-context, .graph-quote { display: block; margin-top: 3px; }
+.graph-context, .graph-source, .graph-scope, .graph-summary { color: var(--ink-2); font-size: .75rem; line-height: 1.5; }
+.graph-source summary { cursor: pointer; padding: 5px 0; }
+.notebook-row { display: flex; align-items: center; border-top: 1px solid var(--hairline); }
+.notebook-item { flex: 1; min-width: 0; width: 100%; min-height: 60px; display: block; padding: 14px 0; border: 0; border-radius: 0; text-align: left; color: var(--ink); background: transparent; cursor: pointer; font: 500 .8125rem/1.5 var(--font); }
+.notebook-item:hover { color: var(--accent-deep); background: var(--accent-soft); }
+.notebook-item span { display: block; font-size: .75rem; color: var(--ink-2); font-weight: 400; margin-top: 3px; }
+.notebook-item[aria-current="true"] { color: var(--accent-deep); }
+.notebook-remove { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 44px; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 6px; background: transparent; color: var(--ink-3); cursor: pointer; }
+.notebook-remove svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.notebook-remove:hover { background: var(--surface-hover); color: var(--ink); }
+.notebook-item:focus-visible, .notebook-remove:focus-visible, #notebookUndo:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.notebook-notice { margin: 12px 0 0; font-size: .8125rem; color: var(--ink-2); }
+#notebookUndo { display: inline-flex; align-items: center; min-height: 44px; padding: 0 6px; border: 0; background: transparent; color: var(--accent-deep); font: 600 .8125rem var(--font); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.signals-panel { grid-column: auto; grid-row: auto; width: auto; position: static; max-height: none; padding: 17px; overflow: visible; border: 0; border-radius: 12px; }
+.signals-head h2 { font-size: .8125rem; }
+.signals-empty { padding: 8px 0 14px; font-size: .8125rem; }
+.signals-footnote { line-height: 1.6; }
+.signals-status { font-size: .75rem; }
+.signals-panel .panel-toggle { font-size: .75rem; }
+footer { border-top: 1px solid var(--hairline); text-align: left; padding-top: 18px; margin-top: 32px; font-size: .75rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 18px; }
+footer .source-credits { width: 100%; line-height: 1.7; }
+footer .source-credits p { margin: 0; }
+.modal { background: var(--surface); }
+.modal-title { font-family: var(--font); }
+.solution-reflection { padding-top: 22px; margin-top: 28px; border-top: 1px solid var(--hairline); color: var(--accent-deep); font: 400 1.125rem/1.6 var(--book-serif); }
+.solution-method + .solution-method { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--hairline); }
+.solution-method-title { margin: 0 0 12px; font-size: 1.0625rem; line-height: 1.5; }
+@media (max-width: 1050px) {
+  .page { max-width: 850px; display: block; padding: 24px; }
+  .practice-rail { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 28px; margin-top: 28px; }
+  .signals-panel { align-self: start; margin-top: 12px; }
+}
+@media (max-width: 620px) {
+  .page { padding: 20px 16px 30px; }
+  header { align-items: center; flex-direction: row; gap: 8px; margin-bottom: 18px; padding-bottom: 16px; }
+  .header-actions { width: auto; gap: 4px; }
+  .brand { gap: 8px; }
+  h1 { font-size: 1.375rem; }
+  .brand-mark { width: 30px; height: 30px; }
+  .sub { display: none; }
+  .connections-menu .connection-status { right: 0; left: auto; width: 228px; }
+  .theme-choice { width: 36px; }
+  .problem-picker { padding: 0 20px; }
+  .problem-picker > summary { min-height: 58px; }
+  .pool-selects { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .pool-reset { grid-column: 2; }
+  #poolHint, #sourceNotice { padding-left: 20px; padding-right: 20px; }
+  .welcome { padding: 26px 22px 32px; grid-template-columns: 1fr; gap: 20px; }
+  .welcome h2 { font-size: 1.875rem; max-width: 16ch; }
+  .puzzle-geometry { width: 90px; grid-row: 1; }
+  #poolDisplay { padding: 22px 22px 8px; }
+  .q-head { margin-bottom: 16px; }
+  .q-head-right { margin-left: auto; }
+  .q-text { font-size: 1rem; line-height: 1.85; }
+  .question-tools { padding: 0 16px 12px; }
+  .written-answer { padding: 10px 22px 0; }
+  #thoughtsCard { padding: 24px 22px; }
+  .thoughts .results-note { display: block; margin-top: 5px; }
+  .answer-row { gap: 10px; }
+  .answer-label { flex-basis: 100%; }
+  .answer-opts { gap: 7px; }
+  #speechRecord { margin-left: 0; width: auto; padding: 8px 10px; font-size: .8125rem; }
+  .thoughts .results-head:has(#speechRecord[aria-pressed="true"]) { flex-wrap: wrap; }
+  .results-head:has(#speechRecord[aria-pressed="true"]) .thinking-heading { flex-basis: 100%; }
+  #speechRecord[aria-pressed="true"] { width: 100%; padding-bottom: 11px; }
+  #speechRecord[aria-pressed="true"] .speech-record-time { margin-left: auto; }
+  .speech-record-label { position: static; width: auto; height: auto; clip: auto; white-space: normal; }
+  .practice-rail { grid-template-columns: 1fr; gap: 6px; }
+  .actions .primary { flex: 1; }
+  .actions .spacer { display: none; }
+  footer { flex-direction: column; gap: 6px; }
+}
+@media (max-width: 360px) {
+  .brand-mark { display: none; }
+  .thoughts .results-head { align-items: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+  #thoughtsSubmit .submit-icon { transform: none !important; }
+}
+
+</style>
+<link rel="manifest" href="site.webmanifest">
+<link rel="apple-touch-icon" href="images/app-192.png">
+<link rel="icon" type="image/png" href="images/app-192.png">
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M6 8h32v28H6zM6 8l32 28M6 36 22 8l16 28M6 22h32"/><circle cx="22" cy="22" r="4" fill="var(--ground)"/></svg>
+      <div><h1>Math Practice</h1>
+      <p class="sub">A place for curious minds.</p></div>
+    </div>
+    <div class="header-actions">
+      <div class="theme-toggle" role="group" aria-label="Appearance">
+        <button class="theme-choice" type="button" data-theme-choice="light" aria-label="Light theme" aria-pressed="true" title="Light theme"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg></button>
+        <button class="theme-choice" type="button" data-theme-choice="dark" aria-label="Dark theme" aria-pressed="false" title="Dark theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z"></path></svg></button>
+      </div>
+      <details class="connections-menu"><summary aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.6 3.2-.4 2.4-1.6.72-2-.88L3.2 9.6l2 1.52v1.76l-2 1.52 2.4 4.16 2-.88 1.6.72.4 2.4h4.8l.4-2.4 1.6-.72 2 .88 2.4-4.16-2-1.52v-1.76l2-1.52-2.4-4.16-2 .88-1.6-.72-.4-2.4Z"></path><circle cx="12" cy="12" r="3"></circle></svg></summary>
+      <div class="connection-status" role="group" aria-label="Backend readiness. Select a badge to check again.">
+        <a class="connection-settings" href="settings.html">Connection settings</a>
+        <button class="chip" data-model-role="decision" id="decisionStatus" type="button" data-state="checking" title="Check Decision Model connection"><span class="dot" aria-hidden="true"></span><span><span class="chip-label">Decision Model</span><span class="chip-state" id="decisionStatusText" role="status">Checking...</span></span></button>
+        <button class="chip" data-model-role="speech" id="speechServiceStatus" type="button" data-state="checking" title="Check Speech Recognition connection"><span class="dot" aria-hidden="true"></span><span><span class="chip-label">Speech Recognition</span><span class="chip-state" id="speechServiceStatusText" role="status">Checking...</span></span></button>
+        <button class="chip" data-model-role="inference" id="inferenceStatus" type="button" data-state="checking" title="Check LLM Inference connection"><span class="dot" aria-hidden="true"></span><span><span class="chip-label">LLM Inference</span><span class="chip-state" id="inferenceStatusText" role="status">Checking...</span></span></button>
+      </div>
+      </details>
+    </div>
+  </header>
+
+  <main class="practice-main">
+  <p class="save-warning" id="saveWarning" role="status" hidden></p>
+  <section class="card" id="poolCard">
+    <details class="problem-picker" id="problemPicker">
+    <summary><span id="pickerTitle">Find a problem</span><span class="picker-action">Browse</span></summary>
+    <div class="picker-fields">
+    <div class="practice-path" aria-label="Practice path">
+      <div class="field-inline"><label for="practicePath">Practice path</label><select id="practicePath"><option value="ailleo">ailleo · Mathematical ideas</option><option value="CN">CN · Chinese curriculum</option><option value="US">US · Common Core</option></select></div>
+      <div class="field-inline"><label for="pathFilter">Filter concepts or standards</label><input class="free-answer" id="pathFilter" type="search" placeholder="For example: fractions" autocomplete="off"></div>
+      <div class="field-inline path-concept"><label id="pathConceptLabel" for="pathConcept">Mathematical concept</label><select id="pathConcept" disabled><option>Loading concepts…</option></select></div>
+      <button type="button" class="ghost" id="pathFind" disabled>Find practice</button>
+      <p class="pool-hint path-copy" id="pathDescription"></p>
+      <p class="pool-hint path-copy" id="pathAttribution" hidden><a href="https://www.thecorestandards.org/public-license/" target="_blank" rel="noopener noreferrer">© Copyright 2010. National Governors Association Center for Best Practices and Council of Chief State School Officers. All rights reserved.</a></p>
+      <p class="pool-hint path-copy" id="pathStatus" role="status"></p>
+      <div class="field-inline" id="pathPageField" hidden><label for="pathPage">Results page</label><select id="pathPage" aria-controls="pathResults"></select></div>
+      <div class="path-results" id="pathResults"></div>
+    </div>
+    <p class="pool-hint" id="poolCount"></p>
+    <div class="field-inline bank-choice"><label for="selBank">Question bank</label><select id="selBank"></select></div>
+    <div class="pool-selects" id="poolSelectors">
+      <div class="field-inline"><label for="selLevel">Level</label><select id="selLevel"></select></div>
+      <div class="field-inline"><label for="selYear" id="yearLabel">Year</label><select id="selYear"></select></div>
+      <div class="field-inline" id="topicField"><label for="selBatch" id="batchLabel">Batch</label><select id="selBatch"></select></div>
+      <div class="field-inline"><label for="selNum">Problem</label><select id="selNum"></select></div>
+      <button type="button" class="ghost pool-reset" id="poolReset">Reset</button>
+    </div>
+    </div>
+    </details>
+    <p class="pool-hint" id="poolHint">Choose a year and problem to begin.</p>
+    <p class="pool-hint" id="sourceNotice" hidden>English machine translations of AI-generated questions from <a href="https://github.com/xiaoyang111222/cn-math-taxonomy" target="_blank" rel="noopener">cn-math-taxonomy</a>, adapted under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>. Not teacher reviewed.</p>
+    <div id="poolDisplay" hidden></div>
+    <div class="answer-opts" id="answerOpts" role="radiogroup" aria-label="Your answer" hidden></div>
+    <div class="written-answer" id="writtenAnswer" hidden>
+      <label id="writtenAnswerLabel" for="freeAnswer">Your answer</label>
+      <input class="free-answer" id="freeAnswer" aria-label="Your answer" maxlength="2000" autocomplete="off" placeholder="Enter your answer" hidden>
+      <textarea class="free-answer" id="openAnswer" aria-label="Your answer" maxlength="2000" rows="4" placeholder="Describe your answer. It will receive a review." hidden></textarea>
+    </div>
+    <div class="welcome" id="practiceWelcome">
+      <div><h2>What will you discover?</h2><p>Try an idea. Follow a pattern. Give yourself room to work things out.</p><button type="button" class="primary" id="beginPractice">Try a problem</button></div>
+      <svg class="puzzle-geometry" viewBox="0 0 160 180" fill="none" aria-hidden="true"><path d="M15 22h130v130H15z" fill="var(--accent-soft)" stroke="currentColor" stroke-width="1.3"/><path d="m15 22 130 130M15 152 145 22M80 22v130M15 87h130" stroke="currentColor" stroke-width="1.3"/><path d="m80 22 65 65H80Z" fill="var(--illini-orange)" opacity=".25"/><circle cx="80" cy="87" r="34" fill="var(--surface)" stroke="currentColor" stroke-width="1.3"/><path d="M56 111 80 53l24 58Z" stroke="currentColor" stroke-width="1.3"/><circle cx="80" cy="87" r="3" fill="currentColor"/></svg>
+    </div>
+    <div class="question-tools" id="questionTools" hidden>
+      <button class="ghost" type="button" id="bookmarkProblem" aria-pressed="false">Save for another look</button>
+    </div>
+  </section>
+
+  <section class="card thoughts" id="thoughtsCard" hidden>
+    <div class="results-head">
+      <div class="thinking-heading"><label class="results-title" for="thoughts">Your thinking</label>
+      <span class="results-note" id="attemptNote" hidden></span></div>
+      <button type="button" class="ghost speech-button" id="speechRecord" aria-pressed="false" aria-describedby="speechStatus speechHelp" disabled>
+        <svg class="speech-icon mic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg>
+        <svg class="speech-icon stop-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><rect x="5" y="5" width="14" height="14" rx="2"/></svg>
+        <span class="speech-record-label" id="speechRecordLabel">Record thinking</span>
+        <span class="speech-record-time" id="speechRecordTime" aria-live="off" hidden>1:00 left</span>
+        <span class="speech-record-progress" id="speechRecordProgress" aria-hidden="true" hidden></span>
+      </button>
+    </div>
+    <p class="pool-hint" id="figureNotice" hidden>Describe the parts of the figure you use. The first check reads only text; a closer review also sees the figures.</p>
+    <div class="speech-controls" aria-label="Spoken thinking">
+      <button type="button" class="ghost speech-button" id="speechRetry" hidden>Retry transcription</button>
+      <button type="button" class="ghost speech-button" id="speechCancel" hidden>Discard recording</button>
+    </div>
+    <p class="speech-status" id="speechStatus" role="status" aria-live="polite"></p>
+    <p class="speech-help" id="speechHelp">Write your approach. With a speech connection, you can also record up to a minute and edit before submitting.</p>
+    <textarea maxlength="12000" id="thoughts" aria-describedby="speechStatus speechHelp submissionNote saveWarning" placeholder="I noticed that… So I tried…"></textarea>
+    <details class="earlier-attempt" id="earlierAttempt" hidden><summary>Look back at your first approach</summary><p id="earlierAnswer"></p><p id="earlierWork"></p><p>What do you notice now that you did not notice before?</p></details>
+    <div class="actions">
+      <button type="button" class="ghost" id="thoughtsClear">Clear draft</button>
+      <span class="spacer"></span>
+      <button type="button" class="primary" id="thoughtsSubmit"><span id="submitLabel">Submit answer</span><svg class="submit-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="submit-arrow" d="M4 12h15m-6-6 6 6-6 6"/><circle class="submit-spinner" cx="12" cy="12" r="8" stroke-dasharray="36 15"/></svg></button>
+    </div>
+    <section class="work-feedback" id="workFeedback" aria-label="Submission feedback" hidden>
+      <div class="submission-verdict">
+        <span class="submission-mark" id="submissionMark" role="img" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path data-mark="correct" d="m5 12 4 4L19 6"/>
+            <path data-mark="review" d="M8 7a4 4 0 0 1 8 0c0 3-4 3-4 6m0 5v.01"/>
+            <path data-mark="wrong" d="m6 6 12 12M18 6 6 18"/>
+          </svg>
+        </span>
+        <div class="submission-details">
+          <p id="answerFeedback" role="status"></p>
+          <p class="reasoning-feedback" id="reasoningFeedback" role="status"></p>
+        </div>
+      </div>
+      <p id="coach" role="status" hidden></p>
+      <p class="tutor-status" id="tutorStatus" role="status" hidden></p>
+      <button class="ghost" type="button" id="hintToggle" aria-expanded="false" aria-controls="hintBody" hidden>Show a hint</button>
+      <div class="hint-body rich-content" id="hintBody" hidden></div>
+      <button class="ghost" type="button" id="tutorRetry" hidden>Retry hint</button>
+      <p class="review-note" id="reviewNote" hidden></p>
+    </section>
+    <p class="submission-note" id="submissionNote" role="status"></p>
+    <nav class="problem-navigation" aria-label="Problems in this set"><button class="ghost" type="button" id="previousProblem">Previous</button><button class="ghost" type="button" id="nextProblem">Next problem</button></nav>
+  </section>
+
+  </main>
+
+  <div class="practice-rail">
+  <aside class="notebook" aria-labelledby="notebookTitle">
+    <h2 id="notebookTitle">Your notebook</h2>
+    <div class="notebook-list" id="notebookList"></div>
+    <div class="notebook-notice" id="notebookNotice" role="status" hidden>
+      <span id="notebookNoticeText"></span>
+      <button type="button" class="notebook-undo" id="notebookUndo">Undo</button>
+    </div>
+    <p class="notebook-empty" id="notebookEmpty">Save a challenge or try a problem. Your recent work will be here when you return.</p>
+  </aside>
+  <details id="graphEvidence" class="graph-evidence" hidden>
+    <summary>Knowledge graph evidence</summary>
+    <p class="graph-scope" id="graphEvidenceScope"></p>
+    <div id="graphEvidenceBody"></div>
+  </details>
+  <aside class="signals-panel" id="signalsPanel" aria-labelledby="signalsTitle" data-collapsed="false">
+    <div class="signals-head">
+      <h2 id="signalsTitle">Learning signals</h2>
+      <button type="button" class="panel-toggle" id="panelToggle" aria-controls="signalsContent" aria-expanded="true">Minimize</button>
+    </div>
+    <p class="signals-status" id="signalsStatus">Ready when you are</p>
+    <div id="signalsContent">
+      <div id="resultsBody"><p class="signals-empty">Record your thinking to see learning signals from your original speech.</p></div>
+      <p class="signals-footnote">A reading of the original transcript, separate from mathematical accuracy.</p>
+    </div>
+  </aside>
+  </div>
+  <span class="sr-only" id="assessmentAnnouncement" role="status" aria-live="polite"></span>
+
+  <div class="modal-backdrop" id="solModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="solTitle">
+      <div class="modal-head">
+        <span class="modal-title" id="solTitle">Solution</span>
+        <button type="button" class="modal-close" id="solClose" aria-label="Close solution">✕</button>
+      </div>
+      <div class="modal-body" id="solBody"></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="source-credits">
+      <p>AMC material and adapted solutions: <a href="https://maa.org/student-programs/amc/" target="_blank" rel="noopener noreferrer">Mathematical Association of America (MAA)</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a>.</p>
+      <p>Chinese K-12 material: <a href="https://github.com/xiaoyang111222/cn-math-taxonomy" target="_blank" rel="noopener noreferrer">xiaoyang111222/cn-math-taxonomy</a> · <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a>.</p>
+    </div>
+    <span>Your drafts and notebook stay in this browser.</span>
+    <span class="site-credit">Developed by Ruoqing Zhu · <a href="https://github.com/rqzhu-aide" target="_blank" rel="noopener noreferrer">GitHub: rqzhu-aide</a> · Original app: <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a></span>
+  </footer>
+</div>
+
+<script src="hosted-config.js"></script>
+<script src="hosted-data.js"></script>
+<script src="answer-check.js"></script>
+<script src="vendor/katex/katex.min.js"></script>
+<script src="vendor/katex/contrib/auto-render.min.js"></script>
+<script src="speech-input.js"></script>
+<script src="graph-evidence.js"></script>
+<script src="practice-feedback.js"></script>
+<script src="curriculum-path.js"></script>
+<script>
+(async function () {
+  "use strict";
+
+  var LETTERS = ["A", "B", "C", "D", "E"];
+  var $ = function (id) { return document.getElementById(id); };
+  var hosted = !!window.MATH_PRACTICE_HOSTED;
+  var hostedBanks = [];
+  if (hosted) {
+    var settingsLink = document.querySelector('.connection-settings');
+    settingsLink.textContent = 'Set up the local app for AI feedback and recording';
+    settingsLink.href = 'https://github.com/rqzhu-aide/K-12-math/blob/main/math-practice/README.md#run-locally';
+    settingsLink.target = '_blank'; settingsLink.rel = 'noopener noreferrer';
+    document.querySelector('.connection-status').setAttribute('aria-label', 'Optional connections are available in the local app.');
+    ['decisionStatus', 'speechServiceStatus', 'inferenceStatus'].forEach(function (id) {
+      $(id).disabled = true; $(id).dataset.state = 'idle';
+      $(id).title = 'Available in the local app.';
+    });
+    ['decisionStatusText', 'speechServiceStatusText', 'inferenceStatusText'].forEach(function (id) { $(id).textContent = 'Local app only'; });
+    $('speechHelp').textContent = 'Write your approach. Your answers, thinking and notebook stay in this browser. Recording and AI feedback are available in the local app.';
+    $('openAnswer').placeholder = 'Describe your answer, then compare it with the solution.';
+    $('signalsStatus').textContent = 'Local app only';
+    $('resultsBody').textContent = 'Learning signals and AI feedback are available in the local app.';
+    document.querySelector('.signals-footnote').hidden = true;
+    try { hostedBanks = await window.MathPracticeHosted.ready; }
+    catch (_) {
+      $('poolHint').textContent = 'Practice data could not load. Check your connection and reload this page.';
+      $('beginPractice').disabled = true;
+      $('pathStatus').textContent = 'Practice paths could not load. Reload this page to try again.';
+      return;
+    }
+  }
+  var answerTools = window.MathPracticeAnswers;
+  var els = {
+    thoughts: $("thoughts"), thoughtsSubmit: $("thoughtsSubmit"), thoughtsClear: $("thoughtsClear"),
+    answerOpts: $("answerOpts"), resultsBody: $("resultsBody"),
+    panel: $("signalsPanel"), panelToggle: $("panelToggle"), panelStatus: $("signalsStatus"),
+    submissionNote: $("submissionNote"), announcement: $("assessmentAnnouncement")
+  };
+  var ATTEMPTS_KEY = "math-practice.attempts.v1", attempts = {};
+  try { attempts = JSON.parse(localStorage.getItem(ATTEMPTS_KEY) || "{}"); } catch (_) {}
+  if (!attempts || typeof attempts !== "object" || Array.isArray(attempts)) attempts = {};
+  var NOTEBOOK_KEY = "math-practice.notebook.v1", notebook = {};
+  try { notebook = JSON.parse(localStorage.getItem(NOTEBOOK_KEY) || "{}"); } catch (_) {}
+  if (!notebook || typeof notebook !== "object" || Array.isArray(notebook)) notebook = {};
+  var saveFailures = {draft: false, notebook: false};
+  function updateSaveWarning() {
+    var warning = $('saveWarning');
+    var message = saveFailures.draft
+      ? 'This browser could not save your latest work' + (saveFailures.notebook ? ' or notebook changes' : '') + '. Keep this page open or copy your thinking before leaving.'
+      : saveFailures.notebook ? 'This browser could not save your notebook changes. They may be lost when this page closes.' : '';
+    var changed = warning.textContent !== message;
+    if (changed) warning.textContent = message;
+    warning.hidden = !message;
+    if (changed && lastSubmitted) updateSubmissionNote();
+  }
+  function saveAttempt(edited) {
+    if (!currentQuestion) return;
+    var previous = attempts[currentQuestion.id] || {};
+    var changed = (previous.thoughts || '') !== els.thoughts.value || !answerTools.same(previous.answer || null, selectedAnswer || null);
+    attempts[currentQuestion.id] = { thoughts: els.thoughts.value, answer: answerTools.copy(selectedAnswer), originalSpeech: feedback ? feedback.evidence : null,
+      tutorContext: feedback ? feedback.state() : previous.tutorContext || null };
+    try { localStorage.setItem(ATTEMPTS_KEY, JSON.stringify(attempts)); saveFailures.draft = false; }
+    catch (_) { saveFailures.draft = true; }
+    var entry = notebook[currentQuestion.id] || {};
+    if (els.thoughts.value.trim() || answerTools.hasAnswer(selectedAnswer) || (entry.removed && edited && changed)) {
+      if (edited && changed) entry.removed = false;
+      entry.touched = Date.now(); notebook[currentQuestion.id] = entry;
+      saveNotebook();
+    }
+    updateSaveWarning();
+  }
+  function saveDraft() { saveAttempt(true); }
+  function updateChips() { updateSubmissionNote(); }
+  els.thoughts.addEventListener("input", function () { saveAttempt(true); updateSubmissionNote(); });
+
+  /* ---------- Question pool ---------- */
+
+  var customBanks = Array.isArray(window.CUSTOM_MATH_BANKS) ? window.CUSTOM_MATH_BANKS : [];
+  if (window.CN_MATH_BANK) window.CN_MATH_BANK.figuresBase = '../database/cn-math-bank/figures/';
+  if (window.AMC_BANK) window.AMC_BANK.figuresBase = '../database/amc-bank/figures/';
+  function publishedBankURL(value) {
+    return typeof value === 'string' ? value.replace(/^\.\.\/(amc-bank|cn-math-bank)\//, '../database/$1/') : value;
+  }
+  var BANKS = (hosted ? hostedBanks : [window.CN_MATH_BANK, window.AMC_BANK].concat(customBanks)).filter(function (b) { return b && Array.isArray(b.questions) && b.questions.length; });
+  var BANK = BANKS[0] || { id: 'cn-math', questions: [] };
+  function usesGradeNavigation(bank) { return bank.id !== 'amc'; }
+  var cnSourceNotice = Array.prototype.slice.call($('sourceNotice').childNodes || []);
+  var questionIndex = Object.create(null);
+  BANKS.forEach(function (bank) { bank.questions.forEach(function (q) { questionIndex[q.id] = { question: q, bank: bank }; }); });
+  Object.keys(attempts).forEach(function (id) {
+    var draft = attempts[id];
+    if (!notebook[id] && questionIndex[id] && draft && (draft.thoughts || answerTools.hasAnswer(draft.answer))) notebook[id] = {touched: 1};
+  });
+  var pool = {
+    bank: $("selBank"),
+    year: $("selYear"), level: $("selLevel"), batch: $("selBatch"), num: $("selNum"),
+    display: $("poolDisplay"), hint: $("poolHint"), count: $("poolCount"), reset: $("poolReset")
+  };
+  var poolPrompt = pool.hint.textContent;
+
+  var notebookUndoEntry = null;
+  function saveNotebook() {
+    try { localStorage.setItem(NOTEBOOK_KEY, JSON.stringify(notebook)); saveFailures.notebook = false; }
+    catch (_) { saveFailures.notebook = true; }
+    updateSaveWarning();
+    renderNotebook();
+  }
+  function renderNotebook() {
+    var ids = Object.keys(notebook).filter(function (id) { return questionIndex[id] && notebook[id] && !notebook[id].removed && (notebook[id].saved || notebook[id].touched); });
+    ids.sort(function (a, b) { return Number(!!notebook[b].saved) - Number(!!notebook[a].saved) || (notebook[b].touched || 0) - (notebook[a].touched || 0); });
+    var recent = 0;
+    ids = ids.filter(function (id) { return notebook[id].saved || recent++ < 4; });
+    $('notebookList').replaceChildren();
+    $('notebookEmpty').hidden = ids.length > 0;
+    ids.forEach(function (id, index) {
+      var entry = notebook[id], q = questionIndex[id].question;
+      var row = el('div', 'notebook-row');
+      row.dataset.questionId = id;
+      var button = el('button', 'notebook-item', questionTitle(q));
+      button.type = 'button';
+      button.setAttribute('aria-current', currentQuestion && currentQuestion.id === id ? 'true' : 'false');
+      button.appendChild(el('span', null, (entry.saved ? 'Saved for another look' : 'Recent work') + (entry.submissions ? ' · ' + entry.submissions + (entry.submissions === 1 ? ' approach submitted' : ' approaches submitted') : ' · Draft')));
+      button.addEventListener('click', function () { goToQuestion(q).then(focusQuestion); });
+      var remove = el('button', 'notebook-remove');
+      remove.type = 'button';
+      remove.setAttribute('aria-label', 'Remove ' + questionTitle(q) + ' from notebook');
+      remove.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h18M9 6V4h6v2M5 6l1 14h12l1-14M10 10v6M14 10v6"/></svg>';
+      remove.addEventListener('click', function () { removeNotebookEntry(id, index); });
+      row.appendChild(button); row.appendChild(remove);
+      $('notebookList').appendChild(row);
+    });
+  }
+  function removeNotebookEntry(id, index) {
+    var entry = notebook[id];
+    if (!entry) return;
+    notebookUndoEntry = {id: id, saved: !!entry.saved};
+    entry.saved = false; entry.removed = true;
+    $('notebookNoticeText').textContent = 'Removed ' + questionTitle(questionIndex[id].question) + ' from your notebook.';
+    $('notebookNotice').hidden = false;
+    saveNotebook(); updatePracticeTools();
+    var rows = $('notebookList').children;
+    var next = rows[Math.min(index, rows.length - 1)];
+    (next ? next.querySelector('.notebook-remove') : $('notebookUndo')).focus();
+  }
+  $('notebookUndo').addEventListener('click', function () {
+    if (!notebookUndoEntry) return;
+    var restored = notebookUndoEntry, entry = notebook[restored.id];
+    var returnFocus = document.activeElement === $('notebookUndo');
+    notebookUndoEntry = null; $('notebookNotice').hidden = true;
+    if (!entry) return;
+    entry.removed = false; entry.saved = restored.saved; entry.touched = Date.now();
+    saveNotebook(); updatePracticeTools();
+    if (returnFocus) {
+      var row = Array.prototype.find.call($('notebookList').children, function (item) { return item.dataset.questionId === restored.id; });
+      if (row) row.querySelector('.notebook-item').focus();
+    }
+  });
+  function updatePracticeTools() {
+    var q = currentQuestion;
+    $('practiceWelcome').hidden = !!q;
+    $('thoughtsCard').hidden = !q;
+    $('questionTools').hidden = !q;
+    $('pickerTitle').textContent = q ? questionTitle(q) : 'Find a problem';
+    if (!q) { renderNotebook(); return; }
+    var entry = notebook[q.id] || {};
+    $('bookmarkProblem').textContent = entry.saved ? 'Saved for another look' : 'Save for another look';
+    $('bookmarkProblem').setAttribute('aria-pressed', entry.saved ? 'true' : 'false');
+    $('attemptNote').hidden = !entry.submissions;
+    $('attemptNote').textContent = entry.submissions ? entry.submissions + (entry.submissions === 1 ? ' approach tried. What might you try next?' : ' approaches tried. Notice what has changed.') : '';
+    $('earlierAttempt').hidden = !entry.first;
+    $('earlierAnswer').textContent = entry.first ? (answerTools.hasAnswer(entry.first.answer) ? 'Your first answer: ' + answerTools.format(entry.first.answer) : 'No answer recorded for this approach.') : '';
+    $('earlierWork').textContent = entry.first ? entry.first.thoughts : '';
+    var group = qsIn(pool.level.value, +pool.year.value, pool.batch.value).slice().sort(function (a,b) { return a.number - b.number; });
+    var index = group.findIndex(function (item) { return item.id === q.id; });
+    $('previousProblem').disabled = index <= 0;
+    $('nextProblem').disabled = index < 0 || index >= group.length - 1;
+    renderNotebook();
+  }
+  function goToQuestion(q) {
+    var source = questionIndex[q.id];
+    if (!source) return;
+    saveAttempt();
+    BANK = source.bank; pool.bank.value = BANK.id || 'amc'; configureBank(); fillYears();
+    pool.level.value = q.level; fillYearOptions();
+    pool.year.value = String(usesGradeNavigation(BANK) ? q.grade : q.year); fillBatches();
+    pool.batch.value = q.batch; fillNums();
+    pool.num.value = String(q.number); var loaded = loadQuestion();
+    $('problemPicker').open = false;
+    return loaded;
+  }
+  function moveProblem(step) {
+    if (!currentQuestion) return;
+    var group = qsIn(pool.level.value, +pool.year.value, pool.batch.value).slice().sort(function (a,b) { return a.number - b.number; });
+    var index = group.findIndex(function (q) { return q.id === currentQuestion.id; });
+    if (group[index + step]) goToQuestion(group[index + step]).then(function (question) { if (question) pool.display.scrollIntoView({block: 'start'}); });
+  }
+  function focusQuestion(question) {
+    if (!question || currentQuestion !== question) return;
+    pool.display.tabIndex = -1;
+    pool.display.focus();
+  }
+  $('previousProblem').addEventListener('click', function () { moveProblem(-1); });
+  $('nextProblem').addEventListener('click', function () { moveProblem(1); });
+  $('bookmarkProblem').addEventListener('click', function () {
+    if (!currentQuestion) return;
+    var entry = notebook[currentQuestion.id] || {};
+    if (entry.removed) { entry.saved = false; entry.removed = false; }
+    entry.saved = !entry.saved; entry.touched = Date.now(); notebook[currentQuestion.id] = entry;
+    if (notebookUndoEntry && notebookUndoEntry.id === currentQuestion.id) notebookUndoEntry.saved = entry.saved;
+    saveNotebook(); updatePracticeTools();
+  });
+  $('beginPractice').addEventListener('click', function () {
+    var candidates = BANK.questions.filter(function (q) { return q.level === pool.level.value; }).slice();
+    candidates.sort(function (a,b) { return (b.year || 0) - (a.year || 0) || a.number - b.number; });
+    if (candidates[0]) goToQuestion(candidates[0]).then(focusQuestion);
+  });
+
+  function setOptions(sel, items, placeholder) {
+    var opts = [];
+    if (placeholder) {
+      var ph = document.createElement("option");
+      ph.value = "";
+      ph.textContent = placeholder;
+      opts.push(ph);
+    }
+    items.forEach(function (it) {
+      var o = document.createElement("option");
+      o.value = it[0]; o.textContent = it[1];
+      opts.push(o);
+    });
+    sel.replaceChildren.apply(sel, opts);
+  }
+  function uniq(arr) {
+    var seen = Object.create(null), out = [];
+    arr.forEach(function (v) { if (!seen[v]) { seen[v] = 1; out.push(v); } });
+    return out;
+  }
+  function qsIn(level, year, batch) {
+    return BANK.questions.filter(function (q) {
+      return (level == null || q.level === level) &&
+             (year == null || (usesGradeNavigation(BANK) ? q.grade : q.year) === year) &&
+             (batch == null || q.batch === batch);
+    });
+  }
+  function emptyResults() {
+    lastSubmitted = null;
+    els.panel.dataset.state = "idle";
+    resetSignalsMessage();
+    if (feedback) feedback.clear();
+    els.submissionNote.textContent = "";
+    els.announcement.textContent = "";
+  }
+  function clearQuestion() {
+    questionLoadSerial += 1;
+    saveAttempt();
+    cancelRun();
+    if (speechInput) speechInput.reset();
+    if (!solModal.hidden) closeSolution();
+    currentQuestion = null;
+    if (speechInput) speechInput.sync();
+    selectedAnswer = null;
+    els.thoughts.value = "";
+    $("freeAnswer").value = ""; $("freeAnswer").hidden = true;
+    $("openAnswer").value = ""; $("openAnswer").hidden = true;
+    $("writtenAnswer").hidden = true;
+    els.answerOpts.replaceChildren();
+    $("figureNotice").hidden = true;
+    pool.display.hidden = true;
+    pool.display.replaceChildren();
+    pool.hint.hidden = false;
+    pool.hint.textContent = poolPrompt;
+    emptyResults();
+    updateChips();
+    updatePracticeTools();
+  }
+
+  function fillYears() {
+    var levelsPresent = Object.create(null);
+    BANK.questions.forEach(function (q) { levelsPresent[q.level] = 1; });
+    var levels = Object.keys(levelsPresent).sort();
+    setOptions(pool.level, levels.map(function (l) { return [l, l]; }));
+    pool.level.value = levels.indexOf('AMC 8') >= 0 ? 'AMC 8' : levels.indexOf('Primary') >= 0 ? 'Primary' : levels[0] || '';
+    fillYearOptions();
+  }
+  function fillYearOptions() {
+    var l = pool.level.value;
+    var curriculum = usesGradeNavigation(BANK);
+    var years = uniq(qsIn(l, null, null).map(function (q) { return curriculum ? q.grade : q.year; })).sort(function (a, b) { return curriculum ? a-b : b-a; });
+    setOptions(pool.year, years.map(function (y) { var sample = qsIn(l,y,null)[0]; return [y, curriculum ? sample.unit : y]; }), curriculum ? 'Choose grade / unit' : '— year —');
+    pool.year.value = "";
+    fillBatches();
+  }
+  function fillBatches() {
+    var l = pool.level.value, y = +pool.year.value;
+    if (!pool.year.value) {
+      setOptions(pool.batch, [], "— batch —");
+      pool.batch.value = "";
+      pool.batch.disabled = true;
+      fillNums();
+      return;
+    }
+    pool.batch.disabled = false;
+    var batches = uniq(qsIn(l, y, null).map(function (q) { return q.batch; })).sort();
+    function batchLabel(b) { var q = qsIn(l, y, b)[0]; return usesGradeNavigation(BANK) && q.topic ? q.topic.label : b; }
+    if (batches.length === 1) {
+      /* nothing to choose (e.g. AMC 8): auto-resolve and lock */
+      setOptions(pool.batch, batches.map(function (b) { return [b, batchLabel(b)]; }));
+      pool.batch.value = batches[0];
+      pool.batch.disabled = true;
+      fillNums();
+      return;
+    }
+    setOptions(pool.batch, batches.map(function (b) { return [b, batchLabel(b)]; }), usesGradeNavigation(BANK) ? 'Choose topic' : '— batch —');
+    pool.batch.value = "";
+    fillNums();
+  }
+  function fillNums() {
+    if (!pool.batch.value || !pool.year.value) {
+      setOptions(pool.num, [], "— problem —");
+      pool.num.value = "";
+      pool.num.disabled = true;
+      clearQuestion();
+      return;
+    }
+    pool.num.disabled = false;
+    var nums = qsIn(pool.level.value, +pool.year.value, pool.batch.value)
+      .map(function (q) { return q.number; }).sort(function (a, b) { return a - b; });
+    setOptions(pool.num, nums.map(function (n) { return [n, "Problem " + n]; }), "— problem —");
+    pool.num.value = "";
+    clearQuestion();
+  }
+  function currentQ() {
+    return qsIn(pool.level.value, +pool.year.value, pool.batch.value)
+      .find(function (q) { return q.number === +pool.num.value; }) || null;
+  }
+
+  var FIGRE = /\[Figure (\d+)\]\(([^)]+)\)/g;
+
+  function typeset(node, explicitDelimitersOnly = false) {
+    /* render $...$, \(..\), $$..$$, \[..\] with self-hosted KaTeX; context stays raw */
+    if (window.renderMathInElement) {
+      var mathDelimiters = [
+        { left: "$$", right: "$$", display: true },
+        { left: "\\[", right: "\\]", display: true },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "$", right: "$", display: false }
+      ];
+      try {
+        renderMathInElement(node, {
+          delimiters: explicitDelimitersOnly ? mathDelimiters.filter(function (delimiter) {
+            return delimiter.left !== '$' && delimiter.left !== '$$';
+          }) : mathDelimiters,
+          throwOnError: false
+        });
+        /* Auto-render wraps block math in an inline span. Preserved source
+           whitespace beside that span otherwise creates extra blank lines. */
+        node.querySelectorAll(".katex-display").forEach(function (math) {
+          math.parentElement.classList.add("math-block");
+        });
+      } catch (e) { /* rendering must never break the instrument */ }
+    }
+    node.querySelectorAll(".math-block, .figure-link, .choice-figure").forEach(function (block) {
+      var before = block.previousSibling, after = block.nextSibling;
+      if (before && before.nodeType === 3) before.textContent = before.textContent.replace(/\s+$/, "");
+      if (after && after.nodeType === 3) after.textContent = after.textContent.replace(/^\s+/, "");
+    });
+  }
+
+  function displayText(qtext) { return qtext.replace(FIGRE, "[Figure $1]"); }
+
+  function stripFigures(qtext) {
+    /* figures render as images; the inline token should not appear in prose */
+    return qtext.replace(FIGRE, " ")
+                .replace(/[ \t]+/g, " ")
+                .replace(/\s+([.,!?;:])/g, "$1")
+                .replace(/\n\s*\n+/g, "\n\n")
+                .trim();
+  }
+
+  function figurePaths(content) {
+    var re = new RegExp(FIGRE.source, "g"), paths = [], match;
+    while ((match = re.exec(content || "")) !== null) paths.push(match[2]);
+    return paths;
+  }
+  function hasFigures(q) {
+    return [q.question].concat(answerTools.choiceIds(q).map(function (L) { return q.choices[L]; })).some(function (s) { return figurePaths(s).length > 0; });
+  }
+  function figEl(path, q, selectable) {
+    var wrap = el(selectable ? "span" : "a", selectable ? "choice-figure" : "figure-link");
+    var img = document.createElement("img");
+    img.src = encodeURI(BANK.figuresBase + path.split("/").pop());
+    if (!selectable) { wrap.href = img.src; wrap.target = "_blank"; wrap.rel = "noopener"; }
+    var source = q && q.figureSources && q.figureSources[path];
+    var choice = path.match(/_choice([A-E])_/);
+    img.alt = source && source.alt || (selectable ? (choice ? "Choice " + choice[1] : "Figure for this choice") : choice ? "Choice " + choice[1] + ". Open figure at full size." : "Problem figure. Open at full size.");
+    img.loading = "lazy";
+    img.addEventListener("error", function () {
+      wrap.replaceChildren(el("span", "fig-missing", hosted ? "Figure could not load. Check your connection and try opening this problem again." : "Figure unavailable. Check the local question bank files."));
+    });
+    wrap.appendChild(img);
+    return wrap;
+  }
+  function richContent(content, q, cls, skip, selectable) {
+    var node = el(selectable ? "span" : "div", (cls || "") + " rich-content");
+    var re = new RegExp(FIGRE.source, "g"), last = 0, match;
+    while ((match = re.exec(content || "")) !== null) {
+      node.appendChild(document.createTextNode(content.slice(last, match.index)));
+      if (!skip || skip.indexOf(match[2]) < 0) node.appendChild(figEl(match[2], q, selectable));
+      last = re.lastIndex;
+    }
+    node.appendChild(document.createTextNode((content || "").slice(last)));
+    return node;
+  }
+
+  function renderQuestion(q) {
+    pool.hint.hidden = true;
+    saveAttempt();
+    cancelRun();
+    if (speechInput) speechInput.reset();
+    if (!solModal.hidden) closeSolution();
+    currentQuestion = q;
+    setRunning(false);
+    if (speechInput) speechInput.sync('');
+    var attempt = attempts[q.id] || {};
+    els.thoughts.value = typeof attempt.thoughts === "string" ? attempt.thoughts : "";
+    selectedAnswer = q.responseType === 'multiSelect' ? answerTools.choiceIds(q).filter(function(id){return Array.isArray(attempt.answer) && attempt.answer.indexOf(id)>=0;})
+      : q.responseType && q.responseType !== 'choice' ? (typeof attempt.answer === 'string' ? attempt.answer : '') : Object.prototype.hasOwnProperty.call(q.choices || {}, attempt.answer) ? attempt.answer : null;
+    buildAnswerButtons(q);
+    emptyResults();
+    $("figureNotice").hidden = hosted || !hasFigures(q);
+    if (feedback) {
+      feedback.restoreTurn(attempt.tutorContext, !!(answerTools.hasAnswer(attempt.answer) || attempt.thoughts || notebook[q.id] && notebook[q.id].last));
+      feedback.restore(attempt.originalSpeech);
+    }
+    updateChips();
+    $('problemPicker').open = false;
+    $('earlierAttempt').open = false;
+    updatePracticeTools();
+
+    var box = el("div");
+    var head = el("div", "q-head");
+    if (q.area) head.appendChild(el("span", "q-area", q.area.charAt(0).toUpperCase() + q.area.slice(1).toLowerCase()));
+    var right = el("span", "q-head-right");
+    var solBtn = el("button", "sol-btn", "Explore solution");
+    solBtn.type = "button";
+    solBtn.setAttribute("aria-haspopup", "dialog");
+    solBtn.addEventListener("click", function () { openSolution(q, solBtn); });
+    right.appendChild(solBtn);
+    head.appendChild(right);
+    box.appendChild(head);
+
+    var labels = answerTools.choiceIds(q);
+    // Legacy combined choice sheets are shared by every A-E entry. Show once.
+    var shared = labels.length === 5 ? figurePaths(q.choices[labels[0]]).filter(function (p) {
+      return labels.every(function (L) { return figurePaths(q.choices[L]).indexOf(p) >= 0; });
+    }) : [];
+    if (shared.length && !labels.every(function (L) {
+      var plain = stripFigures(q.choices[L]);
+      return figurePaths(q.choices[L]).every(function (p) { return shared.indexOf(p) >= 0; }) &&
+        (!plain || /^(?:Image|Graph|Figure|Histogram)\s+\(?[A-E]\)?\s+(?:shown\s+)?in$/i.test(plain));
+    })) shared = []; // Shared diagrams with distinct text/images are still individual choices.
+    box.appendChild(richContent(q.question, q, "q-text", shared));
+    var gradingNotice = window.MathPracticeAnswers.gradingNotice(q);
+    if (gradingNotice !== null) box.appendChild(el('p', 'pool-hint', 'Not graded. ' + gradingNotice));
+    if (labels.length) {
+      box.appendChild(el("hr", "q-divider"));
+      if (q.responseType === 'multiSelect') box.appendChild(el('p', 'pool-hint', 'Select all answers that apply.'));
+      if (shared.length) {
+        box.appendChild(el("div", "q-cap", "Answer choices (A to E):"));
+        shared.forEach(function (p) { box.appendChild(figEl(p, q)); });
+        box.appendChild(els.answerOpts);
+      } else {
+        var list = els.answerOpts;
+        list.classList.add("q-choices");
+        if (labels.every(function (L) { return figurePaths(q.choices[L]).length > 0; })) list.classList.add("picture-choices");
+        else if (labels.every(function (L) { return q.choices[L].length < 45 && !figurePaths(q.choices[L]).length && !/[\n\r]/.test(q.choices[L]); })) list.classList.add('compact-choices');
+        labels.forEach(function (L, index) {
+          var row = list.children[index];
+          row.classList.add("q-choice");
+          row.replaceChildren();
+          row.appendChild(el("span", L.length > 2 ? 'badge choice-id' : 'badge', L));
+          row.appendChild(richContent(q.choices[L], q, "opt-text", null, true));
+        });
+        box.appendChild(list);
+        // Full-size figures remain links outside the selectable choice buttons.
+        var zoom = el("div", "choice-zoom");
+        labels.forEach(function (L) {
+          var paths = figurePaths(q.choices[L]);
+          paths.forEach(function (path, index) {
+            var link = el("a", null, "Enlarge choice " + L + (paths.length > 1 ? ", figure " + (index + 1) : ""));
+            link.href = encodeURI(BANK.figuresBase + path.split("/").pop());
+            link.target = "_blank"; link.rel = "noopener";
+            zoom.appendChild(link);
+          });
+        });
+        if (zoom.children.length) box.appendChild(zoom);
+      }
+    }
+    if (q.editorialNote) box.appendChild(el("p", "pool-hint", q.editorialNote.split(" See processing code/")[0]));
+
+    pool.display.replaceChildren(box);
+    pool.display.hidden = false;
+    typeset(box);
+    if (hosted && location.protocol !== 'file:') {
+      var questionURL = new URL(location.href);
+      questionURL.searchParams.set('problem', q.id);
+      history.replaceState(null, '', questionURL.href);
+    }
+  }
+
+  /* ---------- solution window ---------- */
+
+  var solModal = $("solModal"), solTitle = $("solTitle"),
+      solBody = $("solBody"), solClose = $("solClose");
+  var solReturnFocus = null, inertSiblings = [];
+
+  function officialBookletPage(booklet) {
+    if (!booklet || typeof booklet.url !== 'string') return null;
+    var url = publishedBankURL(booklet.bundledURL || booklet.url);
+    if (!/^\.\.\/database\/amc-bank\/official-solutions\/AMC(?:8|10A)_\w+_Solutions\.pdf$/.test(url)) {
+      url = httpURL(booklet.url);
+      if (!url || !url.startsWith('https://')) return null;
+    }
+    return Number.isSafeInteger(booklet.page) && booklet.page > 0 ? url.split('#')[0] + '#page=' + booklet.page : url;
+  }
+  function solutionSourceURL(source) {
+    return officialBookletPage(source.officialSolution) || httpURL(source.sourceURL || source.url);
+  }
+  function methodCredit(source) {
+    if (!source) return null;
+    var label = typeof source.source === 'string' ? source.source : typeof source.label === 'string' ? source.label : '';
+    var status = typeof source.reviewStatus === 'string' ? source.reviewStatus : '';
+    var license = typeof source.license === 'string' ? source.license : '';
+    if (!label && !status && !license) return null;
+    var line = el('p', 'pool-hint', label ? 'Source: ' : '');
+    var url = solutionSourceURL(source);
+    if (label && url) {
+      var link = el('a', null, label); link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer'; line.appendChild(link);
+    } else if (label) line.appendChild(document.createTextNode(label));
+    if (status) line.appendChild(document.createTextNode((label ? '. ' : '') + status));
+    if (license) line.appendChild(document.createTextNode((label || status ? '. ' : '') + license));
+    return line;
+  }
+  function answerReference(q, held) {
+    if (q.responseType === 'self' && q.answerRubric) return 'Review criteria: ' + q.answerRubric;
+    if (!Array.isArray(q.acceptedResponses)) return q.answer ? (q.responseType && q.responseType !== 'choice' ? 'Reference answer: ' + q.answer : 'Correct answer: (' + q.answer + ')') : 'Answer not yet verified';
+    var values = answerTools.responses(q).map(function(value){return answerTools.format(value);});
+    if (!values.length) return 'Answer not yet verified';
+    var kind = q.responseType || 'choice';
+    if (held) return 'Recorded reference: ' + values.map(function(value){return kind === 'choice' || kind === 'multiSelect' ? '(' + value + ')' : value;}).join(' or ');
+    if (kind === 'choice') return (values.length > 1 ? 'Accepted answers: ' : 'Correct answer: ') + values.map(function(value){return '(' + value + ')';}).join(' or ');
+    if (kind === 'multiSelect') return 'Accepted selections: ' + values.map(function(value){return '(' + value + ')';}).join(' or ');
+    return 'Reference answer' + (values.length > 1 ? 's: ' : ': ') + values.join(' or ');
+  }
+  function displaySolution(text) {
+    return text.replace(/(^|\r?\n\r?\n)(Method ([1-3]):[ \t]*)Method \3:[ \t]*(?=\S)/g, "$1$2");
+  }
+  function solutionTableCells(line) {
+    var cells = [''];
+    line.trim().slice(1, -1).split(/(\\\([^\n]*?\\\)|\\\||\|)/g).forEach(function (token) {
+      if (token === '|') cells.push('');
+      else cells[cells.length - 1] += token === '\\|' ? '|' : token;
+    });
+    return cells.map(function (cell) { return cell.trim(); });
+  }
+  function workedContent(text, q) {
+    if (!/^\s*\|[^\n]+\|\s*$/m.test(text)) return richContent(text, q, 'q-text');
+    var content = el('div', 'q-text rich-content');
+    text.split(/(\r?\n\s*\r?\n)/).forEach(function (part) {
+      var lines = part.trim().split(/\r?\n/);
+      if (lines.length >= 3 && lines.every(function (line) { return /^\s*\|.*\|\s*$/.test(line); })) {
+        var rows = lines.map(solutionTableCells), header = rows[0], divider = rows[1];
+        if (rows.every(function (row) { return row.length === header.length; }) &&
+            divider.every(function (cell) { return /^:?-{3,}:?$/.test(cell); })) {
+          var wrap = el('div', 'solution-table-wrap'), table = el('table');
+          var head = table.createTHead().insertRow(), body = table.createTBody();
+          header.forEach(function (title) { var th = el('th', null, title); th.scope = 'col'; head.appendChild(th); });
+          rows.slice(2).forEach(function (row) {
+            var tr = body.insertRow();
+            row.forEach(function (cell) { tr.appendChild(el('td', null, cell)); });
+          });
+          wrap.appendChild(table);
+          content.appendChild(wrap);
+          return;
+        }
+      }
+      var fragment = richContent(part, q);
+      while (fragment.firstChild) content.appendChild(fragment.firstChild);
+    });
+    return content;
+  }
+  function openSolution(q, opener) {
+    if (feedback && currentQuestion && currentQuestion.id === q.id) feedback.solutionOpened();
+    solReturnFocus = opener || null;
+    solTitle.textContent = questionTitle(q) + '. Solution';
+    var body = el("div");
+    var gradingNotice = window.MathPracticeAnswers.gradingNotice(q);
+    var reference = gradingNotice !== null ? (Array.isArray(q.acceptedResponses) ? 'Not graded. ' + answerReference(q, true) : 'Not graded. Historical printed key: (' + q.answer + ').') : answerReference(q);
+    body.appendChild(Array.isArray(q.acceptedResponses) || q.answerRubric ? richContent(reference, q, 'sol-answer') : el('span', 'sol-answer', reference));
+    if (gradingNotice !== null) body.appendChild(el('p', 'pool-hint', gradingNotice));
+    var methods = Array.isArray(q.solutionMethods) ? q.solutionMethods : null;
+    var written = methods && methods.filter(function(method){return typeof method.explanation === 'string' && method.explanation.trim();});
+    var sol = methods ? written.map(function(method){return method.explanation;}).join('\n\n') : q.solution || "";
+    // Presentation only: preserve the reviewed solution bytes and their hashes.
+    var displaySol = displaySolution(sol);
+    var amcSolutionOmitted = !sol && questionIndex[q.id].bank.id === 'amc';
+    var officialSolutionURL = questionIndex[q.id].bank.id === 'amc' && officialBookletPage(q.officialSolution);
+    var solutionMessage = amcSolutionOmitted ? "A worked solution for this problem is not included." : "No solution is available for this question.";
+    if (officialSolutionURL) solutionMessage = "Official MAA solutions are available in the original booklet.";
+    if (methods && written.length) {
+      written.forEach(function(method){
+        var section = el('section', 'solution-method');
+        section.appendChild(el('h3', 'solution-method-title', method.label || method.title || 'Worked explanation'));
+        section.appendChild(workedContent(displaySolution(method.explanation), q));
+        var credit = methodCredit(method.provenance);
+        if (credit) section.appendChild(credit);
+        var refs = method.provenance && method.provenance.references;
+        if (Array.isArray(refs)) {
+          var links = el('p', 'pool-hint method-references', 'References consulted: ');
+          refs.forEach(function (ref) {
+            var url = ref && httpURL(ref.url);
+            if (!url || typeof ref.title !== 'string' || !ref.title.trim()) return;
+            if (links.childElementCount) links.appendChild(document.createTextNode('; '));
+            var link = el('a', null, ref.title);
+            link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer';
+            links.appendChild(link);
+          });
+          if (links.childElementCount) section.appendChild(links);
+        }
+        typeset(section, method.provenance && method.provenance.source === 'Original Math Practice solution');
+        body.appendChild(section);
+      });
+    } else body.appendChild(richContent(displaySol || solutionMessage, q, "q-text"));
+    if (!methods && sol && Array.isArray(q.optionalSolutionMethods) && q.optionalSolutionProvenance) {
+      q.optionalSolutionMethods.forEach(function (method, index) {
+        body.appendChild(richContent('Optional method ' + (index + 1) + ': ' + method.label + '\n\n' + method.explanation, q, 'q-text'));
+      });
+      var optionalSource = q.optionalSolutionProvenance;
+      body.appendChild(el('p', 'pool-hint', 'Optional methods source: ' + optionalSource.source + '. ' + optionalSource.reviewStatus + '.'));
+    }
+    if (sol) body.appendChild(el('p', 'solution-reflection', 'Which idea made this solution work? Look for a step you could use in another problem.'));
+
+    if (officialSolutionURL) {
+      var officialLine = el('p', 'pool-hint', sol && !methods ? 'Adapted by Math Practice from MAA official solutions. ' : '');
+      var sourceId = q.officialSolution.sourceQuestionId;
+      var shared = sourceId && sourceId !== q.id && /^(\d{4})_(?:(Fall)_)?AMC_(10[AB]|12[AB])_Q(\d{2})$/.exec(sourceId);
+      var officialLabel = shared ? 'Read the official solution for ' + shared[1] + (shared[2] ? ' Fall' : '') +
+        ' AMC ' + shared[3] + ', problem ' + Number(shared[4]) + ' (PDF)' : 'Read official MAA solutions (PDF)';
+      var officialLink = el('a', null, officialLabel);
+      officialLink.href = officialSolutionURL;
+      officialLink.target = '_blank'; officialLink.rel = 'noopener noreferrer';
+      officialLine.appendChild(officialLink);
+      body.appendChild(officialLine);
+    } else if (!methods && sol && q.solutionSource) {
+      var sourceLine = el("p", "pool-hint", "Solution source: ");
+      var sourceText = q.solutionSource;
+      var sourceURL = httpURL(q.solutionSourceURL || q.sourceURL);
+      if (sourceURL) {
+        var sourceLink = el("a", null, sourceText);
+        sourceLink.href = sourceURL;
+        sourceLink.target = "_blank"; sourceLink.rel = "noopener noreferrer";
+        sourceLine.appendChild(sourceLink);
+      } else sourceLine.appendChild(document.createTextNode(sourceText));
+      body.appendChild(sourceLine);
+    }
+    solBody.replaceChildren(body);
+    typeset(solBody, !!methods || q.solutionSource === 'Original Math Practice solution');
+    solModal.hidden = false;
+    inertSiblings = Array.prototype.filter.call(solModal.parentElement.children, function (n) { return n !== solModal && !n.inert; });
+    inertSiblings.forEach(function (n) { n.inert = true; });
+    document.body.classList.add("modal-open");
+    solClose.focus();
+  }
+
+  function closeSolution() {
+    solModal.hidden = true;
+    inertSiblings.forEach(function (n) { n.inert = false; });
+    inertSiblings = [];
+    document.body.classList.remove("modal-open");
+    if (solReturnFocus) { solReturnFocus.focus(); solReturnFocus = null; }
+  }
+  solClose.addEventListener("click", closeSolution);
+  solModal.addEventListener("click", function (e) {
+    if (e.target === solModal) closeSolution();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (solModal.hidden) return;
+    if (e.key === "Escape") { e.preventDefault(); closeSolution(); }
+    if (e.key === "Tab") {
+      var focusable = solModal.querySelectorAll('button, a[href], input, select, textarea, [tabindex="0"]');
+      var first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  /* ---------- automatic assessment ---------- */
+  function submitThoughts() { if (!running && !(speechInput && speechInput.busy())) run(); }
+  els.thoughtsSubmit.addEventListener("click", submitThoughts);
+  els.thoughtsClear.addEventListener("click", function () {
+    if (speechInput) speechInput.reset();
+    els.thoughts.value = "";
+    saveDraft();
+    updateSubmissionNote();
+    els.thoughts.focus();
+  });
+
+  var questionLoadSerial = 0;
+  function loadQuestion() {
+    var q = currentQ();
+    if (!q) { clearQuestion(); return Promise.resolve(null); }
+    if (!hosted || typeof q.question === 'string') { renderQuestion(q); return Promise.resolve(q); }
+    clearQuestion();
+    var serial = ++questionLoadSerial;
+    pool.hint.textContent = 'Loading problem…';
+    return window.MathPracticeHosted.question(q).then(function (question) {
+      if (serial !== questionLoadSerial || currentQ() !== q) return;
+      Object.assign(q, question);
+      renderQuestion(q);
+      return q;
+    }).catch(function (error) {
+      if (serial !== questionLoadSerial) return;
+      pool.hint.textContent = error.message + ' ';
+      var retry = el('button', 'ghost', 'Try again');
+      retry.type = 'button'; retry.addEventListener('click', loadQuestion); pool.hint.appendChild(retry);
+    });
+  }
+
+  function initPool() {
+    setOptions(pool.bank, BANKS.map(function (b) { return [b.id || 'amc', b.label || 'AMC contests']; }));
+    pool.bank.value = BANK.id || 'amc';
+    pool.bank.addEventListener('change', function () {
+      clearQuestion(); BANK = BANKS.find(function (b) { return b.id === pool.bank.value; }); configureBank(); fillYears();
+    });
+    pool.level.addEventListener("change", function () { fillYearOptions(); });
+    pool.year.addEventListener("change", function () { fillBatches(); });
+    pool.batch.addEventListener("change", function () { fillNums(); });
+    pool.num.addEventListener("change", function () { loadQuestion(); });
+    pool.reset.addEventListener("click", function () {
+      fillYears();   /* re-selects AMC 8 and clears the rest */
+      pool.level.focus();
+    });
+    configureBank(); fillYears();
+  }
+
+  function configureBank() {
+    var cn = BANK.id === 'cn-math';
+    var curriculum = usesGradeNavigation(BANK);
+    pool.count.textContent = BANK.questions.length + (cn ? ' English questions' : curriculum ? (BANK.questions.length === 1 ? ' question' : ' questions') : ' problems banked');
+    $('yearLabel').textContent = curriculum ? 'Grade / unit' : 'Year';
+    $('batchLabel').textContent = curriculum ? 'Topic' : 'Batch';
+    $('poolSelectors').dataset.bank = BANK.id || 'amc';
+    $('poolSelectors').dataset.navigation = curriculum ? 'curriculum' : 'contest';
+    var notice = $('sourceNotice');
+    if (cn) notice.replaceChildren.apply(notice, cnSourceNotice);
+    else {
+      notice.replaceChildren();
+      if (curriculum) {
+        if (BANK.attribution) notice.appendChild(document.createTextNode(BANK.attribution + ' · '));
+        notice.appendChild(document.createTextNode('Source: '));
+        var source = el('a', null, BANK.label || BANK.id), sourceURL = httpURL(BANK.sourceURL);
+        if (sourceURL) { source.href = sourceURL; source.target = '_blank'; source.rel = 'noopener noreferrer'; }
+        else source = document.createTextNode(BANK.label || BANK.id);
+        notice.appendChild(source);
+        if (BANK.license) notice.appendChild(document.createTextNode(' · License: ' + BANK.license));
+      } else {
+        notice.appendChild(document.createTextNode('AMC questions by '));
+        var amcSource = el('a', null, 'Mathematical Association of America');
+        amcSource.href = 'https://maa.org/student-programs/amc/';
+        amcSource.target = '_blank'; amcSource.rel = 'noopener noreferrer';
+        notice.appendChild(amcSource);
+        notice.appendChild(document.createTextNode(', adapted under '));
+        var amcLicense = el('a', null, 'CC BY-NC-SA 4.0');
+        amcLicense.href = 'https://creativecommons.org/licenses/by-nc-sa/4.0/';
+        amcLicense.target = '_blank'; amcLicense.rel = 'noopener noreferrer';
+        notice.appendChild(amcLicense);
+        notice.appendChild(document.createTextNode('. Formatting and selected corrections applied. No MAA endorsement. '));
+        var amcNotes = el('a', null, 'Source notes');
+        amcNotes.href = '../database/amc-bank/NOTICE.md';
+        amcNotes.target = '_blank'; amcNotes.rel = 'noopener noreferrer';
+        notice.appendChild(amcNotes);
+      }
+    }
+    notice.hidden = false;
+    poolPrompt = cn ? 'Explore a curriculum topic, or start with a problem below.' : curriculum ? 'Explore a topic, or start with a problem below.' : 'Start with an AMC 8 problem, or browse the collection above.';
+    pool.hint.textContent = poolPrompt;
+  }
+  function httpURL(value) {
+    try { var url = new URL(value); return url.protocol === 'http:' || url.protocol === 'https:' ? url.href : null; }
+    catch (_) { return null; }
+  }
+  function questionTitle(q) {
+    return usesGradeNavigation(questionIndex[q.id].bank) ? q.unit + ' · ' + q.topic.label + ' · Problem ' + q.number : q.level + ' ' + q.year + (q.batch !== 'NA' ? ' ' + q.batch : '') + ' · Problem ' + q.number;
+  }
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text !== undefined) n.textContent = text;
+    return n;
+  }
+  function fmtPct(p) { return (p * 100).toFixed(1) + "%"; }
+  function setCollapsed(collapsed) {
+    els.panel.dataset.collapsed = collapsed ? "true" : "false";
+    $("signalsContent").hidden = collapsed;
+    els.panelToggle.textContent = collapsed ? "Expand" : "Minimize";
+    els.panelToggle.setAttribute("aria-expanded", collapsed ? "false" : "true");
+  }
+  els.panelToggle.addEventListener("click", function () { setCollapsed(els.panel.dataset.collapsed !== "true"); });
+  var connections = {
+    decision: { label: "Decision Model", button: $("decisionStatus"), text: $("decisionStatusText") },
+    speech: { label: "Speech Recognition", button: $("speechServiceStatus"), text: $("speechServiceStatusText") },
+    inference: { label: "LLM Inference", button: $("inferenceStatus"), text: $("inferenceStatusText") }
+  };
+  function setConnection(role, state, text, message) {
+    var connection = connections[role];
+    connection.button.dataset.state = state;
+    connection.button.setAttribute("aria-label", connection.label + ": " + text + ". Check again.");
+    connection.text.textContent = text;
+    connection.button.title = message + " Select to check again.";
+  }
+  function ping(role) {
+    var connection = connections[role];
+    if (connection.pending) return connection.pending;
+    if (hosted) {
+      connection.configured = false;
+      setConnection(role, 'idle', 'Local app only', 'Start the local app to use optional model connections.');
+      connection.button.disabled = true;
+      connection.button.setAttribute('aria-label', connection.label + ': Local app only.');
+      connection.button.title = 'Start the local app to use this connection.';
+      return Promise.resolve();
+    }
+    if (location.protocol === "file:") {
+      connection.configured = false;
+      setConnection(role, "idle", "Not configured", "Answer checks and solutions work here. Start the local launcher to add optional model connections in Settings.");
+      return Promise.resolve();
+    }
+    var controller = new AbortController(), timer = setTimeout(function () { controller.abort(); }, 12000);
+    setConnection(role, "checking", "Checking...", "Checking the saved connection.");
+    connection.pending = fetch("/api/status/" + role, {signal: controller.signal})
+      .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
+      .then(function (j) {
+        connection.configured = j.configured === true;
+        if (role === 'decision') connection.localEvidenceItems = Array.isArray(j.localEvidenceItems) ? j.localEvidenceItems : [];
+        var label = connection.configured ? j.label || (j.ready === true ? "Ready" : "Offline") : "Not configured";
+        var state = !connection.configured || label === "Not tested" ? "idle" : j.ready === true ? "ok" : "down";
+        setConnection(role, state, label, j.message || "Add an optional connection in Settings.");
+      })
+      .catch(function () { connection.configured = false; setConnection(role, "idle", "Practice mode", "Answer checks and solutions work without the backend. Start the local launcher to add optional model connections."); })
+      .finally(function () {
+        connection.pending = null; clearTimeout(timer);
+        if (role === 'speech' && speechInput) speechInput.sync();
+        if (role === 'decision' && feedback && !feedback.evidence) resetSignalsMessage();
+      });
+    return connection.pending;
+  }
+  function serviceSettings() {
+    if (hosted) return {decision: false, inference: false, localEvidence: false};
+    var reviewed = connections.decision.localEvidenceItems || [];
+    return {decision: connections.decision.configured === true, inference: connections.inference.configured === true,
+      localEvidence: !!currentQuestion && reviewed.indexOf(currentQuestion.id) >= 0};
+  }
+  function waitServices() { return Promise.all(['decision', 'inference'].map(function (role) { return connections[role].pending; })); }
+  function resetSignalsMessage() {
+    var configured = connections && connections.decision.configured === true;
+    if (hosted) {
+      els.panelStatus.textContent = 'Local app only';
+      els.resultsBody.replaceChildren(el('p', 'signals-empty', 'Learning signals and AI feedback are available in the local app. Your work on this site stays in this browser.'));
+      return;
+    }
+    els.panelStatus.textContent = configured ? 'Ready when you are' : 'Decision model not configured';
+    els.resultsBody.replaceChildren(el('p', 'signals-empty', configured ? 'Record your thinking to see learning signals from your original speech.' : 'Add a decision model in Connections to check original speech for learning signals.'));
+  }
+  Object.keys(connections).forEach(function (role) {
+    connections[role].button.addEventListener("click", function () { ping(role); });
+  });
+
+  var running = false, lastSubmitted = null, speechInput = null, feedback = null, practicePath = null;
+  function updateSubmissionNote() {
+    if (feedback) feedback.revisionChanged();
+    if (!lastSubmitted) { els.submissionNote.textContent = ""; return; }
+    var saved = saveFailures.draft || saveFailures.notebook ? '' : 'Your work is saved. ';
+    if (currentQuestion && window.MathPracticeAnswers.gradingNotice(currentQuestion) !== null) { els.submissionNote.textContent = saved + 'This disputed problem has no score or automatic grading.'; return; }
+    var edited = els.thoughts.value.trim() !== lastSubmitted.thoughts || !answerTools.same(selectedAnswer, lastSubmitted.answer);
+    els.submissionNote.textContent = edited ? (hosted ? "You have edited your work. Submit again to update your answer check." : "You have edited your work. Submit again to update the answer and reasoning checks.") : running ? (hosted ? "Checking your answer..." : "Answer submitted. Checking your answer and thinking...") : feedback && feedback.mathState === "error" ? saved + "The check is unavailable; submit again to retry." : "Submitted. You can revise your answer or thinking and try again.";
+  }
+  function cancelRun() {
+    if (feedback) feedback.cancelMath();
+    setRunning(false);
+  }
+  function setRunning(on) {
+    running = on;
+    els.thoughtsSubmit.disabled = on;
+    els.thoughtsSubmit.setAttribute("aria-busy", on ? "true" : "false");
+    $('submitLabel').textContent = on ? "Checking..." : currentQuestion && window.MathPracticeAnswers.gradingNotice(currentQuestion) !== null ? 'Save work' : "Submit answer";
+    if (speechInput) speechInput.sync();
+  }
+  document.addEventListener("keydown", function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === "Enter" && solModal.hidden) {
+      e.preventDefault();
+      submitThoughts();
+    }
+  });
+  var currentQuestion = null;
+  var selectedAnswer = null;
+  ['freeAnswer', 'openAnswer'].forEach(function (id) {
+    $(id).addEventListener('input', function (event) { selectedAnswer = event.target.value.trim(); saveAttempt(true); updateSubmissionNote(); });
+  });
+
+  function buildAnswerButtons(q) {
+    var multi = q.responseType === 'multiSelect';
+    var free = q.responseType && q.responseType !== 'choice' && !multi;
+    var open = q.responseType === 'self';
+    $('writtenAnswer').hidden = !free;
+    $('writtenAnswerLabel').setAttribute('for', open ? 'openAnswer' : 'freeAnswer');
+    $('freeAnswer').hidden = !free || open; $('openAnswer').hidden = !open; els.answerOpts.hidden = !!free;
+    els.answerOpts.className = 'answer-opts';
+    els.answerOpts.setAttribute('role', multi ? 'group' : 'radiogroup');
+    els.answerOpts.setAttribute('aria-label', multi ? 'Your answers. Select all that apply.' : 'Your answer');
+    $('freeAnswer').value = free && !open ? selectedAnswer || '' : '';
+    $('openAnswer').value = open ? selectedAnswer || '' : '';
+    $('freeAnswer').placeholder = q.answerForm === 'decimal' ? 'Enter a decimal numeral' : q.answerForm === 'ordered-list' ? 'List values in the requested order, separated by commas' : q.responseType === 'numeric' ? 'Number or fraction; separate multiple values with commas' : 'Enter an expression or a short answer';
+    els.answerOpts.replaceChildren.apply(els.answerOpts,
+      answerTools.choiceIds(q)
+        .map(function (L, index) {
+          var b = el("button", "answer-opt", L);
+          b.type = "button";
+          b.dataset.answer = L;
+          var selected = multi ? selectedAnswer.indexOf(L)>=0 : selectedAnswer === L;
+          b.setAttribute("role", multi ? 'checkbox' : 'radio');
+          b.setAttribute("aria-checked", selected ? "true" : "false");
+          b.classList.toggle("sel", selected);
+          b.tabIndex = multi ? 0 : selectedAnswer ? (selected ? 0 : -1) : (index === 0 ? 0 : -1);
+          function choose(value) {
+            selectedAnswer = multi ? answerTools.choiceIds(q).filter(function(id){return id === value ? selectedAnswer.indexOf(id)<0 : selectedAnswer.indexOf(id)>=0;}) : value;
+            Array.prototype.forEach.call(els.answerOpts.children, function (c, i) {
+              var on = multi ? selectedAnswer.indexOf(c.dataset.answer)>=0 : c.dataset.answer === selectedAnswer;
+              c.classList.toggle("sel", on);
+              c.setAttribute("aria-checked", on ? "true" : "false");
+              c.tabIndex = multi ? 0 : selectedAnswer ? (on ? 0 : -1) : (i === 0 ? 0 : -1);
+            });
+            saveAttempt(true);
+            updateSubmissionNote();
+          }
+          b.addEventListener("click", function () { choose(!multi && selectedAnswer === L ? null : L); });
+          b.addEventListener("keydown", function (e) {
+            var step = e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : e.key === "ArrowLeft" || e.key === "ArrowUp" ? -1 : 0;
+            if (!step) return;
+            e.preventDefault();
+            var buttons = Array.prototype.slice.call(els.answerOpts.children);
+            var next = buttons[(buttons.indexOf(b) + step + buttons.length) % buttons.length];
+            if (!multi) choose(next.dataset.answer);
+            next.focus();
+          });
+
+          return b;
+        }));
+  }
+
+  function run() { feedback.submit(); }
+  feedback = new window.MathPracticeFeedback({
+    question: function () { return currentQuestion; }, answer: function () { return selectedAnswer; },
+    bank: function () { return BANK.id; },
+    layer: function () { return practicePath ? practicePath.layer() : 'ailleo'; },
+    curriculumNodeId: function () { return practicePath ? practicePath.nodeId() : null; },
+    draft: els.thoughts, note: els.submissionNote, panel: els.panel, panelStatus: els.panelStatus,
+    results: els.resultsBody, announce: els.announcement, el: el, percent: fmtPct, typeset: typeset,
+    connection: setConnection, collapse: setCollapsed, setRunning: setRunning, save: saveAttempt,
+    services: serviceSettings, waitServices: waitServices,
+    checkAnswer: window.MathPracticeAnswers.check,
+    classifyAnswer: window.MathPracticeAnswers.classify,
+    graphEvidence: function (row) { if (window.MathPracticeGraph) window.MathPracticeGraph.record(row); },
+    submitted: function (snapshot) {
+      lastSubmitted = snapshot;
+      if (!answerTools.hasAnswer(snapshot.answer) && !snapshot.thoughts.trim()) { saveAttempt(); updateSubmissionNote(); return; }
+      var entry = notebook[currentQuestion.id] || {};
+      var approach = {answer: answerTools.copy(snapshot.answer), thoughts: snapshot.thoughts};
+      if (!entry.first) entry.first = approach;
+      if (!entry.last || !answerTools.same(entry.last.answer, approach.answer) || entry.last.thoughts !== approach.thoughts) {
+        entry.submissions = (entry.submissions || 0) + 1;
+        entry.removed = false;
+      }
+      entry.last = approach; entry.touched = Date.now(); notebook[currentQuestion.id] = entry;
+      saveNotebook(); saveAttempt(); updatePracticeTools(); updateSubmissionNote();
+    },
+    updated: updateSubmissionNote
+  });
+  setCollapsed(true);
+  speechInput = new window.MathPracticeSpeech({
+    record: $("speechRecord"), recordLabel: $("speechRecordLabel"), recordTime: $("speechRecordTime"), recordProgress: $("speechRecordProgress"), cancel: $("speechCancel"), retry: $("speechRetry"), status: $("speechStatus"), draft: els.thoughts,
+    isEnabled: function () { return !!currentQuestion; },
+    isConfigured: function () { return connections.speech.configured === true; },
+    isAssessing: function () { return running; },
+    onState: function () { els.thoughtsSubmit.disabled = running || !!(speechInput && speechInput.busy()); },
+    onDraft: function () { saveAttempt(true); updateSubmissionNote(); },
+    onTranscript: function (transcript) { feedback.recorded(transcript); }
+  });
+  initPool();
+  if (window.MathPracticeCurriculumPath) practicePath = new window.MathPracticeCurriculumPath({
+    question: function (id) { return questionIndex[id] && questionIndex[id].question; },
+    title: questionTitle,
+    select: function (q) { goToQuestion(q).then(focusQuestion); },
+    changed: function () { if (feedback) feedback.revisionChanged(); saveAttempt(); updateSubmissionNote(); }
+  });
+  if (location.search) {
+    var linkedId = new URLSearchParams(location.search).get('problem');
+    if (linkedId && Object.hasOwn(questionIndex, linkedId)) goToQuestion(questionIndex[linkedId].question);
+  }
+  Object.keys(connections).forEach(ping);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2011_AMC_12B_Q15",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "790ca7b71e903e7b2d4e2d7ad4e45850627a6acbf393bb009f61eff7fb9beee3",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "8dd7cbe244735bba3b1a741afa124d6a5edb2c44ad2cad9cfdbc29c2987a4058",
+  "solutionFigureHashes": {},
+  "candidateHash": "7aa81f28a40741a38974789b11046836b3fb1f75d30d9ed60a9813550e4edde2",
+  "candidate": {
+    "questionId": "2011_AMC_12B_Q15",
+    "derivedAnswer": "D, \\(12\\)",
+    "answerStatus": "matches",
+    "answerReason": "The prime factorization is 3²·5·7·13·17·241. Disjoint cases containing neither 13 nor 17, containing 13, or containing 17 contribute 5, 4, and 3 two-digit divisors.",
+    "methods": [
+      {
+        "id": "factor-and-classify-small-divisors",
+        "label": "Factor first, then classify the two-digit divisors",
+        "explanation": "Factoring the large number reveals which prime factors a two-digit divisor can contain. Repeated difference of squares gives\n\\[\n\\begin{aligned}\n2^{24}-1\n&=(2^{12}-1)(2^{12}+1)\\\\\n&=63\\cdot65\\cdot4097\\\\\n&=3^2\\cdot5\\cdot7\\cdot13\\cdot17\\cdot241.\n\\end{aligned}\n\\]\nHere \\(241\\) is prime: none of \\(2,3,5,7,11,13\\), the primes below \\(\\sqrt{241}<16\\), divides it.\n\nA two-digit divisor cannot contain \\(241\\). It also cannot contain both \\(13\\) and \\(17\\), because \\(13\\cdot17=221>99\\). This leaves three disjoint cases.\n\nIf the divisor contains neither \\(13\\) nor \\(17\\), it divides \\(3^2\\cdot5\\cdot7=315\\). The divisors of \\(3^2\\cdot5=45\\) are \\(1,3,5,9,15,45\\). Using these either alone or multiplied by \\(7\\) gives precisely the two-digit values\n\\[\n15,\\ 21,\\ 35,\\ 45,\\ 63,\n\\]\nso this case contributes \\(5\\).\n\nIf the divisor contains \\(13\\), it is \\(13\\) times a divisor of \\(315\\) at most \\(7\\). Those possible cofactors are \\(1,3,5,7\\), giving\n\\[\n13,\\ 39,\\ 65,\\ 91.\n\\]\nThis contributes \\(4\\).\n\nIf it contains \\(17\\), its cofactor must be a divisor of \\(315\\) at most \\(5\\). The possibilities \\(1,3,5\\) give\n\\[\n17,\\ 51,\\ 85,\n\\]\ncontributing \\(3\\).\n\nEvery two-digit divisor belongs to exactly one of these cases. Within each case, distinct cofactors give distinct divisors. Thus the total is\n\\[\n5+4+3=\\boxed{12},\n\\]\nchoice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:prime-factorization",
+          "cnm_152",
+          "cnm_h230"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_p157"
+        ],
+        "levelReason": "Difference-of-squares factorization and a short exhaustive divisor list suffice; no advanced number theory is used."
+      }
+    ],
+    "assessedIds": [
+      "math:prime-factorization"
+    ],
+    "supportIds": [
+      "cnm_152",
+      "cnm_h230"
+    ],
+    "annotationRationale": "The target is using prime exponents to characterize divisibility under the two-digit bound. Difference-of-squares factoring exposes the prime structure, and the addition principle combines disjoint divisor classes. Factor and prime meanings are local prerequisites. The unrestricted divisor-count formula and combined multistage counting are not used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2011_AMC_12B_Q15",
+    "decision": "accept",
+    "mathematicalCheck": "The factorization is 3²·5·7·13·17·241, and the stated trial divisors certify that 241 is prime. Two-digit divisors exclude 241 and cannot contain both 13 and 17. The three exhaustive, disjoint classes contain 5, 4, and 3 divisors, totaling 12.",
+    "levelCheck": "The factorization and bounded divisor enumeration are elementary and sufficiently explained.",
+    "methodDistinctness": "One complete classification method is sufficient.",
+    "annotationCheck": "Prime-exponent structure, difference-of-squares factoring, and addition of disjoint counts match the solution. The broader divisor-count formula is appropriately omitted.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "factor-and-classify-small-divisors": "factor-and-classify-small-divisors"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "1c1eb3263226c8c993ffe300cf0f71e871ae62f45f2efe116e13147255c26d45",
+    "inputHash": "cfbc7d24f35c7548ee7ab8671f97766109e69d152dfc98ae902d700e935c31fe",
+    "authorInputHash": "2bcc1fac2d3edee67d3e79e1dc64d3e65714ff6e791a775d7e11535457b9ab18",
+    "reviewInputHash": "43488a3f92e73b62c92b3b530bbaa877b315dc2dc859345de978acb5031dbfa3",
+    "authorResponseHash": "9d13eb0cec246c01e51023fba5133c78497a0fa70030364b42f2f8d0db9f2b3d",
+    "reviewerResponseHash": "590feacc838ee7d3b6f91f716ed5ffc89c42ac984dd7e20ce0d4f73ed8fe761f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

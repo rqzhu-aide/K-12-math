@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1975_AMC_12_Q15",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "b78661d14931e32c9f1d47e4c5a5c662939fbee23368536a3c4f5a54a903c369",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "42f139a1b4d33e0758dff2fcf0cc98b49c67d465133b863f2514b5e3a40c9580",
+  "solutionFigureHashes": {},
+  "candidateHash": "9e93a16ece2ceba844fa469bc1f8e9c8fb8197337522f2d405acb3ac6234877e",
+  "candidate": {
+    "questionId": "1975_AMC_12_Q15",
+    "derivedAnswer": "A. 5",
+    "answerStatus": "matches",
+    "answerReason": "The sequence repeats in six-term blocks 1,3,2,-1,-3,-2, each summing to zero. The first 100 terms consist of 16 complete blocks and the first four terms of the next block, whose sum is 5.",
+    "methods": [
+      {
+        "id": "periodic-zero-sum-blocks",
+        "label": "Find a repeating block with sum zero",
+        "explanation": "Computing a few terms is useful because each new term depends only on the preceding two. Applying the rule gives\n\\[\n1,\\ 3,\\ 2,\\ -1,\\ -3,\\ -2,\\ 1,\\ 3,\\ldots.\n\\]\nThe consecutive pair \\(1,3\\) has returned in positions 7 and 8. Since the preceding two terms determine the next term, this same pair generates the same continuation. Thus the six-term block\n\\[\n1,\\ 3,\\ 2,\\ -1,\\ -3,\\ -2\n\\]\nrepeats throughout the sequence.\n\nEach complete block has sum\n\\[\n1+3+2-1-3-2=0.\n\\]\nSince \\(100=16\\cdot6+4\\), the first 96 terms form 16 complete blocks, leaving the first four terms of the next block. Therefore the required sum is\n\\[\n1+3+2-1=\\boxed{5},\n\\]\nchoice \\(\\mathrm{A}\\).",
+        "nodeIds": [
+          "cnm_h200",
+          "cnm_011"
+        ],
+        "prerequisiteIds": [
+          "cnm_h197",
+          "cnm_012",
+          "cnm_010"
+        ],
+        "levelReason": "Uses recurrence evaluation, repetition of the determining pair, and elementary block sums."
+      },
+      {
+        "id": "telescope-the-recurrence",
+        "label": "Turn the recurrence into a telescoping sum",
+        "explanation": "Let \\(t_n\\) denote the \\(n\\)th term. Rearranging the rule\n\\[\nt_{n+2}=t_{n+1}-t_n\n\\]\ngives \\(t_n=t_{n+1}-t_{n+2}\\). This writes each term as a difference, so adding consecutive terms creates cancellation:\n\\[\n\\begin{aligned}\nS_{100}&=(t_2-t_3)+(t_3-t_4)+\\cdots+(t_{101}-t_{102})\\\\\n&=t_2-t_{102}.\n\\end{aligned}\n\\]\nEvery term from \\(t_3\\) through \\(t_{101}\\) appears once with each sign.\n\nTo find the remaining endpoint, apply the recurrence twice:\n\\[\nt_{n+3}=(t_{n+1}-t_n)-t_{n+1}=-t_n.\n\\]\nIt follows that \\(t_{n+6}=t_n\\), so the terms repeat every six positions. Starting from \\(t_1=1,t_2=3\\), we get\n\\[\nt_3=2,\\quad t_4=-1,\\quad t_5=-3,\\quad t_6=-2.\n\\]\nSince \\(102=16\\cdot6+6\\), we have \\(t_{102}=t_6=-2\\). Consequently,\n\\[\nS_{100}=3-(-2)=\\boxed{5},\n\\]\nchoice \\(\\mathrm{A}\\).",
+        "nodeIds": [
+          "cnm_h200",
+          "math:telescoping"
+        ],
+        "prerequisiteIds": [
+          "cnm_h197",
+          "cnm_012",
+          "cnm_010"
+        ],
+        "levelReason": "Uses elementary recurrence identities and cancellation in a finite sum."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h200"
+    ],
+    "supportIds": [
+      "cnm_h197",
+      "cnm_012",
+      "cnm_010"
+    ],
+    "annotationRationale": "Using the stated recurrence is common to both routes and is covered by cnm_h200. Sequence indexing and signed arithmetic support both. The first method groups zero-sum blocks; telescoping is specific to the second method. The essential proof of periodicity and use of its period go beyond the catalog's next-term recurrence criteria, motivating the proposed node.",
+    "needsNewNodes": [
+      {
+        "name": "Periodic numerical sequences and finite sums",
+        "description": "Prove that a numerical sequence repeats by recurrence-state repetition or an identity between shifted terms. Use the proved period to locate indexed terms and to split a finite sum into complete periods and a correctly indexed remainder.",
+        "reason": "The problem requires justified repetition and handling 100 relative to a six-term period. The supplied recurrence node covers computing successive terms but does not explicitly cover these periodicity and summation targets."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1975_AMC_12_Q15",
+    "decision": "accept",
+    "mathematicalCheck": "The determining pair repeats after six terms, proving the zero-sum block repeats. Since \\(100=16\\cdot6+4\\), the remainder sums to 5. Independently, telescoping gives \\(S_{100}=t_2-t_{102}\\), with \\(t_{102}=t_6=-2\\), again yielding 5.",
+    "levelCheck": "Both explanations use elementary recurrence reasoning and finite arithmetic, with periodicity and cancellation justified.",
+    "methodDistinctness": "Zero-sum block grouping and telescoping to surviving endpoints offer distinct, accessible summation ideas.",
+    "annotationCheck": "The recurrence annotation fits, telescoping remains method-specific, and the shared indexing and arithmetic support is appropriate. The proposed periodic-sequence node honestly identifies the catalog's narrower recurrence scope.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "periodic-zero-sum-blocks": "periodic-zero-sum-blocks",
+    "telescope-the-recurrence": "telescope-the-recurrence"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "6a00ccd823954cd508620f6f0a4bc02fb0ce24ce958a7c560cf4a9aacd776f44",
+    "inputHash": "8c4b651d27c6965bc5fb2f0e335965963232244161b2a11a8878861cea47fcdd",
+    "authorInputHash": "38e164a7640de4e36576edb9faf9952cf761e2edbcf887c2ef43465bbc382509",
+    "reviewInputHash": "e90928d7fbf185ac7e6ecdbedbdf7c450785c29df244007032e3ef8e054bf9a8",
+    "authorResponseHash": "0b02eec51dadf5d9dc7a43aa56d3f3bb0e1c2d35d1f10616a20051f80d13ff1b",
+    "reviewerResponseHash": "12fd7d3e4ba1ab6f46447248c26c77b6c05d29b7588a563e57940f88c4d093db",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

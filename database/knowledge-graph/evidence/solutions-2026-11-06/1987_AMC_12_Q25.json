@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1987_AMC_12_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "45722b2bbdc889dac6948db9853d552afabc834210504f7ffdee537aad783589",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "4d11819c2499263948adabb116ff43408bc7d147a9f1317e9762e56c2a3e2ae0",
+  "solutionFigureHashes": {},
+  "candidateHash": "cbd4fd5936794c1d875898a990c082968799b1f4fdf27d8f6c3ab9c1b11ba200",
+  "candidate": {
+    "questionId": "1987_AMC_12_Q25",
+    "derivedAnswer": "\\(\\frac32\\), choice C",
+    "answerStatus": "matches",
+    "answerReason": "Every nonzero doubled area is a multiple of 3, and the integer point C=(5,2) gives area 3/2.",
+    "methods": [
+      {
+        "id": "coordinate-area",
+        "label": "Coordinate area and an attained bound",
+        "explanation": "Integer coordinates make the coordinate area formula useful: its numerator has a common factor that restricts the possible areas. Write \\(C=(x,y)\\), where \\(x\\) and \\(y\\) are integers. The triangle area is\n\\[\nK=\\frac12|36y-15x|\n=\\frac32|12y-5x|.\n\\]\nBecause \\(ABC\\) is a triangle, its vertices are not collinear, so \\(12y-5x\\ne0\\). This expression is an integer, and therefore its absolute value is at least \\(1\\). Thus every allowed triangle has \\(K\\ge\\frac32\\).\n\nTo show that this bound is the minimum, we must attain it. Taking \\(C=(5,2)\\) gives \\(12y-5x=24-25=-1\\), so its area is exactly \\(\\frac32\\). The minimum is \\(\\boxed{\\frac32}\\), choice C.",
+        "nodeIds": [
+          "math:shoelace-formula",
+          "math:extremal-principle"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_p153"
+        ],
+        "levelReason": "Uses a high-school coordinate area formula, integer multiples, and an explicit construction attaining a lower bound."
+      },
+      {
+        "id": "base-and-height",
+        "label": "Minimize the perpendicular height",
+        "explanation": "Since side \\(AB\\) is fixed, minimizing the area amounts to minimizing the positive perpendicular distance from \\(C\\) to line \\(AB\\). The fixed base has length\n\\[\nAB=\\sqrt{36^2+15^2}=39,\n\\]\nand its line has equation \\(5X-12Y=0\\).\n\nFor an integer point \\(C=(x,y)\\), the point-to-line distance formula gives the height\n\\[\nh=\\frac{|5x-12y|}{\\sqrt{5^2+12^2}}\n=\\frac{|5x-12y|}{13}.\n\\]\nThe numerator is an integer. It cannot be zero because the three vertices form a triangle, so \\(h\\ge\\frac1{13}\\). Consequently,\n\\[\nK=\\frac12(39)h\\ge\\frac{39}{26}=\\frac32.\n\\]\nFor \\(C=(5,2)\\), the numerator is \\(|25-24|=1\\), so this height and area are attained. The minimum area is \\(\\boxed{\\frac32}\\), choice C.",
+        "nodeIds": [
+          "cnm_h173",
+          "cnm_h174",
+          "cnm_p148",
+          "math:extremal-principle"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_h171",
+          "cnm_065",
+          "cnm_174",
+          "cnm_p153"
+        ],
+        "levelReason": "Uses standard high-school distance formulas and base-times-height area, providing a geometric interpretation of the minimum."
+      }
+    ],
+    "assessedIds": [
+      "cnm_084",
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_082",
+      "cnm_p153"
+    ],
+    "annotationRationale": "The task asks for an area from coordinates and a proved minimum, requiring both a universal bound and an attaining example. Shoelace and perpendicular-distance calculations are alternative routes. Both use coordinate meaning and integer multiples; computing a greatest common factor is unnecessary for these written proofs.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1987_AMC_12_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The area is \\((3/2)|12y-5x|\\), whose integer factor is nonzero for a triangle. The point \\(C=(5,2)\\) attains \\(3/2\\). Independently, the height calculation gives \\(AB=39\\) and minimum positive height \\(1/13\\), attaining the same area.",
+    "levelCheck": "Both methods use appropriate high-school coordinate geometry and clearly establish both the bound and its attainment.",
+    "methodDistinctness": "Direct coordinate area and minimizing perpendicular height provide useful algebraic and geometric perspectives at the same level.",
+    "annotationCheck": "The assessed coordinate-area and extremal nodes fit both routes. Shared support is justified, and the distance formulas remain local to the height method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "coordinate-area": "coordinate-area",
+    "base-and-height": "base-and-height"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "8811f907c195a5c06b01f55032a17b5148a6210186e1c044e8c9d8a1c6140b7e",
+    "inputHash": "059dff7b287689b391345639f761e67e3236f417d36b1f6b244cc38972200e1a",
+    "authorInputHash": "24425e58e3e6f7ac261f72299b8b8a96053e275295c28ea06166989f0345b352",
+    "reviewInputHash": "434138fe877284ff5fca18110110c728da5946363758201a04126b8beac6c261",
+    "authorResponseHash": "8263296f338a8bd40623f028376d0ed4d6724c80a056996d1820b3f86aa7eb0e",
+    "reviewerResponseHash": "3d844a157935d331f7a030bd7327e3b371567d314981253cfbdde0d2cc904836",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

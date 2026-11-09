@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1972_AMC_12_Q17",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "4747ab9f93795858a6120332439bde56c23d118d2ee8c7718c2bb478db1fd4d6",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "0164dd94ff3a742c50b93b4eae5f63c429e384bfd5a34282316ea8189bf9906f",
+  "solutionFigureHashes": {},
+  "candidateHash": "1a8bb83fbac1eac44672f751e91922556d6c657cfabb3457231b1365c37095f1",
+  "candidate": {
+    "questionId": "1972_AMC_12_Q17",
+    "derivedAnswer": "\\(P=1\\) for \\(x\\le1\\), and \\(P=\\dfrac{2}{x+1}\\) for \\(x>1\\). Choice E applies for \\(x\\ge1\\).",
+    "answerStatus": "disputed",
+    "answerReason": "The domain of x is missing. Under the usual uniform-cut interpretation, E is correct for x≥1. For x=1/2, the event is certain, whereas E gives 4/3.",
+    "methods": [
+      {
+        "id": "uniform-cut-intervals",
+        "label": "Find the favorable portions of the string",
+        "explanation": "Assume that the cut point is uniformly distributed along the string. We may take the string's length to be \\(1\\), since scaling both pieces does not change their length ratio. Let \\(t\\), with \\(0<t<1\\), be the distance of the cut from one end.\n\nThe longer piece is always at least as long as the shorter piece. Thus, if \\(x\\le1\\), the required event is certain and its probability is \\(1\\).\n\nNow suppose \\(x>1\\). If \\(t\\le\\tfrac12\\), the shorter piece has length \\(t\\), so the condition is\n\\[\n1-t\\ge xt\n\\quad\\Longleftrightarrow\\quad\nt\\le\\frac{1}{x+1}.\n\\]\nHere \\(x+1>0\\), and \\(1/(x+1)<1/2\\), so this describes exactly the favorable cuts in the left half. By the same reasoning, the favorable cuts in the right half satisfy \\(t\\ge x/(x+1)\\). These two portions are disjoint and each has length \\(1/(x+1)\\). Uniform selection therefore gives\n\\[\nP=\\frac{2}{x+1}.\n\\]\nIndividual boundary points have probability zero, so including equality or excluding the string's endpoints does not change the result. At \\(x=1\\), this formula also gives \\(1\\).\n\nConsequently, choice E is correct when \\(x\\ge1\\). The unstated restriction matters: at \\(x=\\tfrac12\\), the probability is \\(1\\), while choice E gives \\(4/3\\). As written, the answer must be given by the piecewise rule above.",
+        "nodeIds": [
+          "math:geometric-probability",
+          "cnm_097",
+          "cnm_308"
+        ],
+        "prerequisiteIds": [
+          "cnm_096"
+        ],
+        "levelReason": "Uses uniform probability as a length fraction and elementary linear inequalities, with no calculus or probability densities."
+      }
+    ],
+    "assessedIds": [
+      "math:geometric-probability"
+    ],
+    "supportIds": [
+      "cnm_097",
+      "cnm_308"
+    ],
+    "annotationRationale": "The central target is translating a uniform cut into favorable lengths. Linear inequalities locate those lengths, and the probability range helps expose the missing threshold restriction. Finite equally likely outcome counting is not used.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The calculation assumes a uniform cut along the string.",
+      "The displayed question does not specify x≥1, which is necessary for choice E to apply throughout the stated domain."
+    ]
+  },
+  "review": {
+    "questionId": "1972_AMC_12_Q17",
+    "decision": "accept",
+    "mathematicalCheck": "For x>1, the favorable cuts occupy two disjoint intervals, each of length 1/(x+1), giving probability 2/(x+1). For x≤1, the event is certain. The uniform model, boundary points, and missing domain restriction are explicitly handled.",
+    "levelCheck": "Elementary length probability and linear inequalities are appropriate, and the decisive interval calculation is explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Geometric probability is the assessed target. The inequality and probability-range support nodes match the argument, including the counterexample to an unconditional choice E.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "uniform-cut-intervals": "uniform-cut-intervals"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "eebfcdf10c98e16f1919c7a4a09d4f7a2057ac81a16fe3635319c3561b9770ba",
+    "inputHash": "5180f4583bd9100d3ce8853912c6bafc1b1a3a54ca2ee0cdb2133658f23feeda",
+    "authorInputHash": "540b577835ba542a6d3291ab38c4cdaffb14666ae193a0a57a2c0e13c48f70ac",
+    "reviewInputHash": "15f2bcde967590bd4be87ce4f2fcb7a8e49b8696adb0baa99d642b75856a3181",
+    "authorResponseHash": "b497bf6beb59b2059b2eea8caff5a8acd10774da9a71837e5457f0e9d84f4b6e",
+    "reviewerResponseHash": "1cceec6af73f34e3481d51b43fc0d00ace4f5c97035219776898c72a61958c9f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

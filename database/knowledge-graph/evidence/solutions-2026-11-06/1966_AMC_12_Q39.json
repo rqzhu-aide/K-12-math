@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1966_AMC_12_Q39",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "0d86594822b3b5203c3a14156ecf5ba45691ee285d929874a56c5128076b8d8b",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "a4ee77248315eb6027b73078597d17d57b31a560e4f718f58af437d7b59ec21a",
+  "solutionFigureHashes": {},
+  "candidateHash": "ce34c1cfdfc0cf4c7a303b5170a3324799e30aa2511e4960f11456f5fb3499db",
+  "candidate": {
+    "questionId": "1966_AMC_12_Q39",
+    "derivedAnswer": "19, choice E",
+    "answerStatus": "matches",
+    "answerReason": "One-digit shifts in the two bases imply F₂=2F₁ and then F₁=1/3. The resulting bases are R₁=11 and R₂=8.",
+    "methods": [
+      {
+        "id": "one-digit-shifts",
+        "label": "Shift one digit and compare the bases",
+        "explanation": "Multiplying a fractional expansion by its base moves the radix point one place to the right. Here that shift switches the two repeating patterns, giving useful equations without summing an infinite series.\n\nPut \\(u=R_1\\) and \\(v=R_2\\). These are integer bases with \\(u\\ge8\\) and \\(v\\ge6\\), since every displayed digit must be smaller than its base. Shifting the expansions in base \\(u\\) gives\n\\[\nuF_1=3+F_2,\\qquad uF_2=7+F_1.\n\\]\nThe corresponding shifts in base \\(v\\) give\n\\[\nvF_1=2+F_2,\\qquad vF_2=5+F_1.\n\\]\nSubtracting the corresponding equations produces\n\\[\n(u-v)F_1=1,\\qquad (u-v)F_2=2.\n\\]\nThe first equation ensures \\(u-v\\ne0\\), so the second implies \\(F_2=2F_1\\).\n\nLet \\(f=F_1\\). Substituting into the two base-\\(u\\) equations yields\n\\[\n(u-2)f=3,\\qquad (2u-1)f=7.\n\\]\nSubtracting twice the first equation from the second gives \\(3f=1\\). Thus \\(F_1=1/3\\) and \\(F_2=2/3\\). The first shift equation in each base now gives\n\\[\n\\frac u3=3+\\frac23,\\qquad\n\\frac v3=2+\\frac23,\n\\]\nso \\(u=11\\) and \\(v=8\\).\n\nBoth bases permit all their displayed digits. With these fractions, the shift equations cycle between remainders \\(1/3\\) and \\(2/3\\), reproducing exactly the stated repeating expansions. Therefore\n\\[\n\\boxed{R_1+R_2=11+8=19},\n\\]\nchoice \\(\\boxed{E}\\).",
+        "nodeIds": [
+          "cnm_024",
+          "cnm_090"
+        ],
+        "prerequisiteIds": [
+          "cnm_040",
+          "cnm_042"
+        ],
+        "levelReason": "The method uses positional place value and elementary equation elimination, without requiring infinite-series machinery."
+      }
+    ],
+    "assessedIds": [
+      "cnm_024"
+    ],
+    "supportIds": [
+      "cnm_040"
+    ],
+    "annotationRationale": "The target is interpreting the same fractions in different numeral systems. The written method uses base multiplication as a one-place shift and eliminates the shared fractional quantities. Equality operations support the derivation; no infinite geometric-series procedure is used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1966_AMC_12_Q39",
+    "decision": "accept",
+    "mathematicalCheck": "The four one-digit shift equations are correct. Their differences force F₂=2F₁; eliminating uF₁ then gives 3F₁=1. Thus u=11 and v=8. Both bases satisfy the digit bounds, and the remainder cycles verify the stated expansions and existence.",
+    "levelCheck": "Place-value shifts and elementary elimination give a complete solution without advanced machinery.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Numeral-system interpretation is the appropriate target. Equality operations and elimination describe the actual method without claiming use of infinite series or a base-ten-only repeating-decimal node.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "one-digit-shifts": "one-digit-shifts"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "f4daf07c44c7b6dadfddba4a9bff490b296ea7ac6578d46af5bc43844b4cba2f",
+    "inputHash": "fa3ac324451c0bab0e31f768ecba8810c57d92dbb3c45c084bc14970289572f8",
+    "authorInputHash": "d421056182b784c03e7fd0ac447b85cc84e093d870bb281764ab6599468b5433",
+    "reviewInputHash": "eb9dee96e501ed4d13d87bbf5b54019553fa940212397fbcdf1e0de2192aac8d",
+    "authorResponseHash": "1a8733f18f2620f79e28fdd74f7d4d94f7c1574edf7ee9eac3cfe5910bd1478b",
+    "reviewerResponseHash": "777c5e544033473ac12a05946dbd1427cc53de4d2714c3f16407eba87408d5a4",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

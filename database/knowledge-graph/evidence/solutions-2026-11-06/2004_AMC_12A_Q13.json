@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2004_AMC_12A_Q13",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "662630404699a68e20ef80df2ee047be0e460c090ba5fa84518328ba3b6bb818",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "e4fd9334e024a9f8708ea33d2866d603f6bccfebe35a93b4de2ea27d198c6c12",
+  "solutionFigureHashes": {},
+  "candidateHash": "014ca57273af4755533162c0d8d466e19e23f243113a5a432579e222c13f23dc",
+  "candidate": {
+    "questionId": "2004_AMC_12A_Q13",
+    "derivedAnswer": "\\(20\\) lines, choice B",
+    "answerStatus": "matches",
+    "answerReason": "The 36 unordered point pairs determine lines, but each of the eight three-point lines appears three times. Removing two extra counts for each gives \\(36-16=20\\), agreeing with B.",
+    "methods": [
+      {
+        "id": "pair-count-correction",
+        "label": "Method 1: Count point pairs and remove repeats",
+        "explanation": "The set \\(S\\) consists of the nine points in a \\(3\\)-by-\\(3\\) grid. Every two distinct points determine one line, so start by counting unordered pairs:\n\\[\n\\binom92=\\frac{9\\cdot8}{2}=36.\n\\]\nThe division by 2 accounts for the two orders in which each pair could be selected. The remaining issue is that a line containing three grid points has been counted more than once.\n\nA vertical line contains at most three grid points. Any nonvertical line contains at most one point in each of the three columns, so it also contains at most three.\n\nThere are exactly eight lines containing three points. Three are the columns and three are the rows. Any other three-point line uses all three columns, and its heights must strictly increase or strictly decrease as we move right. Its three heights must therefore be \\(-1,0,1\\) in that order or in reverse order. These give the two main diagonals.\n\nEach three-point line contributes \\(\\binom32=3\\) point pairs but should contribute only one distinct line. Every two-point line is already counted once. Consequently the number of distinct lines is\n\\[\n36-8(3-1)=\\boxed{20},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_054",
+          "cnm_h230",
+          "cnm_h237",
+          "math:double-counting"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_h236"
+        ],
+        "levelReason": "The proof uses elementary unordered-pair counting and explicitly corrects each line's counting multiplicity."
+      },
+      {
+        "id": "slope-classification",
+        "label": "Method 2: Classify by slope",
+        "explanation": "Group the lines by direction so that a line cannot enter two different groups. There are three horizontal lines and three vertical lines through at least two grid points.\n\nFor any other line, order two of its grid points from left to right. Their horizontal difference is 1 or 2, and their nonzero vertical difference is \\(\\pm1\\) or \\(\\pm2\\). Thus the only remaining slopes are\n\\[\n1,-1,2,-2,\\frac12,-\\frac12.\n\\]\nWe count each possibility.\n\nFor slope 1, the value \\(y-x\\) is constant. Its possible integer values are \\(-2,-1,0,1,2\\), but the extreme values each give only one corner point. The values \\(-1,0,1\\) each give a line through at least two points, so there are three such lines. Reflection across the \\(x\\)-axis gives three lines of slope \\(-1\\).\n\nFor slope 2, the rise between grid points must be 2 and the run must be 1. The endpoints therefore have heights \\(-1\\) and 1, with either of the two adjacent column pairs. This gives two lines. For slope \\(\\frac12\\), the run must be 2 and the rise must be 1. The endpoints lie in the leftmost and rightmost columns, with either of the two adjacent row pairs, again giving two lines. Reflection across the \\(x\\)-axis gives two lines for each corresponding negative slope.\n\nThese endpoint descriptions give distinct lines within each group, and the slope list covers every possible pair of grid points. The total is\n\\[\n3+3+3+3+2+2+2+2=\\boxed{20},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_054",
+          "cnm_h230",
+          "cnm_h167",
+          "cnm_136"
+        ],
+        "prerequisiteIds": [
+          "cnm_082"
+        ],
+        "levelReason": "This alternative uses only coordinate differences, elementary slope ratios, reflection, and counting disjoint cases."
+      }
+    ],
+    "assessedIds": [
+      "cnm_054",
+      "cnm_h230"
+    ],
+    "supportIds": [
+      "cnm_082"
+    ],
+    "annotationRationale": "Both routes count geometric lines determined by pairs of points and justify exhaustive, nonoverlapping counting. Coordinate interpretation is shared support. The first route uses combinations and multiplicity correction; the second uses slope classification and axis reflection. These alternative procedures are method-local, rather than joint requirements.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2004_AMC_12A_Q13",
+    "decision": "accept",
+    "mathematicalCheck": "Method 1 proves that exactly eight lines contain three points and none contain more, so correcting the 36 pair counts gives \\(36-8(3-1)=20\\). Method 2 exhausts the possible directions and correctly counts 3 lines in each horizontal, vertical, and slope ±1 class, and 2 in each slope ±2 and ±1/2 class.",
+    "levelCheck": "Both methods use suitable elementary counting and school coordinate geometry, with completeness and multiplicities explained.",
+    "methodDistinctness": "Pair-count correction and direct classification by slope provide genuinely different, accessible approaches.",
+    "annotationCheck": "The assessed line facts and addition principle are route-neutral. Coordinate interpretation is shared support; combinations and multiplicity correction remain separate from slope and reflection knowledge.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "pair-count-correction": "solution:pair-count-correction:e4fd9334e024",
+    "slope-classification": "solution:slope-classification:e4fd9334e024"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "0f454be7bdab12363f209b4bba4ed44a5dcfead39722fd41b1b71ad860e32789",
+    "inputHash": "3c122ea262495423afcd8f559d942768a991f89040bc94be8b1cd2225aa57166",
+    "authorInputHash": "ea915996ad5d668ec2dead4c68dce4d79a5849b503790c01cb334a2755204ef8",
+    "reviewInputHash": "788a05b0c5edf8563cd0299f99f024b7a2dd42bfe7f804a0797ae91075111f48",
+    "authorResponseHash": "49901f1a707612a209e165e61a696d80c6f50ffa507f08ff96bda9c1a78aa8d3",
+    "reviewerResponseHash": "567cead57752b39d61b20fca412569e10d54118dfbda9241c04d65c59b0ca18d",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

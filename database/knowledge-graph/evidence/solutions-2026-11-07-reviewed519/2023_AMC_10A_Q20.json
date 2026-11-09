@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2023_AMC_10A_Q20",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "00809c7da2a35ee4067a4d463eae9aa82f4e365760be107fb8f283a162055988",
+    "figureHashes": {
+      "figures/2023_AMC_10A_Q20_question_fig1.svg": "0b5705aab454fe77183631f8515dfde3b0ff8ae4ae57ef97de8c6ab098be45bd"
+    }
+  },
+  "solutionSHA256": "d3553166c370709199524d1cf7b7fc479d99bb629409dab7d2d0aa0959193fc0",
+  "solutionFigureHashes": {},
+  "candidateHash": "d3e0b82e14fdb945ca7ddeeeba0cacd64867343be9ae8db60d758b9851095e2a",
+  "candidate": {
+    "questionId": "2023_AMC_10A_Q20",
+    "derivedAnswer": "D. \\(72\\)",
+    "answerStatus": "matches",
+    "answerReason": "There are 24 assignments to the upper-left block, and each has exactly three valid completions. Thus there are \\(24\\cdot3=72\\) colorings, matching choice D.",
+    "methods": [
+      {
+        "id": "fix-one-block-and-complete",
+        "label": "Fix one block and complete the grid",
+        "explanation": "Start with the upper-left \\(2\\times2\\) block, which must contain all four colors. Its four fixed positions can be filled in\n\\[\n4\\cdot3\\cdot2\\cdot1=24\n\\]\nways. For any one assignment, call its colors \\(a,b,c,d\\) and write the whole grid as\n\\[\n\\begin{array}{ccc}\na&b&x\\\\\nc&d&y\\\\\nu&v&w\n\\end{array}.\n\\]\nHere \\(a,b,c,d\\) are all distinct.\n\nThe upper-right block already contains \\(b,d\\), so \\(x,y\\) must be \\(a,c\\) in some order. Similarly, the lower-left block already contains \\(c,d\\), so \\(u,v\\) must be \\(a,b\\) in some order.\n\nConsequently, the possible pairs \\((y,v)\\) are\n\\[\n(a,a),\\quad(a,b),\\quad(c,a),\\quad(c,b).\n\\]\nThe pair \\((a,a)\\) repeats a color in the lower-right block and is invalid. In each other pair, \\(d,y,v\\) are three distinct colors, so \\(w\\) is forced to be the fourth color. Once \\(y,v\\) are chosen, \\(x,u\\) are also forced by their blocks. Thus exactly three completions work for each initial block.\n\nAll four \\(2\\times2\\) blocks have now been checked. Every valid coloring determines one initial block and one of these three completions, so none is omitted or counted twice. The total is\n\\[\n24\\cdot3=\\boxed{72},\n\\]\nchoice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:graph-coloring"
+        ],
+        "prerequisiteIds": [
+          "cnm_h231"
+        ],
+        "levelReason": "This is a finite constraint count using four initial color choices and a complete list of four possible extensions. It needs only the multiplication principle."
+      },
+      {
+        "id": "center-and-side-middle-cells",
+        "label": "Choose the center and side-middle colors",
+        "explanation": "Each \\(2\\times2\\) block contains the center, two neighboring side-middle cells, and one corner. If those first three cells have distinct colors, the corner is forced to be the missing fourth color. This suggests choosing the center and side-middle colors first.\n\nChoose the center color in 4 ways and the top-middle color in 3 ways. The middle-left and middle-right cells must each avoid both chosen colors, since each shares a block with the center and top-middle cell. Thus each has the same two available colors.\n\nThere are two cases for the middle-left and middle-right cells:\n\nIf their colors agree, there are 2 choices for their shared color. The bottom-middle cell must avoid that color and the center color, leaving 2 choices. This case gives \\(2\\cdot2=4\\) possibilities.\n\nIf their colors differ, there are 2 ordered assignments of the two available colors. The bottom-middle cell must avoid both of them and the center color, so it is forced to match the top-middle color. This case gives \\(2\\cdot1=2\\) possibilities.\n\nIn every possibility, the center and the two side-middle cells in each block have three distinct colors. Each corner is therefore uniquely determined. A corner belongs to only one \\(2\\times2\\) block, so these forced choices create no further conflicts.\n\nThe two cases are disjoint and cover every assignment to the middle-left and middle-right cells. Every completed coloring uniquely recovers all the choices, so the total is\n\\[\n4\\cdot3\\cdot(4+2)=\\boxed{72},\n\\]\nchoice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:graph-coloring",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_h230",
+          "cnm_h231"
+        ],
+        "levelReason": "This alternative uses elementary color restrictions and two exhaustive cases. It requires only addition and multiplication counting principles."
+      }
+    ],
+    "assessedIds": [
+      "math:graph-coloring"
+    ],
+    "supportIds": [
+      "cnm_h231"
+    ],
+    "annotationRationale": "The mathematical target is counting cell colorings under the stated rule that each local block contains all four colors. The multiplication principle supports both routes. The first method fixes one block and exhausts its compatible extensions. The alternative uses the shared center to force corners, with addition and combined case counting recorded locally. Both methods count named colors in fixed positions and justify exhaustiveness and uniqueness.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2023_AMC_10A_Q20",
+    "decision": "accept",
+    "mathematicalCheck": "Fixing the upper-left block gives 24 assignments and four possible (y,v) pairs. Exactly (a,a) fails; each remaining pair uniquely forces every unfilled cell, giving 72. Independently, the center method gives 4·3·(4+2)=72, with every corner uniquely forced. Both arguments establish completeness and count each coloring once.",
+    "levelCheck": "Both methods explain the decisive restrictions and exhaustive cases using elementary counting suitable for AMC 10.",
+    "methodDistinctness": "The methods use distinct useful structures: completing overlapping blocks versus choosing the central cross and forcing corners.",
+    "annotationCheck": "The coloring node covers the actual local four-color rule. Multiplication is shared support, and addition plus combined case counting are appropriately local to method 2. A permutation-formula prerequisite is unnecessary.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "fix-one-block-and-complete": "fix-one-block-and-complete",
+    "center-and-side-middle-cells": "center-and-side-middle-cells"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "6ffef8033782a8993a6168c0877e2bc7214805a6247e5c154af9cf95d685a2bb",
+    "acceptedAt": "2026-11-07T08:13:31.099180+00:00",
+    "inputHash": "1a4fdb90292519df1a586f761ea4e0fa1f768cf1195a896c7625c69bae4689a6",
+    "authorInputHash": "4fe76fe49b40f4ee43712fd260838b340deaeccd36b04e6fba545c75365a99a3",
+    "reviewInputHash": "01d48d33a4b97d5795346f8c37bd95c921b5a3242d2275408eb60a6384541fe5",
+    "authorResponseHash": "693d130b378d93c8ed0dfee39b240d96e17e4c0b610df2b4eb8dd71be1f46d08",
+    "reviewerResponseHash": "fe9add3c4f0524c0e75858dfe62b2706879f405fd9b9a93a2b265c0dd0e054ff",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

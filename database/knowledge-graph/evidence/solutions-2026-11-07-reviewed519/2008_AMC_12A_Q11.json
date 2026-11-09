@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2008_AMC_12A_Q11",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "81176fa67e8fad53c20fd4784dc1c9ec4b2cf7022200686869759cc1998223b3",
+    "figureHashes": {
+      "figures/2008_AMC_12A_Q11_question_fig1.svg": "273b9c348c5cb0dedcedac6797166e7ea2d827ccfa17e35a1b8a6a53eb33ba49"
+    }
+  },
+  "solutionSHA256": "efa1fbe008dd5adc7c244ee49202335fbfb8aaa118bfddbb7252a06fb9cd451b",
+  "solutionFigureHashes": {},
+  "candidateHash": "c3618015c5942501187deb342c216b7d43cf4a0d0573f69980b9dc73c565cae4",
+  "candidate": {
+    "questionId": "2008_AMC_12A_Q11",
+    "derivedAnswer": "C, 164",
+    "answerStatus": "matches",
+    "answerReason": "The opposite pairs have sums 33, 18, and 12. Each lower cube must hide an opposite pair, and the top cube must hide one face. The minimum hidden sum is 12+12+1=25, attainable by suitable orientations, so the maximum visible sum is 189-25=164.",
+    "methods": [
+      {
+        "id": "method_1",
+        "label": "Minimize the hidden sum",
+        "explanation": "Each cube has the same total of all six labels:\n\\[\n1+2+4+8+16+32=63.\n\\]\nThus the total across the three cubes is fixed at \\(3\\cdot63=189\\). Maximizing the visible sum is equivalent to minimizing the hidden sum.\n\nTo find which faces can be hidden together, imagine folding with the \\(32\\)-face as the base. The faces labeled \\(2,16,4,8\\) fold up around it. The \\(2\\)- and \\(16\\)-faces become opposite, as do the \\(4\\)- and \\(8\\)-faces. The remaining \\(1\\)-face closes the cube opposite the \\(32\\)-face. The three opposite-pair sums are therefore\n\\[\n1+32=33,\\qquad 2+16=18,\\qquad 4+8=12.\n\\]\nEach of the bottom two cubes has its top and bottom hidden. These are opposite faces, so each hides a sum of at least \\(12\\). The top cube has only its bottom hidden, whose label is at least \\(1\\). This accounts for five hidden faces and hence the stated \\(18-5=13\\) visible faces.\n\nThe hidden sum is consequently at least \\(12+12+1=25\\). This bound can be attained: put the \\(4\\)- and \\(8\\)-faces on the top and bottom of each lower cube, and put the \\(1\\)-face downward on the top cube. These orientations can be chosen independently.\n\nTherefore the greatest visible sum is\n\\[\n189-25=\\boxed{164},\n\\]\nwhich is choice \\(\\text{C}\\).",
+        "nodeIds": [
+          "cnm_051",
+          "math:extremal-principle"
+        ],
+        "prerequisiteIds": [
+          "cnm_p160",
+          "cnm_p035"
+        ],
+        "levelReason": "Folding a cube net, comparing three pair sums, and proving an attainable bound require only elementary spatial reasoning and arithmetic."
+      }
+    ],
+    "assessedIds": [
+      "cnm_051",
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_p160",
+      "cnm_p035"
+    ],
+    "annotationRationale": "Determining opposite faces from the supplied net uses the nets component of cnm_051. Proving a universal upper bound on the visible sum and exhibiting orientations attaining it matches math:extremal-principle. Cube-face structure under cnm_p160 and the total-minus-hidden-part relationship under cnm_p035 support the method; no orthographic drawing procedure is required.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2008_AMC_12A_Q11",
+    "decision": "accept",
+    "mathematicalCheck": "Folding the displayed net gives opposite pairs (1,32), (2,16), and (4,8). Each cube totals 63. The bottom and middle cubes each hide an opposite pair totaling at least 12; the top cube hides one face labeled at least 1. Thus the hidden sum is at least 25. The specified independent orientations attain this bound, proving the maximum visible sum is 189-25=164. The five hidden faces also correctly leave 13 visible faces.",
+    "levelCheck": "The solution uses accessible cube-net reasoning, arithmetic, and an elementary attainable-bound argument.",
+    "methodDistinctness": "One complete method establishes both the bound and its attainment; no alternative is needed.",
+    "annotationCheck": "cnm_051 fits the net-folding step, and math:extremal-principle fits the bound and construction. cnm_p160 and cnm_p035 correctly support cube-face structure and the total-minus-hidden calculation.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "method_1": "method_1"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c8752d4863cd74435090b08a31cd989770e8f061a164ef3573efe7c8d3dc3070",
+    "acceptedAt": "2026-11-07T10:17:50.600102+00:00",
+    "inputHash": "fcc3f5af765a959712d29183a188c5b97d71c98b6c2c238eacd2979c477459af",
+    "authorInputHash": "b24b9f17d5075144ec3371014702321721517b9620a0dc317c0076b0af326d08",
+    "reviewInputHash": "c62ad08ccd55865f8b73bea5eec4278b43b452955b311a4778c51a951d1d8ecc",
+    "authorResponseHash": "4a14937a38d0f49e85bc420bd33d00065beda23d7a9e7ebac7b3ac47c14ecb3f",
+    "reviewerResponseHash": "fe606d20d0b57ad066f47f0c6f66266fe8d15003038c45713995999987543b94",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

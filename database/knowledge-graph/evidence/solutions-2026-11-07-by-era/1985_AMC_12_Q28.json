@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1985_AMC_12_Q28",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "e69fa2a6a397e872a382a9795815354e1e21e1eb9d2339fd479fbb0f5d11e10d",
+    "figureHashes": {
+      "figures/1985_AMC_12_Q28_question_fig1.svg": "102b00ae93dcfa0a0d7581baf6b291d6ecac5e063be4545751c9ed7c5f57db47"
+    }
+  },
+  "solutionSHA256": "d924dc34d41a821cdc1e3b44af65aecb3c37c2669c882acf029e251d8947b5b1",
+  "solutionFigureHashes": {},
+  "candidateHash": "726b60b8867544f09750548764573632e998badfbaa7d1472e43cbd422b950d9",
+  "candidate": {
+    "questionId": "1985_AMC_12_Q28",
+    "derivedAnswer": "B: 35",
+    "answerStatus": "matches",
+    "answerReason": "Splitting angle C produces two isosceles triangles with AD=CD=21 and BD=BC=27. Pythagorean distance equations then force b²=1225, so b=35.",
+    "methods": [
+      {
+        "id": "isosceles-construction-pythagoras",
+        "label": "Split the triple angle into isosceles triangles",
+        "explanation": "The relation \\(\\angle C=3\\angle A\\) suggests splitting the angle at \\(C\\) so that equal angles produce equal sides.\n\nWrite \\(\\angle A=\\theta\\). Since \\(\\angle B=180^\\circ-4\\theta>0\\), we have \\(0<\\theta<45^\\circ\\). Draw a ray inside \\(\\angle ACB\\) making \\(\\angle ACD=\\theta\\), and let it meet \\(AB\\) at \\(D\\). Because the ray lies strictly inside the angle, \\(D\\) lies between \\(A\\) and \\(B\\).\n\nIn triangle \\(ACD\\), the angles at \\(A\\) and \\(C\\) both equal \\(\\theta\\), so \\(AD=CD\\), and \\(\\angle ADC=180^\\circ-2\\theta\\). The adjacent angle \\(\\angle BDC\\) is therefore \\(2\\theta\\). Also,\n\\[\n\\angle BCD=3\\theta-\\theta=2\\theta.\n\\]\nThus triangle \\(BCD\\) is isosceles, with \\(BD=BC=27\\). Since \\(AB=48\\), we obtain\n\\[\nAD=48-27=21,\\qquad CD=21.\n\\]\nThese lengths allow us to find \\(AC\\) using only the Pythagorean theorem. Choose coordinates \\(A=(0,0)\\), \\(B=(48,0)\\), and \\(C=(x,y)\\), with \\(y\\ne0\\). Then \\(D=(21,0)\\). The three distance equations are\n\\[\n\\begin{aligned}\nb^2&=x^2+y^2,\\\\\n21^2&=(x-21)^2+y^2,\\\\\n27^2&=(x-48)^2+y^2.\n\\end{aligned}\n\\]\nThe same vertical term \\(y^2\\) appears in every equation. Expanding the second equation and substituting the first cancels both that term and \\(21^2\\), giving\n\\[\nb^2=42x.\n\\]\nSimilarly, the third equation becomes\n\\[\n729=b^2-96x+2304.\n\\]\nSubstitute \\(x=b^2/42\\) to eliminate the unknown position of \\(C\\):\n\\[\n729=2304-\\frac97b^2,\n\\qquad b^2=1225.\n\\]\nSince \\(b\\) is a positive side length, \\(\\boxed{b=35}\\), choice \\(\\boxed{\\text{B}}\\). Every triangle satisfying the conditions leads to this same positive value, so the side is uniquely determined.",
+        "nodeIds": [
+          "cnm_138",
+          "cnm_174",
+          "cnm_082"
+        ],
+        "prerequisiteIds": [
+          "cnm_115",
+          "cnm_062",
+          "cnm_055",
+          "cnm_148",
+          "cnm_074",
+          "cnm_040"
+        ],
+        "levelReason": "The construction uses elementary angle sums and isosceles triangles. Coordinates organize Pythagorean equations without trigonometry or a more advanced triangle theorem; no assumption about the horizontal position of C is needed."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_115",
+      "cnm_062",
+      "cnm_055",
+      "cnm_074"
+    ],
+    "annotationRationale": "The route-neutral target is determining a triangle's remaining side from two side lengths and a specified angle relation, including uniqueness. The supplied solving-triangles node cnm_h093 explicitly concerns choosing sine or cosine laws, which this elementary method does not use, so it is not forced onto the task. The method locally uses equal-angle isosceles criteria, Cartesian coordinates, and the Pythagorean theorem. Angle sums, supplementary angles, segment subtraction, and positive-root selection support the reasoning. These annotations do not establish learner mastery.",
+    "needsNewNodes": [
+      {
+        "name": "Determining triangle sides from side lengths and angle relations",
+        "description": "Determine an unknown side of a nondegenerate triangle from given side lengths and a relation among its angles, using an appropriate elementary geometric or trigonometric method. Establish whether the requested length is uniquely determined and retain positive, geometrically feasible solutions.",
+        "reason": "The catalog lacks a route-neutral target covering this side-determination task. Its existing solving-triangles node specifically calls for selecting sine or cosine laws, whereas the written solution uses an isosceles construction and Pythagorean equations."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1985_AMC_12_Q28",
+    "decision": "accept",
+    "mathematicalCheck": "With A=θ, positivity of B gives 0<θ<45°. The interior construction correctly yields AD=CD and BD=BC=27, hence AD=CD=21. The distance equations give b²=42x and 729=b²−96x+2304, forcing b²=1225. The positive side length is uniquely b=35.",
+    "levelCheck": "The construction is motivated and justified. The coordinate equations and their elimination are explained sufficiently and remain within elementary high-school geometry and algebra.",
+    "methodDistinctness": "The single construction-and-Pythagoras method is complete; no additional method is needed.",
+    "annotationCheck": "The method and prerequisite IDs fit the actual reasoning. Leaving assessedIds empty while proposing a route-neutral triangle-side target is honest: cnm_h093 specifically concerns selecting sine or cosine laws and need not be forced onto this method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "isosceles-construction-pythagoras": "isosceles-construction-pythagoras"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "a2d36f14d288803c97e0a7202f42631a10396624868e767c9bbb2ab89113d9c1",
+    "acceptedAt": "2026-11-08T00:18:01.915163+00:00",
+    "inputHash": "31fbedb48bfc598799c5d314b8762a7fd7566fd3d7df4aaacada127035ecdd69",
+    "authorInputHash": "7f8cbf83dfd43050cd8015a5c4c6c9add02ec788b62f4b988a110869d936702f",
+    "reviewInputHash": "df4585844b3f18dbb0b38ce8ef7147949ab84f6e52129aaad003ec3a96979a00",
+    "authorResponseHash": "e3761f90fe2739b6715c18cd8eb8416ec58107cd406df1e5f2dbc474ca7113cb",
+    "reviewerResponseHash": "a55f23ca5ab5132dba6d850a999d808156647af52d1382022a92b94433bdac65",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

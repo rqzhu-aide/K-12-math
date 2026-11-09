@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2020_AMC_10A_Q19",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "c4e98dae91264e4c4c7b0be8c1a5dbee4f96d0e5ecb00c3447a45647e1bb98a6",
+    "figureHashes": {
+      "figures/2020_AMC_10A_Q19_question_fig1.svg": "dea1d2ae45f5ca47860c81212b6d8df53c7f3171f033abe8df6513e7f79deb70"
+    }
+  },
+  "solutionSHA256": "41a08faaf57e8dd199b71860122c9249615c2165c8f6342c5073fed0e218271f",
+  "solutionFigureHashes": {},
+  "candidateHash": "6b739c0eabf532fdf3efea3b9242285b9c592421587f06da9fa30dd1e3399712",
+  "candidate": {
+    "questionId": "2020_AMC_10A_Q19",
+    "derivedAnswer": "E. \\(810\\)",
+    "answerStatus": "matches",
+    "answerReason": "Each route has one upper-ring portion, one downward crossing, and one lower-ring portion. There are 9 possible within-ring sequences from any entry face, giving \\(5\\cdot9\\cdot2\\cdot9=810\\), choice E.",
+    "methods": [
+      {
+        "id": "two-ring-path-count",
+        "label": "Count the two ring portions separately",
+        "explanation": "Only face adjacency matters, so think of each face as a stop and each shared edge as a possible move. Within either ring, the five faces form a cycle: each face has two neighbors in its own ring. Each upper-ring face also has two lower-ring neighbors, since its other three edges meet the top face and its two upper-ring neighbors.\n\nEvery valid route first enters the upper ring, later crosses to the lower ring, and finally enters the bottom face. There is exactly one crossing between the rings: a route must cross downward to reach the bottom, and afterward it cannot return upward. The top face cannot be used again because it has already been visited.\n\nConsider the portion of a route within one ring, starting from a fixed entry face. It can make zero moves around the ring in one way. If it makes any ring moves, it must continue in its initially chosen direction, because reversing direction would immediately revisit the preceding face. It can make \\(1,2,3,\\) or \\(4\\) such moves, in either direction. A fifth move would revisit the entry face. Thus the number of possible ordered ring portions is\n\\[\n1+2\\cdot4=9.\n\\]\n\nWe can now construct a route in four stages:\n\n1. Choose the first upper-ring face: \\(5\\) choices.\n2. Choose its upper-ring portion: \\(9\\) choices.\n3. Cross to either lower-ring neighbor of the last upper face: \\(2\\) choices.\n4. Choose the lower-ring portion: \\(9\\) choices, then move to the bottom face.\n\nAll lower-ring faces are unvisited when the crossing occurs, so all nine lower-ring portions remain available. Every selection produces a legal route. Conversely, a legal route uniquely determines these four selections, so no route is omitted or counted twice. The total is\n\\[\n5\\cdot9\\cdot2\\cdot9=\\boxed{810},\n\\]\nchoice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "math:graph-models",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_h230",
+          "cnm_h231"
+        ],
+        "levelReason": "The reasoning uses a finite adjacency model and elementary addition and multiplication counting, within AMC 10 scope."
+      }
+    ],
+    "assessedIds": [
+      "math:graph-models",
+      "cnm_h232"
+    ],
+    "supportIds": [
+      "cnm_h230",
+      "cnm_h231"
+    ],
+    "annotationRationale": "The task requires translating face adjacency into two five-face cycles and counting constrained paths. The method adds the disjoint within-ring cases and multiplies successive route choices, matching combined addition-and-multiplication counting. The individual counting principles are supporting knowledge. Routes related by spatial rotation remain different face sequences, so counting up to symmetry is not used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2020_AMC_10A_Q19",
+    "decision": "accept",
+    "mathematicalCheck": "Each five-face ring forms a cycle, and each upper face has two lower neighbors. A route crosses between rings exactly once. From a fixed entry face, each ring permits one zero-move portion and two directions for each length from 1 through 4, totaling 9. The unique route decomposition therefore gives \\(5\\cdot9\\cdot2\\cdot9=810\\), without omissions or duplication.",
+    "levelCheck": "The adjacency reasoning and elementary counting fit AMC 10 and are explained completely.",
+    "methodDistinctness": "One complete structural counting method is sufficient.",
+    "annotationCheck": "The graph-model and combined-counting targets match the solution. Addition and multiplication principles are appropriate supports, and no symmetry identification is incorrectly imposed.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "two-ring-path-count": "two-ring-path-count"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "8f7854c6ae85dc01d3d86b03c1e8d952d93f69d223025c985c395e4c79c7191a",
+    "acceptedAt": "2026-11-07T08:31:05.601949+00:00",
+    "inputHash": "925e78c48c8e2b5b31a0c204d5be81a22d7858ef97e5e5c2df68654b6126605e",
+    "authorInputHash": "acbd0ab6fe9a2bf1a26a2dc51875dfa3ba53bc59a6f12e173e0ae211fa7d366f",
+    "reviewInputHash": "2faa9562f8d7a6183b88cf0d7220929dfb26a1fc5ea5d35b6d458308d5135bbe",
+    "authorResponseHash": "508c7ddf5342f01f17d49fe520425ef15565f1e4903a1d0ecf2ea02d5218a051",
+    "reviewerResponseHash": "856418254c499c00137ff2f6e3613eb936e0ec5d5b5d9a0d160987aab4c08243",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

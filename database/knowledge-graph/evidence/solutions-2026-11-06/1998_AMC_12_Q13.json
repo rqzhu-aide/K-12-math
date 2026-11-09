@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1998_AMC_12_Q13",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "af40f548145e19c12eafe6a6288a604b63406759276bf8d1bb2c6de2dfc5c619",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "cb2d79528bb63ee1e8ea353f92ec2ea7156f3501ae768b36ac0cfffaf2a7e373",
+  "solutionFigureHashes": {},
+  "candidateHash": "ccbc6531e7e60d56cc9d69fd68dffaf6473354564a34678896f1547a98527c76",
+  "candidate": {
+    "questionId": "1998_AMC_12_Q13",
+    "derivedAnswer": "E: 18",
+    "answerStatus": "matches",
+    "answerReason": "The possible unordered face collections are (3,3,4,4), (2,3,4,6), (2,2,6,6), and (1,4,6,6), with sums 14, 15, 16, and 17. Thus 18 is impossible.",
+    "methods": [
+      {
+        "id": "classify-three-factors",
+        "label": "Classify the faces divisible by three",
+        "explanation": "Reordering the four faces changes neither their product nor their sum, so we can list each collection in increasing order. The factorization\n\\[\n144=2^4\\cdot3^2\n\\]\nrestricts the possible faces. No face can be \\(5\\). Among the remaining faces \\(1,2,3,4,6\\), only \\(3\\) and \\(6\\) contribute a factor of \\(3\\), and each contributes exactly one. Therefore exactly two dice show either \\(3\\) or \\(6\\). The other two faces belong to \\(1,2,4\\).\n\nClassify by the number of sixes:\n\n- No sixes: the two faces divisible by \\(3\\) are \\(3,3\\). The other two must have product \\(144/9=16\\), so they are \\(4,4\\). This gives \\((3,3,4,4)\\), with sum \\(14\\).\n- One six: the two faces divisible by \\(3\\) are \\(3,6\\). The other two must have product \\(144/18=8\\), so they are \\(2,4\\). This gives \\((2,3,4,6)\\), with sum \\(15\\).\n- Two sixes: the other two faces must have product \\(144/36=4\\). They are either \\(1,4\\) or \\(2,2\\), giving \\((1,4,6,6)\\) and \\((2,2,6,6)\\), with sums \\(17\\) and \\(16\\).\n\nEvery valid roll belongs to exactly one of these cases, and all allowed remaining factor pairs have been listed once. Thus the possible sums are \\(14,15,16,17\\). The sum \\(18\\) cannot occur, choice E.",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "math:prime-factorization"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_p157"
+        ],
+        "levelReason": "The method uses prime factors and a short exhaustive classification of integer face values from one through six."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "math:prime-factorization"
+    ],
+    "annotationRationale": "The target is determining all admissible integer face collections under a fixed product and finite face bounds. Prime factorization supplies the restriction that exactly two faces contain a factor of three. Classification by the number of sixes establishes completeness, while increasing-order representatives avoid repeating collections. No probability calculation is involved.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1998_AMC_12_Q13",
+    "decision": "accept",
+    "mathematicalCheck": "Exactly two faces must be 3 or 6 because each contributes one factor of 3. Classifying by zero, one, or two sixes exhausts the four possible unordered collections, whose sums are 14,15,16,17. Therefore 18 is impossible.",
+    "levelCheck": "The finite classification is elementary and clearly explains why no case is omitted. Ignoring die order is justified because both product and sum are unchanged.",
+    "methodDistinctness": "One complete classification method is sufficient.",
+    "annotationCheck": "The bounded integer-solution assessed node fits the task. Prime factorization supplies the shared restrictions, and the factor and prime prerequisites are appropriate.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "classify-three-factors": "classify-three-factors"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "229ccc99e8a5d34ac71911eec582b01779e661688fefcbf2311c7fb68b4a15c3",
+    "inputHash": "ef770f0074ac7075f428950a7b197ab60dd89d25f5429e821348ed2af7167378",
+    "authorInputHash": "6edfc9b46d2395b8f4b48473f8b134ff9a66ad6fa52b17d918b7f9cd50094609",
+    "reviewInputHash": "640e987e784252cf0b9e2d5e55dab669ff2b38f2d53457a569286075ccf020dd",
+    "authorResponseHash": "df4d6acfba75a8fe3d02e247bf0075820ef0a5596412f339dcfdf1ee6c12440b",
+    "reviewerResponseHash": "8c00f5e9ff18b4536757721a8160bf5530352157f0046a9430257540df3720ce",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

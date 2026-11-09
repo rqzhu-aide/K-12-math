@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2013_AMC_12B_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "7706991530ff3b0d90c10234e001106dbf1d9472fb748dbce0b7653a036bf527",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "75a7c3c8a9ac12530cde438bce0ff20d779fccc12dcb4ab0cc95b31ad73e840a",
+  "solutionFigureHashes": {},
+  "candidateHash": "1e6b1a4c1746d31d3f7d149762988d196948dd663a9b84ed2830f17fcfe16105",
+  "candidate": {
+    "questionId": "2013_AMC_12B_Q22",
+    "derivedAnswer": "A. \\(12\\)",
+    "answerStatus": "matches",
+    "answerReason": "The product \\(K\\) of the two solutions satisfies \\(K^8=m^7n^6\\). Its smallest possible integer value is 16, attained uniquely at \\(m=4\\), \\(n=8\\), so \\(m+n=12\\).",
+    "methods": [
+      {
+        "id": "logarithmic-root-sum-and-prime-exponents",
+        "label": "Use the sum of logarithmic roots and prime exponents",
+        "explanation": "A product of positive solutions becomes a sum after taking logarithms. Set\n\\[\nt=\\log_2 x,\\qquad A=\\log_2 m,\\qquad B=\\log_2 n.\n\\]\nHere \\(x>0\\), and \\(A,B>0\\) because \\(m,n>1\\). Changing bases and multiplying by \\(AB\\) transforms the equation into\n\\[\n8t^2-(7A+6B)t-2013AB=0.\n\\]\nIts discriminant is\n\\[\n(7A+6B)^2+4\\cdot8\\cdot2013AB>0,\n\\]\nso it has two distinct real roots \\(t_1,t_2\\). Each gives exactly one positive solution \\(x_i=2^{t_i}\\) of the original equation.\n\nExpanding \\(8(t-t_1)(t-t_2)\\) shows that the coefficient of \\(t\\) is \\(-8(t_1+t_2)\\). Comparing coefficients therefore gives\n\\[\nt_1+t_2=\\frac{7A+6B}{8}.\n\\]\nIf \\(K=x_1x_2\\), then\n\\[\nK=2^{t_1+t_2}=m^{7/8}n^{6/8},\n\\qquad K^8=m^7n^6.\n\\]\nWe now use the requirement that \\(K\\) be an integer.\n\nChoose any prime \\(p\\) dividing \\(m\\), and let \\(u,v,w\\) be its exponents in \\(m,n,K\\), respectively. Thus \\(u\\ge1\\), \\(v\\ge0\\), and\n\\[\n8w=7u+6v.\n\\]\nThe right side is even only if \\(u\\) is even, so \\(u\\ge2\\). If \\(w\\le3\\), then \\(7u\\le24\\), forcing \\(u=2\\). But for \\(w=1,2,3\\), the resulting values\n\\[\n6v=8w-14=-6,\\ 2,\\ 10\n\\]\nare never nonnegative multiples of 6. Hence \\(w\\ge4\\), and every integer product satisfies\n\\[\nK\\ge p^4\\ge2^4=16.\n\\]\nThis bound is attained by \\(m=4\\), \\(n=8\\), since\n\\[\nm^7n^6=2^{14+18}=16^8.\n\\]\n\nFinally, if \\(K=16\\), the identity \\(m^7n^6=2^{32}\\) forces \\(m=2^u\\), \\(n=2^v\\) with \\(u,v\\ge1\\). The equation \\(7u+6v=32\\) makes \\(u\\) positive and even, and \\(7u\\le26\\), so \\(u=2\\) and \\(v=3\\). Thus the minimizing pair is unique, and\n\\[\nm+n=4+8=\\boxed{12},\n\\]\nchoice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_h045",
+          "cnm_226",
+          "cnm_223",
+          "math:prime-factorization",
+          "math:extremal-principle"
+        ],
+        "prerequisiteIds": [
+          "cnm_h044",
+          "cnm_h046",
+          "cnm_h048",
+          "cnm_p153",
+          "cnm_p157"
+        ],
+        "levelReason": "Changing logarithm bases, comparing quadratic coefficients, and reasoning with prime exponents are standard high-school tools permitted on AMC 12."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h045",
+      "math:prime-factorization"
+    ],
+    "supportIds": [
+      "cnm_h044",
+      "cnm_h048"
+    ],
+    "annotationRationale": "The task requires relating the two logarithm bases and imposing integrality on the resulting product. The written route uses a quadratic root sum, verifies two real solutions, and proves a sharp prime-exponent bound with an attaining construction.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2013_AMC_12B_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "The logarithmic substitution is reversible and produces two distinct real roots. Their sum gives K⁸=m⁷n⁶. For a prime dividing m, 8w=7u+6v forces even u and excludes w≤3, so K≥16. Equality is attained uniquely by m=4 and n=8, giving m+n=12.",
+    "levelCheck": "The logarithmic, quadratic, and prime-exponent reasoning is appropriate for AMC 12.",
+    "methodDistinctness": "One complete method is sufficient; explicit quadratic roots would add little.",
+    "annotationCheck": "Change of base and prime factorization are supported assessed targets. The root-sum, discriminant, and extremal nodes accurately describe the written method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "logarithmic-root-sum-and-prime-exponents": "logarithmic-root-sum-and-prime-exponents"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "6bb4b3f153d3080b3be1b47eef2ca4a4d8da659dae89b7284eda2491cd3e5d02",
+    "inputHash": "464bf2422994b5565bcf7d93d3ef0518029750d89a02f382accc25e842a1761b",
+    "authorInputHash": "40fa3754d8f0bf11ccb48e2a008f03543b594d2d4d24a3805b9c4a822201bc10",
+    "reviewInputHash": "f9745daf32b6b9a56e9fb7e8e662be555ef113c3649e914d847ba7cf6ca4915f",
+    "authorResponseHash": "3f7852a0b5dd423477a15b881a45bc54e7e4ac01c08fd24cb7ce9d484bfcc29e",
+    "reviewerResponseHash": "2b0f421c3f9b7e53e7822d5a76349793392f445976c583d6c48f1c3a2c714d84",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

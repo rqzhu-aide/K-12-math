@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1951_AMC_12_Q26",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "837fb36b25e727422eb7ad3cd867fcfd5755ca2c09727bbf8beab521cc57f2fd",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "bb91dd560eb79b30d046cc5d2812c2e9a4727225f607311c3f74ca57044539bd",
+  "solutionFigureHashes": {},
+  "candidateHash": "3825898afd2748260aef7da3d7425c0f51be611646ebceabe48aceb2494f9374",
+  "candidate": {
+    "questionId": "1951_AMC_12_Q26",
+    "derivedAnswer": "E, \\(m=-\\dfrac12\\)",
+    "answerStatus": "matches",
+    "answerReason": "On the original domain, the equation becomes \\((x+m)(x-m-1)=0\\). Its two roots coincide at \\(m=-1/2\\), and the resulting root \\(x=1/2\\) is admissible.",
+    "methods": [
+      {
+        "id": "factor-and-compare-roots",
+        "label": "Factor and compare the roots",
+        "explanation": "First record the denominator restrictions:\n\\[\nm\\ne0,\\qquad m\\ne1,\\qquad x\\ne1.\n\\]\nUnder these restrictions, multiplying by \\(m(x-1)(m-1)\\) gives\n\\[\nm\\bigl[x(x-1)-(m+1)\\bigr]\n=x(x-1)(m-1).\n\\]\nThe terms containing \\(m x(x-1)\\) cancel, leaving\n\\[\nx^2-x-m(m+1)=0.\n\\]\nThe constant term suggests the factorization\n\\[\n(x+m)(x-m-1)=0,\n\\]\nso the candidate roots are \\(-m\\) and \\(m+1\\).\n\nThey are equal precisely when\n\\[\n-m=m+1,\n\\qquad m=-\\frac12.\n\\]\nThis parameter is allowed, and its repeated root \\(x=\\frac12\\) does not make a denominator zero.\n\nFor completeness, a candidate root can equal the forbidden value \\(1\\) only at the allowed parameter \\(m=-1\\). Then the other root is \\(0\\); discarding \\(1\\) leaves a simple root, not two equal roots. Thus the answer is \\(\\boxed{m=-\\frac12}\\), choice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_165",
+          "cnm_224",
+          "cnm_042"
+        ],
+        "prerequisiteIds": [
+          "cnm_156",
+          "cnm_146",
+          "cnm_040"
+        ],
+        "levelReason": "The method uses denominator restrictions, elementary polynomial algebra, factorization, and a linear equation."
+      },
+      {
+        "id": "discriminant-with-domain-check",
+        "label": "Use the discriminant",
+        "explanation": "The original fractions require \\(m\\ne0,1\\) and \\(x\\ne1\\). Multiplying by the nonzero common denominator \\(m(x-1)(m-1)\\) and simplifying gives\n\\[\nx^2-x-m(m+1)=0.\n\\]\nA quadratic has two equal real roots exactly when its discriminant is zero. Here\n\\[\n\\Delta=(-1)^2-4(1)\\bigl[-m(m+1)\\bigr]\n=1+4m^2+4m\n=(2m+1)^2.\n\\]\nConsequently, equal roots require \\(2m+1=0\\), giving \\(m=-\\frac12\\). The quadratic then becomes\n\\[\nx^2-x+\\frac14=\\left(x-\\frac12\\right)^2=0.\n\\]\nBoth \\(m=-\\frac12\\) and \\(x=\\frac12\\) satisfy the original denominator restrictions, so this repeated root is valid.\n\nDiscarding a forbidden root does not create equal roots. In particular, at \\(m=-1\\), the quadratic is \\(x(x-1)=0\\), leaving only the simple admissible root \\(0\\). The answer is therefore \\(\\boxed{m=-\\frac12}\\), choice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_165",
+          "cnm_223",
+          "cnm_148"
+        ],
+        "prerequisiteIds": [
+          "cnm_156",
+          "cnm_146",
+          "cnm_040"
+        ],
+        "levelReason": "The discriminant and square identity are standard school algebra, and the original rational-equation domain is checked explicitly."
+      }
+    ],
+    "assessedIds": [
+      "cnm_165"
+    ],
+    "supportIds": [
+      "cnm_156",
+      "cnm_146",
+      "cnm_040"
+    ],
+    "annotationRationale": "The shared target is solving a parameter-dependent rational equation while preserving its domain. Factoring and comparing explicit roots is one route; testing the discriminant is another. The discriminant is method-specific rather than a requirement for every solution. Both routes distinguish a repeated root from a single surviving root after an exclusion.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1951_AMC_12_Q26",
+    "decision": "accept",
+    "mathematicalCheck": "For m≠0,1 and x≠1, clearing denominators gives (x+m)(x-m-1)=0. Equal roots require m=-1/2, giving the admissible repeated root x=1/2. Independently, the discriminant is (2m+1)^2. Both methods correctly distinguish the simple surviving root at m=-1 from a repeated root.",
+    "levelCheck": "Both explanations use standard school algebra and explicitly preserve the original domain.",
+    "methodDistinctness": "Comparing factored roots and testing the discriminant provide distinct, accessible approaches.",
+    "annotationCheck": "Rational-equation solving is route neutral. Factoring and the discriminant remain method specific, and the shared support nodes are used in both methods.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "factor-and-compare-roots": "factor-and-compare-roots",
+    "discriminant-with-domain-check": "discriminant-with-domain-check"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "d1b8e7f42c315643ce346a423ec2e6972b912638353ad04c478c0710ead6eee1",
+    "inputHash": "bfab1a0cae6fa3723e6dba816d226572dcbc40c88e1f35acd05560f5807f52f1",
+    "authorInputHash": "54c2ad95a5d3a14cb68f0478f483f65d2d58ce91f0413f662d962218eb534721",
+    "reviewInputHash": "7a882c4b5dc12f3c7e5861da07147424ce897bea848a8bd92b0432d1d92c598f",
+    "authorResponseHash": "3affe8920e2e07cf4521c64d76d2a9d2f8b50d57f8e35f636adf6ed6b17a4281",
+    "reviewerResponseHash": "55d3575b1704be02a555a6b12bb876c342ae00d0237c5b40aabd8702bab28acb",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

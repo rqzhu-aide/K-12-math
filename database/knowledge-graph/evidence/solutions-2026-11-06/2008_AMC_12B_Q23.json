@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2008_AMC_12B_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "41ec267bb478518c3b9629a618993738b34885bbf2d8bf69c1d5d0b372b7bff9",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "77844532b9aed21958f6588a988dfdec74b095f083181ec7ea1847bb21e93e27",
+  "solutionFigureHashes": {},
+  "candidateHash": "0221fc5be94dd041d8b493b47dbd26e2aa5688eb289178174bcbfbed38fdb388",
+  "candidate": {
+    "questionId": "2008_AMC_12B_Q23",
+    "derivedAnswer": "A: 11",
+    "answerStatus": "matches",
+    "answerReason": "The logarithm sum is n(n+1)^2/2. This equals 792 uniquely at n=11, matching choice A.",
+    "methods": [
+      {
+        "id": "complementary-divisors",
+        "label": "Pair complementary divisors",
+        "explanation": "Complementary divisors have product \\(10^n\\), so their logarithms have a particularly simple sum.\n\nSince \\(10^n=2^n5^n\\), every positive divisor has a unique form \\(2^a5^b\\), where \\(a,b\\) are integers from \\(0\\) through \\(n\\). Each exponent has \\(n+1\\) choices, giving \\((n+1)^2\\) divisors without omissions or repetitions.\n\nLet \\(S\\) be the sum of their base-\\(10\\) logarithms. As \\(d\\) runs through the divisors, \\(10^n/d\\) runs through the same divisors exactly once. Therefore\n\\[\n2S=\\sum_{d\\mid 10^n}\\left(\\log_{10}d+\\log_{10}\\frac{10^n}{d}\\right)\n=n(n+1)^2.\n\\]\nThis counts every term twice even when a divisor is its own complement, so there is no exceptional square case.\n\nThus \\(n(n+1)^2=1584\\). Substituting \\(n=11\\) gives \\(11\\cdot12^2=1584\\). For nonnegative integers \\(n\\), the expression \\(n(n+1)^2\\) strictly increases, so this solution is unique. Hence \\(\\boxed{n=11}\\), choice \\(\\text{A}\\).",
+        "nodeIds": [
+          "math:divisor-count-and-sum",
+          "cnm_h044"
+        ],
+        "prerequisiteIds": [
+          "math:prime-factorization",
+          "cnm_h043"
+        ],
+        "levelReason": "Uses prime-exponent choices and logarithm rules, both appropriate for AMC 12."
+      },
+      {
+        "id": "sum-prime-exponents",
+        "label": "Sum the prime exponents",
+        "explanation": "Writing each divisor using its prime exponents lets us add the contributions from \\(2\\) and \\(5\\) separately.\n\nEvery positive divisor of \\(10^n=2^n5^n\\) is uniquely \\(2^a5^b\\), with integers \\(0\\le a,b\\le n\\). The independent exponent choices list all \\((n+1)^2\\) divisors exactly once, and\n\\[\n\\log_{10}(2^a5^b)=a\\log_{10}2+b\\log_{10}5.\n\\]\nEach possible value of \\(a\\) occurs \\(n+1\\) times, once for each value of \\(b\\). The same is true with the exponents reversed. Consequently, the required sum is\n\\[\n(n+1)(0+1+\\cdots+n)\n\\bigl(\\log_{10}2+\\log_{10}5\\bigr).\n\\]\nUsing \\(0+1+\\cdots+n=n(n+1)/2\\) and \\(\\log_{10}2+\\log_{10}5=\\log_{10}10=1\\), this becomes\n\\[\n\\frac{n(n+1)^2}{2}=792.\n\\]\nAt \\(n=11\\), the left side is \\(11\\cdot144/2=792\\). It strictly increases as the nonnegative integer \\(n\\) increases, so no other value works. Thus \\(\\boxed{n=11}\\), choice \\(\\text{A}\\).",
+        "nodeIds": [
+          "math:divisor-count-and-sum",
+          "cnm_h044",
+          "cnm_h204"
+        ],
+        "prerequisiteIds": [
+          "math:prime-factorization",
+          "cnm_h043"
+        ],
+        "levelReason": "Adds a finite arithmetic-series calculation to elementary divisor structure and logarithm rules."
+      }
+    ],
+    "assessedIds": [
+      "math:divisor-count-and-sum",
+      "cnm_h044"
+    ],
+    "supportIds": [
+      "math:prime-factorization",
+      "cnm_h043"
+    ],
+    "annotationRationale": "The task combines enumeration of divisors from independent prime exponents with logarithmic operations. Both methods use those targets and share prime factorization and logarithm meaning as prerequisites. Arithmetic-series summation belongs only to the second method.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2008_AMC_12B_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "There are (n+1)^2 positive divisors. Complementation gives 2S=n(n+1)^2, including self-complementary divisors. Independently summing prime exponents gives the same expression. Its strict increase for nonnegative integers makes n=11 unique.",
+    "levelCheck": "Both explanations are complete and appropriate for AMC 12.",
+    "methodDistinctness": "Complementary-divisor symmetry and direct exponent summation provide genuinely different accessible ideas.",
+    "annotationCheck": "The assessed and shared support IDs fit both methods. Arithmetic-series summation is correctly method-local.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "complementary-divisors": "complementary-divisors",
+    "sum-prime-exponents": "solution:sum-prime-exponents:77844532b9ae"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "f5979369e46b735ce1d056f89f889717865197a2202f0c7ea28614b8d37302b1",
+    "inputHash": "adf72023edf44e5159eda0c4afe66ed9783c982307ce14f06b0146e6e0fe5815",
+    "authorInputHash": "a919786451485a260db0cf00fdb4aaeb73152f0497a5b80377be757b69ddf516",
+    "reviewInputHash": "f1bc670326d20369056b28aa6bbfbabce3848849a4c7ca6388cf1781dfd0c58d",
+    "authorResponseHash": "3bb86a06ceb445c447151a4aa05b47a4d1153acc58abf964ba2505a3741d1f61",
+    "reviewerResponseHash": "431e5855dfae4bf7e0918e26fbae8dd1f164cb61520aed00cf9faca6783dc9bb",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

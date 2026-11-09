@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1954_AMC_12_Q49",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "d5180ff1d3fcc6263071dfa1aaf9e31fa8fec6ba66a5e2c605d66ddfa45a2e52",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "a94b19d374074e5bfaf24e64db301a650edeebb237e805ff5456a59094aaee4c",
+  "solutionFigureHashes": {},
+  "candidateHash": "8876056b1c6dcd1e18fa7742db10d4e6b23c4439e3c77e4ea68f3a249e6a5964",
+  "candidate": {
+    "questionId": "1954_AMC_12_Q49",
+    "derivedAnswer": "No unique choice: both C and D give valid proof forms.",
+    "answerStatus": "disputed",
+    "answerReason": "The key selects C, whose consecutive-integer products are even. D also directly proves the claim because a-b and a+b+1 have odd sum and therefore opposite parity. The wording does not uniquely select C.",
+    "methods": [
+      {
+        "id": "consecutive-products",
+        "label": "Consecutive-integer products",
+        "explanation": "To prove divisibility by \\(8\\), we can first extract a factor of \\(4\\) and then show that what remains is even. For integers \\(a>b\\), expansion and grouping give\n\\[\n\\begin{aligned}\n(2a+1)^2-(2b+1)^2\n&=4a^2+4a-4b^2-4b\\\\\n&=4[a(a+1)-b(b+1)].\n\\end{aligned}\n\\]\nThis is choice \\(\\text{C}\\). Each product of consecutive integers is even, because one of the two integers is even. Thus we may write \\(a(a+1)=2r\\) and \\(b(b+1)=2s\\) for integers \\(r,s\\). The difference of the squares is then\n\\[\n4(2r-2s)=8(r-s),\n\\]\nwhich is divisible by \\(8\\).\n\nChoice \\(\\text{C}\\) is therefore a valid proof form. However,\n\\[\na(a+1)-b(b+1)=(a-b)(a+b+1),\n\\]\nso choice \\(\\text{D}\\) is the same quantity and also supports the proof. The supplied key is \\(\\text{C}\\), but the question does not determine a unique choice.",
+        "nodeIds": [
+          "cnm_155",
+          "cnm_151"
+        ],
+        "prerequisiteIds": [
+          "cnm_148",
+          "cnm_146",
+          "cnm_p156",
+          "cnm_p153"
+        ],
+        "levelReason": "Expansion, common-factor grouping, and the parity of consecutive integers are elementary school algebra and number reasoning."
+      },
+      {
+        "id": "factored-parity",
+        "label": "Factor the difference of squares",
+        "explanation": "Factoring the difference of squares gives another direct proof:\n\\[\n\\begin{aligned}\n(2a+1)^2-(2b+1)^2\n&=[(2a+1)-(2b+1)]\\\\\n&\\qquad\\cdot[(2a+1)+(2b+1)]\\\\\n&=4(a-b)(a+b+1).\n\\end{aligned}\n\\]\nThis is choice \\(\\text{D}\\). The two integer factors inside the product have sum\n\\[\n(a-b)+(a+b+1)=2a+1,\n\\]\nwhich is odd. They must therefore have opposite parity: if both were even or both were odd, their sum would be even. One factor is consequently even, so their product is \\(2k\\) for an integer \\(k\\). The difference of the squares equals \\(4\\cdot2k=8k\\), proving divisibility by \\(8\\).\n\nChoice \\(\\text{D}\\) is thus a valid proof form. Expanding its product gives \\(4(a^2+a-b^2-b)\\), also the expansion of choice \\(\\text{C}\\). Thus \\(\\text{C}\\) is valid as well, and the keyed answer \\(\\text{C}\\) is not unique.",
+        "nodeIds": [
+          "cnm_155",
+          "cnm_152"
+        ],
+        "prerequisiteIds": [
+          "cnm_146",
+          "cnm_p156",
+          "cnm_p153"
+        ],
+        "levelReason": "The method uses the difference-of-squares identity and elementary parity, without congruences or advanced number theory."
+      }
+    ],
+    "assessedIds": [
+      "cnm_155"
+    ],
+    "supportIds": [
+      "cnm_p156",
+      "cnm_p153"
+    ],
+    "annotationRationale": "The task-level target is using algebraic structure to justify divisibility. The first route exposes even consecutive-integer products through common-factor grouping; the second uses difference-of-squares factorization and opposite parity. Their distinct factoring procedures are recorded separately, while parity and the meaning of a multiple are shared prerequisites. These are alternative sufficient proofs.",
+    "needsNewNodes": [],
+    "limitations": [
+      "All five expressions are algebraically equivalent, and at least C and D directly support elementary proofs. No stated criterion makes C the unique answer."
+    ]
+  },
+  "review": {
+    "questionId": "1954_AMC_12_Q49",
+    "decision": "accept",
+    "mathematicalCheck": "Choice C is divisible by 8 because both consecutive-integer products are even. Choice D also proves divisibility: its two integer factors sum to 2a+1, so exactly one is even. The displayed identities are correct, and the solution honestly identifies the failure of uniqueness without claiming that only C and D can support proofs.",
+    "levelCheck": "Both proofs use elementary algebra and parity, with the decisive evenness arguments explained.",
+    "methodDistinctness": "Consecutive-product parity and opposite-parity factors provide distinct, useful proofs at the same level.",
+    "annotationCheck": "cnm_155 is route-neutral. Common-factor grouping and difference-of-squares factoring are separated by method, while parity and multiples are correctly shared support.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "consecutive-products": "consecutive-products",
+    "factored-parity": "factored-parity"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "2f0a97a81cb584fd9f200193baaef93a8f90d35e2b590559aaa0d3c99f2f0fa5",
+    "inputHash": "884cec901f512481726aa1173e6dca6fc360c9313aa5c464b5227ba54849e313",
+    "authorInputHash": "c4342b38373402aaad55e3b8d0a0d2f6a12e74c71aabc90e31b4cd4da21a1efa",
+    "reviewInputHash": "7330358e82464f09d76d6e10e688c65c05cfbc1740d5b96ee93f6e3c4d7f0105",
+    "authorResponseHash": "dbb1d7ece1536e77ff1a8161a623b1fecfeb803094bc97c629f228f654fac781",
+    "reviewerResponseHash": "1526abf123edd2129cf2fd50cc004ff5eb9db36aecd3bcd84dee04002002612e",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

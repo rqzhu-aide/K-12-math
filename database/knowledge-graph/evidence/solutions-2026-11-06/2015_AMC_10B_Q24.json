@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2015_AMC_10B_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "87ef324676d78f54730619c019cede0009fd6ccc87847009bb7649b827a9e598",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "2d353f4315c56d7e48c5990e69a12010301b36aeceb7a9bc6166a9c446e72a1e",
+  "solutionFigureHashes": {},
+  "candidateHash": "c9c4d97248e9fd46f7109c48f680f795bc4127197852095ee6a5c454004ce773",
+  "candidate": {
+    "questionId": "2015_AMC_10B_Q24",
+    "derivedAnswer": "\\((13,-22)\\), choice D",
+    "answerStatus": "matches",
+    "answerReason": "The spiral finishes the 45-by-45 square of lattice points at p2024 = (22,-22). Nine steps earlier on its eastward bottom side gives p2015 = (13,-22), matching choice D.",
+    "methods": [
+      {
+        "id": "completed-square-layers",
+        "label": "Count points in completed squares",
+        "explanation": "Count the spiral at moments when it has filled a complete square of integer-coordinate points. After Aaron first reaches \\((r,-r)\\), for each nonnegative integer \\(r\\), he has visited exactly the points satisfying \\(-r\\le x,y\\le r\\), and he faces east.\n\nHere is why this pattern continues. It holds initially for \\(r=0\\). From a completed square, the next step goes east to \\((r+1,-r)\\). The rule then takes Aaron north to \\((r+1,r+1)\\), west to \\((-r-1,r+1)\\), south to \\((-r-1,-r-1)\\), and east to \\((r+1,-r-1)\\). Along each straight stretch, the point to his left has already been visited until he reaches the next outer corner. These moves fill precisely the new square boundary, establishing the same pattern for \\(r+1\\).\n\nThere are \\(2r+1\\) choices for each coordinate in a completed square, so it contains \\((2r+1)^2\\) points. Because the starting point is \\(p_0\\), its last point has index\n\\[\n(2r+1)^2-1.\n\\]\nFor \\(r=22\\), this gives\n\\[\np_{45^2-1}=p_{2024}=(22,-22).\n\\]\nThe final side of this square is an eastward stretch of \\(44\\) steps. Since \\(2024-2015=9<44\\), the requested point is nine units west of its endpoint:\n\\[\np_{2015}=(22-9,-22)=\\boxed{(13,-22)},\n\\]\nchoice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "cnm_030",
+          "cnm_086",
+          "math:lattice-counting"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_010",
+          "cnm_h231"
+        ],
+        "levelReason": "The method uses square-grid point counting, an elementary justification of the spiral pattern, and coordinate displacement."
+      },
+      {
+        "id": "sum-straight-stretches",
+        "label": "Add the lengths of straight stretches",
+        "explanation": "Instead of counting enclosed points, count the lengths of Aaron's straight stretches. The first four stretches go east, north, west, and south with lengths \\(1,1,2,2\\), ending at \\((-1,-1)\\).\n\nMore generally, after the southward stretch ending at \\((-j,-j)\\), the visited points fill the square \\([-j,j]^2\\) except for the bottom-row points to the right of that corner. The next stretches must therefore have lengths \\(2j+1\\) east, \\(2j+1\\) north, \\(2j+2\\) west, and \\(2j+2\\) south. On each stretch, a left turn would enter a visited point until its endpoint. The result has the same shape with \\(j\\) increased by one. This proves that the stretch lengths continue as\n\\[\n1,1,2,2,3,3,4,4,\\ldots.\n\\]\nEach group of four stretches with lengths \\(2j-1,2j-1,2j,2j\\) moves Aaron one unit west and one unit south overall. After \\(22\\) such groups, or \\(88\\) stretches, he is at \\((-22,-22)\\). The number of unit steps taken is\n\\[\n2(1+2+\\cdots+44)=44\\cdot45=1980,\n\\]\nwhere pairing the first and last terms gives the sum.\n\nThe next stretch goes east for \\(45\\) units. Since \\(2015-1980=35<45\\), Aaron is \\(35\\) units into that stretch:\n\\[\np_{2015}=(-22+35,-22)=\\boxed{(13,-22)},\n\\]\nchoice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "cnm_030",
+          "cnm_086",
+          "cnm_h204"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_010"
+        ],
+        "levelReason": "This route uses elementary spiral geometry, paired sums of consecutive integers, and signed coordinate changes."
+      }
+    ],
+    "assessedIds": [
+      "cnm_030",
+      "cnm_086"
+    ],
+    "supportIds": [
+      "cnm_082",
+      "cnm_010"
+    ],
+    "annotationRationale": "The common targets are establishing the spiral's numerical pattern and translating the remaining motion into coordinates. Counting square lattice points belongs to the first route; summing repeated stretch lengths belongs to the second. Coordinate meaning and signed addition support both.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2015_AMC_10B_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "The completed-square invariant gives p2024=(22,-22), and nine earlier steps on the bottom side give (13,-22). The second method independently verifies the repeated stretch lengths, obtains p1980=(-22,-22), and moves 35 units east to the same point. Both index counts correctly include p0.",
+    "levelCheck": "Both pattern justifications use elementary grid geometry, counting, and coordinate changes. The consecutive-integer sum is explained by pairing.",
+    "methodDistinctness": "Counting completed square points and summing straight-stretch lengths provide distinct counting ideas.",
+    "annotationCheck": "Pattern representation and coordinate translation are shared targets. Lattice counting and arithmetic summation are correctly kept method-specific, with coordinate meaning and signed addition as shared support.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "completed-square-layers": "completed-square-layers",
+    "sum-straight-stretches": "sum-straight-stretches"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "003fb0cc5aa1b69a847430b4029b7cbfd2ab4cfeb38057168ba74e3575b02a1d",
+    "inputHash": "c1e3f86fe313b412b3a972dcefe394e455655d72b0d3b47d42afca962d716c53",
+    "authorInputHash": "3941c491e4eeebeef78d008e8dcc7cc493688b7465f36e032b02d00d32769484",
+    "reviewInputHash": "fa04e00e6f405046aec108f8d457c1ae777e01e16e9f439b32c2b6701542aafb",
+    "authorResponseHash": "ac3dfcdfc4f0682eca8289904c6d53a00cbc1f70ba33cc59904635f5eb864534",
+    "reviewerResponseHash": "1f62a0f5f84b0302d045645d0fb8930588150fb5ba1485dc0118d4be08257b4d",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

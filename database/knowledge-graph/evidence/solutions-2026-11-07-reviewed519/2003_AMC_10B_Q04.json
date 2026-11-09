@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2003_AMC_10B_Q04",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "d9149d6383526a12d73ba0d62fae1745dcd36f618a8a1e23184aa34b013b9ad6",
+    "figureHashes": {
+      "figures/2003_AMC_10B_Q04_question_fig1.svg": "a0e163b9a03b507b6e6fbdf921b55c7962ec092f15919f39ccebfd99c44090e1"
+    }
+  },
+  "solutionSHA256": "d0bff16b64dde8da39d94a3b4fb37a8bf32459802dc74d520e381c78088f0961",
+  "solutionFigureHashes": {
+    "figures/2003_AMC_10B_Q04_question_fig1.svg": "a0e163b9a03b507b6e6fbdf921b55c7962ec092f15919f39ccebfd99c44090e1"
+  },
+  "candidateHash": "00bde484ca6a9adc9b1b0b7b19727c59f8619064f09342770059e5c7f4376946",
+  "candidate": {
+    "questionId": "2003_AMC_10B_Q04",
+    "derivedAnswer": "A. $108",
+    "answerStatus": "matches",
+    "answerReason": "The displayed dimensions give region areas 21, 20, 15, 6, and 4 square feet. Assigning increasing flower prices to decreasing areas minimizes the cost, yielding $108 and matching A.",
+    "methods": [
+      {
+        "id": "exchange-argument",
+        "label": "Assign cheaper flowers to larger regions",
+        "explanation": "The number of flowers in each region equals its area in square feet. We first find these areas, then compare possible price assignments.\n\n[Figure 1](figures/2003_AMC_10B_Q04_question_fig1.svg)\n\nThe upper-left, upper-right, lower-left, and lower-right regions have areas\n\\[\n4\\cdot5=20,\\quad 7\\cdot3=21,\\quad\n6\\cdot1=6,\\quad 5\\cdot3=15.\n\\]\nThe middle region has width \\(6-4=2\\) feet and height \\(5-3=2\\) feet, so its area is \\(4\\) square feet. The five areas in decreasing order are therefore \\(21,20,15,6,4\\).\n\nThere are five regions and five flower types, so each price is used once. To see which assignment is cheapest, suppose a larger region of area \\(a\\) receives flowers priced at \\(p\\), while a smaller region of area \\(b\\) receives flowers priced at \\(q\\), where \\(a>b\\) and \\(p>q\\). Swapping the flower types saves\n\\[\n(ap+bq)-(aq+bp)=(a-b)(p-q)>0.\n\\]\nThus putting the cheaper flowers in the larger region reduces the cost. Starting with any assignment, put the cheapest remaining type in the largest remaining region, swapping if necessary. Each required swap lowers the cost, so this process proves that increasing prices should be matched with decreasing areas.\n\nAssign asters, begonias, cannas, dahlias, and Easter lilies to areas \\(21,20,15,6,4\\), respectively. The least cost, in dollars, is\n\\[\n\\begin{aligned}\n&21(1)+20(1.50)+15(2)+6(2.50)+4(3)\\\\\n&\\qquad=21+30+30+15+12=108.\n\\end{aligned}\n\\]\nThe answer is \\(\\boxed{108}\\) dollars, choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_p089",
+          "math:extremal-principle",
+          "cnm_h019"
+        ],
+        "prerequisiteIds": [
+          "cnm_p111",
+          "cnm_p132"
+        ],
+        "levelReason": "Uses rectangle areas, total-price arithmetic, and an elementary swap justified by subtracting two costs, all within AMC 10 scope."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p089",
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_p111",
+      "cnm_p132"
+    ],
+    "annotationRationale": "The question requires calculating rectangle areas and proving an attainable minimum over flower assignments, matching cnm_p089 and math:extremal-principle. The written route uses cnm_h019 to compare an assignment with a swapped assignment. Total price as unit price times quantity and decimal-by-integer multiplication support the calculation. The scheduling-focused cnm_p109 does not describe this optimization.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2003_AMC_10B_Q04",
+    "decision": "accept",
+    "mathematicalCheck": "The figure gives areas 20, 21, 6, 15, and (6−4)(5−3)=4 square feet. An inverted assignment costs (a−b)(p−q)>0 more than its swap. The successive swaps establish a global minimum, attained by pairing areas 21,20,15,6,4 with increasing prices. The resulting cost is $108, choice A.",
+    "levelCheck": "Rectangle areas, decimal arithmetic, and the explained swap argument are accessible and complete at AMC 10 level.",
+    "methodDistinctness": "One complete method is supplied and is sufficient.",
+    "annotationCheck": "Rectangle area and attainable discrete minimization are justified assessments. Comparing costs by subtraction matches the route, and total-price arithmetic and decimal multiplication are appropriate supports.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "exchange-argument": "solution:exchange-argument:d0bff16b64dd"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "f27dc9393efa0d0643b21a26e13478049deb6873c00127d16a1042153bdfc2fb",
+    "acceptedAt": "2026-11-07T10:55:11.824769+00:00",
+    "inputHash": "1c7f37915e5ccdf47753f3b84caff6d424086a6e46db8f6683e106d087d0701f",
+    "authorInputHash": "c3b365978f75e76bf654b12dfb80f956d27bd0449ab33c30267c524657d7ce73",
+    "reviewInputHash": "2333546336afa949ba4935a90fd89ca634727ca30e50f4d56cac79178443b8c9",
+    "authorResponseHash": "a21f10ad799e063cfaac889d63421fee39396d61f04086995de18b92a7400cdf",
+    "reviewerResponseHash": "e1edc10ab567228bb941d594d7a028424e950dd4d74ea6b25ea01e9e16572a33",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

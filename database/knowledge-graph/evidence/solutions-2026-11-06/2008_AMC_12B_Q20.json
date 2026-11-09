@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2008_AMC_12B_Q20",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "2b794982c2444e4ac82a838b2eb10b4799b1ce6c875a1b99e06424c46b187d0e",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "33e91fac65155663e2cee53482dd35b12b43c733f937cbb9e1c438e5dc1d0821",
+  "solutionFigureHashes": {},
+  "candidateHash": "af70c411fa216c0ed5802435a409b4587fb318e1870865157d5c44d95de60e80",
+  "candidate": {
+    "questionId": "2008_AMC_12B_Q20",
+    "derivedAnswer": "B: \\(5\\)",
+    "answerStatus": "matches",
+    "answerReason": "The distinct meeting times, measured from the initial observation, are 200, 240, 260, 280, and 320 seconds. Meetings at a truck arrival or departure are counted only once.",
+    "methods": [
+      {
+        "id": "drive-and-stop-intervals",
+        "label": "Count meetings during drives and stops",
+        "explanation": "The truck takes \\(200/10=20\\) seconds to drive between consecutive pails, followed by a \\(30\\)-second stop. Its motion therefore repeats in \\(50\\)-second cycles. Count meetings separately during the driving and stopped portions, then remove any repeated endpoint times.\n\nLet \\(t=0\\) be the initial observation, and measure position from Michael's initial pail. Michael's position is \\(5t\\), while the truck starts at position \\(200\\). Number the truck's subsequent drives by integers \\(k=0,1,2,\\ldots\\). Drive \\(k\\) starts at time \\(50k\\), at position \\(200(k+1)\\), and ends at time \\(50k+20\\).\n\nDuring that drive, equality of positions requires\n\\[\n5t=200(k+1)+10(t-50k),\n\\]\nwhich gives \\(t=60k-40\\). This time belongs to the drive precisely when\n\\[\n50k\\le60k-40\\le50k+20,\n\\]\nor \\(4\\le k\\le6\\). Thus driving meetings occur at \\(t=200,260,320\\).\n\nAfter drive \\(k\\), the truck is stopped at position \\(200(k+2)\\) from time \\(50k+20\\) through \\(50k+50\\). A meeting then requires\n\\[\n5t=200(k+2),\\qquad t=40k+80.\n\\]\nThe time lies in this stop exactly when\n\\[\n50k+20\\le40k+80\\le50k+50,\n\\]\nwhich gives \\(3\\le k\\le6\\). These meetings occur at \\(t=200,240,280,320\\).\n\nThe drive and stop intervals cover all future times. The times \\(200\\) and \\(320\\) appear in both lists because they are transition times, so each counts once. The complete list of distinct meetings is\n\\[\n200,\\ 240,\\ 260,\\ 280,\\ 320.\n\\]\nThey meet \\(\\boxed{5}\\) times, choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "cnm_047",
+          "cnm_209",
+          "cnm_h020"
+        ],
+        "prerequisiteIds": [
+          "cnm_p111",
+          "cnm_042",
+          "cnm_099"
+        ],
+        "levelReason": "Piecewise constant speeds lead to linear position equations and elementary integer bounds."
+      }
+    ],
+    "assessedIds": [
+      "cnm_047"
+    ],
+    "supportIds": [
+      "cnm_p111"
+    ],
+    "annotationRationale": "The target is meeting and catching-up reasoning from distance, speed, and time. The actual method uses a piecewise linear motion model and restricts integer cycle numbers by interval inequalities. Its endpoint union explicitly prevents double counting and its interval coverage proves completeness.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2008_AMC_12B_Q20",
+    "decision": "accept",
+    "mathematicalCheck": "The driving equation gives t=60k-40, admissible exactly for k=4,5,6. The stopped equation gives t=40k+80, admissible exactly for k=3,4,5,6. Their union is {200,240,260,280,320}; the shared transition times are counted once, and the intervals cover all future motion.",
+    "levelCheck": "The indexed motion model uses only linear equations and elementary integer bounds, appropriate for AMC 12.",
+    "methodDistinctness": "One complete interval-counting method is sufficient.",
+    "annotationCheck": "Travel reasoning is the correct assessment target. The piecewise linear model, integer bounds, and speed-time relationship annotations are supported by the written solution.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "drive-and-stop-intervals": "drive-and-stop-intervals"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "730263b9ec61c4bc79506104e730059ee7195000d0e4bb2c4d5e084b6c953eee",
+    "inputHash": "a99692c49be767fdd1bcb01b08f9295d55b68c8a2eb4f1e08d218dc5bee04ca3",
+    "authorInputHash": "5b3ed9d9446cafb6265c0a468e31371f4d9eb18fd1513c96d20bd08991c95b91",
+    "reviewInputHash": "d5fe4566e5bcc2262b7e04cc8a82bf325379e6730bd8c5f1660194a3c78f5f75",
+    "authorResponseHash": "7dcfc1939079044258bd99ddc010f66665820cd0f429f5e12cb4267f5f949103",
+    "reviewerResponseHash": "96d4ac193e12d01cd542c55d6864802a4aea3a1ef307c00b4d108da50855897e",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

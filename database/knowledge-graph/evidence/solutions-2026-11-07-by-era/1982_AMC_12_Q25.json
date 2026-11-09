@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1982_AMC_12_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ebb8f7ae9c3b22beee9dface5ba4c197cbcbc297e1c9833541f7bb5aa2ac62c9",
+    "figureHashes": {
+      "figures/1982_AMC_12_Q25_question_fig1.svg": "1645f015bc5d42773154147d123353e78f2420b275eb63b78709eb0661a6a960"
+    }
+  },
+  "solutionSHA256": "6ce1d2ccdf237b609fe2375380e50b94b0c33b4708290b936af35cacfd6857e2",
+  "solutionFigureHashes": {},
+  "candidateHash": "146bb3149a7d6595b3039e8313f2d1929bacf7806121c08c230125c2558d9b68",
+  "candidate": {
+    "questionId": "1982_AMC_12_Q25",
+    "derivedAnswer": "D: \\(\\frac{21}{32}\\)",
+    "answerStatus": "matches",
+    "answerReason": "The displayed map has three columns and four rows of blocks, with C one intersection north of B on the eastern boundary. The probability of reaching the southern boundary before the eastern boundary is 11/32, so the probability of passing C is 21/32.",
+    "methods": [
+      {
+        "id": "count-avoiding-routes",
+        "label": "Count the routes that miss C",
+        "explanation": "The boundary streets make some moves compulsory, so complete routes need not have equal probabilities. Instead, count the possible beginnings of routes that miss \\(C\\).\n\nNumber intersections by their eastward and southward steps from \\(A\\). The figure gives \\(A=(0,0)\\), \\(C=(3,3)\\), and \\(B=(3,4)\\). Once the student reaches the eastern boundary before reaching the southern boundary, he must walk south through \\(C\\). Thus he misses \\(C\\) exactly when his fourth southward move occurs before his third eastward move.\n\nSuppose he first reaches the southern boundary after making \\(k\\) eastward moves, where \\(k=0,1,2\\). His last move is south. Before that last move, there are exactly three southward moves and \\(k\\) eastward moves. Every move in this beginning is a fair choice, since neither boundary has yet been reached.\n\nFor \\(k=0\\), there is one beginning, with probability \\(1/2^4\\).\n\nFor \\(k=1\\), the eastward move can occupy any of the first four positions, giving four beginnings, each with probability \\(1/2^5\\).\n\nFor \\(k=2\\), choose two of the first five positions for the eastward moves. There are \\(5\\cdot4/2=10\\) choices, each with probability \\(1/2^6\\).\n\nThese cases are disjoint and include every route that misses \\(C\\), because \\(k\\) records its unique first arrival on the southern boundary. Hence\n\\[\nP(\\text{miss }C)\n=\\frac1{16}+\\frac4{32}+\\frac{10}{64}\n=\\frac{11}{32}.\n\\]\nTherefore\n\\[\nP(\\text{pass }C)=1-\\frac{11}{32}\n=\\boxed{\\frac{21}{32}},\n\\]\nchoice \\(\\boxed{D}\\).",
+        "nodeIds": [
+          "cnm_h138",
+          "cnm_h139",
+          "cnm_h237"
+        ],
+        "prerequisiteIds": [
+          "cnm_h140",
+          "cnm_081",
+          "cnm_p049"
+        ],
+        "levelReason": "The method uses short, exhaustive route cases and products of independent fair-choice probabilities. The small combination count is derived directly."
+      },
+      {
+        "id": "propagate-probabilities",
+        "label": "Pass probabilities from intersection to intersection",
+        "explanation": "Track the probability of reaching each intersection. This automatically accounts for routes with different numbers of fair choices.\n\nLet \\(p(i,j)\\) be the probability of reaching the intersection \\(i\\) steps east and \\(j\\) steps south of \\(A\\). From the figure, \\(A=(0,0)\\), \\(C=(3,3)\\), and \\(B=(3,4)\\). Only the current intersection matters for the next move, since each available choice is independent of earlier choices.\n\nAt an intersection with two exits, half its probability passes east and half passes south. At the eastern boundary, all its probability passes south. Incoming contributions may be added because a route arrives from exactly one preceding intersection.\n\nAlong the top and western boundaries, before any compulsory exit,\n\\[\np(i,0)=2^{-i},\\qquad p(0,j)=2^{-j}.\n\\]\nFor the interior intersections needed here, each incoming contribution is halved. Starting from these boundary values gives\n\\[\n\\begin{aligned}\np(1,1)&=\\tfrac12(\\tfrac12+\\tfrac12)=\\tfrac12,\\\\\np(2,1)=p(1,2)&=\\tfrac12(\\tfrac14+\\tfrac12)=\\tfrac38,\\\\\np(2,2)&=\\tfrac12(\\tfrac38+\\tfrac38)=\\tfrac38,\\\\\np(1,3)&=\\tfrac12(\\tfrac18+\\tfrac38)=\\tfrac14,\\\\\np(2,3)&=\\tfrac12(\\tfrac14+\\tfrac38)=\\tfrac5{16}.\n\\end{aligned}\n\\]\nNow work down the eastern boundary. Arrivals from the north continue south with probability \\(1\\), while arrivals from the west still require an eastward choice:\n\\[\n\\begin{aligned}\np(3,0)&=\\tfrac18,\\\\\np(3,1)&=\\tfrac18+\\tfrac12\\cdot\\tfrac38=\\tfrac5{16},\\\\\np(3,2)&=\\tfrac5{16}+\\tfrac12\\cdot\\tfrac38=\\tfrac12,\\\\\np(3,3)&=\\tfrac12+\\tfrac12\\cdot\\tfrac5{16}=\\tfrac{21}{32}.\n\\end{aligned}\n\\]\nSince eastward and southward movement prevents revisiting an intersection, \\(p(3,3)\\) is exactly the probability of passing \\(C\\). The answer is \\(\\boxed{\\frac{21}{32}}\\), choice \\(\\boxed{D}\\).",
+        "nodeIds": [
+          "math:recursive-counting-probability",
+          "cnm_h138"
+        ],
+        "prerequisiteIds": [
+          "cnm_h140",
+          "cnm_081",
+          "cnm_p049"
+        ],
+        "levelReason": "The finite recursion only adds incoming probabilities and distinguishes fair choices from compulsory moves; no advanced probability machinery is needed."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h138"
+    ],
+    "supportIds": [
+      "cnm_h140"
+    ],
+    "annotationRationale": "Both routes calculate a passage probability by combining disjoint possibilities, so probability addition is the shared task-level target and independent choices are shared support. Complementary events and combinations belong to the route-enumeration method. State recursion belongs only to the probability-propagation method and is not imposed on students using enumeration. Coordinates merely label intersections.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1982_AMC_12_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The pixels show three columns and four rows, with C=(3,3) and B=(3,4). Missing C is equivalent to reaching the fourth southward move before the third eastward move. The disjoint prefix cases give 1/16+4/32+10/64=11/32. Independently, propagation gives p(3,2)=1/2 and p(2,3)=5/16, so p(C)=1/2+5/32=21/32. Forced boundary moves are handled correctly.",
+    "levelCheck": "Both methods use accessible finite counting and elementary probability. The explanation justifies completeness, multiplicities, and unequal route probabilities.",
+    "methodDistinctness": "Complementary prefix enumeration and intersection-by-intersection propagation offer genuinely distinct, useful approaches at comparable levels.",
+    "annotationCheck": "Probability addition is a justified route-neutral assessed node, with independence as shared support. Complementation and combinations remain local to enumeration, and state recursion remains local to propagation.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-avoiding-routes": "count-avoiding-routes",
+    "propagate-probabilities": "propagate-probabilities"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "92067cef41a4424627548a32fbe363c362d63df61714d919dac7dc114719e6e2",
+    "acceptedAt": "2026-11-08T00:15:51.167372+00:00",
+    "inputHash": "dbf08bd123182ccd45b209e12c3bf8c67912dbd24b063f5dc8e3d94dcbe2032f",
+    "authorInputHash": "498efad6a5f0053c4296fde13f4a46eafe7b93fd921e7bdab5649f0e79af1b39",
+    "reviewInputHash": "0fde55f631bd4a7dddd59d94e05dfa9c652ff54cf05c3bca166a303f1214a1dd",
+    "authorResponseHash": "bad654f3a215a98aac59b2f88f1bd5618ea67e0ca9a8d92fdaf02e41c4e490d8",
+    "reviewerResponseHash": "9ec6554c9c0c36b5dc91bb19c612cb08c2c12acfc420ea17a245ecba2e3e4603",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

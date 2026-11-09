@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2004_AMC_12A_Q20",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "bfd51d9b1bd02cb9619d133f99c9823523f3122f2ca8440ced77274f507cd8c2",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "942f31406bac0cbff43fff4535e5bb7eb7de016f83268d08516b35ab8f3cd862",
+  "solutionFigureHashes": {},
+  "candidateHash": "a6b90ce4a40b280849ac313ffa62a6675489c440b4717db239f3348e93826b75",
+  "candidate": {
+    "questionId": "2004_AMC_12A_Q20",
+    "derivedAnswer": "\\(\\frac34\\), choice E",
+    "answerStatus": "matches",
+    "answerReason": "Under independent uniform sampling, the two failure regions in the unit square each have area 1/8. The success probability is therefore 1-2(1/8)=3/4. Rounding ties have probability zero.",
+    "methods": [
+      {
+        "id": "rounding-region-areas",
+        "label": "Subtract the two failure triangles",
+        "explanation": "Under the usual interpretation of random selection, \\(a\\) and \\(b\\) are independent and uniform on \\([0,1]\\). Thus \\((a,b)\\) is uniform in a unit square, and probabilities equal areas. Rounding ties occur on finitely many lines, which have area zero, so any rule for resolving ties gives the same probability.\n\nDivide the square using \\(a=\\tfrac12\\) and \\(b=\\tfrac12\\). If one number is below \\(\\tfrac12\\) and the other is above it, then \\(A+B=1\\). Their sum lies between \\(\\tfrac12\\) and \\(\\tfrac32\\), so \\(C=1\\) as well.\n\nIf both numbers are below \\(\\tfrac12\\), then \\(A+B=0\\). Equality fails exactly when \\(a+b>\\tfrac12\\). Inside this smaller square, that region is a right triangle with both legs of length \\(\\tfrac12\\), so its area is\n\\[\n\\frac12\\cdot\\frac12\\cdot\\frac12=\\frac18.\n\\]\nIf both numbers are above \\(\\tfrac12\\), then \\(A+B=2\\). Equality fails exactly when \\(a+b<\\tfrac32\\), giving another right triangle of area \\(\\tfrac18\\).\n\nThese cases cover the square, and the two failure triangles do not overlap. Therefore\n\\[\n\\Pr(A+B=C)=1-\\frac18-\\frac18=\\boxed{\\frac34},\n\\]\nwhich is choice \\(\\text{E}\\).",
+        "nodeIds": [
+          "math:geometric-probability",
+          "cnm_084",
+          "cnm_p148"
+        ],
+        "prerequisiteIds": [
+          "cnm_p121",
+          "cnm_285"
+        ],
+        "levelReason": "The solution uses rounding thresholds, a coordinate square, and elementary triangle areas."
+      }
+    ],
+    "assessedIds": [
+      "math:geometric-probability"
+    ],
+    "supportIds": [
+      "cnm_p121",
+      "cnm_285"
+    ],
+    "annotationRationale": "The main target is translating independent uniform choices into an area probability. Rounding supports the event description. Coordinate geometry and triangle area are components of the written method. The probability prerequisite is used for numerical likelihood, not for counting individual outcomes in a continuous sample space.",
+    "needsNewNodes": [],
+    "limitations": [
+      "Uses the conventional uniform interpretation of selection at random from [0,1]. Endpoints and rounding ties have probability zero."
+    ]
+  },
+  "review": {
+    "questionId": "2004_AMC_12A_Q20",
+    "decision": "accept",
+    "mathematicalCheck": "Mixed-threshold quadrants always succeed. Each same-threshold quadrant contains one failure triangle of area 1/8, giving success probability 3/4. The uniform interpretation and probability-zero rounding boundaries are handled explicitly.",
+    "levelCheck": "Rounding thresholds, a coordinate square, and triangle areas are appropriate for AMC 12.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The geometric-probability assessment and method-local geometry nodes fit. The probability support is explicitly restricted to numerical likelihood, without claiming finite outcome counting applies.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "rounding-region-areas": "solution:rounding-region-areas:942f31406bac"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "3bc26884824343b0148ddfbe3d2745af5a70add3699a328ce21d523476f3d467",
+    "inputHash": "ad399c5ec562f1650bacb02d98c2a521b9c25160398c16f9a34ebe243cb71508",
+    "authorInputHash": "019610a428a682da41ed25e6bcf1c0f192d018d89a4c64ec64fced8f20ddb164",
+    "reviewInputHash": "6b2f835826b14988ec3b4a78db3fd547d90e7f5e4fd8ffc0cab929a2c82534b6",
+    "authorResponseHash": "09450ab3c74f7af58392eb06359a8dc31ad05328bcb8205cd7623f7fadc11279",
+    "reviewerResponseHash": "8d455fc9ad6f81e347b110bf530f6bce6a0feec818045c0c6964a9137b75ddcf",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

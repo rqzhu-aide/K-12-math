@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1963_AMC_12_Q34",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "8f8feb16b59a871b4b870bc5b85ffdad5e228ec7d0fa90846a4b88343e16c5b2",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "575b5e042f4a6c3406c8e7d0b24c04b32b1a775c7c27f5a419b7e51e54e8f831",
+  "solutionFigureHashes": {},
+  "candidateHash": "bcd604434ac79bb7dabf0af74729672e19654d2144c783edc7cb8f2df5c845f0",
+  "candidate": {
+    "questionId": "1963_AMC_12_Q34",
+    "derivedAnswer": "For a fixed triangle, no largest real \\(x\\) exists as literally stated. If \\(x\\) means the largest uniform strict lower bound over all admissible triangles, then \\(x=120^\\circ\\), choice B.",
+    "answerStatus": "disputed",
+    "answerReason": "The supplied key is correct under the recorded uniform-bound interpretation. For one fixed angle \\(\\theta\\), however, every \\(t<\\theta\\) can be increased to \\((t+\\theta)/2<\\theta\\), so the literal largest number does not exist.",
+    "methods": [
+      {
+        "id": "bisect-and-establish-sharpness",
+        "label": "Bisect the isosceles triangle and check the endpoint",
+        "explanation": "The wording needs a qualification. For a fixed triangle with angle \\(\\theta\\), there is no largest real number below \\(\\theta\\): whenever \\(t<\\theta\\), the number \\((t+\\theta)/2\\) is larger than \\(t\\) and still below \\(\\theta\\).\n\nAssume instead that the question asks for the largest bound that the angle exceeds in every admissible triangle. Write \\(AB=c\\), \\(CA=CB=\\sqrt3\\), and \\(\\theta=\\angle ACB\\). The triangle inequality requires \\(3<c<2\\sqrt3\\).\n\nLet \\(M\\) be the midpoint of \\(AB\\). In an isosceles triangle, \\(CM\\) is both an altitude and an angle bisector. The right triangle \\(CMA\\) therefore gives\n\\[\n\\sin\\frac{\\theta}{2}\n=\\frac{c/2}{\\sqrt3}\n>\\frac{3}{2\\sqrt3}\n=\\frac{\\sqrt3}{2}\n=\\sin60^\\circ.\n\\]\nBoth \\(\\theta/2\\) and \\(60^\\circ\\) are acute, where sine is strictly increasing. Hence \\(\\theta>120^\\circ\\).\n\nWe must also show that a larger uniform bound cannot work. For any proposed \\(t>120^\\circ\\), choose an angle satisfying\n\\[\n120^\\circ<\\theta<\\min\\{t,180^\\circ\\}.\n\\]\nConstruct a triangle with two sides \\(\\sqrt3\\) and included angle \\(\\theta\\). The same right-triangle calculation gives\n\\[\nc=2\\sqrt3\\sin\\frac{\\theta}{2}>3.\n\\]\nThis is an admissible triangle, but its angle is below \\(t\\). Thus every larger proposed bound fails. Under the uniform-bound interpretation, \\(\\boxed{x=120^\\circ}\\), choice \\(\\boxed{\\text{B}}\\); for one fixed triangle, the stated largest real number does not exist.",
+        "nodeIds": [
+          "cnm_137",
+          "cnm_276",
+          "cnm_277",
+          "cnm_h067"
+        ],
+        "prerequisiteIds": [
+          "cnm_111",
+          "cnm_112",
+          "cnm_115"
+        ],
+        "levelReason": "The proof uses an isosceles altitude, acute-angle sine ratios, the special value at 60 degrees, and an explicit geometric construction to establish sharpness."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_111"
+    ],
+    "annotationRationale": "Under the qualified interpretation, the route-neutral target is a sharp strict angle bound with an excluded endpoint. The catalog has no suitable node for that target, so it is proposed separately. Triangle inequalities support feasibility. Isosceles-triangle properties, acute trigonometric ratios, special values, and sine monotonicity belong to the actual method.",
+    "needsNewNodes": [
+      {
+        "name": "Sharp geometric bounds and excluded endpoints",
+        "description": "For a real quantity varying over specified geometric configurations, prove a uniform bound and establish sharpness by producing admissible values arbitrarily close to its boundary. Distinguish an attained extremum, an excluded endpoint, and a bound asserted only for one fixed configuration.",
+        "reason": "The catalog's discrete extremal principle and quadratic-extremum nodes do not cover this continuous sharp-bound target or the distinction responsible for the wording caveat."
+      }
+    ],
+    "limitations": [
+      "The statement does not explicitly say that the bound must hold for every admissible triangle. The numerical answer 120 degrees is conditional on that interpretation."
+    ]
+  },
+  "review": {
+    "questionId": "1963_AMC_12_Q34",
+    "decision": "accept",
+    "mathematicalCheck": "The sine comparison proves the angle exceeds 120 degrees. For every larger proposed bound, the construction supplies an admissible triangle with a smaller angle. The fixed-angle reading correctly has no largest real x.",
+    "levelCheck": "Isosceles geometry, acute-angle sine, and the explicit sharpness construction are appropriate; no calculus is used.",
+    "methodDistinctness": "One complete qualified method is sufficient.",
+    "annotationCheck": "The solution preserves the wording caveat and makes choice B conditional. The method nodes fit, and the missing sharp-bound node proposal avoids an unsupported existing equivalence.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "bisect-and-establish-sharpness": "bisect-and-establish-sharpness"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "6a71db4852e0e2d6a11c0a1375031e0060929c1302b9b793afe4eb1fe38c4fe5",
+    "inputHash": "275b15af1a7695405c742e54c88058d3ef3266d3c60f416828b9124fee9b3dd8",
+    "authorInputHash": "d9db71662ca090f5bf483772d4a8a557d50b52373f08f68cdfb5e521694d6d03",
+    "reviewInputHash": "85b83abe6df54e3eb9effad4b4b9b1301917ce12ad2542940da4e7fa752a8572",
+    "authorResponseHash": "359c785586136a49492071009cd981538c8db09948c93e1814c0cf7e9a234417",
+    "reviewerResponseHash": "a7f5578f6b1f578e135450d303448a811c3da1fe5dae7bb88becc9834e517a6d",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

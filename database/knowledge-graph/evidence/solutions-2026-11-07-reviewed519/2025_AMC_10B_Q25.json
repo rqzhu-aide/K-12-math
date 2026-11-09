@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2025_AMC_10B_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "0aacc8cbadc94956504723ef93a37baf7eadc12a015eb5e096b359460d0ea89c",
+    "figureHashes": {
+      "figures/2025_AMC_10B_Q25_question_fig1.svg": "16f202e0a45df2323e655ae33c959e284e93a5fcc4695f041d80deb02cff3339"
+    }
+  },
+  "solutionSHA256": "8e2184abaf3699dd3ad5fce21384a0f28fe038e773f76f4291f8353ca8c47085",
+  "solutionFigureHashes": {
+    "figures/2025_AMC_10B_Q25_question_fig1.svg": "16f202e0a45df2323e655ae33c959e284e93a5fcc4695f041d80deb02cff3339"
+  },
+  "candidateHash": "1678a141cae2a1377a0631a3bd6509f57ebbe4c83430d5ddcf06d4f9b367a7fc",
+  "candidate": {
+    "questionId": "2025_AMC_10B_Q25",
+    "derivedAnswer": "B, vertex B",
+    "answerStatus": "matches",
+    "answerReason": "The unfolded ray first reaches a square-grid vertex at (20,16). Folding this point back into the original square places it at B, agreeing with the supplied key.",
+    "methods": [
+      {
+        "id": "unfold-the-reflections",
+        "label": "Method 1: Unfold the reflected path",
+        "explanation": "[Figure 1](figures/2025_AMC_10B_Q25_question_fig1.svg)\n\nReflecting copies of the square lets us replace the bouncing path by a straight ray. For example, reflect the square across \\(CD\\) at the first bounce, \\(Q\\). The reflected outgoing segment continues straight along \\(PQ\\), because the incoming and outgoing angles are equal. Repeating this construction produces a grid of squares of side length \\(4\\). A vertex is reached exactly when the straight ray passes through a grid corner.\n\nChoose coordinates \\(A=(0,0)\\), \\(B=(4,0)\\), \\(C=(4,4)\\), and \\(D=(0,4)\\). The given lengths give\n\\[\nP=\\left(0,\\frac85\\right),\\qquad Q=\\left(\\frac{10}{3},4\\right).\n\\]\nThus the vertical rise divided by the horizontal run along \\(PQ\\) is\n\\[\n\\frac{4-8/5}{10/3}=\\frac{18}{25}.\n\\]\nThe unfolded ray therefore follows\n\\[\ny=\\frac85+\\frac{18}{25}x,\\qquad x\\geq 0.\n\\]\n\nEvery grid corner ahead of \\(P\\) has coordinates \\((4m,4n)\\), where \\(m\\) and \\(n\\) are positive integers. Substituting these coordinates gives\n\\[\n4n=\\frac85+\\frac{72m}{25},\n\\qquad 25n=18m+10.\n\\]\nBoth \\(25n\\) and \\(10\\) are multiples of \\(5\\), so \\(18m\\) must be a multiple of \\(5\\). Since \\(18\\) has no factor \\(5\\), \\(m\\) must be a multiple of \\(5\\). The smallest possible positive value is \\(m=5\\), and it works: the equation gives \\(n=4\\). Because \\(x\\) increases along the ray, \\((20,16)\\) is its first grid corner.\n\nWhen the copies are folded back, successive vertical grid lines fold alternately onto \\(AD\\) and \\(BC\\). Since \\(20=5\\cdot4\\), this corner folds onto \\(BC\\). Successive horizontal grid lines fold alternately onto \\(AB\\) and \\(CD\\); since \\(16=4\\cdot4\\), it also folds onto \\(AB\\). Their common endpoint is \\(B\\). Therefore the path terminates at \\(\\boxed{B}\\), choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_132",
+          "cnm_h167",
+          "cnm_h169",
+          "math:integer-diophantine-equations"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_131",
+          "cnm_055",
+          "cnm_p185",
+          "cnm_p153",
+          "cnm_p156"
+        ],
+        "levelReason": "This uses elementary reflections, coordinates, rise divided by run, and divisibility by 5. The line formulas require no trigonometry, and the first-corner argument stays within AMC 10 mathematics."
+      },
+      {
+        "id": "follow-the-wall-hits",
+        "label": "Method 2: Track the wall hits directly",
+        "explanation": "At each reflection, the right triangles describing the incoming and outgoing directions are similar: the reflection angles are equal. Consequently, every segment has the same ratio of vertical distance to horizontal distance as \\(PQ\\), namely\n\\[\n\\frac{PD}{DQ}=\\frac{4-8/5}{10/3}=\\frac{18}{25}.\n\\]\nThus a horizontal distance \\(h\\) corresponds to a vertical distance \\(18h/25\\), with the direction changing at each wall. In particular, crossing the full width \\(4\\) changes the height by \\(72/25\\).\n\nName the successive wall hits after \\(Q\\) by \\(R,S,T,U,V,W\\). We can determine each next hit by checking which boundary the segment reaches first.\n\nFrom \\(Q\\), the path travels right and down. Since \\(CQ=4-10/3=2/3\\), reaching \\(BC\\) requires a drop of\n\\[\n\\frac{18}{25}\\cdot\\frac23=\\frac{12}{25}.\n\\]\nHence \\(R\\) lies on \\(BC\\), with \\(BR=4-12/25=88/25\\).\n\nFrom \\(R\\), the path travels left and down across the square. Its height at \\(AD\\) is\n\\[\nAS=\\frac{88}{25}-\\frac{72}{25}=\\frac{16}{25}>0,\n\\]\nso it reaches \\(AD\\) before the bottom side.\n\nFrom \\(S\\), moving right and down, it reaches \\(AB\\) after a horizontal distance\n\\[\nAT=\\frac{16/25}{18/25}=\\frac89<4.\n\\]\nFrom \\(T\\), it travels right and up. The remaining horizontal distance to \\(BC\\) is \\(4-8/9=28/9\\), so\n\\[\nBU=\\frac{18}{25}\\cdot\\frac{28}{9}=\\frac{56}{25}<4.\n\\]\nThus it reaches \\(BC\\) before the top side.\n\nFrom \\(U\\), moving left and up, the rise needed to reach \\(CD\\) is \\(4-56/25=44/25\\). This takes a horizontal distance\n\\[\n\\frac{44/25}{18/25}=\\frac{22}{9}<4,\n\\]\nso \\(V\\) lies on \\(CD\\), with \\(DV=4-22/9=14/9\\).\n\nFrom \\(V\\), the path travels left and down. At \\(AD\\), its height is\n\\[\nAW=4-\\frac{18}{25}\\cdot\\frac{14}{9}\n=4-\\frac{28}{25}=\\frac{72}{25}.\n\\]\nFinally, from \\(W\\), traveling right and down across the full width produces a drop of exactly \\(72/25\\). It therefore reaches \\(B\\).\n\nEvery preceding hit lies strictly between its side's endpoints, and each calculation identifies the first boundary reached. Thus no vertex is hit earlier. The terminal vertex is \\(\\boxed{B}\\), choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_132",
+          "cnm_271",
+          "cnm_272"
+        ],
+        "prerequisiteIds": [
+          "cnm_131",
+          "cnm_055",
+          "cnm_p185"
+        ],
+        "levelReason": "The direct route uses equal-angle reflections, AA similarity, corresponding-side ratios, and fraction arithmetic. It requires neither trigonometry nor an integer-equation method."
+      }
+    ],
+    "assessedIds": [
+      "cnm_132"
+    ],
+    "supportIds": [
+      "cnm_055",
+      "cnm_p185"
+    ],
+    "annotationRationale": "Reflection properties are the geometric target common to both routes; segment arithmetic and distance ratios support both. The unfolding route uses coordinate slope and a line equation, then an integer corner condition and parity to identify the first terminal vertex. The direct route instead uses similar right triangles to locate successive wall hits. These route-specific procedures are alternatives, not joint requirements, and the annotations make no claim about student mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2025_AMC_10B_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "Unfolding gives \\(25n=18m+10\\), so every forward grid corner requires \\(5\\mid m\\). The smallest possibility, \\(m=5\\), gives \\(n=4\\); odd horizontal and even vertical indices fold to B. The direct method independently verifies every successive boundary hit lies inside its side, then reaches B when the final drop equals \\(72/25\\). The figure agrees with the assumed initial direction.",
+    "levelCheck": "Both methods are appropriate for AMC 10, using reflections, coordinates, similarity, fractions, and elementary divisibility without trigonometry.",
+    "methodDistinctness": "Straightening the path and finding its first grid corner is genuinely distinct from calculating successive wall hits.",
+    "annotationCheck": "The reflection target and shared segment/ratio support are justified. Coordinate and integer-equation knowledge stays local to Method 1; triangle similarity stays local to Method 2. The assigned IDs fit the reasoning.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "unfold-the-reflections": "unfold-the-reflections",
+    "follow-the-wall-hits": "follow-the-wall-hits"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "fcd5fbc41e4e4581718719d523c88a705aa85e33ab84730e34441bf516b77847",
+    "acceptedAt": "2026-11-07T07:57:41.387216+00:00",
+    "inputHash": "ca7216f07764968ed129470e00bdbadd21444045ef93045f5c8d83c312cc30e6",
+    "authorInputHash": "ac9ece887410295a50a04d5d4a6168a41c4055a66eed92122248fae65c30bfbe",
+    "reviewInputHash": "8a7c36cd0e55e49810f55b85ae2aa5ef8cfe8b0c51c76aef4e8fc9ca7f6604e0",
+    "authorResponseHash": "c5351d7ddd6271f12deded7d1eadac7f2e2ac501ff0fca3a3530dd2ec9c3f11a",
+    "reviewerResponseHash": "b0da66548bd50aaa6734aa133c319e8074c17e042edfcad0efb9c056e0bbf52f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1950_AMC_12_Q48",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "7804ef9a2c3fe262d8f78fdf503bd5dd0f36fde8f20ae0b2926d7e5efad4c929",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "03e2289077111cff59e45dcdf0a1e5e3f9b74096c942176abe5325919d6391b7",
+  "solutionFigureHashes": {},
+  "candidateHash": "3a42db81f81e7741113ab39cbfd9efcd7c7050743561794d87b0eb9268d3fcdf",
+  "candidate": {
+    "questionId": "1950_AMC_12_Q48",
+    "derivedAnswer": "C, equal to the altitude of the triangle.",
+    "answerStatus": "matches",
+    "answerReason": "Joining the interior point to the vertices partitions the triangle into three triangles with equal-length bases. Adding their areas shows that the three perpendicular distances sum to the original altitude.",
+    "methods": [
+      {
+        "id": "partition-triangle-area",
+        "label": "Add the areas of three smaller triangles",
+        "explanation": "The equal side lengths suggest using each side as the base of a smaller triangle. Let the equilateral triangle have side length \\(s>0\\) and altitude \\(h\\). Let \\(P\\) be the selected interior point, and let \\(d_1,d_2,d_3\\) be its perpendicular distances to the three sides.\n\nJoin \\(P\\) to all three vertices. The resulting three triangles cover the original triangle and have no overlapping interiors. Each has base \\(s\\), and its corresponding height is one of the perpendicular distances. Adding their areas gives\n\\[\n\\frac12sd_1+\\frac12sd_2+\\frac12sd_3\n=\\frac12sh.\n\\]\nDividing by \\(s/2>0\\), we obtain\n\\[\nd_1+d_2+d_3=h.\n\\]\nThus the sum is the same for every interior point, regardless of the random selection. It equals the triangle's altitude, choice C.",
+        "nodeIds": [
+          "cnm_p148",
+          "cnm_p150"
+        ],
+        "prerequisiteIds": [
+          "cnm_p122",
+          "cnm_065"
+        ],
+        "levelReason": "The proof uses only triangle areas, equal side lengths, and perpendicular distances."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_p122",
+      "cnm_065"
+    ],
+    "annotationRationale": "The question's target is a constant sum of perpendicular distances in an equilateral triangle. The catalog has no direct node for that geometric relation, so no area procedure is forced into the task-level target. Triangle area and area addition describe the actual proof route; equilateral side equality and point-to-line distance are supporting knowledge.",
+    "needsNewNodes": [
+      {
+        "name": "Perpendicular distance sum in an equilateral triangle",
+        "description": "For a nondegenerate equilateral triangle of altitude h, the sum of the perpendicular distances from any interior point to its three side lines is h, independently of the point's position.",
+        "reason": "The existing area nodes describe a proof method rather than the requested distance-sum relation. The catalog's invariant-reasoning node is restricted to discrete processes and does not cover this continuous geometric property."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1950_AMC_12_Q48",
+    "decision": "accept",
+    "mathematicalCheck": "Joining the interior point to the vertices partitions the triangle without overlapping interiors. Equal bases give s(d₁+d₂+d₃)/2=sh/2, so the distance sum is h for every interior point.",
+    "levelCheck": "Triangle areas and area addition give a complete elementary proof.",
+    "methodDistinctness": "One area-partition method suffices.",
+    "annotationCheck": "The area nodes correctly describe the proof route. The proposed distance-sum node honestly identifies the task target without misusing the discrete-invariant node; the supporting concepts fit.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "partition-triangle-area": "partition-triangle-area"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "6fc81289bff7e07b6669c9adbe0807fc99139d7a8b740c1c7340405e53c76055",
+    "inputHash": "719aa4560b3759b4099719ed2343edb02b6a091eb839fe7382faa3778bf937f5",
+    "authorInputHash": "cf3d983cc068faffcaba93f3d88a963ad9a84a11c42268fe2a3b02fe9f46fd01",
+    "reviewInputHash": "5b37afa0bda4ebb1adce72b6b92dcc049d72690dabadfadec300264fc6e0b39b",
+    "authorResponseHash": "a958cebbcd72497975ef93874b0ea6758ffb6c2182ad71cb3ee29fa221719a71",
+    "reviewerResponseHash": "35e523e4a5c3a246d4eb9827fea9a930aa00cbf09ad0b523a5e2cf8fff9f90cf",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

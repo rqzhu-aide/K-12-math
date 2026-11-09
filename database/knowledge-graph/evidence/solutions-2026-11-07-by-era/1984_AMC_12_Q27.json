@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1984_AMC_12_Q27",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "95ac839dfda480f443c2dbca540b2f4719ca250e77fd98427a78c3ced1a82131",
+    "figureHashes": {
+      "figures/1984_AMC_12_Q27_question_fig1.svg": "506e45aa8e8b3e09bd8a77569771d7b8fc83a6666f76343d7385fcc07d8c505c"
+    }
+  },
+  "solutionSHA256": "3533f4095ca50b1c036079f23985e86ee497d3ed4642c31c8f55a59f2c8836c6",
+  "solutionFigureHashes": {},
+  "candidateHash": "b61dd2dafc4f4eab52e1558f5fd66a87b82a2fa12707b23a3493d73d50fca155",
+  "candidate": {
+    "questionId": "1984_AMC_12_Q27",
+    "derivedAnswer": "C. \\(\\sqrt[3]{2}\\)",
+    "answerStatus": "matches",
+    "answerReason": "Writing x=AC, the geometric conditions give BC=x² and x·BC=2. Hence x³=2, so AC is the positive cube root of 2, agreeing with choice C.",
+    "methods": [
+      {
+        "id": "isosceles-altitude-and-similarity",
+        "label": "Use the isosceles triangle and similarity",
+        "explanation": "The equality \\(BD=DC\\) makes triangle \\(BDC\\) isosceles. Drawing its altitude to \\(BC\\) will reveal half of \\(BC\\), which we can then relate to the given segment \\(CF=1\\).\n\nLet \\(x=AC\\) and \\(y=BC\\). Since \\(D\\) lies on \\(AC\\) and \\(DC=1\\), we have \\(x>1\\): the endpoint case \\(D=A\\) would make \\(AB=AC=1\\), forcing \\(CF=1/\\sqrt2\\) by right-triangle similarity, contrary to \\(CF=1\\).\n\nDraw \\(DT\\perp BC\\), with \\(T\\) on \\(BC\\). In the isosceles triangle \\(BDC\\), this altitude bisects the base, so \\(CT=y/2\\). Triangles \\(CTD\\) and \\(CFA\\) have right angles at \\(T\\) and \\(F\\) and share the angle at \\(C\\). Similarity gives\n\\[\n\\frac{CT}{CF}=\\frac{CD}{CA},\n\\qquad \\frac y2=\\frac1x.\n\\]\nThus \\(xy=2\\).\n\nWe also have \\(\\triangle CFA\\sim\\triangle CAB\\): they share angle \\(C\\), and their right angles are at \\(F\\) and \\(A\\). Hence\n\\[\n\\frac{CF}{CA}=\\frac{CA}{CB},\n\\qquad \\frac1x=\\frac xy,\n\\]\nso \\(y=x^2\\). Combining the two relations gives\n\\[\nx^3=2.\n\\]\nIts unique positive solution is \\(x=\\sqrt[3]{2}\\). Therefore \\(AC=\\boxed{\\sqrt[3]{2}}\\), choice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "cnm_137",
+          "cnm_271",
+          "cnm_272",
+          "cnm_273",
+          "cnm_076"
+        ],
+        "prerequisiteIds": [
+          "cnm_055",
+          "cnm_112",
+          "cnm_268"
+        ],
+        "levelReason": "Uses an isosceles-triangle altitude, AA similarity, and the meaning of a cube root, all within elementary contest geometry."
+      },
+      {
+        "id": "pythagorean-elimination",
+        "label": "Eliminate shared side squares",
+        "explanation": "Several right triangles share sides, so subtracting their Pythagorean equations can remove lengths we do not need. Let \\(x=AC\\), \\(y=BC\\), and \\(b=AB>0\\). Since \\(D\\) is on \\(AC\\) and \\(DC=1\\), we have \\(x\\geq1\\) and \\(AD=x-1\\).\n\nTriangle \\(ABD\\) is right at \\(A\\), so \\(BD=1\\) gives\n\\[\nb^2+(x-1)^2=1,\n\\qquad b^2=2x-x^2.\n\\]\nThe whole triangle is also right at \\(A\\), giving\n\\[\ny^2=b^2+x^2=2x.\n\\]\nNext, triangle \\(ACF\\) is right at \\(F\\), with \\(CF=1\\). Therefore \\(AF^2=x^2-1\\). In fact \\(x>1\\), since \\(AF>0\\) in a nondegenerate triangle. Also \\(BF=y-1\\), and triangle \\(ABF\\) gives\n\\[\nb^2=AF^2+BF^2\n=x^2-1+(y-1)^2\n=x^2+y^2-2y.\n\\]\nBut the whole triangle gives \\(b^2=y^2-x^2\\). Equating these expressions cancels \\(y^2\\) and yields\n\\[\ny^2-x^2=x^2+y^2-2y,\n\\qquad y=x^2.\n\\]\nSubstitute into \\(y^2=2x\\):\n\\[\nx^4=2x.\n\\]\nBecause \\(x>1\\), division by \\(x\\) is valid, leaving \\(x^3=2\\). Thus \\(AC=\\boxed{\\sqrt[3]{2}}\\), choice \\(\\mathrm{C}\\). This value lies between \\(1\\) and \\(2\\), so \\(AD=x-1>0\\), \\(AF^2=x^2-1>0\\), and \\(AB^2=x(2-x)>0\\); the resulting lengths are nondegenerate.",
+        "nodeIds": [
+          "cnm_174",
+          "cnm_055",
+          "cnm_076"
+        ],
+        "prerequisiteIds": [
+          "cnm_112",
+          "cnm_148",
+          "cnm_040",
+          "cnm_142"
+        ],
+        "levelReason": "Uses only Pythagorean identities, expansion and cancellation, positivity of lengths, and a cube root."
+      }
+    ],
+    "assessedIds": [
+      "cnm_076"
+    ],
+    "supportIds": [
+      "cnm_055",
+      "cnm_112"
+    ],
+    "annotationRationale": "The common final numerical target is identifying the length from x³=2, represented by cnm_076. The substantial geometric work is recorded within each route: isosceles altitude properties and similarity in the first, and Pythagorean equations with segment differences in the second. Segment arithmetic and altitude meaning support both. The terminal cube-root annotation does not imply that cube-root knowledge alone solves the problem, nor that either geometric route is required of every learner. No assignment establishes mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1984_AMC_12_Q27",
+    "decision": "accept",
+    "mathematicalCheck": "With x=AC and y=BC, the isosceles altitude and the two stated similarities correctly yield xy=2 and y=x², so x³=2. Independently, the Pythagorean equations give y²=2x and y=x², again forcing x³=2 after valid division by x>1. The unique positive answer lies between 1 and 2 and gives nondegenerate lengths consistent with the given segment placements. The actual figure supports the incidences used.",
+    "levelCheck": "Both methods are complete and use appropriate elementary geometry and algebra. The auxiliary altitude and the shared-square elimination are clearly motivated.",
+    "methodDistinctness": "The isosceles construction with similarity and the Pythagorean elimination are genuinely distinct and require no advanced machinery.",
+    "annotationCheck": "The cube-root assessment is route neutral, with the substantial geometric reasoning represented in the separate routes. Shared segment arithmetic and altitude support, and the listed method concepts and prerequisites, fit the supplied catalog scopes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "isosceles-altitude-and-similarity": "isosceles-altitude-and-similarity",
+    "pythagorean-elimination": "solution:pythagorean-elimination:3533f4095ca5"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "1a21af073d25d7352c109e877574d693f720e0a7aaa74fefac2f9eb67d4bac69",
+    "acceptedAt": "2026-11-08T00:17:26.635343+00:00",
+    "inputHash": "d9a146c0e1d618cafe87dfb35f059ece0bc1db80c5b89f415e2b9e3ea65a0726",
+    "authorInputHash": "0847627eaf1dd87a394deed2c879b229810b3ca5d25e3c2d2dedf1e9ddb292bd",
+    "reviewInputHash": "9e9b33d06cdb246c649b43cabfe88850c5e62aa434771a088ccbfd3f5f6706fd",
+    "authorResponseHash": "4efee3c6d3ef543f2f130c607ecd548e829f8a9bc67cb19f07d74c24bc3162f7",
+    "reviewerResponseHash": "02b6f7bedfbff83265ff7b23b042ea5cda702c96a08d279102ca9509124c3290",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

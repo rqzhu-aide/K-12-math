@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2011_AMC_10B_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "bcff8aa7e8877dab5b46012284ef236438d70d38d065676a8ae329c9a91c525b",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "c2b9e8adc73637654c6bb80049b243a04f96741c13fad34c99919bbfcce4e0c7",
+  "solutionFigureHashes": {},
+  "candidateHash": "b2713b4d17278811ff7cdb673415cd5ff99e071f288b7525e55fecff8e5412b6",
+  "candidate": {
+    "questionId": "2011_AMC_10B_Q23",
+    "derivedAnswer": "D, 6",
+    "answerStatus": "matches",
+    "answerReason": "The last three digits of the power are 611, so its hundreds digit is 6.",
+    "methods": [
+      {
+        "id": "binomial-truncation",
+        "label": "Keep the terms that affect the last three digits",
+        "explanation": "The hundreds digit is determined by the last three digits. Replacing a factor by an integer differing by a multiple of \\(1000\\) does not change the last three digits of a product. Thus we may replace the base \\(2011\\) by \\(11=1+10\\).\n\nConsider multiplying \\(2011\\) factors of \\(1+10\\). In the expansion, any term choosing \\(10\\) from at least three factors is divisible by \\(1000\\), so it cannot affect the last three digits. We need only the terms choosing zero, one, or two tens.\n\nThere is one way to choose no tens and \\(2011\\) ways to choose one ten. There are \\(2011\\cdot2010/2\\) ways to choose two tens: choosing the two factors in order counts each pair twice. Every expanded term belongs to exactly one of these cases or to the discarded case of at least three tens. Therefore, for some integer \\(K\\),\n\\[\n11^{2011}=1+2011\\cdot10+\\frac{2011\\cdot2010}{2}\\cdot100+1000K.\n\\]\nThe three retained contributions add to\n\\[\n1+20{,}110+202{,}105{,}500=202{,}125{,}611.\n\\]\nConsequently, \\(2011^{2011}\\) ends in \\(611\\). Its hundreds digit is \\(\\boxed{6}\\), choice D.",
+        "nodeIds": [
+          "cnm_h240"
+        ],
+        "prerequisiteIds": [
+          "math:modular-congruence",
+          "cnm_h237",
+          "cnm_p053"
+        ],
+        "levelReason": "The needed expansion terms are derived using the distributive law and elementary pair counting, both within AMC 10 scope."
+      },
+      {
+        "id": "residue-power-cycle",
+        "label": "Find a repeating block of powers",
+        "explanation": "We need only the remainder after division by \\(1000\\), because it gives the last three digits. Write \\(u\\equiv v\\pmod{1000}\\) when \\(u-v\\) is divisible by \\(1000\\). Such replacements preserve remainders in products, so\n\\[\n2011^{2011}\\equiv11^{2011}\\pmod{1000}.\n\\]\nTo shorten the exponent, look for a power of \\(11\\) whose remainder is \\(1\\). First,\n\\[\n11^5=161{,}051\\equiv51\\pmod{1000}.\n\\]\nSuccessive squaring gives\n\\[\n\\begin{aligned}\n11^{10}&\\equiv51^2\\equiv601,\\\\\n11^{20}&\\equiv601^2\\equiv201,\\\\\n11^{40}&\\equiv201^2\\equiv401\n\\end{aligned}\n\\qquad\\pmod{1000}.\n\\]\nHence\n\\[\n11^{50}\\equiv401\\cdot601=241{,}001\\equiv1\\pmod{1000}.\n\\]\nMultiplying by \\(11^{50}\\) therefore leaves the remainder unchanged. Since \\(2011=40\\cdot50+11\\),\n\\[\n\\begin{aligned}\n11^{2011}&=(11^{50})^{40}11^{11}\\\\\n&\\equiv601\\cdot11\\equiv611\\pmod{1000}.\n\\end{aligned}\n\\]\nThe last three digits are \\(611\\), so the hundreds digit is \\(\\boxed{6}\\), choice D.",
+        "nodeIds": [
+          "math:modular-powers"
+        ],
+        "prerequisiteIds": [
+          "math:modular-congruence",
+          "cnm_142",
+          "cnm_143",
+          "cnm_p053"
+        ],
+        "levelReason": "This method uses integer arithmetic, ordinary exponent laws, and a directly verified power cycle. No exponent theorem is needed."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "math:modular-congruence",
+      "cnm_p053"
+    ],
+    "annotationRationale": "The displayed target is a specified decimal digit of a large integer power. The supplied modular-powers node specifically requires repeated squaring, a power cycle, or an exponent theorem, so it belongs only to Method 2. Binomial expansion belongs only to Method 1. Neither is a route-neutral requirement, so assessedIds is left empty. Remainder arithmetic and decimal place value support both written methods. The combination formula supports Method 1 locally, while the exponent laws support Method 2 locally.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2011_AMC_10B_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "Terms containing at least three tens are divisible by 1000. The retained terms sum to 202125611. Independently, the verified residues establish 11^50 congruent to 1 and 11^2011 congruent to 611 modulo 1000. Both methods correctly give hundreds digit 6, choice D.",
+    "levelCheck": "Both methods fit AMC 10. Pair counting explains the expansion coefficients, and the second method explains remainder arithmetic and verifies its power cycle directly. The decisive steps are complete and readable.",
+    "methodDistinctness": "Truncating an expansion and reducing an exponent through repeated squaring provide distinct, accessible ideas.",
+    "annotationCheck": "Binomial expansion and modular powers are appropriately method-local. Shared remainder arithmetic and decimal place value are justified, as are the local combination and exponent-law prerequisites. Empty assessedIds avoids imposing either optional route.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "binomial-truncation": "solution:binomial-truncation:c2b9e8adc736",
+    "residue-power-cycle": "solution:residue-power-cycle:c2b9e8adc736"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "69971ed0dbc8c993fb3e5deffcf26e349a42bf5e78ea09e18ecb6a9d3971f25a",
+    "inputHash": "c6f4ba20565a10c27d1708f9696b09b100f50450e74fabebd8338d073d3209c7",
+    "authorInputHash": "d35f35700f1d321733cea6a25c5bc182d9e846b5cfb5b9fcf9c22e6c835e16b5",
+    "reviewInputHash": "2495b6d5a1dbc341cc5a69a9a71466c4147ebaa559d1d059fb8edc56ed7ac152",
+    "authorResponseHash": "ca4faa84b0afd6ffcb21b06a3c314c5452cdb745a082da4e0067c5e52c70cce1",
+    "reviewerResponseHash": "9ea5abdb07a3a399bcc9ee72b49585aa354a3f6894f6175916d9bc225e3cb553",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

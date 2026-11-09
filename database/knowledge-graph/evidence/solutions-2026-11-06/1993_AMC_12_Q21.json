@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1993_AMC_12_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "b63377b1804ebb3c265bb64f5ac7f90bcbc1529d02f85dd6c08694ac45f2c9a5",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "d101d6030036e6f5860cd06584c5ed2857f8e3dca6d462d36cf47eb6b7b29ae8",
+  "solutionFigureHashes": {},
+  "candidateHash": "1220f8d39757dda245bf6b59a5510a8938f1020417d30aed4b351b0ed9475119",
+  "candidate": {
+    "questionId": "1993_AMC_12_Q21",
+    "derivedAnswer": "18 (B)",
+    "answerStatus": "matches",
+    "answerReason": "The conditions determine common difference 2/3 and general term a_n=(2n+3)/3. Consequently a_k=13 exactly when k=18.",
+    "methods": [
+      {
+        "id": "midpoint-term-symmetry",
+        "label": "Method 1: Pair terms around the middle",
+        "explanation": "In an arithmetic sequence, terms equally far from a middle term sum to twice that middle term: the same multiple of the common difference is added on one side and subtracted on the other.\n\nThe indices 4 and 10 are equally far from 7, so \\(a_4+a_{10}=2a_7\\). Hence\n\\[\n3a_7=17,\n\\qquad a_7=\\frac{17}{3}.\n\\]\nThere are \\(14-4+1=11\\) terms in the second sum, with middle term \\(a_9\\). Pairing \\(a_4\\) with \\(a_{14}\\), \\(a_5\\) with \\(a_{13}\\), and so on gives five pairs, each summing to \\(2a_9\\), together with \\(a_9\\). Thus\n\\[\n11a_9=77,\n\\qquad a_9=7.\n\\]\nLet \\(d\\) be the common difference. Moving from index 7 to index 9 takes two steps, so\n\\[\n2d=a_9-a_7\n=7-\\frac{17}{3}=\\frac43,\n\\qquad d=\\frac23.\n\\]\nStarting from \\(a_9=7\\), the condition \\(a_k=13\\) becomes\n\\[\n13=7+(k-9)\\frac23.\n\\]\nTherefore \\(k-9=9\\), giving \\(\\boxed{k=18}\\), choice \\(\\boxed{\\text{B}}\\). This index is compatible with the given terms through \\(a_{14}\\).",
+        "nodeIds": [
+          "cnm_h203",
+          "cnm_h202",
+          "cnm_h204",
+          "cnm_042"
+        ],
+        "prerequisiteIds": [
+          "cnm_h201",
+          "cnm_h199",
+          "cnm_040"
+        ],
+        "levelReason": "Pairing equally spaced terms uses the definition of an arithmetic sequence and leaves a simple linear equation."
+      },
+      {
+        "id": "general-term-linear-system",
+        "label": "Method 2: Solve for the first term and common difference",
+        "explanation": "Let \\(a=a_1\\) and let \\(d\\) be the common difference. Expressing every term as \\(a_n=a+(n-1)d\\) converts the two given sums into two equations for these parameters.\n\nThe first condition gives\n\\[\n(a+3d)+(a+6d)+(a+9d)=17,\n\\]\nso \\(3a+18d=17\\). The second sum has 11 terms, with first term \\(a+3d\\) and last term \\(a+13d\\). Using the arithmetic-sequence sum formula gives\n\\[\n\\frac{11}{2}\\bigl((a+3d)+(a+13d)\\bigr)=77,\n\\]\nso \\(11a+88d=77\\).\n\nDividing the equations by 3 and 11, respectively, yields\n\\[\na+6d=\\frac{17}{3},\n\\qquad a+8d=7.\n\\]\nSubtracting eliminates \\(a\\), giving \\(2d=\\tfrac43\\), so \\(d=\\tfrac23\\). Substitution then gives \\(a=\\tfrac53\\). Therefore\n\\[\na_k=\\frac53+(k-1)\\frac23\n=\\frac{2k+3}{3}.\n\\]\nSetting this equal to 13 gives \\(2k+3=39\\), hence \\(\\boxed{k=18}\\), choice \\(\\boxed{\\text{B}}\\). The resulting index is at least 14, as the displayed conditions require.",
+        "nodeIds": [
+          "cnm_h202",
+          "cnm_h204",
+          "cnm_090",
+          "cnm_042"
+        ],
+        "prerequisiteIds": [
+          "cnm_h201",
+          "cnm_h199",
+          "cnm_040",
+          "cnm_088"
+        ],
+        "levelReason": "This route uses the standard term and sum formulas for arithmetic sequences and elimination in two linear equations."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h202",
+      "cnm_h204"
+    ],
+    "supportIds": [
+      "cnm_h201",
+      "cnm_h199",
+      "cnm_040"
+    ],
+    "annotationRationale": "The task combines arithmetic-sequence sums with recovery of an index from a term value. Both methods use common differences, indexed terms, and equality transformations. Midpoint symmetry is local to the first route; solving a two-variable linear system is local to the second.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1993_AMC_12_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "Both methods obtain \\(a_7=17/3\\), \\(a_9=7\\), and \\(d=2/3\\). Consequently \\(a_k=13\\) uniquely gives \\(k=18\\), consistent with the required terms through index 14.",
+    "levelCheck": "Both routes use standard arithmetic-sequence reasoning and elementary equations.",
+    "methodDistinctness": "Symmetric pairing and direct parameter elimination offer useful, distinct approaches at the same level.",
+    "annotationCheck": "Term and sum targets fit both routes. Midpoint symmetry and system elimination remain local, while the shared support is justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "midpoint-term-symmetry": "solution:midpoint-term-symmetry:d101d6030036",
+    "general-term-linear-system": "solution:general-term-linear-system:d101d6030036"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "d1a8d0933dd9e790f17a1a48aa4e4efd373763daf031e7e6be8a4cbbd6b4caf9",
+    "inputHash": "732a1fbda2f78d84b968826e7449b006dccc4070ab6dedae13891b2703ca8d57",
+    "authorInputHash": "bbf5b106a67ac847ff439b6f64163a855ab4d73e367685a0b8a929da6e403716",
+    "reviewInputHash": "1d605c00523f41511800a94a7558c0bb3ceb160e9dafcd2732bc396e3a779403",
+    "authorResponseHash": "ad3b3ee8edbef32b86ce622b859f4239726b9edd815a6f33f7357e68ee90866a",
+    "reviewerResponseHash": "cf693bab81ed73493358dfeb1914d5112500074531903caa7fbd0543c59f4d81",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

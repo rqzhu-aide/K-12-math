@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2005_AMC_10A_Q10",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "21507440667db91663467e0d7a824488e649c95c68458a4ce4573ffe84cae968",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "8eabbf55b6ca597ac2b9a0cbeaa477f9482ddfd216c6e74ce28cdfb52b334259",
+  "solutionFigureHashes": {},
+  "candidateHash": "9e3834d4f1f4b0c28a1253ef48f6b7f4c375fe47a8b7feff470f55834f769f5b",
+  "candidate": {
+    "questionId": "2005_AMC_10A_Q10",
+    "derivedAnswer": "-16, choice A",
+    "answerStatus": "matches",
+    "answerReason": "Exactly one real solution requires (a + 8)^2 - 144 = 0. This gives a = 4 or a = -20, whose sum is -16.",
+    "methods": [
+      {
+        "id": "zero-discriminant",
+        "label": "Use the discriminant to count roots",
+        "explanation": "Combine the linear terms to write the equation as\n\\[\n4x^2+(a+8)x+9=0.\n\\]\nThe leading coefficient is always \\(4\\), so this remains a quadratic for every value of \\(a\\). Its discriminant is\n\\[\n\\Delta=(a+8)^2-4\\cdot4\\cdot9=(a+8)^2-144.\n\\]\nA quadratic has two distinct real solutions when \\(\\Delta>0\\), none when \\(\\Delta<0\\), and exactly one when \\(\\Delta=0\\). We therefore need\n\\[\n(a+8)^2=144,\n\\]\nwhich gives \\(a+8=12\\) or \\(a+8=-12\\). Thus \\(a=4\\) or \\(a=-20\\). Both values give zero discriminant, so both qualify. Their sum is \\(4+(-20)=\\boxed{-16}\\), choice A.",
+        "nodeIds": [
+          "cnm_223",
+          "cnm_220"
+        ],
+        "prerequisiteIds": [
+          "cnm_219",
+          "cnm_034",
+          "cnm_075",
+          "cnm_040"
+        ],
+        "levelReason": "The discriminant and a square equation are standard school algebra within AMC 10 scope."
+      },
+      {
+        "id": "complete-square",
+        "label": "Expose the number of solutions with a square",
+        "explanation": "Combine the linear terms, then complete a square so that the number of possible values of \\(x\\) becomes visible. Multiplying the equation by \\(16\\) gives\n\\[\n64x^2+16(a+8)x+144=0.\n\\]\nAdding \\((a+8)^2\\) to the appropriate sides produces the equivalent equation\n\\[\n(8x+a+8)^2=(a+8)^2-144.\n\\]\nSince the coefficient of \\(x\\) inside the square is \\(8\\ne0\\), a positive right-hand side gives two distinct real solutions, a negative right-hand side gives none, and zero gives exactly one. Consequently,\n\\[\n(a+8)^2-144=0.\n\\]\nThe two possibilities are \\(a+8=12\\) and \\(a+8=-12\\), giving \\(a=4\\) and \\(a=-20\\). Each makes the squared expression equal zero and hence gives exactly one \\(x\\). Their sum is \\(\\boxed{-16}\\), choice A.",
+        "nodeIds": [
+          "math:completing-square-expression",
+          "cnm_220"
+        ],
+        "prerequisiteIds": [
+          "cnm_148",
+          "cnm_034",
+          "cnm_075",
+          "cnm_040"
+        ],
+        "levelReason": "The perfect-square identity and the real solutions of a square equation give an equally elementary alternative."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_034",
+      "cnm_075",
+      "cnm_040"
+    ],
+    "annotationRationale": "The route-neutral target is determining all parameter values that produce exactly one real quadratic solution. The catalog supplies technique-specific nodes rather than this independent target, so a missing target is proposed. The first method uses the discriminant; the second uses an identity-preserving square completion and direct square-root reasoning. Combining terms, square-root calculation, and equality properties support both routes. The method-specific discriminant and perfect-square knowledge are kept local.",
+    "needsNewNodes": [
+      {
+        "name": "Parameters producing a prescribed number of real quadratic solutions",
+        "description": "Determine all real coefficient parameters for which a quadratic equation has a specified number of distinct real solutions. Justify the root count by an appropriate elementary method and check whether the leading coefficient can vanish.",
+        "reason": "The catalog has discriminant and completing-square nodes, but lacks a route-neutral target for imposing a prescribed real-solution count on a parameterized quadratic."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2005_AMC_10A_Q10",
+    "decision": "accept",
+    "mathematicalCheck": "The leading coefficient remains 4. Exactly one real root requires (a + 8)² - 144 = 0, giving a = 4 or -20 and sum -16. Independently, expanding the completed-square equation verifies its equivalence, and its zero right-hand side gives exactly one x.",
+    "levelCheck": "Both methods use standard AMC 10 algebra and explain the decisive root-count condition.",
+    "methodDistinctness": "The discriminant criterion and the independently derived square equation offer distinct accessible approaches. The second explains the root count directly.",
+    "annotationCheck": "Method-specific nodes and prerequisites match both arguments, and shared support is appropriate. The proposed missing parameter/root-count target is honest; no unrelated existing ID is forced into assessedIds.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "zero-discriminant": "solution:zero-discriminant:8eabbf55b6ca",
+    "complete-square": "complete-square"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "36a21ee92d629acae7ff6c4b305043cbe36726f233441e6bd1b99327dcbea799",
+    "inputHash": "14df8241e1edc779ca764fd7cd9c240e4655b7b194c7ae0baae0d2c40e090e45",
+    "authorInputHash": "d95a1765648978ba462bb31074d5f1e5cd5560b89f289386f349c43acb52d912",
+    "reviewInputHash": "c3cff8548f303616be7842bad98bdf92ca2af547ad9112e5d976464acfea3321",
+    "authorResponseHash": "c3e184974588d332009290848548830d08c2f6953009cf4ce2eef19e10b53795",
+    "reviewerResponseHash": "8e2f4e550c924ab4633a20a47a110486363b5d47224653f306de7cff0ca12391",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

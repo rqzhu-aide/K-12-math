@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1961_AMC_12_Q40",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "4ff6299f232ae62481ae7ffc79462662a2abf5f42c7201f53996482b788fa245",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "251554a2e1131414d6debcae8eb7300c922f5cb25dbefefe245c3f5da38150f0",
+  "solutionFigureHashes": {},
+  "candidateHash": "193e4c51075ae41c8ce2afdce64886ac87705277cc937c7ffa2648852da092fd",
+  "candidate": {
+    "questionId": "1961_AMC_12_Q40",
+    "derivedAnswer": "\\(\\dfrac{60}{13}\\), choice A",
+    "answerStatus": "matches",
+    "answerReason": "Every admissible pair satisfies \\(x^2+y^2\\ge 3600/169\\), with equality at \\((300/169,720/169)\\). Thus the attained minimum is \\(60/13\\), agreeing with choice A.",
+    "methods": [
+      {
+        "id": "intercepts-and-altitude",
+        "label": "Use the altitude of a right triangle",
+        "explanation": "For real \\(x,y\\), the quantity \\(\\sqrt{x^2+y^2}\\) is the distance from the origin \\(O\\) to the point \\(X=(x,y)\\). The condition places \\(X\\) on the line \\(5x+12y=60\\), so we seek the shortest distance from \\(O\\) to that line.\n\nSetting each coordinate equal to zero gives the intercepts \\(P=(12,0)\\) and \\(Q=(0,5)\\). Triangle \\(OPQ\\) is right at \\(O\\), so the Pythagorean theorem gives\n\\[\nPQ=\\sqrt{12^2+5^2}=13.\n\\]\nLet \\(H\\) be the foot of the perpendicular from \\(O\\) to the line. For any point \\(X\\ne H\\) on the line, triangle \\(OHX\\) is right at \\(H\\), giving\n\\[\nOX^2=OH^2+HX^2\\ge OH^2.\n\\]\nAt \\(X=H\\), equality holds. Thus \\(OH\\) is the required minimum distance.\n\nWe can find this altitude by calculating the area of triangle \\(OPQ\\) with two different bases:\n\\[\n\\frac12\\cdot12\\cdot5\n=\\frac12\\cdot13\\cdot OH.\n\\]\nTherefore \\(OH=60/13\\). Since \\(H\\) lies on the required line, the minimum is attained and equals \\(\\boxed{60/13}\\), choice A.",
+        "nodeIds": [
+          "cnm_065",
+          "cnm_h173",
+          "cnm_174",
+          "cnm_p148"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_h171",
+          "cnm_075"
+        ],
+        "levelReason": "Uses coordinate intercepts, the Pythagorean theorem, and the elementary triangle area formula."
+      },
+      {
+        "id": "nonnegative-square-identity",
+        "label": "Create a nonnegative square",
+        "explanation": "The constraint fixes \\(5x+12y\\). To connect its square to \\(x^2+y^2\\), expand two squares whose mixed terms cancel:\n\\[\n(5x+12y)^2+(12x-5y)^2\n=169(x^2+y^2).\n\\]\nFor every real pair satisfying the constraint, this identity gives\n\\[\n169(x^2+y^2)\n=3600+(12x-5y)^2\\ge3600.\n\\]\nTaking nonnegative square roots yields\n\\[\n\\sqrt{x^2+y^2}\\ge\\frac{60}{13}.\n\\]\nTo show that this bound is attained, choose \\(x=5t\\) and \\(y=12t\\), which makes \\(12x-5y=0\\). The original constraint becomes\n\\[\n25t+144t=60,\n\\qquad t=\\frac{60}{169}.\n\\]\nThus the admissible pair\n\\[\n(x,y)=\\left(\\frac{300}{169},\\frac{720}{169}\\right)\n\\]\nmakes the extra square zero. Therefore the minimum is \\(\\boxed{60/13}\\), choice A.",
+        "nodeIds": [
+          "cnm_148",
+          "cnm_096"
+        ],
+        "prerequisiteIds": [
+          "cnm_042",
+          "cnm_075"
+        ],
+        "levelReason": "Uses square expansion, nonnegativity of real squares, and a simple linear equation."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_075"
+    ],
+    "annotationRationale": "The task asks for an attained minimum under a real linear constraint. A precise route-neutral target is proposed below because the supplied catalog lacks one covering both methods. Perpendicular-shortest distance belongs to the geometric route, together with coordinate distance, Pythagoras, and triangle area. The algebraic route uses perfect-square expansion and inequality properties. Finding square roots supports both routes. These assignments describe the mathematics involved and do not establish learner mastery.",
+    "needsNewNodes": [
+      {
+        "name": "Minimum Euclidean magnitude under a linear constraint",
+        "description": "For real pairs satisfying \\(ax+by=c\\), where \\(a,b\\) are not both zero, find the minimum of \\(\\sqrt{x^2+y^2}\\). Establish a bound for every admissible pair and exhibit an admissible pair attaining it, using any valid elementary method.",
+        "reason": "The catalog contains geometric distance targets and method-specific quadratic or inequality procedures, but no route-neutral target for this continuous constrained minimum. The discrete extremal-principle node does not cover its real domain."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1961_AMC_12_Q40",
+    "decision": "accept",
+    "mathematicalCheck": "The intercept triangle has legs 12 and 5, hypotenuse 13, and altitude 60/13. Pythagoras establishes that this altitude is the attained shortest distance to the entire line. Independently, the stated square identity gives x²+y² ≥ 3600/169, with equality at the admissible pair (300/169, 720/169). Both proofs are complete.",
+    "levelCheck": "Both explanations use accessible elementary geometry or algebra appropriate to AMC 12 and justify the minimum's attainment.",
+    "methodDistinctness": "The altitude and area argument and the algebraic square identity provide genuinely distinct, useful approaches without advanced prerequisites.",
+    "annotationCheck": "The method-local nodes and prerequisites fit their catalog scopes, and cnm_075 supports both routes. The proposed route-neutral target honestly fills a catalog gap; leaving assessedIds empty pending that proposal is justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "intercepts-and-altitude": "intercepts-and-altitude",
+    "nonnegative-square-identity": "nonnegative-square-identity"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "37be517f39045a6f7fd43bbb00de1ca78b50a84ef4b47ca78b21e857ba584eb0",
+    "inputHash": "7131d9d611d75dfeead43c2e088ade56d6525db57633fe98fc7562288008419e",
+    "authorInputHash": "f4fe301a477c77e2cf83b7e95f16dfcb098304e3b67f6bcacaf86afd73361bb0",
+    "reviewInputHash": "a83d67d01da33a999a2751e78dd005ae1eac9266c156e132a606cc866d5ee41e",
+    "authorResponseHash": "7b924648dbef071325ac86f78bbc3ff825d94c87b2542f292467b397c5325e88",
+    "reviewerResponseHash": "2ca2d8609266dd81c9c25e049db5f118c02652213256b01921b6d320f747b91b",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

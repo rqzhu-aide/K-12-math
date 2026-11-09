@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2000_AMC_10_Q12",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "54004cca102a5fc071792d5148e6bf2aad37923ce4b6587bf150e438d74b2b05",
+    "figureHashes": {
+      "figures/2000_AMC_10_Q12_question_fig1.svg": "3715e04f1b2e80afbe91b7d3655604a3493dda1ecafb74d1f3eefc8493586338"
+    }
+  },
+  "solutionSHA256": "88fd2ee76424e6c7eadbfee8eef1d8cc950a21302e8a926fe667da1687d39a09",
+  "solutionFigureHashes": {},
+  "candidateHash": "6c8f6af8163063dde2693521de76bbf3a926be831005c3b1810c81a8ec220027",
+  "candidate": {
+    "questionId": "2000_AMC_10_Q12",
+    "derivedAnswer": "C (20201)",
+    "answerStatus": "matches",
+    "answerReason": "The displayed pattern adds 4k squares at step k. Figure 100 therefore contains 1 + 4(1 + 2 + ⋯ + 100) = 20201 squares.",
+    "methods": [
+      {
+        "id": "count-new-layers",
+        "label": "Count the squares added at each step",
+        "explanation": "The figures grow by adding an outer layer. Counting each new layer is easier than counting all the squares in figure \\(100\\) at once.\n\nIn figure \\(k-1\\), there are \\(2k-1\\) horizontal rows. To obtain figure \\(k\\), the displayed pattern adds one square at each end of every existing row, together with one new square above and one below. Thus step \\(k\\) adds\n\\[\n2(2k-1)+2=4k\n\\]\nsquares. These are all the new squares, and squares added at different steps are distinct.\n\nStarting with the single square in figure \\(0\\), figure \\(n\\) therefore contains\n\\[\n1+4(1+2+\\cdots+n)\n\\]\nsquares. To evaluate the sum, write it once in increasing order and once in decreasing order. Each of the \\(n\\) corresponding pairs sums to \\(n+1\\), giving\n\\[\n1+2+\\cdots+n=\\frac{n(n+1)}2.\n\\]\nHence the number of squares in figure \\(100\\) is\n\\[\n1+4\\cdot\\frac{100\\cdot101}{2}\n=1+20200\n=\\boxed{20201}.\n\\]\nThe answer is choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_030",
+          "cnm_h204"
+        ],
+        "prerequisiteIds": [
+          "cnm_027",
+          "cnm_029"
+        ],
+        "levelReason": "The visual growth rule is justified by counting row endpoints. The consecutive-integer sum is derived by elementary pairing, without requiring formal sequence theory."
+      }
+    ],
+    "assessedIds": [
+      "cnm_030"
+    ],
+    "supportIds": [
+      "cnm_027",
+      "cnm_029"
+    ],
+    "annotationRationale": "The task assesses extracting and evaluating a general rule from a geometric pattern, matching cnm_030. The method justifies the increment 4k from the actual row structure and uses the arithmetic-sum procedure cnm_h204, deriving it by pairing. Writing and evaluating expressions are supporting prerequisites. The disjoint added layers account for every square exactly once.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2000_AMC_10_Q12",
+    "decision": "accept",
+    "mathematicalCheck": "The actual figures show the claimed row-extension pattern. Figure k−1 has 2k−1 rows; extending both ends and adding the top and bottom squares contributes 4k distinct squares. Consequently figure 100 contains 1+4(100·101/2)=20201 squares. The pairing argument correctly derives the sum.",
+    "levelCheck": "Accessible AMC 10 counting and arithmetic. The geometric increment and absence of double counting are explained, and the summation formula is derived elementarily.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "cnm_030 accurately captures extracting and evaluating the pattern. cnm_h204 matches the method's sum calculation, while cnm_027 and cnm_029 appropriately support writing and evaluating expressions.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-new-layers": "count-new-layers"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "4df10135561e0b80c1d453069497c2c9378fd21bea26735c54190c2781819d0b",
+    "acceptedAt": "2026-11-08T15:00:13.445197+00:00",
+    "inputHash": "77bba092e4221fa341e876ce215b8250261dc12804547f49f2063d0d29caf301",
+    "authorInputHash": "f1e31c72f9f170fc63ea3c3f801fa79480a1e8a1853aca36f5c12661387ba534",
+    "reviewInputHash": "d09c3b7b3b1a302a7800f5eb75fad656c0d3f26e55cb6ebda111221bfac87319",
+    "authorResponseHash": "a752e2c5c4f9bd359b7c05016f6381e8527a6be278cb40a522f78c064447fffb",
+    "reviewerResponseHash": "20cb33f4fe7c86f19d6f1fae50f0387a4a27befdaec8c001c1111740041f7a10",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

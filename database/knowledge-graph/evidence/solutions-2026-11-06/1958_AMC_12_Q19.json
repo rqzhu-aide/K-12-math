@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1958_AMC_12_Q19",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "afd6af091433add1e00e8d04fc3b47b6cde5ffa01cc4bda3cf042d4dc02f019d",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "047ab03dcbd2bc3fda54f611d5730f3cc45a3d47768f139e2cdadbfb78679c44",
+  "solutionFigureHashes": {},
+  "candidateHash": "dfa151b840d8c669dc4c11a8ef35e5ebf5e9d51e1016475c25537e26fed8ab92",
+  "candidate": {
+    "questionId": "1958_AMC_12_Q19",
+    "derivedAnswer": "\\(r:s=1:9\\), choice B.",
+    "answerStatus": "matches",
+    "answerReason": "The hypotenuse segments satisfy \\(r/s=a^2/b^2\\), so the given leg ratio \\(1:3\\) produces \\(1:9\\).",
+    "methods": [
+      {
+        "id": "similar-triangle-projections",
+        "label": "Method 1: Similar right triangles",
+        "explanation": "The altitude creates smaller right triangles that share acute angles with the original triangle, so similarity can connect each hypotenuse segment to its adjacent leg.\n\nLet \\(ABC\\) have right angle at \\(C\\), with \\(AC=a\\), \\(BC=b\\), and \\(AB=c\\). Let \\(D\\) be the foot of the perpendicular from \\(C\\), so \\(AD=r\\) and \\(DB=s\\).\n\nTriangles \\(ADC\\) and \\(ACB\\) are similar because they have a right angle and the same angle at \\(A\\). Likewise, triangles \\(BDC\\) and \\(BCA\\) are similar. Corresponding sides therefore give\n\\[\n\\frac{r}{a}=\\frac{a}{c},\n\\qquad\n\\frac{s}{b}=\\frac{b}{c}.\n\\]\nThus \\(r=a^2/c\\) and \\(s=b^2/c\\). All these lengths are positive, so\n\\[\n\\frac{r}{s}=\\frac{a^2}{b^2}\n=\\left(\\frac{1}{3}\\right)^2\n=\\frac{1}{9}.\n\\]\nTherefore \\(r:s=1:9\\), choice B.",
+        "nodeIds": [
+          "cnm_268",
+          "cnm_273",
+          "cnm_271",
+          "cnm_272"
+        ],
+        "prerequisiteIds": [
+          "cnm_p185",
+          "cnm_064"
+        ],
+        "levelReason": "Uses angle-angle similarity and proportional sides, with no trigonometry."
+      },
+      {
+        "id": "subtract-pythagorean-equations",
+        "label": "Method 2: Eliminate the shared altitude",
+        "explanation": "Both smaller right triangles contain the same altitude. Subtracting their Pythagorean equations removes that unknown length.\n\nLet \\(h\\) be the altitude to the hypotenuse. Its foot divides the hypotenuse into the positive lengths \\(r\\) and \\(s\\), adjacent to \\(a\\) and \\(b\\), respectively. Hence \\(c=r+s>0\\), and\n\\[\na^2=r^2+h^2,\n\\qquad b^2=s^2+h^2.\n\\]\nSubtracting gives\n\\[\nb^2-a^2=s^2-r^2=(s-r)(s+r)=c(s-r).\n\\]\nSince \\(b=3a\\), the left side is \\(8a^2\\). The original right triangle also gives\n\\[\nc^2=a^2+b^2=10a^2.\n\\]\nConsequently,\n\\[\nc(s-r)=\\frac45c^2.\n\\]\nDividing by \\(c>0\\) and using \\(c=r+s\\), we obtain\n\\[\n5(s-r)=4(r+s),\n\\qquad s=9r.\n\\]\nTherefore \\(r:s=1:9\\), choice B.",
+        "nodeIds": [
+          "cnm_268",
+          "cnm_174",
+          "cnm_147",
+          "cnm_042"
+        ],
+        "prerequisiteIds": [
+          "cnm_p185",
+          "cnm_064",
+          "cnm_040"
+        ],
+        "levelReason": "Uses only the Pythagorean theorem, difference of squares, and a linear equation, providing an elementary route without similarity."
+      }
+    ],
+    "assessedIds": [
+      "cnm_268"
+    ],
+    "supportIds": [
+      "cnm_p185",
+      "cnm_064"
+    ],
+    "annotationRationale": "The shared task target is determining a ratio of geometric segments, represented by cnm_268. Similarity and the projection model belong to the first route; the Pythagorean theorem and subtraction belong to the second. Ratio meaning and perpendicularity support both routes, so similarity is not imposed as a universal requirement.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1958_AMC_12_Q19",
+    "decision": "accept",
+    "mathematicalCheck": "The stated similarity correspondences give \\(a^2=cr\\) and \\(b^2=cs\\), so \\(r/s=1/9\\). Independently, the Pythagorean equations give \\(c(s-r)=4c^2/5\\); using \\(c=r+s>0\\) yields \\(s=9r\\).",
+    "levelCheck": "Both routes use elementary geometry and school algebra.",
+    "methodDistinctness": "Similarity and subtraction of Pythagorean equations provide genuinely distinct, accessible approaches.",
+    "annotationCheck": "cnm_268 fits the proportional segment calculations. Ratio meaning and perpendicularity support both methods; similarity and Pythagorean knowledge remain assigned to their respective routes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "similar-triangle-projections": "similar-triangle-projections",
+    "subtract-pythagorean-equations": "subtract-pythagorean-equations"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "2b87da4c74e73eb197743883c7a47c6f2c566e1bdd9ac212c475e1751ea323fd",
+    "inputHash": "5d200bf19c4e635f78b47c9a6780fbb1eb92bb512c8c1be2a551a87a113c02ec",
+    "authorInputHash": "ee906083c5d4102a36a147d1ab56edb32fd3b566b41d8562ca36f8a2ab65d961",
+    "reviewInputHash": "8ac5c5ccf66e61be813efe8d9c421f94ffe2e40cb5461982d339923c61922367",
+    "authorResponseHash": "c31ca20f664dbe37c1362d7126491baf60cc447503420e4021af9b896f4577d3",
+    "reviewerResponseHash": "b2a55f1166f58b24a30dc7902c0aae75503db5f96c5adbd0e660553fbe5b3106",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

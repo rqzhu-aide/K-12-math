@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1990_AMC_8_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "9e42d754095dc4c02ccc08ccad9bca56e25ef806d142e6c9896c38616f10fa38",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "590bcf1f11aa8a45eba01f008aab750af6e5246dc1710930cc0ed892e1fb26d9",
+  "solutionFigureHashes": {},
+  "candidateHash": "fc594944b5932e3aa6c13cd10eb758283acc3560130a49d0a4b8e92edc799923",
+  "candidate": {
+    "questionId": "1990_AMC_8_Q25",
+    "derivedAnswer": "C: 8",
+    "answerStatus": "matches",
+    "answerReason": "Classification by center, corner, and side positions gives two types involving the center, two with two corners, two with two side squares, and two with a corner and a side square, for eight types.",
+    "methods": [
+      {
+        "id": "classify_pairs",
+        "label": "Classify pairs using the grid's symmetries",
+        "explanation": "The grid has one center square, four corner squares, and four side squares, where a side square means the middle square along an outer side. Turns and flips preserve these three kinds of positions, so classify the shaded pair by its kinds of squares.\n\n1. If the center is shaded, the other shaded square is either a corner or a side square. Turns match all corner choices, and likewise all side choices. This gives \\(2\\) patterns.\n\n2. If both shaded squares are corners, they are either the two corners at the ends of one outer side or opposite corners. Turns match all pairs of each kind. This gives \\(2\\) patterns.\n\n3. If both are side squares, they lie on either neighboring sides or opposite sides of the large square. Turns match all pairs of each kind. This gives \\(2\\) patterns.\n\n4. If one is a corner and one is a side square, turn the corner to the upper left. The side square either shares an edge with that corner square or does not. There are two positions of each kind. Reflection across the diagonal from the upper left to the lower right swaps the two positions within each kind, giving \\(2\\) patterns.\n\nEvery pair belongs to one of these cases. Different listed types cannot match because turns and flips preserve square kinds, opposite positions, and whether squares share an edge. Thus the total is\n\\[\n2+2+2+2=8.\n\\]\nThere are \\(8\\) patterns, choice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "math:symmetry-counting"
+        ],
+        "prerequisiteIds": [
+          "cnm_p127",
+          "cnm_p171"
+        ],
+        "levelReason": "The count uses elementary visual classification under turns and flips, with explicit representatives and no advanced symmetry-counting formula."
+      }
+    ],
+    "assessedIds": [
+      "math:symmetry-counting"
+    ],
+    "supportIds": [
+      "cnm_p127",
+      "cnm_p171"
+    ],
+    "annotationRationale": "The target is counting pairs identified by the permitted symmetries. The method classifies every pair, proves equivalence within each listed type, and distinguishes the types using preserved properties. Elementary reflection and rotation concepts support these comparisons.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1990_AMC_8_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The exhaustive cases give two center-containing types, two corner-pair types, two side-pair types, and two corner-side types. The stated turns and diagonal reflection establish equivalence within each type; preserved position kinds, opposition, and edge adjacency distinguish the eight types.",
+    "levelCheck": "Elementary spatial classification under turns and flips fits AMC 8. The explanation establishes completeness without an advanced counting formula.",
+    "methodDistinctness": "One exhaustive classification method is sufficient.",
+    "annotationCheck": "math:symmetry-counting correctly describes the target. cnm_p127 and cnm_p171 support the actual reflection and rotation comparisons.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "classify_pairs": "classify_pairs"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "510f851fae20ea744983f3c8e8368cc25cdbf292de2231c6cfc91fdade15a863",
+    "inputHash": "d7258e1e05a40050bbcb6775926ef624bca75e181906d30644bd3fc1939c9eb3",
+    "authorInputHash": "40e4a60776cfd05dcc00bc3485ee7c31547d1d017562479731106ccde4a190d9",
+    "reviewInputHash": "27a7f1617814412b0579e75fbe75321fad1473f800d730463d2e1f743be2dc45",
+    "authorResponseHash": "262320cbd5433b71f98e48b909bf50420bae6ccf09f990838075eda6aa1a0f11",
+    "reviewerResponseHash": "c40cba5d90f5d9c269b0969bacbb1f0e9dd049794a505947cb71ebd2cca41d2c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

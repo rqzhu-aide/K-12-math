@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2006_AMC_12B_Q18",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "42d34f065818ac7d342b1993cfd516cc57e3505b324117dcf0792b48513e0feb",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "008324b8160a6262c3d7b9d62bcbc16232ac6bda7eb5067cfad17bcfa2e0be55",
+  "solutionFigureHashes": {},
+  "candidateHash": "e3e156ba7ee996be13d2ad99a4a6757c055529491b1b354d3aedf4a4d40d3613",
+  "candidate": {
+    "questionId": "2006_AMC_12B_Q18",
+    "derivedAnswer": "121 (B)",
+    "answerStatus": "matches",
+    "answerReason": "Exactly the lattice points at even horizontal-plus-vertical distance at most 10 are reachable. Counting those distance groups gives 1 + 8 + 16 + 24 + 32 + 40 = 121.",
+    "methods": [
+      {
+        "id": "count-even-distance-groups",
+        "label": "Count endpoints by distance",
+        "explanation": "For an endpoint \\((x,y)\\), let \\(d=|x|+|y|\\), the minimum number of horizontal and vertical unit moves needed to reach it. Each allowed move changes \\(d\\) by \\(1\\), either increasing or decreasing it. Starting from \\(d=0\\), after ten moves \\(d\\) must therefore be even and at most \\(10\\).\n\nThese restrictions are also sufficient. Reach any such point in \\(d\\) moves by making the required horizontal and vertical moves. Then add \\((10-d)/2\\) pairs of opposite moves, such as right followed by left. Each pair adds two steps without changing the endpoint.\n\nIt remains to count points at distances \\(0,2,4,6,8,10\\). Distance \\(0\\) gives only the origin. For any positive distance \\(d\\), there are four points on the coordinate axes. At every other point, \\(|x|\\) can be any integer from \\(1\\) to \\(d-1\\); then \\(|y|=d-|x|\\), and the two coordinates have four possible sign combinations. Thus there are\n\\[\n4+4(d-1)=4d\n\\]\npoints at distance \\(d\\). Each point has a unique distance, absolute-coordinate pair, and sign choice, so none is repeated. The total is\n\\[\n1+8+16+24+32+40=\\boxed{121},\n\\]\nchoice (B).",
+        "nodeIds": [
+          "math:lattice-counting",
+          "cnm_h230",
+          "cnm_h231"
+        ],
+        "prerequisiteIds": [
+          "cnm_p156",
+          "cnm_082",
+          "cnm_007"
+        ],
+        "levelReason": "The argument uses coordinate distances, parity, backtracking, and elementary counting, all within AMC 12 scope."
+      },
+      {
+        "id": "encode-moves-by-sign-pairs",
+        "label": "Encode each move by two signs",
+        "explanation": "For a point \\((x,y)\\), define\n\\[\nu=x+y,\\qquad v=x-y.\n\\]\nThis is useful because right, left, up, and down change \\((u,v)\\), respectively, by\n\\[\n(1,1),\\ (-1,-1),\\ (1,-1),\\ (-1,1).\n\\]\nAll four combinations of signs are allowed. Thus, after ten steps, each of \\(u\\) and \\(v\\) is a sum of ten numbers that are each \\(1\\) or \\(-1\\). Each can take any of the eleven values\n\\[\n-10,-8,-6,\\ldots,8,10.\n\\]\n\nEvery pair of these values is possible. To obtain a desired \\(u\\), choose \\((10+u)/2\\) positive signs among its ten signs; this is an integer between \\(0\\) and \\(10\\). Do the same independently for \\(v\\). Pairing the two sign lists step by step produces ten legal moves.\n\nFinally, the pair \\((u,v)\\) determines exactly one endpoint through\n\\[\nx=\\frac{u+v}{2},\\qquad y=\\frac{u-v}{2}.\n\\]\nThese coordinates are integers because \\(u\\) and \\(v\\) are even. Hence all pairs are represented, and different pairs give different endpoints. There are therefore\n\\[\n11\\cdot11=\\boxed{121}\n\\]\npossible endpoints, choice (B).",
+        "nodeIds": [
+          "math:lattice-counting",
+          "math:bijective-counting",
+          "cnm_h231"
+        ],
+        "prerequisiteIds": [
+          "cnm_p156",
+          "cnm_082"
+        ],
+        "levelReason": "The alternative uses simple coordinate sums and differences to create a reversible encoding and then applies the multiplication principle."
+      }
+    ],
+    "assessedIds": [
+      "math:lattice-counting"
+    ],
+    "supportIds": [
+      "cnm_p156",
+      "cnm_082"
+    ],
+    "annotationRationale": "The target is counting distinct reachable integer-coordinate endpoints. Parity and coordinates support both methods. The first partitions endpoints into disjoint distance groups; the second establishes a bijection with independently chosen coordinate sums. No arithmetic-sequence formula is needed.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2006_AMC_12B_Q18",
+    "decision": "accept",
+    "mathematicalCheck": "The first method proves that exactly the even-distance points with |x|+|y|≤10 are reachable, including sufficiency by backtracking, and counts 1+8+16+24+32+40=121 without repetition. The second constructs every pair of eleven possible u and v values through legal moves and supplies an integer inverse, proving the same endpoint count.",
+    "levelCheck": "Both methods remain elementary. The coordinate encoding is fully explained without requiring linear algebra.",
+    "methodDistinctness": "Distance-shell counting and reversible sign-pair encoding offer distinct useful ideas.",
+    "annotationCheck": "Lattice counting is the common target; parity and coordinates support both routes. Addition, multiplication, absolute value, and bijective counting are assigned consistently with their use.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-even-distance-groups": "count-even-distance-groups",
+    "encode-moves-by-sign-pairs": "encode-moves-by-sign-pairs"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "e0abbe587ccfa925ebf5f8343c7b2247e1e7cfb0e2232a6844fbae1e7490fb03",
+    "inputHash": "e13077edb625ca7026e64e1ed044d2a6020575d011cb8d3aeec5d345287e5e20",
+    "authorInputHash": "e1872a63fc878d4f6fe9f8c1cd3f60ea1fb78b0e1c6a7c6927921900abd5e41f",
+    "reviewInputHash": "31d4612adf2aa5339e25d16b06b4bbb4b693e917c08d181bd575f6955aa32107",
+    "authorResponseHash": "a59e43919807c066b17ea8dbd80cb176280cafca11332d8da3b46bd5fe328da8",
+    "reviewerResponseHash": "08d133fa66076243431fa1e7000c8df755d56b6c7f6ea5a58741748a65723d9b",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

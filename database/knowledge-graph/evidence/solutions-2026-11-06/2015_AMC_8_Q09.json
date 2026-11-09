@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2015_AMC_8_Q09",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "e260c90bdea95486cc5e8afcddba520fcd5ae647b572c8754863bda8be27d0d9",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "890704ed99a7d36fdcb17a3172b9d4beb79d7c0f3aa709429522761511f280e9",
+  "solutionFigureHashes": {},
+  "candidateHash": "12f1c2e4e0e369697a6b2183d4ce31dc9c1544dfe61a50454ce53b777d043491",
+  "candidate": {
+    "questionId": "2015_AMC_8_Q09",
+    "derivedAnswer": "400 widgets (D)",
+    "answerStatus": "matches",
+    "answerReason": "The daily counts are the first 20 odd numbers. Pairing opposite ends gives 10 pairs of 40 widgets, totaling 400.",
+    "methods": [
+      {
+        "id": "pair-days",
+        "label": "Method 1: Pair the first and last days",
+        "explanation": "The daily counts increase by \\(2\\), so pairing early days with late days makes equal totals. From day \\(1\\) to day \\(20\\), there are \\(19\\) increases, giving day \\(20\\) sales of\n\\[\n1+19\\times2=39.\n\\]\nPair day \\(1\\) with day \\(20\\), day \\(2\\) with day \\(19\\), and continue through day \\(10\\) with day \\(11\\). The first pair totals \\(1+39=40\\). Moving inward increases the earlier day's count by \\(2\\) and decreases the later day's count by \\(2\\), so every pair also totals \\(40\\).\n\nThese \\(10\\) pairs use all \\(20\\) days exactly once. Thus Janabel sold\n\\[\n10\\times40=\\boxed{400}\n\\]\nwidgets, choice \\(\\text{D}\\).",
+        "nodeIds": [
+          "cnm_h204",
+          "cnm_p114"
+        ],
+        "prerequisiteIds": [
+          "cnm_h202",
+          "cnm_p038"
+        ],
+        "levelReason": "The sum is derived by pairing equally spaced counts, without assuming an arithmetic-series formula."
+      },
+      {
+        "id": "build-square",
+        "label": "Method 2: Build a square",
+        "explanation": "The daily sales are \\(1,3,5,\\ldots\\), the numbers of unit-square tiles needed to build successively larger squares. Start with one tile for day \\(1\\). Enlarging a \\(1\\times1\\) square to a \\(2\\times2\\) square adds \\(3\\) tiles; enlarging it to a \\(3\\times3\\) square adds \\(5\\).\n\nIn general, to enlarge a square of side \\(n-1\\) to one of side \\(n\\), add a row of \\(n\\) tiles and an adjacent column of \\(n-1\\) tiles. The shared corner is included only in the row, so this adds \\(2n-1\\) tiles. That equals day \\(n\\)'s sales, since day \\(n\\) follows \\(n-1\\) increases of \\(2\\):\n\\[\n1+2(n-1)=2n-1.\n\\]\nThus the sales from the first \\(20\\) days build a \\(20\\times20\\) square, with each day's tiles added once. Its \\(20^2=\\boxed{400}\\) tiles represent \\(400\\) widgets, choice \\(\\text{D}\\).",
+        "nodeIds": [
+          "cnm_h204",
+          "cnm_p200",
+          "cnm_p089"
+        ],
+        "prerequisiteIds": [
+          "cnm_h202",
+          "cnm_p038"
+        ],
+        "levelReason": "The method explains the odd-number sum using unit-square tiles and multiplication, without formal induction."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h204"
+    ],
+    "supportIds": [
+      "cnm_h202",
+      "cnm_p038"
+    ],
+    "annotationRationale": "The task-level target is a finite sum of equally increasing counts. Both methods obtain daily counts from the initial value and repeated increment and use multiplication for equal groups. Pairing uses regrouping of addition; square building uses a numerical shape pattern and square area. These are alternative routes, not combined requirements.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2015_AMC_8_Q09",
+    "decision": "accept",
+    "mathematicalCheck": "Day 20 has \\(1+19\\times2=39\\) sales. Ten disjoint pairs each total 40, giving 400. The square construction independently adds \\(n+(n-1)=2n-1\\) tiles on day n and ends with a 20 by 20 square, also giving 400.",
+    "levelCheck": "Both methods derive their decisive relationship using elementary arithmetic or tile construction, without assuming a series formula or formal induction.",
+    "methodDistinctness": "Pairing equal totals and building successive squares offer genuinely different arithmetic and spatial insights.",
+    "annotationCheck": "cnm_h204 describes the common summation target. Shared term-count and multiplication support is justified; regrouping, shape patterns, and square area remain attached to their respective methods.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "pair-days": "pair-days",
+    "build-square": "build-square"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "66223b7974768d92d9afe33cf54d090df9dba7560c45865c55fe7807f9a52855",
+    "inputHash": "cfc79bca0368cb9bc4896b7b1e43f7a56682c504169b9c147e50a071e8375740",
+    "authorInputHash": "7837835f9d1c805aabb04b85bbd47c106eefe6b4927532cf163db2d6433f0ce6",
+    "reviewInputHash": "57d117b6bef90fc8573c3a657fdb336c725149e713bab0871942b2579437516d",
+    "authorResponseHash": "477c16d0752963945454a565fb306ad7fd632bef1f92800569f0ee860cdc96c9",
+    "reviewerResponseHash": "ef17046e792b3bf2bc249898f8493894671969bf3bb1d1e50fda8061eae2d4fa",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

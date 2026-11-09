@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1985_AMC_12_Q26",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "1889ba55da3727c2325c4cffb206cba655166bd468feddd8eb5ccd3051846aa2",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "df58cb42a7d3d4ff53e09bbc5e1b1732748c5e232a7499eacdec53f20e0cf0b5",
+  "solutionFigureHashes": {},
+  "candidateHash": "fdd34082146182b49fde1e53961d11f4a640a79b044755ac20153c83fdf194ad",
+  "candidate": {
+    "questionId": "1985_AMC_12_Q26",
+    "derivedAnswer": "E, n = 84",
+    "answerStatus": "matches",
+    "answerReason": "Reducibility requires n - 13 to be divisible by 71. The first positive candidate, n = 13, gives zero and is excluded; the least admissible value is 84.",
+    "methods": [
+      {
+        "id": "constrain-common-divisors",
+        "label": "Find the possible common factor",
+        "explanation": "For positive \\(n\\), the denominator \\(5n+6\\) is positive, and the fraction is nonzero exactly when \\(n\\ne13\\). To determine when it is reducible, look for a restriction on any common factor of its numerator and denominator.\n\nA common factor must also divide their difference after subtracting five times the numerator:\n\\[\n(5n+6)-5(n-13)=71.\n\\]\nThe number \\(71\\) is prime: none of \\(2,3,5,7\\), the primes at most \\(\\sqrt{71}\\), divides it. Thus any common factor greater than \\(1\\) must be \\(71\\). Conversely, if \\(71\\) divides \\(n-13\\), it also divides \\(5n+6=5(n-13)+71\\). Therefore reducibility is equivalent to \\(n-13\\) being a multiple of \\(71\\).\n\nSince \\(n>0\\), we have \\(n-13\\ge-12\\). The multiples of \\(71\\) in this range begin \\(0,71,142,\\ldots\\). The value \\(0\\) makes the fraction zero, so the smallest permitted numerator is \\(71\\), giving \\(n=84\\). Indeed,\n\\[\n\\frac{84-13}{5\\cdot84+6}=\\frac{71}{426}=\\frac16.\n\\]\nThe least value is \\(\\boxed{84}\\), which is not listed, so the answer is choice E.",
+        "nodeIds": [
+          "cnm_p158"
+        ],
+        "prerequisiteIds": [
+          "cnm_p168",
+          "cnm_p157",
+          "cnm_p153"
+        ],
+        "levelReason": "Uses common factors, primality, and a complete list of allowable multiples, all within elementary number theory."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p158"
+    ],
+    "supportIds": [
+      "cnm_p168",
+      "cnm_p157",
+      "cnm_p153"
+    ],
+    "annotationRationale": "The target is determining when the numerator and denominator have a common factor greater than one. The method constrains that factor using a constant difference, then finds the least allowable multiple. Fraction reduction, prime numbers, and multiples support this divisibility argument.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1985_AMC_12_Q26",
+    "decision": "accept",
+    "mathematicalCheck": "Every common divisor divides (5n+6)-5(n-13)=71, which is prime. Conversely, divisibility of n-13 by 71 ensures reducibility. Since n-13≥-12, excluding the zero numerator leaves 71 as the smallest allowable multiple, giving n=84 and choice E.",
+    "levelCheck": "Elementary divisibility and prime testing suffice. Definedness, the zero exclusion, and minimality are explicitly addressed.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The common-factor assessment and supports for fraction reduction, primes, and multiples match the argument. Formal congruence machinery is not required.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "constrain-common-divisors": "constrain-common-divisors"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "12d0f742a70318a3fbb079f251a154f543313cc903893b7e7e60dcfa4b808f90",
+    "inputHash": "2fbfc732a6c9a879f922df769f09b8bf61e9e392f926f11bc1128a5355580280",
+    "authorInputHash": "cd4565399c0cc34c5a6e6fd7585795ec0f6da180606d725a8ecb22dd5899efc4",
+    "reviewInputHash": "6b55365e208c4454706360218c9fdb3402685510647b39b7807f281c93485ff7",
+    "authorResponseHash": "44bea0f10bd51458514acb5af9b396df1734c54ce87fe1b497a7e3e32e658dc3",
+    "reviewerResponseHash": "e8aecd268dd01b11876c1fc63762e4ffd5dd87b6f8695b00ab6d18902a901ad3",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

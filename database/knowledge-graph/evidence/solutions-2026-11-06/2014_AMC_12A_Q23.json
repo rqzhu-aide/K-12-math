@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2014_AMC_12A_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "af337ac4ef5a8c366d959c33283b7aaceb5185aaf565472fdc9189223921b92c",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "125c2d954703916cd3a0fe8de24ad11f742727d554ffdb912cb7af99b3cf5b03",
+  "solutionFigureHashes": {},
+  "candidateHash": "818c2155fd8774afb7ec9e3f912b1916de2c7e26bd2bd48c804bad3dee0cdac6",
+  "candidate": {
+    "questionId": "2014_AMC_12A_Q23",
+    "derivedAnswer": "B (883)",
+    "answerStatus": "matches",
+    "answerReason": "Exact division in two-digit blocks gives 00,01,…,97,99 and returns to the initial remainder. The minimal decimal period is 198 digits. Its digit sum is 900−17=883.",
+    "methods": [
+      {
+        "id": "two-digit-long-division",
+        "label": "Divide in two-digit blocks",
+        "explanation": "Because \\(99^2=9801\\) and \\(100=99+1\\), bringing down two decimal places at a time produces a simple remainder pattern. Each quotient is written as a two-digit block, retaining leading zeros.\n\nStart with remainder \\(1\\). For \\(j=0,1,\\ldots,97\\),\n\\[\n100(1+99j)=9801j+\\bigl(1+99(j+1)\\bigr).\n\\]\nThe final term is between \\(0\\) and \\(9801\\), so this is a valid division step: remainder \\(1+99j\\) produces block \\(j\\) and next remainder \\(1+99(j+1)\\). Thus the first blocks are \\(00,01,\\ldots,97\\), after which the remainder is \\(9703\\). The next step is\n\\[\n100\\cdot9703=99\\cdot9801+1.\n\\]\nIt produces block \\(99\\) and returns to the initial remainder. Therefore the repeating block is\n\\[\n00,01,02,\\ldots,97,99,\n\\]\ncontaining \\(99\\) two-digit blocks, or \\(198\\) decimal digits.\n\nWe must check that this is the shortest period. If a period had length \\(d\\) and digit-block integer \\(B\\), shifting and subtracting the repeated decimal would give\n\\[\n\\frac{10^d-1}{9801}=B.\n\\]\nIn particular, \\(11\\) would divide \\(10^d-1\\). Since \\(10\\equiv-1\\pmod{11}\\), this is impossible for odd \\(d\\). An even period shorter than \\(198\\) would return the division remainder to \\(1\\) after fewer than \\(99\\) two-digit steps. But the remainders \\(1+99j\\), for \\(0\\le j\\le98\\), are distinct, and only the first is \\(1\\). Hence the minimal period really is \\(198\\).\n\nAcross all two-digit blocks \\(00\\) through \\(99\\), each digit occurs ten times in each position. Their total digit sum is\n\\[\n2\\cdot10(0+1+\\cdots+9)=900.\n\\]\nOur period contains exactly these blocks except \\(98\\), whose digits sum to \\(17\\). The answer is \\(900-17=\\boxed{883}\\), choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "math:rational-decimal-periods",
+          "math:repeating-decimal-fractions",
+          "math:modular-powers"
+        ],
+        "prerequisiteIds": [
+          "cnm_p050",
+          "cnm_p120",
+          "math:modular-congruence"
+        ],
+        "levelReason": "Exact division with remainders, decimal shifting, and the elementary alternating remainder cycle of powers of 10 modulo 11 establish the block and its minimal period."
+      }
+    ],
+    "assessedIds": [
+      "math:rational-decimal-periods"
+    ],
+    "supportIds": [
+      "cnm_p050",
+      "cnm_p120",
+      "math:modular-congruence"
+    ],
+    "annotationRationale": "The task assesses identifying the exact minimal repeating block before summing its digits. The method uses remainder tracking to construct the block, a shifted-decimal identity and a short modular power cycle to prove minimality, and positional digit counting to obtain the sum.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2014_AMC_12A_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "The exact remainder recurrence produces blocks 00 through 97, then 99, returning to remainder 1 after 99 two-digit steps. No earlier even period returns that remainder, and divisibility by 11 excludes odd periods. Thus the minimal period has 198 digits and digit sum 900−(9+8)=883.",
+    "levelCheck": "Exact division, decimal shifting, and a simple remainder cycle are suitable AMC 12 tools. Both the block and its minimality are justified.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The rational-decimal-period target and method-local repeating-decimal and modular-power concepts fit the proof. The shared support accurately covers division, decimal shifts, and congruences.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "two-digit-long-division": "two-digit-long-division"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "d0784f23c5eac88389fc67182128bcff64f9df6c88cc6fcffaf5d93ec13b04c3",
+    "inputHash": "8444337031c8f06ae1791add59492f485b2e589a8d153f4e35fbf0176d128358",
+    "authorInputHash": "6c34b075bdebcecb9787a94b6df4280acc8b40ac27a5ead6dce3c202f679073e",
+    "reviewInputHash": "ba101a6e8c5d490ff98295b0f8ede44268368a2c1dabbe7d04a78a6b0faaf40e",
+    "authorResponseHash": "4429eafb9f8a549e95ad18a372af7879c3255af2fa608ed1c345f8c4b091d7e8",
+    "reviewerResponseHash": "fce9eda2458f64c933be708935e5afca14fb1838c1edb75f52871b5b00716fa0",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

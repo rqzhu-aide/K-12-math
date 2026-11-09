@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2013_AMC_12A_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "8d28f7d44f897e09e07ec42c478896c51cdbfabfcb818ca85b177f581d6f5d73",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "99d8d76b962a7d1ad18732a0e368c73b378c98dd5e032302fa9baac959870ba0",
+  "solutionFigureHashes": {},
+  "candidateHash": "b5abce77ef8a9866a0f0441b2b35054203beedd7ae4f6cac75f829e80ffd8c5e",
+  "candidate": {
+    "questionId": "2013_AMC_12A_Q22",
+    "derivedAnswer": "11/30 (E)",
+    "answerStatus": "matches",
+    "answerReason": "Exactly 330 of the 900 six-digit palindromes have a palindromic quotient by 11.",
+    "methods": [
+      {
+        "id": "palindromic-quotients-and-carries",
+        "label": "Count palindromic quotients by their digits",
+        "explanation": "A six-digit palindrome is determined by its first three digits. Its first digit has nine choices and the next two each have ten, so there are \\(9\\cdot10\\cdot10=900\\) equally likely possibilities.\n\nCount favorable numbers through their quotients \\(q=n/11\\). For a favorable number, \\(q\\) is an integer palindrome, and\n\\[\n9091=\\frac{100001}{11}\\le q\\le\\frac{999999}{11}=90909.\n\\]\nThus \\(q\\) has four or five digits. If it has four digits, it begins with \\(9\\), so, being palindromic, it ends with \\(9\\). Then \\(11q\\) also ends with \\(9\\). But a six-digit number of the form \\(11q\\), with \\(q\\le9999\\), is at most \\(109989\\) and therefore begins with \\(1\\). It cannot be a palindrome. This excludes every four-digit quotient.\n\nNow write a five-digit palindromic quotient as \\(q=\\overline{defed}\\), where \\(1\\le d\\le9\\) and \\(0\\le e,f\\le9\\). Since \\(11q=q+10q\\), its column sums before carrying, from left to right, are\n\\[\nd,\\quad d+e,\\quad e+f,\\quad e+f,\\quad d+e,\\quad d.\n\\]\nThe units digit is \\(d\\). For the six-digit product to be palindromic, its leading digit must also be \\(d\\), so there can be no carry into the leading column. In particular, \\(d+e\\le9\\), and therefore the tens column produces no carry.\n\nIf \\(e+f\\ge10\\), the hundreds column carries \\(1\\), and the thousands column then also carries \\(1\\). This gives the ten-thousands column an extra \\(1\\) that the tens column does not have. With no leading carry allowed, their digits cannot match. Hence \\(e+f\\le9\\) as well. Conversely, if\n\\[\nd+e\\le9,\\qquad e+f\\le9,\n\\]\nno carries occur, and the six column sums form a palindrome with nonzero leading digit. These conditions are therefore necessary and sufficient.\n\nFor a fixed \\(e\\in\\{0,1,\\ldots,8\\}\\), there are \\(9-e\\) choices for \\(d\\) and \\(10-e\\) choices for \\(f\\). The value \\(e=9\\) allows no positive \\(d\\). Thus the favorable count is\n\\[\n\\begin{aligned}\n\\sum_{e=0}^{8}(9-e)(10-e)\n&=90+72+56+42+30\\\\\n&\\quad+20+12+6+2\\\\\n&=330.\n\\end{aligned}\n\\]\nEvery counted quotient gives one favorable \\(n=11q\\), and distinct quotients give distinct numbers. Therefore the probability is\n\\[\n\\frac{330}{900}=\\boxed{\\frac{11}{30}},\n\\]\nchoice \\(\\text{E}\\).",
+        "nodeIds": [
+          "cnm_h137",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_h231",
+          "cnm_309",
+          "cnm_p096"
+        ],
+        "levelReason": "This uses decimal place value, ordinary carries, disjoint digit cases, and favorable outcomes divided by equally likely outcomes."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h137",
+      "cnm_h232"
+    ],
+    "supportIds": [
+      "cnm_h231",
+      "cnm_p096"
+    ],
+    "annotationRationale": "The probability model and organized digit count are task targets. Place value and the multiplication principle support the route. The decisive carry comparison is recorded as a missing procedure rather than assigned to the catalog's specialized repdigit-product node.",
+    "needsNewNodes": [
+      {
+        "name": "Palindromes under multiplication and carry constraints",
+        "description": "Represent decimal palindromes by digits with nonzero leading digits, track carries in multiplication, and compare symmetric output columns to characterize all palindromic products.",
+        "reason": "The catalog includes place-value foundations and repdigit-product analysis, but neither covers the general palindrome-and-carry reasoning used to eliminate carries in this solution."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2013_AMC_12A_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "The quotient bounds restrict favorable quotients to four or five digits, and the leading-versus-units argument excludes four digits. For five digits, symmetric product columns force d+e≤9 and e+f≤9; these conditions also suffice. Their count is 330, yielding 330/900=11/30.",
+    "levelCheck": "The carry argument explains the decisive restriction using ordinary decimal arithmetic at an appropriate level.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Probability, combined counting, multiplication, and place value fit. The proposed missing carry-analysis node is honest and avoids claiming equivalence with specialized repdigit analysis.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "palindromic-quotients-and-carries": "palindromic-quotients-and-carries"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "f54e0c5150c0e85ee6810e773393680c28cbd0ed0735418616957fc7e4e8164a",
+    "inputHash": "942ef01f4f961e30e18917136e2df0c223d6d1d6f37966a239da32992f2ceac2",
+    "authorInputHash": "31eb045d8cb4ac4e36ec2ad1102f608e83838b92508382d64960f3f8376bce35",
+    "reviewInputHash": "500ffc61e877f57d05a6f9d81fa9d0eb95cb575aa6ed8cf8717b9d461a3251c6",
+    "authorResponseHash": "b1d819c9d92c47997b6dd54a507a48da606dfddfbbbd51d4470bd8a7d3715e82",
+    "reviewerResponseHash": "d767a4fad4d034c06980203ddcaf4bda3f2cd9526a752a8ceded3cd71437ea6b",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

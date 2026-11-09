@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2008_AMC_10B_Q17",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "177f325a1ef611e0c114c373f1e58812ccd0b4df7695302288dbd33910fac8ad",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "efc1bb8c4b020093c55b67049b5225839b8882e6f161742ce2d271a585120455",
+  "solutionFigureHashes": {},
+  "candidateHash": "f39f6739b33247c63f54e4c2a55299cc89f9891e4fc94f980a56116119f7ff10",
+  "candidate": {
+    "questionId": "2008_AMC_10B_Q17",
+    "derivedAnswer": "B (0.189) under independent selections; otherwise no unique probability follows",
+    "answerStatus": "disputed",
+    "answerReason": "The keyed value assumes independent selections with an unchanged approval probability of 0.70, as the recorded qualifications note. The statement does not explicitly specify independence. Independent selections give 0.189, whereas sampling without replacement from seven approving and three nonapproving voters gives 0.175.",
+    "methods": [
+      {
+        "id": "approval-orders-with-model-check",
+        "label": "List the three approval orders and check the assumption",
+        "explanation": "Assume first that the three selections are independent and that the approval probability remains \\(0.70\\), as in the intended model. Write \\(A\\) for approval and \\(D\\) for nonapproval. Exactly one approval can occur in precisely three orders:\n\\[\nADD,\\qquad DAD,\\qquad DDA.\n\\]\nThe nonapproval probability is \\(1-0.70=0.30\\). By independence, each listed order has probability\n\\[\n0.70\\cdot0.30\\cdot0.30=0.063.\n\\]\nThe three orders are disjoint and include every way to obtain exactly one approval. Their total probability is therefore\n\\[\n3\\cdot0.063=\\boxed{0.189},\n\\]\nwhich is choice \\(\\boxed{\\text{B}}\\) under this assumption.\n\nIndependence is essential, however, and separate occasions alone do not explicitly specify it. For a counterexample, suppose there are ten voters, seven approving and three nonapproving, and the pollster selects three different voters at random without replacement. Each of the same three approval orders has probability \\((7\\cdot3\\cdot2)/(10\\cdot9\\cdot8)\\): the factors count one approving voter and two distinct nonapproving voters in the specified order. Thus the probability is\n\\[\n3\\cdot\\frac7{10}\\cdot\\frac39\\cdot\\frac28\n=\\frac7{40}=0.175.\n\\]\nThis population also has \\(70\\%\\) approval but gives a different answer. Hence \\(0.189\\), choice B, is justified by the independent-selection interpretation; the displayed conditions alone do not determine a unique probability.",
+        "nodeIds": [
+          "cnm_h138",
+          "cnm_h140",
+          "cnm_h245"
+        ],
+        "prerequisiteIds": [
+          "cnm_h254",
+          "cnm_p195",
+          "cnm_p133"
+        ],
+        "levelReason": "Explicitly lists three orders and uses elementary probability products. The counterexample uses simple without-replacement fractions; no general binomial formula is required."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h255"
+    ],
+    "supportIds": [
+      "cnm_h254",
+      "cnm_p195"
+    ],
+    "annotationRationale": "Under the intended independent repeated-trial model, the task asks for one success-count probability, the target described by cnm_h255. This tag does not require use of the general binomial formula. The written method instead adds disjoint orders with cnm_h138, multiplies independent probabilities with cnm_h140, and uses sequential probabilities with cnm_h245 for the counterexample. The Bernoulli-trial conditions in cnm_h254 are explicitly qualified rather than silently assumed.",
+    "needsNewNodes": [],
+    "limitations": [
+      "Independence or a sampling-with-replacement procedure is not explicitly stated. The recorded qualification that the keyed answer assumes independent selections with unchanged approval probability is preserved."
+    ]
+  },
+  "review": {
+    "questionId": "2008_AMC_10B_Q17",
+    "decision": "accept",
+    "mathematicalCheck": "Under independent selections, the three disjoint approval orders each have probability 0.7(0.3)^2, totaling 0.189. The without-replacement counterexample gives 3(7·3·2)/(10·9·8)=7/40=0.175, correctly demonstrating that the marginal percentage alone does not determine the answer.",
+    "levelCheck": "Both the intended calculation and the qualification use elementary, fully explained probability reasoning.",
+    "methodDistinctness": "The counterexample checks the model assumption and is appropriately integrated into the single qualified solution.",
+    "annotationCheck": "The binomial target is explicitly conditional on the intended independent model. The Bernoulli conditions, probability products, disjoint addition, and percentage conversion annotations are justified, and the recorded caveat is preserved.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "approval-orders-with-model-check": "approval-orders-with-model-check"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "861f6c98e7040d300b381f961cc9f69a882447fca2c586cdc45547fd7b3018b0",
+    "inputHash": "1469650e63796c9cdef8f582e5b42f8ba96467d8793e0fbb4f27ac2006ba0c95",
+    "authorInputHash": "706feb418bd3ea5cbaed20b4cdcf6bc45ebbee55d82d84af01b337adf564c5af",
+    "reviewInputHash": "28ca64473ff4ac3bb227d236c6e881ba020817b6f4c2d39ee08576145c902a89",
+    "authorResponseHash": "6ae2a4c627a433644dcc59452d47feaefc19779fc41642d7239e3ef60769940b",
+    "reviewerResponseHash": "b8cc8d02e599a43d13455a226ea222740ac0a5eb365a734b772764e56b8aea6c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

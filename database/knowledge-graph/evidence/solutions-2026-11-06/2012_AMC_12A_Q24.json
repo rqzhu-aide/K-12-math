@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2012_AMC_12A_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "52da8802e393abc8b88a87fe398237bd24fd1d5e140fa7c87cd37cf13c829620",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "8ebd8dbaaf4b47508f1dc8adb3b0d99d9a1acc1da31772454ed95cdae9eef14f",
+  "solutionFigureHashes": {},
+  "candidateHash": "fd7ab65da44d42064d66723016d10a44ad67f6c5a2dfe80631191a111f07f0b2",
+  "candidate": {
+    "questionId": "2012_AMC_12A_Q24",
+    "derivedAnswer": "1341 (C)",
+    "answerStatus": "matches",
+    "answerReason": "The strict decreasing order is a2, a4, ..., a2010, a2011, a2009, ..., a1. Its only index agreement with the original sequence occurs at k = 1341.",
+    "methods": [
+      {
+        "id": "nested-exponential-order",
+        "label": "Prove the terms lie in nested intervals",
+        "explanation": "Let \\(c_k\\) denote the decimal base used to define \\(a_k\\), with \\(c_1=0.201\\). Comparing their digits shows that the odd-indexed bases increase, the even-indexed bases decrease, and every odd-indexed base is below every even-indexed base. For example,\n\\[\nc_1<c_3<c_5<c_6<c_4<c_2.\n\\]\nThese comparisons suggest that the terms themselves may form two interlacing lists, but the exponents must also be checked.\n\nFor \\(0<c<1\\), the value \\(c^t\\) decreases as \\(t\\) increases. For a fixed positive exponent, it increases as the positive base increases. We will use both facts together.\n\nIntroduce \\(a_0=1\\), so that \\(a_1=c_1^{a_0}\\) and the recurrence \\(a_k=c_k^{a_{k-1}}\\) works from \\(k=1\\). All terms \\(a_k\\) for \\(k\\ge1\\) lie strictly between \\(0\\) and \\(1\\). Also,\n\\[\na_1<c_2<a_2<a_0,\n\\]\nbecause \\(a_1<1\\) and raising \\(c_2\\in(0,1)\\) to an exponent below \\(1\\) increases its value.\n\nWe now prove that each new term lies strictly between the preceding two terms. Suppose \\(k\\) is even and\n\\[\na_{k-1}<a_k<a_{k-2}.\n\\]\nThe decimal bases satisfy \\(c_{k-1}<c_{k+1}<c_k\\). Comparing both bases and exponents gives\n\\[\nc_{k-1}^{a_{k-2}}\n<c_{k+1}^{a_k}\n<c_k^{a_{k-1}},\n\\]\nwhich is exactly \\(a_{k-1}<a_{k+1}<a_k\\).\n\nWhen \\(k\\ge3\\) is odd, the corresponding assumptions are \\(a_{k-2}<a_k<a_{k-1}\\) and \\(c_k<c_{k+1}<c_{k-1}\\). They give\n\\[\nc_k^{a_{k-1}}\n<c_{k+1}^{a_k}\n<c_{k-1}^{a_{k-2}},\n\\]\nso \\(a_k<a_{k+1}<a_{k-1}\\). Starting with \\(a_1<a_2<a_0\\), these two steps apply alternately and prove the nesting for the entire sequence.\n\nIt follows that the odd-indexed terms strictly increase, the even-indexed terms strictly decrease, and the last odd term is below the last even term. Thus the decreasing order is\n\\[\na_2>a_4>\\cdots>a_{2010}\n>a_{2011}>a_{2009}>\\cdots>a_1.\n\\]\nAll terms are distinct. There are \\(1005\\) even-indexed terms, so\n\\[\nb_k=a_{2k}\\qquad(1\\le k\\le1005).\n\\]\nEquality \\(a_k=b_k\\) here would require \\(k=2k\\), impossible for positive \\(k\\).\n\nFor the remaining positions,\n\\[\nb_k=a_{4023-2k}\n\\qquad(1006\\le k\\le2011).\n\\]\nDistinctness now makes \\(a_k=b_k\\) equivalent to\n\\[\nk=4023-2k,\n\\qquad k=1341.\n\\]\nThis lies in the required range and is the only matching index. The requested sum is therefore \\(\\boxed{1341}\\), choice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "cnm_h042",
+          "cnm_h200",
+          "cnm_h213"
+        ],
+        "prerequisiteIds": [
+          "cnm_h197",
+          "cnm_h041",
+          "cnm_p119",
+          "cnm_042"
+        ],
+        "levelReason": "The proof uses decimal comparisons, monotonicity of positive-base powers, an explicit induction, and elementary index equations."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h042",
+      "cnm_h200"
+    ],
+    "supportIds": [
+      "cnm_h197",
+      "cnm_h041",
+      "cnm_042"
+    ],
+    "annotationRationale": "Comparing recursively defined exponential terms is the central task. The written route proves its ordering by induction, using decimal base comparisons locally, then translates the strict ordering into sequence positions and a linear equation.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2012_AMC_12A_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "Both parity steps correctly combine increasing base dependence with decreasing exponent dependence for bases between 0 and 1. The induction proves strictly increasing odd terms below strictly decreasing even terms. The resulting position formulas leave only k = 1341 as an index agreement.",
+    "levelCheck": "Decimal comparisons, exponential monotonicity, induction, and index arithmetic fit AMC 12. The decisive nesting argument is complete.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Exponential properties and recurrence interpretation are appropriate assessed IDs. Induction is method local, and the support/prerequisite IDs reflect the written argument.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "nested-exponential-order": "nested-exponential-order"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "bce8ea2e50c214f485d0396b05ab5067c7cb60fcca47b33c3f75ff41fd47c443",
+    "inputHash": "d72e7747326af1c505511af086300f493ef675e901d57cf845ab70daaee6fb0a",
+    "authorInputHash": "217ed61007597acf91feb05f90d96fd3de6c40bbb395666e370e058710ef1e4b",
+    "reviewInputHash": "f143c5abce0dd4c5fc9b2bf6850cbe2c878b4b0c7fbffe419d9465edca1d5002",
+    "authorResponseHash": "16561e987222304bd53d80980bcd016a4557fa1530b2bfb6aacb476f114e0500",
+    "reviewerResponseHash": "2bfd0d454918b6a2c4238bf97f23a3926709f26e34d4a7b6100445c6c1e9feb2",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

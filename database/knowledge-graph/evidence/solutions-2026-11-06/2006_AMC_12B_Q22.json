@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2006_AMC_12B_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "524716ee33c907ee3171f2769830fb8ecd800e16b167befa27ac120ef3401fe6",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "f647cffe0622f72ca05e3ea52b6dcc8a0aa4fd50ec1df4b37dfd9ae17388f7ac",
+  "solutionFigureHashes": {},
+  "candidateHash": "5def74c41a6cc24554f3a87a12a459bc031de78b8beb819978f85de5219644d3",
+  "candidate": {
+    "questionId": "2006_AMC_12B_Q22",
+    "derivedAnswer": "\\(492\\), choice B",
+    "answerStatus": "matches",
+    "answerReason": "Counting factors of five gives a universal lower bound of \\(399+78+14+1=492\\). The positive triple \\((624,624,758)\\) attains it, and factors of two are always at least as numerous.",
+    "methods": [
+      {
+        "id": "factor-count-bound-and-construction",
+        "label": "Bound the number of factors of five and attain the bound",
+        "explanation": "Each trailing zero needs one factor of \\(2\\) and one factor of \\(5\\). In a factorial, the number of factors of a prime \\(p\\) is found by counting multiples of \\(p\\), then multiples of \\(p^2\\) for their extra factor, and so on. The count for \\(2\\) is at least the count for \\(5\\), since \\(2^j\\le5^j\\) for every positive integer \\(j\\). This remains true when the three factorials are multiplied. Thus \\(n\\) is exactly the total number of factors of \\(5\\).\n\nEach of \\(a,b,c\\) is at most \\(2004<3125=5^5\\). For any one of these integers \\(t\\), its factorial therefore contains\n\\[\nF(t)=\\sum_{j=1}^{4}\\left\\lfloor\\frac{t}{5^j}\\right\\rfloor\n\\]\nfactors of \\(5\\), and \\(n=F(a)+F(b)+F(c)\\).\n\nWe now bound each group of floor quotients. For a positive integer \\(d\\), write\n\\[\na=dq_a+r_a,\n\\quad b=dq_b+r_b,\n\\quad c=dq_c+r_c,\n\\]\nwhere every remainder lies between \\(0\\) and \\(d-1\\). Since the three remainders sum to less than \\(3d\\),\n\\[\n\\left\\lfloor\\frac{2006}{d}\\right\\rfloor\n=q_a+q_b+q_c+\n\\left\\lfloor\\frac{r_a+r_b+r_c}{d}\\right\\rfloor\n\\le q_a+q_b+q_c+2.\n\\]\nConsequently,\n\\[\n\\left\\lfloor\\frac a d\\right\\rfloor+\n\\left\\lfloor\\frac b d\\right\\rfloor+\n\\left\\lfloor\\frac c d\\right\\rfloor\n\\ge\\left\\lfloor\\frac{2006}{d}\\right\\rfloor-2.\n\\]\nUsing \\(d=5,25,125,625\\), respectively, gives contributions of at least \\(399,78,14,1\\). Hence\n\\[\nn\\ge399+78+14+1=492.\n\\]\nTo attain this bound, numbers just below a power of five are useful because their quotients round down at several levels. Take\n\\[\na=b=625-1=624,\n\\qquad c=758.\n\\]\nThese are positive and sum to \\(2006\\). Their factor counts are\n\\[\nF(624)=124+24+4=152,\n\\]\n\\[\nF(758)=151+30+6+1=188.\n\\]\nThus \\(n=2(152)+188=492\\). The universal bound and this attaining triple prove that the smallest value is \\(\\boxed{492}\\), choice B.",
+        "nodeIds": [
+          "math:prime-valuations-factorials",
+          "math:extremal-principle",
+          "math:floor-ceiling"
+        ],
+        "prerequisiteIds": [
+          "math:factorial-notation",
+          "math:prime-factorization",
+          "cnm_p050"
+        ],
+        "levelReason": "Derives factorial prime-factor counts by elementary counting and proves the minimum through quotient bounds and an explicit construction."
+      }
+    ],
+    "assessedIds": [
+      "math:prime-valuations-factorials",
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "math:factorial-notation",
+      "math:prime-factorization",
+      "cnm_p050"
+    ],
+    "annotationRationale": "The task asks for an attained minimum of a factorial divisibility exponent, so prime-factor counts and a universal bound with a matching construction are the central targets. Floor quotients are the written route; factorial meaning, prime factorization, and division with remainders support it. No base-five digit-sum method is required or assigned.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2006_AMC_12B_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "Factors of two are at least as numerous as factors of five, so n counts the latter. The remainder argument gives respective lower bounds 399, 78, 14, and 1, totaling 492. The allowed triple (624,624,758) attains this total because its factor counts are 152, 152, and 188.",
+    "levelCheck": "The factorial counting formula and quotient bound are derived clearly using elementary counting and division.",
+    "methodDistinctness": "One bound-and-construction method completely establishes the minimum.",
+    "annotationCheck": "Prime-factor counting and an attained extremal bound are appropriate assessed targets. Floor quotients remain method-specific, and the supporting annotations match the proof.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "factor-count-bound-and-construction": "factor-count-bound-and-construction"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "7863a2b0f9a3da39a5635afc21b4a74456409a8f0928f821e85f304f5f532a3b",
+    "inputHash": "22009747bdf4050114eeecd4d4eecc49a0d135cbeeb8c527e1f02e3e36aa5f3e",
+    "authorInputHash": "02217de470673375470f60d1d1a1fa548eafafcb14bce05f018ce8f9587255ac",
+    "reviewInputHash": "fd04ed4cecb545def8289af72e0fbb9e36d3b2d5fbe88f655d80e62010db1377",
+    "authorResponseHash": "76e51b38c036c258d25b53580c7227c7cdfe0dd39d27c5e96058aa6de6fc60a8",
+    "reviewerResponseHash": "716f5f6d528f6abb2243646759084a055825225b831401b88caf7c2ec4d5c99e",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

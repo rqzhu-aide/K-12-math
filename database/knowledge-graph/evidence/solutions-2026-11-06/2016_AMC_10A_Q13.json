@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_10A_Q13",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "8dab20a3b3e6d6c57d78f1e7de7dbc199f9ac75ad2c519c6cba2057eccaf587d",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "4ed2253d31fa616e5d1bdda143304bb068a782b251d0f09c614c8bffaa19b320",
+  "solutionFigureHashes": {},
+  "candidateHash": "ed1169497005d24894350268c21f819095f8b23483d99127ff87cbde795e169a",
+  "candidate": {
+    "questionId": "2016_AMC_10A_Q13",
+    "derivedAnswer": "B: seat 2",
+    "answerStatus": "matches",
+    "answerReason": "The other four friends increase their combined seat-number total by 1. Ada must therefore move from her original seat to the seat immediately to its left. Since that seat is an end seat, her original seat was 2.",
+    "methods": [
+      {
+        "id": "seat-number-sum",
+        "label": "Keep the total seat number fixed",
+        "explanation": "Imagine Ada taking the end seat left for her. Before she leaves and after she returns, the five occupied seat numbers have the same total,\n\\[\n1+2+3+4+5=15.\n\\]\nLet \\(a\\) be Ada's original seat number and \\(e\\) the end seat left for her. Bea's move increases her seat number by \\(2\\), Ceci's decreases hers by \\(1\\), and Dee and Edie's exchange leaves their combined total unchanged. The total change is therefore\n\\[\n(e-a)+2-1=0,\n\\qquad e=a-1.\n\\]\nSince \\(e\\) is either \\(1\\) or \\(5\\), Ada's original seat would be \\(2\\) or \\(6\\). Only seat \\(2\\) exists.\n\nThe moves are possible: the initial left-to-right order Bea, Ada, Ceci, Dee, Edie becomes empty, Ceci, Bea, Edie, Dee. Thus Ada originally occupied seat \\(2\\), choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "math:invariant-reasoning",
+          "math:finite-constraint-deduction"
+        ],
+        "prerequisiteIds": [
+          "cnm_p015",
+          "cnm_p145"
+        ],
+        "levelReason": "Uses a fixed total, signed seat changes, and the two possible end seats."
+      },
+      {
+        "id": "three-changing-seats",
+        "label": "Track the three seats available to Ada, Bea, and Ceci",
+        "explanation": "Dee and Edie still occupy their original pair of seats after exchanging places. Thus Bea and Ceci can move only among the three seats originally occupied by Ada, Bea, and Ceci.\n\nLet \\(b\\) be Bea's original seat number. Her new seat is \\(b+2\\), so \\(1\\le b\\le3\\). Her destination must be either Ada's original seat or Ceci's original seat.\n\nIf Bea moves into Ada's original seat, Ceci must move into Bea's original seat. Since Ceci moves one seat left, she started in \\(b+1\\). This leaves \\(b+1\\) empty. But that seat lies between \\(b\\) and \\(b+2\\), so it cannot be an end seat. This case is impossible.\n\nTherefore Bea moves into Ceci's original seat, \\(b+2\\). Ceci moves from there to \\(b+1\\), which must have been Ada's original seat. Seat \\(b\\) is left empty. It must be an end seat, and \\(b\\le3\\), so \\(b=1\\). Ada's original seat was consequently \\(b+1=2\\).\n\nFor example, Bea, Ada, Ceci, Dee, Edie can change to empty, Ceci, Bea, Edie, Dee, satisfying every move. The answer is seat \\(2\\), choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "math:finite-constraint-deduction"
+        ],
+        "prerequisiteIds": [
+          "cnm_p015"
+        ],
+        "levelReason": "Uses an exhaustive two-case deduction based only on seat occupancy and left/right movements."
+      }
+    ],
+    "assessedIds": [
+      "math:finite-constraint-deduction"
+    ],
+    "supportIds": [
+      "cnm_p015"
+    ],
+    "annotationRationale": "The route-neutral target is finding a forced seat assignment from finite movement constraints. The first method uses an invariant sum with a simple equation; the second directly restricts the three available seats and exhausts Bea's destinations. Left/right interpretation supports both. Each method supplies a feasible arrangement as well as proving the forced answer.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_10A_Q13",
+    "decision": "accept",
+    "mathematicalCheck": "The fixed seat-number total gives (e-a)+2-1=0, forcing a=2 when e is an available end seat. The second method exhausts Bea's two possible destinations and independently forces the same answer. The supplied arrangement verifies feasibility.",
+    "levelCheck": "Both the short sum argument and the direct two-case deduction are accessible at AMC 10 level and explain their decisive steps.",
+    "methodDistinctness": "The invariant total and the occupancy case analysis provide genuinely distinct elementary insights.",
+    "annotationCheck": "Finite constraint deduction is a suitable route-neutral target. The invariant and simple equation remain method-local, while interpreting left and right supports both methods.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "seat-number-sum": "seat-number-sum",
+    "three-changing-seats": "three-changing-seats"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "832d4c47a0d08c67536d395b2d769eab946997010a9b9a7fc287bae96dc038a6",
+    "inputHash": "69d381786b1ef8fc66716059adfb3f5c9042a96b7c2d00b95df54e2798c780c1",
+    "authorInputHash": "3680b0b1c190c41a6345cd36a0e351498f9765e7e0f510efff0244a6c74baf0b",
+    "reviewInputHash": "30430b4463884f1fca42bc2cfef3a2d7b41a5e7aa3176390d99c88fb023f5f9d",
+    "authorResponseHash": "7710eeadfba5b37831f4be4fca263b201f8faeb5e0a7f6268edf5a596b29792c",
+    "reviewerResponseHash": "0b6804ea8d1818bfd3207667ad3a19e47edc4e6d12561baf3f1c84a31e5729c7",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

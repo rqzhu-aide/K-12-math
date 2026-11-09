@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2025_AMC_8_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "8e411b9be0f9ee11f57e0e6027aa1bf0aed14e6c8fc4bd9c2f70e987a346ff0d",
+    "figureHashes": {
+      "figures/2025_AMC_8_Q25_question_fig1.svg": "bdaa25437d9ca3880e0e4ec986174619039319a97d46eefcccda6ec358378faa"
+    }
+  },
+  "solutionSHA256": "de51e1f133cf4d80c050214fd7b99f4817ba53034ee73660737cd068cc1899be",
+  "solutionFigureHashes": {},
+  "candidateHash": "c388d8ce34af1705dedc9f75a9c2a18a4b4e9aafadc296086f683f9cc3268845",
+  "candidate": {
+    "questionId": "2025_AMC_8_Q25",
+    "derivedAnswer": "3150 square units (B)",
+    "answerStatus": "matches",
+    "answerReason": "There are 252 paths. Reflection exchanges left and right areas, so the requested total is half of 252 times the grid's area of 25, giving 3150.",
+    "methods": [
+      {
+        "id": "method_1",
+        "label": "Count paths and use reflection",
+        "explanation": "The grid's symmetry lets us find the total without calculating every path's area separately. First, count the paths.\n\nEvery path must take five northeast steps and five northwest steps. Any ordering of these steps stays inside the grid: the numbers of steps taken in the two directions locate a grid vertex, and each number remains between \\(0\\) and \\(5\\).\n\nChoosing the five northeast step positions among the ten positions determines exactly one path, with northwest steps filling the remaining positions. Conversely, every path determines these five positions, so none are omitted or repeated. There are \\(10\\cdot9\\cdot8\\cdot7\\cdot6\\) ways to select five positions in order. Each selection of five positions appears \\(5\\cdot4\\cdot3\\cdot2\\cdot1\\) times, once for each ordering. Thus the number of paths is\n\\[\n\\frac{10\\cdot9\\cdot8\\cdot7\\cdot6}{5\\cdot4\\cdot3\\cdot2\\cdot1}=252.\n\\]\nThe grid contains \\(5\\cdot5=25\\) unit squares. Because every path follows grid edges, each square's interior lies entirely on one side of the path. Thus the left and right areas for any path add to \\(25\\), including paths along the boundary.\n\nReflect a path across the vertical line through the bottom and top corners. This produces another allowed path and exchanges its left and right areas. Reflecting again returns the original path, so reflection matches all paths without omissions or repetitions. Consequently, the total of all left areas equals the total of all right areas.\n\nLet \\(S\\) be the requested total of the right areas. Adding both sides' areas for every path gives\n\\[\n2S=252\\cdot25,\n\\qquad\nS=3150.\n\\]\nThe sum is \\(\\boxed{3150}\\) square units, choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_h239",
+          "math:bijective-counting",
+          "math:double-counting"
+        ],
+        "prerequisiteIds": [
+          "cnm_h231",
+          "cnm_p089",
+          "cnm_p127"
+        ],
+        "levelReason": "The selection count is derived using a short product and division for repeated orderings. Unit-square counting and reflection complete the argument using elementary AMC 8 reasoning."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h239",
+      "math:double-counting"
+    ],
+    "supportIds": [
+      "cnm_h231",
+      "cnm_p089",
+      "cnm_p127"
+    ],
+    "annotationRationale": "The task combines counting the allowed paths with totaling their areas. Choosing step positions is an application of combinations, justified through an explicit reversible encoding. Double counting applies to occurrences of unit squares with paths: counting by path gives 252 times 25, while separating occurrences by side and using reflection gives two equal totals. Multiplication, square area, and elementary line symmetry support this route. Reflection does not identify different paths as equivalent arrangements, so symmetry-quotient counting is not assigned.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2025_AMC_8_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The pictured grid contains 25 unit squares. Every path uses five steps in each direction, and all 252 counted orderings remain inside the grid. Vertical reflection bijectively exchanges left and right areas, giving 2S = 252 × 25 and S = 3150. The explanation accounts for counting multiplicities and boundary paths.",
+    "levelCheck": "Appropriate for AMC 8. The selection count is derived using elementary multiplication and division, and the decisive reflection argument is fully explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The combination and bijection tags fit the step-position encoding. Double counting is justified by counting path-square occurrences by path and by side. Multiplication, square area, and line symmetry are valid supporting concepts.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "method_1": "method_1"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "59ea623eda7cb92d355a024ae6a329f6249b7ffce35d32d883807cdb5aa3af0e",
+    "acceptedAt": "2026-11-07T07:51:00.696817+00:00",
+    "inputHash": "b46462f21bde8a78526bf711c85829f92fb2e60fd7f9c37ef08b38f7df429220",
+    "authorInputHash": "41f60057ab01bea9d6cbe4d9eaf7d3a51207eeedde2b463136ff57966ccd813e",
+    "reviewInputHash": "c153d6da7a7b58676e12d671bccd32104c7fa5c6bfe187fd39f39de794d5996a",
+    "authorResponseHash": "9c2bd944f6bce09145648e052a1679757a71b283df6d0718da61fe5450c9fa32",
+    "reviewerResponseHash": "89bb30da661cc5a7f5c01425dec68ca983cd8fd763de15720717e9004f0d0671",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

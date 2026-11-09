@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2008_AMC_10A_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "1f39157ad114f6a380df445c4213c54b5ba58139c8711b9b61f5ac4eefdd439c",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "be907120c90e5dc20acf9161368dd4636129fa2c6cfab6e818abb96ca927765c",
+  "solutionFigureHashes": {},
+  "candidateHash": "cff6034e4753af055517d1f1c06842e7559f766d18999341d1f78fd64a23044a",
+  "candidate": {
+    "questionId": "2008_AMC_10A_Q23",
+    "derivedAnswer": "\\(40\\), choice B",
+    "answerStatus": "matches",
+    "answerReason": "There are 10 choices for the intersection and four unordered distributions of the remaining three elements, giving 40 and matching B.",
+    "methods": [
+      {
+        "id": "partition-the-remaining-elements",
+        "label": "Choose the intersection, then split the rest",
+        "explanation": "First choose the two elements that belong to both subsets. There are\n\\[\n\\binom52=\\frac{5\\cdot4}{2}=10\n\\]\nchoices: choosing them in sequence counts each pair twice.\n\nEach of the other three elements must belong to exactly one subset. Belonging to neither would violate the union condition, and belonging to both would enlarge the intersection. Because the subsets are unordered, their exclusive elements can split in just two ways:\n\nIf all three go together, one subset is the chosen intersection and the other is \\(S\\). This gives one pair.\n\nIf they split as one element and two elements, choosing the lone element determines the pair. This gives three pairs. There is no duplication because the subset receiving the lone element is uniquely distinguished by its smaller size.\n\nThese cases exhaust all splits of three elements. Also, every valid pair has a unique intersection, so different intersection choices cannot overlap. The total is\n\\[\n10(1+3)=\\boxed{40},\n\\]\nchoice \\(\\text{B}\\).",
+        "nodeIds": [
+          "cnm_h239",
+          "cnm_h230",
+          "cnm_h231"
+        ],
+        "prerequisiteIds": [
+          "cnm_h008",
+          "cnm_h009",
+          "cnm_h236"
+        ],
+        "levelReason": "The method uses elementary unordered selection and an exhaustive two-case split of three elements."
+      },
+      {
+        "id": "label-and-remove-double-counting",
+        "label": "Count labeled subsets, then remove the labels",
+        "explanation": "Temporarily label the two subsets \\(A\\) and \\(B\\). Choose their two common elements in \\(\\binom52=10\\) ways. Every remaining element must go into exactly one of \\(A\\) and \\(B\\), giving two choices for each of three elements. Thus the number of labeled pairs is\n\\[\n10\\cdot2^3=80.\n\\]\nThis construction includes every valid labeled pair exactly once: its intersection specifies the first choice, and membership of the remaining elements specifies the three assignments.\n\nNow remove the labels. The subsets cannot be equal, since equal subsets would have the same union and intersection, whereas those sizes here are \\(5\\) and \\(2\\). Therefore, every unordered pair has exactly two labeled versions, \\((A,B)\\) and \\((B,A)\\). Dividing by this multiplicity gives\n\\[\n\\frac{80}{2}=\\boxed{40},\n\\]\nchoice \\(\\text{B}\\).",
+        "nodeIds": [
+          "cnm_h239",
+          "cnm_h231",
+          "math:double-counting"
+        ],
+        "prerequisiteIds": [
+          "cnm_h008",
+          "cnm_h009",
+          "cnm_h006",
+          "cnm_h236"
+        ],
+        "levelReason": "Labeling and correcting an exact factor of two requires only elementary counting; the unequal-subset condition justifies the correction."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h239"
+    ],
+    "supportIds": [
+      "cnm_h008",
+      "cnm_h009",
+      "cnm_h236"
+    ],
+    "annotationRationale": "The task-level target is counting constrained unordered selections. Both routes interpret union and intersection through element membership and choose the common pair. The first route uses disjoint size cases and multiplication. The second counts labeled objects in two ways and proves the exact multiplicity before dividing, so double counting remains method-specific.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2008_AMC_10A_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "There are 10 choices for the intersection. The remaining elements have four unordered splits: one of size 0+3 and three of size 1+2. Alternatively, 80 labeled pairs each have exactly two labelings because the subsets cannot be equal. Both counts give 40 without omissions or duplication.",
+    "levelCheck": "Both arguments are elementary and explicitly justify completeness and counting multiplicities.",
+    "methodDistinctness": "Direct classification of unordered splits and labeled counting with an exact multiplicity correction provide distinct accessible counting ideas.",
+    "annotationCheck": "The combination target and shared union, intersection, and combination concepts are justified. The second method's two-count interpretation of labeled pairs supports math:double-counting.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "partition-the-remaining-elements": "partition-the-remaining-elements",
+    "label-and-remove-double-counting": "label-and-remove-double-counting"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "5f09c6ca71c3c7dd0695afafaa8f8112c880778aa779596e1d652a611ee6c49a",
+    "inputHash": "1a710d54c6cef937ba7a17e405b145314ad9cfcfb8656db1cb5f4dc085f3ea19",
+    "authorInputHash": "164cd1456f12b58659471e70ac3c7c01228bad7050c4d052b4c2350c90d08b4b",
+    "reviewInputHash": "9942f759a47e9e232ed9b7c43929a0e55a0d1b62eee337ec153d093f1cb958df",
+    "authorResponseHash": "59ea6d797cf57bf97bc6f118aa46dbb994665d898f7cc99c1e4a37210de975b4",
+    "reviewerResponseHash": "48c17a36f6be73e85dedfaafdd57fa37a2d28b1ebf783fa473cc8c652f8521fc",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

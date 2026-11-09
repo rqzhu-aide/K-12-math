@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2011_AMC_10B_Q20",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "bd951dbd240eb045480ccaa39580179bf111c83db33e99dbd7ca2123564d787a",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "951b745753041ae784a9be3d680151703a34624f5f0fe13784d0a7cc6a02a0c9",
+  "solutionFigureHashes": {},
+  "candidateHash": "06fa9e0173d6534b901e666c862b7648f21ad2c2c05b450e57301382b8b10b16",
+  "candidate": {
+    "questionId": "2011_AMC_10B_Q20",
+    "derivedAnswer": "\\(\\frac{2\\sqrt3}{3}\\), choice C",
+    "answerStatus": "matches",
+    "answerReason": "The nearest-vertex comparisons leave a pentagonal region whose area is \\(\\sqrt3-1/\\sqrt3=2\\sqrt3/3\\). Strict distance boundaries do not affect its area.",
+    "methods": [
+      {
+        "id": "perpendicular-bisectors-and-corner-areas",
+        "label": "Remove the two corner triangles",
+        "explanation": "Perpendicular bisectors are useful because each separates points closer to one endpoint from points closer to the other. We may include boundary line segments while computing area, since they have area zero.\n\nLet \\(O\\) be the intersection of the rhombus's diagonals. Diagonal \\(BD\\) bisects the \\(120^\\circ\\) angle at \\(B\\), so \\(\\angle ABD=60^\\circ\\). Since \\(AB=AD\\), triangle \\(ABD\\) also has a \\(60^\\circ\\) angle at \\(D\\), making it equilateral. Hence \\(BD=2\\). The diagonals perpendicular-bisect each other, so\n\\[\nBO=DO=1,\n\\qquad AO=CO=\\sqrt{2^2-1^2}=\\sqrt3.\n\\]\nBecause \\(AC\\) is the perpendicular bisector of \\(BD\\), being closer to \\(B\\) than to \\(D\\) restricts us to triangle \\(ABC\\), whose area is\n\\[\n\\frac12(AC)(BO)=\\frac12(2\\sqrt3)(1)=\\sqrt3.\n\\]\nLet \\(E\\) and \\(F\\) be the midpoints of \\(AB\\) and \\(BC\\). We have \\(DA=DB=DC=2\\), so \\(DE\\) and \\(DF\\) are the perpendicular bisectors of \\(AB\\) and \\(BC\\). Let these segments meet \\(AC\\) at \\(P\\) and \\(Q\\), respectively. Segment \\(DE\\) crosses \\(AO\\) inside triangle \\(ABD\\), and \\(DF\\) crosses \\(CO\\) similarly.\n\nWithin triangle \\(ABC\\), the points closer to \\(A\\) than to \\(B\\) form the corner triangle \\(AEP\\). Since \\(AC\\) bisects \\(\\angle DAB\\), the right triangles \\(AEP\\) and \\(AOD\\) have equal angles at \\(A\\) and are similar. Therefore\n\\[\n\\frac{EP}{OD}=\\frac{AE}{AO}=\\frac1{\\sqrt3},\n\\]\nso \\(EP=1/\\sqrt3\\). Also \\(AP=AD/\\sqrt3=2/\\sqrt3<AO\\). Reflection across \\(BD\\) gives an equal corner triangle \\(CFQ\\), with \\(Q\\) between \\(C\\) and \\(O\\). Thus the two removed corners do not overlap.\n\nThese comparisons account for all three other vertices. The required area is\n\\[\n\\sqrt3-2\\left(\\frac12\\cdot1\\cdot\\frac1{\\sqrt3}\\right)\n=\\sqrt3-\\frac1{\\sqrt3}\n=\\boxed{\\frac{2\\sqrt3}{3}},\n\\]\nchoice C.",
+        "nodeIds": [
+          "cnm_133",
+          "cnm_p150",
+          "cnm_271",
+          "cnm_272",
+          "cnm_132"
+        ],
+        "prerequisiteIds": [
+          "cnm_189",
+          "cnm_137",
+          "cnm_139",
+          "cnm_174",
+          "cnm_p148"
+        ],
+        "levelReason": "Uses perpendicular bisectors, rhombus properties, elementary similarity, the Pythagorean theorem, and triangle areas."
+      },
+      {
+        "id": "coordinate-distance-region",
+        "label": "Translate the distance comparisons into inequalities",
+        "explanation": "First obtain coordinates from the given geometry. Diagonal \\(BD\\) bisects the angle at \\(B\\), giving \\(\\angle ABD=60^\\circ\\). Since \\(AB=AD\\), triangle \\(ABD\\) is equilateral, so \\(BD=2\\). The rhombus's diagonals perpendicular-bisect each other; consequently half of \\(AC\\) has length \\(\\sqrt{2^2-1^2}=\\sqrt3\\).\n\nWe may therefore choose\n\\[\nB=(0,0),\\quad D=(0,2),\\quad\nA=(\\sqrt3,1),\\quad C=(-\\sqrt3,1).\n\\]\nInclude boundary segments temporarily, since doing so does not change area. For a point \\((x,y)\\), comparison with \\(D\\) gives\n\\[\nx^2+y^2\\le x^2+(y-2)^2\n\\quad\\Longleftrightarrow\\quad y\\le1.\n\\]\nIn this lower half of the rhombus, being inside the rhombus means \\(0\\le y\\le1\\) and \\(|x|\\le\\sqrt3y\\).\n\nComparison with \\(A\\) gives\n\\[\nx^2+y^2\\le(x-\\sqrt3)^2+(y-1)^2\n\\quad\\Longleftrightarrow\\quad \\sqrt3x+y\\le2.\n\\]\nComparison with \\(C\\) similarly gives \\(-\\sqrt3x+y\\le2\\). Together, these describe the sides of the perpendicular-bisector boundaries containing \\(B\\). Thus all three vertex comparisons are satisfied exactly when\n\\[\n0\\le y\\le1,\\qquad\n|x|\\le\\min\\left(\\sqrt3y,\\frac{2-y}{\\sqrt3}\\right).\n\\]\nThe two width bounds agree when \\(3y=2-y\\), or \\(y=1/2\\). Below this height the region is a triangle of height \\(1/2\\) and base \\(\\sqrt3\\). Above it is a trapezoid of height \\(1/2\\), with parallel sides of lengths \\(\\sqrt3\\) and \\(2/\\sqrt3\\). They meet only along their common edge, so their areas add:\n\\[\n\\operatorname{Area}(R)\n=\\frac{\\sqrt3}{4}\n+\\frac{\\sqrt3+2/\\sqrt3}{4}\n=\\boxed{\\frac{2\\sqrt3}{3}}.\n\\]\nThe answer is choice C.",
+        "nodeIds": [
+          "cnm_133",
+          "cnm_084",
+          "cnm_h173",
+          "math:linear-half-plane-systems",
+          "cnm_p150",
+          "cnm_p149"
+        ],
+        "prerequisiteIds": [
+          "cnm_189",
+          "cnm_137",
+          "cnm_139",
+          "cnm_174",
+          "cnm_p148"
+        ],
+        "levelReason": "Uses coordinates, squared-distance comparisons, linear inequalities, and triangle and trapezoid areas. No trigonometry or integration is used."
+      }
+    ],
+    "assessedIds": [
+      "cnm_133",
+      "cnm_p150"
+    ],
+    "supportIds": [
+      "cnm_189",
+      "cnm_137",
+      "cnm_139",
+      "cnm_174",
+      "cnm_p148"
+    ],
+    "annotationRationale": "The task requires locating the nearest-vertex region through perpendicular-bisector boundaries and computing its composite area. Both methods derive the diagonal lengths from rhombus, triangle, and Pythagorean properties. The synthetic route uses similarity and reflection to subtract two corner triangles. The coordinate route uses squared distances, an intersection of half-planes, and a triangle-trapezoid partition. These route-specific procedures are kept separate.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2011_AMC_10B_Q20",
+    "decision": "accept",
+    "mathematicalCheck": "The geometry gives BD=2 and AO=√3. The synthetic method subtracts two nonoverlapping triangles, each of area 1/(2√3), from √3. The coordinate inequalities account for all three competing vertices and switch bounds at y=1/2. Both methods give 2√3/3, with strict boundaries irrelevant to area.",
+    "levelCheck": "Both routes use elementary geometry and school algebra within AMC 10. Neither requires trigonometry or integration.",
+    "methodDistinctness": "Similarity-based corner subtraction and coordinate distance inequalities provide genuinely different complete approaches.",
+    "annotationCheck": "Perpendicular-bisector boundaries and composite area are supported targets. Shared geometric prerequisites apply to both methods, while similarity/reflection and coordinate half-plane procedures remain method-specific.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "perpendicular-bisectors-and-corner-areas": "perpendicular-bisectors-and-corner-areas",
+    "coordinate-distance-region": "coordinate-distance-region"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "237e8887397c84c8704893422bd5e4dc2dd0a58b2da6d5836ea0d521536b208d",
+    "inputHash": "62ac97153a5e7f160381c4bb138e915aef633206a5e051072976d63a18e234f9",
+    "authorInputHash": "61073180e89f3fe5a00d875837cc42423f69090f6a71475ac08bae491b65fd59",
+    "reviewInputHash": "29dc995ccc31bb75d55738f31c624d0c00824b0352f47b1518609e40b2c3bf85",
+    "authorResponseHash": "a4c90771fb31685f1ec8e3f919154b82d1c776b0560c56115ec75e55a1f3db2a",
+    "reviewerResponseHash": "af506eb6e6385749fe5c92db35317e265a9b0173007d879e3f0d5afc548bbce3",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2025_AMC_8_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "247baad137fe274c119c7719686083d5b17b415c434d8ecc2bc795f3da8668ce",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "44a85400cab2349079dfd5715c5f54d4626ee595ca7e3d9e41127d32191d0678",
+  "solutionFigureHashes": {},
+  "candidateHash": "bffaf4a7ab998f062a057a39fb9d33060858349df39acb0aa26e1eded207d974",
+  "candidate": {
+    "questionId": "2025_AMC_8_Q23",
+    "derivedAnswer": "B: 1",
+    "answerStatus": "matches",
+    "answerReason": "Only 3599 satisfies all three conditions: it ends in 99, equals 60²−1, and is 59×61 with both factors prime.",
+    "methods": [
+      {
+        "id": "square-neighbors",
+        "label": "Check the two neighbors of the square root",
+        "explanation": "Adding \\(1\\) to a number ending in \\(99\\) produces a number ending in \\(00\\). Write the desired number as \\(N=s^2-1\\), where \\(s\\) is a positive integer. Since \\(N\\) has four digits,\n\\[\n1001\\leq s^2\\leq10000.\n\\]\nBecause \\(31^2=961\\) and \\(100^2=10000\\), we have \\(32\\leq s\\leq100\\). A square ends in \\(0\\) only when its root ends in \\(0\\), as checking the squares of the ten possible ones digits shows. Therefore the complete list of possible roots is\n\\[\ns=40,50,60,70,80,90,100.\n\\]\nEach of these roots does give a four-digit number ending in \\(99\\).\n\nTo test the prime condition, use the two neighbors of \\(s\\):\n\\[\n(s-1)(s+1)=s^2-s+s-1=s^2-1=N.\n\\]\nBoth factors exceed \\(1\\). Consequently, \\(N\\) is a product of exactly two primes precisely when both neighbors are prime. If either neighbor is composite, splitting it into factors already gives at least three prime factors in the product, counting repetitions.\n\nSix roots fail because one neighbor is composite:\n\\[\n\\begin{aligned}\ns=40 &: \\quad 39=3\\cdot13,\\\\\ns=50 &: \\quad 49=7\\cdot7,\\\\\ns=70 &: \\quad 69=3\\cdot23,\\\\\ns=80 &: \\quad 81=9\\cdot9,\\\\\ns=90 &: \\quad 91=7\\cdot13,\\\\\ns=100 &: \\quad 99=9\\cdot11.\n\\end{aligned}\n\\]\nFor \\(s=60\\), the neighbors are \\(59\\) and \\(61\\). Neither is divisible by \\(2,3,5,\\) or \\(7\\), so both are prime. These checks suffice: a composite number below \\(64=8^2\\) has a factor below \\(8\\), and hence a prime divisor among \\(2,3,5,7\\).\n\nThus the only qualifying number is\n\\[\n60^2-1=3599=59\\cdot61.\n\\]\nEvery possible positive root has been checked, and different positive roots give different numbers. The count is \\(\\boxed{1}\\), choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_p157",
+          "cnm_152"
+        ],
+        "prerequisiteIds": [
+          "cnm_p053",
+          "cnm_p153",
+          "cnm_p116"
+        ],
+        "levelReason": "Decimal endings and a short bounded list restrict the candidates. The neighboring-factor identity is derived directly, and primality is checked with small divisors; no formal congruence machinery is used."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations",
+      "cnm_p157"
+    ],
+    "supportIds": [
+      "cnm_p053",
+      "cnm_p153"
+    ],
+    "annotationRationale": "The route-neutral targets are exhausting integer candidates under the digit and square restrictions and applying the prime/composite distinction to the two-prime requirement. The method uses difference-of-squares factoring, supported locally by the distributive property. Four-digit place value and factors support the whole argument. The existing modular-congruence label is unnecessary for the elementary decimal-ending reasoning actually written.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2025_AMC_8_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "The four-digit bound and decimal ending restrict the positive square root to 40, 50, 60, 70, 80, 90, 100. Since N=(s-1)(s+1) and both factors exceed 1, exactly two prime factors requires both neighbors to be prime. The six exclusions are valid; checking divisibility by 2, 3, 5, 7 proves 59 and 61 prime. Thus 3599 is the unique qualifying number.",
+    "levelCheck": "The neighboring-factor identity is derived, and the small-divisor primality test is explained. The reasoning is complete and accessible at AMC 8 level.",
+    "methodDistinctness": "The single method combines candidate restriction and prime testing into one complete argument. No alternative is needed.",
+    "annotationCheck": "The integer-solution and prime/composite assessed IDs fit the task. Difference-of-squares factoring fits the method, while place value, factors, and distribution support the written steps. Removing formal modular-congruence support is justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "square-neighbors": "square-neighbors"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "98a33ab40eb5c27737403e0443dec99c96e7a0af4fbbb227d6c41374a658685f",
+    "acceptedAt": "2026-11-08T16:51:16.596516+00:00",
+    "inputHash": "21fc954575498245daa46d98f98353d7efea5d15a65e5ca89181e34effadcfd7",
+    "authorInputHash": "86e76350d57311ae85e1348fcb4cfb5267e446b4d6e5243f350eee5fa2e9e1e8",
+    "reviewInputHash": "e01c92f0899163f6751c106fc6d8f013936baba157faff0fdee0dcc3ce8016c0",
+    "authorResponseHash": "10ad229eda99865817cc79ff0125c05c6e0fa0850eacda722ade6dbb8121dfb2",
+    "reviewerResponseHash": "0e1fec1457e8669be6179c2f52c74e17d5003409678cade00df44da3ff3a9790",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

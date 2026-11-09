@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2012_AMC_12A_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "6831ad21568599561771a03117c4d091b37daada1fbbb1aac2cdb452ab18ad01",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "cfd5446578eacab205de25ea9c46c83ad51c3677539dd3956a47e4c1f4ee33c2",
+  "solutionFigureHashes": {},
+  "candidateHash": "7db02f7e8170ffe5a65a63e09b77cec3b7cdceac7e30b6d0e4633bff1ab58888",
+  "candidate": {
+    "questionId": "2012_AMC_12A_Q22",
+    "derivedAnswer": "20 (C), with minimum k = 7 and maximum k = 27",
+    "answerStatus": "matches",
+    "answerReason": "There are exactly 27 allowable planes. Covering the 36 required face segments requires at least seven planes, and three central squares together with four central hexagons attain that bound.",
+    "methods": [
+      {
+        "id": "classify-sections-and-attain-bounds",
+        "label": "Classify the sections and prove both bounds",
+        "explanation": "On each face, the four edge midpoints determine six required segments: two join opposite edge midpoints, and four join adjacent edge midpoints. Call these midlines and corner segments, respectively. Altogether there are \\(12\\) midlines and \\(24\\) corner segments.\n\nAn allowable plane cuts each face it crosses in a straight chord. Since no additional surface points are allowed, that chord must be one of the six required segments. Also, every required segment must lie in at least one chosen plane: finitely many planes that do not contain its line could cover only finitely many points of the segment.\n\nWe first classify all allowable planes. Choose coordinates so the cube is \\([-1,1]^3\\). This merely chooses a convenient common scale.\n\nSuppose a section contains a midline. By cube symmetry, take that midline to have endpoints \\((0,-1,1)\\) and \\((0,1,1)\\). On the adjacent face \\(y=1\\), the section must join \\((0,1,1)\\) to one of that face's other three edge midpoints:\n\\[\n(0,1,-1),\\quad (1,1,0),\\quad (-1,1,0).\n\\]\nThree noncollinear points determine a plane, so these choices give, respectively,\n\\[\nx=0,\\qquad x+z=1,\\qquad -x+z=1.\n\\]\nThe first produces a central square; the other two produce rectangles. Applying cube symmetry gives exactly three central squares and twelve rectangles. Each rectangle has midlines on exactly two adjacent faces, and there is one such rectangle for each of the cube's twelve edges. Each square contains four required face segments, while each rectangle contains four, including two midlines.\n\nNow suppose a section has no midline. Take one of its corner segments to have endpoints \\((1,0,1)\\) and \\((0,1,1)\\). On the face \\(x=1\\), its next segment must join \\((1,0,1)\\) to either \\((1,1,0)\\) or \\((1,-1,0)\\); the third possible endpoint would create a midline. These choices determine\n\\[\nx+y+z=2\n\\quad\\text{or}\\quad\nx+y-z=0.\n\\]\nThe first cuts off a corner triangle, giving eight possibilities, one for each cube vertex. The second gives a central hexagon. Its symmetric versions have equations \\(\\pm x\\pm y\\pm z=0\\); reversing all signs gives the same plane, so there are \\(2^3/2=4\\) hexagons. These triangles and hexagons have only required corner segments as their sides.\n\nThe classification is exhaustive, and each listed plane is allowable. Thus at most\n\\[\n3+12+8+4=27\n\\]\nplanes can be chosen.\n\nTo bound the minimum, let \\(t\\) be the number of chosen planes containing midlines. Each covers at most four of the twelve midlines, so \\(t\\ge3\\). Such planes meet only four faces; every other plane meets at most six. Covering all \\(36\\) required segments therefore requires\n\\[\n36\\le4t+6(k-t)=6k-2t\\le6k-6,\n\\]\nwhich gives \\(k\\ge7\\).\n\nSeven planes do suffice. The three central squares cover all twelve midlines. The four central hexagons cover all twenty-four corner segments: on \\(z=1\\), their traces are exactly \\(x+y=\\pm1\\) and \\(x-y=\\pm1\\), and the same holds on every other face by symmetry. Hence the minimum is \\(7\\). Adding all remaining allowable planes introduces no extra surface points, so the maximum is \\(27\\).\n\nThe requested difference is\n\\[\n27-7=\\boxed{20},\n\\]\nchoice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_h151"
+        ],
+        "prerequisiteIds": [
+          "cnm_h113",
+          "cnm_p160",
+          "cnm_h230"
+        ],
+        "levelReason": "The proof uses elementary cube geometry, coordinates, planes determined by three points, and counting bounds with explicit constructions."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_h113",
+      "cnm_p160",
+      "cnm_h230"
+    ],
+    "annotationRationale": "Both extrema require universal bounds and configurations attaining them. Spatial coordinates make the exhaustive section classification inspectable; basic plane incidence, cube structure, and addition of disjoint counts support the argument.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2012_AMC_12A_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "The adjacent-face endpoint choices exhaust the allowable sections: 3 squares, 12 rectangles, 8 triangles, and 4 hexagons. Covering 12 midlines requires at least three planes containing midlines, yielding 36 ≤ 6k − 6 and k ≥ 7. The seven-plane construction covers every required segment, and all 27 allowable planes can coexist.",
+    "levelCheck": "Elementary spatial coordinates, plane incidence, and counting bounds fit AMC 12. The classification is inspectable without a figure.",
+    "methodDistinctness": "One method establishes both extrema with bounds and attaining constructions.",
+    "annotationCheck": "The extremal assessed ID is route neutral. Spatial coordinates, plane facts, cube structure, and classified counting are accurately annotated.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "classify-sections-and-attain-bounds": "classify-sections-and-attain-bounds"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "60d941ad12f27bdec1baed29f60b22c5884ecae11bacac2fbf993541d813d97c",
+    "inputHash": "d72e7747326af1c505511af086300f493ef675e901d57cf845ab70daaee6fb0a",
+    "authorInputHash": "217ed61007597acf91feb05f90d96fd3de6c40bbb395666e370e058710ef1e4b",
+    "reviewInputHash": "f143c5abce0dd4c5fc9b2bf6850cbe2c878b4b0c7fbffe419d9465edca1d5002",
+    "authorResponseHash": "16561e987222304bd53d80980bcd016a4557fa1530b2bfb6aacb476f114e0500",
+    "reviewerResponseHash": "2bfd0d454918b6a2c4238bf97f23a3926709f26e34d4a7b6100445c6c1e9feb2",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

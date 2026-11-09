@@ -1,0 +1,65 @@
+# K-12-Math knowledge graph, questions and practice UI
+
+[![Knowledge graph 1.0.0](https://img.shields.io/badge/Knowledge_graph-1.0.0-245984)](database/knowledge-graph/source/metadata.json)
+[![CN bank 2.0.0](https://img.shields.io/badge/CN_bank-2.0.0-427354)](database/cn-math-bank/VERSION)
+[![AMC bank 2.7.0](https://img.shields.io/badge/AMC_bank-2.7.0-996532)](database/amc-bank/VERSION)
+[![Math Practice UI 2.2.0](https://img.shields.io/badge/Math_Practice_UI-2.2.0-625395)](math-practice/VERSION)
+
+**[Open Math Practice online](https://rqzhu-aide.github.io/K-12-math/)** to browse all 8,790 questions. The site loads the question you choose. No installation or account is needed.
+
+K-12-math is a mathematics study collection with **936 knowledge graph nodes (knowledge items), 3,355 Chinese curriculum questions, and 5,435 AMC questions**. Students can follow the Chinese curriculum, browse US Common Core standards, or explore concepts through the grade-independent **ailleo** map. A question can connect to several concepts, and different solution methods can use different sets of concepts.
+
+## What’s in the repository
+
+| Component | Version | Contents |
+|---|---|---|
+| [Mathematics knowledge graph](database/knowledge-graph/) | 1.0.0 | Connects 936 concepts through 1,634 accepted relationships and links questions to the concepts they assess or use in a solution. |
+| [Chinese curriculum question bank](database/cn-math-bank/) | 2.0.0 | Contains 3,355 questions in English with answers and worked solutions, alongside the original Chinese material. |
+| [AMC question bank](database/amc-bank/) | 2.7.0 | Contains 5,435 questions from 195 competition papers, each with an answer key and a worked solution. |
+| [Math Practice UI](math-practice/) | 2.2.0 | Serves both question banks online and runs locally with optional voice input and AI tutoring. |
+
+## Question counts
+
+The two banks contain **8,790 question entries**, all with worked solutions and graph annotations. Each appearance of a problem on a separate AMC paper counts as one entry.
+
+| CN curriculum | Questions | AMC contest family | Questions |
+|---|---:|---|---:|
+| Primary | 864 | AMC 8 / AJHSME | 1,025 |
+| Middle school | 1,407 | AMC 10 | 1,300 |
+| High school, required | 572 | Modern AMC 12 | 1,300 |
+| High school, elective | 512 | Historical high school, 1950 to 1999 | 1,810 |
+| **CN total** | **3,355** | **AMC total** | **5,435** |
+
+For 8,780 questions, the annotation identifies an assessed concept or a solution route. The other ten link to definitions for context. The banks contain 9,780 written methods, and 977 questions have more than one. Of the AMC questions, 608 include an adaptation of an official MAA solution. The question banks identify the sources of their explanations.
+
+## Practice with the collection
+
+**Online practice.** Choose **Try a problem** to start immediately, or **Browse** to pick a contest, curriculum topic, or concept. Enter your answer and use **Explore solution** to read the worked methods. Your notebook stays in that browser. [Open Math Practice](https://rqzhu-aide.github.io/K-12-math/)
+
+**Local practice.** For offline access, voice transcription, or AI feedback using your own model connections, download and extract the repository ZIP and install Python 3.11 or newer. On Windows, double-click **Start Math Practice.cmd** in the extracted folder. On macOS or Linux, run `python3 math-practice/runtime/serve_math_practice.py` from that folder. [Download ZIP](https://github.com/rqzhu-aide/K-12-math/archive/refs/heads/main.zip) · [Local setup instructions](math-practice/README.md#run-locally)
+
+| 1. Practice a question | 2. Choose the model for each task |
+|:---:|:---:|
+| [![Question page with the problem, answer controls, and space to explain the solution](math-practice/images/question-page.png)](math-practice/images/question-page.png) | [![API connection settings showing math reasoning and feedback, voice to text, and sentiment analysis](math-practice/images/model-settings.png)](math-practice/images/model-settings.png) |
+
+In the local edition, students can record their reasoning, edit the transcript, and submit it with their answer. In **Settings → Connection settings**, each of three optional roles can use its own provider. For example, use an OpenAI account for math and local models for the other two.
+
+- **Math reasoning and feedback** checks the submitted answer and explanation together. If either has a problem, the tutor explains where and can offer a hint.
+- **Voice to text** transcribes the recording into a draft the student can edit.
+- **Sentiment analysis** reads the original transcript for expressed confidence, engagement, and how clearly the student explained their reasoning. It does not grade the math or analyze vocal tone.
+
+See [UI and model setup](math-practice/README.md#optional-ai-connections) for supported APIs and local model settings.
+
+## Further development and custom question banks
+
+All 8,790 questions with stored worked solutions use the compact English format published in [question-bank template 1.0.0](question-bank-template/). It records the prompt, choices, accepted answers, classification, sources, and the immediate knowledge nodes for each solution method. To use your own bank, prepare its questions in this format and import the folder into Math Practice. The template includes an importable example and the commands to check it.
+
+Every stored AMC question now has a worked solution. The [AMC release notes](https://github.com/rqzhu-aide/K-12-math/releases/tag/amc-bank-v2.7.0) describe the final 236 AMC 12 explanations and their source credits.
+
+## License and sources
+
+The project’s original **mathematics knowledge graph is licensed under [CC BY-NC 4.0](database/knowledge-graph/LICENSE)**. This covers its original concept definitions, relationship and alignment decisions, and the selection and arrangement of the graph. The same [project license](LICENSE) covers the original UI and template. Incorporated materials keep their source terms. [Graph license scope](database/knowledge-graph/NOTICE.md)
+
+The [Chinese mathematics taxonomy](https://github.com/xiaoyang111222/cn-math-taxonomy) supplies the CN questions and the initial graph. AMC questions, included official booklets, and their adaptations are credited to the [Mathematical Association of America](https://maa.org/student-programs/amc/) and distributed under [CC BY-NC-SA 4.0](database/amc-bank/NOTICE.md). The AMC bank credits [LIVE by Po-Shen Loh](https://live.poshenloh.com/past-contests) for transcription.
+
+The US map uses the [Common Core State Standards for Mathematics](https://www.thecorestandards.org/Math/) and [Student Achievement Partners’ Coherence Map](https://tools.achievethecore.org/coherence-map/). The graph review also consulted [Illustrative Mathematics](https://tasks.illustrativemathematics.org/), the [Common Core mathematics Progressions](https://archive.math.arizona.edu/ime/progressions/), and [Marble’s open skill taxonomy](https://github.com/withmarbleapp/os-taxonomy). See the [source credits and license terms](THIRD_PARTY_NOTICES.md) for attribution by component.

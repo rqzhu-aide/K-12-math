@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2003_AMC_10B_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "73d07c2fa1e9e51da68fa932cdfedc4cee5fb1ed9135f385e09c1209310b9630",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "623505b5d5ddb5d8d91979c58a9fee9c1f267e33484b1f41aad77d9b858c78ec",
+  "solutionFigureHashes": {},
+  "candidateHash": "6d783a051e326b099393b3bb66a8b28549c747fabfcb585a6f864e739a19c0e7",
+  "candidate": {
+    "questionId": "2003_AMC_10B_Q25",
+    "derivedAnswer": "30 (B)",
+    "answerStatus": "matches",
+    "answerReason": "For each of the 10 possible hundreds digits, exactly 3 nonzero thousands digits make the number divisible by 3. Thus there are 30 numbers, agreeing with choice B.",
+    "methods": [
+      {
+        "id": "2003_AMC_10B_Q25_m1",
+        "label": "Count using digit sums",
+        "explanation": "Write the number as \\(\\overline{ab23}\\), where the thousands digit \\(a\\) is from \\(1\\) through \\(9\\), and the hundreds digit \\(b\\) is from \\(0\\) through \\(9\\). A number is divisible by \\(3\\) exactly when its digit sum is divisible by \\(3\\), so we need \\(a+b+5\\) to be a multiple of \\(3\\).\n\nFix any value of \\(b\\). Group the possible values of \\(a\\) as \\((1,2,3)\\), \\((4,5,6)\\), and \\((7,8,9)\\). Within each group, the three values of \\(a+b+5\\) are consecutive integers, so exactly one is divisible by \\(3\\). Thus each value of \\(b\\) allows exactly three values of \\(a\\).\n\nThere are \\(10\\) choices for \\(b\\), giving \\(10\\cdot3=30\\) numbers. Every eligible digit pair is included, and different pairs give different numbers. The answer is \\(\\boxed{30}\\), choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "cnm_p155",
+          "cnm_h231"
+        ],
+        "prerequisiteIds": [
+          "cnm_p053",
+          "cnm_p153"
+        ],
+        "levelReason": "The method uses the elementary divisibility test for 3 and multiplication of digit-choice counts, both within AMC 10 scope."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_p053",
+      "cnm_p153"
+    ],
+    "annotationRationale": "The task-level target is counting integers satisfying decimal-digit and divisibility restrictions. The supplied catalog lacks a node capturing that target independently of a solution route, so assessedIds is empty pending the proposed node. In this method, cnm_p155 identifies the digit-sum test and cnm_h231 identifies multiplication of the digit-choice counts. Decimal place value and the meaning of multiples are supporting knowledge.",
+    "needsNewNodes": [
+      {
+        "name": "Counting integers under digit and divisibility restrictions",
+        "description": "Determine the number of distinct integers with a specified digit length, stated decimal-digit restrictions, and divisibility conditions. Respect the nonzero leading digit and permitted digit repetitions, and justify that the count includes every eligible integer exactly once.",
+        "reason": "The catalog provides particular divisibility tests and counting procedures, but no route-neutral target for the requested constrained integer count."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2003_AMC_10B_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "For each hundreds digit b, each of the three consecutive triples of nonzero thousands digits contributes exactly one value with a+b+5 divisible by 3. Thus 10×3=30. The digit bounds and one-to-one correspondence ensure completeness without duplication.",
+    "levelCheck": "The divisibility test and elementary counting are appropriate for AMC 10, and the decisive grouping is clearly explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "cnm_p155 and cnm_h231 accurately describe the method; cnm_p053 and cnm_p153 support it. Empty assessedIds with the proposed route-neutral target is justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "2003_AMC_10B_Q25_m1": "2003_AMC_10B_Q25_m1"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "443f0eaf05c2afeae8e608c08f52420b70c677a5ad4c321fed1dc8fad806bcf3",
+    "inputHash": "3206ab7a1e299ff7010d925bde6ebb39b4b26e554aad852ecabc16235745132a",
+    "authorInputHash": "1d139623778201a95d0b8b959bcb764eadadb84638962dad90cdf25119e70bef",
+    "reviewInputHash": "1af010a525d86db1d8076dd01c3d7f62449e32bf4557d3cea3918053d5188c0e",
+    "authorResponseHash": "a78ed8221435d81115618ad05065899fe52cfb983cc7ca3abf909e827942e922",
+    "reviewerResponseHash": "98274b42d2efc709728f4da36908d6c36361a7d745ddf506710c7916a7ba983d",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

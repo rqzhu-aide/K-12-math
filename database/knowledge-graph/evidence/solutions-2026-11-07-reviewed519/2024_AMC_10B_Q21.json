@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2024_AMC_10B_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "e3ad4ae687838d9751f07ee439be486bfd725b09a9b26baa2063479a8ea081aa",
+    "figureHashes": {
+      "figures/2024_AMC_10B_Q21_question_fig1.svg": "7755e69c247eb27f4df6afb5d85d728f9d155028753398ac19521d308ddc4274"
+    }
+  },
+  "solutionSHA256": "cfd3ed46bd4ef66df7cf11c478ddfc4a9993ad03afd1c5718f20b8d97e4c04a2",
+  "solutionFigureHashes": {},
+  "candidateHash": "c428945a373ec5f63bc3c63fc9db49b9128718c30e9873278e4d055aae80275c",
+  "candidate": {
+    "questionId": "2024_AMC_10B_Q21",
+    "derivedAnswer": "C (10/9)",
+    "answerStatus": "matches",
+    "answerReason": "The possible third radii are 1/9, with its floor-contact point between the given ones, and 1, with its floor-contact point beyond the smaller pipe. Their sum is 10/9.",
+    "methods": [
+      {
+        "id": "floor-contact-distances",
+        "label": "Compare distances along the floor",
+        "explanation": "In the head-on view, the pipes are nonoverlapping circles, so contact between pipes is external tangency. Distances between their floor-contact points let us handle both possible placements.\n\nConsider two externally tangent circles of radii \\(s,t>0\\) resting on the floor. A radius to the floor-contact point is perpendicular to the floor, so the centers have heights \\(s\\) and \\(t\\). Their distance is \\(s+t\\). If their floor-contact points are distance \\(d\\) apart, the Pythagorean theorem gives\n\\[\nd^2+(s-t)^2=(s+t)^2,\n\\]\nand hence\n\\[\nd=2\\sqrt{st}.\n\\]\nConversely, this horizontal separation makes the center distance \\(s+t\\), so it guarantees external tangency.\n\nLet \\(A\\) and \\(B\\) be the floor-contact points of the radius-\\(1\\) and radius-\\(1/4\\) circles, with \\(A\\) to the left of \\(B\\). The formula gives\n\\[\nAB=2\\sqrt{1\\cdot\\frac14}=1.\n\\]\nLet the third radius be \\(r>0\\), put \\(u=\\sqrt r>0\\), and call its floor-contact point \\(T\\). Tangency to the two given circles requires\n\\[\nAT=2u,\\qquad BT=u.\n\\]\nBecause \\(AT>BT\\), the point \\(T\\) cannot lie to the left of \\(A\\): there we would have \\(BT=AT+AB\\). It also cannot equal \\(A\\) or \\(B\\), since both required distances are positive. This leaves two cases.\n\nIf \\(T\\) lies between \\(A\\) and \\(B\\), the distances add:\n\\[\n2u+u=1,\n\\qquad u=\\frac13,\n\\qquad r=\\frac19.\n\\]\nIf \\(T\\) lies to the right of \\(B\\), their difference is \\(AB\\):\n\\[\n2u-u=1,\n\\qquad u=1,\n\\qquad r=1.\n\\]\nBoth placements work. For \\(r=1/9\\), place \\(T\\) at distance \\(2/3\\) from \\(A\\) toward \\(B\\). For \\(r=1\\), place it at distance \\(2\\) from \\(A\\) on the same side as \\(B\\). Their distances to \\(A\\) and \\(B\\) satisfy the tangency formula, verifying both contacts.\n\nThe sum of the possible radii is\n\\[\n\\frac19+1=\\boxed{\\frac{10}{9}},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_262",
+          "cnm_h181",
+          "cnm_055",
+          "cnm_042"
+        ],
+        "prerequisiteIds": [
+          "cnm_174",
+          "cnm_075",
+          "cnm_260"
+        ],
+        "levelReason": "The solution derives the needed spacing formula using a right triangle, then solves two linear equations in the positive quantity sqrt(r). All steps are elementary geometry and algebra within AMC 10 scope."
+      }
+    ],
+    "assessedIds": [
+      "cnm_262",
+      "cnm_h181"
+    ],
+    "supportIds": [
+      "cnm_174",
+      "cnm_075"
+    ],
+    "annotationRationale": "The task targets the perpendicular radius at a floor tangency and the radius-sum center distance at external circle tangency. The Pythagorean theorem and square roots support the spacing formula. Segment addition and subtraction distinguish the exhaustive placements, and linear equations determine their radii. The annotations reflect this written geometric method without making a mastery claim.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2024_AMC_10B_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "External tangency and floor contact give d²=(s+t)²−(s−t)²=4st. Therefore AB=1, AT=2√r, and BT=√r. The exhaustive possible orders place T between A and B or beyond B, giving r=1/9 and r=1. The converse spacing argument verifies both configurations, whose radii sum to 10/9.",
+    "levelCheck": "The Pythagorean derivation and two linear equations provide an accessible, complete AMC 10 solution.",
+    "methodDistinctness": "The single geometric method supplies both completeness and feasibility checks.",
+    "annotationCheck": "The assessed tangent-radius and external-circle-tangency nodes match the argument. Pythagoras and square roots are justified shared supports; segment arithmetic, linear equations, and line-circle tangency are appropriate method annotations.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "floor-contact-distances": "floor-contact-distances"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "3d9f580ba68849d81d6c022d00edb79a30c26d0134cffadf439cc9b80313a937",
+    "acceptedAt": "2026-11-07T08:07:57.679152+00:00",
+    "inputHash": "5006a9c17a771ec071abe1a12450f629b63f0fc948a92be1e59d85d4b2ec0d98",
+    "authorInputHash": "fc76ed70d4707016a91c1fbf08b7a0439c756e2e5e4e1d9103ccfbc8a1c4fb9e",
+    "reviewInputHash": "89eb0e20de70198ae2a1bf460aa74cf75dc29998135228b6859057209d01044c",
+    "authorResponseHash": "18e510999cc0af1c7d275c116334f8d6499e61947e6955968a2ec3e84d9b2bbf",
+    "reviewerResponseHash": "f21876ee564cb6e48ba8b86270101852aa56efd43f119292b826fc01e0769936",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

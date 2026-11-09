@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1962_AMC_12_Q39",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "1c4cd4977f4c9edce6fa435fcd26c1b6ad60f0d13bd1059c0de6ebf38ab6caaf",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "7f1140f6daaa096b0fae20cbf34778412b9751ea0a6bdfa337343ea4d470a520",
+  "solutionFigureHashes": {},
+  "candidateHash": "4a3fca76e3935f4d9756d11b6a6f36c2a51f5310e3a723b351ad2a169c0bd385",
+  "candidate": {
+    "questionId": "1962_AMC_12_Q39",
+    "derivedAnswer": "C: 3√6 inches",
+    "answerStatus": "matches",
+    "answerReason": "The given median lengths and area allow two configurations. One has two equal sides and is excluded. The remaining configuration has three unequal sides and third median 3√6 inches.",
+    "methods": [
+      {
+        "id": "centroid-coordinates",
+        "label": "Use the centroid and coordinates",
+        "explanation": "The centroid turns the given median lengths into known distances from a common point, making coordinates useful. Let the triangle be \\(ABC\\), and let \\(G\\) be its centroid. The centroid divides each median in the ratio \\(2:1\\) from its vertex, so\n\\[\nAG=2,\\qquad GN=1,\\qquad BG=4.\n\\]\nSince \\(N\\) is the midpoint of \\(BC\\), triangle \\(ABN\\) has half the area of \\(ABC\\). Triangles \\(ABG\\) and \\(ABN\\) have bases \\(AG\\) and \\(AN\\) on the same line and the same altitude from \\(B\\). Thus\n\\[\n[ABG]=\\frac{AG}{AN}[ABN]\n=\\frac23\\cdot\\frac12(3\\sqrt{15})\n=\\sqrt{15},\n\\]\nwhere brackets denote area.\n\nChoose coordinates \\(G=(0,0)\\) and \\(A=(2,0)\\), with \\(B=(u,h)\\) above the horizontal axis. This orientation is possible because the triangle has positive area. Using \\(AG\\) as a base gives\n\\[\n[ABG]=\\frac12\\cdot2\\cdot h=h,\n\\]\nso \\(h=\\sqrt{15}\\). The Pythagorean theorem applied to \\(BG=4\\) now gives\n\\[\nu^2+15=16,\n\\qquad u=\\pm1.\n\\]\nBoth possibilities must be checked against the unequal-side condition.\n\nThe points \\(A,G,N\\) occur in that order, so \\(GN=1\\) gives \\(N=(-1,0)\\). Because \\(N\\) is the midpoint of \\(BC\\),\n\\[\nC=(-2-u,-\\sqrt{15}).\n\\]\nIf \\(u=-1\\), then \\(B=(-1,\\sqrt{15})\\) and \\(C=(-1,-\\sqrt{15})\\). Consequently,\n\\[\nAB^2=AC^2=3^2+15=24,\n\\]\ncontradicting the condition that the sides are unequal.\n\nTherefore \\(u=1\\), giving \\(B=(1,\\sqrt{15})\\) and \\(C=(-3,-\\sqrt{15})\\). In this configuration,\n\\[\nAB^2=16,\\qquad AC^2=40,\\qquad BC^2=76,\n\\]\nso all three sides are indeed unequal. Also,\n\\[\nCG=\\sqrt{(-3)^2+(-\\sqrt{15})^2}\n=\\sqrt{24}=2\\sqrt6.\n\\]\nSince \\(CG\\) is two-thirds of the third median, its full length is\n\\[\n\\frac32\\,CG=\\boxed{3\\sqrt6}\n\\]\ninches, choice C.",
+        "nodeIds": [
+          "math:centroid-ratios",
+          "cnm_084"
+        ],
+        "prerequisiteIds": [
+          "cnm_113",
+          "cnm_p148",
+          "cnm_174"
+        ],
+        "levelReason": "The method uses centroid ratios, elementary coordinates, triangle area, and the Pythagorean theorem. It checks both possible configurations without requiring trigonometry or vectors."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_113",
+      "cnm_p148",
+      "cnm_174"
+    ],
+    "annotationRationale": "The route-neutral assessment target is determining an unknown triangle median length from the given metric constraints, including the unequal-side restriction. No supplied node adequately represents that target, so assessedIds is empty and a missing node is proposed. The centroid-ratios node remains specific to the written method, alongside coordinate modeling. Median definitions, triangle area, and the Pythagorean theorem support the deductions. The Stewart theorem node specifies a formula-based procedure and is not assigned to this coordinate solution.",
+    "needsNewNodes": [
+      {
+        "name": "Determining triangle median lengths from metric constraints",
+        "description": "Determine an unknown median length from compatible length and area constraints on a nondegenerate triangle, considering all possible configurations and applying stated restrictions on side equality.",
+        "reason": "The catalog covers median definitions, centroid relations, and the Stewart median formula, but lacks a route-neutral target for determining median lengths from combined metric constraints."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1962_AMC_12_Q39",
+    "decision": "accept",
+    "mathematicalCheck": "The area relation gives [ABG]=√15, forcing B=(±1,√15). The negative case has AB²=AC²=24 and is excluded. The positive case has squared side lengths 16, 40, 76 and CG²=24, so the third median is (3/2)√24=3√6. Both configurations are covered.",
+    "levelCheck": "Appropriate for AMC 12. The coordinate setup, area ratios, midpoint deduction and unequal-side check are clearly explained using elementary geometry.",
+    "methodDistinctness": "One complete method is sufficient; no redundant or more advanced alternative is included.",
+    "annotationCheck": "The method-local centroid and coordinate nodes fit their stated scopes, and the shared support nodes are used. Empty assessedIds and the proposed missing node honestly represent the route-neutral target without forcing an unrelated existing ID.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "centroid-coordinates": "centroid-coordinates"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "4a18438c4818e1b3fb176f970ef735d8f8892708783dc3b8a20d6f7e45c91aa4",
+    "inputHash": "fc4631e3a04e9a8eb9c16b8b359bbd2b2e30ed426d6c84fd452992607f85e6e8",
+    "authorInputHash": "30c0d3a1c3f56db248002de6a749a27ae87322351405923b7410f07dcb9e988f",
+    "reviewInputHash": "3d30541a0858c0cfda5629dc7ef4c91ad2ce6acbc305eeadd4227f96dfb05f02",
+    "authorResponseHash": "1ca595b255294cbf201848d103b70e053fc66bcde127817be6e76336a2353dee",
+    "reviewerResponseHash": "b14ffb39135affee8d6a6299d3e50df92e0abb7ae71a5d10360e18bec52cdfb4",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

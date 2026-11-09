@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2003_AMC_10B_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "71296372fad9d26b6c21c5d0ffb03547d4baa16697af18d4a7023008da0309af",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "d2016976d642a4e0491b6ec9f2a594ec17eaf7c7a070ddbc8d4ba4164ccc01e7",
+  "solutionFigureHashes": {},
+  "candidateHash": "74f6a3e85d1c2ebdedf8a4098a987bd0695969f278bd9f8617adbd49d432532d",
+  "candidate": {
+    "questionId": "2003_AMC_10B_Q21",
+    "derivedAnswer": "C, 9/32",
+    "answerStatus": "matches",
+    "answerReason": "Both original green beads must be removed. The successful drawn-color paths GGR, GRG, and RGG have probabilities 1/8, 3/32, and 1/16, totaling 9/32.",
+    "methods": [
+      {
+        "id": "drawn-color-paths",
+        "label": "Method 1: Follow the drawn colors",
+        "explanation": "A green bead disappears only when it is drawn, and no green beads are added. Therefore all four beads are red after three replacements exactly when two of the three drawn beads are green. Once both greens have been removed, every later draw is red.\n\nWrite \\(G\\) for drawing green and \\(R\\) for drawing red. The successful color sequences are exactly \\(GGR\\), \\(GRG\\), and \\(RGG\\). For each sequence, multiply the successive probabilities using the bag's current contents:\n\\[\n\\begin{aligned}\nP(GGR)&=\\frac24\\cdot\\frac14\\cdot1=\\frac18,\\\\\nP(GRG)&=\\frac24\\cdot\\frac34\\cdot\\frac14=\\frac{3}{32},\\\\\nP(RGG)&=\\frac24\\cdot\\frac24\\cdot\\frac14=\\frac1{16}.\n\\end{aligned}\n\\]\nFor example, after the first green draw there are three red beads and one green bead, which explains the last two factors for \\(GRG\\). A red draw leaves the color counts unchanged.\n\nThese three sequences are mutually exclusive and include every successful outcome, so the probability is\n\\[\n\\frac18+\\frac{3}{32}+\\frac1{16}\n=\\boxed{\\frac9{32}},\n\\]\nchoice \\(\\text{C}\\).",
+        "nodeIds": [
+          "cnm_285",
+          "cnm_h245",
+          "cnm_h138"
+        ],
+        "prerequisiteIds": [
+          "cnm_h244",
+          "cnm_p165"
+        ],
+        "levelReason": "The changing probabilities are obtained directly from bead counts and multiplied along three short paths, an elementary AMC 10 probability argument."
+      },
+      {
+        "id": "labelled-sequence-count",
+        "label": "Method 2: Count sequences of bead labels",
+        "explanation": "Temporarily label the two green beads \\(1,2\\) and the two red beads \\(3,4\\). Whenever a bead is replaced, give the new red bead the removed bead's label. There are always four labels, each equally likely to be drawn, regardless of earlier draws. Thus the three draws produce \\(4^3=64\\) equally likely label sequences.\n\nThe bag ends entirely red exactly when labels \\(1\\) and \\(2\\) have each been drawn at least once. To count the successful sequences, subtract those missing one or both of these labels.\n\nThere are \\(3^3=27\\) sequences missing label \\(1\\), and another \\(27\\) missing label \\(2\\). The \\(2^3=8\\) sequences using only labels \\(3,4\\) are in both groups, so they have been counted twice. Hence the number of unsuccessful sequences is\n\\[\n27+27-8=46.\n\\]\nThere are therefore \\(64-46=18\\) successful sequences, giving probability\n\\[\n\\frac{18}{64}=\\boxed{\\frac9{32}},\n\\]\nchoice \\(\\text{C}\\).",
+        "nodeIds": [
+          "cnm_285",
+          "cnm_h231",
+          "cnm_h009",
+          "cnm_h010"
+        ],
+        "prerequisiteIds": [
+          "cnm_309",
+          "cnm_p165"
+        ],
+        "levelReason": "Persistent labels turn the experiment into elementary equally likely counting. Only the multiplication principle, complements, and the overlap of two sets are needed."
+      }
+    ],
+    "assessedIds": [
+      "cnm_285"
+    ],
+    "supportIds": [
+      "cnm_p165"
+    ],
+    "annotationRationale": "The shared target is the probability of the specified final bag composition. The first method uses conditional multiplication and disjoint addition because color paths have different probabilities. The second constructs equally likely label sequences and uses product counting, a two-set overlap correction, and a complement. These method-specific procedures are alternatives, not a combined requirement.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2003_AMC_10B_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "The exhaustive successful color paths have probabilities 1/8, 3/32, and 1/16, totaling 9/32. Persistent labels also give 64 equally likely sequences, with 27+27−8=46 failures and 18 successes. Both methods correctly characterize removal of both original greens.",
+    "levelCheck": "Changing bag counts and the two-set overlap correction are explained concretely and remain within AMC 10.",
+    "methodDistinctness": "Weighted color paths and counting equally likely persistent-label sequences offer genuinely different, accessible ideas.",
+    "annotationCheck": "The shared probability assessment and fraction support are justified. Conditional multiplication and addition remain local to the first method; product counting, union, and complement remain local to the second.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "drawn-color-paths": "drawn-color-paths",
+    "labelled-sequence-count": "labelled-sequence-count"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c7603c25ea909a41615ca8e4a946efbcaecb4aaa6eaa9530505556f8ded5be5c",
+    "inputHash": "a692b7ba69a0755d232b6a99ea323f095ebc54ed45b20a59a9285c2e9912fcd6",
+    "authorInputHash": "a5dd9835763d948c67a23ba9fec200bd1c7efa5fde8c6148d35effffefa8d87e",
+    "reviewInputHash": "b2d59219f957e24411c04cd1d41de1e94957455172650c6b246aa7c9eab28909",
+    "authorResponseHash": "8f12bd5f0948eba3cb275b19214d6c6e1a452860a44c630774283baf3ce5f670",
+    "reviewerResponseHash": "63bc8715a2cafcfd09f8789b29ba132d4821daa9b57d4d549fc5cc1d8f072aeb",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

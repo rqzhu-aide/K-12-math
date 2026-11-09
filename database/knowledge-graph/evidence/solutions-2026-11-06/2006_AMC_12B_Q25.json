@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2006_AMC_12B_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "b5eeaf1efb9a6ac8f50b1bb323256b59f106e4ef9f9070f69e58ee869340575d",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "cd98db058405e703c21785f6e27c56303d8b93ddce5e3c818f4c0052237deac2",
+  "solutionFigureHashes": {},
+  "candidateHash": "ca307ad61c2ecc044a204c385c2e995f99a4bb527a955d2defcd132d0de06a7c",
+  "candidate": {
+    "questionId": "2006_AMC_12B_Q25",
+    "derivedAnswer": "\\(324\\), choice B",
+    "answerStatus": "matches",
+    "answerReason": "Every allowed sequence reaches a rotation of the cycle \\((g,g,0)\\) before term 2006, where \\(g=\\gcd(999,a_2)\\). Parity repeats every three terms, so the condition is equivalent to \\(a_2\\) being odd and coprime to 999. Inclusion-exclusion counts 324 such values.",
+    "methods": [
+      {
+        "id": "gcd-descent-parity-count",
+        "label": "Find the eventual cycle, then use parity",
+        "explanation": "The absolute-difference rule preserves common divisors and tends to make the entries smaller. These two observations identify the eventual cycle; parity then tells us which position of that cycle occurs at term \\(2006\\).\n\nLet \\(b=a_2\\), so \\(0\\le b\\le998\\), and let \\(g=\\gcd(999,b)\\ge1\\). A number divides both \\(u\\) and \\(v\\) exactly when it divides both \\(v\\) and \\(|v-u|\\). Therefore the greatest common divisor of every consecutive pair remains \\(g\\).\n\nWe must also show that the repeating part begins soon enough. A pair \\((u,v)\\) changes to \\((v,|v-u|)\\). If an entry is zero or the entries are equal, the sequence repeats a rotation of\n\\[\nt,t,0,t,t,0,\\ldots.\n\\]\nOtherwise, both entries are positive and unequal. If \\(u>v\\), both entries of the next pair, \\((v,u-v)\\), are smaller than \\(u\\). If \\(v>u\\), the next two pairs are\n\\[\n(v,v-u),\\qquad(v-u,u),\n\\]\nand both entries of the latter are smaller than \\(v\\). Thus, outside the repeating part, the largest entry drops by at least \\(1\\) within two transitions.\n\nThe initial largest entry is \\(999\\). After at most \\(2(999-1)=1996\\) transitions, either a repeating pair has already appeared or the largest entry is \\(1\\), which itself forces a repeating pair. Hence the sequence is repeating by the pair \\((a_{1997},a_{1998})\\). The preserved greatest common divisor shows that \\(t=g\\), so \\(a_{2006}\\) is either \\(0\\) or \\(g\\). In particular, obtaining \\(1\\) requires \\(g=1\\).\n\nTo determine the phase, an absolute difference has the same parity as the sum of its inputs. Consequently, \\(a_{n+3}\\) has the parity of \\(a_{n+2}+a_{n+1}\\), which has the parity of \\(a_n+2a_{n+1}\\), and hence of \\(a_n\\). Parity therefore repeats every three terms. Since\n\\[\n2006=3\\cdot668+2,\n\\]\n\\(a_{2006}\\) has the parity of \\(b\\). When \\(g=1\\), its only possible values are \\(0\\) and \\(1\\), so it equals \\(1\\) exactly when \\(b\\) is odd.\n\nWe have proved both directions: the valid starting values are exactly the odd integers from \\(1\\) through \\(997\\) that are coprime to \\(999\\). Since\n\\[\n999=3^3\\cdot37,\n\\]\nwe must exclude multiples of \\(3\\) or \\(37\\). There are \\(499\\) odd candidates. Among them, \\(166\\) are multiples of \\(3\\), corresponding to odd quotients from \\(1\\) through \\(331\\); \\(13\\) are multiples of \\(37\\), corresponding to odd quotients from \\(1\\) through \\(25\\). The \\(4\\) odd multiples of \\(111=3\\cdot37\\) were excluded twice and must be added back. Thus the count is\n\\[\n499-166-13+4=\\boxed{324},\n\\]\nchoice B.",
+        "nodeIds": [
+          "math:invariant-reasoning",
+          "cnm_h200",
+          "cnm_h009"
+        ],
+        "prerequisiteIds": [
+          "cnm_p158",
+          "cnm_p156",
+          "math:prime-factorization",
+          "cnm_008"
+        ],
+        "levelReason": "Uses elementary recurrence analysis, greatest common divisors, integer descent, parity, and two-set inclusion-exclusion."
+      }
+    ],
+    "assessedIds": [
+      "math:invariant-reasoning",
+      "cnm_h200"
+    ],
+    "supportIds": [
+      "cnm_p158",
+      "cnm_p156",
+      "math:prime-factorization",
+      "cnm_h009"
+    ],
+    "annotationRationale": "The solution studies the stated recurrence and proves preservation of consecutive-pair gcds. Gcd meaning, parity, prime factorization, and inclusion-exclusion support the classification and count. A separate descent argument is essential to place term 2006 in the eventual cycle; that missing concept is proposed rather than being conflated with invariance.",
+    "needsNewNodes": [
+      {
+        "name": "Termination bounds by integer descent",
+        "description": "Identify a nonnegative integer quantity that decreases by at least one within a bounded number of steps outside a specified terminal class. Prove the decrease in every case and derive an explicit bound on the time to reach that class.",
+        "reason": "The proof needs a uniform bound on reaching the repeating pairs. The catalog's invariant node concerns preserved quantities, while simple recurrence evaluation does not capture this bounded-descent argument."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2006_AMC_12B_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "Consecutive-pair gcd is preserved. Outside the terminal cycles, the maximum decreases within two transitions, placing the sequence in a rotation of (g,g,0) by (a1997,a1998). Parity repeats every three terms, so a2006=1 exactly when a2 is odd and coprime to 999. Inclusion-exclusion gives 499-166-13+4=324, with zero correctly excluded by the classification.",
+    "levelCheck": "The descent bound, gcd preservation, parity argument, and count are complete and appropriate for AMC 12.",
+    "methodDistinctness": "One method supplies both necessity and sufficiency.",
+    "annotationCheck": "The invariant and recurrence annotations are justified. The proposed descent node correctly separates termination reasoning from preservation, and the shared support matches the classification and count.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "gcd-descent-parity-count": "gcd-descent-parity-count"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "134149c7458075e252ccd5e6b88a9c64ac611b547233a236b36e8b49f6164dec",
+    "inputHash": "22009747bdf4050114eeecd4d4eecc49a0d135cbeeb8c527e1f02e3e36aa5f3e",
+    "authorInputHash": "02217de470673375470f60d1d1a1fa548eafafcb14bce05f018ce8f9587255ac",
+    "reviewInputHash": "fd04ed4cecb545def8289af72e0fbb9e36d3b2d5fbe88f655d80e62010db1377",
+    "authorResponseHash": "76e51b38c036c258d25b53580c7227c7cdfe0dd39d27c5e96058aa6de6fc60a8",
+    "reviewerResponseHash": "716f5f6d528f6abb2243646759084a055825225b831401b88caf7c2ec4d5c99e",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2000_AMC_12_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "b618afc4277f80df0ddb784a477308330f95c4b3d46671e540cdf3602ca09826",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "f5c36e0878634830d9d700b23f285ac92bde253a211c01e82c1ed56b705ef82e",
+  "solutionFigureHashes": {},
+  "candidateHash": "85d23b242d9c53d887528ca5480d30d9db6ff084791b01793a3dbac24a46488f",
+  "candidate": {
+    "questionId": "2000_AMC_12_Q23",
+    "derivedAnswer": "B: 1/4",
+    "answerStatus": "matches",
+    "answerReason": "Exactly four unordered six-number sets satisfy the logarithm condition. They are {1,5,10,25,u,v}, with u in {2,20} and v in {4,40}. Under the usual fair-lottery model, conditioning on this property leaves four equally likely winning sets.",
+    "methods": [
+      {
+        "id": "balance-prime-exponents",
+        "label": "Balance the powers of 2 and 5",
+        "explanation": "Use the usual lottery model in which every unordered set of six different numbers is equally likely to win. We need to count the sets that satisfy the extra information about the winning ticket.\n\nThe sum of the logarithms is the logarithm of the product. Thus the condition says that the six numbers have product \\(10^k=2^k5^k\\) for an integer \\(k\\ge0\\). No selected number can contain a prime factor other than \\(2\\) or \\(5\\), since that factor would remain in the product. The complete list of possible numbers from \\(1\\) through \\(46\\) is\n\\[\n1,2,4,8,16,32,5,10,20,40,25.\n\\]\nIndeed, these are the powers of \\(2\\), five times a power of \\(2\\), and \\(25\\); higher powers of \\(5\\) or \\(2\\cdot25\\) exceed \\(46\\).\n\nFor a number \\(2^a5^b\\), call \\(a-b\\) its balance. A product is a power of \\(10\\) exactly when its total balance is zero. Only \\(5\\) and \\(25\\) have negative balances, namely \\(-1\\) and \\(-2\\). Only \\(1\\) and \\(10\\) have balance zero. Among the other numbers, \\(2,20\\) have balance \\(1\\), \\(4,40\\) have balance \\(2\\), and \\(8,16,32\\) have balances \\(3,4,5\\).\n\nBoth \\(5\\) and \\(25\\) must be selected. Otherwise, at most one negative balance and two zero balances would force at least three positive balances among the six numbers. Their sum would be at least \\(3\\), exceeding the available negative magnitude of at most \\(2\\).\n\nThese two selected numbers contribute total balance \\(-3\\). Both \\(1\\) and \\(10\\) must also be selected. If either were omitted, the remaining four numbers would include at least three positive balances. The three smallest available positive balances are \\(1,1,2\\), whose sum \\(4\\) is already too large.\n\nThe last two numbers must therefore have positive balances summing to \\(3\\), so one has balance \\(1\\) and the other balance \\(2\\). Every eligible ticket is consequently\n\\[\n\\{1,5,10,25,u,v\\},\n\\quad u\\in\\{2,20\\},\\quad v\\in\\{4,40\\}.\n\\]\nAll \\(2\\cdot2=4\\) choices give six distinct permitted numbers and total balance zero. Different pairs \\((u,v)\\) give different unordered sets, so this count has neither omissions nor repetitions.\n\nConditioning on the winning ticket having the property leaves these four sets equally likely. Professor Gamble holds one of them, so his probability of winning is \\(1/4\\), choice B.",
+        "nodeIds": [
+          "cnm_h044",
+          "math:prime-factorization",
+          "cnm_h231",
+          "cnm_h244"
+        ],
+        "prerequisiteIds": [
+          "cnm_h043",
+          "cnm_h236",
+          "cnm_h137"
+        ],
+        "levelReason": "Uses the logarithm product rule, elementary prime exponents, exhaustive finite counting, and conditional probability by restricting equally likely outcomes."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h044",
+      "math:prime-factorization",
+      "cnm_h244"
+    ],
+    "supportIds": [
+      "cnm_h043",
+      "cnm_h236",
+      "cnm_h137"
+    ],
+    "annotationRationale": "The task requires converting the logarithm condition into a product condition, enforcing equal prime exponents, and computing probability after restricting the winning outcomes. Conditional probability is more specific here than an unconditional classical-probability label. The method's multiplication-principle node records the two independent final choices. Logarithm meaning, unordered selections, and equal-likelihood probability support the argument.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2000_AMC_12_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "The logarithm condition requires a product 2^k5^k. The listed eleven possible numbers are exhaustive. The balance bounds force inclusion of 5,25,1,10, leaving one choice from {2,20} and one from {4,40}. These give exactly four distinct valid sets. Under the explicitly stated fair-lottery model, their conditional probabilities are equal, yielding 1/4.",
+    "levelCheck": "The necessary logarithm rule, elementary prime exponents, finite counting, and restricted-sample-space probability fit AMC 12.",
+    "methodDistinctness": "One complete structural counting method is sufficient.",
+    "annotationCheck": "The logarithm, prime-factorization, multiplication-principle, combination-meaning, and conditional-probability annotations are supported. Replacing the broader probability target with the supplied conditional-probability node is justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "balance-prime-exponents": "balance-prime-exponents"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "34592bb05d89e37dbeab68a0f3c0d358669fa73778b13a6708dbfa6677f41f43",
+    "inputHash": "fb4547360113b271ddb04ba756e979252aae555ed4149e1c278e72e7712611f8",
+    "authorInputHash": "9a35aeefea48294f49c8928b838ab471fda598f75a0dcac3f4dd978ce705c25e",
+    "reviewInputHash": "475d6c9af000ffdc260e1702c9e22504908ff2d23f0979333d04598382cc393f",
+    "authorResponseHash": "a77eeef97a95af3f057f721c4bbb43e3956dc2087584c4cbfa8e45e23ab260f4",
+    "reviewerResponseHash": "efe78c14c1f3248169b8b456b5340b37678e7ebf24cd715317d02765bc3c6aac",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

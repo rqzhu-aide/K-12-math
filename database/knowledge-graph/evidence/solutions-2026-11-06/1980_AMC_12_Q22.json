@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1980_AMC_12_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "208396b419466c20774b6db089d035edac92cbe6fe2e7a1e236e4174d09fb7ff",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "d37e5d6a4bcca6118da5013ad819ace2d99fff2be2fc7bed45c951b4e82f4203",
+  "solutionFigureHashes": {},
+  "candidateHash": "68916199abd0914cd68d2689e78cbd40bb61ccc23b2cdc4da6ce26930c8aa199",
+  "candidate": {
+    "questionId": "1980_AMC_12_Q22",
+    "derivedAnswer": "E: 8/3",
+    "answerStatus": "matches",
+    "answerReason": "The function is at most 8/3 for every real input, and it attains 8/3 at x=2/3.",
+    "methods": [
+      {
+        "id": "upper-bound-and-attainment",
+        "label": "Bound the minimum from above",
+        "explanation": "A minimum cannot exceed any number being compared. In particular,\n\\[\nf(x)\\le x+2,\n\\qquad\nf(x)\\le -2x+4.\n\\]\nThe first bound increases with \\(x\\), while the second decreases. They are equal when\n\\[\nx+2=-2x+4,\n\\qquad x=\\frac23.\n\\]\nThis gives a useful place to divide the real line. If \\(x\\le\\frac23\\), then\n\\[\nf(x)\\le x+2\\le\\frac83.\n\\]\nIf \\(x\\ge\\frac23\\), then\n\\[\nf(x)\\le-2x+4\\le\\frac83.\n\\]\nThus \\(\\frac83\\) is an upper bound for every real \\(x\\). To check that it is attained, substitute \\(x=\\frac23\\) into all three expressions:\n\\[\n4x+1=\\frac{11}{3},\\qquad\nx+2=\\frac83,\\qquad\n-2x+4=\\frac83.\n\\]\nTheir minimum is \\(\\frac83\\). Therefore the maximum value is \\(\\boxed{\\frac83}\\), choice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "cnm_h029",
+          "cnm_096"
+        ],
+        "prerequisiteIds": [
+          "cnm_h027",
+          "cnm_042"
+        ],
+        "levelReason": "Uses elementary inequalities and one linear equation to establish and attain a global bound."
+      },
+      {
+        "id": "identify-active-expression",
+        "label": "Determine which expression is smallest",
+        "explanation": "We can describe \\(f\\) by finding which of the three expressions is smallest on each interval. The differences\n\\[\n(4x+1)-(x+2)=3x-1,\n\\]\n\\[\n(x+2)-(-2x+4)=3x-2\n\\]\nidentify the relevant switching points \\(\\frac13\\) and \\(\\frac23\\).\n\nFor \\(x\\le\\frac13\\), the expression \\(4x+1\\) is at most \\(x+2\\). It is also at most \\(-2x+4\\), since that comparison holds whenever \\(x\\le\\frac12\\).\n\nFor \\(\\frac13\\le x\\le\\frac23\\), the expression \\(x+2\\) is at most both other expressions.\n\nFor \\(x\\ge\\frac23\\), the expression \\(-2x+4\\) is at most \\(x+2\\). It is also at most \\(4x+1\\), since that comparison holds whenever \\(x\\ge\\frac12\\).\n\nConsequently,\n\\[\nf(x)=\n\\begin{cases}\n4x+1,&x\\le\\frac13,\\\\\nx+2,&\\frac13<x\\le\\frac23,\\\\\n-2x+4,&x>\\frac23.\n\\end{cases}\n\\]\nThe formulas agree at the switching points. The first two pieces increase, and the last piece decreases, so the maximum occurs at \\(x=\\frac23\\). Its value is\n\\[\nf\\left(\\frac23\\right)=\\boxed{\\frac83},\n\\]\nchoice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "cnm_h029",
+          "cnm_h031",
+          "cnm_203",
+          "cnm_097"
+        ],
+        "prerequisiteIds": [
+          "cnm_h027",
+          "cnm_042",
+          "cnm_096"
+        ],
+        "levelReason": "Uses comparisons of affine expressions and the increasing or decreasing behavior of linear functions."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h029"
+    ],
+    "supportIds": [
+      "cnm_h027",
+      "cnm_042"
+    ],
+    "annotationRationale": "The route-neutral target is the maximum attained by the given function. The first method uses upper bounds and attainment; the second constructs its piecewise formula and uses linear monotonicity. Function meaning and linear-equation solving support both routes. Piecewise analysis is specific to the second method.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1980_AMC_12_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "The bounds x+2 for x≤2/3 and −2x+4 for x≥2/3 establish f(x)≤8/3 everywhere. At x=2/3 all three expressions are at least 8/3, with two equal to it. The second method correctly identifies the active intervals separated by 1/3 and 2/3.",
+    "levelCheck": "Both explanations use accessible linear equations, inequalities, and monotonicity.",
+    "methodDistinctness": "The global bound with attainment and the complete piecewise description provide distinct, useful approaches.",
+    "annotationCheck": "The maximum is the route-neutral target. Inequality reasoning and piecewise linear analysis are correctly assigned to their respective methods, with appropriate shared prerequisites.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "upper-bound-and-attainment": "upper-bound-and-attainment",
+    "identify-active-expression": "identify-active-expression"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "75c85cfcf724514886bd83ea0d36eabefa617996203d41e9ec7a4d8113986f67",
+    "inputHash": "043fcc0751c4d9c03308845fc17ff5deefbf3ae2b2c0e969d15ab16d4ba02fa0",
+    "authorInputHash": "007dbeda9745762784951a59c25fb481638bbf8dcd94821c2b83b05f1b65ba93",
+    "reviewInputHash": "a089ff53d03f417f20fd62cf5b521d35f3fb9c88a08518788f9a136d0a8f539e",
+    "authorResponseHash": "f533fc80794ef2ac1cbd0fed92dbda555fb75ae4de5f1fbd62ca214f4edd2253",
+    "reviewerResponseHash": "49c8f0d2956a39da521216629bd00c6fb508685b2ad49adcff7dcdeae7bbca48",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

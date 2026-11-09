@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1988_AMC_12_Q16",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "dafd23cb3b4b95844705c0f00e6ae69691f6bb4508b9a36d404551a9c537e97e",
+    "figureHashes": {
+      "figures/1988_AMC_12_Q16_question_fig1.svg": "f9fa3d4b6b1a96217dca7e2f80d87ebbe08e615813722b0950e16427bd653834"
+    }
+  },
+  "solutionSHA256": "6a03fdc5c3f81d157c75522d6b9729ad50e1d1803d5c94bee58fa09fb9784474",
+  "solutionFigureHashes": {},
+  "candidateHash": "c8ea18f04daf38029d76b1776aab479f2625572921ec586ca53954a5019c1809",
+  "candidate": {
+    "questionId": "1988_AMC_12_Q16",
+    "derivedAnswer": "1/4, choice C",
+    "answerStatus": "matches",
+    "answerReason": "The nested configuration in the supplied figure makes the smaller triangle's center-to-base distance \\(h/3-h/6=h/6\\), where \\(h\\) is the outer altitude. Its altitude is therefore \\(h/2\\), giving area ratio \\(1/4\\).",
+    "methods": [
+      {
+        "id": "centroid-altitudes",
+        "label": "Use the center's position on an altitude",
+        "explanation": "The center of an equilateral triangle lies one-third of its altitude above any side. This follows because its altitudes are also medians, and the centroid divides each median in the ratio \\(2:1\\), measured from the vertex. This lets us convert the given gap between bases into a ratio of altitudes.\n\nThe supplied figure shows \\(A'B'C'\\) inside \\(ABC\\), with the same orientation and with \\(B'C'\\) between \\(BC\\) and their common center.\n\nLet \\(h>0\\) be the altitude of \\(ABC\\), and let \\(h'>0\\) be the altitude of \\(A'B'C'\\). Their common center is \\(h/3\\) above \\(BC\\). Since \\(B'C'\\) is \\(h/6\\) above \\(BC\\), the center is\n\\[\n\\frac h3-\\frac h6=\\frac h6\n\\]\nabove \\(B'C'\\). Applying the same center-to-base relation to the smaller triangle gives\n\\[\n\\frac{h'}3=\\frac h6,\n\\qquad h'=\\frac h2.\n\\]\nAll equilateral triangles are similar, and their area ratio is the square of their altitude ratio. Hence\n\\[\n\\frac{[A'B'C']}{[ABC]}=\\left(\\frac{h'}h\\right)^2=\\left(\\frac12\\right)^2=\\boxed{\\frac14},\n\\]\nwhere brackets denote area. The answer is choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_272",
+          "math:centroid-ratios",
+          "cnm_137"
+        ],
+        "prerequisiteIds": [
+          "cnm_113",
+          "cnm_112",
+          "cnm_139",
+          "cnm_271"
+        ],
+        "levelReason": "The solution uses elementary centroid geometry and the area-scaling property of similar triangles."
+      },
+      {
+        "id": "center-distance-area",
+        "label": "Find the center-to-side distance by splitting the area",
+        "explanation": "We can find the center's distance from a side directly from triangle areas. In an equilateral triangle, the center lies on all three angle bisectors, so its perpendicular distances to the three sides are equal. Join the center to the three vertices. This splits the triangle into three triangles with equal bases and equal heights.\n\nLet the outer triangle have side length \\(a>0\\), altitude \\(h>0\\), and center-to-side distance \\(r\\). Computing its area first as one triangle and then as three triangles gives\n\\[\n\\frac12 ah=3\\left(\\frac12 ar\\right),\n\\qquad r=\\frac h3.\n\\]\nThe same argument shows that the smaller triangle's center-to-side distance \\(r'\\) equals one-third of its altitude \\(h'\\).\n\nThe supplied figure shows the smaller base between the outer base and the common center. Therefore the given base separation implies\n\\[\nr'=r-\\frac h6=\\frac h3-\\frac h6=\\frac h6.\n\\]\nThus \\(h'=3r'=h/2\\). The two equilateral triangles are similar, so their side lengths also have ratio \\(1/2\\). Using base times height divided by two, their area ratio is\n\\[\n\\frac{[A'B'C']}{[ABC]}=\\frac12\\cdot\\frac12=\\boxed{\\frac14}.\n\\]\nThe answer is choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_p148",
+          "cnm_128",
+          "cnm_272"
+        ],
+        "prerequisiteIds": [
+          "cnm_137",
+          "cnm_139",
+          "cnm_114",
+          "cnm_112",
+          "cnm_271"
+        ],
+        "levelReason": "This alternative derives the needed center-to-side relation using elementary area decomposition and angle-bisector distances, without requiring the centroid ratio."
+      }
+    ],
+    "assessedIds": [
+      "cnm_272"
+    ],
+    "supportIds": [
+      "cnm_137",
+      "cnm_139",
+      "cnm_112"
+    ],
+    "annotationRationale": "The task's target is obtaining an area ratio from corresponding lengths in similar equilateral triangles, matching cnm_272. Equilateral and isosceles triangle properties and altitude meaning support both methods. The first method uses the centroid ratio locally. The second instead derives the center-to-side relation by equal-distance area decomposition, so its area and angle-bisector procedures remain method-specific.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1988_AMC_12_Q16",
+    "decision": "accept",
+    "mathematicalCheck": "The actual figure shows nested triangles with the same orientation, justifying subtraction of the base separation. Both methods establish the center-to-side distance as one-third of the altitude. Thus h'/3 = h/3 - h/6 = h/6, giving h'/h = 1/2 and area ratio 1/4. All divided lengths are positive.",
+    "levelCheck": "Both explanations use appropriate elementary geometry and explain the decisive center-to-side relation.",
+    "methodDistinctness": "The centroid-ratio argument and the equal-distance area decomposition offer genuinely different, accessible ways to establish the needed relation.",
+    "annotationCheck": "Similar-triangle area scaling is an appropriate route-neutral assessment. Shared supports apply to both methods, while centroid ratios and angle-bisector area decomposition are correctly kept method-specific.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "centroid-altitudes": "centroid-altitudes",
+    "center-distance-area": "center-distance-area"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "70943fa92e1c3d1c677740417f3771ac4bc03779a22325c460c0660bb10ac979",
+    "acceptedAt": "2026-11-08T00:19:22.857075+00:00",
+    "inputHash": "d075d5eed6c720035598436858c539db82da47dc0fed5038a87929783a949b45",
+    "authorInputHash": "e31b6ccb1d8efd2128343f62b4d8b1ad9653b814de62f79da9f1762190fdfc84",
+    "reviewInputHash": "8616225a90a5f7e60196a3bf90f2ee5c3c4ecf84c05bc0ae96a8d1eb64ff75cd",
+    "authorResponseHash": "183f118a5e9cd5a6ede39ff187511798fb46a92edd6f9e1afa15a8caf744d108",
+    "reviewerResponseHash": "dcbf6136e1f9a08cba441218d3648d5b057f7961405588fb3040716a26aad36f",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

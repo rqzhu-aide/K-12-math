@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2008_AMC_10B_Q16",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "32d25b0cf1268404d0d98a203fca0f19005633460262fb122058229da4a88e06",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "4bdb4d19ef3162c2693ed85b4de1e77d0b2e0137624e727a810cbee9775bca50",
+  "solutionFigureHashes": {},
+  "candidateHash": "02c12b1fb426f11245b1c243c8b56d7d51d45e3e00a16e69bf149ef67c29a80a",
+  "candidate": {
+    "questionId": "2008_AMC_10B_Q16",
+    "derivedAnswer": "A (3/8)",
+    "answerStatus": "matches",
+    "answerReason": "Each coin result other than TT gives an odd die sum with probability 1/2. Those three coin results each have probability 1/4, so the total probability is 3/8.",
+    "methods": [
+      {
+        "id": "coin-result-cases",
+        "label": "Separate the coin results",
+        "explanation": "The four coin results \\(HH,HT,TH,TT\\) are equally likely, each with probability \\(1/4\\). Separating these cases keeps track of how many dice are rolled.\n\nFor \\(TT\\), no die is rolled, and the sum is \\(0\\), which is even. For either \\(HT\\) or \\(TH\\), one die is rolled; three of its six faces are odd, so the probability of an odd sum is \\(1/2\\).\n\nFor \\(HH\\), two dice are rolled. Their sum is odd exactly when one die is odd and the other is even. There are \\(3\\cdot3\\) ordered outcomes with the first odd and the second even, and another \\(3\\cdot3\\) with the parities reversed. These cases do not overlap, so the probability is\n\\[\n\\frac{3\\cdot3+3\\cdot3}{6\\cdot6}=\\frac12.\n\\]\nThus each of the three coin results other than \\(TT\\) contributes \\((1/4)(1/2)\\). The coin cases are disjoint and cover every possibility, giving\n\\[\n3\\cdot\\frac14\\cdot\\frac12=\\boxed{\\frac38},\n\\]\nchoice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_285",
+          "cnm_h246"
+        ],
+        "prerequisiteIds": [
+          "cnm_p156",
+          "cnm_h140"
+        ],
+        "levelReason": "Uses four elementary coin cases and counts odd-even die pairs. The weighted case calculation requires no general probability-distribution formula."
+      },
+      {
+        "id": "contribution-parity",
+        "label": "Track each coin's contribution",
+        "explanation": "Pair each coin with the die roll it triggers. A tail contributes \\(0\\), while a head contributes the value rolled on its die. The desired sum is the sum of these two independent contributions.\n\nOne contribution is odd exactly when its coin is a head and its die is odd. This has probability\n\\[\n\\frac12\\cdot\\frac36=\\frac14.\n\\]\nOtherwise the contribution is even, with probability \\(3/4\\); this includes a tail's contribution of \\(0\\).\n\nThe sum of two integers is odd exactly when one contribution is odd and the other is even. The two possible orders are disjoint, so independence gives\n\\[\n\\frac14\\cdot\\frac34+\\frac34\\cdot\\frac14\n=\\boxed{\\frac38}.\n\\]\nThe answer is choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_285",
+          "cnm_h138"
+        ],
+        "prerequisiteIds": [
+          "cnm_p156",
+          "cnm_h140",
+          "cnm_h139"
+        ],
+        "levelReason": "Combines each coin and its possible die roll into an odd-or-even contribution, then uses elementary independent probabilities and disjoint cases."
+      }
+    ],
+    "assessedIds": [
+      "cnm_285"
+    ],
+    "supportIds": [
+      "cnm_p156",
+      "cnm_h140"
+    ],
+    "annotationRationale": "The route-neutral target is the probability of the stated event in a finite experiment, cnm_285. Both methods use parity and independence as shared support. The first partitions by coin results and combines weighted cases, matching cnm_h246. The second combines disjoint odd-even contribution orders using cnm_h138, with complementary probabilities from cnm_h139 as local support.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2008_AMC_10B_Q16",
+    "decision": "accept",
+    "mathematicalCheck": "In the first method, each non-TT coin result has odd-sum probability 1/2, yielding 3(1/4)(1/2)=3/8. Independently, each coin's contribution is odd with probability 1/4, so opposite contribution parities have probability 2(1/4)(3/4)=3/8. Zero is correctly treated as even.",
+    "levelCheck": "Both methods use accessible counting, parity, and elementary probability products.",
+    "methodDistinctness": "The methods provide distinct useful viewpoints: conditioning on coin results and combining contribution parities.",
+    "annotationCheck": "The assessed probability target is route-neutral. Parity and independence are shared support, and the weighted-case and disjoint-addition annotations match their respective methods.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "coin-result-cases": "coin-result-cases",
+    "contribution-parity": "contribution-parity"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "0ec0c8487a5d2a1a011b2a4cdb6a132424a71eb43b2c9da8063366fae5e816ca",
+    "inputHash": "1469650e63796c9cdef8f582e5b42f8ba96467d8793e0fbb4f27ac2006ba0c95",
+    "authorInputHash": "706feb418bd3ea5cbaed20b4cdcf6bc45ebbee55d82d84af01b337adf564c5af",
+    "reviewInputHash": "28ca64473ff4ac3bb227d236c6e881ba020817b6f4c2d39ee08576145c902a89",
+    "authorResponseHash": "6ae2a4c627a433644dcc59452d47feaefc19779fc41642d7239e3ef60769940b",
+    "reviewerResponseHash": "b8cc8d02e599a43d13455a226ea222740ac0a5eb365a734b772764e56b8aea6c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

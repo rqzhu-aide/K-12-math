@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2009_AMC_10B_Q14",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "82e138eb15884571e7673e19bc3679870dfc76a75eba964fd3cb89ab2a89867c",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "0b8a7f51ae1752ed13d97f91ef59fb9668cbe478e90469539aa2d130b616c027",
+  "solutionFigureHashes": {},
+  "candidateHash": "721604ee528de3bd5db403428a5440134eca05db3fdc72ffe8dcb3b2de9723d2",
+  "candidate": {
+    "questionId": "2009_AMC_10B_Q14",
+    "derivedAnswer": "Friday (D)",
+    "answerStatus": "matches",
+    "answerReason": "In quarter-quart units, the millet amount after each refill follows m_next=(3/4)m+1, while the other seeds always total 3 units. The millet first exceeds 3 units on Friday.",
+    "methods": [
+      {
+        "id": "daily-millet-amount",
+        "label": "Track the millet after each refill",
+        "explanation": "Measure seed amounts in units of \\(\\tfrac14\\) quart. Each new quart adds \\(1\\) unit of millet and \\(3\\) units of other seeds. Since the birds eat all the other seeds each day, just after every refill there are exactly \\(3\\) units of other seeds. Millet is more than half the total precisely when its amount exceeds these \\(3\\) units.\n\nLet \\(m_n\\) be the millet amount just after the \\(n\\)th refill, with \\(n=1\\) on Monday. The birds leave \\(\\tfrac34\\) of the millet, and the next refill adds \\(1\\) unit, so\n\\[\nm_1=1,\\qquad m_{n+1}=\\frac34m_n+1.\n\\]\nFor example, Tuesday's amount is \\(\\tfrac34(1)+1=\\tfrac74\\). Continuing the same calculation gives\n\\[\n\\begin{aligned}\n\\text{Monday: }&1,\\\\\n\\text{Tuesday: }&\\frac74,\\\\\n\\text{Wednesday: }&\\frac{37}{16},\\\\\n\\text{Thursday: }&\\frac{175}{64},\\\\\n\\text{Friday: }&\\frac{781}{256}.\n\\end{aligned}\n\\]\nThe amounts through Thursday are all below \\(3\\); in particular, \\(\\tfrac{175}{64}<\\tfrac{192}{64}=3\\). Friday's amount satisfies \\(\\tfrac{781}{256}>\\tfrac{768}{256}=3\\). Therefore the first such day is \\(\\boxed{\\text{Friday}}\\), choice D.",
+        "nodeIds": [
+          "cnm_h200"
+        ],
+        "prerequisiteIds": [
+          "cnm_p196",
+          "cnm_p178",
+          "cnm_p173",
+          "cnm_p169"
+        ],
+        "levelReason": "The recurrence records a simple daily retention-and-addition rule. Five exact arithmetic steps settle the question without a general sequence formula."
+      },
+      {
+        "id": "reference-amount-shortfall",
+        "label": "Track the shortfall from a reference amount",
+        "explanation": "Use units of \\(\\tfrac14\\) quart. Each refill adds \\(1\\) unit of millet and \\(3\\) units of other seeds. Just after a refill, all other seeds from earlier days have been eaten, so millet must exceed \\(3\\) units to make up more than half the seeds.\n\nA useful reference amount is \\(4\\) units of millet: eating one-quarter leaves \\(3\\), and adding \\(1\\) restores \\(4\\). Track the shortfall from this reference. If the millet amount after a refill is \\(4-d\\), then after the birds eat and the next refill occurs, it becomes\n\\[\n\\frac34(4-d)+1=4-\\frac34d.\n\\]\nThus the shortfall is multiplied by \\(\\tfrac34\\) each day. On Monday the millet amount is \\(1\\), so the shortfall is \\(3\\).\n\nMillet exceeds \\(3\\) units exactly when its shortfall from \\(4\\) is less than \\(1\\). On Thursday the shortfall is\n\\[\n3\\cdot\\frac34\\cdot\\frac34\\cdot\\frac34\n=\\frac{81}{64}>1.\n\\]\nOn Friday it is\n\\[\n\\frac{81}{64}\\cdot\\frac34\n=\\frac{243}{256}<1.\n\\]\nThe positive shortfall decreases each day, so every day before Thursday also has shortfall greater than \\(1\\). The first qualifying day is therefore \\(\\boxed{\\text{Friday}}\\), choice D.",
+        "nodeIds": [
+          "cnm_h200",
+          "cnm_015"
+        ],
+        "prerequisiteIds": [
+          "cnm_p196",
+          "cnm_p178",
+          "cnm_p169"
+        ],
+        "levelReason": "The reference amount turns the daily rule into repeated fraction multiplication using only distributivity and comparison, with no geometric-series formula."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h200"
+    ],
+    "supportIds": [
+      "cnm_p196",
+      "cnm_p178",
+      "cnm_p169"
+    ],
+    "annotationRationale": "The common target is advancing a repeated retention-and-refill process until a strict composition threshold is met. Both methods use percentage amounts, fraction multiplication, and comparison. The main route adds unlike fractions; the alternative uses distributivity and a stable reference amount to obtain a multiplicative shortfall rule. These method-specific steps remain local. No general-term formula or probability recursion is required.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2009_AMC_10B_Q14",
+    "decision": "accept",
+    "mathematicalCheck": "In quarter-quart units, other seeds total 3 after each refill and millet follows m_next=3m/4+1. Thursday gives 175/64<3 and Friday gives 781/256>3, with every earlier listed amount below 3. Independently, the shortfall from 4 decreases by a factor of 3/4, crossing below 1 between Thursday and Friday.",
+    "levelCheck": "Both explanations justify the strict threshold and the first qualifying day. The reference-amount method uses only elementary distributivity and fraction comparisons.",
+    "methodDistinctness": "Tracking the shortfall supplies a distinct useful insight by converting retention plus addition into pure multiplication. Both methods remain within AMC 10 scope.",
+    "annotationCheck": "The recurrence target and shared percentage, fraction-multiplication, and comparison supports fit both methods. Fraction addition and distributivity are appropriately method-local.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "daily-millet-amount": "daily-millet-amount",
+    "reference-amount-shortfall": "reference-amount-shortfall"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "f7d79a1f72ef33300fd17b59f234a33e67cc3dae9eb34e78cbaf562507a14b1d",
+    "inputHash": "eab6fda3ea28f143e30e63988d5317d1cd16de582ca9bb30cdb4a386012320eb",
+    "authorInputHash": "82a133bb50216b4ee34be33fbb0fae0ee5b4a056f757928ec47d837ff7613d74",
+    "reviewInputHash": "5884022bdbbd65bf3b3353476fd0f2aa0217b32f25111db41c5f1f564898ab72",
+    "authorResponseHash": "b8a7679d237611606c79920776344ff424cb5381c14f0e96dfdf0c893cb63354",
+    "reviewerResponseHash": "087a0c76eb2eac0ade95b679128466c5780ced8c4a3fe6419ea73728b2687c84",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

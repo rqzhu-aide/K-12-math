@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2014_AMC_10B_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "3181ee63a63a09966de0b6de421a05208f9c9a73fbe8ed613e9d6873e18ef589",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "1aa9e9b0e5176f53233ad831e9b6be4413e900e7d0d1d601a915bf1857421a7a",
+  "solutionFigureHashes": {},
+  "candidateHash": "c31131819f4efbe28bc50d263080351aa94ed58923968780fcbb706537190e4a",
+  "candidate": {
+    "questionId": "2014_AMC_10B_Q25",
+    "derivedAnswer": "C (63/146)",
+    "answerStatus": "matches",
+    "answerReason": "First-step equations reduce to a recurrence for neighboring escape-probability differences. Their sum gives 1=(146/63)p_1, so the escape probability is 63/146.",
+    "methods": [
+      {
+        "id": "first-step-differences",
+        "label": "First-step probabilities and neighboring differences",
+        "explanation": "The current pad determines the frog's future jump probabilities, so let \\(p_n\\) be its probability of eventually escaping when starting on pad \\(n\\). The endpoint conditions are \\(p_0=0\\) and \\(p_{10}=1\\). Splitting according to the next jump gives, for \\(1\\le n\\le9\\),\n\\[\np_n=\\frac{n}{10}p_{n-1}+\\frac{10-n}{10}p_{n+1}.\n\\]\nTo turn these equations into a calculation we can carry from one pad to the next, rearrange them to compare neighboring differences:\n\\[\n(10-n)(p_{n+1}-p_n)=n(p_n-p_{n-1}).\n\\]\nDefine \\(d_n=p_n-p_{n-1}\\) for \\(1\\le n\\le10\\). Then\n\\[\nd_{n+1}=\\frac{n}{10-n}d_n\\qquad(1\\le n\\le9),\n\\]\nwhere every denominator is positive. Put \\(x=d_1=p_1\\). Successive use of the recurrence gives\n\\[\nd_1=x,\\quad d_2=\\frac{x}{9},\\quad d_3=\\frac{x}{36},\n\\]\n\\[\nd_4=\\frac{x}{84},\\qquad d_5=\\frac{x}{126}.\n\\]\nContinuing gives \\(d_6=d_5\\), \\(d_7=d_4\\), \\(d_8=d_3\\), \\(d_9=d_2\\), and \\(d_{10}=d_1\\).\n\nWhen all ten differences are added, the intermediate probabilities cancel. Thus\n\\[\n\\begin{aligned}\n1&=p_{10}-p_0=\\sum_{n=1}^{10}d_n\\\\\n&=2x\\left(1+\\frac19+\\frac1{36}+\\frac1{84}+\\frac1{126}\\right)\\\\\n&=\\frac{146}{63}x.\n\\end{aligned}\n\\]\nTherefore the requested probability is \\(p_1=x=\\boxed{\\frac{63}{146}}\\), choice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "math:recursive-counting-probability",
+          "math:telescoping"
+        ],
+        "prerequisiteIds": [
+          "cnm_h246",
+          "cnm_h200"
+        ],
+        "levelReason": "The method uses elementary probability branching, a directly derived recurrence, and finite fraction arithmetic, all within AMC 10 scope."
+      }
+    ],
+    "assessedIds": [
+      "math:recursive-counting-probability"
+    ],
+    "supportIds": [
+      "cnm_h246",
+      "cnm_h200"
+    ],
+    "annotationRationale": "The assessed target is modeling an eventual escape probability with state equations and absorbing endpoint values. Total probability supplies the first-step equation, and simple recurrence iteration supports the calculation. Telescoping is a method component used to sum the neighboring differences.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2014_AMC_10B_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The actual escape probabilities satisfy the stated first-step equations. The difference recurrence gives the listed coefficients, whose sum is 146/63. Telescoping therefore uniquely forces p_1=63/146. All recurrence denominators are positive.",
+    "levelCheck": "Elementary probability branching, recurrence iteration, and fraction arithmetic fit AMC 10. The decisive manipulation is explained clearly.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "State recursion is the assessed target. Total probability, simple recurrence iteration, and telescoping accurately describe the supporting work.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "first-step-differences": "first-step-differences"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "1aeab6625c7dc8f26f16ce153bbf720061b3cab7c419dcb46bd7966aaf1d5ee7",
+    "inputHash": "44d4e613856dbb4e6afc5a99986a8b446c19a18dc43b9889e0af8d451b591848",
+    "authorInputHash": "bd6b3645914f5f19ef6d4d00a17769450697b640c3b8d0367151bb52a8bb9e7d",
+    "reviewInputHash": "944c222c7237ec16b262359c9a04f8ced925118efa746b5f04744a2b913bdea9",
+    "authorResponseHash": "7b890083f231e0ca5bd06c84389957c0ec6f451793e87da3262d74a73bbb9fc4",
+    "reviewerResponseHash": "9848d1858db54032d3b99a57b2cf0996b72c6d486e6f01d58212a65d38c5868c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2013_AMC_12A_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "0eec10a88d8bf1bdc467954f8cbba5c6038f9a4bdc55559934f6179cea3f9176",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "80392df3ab83fc6d808f3dc60f0a7e533f15c9e800bee6f394f57e9188c7149a",
+  "solutionFigureHashes": {},
+  "candidateHash": "e335e2e43b1c345c2b47deb5e72709477bd64cf63e6d7332334f9b8605d2e45c",
+  "candidate": {
+    "questionId": "2013_AMC_12A_Q25",
+    "derivedAnswer": "399 (A)",
+    "answerStatus": "matches",
+    "answerReason": "An integer output a+bi has exactly one preimage with positive imaginary part precisely when a≤b². There are 399 such outputs in the specified integer square.",
+    "methods": [
+      {
+        "id": "quadratic-inverse-and-integer-outputs",
+        "label": "Determine which integer outputs have one eligible preimage",
+        "explanation": "Write \\(z=x+iy\\), where \\(x,y\\) are real and \\(y>0\\). Expanding gives\n\\[\nf(z)=(x^2-y^2-y+1)+i\\,x(2y+1).\n\\]\nSuppose \\(f(z)=a+bi\\), where \\(a,b\\) are integers between \\(-10\\) and \\(10\\). Comparing imaginary parts gives \\(x=b/(2y+1)\\). This denominator is positive because \\(y>0\\).\n\nThe factor \\(2y+1\\) suggests setting \\(t=(2y+1)^2>1\\). Then \\(x^2=b^2/t\\) and \\(y^2+y=(t-1)/4\\), so the real-part equation becomes\n\\[\na=\\frac{b^2}{t}+\\frac{5-t}{4}.\n\\]\nSince \\(t>1\\), multiplication by \\(4t\\) is valid and yields\n\\[\nQ(t)=t^2+(4a-5)t-4b^2=0.\n\\]\nConversely, any root \\(t>1\\) gives exactly one eligible complex number through\n\\[\ny=\\frac{\\sqrt t-1}{2},\\qquad x=\\frac{b}{\\sqrt t}.\n\\]\nThese formulas satisfy both original component equations, so it remains to count roots greater than \\(1\\).\n\nIf \\(b\\ne0\\), the discriminant of \\(Q\\) is positive and its root product is \\(-4b^2<0\\). Thus it has one negative root and one positive root. Since \\(1\\) lies to the right of the negative root, the positive root exceeds \\(1\\) exactly when\n\\[\nQ(1)=4(a-1-b^2)<0.\n\\]\nFor integer \\(a\\), this is equivalent to \\(a\\le b^2\\). Equality \\(Q(1)=0\\) gives \\(y=0\\), which is excluded.\n\nIf \\(b=0\\), the equation factors as \\(t(t+4a-5)=0\\). Its only possible root greater than \\(1\\) is \\(t=5-4a\\), which works exactly when \\(a<1\\), or \\(a\\le0=b^2\\). Therefore, in every case, an integer output has exactly one eligible preimage if \\(a\\le b^2\\), and none otherwise.\n\nThere are \\(21^2=441\\) candidate integer outputs. Count the excluded ones with \\(a>b^2\\): for \\(b=0\\), there are \\(10\\); for each of \\(b=\\pm1\\), there are \\(9\\); for each of \\(b=\\pm2\\), there are \\(6\\); and for each of \\(b=\\pm3\\), there is \\(1\\). When \\(|b|\\ge4\\), no output is excluded because \\(b^2\\ge16>10\\). Thus the excluded count is\n\\[\n10+2(9+6+1)=42.\n\\]\nThe correspondence proved above counts every eligible \\(z\\) once, so the answer is \\(441-42=\\boxed{399}\\), choice \\(\\text{A}\\).",
+        "nodeIds": [
+          "math:bijective-counting",
+          "math:lattice-counting",
+          "cnm_h010"
+        ],
+        "prerequisiteIds": [
+          "cnm_h102",
+          "cnm_h099",
+          "cnm_223",
+          "cnm_226"
+        ],
+        "levelReason": "The solution uses rectangular complex arithmetic, a real quadratic substitution, discriminants, root signs, and finite integer counting. It uses no calculus or complex analysis."
+      }
+    ],
+    "assessedIds": [
+      "math:bijective-counting",
+      "math:lattice-counting"
+    ],
+    "supportIds": [
+      "cnm_h102",
+      "cnm_h099"
+    ],
+    "annotationRationale": "The central work is proving exactly which integer-coordinate outputs correspond to one eligible input, then counting those outputs with correct boundary conventions. Complex expansion and component equality support the correspondence; quadratic discriminants and root products are local prerequisites of this particular inverse construction.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2013_AMC_12A_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The substitution t=(2y+1)² is reversible for y>0. For b≠0, the quadratic has opposite-sign roots, and its positive root exceeds 1 exactly when a<1+b². The separate b=0 case gives the same integer condition a≤b². Each qualifying output has exactly one eligible preimage; excluding 42 of 441 outputs leaves 399.",
+    "levelCheck": "Rectangular complex arithmetic, real quadratic root analysis, and finite counting stay within high-school mathematics. Domain and boundary restrictions are explicit.",
+    "methodDistinctness": "One complete algebraic method is sufficient.",
+    "annotationCheck": "Bijective counting and integer-coordinate counting describe the central work. Complex component calculations, discriminants, root products, and complement counting match the method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "quadratic-inverse-and-integer-outputs": "quadratic-inverse-and-integer-outputs"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "a749dc3ca64f28fe7741d7d3a261f1ba06a002d8d3e269a0a637655a1dd88d6c",
+    "inputHash": "942ef01f4f961e30e18917136e2df0c223d6d1d6f37966a239da32992f2ceac2",
+    "authorInputHash": "31eb045d8cb4ac4e36ec2ad1102f608e83838b92508382d64960f3f8376bce35",
+    "reviewInputHash": "500ffc61e877f57d05a6f9d81fa9d0eb95cb575aa6ed8cf8717b9d461a3251c6",
+    "authorResponseHash": "b1d819c9d92c47997b6dd54a507a48da606dfddfbbbd51d4470bd8a7d3715e82",
+    "reviewerResponseHash": "d767a4fad4d034c06980203ddcaf4bda3f2cd9526a752a8ceded3cd71437ea6b",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

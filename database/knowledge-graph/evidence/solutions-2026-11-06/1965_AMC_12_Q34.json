@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1965_AMC_12_Q34",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "d1b8479156ad940ced1dd4431ab160cc85385ce15bbed9c2543261ebea7faddf",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "e0e989e706537bc7f6c659aa05a52b783f01772f8c9214542e65278f9775743c",
+  "solutionFigureHashes": {},
+  "candidateHash": "e036c7384e958d956e06d8a6fd8842f8e8c36538231954828d431d5685b1f3a7",
+  "candidate": {
+    "questionId": "1965_AMC_12_Q34",
+    "derivedAnswer": "2, attained at x=1/2, choice B",
+    "answerStatus": "matches",
+    "answerReason": "The expression minus 2 is (2x-1)^2/[6(1+x)], which is nonnegative for x≥0 and vanishes at x=1/2.",
+    "methods": [
+      {
+        "id": "nonnegative-square-gap",
+        "label": "Compare with 2 using a square",
+        "explanation": "To test the candidate \\(2\\), subtract it and look for a nonnegative expression. For every \\(x\\geq0\\), the denominator \\(6(1+x)\\) is positive, and\n\\[\n\\frac{4x^2+8x+13}{6(1+x)}-2\n=\\frac{4x^2-4x+1}{6(1+x)}\n=\\frac{(2x-1)^2}{6(1+x)}\\geq0.\n\\]\nThus the expression is always at least \\(2\\). Equality holds when \\(2x-1=0\\), or \\(x=1/2\\), which is in the allowed domain. Therefore the smallest value is \\(\\boxed{2}\\), choice B.",
+        "nodeIds": [
+          "cnm_h019",
+          "cnm_161",
+          "cnm_153"
+        ],
+        "prerequisiteIds": [
+          "cnm_148",
+          "cnm_096",
+          "cnm_156",
+          "cnm_029"
+        ],
+        "levelReason": "Uses fraction subtraction and the nonnegativity of a real square."
+      },
+      {
+        "id": "fixed-product-bound",
+        "label": "Use two positive terms with a fixed product",
+        "explanation": "The numerator can be written as \\(4(x+1)^2+9\\), matching the denominator's \\(x+1\\). Set \\(t=x+1\\), so \\(t\\geq1\\). The expression becomes\n\\[\n\\frac{4t^2+9}{6t}\n=\\frac16\\left(4t+\\frac9t\\right).\n\\]\nThe two terms inside the parentheses are positive and have product \\(36\\). For positive numbers \\(u,v\\), expanding \\((\\sqrt u-\\sqrt v)^2\\geq0\\) gives \\(u+v\\geq2\\sqrt{uv}\\), with equality exactly when \\(u=v\\). Applying this bound gives\n\\[\n\\frac16\\left(4t+\\frac9t\\right)\n\\geq\\frac16\\cdot2\\sqrt{36}=2.\n\\]\nEquality requires \\(4t=9/t\\). Since \\(t>0\\), this gives \\(t=3/2\\), or \\(x=1/2\\), an allowed value. Hence the minimum is \\(\\boxed{2}\\), choice B.",
+        "nodeIds": [
+          "cnm_h022",
+          "cnm_162"
+        ],
+        "prerequisiteIds": [
+          "cnm_h021",
+          "cnm_148",
+          "cnm_156",
+          "cnm_029"
+        ],
+        "levelReason": "Uses the two-number AM-GM bound, justified directly from a nonnegative square, and checks its equality condition."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h029"
+    ],
+    "supportIds": [
+      "cnm_156",
+      "cnm_148",
+      "cnm_029"
+    ],
+    "annotationRationale": "The task-level target is an attained minimum on the specified domain. The first route compares with a candidate by subtraction and perfect-square factoring. The alternative exposes positive terms with constant product and applies AM-GM. These are alternative routes, not a combined requirement.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1965_AMC_12_Q34",
+    "decision": "accept",
+    "mathematicalCheck": "The first method correctly obtains f(x)-2=(2x-1)²/[6(1+x)]≥0. The second obtains f(x)=(4t+9/t)/6≥2 for t=x+1≥1. Both attain equality at x=1/2, establishing the minimum.",
+    "levelCheck": "Both methods use accessible school algebra. The AM-GM bound is derived from a square, and its positivity and equality conditions are checked.",
+    "methodDistinctness": "The candidate-value comparison and fixed-product AM-GM approach offer distinct useful insights at the intended level.",
+    "annotationCheck": "The attained-minimum target is route-neutral. Subtraction and perfect-square factoring remain separate from the AM-GM route, and the shared support annotations fit both.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "nonnegative-square-gap": "solution:nonnegative-square-gap:e0e989e70653",
+    "fixed-product-bound": "fixed-product-bound"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "820c362f806db5256f1e3d8787148500e6228747f2bc554ab99cc86f2b8ba150",
+    "inputHash": "b863430df1115db532ee6a5e4e5b577e146fe2b841fcee76797b70a8ab73859e",
+    "authorInputHash": "8c8f1fbab25548d70f438acf0029bc67bc5613628f39ac98865a1c80faf1e133",
+    "reviewInputHash": "71e82dd7fb90418a992b8135748ec95e7c15d9ba2de14b6dad036c77b5c40f73",
+    "authorResponseHash": "a6ede674c9fb421df7307d2cb347dd05484a649adb2289c4d090824a79d25f22",
+    "reviewerResponseHash": "09fe81be72c55198ab381bd6336b0124f73a274ff473837901ba783b157d88bc",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_10B_Q16",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "743444f0a695e97af56bb2fcb01d6956ad3f70f610f96c2cc20600934339cb53",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "4d4fdc58ec7de8a70181067f7f19788ebc4ac30e96a3db7d5321cd65d371d062",
+  "solutionFigureHashes": {},
+  "candidateHash": "551e8c75d450445e46cf0947b086997f3644af0f386ff65390516285df140c84",
+  "candidate": {
+    "questionId": "2016_AMC_10B_Q16",
+    "derivedAnswer": "E (4)",
+    "answerStatus": "matches",
+    "answerReason": "Writing the sum as S=1/[r(1-r)] gives 0<r<1. The denominator is at most 1/4, so S≥4. Equality occurs for first term 2 and ratio 1/2, matching choice E.",
+    "methods": [
+      {
+        "id": "maximize-positive-denominator",
+        "label": "Maximize the denominator",
+        "explanation": "Let \\(a\\) be the first term and \\(r\\) the common ratio. The second term gives \\(ar=1\\), so neither \\(a\\) nor \\(r\\) is zero. Convergence requires \\(-1<r<1\\).\n\nThe tail after the first term is \\(r\\) times the whole convergent series. Hence \\(S=a+rS\\), which gives\n\\[\nS=\\frac{a}{1-r}.\n\\]\nSince \\(1-r>0\\) and \\(S>0\\), we have \\(a>0\\). Together with \\(ar=1\\), this forces \\(r>0\\). Thus \\(0<r<1\\), and substituting \\(a=1/r\\) yields\n\\[\nS=\\frac{1}{r(1-r)}.\n\\]\nThe denominator is positive, so making it as large as possible makes \\(S\\) as small as possible. Completing the square gives\n\\[\nr(1-r)=\\frac14-\\left(r-\\frac12\\right)^2\n\\le\\frac14.\n\\]\nTherefore \\(S\\ge4\\). Equality occurs at \\(r=1/2\\), which lies in the allowed interval, and then \\(a=2\\). The resulting series \\(2+1+1/2+1/4+\\cdots\\) converges to \\(4\\) and has second term \\(1\\). The smallest possible sum is \\(4\\), choice E.",
+        "nodeIds": [
+          "math:infinite-geometric-series",
+          "math:completing-square-expression",
+          "cnm_235"
+        ],
+        "prerequisiteIds": [
+          "cnm_h207",
+          "cnm_148",
+          "cnm_096"
+        ],
+        "levelReason": "Uses the geometric-series structure in the question, sign restrictions, and an elementary nonnegative-square bound."
+      }
+    ],
+    "assessedIds": [
+      "math:infinite-geometric-series"
+    ],
+    "supportIds": [
+      "cnm_h207"
+    ],
+    "annotationRationale": "The series node captures the task's convergence and sum relationships. Completing the square and finding the quadratic denominator's maximum are local to the written optimization route. Geometric-ratio knowledge supports the setup; the perfect-square identity and inequality properties support this particular bound. The equality case is checked against both convergence and the prescribed second term.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_10B_Q16",
+    "decision": "accept",
+    "mathematicalCheck": "The second term gives ar=1. Convergence requires −1<r<1, and positivity of S=a/(1−r) forces a>0 and r>0. Therefore S=1/[r(1−r)], with positive denominator at most 1/4 by completing the square. Thus S≥4, attained by a=2 and r=1/2.",
+    "levelCheck": "The convergence and sign restrictions, reciprocal comparison, and equality case are explained without calculus. The reasoning fits the series explicitly asked about.",
+    "methodDistinctness": "One complete geometric-series and quadratic-bound method is sufficient.",
+    "annotationCheck": "The series target is route-neutral. Completing the square and quadratic extrema are correctly local to the method, with geometric-ratio knowledge, the perfect-square identity, and inequality properties as justified support.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "maximize-positive-denominator": "maximize-positive-denominator"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "877151a6a093f45a3e99ae6eb50c76996c43dd4f7f53c39516af8fb0bebc621d",
+    "acceptedAt": "2026-11-07T10:41:21.989754+00:00",
+    "inputHash": "3ba6d42aa636330243078424c79829e8daabfa644b2fda9ed956ec87015beca5",
+    "authorInputHash": "f2eb4b7e0e2a1b07e5013fa5d13e12154d7bc69171d2a9442815c0e572a2b18b",
+    "reviewInputHash": "de6b8b234693bf2c003e6b3651c28246d4e7cd82191ba6f4f117a5c365645979",
+    "authorResponseHash": "df0f828333c278fd0ae33bf4e392708ce842d8ae59c713d4a325fef444313107",
+    "reviewerResponseHash": "024edf05009b8e7dee348d645dc6444f4b292e0481bfb854c349ad150230454c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

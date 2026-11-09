@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1999_AMC_12_Q19",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "20c4d75b54957ba78d8a8f64cf3e4e1b9e81f689a6e5e48bd5cd3c37df55b272",
+    "figureHashes": {
+      "figures/1999_AMC_12_Q19_question_fig1.svg": "7859c1a3c2790c9385e4bbecf5d63b628471a374a249f15e89fa9c20946e0767"
+    }
+  },
+  "solutionSHA256": "443b57b5201b7c12e4bf856e581ed801a99ed0ea7a67be42c85813097c777d8a",
+  "solutionFigureHashes": {},
+  "candidateHash": "91f386ee4d907f3e2beab0179c239f2c30823de65529b92b304f4e22f671b184",
+  "candidate": {
+    "questionId": "1999_AMC_12_Q19",
+    "derivedAnswer": "11, choice C",
+    "answerStatus": "matches",
+    "answerReason": "Writing n=AC=AB and m=AD gives n²−m²=57 with integer lengths. The smallest feasible n is 11, attained with AD=8 and CD=3.",
+    "methods": [
+      {
+        "id": "smallest-integer-search",
+        "label": "Test the smallest possible integer lengths",
+        "explanation": "Since \\(AC=AD+CD\\), the length \\(AC\\) is an integer. Let \\(n=AC=AB\\) and \\(m=AD\\).\n\nFirst exclude the endpoints of \\(\\overline{AC}\\). If \\(D=A\\), then \\(AB=BD=\\sqrt{57}\\), contradicting the integrality of \\(AC=AB\\). If \\(D=C\\), the Pythagorean theorem would give \\(AB^2=AC^2+57\\), contradicting \\(AB=AC\\). Thus \\(D\\) lies strictly between \\(A\\) and \\(C\\).\n\nTriangle \\(ABD\\) is right at \\(D\\), so the Pythagorean theorem gives\n\\[\nm^2+57=n^2.\n\\]\nBecause \\(n^2\\ge57>7^2\\), the positive integer \\(n\\) is at least \\(8\\). We can therefore check candidate lengths in increasing order. For \\(n=8,9,10\\), the required values of \\(m^2=n^2-57\\) are \\(7,24,43\\). None is an integer square, since\n\\[\n2^2<7<3^2,\\qquad\n4^2<24<5^2,\\qquad\n6^2<43<7^2.\n\\]\nFor \\(n=11\\), however,\n\\[\nm^2=121-57=64,\n\\]\nso \\(m=8\\) and \\(CD=11-8=3\\).\n\nTo verify existence, take \\(AD=8\\), \\(CD=3\\), and a perpendicular segment \\(BD=\\sqrt{57}\\). Then \\(AC=11\\) and \\(AB=\\sqrt{64+57}=11\\), so all conditions hold. Every smaller integer length has been excluded, making the minimum \\(\\boxed{11}\\), choice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "cnm_174",
+          "cnm_079",
+          "math:integer-diophantine-equations"
+        ],
+        "prerequisiteIds": [
+          "cnm_055",
+          "cnm_064",
+          "cnm_075"
+        ],
+        "levelReason": "This method uses the Pythagorean theorem and a complete search of four small integer candidates, with square comparisons."
+      },
+      {
+        "id": "difference-of-squares",
+        "label": "Use factor pairs",
+        "explanation": "The integer segment lengths imply that \\(n=AC=AB\\) and \\(m=AD\\) are integers. The perpendicular segment creates a right triangle, suggesting a relation between their squares.\n\nThe endpoint \\(D=A\\) would force the integer \\(n\\) to equal \\(\\sqrt{57}\\), which is impossible. The endpoint \\(D=C\\) would force \\(AB^2=AC^2+57\\), also impossible because \\(AB=AC\\). Hence \\(0<m<n\\), and the Pythagorean theorem in triangle \\(ABD\\) gives\n\\[\nn^2-m^2=57.\n\\]\nFactoring the difference of squares turns the integer-length condition into a short list of factor pairs:\n\\[\n(n-m)(n+m)=57.\n\\]\nBoth factors are positive integers, and \\(n-m<n+m\\). The complete list of positive factor pairs of \\(57\\) in increasing order is \\((1,57)\\) and \\((3,19)\\). Adding the factors in each pair gives \\(2n\\), so the only possible values are\n\\[\nn=\\frac{1+57}{2}=29\n\\quad\\text{or}\\quad\nn=\\frac{3+19}{2}=11.\n\\]\nFor the smaller value, \\(m=(19-3)/2=8\\), giving \\(CD=11-8=3\\). Constructing \\(BD=\\sqrt{57}\\) perpendicular to \\(AC\\) at this point gives \\(AB=\\sqrt{8^2+57}=11=AC\\). Thus \\(11\\) is attainable and is the smallest possibility. The answer is \\(\\boxed{11}\\), choice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "cnm_174",
+          "cnm_152",
+          "math:integer-diophantine-equations"
+        ],
+        "prerequisiteIds": [
+          "cnm_055",
+          "cnm_064",
+          "cnm_075",
+          "cnm_147",
+          "cnm_150"
+        ],
+        "levelReason": "Factoring a difference of squares and enumerating positive factor pairs are school-algebra techniques within AMC 12 scope."
+      }
+    ],
+    "assessedIds": [
+      "cnm_174",
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_055",
+      "cnm_064",
+      "cnm_075"
+    ],
+    "annotationRationale": "Both methods translate the perpendicular geometry into a Pythagorean equation and use integrality to prove a minimum, supporting the two assessed targets. Segment addition, perpendicularity, and square-root calculations are shared prerequisites. The first method uses square-root bounds through cnm_079; the second uses difference-of-squares factorization through cnm_152, with its identity and factorization prerequisites kept local. Neither alternative is a requirement for the other.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1999_AMC_12_Q19",
+    "decision": "accept",
+    "mathematicalCheck": "Both methods correctly establish integer lengths n=AC=AB and m=AD with 0<m<n and n²−m²=57. The search excludes every integer n below 11. Independently, the complete positive factor pairs (1,57) and (3,19) restrict n to 29 or 11. The construction AD=8, CD=3, BD=√57 verifies attainability at 11. The displayed perpendicular configuration supports the Pythagorean equation.",
+    "levelCheck": "Both explanations are complete and use suitable school geometry and algebra. Endpoint exclusions, the minimum argument, and geometric existence are explicitly justified.",
+    "methodDistinctness": "Testing bounded integer lengths and enumerating factors after a difference-of-squares factorization offer distinct, accessible approaches.",
+    "annotationCheck": "The shared Pythagorean and integer-equation targets are route neutral. Segment arithmetic, perpendicularity, and square-root calculations support both methods. Square-root bounds and difference-of-squares factorization are correctly kept method local.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "smallest-integer-search": "smallest-integer-search",
+    "difference-of-squares": "difference-of-squares"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "327af28f9b1aa8fe78a3938e34f1ff694482979a65fde9ae3e8660d79751e027",
+    "acceptedAt": "2026-11-08T00:28:31.758351+00:00",
+    "inputHash": "95569d90745e795b848db301722268dcfe49d7d00ac55129746d3743e00d1cbd",
+    "authorInputHash": "cc9beaef8a3f68aaeacae196d9b2f842e8aeeedc68a2b78b8cc78f9d9a757af5",
+    "reviewInputHash": "701ac43f249dd3667e54b867a577bd5f27018c1ed7bcc6d828aa3e477d5135d9",
+    "authorResponseHash": "e50cbe14223ed807149ee84b960e3de64f65afa09afce5a60bc2c001131a46ff",
+    "reviewerResponseHash": "8f422a258ed9dffb39c45d14c9115d0cbbeb97fc5f75a4735bbe14092d50ba2e",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

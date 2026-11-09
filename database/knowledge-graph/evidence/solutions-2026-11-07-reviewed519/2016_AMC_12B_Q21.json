@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_12B_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "7064ab4a6d432926e5da1c63f39336b55e47a41726f60870c407546aea47753a",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "8e4b3987ab72f30d879bd71f7a9a562e3ebb255f28c90f55a3a399ada5ec9b35",
+  "solutionFigureHashes": {},
+  "candidateHash": "a67cc4a80de5724ffeda8fc946c911eb6b03c403b141a658faab559485298213",
+  "candidate": {
+    "questionId": "2016_AMC_12B_Q21",
+    "derivedAnswer": "B (1/4)",
+    "answerStatus": "matches",
+    "answerReason": "The first N areas total 1/4 − 1/[2(N+2)], whose remaining term tends to zero.",
+    "methods": [
+      {
+        "id": "nested-area-differences",
+        "label": "Subtract nested triangle areas",
+        "explanation": "The projection suggests comparing the nested triangles \\(ADQ_i\\). Write \\([XYZ]\\) for the area of \\(\\triangle XYZ\\). Because \\(P_i\\) lies on \\(AQ_i\\),\n\\[\n[DQ_iP_i]=[ADQ_i]-[ADP_i].\n\\]\nAlso, \\(P_iQ_{i+1}\\) is parallel to \\(AD\\), since both are perpendicular to \\(CD\\). Thus triangles \\(ADP_i\\) and \\(ADQ_{i+1}\\) have the same base \\(AD\\) and equal perpendicular heights. Therefore,\n\\[\n[DQ_iP_i]=[ADQ_i]-[ADQ_{i+1}].\n\\]\nAdding the first \\(N\\) areas cancels all the intermediate triangle areas, leaving\n\\[\nS_N=[ADQ_1]-[ADQ_{N+1}].\n\\]\nWe now need to show that the remaining triangle shrinks to zero area.\n\nLet \\(t_i=DQ_i\\), so \\(t_1=1/2\\). A square's diagonal makes a \\(45^\\circ\\) angle with its sides. Hence the right triangle \\(DQ_{i+1}P_i\\) has equal legs, giving \\(P_iQ_{i+1}=t_{i+1}\\). The right triangles \\(Q_iQ_{i+1}P_i\\) and \\(Q_iDA\\) share their angle at \\(Q_i\\), so they are similar. Their corresponding legs give\n\\[\n\\frac{t_i-t_{i+1}}{t_i}=\\frac{t_{i+1}}{1}.\n\\]\nSolving yields \\(t_{i+1}=t_i/(1+t_i)\\). Starting from \\(t_1=1/2\\), this relation keeps every length positive and makes it smaller than the preceding one. Taking reciprocals gives\n\\[\n\\frac1{t_{i+1}}=\\frac1{t_i}+1,\n\\qquad t_i=\\frac1{i+1}.\n\\]\nSince \\(AD=1\\), we obtain\n\\[\nS_N=\\frac14-\\frac1{2(N+2)}.\n\\]\nThe subtracted term becomes arbitrarily small as \\(N\\) increases. Thus the infinite sum is \\(\\boxed{\\frac14}\\), choice \\(\\text{B}\\).",
+        "nodeIds": [
+          "math:telescoping",
+          "cnm_p148",
+          "cnm_271",
+          "cnm_272",
+          "cnm_191",
+          "cnm_h200",
+          "cnm_h199"
+        ],
+        "prerequisiteIds": [
+          "cnm_268",
+          "cnm_p077"
+        ],
+        "levelReason": "Uses square properties, similar right triangles, triangle areas, and finite cancellation with an explicit vanishing remainder."
+      },
+      {
+        "id": "coordinate-partial-fractions",
+        "label": "Find coordinates and telescope the areas",
+        "explanation": "Place the unit square at\n\\[\nA=(0,0),\\quad B=(1,0),\\quad C=(1,1),\\quad D=(0,1).\n\\]\nLet \\(Q_i=(t_i,1)\\), where \\(t_1=1/2\\). For \\(t_i>0\\), the lines \\(AQ_i\\) and \\(BD\\) have equations\n\\[\ny=\\frac{x}{t_i},\\qquad x+y=1.\n\\]\nSolving their equations gives\n\\[\nP_i=\\left(\\frac{t_i}{1+t_i},\\frac1{1+t_i}\\right).\n\\]\nThe perpendicular projection onto \\(CD\\), which is horizontal, preserves the first coordinate. Hence\n\\[\nt_{i+1}=\\frac{t_i}{1+t_i}.\n\\]\nFor \\(0<t_i\\le1/2\\), the denominator is positive and \\(0<t_{i+1}<t_i\\), so all these intersections and projections remain on the specified segments. The reciprocal relation\n\\[\n\\frac1{t_{i+1}}=\\frac1{t_i}+1\n\\]\nstarts at \\(1/t_1=2\\), giving \\(t_i=1/(i+1)\\).\n\nTriangle \\(DQ_iP_i\\) has horizontal base \\(t_i\\) and perpendicular height \\(1-1/(1+t_i)=t_{i+1}\\). Its area is therefore\n\\[\n\\frac{t_it_{i+1}}2\n=\\frac1{2(i+1)(i+2)}\n=\\frac12\\left(\\frac1{i+1}-\\frac1{i+2}\\right).\n\\]\nIn the first \\(N\\) terms, consecutive fractions cancel, so\n\\[\nS_N=\\frac12\\left(\\frac12-\\frac1{N+2}\\right).\n\\]\nThe last fraction tends to zero, and the required sum is \\(\\boxed{\\frac14}\\), choice \\(\\text{B}\\).",
+        "nodeIds": [
+          "math:telescoping",
+          "cnm_p148",
+          "cnm_084",
+          "cnm_h169",
+          "cnm_h172",
+          "cnm_h200",
+          "cnm_h199"
+        ],
+        "prerequisiteIds": [
+          "cnm_089",
+          "cnm_p077"
+        ],
+        "levelReason": "Uses elementary coordinate geometry, a reciprocal recurrence, and telescoping fractions; no calculus is needed."
+      }
+    ],
+    "assessedIds": [
+      "math:telescoping",
+      "cnm_p148"
+    ],
+    "supportIds": [
+      "cnm_h200",
+      "cnm_h199",
+      "cnm_p077"
+    ],
+    "annotationRationale": "The task combines triangle-area evaluation with cancellation across successive stages. Both methods derive and solve a length recurrence. The first obtains cancellation geometrically through nested areas and uses similarity locally; the second uses line intersections and fraction decomposition. These geometric and coordinate prerequisites remain separate alternatives.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_12B_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "Both routes correctly obtain t_(i+1)=t_i/(1+t_i) and t_i=1/(i+1), with positive lengths and valid segment intersections. The geometric area difference and coordinate area calculation both give S_N=1/4−1/[2(N+2)], proving the sum is 1/4.",
+    "levelCheck": "Similarity, coordinate intersections, reciprocal recurrences, and the explicit vanishing remainder are appropriate for AMC 12.",
+    "methodDistinctness": "Geometric cancellation of equal-height triangle areas offers a distinct insight from coordinate calculation and fraction decomposition.",
+    "annotationCheck": "The assessed targets are route-neutral, shared supports occur in both methods, and similarity and coordinate concepts remain method-local.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "nested-area-differences": "nested-area-differences",
+    "coordinate-partial-fractions": "coordinate-partial-fractions"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "9a7573e3c5eee42203d7bd4a11488d3a8b2529a988de044b4937946169dc37c3",
+    "acceptedAt": "2026-11-07T10:53:28.276964+00:00",
+    "inputHash": "0d0131a91a47c1bca43b8d7e06a0baec352bf614b7b58c93468ec9b4b8d51e87",
+    "authorInputHash": "4c10c342e70d8e4cb3df76f1d5aa45594fe15f306adfaa846952dedb35fc69db",
+    "reviewInputHash": "0462f535de992ac8ea129f63ca6c8d4bdf43b196b9a103ff437d288b208e6a1a",
+    "authorResponseHash": "fdb9b6b5fe4f6421d90211b75aa6ee897943f748c79feb7f6ae3b6cff71f766e",
+    "reviewerResponseHash": "1cfef22949f553267aa656c2a1dd330894bf953b0d728866ad52bf97d765a41c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2009_AMC_8_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "092ab8e575f8499ecd51980cbf88f3e37b93e78ef416c89a31f5a12a28c6bcdc",
+    "figureHashes": {
+      "figures/2009_AMC_8_Q25_question_fig1.svg": "21222102163e74c90618816dbfc8138e8d356097d33e905005dbc500795a4f34",
+      "figures/2009_AMC_8_Q25_question_fig2.svg": "9dfbaf536a4b10bc23dfacc27d9ea2dc4ccaa48de8875146259378de12359d68"
+    }
+  },
+  "solutionSHA256": "88c8cfdb48c75c7621b44ad6ff41c5aabed9c52486c46ca6edfdf16067ffb673",
+  "solutionFigureHashes": {},
+  "candidateHash": "d4401652f7fbbc33b62222e73beff50214ba5d71b4a1218afe6a206c7019358e",
+  "candidate": {
+    "questionId": "2009_AMC_8_Q25",
+    "derivedAnswer": "11 square feet (E)",
+    "answerStatus": "matches",
+    "answerReason": "The four separate slabs have total surface area 12 square feet. Their three glued interfaces have combined area 1/2 square foot, removing twice that area and leaving 11 square feet.",
+    "methods": [
+      {
+        "id": "subtract-glued-interfaces",
+        "label": "Subtract the glued faces",
+        "explanation": "It is easier to find the surface areas of the four separate pieces first, then remove the surfaces hidden by glue.\n\nThe cube has side length \\(1\\) foot. Each piece is therefore a rectangular slab with a \\(1\\)-by-\\(1\\) top and bottom. Let \\(a,b,c,d\\) be the heights of pieces \\(A,B,C,D\\), respectively. The cuts give\n\\[\na=\\frac12,\\qquad b=\\frac13,\\qquad c=\\frac1{17},\n\\]\nand\n\\[\nd=1-\\frac12-\\frac13-\\frac1{17}\n=\\frac{11}{102}.\n\\]\nAll four heights are positive and add to \\(1\\).\n\nA separate slab of height \\(t\\) has two square faces of area \\(1\\) each and four rectangular faces of area \\(t\\) each. Thus the total surface area before gluing is\n\\[\n4\\cdot2+4(a+b+c+d)=8+4=12.\n\\]\nIn the displayed arrangement, the bottoms are aligned and each join has width \\(1\\). Its height is the height of the shorter neighboring slab. Since \\(c<b<a\\) and \\(d<a\\), the glued areas at the joins \\(C\\)-\\(B\\), \\(B\\)-\\(A\\), and \\(A\\)-\\(D\\) are \\(c,b,d\\), respectively. Their sum is\n\\[\nc+b+d=1-a=\\frac12.\n\\]\nEach glued patch was counted twice in the separate surface areas, once on each neighboring piece. Both copies become internal, so the exposed surface area is\n\\[\n12-2\\left(\\frac12\\right)=\\boxed{11}\n\\]\nsquare feet, choice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_h110",
+          "cnm_p161"
+        ],
+        "prerequisiteIds": [
+          "cnm_p089",
+          "cnm_p163",
+          "cnm_p174"
+        ],
+        "levelReason": "The solution uses rectangular-prism surface areas, elementary fraction arithmetic, and subtraction of glued rectangles."
+      },
+      {
+        "id": "group-exposed-faces",
+        "label": "Group the exposed faces by direction",
+        "explanation": "Group the exposed faces into horizontal faces, the front and back, and the vertical ends and steps. This keeps every part of the surface accounted for.\n\nThe original cube has side length \\(1\\) foot, so every slab has a \\(1\\)-by-\\(1\\) horizontal footprint. Write \\(a,b,c,d\\) for the heights of \\(A,B,C,D\\). Then\n\\[\na=\\frac12,\\quad b=\\frac13,\\quad c=\\frac1{17},\n\\]\n\\[\nd=1-\\frac12-\\frac13-\\frac1{17}\n=\\frac{11}{102}.\n\\]\nIn particular, \\(a+b+c+d=1\\), \\(c<b<a\\), and \\(0<d<a\\).\n\nEach slab's entire top and bottom remain exposed because the slabs are joined along vertical end faces. These eight unit squares contribute \\(8\\) square feet.\n\nAt the front, the four rectangular portions each have length \\(1\\), so their total area is \\(a+b+c+d=1\\). The back contributes another \\(1\\), giving \\(2\\) square feet together.\n\nThe remaining faces are the two ends and the three vertical steps. Reading from \\(C\\) through \\(B,A,D\\), their heights are\n\\[\nc,\\quad b-c,\\quad a-b,\\quad a-d,\\quad d.\n\\]\nEach has width \\(1\\), so their combined area is\n\\[\n\\begin{aligned}\nc+(b-c)+(a-b)+(a-d)+d\n&=2a\\\\\n&=1.\n\\end{aligned}\n\\]\nThese groups cover all exposed faces, without counting any glued patch. The total surface area is therefore\n\\[\n8+2+1=\\boxed{11}\n\\]\nsquare feet, choice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_h110",
+          "cnm_p150"
+        ],
+        "prerequisiteIds": [
+          "cnm_p089",
+          "cnm_p163",
+          "cnm_p174"
+        ],
+        "levelReason": "The method adds rectangular surface portions and uses elementary cancellation of slab-height differences."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h110"
+    ],
+    "supportIds": [
+      "cnm_p089",
+      "cnm_p163",
+      "cnm_p174"
+    ],
+    "annotationRationale": "The route-neutral target is total exposed surface area, using the prism scope of cnm_h110. The first method applies rectangular-prism surface area to separate slabs and removes glued interfaces. The second combines rectangular portions of the exposed faces, matching cnm_p150. Rectangle areas, the unit cube's volume-to-side relationship, and fraction arithmetic support both methods.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2009_AMC_8_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The slab heights are 1/2, 1/3, 1/17, and 11/102, summing to 1. The figure supports aligned bottoms and unit-width joins. Separate surface areas total 12; glued areas total 1/17 + 1/3 + 11/102 = 1/2, leaving 12 − 2(1/2) = 11. Independently, exposed horizontal faces contribute 8, front and back contribute 2, and ends and steps contribute 2a = 1.",
+    "levelCheck": "Both explanations account for every surface using rectangle areas, fraction arithmetic, and simple cancellation, all appropriate for AMC 8.",
+    "methodDistinctness": "Subtracting internal interfaces and directly grouping exposed faces provide distinct, useful approaches at the same elementary level.",
+    "annotationCheck": "The assessed surface-area node fits its prism scope. Rectangular-prism surface area and composite planar area correctly distinguish the methods. Rectangle areas, cube volume, and fraction arithmetic support both routes without implying curved-solid prerequisites.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "subtract-glued-interfaces": "solution:subtract-glued-interfaces:88c8cfdb48c7",
+    "group-exposed-faces": "group-exposed-faces"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "8aa03730c0c4f68a16a0ab60dfc4979c21cc98b8fcc2c90adf2f5a70a32e53fc",
+    "acceptedAt": "2026-11-07T09:56:32.199691+00:00",
+    "inputHash": "843acadece50f4263b39e1535f7cea59c5213a5b0e45d5863df2a91c4332a762",
+    "authorInputHash": "edbefbe19cc147e08635667beee004a64383c26f83a6bbe71ffc517f75f7c1f0",
+    "reviewInputHash": "7408b61f4e5cdec09fdc788f9c26b94c18ef74a216e52d25bfe5f7920d18e44d",
+    "authorResponseHash": "dd78d8c7aa84188c9bef59e836ba95387f638b521263848924b08bd5afb19cf2",
+    "reviewerResponseHash": "7463ef560c25c2bccad5a9b38d91d28930388f8edbf896a574d8cbea79851fee",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

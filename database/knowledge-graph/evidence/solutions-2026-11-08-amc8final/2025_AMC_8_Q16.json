@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2025_AMC_8_Q16",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "a9679488ec8012ea80beb14f3f5454c7c96dcbcb65934a20345cf0cdc88e729b",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "5d95bc0240df1d5286a86db452492fae2ca10a18a88e9449c10ec6c24023a6c5",
+  "solutionFigureHashes": {},
+  "candidateHash": "58541c9762be4c19be74973572674f6deebf4186a95f87b1af1dbee0cfebe3d2",
+  "candidate": {
+    "questionId": "2025_AMC_8_Q16",
+    "derivedAnswer": "105, choice C",
+    "answerStatus": "matches",
+    "answerReason": "Exactly one number must be chosen from each pair (k,k+10), for k=1 through 10. The ten lower values sum to 55, and exactly five choices add 10, giving 105.",
+    "methods": [
+      {
+        "id": "one-number-per-pair",
+        "label": "Group the forbidden partners",
+        "explanation": "The restriction suggests grouping each smaller number with the number that is \\(10\\) larger:\n\\[\n(1,11),(2,12),\\ldots,(10,20).\n\\]\nThese ten pairs contain every available number exactly once. At most one number can be chosen from each pair, because the two members differ by \\(10\\). Since ten numbers are chosen from ten pairs, every pair must contribute exactly one number. Otherwise, at most nine numbers could be chosen.\n\nStart with the smaller member of each pair. Their sum is\n\\[\n1+2+\\cdots+10\n=(1+10)+(2+9)+\\cdots+(5+6)\n=5\\cdot11=55.\n\\]\nChoosing the larger member instead adds \\(10\\). Exactly five chosen numbers are from \\(11\\) through \\(20\\), so exactly five such additions occur. Hence the sum is always\n\\[\n55+5\\cdot10=\\boxed{105},\n\\]\nchoice \\(\\text{C}\\).",
+        "nodeIds": [
+          "math:finite-constraint-deduction"
+        ],
+        "prerequisiteIds": [
+          "cnm_p117"
+        ],
+        "levelReason": "The proof uses disjoint pairs, a direct comparison of counts, and elementary addition and multiplication."
+      }
+    ],
+    "assessedIds": [
+      "math:finite-constraint-deduction"
+    ],
+    "supportIds": [
+      "cnm_p117"
+    ],
+    "annotationRationale": "The central target is deducing a forced total from the selection constraints. The finite-constraint node covers the deduction that each forbidden pair contributes exactly one member. The arithmetic pairs endpoints to sum 1 through 10, matching cnm_p117 as support. The catalog's basic pigeonhole node concerns more objects than containers; this proof instead uses equal counts with capacity one, so that existing label is not forced onto the method.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2025_AMC_8_Q16",
+    "decision": "accept",
+    "mathematicalCheck": "The ten disjoint pairs exhaust 1 through 20, and each permits at most one selection. Ten selections therefore force exactly one per pair. Their lower members total 55, and exactly five upper selections add 50, giving 105.",
+    "levelCheck": "The capacity argument and endpoint pairing use accessible elementary counting and arithmetic. Both decisive deductions are explained.",
+    "methodDistinctness": "One complete structural method is sufficient.",
+    "annotationCheck": "math:finite-constraint-deduction covers the forced selection structure, and cnm_p117 supports the paired sum. The candidate does not claim equivalence with the catalog's narrower pigeonhole scope.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "one-number-per-pair": "one-number-per-pair"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "5b70e1638afa114d1644ad527382f5dde918c15fa68f19be535b255167e1b33c",
+    "acceptedAt": "2026-11-08T16:51:06.764243+00:00",
+    "inputHash": "b1aa59bc2b53acc502fed4f374a275d2a03453081eb3cce0f0c9683c0a2a1a2b",
+    "authorInputHash": "d3a35b81e6bab37727e4a5560bde3ea9a591a678be9731858d1e1b5187d49988",
+    "reviewInputHash": "1921664827e97d73138517e3fd90c8d7ffb909b87013ca424914fe9728718c37",
+    "authorResponseHash": "348eefd48a1da91779a0d048e23046ce209cfb4e22b04a2623b9e3882ed5d920",
+    "reviewerResponseHash": "c1328f3a20407b6c8102828b32d3de615ad5cefd45b63787fe85107abd6dbdbe",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

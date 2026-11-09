@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2013_AMC_12A_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "80f37cad9f916c1406977dff152ff63ef9917ae747b79a016b80ce6670d91625",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "b90bca1b0b18c269a1894c4f3a98ed68da2cc7bc41db7aab10df16165d6b7035",
+  "solutionFigureHashes": {},
+  "candidateHash": "8afc040319da5eeeac77678c3e1b82ebc4585015e432afeb6655d31f4df911ed",
+  "candidate": {
+    "questionId": "2013_AMC_12A_Q21",
+    "derivedAnswer": "(log 2016, log 2017) (A)",
+    "answerStatus": "matches",
+    "answerReason": "With the recorded base-10 interpretation, the nested logarithm added to 2013 lies strictly between 3 and 4.",
+    "methods": [
+      {
+        "id": "propagate-logarithm-bounds",
+        "label": "Carry a simple bound through the nesting",
+        "explanation": "Use the recorded convention that \\(\\log\\) means base \\(10\\). Rather than calculate every logarithm, we only need to bound the term added to \\(2013\\). Define\n\\[\nt_2=\\log2,\\qquad t_k=\\log(k+t_{k-1})\n\\]\nfor \\(3\\le k\\le2013\\). Then \\(A=t_{2013}\\).\n\nWe claim that \\(0<t_k<4\\) for \\(2\\le k\\le2012\\). The starting value \\(t_2=\\log2\\) satisfies this. If \\(0<t_{k-1}<4\\), then, for \\(3\\le k\\le2012\\),\n\\[\n1<k+t_{k-1}<k+4\\le2016<10^4.\n\\]\nBecause the common logarithm is increasing, taking logarithms preserves these inequalities and gives \\(0<t_k<4\\). Thus the bound holds through every required step, and all logarithms have positive arguments.\n\nAt the last inner step, positivity also gives\n\\[\nt_{2012}>\\log2012>\\log1000=3.\n\\]\nCombining this with the upper bound yields\n\\[\n2016<2013+t_{2012}<2017.\n\\]\nTaking logarithms once more,\n\\[\n\\boxed{\\log2016<A<\\log2017}.\n\\]\nTherefore the answer is choice \\(\\text{A}\\).",
+        "nodeIds": [
+          "cnm_h047"
+        ],
+        "prerequisiteIds": [
+          "cnm_h043",
+          "cnm_h046",
+          "cnm_h200"
+        ],
+        "levelReason": "The argument uses common logarithms, their monotonicity, and a bound preserved through a finite recurrence."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h047"
+    ],
+    "supportIds": [
+      "cnm_h043",
+      "cnm_h200"
+    ],
+    "annotationRationale": "The decisive target is comparing logarithms using monotonicity and powers of ten. Recurrence notation organizes the finite nesting; no convergence argument or logarithmic expansion is used.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The solution uses the packet's recorded interpretation that the unmarked logarithms have base 10."
+    ]
+  },
+  "review": {
+    "questionId": "2013_AMC_12A_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "Under the explicitly retained base-10 convention, the recurrence preserves 0<t_k<4 through k=2012. Positivity also gives t_2012>log(2012)>3, so 2016<2013+t_2012<2017. Increasing logarithms give precisely interval A.",
+    "levelCheck": "Finite bound propagation and logarithmic monotonicity are appropriate, and positivity establishes all required domains.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Logarithmic comparison is the assessed concept; logarithm basics and recurrence notation are justified supports. The base qualification remains explicit.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "propagate-logarithm-bounds": "propagate-logarithm-bounds"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "793ba242526a2b075d266da97f91f2de7b688536208af0587de55da5b09a5940",
+    "inputHash": "942ef01f4f961e30e18917136e2df0c223d6d1d6f37966a239da32992f2ceac2",
+    "authorInputHash": "31eb045d8cb4ac4e36ec2ad1102f608e83838b92508382d64960f3f8376bce35",
+    "reviewInputHash": "500ffc61e877f57d05a6f9d81fa9d0eb95cb575aa6ed8cf8717b9d461a3251c6",
+    "authorResponseHash": "b1d819c9d92c47997b6dd54a507a48da606dfddfbbbd51d4470bd8a7d3715e82",
+    "reviewerResponseHash": "d767a4fad4d034c06980203ddcaf4bda3f2cd9526a752a8ceded3cd71437ea6b",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

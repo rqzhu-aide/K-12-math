@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2024_AMC_8_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "e5c0126110546cfa2a303cbef9688291aedd0b30c22e855a9f9a27582ab261f6",
+    "figureHashes": {
+      "figures/2024_AMC_8_Q23_question_fig1.svg": "1b5e2a0ccfb681fb2781a6b9736e4f6e3f23b2f5fba0ad00b747b4ebcb31b67c"
+    }
+  },
+  "solutionSHA256": "95972bed8a092511e7f17ab14c96825d111d95f36533c98dcece356dc9bca78e",
+  "solutionFigureHashes": {},
+  "candidateHash": "bfbb37a18e8e2eb535b18411ad58a3efe12750bb3a3e866b725159a4e586b146",
+  "candidate": {
+    "questionId": "2024_AMC_8_Q23",
+    "derivedAnswer": "C (7000 cells)",
+    "answerStatus": "matches",
+    "answerReason": "The segment consists of 1000 translated pieces, each moving 3 units right and 5 units up and crossing 7 cell interiors. Thus it colors 7000 cells.",
+    "methods": [
+      {
+        "id": "method_1",
+        "label": "Count one repeating piece",
+        "explanation": "The segment moves\n\\[\n5000-2000=3000\n\\]\nunits right and\n\\[\n8000-3000=5000\n\\]\nunits up. Since \\(3000:5000=3:5\\), divide it into \\(1000\\) pieces, each moving \\(3\\) units right and \\(5\\) units up. Each piece starts at a grid vertex and is an integer translation of the same small segment, so every piece crosses the same number of cell interiors.\n\nMeasure heights from the starting point of one piece. Because the segment is straight, its heights at the two interior vertical grid lines are \\(\\frac53\\) and \\(\\frac{10}3\\).\n\nIn the first column, the height goes from \\(0\\) to \\(\\frac53\\). It crosses the horizontal line at height \\(1\\), so it passes through \\(2\\) cells.\n\nIn the second column, the height goes from \\(\\frac53\\) to \\(\\frac{10}3\\). It crosses the horizontal lines at heights \\(2\\) and \\(3\\), so it passes through \\(3\\) cells.\n\nIn the third column, the height goes from \\(\\frac{10}3\\) to \\(5\\). It crosses the horizontal line at height \\(4\\), so it passes through \\(2\\) cells. The endpoint at height \\(5\\) adds no cell because only interior intersections count.\n\nThus each piece colors \\(2+3+2=7\\) cells. The pieces occupy separate groups of three columns, so their colored cells do not overlap, and together they cover the entire segment. The total is\n\\[\n1000\\cdot7=\\boxed{7000},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_p128",
+          "cnm_h230"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_p213",
+          "cnm_p168"
+        ],
+        "levelReason": "Counts a small repeating piece using fractions and a constant rise-to-run ratio, then adds the counts from disjoint pieces."
+      },
+      {
+        "id": "method_2",
+        "label": "Count entries into new cells",
+        "explanation": "Trace the segment from \\((2000,3000)\\) to \\((5000,8000)\\). It starts inside one cell immediately after leaving its starting vertex. Each later crossing of a grid line enters a new cell. Since both coordinates increase, the segment can never return to a cell it has left.\n\nBetween its endpoints, the segment crosses \\(2999\\) vertical grid lines, with horizontal coordinates \\(2001\\) through \\(4999\\), and \\(4999\\) horizontal grid lines, with vertical coordinates \\(3001\\) through \\(7999\\).\n\nWe must correct for crossings at grid vertices. At such a crossing, a vertical and a horizontal line are crossed together, but the segment enters only one new cell, diagonally opposite the previous cell. The two other cells touch the segment only at that vertex, so they are not colored.\n\nThe rise-to-run ratio is\n\\[\n\\frac{8000-3000}{5000-2000}=\\frac53.\n\\]\nFor an integer horizontal displacement \\(h\\) from the starting point, the vertical displacement is \\(\\frac{5h}{3}\\). This is an integer exactly when \\(h\\) is a multiple of \\(3\\). Thus the interior grid vertices occur at horizontal displacements\n\\[\n3,6,9,\\ldots,2997,\n\\]\nfor a total of \\(2997\\div3=999\\). The starting and ending vertices are excluded from these interior crossings.\n\nSubtracting one duplicate entry for each of those \\(999\\) vertices gives\n\\[\n1+2999+4999-999=\\boxed{7000}\n\\]\ncolored cells, choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_h009",
+          "math:lattice-counting"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_p213",
+          "cnm_p168",
+          "cnm_p153"
+        ],
+        "levelReason": "Uses elementary grid crossings, a two-set overlap correction, and divisibility by 3, with endpoints handled explicitly."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_082",
+      "cnm_p213",
+      "cnm_p168"
+    ],
+    "annotationRationale": "The route-neutral target is counting grid cells whose interiors meet a segment, which the catalog does not directly represent. Both routes use coordinates and a reduced rise-to-run ratio. The first uses translated pieces and disjoint addition; the second uses integer-coordinate vertex counting and a two-set overlap correction. These alternative techniques remain method-specific.",
+    "needsNewNodes": [
+      {
+        "name": "Counting grid cells intersected by a segment",
+        "description": "Count unit-grid cells whose interiors meet a line segment by tracking cell entries or repeated translated pieces. Handle simultaneous horizontal and vertical crossings, vertex-only contacts, and endpoints correctly.",
+        "reason": "The catalog's integer-coordinate-point counting node supports counting corner crossings, but it does not describe the requested cell count. Inclusion-exclusion represents only one available route."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2024_AMC_8_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "Method 1 correctly counts 2+3+2 = 7 cells per translated piece and proves the 1000 pieces have disjoint cell interiors. Method 2 correctly counts 2999 vertical crossings, 4999 horizontal crossings, and 999 simultaneous interior crossings, giving 1+2999+4999−999 = 7000. Both handle endpoints and vertex-only contacts correctly.",
+    "levelCheck": "Both methods use accessible fractions, proportional reasoning, and elementary counting. Their decisive counting steps are explained.",
+    "methodDistinctness": "Local counting of repeated pieces and global counting of cell entries provide distinct, useful elementary approaches.",
+    "annotationCheck": "The proposed cell-counting node honestly identifies a catalog gap. Shared coordinate and proportion supports apply to both methods; translation and disjoint addition remain specific to Method 1, while union counting and lattice-point counting remain specific to Method 2.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "method_1": "method_1",
+    "method_2": "method_2"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "6728ad85db771e855dad6a40a51576b4c234b4ddb8060e1ddb605e7597eec83a",
+    "acceptedAt": "2026-11-07T08:01:46.795513+00:00",
+    "inputHash": "10bb3770b5de016eb9e6ae860273e0f04c8cc24ef189ff6e10ea734f1c50559e",
+    "authorInputHash": "f64822a7854eb445a4ba0f646ca3a50327bb31caeb4fadd119e7248a21546d93",
+    "reviewInputHash": "9224bb5c35b4be8fd04b624e266dc72160f546618cf9b87e2a6b1994af3c3be3",
+    "authorResponseHash": "5850f8e2c2ec796443c3d7cb469578d79ce0e58145731c077b4cb2d3c5aade14",
+    "reviewerResponseHash": "2925e3f88090592f245a1c6b900f300124565d30bb006543774368cae59fd7d9",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1971_AMC_12_Q33",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ad7bd80958804598e5780a5c49465fe5e4bf24a23cdb5677754c8fd34d1cc3e0",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "e6b3cedfdc9901074215f37a7f1d135a7a0213a6ba47c6099416f8c9566a4d45",
+  "solutionFigureHashes": {},
+  "candidateHash": "8df3efebefaee59dc2d6dac8b863b8c4378823581d89c10c0f8a7054945fe62f",
+  "candidate": {
+    "questionId": "1971_AMC_12_Q33",
+    "derivedAnswer": "No universally valid listed answer as printed; B holds if all terms are positive.",
+    "answerStatus": "disputed",
+    "answerReason": "Positivity and S'≠0 are not stated. The progression (-1,-1,-1) has P=-1 and S=S'=-3, while every listed expression is positive. Also (1,-1) has S=S'=0, making S/S' undefined. Choice B follows under the additional assumption of positive terms.",
+    "methods": [
+      {
+        "id": "reverse-pair-products-with-sign-check",
+        "label": "Pair opposite terms and check the missing conditions",
+        "explanation": "Reciprocals require nonzero terms, but the statement does not require positive terms. This matters when taking a square root and when dividing by \\(S'\\).\n\nWrite the nonzero real terms as \\(a_j=ar^{j-1}\\), for \\(1\\le j\\le n\\), where \\(a\\ne0\\) and \\(r\\ne0\\). Terms equally far from opposite ends have the same product:\n\\[\na_j a_{n+1-j}=a^2r^{n-1}=K.\n\\]\nHere \\(K\\ne0\\). Thus each reciprocal is the opposite term divided by \\(K\\), giving\n\\[\nS'=\\sum_{j=1}^n\\frac1{a_j}\n=\\frac1K\\sum_{j=1}^n a_{n+1-j}\n=\\frac S K.\n\\]\nMultiplying all \\(n\\) opposite-term identities also gives\n\\[\nP^2=\\prod_{j=1}^n(a_j a_{n+1-j})=K^n.\n\\]\nConsequently, \\(S=KS'\\) and \\(P^2=K^n\\) hold without any assumption of positivity.\n\nIf all terms are positive, then \\(S'>0\\), \\(K=S/S'>0\\), and \\(P>0\\). Taking the positive square root is then justified, yielding\n\\[\nP=\\boxed{\\left(\\frac S{S'}\\right)^{n/2}},\n\\]\nwhich is choice \\(\\mathrm{B}\\). For even \\(n\\) with \\(S'\\ne0\\), the same formula also follows by grouping the terms into \\(n/2\\) opposite pairs, without needing positivity.\n\nHowever, the printed conditions allow the progression \\((-1,-1,-1)\\). It has \\(n=3\\), \\(S=S'=-3\\), and \\(P=-1\\), whereas choice B gives \\(1\\). In fact, every listed expression is positive for this example, so none equals \\(P\\).\n\nThere is also a possible zero denominator: the progression \\((1,-1)\\) has well-defined reciprocals but \\(S=S'=0\\). Thus \\(S/S'\\) is undefined. Choice \\(\\mathrm{B}\\) is valid under a positive-term assumption, but no listed formula is universally valid as written.",
+        "nodeIds": [
+          "cnm_h208",
+          "cnm_h039",
+          "cnm_071"
+        ],
+        "prerequisiteIds": [
+          "cnm_h207",
+          "cnm_016",
+          "cnm_015"
+        ],
+        "levelReason": "Uses the elementary geometric general term, finite products, fractional powers under stated sign conditions, and explicit counterexamples."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h208"
+    ],
+    "supportIds": [
+      "cnm_h207",
+      "cnm_016",
+      "cnm_015"
+    ],
+    "annotationRationale": "The geometric general term supplies the constant product of oppositely indexed terms, which drives the requested relation. The written method also uses fractional powers conditionally and counterexamples to test the printed claim. Geometric-sequence meaning, reciprocals, and product signs support the argument. No geometric-sum formula is used, and the keyed expression is not treated as unconditional.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The statement does not require positive terms, so an odd-length progression can have a negative product that the keyed fractional power does not preserve.",
+      "Nonzero terms do not ensure S'≠0. When S'=0, the identity S=KS' also gives S=0, and the displayed quotient is undefined."
+    ]
+  },
+  "review": {
+    "questionId": "1971_AMC_12_Q33",
+    "decision": "accept",
+    "mathematicalCheck": "Opposite terms have constant nonzero product K, giving S=KS′ and P²=Kⁿ. Positive terms justify choice B; even n also permits direct pairing when S′≠0. The valid progressions (−1,−1,−1) and (1,−1) establish the missing sign and denominator conditions, so no listed formula is universal as printed.",
+    "levelCheck": "The geometric general term, finite products, conditional square root, and explicit counterexamples fit the level. The explanation clearly separates unconditional identities from qualified conclusions.",
+    "methodDistinctness": "The single pairing argument handles the intended formula and the original item's flaws coherently.",
+    "annotationCheck": "The geometric-term assessment and the recorded fractional-power and counterexample concepts are justified. Supports match the work, and both original caveats are explicitly retained.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "reverse-pair-products-with-sign-check": "reverse-pair-products-with-sign-check"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "7ba945dc657ca8961781444ec7157ee3799354c1be10da061c276e75270709a7",
+    "inputHash": "3180667fe2770811008e210dc67b075df4e39ba4f924eca5f0671d0e1770e0dc",
+    "authorInputHash": "2fb288c3f25b5b3324e9b16993b36a6da76da525b6eb8f140bb78b82ce9de0ae",
+    "reviewInputHash": "101297a23abd4550d6a9b5cbabbcd83dc11a216039fb21f06525f99ab3a0ae1c",
+    "authorResponseHash": "efa741011f1f60399ca7d7cdd602e38b7e2756f2bf8109d8a75031ab8151e76d",
+    "reviewerResponseHash": "d5ce9c2a9d3abc3e826ebb5fc0975b0273af20e23f6f6ffbe5a80316eb5d4aa4",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

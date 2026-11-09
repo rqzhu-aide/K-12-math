@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2004_AMC_12A_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "db8609a95d4503fe6f932d3c9629d96003336cdce62f9eab6a0fc1b7c50d75a0",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "31d7dd13c84a62f95def3c70e767bd3b7108d04a2b25cab16358581f0a4e0a95",
+  "solutionFigureHashes": {},
+  "candidateHash": "62b24b8182ff4178a80042fef5b31fe86d1cacbc90f923686b7e98297416aaf3",
+  "candidate": {
+    "questionId": "2004_AMC_12A_Q23",
+    "derivedAnswer": "Only \\(\\sum_{k=1}^{2004}c_k\\) can be nonzero, choice E",
+    "answerStatus": "matches",
+    "answerReason": "Conjugate pairing forces both given coordinate sums to vanish, which also forces c_2003=0. The zero root forces c_0=0, and parity forces another real root, making the product in C zero. An explicit polynomial with distinct real roots summing to zero and with no root at 1 makes E nonzero.",
+    "methods": [
+      {
+        "id": "conjugate-pairs-and-real-root-witness",
+        "label": "Use conjugate pairs and construct an example",
+        "explanation": "Real coefficients impose a useful symmetry: if \\(z\\) is a zero, then its conjugate \\(\\overline z\\) is also a zero, because\n\\[\nP(\\overline z)=\\overline{P(z)}=0.\n\\]\nEvery nonreal zero therefore pairs with a zero having the opposite imaginary part. Real zeros have imaginary part zero, so\n\\[\n\\sum_{k=1}^{2004}b_k=0.\n\\]\nThe given equality now implies \\(\\sum a_k=0\\), making choice \\(\\text{D}\\) zero as well.\n\nTo connect this with the coefficients, factor the polynomial using all its zeros:\n\\[\nP(x)=c_{2004}\\prod_{k=1}^{2004}(x-z_k).\n\\]\nA term of degree \\(2003\\) is obtained by selecting \\(-z_k\\) from one factor and \\(x\\) from every other factor. Consequently\n\\[\nc_{2003}=-c_{2004}\\sum_{k=1}^{2004}z_k=0,\n\\]\nsince both the real and imaginary parts of the root sum are zero. This eliminates \\(\\text{B}\\). Also, \\(z_1=0\\), so \\(c_0=P(0)=0\\), eliminating \\(\\text{A}\\).\n\nAmong the remaining \\(2003\\) zeros, all nonreal zeros occur in pairs. Since \\(2003\\) is odd, at least one remaining zero must be real. Its imaginary part is zero, so\n\\[\nb_2b_3\\cdots b_{2004}=0.\n\\]\nThus \\(\\text{C}\\) is always zero.\n\nWe still need an example showing that \\(\\text{E}\\) can be nonzero. Take\n\\[\nQ(x)=x(x+1)(x+2)(x-3)\n\\prod_{j=4}^{1003}(x^2-j^2).\n\\]\nThis is a monic polynomial of degree \\(4+2(1000)=2004\\). Its zeros are the distinct real numbers \\(0,-1,-2,3\\) and \\(\\pm j\\) for \\(4\\le j\\le1003\\). Their sum is zero: the first four sum to zero, and each remaining pair cancels. All imaginary parts are zero, so every required condition holds.\n\nNone of these zeros is \\(1\\), so \\(Q(1)\\ne0\\). Evaluating at \\(1\\) adds all coefficients, and the constant coefficient is \\(Q(0)=0\\). Therefore its positive-power coefficient sum is \\(Q(1)-Q(0)=Q(1)\\ne0\\). The quantity that can be nonzero is \\(\\boxed{\\sum_{k=1}^{2004}c_k}\\), choice \\(\\text{E}\\).",
+        "nodeIds": [
+          "math:conjugate-polynomial-roots",
+          "math:polynomial-roots-coefficients",
+          "math:polynomial-coefficient-sums",
+          "math:polynomial-remainder-factor"
+        ],
+        "prerequisiteIds": [
+          "cnm_h097",
+          "cnm_h103",
+          "cnm_032"
+        ],
+        "levelReason": "The proof uses elementary complex conjugation, expansion of linear factors, parity, and a product of explicit real linear factors."
+      }
+    ],
+    "assessedIds": [
+      "math:conjugate-polynomial-roots",
+      "math:polynomial-roots-coefficients"
+    ],
+    "supportIds": [
+      "cnm_h097",
+      "cnm_032"
+    ],
+    "annotationRationale": "Conjugate-root symmetry and root-coefficient identities supply the main constraints. Coefficient-sum evaluation and the factor theorem are components of the explicit witness method. The complex-division node is used only for its stated conjugate-identification content. The witness requires neither roots of unity nor a general complex-root existence theorem.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2004_AMC_12A_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "Conjugate pairing makes both coordinate sums zero, forcing c_2003=0. The given zero root forces c_0=0, and pairing among the remaining 2003 roots forces another real root, eliminating C. The witness has degree 2004, distinct real roots summing to zero, and no root at 1, so its positive-power coefficient sum is nonzero.",
+    "levelCheck": "Complex conjugation, coefficient comparison, parity, and the explicit real-root construction fit AMC 12. The decisive coefficient identity is explained.",
+    "methodDistinctness": "The constraints and witness together form one complete method; no additional method is needed.",
+    "annotationCheck": "The root-symmetry, root-coefficient, coefficient-sum, and factor nodes match the argument. Conjugate identification is narrowly scoped, and roots of unity are appropriately omitted.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "conjugate-pairs-and-real-root-witness": "conjugate-pairs-and-real-root-witness"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "95ee44969220be38dd9134e9680da4fbfb114f1e6fb3d26bacae1ea4adf19936",
+    "inputHash": "ad399c5ec562f1650bacb02d98c2a521b9c25160398c16f9a34ebe243cb71508",
+    "authorInputHash": "019610a428a682da41ed25e6bcf1c0f192d018d89a4c64ec64fced8f20ddb164",
+    "reviewInputHash": "6b2f835826b14988ec3b4a78db3fd547d90e7f5e4fd8ffc0cab929a2c82534b6",
+    "authorResponseHash": "09450ab3c74f7af58392eb06359a8dc31ad05328bcb8205cd7623f7fadc11279",
+    "reviewerResponseHash": "8d455fc9ad6f81e347b110bf530f6bce6a0feec818045c0c6964a9137b75ddcf",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

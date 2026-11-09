@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2008_AMC_8_Q14",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "f3046805e244e07626a5be13842638f4bc740a423467c15882293e30a50498c0",
+    "figureHashes": {
+      "figures/2008_AMC_8_Q14_question_fig1.svg": "3779b29b431d7709c6fbd2b5a3c551241b6e233c181fbc62d1fdfed52f1ffc1c"
+    }
+  },
+  "solutionSHA256": "4816bd2761fb92f7c4b1bf42633a950cd6081262806a831941b7207018b11b94",
+  "solutionFigureHashes": {
+    "figures/2008_AMC_8_Q14_question_fig1.svg": "3779b29b431d7709c6fbd2b5a3c551241b6e233c181fbc62d1fdfed52f1ffc1c"
+  },
+  "candidateHash": "3dd19b7dd24d6b8ec26759f6db5e27687e51e9ef1aa79804c3a2c161913ff35d",
+  "candidate": {
+    "questionId": "2008_AMC_8_Q14",
+    "derivedAnswer": "C. 4 arrangements",
+    "answerStatus": "matches",
+    "answerReason": "There are two possible first rows, and each has exactly two valid completions, giving 4 arrangements.",
+    "methods": [
+      {
+        "id": "2008_AMC_8_Q14_m1",
+        "label": "Count the forced completions",
+        "explanation": "Because \\(A\\) is fixed, the first row is either \\(ABC\\) or \\(ACB\\). Handle both possibilities by writing the first row as \\(A\\,X\\,Y\\), where \\(X\\) and \\(Y\\) are \\(B\\) and \\(C\\) in either order.\n\n[Figure 1](figures/2008_AMC_8_Q14_question_fig1.svg)\n\nThe first entry of the second row must be \\(X\\) or \\(Y\\), since its column already contains \\(A\\).\n\nIf it is \\(X\\), the last entry of that row cannot be \\(X\\), which is already in the row, or \\(Y\\), which is above it. Thus the last entry is \\(A\\), and the middle entry is \\(Y\\).\n\nIf it is \\(Y\\), the middle entry cannot be \\(Y\\), which is already in the row, or \\(X\\), which is above it. Thus the middle entry is \\(A\\), and the last entry is \\(X\\).\n\nEach column then forces its missing letter into the bottom row, giving\n\\[\n\\begin{array}{ccc}\nA&X&Y\\\\\nX&Y&A\\\\\nY&A&X\n\\end{array}\n\\qquad\n\\begin{array}{ccc}\nA&X&Y\\\\\nY&A&X\\\\\nX&Y&A\n\\end{array}.\n\\]\nBoth grids satisfy every row and column restriction. Every valid grid must follow one of these cases, and different choices change either the first row or the first entry of the second row. Therefore nothing is omitted or counted twice. The number of arrangements is \\(2\\times2=\\boxed{4}\\), choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "math:graph-coloring",
+          "cnm_h231"
+        ],
+        "prerequisiteIds": [],
+        "levelReason": "Uses two elementary choices and forced placements in a small grid, followed by multiplication."
+      }
+    ],
+    "assessedIds": [
+      "math:graph-coloring"
+    ],
+    "supportIds": [
+      "cnm_h231"
+    ],
+    "annotationRationale": "The letters form a cell-coloring problem: any two cells in the same row or column must have different letters, including cells that do not share an edge. The method counts these restricted assignments through two sequential choices, using cnm_h231. No explicit graph construction or permutation formula is needed.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2008_AMC_8_Q14",
+    "decision": "accept",
+    "mathematicalCheck": "The figure shows a 3×3 grid with A fixed in the upper-left cell. Each of the two possible first rows has exactly two valid, uniquely forced completions. The cases exhaust all arrangements without duplication, giving 4.",
+    "levelCheck": "Forced placements and two sequential choices are appropriate for AMC 8, and each deduction is explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The coloring node covers the stated row and column restrictions, including cells that do not touch. cnm_h231 correctly supports multiplying the two choice counts. No graph-theory prerequisite is needed.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "2008_AMC_8_Q14_m1": "2008_AMC_8_Q14_m1"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "6b38d2642f0daa83b28e98c0afdc7e07f08ad83aa841f54456c4af6a6a19a827",
+    "acceptedAt": "2026-11-07T10:14:20.336320+00:00",
+    "inputHash": "d59d449f12304910e70e4cc81f902b13f43486af5b7a18b4f7e6f6bf1e94123c",
+    "authorInputHash": "81db69fbfcd8de8d0598c3d104b401a28a6044a9fc646894c86b268e9a46c408",
+    "reviewInputHash": "a84cf2976e4ce38fcd6ccb65802ca6a312a7e6fe69607017d1f3a3e012d21793",
+    "authorResponseHash": "e4d3c5456369418fdfb3a67e2cfb2c42bbdae36b6632fa6fd6af19b413a58718",
+    "reviewerResponseHash": "2d870909ed6b5d2ef02e3d4196d2bee9d9db69f0a6a56e970abf3e54b6f487bb",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

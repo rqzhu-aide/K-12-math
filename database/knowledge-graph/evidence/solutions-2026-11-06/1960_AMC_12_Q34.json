@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1960_AMC_12_Q34",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "41359794e9b8423604c26475d984223a0bd23bc823376cf18066f6538e641733",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "b5bea76f4d7a1df2eabe0802c52eca9899d814232097f285e2765c6396f033dd",
+  "solutionFigureHashes": {},
+  "candidateHash": "6f3eb27673bc726d2d40be5bd8537ed494da3357cbeb261a95a396a8d2113d3a",
+  "candidate": {
+    "questionId": "1960_AMC_12_Q34",
+    "derivedAnswer": "20 meetings including shared wall turns, choice C; 16 strict interior passes, which is not listed",
+    "answerStatus": "disputed",
+    "answerReason": "There are 20 position coincidences, but four occur at simultaneous wall turns, at 90, 270, 450, and 630 seconds. At those events the swimmers do not exchange order. The key counts them as passes; requiring an interior crossing gives 16. The stem does not specify which convention applies.",
+    "methods": [
+      {
+        "id": "repeat-motion-cycle",
+        "label": "Count one complete motion cycle",
+        "explanation": "The motion repeats, so we can count one common cycle. We must distinguish an interior pass from a meeting at a wall, where the swimmers can turn together without exchanging order.\n\nThe faster swimmer completes a round trip in \\(180/3=60\\) seconds, and the slower swimmer in \\(180/2=90\\) seconds. After \\(180\\) seconds both have returned to their respective starting ends and begin moving in their original directions. Since\n\\[\n12\\cdot60=720=4\\cdot180,\n\\]\nthere are four identical cycles.\n\nMeasure position in feet from the faster swimmer's starting end. Let \\(d(t)\\) be the faster swimmer's position minus the slower swimmer's position after \\(t\\) seconds in the first cycle. Initially \\(d(0)=-90\\). Between turns, \\(d\\) changes at the difference of their signed velocities. For example, before the first turn it increases at \\(3+2=5\\) feet per second. Accounting for all turns gives\n\\[\nd(t)=\\begin{cases}\n5t-90,&0\\le t\\le30,\\\\\n90-t,&30\\le t\\le45,\\\\\n270-5t,&45\\le t\\le60,\\\\\nt-90,&60\\le t\\le90,\\\\\n90-t,&90\\le t\\le120,\\\\\n5t-630,&120\\le t\\le135,\\\\\nt-90,&135\\le t\\le150,\\\\\n810-5t,&150\\le t\\le180.\n\\end{cases}\n\\]\nA meeting occurs exactly when \\(d(t)=0\\). Solving these linear equations and retaining roots in their stated intervals gives the distinct times\n\\[\n18,\\ 54,\\ 90,\\ 126,\\ 162\n\\]\nseconds. The intervals cover the entire cycle, so there are no other meetings. The shared endpoint \\(t=90\\) is counted once. At cycle boundaries the swimmers are at opposite ends, so multiplying the cycle count introduces no duplicate events.\n\nAt \\(t=90\\), both swimmers reach the far wall. Just before and just after this time, \\(d(t)<0\\), so they do not exchange order. At each of the other four meetings, \\(d\\) changes sign and the swimmers pass in the interior.\n\nConsequently, counting every meeting, including shared wall turns, gives \\(4\\cdot5=\\boxed{20}\\), choice \\(\\mathrm{C}\\). Counting only strict interior passes gives \\(4\\cdot4=\\boxed{16}\\), which is absent from the choices. The wording leaves this distinction unresolved.",
+        "nodeIds": [
+          "cnm_047",
+          "cnm_042"
+        ],
+        "prerequisiteIds": [
+          "cnm_p111",
+          "cnm_p062"
+        ],
+        "levelReason": "The method uses distance equals speed times time, elementary linear equations between successive turns, and repetition of a verified finite motion cycle."
+      }
+    ],
+    "assessedIds": [
+      "cnm_047"
+    ],
+    "supportIds": [
+      "cnm_p111",
+      "cnm_p062"
+    ],
+    "annotationRationale": "The mathematical target is analyzing repeated meeting and catching-up events. The method derives every event from signed relative motion and counts one verified cycle without omission or duplication. Time conversion and speed-distance relationships support it. No modular-congruence or arithmetic-sequence procedure is used. The recorded distinction between wall meetings and strict interior passes is preserved.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The stem does not specify whether simultaneous arrival at a pool end counts as passing. Choice C matches all meetings; the strict interior-pass count is 16 and has no listed choice."
+    ]
+  },
+  "review": {
+    "questionId": "1960_AMC_12_Q34",
+    "decision": "accept",
+    "mathematicalCheck": "All eight relative-position formulas agree with the successive turns. Their distinct zeros in one 180-second cycle are 18, 54, 90, 126, and 162. Only the wall meeting at 90 lacks an order change. Four cycles therefore give 20 meetings or 16 strict interior passes, without boundary duplication.",
+    "levelCheck": "The piecewise linear motion analysis uses school algebra and explains the relative-speed setup sufficiently.",
+    "methodDistinctness": "One verified motion-cycle method establishes both conditional counts.",
+    "annotationCheck": "Travel problems, linear equations, speed-distance relationships, and time conversion fit the solution. The original ambiguity is preserved and the key is presented conditionally.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "repeat-motion-cycle": "repeat-motion-cycle"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "f1701fee76bbef6da15c152c0f0622f53f1b95a2231ebed9bdc27dee80f34a08",
+    "inputHash": "cb34b206197f11d8d1468c0dccb3273edd3eb0a1cde5448643a869cf5e465efe",
+    "authorInputHash": "6b1cc27e9726de24d762245b3fdbcd8a5e8fcd454ab20277f986d7201ea48bf7",
+    "reviewInputHash": "8999da0aa05d409ce751adfbf6cb06f587452e0727034f515ca1d5a6f5b6a692",
+    "authorResponseHash": "f5b8ca98c7916dc6c851cf332c47d3c0d430b33ecf4c7107c71bca97885d8adc",
+    "reviewerResponseHash": "e785c398e9ee9e7d84b128e48f5acecf8cea88a4685a8f6d4c27de7494b1d837",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

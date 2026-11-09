@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2025_AMC_12B_Q12",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "feea87036892b79b9b0c1eee45405177fbb8a2ecaafea069a9b7d18a105b6201",
+    "figureHashes": {
+      "figures/2025_AMC_12B_Q12_question_fig1.svg": "5e905df33b7799a7d3ac297e0d41c4f4c732d690b8bdf180aef1dc24c8df3a09"
+    }
+  },
+  "solutionSHA256": "f4da72e99ff06e0ddd8c9090cdb9988b624cb9da3b2fa00c636520046b35d54b",
+  "solutionFigureHashes": {
+    "figures/2025_AMC_12B_Q12_question_fig1.svg": "5e905df33b7799a7d3ac297e0d41c4f4c732d690b8bdf180aef1dc24c8df3a09"
+  },
+  "candidateHash": "094cd0c9ef3d98e8ec1814bf5e06bf4ade39b7c176e4bc1df3aa44206fda7864",
+  "candidate": {
+    "questionId": "2025_AMC_12B_Q12",
+    "derivedAnswer": "10.50 square feet (C)",
+    "answerStatus": "matches",
+    "answerReason": "The horizontal sweep is 3 feet wide. Translating the extra upper curved cap into the equal lower gap produces a rectangle of dimensions 3 by 3.5 feet, giving 10.50 square feet.",
+    "methods": [
+      {
+        "id": "translated-caps",
+        "label": "Slide a curved piece to form a rectangle",
+        "explanation": "Since the blade stays vertical, the paths of its upper and lower endpoints are vertical translates. This suggests comparing the cleaned region with a rectangle instead of calculating curved areas.\n\n[Figure 1](figures/2025_AMC_12B_Q12_question_fig1.svg)\n\nThe \\(60^\\circ\\) sweep is symmetric about the vertical, so the arm makes an angle of \\(30^\\circ\\) with the vertical at each extreme. Its horizontal reach is the side opposite \\(30^\\circ\\) in a right triangle with hypotenuse \\(3\\) feet. That side is half the hypotenuse, so the total width swept is\n\\[\n\\frac32+\\frac32=3\\text{ feet}.\n\\]\nBy symmetry, the two extreme positions of \\(B\\) have the same height. Therefore the two extreme positions of \\(C\\) have the same height, as do those of \\(D\\). Join the extreme positions of \\(C\\) horizontally, and do the same for \\(D\\). These segments and the two extreme blade positions form a rectangle of width \\(3\\) feet and height \\(3.5\\) feet.\n\nDuring one sweep, \\(B\\) travels along the upper circular arc from its left extreme to its right extreme without reversing its horizontal direction. Each horizontal position between the extremes therefore corresponds to exactly one vertical blade position. Thus the endpoint paths are precisely the upper and lower boundaries of the cleaned region.\n\nBoth endpoint paths bow above their horizontal joining segments. Compared with the rectangle, the cleaned region has an extra curved cap above the top and a curved gap above the bottom. The gap stays inside the rectangle because \\(B\\) rises by less than its \\(3\\)-foot arm length, which is less than the rectangle's \\(3.5\\)-foot height.\n\nAt every blade position, \\(C\\) is directly \\(3.5\\) feet above \\(D\\). Consequently, sliding the extra upper cap down \\(3.5\\) feet fills the lower gap exactly. Translation preserves area, so the cleaned region has the same area as the rectangle:\n\\[\n3\\cdot3.5=\\boxed{10.50}\\text{ square feet}.\n\\]\nThe answer is choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_072"
+        ],
+        "prerequisiteIds": [
+          "cnm_140",
+          "cnm_p089"
+        ],
+        "levelReason": "The method uses the half-hypotenuse property of a 30-degree right triangle, translation preserving area, and rectangle area. It requires only elementary geometry."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_140",
+      "cnm_072",
+      "cnm_p089"
+    ],
+    "annotationRationale": "The assessed target is determining the area swept by a segment that stays vertical; the catalog lacks a suitable node for this target. cnm_p150 is not assigned because its criteria concern decomposition into familiar triangles or rectangles, whereas this solution cancels translated curved pieces. The method's defining catalog concept is cnm_072, used to match the upper cap with the lower gap. Its local prerequisites are cnm_140 for the horizontal reach and cnm_p089 for the final rectangle area. These three nodes remain task-level support, without treating them as an equivalent assessed target or evidence of mastery.",
+    "needsNewNodes": [
+      {
+        "name": "Area swept by a segment that stays parallel to itself",
+        "description": "Determine the planar region swept by a fixed-length segment whose direction remains fixed and whose perpendicular position passes continuously through an interval without reversal. Identify its endpoint boundaries and justify its area by an area-preserving comparison with a rectangle.",
+        "reason": "The essential step is converting a curved swept region into an equal-area rectangle by matching translated boundary pieces. Translation properties and rectangle area support this reasoning, but neither covers the swept-region area target, and cnm_p150's stated decomposition criteria do not cover it."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2025_AMC_12B_Q12",
+    "decision": "accept",
+    "mathematicalCheck": "Each extreme has horizontal reach 3/2 feet, giving width 3 feet. The upper arc gives exactly one blade position at each horizontal coordinate. The endpoint paths and their horizontal chords differ by a vertical translation of 3.5 feet, so the upper cap exactly fills the lower gap. The rise is less than 3 feet, ensuring the gap lies inside the rectangle. Thus the cleaned area is 3 × 3.5 = 10.50 square feet, choice C. The displayed labels agree with the argument.",
+    "levelCheck": "The explanation justifies the decisive area comparison using elementary translation, rectangle area, and the 30-degree right-triangle property. It is complete and appropriate for AMC 12.",
+    "methodDistinctness": "One complete method is supplied; an additional method is unnecessary.",
+    "annotationCheck": "The method and support IDs match their catalog scopes. Leaving assessedIds empty and proposing a swept-area node honestly identifies the catalog gap. Omitting cnm_p150 is justified by its narrower triangle-and-rectangle decomposition criteria.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "translated-caps": "translated-caps"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "63b384fc5654ce73cf282d333da0850ccd9dd0badc2ec89b71c30b18b61340e4",
+    "acceptedAt": "2026-11-07T07:59:05.106595+00:00",
+    "inputHash": "8cbae04a2bbf353df804e9dc298dbe472af210f0d989a078803c7741857c36da",
+    "authorInputHash": "db37196ee1b7809a362cc8681e8572763051d870e7bc0a44eaee43f6b466fe97",
+    "reviewInputHash": "a65ad13b1857f434fc3dbcdd7bc0d4629b6b3fa351a3b81ed1fecbe17b96d7c8",
+    "authorResponseHash": "aa39ca9493e6e5eeea0b2c88e1c30b1c08513a02cb8ce2b484534f4aca6b4d5d",
+    "reviewerResponseHash": "cbea8e8aa2280504ce82872ce340b706f50f3b7ec55f7a5d363f35f6a6e56851",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

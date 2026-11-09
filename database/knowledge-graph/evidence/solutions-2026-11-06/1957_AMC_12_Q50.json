@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1957_AMC_12_Q50",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "3f00038c5bc203ac0113e9e7bf4c00e4355711d7cccbead6f64b9fb221e5c75d",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "ca65dc21b7cee293e0d4010147aaa97c22e42d98b2bfec17d69f8126c1a0c129",
+  "solutionFigureHashes": {},
+  "candidateHash": "67edb3a8e1fb6070b6b28fcdfb902ee9bcfd2b7d270a92e4f74ec8f989d9e326",
+  "candidate": {
+    "questionId": "1957_AMC_12_Q50",
+    "derivedAnswer": "B: O' remains stationary.",
+    "answerStatus": "matches",
+    "answerReason": "The constructed heights add to the fixed length AB. Their midpoint is always halfway across AB and at height AB/2 on the chosen side.",
+    "methods": [
+      {
+        "id": "constant-midpoint-coordinates",
+        "label": "Compute the midpoint coordinates",
+        "explanation": "The two perpendicular lengths are complementary parts of the fixed diameter, so their sum stays constant. Coordinates make their effect on the midpoint easy to track.\n\nLet \\(AB=L>0\\), and choose\n\\[\nA=(0,0),\\qquad B=(L,0).\n\\]\nTake the positive vertical direction toward the side used for the construction. Write \\(G=(t,0)\\), where \\(0\\le t\\le L\\). Then \\(AG=t\\) and \\(BG=L-t\\), so\n\\[\nA'=(0,t),\\qquad B'=(L,L-t).\n\\]\nA midpoint lies halfway in each coordinate direction, so its coordinates are the averages of the endpoint coordinates. Hence\n\\[\nO'=\\left(\\frac{0+L}{2},\\frac{t+(L-t)}{2}\\right)\n=\\left(\\frac L2,\\frac L2\\right).\n\\]\nNeither coordinate depends on \\(t\\). The same formula includes \\(t=0\\), when \\(A'=A\\), and \\(t=L\\), when \\(B'=B\\). Thus \\(O'\\) remains stationary throughout the motion, choice B.",
+        "nodeIds": [
+          "cnm_084",
+          "cnm_055"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_083",
+          "cnm_064"
+        ],
+        "levelReason": "The method uses elementary coordinate placement and the midpoint as halfway in each coordinate direction."
+      },
+      {
+        "id": "fixed-parallelogram-diagonal",
+        "label": "Identify a fixed diagonal with the same midpoint",
+        "explanation": "We can prove that \\(O'\\) is fixed by finding a fixed segment with the same midpoint. Let \\(AB=L\\), and construct a fixed point \\(C\\) on the perpendicular ray from \\(B\\), on the chosen side of \\(AB\\), with \\(BC=L\\).\n\nSince \\(G\\) lies on \\(AB\\), we have \\(AG+BG=L\\). Also \\(BB'=BG\\), so \\(B'\\) lies on \\(BC\\) and\n\\[\nB'C=BC-BB'=L-BG=AG=AA'.\n\\]\nFor \\(G\\ne A\\), the segments \\(AA'\\) and \\(B'C\\) are nonzero, parallel, and equal. Thus the quadrilateral \\(AA'CB'\\) is a parallelogram. Its diagonals are \\(AC\\) and \\(A'B'\\), and parallelogram diagonals bisect each other. Therefore the midpoint \\(O'\\) of \\(A'B'\\) is also the midpoint of the fixed segment \\(AC\\).\n\nAt the remaining endpoint \\(G=A\\), we have \\(A'=A\\) and \\(B'=C\\), so \\(O'\\) is again the midpoint of \\(AC\\). Consequently \\(O'\\) remains at that fixed midpoint for the entire motion, choice B.",
+        "nodeIds": [
+          "cnm_184",
+          "cnm_183",
+          "cnm_055"
+        ],
+        "prerequisiteIds": [
+          "cnm_064"
+        ],
+        "levelReason": "This independent geometric route uses complementary segment lengths and elementary parallelogram properties."
+      }
+    ],
+    "assessedIds": [
+      "cnm_055"
+    ],
+    "supportIds": [
+      "cnm_064"
+    ],
+    "annotationRationale": "Midpoints and complementary segment lengths are shared mathematical targets. Coordinate modeling belongs only to the first method; parallelogram criteria and diagonal bisection belong only to the second. The catalog lacks a direct target for determining the locus of a continuously constructed point, so that missing target is proposed separately rather than assigned to the discrete-invariant node.",
+    "needsNewNodes": [
+      {
+        "name": "Geometric loci and stationary constructed points",
+        "description": "Determine the positions attained by a point defined from a moving geometric construction. Prove that the resulting point is fixed or follows a stated locus for every allowed input position, including degenerate endpoints.",
+        "reason": "The question's central target is the motion or constancy of the constructed midpoint. Coordinate descriptions and segment calculations cover its methods, while the catalog's invariant-reasoning node explicitly concerns discrete processes."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1957_AMC_12_Q50",
+    "decision": "accept",
+    "mathematicalCheck": "The midpoint of (0,t) and (L,L−t) is always (L/2,L/2), including both endpoints. The synthetic method independently identifies it as the midpoint of fixed AC and handles its degenerate endpoint separately.",
+    "levelCheck": "Both methods explain their decisive steps using elementary coordinate and parallelogram geometry.",
+    "methodDistinctness": "Coordinate averaging and fixed-diagonal bisection offer genuinely different, accessible insights.",
+    "annotationCheck": "Shared segment and perpendicular knowledge is appropriate; coordinate and parallelogram nodes remain method-local. The proposed locus node honestly identifies a missing target without misusing the discrete-invariant node.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "constant-midpoint-coordinates": "constant-midpoint-coordinates",
+    "fixed-parallelogram-diagonal": "fixed-parallelogram-diagonal"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "48408aa1a2d70f8257a180780794749f09d71d01131f48d8ce3e132327efc10a",
+    "inputHash": "4ec1fd2d7a46c9582437881757cd44bef8eadb093864c1c5b9edf4e86c0c0291",
+    "authorInputHash": "27d0806ed3d6cf68b9df27d6872de29277b8b9cdf676dc054e4664b30ad647eb",
+    "reviewInputHash": "e87c3f24949f76119c58cbe309b6056957477817d3771b2bce893ce433517bef",
+    "authorResponseHash": "4f1245ab7f162af061c2e6bd1f296bbda64a8dc0a4226ed8745fdc38576295cf",
+    "reviewerResponseHash": "eba925cc30c80006946e07905205b0d7755be0811c5c031780b07dad4ecbdc0a",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

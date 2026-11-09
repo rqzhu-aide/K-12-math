@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2012_AMC_12B_Q14",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "bd3356dd296aeb5eecceb1ee8e4c07470cc0a2b8ed868eb4292381b37a9934e5",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "5cf53964e3aab425f8b136bec3f0688800e50f2b0b3749fac4bb6abaffae98ac",
+  "solutionFigureHashes": {},
+  "candidateHash": "8c40ec98fcf5970f7d5e8302c7fc0159884bcf0535ed2401e53f61ed6e982c98",
+  "candidate": {
+    "questionId": "2012_AMC_12B_Q14",
+    "derivedAnswer": "7 (A), with N=16",
+    "answerStatus": "matches",
+    "answerReason": "The nonnegative winning initial ranges are 475–499, 213–224, 82–87, and 16–18. Their smallest member is 16, whose digit sum is 7.",
+    "methods": [
+      {
+        "id": "backward-winning-ranges",
+        "label": "Method 1: Work backward from a winning turn",
+        "explanation": "Bernardo wins when his output is below \\(1000\\), but Silvia's next output reaches or exceeds \\(1000\\). Since Silvia adds \\(50\\), Bernardo's final output must be between \\(950\\) and \\(999\\), inclusive.\n\nIf Bernardo receives an integer \\(x\\) on that turn, he produces \\(2x\\). Thus he wins immediately exactly when\n\\[\n950\\le2x<1000,\n\\qquad\\text{or}\\qquad\n475\\le x\\le499.\n\\]\nTo find starting numbers that win one turn later, undo one complete round. If Bernardo receives \\(x\\), the next number he receives is \\(2x+50\\). For example,\n\\[\n475\\le2x+50\\le499\n\\]\ngives \\(212.5\\le x\\le224.5\\), whose integer solutions are \\(213\\) through \\(224\\).\n\nRepeating this reversal gives all initial ranges for a win on successive Bernardo turns:\n\\[\n\\begin{aligned}\n\\text{First turn:}&\\quad475\\le N\\le499,\\\\\n\\text{Second turn:}&\\quad213\\le N\\le224,\\\\\n\\text{Third turn:}&\\quad82\\le N\\le87,\\\\\n\\text{Fourth turn:}&\\quad16\\le N\\le18.\n\\end{aligned}\n\\]\nUndoing another round gives \\(-17\\le N\\le-16\\). Further reversals remain negative, so there are no additional nonnegative starting ranges. Each preceding round in the listed ranges stays below \\(1000\\), because its final number lies in the next listed range, which is below \\(500\\).\n\nThe smallest possible initial number is therefore \\(16\\). Its play is\n\\[\n16\\to32\\to82\\to164\\to214\\to428\\to478\\to956\\to1006.\n\\]\nBernardo produces \\(956\\), and Silvia then produces \\(1006\\), confirming his win. The digit sum is \\(1+6=\\boxed7\\), choice \\(\\mathrm{A}\\).",
+        "nodeIds": [
+          "cnm_h200",
+          "cnm_h020",
+          "cnm_099"
+        ],
+        "prerequisiteIds": [
+          "cnm_097",
+          "cnm_h197"
+        ],
+        "levelReason": "Working backward uses only the repeated arithmetic rule and integer solutions of linear inequalities."
+      },
+      {
+        "id": "shift-to-doubling",
+        "label": "Method 2: Turn the output recurrence into repeated doubling",
+        "explanation": "Let \\(b_k\\) be Bernardo's output on his \\(k\\)th turn, continuing the arithmetic rule formally if necessary. His first output is \\(b_1=2N\\). Between two Bernardo turns, Silvia adds \\(50\\) and Bernardo doubles, so\n\\[\nb_{k+1}=2(b_k+50)=2b_k+100.\n\\]\nAdding \\(100\\) makes the recurrence a pure doubling rule:\n\\[\nb_{k+1}+100=2(b_k+100).\n\\]\nStarting from \\(b_1+100=2(N+50)\\), repeated doubling therefore gives\n\\[\nb_k=2^k(N+50)-100.\n\\]\nBernardo wins exactly when one of his outputs satisfies \\(950\\le b_k<1000\\). All outputs are nondecreasing for \\(N\\ge0\\), so such an output guarantees that no earlier turn ended the game. The winning condition becomes\n\\[\n1050\\le2^k(N+50)<1100.\n\\]\nFor \\(k\\ge5\\), the middle expression is at least \\(32\\cdot50=1600\\), so only \\(k=1,2,3,4\\) are possible. Solving for integer \\(N\\) gives\n\\[\n\\begin{aligned}\nk=1:&\\quad475\\le N\\le499,\\\\\nk=2:&\\quad213\\le N\\le224,\\\\\nk=3:&\\quad82\\le N\\le87,\\\\\nk=4:&\\quad16\\le N\\le18.\n\\end{aligned}\n\\]\nThus the minimum is \\(N=16\\). Indeed, \\(b_4=16\\cdot66-100=956\\), and Silvia next produces \\(1006\\). The requested digit sum is \\(\\boxed7\\), choice \\(\\mathrm{A}\\).",
+        "nodeIds": [
+          "cnm_h200",
+          "cnm_h208",
+          "cnm_h020",
+          "cnm_099"
+        ],
+        "prerequisiteIds": [
+          "cnm_097",
+          "cnm_h197",
+          "cnm_h199",
+          "cnm_h207"
+        ],
+        "levelReason": "The affine recurrence is converted to a geometric sequence by an explained shift. Only high-school sequences and linear inequalities are used."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h200",
+      "cnm_h020"
+    ],
+    "supportIds": [
+      "cnm_097",
+      "cnm_h197"
+    ],
+    "annotationRationale": "Both methods model the repeated numerical process and enforce exact integer threshold ranges. The backward method takes preimages of intervals; the forward method additionally uses a geometric general term. Geometric-sequence knowledge is local to the forward alternative.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2012_AMC_12B_Q14",
+    "decision": "accept",
+    "mathematicalCheck": "Bernardo's winning output must lie in [950,1000). Integer preimages under x↦2x+50 give exactly the four nonnegative starting ranges shown. The independent formula b_k=2^k(N+50)−100 excludes k≥5 and reproduces those ranges. Their minimum is 16, and the displayed play confirms the win and digit sum 7.",
+    "levelCheck": "Backward inequalities and the fully derived repeated-doubling formula are accessible high-school reasoning.",
+    "methodDistinctness": "Backward interval reversal and forward recurrence shifting offer distinct useful insights.",
+    "annotationCheck": "Recurrence modeling and integer inequality solutions are shared targets. Geometric-sequence concepts are correctly confined to the forward method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "backward-winning-ranges": "backward-winning-ranges",
+    "shift-to-doubling": "shift-to-doubling"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "00ceef04c8b0c5fa0b6888e5f0100bc3df590635ef6549888f5724ab1b65d0c6",
+    "inputHash": "4ebd27f43afeaf67da3b485ca7b745000fd60c129dee460df814fe62fca25692",
+    "authorInputHash": "170a81e073bde9606e9030179b437a78eca59223507a68b0f85fbf21fa2f0a0f",
+    "reviewInputHash": "4388eae04f732e590cd277c472a8bc895d4d7c25a8231d4597fde239729f576e",
+    "authorResponseHash": "44fed41d2bb20fc037f8bd734ec5e4ba1dc1e197aff8692b11c101e66dc9962b",
+    "reviewerResponseHash": "a624734952d900464f943cdec646db5798585f34ee6a154058b1af25b6430c0f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

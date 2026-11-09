@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_10B_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "bfe086ce874899047eeca779f91338be9220365436f13529874cdd7f72198d4c",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "bfbfe2bba0142f66270ef8a8b3ffef0e6f1316822bb73572c78cc5b27c8bf101",
+  "solutionFigureHashes": {},
+  "candidateHash": "45b98e66a0e92fa1a1b324a76cee1e2cfdffbf0e69cd952008da83c31bc09f5d",
+  "candidate": {
+    "questionId": "2016_AMC_10B_Q22",
+    "derivedAnswer": "A (385)",
+    "answerStatus": "matches",
+    "answerReason": "There are 21 teams and 1330 unordered triples. Exactly 21 times C(10,2)=945 triples have a team that beats both others, leaving 385 cyclic triples.",
+    "methods": [
+      {
+        "id": "unique-winner-complement",
+        "label": "Subtract triples with a two-game winner",
+        "explanation": "Each team plays \\(10+10=20\\) games against distinct opponents, so there are 21 teams. The total number of unordered sets of three teams is\n\\[\n\\binom{21}{3}=\\frac{21\\cdot20\\cdot19}{6}=1330.\n\\]\nWithin any triple, either one team beats both others or the results form the requested cycle. To see why these exhaust the possibilities, suppose nobody wins twice. The three games give three wins in total, so each team must win exactly once, which is precisely a cycle.\n\nIt is easier to count triples with a team that wins both of its games. Choose that team in 21 ways, then choose two of the 10 teams it defeated. This gives\n\\[\n21\\binom{10}{2}=21\\cdot45=945.\n\\]\nEvery noncyclic triple is included, and each is counted exactly once: two teams cannot both beat everyone else in the triple, since they played each other.\n\nSubtracting these triples from all triples leaves\n\\[\n1330-945=\\boxed{385}\n\\]\ncyclic sets, choice \\(\\boxed{A}\\).",
+        "nodeIds": [
+          "math:double-counting",
+          "cnm_h239",
+          "cnm_h010"
+        ],
+        "prerequisiteIds": [
+          "cnm_h236",
+          "cnm_h237",
+          "cnm_h231"
+        ],
+        "levelReason": "This uses unordered selections and a direct incidence count with a unique representative for every noncyclic triple."
+      },
+      {
+        "id": "two-game-win-chains",
+        "label": "Count ordered chains of two wins",
+        "explanation": "Every team plays 20 opponents, so there are 21 teams and\n\\[\n\\binom{21}{3}=1330\n\\]\nunordered triples.\n\nNow count ordered chains \\((A,B,C)\\) in which \\(A\\) beat \\(B\\) and \\(B\\) beat \\(C\\). Choose the middle team \\(B\\) in 21 ways. There are 10 choices for \\(A\\), among the teams that beat \\(B\\), and 10 choices for \\(C\\), among the teams \\(B\\) beat. These choices are automatically distinct, since a team cannot both beat and lose to \\(B\\). Thus there are\n\\[\n21\\cdot10\\cdot10=2100\n\\]\nordered chains.\n\nLet \\(T\\) be the number of noncyclic unordered triples and \\(C\\) the number of cyclic unordered triples. A noncyclic triple has a team that beats both others, a team that loses to both, and a middle team. It contributes exactly one chain, from the winner through the middle team to the loser. In a cyclic triple, each of the three teams can serve as the middle team, and each choice determines one chain. It therefore contributes exactly three chains.\n\nCounting triples and then counting their chain contributions gives\n\\[\nT+C=1330,\\qquad T+3C=2100.\n\\]\nSubtracting eliminates \\(T\\):\n\\[\n2C=770,\\qquad C=\\boxed{385}.\n\\]\nBecause \\(C\\) counts unordered triples, no further division is needed. The answer is choice \\(\\boxed{A}\\).",
+        "nodeIds": [
+          "math:double-counting",
+          "cnm_h231",
+          "cnm_090"
+        ],
+        "prerequisiteIds": [
+          "cnm_h236",
+          "cnm_h237",
+          "cnm_088",
+          "cnm_042"
+        ],
+        "levelReason": "The method uses elementary ordered counting, contribution multiplicities, and subtraction of two linear equations."
+      }
+    ],
+    "assessedIds": [
+      "math:double-counting"
+    ],
+    "supportIds": [
+      "cnm_h236",
+      "cnm_h237"
+    ],
+    "annotationRationale": "The central target is tracking how unordered triples contribute to an auxiliary count. Both methods use combination counts for all triples. The first counts incidences between a triple and its unique two-game winner, then takes a complement. The second counts ordered win chains with multiplicities one and three, then eliminates the noncyclic count. Linear-system elimination belongs only to the second route.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_10B_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "There are 21 teams and 1330 unordered triples. Noncyclic triples have a unique two-game winner, giving 21·45=945 and leaving 385 cycles. Independently, 2100 ordered win chains count noncyclic triples once and cyclic triples three times, producing the same count with correct multiplicities.",
+    "levelCheck": "Both counting arguments and the elementary elimination are appropriate for AMC 10 and adequately explained.",
+    "methodDistinctness": "Counting unique winners and counting win chains use distinct auxiliary objects and contributions.",
+    "annotationCheck": "Double counting is a justified common target. Combination knowledge is shared, while complement counting and linear elimination are kept method local.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "unique-winner-complement": "solution:unique-winner-complement:bfbfe2bba014",
+    "two-game-win-chains": "solution:two-game-win-chains:bfbfe2bba014"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "aa76700bb56985aa01c6d1f78e9640ef0ee73fabd92f84f60fce13d8abcf4cb2",
+    "acceptedAt": "2026-11-07T10:45:50.548638+00:00",
+    "inputHash": "86fa27bec51ab034bb2b7f1a5bbad6fda7dc0292437490130aab084a8243655f",
+    "authorInputHash": "6eedd2127e5befdfc5456040aa4b0d4a52f5ae54b529cc3c0d801a78481795a2",
+    "reviewInputHash": "8918b8eaf5a3ba6d896154c30f0a5b2eae98c07587500cd9da995d5c9cefa4ea",
+    "authorResponseHash": "b0f2e2639d30ae9c68d0c0ff062e3faccd05994da7c5710ffe37f263f2ced415",
+    "reviewerResponseHash": "8c21af3191c8010119d88bfa40e6f0d9d1b82541a8857c9aeeb7e057343eb558",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

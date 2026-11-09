@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1978_AMC_12_Q30",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "f1fc9921375ae227a303ac018ede2e3b8cd732d7984b8f86eb9a2b892f9d4926",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "447dca5a1c0306db5e795eb6bbdc1458ba7f9404b0928b34c28b1a08d3e03ea7",
+  "solutionFigureHashes": {},
+  "candidateHash": "201d3d8be730a59d8b97584efa7d081030d15dd0b5aa89a7ab9cf134075a380e",
+  "candidate": {
+    "questionId": "1978_AMC_12_Q30",
+    "derivedAnswer": "E (n=3)",
+    "answerStatus": "matches",
+    "answerReason": "A bound on the possible number of women's wins forces n≤3. Integer win counts exclude n=1 and n=2, and n=3 is attainable. Since 3 is not among choices A through D, the answer is E.",
+    "methods": [
+      {
+        "id": "count-and-bound",
+        "label": "Bound the number of women's wins",
+        "explanation": "The key restriction is that women can win only matches involving at least one woman. We can compare this maximum with the number of wins required by the given ratio. Here \\(n\\) is a positive integer.\n\nAmong \\(p\\) players, counting \\(p-1\\) opponents for each player counts every match twice, once for each participant. Thus there are \\(p(p-1)/2\\) matches. With \\(3n\\) players, the total number of matches is\n\\[\nT=\\frac{3n(3n-1)}2.\n\\]\nEvery match has exactly one winner. If \\(W\\) denotes the number of women's wins, the ratio \\(7:5\\) gives women \\(7/12\\) of all wins, so\n\\[\nW=\\frac7{12}T=\\frac{7n(3n-1)}8.\n\\]\nThere are \\(n(n-1)/2\\) matches between two women. There are also \\(n(2n)=2n^2\\) mixed matches, each counted once by choosing its woman and its man. These are all the matches that women could win. Therefore\n\\[\n\\frac{7n(3n-1)}8\n\\le \\frac{n(n-1)}2+2n^2\n=\\frac{n(5n-1)}2.\n\\]\nSince \\(n>0\\), multiplying by \\(8/n\\) preserves the inequality and gives\n\\[\n7(3n-1)\\le4(5n-1),\n\\qquad n\\le3.\n\\]\nFor \\(n=1\\) and \\(n=2\\), the formula for \\(W\\) gives \\(7/4\\) and \\(35/4\\), respectively. Neither is an integer, so neither can count wins.\n\nFor \\(n=3\\), let women win all \\(18\\) mixed matches. The \\(3\\) women-only matches give women another \\(3\\) wins, and the \\(15\\) men-only matches give men \\(15\\) wins. The ratio is \\(21:15=7:5\\), so this case works.\n\nThus \\(\\boxed{n=3}\\), which is choice \\(\\boxed{\\text{E}}\\), none of these.",
+        "nodeIds": [
+          "cnm_h239",
+          "math:double-counting",
+          "math:integer-diophantine-equations",
+          "cnm_098"
+        ],
+        "prerequisiteIds": [
+          "cnm_p187",
+          "cnm_096"
+        ],
+        "levelReason": "The solution derives the elementary unordered-pair count, applies a linear inequality after dividing by a positive quantity, and checks three integer cases."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h239",
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_p187",
+      "cnm_096"
+    ],
+    "annotationRationale": "The task combines counting unordered player pairs with determining an integer parameter under win-count restrictions. Ratio allocation and inequality properties support the argument. The method derives the pair formula by double counting and models the maximum possible women's wins with an inequality, so these procedures are recorded locally. The final construction verifies feasibility rather than merely satisfying necessary numerical conditions.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1978_AMC_12_Q30",
+    "decision": "accept",
+    "mathematicalCheck": "The required women's win count is 7n(3n-1)/8. Bounding it by n(n-1)/2+2n^2 gives n≤3. The counts for n=1,2 are nonintegers, while n=3 is realized by women winning every mixed match, giving 21:15=7:5.",
+    "levelCheck": "The pair-count derivation, positive division in the inequality, and feasibility construction are accessible and complete.",
+    "methodDistinctness": "One complete counting-and-bound method is sufficient.",
+    "annotationCheck": "Unordered-pair counting and integer feasibility support the assessed IDs. The local double-counting and inequality-application nodes, with ratio and inequality prerequisites, are justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-and-bound": "count-and-bound"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "6eaf2c0a262eccc64d6ebf941faf5715ec9a6eadb883f947ee8e7ab160455b0f",
+    "inputHash": "e84fdd2feac250cfab8e29e83a72ce49fee24c33d02eddf6133d7e94593b0fe3",
+    "authorInputHash": "3413978ab781eb5136842613aafe50f849d8895710e9853e7343cdcefde0bef2",
+    "reviewInputHash": "03aa541365bba2c2ba44831db15248a3d830f31bd09848514317ccf49db05012",
+    "authorResponseHash": "4c57013d19ba90b30260516a7d1c0aca42d2a9f250cca35dfdae543cab3abf40",
+    "reviewerResponseHash": "3d542329401dc78bf37fd09ca908fb44cbfa5ac62c671f69b1b8e043bb3b2d6a",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

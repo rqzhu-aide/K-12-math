@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2000_AMC_10_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "78de24a19c0861b22b89a5c254fc70adc695da2e9d10dc2126b46d2e5be55551",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "c803fca59739d11c184e6840ea80ef9492a961f986b07eaeb4a3da6f4b40fb21",
+  "solutionFigureHashes": {},
+  "candidateHash": "c3059aca1fba404be21fc3fc622e1ed07bfef62de3dfdbc472799f26dbd0d4f6",
+  "candidate": {
+    "questionId": "2000_AMC_10_Q25",
+    "derivedAnswer": "A: Thursday",
+    "answerStatus": "matches",
+    "answerReason": "The two Tuesdays force year N to have 366 days. Year N−1 then has 365 days, making its 100th day 565 days, or 80 weeks and 5 days, before Tuesday. That weekday is Thursday.",
+    "methods": [
+      {
+        "id": "count-complete-weeks",
+        "label": "Count elapsed days and complete weeks",
+        "explanation": "Two dates have the same weekday exactly when the number of days between them is a multiple of \\(7\\). Let \\(L\\) be the number of days in year \\(N\\). From its \\(300\\)th day to the \\(200\\)th day of the next year, the elapsed time is\n\\[\n(L-300)+200=L-100.\n\\]\nFor an ordinary year this would be \\(265=7\\cdot37+6\\) days, which cannot connect two Tuesdays. For a leap year it is \\(266=7\\cdot38\\) days. Thus year \\(N\\) is a leap year.\n\nLeap years are not consecutive, so year \\(N-1\\) has \\(365\\) days. From its \\(100\\)th day to the \\(300\\)th day of year \\(N\\), the elapsed time is\n\\[\n(365-100)+300=565=7\\cdot80+5.\n\\]\nThe desired day is therefore five weekdays before Tuesday. Counting backward gives Monday, Sunday, Saturday, Friday, Thursday. Hence the answer is \\(\\boxed{\\text{Thursday}}\\), choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "math:modular-congruence"
+        ],
+        "prerequisiteIds": [
+          "cnm_p091",
+          "cnm_p050"
+        ],
+        "levelReason": "The reasoning uses ordinary and leap-year lengths and division into complete seven-day weeks, without formal congruence notation."
+      }
+    ],
+    "assessedIds": [
+      "math:modular-congruence"
+    ],
+    "supportIds": [
+      "cnm_p091",
+      "cnm_p050"
+    ],
+    "annotationRationale": "Weekday equality is a divisibility-of-difference condition, and the final weekday is determined by a remainder after removing complete weeks. Calendar knowledge and the meaning of division with remainders support this reasoning.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2000_AMC_10_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The two Tuesdays are 265 or 266 days apart; only 266=38·7 works, forcing year N to be leap. The preceding year has 365 days, so the requested date is 565=80·7+5 days before Tuesday, which is Thursday.",
+    "levelCheck": "Calendar facts and complete-week arithmetic are appropriate. Formal congruence notation is unnecessary and is not introduced.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The divisibility-of-date-differences and remainder reasoning fits the congruence/remainder node. Calendar knowledge and division-with-remainders meanings are justified supports.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-complete-weeks": "count-complete-weeks"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c8754416f87e59bd719b1bc98b6ea7940b973effa97adc43f10d04fd6175ba9d",
+    "inputHash": "0ec7cfc03ef5c70bae4a9674f299d027da92107fdfea54e0a46a3afbcd843a7d",
+    "authorInputHash": "d5e294de91cb88398fd6acdd07d2ea9a0579d6998ce437b616826871af1d9212",
+    "reviewInputHash": "e69a4cd5754e12f09bf2192b8d4681dc1976f45038af351ea6b8b4afb0993bc5",
+    "authorResponseHash": "94f1acb0dd70de9c43e5e8d1527cf8b3d28eaedc778010909c10c68155b5de39",
+    "reviewerResponseHash": "74904732a5e35a00eb84a9799a477f2135a1d7097182016618b3af16ded81005",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

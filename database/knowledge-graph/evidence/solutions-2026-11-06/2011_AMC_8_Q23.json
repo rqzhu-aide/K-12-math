@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2011_AMC_8_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "255b4dc5282c19a5213156289771e064d5a5a0b735b4011ab7a0571d00a8851a",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "22c5ae2db5d55102d7e413d3fe36655a4c04eccc19cc34ffde1185d0dbbf198e",
+  "solutionFigureHashes": {},
+  "candidateHash": "8f47789a818da8cdcbb2dc23b94ae348c779acdfd5fe91b8396f6a04db7e52b3",
+  "candidate": {
+    "questionId": "2011_AMC_8_Q23",
+    "derivedAnswer": "84 integers, choice D",
+    "answerStatus": "matches",
+    "answerReason": "There are 48 eligible integers ending in 5 and 36 ending in 0, for a total of 84.",
+    "methods": [
+      {
+        "id": "count-by-final-digit",
+        "label": "Count by the final digit",
+        "explanation": "Since \\(5\\) is the largest digit, every digit belongs to \\(0,1,2,3,4,5\\), and \\(5\\) must appear. A multiple of \\(5\\) ends in either \\(0\\) or \\(5\\), so these give two separate cases.\n\nIf the number ends in \\(5\\), its first digit can be any of \\(1,2,3,4\\), giving \\(4\\) choices. The hundreds digit then has \\(4\\) choices among the unused digits from \\(0\\) through \\(4\\), and the tens digit has \\(3\\) choices. This gives\n\\[\n4\\cdot4\\cdot3=48\n\\]\nnumbers.\n\nIf the number ends in \\(0\\), the digit \\(5\\) must occupy one of the first three positions. Choose its position in \\(3\\) ways. Fill the other two positions, from left to right, with different digits from \\(1,2,3,4\\), giving \\(4\\cdot3\\) choices. All these leading digits are nonzero, so this case gives\n\\[\n3\\cdot4\\cdot3=36\n\\]\nnumbers.\n\nEvery eligible number belongs to exactly one final-digit case. Within each case, its digits determine exactly one sequence of choices. Therefore the total is \\(48+36=\\boxed{84}\\), choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_p154",
+          "cnm_p053",
+          "cnm_h230",
+          "cnm_h231"
+        ],
+        "levelReason": "Uses elementary digit restrictions and the addition and multiplication principles of counting, within AMC 8 scope."
+      },
+      {
+        "id": "subtract-numbers-without-five",
+        "label": "Count a larger family and subtract",
+        "explanation": "First allow all digits from \\(0\\) through \\(5\\), without requiring \\(5\\) to appear. Count the four-digit multiples of \\(5\\) with different digits in this larger family, then remove those whose digits are all smaller than \\(5\\).\n\nFor numbers ending in \\(0\\), the first three positions have \\(5\\), then \\(4\\), then \\(3\\) choices from \\(1,2,3,4,5\\). There are \\(5\\cdot4\\cdot3=60\\) such numbers.\n\nFor numbers ending in \\(5\\), the first digit has \\(4\\) choices from \\(1,2,3,4\\). The next two positions have \\(4\\) and \\(3\\) choices, with \\(0\\) allowed. There are \\(4\\cdot4\\cdot3=48\\) such numbers. The two endings are distinct, so the larger family contains \\(60+48=108\\) numbers.\n\nA number in this family that does not contain \\(5\\) must end in \\(0\\). Its first three digits are different members of \\(1,2,3,4\\), giving \\(4\\cdot3\\cdot2=24\\) numbers to remove. Each positional choice determines one number, and the removed numbers are precisely those that fail to have largest digit \\(5\\). Thus the required count is\n\\[\n108-24=\\boxed{84},\n\\]\nchoice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "cnm_h232",
+          "cnm_h010"
+        ],
+        "prerequisiteIds": [
+          "cnm_p154",
+          "cnm_p053",
+          "cnm_h230",
+          "cnm_h231"
+        ],
+        "levelReason": "Complementary counting here uses only subtraction and elementary positional choices, suitable for AMC 8."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h232"
+    ],
+    "supportIds": [
+      "cnm_p154",
+      "cnm_p053",
+      "cnm_h230",
+      "cnm_h231"
+    ],
+    "annotationRationale": "The task requires combining disjoint digit cases with successive choices under restrictions. Both methods use four-digit place value, the final-digit test for multiples of 5, and elementary counting principles. Complement counting belongs only to the second method. The written methods do not require formal permutation or combination formulas.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2011_AMC_8_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "Ending in 5 gives 4·4·3=48 integers. Ending in 0 gives 3·4·3=36, with the unique digit 5 placed explicitly. Both counts avoid leading zero and repeated digits. The complementary calculation independently gives 108−24=84.",
+    "levelCheck": "Both explanations use elementary positional counting and arithmetic appropriate for AMC 8.",
+    "methodDistinctness": "Direct counting and counting a larger family then subtracting provide distinct, accessible approaches.",
+    "annotationCheck": "The assessed combined-counting node fits both methods. Shared prerequisites match the written reasoning, and the complement node is correctly confined to the second method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-by-final-digit": "count-by-final-digit",
+    "subtract-numbers-without-five": "subtract-numbers-without-five"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "9dccac2fa152ce3d1842a7ad36f82c7b74b5acd1db4803b230c68e1ebdcb7180",
+    "inputHash": "4e55d2cc5cd5be476d95fb5778cb265733073d408209686b597a19a54cefa199",
+    "authorInputHash": "c782338301d355f27a2a9c0d4aa2d68b2e985a23fa22e0b0c7f4d39c701b73a5",
+    "reviewInputHash": "a2577f674f26d543b2ca4eb61d6b54041ffbf07f495bf817a45dfc7e7bb9258b",
+    "authorResponseHash": "847fe9f4a17c37be104e2f8ee3bdd4e50f3799a7cbec71af49557ca33da2a5d1",
+    "reviewerResponseHash": "96bc0d5f7af2743b08bfe8cdefedb070d17100dee6591ae5cd8e79129849c4fc",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

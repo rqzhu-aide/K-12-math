@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2012_AMC_10A_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "39b225d32485c283c8c8036c6e5e2cd912f2088b3dfcb3a4ea47ccb4a82a85a2",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "69924003b156b472be8378f975d5be87646143dbc3882450e651f24464b4fd54",
+  "solutionFigureHashes": {},
+  "candidateHash": "e788ad9208fbd220fc7892f24b6901e023b4aac966c30f1c91843843189ed055",
+  "candidate": {
+    "questionId": "2012_AMC_10A_Q23",
+    "derivedAnswer": "B, 170",
+    "answerStatus": "matches",
+    "answerReason": "There are 15 configurations with one friend per person and 70 with two. Replacing every friendship by a nonfriendship gives equally many configurations with four and three friends respectively, for a total of 170.",
+    "methods": [
+      {
+        "id": "complements-and-loops",
+        "label": "Pair friend counts and count loops",
+        "explanation": "Represent the six named people by points and each mutual friendship by a line joining two points. Let \\(d\\) be their common number of friends. There is at least one friendship and at least one missing friendship, so\n\\[\nd\\in\\{1,2,3,4\\}.\n\\]\nReplace every friendship by a nonfriendship and every nonfriendship by a friendship. Each person then has \\(5-d\\) friends. Doing this twice restores the original configuration, so it gives a one-to-one correspondence between the \\(d=1\\) and \\(d=4\\) cases, and between the \\(d=2\\) and \\(d=3\\) cases. We need only count \\(d=1\\) and \\(d=2\\), then double.\n\nIf \\(d=1\\), everyone belongs to a pair. Choose Adam's partner in \\(5\\) ways. Among the four remaining people, take the first unpaired name in the given list and choose that person's partner in \\(3\\) ways. The last pair is forced. This fixed procedure counts each pairing once, giving\n\\[\n5\\cdot3=15.\n\\]\nIf \\(d=2\\), the friendship lines form separate closed loops. To see why, follow a line from someone and at each new person continue along the other line. A finite path must eventually close. It cannot first return to an internal person on the path, since that would give that person three incident lines. Thus it returns to its starting person. Everyone on this loop already has two friends, so nobody outside can connect to it. Repeating the argument accounts for everyone.\n\nEach loop has at least three people. With six people, the only possibilities are one loop of six or two loops of three.\n\nFor a six-person loop, place Adam first in a traversal and list the other five people in order. There are \\(5!=120\\) lists. Each friendship configuration gives exactly two lists, corresponding to the two traversal directions, so there are \\(120/2=60\\) configurations.\n\nFor two three-person loops, choose Adam's two companions in \\(\\binom52=10\\) ways. The other three people form the second loop. Adam's group uniquely determines the split, so each configuration is counted once.\n\nThese cases are exhaustive and disjoint. The total is therefore\n\\[\n2(15+60+10)=\\boxed{170},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "math:graph-models",
+          "cnm_h232",
+          "math:bijective-counting",
+          "math:symmetry-counting"
+        ],
+        "prerequisiteIds": [
+          "cnm_h234",
+          "cnm_h239"
+        ],
+        "levelReason": "The graph model is explained through friendship lines. Complementation, elementary loop structure, permutations, and combinations give a complete AMC 10 counting argument."
+      }
+    ],
+    "assessedIds": [
+      "math:graph-models",
+      "cnm_h232"
+    ],
+    "supportIds": [],
+    "annotationRationale": "The targets are modeling equal friendship counts as equal degrees and counting the resulting configurations by cases and stages. The written route uses a reversible complement correspondence and loop classification. Symmetry counting applies only to duplicate traversal descriptions of a labeled loop; different named friendship configurations remain distinct.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2012_AMC_10A_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "Complementation pairs common friend counts 1 with 4 and 2 with 3. There are 15 pairings for degree 1. The explained loop classification makes degree 2 either a six-cycle or two triangles, counted as \\(5!/2=60\\) and \\(\\binom{5}{2}=10\\). Thus the exhaustive total is \\(2(15+60+10)=170\\).",
+    "levelCheck": "The graph structure and counting multiplicities are explained using elementary AMC 10 reasoning.",
+    "methodDistinctness": "One complete structural counting method is sufficient.",
+    "annotationCheck": "Graph modeling and combined counting are justified targets. The complement bijection and traversal symmetry fit their method-local nodes; named friendship configurations remain distinct.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "complements-and-loops": "complements-and-loops"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "7191c6d97d7f824a63b215720933a7b40c37aec3078c94ba751b9523f88e83c9",
+    "inputHash": "681a6f16fb74924d517b97db893ea4c48b7f15adbf35f7393a69c0484755beb5",
+    "authorInputHash": "244a6303c6bb9b2c6526fa7cd5278f6af01c1dcb56efc714732e7b002e5ab5e1",
+    "reviewInputHash": "752455f08fe5f89ab482e38ff32f0f1a92d4b83b1a002247c1dd03eab3fbcdcf",
+    "authorResponseHash": "2548da8a85081217e1a1e06ba71d885dc4a4d1b2f5c2fa7c1e9748b6c17d2e77",
+    "reviewerResponseHash": "970cfe8f3d904bd6b50914b91497ac8aa24f325a12fa936472646380b1c5793e",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

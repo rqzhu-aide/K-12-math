@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1971_AMC_12_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "de52d6ed563186a2dcda79c54efe61da5f96f50decefccc8a5f7cb694420e1b7",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "5c0b0f5e4a7a2eaee798149a69bf0b507d8313988d599f8bbb5f5cfaa5193461",
+  "solutionFigureHashes": {},
+  "candidateHash": "51d3f7df307ce98d97d78cdd6779e7200cad76513e54ab9fe28021fc7b4b42a7",
+  "candidate": {
+    "questionId": "1971_AMC_12_Q23",
+    "derivedAnswer": "A: \\(11\\) to \\(5\\), under the conventional model of independent fair games; marginal fairness alone does not determine the series odds.",
+    "answerStatus": "disputed",
+    "answerReason": "Independent fair games give Team A probability \\(11/16\\), hence odds \\(11:5\\). Independence is not explicitly stated. Dependent game outcomes can preserve each game's marginal fairness while giving different series odds.",
+    "methods": [
+      {
+        "id": "extend-to-four-games",
+        "label": "Count outcomes of four games",
+        "explanation": "Assume the games are independent and each team wins each game with probability \\(1/2\\), the conventional interpretation of this problem. The series must be decided within four games: if A has not won twice by then, B has won at least three times.\n\nImagine recording four game outcomes even if the series ends earlier. This gives \\(2^4=16\\) equally likely outcome sequences, each with probability \\(1/16\\). Continuing the record does not change the series winner.\n\nA wins the series exactly when at least two of the four outcomes are A wins. Indeed, in that case there are at most two B wins, so B cannot have reached three first. If there are at most one A win, B reaches three wins first.\n\nIt is shorter to count the sequences in which A loses. There is one with no A wins, and four with exactly one A win, according to its position. These cases are disjoint and include every losing sequence. Thus B wins in 5 of the 16 sequences, and A wins in the other 11. Odds in favor compare winning probability with losing probability, so\n\\[\nP(A):P(B)=\\frac{11}{16}:\\frac{5}{16}=11:5.\n\\]\n\nThe independence qualification matters if the wording means only that each game's separate win probabilities are equal. For example, choose the first game's winner fairly, force the second game to have the opposite winner, and use independent fair games afterward. Each game is marginally fair, but after two games each team has one win. A then loses only if B wins both of the next two games, giving A probability \\(3/4\\) and odds \\(3:1\\).\n\nTherefore choice A, \\(11\\) to \\(5\\), follows under the independent fair-game interpretation; marginal fairness alone is insufficient.",
+        "nodeIds": [
+          "cnm_289",
+          "cnm_h137",
+          "cnm_h139",
+          "cnm_h231"
+        ],
+        "prerequisiteIds": [
+          "cnm_h140",
+          "cnm_p185"
+        ],
+        "levelReason": "The method uses a small equally likely sample space, elementary complementary counting, and the definition of odds."
+      },
+      {
+        "id": "count-stopping-sequences",
+        "label": "Count the possible stopping sequences",
+        "explanation": "Assume successive games are independent and fair. Write A or B for the winner of each game. For A to win the series, the final game must be its second win. Before that final game, B can have won zero, one, or two games; three B wins would already have ended the series.\n\nWith zero B wins, the only sequence is \\(AA\\), with probability \\(1/4\\).\n\nWith one B win, the sequences are \\(ABA\\) and \\(BAA\\). Each has probability \\(1/8\\).\n\nWith two B wins, the sequences are \\(ABBA\\), \\(BABA\\), and \\(BBAA\\). Each has probability \\(1/16\\). To see that this list is complete, the final A is fixed, and the earlier A can occupy any one of the first three positions.\n\nThese cases cover every possible A victory and are disjoint because they have different stopping sequences. Their probabilities give\n\\[\nP(A)=\\frac14+2\\left(\\frac18\\right)\n+3\\left(\\frac1{16}\\right)=\\frac{11}{16}.\n\\]\nSince exactly one team wins the series, \\(P(B)=5/16\\). The odds favoring A are therefore \\(11:5\\).\n\nThis conclusion depends on the fair-game interpretation including independence, or equivalently fairness after every possible history. If instead the first two winners are forced to be opposite, with the first winner chosen fairly and later games independent and fair, each game's marginal probabilities remain equal. After two games A needs one more win and B needs two; A then has probability \\(3/4\\), giving different odds of \\(3:1\\).\n\nThus the independent fair-game model gives \\(11\\) to \\(5\\), choice A; separate equal win probabilities alone do not fix the answer.",
+        "nodeIds": [
+          "cnm_289",
+          "cnm_h141",
+          "cnm_h138",
+          "cnm_h139"
+        ],
+        "prerequisiteIds": [
+          "cnm_h140",
+          "cnm_p185"
+        ],
+        "levelReason": "The method lists a small number of terminal sequences, multiplies independent probabilities, and adds disjoint cases."
+      }
+    ],
+    "assessedIds": [
+      "cnm_289"
+    ],
+    "supportIds": [
+      "cnm_h140",
+      "cnm_p185"
+    ],
+    "annotationRationale": "The route-neutral target is calculating the teams' winning probabilities in the specified game. Independence and ratio meaning support both methods. The first route creates an equally likely four-game sample space and counts a complement. The second weights terminal sequences of different lengths and adds disjoint probabilities. Neither binomial-distribution formulas nor state recursion are required by the written solutions.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The supplied answer uses the conventional interpretation of independent games with win probability 1/2 for each team.",
+      "If equal chance means fairness conditional on every previous history, the conventional answer follows. If it means only marginal fairness for each game, the joint behavior is unspecified and the odds are not uniquely determined."
+    ]
+  },
+  "review": {
+    "questionId": "1971_AMC_12_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "Independent fair games give five losing four-game records out of sixteen. The terminal-sequence calculation independently gives 1/4+2/8+3/16=11/16, hence odds 11:5. The opposite-first-two-winners model preserves marginal fairness and correctly gives odds 3:1.",
+    "levelCheck": "Both methods use accessible counting and probability, and the independence qualification is explained concretely.",
+    "methodDistinctness": "The fixed-length equally likely records and differently weighted stopping sequences provide distinct, useful approaches.",
+    "annotationCheck": "cnm_289 is a suitable route-neutral target. Shared independence and ratio supports and the separate counting and probability routes match both methods.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "extend-to-four-games": "solution:extend-to-four-games:5c0b0f5e4a7a",
+    "count-stopping-sequences": "count-stopping-sequences"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "8c715d9dec0c7ff9595fe994fdb733f60df24f0817b26a09af4bd75cdfa4f29b",
+    "inputHash": "ebd4d46d2a9c9fab1dd1a2586aa60f4eb7459d70cf82f95441ea0e3d578305b3",
+    "authorInputHash": "ab37850000e3593cafb34a893612225ad003186e0f603f7b822592ae64df31fa",
+    "reviewInputHash": "1863fc8d6d435c5fb7e7aa19726e58f5d2084faff5f5703abf1e0e2dd19c4e5a",
+    "authorResponseHash": "8a98cd9f887698ac79b2927c778f985d5269bf6ad2fe6aba088803cfab68f7f7",
+    "reviewerResponseHash": "be1ebaa26e986da97fce8a1f1a4e6c99f00e7f69bc8d1b7a0bf566647cc7e180",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2020_AMC_12B_Q11",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "91faef4b2d5e2341ad03db4b37f2b581661992318ca3aa043752df2fa95ff79b",
+    "figureHashes": {
+      "figures/2020_AMC_12B_Q11_question_fig1.svg": "3ff7f0415b89c3461ac700271b9c7ca1abca1456fb30d06431b2ffd3b1a46208"
+    }
+  },
+  "solutionSHA256": "f0b00729b4a8fe05eedf8d7a8049662fccb9cc01c49e6cfcaab94d5c96ae446d",
+  "solutionFigureHashes": {},
+  "candidateHash": "c44f96b8871b61e2c9a36caf0ce312397be7b59f1ba40f536f96facc336c64e4",
+  "candidate": {
+    "questionId": "2020_AMC_12B_Q11",
+    "derivedAnswer": "D: \\(3\\sqrt{3}-\\pi\\) square units",
+    "answerStatus": "matches",
+    "answerReason": "Constructing an inner regular hexagon and subtracting six circular segments gives \\(3\\sqrt{3}-\\pi\\), agreeing with choice D.",
+    "methods": [
+      {
+        "id": "inner-hexagon-segments",
+        "label": "An inner hexagon minus six circular segments",
+        "explanation": "The intersections of neighboring arcs suggest constructing a smaller hexagon. Let \\(O\\) be the center of the original hexagon. Joining \\(O\\) to its vertices produces six equilateral triangles of side \\(2\\). Mark the midpoint of each segment joining \\(O\\) to a vertex. These six midpoints form a regular hexagon of side \\(1\\), by the triangle midsegment theorem.\n\nConsider an original side \\(AB\\). Let \\(P,Q\\) be the midpoints of \\(OA,OB\\), respectively, and let \\(M\\) be the midpoint of \\(AB\\). The midsegment theorem gives\n\\[\nMP=MQ=PQ=1.\n\\]\nThus \\(P\\) and \\(Q\\) lie on the semicircle with diameter \\(AB\\). The trapezoid \\(ABQP\\) is contained in that semicircle: its four vertices lie on the circle, and it lies on the inward side of \\(AB\\). The six such trapezoids cover everything between the original and smaller hexagons.\n\nInside the smaller hexagon, this semicircle removes the circular segment bounded by \\(PQ\\) and the inward arc from \\(P\\) to \\(Q\\). This segment lies in triangle \\(OPQ\\). Indeed, each bordering radial line meets the circle only at its original vertex and its midpoint, and only the midpoint lies on the inner side of \\(PQ\\). Consequently the segment cannot cross either bordering line. The six removed segments therefore have disjoint interiors.\n\nSince triangle \\(MPQ\\) is equilateral, its central angle at \\(M\\) is \\(60^\\circ\\). A unit equilateral triangle has height \\(\\sqrt{1-(1/2)^2}=\\sqrt3/2\\), so its area is \\(\\sqrt3/4\\). Each circular segment consequently has area\n\\[\n\\frac{60}{360}\\pi-\\frac{\\sqrt3}{4}\n=\\frac{\\pi}{6}-\\frac{\\sqrt3}{4}.\n\\]\nThe smaller hexagon consists of six unit equilateral triangles. Hence the shaded area is\n\\[\n6\\cdot\\frac{\\sqrt3}{4}\n-6\\left(\\frac{\\pi}{6}-\\frac{\\sqrt3}{4}\\right)\n=\\boxed{3\\sqrt3-\\pi},\n\\]\nwhich is choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "cnm_p150",
+          "cnm_257"
+        ],
+        "prerequisiteIds": [
+          "cnm_266",
+          "cnm_185",
+          "cnm_139",
+          "cnm_174",
+          "cnm_p148"
+        ],
+        "levelReason": "The construction uses regular hexagons, triangle midsegments, equilateral triangles, the Pythagorean theorem, and elementary sector areas."
+      },
+      {
+        "id": "semicircle-overlap-correction",
+        "label": "Correct for overlapping semicircles",
+        "explanation": "Each semicircle has radius \\(1\\), so their areas sum to \\(3\\pi\\). To subtract their union from the hexagon, we must account for the overlaps.\n\nLet \\(O\\) be the hexagon's center. Its six central triangles are equilateral with side \\(2\\), so their heights are \\(\\sqrt{2^2-1^2}=\\sqrt3\\). Therefore the six side midpoints, which are the semicircle centers, form a regular hexagon with center-to-vertex distance \\(\\sqrt3\\). Dropping perpendiculars in its central triangles shows that centers two positions apart are distance \\(3\\) apart; opposite centers are distance \\(2\\sqrt3\\) apart. Both distances exceed \\(2\\). Such semicircles cannot overlap, because a point in two unit disks would put their centers at distance at most \\(1+1=2\\).\n\nThus only neighboring semicircles overlap. Also, no point belongs to three semicircles, since any three centers include a nonadjacent pair.\n\nConsider two neighboring semicircles meeting at an original vertex \\(V\\), and call their centers \\(M,N\\). Let \\(P\\) be the midpoint of \\(OV\\). Since \\(OV=2\\), we have \\(VP=1\\). Applying the midsegment theorem in the two central triangles beside \\(OV\\) gives \\(MP=NP=1\\). Hence both triangles \\(MVP\\) and \\(NVP\\) are equilateral. The overlap is the lens bounded by the inward arcs from \\(V\\) to \\(P\\), each subtending \\(60^\\circ\\). Its area is\n\\[\n2\\left(\\frac{\\pi}{6}-\\frac{\\sqrt3}{4}\\right)\n=\\frac{\\pi}{3}-\\frac{\\sqrt3}{2}.\n\\]\nThere are exactly six neighboring pairs. Adding all semicircle areas counts each lens twice and every other covered point once, so adding each lens back once corrects the subtraction. The original hexagon has area \\(6\\sqrt3\\), giving shaded area\n\\[\n6\\sqrt3-3\\pi\n+6\\left(\\frac{\\pi}{3}-\\frac{\\sqrt3}{2}\\right)\n=\\boxed{3\\sqrt3-\\pi}.\n\\]\nThe answer is \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "cnm_p150",
+          "cnm_257",
+          "cnm_p192"
+        ],
+        "prerequisiteIds": [
+          "cnm_266",
+          "cnm_185",
+          "cnm_139",
+          "cnm_174",
+          "cnm_p148",
+          "cnm_111"
+        ],
+        "levelReason": "This route uses elementary circle and sector areas with a directly justified overlap correction. The triangle inequality establishes that no omitted overlaps occur."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p150",
+      "cnm_257"
+    ],
+    "supportIds": [
+      "cnm_266",
+      "cnm_185",
+      "cnm_139",
+      "cnm_174",
+      "cnm_p148"
+    ],
+    "annotationRationale": "The task assesses finding a composite area involving circular sectors. Both methods use regular-hexagon geometry, midsegments, equilateral triangles, and triangle areas supported by the Pythagorean theorem. Circle area is specific to the overlap method, and the triangle inequality supports its proof that nonadjacent semicircles are disjoint. The two area decompositions are alternatives, not cumulative requirements.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2020_AMC_12B_Q11",
+    "decision": "accept",
+    "mathematicalCheck": "The radial midpoints form a regular hexagon of side 1. Its six removed caps have disjoint interiors and each has area π/6−√3/4, giving 3√3−π. Independently, nonadjacent semicircle centers are distance 3 or 2√3 apart, excluding their overlaps and all triple overlaps. Correcting for six adjacent lenses of area π/3−√3/2 gives the same result. Both constructions agree with the displayed shading.",
+    "levelCheck": "Both explanations are complete at AMC 12 level, using elementary geometry, triangle areas, and sector areas.",
+    "methodDistinctness": "The inner-hexagon subtraction and the overlap correction are genuinely different area decompositions with accessible independent justifications.",
+    "annotationCheck": "The assessed composite-area and sector-area nodes fit both routes. Shared support nodes are used by both methods; circle area and the triangle inequality are appropriately confined to the overlap route. Catalog scopes are respected.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "inner-hexagon-segments": "solution:inner-hexagon-segments:f0b00729b4a8",
+    "semicircle-overlap-correction": "solution:semicircle-overlap-correction:f0b00729b4a8"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c7ef3b59807ae4882df85845e46804f4915f8cabbb896a614872e42ff81db530",
+    "acceptedAt": "2026-11-07T08:25:13.835396+00:00",
+    "inputHash": "fda4e8b7ca9ece85b553f65baf2d18605e993e22048ef3a8a80c85f6ebbb1eb1",
+    "authorInputHash": "257022cad686a0e85aaa94292d3fdcbb0be1ee6762a0c569e69652036303a9b5",
+    "reviewInputHash": "088e68a9d34e1bc6edd759382057b300030236ca67c166d1d202879c1031cf29",
+    "authorResponseHash": "034e799c4d9c5a26162373a2746c4926254f447f485809ccd035a8497f633067",
+    "reviewerResponseHash": "d070a51608db9f07fde555a046be17297ca1cb80a6720976c878f76db60131ab",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

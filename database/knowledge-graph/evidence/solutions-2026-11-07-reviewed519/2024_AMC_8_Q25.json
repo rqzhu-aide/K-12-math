@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2024_AMC_8_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "7a8eda1a8cc42f4a5f76c2385bf181afcdec90da2359671282b82b6c0284c094",
+    "figureHashes": {
+      "figures/2024_AMC_8_Q25_question_fig1.svg": "042857d71607e2caba4e4f6caf80c40fab2db0afeb6647952c34585e0b706b03"
+    }
+  },
+  "solutionSHA256": "13129ea4f8ddd64875181f0bca5ea2938a5e9ec9018ee31cd5d9f0519978fcba",
+  "solutionFigureHashes": {},
+  "candidateHash": "b1aa429c8c66f6a8eeeadce4121d8683ff445de0064370a03b7bfa9e21a4878e",
+  "candidate": {
+    "questionId": "2024_AMC_8_Q25",
+    "derivedAnswer": "C (20/33)",
+    "answerStatus": "matches",
+    "answerReason": "There are 495 equally likely sets of four vacant seats. Exactly 195 have no adjacent vacancies in any row, so the desired probability is (495 − 195)/495 = 20/33.",
+    "methods": [
+      {
+        "id": "count-complement",
+        "label": "Count arrangements with no adjacent vacancies",
+        "explanation": "Track the four empty seats, since only their positions matter. Every set of four empty seats is equally likely: each leaves eight seats that can be assigned to the eight passengers in the same number of ways.\n\nChoosing four seats in order gives \\(12\\cdot11\\cdot10\\cdot9\\) choices. Each set is counted \\(4\\cdot3\\cdot2\\cdot1=24\\) times, once for each order, so the number of vacancy sets is\n\\[\n\\frac{12\\cdot11\\cdot10\\cdot9}{24}=495.\n\\]\nIt is easier to count the sets that prevent the couple from sitting together. In such a set, a row has at most two vacancies. If it has two, they must be the left and right seats, since either pair involving the middle seat is adjacent.\n\nIf every row has one vacancy, each row offers three choices, giving\n\\[\n3^4=81\n\\]\nsets.\n\nIf one row has two vacancies, the other vacancies must occupy two different rows. Choose the row with two vacancies in \\(4\\) ways and the row with no vacancies in \\(3\\) ways. The two vacancies in the first row must be at the ends, while each of the two remaining rows offers \\(3\\) choices. This gives\n\\[\n4\\cdot3\\cdot3^2=108\n\\]\nsets.\n\nIf two rows each have two vacancies, choose those rows in \\(4\\cdot3/2=6\\) ways. Their vacancies must be at the ends, giving \\(6\\) sets.\n\nThese cases are disjoint and exhaustive: the number of rows with two vacancies can only be zero, one, or two. Thus \\(81+108+6=195\\) sets prevent adjacent seating. The required probability is\n\\[\n\\frac{495-195}{495}\n=\\frac{300}{495}\n=\\boxed{\\frac{20}{33}},\n\\]\nchoice \\(C\\).",
+        "nodeIds": [
+          "cnm_h137",
+          "cnm_h237",
+          "cnm_h232",
+          "cnm_h139"
+        ],
+        "prerequisiteIds": [
+          "cnm_309",
+          "cnm_h236"
+        ],
+        "levelReason": "The solution explains unordered selection by removing repeated orders, then uses elementary multiplication, case counting, and subtraction from the total. The catalog labels do not require formal high-school probability notation."
+      },
+      {
+        "id": "count-favorable-patterns",
+        "label": "Count successful vacancy patterns directly",
+        "explanation": "Count the four vacant seats rather than the eight passengers. All four-seat vacancy sets are equally likely, because each allows the same number of assignments of the passengers to the remaining seats. Selecting four seats in order counts each set \\(24\\) times, so there are\n\\[\n\\frac{12\\cdot11\\cdot10\\cdot9}{24}=495\n\\]\npossible sets.\n\nGroup successful sets by the numbers of vacancies in their rows. A row has only three seats, so the possible distributions of four vacancies are \\(3+1\\), \\(2+2\\), \\(2+1+1\\), and \\(1+1+1+1\\). The last distribution cannot provide adjacent seats.\n\nFor \\(3+1\\), choose the completely empty row in \\(4\\) ways, then choose the fourth vacancy among the \\(9\\) seats in the other rows. Every such set works, giving\n\\[\n4\\cdot9=36.\n\\]\nFor \\(2+2\\), choose the two rows in \\(4\\cdot3/2=6\\) ways. Each row has three possible pairs of vacant seats, so there are \\(3\\cdot3=9\\) arrangements for those rows. Only one fails: both rows have their two end seats vacant. Thus this case gives\n\\[\n6(9-1)=48.\n\\]\nFor \\(2+1+1\\), choose the row with two vacancies in \\(4\\) ways and the fully occupied row in \\(3\\) ways. The double vacancy must be an adjacent pair, with \\(2\\) choices. Each singleton vacancy has \\(3\\) choices, giving\n\\[\n4\\cdot3\\cdot2\\cdot3^2=216.\n\\]\nThe cases are disjoint and cover every successful set. Each selection fixes all four vacancies, so even a completely empty row is counted once rather than once for each adjacent pair it contains. Therefore the probability is\n\\[\n\\frac{36+48+216}{495}\n=\\frac{300}{495}\n=\\boxed{\\frac{20}{33}},\n\\]\nchoice \\(C\\).",
+        "nodeIds": [
+          "cnm_h137",
+          "cnm_h237",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_309",
+          "cnm_h236"
+        ],
+        "levelReason": "This method uses elementary unordered selection and a complete classification of four vacancies among four three-seat rows. It requires no probability formulas beyond favorable outcomes divided by equally likely outcomes."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h137"
+    ],
+    "supportIds": [
+      "cnm_309",
+      "cnm_h236",
+      "cnm_h237"
+    ],
+    "annotationRationale": "The route-neutral target is an exact probability obtained from equally likely seating outcomes. Both methods justify using unordered vacancy sets, calculate their total, and combine disjoint cases with multiplication. Equal-likelihood recognition and combination meaning support both routes. Complementary-event reasoning belongs specifically to the first method; the second classifies successful patterns directly. No annotation establishes learner mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2024_AMC_8_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The figure confirms three seats per row with two adjacent pairs. The 495 vacancy subsets are equally likely. The exhaustive failure cases contribute 81+108+6=195; the direct success cases independently contribute 36+48+216=300. Both yield 300/495=20/33 without counting a vacancy set multiple times.",
+    "levelCheck": "Both methods explain unordered selection and use elementary case counting, multiplication, and favorable outcomes divided by total outcomes, appropriate for AMC 8.",
+    "methodDistinctness": "Complement counting and direct success counting offer useful alternative approaches. The direct method explicitly handles configurations containing multiple adjacent pairs.",
+    "annotationCheck": "The probability target is route-neutral, the shared support IDs apply to both methods, and complementary-event reasoning is correctly confined to the first method. The selected counting nodes match the actual operations.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-complement": "solution:count-complement:13129ea4f8dd",
+    "count-favorable-patterns": "solution:count-favorable-patterns:13129ea4f8dd"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "20cbcbcaf4b40f6b8febfb157dec2a7ad68204070b39bda8af2dd20893f66bda",
+    "acceptedAt": "2026-11-07T08:02:09.489712+00:00",
+    "inputHash": "6929c7a2ac5c1c5e3b841883bc98e7f5b068c4d0435277e03bd55f30f3ee84fc",
+    "authorInputHash": "388887e66660c8d1dc78119ac67edb23c5feec34c592360103166662923b7612",
+    "reviewInputHash": "62cf98886b9b60f864a3798332470986e0ab5bde3feaea4bdbdf02aed3eb478d",
+    "authorResponseHash": "25bc717e4cb105e06d3355185ba37238c66bd47f27703137544874f2f52a0e1c",
+    "reviewerResponseHash": "378c49ca986a563127b3acce8c16304a167c66cc65bff5ffcf369002371e8120",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

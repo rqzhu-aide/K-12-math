@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1999_AMC_12_Q29",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "2457a219a13f7f03a4b4ce0faf7ca5f39986b484f8eda8efcb2266d0a9aea34b",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "13426254d5fa3f536a40036b3cae4a3277e8fec16c90a8e1aa4be459d030618b",
+  "solutionFigureHashes": {},
+  "candidateHash": "17710f64e9b881ef0018bcc7885453dec7990b328a9070c0546c2026eeaff34b",
+  "candidate": {
+    "questionId": "1999_AMC_12_Q29",
+    "derivedAnswer": "C: 5/27 ≈ 0.185, closest to 0.2",
+    "answerStatus": "matches",
+    "answerReason": "Under uniform sampling by volume, the five small spheres have disjoint interiors and each has radius one third of the circumradius. Their combined volume fraction is 5/27.",
+    "methods": [
+      {
+        "id": "tetrahedron-altitudes-and-volumes",
+        "label": "Altitudes, pyramid volumes, and similarity",
+        "explanation": "Interpret the random point as chosen uniformly with respect to volume. We need the fraction of the large sphere occupied by the five small spheres, so we must find their radii and check that their interiors do not overlap.\n\nThe tetrahedron is regular because all six edges have the same length. Let its edge length be \\(a>0\\), its altitude be \\(h\\), and its inradius and circumradius be \\(r\\) and \\(R\\). Symmetry puts the centers of both original spheres at the same point \\(O\\), on every vertex-to-opposite-face-center altitude.\n\nAn equilateral face has altitude \\(a\\sqrt3/2\\). Its center divides a median in the ratio \\(2:1\\) from the vertex, so its center-to-vertex distance is \\(a/\\sqrt3\\). The Pythagorean theorem applied to a tetrahedron altitude therefore gives\n\\[\nh^2=a^2-\\left(\\frac{a}{\\sqrt3}\\right)^2\n=\\frac{2a^2}{3}.\n\\]\nTo relate the two sphere radii, let \\(S>0\\) be the area of one face. Joining \\(O\\) to the four faces divides the tetrahedron into four pyramids, each of height \\(r\\). Comparing their total volume with the tetrahedron's volume gives\n\\[\n\\frac{Sh}{3}=4\\frac{Sr}{3},\n\\qquad h=4r.\n\\]\nAlong an altitude, \\(O\\) is distance \\(r\\) from the face and distance \\(R\\) from the opposite vertex. Thus\n\\[\nR=h-r=3r,\n\\qquad r^2=\\frac{h^2}{16}=\\frac{a^2}{24}.\n\\]\n\nConsider an added sphere tangent to a face at its center \\(F\\). Let its radius be \\(t>0\\) and its center be \\(T\\). External tangency to the face puts \\(T\\) beyond \\(F\\) on ray \\(OF\\), so \\(OT=r+t\\). The point \\(F\\) is inside the large sphere, while \\(OT>t\\) means that the added ball does not contain \\(O\\). Consequently, tangency between the two spheres must place the added ball inside the large ball. Their centers and contact point then give\n\\[\nOT+t=R,\n\\qquad r+2t=3r,\n\\qquad t=r.\n\\]\nThus every added sphere has radius \\(r\\), and \\(OT=2r\\) makes it externally tangent to the central sphere.\n\nIt remains to check that two added spheres cannot overlap. For any two faces, let \\(E\\) be the midpoint of their shared edge and let \\(V,W\\) be their remaining vertices. Their face centers \\(F,G\\) lie on medians \\(EV,EW\\), with\n\\[\n\\frac{EF}{EV}=\\frac{EG}{EW}=\\frac13.\n\\]\nSimilar triangles give \\(FG=VW/3=a/3\\). Doubling the distances from \\(O\\) sends these face centers to the corresponding sphere centers, so similarity doubles their separation to \\(2a/3\\). This exceeds their diameter \\(2r\\), because\n\\[\n\\left(\\frac{2a}{3}\\right)^2\n=\\frac{4a^2}{9}\n>\\frac{a^2}{6}=(2r)^2.\n\\]\nAll five small spheres therefore have disjoint interiors and lie inside the large sphere. Their boundaries have zero volume, so tangencies do not affect the probability. Sphere volumes scale as the cube of the radius, giving\n\\[\n\\Pr(P\\text{ lies in a small sphere})\n=5\\left(\\frac rR\\right)^3\n=\\frac5{27}\\approx0.185.\n\\]\nThis is closest to \\(\\boxed{0.2}\\), choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "math:geometric-probability",
+          "math:sphere-tangency-distances",
+          "cnm_h112",
+          "cnm_h111",
+          "cnm_174",
+          "math:centroid-ratios",
+          "cnm_272"
+        ],
+        "prerequisiteIds": [
+          "cnm_139",
+          "cnm_271",
+          "cnm_h106",
+          "cnm_285"
+        ],
+        "levelReason": "Uses equilateral-triangle geometry, Pythagoras, pyramid volumes, centroid ratios, similar triangles, and elementary sphere tangency and volume ratios."
+      },
+      {
+        "id": "symmetric-spatial-coordinates",
+        "label": "Symmetric coordinates and perpendicular feet",
+        "explanation": "Assume the point is chosen uniformly with respect to volume. Since a common rescaling does not change a volume ratio, we may place the tetrahedron at four alternate vertices of a cube:\n\\[\n\\begin{aligned}\nA&=(1,1,1),& B&=(1,-1,-1),\\\\\nC&=(-1,1,-1),& D&=(-1,-1,1).\n\\end{aligned}\n\\]\nAny two vertices differ by \\(2\\) in exactly two coordinates, so every edge has length \\(2\\sqrt2\\). This is a regular tetrahedron. All four vertices are distance \\(\\sqrt3\\) from the origin \\(O\\), giving circumradius \\(R=\\sqrt3\\).\n\nWe can find the inradius by locating the perpendicular foot from \\(O\\) to a face. The plane of face \\(BCD\\) is \\(x+y+z=-1\\), since its three vertices satisfy that equation. Cycling the three coordinates permutes \\(B,C,D\\), so the face center \\(F\\) must have three equal coordinates. Hence\n\\[\nF=\\left(-\\frac13,-\\frac13,-\\frac13\\right).\n\\]\nTo justify that \\(OF\\) is perpendicular to the face, let \\(H\\) be the perpendicular foot from \\(O\\) to its plane. Because \\(OB=OC=OD\\), the Pythagorean theorem gives \\(HB=HC=HD\\). Thus \\(H\\) is the unique circumcenter of the equilateral triangle \\(BCD\\), namely \\(F\\).\n\nNow the spatial Pythagorean theorem gives\n\\[\nOF=\\sqrt{\\left(\\frac13\\right)^2+\n\\left(\\frac13\\right)^2+\n\\left(\\frac13\\right)^2}\n=\\frac1{\\sqrt3}.\n\\]\nBy symmetry, \\(O\\) has this same perpendicular distance to all four faces and is also the insphere center. Therefore\n\\[\nr=\\frac1{\\sqrt3}=\\frac R3.\n\\]\nThe other face centers are likewise the negatives of their opposite vertices, divided by \\(3\\).\n\nFor an added sphere of radius \\(t>0\\) and center \\(T\\), external tangency to the face at \\(F\\) puts \\(T\\) beyond \\(F\\) on ray \\(OF\\). Thus \\(OT=r+t\\). Since \\(F\\) is inside the large ball and \\(OT>t\\) shows that the added ball does not contain \\(O\\), their tangency places the added ball inside the large one. Consequently,\n\\[\nr+2t=R=3r,\n\\qquad t=r.\n\\]\nEach added center is therefore twice its face center, and its distance \\(2r\\) from \\(O\\) makes its sphere externally tangent to the central sphere.\n\nWe also need to compare two added spheres. The face centers are the negatives of the tetrahedron vertices scaled by \\(1/3\\), so their pairwise distances are \\(2\\sqrt2/3\\). Doubling their coordinates gives pairwise distances between added sphere centers of\n\\[\n\\frac{4\\sqrt2}{3}>\\frac2{\\sqrt3}=2r,\n\\]\nwhere squaring the positive quantities gives \\(32/9>4/3\\). Thus the four added spheres have disjoint interiors. All five small spheres are contained in the large sphere, and their boundary contacts contribute zero volume.\n\nTheir common radius is \\(R/3\\), so their total volume fraction, and hence the required probability, is\n\\[\n5\\left(\\frac13\\right)^3\n=\\frac5{27}\\approx0.185.\n\\]\nThis is closest to \\(\\boxed{0.2}\\), choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "math:geometric-probability",
+          "math:sphere-tangency-distances",
+          "cnm_h112",
+          "cnm_h154"
+        ],
+        "prerequisiteIds": [
+          "cnm_h151",
+          "cnm_139",
+          "cnm_174",
+          "cnm_265",
+          "cnm_h106",
+          "cnm_285"
+        ],
+        "levelReason": "Uses symmetric cube coordinates, equilateral-triangle centers, and spatial Pythagorean distance calculations, together with elementary sphere tangency and cubic volume scaling."
+      }
+    ],
+    "assessedIds": [
+      "math:geometric-probability"
+    ],
+    "supportIds": [
+      "cnm_h112",
+      "cnm_285"
+    ],
+    "annotationRationale": "The route-neutral target is a uniform volume probability, including containment and overlap checks before adding favorable volumes. Sphere volume scaling and the numerical meaning of probability support both methods. The first method derives the radius ratio by pyramid volumes and uses Pythagoras, centroid ratios, and similarity to prove separation. The coordinate method uses spatial point distances; its perpendicular-foot argument rests on Pythagoras and the uniqueness of an equilateral triangle's circumcenter. These are alternative routes, not joint requirements.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The probability uses the standard interpretation that the point is chosen uniformly with respect to volume inside the circumscribed sphere."
+    ]
+  },
+  "review": {
+    "questionId": "1999_AMC_12_Q29",
+    "decision": "accept",
+    "mathematicalCheck": "Both methods establish R=3r. The tangency and side conditions force each added sphere inside the circumsphere, with r+2t=R and hence t=r. Method 1 proves added-center separation 2a/3>2r using r²=a²/24; Method 2 independently verifies the same separation in coordinates. Thus the five balls have disjoint interiors, and uniform volume probability is 5(r/R)^3=5/27, closest to 0.2.",
+    "levelCheck": "Both explanations are complete and appropriate for AMC 12, using elementary solid geometry, similarity, Pythagoras, and spatial coordinates.",
+    "methodDistinctness": "The pyramid-volume derivation and the symmetric cube-coordinate construction provide genuinely distinct, accessible routes to the radius ratio and separation checks.",
+    "annotationCheck": "The assessed concept is route-neutral geometric probability. Shared support IDs are justified, with cnm_285 restricted explicitly to probability meaning. Method-specific annotations match the actual arguments; the coordinate method correctly avoids claiming use of the point-to-plane distance formula. The uniform-volume qualification is preserved.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "tetrahedron-altitudes-and-volumes": "tetrahedron-altitudes-and-volumes",
+    "symmetric-spatial-coordinates": "symmetric-spatial-coordinates"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "cbdde6b5742659db5d24a9c8aae026d63c25a14ded3eb4414e818e4993c266f5",
+    "inputHash": "f32a522c4dbb0e43218d5cc91bfc4baa28e8f44b22f6ce92a033d2e8b7fcf5b9",
+    "authorInputHash": "f57c4a188248986d989c0d04a3055ef8b46976bc89fb233d572a4cbbf52f2436",
+    "reviewInputHash": "5c3677173cbae1d8e7453a990642c6505408f745706178bcfa77805660c36e3f",
+    "authorResponseHash": "cf534018af0b3c3b041a4ba9df88ae554319e4a93867c839dce63d13cd469a19",
+    "reviewerResponseHash": "116050fd1476a38b5103144175c18c5c486d2d373249c6ba4d64251c2b87da91",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

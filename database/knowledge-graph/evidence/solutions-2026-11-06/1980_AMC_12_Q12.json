@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1980_AMC_12_Q12",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "bbe591e04abe8dc75ce191a28b966e88a8ff1b85ae7c7c847cf17abc7eadf080",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "58438cc538f75e59c21119db90d6b68b78b946b6bd0a07228e2f67bf1b3b88d1",
+  "solutionFigureHashes": {},
+  "candidateHash": "51a49650e8790333a36bf8d964bd96f4bd02ecc54591fc4b4b930d2e418105ac",
+  "candidate": {
+    "questionId": "1980_AMC_12_Q12",
+    "derivedAnswer": "\\(2\\), choice C",
+    "answerStatus": "matches",
+    "answerReason": "The angle and slope conditions give n²=1/2 and m=4n, so mn=2, agreeing with choice C.",
+    "methods": [
+      {
+        "id": "tangent-addition",
+        "label": "Translate the angles into slopes",
+        "explanation": "A line's slope is the tangent of its inclination, so the doubled angle suggests the tangent addition formula. Let \\(\\theta\\) be the inclination of \\(L_2\\); the inclination of \\(L_1\\) is \\(2\\theta\\). Inclinations lie in \\([0,180^\\circ)\\), and \\(L_1\\) is not horizontal, so \\(0<\\theta<90^\\circ\\). Consequently \\(n>0\\). Since \\(m=4n>0\\), the inclination \\(2\\theta\\) is also acute.\n\nWe have \\(n=\\tan\\theta\\), and tangent addition gives\n\\[\nm=\\tan(2\\theta)=\\frac{2n}{1-n^2}.\n\\]\nThe denominator is nonzero because \\(2\\theta\\) is not a right angle. Substituting \\(m=4n\\) and dividing by \\(n\\ne0\\) gives\n\\[\n4=\\frac{2}{1-n^2},\n\\qquad n^2=\\frac12.\n\\]\nTherefore\n\\[\nmn=4n^2=2,\n\\]\nwhich is choice C.",
+        "nodeIds": [
+          "cnm_h166",
+          "cnm_h072"
+        ],
+        "prerequisiteIds": [
+          "cnm_h165",
+          "cnm_h069"
+        ],
+        "levelReason": "Slope as tangent and the tangent addition formula are standard high-school precalculus tools directly suited to the angle condition."
+      },
+      {
+        "id": "angle-bisector",
+        "label": "Build a triangle with an angle bisector",
+        "explanation": "Represent each slope as a vertical rise over a horizontal run of \\(1\\). Let \\(\\theta\\) be the inclination of \\(L_2\\), so \\(L_1\\) has inclination \\(2\\theta\\). The inclination convention and nonhorizontality give \\(0<\\theta<90^\\circ\\), hence \\(n>0\\). Then \\(m=4n>0\\), so \\(2\\theta\\) is acute as well.\n\nDefine\n\\[\nO=(0,0),\\quad A=(1,0),\\quad\nB=(1,m),\\quad P=(1,n).\n\\]\nThe equations of the lines put \\(B\\) on \\(L_1\\) and \\(P\\) on \\(L_2\\). Because \\(m=4n>0\\), the point \\(P\\) lies inside segment \\(AB\\), with\n\\[\nAP=n,\\qquad PB=3n,\\qquad OA=1.\n\\]\nThe rays \\(OA,OP,OB\\) have inclinations \\(0,\\theta,2\\theta\\), so \\(OP\\) bisects \\(\\angle AOB\\). The internal angle bisector theorem gives\n\\[\n\\frac{OA}{OB}=\\frac{AP}{PB}=\\frac13,\n\\]\nso \\(OB=3\\). Triangle \\(OAB\\) is right at \\(A\\), and the Pythagorean theorem yields\n\\[\n1+m^2=9,\n\\qquad m^2=8.\n\\]\nSince \\(n=m/4\\), we obtain \\(mn=m^2/4=2\\), choice C.",
+        "nodeIds": [
+          "cnm_h167",
+          "math:angle-bisector-side-ratio",
+          "cnm_174"
+        ],
+        "prerequisiteIds": [
+          "cnm_h165",
+          "cnm_082",
+          "cnm_114",
+          "cnm_268"
+        ],
+        "levelReason": "Provides a distinct elementary geometry route using slope ratios, an internal angle bisector, and the Pythagorean theorem."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h166"
+    ],
+    "supportIds": [
+      "cnm_h165"
+    ],
+    "annotationRationale": "The task connects slopes with inclinations. Both methods require the inclination convention. Tangent addition belongs only to the first route; the second uses coordinate slope ratios, the angle bisector theorem, and the Pythagorean theorem. These alternatives are not simultaneous requirements.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1980_AMC_12_Q12",
+    "decision": "accept",
+    "mathematicalCheck": "The inclination conditions force both slopes positive and the doubled angle acute. Tangent addition then gives \\(n^2=1/2\\), hence \\(mn=2\\), with all divisions valid. Independently, the angle-bisector ratio gives \\(OB=3\\), so \\(m^2=8\\) and \\(mn=m^2/4=2\\).",
+    "levelCheck": "Both methods are appropriate for historical AHSME. Angle ranges, denominator restrictions, and geometric correspondences are explained.",
+    "methodDistinctness": "The tangent identity and angle-bisector construction provide genuinely distinct approaches; the geometry alternative is no more advanced.",
+    "annotationCheck": "The slope-inclination target and shared inclination support fit. Tangent addition and the coordinate, angle-bisector, and Pythagorean tools remain method-specific.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "tangent-addition": "tangent-addition",
+    "angle-bisector": "angle-bisector"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "afd6fc89e7fbb1ec95dd36b35cd744eacf6e1036134f8a97acc2b211f907193f",
+    "inputHash": "cdd65de7317084cb577b1022e8ba37893879033f0ceb55a19a59275a8f167c04",
+    "authorInputHash": "be75bd6ae0f3e1b63f795b9740e73b7f90c45cd95d12c3ccab6fe2487e4f3df3",
+    "reviewInputHash": "7ce2fbb13e8e1ba3590a4bbcd31386037f31189c41d9554e4e889e7b2a449f41",
+    "authorResponseHash": "6a88c6052d2dbdeaccbcf6bfc6f872555f2c09a540f90ca74030c659ec5abf1f",
+    "reviewerResponseHash": "c3267e23e077367e5b143b263ae46cb512400e62dbe4d60db456da1d16e45f50",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

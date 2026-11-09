@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1990_AMC_12_Q10",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "c461f15e46a19b8bcc93f8f27d5e099abe984cb20931649494802f73f22d54f4",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "9b9a658bd1d8d2a105d6cd2839ef523013647b39e8245dbe5247f120ff1eb704",
+  "solutionFigureHashes": {},
+  "candidateHash": "3b25eb6cef67c42dcba607df42798ad8eedf139413564124aad0f08814c3919a",
+  "candidate": {
+    "questionId": "1990_AMC_12_Q10",
+    "derivedAnswer": "331 unit cubes, choice D",
+    "answerStatus": "matches",
+    "answerReason": "A view beyond a corner shows three adjacent faces containing 121 + 110 + 100 = 331 distinct unit cubes. No viewpoint can show more outer face layers.",
+    "methods": [
+      {
+        "id": "disjoint-visible-face-layers",
+        "label": "Method 1: Count new cubes face by face",
+        "explanation": "From a single exterior point, at most one face from each opposite pair can face the observer. Every visible unit cube must belong to one of these observer-facing outer face layers, so at most three adjacent face layers contribute. Looking from above, in front of, and to the right of the cube shows all three corresponding faces. Thus we can attain the maximum by counting the cubes on these three faces.\n\nCount them in an order that avoids repetition. The front face contains \\(11\\cdot11=121\\) cubes. The right face adds \\(11\\cdot10=110\\) cubes, because its column along the front edge was already counted. On the top face, omit the front row and the right column, leaving \\(10\\cdot10=100\\) new cubes.\n\nEach cube on the three faces is counted on its first face in this order, so none is missed or counted twice. The maximum is\n\\[\n121+110+100=331,\n\\]\nchoice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_p113",
+          "cnm_p160",
+          "cnm_h231"
+        ],
+        "levelReason": "The method uses elementary spatial reasoning and disjoint rectangular grid counts."
+      },
+      {
+        "id": "visible-face-inclusion-exclusion",
+        "label": "Method 2: Correct the overlapping face counts",
+        "explanation": "Only one face from each pair of opposite faces can face an exterior observer, so visible cubes lie on at most three adjacent outer face layers. Any smaller selection is contained in such a three-face selection. A viewpoint beyond their common corner shows all three faces, so their union gives the greatest possible count.\n\nEach face contains \\(11^2=121\\) unit cubes, giving an initial count of \\(3\\cdot121\\). Each pair of faces shares a row of \\(11\\) cubes along its common edge. Subtract these three shared rows to correct the repeated counts.\n\nThe single cube at the common corner was initially counted three times and then subtracted three times. Add it back once. All other cubes now have count one, so the number of distinct visible cubes is\n\\[\n3\\cdot121-3\\cdot11+1=331.\n\\]\nThe answer is \\(331\\), choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "math:inclusion-exclusion-general"
+        ],
+        "prerequisiteIds": [
+          "cnm_p113",
+          "cnm_p160",
+          "cnm_h231",
+          "cnm_h009"
+        ],
+        "levelReason": "Three-set inclusion-exclusion is explained through the shared edges and corner, using only finite counting and cube geometry."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_p113",
+      "cnm_p160",
+      "cnm_h231"
+    ],
+    "annotationRationale": "The assessed target is proving and attaining the largest visible configuration. Spatial viewing, cube structure, and row-column product counts support both methods. Disjoint addition and multiplication belong to the first route; three-set inclusion-exclusion and its union prerequisite belong to the second. Area formulas are unnecessary because the methods count cubes directly.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1990_AMC_12_Q10",
+    "decision": "accept",
+    "mathematicalCheck": "An exterior observer sees at most three adjacent outer faces, and a viewpoint beyond their common corner shows all three. Their distinct cubes total 121 + 110 + 100 = 331; inclusion-exclusion independently gives 3·121 − 3·11 + 1 = 331, choice D.",
+    "levelCheck": "Both methods use accessible spatial reasoning and elementary counting. The overlap correction is explained through edges and the corner.",
+    "methodDistinctness": "Partitioning into new cubes and correcting overlapping counts provide distinct, useful counting approaches.",
+    "annotationCheck": "The extremal assessment is route-neutral. Shared spatial and multiplication supports and the separate counting procedures are justified; area formulas are unnecessary.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "disjoint-visible-face-layers": "solution:disjoint-visible-face-layers:9b9a658bd1d8",
+    "visible-face-inclusion-exclusion": "solution:visible-face-inclusion-exclusion:9b9a658bd1d8"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "19dfbe4b146f667ae14589271c5190cdcf1bdea1170013fcb7ebf641ddc3657b",
+    "inputHash": "034548e2b713622986d34151eea0630e663637afc4c4273d8bf9ee81507daa63",
+    "authorInputHash": "9b4ad1ceb57e100056f505b814452c94275e260013f529534504c33dc1a35967",
+    "reviewInputHash": "580aa724803175bc91144a2ba0dfb6779e81202fcacbc2aaa5905c6af4b94ca2",
+    "authorResponseHash": "59155f04dc102a0a7dd32343cf14a13c67cb9da697cec1af45239f9c433ce6f2",
+    "reviewerResponseHash": "2ede7e1e28e195602c3dfddee4b15fd49b31dd6b4c60499cd54adfa72eceb67c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1990_AMC_12_Q30",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ab9fa7ed93855132da9a914232f1561055b0c808afd9b527451f4f92fb39171e",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "cf38c0163ea7e288f1ec095ad00c2ca8afb3ca051891bc3f1e2ddf95fe1d7e26",
+  "solutionFigureHashes": {},
+  "candidateHash": "6646e1e12851e9754b0d086dad896fa34827236a2a28f6eb60b685455108bfc3",
+  "candidate": {
+    "questionId": "1990_AMC_12_Q30",
+    "derivedAnswer": "9, choice E",
+    "answerStatus": "matches",
+    "answerReason": "The sequence satisfies R_(n+2)=6R_(n+1)-R_n with initial values 1 and 3. Its units digits repeat the block 1,3,7,9,7,3. Since 12345=6·2057+3, the requested digit is 9.",
+    "methods": [
+      {
+        "id": "recurrence-units-cycle",
+        "label": "Find a recurrence and its units-digit cycle",
+        "explanation": "The radicals become easier to handle together because\n\\[\na+b=6,\\qquad ab=(3+2\\sqrt2)(3-2\\sqrt2)=9-8=1.\n\\]\nThese two simple values let us relate consecutive terms without computing large powers. For every integer \\(n\\geq0\\), expanding gives\n\\[\n(a+b)(a^{n+1}+b^{n+1})\n=a^{n+2}+b^{n+2}+ab(a^n+b^n).\n\\]\nThe two cross terms combine into \\(ab(a^n+b^n)\\). Dividing by \\(2\\) and using \\(a+b=6\\), \\(ab=1\\), we obtain\n\\[\nR_{n+2}=6R_{n+1}-R_n.\n\\]\nAlso, \\(R_0=1\\) and \\(R_1=3\\). Starting with these integers, the recurrence produces an integer at every step, confirming the stated integrality.\n\nLet \\(d_n\\) be the units digit of \\(R_n\\). To find the next units digit, multiply the current digit by \\(6\\), subtract the preceding digit, and take the remainder from \\(0\\) through \\(9\\). Discarding multiples of \\(10\\) does not affect this calculation. Beginning with \\(d_0=1\\) and \\(d_1=3\\), we get\n\\[\n(d_0,d_1,\\ldots,d_7)=(1,3,7,9,7,3,1,3).\n\\]\nFor example, the next two digits after \\(1,3\\) are the units digits of \\(6\\cdot3-1=17\\) and \\(6\\cdot7-3=39\\).\n\nThe pair \\((d_6,d_7)=(1,3)\\) repeats the initial pair. Since each following digit is determined by the preceding two, this proves that the entire units-digit sequence repeats every six indices. Finally,\n\\[\n12345=6\\cdot2057+3,\n\\]\nso \\(R_{12345}\\) has the same units digit as \\(R_3\\), namely \\(\\boxed{9}\\), choice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "cnm_h200",
+          "math:modular-congruence"
+        ],
+        "prerequisiteIds": [
+          "cnm_147",
+          "cnm_146",
+          "cnm_h197",
+          "cnm_p153"
+        ],
+        "levelReason": "The method uses elementary algebra to derive a recurrence and ordinary remainder arithmetic to prove a finite digit cycle, within AMC 12 scope."
+      }
+    ],
+    "assessedIds": [
+      "math:modular-congruence"
+    ],
+    "supportIds": [
+      "cnm_147",
+      "cnm_h197"
+    ],
+    "annotationRationale": "The task-level target is the units digit, interpreted as a remainder upon division by 10. The recurrence is specific to the written solution and is therefore assigned at method level. Difference of squares and polynomial distribution support its derivation. The proof does not invoke a general polynomial root-coefficient theorem.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1990_AMC_12_Q30",
+    "decision": "accept",
+    "mathematicalCheck": "The expansion correctly gives \\(R_{n+2}=6R_{n+1}-R_n\\) with initial values 1 and 3, proving integrality. The units digits are \\(1,3,7,9,7,3,1,3\\); repetition of the initial ordered pair proves the six-step period. Since \\(12345=6\\cdot2057+3\\), the digit is 9.",
+    "levelCheck": "Elementary algebra and remainder arithmetic fit AMC 12 scope.",
+    "methodDistinctness": "One complete recurrence method is sufficient.",
+    "annotationCheck": "Remainder arithmetic is an appropriate task target, with recurrence retained at method level. The algebraic and sequence prerequisites are supported; no general root-coefficient theorem is claimed.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "recurrence-units-cycle": "recurrence-units-cycle"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "545a41e46eb10e6a58a25a0f2c3845ef9f108f4d7271659b139ed5133bf2dbb5",
+    "inputHash": "bd8b0c115fc40d65d7709d02b7ec82feee973c57d891c01a6f18ef5a90f0804d",
+    "authorInputHash": "70e6845400a21c45167ec9401022f70582f79a001b273b10706304bb2211045c",
+    "reviewInputHash": "0dc7d28fe9c5b248a22e807388b2a8750fa98fa9b54425452da1f5ca5d7cf727",
+    "authorResponseHash": "3ee34524cd83a2d814213deaf53ed97b29404cc82f453f7f4d440f3166b2c78d",
+    "reviewerResponseHash": "3112b657d325d9a09c49489a9770229ad852613efb6661da03f57baf48debd11",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

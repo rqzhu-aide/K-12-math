@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1961_AMC_12_Q32",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "8cace925c934798190c735466d191bf42519686f180ebdbbac56ae94f393ca5e",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "488ab5938ddd7f4f3b90d5049b17c3a8237017356b8d32c54fec81fd942f4da7",
+  "solutionFigureHashes": {},
+  "candidateHash": "18367a024c8add79a2815462aad9880e31bb924feea96c727ee2f222275ded5c",
+  "candidate": {
+    "questionId": "1961_AMC_12_Q32",
+    "derivedAnswer": "C, 12",
+    "answerStatus": "matches",
+    "answerReason": "Twelve central triangles each have area R^2/4. An elementary trigonometric comparison shows that the area of a regular polygon inscribed in a fixed circle increases strictly with its number of sides, establishing uniqueness.",
+    "methods": [
+      {
+        "id": "central-triangle-area",
+        "label": "Split the polygon into central triangles",
+        "explanation": "Joining the circle’s center to every vertex divides the polygon into \\(n\\) congruent triangles. Each has two sides of length \\(R>0\\) and included angle \\(360^\\circ/n\\). Dropping an altitude gives its area as \\(\\tfrac12R^2\\sin(360^\\circ/n)\\). Thus the polygon’s area is\n\\[\nA_n=\\frac n2R^2\\sin\\frac{360^\\circ}{n}.\n\\]\nFor \\(n=12\\), the central angle is \\(30^\\circ\\), and therefore\n\\[\nA_{12}=6R^2\\sin30^\\circ=3R^2.\n\\]\nWe also need to know that another number of sides cannot give the same area. Here is an elementary comparison that avoids calculus. Take integers \\(3\\le p<q\\), and put \\(\\delta=360^\\circ/(pq)\\). The sine addition formulas give\n\\[\n\\begin{aligned}\n&\\sin(k\\delta)-\\sin((k-1)\\delta)\\\\\n&\\qquad=2\\sin\\frac\\delta2\\cos\\left(k-\\frac12\\right)\\delta.\n\\end{aligned}\n\\]\nFor \\(1\\le k\\le q\\), these cosine angles increase from a positive angle to less than \\(360^\\circ/p\\le120^\\circ\\). Cosine strictly decreases on this range, as its unit-circle horizontal coordinate moves left. Hence the displayed successive sine differences strictly decrease.\n\nThe average of their first \\(p\\) terms is therefore greater than the average of their first \\(q\\) terms. Their sums telescope, giving\n\\[\n\\frac{\\sin(p\\delta)}p>\\frac{\\sin(q\\delta)}q.\n\\]\nMultiplication by \\(pq\\) yields\n\\[\nq\\sin\\frac{360^\\circ}{q}\n>\np\\sin\\frac{360^\\circ}{p},\n\\]\nso \\(A_q>A_p\\). The polygon area strictly increases with the integer number of sides. Consequently \\(n=12\\) is the unique answer, choice C.",
+        "nodeIds": [
+          "cnm_266",
+          "cnm_p148",
+          "cnm_277",
+          "cnm_h070",
+          "cnm_h071"
+        ],
+        "prerequisiteIds": [
+          "cnm_276",
+          "cnm_h060",
+          "cnm_211"
+        ],
+        "levelReason": "The area computation uses central triangles and a special sine value. Uniqueness is proved using high-school sine addition formulas, the unit circle, and averages of a decreasing finite list, without derivatives."
+      }
+    ],
+    "assessedIds": [
+      "cnm_266"
+    ],
+    "supportIds": [
+      "cnm_p148",
+      "cnm_276",
+      "cnm_277",
+      "cnm_h060"
+    ],
+    "annotationRationale": "The target is recovering the number of sides from the circumradius and area of a regular polygon. Triangle areas and special-angle trigonometry provide the area relation. The written uniqueness argument additionally uses sine addition formulas and elementary unit-circle comparisons; these method details do not become separate task targets.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1961_AMC_12_Q32",
+    "decision": "accept",
+    "mathematicalCheck": "The central triangles give \\(A_n=(n/2)R^2\\sin(360^\\circ/n)\\), hence \\(A_{12}=3R^2\\). For \\(3\\le p<q\\), the stated sine increments strictly decrease because their cosine arguments lie within \\((0^\\circ,120^\\circ)\\). Comparing their averages correctly proves \\(A_q>A_p\\), establishing uniqueness.",
+    "levelCheck": "The finite trigonometric comparison uses permitted precalculus and explains the uniqueness step without calculus.",
+    "methodDistinctness": "There is one method, with a complete supporting uniqueness argument.",
+    "annotationCheck": "Polygon geometry, triangle area, trigonometric formulas, unit-circle reasoning, and arithmetic averages reflect the actual proof; method details remain separate from the assessed target.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "central-triangle-area": "central-triangle-area"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "61c8f34c2fb58f6cc1dd170c1ae6b94669bfd8390d99dbbc98c643ef1cde4173",
+    "inputHash": "2e6ef7a8cd9b653fa14870728cfdf443217f6ecfa567236b088b7ae137582267",
+    "authorInputHash": "e1dd9626dcddebdd0a6eb7481a6d8378f300fdad7328d5ed1141136e3c40dfc3",
+    "reviewInputHash": "c45d188e80018432a5614f2835571f1be2b22d7b1cc63f3a29c846b88af7f9b5",
+    "authorResponseHash": "574378361b4f35da162f07df4792a760cdf4fb1e9eb976651a2ae20f8b90a469",
+    "reviewerResponseHash": "56abd55d500078536befb27032d73d9d4b7055ba9dbacb902146870c56e4c43f",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

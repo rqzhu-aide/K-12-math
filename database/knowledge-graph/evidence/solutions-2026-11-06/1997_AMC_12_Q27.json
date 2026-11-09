@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1997_AMC_12_Q27",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "d95011eb8aa716c1243f38dff108255d0b2057811706400dae71c21121daf48f",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "99fe810126b4872765c87e81b6d3ab2269fa9fdc2f907c307ac9e135d2b2bf48",
+  "solutionFigureHashes": {},
+  "candidateHash": "9f1c3998235fe507f082647f400330cb68775dc081286a94fd692d045f941420",
+  "candidate": {
+    "questionId": "1997_AMC_12_Q27",
+    "derivedAnswer": "D: 24",
+    "answerStatus": "matches",
+    "answerReason": "Shifting the equation gives f(x+12)=-f(x), so 24 is a period of every solution. A solution supported on multiples of 4 with repeating values 1,3,2,-1,-3,-2 has no positive period smaller than 24, proving minimality.",
+    "methods": [
+      {
+        "id": "shift-recurrence",
+        "label": "Force a repeating pattern and prove it is shortest",
+        "explanation": "The equation relates inputs spaced 4 apart, so shifting the input by 4 lets us reuse the same relation. Applying it at \\(x+4\\) and then at \\(x+8\\) gives\n\\[\nf(x+8)=f(x+4)-f(x)\n\\]\nand\n\\[\nf(x+12)=f(x+8)-f(x+4)=-f(x).\n\\]\nThis last identity holds for every real \\(x\\). Applying it again yields\n\\[\nf(x+24)=-f(x+12)=f(x).\n\\]\nThus 24 is a period of every allowed function.\n\nTo prove that it is the least common positive period, we need one allowed function with no smaller positive period. Define \\(g(x)=0\\) whenever \\(x\\) is not a multiple of 4. At multiples of 4, repeat the six-term pattern\n\\[\n1,\\ 3,\\ 2,\\ -1,\\ -3,\\ -2\n\\]\nin both directions, starting with \\(g(0)=1\\).\n\nThe rule “next value equals current value minus previous value” produces\n\\[\n1,3,2,-1,-3,-2,1,3,\n\\]\nso the repeating pattern satisfies the required equation, including where one repetition joins the next. At inputs that are not multiples of 4, the input and both shifted inputs all have value zero. Therefore \\(g\\) satisfies the equation for every real input.\n\nThe value 1 occurs exactly at inputs \\(24k\\), where \\(k\\) is an integer. If \\(q>0\\) were a period of \\(g\\), then\n\\[\ng(q)=g(0)=1,\n\\]\nforcing \\(q\\) to be a positive integer multiple of 24. Hence no smaller positive period works for all the functions. Therefore \\(\\boxed{p=24}\\), choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:functional-equations",
+          "cnm_h200"
+        ],
+        "prerequisiteIds": [
+          "cnm_h027"
+        ],
+        "levelReason": "Input substitutions and a six-term recurrence establish both periodicity and minimality using elementary algebra. The constructed function needs no continuity assumption or trigonometry."
+      }
+    ],
+    "assessedIds": [
+      "math:functional-equations"
+    ],
+    "supportIds": [
+      "cnm_h027"
+    ],
+    "annotationRationale": "The target is a property forced on every function satisfying an identity, including proof that the common period is least. The method uses a recurrence along inputs spaced by 4 and an explicit sharpness example. Function-domain knowledge supports the substitutions; trigonometric nodes from the existing mapping are unnecessary.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1997_AMC_12_Q27",
+    "decision": "accept",
+    "mathematicalCheck": "Valid shifts give f(x+12)=-f(x), hence universal period 24. The constructed six-term pattern satisfies the recurrence across every boundary, while nonmultiples of 4 remain zero under both shifts. Its value 1 occurs exactly at multiples of 24, so every positive period of this example is at least 24.",
+    "levelCheck": "Elementary substitutions and an explicit recurrence establish periodicity and minimality without unstated regularity assumptions. The construction is sufficiently explained.",
+    "methodDistinctness": "One complete method includes both the universal-period proof and the necessary sharpness example.",
+    "annotationCheck": "Functional equations accurately describe the route-neutral target. Recurrence reasoning is recorded locally, function knowledge supports the construction, and unused trigonometric nodes are appropriately omitted.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "shift-recurrence": "shift-recurrence"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "4376098a2ef83ef19717d64befa71147a033d4a8fb5ac75a2e2c9ecf7626495c",
+    "inputHash": "a00f12ef7270d9b17723488f102177cf2c8506dd706a916d78bfd2354213efc3",
+    "authorInputHash": "2086f3d111bfbde48dda206f3d0174c6900c824459d17cbcf1e11bbeffcdeb7d",
+    "reviewInputHash": "9eb560cb22244134d063229f03a5e5ef7dcd979997daf9bcee124547b69010b3",
+    "authorResponseHash": "5b53fb0bbe881d9df8e52146f6d7581ae4b371d20329c38fece04954b12118a4",
+    "reviewerResponseHash": "ea6c7d746dc1fa09d253bc5e7917984072c941048f51740c72ff7120b8546ce1",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

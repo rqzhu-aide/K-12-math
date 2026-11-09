@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2011_AMC_12A_Q15",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "fb1058f2dfc17c2394aa3cb4470b5bf08d5e3239854c8ce65eda67e23440855d",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "e55e3cfafac42f78a2a9fb39b3b5c657ffcfd8aaf50ec6da8b6963e817a409b6",
+  "solutionFigureHashes": {},
+  "candidateHash": "43baa46b770cb7528fdfd60b9f240f4e6e5015e6f11e6aaebf74174946961b7f",
+  "candidate": {
+    "questionId": "2011_AMC_12A_Q15",
+    "derivedAnswer": "Not unique as written. A right pyramid gives 3√2 (A), while an oblique pyramid can give 13/3 (B).",
+    "answerStatus": "disputed",
+    "answerReason": "The statement specifies a square base but does not require the apex to be directly above its center. The recorded ambiguity is valid: the right-pyramid calculation gives A, and an oblique pyramid of height 6 and base edge 13/3 also contains the radius-2 hemisphere tangent to all four lateral faces.",
+    "methods": [
+      {
+        "id": "conditional-section-and-counterexample",
+        "label": "A vertical section and an oblique counterexample",
+        "explanation": "The wording leaves open whether the pyramid is right, meaning that its apex is directly above the center of its base. We first make that extra assumption to compute the intended answer, then check whether the printed conditions force it.\n\nAssume the pyramid is right. Equal distances to each pair of opposite, equally sloping faces force the hemisphere's center to be the square's center \\(O\\). Let \\(P\\) be the apex and \\(Q\\) the midpoint of a base edge. Write \\(OQ=h>0\\), so the base edge is \\(2h\\) and \\(OP=6\\).\n\nThe vertical section through \\(P,O,Q\\) contains a radius-\\(2\\) semicircle tangent to \\(PQ\\). Its radius to the tangency point is perpendicular to \\(PQ\\). Thus triangle \\(OPQ\\) has area both \\(3h\\), using its perpendicular legs, and \\(PQ\\), using base \\(PQ\\) and altitude \\(2\\). By the Pythagorean theorem,\n\\[\n3h=PQ=\\sqrt{36+h^2}.\n\\]\nBoth sides are positive, so squaring gives \\(8h^2=36\\). Taking the positive root yields\n\\[\n2h=\\boxed{3\\sqrt2},\n\\]\nwhich is choice \\(\\boxed{\\text{A}}\\) under the right-pyramid assumption.\n\nHowever, the printed statement also permits the following oblique pyramid. Use coordinates \\((x,y,z)\\), with the base in \\(z=0\\), and define\n\\[\nh=\\frac{13}{6},\\qquad c=\\frac{\\sqrt7}{18},\\qquad u=9c=\\frac{\\sqrt7}{2}.\n\\]\nTake the base square to have vertices \\((\\pm h,\\pm h,0)\\), the apex to be \\((u,u,6)\\), and the hemisphere's center to be \\(S=(c,c,0)\\). This pyramid has height \\(6\\) and base edge \\(2h=13/3\\).\n\nThe two lateral face planes adjoining the base edges \\(x=h\\) and \\(x=-h\\) are\n\\[\n6x+(h-u)z=6h,\n\\qquad -6x+(h+u)z=6h.\n\\]\nThe other two have the same equations with \\(y\\) replacing \\(x\\). Each plane is parallel to the omitted coordinate direction, so its perpendicular distance from \\(S\\) is computed by the point-to-line distance formula in the corresponding vertical section.\n\nHere \\(u=9c\\) and \\(h^2-9c^2=9/2\\), which give\n\\[\n36+(h\\mp u)^2=9(h\\mp c)^2.\n\\]\nConsequently the distances from \\(S\\) to the four planes are all\n\\[\n\\frac{6(h\\mp c)}{\\sqrt{36+(h\\mp u)^2}}=2.\n\\]\nThe center lies on the inward side of each plane, so the radius-\\(2\\) sphere lies in all four inward half-spaces. Moreover, solving for the perpendicular feet gives their heights as\n\\[\nz_{\\pm}=\\frac{6(h\\mp c)(h\\mp u)}{36+(h\\mp u)^2}>0,\n\\]\nsince \\(h>u>c>0\\). Thus all four tangencies occur on the upper hemisphere and on the lateral faces. Its base disk fits strictly inside the square because\n\\[\nh-c=\\frac{39-\\sqrt7}{18}>2.\n\\]\nThis verifies every printed condition for base edge \\(\\boxed{13/3}\\), choice \\(\\boxed{\\text{B}}\\).\n\nTherefore the displayed conditions do not determine a unique answer. Choice A requires the additional right-pyramid condition, while choice B is also possible as written.",
+        "nodeIds": [
+          "math:sphere-tangency-distances",
+          "cnm_262",
+          "cnm_174",
+          "cnm_p148",
+          "cnm_h151",
+          "cnm_h174"
+        ],
+        "prerequisiteIds": [
+          "cnm_h106",
+          "cnm_260",
+          "cnm_h171",
+          "cnm_075"
+        ],
+        "levelReason": "The conditional calculation uses triangle area and the Pythagorean theorem. The necessary ambiguity check uses high-school coordinates and point-to-line distances in perpendicular vertical sections."
+      }
+    ],
+    "assessedIds": [
+      "math:sphere-tangency-distances"
+    ],
+    "supportIds": [
+      "cnm_h106"
+    ],
+    "annotationRationale": "The geometric target is translating hemisphere-face tangency into perpendicular center distances equal to the radius, with containment and contact location retained. The conditional section uses circle tangency, triangle area, and Pythagorean lengths. The counterexample uses spatial coordinates but reduces each plane-distance calculation to a two-dimensional line-distance calculation. It verifies the recorded ambiguity rather than treating rightness as a student requirement.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The statement does not specify a right pyramid, and no attached figure supplies that condition. The recorded answer ambiguity is preserved."
+    ]
+  },
+  "review": {
+    "questionId": "2011_AMC_12A_Q15",
+    "decision": "accept",
+    "mathematicalCheck": "For a right pyramid, the section gives 3h = sqrt(36 + h²), hence base edge 2h = 3√2. In the oblique construction, 36 + (h ∓ u)² = 9(h ∓ c)² makes all four center-to-plane distances exactly two. The positive contact heights and h - c > 2 establish lateral-face contacts and base-disk containment. Thus the supplied conditions permit both stated base edges.",
+    "levelCheck": "The conditional calculation is elementary. The necessary counterexample uses high-school coordinates and two-dimensional line distances, with containment and contact locations checked.",
+    "methodDistinctness": "The conditional calculation and counterexample are complementary parts of the ambiguity explanation, not redundant alternatives.",
+    "annotationCheck": "Sphere-plane tangency, circle tangency, triangle area, Pythagorean lengths, and coordinate-distance annotations match the written reasoning. The missing right-pyramid condition is preserved, and the historical key is explicitly conditional.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "conditional-section-and-counterexample": "conditional-section-and-counterexample"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "e5258e5b97a887bb4232107a7e9da018b2dddcd9b17b159f7ce19615fb8ee561",
+    "inputHash": "ad487ace2e38c11fb0b3c64b1c1d97403f65b3f1433787cca083e2b1c01de8d2",
+    "authorInputHash": "5aa3595723c681348e46f25f92fdf7b5776957055cf11b4d0e5610cc791c3494",
+    "reviewInputHash": "195b80b9b49303bd3f6b7bf286b2593e6cac0ac1d83c94fbcf342f2becd2699c",
+    "authorResponseHash": "dbbd7b475fffb145db39382c6c624d936a244ac94c1eaa8e0264d3c23aa48427",
+    "reviewerResponseHash": "be10530e488b45289e389037a85d5858c6d1fabc2356843c325449a8212221bc",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1992_AMC_12_Q09",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "34d73cbb9e30b19b7f8979a79336340a44e02f1bbcb7f97136dab760c0ee760c",
+    "figureHashes": {
+      "figures/1992_AMC_12_Q09_question_fig1.svg": "f1f947bcc59f27735999fc3c3786765adb48e7967863ecf6d549897a2c4e8a15"
+    }
+  },
+  "solutionSHA256": "8969f753c3cb544b63ed7dceb7988864bab5409d0ab41a72f48fb9b55eb8ca2e",
+  "solutionFigureHashes": {},
+  "candidateHash": "202a6f18ecf4d4f7cd9fb5d53217956b4b7f6ca88d643a016c969cf9aee095ab",
+  "candidate": {
+    "questionId": "1992_AMC_12_Q09",
+    "derivedAnswer": "E: \\(12\\sqrt3\\) square units",
+    "answerStatus": "matches",
+    "answerReason": "Each triangle has area 3√3. Consecutive triangles have four overlaps, each an equilateral triangle of half the original side length and hence one fourth the area. No other overlaps have positive area, so the union has area 5(3√3) - 4(3√3/4) = 12√3, choice E.",
+    "methods": [
+      {
+        "id": "subtract_overlaps",
+        "label": "Subtract the four duplicated regions",
+        "explanation": "Adding the five triangle areas counts each overlap twice, so first find the area of one triangle and then identify exactly which regions need subtracting.\n\nThe altitude of an equilateral triangle bisects its base. Thus a triangle of side \\(2\\sqrt3\\) has height\n\\[\nh=\\sqrt{(2\\sqrt3)^2-(\\sqrt3)^2}\n=\\sqrt{12-3}=3.\n\\]\nIts area is therefore\n\\[\nA=\\frac12(2\\sqrt3)(3)=3\\sqrt3.\n\\]\nOrder the triangles from left to right as shown. The midpoint condition makes consecutive bases start \\(\\sqrt3\\) units apart. Their shared base segment has length \\(\\sqrt3\\), and the two sloping sides bounding their overlap each make a \\(60^\\circ\\) angle with that segment. Their overlap is therefore an equilateral triangle with half the original side length. Its base and height are both halved, so its area is \\(A/4\\).\n\nThere are four consecutive pairs. Triangles two places apart have bases meeting only at an endpoint, and more distant bases are disjoint. Because each triangle lies directly above its base, these nonconsecutive pairs have no overlap of positive area. Thus there is also no triple overlap of positive area, and subtracting the four consecutive overlaps removes every duplicated area exactly once.\n\nThe union has area\n\\[\n5A-4\\left(\\frac A4\\right)=4A\n=\\boxed{12\\sqrt3},\n\\]\nchoice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_p150",
+          "cnm_174",
+          "cnm_p148",
+          "cnm_139",
+          "cnm_272"
+        ],
+        "prerequisiteIds": [
+          "cnm_137",
+          "cnm_055",
+          "cnm_075"
+        ],
+        "levelReason": "The method uses the Pythagorean theorem, elementary equilateral-triangle geometry, area scaling, and careful subtraction of overlaps."
+      },
+      {
+        "id": "enclosing_trapezoid",
+        "label": "Fill the gaps to make a trapezoid",
+        "explanation": "Join the five top vertices in order. They lie at the same height, so these segments fill the four notches between the triangles and make one trapezoid. We can find its area and subtract the four filled notches.\n\nEach original triangle has side \\(2\\sqrt3\\). Its altitude bisects the base, so its height is\n\\[\nh=\\sqrt{(2\\sqrt3)^2-(\\sqrt3)^2}=3.\n\\]\nConsecutive bases start \\(\\sqrt3\\) units apart by the midpoint condition. Their top vertices are also \\(\\sqrt3\\) units apart. The trapezoid's upper base, from the first top vertex to the fifth, consequently has length \\(4\\sqrt3\\). Its lower base consists of one full base and four additional half-base lengths, giving\n\\[\n2\\sqrt3+4\\sqrt3=6\\sqrt3.\n\\]\nIts area is\n\\[\n\\frac{4\\sqrt3+6\\sqrt3}{2}\\cdot3=15\\sqrt3.\n\\]\nEach notch is an inverted equilateral triangle: its top side joins consecutive top vertices and has length \\(\\sqrt3\\), while its other sides lie along triangle edges and make \\(60^\\circ\\) angles with the horizontal. It has half the original side length, hence height \\(3/2\\), and area\n\\[\n\\frac12\\cdot\\sqrt3\\cdot\\frac32=\\frac{3\\sqrt3}{4}.\n\\]\nThe four notches occupy separate gaps between consecutive top vertices. Along each original base, its triangle contains every point between the baseline and its sloping edges, so the notches are exactly the regions missing from the enclosing trapezoid. Subtracting them gives the union area\n\\[\n15\\sqrt3-4\\left(\\frac{3\\sqrt3}{4}\\right)\n=\\boxed{12\\sqrt3},\n\\]\nchoice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_p150",
+          "cnm_p149",
+          "cnm_174",
+          "cnm_p148",
+          "cnm_139",
+          "cnm_272"
+        ],
+        "prerequisiteIds": [
+          "cnm_137",
+          "cnm_055",
+          "cnm_075"
+        ],
+        "levelReason": "This alternative uses an enclosing trapezoid and complementary triangular gaps, with the same elementary height and similarity knowledge as the first method."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p150"
+    ],
+    "supportIds": [
+      "cnm_139",
+      "cnm_137",
+      "cnm_174",
+      "cnm_p148",
+      "cnm_272"
+    ],
+    "annotationRationale": "The route-neutral target is finding a composite region's area through justified addition and subtraction. Both methods use equilateral-triangle properties, an altitude and the Pythagorean theorem, triangle area, and half-scale triangle relationships. The first corrects duplicated overlap areas; the second subtracts complementary notches from a trapezoid, so trapezoid area belongs only to that method. Midpoint lengths and square-root evaluation are local supporting knowledge. No finite-set counting node is assigned to the continuous area calculation, and no annotation establishes mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1992_AMC_12_Q09",
+    "decision": "accept",
+    "mathematicalCheck": "The figure confirms five triangles translated successively by half a base. Each has height 3 and area 3√3. Exactly four adjacent overlaps have positive area, each one fourth of a triangle, so the union is 5(3√3) - 4(3√3/4) = 12√3. Independently, the enclosing trapezoid has bases 4√3 and 6√3 and height 3; removing four disjoint notches of area 3√3/4 gives the same result. Both methods explain why their subtraction covers precisely the duplicated or missing regions.",
+    "levelCheck": "Both methods use accessible elementary geometry, the Pythagorean theorem, and area formulas without unnecessary escalation.",
+    "methodDistinctness": "Subtracting duplicated overlaps and subtracting complementary gaps from an enclosing trapezoid provide distinct useful geometric viewpoints.",
+    "annotationCheck": "Composite area is a suitable route-neutral assessed target. Shared triangle geometry and scaling supports are justified, and trapezoid area is correctly confined to the second method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "subtract_overlaps": "subtract_overlaps",
+    "enclosing_trapezoid": "enclosing_trapezoid"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "877e08ecede7019f6f1f131c0cf2ebbdcd74ce2f08a9c5637fc66fc818511950",
+    "acceptedAt": "2026-11-08T00:22:55.574495+00:00",
+    "inputHash": "fe23291b080f8330fc0a3b685e01432394da7ef465d7fef6654c62167fb80c12",
+    "authorInputHash": "d7882066014151566bcecb74fd97b21928ac3ef0e52bdf6de7fa0ccef299c58d",
+    "reviewInputHash": "5307a37500b52556ccc1aa7cb336281c1ee894a479981d4bdec373ac36f5fbae",
+    "authorResponseHash": "45880d5eca92dbd480aa862aad16110521991c9f8646560173ac9a49006d8ca9",
+    "reviewerResponseHash": "7c7443f62f0a4d7fac2e862730d11f217e24be7ec6ebf1b65492f8ac28069ec3",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

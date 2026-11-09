@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1998_AMC_8_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "efc2577583e4479d79a28771b42a8ce585ba81406a5bdabe13b95973afad0aef",
+    "figureHashes": {
+      "figures/1998_AMC_8_Q24_question_fig1.svg": "25c76b6e644f993e497c33122f179f9603c8696c4065dfb67bde0176afb580e3"
+    }
+  },
+  "solutionSHA256": "4d7854ad05fc2fb49951acb8d866e7a7a85903ca205a028972eee44a9cf91f5b",
+  "solutionFigureHashes": {},
+  "candidateHash": "02dbe94878c1979355ff1b300b3761feed23f3258aef9dc8783a08a3e3dabfe5",
+  "candidate": {
+    "questionId": "1998_AMC_8_Q24",
+    "derivedAnswer": "120, choice E",
+    "answerStatus": "matches",
+    "answerReason": "Columns 1 through 7 have been shaded by square 28. The first subsequent shaded square in column 8 is 120, and no earlier shaded square is in that column.",
+    "methods": [
+      {
+        "id": "successive-labels-and-columns",
+        "label": "Track shaded numbers and their columns",
+        "explanation": "Each row contains eight squares, so dividing a square's number by \\(8\\) identifies its column: remainders \\(1\\) through \\(7\\) give those columns, and remainder \\(0\\) means column \\(8\\). For example, \\(21=2\\cdot8+5\\), so square \\(21\\) is in column \\(5\\).\n\nSkipping one square moves forward two squares, skipping two moves forward three, and so on. Thus we generate the shaded numbers by adding \\(2,3,4,\\ldots\\) successively. The first seven shaded numbers are\n\\[\n1,3,6,10,15,21,28.\n\\]\nTheir columns, in the same order, are\n\\[\n1,3,6,2,7,5,4.\n\\]\nEvery column except column \\(8\\) has now been reached. To find when that last column is reached, continue adding \\(8,9,\\ldots\\). The next shaded numbers are\n\\[\n36,45,55,66,78,91,105,120,\n\\]\nand their columns are respectively\n\\[\n4,5,7,2,6,3,1,8.\n\\]\nThese lists include every shading step up to \\(120\\). Column \\(8\\) appears for the first time at \\(120\\), when all other columns have already appeared. Therefore the answer is \\(\\boxed{120}\\), choice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "cnm_h200",
+          "cnm_p052"
+        ],
+        "prerequisiteIds": [
+          "cnm_p050",
+          "cnm_p083"
+        ],
+        "levelReason": "The method uses successive whole-number additions and elementary division with remainders, without a triangular-number formula or formal congruences."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p052"
+    ],
+    "supportIds": [
+      "cnm_p050",
+      "cnm_p083"
+    ],
+    "annotationRationale": "The task assesses using remainders to interpret positions in rows of eight, represented by cnm_p052. The written method also uses cnm_h200 specifically for computing successive terms from the given increasing increments. Remainder meaning and one-digit division support the calculation. An nth-term algebraic expression and formal modular arithmetic are unnecessary, so the existing labels cnm_030 and math:modular-congruence are not retained.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1998_AMC_8_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "Successive increments 2 through 15 produce exactly the listed shaded labels. The first seven labels reach columns 1 through 7, and none of the first fourteen labels is divisible by 8. The fifteenth label, 120, first reaches column 8, proving both completion and minimality. The figure agrees with the stated numbering and initial shading.",
+    "levelCheck": "The additions and division with remainders are appropriate for AMC 8. The explanation makes the column rule and exhaustive tracking clear without formal congruences.",
+    "methodDistinctness": "One complete elementary method is sufficient.",
+    "annotationCheck": "cnm_p052 fits interpreting the remainder as a column position. cnm_h200 fits the method's successive-term computation, while cnm_p050 and cnm_p083 support the remainder calculations. Removing the algebraic nth-term and formal congruence targets is justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "successive-labels-and-columns": "successive-labels-and-columns"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "399590e0fd5f6d6210227e710f6626e04f293f8c36af8bf05d384b498a1eed43",
+    "acceptedAt": "2026-11-08T00:28:31.751507+00:00",
+    "inputHash": "95569d90745e795b848db301722268dcfe49d7d00ac55129746d3743e00d1cbd",
+    "authorInputHash": "cc9beaef8a3f68aaeacae196d9b2f842e8aeeedc68a2b78b8cc78f9d9a757af5",
+    "reviewInputHash": "701ac43f249dd3667e54b867a577bd5f27018c1ed7bcc6d828aa3e477d5135d9",
+    "authorResponseHash": "e50cbe14223ed807149ee84b960e3de64f65afa09afce5a60bc2c001131a46ff",
+    "reviewerResponseHash": "8f422a258ed9dffb39c45d14c9115d0cbbeb97fc5f75a4735bbe14092d50ba2e",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

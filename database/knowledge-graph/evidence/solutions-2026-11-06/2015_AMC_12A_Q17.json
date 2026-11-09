@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2015_AMC_12A_Q17",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "b6d8797278dfce37c84afd30171d36f29ceceed8b649b3a0b70e2e162e36729c",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "22507ce4fcf1c75955d190905833db965bb3476b329ab872a6c9572c3036143a",
+  "solutionFigureHashes": {},
+  "candidateHash": "d9a1e17b2ee63b8b653020be300907c048356485651d7fc58de3ea1a4915a099",
+  "candidate": {
+    "questionId": "2015_AMC_12A_Q17",
+    "derivedAnswer": "47/256 (A)",
+    "answerStatus": "matches",
+    "answerReason": "There are 47 valid labeled standing patterns among the 256 equally likely coin outcomes.",
+    "methods": [
+      {
+        "id": "count-by-number-standing",
+        "label": "Count by the number who stand",
+        "explanation": "Label the people \\(1\\) through \\(8\\) in clockwise order. The independent fair flips give \\(2^8=256\\) equally likely head-tail patterns. We count those with no adjacent standing people.\n\nEvery standing person must be followed clockwise by a seated person. These followers are distinct, so at most four people can stand. We can therefore count by the number standing.\n\nWith no one standing, there is \\(1\\) pattern. With one person standing, there are \\(8\\) patterns.\n\nWith two standing, start with the \\(\\binom82=28\\) pairs of people. Exactly \\(8\\) pairs are adjacent, including the pair \\(8,1\\). Thus there are \\(28-8=20\\) valid patterns.\n\nWith three standing, consider the three gaps of seated people between consecutive standing people. Each gap is positive, and their lengths sum to \\(5\\). The gap lengths must therefore be \\(3,1,1\\) or \\(2,2,1\\), in some circular order. For lengths \\(3,1,1\\), choose the standing person immediately following the unique gap of length \\(3\\). There are \\(8\\) choices, and each forces the rest of the pattern. For lengths \\(2,2,1\\), use the standing person immediately following the unique gap of length \\(1\\), again giving \\(8\\) patterns. The two types are disjoint, giving \\(16\\) patterns altogether.\n\nWith four standing, every gap must contain exactly one seated person. The pattern must alternate, giving \\(2\\) choices.\n\nThe cases are exhaustive and disjoint, and the unique-gap choices prevent duplicate counts. The desired probability is\n\\[\n\\frac{1+8+20+16+2}{256}\n=\\boxed{\\frac{47}{256}},\n\\]\nchoice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_h137",
+          "cnm_h237"
+        ],
+        "prerequisiteIds": [
+          "cnm_h230",
+          "cnm_h231",
+          "cnm_h140"
+        ],
+        "levelReason": "The count uses small combinations, elementary gap cases, and the equally likely outcome model."
+      },
+      {
+        "id": "line-pattern-recurrence",
+        "label": "Count a row before closing the circle",
+        "explanation": "The circular restriction becomes easier if we first count patterns in a straight row. Let \\(L_n\\) be the number of standing-seated patterns on \\(n\\) labeled people in a row with no adjacent standing people. The empty row has \\(L_0=1\\) pattern, and \\(L_1=2\\).\n\nFor \\(n\\ge2\\), separate patterns by the first person. If that person sits, the remaining \\(n-1\\) people have \\(L_{n-1}\\) possibilities. If that person stands, the second must sit, leaving \\(L_{n-2}\\) possibilities. These cases cover every valid pattern exactly once, so\n\\[\nL_n=L_{n-1}+L_{n-2}.\n\\]\nStarting from \\(L_0=1\\) and \\(L_1=2\\), this gives\n\\[\nL_2=3,\\ L_3=5,\\ L_4=8,\\ L_5=13,\\ L_6=21,\\ L_7=34.\n\\]\nNow return to the circle and fix person \\(1\\). If person \\(1\\) sits, people \\(2\\) through \\(8\\) form a row with \\(L_7=34\\) possibilities. If person \\(1\\) stands, people \\(2\\) and \\(8\\) must sit, leaving people \\(3\\) through \\(7\\) as a row with \\(L_5=13\\) possibilities. Thus there are \\(34+13=47\\) valid circular patterns.\n\nThe \\(2^8=256\\) outcomes of the independent fair flips are equally likely, so the probability is \\(\\boxed{\\tfrac{47}{256}}\\), choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_h137",
+          "math:recursive-counting-probability"
+        ],
+        "prerequisiteIds": [
+          "cnm_h230",
+          "cnm_h231",
+          "cnm_h140"
+        ],
+        "levelReason": "The recurrence is derived directly from two disjoint cases and evaluated finitely; no advanced recurrence formulas are needed."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h137"
+    ],
+    "supportIds": [
+      "cnm_h230",
+      "cnm_h231",
+      "cnm_h140"
+    ],
+    "annotationRationale": "Both routes calculate a classical probability by counting labeled, equally likely coin patterns. Addition, multiplication, and independence support both. The first route uses pair combinations and exhaustive small gap cases. The second constructs a counting recurrence with explicit initial conditions; recursion is method-local rather than an additional required target.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2015_AMC_12A_Q17",
+    "decision": "accept",
+    "mathematicalCheck": "Counting by standing number gives 1+8+20+16+2=47, with the unique-gap choices avoiding duplication. Independently, the row recurrence gives L7+L5=34+13=47. Both correctly account for circular adjacency among 256 equally likely labeled outcomes.",
+    "levelCheck": "The small gap cases and finitely evaluated recurrence are elementary and fully explained.",
+    "methodDistinctness": "Counting by the number standing and conditioning on one seat with a row recurrence offer distinct useful ideas.",
+    "annotationCheck": "Classical probability is shared; addition, multiplication, and independence support both routes. Combinations and recursive counting remain method-specific, without claiming stars-and-bars was used.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-by-number-standing": "count-by-number-standing",
+    "line-pattern-recurrence": "line-pattern-recurrence"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "a47afd4645a13ac219f2c795fb128b81631fb46eb94455a3a81d23a74b95067e",
+    "inputHash": "9b99b1f3aa249c37599b29787862b17290405ae2d59f250bc8d596c3a11d6c5d",
+    "authorInputHash": "47c713bb66ecef38f9e4900d8d531280e1ab07c9ff02fddfb32b8cc1d0da1538",
+    "reviewInputHash": "aefef44dcf3638ba7ddaef9c383a475098dd0bf303bf5cc80c0520dc8ebe006a",
+    "authorResponseHash": "2f003fe05120731b06ad83c292a80b9015ad686c6011284989cdd7b8fbb73d5c",
+    "reviewerResponseHash": "7c3a72be8685b49ecf66ecdb8e0c4a0fed5c0c4fcfb0f7b421267735cfdf1084",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

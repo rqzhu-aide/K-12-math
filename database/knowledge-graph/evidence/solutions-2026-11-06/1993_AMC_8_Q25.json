@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1993_AMC_8_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "e9cc199b30d11a2c96f27569dae554aa63ed4672920449c74b552b2da6747191",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "912db07ba9f484d6bb8e1daa03ff877bbd9beae82ef90ced7f9ec35d38cdcee6",
+  "solutionFigureHashes": {},
+  "candidateHash": "c29157804eadd4756094d5ee8371095380db84f6eb11183eda0f75cf0f0819b9",
+  "candidate": {
+    "questionId": "1993_AMC_8_Q25",
+    "derivedAnswer": "12, so E",
+    "answerStatus": "matches",
+    "answerReason": "A placement with the diagonals along grid lines covers twelve squares. A span bound and exclusion of the four corner cells in any four-by-four bounding block show that more than twelve is impossible.",
+    "methods": [
+      {
+        "id": "rotated_card_and_reach_bound",
+        "label": "Rotate the card and bound its reach",
+        "explanation": "Place the card with its center at an interior grid vertex and its diagonals along the horizontal and vertical grid lines. This lets its corners reach into additional squares.\n\nLet \\(r\\) be the distance in inches from the card's center to a corner. The half-side lengths are \\(3/4\\), so the Pythagorean theorem gives\n\\[\nr^2=\\left(\\frac34\\right)^2+\\left(\\frac34\\right)^2=\\frac98.\n\\]\nTherefore \\(1<r<5/4\\). The card covers positive area in the four squares surrounding its center. Since each of its four tips extends more than one inch from the center, each tip also covers positive area in two additional squares, one on each side of the grid line through that tip. These eight additional squares are all distinct, giving\n\\[\n4+4\\cdot2=12\n\\]\ncovered squares.\n\nWe can also show that twelve is the maximum. Every point of the card is at most \\(r\\) inches from its center. Its horizontal and vertical spans are consequently at most \\(2r<3\\), so it can cover area in at most four columns and four rows. If it reaches at most three rows or at most three columns, it covers at most \\(3\\cdot4=12\\) squares.\n\nThe remaining possibility is that it reaches four rows and four columns, forming a four-by-four block. To reach both outer columns, the card's center must lie less than \\(1/4\\) inch horizontally from the block's center: the outer columns begin one inch to either side, and \\(r<5/4\\). The same reasoning applies vertically.\n\nAny point in one of the block's four corner squares is then more than \\(3/4\\) inch from the card's center both horizontally and vertically. Its squared distance exceeds \\(2(3/4)^2=r^2\\), so it cannot lie under the card. Thus at least those four squares are excluded, leaving at most \\(16-4=12\\).\n\nThe maximum is \\(\\boxed{12}\\), which belongs to choice \\(\\text{E}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_174",
+          "cnm_p171"
+        ],
+        "prerequisiteIds": [
+          "cnm_p077",
+          "cnm_p088",
+          "cnm_079"
+        ],
+        "levelReason": "The construction and upper bound use elementary rotation, the Pythagorean theorem, comparisons of positive lengths by their squares, and counting grid cells. No trigonometry is needed."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_p077",
+      "cnm_p088"
+    ],
+    "annotationRationale": "The task asks for a maximum coverage count, and the method supplies both an attaining placement and a universal upper bound. Rotation produces the placement; the Pythagorean theorem controls the card's reach and excludes corner cells in the only potentially larger bounding block. Square properties and the meaning of positive area support the argument, including exclusion of boundary-only contacts.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1993_AMC_8_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The half-diagonal satisfies r squared = 9/8, so the grid-vertex construction reaches 12 distinct squares with positive area. Every placement reaches at most four rows and four columns. Reaching both outer rows and columns forces the center within 1/4 inch of the bounding block's center in each direction; every corner cell then lies beyond radius r. This proves the upper bound of 12.",
+    "levelCheck": "The construction and upper bound use permitted Pythagorean comparisons and elementary grid geometry. The decisive spatial bounds are explained.",
+    "methodDistinctness": "The construction and upper bound are complementary parts of one complete extremal argument.",
+    "annotationCheck": "The extremal assessment is supported by attainment and a universal bound. Pythagorean reasoning, elementary rotation, square properties, area meaning, and square-root comparison annotations match the method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "rotated_card_and_reach_bound": "rotated_card_and_reach_bound"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "02e99f0a7e9f46bfef0f9fbdb665a8069ed8bc0a70e0f1535789ad83c82ee222",
+    "inputHash": "b178c2804dc048b6300083a9169c7e4d398c2bdd752f921fd9ee09f0ce51f682",
+    "authorInputHash": "1f450f9e51cd45bc7d6d6b669b7a35bb3f036ae3eef5448de58e5814f327621e",
+    "reviewInputHash": "a7edf175a660eb93526d2a2ca34bc6515dc271793ae3e52066d00da2294ad2b5",
+    "authorResponseHash": "2da95993df94662452818441de1cee59981461d374556be1cb002a4d5fcfe333",
+    "reviewerResponseHash": "d79cc652fe01c392dbfa5b36b6dce591f95f6e852bdbc8a47b078e9928d7e82d",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

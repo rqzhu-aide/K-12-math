@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1993_AMC_12_Q18",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "114f5f7a7c1f31160810e878ca0829aa6dd500af74b19e0fbfbc648c5d97df72",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "0b987d712fadb459a3d4e3c91edef1f860e41555470e72a73cc0354c3e6da5eb",
+  "solutionFigureHashes": {},
+  "candidateHash": "f5e541a0f56e8dcdc7bd62657546f6b4856bd9d3ccd3fc48903ae890cfca5ce7",
+  "candidate": {
+    "questionId": "1993_AMC_12_Q18",
+    "derivedAnswer": "E, \\(100\\) days",
+    "answerStatus": "matches",
+    "answerReason": "The combined schedules repeat every 20 days, with shared rest-days at positions 8 and 20. The first 1000 days contain 50 complete periods, giving 100 shared rest-days.",
+    "methods": [
+      {
+        "id": "twenty-day-period",
+        "label": "Count within a shared repeating period",
+        "explanation": "Al's schedule repeats every \\(3+1=4\\) days, and Barb's repeats every \\(7+3=10\\) days. Their combined schedule therefore repeats every \\(\\operatorname{lcm}(4,10)=20\\) days: advancing \\(20\\) days completes a whole number of cycles for each person.\n\nNumber their starting day as day \\(1\\). During days \\(1\\) through \\(20\\), Al rests on\n\\[\n4,\\ 8,\\ 12,\\ 16,\\ 20,\n\\]\nand Barb rests on\n\\[\n8,\\ 9,\\ 10,\\ 18,\\ 19,\\ 20.\n\\]\nThe only common days are \\(8\\) and \\(20\\), so each complete \\(20\\)-day block contains exactly two shared rest-days.\n\nThe first \\(1000\\) days divide into \\(1000/20=50\\) disjoint complete blocks. Counting two shared rest-days in each counts every eligible day exactly once, including day \\(1000\\). The total is\n\\[\n50\\cdot2=\\boxed{100},\n\\]\nchoice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "math:simultaneous-congruences",
+          "cnm_p159"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_p038"
+        ],
+        "levelReason": "The solution uses a least common multiple, short exhaustive lists, and multiplication across equal repeating blocks."
+      }
+    ],
+    "assessedIds": [
+      "math:simultaneous-congruences"
+    ],
+    "supportIds": [
+      "cnm_p159"
+    ],
+    "annotationRationale": "The task combines periodic integer day conditions and counts their common solutions in a finite interval. This fits the simultaneous-congruences node, while the actual method uses direct enumeration within a common period. Formal congruence notation and a general congruence-solving algorithm are not prerequisites of the written method.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1993_AMC_12_Q18",
+    "decision": "accept",
+    "mathematicalCheck": "Both schedules repeat after 20 days. Their rest-day lists intersect exactly at days 8 and 20 within that period. Fifty disjoint complete periods cover days 1 through 1000, giving 100 shared rest-days.",
+    "levelCheck": "The LCM, exhaustive short lists, and repeated-block count are elementary and clearly justify the period and endpoints.",
+    "methodDistinctness": "One complete periodic-enumeration method is sufficient.",
+    "annotationCheck": "The simultaneous-congruences scope covers combining periodic integer remainder conditions and counting their common solutions. Enumeration checks compatibility directly, and the annotation does not claim use of a general congruence-solving theorem.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "twenty-day-period": "twenty-day-period"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "7b15efc0a5e1ea3baf9363c973b945fda049dfb74617faa27b3402d90613b1f3",
+    "inputHash": "e63d7bd624dc01058ed16489862f4018d94a6ad3fe1f83a0e518b96087daa694",
+    "authorInputHash": "987c39caa5ddbac728956dc65625330457c93844e31bb77d47fa2e883335d6f0",
+    "reviewInputHash": "c7aec97cc7276b4910827866da64e45320c2729d9e504386ae939e3681ded798",
+    "authorResponseHash": "d9df06bdf2cef66cc00de699b8ddacf17de2ff17b10d7809788aa97a6269cda3",
+    "reviewerResponseHash": "dbf6a543ddc447f902e500e8b46b054ac36b6a84b7d72b429c78dde41239e4b0",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

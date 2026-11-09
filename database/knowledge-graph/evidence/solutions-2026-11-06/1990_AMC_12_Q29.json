@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1990_AMC_12_Q29",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "235fb3869efe9733e049cd5c66954a41a55c0d81d6aa5433754f8a741b369952",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "3c36d229aae04aa26c21af322abe920d158eacbc6c162d21ceeab66e886ccee9",
+  "solutionFigureHashes": {},
+  "candidateHash": "3c4d646b5b774a41dfb5ccb02c01c63d688bec11071975580454f38fa97a1e9c",
+  "candidate": {
+    "questionId": "1990_AMC_12_Q29",
+    "derivedAnswer": "76 members, choice D",
+    "answerStatus": "matches",
+    "answerReason": "There are 24 disjoint forbidden pairs, forcing at least 24 omissions. The set consisting of 1, the integers 4 through 11, and the integers 34 through 100 has 76 members and satisfies the restriction.",
+    "methods": [
+      {
+        "id": "disjoint-forbidden-pairs",
+        "label": "Disjoint forbidden pairs",
+        "explanation": "To prove a largest possible size, we need both an upper bound and a subset attaining it. Each pair \\((k,3k)\\) forces us to omit at least one of its members. Using pairs that do not overlap makes these required omissions add up.\n\nFor every integer \\(k\\) from \\(12\\) through \\(33\\), form the pair \\((k,3k)\\). There are\n\\[\n33-12+1=22\n\\]\nsuch pairs. Their smaller members lie between \\(12\\) and \\(33\\), and their larger members lie between \\(36\\) and \\(99\\). The pairs therefore have no members in common. The two additional pairs \\((2,6)\\) and \\((3,9)\\) use four new integers. Altogether, these are \\(24\\) disjoint forbidden pairs.\n\nAny allowed subset must omit at least one member from each pair. Because the pairs are disjoint, these are at least \\(24\\) different omissions. Thus the subset has at most\n\\[\n100-24=76\n\\]\nmembers.\n\nNow select \\(1\\), every integer from \\(4\\) through \\(11\\), and every integer from \\(34\\) through \\(100\\). This selection is allowed: the triple of \\(1\\) is the unselected number \\(3\\); the triple of any number from \\(4\\) through \\(11\\) lies in the unselected interval from \\(12\\) through \\(33\\); and the triple of any selected number at least \\(34\\) exceeds \\(100\\). These cases cover every selected member.\n\nThe three selected groups are disjoint and contain\n\\[\n1+(11-4+1)+(100-34+1)=1+8+67=76\n\\]\nmembers. The upper bound is attained, so the largest size is \\(\\boxed{76}\\), choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "math:extremal-principle"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153"
+        ],
+        "levelReason": "The proof uses multiplication by 3, inclusive interval counts, and disjoint pairing, requiring only elementary arithmetic and counting."
+      },
+      {
+        "id": "powers-of-three-chains",
+        "label": "Alternate members of multiplication chains",
+        "explanation": "Multiplication by \\(3\\) organizes the integers into chains such as\n\\[\n1,3,9,27,81\n\\qquad\\text{and}\\qquad\n2,6,18,54.\n\\]\nMore generally, start a chain at each positive integer \\(m\\) not divisible by \\(3\\), and list \\(m,3m,9m,\\ldots\\), stopping before exceeding \\(100\\). Every integer from \\(1\\) through \\(100\\) belongs to exactly one chain: repeatedly dividing out factors of \\(3\\) determines its unique starting value \\(m\\).\n\nA forbidden pair consists of consecutive terms in one chain. For an upper bound within a chain, pair its first two terms, then its next two terms, and continue. We may select at most one term from each pair, together with the final unpaired term if the chain has odd length. Selecting the first, third, fifth, and subsequent odd-positioned terms attains this bound. There are no forbidden pairs between different chains, so making this selection in every chain gives a largest possible subset.\n\nIt remains to count these selected terms. The first terms are precisely the integers not divisible by \\(3\\), giving \\(100-33=67\\). The third terms are precisely those divisible by \\(9\\) but not by \\(27\\), giving \\(11-3=8\\). The fifth terms are divisible by \\(81\\) but not by \\(243\\), giving just \\(81\\), or one term. Since \\(3^5=243>100\\), no chain has more than five terms.\n\nThese three categories are disjoint and include every selected term. Therefore the maximum is\n\\[\n67+8+1=\\boxed{76},\n\\]\nchoice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "math:prime-factorization"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_019"
+        ],
+        "levelReason": "The chain construction uses repeated division by 3, small integer powers, and neighboring-term pairing, all elementary contest reasoning."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_p153"
+    ],
+    "annotationRationale": "The task asks for an attained discrete maximum, so the shared target is a universal bound together with a construction. Factors and multiples support both methods. Only the chain route uses the exponent of the prime 3 in an integer, matching prime-factorization exponent structure. Neither written method requires formal graph theory or a recurrence.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1990_AMC_12_Q29",
+    "decision": "accept",
+    "mathematicalCheck": "The 22 interval pairs and two additional pairs are mutually disjoint, forcing 24 omissions. The proposed 76-member subset satisfies every restriction. Independently, the chains partition all integers uniquely, and alternating selections attain each chain's pairing bound; the counts \\(67+8+1=76\\) are correct.",
+    "levelCheck": "Both proofs use accessible arithmetic, divisibility, and elementary counting.",
+    "methodDistinctness": "The second method adds a multiplication-chain partition and a different attaining construction, providing a useful distinct insight.",
+    "annotationCheck": "The shared extremal target and factors-and-multiples support are justified. Prime-exponent structure belongs to the chain method; graph theory and recurrence annotations are appropriately omitted.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "disjoint-forbidden-pairs": "disjoint-forbidden-pairs",
+    "powers-of-three-chains": "solution:powers-of-three-chains:3c36d229aae0"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c20f5d72fde253e4a699c0308f3b3b3be13c649ca72bc093107e356b0396baa1",
+    "inputHash": "bd8b0c115fc40d65d7709d02b7ec82feee973c57d891c01a6f18ef5a90f0804d",
+    "authorInputHash": "70e6845400a21c45167ec9401022f70582f79a001b273b10706304bb2211045c",
+    "reviewInputHash": "0dc7d28fe9c5b248a22e807388b2a8750fa98fa9b54425452da1f5ca5d7cf727",
+    "authorResponseHash": "3ee34524cd83a2d814213deaf53ed97b29404cc82f453f7f4d440f3166b2c78d",
+    "reviewerResponseHash": "3112b657d325d9a09c49489a9770229ad852613efb6661da03f57baf48debd11",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

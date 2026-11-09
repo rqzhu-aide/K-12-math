@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2012_AMC_12A_Q18",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "a75678c5ff9ed0e28ec8c85f1a715b55e0f3603801a130ea2f343e0d6562fe21",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "e7bed20b48b77b5aa8d4b96c3f7280d230ea3a183734413fd17c8c6b2257f660",
+  "solutionFigureHashes": {},
+  "candidateHash": "f431e94285b6af1fc85d32f2c3cac50bd68e588035a1259ee4445682113667e4",
+  "candidate": {
+    "questionId": "2012_AMC_12A_Q18",
+    "derivedAnswer": "\\(15\\), choice A",
+    "answerStatus": "matches",
+    "answerReason": "The full bisector from B has length 45/2, and the other angle-bisector condition gives BI as two thirds of that length. Hence BI = 15, agreeing with A.",
+    "methods": [
+      {
+        "id": "two-angle-bisector-ratios",
+        "label": "Method 1: Apply the angle-bisector theorem twice",
+        "explanation": "Using both angle bisectors lets us express \\(BI\\) as a simple fraction of a full bisector. Let the internal bisector from \\(B\\) meet \\(AC\\) at \\(D\\). The angle-bisector theorem gives\n\\[\nAD:DC=AB:BC=27:25.\n\\]\nSince \\(AC=26\\), it follows that\n\\[\nAD=\\frac{27}{52}\\cdot26=\\frac{27}{2},\n\\qquad DC=\\frac{25}{2}.\n\\]\nNow consider triangle \\(ABD\\). Because \\(D\\) lies on \\(AC\\), the segment \\(AI\\) bisects its angle at \\(A\\), and \\(I\\) lies on \\(BD\\). Applying the same theorem in this smaller triangle gives\n\\[\n\\frac{BI}{ID}=\\frac{AB}{AD}\n=\\frac{27}{27/2}=2.\n\\]\nConsequently, \\(BI=\\frac23 BD\\).\n\nTo find \\(BD\\), place \\(A=(0,0)\\), \\(C=(26,0)\\), and \\(B=(x,h)\\) with \\(h>0\\). The given side lengths yield\n\\[\nx^2+h^2=729,\n\\qquad (26-x)^2+h^2=625.\n\\]\nSubtracting eliminates the common height term:\n\\[\n52x-676=104,\n\\qquad x=15,\n\\qquad h^2=729-225=504.\n\\]\nSince \\(D=(27/2,0)\\), another use of the Pythagorean theorem gives\n\\[\nBD^2=\\left(15-\\frac{27}{2}\\right)^2+504\n=\\frac{2025}{4}.\n\\]\nLengths are positive, so \\(BD=45/2\\). Therefore\n\\[\nBI=\\frac23\\cdot\\frac{45}{2}=\\boxed{15},\n\\]\nchoice A.",
+        "nodeIds": [
+          "cnm_114",
+          "math:angle-bisector-side-ratio",
+          "cnm_084",
+          "cnm_174"
+        ],
+        "prerequisiteIds": [
+          "cnm_p187"
+        ],
+        "levelReason": "Two applications of the elementary angle-bisector theorem and right-triangle distance calculations suffice; no trigonometry or special bisector-length formula is needed."
+      },
+      {
+        "id": "incircle-area-and-tangents",
+        "label": "Method 2: Use the incircle",
+        "explanation": "The intersection of the internal angle bisectors is the incenter. Let its distance from each side be \\(r\\), the incircle's radius. Finding \\(r\\) and a tangent length from \\(B\\) will give \\(BI\\) through a right triangle.\n\nFirst calculate the area. Place \\(A=(0,0)\\), \\(C=(26,0)\\), and \\(B=(x,h)\\) with \\(h>0\\). The side lengths give\n\\[\nx^2+h^2=27^2,\n\\qquad (26-x)^2+h^2=25^2.\n\\]\nSubtracting gives \\(52x-676=104\\), so \\(x=15\\). Hence\n\\[\nh=\\sqrt{27^2-15^2}=6\\sqrt{14},\n\\]\nand the area is\n\\[\nK=\\frac12\\cdot26\\cdot6\\sqrt{14}\n=78\\sqrt{14}.\n\\]\nJoining \\(I\\) to the three vertices splits the triangle into three triangles whose heights to the original sides all equal \\(r\\). Thus\n\\[\nK=\\frac12r(27+25+26)=39r,\n\\qquad r=2\\sqrt{14}.\n\\]\nLet the incircle touch \\(AB,BC,AC\\) at \\(E,F,G\\), respectively. Equal tangent lengths from \\(B\\) give \\(BE=BF=t\\). Equal tangent lengths from \\(A\\) and \\(C\\) then give\n\\[\nAG=AE=27-t,\n\\qquad CG=CF=25-t.\n\\]\nAdding along \\(AC\\),\n\\[\n26=(27-t)+(25-t),\n\\qquad t=13.\n\\]\nThe radius \\(IE\\) is perpendicular to the tangent side \\(AB\\). Therefore triangle \\(BEI\\) is right, and\n\\[\nBI^2=BE^2+IE^2\n=13^2+(2\\sqrt{14})^2=225.\n\\]\nSince \\(BI>0\\), we obtain \\(\\boxed{BI=15}\\), choice A.",
+        "nodeIds": [
+          "cnm_114",
+          "cnm_264",
+          "cnm_263",
+          "math:triangle-area-radius-relations",
+          "cnm_084",
+          "cnm_174"
+        ],
+        "prerequisiteIds": [
+          "cnm_p148",
+          "cnm_262"
+        ],
+        "levelReason": "This alternative uses elementary incircle and tangent properties, base-height area, and the Pythagorean theorem. The area-inradius relation is derived directly."
+      }
+    ],
+    "assessedIds": [
+      "cnm_114"
+    ],
+    "supportIds": [
+      "cnm_084",
+      "cnm_174"
+    ],
+    "annotationRationale": "The route-neutral target is using the internal-angle-bisector configuration to locate I and determine BI. Both written routes use coordinate descriptions and Pythagorean distance calculations. The first route uses side-division ratios; the second uses the incenter's equal distances, equal tangents, and area-inradius relation. Those distinct geometric tools remain method-local, so incircle properties are not imposed on the ratio solution. These annotations do not establish student mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2012_AMC_12A_Q18",
+    "decision": "accept",
+    "mathematicalCheck": "Method 1 correctly obtains AD = 27/2, BI:ID = 2:1, and B = (15,h) with h^2 = 504. Thus BD^2 = 2025/4 and BI = 15. Independently, Method 2 gives area 78sqrt(14), inradius 2sqrt(14), and tangent length BE = 13, so BI^2 = 169 + 56 = 225.",
+    "levelCheck": "Both methods use accessible school geometry and Pythagorean calculations. The second derives its area-inradius relation directly.",
+    "methodDistinctness": "The methods share a coordinate calculation but have distinct decisive ideas: two angle-bisector ratios versus incircle area and equal tangents.",
+    "annotationCheck": "The common bisector/concurrency concept is route-neutral, and coordinates and Pythagoras are used in both methods. The ratio theorem and incircle-specific properties remain correctly method-local.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "two-angle-bisector-ratios": "two-angle-bisector-ratios",
+    "incircle-area-and-tangents": "incircle-area-and-tangents"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "8ba2aaee30848d13572f3e6d4f613feef22af7645d8fe01660beca9ac6f7977c",
+    "inputHash": "036036eb2e96c223eb27d02ac4847bd185d8143f2cc7ce2535d2c2eef8ed8570",
+    "authorInputHash": "4d44945a62780199a4e06d70628fd2a4d44eec87cf35309e21e1c972c6bca649",
+    "reviewInputHash": "2a362e9d277bf79b07994a3435f61526278fb3ce0df26337655ed36704686e73",
+    "authorResponseHash": "1f4c75647e7f218756cdc761ff77989b4957449fcc6a62ca6e6b8a73188313de",
+    "reviewerResponseHash": "7fccfabdaf6477c1dae389f4444d99d274aecc883d04e6a0319854982b73b68e",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1984_AMC_12_Q30",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "be075fe36dde57ba4c8279af3e3a17f56f1e22f2414acda8b840637f20227d08",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "3c4ff652d411ab3f0603d6dd0feb9e1823215414b47dfb6792c6d530c032d287",
+  "solutionFigureHashes": {},
+  "candidateHash": "18de8bddb11a9a508e492c1e9710e1e4570552bdc936bcf318036e673fa3d812",
+  "candidate": {
+    "questionId": "1984_AMC_12_Q30",
+    "derivedAnswer": "B. \\(\\frac29\\sin20^\\circ\\)",
+    "answerStatus": "matches",
+    "answerReason": "For the displayed sum S, shifted subtraction gives \\((1-w)S=-9w\\). Consequently \\(|S|^{-1}=|1-w|/9=2\\sin20^\\circ/9\\), agreeing with B.",
+    "methods": [
+      {
+        "id": "shift-subtract-weighted-sum",
+        "label": "Shift and subtract the weighted sum",
+        "explanation": "The angle \\(40^\\circ\\) makes the powers repeat after nine factors. Indeed, the sine and cosine addition formulas show that multiplying \\(\\cos\\alpha+i\\sin\\alpha\\) by \\(\\cos\\beta+i\\sin\\beta\\) adds their angles. Therefore\n\\[\nw^9=\\cos360^\\circ+i\\sin360^\\circ=1.\n\\]\nAlso \\(|w|=1\\), and \\(w\\ne1\\) because \\(\\sin40^\\circ>0\\).\n\nFirst let \\(G=w+w^2+\\cdots+w^9\\). Subtracting its one-power shift gives\n\\[\n(1-w)G=w-w^{10}=0,\n\\]\nsince \\(w^{10}=w\\). As \\(1-w\\ne0\\), we have \\(G=0\\).\n\nNow let \\(S=w+2w^2+\\cdots+9w^9\\). Subtracting \\(wS\\) from \\(S\\) changes each interior coefficient from \\(k\\) to \\(k-(k-1)=1\\), leaving the final endpoint term:\n\\[\n(1-w)S=(w+w^2+\\cdots+w^9)-9w^{10}=-9w.\n\\]\n\nThe modulus of a product is the product of the moduli. This follows directly from the given definition: for \\(u=p+qi\\) and \\(v=r+si\\),\n\\[\n\\begin{aligned}\n|uv|^2&=(pr-qs)^2+(ps+qr)^2\\\\\n&=(p^2+q^2)(r^2+s^2)=|u|^2|v|^2.\n\\end{aligned}\n\\]\nTaking nonnegative square roots proves the rule. Hence \\(|1-w|\\,|S|=9\\). In particular, \\(S\\ne0\\), so the requested reciprocal exists and equals \\(|1-w|/9\\).\n\nFinally, using \\(\\sin^2\\theta+\\cos^2\\theta=1\\) and the cosine double-angle identity,\n\\[\n\\begin{aligned}\n|1-w|^2\n&=(1-\\cos40^\\circ)^2+\\sin^240^\\circ\\\\\n&=2-2\\cos40^\\circ\\\\\n&=4\\sin^220^\\circ.\n\\end{aligned}\n\\]\nSince \\(\\sin20^\\circ>0\\), we obtain \\(|1-w|=2\\sin20^\\circ\\). Thus the answer is \\(\\boxed{\\frac29\\sin20^\\circ}\\), choice B.",
+        "nodeIds": [
+          "math:roots-of-unity",
+          "cnm_h098",
+          "math:complex-polar-de-moivre",
+          "math:telescoping",
+          "cnm_h073"
+        ],
+        "prerequisiteIds": [
+          "cnm_h100",
+          "cnm_h102",
+          "cnm_h060",
+          "cnm_h062"
+        ],
+        "levelReason": "The solution uses finite cancellation, elementary complex multiplication, and high-school trigonometric identities. The modulus product rule is derived from the supplied definition."
+      }
+    ],
+    "assessedIds": [
+      "math:roots-of-unity",
+      "cnm_h098"
+    ],
+    "supportIds": [
+      "math:complex-polar-de-moivre",
+      "math:telescoping",
+      "cnm_h073"
+    ],
+    "annotationRationale": "The targets are cyclic complex-power simplification and modulus calculation. Polar multiplication establishes the nine-power cycle, shifted cancellation evaluates the weighted sum, and a double-angle identity evaluates the remaining modulus. Basic complex arithmetic and unit-circle identities support the written argument.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1984_AMC_12_Q30",
+    "decision": "accept",
+    "mathematicalCheck": "\\(w^9=1\\) and \\(w\\ne1\\) imply \\(G=0\\); shifted subtraction correctly gives \\((1-w)S=-9w\\). The derived modulus product rule gives \\(|S|^{-1}=|1-w|/9\\). Finally, \\(|1-w|^2=4\\sin^220^\\circ\\), yielding \\(2\\sin20^\\circ/9\\).",
+    "levelCheck": "Finite cancellation, complex multiplication, and trigonometric identities stay within precalculus; the modulus rule is explicitly derived.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "Cyclic powers, the modulus component of cnm_h098, polar multiplication, telescoping, and double-angle support correspond to the written reasoning.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "shift-subtract-weighted-sum": "shift-subtract-weighted-sum"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "9ce50ec4750636a070c41396f318ec1003ac5600d47480487799944f5a9f70dd",
+    "inputHash": "45b48f6fb7a4edeebd0a449b1fcf6a131093a9534c6cec3e1f02dfaf9a782ee2",
+    "authorInputHash": "7276621706e4240765270cbfb9de12735d21711e31fe28f6a06d2e40d0c3be1a",
+    "reviewInputHash": "ca2ff3e9560b36d24052a04d928f3118cb9a7f95d9fdf9ca1834335db0944d75",
+    "authorResponseHash": "32692d32be4c63e295a2d1202863c5b888261ea6876f3a37d3c79abdeebc95c4",
+    "reviewerResponseHash": "e76f74d5c376ff69d8931de9f26bfb19505da88c32a3daffbb5ca167fc4b96bb",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

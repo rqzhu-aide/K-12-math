@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1997_AMC_8_Q17",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "4ce8b75861dc1290cdd4334448e8ec3b34e3f65d0836cddf0024a228c089ca22",
+    "figureHashes": {
+      "figures/1997_AMC_8_Q17_question_fig1.svg": "e457961e9c7b03e742034c4f26d1b91576592157c4a085029e903006844d6749"
+    }
+  },
+  "solutionSHA256": "53577d56f8445de97dfff7f475d7d1660d33f2f197c532d05b29d1c9086ce1e5",
+  "solutionFigureHashes": {},
+  "candidateHash": "a7f5262d752b87baceded8aef84722dc46a7793e7d01482a24db5cb57183da7d",
+  "candidate": {
+    "questionId": "1997_AMC_8_Q17",
+    "derivedAnswer": "E, \\(16\\)",
+    "answerStatus": "matches",
+    "answerReason": "Each vertex is an endpoint of four diagonals. The resulting 8 × 4 endpoint count counts every diagonal twice, giving 16.",
+    "methods": [
+      {
+        "id": "count-diagonal-endpoints",
+        "label": "Count diagonals from each vertex",
+        "explanation": "Count the diagonals starting at one vertex first. There are \\(7\\) other vertices, and exactly \\(3\\) of them are joined to it by edges. The remaining \\(7-3=4\\) vertices give diagonals under the question's definition.\n\nDoing this at all \\(8\\) vertices gives \\(8\\cdot4=32\\) counts. Every diagonal appears exactly twice, once from each of its two endpoints. Every diagonal is included because both endpoints are cube vertices not joined by an edge. Therefore the number of diagonals is\n\\[\n\\frac{8\\cdot4}{2}=\\boxed{16},\n\\]\nchoice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_h239",
+          "math:double-counting"
+        ],
+        "prerequisiteIds": [
+          "cnm_p160"
+        ],
+        "levelReason": "The endpoint count is explained using elementary multiplication and division by two. No combination formula or formal graph theory is needed."
+      },
+      {
+        "id": "face-and-interior-diagonals",
+        "label": "Separate face and interior diagonals",
+        "explanation": "A diagonal can either lie on a face or connect opposite vertices through the cube's interior. To see that these cover all possibilities, choose any vertex. Of the other seven vertices, three are adjacent along edges, three are opposite it across one of its three faces, and one is the opposite corner of the cube.\n\nEach of the cube's \\(6\\) square faces has \\(2\\) diagonals, giving \\(6\\cdot2=12\\) face diagonals. Each belongs to just one face, since its endpoints are opposite corners of that face.\n\nFor the interior diagonals, each of the \\(8\\) vertices has exactly one opposite vertex. Pairing these vertices gives \\(8\\div2=4\\) interior diagonals. These do not lie on faces, so the two groups do not overlap. The total is\n\\[\n12+4=\\boxed{16},\n\\]\nchoice \\(\\boxed{\\text{E}}\\).",
+        "nodeIds": [
+          "cnm_h230",
+          "math:double-counting"
+        ],
+        "prerequisiteIds": [
+          "cnm_p160",
+          "cnm_p077"
+        ],
+        "levelReason": "This method uses elementary spatial reasoning and counting in two exhaustive groups. Opposite-vertex pairing is justified directly."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h239"
+    ],
+    "supportIds": [
+      "cnm_p160"
+    ],
+    "annotationRationale": "The route-neutral counting target is selecting unordered pairs of vertices that satisfy the stated restriction, which fits applications of combinations without requiring factorial notation or a combination formula. The first method counts diagonal-endpoint incidences and corrects their multiplicity. The second uses disjoint categories and pairs opposite vertices. Cube structure supports both methods; square properties are local to the face-diagonal method. The annotations do not imply mastery of any catalog node.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1997_AMC_8_Q17",
+    "decision": "accept",
+    "mathematicalCheck": "Each vertex has 7−3=4 nonadjacent vertices, giving 8×4 endpoint incidences and exactly 16 diagonals after dividing by two. Independently, the six faces contribute 12 distinct face diagonals and opposite-vertex pairs contribute 4 interior diagonals. The categories are exhaustive and disjoint, consistent with the displayed examples.",
+    "levelCheck": "Both explanations use elementary spatial reasoning and explicitly justified counting within AMC 8 scope.",
+    "methodDistinctness": "Counting endpoint incidences and separating face from interior diagonals provide distinct, useful approaches.",
+    "annotationCheck": "The unordered vertex-pair target supports the combinations-application annotation without requiring factorial notation. Double counting applies to endpoint multiplicities and opposite-vertex pairing; category addition is local to the second method. Shared cube structure and local square properties are appropriate.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-diagonal-endpoints": "count-diagonal-endpoints",
+    "face-and-interior-diagonals": "face-and-interior-diagonals"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "e46b1b30a832d5485adc8aafa519b9be78100e8520c03d4c86848183cf7fbec6",
+    "acceptedAt": "2026-11-08T00:28:14.323745+00:00",
+    "inputHash": "eb7ea982ac27a6cea0cfb19f12068386f7e89befd501e3875e5838d3c1af1e54",
+    "authorInputHash": "edac7fa3c1eba34b99d852f8add4d0e1fd789fee878f96eea85964610f52cf09",
+    "reviewInputHash": "0c0eb78423277599ed21d69103ca1df63c37408c69d7849f2fc36c917beca231",
+    "authorResponseHash": "a36920800255f063f442dc46d5e456909fe5ff9b9c4afabeeb49c4fc4decdd93",
+    "reviewerResponseHash": "6aa0225c86a4607f9db68ee07f34380888e7e7a3d2c3e741c24023104c538204",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

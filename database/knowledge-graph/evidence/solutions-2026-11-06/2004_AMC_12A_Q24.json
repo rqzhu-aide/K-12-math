@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2004_AMC_12A_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "3f4a640c58a410cc1a3a0e5ea8b5519816f32fc00de6191876c4d8bd0ac9e5bb",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "1338291a476ac7b2152f09df24739fae12f15c519a7491e05f99a220c2ab2df2",
+  "solutionFigureHashes": {},
+  "candidateHash": "f62816ed5aa6597de64d7778e2f5a083a97b8d556b2f8f78b4024d774e8853b4",
+  "candidate": {
+    "questionId": "2004_AMC_12A_Q24",
+    "derivedAnswer": "\\(3\\pi-\\frac{\\sqrt3}{2}\\), choice C",
+    "answerStatus": "matches",
+    "answerReason": "The allowed centers form the intersection lens of the two unit disks centered at A and B. Sweeping a unit disk over that lens adds two 120° annular sectors and two 60° unit sectors. Adding their areas to the lens area gives 3π-√3/2.",
+    "methods": [
+      {
+        "id": "center-lens-and-outer-sectors",
+        "label": "Find the allowed centers and the swept boundary",
+        "explanation": "A radius-\\(1\\) disk centered at \\(O\\) covers \\(\\overline{AB}\\) exactly when \\(OA\\le1\\) and \\(OB\\le1\\). These inequalities are necessary because the endpoints must be covered. They are sufficient because a disk contains the entire segment joining any two of its points. Thus the allowed centers fill the lens \\(L\\) formed by intersecting the unit disks centered at \\(A\\) and \\(B\\).\n\nLet \\(U\\) and \\(V\\) be the two intersections of their boundary circles. The triangles \\(ABU\\) and \\(ABV\\) are equilateral with side \\(1\\). Their altitudes have length\n\\[\n\\sqrt{1-\\left(\\frac12\\right)^2}=\\frac{\\sqrt3}{2},\n\\]\nso \\(UV=\\sqrt3\\). Each boundary arc of \\(L\\) subtends \\(120^\\circ\\) at its center. Each of the two circular segments making up \\(L\\) is therefore a \\(120^\\circ\\) unit sector minus a triangle with base \\(UV\\) and height \\(\\tfrac12\\). Hence\n\\[\n\\operatorname{area}(L)\n=2\\left(\\frac{\\pi}{3}-\\frac12\\cdot\\sqrt3\\cdot\\frac12\\right)\n=\\frac{2\\pi}{3}-\\frac{\\sqrt3}{2}.\n\\]\nWe next determine how the disks extend beyond this lens. A supporting line touches a region and leaves it entirely on one side. Take a supporting line of \\(L\\) touching it at \\(O\\), and shift the line outward by \\(1\\). Every allowed center lies behind the original line, so every radius-\\(1\\) disk lies behind the shifted line. The disk centered at \\(O\\) touches that shifted line.\n\nBoth \\(L\\) and its disk sweep are convex, meaning that they contain segments joining their points. For the sweep, take the same fractional step between two covered points and between their allowed centers. The new center stays in \\(L\\), and the triangle inequality keeps the new point within distance \\(1\\) of that center. Consequently, the shifted supporting lines in all directions determine the entire outside boundary of \\(S\\).\n\nAlong either \\(120^\\circ\\) arc of \\(L\\), shifting outward extends its radii from \\(1\\) to \\(2\\). This adds an annular sector of angle \\(120^\\circ\\). At each corner \\(U\\) or \\(V\\), the outward radius directions from \\(A\\) and \\(B\\) differ by \\(60^\\circ\\). The connecting outside boundary is therefore a radius-\\(1\\) arc centered at that corner, adding a \\(60^\\circ\\) sector.\n\nThe two \\(120^\\circ\\) direction ranges and two \\(60^\\circ\\) ranges exhaust a full turn. The rays continuing \\(AU,BU,AV,BV\\) beyond the corners separate adjacent added pieces, so their interiors do not overlap. Therefore\n\\[\n\\begin{aligned}\n\\operatorname{area}(S)\n&=\\operatorname{area}(L)\n+2\\cdot\\frac{120}{360}\\pi(2^2-1^2)\n+2\\cdot\\frac{60}{360}\\pi\\\\\n&=\\frac{2\\pi}{3}-\\frac{\\sqrt3}{2}\n+2\\pi+\\frac{\\pi}{3}\\\\\n&=\\boxed{3\\pi-\\frac{\\sqrt3}{2}}.\n\\end{aligned}\n\\]\nThe answer is \\(\\text{C}\\).",
+        "nodeIds": [
+          "cnm_257",
+          "cnm_p150",
+          "cnm_139",
+          "cnm_174",
+          "cnm_p148"
+        ],
+        "prerequisiteIds": [
+          "cnm_259",
+          "cnm_250"
+        ],
+        "levelReason": "The method derives the moving-disk boundary using elementary distance and supporting-line reasoning, then computes sector and triangle areas."
+      }
+    ],
+    "assessedIds": [
+      "cnm_257",
+      "cnm_p150"
+    ],
+    "supportIds": [
+      "cnm_259",
+      "cnm_250"
+    ],
+    "annotationRationale": "Sector and composite-area procedures describe the requested calculation. Circle-distance conditions establish the feasible center lens. Equilateral triangles, the Pythagorean theorem, and triangle areas are used within this route. The essential justification of a union swept out by disks is not represented by the existing area or circle-position nodes, so a precise missing concept is proposed.",
+    "needsNewNodes": [
+      {
+        "name": "Swept unions of disks from a center locus",
+        "description": "Translate coverage constraints for fixed-radius disks into a locus of allowed centers, then characterize their union using distance bounds, nearest centers, or supporting lines. Justify the complete boundary and any area decomposition without omissions or overlapping interiors.",
+        "reason": "The catalog covers circle positions and area calculations but lacks the moving-disk union argument needed to establish the region whose area is being computed."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2004_AMC_12A_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "The allowed centers are exactly the intersection lens of the endpoint unit disks. The supporting-line argument identifies its outward unit sweep. The lens, two 120° annular sectors, and two 60° unit sectors have disjoint interiors and total area 3π-√3/2.",
+    "levelCheck": "The convexity and supporting-line reasoning is developed through elementary geometry and the triangle inequality. The area calculation uses only sectors and triangles.",
+    "methodDistinctness": "One complete boundary-and-area method is sufficient.",
+    "annotationCheck": "The existing circle and area nodes are used within scope. The essential swept-union reasoning is honestly identified as a missing concept rather than equated with an unrelated catalog node.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "center-lens-and-outer-sectors": "center-lens-and-outer-sectors"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c2b212a48e391f87e267a12c372498a46dbc0a222b8ccc032110ab19727cb091",
+    "inputHash": "ad399c5ec562f1650bacb02d98c2a521b9c25160398c16f9a34ebe243cb71508",
+    "authorInputHash": "019610a428a682da41ed25e6bcf1c0f192d018d89a4c64ec64fced8f20ddb164",
+    "reviewInputHash": "6b2f835826b14988ec3b4a78db3fd547d90e7f5e4fd8ffc0cab929a2c82534b6",
+    "authorResponseHash": "09450ab3c74f7af58392eb06359a8dc31ad05328bcb8205cd7623f7fadc11279",
+    "reviewerResponseHash": "8d455fc9ad6f81e347b110bf530f6bce6a0feec818045c0c6964a9137b75ddcf",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

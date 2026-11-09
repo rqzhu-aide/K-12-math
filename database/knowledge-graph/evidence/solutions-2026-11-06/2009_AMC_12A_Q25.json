@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2009_AMC_12A_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ed6086c66d9b2b6cdbc0fd5bc8b97f10f82ef547ad152bdfbf67ff84ac80bc1c",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "41b74eccbad6a9766523476844e39c006eda356cbe462dfcc7354054eee55837",
+  "solutionFigureHashes": {},
+  "candidateHash": "d6eef6f165056c8a44875fe0d0d7bb1d9764197ed6a7109c4b8c47a87a44e5cf",
+  "candidate": {
+    "questionId": "2009_AMC_12A_Q25",
+    "derivedAnswer": "A: 0",
+    "answerStatus": "matches",
+    "answerReason": "Exact iteration returns the initial consecutive pair after 24 steps, with every denominator nonzero. Since 2009=24·83+17 and a17=0, the requested absolute value is 0.",
+    "methods": [
+      {
+        "id": "exact-consecutive-pair-cycle",
+        "label": "Find a repeating pair by exact arithmetic",
+        "explanation": "The recurrence uses two preceding terms, so repeating one value is not enough to establish a cycle. We look for a repeated consecutive pair, because that pair determines every subsequent term.\n\nTo keep the arithmetic short, write\n\\[\nr=\\sqrt3,\\qquad p=2+r,\\qquad q=2-r.\n\\]\nThen \\(r^2=3\\), \\(pq=1\\), and \\(p>r>1\\). The first new terms are\n\\[\na_3=\\frac{1+1/r}{1-1/r}=\\frac{r+1}{r-1}=p,\n\\]\n\\[\na_4=\\frac{1/r+p}{1-p/r}=-p,\n\\qquad\n a_5=\\frac{p-p}{1+p^2}=0.\n\\]\nContinuing the same substitutions, simplifying with \\(r^2=3\\) and \\(pq=1\\), gives\n\\[\n(a_1,\\ldots,a_6)=(1,1/r,p,-p,0,-p),\n\\]\n\\[\n(a_7,\\ldots,a_{12})=(-p,1/r,-1,-q,-r,-p),\n\\]\n\\[\n(a_{13},\\ldots,a_{18})=(1,-1/r,q,-q,0,-q),\n\\]\n\\[\n(a_{19},\\ldots,a_{24})=(-q,-1/r,-1,-p,r,-q),\n\\]\nand finally\n\\[\n(a_{25},a_{26})=(1,1/r)=(a_1,a_2).\n\\]\nFor example, the transition from the two consecutive values \\(-p,-p\\) is simplified by\n\\[\n\\frac{-2p}{1-p^2}=\\frac{2p}{p^2-1}=\\frac1r,\n\\]\nsince \\(p^2-1=2rp\\).\n\nWe must check that none of these steps divides by zero. Among the consecutive products in the displayed cycle, every positive product belongs to one of these two lists:\n\\[\n1/r,\\ q,\\ qr,\\ q^2,\\ q/r<1,\n\\]\n\\[\np,\\ p/r,\\ pr,\\ p^2>1.\n\\]\nThese comparisons follow from \\(p>r>1\\) and \\(q=1/p\\); in particular, \\(qr=r/p<1\\). Every other consecutive product is nonpositive. Thus no consecutive product equals \\(1\\), so every recurrence denominator is nonzero.\n\nThe initial pair has returned after 24 steps. Since every pair determines the next pair and all denominators in the cycle are valid, the same block repeats indefinitely:\n\\[\na_{n+24}=a_n\\qquad(n\\ge1).\n\\]\nNow \\(2009=24\\cdot83+17\\), and the displayed values give \\(a_{17}=0\\). Therefore \\(|a_{2009}|=\\boxed{0}\\), choice \\(\\mathrm{A}\\).",
+        "nodeIds": [
+          "cnm_h200",
+          "math:function-composition-iteration"
+        ],
+        "prerequisiteIds": [
+          "cnm_173",
+          "cnm_156",
+          "cnm_h197"
+        ],
+        "levelReason": "Uses exact radical arithmetic and a proved finite cycle of consecutive pairs. Trigonometric or complex-number substitutions are unnecessary."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h200"
+    ],
+    "supportIds": [
+      "cnm_173",
+      "cnm_156"
+    ],
+    "annotationRationale": "The task-level target is determining a distant term of the given recurrence. The written route iterates the known consecutive-pair update, proves repetition of the entire pair, and checks its inherited denominator restrictions. Radical arithmetic and definedness of fractions support this route. Trigonometric and congruence nodes are not attached because those procedures are not used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2009_AMC_12A_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The displayed terms satisfy the recurrence and return to (a25,a26)=(1,1/√3). The listed positive consecutive products are strictly below or above 1, and all remaining products are nonpositive, so every denominator is nonzero. Pair repetition proves a period of 24; 2009=24·83+17 and a17=0.",
+    "levelCheck": "Exact radical arithmetic and deterministic pair repetition provide an accessible, complete AMC 12 solution.",
+    "methodDistinctness": "One arithmetic cycle method is sufficient; a trigonometric alternative is unnecessary.",
+    "annotationCheck": "The recurrence target, pair-iteration route, radical arithmetic, and algebraic-fraction restrictions fit their catalog scopes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "exact-consecutive-pair-cycle": "exact-consecutive-pair-cycle"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "e073abe054bf5d537b3bea55ede84939277ebf8f25812cac05e75ed4a5634afe",
+    "inputHash": "28eb855f880c643d8892952558b886fa45a7177e3b21df4ac5f5ea62d49f2497",
+    "authorInputHash": "0a4684d3c66fb74a2e31a3cd72a40c4f4a34161659f4cbbd5c0c3de15853d961",
+    "reviewInputHash": "99b03f5ef4a9c874e55797b3816923c91247e115911b7362562a32573d8cce2e",
+    "authorResponseHash": "69665da92b53c2896a889080cbe67819693582386a48257714fea7611d5716f8",
+    "reviewerResponseHash": "2ce884bea9f7947ea3e96f82d9537a8ec1d50b8447127c4a84d5cffcb1f8fb33",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

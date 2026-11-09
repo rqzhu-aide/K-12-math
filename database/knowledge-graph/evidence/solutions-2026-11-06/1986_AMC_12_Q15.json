@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1986_AMC_12_Q15",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "7d04c6def2f38e9ee5140c1d1c180cb02748956c1f22258ace92461de7ecf693",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "950e5e27e2f89c0f459b50b84091504b96b72003a40d7e70f384ccf3d339f06f",
+  "solutionFigureHashes": {},
+  "candidateHash": "58eee97a2d47f74c6990529c2ad06770c32f0d432b8c268e9fcd9ded5768c67d",
+  "candidate": {
+    "questionId": "1986_AMC_12_Q15",
+    "derivedAnswer": "C: always greater than \\(A\\)",
+    "answerStatus": "matches",
+    "answerReason": "The student's result exceeds the true mean by \\(((z-x)+(z-y))/12\\), which is strictly positive whenever x<y<z.",
+    "methods": [
+      {
+        "id": "compare-by-subtraction",
+        "label": "Method 1: Compare the two results",
+        "explanation": "Write both averages explicitly so that we can compare them. Let \\(S\\) be the student's final result. Then\n\\[\nS=\\frac{\\frac{x+y}{2}+z}{2}\n=\\frac{x+y+2z}{4},\n\\qquad A=\\frac{x+y+z}{3}.\n\\]\nSubtracting reveals whether the student's result is too large or too small:\n\\[\n\\begin{aligned}\nS-A\n&=\\frac{3(x+y+2z)-4(x+y+z)}{12}\\\\\n&=\\frac{2z-x-y}{12}\\\\\n&=\\frac{(z-x)+(z-y)}{12}.\n\\end{aligned}\n\\]\nBoth \\(z-x\\) and \\(z-y\\) are strictly positive because \\(x<y<z\\). The denominator is positive, so \\(S-A>0\\). The student's result is always greater than \\(A\\), choice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "cnm_211",
+          "cnm_h019",
+          "cnm_036"
+        ],
+        "prerequisiteIds": [
+          "cnm_096",
+          "cnm_034",
+          "cnm_035"
+        ],
+        "levelReason": "Uses arithmetic-mean formulas, elementary symbolic subtraction, and positivity of two differences."
+      },
+      {
+        "id": "compare-the-weights",
+        "label": "Method 2: Track how much weight each group receives",
+        "explanation": "Let \\(m=(x+y)/2\\), the first average computed by the student. Since both \\(x\\) and \\(y\\) are less than \\(z\\), their average satisfies \\(m<z\\).\n\nThe number \\(m\\) represents two original observations, because \\(x+y=2m\\). Therefore the correct mean is\n\\[\nA=\\frac{2m+z}{3}\n=m+\\frac{z-m}{3}.\n\\]\nThe student instead gives \\(m\\) and \\(z\\) equal weight, obtaining\n\\[\nS=\\frac{m+z}{2}\n=m+\\frac{z-m}{2}.\n\\]\nThus the correct mean moves one third of the distance from \\(m\\) toward \\(z\\), whereas the student's result moves one half of that distance. Since \\(z-m>0\\), one half of it is strictly larger than one third. Hence \\(S>A\\) whenever \\(x<y<z\\), so the answer is choice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "cnm_211",
+          "cnm_212"
+        ],
+        "prerequisiteIds": [
+          "cnm_096",
+          "cnm_034"
+        ],
+        "levelReason": "Uses elementary arithmetic and weighted means, explained through grouping two observations."
+      }
+    ],
+    "assessedIds": [
+      "cnm_211"
+    ],
+    "supportIds": [
+      "cnm_096"
+    ],
+    "annotationRationale": "The shared target is understanding and correctly forming the arithmetic mean. Inequality properties support the strict comparison in both methods. Subtraction and polynomial simplification belong to the first route; interpreting group sizes as weights belongs to the second. These alternatives are not combined into a required checklist.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1986_AMC_12_Q15",
+    "decision": "accept",
+    "mathematicalCheck": "The first method obtains a strictly positive difference with numerator (z-x)+(z-y). Independently, the second compares one-half and one-third of the positive distance z-m. Both prove that the student's result always exceeds A.",
+    "levelCheck": "Both arguments use accessible algebra, arithmetic means, and elementary inequalities.",
+    "methodDistinctness": "Subtraction and the group-weight interpretation provide distinct, independently complete insights.",
+    "annotationCheck": "The mean target and shared inequality support are justified. Subtraction and polynomial operations belong to the first route, while weighted means belong to the second.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "compare-by-subtraction": "compare-by-subtraction",
+    "compare-the-weights": "compare-the-weights"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "e6c03ee03cbc2d8dabcac32e100f16459895ceb394d188878e6d7c8f927d0ea5",
+    "inputHash": "6e29cc5990b22cd9d29521159fdaebc647680c1db0c009d2f9272b708640fc90",
+    "authorInputHash": "063dff331532a76f8774545a62572eedd3b2980db19e3e9d635b48826dc9f6d1",
+    "reviewInputHash": "98f2f6f6f046db9eb66e8715da8f9ad28b0c5ed5e764d54642bbf1bf64b88c13",
+    "authorResponseHash": "0792ea6cf15d6d659ded1255926c47dc150777d9e1f93887b3fe9f0388e29822",
+    "reviewerResponseHash": "74024e867a0286b8baeb715679be5a6cd203c22b6d2308c8cb01955c23942403",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

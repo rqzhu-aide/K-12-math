@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1982_AMC_12_Q29",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "6181f8e23d3157bff09f7997ef29dea28cdcd0a4edaeccb52438851f8a562af7",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "8c1bdc11f42e9f6bbefd92cbe87fe6d0c4b933c3f9a81ab8710008b07310b689",
+  "solutionFigureHashes": {},
+  "candidateHash": "660d1d5ceda121564bcb7185ffcea2b32feaa50cd1c62de6e141266d7071603b",
+  "candidate": {
+    "questionId": "1982_AMC_12_Q29",
+    "derivedAnswer": "\\(\\frac1{32}\\), choice A",
+    "answerStatus": "matches",
+    "answerReason": "A product-decreasing redistribution reduces every feasible triple to one whose largest entry is twice its smallest. A factored inequality proves the lower bound 1/32, attained exactly at permutations of (1/4,1/4,1/2).",
+    "methods": [
+      {
+        "id": "redistribute-to-ratio-boundary",
+        "label": "Separate the smallest and largest entries",
+        "explanation": "The conditions are unchanged by reordering, so assume \\(x\\le y\\le z\\). The ratio restriction then says \\(z\\le2x\\). With \\(y\\) fixed, making the smallest entry smaller and the largest entry larger decreases their product. We can make this move until their ratio reaches \\(2\\).\n\nSet\n\\[\n\\delta=\\frac{2x-z}{3}\\ge0,\n\\qquad u=x-\\delta=\\frac{x+z}{3}>0.\n\\]\nThen \\(z+\\delta=2u\\), and\n\\[\nu\\le x\\le y\\le z\\le2u.\n\\]\nThus the new triple \\((u,y,2u)\\) still satisfies the ratio restriction and has sum \\(1\\). Moreover,\n\\[\n\\begin{aligned}\nu(2u)\n&=(x-\\delta)(z+\\delta)\\\\\n&=xz-\\delta(z-x)-\\delta^2\\le xz.\n\\end{aligned}\n\\]\nMultiplying by \\(y>0\\) gives \\(xyz\\ge2u^2y\\).\n\nWrite \\(t=y/u\\). The ordering gives \\(1\\le t\\le2\\), and the sum condition gives \\(u(t+3)=1\\). Therefore\n\\[\n2u^2y=\\frac{2t}{(t+3)^3}.\n\\]\nTo compare this with \\(1/32\\), factor the difference after multiplying by the positive denominator:\n\\[\n64t-(t+3)^3\n=(t-1)(27-10t-t^2).\n\\]\nFor \\(1\\le t\\le2\\), the first factor is nonnegative and the second is at least \\(27-20-4=3\\). Consequently,\n\\[\nxyz\\ge\\frac{2t}{(t+3)^3}\\ge\\frac1{32}.\n\\]\nEquality requires \\(\\delta=0\\) and \\(t=1\\), giving \\((x,y,z)=(1/4,1/4,1/2)\\) in this ordering. This triple satisfies every condition. Hence the minimum is \\(\\boxed{1/32}\\), choice A, attained at its permutations.",
+        "nodeIds": [
+          "cnm_h019",
+          "cnm_h018",
+          "cnm_146"
+        ],
+        "prerequisiteIds": [
+          "cnm_015",
+          "cnm_096"
+        ],
+        "levelReason": "The proof uses ordering, an explicit product comparison, and a polynomial factorization. It requires no calculus or advanced optimization theorem."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_h018"
+    ],
+    "annotationRationale": "The task-level target is a sharp bound for a continuous multivariable product under sum and ratio constraints. The catalog lacks a suitable route-neutral node for that target. The actual method compares products by subtraction, applies elementary inequality properties, and verifies a factored polynomial difference. It does not use quadratic-function extrema, AM-GM, or derivatives.",
+    "needsNewNodes": [
+      {
+        "name": "Sharp product bounds under sum and ratio constraints",
+        "description": "Determine sharp bounds for products of positive real variables with a fixed sum and specified pairwise ratio bounds. Prove the bound for every feasible tuple and identify feasible equality cases.",
+        "reason": "The existing AM-GM and derivative optimization nodes prescribe methods absent from this proof, while the extremal-principle node is explicitly discrete. None represents this continuous constrained product target."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1982_AMC_12_Q29",
+    "decision": "accept",
+    "mathematicalCheck": "The redistribution preserves positivity, sum, and the ratio bound while decreasing the product by y[δ(z-x)+δ²]. On the resulting boundary, 1≤t≤2 and 64t-(t+3)³=(t-1)(27-10t-t²)≥0. Equality occurs exactly at permutations of (1/4,1/4,1/2).",
+    "levelCheck": "The explicit redistribution and factored comparison provide a complete elementary proof without calculus.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The subtraction, inequality, and polynomial-operation nodes fit the proof. Leaving assessedIds empty while proposing the missing continuous-product target is justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "redistribute-to-ratio-boundary": "redistribute-to-ratio-boundary"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "24553521e87151e7f0213060fc72ec63b0509188e7879baadac395e72a56e85e",
+    "inputHash": "082810e943a425dac31fa7e92c730cbf0dc074eb018b34df54eb93501692fbc7",
+    "authorInputHash": "facef598a2dfd1db3d124ef46cd0f117064f0f56cbae1bb59226852bd43705dd",
+    "reviewInputHash": "715612f01cca376a4b190d4bea0e0c372b413fdaea36f552927936d88d84bd38",
+    "authorResponseHash": "ccc3215831cfc6f7bab7b6596b747678101fc22ea626b96080d4690a574b9e2a",
+    "reviewerResponseHash": "8b56de014efb0decefc3b36f6dd22164d624999faadd9c713447b2ec9ce0e8af",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

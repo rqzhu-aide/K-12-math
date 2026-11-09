@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1959_AMC_12_Q19",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "7920e29d6981fe551d7e9483a021cab840bbc793620a7e4309fee708e5fa0aff",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "42511066d42f56f2126fc59e19297a80e879edd47848c4fc3dc7d0ba89c097b0",
+  "solutionFigureHashes": {},
+  "candidateHash": "84a3be9ffb50c4f70d54e9d82b9967f0c02909271455c2bd1eb0eaca08ba0d8b",
+  "candidate": {
+    "questionId": "1959_AMC_12_Q19",
+    "derivedAnswer": "B, \\(13\\)",
+    "answerStatus": "matches",
+    "answerReason": "Every measurable positive weight is an integer at most 13 lb. The 1 lb and 3 lb weights produce all net differences from -4 through 4; using the 9 lb weight then produces every mass from 5 through 13 lb, while 1 through 4 lb are measurable without it.",
+    "methods": [
+      {
+        "id": "construct-all-weights",
+        "label": "Construct every weight from 1 through 13",
+        "explanation": "Fix the object in the left pan. At balance, its weight equals the total of the given weights in the right pan minus the total of those in the left pan. Each given weight may be used once or left unused. Thus every measurable object weight is an integer number of pounds, and it cannot exceed \\(1+3+9=13\\).\n\nUsing just the \\(1\\) lb and \\(3\\) lb weights, the possible net differences include\n\\[\n0,\\quad \\pm1,\\quad \\pm(3-1),\\quad \\pm3,\\quad \\pm(3+1).\n\\]\nA positive contribution means placing a weight opposite the object; a negative contribution means placing it with the object. These expressions give every integer from \\(-4\\) through \\(4\\). In particular, objects weighing \\(1,2,3,4\\) lb can be weighed without using the \\(9\\) lb weight.\n\nNow place the \\(9\\) lb weight opposite the object. Combining it with each of the smaller weights' net differences gives every integer from\n\\[\n9-4=5\\quad\\text{through}\\quad9+4=13.\n\\]\nConsequently every integer weight from \\(1\\) through \\(13\\) lb is measurable, and the earlier bound rules out any others. The ranges \\(1\\) through \\(4\\) and \\(5\\) through \\(13\\) are disjoint, so the number of distinct weights is \\(4+9=\\boxed{13}\\), choice \\(\\text{B}\\).",
+        "nodeIds": [
+          "math:bijective-counting",
+          "cnm_h230"
+        ],
+        "prerequisiteIds": [
+          "cnm_002",
+          "cnm_013"
+        ],
+        "levelReason": "Uses signed arithmetic, an exhaustive list of small differences, and a bound attained by explicit weighings."
+      },
+      {
+        "id": "count-distinct-signed-placements",
+        "label": "Count distinct signed placements",
+        "explanation": "Fix the object in the left pan. Each given weight has three choices: opposite the object, with the object, or unused. Represent these choices by \\(+1,-1,0\\), respectively. The resulting net difference is\n\\[\nm=s_1+3s_3+9s_9,\n\\qquad s_1,s_3,s_9\\in\\{-1,0,1\\}.\n\\]\nA positive value of \\(m\\) is exactly an object weight that this placement can balance. There are \\(3^3=27\\) placements, but we must check that their net differences are distinct.\n\nIf two placements differ in the position of the \\(9\\) lb weight, its contribution changes by at least \\(9\\), while the two smaller contributions together can change by at most \\(2(1+3)=8\\). Their totals therefore cannot agree. If the \\(9\\) lb placements agree but the \\(3\\) lb placements differ, the change of at least \\(3\\) cannot be cancelled by the \\(1\\) lb contribution, whose change is at most \\(2\\). Finally, if only the \\(1\\) lb placement differs, the total changes. Thus all \\(27\\) signed sums are distinct.\n\nThe all-unused placement gives zero, and distinctness shows that no other placement does. Reversing all signs pairs each nonzero sum with its negative. Each pair contains exactly one positive sum, so the number of measurable positive weights is\n\\[\n\\frac{27-1}{2}=\\boxed{13},\n\\]\nchoice \\(\\text{B}\\). Every balance is represented by these placement choices, so no measurable weight is omitted.",
+        "nodeIds": [
+          "math:bijective-counting",
+          "cnm_h231"
+        ],
+        "prerequisiteIds": [
+          "cnm_002",
+          "cnm_006",
+          "cnm_013"
+        ],
+        "levelReason": "Uses three choices per weight, elementary bounds to prove uniqueness, and pairing of opposite signed sums."
+      }
+    ],
+    "assessedIds": [
+      "math:bijective-counting"
+    ],
+    "supportIds": [
+      "cnm_002",
+      "cnm_013"
+    ],
+    "annotationRationale": "The target is counting distinct attainable masses with no omissions or repetitions. The first method identifies those masses with the integers 1 through 13 and counts disjoint ranges. The second uses the multiplication principle for placements, proves distinctness, and pairs opposite sums. Signed modeling and arithmetic support both methods; the addition and multiplication counting principles remain method-specific.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1959_AMC_12_Q19",
+    "decision": "accept",
+    "mathematicalCheck": "The first method proves every attainable positive mass is an integer at most 13 and constructs all integers 1 through 13. The second proves all 27 signed placements have distinct totals using 9>8 and 3>2, then removes the unique zero and pairs opposite totals to obtain 13. Both counts are exhaustive without duplication.",
+    "levelCheck": "Both methods use elementary signed arithmetic, counting, and explicitly justified bounds.",
+    "methodDistinctness": "Constructing the attainable range and counting unique signed placements offer distinct, accessible insights.",
+    "annotationCheck": "Bijective counting fits both correspondences. Addition and multiplication counting principles are correctly method-specific, while signed modeling and arithmetic support both methods. The additive-inverse prerequisite fits the second method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "construct-all-weights": "construct-all-weights",
+    "count-distinct-signed-placements": "count-distinct-signed-placements"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "10f678130194918ec927baae0841c286e23ad2cc3fe3464e2b00ae3738457eca",
+    "inputHash": "9d82e28f5cc352da6a5555089e5bb2bd6e5a9224322c7c603a2e4aed4b6e5cfe",
+    "authorInputHash": "befbd7207ebb17eebef6d0d7253417acebb98d5a5b6ac3929db4a49c9956b1b4",
+    "reviewInputHash": "12da5855b618bde5d43d5591d52773b3eb080a02d7b636542b8556ecd6227353",
+    "authorResponseHash": "24186a0045427fc31040f0da9b7d13de143b5b6689d55aef2876b91f5704d903",
+    "reviewerResponseHash": "d4020bcc60cedea75aa5d7816ef21625806baa6d4cea48da43764b86cead2580",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2014_AMC_12A_Q13",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "87d7fbfbd293054ed8ad229f26d0b3abc138f93cd44414720ec2fecd0d1cc8a3",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "07284d5785ee3beebc9c14338af032a23cd6b6b50bd2660be22aab29cff7e306",
+  "solutionFigureHashes": {},
+  "candidateHash": "0675e8387f4bc0d258ab99953904ff82d171e510d8b5b4e9088c61116ef277aa",
+  "candidate": {
+    "questionId": "2014_AMC_12A_Q13",
+    "derivedAnswer": "B: 2220",
+    "answerStatus": "matches",
+    "answerReason": "Classifying by the number of two-person rooms gives 120+1200+900=2220 assignments. Equivalently, subtracting 905 assignments with an overfull room from 5^5 gives the same result.",
+    "methods": [
+      {
+        "id": "classify-two-person-rooms",
+        "label": "Classify by the number of shared rooms",
+        "explanation": "The friends and the five rooms are distinct. Since each room holds at most two friends, there can be \\(0\\), \\(1\\), or \\(2\\) two-person rooms. These cases cover every valid assignment and cannot overlap.\n\nIf there are no two-person rooms, every friend gets a separate room. Assigning rooms to the five friends in a fixed order gives\n\\[\n5\\cdot4\\cdot3\\cdot2\\cdot1=120\n\\]\nassignments.\n\nIf there is exactly one two-person room, choose its pair of friends in \\(5\\cdot4/2=10\\) ways. The division by \\(2\\) removes the two orders of the same pair. Choose their room in \\(5\\) ways, then assign the other three friends to different rooms in \\(4\\cdot3\\cdot2\\) ways. This gives\n\\[\n10\\cdot5\\cdot4\\cdot3\\cdot2=1200\n\\]\nassignments.\n\nIf there are two two-person rooms, choose the friend sleeping alone in \\(5\\) ways. To split the other four friends into two pairs, take the first of those friends in a fixed ordering. There are \\(3\\) choices for that friend's partner, and the other pair is then forced. This counts each division into pairs once. The singleton and the two pairs are three distinct groups, which can be assigned to distinct rooms in \\(5\\cdot4\\cdot3\\) ways. The count is\n\\[\n5\\cdot3\\cdot5\\cdot4\\cdot3=900.\n\\]\nEvery assignment determines its groups and their rooms uniquely, so none is counted twice within a case. Adding the three cases gives\n\\[\n120+1200+900=\\boxed{2220},\n\\]\nchoice B.",
+        "nodeIds": [
+          "cnm_h232",
+          "cnm_h239",
+          "cnm_h235"
+        ],
+        "prerequisiteIds": [
+          "cnm_h231",
+          "cnm_h236",
+          "cnm_h233"
+        ],
+        "levelReason": "The method uses elementary case counting, unordered pairs, and assignments to distinct rooms, all within AMC 12 counting scope."
+      },
+      {
+        "id": "subtract-overfull-rooms",
+        "label": "Subtract assignments with an overfull room",
+        "explanation": "First allow any number of friends in a room. Each of the five distinct friends has five room choices, so there are \\(5^5=3125\\) unrestricted assignments. We will subtract those in which some room has at least three friends.\n\nThere can be at most one such room, because two rooms with at least three friends each would require at least six friends. Thus every invalid assignment has a unique overfull room, which can be chosen in \\(5\\) ways.\n\nFor one chosen room, count according to its exact occupancy. If it contains exactly three friends, its occupants can be chosen in \\(10\\) ways: choosing the three occupants is equivalent to choosing the two excluded friends, giving \\(5\\cdot4/2=10\\). Each excluded friend then has \\(4\\) room choices, for \\(10\\cdot4^2\\) assignments.\n\nIf the room contains exactly four friends, choose the excluded friend in \\(5\\) ways and that friend's room in \\(4\\) ways, giving \\(5\\cdot4\\). If it contains all five friends, there is \\(1\\) assignment.\n\nThese exact-occupancy cases are disjoint, and the unique overfull room prevents duplication across room choices. Therefore the invalid count is\n\\[\n5\\left(10\\cdot4^2+5\\cdot4+1\\right)=905.\n\\]\nThe valid count is consequently\n\\[\n3125-905=\\boxed{2220},\n\\]\nchoice B.",
+        "nodeIds": [
+          "cnm_h232",
+          "cnm_h239",
+          "cnm_h010"
+        ],
+        "prerequisiteIds": [
+          "cnm_h231",
+          "cnm_h236"
+        ],
+        "levelReason": "Counting the complement uses the same elementary guest selections and product principle as the direct method."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h232"
+    ],
+    "supportIds": [
+      "cnm_h231",
+      "cnm_h236"
+    ],
+    "annotationRationale": "The common target is constructing an exhaustive count with addition across cases and multiplication within cases. Both routes use the product principle and unordered selections of friends. Assigning distinct groups to distinct rooms is specific to the direct route through cnm_h235; subtracting invalid assignments is specific to the complement route through cnm_h010.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2014_AMC_12A_Q13",
+    "decision": "accept",
+    "mathematicalCheck": "The exhaustive shared-room cases contribute \\(120+1200+900=2220\\); choosing the first remaining friend's partner counts each pairing once. Independently, every invalid assignment has a unique overfull room, giving \\(5(10\\cdot16+5\\cdot4+1)=905\\) invalid assignments and \\(3125-905=2220\\).",
+    "levelCheck": "Both methods explain the selections, products, exhaustive cases, and absence of duplication at an appropriate contest level.",
+    "methodDistinctness": "Direct occupancy classification and counting the complement provide genuinely different approaches.",
+    "annotationCheck": "Combined counting is the common target. Product counting and unordered selections support both routes, while permutation applications and complement counting are correctly local to their respective methods.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "classify-two-person-rooms": "classify-two-person-rooms",
+    "subtract-overfull-rooms": "subtract-overfull-rooms"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "8a2e08a7cff02a173ed0fa3b6d3b17423a1a443d0a4fe8b37e911f40ce93eb6b",
+    "inputHash": "941bd726f94504cba53d5fe1039733a9f65f9b433f645ce3444f61f8422d1dcf",
+    "authorInputHash": "daa923440ad545b71f1973187d2147882884e5ad89bcc88958981c89d1e6e55b",
+    "reviewInputHash": "7143a69c87a2f6f85e2eeb34c688fa4b0de1002b359e7253264d01563edb42cd",
+    "authorResponseHash": "73fe1b7aff114344e1685d983b04379867a5b285eb46dcc9cb60c492facaa1d8",
+    "reviewerResponseHash": "46a64ca473dc5ac1f8917eaa06dc8215d627ecaf8387538bad825c741e128df9",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

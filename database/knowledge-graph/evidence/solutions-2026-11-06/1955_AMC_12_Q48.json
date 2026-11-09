@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1955_AMC_12_Q48",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "6e582bffd95291d0e12138ae3e8c632dd59f0c0548371b0ea466a7403dee6f47",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "bcecd501ec15ab9a51ff55516d6b188776c30df5275b2a38a5c8590f401266a1",
+  "solutionFigureHashes": {},
+  "candidateHash": "226660e9e64f66473d8c63d75054cb7e37396e3728a1dd213bff497cf20dd2bc",
+  "candidate": {
+    "questionId": "1955_AMC_12_Q48",
+    "derivedAnswer": "B, HE=HG is not necessarily correct",
+    "answerStatus": "matches",
+    "answerReason": "The existence of G rules out the reversed placement of H. In the remaining construction, A, C, D, and E always hold, while a right isosceles triangle gives HE=2 and HG=√5.",
+    "methods": [
+      {
+        "id": "midpoint-geometry",
+        "label": "Use midpoint geometry",
+        "explanation": "The medians tell us that \\(E,F,D\\) are the midpoints of \\(BC,AC,AB\\), respectively. Thus the triangle midsegment theorem gives\n\\[\nFE\\parallel AB,\\qquad FE=\\frac12 AB.\n\\]\nThere are two possible endpoints \\(H\\) satisfying the parallel and equal-length condition. One completes parallelogram \\(AEHF\\); the other completes parallelogram \\(AEFH\\). The latter would give \\(AH\\parallel EF\\parallel AB\\), placing \\(A,B,H\\) on one line parallel to \\(EF\\). Then \\(BH\\) could not meet \\(FE\\) extended. The stated existence of \\(G\\) therefore forces \\(AEHF\\) to be a parallelogram, proving A.\n\nIts opposite sides give \\(EH\\parallel AF\\) and \\(EH=AF\\). Since \\(AF=FC\\), quadrilateral \\(FCHE\\) is also a parallelogram. Consequently,\n\\[\nCH\\parallel AB,\\qquad CH=FE=\\frac12 AB=BD.\n\\]\nTherefore \\(BDCH\\) is a parallelogram, so \\(BH=DC\\). This proves C.\n\nLet \\(M\\) be the midpoint of \\(BH\\). In triangle \\(BCH\\), the segment joining midpoints \\(E\\) and \\(M\\) is parallel to \\(CH\\) and has half its length. Since \\(FE\\parallel CH\\), the line \\(EM\\) is the same line as \\(FE\\), so \\(M=G\\). Hence \\(G\\) is the midpoint of \\(BH\\), proving E, and\n\\[\nEG=\\frac12 CH=\\frac14 AB.\n\\]\nThe directions from \\(F\\) to \\(E\\) and from \\(E\\) to \\(G\\) both agree with the direction from \\(C\\) to \\(H\\). Thus \\(F,E,G\\) occur in that order, giving\n\\[\nFG=FE+EG=\\frac12 AB+\\frac14 AB=\\frac34 AB.\n\\]\nThis proves D.\n\nTo test B, take a right triangle with \\(AB=AC=4\\) and \\(\\angle A=90^\\circ\\). Then \\(HE=AF=2\\). Since \\(AD=2\\), the Pythagorean theorem in triangle \\(ADC\\) gives\n\\[\nDC=\\sqrt{2^2+4^2}=2\\sqrt5.\n\\]\nTherefore \\(HG=BH/2=DC/2=\\sqrt5\\ne HE\\). Statement B is not necessarily correct, so the answer is \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_113",
+          "cnm_055",
+          "cnm_184",
+          "cnm_183",
+          "cnm_185",
+          "cnm_174",
+          "cnm_071"
+        ],
+        "prerequisiteIds": [
+          "cnm_067",
+          "cnm_110",
+          "cnm_180"
+        ],
+        "levelReason": "The proof uses elementary midpoint geometry, parallelograms, and the Pythagorean theorem."
+      },
+      {
+        "id": "coordinate-check",
+        "label": "Represent the construction with coordinates",
+        "explanation": "Coordinates let us verify the statements for a general triangle. Choose axes so that\n\\[\nA=(0,0),\\qquad B=(b,0),\\qquad C=(p,q),\n\\]\nwhere \\(b>0\\) and \\(q>0\\). The median endpoints are\n\\[\nD=\\left(\\frac b2,0\\right),\\quad\nE=\\left(\\frac{b+p}{2},\\frac q2\\right),\\quad\nF=\\left(\\frac p2,\\frac q2\\right).\n\\]\nA segment parallel and equal to \\(AE\\) has either the same coordinate changes as \\(AE\\), or their negatives. Starting at \\(F\\), these possibilities give\n\\[\nH=\\left(p+\\frac b2,q\\right)\n\\quad\\text{or}\\quad H=\\left(-\\frac b2,0\\right).\n\\]\nThe second possibility makes \\(BH\\) horizontal at height zero, while \\(FE\\) is horizontal at height \\(q/2>0\\). It cannot produce \\(G\\). Hence the first possibility is required.\n\nFrom \\(E\\) to \\(H\\), the coordinate changes are \\((p/2,q/2)\\), exactly those from \\(A\\) to \\(F\\). Thus \\(EH\\parallel AF\\), and the given \\(FH\\parallel AE\\) proves that \\(AEHF\\) is a parallelogram. Statement A holds.\n\nThe horizontal line \\(FE\\) meets \\(BH\\) at height \\(q/2\\), halfway between the heights of \\(B\\) and \\(H\\). Therefore\n\\[\nG=\\left(\\frac p2+\\frac{3b}{4},\\frac q2\\right)\n\\]\nis the midpoint of \\(BH\\). This proves E, and the horizontal distance from \\(F\\) to \\(G\\) is \\(3b/4=3AB/4\\), proving D. The distance formula also gives\n\\[\nBH^2=\\left(p-\\frac b2\\right)^2+q^2=DC^2,\n\\]\nso C holds.\n\nFor a counterexample to B, set \\(b=4,p=0,q=4\\). Then \\(E=(2,2)\\), \\(H=(2,4)\\), and \\(G=(3,2)\\). Hence\n\\[\nHE=2,\\qquad HG=\\sqrt{1^2+2^2}=\\sqrt5.\n\\]\nThus B can fail while all the construction conditions hold. The answer is \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_113",
+          "cnm_055",
+          "cnm_084",
+          "cnm_h087",
+          "cnm_h173",
+          "cnm_184",
+          "cnm_071"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_174",
+          "cnm_110"
+        ],
+        "levelReason": "Coordinate midpoint averages and the distance formula use school algebra and the Pythagorean theorem."
+      }
+    ],
+    "assessedIds": [
+      "cnm_113",
+      "cnm_055"
+    ],
+    "supportIds": [
+      "cnm_071"
+    ],
+    "annotationRationale": "The route-neutral targets are interpreting medians and determining midpoint and length relations in the construction. Both methods distinguish necessary statements from one disproved by a counterexample. The first route uses parallelogram properties and midsegments; the second uses coordinate operations and distances. Those alternative procedures are not combined into a required checklist.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1955_AMC_12_Q48",
+    "decision": "accept",
+    "mathematicalCheck": "The reversed placement of H prevents the required intersection G. The remaining placement gives \\(BH=DC\\), G the midpoint of BH, and \\(FG=3AB/4\\). The counterexample has \\(HE=2\\) and \\(HG=\\sqrt5\\), disproving B.",
+    "levelCheck": "Both methods explain the decisive deductions using accessible school geometry and algebra.",
+    "methodDistinctness": "The synthetic midpoint proof and general coordinate verification are genuinely distinct and comparably accessible.",
+    "annotationCheck": "The assessed midpoint and median concepts are route-neutral. Parallelogram, midsegment, coordinate, and distance procedures are appropriately method-local; the shared counterexample annotation is justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "midpoint-geometry": "solution:midpoint-geometry:bcecd501ec15",
+    "coordinate-check": "coordinate-check"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "8f6ae153281150a62ebf6a8838bf4f64aa8a9ece8d532c4f8e2ced00b59923e3",
+    "inputHash": "b67f648e86290ee461b17221d5b83027615a2f287976103f41bf7280bbd7a39d",
+    "authorInputHash": "0a4a11d7518ab0c32d609a9662d40b36507bea8d0f961631e0a1dd1f4a2fcf35",
+    "reviewInputHash": "dcf1e8cd6c49ef597861c4b9e5f9ea93640e3943e95db0edb100ac207fef0101",
+    "authorResponseHash": "2189f24062b618bf7ed793c11a87e89f38dfb6415c325e8f458341598159c816",
+    "reviewerResponseHash": "c6b98ed7936008c623449c208c66578417d07634074d6bc7bfc6df72f7a42eef",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1996_AMC_8_Q07",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "981dd580abdfde06b52c6a50a6aa3b76d349afa84d3d0bae71ee106a42ea8608",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "c0ef6a6764815cda4249f550698c4c074da5e98ba07dcb36a49c1deefcb5c7b1",
+  "solutionFigureHashes": {},
+  "candidateHash": "0a0c6b9fcefa774d6577d763db26a0410590711b767617de128c92f203b7bce9",
+  "candidate": {
+    "questionId": "1996_AMC_8_Q07",
+    "derivedAnswer": "5 months (B)",
+    "answerStatus": "matches",
+    "answerReason": "After five monthly updates both have 4096 goldfish. Equivalently, Gretel's initial population advantage of 32 halves each month and reaches 1 after five months.",
+    "methods": [
+      {
+        "id": "monthly-counts",
+        "label": "Method 1: Follow the monthly counts",
+        "explanation": "Multiply Brent's count by \\(4\\) and Gretel's count by \\(2\\) each month. In each pair below, Brent's count comes first and Gretel's comes second:\n\\[\n\\begin{aligned}\n\\text{Month }0 &: (4,128),\\\\\n\\text{Month }1 &: (16,256),\\\\\n\\text{Month }2 &: (64,512),\\\\\n\\text{Month }3 &: (256,1024),\\\\\n\\text{Month }4 &: (1024,2048),\\\\\n\\text{Month }5 &: (4096,4096).\n\\end{aligned}\n\\]\nThe counts differ at every earlier month and agree at month \\(5\\). In the following month Brent has more, and his larger multiplication factor keeps his count larger thereafter. Thus they have the same number after \\(\\boxed{5}\\) months, choice B.",
+        "nodeIds": [
+          "cnm_h212",
+          "math:nonnegative-integer-products"
+        ],
+        "prerequisiteIds": [
+          "cnm_p073"
+        ],
+        "levelReason": "Computes each monthly count by repeated whole-number multiplication without using a sequence formula."
+      },
+      {
+        "id": "halve-the-population-ratio",
+        "label": "Method 2: Compare their population ratio",
+        "explanation": "Initially, Gretel has \\(128\\div4=32\\) times as many goldfish as Brent.\n\nDoubling both populations would leave their ratio unchanged. Brent's quadrupling is a doubling followed by another doubling, so each month Gretel's count divided by Brent's count is halved. Including the starting time, these ratios are\n\\[\n32,\\quad16,\\quad8,\\quad4,\\quad2,\\quad1.\n\\]\nBoth populations remain positive, so they are equal exactly when this ratio is \\(1\\). It takes five halvings to reach \\(1\\); further halvings make it smaller than \\(1\\). Therefore the counts agree after \\(\\boxed{5}\\) months, choice B.",
+        "nodeIds": [
+          "cnm_h212",
+          "cnm_p185",
+          "cnm_p107"
+        ],
+        "prerequisiteIds": [
+          "cnm_p073",
+          "cnm_p083"
+        ],
+        "levelReason": "Uses only the meaning of a ratio, common scaling, and repeated halving."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h212"
+    ],
+    "supportIds": [
+      "cnm_p073"
+    ],
+    "annotationRationale": "The shared target is comparing quantities that grow by fixed multiplicative factors, matching the application scope of cnm_h212. The first route calculates successive integer populations. The second route tracks a ratio using quotient invariance and division. Understanding multiples is shared support; formal sequence formulas and exponent laws are not requirements.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1996_AMC_8_Q07",
+    "decision": "accept",
+    "mathematicalCheck": "The monthly counts are correct and first agree at 4096 after five months. Independently, Gretel's count divided by Brent's starts at 32 and halves monthly, reaching 1 exactly after five updates (B).",
+    "levelCheck": "Both repeated multiplication and the explained ratio argument are appropriate for AMC 8; neither requires formal sequence formulas.",
+    "methodDistinctness": "The population table and changing-ratio argument provide genuinely distinct, accessible approaches.",
+    "annotationCheck": "cnm_h212 fits fixed-factor growth within its stated scope. Product and ratio knowledge remain method-local, while cnm_p073 is justified shared support.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "monthly-counts": "monthly-counts",
+    "halve-the-population-ratio": "halve-the-population-ratio"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "d67734ab5c8f6de11c7afcc678d22a5e4a95b1400445addf712479c87f44e4f1",
+    "inputHash": "98b659d6d1bea2c670747bdd0d788ac45e0a181d4948b9b1ad8a96be027119ab",
+    "authorInputHash": "ac758ae8af29d956e2bfa8809b2c8a2dbe99356ad239a1d1e557deb6a70777ab",
+    "reviewInputHash": "c4818a3b5e9ea941d73a075c7569047357fe0a0fe4a67ed85d294a6faf0aa582",
+    "authorResponseHash": "da17118a514641ffbd199dd3b089b290f75bcfc0404e3720a3c03e4ff1c1047f",
+    "reviewerResponseHash": "191c02f4419079f18c1fdfe4651e0ec8fa27f50e5c78f8982065b9ed92fe4ff1",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1951_AMC_12_Q42",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "bb7dda36c903c3d350b76353a5f0c06fcd26dd1db554528cbc5f9a34b5a088ed",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "ba106ebf91832ae79f69bd269b5f7526f799f6f3bef0af0aadd7962dcf6b84f1",
+  "solutionFigureHashes": {},
+  "candidateHash": "08ce0d653ac80e0e5ec35cb774375807cbee3acb9e53077830fdfd9543b06324",
+  "candidate": {
+    "questionId": "1951_AMC_12_Q42",
+    "derivedAnswer": "C: 1<x<2; in fact x=(1+√5)/2.",
+    "answerStatus": "matches",
+    "answerReason": "The finite nested radicals approach the positive solution of r=√(1+r). An explicit error bound obtained by repeated halving establishes convergence without assuming that the infinite expression already has a value.",
+    "methods": [
+      {
+        "id": "fixed-point-with-error-bound",
+        "label": "Find a stable value and bound the error",
+        "explanation": "Interpret the infinite radical through its finite truncations. Let\n\\[\nu_1=1,\\qquad u_{n+1}=\\sqrt{1+u_n};\n\\]\nthen \\(u_n\\) is the expression with \\(n\\) square roots. We will find a number that these truncations approach.\n\nA nonnegative number unchanged by adding another outer square root satisfies\n\\[\nr=\\sqrt{1+r},\\qquad r^2-r-1=0.\n\\]\nThe quadratic formula gives \\(r=(1\\pm\\sqrt5)/2\\). The negative root cannot equal a principal square root. Let\n\\[\n\\phi=\\frac{1+\\sqrt5}{2}.\n\\]\nIt satisfies \\(\\phi^2=1+\\phi\\), and hence \\(\\phi=\\sqrt{1+\\phi}\\). Also, \\(1<\\sqrt5<3\\) gives \\(1<\\phi<2\\).\n\nStarting from \\(1=u_1<\\phi\\), the recursion preserves the bounds \\(1\\le u_n<\\phi\\): if they hold for \\(u_n\\), then\n\\[\n1\\le\\sqrt{1+u_n}<\\sqrt{1+\\phi}=\\phi.\n\\]\nTo prove that the truncations actually approach \\(\\phi\\), rationalize their difference:\n\\[\n\\begin{aligned}\n\\phi-u_{n+1}\n&=\\frac{\\phi^2-u_{n+1}^2}{\\phi+u_{n+1}}\\\\\n&=\\frac{\\phi-u_n}{\\phi+u_{n+1}}\\\\\n&\\le\\frac{\\phi-u_n}{2}.\n\\end{aligned}\n\\]\nThe denominator is greater than \\(2\\), so it is nonzero. Repeating this bound gives\n\\[\n0\\le\\phi-u_n\\le\\frac{\\phi-1}{2^{n-1}}.\n\\]\nSuccessive halvings make this upper bound smaller than any prescribed positive error. Thus the finite radicals approach \\(\\phi\\), establishing the value of the infinite expression. Therefore\n\\[\nx=\\frac{1+\\sqrt5}{2},\\qquad 1<x<2,\n\\]\nwhich is choice C.",
+        "nodeIds": [
+          "math:recursive-infinite-expressions",
+          "math:radical-equations",
+          "cnm_222",
+          "cnm_079"
+        ],
+        "prerequisiteIds": [
+          "cnm_h200",
+          "cnm_167",
+          "cnm_168",
+          "cnm_147"
+        ],
+        "levelReason": "The convergence argument uses only a recurrence, a quadratic equation, square-root comparisons, and an error that is repeatedly halved."
+      }
+    ],
+    "assessedIds": [
+      "math:recursive-infinite-expressions"
+    ],
+    "supportIds": [
+      "cnm_h200",
+      "cnm_167"
+    ],
+    "annotationRationale": "The target is interpreting a recursive infinite expression through finite truncations and establishing its attainable value. Radical-equation solving, the quadratic formula, and root comparisons belong to this particular method. The explicit error bound supplies the convergence justification; no general function-limit procedure is invoked.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1951_AMC_12_Q42",
+    "decision": "accept",
+    "mathematicalCheck": "The truncations remain between \\(1\\) and \\(\\phi=(1+\\sqrt5)/2\\). Rationalization yields \\(0\\le\\phi-u_n\\le(\\phi-1)/2^{n-1}\\), proving convergence directly. Since \\(1<\\phi<2\\), C follows without assuming convergence beforehand.",
+    "levelCheck": "The explicit repeated-halving argument uses elementary algebra and supplies convergence without calculus or an advanced theorem.",
+    "methodDistinctness": "The single fixed-point method includes its own complete convergence justification.",
+    "annotationCheck": "The recursive-expression target, method-local radical solving and quadratic formula, and recurrence and radical prerequisites all match the solution.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "fixed-point-with-error-bound": "fixed-point-with-error-bound"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "015395269803fd428b21609346caabb4b796f8310cc8e6de1798437994214980",
+    "inputHash": "52925356b7f7a9401ea8d302efda5276dcb4b80076aaec3d6cfbee957ab2792f",
+    "authorInputHash": "fb4434096b15138e017e088d06f708597085cec85ec85a67fd5f48dafb3d7de4",
+    "reviewInputHash": "68b0c335fe8b54e10a03702f522ef2256c3fb377c72bf0a83bd3a5ad4461dd36",
+    "authorResponseHash": "8c5c513081b79cf5560aae7e67d7f7ac5e5dfba801df128aa6e20900fe04a716",
+    "reviewerResponseHash": "b1149946eb046f380abc8186b95b8fa441d624e4bb05d07580e3e72fb4ed016c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

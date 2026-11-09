@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1984_AMC_12_Q19",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "f46ae76f53ca6c24b6e9a4e7129e98ab61b301b8c2f25d6b08495cc9f0fc596e",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "baf608f59f0fd8fc5a2fe249e1671391c78d5c70b89d40dff2ffdb675a5f8637",
+  "solutionFigureHashes": {},
+  "candidateHash": "0dba19a829ab4ac5683cd6cae6d651505f69054484082b982c3d81cd2117fb73",
+  "candidate": {
+    "questionId": "1984_AMC_12_Q19",
+    "derivedAnswer": "D. \\(\\frac{118}{231}\\)",
+    "answerStatus": "matches",
+    "answerReason": "The favorable count is \\(\\binom61\\binom55+\\binom63\\binom53+\\binom65\\binom51=236\\), out of \\(\\binom{11}{6}=462\\) equally likely selections. The probability is \\(118/231\\).",
+    "methods": [
+      {
+        "id": "count-odd-labels",
+        "label": "Count by the number of odd labels",
+        "explanation": "There are six odd labels and five even labels. Even labels do not change the parity of a sum, and pairs of odd labels contribute an even amount. Thus the sum is odd exactly when the selection contains an odd number of odd labels.\n\nEvery unordered six-ball selection is equally likely, and there are \\(\\binom{11}{6}=462\\) such selections. Here \\(\\binom nk\\) counts ways to choose \\(k\\) objects from \\(n\\) without regard to order.\n\nThe possible odd counts are \\(1,3,5\\). For each count, choose the odd balls and then choose enough even balls to make six:\n\\[\n\\begin{aligned}\nN&=\\binom61\\binom55\n +\\binom63\\binom53\n +\\binom65\\binom51\\\\\n &=6\\cdot1+20\\cdot10+6\\cdot5\\\\\n &=236.\n\\end{aligned}\n\\]\nThese cases include every odd-sum selection, and no selection belongs to two cases because its number of odd labels is fixed. Within each case, its odd and even subsets determine it uniquely. Therefore the probability is\n\\[\n\\frac{236}{462}=\\boxed{\\frac{118}{231}},\n\\]\nchoice D.",
+        "nodeIds": [
+          "cnm_h137",
+          "cnm_h239",
+          "cnm_h230"
+        ],
+        "prerequisiteIds": [
+          "cnm_p156",
+          "cnm_h237"
+        ],
+        "levelReason": "This is an elementary equally likely probability calculation using combinations and disjoint parity cases."
+      },
+      {
+        "id": "pair-opposite-parities",
+        "label": "Pair selections with opposite sum parity",
+        "explanation": "There are \\(\\binom{11}{6}=462\\) equally likely six-ball selections. To compare odd and even sums, group ten labels into the ordered pairs\n\\[\n(1,2),\\ (3,4),\\ (5,6),\\ (7,8),\\ (9,10),\n\\]\nleaving \\(11\\) separate. Each pair contains one odd and one even label.\n\nIf a selection contains exactly one member of any pair, find the first such pair and replace its selected member with the other member. This preserves the number of selected balls and changes the sum's parity. The same pair remains the first pair with exactly one selected member, so repeating the switch returns the original selection. Thus all selections admitting a switch are grouped into disjoint pairs, each containing one odd sum and one even sum.\n\nA selection admitting no switch contains either both members or neither member of every pair. It cannot contain \\(11\\), because the remaining five selected balls could not be made from complete pairs. It must therefore consist of three complete pairs. There are \\(\\binom53=10\\) such selections. Each has an odd sum, since each complete pair has an odd sum and there are three pairs.\n\nThe other \\(462-10=452\\) selections contribute \\(452/2=226\\) odd sums. Including the ten exceptions gives probability\n\\[\n\\frac{226+10}{462}\n=\\boxed{\\frac{118}{231}},\n\\]\nchoice D.",
+        "nodeIds": [
+          "cnm_h137",
+          "math:bijective-counting",
+          "cnm_h239"
+        ],
+        "prerequisiteIds": [
+          "cnm_p156",
+          "cnm_h237"
+        ],
+        "levelReason": "The alternative uses an explicitly reversible swap, elementary parity, and the same combination-counting prerequisites as the main method."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h137"
+    ],
+    "supportIds": [
+      "cnm_p156",
+      "cnm_h237"
+    ],
+    "annotationRationale": "The route-neutral target is an exact probability in a finite equally likely sample space. Both methods use parity and combination counts. The first route uses category selections and disjoint-case addition; the second uses a reversible correspondence and counts its exceptions. The bijection is an alternative idea, not an additional requirement for solving the question.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1984_AMC_12_Q19",
+    "decision": "accept",
+    "mathematicalCheck": "The disjoint odd-label cases count 6+200+30=236 of 462 selections. The alternative swap is reversible and parity-changing; its only exceptions are 10 odd-sum selections consisting of three complete pairs. Both give 118/231.",
+    "levelCheck": "Both arguments use elementary combinations and parity. The reversible correspondence and its exceptions are explained completely.",
+    "methodDistinctness": "Counting parity cases and pairing opposite-parity selections are genuinely distinct methods without an advanced theorem requirement.",
+    "annotationCheck": "Classical probability is route-neutral. Parity and combination evaluation are shared supports; disjoint-case counting and bijective counting correctly describe the separate routes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-odd-labels": "count-odd-labels",
+    "pair-opposite-parities": "pair-opposite-parities"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "969aac605fff2d515cbf0ac9ee126c15511bb0ad1b01ab84b35f18a0461c05df",
+    "inputHash": "44de057278b27c09f92d9b6878edbed1fb1d6127780910be670bd43d0cc8f9ae",
+    "authorInputHash": "1ab91bf6e01ac668ad511bc161ce76d7746169700089d8d28bf8863cacc36e51",
+    "reviewInputHash": "953bd3bbb512f512bff2fb9fdf71071e2743a7a2e7d172a11d2ebbae1663db82",
+    "authorResponseHash": "2185de3d3b724f4832bc9efb39ae8f8cbccd2cf27066264d19c0140ba4a02be4",
+    "reviewerResponseHash": "591d03085b61b5ec06179c480e34408c07abd5f3476968735588b6d3874e6895",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

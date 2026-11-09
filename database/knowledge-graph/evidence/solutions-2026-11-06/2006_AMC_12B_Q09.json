@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2006_AMC_12B_Q09",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "93753888dcad5510f278380dfbdd4c8e2e1d71d649f1d61e4820dd402bd941d3",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "cfb3c37eb8db738348960447472289d09ad496d0d10f61cf777d2f18f3315ad1",
+  "solutionFigureHashes": {},
+  "candidateHash": "d2c832bfabce15f1f82b89deec3f8890dd2a80f9f75eb13bee6aaa89e421b154",
+  "candidate": {
+    "questionId": "2006_AMC_12B_Q09",
+    "derivedAnswer": "34 integers, choice B",
+    "answerStatus": "matches",
+    "answerReason": "The possible final digits 2, 4, 6, and 8 contribute 0, 3, 10, and 21 integers, respectively. Their sum is 34, matching B.",
+    "methods": [
+      {
+        "id": "last-digit-pairs",
+        "label": "Choose the two smaller digits",
+        "explanation": "Zero cannot appear: in strictly increasing order it would have to be the first digit, which is impossible for a three-digit integer. The final digit is both even and the largest digit, so it must be \\(2,4,6,\\) or \\(8\\).\n\nOnce the final digit is fixed, choose two distinct smaller positive digits. Their increasing order determines their positions uniquely. If there are \\(m\\) available digits, there are \\(m(m-1)\\) ordered choices of two different digits. Each pair appears in both orders, so the number of pairs is \\(m(m-1)/2\\).\n\nA final digit of \\(2\\) allows no number, because only one positive digit is smaller. The other counts are\n\\[\n\\begin{aligned}\n\\text{Final digit }4 &: \\frac{3\\cdot2}{2}=3,\\\\\n\\text{Final digit }6 &: \\frac{5\\cdot4}{2}=10,\\\\\n\\text{Final digit }8 &: \\frac{7\\cdot6}{2}=21.\n\\end{aligned}\n\\]\nEvery valid integer belongs to exactly one final-digit case, and each chosen pair produces exactly one valid integer. Thus the total is\n\\[\n0+3+10+21=34,\n\\]\nchoice B.",
+        "nodeIds": [
+          "cnm_h239",
+          "cnm_h230",
+          "cnm_h237"
+        ],
+        "prerequisiteIds": [
+          "cnm_h231",
+          "cnm_p156"
+        ],
+        "levelReason": "The solution uses the even-units-digit rule, disjoint cases, and a briefly derived elementary count of unordered pairs."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h239"
+    ],
+    "supportIds": [
+      "cnm_h231",
+      "cnm_p156"
+    ],
+    "annotationRationale": "Strictly increasing order makes selecting the smaller digits an unordered-selection task, captured by cnm_h239. The method partitions by the final digit using cnm_h230 and derives the two-element combination formula represented by cnm_h237. Sequential-choice counting and even-number recognition support those steps.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2006_AMC_12B_Q09",
+    "decision": "accept",
+    "mathematicalCheck": "Zero is excluded by the leading-digit restriction. Final digits 2, 4, 6, and 8 contribute respectively 0, 3, 10, and 21 numbers, totaling 34, choice B. The pair-count derivation and unique increasing order justify both completeness and multiplicity.",
+    "levelCheck": "The elementary unordered-pair formula is derived where used, and all exceptional cases are explained.",
+    "methodDistinctness": "One complete final-digit case count is sufficient.",
+    "annotationCheck": "cnm_h239 captures unordered digit selection. The method-local cnm_h230 and cnm_h237 describe the case partition and pair formula; cnm_h231 and cnm_p156 support sequential counting and even-digit recognition.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "last-digit-pairs": "last-digit-pairs"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "60edc74ae6b5a6964d8262696661c087d309050704b19bb7864ebd7e7d5c51b7",
+    "inputHash": "c61c3c3f3f3ceb988cdd3d945a74c37dc418c266b8a8881f2f493c501c09b309",
+    "authorInputHash": "7c91e4cff60c7305f8c4b7a0add03ec2a81c712e23fa3e0e283ec4bf293c2449",
+    "reviewInputHash": "d278dc7c88828f35b6a253a703dec077a3a97f055e60167a88c3abd94c23da5b",
+    "authorResponseHash": "3069dec1c991aad76700ef46aa130015f5a0da319dc1b6fac5cbd51916546edd",
+    "reviewerResponseHash": "64a8ec35eecaa950631181869e60cc2124d7f69a00e27e905d8d6300fb1eac37",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

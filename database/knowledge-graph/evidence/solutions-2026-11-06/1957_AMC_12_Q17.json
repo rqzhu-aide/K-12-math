@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1957_AMC_12_Q17",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ca8856afce89ee93918fff9b4f1ecf4b83878902f6d34b1c38c9b3a6319b197c",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "1a1cf56d1c412af90a5989616264e3e2581a3560f8b45c3bc5ebc740ec9ec25c",
+  "solutionFigureHashes": {},
+  "candidateHash": "ebb2a785fc30f91697441c5ef31c1026dcc53f5299819abe0c554cac49787484",
+  "candidate": {
+    "questionId": "1957_AMC_12_Q17",
+    "derivedAnswer": "A: \\(24\\) inches if the first repeated arrival is counted; \\(21\\) inches if the walk must end at an unrepeated vertex.",
+    "answerStatus": "disputed",
+    "answerReason": "The keyed 24 inches is attained by an eight-edge route whose first repeated vertex is its final arrival. If every visited vertex, including the endpoint, must be distinct, a complete-edge route has at most seven edges and length 21 inches. The wording leaves this endpoint convention implicit.",
+    "methods": [
+      {
+        "id": "1957_AMC_12_Q17_m1",
+        "label": "Bound the walk and construct a route",
+        "explanation": "First count the travel up to and including arrival at the first repeated vertex. A cube has eight vertices. The starting vertex is already visited, so only seven more arrivals can be at new vertices. Consequently, the first repeated arrival must occur by the eighth edge traversal. Each edge is \\(3\\) inches long, giving an upper bound of \\(8\\cdot3=24\\) inches.\n\nTo attain this bound, label one face \\(A,B,C,D\\) in cyclic order and the opposite face \\(A',B',C',D'\\), with corresponding vertices joined by edges. Follow the route\n\\[\nA\\to B\\to C\\to D\\to D'\\to C'\\to B'\\to A'\\to A.\n\\]\nEvery step follows a cube edge, no edge is retraced, and all eight vertices are visited before the return to \\(A\\). Thus the first repeated arrival occurs after exactly \\(24\\) inches.\n\nIf the walk must instead finish at an unrepeated vertex, at most seven edges are allowed. Omitting the final edge of this route attains \\(7\\cdot3=21\\) inches. If stopping inside an edge is permitted while repeated arrivals are forbidden, distances can approach \\(24\\) inches without attaining a greatest value. Therefore the keyed answer, \\(24\\) inches, choice A, uses the convention that the final repeated arrival is counted.",
+        "nodeIds": [
+          "math:extremal-principle",
+          "math:graph-models"
+        ],
+        "prerequisiteIds": [
+          "cnm_p160",
+          "cnm_p216"
+        ],
+        "levelReason": "The proof uses the cube's eight vertices, elementary repetition counting, and an explicit route attaining the bound."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle",
+      "math:graph-models"
+    ],
+    "supportIds": [
+      "cnm_p160",
+      "cnm_p216"
+    ],
+    "annotationRationale": "The task requires a universal bound on an edge walk and a construction attaining it. Cube structure and the repetition principle support those targets. The route is verified directly without requiring a specialized graph theorem.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The key counts the edge ending at the first repeated vertex.",
+      "Requiring a vertex endpoint with no repeated vertex gives 21 inches, which is not offered among the choices.",
+      "Forbidding repeated arrivals while allowing an endpoint inside an edge gives supremum 24 inches but no attained maximum."
+    ]
+  },
+  "review": {
+    "questionId": "1957_AMC_12_Q17",
+    "decision": "accept",
+    "mathematicalCheck": "Eight vertices permit at most seven new arrivals after the start, so a repeat occurs by edge eight. The displayed eight-edge cycle attains 24 inches without retracing. The qualified 21-inch vertex endpoint and unattained 24-inch bound for interior stopping are also correct.",
+    "levelCheck": "The counting bound and explicit cube route provide a complete elementary proof without specialized graph theorems.",
+    "methodDistinctness": "The bound and attaining construction are necessary parts of one extremal method.",
+    "annotationCheck": "Extremal reasoning and graph paths match the task. Cube structure and pigeonhole counting support the proof, and the endpoint qualifications are preserved.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "1957_AMC_12_Q17_m1": "1957_AMC_12_Q17_m1"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "62b0e9e3d84d6fe59e2fccc6462695b86dc49522cae5f35d9a190ea88a43fd89",
+    "inputHash": "948a2a4dcb71bd2b91a6ddac6beff5f0298e423368c85ccf3ecf79f7a6a93710",
+    "authorInputHash": "c6e213fbf9d49547f55433eb31faaefd93472058c4f4df79bcfc2a3cc652ddf8",
+    "reviewInputHash": "22bbc7199ea840b344bb4f4840dc7baaebab08f021431a8921c78f2440132c68",
+    "authorResponseHash": "934825f2726531b90366e1c86a4dc6273fbe18672a1fd7a52fd332305937760d",
+    "reviewerResponseHash": "b8f7717a51dd52576bd3451ec65074465d96259deab676ff2d75e9162da4e071",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

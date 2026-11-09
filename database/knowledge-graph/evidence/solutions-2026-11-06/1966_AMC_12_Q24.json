@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1966_AMC_12_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "24414dfe4025a6c2f47fa72e9667369eba80f0555980534a46994376a4f467da",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "1a04c52d59cf83b27e39f0a4321121ec34d4a32d58cf73287c82072778989fb9",
+  "solutionFigureHashes": {},
+  "candidateHash": "0be9288dd10f7b8bf16afd3c0a5bd2b2025b6c222e17d23fff1ac2a4592fae24",
+  "candidate": {
+    "questionId": "1966_AMC_12_Q24",
+    "derivedAnswer": "B, \\(MN=1\\)",
+    "answerStatus": "matches",
+    "answerReason": "Real logarithms require M and N individually positive. Changing base gives equal squares of their common logarithms; the unequal-base condition eliminates the equal-logarithm branch, leaving MN=1.",
+    "methods": [
+      {
+        "id": "change-base-factor",
+        "label": "Change base and factor",
+        "explanation": "Changing both logarithms to the same base lets us compare them algebraically. The real logarithms require \\(M>0\\) and \\(N>0\\). Put \\(u=\\log_{10}M\\) and \\(v=\\log_{10}N\\). Since neither base is 1, \\(u\\ne0\\) and \\(v\\ne0\\).\n\nThe change-of-base formula gives\n\\[\n\\frac{v}{u}=\\frac{u}{v}.\n\\]\nMultiplication by the nonzero number \\(uv\\) yields \\(v^2=u^2\\), so\n\\[\n(v-u)(v+u)=0.\n\\]\nIf \\(v=u\\), then \\(N=10^v=10^u=M\\), contrary to the condition \\(M\\ne N\\). Therefore \\(u+v=0\\). By the product rule for logarithms,\n\\[\n\\log_{10}(MN)=u+v=0,\n\\]\nwhich means \\(MN=1\\). Positive unequal reciprocals do satisfy the original equality, since both logarithms are \\(-1\\). Thus the answer is \\(\\boxed{1}\\), choice B.",
+        "nodeIds": [
+          "cnm_h045",
+          "cnm_152",
+          "cnm_h044"
+        ],
+        "prerequisiteIds": [
+          "cnm_h043",
+          "cnm_147"
+        ],
+        "levelReason": "Uses change of base, logarithm rules, and elementary factorization, all within AMC 12 precalculus."
+      },
+      {
+        "id": "common-exponent",
+        "label": "Use the meaning of a logarithm",
+        "explanation": "The two equal logarithms represent the same exponent. Real logarithms require \\(M,N>0\\), with \\(M,N\\ne1\\). Let their common value be \\(t\\). By the definition of a logarithm,\n\\[\nN=M^t,\\qquad M=N^t.\n\\]\nSubstituting the first equation into the second gives\n\\[\nM=(M^t)^t=M^{t^2}.\n\\]\nFor a positive base other than 1, different real exponents give different values. Comparing \\(M^1\\) and \\(M^{t^2}\\), we therefore get \\(t^2=1\\).\n\nThe possibility \\(t=1\\) would give \\(N=M\\), which is excluded. Hence \\(t=-1\\), and\n\\[\nN=M^{-1}=\\frac1M.\n\\]\nThese reciprocal values make both original logarithms equal to \\(-1\\). Therefore \\(\\boxed{MN=1}\\), choice B.",
+        "nodeIds": [
+          "cnm_h043",
+          "math:real-exponent-laws",
+          "cnm_h042",
+          "cnm_220"
+        ],
+        "prerequisiteIds": [
+          "cnm_h041",
+          "cnm_074"
+        ],
+        "levelReason": "Uses the logarithm definition, positive-base real-power laws, and elementary exponential injectivity."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h043"
+    ],
+    "supportIds": [],
+    "annotationRationale": "The shared target is interpreting logarithms and their domain restrictions. Change of base, difference-of-squares factorization, and the product rule belong to the first route. Conversion to exponential equations, real-power laws, and solving t²=1 belong to the second. The alternatives are not cumulative requirements.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1966_AMC_12_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "Real logarithms force M,N>0. Method 1 safely clears nonzero logarithmic denominators and excludes equal logarithms, leaving MN=1. Method 2 correctly obtains t²=1 by exponential injectivity, excludes t=1, and verifies reciprocal solutions.",
+    "levelCheck": "Both methods use appropriate AMC 12 precalculus and explain their decisive steps.",
+    "methodDistinctness": "Change of base and factorization provide a distinct approach from composing exponential equations.",
+    "annotationCheck": "The shared logarithm target and method-local annotations fit the catalog. Arbitrary real-power laws are correctly distinguished from integer-power rules.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "change-base-factor": "solution:change-base-factor:1a04c52d59cf",
+    "common-exponent": "common-exponent"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "2a19b395845cbb5ff6877fbc34c5f7b66325dee6f747c2150ed48f7d06729278",
+    "inputHash": "b5de0dc8f3069cea6d7c9a3dbba1566712d5754f77eb6f887441077309f97a4e",
+    "authorInputHash": "fb4a4b315671530a2130d688cfa4ae2f61ffac320819b12dcff8e6a5a5ac2ea7",
+    "reviewInputHash": "399e0a09b3f3f4dabd10462e554e323996138065756cad59d4d390617d0a35ab",
+    "authorResponseHash": "9d54b9d4d7feff7607944a6f6e5049bc92e310893441b99f52fb6a2d9ce8f56d",
+    "reviewerResponseHash": "00e5b2d38bf0363bb50360803603eed1055be68f8a8480aa7989ab9d82239a6b",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1950_AMC_12_Q39",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "08c65222875ab8be00868ff54f91fd5e94dc9e020bbe689c312c5540c3953e1b",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "8dddb277aa45ca665908265444277fe95d15e3298a786edcad722aaa7c01e1c6",
+  "solutionFigureHashes": {},
+  "candidateHash": "0eee8b240a702aa8c2b0e11fad0c165c8a6df0f635d9ac064cf2dc0085c2afd2",
+  "candidate": {
+    "questionId": "1950_AMC_12_Q39",
+    "derivedAnswer": "Statements (3), (4), and (5) under the usual limiting reading, with no matching choice; E under a fixed-term reading of (3).",
+    "answerStatus": "disputed",
+    "answerReason": "The terms tend to zero and the partial sums tend to 4, making (3), (4), and (5) true under the usual sequence-limit interpretation. That combination is absent. The supplied E follows only if 'any term' in (3) means a fixed term rather than a sufficiently late term.",
+    "methods": [
+      {
+        "id": "terms-and-partial-sums",
+        "label": "Compare the terms with the partial-sum error",
+        "explanation": "Let \\(a_n\\) be the \\(n\\)th term and \\(S_n\\) the sum of the first \\(n\\) terms, where \\(n\\ge1\\) is an integer. Interpret the changing “sum” in the statements as \\(S_n\\).\n\nEach term is half the preceding term, so\n\\[\na_n=2\\left(\\frac12\\right)^{n-1}=\\frac4{2^n}.\n\\]\nTo find \\(S_n\\), subtract half of it from itself. All the middle terms cancel, leaving\n\\[\nS_n-\\frac12S_n=2-\\frac2{2^n}.\n\\]\nConsequently\n\\[\nS_n=4-\\frac4{2^n},\\qquad 4-S_n=a_n.\n\\]\nBoth \\(a_n\\) and \\(4-S_n\\) become arbitrarily small. For an explicit bound, \\(2^n\\ge n+1\\), so both are at most \\(4/(n+1)\\), which is smaller than any prescribed \\(\\varepsilon>0\\) once \\(n+1>4/\\varepsilon\\).\n\nThus (3) is true if it means that sufficiently late terms are arbitrarily close to zero. Statement (4) is true, and the sums approach the limit \\(4\\), making (5) true. The sums increase because every added term is positive, but remain below \\(4\\); therefore (1) and (2) are false. Under this usual limiting reading, the correct statements are \\(\\boxed{(3),(4),(5)}\\), a combination missing from the choices.\n\nIf “any term” in (3) instead means an already fixed term, it is false: the first term remains \\(2\\), so its distance from zero cannot become less than \\(1\\). Under that fixed-term reading, only (4) and (5) hold, giving \\(\\boxed{\\text{E}}\\). The wording therefore does not determine a unique listed answer.",
+        "nodeIds": [
+          "math:infinite-geometric-series",
+          "cnm_h208",
+          "cnm_h210"
+        ],
+        "prerequisiteIds": [
+          "cnm_h207"
+        ],
+        "levelReason": "Uses geometric terms, a finite-sum cancellation, and an elementary bound to justify arbitrarily small errors."
+      }
+    ],
+    "assessedIds": [
+      "math:infinite-geometric-series"
+    ],
+    "supportIds": [
+      "cnm_h208",
+      "cnm_h210"
+    ],
+    "annotationRationale": "Convergence of the geometric series is the main existing target. The method computes the general term and finite partial sums, supported by the common-ratio concept. Interpreting term convergence separately from a fixed term exposes a further catalog gap proposed below.",
+    "needsNewNodes": [
+      {
+        "name": "Finite limits of sequences",
+        "description": "Interpret a sequence approaching L as all sufficiently late terms lying within every prescribed positive tolerance of L. Distinguish a fixed term, the sequence of terms, and the sequence of partial sums.",
+        "reason": "The general-term and finite-sum nodes do not cover sequence convergence, while the infinite-geometric-series node addresses the limiting sum. Statement (3) specifically requires interpreting convergence of the terms."
+      }
+    ],
+    "limitations": [
+      "No choice lists (3), (4), and (5), which are true under the usual limiting interpretation.",
+      "The recorded key E is conditional on reading (3) as a claim about a fixed term. Preserve the usual sequence-limit interpretation as valid."
+    ]
+  },
+  "review": {
+    "questionId": "1950_AMC_12_Q39",
+    "decision": "accept",
+    "mathematicalCheck": "The cancellation correctly gives \\(S_n=4-4/2^n\\), while \\(a_n=4/2^n\\). The bound \\(2^n\\ge n+1\\) proves both terms and partial-sum errors approach zero. Thus (3), (4), and (5) hold under the limiting reading, while E follows under the stated fixed-term reading.",
+    "levelCheck": "Finite geometric cancellation and an elementary bound justify convergence without calculus.",
+    "methodDistinctness": "One complete method resolves both readings of the ambiguous statement.",
+    "annotationCheck": "The geometric-series target and term and finite-sum supports fit the proof. The proposed sequence-limit node captures knowledge not supplied by those existing scopes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "terms-and-partial-sums": "terms-and-partial-sums"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "e72fce147cf2e0b7004cb6f59a19587b8fca0c37387f59fff1288e543560da97",
+    "inputHash": "711a1cbaa9113a585affc3450a2f6cb6ae5cd76150c2fe6306b25b425b80ea68",
+    "authorInputHash": "6827d9c8b6eec25297a20ca65faa77770507372c3122833bb84c71414294c045",
+    "reviewInputHash": "d24a8d84dfe62b7b04ca846545a0d02fd88bdd958f8a6f78624019fea8592b60",
+    "authorResponseHash": "9b156b65416e978cd33ed0cb0051f0ecb49220da6a9d7f49d6afc96ba35d8f6b",
+    "reviewerResponseHash": "1a3cd4fa3f9eb653e4311015bff7e0a28fd92f611505e5f91426c229f1cfdaae",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

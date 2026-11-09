@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1987_AMC_12_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "7e4d77a0997a5f639a3f30d867e930a5e44e4ac7726772d02621e8db5bd152b7",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "c7b985f60b99cd6cf56a0f556b9c027a01ab16e9806d7c84ee11f064266b689c",
+  "solutionFigureHashes": {},
+  "candidateHash": "180b042db63f7e8eb98a4ee329333799b15a05ce388f3dc05a07baaf8eb891e4",
+  "candidate": {
+    "questionId": "1987_AMC_12_Q24",
+    "derivedAnswer": "B: 1 polynomial, f(x) = x²",
+    "answerStatus": "matches",
+    "answerReason": "Comparing degrees forces degree 2. Comparing coefficients in f(x²) = f(x)² then forces f(x) = x², which satisfies both identities.",
+    "methods": [
+      {
+        "id": "degree-and-coefficients",
+        "label": "Compare degrees before expanding",
+        "explanation": "Composition and squaring change polynomial degrees differently, so first compare their leading terms. Let \\(f\\) have degree \\(d\\ge1\\) and leading coefficient \\(a\\ne0\\). The leading terms of \\([f(x)]^2\\) and \\(f(f(x))\\) are respectively\n\\[\na^2x^{2d}\n\\qquad\\text{and}\\qquad\na(ax^d)^d=a^{d+1}x^{d^2}.\n\\]\nThese coefficients are nonzero, so equality requires \\(2d=d^2\\). Since \\(d>0\\), it follows that \\(d=2\\).\n\nWrite\n\\[\nf(x)=ax^2+bx+c,\\qquad a\\ne0.\n\\]\nThe identity \\(f(x^2)=[f(x)]^2\\) becomes\n\\[\nax^4+bx^2+c=(ax^2+bx+c)^2.\n\\]\nBecause this holds for every \\(x\\), coefficients of matching powers must agree. The \\(x^4\\) coefficients give \\(a=a^2\\), so \\(a=1\\). The \\(x^3\\) coefficients then give \\(0=2b\\), so \\(b=0\\).\n\nNow \\(f(x)=x^2+c\\), and the same identity reads\n\\[\nx^4+c=x^4+2cx^2+c^2.\n\\]\nComparing \\(x^2\\) coefficients forces \\(c=0\\). Thus every possible solution must be \\(f(x)=x^2\\).\n\nThis polynomial does work: \\(f(x^2)=[f(x)]^2=f(f(x))=x^4\\) for every \\(x\\). Therefore exactly \\(\\boxed{1}\\) polynomial satisfies the conditions, choice \\(\\text{B}\\).",
+        "nodeIds": [
+          "math:functional-equations",
+          "cnm_032",
+          "cnm_146"
+        ],
+        "prerequisiteIds": [
+          "cnm_h027",
+          "cnm_031",
+          "cnm_143"
+        ],
+        "levelReason": "Leading terms, polynomial expansion, and coefficient comparison give a complete elementary algebraic classification."
+      }
+    ],
+    "assessedIds": [
+      "math:functional-equations"
+    ],
+    "supportIds": [
+      "cnm_h027"
+    ],
+    "annotationRationale": "The target is classifying every polynomial satisfying the functional identities. The method uses polynomial degree and multiplication, supported by function meaning, monomial terminology, and power laws. Degree arithmetic and general coefficient comparison are explained explicitly but lack a precise existing catalog node.",
+    "needsNewNodes": [
+      {
+        "name": "Degrees and coefficients in polynomial identities",
+        "description": "Compare coefficients of matching powers in real polynomial identities. Use nonzero leading terms to determine degrees of products and compositions, including degree(PQ) = degree(P) + degree(Q) and degree(P composed with Q) = degree(P)degree(Q) for nonconstant polynomials.",
+        "reason": "The catalog includes recognizing polynomial degrees and expanding products, but does not explicitly cover this general identity procedure. The coefficient-comparison node supplied is restricted to determining factorizations."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1987_AMC_12_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "Nonzero leading terms give degrees \\(2d\\) and \\(d^2\\), forcing \\(d=2\\). Coefficient comparison then gives \\(a=1,b=0,c=0\\). The sole candidate \\(f(x)=x^2\\) satisfies all three expressions identically, proving both existence and uniqueness.",
+    "levelCheck": "Leading terms and coefficient comparisons are appropriate elementary high-school algebra, with the necessary steps displayed.",
+    "methodDistinctness": "One complete classification method is sufficient.",
+    "annotationCheck": "The functional-equation target and local polynomial annotations fit. The proposed node honestly identifies the missing scope for general degree and coefficient comparison without forcing an unrelated existing ID.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "degree-and-coefficients": "degree-and-coefficients"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "bc86dce4a42249ec26864ce0bb37bab3fbc3e74b449d813339d29082572141d3",
+    "inputHash": "3e3e6d9233c56286096277d0263e7e687883629fcec66a957cb1ef6035e192ed",
+    "authorInputHash": "3eb18e6fd0e08597e81606d97edc84ee20128197fcab00d4c799de4bded6be44",
+    "reviewInputHash": "fff120de748834e4bc23fbfc9101d5aa29cd33d97e86bf2dee2685461165fa31",
+    "authorResponseHash": "5e24a280d10aac4c591ea3a01a43b6379c32d8a0de03dc86f0ec5c287b60ec0f",
+    "reviewerResponseHash": "eac58b2f848603a8f3d0c0e53b953fcf6c0c1617e64cab0e433401fb139f1fb9",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

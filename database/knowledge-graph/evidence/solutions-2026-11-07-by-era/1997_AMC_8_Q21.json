@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1997_AMC_8_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "b547fb4efa5c98aa3c7ff893246d590f68c2feddf605cbff15729e21e8915e48",
+    "figureHashes": {
+      "figures/1997_AMC_8_Q21_question_fig1.svg": "87189bc318570cf7bdf4e735abfa6258a64d666632d0be56b8125edae1806005"
+    }
+  },
+  "solutionSHA256": "170e5e8368be9c91bb668769e6e51b42d04f616bfb486adebd5cdc963c5fce25",
+  "solutionFigureHashes": {},
+  "candidateHash": "a26fed7c3f7c49eba85f73423d0980054cf44004c3798bfd6e4aee5d5451e6b3",
+  "candidate": {
+    "questionId": "1997_AMC_8_Q21",
+    "derivedAnswer": "D, \\(54\\text{ cm}^2\\)",
+    "answerStatus": "matches",
+    "answerReason": "Each removed unit corner cube eliminates three exposed unit squares and exposes three previously internal unit squares. The surface area remains 6 × 3² = 54 square centimeters.",
+    "methods": [
+      {
+        "id": "balance-lost-and-exposed-faces",
+        "label": "Compare the area lost and exposed",
+        "explanation": "Removing a corner cube takes away some outside surface, but it also exposes new surface. Tracking both changes makes it unnecessary to count every face of the finished solid.\n\nThe figure divides each \\(3\\text{ cm}\\) edge into three equal parts, so each small cube has side length \\(1\\text{ cm}\\). At a corner, three faces of that small cube lie on the original outside surface. Removing it eliminates those three \\(1\\text{ cm}^2\\) squares and exposes three new \\(1\\text{ cm}^2\\) squares on the neighboring cubes. Thus the net change is\n\\[\n-3+3=0\\text{ cm}^2.\n\\]\nNo two corner cubes share a face, so these replacements remain valid when all eight corner cubes are removed. The surface area consequently equals that of the original cube:\n\\[\n6\\cdot3^2=\\boxed{54\\text{ cm}^2},\n\\]\nchoice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:invariant-reasoning",
+          "cnm_p161"
+        ],
+        "prerequisiteIds": [
+          "cnm_p089",
+          "cnm_p160"
+        ],
+        "levelReason": "The preservation argument is a direct comparison of equal square areas, requiring only elementary cube geometry and arithmetic."
+      },
+      {
+        "id": "count-original-and-new-surface",
+        "label": "Count the remaining and newly exposed squares",
+        "explanation": "Separate the finished surface into squares left on the original faces and squares newly exposed by the removals. Each small cube in the figure has side length \\(1\\text{ cm}\\), so every small square has area \\(1\\text{ cm}^2\\).\n\nEach original face contains \\(9\\) small squares. Removing its four corner cubes leaves \\(9-4=5\\) squares on that face. Across the six original faces, this contributes \\(6\\cdot5=30\\text{ cm}^2\\).\n\nEach of the eight removed corner cubes also exposes three new unit squares. No two corner cubes share a face, so all \\(8\\cdot3=24\\) of these squares are distinct and remain exposed. Every surface square is either on an original face or was exposed by a removal, and none belongs to both groups. Hence the total surface area is\n\\[\n30+24=\\boxed{54\\text{ cm}^2},\n\\]\nchoice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_p089",
+          "cnm_h230"
+        ],
+        "prerequisiteIds": [
+          "cnm_p160"
+        ],
+        "levelReason": "The method counts unit square faces in two disjoint groups and uses only elementary spatial reasoning and arithmetic."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_p089",
+      "cnm_p160"
+    ],
+    "annotationRationale": "The task-level target is finding the exposed surface area of a solid after cube removals. The supplied catalog has cube and rectangular-prism surface-area formulas but lacks this composite-solid target, so no unsuitable assessed ID is assigned. Square area and cube structure support both methods. Preservation of area is specific to the first method, together with the original cube's surface-area formula. The second method directly adds two exhaustive, disjoint groups of surface squares. These annotations describe solution requirements rather than learner mastery.",
+    "needsNewNodes": [
+      {
+        "name": "Surface area of solids assembled from cubes",
+        "description": "Find the surface area of a finite solid formed from face-aligned cubes by identifying exposed square faces. Account for faces hidden by neighboring cubes and faces exposed or removed when cubes are added or taken away.",
+        "reason": "The remaining solid is not a rectangular prism. The existing prism surface-area nodes do not cover exposed-face accounting, and invariant reasoning describes only one optional route."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1997_AMC_8_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "The figure shows a 3×3×3 subdivision, so the removed corner cubes have unit sides. Each removal loses three exterior unit squares and exposes three others. Corner cubes are not face adjacent, so every exposed replacement remains. Thus the area stays 54 cm². The direct count also correctly gives 6×5+8×3=54 cm² without overlap or omission.",
+    "levelCheck": "Both methods explain the essential face accounting using elementary geometry and arithmetic appropriate for AMC 8.",
+    "methodDistinctness": "Preservation under each removal and direct counting of the finished surface offer useful distinct perspectives.",
+    "annotationCheck": "Shared square-area and cube-structure support is justified. Preservation and the original cube formula remain method local. The proposed exposed-surface-area node honestly addresses a target beyond the supplied rectangular-prism formulas.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "balance-lost-and-exposed-faces": "balance-lost-and-exposed-faces",
+    "count-original-and-new-surface": "count-original-and-new-surface"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "ba1a09d873fa801d8876b3a880a7617059071e138bdac11f0b97834138322e50",
+    "acceptedAt": "2026-11-08T00:28:14.329471+00:00",
+    "inputHash": "eb7ea982ac27a6cea0cfb19f12068386f7e89befd501e3875e5838d3c1af1e54",
+    "authorInputHash": "edac7fa3c1eba34b99d852f8add4d0e1fd789fee878f96eea85964610f52cf09",
+    "reviewInputHash": "0c0eb78423277599ed21d69103ca1df63c37408c69d7849f2fc36c917beca231",
+    "authorResponseHash": "a36920800255f063f442dc46d5e456909fe5ff9b9c4afabeeb49c4fc4decdd93",
+    "reviewerResponseHash": "6aa0225c86a4607f9db68ee07f34380888e7e7a3d2c3e741c24023104c538204",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

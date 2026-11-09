@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2005_AMC_12A_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "1f6da99c1964b86f5d74de2e195b3db68201e14f504a96a1850a17e712e9ce6e",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "4b80b222693c654f4354e05abfd77513b461452899bb1d017bd1f9e5a01ec38b",
+  "solutionFigureHashes": {},
+  "candidateHash": "de432cb30d4eb42d1f830ec2d06881369cf693a70b76d6f14232beb84146fdc5",
+  "candidate": {
+    "questionId": "2005_AMC_12A_Q23",
+    "derivedAnswer": "31/300, choice B",
+    "answerStatus": "matches",
+    "answerReason": "An integer logarithm occurs precisely for exponent pairs j=ki with k at least 2. There are 62 such ordered pairs among 25·24=600 equally likely ordered pairs.",
+    "methods": [
+      {
+        "id": "count-exponent-multiples",
+        "label": "Count multiples among the exponents",
+        "explanation": "Write the selected numbers as \\(a=2^i\\) and \\(b=2^j\\), where \\(1\\le i,j\\le25\\) and \\(i\\ne j\\). There are \\(25\\cdot24=600\\) equally likely ordered pairs, because \\(a\\) has 25 choices and \\(b\\) has 24 remaining choices.\n\nSuppose \\(\\log_a b=k\\) is an integer. Since \\(a,b>1\\), the logarithm is positive; since \\(a\\ne b\\), it is not \\(1\\). Thus \\(k\\ge2\\). By the definition of logarithms,\n\\[\n2^j=(2^i)^k=2^{ik},\n\\]\nso \\(j=ik\\). Conversely, every pair with \\(j=ki\\) for an integer \\(k\\ge2\\) gives \\(\\log_a b=k\\). We therefore need to count multiples of \\(i\\) larger than \\(i\\) and at most 25.\n\nFor \\(i=1,2,\\ldots,12\\), the numbers of possible \\(j\\)'s are respectively\n\\[\n24,\\ 11,\\ 7,\\ 5,\\ 4,\\ 3,\\ 2,\\ 2,\\ 1,\\ 1,\\ 1,\\ 1.\n\\]\nEach entry counts \\(2i,3i,\\ldots\\) up to 25. For example, when \\(i=3\\), the possibilities are \\(6,9,12,15,18,21,24\\), giving seven. For \\(i\\ge13\\), even the smallest possible multiple \\(2i\\) exceeds 25.\n\nLet \\(N\\) be the favorable count. Adding the disjoint cases gives\n\\[\n\\begin{aligned}\nN&=24+11+7+5+4+3\\\\\n&\\quad+2+2+1+1+1+1\\\\\n&=62.\n\\end{aligned}\n\\]\nEvery favorable ordered pair belongs to exactly one case, determined by \\(i\\). Hence the probability is\n\\[\n\\frac{62}{600}=\\boxed{\\frac{31}{300}},\n\\]\nchoice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_h137",
+          "cnm_h043",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_143",
+          "cnm_309",
+          "cnm_h230",
+          "cnm_h231"
+        ],
+        "levelReason": "The logarithm definition reduces the problem to counting small integer multiples and dividing favorable outcomes by equally likely ordered outcomes."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h137",
+      "cnm_h043"
+    ],
+    "supportIds": [
+      "cnm_p153",
+      "cnm_143",
+      "cnm_309"
+    ],
+    "annotationRationale": "The targets are interpreting an integer logarithm and computing a finite classical probability. Integer power laws turn the logarithmic condition into a multiple relation. The method combines a product count for all ordered outcomes with addition over disjoint base-exponent cases. It does not require the change-of-base formula.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2005_AMC_12A_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "Writing a=2^i and b=2^j makes an integer logarithm equivalent to j=ki for an integer k≥2. The twelve nonzero case counts sum to 62, and all 25·24=600 ordered pairs are equally likely. Thus the probability is 62/600=31/300.",
+    "levelCheck": "The exponent conversion and finite enumeration are elementary, and the explanation establishes both completeness and absence of duplication.",
+    "methodDistinctness": "One systematic counting method is sufficient.",
+    "annotationCheck": "The probability and logarithm assessments are appropriate. Factors, integer power laws, equal likelihood, and the addition and multiplication counting principles match their recorded uses.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-exponent-multiples": "count-exponent-multiples"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "9211474ca65a4d1b8e1b09ca1c9535218b1d5e02192d1924611b4acc4a0bc776",
+    "inputHash": "edc37569bd0053fae81c128bb21b142ad13243ba343d1138fdf81849fec2bcad",
+    "authorInputHash": "2b3f14576b00e2e5d65ac4fcc02e41cae3d410609be0118310fa0597e538212c",
+    "reviewInputHash": "9bfe25d96213d3da157f36e2de9d1193e1d9253c4b05f2e979f1938a135e0472",
+    "authorResponseHash": "5ccd17960a7d1bba7b1b86845e2970f07dabfb9127cbb736253c0717a9d5fea0",
+    "reviewerResponseHash": "b06fda227ca7c29c86b3b9079f838510cb6f39f31ae89baedbfe02658cf636a2",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

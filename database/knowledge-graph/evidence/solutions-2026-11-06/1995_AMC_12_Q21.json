@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1995_AMC_12_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "231f507dea5e91fc1eadebf15a810c1febde23f4d2c3fb329a5e6590d8c7bc10",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "1ca3663a87842d2296bd105c7f7bed76581c8a1b76ce95d17afb66ab18330291",
+  "solutionFigureHashes": {},
+  "candidateHash": "20b2f13aabca7ca3b1b3bbb86ac448aeae1a0485b1a6ac781185720e45fa6958",
+  "candidate": {
+    "questionId": "1995_AMC_12_Q21",
+    "derivedAnswer": "E: 5",
+    "answerStatus": "matches",
+    "answerReason": "The remaining diagonal must be a diameter of x² + y² = 25. This circle has 12 integer-coordinate points; removing the two fixed vertices leaves five opposite pairs, hence five rectangles, choice E.",
+    "methods": [
+      {
+        "id": "diagonal-circle",
+        "label": "Count possible diagonals",
+        "explanation": "The given vertices are opposite vertices, so their segment is a diagonal. Rectangle diagonals are equal and bisect each other, which strongly restricts the other two vertices.\n\nWrite the fixed vertices as \\(P=(4,3)\\) and \\(R=(-4,-3)\\). Their midpoint is \\(O=(0,0)\\), and \\(OP=\\sqrt{4^2+3^2}=5\\). If another vertex is \\(Q=(x,y)\\), the opposite vertex must be \\(S=(-x,-y)\\). Equality of the diagonals then requires \\(OQ=5\\), so\n\\[\nx^2+y^2=25.\n\\]\nConversely, choose any integer-coordinate point \\(Q\\) on this circle other than \\(P\\) or \\(R\\), and put \\(S=(-x,-y)\\). The diagonals \\(PR\\) and \\(QS\\) bisect each other, so their endpoints form a parallelogram. The diagonals are also equal, making it a rectangle. The excluded points are exactly those that would repeat the fixed diagonal and give a degenerate figure.\n\nTo count the integer points, note that \\(|x|,|y|\\le5\\). The possible coordinate squares are \\(0,1,4,9,16,25\\), and the only pairs summing to \\(25\\) are \\(0+25\\) and \\(9+16\\). Thus all the points are\n\\[\n(\\pm5,0),\\quad(0,\\pm5),\\quad(\\pm3,\\pm4),\\quad(\\pm4,\\pm3),\n\\]\nwith independent sign choices in the last two groups. There are \\(2+2+4+4=12\\) points.\n\nRemoving \\(P\\) and \\(R\\) leaves \\(10\\) points. Each rectangle is counted twice, once from each endpoint of its other diagonal, and that diagonal uniquely determines the rectangle. Hence the number of rectangles is\n\\[\n\\frac{10}{2}=\\boxed{5},\n\\]\nchoice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "math:lattice-counting",
+          "cnm_186",
+          "cnm_h176",
+          "cnm_249",
+          "cnm_184",
+          "cnm_188"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_h173",
+          "cnm_250"
+        ],
+        "levelReason": "The method uses rectangle diagonal properties, coordinate distance, and a finite check of small perfect squares."
+      }
+    ],
+    "assessedIds": [
+      "math:lattice-counting",
+      "cnm_186"
+    ],
+    "supportIds": [
+      "cnm_082",
+      "cnm_h173",
+      "cnm_250"
+    ],
+    "annotationRationale": "The task combines integer-coordinate counting with rectangle properties. The particular route expresses the diagonal restriction as a circle, uses origin symmetry to recover the fourth vertex, and applies parallelogram and rectangle criteria to prove sufficiency. Excluding the fixed diagonal and pairing opposite endpoints establish an exhaustive count without duplication.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1995_AMC_12_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "The other diagonal has endpoints Q and −Q with x²+y²=25. Conversely, every such pair distinct from the fixed diagonal gives a nondegenerate rectangle. The circle has 12 integer points; removing the fixed endpoints and pairing the remaining 10 gives 5 rectangles, choice E.",
+    "levelCheck": "Rectangle criteria, coordinate distance, and the exhaustive small-square check are appropriate and clearly explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The lattice-counting and rectangle-property targets are justified. Circle equations, origin symmetry, and parallelogram and rectangle criteria accurately describe the route.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "diagonal-circle": "diagonal-circle"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "82e997244b93155a659ff0e590b6fbe63e722977c08e23553373f2e529e8f8ba",
+    "inputHash": "26d37429b32fa3af12298e1fadadf8d09b85c0b9e18af11d10de7cd054f6aca2",
+    "authorInputHash": "0bdcf7a543c65fce6cc6940e978dcdfec7e4f97e1f79e45f933a3b522316803b",
+    "reviewInputHash": "21385412d72c879b8990eec7674c90a28c8d7eb638c143e87b3318b799703c4e",
+    "authorResponseHash": "0f650093d5946d9afd8823e79a3a24be2ad282830c8356ec9ed8dadbd4e6ee18",
+    "reviewerResponseHash": "b60867a8f38b034aef3705a4ca8638b46dff29bfeb1d064ccbdc9ec735d7e1ab",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2005_AMC_8_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "162aaf1d816b39adcc0b47ee738fe978f7d5d8f33ef174005d6190f388649dc3",
+    "figureHashes": {
+      "figures/2005_AMC_8_Q21_question_fig1.svg": "4af1c9988513152b8c44352b8b6f71b41700d7a1f0e57c668157ef09c010628e"
+    }
+  },
+  "solutionSHA256": "c83b28dbf9a36e298e45aa289d12044bb1b7c7885cfaf047f9506feee7fb55f0",
+  "solutionFigureHashes": {},
+  "candidateHash": "675b98e7dfcc9dcf07ee84f1562bd75e5e339a046d02ff4265270d624a9b1e3f",
+  "candidate": {
+    "questionId": "2005_AMC_8_Q21",
+    "derivedAnswer": "C: 18",
+    "answerStatus": "matches",
+    "answerReason": "Every triangle has two vertices in one horizontal row and one in the other. There are 3 × 3 = 9 triangles of each type, giving 18 altogether.",
+    "methods": [
+      {
+        "id": "split-by-row",
+        "label": "Choose two vertices from one row",
+        "explanation": "The dots lie in two horizontal rows of three. Three dots in the same row cannot form a triangle, so every triangle must have exactly two vertices in one row and one in the other.\n\nFirst count triangles with two top vertices. The top pair can be left-middle, left-right, or middle-right, giving three choices. For each pair, any of the three bottom dots can be the third vertex. Each choice forms a triangle because the bottom dot is outside the horizontal line through the top pair. This gives\n\\[\n3\\times3=9\n\\]\ntriangles.\n\nThe same reasoning gives nine triangles with two bottom vertices and one top vertex. Every triangle belongs to exactly one of these two groups, determined by which row contains two of its vertices. Within each group, its pair and third vertex determine it uniquely. Thus the total is\n\\[\n9+9=\\boxed{18},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_h239",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_h236",
+          "cnm_h231",
+          "cnm_110"
+        ],
+        "levelReason": "The three possible pairs are listed directly. The remaining reasoning uses elementary multiplication and addition of disjoint cases, without a combination formula."
+      },
+      {
+        "id": "all-triples-minus-rows",
+        "label": "Count all triples and remove straight rows",
+        "explanation": "A triangle is determined by three dots that do not lie on one straight line. We can first count every selection of three dots, then remove the selections that fail this condition.\n\nChoosing three different dots in order gives six choices for the first, five for the second, and four for the third:\n\\[\n6\\times5\\times4=120.\n\\]\nBut any fixed group of three dots appears in \\(3\\times2\\times1=6\\) orders. Since changing the order does not change the selected vertices, the number of distinct three-dot selections is\n\\[\n\\frac{120}{6}=20.\n\\]\nExactly two selections lie on a straight line: the complete top row and the complete bottom row. Every other selection has two dots in one horizontal row and one in the other. The line through the same-row pair is horizontal and cannot contain the dot in the other row, so each remaining selection forms a triangle.\n\nTherefore the number of triangles is\n\\[\n20-2=\\boxed{18},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_h239",
+          "cnm_h237"
+        ],
+        "prerequisiteIds": [
+          "cnm_h236",
+          "cnm_h231",
+          "cnm_110"
+        ],
+        "levelReason": "The method derives the sixfold ordering correction using elementary counting. It does not require factorial notation or a memorized permutation formula."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h239"
+    ],
+    "supportIds": [
+      "cnm_h236",
+      "cnm_h231",
+      "cnm_110"
+    ],
+    "annotationRationale": "The shared target is counting unordered vertex selections that form triangles, which fits applications of combinations. Both methods use unordered-selection meaning, multiplication of successive choices, and the geometric requirement that triangle vertices be noncollinear. The first method uses combined addition and multiplication, with its three pairs enumerated directly. The second derives the combination count by dividing ordered triples by their six orders, then excludes the two collinear triples. The alternatives are separate routes, and neither requires equal dot spacing. No annotation establishes student mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2005_AMC_8_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "The figure shows two rows of three dots. Every triangle has exactly one same-row pair and one opposite-row vertex, giving 2*3*3=18 without duplication. Independently, ordered triples divided by their six orders give 20 selections; precisely the two complete rows are collinear, leaving 18.",
+    "levelCheck": "Both methods use accessible elementary counting. The second explains its ordering correction without requiring a memorized combination formula.",
+    "methodDistinctness": "Direct counting by row and counting all triples before removing invalid selections provide genuinely distinct, useful approaches.",
+    "annotationCheck": "The unordered-selection target is route-neutral. Combined counting belongs to the first route, combination-count computation to the second, and the shared prerequisites apply to both.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "split-by-row": "split-by-row",
+    "all-triples-minus-rows": "all-triples-minus-rows"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "20998ae74805d91871b99f78122935f9d369b8c6c30208f09ff012f3aed2cd88",
+    "acceptedAt": "2026-11-07T10:33:42.569317+00:00",
+    "inputHash": "9d45e1f0869855d5273c2832f699291363f2a073c8d8a99e786f590a1619ca71",
+    "authorInputHash": "331f8c12ba48af4d352efaf75d35fcfc18b56f8946b41c7e2cbe281f99781bf6",
+    "reviewInputHash": "1e8512c5a08a795222273e15672738e9e71f02ae6f6344ed7c03188d3886e485",
+    "authorResponseHash": "01abe72f67c956af7261fa9efe7d1de17de959a1f9d25a52ebbdd9181e9b1abc",
+    "reviewerResponseHash": "da395adb7a00ec88540b023bbb47f6af111f21d9f9529a7c1696beaa9cd97b77",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

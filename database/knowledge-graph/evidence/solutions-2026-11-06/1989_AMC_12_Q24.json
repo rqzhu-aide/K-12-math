@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1989_AMC_12_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "6c0d0884b2fd6a78eb3bad08c6c0857d61cba66d748e95257bedc4ef08726d0e",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "8e0153eaa656a6cdf1eff79a0030145ddf105707b8e005993d29c348f0a93e08",
+  "solutionFigureHashes": {},
+  "candidateHash": "7b4e0b317b6809a8cd42291e6b04f4f1be76412f332d284129d821a4c86eccc3",
+  "candidate": {
+    "questionId": "1989_AMC_12_Q24",
+    "derivedAnswer": "\\(8\\), choice B",
+    "answerStatus": "matches",
+    "answerReason": "Exhausting the possible numbers and placements of females gives exactly eight distinct ordered pairs, matching B.",
+    "methods": [
+      {
+        "id": "classify-by-female-count",
+        "label": "List the possible neighbor counts",
+        "explanation": "Only the male and female pattern matters, since changing people's identities does not change \\((f,m)\\). Write \\(F\\) for a female and \\(M\\) for a male, and read each pattern around the table, including the connection from its last letter back to its first.\n\nWith no females, everyone has a male neighbor and nobody has a female neighbor, giving \\((0,5)\\).\n\nWith one female, exactly her two neighbors have a female neighbor. Every person still has a male neighbor, giving \\((2,5)\\).\n\nWith two females, there are two types of placement:\n\n• If they are adjacent, the pattern is \\(FFMMM\\). The two females and the two males at the ends of the male group have a female neighbor, so \\(f=4\\). Everyone has a male neighbor, giving \\((4,5)\\).\n\n• If they are separated, the three males occupy the two gaps between them. Each gap is nonempty, so the gaps contain one and two males, as in \\(FMFMM\\). All three males, and neither female, have a female neighbor, so \\(f=3\\). Only the male between the two females lacks a male neighbor, giving \\((3,4)\\).\n\nInterchanging male and female interchanges \\(f\\) and \\(m\\). Thus the cases with three, four, or five females give the reversed pairs from the cases with two, one, or zero females. The complete list is\n\\[\n\\begin{gathered}\n(0,5),\\ (2,5),\\ (4,5),\\ (3,4),\\\\\n(5,0),\\ (5,2),\\ (5,4),\\ (4,3).\n\\end{gathered}\n\\]\nThese cases cover every possible female count, and all eight listed pairs are distinct. Therefore the answer is \\(\\boxed{8}\\), choice B.",
+        "nodeIds": [
+          "cnm_h230",
+          "cnm_h003"
+        ],
+        "prerequisiteIds": [
+          "cnm_081"
+        ],
+        "levelReason": "The solution uses a short exhaustive case list and elementary neighbor counting, without graph theory or circular-permutation formulas."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h230"
+    ],
+    "supportIds": [
+      "cnm_081"
+    ],
+    "annotationRationale": "The target is counting distinct outcomes through exhaustive cases. The method also uses finite roster listing to check that the resulting pairs are distinct. Ordered-pair meaning supports keeping (f,m) different from (m,f). No graph degrees or paths are used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1989_AMC_12_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "Zero, one, and two females give (0,5), (2,5), and either (4,5) or (3,4). Swapping sexes supplies four reversed pairs. The placement classification is exhaustive, and all eight pairs are distinct.",
+    "levelCheck": "The circular neighbor counts and symmetry are explained directly using elementary cases.",
+    "methodDistinctness": "Case classification and sex interchange form one complete method.",
+    "annotationCheck": "Addition counting, finite roster listing, and ordered-pair meaning fit the solution. Removing graph-theory support is justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "classify-by-female-count": "classify-by-female-count"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "599bb4ac755ba99dd7c923bf3ae01db0946c569b5f431199e79d8e2c1959ceb8",
+    "inputHash": "12ad176446c6aabe52067a5d0011f91dfcad2742cafaafebc4524b905c40ed7b",
+    "authorInputHash": "cd41291011a7ccb3759e2a77679478705a18cc69c5fcd20510ceb850249e4810",
+    "reviewInputHash": "2964c8285ea1b71522b888495e611d7ddb9c5528b133439a22d76d2f5379145a",
+    "authorResponseHash": "9df4814a53e1e83344a539ca9fbed5205903c0941f51bc3994e5f08e327f462d",
+    "reviewerResponseHash": "371253512e9d8b780ca3c6fd54b41ee655f3ccd5a03401020b11b55066faedc8",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

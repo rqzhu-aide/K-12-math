@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2024_AMC_8_Q15",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "762c8f6878b13c1d41623b5939b7d81aa73dc933f50618c9b96ef61c4cde4f46",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "9bbf90977928b5c2b36d684eb1bc1f0a8e0c41122f14d5cc68e8101638f74329",
+  "solutionFigureHashes": {},
+  "candidateHash": "62ddb107c7e9db7e74ff0dc26f2b70926af3076d6f3b8a7c96cf895ca6c5c284",
+  "candidate": {
+    "questionId": "2024_AMC_8_Q15",
+    "derivedAnswer": "1107, choice C",
+    "answerStatus": "matches",
+    "answerReason": "Canceling the repeated-block factor reduces the equation to 8 times FLY equals BUG. The largest possible FLY is at most 124. The candidate 124 gives 992 and violates distinctness, while 123 gives 984 with all six digits distinct. Their sum is 1107.",
+    "methods": [
+      {
+        "id": "repeated-block-bound",
+        "label": "Reduce to three digits and check the largest candidates",
+        "explanation": "Repeating a three-digit block places one copy in the thousands and leaves one copy at the end. Let \\(a\\) be the three-digit number \\(\\text{FLY}\\), and let \\(b\\) be the three-digit number \\(\\text{BUG}\\). Then\n\\[\n\\text{FLYFLY}=1000a+a=1001a,\n\\]\nand similarly \\(\\text{BUGBUG}=1001b\\). The given equation becomes \\(8\\cdot1001a=1001b\\). Dividing both sides by the nonzero number \\(1001\\) gives\n\\[\n8a=b.\n\\]\nBecause \\(b\\) has three digits and \\(8\\cdot125=1000\\), the integer \\(a\\) is at most \\(124\\). Also, maximizing \\(1001a\\) is the same as maximizing \\(a\\), since the multiplier \\(1001\\) is positive.\n\nStart with the largest possible candidate. If \\(a=124\\), then \\(b=992\\), which repeats the digit \\(9\\) and violates the distinct-digit condition. The next candidate is \\(a=123\\), giving\n\\[\n8\\cdot123=984.\n\\]\nThe six digits \\(1,2,3,9,8,4\\) are all distinct, so this candidate is valid. It gives \\(8\\cdot123123=984984\\), and every larger candidate has already been ruled out. Therefore\n\\[\n\\text{FLY}+\\text{BUG}=123+984=\\boxed{1107},\n\\]\nchoice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_027",
+          "cnm_040"
+        ],
+        "prerequisiteIds": [
+          "cnm_p096",
+          "cnm_p074",
+          "cnm_p116"
+        ],
+        "levelReason": "Place value reduces the repeated numbers to three-digit blocks. Elementary multiplication and a finite bound leave only two candidates to check; no formal number-theory machinery is needed."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_p096",
+      "cnm_p074",
+      "cnm_p116"
+    ],
+    "annotationRationale": "The central target is an integer equation with digit restrictions: obtain a finite upper bound, reject the only larger candidate, and verify the maximal admissible assignment. The method writes expressions for the repeated blocks and preserves equality by division by 1001. The relevant supporting components are decimal place value, multiplication by eight, and the distributive identity behind 1000a+a=1001a. Formal inequality-solving procedures and carry analysis are not used. No mastery conclusion follows from these assignments.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2024_AMC_8_Q15",
+    "decision": "accept",
+    "mathematicalCheck": "The repeated blocks equal 1001a and 1001b, so cancellation gives b = 8a. Since 8 × 125 = 1000, a cannot exceed 124. The value 124 gives 992 and fails distinctness; 123 gives 984 with six distinct digits. Thus 123 is maximal and the requested sum is 1107, choice C.",
+    "levelCheck": "Place value, cancellation by a nonzero constant, and checking two bounded candidates remain within AMC 8 reasoning. The decisive bound and maximality argument are explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The integer-equation target fits the finite bound and digit restrictions. Expression writing, equality properties, place value, multiplication by eight, and distribution accurately describe the method; formal inequality solving is not claimed.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "repeated-block-bound": "repeated-block-bound"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "a1be3b471bef8f84f7af211a8728d1653ffe58d27ddad8133a09dff31cd6bf1e",
+    "acceptedAt": "2026-11-08T16:51:09.142889+00:00",
+    "inputHash": "f71af28733f313835074c7a9011f8c5e0b9701c3fb0cd51f36482034646bfc8c",
+    "authorInputHash": "fbd9b3fe475bcfc1db4e0d02f6a3fc4fcde32542146c07d3dc6529a445fa773d",
+    "reviewInputHash": "3bea76120b2157bb4586d7e964c9bafab4b57b0d4e1720f1676e4724c9670d6b",
+    "authorResponseHash": "d69f45ed110b79e89bffc361c53c06f2657dbfeaa7bff7fef0a7bd34eef89f96",
+    "reviewerResponseHash": "a3b5c7ad2305208c09dd204bb8f37c83911a7f34d6c69ef0c4b469e9d64a107e",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

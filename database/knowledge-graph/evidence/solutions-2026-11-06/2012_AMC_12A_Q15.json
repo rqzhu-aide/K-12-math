@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2012_AMC_12A_Q15",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ae65d66017130d70a0f886fae4cafbb55220356a51e07cc8caa05378b901482b",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "4c3c14c2237501e437f4399cc2fe9427da447b025db71298fff0404ab74772b0",
+  "solutionFigureHashes": {},
+  "candidateHash": "e25ec9d5e0d17b6d8e1c57c5cf6e6d12b557a4da8f5e14292fdf1b589656cd18",
+  "candidate": {
+    "questionId": "2012_AMC_12A_Q15",
+    "derivedAnswer": "\\(\\dfrac{49}{512}\\), choice A",
+    "answerStatus": "matches",
+    "answerReason": "The center must be black, and each of the two four-position rotation cycles has seven valid initial colorings. Thus 49 of the 512 equally likely colorings work, agreeing with A.",
+    "methods": [
+      {
+        "id": "rotation-cycle-colorings",
+        "label": "Track the positions under rotation",
+        "explanation": "At any position, the final color is black if either the original square there was black or the square rotated into that position was black. A position remains white exactly when both of those original squares were white.\n\nA quarter-turn fixes the center, cycles the four corners among themselves, and cycles the four edge-middle squares among themselves. The center must initially be black. In either four-position cycle, call positions consecutive when one rotates into the other. The condition is that no two consecutive positions, including the last and first, may both initially be white.\n\nCount the valid patterns in one such cycle by their number of white squares:\n\nWith no white squares, there is \\(1\\) pattern.\n\nWith one white square, there are \\(4\\) choices for its position.\n\nWith two white squares, they must be opposite in the cycle, giving \\(2\\) choices.\n\nThree or four white squares cannot work, since they necessarily include consecutive whites. These cases are disjoint and cover every valid pattern, so each cycle has\n\\[\n1+4+2=7\n\\]\nvalid patterns.\n\nThe center, corner cycle, and edge-middle cycle use disjoint positions, so their choices combine in \\(1\\cdot7\\cdot7=49\\) ways. Each resulting coloring is counted once by its restrictions to these three groups. All \\(2^9=512\\) initial colorings are equally likely by the independent fair color choices. Therefore the probability is \\(\\boxed{\\frac{49}{512}}\\), choice A.",
+        "nodeIds": [
+          "math:graph-coloring",
+          "cnm_h137",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_244",
+          "cnm_h231",
+          "cnm_309"
+        ],
+        "levelReason": "The argument uses elementary rotation tracking, a short exhaustive count, and favorable outcomes divided by equally likely outcomes."
+      }
+    ],
+    "assessedIds": [
+      "math:graph-coloring",
+      "cnm_h137"
+    ],
+    "supportIds": [
+      "cnm_244",
+      "cnm_h232"
+    ],
+    "annotationRationale": "The main targets are translating the repainting rule into local color restrictions and computing a classical probability. The relevant adjacency is determined by rotation, rather than by shared cell edges. Rotation and combined addition/multiplication counting support the method. Colorings at distinct positions remain distinct; no quotient by symmetry is used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2012_AMC_12A_Q15",
+    "decision": "accept",
+    "mathematicalCheck": "A final position stays white exactly when its original occupant and incoming square were both white. Rotation fixes the center and creates two separate four-position cycles. Each cycle permits exactly 1 + 4 + 2 = 7 patterns with no consecutive whites. Thus 49 of the 512 equally likely initial colorings work, giving 49/512.",
+    "levelCheck": "Rotation tracking and the exhaustive four-position count are appropriate elementary contest reasoning.",
+    "methodDistinctness": "One complete counting method is sufficient.",
+    "annotationCheck": "The coloring node covers the stated local restriction, with adjacency explicitly determined by rotation. Classical probability, rotation, and combined counting annotations are justified; no symmetry quotient is assumed.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "rotation-cycle-colorings": "rotation-cycle-colorings"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "9dac932de3c3be554fe929ad40b187359229f832678f52f1feb41c17705a5e5d",
+    "inputHash": "036036eb2e96c223eb27d02ac4847bd185d8143f2cc7ce2535d2c2eef8ed8570",
+    "authorInputHash": "4d44945a62780199a4e06d70628fd2a4d44eec87cf35309e21e1c972c6bca649",
+    "reviewInputHash": "2a362e9d277bf79b07994a3435f61526278fb3ce0df26337655ed36704686e73",
+    "authorResponseHash": "1f4c75647e7f218756cdc761ff77989b4957449fcc6a62ca6e6b8a73188313de",
+    "reviewerResponseHash": "7fccfabdaf6477c1dae389f4444d99d274aecc883d04e6a0319854982b73b68e",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

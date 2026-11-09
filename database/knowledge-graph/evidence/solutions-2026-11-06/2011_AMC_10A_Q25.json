@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2011_AMC_10A_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "5298aea559efa7c9e9184e75a3567c908dd136074bde2c08711bbcc029b92889",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "f2173989e6103dce81f6a661af31718aa82f1d886b57770b035113e0fc983f96",
+  "solutionFigureHashes": {},
+  "candidateHash": "fbef8c3e946d23a78bb0df0258edfa938350e23a719e66ea7c789b76f2f9c58f",
+  "candidate": {
+    "questionId": "2011_AMC_10A_Q25",
+    "derivedAnswer": "\\(2320\\), choice C",
+    "answerStatus": "matches",
+    "answerReason": "The 100-ray points form a 49 by 49 interior grid. The points that are also 60-ray partitional form a 9 by 9 common grid. Thus the required count is 49² − 9² = 2320.",
+    "methods": [
+      {
+        "id": "equal-area-grid",
+        "label": "Turn the area conditions into a grid",
+        "explanation": "Scaling the square preserves equal-area partitions and gives a one-to-one correspondence between the possible points. We may therefore use the unit square and write \\(X=(x,y)\\), where \\(0<x,y<1\\). We will characterize the points for even \\(n\\), which covers both \\(100\\) and \\(60\\).\n\nFirst, every square corner must lie on a dividing ray. A corner between two consecutive ray endpoints would make that piece have at least four vertices, unless the two rays were opposite and \\(X\\) lay on a side of a corner triangle. This exceptional case also fails for even \\(n\\). Rotate the square so the omitted corner is bottom left, and join it to \\(X\\), splitting the corner triangle into positive areas \\(\\alpha\\) and \\(\\beta\\). All other pieces then have \\(X\\) as a vertex. The full triangles from \\(X\\) to the top and bottom sides have areas summing to \\(1/2\\). The top triangle consists of whole pieces, while the bottom consists of whole pieces plus one of \\(\\alpha,\\beta\\). Since \\(1/2=(n/2)(1/n)\\), that partial area must be an integer multiple of \\(1/n\\). Using the right and left sides forces the other partial area to be an integer multiple too. Their positive sum would be at least \\(2/n\\), contradicting the corner triangle's area \\(1/n\\).\n\nThe four corner rays split the square into four triangles with apex \\(X\\). Each must contain a whole number of the equal-area pieces. The bottom triangle has area \\(y/2\\), and the left triangle has area \\(x/2\\). Thus\n\\[\n\\frac{ny}{2}\\quad\\text{and}\\quad\\frac{nx}{2}\n\\]\nmust be integers. The top and right triangles have areas \\((1-y)/2\\) and \\((1-x)/2\\); their required counts are also integers because \\(n\\) is even.\n\nThese conditions are sufficient as well. For each side, let \\(k\\) be \\(n\\) times the area of its triangle with apex \\(X\\). This is a positive integer. Divide that side into \\(k\\) equal segments and draw rays to the division points and corners. The resulting triangles have equal bases and a common height on that side, so each has area \\(1/n\\). The four values of \\(k\\) sum to \\(n\\), producing exactly \\(n\\) triangles and \\(n\\) distinct boundary rays.\n\nFor \\(n=100\\), the coordinate conditions give\n\\[\nx=\\frac{i}{50},\\qquad y=\\frac{j}{50},\n\\qquad 1\\le i,j\\le49.\n\\]\nThere are therefore \\(49^2\\) such points.\n\nFor a coordinate also to be allowed when \\(n=60\\), it must have both forms \\(i/50\\) and \\(a/30\\). Equality gives \\(3i=5a\\), so \\(i=5k\\), \\(a=3k\\), and the common coordinate is \\(k/10\\). The strict interior bounds give \\(1\\le k\\le9\\). Each coordinate thus has nine common possibilities, giving \\(9^2\\) points that satisfy both conditions.\n\nEvery grid point determines one location, and the common points are precisely those to exclude. The desired number is\n\\[\n49^2-9^2=2401-81=\\boxed{2320},\n\\]\nwhich is choice C.",
+        "nodeIds": [
+          "math:lattice-counting",
+          "cnm_p148",
+          "cnm_h010"
+        ],
+        "prerequisiteIds": [
+          "cnm_082",
+          "cnm_p153",
+          "cnm_h231"
+        ],
+        "levelReason": "The characterization uses triangle areas, integer piece counts, simple divisibility, and an interior grid count. Necessity and sufficiency are both established using elementary geometry."
+      }
+    ],
+    "assessedIds": [
+      "math:lattice-counting",
+      "cnm_p148"
+    ],
+    "supportIds": [
+      "cnm_082",
+      "cnm_p153",
+      "cnm_h231"
+    ],
+    "annotationRationale": "Triangle area converts the partition requirement into integer coordinate conditions, and lattice counting handles the resulting interior grids and endpoints. Coordinates, basic divisibility, and independent coordinate choices support the method. Complement counting removes exactly the points satisfying both ray conditions. No greatest-common-factor procedure is required by the written divisibility argument.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2011_AMC_10A_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The omitted-corner exception is correctly excluded for even n: complementary-side area sums force its positive partial areas to be multiples of 1/n, contradicting their total of 1/n. Corner rays then require nx/2 and ny/2 to be integers, and equal side subdivisions prove sufficiency. The interior grids have 49 squared points and 9 squared common points, giving 2320.",
+    "levelCheck": "The argument uses elementary triangle areas, integer piece counts, divisibility, and coordinate counting within AMC 10 scope.",
+    "methodDistinctness": "One complete characterization and counting method is sufficient.",
+    "annotationCheck": "Triangle area and lattice counting capture the central work. Coordinates, divisibility, multiplication, and complement counting match the solution. Omitting greatest-common-factor machinery is appropriate for the written argument.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "equal-area-grid": "equal-area-grid"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "2fd0340793d11ae01643e7d3ab29634415256289d504b4438b73398ea2f73d0b",
+    "inputHash": "990ef7aa610a85f4cd8f9d31738ce66357465f9566a8eddf136a9fde51ab2005",
+    "authorInputHash": "2ea7f74f2695a70e3eb960e4b6e9a1a2a2c991937ddc469dcbb70ef2bf2743d6",
+    "reviewInputHash": "d89cecc41409a9e310afcb5719281910e7a1e68a2e586ea556b52989f08aaaf9",
+    "authorResponseHash": "d745bc39f4cd343621b08c8564a67d15939bf26204928d5d2568647b10526fa3",
+    "reviewerResponseHash": "9bc6068c01d96a61eae1dea47d69155f46e9ef9992eaabcc23cb4534ec5f0997",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

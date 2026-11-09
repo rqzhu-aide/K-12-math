@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1951_AMC_12_Q18",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "da2af53569ba56f1da20d0627167e6276c36fda50a8803618ba940b78a8be434",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "0d04328cb59c6027fd9da016fd0c382a999c656cd71715b48c7be0581960ff8b",
+  "solutionFigureHashes": {},
+  "candidateHash": "80f62d9a9fb54edb0c5341c2b6db3b5a49b3e06596dcf9ddbf12f6bccc4c63f7",
+  "candidate": {
+    "questionId": "1951_AMC_12_Q18",
+    "derivedAnswer": "Some even number (D)",
+    "answerStatus": "matches",
+    "answerReason": "Integer linear factors force all four factor coefficients to be odd, making a even. The value a=58 works with prime binomials, while a=0 cannot work, so not every even number is possible.",
+    "methods": [
+      {
+        "id": "match-factor-coefficients",
+        "label": "Compare coefficients and parity",
+        "explanation": "To see what integer factors would force, suppose\n\\[\n21x^2+ax+21=(px+q)(rx+s),\n\\]\nwhere \\(p,q,r,s\\) are integers. Expanding and comparing coefficients gives\n\\[\npr=21,\\qquad qs=21,\\qquad a=ps+qr.\n\\]\nSince \\(21\\) is odd, all four integers \\(p,q,r,s\\) must be odd. Both \\(ps\\) and \\(qr\\) are then odd, so their sum \\(a\\) must be even. This rules out every odd value.\n\nSome even values do work. For example,\n\\[\n(3x+7)(7x+3)=21x^2+58x+21.\n\\]\nEach binomial has relatively prime integer coefficients, so neither has a nontrivial constant integer factor; being linear, each is a prime binomial over the integers.\n\nHowever, not every even value works. In any proposed factorization,\n\\[\n(ps)(qr)=(pr)(qs)=441>0.\n\\]\nThus \\(ps\\) and \\(qr\\) are nonzero and have the same sign, so their sum cannot be zero. Therefore \\(a=0\\) is impossible. The correct description is some even number, choice D.",
+        "nodeIds": [
+          "math:factorization-coefficient-comparison",
+          "cnm_p156"
+        ],
+        "prerequisiteIds": [
+          "cnm_146",
+          "cnm_014",
+          "cnm_p158"
+        ],
+        "levelReason": "Coefficient comparison, parity, and signed products give a complete elementary argument without solving a parameterized quadratic."
+      }
+    ],
+    "assessedIds": [
+      "cnm_150",
+      "cnm_p156"
+    ],
+    "supportIds": [
+      "cnm_146",
+      "cnm_014",
+      "cnm_p158"
+    ],
+    "annotationRationale": "The task concerns integer factorability and the parity restriction on its middle coefficient. The written route expands general linear factors and compares coefficients. Polynomial multiplication supports this comparison, signed products exclude zero, and greatest common factors verify that the exhibited binomials are prime. Determining every allowable value of a is not required.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1951_AMC_12_Q18",
+    "decision": "accept",
+    "mathematicalCheck": "The equations pr=qs=21 force all four coefficients odd, so a=ps+qr is even. The exhibited primitive linear binomials yield a=58. Since (ps)(qr)=441>0, their sum cannot be zero, disproving 'any even number' and excluding E.",
+    "levelCheck": "Coefficient comparison, parity and signed products provide a complete elementary argument.",
+    "methodDistinctness": "One method suffices; enumerating every allowable coefficient is unnecessary for these choices.",
+    "annotationCheck": "The coefficient-comparison route fits the requested classification. Polynomial multiplication, signed multiplication and GCF checks on the two binomial coefficients are supported by the cited nodes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "match-factor-coefficients": "match-factor-coefficients"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "2c0da81af5197af62f03bec39cc9c17547f69d8707c6d41a494282752f4c844b",
+    "inputHash": "2450367b56fdeb23f0ac0701f6587cc89302f2d2333c0f2a5bdaec02df4b6d7e",
+    "authorInputHash": "4212e7950045c0ea06efe56fdda6693b058f750a1c56c54cd827911afe9d2ab7",
+    "reviewInputHash": "51411e37f4d1109374702c3dbc1898a99d29ccb92767ae250fac9d8b8b095c6a",
+    "authorResponseHash": "17f6c818471974b6baee538e23460b84a5c83a04d3a3032cf9178a757a432edd",
+    "reviewerResponseHash": "7fcaeabfbeb8327dc82cdd75bf042221813092673367a28494e55db54c0f98a9",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

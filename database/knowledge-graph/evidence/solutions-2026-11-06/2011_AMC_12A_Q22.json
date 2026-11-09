@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2011_AMC_12A_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "b51fa5d50548ab24d1c0c601b682229ec8c39700823cbce9dd0f6a4fee471ffe",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "9e317dcff1c8186c55e1ecfc3c9d253da80c3a09344fe14d15c31c265f4c69c5",
+  "solutionFigureHashes": {},
+  "candidateHash": "6711d92e225e72d3df6008d9fc35385360391db2129656d67b4b1fa341a73ee8",
+  "candidate": {
+    "questionId": "2011_AMC_12A_Q22",
+    "derivedAnswer": "2320 (C)",
+    "answerStatus": "matches",
+    "answerReason": "For both even values of n, equal areas force rays through all four corners, including exclusion of the straight-angle exception. The 100-ray points form a grid of 49² points, with 9² also belonging to the 60-ray grid. Thus the required count is 2320, choice C.",
+    "methods": [
+      {
+        "id": "side-areas-and-grid-count",
+        "label": "Characterize the points using triangle areas",
+        "explanation": "Equal areas suggest counting how many small triangles fit into each triangle based on a full side of the square. First, we must justify that rays reach all four corners.\n\nUse the square's side length as the unit of length and place it at \\([0,1]\\times[0,1]\\). Write \\(X=(x,y)\\), where \\(0<x,y<1\\). Throughout the geometric argument, let \\(n\\) be either \\(60\\) or \\(100\\), so \\(n\\) is even and each piece has area \\(1/n\\).\n\nConsider the angular gaps between consecutive rays, measured through their corresponding pieces. A gap greater than \\(180^\\circ\\) would give its piece an angle at \\(X\\) too large for a triangle. For a gap smaller than \\(180^\\circ\\), \\(X\\) is a vertex of the piece. If a square corner lay strictly between its two ray endpoints along the square's boundary, that corner would give the piece at least a fourth vertex. Thus any corner not reached by a ray must belong to a piece whose gap is exactly \\(180^\\circ\\).\n\nWe now exclude that exception. Two opposite consecutive rays form a chord through \\(X\\). If their piece is triangular, it cuts off one square corner \\(C\\), with \\(X\\) lying on its chord side. There can be at most one such gap, since all gaps are positive and sum to \\(360^\\circ\\). Consequently, rays reach the other three corners.\n\nJoining \\(X\\) to \\(C\\) splits the exceptional piece into two triangles with positive areas \\(a\\) and \\(b\\), where \\(a+b=1/n\\). The four triangles joining \\(X\\) to the full sides of the square have areas\n\\[\n\\frac{x}{2},\\quad \\frac{1-x}{2},\\quad\n\\frac{y}{2},\\quad \\frac{1-y}{2}.\n\\]\nEach pair based on opposite sides has total area \\(1/2\\). The two based on sides not touching \\(C\\) consist entirely of whole original pieces, so their areas are integer multiples of \\(1/n\\). Since \\(n\\) is even, \\(1/2=(n/2)/n\\), and the triangles based on their opposite sides also have areas that are integer multiples of \\(1/n\\). Each of those consists of whole original pieces together with one of the split parts. Therefore both \\(a\\) and \\(b\\) are positive integer multiples of \\(1/n\\). This would give \\(a+b\\ge 2/n\\), a contradiction. Hence every corner must be reached by a ray.\n\nThe four full-side triangles are therefore unions of whole pieces. Their numbers of pieces must be the positive integers\n\\[\n\\frac{nx}{2},\\quad \\frac{n(1-x)}{2},\\quad\n\\frac{ny}{2},\\quad \\frac{n(1-y)}{2}.\n\\]\nThese conditions are also sufficient. If a full-side triangle has area \\(m/n\\), divide its base into \\(m\\) equal segments and join the division points to \\(X\\). The resulting triangles have equal bases and a common altitude, so each has area \\(1/n\\). The four values of \\(m\\) sum to \\(n\\). There are four corner rays and \\(\\sum(m-1)=n-4\\) additional rays, giving exactly \\(n\\) rays and \\(n\\) equal-area triangles.\n\nFor \\(n=100\\), the integer conditions are equivalent to\n\\[\nx=\\frac{j}{50},\\qquad y=\\frac{k}{50},\n\\qquad 1\\le j,k\\le49.\n\\]\nEvery such ordered pair gives one eligible interior point, and distinct pairs give distinct points. Thus there are \\(49^2=2401\\) points that are \\(100\\)-ray partitional.\n\nFor \\(n=60\\), each coordinate must instead be an interior multiple of \\(1/30\\). A coordinate \\(u\\) belongs to both grids exactly when \\(50u\\) and \\(30u\\) are integers. Then\n\\[\n10u=2(30u)-50u\n\\]\nis an integer. Conversely, if \\(10u\\) is an integer, then both \\(50u\\) and \\(30u\\) are integers. Since \\(0<u<1\\), the common coordinates are exactly \\(1/10,2/10,\\ldots,9/10\\). Hence \\(9^2=81\\) points belong to both grids.\n\nRemoving exactly these common points gives\n\\[\n49^2-9^2=2401-81=\\boxed{2320},\n\\]\nchoice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "cnm_p148",
+          "math:lattice-counting",
+          "cnm_h008"
+        ],
+        "prerequisiteIds": [
+          "cnm_110",
+          "cnm_082",
+          "cnm_p153",
+          "cnm_h231",
+          "cnm_h010"
+        ],
+        "levelReason": "The argument uses elementary triangle geometry and areas to exclude the straight-angle exception, followed by integer coordinate restrictions, product counting, and subtraction. All reasoning is within AMC 12 scope."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p148",
+      "math:lattice-counting"
+    ],
+    "supportIds": [
+      "cnm_110",
+      "cnm_082",
+      "cnm_p153",
+      "cnm_h231",
+      "cnm_h010"
+    ],
+    "annotationRationale": "Triangle areas establish the necessary coordinate restrictions and the construction proving sufficiency. Scaled lattice counting handles the exact interior bounds without omission or duplication. The method uses intersection to identify points satisfying both partition conditions. Triangle vertex knowledge supports the straight-angle analysis; coordinates, integer multiples, multiplication counting, and complement subtraction support the enumeration. These assignments describe the written mathematics and do not establish learner mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2011_AMC_12A_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "The straight-angle exception is correctly excluded for even n: its two split areas would be positive integer multiples of 1/n while summing to 1/n. Rays must therefore reach every corner. The full-side triangle areas give necessary integer conditions, and equal-base subdivisions prove sufficiency with exactly n distinct rays. The 100-ray grid has 49² interior points; its intersection with the 60-ray grid has 9² points. Thus the required count is 2401−81=2320, choice C.",
+    "levelCheck": "The elementary geometry, area arguments, integer arithmetic, and coordinate counting fit AMC 12. The decisive geometric exception and both directions of the characterization are explained.",
+    "methodDistinctness": "One complete method is supplied and is sufficient; no additional method is needed.",
+    "annotationCheck": "The assessed triangle-area and lattice-counting nodes match the central reasoning. The method's intersection concept and its triangle, coordinate, multiples, multiplication-counting, and complement supports are justified. No unsupported equivalence or necessary missing node is apparent.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "side-areas-and-grid-count": "side-areas-and-grid-count"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "77e87bf8a1dc74d82a7a0bfab51f7ede02117d9a783aac2f110a250353f6258b",
+    "inputHash": "e56d5ad0e5e2b9d60de0fdef867281dfe72a24b62a0a1404603361328da9b673",
+    "authorInputHash": "9155069dbc94822dcae880670bb3588d9af539d43c1a275c8c08b1476d137f61",
+    "reviewInputHash": "07afe87c83294712d9712142f1e500cefc5187a3f78453301e5a20ceeaec4467",
+    "authorResponseHash": "663520d91d80dbdc1973c6a14860441f494b525539bc880912fd5364bbc1d752",
+    "reviewerResponseHash": "ee57d9e05dbc747af9ab116cacf537c5d458b52dd095d2c852bec9a8d966d333",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1997_AMC_12_Q29",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "2a880d03a937f205210f584287d6ab4c709e747eaaf1339ad60f89f34b4043bf",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "d79c471f8480c908d5469551bef320cf2e62ec0f53017f2992703cb9a42b9871",
+  "solutionFigureHashes": {},
+  "candidateHash": "b1627b785571ea98906dcaab20ba5d537290ecd9eaf28a7c9dc75c7dae0d066d",
+  "candidate": {
+    "questionId": "1997_AMC_12_Q29",
+    "derivedAnswer": "8, choice B",
+    "answerStatus": "matches",
+    "answerReason": "Seven or fewer summands cannot produce the digit 8 in the decimal expansion of 1/7 after division by 7. A columnwise construction produces eight positive special summands totaling 1.",
+    "methods": [
+      {
+        "id": "1997_AMC_12_Q29_m1",
+        "label": "Divide by 7 and count decimal digits",
+        "explanation": "Dividing by \\(7\\) turns the allowed digits \\(0\\) and \\(7\\) into \\(0\\) and \\(1\\), making decimal addition easier to control. Every special summand of \\(1\\) must have integer part \\(0\\): a nonzero integer part using only the allowed digits would make that summand at least \\(7\\).\n\nSuppose \\(n\\leq 7\\) special numbers sum to \\(1\\). After dividing each summand by \\(7\\), we obtain \\(n\\) decimals using only digits \\(0\\) and \\(1\\), whose sum is \\(1/7\\). Each decimal column contains at most seven ones, so no carrying occurs. Their sum therefore has a decimal representation using only digits \\(0\\) through \\(7\\). However, long division gives\n\\[\n\\frac17=0.\\overline{142857},\n\\]\nwhich contains an \\(8\\). This number has no terminating decimal representation, so its decimal expansion is unique. Thus \\(n\\geq 8\\).\n\nTo construct eight summands, let \\(d_k\\) be the digit in the \\(k\\)th decimal place of \\(1/7\\). Construct eight numbers \\(y_1,\\ldots,y_8\\) as follows: put a \\(1\\) in the \\(k\\)th decimal place of \\(y_i\\) when \\(i\\leq d_k\\), and put a \\(0\\) there otherwise. For example, the first column has a \\(1\\) only in \\(y_1\\), the second has ones in \\(y_1,\\ldots,y_4\\), and the fourth has ones in all eight numbers.\n\nEach column then sums to exactly \\(d_k\\), with no carrying, so\n\\[\ny_1+\\cdots+y_8=\\frac17.\n\\]\nAll eight numbers are positive because their fourth decimal digits are \\(1\\). Multiplying each by \\(7\\) replaces every \\(1\\) by \\(7\\), producing eight special numbers whose sum is \\(1\\). Therefore the smallest possible number is \\(\\boxed{8}\\), choice \\(\\mathrm{B}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "math:rational-decimal-periods"
+        ],
+        "prerequisiteIds": [
+          "cnm_p118",
+          "cnm_p125"
+        ],
+        "levelReason": "The proof uses decimal place value, exact long division, and a direct digit construction, all within AMC 12 scope."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_p118",
+      "cnm_p125"
+    ],
+    "annotationRationale": "The task asks for a minimum, requiring both an impossibility bound and an attaining construction. The method locally uses the verified repeating decimal of 1/7 and addition by decimal columns. Infinite geometric-series summation is not used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1997_AMC_12_Q29",
+    "decision": "accept",
+    "mathematicalCheck": "With at most seven summands, division by 7 gives decimal column totals at most 7, contradicting the unique expansion 1/7 = 0.overline(142857). The construction realizes every digit using eight summands, all positive because their fourth digits are 1. Multiplication by 7 produces special numbers totaling 1.",
+    "levelCheck": "The decimal argument is complete and accessible at AMC 12 level without advanced infinite-series machinery.",
+    "methodDistinctness": "One complete method supplies both the lower bound and an attaining construction.",
+    "annotationCheck": "The extremal assessed node is route-neutral. Repeating-decimal knowledge and elementary column addition support the method; an infinite geometric-series formula is unnecessary.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "1997_AMC_12_Q29_m1": "1997_AMC_12_Q29_m1"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "647375cffbfc083167a244e6c8c64e1d39215ab9e2d7ac29020f6aca4baddbca",
+    "inputHash": "00fc054b2688fa1f86e1ae41b087eeed2e9206dee17a71135e2c2263137ef081",
+    "authorInputHash": "6e1996ca312e7d74ed78fc6b10b514a9ff55a26febdaa6686488b2a86f01fc99",
+    "reviewInputHash": "50111f9beac28d4ee34148ebf0d7a8060250f9f39d7e3538a621a2e95f11688c",
+    "authorResponseHash": "ee47d0d8eb50f3d6166c0761ad88b2c2529ea1eee4d4970d411404cef72ade28",
+    "reviewerResponseHash": "473a9a03ced49ad124aa913dba5c4f717a32d292eae237337dff330b53ab9c50",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

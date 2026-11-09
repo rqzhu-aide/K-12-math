@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1973_AMC_12_Q23",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "837fd8e9bbdb62ba4b1752f2b9c99982e0c148c786142abf190502f604cc7f99",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "add4c965decd5f73e54b4803df2781f28cf5aa37c7c576744d1a93b41684d114",
+  "solutionFigureHashes": {},
+  "candidateHash": "709dcaae3550e983fb2b7078b1f7e26452043dd2d2f4e6ae5f0bbb33848a6858",
+  "candidate": {
+    "questionId": "1973_AMC_12_Q23",
+    "derivedAnswer": "Under fair orientation, 2/3, choice D; without an orientation rule, no unique probability follows.",
+    "answerStatus": "disputed",
+    "answerReason": "The key is correct under the recorded ordinary convention that either face of the chosen card is equally likely to face upward. Equal card-selection probabilities alone do not specify that convention: placing the mixed card always red-up gives 1/2, while always blue-up gives 1. The recorded grading qualification accepts D under fair placement and also accepts reasoning that identifies the missing assumption.",
+    "methods": [
+      {
+        "id": "condition-on-oriented-faces",
+        "label": "Count the possible upper faces",
+        "explanation": "Assume the intended fair-placement convention: after a card is chosen, either of its physical faces is equally likely to face upward. Distinguishing the physical faces matters because the red-red card has two ways to show red.\n\nLabel its faces \\(R_1\\) and \\(R_2\\), and label the mixed card's faces \\(R_3\\) and \\(B\\). The four possible upper faces are equally likely, each with probability \\(\\frac12\\cdot\\frac12=\\frac14\\).\n\nKnowing that the upper face is red excludes \\(B\\), leaving three equally likely possibilities: \\(R_1,R_2,R_3\\). The underside is red in exactly the first two cases. Therefore, under this convention, the required probability is\n\\[\n\\boxed{\\frac23},\n\\]\nchoice D.\n\nThe wording explicitly specifies card selection but leaves placement implicit. To see why that matters, suppose the mixed card is always placed red-up. Then either selected card shows red, and the probability of a red underside is \\(\\frac12\\). If the mixed card is always placed blue-up, a red upper face identifies the red-red card, giving probability \\(1\\). Both rules preserve the stated equal card-selection probabilities.\n\nThus the literal wording does not determine a unique probability. Under the recorded fair-orientation convention, the answer is \\(\\frac23\\), choice D.",
+        "nodeIds": [
+          "cnm_h244",
+          "cnm_h137",
+          "cnm_286"
+        ],
+        "prerequisiteIds": [
+          "cnm_309",
+          "cnm_h134"
+        ],
+        "levelReason": "An explicit list of four equally likely outcomes and restriction to the observed event avoids needing Bayes' formula."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h244"
+    ],
+    "supportIds": [
+      "cnm_309",
+      "cnm_h134"
+    ],
+    "annotationRationale": "The mathematical target is conditional probability after observing a red upper face. The written route enumerates physical-face outcomes and uses equal-likelihood counting. Checking the placement model supports the validity of that count; Bayes' formula is not required by this method.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The orientation mechanism is not explicit in the stem. The recorded grading convention treats fair orientation as intended and permits clear reasoning that identifies this assumption."
+    ]
+  },
+  "review": {
+    "questionId": "1973_AMC_12_Q23",
+    "decision": "accept",
+    "mathematicalCheck": "Under fair placement, the four physical upper faces each have probability 1/4. Conditioning on red leaves three equally likely faces, two with red undersides, giving 2/3. The alternative placement rules correctly yield 1/2 and 1, demonstrating the literal ambiguity.",
+    "levelCheck": "Explicit enumeration makes the conditional probability and the missing assumption understandable without advanced formulas.",
+    "methodDistinctness": "One counting method, supplemented by valid counterexamples to uniqueness under unspecified placement, is sufficient.",
+    "annotationCheck": "Conditional probability is the appropriate assessed concept. Enumeration, sample spaces, and equal-likelihood checks fit the written method, and the recorded fair-orientation qualification is preserved.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "condition-on-oriented-faces": "solution:condition-on-oriented-faces:add4c965decd"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "24e55b000adadde01859e1ac6b1beb3f38ef83811e931ce498e78c3213ae7175",
+    "inputHash": "c52ad9ebb9acdbfe4e291ff59b6531204ef50314da0db3886b9dd1861cbdbaef",
+    "authorInputHash": "060e65e8bf473e3d9d3e701b53b63badca26fc2aa1a678a910da91e5a374d53e",
+    "reviewInputHash": "e2450cb281a368d3e74c29a68accf9f1cb46302dbe813a543e8b30c10dfe3508",
+    "authorResponseHash": "ea0d3408dd65a102eebd563f9050f3d8317d3419ea4aa2e146999ac4357bedd8",
+    "reviewerResponseHash": "0c9accb6def3980bf34c1a94a4d3bf1e7341cc211ec8ddbe9ee3b188058d6341",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

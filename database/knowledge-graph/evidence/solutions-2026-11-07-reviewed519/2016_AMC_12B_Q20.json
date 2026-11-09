@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_12B_Q20",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "b980e3b614d6e9312f806be54c14a455a9e1ad2b941f7fa1622073ba6133001f",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "1779d4ebb28d90da0c0fa64b729655a6ea562cbfdb596550f10c8320591e8dc2",
+  "solutionFigureHashes": {},
+  "candidateHash": "c31bca575161628b0a6d66a18453c2a4cf487f2f0652d7d2a3b7ade973a3b665",
+  "candidate": {
+    "questionId": "2016_AMC_12B_Q20",
+    "derivedAnswer": "A (385)",
+    "answerStatus": "matches",
+    "answerReason": "There are 21 teams and 1330 unordered triples. Exactly 945 triples have a team that beats both others, leaving 385 cyclic triples.",
+    "methods": [
+      {
+        "id": "complementary-triples",
+        "label": "Count triples with an undefeated team",
+        "explanation": "Each team played \\(10+10=20\\) opponents, so there were \\(21\\) teams. It is easier to count the triples that do not form a cycle and subtract them from all triples.\n\nWithin any triple, there are three games and therefore three wins. If no team wins twice, each team must win once, which gives exactly the cycle in the question. Otherwise, one team beats both others. Such an undefeated team is unique, since two teams cannot both win their game against each other.\n\nFor each of the \\(21\\) teams, choose two of the \\(10\\) teams it defeated. This produces every noncyclic triple exactly once, identified by its unique undefeated team. Thus the required count is\n\\[\n\\binom{21}{3}-21\\binom{10}{2}\n=1330-945=385.\n\\]\nThe answer is \\(\\boxed{385}\\), choice \\(\\text{A}\\).",
+        "nodeIds": [
+          "math:double-counting",
+          "cnm_h010",
+          "cnm_h239"
+        ],
+        "prerequisiteIds": [
+          "cnm_h237",
+          "cnm_h231"
+        ],
+        "levelReason": "Uses elementary combinations, complementary counting, and a uniqueness argument, all within AMC 12 counting."
+      },
+      {
+        "id": "mixed-incidences",
+        "label": "Count a team's win-loss pairs",
+        "explanation": "Every team played \\(20\\) games, so there were \\(21\\) teams and \\(\\binom{21}{3}=1330\\) unordered triples. Count selections consisting of a team \\(T\\), one opponent that \\(T\\) defeated, and one opponent that defeated \\(T\\). Each team gives \\(10\\cdot10\\) selections, for a total of\n\\[\n21\\cdot10\\cdot10=2100.\n\\]\nThe two selected opponents are distinct because a team cannot both beat and lose to the same opponent.\n\nLet \\(c\\) be the number of cyclic triples and \\(t\\) the number of other triples. A cyclic triple contributes three selections, one with each team as \\(T\\). In a noncyclic triple, the teams have respectively two, one, and zero wins within the triple, so only the middle team contributes a selection. These two types exhaust all triples. Consequently,\n\\[\nc+t=1330,\\qquad 3c+t=2100.\n\\]\nSubtracting gives \\(2c=770\\), so \\(c=385\\). The answer is \\(\\boxed{385}\\), choice \\(\\text{A}\\).",
+        "nodeIds": [
+          "math:double-counting",
+          "cnm_h239",
+          "cnm_h231"
+        ],
+        "prerequisiteIds": [
+          "cnm_h237"
+        ],
+        "levelReason": "Uses elementary incidence counting and two simple linear equations."
+      }
+    ],
+    "assessedIds": [
+      "math:double-counting"
+    ],
+    "supportIds": [
+      "cnm_h239",
+      "cnm_h237",
+      "cnm_h231"
+    ],
+    "annotationRationale": "The central target is counting triples through incidences while tracking their contributions. Unordered selections and product counts support both methods. Complementary counting belongs specifically to the first method; the second distinguishes triples by how many win-loss incidences they contribute.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_12B_Q20",
+    "decision": "accept",
+    "mathematicalCheck": "There are 21 teams. Every noncyclic triple has exactly one undefeated team, giving 21·45=945 such triples and 1330−945=385 cycles. Independently, win-loss incidences give 3c+t=2100 and c+t=1330, again yielding c=385.",
+    "levelCheck": "Both explanations are complete and use elementary counting appropriate for AMC 12.",
+    "methodDistinctness": "Counting undefeated teams and counting mixed win-loss incidences provide distinct useful approaches.",
+    "annotationCheck": "The double-counting target, shared combination and product-counting supports, and method-local complement annotation match the arguments.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "complementary-triples": "complementary-triples",
+    "mixed-incidences": "mixed-incidences"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "ae3a4e9e5941b00bdaacd2e5d46142755f0a1279a6a0c45deafa5f636f14f0f9",
+    "acceptedAt": "2026-11-07T10:53:28.274473+00:00",
+    "inputHash": "0d0131a91a47c1bca43b8d7e06a0baec352bf614b7b58c93468ec9b4b8d51e87",
+    "authorInputHash": "4c10c342e70d8e4cb3df76f1d5aa45594fe15f306adfaa846952dedb35fc69db",
+    "reviewInputHash": "0462f535de992ac8ea129f63ca6c8d4bdf43b196b9a103ff437d288b208e6a1a",
+    "authorResponseHash": "fdb9b6b5fe4f6421d90211b75aa6ee897943f748c79feb7f6ae3b6cff71f766e",
+    "reviewerResponseHash": "1cfef22949f553267aa656c2a1dd330894bf953b0d728866ad52bf97d765a41c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

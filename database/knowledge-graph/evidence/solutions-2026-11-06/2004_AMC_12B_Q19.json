@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2004_AMC_12B_Q19",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "11957c5a6366003a8401d44a7313af77d2c65910e885b24517d92fc38784af11",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "26b946dd9aaf8426a3c2ce78d6836028fd6adb8a33cae0563a314fe9aaa27cd8",
+  "solutionFigureHashes": {},
+  "candidateHash": "ead9ff95b7eb18c32b6677e1628da3371e78981c0cd0e9b51ae1b1b2de82ef26",
+  "candidate": {
+    "questionId": "2004_AMC_12B_Q19",
+    "derivedAnswer": "Not uniquely determined as written; 6, choice A, under the additional assumption that the sphere's center lies on the frustum's axis.",
+    "answerStatus": "disputed",
+    "answerReason": "The recorded ambiguity is material: isolated lateral tangency does not force the sphere's center onto the axis. The intended coaxial calculation gives radius 6, but a frustum of height 8 also contains a tangent sphere of radius 4 with center offset 10-4√5 from its axis.",
+    "methods": [
+      {
+        "id": "axial-section-and-counterexample",
+        "label": "Check the axial assumption",
+        "explanation": "First assume that the sphere's center lies on the frustum's axis. This additional condition gives the intended answer, but it is not explicitly stated.\n\nLet the sphere's radius be \\(r>0\\). Tangency to both horizontal bases makes the frustum's height \\(2r\\). A vertical section through the axis is an isosceles trapezoid with bases \\(36\\) and \\(4\\), containing a circle tangent to all four sides.\n\nThe circle touches each horizontal base at its midpoint. From a lower vertex, the horizontal tangent segment has length \\(18\\); from the upper vertex on the same side, it has length \\(2\\). Tangent segments from the same external point have equal lengths, so the sloping side has length \\(18+2=20\\). Its horizontal displacement is \\(18-2=16\\). The Pythagorean theorem gives\n\\[\n(2r)^2+16^2=20^2,\n\\]\nso \\(r^2=36\\). Since the radius is positive, \\(r=6\\), choice \\(\\mathrm{A}\\), under the axial assumption.\n\nTo see why that assumption matters, consider instead a right circular frustum of height \\(8\\), with the same base radii \\(18\\) and \\(2\\). Place a sphere of radius \\(4\\) with its center \\(4\\) above the bottom and\n\\[\nd=10-4\\sqrt5\n\\]\nunits horizontally from the axis. Since \\(8<4\\sqrt5<10\\), we have \\(0<d<2\\), so its top and bottom contact points lie inside both base disks.\n\nIn the vertical plane containing the axis and sphere center, let \\(z\\) measure height and \\(x\\) measure signed horizontal position. The trapezoid's sloping sides lie on\n\\[\nx+2z=18,\\qquad -x+2z=18,\n\\]\nand the circle's center is \\((d,4)\\). Its perpendicular distances to these two lines are\n\\[\n\\frac{10-d}{\\sqrt5}=4,\n\\qquad\n\\frac{10+d}{\\sqrt5}>4.\n\\]\nThus the radius-\\(4\\) circle lies inside the trapezoid, tangent to one sloping side and both horizontal bases. At each height, the sphere's horizontal section is a disk whose center is \\(d\\) from the axis. Its farthest radial point lies in this vertical plane, so the entire sphere also lies inside the frustum and touches its lateral surface.\n\nTherefore radius \\(4\\) satisfies the displayed tangencies too. The stated conditions do not determine a unique radius; \\(\\boxed{6}\\), choice \\(\\mathrm{A}\\), is conditional on the intended axial interpretation.",
+        "nodeIds": [
+          "math:sphere-tangency-distances",
+          "cnm_263",
+          "cnm_174",
+          "cnm_h174",
+          "cnm_260"
+        ],
+        "prerequisiteIds": [
+          "cnm_h106",
+          "cnm_262",
+          "cnm_082",
+          "cnm_075"
+        ],
+        "levelReason": "The conditional answer uses tangent lengths and the Pythagorean theorem. The ambiguity is certified with planar point-to-line distances and elementary horizontal sections, all within high-school geometry."
+      }
+    ],
+    "assessedIds": [
+      "math:sphere-tangency-distances"
+    ],
+    "supportIds": [
+      "cnm_h106",
+      "cnm_260"
+    ],
+    "annotationRationale": "The task concerns recovering a sphere radius from tangencies, especially the center-to-base distance condition. Equal tangent lengths and Pythagorean geometry serve the conditional coaxial calculation; point-to-line distances verify the counterexample. The existing tangent-length label is method-specific and does not justify an unconditional answer.",
+    "needsNewNodes": [
+      {
+        "name": "Plane sections and tangency in solids of revolution",
+        "description": "Use an axial section of a right circular cone or frustum and a central section of a sphere to translate spatial containment and tangency into planar geometry. Track whether the sphere center lies on the axis, and justify containment using horizontal radial extents.",
+        "reason": "The catalog covers sphere-plane contact and planar circle tangency, but does not explicitly cover the cross-section and radial-containment reasoning needed here."
+      }
+    ],
+    "limitations": [
+      "The displayed statement does not require the sphere's center to lie on the axis, circular lateral contact, or a largest sphere.",
+      "Preserving the recorded qualification, choice A is the intended coaxial result, while isolated lateral tangency permits other radii."
+    ]
+  },
+  "review": {
+    "questionId": "2004_AMC_12B_Q19",
+    "decision": "accept",
+    "mathematicalCheck": "Under coaxiality, equal tangent lengths give slant length 20, so (2r)^2+16^2=20^2 yields r=6. The counterexample also works: for height 8 and radius 4, d=10-4sqrt(5) lies between 0 and 2, and the center's distances to the two sloping lines are 4 and greater than 4. Horizontal radial extents justify full sphere containment and genuine lateral contact. Thus the displayed tangencies do not determine a unique radius.",
+    "levelCheck": "The conditional calculation and counterexample use high-school tangent geometry, point-to-line distances, and elementary sections. The spatial containment step is explained.",
+    "methodDistinctness": "The coaxial calculation and counterexample serve complementary purposes in one complete qualified explanation.",
+    "annotationCheck": "The sphere-distance node supports base-plane contact, while tangent lengths and Pythagorean geometry remain method-local. The proposed section-and-containment node honestly covers the additional spatial reasoning. The original ambiguity is preserved.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "axial-section-and-counterexample": "axial-section-and-counterexample"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "73f60bf3bed9eaab690e4a8c046a4302fadb6bdf62707df53c350e8bab10e784",
+    "inputHash": "13f5cb01d57a85fc44c3af65a4bc78279956460794c00e57c10dfcf708af3788",
+    "authorInputHash": "ac6b7818f3b2b2563c3ad03c39f621741a1bbe03cae74955eabf8fdc1a629ee4",
+    "reviewInputHash": "78c48a2a1cd66bbd65c69f43903fe6ca395b00b4f678852f47e5631a6c82bce4",
+    "authorResponseHash": "9aff2f8a2227433c54c00bddf7cf62cb236abfe36293245075988b9b59ef1e42",
+    "reviewerResponseHash": "c11a79ce3193f1d8fa194cc4d5ba62d91ec6ec6de3819fedcb344ae73b675c14",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

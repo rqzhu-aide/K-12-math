@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2001_AMC_10_Q19",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "c9e02e2925ec4d6d795ef06d02d529bbc72e7282c628022e03d6c5ea9ef09bb9",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "ecb87ce6606ab4651fae9fd54a94f785326b6aa4eb3dfa16773290e14f94bb6c",
+  "solutionFigureHashes": {},
+  "candidateHash": "49d1a44bc5554bd171f0c074576aff647aae69218cd95fd9edd2f454972c0062",
+  "candidate": {
+    "questionId": "2001_AMC_10_Q19",
+    "derivedAnswer": "D: 15",
+    "answerStatus": "matches",
+    "answerReason": "Fixing the glazed count at 0, 1, 2, 3, or 4 leaves respectively 5, 4, 3, 2, or 1 choices for the chocolate count. The powdered count is then determined, giving 15 selections.",
+    "methods": [
+      {
+        "id": "fix-glazed-count",
+        "label": "Classify by the glazed count",
+        "explanation": "A selection is determined by the nonnegative whole-number counts \\(g,c,p\\) of glazed, chocolate, and powdered donuts, with\n\\[\ng+c+p=4.\n\\]\nThe order in which the donuts are chosen does not change these counts.\n\nFix the glazed count \\(g\\). The chocolate count can be any integer from \\(0\\) through \\(4-g\\), giving \\(5-g\\) possibilities. Once the glazed and chocolate counts are chosen, the powdered count is forced to be \\(4-g-c\\).\n\nThe possible glazed counts are \\(0,1,2,3,4\\), so the total is\n\\[\n5+4+3+2+1=15.\n\\]\nEvery selection has exactly one glazed count, and within that case exactly one chocolate count, so none are omitted or counted twice. There are \\(15\\) selections, choice D.",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_h230"
+        ],
+        "prerequisiteIds": [
+          "cnm_p035"
+        ],
+        "levelReason": "The count comes from five disjoint cases and elementary addition."
+      },
+      {
+        "id": "separator-encoding",
+        "label": "Encode the counts with separators",
+        "explanation": "A selection is specified by three nonnegative counts, one for each flavor, whose sum is \\(4\\). Represent the four donuts by four stars and use two bars to separate the glazed, chocolate, and powdered groups in that fixed order. For example,\n\\[\n\\star\\star\\mid\\mid\\star\\star\n\\]\nrepresents two glazed, zero chocolate, and two powdered donuts.\n\nBars may be adjacent or at either end, allowing any flavor count to be zero. Every selection produces exactly one such string, and reading the numbers of stars in its three groups recovers the selection. Thus this correspondence neither omits nor repeats selections.\n\nThere are six positions containing four stars and two bars. Choose the two bar positions. There are \\(6\\cdot5\\) ordered pairs of distinct positions, but each pair of bar positions is counted twice, once in each order. Hence the number of selections is\n\\[\n\\binom62=\\frac{6\\cdot5}{2}=15.\n\\]\nThe answer is \\(15\\), choice D.",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "math:stars-and-bars",
+          "cnm_h237"
+        ],
+        "prerequisiteIds": [
+          "cnm_p035",
+          "cnm_h236"
+        ],
+        "levelReason": "The separator correspondence and the small combination count are explained directly using elementary counting within AMC 10 scope."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_p035"
+    ],
+    "annotationRationale": "The route-neutral target is counting the nonnegative integer triples of flavor counts with total four, which fits bounded integer solutions. Parts-and-total reasoning supports both methods. Disjoint-case addition belongs to the first route; separator counting and combinations belong to the second. Stars and bars is therefore an alternative method rather than a requirement for every solution.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2001_AMC_10_Q19",
+    "decision": "accept",
+    "mathematicalCheck": "Fixing the glazed count gives exactly 5, 4, 3, 2, 1 selections in disjoint exhaustive cases, totaling 15. Independently, four stars and two bars encode the flavor counts bijectively, including zero counts, and yield 6·5/2=15 strings.",
+    "levelCheck": "Both methods explain completeness and multiplicity. The separator count is derived using elementary counting appropriate for AMC 10.",
+    "methodDistinctness": "Case enumeration and separator encoding provide genuinely distinct, accessible counting ideas.",
+    "annotationCheck": "The bounded integer-triple model supports the route-neutral target. Parts-and-total reasoning is shared, while addition, separators, and combinations remain method-local.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "fix-glazed-count": "fix-glazed-count",
+    "separator-encoding": "separator-encoding"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "2cf72e676e25b40f34f7b6f21cbaa69d59a16271a9c35c54992a25de3ced039f",
+    "inputHash": "0f2a88c251cbf030fcb3b9371308695706390234a51f09371233960f380df058",
+    "authorInputHash": "7b3f253983d7fa54fecd302bc57f3322402b6f594568a659d60adf1826903e60",
+    "reviewInputHash": "83b72f5cc48138089139588da1bb6e72dd1f70df1fb4e6f1765f7b71a5b6e613",
+    "authorResponseHash": "f1031dcb2578867522492f9da0d9a38d21f197542e078c5788141c4400aa34e1",
+    "reviewerResponseHash": "464fe443dc714876645b46983abdebc99d350b2f4e7d22ae4c3106431c6a0c25",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

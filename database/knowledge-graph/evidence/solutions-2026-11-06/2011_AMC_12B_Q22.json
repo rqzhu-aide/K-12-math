@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2011_AMC_12B_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "819776db71fef8ca022614d983617b82b8da4dad214ab49bc1d98c890eea5d93",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "156ec8a4e99e7ba32288375ba1ed83cf4b5e017b748a9d7973926194fb770f8a",
+  "solutionFigureHashes": {},
+  "candidateHash": "18cfcaceb6a3179aa4f8c569bd8d0ca4469a9a06b0f90705cff0f3542c4187d6",
+  "candidate": {
+    "questionId": "2011_AMC_12B_Q22",
+    "derivedAnswer": "D, \\(\\dfrac{1509}{128}\\)",
+    "answerStatus": "matches",
+    "answerReason": "The side lengths retain the form \\(t-1,t,t+1\\), with \\(t\\) halved at every step. Such a triple forms a triangle exactly when \\(t>2\\), making \\(T_{10}\\) the last triangle and its perimeter \\(1509/128\\).",
+    "methods": [
+      {
+        "id": "halving-contact-sides",
+        "label": "Track the middle side",
+        "explanation": "Equal tangent lengths let us express the next triangle's sides using the current side lengths. Let\n\\[\nu=AD=AF,\\quad v=BD=BE,\\quad w=CE=CF.\n\\]\nIf \\(a=BC\\), \\(b=CA\\), and \\(c=AB\\), then\n\\[\na=v+w,\\quad b=u+w,\\quad c=u+v.\n\\]\nThus the semiperimeter \\(s=(a+b+c)/2\\) equals \\(u+v+w\\), and the next side lengths are\n\\[\nu=s-a,\\quad v=s-b,\\quad w=s-c.\n\\]\n\nThe initial sides are \\(2012-1,2012,2012+1\\). More generally, if the current sides are \\(t-1,t,t+1\\), its semiperimeter is \\(3t/2\\), so the next side lengths, in increasing order, are\n\\[\n\\frac t2-1,\\quad\\frac t2,\\quad\\frac t2+1.\n\\]\nThe spacing stays 1 while the middle side is halved. Therefore the proposed sides of \\(T_n\\) have middle value\n\\[\nt_n=\\frac{2012}{2^{n-1}}.\n\\]\n\nFor \\(t>0\\), the triple \\(t-1,t,t+1\\) forms a nondegenerate triangle exactly when the two smaller sides sum to more than the largest:\n\\[\n(t-1)+t>t+1\n\\quad\\Longleftrightarrow\\quad t>2.\n\\]\nThis condition also guarantees that all three lengths are positive; the other two triangle inequalities then follow.\n\nThe condition for \\(T_n\\) is consequently \\(2^{n-1}<1006\\). Since\n\\[\n2^9=512<1006<1024=2^{10},\n\\]\n\\(T_{10}\\) exists but \\(T_{11}\\) does not. All preceding triangles exist because their middle sides are larger. The last perimeter is\n\\[\n3\\cdot\\frac{2012}{512}=\\boxed{\\frac{1509}{128}},\n\\]\nchoice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_263",
+          "cnm_111",
+          "cnm_h200",
+          "cnm_h208"
+        ],
+        "prerequisiteIds": [
+          "cnm_264",
+          "cnm_055",
+          "cnm_h207"
+        ],
+        "levelReason": "Uses equal tangent lengths, a geometric halving pattern, and strict triangle inequalities, with powers of two locating the stopping point."
+      }
+    ],
+    "assessedIds": [
+      "cnm_263",
+      "cnm_111"
+    ],
+    "supportIds": [
+      "cnm_264",
+      "cnm_055"
+    ],
+    "annotationRationale": "The targets are obtaining tangent segment lengths and deciding when proposed sides cease to form a triangle. The method tracks a recurrence whose middle terms form a geometric sequence. Those are components of one route, rather than separate solutions. Incircle meaning and segment addition support the tangent equations.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2011_AMC_12B_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "Equal tangent lengths give the next sides s-a, s-b, s-c. Thus a triple t-1,t,t+1 produces t/2-1,t/2,t/2+1. Such a triple forms a nondegenerate triangle exactly when t>2. Since 512<1006<1024, T10 is the last triangle, with perimeter 3·2012/512=1509/128.",
+    "levelCheck": "The tangent equations, halving pattern, positivity check, and strict stopping condition are clearly explained at AMC 12 level.",
+    "methodDistinctness": "Recurrence and geometric-sequence reasoning are correctly combined into one method.",
+    "annotationCheck": "Tangent lengths and triangle feasibility are appropriate assessed targets. Incircle and segment knowledge support the setup; recurrence and geometric-term nodes describe the actual route.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "halving-contact-sides": "halving-contact-sides"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "a2c0b1153eaf131f9da410dea7ca3896553611d19a4eb70876efb663151966af",
+    "inputHash": "1782b8e064249aaca5289632809bc68a1b348f005f08c5d697ed4678b1c5983f",
+    "authorInputHash": "0cb0cfc5c9fbdad76c8ef32bfb58fe539499ca31ce5dc1f99e7a2eb3e7573d29",
+    "reviewInputHash": "19555fdce50a033b3770cbd5d9a488c242764502be49e3ecb99503b225b30722",
+    "authorResponseHash": "df22f1f2a2518db08914661587b6bbb894befe7b74ed3d6974b98dd124e93267",
+    "reviewerResponseHash": "38ce837bb9979392cee38640d18664531aa60d3fc3ced1cbb75b9acc4488261c",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

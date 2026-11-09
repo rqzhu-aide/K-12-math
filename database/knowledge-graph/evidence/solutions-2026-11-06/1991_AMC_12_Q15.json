@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1991_AMC_12_Q15",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "13b03bea2628b683b15ad0b382b625edecb0ee234fdf25f9b01e465a55370a4b",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "bc3c71987e954e8ebffe83f99435a64b0e9646370e1f31e151ddd26f138533c7",
+  "solutionFigureHashes": {},
+  "candidateHash": "3fd308abbdc3065c4eba8483e3a7f7946e34e1d0cd47fc321833bb622fa24fa8",
+  "candidate": {
+    "questionId": "1991_AMC_12_Q15",
+    "derivedAnswer": "B: 20",
+    "answerStatus": "matches",
+    "answerReason": "Every empty chair must neighbor an occupied chair. Each occupied chair can account for at most three chairs including itself, so 3N is at least 60. Seating someone in every third chair attains N = 20.",
+    "methods": [
+      {
+        "id": "covering-bound-and-construction",
+        "label": "Bound the number of covered chairs",
+        "explanation": "The condition means that every empty chair has an occupied chair immediately beside it. Count how many chairs one seated person can account for: that person's own chair and its two neighboring chairs, at most \\(3\\) chairs altogether.\n\nThese groups must cover all \\(60\\) chairs. Some groups may overlap, which can only reduce the number of distinct chairs covered. Therefore\n\\[\n60\\leq 3N,\n\\qquad N\\geq 20.\n\\]\nTo show that \\(20\\) people are enough, number the chairs \\(1\\) through \\(60\\) around the table and occupy chairs\n\\[\n1,4,7,\\ldots,58.\n\\]\nThere are exactly two empty chairs between consecutive occupied chairs. Each of those empty chairs is next to one of the occupied chairs at the ends of its gap. This also holds for chairs \\(59\\) and \\(60\\), between occupied chairs \\(58\\) and \\(1\\).\n\nThus this arrangement satisfies the condition with \\(20\\) people, and the lower bound proves that the smallest possible value is \\(\\boxed{20}\\), choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "math:extremal-principle"
+        ],
+        "prerequisiteIds": [],
+        "levelReason": "The argument uses an elementary counting bound and a repeating seating pattern, with no graph-theoretic machinery."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [],
+    "annotationRationale": "The task asks for a minimum configuration. The method proves a bound valid for every arrangement, accounts for possible overlap in the covering count, and constructs an arrangement attaining the bound. These are precisely the two components of the assessed extremal node.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1991_AMC_12_Q15",
+    "decision": "accept",
+    "mathematicalCheck": "Every chair must belong to an occupied chair's group consisting of itself and its two neighbors, so 60≤3N even when groups overlap. Occupying chairs 1,4,...,58 attains N=20, including across the circular boundary.",
+    "levelCheck": "The counting bound and construction are elementary and clearly explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The extremal node precisely matches the universal lower bound and an arrangement attaining it.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "covering-bound-and-construction": "covering-bound-and-construction"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "aaac17137330d90acad884aacdafdcebac66385b2e1e00b3af01c5dfbe4fc6d9",
+    "inputHash": "db5690dd34589e367f904f63cdb434585a5b6de0c8bb3fad098b5a077678ff60",
+    "authorInputHash": "97dd8baad8513473b3fdada857a0a213ff973fbf8913a57acb8b3d4ed3ff1d10",
+    "reviewInputHash": "66f5848dde70026519d398790c39f83f6a6b232a6b28a1576a1eb0fa538fcc0b",
+    "authorResponseHash": "217665d0d43d8a08b8ab24f5c29991b0d0dd9c1270999979dacfec1c0a0e1542",
+    "reviewerResponseHash": "a5dacadd8d50196f09aacea44d205465ac9e4a71ea85cc15f841b2047d776ac2",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

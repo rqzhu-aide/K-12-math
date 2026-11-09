@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1967_AMC_12_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "1a118eba921fef544fef34414ebe95d28803fb72719ae66d2019acdba0801d15",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "7f57eafed8b84b6e3f1f288cacaf760e3ae8596aa1e442dfef55c2d11e9ccde8",
+  "solutionFigureHashes": {},
+  "candidateHash": "866a89ede0cd2bf0bb8d2e7fb6601b91a70d64dd3fefe583a3a55e1514e6c7b1",
+  "candidate": {
+    "questionId": "1967_AMC_12_Q25",
+    "derivedAnswer": "A",
+    "answerStatus": "matches",
+    "answerReason": "For every allowed p, the positive integer power (p-1)^((p-1)/2) differs from 1 by a multiple of p-2. Each other choice fails at p=5.",
+    "methods": [
+      {
+        "id": "remainder-one-products",
+        "label": "Track the remainder of the power",
+        "explanation": "In choice A, the proposed divisor is one less than the base. This makes the remainder especially simple. Let\n\\[\nk=\\frac{p-1}{2},\\qquad d=p-2.\n\\]\nBecause \\(p\\) is an odd integer greater than \\(1\\), \\(k\\) is a positive integer and \\(d\\ge1\\). If \\(p=3\\), then \\(d=1\\), so A holds.\n\nFor \\(p\\ge5\\), the base \\(p-1=d+1\\) leaves remainder \\(1\\) upon division by \\(d\\). Multiplying two integers with this remainder preserves it: for integers \\(u,v\\),\n\\[\n(du+1)(dv+1)=d(duv+u+v)+1.\n\\]\nThus every positive integer power of \\(p-1\\) also leaves remainder \\(1\\). In particular, subtracting \\(1\\) from \\((p-1)^k\\) gives a multiple of \\(d=p-2\\). This proves A for every allowed \\(p\\).\n\nTo rule out the other universal claims, take \\(p=5\\), when the power is \\(4^2=16\\). B and C would require \\(5\\) to divide \\(17\\) and \\(16\\), respectively. D would require \\(6\\) to divide \\(17\\), and E would require \\(4\\) to divide \\(15\\). All four fail. Therefore the answer is \\(\\boxed{\\mathrm{A}}\\).",
+        "nodeIds": [
+          "math:modular-congruence",
+          "math:modular-powers"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_p156",
+          "cnm_019",
+          "cnm_146"
+        ],
+        "levelReason": "The proof establishes a constant remainder pattern by ordinary multiplication, with no primality assumption or exponent theorem."
+      },
+      {
+        "id": "finite-geometric-factorization",
+        "label": "Exhibit an integer factor",
+        "explanation": "Choice A suggests factoring because its proposed divisor, \\(p-2\\), is one less than the base \\(p-1\\). Let\n\\[\na=p-1,\\qquad k=\\frac{p-1}{2}.\n\\]\nHere \\(a\\ge2\\) and \\(k\\) is a positive integer.\n\nLet \\(S\\) be the sum of \\(k\\) terms starting at \\(1\\), with each subsequent term obtained by multiplying by \\(a\\):\n\\[\nS=1+a+\\cdots+a^{k-1}.\n\\]\nWhen \\(k=1\\), this means simply \\(S=1\\). Multiplying \\(S\\) by \\(a\\) shifts every power up by one. Subtracting \\(S\\) then cancels all intermediate powers, leaving\n\\[\n(a-1)S=aS-S=a^k-1.\n\\]\nSubstituting \\(a=p-1\\) gives\n\\[\n(p-1)^k-1=(p-2)S.\n\\]\nSince \\(S\\) is an integer, this proves divisibility by \\(p-2\\). The smallest allowed value, \\(p=3\\), is included: then \\(k=1\\) and \\(S=1\\).\n\nThe other choices all fail at \\(p=5\\). The power is \\(16\\), but \\(17\\) and \\(16\\) are not divisible by \\(5\\), \\(17\\) is not divisible by \\(6\\), and \\(15\\) is not divisible by \\(4\\). Therefore the answer is \\(\\boxed{\\mathrm{A}}\\).",
+        "nodeIds": [
+          "cnm_155",
+          "cnm_h210"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_p156",
+          "cnm_019",
+          "cnm_145"
+        ],
+        "levelReason": "The finite geometric identity is derived through multiplication and cancellation and supplies an explicit integer factorization."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_p153",
+      "cnm_p156",
+      "cnm_019"
+    ],
+    "annotationRationale": "The common target is proving a universal divisibility statement about an integer expression. The catalog lacks an appropriately scoped route-neutral divisibility-proof node, so assessedIds is empty and that target is proposed in needsNewNodes. The basic factors-and-multiples node supports the meaning of divisibility but does not describe this general proof task. Odd/even numbers and positive integer powers support both methods. The remainder method uses congruence and a constant power-remainder pattern, so math:modular-powers remains local to that method. The factorization method instead uses a finite geometric identity to exhibit an integer quotient; its factorization and summation nodes remain method-local. These assignments describe the mathematics, not student mastery.",
+    "needsNewNodes": [
+      {
+        "name": "Divisibility proofs for integer expressions",
+        "description": "Prove that one integer expression divides another throughout a stated integer domain, checking that the divisor is nonzero. Establish the conclusion by any complete argument, such as an explicit integer quotient or remainder reasoning.",
+        "reason": "The catalog covers basic numerical factors and multiples and several particular proof routes, but lacks a route-neutral target for proving parameterized integer divisibility. Assigning modular powers or factorization as the common target would incorrectly require one optional route."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1967_AMC_12_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "For odd p>1, k=(p-1)/2 is a positive integer and p-2>=1. Method 1 correctly proves that repeated multiplication preserves remainder 1, handling divisor 1 separately. Method 2 derives (p-1)^k-1=(p-2)(1+(p-1)+...+(p-1)^(k-1)), with an integer quotient, including k=1. At p=5, B through E respectively require 5|17, 5|16, 6|17, and 4|15, all false. Thus A is uniquely valid.",
+    "levelCheck": "Both methods are complete, understandable, and appropriate for historical AHSME. The remainder rule and finite geometric identity are explained using elementary multiplication and cancellation.",
+    "methodDistinctness": "The methods provide distinct useful ideas: preserving a remainder under multiplication and exhibiting an explicit integer quotient.",
+    "annotationCheck": "Shared supportIds correctly cover divisibility, parity, and exponentiation. Method-local nodes and prerequisites match the actual arguments, including the constant power-remainder pattern and finite geometric sum. Empty assessedIds and the proposed route-neutral divisibility-proof node are justified without forcing an unrelated existing equivalence.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "remainder-one-products": "remainder-one-products",
+    "finite-geometric-factorization": "solution:finite-geometric-factorization:7f57eafed8b8"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "3931fc8049efe6fbb3f5ea88d6abd58dd0065854b4795c56b6288f9cdca9e361",
+    "inputHash": "828b84c9da04593b2ef25a67fba41b0ae9530003514e7e42e388276ba04bb9ec",
+    "authorInputHash": "a54ecb56faa0eca84caf230b9f703bed1da793ecbe62a52039c48acaef783d2d",
+    "reviewInputHash": "051ee43c1e0c153e182d1ca38f0b4805d03f7fe6f1b34a079e04d7214abbaa26",
+    "authorResponseHash": "21d9bf9f4c67161d459c6824d93950a975e5f56fc03b1424125c57101f48842b",
+    "reviewerResponseHash": "ca54080cbe068634dd1fd299f5b6fb6af15d84ddffac443cb5b828cb68bf808a",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

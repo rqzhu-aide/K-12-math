@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2008_AMC_12A_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "733aedbd8d79ae358f81cc04d80a6caf4a05c794c7a02aa89fdec2999215cddd",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "58b7569ff0841399ec7660687f0d6e927fa31e02ffe8d59cfb49929d93df087a",
+  "solutionFigureHashes": {},
+  "candidateHash": "30b4df42788cbd8d4b453d820bc59d72470ea50f15fa17ce729809272a6ec7c9",
+  "candidate": {
+    "questionId": "2008_AMC_12A_Q21",
+    "derivedAnswer": "D: 48",
+    "answerStatus": "matches",
+    "answerReason": "Swapping the first and last pairs matches heavy-tailed permutations with those satisfying the reverse inequality. There are 24 equal-sum permutations, leaving (120-24)/2=48 heavy-tailed permutations.",
+    "methods": [
+      {
+        "id": "heavy-light-bijection",
+        "label": "Pair heavy and light permutations",
+        "explanation": "The two ends play symmetric roles, so first pair permutations with opposite inequalities. There are \\(5\\cdot4\\cdot3\\cdot2\\cdot1=120\\) permutations altogether. The operation\n\\[\n(a_1,a_2,a_3,a_4,a_5)\n\\longmapsto\n(a_4,a_5,a_3,a_1,a_2)\n\\]\nchanges \\(a_1+a_2<a_4+a_5\\) into the reverse inequality. Applying it twice returns the original permutation. Thus the two strict inequalities occur equally often, and we only need to remove the equal-sum cases before dividing by \\(2\\).\n\nIf the two sums are equal, their common value is \\((15-a_3)/2\\). Therefore \\(a_3\\) must be odd. The possible equal-sum pairings are:\n\nFor \\(a_3=1\\), the pairs are \\(\\{2,5\\}\\) and \\(\\{3,4\\}\\), each summing to \\(7\\).\n\nFor \\(a_3=3\\), the pairs are \\(\\{1,5\\}\\) and \\(\\{2,4\\}\\), each summing to \\(6\\).\n\nFor \\(a_3=5\\), the pairs are \\(\\{1,4\\}\\) and \\(\\{2,3\\}\\), each summing to \\(5\\).\n\nEach pairing is forced: the smallest remaining number must be paired with the number that completes the required sum. For each middle entry, there are \\(2\\) choices for which pair goes first and \\(2\\) orders within each pair. Hence there are \\(3\\cdot2\\cdot2\\cdot2=24\\) equal-sum permutations. These cases are disjoint because their middle entries differ.\n\nThe number of heavy-tailed permutations is consequently\n\\[\n\\frac{120-24}{2}=48,\n\\]\nwhich is choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:bijective-counting",
+          "cnm_h234",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_h233",
+          "cnm_h231",
+          "cnm_p156"
+        ],
+        "levelReason": "The argument uses elementary permutation counting, a reversible pairing, parity, and a small exhaustive case count."
+      },
+      {
+        "id": "condition-on-middle-entry",
+        "label": "Count pair partitions for each middle entry",
+        "explanation": "Fix the middle entry and write the four remaining numbers as \\(p<q<r<s\\). Before ordering the numbers, divide them into two pairs. There are exactly three possible partitions, determined by whether \\(p\\) is paired with \\(q\\), \\(r\\), or \\(s\\):\n\\[\n\\begin{gathered}\n\\{p,q\\}\\mid\\{r,s\\},\\\\\n\\{p,r\\}\\mid\\{q,s\\},\\\\\n\\{p,s\\}\\mid\\{q,r\\}.\n\\end{gathered}\n\\]\nHere the two pairs have not yet been assigned to the first or last positions. The first two partitions always have unequal sums, since\n\\[\np+q<r+s,\\qquad p+r<q+s.\n\\]\nFor any partition with unequal sums, the smaller-sum pair must occupy the first two positions. Each pair can then be ordered in \\(2\\) ways, giving \\(2\\cdot2=4\\) heavy-tailed permutations.\n\nIt remains to inspect the third partition. For middle entries \\(1,3,5\\), it ties, respectively because\n\\[\n2+5=3+4,\\quad\n1+5=2+4,\\quad\n1+4=2+3.\n\\]\nFor middle entries \\(2\\) and \\(4\\), it does not tie: the compared sums are \\(1+5\\) and \\(3+4\\), or \\(1+5\\) and \\(2+3\\), respectively.\n\nThus the numbers of unequal-sum partitions for middle entries \\(1,2,3,4,5\\) are \\(2,3,2,3,2\\). Every permutation determines exactly one middle entry, one pair partition, and one ordering within each pair, so none is omitted or counted twice. The total is\n\\[\n4(2+3+2+3+2)=48,\n\\]\nwhich is choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_h236",
+          "cnm_h232"
+        ],
+        "prerequisiteIds": [
+          "cnm_h233",
+          "cnm_h231"
+        ],
+        "levelReason": "This route explicitly lists three unordered pair partitions and then counts their internal orders using the multiplication principle."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h235"
+    ],
+    "supportIds": [
+      "cnm_h233",
+      "cnm_h231"
+    ],
+    "annotationRationale": "The task asks for an applied count of ordered permutations subject to a sum restriction. Both methods distinguish arrangements by order and multiply independent within-pair choices. The first method uses a bijection and the total permutation formula; the second enumerates unordered pair partitions. Combined addition and multiplication records the case counts in both routes. The second method does not require a combination-number formula.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2008_AMC_12A_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "The reversible pair swap exchanges the strict inequalities. Exactly three middle entries permit ties, each contributing 2·2·2=8 permutations, so (120−24)/2=48. Independently, the second method exhausts the three pair partitions for each middle entry and obtains 4(2+3+2+3+2)=48 without duplication.",
+    "levelCheck": "Both explanations are complete and use elementary counting appropriate for AMC 12.",
+    "methodDistinctness": "The complementary symmetry count and direct favorable-partition count provide distinct, equally accessible approaches.",
+    "annotationCheck": "The ordered-arrangement target is route neutral. Bijection and permutation counting belong to the first route; unordered selection belongs to the second. Shared permutation meaning and multiplication supports are justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "heavy-light-bijection": "solution:heavy-light-bijection:58b7569ff084",
+    "condition-on-middle-entry": "solution:condition-on-middle-entry:58b7569ff084"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "5192ac8e3ac20f6c28e7b67727cb9d0c46c445397eb2f2e993038a466d815b2b",
+    "inputHash": "a243896434d4707360482b74aaf15ee5d057c3c4e32aad0ca155d3f9507aa8b2",
+    "authorInputHash": "1faccc29f2dfd834371d34b8bae2e05d0883c19afa737a6207dad67e1a19c3bf",
+    "reviewInputHash": "fa1bf76ca7d5ca4f5aa86d6882d299606243b51919e269f8049f6916ccf2e7e8",
+    "authorResponseHash": "e2ce40d5f52a9a2c86e0d44be2ee947a58c8287d4cb0bcc9f11126b7f98209d5",
+    "reviewerResponseHash": "5643e561ebdd94dfb46a1f341c7593679b95309b68e6d6ec147adf93889b4ded",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

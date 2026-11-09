@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2002_AMC_12B_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "8c71553612fb9182bfbc3bfc5de00c382b69ed7b3e080e2c834218fabab7de02",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "8344165868c332738034d5a95a37b74d92cab2c69d30628a5a8714135abc4477",
+  "solutionFigureHashes": {},
+  "candidateHash": "3a5fdf09981dadf35f330abcb0ee3a115182bc8731033acaff22c65ec9097dee",
+  "candidate": {
+    "questionId": "2002_AMC_12B_Q21",
+    "derivedAnswer": "A: \\(448\\)",
+    "answerStatus": "matches",
+    "answerReason": "The three disjoint nonzero cases contain 10, 12, and 13 indices, contributing 110, 156, and 182. Their sum is 448.",
+    "methods": [
+      {
+        "id": "count-qualifying-multiples",
+        "label": "Count each nonzero case",
+        "explanation": "Most terms are zero, so count the indices giving each nonzero value. The numbers \\(11\\), \\(13\\), and \\(14\\) have no common factor greater than \\(1\\) in any pair. Thus their pairwise least common multiples are\n\\[\n13\\cdot14=182,\\qquad\n14\\cdot11=154,\\qquad\n11\\cdot13=143.\n\\]\nWe must also check that the cases do not overlap. An index satisfying two nonzero conditions would be divisible by all three numbers, hence by\n\\[\n11\\cdot13\\cdot14=2002.\n\\]\nNo positive index below \\(2002\\) has this property, so every nonzero term belongs to exactly one case.\n\nFor \\(a_n=11\\), the indices are \\(n=182k\\) with \\(1\\le k\\le10\\). For \\(a_n=13\\), they are \\(n=154k\\) with \\(1\\le k\\le12\\). For \\(a_n=14\\), they are \\(n=143k\\) with \\(1\\le k\\le13\\). These ranges are exhaustive because the next multiple in each case is exactly \\(2002\\), which is excluded.\n\nTherefore\n\\[\n\\sum_{n=1}^{2001}a_n\n=11\\cdot10+13\\cdot12+14\\cdot13\n=110+156+182\n=\\boxed{448},\n\\]\nchoice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_p159",
+          "cnm_h020"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_p158"
+        ],
+        "levelReason": "Least common multiples and counting bounded positive integer multipliers suffice; no formal floor-function machinery is needed."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p159",
+      "cnm_h020"
+    ],
+    "supportIds": [
+      "cnm_p153",
+      "cnm_p158"
+    ],
+    "annotationRationale": "The task requires finding common-multiple classes and counting their indices within a strict integer bound. Least common multiples also prove that the branches cannot overlap. Factors, multiples, and common factors support these steps. The written method handles the endpoint directly and does not use floor or ceiling functions.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2002_AMC_12B_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "The qualifying multiples are those of \\(182,154,143\\), with counts \\(10,12,13\\). Any overlap requires divisibility by \\(2002\\), outside the domain. Each next multiple is exactly the excluded endpoint, and the weighted sum is \\(110+156+182=448\\).",
+    "levelCheck": "Elementary common multiples and bounded integer counting give a complete explanation without floor functions.",
+    "methodDistinctness": "One complete counting method is sufficient.",
+    "annotationCheck": "Least common multiples and integer-solution counting fit the task. The shared factor and multiple supports are justified, and removing the floor-function assessment is appropriate.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "count-qualifying-multiples": "count-qualifying-multiples"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "4ea0712a67513e47a576a081e1b5d01a1fcbe0d1d1b912b757e3ccc04f634aca",
+    "inputHash": "b42ab3b663ba51d719b58800451f0b3f274e3b5f26c5dd99e78b62dafcf80f21",
+    "authorInputHash": "c82d4632e81d3b063b0381181173476a94cdacdb9357f494af07f8863b8778cb",
+    "reviewInputHash": "d925a3a20f98ad7aa9c547d2ba818182bc359338b245463e5515e947c9e345f3",
+    "authorResponseHash": "38c54e98365ae31bb98ef55d259c55170a19fe22fb4f4581e5ce59f9f144c70f",
+    "reviewerResponseHash": "1f65570d5b3db8748686eec14aa1a14433305bcb9a14e3eb3a03703f85f4a0d5",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

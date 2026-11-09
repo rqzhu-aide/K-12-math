@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2014_AMC_10B_Q10",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "1ac013da57ae31fcdba6922d27fd6db75fde5a06f365bf81e0b6eadc384ed23a",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "16e0a914284f2cc13812e0f064ac3bb6ae1bbebfde93f0009c2c190b0015916a",
+  "solutionFigureHashes": {},
+  "candidateHash": "a8d7928b89b008702265119a42fd92a27f731b823c22b700b6761d758a666dc7",
+  "candidate": {
+    "questionId": "2014_AMC_10B_Q10",
+    "derivedAnswer": "C: \\(7\\), with possible digits \\(D=3,4,5,6,7,8,9\\)",
+    "answerStatus": "matches",
+    "answerReason": "The addition forces \\(C=0\\) and \\(D=A+B\\). Distinct positive leading digits \\(A\\) and \\(B\\) give \\(D\\ge3\\), and every digit from 3 through 9 is attained by \\(A=1\\), \\(B=D-1\\), and \\(C=0\\).",
+    "methods": [
+      {
+        "id": "column-carries",
+        "label": "Compare columns and their carries",
+        "explanation": "The units and hundreds columns both add \\(A+B\\) and both produce the digit \\(D\\). The only possible difference is a carry from the tens column into the hundreds column. Each carry is \\(0\\) or \\(1\\), and adding \\(1\\) changes the units digit of a sum. Thus the hundreds column cannot receive a carry from the tens column.\n\nLet \\(c\\) be the carry from the units column into the tens column. Since the tens column sends no carry onward, it gives\n\\[\nC+D+c=D,\n\\]\nso \\(C+c=0\\). Both terms are nonnegative, forcing \\(C=0\\) and \\(c=0\\). The units column consequently gives\n\\[\nA+B=D\\le9.\n\\]\nThe leading digits \\(A\\) and \\(B\\) are positive and distinct, so their smallest possible sum is \\(1+2=3\\). Hence \\(D\\) must be one of \\(3,4,5,6,7,8,9\\).\n\nEvery listed value works: choose \\(A=1\\), \\(B=D-1\\), and \\(C=0\\). These four digits are distinct, and \\(A+B=D<10\\). The units, hundreds, and ten-thousands columns then each give \\(D\\); the tens column gives \\(D\\), and the thousands column gives \\(B\\), all without carrying.\n\nThe possible values of \\(D\\) are therefore exactly the seven listed digits. The answer is \\(7\\), choice C.",
+        "nodeIds": [
+          "math:integer-diophantine-equations"
+        ],
+        "prerequisiteIds": [
+          "cnm_p096"
+        ],
+        "levelReason": "The proof uses ordinary decimal addition, carries, digit bounds, and an explicit construction for each possible value."
+      },
+      {
+        "id": "place-value-bound",
+        "label": "Expand the place values and bound a multiple",
+        "explanation": "Expanding the digit strings lets us combine all five columns into one equation. Here an overline denotes the integer formed by the indicated digits. Place value gives\n\\[\n\\begin{aligned}\n\\overline{ABBCB}&=10000A+1101B+10C,\\\\\n\\overline{BCADA}&=101A+10000B+1000C+10D,\\\\\n\\overline{DBDDD}&=1000B+10111D.\n\\end{aligned}\n\\]\nSubstitute these into the addition and collect terms:\n\\[\n10101(A+B)+1010C+10D=10111D,\n\\]\nso\n\\[\n10101(D-A-B)=1010C.\n\\]\nBecause \\(C\\) is a digit,\n\\[\n0\\le1010C\\le9090<10101.\n\\]\nThe left side is an integer multiple of \\(10101\\). The only such multiple in this interval is \\(0\\), so \\(C=0\\) and \\(D=A+B\\).\n\nThe leading digits \\(A\\) and \\(B\\) are distinct positive digits, giving \\(D\\ge1+2=3\\). Since \\(D\\) is a digit, \\(D\\le9\\). Conversely, for every \\(D\\) from \\(3\\) through \\(9\\), choose \\(A=1\\), \\(B=D-1\\), and \\(C=0\\). All four digits are distinct, the leading digits are nonzero, and the place-value equation holds, so the displayed addition holds.\n\nThus the possible values are exactly \\(3,4,5,6,7,8,9\\). Counting each value once gives \\(7\\), choice C.",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_027",
+          "cnm_036"
+        ],
+        "prerequisiteIds": [
+          "cnm_p096",
+          "cnm_p153",
+          "cnm_026"
+        ],
+        "levelReason": "The alternative uses decimal place-value expansion, elementary algebra, and a bound on an integer multiple, all within AMC 10 scope."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_p096"
+    ],
+    "annotationRationale": "The common target is determining all attainable values under integer digit restrictions and proving completeness. Decimal place value supports both methods. The first method reasons directly about carries without formal congruences. The second uses algebraic expression writing and polynomial addition and subtraction, with the meaning of a multiple supporting its bounded-multiple argument. This method-specific knowledge remains confined to the second route. Both methods construct every claimed value and count values of D rather than digit assignments. These annotations describe the mathematics used, not student mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2014_AMC_10B_Q10",
+    "decision": "accept",
+    "mathematicalCheck": "Comparing units and hundreds forces no carry from tens to hundreds. The tens column then gives C+c=0, so C=0, c=0, and D=A+B. The alternative correctly derives 10101(D-A-B)=1010C; since 0≤1010C≤9090<10101, both sides must be zero. Distinct positive leading digits give 3≤D≤9, and A=1, B=D-1, C=0 realizes every listed value with four distinct digits. Thus exactly seven values are possible, choice C.",
+    "levelCheck": "Both explanations are complete and understandable within AMC 10 scope, using decimal addition, digit bounds, and elementary algebra.",
+    "methodDistinctness": "The local carry comparison and the global place-value equation with a bounded multiple provide genuinely distinct, accessible arguments. Each independently proves necessity and attainability.",
+    "annotationCheck": "The assessed integer-equation node is route-neutral, and shared decimal place value is appropriate. Expression writing, polynomial addition and subtraction, and the meaning of multiples accurately describe the second method. The candidate appropriately avoids claiming formal congruence reasoning for the carry method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "column-carries": "solution:column-carries:16e0a914284f",
+    "place-value-bound": "place-value-bound"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "be89fdd908913353f0895520d8a1ac268ddb86a8c4766cc527a1fbe42f686854",
+    "inputHash": "2da0b80bc76c2d98b819e79c96728e4aa776b4111a43dc362c9135b9a7176cf3",
+    "authorInputHash": "5110d3ad58ebc5e17c7afe26e521e85302628d226255d71277018dee29139a4a",
+    "reviewInputHash": "44401ab68deeafb4744c8f9a2e60b98484a0cc667966757a18e5f90a3c23027b",
+    "authorResponseHash": "4163f142ea1cf5d52a912aa11e81435ec56c168f826638b5163a6c2a9b039472",
+    "reviewerResponseHash": "76aa7d9a526db6670339cfe53677a0cd73468d1308a26da5768463be645b9a50",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2026_AMC_8_Q15",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "f335c9d845e6e350f3b5eb857b7c015a1e66107c7819468ed4445216192f2cba",
+    "figureHashes": {
+      "figures/2026_AMC_8_Q15_question_fig1.svg": "e14f5ce6c584e0e04d204dbf50c562274d2a6b4b5479ac7c011d7defb5bb180c"
+    }
+  },
+  "solutionSHA256": "1147490ac249bd5fc23c5e4aa5e6e16e83c3b6708833ae896054479fa34f3821",
+  "solutionFigureHashes": {
+    "figures/2026_AMC_8_Q15_question_fig1.svg": "e14f5ce6c584e0e04d204dbf50c562274d2a6b4b5479ac7c011d7defb5bb180c"
+  },
+  "candidateHash": "b280e7a53ed5f88ab5bc3996a5badae334e8bfe13c2ee84f9d21fcf24a1b361a",
+  "candidate": {
+    "questionId": "2026_AMC_8_Q15",
+    "derivedAnswer": "4 cubes (A)",
+    "answerStatus": "matches",
+    "answerReason": "Every assembly with at most three cubes leaves a cube with at most one glued face and hence an exposed shaded face. Four cubes in a single-layer 2-by-2 block can have every shaded face glued internally.",
+    "methods": [
+      {
+        "id": "small-cluster-analysis",
+        "label": "Rule out smaller assemblies and construct four",
+        "explanation": "To prove a minimum, we need both a working arrangement and a reason fewer cubes cannot work.\n\n[Figure 1](figures/2026_AMC_8_Q15_question_fig1.svg)\n\nOne cube leaves both shaded faces exposed. Two cubes have just one face-to-face contact, which covers only one face of each cube. Each cube therefore still has at least one shaded face exposed.\n\nNow consider three cubes joined into one piece. Some cube must have the other two attached to it. Those two cubes occupy either opposite faces or adjacent faces of the middle cube. In the opposite case, they are separated by the middle cube. In the adjacent case, they meet only along an edge. Thus they cannot share a full face with each other. Each has only one glued face, leaving at least one of its two shaded faces exposed and visible from some direction. Three cubes cannot work.\n\nFour cubes do work. Arrange them in a single layer forming a \\(2\\times2\\) block. Each cube touches two neighbors on two faces that share an edge. Orient each cube so that its two shaded faces are precisely those two contact faces. All shaded faces are then hidden at glued contacts, and every exterior face is plain. Rotating the block cannot reveal any shading.\n\nTherefore the fewest number is \\(4\\) cubes, choice A.",
+        "nodeIds": [
+          "math:extremal-principle"
+        ],
+        "prerequisiteIds": [
+          "cnm_p160"
+        ],
+        "levelReason": "The proof uses direct spatial reasoning about cube faces and edges, checks all smaller sizes, and gives an explicit construction."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_p160"
+    ],
+    "annotationRationale": "The target is a minimum discrete configuration, requiring an impossibility argument for smaller assemblies and a construction attaining the bound. The method uses cube face and edge relationships to exclude three cubes and to orient four cubes successfully.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2026_AMC_8_Q15",
+    "decision": "accept",
+    "mathematicalCheck": "With three connected cubes, one touches the other two on opposite or adjacent faces. Those outer cubes cannot share a face, so each retains an exposed shaded face. One and two cubes also fail. In a single-layer 2-by-2 block, each cube's two contact faces are adjacent and can both be shaded, hiding all shading. Thus the minimum is 4.",
+    "levelCheck": "Direct spatial reasoning fits AMC 8. Both the lower bound and the attainable construction are clearly justified.",
+    "methodDistinctness": "One complete spatial method suffices; a graph-based alternative is unnecessary.",
+    "annotationCheck": "The extremal-principle node correctly captures proving a minimum through exclusion and construction. Cube face and edge properties appropriately serve as shared support.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "small-cluster-analysis": "solution:small-cluster-analysis:1147490ac249"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "01b594fb530dcf841f3d64afb5812e4ca2abfd82f85e654063f375d728695f8a",
+    "acceptedAt": "2026-11-07T07:50:41.580695+00:00",
+    "inputHash": "15634beb2ddd9da6edb383876de2b7ffd3aca584ce23f3393f0374732569e36e",
+    "authorInputHash": "c7b850662258a85d6b95559759b27afbd69385b4e8e06cf80b7c891be26ca5fb",
+    "reviewInputHash": "1d5fbb22bc17c238396188aa5b93d6d1ac7c9b3be205f0494569e69a9cddf49c",
+    "authorResponseHash": "69e91749c1a11a750a0439e3ed0f9200783b8ebdace21c507e2c7c39fc404b5c",
+    "reviewerResponseHash": "db1af463a189873d120f1c5cb2b1a5cdbda42cd0562ba8066f9100d1a71bc5f2",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

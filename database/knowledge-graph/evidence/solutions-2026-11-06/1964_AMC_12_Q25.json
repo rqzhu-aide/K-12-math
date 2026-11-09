@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1964_AMC_12_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "3b0c9d3aa12908de0bb1d780c8336e9b6ec03c871b10f01dd2907f55b8611254",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "4a90708500920012804e038bad7c2881d54b690e08e9c57217bca936a29c2150",
+  "solutionFigureHashes": {},
+  "candidateHash": "b811411ff1f1bf2b18e601782510514140a22a4d1a652e931375e427b30a6438",
+  "candidate": {
+    "questionId": "1964_AMC_12_Q25",
+    "derivedAnswer": "B. \\(\\{0,12\\}\\)",
+    "answerStatus": "matches",
+    "answerReason": "Every permitted factorization can be normalized to (x+c)(x+3y+d). Coefficient matching forces c=0 or 4, giving m=0 or 12, and both values work.",
+    "methods": [
+      {
+        "id": "compare-linear-factor-coefficients",
+        "label": "Determine the possible factor structure",
+        "explanation": "The missing \\(y^2\\) term strongly restricts the factors. Write a possible factorization as\n\\[\n(px+qy+r)(sx+ty+u),\n\\]\nwhere all six coefficients are integers. The coefficient of \\(x^2\\) gives \\(ps=1\\), so \\(p=s=1\\) or \\(p=s=-1\\). In the latter case, changing the sign of both factors makes both \\(x\\)-coefficients equal to \\(1\\).\n\nWith that normalization, the \\(y^2\\) and \\(xy\\) coefficients give \\(qt=0\\) and \\(q+t=3\\). Thus one factor has no \\(y\\) term and the other has \\(y\\)-coefficient \\(3\\). After swapping the factors if needed, every possible factorization has the form\n\\[\n(x+c)(x+3y+d),\\qquad c,d\\in\\mathbb Z.\n\\]\nExpanding and matching the remaining coefficients gives\n\\[\nc+d=1,\\qquad 3c=m,\\qquad cd=-m.\n\\]\nSubstitute \\(d=1-c\\) and \\(m=3c\\) into the last equation:\n\\[\nc(1-c)=-3c,\n\\qquad c(4-c)=0.\n\\]\nHence \\(c=0\\) or \\(c=4\\), giving \\(m=0\\) or \\(m=12\\). We did not divide by \\(c\\), so the zero case remains included.\n\nBoth candidates give the required integer linear factors:\n\\[\n\\begin{aligned}\nm=0:&\\quad x(x+3y+1),\\\\\nm=12:&\\quad (x+4)(x+3y-3).\n\\end{aligned}\n\\]\nThe factor structure covered every possible integer linear factorization, so the set is precisely \\(\\{0,12\\}\\), choice B.",
+        "nodeIds": [
+          "math:factorization-coefficient-comparison",
+          "cnm_224"
+        ],
+        "prerequisiteIds": [
+          "cnm_031",
+          "cnm_146",
+          "cnm_034"
+        ],
+        "levelReason": "Uses integer coefficients, elementary polynomial multiplication, coefficient matching, and a factored quadratic equation."
+      }
+    ],
+    "assessedIds": [
+      "math:factorization-coefficient-comparison"
+    ],
+    "supportIds": [
+      "cnm_031",
+      "cnm_146",
+      "cnm_034"
+    ],
+    "annotationRationale": "The catalog's coefficient-comparison node explicitly covers parameterized factorization, coefficient-domain restrictions, and exhaustiveness, all central here. Polynomial expansion and coefficient recognition support that work. The factoring-equation node records the local zero-product step used to obtain the two cases.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1964_AMC_12_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The integer x-coefficients must both normalize to 1. The absent y^2 term and xy coefficient then force (x+c)(x+3y+d). Matching coefficients yields c+d=1, m=3c and cd=-m, hence c(4-c)=0. Both resulting values m=0 and m=12 are verified by valid factorizations.",
+    "levelCheck": "The factor normalization, exhaustive structure and sufficiency checks are explained using appropriate school algebra.",
+    "methodDistinctness": "One complete coefficient-comparison method is sufficient.",
+    "annotationCheck": "The assessed coefficient-comparison node covers the central exhaustive parameter argument. Polynomial operations and the local factoring-equation step are accurately annotated.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "compare-linear-factor-coefficients": "solution:compare-linear-factor-coefficients:4a9070850092"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "294a8aad147c25f01a602464da2e8f4051ebe7d2c6cae52d2f401f86b92a151f",
+    "inputHash": "06e279f8d613cf05153742950f0e4a96fbb0cfb370b7b5790612e2c06af3b5c6",
+    "authorInputHash": "7a53b21df5bfb11a04d53ea31c884b9841b71965feac92a6a8c712509a03db10",
+    "reviewInputHash": "b12e3d01d51425f6fa6507b9d0d0c84f6a002cb337d4bf9d901351fb630e9996",
+    "authorResponseHash": "fa0254223718ad4b4c864884c4b9d83be3002403d18f42f838a5b65dfb81bd49",
+    "reviewerResponseHash": "80c5fc83be6305a2b9503dce52abaf25287e577b7f6d0939ea445d81692fb904",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

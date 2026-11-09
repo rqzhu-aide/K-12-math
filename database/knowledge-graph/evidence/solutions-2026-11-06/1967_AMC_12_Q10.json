@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1967_AMC_12_Q10",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "408c7fdc2b3ba8beb5948fe6f883e70fead7d925a672c720d474950dd575cd79",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "3d488aa5a04001bb86ffac842c0f51db08faad0f4bb4e9fb312645b5259d43e9",
+  "solutionFigureHashes": {},
+  "candidateHash": "391ce5c05c2a2495096719fdb13cc9f0e2aec9ffdd19cfbff53b3da01d8cb78b",
+  "candidate": {
+    "questionId": "1967_AMC_12_Q10",
+    "derivedAnswer": "A, \\(a-b=\\frac43\\)",
+    "answerStatus": "matches",
+    "answerReason": "The identity forces \\(a=5/3\\) and \\(b=1/3\\), so their difference is \\(4/3\\), agreeing with the key.",
+    "methods": [
+      {
+        "id": "evaluate-two-inputs",
+        "label": "Choose two permitted inputs",
+        "explanation": "An identity holds at every permitted input, so choosing two positive rational values of \\(x\\) gives two equations for the constants \\(a\\) and \\(b\\). Since \\(x>0\\), we have \\(10^x>1\\), so both denominators are nonzero. Clearing them gives\n\\[\na(10^x+2)+b(10^x-1)=2\\cdot10^x+3.\n\\]\nTaking \\(x=1\\) and \\(x=2\\), respectively, gives\n\\[\n12a+9b=23,\n\\qquad 102a+99b=203.\n\\]\nSubtracting the first equation from the second yields \\(90a+90b=180\\), so \\(a+b=2\\). The first equation can now be written as\n\\[\n9(a+b)+3a=23,\n\\]\nwhich gives \\(18+3a=23\\). Thus \\(a=5/3\\) and \\(b=1/3\\).\n\nThese values satisfy the entire identity, not merely the two selected inputs: writing \\(t=10^x\\), their combined numerator is\n\\[\n\\frac53(t+2)+\\frac13(t-1)=2t+3.\n\\]\nTherefore \\(a-b=\\frac43\\), choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_029",
+          "cnm_090"
+        ],
+        "prerequisiteIds": [
+          "cnm_156",
+          "cnm_040",
+          "cnm_088",
+          "cnm_042"
+        ],
+        "levelReason": "This uses permitted substitutions, clearing nonzero denominators, and elementary elimination."
+      },
+      {
+        "id": "compare-linear-coefficients",
+        "label": "Compare the numerator coefficients",
+        "explanation": "The repeated expression \\(10^x\\) can be treated as one quantity. Put \\(t=10^x\\). Since \\(x>0\\), we have \\(t>1\\), so the common denominator \\((t-1)(t+2)\\) is nonzero. Combining the fractions gives\n\\[\n\\frac{(a+b)t+2a-b}{(t-1)(t+2)}\n=\n\\frac{2t+3}{(t-1)(t+2)}.\n\\]\nConsequently,\n\\[\n(a+b-2)t+(2a-b-3)=0\n\\]\nfor every allowed \\(t\\). A nonzero linear expression can vanish at at most one value, while \\(x=1\\) and \\(x=2\\) already give two different values of \\(t\\). Both coefficients must therefore be zero:\n\\[\na+b=2,\n\\qquad 2a-b=3.\n\\]\nAdding these equations gives \\(3a=5\\), so \\(a=5/3\\) and \\(b=1/3\\). These values make the two numerators identical, verifying the original identity throughout its stated domain. Hence \\(a-b=\\frac43\\), choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_161",
+          "cnm_090"
+        ],
+        "prerequisiteIds": [
+          "cnm_156",
+          "cnm_159",
+          "cnm_036",
+          "cnm_088",
+          "cnm_042"
+        ],
+        "levelReason": "Combining algebraic fractions and comparing linear expressions requires only school algebra."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_156",
+      "cnm_088",
+      "cnm_042"
+    ],
+    "annotationRationale": "The task targets determining constant parameters in an identity. No catalog node describes that target exactly, so it is proposed separately. The first route evaluates legal inputs and eliminates variables; the second combines rational expressions and compares numerator coefficients. Denominator restrictions and elementary linear-system knowledge support both routes. The factorization-specific coefficient-comparison node does not fit this identity problem.",
+    "needsNewNodes": [
+      {
+        "name": "Determining constant parameters in algebraic identities",
+        "description": "Find constants that make an algebraic equality hold for every permitted input. Use coefficient comparison or enough legal substitutions to determine candidates, then verify the full identity while preserving denominator restrictions.",
+        "reason": "The catalog covers fraction operations, linear systems, and coefficient matching for factorization, but lacks the identity-parameter target assessed here."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1967_AMC_12_Q10",
+    "decision": "accept",
+    "mathematicalCheck": "Positive x makes both denominators nonzero. Both methods correctly obtain a+b=2 and 2a-b=3, giving a=5/3, b=1/3 and a-b=4/3. The numerator verification establishes the identity throughout the permitted domain.",
+    "levelCheck": "Both explanations are complete and use appropriate school algebra.",
+    "methodDistinctness": "Evaluating legal inputs and comparing coefficients offer distinct, accessible ways to determine the constants.",
+    "annotationCheck": "Method nodes and shared supports fit the work. The empty assessedIds is honestly explained by the proposed identity-parameter node, without forcing an unrelated existing node.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "evaluate-two-inputs": "solution:evaluate-two-inputs:3d488aa5a040",
+    "compare-linear-coefficients": "solution:compare-linear-coefficients:3d488aa5a040"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "35d8eb3945509261284d440744da8bf6579a0271374481062f71ce22559edf00",
+    "inputHash": "faae7d074d305f26dd57b950de5d0d260f71ff7da6956e71261702382579172d",
+    "authorInputHash": "e694644dc371772ac7079134fb064e8ba5f3822b044a21fcb9d459e1e5a3d3d5",
+    "reviewInputHash": "3e5b2ea9eb01f5089c3e78bc82624e7974450e3f5a4c4361f7b569be4d19af3b",
+    "authorResponseHash": "d07e72ef954b982b355982a74e0fb7a59226bd6c89ade5a6b58f6a3240f69c61",
+    "reviewerResponseHash": "30b709e373201571b86fc9c371a745146d6c697a6453c2a281a0f1db32b83daa",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

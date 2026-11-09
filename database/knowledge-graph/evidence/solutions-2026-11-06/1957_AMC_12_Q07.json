@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1957_AMC_12_Q07",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "b27132d887406adff051554ce333b1e6e98650bf6b2de3cb1b3b6902ab3b5063",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "2bf961b46eff6f90a546c84a77747fd7c222141870f2c5fec075c75dfdd86d55",
+  "solutionFigureHashes": {},
+  "candidateHash": "1c7e0fde1ac0cec8a73e142720454519529c82d81b38a1914bbd1147ec702043",
+  "candidate": {
+    "questionId": "1957_AMC_12_Q07",
+    "derivedAnswer": "E: \\(72\\)",
+    "answerStatus": "matches",
+    "answerReason": "The circle gives r²=48. A right triangle formed by the incenter and a side midpoint gives half the triangle's side as 12, so the perimeter is 72.",
+    "methods": [
+      {
+        "id": "incenter-right-triangle",
+        "label": "Use a 30-degree right triangle",
+        "explanation": "A side midpoint connects the circle's radius to half a side of the triangle. Let \\(ABC\\) be the equilateral triangle, \\(O\\) its incenter, \\(r>0\\) the circle's radius, and \\(M\\) the midpoint of \\(BC\\). The circle's area gives\n\\[\n\\pi r^2=48\\pi,\n\\qquad r^2=48.\n\\]\nIn an equilateral triangle, \\(AM\\) is both an altitude and an angle bisector. Thus \\(O\\) lies on \\(AM\\), and \\(OM=r\\), the perpendicular distance from the incenter to \\(BC\\).\n\nBecause \\(BO\\) bisects the \\(60^\\circ\\) angle at \\(B\\), triangle \\(BOM\\) is right with a \\(30^\\circ\\) angle at \\(B\\). The side opposite \\(30^\\circ\\) is half the hypotenuse, so \\(BO=2r\\). The Pythagorean theorem now gives\n\\[\nBM^2=BO^2-OM^2\n=4r^2-r^2\n=3\\cdot48=144.\n\\]\nSince \\(BM>0\\), \\(BM=12\\). Hence \\(BC=24\\), and the perimeter is \\(3\\cdot24=72\\), choice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "cnm_264",
+          "cnm_140",
+          "cnm_174"
+        ],
+        "prerequisiteIds": [
+          "cnm_p192",
+          "cnm_139",
+          "cnm_137",
+          "cnm_075"
+        ],
+        "levelReason": "Uses elementary incircle geometry, the half-hypotenuse property of a 30-degree right triangle, and the Pythagorean theorem."
+      },
+      {
+        "id": "compare-triangle-areas",
+        "label": "Compute the triangle's area in two ways",
+        "explanation": "The incenter divides the triangle into three smaller triangles whose heights are all the circle's radius. This gives an area expression that can be compared with the usual base-height formula.\n\nLet \\(s>0\\) be the triangle's side length and \\(r>0\\) the circle's radius. From the circle's area,\n\\[\n\\pi r^2=48\\pi,\n\\qquad r=4\\sqrt3.\n\\]\nAn altitude of the equilateral triangle bisects the opposite side. If its length is \\(h\\), the Pythagorean theorem gives\n\\[\nh^2=s^2-\\left(\\frac s2\\right)^2\n=\\frac{3s^2}{4},\n\\qquad h=\\frac{s\\sqrt3}{2}.\n\\]\nThus the triangle's area \\(K\\) is\n\\[\nK=\\frac12sh=\\frac{s^2\\sqrt3}{4}.\n\\]\nJoining the incenter to the three vertices partitions the triangle into three triangles, each with base \\(s\\) and perpendicular height \\(r\\). Therefore \\(K=3sr/2\\). Equating the two areas and dividing by the positive side length gives\n\\[\n\\frac{s^2\\sqrt3}{4}=\\frac{3sr}{2}\n\\quad\\Longrightarrow\\quad\ns=2\\sqrt3\\,r=24.\n\\]\nThe perimeter is \\(3s=72\\), choice \\(\\mathrm{E}\\).",
+        "nodeIds": [
+          "cnm_264",
+          "math:triangle-area-radius-relations",
+          "cnm_p148",
+          "cnm_174"
+        ],
+        "prerequisiteIds": [
+          "cnm_p192",
+          "cnm_139",
+          "cnm_137",
+          "cnm_075"
+        ],
+        "levelReason": "Derives the needed inradius-area relation by partitioning the triangle and uses elementary area and Pythagorean calculations."
+      }
+    ],
+    "assessedIds": [
+      "cnm_264"
+    ],
+    "supportIds": [
+      "cnm_p192",
+      "cnm_139",
+      "cnm_137",
+      "cnm_075"
+    ],
+    "annotationRationale": "Relating an incircle to the enclosing triangle is the common assessed target. Both methods use circle area, equilateral and isosceles triangle properties, and positive square roots. The first route uses a 30-degree right triangle; the second derives the inradius-area relation from three component triangles. Those distinct ideas remain method-specific.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1957_AMC_12_Q07",
+    "decision": "accept",
+    "mathematicalCheck": "The circle gives \\(r^2=48\\). Method 1 correctly establishes \\(BO=2r\\), hence \\(BM^2=3r^2=144\\). Method 2 independently equates \\(s^2\\sqrt3/4\\) with \\(3sr/2\\), giving \\(s=24\\). Both yield perimeter 72.",
+    "levelCheck": "Both methods use accessible elementary geometry. The area-radius relation is derived where used.",
+    "methodDistinctness": "The special right-triangle argument and the area-partition argument provide genuinely distinct, useful approaches.",
+    "annotationCheck": "The incircle target is route-neutral. Shared supports apply to both methods, and the special-triangle and area-relation annotations correctly describe their respective methods.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "incenter-right-triangle": "incenter-right-triangle",
+    "compare-triangle-areas": "compare-triangle-areas"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "d649095caa359a6fac5d5f7ce4c00341be7288523cc6f124afe023d3df662091",
+    "inputHash": "6200805b868fa22283822f8fecd821d36af114caed641ea063ba9d5c8005802b",
+    "authorInputHash": "29d21b7b30550edefa742a806aab265e7c10f6d2169810432eb89cba09f43592",
+    "reviewInputHash": "372dc54e78c37090db981083b11a969d48383085f8deaba27111945233ae674c",
+    "authorResponseHash": "3a2570f20bc799ec9b5e8326d279c226b395b92861aaa0b40f55441d67842e3c",
+    "reviewerResponseHash": "b4795bc502c30e729835d18f97b2b292ac4e0618f11dd4baed2fd9b65a48fd1d",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

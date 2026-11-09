@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2012_AMC_10B_Q20",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "67ec674115e4a51b62cbd42a2f5f342e50467aeb0d3a5ddd924d7e954fe25a63",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "d1159ab9cc77808be8fa616e6d5c379efafa4ff85ad00d16ff2d1297fbb7bc8b",
+  "solutionFigureHashes": {},
+  "candidateHash": "25e402c938502726bc064ee610384ef90bfade66949cedbe8eaf1afcde170c0f",
+  "candidate": {
+    "questionId": "2012_AMC_10B_Q20",
+    "derivedAnswer": "A, \\(7\\), with smallest initial number \\(N=16\\).",
+    "answerStatus": "matches",
+    "answerReason": "Starting at 16 gives Bernardo's outputs 32, 164, 428, 956, followed by Silvia's 1006. Every initial integer from 0 through 15 instead leaves Silvia last below 1000.",
+    "methods": [
+      {
+        "id": "forward-bernardo-outputs",
+        "label": "Track Bernardo's outputs and rule out smaller starts",
+        "explanation": "The numbers never decrease. Bernardo wins when one of his outputs is at least \\(950\\) but less than \\(1000\\), because Silvia's next addition of \\(50\\) then reaches or exceeds \\(1000\\).\n\nLet \\(B_k\\) be Bernardo's output on his \\(k\\)th turn, starting from the initial integer \\(N\\). His first output is \\(B_1=2N\\). Between two of his turns, Silvia adds \\(50\\), so\n\\[\nB_{k+1}=2(B_k+50)=2B_k+100.\n\\]\nApplying this rule gives\n\\[\n\\begin{aligned}\nB_2&=4N+100,\\\\\nB_3&=8N+300,\\\\\nB_4&=16N+700.\n\\end{aligned}\n\\]\nFor every integer \\(0\\le N\\le15\\), we have\n\\[\n700\\le B_4\\le940.\n\\]\nSilvia's following output is therefore between \\(750\\) and \\(990\\), still below \\(1000\\). All earlier outputs are smaller, so the game has not crossed the threshold before this. But Bernardo's next output satisfies\n\\[\nB_5=2B_4+100\\ge1500.\n\\]\nThus Silvia is the last person below \\(1000\\) for every initial number smaller than \\(16\\).\n\nFor \\(N=16\\), Bernardo's outputs are\n\\[\n32,\\quad164,\\quad428,\\quad956.\n\\]\nSilvia then produces \\(956+50=1006\\), so Bernardo wins. Therefore the smallest initial number is \\(16\\), whose digit sum is \\(1+6=\\boxed7\\), choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_h200",
+          "cnm_100",
+          "math:extremal-principle"
+        ],
+        "prerequisiteIds": [
+          "cnm_h197",
+          "cnm_027",
+          "cnm_096",
+          "cnm_h020"
+        ],
+        "levelReason": "A simple recurrence and elementary bounds prove that 16 works and every smaller permitted integer fails."
+      },
+      {
+        "id": "backward-winning-intervals",
+        "label": "Work backward from Bernardo's winning turn",
+        "explanation": "Suppose Bernardo receives \\(x\\) on his final successful turn. To win, his doubled number must remain below \\(1000\\), while Silvia's next result must reach \\(1000\\). Thus\n\\[\n950\\le2x<1000,\n\\]\nwhich is equivalent to\n\\[\n475\\le x<500.\n\\]\nWe can now work backward through whole rounds. A whole round changes an input \\(u\\) received by Bernardo into the next input \\(2u+50\\). Therefore, to reverse a whole round, subtract \\(50\\) and divide by \\(2\\).\n\nLet \\(I_j\\) be the interval of possible starting values that reach the winning input after \\(j\\) earlier whole rounds. Repeatedly reversing the endpoints gives\n\\[\n\\begin{aligned}\nI_0&=[475,500),\\\\\nI_1&=[212.5,225),\\\\\nI_2&=[81.25,87.5),\\\\\nI_3&=[15.625,18.75),\\\\\nI_4&=[-17.1875,-15.625).\n\\end{aligned}\n\\]\nThe last interval is entirely negative, and reversing any negative value again keeps it negative. Thus no additional nonnegative starting values arise from longer play.\n\nThese intervals give valid play whenever the starting value is a nonnegative integer: every preceding whole round ends at an input below \\(500\\), so its two outputs are also below \\(1000\\). The final input then satisfies the winning condition.\n\nThe smallest integer in the nonnegative intervals is \\(16\\), in \\(I_3\\). Indeed, it gives Bernardo's outputs \\(32,164,428,956\\), followed by Silvia's \\(1006\\). Hence \\(N=16\\), and its digit sum is \\(\\boxed7\\), choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_100",
+          "cnm_097",
+          "math:extremal-principle"
+        ],
+        "prerequisiteIds": [
+          "cnm_096",
+          "cnm_h020"
+        ],
+        "levelReason": "Reversing the two arithmetic operations turns the game into successive interval calculations with exact terminating decimals."
+      }
+    ],
+    "assessedIds": [
+      "cnm_100",
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_096",
+      "cnm_h020"
+    ],
+    "annotationRationale": "Both methods translate the winning threshold into simultaneous bounds and establish a minimum by excluding smaller starts and exhibiting a successful one. Recurrence iteration belongs only to the forward method; reversing linear bounds belongs to the backward method. This is a deterministic process, not an optimal-strategy subtraction game.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2012_AMC_10B_Q20",
+    "decision": "accept",
+    "mathematicalCheck": "For 0≤N≤15, B4=16N+700 lies between 700 and 940, Silvia next remains below 1000, and B5≥1500. Thus all smaller starts lose. Starting at 16 produces 32,164,428,956 and then Silvia's 1006. The backward intervals are also correct and exhaust nonnegative winning starts because I4 and all later preimages are negative.",
+    "levelCheck": "Both methods use elementary arithmetic and linear bounds. Each explains the threshold and independently proves minimality.",
+    "methodDistinctness": "Forward bounding and backward interval preimages offer distinct, accessible approaches.",
+    "annotationCheck": "The shared inequality and extremal targets are justified. Recurrence iteration remains local to the forward route, with appropriate prerequisites.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "forward-bernardo-outputs": "solution:forward-bernardo-outputs:d1159ab9cc77",
+    "backward-winning-intervals": "solution:backward-winning-intervals:d1159ab9cc77"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "f65a67986b0790f46df67f6ffa8648365dca4b967b0652fcabcde40c48ff60ee",
+    "inputHash": "9015dda1a985c46b6c00f6618ff78364b6179f4df0ca90ca79b031b5d59da3c0",
+    "authorInputHash": "2373b0dbe9fccdab8bb32feff6c1d7ac639a64f50c8e2861fd530187515b17a9",
+    "reviewInputHash": "1ed0917ab898ae1ce3473925bb6e96b7f00f71027f2b53d6983ce5f1403a8dd6",
+    "authorResponseHash": "51062fefc935a5370dad6ad4c76b8344111291e21f5eae70d5650b07827bfe07",
+    "reviewerResponseHash": "ff4c9ff54f9e687d1bf2dddbee2b69bf3119208af3c1c8df4210cfade018b8dd",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

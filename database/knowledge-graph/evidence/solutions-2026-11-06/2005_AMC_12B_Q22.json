@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2005_AMC_12B_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "0ea307e8a7dd4250e1facc667e8c07668be9f9aeebedf50b010992309982f970",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "27794b62f4d84bc9e51fa740db5efb6b51a53112380d8606562f8682d5b759b9",
+  "solutionFigureHashes": {},
+  "candidateHash": "31c96cccc4a4d2666f51a3fabb21892aaac13fd4e816637c0736a7657a69714f",
+  "candidate": {
+    "questionId": "2005_AMC_12B_Q22",
+    "derivedAnswer": "E, 2^2005",
+    "answerStatus": "matches",
+    "answerReason": "On the unit circle the recurrence becomes z_(n+1)=iz_n^2. Each target has exactly two distinct unit-circle predecessors, whose predecessor sets do not overlap, so 2005 backward steps give 2^2005 initial values.",
+    "methods": [
+      {
+        "id": "backward-square-roots",
+        "label": "Count predecessors backward",
+        "explanation": "The condition \\(|z_0|=1\\) keeps the entire sequence on the unit circle. Indeed, whenever \\(|z_n|=1\\), its conjugate is nonzero and\n\\[\n|z_{n+1}|=\\frac{|i|\\,|z_n|}{|\\overline{z_n}|}=1.\n\\]\nAlso, \\(z_n\\overline{z_n}=1\\), so the recurrence is equivalent to\n\\[\nz_{n+1}=iz_n^2.\n\\]\nThis form makes it useful to work backward from \\(z_{2005}=1\\).\n\nFor any target \\(w\\) of modulus \\(1\\), its predecessors satisfy \\(z^2=-iw\\). To see exactly how many there are, write \\(-iw=\\cos\\theta+i\\sin\\theta\\). The double-angle formulas show that\n\\[\nu=\\cos\\frac{\\theta}{2}+i\\sin\\frac{\\theta}{2}\n\\]\nis one square root, and \\(-u\\) is another. They are distinct and both have modulus \\(1\\). There are no others: any other root \\(v\\) satisfies \\((v-u)(v+u)=0\\), hence \\(v=u\\) or \\(v=-u\\).\n\nThus each target has exactly two valid predecessors. Distinct targets cannot share a predecessor, because the rule \\(z\\mapsto iz^2\\) assigns each input only one successor. Consequently the number of possible values doubles at every backward step. Every valid initial value appears in this construction, and every constructed value produces a defined sequence ending at \\(1\\).\n\nAfter \\(2005\\) backward steps there are \\(\\boxed{2^{2005}}\\) possible values of \\(z_0\\), choice E.",
+        "nodeIds": [
+          "math:roots-of-unity",
+          "math:complex-polar-de-moivre",
+          "cnm_h231"
+        ],
+        "prerequisiteIds": [
+          "cnm_h098",
+          "cnm_h103",
+          "cnm_h102"
+        ],
+        "levelReason": "The argument uses elementary unit-circle geometry, complex square roots, and the multiplication principle, all permitted at AMC 12 level."
+      },
+      {
+        "id": "iterate-squaring",
+        "label": "Turn the recurrence into repeated squaring",
+        "explanation": "Starting with modulus \\(1\\), every term has modulus \\(1\\), because the numerator and denominator in the recurrence have equal modulus. All denominators are therefore nonzero. Since \\(z_n\\overline{z_n}=1\\), we have \\(z_{n+1}=iz_n^2\\).\n\nTo remove the factor \\(i\\), define \\(w_n=iz_n\\). Then\n\\[\nw_{n+1}=i(iz_n^2)=-z_n^2=(iz_n)^2=w_n^2.\n\\]\nEach step doubles the exponent of the starting value, so \\(w_n=w_0^{2^n}\\). Set \\(N=2^{2005}\\). The condition \\(z_{2005}=1\\) becomes\n\\[\nw_0^N=i.\n\\]\nBecause \\(|w_0|=1\\), write \\(w_0=\\cos\\theta+i\\sin\\theta\\), with \\(0\\leq\\theta<2\\pi\\). The power formula gives exactly the angles\n\\[\n\\theta=\\frac{\\pi/2+2\\pi j}{N},\n\\qquad j=0,1,\\ldots,N-1.\n\\]\nThese are \\(N\\) distinct angles in the required interval, and each produces a solution. They exhaust the possibilities because \\(N\\theta\\) must differ from \\(\\pi/2\\) by an integer multiple of \\(2\\pi\\).\n\nFinally, \\(z_0=-iw_0\\) converts these solutions into distinct valid initial values. Therefore there are \\(\\boxed{2^{2005}}\\) possibilities, choice E.",
+        "nodeIds": [
+          "math:roots-of-unity",
+          "math:complex-polar-de-moivre",
+          "cnm_h200"
+        ],
+        "prerequisiteIds": [
+          "cnm_h098",
+          "cnm_h103",
+          "cnm_h102"
+        ],
+        "levelReason": "Repeated squaring and the polar power formula use high-school complex numbers and finite recurrences, within AMC 12 scope."
+      }
+    ],
+    "assessedIds": [
+      "math:roots-of-unity"
+    ],
+    "supportIds": [
+      "cnm_h098",
+      "cnm_h103",
+      "cnm_h102"
+    ],
+    "annotationRationale": "The shared target is an exact count of distinct complex roots subject to the recurrence. Modulus, conjugation, division, and multiplication support both methods. The backward route uses two square roots per target and multiplicative counting; the forward route iterates a squaring recurrence and lists the resulting root arguments. These are alternative routes.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2005_AMC_12B_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "Unit modulus keeps all denominators nonzero and gives \\(z_{n+1}=iz_n^2\\). Every unit target has exactly two distinct unit predecessors, with disjoint predecessor sets. Independently, \\(w_n=iz_n\\) gives repeated squaring, and the explicit angle list counts exactly \\(2^{2005}\\) roots.",
+    "levelCheck": "Both methods use permitted high-school complex numbers and justify existence, distinctness, and completeness.",
+    "methodDistinctness": "Backward branching and forward iteration followed by an explicit root list provide distinct approaches using comparable unit-circle ideas.",
+    "annotationCheck": "The cyclic-root target includes the power equations used here. Polar-form concepts, route-specific counting or recurrence, and shared complex-number supports are justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "backward-square-roots": "solution:backward-square-roots:27794b62f4d8",
+    "iterate-squaring": "iterate-squaring"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "28f5b153492a56c22ac043aee626e0eb9d95166057e6c58abb50dc388579b5ac",
+    "inputHash": "99b771434176c1c05d110681b5256bec2acba1a9a808da42b49288e778fa2518",
+    "authorInputHash": "c4ade8364540ebda89cfe409330f16ba3a384530be9f74ab16994eaaa96faf0c",
+    "reviewInputHash": "58b3443f09b533896c736e76768dec92982584e6ef8420bc265d2affe4f4453a",
+    "authorResponseHash": "c894ddb5211753042c1c2b30d261de4c1c04507b9435b01b7cf36861212bbc20",
+    "reviewerResponseHash": "f43a462f099232076a2a0aaeba8b4ba7111ccc9fba0a3ea9654b3a8410138c0d",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

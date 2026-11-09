@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2006_AMC_12B_Q19",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "ac2692157392e9984a6f179bd14ab2c1594503055298bf783ffa741e6430817c",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "09cbc2bfe36fb1dafc235f5016f34c11cbd871631eca98312f29999546400956",
+  "solutionFigureHashes": {},
+  "candidateHash": "2f8cdfbf4d45885715b976905b8ad0928e7e8f37f13861de03c51b936afd378a",
+  "candidate": {
+    "questionId": "2006_AMC_12B_Q19",
+    "derivedAnswer": "5 (B), under the recorded positive whole-year age interpretation.",
+    "answerStatus": "matches",
+    "answerReason": "With eight distinct positive whole-number ages at most 9, exactly one age from 1 through 9 is absent. Assuming 5 is present forces the plate to be 9900, which is divisible by neither 7 nor 8, a contradiction. The plate 5544 verifies feasibility when 5 is absent.",
+    "methods": [
+      {
+        "id": "exclude-five-by-digit-restrictions",
+        "label": "Combine age and digit restrictions",
+        "explanation": "Interpret the children's ages as positive whole numbers of years, as in the recorded qualification. Eight distinct ages with oldest age \\(9\\) means exactly one of \\(1,2,\\ldots,9\\) is absent. At least one of ages \\(4\\) and \\(8\\) must occur, so the plate number is divisible by \\(4\\). It is also divisible by \\(9\\), the oldest child's age.\n\nSuppose a child is \\(5\\). The plate number is then divisible by both \\(5\\) and \\(4\\), so it ends in \\(0\\). Since each of its two digits appears twice, its digits must be \\(0,0,d,d\\), where \\(1\\le d\\le9\\).\n\nDivisibility by \\(9\\) requires the digit sum \\(2d\\) to be a multiple of \\(9\\). This test works because each decimal place value leaves remainder \\(1\\) when divided by \\(9\\). The only multiple of \\(9\\) among \\(2,4,6,\\ldots,18\\) is \\(18\\), so \\(d=9\\).\n\nThe four-digit arrangements of \\(9,9,0,0\\) ending in \\(0\\) are \\(9090\\) and \\(9900\\). Divisibility by \\(4\\) depends on the last two digits, because the preceding digits contribute a multiple of \\(100\\). Only \\(9900\\) passes. But\n\\[\n9900=7\\cdot1414+2=8\\cdot1237+4,\n\\]\nso both ages \\(7\\) and \\(8\\) would be absent. That contradicts having exactly one absent age. Therefore \\(5\\) is absent.\n\nThe conditions are attainable: \\(5544=8\\cdot7\\cdot9\\cdot11\\) is divisible by \\(1,2,3,4,6,7,8,9\\), has two copies of each of two digits, and gives the father's age as \\(44\\). Thus, under the whole-year interpretation, the answer is \\(\\boxed{5}\\), choice (B).",
+        "nodeIds": [
+          "math:integer-diophantine-equations",
+          "cnm_p154",
+          "math:modular-congruence"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_p055"
+        ],
+        "levelReason": "Finite age restrictions and elementary decimal divisibility arguments suffice. Remainders are explained directly without advanced number theory."
+      }
+    ],
+    "assessedIds": [
+      "math:integer-diophantine-equations"
+    ],
+    "supportIds": [
+      "cnm_p153",
+      "cnm_p055"
+    ],
+    "annotationRationale": "The target is resolving integer age and digit constraints using divisibility and an exhaustive exclusion argument. The written method uses the units-digit tests for 2 and 5 and decimal remainders for 4 and 9. Least common multiples and prime-factorization searches are not required by this route.",
+    "needsNewNodes": [],
+    "limitations": [
+      "The solution preserves the recorded interpretation that the children's ages are positive whole numbers of years."
+    ]
+  },
+  "review": {
+    "questionId": "2006_AMC_12B_Q19",
+    "decision": "accept",
+    "mathematicalCheck": "Under the stated whole-year interpretation, exactly one age from 1 through 9 is absent. If 5 were present, divisibility by 4 and 9 forces the repeated-digit plate to be 9900, which fails divisibility by both 7 and 8. The plate 5544 verifies feasibility with precisely age 5 absent and father age 44.",
+    "levelCheck": "The finite exclusion argument and explained decimal divisibility tests are appropriate for AMC 12.",
+    "methodDistinctness": "One complete exclusion argument with a feasibility check is sufficient.",
+    "annotationCheck": "The integer-constraint target and digit, remainder, factor, and place-value annotations match the proof. The positive whole-year age qualification is preserved.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "exclude-five-by-digit-restrictions": "exclude-five-by-digit-restrictions"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "c9d47da76787b36138b7569c5f4244710eda6adbd444331f6d6bac30836b387d",
+    "inputHash": "e13077edb625ca7026e64e1ed044d2a6020575d011cb8d3aeec5d345287e5e20",
+    "authorInputHash": "e1872a63fc878d4f6fe9f8c1cd3f60ea1fb78b0e1c6a7c6927921900abd5e41f",
+    "reviewInputHash": "31d4612adf2aa5339e25d16b06b4bbb4b693e917c08d181bd575f6955aa32107",
+    "authorResponseHash": "a59e43919807c066b17ea8dbd80cb176280cafca11332d8da3b46bd5fe328da8",
+    "reviewerResponseHash": "08d133fa66076243431fa1e7000c8df755d56b6c7f6ea5a58741748a65723d9b",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

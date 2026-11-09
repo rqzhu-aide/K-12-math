@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1974_AMC_12_Q16",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "4f0060899d09321ffbdeee3d15eb25f39b2cf521cbcbf7f6e4418fdff748bd10",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "e1f2f84acf7b076a73fb7b229f7dff42029f5d45cdb1c3dba41ff74b8846d9b8",
+  "solutionFigureHashes": {},
+  "candidateHash": "3d8b96ec79261c9ee7474ca17440199c34b2ec5a7d3a4d93837f4a0691356738",
+  "candidate": {
+    "questionId": "1974_AMC_12_Q16",
+    "derivedAnswer": "A: \\(1+\\sqrt2\\)",
+    "answerStatus": "matches",
+    "answerReason": "For legs of length a>0, the circumradius is a√2/2 and the inradius is a/(2+√2). Their ratio is 1+√2.",
+    "methods": [
+      {
+        "id": "incenter-area-decomposition",
+        "label": "Find the inradius by adding triangle areas",
+        "explanation": "Let each leg have length \\(a>0\\). The Pythagorean theorem gives the hypotenuse length \\(a\\sqrt2\\). In a right triangle, the hypotenuse's midpoint is at distance half the hypotenuse from every vertex. It is therefore the circumcenter, and\n\\[\nR=\\frac{a\\sqrt2}{2}.\n\\]\nTo find \\(r\\), join the incenter to the three vertices. This divides the triangle into three smaller triangles whose bases are the original sides. Each corresponding height is \\(r\\), because the radius to a tangency point is perpendicular to the side.\n\nAdding these three areas and equating their sum to the original triangle's area gives\n\\[\n\\frac{a^2}{2}\n=\\frac{ar}{2}+\\frac{ar}{2}+\\frac{a\\sqrt2\\,r}{2}\n=\\frac{ar(2+\\sqrt2)}{2}.\n\\]\nSince \\(a>0\\), we obtain \\(r=a/(2+\\sqrt2)>0\\). Hence\n\\[\n\\frac{R}{r}\n=\\frac{a\\sqrt2}{2}\\cdot\\frac{2+\\sqrt2}{a}\n=\\frac{\\sqrt2(2+\\sqrt2)}{2}\n=1+\\sqrt2.\n\\]\nThe answer is \\(1+\\sqrt2\\), choice A.",
+        "nodeIds": [
+          "cnm_264",
+          "cnm_265",
+          "math:triangle-area-radius-relations",
+          "cnm_p148"
+        ],
+        "prerequisiteIds": [
+          "cnm_174",
+          "cnm_187",
+          "cnm_262"
+        ],
+        "levelReason": "The inradius relation is derived from elementary triangle areas; the remaining facts are Pythagoras and the hypotenuse-midpoint property."
+      },
+      {
+        "id": "equal-tangent-segments",
+        "label": "Find the inradius using tangent lengths",
+        "explanation": "Let each leg have length \\(a>0\\), so the hypotenuse has length \\(a\\sqrt2\\) by the Pythagorean theorem. The hypotenuse's midpoint is equidistant from the three vertices, giving\n\\[\nR=\\frac{a\\sqrt2}{2}.\n\\]\nConsider the incircle's tangency points on the two legs. The two radii to these points are perpendicular to the legs and have length \\(r\\). Together with the short leg segments next to the right-angle vertex, they form a square. Thus each of those short leg segments also has length \\(r\\).\n\nEach remaining leg segment has length \\(a-r\\). Tangent segments drawn from the same vertex to a circle are equal, so the tangency point on the hypotenuse divides it into two segments, each of length \\(a-r\\). Therefore,\n\\[\na\\sqrt2=2(a-r),\n\\qquad r=\\frac{a(2-\\sqrt2)}{2}.\n\\]\nHere \\(2-\\sqrt2>0\\), so the radius is positive. Taking the ratio and multiplying numerator and denominator by \\(2+\\sqrt2\\) gives\n\\[\n\\frac{R}{r}\n=\\frac{\\sqrt2}{2-\\sqrt2}\n=\\frac{\\sqrt2(2+\\sqrt2)}{4-2}\n=1+\\sqrt2.\n\\]\nThe answer is \\(1+\\sqrt2\\), choice A.",
+        "nodeIds": [
+          "cnm_264",
+          "cnm_265",
+          "cnm_263",
+          "cnm_171"
+        ],
+        "prerequisiteIds": [
+          "cnm_174",
+          "cnm_187",
+          "cnm_262",
+          "cnm_191"
+        ],
+        "levelReason": "This alternative uses elementary tangent lengths, a square at the right angle, and rationalization of a radical denominator."
+      }
+    ],
+    "assessedIds": [
+      "cnm_264",
+      "cnm_265"
+    ],
+    "supportIds": [
+      "cnm_174",
+      "cnm_187",
+      "cnm_262"
+    ],
+    "annotationRationale": "The task concerns the incircle and circumcircle radii. Both methods use Pythagoras, the hypotenuse-midpoint fact, and perpendicular tangency radii. The first derives the area-inradius relation by partitioning the triangle. The second uses equal tangent lengths, the square at the right angle, and rationalization. These method-specific procedures are alternative routes.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1974_AMC_12_Q16",
+    "decision": "accept",
+    "mathematicalCheck": "For legs a>0, R=a√2/2. Area decomposition gives r=a/(2+√2), while tangent lengths independently give r=a(2-√2)/2. These agree and yield R/r=1+√2 with positive denominator.",
+    "levelCheck": "Both proofs use standard elementary geometry and explain their decisive constructions.",
+    "methodDistinctness": "Area partition and equal tangent lengths provide genuinely distinct proofs at a comparable level.",
+    "annotationCheck": "Incircle and circumcircle are appropriate shared targets. Shared supports occur in both methods, while area relations, tangent lengths, squares, and rationalization remain method-specific.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "incenter-area-decomposition": "incenter-area-decomposition",
+    "equal-tangent-segments": "equal-tangent-segments"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "134e10152a7d0e40d72c91979d4ea55c6e0d8a4a5093f7e46e216953d88cfae6",
+    "inputHash": "dad490991a4c65426a8d2ac549a1522ccb022eaefd39469a4ca5186a826fd4cc",
+    "authorInputHash": "f3e2a3d8311ea8b4095f40dc1c13b5626381b8b4a6f67ff7622818edbea4b1a6",
+    "reviewInputHash": "973288d7869036d7c4fa986df3404b4f209271deadf1028f88555813db116bbe",
+    "authorResponseHash": "abd31bc1db4167e71b2e992bda192dce4e58d4ba5098aa8ed1aa4f7a5d991737",
+    "reviewerResponseHash": "38b382bdec49f06c98601757ebf4f8ee845add94cec961e0c3fb35326b8bd3d5",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

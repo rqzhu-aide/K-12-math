@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1960_AMC_12_Q36",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "29a18bb8898f7ba2f853871d784e3984acc1bb663bdfe687195347e664bf1dd6",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "b9798fa149efae96f9f0c814ad55181a0eb6994c98bfdc225fde7fbf64d880ef",
+  "solutionFigureHashes": {},
+  "candidateHash": "e0fa36db4981b37e85c0c6af84bbdd995eac8c82bfbcb3af84180e7d93aada1d",
+  "candidate": {
+    "questionId": "1960_AMC_12_Q36",
+    "derivedAnswer": "B; \\(R=2n^2d\\), so the general expression depends on \\(d\\) and \\(n\\), but not on \\(a\\).",
+    "answerStatus": "matches",
+    "answerReason": "Both term pairing and the arithmetic-sum formula give R=2n²d for every positive integer n. The first term a cancels. When d=0, the same identity gives R=0 for every n.",
+    "methods": [
+      {
+        "id": "pair-shifted-terms",
+        "label": "Pair terms with equally spaced indices",
+        "explanation": "Subtracting \\(s_2\\) from \\(s_3\\) cancels their common initial terms, leaving exactly the last \\(n\\) terms of \\(s_3\\). Pairing these with the \\(n\\) terms of \\(s_1\\) lets us compare individual terms instead of computing three sums.\n\nLet \\(u_k=a+(k-1)d\\) be the \\(k\\)th term, where \\(n\\) is a positive integer. Then\n\\[\nR=(u_{2n+1}-u_1)+\\cdots+(u_{3n}-u_n).\n\\]\nIn each pair, the indices differ by \\(2n\\). Moving forward \\(2n\\) places in an arithmetic progression adds \\(2nd\\), so each difference equals \\(2nd\\). The pairing uses each of the two groups' \\(n\\) terms exactly once. Therefore\n\\[\nR=n(2nd)=2n^2d.\n\\]\nChanging \\(a\\) has no effect. For a fixed positive \\(n\\), changing \\(d\\) changes \\(R\\); for a fixed nonzero \\(d\\), changing \\(n\\) changes \\(R\\). The special case \\(d=0\\) gives \\(R=0\\) for every \\(n\\). Thus the general expression depends on \\(d\\) and \\(n\\), choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_h202"
+        ],
+        "prerequisiteIds": [
+          "cnm_h201",
+          "cnm_h199"
+        ],
+        "levelReason": "The argument uses the arithmetic general term, equal index shifts, and multiplication by the number of pairs."
+      },
+      {
+        "id": "arithmetic-sum-formula",
+        "label": "Use the arithmetic sum formula",
+        "explanation": "The arithmetic-sum formula expresses each sum in terms of \\(a\\), \\(d\\), and \\(n\\), allowing us to see which parameters cancel. For a positive integer \\(k\\), write\n\\[\nS_k=ka+\\frac{k(k-1)}2d.\n\\]\nHere \\(n\\) is a positive integer, and \\(s_1=S_n\\), \\(s_2=S_{2n}\\), and \\(s_3=S_{3n}\\). In \\(R=S_{3n}-S_{2n}-S_n\\), the coefficient of \\(a\\) is\n\\[\n3n-2n-n=0.\n\\]\nConsequently,\n\\[\nR=\\frac d2\\left[3n(3n-1)-2n(2n-1)-n(n-1)\\right].\n\\]\nExpanding the bracket gives\n\\[\n(9n^2-3n)-(4n^2-2n)-(n^2-n)=4n^2,\n\\]\nso\n\\[\nR=\\frac d2(4n^2)=2n^2d.\n\\]\nThus \\(a\\) has no effect. Changing \\(d\\) changes \\(R\\) for any fixed positive \\(n\\), and changing \\(n\\) changes \\(R\\) when \\(d\\ne0\\). When \\(d=0\\), \\(R=0\\) for every \\(n\\). The general expression therefore depends on \\(d\\) and \\(n\\), choice \\(\\boxed{\\text{B}}\\).",
+        "nodeIds": [
+          "cnm_h204",
+          "cnm_036"
+        ],
+        "prerequisiteIds": [
+          "cnm_h201",
+          "cnm_034",
+          "cnm_035",
+          "cnm_145"
+        ],
+        "levelReason": "This method uses the standard arithmetic-progression sum formula and elementary polynomial expansion and subtraction."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_h201"
+    ],
+    "annotationRationale": "The route-neutral target is determining which parameters affect the value of R. The catalog lacks a node with that scope, so assessedIds is left empty pending the proposed node. cnm_h204 remains local to the sum-formula method because its listed competencies require using arithmetic-sum formulas, which the pairing method does not use. The pairing method uses cnm_h202, supported by indexed-term substitution in cnm_h199. The formula method uses cnm_h204 and polynomial subtraction in cnm_036, with expansion, sign handling, and combining like terms as local prerequisites. The arithmetic-sequence concept cnm_h201 supports both methods.",
+    "needsNewNodes": [
+      {
+        "name": "Determining parameter dependence",
+        "description": "Determine which parameters can affect a mathematical quantity by deriving an equivalent expression or giving a structural argument. Prove independence throughout the allowed domain, and distinguish general dependence from special parameter values that make the quantity constant.",
+        "reason": "Neither arithmetic-sum formulas nor arithmetic general terms provide a route-neutral target for this question. The variables-and-constants nodes do not cover establishing parameter independence through cancellation."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1960_AMC_12_Q36",
+    "decision": "accept",
+    "mathematicalCheck": "There are exactly n paired differences, each equal to 2nd, giving R=2n²d. Independently, the sum-formula expansion cancels a and leaves 4n²d/2. Both methods correctly explain general dependence on d and n, including the special case d=0.",
+    "levelCheck": "Both methods are complete, clearly explained, and use arithmetic progressions and elementary algebra appropriate for historical AHSME/AMC 12.",
+    "methodDistinctness": "Term pairing gives a structural explanation; substituting and simplifying sum formulas provides a distinct, accessible algebraic route.",
+    "annotationCheck": "Method nodes and prerequisites match the actual reasoning, and cnm_h201 appropriately supports both routes. Leaving assessedIds empty while proposing a parameter-dependence node honestly records the catalog gap without treating a method-specific formula as universally required.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "pair-shifted-terms": "solution:pair-shifted-terms:b9798fa149ef",
+    "arithmetic-sum-formula": "solution:arithmetic-sum-formula:b9798fa149ef"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "ecdad1f34e4f88a8b06efdd89bdd954417ccc6ab13646c3681c3ff24c57ecd1b",
+    "inputHash": "0858d53fd71094cba8af7a9ade145d61a6c19d2d22c7864909d979018ff14231",
+    "authorInputHash": "bb9370f454e287d41e55c4751f88bef24512f8b334144036479b2ef89f5f0399",
+    "reviewInputHash": "75d5de1acfaf7208aede9bde5bc70ae054022812e99cee6ee5936245207778c8",
+    "authorResponseHash": "5d18e739b08db5bf38c1043916e00d080490860886c07ae35b5593dab060562d",
+    "reviewerResponseHash": "3bcecae1508682f557c5505d6a5dd3bb83d73adf6372557f30ba93055107bbc3",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

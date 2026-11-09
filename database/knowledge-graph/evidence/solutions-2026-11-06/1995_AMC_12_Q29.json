@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "1995_AMC_12_Q29",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "c65ba033e6e732cb92aa0b0edbe9aa29e385759ad1849b9ce08ffe739a0a0ec7",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "14943ad6eb13dd085df56571e4b1d3c9c708c06624774fecca4ce0dee23bb98e",
+  "solutionFigureHashes": {},
+  "candidateHash": "f2964009084f39b61abe1f1258649e7db4f7eb0c4bc2acfc254f0cf3ca9ba76f",
+  "candidate": {
+    "questionId": "1995_AMC_12_Q29",
+    "derivedAnswer": "C: 40",
+    "answerStatus": "matches",
+    "answerReason": "There are 243 ordered factorizations. Exactly three have repeated entries, and each remaining three-element set has six orderings, giving (243−3)/6=40.",
+    "methods": [
+      {
+        "id": "1995_AMC_12_Q29_m1",
+        "label": "Count ordered factorizations",
+        "explanation": "The useful feature of\n\\[\n2310=2\\cdot3\\cdot5\\cdot7\\cdot11\n\\]\nis that each prime occurs exactly once. In a factorization \\(abc=2310\\), each prime must belong to exactly one of the three factors.\n\nFirst count ordered triples \\((a,b,c)\\). Each of the five primes has three choices of destination, so there are \\(3^5=243\\) triples. A factor receiving no primes is \\(1\\). Unique prime factorization ensures that every ordered triple with the required product is obtained exactly once.\n\nA three-element set must have distinct entries, so we must remove triples with repeated values. If two entries both equal an integer \\(u>1\\), a prime dividing \\(u\\) would occur at least twice in the product, which is impossible. Thus the only possible repeated value is \\(1\\). The excluded triples are precisely the three orderings of \\((1,1,2310)\\).\n\nThe remaining \\(243-3=240\\) triples have three distinct entries. Each set appears in exactly \\(3\\cdot2\\cdot1=6\\) orders: choose the first entry, then the second, and the third is forced. Therefore the number of sets is\n\\[\n\\frac{243-3}{6}=\\boxed{40},\n\\]\nchoice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "math:prime-factorization",
+          "cnm_h231",
+          "cnm_h233"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_p157",
+          "cnm_h002"
+        ],
+        "levelReason": "The argument uses prime factorization, independent choices, and the six orders of three distinct objects."
+      },
+      {
+        "id": "1995_AMC_12_Q29_m2",
+        "label": "Group the prime factors directly",
+        "explanation": "Since\n\\[\n2310=2\\cdot3\\cdot5\\cdot7\\cdot11,\n\\]\na factorization corresponds to grouping these five distinct primes into three groups and taking each group's product. An empty group gives the factor \\(1\\). Products of disjoint nonempty groups cannot be equal, because equal products would have the same prime factors.\n\nSeparate the sets according to whether they contain \\(1\\).\n\nIf a set contains \\(1\\), its other two factors come from splitting the five primes into two nonempty groups. Assigning each prime to one of two labeled groups gives \\(2^5=32\\) assignments. Exclude the two assignments with an empty group, then divide by \\(2\\), since exchanging the two groups gives the same pair of factors. This gives\n\\[\n\\frac{32-2}{2}=15\n\\]\nsets containing \\(1\\).\n\nIf a set does not contain \\(1\\), all three groups are nonempty. Their sizes must be \\(3,1,1\\) or \\(2,2,1\\), because their sizes add to \\(5\\).\n\nFor sizes \\(3,1,1\\), choose the two singleton primes. There are \\(5\\cdot4/2=10\\) choices; the remaining three primes form the third factor.\n\nFor sizes \\(2,2,1\\), choose the singleton prime in \\(5\\) ways. Of the four remaining primes, the smallest can be paired with any of the other three, after which the final pair is forced. This gives \\(5\\cdot3=15\\) choices, with each pairing counted once.\n\nThese cases are disjoint and exhaust all possible group sizes. Each grouping determines exactly one set, so the total is\n\\[\n15+10+15=\\boxed{40},\n\\]\nchoice \\(\\mathrm{C}\\).",
+        "nodeIds": [
+          "math:prime-factorization",
+          "cnm_h231",
+          "cnm_h230",
+          "cnm_h236"
+        ],
+        "prerequisiteIds": [
+          "cnm_p153",
+          "cnm_p157",
+          "cnm_h002"
+        ],
+        "levelReason": "Direct classification of small prime groups uses elementary case counting and unordered pair selection, with no more advanced prerequisites than the ordered-count method."
+      }
+    ],
+    "assessedIds": [
+      "math:prime-factorization",
+      "cnm_h231"
+    ],
+    "supportIds": [
+      "cnm_p153",
+      "cnm_p157",
+      "cnm_h002"
+    ],
+    "annotationRationale": "Prime-exponent structure and counting independent prime allocations are central to the task. Factor and prime meanings, together with the distinctness of set elements, support both routes. Permutation reasoning belongs to the first method; classification and unordered selection belong to the second. These alternative procedures are not combined into a required checklist.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "1995_AMC_12_Q29",
+    "decision": "accept",
+    "mathematicalCheck": "The five distinct prime factors give 3^5=243 ordered triples. Repeated entries can only be two 1s, producing exactly three exclusions; dividing the remaining 240 by six gives 40. The second method independently counts 15 sets containing 1 and 10+15 sets from the two possible nonempty group-size patterns.",
+    "levelCheck": "Both explanations use elementary factorization and counting within AMC 12. They justify the correspondences, exceptions and counting multiplicities.",
+    "methodDistinctness": "Counting ordered triples and correcting multiplicities is usefully distinct from classifying unordered prime groups by their sizes.",
+    "annotationCheck": "Prime factorization and multiplication counting are common assessed targets. Permutation reasoning and case/combination reasoning remain method-local; the shared factor, prime and set-distinctness supports are justified.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "1995_AMC_12_Q29_m1": "1995_AMC_12_Q29_m1",
+    "1995_AMC_12_Q29_m2": "1995_AMC_12_Q29_m2"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "02c75f15d2a4a8d44164941c476d0215b9d3154632377ee504ccca81494323b6",
+    "inputHash": "a0a98d27b7e73ea663b2ddf1b18c3139e0eeb5145b102e0841b868e79fabfe90",
+    "authorInputHash": "e91b5679d274f97ef2b64c3efc9fafaf6631b3edaa29678520d93d5e287bd947",
+    "reviewInputHash": "cef51c40131d586b149f6bf8c11a2b7debeabc5454d71ed3474da6f9ac2997f7",
+    "authorResponseHash": "c4cd0fd77e99cbf0a4fd9658b6e7d8534eab66fe1c5a9e8aa56ef86d1bc80d2c",
+    "reviewerResponseHash": "3f1bf4a0177f1792fc003cd887796611765d8580e830c94f6583bae3710bea95",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

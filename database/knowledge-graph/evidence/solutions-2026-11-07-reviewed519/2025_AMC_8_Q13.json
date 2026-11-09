@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2025_AMC_8_Q13",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "84ef1575413b1704671725cbf83d3383d3b05c0c7b711d0e0831ee47133e11c5",
+    "figureHashes": {
+      "figures/2025_AMC_8_Q13_choiceA_fig1.svg": "fb2a33035bbccf325f8373ee13d780636c8ff4086534c09285134b49b57efc70",
+      "figures/2025_AMC_8_Q13_choiceB_fig2.svg": "406df76a66f4bfce3a52fff191334c481625c77fd596719d8e75841794f44759",
+      "figures/2025_AMC_8_Q13_choiceC_fig3.svg": "3264ff789ae2cd438b500c0ded55d9ea2d441ff5b9546e1bc3502093c86d2c2b",
+      "figures/2025_AMC_8_Q13_choiceD_fig4.svg": "ac863b0b49370a792b80fc6c78a37d26a4d4bcfea3303747a271f59303c8c823",
+      "figures/2025_AMC_8_Q13_choiceE_fig5.svg": "dd098989dfd652b1be0f17441a1da2f90379e7ca000007343facbee83ce5a4ef"
+    }
+  },
+  "solutionSHA256": "b0d59ce7c9dcc2f548c12af923e9a813549fc588239e399431055d2cca6eb627",
+  "solutionFigureHashes": {},
+  "candidateHash": "c7770195a9022059cb28fdf4aa914ad358f83cf7bd77f4c673a32156c19e4c33",
+  "candidate": {
+    "questionId": "2025_AMC_8_Q13",
+    "derivedAnswer": "A: counts \\(3,4,4,3,4,3,4\\) for remainders \\(0,1,2,3,4,5,6\\), respectively",
+    "answerStatus": "matches",
+    "answerReason": "Three complete blocks of seven even numbers contribute three occurrences of every remainder. The final four numbers add one occurrence each of remainders 2, 4, 6, and 1, matching the displayed histogram A.",
+    "methods": [
+      {
+        "id": "remainder-blocks",
+        "label": "Group the even numbers into repeating blocks",
+        "explanation": "The first seven even numbers are \\(2,4,6,8,10,12,14\\). Dividing by \\(7\\) gives the remainders\n\\[\n2,4,6,1,3,5,0,\n\\]\nso every possible remainder occurs once.\n\nAdding \\(14\\) to a number adds two full groups of \\(7\\), leaving its remainder unchanged. Therefore the next seven even numbers, \\(16\\) through \\(28\\), give the same remainder list, as do the seven from \\(30\\) through \\(42\\). These three disjoint blocks account for the first \\(21\\) numbers and give three occurrences of every remainder.\n\nThe four remaining numbers are \\(44,46,48,50\\). Their remainders are \\(2,4,6,1\\), respectively, because\n\\[\n44=42+2,\\quad46=42+4,\\quad48=42+6,\\quad50=49+1.\n\\]\nThus the counts for remainders \\(0,1,2,3,4,5,6\\) are\n\\[\n\\boxed{3,4,4,3,4,3,4}.\n\\]\nThese are exactly the bar heights displayed in choice \\(\\boxed{\\text{A}}\\).",
+        "nodeIds": [
+          "cnm_p051",
+          "cnm_p108"
+        ],
+        "prerequisiteIds": [
+          "cnm_p050"
+        ],
+        "levelReason": "The method uses division with remainders, adding multiples of seven, and reading count bars. No formal congruence notation is needed."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p051",
+      "cnm_p108"
+    ],
+    "supportIds": [
+      "cnm_p050"
+    ],
+    "annotationRationale": "The question combines computing remainders with matching their frequencies to chart bars, represented by cnm_p051 and cnm_p108. The method partitions all 25 numbers into three seven-number blocks and four remaining numbers, ensuring complete counting without overlap. The meaning and allowable range of a remainder support the calculation. The displayed charts use discrete remainder categories, so elementary bar-chart reading fits their actual content.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2025_AMC_8_Q13",
+    "decision": "accept",
+    "mathematicalCheck": "Each seven-number block has remainders 2,4,6,1,3,5,0. Three complete blocks plus remainders 2,4,6,1 from 44,46,48,50 give counts 3,4,4,3,4,3,4, totaling 25. These match the actual bars in A uniquely.",
+    "levelCheck": "The explanation uses elementary division and a fully justified repeating pattern, appropriate for AMC 8.",
+    "methodDistinctness": "One clear counting method is sufficient.",
+    "annotationCheck": "The remainder and bar-chart nodes match the calculation and displayed discrete categories. The remainder-meaning prerequisite is appropriate; formal congruence machinery is unnecessary.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "remainder-blocks": "remainder-blocks"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "68d14fa059c3a26c3cee5292b98d4b2a5023c184d6c677d688503ba5461cb671",
+    "acceptedAt": "2026-11-07T07:51:12.951076+00:00",
+    "inputHash": "6f965d6cde92688e4d5caaf1a4f536f2cd6e3f9fab855aae6f61aad41ac5e208",
+    "authorInputHash": "02b867f40d9b9f14b0c0a3d1203acee2d797a404274136734832c52be9f2371a",
+    "reviewInputHash": "c889b7b531e2367800116fc7558f7aef47dd14f94fb2bbec1a6cd21a5fc7aa3a",
+    "authorResponseHash": "1b145275acb53403cd93505058e826cbc6288b1bb86e8dc03bf90b67d92f57a8",
+    "reviewerResponseHash": "845bd6d424a30cc9d8a29cb22c1204342451aaa31aa15a596735e20e31c7d4e1",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

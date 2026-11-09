@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2007_AMC_12A_Q18",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "568305b5b729ecb1398406857666fc0bd4e69fe45500ececce7f66c803e2c2e6",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "d87faf329de3e97129a2ac322625c23205b95f7147f01bd707fddb4c6990fcd2",
+  "solutionFigureHashes": {},
+  "candidateHash": "9617f13ba3f8a4586b1a98c4ba991d2699446fab0740b28e7589fc430c535f35",
+  "candidate": {
+    "questionId": "2007_AMC_12A_Q18",
+    "derivedAnswer": "D, 9",
+    "answerStatus": "matches",
+    "answerReason": "The conjugate roots determine f(x)=(x²+4)((x−2)²+1). Thus f(1)=10 and a+b+c+d=f(1)−1=9, matching choice D.",
+    "methods": [
+      {
+        "id": "conjugate-root-product-evaluation",
+        "label": "Pair conjugate roots and evaluate at one",
+        "explanation": "Substituting \\(x=1\\) makes every power of \\(x\\) equal to \\(1\\), so\n\\[\na+b+c+d=f(1)-1.\n\\]\nWe can find this value without calculating the four coefficients separately.\n\nBecause the coefficients are real, complex conjugation gives\n\\[\nf(\\overline z)=\\overline{f(z)},\n\\]\nwhere \\(\\overline z\\) denotes the complex conjugate of \\(z\\), obtained by changing the sign of its imaginary part. Thus the conjugate of each given root is also a root: \\(-2i\\) and \\(2-i\\) join \\(2i\\) and \\(2+i\\).\n\nThese four roots are distinct. By the factor theorem their four linear factors divide \\(f\\). Their product already has degree four, and its leading coefficient is \\(1\\), just as for \\(f\\). Therefore\n\\[\n\\begin{aligned}\nf(x)&=(x-2i)(x+2i)(x-2-i)(x-2+i)\\\\\n&=(x^2+4)\\bigl((x-2)^2+1\\bigr),\n\\end{aligned}\n\\]\nwhere the conjugate pairs simplify using \\(i^2=-1\\). Evaluating this product at \\(1\\) gives\n\\[\nf(1)=(1+4)\\bigl((1-2)^2+1\\bigr)=10.\n\\]\nHence \\(a+b+c+d=10-1=\\boxed{9}\\), choice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "math:conjugate-polynomial-roots",
+          "math:polynomial-remainder-factor",
+          "math:polynomial-coefficient-sums"
+        ],
+        "prerequisiteIds": [
+          "cnm_h102",
+          "cnm_h103",
+          "cnm_029"
+        ],
+        "levelReason": "Uses real-coefficient conjugate pairing, the factor theorem, elementary complex multiplication, and evaluation, all within AMC 12 scope."
+      },
+      {
+        "id": "direct-real-imaginary-coefficients",
+        "label": "Solve equations from real and imaginary parts",
+        "explanation": "Each given zero supplies two real equations, since a complex number equals zero exactly when its real and imaginary parts both vanish. Substituting \\(2i\\), using \\(i^2=-1\\), gives\n\\[\nf(2i)=(16-4b+d)+(-8a+2c)i=0.\n\\]\nConsequently,\n\\[\nd=4b-16,\\qquad c=4a.\n\\]\nThese relations let us remove \\(c\\) and \\(d\\) from the equations supplied by the other root.\n\nWrite \\(z=2+i\\). Successive multiplication by \\(z\\) yields\n\\[\nz^2=3+4i,\\qquad z^3=2+11i,\\qquad z^4=-7+24i.\n\\]\nEquating the real and imaginary parts of \\(f(z)\\) to zero now gives\n\\[\n\\begin{aligned}\n-7+2a+3b+2c+d&=0,\\\\\n24+11a+4b+c&=0.\n\\end{aligned}\n\\]\nSubstitute \\(c=4a\\) and \\(d=4b-16\\) to obtain\n\\[\n10a+7b=23,\\qquad 15a+4b=-24.\n\\]\nTo eliminate \\(a\\), multiply the first equation by \\(3\\) and the second by \\(2\\), then subtract:\n\\[\n(30a+21b)-(30a+8b)=69-(-48).\n\\]\nThus \\(13b=117\\), so \\(b=9\\). Substitution gives \\(a=-4\\), followed by \\(c=-16\\) and \\(d=20\\). Therefore\n\\[\na+b+c+d=-4+9-16+20=\\boxed{9},\n\\]\nchoice \\(\\boxed{\\text{D}}\\).",
+        "nodeIds": [
+          "cnm_h099",
+          "cnm_089",
+          "cnm_090"
+        ],
+        "prerequisiteIds": [
+          "cnm_h102",
+          "cnm_029"
+        ],
+        "levelReason": "Uses rectangular complex arithmetic and linear elimination, providing a complete AMC 12 alternative without conjugate-root theory."
+      }
+    ],
+    "assessedIds": [],
+    "supportIds": [
+      "cnm_h102",
+      "cnm_029"
+    ],
+    "annotationRationale": "The task-level target is determining a coefficient expression from prescribed complex zeros, subject to a real coefficient domain and a fixed degree and leading coefficient. The catalog lacks this route-neutral target, so assessedIds is empty and a missing node is proposed. The first method uses conjugate-root symmetry, the factor theorem, and coefficient-sum evaluation. Its cnm_h103 prerequisite is restricted to identifying conjugates, with no complex division required. The second method uses equality of complex numbers and substitution and subtraction elimination. Complex multiplication and expression evaluation support both methods. math:polynomial-roots-coefficients is omitted because neither method uses elementary symmetric root identities or root-power reduction. These annotations do not establish student mastery.",
+    "needsNewNodes": [
+      {
+        "name": "Polynomial determination from prescribed zeros",
+        "description": "Determine polynomial coefficients or a requested expression in them from prescribed zeros, enforcing the coefficient domain, degree, and leading coefficient. Justify that the conditions determine the requested value, whether using factors or equations obtained by substitution.",
+        "reason": "The existing root-and-coefficient node concerns elementary symmetric identities and root-power reduction. The factor, conjugation, and coefficient-sum nodes describe individual routes rather than the common target of these two solutions."
+      }
+    ],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2007_AMC_12A_Q18",
+    "decision": "accept",
+    "mathematicalCheck": "The four distinct conjugate roots and monic quartic degree force \\(f(x)=(x^2+4)((x-2)^2+1)\\), giving \\(f(1)-1=9\\). Independently, the real and imaginary equations yield \\((a,b,c,d)=(-4,9,-16,20)\\). All displayed calculations are valid, and both methods explain the decisive steps completely.",
+    "levelCheck": "Both methods use appropriate AMC 12 complex arithmetic and school algebra.",
+    "methodDistinctness": "The second method determines coefficients through real and imaginary equations, providing a genuinely distinct, accessible alternative to conjugate-root factorization.",
+    "annotationCheck": "Method nodes and shared support IDs fit the actual reasoning. The cnm_h103 prerequisite is explicitly restricted to identifying conjugates. Empty assessedIds and the proposed route-neutral node are justified without claiming an unsupported catalog equivalence.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "partial_catalog_gap",
+  "methodRouteIds": {
+    "conjugate-root-product-evaluation": "solution:conjugate-root-product-evaluation:d87faf329de3",
+    "direct-real-imaginary-coefficients": "solution:direct-real-imaginary-coefficients:d87faf329de3"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "9a246df5c063b51e850f6e9e56cace07a197e955969b7fa8ff355132a3328e4e",
+    "inputHash": "4aea22a222fc30944365d4f481fe87db23eb8d06cd0a17a69abf19294fd5b896",
+    "authorInputHash": "0c98f104ebd3896e7fced8e50a3da7a801c80e4384097dc2b152a0c4b5b7e968",
+    "reviewInputHash": "377870d227d6342f189e6b7f61a135b6615b347ad53fb85278a0bd3cc824ff3d",
+    "authorResponseHash": "30802e00756764c18493240c7d60c9e0c918099fec306f1cf223b8fc42caaf51",
+    "reviewerResponseHash": "f82c3e5b10c4737a93cad8734c2c32415dddf441523ca8c99792d21e16edc0de",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

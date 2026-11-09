@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2002_AMC_10A_Q25",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "fa7f49acd5efc258e3a73be67349b678fb9a2855ea47d86806fd49f550ed6310",
+    "figureHashes": {
+      "figures/2002_AMC_10A_Q25_question_fig1.svg": "6f9bbc38c8136c1ce6a3e40e49063fdb8f2155e6fb7540e1a48d30727925f9c8"
+    }
+  },
+  "solutionSHA256": "b746884d00fec9a2bf7280bbedbf7eb6c6fc217b38582de41bf5cc148e9dea22",
+  "solutionFigureHashes": {},
+  "candidateHash": "2dd0bb70f918a05e022f32b7e89b29ab7374791c5b17a1a504242fda579a937e",
+  "candidate": {
+    "questionId": "2002_AMC_10A_Q25",
+    "derivedAnswer": "C: 210",
+    "answerStatus": "matches",
+    "answerReason": "The given lengths produce an auxiliary right triangle with sides 5, 12, and 13. Its altitude gives the trapezoid height as 60/13 and the area as 210.",
+    "methods": [
+      {
+        "id": "auxiliary-right-triangle",
+        "label": "Create a 5-12-13 triangle",
+        "explanation": "The difference between the bases is \\(52-39=13\\), which suggests looking for a triangle with sides \\(5,12,13\\). Choose \\(E\\) on \\(AB\\) so that \\(AE=39\\). Since \\(AE\\) and \\(DC\\) are parallel and equal, \\(ADCE\\) is a parallelogram. Thus \\(CE=AD=5\\), while \\(EB=52-39=13\\).\n\nTriangle \\(CEB\\) has sides \\(5,12,13\\). Because\n\\[\n5^2+12^2=13^2,\n\\]\nthe converse of the Pythagorean theorem shows that its angle at \\(C\\) is right. Its area is therefore \\(\\tfrac12(5)(12)=30\\).\n\nLet \\(h\\) be the perpendicular distance between the trapezoid's bases. This is also the altitude of triangle \\(CEB\\) to base \\(EB\\), so\n\\[\n\\frac12(13)h=30,\n\\qquad h=\\frac{60}{13}.\n\\]\nThe trapezoid's area is\n\\[\n\\frac{52+39}{2}\\cdot\\frac{60}{13}=210.\n\\]\nThus the answer is \\(\\boxed{210}\\), choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_184",
+          "cnm_183",
+          "cnm_177",
+          "cnm_p148",
+          "cnm_p149"
+        ],
+        "prerequisiteIds": [
+          "cnm_055",
+          "cnm_067",
+          "cnm_112"
+        ],
+        "levelReason": "The construction uses elementary parallelogram properties, the converse of the Pythagorean theorem, and familiar area formulas, all within AMC 10 scope."
+      },
+      {
+        "id": "height-from-distance-equations",
+        "label": "Subtract two Pythagorean equations",
+        "explanation": "Both legs span the same height, so their Pythagorean equations contain the same squared height. Subtracting the equations will remove it.\n\nPlace \\(A=(0,0)\\) and \\(B=(52,0)\\), with the other base above \\(AB\\). Write \\(D=(x,h)\\) and \\(C=(x+39,h)\\), where \\(h>0\\) is the trapezoid's height. The coordinate \\(x\\) may initially be any real number, so this setup does not assume that the perpendicular feet lie inside the base.\n\nUsing \\(AD=5\\) and \\(BC=12\\), the Pythagorean theorem gives\n\\[\nx^2+h^2=25,\n\\qquad (13-x)^2+h^2=144.\n\\]\nSubtracting the first equation from the second yields\n\\[\n169-26x=119,\n\\qquad x=\\frac{25}{13}.\n\\]\nSubstituting back,\n\\[\nh^2=25-\\left(\\frac{25}{13}\\right)^2\n=\\frac{3600}{169}.\n\\]\nSince \\(h>0\\), we obtain \\(h=60/13\\). These values also satisfy the second distance equation, since \\(13-x=144/13\\) and\n\\[\n\\left(\\frac{144}{13}\\right)^2+\n\\left(\\frac{60}{13}\\right)^2=144.\n\\]\nThe trapezoid's area is therefore\n\\[\n\\frac{52+39}{2}\\cdot\\frac{60}{13}=210.\n\\]\nThe answer is \\(\\boxed{210}\\), choice \\(\\boxed{\\text{C}}\\).",
+        "nodeIds": [
+          "cnm_084",
+          "cnm_174",
+          "cnm_148",
+          "cnm_042",
+          "cnm_p149"
+        ],
+        "prerequisiteIds": [
+          "cnm_055",
+          "cnm_082",
+          "cnm_075"
+        ],
+        "levelReason": "Coordinates organize two elementary right-triangle calculations; only expansion, subtraction, and a linear equation are needed."
+      }
+    ],
+    "assessedIds": [
+      "cnm_p149"
+    ],
+    "supportIds": [
+      "cnm_055"
+    ],
+    "annotationRationale": "The common target is finding the trapezoid's area from its side lengths. Segment subtraction supports both routes. The first method uses parallelogram recognition and properties to construct a right triangle, then uses triangle area to recover the height. The second uses coordinates, the Pythagorean theorem, square expansion, and a linear equation. These alternative techniques remain method-specific rather than becoming joint requirements. The annotations do not establish learner mastery.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2002_AMC_10A_Q25",
+    "decision": "accept",
+    "mathematicalCheck": "The construction gives CE=5 and EB=13, so triangle CEB is a right 5-12-13 triangle with area 30. Its altitude is 60/13, giving trapezoid area 210. Independently, subtracting the distance equations gives x=25/13 and h²=3600/169; the positive height satisfies both equations.",
+    "levelCheck": "Both explanations are complete and use elementary geometry and school algebra appropriate for AMC 10.",
+    "methodDistinctness": "The auxiliary triangle and area argument offers a genuinely different insight from eliminating the shared height term in coordinate equations.",
+    "annotationCheck": "The assessed area node and shared segment-arithmetic support are appropriate. Parallelogram criteria, converse Pythagoras and triangle area remain local to the construction; coordinates, square expansion and equation solving remain local to the second method. Listed prerequisites match their catalog scopes.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "auxiliary-right-triangle": "solution:auxiliary-right-triangle:b746884d00fe",
+    "height-from-distance-equations": "height-from-distance-equations"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "74f8deda122ecb391ce5f753b523be53f71596b581cd1aaba5762e13fc1317e8",
+    "acceptedAt": "2026-11-08T15:02:10.968030+00:00",
+    "inputHash": "9f57a0003fd4880c514be2bdfeec7217ded72b47140b6a4a7693f452ca94cecd",
+    "authorInputHash": "732b51ecab37e3c9a742da7c4ab94d68127b3b3db6a80974b2f47cc0314d97c0",
+    "reviewInputHash": "a072a0e57a0e89a67dde1945b989ef56dfe00061ba3213fdf677f42283367429",
+    "authorResponseHash": "a160add32aba276c1466263f79d770ecc35e4eda6babe7798c626a4771d99ae4",
+    "reviewerResponseHash": "74abf120ecd63a1324f3cecd8990578fcbd95f2cd5f652ec012e54e2f7d6314e",
+    "catalogHash": "b4e11d5e4e1e5cdbf3b75c74e7ea1f48581bf92b58f67349006e3e95ab5f1a4c",
+    "styleHash": "9ce733e910bbb32952aa7f903193c413c32a47c6c4ad533cd5dd7cf5633cbdbb",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

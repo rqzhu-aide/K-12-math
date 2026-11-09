@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2014_AMC_12B_Q22",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "8c236ea081bc0fd98d3f3ad603136ce7ee7540e77304cc4a534b71b671aad667",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "70bf0ca521e4d9e41a89185752294d7ab25bcedb00a22be1faa3512303fc40f3",
+  "solutionFigureHashes": {},
+  "candidateHash": "8c9680eb839359434fac43dc245e92a838280f97219a3b1dbfae9bde215904b9",
+  "candidate": {
+    "questionId": "2014_AMC_12B_Q22",
+    "derivedAnswer": "\\(\\dfrac{63}{146}\\), choice C",
+    "answerStatus": "matches",
+    "answerReason": "First-step equations yield a recurrence for successive escape-probability differences. Their sum is 1, giving the probability from pad 1 as 63/146. The probability of wandering forever is zero.",
+    "methods": [
+      {
+        "id": "first-step-differences",
+        "label": "First-step probabilities and successive differences",
+        "explanation": "The frog's current pad contains all the information needed for its future jumps. Let \\(p_i\\) be the probability of reaching pad \\(10\\) before pad \\(0\\), starting from pad \\(i\\). The endpoint values are \\(p_0=0\\) and \\(p_{10}=1\\). Conditioning on the first jump gives, for \\(1\\le i\\le9\\),\n\\[\np_i=\\frac{i}{10}p_{i-1}+\\frac{10-i}{10}p_{i+1}.\n\\]\nThis equation involves three neighboring probabilities. Taking differences turns it into a recurrence involving just two neighboring differences. Define\n\\[\nd_i=p_i-p_{i-1}\\qquad(1\\le i\\le10).\n\\]\nRearranging the first-step equation gives\n\\[\n(10-i)d_{i+1}=i d_i,\n\\]\nso\n\\[\nd_{i+1}=\\frac{i}{10-i}d_i\\qquad(1\\le i\\le9).\n\\]\nEvery denominator here is positive. Starting with \\(d_1\\), the first five differences are \\(d_1\\) times\n\\[\n1,\\quad\\frac19,\\quad\\frac1{36},\\quad\\frac1{84},\\quad\\frac1{126}.\n\\]\nFor example, \\(d_3=(2/8)d_2=d_1/36\\). Continuing the recurrence gives the same five multipliers in reverse order for \\(d_6,\\ldots,d_{10}\\).\n\nAdding all the differences cancels the intermediate probabilities, leaving\n\\[\n\\begin{aligned}\n1=p_{10}-p_0&=\\sum_{i=1}^{10}d_i\\\\\n&=2d_1\\left(1+\\frac19+\\frac1{36}+\\frac1{84}+\\frac1{126}\\right)\\\\\n&=\\frac{146}{63}d_1.\n\\end{aligned}\n\\]\nTherefore \\(p_1=d_1=63/146\\).\n\nIt remains to check that the frog cannot avoid both endpoints forever with positive probability. From any interior pad, consecutive left jumps reach pad \\(0\\) in at most nine jumps. Each such jump has conditional probability at least \\(1/10\\), so this path has probability at least \\(10^{-9}\\). Consequently, for every positive integer \\(r\\), the probability of avoiding both endpoints for \\(9r\\) jumps is at most\n\\[\n(1-10^{-9})^r,\n\\]\nwhich approaches zero. Thus the frog eventually reaches an endpoint with probability \\(1\\), and its probability of escaping the snake is \\(\\boxed{\\frac{63}{146}}\\), choice C.",
+        "nodeIds": [
+          "math:recursive-counting-probability",
+          "math:telescoping"
+        ],
+        "prerequisiteIds": [
+          "cnm_h246",
+          "cnm_h245",
+          "cnm_h200"
+        ],
+        "levelReason": "Uses first-step probability, an elementary recurrence, fraction arithmetic, and geometric decay, all within AMC 12 scope."
+      }
+    ],
+    "assessedIds": [
+      "math:recursive-counting-probability"
+    ],
+    "supportIds": [
+      "cnm_h246",
+      "cnm_h245",
+      "cnm_h200"
+    ],
+    "annotationRationale": "The task concerns an eventual escape probability with absorbing endpoints, matching the state-probability synthesis node. Total probability constructs the first-step equations, sequential probability products justify eventual absorption, and simple recurrence knowledge supports iteration. Telescoping is specific to the written solution; combination-number formulas are not used.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2014_AMC_12B_Q22",
+    "decision": "accept",
+    "mathematicalCheck": "The first-step equations correctly give \\((10-i)d_{i+1}=i d_i\\). The ten difference multipliers sum to \\(146/63\\), so telescoping yields \\(p_1=63/146\\). The uniform absorption chance within nine jumps justifies the survival bound and rules out wandering forever with positive probability.",
+    "levelCheck": "The recurrence, fraction arithmetic, telescoping, and elementary geometric decay are appropriate and sufficiently explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "State recursion is justified as the assessed target. Total probability, conditional multiplication, recurrence iteration, and method-local telescoping accurately describe the solution.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "first-step-differences": "first-step-differences"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "f919a739ee697a5a9bc95651fe4ba7758e3eb3f547a12e24ef18ae276f9d5dd4",
+    "inputHash": "349ded56b4846f61ec92d31549e40f62a770b40e27d88974375ce4c22e0b4452",
+    "authorInputHash": "b7a992dd79cab62a8f3031c99e3925810bca5b47b3785a645d66ca4b0ee5b76f",
+    "reviewInputHash": "55965a851e6a4660ea1727133a995917bd6dcbda7a775abb7426973d095f1086",
+    "authorResponseHash": "bdcc47003e1ddce389ed6e1c9ed1175ecb6bca3e0c72b47dceb8fe15dfafa4c1",
+    "reviewerResponseHash": "bca9156776ec29bf7a97937c7326563930df39fd5c66e3df826d95e824a18071",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

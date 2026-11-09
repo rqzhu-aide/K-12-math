@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2015_AMC_10B_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "4fc182e9d5624e7cf943bdd511389e6ce87468e7b3608756360a0117d28b6fe0",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "607340533d9d573fff1e7cd4169b53e1d1a9982b866da3c74289a68987ea6db5",
+  "solutionFigureHashes": {},
+  "candidateHash": "3c75800243d3525e8db987dcbebdf9e158f60aa3e71cab435bc418e0d0090c90",
+  "candidate": {
+    "questionId": "2015_AMC_10B_Q21",
+    "derivedAnswer": "\\(13\\), choice D",
+    "answerStatus": "matches",
+    "answerReason": "The staircase can have exactly 63, 64, or 66 steps. Their sum is 193, whose digit sum is 13, matching choice D.",
+    "methods": [
+      {
+        "id": "jump-count-intervals",
+        "label": "Use the ranges for each jump count",
+        "explanation": "A fixed number of jumps gives an exact range of possible staircase lengths, including the shorter final jump. Let \\(n\\) be the number of steps and \\(d\\) the number of Dash's jumps. Cozy then takes \\(d+19\\) jumps.\n\nCozy takes exactly \\(d+19\\) jumps when\n\\[\n2d+37\\le n\\le2d+38.\n\\]\nThe lower endpoint allows a final jump of one step. Dash takes exactly \\(d\\) jumps when\n\\[\n5d-4\\le n\\le5d.\n\\]\nFor these intervals to overlap, each lower endpoint must be no greater than the other upper endpoint. Thus\n\\[\n2d+37\\le5d,\n\\qquad\n5d-4\\le2d+38.\n\\]\nThese inequalities give \\(37\\le3d\\le42\\). Since \\(d\\) is an integer, \\(d=13\\) or \\(d=14\\).\n\nIf \\(d=13\\), Cozy's range is \\(63\\le n\\le64\\), and Dash's range is \\(61\\le n\\le65\\). Both \\(63\\) and \\(64\\) work.\n\nIf \\(d=14\\), Cozy's range is \\(65\\le n\\le66\\), and Dash's range is \\(66\\le n\\le70\\). Only \\(66\\) works.\n\nThese exact intervals cover all possibilities, so\n\\[\ns=63+64+66=193.\n\\]\nIts digit sum is \\(1+9+3=\\boxed{13}\\), choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "math:floor-ceiling",
+          "cnm_099",
+          "cnm_h020"
+        ],
+        "prerequisiteIds": [
+          "cnm_p050",
+          "cnm_097"
+        ],
+        "levelReason": "The method uses exact integer ranges and simple linear inequalities, with no advanced rounding-function theory."
+      },
+      {
+        "id": "ten-step-blocks",
+        "label": "Separate complete ten-step blocks",
+        "explanation": "Ten steps are convenient because Cozy covers them in \\(5\\) jumps and Dash in \\(2\\). Write the staircase length uniquely as\n\\[\nn=10q+r,\\qquad 0\\le r\\le9,\n\\]\nwhere \\(q\\) and \\(r\\) are nonnegative integers. Both animals land exactly at step \\(10q\\), so the complete blocks contribute a jump difference of \\(3q\\).\n\nLet \\(\\delta\\) be Cozy's extra jumps minus Dash's extra jumps for the remaining \\(r\\) steps. Counting a partial final jump as one jump gives:\n\nFor \\(r=0,1,2\\), \\(\\delta=0\\).\n\nFor \\(r=3,4,6\\), \\(\\delta=1\\).\n\nFor \\(r=5,7,8\\), \\(\\delta=2\\).\n\nFor \\(r=9\\), \\(\\delta=3\\).\n\nFor example, \\(6\\) remaining steps require \\(3\\) Cozy jumps and \\(2\\) Dash jumps, giving a difference of \\(1\\).\n\nThe required difference is \\(3q+\\delta=19\\). Since \\(0\\le\\delta\\le3\\),\n\\[\n16\\le3q\\le19,\n\\]\nso the only integer possibility is \\(q=6\\). It follows that \\(\\delta=1\\), giving \\(r=3,4,6\\). Thus the possible lengths are exactly \\(63,64,66\\); the unique quotient-remainder representation ensures none are omitted or repeated. Their sum is \\(193\\), whose digit sum is \\(\\boxed{13}\\), choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "math:floor-ceiling",
+          "cnm_p052"
+        ],
+        "prerequisiteIds": [
+          "cnm_p050",
+          "cnm_p153"
+        ],
+        "levelReason": "This alternative uses division with remainders and elementary counting of partial jumps, an accessible arithmetic route."
+      }
+    ],
+    "assessedIds": [
+      "math:floor-ceiling"
+    ],
+    "supportIds": [
+      "cnm_p050"
+    ],
+    "annotationRationale": "The central target is converting a possibly partial final jump into a whole-number jump count. The interval route uses systems of inequalities and their integer solutions. The block route uses division with remainders and the common multiple 10. Remainder meaning supports both routes.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2015_AMC_10B_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "The exact jump-count intervals restrict Dash's count to 13 or 14 and give precisely 63, 64, and 66 steps. Independently, the remainder table is correct and forces q=6 with r=3,4,6. Their sum is 193, with digit sum 13.",
+    "levelCheck": "Both methods explain partial final jumps using elementary arithmetic or simple inequalities.",
+    "methodDistinctness": "Intersecting jump-count intervals and separating ten-step blocks provide distinct, accessible approaches.",
+    "annotationCheck": "The rounding target is justified even without ceiling notation. Inequality nodes belong to the first route, while remainder applications and multiples support the second; shared remainder meaning is appropriate.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "jump-count-intervals": "solution:jump-count-intervals:607340533d9d",
+    "ten-step-blocks": "ten-step-blocks"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "aafe06d7db3633d7e53f2132203706349ae735fd04d682e5cff87f0bc61d6297",
+    "inputHash": "c1e3f86fe313b412b3a972dcefe394e455655d72b0d3b47d42afca962d716c53",
+    "authorInputHash": "3941c491e4eeebeef78d008e8dcc7cc493688b7465f36e032b02d00d32769484",
+    "reviewInputHash": "fa04e00e6f405046aec108f8d457c1ae777e01e16e9f439b32c2b6701542aafb",
+    "authorResponseHash": "ac3dfcdfc4f0682eca8289904c6d53a00cbc1f70ba33cc59904635f5eb864534",
+    "reviewerResponseHash": "1f62a0f5f84b0302d045645d0fb8930588150fb5ba1485dc0118d4be08257b4d",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2021_AMC_10B_Q21",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "b9ac312db3463d84ee86aac723a5a2ec303fd45262ccd9f6022be1bb69aff256",
+    "figureHashes": {
+      "figures/2021_AMC_10B_Q21_question_fig1.svg": "10a931e734d1050d00b4f7d240faa91f065c65c896777e515cddebc874e3fe6f"
+    }
+  },
+  "solutionSHA256": "99a8debd264cb197a88b2f0b6c124e20b9c42663bfd2dca6eb8cf267f93fe04b",
+  "solutionFigureHashes": {},
+  "candidateHash": "a9b420ab58a3f646c3c5fed146f47266781d026495086bcc74b91af67eb3bc67",
+  "candidate": {
+    "questionId": "2021_AMC_10B_Q21",
+    "derivedAnswer": "A. 2",
+    "answerStatus": "matches",
+    "answerReason": "Folding preserves lengths and right angles. These relationships give \\(AE=\\frac12\\), \\(EC'=\\frac56\\), and \\(AC'=\\frac23\\), whose sum is 2, agreeing with choice A.",
+    "methods": [
+      {
+        "id": "crease-and-similar-triangles",
+        "label": "Crease lengths and similar triangles",
+        "explanation": "Track the crease point on \\(CD\\): it stays fixed during the fold, so its distances to \\(C\\) and \\(C'\\) are equal. Let this point be \\(F\\). Since \\(AD=1\\) and \\(C'D=\\frac13\\),\n\\[\nAC'=1-\\frac13=\\frac23.\n\\]\nWrite \\(DF=t\\), where \\(0<t<1\\). Then \\(CF=1-t\\), and folding gives \\(C'F=CF=1-t\\). Right triangle \\(DC'F\\) therefore satisfies\n\\[\n(1-t)^2=t^2+\\left(\\frac13\\right)^2.\n\\]\nExpanding cancels the squared terms:\n\\[\n1-2t=\\frac19,\n\\qquad t=\\frac49.\n\\]\nThis lies between \\(0\\) and \\(1\\), as required, and \\(C'F=\\frac59\\).\n\nThe original edges \\(BC\\) and \\(CD\\) are perpendicular, so their folded images \\(C'E\\) and \\(C'F\\) are perpendicular too. Also \\(AE\\perp DC'\\). Thus \\(\\angle AEC'=\\angle DC'F\\), and the right triangles \\(AEC'\\) and \\(DC'F\\) are similar.\n\nThe corresponding sides \\(AC'\\) and \\(DF\\) give scale factor\n\\[\n\\frac{AC'}{DF}=\\frac{2/3}{4/9}=\\frac32.\n\\]\nConsequently,\n\\[\nAE=\\frac32\\cdot\\frac13=\\frac12,\n\\qquad EC'=\\frac32\\cdot\\frac59=\\frac56.\n\\]\nThe requested perimeter is\n\\[\n\\frac23+\\frac12+\\frac56=\\boxed{2},\n\\]\nchoice \\(\\text{A}\\).",
+        "nodeIds": [
+          "cnm_192",
+          "cnm_271",
+          "cnm_272"
+        ],
+        "prerequisiteIds": [
+          "cnm_132",
+          "cnm_174",
+          "cnm_191"
+        ],
+        "levelReason": "The fold is treated as a reflection, followed by Pythagoras and AA similarity. No trigonometry or coordinate-line formulas are needed."
+      },
+      {
+        "id": "unfold-crossing-point",
+        "label": "Unfolding the crossing point",
+        "explanation": "Unfold \\(E\\) to its original position \\(P\\) on \\(BC\\). This expresses \\(EC'\\) as part of the unit side \\(BC\\), allowing us to find the perimeter without finding every side separately.\n\nLet \\(BP=x\\) and \\(AE=y\\), where \\(0\\le x,y\\le1\\). Folding sends \\(PC\\) to \\(EC'\\), so\n\\[\nEC'=PC=1-x.\n\\]\nAlso \\(AC'=1-\\frac13=\\frac23\\). Since \\(EC'\\) is the hypotenuse of right triangle \\(AEC'\\), we have \\(1-x\\ge\\frac23\\), hence \\(x\\le\\frac13\\).\n\nLet \\(X\\) be the point on \\(BC\\) directly opposite \\(C'\\), so \\(C'X\\perp BC\\). The square gives \\(C'X=1\\) and \\(BX=AC'=\\frac23\\). Because \\(BP=x\\le\\frac13\\), point \\(P\\) lies between \\(B\\) and \\(X\\), and\n\\[\nPX=\\frac23-x.\n\\]\n\nReflection exchanges \\(P\\) with \\(E\\) and exchanges \\(C'\\) with \\(C\\). Therefore \\(PC'=EC\\). Applying Pythagoras in right triangles \\(PC'X\\) and \\(EBC\\) gives\n\\[\n1+\\left(\\frac23-x\\right)^2\n=1+(1-y)^2.\n\\]\nBoth \\(\\frac23-x\\) and \\(1-y\\) are nonnegative lengths, so equality of their squares gives\n\\[\n\\frac23-x=1-y,\n\\qquad y=\\frac13+x.\n\\]\nThe unknown \\(x\\) now cancels from the perimeter:\n\\[\nAC'+AE+EC'\n=\\frac23+\\left(\\frac13+x\\right)+(1-x)\n=\\boxed{2}.\n\\]\nThe answer is choice \\(\\text{A}\\).",
+        "nodeIds": [
+          "cnm_192"
+        ],
+        "prerequisiteIds": [
+          "cnm_132",
+          "cnm_174",
+          "cnm_191"
+        ],
+        "levelReason": "This alternative uses only reflection, segment addition, and Pythagoras. Comparing reflected cross-distances replaces triangle similarity."
+      }
+    ],
+    "assessedIds": [
+      "cnm_192"
+    ],
+    "supportIds": [
+      "cnm_132",
+      "cnm_174",
+      "cnm_191"
+    ],
+    "annotationRationale": "The target is translating a fold in a square into usable length relationships. Both methods use reflection, square properties, and Pythagoras. Only the first method requires triangle-similarity criteria and corresponding-side ratios. The second instead unfolds E and compares cross-distances, so similarity is not a shared requirement.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2021_AMC_10B_Q21",
+    "decision": "accept",
+    "mathematicalCheck": "Method 1 correctly obtains DF=4/9, similarity factor 3/2, and triangle sides 2/3, 1/2, and 5/6. Method 2 validly uses reflection to obtain PC'=EC; the established nonnegative lengths imply y=1/3+x, so the perimeter is 2/3+(1/3+x)+(1-x)=2.",
+    "levelCheck": "Both methods use accessible reflection geometry, Pythagoras, and elementary equations. The similarity correspondence and square-root sign choice are justified.",
+    "methodDistinctness": "Crease lengths with similarity and unfolding with cancellation provide genuinely distinct elementary insights.",
+    "annotationCheck": "The folding assessed ID is appropriate. Reflection, Pythagoras, and square properties are shared support; similarity remains local to the first method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "crease-and-similar-triangles": "crease-and-similar-triangles",
+    "unfold-crossing-point": "unfold-crossing-point"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "8f11db25e130c6a0317197ea0e3a1f689730d4f2b5ae1c278433c6b2a88bfb18",
+    "acceptedAt": "2026-11-07T08:25:55.048091+00:00",
+    "inputHash": "5b680aec1d8a2238418570f0dc272a7126ff35ad91669bbaa222c907b3a2d1b7",
+    "authorInputHash": "7f91e9a8012da4ee7bd46a0fc1b1942b67c0aec9270e69bf7c0beb4766feaad4",
+    "reviewInputHash": "ea125c55a0b1423e90ff3793a29a6dcf345b8ef800882afc9f8a5f1033fa372f",
+    "authorResponseHash": "51a92ab3b96f1aa710892b2f59e5cebb1627b370fe5d2cbfefbd2a5c0f07bd30",
+    "reviewerResponseHash": "7c882b263b1e0e86128cc14f606a1ae5f3fe7f7ca836e634b2d836e5ddac7537",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

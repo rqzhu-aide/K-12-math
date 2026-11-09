@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2005_AMC_8_Q14",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "b7eda5bfd71701c014993052d7b7f6b02d117fef124144e796805745723fc8dc",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "edf6413f0d2927d0e80d6664c4b3beb73f1fc0f8596cc471e5dc8de741bfaa74",
+  "solutionFigureHashes": {},
+  "candidateHash": "30f8cedd5a3ec498475526d09470bdcdc492123aa4ca25b1cd0753f680c8ac14",
+  "candidate": {
+    "questionId": "2005_AMC_8_Q14",
+    "derivedAnswer": "B (96 games)",
+    "answerStatus": "matches",
+    "answerReason": "Each team plays 16 games. Counting these games for all 12 teams counts each game twice, so the total is 12 × 16 ÷ 2 = 96.",
+    "methods": [
+      {
+        "id": "team-appearance-count",
+        "label": "Count games for each team",
+        "explanation": "Start by counting the games played by one team. It has five opponents in its own division, playing each twice, and six opponents in the other division, playing each once. Thus each team plays\n\\[\n5\\cdot2+6=16\n\\]\ngames.\n\nFor all twelve teams, this gives \\(12\\cdot16=192\\) team appearances in games. Every scheduled game contributes exactly two appearances, one for each participating team. Dividing by two therefore counts every game once:\n\\[\n\\frac{192}{2}=96.\n\\]\nThere are \\(\\boxed{96}\\) conference games, choice B.",
+        "nodeIds": [
+          "cnm_h232",
+          "math:double-counting"
+        ],
+        "prerequisiteIds": [
+          "cnm_h231",
+          "cnm_p043"
+        ],
+        "levelReason": "The method uses elementary counting, multiplication, and a division by two justified by the two teams in each game."
+      },
+      {
+        "id": "division-pair-count",
+        "label": "Separate the two types of games",
+        "explanation": "Separate games within a division from games between divisions.\n\nTo count pairs of teams within one division, put its six teams in a fixed order. Pair the first team with the five later teams, the second with the four later teams, and continue. This counts each pair exactly once, giving\n\\[\n5+4+3+2+1=15\n\\]\npairs. Each pair plays twice, so each division schedules \\(15\\cdot2=30\\) games. The two divisions together schedule \\(60\\) such games.\n\nFor a game between divisions, choose one of the six teams in the first division and one of the six in the second. There are \\(6\\cdot6=36\\) pairs, each playing once. Every conference game belongs to exactly one of these two types, so the total is\n\\[\n60+36=\\boxed{96},\n\\]\nchoice B.",
+        "nodeIds": [
+          "cnm_h232",
+          "cnm_h236"
+        ],
+        "prerequisiteIds": [
+          "cnm_h231"
+        ],
+        "levelReason": "Unordered pairs are counted by a short organized list; no combination formula is required."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h232"
+    ],
+    "supportIds": [
+      "cnm_h231"
+    ],
+    "annotationRationale": "The task combines counts for different opponent categories, fitting cnm_h232. The first method uses double counting of team-game appearances and tracks multiplicity two. The second uses the unordered-pair concept in cnm_h236, with an elementary enumeration rather than a combination formula. Multiplicative counting supports both routes; division by two is local to the first.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2005_AMC_8_Q14",
+    "decision": "accept",
+    "mathematicalCheck": "Each team plays 16 games, so 192 team appearances represent 96 games. Independently, each division has 15 unordered pairs playing twice, giving 60 internal games; the 36 cross-division games bring the total to 96. Both methods justify multiplicities and completeness.",
+    "levelCheck": "Both explanations use accessible AMC 8 arithmetic and organized counting.",
+    "methodDistinctness": "Counting team appearances and partitioning games into unordered pairings provide distinct, useful approaches.",
+    "annotationCheck": "cnm_h232 is route-neutral. Double counting and cnm_h236 correctly describe the separate methods; cnm_h231 is shared support, and division is local to the first method.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "team-appearance-count": "solution:team-appearance-count:edf6413f0d29",
+    "division-pair-count": "solution:division-pair-count:edf6413f0d29"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "4d2d50ab7c3537a9e6fce5766ca54700839fbced001f992cd75ab0f9a49d1b5e",
+    "inputHash": "dbdfe44a9d498d1f891fe74d6c621660fa30a3a6ce2667d0b52a55040eb3a0cf",
+    "authorInputHash": "da94d1c05f7124e68113f0ec90581c111ec764c51d25f6fbe5684d0f4073f504",
+    "reviewInputHash": "e3e889b108fabfff8667367ad61a3ed135963ced05e139e587bc1ac1e0e4dcf1",
+    "authorResponseHash": "17572b0a26150486170c4e5f02ecaf49c624337ccaf1778743857c565d8f495b",
+    "reviewerResponseHash": "06cdd2d91fbfa4245789c1ea04450e6f658e61bebdf689b9c6753b1de5018e14",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

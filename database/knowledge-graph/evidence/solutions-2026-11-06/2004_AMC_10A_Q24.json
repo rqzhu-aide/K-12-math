@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2004_AMC_10A_Q24",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "5d6c21042c57e595461b430223bc9ee07ed2abeda45d948ea4946be97bc05de7",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "f6d73bfa3fc2c38d5f8e8582934d0c47e6487f805b9b0dee156971b0ac3bab5d",
+  "solutionFigureHashes": {},
+  "candidateHash": "a12e152b1a3ba4290fc5d26ba6871b395ed78d08303e2885b7351d40ec159244",
+  "candidate": {
+    "questionId": "2004_AMC_10A_Q24",
+    "derivedAnswer": "\\(2^{4950}\\), choice D",
+    "answerStatus": "matches",
+    "answerReason": "Following the recurrence through powers-of-two indices produces factors 2 through 2^99. Their exponents sum to 4950.",
+    "methods": [
+      {
+        "id": "follow-power-of-two-indices",
+        "label": "Follow the powers-of-two indices",
+        "explanation": "Follow only the indices \\(1,2,4,8,\\ldots,2^{100}\\). The recurrence connects each of these terms to the preceding one, so their values are determined by \\(a_1\\), regardless of the unspecified terms at other odd indices.\n\nFirst,\n\\[a_2=1\\cdot a_1=1.\\]\nFor each \\(k=1,2,\\ldots,99\\), substituting \\(n=2^k\\) into the recurrence gives\n\\[a_{2^{k+1}}=2^k a_{2^k}.\\]\nThus each doubling of the index supplies one more factor, and repeated substitution gives\n\\[a_{2^{100}}=(2\\cdot2^2\\cdots2^{99})a_2\n=2^{1+2+\\cdots+99}.\\]\nTo find the exponent, add the sum to a copy written in reverse order. Each of the \\(99\\) pairs sums to \\(100\\), so\n\\[1+2+\\cdots+99=\\frac{99\\cdot100}{2}=4950.\\]\nTherefore \\(a_{2^{100}}=\\boxed{2^{4950}}\\), choice \\(\\text{D}\\).",
+        "nodeIds": [
+          "cnm_h200",
+          "cnm_142",
+          "cnm_h204"
+        ],
+        "prerequisiteIds": [
+          "cnm_h197",
+          "cnm_019"
+        ],
+        "levelReason": "Uses repeated substitution, integer exponent laws, and pairing a finite arithmetic sum."
+      }
+    ],
+    "assessedIds": [
+      "cnm_h200"
+    ],
+    "supportIds": [
+      "cnm_142",
+      "cnm_h204"
+    ],
+    "annotationRationale": "The task target is evaluating a recursively specified term along the relevant index chain. Multiplication of equal-base powers combines the recurrence factors, and arithmetic summation evaluates the exponent. Sequence indexing and the meaning of powers support the method; a general formula for every sequence term is unnecessary.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2004_AMC_10A_Q24",
+    "decision": "accept",
+    "mathematicalCheck": "Starting from a₂=1, the 99 subsequent recurrence steps contribute factors 2¹ through 2⁹⁹. Their exponents sum to 99·100/2=4950. Other odd-indexed terms cannot affect this chain.",
+    "levelCheck": "Repeated substitution, integer exponent laws, and finite-sum pairing fit AMC 10.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "cnm_h200 captures the recurrence evaluation; cnm_142 and cnm_h204 accurately describe the shared supporting calculations. The indexing and exponent prerequisites fit.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "follow-power-of-two-indices": "follow-power-of-two-indices"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "30996724812c74542616a4ac16ecf2c3c2180b06eec619c0b524e024fa941639",
+    "inputHash": "c519e576df17567fbbe2e9619d487aff1784275d73ce9b498cb634abcfffe425",
+    "authorInputHash": "d356883b0b97bec4c21594a580c44197ded46ab790b0d91832befe93dd51cdee",
+    "reviewInputHash": "464ac6b37a6cd7cc30845786c5d5030f28aabeef24c990d7210e65ac87278647",
+    "authorResponseHash": "1a05f617957b9f083f223f43adf1965f900a75dcf1c35386210d83c9eacee82b",
+    "reviewerResponseHash": "35552c0e5253af43770a9a6f206e53892d2a4bf9775ddc2639a54ab80e76e0f8",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}

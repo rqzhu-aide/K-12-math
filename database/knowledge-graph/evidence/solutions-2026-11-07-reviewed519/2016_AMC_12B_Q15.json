@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "reviewed_original_solution",
+  "questionId": "2016_AMC_12B_Q15",
+  "bank": "amc",
+  "questionFingerprint": {
+    "contentHash": "8a719b4ca8246c9c1df730c663b9ae12016cd986f91b85056337f9b744beeb09",
+    "figureHashes": {}
+  },
+  "solutionSHA256": "ebbd57b55f6ae7c64cb8a31e5cfb67dab281bda9f2dc0f865dcc29d8b7c1b036",
+  "solutionFigureHashes": {},
+  "candidateHash": "daed1d2b48ce1b68e6d0d75fe149521c465ea14cf23f11093963f39c76d7753f",
+  "candidate": {
+    "questionId": "2016_AMC_12B_Q15",
+    "derivedAnswer": "D (729)",
+    "answerStatus": "matches",
+    "answerReason": "The sum of vertex products factors into the product of the three opposite-face pair sums. These are positive integers totaling 27, so their product is at most 9³=729, attained by opposite pairs (2,7), (3,6), and (4,5).",
+    "methods": [
+      {
+        "id": "integer-pair-sum-balancing",
+        "label": "Factor the sum and balance the factors",
+        "explanation": "Group the faces into their three opposite pairs, with labels \\((a,a')\\), \\((b,b')\\), and \\((c,c')\\). Each vertex includes exactly one face from each pair, and each of the eight possible choices gives one vertex. Consequently, distributing the product shows that the desired sum is\n\\[\nT=(a+a')(b+b')(c+c').\n\\]\nLet these three pair sums be \\(u,v,w\\). They are positive integers, and\n\\[\nu+v+w=2+3+4+5+6+7=27.\n\\]\nTo obtain a universal upper bound, consider all positive integer triples with sum \\(27\\), including triples that might not arise from face labels. There are finitely many, so a largest product exists. If two entries at a maximizing triple satisfy \\(u\\ge v+2\\), replacing them by \\(u-1\\) and \\(v+1\\) preserves their sum but increases their product, because\n\\[\n(u-1)(v+1)-uv=u-v-1>0.\n\\]\nThe third factor is positive, so the triple's product also increases, a contradiction. Thus the entries at a maximum differ by at most \\(1\\). Since their sum is \\(27\\), all three must be \\(9\\). Hence\n\\[\nT\\le9^3=729.\n\\]\nThis bound is attainable on the cube: place \\(2\\) opposite \\(7\\), \\(3\\) opposite \\(6\\), and \\(4\\) opposite \\(5\\). Every opposite pair then sums to \\(9\\).\n\nThe greatest possible sum is \\(\\boxed{729}\\), choice \\(\\mathrm{D}\\).",
+        "nodeIds": [
+          "math:extremal-principle",
+          "cnm_h019"
+        ],
+        "prerequisiteIds": [
+          "cnm_p160",
+          "cnm_146",
+          "cnm_h018"
+        ],
+        "levelReason": "The proof uses cube incidence, polynomial distribution, and an elementary integer-balancing comparison."
+      }
+    ],
+    "assessedIds": [
+      "math:extremal-principle"
+    ],
+    "supportIds": [
+      "cnm_p160",
+      "cnm_146"
+    ],
+    "annotationRationale": "The task requires both a bound valid for every labeling and a labeling attaining it. Cube geometry and polynomial expansion produce the opposite-pair factorization. The method then compares products by subtraction; its relaxation to all positive integer triples is explicitly justified before constructing a feasible maximizing labeling.",
+    "needsNewNodes": [],
+    "limitations": []
+  },
+  "review": {
+    "questionId": "2016_AMC_12B_Q15",
+    "decision": "accept",
+    "mathematicalCheck": "Each vertex selects exactly one face from each opposite pair, so the eight products sum to the product of the three pair sums. These positive integers total 27. The stated balancing comparison proves their product is at most \\(9^3=729\\), attained by opposite pairs (2,7), (3,6), and (4,5).",
+    "levelCheck": "Cube incidence, distribution, and the finite balancing argument are elementary and fully explained.",
+    "methodDistinctness": "One complete method is sufficient.",
+    "annotationCheck": "The extremal target includes both a universal bound and an attaining construction. Cube structure, polynomial multiplication, and comparison by subtraction fit the actual reasoning.",
+    "issues": []
+  },
+  "author": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "reviewer": {
+    "model": "gpt-6.1-sol",
+    "effort": "xhigh"
+  },
+  "annotationStatus": "applied",
+  "methodRouteIds": {
+    "integer-pair-sum-balancing": "solution:integer-pair-sum-balancing:ebbd57b55f6a"
+  },
+  "modelSelectionEvidence": "Model and effort were requested explicitly on separate fresh SDK threads; the runtime receipt does not expose a separate returned-model field.",
+  "origin": {
+    "kind": "project_generated_review_projection",
+    "acceptedReceiptSHA256": "00d7b73ded41bb6f7186a4a82dddeff885b265d4e55ee2a9f277eb0d96707f25",
+    "acceptedAt": "2026-11-07T10:53:34.740483+00:00",
+    "inputHash": "2c6ba1f691c85473ba4fe968600eb13b5b55045511102d20f313e6e831c296b5",
+    "authorInputHash": "f11d5de56ca288a888febe37bc4285e31c6295242cd3c24a6db0b611ff3bb304",
+    "reviewInputHash": "48f8328c3eaa6d9c630cf0480a07e5ef530aff49480f2b7bedebad02ae6aaa2d",
+    "authorResponseHash": "e488555e5a20d8d6b7c565d2425e7f7c95d9f60b3487e48b6c69f4fa6f9ab021",
+    "reviewerResponseHash": "c46e39a08692c848a3b615960974fa6fd8ab8d56e10e799b529903add94b82a1",
+    "catalogHash": "1b22ad2994f3e92eb89874bccb447a190bc667c800c5aa6ddd3afe7f0b4d465e",
+    "styleHash": "22aeb9b0a5338b79c23cc42386802aa056c04a413b1af68a00777c1341c8d3df",
+    "contractHash": "3a18a0a2b44adeb710fbbf8ea40dee2887926624db7f1d22e1b6baad9f93af84",
+    "originalSolutionSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "reviewMeaning": "Original AI-authored solution, separately reviewed on a fresh thread of the same model family; not teacher validation or evidence of student learning."
+}
