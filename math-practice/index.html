@@ -1276,11 +1276,37 @@ footer .source-credits p { margin: 0; }
 <script src="practice-feedback.js"></script>
 <script src="curriculum-path.js"></script>
 <script>
-(function () {
+(async function () {
   "use strict";
 
   var LETTERS = ["A", "B", "C", "D", "E"];
   var $ = function (id) { return document.getElementById(id); };
+  var hosted = !!window.MATH_PRACTICE_HOSTED;
+  var hostedBanks = [];
+  if (hosted) {
+    var settingsLink = document.querySelector('.connection-settings');
+    settingsLink.textContent = 'Set up the local app for AI feedback and recording';
+    settingsLink.href = 'https://github.com/rqzhu-aide/K-12-math/blob/main/math-practice/README.md#run-locally';
+    settingsLink.target = '_blank'; settingsLink.rel = 'noopener noreferrer';
+    document.querySelector('.connection-status').setAttribute('aria-label', 'Optional connections are available in the local app.');
+    ['decisionStatus', 'speechServiceStatus', 'inferenceStatus'].forEach(function (id) {
+      $(id).disabled = true; $(id).dataset.state = 'idle';
+      $(id).title = 'Available in the local app.';
+    });
+    ['decisionStatusText', 'speechServiceStatusText', 'inferenceStatusText'].forEach(function (id) { $(id).textContent = 'Local app only'; });
+    $('speechHelp').textContent = 'Write your approach. Your answers, thinking and notebook stay in this browser. Recording and AI feedback are available in the local app.';
+    $('openAnswer').placeholder = 'Describe your answer, then compare it with the solution.';
+    $('signalsStatus').textContent = 'Local app only';
+    $('resultsBody').textContent = 'Learning signals and AI feedback are available in the local app.';
+    document.querySelector('.signals-footnote').hidden = true;
+    try { hostedBanks = await window.MathPracticeHosted.ready; }
+    catch (_) {
+      $('poolHint').textContent = 'Practice data could not load. Check your connection and reload this page.';
+      $('beginPractice').disabled = true;
+      $('pathStatus').textContent = 'Practice paths could not load. Reload this page to try again.';
+      return;
+    }
+  }
   var answerTools = window.MathPracticeAnswers;
   var els = {
     thoughts: $("thoughts"), thoughtsSubmit: $("thoughtsSubmit"), thoughtsClear: $("thoughtsClear"),
@@ -1333,9 +1359,9 @@ footer .source-credits p { margin: 0; }
   function publishedBankURL(value) {
     return typeof value === 'string' ? value.replace(/^\.\.\/(amc-bank|cn-math-bank)\//, '../database/$1/') : value;
   }
-  var BANKS = [window.CN_MATH_BANK, window.AMC_BANK].concat(customBanks).filter(function (b) { return b && Array.isArray(b.questions) && b.questions.length; });
+  var BANKS = (hosted ? hostedBanks : [window.CN_MATH_BANK, window.AMC_BANK].concat(customBanks)).filter(function (b) { return b && Array.isArray(b.questions) && b.questions.length; });
   var BANK = BANKS[0] || { id: 'cn-math', questions: [] };
-  function usesGradeNavigation(bank) { return bank !== window.AMC_BANK; }
+  function usesGradeNavigation(bank) { return bank.id !== 'amc'; }
   var cnSourceNotice = Array.prototype.slice.call($('sourceNotice').childNodes || []);
   var questionIndex = Object.create(null);
   BANKS.forEach(function (bank) { bank.questions.forEach(function (q) { questionIndex[q.id] = { question: q, bank: bank }; }); });
@@ -1348,6 +1374,7 @@ footer .source-credits p { margin: 0; }
     year: $("selYear"), level: $("selLevel"), batch: $("selBatch"), num: $("selNum"),
     display: $("poolDisplay"), hint: $("poolHint"), count: $("poolCount"), reset: $("poolReset")
   };
+  var poolPrompt = pool.hint.textContent;
 
   var notebookUndoEntry = null;
   function saveNotebook() {
@@ -1371,7 +1398,7 @@ footer .source-credits p { margin: 0; }
       button.type = 'button';
       button.setAttribute('aria-current', currentQuestion && currentQuestion.id === id ? 'true' : 'false');
       button.appendChild(el('span', null, (entry.saved ? 'Saved for another look' : 'Recent work') + (entry.submissions ? ' · ' + entry.submissions + (entry.submissions === 1 ? ' approach submitted' : ' approaches submitted') : ' · Draft')));
-      button.addEventListener('click', function () { goToQuestion(q); focusQuestion(); });
+      button.addEventListener('click', function () { goToQuestion(q).then(focusQuestion); });
       var remove = el('button', 'notebook-remove');
       remove.type = 'button';
       remove.setAttribute('aria-label', 'Remove ' + questionTitle(q) + ' from notebook');
@@ -1435,16 +1462,18 @@ footer .source-credits p { margin: 0; }
     pool.level.value = q.level; fillYearOptions();
     pool.year.value = String(usesGradeNavigation(BANK) ? q.grade : q.year); fillBatches();
     pool.batch.value = q.batch; fillNums();
-    pool.num.value = String(q.number); loadQuestion();
+    pool.num.value = String(q.number); var loaded = loadQuestion();
     $('problemPicker').open = false;
+    return loaded;
   }
   function moveProblem(step) {
     if (!currentQuestion) return;
     var group = qsIn(pool.level.value, +pool.year.value, pool.batch.value).slice().sort(function (a,b) { return a.number - b.number; });
     var index = group.findIndex(function (q) { return q.id === currentQuestion.id; });
-    if (group[index + step]) { goToQuestion(group[index + step]); pool.display.scrollIntoView({block: 'start'}); }
+    if (group[index + step]) goToQuestion(group[index + step]).then(function (question) { if (question) pool.display.scrollIntoView({block: 'start'}); });
   }
-  function focusQuestion() {
+  function focusQuestion(question) {
+    if (!question || currentQuestion !== question) return;
     pool.display.tabIndex = -1;
     pool.display.focus();
   }
@@ -1461,7 +1490,7 @@ footer .source-credits p { margin: 0; }
   $('beginPractice').addEventListener('click', function () {
     var candidates = BANK.questions.filter(function (q) { return q.level === pool.level.value; }).slice();
     candidates.sort(function (a,b) { return (b.year || 0) - (a.year || 0) || a.number - b.number; });
-    if (candidates[0]) { goToQuestion(candidates[0]); focusQuestion(); }
+    if (candidates[0]) goToQuestion(candidates[0]).then(focusQuestion);
   });
 
   function setOptions(sel, items, placeholder) {
@@ -1500,6 +1529,7 @@ footer .source-credits p { margin: 0; }
     els.announcement.textContent = "";
   }
   function clearQuestion() {
+    questionLoadSerial += 1;
     saveAttempt();
     cancelRun();
     if (speechInput) speechInput.reset();
@@ -1516,6 +1546,7 @@ footer .source-credits p { margin: 0; }
     pool.display.hidden = true;
     pool.display.replaceChildren();
     pool.hint.hidden = false;
+    pool.hint.textContent = poolPrompt;
     emptyResults();
     updateChips();
     updatePracticeTools();
@@ -1642,7 +1673,7 @@ footer .source-credits p { margin: 0; }
     img.alt = source && source.alt || (selectable ? (choice ? "Choice " + choice[1] : "Figure for this choice") : choice ? "Choice " + choice[1] + ". Open figure at full size." : "Problem figure. Open at full size.");
     img.loading = "lazy";
     img.addEventListener("error", function () {
-      wrap.replaceChildren(el("span", "fig-missing", "Figure unavailable. Check the local question bank files."));
+      wrap.replaceChildren(el("span", "fig-missing", hosted ? "Figure could not load. Check your connection and try opening this problem again." : "Figure unavailable. Check the local question bank files."));
     });
     wrap.appendChild(img);
     return wrap;
@@ -1674,7 +1705,7 @@ footer .source-credits p { margin: 0; }
       : q.responseType && q.responseType !== 'choice' ? (typeof attempt.answer === 'string' ? attempt.answer : '') : Object.prototype.hasOwnProperty.call(q.choices || {}, attempt.answer) ? attempt.answer : null;
     buildAnswerButtons(q);
     emptyResults();
-    $("figureNotice").hidden = !hasFigures(q);
+    $("figureNotice").hidden = hosted || !hasFigures(q);
     if (feedback) {
       feedback.restoreTurn(attempt.tutorContext, !!(answerTools.hasAnswer(attempt.answer) || attempt.thoughts || notebook[q.id] && notebook[q.id].last));
       feedback.restore(attempt.originalSpeech);
@@ -1748,6 +1779,11 @@ footer .source-credits p { margin: 0; }
     pool.display.replaceChildren(box);
     pool.display.hidden = false;
     typeset(box);
+    if (hosted && location.protocol !== 'file:') {
+      var questionURL = new URL(location.href);
+      questionURL.searchParams.set('problem', q.id);
+      history.replaceState(null, '', questionURL.href);
+    }
   }
 
   /* ---------- solution window ---------- */
@@ -1845,8 +1881,8 @@ footer .source-credits p { margin: 0; }
     var sol = methods ? written.map(function(method){return method.explanation;}).join('\n\n') : q.solution || "";
     // Presentation only: preserve the reviewed solution bytes and their hashes.
     var displaySol = displaySolution(sol);
-    var amcSolutionOmitted = !sol && questionIndex[q.id].bank === window.AMC_BANK;
-    var officialSolutionURL = questionIndex[q.id].bank === window.AMC_BANK && officialBookletPage(q.officialSolution);
+    var amcSolutionOmitted = !sol && questionIndex[q.id].bank.id === 'amc';
+    var officialSolutionURL = questionIndex[q.id].bank.id === 'amc' && officialBookletPage(q.officialSolution);
     var solutionMessage = amcSolutionOmitted ? "A worked solution for this problem is not included." : "No solution is available for this question.";
     if (officialSolutionURL) solutionMessage = "Official MAA solutions are available in the original booklet.";
     if (methods && written.length) {
@@ -1947,10 +1983,25 @@ footer .source-credits p { margin: 0; }
     els.thoughts.focus();
   });
 
+  var questionLoadSerial = 0;
   function loadQuestion() {
     var q = currentQ();
-    if (q) renderQuestion(q);
-    else clearQuestion();
+    if (!q) { clearQuestion(); return Promise.resolve(null); }
+    if (!hosted || typeof q.question === 'string') { renderQuestion(q); return Promise.resolve(q); }
+    clearQuestion();
+    var serial = ++questionLoadSerial;
+    pool.hint.textContent = 'Loading problem…';
+    return window.MathPracticeHosted.question(q).then(function (question) {
+      if (serial !== questionLoadSerial || currentQ() !== q) return;
+      Object.assign(q, question);
+      renderQuestion(q);
+      return q;
+    }).catch(function (error) {
+      if (serial !== questionLoadSerial) return;
+      pool.hint.textContent = error.message + ' ';
+      var retry = el('button', 'ghost', 'Try again');
+      retry.type = 'button'; retry.addEventListener('click', loadQuestion); pool.hint.appendChild(retry);
+    });
   }
 
   function initPool() {
@@ -2009,7 +2060,8 @@ footer .source-credits p { margin: 0; }
       }
     }
     notice.hidden = false;
-    pool.hint.textContent = cn ? 'Explore a curriculum topic, or start with a problem below.' : curriculum ? 'Explore a topic, or start with a problem below.' : 'Start with an AMC 8 problem, or browse the collection above.';
+    poolPrompt = cn ? 'Explore a curriculum topic, or start with a problem below.' : curriculum ? 'Explore a topic, or start with a problem below.' : 'Start with an AMC 8 problem, or browse the collection above.';
+    pool.hint.textContent = poolPrompt;
   }
   function httpURL(value) {
     try { var url = new URL(value); return url.protocol === 'http:' || url.protocol === 'https:' ? url.href : null; }
@@ -2048,6 +2100,14 @@ footer .source-credits p { margin: 0; }
   function ping(role) {
     var connection = connections[role];
     if (connection.pending) return connection.pending;
+    if (hosted) {
+      connection.configured = false;
+      setConnection(role, 'idle', 'Local app only', 'Start the local app to use optional model connections.');
+      connection.button.disabled = true;
+      connection.button.setAttribute('aria-label', connection.label + ': Local app only.');
+      connection.button.title = 'Start the local app to use this connection.';
+      return Promise.resolve();
+    }
     if (location.protocol === "file:") {
       connection.configured = false;
       setConnection(role, "idle", "Not configured", "Answer checks and solutions work here. Start the local launcher to add optional model connections in Settings.");
@@ -2073,6 +2133,7 @@ footer .source-credits p { margin: 0; }
     return connection.pending;
   }
   function serviceSettings() {
+    if (hosted) return {decision: false, inference: false, localEvidence: false};
     var reviewed = connections.decision.localEvidenceItems || [];
     return {decision: connections.decision.configured === true, inference: connections.inference.configured === true,
       localEvidence: !!currentQuestion && reviewed.indexOf(currentQuestion.id) >= 0};
@@ -2080,6 +2141,11 @@ footer .source-credits p { margin: 0; }
   function waitServices() { return Promise.all(['decision', 'inference'].map(function (role) { return connections[role].pending; })); }
   function resetSignalsMessage() {
     var configured = connections && connections.decision.configured === true;
+    if (hosted) {
+      els.panelStatus.textContent = 'Local app only';
+      els.resultsBody.replaceChildren(el('p', 'signals-empty', 'Learning signals and AI feedback are available in the local app. Your work on this site stays in this browser.'));
+      return;
+    }
     els.panelStatus.textContent = configured ? 'Ready when you are' : 'Decision model not configured';
     els.resultsBody.replaceChildren(el('p', 'signals-empty', configured ? 'Record your thinking to see learning signals from your original speech.' : 'Add a decision model in Connections to check original speech for learning signals.'));
   }
@@ -2094,7 +2160,7 @@ footer .source-credits p { margin: 0; }
     var saved = saveFailures.draft || saveFailures.notebook ? '' : 'Your work is saved. ';
     if (currentQuestion && window.MathPracticeAnswers.gradingNotice(currentQuestion) !== null) { els.submissionNote.textContent = saved + 'This disputed problem has no score or automatic grading.'; return; }
     var edited = els.thoughts.value.trim() !== lastSubmitted.thoughts || !answerTools.same(selectedAnswer, lastSubmitted.answer);
-    els.submissionNote.textContent = edited ? "You have edited your work. Submit again to update the answer and reasoning checks." : running ? "Answer submitted. Checking your answer and thinking..." : feedback && feedback.mathState === "error" ? saved + "The check is unavailable; submit again to retry." : "Submitted. You can revise your answer or thinking and try again.";
+    els.submissionNote.textContent = edited ? (hosted ? "You have edited your work. Submit again to update your answer check." : "You have edited your work. Submit again to update the answer and reasoning checks.") : running ? (hosted ? "Checking your answer..." : "Answer submitted. Checking your answer and thinking...") : feedback && feedback.mathState === "error" ? saved + "The check is unavailable; submit again to retry." : "Submitted. You can revise your answer or thinking and try again.";
   }
   function cancelRun() {
     if (feedback) feedback.cancelMath();
@@ -2211,7 +2277,7 @@ footer .source-credits p { margin: 0; }
   if (window.MathPracticeCurriculumPath) practicePath = new window.MathPracticeCurriculumPath({
     question: function (id) { return questionIndex[id] && questionIndex[id].question; },
     title: questionTitle,
-    select: function (q) { goToQuestion(q); focusQuestion(); },
+    select: function (q) { goToQuestion(q).then(focusQuestion); },
     changed: function () { if (feedback) feedback.revisionChanged(); saveAttempt(); updateSubmissionNote(); }
   });
   if (location.search) {

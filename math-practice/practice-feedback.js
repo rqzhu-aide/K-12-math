@@ -104,6 +104,7 @@
       if (this.o.graphEvidence) this.o.graphEvidence(value.graphEvidence);
     }
     async post(url, body, controller) {
+      if (window.MATH_PRACTICE_HOSTED) throw new Error('AI feedback is available in the local app.');
       const timer = setTimeout(() => controller.abort(), 155000);
       try {
         const response = await fetch(url, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body), signal: controller.signal});
@@ -114,6 +115,7 @@
       } finally { clearTimeout(timer); }
     }
     services() {
+      if (window.MATH_PRACTICE_HOSTED) return {decision: false, inference: false, localEvidence: false};
       return Object.assign({decision: false, inference: false}, this.o.services ? this.o.services() : {}, this.serviceOverrides);
     }
     async waitServices() { if (this.o.waitServices) await this.o.waitServices(); }
@@ -191,6 +193,11 @@
       this.o.results.replaceChildren(box);
     }
     skipSignals() {
+      if (window.MATH_PRACTICE_HOSTED) {
+        this.o.panel.dataset.state = 'idle'; this.o.panelStatus.textContent = 'Local app only';
+        this.o.results.replaceChildren(this.o.el('p', 'signals-empty', 'Learning signals are available in the local app. Your work stays in this browser.'));
+        return;
+      }
       this.o.panel.dataset.state = 'idle'; this.o.panelStatus.textContent = 'Decision model not configured';
       this.o.results.replaceChildren(this.o.el('p', 'signals-empty', 'Your transcript is saved. Add a decision model in Connections to check original speech for learning signals.'));
     }
@@ -268,7 +275,8 @@
         const services = this.services();
         if (location.protocol === 'file:' || (!services.decision && !services.inference && !services.localEvidence)) {
           this.mathState = 'ready';
-          const message = location.protocol === 'file:' ? 'Start the local launcher and add a model in Connections for reasoning feedback.'
+          const message = window.MATH_PRACTICE_HOSTED ? 'AI reasoning feedback is available in the local app. Your work stays in this browser.'
+            : location.protocol === 'file:' ? 'Start the local launcher and add a model in Connections for reasoning feedback.'
             : 'Add a decision or inference model in Connections for reasoning feedback.';
           this.showUnchecked(message, exactCategory);
           return;

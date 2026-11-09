@@ -74,16 +74,15 @@ def launch(port=8877, open_browser=True, settings_path=None):
                                        cwd=ROOT, stdin=subprocess.DEVNULL, stdout=output, stderr=errors,
                                        creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0,
                                        start_new_session=os.name != 'nt')
-        deadline = time.monotonic() + 15
-        while time.monotonic() < deadline:
+        print('Starting Math Practice. The first launch builds the question index and may take a few minutes.',
+              file=sys.stderr, flush=True)
+        while True:
             running = selected_engine()
             if running is not None:
                 break
             if process.poll() is not None:
                 raise RuntimeError('The local engine could not start. See .local/launcher-errors.log.')
             time.sleep(.2)
-        else:
-            raise RuntimeError('The local engine did not become ready. See .local/launcher-errors.log.')
     # Repeated clicks use the same engine and pick up file edits without a restart.
     request = urllib.request.Request(base + '/api/settings/reload', data=b'{}',
                                      headers={'Content-Type': 'application/json'})

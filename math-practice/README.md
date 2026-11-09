@@ -1,6 +1,6 @@
-# Math Practice UI 2.1.4
+# Math Practice UI 2.2.0
 
-Browse questions, record or type your thinking, and ask for feedback or a hint.
+**[Open Math Practice online](https://rqzhu-aide.github.io/K-12-math/)** to practice all 8,790 questions with worked solutions. Choose **Try a problem** for a starting question, or **Browse** to pick a contest, curriculum topic, or mathematical idea.
 
 | Practice a question | Configure the three model roles |
 |:---:|:---:|
@@ -8,36 +8,19 @@ Browse questions, record or type your thinking, and ask for feedback or a hint.
 
 ## Start practicing
 
-Install **Python 3.11 or newer** for your user or machine. No Python packages or
-model services are needed for ordinary practice.
+The online edition needs only a browser and an internet connection. It downloads a browsing index, then loads each question, its worked methods, and any figures you open. Type your answer and reasoning, submit to check supported answers against the key, or open **Explore solution** to read a method. Drafts and saved problems stay in that browser.
 
-On first start, the server creates its default connection settings and builds the
-local SQLite knowledge database from the bundled source records. A fresh checkout
-does not need an existing `.local/` folder, database file, or private model profile.
+For an app icon, use your browser’s **Install** option where available. On iPhone, open the site in Safari and choose **Share → Add to Home Screen**. New questions still load online.
 
-From this repository's root, run:
+## Run locally
 
-```sh
-python math-practice/runtime/serve_math_practice.py
-```
+Choose the local edition for offline practice, your own question banks, or model-backed features such as recorded thinking and tutor feedback.
 
-Open [Math Practice](http://127.0.0.1:8877/math-practice/). Keep the terminal running.
-On Windows, you can instead double-click **Start Math Practice.cmd** to start the
-server in the background and open practice. If the port is occupied, add
-`--port 8878` to the Python command and use that port in the browser.
-After updating the repository, stop and restart any running Math Practice server
-so it can serve newly added banks and official solution booklets.
+1. Install Python **3.11 or newer** on your computer. [Download Python](https://www.python.org/downloads/)
+2. Download the project ZIP, extract it, and open the **K-12-math-main** folder. [Download the project ZIP](https://github.com/rqzhu-aide/K-12-math/archive/refs/heads/main.zip)
+3. **On Windows**, double-click **Start Math Practice.cmd**. The launcher opens the practice page in your browser. **On macOS or Linux**, open a terminal in the extracted folder and run `python3 math-practice/runtime/serve_math_practice.py`. Keep the terminal open and visit [Math Practice on this computer](http://127.0.0.1:8877/math-practice/).
 
-Choose **Try a problem** or browse by level, unit, and topic. Enter an answer,
-write your thinking, and submit. Without models, known answers are checked
-locally; reasoning and unfamiliar symbolic or open answers are not automatically
-judged. Add some thinking to open the answer and available solution. Drafts and your notebook
-stay in the browser. Opening `math-practice/index.html` directly also supports
-practice without model services; microphone input needs the local server.
-
-In **Explore solution**, each worked method lists its author or source. Links under
-**References consulted** let you compare the method with the explanations used to
-develop or check it.
+The first launch builds a search index from the included banks and can take a few minutes. Basic practice uses Python’s standard library. To connect a tutor, follow the steps below.
 
 ## Use your own question bank
 
@@ -73,16 +56,16 @@ for conversion details and answer-checking limits.
 
 ## Optional AI connections
 
-Open **Settings → Connection settings** to choose a model for each task. For
-example, you can connect your OpenAI account for math reasoning and feedback,
-and use local models for voice to text and sentiment analysis. With a custom API,
-enter the service URL and model name, and a key if the service requires one.
-You can leave any role unconfigured. Existing connections load into their tabs.
+AI connections run in the **local edition**. The public GitHub Pages site provides answer-key checks and worked solutions. The Python server on your computer handles model requests, API keys, and ChatGPT sign-in. [OpenAI API authentication](https://developers.openai.com/api/reference/overview#authentication)
 
-Use **Test All Connections** to check the configured features before saving.
-Each colored dot means that tab passed its sample task. If a dot is gray, open
-the matching tab to see its status. Tests use synthetic samples, including a
-short silent recording, and may use API credits. Ordinary practice needs no API key.
+Open the local app’s **Settings → Connection settings → Math reasoning & feedback** and choose how to connect.
+
+| Connection | Steps |
+|---|---|
+| **ChatGPT plan** | Install the shared sign-in dependency with `python -m pip install --user "PyJWT[crypto]>=2.10,<3"` (use `python3` on macOS or Linux). Choose **Use a ChatGPT plan → Continue with ChatGPT**. Sign in to an eligible account, return to the app, and choose a model. [OpenAI local-app sign-in guide](https://developers.openai.com/siwc/token-sharing-open-source/sign-in) |
+| **OpenAI API key** | In the custom API form, enter `https://api.openai.com/v1` under **URL**, paste your own project key under **API Key**, and enter the name of a Chat Completions model your API project can use. [Create an OpenAI API key](https://platform.openai.com/api-keys) |
+
+Choose **Test Connection**, then **Save Settings**. A successful math test returns a tutor review. Tests send a small sample and use the selected API or plan. You can leave the other two roles blank or connect your own models below.
 
 ### Separate and local connections
 
@@ -117,17 +100,7 @@ Figures with even-odd clipping also use an existing system or user installation 
 Chrome, Chromium, or Edge. This preserves white holes and overlapping outlines in
 the image sent to the tutor. The app does not download a browser.
 
-In the math tab, choose **Use a ChatGPT plan** to connect an eligible plan.
-**Continue with ChatGPT** opens OpenAI's sign-in page. After granting access,
-choose a model, run **Test Connection**, then **Save Settings**. A passing
-math test means the model returned a valid text tutor review. Figure
-questions also require image support. Use **Manage usage** to check plan limits,
-or **Use custom API** to switch back. Voice to text and sentiment analysis use their own endpoints.
-[OpenAI's local-app sign-in guide](https://developers.openai.com/siwc/token-sharing-open-source)
-
-ChatGPT sign-in uses the shared Python package `PyJWT[crypto]`. Install it once
-with `python -m pip install --user "PyJWT[crypto]>=2.10,<3"`. Account credentials
-are stored separately from the practice configuration, in the app's user-data
+ChatGPT plan credentials are stored in the app’s user-data
 directory. Existing **Codex account** connections continue to use the user's
 Codex installation, login, and shared `openai-codex` Python package.
 
@@ -159,3 +132,51 @@ For an existing Codex account, use `inference.provider: codex`
 with its model and effort; account credentials remain in the existing user-wide
 sign-in. Private profiles and `local-service/` are Git-ignored. A launcher will not
 reuse a running server with a different profile; choose another port or restart it.
+
+## Updating the hosted site
+
+The hosted edition is published from the root of the `gh-pages` branch. Run these
+PowerShell commands from the repository root with shared installations of Python
+3.11 or newer, Node.js, and Git. Each update uses a new output folder outside
+the checkout.
+
+```powershell
+node --test scripts/test_hosted_runtime.js
+if ($LASTEXITCODE -ne 0) { throw 'Hosted practice tests failed.' }
+$pagesOutput = Join-Path (Split-Path -Parent $PWD.Path) ("K-12-math-pages-" + (Get-Date -Format yyyyMMdd-HHmmss))
+$pagesWorktree = "$pagesOutput-branch"
+python scripts/build_pages.py --output $pagesOutput
+if ($LASTEXITCODE -ne 0) { throw 'The site export failed.' }
+```
+
+The export validates the public question and graph bindings, then writes the app,
+browsing catalogs, individual questions, practice links, figures, and source
+notices. Preview or inspect that folder before publishing. The exporter requires
+an empty output folder and leaves the source checkout unchanged.
+
+Prepare the update in a separate worktree of the published branch. The `git rm`
+command clears the previously tracked website files in that worktree so that the
+published branch also reflects removals from the collection.
+
+```powershell
+git fetch origin gh-pages
+git worktree add --detach $pagesWorktree origin/gh-pages
+if ($LASTEXITCODE -ne 0) { throw 'Could not prepare the deployment worktree.' }
+git -C $pagesWorktree rm -qr --ignore-unmatch .
+Get-ChildItem -LiteralPath $pagesOutput -Force | Copy-Item -Destination $pagesWorktree -Recurse -Force
+git -C $pagesWorktree add --all
+git -C $pagesWorktree diff --cached --stat
+```
+
+After reviewing the changes, publish the commit and remove the temporary worktree.
+
+```powershell
+git -C $pagesWorktree commit -m "Update hosted Math Practice"
+git -C $pagesWorktree push origin HEAD:gh-pages
+if ($LASTEXITCODE -ne 0) { throw 'Push failed. The worktree is available for retry.' }
+git worktree remove $pagesWorktree
+```
+
+In GitHub **Settings → Pages**, the source is **Deploy from a branch**, with
+`gh-pages` and **/(root)** selected. GitHub publishes each update to that branch. Check the published
+[Math Practice site](https://rqzhu-aide.github.io/K-12-math/) after deployment.

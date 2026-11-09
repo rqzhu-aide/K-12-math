@@ -39,7 +39,7 @@
       this.sync();
     }
     busy() { return ['preparing', 'recording', 'stopping', 'transcribing'].includes(this.state) || !!this.transcript; }
-    configured() { return !!(this.options.isConfigured && this.options.isConfigured()); }
+    configured() { return !window.MATH_PRACTICE_HOSTED && !!(this.options.isConfigured && this.options.isConfigured()); }
     sync(message) {
       const o = this.options;
       o.record.disabled = !this.configured() || !o.isEnabled() || o.isAssessing() || !['idle', 'recording', 'error', 'ready'].includes(this.state) || !!this.transcript;
@@ -59,6 +59,11 @@
       else if (!o.isEnabled()) o.status.textContent = '';
       else if (this.connectionMissing && this.configured()) o.status.textContent = '';
       if (o.isEnabled() && !this.configured()) o.status.textContent = 'Speech is not configured. You can type your thinking or add a speech connection in Settings.';
+      if (window.MATH_PRACTICE_HOSTED) {
+        o.recordLabel.textContent = 'Recording: local app only';
+        o.record.title = 'Recording is available in the local app. You can type your thinking here.';
+        o.status.textContent = '';
+      }
       this.connectionMissing = !this.configured();
       o.onState();
     }

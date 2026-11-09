@@ -3,7 +3,9 @@
 [![Knowledge graph 1.0.0](https://img.shields.io/badge/Knowledge_graph-1.0.0-245984)](database/knowledge-graph/source/metadata.json)
 [![CN bank 2.0.0](https://img.shields.io/badge/CN_bank-2.0.0-427354)](database/cn-math-bank/VERSION)
 [![AMC bank 2.7.0](https://img.shields.io/badge/AMC_bank-2.7.0-996532)](database/amc-bank/VERSION)
-[![Math Practice UI 2.1.4](https://img.shields.io/badge/Math_Practice_UI-2.1.4-625395)](math-practice/VERSION)
+[![Math Practice UI 2.2.0](https://img.shields.io/badge/Math_Practice_UI-2.2.0-625395)](math-practice/VERSION)
+
+**[Open Math Practice online](https://rqzhu-aide.github.io/K-12-math/)** to browse all 8,790 questions. The site loads the question you choose. No installation or account is needed.
 
 K-12-math is a mathematics study collection with **936 knowledge graph nodes (knowledge items), 3,355 Chinese curriculum questions, and 5,435 AMC questions**. Students can follow the Chinese curriculum, browse US Common Core standards, or explore concepts through the grade-independent **ailleo** map. A question can connect to several concepts, and different solution methods can use different sets of concepts.
 
@@ -14,7 +16,7 @@ K-12-math is a mathematics study collection with **936 knowledge graph nodes (kn
 | [Mathematics knowledge graph](database/knowledge-graph/) | 1.0.0 | Connects 936 concepts through 1,634 accepted relationships and links questions to the concepts they assess or use in a solution. |
 | [Chinese curriculum question bank](database/cn-math-bank/) | 2.0.0 | Contains 3,355 questions in English with answers and worked solutions, alongside the original Chinese material. |
 | [AMC question bank](database/amc-bank/) | 2.7.0 | Contains 5,435 questions from 195 competition papers, each with an answer key and a worked solution. |
-| [Math Practice UI](math-practice/) | 2.1.4 | Runs locally so students can browse either bank, explain their thinking, and practice with optional model feedback. |
+| [Math Practice UI](math-practice/) | 2.2.0 | Serves both question banks online and runs locally with optional voice input and AI tutoring. |
 
 ## Question counts
 
@@ -32,19 +34,15 @@ For 8,780 questions, the annotation identifies an assessed concept or a solution
 
 ## Practice with the collection
 
-With Python 3.11 or newer installed, run this command from the repository root. On Windows, you can also use [Start Math Practice.cmd](<Start Math Practice.cmd>).
+**Online practice.** Choose **Try a problem** to start immediately, or **Browse** to pick a contest, curriculum topic, or concept. Enter your answer and use **Explore solution** to read the worked methods. Your notebook stays in that browser. [Open Math Practice](https://rqzhu-aide.github.io/K-12-math/)
 
-```sh
-python math-practice/runtime/serve_math_practice.py
-```
-
-Open [Math Practice on your computer](http://127.0.0.1:8877/math-practice/). Choose a map or a question bank, open a problem, and enter an answer. Browsing, answer-key checks, and stored solutions work offline.
+**Local practice.** For offline access, voice transcription, or AI feedback using your own model connections, download and extract the repository ZIP and install Python 3.11 or newer. On Windows, double-click **Start Math Practice.cmd** in the extracted folder. On macOS or Linux, run `python3 math-practice/runtime/serve_math_practice.py` from that folder. [Download ZIP](https://github.com/rqzhu-aide/K-12-math/archive/refs/heads/main.zip) · [Local setup instructions](math-practice/README.md#run-locally)
 
 | 1. Practice a question | 2. Choose the model for each task |
 |:---:|:---:|
 | [![Question page with the problem, answer controls, and space to explain the solution](math-practice/images/question-page.png)](math-practice/images/question-page.png) | [![API connection settings showing math reasoning and feedback, voice to text, and sentiment analysis](math-practice/images/model-settings.png)](math-practice/images/model-settings.png) |
 
-Students can type their reasoning or record it, edit the transcript, and submit it with their answer. In **Settings → Connection settings**, each of three optional roles can use its own provider. For example, use an OpenAI account for math and local models for the other two:
+In the local edition, students can record their reasoning, edit the transcript, and submit it with their answer. In **Settings → Connection settings**, each of three optional roles can use its own provider. For example, use an OpenAI account for math and local models for the other two.
 
 - **Math reasoning and feedback** checks the submitted answer and explanation together. If either has a problem, the tutor explains where and can offer a hint.
 - **Voice to text** transcribes the recording into a draft the student can edit.

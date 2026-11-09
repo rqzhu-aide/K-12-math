@@ -76,7 +76,9 @@
       this.n.pathConceptLabel.textContent = layer === 'ailleo' ? 'Mathematical concept' : layer === 'CN' ? 'Chinese curriculum concept' : 'Common Core standard';
       if (location.protocol === 'file:') { this.status('Start the local launcher to browse practice paths. The question bank below still works.'); return; }
       try {
-        const data = await this.get('/api/knowledge/browse?layer=' + encodeURIComponent(layer));
+        const data = window.MATH_PRACTICE_HOSTED
+          ? await window.MathPracticeHosted.browse(layer)
+          : await this.get('/api/knowledge/browse?layer=' + encodeURIComponent(layer));
         if (serial !== this.loadSerial || layer !== this.layer()) return;
         this.nodes = (data.nodes || []).slice().sort((a,b) => this.label(a).localeCompare(this.label(b), undefined, {numeric: true}));
         const previous = this.state.nodeId;
@@ -91,7 +93,9 @@
       const serial = ++this.serial; this.n.pathResults.replaceChildren(); this.n.pathFind.disabled = true; this.status('Finding linked practice…');
       try {
         const key = layer === 'ailleo' ? 'nodeId' : 'sourceNodeId';
-        const data = await this.get('/api/knowledge/practice?layer=' + encodeURIComponent(layer) + '&' + key + '=' + encodeURIComponent(id) + (offset ? '&offset=' + offset : ''));
+        const data = window.MATH_PRACTICE_HOSTED
+          ? await window.MathPracticeHosted.practice(layer, this.nodes.find(node => node.id === id), offset)
+          : await this.get('/api/knowledge/practice?layer=' + encodeURIComponent(layer) + '&' + key + '=' + encodeURIComponent(id) + (offset ? '&offset=' + offset : ''));
         if (serial !== this.serial || layer !== this.layer()) return;
         if (offset && Number.isInteger(data.total) && offset >= data.total) return this.find(0);
         const paged = data.total > PAGE_SIZE;
