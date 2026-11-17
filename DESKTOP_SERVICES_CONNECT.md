@@ -11,13 +11,12 @@ The desktop supplies only these optional, free services:
 - Speech-to-text: audio becomes a transcript the learner can review and edit.
 - D3: the original transcript is assessed for confidence, reasoning clarity, and engagement. These are model observations, not a mathematics grade or a psychological diagnosis.
 
-The math tutor is separate. The learner uses their own provider URL/API key, or their own ChatGPT account through a helper on their own computer. **Do not add a tutor proxy to the operator gateway. Do not receive or store tutor API keys, account tokens, tutor prompts, or tutor replies.** The learner's ChatGPT helper is not your desktop gateway.
+The math tutor is separate. The current website connects directly to the learner's own API provider using their URL, API key, and model. ChatGPT account sign-in is marked **Forthcoming** and is unavailable online in this release. **Do not add a tutor proxy to the operator gateway. Do not receive or store tutor API keys, account tokens, tutor prompts, or tutor replies.**
 
 ```text
 Browser at math-practice.ailleo.net
   |
   +-- Math tutor --> learner's own API provider
-  |              or learner's local ChatGPT helper --> OpenAI
   |
   +-- Optional speech / D3 --> public HTTPS API hostname
                                --> Cloudflare Tunnel

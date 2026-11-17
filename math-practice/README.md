@@ -17,9 +17,9 @@ For an app icon, use your browser’s **Install** option where available. On iPh
 Open **Settings → Model settings**. Settings opens over the current problem, so your draft and any pending response remain in place.
 
 - **Custom API:** enter your own OpenAI-compatible API base URL, API key if required, and model. Save and test the connection. Requests go directly from the browser to that provider. The provider must allow browser requests from this site (CORS). A successful text test does not verify image support; choose a model that can read images for figure questions.
-- **ChatGPT account:** download the helper from Settings, extract it and run it on the same computer as your browser. Follow [the helper setup guide](TUTOR_COMPANION.md) to pair, sign in, choose a model and test. This uses your own eligible account and plan permission. Account tokens remain in protected storage on your device.
+- **ChatGPT account: Forthcoming.** Online sign-in is not available in this release.
 
-API keys and helper pairing keys remain in the current browser tab session, including its settings frame. Nonsecret preferences can persist between visits. Provider charges and data-use policies apply. Your tutor requests do not pass through the site operator's desktop.
+API keys remain in the current browser tab session, including its settings frame. Nonsecret preferences can persist between visits. Provider charges and data-use policies apply. Your tutor requests do not pass through the site operator's desktop.
 
 Ailleo speech-to-text and D3 are separate optional services. They remain **Not connected** until their public gateway and frontend adapter are ready. The desktop programmer's remaining work is in [the service connection handoff](../DESKTOP_SERVICES_CONNECT.md).
 
@@ -67,7 +67,7 @@ for conversion details and answer-checking limits.
 
 ## Optional AI connections
 
-AI connections run in the **local edition**. The public GitHub Pages site provides answer-key checks and worked solutions. The Python server on your computer handles model requests, API keys, and ChatGPT sign-in. [OpenAI API authentication](https://developers.openai.com/api/reference/overview#authentication)
+The connections below apply to the **local edition**. For the public website, use the [online custom API setup](#connect-your-tutor-online); online ChatGPT sign-in is forthcoming. The local Python server on your computer handles model requests, API keys, and ChatGPT sign-in. [OpenAI API authentication](https://developers.openai.com/api/reference/overview#authentication)
 
 Open the local app’s **Settings → Connection settings → Math reasoning & feedback** and choose how to connect.
 
@@ -230,10 +230,10 @@ copied into the exported site so subsequent updates preserve the domain.
 The exporter's `--custom-domain` option can override that source setting.
 
 The publication includes question banks, answer-key checks, available worked solutions,
-browser-local drafts, and independent online tutor settings. The downloadable
-ChatGPT helper contains only selected source files and setup instructions. It
-contains no credentials, private configuration, Python installation, or packages.
-Publishing the site does not activate the separate desktop speech/D3 gateway.
+browser-local drafts, and online tutor settings for the learner's own API URL,
+key, and model. ChatGPT account sign-in is forthcoming; its helper and setup guide
+are not included in the hosted build. Publishing the site does not activate the
+separate desktop speech/D3 gateway.
 
 References: [Squarespace DNS settings](https://support.squarespace.com/hc/en-us/articles/360002101888-Edit-your-domain-s-DNS-records),
 [GitHub Pages custom domains](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).

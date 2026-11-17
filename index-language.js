@@ -6,7 +6,7 @@
     'Model connections': '模型连接', 'Not connected': '尚未连接',
     'Ailleo speech and learning signals are not connected yet.': 'Ailleo 语音转文字和学习信号服务尚未接入。',
     'Write your approach. Connect your own math tutor in Model settings for feedback and hints.': '写下你的思路。在模型设置中连接你自己的数学辅导模型，即可获取反馈和提示。',
-    'Connect your own API or ChatGPT account in Model settings.': '在模型设置中连接你自己的 API 或 ChatGPT 账户。',
+    'Connect your own API in Model settings.': '在模型设置中连接你自己的 API。',
     'Check your tutor connection in Model settings.': '请在模型设置中检查数学辅导连接。',
     'AMC: ': 'AMC：', ' · Adapted material · ': ' · 改编内容 · ',
     'Chinese curriculum: ': '中国课程：', ' · English adaptations · ': ' · 英文改编 · ',

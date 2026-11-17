@@ -38,14 +38,6 @@
       <div class="section-head"><h2 id="inferenceTitle" data-i18n="Math tutor model">Math tutor model</h2><span id="inferenceBadge" class="badge" data-i18n="Not tested">Not tested</span></div>
       <p class="section-description" data-i18n="Reviews your answers and reasoning and offers hints. Questions with figures need a model that can read images.">Reviews your answers and reasoning and offers hints. Questions with figures need a model that can read images.</p>
       <form id="inferenceForm" novalidate>
-        <div class="field">
-          <div id="mathMethodLabel" class="method-label" data-i18n="Connect with">Connect with</div>
-          <div class="method-choices" role="group" aria-labelledby="mathMethodLabel">
-            <button type="button" id="useChatgptPlan" class="method-choice" aria-pressed="false" data-i18n="ChatGPT account">ChatGPT account</button>
-            <button type="button" id="useCustomApi" class="method-choice" aria-pressed="true" data-i18n="Custom API">Custom API</button>
-          </div>
-        </div>
-
         <div id="inferenceApiFields">
           <div class="field">
             <label for="inferenceBases" data-i18n="Provider API URL">Provider API URL</label>
@@ -59,36 +51,6 @@
           </div>
         </div>
 
-        <div id="planAccountFields" hidden>
-          <p class="method-intro" data-i18n="ChatGPT sign-in needs a small helper running on the same computer as this browser. Your ChatGPT credentials stay on your device.">ChatGPT sign-in needs a small helper running on the same computer as this browser. Your ChatGPT credentials stay on your device.</p>
-          <ol class="helper-steps">
-            <li><a href="./downloads/math-practice-tutor-companion.zip" download data-i18n="Download the tutor helper">Download the tutor helper</a><span data-i18n=" and extract the ZIP."> and extract the ZIP.</span></li>
-            <li><span data-i18n="Start the helper on this computer and keep its terminal open.">Start the helper on this computer and keep its terminal open.</span><details class="helper-instructions"><summary data-i18n="Start instructions">Start instructions</summary><p data-i18n="The helper uses your system Python installation. Install Python and its packages globally as described in the included README. No runtime is bundled.">The helper uses your system Python installation. Install Python and its packages globally as described in the included README. No runtime is bundled.</p><p><span data-i18n="Windows:">Windows:</span> <code>Start Tutor Companion.cmd</code><br><span data-i18n="macOS / Linux:">macOS / Linux:</span> <code>sh start-tutor-companion.sh</code></p></details></li>
-            <li data-i18n="Paste the pairing key printed by the helper, then connect and sign in.">Paste the pairing key printed by the helper, then connect and sign in.</li>
-          </ol>
-          <div class="field">
-            <label for="companionToken" data-i18n="Helper pairing key">Helper pairing key</label>
-            <input id="companionToken" type="password" autocomplete="new-password" spellcheck="false" maxlength="4096" aria-describedby="pairingHelp">
-            <p id="pairingHelp" class="help" data-i18n="The pairing key is kept only for this tab session. Restarting the helper creates a new key. If your browser asks for local-network access, allow it for this site.">The pairing key is kept only for this tab session. Restarting the helper creates a new key. If your browser asks for local-network access, allow it for this site.</p>
-          </div>
-          <details id="helperAddressDetails" class="helper-address">
-            <summary data-i18n="Helper address">Helper address</summary>
-            <div class="field"><label for="companionUrl" data-i18n="Local helper URL">Local helper URL</label><input id="companionUrl" type="url" inputmode="url" spellcheck="false" autocomplete="off" value="http://127.0.0.1:8879" maxlength="2048"></div>
-          </details>
-          <div class="account-connection" aria-labelledby="planAccountLabel">
-            <div id="planAccountLabel" class="method-label" data-i18n="ChatGPT connection">ChatGPT connection</div>
-            <p id="planAccountStatus" role="status" data-i18n="Connect to the helper to check your ChatGPT sign-in.">Connect to the helper to check your ChatGPT sign-in.</p>
-            <div class="account-actions">
-              <button type="button" class="secondary" id="connectCompanion" data-i18n="Connect helper">Connect helper</button>
-              <button type="button" class="plan-login" id="planLogin" hidden data-oai-siwc-button><img src="vendor/chatgpt-signin-white.svg" alt="" width="20" height="20"><span data-i18n="Continue with ChatGPT">Continue with ChatGPT</span></button>
-              <a id="planLoginLink" class="plan-login login-link" target="_blank" rel="noopener noreferrer" hidden><img src="vendor/chatgpt-signin-white.svg" alt="" width="20" height="20"><span data-i18n="Open ChatGPT sign-in">Open ChatGPT sign-in</span></a>
-              <button type="button" class="method-link" id="planCancel" hidden data-i18n="Cancel sign-in">Cancel sign-in</button>
-              <button type="button" class="method-link" id="planDisconnect" hidden data-i18n="Sign out of helper">Sign out of helper</button>
-              <a id="managePlan" href="https://chatgpt.com/settings/usage" target="_blank" rel="noopener noreferrer" hidden data-i18n="Manage usage">Manage usage</a>
-            </div>
-          </div>
-        </div>
-
         <div class="field model-field">
           <label for="inferenceModel" data-i18n="Model Name">Model Name</label>
           <div class="model-picker"><input id="inferenceModel" type="text" list="inferenceModelNames" placeholder="Your model name" maxlength="200" spellcheck="false" autocomplete="off" data-i18n-placeholder="Your model name" aria-describedby="modelListStatus"><datalist id="inferenceModelNames"></datalist><button type="button" class="secondary" id="fetchModels" data-i18n="Fetch models">Fetch models</button></div>
@@ -99,8 +61,9 @@
           <button type="submit" class="primary" id="saveInference" data-i18n="Save Settings">Save Settings</button>
         </div>
         <p id="inferenceResult" class="result" role="status" tabindex="-1" data-i18n="The test sends a sample answer for a text tutor review.">The test sends a sample answer for a text tutor review.</p>
-        <p class="help" data-i18n="Tests may use API credits or ChatGPT plan usage. A successful text test does not verify image support.">Tests may use API credits or ChatGPT plan usage. A successful text test does not verify image support.</p>
+        <p class="help" data-i18n="Tests may use API credits. A successful text test does not verify image support.">Tests may use API credits. A successful text test does not verify image support.</p>
       </form>
+      <p class="forthcoming-connection"><span data-i18n="ChatGPT login">ChatGPT login</span><span class="badge" data-i18n="Forthcoming">Forthcoming</span></p>
     </section>
 
     <div class="experimental-features" aria-labelledby="experimentalTitle">
@@ -124,7 +87,7 @@
 
     <div class="workflow-note" aria-labelledby="workflowTitle">
       <h2 id="workflowTitle" data-i18n="Your data and connections">Your data and connections</h2>
-      <p data-i18n="API tutor requests go directly to your chosen provider. ChatGPT tutor requests pass through the helper on your computer. The site operator does not provide your math tutor.">API tutor requests go directly to your chosen provider. ChatGPT tutor requests pass through the helper on your computer. The site operator does not provide your math tutor.</p>
+      <p data-i18n="Tutor requests go directly to your chosen API provider. The site operator does not provide your math tutor.">Tutor requests go directly to your chosen API provider. The site operator does not provide your math tutor.</p>
       <p class="help" data-i18n="Opening or saving settings does not run a model. Keep personal information out of your work. Provider data-use policies apply.">Opening or saving settings does not run a model. Keep personal information out of your work. Provider data-use policies apply.</p>
     </div>
   </main>
