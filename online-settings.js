@@ -11,6 +11,30 @@
     'Fetch models': '获取模型列表', 'Enter a model name, or fetch available models.': '输入模型名称，或获取可用模型列表。',
     'Tests may use API credits. A successful text test does not verify image support.': '测试可能消耗 API 额度。文字测试成功并不代表模型支持图片。',
     'Optional Ailleo services are managed by the site operator. You do not need to enter an API key for them.': '可选的 Ailleo 服务由网站运营者管理。你无需为这些服务输入 API 密钥。',
+    'These features send your audio and thinking transcript to Ailleo’s server. With separate permission, transcripts and analysis results may be retained to improve future recommendation models. Raw audio is not retained. Do not include personal information.': '这些功能会将你的音频和思考过程的转录文字发送到 Ailleo 的服务器。经另行许可后，转录文字和分析结果可能会被保留，用于改进未来的推荐模型。原始音频不会被保留。请勿包含个人信息。',
+    'I understand and agree to this processing.': '我理解并同意上述数据处理。',
+    'Sharing data for model improvement is currently off.': '目前未开启用于改进模型的数据共享。',
+    'Use speech-to-text': '使用语音转文字',
+    'Use confidence and sentiment analysis (D3)': '使用信心与情绪分析（D3）',
+    'Agree to the processing notice above to choose this feature. You can turn it off at any time.': '同意上方的数据处理说明后，即可选择此功能。你可以随时关闭。',
+    'Waiting for server connection': '等待服务器连接',
+    'Ailleo’s server is not connected to this website yet. You can save your choice for later.': 'Ailleo 的服务器尚未连接到本网站。你可以先保存选择，待连接后使用。',
+    'Your choice is saved. Ailleo’s server is not connected to this website yet.': '已保存你的选择。Ailleo 的服务器尚未连接到本网站。',
+    'Check connection': '检查连接', 'Checking…': '正在检查…',
+    'Checks service availability without sending your audio or thinking.': '仅检查服务是否可用，不发送你的音频或思考内容。',
+    'Off': '已关闭', 'Service reachable': '服务可连接', 'Unavailable': '暂不可用', 'Connection not checked': '尚未检查连接',
+    'Checking Ailleo’s server. No audio or thinking is sent.': '正在检查 Ailleo 的服务器，不会发送音频或思考内容。',
+    'This feature is off. Turn it on to use Ailleo’s service during practice.': '此功能已关闭。开启后，可在练习中使用 Ailleo 服务。',
+    'The server is reachable. This feature is off.': '服务器可连接。此功能已关闭。',
+    'Ailleo’s server is unavailable. This feature is off. Check connection to try again.': 'Ailleo 的服务器暂不可用。此功能已关闭。请检查连接以重试。',
+    'Your choice is saved. Check the connection before using this feature.': '已保存你的选择。使用此功能前，请先检查连接。',
+    'The server is reachable. This check does not send your thinking or test a recording.': '服务器可连接。此检查不发送你的思考内容，也不测试录音。',
+    'Your choice is saved, but Ailleo’s server is unavailable. Check connection to try again.': '已保存你的选择，但 Ailleo 的服务器暂不可用。请检查连接以重试。',
+    'Optional service settings are saved.': '已保存可选服务设置。',
+    'Processing permission removed. Both optional features are off.': '已撤回数据处理许可。两项可选功能均已关闭。',
+    'Optional service settings could not load. Reload this page to try again.': '无法加载可选服务设置。请重新加载页面后重试。',
+    'Your choice could not be saved. Try again.': '无法保存你的选择，请重试。',
+    'The service connection could not be checked. Try again.': '无法检查服务连接，请重试。',
     'Not connected': '尚未连接',
     'This service will appear when the site operator connects the desktop service to a public address. You can keep using the question bank and your own tutor.': '网站运营者将桌面服务连接到公网地址后，此服务才会开放。在此之前，你仍然可以使用题库和自己的辅导模型。',
     'Tutor requests go directly to your chosen API provider. The site operator does not provide your math tutor.': '辅导请求直接发送给你选择的 API 服务商。数学辅导模型由你自己连接。',
@@ -57,6 +81,83 @@
   };
   function notify() {
     if (window.parent !== window) window.parent.postMessage({type: 'math-practice-settings-updated'}, window.location.origin);
+  }
+  const services = window.MathPracticeServices;
+  const serviceRoles = ['speech', 'decision'];
+  const serviceChecking = {speech: false, decision: false};
+  const serviceErrors = {speech: '', decision: ''};
+  const serviceCheckButton = role => $(role === 'speech' ? 'checkSpeech' : 'checkDecision');
+  function renderServices() {
+    const preferences = services.preferences();
+    $('serviceAcknowledged').checked = preferences.acknowledged === true;
+    for (const role of serviceRoles) {
+      const status = services.status(role);
+      const enabled = preferences[role] === true;
+      const toggle = $(role + 'Enabled');
+      toggle.checked = enabled;
+      toggle.disabled = !preferences.acknowledged && !enabled;
+      $(role + 'ConsentHelp').hidden = preferences.acknowledged === true;
+      const check = serviceCheckButton(role);
+      check.disabled = !status.configured || serviceChecking[role];
+      check.setAttribute('aria-busy', String(serviceChecking[role]));
+      text(check, serviceChecking[role] ? 'Checking…' : 'Check connection');
+      let label, message, state = '';
+      if (!status.configured) {
+        label = 'Waiting for server connection';
+        message = enabled ? 'Your choice is saved. Ailleo’s server is not connected to this website yet.' : 'Ailleo’s server is not connected to this website yet. You can save your choice for later.';
+      } else if (!enabled) {
+        label = 'Off';
+        message = status.available === true ? 'The server is reachable. This feature is off.' : status.available === false ? 'Ailleo’s server is unavailable. This feature is off. Check connection to try again.' : 'This feature is off. Turn it on to use Ailleo’s service during practice.';
+      } else if (serviceChecking[role]) {
+        label = 'Checking…'; message = 'Checking Ailleo’s server. No audio or thinking is sent.';
+      } else if (status.state === 'ready') {
+        label = 'Service reachable'; message = 'The server is reachable. This check does not send your thinking or test a recording.'; state = 'ok';
+      } else if (status.available === false) {
+        label = 'Unavailable'; message = 'Your choice is saved, but Ailleo’s server is unavailable. Check connection to try again.';
+      } else {
+        label = 'Connection not checked'; message = 'Your choice is saved. Check the connection before using this feature.';
+      }
+      say(role + 'Badge', label, state);
+      say(role + 'Status', serviceErrors[role] || message, serviceErrors[role] ? 'error' : '');
+    }
+  }
+  async function checkService(role) {
+    if (serviceChecking[role] || !services.config().configured) return;
+    serviceChecking[role] = true; serviceErrors[role] = ''; renderServices();
+    try { await services.check(role); }
+    catch (error) { serviceErrors[role] = safeMessage(error || new Error(t('The service connection could not be checked. Try again.'))); }
+    finally { serviceChecking[role] = false; renderServices(); notify(); }
+  }
+  function saveServiceChoice(value) {
+    try {
+      services.savePreferences(value);
+      say('servicePreferencesResult', value.acknowledged === false ? 'Processing permission removed. Both optional features are off.' : 'Optional service settings are saved.');
+      for (const role of serviceRoles) serviceErrors[role] = '';
+      renderServices(); notify(); return true;
+    } catch (error) {
+      say('servicePreferencesResult', safeMessage(error || new Error(t('Your choice could not be saved. Try again.'))), 'error');
+      renderServices(); return false;
+    }
+  }
+  try {
+    if (!services) throw new Error();
+    renderServices();
+    $('serviceAcknowledged').addEventListener('change', event => {
+      const acknowledged = event.target.checked;
+      saveServiceChoice(acknowledged ? {acknowledged: true} : {acknowledged: false, speech: false, decision: false});
+    });
+    for (const role of serviceRoles) {
+      $(role + 'Enabled').addEventListener('change', event => {
+        const enabled = event.target.checked;
+        if (enabled && !services.preferences().acknowledged) { renderServices(); return; }
+        if (saveServiceChoice({[role]: enabled}) && enabled) checkService(role);
+      });
+      serviceCheckButton(role).addEventListener('click', () => checkService(role));
+    }
+  } catch (_) {
+    $('serviceAcknowledged').disabled = true;
+    for (const role of serviceRoles) { $(role + 'Enabled').disabled = true; serviceCheckButton(role).disabled = true; }
+    say('servicePreferencesResult', 'Optional service settings could not load. Reload this page to try again.', 'error');
   }
   function badge() {
     say('inferenceBadge', passed === identity() ? 'Text test passed' : snapshot().model ? 'Not tested' : 'Not configured', passed === identity() ? 'ok' : '');

@@ -4,6 +4,9 @@
   if (!window.MathPracticeLanguage) return;
   window.MathPracticeLanguage.register({
     'Model connections': '模型连接', 'Not connected': '尚未连接',
+    'Off': '已关闭', 'On': '已开启', 'Unavailable': '暂不可用', 'Service reachable': '可连接到服务',
+    'Read the acknowledgement and turn on this feature in Model settings.': '请在模型设置中阅读并确认数据处理说明，然后开启此功能。',
+    'Check whether Ailleo’s server is reachable. This does not send your thinking.': '检查是否可连接到 Ailleo 服务器。此操作不会发送你的思路。',
     'Ailleo speech and learning signals are not connected yet.': 'Ailleo 语音转文字和学习信号服务尚未接入。',
     'Write your approach. Connect your own math tutor in Model settings for feedback and hints.': '写下你的思路。在模型设置中连接你自己的数学辅导模型，即可获取反馈和提示。',
     'Connect your own API in Model settings.': '在模型设置中连接你自己的 API。',

@@ -6,6 +6,8 @@
   const attribute = (node, name, source, params) => Language.bindAttribute(node, name, source, params);
   Language.register({
     'Speech service not connected': '语音服务尚未连接',
+    'Speech-to-text is off': '语音转文字已关闭',
+    'Read the acknowledgement and turn on speech-to-text in Model settings. You can also type your thinking.': '请在模型设置中阅读并确认数据处理说明，然后开启语音转文字。你也可以输入思路。',
     'Ailleo speech-to-text is not connected yet. You can type your thinking.': 'Ailleo 语音转文字服务尚未接入。你可以输入思路。',
     'Recording discarded. Your written draft is unchanged.': '录音已丢弃，文字草稿未更改。',
     'Stop and transcribe': '停止并转录', 'Opening microphone…': '正在打开麦克风…', 'Transcribing…': '正在转录…', 'Record thinking': '录下思路',
@@ -71,7 +73,13 @@
       this.sync();
     }
     busy() { return ['preparing', 'recording', 'stopping', 'transcribing'].includes(this.state) || !!this.transcript; }
-    configured() { return !window.MATH_PRACTICE_HOSTED && !!(this.options.isConfigured && this.options.isConfigured()); }
+    configured() {
+      if (window.MATH_PRACTICE_HOSTED) {
+        const service = window.MathPracticeServices && window.MathPracticeServices.status('speech');
+        return !!service && service.configured && service.enabled;
+      }
+      return !!(this.options.isConfigured && this.options.isConfigured());
+    }
     sync(message) {
       const o = this.options;
       o.record.disabled = !this.configured() || !o.isEnabled() || o.isAssessing() || !['idle', 'recording', 'error', 'ready'].includes(this.state) || !!this.transcript;
@@ -91,10 +99,12 @@
       else if (!o.isEnabled()) ui(o.status, '');
       else if (this.connectionMissing && this.configured()) ui(o.status, '');
       if (o.isEnabled() && !this.configured()) ui(o.status, 'Speech is not configured. You can type your thinking or add a speech connection in Settings.');
-      if (window.MATH_PRACTICE_HOSTED) {
-        ui(o.recordLabel, 'Speech service not connected');
-        attribute(o.record, 'title', 'Ailleo speech-to-text is not connected yet. You can type your thinking.');
-        ui(o.status, '');
+      if (window.MATH_PRACTICE_HOSTED && !this.configured()) {
+        const connected = window.MathPracticeServices && window.MathPracticeServices.config().configured;
+        ui(o.recordLabel, connected ? 'Speech-to-text is off' : 'Speech service not connected');
+        const explanation = connected ? 'Read the acknowledgement and turn on speech-to-text in Model settings. You can also type your thinking.' : 'Ailleo speech-to-text is not connected yet. You can type your thinking.';
+        attribute(o.record, 'title', explanation);
+        ui(o.status, o.isEnabled() ? explanation : '');
       }
       this.connectionMissing = !this.configured();
       o.onState();
@@ -199,10 +209,14 @@
       this.state = 'transcribing'; this.sync('Transcribing your recording. Your draft stays editable; review the added text before submitting.');
       const timeout = setTimeout(() => controller.abort(), 135000);
       try {
-        const response = await fetch('/api/transcription', {method: 'POST', headers: {'Content-Type': 'audio/wav'}, body: this.audio, signal: controller.signal});
         let reply;
-        try { reply = JSON.parse(await response.text()); } catch (_) { throw new Error('Transcription returned an unreadable response. Check the local launcher and try again.'); }
-        if (!response.ok) throw new Error(reply && reply.error && reply.error.message || 'Transcription failed. Check the speech connection in Settings, then retry.');
+        if (window.MATH_PRACTICE_HOSTED) {
+          reply = await window.MathPracticeServices.transcribe(this.audio, this.options.question(), {signal: controller.signal, bank: this.options.bank()});
+        } else {
+          const response = await fetch('/api/transcription', {method: 'POST', headers: {'Content-Type': 'audio/wav'}, body: this.audio, signal: controller.signal});
+          try { reply = JSON.parse(await response.text()); } catch (_) { throw new Error('Transcription returned an unreadable response. Check the local launcher and try again.'); }
+          if (!response.ok) throw new Error(reply && reply.error && reply.error.message || 'Transcription failed. Check the speech connection in Settings, then retry.');
+        }
         if (!reply || typeof reply.text !== 'string') throw new Error('The speech service returned no transcript field. Check its API support in Settings.');
         if (serial !== this.serial) return;
         this.transcript = reply.text.trim();

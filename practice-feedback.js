@@ -7,6 +7,10 @@
   const attribute = (node, name, source, params) => Language.bindAttribute(node, name, source, params);
   Language.register({
     'Show a hint': '显示提示', 'Hide hint': '隐藏提示', 'Hint: ': '提示：',
+    'D3 analysis is off': 'D3 分析已关闭',
+    'Read the acknowledgement and turn on D3 in Model settings to analyze your original speech transcript.': '请在模型设置中阅读并确认数据处理说明，然后开启 D3，以分析原始语音转录文字。',
+    'Ailleo speech and learning signals are not connected yet.': 'Ailleo 语音与学习信号服务尚未接入。',
+    'Waiting for server connection': '等待服务器接入',
     'From original speech, before edits': '来自未经编辑的语音转录', 'Reading the original transcript for learning signals...': '正在从原始转录中分析学习信号…',
     'Your original transcript is ready to check. Review its learning signals when ready.': '原始转录已可检查。准备好后可查看学习信号。',
     'Learning signals returned an incomplete result. Try the check again.': '学习信号返回的结果不完整，请重新检查。',
@@ -157,6 +161,7 @@
     async post(url, body, controller) {
       if (window.MATH_PRACTICE_HOSTED) {
         if (window.MathPracticeOnline && ['/api/assessment', '/api/tutor'].includes(url)) return window.MathPracticeOnline.post(url, body, controller, this.submitted && this.submitted.question);
+        if (window.MathPracticeServices && url === '/api/learning-signals') return window.MathPracticeServices.learningSignals({question: this.o.question(), bank: this.bank(), transcript: body.transcript}, {signal: controller.signal});
         throw new Error('AI feedback is available in the local app.');
       }
       const timer = setTimeout(() => controller.abort(), 155000);
@@ -171,6 +176,11 @@
     services() {
       if (window.MATH_PRACTICE_HOSTED) return {decision: false, inference: !!window.MathPracticeOnline && window.MathPracticeOnline.status().configured, localEvidence: false};
       return Object.assign({decision: false, inference: false}, this.o.services ? this.o.services() : {}, this.serviceOverrides);
+    }
+    signalsConfigured() {
+      if (!window.MATH_PRACTICE_HOSTED) return this.services().decision;
+      const service = window.MathPracticeServices && window.MathPracticeServices.status('decision');
+      return !!service && service.configured && service.enabled;
     }
     async waitServices() { if (!window.MATH_PRACTICE_HOSTED && this.o.waitServices) await this.o.waitServices(); }
     updateServices(value) {
@@ -198,7 +208,7 @@
       if (!evidence || typeof evidence.transcript !== 'string' || !evidence.transcript.trim()) return;
       this.evidence = evidence;
       if (this.validSignals(evidence.signals)) this.renderSignals();
-      else if (this.services().decision) this.signalError('Your original transcript is ready to check. Review its learning signals when ready.');
+      else if (this.signalsConfigured()) this.signalError('Your original transcript is ready to check. Review its learning signals when ready.');
       else this.skipSignals();
     }
     recorded(transcript) {
@@ -221,7 +231,7 @@
       if (!q || !evidence) return;
       await this.waitServices();
       if (this.evidence !== evidence || !this.o.question() || this.o.question().id !== q.id) return;
-      if (!this.services().decision) { this.skipSignals(); return; }
+      if (!this.signalsConfigured()) { this.skipSignals(); return; }
       if (this.signalRequest) this.signalRequest.abort();
       const serial = ++this.signalSerial, controller = new AbortController(); this.signalRequest = controller;
       this.o.panel.dataset.state = 'loading'; ui(this.o.panelStatus, 'From original speech, before edits');
@@ -240,7 +250,7 @@
       } finally { if (serial === this.signalSerial) this.signalRequest = null; }
     }
     signalError(message) {
-      if (!this.services().decision) { this.skipSignals(); return; }
+      if (!this.signalsConfigured()) { this.skipSignals(); return; }
       this.o.panel.dataset.state = 'error'; ui(this.o.panelStatus, 'Original speech signals unavailable');
       const box = this.o.el('div', 'signals-error'); box.appendChild(ui(this.o.el('p'), message));
       const retry = ui(this.o.el('button', 'ghost'), 'Retry speech signals'); retry.type = 'button'; retry.addEventListener('click', () => this.checkSignals()); box.appendChild(retry);
@@ -248,8 +258,9 @@
     }
     skipSignals() {
       if (window.MATH_PRACTICE_HOSTED) {
-        this.o.panel.dataset.state = 'idle'; ui(this.o.panelStatus, 'Local app only');
-        this.o.results.replaceChildren(ui(this.o.el('p', 'signals-empty'), 'Learning signals are available in the local app. Your work stays in this browser.'));
+        const connected = window.MathPracticeServices && window.MathPracticeServices.config().configured;
+        this.o.panel.dataset.state = 'idle'; ui(this.o.panelStatus, connected ? 'D3 analysis is off' : 'Waiting for server connection');
+        this.o.results.replaceChildren(ui(this.o.el('p', 'signals-empty'), connected ? 'Read the acknowledgement and turn on D3 in Model settings to analyze your original speech transcript.' : 'Ailleo speech and learning signals are not connected yet.'));
         return;
       }
       this.o.panel.dataset.state = 'idle'; ui(this.o.panelStatus, 'Decision model not configured');

@@ -1352,6 +1352,7 @@ footer .source-credits p { margin: 0; }
 <script src="hosted-config.js"></script>
 <script src="hosted-data.js"></script>
 <script src="online-connections.js"></script>
+<script src="online-services.js"></script>
 <script src="answer-check.js"></script>
 <script src="vendor/katex/katex.min.js"></script>
 <script src="vendor/katex/contrib/auto-render.min.js"></script>
@@ -2172,15 +2173,37 @@ footer .source-credits p { margin: 0; }
     uiText(connection.text, text);
     uiAttribute(connection.button, 'title', function () { return t('{message} Select to check again.', {message: t(message)}); });
   }
-  function ping(role) {
+  function ping(role, check) {
     var connection = connections[role];
     if (connection.pending) return connection.pending;
     if (hosted) {
       connection.configured = false;
       if (role !== 'inference') {
-        setConnection(role, 'idle', 'Not connected', 'Ailleo speech and learning signals are not connected yet.');
-        connection.button.disabled = true;
-        return Promise.resolve();
+        var service = window.MathPracticeServices;
+        function refreshService() {
+          var status = service ? service.status(role) : {configured: false, enabled: false};
+          connection.configured = status.configured && status.enabled;
+          connection.button.disabled = false;
+          setConnection(role, status.available === true && connection.configured ? 'ok' : 'idle',
+            !status.configured ? 'Not connected' : !status.enabled ? 'Off' : status.available === true ? 'Service reachable' : status.available === false ? 'Unavailable' : 'On',
+            !status.configured ? 'Ailleo speech and learning signals are not connected yet.' : !status.enabled ? 'Read the acknowledgement and turn on this feature in Model settings.' : 'Check whether Ailleo’s server is reachable. This does not send your thinking.');
+          if (role === 'speech' && speechInput) {
+            if (!connection.configured && speechInput.busy()) speechInput.reset();
+            speechInput.sync();
+          }
+          if (role === 'decision' && feedback) {
+            if (!connection.configured && feedback.signalRequest) {
+              feedback.signalSerial++; feedback.signalRequest.abort(); feedback.signalRequest = null;
+            }
+            if (!feedback.evidence) resetSignalsMessage();
+            else if (!connection.configured && !feedback.evidence.signals) feedback.skipSignals();
+          }
+        }
+        refreshService();
+        if (check !== true || !connection.configured) return Promise.resolve();
+        setConnection(role, 'checking', 'Checking...', 'Checking the saved connection.');
+        connection.pending = service.check(role).catch(function () {}).finally(function () { connection.pending = null; refreshService(); });
+        return connection.pending;
       }
       connection.button.disabled = false;
       setConnection(role, 'checking', 'Checking...', 'Checking the saved connection.');
@@ -2230,15 +2253,19 @@ footer .source-credits p { margin: 0; }
   function resetSignalsMessage() {
     var configured = connections && connections.decision.configured === true;
     if (hosted) {
-      uiText(els.panelStatus, 'Not connected');
-      els.resultsBody.replaceChildren(uiEl('p', 'signals-empty', 'Ailleo speech and learning signals are not connected yet.'));
+      var available = window.MathPracticeServices && window.MathPracticeServices.config().configured;
+      uiText(els.panelStatus, !available ? 'Not connected' : configured ? 'Ready when you are' : 'D3 analysis is off');
+      els.resultsBody.replaceChildren(uiEl('p', 'signals-empty', !available ? 'Ailleo speech and learning signals are not connected yet.' : configured ? 'Record your thinking to see learning signals from your original speech.' : 'Read the acknowledgement and turn on D3 in Model settings to analyze your original speech transcript.'));
       return;
     }
     uiText(els.panelStatus, configured ? 'Ready when you are' : 'Confidence & sentiment model not configured');
     els.resultsBody.replaceChildren(uiEl('p', 'signals-empty', configured ? 'Record your thinking to see learning signals from your original speech.' : 'Add a confidence and sentiment model in Settings to analyze your original speech transcript.'));
   }
   Object.keys(connections).forEach(function (role) {
-    connections[role].button.addEventListener("click", function () { ping(role); });
+    connections[role].button.addEventListener("click", function () {
+      if (hosted && role !== 'inference' && !connections[role].configured) document.querySelector('.connection-settings').click();
+      else ping(role, true);
+    });
   });
 
   // Keep practice and any pending tutor request alive while changing connections.
@@ -2266,6 +2293,7 @@ footer .source-credits p { margin: 0; }
       if (event.data && event.data.type === 'math-practice-settings-updated') Object.keys(connections).forEach(ping);
     });
     window.addEventListener('math-practice-online-change', function () { if (hosted) ping('inference'); });
+    window.addEventListener('math-practice-services-change', function () { if (hosted) { ping('speech'); ping('decision'); } });
   }
 
   var running = false, lastSubmitted = null, speechInput = null, feedback = null, practicePath = null;
@@ -2381,6 +2409,7 @@ footer .source-credits p { margin: 0; }
   });
   setCollapsed(true);
   speechInput = new window.MathPracticeSpeech({
+    question: function () { return currentQuestion; }, bank: function () { return BANK.id; },
     record: $("speechRecord"), recordLabel: $("speechRecordLabel"), recordTime: $("speechRecordTime"), recordProgress: $("speechRecordProgress"), cancel: $("speechCancel"), retry: $("speechRetry"), status: $("speechStatus"), draft: els.thoughts,
     isEnabled: function () { return !!currentQuestion; },
     isConfigured: function () { return connections.speech.configured === true; },

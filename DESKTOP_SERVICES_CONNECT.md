@@ -1,6 +1,6 @@
 # Connect Ailleo speech-to-text and D3 to the public website
 
-Prepared 2026-11-16 for the desktop programmer. This is the remaining integration work after the online tutor settings update. It builds on `DESKTOP-BACKEND-STATUS-v2.md`; that report describes local tests, not a working public endpoint.
+Prepared 2026-11-16 for the desktop programmer. This is the remaining integration work after the online tutor settings update. It builds on `DESKTOP-BACKEND-STATUS-v2.md`; that report describes local tests, not a working public endpoint. See [the next-step handoff](DESKTOP_PUBLIC_CONNECTION_NEXT.md) for the DNS migration to prepare for owner review.
 
 ## What the website needs
 
@@ -25,11 +25,11 @@ Browser at math-practice.ailleo.net
                                     +-- D3, localhost:9951
 ```
 
-The online tutor update does not activate speech/D3. The site continues to show these services as **Not connected** until the public gateway and the separate frontend adapter pass the checks below. Adding a DNS record alone will not activate them.
+The settings now provide a processing acknowledgement and separate speech/D3 choices. They show **Waiting for server connection** until the public gateway and challenge integration are configured. The browser adapter is implemented against the v2 fixtures, but real public inference remains unverified. Adding a DNS record alone will not activate the services.
 
 ## 1. Publish the gateway, preserving the current websites
 
-Proposed API hostname: **api.math-practice.ailleo.net**. This is a proposal, not a hostname already configured or tested. Return the actual hostname you deploy.
+Proposed API hostname: **api.ailleo.net**, if unused. This replaces the earlier `api.math-practice.ailleo.net` proposal to fit the first-level subdomain coverage of Cloudflare Universal SSL. Neither address is confirmed configured or tested. Return the actual hostname you deploy. See [Cloudflare certificate coverage](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/).
 
 1. Run a named Cloudflare Tunnel on the always-on desktop. Route only the chosen API hostname to `http://127.0.0.1:8878`, with a final catch-all 404 route. Keep the raw model ports private. No router port forwarding is needed for this tunnel design.
 2. Configure the hostname in a Cloudflare-managed DNS zone. A `*.cfargotunnel.com` CNAME alone in an unrelated Squarespace DNS zone does not complete a public Tunnel setup. If `ailleo.net` moves to Cloudflare DNS, the owner must first review a complete copy of its existing DNS records, then change the nameservers at Squarespace. Preserve the Squarespace apex and `www` records, email records, verification records, and `math-practice -> rqzhu-aide.github.io`. The registrar and Squarespace hosting can remain unchanged.
@@ -134,9 +134,9 @@ Document all existing v2 error codes plus the new challenge errors. Never return
 The frontend programmer will:
 
 1. Add the confirmed HTTPS service base and Turnstile public key to the hosted build. These are public configuration, not secrets. They are not active settings in the current build.
-2. Add the optional-service EN/CN notice, processing choices, session issuance/renewal, and error recovery. Keep collection off initially.
-3. Route only speech and D3 calls to the gateway. Keep all tutor traffic and tutor credentials on the learner's independent connection.
-4. Map gateway status and rubric responses into the existing recorder and learning-signals panel. Reject stale results after question or transcript changes.
+2. Verify the implemented EN/CN notice, processing choices, session issuance/renewal, and error recovery against the deployed gateway. Keep collection off initially.
+3. Verify that only speech and D3 calls reach the gateway. Tutor traffic and credentials must stay on the learner's independent connection.
+4. Verify the implemented status/rubric adapter and recorder against real responses, including stale results after question or transcript changes.
 5. Enable the services only after the real browser tests below pass.
 
 ## Completion evidence to return
