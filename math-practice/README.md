@@ -1,6 +1,6 @@
 # Math Practice UI 2.2.0
 
-**[Open Math Practice online](https://math-practice.ailleo.net/)** to practice all 8,790 questions with worked solutions. Choose **Try a problem** for a starting question, or **Browse** to pick a contest, curriculum topic, or mathematical idea. The custom address requires the DNS setup below.
+**[Open Math Practice online](https://math-practice.ailleo.net/)** to practice 8,790 questions. Choose **Try a problem** for a starting question, or **Browse** to pick a contest, curriculum topic, or mathematical idea.
 
 | Practice a question | Configure the three model roles |
 |:---:|:---:|
@@ -12,9 +12,20 @@ The online edition needs only a browser and an internet connection. It downloads
 
 For an app icon, use your browser’s **Install** option where available. On iPhone, open the site in Safari and choose **Share → Add to Home Screen**. New questions still load online.
 
+## Connect your tutor online
+
+Open **Settings → Model settings**. Settings opens over the current problem, so your draft and any pending response remain in place.
+
+- **Custom API:** enter your own OpenAI-compatible API base URL, API key if required, and model. Save and test the connection. Requests go directly from the browser to that provider. The provider must allow browser requests from this site (CORS). A successful text test does not verify image support; choose a model that can read images for figure questions.
+- **ChatGPT account:** download the helper from Settings, extract it and run it on the same computer as your browser. Follow [the helper setup guide](TUTOR_COMPANION.md) to pair, sign in, choose a model and test. This uses your own eligible account and plan permission. Account tokens remain in protected storage on your device.
+
+API keys and helper pairing keys remain in the current browser tab session, including its settings frame. Nonsecret preferences can persist between visits. Provider charges and data-use policies apply. Your tutor requests do not pass through the site operator's desktop.
+
+Ailleo speech-to-text and D3 are separate optional services. They remain **Not connected** until their public gateway and frontend adapter are ready. The desktop programmer's remaining work is in [the service connection handoff](../DESKTOP_SERVICES_CONNECT.md).
+
 ## Run locally
 
-Choose the local edition for offline practice, your own question banks, or model-backed features such as recorded thinking and tutor feedback.
+Choose the local edition for offline practice, your own question banks, or your own speech and learning-signal connections.
 
 1. Install Python **3.11 or newer** on your computer. [Download Python](https://www.python.org/downloads/)
 2. Download the project ZIP, extract it, and open the **K-12-math-main** folder. [Download the project ZIP](https://github.com/rqzhu-aide/K-12-math/archive/refs/heads/main.zip)
@@ -218,9 +229,11 @@ and retain their query and fragment. The source repository's `CNAME` file is
 copied into the exported site so subsequent updates preserve the domain.
 The exporter's `--custom-domain` option can override that source setting.
 
-This publication serves the question banks, answer-key checks, worked solutions,
-and browser-local drafts. Publishing the website does not connect the desktop
-speech/D3 gateway or implement the independent online tutor route.
+The publication includes question banks, answer-key checks, available worked solutions,
+browser-local drafts, and independent online tutor settings. The downloadable
+ChatGPT helper contains only selected source files and setup instructions. It
+contains no credentials, private configuration, Python installation, or packages.
+Publishing the site does not activate the separate desktop speech/D3 gateway.
 
 References: [Squarespace DNS settings](https://support.squarespace.com/hc/en-us/articles/360002101888-Edit-your-domain-s-DNS-records),
 [GitHub Pages custom domains](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).

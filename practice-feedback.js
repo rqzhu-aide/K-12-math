@@ -25,6 +25,7 @@
     'Thinking: Submit your changes for a fresh check.': '思路：请提交修改以重新检查。', 'Choose a problem first.': '请先选择题目。', 'Choose or enter an answer before submitting.': '提交前请选择或输入答案。',
     'Thinking: Checking your reasoning...': '思路：正在检查推理…', 'Complete or clarify your answer above, then submit again.': '请补全或澄清上方答案，然后重新提交。',
     'AI reasoning feedback is available in the local app. Your work stays in this browser.': '本地应用支持 AI 推理反馈。你的作答保存在此浏览器中。',
+    'Connect your own tutor in Settings for reasoning feedback.': '在设置中连接你自己的辅导模型，以获取推理反馈。',
     'Start the local launcher and add a model in Connections for reasoning feedback.': '请启动本地启动器，并在连接设置中添加模型，以获取推理反馈。',
     'Add a decision or inference model in Connections for reasoning feedback.': '在连接设置中添加分析或推理模型，即可获取推理反馈。',
     'Add an inference model in Connections for reasoning feedback.': '在连接设置中添加推理模型，即可获取推理反馈。',
@@ -154,7 +155,10 @@
       if (this.o.graphEvidence) this.o.graphEvidence(value.graphEvidence);
     }
     async post(url, body, controller) {
-      if (window.MATH_PRACTICE_HOSTED) throw new Error('AI feedback is available in the local app.');
+      if (window.MATH_PRACTICE_HOSTED) {
+        if (window.MathPracticeOnline && ['/api/assessment', '/api/tutor'].includes(url)) return window.MathPracticeOnline.post(url, body, controller, this.submitted && this.submitted.question);
+        throw new Error('AI feedback is available in the local app.');
+      }
       const timer = setTimeout(() => controller.abort(), 155000);
       try {
         const response = await fetch(url, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body), signal: controller.signal});
@@ -165,10 +169,10 @@
       } finally { clearTimeout(timer); }
     }
     services() {
-      if (window.MATH_PRACTICE_HOSTED) return {decision: false, inference: false, localEvidence: false};
+      if (window.MATH_PRACTICE_HOSTED) return {decision: false, inference: !!window.MathPracticeOnline && window.MathPracticeOnline.status().configured, localEvidence: false};
       return Object.assign({decision: false, inference: false}, this.o.services ? this.o.services() : {}, this.serviceOverrides);
     }
-    async waitServices() { if (this.o.waitServices) await this.o.waitServices(); }
+    async waitServices() { if (!window.MATH_PRACTICE_HOSTED && this.o.waitServices) await this.o.waitServices(); }
     updateServices(value) {
       for (const role of ['decision', 'inference']) {
         if (typeof value[role + 'Configured'] === 'boolean') this.serviceOverrides[role] = value[role + 'Configured'];
@@ -326,7 +330,7 @@
         const services = this.services();
         if (location.protocol === 'file:' || (!services.decision && !services.inference && !services.localEvidence)) {
           this.mathState = 'ready';
-          const message = window.MATH_PRACTICE_HOSTED ? 'AI reasoning feedback is available in the local app. Your work stays in this browser.'
+          const message = window.MATH_PRACTICE_HOSTED ? 'Connect your own tutor in Settings for reasoning feedback.'
             : location.protocol === 'file:' ? 'Start the local launcher and add a model in Connections for reasoning feedback.'
             : 'Add a decision or inference model in Connections for reasoning feedback.';
           this.showUnchecked(message, exactCategory);

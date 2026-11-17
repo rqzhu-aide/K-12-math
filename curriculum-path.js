@@ -37,6 +37,7 @@
   class CurriculumPath {
     constructor(options) {
       this.o = options; this.nodes = []; this.serial = 0; this.loadSerial = 0; this.state = {layer: 'ailleo', nodeId: ''};
+      this.questionScope = null;
       this.results = null; this.pageState = null; this.loading = false; this.loaded = false; this.finding = false; this.statusMessage = '';
       this.n = {};
       for (const id of ['practicePath', 'pathFilter', 'pathConcept', 'pathConceptLabel', 'pathFind', 'pathStatus', 'pathResults', 'pathDescription', 'pathPageField', 'pathPage']) this.n[id] = document.getElementById(id);
@@ -46,12 +47,12 @@
       } catch (_) {}
       this.n.practicePath.value = this.state.layer;
       this.n.practicePath.addEventListener('change', () => {
-        this.state = {layer: this.n.practicePath.value, nodeId: ''}; this.n.pathFilter.value = '';
+        this.state = {layer: this.n.practicePath.value, nodeId: ''}; this.questionScope = null; this.n.pathFilter.value = '';
         this.persist(); if (this.o.changed) this.o.changed(); this.load();
       });
       this.n.pathFilter.addEventListener('input', () => { const previous = this.state.nodeId; this.clearResults(); if (this.nodes.length) this.renderOptions(); this.persist(); if (previous !== this.state.nodeId && this.o.changed) this.o.changed(); });
       this.n.pathConcept.addEventListener('change', () => {
-        this.state.nodeId = this.n.pathConcept.value; this.persist(); this.clearResults(); this.describe();
+        this.state.nodeId = this.n.pathConcept.value; this.questionScope = null; this.persist(); this.clearResults(); this.describe();
         if (this.o.changed) this.o.changed();
       });
       this.n.pathFind.addEventListener('click', () => this.find());
@@ -60,7 +61,11 @@
       this.load();
     }
     layer() { return this.state.layer; }
-    nodeId() { return this.state.nodeId || null; }
+    nodeId(questionId) {
+      if (arguments.length && (!this.questionScope || this.questionScope.questionId !== questionId
+          || this.questionScope.layer !== this.layer() || this.questionScope.nodeId !== this.state.nodeId)) return null;
+      return this.state.nodeId || null;
+    }
     persist() { try { localStorage.setItem(KEY, JSON.stringify(this.state)); } catch (_) {} }
     option(value, label) { const n = document.createElement('option'); n.value = value; n.textContent = label; return n; }
     status(message) { this.statusMessage = message; this.n.pathStatus.textContent = typeof message === 'function' ? message() : t(message); }
@@ -164,11 +169,16 @@
             ? 'Related practice; may include ideas beyond this standard. Choose any method the question allows.'
             : 'These questions give you a chance to use this idea. Other methods may work too.');
         });
+        const layer = this.layer(), nodeId = this.nodeId();
         for (const candidate of candidates) {
           const question = this.o.question(candidate.questionId), button = document.createElement('button');
           button.type = 'button'; button.className = 'ghost path-question';
           button.textContent = this.o.title(question) + (candidate.coverage === 'partial' ? ' · ' + t('Related practice') : '');
-          button.addEventListener('click', () => this.o.select(question)); this.n.pathResults.appendChild(button);
+          button.addEventListener('click', () => {
+            if (this.layer() !== layer || this.nodeId() !== nodeId) return;
+            this.questionScope = {questionId: question.id, layer, nodeId};
+            this.o.select(question);
+          }); this.n.pathResults.appendChild(button);
         }
     }
     renderPages() {

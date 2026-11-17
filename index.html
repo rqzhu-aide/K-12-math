@@ -1351,6 +1351,7 @@ footer .source-credits p { margin: 0; }
 
 <script src="hosted-config.js"></script>
 <script src="hosted-data.js"></script>
+<script src="online-connections.js"></script>
 <script src="answer-check.js"></script>
 <script src="vendor/katex/katex.min.js"></script>
 <script src="vendor/katex/contrib/auto-render.min.js"></script>
@@ -1393,20 +1394,16 @@ footer .source-credits p { margin: 0; }
   var hosted = !!window.MATH_PRACTICE_HOSTED;
   var hostedBanks = [];
   if (hosted) {
-    var settingsLink = document.querySelector('.connection-settings');
-    uiText(settingsLink, 'Set up the local app for AI feedback and recording');
-    settingsLink.href = 'https://github.com/rqzhu-aide/K-12-math/blob/main/math-practice/README.md#run-locally';
-    settingsLink.target = '_blank'; settingsLink.rel = 'noopener noreferrer';
-    uiAttribute(document.querySelector('.connection-status'), 'aria-label', 'Optional connections are available in the local app.');
-    ['decisionStatus', 'speechServiceStatus', 'inferenceStatus'].forEach(function (id) {
+    uiAttribute(document.querySelector('.connection-status'), 'aria-label', 'Model connections');
+    ['decisionStatus', 'speechServiceStatus'].forEach(function (id) {
       $(id).disabled = true; $(id).dataset.state = 'idle';
-      uiAttribute($(id), 'title', 'Available in the local app.');
+      uiAttribute($(id), 'title', 'Ailleo speech and learning signals are not connected yet.');
     });
-    ['decisionStatusText', 'speechServiceStatusText', 'inferenceStatusText'].forEach(function (id) { uiText($(id), 'Local app only'); });
-    uiText($('speechHelp'), 'Write your approach. Your answers, thinking and notebook stay in this browser. Recording and AI feedback are available in the local app.');
+    ['decisionStatusText', 'speechServiceStatusText'].forEach(function (id) { uiText($(id), 'Not connected'); });
+    uiText($('speechHelp'), 'Write your approach. Connect your own math tutor in Model settings for feedback and hints.');
     uiAttribute($('openAnswer'), 'placeholder', 'Describe your answer, then compare it with the solution.');
-    uiText($('signalsStatus'), 'Local app only');
-    $('resultsBody').replaceChildren(uiEl('p', 'signals-empty', 'Learning signals and AI feedback are available in the local app.'));
+    uiText($('signalsStatus'), 'Not connected');
+    $('resultsBody').replaceChildren(uiEl('p', 'signals-empty', 'Ailleo speech and learning signals are not connected yet.'));
     document.querySelector('.signals-footnote').hidden = true;
     try { hostedBanks = await window.MathPracticeHosted.ready; }
     catch (_) {
@@ -2180,11 +2177,24 @@ footer .source-credits p { margin: 0; }
     if (connection.pending) return connection.pending;
     if (hosted) {
       connection.configured = false;
-      setConnection(role, 'idle', 'Local app only', 'Start the local app to use optional model connections.');
-      connection.button.disabled = true;
-      uiAttribute(connection.button, 'aria-label', function () { return t('{label}: Local app only.', {label: t(connection.label)}); });
-      uiAttribute(connection.button, 'title', 'Start the local app to use this connection.');
-      return Promise.resolve();
+      if (role !== 'inference') {
+        setConnection(role, 'idle', 'Not connected', 'Ailleo speech and learning signals are not connected yet.');
+        connection.button.disabled = true;
+        return Promise.resolve();
+      }
+      connection.button.disabled = false;
+      setConnection(role, 'checking', 'Checking...', 'Checking the saved connection.');
+      connection.pending = Promise.resolve().then(function () {
+        if (!window.MathPracticeOnline) throw new Error();
+        return window.MathPracticeOnline.status();
+      }).then(function (value) {
+        connection.configured = value.configured === true;
+        setConnection(role, value.ready ? 'ok' : 'idle', value.ready ? 'Ready' : connection.configured ? 'Not tested' : 'Not configured',
+          value.message || 'Connect your own API or ChatGPT account in Model settings.');
+      }).catch(function () {
+        setConnection(role, 'down', 'Offline', 'Check your tutor connection in Model settings.');
+      }).finally(function () { connection.pending = null; });
+      return connection.pending;
     }
     if (location.protocol === "file:") {
       connection.configured = false;
@@ -2211,7 +2221,7 @@ footer .source-credits p { margin: 0; }
     return connection.pending;
   }
   function serviceSettings() {
-    if (hosted) return {decision: false, inference: false, localEvidence: false};
+    if (hosted) return {decision: false, inference: connections.inference.configured === true, localEvidence: false};
     var reviewed = connections.decision.localEvidenceItems || [];
     return {decision: connections.decision.configured === true, inference: connections.inference.configured === true,
       localEvidence: !!currentQuestion && reviewed.indexOf(currentQuestion.id) >= 0};
@@ -2220,8 +2230,8 @@ footer .source-credits p { margin: 0; }
   function resetSignalsMessage() {
     var configured = connections && connections.decision.configured === true;
     if (hosted) {
-      uiText(els.panelStatus, 'Local app only');
-      els.resultsBody.replaceChildren(uiEl('p', 'signals-empty', 'Learning signals and AI feedback are available in the local app. Your work on this site stays in this browser.'));
+      uiText(els.panelStatus, 'Not connected');
+      els.resultsBody.replaceChildren(uiEl('p', 'signals-empty', 'Ailleo speech and learning signals are not connected yet.'));
       return;
     }
     uiText(els.panelStatus, configured ? 'Ready when you are' : 'Confidence & sentiment model not configured');
@@ -2232,7 +2242,7 @@ footer .source-credits p { margin: 0; }
   });
 
   // Keep practice and any pending tutor request alive while changing connections.
-  if (!hosted) {
+  {
     var connectionDialog = $('connectionDialog'), connectionFrame = $('connectionFrame');
     var connectionLink = document.querySelector('.connection-settings');
     connectionLink.setAttribute('aria-haspopup', 'dialog');
@@ -2251,9 +2261,11 @@ footer .source-credits p { margin: 0; }
       Object.keys(connections).forEach(ping);
     });
     window.addEventListener('message', function (event) {
-      if (event.origin === location.origin && event.source === connectionFrame.contentWindow
-          && event.data === 'math-practice:close-settings' && connectionDialog.open) connectionDialog.close();
+      if (event.origin !== location.origin || event.source !== connectionFrame.contentWindow) return;
+      if (event.data === 'math-practice:close-settings' && connectionDialog.open) connectionDialog.close();
+      if (event.data && event.data.type === 'math-practice-settings-updated') Object.keys(connections).forEach(ping);
     });
+    window.addEventListener('math-practice-online-change', function () { if (hosted) ping('inference'); });
   }
 
   var running = false, lastSubmitted = null, speechInput = null, feedback = null, practicePath = null;
@@ -2263,7 +2275,7 @@ footer .source-credits p { margin: 0; }
     var saved = saveFailures.draft || saveFailures.notebook ? '' : 'Your work is saved. ';
     if (currentQuestion && window.MathPracticeAnswers.gradingNotice(currentQuestion) !== null) { uiText(els.submissionNote, function () { return t(saved) + t('This disputed problem has no score or automatic grading.'); }); return; }
     var edited = els.thoughts.value.trim() !== lastSubmitted.thoughts || !answerTools.same(selectedAnswer, lastSubmitted.answer);
-    var status = edited ? (hosted ? "You have edited your work. Submit again to update your answer check." : "You have edited your work. Submit again to update the answer and reasoning checks.") : running ? (hosted ? "Checking your answer..." : "Answer submitted. Checking your answer and thinking...") : feedback && feedback.mathState === "error" ? "The check is unavailable; submit again to retry." : "Submitted. You can revise your answer or thinking and try again.";
+    var status = edited ? "You have edited your work. Submit again to update the answer and reasoning checks." : running ? "Answer submitted. Checking your answer and thinking..." : feedback && feedback.mathState === "error" ? "The check is unavailable; submit again to retry." : "Submitted. You can revise your answer or thinking and try again.";
     uiText(els.submissionNote, function () { return (feedback && feedback.mathState === 'error' && !edited && !running ? t(saved) : '') + t(status); });
   }
   function cancelRun() {
@@ -2344,7 +2356,7 @@ footer .source-credits p { margin: 0; }
     question: function () { return currentQuestion; }, answer: function () { return selectedAnswer; },
     bank: function () { return BANK.id; },
     layer: function () { return practicePath ? practicePath.layer() : 'ailleo'; },
-    curriculumNodeId: function () { return practicePath ? practicePath.nodeId() : null; },
+    curriculumNodeId: function () { return practicePath ? hosted ? practicePath.nodeId(currentQuestion && currentQuestion.id) : practicePath.nodeId() : null; },
     draft: els.thoughts, note: els.submissionNote, panel: els.panel, panelStatus: els.panelStatus,
     results: els.resultsBody, announce: els.announcement, el: el, percent: fmtPct, typeset: typeset,
     connection: setConnection, collapse: setCollapsed, setRunning: setRunning, save: saveAttempt,

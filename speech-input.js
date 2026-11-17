@@ -5,6 +5,8 @@
   const ui = (node, source, params) => Language.bindText(node, source, params);
   const attribute = (node, name, source, params) => Language.bindAttribute(node, name, source, params);
   Language.register({
+    'Speech service not connected': '语音服务尚未连接',
+    'Ailleo speech-to-text is not connected yet. You can type your thinking.': 'Ailleo 语音转文字服务尚未接入。你可以输入思路。',
     'Recording discarded. Your written draft is unchanged.': '录音已丢弃，文字草稿未更改。',
     'Stop and transcribe': '停止并转录', 'Opening microphone…': '正在打开麦克风…', 'Transcribing…': '正在转录…', 'Record thinking': '录下思路',
     'Add a speech connection in Settings to record your thinking.': '在设置中添加语音连接，即可录下思路。',
@@ -90,8 +92,8 @@
       else if (this.connectionMissing && this.configured()) ui(o.status, '');
       if (o.isEnabled() && !this.configured()) ui(o.status, 'Speech is not configured. You can type your thinking or add a speech connection in Settings.');
       if (window.MATH_PRACTICE_HOSTED) {
-        ui(o.recordLabel, 'Recording: local app only');
-        attribute(o.record, 'title', 'Recording is available in the local app. You can type your thinking here.');
+        ui(o.recordLabel, 'Speech service not connected');
+        attribute(o.record, 'title', 'Ailleo speech-to-text is not connected yet. You can type your thinking.');
         ui(o.status, '');
       }
       this.connectionMissing = !this.configured();
