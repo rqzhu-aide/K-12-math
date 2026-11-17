@@ -17,6 +17,13 @@
     missing: 'The API endpoint was not found. Check the API base URL in Settings.',
     limit: 'The API reached a usage or rate limit. Check your provider account and retry.',
     apiError: 'The API could not complete this request. Check the selected model and retry.',
+    requestFormat: 'The selected model rejected the tutor request format. Refresh this page and test again, or choose another text model.',
+    modelUnavailable: 'The selected model is unavailable for this API key. Choose another model or check your model access.',
+    quota: 'The API account has no available quota. Check your provider billing or credits, then retry.',
+    invalidRequest: 'The API rejected the request (HTTP 400). Check that the selected model supports text tutoring.',
+    unavailable: 'The API service is temporarily unavailable. Try again shortly.',
+    tokenLimit: 'The model reached the response limit before completing its review. Try again or choose another model.',
+    refused: 'The model declined to review this submission. Rephrase your work or choose another model.',
     unreadable: 'The tutor returned an unreadable review. Try the review again.',
     incomplete: 'The tutor returned an incomplete review. Try the review again.',
     length: 'The tutor did not return a short visible review within 50 words or 100 script characters. Try the review again.',
@@ -38,6 +45,13 @@
     [messages.missing]: '未找到 API 端点。请检查设置中的 API 基础地址。',
     [messages.limit]: 'API 已达到用量或速率限制。请检查服务商账户后重试。',
     [messages.apiError]: 'API 未能完成请求。请检查所选模型后重试。',
+    [messages.requestFormat]: '所选模型不接受当前的辅导请求格式。请刷新本页后重新测试，或选择其他文字模型。',
+    [messages.modelUnavailable]: '此 API 密钥无法使用所选模型。请选择其他模型，或检查模型访问权限。',
+    [messages.quota]: 'API 账户没有可用额度。请检查服务商的账单或余额后重试。',
+    [messages.invalidRequest]: 'API 拒绝了请求（HTTP 400）。请确认所选模型支持文字辅导。',
+    [messages.unavailable]: 'API 服务暂时不可用，请稍后重试。',
+    [messages.tokenLimit]: '模型在完成点评前已达到回复额度上限。请重试或选择其他模型。',
+    [messages.refused]: '模型拒绝点评此次作答。请换一种方式描述解题过程，或选择其他模型。',
     [messages.unreadable]: '辅导返回的点评无法读取，请重新点评。',
     [messages.incomplete]: '辅导返回的点评不完整，请重新点评。',
     [messages.length]: '辅导未返回限定长度的可见点评（最多 50 个英文词或 100 个汉字），请重新点评。',
@@ -130,6 +144,18 @@
     try { response = await fetch(url, {...options, credentials: 'omit', referrerPolicy: 'no-referrer', cache: 'no-store', redirect: 'error'}); }
     catch (error) { if (error.name === 'AbortError') throw error; throw new Error(messages.apiNetwork); }
     if (!response.ok) {
+      // Inspect structured error fields, but never show a provider's raw message,
+      // which may echo credentials or the learner's submission.
+      let failure;
+      try { failure = (await response.json()).error; } catch (_) {}
+      active(options.signal);
+      const code = failure && failure.code, parameter = failure && failure.param;
+      if (code === 'model_not_found') throw new Error(messages.modelUnavailable);
+      if (response.status === 429 && code === 'insufficient_quota') throw new Error(messages.quota);
+      if (response.status === 400 && ['unsupported_parameter', 'unsupported_value'].includes(code)
+          && ['max_tokens', 'max_completion_tokens', 'reasoning_effort', 'response_format', 'messages', 'messages[0].role', 'model'].includes(parameter)) throw new Error(messages.requestFormat);
+      if (response.status === 400) throw new Error(messages.invalidRequest);
+      if (response.status >= 500) throw new Error(messages.unavailable);
       throw new Error(({401: messages.auth, 403: messages.denied, 404: messages.missing, 429: messages.limit})[response.status] || messages.apiError);
     }
     try { const value = await response.json(); active(options.signal); return value; }
@@ -244,11 +270,24 @@
   }
   async function infer(settings, prompt, instructions, schema, images, signal) {
     if (!settings.model) throw new Error(messages.unconfigured);
+    const url = apiEndpoint(settings, 'chat/completions');
+    const officialOpenAI = url === 'https://api.openai.com/v1/chat/completions';
+    const reasoningModel = /^(?:gpt-[56](?:[.-]|$)|o[1-9](?:-|$))/.test(settings.model);
+    const lowEffort = /^gpt-[56](?:[.-]|$)/.test(settings.model) && !/(?:-pro|-chat-latest)(?:-|$)/.test(settings.model);
     const content = images.length ? [{type: 'text', text: prompt}, ...images.map(url => ({type: 'image_url', image_url: {url}}))] : prompt;
-    const result = await json(apiEndpoint(settings, 'chat/completions'), {method: 'POST', signal,
+    // OpenAI's current limit includes reasoning tokens. Keep custom compatible
+    // providers on the existing request contract instead of assuming their support.
+    const payload = {model: settings.model,
+      messages: [{role: officialOpenAI && reasoningModel ? 'developer' : 'system', content: instructions}, {role: 'user', content}],
+      ...(officialOpenAI ? {max_completion_tokens: reasoningModel ? 4096 : 1000} : {max_tokens: 1000}),
+      ...(officialOpenAI && lowEffort ? {reasoning_effort: 'low'} : {}), response_format: {type: 'json_object'}};
+    const result = await json(url, {method: 'POST', signal,
       headers: {'Content-Type': 'application/json', ...(settings.apiKey ? {Authorization: 'Bearer ' + settings.apiKey} : {})},
-      body: JSON.stringify({model: settings.model, messages: [{role: 'system', content: instructions}, {role: 'user', content}], max_tokens: 1000, response_format: {type: 'json_object'}})});
-    const text = result && result.choices && result.choices[0] && result.choices[0].message && result.choices[0].message.content;
+      body: JSON.stringify(payload)});
+    const choice = result && result.choices && result.choices[0];
+    if (choice && choice.finish_reason === 'length') throw new Error(messages.tokenLimit);
+    if (choice && (choice.finish_reason === 'content_filter' || choice.message && choice.message.refusal)) throw new Error(messages.refused);
+    const text = choice && choice.message && choice.message.content;
     if (typeof text !== 'string') throw new Error(messages.noText);
     return text;
   }
