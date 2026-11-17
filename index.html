@@ -1177,7 +1177,7 @@ footer .source-credits p { margin: 0; }
       <details class="connections-menu"><summary aria-label="Settings" data-i18n-aria-label="Settings" title="Settings" data-i18n-title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.6 3.2-.4 2.4-1.6.72-2-.88L3.2 9.6l2 1.52v1.76l-2 1.52 2.4 4.16 2-.88 1.6.72.4 2.4h4.8l.4-2.4 1.6-.72 2 .88 2.4-4.16-2-1.52v-1.76l2-1.52-2.4-4.16-2 .88-1.6-.72-.4-2.4Z"></path><circle cx="12" cy="12" r="3"></circle></svg></summary>
       <div class="connection-status" role="group" aria-label="Backend readiness. Select a badge to check again." data-i18n-aria-label="Backend readiness. Select a badge to check again.">
         <a class="connection-settings" href="settings.html" data-i18n="Model settings">Model settings</a>
-        <button class="chip" data-model-role="decision" id="decisionStatus" type="button" data-state="checking" title="Check confidence and sentiment model connection" data-i18n-title="Check confidence and sentiment model connection"><span class="dot" aria-hidden="true"></span><span><span class="chip-label" data-i18n="Confidence &amp; sentiment model">Confidence &amp; sentiment model</span><span class="chip-state" id="decisionStatusText" role="status" data-i18n="Checking...">Checking...</span></span></button>
+        <button class="chip" data-model-role="decision" id="decisionStatus" type="button" data-state="checking" title="Check decision model connection" data-i18n-title="Check decision model connection"><span class="dot" aria-hidden="true"></span><span><span class="chip-label" data-i18n="Decision model">Decision model</span><span class="chip-state" id="decisionStatusText" role="status" data-i18n="Checking...">Checking...</span></span></button>
         <button class="chip" data-model-role="speech" id="speechServiceStatus" type="button" data-state="checking" title="Check speech-to-text model connection" data-i18n-title="Check speech-to-text model connection"><span class="dot" aria-hidden="true"></span><span><span class="chip-label" data-i18n="Speech-to-text model">Speech-to-text model</span><span class="chip-state" id="speechServiceStatusText" role="status" data-i18n="Checking...">Checking...</span></span></button>
         <button class="chip" data-model-role="inference" id="inferenceStatus" type="button" data-state="checking" title="Check math tutor model connection" data-i18n-title="Check math tutor model connection"><span class="dot" aria-hidden="true"></span><span><span class="chip-label" data-i18n="Math tutor model">Math tutor model</span><span class="chip-state" id="inferenceStatusText" role="status" data-i18n="Checking...">Checking...</span></span></button>
       </div>
@@ -2163,7 +2163,7 @@ footer .source-credits p { margin: 0; }
   }
   els.panelToggle.addEventListener("click", function () { setCollapsed(els.panel.dataset.collapsed !== "true"); });
   var connections = {
-    decision: { label: "Confidence & sentiment model", button: $("decisionStatus"), text: $("decisionStatusText") },
+    decision: { label: "Decision model", button: $("decisionStatus"), text: $("decisionStatusText") },
     speech: { label: "Speech-to-text model", button: $("speechServiceStatus"), text: $("speechServiceStatusText") },
     inference: { label: "Math tutor model", button: $("inferenceStatus"), text: $("inferenceStatusText") }
   };
@@ -2187,7 +2187,7 @@ footer .source-credits p { margin: 0; }
           connection.button.disabled = false;
           setConnection(role, status.available === true && connection.configured ? 'ok' : 'idle',
             !status.configured ? 'Not connected' : !status.enabled ? 'Off' : status.available === true ? 'Service reachable' : status.available === false ? 'Unavailable' : 'On',
-            !status.configured ? 'Ailleo speech and learning signals are not connected yet.' : !status.enabled ? 'Read the acknowledgement and turn on this feature in Model settings.' : 'Check whether Ailleo’s server is reachable. This does not send your thinking.');
+            !status.configured ? 'Ailleo speech and learning signals are not connected yet.' : !status.enabled ? 'Enable this feature in Model settings.' : 'Check whether Ailleo’s server is reachable. This does not send your thinking.');
           if (role === 'speech' && speechInput) {
             if (!connection.configured && speechInput.busy()) speechInput.reset();
             speechInput.sync();
@@ -2255,12 +2255,12 @@ footer .source-credits p { margin: 0; }
     var configured = connections && connections.decision.configured === true;
     if (hosted) {
       var available = window.MathPracticeServices && window.MathPracticeServices.config().configured;
-      uiText(els.panelStatus, !available ? 'Not connected' : configured ? 'Ready when you are' : 'D3 analysis is off');
-      els.resultsBody.replaceChildren(uiEl('p', 'signals-empty', !available ? 'Ailleo speech and learning signals are not connected yet.' : configured ? 'Record your thinking to see learning signals from your original speech.' : 'Read the acknowledgement and turn on D3 in Model settings to analyze your original speech transcript.'));
+      uiText(els.panelStatus, !available ? 'Not connected' : configured ? 'Ready when you are' : 'The decision model is off');
+      els.resultsBody.replaceChildren(uiEl('p', 'signals-empty', !available ? 'Ailleo speech and learning signals are not connected yet.' : configured ? 'Record your thinking to see learning signals from your original speech.' : 'Enable the decision model in Model settings to analyze your original speech transcript.'));
       return;
     }
-    uiText(els.panelStatus, configured ? 'Ready when you are' : 'Confidence & sentiment model not configured');
-    els.resultsBody.replaceChildren(uiEl('p', 'signals-empty', configured ? 'Record your thinking to see learning signals from your original speech.' : 'Add a confidence and sentiment model in Settings to analyze your original speech transcript.'));
+    uiText(els.panelStatus, configured ? 'Ready when you are' : 'Decision model not configured');
+    els.resultsBody.replaceChildren(uiEl('p', 'signals-empty', configured ? 'Record your thinking to see learning signals from your original speech.' : 'Add a decision model in Settings to analyze your original speech transcript.'));
   }
   Object.keys(connections).forEach(function (role) {
     connections[role].button.addEventListener("click", function () {

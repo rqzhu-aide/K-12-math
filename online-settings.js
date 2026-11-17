@@ -11,12 +11,18 @@
     'Fetch models': '获取模型列表', 'Enter a model name, or fetch available models.': '输入模型名称，或获取可用模型列表。',
     'Tests may use API credits. A successful text test does not verify image support.': '测试可能消耗 API 额度。文字测试成功并不代表模型支持图片。',
     'Optional Ailleo services are managed by the site operator. You do not need to enter an API key for them.': '可选的 Ailleo 服务由网站运营者管理。你无需为这些服务输入 API 密钥。',
-    'These features send your audio and thinking transcript to Ailleo’s server. With separate permission, transcripts and analysis results may be retained to improve future recommendation models. Raw audio is not retained. Do not include personal information.': '这些功能会将你的音频和思考过程的转录文字发送到 Ailleo 的服务器。经另行许可后，转录文字和分析结果可能会被保留，用于改进未来的推荐模型。原始音频不会被保留。请勿包含个人信息。',
-    'I understand and agree to this processing.': '我理解并同意上述数据处理。',
-    'Sharing data for model improvement is currently off.': '目前未开启用于改进模型的数据共享。',
-    'Use speech-to-text': '使用语音转文字',
-    'Use confidence and sentiment analysis (D3)': '使用信心与情绪分析（D3）',
-    'Agree to the processing notice above to choose this feature. You can turn it off at any time.': '同意上方的数据处理说明后，即可选择此功能。你可以随时关闭。',
+    'These features send your audio or speech transcript to Ailleo’s server for processing. Raw audio is not retained. Do not include personal information.': '这些功能会将你的音频或语音转录文字发送到 Ailleo 的服务器进行处理。原始音频不会被保留。请勿包含个人信息。',
+    'Improving question recommendations': '改进题目推荐',
+    'With your separate permission, Ailleo will keep speech transcripts, decision model results and related question information for up to 90 days to train and improve its internal question recommendation model.': '经你另行同意，Ailleo 将保留语音转录文字、决策模型的分析结果及相关题目信息，最长保留 90 天，用于训练和改进内部的题目推荐模型。',
+    'Collection is not enabled yet. Enabling a feature currently permits processing only.': '目前尚未开启数据收集。开启功能仅表示同意处理数据。',
+    'Data use and deletion': '数据使用与删除',
+    'Agree and enable speech-to-text': '同意并开启语音转文字',
+    'Turn off speech-to-text': '关闭语音转文字',
+    'Decision model': '决策模型',
+    'Agree and enable decision model': '同意并开启决策模型',
+    'Turn off decision model': '关闭决策模型',
+    'When you enable speech-to-text, you agree to the processing above. You can turn it off at any time.': '开启语音转文字，即表示你同意上述数据处理。你可以随时关闭此功能。',
+    'When you enable the decision model, you agree to the processing above. You can turn it off at any time.': '开启决策模型，即表示你同意上述数据处理。你可以随时关闭此功能。',
     'Waiting for server connection': '等待服务器连接',
     'Ailleo’s server is not connected to this website yet. You can save your choice for later.': 'Ailleo 的服务器尚未连接到本网站。你可以先保存选择，待连接后使用。',
     'Your choice is saved. Ailleo’s server is not connected to this website yet.': '已保存你的选择。Ailleo 的服务器尚未连接到本网站。',
@@ -28,7 +34,7 @@
     'The server is reachable. This feature is off.': '服务器可连接。此功能已关闭。',
     'Ailleo’s server is unavailable. This feature is off. Check connection to try again.': 'Ailleo 的服务器暂不可用。此功能已关闭。请检查连接以重试。',
     'Your choice is saved. Check the connection before using this feature.': '已保存你的选择。使用此功能前，请先检查连接。',
-    'The server is reachable. This check does not send your thinking or test a recording.': '服务器可连接。此检查不发送你的思考内容，也不测试录音。',
+    'The server is reachable. This check does not run speech-to-text or the decision model.': '服务器可连接。此检查不会运行语音转文字或决策模型。',
     'Your choice is saved, but Ailleo’s server is unavailable. Check connection to try again.': '已保存你的选择，但 Ailleo 的服务器暂不可用。请检查连接以重试。',
     'Optional service settings are saved.': '已保存可选服务设置。',
     'Processing permission removed. Both optional features are off.': '已撤回数据处理许可。两项可选功能均已关闭。',
@@ -72,7 +78,7 @@
     let message = String(error && error.message || error || t('The request failed. Check the connection settings and try again.'));
     const secret = $('inferenceKey').value;
     if (secret) message = message.split(secret).join('[redacted]');
-    return message;
+    return t(message);
   };
   const busy = value => {
     working = value;
@@ -89,14 +95,14 @@
   const serviceCheckButton = role => $(role === 'speech' ? 'checkSpeech' : 'checkDecision');
   function renderServices() {
     const preferences = services.preferences();
-    $('serviceAcknowledged').checked = preferences.acknowledged === true;
     for (const role of serviceRoles) {
       const status = services.status(role);
       const enabled = preferences[role] === true;
       const toggle = $(role + 'Enabled');
-      toggle.checked = enabled;
-      toggle.disabled = !preferences.acknowledged && !enabled;
-      $(role + 'ConsentHelp').hidden = preferences.acknowledged === true;
+      text(toggle, role === 'speech' ? enabled ? 'Turn off speech-to-text' : 'Agree and enable speech-to-text' : enabled ? 'Turn off decision model' : 'Agree and enable decision model');
+      toggle.classList.toggle('primary', !enabled);
+      toggle.classList.toggle('secondary', enabled);
+      toggle.disabled = false;
       const check = serviceCheckButton(role);
       check.disabled = !status.configured || serviceChecking[role];
       check.setAttribute('aria-busy', String(serviceChecking[role]));
@@ -111,7 +117,7 @@
       } else if (serviceChecking[role]) {
         label = 'Checking…'; message = 'Checking Ailleo’s server. No audio or thinking is sent.';
       } else if (status.state === 'ready') {
-        label = 'Service reachable'; message = 'The server is reachable. This check does not send your thinking or test a recording.'; state = 'ok';
+        label = 'Service reachable'; message = 'The server is reachable. This check does not run speech-to-text or the decision model.'; state = 'ok';
       } else if (status.available === false) {
         label = 'Unavailable'; message = 'Your choice is saved, but Ailleo’s server is unavailable. Check connection to try again.';
       } else {
@@ -142,20 +148,17 @@
   try {
     if (!services) throw new Error();
     renderServices();
-    $('serviceAcknowledged').addEventListener('change', event => {
-      const acknowledged = event.target.checked;
-      saveServiceChoice(acknowledged ? {acknowledged: true} : {acknowledged: false, speech: false, decision: false});
-    });
     for (const role of serviceRoles) {
-      $(role + 'Enabled').addEventListener('change', event => {
-        const enabled = event.target.checked;
-        if (enabled && !services.preferences().acknowledged) { renderServices(); return; }
-        if (saveServiceChoice({[role]: enabled}) && enabled) checkService(role);
+      $(role + 'Enabled').addEventListener('click', () => {
+        const preferences = services.preferences();
+        const enabled = !preferences[role];
+        const next = {...preferences, [role]: enabled};
+        next.acknowledged = next.speech || next.decision;
+        if (saveServiceChoice(next) && enabled) checkService(role);
       });
       serviceCheckButton(role).addEventListener('click', () => checkService(role));
     }
   } catch (_) {
-    $('serviceAcknowledged').disabled = true;
     for (const role of serviceRoles) { $(role + 'Enabled').disabled = true; serviceCheckButton(role).disabled = true; }
     say('servicePreferencesResult', 'Optional service settings could not load. Reload this page to try again.', 'error');
   }

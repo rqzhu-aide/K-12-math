@@ -7,7 +7,7 @@
   Language.register({
     'Speech service not connected': '语音服务尚未连接',
     'Speech-to-text is off': '语音转文字已关闭',
-    'Read the acknowledgement and turn on speech-to-text in Model settings. You can also type your thinking.': '请在模型设置中阅读并确认数据处理说明，然后开启语音转文字。你也可以输入思路。',
+    'Enable speech-to-text in Model settings. You can also type your thinking.': '请在模型设置中开启语音转文字。你也可以输入思路。',
     'Ailleo speech-to-text is not connected yet. You can type your thinking.': 'Ailleo 语音转文字服务尚未接入。你可以输入思路。',
     'Recording discarded. Your written draft is unchanged.': '录音已丢弃，文字草稿未更改。',
     'Stop and transcribe': '停止并转录', 'Opening microphone…': '正在打开麦克风…', 'Transcribing…': '正在转录…', 'Record thinking': '录下思路',
@@ -102,7 +102,7 @@
       if (window.MATH_PRACTICE_HOSTED && !this.configured()) {
         const connected = window.MathPracticeServices && window.MathPracticeServices.config().configured;
         ui(o.recordLabel, connected ? 'Speech-to-text is off' : 'Speech service not connected');
-        const explanation = connected ? 'Read the acknowledgement and turn on speech-to-text in Model settings. You can also type your thinking.' : 'Ailleo speech-to-text is not connected yet. You can type your thinking.';
+        const explanation = connected ? 'Enable speech-to-text in Model settings. You can also type your thinking.' : 'Ailleo speech-to-text is not connected yet. You can type your thinking.';
         attribute(o.record, 'title', explanation);
         ui(o.status, o.isEnabled() ? explanation : '');
       }

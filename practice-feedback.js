@@ -7,8 +7,8 @@
   const attribute = (node, name, source, params) => Language.bindAttribute(node, name, source, params);
   Language.register({
     'Show a hint': '显示提示', 'Hide hint': '隐藏提示', 'Hint: ': '提示：',
-    'D3 analysis is off': 'D3 分析已关闭',
-    'Read the acknowledgement and turn on D3 in Model settings to analyze your original speech transcript.': '请在模型设置中阅读并确认数据处理说明，然后开启 D3，以分析原始语音转录文字。',
+    'The decision model is off': '决策模型已关闭',
+    'Enable the decision model in Model settings to analyze your original speech transcript.': '请在模型设置中开启决策模型，以分析原始语音转录文字。',
     'Ailleo speech and learning signals are not connected yet.': 'Ailleo 语音与学习信号服务尚未接入。',
     'Waiting for server connection': '等待服务器接入',
     'From original speech, before edits': '来自未经编辑的语音转录', 'Reading the original transcript for learning signals...': '正在从原始转录中分析学习信号…',
@@ -18,7 +18,9 @@
     'Could not reach learning signals. Check the backend connection.': '无法连接学习信号服务。请检查后台连接。',
     'Original speech signals unavailable': '原始语音信号不可用', 'Retry speech signals': '重试语音信号分析', 'Local app only': '仅限本地应用',
     'Learning signals are available in the local app. Your work stays in this browser.': '本地应用支持学习信号分析。你的作答保存在此浏览器中。',
-    'Decision model not configured': '未配置分析模型', 'Your transcript is saved. Add a decision model in Connections to check original speech for learning signals.': '转录文字已保存。在连接设置中添加分析模型后，即可从原始语音文字中分析学习信号。',
+    'Decision model not configured': '未配置决策模型', 'Your transcript is saved. Add a decision model in Connections to check original speech for learning signals.': '转录文字已保存。在连接设置中添加决策模型后，即可从原始语音文字中分析学习信号。',
+    'The decision model assessed the original transcript.': '决策模型已分析原始语音转录文字。',
+    'The decision model checked the submitted work.': '决策模型已检查提交的作答。',
     'Confidence': '自信程度', 'Clarity of reasoning': '思路表达清晰度', 'Engagement': '投入程度', 'Unsure': '不确定', 'Confident': '有信心', 'Not expressed': '未表达',
     'Clearly explained': '表达清楚', 'Some steps unclear': '部分步骤不清楚', 'Hard to follow': '难以理解', 'No explanation': '未解释',
     'Interested or persistent': '有兴趣或愿意坚持', 'Frustrated or discouraged': '感到受挫或灰心',
@@ -259,8 +261,8 @@
     skipSignals() {
       if (window.MATH_PRACTICE_HOSTED) {
         const connected = window.MathPracticeServices && window.MathPracticeServices.config().configured;
-        this.o.panel.dataset.state = 'idle'; ui(this.o.panelStatus, connected ? 'D3 analysis is off' : 'Waiting for server connection');
-        this.o.results.replaceChildren(ui(this.o.el('p', 'signals-empty'), connected ? 'Read the acknowledgement and turn on D3 in Model settings to analyze your original speech transcript.' : 'Ailleo speech and learning signals are not connected yet.'));
+        this.o.panel.dataset.state = 'idle'; ui(this.o.panelStatus, connected ? 'The decision model is off' : 'Waiting for server connection');
+        this.o.results.replaceChildren(ui(this.o.el('p', 'signals-empty'), connected ? 'Enable the decision model in Model settings to analyze your original speech transcript.' : 'Ailleo speech and learning signals are not connected yet.'));
         return;
       }
       this.o.panel.dataset.state = 'idle'; ui(this.o.panelStatus, 'Decision model not configured');

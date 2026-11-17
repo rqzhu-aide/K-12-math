@@ -1,10 +1,10 @@
 # Connect Ailleo speech-to-text and D3 to the public website
 
-Prepared 2026-11-16 for the desktop programmer. This is the remaining integration work after the online tutor settings update. It builds on `DESKTOP-BACKEND-STATUS-v2.md`; that report describes local tests, not a working public endpoint. See [the next-step handoff](DESKTOP_PUBLIC_CONNECTION_NEXT.md) for the DNS migration to prepare for owner review.
+Updated 2026-11-17 for the desktop programmer. The website is connected and the protected browser flow passed with real Turnstile, synthetic speech, D3, and fresh-challenge renewal. Collection remains OFF. Follow [the current handoff](DESKTOP_PUBLIC_CONNECTION_NEXT.md) for evidence, the temporary DNS mapping used in the successful test, remaining DNS propagation checks, and DNSSEC timing. The revised backend source/tests have not been independently inspected. Do not repeat the migration or recreate the working tunnel.
 
 ## What the website needs
 
-The public frontend is **https://math-practice.ailleo.net/** on GitHub Pages. The existing Squarespace website at **https://ailleo.net/** must keep working.
+The public frontend is **https://math-practice.ailleo.net/** on GitHub Pages. The owner has never had an actual Squarespace website: apex **https://ailleo.net/** and `www` are placeholders. Preserve their existing behavior; no Squarespace site needs to be created or reconnected. Domain registration remains with Squarespace.
 
 The desktop supplies only these optional, free services:
 
@@ -29,11 +29,11 @@ The settings now provide a processing acknowledgement and separate speech/D3 cho
 
 ## 1. Publish the gateway, preserving the current websites
 
-Proposed API hostname: **api.ailleo.net**, if unused. This replaces the earlier `api.math-practice.ailleo.net` proposal to fit the first-level subdomain coverage of Cloudflare Universal SSL. Neither address is confirmed configured or tested. Return the actual hostname you deploy. See [Cloudflare certificate coverage](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/).
+Published API hostname: **api.ailleo.net**, gateway 0.4.3. HTTPS, public configuration, both health responses, browser preflight, missing-challenge rejection, and real protected browser inference have been independently checked. Preserve the deployed route and keep Turnstile enabled. The live browser test and its DNS qualification are recorded in the current handoff. See [Cloudflare certificate coverage](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/).
 
 1. Run a named Cloudflare Tunnel on the always-on desktop. Route only the chosen API hostname to `http://127.0.0.1:8878`, with a final catch-all 404 route. Keep the raw model ports private. No router port forwarding is needed for this tunnel design.
-2. Configure the hostname in a Cloudflare-managed DNS zone. A `*.cfargotunnel.com` CNAME alone in an unrelated Squarespace DNS zone does not complete a public Tunnel setup. If `ailleo.net` moves to Cloudflare DNS, the owner must first review a complete copy of its existing DNS records, then change the nameservers at Squarespace. Preserve the Squarespace apex and `www` records, email records, verification records, and `math-practice -> rqzhu-aide.github.io`. The registrar and Squarespace hosting can remain unchanged.
-3. Keep the website's GitHub Pages CNAME DNS-only while retaining its current HTTPS setup. The new API route uses Cloudflare Tunnel. Do not change the frontend hostname or serve the whole Squarespace website through the gateway.
+2. Add the API tunnel route in the existing Cloudflare-managed `ailleo.net` zone. The parent already delegates to `candy.ns.cloudflare.com` and `elliott.ns.cloudflare.com`; do not change nameservers again. Preserve the eleven verified existing record values in the next-step handoff and respect its DNSSEC waiting window.
+3. Keep the existing apex, `www`, domain-connect, and GitHub Pages records DNS-only while retaining their current HTTPS behavior. The new API route uses Cloudflare Tunnel. Do not change the frontend hostname or send placeholder/site traffic through the gateway.
 4. Make the connector and gateway restart automatically after failure and reboot. Verify this with an actual restart and reboot test.
 5. Test the API from a device outside the desktop's network and outside Tailscale. Website visitors must not need Tailscale, a Cloudflare Access login, an invitation, or an account.
 
@@ -56,9 +56,9 @@ Content-Type: application/json
 {"turnstile_token":"<fresh challenge token>"}
 ```
 
-`turnstile_token` is the requested public-deployment addition to v2's empty-body issuance. Return the existing opaque `token`, `session_id`, `scopes`, `issued_at`, `expires_at`, and `renew_after_seconds`. Accept the current bearer token for renewal and document whether renewal also requires a fresh challenge. The frontend will serialize renewal so concurrent requests do not race token rotation. Never put a token in a URL or log.
+`turnstile_token` is the public-deployment addition to v2's empty-body issuance. Return the existing opaque `token`, `session_id`, `scopes`, `issued_at`, `expires_at`, and `renew_after_seconds`. Accept the current bearer token for renewal; both issuance and renewal require a fresh challenge. The frontend will serialize renewal so concurrent requests do not race token rotation. Never put a token in a URL or log.
 
-For public issuance, validate Turnstile on the server using Siteverify. Check `success`, hostname `math-practice.ailleo.net`, and an agreed action, proposed `math_practice_session`. Return the public site key to the frontend programmer; keep the secret key on the desktop. Invalid, missing, expired, or replayed challenges must not issue a session. Publish stable error codes for these cases.
+The owner has supplied public site key `0x4AAAAAAGEo8zkmtESutYxk`, and the public endpoint now reports Turnstile enabled with that key. Keep its secret private on the desktop. For issuance and renewal, validate Siteverify `success`, hostname `math-practice.ailleo.net`, and action `math_practice_session`. V3 reports this binding is implemented; verify the revised source and real widget flow. Invalid, missing, expired, or replayed challenges must not issue a session. Publish stable error codes for these cases. Never send the secret key to the frontend or include it in the handoff.
 
 Keep rate limits on issuance and service use, plus an overall model concurrency/queue limit. Return `429` with `Retry-After`; bound the queue and request duration. Trust forwarded client IP headers only from the tunnel connector. CORS and Turnstile reduce misuse; they do not prove a person's identity or guarantee that all callers use the UI.
 
@@ -117,7 +117,7 @@ The frontend will send the original transcript, not the learner's later edited r
 
 Confirm support for a keyed choices object. This preserves the actual choice labels; the v2 report used an illustrative array. Open-response questions use `{}`.
 
-**Resolve one behavior mismatch:** the existing local D3 implementation includes the displayed question and choices as context, while excluding the reference answer and solution. V2 says it excludes the question and choices too. Restore the existing context behavior and update its tests, or document that proposed behavior change for review before integration. Do not send reference answers or solutions upstream to D3.
+**Verify the reported context correction:** the existing local D3 implementation includes the displayed question and choices as context, while excluding the reference answer and solution. V2 omitted the question and choices; v3 reports that they have been restored with keyed choices. Check the revised source/tests and a representative request before integration. Do not send reference answers or solutions upstream to D3.
 
 Preserve the canonical rubrics from `student_assessment.py`: confidence has 3 choices, reasoning has 4, engagement has 3. Return `question_id`, the exact analyzed `transcript`, `rubric_version`, `answers`, full letter-to-code/label `rubrics`, timing, session ID, and collection fields. Validate complete, finite probabilities in range with the documented normalization tolerance. The frontend will display the probability of the selected choice; it must not mistake an upstream margin named `confidence` for that probability.
 
@@ -133,7 +133,7 @@ Document all existing v2 error codes plus the new challenge errors. Never return
 
 The frontend programmer will:
 
-1. Add the confirmed HTTPS service base and Turnstile public key to the hosted build. These are public configuration, not secrets. They are not active settings in the current build.
+1. Completed: the hosted build connects to `https://api.ailleo.net` and loads Turnstile only when a consented request needs verification. The public site key is published; the private secret remains on the desktop.
 2. Verify the implemented EN/CN notice, processing choices, session issuance/renewal, and error recovery against the deployed gateway. Keep collection off initially.
 3. Verify that only speech and D3 calls reach the gateway. Tutor traffic and credentials must stay on the learner's independent connection.
 4. Verify the implemented status/rubric adapter and recorder against real responses, including stale results after question or transcript changes.
@@ -151,3 +151,17 @@ The frontend programmer will:
 - Confirmation that `ailleo.net`, `www.ailleo.net`, and `math-practice.ailleo.net` still work after DNS changes.
 
 Use synthetic data for these checks. Local curl/model tests are useful, but public readiness requires the actual website-to-gateway browser path.
+
+## Historical review of gateway-0499a02669b3.tar.gz
+
+Read-only review on November 16, 2026. The source declares gateway version 0.3.0, while parts of README still describe older versions. Treat the archive as implementation evidence, not proof of the current deployed image or configuration. No archive scripts or tests were executed during this review.
+
+Confirmed from source and fixtures: `/api/status/speech` and `/api/status/decision` are unauthenticated health routes; bearer session issuance/renewal fields match the browser adapter; the consent and processing responses support collection OFF; raw WAV and transcription fields match; the D3 response includes the canonical 3/4/3 rubric mapping. When Turnstile is enabled, both initial session issuance and renewal require a fresh challenge.
+
+The following were findings in the original archive. V3 reports all three corrected; verify the revised package and deployment before public activation:
+
+1. **Turnstile website/action binding.** `gateway.py:287-306` accepts Siteverify's `success` without checking the returned `hostname` or `action`. Require `math-practice.ailleo.net` and the agreed action, proposed `math_practice_session`, as already specified above. Test otherwise-successful tokens with the wrong hostname or action. Update the test verifier at `tests/test_gateway.py:563-566` to return those fields. Enable Turnstile in the actual public deployment; example configuration and `fixtures/01b-config.json` currently show it disabled with no site key. [Official validation guidance](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/).
+2. **D3 question context.** `gateway.py:682-691` still omits the displayed question and choices from the D3 model state, and `tests/test_gateway.py:275-299` explicitly requires that omission. This is the behavior mismatch documented in section 4. Restore the displayed question and keyed choices while excluding reference answers/solutions, or present the behavior change for explicit review. Use a representative current frontend request, for example question ID `1989_AMC_8_Q02`, bank `amc`, and a keyed choice object, rather than only the old illustrative fixture.
+3. **Correct the consent-error fixture.** `fixtures/08-error-consent-required.json` and its manifest entry actually contain HTTP 400 `bad_request` for a missing transcript. Regenerate a valid transcript request with no processing consent so the fixture demonstrates HTTP 403 `consent_required`. The existing tests cover the permission gate, but the fixture does not.
+
+Return the revised source/tests, confirmed public URL, deployed Turnstile key/action, deployed revision/image identity, accepted notice and release metadata, and actual website-to-gateway test evidence listed above. Keep collection OFF. Current DNS status and the remaining deployment steps are in [DESKTOP_PUBLIC_CONNECTION_NEXT.md](DESKTOP_PUBLIC_CONNECTION_NEXT.md).
