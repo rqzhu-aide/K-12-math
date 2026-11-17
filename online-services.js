@@ -75,8 +75,7 @@
       const url = new URL(value.baseUrl);
       if (url.protocol === 'https:' && !url.username && !url.password && !url.search && !url.hash) baseUrl = url.href.replace(/\/+$/, '');
     } catch (_) {}
-    // A deployment must install this callback after its actual challenge policy is confirmed.
-    // The frontend deliberately does not assume a Turnstile site key, action or renewal policy.
+    // The hosted deployment installs the callback for its confirmed Turnstile key and action.
     const challengeConfigured = typeof value.getChallengeToken === 'function';
     return {configured: !!baseUrl && challengeConfigured, baseUrl, challengeConfigured};
   }
@@ -159,7 +158,7 @@
   async function check(role) {
     roleName(role);
     const path = deployment().statusRoutes && deployment().statusRoutes[role] || '/api/status/' + role;
-    // These paths match the local app; the public gateway must confirm status paths and auth.
+    // The public gateway exposes these health routes without a session token.
     try {
       const value = await request(route(path), {method: 'GET'}, null, 15000);
       if (!value || typeof value.available !== 'boolean') throw failure('response');
@@ -176,20 +175,39 @@
     state.session = null; state.consentKey = '';
     try { sessionStorage.removeItem(SESSION); } catch (_) {}
   }
+  async function challengeToken(renewal, signal) {
+    if (signal && signal.aborted) throw aborted();
+    const controller = new AbortController(); let cancel, timer;
+    const interrupted = new Promise((resolve, reject) => {
+      cancel = () => { controller.abort(); reject(aborted()); };
+      if (signal) signal.addEventListener('abort', cancel, {once: true});
+      // The widget has its own visible timeout. This also releases the session queue
+      // if a challenge callback stops responding or ignores cancellation.
+      timer = setTimeout(() => { controller.abort(); reject(failure('challenge')); }, 95000);
+    });
+    try {
+      const value = await Promise.race([interrupted, Promise.resolve().then(() => {
+        if (controller.signal.aborted) throw aborted();
+        return deployment().getChallengeToken({renewal, signal: controller.signal});
+      })]);
+      if (signal && signal.aborted) throw aborted();
+      if (!clean(value)) throw failure('challenge');
+      return clean(value);
+    } catch (error) {
+      if (signal && signal.aborted) throw aborted();
+      throw failure('challenge');
+    } finally {
+      clearTimeout(timer);
+      if (signal) signal.removeEventListener('abort', cancel);
+    }
+  }
   async function session(state, signal) {
     let current = state.session || loadSession();
     const now = Date.now(), expires = Date.parse(current.expires_at);
     const valid = clean(current.token) && clean(current.session_id) && Array.isArray(current.scopes);
     if (valid && expires > now && Number(current.renewAt) > now) { state.session = current; return current; }
     const renew = valid && expires > now;
-    let body = {};
-    if (!renew || deployment().renewalRequiresChallenge !== false) {
-      let challenge;
-      try { challenge = await deployment().getChallengeToken({renewal: !!renew, signal}); }
-      catch (error) { if (signal && signal.aborted) throw aborted(); throw failure('challenge'); }
-      if (!clean(challenge)) throw failure('challenge');
-      body = {turnstile_token: clean(challenge)};
-    }
+    const body = {turnstile_token: await challengeToken(!!renew, signal)};
     const headers = {'Content-Type': 'application/json'};
     if (renew) {
       headers.Authorization = 'Bearer ' + current.token;
@@ -215,7 +233,8 @@
     return value;
   }
   async function consent(state, token, settings, signal) {
-    const body = {transcription: settings.speech, d3: settings.decision, collection: false, notice_version: notice()};
+    const body = {transcription: settings.speech, d3: settings.decision, collection: false,
+      notice_version: notice(), site_release: deployment().siteRelease};
     const key = token.token + '|' + JSON.stringify(body);
     if (state.consentKey === key) return;
     const value = await request(route('/api/consent'), {method: 'POST', headers: {'Content-Type': 'application/json', Authorization: 'Bearer ' + token.token}, body: JSON.stringify(body)}, signal);
@@ -270,6 +289,7 @@
     if (!audio || audio.type !== 'audio/wav' || !Number.isFinite(audio.size) || audio.size > 2000000 || audio.size < 44) throw failure('bad_audio');
     const url = new URL(route('/api/transcription'));
     url.searchParams.set('question_id', context.id); url.searchParams.set('bank', context.bank); url.searchParams.set('release', context.release);
+    url.searchParams.set('site_release', deployment().siteRelease);
     const value = await authorized('speech', options.signal, token => request(url.href, {method: 'POST', headers: {'Content-Type': 'audio/wav', Authorization: 'Bearer ' + token.token}, body: audio}, options.signal));
     if (!value || value.question_id !== context.id || typeof value.text !== 'string' || value.text.length > 12000) throw failure('response');
     return value;
