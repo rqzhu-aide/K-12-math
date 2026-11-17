@@ -1,6 +1,6 @@
 # Math Practice UI 2.2.0
 
-**[Open Math Practice online](https://rqzhu-aide.github.io/K-12-math/)** to practice all 8,790 questions with worked solutions. Choose **Try a problem** for a starting question, or **Browse** to pick a contest, curriculum topic, or mathematical idea.
+**[Open Math Practice online](https://math-practice.ailleo.net/)** to practice all 8,790 questions with worked solutions. Choose **Try a problem** for a starting question, or **Browse** to pick a contest, curriculum topic, or mathematical idea. The custom address requires the DNS setup below.
 
 | Practice a question | Configure the three model roles |
 |:---:|:---:|
@@ -141,8 +141,10 @@ PowerShell commands from the repository root with shared installations of Python
 the checkout.
 
 ```powershell
-node --test scripts/test_hosted_runtime.js
+node --test scripts/test_hosted_runtime.js scripts/test_agreement.js
 if ($LASTEXITCODE -ne 0) { throw 'Hosted practice tests failed.' }
+python scripts/test_pages_export.py
+if ($LASTEXITCODE -ne 0) { throw 'Pages export tests failed.' }
 $pagesOutput = Join-Path (Split-Path -Parent $PWD.Path) ("K-12-math-pages-" + (Get-Date -Format yyyyMMdd-HHmmss))
 $pagesWorktree = "$pagesOutput-branch"
 python scripts/build_pages.py --output $pagesOutput
@@ -179,4 +181,46 @@ git worktree remove $pagesWorktree
 
 In GitHub **Settings → Pages**, the source is **Deploy from a branch**, with
 `gh-pages` and **/(root)** selected. GitHub publishes each update to that branch. Check the published
-[Math Practice site](https://rqzhu-aide.github.io/K-12-math/) after deployment.
+[Math Practice site](https://math-practice.ailleo.net/) after deployment.
+
+### Connect the Squarespace domain
+
+The public app uses **https://math-practice.ailleo.net/**. Squarespace continues
+hosting **ailleo.net** and **www.ailleo.net**. A separate subdomain does not need
+a URL redirect, a Squarespace page, or Cloudflare routing.
+
+1. In [GitHub Pages settings](https://github.com/rqzhu-aide/K-12-math/settings/pages),
+   use **Deploy from a branch**, **gh-pages**, and **/(root)**. Set **Custom domain**
+   to `math-practice.ailleo.net`, without `https://` or a path. Configure the GitHub
+   side before adding its DNS record.
+2. In the Squarespace domains dashboard, select **ailleo.net**, open **DNS**, and
+   add this custom record:
+
+   | Field | Value |
+   | --- | --- |
+   | Type | CNAME |
+   | Host / Name | `math-practice` |
+   | Data / Alias | `rqzhu-aide.github.io` |
+   | TTL | Default |
+
+   The target contains no scheme, repository name, or path. Leave the existing
+   apex (`@`), `www`, email, and verification records in place. If the exact
+   `math-practice` name already has a conflicting record, inspect that record
+   before replacing it.
+3. After DNS propagates, GitHub provisions the HTTPS certificate. Return to
+   GitHub Pages settings and enable **Enforce HTTPS** when available. Open
+   `https://math-practice.ailleo.net/` to check the agreement, a question, a figure,
+   and a worked solution. Squarespace advises allowing up to 24 to 48 hours for
+   DNS changes; GitHub says HTTPS availability can take up to 24 hours.
+
+The app opens at the site root. Old `/math-practice/` links redirect to the root
+and retain their query and fragment. The source repository's `CNAME` file is
+copied into the exported site so subsequent updates preserve the domain.
+The exporter's `--custom-domain` option can override that source setting.
+
+This publication serves the question banks, answer-key checks, worked solutions,
+and browser-local drafts. Publishing the website does not connect the desktop
+speech/D3 gateway or implement the independent online tutor route.
+
+References: [Squarespace DNS settings](https://support.squarespace.com/hc/en-us/articles/360002101888-Edit-your-domain-s-DNS-records),
+[GitHub Pages custom domains](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).

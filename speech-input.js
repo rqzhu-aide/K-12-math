@@ -1,6 +1,36 @@
 /* Microphone capture and reviewed text input. Audio is held only in memory. */
 (function () {
   'use strict';
+  const Language = window.MathPracticeLanguage;
+  const ui = (node, source, params) => Language.bindText(node, source, params);
+  const attribute = (node, name, source, params) => Language.bindAttribute(node, name, source, params);
+  Language.register({
+    'Recording discarded. Your written draft is unchanged.': '录音已丢弃，文字草稿未更改。',
+    'Stop and transcribe': '停止并转录', 'Opening microphone…': '正在打开麦克风…', 'Transcribing…': '正在转录…', 'Record thinking': '录下思路',
+    'Add a speech connection in Settings to record your thinking.': '在设置中添加语音连接，即可录下思路。',
+    'Cancel transcription': '取消转录', 'Discard recording': '丢弃录音', 'Add transcript': '添加转录文字', 'Retry transcription': '重试转录',
+    'Speech is not configured. You can type your thinking or add a speech connection in Settings.': '尚未配置语音服务。你可以输入思路，或在设置中添加语音连接。',
+    'Recording: local app only': '录音：仅限本地应用', 'Recording is available in the local app. You can type your thinking here.': '本地应用支持录音。你可以在这里输入思路。',
+    '{time} left': '剩余 {time}', 'Recording {time} / 1:00. Stop when you finish your thought.': '录音中 {time} / 1:00。说完思路后即可停止。',
+    'Open practice through the local launcher to record. You can still type your thinking.': '请通过本地启动器打开练习以使用录音。你仍可以输入思路。',
+    'This browser does not support recording here. Try current Chrome, Edge, Firefox, or Safari, or type your thinking.': '此浏览器不支持这里的录音功能。请使用最新版 Chrome、Edge、Firefox 或 Safari，也可以输入思路。',
+    'Allow microphone access in your browser. You can cancel while waiting.': '请在浏览器中允许访问麦克风。等待期间可以取消。',
+    'Recording stopped unexpectedly. Please record again or type your thinking.': '录音意外停止。请重新录音，或输入思路。',
+    'Microphone access was not allowed. Enable it for this page in your browser, or type your thinking.': '未获准访问麦克风。请在浏览器中为本页启用权限，或输入思路。',
+    'No microphone was found. Connect one, or type your thinking.': '未找到麦克风。请连接麦克风，或输入思路。',
+    'The microphone could not start. Check your browser and microphone, or type your thinking.': '麦克风无法启动。请检查浏览器和麦克风，或输入思路。',
+    'Recording stopped. Preparing your words…': '录音已停止，正在准备转录…',
+    'That recording was too short. Speak for a moment, then stop.': '这段录音过短。请说上一会儿再停止。',
+    'Transcribing your recording. Your draft stays editable; review the added text before submitting.': '正在转录录音。草稿仍可编辑；提交前请检查添加的文字。',
+    'Transcription returned an unreadable response. Check the local launcher and try again.': '转录返回的响应无法读取。请检查本地启动器后重试。',
+    'Transcription failed. Check the speech connection in Settings, then retry.': '转录失败。请在设置中检查语音连接，然后重试。',
+    'The speech service returned no transcript field. Check its API support in Settings.': '语音服务未返回转录文字字段。请在设置中检查其 API 支持情况。',
+    'No speech was detected. Your draft is unchanged. Try recording again or type your thinking.': '未检测到语音，草稿未更改。请重新录音，或输入思路。',
+    'Transcription took too long. Retry this recording, record again, or type your thinking.': '转录超时。可以重试这段录音、重新录音，或输入思路。',
+    'Could not reach transcription. Check the local launcher and speech settings, then retry.': '无法连接转录服务。请检查本地启动器和语音设置，然后重试。',
+    'The combined draft exceeds 12,000 characters. Shorten your writing, then choose Add transcript, or discard the recording.': '合并后的草稿超过 12,000 个字符。请缩短文字后选择“添加转录文字”，或丢弃录音。',
+    'Transcript added. Review and correct the text below, then choose Submit answer.': '转录文字已添加。请检查并修改下方文字，然后选择“提交答案”。'
+  });
   function encodeWav(chunks, rate) {
     const count = chunks.reduce((n, chunk) => n + chunk.length, 0);
     const samples = new Float32Array(count);
@@ -43,33 +73,33 @@
     sync(message) {
       const o = this.options;
       o.record.disabled = !this.configured() || !o.isEnabled() || o.isAssessing() || !['idle', 'recording', 'error', 'ready'].includes(this.state) || !!this.transcript;
-      o.recordLabel.textContent = this.state === 'recording' ? 'Stop and transcribe' : this.state === 'preparing' ? 'Opening microphone…' : this.state === 'transcribing' ? 'Transcribing…' : 'Record thinking';
-      o.record.title = this.configured() ? o.recordLabel.textContent : 'Add a speech connection in Settings to record your thinking.';
+      ui(o.recordLabel, this.state === 'recording' ? 'Stop and transcribe' : this.state === 'preparing' ? 'Opening microphone…' : this.state === 'transcribing' ? 'Transcribing…' : 'Record thinking');
+      attribute(o.record, 'title', this.configured() ? () => o.recordLabel.textContent : 'Add a speech connection in Settings to record your thinking.');
       o.record.setAttribute('aria-pressed', this.state === 'recording' ? 'true' : 'false');
       o.record.setAttribute('aria-busy', ['preparing', 'stopping', 'transcribing'].includes(this.state) ? 'true' : 'false');
       o.recordTime.hidden = o.recordProgress.hidden = this.state !== 'recording';
       if (this.state !== 'recording') this.updateProgress(0);
       o.cancel.hidden = !this.busy() && !this.audio;
-      o.cancel.textContent = this.state === 'transcribing' ? 'Cancel transcription' : 'Discard recording';
+      ui(o.cancel, this.state === 'transcribing' ? 'Cancel transcription' : 'Discard recording');
       o.retry.hidden = !(this.state === 'error' && (this.audio || this.transcript));
-      o.retry.textContent = this.transcript ? 'Add transcript' : 'Retry transcription';
+      ui(o.retry, this.transcript ? 'Add transcript' : 'Retry transcription');
       o.status.dataset.state = this.state;
       o.status.setAttribute('aria-live', this.state === 'recording' ? 'off' : 'polite');
-      if (message !== undefined) o.status.textContent = message;
-      else if (!o.isEnabled()) o.status.textContent = '';
-      else if (this.connectionMissing && this.configured()) o.status.textContent = '';
-      if (o.isEnabled() && !this.configured()) o.status.textContent = 'Speech is not configured. You can type your thinking or add a speech connection in Settings.';
+      if (message !== undefined) ui(o.status, message);
+      else if (!o.isEnabled()) ui(o.status, '');
+      else if (this.connectionMissing && this.configured()) ui(o.status, '');
+      if (o.isEnabled() && !this.configured()) ui(o.status, 'Speech is not configured. You can type your thinking or add a speech connection in Settings.');
       if (window.MATH_PRACTICE_HOSTED) {
-        o.recordLabel.textContent = 'Recording: local app only';
-        o.record.title = 'Recording is available in the local app. You can type your thinking here.';
-        o.status.textContent = '';
+        ui(o.recordLabel, 'Recording: local app only');
+        attribute(o.record, 'title', 'Recording is available in the local app. You can type your thinking here.');
+        ui(o.status, '');
       }
       this.connectionMissing = !this.configured();
       o.onState();
     }
     updateProgress(elapsed) {
       const remaining = Math.ceil((60000 - elapsed) / 1000);
-      this.options.recordTime.textContent = Math.floor(remaining / 60) + ':' + String(remaining % 60).padStart(2, '0') + ' left';
+      ui(this.options.recordTime, '{time} left', {time: Math.floor(remaining / 60) + ':' + String(remaining % 60).padStart(2, '0')});
       this.options.recordProgress.style.transform = 'scaleX(' + elapsed / 60000 + ')';
     }
     release(capture) {
@@ -138,7 +168,7 @@
           this.updateProgress(elapsed);
           if (capture.seconds !== seconds) {
             capture.seconds = seconds;
-            this.sync('Recording ' + Math.floor(seconds / 60) + ':' + String(seconds % 60).padStart(2, '0') + ' / 1:00. Stop when you finish your thought.');
+            this.sync({key: 'Recording {time} / 1:00. Stop when you finish your thought.', params: {time: Math.floor(seconds / 60) + ':' + String(seconds % 60).padStart(2, '0')}});
           }
           if (seconds >= 60) this.stop();
         };

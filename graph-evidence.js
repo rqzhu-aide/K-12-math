@@ -1,6 +1,19 @@
 /* Per-tab observations attached to reviewed knowledge-graph criteria. */
 (function () {
   'use strict';
+  const Language = window.MathPracticeLanguage;
+  const t = (source, params) => Language.t(source, params);
+  const ui = (node, source, params) => Language.bindText(node, source, params);
+  Language.register({
+    'No in-app help observed': '未观察到应用内帮助', 'After coaching': '接受辅导后', 'After a hint': '查看提示后', 'After viewing the solution': '查看解答后', 'Help history unknown': '帮助记录未知',
+    'Step demonstrated': '已展示该步骤', 'Step needs review': '该步骤需复查', 'Method unobserved': '未观察到解题方法', 'Mixed evidence': '观察结果不一致',
+    'No reasoning submitted': '未提交推理', 'Checks disagree': '检查结果不一致', 'Answer and explanation differ': '答案与解释不一致', 'Step unverified': '步骤尚未验证',
+    'Correct answer': '答案正确', 'Incorrect answer': '答案不正确', 'Partially correct answer': '答案部分正确', 'Answer unresolved': '答案尚未确定',
+    'Record details': '记录详情', 'Item {question} · Topic {topic} · Graph {graph}': '题目 {question} · 知识点 {topic} · 图谱 {graph}',
+    'The app checks the answer against the item key and looks for a supported calculation in the submitted explanation.': '应用会将答案与标准答案核对，并在提交的解释中查找可验证的计算。',
+    'Step shown on {successes} of {attempts} first attempts with assessable work and no observed help.': '在可评估且未观察到帮助的 {attempts} 次首次作答中，{successes} 次展示了此步骤。',
+    'Pilot observations for this practice tab.': '当前练习选项卡中的试点观察。', 'Observations are available until you leave this page.': '这些观察在离开此页面前可用。'
+  });
   const key = 'math-practice.graph-evidence.v1';
   const panel = document.getElementById('graphEvidence');
   const content = document.getElementById('graphEvidenceBody');
@@ -43,23 +56,24 @@
     for (const rows of groups.values()) {
       const topic = rows[0];
       const section = element('section', 'graph-criterion', '');
-      section.appendChild(element('h3', 'graph-topic', topic.topicLabel));
+      section.appendChild(ui(element('h3', 'graph-topic', ''), () => window.MathPracticeTopics
+        ? window.MathPracticeTopics.name(topic.topicId, topic.topicLabel) : topic.topicLabel));
       section.appendChild(element('p', 'graph-target', topic.criterion));
       const firstAttempts = new Map();
       const list = element('ol', 'graph-observations', '');
       for (const row of rows) {
         if (!firstAttempts.has(row.questionId)) firstAttempts.set(row.questionId, row);
         const item = element('li', 'graph-observation', '');
-        item.appendChild(element('strong', 'graph-outcome', row.status === 'unobserved' && Object.hasOwn(unresolved, row.observationReason)
+        item.appendChild(ui(element('strong', 'graph-outcome', ''), row.status === 'unobserved' && Object.hasOwn(unresolved, row.observationReason)
           ? unresolved[row.observationReason] : statuses[row.status]));
-        item.appendChild(element('span', 'graph-context', answers[row.answerCategory] + ' · ' + assistance[row.assistance]));
+        item.appendChild(ui(element('span', 'graph-context', ''), () => t(answers[row.answerCategory]) + ' · ' + t(assistance[row.assistance])));
         if (row.quote) item.appendChild(element('q', 'graph-quote', row.quote));
         const source = element('details', 'graph-source', '');
-        source.appendChild(element('summary', '', 'Record details'));
-        source.appendChild(element('p', '', 'Item ' + row.questionId + ' · Topic ' + row.topicId +
-          ' · Graph ' + row.graphRevision.slice(0, 8)));
+        source.appendChild(ui(element('summary', '', ''), 'Record details'));
+        source.appendChild(ui(element('p', '', ''), 'Item {question} · Topic {topic} · Graph {graph}',
+          {question: row.questionId, topic: row.topicId, graph: row.graphRevision.slice(0, 8)}));
         if (row.judgmentSource === 'deterministic_bounded_math_parser') {
-          source.appendChild(element('p', '', 'The app checks the answer against the item key and looks for a supported calculation in the submitted explanation.'));
+          source.appendChild(ui(element('p', '', ''), 'The app checks the answer against the item key and looks for a supported calculation in the submitted explanation.'));
         }
         item.appendChild(source);
         list.appendChild(item);
@@ -69,13 +83,12 @@
         ['demonstrated', 'needs_review'].includes(row.status));
       if (independent.length) {
         const successes = independent.filter(row => row.status === 'demonstrated').length;
-        section.appendChild(element('p', 'graph-summary', 'Step shown on ' + successes + ' of ' +
-          independent.length + ' first attempts with assessable work and no observed help.'));
+        section.appendChild(ui(element('p', 'graph-summary', ''), 'Step shown on {successes} of {attempts} first attempts with assessable work and no observed help.', {successes, attempts: independent.length}));
       }
       content.appendChild(section);
     }
-    document.getElementById('graphEvidenceScope').textContent = saved
-      ? 'Pilot observations for this practice tab.' : 'Observations are available until you leave this page.';
+    ui(document.getElementById('graphEvidenceScope'), saved
+      ? 'Pilot observations for this practice tab.' : 'Observations are available until you leave this page.');
   }
   function record(row) {
     if (!valid(row)) return;

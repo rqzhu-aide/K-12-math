@@ -1,6 +1,56 @@
 /* Original speech observations and submitted mathematical work stay separate. */
 (function () {
   'use strict';
+  const Language = window.MathPracticeLanguage;
+  const t = (source, params) => Language.t(source, params);
+  const ui = (node, source, params) => Language.bindText(node, source, params);
+  const attribute = (node, name, source, params) => Language.bindAttribute(node, name, source, params);
+  Language.register({
+    'Show a hint': '显示提示', 'Hide hint': '隐藏提示', 'Hint: ': '提示：',
+    'From original speech, before edits': '来自未经编辑的语音转录', 'Reading the original transcript for learning signals...': '正在从原始转录中分析学习信号…',
+    'Your original transcript is ready to check. Review its learning signals when ready.': '原始转录已可检查。准备好后可查看学习信号。',
+    'Learning signals returned an incomplete result. Try the check again.': '学习信号返回的结果不完整，请重新检查。',
+    'Learning signals took too long. Retry when ready.': '学习信号分析超时，准备好后请重试。',
+    'Could not reach learning signals. Check the backend connection.': '无法连接学习信号服务。请检查后台连接。',
+    'Original speech signals unavailable': '原始语音信号不可用', 'Retry speech signals': '重试语音信号分析', 'Local app only': '仅限本地应用',
+    'Learning signals are available in the local app. Your work stays in this browser.': '本地应用支持学习信号分析。你的作答保存在此浏览器中。',
+    'Decision model not configured': '未配置分析模型', 'Your transcript is saved. Add a decision model in Connections to check original speech for learning signals.': '转录文字已保存。在连接设置中添加分析模型后，即可从原始语音文字中分析学习信号。',
+    'Confidence': '自信程度', 'Clarity of reasoning': '思路表达清晰度', 'Engagement': '投入程度', 'Unsure': '不确定', 'Confident': '有信心', 'Not expressed': '未表达',
+    'Clearly explained': '表达清楚', 'Some steps unclear': '部分步骤不清楚', 'Hard to follow': '难以理解', 'No explanation': '未解释',
+    'Interested or persistent': '有兴趣或愿意坚持', 'Frustrated or discouraged': '感到受挫或灰心',
+    'Model probability {score}': '模型概率 {score}', 'All probabilities and original speech': '所有概率与原始语音文字', 'Evidence and original speech': '依据与原始语音文字',
+    'These observations describe the original transcript, not mathematical accuracy or measured certainty about you.': '这些观察描述的是原始转录文字，不代表数学正确性，也不是对你个人确定程度的测量。',
+    'Original speech transcript: {transcript}': '原始语音转录：{transcript}', 'Learning signals ready from your original speech.': '原始语音的学习信号已准备好。',
+    'This feedback belongs to your earlier try. Submit your changes for a fresh check.': '此反馈对应上一次作答。提交修改后可重新检查。',
+    'Thinking: Submit your changes for a fresh check.': '思路：请提交修改以重新检查。', 'Choose a problem first.': '请先选择题目。', 'Choose or enter an answer before submitting.': '提交前请选择或输入答案。',
+    'Thinking: Checking your reasoning...': '思路：正在检查推理…', 'Complete or clarify your answer above, then submit again.': '请补全或澄清上方答案，然后重新提交。',
+    'AI reasoning feedback is available in the local app. Your work stays in this browser.': '本地应用支持 AI 推理反馈。你的作答保存在此浏览器中。',
+    'Start the local launcher and add a model in Connections for reasoning feedback.': '请启动本地启动器，并在连接设置中添加模型，以获取推理反馈。',
+    'Add a decision or inference model in Connections for reasoning feedback.': '在连接设置中添加分析或推理模型，即可获取推理反馈。',
+    'Add an inference model in Connections for reasoning feedback.': '在连接设置中添加推理模型，即可获取推理反馈。',
+    'Add your thinking and submit again for a reasoning review.': '请补充思路并重新提交，以获取推理点评。',
+    'Thinking: Not checked. The model check is unavailable. Your answer check above still applies.': '思路：尚未检查。模型检查当前不可用，上方答案检查结果仍然适用。',
+    'The check took too long. Submit again to retry.': '检查超时，请重新提交以重试。',
+    'Could not reach the backend. Start the local launcher and submit again.': '无法连接后台。请启动本地启动器后重新提交。',
+    'Thinking: Not checked.': '思路：尚未检查。', 'Correct answer; thinking not checked': '答案正确，思路尚未检查',
+    'Not graded: Disputed problem.': '不评分：此题存在争议。', 'No score is assigned. You can still explore this problem.': '此题不计分，你仍可以探索解法。',
+    'Correct answer and thinking': '答案和思路正确', 'Incorrect answer': '答案不正确', 'Correct answer; thinking needs review': '答案正确，思路需复查', 'Answer needs review': '答案需复查',
+    'Answers {answer}: ': '答案 {answer}：', 'Answer {answer}: ': '答案 {answer}：', 'Answer: ': '答案：',
+    'Correct.': '正确。', 'Not quite yet.': '还不正确。', 'Not quite yet. Check your final answer against your working.': '还不正确。请对照解题过程检查最终答案。',
+    'Partially correct.': '部分正确。', 'Partially correct. Complete your answer or use the requested form.': '部分正确。请补全答案，或按要求的形式作答。',
+    'Not checked automatically.': '未自动检查。', 'Not checked automatically. Compare with the reference solution.': '未自动检查，请对照参考解答。',
+    'A step needs another look.': '有一步需要重新检查。', 'Partly explained.': '解释尚不完整。', 'Not checked.': '尚未检查。', 'Thinking: ': '思路：', 'Not provided yet.': '尚未提供。',
+    'Generating response...': '正在生成回应…', 'Thinking: Your explanation still needs a closer review. Retry when ready.': '思路：你的解释仍需进一步检查，准备好后请重试。',
+    'Thinking: Not provided yet.': '思路：尚未提供。', 'The tutor took too long. Retry when ready.': '辅导响应超时，准备好后请重试。',
+    'The tutor could not connect. Check inference settings and retry.': '辅导模型无法连接。请检查推理设置后重试。', 'Retry review': '重试点评', 'Retry hint': '重试提示',
+    'AI feedback is available in the local app.': '本地应用支持 AI 反馈。', 'The service returned an unreadable response. Try again.': '服务返回的响应无法读取，请重试。',
+    'The check could not finish. Try again.': '检查未能完成，请重试。', 'The check returned a different submission. Submit again to retry.': '检查返回的内容对应其他提交，请重新提交以重试。',
+    'The answer and reasoning check returned an incomplete result. Try submitting again.': '答案与推理检查返回的结果不完整，请重新提交。',
+    'The tutor returned a different submission. Retry the review.': '辅导返回的内容对应其他提交，请重试点评。', 'The tutor returned an incomplete or overlong review. Retry the review.': '辅导返回的点评不完整或过长，请重试。',
+    'Write your final answer as a decimal numeral rather than a fraction or expression.': '请将最终答案写成小数，而不是分数或表达式。',
+    'Write the numerical coefficient first and omit multiplication signs between the coefficient and letters.': '请将数字系数写在前面，并省略系数与字母之间的乘号。',
+    'Write the values in the order requested in the problem.': '请按题目要求的顺序写出各个数值。'
+  });
   const Answers = window.MathPracticeAnswers;
   class PracticeFeedback {
     constructor(options) {
@@ -15,8 +65,8 @@
         if (!this.hint || this.edited()) return;
         const open = this.n.hintBody.hidden;
         this.n.hintBody.hidden = !open;
-        this.n.hintBody.textContent = open ? this.hint : '';
-        this.n.hintToggle.textContent = open ? 'Hide hint' : 'Show a hint';
+        this.showFeedbackText(this.n.hintBody, open ? this.hint : '', open);
+        ui(this.n.hintToggle, open ? 'Hide hint' : 'Show a hint');
         this.n.hintToggle.setAttribute('aria-expanded', String(open));
         if (open) {
           this.context.last.openedHint = this.hint;
@@ -170,8 +220,8 @@
       if (!this.services().decision) { this.skipSignals(); return; }
       if (this.signalRequest) this.signalRequest.abort();
       const serial = ++this.signalSerial, controller = new AbortController(); this.signalRequest = controller;
-      this.o.panel.dataset.state = 'loading'; this.o.panelStatus.textContent = 'From original speech, before edits';
-      this.o.results.replaceChildren(this.o.el('p', 'signals-loading', 'Reading the original transcript for learning signals...'));
+      this.o.panel.dataset.state = 'loading'; ui(this.o.panelStatus, 'From original speech, before edits');
+      this.o.results.replaceChildren(ui(this.o.el('p', 'signals-loading'), 'Reading the original transcript for learning signals...'));
       this.o.collapse(false);
       try {
         const reply = await this.post('/api/learning-signals', {questionId: q.id, transcript: evidence.transcript}, controller);
@@ -187,28 +237,29 @@
     }
     signalError(message) {
       if (!this.services().decision) { this.skipSignals(); return; }
-      this.o.panel.dataset.state = 'error'; this.o.panelStatus.textContent = 'Original speech signals unavailable';
-      const box = this.o.el('div', 'signals-error'); box.appendChild(this.o.el('p', null, message));
-      const retry = this.o.el('button', 'ghost', 'Retry speech signals'); retry.type = 'button'; retry.addEventListener('click', () => this.checkSignals()); box.appendChild(retry);
+      this.o.panel.dataset.state = 'error'; ui(this.o.panelStatus, 'Original speech signals unavailable');
+      const box = this.o.el('div', 'signals-error'); box.appendChild(ui(this.o.el('p'), message));
+      const retry = ui(this.o.el('button', 'ghost'), 'Retry speech signals'); retry.type = 'button'; retry.addEventListener('click', () => this.checkSignals()); box.appendChild(retry);
       this.o.results.replaceChildren(box);
     }
     skipSignals() {
       if (window.MATH_PRACTICE_HOSTED) {
-        this.o.panel.dataset.state = 'idle'; this.o.panelStatus.textContent = 'Local app only';
-        this.o.results.replaceChildren(this.o.el('p', 'signals-empty', 'Learning signals are available in the local app. Your work stays in this browser.'));
+        this.o.panel.dataset.state = 'idle'; ui(this.o.panelStatus, 'Local app only');
+        this.o.results.replaceChildren(ui(this.o.el('p', 'signals-empty'), 'Learning signals are available in the local app. Your work stays in this browser.'));
         return;
       }
-      this.o.panel.dataset.state = 'idle'; this.o.panelStatus.textContent = 'Decision model not configured';
-      this.o.results.replaceChildren(this.o.el('p', 'signals-empty', 'Your transcript is saved. Add a decision model in Connections to check original speech for learning signals.'));
+      this.o.panel.dataset.state = 'idle'; ui(this.o.panelStatus, 'Decision model not configured');
+      this.o.results.replaceChildren(ui(this.o.el('p', 'signals-empty'), 'Your transcript is saved. Add a decision model in Connections to check original speech for learning signals.'));
     }
     renderSignals() {
-      const el = this.o.el, wrap = el('div', 'signals-result'), list = el('dl', 'signal-list');
+      const raw = this.o.el, el = (tag, className, value) => { const node = raw(tag, className); if (value !== undefined) ui(node, value); return node; };
+      const wrap = el('div', 'signals-result'), list = el('dl', 'signal-list');
       for (const signal of this.evidence.signals) {
         const row = el('div', 'signal-row'), value = el('dd'); row.appendChild(el('dt', null, signal.title));
         value.appendChild(el('span', null, signal.label));
         if (typeof signal.score === 'number') {
           const score = el('span', 'signal-probability', this.o.percent(signal.score));
-          score.setAttribute('aria-label', 'Model probability ' + this.o.percent(signal.score)); value.appendChild(score);
+          attribute(score, 'aria-label', 'Model probability {score}', {score: this.o.percent(signal.score)}); value.appendChild(score);
         }
         row.appendChild(value); list.appendChild(row);
       }
@@ -218,12 +269,12 @@
       details.appendChild(el('p', null, 'These observations describe the original transcript, not mathematical accuracy or measured certainty about you.'));
       for (const signal of this.evidence.signals) {
         details.appendChild(el('strong', null, signal.title));
-        if (signal.evidence) details.appendChild(el('p', null, signal.evidence));
+        if (signal.evidence) details.appendChild(raw('p', null, signal.evidence));
         for (const item of signal.distribution || []) { const row = el('div', 'signal-score'); row.appendChild(el('span', null, item.label)); row.appendChild(el('span', 'num', this.o.percent(item.score))); details.appendChild(row); }
       }
-      details.appendChild(el('p', 'submitted-work', 'Original speech transcript: ' + this.evidence.transcript)); wrap.appendChild(details);
-      this.o.results.replaceChildren(wrap); this.o.panel.dataset.state = 'ready'; this.o.panelStatus.textContent = 'From original speech, before edits';
-      this.o.announce.textContent = 'Learning signals ready from your original speech.';
+      details.appendChild(el('p', 'submitted-work', {key: 'Original speech transcript: {transcript}', params: {transcript: this.evidence.transcript}})); wrap.appendChild(details);
+      this.o.results.replaceChildren(wrap); this.o.panel.dataset.state = 'ready'; ui(this.o.panelStatus, 'From original speech, before edits');
+      ui(this.o.announce, 'Learning signals ready from your original speech.');
     }
     edited() {
       return !this.submitted || !this.o.question() || this.o.question().id !== this.submitted.question.id || this.bank() !== this.submitted.bank || this.layer() !== this.submitted.curriculumLayer || this.curriculumNodeId() !== this.submitted.curriculumNodeId || !Answers.same(this.o.answer(), this.submitted.answer) || this.o.draft.value.trim() !== this.submitted.thoughts;
@@ -231,14 +282,14 @@
     revisionChanged() {
       const edited = this.edited();
       this.n.reviewNote.hidden = !this.submitted || !edited;
-      this.n.reviewNote.textContent = this.submitted && edited ? 'This feedback belongs to your earlier try. Submit your changes for a fresh check.' : '';
+      ui(this.n.reviewNote, this.submitted && edited ? 'This feedback belongs to your earlier try. Submit your changes for a fresh check.' : '');
       this.n.hintToggle.disabled = edited; this.n.tutorRetry.disabled = edited;
       if (edited) {
         if (this.mathRequest || this.tutorRequest) {
           this.cancelMath(); this.mathState = 'idle'; this.n.tutorStatus.hidden = true; this.n.tutorRetry.hidden = true;
-          this.n.reasoningFeedback.textContent = 'Thinking: Submit your changes for a fresh check.';
+          ui(this.n.reasoningFeedback, 'Thinking: Submit your changes for a fresh check.');
         }
-        this.n.hintBody.hidden = true; this.n.hintBody.textContent = ''; this.n.hintToggle.setAttribute('aria-expanded', 'false'); this.n.hintToggle.textContent = 'Show a hint';
+        this.n.hintBody.hidden = true; ui(this.n.hintBody, ''); this.n.hintToggle.setAttribute('aria-expanded', 'false'); ui(this.n.hintToggle, 'Show a hint');
       }
     }
     async submit() {
@@ -250,7 +301,7 @@
         return;
       }
       if (!question || !Answers.hasAnswer(answer)) {
-        this.o.note.textContent = !question ? 'Choose a problem first.' : 'Choose or enter an answer before submitting.';
+        ui(this.o.note, !question ? 'Choose a problem first.' : 'Choose or enter an answer before submitting.');
         return;
       }
       this.cancelMath(); this.submitted = this.freeze(question, answer, thoughts); this.initialCategory = null; this.initialAnswerCategory = null; this.hint = ''; this.assessment = null;
@@ -261,12 +312,12 @@
       const exactCategory = this.o.classifyAnswer(question, answer);
       this.showAnswer(answer, this.o.checkAnswer(question, answer), exactCategory);
       this.showSubmissionMark('cannot_judge', exactCategory);
-      n.reasoningFeedback.className = 'reasoning-feedback'; n.reasoningFeedback.textContent = 'Thinking: Checking your reasoning...';
-      n.coach.hidden = true; n.hintToggle.hidden = true; n.hintBody.hidden = true; n.hintBody.textContent = ''; n.tutorRetry.hidden = true; n.tutorStatus.hidden = true;
+      n.reasoningFeedback.className = 'reasoning-feedback'; ui(n.reasoningFeedback, 'Thinking: Checking your reasoning...');
+      n.coach.hidden = true; n.hintToggle.hidden = true; n.hintBody.hidden = true; ui(n.hintBody, ''); n.tutorRetry.hidden = true; n.tutorStatus.hidden = true;
       if (exactCategory === 'partial') {
-        this.showCoach(window.MathPracticeAnswers.formFeedback(question, answer) || 'Complete or clarify your answer above, then submit again.', true);
+        this.showCoach(window.MathPracticeAnswers.formFeedback(question, answer) || 'Complete or clarify your answer above, then submit again.', true, true);
       }
-      n.hintToggle.setAttribute('aria-expanded', 'false'); n.hintToggle.textContent = 'Show a hint';
+      n.hintToggle.setAttribute('aria-expanded', 'false'); ui(n.hintToggle, 'Show a hint');
       this.revisionChanged();
       const serial = this.serial, submitted = this.submitted, controller = new AbortController(); this.mathRequest = controller;
       try {
@@ -306,8 +357,8 @@
         if (!this.current(serial, submitted)) return;
         this.mathState = 'error';
         if (!thoughts) this.showUnchecked('Add your thinking and submit again for a reasoning review.', exactCategory);
-        else n.reasoningFeedback.textContent = 'Thinking: Not checked. The model check is unavailable. Your answer check above still applies.';
-        this.o.note.textContent = error.name === 'AbortError' ? 'The check took too long. Submit again to retry.' : error instanceof TypeError ? 'Could not reach the backend. Start the local launcher and submit again.' : error.message;
+        else ui(n.reasoningFeedback, 'Thinking: Not checked. The model check is unavailable. Your answer check above still applies.');
+        ui(this.o.note, error.name === 'AbortError' ? 'The check took too long. Submit again to retry.' : error instanceof TypeError ? 'Could not reach the backend. Start the local launcher and submit again.' : error.message);
       } finally {
         if (serial === this.serial) { this.mathRequest = null; this.o.setRunning(false); this.o.updated(); }
       }
@@ -315,11 +366,11 @@
     showUnchecked(message, answerCategory) {
       const n = this.n;
       this.showSubmissionMark('cannot_judge', answerCategory);
-      if (answerCategory === 'correct') n.submissionMark.setAttribute('aria-label', 'Correct answer; thinking not checked');
-      n.reasoningFeedback.textContent = 'Thinking: Not checked. ' + message;
+      if (answerCategory === 'correct') attribute(n.submissionMark, 'aria-label', 'Correct answer; thinking not checked');
+      ui(n.reasoningFeedback, () => t('Thinking: Not checked.') + ' ' + t(message));
       n.reasoningFeedback.className = 'reasoning-feedback verdict-cannot_judge';
       n.hintToggle.hidden = true; n.hintBody.hidden = true; n.tutorRetry.hidden = true; n.tutorStatus.hidden = true;
-      this.o.announce.textContent = n.answerFeedback.textContent + ' ' + n.reasoningFeedback.textContent;
+      ui(this.o.announce, () => n.answerFeedback.textContent + ' ' + n.reasoningFeedback.textContent);
     }
     validAnswer(value) {
       return ['correct', 'wrong', 'partial', 'cannot_judge'].includes(value.answerCategory)
@@ -346,30 +397,44 @@
       const n = this.n;
       this.showSubmissionMark();
       n.workFeedback.hidden = false;
-      n.answerFeedback.textContent = 'Not graded: Disputed problem.'; n.answerFeedback.className = 'answer-feedback';
-      n.reasoningFeedback.textContent = 'No score is assigned. You can still explore this problem.'; n.reasoningFeedback.className = 'reasoning-feedback';
-      n.coach.hidden = false; n.coach.textContent = note || 'None of the printed choices answers this problem as written.';
-      n.hintToggle.hidden = true; n.hintBody.hidden = true; n.hintBody.textContent = ''; n.tutorRetry.hidden = true; n.tutorStatus.hidden = true;
-      this.o.announce.textContent = n.answerFeedback.textContent + ' ' + n.coach.textContent;
+      ui(n.answerFeedback, 'Not graded: Disputed problem.'); n.answerFeedback.className = 'answer-feedback';
+      ui(n.reasoningFeedback, 'No score is assigned. You can still explore this problem.'); n.reasoningFeedback.className = 'reasoning-feedback';
+      n.coach.hidden = false; this.showFeedbackText(n.coach, note || 'None of the printed choices answers this problem as written.');
+      n.hintToggle.hidden = true; n.hintBody.hidden = true; ui(n.hintBody, ''); n.tutorRetry.hidden = true; n.tutorStatus.hidden = true;
+      ui(this.o.announce, () => n.answerFeedback.textContent + ' ' + n.coach.textContent);
     }
     showSubmissionMark(category, answerCategory) {
       const mark = this.n.submissionMark;
       const result = answerCategory === 'wrong' ? 'wrong' : !category ? '' : answerCategory === 'correct' && category === 'correct' ? 'correct' : 'review';
       const labels = {correct: 'Correct answer and thinking', wrong: 'Incorrect answer', review: answerCategory === 'correct' ? 'Correct answer; thinking needs review' : 'Answer needs review'};
       mark.dataset.result = result; mark.hidden = !result;
-      mark.setAttribute('aria-label', labels[result] || '');
+      attribute(mark, 'aria-label', labels[result] || '');
     }
     showAnswer(answer, correct, category, hasCoach) {
       category = category || (correct === null ? 'cannot_judge' : correct ? 'correct' : 'wrong');
       const kind = this.submitted.question.responseType || 'choice';
-      const label = kind === 'multiSelect' ? 'Answers ' + Answers.format(answer) + ': ' : kind !== 'choice' ? 'Answer: ' : 'Answer ' + answer + ': ';
+      const label = () => kind === 'multiSelect' ? t('Answers {answer}: ', {answer: Answers.format(answer)}) : kind !== 'choice' ? t('Answer: ') : t('Answer {answer}: ', {answer});
       const labels = {correct: 'Correct.', wrong: hasCoach ? 'Not quite yet.' : 'Not quite yet. Check your final answer against your working.', partial: hasCoach ? 'Partially correct.' : 'Partially correct. Complete your answer or use the requested form.', cannot_judge: hasCoach ? 'Not checked automatically.' : 'Not checked automatically. Compare with the reference solution.'};
-      this.n.answerFeedback.textContent = label + labels[category];
+      ui(this.n.answerFeedback, () => label() + t(labels[category]));
       this.n.answerFeedback.className = 'answer-feedback' + (category === 'correct' ? ' correct' : ' verdict-' + category);
     }
-    showCoach(coach, assistance) {
+    showFeedbackText(node, text, hint = false, translateText = false) {
+      Language.unbindText(node);
+      node.textContent = text || '';
+      node.dataset.hint = String(hint && Boolean(text));
+      if (translateText && text) {
+        node.textContent = '';
+        node.appendChild(ui(document.createElement('span'), text));
+      }
+      if (hint && text) {
+        const label = document.createElement('strong');
+        ui(label, 'Hint: ');
+        node.prepend(label);
+      }
+    }
+    showCoach(coach, assistance, translateText = false) {
       this.n.coach.hidden = !coach;
-      this.n.coach.textContent = coach || '';
+      this.showFeedbackText(this.n.coach, coach, assistance, translateText);
       if (coach) {
         this.o.typeset(this.n.coach);
         if (this.context && this.context.last) {
@@ -382,10 +447,10 @@
     showVerdict(category, coach, answerCategory, formFeedback) {
       this.showSubmissionMark(category, answerCategory);
       const n = this.n, labels = {correct: 'Correct.', wrong: 'A step needs another look.', partial: 'Partly explained.', cannot_judge: 'Not checked.'};
-      n.reasoningFeedback.textContent = 'Thinking: ' + (category === 'partial' && !this.submitted.thoughts ? 'Not provided yet.' : labels[category]); n.reasoningFeedback.className = 'reasoning-feedback verdict-' + category;
+      ui(n.reasoningFeedback, () => t('Thinking: ') + t(category === 'partial' && !this.submitted.thoughts ? 'Not provided yet.' : labels[category])); n.reasoningFeedback.className = 'reasoning-feedback verdict-' + category;
       const text = coach || (answerCategory === 'partial' ? formFeedback || 'Complete or clarify your answer above, then submit again.' : '');
-      this.showCoach(text, category !== 'correct' || answerCategory !== 'correct');
-      this.o.announce.textContent = n.answerFeedback.textContent + ' ' + n.reasoningFeedback.textContent + (text ? ' ' + text : '');
+      this.showCoach(text, category !== 'correct' || answerCategory !== 'correct', !coach);
+      ui(this.o.announce, () => n.answerFeedback.textContent + ' ' + n.reasoningFeedback.textContent + (text ? ' ' + text : ''));
     }
     validTutor(value) {
       if (!['correct', 'wrong', 'partial'].includes(value.category) || !this.validAnswer(value)
@@ -402,7 +467,8 @@
       const submitted = this.submitted, controller = new AbortController(), n = this.n;
       this.tutorRequest = controller; n.tutorRetry.hidden = true; n.tutorStatus.hidden = false;
       const reviewing = [category, answerCategory].some(value => value === 'partial' || value === 'cannot_judge');
-      n.tutorStatus.textContent = submitted.thoughts ? 'Reviewing your thinking. You can keep working.' : 'Reviewing your answer. You can keep working.';
+      n.tutorStatus.dataset.state = 'loading';
+      ui(n.tutorStatus, 'Generating response...');
       try {
         const value = await this.post('/api/tutor', {bank: submitted.bank, curriculumLayer: submitted.curriculumLayer, curriculumNodeId: submitted.curriculumNodeId, questionId: submitted.question.id, answer: submitted.answer, thoughts: submitted.thoughts, category, answerCategory, turn: submitted.turn}, controller);
         if (!this.current(serial, submitted)) return;
@@ -421,17 +487,22 @@
           || value.category === 'correct' && value.answerCategory === 'correct' && value.hint.trim()) throw new Error('The tutor returned an incomplete or overlong review. Retry the review.');
         this.showAnswer(submitted.answer, value.answerCorrect, value.answerCategory, true);
         this.showVerdict(value.category, value.coach.trim(), value.answerCategory, value.answerFormFeedback); this.hint = value.hint.trim();
-        n.hintBody.hidden = true; n.hintBody.textContent = ''; n.hintToggle.setAttribute('aria-expanded', 'false'); n.hintToggle.textContent = 'Show a hint';
+        n.hintBody.hidden = true; ui(n.hintBody, ''); n.hintToggle.setAttribute('aria-expanded', 'false'); ui(n.hintToggle, 'Show a hint');
         n.hintToggle.hidden = !this.hint; n.tutorStatus.hidden = true;
         this.finishGraph(value, serial, submitted);
         this.o.connection('inference', 'ok', 'Ready', 'The inference model returned a mathematical review.'); this.revisionChanged();
       } catch (error) {
         if (!this.current(serial, submitted)) return;
-        if (category === 'cannot_judge') n.reasoningFeedback.textContent = submitted.thoughts ? 'Thinking: Your explanation still needs a closer review. Retry when ready.' : 'Thinking: Not provided yet.';
-        n.tutorStatus.textContent = error.name === 'AbortError' ? 'The tutor took too long. Retry when ready.' : error instanceof TypeError ? 'The tutor could not connect. Check inference settings and retry.' : error.message;
-        n.tutorRetry.hidden = false; n.tutorRetry.textContent = reviewing ? 'Retry review' : 'Retry hint'; this.revisionChanged();
+        if (category === 'cannot_judge') ui(n.reasoningFeedback, submitted.thoughts ? 'Thinking: Your explanation still needs a closer review. Retry when ready.' : 'Thinking: Not provided yet.');
+        ui(n.tutorStatus, error.name === 'AbortError' ? 'The tutor took too long. Retry when ready.' : error instanceof TypeError ? 'The tutor could not connect. Check inference settings and retry.' : error.message);
+        n.tutorRetry.hidden = false; ui(n.tutorRetry, reviewing ? 'Retry review' : 'Retry hint'); this.revisionChanged();
         this.finishGraph(this.assessment, serial, submitted);
-      } finally { if (serial === this.serial) this.tutorRequest = null; }
+      } finally {
+        if (serial === this.serial) {
+          this.tutorRequest = null;
+          n.tutorStatus.dataset.state = '';
+        }
+      }
     }
   }
   window.MathPracticeFeedback = PracticeFeedback;
