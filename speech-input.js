@@ -219,8 +219,9 @@
         }
         if (!reply || typeof reply.text !== 'string') throw new Error('The speech service returned no transcript field. Check its API support in Settings.');
         if (serial !== this.serial) return;
+        this.audio = null;
         this.transcript = reply.text.trim();
-        if (!this.transcript) { this.audio = null; this.state = 'ready'; this.sync('No speech was detected. Your draft is unchanged. Try recording again or type your thinking.'); return; }
+        if (!this.transcript) { this.state = 'ready'; this.sync('No speech was detected. Your draft is unchanged. Try recording again or type your thinking.'); return; }
         if (this.options.onTranscript) this.options.onTranscript(this.transcript);
         this.appendTranscript();
       } catch (error) {
@@ -239,7 +240,7 @@
         this.state = 'error'; this.sync('The combined draft exceeds 12,000 characters. Shorten your writing, then choose Add transcript, or discard the recording.'); return;
       }
       draft.value = value;
-      this.transcript = ''; this.audio = null; this.state = 'ready';
+      this.transcript = ''; this.state = 'ready';
       this.options.onDraft();
       this.sync('Transcript added. Review and correct the text below, then choose Submit answer.');
       draft.focus();

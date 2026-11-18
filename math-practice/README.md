@@ -230,7 +230,7 @@ copied into the exported site so subsequent updates preserve the domain.
 The exporter's `--custom-domain` option can override that source setting.
 
 The publication includes question banks, answer-key checks, available worked solutions,
-browser-local drafts, and online tutor settings for the learner's own API URL,
+drafts held in the open tab, a browser notebook for submitted work, and online tutor settings for the learner's own API URL,
 key, and model. ChatGPT account sign-in is forthcoming; its helper and setup guide
 are not included in the hosted build. Publishing the site does not activate the
 separate desktop speech/D3 gateway.

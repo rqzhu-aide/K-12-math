@@ -1,7 +1,7 @@
 /* First-visit acknowledgement, stored only in this browser. This is not an account or age check. */
 (function () {
   'use strict';
-  const version = '2026-11-17.1';
+  const version = '2026-11-17.2';
   const key = 'math-practice.agreement.v1';
   const current = new URL(window.location.href);
   const script = document.currentScript && document.currentScript.src;

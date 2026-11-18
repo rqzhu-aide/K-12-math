@@ -18,7 +18,7 @@
     'Could not reach learning signals. Check the backend connection.': '无法连接学习信号服务。请检查后台连接。',
     'Original speech signals unavailable': '原始语音信号不可用', 'Retry speech signals': '重试语音信号分析', 'Local app only': '仅限本地应用',
     'Learning signals are available in the local app. Your work stays in this browser.': '本地应用支持学习信号分析。你的作答保存在此浏览器中。',
-    'Sentiment Check LLM not configured': '未配置情绪分析大语言模型', 'Your transcript is saved. Add a Sentiment Check LLM in Connections to check original speech for learning signals.': '转录文字已保存。在连接设置中添加情绪分析大语言模型后，即可从原始语音文字中分析学习信号。',
+    'Sentiment Check LLM not configured': '未配置情绪分析大语言模型', 'Add a Sentiment Check LLM in Connections to check original speech for learning signals.': '在连接设置中添加情绪分析大语言模型，即可从原始语音文字中分析学习信号。',
     'The Sentiment Check LLM assessed the original transcript.': '情绪分析大语言模型已分析原始语音转录文字。',
     'The Sentiment Check LLM checked the submitted work.': '情绪分析大语言模型已检查提交的作答。',
     'Confidence': '自信程度', 'Clarity of reasoning': '思路表达清晰度', 'Engagement': '投入程度', 'Unsure': '不确定', 'Confident': '有信心', 'Not expressed': '未表达',
@@ -29,6 +29,7 @@
     'Original speech transcript: {transcript}': '原始语音转录：{transcript}', 'Learning signals ready from your original speech.': '原始语音的学习信号已准备好。',
     'This feedback belongs to your earlier try. Submit your changes for a fresh check.': '此反馈对应上一次作答。提交修改后可重新检查。',
     'Thinking: Submit your changes for a fresh check.': '思路：请提交修改以重新检查。', 'Choose a problem first.': '请先选择题目。', 'Choose or enter an answer before submitting.': '提交前请选择或输入答案。',
+    'Enter an answer or write your thinking before saving.': '保存前请输入答案或写下你的解题思路。',
     'Thinking: Checking your reasoning...': '思路：正在检查推理…', 'Complete or clarify your answer above, then submit again.': '请补全或澄清上方答案，然后重新提交。',
     'AI reasoning feedback is available in the local app. Your work stays in this browser.': '本地应用支持 AI 推理反馈。你的作答保存在此浏览器中。',
     'Connect your own tutor in Settings for reasoning feedback.': '在设置中连接你自己的辅导模型，以获取推理反馈。',
@@ -78,7 +79,7 @@
         this.n.hintToggle.setAttribute('aria-expanded', String(open));
         if (open) {
           this.context.last.openedHint = this.hint;
-          this.noteAssistance('hint'); this.o.save(); this.o.typeset(this.n.hintBody);
+          this.noteAssistance('hint'); this.o.saveContext(); this.o.typeset(this.n.hintBody);
         }
       });
       this.n.tutorRetry.addEventListener('click', () => {
@@ -100,29 +101,46 @@
     layer() { return this.o.layer ? this.o.layer() : 'ailleo'; }
     curriculumNodeId() { return this.o.curriculumNodeId ? this.o.curriculumNodeId() : null; }
     state() { return this.context; }
-    previous(value) {
+    static submittedWork(value) {
       const validAnswer = value && (typeof value.answer === 'string' && value.answer.length <= 2000
         || Array.isArray(value.answer) && value.answer.length <= 100 && new Set(value.answer).size === value.answer.length
           && value.answer.every(id => typeof id === 'string' && id.length > 0 && id.length <= 2000));
-      if (!value || !validAnswer || typeof value.thoughts !== 'string' || value.thoughts.length > 12000
-          || typeof value.coach !== 'string' || value.coach.length > 3000 || !(value.openedHint === null || typeof value.openedHint === 'string' && value.openedHint.length <= 3000)) return null;
-      return {answer: Answers.copy(value.answer), thoughts: value.thoughts, coach: value.coach, openedHint: value.openedHint};
+      if (!validAnswer || typeof value.thoughts !== 'string' || value.thoughts.length > 12000) return null;
+      return {answer: Answers.copy(value.answer), thoughts: value.thoughts};
+    }
+    static previous(value, includeFeedback) {
+      const work = this.submittedWork(value);
+      if (!work || !includeFeedback) return work;
+      const coach = typeof value.coach === 'string' && value.coach.length <= 3000 ? value.coach : '';
+      const openedHint = typeof value.openedHint === 'string' && value.openedHint.length <= 3000 ? value.openedHint : null;
+      return {...work, coach, openedHint};
+    }
+    static savedContext(value, questionId, bank, includeFeedback = false) {
+      if (!value || value.version !== 1 || value.questionId !== questionId || typeof value.sessionId !== 'string'
+          || !value.sessionId || value.sessionId.length > 128 || typeof value.bank !== 'string' || !value.bank.trim() || value.bank !== bank) return null;
+      const help = ['none', 'coach', 'hint', 'solution', 'unknown'];
+      const context = {version: 1, sessionId: value.sessionId, questionId, bank,
+        assistance: help.includes(value.assistance) ? value.assistance : 'unknown', last: null};
+      const last = value.last;
+      if (!last) return context;
+      const work = this.previous(last, includeFeedback), turn = last.turn, previous = turn && this.previous(turn.previous, includeFeedback);
+      if (!work || typeof last.revisionId !== 'string' || !last.revisionId || last.revisionId.length > 128
+          || !turn || turn.revisionId !== last.revisionId || !help.includes(turn.assistance)
+          || !(turn.action === 'submit' && turn.previous === null || turn.action === 'revise' && previous)) {
+        context.assistance = 'unknown';
+        return context;
+      }
+      context.last = {...work, revisionId: last.revisionId, curriculumNodeId: typeof last.curriculumNodeId === 'string' ? last.curriculumNodeId : null,
+        curriculumLayer: ['ailleo', 'CN', 'US'].includes(last.curriculumLayer) ? last.curriculumLayer : 'ailleo',
+        turn: {revisionId: last.revisionId, action: turn.action, assistance: turn.assistance, previous}};
+      return context;
     }
     restoreTurn(value, hasHistory) {
       const q = this.o.question();
       if (!q) return;
-      const compatible = value && value.version === 1 && value.sessionId === this.sessionId && value.questionId === q.id && value.bank === this.bank();
-      const help = ['none', 'coach', 'hint', 'solution', 'unknown'];
-      this.context = {version: 1, sessionId: this.sessionId, questionId: q.id, bank: this.bank(),
-        assistance: compatible && help.includes(value.assistance) ? value.assistance : hasHistory || value ? 'unknown' : 'none', last: null};
-      const last = compatible && value.last;
-      if (last && typeof last.revisionId === 'string' && last.revisionId && last.revisionId.length <= 128 && this.previous(last)
-          && last.turn && last.turn.revisionId === last.revisionId && help.includes(last.turn.assistance)
-          && (last.turn.action === 'submit' && last.turn.previous === null || last.turn.action === 'revise' && this.previous(last.turn.previous))) {
-        this.context.last = {...this.previous(last), revisionId: last.revisionId, curriculumNodeId: typeof last.curriculumNodeId === 'string' ? last.curriculumNodeId : null, curriculumLayer: ['ailleo', 'CN', 'US'].includes(last.curriculumLayer) ? last.curriculumLayer : 'ailleo', turn: {revisionId: last.revisionId,
-          action: last.turn.action, assistance: last.turn.assistance, previous: this.previous(last.turn.previous)}};
-      }
-      else if (last) this.context.assistance = 'unknown';
+      const stored = value && value.sessionId === this.sessionId && PracticeFeedback.savedContext(value, q.id, this.bank(), true);
+      this.context = stored || {version: 1, sessionId: this.sessionId, questionId: q.id, bank: this.bank(),
+        assistance: hasHistory || value ? 'unknown' : 'none', last: null};
     }
     ensureContext() {
       const q = this.o.question();
@@ -134,7 +152,7 @@
       const levels = ['none', 'coach', 'hint', 'solution', 'unknown'];
       if (kind === 'solution' || levels.indexOf(kind) > levels.indexOf(this.context.assistance)) this.context.assistance = kind;
     }
-    solutionOpened() { this.noteAssistance('solution'); this.o.save(); }
+    solutionOpened() { this.noteAssistance('solution'); this.o.saveContext(); }
     freeze(question, answer, thoughts) {
       this.ensureContext();
       answer = Answers.copy(answer);
@@ -199,13 +217,18 @@
       this.o.setRunning(false);
     }
     clear() {
-      this.cancelMath(); this.signalSerial++;
-      if (this.signalRequest) this.signalRequest.abort();
-      this.signalRequest = null; this.evidence = null; this.submitted = null; this.hint = '';
+      this.cancelMath(); this.clearSpeech();
+      this.submitted = null; this.hint = '';
       this.context = null; this.assessment = null;
       this.mathState = 'idle';
       this.showSubmissionMark();
       this.n.workFeedback.hidden = true;
+    }
+    clearSpeech() {
+      this.signalSerial++;
+      if (this.signalRequest) this.signalRequest.abort();
+      this.signalRequest = null;
+      this.evidence = null;
     }
     restore(evidence) {
       if (!evidence || typeof evidence.transcript !== 'string' || !evidence.transcript.trim()) return;
@@ -216,8 +239,9 @@
     }
     recorded(transcript) {
       if (!transcript || !this.o.question()) return;
+      this.clearSpeech();
       this.evidence = {transcript, signals: null};
-      this.o.save();
+      this.o.saveDraft();
       this.checkSignals();
     }
     validSignals(signals) {
@@ -246,7 +270,7 @@
         this.updateServices(reply);
         if (reply.decisionConfigured === false) { this.skipSignals(); return; }
         if (reply.questionId !== q.id || reply.transcript !== evidence.transcript || !this.validSignals(reply.signals)) throw new Error('Learning signals returned an incomplete result. Try the check again.');
-        this.evidence = {transcript: evidence.transcript, signals: reply.signals}; this.o.save(); this.renderSignals();
+        this.evidence = {transcript: evidence.transcript, signals: reply.signals}; this.o.saveDraft(); this.renderSignals();
         this.o.connection('decision', 'ok', 'Ready', 'The Sentiment Check LLM assessed the original transcript.');
       } catch (error) {
         if (serial === this.signalSerial) this.signalError(error.name === 'AbortError' ? 'Learning signals took too long. Retry when ready.' : error instanceof TypeError ? 'Could not reach learning signals. Check the backend connection.' : error.message);
@@ -267,7 +291,7 @@
         return;
       }
       this.o.panel.dataset.state = 'idle'; ui(this.o.panelStatus, 'Sentiment Check LLM not configured');
-      this.o.results.replaceChildren(ui(this.o.el('p', 'signals-empty'), 'Your transcript is saved. Add a Sentiment Check LLM in Connections to check original speech for learning signals.'));
+      this.o.results.replaceChildren(ui(this.o.el('p', 'signals-empty'), 'Add a Sentiment Check LLM in Connections to check original speech for learning signals.'));
     }
     renderSignals() {
       const raw = this.o.el, el = (tag, className, value) => { const node = raw(tag, className); if (value !== undefined) ui(node, value); return node; };
@@ -314,6 +338,7 @@
       const question = this.o.question(), answer = Answers.copy(this.o.answer()), thoughts = this.o.draft.value.trim();
       const gradingNote = question ? window.MathPracticeAnswers.gradingNotice(question) : null;
       if (gradingNote !== null) {
+        if (!Answers.hasAnswer(answer) && !thoughts) { ui(this.o.note, 'Enter an answer or write your thinking before saving.'); return; }
         this.cancelMath(); this.submitted = this.freeze(question, answer || '', thoughts); this.mathState = 'ready';
         this.o.submitted(this.submitted); this.showNotGraded(gradingNote); this.o.updated();
         return;
@@ -458,7 +483,7 @@
         if (this.context && this.context.last) {
           this.context.last.coach = coach;
           if (assistance) this.noteAssistance('coach');
-          this.o.save();
+          this.o.saveContext();
         }
       }
     }

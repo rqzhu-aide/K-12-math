@@ -66,13 +66,11 @@ Reference: [Turnstile server-side validation](https://developers.cloudflare.com/
 
 ## 3. Keep processing permission separate from retention
 
-Preserve `POST /api/consent` with independent `transcription`, `d3`, and `collection` choices, plus `notice_version`. Return the server-recorded consent state and `effective_collection`. Declining collection must still allow permitted processing.
+Preserve `POST /api/consent` for independent `transcription` and `d3` permissions and the processing `notice_version`. The browser sends `collection: false` and the server returns `effective_collection: false` on this route. Declining sharing still allows permitted processing.
 
-For the first public connection, keep the operator collection switch **OFF**, and have the frontend send `collection: false`. The current general website agreement is not a replacement for the service-specific notice and choices.
+Keep the operator collection switch **OFF**. The proposed submission routes and separate opt-in are documented in the [current collection handoff](DESKTOP_PUBLIC_CONNECTION_NEXT.md#next-change-prepare-optional-sharing-of-submitted-thinking).
 
-Before enabling collection, finish the owner-approved retention period, deletion contact/process, participant eligibility and guardian-supervision requirements, and versioned EN/CN notice. Enforce eligibility and current consent as well as the operator switch and retention setting. Never present an anonymous session as proof of identity or guardian consent.
-
-The owner chose **transcripts, D3 results, and relevant question metadata only**. Raw recordings are processing-only. Verify audio cleanup on success, failure, timeout, cancellation, and worker restart, including gateway/upstream temporary files and logs. Implement transcript/result expiry and authorized deletion across spool, archive, indexes, and backups before enabling retention.
+Audio, original transcripts, and D3 inputs and results are processing-only, even after submission sharing is enabled. Verify cleanup on success, failure, timeout, cancellation, and worker restart, including gateway and upstream temporary files and logs.
 
 ## 4. Finish and share the exact API contract
 
@@ -81,7 +79,7 @@ Send an OpenAPI document or equivalent complete request/response fixtures. Inclu
 | Route | Required behavior |
 | --- | --- |
 | `POST /api/session` | Anonymous issuance and renewal, including Turnstile policy |
-| `POST /api/consent` | Independent processing and collection choices; reject stale notice |
+| `POST /api/consent` | Independent speech and D3 processing choices. Validate the processing notice and keep collection off. |
 | `GET /api/status/speech` | Proposed frontend status route; confirm or supply the existing exact route |
 | `GET /api/status/decision` | Proposed D3 status route; confirm or supply the existing exact route |
 | `POST /api/transcription` | Raw WAV plus question metadata, bearer token and processing permission |
@@ -95,7 +93,7 @@ The existing recorder already produces one mono, 16 kHz, 16-bit PCM WAV, at most
 
 Use `question_id`, `bank`, and `release` query metadata. Real frontend IDs use values such as `question_id=1989_AMC_8_Q02` and `bank=amc`; do not require the illustrative `amc8-1989-p02` / `amc8` strings in the v2 report. Agree on one explicit release identifier; it is not necessarily the contest year.
 
-Preserve the v2 response fields `text`, `text_chars`, `latency_ms`, `chunks`, `session_id`, `question_id`, `recorded`, and `record_id`. With collection off, `recorded` must be false and `record_id` null. Do not log audio bodies or transcript text.
+Preserve the v2 response fields `text`, `text_chars`, `latency_ms`, `chunks`, `session_id`, `question_id`, `recorded`, and `record_id`. Always return `recorded: false` and `record_id: null`. Do not log audio bodies or transcript text.
 
 ### D3
 
@@ -119,7 +117,7 @@ Confirm support for a keyed choices object. This preserves the actual choice lab
 
 **Verify the reported context correction:** the existing local D3 implementation includes the displayed question and choices as context, while excluding the reference answer and solution. V2 omitted the question and choices; v3 reports that they have been restored with keyed choices. Check the revised source/tests and a representative request before integration. Do not send reference answers or solutions upstream to D3.
 
-Preserve the canonical rubrics from `student_assessment.py`: confidence has 3 choices, reasoning has 4, engagement has 3. Return `question_id`, the exact analyzed `transcript`, `rubric_version`, `answers`, full letter-to-code/label `rubrics`, timing, session ID, and collection fields. Validate complete, finite probabilities in range with the documented normalization tolerance. The frontend will display the probability of the selected choice; it must not mistake an upstream margin named `confidence` for that probability.
+Preserve the canonical rubrics from `student_assessment.py`: confidence has 3 choices, reasoning has 4, engagement has 3. Return `question_id`, the exact analyzed `transcript`, `rubric_version`, `answers`, full letter-to-code/label `rubrics`, timing, session ID, `recorded: false`, and `record_id: null`. Validate complete, finite probabilities in range with the documented normalization tolerance. The frontend will display the probability of the selected choice; it must not mistake an upstream margin named `confidence` for that probability.
 
 For every non-2xx response, retain:
 
@@ -135,7 +133,7 @@ The frontend programmer will:
 
 1. Completed: the hosted build connects to `https://api.ailleo.net` and loads Turnstile only when a consented request needs verification. The public site key is published; the private secret remains on the desktop.
 2. Verify the implemented EN/CN notice, processing choices, session issuance/renewal, and error recovery against the deployed gateway. Keep collection off initially.
-3. Verify that only speech and D3 calls reach the gateway. Tutor traffic and credentials must stay on the learner's independent connection.
+3. Verify the deployed speech and D3 paths. Verify the proposed submission routes against the current handoff before enabling sharing. Tutor traffic and credentials must stay on the learner's independent connection.
 4. Verify the implemented status/rubric adapter and recorder against real responses, including stale results after question or transcript changes.
 5. Enable the services only after the real browser tests below pass.
 

@@ -1226,7 +1226,7 @@ footer .source-credits p { margin: 0; }
     <div class="written-answer" id="writtenAnswer" hidden>
       <label id="writtenAnswerLabel" for="freeAnswer" data-i18n="Your answer">Your answer</label>
       <input class="free-answer" id="freeAnswer" aria-label="Your answer" data-i18n-aria-label="Your answer" maxlength="2000" autocomplete="off" placeholder="Enter your answer" data-i18n-placeholder="Enter your answer" hidden>
-      <textarea class="free-answer" id="openAnswer" aria-label="Your answer" data-i18n-aria-label="Your answer" maxlength="2000" rows="4" placeholder="Describe your answer. It will receive a review." data-i18n-placeholder="Describe your answer. It will receive a review." hidden></textarea>
+      <textarea class="free-answer" id="openAnswer" aria-label="Your answer" data-i18n-aria-label="Your answer" maxlength="2000" rows="4" autocomplete="off" placeholder="Describe your answer. It will receive a review." data-i18n-placeholder="Describe your answer. It will receive a review." hidden></textarea>
     </div>
     <div class="welcome" id="practiceWelcome">
       <div><h2 data-i18n="What will you discover?">What will you discover?</h2><p data-i18n="Try an idea. Follow a pattern. Give yourself room to work things out.">Try an idea. Follow a pattern. Give yourself room to work things out.</p><button type="button" class="primary" id="beginPractice" data-i18n="Try a problem">Try a problem</button></div>
@@ -1256,7 +1256,7 @@ footer .source-credits p { margin: 0; }
     </div>
     <p class="speech-status" id="speechStatus" role="status" aria-live="polite"></p>
     <p class="speech-help" id="speechHelp" data-i18n="Write your approach. With a speech connection, you can also record up to a minute and edit before submitting.">Write your approach. With a speech connection, you can also record up to a minute and edit before submitting.</p>
-    <textarea maxlength="12000" id="thoughts" aria-describedby="speechStatus speechHelp submissionNote saveWarning" placeholder="I noticed that… So I tried…" data-i18n-placeholder="I noticed that… So I tried…"></textarea>
+    <textarea maxlength="12000" id="thoughts" autocomplete="off" aria-describedby="speechStatus speechHelp submissionNote saveWarning" placeholder="I noticed that… So I tried…" data-i18n-placeholder="I noticed that… So I tried…"></textarea>
     <details class="earlier-attempt" id="earlierAttempt" hidden><summary data-i18n="Look back at your first approach">Look back at your first approach</summary><p id="earlierAnswer"></p><p id="earlierWork"></p><p data-i18n="What do you notice now that you did not notice before?">What do you notice now that you did not notice before?</p></details>
     <div class="actions">
       <button type="button" class="ghost" id="thoughtsClear" data-i18n="Clear draft">Clear draft</button>
@@ -1298,7 +1298,7 @@ footer .source-credits p { margin: 0; }
       <span id="notebookNoticeText"></span>
       <button type="button" class="notebook-undo" id="notebookUndo" data-i18n="Undo">Undo</button>
     </div>
-    <p class="notebook-empty" id="notebookEmpty" data-i18n="Save a challenge or try a problem. Your recent work will be here when you return.">Save a challenge or try a problem. Your recent work will be here when you return.</p>
+    <p class="notebook-empty" id="notebookEmpty" data-i18n="Save a challenge or submit an answer to find it here when you return.">Save a challenge or submit an answer to find it here when you return.</p>
   </aside>
   <details id="graphEvidence" class="graph-evidence" hidden>
     <summary data-i18n="Knowledge graph evidence">Knowledge graph evidence</summary>
@@ -1343,7 +1343,7 @@ footer .source-credits p { margin: 0; }
       <p><span data-i18n="Chinese curriculum: ">Chinese curriculum: </span><a href="https://github.com/xiaoyang111222/cn-math-taxonomy" target="_blank" rel="noopener noreferrer">cn-math-taxonomy</a><span data-i18n=" · English adaptations · "> · English adaptations · </span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a><span data-i18n=" (also the original app)"> (also the original app)</span> · <a href="database/cn-math-bank/NOTICE.md" target="_blank" rel="noopener noreferrer" data-i18n="Source notes">Source notes</a></p>
       <p id="pathAttribution" hidden><a href="https://www.thecorestandards.org/public-license/" target="_blank" rel="noopener noreferrer">© Copyright 2010. National Governors Association Center for Best Practices and Council of Chief State School Officers. All rights reserved.</a></p>
     </div>
-    <span data-i18n="Drafts are saved in this browser. When enabled, AI features send text or audio to configured services. Keep personal information out.">Drafts are saved in this browser. When enabled, AI features send text or audio to configured services. Keep personal information out.</span>
+    <span data-i18n="Drafts stay in this open tab. Submitted work is saved in this browser. When enabled, AI features send text or audio to configured services. Keep personal information out.">Drafts stay in this open tab. Submitted work is saved in this browser. When enabled, AI features send text or audio to configured services. Keep personal information out.</span>
     <a href="agreement.html" target="_blank" rel="noopener" data-i18n="Privacy & use agreement">Privacy &amp; use agreement</a>
     <span class="site-credit"><span data-i18n="Developed by Ruoqing Zhu · ">Developed by Ruoqing Zhu · </span><a href="https://github.com/rqzhu-aide" target="_blank" rel="noopener noreferrer">GitHub: rqzhu-aide</a></span>
   </footer>
@@ -1407,13 +1407,6 @@ footer .source-credits p { margin: 0; }
     uiText($('signalsStatus'), 'Not connected');
     $('resultsBody').replaceChildren(uiEl('p', 'signals-empty', 'Ailleo speech and learning signals are not connected yet.'));
     document.querySelector('.signals-footnote').hidden = true;
-    try { hostedBanks = await window.MathPracticeHosted.ready; }
-    catch (_) {
-      uiText($('poolHint'), 'Practice data could not load. Check your connection and reload this page.');
-      $('beginPractice').disabled = true;
-      uiText($('pathStatus'), 'Practice paths could not load. Reload this page to try again.');
-      return;
-    }
   }
   var answerTools = window.MathPracticeAnswers;
   var els = {
@@ -1422,42 +1415,132 @@ footer .source-credits p { margin: 0; }
     panel: $("signalsPanel"), panelToggle: $("panelToggle"), panelStatus: $("signalsStatus"),
     submissionNote: $("submissionNote"), announcement: $("assessmentAnnouncement")
   };
-  var ATTEMPTS_KEY = "math-practice.attempts.v1", attempts = {};
-  try { attempts = JSON.parse(localStorage.getItem(ATTEMPTS_KEY) || "{}"); } catch (_) {}
-  if (!attempts || typeof attempts !== "object" || Array.isArray(attempts)) attempts = {};
-  var NOTEBOOK_KEY = "math-practice.notebook.v1", notebook = {};
-  try { notebook = JSON.parse(localStorage.getItem(NOTEBOOK_KEY) || "{}"); } catch (_) {}
-  if (!notebook || typeof notebook !== "object" || Array.isArray(notebook)) notebook = {};
-  var saveFailures = {draft: false, notebook: false};
+  var LEGACY_ATTEMPTS_KEY = 'math-practice.attempts.v1', NOTEBOOK_KEY = 'math-practice.notebook.v1';
+  var drafts = Object.create(null), notebook = Object.create(null), pendingNotebookEdits = [];
+  var saveFailures = {legacy: false, migration: false, notebook: false};
+  var PracticeFeedback = window.MathPracticeFeedback;
+  function sameWork(a, b) { return a && b && a.thoughts === b.thoughts && answerTools.same(a.answer, b.answer); }
+  function submittedWork(value) {
+    if (value && value.answer == null) value = { ...value, answer: '' };
+    var work = PracticeFeedback.submittedWork(value);
+    return work && (work.thoughts.trim() || answerTools.hasAnswer(work.answer)) ? work : null;
+  }
+  function readNotebook(cleanLegacyRecords) {
+    var raw, saved, result = Object.create(null), needsCleanup = false;
+    try { raw = localStorage.getItem(NOTEBOOK_KEY); } catch (_) { return null; }
+    try { saved = JSON.parse(raw || '{}'); } catch (_) { return result; }
+    if (!saved || typeof saved !== 'object' || Array.isArray(saved)) return result;
+    Object.entries(saved).forEach(function ([id, value]) {
+      if (!value || typeof value !== 'object') return;
+      var first = submittedWork(value.first), last = submittedWork(value.last) || first;
+      var entry = {saved: value.saved === true, removed: value.removed === true, touched: Number.isFinite(value.touched) ? value.touched : 0};
+      if (!last && !entry.saved) { needsCleanup = true; return; }
+      var turn = value.tutorContext && value.tutorContext.last;
+      if ([turn, turn && turn.turn && turn.turn.previous].some(function (item) {
+        return item && (Object.hasOwn(item, 'coach') || Object.hasOwn(item, 'openedHint'));
+      })) needsCleanup = true;
+      if (last) {
+        entry.first = first || last; entry.last = last;
+        entry.submissions = Number.isSafeInteger(value.submissions) && value.submissions > 0 ? value.submissions : 1;
+        if (Number.isFinite(value.submittedAt)) entry.submittedAt = value.submittedAt;
+        var context = value.tutorContext && PracticeFeedback.savedContext(value.tutorContext, id, value.tutorContext.bank);
+        if (context && sameWork(last, context.last)) entry.tutorContext = context;
+      }
+      result[id] = entry;
+    });
+    if (cleanLegacyRecords && needsCleanup && !writeNotebook(result)) saveFailures.notebook = true;
+    return result;
+  }
+  function migrateLegacyAttempts() {
+    var raw, legacy;
+    try { raw = localStorage.getItem(LEGACY_ATTEMPTS_KEY); } catch (_) { return; }
+    if (raw === null) { saveFailures.legacy = saveFailures.migration = false; return; }
+    try { legacy = JSON.parse(raw); } catch (_) {}
+    var current = readNotebook(), recovery = Object.create(null);
+    if (legacy && typeof legacy === 'object' && !Array.isArray(legacy)) Object.entries(legacy).forEach(function ([id, attempt]) {
+      var value = attempt && attempt.tutorContext;
+      if (!value) return;
+      var context = PracticeFeedback.savedContext(value, id, value.bank), work = context && submittedWork(context.last);
+      if (!work) return;
+      var entry = current && current[id] || {}, previous = submittedWork(context.last.turn.previous);
+      var repairsLatest = entry.last && !sameWork(entry.last, work);
+      if (repairsLatest && (entry.submittedAt !== undefined || !sameWork(entry.last, previous))) return;
+      if (!repairsLatest && entry.tutorContext) return;
+      recovery[id] = {tutorContext: context};
+      if (!current) return;
+      if (!entry.last) {
+        entry.first = previous || work; entry.last = work; entry.submissions = previous ? 2 : 1;
+      } else if (repairsLatest) {
+        entry.last = work; entry.submissions++;
+      }
+      entry.tutorContext = context; current[id] = entry;
+    });
+    saveFailures.migration = Object.keys(recovery).length > 0 && (!current || !writeNotebook(current));
+    try {
+      if (saveFailures.migration) {
+        var safe = JSON.stringify(recovery);
+        if (safe !== raw) localStorage.setItem(LEGACY_ATTEMPTS_KEY, safe);
+      } else localStorage.removeItem(LEGACY_ATTEMPTS_KEY);
+      saveFailures.legacy = false;
+    } catch (_) { saveFailures.legacy = true; }
+    if (current) loadNotebook(current);
+  }
+  function loadNotebook(current) {
+    if (!current) return;
+    pendingNotebookEdits.forEach(function (edit) { edit(current); });
+    notebook = current;
+  }
+  loadNotebook(readNotebook(true));
+  migrateLegacyAttempts();
+  window.addEventListener('storage', function (event) {
+    if (event.key === LEGACY_ATTEMPTS_KEY) migrateLegacyAttempts();
+    else if (event.key === NOTEBOOK_KEY || event.key === null) loadNotebook(readNotebook());
+    else return;
+    updateSaveWarning();
+    if (questionIndex) updatePracticeTools();
+  });
   function updateSaveWarning() {
     var warning = $('saveWarning');
-    var message = saveFailures.draft
-      ? 'This browser could not save your latest work' + (saveFailures.notebook ? ' or notebook changes' : '') + '. Keep this page open or copy your thinking before leaving.'
-      : saveFailures.notebook ? 'This browser could not save your notebook changes. They may be lost when this page closes.' : '';
+    var message = '';
+    if (saveFailures.legacy) message = 'This browser could not remove drafts saved by an earlier version. Allow browser storage and reload to retry.';
+    else if (saveFailures.migration) message = 'This browser could not update your notebook. Earlier submissions are still stored. Reload after freeing browser storage to retry.';
+    else if (saveFailures.notebook) message = 'This browser could not save your notebook changes. They may be lost when this page closes.';
     var changed = warning.dataset.message !== message;
     if (changed) { warning.dataset.message = message; uiText(warning, message); }
     warning.hidden = !message;
     if (changed && lastSubmitted) updateSubmissionNote();
   }
-  function saveAttempt(edited) {
+  function saveDraft(edited) {
     if (!currentQuestion) return;
-    var previous = attempts[currentQuestion.id] || {};
-    var changed = (previous.thoughts || '') !== els.thoughts.value || !answerTools.same(previous.answer || null, selectedAnswer || null);
-    attempts[currentQuestion.id] = { thoughts: els.thoughts.value, answer: answerTools.copy(selectedAnswer), originalSpeech: feedback ? feedback.evidence : null,
-      tutorContext: feedback ? feedback.state() : previous.tutorContext || null };
-    try { localStorage.setItem(ATTEMPTS_KEY, JSON.stringify(attempts)); saveFailures.draft = false; }
-    catch (_) { saveFailures.draft = true; }
-    var entry = notebook[currentQuestion.id] || {};
-    if (els.thoughts.value.trim() || answerTools.hasAnswer(selectedAnswer) || (entry.removed && edited && changed)) {
-      if (edited && changed) entry.removed = false;
-      entry.touched = Date.now(); notebook[currentQuestion.id] = entry;
-      saveNotebook();
-    }
-    updateSaveWarning();
+    var id = currentQuestion.id, entry = notebook[id] || {}, previous = drafts[id] || entry.last || {};
+    var work = {thoughts: els.thoughts.value, answer: answerTools.copy(selectedAnswer)};
+    var changed = edited && !sameWork(previous, work);
+    var touched = previous.touched || 0;
+    if (changed) touched = !sameWork(entry.last, work) && (work.thoughts.trim() || answerTools.hasAnswer(work.answer)) ? Date.now() : 0;
+    drafts[id] = { ...work, touched, originalSpeech: feedback.evidence, tutorContext: feedback.state() };
+    if (changed) renderNotebook();
   }
-  function saveDraft() { saveAttempt(true); }
+  function saveContext() {
+    saveDraft();
+    if (!currentQuestion) return;
+    var context = PracticeFeedback.savedContext(feedback.state(), currentQuestion.id, BANK.id);
+    if (!context || !context.last) return;
+    editNotebook(currentQuestion.id, function (entry) {
+      if (sameWork(entry.last, context.last) && entry.tutorContext && entry.tutorContext.last.revisionId === context.last.revisionId) entry.tutorContext = context;
+    });
+  }
   function updateChips() { updateSubmissionNote(); }
-  els.thoughts.addEventListener("input", function () { saveAttempt(true); updateSubmissionNote(); });
+  els.thoughts.addEventListener('input', function () { saveDraft(true); updateSubmissionNote(); });
+  updateSaveWarning();
+  if (hosted) {
+    try { hostedBanks = await window.MathPracticeHosted.ready; }
+    catch (_) {
+      uiText($('poolHint'), 'Practice data could not load. Check your connection and reload this page.');
+      $('beginPractice').disabled = true;
+      uiText($('pathStatus'), 'Practice paths could not load. Reload this page to try again.');
+      return;
+    }
+  }
 
   /* ---------- Question pool ---------- */
 
@@ -1471,10 +1554,6 @@ footer .source-credits p { margin: 0; }
   function usesGradeNavigation(bank) { return bank.id !== 'amc'; }
   var questionIndex = Object.create(null);
   BANKS.forEach(function (bank) { bank.questions.forEach(function (q) { questionIndex[q.id] = { question: q, bank: bank }; }); });
-  Object.keys(attempts).forEach(function (id) {
-    var draft = attempts[id];
-    if (!notebook[id] && questionIndex[id] && draft && (draft.thoughts || answerTools.hasAnswer(draft.answer))) notebook[id] = {touched: 1};
-  });
   var pool = {
     bank: $("selBank"),
     year: $("selYear"), level: $("selLevel"), batch: $("selBatch"), num: $("selNum"),
@@ -1484,28 +1563,66 @@ footer .source-credits p { margin: 0; }
   function setPoolHint(source) { pool.hint.removeAttribute('data-i18n'); pool.hint.replaceChildren(uiEl('span', null, source)); }
 
   var notebookUndoEntry = null;
-  function saveNotebook() {
-    try { localStorage.setItem(NOTEBOOK_KEY, JSON.stringify(notebook)); saveFailures.notebook = false; }
-    catch (_) { saveFailures.notebook = true; }
+  function writeNotebook(current) {
+    try { localStorage.setItem(NOTEBOOK_KEY, JSON.stringify(current)); return true; }
+    catch (_) { return false; }
+  }
+  function editNotebook(id, update) {
+    function edit(current) { update(current[id] || (current[id] = {})); }
+    pendingNotebookEdits.push(edit);
+    var current = readNotebook();
+    if (current) loadNotebook(current);
+    else edit(notebook);
+    saveFailures.notebook = !current || !writeNotebook(current);
+    if (!saveFailures.notebook) pendingNotebookEdits = [];
     updateSaveWarning();
     renderNotebook();
   }
+  function saveSubmission(snapshot) {
+    lastSubmitted = snapshot;
+    var id = snapshot.question.id, now = Date.now();
+    var approach = {answer: answerTools.copy(snapshot.answer), thoughts: snapshot.thoughts};
+    var context = PracticeFeedback.savedContext(feedback.state(), id, snapshot.bank);
+    if (drafts[id]) drafts[id].touched = 0;
+    saveDraft();
+    editNotebook(id, function (entry) {
+      if (entry.submittedAt > now) return;
+      if (!entry.first) entry.first = approach;
+      if (!sameWork(entry.last, approach)) {
+        entry.submissions = (entry.submissions || 0) + 1;
+        entry.removed = false;
+      }
+      entry.last = approach; entry.touched = now; entry.submittedAt = now;
+      entry.tutorContext = sameWork(approach, context && context.last) ? context : null;
+    });
+    updatePracticeTools(); updateSubmissionNote();
+  }
   function renderNotebook() {
-    var ids = Object.keys(notebook).filter(function (id) { return questionIndex[id] && notebook[id] && !notebook[id].removed && (notebook[id].saved || notebook[id].touched); });
-    ids.sort(function (a, b) { return Number(!!notebook[b].saved) - Number(!!notebook[a].saved) || (notebook[b].touched || 0) - (notebook[a].touched || 0); });
+    function entry(id) { return notebook[id] || {}; }
+    function recentDraft(id) { return drafts[id] && drafts[id].touched || 0; }
+    function touched(id) { return Math.max(entry(id).touched || 0, recentDraft(id)); }
+    var ids = Array.from(new Set(Object.keys(notebook).concat(Object.keys(drafts)))).filter(function (id) {
+      var item = entry(id);
+      return questionIndex[id] && (recentDraft(id) || !item.removed && (item.saved || item.last));
+    });
+    ids.sort(function (a, b) { return Number(!!entry(b).saved) - Number(!!entry(a).saved) || touched(b) - touched(a); });
     var recent = 0;
-    ids = ids.filter(function (id) { return notebook[id].saved || recent++ < 4; });
+    ids = ids.filter(function (id) { return entry(id).saved || recent++ < 4; });
     $('notebookList').replaceChildren();
     $('notebookEmpty').hidden = ids.length > 0;
     ids.forEach(function (id, index) {
-      var entry = notebook[id], q = questionIndex[id].question;
+      var item = entry(id), q = questionIndex[id].question;
       var row = el('div', 'notebook-row');
       row.dataset.questionId = id;
       var button = el('button', 'notebook-item');
       button.appendChild(uiEl('span', 'notebook-question-title', function () { return questionTitle(q); }));
       button.type = 'button';
       button.setAttribute('aria-current', currentQuestion && currentQuestion.id === id ? 'true' : 'false');
-      button.appendChild(uiEl('span', null, function () { return t(entry.saved ? 'Saved for another look' : 'Recent work') + ' · ' + (entry.submissions ? t(entry.submissions === 1 ? '{count} approach submitted' : '{count} approaches submitted', {count: entry.submissions}) : t('Draft')); }));
+      button.appendChild(uiEl('span', null, function () {
+        var label = t(item.saved ? 'Saved for another look' : 'Recent work');
+        if (item.submissions) return label + ' · ' + t(item.submissions === 1 ? '{count} approach submitted' : '{count} approaches submitted', {count: item.submissions});
+        return recentDraft(id) ? label + ' · ' + t('Draft') : label;
+      }));
       button.addEventListener('click', function () { goToQuestion(q).then(focusQuestion); });
       var remove = el('button', 'notebook-remove');
       remove.type = 'button';
@@ -1517,25 +1634,25 @@ footer .source-credits p { margin: 0; }
     });
   }
   function removeNotebookEntry(id, index) {
-    var entry = notebook[id];
-    if (!entry) return;
-    notebookUndoEntry = {id: id, saved: !!entry.saved};
-    entry.saved = false; entry.removed = true;
+    var entry = notebook[id] || {}, draft = drafts[id];
+    notebookUndoEntry = {id: id, saved: !!entry.saved, draftTouched: draft && draft.touched || 0};
+    if (draft) draft.touched = 0;
     uiText($('notebookNoticeText'), function () { return t('Removed {title} from your notebook.', {title: questionTitle(questionIndex[id].question)}); });
     $('notebookNotice').hidden = false;
-    saveNotebook(); updatePracticeTools();
+    editNotebook(id, function (item) { item.saved = false; item.removed = true; });
+    updatePracticeTools();
     var rows = $('notebookList').children;
     var next = rows[Math.min(index, rows.length - 1)];
     (next ? next.querySelector('.notebook-remove') : $('notebookUndo')).focus();
   }
   $('notebookUndo').addEventListener('click', function () {
     if (!notebookUndoEntry) return;
-    var restored = notebookUndoEntry, entry = notebook[restored.id];
+    var restored = notebookUndoEntry, timestamp = Date.now();
     var returnFocus = document.activeElement === $('notebookUndo');
     notebookUndoEntry = null; $('notebookNotice').hidden = true;
-    if (!entry) return;
-    entry.removed = false; entry.saved = restored.saved; entry.touched = Date.now();
-    saveNotebook(); updatePracticeTools();
+    if (drafts[restored.id]) drafts[restored.id].touched = Math.max(drafts[restored.id].touched, restored.draftTouched);
+    editNotebook(restored.id, function (item) { item.removed = false; item.saved = restored.saved; item.touched = timestamp; });
+    updatePracticeTools();
     if (returnFocus) {
       var row = Array.prototype.find.call($('notebookList').children, function (item) { return item.dataset.questionId === restored.id; });
       if (row) row.querySelector('.notebook-item').focus();
@@ -1565,7 +1682,7 @@ footer .source-credits p { margin: 0; }
   function goToQuestion(q) {
     var source = questionIndex[q.id];
     if (!source) return;
-    saveAttempt();
+    saveDraft();
     BANK = source.bank; pool.bank.value = BANK.id || 'amc'; configureBank(); fillYears();
     pool.level.value = q.level; fillYearOptions();
     pool.year.value = String(usesGradeNavigation(BANK) ? q.grade : q.year); fillBatches();
@@ -1589,11 +1706,10 @@ footer .source-credits p { margin: 0; }
   $('nextProblem').addEventListener('click', function () { moveProblem(1); });
   $('bookmarkProblem').addEventListener('click', function () {
     if (!currentQuestion) return;
-    var entry = notebook[currentQuestion.id] || {};
-    if (entry.removed) { entry.saved = false; entry.removed = false; }
-    entry.saved = !entry.saved; entry.touched = Date.now(); notebook[currentQuestion.id] = entry;
-    if (notebookUndoEntry && notebookUndoEntry.id === currentQuestion.id) notebookUndoEntry.saved = entry.saved;
-    saveNotebook(); updatePracticeTools();
+    var id = currentQuestion.id, entry = notebook[id] || {}, saved = entry.removed || !entry.saved, timestamp = Date.now();
+    if (notebookUndoEntry && notebookUndoEntry.id === id) notebookUndoEntry.saved = saved;
+    editNotebook(id, function (item) { item.saved = saved; item.removed = false; item.touched = timestamp; });
+    updatePracticeTools();
   });
   $('beginPractice').addEventListener('click', function () {
     var candidates = BANK.questions.filter(function (q) { return q.level === pool.level.value; }).slice();
@@ -1638,7 +1754,7 @@ footer .source-credits p { margin: 0; }
   }
   function clearQuestion() {
     questionLoadSerial += 1;
-    saveAttempt();
+    saveDraft();
     cancelRun();
     if (speechInput) speechInput.reset();
     if (!solModal.hidden) closeSolution();
@@ -1802,14 +1918,14 @@ footer .source-credits p { margin: 0; }
 
   function renderQuestion(q) {
     pool.hint.hidden = true;
-    saveAttempt();
+    saveDraft();
     cancelRun();
     if (speechInput) speechInput.reset();
     if (!solModal.hidden) closeSolution();
     currentQuestion = q;
     setRunning(false);
     if (speechInput) speechInput.sync('');
-    var attempt = attempts[q.id] || {};
+    var entry = notebook[q.id] || {}, draft = drafts[q.id], attempt = draft || entry.last || {};
     els.thoughts.value = typeof attempt.thoughts === "string" ? attempt.thoughts : "";
     selectedAnswer = q.responseType === 'multiSelect' ? answerTools.choiceIds(q).filter(function(id){return Array.isArray(attempt.answer) && attempt.answer.indexOf(id)>=0;})
       : q.responseType && q.responseType !== 'choice' ? (typeof attempt.answer === 'string' ? attempt.answer : '') : Object.prototype.hasOwnProperty.call(q.choices || {}, attempt.answer) ? attempt.answer : null;
@@ -1817,8 +1933,8 @@ footer .source-credits p { margin: 0; }
     emptyResults();
     $("figureNotice").hidden = hosted || !hasFigures(q);
     if (feedback) {
-      feedback.restoreTurn(attempt.tutorContext, !!(answerTools.hasAnswer(attempt.answer) || attempt.thoughts || notebook[q.id] && notebook[q.id].last));
-      feedback.restore(attempt.originalSpeech);
+      feedback.restoreTurn(draft ? draft.tutorContext : entry.tutorContext, !!entry.last);
+      if (draft) feedback.restore(draft.originalSpeech);
     }
     updateChips();
     $('problemPicker').open = false;
@@ -2085,8 +2201,12 @@ footer .source-credits p { margin: 0; }
   els.thoughtsSubmit.addEventListener("click", submitThoughts);
   els.thoughtsClear.addEventListener("click", function () {
     if (speechInput) speechInput.reset();
+    feedback.clearSpeech();
+    els.panel.dataset.state = 'idle';
+    resetSignalsMessage();
+    uiText(els.announcement, '');
     els.thoughts.value = "";
-    saveDraft();
+    saveDraft(true);
     updateSubmissionNote();
     els.thoughts.focus();
   });
@@ -2277,7 +2397,7 @@ footer .source-credits p { margin: 0; }
     connectionLink.addEventListener('click', function (event) {
       if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
-      saveAttempt();
+      saveDraft();
       if (!connectionFrame.getAttribute('src')) connectionFrame.src = connectionLink.href;
       connectionDialog.showModal();
       document.body.classList.add('modal-open');
@@ -2300,8 +2420,12 @@ footer .source-credits p { margin: 0; }
   var running = false, lastSubmitted = null, speechInput = null, feedback = null, practicePath = null;
   function updateSubmissionNote() {
     if (feedback) feedback.revisionChanged();
-    if (!lastSubmitted) { uiText(els.submissionNote, ''); return; }
-    var saved = saveFailures.draft || saveFailures.notebook ? '' : 'Your work is saved. ';
+    if (!lastSubmitted) {
+      var draft = currentQuestion && drafts[currentQuestion.id];
+      uiText(els.submissionNote, draft && draft.touched ? 'Draft stays in this tab until you submit.' : '');
+      return;
+    }
+    var saved = saveFailures.notebook ? '' : 'Your work is saved. ';
     if (currentQuestion && window.MathPracticeAnswers.gradingNotice(currentQuestion) !== null) { uiText(els.submissionNote, function () { return t(saved) + t('This disputed problem has no score or automatic grading.'); }); return; }
     var edited = els.thoughts.value.trim() !== lastSubmitted.thoughts || !answerTools.same(selectedAnswer, lastSubmitted.answer);
     var status = edited ? "You have edited your work. Submit again to update the answer and reasoning checks." : running ? "Answer submitted. Checking your answer and thinking..." : feedback && feedback.mathState === "error" ? "The check is unavailable; submit again to retry." : "Submitted. You can revise your answer or thinking and try again.";
@@ -2327,7 +2451,7 @@ footer .source-credits p { margin: 0; }
   var currentQuestion = null;
   var selectedAnswer = null;
   ['freeAnswer', 'openAnswer'].forEach(function (id) {
-    $(id).addEventListener('input', function (event) { selectedAnswer = event.target.value.trim(); saveAttempt(true); updateSubmissionNote(); });
+    $(id).addEventListener('input', function (event) { selectedAnswer = event.target.value.trim(); saveDraft(true); updateSubmissionNote(); });
   });
 
   function buildAnswerButtons(q) {
@@ -2362,7 +2486,7 @@ footer .source-credits p { margin: 0; }
               c.setAttribute("aria-checked", on ? "true" : "false");
               c.tabIndex = multi ? 0 : selectedAnswer ? (on ? 0 : -1) : (i === 0 ? 0 : -1);
             });
-            saveAttempt(true);
+            saveDraft(true);
             updateSubmissionNote();
           }
           b.addEventListener("click", function () { choose(!multi && selectedAnswer === L ? null : L); });
@@ -2381,31 +2505,19 @@ footer .source-credits p { margin: 0; }
   }
 
   function run() { feedback.submit(); }
-  feedback = new window.MathPracticeFeedback({
+  feedback = new PracticeFeedback({
     question: function () { return currentQuestion; }, answer: function () { return selectedAnswer; },
     bank: function () { return BANK.id; },
     layer: function () { return practicePath ? practicePath.layer() : 'ailleo'; },
     curriculumNodeId: function () { return practicePath ? hosted ? practicePath.nodeId(currentQuestion && currentQuestion.id) : practicePath.nodeId() : null; },
     draft: els.thoughts, note: els.submissionNote, panel: els.panel, panelStatus: els.panelStatus,
     results: els.resultsBody, announce: els.announcement, el: el, percent: fmtPct, typeset: typeset,
-    connection: setConnection, collapse: setCollapsed, setRunning: setRunning, save: saveAttempt,
+    connection: setConnection, collapse: setCollapsed, setRunning: setRunning, saveDraft: saveDraft, saveContext: saveContext,
     services: serviceSettings, waitServices: waitServices,
     checkAnswer: window.MathPracticeAnswers.check,
     classifyAnswer: window.MathPracticeAnswers.classify,
     graphEvidence: function (row) { if (window.MathPracticeGraph) window.MathPracticeGraph.record(row); },
-    submitted: function (snapshot) {
-      lastSubmitted = snapshot;
-      if (!answerTools.hasAnswer(snapshot.answer) && !snapshot.thoughts.trim()) { saveAttempt(); updateSubmissionNote(); return; }
-      var entry = notebook[currentQuestion.id] || {};
-      var approach = {answer: answerTools.copy(snapshot.answer), thoughts: snapshot.thoughts};
-      if (!entry.first) entry.first = approach;
-      if (!entry.last || !answerTools.same(entry.last.answer, approach.answer) || entry.last.thoughts !== approach.thoughts) {
-        entry.submissions = (entry.submissions || 0) + 1;
-        entry.removed = false;
-      }
-      entry.last = approach; entry.touched = Date.now(); notebook[currentQuestion.id] = entry;
-      saveNotebook(); saveAttempt(); updatePracticeTools(); updateSubmissionNote();
-    },
+    submitted: saveSubmission,
     updated: updateSubmissionNote
   });
   setCollapsed(true);
@@ -2416,7 +2528,7 @@ footer .source-credits p { margin: 0; }
     isConfigured: function () { return connections.speech.configured === true; },
     isAssessing: function () { return running; },
     onState: function () { els.thoughtsSubmit.disabled = running || !!(speechInput && speechInput.busy()); },
-    onDraft: function () { saveAttempt(true); updateSubmissionNote(); },
+    onDraft: function () { saveDraft(true); updateSubmissionNote(); },
     onTranscript: function (transcript) { feedback.recorded(transcript); }
   });
   initPool();
@@ -2424,7 +2536,7 @@ footer .source-credits p { margin: 0; }
     question: function (id) { return questionIndex[id] && questionIndex[id].question; },
     title: questionTitle,
     select: function (q) { goToQuestion(q).then(focusQuestion); },
-    changed: function () { if (feedback) feedback.revisionChanged(); saveAttempt(); updateSubmissionNote(); }
+    changed: function () { if (feedback) feedback.revisionChanged(); saveDraft(); updateSubmissionNote(); }
   });
   if (location.search) {
     var linkedId = new URLSearchParams(location.search).get('problem');
