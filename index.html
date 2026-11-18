@@ -408,7 +408,6 @@
 
   /* ---------- thoughts card ---------- */
 
-  .thoughts textarea { min-height: 110px; }
   .thoughts .results-title { text-transform: none; letter-spacing: -0.01em; margin: 0; }
   .speech-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
   .speech-controls button { margin-bottom: 8px; }
@@ -423,8 +422,6 @@
   .speech-status:empty { display: none; }
   .speech-status[data-state="recording"] { color: var(--recording-ink); font-variant-numeric: tabular-nums; }
   .speech-status[data-state="error"] { color: var(--err); }
-  .speech-help { margin: 0 0 12px; color: var(--ink-2); font-size: .75rem; line-height: 1.5; }
-  .speech-help a { color: var(--accent-deep); text-underline-offset: 3px; }
   .work-feedback { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--thinking-line); }
   .work-feedback[hidden], .work-feedback [hidden] { display: none; }
   .work-feedback p { margin: 0 0 10px; font-size: .875rem; }
@@ -580,7 +577,6 @@
     gap: 10px;
     margin-top: 22px;
   }
-  .actions .spacer { flex: 1; }
 
   button.primary, button.ghost {
     font: 650 0.9375rem/1 var(--font);
@@ -643,7 +639,6 @@
     margin-bottom: 18px;
   }
   .results-title { font-size: 1rem; font-weight: 650; letter-spacing: -0.01em; }
-  .results-note { color: var(--ink-2); font-size: 0.8125rem; }
 
   .banner {
     display: flex;
@@ -851,7 +846,9 @@
   header, footer { grid-column: 1 / -1; }
   header { align-items: center; }
   .practice-main { width: 100%; grid-column: 1; grid-row: 2; }
-  .submission-note { margin: 12px 0 0; min-height: 1.5em; color: var(--ink-2); font-size: .8125rem; }
+  .submission-note { margin: 12px 0 0; color: var(--ink-2); font-size: .8125rem; }
+  .submission-note:empty { margin: 0; }
+  .signals-panel[data-state="idle"] { display: none; }
   .signals-panel { position: sticky; z-index: 20; top: 20px; grid-column: 2; grid-row: 2; align-self: start; width: 280px; max-height: calc(100dvh - 40px); background: var(--signals-surface); --ink-2: var(--signals-ink-2); border: 1px solid var(--hairline); border-radius: 14px; padding: 18px; overflow-y: auto; }
   .signals-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
   .signals-head h2 { margin: 0; font-size: .9375rem; font-weight: 650; letter-spacing: -.01em; }
@@ -894,7 +891,6 @@
     #speechRecord { width: 44px; padding: 0; }
     .speech-record-label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
     .thoughts .results-head { display: block; }
-    .thoughts .results-note { display: block; margin-top: 4px; }
   }
 
 </style>
@@ -975,9 +971,9 @@ button.path-question { height: auto; min-height: 44px; padding: 10px 14px; line-
 .q-id { font: 600 .875rem/1.5 var(--font); color: var(--ink-2); }
 .q-area { background: transparent; color: var(--ink-2); border: 0; padding: 0; font-size: .8125rem; text-transform: none; letter-spacing: 0; }
 /* Inline radical glyphs in the question can extend above their line box. */
-.q-head-right { margin-left: auto; position: relative; z-index: 1; }
-.sol-btn { font-size: .8125rem; background: transparent; border: 0; text-decoration: underline; text-underline-offset: 4px; color: var(--accent-deep); padding: 4px 0 4px 8px; }
-.sol-btn:hover { background: var(--accent-soft); color: var(--accent-deep); }
+.q-head-right { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 16px; margin-left: auto; position: relative; z-index: 1; }
+.q-head-right button { font: 650 .8125rem/1.3 var(--font); min-height: 44px; background: transparent; border: 0; text-decoration: underline; text-underline-offset: 4px; color: var(--accent-deep); padding: 4px; }
+.q-head-right button:hover { background: var(--accent-soft); color: var(--accent-deep); }
 .q-text { font-size: 1.125rem; line-height: 1.85; max-width: 67ch; padding: 0; border: 0; border-radius: 0; background: transparent; }
 .q-divider { margin: 26px 0 20px; border-color: var(--hairline); }
 .q-choices { display: grid; gap: 12px; width: 100%; }
@@ -1001,33 +997,31 @@ button.path-question { height: auto; min-height: 44px; padding: 10px 14px; line-
 .picture-choices .q-choice { align-items: flex-start; }
 .badge { background: var(--accent-soft); color: var(--accent-deep); border: 0; font-family: var(--font); font-weight: 600; border-radius: 5px; }
 .opt-text { font-size: 1rem; }
-.question-tools { display: flex; align-items: center; padding: 0 28px 14px; }
-.question-tools .ghost { font-size: .8125rem; background: transparent; border-color: transparent; padding: 8px 6px; color: var(--ink-2); }
-.question-tools .ghost:hover { background: var(--accent-soft); color: var(--accent-deep); }
 #bookmarkProblem[aria-pressed="true"] { color: var(--accent-deep); background: var(--accent-soft); }
-.problem-navigation { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 22px; padding-top: 14px; border-top: 1px solid var(--hairline); }
+.problem-navigation { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--hairline); }
 .problem-navigation .ghost { background: transparent; border-color: transparent; padding: 8px 6px; min-height: 44px; font-size: .8125rem; }
 .problem-navigation .ghost:hover { background: var(--accent-soft); }
 #nextProblem { color: var(--accent-deep); font-weight: 650; }
-#thoughtsCard { border-top: 1px solid var(--hairline); border-radius: 0 0 14px 14px; padding: 28px 34px 30px; margin-bottom: 0; }
-.thoughts .results-head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-.thinking-heading { flex: 1; }
-.thinking-heading .results-note { display: block; margin-top: 5px; }
-.thoughts .results-title { font: 400 1.5rem/1.3 var(--book-serif); text-transform: none; letter-spacing: -.015em; }
-.thoughts .results-note { font-size: .75rem; }
+#thoughtsCard { border-top: 1px solid var(--hairline); border-radius: 0 0 14px 14px; padding: 18px 34px 24px; margin-bottom: 0; }
+.thoughts .results-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-bottom: 10px; }
+.thinking-heading { flex: 1 1 auto; }
+.thoughts .results-title { font: 400 1.25rem/1.3 var(--book-serif); text-transform: none; letter-spacing: -.015em; }
 .answer-row { gap: 12px; margin-bottom: 20px; }
 .answer-opt { width: 44px; height: 44px; border-radius: 8px; font-family: var(--font); }
 .answer-opt.sel { background: var(--illini-orange); border-color: var(--choice-selected-line); color: var(--choice-badge-ink); }
-.speech-help { margin-bottom: 10px; font-size: .8125rem; }
 #speechRecord { position: relative; overflow: hidden; }
 #speechRecord[aria-pressed="true"] { padding-bottom: 5px; }
 .speech-record-time { margin-left: 4px; font-size: .75rem; font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .speech-record-progress { position: absolute; left: 0; bottom: 0; width: 100%; height: 3px; background: var(--recording-line); transform: scaleX(0); transform-origin: left; transition: transform 250ms linear; pointer-events: none; }
-#thoughts { min-height: 164px; line-height: 1.8; padding: 16px; font-size: .9375rem; border-color: var(--field-line); border-radius: 8px; background: var(--input-surface); }
-.actions { margin-top: 15px; gap: 10px; }
+#thoughts { display: block; min-height: 64px; line-height: 1.6; padding: 10px 12px; font-size: 1rem; border-color: var(--field-line); border-radius: 8px; background: var(--input-surface); }
+#thoughts:focus, #thoughts:not(:placeholder-shown) { min-height: 112px; }
+@supports (field-sizing: content) {
+  #thoughts { field-sizing: content; max-height: max(280px, 50vh); }
+}
+.actions { margin-top: 12px; gap: 8px; }
 button.primary { background: var(--accent); color: var(--accent-on); border-radius: 8px; min-height: 46px; }
 button.primary:hover { background: var(--accent-deep); }
-#thoughtsSubmit { min-width: 180px; gap: 10px; }
+#thoughtsSubmit { min-width: min(180px, 100%); gap: 10px; }
 .submit-icon { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: transform 180ms cubic-bezier(.16,1,.3,1); }
 .submit-spinner { display: none; }
 #thoughtsSubmit:not(:disabled):focus-visible .submit-icon { transform: translateX(3px); }
@@ -1120,26 +1114,22 @@ footer .source-credits p { margin: 0; }
   .welcome { padding: 26px 22px 32px; grid-template-columns: 1fr; gap: 20px; }
   .welcome h2 { font-size: 1.875rem; max-width: 16ch; }
   .puzzle-geometry { width: 90px; grid-row: 1; }
-  #poolDisplay { padding: 22px 22px 8px; }
+  #poolDisplay { padding: 18px 22px; }
   .q-head { margin-bottom: 16px; }
-  .q-head-right { margin-left: auto; }
+  .q-head-right { flex: 1 1 auto; justify-content: space-between; }
   .q-text { font-size: 1rem; line-height: 1.85; }
-  .question-tools { padding: 0 16px 12px; }
   .written-answer { padding: 10px 22px 0; }
-  #thoughtsCard { padding: 24px 22px; }
-  .thoughts .results-note { display: block; margin-top: 5px; }
+  #thoughtsCard { padding: 16px 22px 20px; }
   .answer-row { gap: 10px; }
   .answer-label { flex-basis: 100%; }
   .answer-opts { gap: 7px; }
   #speechRecord { margin-left: 0; width: auto; padding: 8px 10px; font-size: .8125rem; }
-  .thoughts .results-head:has(#speechRecord[aria-pressed="true"]) { flex-wrap: wrap; }
   .results-head:has(#speechRecord[aria-pressed="true"]) .thinking-heading { flex-basis: 100%; }
   #speechRecord[aria-pressed="true"] { width: 100%; padding-bottom: 11px; }
   #speechRecord[aria-pressed="true"] .speech-record-time { margin-left: auto; }
   .speech-record-label { position: static; width: auto; height: auto; clip: auto; white-space: normal; }
   .practice-rail { grid-template-columns: 1fr; gap: 6px; }
   .actions .primary { flex: 1; }
-  .actions .spacer { display: none; }
   footer { flex-direction: column; gap: 6px; }
 }
 @media (max-width: 360px) {
@@ -1221,7 +1211,16 @@ footer .source-credits p { margin: 0; }
     </div>
     </details>
     <p class="pool-hint" id="poolHint" data-i18n="Choose a year and problem to begin.">Choose a year and problem to begin.</p>
-    <div id="poolDisplay" hidden></div>
+    <div id="poolDisplay" hidden>
+      <div class="q-head">
+        <span class="q-area" id="questionArea" hidden></span>
+        <div class="q-head-right">
+          <button class="ghost" type="button" id="bookmarkProblem" aria-pressed="false" data-i18n="Save to notebook">Save to notebook</button>
+          <button class="sol-btn" type="button" id="exploreSolution" aria-haspopup="dialog" data-i18n="Explore solution">Explore solution</button>
+        </div>
+      </div>
+      <div id="questionBody"></div>
+    </div>
     <div class="answer-opts" id="answerOpts" role="radiogroup" aria-label="Your answer" data-i18n-aria-label="Your answer" hidden></div>
     <div class="written-answer" id="writtenAnswer" hidden>
       <label id="writtenAnswerLabel" for="freeAnswer" data-i18n="Your answer">Your answer</label>
@@ -1232,16 +1231,12 @@ footer .source-credits p { margin: 0; }
       <div><h2 data-i18n="What will you discover?">What will you discover?</h2><p data-i18n="Try an idea. Follow a pattern. Give yourself room to work things out.">Try an idea. Follow a pattern. Give yourself room to work things out.</p><button type="button" class="primary" id="beginPractice" data-i18n="Try a problem">Try a problem</button></div>
       <svg class="puzzle-geometry" viewBox="0 0 160 180" fill="none" aria-hidden="true"><path d="M15 22h130v130H15z" fill="var(--accent-soft)" stroke="currentColor" stroke-width="1.3"/><path d="m15 22 130 130M15 152 145 22M80 22v130M15 87h130" stroke="currentColor" stroke-width="1.3"/><path d="m80 22 65 65H80Z" fill="var(--illini-orange)" opacity=".25"/><circle cx="80" cy="87" r="34" fill="var(--surface)" stroke="currentColor" stroke-width="1.3"/><path d="M56 111 80 53l24 58Z" stroke="currentColor" stroke-width="1.3"/><circle cx="80" cy="87" r="3" fill="currentColor"/></svg>
     </div>
-    <div class="question-tools" id="questionTools" hidden>
-      <button class="ghost" type="button" id="bookmarkProblem" aria-pressed="false" data-i18n="Save for another look">Save for another look</button>
-    </div>
   </section>
 
   <section class="card thoughts" id="thoughtsCard" hidden>
     <div class="results-head">
-      <div class="thinking-heading"><label class="results-title" for="thoughts" data-i18n="Your thinking">Your thinking</label>
-      <span class="results-note" id="attemptNote" hidden></span></div>
-      <button type="button" class="ghost speech-button" id="speechRecord" aria-pressed="false" aria-describedby="speechStatus speechHelp" disabled>
+      <div class="thinking-heading"><label class="results-title" id="thinkingLabel" for="thoughts" data-i18n="Your thinking">Your thinking</label></div>
+      <button type="button" class="ghost speech-button" id="speechRecord" aria-pressed="false" aria-describedby="speechStatus" hidden disabled>
         <svg class="speech-icon mic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg>
         <svg class="speech-icon stop-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><rect x="5" y="5" width="14" height="14" rx="2"/></svg>
         <span class="speech-record-label" id="speechRecordLabel" data-i18n="Record thinking">Record thinking</span>
@@ -1255,14 +1250,12 @@ footer .source-credits p { margin: 0; }
       <button type="button" class="ghost speech-button" id="speechCancel" hidden data-i18n="Discard recording">Discard recording</button>
     </div>
     <p class="speech-status" id="speechStatus" role="status" aria-live="polite"></p>
-    <p class="speech-help" id="speechHelp" data-i18n="Write your approach. With a speech connection, you can also record up to a minute and edit before submitting.">Write your approach. With a speech connection, you can also record up to a minute and edit before submitting.</p>
-    <textarea maxlength="12000" id="thoughts" autocomplete="off" aria-describedby="speechStatus speechHelp submissionNote saveWarning" placeholder="I noticed that… So I tried…" data-i18n-placeholder="I noticed that… So I tried…"></textarea>
-    <details class="earlier-attempt" id="earlierAttempt" hidden><summary data-i18n="Look back at your first approach">Look back at your first approach</summary><p id="earlierAnswer"></p><p id="earlierWork"></p><p data-i18n="What do you notice now that you did not notice before?">What do you notice now that you did not notice before?</p></details>
+    <textarea rows="2" maxlength="12000" id="thoughts" autocomplete="off" aria-describedby="speechStatus submissionNote saveWarning" placeholder="How did you work it out?" data-i18n-placeholder="How did you work it out?"></textarea>
     <div class="actions">
-      <button type="button" class="ghost" id="thoughtsClear" data-i18n="Clear draft">Clear draft</button>
-      <span class="spacer"></span>
       <button type="button" class="primary" id="thoughtsSubmit"><span id="submitLabel" data-i18n="Submit answer">Submit answer</span><svg class="submit-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="submit-arrow" d="M4 12h15m-6-6 6 6-6 6"/><circle class="submit-spinner" cx="12" cy="12" r="8" stroke-dasharray="36 15"/></svg></button>
+      <button type="button" class="ghost" id="thoughtsClear" data-i18n="Clear draft" hidden>Clear draft</button>
     </div>
+    <p class="submission-note" id="submissionNote" role="status"></p>
     <section class="work-feedback" id="workFeedback" aria-label="Submission feedback" data-i18n-aria-label="Submission feedback" hidden>
       <div class="submission-verdict">
         <span class="submission-mark" id="submissionMark" role="img" hidden>
@@ -1284,7 +1277,7 @@ footer .source-credits p { margin: 0; }
       <button class="ghost" type="button" id="tutorRetry" hidden data-i18n="Retry hint">Retry hint</button>
       <p class="review-note" id="reviewNote" hidden></p>
     </section>
-    <p class="submission-note" id="submissionNote" role="status"></p>
+    <details class="earlier-attempt" id="earlierAttempt" hidden><summary id="earlierAttemptLabel" data-i18n="Look back at your first approach">Look back at your first approach</summary><p id="earlierAnswer"></p><p id="earlierWork"></p><p data-i18n="What do you notice now that you did not notice before?">What do you notice now that you did not notice before?</p></details>
     <nav class="problem-navigation" aria-label="Problems in this set" data-i18n-aria-label="Problems in this set"><button class="ghost" type="button" id="previousProblem" data-i18n="Previous">Previous</button><button class="ghost" type="button" id="nextProblem" data-i18n="Next problem">Next problem</button></nav>
   </section>
 
@@ -1305,14 +1298,14 @@ footer .source-credits p { margin: 0; }
     <p class="graph-scope" id="graphEvidenceScope"></p>
     <div id="graphEvidenceBody"></div>
   </details>
-  <aside class="signals-panel" id="signalsPanel" aria-labelledby="signalsTitle" data-collapsed="false">
+  <aside class="signals-panel" id="signalsPanel" aria-labelledby="signalsTitle" data-collapsed="false" data-state="idle">
     <div class="signals-head">
       <h2 id="signalsTitle" data-i18n="Learning signals">Learning signals</h2>
       <button type="button" class="panel-toggle" id="panelToggle" aria-controls="signalsContent" aria-expanded="true" data-i18n="Minimize">Minimize</button>
     </div>
-    <p class="signals-status" id="signalsStatus" data-i18n="Ready when you are">Ready when you are</p>
+    <p class="signals-status" id="signalsStatus"></p>
     <div id="signalsContent">
-      <div id="resultsBody"><p class="signals-empty" data-i18n="Record your thinking to see learning signals from your original speech.">Record your thinking to see learning signals from your original speech.</p></div>
+      <div id="resultsBody"></div>
       <p class="signals-footnote" data-i18n="A reading of the original transcript, separate from mathematical accuracy.">A reading of the original transcript, separate from mathematical accuracy.</p>
     </div>
   </aside>
@@ -1402,10 +1395,7 @@ footer .source-credits p { margin: 0; }
       uiAttribute($(id), 'title', 'Ailleo speech and learning signals are not connected yet.');
     });
     ['decisionStatusText', 'speechServiceStatusText'].forEach(function (id) { uiText($(id), 'Not connected'); });
-    uiText($('speechHelp'), 'Write your approach. Connect your own Math Tutor LLM in Model settings for feedback and hints.');
     uiAttribute($('openAnswer'), 'placeholder', 'Describe your answer, then compare it with the solution.');
-    uiText($('signalsStatus'), 'Not connected');
-    $('resultsBody').replaceChildren(uiEl('p', 'signals-empty', 'Ailleo speech and learning signals are not connected yet.'));
     document.querySelector('.signals-footnote').hidden = true;
   }
   var answerTools = window.MathPracticeAnswers;
@@ -1557,7 +1547,7 @@ footer .source-credits p { margin: 0; }
   var pool = {
     bank: $("selBank"),
     year: $("selYear"), level: $("selLevel"), batch: $("selBatch"), num: $("selNum"),
-    display: $("poolDisplay"), hint: $("poolHint"), count: $("poolCount"), reset: $("poolReset")
+    display: $("poolDisplay"), body: $("questionBody"), hint: $("poolHint"), count: $("poolCount"), reset: $("poolReset")
   };
   var poolPrompt = 'Choose a year and problem to begin.';
   function setPoolHint(source) { pool.hint.removeAttribute('data-i18n'); pool.hint.replaceChildren(uiEl('span', null, source)); }
@@ -1662,17 +1652,17 @@ footer .source-credits p { margin: 0; }
     var q = currentQuestion;
     $('practiceWelcome').hidden = !!q;
     $('thoughtsCard').hidden = !q;
-    $('questionTools').hidden = !q;
     uiText($('pickerTitle'), function () { return q ? questionTitle(q) : t('Find a problem'); });
     if (!q) { renderNotebook(); return; }
     var entry = notebook[q.id] || {};
-    uiText($('bookmarkProblem'), entry.saved ? 'Saved for another look' : 'Save for another look');
+    uiText($('bookmarkProblem'), entry.saved ? 'Saved to notebook' : 'Save to notebook');
     $('bookmarkProblem').setAttribute('aria-pressed', entry.saved ? 'true' : 'false');
-    $('attemptNote').hidden = !entry.submissions;
-    uiText($('attemptNote'), function () { return entry.submissions ? t(entry.submissions === 1 ? '{count} approach tried. What might you try next?' : '{count} approaches tried. Notice what has changed.', {count: entry.submissions}) : ''; });
     $('earlierAttempt').hidden = !entry.first;
+    var firstThinking = entry.first && entry.first.thoughts && entry.first.thoughts.trim();
+    uiText($('earlierAttemptLabel'), firstThinking ? 'Look back at your first approach' : 'Look back at your first answer');
     uiText($('earlierAnswer'), function () { return entry.first ? (answerTools.hasAnswer(entry.first.answer) ? t('Your first answer: {answer}', {answer: answerTools.format(entry.first.answer)}) : t('No answer recorded for this approach.')) : ''; });
     $('earlierWork').textContent = entry.first ? entry.first.thoughts : '';
+    $('earlierWork').hidden = !firstThinking;
     var group = qsIn(pool.level.value, +pool.year.value, pool.batch.value).slice().sort(function (a,b) { return a.number - b.number; });
     var index = group.findIndex(function (item) { return item.id === q.id; });
     $('previousProblem').disabled = index <= 0;
@@ -1711,6 +1701,9 @@ footer .source-credits p { margin: 0; }
     editNotebook(id, function (item) { item.saved = saved; item.removed = false; item.touched = timestamp; });
     updatePracticeTools();
   });
+  $('exploreSolution').addEventListener('click', function () {
+    if (currentQuestion) openSolution(currentQuestion, this);
+  });
   $('beginPractice').addEventListener('click', function () {
     var candidates = BANK.questions.filter(function (q) { return q.level === pool.level.value; }).slice();
     candidates.sort(function (a,b) { return (b.year || 0) - (a.year || 0) || a.number - b.number; });
@@ -1746,7 +1739,6 @@ footer .source-credits p { margin: 0; }
   }
   function emptyResults() {
     lastSubmitted = null;
-    els.panel.dataset.state = "idle";
     resetSignalsMessage();
     if (feedback) feedback.clear();
     uiText(els.submissionNote, '');
@@ -1768,7 +1760,7 @@ footer .source-credits p { margin: 0; }
     els.answerOpts.replaceChildren();
     $("figureNotice").hidden = true;
     pool.display.hidden = true;
-    pool.display.replaceChildren();
+    pool.body.replaceChildren();
     pool.hint.hidden = false;
     setPoolHint(poolPrompt);
     emptyResults();
@@ -1941,18 +1933,13 @@ footer .source-credits p { margin: 0; }
     $('earlierAttempt').open = false;
     updatePracticeTools();
 
-    var box = el("div");
-    var head = el("div", "q-head");
-    if (q.area) head.appendChild(uiEl('span', 'q-area', q.area.charAt(0).toUpperCase() + q.area.slice(1).toLowerCase()));
-    var right = el("span", "q-head-right");
-    var solBtn = uiEl("button", "sol-btn", "Explore solution");
-    solBtn.type = "button";
-    solBtn.setAttribute("aria-haspopup", "dialog");
-    solBtn.addEventListener("click", function () { openSolution(q, solBtn); });
-    right.appendChild(solBtn);
-    head.appendChild(right);
-    box.appendChild(head);
+    $('questionArea').hidden = !q.area;
+    uiText($('questionArea'), q.area ? q.area.charAt(0).toUpperCase() + q.area.slice(1).toLowerCase() : '');
+    var gradingNotice = answerTools.gradingNotice(q);
+    var thinkingOptional = q.responseType !== 'self' && gradingNotice === null && answerTools.responses(q).length > 0;
+    uiText($('thinkingLabel'), thinkingOptional ? 'Your thinking (optional)' : 'Your thinking');
 
+    var box = el("div");
     var labels = answerTools.choiceIds(q);
     // Legacy combined choice sheets are shared by every A-E entry. Show once.
     var shared = labels.length === 5 ? figurePaths(q.choices[labels[0]]).filter(function (p) {
@@ -1964,7 +1951,6 @@ footer .source-credits p { margin: 0; }
         (!plain || /^(?:Image|Graph|Figure|Histogram)\s+\(?[A-E]\)?\s+(?:shown\s+)?in$/i.test(plain));
     })) shared = []; // Shared diagrams with distinct text/images are still individual choices.
     box.appendChild(richContent(q.question, q, "q-text", shared));
-    var gradingNotice = window.MathPracticeAnswers.gradingNotice(q);
     if (gradingNotice !== null) {
       var gradingLine = el('p', 'pool-hint'); gradingLine.appendChild(uiEl('span', null, 'Not graded. ')); gradingLine.appendChild(el('span', null, gradingNotice)); box.appendChild(gradingLine);
     }
@@ -2004,7 +1990,7 @@ footer .source-credits p { margin: 0; }
     }
     if (q.editorialNote) box.appendChild(el("p", "pool-hint", q.editorialNote.split(" See processing code/")[0]));
 
-    pool.display.replaceChildren(box);
+    pool.body.replaceChildren(box);
     pool.display.hidden = false;
     typeset(box);
     if (location.protocol !== 'file:') {
@@ -2202,7 +2188,6 @@ footer .source-credits p { margin: 0; }
   els.thoughtsClear.addEventListener("click", function () {
     if (speechInput) speechInput.reset();
     feedback.clearSpeech();
-    els.panel.dataset.state = 'idle';
     resetSignalsMessage();
     uiText(els.announcement, '');
     els.thoughts.value = "";
@@ -2372,15 +2357,10 @@ footer .source-credits p { margin: 0; }
   }
   function waitServices() { return Promise.all(['decision', 'inference'].map(function (role) { return connections[role].pending; })); }
   function resetSignalsMessage() {
-    var configured = connections && connections.decision.configured === true;
-    if (hosted) {
-      var available = window.MathPracticeServices && window.MathPracticeServices.config().configured;
-      uiText(els.panelStatus, !available ? 'Not connected' : configured ? 'Ready when you are' : 'The Sentiment Check LLM is off');
-      els.resultsBody.replaceChildren(uiEl('p', 'signals-empty', !available ? 'Ailleo speech and learning signals are not connected yet.' : configured ? 'Record your thinking to see learning signals from your original speech.' : 'Enable the Sentiment Check LLM in Model settings to analyze your original speech transcript.'));
-      return;
-    }
-    uiText(els.panelStatus, configured ? 'Ready when you are' : 'Sentiment Check LLM not configured');
-    els.resultsBody.replaceChildren(uiEl('p', 'signals-empty', configured ? 'Record your thinking to see learning signals from your original speech.' : 'Add a Sentiment Check LLM in Settings to analyze your original speech transcript.'));
+    els.panel.dataset.state = 'idle';
+    setCollapsed(false);
+    uiText(els.panelStatus, '');
+    els.resultsBody.replaceChildren();
   }
   Object.keys(connections).forEach(function (role) {
     connections[role].button.addEventListener("click", function () {
@@ -2420,16 +2400,13 @@ footer .source-credits p { margin: 0; }
   var running = false, lastSubmitted = null, speechInput = null, feedback = null, practicePath = null;
   function updateSubmissionNote() {
     if (feedback) feedback.revisionChanged();
-    if (!lastSubmitted) {
-      var draft = currentQuestion && drafts[currentQuestion.id];
-      uiText(els.submissionNote, draft && draft.touched ? 'Draft stays in this tab until you submit.' : '');
-      return;
-    }
-    var saved = saveFailures.notebook ? '' : 'Your work is saved. ';
-    if (currentQuestion && window.MathPracticeAnswers.gradingNotice(currentQuestion) !== null) { uiText(els.submissionNote, function () { return t(saved) + t('This disputed problem has no score or automatic grading.'); }); return; }
-    var edited = els.thoughts.value.trim() !== lastSubmitted.thoughts || !answerTools.same(selectedAnswer, lastSubmitted.answer);
-    var status = edited ? "You have edited your work. Submit again to update the answer and reasoning checks." : running ? "Answer submitted. Checking your answer and thinking..." : feedback && feedback.mathState === "error" ? "The check is unavailable; submit again to retry." : "Submitted. You can revise your answer or thinking and try again.";
-    uiText(els.submissionNote, function () { return (feedback && feedback.mathState === 'error' && !edited && !running ? t(saved) : '') + t(status); });
+    els.thoughtsClear.hidden = !els.thoughts.value;
+    var draft = currentQuestion && drafts[currentQuestion.id];
+    var edited = lastSubmitted && (els.thoughts.value.trim() !== lastSubmitted.thoughts || !answerTools.same(selectedAnswer, lastSubmitted.answer));
+    var status = '';
+    if (!edited && !running && feedback && feedback.mathState === 'error') status = feedback.mathError || '';
+    else if (draft && draft.touched && $('reviewNote').hidden) status = 'Draft stays in this tab until you submit.';
+    if (els.submissionNote.textContent !== t(status)) uiText(els.submissionNote, status);
   }
   function cancelRun() {
     if (feedback) feedback.cancelMath();
@@ -2520,7 +2497,6 @@ footer .source-credits p { margin: 0; }
     submitted: saveSubmission,
     updated: updateSubmissionNote
   });
-  setCollapsed(true);
   speechInput = new window.MathPracticeSpeech({
     question: function () { return currentQuestion; }, bank: function () { return BANK.id; },
     record: $("speechRecord"), recordLabel: $("speechRecordLabel"), recordTime: $("speechRecordTime"), recordProgress: $("speechRecordProgress"), cancel: $("speechCancel"), retry: $("speechRetry"), status: $("speechStatus"), draft: els.thoughts,

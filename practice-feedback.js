@@ -7,10 +7,6 @@
   const attribute = (node, name, source, params) => Language.bindAttribute(node, name, source, params);
   Language.register({
     'Show a hint': '显示提示', 'Hide hint': '隐藏提示', 'Hint: ': '提示：',
-    'The Sentiment Check LLM is off': '情绪分析大语言模型已关闭',
-    'Enable the Sentiment Check LLM in Model settings to analyze your original speech transcript.': '请在模型设置中开启情绪分析大语言模型，以分析原始语音转录文字。',
-    'Ailleo speech and learning signals are not connected yet.': 'Ailleo 语音与学习信号服务尚未接入。',
-    'Waiting for server connection': '等待服务器接入',
     'From original speech, before edits': '来自未经编辑的语音转录', 'Reading the original transcript for learning signals...': '正在从原始转录中分析学习信号…',
     'Your original transcript is ready to check. Review its learning signals when ready.': '原始转录已可检查。准备好后可查看学习信号。',
     'Learning signals returned an incomplete result. Try the check again.': '学习信号返回的结果不完整，请重新检查。',
@@ -18,7 +14,6 @@
     'Could not reach learning signals. Check the backend connection.': '无法连接学习信号服务。请检查后台连接。',
     'Original speech signals unavailable': '原始语音信号不可用', 'Retry speech signals': '重试语音信号分析', 'Local app only': '仅限本地应用',
     'Learning signals are available in the local app. Your work stays in this browser.': '本地应用支持学习信号分析。你的作答保存在此浏览器中。',
-    'Sentiment Check LLM not configured': '未配置情绪分析大语言模型', 'Add a Sentiment Check LLM in Connections to check original speech for learning signals.': '在连接设置中添加情绪分析大语言模型，即可从原始语音文字中分析学习信号。',
     'The Sentiment Check LLM assessed the original transcript.': '情绪分析大语言模型已分析原始语音转录文字。',
     'The Sentiment Check LLM checked the submitted work.': '情绪分析大语言模型已检查提交的作答。',
     'Confidence': '自信程度', 'Clarity of reasoning': '思路表达清晰度', 'Engagement': '投入程度', 'Unsure': '不确定', 'Confident': '有信心', 'Not expressed': '未表达',
@@ -31,24 +26,19 @@
     'Thinking: Submit your changes for a fresh check.': '思路：请提交修改以重新检查。', 'Choose a problem first.': '请先选择题目。', 'Choose or enter an answer before submitting.': '提交前请选择或输入答案。',
     'Enter an answer or write your thinking before saving.': '保存前请输入答案或写下你的解题思路。',
     'Thinking: Checking your reasoning...': '思路：正在检查推理…', 'Complete or clarify your answer above, then submit again.': '请补全或澄清上方答案，然后重新提交。',
-    'AI reasoning feedback is available in the local app. Your work stays in this browser.': '本地应用支持 AI 推理反馈。你的作答保存在此浏览器中。',
-    'Connect your own tutor in Settings for reasoning feedback.': '在设置中连接你自己的辅导模型，以获取推理反馈。',
-    'Start the local launcher and add a model in Connections for reasoning feedback.': '请启动本地启动器，并在连接设置中添加模型，以获取推理反馈。',
-    'Add a Math Tutor LLM or Sentiment Check LLM in Connections for reasoning feedback.': '在连接设置中添加数学辅导大语言模型或情绪分析大语言模型，即可获取推理反馈。',
-    'Add a Math Tutor LLM in Connections for reasoning feedback.': '在连接设置中添加数学辅导大语言模型，即可获取推理反馈。',
     'The Math Tutor LLM returned a mathematical review.': '数学辅导大语言模型已返回数学点评。',
     'Add your thinking and submit again for a reasoning review.': '请补充思路并重新提交，以获取推理点评。',
     'Thinking: Not checked. The model check is unavailable. Your answer check above still applies.': '思路：尚未检查。模型检查当前不可用，上方答案检查结果仍然适用。',
     'The check took too long. Submit again to retry.': '检查超时，请重新提交以重试。',
     'Could not reach the backend. Start the local launcher and submit again.': '无法连接后台。请启动本地启动器后重新提交。',
-    'Thinking: Not checked.': '思路：尚未检查。', 'Correct answer; thinking not checked': '答案正确，思路尚未检查',
+    'Thinking: Not checked.': '思路：尚未检查。',
     'Not graded: Disputed problem.': '不评分：此题存在争议。', 'No score is assigned. You can still explore this problem.': '此题不计分，你仍可以探索解法。',
-    'Correct answer and thinking': '答案和思路正确', 'Incorrect answer': '答案不正确', 'Correct answer; thinking needs review': '答案正确，思路需复查', 'Answer needs review': '答案需复查',
+    'Correct answer': '答案正确', 'Incorrect answer': '答案不正确', 'Answer needs review': '答案需复查',
     'Answers {answer}: ': '答案 {answer}：', 'Answer {answer}: ': '答案 {answer}：', 'Answer: ': '答案：',
     'Correct.': '正确。', 'Not quite yet.': '还不正确。', 'Not quite yet. Check your final answer against your working.': '还不正确。请对照解题过程检查最终答案。',
     'Partially correct.': '部分正确。', 'Partially correct. Complete your answer or use the requested form.': '部分正确。请补全答案，或按要求的形式作答。',
     'Not checked automatically.': '未自动检查。', 'Not checked automatically. Compare with the reference solution.': '未自动检查，请对照参考解答。',
-    'A step needs another look.': '有一步需要重新检查。', 'Partly explained.': '解释尚不完整。', 'Not checked.': '尚未检查。', 'Thinking: ': '思路：', 'Not provided yet.': '尚未提供。',
+    'A step needs another look.': '有一步需要重新检查。', 'Partly explained.': '解释尚不完整。', 'Not checked.': '尚未检查。', 'Thinking: ': '思路：',
     'Generating response...': '正在生成回应…', 'Thinking: Your explanation still needs a closer review. Retry when ready.': '思路：你的解释仍需进一步检查，准备好后请重试。',
     'Thinking: Not provided yet.': '思路：尚未提供。', 'The tutor took too long. Retry when ready.': '辅导响应超时，准备好后请重试。',
     'The tutor could not connect. Check Math Tutor LLM settings and retry.': '辅导模型无法连接。请检查数学辅导大语言模型设置后重试。', 'Retry review': '重试点评', 'Retry hint': '重试提示',
@@ -66,6 +56,7 @@
       this.o = options; this.serial = 0; this.signalSerial = 0;
       this.mathRequest = null; this.tutorRequest = null; this.signalRequest = null;
       this.evidence = null; this.submitted = null; this.hint = ''; this.initialCategory = null; this.initialAnswerCategory = null; this.mathState = 'idle';
+      this.mathError = '';
       this.sessionId = this.practiceSession(); this.context = null; this.finalGraphs = new Set(); this.assessment = null;
       this.serviceOverrides = {};
       this.n = {};
@@ -220,7 +211,7 @@
       this.cancelMath(); this.clearSpeech();
       this.submitted = null; this.hint = '';
       this.context = null; this.assessment = null;
-      this.mathState = 'idle';
+      this.mathState = 'idle'; this.mathError = '';
       this.showSubmissionMark();
       this.n.workFeedback.hidden = true;
     }
@@ -284,14 +275,8 @@
       this.o.results.replaceChildren(box);
     }
     skipSignals() {
-      if (window.MATH_PRACTICE_HOSTED) {
-        const connected = window.MathPracticeServices && window.MathPracticeServices.config().configured;
-        this.o.panel.dataset.state = 'idle'; ui(this.o.panelStatus, connected ? 'The Sentiment Check LLM is off' : 'Waiting for server connection');
-        this.o.results.replaceChildren(ui(this.o.el('p', 'signals-empty'), connected ? 'Enable the Sentiment Check LLM in Model settings to analyze your original speech transcript.' : 'Ailleo speech and learning signals are not connected yet.'));
-        return;
-      }
-      this.o.panel.dataset.state = 'idle'; ui(this.o.panelStatus, 'Sentiment Check LLM not configured');
-      this.o.results.replaceChildren(ui(this.o.el('p', 'signals-empty'), 'Add a Sentiment Check LLM in Connections to check original speech for learning signals.'));
+      this.o.panel.dataset.state = 'idle'; ui(this.o.panelStatus, '');
+      this.o.results.replaceChildren();
     }
     renderSignals() {
       const raw = this.o.el, el = (tag, className, value) => { const node = raw(tag, className); if (value !== undefined) ui(node, value); return node; };
@@ -349,13 +334,13 @@
       }
       this.cancelMath(); this.submitted = this.freeze(question, answer, thoughts); this.initialCategory = null; this.initialAnswerCategory = null; this.hint = ''; this.assessment = null;
       this.serviceOverrides = {};
-      this.mathState = 'loading';
+      this.mathState = 'loading'; this.mathError = '';
       this.o.submitted(this.submitted); this.o.setRunning(true);
       const n = this.n; n.workFeedback.hidden = false;
       const exactCategory = this.o.classifyAnswer(question, answer);
       this.showAnswer(answer, this.o.checkAnswer(question, answer), exactCategory);
-      this.showSubmissionMark('cannot_judge', exactCategory);
-      n.reasoningFeedback.className = 'reasoning-feedback'; ui(n.reasoningFeedback, 'Thinking: Checking your reasoning...');
+      n.reasoningFeedback.className = 'reasoning-feedback';
+      ui(n.reasoningFeedback, thoughts ? 'Thinking: Checking your reasoning...' : 'Thinking: Not provided yet.');
       n.coach.hidden = true; n.hintToggle.hidden = true; n.hintBody.hidden = true; ui(n.hintBody, ''); n.tutorRetry.hidden = true; n.tutorStatus.hidden = true;
       if (exactCategory === 'partial') {
         this.showCoach(window.MathPracticeAnswers.formFeedback(question, answer) || 'Complete or clarify your answer above, then submit again.', true, true);
@@ -369,10 +354,7 @@
         const services = this.services();
         if (location.protocol === 'file:' || (!services.decision && !services.inference && !services.localEvidence)) {
           this.mathState = 'ready';
-          const message = window.MATH_PRACTICE_HOSTED ? 'Connect your own tutor in Settings for reasoning feedback.'
-            : location.protocol === 'file:' ? 'Start the local launcher and add a model in Connections for reasoning feedback.'
-            : 'Add a Math Tutor LLM or Sentiment Check LLM in Connections for reasoning feedback.';
-          this.showUnchecked(message, exactCategory);
+          this.showUnchecked();
           return;
         }
         const value = await this.post('/api/assessment', {bank: submitted.bank, curriculumLayer: submitted.curriculumLayer, curriculumNodeId: submitted.curriculumNodeId, questionId: question.id, answer, thoughts, turn: submitted.turn}, controller);
@@ -385,32 +367,35 @@
         if (value.questionId !== question.id || !Answers.same(value.answer, answer) || !this.validAnswer(value) || !['correct', 'wrong', 'partial', 'cannot_judge'].includes(value.category)) throw new Error('The answer and reasoning check returned an incomplete result. Try submitting again.');
         this.updateServices(value);
         this.showAnswer(answer, value.answerCorrect, value.answerCategory);
-        if (!this.services().decision && !this.services().inference) this.showUnchecked('Add a Math Tutor LLM or Sentiment Check LLM in Connections for reasoning feedback.', value.answerCategory);
-        else if (!thoughts && !this.services().inference) this.showUnchecked('Add your thinking and submit again for a reasoning review.', value.answerCategory);
-        else this.showVerdict(value.category, '', value.answerCategory, value.answerFormFeedback);
+        const available = this.services();
         this.mathState = 'ready';
         this.assessment = value;
         if (value.modelUsed) this.o.connection('decision', 'ok', 'Ready', 'The Sentiment Check LLM checked the submitted work.');
-        if (this.services().inference && (value.category !== 'correct' || value.answerCategory !== 'correct')) {
+        if (available.inference && (value.category !== 'correct' || value.answerCategory !== 'correct')) {
           this.initialCategory = value.category; this.initialAnswerCategory = value.answerCategory;
           this.requestTutor(value.category, value.answerCategory, serial);
-        } else this.finishGraph(value, serial, submitted);
+        } else {
+          if (!available.decision && !available.inference) this.showUnchecked();
+          else if (!thoughts && !available.inference) this.showUnchecked('Add your thinking and submit again for a reasoning review.');
+          else this.showVerdict(value.category, '', value.answerCategory, value.answerFormFeedback);
+          this.finishGraph(value, serial, submitted);
+        }
         this.revisionChanged();
       } catch (error) {
         if (!this.current(serial, submitted)) return;
         this.mathState = 'error';
-        if (!thoughts) this.showUnchecked('Add your thinking and submit again for a reasoning review.', exactCategory);
+        if (!thoughts) this.showUnchecked();
         else ui(n.reasoningFeedback, 'Thinking: Not checked. The model check is unavailable. Your answer check above still applies.');
-        ui(this.o.note, error.name === 'AbortError' ? 'The check took too long. Submit again to retry.' : error instanceof TypeError ? 'Could not reach the backend. Start the local launcher and submit again.' : error.message);
+        this.mathError = error.name === 'AbortError' ? 'The check took too long. Submit again to retry.' : error instanceof TypeError ? 'Could not reach the backend. Start the local launcher and submit again.' : error.message;
+        ui(this.o.note, this.mathError);
       } finally {
         if (serial === this.serial) { this.mathRequest = null; this.o.setRunning(false); this.o.updated(); }
       }
     }
-    showUnchecked(message, answerCategory) {
+    showUnchecked(message = '') {
       const n = this.n;
-      this.showSubmissionMark('cannot_judge', answerCategory);
-      if (answerCategory === 'correct') attribute(n.submissionMark, 'aria-label', 'Correct answer; thinking not checked');
-      ui(n.reasoningFeedback, () => t('Thinking: Not checked.') + ' ' + t(message));
+      const status = this.submitted.thoughts ? 'Thinking: Not checked.' : 'Thinking: Not provided yet.';
+      ui(n.reasoningFeedback, () => t(status) + (message ? ' ' + t(message) : ''));
       n.reasoningFeedback.className = 'reasoning-feedback verdict-cannot_judge';
       n.hintToggle.hidden = true; n.hintBody.hidden = true; n.tutorRetry.hidden = true; n.tutorStatus.hidden = true;
       ui(this.o.announce, () => n.answerFeedback.textContent + ' ' + n.reasoningFeedback.textContent);
@@ -446,15 +431,16 @@
       n.hintToggle.hidden = true; n.hintBody.hidden = true; ui(n.hintBody, ''); n.tutorRetry.hidden = true; n.tutorStatus.hidden = true;
       ui(this.o.announce, () => n.answerFeedback.textContent + ' ' + n.coach.textContent);
     }
-    showSubmissionMark(category, answerCategory) {
+    showSubmissionMark(answerCategory) {
       const mark = this.n.submissionMark;
-      const result = answerCategory === 'wrong' ? 'wrong' : !category ? '' : answerCategory === 'correct' && category === 'correct' ? 'correct' : 'review';
-      const labels = {correct: 'Correct answer and thinking', wrong: 'Incorrect answer', review: answerCategory === 'correct' ? 'Correct answer; thinking needs review' : 'Answer needs review'};
+      const result = !answerCategory ? '' : ['correct', 'wrong'].includes(answerCategory) ? answerCategory : 'review';
+      const labels = {correct: 'Correct answer', wrong: 'Incorrect answer', review: 'Answer needs review'};
       mark.dataset.result = result; mark.hidden = !result;
       attribute(mark, 'aria-label', labels[result] || '');
     }
     showAnswer(answer, correct, category, hasCoach) {
       category = category || (correct === null ? 'cannot_judge' : correct ? 'correct' : 'wrong');
+      this.showSubmissionMark(category);
       const kind = this.submitted.question.responseType || 'choice';
       const label = () => kind === 'multiSelect' ? t('Answers {answer}: ', {answer: Answers.format(answer)}) : kind !== 'choice' ? t('Answer: ') : t('Answer {answer}: ', {answer});
       const labels = {correct: 'Correct.', wrong: hasCoach ? 'Not quite yet.' : 'Not quite yet. Check your final answer against your working.', partial: hasCoach ? 'Partially correct.' : 'Partially correct. Complete your answer or use the requested form.', cannot_judge: hasCoach ? 'Not checked automatically.' : 'Not checked automatically. Compare with the reference solution.'};
@@ -487,10 +473,15 @@
         }
       }
     }
-    showVerdict(category, coach, answerCategory, formFeedback) {
-      this.showSubmissionMark(category, answerCategory);
+    showVerdict(category, coach, answerCategory, formFeedback, checking = false) {
       const n = this.n, labels = {correct: 'Correct.', wrong: 'A step needs another look.', partial: 'Partly explained.', cannot_judge: 'Not checked.'};
-      ui(n.reasoningFeedback, () => t('Thinking: ') + t(category === 'partial' && !this.submitted.thoughts ? 'Not provided yet.' : labels[category])); n.reasoningFeedback.className = 'reasoning-feedback verdict-' + category;
+      const missing = !this.submitted.thoughts && ['partial', 'cannot_judge'].includes(category);
+      ui(n.reasoningFeedback, () => {
+        if (checking) return t('Thinking: Checking your reasoning...');
+        if (missing) return t('Thinking: Not provided yet.');
+        return t('Thinking: ') + t(labels[category]);
+      });
+      n.reasoningFeedback.className = checking ? 'reasoning-feedback' : 'reasoning-feedback verdict-' + category;
       const text = coach || (answerCategory === 'partial' ? formFeedback || 'Complete or clarify your answer above, then submit again.' : '');
       this.showCoach(text, category !== 'correct' || answerCategory !== 'correct', !coach);
       ui(this.o.announce, () => n.answerFeedback.textContent + ' ' + n.reasoningFeedback.textContent + (text ? ' ' + text : ''));
@@ -512,6 +503,8 @@
       const reviewing = [category, answerCategory].some(value => value === 'partial' || value === 'cannot_judge');
       n.tutorStatus.dataset.state = 'loading';
       ui(n.tutorStatus, 'Generating response...');
+      const checking = category === 'cannot_judge' && !!submitted.thoughts;
+      this.showVerdict(category, '', answerCategory, this.assessment?.answerFormFeedback, checking);
       try {
         const value = await this.post('/api/tutor', {bank: submitted.bank, curriculumLayer: submitted.curriculumLayer, curriculumNodeId: submitted.curriculumNodeId, questionId: submitted.question.id, answer: submitted.answer, thoughts: submitted.thoughts, category, answerCategory, turn: submitted.turn}, controller);
         if (!this.current(serial, submitted)) return;
@@ -519,7 +512,7 @@
         this.updateServices(value);
         if (value.configured === false || value.inferenceConfigured === false) {
           this.serviceOverrides.inference = false; n.tutorStatus.hidden = true; n.tutorRetry.hidden = true;
-          if (!this.services().decision) this.showUnchecked('Add a Math Tutor LLM in Connections for reasoning feedback.', answerCategory);
+          if (!this.services().decision) this.showUnchecked();
           else if (category === 'cannot_judge') this.showVerdict(category, '', answerCategory);
           this.finishGraph(this.assessment, serial, submitted);
           return;
@@ -536,7 +529,10 @@
         this.o.connection('inference', 'ok', 'Ready', 'The Math Tutor LLM returned a mathematical review.'); this.revisionChanged();
       } catch (error) {
         if (!this.current(serial, submitted)) return;
-        if (category === 'cannot_judge') ui(n.reasoningFeedback, submitted.thoughts ? 'Thinking: Your explanation still needs a closer review. Retry when ready.' : 'Thinking: Not provided yet.');
+        if (checking) {
+          ui(n.reasoningFeedback, 'Thinking: Your explanation still needs a closer review. Retry when ready.');
+          n.reasoningFeedback.className = 'reasoning-feedback verdict-cannot_judge';
+        }
         ui(n.tutorStatus, error.name === 'AbortError' ? 'The tutor took too long. Retry when ready.' : error instanceof TypeError ? 'The tutor could not connect. Check Math Tutor LLM settings and retry.' : error.message);
         n.tutorRetry.hidden = false; ui(n.tutorRetry, reviewing ? 'Retry review' : 'Retry hint'); this.revisionChanged();
         this.finishGraph(this.assessment, serial, submitted);

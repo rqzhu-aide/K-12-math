@@ -5,15 +5,9 @@
   const ui = (node, source, params) => Language.bindText(node, source, params);
   const attribute = (node, name, source, params) => Language.bindAttribute(node, name, source, params);
   Language.register({
-    'Speech service not connected': '语音服务尚未连接',
-    'Speech-to-text is off': '语音转文字已关闭',
-    'Enable speech-to-text in Model settings. You can also type your thinking.': '请在模型设置中开启语音转文字。你也可以输入思路。',
-    'Ailleo speech-to-text is not connected yet. You can type your thinking.': 'Ailleo 语音转文字服务尚未接入。你可以输入思路。',
     'Recording discarded. Your written draft is unchanged.': '录音已丢弃，文字草稿未更改。',
     'Stop and transcribe': '停止并转录', 'Opening microphone…': '正在打开麦克风…', 'Transcribing…': '正在转录…', 'Record thinking': '录下思路',
-    'Add a speech connection in Settings to record your thinking.': '在设置中添加语音连接，即可录下思路。',
     'Cancel transcription': '取消转录', 'Discard recording': '丢弃录音', 'Add transcript': '添加转录文字', 'Retry transcription': '重试转录',
-    'Speech is not configured. You can type your thinking or add a speech connection in Settings.': '尚未配置语音服务。你可以输入思路，或在设置中添加语音连接。',
     'Recording: local app only': '录音：仅限本地应用', 'Recording is available in the local app. You can type your thinking here.': '本地应用支持录音。你可以在这里输入思路。',
     '{time} left': '剩余 {time}', 'Recording {time} / 1:00. Stop when you finish your thought.': '录音中 {time} / 1:00。说完思路后即可停止。',
     'Open practice through the local launcher to record. You can still type your thinking.': '请通过本地启动器打开练习以使用录音。你仍可以输入思路。',
@@ -82,14 +76,16 @@
     }
     sync(message) {
       const o = this.options;
-      o.record.disabled = !this.configured() || !o.isEnabled() || o.isAssessing() || !['idle', 'recording', 'error', 'ready'].includes(this.state) || !!this.transcript;
+      const configured = this.configured(), busy = this.busy();
+      o.record.hidden = !configured && !busy;
+      o.record.disabled = !configured || !o.isEnabled() || o.isAssessing() || !['idle', 'recording', 'error', 'ready'].includes(this.state) || !!this.transcript;
       ui(o.recordLabel, this.state === 'recording' ? 'Stop and transcribe' : this.state === 'preparing' ? 'Opening microphone…' : this.state === 'transcribing' ? 'Transcribing…' : 'Record thinking');
-      attribute(o.record, 'title', this.configured() ? () => o.recordLabel.textContent : 'Add a speech connection in Settings to record your thinking.');
+      attribute(o.record, 'title', () => o.recordLabel.textContent);
       o.record.setAttribute('aria-pressed', this.state === 'recording' ? 'true' : 'false');
       o.record.setAttribute('aria-busy', ['preparing', 'stopping', 'transcribing'].includes(this.state) ? 'true' : 'false');
       o.recordTime.hidden = o.recordProgress.hidden = this.state !== 'recording';
       if (this.state !== 'recording') this.updateProgress(0);
-      o.cancel.hidden = !this.busy() && !this.audio;
+      o.cancel.hidden = !busy && !this.audio;
       ui(o.cancel, this.state === 'transcribing' ? 'Cancel transcription' : 'Discard recording');
       o.retry.hidden = !(this.state === 'error' && (this.audio || this.transcript));
       ui(o.retry, this.transcript ? 'Add transcript' : 'Retry transcription');
@@ -97,16 +93,6 @@
       o.status.setAttribute('aria-live', this.state === 'recording' ? 'off' : 'polite');
       if (message !== undefined) ui(o.status, message);
       else if (!o.isEnabled()) ui(o.status, '');
-      else if (this.connectionMissing && this.configured()) ui(o.status, '');
-      if (o.isEnabled() && !this.configured()) ui(o.status, 'Speech is not configured. You can type your thinking or add a speech connection in Settings.');
-      if (window.MATH_PRACTICE_HOSTED && !this.configured()) {
-        const connected = window.MathPracticeServices && window.MathPracticeServices.config().configured;
-        ui(o.recordLabel, connected ? 'Speech-to-text is off' : 'Speech service not connected');
-        const explanation = connected ? 'Enable speech-to-text in Model settings. You can also type your thinking.' : 'Ailleo speech-to-text is not connected yet. You can type your thinking.';
-        attribute(o.record, 'title', explanation);
-        ui(o.status, o.isEnabled() ? explanation : '');
-      }
-      this.connectionMissing = !this.configured();
       o.onState();
     }
     updateProgress(elapsed) {
