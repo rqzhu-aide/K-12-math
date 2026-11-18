@@ -2417,6 +2417,8 @@ footer .source-credits p { margin: 0; }
     els.thoughtsSubmit.disabled = on;
     els.thoughtsSubmit.setAttribute("aria-busy", on ? "true" : "false");
     uiText($('submitLabel'), on ? "Checking..." : currentQuestion && window.MathPracticeAnswers.gradingNotice(currentQuestion) !== null ? 'Save work' : "Submit answer");
+    if (on && !els.thoughts.value.trim()) uiText(els.announcement, 'Checking...');
+    else if (!on && els.announcement.textContent === t('Checking...')) uiText(els.announcement, '');
     if (speechInput) speechInput.sync();
   }
   document.addEventListener("keydown", function (e) {
