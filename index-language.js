@@ -20,7 +20,7 @@
     'Review criteria: ': '评阅标准：', 'Answer not yet verified': '答案尚未核实', 'Recorded reference: ': '已记录的参考答案：', 'Historical printed key: ': '原印刷答案：', 'Accepted answers: ': '可接受的答案：', 'Correct answer: ': '正确答案：', 'Accepted selections: ': '可接受的选项组合：', 'Reference answers: ': '参考答案：', 'Reference answer: ': '参考答案：', ' or ': ' 或 ', 'Optional methods source: ': '可选方法来源：', 'Optional method {number}: ': '可选方法 {number}：',
     'Settings': '设置',
     'Backend readiness. Select a badge to check again.': '服务连接状态。选择状态标记可重新检查。',
-    'Check Math Tutor LLM connection': '检查数学辅导大语言模型连接', 'Check Speech-to-Text LLM connection': '检查语音转文字大语言模型连接', 'Check Decision LLM connection': '检查决策大语言模型连接',
+    'Check Math Tutor LLM connection': '检查数学辅导大语言模型连接', 'Check Speech-to-Text LLM connection': '检查语音转文字大语言模型连接', 'Check Sentiment Check LLM connection': '检查情绪分析大语言模型连接',
     'Checking...': '正在检查…', 'Ready': '已就绪', 'Offline': '离线', 'Practice mode': '基础练习模式',
     'Find a problem': '选择题目', 'Browse': '浏览', 'Find questions': '查找题目', 'By source': '按来源', 'By topic': '按主题',
     'Practice path': '练习路径', 'ailleo · Mathematical ideas': 'ailleo · 数学概念', 'CN · Chinese curriculum': 'CN · 中国课程', 'US · Common Core': 'US · 美国共同核心标准',
@@ -73,7 +73,7 @@
     'Start the local app to use optional model connections.': '启动本地应用后，可使用可选模型连接。', 'Start the local app to use this connection.': '启动本地应用后，可使用此连接。',
     'Answer checks and solutions work here. Start the local launcher to add optional model connections in Settings.': '此处可检查标准答案并查看解答。启动本地启动器后，可在设置中添加可选模型连接。', 'Checking the saved connection.': '正在检查已保存的连接。', 'Add an optional connection in Settings.': '可在设置中添加模型连接。',
     'Answer checks and solutions work without the backend. Start the local launcher to add optional model connections.': '无需后台服务即可检查标准答案并查看解答。启动本地启动器后，可添加可选模型连接。',
-    'Learning signals and AI feedback are available in the local app. Your work on this site stays in this browser.': '学习信号与 AI 反馈可在本地应用中使用。本站作答保存在此浏览器中。', 'Decision LLM not configured': '尚未配置决策大语言模型', 'Add a Decision LLM in Settings to analyze your original speech transcript.': '在设置中添加决策大语言模型，即可分析未经编辑的语音转录文字。',
+    'Learning signals and AI feedback are available in the local app. Your work on this site stays in this browser.': '学习信号与 AI 反馈可在本地应用中使用。本站作答保存在此浏览器中。', 'Sentiment Check LLM not configured': '尚未配置情绪分析大语言模型', 'Add a Sentiment Check LLM in Settings to analyze your original speech transcript.': '在设置中添加情绪分析大语言模型，即可分析未经编辑的语音转录文字。',
     'Your work is saved. ': '作答已保存。', 'This disputed problem has no score or automatic grading.': '此题存在争议，不计分，也不进行自动评分。', 'You have edited your work. Submit again to update your answer check.': '作答已修改。再次提交可更新答案检查。', 'You have edited your work. Submit again to update the answer and reasoning checks.': '作答已修改。再次提交可更新答案与推理检查。', 'Checking your answer...': '正在检查答案…', 'Answer submitted. Checking your answer and thinking...': '答案已提交，正在检查答案与思路…', 'The check is unavailable; submit again to retry.': '检查暂不可用，请再次提交重试。', 'Submitted. You can revise your answer or thinking and try again.': '已提交。你可以修改答案或思路，再次尝试。',
     'Your answers. Select all that apply.': '你的答案。请选择所有符合条件的选项。', 'Enter a decimal numeral': '输入小数', 'List values in the requested order, separated by commas': '按要求的顺序列出数值，用逗号分隔', 'Number or fraction; separate multiple values with commas': '输入数值或分数；多个数值用逗号分隔', 'Enter an expression or a short answer': '输入表达式或简短答案'
   });

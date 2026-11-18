@@ -1179,7 +1179,7 @@ footer .source-credits p { margin: 0; }
         <a class="connection-settings" href="settings.html" data-i18n="Model settings">Model settings</a>
         <button class="chip" data-model-role="inference" id="inferenceStatus" type="button" data-state="checking" title="Check Math Tutor LLM connection" data-i18n-title="Check Math Tutor LLM connection"><span class="dot" aria-hidden="true"></span><span><span class="chip-label" data-i18n="Math Tutor LLM">Math Tutor LLM</span><span class="chip-state" id="inferenceStatusText" role="status" data-i18n="Checking...">Checking...</span></span></button>
         <button class="chip" data-model-role="speech" id="speechServiceStatus" type="button" data-state="checking" title="Check Speech-to-Text LLM connection" data-i18n-title="Check Speech-to-Text LLM connection"><span class="dot" aria-hidden="true"></span><span><span class="chip-label" data-i18n="Speech-to-Text LLM">Speech-to-Text LLM</span><span class="chip-state" id="speechServiceStatusText" role="status" data-i18n="Checking...">Checking...</span></span></button>
-        <button class="chip" data-model-role="decision" id="decisionStatus" type="button" data-state="checking" title="Check Decision LLM connection" data-i18n-title="Check Decision LLM connection"><span class="dot" aria-hidden="true"></span><span><span class="chip-label" data-i18n="Decision LLM">Decision LLM</span><span class="chip-state" id="decisionStatusText" role="status" data-i18n="Checking...">Checking...</span></span></button>
+        <button class="chip" data-model-role="decision" id="decisionStatus" type="button" data-state="checking" title="Check Sentiment Check LLM connection" data-i18n-title="Check Sentiment Check LLM connection"><span class="dot" aria-hidden="true"></span><span><span class="chip-label" data-i18n="Sentiment Check LLM">Sentiment Check LLM</span><span class="chip-state" id="decisionStatusText" role="status" data-i18n="Checking...">Checking...</span></span></button>
       </div>
       </details>
     </div>
@@ -2165,7 +2165,7 @@ footer .source-credits p { margin: 0; }
   var connections = {
     inference: { label: "Math Tutor LLM", button: $("inferenceStatus"), text: $("inferenceStatusText") },
     speech: { label: "Speech-to-Text LLM", button: $("speechServiceStatus"), text: $("speechServiceStatusText") },
-    decision: { label: "Decision LLM", button: $("decisionStatus"), text: $("decisionStatusText") }
+    decision: { label: "Sentiment Check LLM", button: $("decisionStatus"), text: $("decisionStatusText") }
   };
   function setConnection(role, state, text, message) {
     var connection = connections[role];
@@ -2255,12 +2255,12 @@ footer .source-credits p { margin: 0; }
     var configured = connections && connections.decision.configured === true;
     if (hosted) {
       var available = window.MathPracticeServices && window.MathPracticeServices.config().configured;
-      uiText(els.panelStatus, !available ? 'Not connected' : configured ? 'Ready when you are' : 'The Decision LLM is off');
-      els.resultsBody.replaceChildren(uiEl('p', 'signals-empty', !available ? 'Ailleo speech and learning signals are not connected yet.' : configured ? 'Record your thinking to see learning signals from your original speech.' : 'Enable the Decision LLM in Model settings to analyze your original speech transcript.'));
+      uiText(els.panelStatus, !available ? 'Not connected' : configured ? 'Ready when you are' : 'The Sentiment Check LLM is off');
+      els.resultsBody.replaceChildren(uiEl('p', 'signals-empty', !available ? 'Ailleo speech and learning signals are not connected yet.' : configured ? 'Record your thinking to see learning signals from your original speech.' : 'Enable the Sentiment Check LLM in Model settings to analyze your original speech transcript.'));
       return;
     }
-    uiText(els.panelStatus, configured ? 'Ready when you are' : 'Decision LLM not configured');
-    els.resultsBody.replaceChildren(uiEl('p', 'signals-empty', configured ? 'Record your thinking to see learning signals from your original speech.' : 'Add a Decision LLM in Settings to analyze your original speech transcript.'));
+    uiText(els.panelStatus, configured ? 'Ready when you are' : 'Sentiment Check LLM not configured');
+    els.resultsBody.replaceChildren(uiEl('p', 'signals-empty', configured ? 'Record your thinking to see learning signals from your original speech.' : 'Add a Sentiment Check LLM in Settings to analyze your original speech transcript.'));
   }
   Object.keys(connections).forEach(function (role) {
     connections[role].button.addEventListener("click", function () {

@@ -7,8 +7,8 @@
   const attribute = (node, name, source, params) => Language.bindAttribute(node, name, source, params);
   Language.register({
     'Show a hint': '显示提示', 'Hide hint': '隐藏提示', 'Hint: ': '提示：',
-    'The Decision LLM is off': '决策大语言模型已关闭',
-    'Enable the Decision LLM in Model settings to analyze your original speech transcript.': '请在模型设置中开启决策大语言模型，以分析原始语音转录文字。',
+    'The Sentiment Check LLM is off': '情绪分析大语言模型已关闭',
+    'Enable the Sentiment Check LLM in Model settings to analyze your original speech transcript.': '请在模型设置中开启情绪分析大语言模型，以分析原始语音转录文字。',
     'Ailleo speech and learning signals are not connected yet.': 'Ailleo 语音与学习信号服务尚未接入。',
     'Waiting for server connection': '等待服务器接入',
     'From original speech, before edits': '来自未经编辑的语音转录', 'Reading the original transcript for learning signals...': '正在从原始转录中分析学习信号…',
@@ -18,9 +18,9 @@
     'Could not reach learning signals. Check the backend connection.': '无法连接学习信号服务。请检查后台连接。',
     'Original speech signals unavailable': '原始语音信号不可用', 'Retry speech signals': '重试语音信号分析', 'Local app only': '仅限本地应用',
     'Learning signals are available in the local app. Your work stays in this browser.': '本地应用支持学习信号分析。你的作答保存在此浏览器中。',
-    'Decision LLM not configured': '未配置决策大语言模型', 'Your transcript is saved. Add a Decision LLM in Connections to check original speech for learning signals.': '转录文字已保存。在连接设置中添加决策大语言模型后，即可从原始语音文字中分析学习信号。',
-    'The Decision LLM assessed the original transcript.': '决策大语言模型已分析原始语音转录文字。',
-    'The Decision LLM checked the submitted work.': '决策大语言模型已检查提交的作答。',
+    'Sentiment Check LLM not configured': '未配置情绪分析大语言模型', 'Your transcript is saved. Add a Sentiment Check LLM in Connections to check original speech for learning signals.': '转录文字已保存。在连接设置中添加情绪分析大语言模型后，即可从原始语音文字中分析学习信号。',
+    'The Sentiment Check LLM assessed the original transcript.': '情绪分析大语言模型已分析原始语音转录文字。',
+    'The Sentiment Check LLM checked the submitted work.': '情绪分析大语言模型已检查提交的作答。',
     'Confidence': '自信程度', 'Clarity of reasoning': '思路表达清晰度', 'Engagement': '投入程度', 'Unsure': '不确定', 'Confident': '有信心', 'Not expressed': '未表达',
     'Clearly explained': '表达清楚', 'Some steps unclear': '部分步骤不清楚', 'Hard to follow': '难以理解', 'No explanation': '未解释',
     'Interested or persistent': '有兴趣或愿意坚持', 'Frustrated or discouraged': '感到受挫或灰心',
@@ -33,7 +33,7 @@
     'AI reasoning feedback is available in the local app. Your work stays in this browser.': '本地应用支持 AI 推理反馈。你的作答保存在此浏览器中。',
     'Connect your own tutor in Settings for reasoning feedback.': '在设置中连接你自己的辅导模型，以获取推理反馈。',
     'Start the local launcher and add a model in Connections for reasoning feedback.': '请启动本地启动器，并在连接设置中添加模型，以获取推理反馈。',
-    'Add a Math Tutor LLM or Decision LLM in Connections for reasoning feedback.': '在连接设置中添加数学辅导大语言模型或决策大语言模型，即可获取推理反馈。',
+    'Add a Math Tutor LLM or Sentiment Check LLM in Connections for reasoning feedback.': '在连接设置中添加数学辅导大语言模型或情绪分析大语言模型，即可获取推理反馈。',
     'Add a Math Tutor LLM in Connections for reasoning feedback.': '在连接设置中添加数学辅导大语言模型，即可获取推理反馈。',
     'The Math Tutor LLM returned a mathematical review.': '数学辅导大语言模型已返回数学点评。',
     'Add your thinking and submit again for a reasoning review.': '请补充思路并重新提交，以获取推理点评。',
@@ -247,7 +247,7 @@
         if (reply.decisionConfigured === false) { this.skipSignals(); return; }
         if (reply.questionId !== q.id || reply.transcript !== evidence.transcript || !this.validSignals(reply.signals)) throw new Error('Learning signals returned an incomplete result. Try the check again.');
         this.evidence = {transcript: evidence.transcript, signals: reply.signals}; this.o.save(); this.renderSignals();
-        this.o.connection('decision', 'ok', 'Ready', 'The Decision LLM assessed the original transcript.');
+        this.o.connection('decision', 'ok', 'Ready', 'The Sentiment Check LLM assessed the original transcript.');
       } catch (error) {
         if (serial === this.signalSerial) this.signalError(error.name === 'AbortError' ? 'Learning signals took too long. Retry when ready.' : error instanceof TypeError ? 'Could not reach learning signals. Check the backend connection.' : error.message);
       } finally { if (serial === this.signalSerial) this.signalRequest = null; }
@@ -262,12 +262,12 @@
     skipSignals() {
       if (window.MATH_PRACTICE_HOSTED) {
         const connected = window.MathPracticeServices && window.MathPracticeServices.config().configured;
-        this.o.panel.dataset.state = 'idle'; ui(this.o.panelStatus, connected ? 'The Decision LLM is off' : 'Waiting for server connection');
-        this.o.results.replaceChildren(ui(this.o.el('p', 'signals-empty'), connected ? 'Enable the Decision LLM in Model settings to analyze your original speech transcript.' : 'Ailleo speech and learning signals are not connected yet.'));
+        this.o.panel.dataset.state = 'idle'; ui(this.o.panelStatus, connected ? 'The Sentiment Check LLM is off' : 'Waiting for server connection');
+        this.o.results.replaceChildren(ui(this.o.el('p', 'signals-empty'), connected ? 'Enable the Sentiment Check LLM in Model settings to analyze your original speech transcript.' : 'Ailleo speech and learning signals are not connected yet.'));
         return;
       }
-      this.o.panel.dataset.state = 'idle'; ui(this.o.panelStatus, 'Decision LLM not configured');
-      this.o.results.replaceChildren(ui(this.o.el('p', 'signals-empty'), 'Your transcript is saved. Add a Decision LLM in Connections to check original speech for learning signals.'));
+      this.o.panel.dataset.state = 'idle'; ui(this.o.panelStatus, 'Sentiment Check LLM not configured');
+      this.o.results.replaceChildren(ui(this.o.el('p', 'signals-empty'), 'Your transcript is saved. Add a Sentiment Check LLM in Connections to check original speech for learning signals.'));
     }
     renderSignals() {
       const raw = this.o.el, el = (tag, className, value) => { const node = raw(tag, className); if (value !== undefined) ui(node, value); return node; };
@@ -346,7 +346,7 @@
           this.mathState = 'ready';
           const message = window.MATH_PRACTICE_HOSTED ? 'Connect your own tutor in Settings for reasoning feedback.'
             : location.protocol === 'file:' ? 'Start the local launcher and add a model in Connections for reasoning feedback.'
-            : 'Add a Math Tutor LLM or Decision LLM in Connections for reasoning feedback.';
+            : 'Add a Math Tutor LLM or Sentiment Check LLM in Connections for reasoning feedback.';
           this.showUnchecked(message, exactCategory);
           return;
         }
@@ -360,12 +360,12 @@
         if (value.questionId !== question.id || !Answers.same(value.answer, answer) || !this.validAnswer(value) || !['correct', 'wrong', 'partial', 'cannot_judge'].includes(value.category)) throw new Error('The answer and reasoning check returned an incomplete result. Try submitting again.');
         this.updateServices(value);
         this.showAnswer(answer, value.answerCorrect, value.answerCategory);
-        if (!this.services().decision && !this.services().inference) this.showUnchecked('Add a Math Tutor LLM or Decision LLM in Connections for reasoning feedback.', value.answerCategory);
+        if (!this.services().decision && !this.services().inference) this.showUnchecked('Add a Math Tutor LLM or Sentiment Check LLM in Connections for reasoning feedback.', value.answerCategory);
         else if (!thoughts && !this.services().inference) this.showUnchecked('Add your thinking and submit again for a reasoning review.', value.answerCategory);
         else this.showVerdict(value.category, '', value.answerCategory, value.answerFormFeedback);
         this.mathState = 'ready';
         this.assessment = value;
-        if (value.modelUsed) this.o.connection('decision', 'ok', 'Ready', 'The Decision LLM checked the submitted work.');
+        if (value.modelUsed) this.o.connection('decision', 'ok', 'Ready', 'The Sentiment Check LLM checked the submitted work.');
         if (this.services().inference && (value.category !== 'correct' || value.answerCategory !== 'correct')) {
           this.initialCategory = value.category; this.initialAnswerCategory = value.answerCategory;
           this.requestTutor(value.category, value.answerCategory, serial);
