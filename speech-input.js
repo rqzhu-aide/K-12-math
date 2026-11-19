@@ -208,7 +208,6 @@
         this.audio = null;
         this.transcript = reply.text.trim();
         if (!this.transcript) { this.state = 'ready'; this.sync('No speech was detected. Your draft is unchanged. Try recording again or type your thinking.'); return; }
-        if (this.options.onTranscript) this.options.onTranscript(this.transcript);
         this.appendTranscript();
       } catch (error) {
         if (serial !== this.serial) return;
@@ -221,13 +220,15 @@
     }
     appendTranscript() {
       const draft = this.options.draft;
-      const value = draft.value + (draft.value && !/\n$/.test(draft.value) ? '\n\n' : '') + this.transcript;
+      const transcript = this.transcript;
+      const value = draft.value + (draft.value && !/\n$/.test(draft.value) ? '\n\n' : '') + transcript;
       if (value.length > 12000) {
         this.state = 'error'; this.sync('The combined draft exceeds 12,000 characters. Shorten your writing, then choose Add transcript, or discard the recording.'); return;
       }
       draft.value = value;
       this.transcript = ''; this.state = 'ready';
       this.options.onDraft();
+      if (this.options.onTranscript) this.options.onTranscript(transcript);
       this.sync('Transcript added. Review and correct the text below, then choose Submit answer.');
       draft.focus();
     }

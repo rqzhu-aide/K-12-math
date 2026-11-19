@@ -32,6 +32,7 @@
     'The check took too long. Submit again to retry.': '检查超时，请重新提交以重试。',
     'Could not reach the backend. Start the local launcher and submit again.': '无法连接后台。请启动本地启动器后重新提交。',
     'Thinking: Not checked.': '思路：尚未检查。',
+    'Connect a math tutor in Model settings for feedback and hints.': '如需思路点评和提示，请在模型设置中连接数学辅导模型。',
     'Not graded: Disputed problem.': '不评分：此题存在争议。', 'No score is assigned. You can still explore this problem.': '此题不计分，你仍可以探索解法。',
     'Correct answer': '答案正确', 'Incorrect answer': '答案不正确', 'Answer needs review': '答案需复查',
     'Answers {answer}: ': '答案 {answer}：', 'Answer {answer}: ': '答案 {answer}：', 'Answer: ': '答案：',
@@ -306,6 +307,9 @@
     edited() {
       return !this.submitted || !this.o.question() || this.o.question().id !== this.submitted.question.id || this.bank() !== this.submitted.bank || this.layer() !== this.submitted.curriculumLayer || this.curriculumNodeId() !== this.submitted.curriculumNodeId || !Answers.same(this.o.answer(), this.submitted.answer) || this.o.draft.value.trim() !== this.submitted.thoughts;
     }
+    submissionPending() {
+      return !!(this.mathRequest || this.tutorRequest) && !this.edited();
+    }
     revisionChanged() {
       const edited = this.edited();
       this.n.reviewNote.hidden = !this.submitted || !edited;
@@ -320,6 +324,7 @@
       }
     }
     async submit() {
+      if (this.submissionPending()) return;
       const question = this.o.question(), answer = Answers.copy(this.o.answer()), thoughts = this.o.draft.value.trim();
       const gradingNote = question ? window.MathPracticeAnswers.gradingNotice(question) : null;
       if (gradingNote !== null) {
@@ -395,6 +400,9 @@
     showUnchecked(message = '') {
       const n = this.n;
       const status = this.submitted.thoughts ? 'Thinking: Not checked.' : 'Thinking: Not provided yet.';
+      if (!message && this.submitted.thoughts && location.protocol !== 'file:' && !this.services().inference) {
+        message = 'Connect a math tutor in Model settings for feedback and hints.';
+      }
       ui(n.reasoningFeedback, () => t(status) + (message ? ' ' + t(message) : ''));
       n.reasoningFeedback.className = 'reasoning-feedback verdict-cannot_judge';
       n.hintToggle.hidden = true; n.hintBody.hidden = true; n.tutorRetry.hidden = true; n.tutorStatus.hidden = true;
@@ -505,6 +513,7 @@
       ui(n.tutorStatus, 'Generating response...');
       const checking = category === 'cannot_judge' && !!submitted.thoughts;
       this.showVerdict(category, '', answerCategory, this.assessment?.answerFormFeedback, checking);
+      this.o.updated();
       try {
         const value = await this.post('/api/tutor', {bank: submitted.bank, curriculumLayer: submitted.curriculumLayer, curriculumNodeId: submitted.curriculumNodeId, questionId: submitted.question.id, answer: submitted.answer, thoughts: submitted.thoughts, category, answerCategory, turn: submitted.turn}, controller);
         if (!this.current(serial, submitted)) return;
@@ -540,6 +549,7 @@
         if (serial === this.serial) {
           this.tutorRequest = null;
           n.tutorStatus.dataset.state = '';
+          this.o.updated();
         }
       }
     }

@@ -2,6 +2,7 @@
 (function () {
   'use strict';
   const names = {
+  __proto__: null,
   "cnm_001": [
     "The Concepts of Positive and Negative Numbers",
     "正数与负数的概念"
@@ -3620,6 +3621,7 @@
   ]
 };
   const placementNames = {
+    __proto__: null,
     '上': ['First semester', '上学期'],
     '下': ['Second semester', '下学期'],
     '必修一': ['Compulsory mathematics I', '必修一'],
@@ -3629,6 +3631,7 @@
     '选必三': ['Elective mathematics III', '选必三'],
     '数与代数': ['Number and algebra', '数与代数'],
     '图形与几何': ['Shapes and geometry', '图形与几何'],
+    'Geometry': ['Geometry', '图形与几何'],
     '统计与概率': ['Probability and statistics', '统计与概率'],
     '综合与实践': ['Modeling and mathematical practice', '综合与实践']
   };

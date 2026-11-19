@@ -1211,7 +1211,7 @@ footer .source-credits p { margin: 0; }
     </div>
     </details>
     <p class="pool-hint" id="poolHint" data-i18n="Choose a year and problem to begin.">Choose a year and problem to begin.</p>
-    <div id="poolDisplay" hidden>
+    <div id="poolDisplay" role="region" aria-labelledby="pickerTitle" tabindex="-1" hidden>
       <div class="q-head">
         <span class="q-area" id="questionArea" hidden></span>
         <div class="q-head-right">
@@ -1224,7 +1224,7 @@ footer .source-credits p { margin: 0; }
     <div class="answer-opts" id="answerOpts" role="radiogroup" aria-label="Your answer" data-i18n-aria-label="Your answer" hidden></div>
     <div class="written-answer" id="writtenAnswer" hidden>
       <label id="writtenAnswerLabel" for="freeAnswer" data-i18n="Your answer">Your answer</label>
-      <input class="free-answer" id="freeAnswer" aria-label="Your answer" data-i18n-aria-label="Your answer" maxlength="2000" autocomplete="off" placeholder="Enter your answer" data-i18n-placeholder="Enter your answer" hidden>
+      <input class="free-answer" id="freeAnswer" aria-label="Your answer" data-i18n-aria-label="Your answer" maxlength="2000" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Enter your answer" data-i18n-placeholder="Enter your answer" hidden>
       <textarea class="free-answer" id="openAnswer" aria-label="Your answer" data-i18n-aria-label="Your answer" maxlength="2000" rows="4" autocomplete="off" placeholder="Describe your answer. It will receive a review." data-i18n-placeholder="Describe your answer. It will receive a review." hidden></textarea>
     </div>
     <div class="welcome" id="practiceWelcome">
@@ -1348,6 +1348,7 @@ footer .source-credits p { margin: 0; }
 <script src="online-turnstile.js"></script>
 <script src="online-services.js"></script>
 <script src="answer-check.js"></script>
+<script src="amc-figure-descriptions.js"></script>
 <script src="vendor/katex/katex.min.js"></script>
 <script src="vendor/katex/contrib/auto-render.min.js"></script>
 <script src="speech-input.js"></script>
@@ -1685,12 +1686,12 @@ footer .source-credits p { margin: 0; }
     if (!currentQuestion) return;
     var group = qsIn(pool.level.value, +pool.year.value, pool.batch.value).slice().sort(function (a,b) { return a.number - b.number; });
     var index = group.findIndex(function (q) { return q.id === currentQuestion.id; });
-    if (group[index + step]) goToQuestion(group[index + step]).then(function (question) { if (question) pool.display.scrollIntoView({block: 'start'}); });
+    if (group[index + step]) goToQuestion(group[index + step]).then(focusQuestion);
   }
   function focusQuestion(question) {
-    if (!question || currentQuestion !== question) return;
-    pool.display.tabIndex = -1;
-    pool.display.focus();
+    if (!question || currentQuestion !== question || $('connectionDialog').open) return;
+    pool.display.scrollIntoView({block: 'start'});
+    pool.display.focus({preventScroll: true});
   }
   $('previousProblem').addEventListener('click', function () { moveProblem(-1); });
   $('nextProblem').addEventListener('click', function () { moveProblem(1); });
@@ -1886,8 +1887,9 @@ footer .source-credits p { margin: 0; }
     img.src = encodeURI(BANK.figuresBase + path.split("/").pop());
     if (!selectable) { wrap.href = img.src; wrap.target = "_blank"; wrap.rel = "noopener"; }
     var source = q && q.figureSources && q.figureSources[path];
+    var alt = source && source.alt || (BANK.id === 'amc' && window.MathPracticeAMCDescriptions?.[path]);
     var choice = path.match(/_choice([A-E])_/);
-    if (source && source.alt) img.alt = source.alt;
+    if (alt) img.alt = alt;
     else uiAttribute(img, 'alt', choice ? {key: selectable ? 'Choice {choice}' : 'Choice {choice}. Open figure at full size.', params: {choice: choice[1]}} : selectable ? 'Figure for this choice' : 'Problem figure. Open at full size.');
     img.loading = "lazy";
     img.addEventListener("error", function () {
@@ -1934,7 +1936,8 @@ footer .source-credits p { margin: 0; }
     updatePracticeTools();
 
     $('questionArea').hidden = !q.area;
-    uiText($('questionArea'), q.area ? q.area.charAt(0).toUpperCase() + q.area.slice(1).toLowerCase() : '');
+    var area = q.area ? q.area.charAt(0).toUpperCase() + q.area.slice(1).toLowerCase() : '';
+    uiText($('questionArea'), function () { return window.MathPracticeTopics ? window.MathPracticeTopics.placementText(area) : area; });
     var gradingNotice = answerTools.gradingNotice(q);
     var thinkingOptional = q.responseType !== 'self' && gradingNotice === null && answerTools.responses(q).length > 0;
     uiText($('thinkingLabel'), thinkingOptional ? 'Your thinking (optional)' : 'Your thinking');
@@ -2183,7 +2186,7 @@ footer .source-credits p { margin: 0; }
   });
 
   /* ---------- automatic assessment ---------- */
-  function submitThoughts() { if (!running && !(speechInput && speechInput.busy())) run(); }
+  function submitThoughts() { if (!els.thoughtsSubmit.disabled) run(); }
   els.thoughtsSubmit.addEventListener("click", submitThoughts);
   els.thoughtsClear.addEventListener("click", function () {
     if (speechInput) speechInput.reset();
@@ -2400,6 +2403,7 @@ footer .source-credits p { margin: 0; }
   var running = false, lastSubmitted = null, speechInput = null, feedback = null, practicePath = null;
   function updateSubmissionNote() {
     if (feedback) feedback.revisionChanged();
+    updateSubmitControl();
     els.thoughtsClear.hidden = !els.thoughts.value;
     var draft = currentQuestion && drafts[currentQuestion.id];
     var edited = lastSubmitted && (els.thoughts.value.trim() !== lastSubmitted.thoughts || !answerTools.same(selectedAnswer, lastSubmitted.answer));
@@ -2414,12 +2418,16 @@ footer .source-credits p { margin: 0; }
   }
   function setRunning(on) {
     running = on;
-    els.thoughtsSubmit.disabled = on;
-    els.thoughtsSubmit.setAttribute("aria-busy", on ? "true" : "false");
-    uiText($('submitLabel'), on ? "Checking..." : currentQuestion && window.MathPracticeAnswers.gradingNotice(currentQuestion) !== null ? 'Save work' : "Submit answer");
+    updateSubmitControl();
     if (on && !els.thoughts.value.trim()) uiText(els.announcement, 'Checking...');
     else if (!on && els.announcement.textContent === t('Checking...')) uiText(els.announcement, '');
     if (speechInput) speechInput.sync();
+  }
+  function updateSubmitControl() {
+    var checking = running || !!(feedback && feedback.submissionPending());
+    els.thoughtsSubmit.disabled = checking || !!(speechInput && speechInput.busy());
+    els.thoughtsSubmit.setAttribute('aria-busy', String(checking));
+    uiText($('submitLabel'), checking ? 'Checking...' : currentQuestion && window.MathPracticeAnswers.gradingNotice(currentQuestion) !== null ? 'Save work' : 'Submit answer');
   }
   document.addEventListener("keydown", function (e) {
     if ((e.ctrlKey || e.metaKey) && e.key === "Enter" && solModal.hidden && !$('connectionDialog').open) {
@@ -2505,7 +2513,7 @@ footer .source-credits p { margin: 0; }
     isEnabled: function () { return !!currentQuestion; },
     isConfigured: function () { return connections.speech.configured === true; },
     isAssessing: function () { return running; },
-    onState: function () { els.thoughtsSubmit.disabled = running || !!(speechInput && speechInput.busy()); },
+    onState: updateSubmitControl,
     onDraft: function () { saveDraft(true); updateSubmissionNote(); },
     onTranscript: function (transcript) { feedback.recorded(transcript); }
   });

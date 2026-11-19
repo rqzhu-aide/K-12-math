@@ -1,7 +1,25 @@
 /* Explicit answer formats only. Unrecognized symbolic/open answers need review. */
 (function (root) {
   'use strict';
-  function normal(value) { return value.normalize('NFKC').replace(/−/g, '-').replace(/\s+/g, '').toLowerCase(); }
+  function normal(value, caseSensitive = false) {
+    var text = value.normalize('NFKC').replace(/−/g, '-').replace(/\s+/g, '');
+    return caseSensitive ? text : text.toLowerCase();
+  }
+  function sameKey(value, key, caseSensitive) {
+    // Only a keyed phrase can allow words to change case around a variable.
+    if (caseSensitive && /[A-Za-z]{2,}\s+[A-Za-z]{2,}/.test(key)) {
+      var foldWords = function(text) { return text.replace(/[A-Za-z]{2,}/g, function(word){return word.toLowerCase();}); };
+      value = foldWords(value.normalize('NFKC')); key = foldWords(key.normalize('NFKC'));
+    }
+    return normal(value, caseSensitive) === normal(key, caseSensitive);
+  }
+  function symbolicKey(value) {
+    var key = normal(value);
+    if (/^(?:[a-z]|△[a-z]+|[+-]?(?:\d+(?:\.\d*)?|\.\d+)[a-z]+)$/.test(key)) return true;
+    if (!/^[0-9a-z.,()+*/^=<>≤≥≠-]+$/.test(key) || !/[a-z]/.test(key)) return false;
+    return /[+*^]/.test(key) || (/[-/=<>≤≥≠]/.test(key)
+      && (/\d/.test(key) || /(?:^|[-/=<>≤≥≠])[a-z](?:[-/=<>≤≥≠]|$)/.test(key)));
+  }
   function decimal(value) {
     var m=value.trim().match(/^([+-]?)(\d+(?:\.\d*)?|\.\d+)(?:e([+-]?\d+))?$/i);
     if (!m || Math.abs(Number(m[3] || 0))>308) throw new Error('Unsupported number');
@@ -19,7 +37,7 @@
     });
   }
   function formText(value) {
-    var text=normal(value);
+    var text=normal(value, true);
     for (var pair of [['\\(','\\)'],['$','$']]) {
       if (text.startsWith(pair[0]) && text.endsWith(pair[1])) return text.slice(pair[0].length,-pair[1].length);
     }
@@ -29,7 +47,7 @@
     if (typeof answer !== 'string') return '';
     var text=formText(answer);
     if (q.answerForm==='decimal' && !/^[+-]?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)$/.test(text)) return 'Write your final answer as a decimal numeral rather than a fraction or expression.';
-    if (q.answerForm==='standard-monomial' && !/^[+-]?(?:[0-9]+(?:\.[0-9]*)?)?[a-z]+$/.test(text)) return 'Write the numerical coefficient first and omit multiplication signs between the coefficient and letters.';
+    if (q.answerForm==='standard-monomial' && !/^[+-]?(?:[0-9]+(?:\.[0-9]*)?)?[A-Za-z]+$/.test(text)) return 'Write the numerical coefficient first and omit multiplication signs between the coefficient and letters.';
     if (q.answerForm==='ordered-list') {
       try {
         var a=numbers(text.replace(/^\(|\)$/g,'')),b=numbers(q.answer);
@@ -62,15 +80,20 @@
       return accepted.some(function(set){return answer.length < set.length && answer.every(function(id){return set.indexOf(id)>=0;});}) ? 'partial' : 'wrong';
     }
     if (typeof answer !== 'string') return null;
-    if ((q.rejectedAnswers || []).some(function(x){return normal(x)===normal(answer);})) return 'wrong';
+    var monomial = kind === 'short' && q.answerForm === 'standard-monomial';
+    var caseSensitive = kind === 'short' && (monomial || accepted.some(symbolicKey));
+    if ((q.rejectedAnswers || []).some(function(x){return sameKey(answer, x, caseSensitive);})) return 'wrong';
     if (kind === 'choice') return accepted.indexOf(answer)>=0 ? 'correct' : 'wrong';
     if (kind === 'self') return null;
     if (kind === 'short') {
-      if (accepted.some(function(x){return normal(x)===normal(answer);})) return enforceForm(q,answer,'correct');
-      if (q.answerForm==='standard-monomial') {
+      if (accepted.some(function(x){return sameKey(answer, x, caseSensitive);})) return enforceForm(q,answer,'correct');
+      if (monomial) {
         var withoutSigns=formText(answer).replace(/\*|·|×|\\times|\\cdot/g,'');
-        if (accepted.some(function(x){return formText(x)===withoutSigns;})) return formFeedback(q,answer)?'partial':'correct';
+        var forms = accepted.map(formText);
+        if (forms.includes(withoutSigns)) return formFeedback(q,answer)?'partial':'correct';
+        if (forms.some(function(key){return key.toLowerCase()===withoutSigns.toLowerCase();})) return 'wrong';
       }
+      if (caseSensitive && accepted.some(function(x){return normal(x)===normal(answer);})) return 'wrong';
       return null;
     }
     if (kind !== 'numeric') return null;

@@ -3,6 +3,7 @@
   'use strict';
   const SETTINGS = 'math-practice.online-tutor.v1', SECRETS = 'math-practice.online-tutor.secrets.v1';
   const VERIFIED = 'math-practice.online-tutor.verified.v1', ACCOUNT = 'math-practice.online-tutor.account.v1', EPOCH = 'math-practice.online-tutor.epoch.v1';
+  const LEGACY_ROUTE = 'math-practice.online-tutor.legacy-route:';
   const defaults = {method: 'api', baseUrl: 'https://api.openai.com/v1', model: ''};
   const Language = window.MathPracticeLanguage;
   const messages = {
@@ -63,6 +64,7 @@
   });
   let contractValue = null;
   const selectionBundles = new Map();
+  const legacyApiRoutes = new Set();
   const read = (storage, key) => { try { const value = JSON.parse(storage.getItem(key)); return value && typeof value === 'object' && !Array.isArray(value) ? value : {}; } catch (_) { return {}; } };
   const stored = (key, persistent = false) => { try { return read(persistent ? localStorage : sessionStorage, key); } catch (_) { return {}; } };
   const clean = value => typeof value === 'string' ? value.trim() : '';
@@ -110,12 +112,17 @@
         || (url.protocol !== 'https:' && !(url.protocol === 'http:' && loopback(url)))) throw new Error(messages.url);
     return url;
   }
-  function apiEndpoint(settings, path) {
+  function apiEndpoints(settings, path) {
     const url = endpoint(settings);
-    let prefix = url.pathname.replace(/\/+$/, '').replace(/\/chat\/completions$/, '').replace(/\/models$/, '');
-    if (!prefix.endsWith('/v1')) prefix += '/v1';
-    url.pathname = prefix + '/' + path;
-    return url.href;
+    const pathname = url.pathname.replace(/\/+$/, '');
+    const prefix = pathname.replace(/\/(?:chat\/completions|models)$/, '');
+    const bases = pathname === '' ? ['/v1'] : [prefix];
+    // Keep older proxy-prefix settings working if the supplied API path is absent.
+    if (pathname && pathname === prefix && !prefix.endsWith('/v1')) bases.push(prefix + '/v1');
+    return bases.map(base => {
+      url.pathname = base + '/' + path;
+      return url.href;
+    });
   }
   function status() {
     const settings = getSettings();
@@ -139,18 +146,46 @@
     try { const value = await action(controller.signal); active(controller.signal); return value; }
     finally { clearTimeout(timer); if (signal) signal.removeEventListener('abort', abort); }
   }
-  async function json(url, options) {
+  function missingApiRoute(body, contentType) {
+    if (body === undefined) return !/\bjson\b/i.test(contentType || '');
+    const failure = body && body.error;
+    if (failure && ['endpoint_not_found', 'route_not_found'].includes(failure.code)) return true;
+    if (failure && (failure.code || failure.type || failure.param)) return false;
+    const description = failure ? failure.message : body && (body.detail || body.message);
+    return typeof description === 'string' && /^(?:(?:404|endpoint|route|path) )?not found\.?$/i.test(description.trim());
+  }
+  function followsLegacyRoute(url) {
+    try { return sessionStorage.getItem(LEGACY_ROUTE + url) === '1'; }
+    catch (_) { return legacyApiRoutes.has(url); }
+  }
+  function rememberApiRoute(url, legacy) {
+    if (legacy) legacyApiRoutes.add(url); else legacyApiRoutes.delete(url);
+    try {
+      if (legacy) sessionStorage.setItem(LEGACY_ROUTE + url, '1');
+      else sessionStorage.removeItem(LEGACY_ROUTE + url);
+    } catch (_) {}
+  }
+  async function json(url, options, fallbackUrl) {
+    const exactUrl = url;
+    if (fallbackUrl && followsLegacyRoute(exactUrl)) [url, fallbackUrl] = [fallbackUrl, url];
     let response;
     try { response = await fetch(url, {...options, credentials: 'omit', referrerPolicy: 'no-referrer', cache: 'no-store', redirect: 'error'}); }
     catch (error) { if (error.name === 'AbortError') throw error; throw new Error(messages.apiNetwork); }
     if (!response.ok) {
       // Inspect structured error fields, but never show a provider's raw message,
       // which may echo credentials or the learner's submission.
-      let failure;
-      try { failure = (await response.json()).error; } catch (_) {}
+      let body;
+      try { body = await response.json(); } catch (_) {}
       active(options.signal);
+      const failure = body && body.error;
       const code = failure && failure.code, parameter = failure && failure.param;
       if (code === 'model_not_found') throw new Error(messages.modelUnavailable);
+      if (fallbackUrl && response.status === 404
+          && missingApiRoute(body, response.headers?.get('content-type'))) {
+        const result = await json(fallbackUrl, options);
+        rememberApiRoute(exactUrl, fallbackUrl !== exactUrl);
+        return result;
+      }
       if (response.status === 429 && code === 'insufficient_quota') throw new Error(messages.quota);
       if (response.status === 400 && ['unsupported_parameter', 'unsupported_value'].includes(code)
           && ['max_tokens', 'max_completion_tokens', 'reasoning_effort', 'response_format', 'messages', 'messages[0].role', 'model'].includes(parameter)) throw new Error(messages.requestFormat);
@@ -165,8 +200,9 @@
   async function models(value, options = {}) {
     const settings = normalized(value);
     return timed(options.signal, async signal => {
-      const result = await json(apiEndpoint(settings, 'models'), {method: 'GET', signal,
-        headers: settings.apiKey ? {Authorization: 'Bearer ' + settings.apiKey} : {}});
+      const [url, fallbackUrl] = apiEndpoints(settings, 'models');
+      const result = await json(url, {method: 'GET', signal,
+        headers: settings.apiKey ? {Authorization: 'Bearer ' + settings.apiKey} : {}}, fallbackUrl);
       if (!result || !Array.isArray(result.data)) throw new Error(messages.apiError);
       return {models: result.data.filter(item => item && typeof item.id === 'string').map(item => ({id: item.id}))};
     }, 30000);
@@ -270,7 +306,7 @@
   }
   async function infer(settings, prompt, instructions, schema, images, signal) {
     if (!settings.model) throw new Error(messages.unconfigured);
-    const url = apiEndpoint(settings, 'chat/completions');
+    const [url, fallbackUrl] = apiEndpoints(settings, 'chat/completions');
     const officialOpenAI = url === 'https://api.openai.com/v1/chat/completions';
     const reasoningModel = /^(?:gpt-[56](?:[.-]|$)|o[1-9](?:-|$))/.test(settings.model);
     const lowEffort = /^gpt-[56](?:[.-]|$)/.test(settings.model) && !/(?:-pro|-chat-latest)(?:-|$)/.test(settings.model);
@@ -283,7 +319,7 @@
       ...(officialOpenAI && lowEffort ? {reasoning_effort: 'low'} : {}), response_format: {type: 'json_object'}};
     const result = await json(url, {method: 'POST', signal,
       headers: {'Content-Type': 'application/json', ...(settings.apiKey ? {Authorization: 'Bearer ' + settings.apiKey} : {})},
-      body: JSON.stringify(payload)});
+      body: JSON.stringify(payload)}, fallbackUrl);
     const choice = result && result.choices && result.choices[0];
     if (choice && choice.finish_reason === 'length') throw new Error(messages.tokenLimit);
     if (choice && (choice.finish_reason === 'content_filter' || choice.message && choice.message.refusal)) throw new Error(messages.refused);
