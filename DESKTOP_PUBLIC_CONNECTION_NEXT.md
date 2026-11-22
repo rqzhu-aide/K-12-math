@@ -40,7 +40,7 @@ Local test evidence: `.local/public-services-20261117/browser-evidence.json`, `b
 
 The report mentions that a private widget secret was shared in chat. If this was an actual secret rather than the public site key, rotate it privately in Cloudflare and update the desktop secret file before the final browser test. The public site key in this document is intended to be shared.
 
-Use the desktop report's later DNSSEC checkpoint: **November 18, 2026 at 23:51 America/Chicago**, followed by successful propagation and website checks. Frontend API, widget, and release metadata are now configured. Production bank releases are `amc-c0f86768d5bda9d1` and `cn-math-17ca82e5a091f397`, derived from the exported question content.
+Use the desktop report's later DNSSEC checkpoint: **November 18, 2026 at 23:51 America/Chicago**, followed by successful propagation and website checks. Frontend API, widget, and release metadata are now configured. The `services.bankReleases` values in [hosted-config.js](hosted-config.js) identify the production banks and are derived from the exported question content.
 
 ## Current state: DNS has already moved
 

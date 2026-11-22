@@ -993,7 +993,11 @@ button.path-question { height: auto; min-height: 44px; padding: 10px 14px; line-
 .choice-zoom a { display: inline-flex; align-items: center; min-height: 44px; color: var(--accent-deep); font-size: .8125rem; text-underline-offset: 3px; }
 .choice-zoom a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .written-answer { padding: 10px 34px 0; }
-.written-answer label { display: block; margin-bottom: 8px; font-size: .8125rem; font-weight: 600; color: var(--ink-2); text-transform: none; letter-spacing: 0; }
+.answer-caption { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; margin-bottom: 8px; }
+.written-answer label { font-size: .8125rem; font-weight: 600; color: var(--ink-2); text-transform: none; letter-spacing: 0; }
+.answer-example { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 6px; max-width: 100%; color: var(--ink-2); font-size: .8125rem; }
+.answer-example-value { padding: 1px 6px; max-width: 100%; border: 1px solid var(--field-line); border-radius: 4px; background: var(--input-surface); color: var(--ink); font-family: var(--mono); overflow-wrap: anywhere; }
+.answer-example + .answer-opts { margin-top: 8px; }
 .picture-choices .q-choice { align-items: flex-start; }
 .badge { background: var(--accent-soft); color: var(--accent-deep); border: 0; font-family: var(--font); font-weight: 600; border-radius: 5px; }
 .opt-text { font-size: 1rem; }
@@ -1223,7 +1227,7 @@ footer .source-credits p { margin: 0; }
     </div>
     <div class="answer-opts" id="answerOpts" role="radiogroup" aria-label="Your answer" data-i18n-aria-label="Your answer" hidden></div>
     <div class="written-answer" id="writtenAnswer" hidden>
-      <label id="writtenAnswerLabel" for="freeAnswer" data-i18n="Your answer">Your answer</label>
+      <div class="answer-caption" id="writtenAnswerCaption"><label id="writtenAnswerLabel" for="freeAnswer" data-i18n="Your answer">Your answer</label></div>
       <input class="free-answer" id="freeAnswer" aria-label="Your answer" data-i18n-aria-label="Your answer" maxlength="2000" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Enter your answer" data-i18n-placeholder="Enter your answer" hidden>
       <textarea class="free-answer" id="openAnswer" aria-label="Your answer" data-i18n-aria-label="Your answer" maxlength="2000" rows="4" autocomplete="off" placeholder="Describe your answer. It will receive a review." data-i18n-placeholder="Describe your answer. It will receive a review." hidden></textarea>
     </div>
@@ -1758,6 +1762,7 @@ footer .source-credits p { margin: 0; }
     $("freeAnswer").value = ""; $("freeAnswer").hidden = true;
     $("openAnswer").value = ""; $("openAnswer").hidden = true;
     $("writtenAnswer").hidden = true;
+    renderAnswerExample(null);
     els.answerOpts.replaceChildren();
     $("figureNotice").hidden = true;
     pool.display.hidden = true;
@@ -1994,6 +1999,7 @@ footer .source-credits p { margin: 0; }
     if (q.editorialNote) box.appendChild(el("p", "pool-hint", q.editorialNote.split(" See processing code/")[0]));
 
     pool.body.replaceChildren(box);
+    renderAnswerExample(q);
     pool.display.hidden = false;
     typeset(box);
     if (location.protocol !== 'file:') {
@@ -2441,6 +2447,25 @@ footer .source-credits p { margin: 0; }
     $(id).addEventListener('input', function (event) { selectedAnswer = event.target.value.trim(); saveDraft(true); updateSubmissionNote(); });
   });
 
+  function renderAnswerExample(q) {
+    var previous = $('answerExample');
+    if (previous) previous.remove();
+    var controls = [$('freeAnswer'), $('openAnswer'), els.answerOpts];
+    controls.forEach(function (control) { control.removeAttribute('aria-describedby'); });
+    if (!q || typeof q.answerExample !== 'string' || !q.answerExample.trim()) return;
+    var control = controls.find(function (item) { return !item.hidden; });
+    var note = el('span', 'answer-example');
+    note.id = 'answerExample';
+    note.appendChild(uiEl('span', null, 'Example format'));
+    note.appendChild(document.createTextNode(' '));
+    var sample = el('samp', 'answer-example-value', q.answerExample);
+    sample.lang = q.language || 'en';
+    note.appendChild(sample);
+    if (control === els.answerOpts) control.parentNode.insertBefore(note, control);
+    else $('writtenAnswerCaption').appendChild(note);
+    control.setAttribute('aria-describedby', note.id);
+  }
+
   function buildAnswerButtons(q) {
     var multi = q.responseType === 'multiSelect';
     var free = q.responseType && q.responseType !== 'choice' && !multi;
@@ -2453,7 +2478,14 @@ footer .source-credits p { margin: 0; }
     uiAttribute(els.answerOpts, 'aria-label', multi ? 'Your answers. Select all that apply.' : 'Your answer');
     $('freeAnswer').value = free && !open ? selectedAnswer || '' : '';
     $('openAnswer').value = open ? selectedAnswer || '' : '';
-    uiAttribute($('freeAnswer'), 'placeholder', q.answerForm === 'decimal' ? 'Enter a decimal numeral' : q.answerForm === 'ordered-list' ? 'List values in the requested order, separated by commas' : q.responseType === 'numeric' ? 'Number or fraction; separate multiple values with commas' : 'Enter an expression or a short answer');
+    var placeholder = 'Enter your answer';
+    if (!q.answerExample) {
+      if (q.answerForm === 'decimal') placeholder = 'Enter a decimal numeral';
+      else if (q.answerForm === 'ordered-list') placeholder = 'List values in the requested order, separated by commas';
+      else if (q.responseType === 'numeric') placeholder = 'Number or fraction; separate multiple values with commas';
+      else placeholder = 'Enter an expression or a short answer';
+    }
+    uiAttribute($('freeAnswer'), 'placeholder', placeholder);
     els.answerOpts.replaceChildren.apply(els.answerOpts,
       answerTools.choiceIds(q)
         .map(function (L, index) {

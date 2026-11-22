@@ -27,7 +27,7 @@
     'Mathematical concept': '数学概念', 'Loading concepts…': '正在加载概念…', 'Find practice': '查找练习', 'Results page': '结果页',
     'Question bank': '题库', 'Level': '学段', 'Year': '年份', 'Batch': '批次', 'Problem': '题目', 'Reset': '重置',
     'Grade / unit': '年级 / 单元', 'Topic': '主题', 'Choose a year and problem to begin.': '选择年份和题目，开始练习。',
-    'Your answer': '你的答案', 'Enter your answer': '输入答案', 'Describe your answer. It will receive a review.': '描述你的答案，提交后将获得点评。',
+    'Your answer': '你的答案', 'Example format': '格式示例', 'Enter your answer': '输入答案', 'Describe your answer. It will receive a review.': '描述你的答案，提交后将获得点评。',
     'What will you discover?': '今天会有什么发现？', 'Try an idea. Follow a pattern. Give yourself room to work things out.': '试试一个想法，寻找其中的规律，给自己留出思考的空间。',
     'Try a problem': '试做一道题', 'Save to notebook': '保存到笔记本', 'Saved to notebook': '已保存到笔记本', 'Saved for another look': '已收藏，稍后再看',
     'Your thinking': '你的思路', 'Your thinking (optional)': '你的思路（可选）', 'Record thinking': '录下思路', '1:00 left': '还剩 1:00',
