@@ -106,6 +106,8 @@ def question_fingerprint(question, root=ROOT, *, bank_root=None):
         payload = fingerprint_payload(question)
     else:
         payload = {key: question.get(key) for key in FINGERPRINT_FIELDS}
+        if 'Answer Example' in question:
+            payload['Answer Example'] = question['Answer Example']
         for key in ('Accepted Answers', 'Rejected Answers'):
             payload[key] = question.get(key, [])
         payload['Unordered Answers'] = question.get('Unordered Answers', False)

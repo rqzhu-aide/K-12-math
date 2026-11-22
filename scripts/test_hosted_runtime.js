@@ -44,10 +44,57 @@ test('the application inline JavaScript parses', () => {
   for (const script of source.matchAll(/<script>([\s\S]*?)<\/script>/g)) new vm.Script(script[1]);
 });
 
+test('an optional literal answer example follows the active answer control', () => {
+  function element(tagName, className, textContent) {
+    return {tagName, className, textContent, children: [], hidden: true, value: '', attrs: {},
+      setAttribute(name, value) { this.attrs[name] = value; },
+      removeAttribute(name) { delete this.attrs[name]; },
+      appendChild(child) { this.insertBefore(child, null); },
+      insertBefore(child, reference) {
+        this.children.splice(reference ? this.children.indexOf(reference) : this.children.length, 0, child);
+        child.parentNode = this;
+        child.remove = () => this.children.splice(this.children.indexOf(child), 1);
+      }};
+  }
+  const freeAnswer = element('input'), openAnswer = element('textarea'), answerOpts = element('div');
+  const writtenAnswer = element('div'), writtenAnswerCaption = element('div'), choices = element('div');
+  writtenAnswer.appendChild(freeAnswer);
+  writtenAnswer.appendChild(openAnswer);
+  choices.appendChild(answerOpts);
+  const notes = () => [...writtenAnswerCaption.children, ...choices.children].filter(node => node.id === 'answerExample');
+  const controls = {freeAnswer, openAnswer, writtenAnswerCaption};
+  const context = {els: {answerOpts}, $(id) { return controls[id] || notes()[0]; }, el: element,
+    document: {createTextNode: textContent => ({textContent})}};
+  const implementation = source.match(/  function answerExampleText\(q\) \{[\s\S]*?(?=\n  function buildAnswerButtons\()/)[0];
+  vm.runInNewContext(implementation, context);
+
+  for (const [control, parent, sample] of [[freeAnswer, writtenAnswerCaption, '5, 4'],
+    [openAnswer, writtenAnswerCaption, '<literal>'], [answerOpts, choices, 'A, C']]) {
+    for (const item of [freeAnswer, openAnswer, answerOpts]) item.hidden = item !== control;
+    context.renderAnswerExample({answerExample: sample});
+    const [note] = notes();
+    assert.equal(notes().length, 1);
+    assert.equal(parent.children[0], note);
+    assert.equal(note.children[0].textContent, 'Example format');
+    assert.equal(note.children[2].tagName, 'samp');
+    assert.equal(note.children[2].textContent, sample);
+    for (const item of [freeAnswer, openAnswer, answerOpts]) {
+      assert.equal(item.attrs['aria-describedby'], item === control ? 'answerExample' : undefined);
+      assert.equal(item.value, '');
+    }
+  }
+  for (const missing of [{answerExample: '  '}, {answerExample: 7}, {}, null]) {
+    context.renderAnswerExample(missing);
+    assert.deepEqual(notes(), []);
+    assert.equal(answerOpts.attrs['aria-describedby'], undefined);
+  }
+});
+
 test('hosted startup fetches catalogs only and selected question preserves the full projection', async () => {
   const calls = [];
-  const full = {id: 'item', question: 'How many?', choices: {A: '4'}, acceptedResponses: ['A'],
-    responseType: 'choice', solutionMethods: [{id: 'count', explanation: 'Count four.'}],
+  const full = {id: 'item', question: 'Enter the number of groups and the number left over.', answerExample: '5, 4',
+    acceptedResponses: ['3, 2'], responseType: 'numeric',
+    solutionMethods: [{id: 'count', explanation: 'Count the full groups first.'}],
     provenance: {license: 'CC-BY-NC-SA-4.0'}, knowledgeGraph: {gradingStatus: 'disputed', gradingNote: 'Study only.'}};
   const runtime = transport(async (url, options) => {
     calls.push({url, options}); return response(url.includes('/questions/') ? full : {id: 'catalog', questions: []});

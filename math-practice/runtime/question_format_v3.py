@@ -61,9 +61,11 @@ def validate_question(record):
     if not re.fullmatch(r'[A-Za-z0-9_]{1,120}', record['id']):
         raise QuestionFormatError('Question id must use letters, digits and underscores, up to 120 characters.')
     question, answer, classification = record['question'], record['answer'], record['classification']
-    if not isinstance(question, dict) or not {'prompt'} <= set(question) <= {'prompt','choices'}:
-        raise QuestionFormatError('question needs prompt and optional choices.')
+    if not isinstance(question, dict) or not {'prompt'} <= set(question) <= {'prompt','answerExample','choices'}:
+        raise QuestionFormatError('question needs prompt and may include answerExample and choices.')
     _text(question['prompt'], 'question.prompt')
+    if 'answerExample' in question:
+        _text(question['answerExample'], 'question.answerExample')
     if not isinstance(answer, dict) or not {'type'} <= set(answer) <= {'type','accepted','rubric','rejected','unordered','form','gradingNote'}:
         raise QuestionFormatError('answer contains unsupported fields.')
     kind = answer['type']
@@ -315,6 +317,8 @@ def normalize_question(record, *, root=ROOT, bank_root=None, source_index=None):
             label = legacy.get('label')
         result['Topic'] = {'id':topic_id, 'label':label if isinstance(label, str) and label.strip() else topic_id}
         result.setdefault('Batch', topic_id)
+    if 'answerExample' in record['question']:
+        result['Answer Example'] = record['question']['answerExample']
     if 'form' in answer:
         result['Answer Form'] = answer['form']
     if 'rubric' in answer:
@@ -333,6 +337,10 @@ def fingerprint_payload(question):
         method.pop('sourceRef', None)
     if isinstance(question, NormalizedQuestion):
         result['question']['prompt'] = question['Question']
+        if 'Answer Example' in question:
+            result['question']['answerExample'] = question['Answer Example']
+        else:
+            result['question'].pop('answerExample', None)
         if 'choices' in result['question']:
             order = list(dict.fromkeys([*question['Choice Order'], *question['Choices']]))
             result['question']['choices'] = [{'id':key,'content':question['Choices'][key]} for key in order if key in question['Choices']]

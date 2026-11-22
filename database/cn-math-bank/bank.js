@@ -23498,7 +23498,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "There are 13 candies, packed with 5 candies in each bag. Write the quotient first, then the remainder. Quotient and remainder: \\(13 \\div 5\\)",
+"question": "There are 13 candies, packed with 5 candies in each bag. Find the quotient and remainder of \\(13 \\div 5\\).",
+"answerExample": "5, 4",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -23568,7 +23569,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "e8191b1b85e50bfe419d8bea15956dcf2dd6dd093552c785f02fb39b078bb07d",
+"contentHash": "abc73c1518a07dc4e3cd8b27aa0f61f92a15907a03162d7d3f52fd68cda98ccb",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -23618,7 +23619,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "There are 17 notebooks, bundled in groups of 3. Write the quotient first, then the remainder. Quotient and remainder: \\(17 \\div 3\\)",
+"question": "There are 17 notebooks, bundled in groups of 3. Find the quotient and remainder of \\(17 \\div 3\\).",
+"answerExample": "4, 1",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -23687,7 +23689,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "0e726946e0a7fd2139aa2486f7fd1a45d5c8a36f5c0b40073f73d2fb053ff28a",
+"contentHash": "fb04b18b6c908d0bbfcdf5e3f71083ba2f102d405a91dfc0de9d9900609f9d3f",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -23735,7 +23737,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Write the quotient first, then the remainder. Quotient and remainder: \\(20 \\div 6\\)",
+"question": "Find the quotient and remainder of \\(20 \\div 6\\).",
+"answerExample": "5, 4",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -23804,7 +23807,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "776bbf6988c5a2e727cbd52f5cc225c6a95b245ddbbbade1ea7a3cbd4f6c4794",
+"contentHash": "b524a7edcc22b4acd94d5e5e857c7aaac8f85d75fc38b07eff434dad738e1eaa",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -23852,7 +23855,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Write the quotient first, then the remainder. Quotient and remainder: \\(14 \\div 4\\)",
+"question": "Find the quotient and remainder of \\(14 \\div 4\\).",
+"answerExample": "5, 1",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -23921,7 +23925,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "b6897586738fe41780bd875198e50699060407035801a95450b2977707c17cf3",
+"contentHash": "073540452266271ad2de3e3c348e26590ff1a27e17eab7ad9ed9b93badc5316d",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -23969,7 +23973,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Write the quotient first, then the remainder. Quotient and remainder: \\(25 \\div 7\\)",
+"question": "Find the quotient and remainder of \\(25 \\div 7\\).",
+"answerExample": "5, 2",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -24038,7 +24043,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "46b92fc0f21a795bfa82dae12ea2653efdc8478315d3d01f6b473aaf6d6989ee",
+"contentHash": "5a6cd732fe46a9aa46845475867ca518a42caec76e70398a72d5005a2abc7262",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -24086,7 +24091,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "There are 30 apples, packed with 8 apples in each bag. Write the quotient first, then the remainder. Quotient and remainder: \\(30 \\div 8\\)",
+"question": "There are 30 apples, packed with 8 apples in each bag. Find the quotient and remainder of \\(30 \\div 8\\).",
+"answerExample": "5, 4",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -24155,7 +24161,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "8bf30cdbf72c5937342ed4f36092ad08c0d87f649423ae4fc9ad5feb9fbeb7cc",
+"contentHash": "466ed7fd9027517cd3fc1f90687b7f856f8be6e9766e92bbfe0ffc6d3582b54e",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -24203,7 +24209,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Write the quotient first, then the remainder. Quotient and remainder: \\(45\\div6\\)",
+"question": "Find the quotient and remainder of \\(45\\div6\\).",
+"answerExample": "5, 4",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -24272,7 +24279,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "8e52fa8a005ec72bc78b3999ce87e7c22e4e27957926c6b5d1ff24dce2141eaa",
+"contentHash": "22eab33d08eed87d302b87a1c72bbb7ea656e1ac980360ef9d830e71195dc485",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -24320,7 +24327,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "There are 23 balls, with 5 balls packed in each bag. Write the quotient first, then the remainder. Quotient and remainder: \\(23\\div5\\)",
+"question": "There are 23 balls, with 5 balls packed in each bag. Find the quotient and remainder of \\(23\\div5\\).",
+"answerExample": "5, 2",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -24390,7 +24398,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "a63ec43777b486e2e9a9729433ff1dc61dd4622ed760fedf0bd3d2ede741ddf2",
+"contentHash": "b59a385654b7ad9b46764bfdd765226eac5ac6ef91f3fdd1ae39048e94616985",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -24437,7 +24445,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Write the quotient first, then the remainder. Quotient and remainder: \\(19\\div4\\)",
+"question": "Find the quotient and remainder of \\(19\\div4\\).",
+"answerExample": "5, 2",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -24506,7 +24515,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "d5901852742297c06ba1eb35f82713665dd50b9d340d80f373088ab0cc250728",
+"contentHash": "fbff8b553438fa656f1d06a4edff19e839f6a6fb0e2e2902349088b45ac1adc3",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -24551,7 +24560,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "28 people rent boats. Each boat seats 6 people. Write the quotient first, then the remainder. Quotient and remainder: \\(28\\div6\\)",
+"question": "28 people rent boats. Each boat seats 6 people. Find the quotient and remainder of \\(28\\div6\\).",
+"answerExample": "5, 3",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -24620,7 +24630,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "ac927634aa853ec8cc2b7ced2537ede7302ebf11405055720869974c451f0fc2",
+"contentHash": "15505243ef6710d3a6a70ed871c4cda7d9c01ad6035e78b79702f613127aa185",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -24665,7 +24675,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Write the quotient first, then the remainder. Quotient and remainder: \\(50\\div8\\)",
+"question": "Find the quotient and remainder of \\(50\\div8\\).",
+"answerExample": "5, 4",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -24734,7 +24745,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "76777e6156b827cab18fc295e269332bb141ac5e4e1c136c9b6048d48d493029",
+"contentHash": "1464309d5ad582061d8f19b074f3471413935c9408a8769f2b4d58cb0fe78397",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -80023,7 +80034,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Write the quotient first, then the remainder. Quotient and remainder: \\(9\\div4\\)",
+"question": "Find the quotient and remainder of \\(9\\div4\\).",
+"answerExample": "5, 3",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -80092,7 +80104,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "926d78164c71430d264ec99439d4556f0f515240b0f1db8e4892de71f0eef953",
+"contentHash": "03f1406b597fd5fe02ab929c04e0962548d347374e9a9270d0210ccc8dddd5a6",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [],
@@ -105107,7 +105119,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Write the quotient first, then the remainder. Quotient and remainder: \\(7\\div3\\).",
+"question": "Find the quotient and remainder of \\(7\\div3\\).",
+"answerExample": "5, 0",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -105174,7 +105187,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "Project contribution AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "38b0f3db7ff646054ccfd5b48c66b6c39b64cc21641fbf5b00939a014bf791f5",
+"contentHash": "1127f305dfd28153c489a22eb742f80ac5dc7e589738f2d9e896fbd10bb68a3f",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -105334,7 +105347,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Which of the following numbers are negative: \\(-3\\), \\(0\\), \\(+2.5\\), \\(-\\frac{1}{2}\\)? (Write all the negative numbers in order, separated by commas.)",
+"question": "Which of the following numbers are negative: \\(-3\\), \\(0\\), \\(+2.5\\), \\(-\\frac{1}{2}\\)? List the negative numbers in the order shown.",
+"answerExample": "-5, -2/3",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -105404,7 +105418,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "3bd0c03b3fc15328d9fd67b623557d392a9a90184dcda5e8d0823e1a4e6fb7a5",
+"contentHash": "30e668f8702dcec29a067cfe24127471c326435d7f7d83c5026716d6ca1f94a8",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -107752,7 +107766,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Find the additive inverses of \\(-7\\) and \\(3/4\\), and simplify \\(-(-5)\\). (Give the answers in order, separated by commas.)",
+"question": "Find the additive inverses of \\(-7\\) and \\(3/4\\), then simplify \\(-(-5)\\).",
+"answerExample": "6, 2/3, 9",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -107821,7 +107836,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "8872ec6ae1306137a0f49c5d295a3caa5eb8efa427026cc3984d989eb0e62a01",
+"contentHash": "0a09c50cf7e430037c4490f3124299ee2ef7396ce09740a58dafd7602d50c953",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -108226,7 +108241,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "What are \\(|-4|\\) and \\(|4|\\), respectively? (Give the answers in order, separated by commas.)",
+"question": "What are \\(|-4|\\) and \\(|4|\\), respectively?",
+"answerExample": "8, 12",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -108295,7 +108311,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "8c951d02785145f106436e78cbbcfe8b535678dcddefb940fc246f03532aa142",
+"contentHash": "b693f7860a5b62c54574e6eff5231542ceeacaf3d911adb282c2c3a6b590afd0",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -108704,7 +108720,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "If \\(|x|=3\\), find \\(x\\). (Write all values, separated by commas.)",
+"question": "If \\(|x|=3\\), find all values of \\(x\\).",
+"answerExample": "5, 4",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -108774,7 +108791,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "ba5e0596758f8d538a898823f84cc04b280626802159d9875d502c2666d7eb84",
+"contentHash": "dfd2e9365d3e33ade355e7522f07ef581dd39f6ba9f65aae0b231c611801b29c",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -108934,7 +108951,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Given \\(|a|=5\\), \\(|b|=2\\), and \\(a<b\\), what are all possible values of \\(a-b\\)? (Separate the values with commas; any order is acceptable.)",
+"question": "Given \\(|a|=5\\), \\(|b|=2\\), and \\(a<b\\), what are all possible values of \\(a-b\\)?",
+"answerExample": "9, 5",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -109004,7 +109022,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "a4150c8ad7f0afe6c4afe721a45c43ad7ea7fac50a2d2bc100428fcc620bc623",
+"contentHash": "f3b18cc918d1c19fcbce7269964fcc22fcde5d8a66cb697ca8c592e1a3ae5d1d",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -109668,7 +109686,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Calculate \\((-8)+5\\) and \\((-3)+(-4)\\). (Give the answers in order, separated by commas.)",
+"question": "Calculate \\((-8)+5\\) and \\((-3)+(-4)\\).",
+"answerExample": "12, 9",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -109737,7 +109756,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "2687774634f6ac68d820b81455cf3e1e3c424ba9055b233b4633b8a6c7badd67",
+"contentHash": "e2283d1673340c83191697fff058d71354a25fb28dbd33c18743626e1383dd39",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -110615,7 +110634,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Calculate \\(3-(-5)\\) and \\((-2)-7\\). (Give your answers in order, separated by a comma.)",
+"question": "Calculate \\(3-(-5)\\) and \\((-2)-7\\).",
+"answerExample": "9, 5",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -110684,7 +110704,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "20dcbd5caf7387b28924ca77bc34dc99c17b032c2027f4c8294715e52028f1e4",
+"contentHash": "07a18417d024009c78067be0dfdb14248615a53932128075b50ac777010e7d65",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -111812,7 +111832,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Calculate \\((-3)\\times(-4)\\) and \\((-5)\\times2\\). (Give your answers in order, separated by a comma.)",
+"question": "Calculate \\((-3)\\times(-4)\\) and \\((-5)\\times2\\).",
+"answerExample": "7, 8",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -111881,7 +111902,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "98aed3bf21a5c20010fdf166b6c961107c4759595c4526ab8bf66d9d1c0d1130",
+"contentHash": "3432f5d349f594707ac149659e2c0d45efb1c73c0a23191fe9e65d2bb0ca5e95",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -114827,7 +114848,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "State the meanings of \\((-3)^3\\) and \\(-3^3\\), and calculate them. (Only write the values of the two expressions in the given order, separated by a comma.)",
+"question": "Consider how the parentheses affect the meaning of \\((-3)^3\\) and \\(-3^3\\). What are the values of the two expressions, in that order?",
+"answerExample": "5, 12",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -114897,7 +114919,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "1e0a8c72af0f6702db4319e81fcf422d072329b191c4ca5aa210d66eea181d43",
+"contentHash": "81da41f42bb9c615ebc64e676198e79f7930e8b86efaf1e2c40e747070303028",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -115436,7 +115458,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Calculate \\((-2)^4\\) and \\((-1/2)^3\\). (Give your answers in order, separated by a comma.)",
+"question": "Calculate \\((-2)^4\\) and \\((-1/2)^3\\).",
+"answerExample": "8, 4/5",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -115505,7 +115528,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "7257837a1d2792042d8a7bdaa3830938ae5da6319d9081831d288103f8033a73",
+"contentHash": "7e7ca52494d0fbad64235bde44190f21eda646259f3b03dbcd4b582a7c86e7a3",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -121518,7 +121541,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Identify the coefficient and degree of \\(-3x^2y\\). (Enter the coefficient first, then the degree, separated by a comma.)",
+"question": "Identify the coefficient and degree of \\(-3x^2y\\).",
+"answerExample": "-5, 4",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -121587,7 +121611,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "4aabc6516b54d8909deb7300dac8a53d7bd077c0cc9b99f0d584991aec177bf9",
+"contentHash": "516461ef5713e21c38c3fa09ba3c1d6ab5c89192ffa54d3ca3c1c5d8e579a942",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -121758,7 +121782,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "What are the coefficient and degree, in that order, of the monomial \\(-x^2y^3z\\)? (Separate them with a comma.)",
+"question": "What are the coefficient and degree of the monomial \\(-x^2y^3z\\)?",
+"answerExample": "-2, 4",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -121827,7 +121852,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "d4db5a2ac159ce4164db6fff038b3b367b7a8b25c8ab64d5aa816afcb218f2aa",
+"contentHash": "6ca310ef5a1ace281e056b9442e1ee7fe15f6dc27b398dc248c0646ecfb4d82d",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -121992,7 +122017,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Identify the number of terms and the degree of \\(x^2-3xy+5\\). (Enter the number of terms first, then the degree, separated by a comma.)",
+"question": "Identify the number of terms and the degree of \\(x^2-3xy+5\\).",
+"answerExample": "7, 5",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -122061,7 +122087,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "09d1583d433b280a625ae7b8790a18522f99b8d878297fa500bc563af5fe11f7",
+"contentHash": "e9a20f9e05f0b751f301abfe652a563b4fc865bb663e366d757a2a1889892961",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -122354,7 +122380,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "If the polynomial \\(x^2 y^{|m|}-3x+1\\) is a trinomial of degree 3, find the value of \\(m\\). (If there are multiple answers, separate them with commas.)",
+"question": "If the polynomial \\(x^2 y^{|m|}-3x+1\\) is a trinomial of degree 3, find all possible values of \\(m\\).",
+"answerExample": "4, 8",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -122424,7 +122451,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "673e7c23384a8aa6e0c154d102cdee1a330e08fc67ec61c118761c0b8315c7fc",
+"contentHash": "b6b12a13b7fdb7903612c637a1ae22b558ca8ea77168f0f9b9fec2d3eb57f1cb",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -131894,7 +131921,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "How many common forms of a cube's net are there? How many squares does each net contain? (Answer in order, separated by a comma.)\n\n[Figure 1](figures/cnm_051_q1_question_en.svg)",
+"question": "How many common forms of a cube's net are there? How many squares does each net contain?\n\n[Figure 1](figures/cnm_051_q1_question_en.svg)",
+"answerExample": "8, 5",
 "questionType": "mixed",
 "choices": {},
 "choiceOrder": [],
@@ -131989,7 +132017,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "eb503782aa828e19805942a204843aa057cf247adcbc902aeea9e4a779b3cbdc",
+"contentHash": "62228be72f81bdf7a5bb5eff1d8fdfcd835b783b6cbbbac9f365ff32ea0c0935",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -132977,7 +133005,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "How many vertices, edges, and faces does a rectangular prism have? (Answer in order, separated by commas.)\n\n[Figure 1](figures/cnm_052_q3_question_en.svg)",
+"question": "How many vertices, edges, and faces does a rectangular prism have?\n\n[Figure 1](figures/cnm_052_q3_question_en.svg)",
+"answerExample": "10, 15, 7",
 "questionType": "mixed",
 "choices": {},
 "choiceOrder": [],
@@ -133072,7 +133101,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "8bdaf74d53b58f309cdd2b1c454cc9206b59a7d322a83bd0e1361b9058fec067",
+"contentHash": "04011d635f50abdc663368cfaa510239ce322bf4e01eb136d47a83366b593c1d",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -135194,7 +135223,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Points A, B, and C lie on the same line, with \\(AB=10\\text{ cm}\\) and \\(BC=4\\text{ cm}\\). What is the length of AC, in cm? (If there are multiple answers, separate them with commas, in any order.)",
+"question": "Points A, B, and C lie on the same line, with \\(AB=10\\text{ cm}\\) and \\(BC=4\\text{ cm}\\). Find all possible lengths of AC in centimeters.",
+"answerExample": "9, 21",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -135263,7 +135293,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "144c84511676469db65c97e9aa9fecda5fbebfb77b61127120fcc3fd553d7f1b",
+"contentHash": "c2ef8f29c217e05eca9c442021accd3436c05fe977422bde3a047813d3b22b37",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -136177,7 +136207,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Calculate \\(37^\\circ42′+25^\\circ30′\\) and write the result in the form \\(a^\\circ b′\\). Enter a and b in that order, separated by a comma.",
+"question": "Calculate \\(37^\\circ42′+25^\\circ30′\\) and write the result in the form \\(a^\\circ b′\\).",
+"answerExample": "52, 17",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -136246,7 +136277,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "9939dba1784d43a32ad649b93d010b6c5ecafee280465f4add20fd8f67885a6c",
+"contentHash": "ba70483a577fc06975f0979e6e539108d55a70fef8beaac285288518eb7b614b",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -136401,7 +136432,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Calculate \\(90^\\circ-38^\\circ27′\\) and write the result in the form \\(a^\\circ b′\\). Enter a and b in that order, separated by a comma.",
+"question": "Calculate \\(90^\\circ-38^\\circ27′\\) and write the result in the form \\(a^\\circ b′\\).",
+"answerExample": "48, 25",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -136470,7 +136502,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "a3a55f1f5fcef1d861e18ca9bb919ae3e8fc32b3eb5020475eb05053466ba6f0",
+"contentHash": "7e92d70c38908710de1ad1cc1869eda6d136b87c6f48ba0c9e0c0b27e63359c4",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -137033,7 +137065,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Given \\(\\angle AOB=70^\\circ\\), \\(\\angle BOC=30^\\circ\\), and \\(O, A, B, C\\) lie in the same plane, what is the measure of \\(\\angle AOC\\) in degrees? (If there are multiple answers, separate them with commas, in any order.)",
+"question": "Given \\(\\angle AOB=70^\\circ\\), \\(\\angle BOC=30^\\circ\\), and \\(O, A, B, C\\) lie in the same plane, find all possible measures of \\(\\angle AOC\\) in degrees.",
+"answerExample": "75, 25",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -137102,7 +137135,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "3fe22315f53c3b5dea379ee986068b0b764a5eaa7dfe38164990084efbcd49ee",
+"contentHash": "69712b2f1b202f361ef0422c8260d90a2d118b588f0b562d138bdd7c1fcc0755",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -137147,7 +137180,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "What are the measures of the complement and supplement of a \\(50^\\circ\\) angle, respectively? (Answer in that order, separated by a comma; unit: degrees.)",
+"question": "What are the measures, in degrees, of the complement and supplement of a \\(50^\\circ\\) angle?",
+"answerExample": "30, 120",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -137216,7 +137250,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "5d82f168b0c8ff697f8e33ae149ceaf7aa5d4b093c82f6b9597c1a9463264770",
+"contentHash": "18a3e6c6c65db858a060f4b573ff27ef87eefc205256e176f8662e8c5b917ad8",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -137493,7 +137527,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "If \\(\\angle\\alpha=25^\\circ18'\\), its complement measures \\(a^\\circ b'\\). Enter \\(a\\) and \\(b\\) in that order, separated by a comma.",
+"question": "If \\(\\angle\\alpha=25^\\circ18\\prime\\), find the measure of its complement in the form \\(a^\\circ b\\prime\\).",
+"answerExample": "53, 24",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -137563,7 +137598,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "193eb16694e702fe946a15ce992a49702edee2e7e326de213263a37221104b65",
+"contentHash": "9a3187702c9df41d670164a2e26339bc8a6a8357b61215ebceb46c457f533c33",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -146033,7 +146068,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "\\(\\triangle ABC\\) is translated \\(3\\text{ cm}\\) in the direction of \\(BC\\) to obtain \\(\\triangle DEF\\) (points \\(B,C,E,F\\) lie on the same line, and \\(BC=10\\text{ cm}\\)). Find the lengths of \\(BF\\) and \\(EC\\). (Answer in this order, separated by a comma; unit: cm.)",
+"question": "\\(\\triangle ABC\\) is translated \\(3\\text{ cm}\\) in the direction of \\(BC\\) to obtain \\(\\triangle DEF\\) (points \\(B,C,E,F\\) lie on the same line, and \\(BC=10\\text{ cm}\\)). Find the lengths of \\(BF\\) and \\(EC\\) in centimeters.",
+"answerExample": "4, 12",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -146103,7 +146139,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "61c106d80088b70d727cbb8d807c880ed1b4f7fc8f65f8290dbab0e32b2a8d21",
+"contentHash": "daa3e2e0777f9645ec4379f8fce18e0aaac6f0cfbc944f1459ee942b40ccc09f",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -146276,7 +146312,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Point \\(A(1,2)\\) is translated 3 units to the right to obtain point \\(A'\\). Find the coordinates of \\(A'\\). (Enter the horizontal coordinate first, then the vertical coordinate, separated by a comma.)",
+"question": "Point \\(A(1,2)\\) is translated 3 units to the right to obtain point \\(A'\\). Find the coordinates of \\(A'\\).",
+"answerExample": "6, 5",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -146345,7 +146382,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "fd884c0b885573c37aff0fe6579e2915b00f486d9181e5fdb7a1f93851b558a7",
+"contentHash": "c01e64178678eea199f33298c95c986ffee3476a76309e7700a42e4f7301453c",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -146393,7 +146430,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "After a translation, point \\(A(1,1)\\) corresponds to \\(A'(4,-1)\\). How many units to the right and how many units upward has the figure been translated? (Use a negative number for a downward translation. Answer in this order, separated by a comma.)",
+"question": "After a translation, point \\(A(1,1)\\) corresponds to \\(A^\\prime(4,-1)\\). Find the horizontal and vertical shifts. Treat right and up as positive.",
+"answerExample": "12, 5",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -146462,7 +146500,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "a7bd4477db3a66a9aa3e7cd26e39a0a9ce222cdb9a8f301d1511d6c0d16771bd",
+"contentHash": "26a713a8627877c32d74b8973c9d3b35b9e762d6dda5f7871d71334aac76dbfe",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -146510,7 +146548,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "The vertices of \\(\\triangle ABC\\) are \\(A(0,0)\\), \\(B(4,0)\\), and \\(C(0,3)\\). After a translation, point \\(A\\) corresponds to \\(A'(2,1)\\). Find the coordinates of \\(C'\\), the point corresponding to \\(C\\). (Enter the horizontal coordinate first, then the vertical coordinate, separated by a comma.)",
+"question": "The vertices of \\(\\triangle ABC\\) are \\(A(0,0)\\), \\(B(4,0)\\), and \\(C(0,3)\\). After a translation, point \\(A\\) corresponds to \\(A'(2,1)\\). Find the coordinates of \\(C'\\), the point corresponding to \\(C\\).",
+"answerExample": "12, 9",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -146579,7 +146618,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "d234dde07edf6bddcfa3619077b85ce1d70aa1dc596da3bc3e1a02af0a96f86d",
+"contentHash": "76294f2fb663b5d65731e5ee7288680e44f2d02d6eacd1b3206556808f2e45ca",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -146627,7 +146666,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "After \\(\\triangle ABC\\) is translated, \\(A(-1,2)\\) corresponds to \\(A'(3,5)\\), and point \\(B\\) corresponds to \\(B'(6,1)\\). Find the coordinates of point \\(B\\). (Enter the horizontal coordinate first, then the vertical coordinate, separated by a comma.)",
+"question": "After \\(\\triangle ABC\\) is translated, \\(A(-1,2)\\) corresponds to \\(A'(3,5)\\), and point \\(B\\) corresponds to \\(B'(6,1)\\). Find the coordinates of point \\(B\\).",
+"answerExample": "12, 10",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -146696,7 +146736,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "256d008f4309a7afc7377871e9a6617c0e4911fb232aa0ecb5b14eec4b3daa13",
+"contentHash": "927682dce9c9d42dd807c971a6c0944d798f3d5a7dab1e7e26f2c19af266eaf8",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -146744,7 +146784,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Find the square roots and the principal square root of 9. (Answer in this order: first write the two square roots of 9, with the positive one first and the negative one second, then write the principal square root of 9. Separate the answers with commas.)",
+"question": "Find the positive square root, the negative square root, and the principal square root of 9, in that order.",
+"answerExample": "5, -5, 5",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -146814,7 +146855,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "1a05a2a5067b8f4211d8729c0f6afaa9dc3a3da5bf82671252b3f05c33408c89",
+"contentHash": "58f507bfed0fea05c910138b515918638db2fc4fe48a284e267db2e971189f6e",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -147409,7 +147450,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Calculate \\(\\sqrt{49}\\), \\(\\sqrt{(-5)^2}\\), and \\(\\pm\\sqrt{1/4}\\). (\\(\\sqrt{(-5)^2}\\) means the principal square root of \\((-5)^2\\). Answer in order; for \\(\\pm\\sqrt{1/4}\\), write the positive value first and then the negative value. Give four numbers in total, separated by commas.)",
+"question": "Calculate \\(\\sqrt{49}\\), \\(\\sqrt{(-5)^2}\\), and \\(\\pm\\sqrt{1/4}\\). (\\(\\sqrt{(-5)^2}\\) means the principal square root of \\((-5)^2\\).) For the last expression, give the positive value first.",
+"answerExample": "6, 8, 2/3, -2/3",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -147479,7 +147521,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "f723acb86aeaffa978ea9a54abaa53a836105b49ebe9f0fe4590117bc196ed8b",
+"contentHash": "c5317a126336d05ff6a4ca7a97e748ea94a3f947803aab9203b9c2e1e609d855",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -150972,7 +151014,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Seats are represented by (column, row), with row numbers increasing from front to back. Xiaoming sits at \\((3,4)\\), and Xiaoliang sits in the seat immediately behind him, represented by \\((a,b)\\). Find \\(a,b\\) (separate your answers with a comma).",
+"question": "Seats are represented by (column, row), with row numbers increasing from front to back. Xiaoming sits at \\((3,4)\\), and Xiaoliang sits in the seat immediately behind him, represented by \\((a,b)\\). Find \\(a,b\\).",
+"answerExample": "12, 8",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -151041,7 +151084,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "6997951ff6e397419eb17ea7b2e6054871ef35a93ea2ed4c3c6e07f191e906b8",
+"contentHash": "10bbde31a9644fd5c453769990ce62602069ae2cf383d66f946c2380eea48839",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -151332,7 +151375,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Write the x-coordinate and y-coordinate of the point \\(P(4,-5)\\) (answer in that order, separated by a comma).",
+"question": "Write the x-coordinate and y-coordinate of the point \\(P(4,-5)\\).",
+"answerExample": "5, 7",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -151401,7 +151445,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "abc3560046589387f5f2736fe5ddb7d6acbb1e347f8724a833ddbabf98280ee0",
+"contentHash": "b2d83484718c4c7d68d929d351bfb4e7803b73c8aa59999d11941237ae022e53",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -151447,7 +151491,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "What are the distances from the point \\(P(-3,4)\\) to the x-axis and the y-axis, respectively? (Separate your answers with a comma.)",
+"question": "What are the distances from the point \\(P(-3,4)\\) to the x-axis and the y-axis?",
+"answerExample": "5, 12",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -151516,7 +151561,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "7390b5eb7e8aa8678fba6bbc1a6fdfaee898818096f1d973c1cdf5459e277889",
+"contentHash": "87797998c795175beaa9b9e0f5eb862020d1b5374454c5d1ec06e0b1beaacdff",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -151564,7 +151609,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Point \\(P\\) is in the fourth quadrant. Its distance to the x-axis is \\(2\\), and its distance to the y-axis is \\(5\\). Let the coordinates of \\(P\\) be \\((a,b)\\). Find \\(a,b\\) (separate your answers with a comma).",
+"question": "Point \\(P\\) is in the fourth quadrant. Its distance to the x-axis is \\(2\\), and its distance to the y-axis is \\(5\\). Let the coordinates of \\(P\\) be \\((a,b)\\). Find \\(a,b\\).",
+"answerExample": "9, -6",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -151634,7 +151680,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "1c7284b2a0a86b13393bdf7ba910f8ada8407fcb06f60ea74eb34732645217eb",
+"contentHash": "18ec9ea45abc8cc009de84f64c69069c0502cad12bc7a3cb7992a69d2e57732e",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -152623,7 +152669,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Three vertices of rectangle \\(ABCD\\) are \\(A(-1,-1)\\), \\(B(3,-1)\\), and \\(C(3,2)\\). Let the coordinates of the fourth vertex D be \\((a,b)\\) and the area of the rectangle be \\(S\\). Find \\(a\\), \\(b\\), and \\(S\\), in that order (separate your answers with commas).\n\n[Figure 1](figures/cnm_084_q4_question_en.svg)",
+"question": "Three vertices of rectangle \\(ABCD\\) are \\(A(-1,-1)\\), \\(B(3,-1)\\), and \\(C(3,2)\\). Let the coordinates of the fourth vertex D be \\((a,b)\\) and the area of the rectangle be \\(S\\). Find \\(a\\), \\(b\\), and \\(S\\).\n\n[Figure 1](figures/cnm_084_q4_question_en.svg)",
+"answerExample": "10, 9, 4",
 "questionType": "mixed",
 "choices": {},
 "choiceOrder": [],
@@ -152718,7 +152765,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "6022924ce589fb03de0f6e773b9671fce8915dda6e015096a69220e2fa9fa4df",
+"contentHash": "3b20686c3f5a050f277d2791b96b767d6f40f088901c9fceabb977a1ca1eebf0",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -152892,7 +152939,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Set up a coordinate system with the school flagpole as the origin, due east as the positive x-direction, and due north as the positive y-direction, with 1 unit representing 10 m. The library is 30 m due east and 40 m due north of the flagpole. Its coordinates are \\((a,b)\\). Find \\(a\\) and \\(b\\) (separate your answers with commas).",
+"question": "Set up a coordinate system with the school flagpole as the origin, due east as the positive x-direction, and due north as the positive y-direction, with 1 unit representing 10 m. The library is 30 m due east and 40 m due north of the flagpole. Its coordinates are \\((a,b)\\). Find \\(a\\) and \\(b\\).",
+"answerExample": "5, 9",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -152961,7 +153009,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "bb8012447eea5b41111b54ed3e7c0c7414dcf7fa0f104caa8728d6b9f5a4fd3c",
+"contentHash": "37ba823c82d29faf6c7a2efcc1e43cf3a61f4e98401bc2277577b23f37d5e07a",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -153009,7 +153057,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Use the school flagpole as the origin, due east as the positive x-direction, and due north as the positive y-direction, with 1 unit representing 10 m. The classroom building has coordinates \\((-2,3)\\). How many meters due west and how many meters due north of the flagpole is it? (Unit: m. Answer in that order, separated by commas.)",
+"question": "Use the school flagpole as the origin, due east as the positive x-direction, and due north as the positive y-direction, with 1 unit representing 10 m. The classroom building has coordinates \\((-2,3)\\). How many meters due west and how many meters due north of the flagpole is it?",
+"answerExample": "50, 40",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -153078,7 +153127,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "b434d3551ab7db4512c2203454fb1012e0104f0e9fb010185c530a6f14b85d3f",
+"contentHash": "f9f9bb03e3d5aded56abdae1ef3f42af70202d7600cabcb47cd0dbcb01185e7b",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -153245,7 +153294,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Point \\(A(2,3)\\) is first translated 4 units to the left and then 1 unit upward. What are its new coordinates? (Write the x-coordinate followed by the y-coordinate, separated by a comma.)",
+"question": "Point \\(A(2,3)\\) is first translated 4 units to the left and then 1 unit upward. What are its new coordinates?",
+"answerExample": "6, 12",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -153314,7 +153364,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "5708a73bab8a7bcb989246474831d5352d746ce9dca59485c5efc9d1bf5fbdff",
+"contentHash": "4db000071a3a899139ab19d97668174baeb637e1ca7330000e31e351803dd1b0",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -153364,7 +153414,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Point \\(P(1,2)\\) is translated 3 units to the right to obtain point \\(P'\\). Write the x-coordinate and y-coordinate of \\(P'\\) (separated by a comma).",
+"question": "Point \\(P(1,2)\\) is translated 3 units to the right to obtain point \\(P'\\). Write the x-coordinate and y-coordinate of \\(P'\\).",
+"answerExample": "5, 6",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -153433,7 +153484,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "67cbac1f2e85863768ed434b2534066cd004fedcdb3b3c6a3057f105658af465",
+"contentHash": "ecbebd7bf0546719a8b13af68388cf239b823ed33c757c61d0b254ddd6b11907",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -153481,7 +153532,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Point \\(A(3,-2)\\) is translated to point \\(A'(-1,1)\\). This is done by first translating \\(a\\) units to the left and then \\(b\\) units upward, where \\(a\\) and \\(b\\) are both positive. Find \\(a\\) and \\(b\\) (separate your answers with commas).",
+"question": "Point \\(A(3,-2)\\) is translated to point \\(A'(-1,1)\\). This is done by first translating \\(a\\) units to the left and then \\(b\\) units upward, where \\(a\\) and \\(b\\) are both positive. Find \\(a\\) and \\(b\\).",
+"answerExample": "9, 12",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -153550,7 +153602,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "6aa53e6c5c3629cdce158434a8cbb7461be385da7e6505100dd933a5f2e01de5",
+"contentHash": "21625bc36d3fbc35766d6a8b68609eb2f0ac179548348b99668b22f4412f14a9",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -153598,7 +153650,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "After triangle \\(ABC\\) is translated, the corresponding point of vertex \\(A(-1,2)\\) is \\(A'(2,5)\\). If \\(B(3,0)\\), find the coordinates of its corresponding point \\(B'\\) (write the x-coordinate followed by the y-coordinate, separated by a comma).",
+"question": "After triangle \\(ABC\\) is translated, the corresponding point of vertex \\(A(-1,2)\\) is \\(A'(2,5)\\). If \\(B(3,0)\\), find the coordinates of its corresponding point \\(B'\\).",
+"answerExample": "7, 10",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -153667,7 +153720,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "b76a72a298513b8acf33e79dc95c4e56853ea31ca3516cf0f2129c83c53192b9",
+"contentHash": "3eb7524ce78529893ecc5d4361edee0cff6e28e436ebdf9265a419a22767d87d",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -154576,7 +154629,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Given that \\(x=2\\), \\(y=1\\) is a solution of the system \\(\\begin{cases}ax+y=5\\\\x-by=1\\end{cases}\\), find \\(a\\) and \\(b\\) (separate them with a comma).",
+"question": "Given that \\(x=2\\), \\(y=1\\) is a solution of the system \\(\\begin{cases}ax+y=5\\\\x-by=1\\end{cases}\\), find \\(a\\) and \\(b\\).",
+"answerExample": "9, 6",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -154645,7 +154699,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "4df5f88a33c66e42255a346cf26550573bde0388487f876f0e1557c7cc73e505",
+"contentHash": "91cdea1ef75f54cbe271205f27a186948236654fa42b21165f73d17c73696e84",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -154985,7 +155039,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Solve \\(\\begin{cases}y=2x\\\\x+y=9\\end{cases}\\). (Write the values of \\(x\\) and \\(y\\), in that order, separated by a comma.)",
+"question": "Find \\(x\\) and \\(y\\) in the system \\(\\begin{cases}y=2x\\\\x+y=9\\end{cases}\\).",
+"answerExample": "5, 9",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -155076,7 +155131,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "e3917a7a76e5535c69a349e4f68f1fa19c92701d4c4647bfc90dbbdb565d78ed",
+"contentHash": "4c41700335930a922387ccb600a1380e0a9543b27a47da3a61d6883e447e25fb",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -155134,7 +155189,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Solve the system \\(\\begin{cases}x=y+1\\\\2x+y=8\\end{cases}\\). (Write the values of \\(x\\) and \\(y\\), in that order, separated by a comma.)",
+"question": "Find \\(x\\) and \\(y\\) in the system \\(\\begin{cases}x=y+1\\\\2x+y=8\\end{cases}\\).",
+"answerExample": "8, 7",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -155225,7 +155281,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "6a7fd758cf7fe3247466bdf2b0a43f258e4878472884fd17e984b755d069c2e9",
+"contentHash": "d56cdd3186d971dcd2a0402a5df7d7b171bcb4e02a1286d049d8236b7c39d636",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -155283,7 +155339,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Solve the system \\(\\begin{cases}x+2y=8\\\\3x-y=3\\end{cases}\\). (Write the values of \\(x\\) and \\(y\\), in that order, separated by a comma.)",
+"question": "Find \\(x\\) and \\(y\\) in the system \\(\\begin{cases}x+2y=8\\\\3x-y=3\\end{cases}\\).",
+"answerExample": "12, 6",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -155377,7 +155434,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "Project contribution AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "75cbd4cfcfb8caad4cda5cccfb513ff069f98a06a7810621dd3040a48e586f34",
+"contentHash": "0265f6b3aa6b687171d4d81dcf39a7211f891aac9bebc092b64fc81f7de062fd",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -155452,7 +155509,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Solve the system \\(\\begin{cases}y=2x-5\\\\3x+2(y-1)=16\\end{cases}\\). (Write the values of \\(x\\) and \\(y\\), in that order, separated by a comma.)",
+"question": "Find \\(x\\) and \\(y\\) in the system \\(\\begin{cases}y=2x-5\\\\3x+2(y-1)=16\\end{cases}\\).",
+"answerExample": "7, 6",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -155543,7 +155601,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "dabce1a4d1a36ee47467de243e5ed40bb169c5812673beb7d792b0da9c2b0bbc",
+"contentHash": "bafcf559f2721ab9fffe67f00fb16e740b9e322703e0a40b03e54122a03e84d4",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -155724,7 +155782,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Solve \\(\\begin{cases}x+y=5\\\\x-y=1\\end{cases}\\). (Write the values of \\(x\\) and \\(y\\), in that order, separated by a comma.)",
+"question": "Find \\(x\\) and \\(y\\) in the system \\(\\begin{cases}x+y=5\\\\x-y=1\\end{cases}\\).",
+"answerExample": "8, 12",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -155815,7 +155874,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "ab2206479ace6eafadeff1edc5f187cdb31478266a734338bf1b98923da6c9ee",
+"contentHash": "84d1b81d378bef1cf18e4cedba1de36c1808b4fd5d5c9a4a50077d608e96170f",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -156006,7 +156065,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Solve the system \\(\\begin{cases}3x+2y=12\\\\3x-y=3\\end{cases}\\). (Write the values of \\(x\\) and \\(y\\), in that order, separated by a comma.)",
+"question": "Find \\(x\\) and \\(y\\) in the system \\(\\begin{cases}3x+2y=12\\\\3x-y=3\\end{cases}\\).",
+"answerExample": "6, 9",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -156097,7 +156157,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "859746bdddaba7bc323a355fea4b0e1ec1d0717bc633576a61b24ac7f4d1ac78",
+"contentHash": "a4c8382d1e3e9b307d0b4d8ae42dac435bdb22534a652d658632bda882a64763",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -156165,7 +156225,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Solve the system \\(\\begin{cases}2x+3y=7\\\\3x-2y=4\\end{cases}\\). (Write the values of \\(x\\) and \\(y\\), in that order, separated by a comma.)",
+"question": "Find \\(x\\) and \\(y\\) in the system \\(\\begin{cases}2x+3y=7\\\\3x-2y=4\\end{cases}\\).",
+"answerExample": "9, 10",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -156256,7 +156317,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "ae5ea2d22813c20ce3596f63fdbc90430f00ec4ec5ec752c1196312c1cc06c62",
+"contentHash": "8c4f78de9a6998c0d652dd9b0d217ca34ef59d8f0973925f845ebf0070df42db",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -156324,7 +156385,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Solve the system \\(\\begin{cases}x/2+y/3=3\\\\x-y=1\\end{cases}\\). (Write the values of \\(x\\) and \\(y\\), in that order, separated by a comma.)",
+"question": "Find \\(x\\) and \\(y\\) in the system \\(\\begin{cases}x/2+y/3=3\\\\x-y=1\\end{cases}\\).",
+"answerExample": "9, 10",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -156419,7 +156481,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "Project contribution AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "aaf87834f2ed945539b4ac00a7c07bb8b9b2d103f307b10d99fd55ed67bbef20",
+"contentHash": "58b5cb0bfc25048638344aeea6da8f1201db8675da089b4568369bd9b77af4ab",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -156499,7 +156561,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Buying 2 pens and 3 notebooks costs 13 yuan in total, and buying 3 pens and 2 notebooks costs 12 yuan in total. Find the unit prices of a pen and a notebook. (Write the unit price of a pen first, followed by that of a notebook, in yuan, separated by a comma.)",
+"question": "Buying 2 pens and 3 notebooks costs 13 yuan in total, and buying 3 pens and 2 notebooks costs 12 yuan in total. Find the unit price of a pen and then of a notebook, in yuan.",
+"answerExample": "6, 8",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -156589,7 +156652,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "Project contribution AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "cbf761590bfec938b6e3510aa2f13a7e28d9e7cd6bd81ddbe94fab79ac096b29",
+"contentHash": "0df8a30484da1c167621a3de1425e0e065d82a1293f256bf08e788f833bde490",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -156661,7 +156724,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "The sum of two numbers is 20, and their difference is 6. Find the two numbers. (Write the larger number first, followed by the smaller number, separated by a comma.)",
+"question": "The sum of two numbers is 20, and their difference is 6. Find the two numbers, larger first.",
+"answerExample": "15, 8",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -156756,7 +156820,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "Project contribution AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "abf08b6e116067fb0acf7b5db46de000e2f3020111e5490d870c990d4697a46a",
+"contentHash": "6774b9864d3d1924b693781fe5c1b8b926faf40e0fe8dc11fc713cc65f7c861d",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -156962,7 +157026,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "A rectangle has a perimeter of 30 cm, and its length is 3 cm greater than its width. Find its length and width. (Write the length first, followed by the width, in cm, separated by a comma.)",
+"question": "A rectangle has a perimeter of 30 cm, and its length is 3 cm greater than its width. Find its length and width in centimeters.",
+"answerExample": "8, 5",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -157055,7 +157120,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "0734b17409883db717e81ec42faf1356f60bd727860798be2f105e936ea773c4",
+"contentHash": "c17b167aeae375d2b7a381bde31452ac21d8974e5e27f28fad2c3e32f1dc1183",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -157127,7 +157192,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "A group buys a total of 20 movie tickets. Adult tickets cost 30 yuan each, and student tickets cost 15 yuan each. The total cost is 420 yuan. Find how many adult tickets and student tickets were bought. (Write the number of adult tickets first, followed by the number of student tickets, separated by a comma.)",
+"question": "A group buys a total of 20 movie tickets. Adult tickets cost 30 yuan each, and student tickets cost 15 yuan each. The total cost is 420 yuan. Find how many adult tickets and student tickets were bought.",
+"answerExample": "9, 4",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -157220,7 +157286,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "5225a651fabccfe7be9794d1501cbde60734cc01272c538491e972b2be37519e",
+"contentHash": "3931620b66127af3966baa83be14ce1d379f13289a15ee96efcf455df0bf10a8",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -157293,7 +157359,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "There are 10 large and small trucks in total, transporting a total of 52 tonnes. Each large truck carries 6 tonnes, and each small truck carries 4 tonnes. How many trucks of each size are there? (Write the number of large trucks first, followed by the number of small trucks, separated by a comma.)",
+"question": "There are 10 large and small trucks in total, transporting a total of 52 tonnes. Each large truck carries 6 tonnes, and each small truck carries 4 tonnes. How many large trucks and how many small trucks are there?",
+"answerExample": "12, 7",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -157386,7 +157453,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "06f97952cfba786d0a82db9e3fce76010b9974498c8eee92b30bf4fee7a856f2",
+"contentHash": "625ac53e3e956cc54e1e6c989db8552839afd506437f8886a23f55a461580fd0",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -157459,7 +157526,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "The sum of two numbers is 30, and one number is 4 times the other. Find the two numbers. (Write the smaller number first, followed by the larger number, separated by a comma.)",
+"question": "The sum of two numbers is 30, and one number is 4 times the other. Find the two numbers, smaller first.",
+"answerExample": "5, 20",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -157554,7 +157622,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "Project contribution AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "509c29a519c1bdcefdd95269e9c5af8abe317270a5cfc88ed49d2582687013cf",
+"contentHash": "b18dba26837e7523a64e3a93dbd41ab1bee3cc46be66c8ffa8d2aa370d49f32d",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -157621,7 +157689,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Locations A and B are 36 km apart. Two people start simultaneously, one from each location. When traveling toward each other, they meet after 2 hours; when traveling in the same direction (with the faster person catching up from behind), the faster person catches the slower person after 6 hours. Find their speeds. (Give the faster person's speed first, then the slower person's speed, in km/h, separated by a comma.)",
+"question": "Locations A and B are 36 km apart. Two people start simultaneously, one from each location. When traveling toward each other, they meet after 2 hours; when traveling in the same direction (with the faster person catching up from behind), the faster person catches the slower person after 6 hours. Find their speeds in km/h, faster first.",
+"answerExample": "15, 7",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -157714,7 +157783,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "5b3bd6e02b234721d8a5a54e0fb2c48ce945e4042d6f4bbb8d73a3e83e5c8e11",
+"contentHash": "75e04bab7db1b813f659e8b97f84f6498bae811c53855fc19449753bdd43227f",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -157787,7 +157856,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "A 10% salt solution and a 20% salt solution are mixed to make 50 kg of a 16% salt solution. How many kg of the 10% salt solution and the 20% salt solution are needed? (Give the answers in this order, in kg, separated by a comma.)",
+"question": "A 10% salt solution and a 20% salt solution are mixed to make 50 kg of a 16% salt solution. How many kg of the 10% salt solution and the 20% salt solution are needed?",
+"answerExample": "12, 24",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -157879,7 +157949,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "f5e50e5e2f0ffafacdca951d0421244a0ebf9d0f54409f10773718d86cf199ba",
+"contentHash": "c739726317bd9538dfa859c3b4eef60a9c13fa025ab56604e0bb267d730b6f9b",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -158072,7 +158142,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Solve \\(\\{x+y=3,\\ y+z=5,\\ x+z=4\\}\\). (Give the values of \\(x\\), \\(y\\), and \\(z\\), in this order, separated by commas.)",
+"question": "Find \\(x\\), \\(y\\), and \\(z\\) in the system \\(\\{x+y=3,\\ y+z=5,\\ x+z=4\\}\\).",
+"answerExample": "12, 10, 6",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -158210,7 +158281,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "Project contribution AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "bf6b86894850135fefd9464498824608506425853dc183235d2e2c2899f05025",
+"contentHash": "ae6684579a54fb1d823f8c6a90b75df84be7cc78ee3bb8b3c8f8cb07f29fa4a8",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -158299,7 +158370,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Solve the system \\(\\{x=2,\\ x+y=5,\\ y+z=9\\}\\). (Give the values of \\(x\\), \\(y\\), and \\(z\\), in this order, separated by commas.)",
+"question": "Find \\(x\\), \\(y\\), and \\(z\\) in the system \\(\\{x=2,\\ x+y=5,\\ y+z=9\\}\\).",
+"answerExample": "12, 9, 4",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -158369,7 +158441,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "5244825ba4b18e60f2e76031db88e7f73feeb5208eb3b80fc60c9cdcfcb9a0eb",
+"contentHash": "77050e313f44e020336c140b329a526a515194654e60d68be4c78fa5045bc598",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -158417,7 +158489,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Solve the system \\(\\{x+y+z=12,\\ x-y=1,\\ y-z=1\\}\\). (Give the values of \\(x\\), \\(y\\), and \\(z\\), in this order, separated by commas.)",
+"question": "Find \\(x\\), \\(y\\), and \\(z\\) in the system \\(\\{x+y+z=12,\\ x-y=1,\\ y-z=1\\}\\).",
+"answerExample": "6, 10, 7",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -158508,7 +158581,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "91d773237ba3060b3354c5778c1c0d568aecd1ff07fb5294893144999ed3bfaf",
+"contentHash": "7994d85423779ab595b74b209f153fb3e3cad1ea04c55504ab0fee95ee6546f8",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -158580,7 +158653,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Solve the system \\(\\{2x+y-z=6,\\ x-y+z=0,\\ x+y+z=6\\}\\). (Give the values of \\(x\\), \\(y\\), and \\(z\\), in this order, separated by commas.)",
+"question": "Find \\(x\\), \\(y\\), and \\(z\\) in the system \\(\\{2x+y-z=6,\\ x-y+z=0,\\ x+y+z=6\\}\\).",
+"answerExample": "5, 9, 6",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -158671,7 +158745,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "a6add406495500149c44a983f7b640d09c8ab577fdadcb5c1a8eebd965218185",
+"contentHash": "fc3e8b0fdee706ab84c5e42ef16c159d5b27be73104c4f702d35fa1ddd8945e1",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -158743,7 +158817,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Solve the system \\(\\{x+2y+3z=11,\\ 2x+3y+z=11,\\ 3x+y+2z=14\\}\\). (Give the values of \\(x\\), \\(y\\), and \\(z\\), in this order, separated by commas.)",
+"question": "Find \\(x\\), \\(y\\), and \\(z\\) in the system \\(\\{x+2y+3z=11,\\ 2x+3y+z=11,\\ 3x+y+2z=14\\}\\).",
+"answerExample": "6, 12, 7",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -158834,7 +158909,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "2d48433e027705ef9a3478eb84d880360fcb3f00987e8818117f10204277d9b1",
+"contentHash": "91230b89f7810e89b56f5ff5443f068883abe1bdbc72da0b41b48b7cc1e6fe76",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -158906,7 +158981,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "For which integer values of \\(x\\) does \\(x<3\\) hold, given that \\(x\\) is a positive integer? (Separate multiple answers with commas.)",
+"question": "For which integer values of \\(x\\) does \\(x<3\\) hold, given that \\(x\\) is a positive integer?",
+"answerExample": "4, 7",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -158975,7 +159051,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "5b62ab98bfa4cc9edbb5c586ef2f6a14ccd3e9a8ef12541a160e0a7397fb1270",
+"contentHash": "5493ddd31a12198a20b98610bfa0204bf94783bbb753af8ec647cbaef1f5c63b",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -161961,7 +162037,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "A batch of books is distributed among \\(x\\) students. If each student receives 3 books, 8 books remain. If each student is allocated 5 books, the last student receives 1 to 4 books (fewer than 5 books). Write a system of inequalities in \\(x\\). (Then find all integer values of \\(x\\). Enter only the values of \\(x\\), separated by commas if there are multiple values.)",
+"question": "A batch of books is distributed among \\(x\\) students. If each student receives 3 books, 8 books remain. If each student is allocated 5 books, the last student receives 1 to 4 books (fewer than 5 books). Use a system of inequalities in \\(x\\) to find all possible integer values of \\(x\\). What are those values?",
+"answerExample": "10, 9",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -162032,7 +162109,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "c151427b312bcc1ad8031e310ebea83c1bcddf39a044082d438520cfb464415a",
+"contentHash": "dbb29052dda25404566ab3717b3115f089a47e0d40c9da2ce517c8a80b32e62e",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -169929,7 +170006,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "One interior angle of an isosceles triangle is \\(80^\\circ\\). What are the possible measures of its vertex angle in degrees? (List all possible values in ascending order, separated by commas.)",
+"question": "One interior angle of an isosceles triangle is \\(80^\\circ\\). What are the possible measures of its vertex angle in degrees? List the values from smallest to largest.",
+"answerExample": "40, 60",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -170000,7 +170078,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "c0991ea4593cbe13056a90ad6a16a5e829b1f14d1684dda035696cbad781c2f3",
+"contentHash": "686698449829b880a5989870878d3632d24acd58b32bec793375f1d06eacd409",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -172752,7 +172830,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "short",
-"question": "\\(\\triangle ABC\\) and \\(\\triangle DEF\\) are congruent, with \\(\\angle A=\\angle E\\), \\(\\angle B=\\angle D\\), and \\(\\angle C=\\angle F\\). Write the congruence statement with corresponding vertices in order: △ABC≌△___ (fill in three letters).",
+"question": "\\(\\triangle ABC\\) and \\(\\triangle DEF\\) are congruent, with \\(\\angle A=\\angle E\\), \\(\\angle B=\\angle D\\), and \\(\\angle C=\\angle F\\). Complete the congruence statement △ABC≌△___ with corresponding vertices in order.",
+"answerExample": "GHI",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -172822,7 +172901,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "bdb95af99d6e06b0c0ad517c2f0bfaa09f0746dc698d81e4140aa429f9cb1b78",
+"contentHash": "ef4a9b55e7e449bc7b91ac1eb22700d5ad3e9bf7b321b0ea11cce7c76ada764a",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -182470,7 +182549,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "What are the coordinates of the reflection of point \\(P(2,-7)\\) across the \\(x\\)-axis? Enter the horizontal coordinate followed by the vertical coordinate, separated by a comma.",
+"question": "What are the coordinates of the reflection of point \\(P(2,-7)\\) across the \\(x\\)-axis?",
+"answerExample": "12, 8",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -182539,7 +182619,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "499ad35cc3de6029020fd9ee5e2f626eaa9d0f5d9eb195d88750eb1401eb9868",
+"contentHash": "d8aff53f45c4a7ab4f6ab66b28d24aa6e232293270337f2f1ce5b0914c064714",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -182587,7 +182667,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Points \\(P(2m-1,3)\\) and \\(Q(5,n+1)\\) are reflections of each other across the \\(y\\)-axis. Find the values of \\(m\\) and \\(n\\) (answer in that order, separated by a comma).",
+"question": "Points \\(P(2m-1,3)\\) and \\(Q(5,n+1)\\) are reflections of each other across the \\(y\\)-axis. Find the values of \\(m\\) and \\(n\\).",
+"answerExample": "8, 7",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -182656,7 +182737,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "8dd724e13ebd72ab907234913dc3e591057a2a49a7b4854350bad74b72c512fc",
+"contentHash": "3b918d6db5ecbeb962b6d3946474907d4e4973d3f907546568f724a43246a690",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -187868,7 +187949,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "If \\(3x^m y^3\\cdot(-2x^2 y^n)=-6x^5 y^4\\), find the values of \\(m\\) and \\(n\\) (answer in this order, separated by a comma).",
+"question": "If \\(3x^m y^3\\cdot(-2x^2 y^n)=-6x^5 y^4\\), find the values of \\(m\\) and \\(n\\).",
+"answerExample": "5, 10",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -187937,7 +188019,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "544e187c71c072d420db844a00719c43764ed4e37b0435638c0b485e0e294cba",
+"contentHash": "6df51ed568cc7bcbdae4da78dc6b2407900be1b38c29bf6c41fab7278d673a36",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -188778,7 +188860,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Expand \\((2x-1)(3x+4)\\). Write the coefficient of the \\(x\\) term and the constant term, in this order, separated by a comma.",
+"question": "Expand \\((2x-1)(3x+4)\\). What are the coefficient of the \\(x\\) term and the constant term?",
+"answerExample": "12, 8",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -188850,7 +188933,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "fa66466f96f3f27812b5f4e46c975d7d4e161cb35187cfd8b01eb55708f6b2b9",
+"contentHash": "dcda87138409ae7bc267e4d792c7d3ef8c77560ce78a671c379320ee14e33a7a",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -189032,7 +189115,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "If the expansion of \\((x+2)(x^2+ax+b)\\) contains neither an \\(x^2\\) term nor an \\(x\\) term, find the values of \\(a\\) and \\(b\\) (answer in this order, separated by a comma).",
+"question": "If the expansion of \\((x+2)(x^2+ax+b)\\) contains neither an \\(x^2\\) term nor an \\(x\\) term, find the values of \\(a\\) and \\(b\\).",
+"answerExample": "9, 12",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -189103,7 +189187,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "45bd27a052c792539e83564ebc119104c350d7649c6aa45c5106a1c869f81c4f",
+"contentHash": "41fd336ee2bbc9bfcc50333749ac81f487edf9ec35f9d56da5571e7583c1423f",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -191362,7 +191446,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "If \\(x^2+px+q=(x+2)(x-5)\\), find the values of \\(p\\) and \\(q\\) (answer in this order, separated by a comma).",
+"question": "If \\(x^2+px+q=(x+2)(x-5)\\), find the values of \\(p\\) and \\(q\\).",
+"answerExample": "6, 9",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -191432,7 +191517,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "c7ab08e15b5b9b0a4e5a2edc78a3a9d05ef467a20a999c9c5b050bba7c605ca3",
+"contentHash": "6b387c0095974ae8c624d9d40a2a4b406a7cc2d275879d85c7e18398fbd284c4",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -193159,7 +193244,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "If \\(x^2+kx+16\\) is a perfect square, find the value of \\(k\\) (separate multiple answers with commas).",
+"question": "If \\(x^2+kx+16\\) is a perfect square, find all possible values of \\(k\\).",
+"answerExample": "7, 9",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -193228,7 +193314,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "5c956d9eea6cac4ccf979a8325938af22900bad9a71247da94d95794eec21a97",
+"contentHash": "65198d1804a9361c8e7fc32bcf2ddeeb7ad7dc14dcb7a9518b79904111a0c6fc",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -194985,7 +195071,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "For which values of \\(x\\) is the algebraic fraction \\((x+1)/(x^2-4)\\) undefined? (Separate multiple answers with commas.)",
+"question": "For which values of \\(x\\) is the algebraic fraction \\((x+1)/(x^2-4)\\) undefined?",
+"answerExample": "8, 4",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -195078,7 +195165,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "e625f2cb81cdadabf2632a49929887bf5cbf7c8573f7c4bc04c3c768649b6b4a",
+"contentHash": "017309edb904b347993bc5701136770bcd09b291b48b148a08b8ead5f026f189",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -201296,7 +201383,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Which integers \\(x\\) make \\(\\sqrt{x-2}+\\sqrt{4-x}\\) defined? Give your answers in ascending order, separated by commas.",
+"question": "Which integers \\(x\\) make \\(\\sqrt{x-2}+\\sqrt{4-x}\\) defined? List the integers from smallest to largest.",
+"answerExample": "5, 7, 9",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -201366,7 +201454,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "3cc59917cd7f8673ead2f13bf1b7562cadc03e4722fe65b645b33dbbd9273b4f",
+"contentHash": "93558f12fbbf49cbd45e7b90b968c5a2a9c10c9863c359977521a294a38dea1e",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -201414,7 +201502,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Simplify \\(\\sqrt{(-5)^2}\\) and \\((\\sqrt{7})^2\\). (Give your answers in this order, separated by commas.)",
+"question": "Simplify \\(\\sqrt{(-5)^2}\\) and \\((\\sqrt{7})^2\\).",
+"answerExample": "12, 4",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -201483,7 +201572,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "23ce16e8ce3d423cf8c73605e427b7e69d52bdd782e316f1898f2ca991c9fab8",
+"contentHash": "c735aa7cbf9c93b56d1a27bb4d23b951db7b344c11eb22bc612080b80533d620",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -204975,7 +205064,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Two sides of a right triangle have lengths 3 and 4. Find all possible values of the square of the length of the third side. Give your answers in ascending order, separated by commas.",
+"question": "Two sides of a right triangle have lengths 3 and 4. Find all possible values of the square of the length of the third side. List the values from smallest to largest.",
+"answerExample": "11, 20",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -205044,7 +205134,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "5eaca50ceee1b34cc43a96e3b7bfa7fb838bfe7f72b43b920d6963859bbf6211",
+"contentHash": "64efe239960ef7541f75bb58a44f495d6502ceaaa9ed4d4fd09fa834a248a8f1",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -209274,7 +209364,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "In parallelogram \\(ABCD\\), \\(\\angle A=70^\\circ\\). Find \\(\\angle B\\). Also, \\(AB=3\\). Find \\(CD\\). (Answer in order, separated by a comma, without units.)",
+"question": "In parallelogram \\(ABCD\\), \\(\\angle A=70^\\circ\\) and \\(AB=3\\). Find the measure of \\(\\angle B\\) in degrees and then the length of \\(CD\\).",
+"answerExample": "75, 8",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -209343,7 +209434,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "4c2f71c436ce18d605c3c24129e401711d77eb179358a909d97695a9a6e0c660",
+"contentHash": "bac14b3f03bebe5ca7340d37a799e0c2bf1dfbb82bfa3ff684c69a8839de995c",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -212696,7 +212787,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "A rhombus has diagonals of lengths \\(6\\) and \\(8\\). What are its side length and area? (Answer in this order, separated by a comma.)",
+"question": "A rhombus has diagonals of lengths \\(6\\) and \\(8\\). What are its side length and area?",
+"answerExample": "8, 12",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -212766,7 +212858,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "fce3d38d54f1c9fcd6ec94caf7e53b6ed18ed840bc0a776a6a13f350586d1984",
+"contentHash": "fa1f6da3ff2538d43840c8d20e0ffddbd5f00c93222bf57efcda77d0584b9f05",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -215168,7 +215260,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "In rectangle \\(ABCD\\), \\(AB=6\\) and \\(BC=10\\). Point \\(P\\) starts at \\(A\\) and moves along \\(AB\\) toward \\(B\\) at 1 unit per second; point \\(Q\\) starts at \\(B\\) and moves along \\(BC\\) toward \\(C\\) at 2 units per second. Both points start at the same time, and the motion stops when either point reaches its endpoint. After how many seconds is the area of \\(\\triangle PBQ\\) equal to 8? (Separate multiple answers with commas.)",
+"question": "In rectangle \\(ABCD\\), \\(AB=6\\) and \\(BC=10\\). Point \\(P\\) starts at \\(A\\) and moves along \\(AB\\) toward \\(B\\) at 1 unit per second; point \\(Q\\) starts at \\(B\\) and moves along \\(BC\\) toward \\(C\\) at 2 units per second. Both points start at the same time, and the motion stops when either point reaches its endpoint. Find all times, in seconds, at which the area of \\(\\triangle PBQ\\) is 8.",
+"answerExample": "3, 5",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -215259,7 +215352,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "Project contribution AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "42bdde569a00232cd364da9cd8d44e350685e6861838df80208654edb4b0b111",
+"contentHash": "2cc7bc7d945202ae670bb2b89000c267dd4dc352500091f35f8a2f9533634644",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -217504,7 +217597,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Given $y=x^2-1$, what are the values of $x$ when $y=8$? (Separate multiple answers with commas.)",
+"question": "Given $y=x^2-1$, what are the values of $x$ when $y=8$?",
+"answerExample": "5, 4",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -217618,7 +217712,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "a54f6b1bd4f1552cefb7bc7fe0fb6db39cc77493e9506439bb672a6357517273",
+"contentHash": "4b792b0c048a792f6373600763c41a09315fe6018501959621c93983d34621bf",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -220895,7 +220989,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "short",
-"question": "Find the intersections of \\(y=-2x+4\\) with the coordinate axes. (Write the coordinates, giving the intersection with the \\(y\\)-axis first and then the intersection with the \\(x\\)-axis.)",
+"question": "Find the intersections of \\(y=-2x+4\\) with the coordinate axes. List the point on the y-axis first.",
+"answerExample": "(0, 7), (5, 0)",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -220968,7 +221063,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "1696dba5a5d962730c5cbcaf8190d0a4a6c2ac234d94709c2f817c8008fc91cd",
+"contentHash": "19dc15b9d6da1f4b33392e9e786e0e71b0de4edab78301c416d9fdda7fb64ffb",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -222780,7 +222875,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "The graph of the linear function \\(y=kx+b\\) passes through \\((1,3)\\) and \\((3,-1)\\). Find the values of \\(k\\) and \\(b\\). (Write \\(k\\) and \\(b\\) in that order, separated by a comma.)",
+"question": "The graph of the linear function \\(y=kx+b\\) passes through \\((1,3)\\) and \\((3,-1)\\). Find the values of \\(k\\) and \\(b\\).",
+"answerExample": "7, 12",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -222894,7 +222990,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "16ecab0c7e10bbb9a86508bb7add4fb4adf7f19cd8cc256b2040cc4f3f4ee140",
+"contentHash": "ca5f9c6e5ed9231c9bdaccfb315cce1197337446d6d45b3ac5742bbe8055c59f",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -224423,6 +224519,7 @@ window.CN_MATH_BANK = {
 "skill": [],
 "responseType": "short",
 "question": "What are the coordinates of the intersection of the lines \\(y=x+1\\) and \\(y=-x+3\\)?",
+"answerExample": "(5, 4)",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -224521,7 +224618,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "Project contribution AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "03f036ed55476fe9c08d2d907a68f36fb05e4d5f3029f27e01c394c6ada76997",
+"contentHash": "927bdd5c1b7916d11a71902740fcee27b8a294f7813dceb4a2257fbcb39d2096",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -224757,7 +224854,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Find the coordinates of the intersection of the lines $y=2x-1$ and $y=-x+5$. (Write the x-coordinate followed by the y-coordinate, separated by a comma.)",
+"question": "Find the coordinates of the intersection of the lines $y=2x-1$ and $y=-x+5$.",
+"answerExample": "4, 6",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -224849,7 +224947,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "6050fcd99a4b44d83c1271dd5cea17dfec274fab7e029aa3afc54d423cc11c19",
+"contentHash": "0ba8c2e506eb3bd80ff8262f8c4b1575a205a2a57fe151ab4838aa84b83a49bc",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -227557,7 +227655,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "What are the median and mode of the data 2, 3, 3, 5, 9? (Write the median followed by the mode, separated by a comma.)",
+"question": "What are the median and mode of the data 2, 3, 3, 5, 9?",
+"answerExample": "10, 7",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -227626,7 +227725,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "0e804b5c1f85a8134fad33111aaf2364209a8507fb6c0ea82803d95daaf5fa4a",
+"contentHash": "abe658b193263e9e2924605952c6a511ee65ec58dd49a7dfd04e6e2f25189221",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -227781,7 +227880,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "What are the median and mode of the data 6, 2, 8, 4, 4, 10? (Write the median followed by the mode, separated by a comma.)",
+"question": "What are the median and mode of the data 6, 2, 8, 4, 4, 10?",
+"answerExample": "9, 7",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -227850,7 +227950,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "166f65579e6702ed94c08c1869544a04336e57716a30ccd897a9f4cee0da93ee",
+"contentHash": "51b6a208a83a7e1696b1fb16c11d5cd4e7d0422e21526249d4722feab6d93c99",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -228617,7 +228717,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "What are the range and variance of the data 2, 4, 6? (Write the range followed by the variance, expressing the variance as a fraction.)",
+"question": "What are the range and variance of the data 2, 4, 6? Express the variance as a fraction.",
+"answerExample": "5, 9/2",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -228686,7 +228787,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "f20506854a7d25e78117d6eb2778675e6dfddcc2481d9b5127ecd04f9b1443b0",
+"contentHash": "39859fcb379b7b1a4ae3cd43edf4949d76b167458c721b7c0a38da942762fb65",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -229197,7 +229298,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "For the data 1 through 8, find the first and third quartiles using the method of taking the median of each half of the data. (The data are 1, 2, …, 8. Write the first quartile followed by the third quartile, separated by a comma.)",
+"question": "For the data 1 through 8, find the first and third quartiles using the method of taking the median of each half of the data.",
+"answerExample": "3.5, 7.5",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -229266,7 +229368,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "af5d5b172647d76971c2e9153742f0f9fb538ffeff86d4cb7f3fa366ee170dc6",
+"contentHash": "a4e03f70ed6945e8d7b8d90f113d2b7ca529c541fa4e2a9629e7cc910f72caa1",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -230964,7 +231066,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "What are the coefficient of the quadratic term, the coefficient of the linear term, and the constant term in \\(x^2-5x+6=0\\)? (Answer in that order, separated by commas.)",
+"question": "What are the coefficient of the quadratic term, the coefficient of the linear term, and the constant term in \\(x^2-5x+6=0\\)?",
+"answerExample": "5, 9, 4",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -231033,7 +231136,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "58ee1f53efb415ff75db3dce1f25497673747d1ff465dc014726ae0e7972ebab",
+"contentHash": "ccd34e2541dd8aabe7d73b6361c7f7a990adbf6294a43a2d9292703f07a37d02",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -231208,7 +231311,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Rewrite \\(2x(x-1)=3-x\\) in the general form \\(ax^2+bx+c=0\\) (\\(a>0\\)), and give \\(a\\), \\(b\\), and \\(c\\) in that order, separated by commas.",
+"question": "Rewrite \\(2x(x-1)=3-x\\) in the general form \\(ax^2+bx+c=0\\) with \\(a>0\\). Find \\(a\\), \\(b\\), and \\(c\\).",
+"answerExample": "4, 10, 9",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -231277,7 +231381,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "13743db64dc85eb101fd9a8d20c2525a5a46fd5c80b229c6cdd6387a5dbdb72b",
+"contentHash": "56e9d38d0f447270dc8eb395c13e08d655835784e48a929495c7f7a2b32178ab",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -231442,7 +231546,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Solve the equation \\((x-1)^2=9\\). (Separate the two roots with a comma.)",
+"question": "Solve the equation \\((x-1)^2=9\\).",
+"answerExample": "10, 12",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -231537,7 +231642,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "Project contribution AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "5d797d61da33dd9f5489f7edfb921013f5999b0194bd13faec2a0ccd6e4684ca",
+"contentHash": "1f71b9f9a6499e53d1c0d14576bc0d378904b8e05367707970274707fb3c89d4",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -231610,7 +231715,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Solve the equation \\(x^2=49\\). (Separate the two roots with a comma.)",
+"question": "Solve the equation \\(x^2=49\\).",
+"answerExample": "9, 6",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -231702,7 +231808,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "803769225d59c4cdd2ace094f7cfede5cd11931e6e92492f22d4bdbbe3ebb6bb",
+"contentHash": "07c9a8f9b1fe3bf3f5a478a1f59ee55b3a46e1ecddcdf967bbdd71b9d2fec9c2",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -231772,7 +231878,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Solve the equation \\(4(x+2)^2=25\\). (Separate the two roots with a comma and write them as fractions in simplest form or integers.)",
+"question": "Solve the equation \\(4(x+2)^2=25\\). Give the roots as integers or fractions in lowest terms.",
+"answerExample": "1/3, -5/3",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -231867,7 +231974,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "Project contribution AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "c916513bdee71e66841efd94397db7418bfd7e26d4e7196b0d892e1927a545e7",
+"contentHash": "02b70992693dddb03afef7eef02f5a2d34d73ab1c0549a7d3ae27f89986cfd11",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -232365,7 +232472,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Solve the equation \\(x^2+6x-7=0\\) by completing the square. (Separate the two roots with a comma.)",
+"question": "Solve the equation \\(x^2+6x-7=0\\) by completing the square.",
+"answerExample": "9, 12",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -232434,7 +232542,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "29feeef2ac890261a37e9e8eadc9f540064dcbdc9b8164f4c3bef12ab90c5095",
+"contentHash": "d6acb8991a25df7c466c2d071463301b367c677ad61d6c450d30ec6756173966",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -232484,7 +232592,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Complete the square to write \\(2x^2-8x+1=0\\) in the form \\(2(x-m)^2=n\\). Find the values of \\(m\\) and \\(n\\), in that order (separated by a comma).",
+"question": "Complete the square to write \\(2x^2-8x+1=0\\) in the form \\(2(x-m)^2=n\\). Find the values of \\(m\\) and \\(n\\).",
+"answerExample": "4, 5",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -232553,7 +232662,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "4a8d0f9c6b4618f50aa689cac92aebebdba5ed2ce87ece6152b72c36ae29bd38",
+"contentHash": "39e24cd053f4d728eeeb2e1546439efa4df5900cf934adc0355d0c3720452453",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -232601,7 +232710,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Solve \\(2x^2-3x-2=0\\) using the quadratic formula. (Separate the two roots with a comma.)",
+"question": "Solve \\(2x^2-3x-2=0\\) using the quadratic formula.",
+"answerExample": "12, 4/5",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -232670,7 +232780,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "82b3b53bc0d88f1485d65f382b59f2a17c44a6e065984ef085d8ec82c4fe531a",
+"contentHash": "1b022392809f900497d31b3e569b757a28276006171ab66bc1ffd36bc2712e33",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -232718,7 +232828,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Use the quadratic formula to solve \\(x²-x-6=0\\). (Separate the two roots with a comma.)",
+"question": "Use the quadratic formula to solve \\(x²-x-6=0\\).",
+"answerExample": "6, 10",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -232787,7 +232898,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "eae62fb27f98b1e27acd86eee8871cecacb62eef2c2b318137fd831ad39acb78",
+"contentHash": "75b7d563219d9d07b1bb65e3d246a420a4897859c25a14cf956f1828fb0bf012",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -232962,7 +233073,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Use the quadratic formula to solve \\((2x-1)(x+1)=2\\). (Separate the two roots with a comma.)",
+"question": "Use the quadratic formula to solve \\((2x-1)(x+1)=2\\).",
+"answerExample": "6, 4/5",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -233031,7 +233143,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "7bb2917ad596e46d37b406e3bc445ba9dc2a51e0b3110209c654a47f2517ef31",
+"contentHash": "0de5e90665f95ee07c5046fdec78a7d7705c9e1c071c521b52e21f1128a04fc7",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -233634,7 +233746,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Solve \\(x²-5x+6=0\\). (Separate the two roots with a comma.)",
+"question": "Solve \\(x²-5x+6=0\\).",
+"answerExample": "6, 12",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -233725,7 +233838,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "248681f1459ac6b223936324777944c138d100f20b1596f8aab015a4952f6a7f",
+"contentHash": "c408eee0ae298f7c7f02a93bacdd393b7223541fd62261aa015099bb473acd5b",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -233793,7 +233906,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Solve \\(x²+4x=0\\). (Separate the two roots with a comma.)",
+"question": "Solve \\(x²+4x=0\\).",
+"answerExample": "6, 5",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -233885,7 +233999,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "18fa4a78c6afda500948c4cc48044f65a3d6e02c658001dd94efe6842d099970",
+"contentHash": "7bc071dfda48cd349bd4bccf17a292de487c9a9985daec180774c12140881cab",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -233954,7 +234068,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Solve \\(2x²-5x-3=0\\). (Separate the two roots with a comma.)",
+"question": "Solve \\(2x²-5x-3=0\\).",
+"answerExample": "7, 1/5",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -234048,7 +234163,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "Project contribution AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "5bedb33d9dd8bfd5f00951fb2adca400ac338b5c237e897114afb2aa82308cad",
+"contentHash": "aa42b9b3ef73518e0f5d49b3928afe8b002564da433b4e164a2a5d7688c18e44",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -234130,7 +234245,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Solve \\((x-2)²=3(x-2)\\). (Separate the two roots with a comma; be careful not to divide both sides by \\(x-2\\).)",
+"question": "Solve \\((x-2)²=3(x-2)\\). Be careful not to divide both sides by \\(x-2\\).",
+"answerExample": "7, 12",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -234223,7 +234339,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "7f4cacc9b8745714bb2b0d3c46873dfa5c146c007516a0351cf49e80d9af88a4",
+"contentHash": "b44e5ec263aede4aba20e0339e5f11d4f0f825679657168b4458331ab90ab4a6",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -234428,7 +234544,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Use the simplest method to solve \\((x+1)²=16\\). (Separate the two roots with a comma.)",
+"question": "Use the simplest method to solve \\((x+1)²=16\\).",
+"answerExample": "5, 6",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -234521,7 +234638,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "4da50ea4047cae476e145dae3412ea59bd11cbd4da174c8f275cd030711c15b9",
+"contentHash": "704b1b26415becf7245b1f213c9d21cd932215edab699e02e271eb73382fe260",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -234722,7 +234839,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Solve \\((2x-3)²=(x+1)²\\). (Separate the two roots with a comma, writing them as integers or fractions in lowest terms.)",
+"question": "Solve \\((2x-3)²=(x+1)²\\). Give the roots as integers or fractions in lowest terms.",
+"answerExample": "6, 5/7",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -234817,7 +234935,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "Project contribution AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "438e534aa6a5f977beda015eca7885c565c551f2541d938552349af82168f9ca",
+"contentHash": "660963b2515ad55553eee7ed1de50609563388e2bbc37120ac999344434efe5a",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -234885,7 +235003,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "What are the sum and product, respectively, of the two roots of \\(x²-5x+6=0\\)? (Answer in order, separated by a comma.)",
+"question": "What are the sum and product of the two roots of \\(x²-5x+6=0\\)?",
+"answerExample": "10, 7",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -234979,7 +235098,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "Project contribution AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "f771c1520979476e77f0ebcd647aa75f6895e3b537d8dd2e50060327c115e352",
+"contentHash": "c4ffd129cb13038131be4054fbb071a20154caa85327d117a815ddc4785a17ae",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -235043,7 +235162,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "The equation \\(2x²-6x+1=0\\) has two real roots. Find their sum and product. (Answer in order, separated by a comma, and write the product as a fraction.)",
+"question": "The equation \\(2x²-6x+1=0\\) has two real roots. Find their sum and product. Express the product as a fraction.",
+"answerExample": "5, 1/3",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -235112,7 +235232,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "f2c2e016cfac0337bb57bdedcf13e21a2a3ca27f8e30b200c50fa375c76f47ac",
+"contentHash": "2b10d080abce7a406f005e286ceb1f24cca261b00c83ed450875d56ab1ddc64c",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -235316,7 +235436,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "One root of the equation in \\(x\\), \\(x²+kx+6=0\\), is \\(2\\). Find the value of \\(k\\) and the other root. (Answer in order, separated by a comma.)",
+"question": "One root of the equation in \\(x\\), \\(x²+kx+6=0\\), is \\(2\\). Find the value of \\(k\\) and the other root.",
+"answerExample": "4, 5",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -235411,7 +235532,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "Project contribution AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "ad53c5eb3eb8f45fb3134a003f75e45a05037c36ad119b3887d6dc4432709ae3",
+"contentHash": "b30a6f863a3cc168e3102cba3c99ebede1d3cb6273cd0c7c15dd27c06dbb7af1",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -236192,7 +236313,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "A rectangle has a perimeter of 20 cm and an area of 24 cm². Find its length and width. (Unit: cm. The length is greater than the width. Write the length followed by the width, separated by a comma.)",
+"question": "A rectangle has a perimeter of 20 cm and an area of 24 cm². Given that the length is greater than the width, find its length and width in centimeters.",
+"answerExample": "9, 5",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -236331,7 +236453,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "Project contribution AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "1080c92e39c4003441433b6a14d8cf3e10ee766cc124eb9a2c8aeb1b14af1edb",
+"contentHash": "aa22b39e844ce22c0c6ba8069c9872686ffb00869f32c912409da7f0df7ad62b",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -236589,7 +236711,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "A fence 20 m long is used to enclose a rectangular vegetable garden with an area of 48 m², with one side against a wall (the wall is sufficiently long). Find the length of the side perpendicular to the wall. (Unit: m. There are two answers; separate them with a comma.)",
+"question": "A fence 20 m long is used to enclose a rectangular vegetable garden with an area of 48 m², with one side against a wall (the wall is sufficiently long). Find all possible lengths of the side perpendicular to the wall, in meters.",
+"answerExample": "9, 7",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -236702,7 +236825,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "ae75160781186c5e490760064f3f9c016ec4dbdc275b31a8ce934697da797723",
+"contentHash": "6cc931a237803c0ee5eb783f9b43b98a51792102a54151365440a62579e3b6c6",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -237218,7 +237341,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "A wire 20 cm long is bent to form a rectangle. Let one side length be \\(x\\) cm and the area be \\(y\\) cm². Then \\(y\\) is a quadratic function of \\(x\\). Write the coefficient of the quadratic term followed by the coefficient of the linear term (separated by a comma).",
+"question": "A wire 20 cm long is bent to form a rectangle. Let one side length be \\(x\\) cm and the area be \\(y\\) cm². Then \\(y\\) is a quadratic function of \\(x\\). What are the coefficients of the quadratic and linear terms?",
+"answerExample": "4, 7",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -237288,7 +237412,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "208258d8e3279d7e133efea11cd8d7bdb208e65dfd4d4c0ea235698cc1f36fb9",
+"contentHash": "d4d136b1a3f60645d09fd2799997550797daac239c897bb29e771fe6c8ebe4af",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -238146,7 +238270,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Find the coordinates of the vertex of the parabola \\(y=2(x+3)^2-5\\). Write the horizontal coordinate followed by the vertical coordinate (separated by a comma).",
+"question": "Find the coordinates of the vertex of the parabola \\(y=2(x+3)^2-5\\).",
+"answerExample": "12, 6",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -238215,7 +238340,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "176dac9010780ecf53256de93da477715f905703ffe85cb55f8c73e54ea2cc38",
+"contentHash": "e0beaf60dd5e9293338ae251e9e7d0603c2aa3b2a8e04280cfba786abcde2336",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -238751,7 +238876,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Find the coordinates of the vertex of the parabola $y=-2x^2+8x-3$. Give the x-coordinate followed by the y-coordinate, separated by a comma.",
+"question": "Find the coordinates of the vertex of the parabola $y=-2x^2+8x-3$.",
+"answerExample": "12, 4",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -238821,7 +238947,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "7ea3490885b28f3097f87acfda5aee939e4a52c2c32a8add100ce6ae8e52e285",
+"contentHash": "561b53f3cd46d64705dddc34dba184a4f2b8e16d76a894d0e25435df096c49b3",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -239000,7 +239126,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "The graph passes through $(-1,0)$, $(3,0)$, and $(0,-3)$. Find its equation. (Let the equation be $y=ax^2+bx+c$. Give $a$, $b$, and $c$ in that order, separated by commas.)",
+"question": "A parabola passes through $(-1,0)$, $(3,0)$, and $(0,-3)$. Find the coefficients $a$, $b$, and $c$ of its equation $y=ax^2+bx+c$.",
+"answerExample": "4, 6, 5",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -239097,7 +239224,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "Project contribution AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "8ddc28870df12f67b2bc089bd7a1901f91c322c5fcc66e13db4283aa48a802c2",
+"contentHash": "e00289abe42881760bc218b55d3634a6d06d23927cc0a4a6ac3faae6a9e58a70",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -239294,7 +239421,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "A parabola has vertex $(-1,2)$ and passes through $(1,-6)$. Let its equation be $y=ax^2+bx+c$. Give $a$, $b$, and $c$ in that order, separated by commas.",
+"question": "A parabola has vertex $(-1,2)$ and passes through $(1,-6)$. Let its equation be $y=ax^2+bx+c$. Find $a$, $b$, and $c$.",
+"answerExample": "8, 9, 6",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -239388,7 +239516,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "f7e9ef26949b7b6769d1ec8d7008cccf4ece05b61a514a571b1dc4c1307aaac6",
+"contentHash": "6aa20a8d29185dde8224bbdef7593e419ed962127729b7510fe660b96130c12c",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -239632,7 +239760,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Find the intersection points of the parabola $y=x^2-2x-3$ with the x-axis. (Give only the x-coordinates of the 2 intersection points, separated by a comma.)",
+"question": "Find the x-coordinates where the parabola $y=x^2-2x-3$ intersects the x-axis.",
+"answerExample": "6, 9",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -239725,7 +239854,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "45b36f6d7e42620a5d62e5436056179e19505f13db8573640ec67e506588aa0a",
+"contentHash": "d04c73d977c378c25261717d22a9f766e05fb77f966e094e8b26647d5377bc29",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -240151,7 +240280,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "One intersection point of the parabola $y=x^2-2x+m$ with the x-axis is $(3,0)$. Find the value of $m$ and the x-coordinate of the other intersection point. (Answer in that order, separated by a comma.)",
+"question": "One intersection point of the parabola $y=x^2-2x+m$ with the x-axis is $(3,0)$. Find the value of $m$ and the x-coordinate of the other intersection point.",
+"answerExample": "8, 12",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -240246,7 +240376,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "Project contribution AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "3090820065ea8c7cadaa7470dc8d0e949cda63d708371a6dc43c06c6ae41543f",
+"contentHash": "3dfa54058a793a79a60acc80acf872533c2c699199b28c337a4b5e16eeca30a1",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -240777,7 +240907,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "For $2\\le x\\le 4$, find the maximum and minimum values of $y=x^2-2x-3$. (Give the maximum value first, followed by the minimum value, separated by a comma.)",
+"question": "For $2\\le x\\le 4$, find the maximum and minimum values of $y=x^2-2x-3$.",
+"answerExample": "8, 1",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -240873,7 +241004,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "Project contribution AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "623fc9f9b1e252bcaa862f61f42eda9482acd2675974550024bcef11934d38cf",
+"contentHash": "e17b80f384c3574c31b6e57e16a7cdb1df30268626ac58b0b3f38506a4bcee73",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -243911,7 +244042,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Find the points of intersection of \\(y=x\\) and \\(y=4/x\\). (Write only the x-coordinates of the two intersection points, separated by a comma.)",
+"question": "Find the x-coordinates of the intersections of \\(y=x\\) and \\(y=4/x\\).",
+"answerExample": "4, 10",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -244003,7 +244135,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "bd9fee7e64b7d3c313efb28a6b5c6112ac507ab552e31775e16d2553e1a67a4b",
+"contentHash": "87e9fb56845ddc662786821844b797a261afa34ef575c3925c4b0c29fe5aed79",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -244076,7 +244208,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "The graphs of the inverse proportional function \\(y=k/x\\) and the linear function \\(y=x+1\\) intersect at \\(A(2,m)\\). Find the values of \\(m\\) and \\(k\\), in that order, separated by a comma.",
+"question": "The graphs of the inverse proportional function \\(y=k/x\\) and the linear function \\(y=x+1\\) intersect at \\(A(2,m)\\). Find the values of \\(m\\) and \\(k\\).",
+"answerExample": "10, 8",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -244146,7 +244279,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "ac74b322ff247ff08db74b2e9eb0ca24c00f3e28fd724ab8c8b22d3fe28edc6f",
+"contentHash": "fabf25d9a4d313ee46480a4af53d51b63bb64a86b2c00d44e4c22af8a760b03e",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -246318,7 +246451,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Triangle ABC is rotated about O to obtain triangle A′B′C′. Given \\(AB=7\\) and \\(\\angle A=40^\\circ\\), find the length of A′B′ and the measure of \\(\\angle A'\\) in degrees. (Give the answers in this order, separated by a comma.)",
+"question": "Triangle ABC is rotated about O to obtain triangle A′B′C′. Given \\(AB=7\\) and \\(\\angle A=40^\\circ\\), find the length of A′B′ and the measure of \\(\\angle A'\\) in degrees.",
+"answerExample": "5, 60",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -246388,7 +246522,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "3717539b0f69cf701b3b8ec60693ebc5d659b85ee5ff6287e8ccb3ac6d29bee0",
+"contentHash": "44ddc123a5fc32c9c6a4623b633eb9a86d3fd5fde23c08914dda161a79d20881",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -246906,7 +247040,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "In a Cartesian coordinate system, point \\(B(-3,4)\\) is rotated clockwise through \\(90^\\circ\\) about the origin O to obtain B′. Find the coordinates of B′. (Give the x-coordinate followed by the y-coordinate, separated by a comma.)",
+"question": "In a Cartesian coordinate system, point \\(B(-3,4)\\) is rotated clockwise through \\(90^\\circ\\) about the origin O to obtain B′. Find the coordinates of B′.",
+"answerExample": "9, 7",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -246975,7 +247110,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "6276e192cc306fe4d162af78a8b8c64041f4bcffd5300f472d09b450df006bd6",
+"contentHash": "2e8bcbb043cd62609d901fa394ed3cfb66bc322a1d7e0bbdf188b4bc95ad8814",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -247022,7 +247157,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "In a Cartesian coordinate system in the plane, point \\(P(4,3)\\) is rotated \\(90^\\circ\\) counterclockwise about point \\(C(1,1)\\) to obtain point \\(P'\\). Find the coordinates of \\(P'\\) (enter the x-coordinate followed by the y-coordinate, separated by a comma).",
+"question": "In a Cartesian coordinate system in the plane, point \\(P(4,3)\\) is rotated \\(90^\\circ\\) counterclockwise about point \\(C(1,1)\\) to obtain point \\(P'\\). Find the coordinates of \\(P'\\).",
+"answerExample": "5, 9",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -247090,7 +247226,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "Project contribution AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "009dc25f862565f6a8118dc2388d4e24642345cd9d27367c1e5219a544d0f607",
+"contentHash": "4b4e517c5c06914ce58255e6e4ad257888f4a35df53f5777eba3ab43bac2ad69",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [],
@@ -248232,7 +248368,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "What is the point symmetric to \\((3,-2)\\) about the origin? (Enter the x-coordinate followed by the y-coordinate, separated by a comma.)",
+"question": "What is the point symmetric to \\((3,-2)\\) about the origin?",
+"answerExample": "12, 10",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -248301,7 +248438,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "47c51dff41e449f4b85f1323589102a2e9a92860ba34c78fd040ef97fdf587fb",
+"contentHash": "ef36c5256da1d6c5cb49de79fe254c22cd9a2032e0f512801f1f6d55901e6eee",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -248347,7 +248484,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "What is the point symmetric to \\((-4,-7)\\) about the origin? (Enter the x-coordinate followed by the y-coordinate, separated by a comma.)",
+"question": "What is the point symmetric to \\((-4,-7)\\) about the origin?",
+"answerExample": "5, 6",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -248416,7 +248554,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "6a9379d3b895f9c3dcdf89c5ef2c7d447d11d2f286d3d48d78a373c9cabbf528",
+"contentHash": "ffe5d5920ea849cde4634409796bac149c0dd95b4dd1c5c843b94f42260a34bf",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -250869,7 +251007,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "\\(AB\\) is a chord of \\(\\odot O\\). Points \\(C\\) and \\(D\\) lie on major arc \\(AB\\), and \\(\\angle ACB=32^\\circ\\). Find the measures of \\(\\angle ADB\\) and \\(\\angle AOB\\) in degrees (answer in this order, separated by a comma).",
+"question": "\\(AB\\) is a chord of \\(\\odot O\\). Points \\(C\\) and \\(D\\) lie on major arc \\(AB\\), and \\(\\angle ACB=32^\\circ\\). Find the measures of \\(\\angle ADB\\) and \\(\\angle AOB\\) in degrees.",
+"answerExample": "25, 57",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -250938,7 +251077,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "a953cc23c174a45dc0ed1bfe0914b908182f609e6412ba9d0582d4bfc8f61c95",
+"contentHash": "5892d91e022918c2dd759ac5587502deda30cf29fff42db7238df97f67510015",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -254635,7 +254774,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Circle \\(O\\) has radius 5. Point \\(P\\) lies outside circle \\(O\\), and the length of \\(OP\\) is an integer less than 8. Find all possible values of \\(OP\\) (separate them with commas).",
+"question": "Circle \\(O\\) has radius 5. Point \\(P\\) lies outside circle \\(O\\), and the length of \\(OP\\) is an integer less than 8. Find all possible values of \\(OP\\).",
+"answerExample": "10, 8",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -254705,7 +254845,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "fd57a93183de7559496e1b7bff209f4fda1e3cfabbb3b2b7255ba63597e4db09",
+"contentHash": "68dfdcc2d03f49e14f401b37b4ca08e43debd946b133e181e7e83eaa866a1d21",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -264550,7 +264690,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Using the origin \\(O\\) as the center of homothety, enlarge point \\(A(2,-3)\\) by a factor of \\(2\\) (the corresponding point and \\(A\\) are on the same side of the center of homothety). Find the coordinates of the corresponding point \\(A'\\). Enter the horizontal coordinate first, followed by the vertical coordinate, separated by a comma.",
+"question": "Using the origin \\(O\\) as the center of homothety, enlarge point \\(A(2,-3)\\) by a factor of \\(2\\) (the corresponding point and \\(A\\) are on the same side of the center of homothety). Find the coordinates of the corresponding point \\(A'\\).",
+"answerExample": "6, 9",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -264619,7 +264760,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "8344d6a69ea7d4e6727fdce6768a5f16d17cd675a0ebdc509ed1fcc0bfc98716",
+"contentHash": "68ba38e1e14e199526f7992a86fe6f03a1d94b695a36809ec808122ceebd3468",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -264665,7 +264806,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Using the origin \\(O\\) as the center of homothety, enlarge point \\(P(3,-1)\\) by a factor of \\(2\\), with the corresponding point \\(P'\\) and \\(P\\) on opposite sides of the center of homothety. Find the coordinates of \\(P'\\). Enter the horizontal coordinate first, followed by the vertical coordinate, separated by a comma.",
+"question": "Using the origin \\(O\\) as the center of homothety, enlarge point \\(P(3,-1)\\) by a factor of \\(2\\), with the corresponding point \\(P'\\) and \\(P\\) on opposite sides of the center of homothety. Find the coordinates of \\(P'\\).",
+"answerExample": "10, 4",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -264734,7 +264876,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "98d169c8ffad60089ff79bd72fca411c4fa9fe5695726df0b7b3c762cc27054d",
+"contentHash": "1c0df1ffb3f10399b182274c150b37dea9bcb8e701ab24170b0272cdbe51f06e",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -264902,7 +265044,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Using point \\(P(1,1)\\) as the center of homothety, enlarge point \\(A(3,2)\\) by a factor of \\(3\\). The corresponding point \\(A'\\) and \\(A\\) are on the same side of the center of homothety. Find the coordinates of \\(A'\\). Enter the horizontal coordinate first, followed by the vertical coordinate, separated by a comma.",
+"question": "Using point \\(P(1,1)\\) as the center of homothety, enlarge point \\(A(3,2)\\) by a factor of \\(3\\). The corresponding point \\(A'\\) and \\(A\\) are on the same side of the center of homothety. Find the coordinates of \\(A'\\).",
+"answerExample": "6, 8",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -264972,7 +265115,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "0ff8becffb83775066e4e0671e50ffd0bc8179ebf946691b06126af0ece25efc",
+"contentHash": "1010e83152d2dfa03c994fe44f8ae12ae9a9a31ec31de5e1b776a113811d198a",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -266575,7 +266718,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "In right triangle \\(ABC\\), \\(\\angle C=90^\\circ\\), \\(BC=6\\), and \\(\\tan A=3/4\\). Find the lengths of \\(AC\\) and \\(AB\\). (Give your answers in this order, separated by a comma.)",
+"question": "In right triangle \\(ABC\\), \\(\\angle C=90^\\circ\\), \\(BC=6\\), and \\(\\tan A=3/4\\). Find the lengths of \\(AC\\) and \\(AB\\).",
+"answerExample": "4, 12",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -266645,7 +266789,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "77105794bc890d50bf046a3a9eb5f7c7748cd6fa49495661bb38240139c4a921",
+"contentHash": "45fc6173f1cf27326b9ad7b94c1e9910b55b479ccfc561a70cafd66081c9e132",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -273177,7 +273321,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Each of 2 people rolls a die. Player A wins if the sum of the numbers rolled is even, and Player B wins if it is odd. Is the game fair? (Give the probabilities of Player A and Player B winning, in that order, as fractions in simplest form, separated by a comma.)",
+"question": "Each of 2 people rolls a die. Player A wins if the sum is even, and Player B wins if it is odd. To decide whether the game is fair, find the winning probabilities for Player A and Player B as fractions in lowest terms.",
+"answerExample": "1/3, 2/3",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -273294,7 +273439,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "b9b92d26f4f56a0c53fc7ec7785b476749dc2e8e18b19640d2fac665f8916502",
+"contentHash": "d998fe7b48bb2c3f16c102db5aa1e2137aeb6e4e581d2a0b6048325fe9de3271",
 "status": "mapped",
 "reviewStatus": "machine_adjudicated",
 "assessedIds": [
@@ -274405,7 +274550,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "A 40 m stretch of roadside on one side of a driving aisle is available for parking spaces. Each space is 2.5 m wide (the perpendicular distance between adjacent marking lines). Each perpendicular parking space occupies 2.5 m along the roadside; the marking lines of angled parking spaces form an acute angle of \\(30^\\circ\\) with the driving aisle. What is the maximum number of perpendicular spaces and angled spaces, respectively? (Answer in order, separated by a comma.)",
+"question": "A 40 m stretch of roadside on one side of a driving aisle is available for parking spaces. Each space is 2.5 m wide (the perpendicular distance between adjacent marking lines). Each perpendicular parking space occupies 2.5 m along the roadside; the marking lines of angled parking spaces form an acute angle of \\(30^\\circ\\) with the driving aisle. What is the maximum number of perpendicular spaces and angled spaces?",
+"answerExample": "12, 6",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -274500,7 +274646,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "Project contribution AI-authored and independently AI-reviewed; not teacher reviewed",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "66bc09ee88d27b89a28f827019f592db1e275748dd931146b76cc90ba85005a2",
+"contentHash": "1110634e62634048f30e127d846a793b2e0a139aa4ece5117733247aabcfd748",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -275707,7 +275853,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "The favorite sports of 10 students are, in order: basketball, soccer, basketball, running, soccer, basketball, running, basketball, soccer, running. Organize the data into a statistical table. How many students favor basketball, soccer, and running, respectively? (Answer in order, separated by commas.)",
+"question": "The favorite sports of 10 students are, in order: basketball, soccer, basketball, running, soccer, basketball, running, basketball, soccer, running. Organize the data into a statistical table. How many students favor basketball, soccer, and running?",
+"answerExample": "1, 2, 7",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -275776,7 +275923,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "3327beabbe7c5be27e7aef33bc4f6852c2c6ed6bfc92112735b3554ce4100734",
+"contentHash": "2e3e74a2c9bcb172b80518b1040d210ba57480baa8abea43025241e17db443e5",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -276663,7 +276810,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "In a pie chart, a category accounts for 25% of the total. What is its corresponding central angle in degrees? If this category contains 30 people, what is the total number of people? (Answer in order, separated by a comma; write only numbers.)",
+"question": "In a pie chart, a category accounts for 25% of the total. What is its corresponding central angle in degrees? If this category contains 30 people, what is the total number of people?",
+"answerExample": "45, 80",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -276733,7 +276881,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "1ff2b5f77ec7a80e07bf816f1b16c133b585b84cddef5cb8d353f5b433daee80",
+"contentHash": "a3c6b24c68e9c3755cd129380760072e5882303c62e56c8d6e28b289594678df",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -277511,7 +277659,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Sales revenues are 200 and 250, respectively, in units of ten thousand yuan, and the vertical axis starts at 150 in the same units. How many times as tall as the first bar is the second bar in the chart? How many times the first value is the actual second value? (Answer in order, separated by a comma, and write the answers as decimals.)",
+"question": "Sales revenues are 200 and 250, respectively, in units of ten thousand yuan, and the vertical axis starts at 150 in the same units. How many times as tall as the first bar is the second bar in the chart? How many times the first value is the actual second value? Give both ratios as decimals.",
+"answerExample": "2.5, 1.5",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -277581,7 +277730,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "8636a08b7e6c96672afe13c54ef505770b8f870d7d4bad5ddda659a3c4599387",
+"contentHash": "1b668fd125bfe1459e3832788119d1b374e9df9447fcb16ab5dcf61c7f4b4ee5",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -277632,7 +277781,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "40 data values are divided into 4 groups, with frequencies of 6, 14, 12, and 8, respectively. What is the relative frequency of each group? (Answer in order, separated by commas, and write the answers as decimals.)",
+"question": "40 data values are divided into 4 groups, with frequencies of 6, 14, 12, and 8, respectively. What is the relative frequency of each group? Give the relative frequencies as decimals in the order listed.",
+"answerExample": "0.1, 0.4, 0.05, 0.45",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -277701,7 +277851,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "91e603a5203eb4b737941a40cc7e6c2db4d7c8cc61ca1415156fc877517b2759",
+"contentHash": "32df42a73e3d3b632830e89f5d0061bcf20692192f3d3067f85afa0ff67f0a2c",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -283071,7 +283221,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "short",
-"question": "A bag contains 5 red balls, 3 white balls, and 2 yellow balls (all of the same shape). If one ball is drawn at random, how do the likelihoods of drawing a red, white, or yellow ball rank from greatest to least? (Connect them with “＞”.)",
+"question": "A bag contains 5 red balls, 3 white balls, and 2 yellow balls (all of the same shape). If one ball is drawn at random, how do the likelihoods of drawing a red, white, or yellow ball rank from greatest to least?",
+"answerExample": "blue > green > purple",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -283144,7 +283295,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "09399e0bac7c22856c1f4651773339e5d411f37c9025df1639e19d044521718c",
+"contentHash": "9472d7634b04b0312d6ee7ea798e111e200bdeaec56a5007464fa00c1dd284c6",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -283566,7 +283717,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "Which of the following values cannot be the probability of an event: 0.3, 1.2, −0.1, 1, 0? (Write all values that are impossible, separated by commas.)",
+"question": "Which of the following values cannot be the probability of an event: 0.3, 1.2, −0.1, 1, 0?",
+"answerExample": "1.4, 1.8",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -283635,7 +283787,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "6b8ed1c9cdcb55a6178e8e62ba675aafa896053164cb0e5dff57745443fb6e4f",
+"contentHash": "37192984aaf7e74ed1441368e9232d981e836cb8a0e9c056ef8ca1c0ea55e0bb",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -284533,7 +284685,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "A bag contains 3 balls: 2 red and 1 white. Balls are drawn twice in succession. What is the probability that both draws are red: (1) with replacement; (2) without replacement? (Write the answers to (1) and (2) in order, as fractions in simplest form, separated by a comma.)",
+"question": "A bag contains 3 balls: 2 red and 1 white. Balls are drawn twice in succession. What is the probability that both draws are red: (1) with replacement; (2) without replacement? Give the probabilities as fractions in lowest terms.",
+"answerExample": "1/2, 1/4",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -284603,7 +284756,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "1cce79265a8eedf4140f7f80e4a9964e7e0deb36800526c12d3aebc912072211",
+"contentHash": "eedb440772ff68842f656cf97a79c8273ff0f1ee51cc6454b098cbb512e7e6cc",
 "status": "mapped",
 "reviewStatus": "machine_examined",
 "assessedIds": [
@@ -284653,7 +284806,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "A bag contains 4 distinct balls. Balls are drawn twice in succession, and the outcomes are recorded in order. (1) How many equally likely outcomes are there with replacement? (2) How many equally likely outcomes are there without replacement? (Write the answers in order, separated by a comma.)",
+"question": "A bag contains 4 distinct balls. Balls are drawn twice in succession, and the outcomes are recorded in order. (1) How many equally likely outcomes are there with replacement? (2) How many equally likely outcomes are there without replacement?",
+"answerExample": "6, 4",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -284723,7 +284877,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "3dbbc81e6167e6b88bd5960df768e6a73d06f18ed95b3426449339a32350bd2a",
+"contentHash": "3d15b69549353509e27182f0e47720a62f0a307a6b2e0db5e272d6752b221918",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -285594,7 +285748,8 @@ window.CN_MATH_BANK = {
 ],
 "skill": [],
 "responseType": "numeric",
-"question": "In a seed germination experiment, the relative frequency of germination stabilizes around 0.95 when the number of seeds is very large. Estimate the germination probability for this type of seed and approximately how many of 2000 seeds will germinate. (Write the germination probability and the number of seeds that germinate, in that order, separated by a comma.)",
+"question": "In a seed germination experiment, the relative frequency of germination stabilizes around 0.95 when the number of seeds is very large. Estimate the germination probability for this type of seed and approximately how many of 2000 seeds will germinate.",
+"answerExample": "0.7, 1250",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -285663,7 +285818,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "ff072db274ce0a1bf674a0e4b5263161ecdae65993c1bb01c09d174e8fdbe957",
+"contentHash": "fca51734544675a76fec1cfd4aca230b454abc953cc55eaf2560748c980dfcd5",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [
@@ -330514,6 +330669,7 @@ window.CN_MATH_BANK = {
 "skill": [],
 "responseType": "numeric",
 "question": "\\(a=(1,0)\\), \\(b=(0,1)\\). What are the two coordinates of \\(a+b\\)?",
+"answerExample": "5, 4",
 "questionType": "text",
 "choices": {},
 "choiceOrder": [],
@@ -330582,7 +330738,7 @@ window.CN_MATH_BANK = {
 "solutionStatus": "",
 "knowledgeGraph": {
 "version": "1.0.0",
-"contentHash": "5a5faa20ad0886622020fe47a9f34df3e61048b4bf38ba169b2c84e5b258d19d",
+"contentHash": "9472d2ded9cc557872e8ecc5adc6a0b4142129a052eda7deab9e58cd541f0215",
 "status": "mapped",
 "reviewStatus": "machine_scope_audited",
 "assessedIds": [

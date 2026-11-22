@@ -256,6 +256,8 @@ def validate_question(question, manifest, filename):
         raise BankError(f'{context}: Bank must match bank.json and SchemaVersion must be "2.0".')
     for key in ('Language', 'Level', 'CurriculumUnit', 'Batch', 'Question', 'Correct Answer', 'Solution'):
         required_text(question, key, context)
+    if 'Answer Example' in question:
+        required_text(question, 'Answer Example', context)
     for key, minimum in (('Grade', 0), ('Number', 1)):
         if type(question.get(key)) is not int or question[key] < minimum:
             raise BankError(f'{context}: {key} must be an integer of at least {minimum}.')
@@ -422,7 +424,8 @@ def browser_bank(manifest, records, root=ROOT):
     fields = {'id': 'ID', 'bank': 'Bank', 'year': 'Year', 'level': 'Level', 'grade': 'Grade',
               'unit': 'CurriculumUnit', 'batch': 'Batch', 'number': 'Number', 'area': 'Area', 'topic': 'Topic',
               'domain': 'domain', 'skill': 'skill', 'responseType': 'ResponseType', 'question': 'Question',
-              'questionType': 'Question Type', 'choices': 'Choices', 'choicesType': 'Choices Type',
+              'answerExample': 'Answer Example', 'questionType': 'Question Type',
+              'choices': 'Choices', 'choicesType': 'Choices Type',
               'answer': 'Correct Answer', 'acceptedAnswers': 'Accepted Answers', 'unorderedAnswers': 'Unordered Answers',
               'gradingStatus': 'GradingStatus', 'gradingNote': 'GradingNote', 'answerForm': 'Answer Form',
               'rejectedAnswers': 'Rejected Answers', 'solution': 'Solution',
@@ -450,7 +453,10 @@ def browser_question(record, *, root=ROOT, manifest=None):
     if not is_v3(record):
         if record.get('Bank') == 'amc':
             from export_amc_bank import browser_question as amc_question
-            return amc_question(record, root=root)
+            item = amc_question(record, root=root)
+            if 'Answer Example' in record:
+                item['answerExample'] = record['Answer Example']
+            return item
         if manifest is None:
             meta = record.get('Meta', {})
             manifest = {'id':record['Bank'], 'label':record['Bank'], 'attribution':meta.get('Attribution',''),
@@ -458,7 +464,8 @@ def browser_question(record, *, root=ROOT, manifest=None):
         return browser_bank(manifest, [record], root=root)['questions'][0]
     fields = {'id':'ID','bank':'Bank','year':'Year','level':'Level','grade':'Grade','unit':'CurriculumUnit',
         'batch':'Batch','number':'Number','area':'Area','topic':'Topic','domain':'domain','skill':'skill',
-        'responseType':'ResponseType','question':'Question','questionType':'Question Type','choices':'Choices',
+        'responseType':'ResponseType','question':'Question','answerExample':'Answer Example',
+        'questionType':'Question Type','choices':'Choices',
         'choiceOrder':'Choice Order','choicesType':'Choices Type','answer':'Correct Answer',
         'acceptedResponses':'Accepted Responses','answerRubric':'Answer Rubric','rejectedAnswers':'Rejected Answers',
         'unorderedAnswers':'Unordered Answers','gradingStatus':'GradingStatus','gradingNote':'GradingNote',

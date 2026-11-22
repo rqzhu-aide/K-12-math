@@ -96,7 +96,7 @@ Omit unknown optional information rather than writing placeholders.
 | --- | --- |
 | `schemaVersion` | The string `"3.0"`. |
 | `id`, `bank`, `language` | Stable namespaced ID, matching bank ID, and `"en"`. This compact format is English. |
-| `question` | `{ "prompt": "..." }`, with ordered `choices` only for `choice` or `multiSelect`. Each choice has stable `id` and `content`. |
+| `question` | `{ "prompt": "..." }`, with an optional `answerExample` for the answer control. Include ordered `choices` for `choice` or `multiSelect`. Each choice has stable `id` and `content`. |
 | `answer` | Response type and complete accepted responses, or a rubric for `self`. See below. |
 | `classification` | Known browsing information: `area`, `domainIds`, `topicIds`, `skillIds`, `grade`, `level`, `unit`, `difficulty`. ID fields are arrays of distinct strings; grade is a nonnegative integer; other fields are text. `{}` is valid when nothing is known. |
 | `assessedNodeIds` | Concepts the question assesses. `[]` means no assessed target has been recorded. |
@@ -127,7 +127,10 @@ Optional answer fields are `rejected` (explicit rejected strings), `form`
 (`decimal`, `standard-monomial`, or `ordered-list`), and `gradingNote`.
 A nonempty `gradingNote` suspends automatic grading and states why. Use it for
 a disputed or unsuitable recorded key; do not invent agreement with the key.
-Make any required answer form explicit in the prompt.
+Use `question.answerExample` to show what to enter when the response format
+needs an example. For two comma-separated numbers, write `"answerExample": "2, 5"`
+using sample values unrelated to the solution. Keep mathematical requirements in
+the prompt and record the accepted responses in `answer`.
 
 ### Solutions and concept annotations
 
