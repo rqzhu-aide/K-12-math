@@ -1,4 +1,4 @@
-# Math Practice UI 2.3.0
+# Math Practice UI 2.3.1
 
 **[Open Math Practice online](https://math-practice.ailleo.net/)** to practice 8,790 questions. Choose **Try a problem** for a starting question, or **Browse** to pick a contest, curriculum topic, or mathematical idea.
 

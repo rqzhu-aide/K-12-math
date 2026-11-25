@@ -6,6 +6,7 @@
   const hostedServiceVersion = '2026-11-23.3';
   const key = 'math-practice.agreement.v1';
   const experimentalKey = 'math-practice.experimental-agreement.v1';
+  const legacyServicePreferences = 'math-practice.optional-services.preferences.v1';
   const recommendationHistory = 'math-practice.practice-recommendations.history.v1';
   const recommendationPause = 'math-practice.practice-recommendations.pause.v1';
   const experimentalEvent = 'math-practice-experimental-change';
@@ -76,7 +77,6 @@
     if (typeof enabled !== 'boolean' || (enabled && !accepted())) return false;
     try {
       const storage = window.localStorage;
-      let next = null;
       if (enabled) {
         if (experimentalGrant(notice)) return true;
         const prior = priorGrant(notice);
@@ -84,15 +84,18 @@
           storage.removeItem(recommendationHistory);
           storage.removeItem(recommendationPause);
         }
-        next = JSON.stringify({version: serviceVersion(), noticeVersion: notice, affirmative: true,
+        const next = JSON.stringify({version: serviceVersion(), noticeVersion: notice, affirmative: true,
           acceptedAt: new Date().toISOString(), grantId: prior ? JSON.parse(prior).grantId : Math.random().toString(36)});
         storage.setItem(experimentalKey, next);
+        if (storage.getItem(experimentalKey) !== next) return false;
       } else {
-        storage.removeItem(experimentalKey);
-        storage.removeItem(recommendationHistory);
-        storage.removeItem(recommendationPause);
+        // Open 2.2.1 tabs still check their independent speech and feedback preferences.
+        for (const storageKey of [legacyServicePreferences, experimentalKey, recommendationHistory, recommendationPause]) {
+          if (storage.getItem(storageKey) === null) continue;
+          storage.removeItem(storageKey);
+          if (storage.getItem(storageKey) !== null) return false;
+        }
       }
-      if (storage.getItem(experimentalKey) !== next) return false;
     } catch (_) { return false; }
     dispatchExperimentalChange(window);
     try {
@@ -178,7 +181,7 @@
     }
     action.addEventListener('click', () => saveChoice(!enabled));
     decline.addEventListener('click', () => {
-      if (!experimentalEnabled() || saveChoice(false)) returnToPractice();
+      if (saveChoice(false)) returnToPractice();
     });
     if (embedded) {
       document.querySelector('.back-link').addEventListener('click', event => {
