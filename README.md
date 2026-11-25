@@ -3,7 +3,7 @@
 [![Knowledge graph 1.0.0](https://img.shields.io/badge/Knowledge_graph-1.0.0-245984)](database/knowledge-graph/source/metadata.json)
 [![CN bank 2.0.0](https://img.shields.io/badge/CN_bank-2.0.0-427354)](database/cn-math-bank/VERSION)
 [![AMC bank 2.7.0](https://img.shields.io/badge/AMC_bank-2.7.0-996532)](database/amc-bank/VERSION)
-[![Math Practice UI 2.2.0](https://img.shields.io/badge/Math_Practice_UI-2.2.0-625395)](math-practice/VERSION)
+[![Math Practice UI 2.2.1](https://img.shields.io/badge/Math_Practice_UI-2.2.1-625395)](math-practice/VERSION)
 
 **[Open Math Practice online](https://rqzhu-aide.github.io/K-12-math/)** to browse all 8,790 questions. The site loads the question you choose. No installation or account is needed.
 
@@ -16,7 +16,7 @@ K-12-math is a mathematics study collection with **936 knowledge graph nodes (kn
 | [Mathematics knowledge graph](database/knowledge-graph/) | 1.0.0 | Connects 936 concepts through 1,634 accepted relationships and links questions to the concepts they assess or use in a solution. |
 | [Chinese curriculum question bank](database/cn-math-bank/) | 2.0.0 | Contains 3,355 questions in English with answers and worked solutions, alongside the original Chinese material. |
 | [AMC question bank](database/amc-bank/) | 2.7.0 | Contains 5,435 questions from 195 competition papers, each with an answer key and a worked solution. |
-| [Math Practice UI](math-practice/) | 2.2.0 | Serves both question banks online and runs locally with optional voice input and AI tutoring. |
+| [Math Practice UI](math-practice/) | 2.2.1 | Serves both question banks online and runs locally with optional voice input and AI tutoring. |
 
 ## Question counts
 

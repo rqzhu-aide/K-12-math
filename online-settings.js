@@ -10,19 +10,19 @@
     'ChatGPT login': 'ChatGPT 登录', 'Forthcoming': '即将推出',
     'Fetch models': '获取模型列表', 'Enter a model name, or fetch available models.': '输入模型名称，或获取可用模型列表。',
     'Tests may use API credits. A successful text test does not verify image support.': '测试可能消耗 API 额度。文字测试成功并不代表模型支持图片。',
-    'Optional Ailleo services are managed by the site operator. You do not need to enter an API key for them.': '可选的 Ailleo 服务由网站运营者管理。你无需为这些服务输入 API 密钥。',
-    'If you enable speech-to-text, stopping a recording sends the audio to Ailleo’s server. If you also enable Sentiment Check, the app automatically sends the original transcript and question before you edit the transcript or press Submit. Ailleo processes this temporarily, without keeping the audio, original transcript or sentiment results as learner records.': '开启语音转文字后，录音结束时，音频会发送给 Ailleo 的服务器。如果同时开启情绪分析，应用会在你编辑转录文字或点击“提交”之前，自动发送原始转录文字和题目。Ailleo 会临时处理这些数据，不会将音频、原始转录文字或情绪分析结果保存为学习记录。',
+    'Ailleo Math Practice Service': 'Ailleo 数学练习服务',
+    'This optional service includes Speech-to-Text LLM and Sentiment Check LLM. Ailleo provides both without an API key from you.': '这项可选服务包括语音转文字和情绪分析大语言模型。两项功能均由 Ailleo 提供，无需你输入 API 密钥。',
+    'If you enable both features, stopping a recording sends the audio to Ailleo for transcription. The app then automatically sends the original transcript and question for Sentiment Check before you edit the text or press Submit. Ailleo uses the audio, original transcript and sentiment results only for temporary processing.': '开启两项功能后，结束录音时，音频会发送给 Ailleo 并转成文字。应用随后会在你编辑文字或点击“提交”之前，自动发送原始转录文字和题目进行情绪分析。Ailleo 仅将音频、原始转录文字和情绪分析结果用于临时处理。',
+    'You can practice by typing and turn off this service at any time.': '你可以用文字输入进行练习，也可以随时关闭这项服务。',
     'Improving question recommendations': '改进题目推荐',
     'If sharing becomes available and you separately opt in, Ailleo will keep only the final text you explicitly submit in ‘Your thinking’ for up to 90 days to improve its internal question recommendations. This can include typed text or speech-to-text output that you submit with or without edits.': '如果将来开放共享，且你另行选择同意，Ailleo 只会保留你在“你的思路”中主动提交的最终文字，最长保留 90 天，用于改进 Ailleo 内部的题目推荐。你可以提交手动输入的文字，也可以提交编辑过或未编辑的语音转录文字。',
     'Ailleo’s collection for question recommendations is off. Enabling a feature gives permission only for processing.': 'Ailleo 目前未开启用于题目推荐的数据收集。开启功能仅表示你同意数据处理。',
     'Data use and deletion': '数据使用与删除',
-    'Agree and enable Speech-to-Text LLM': '同意并开启语音转文字大语言模型',
-    'Turn off Speech-to-Text LLM': '关闭语音转文字大语言模型',
     'Sentiment Check LLM': '情绪分析大语言模型',
-    'Agree and enable Sentiment Check LLM': '同意并开启情绪分析大语言模型',
-    'Turn off Sentiment Check LLM': '关闭情绪分析大语言模型',
-    'Turning this on lets Ailleo transcribe your recordings. You can turn it off at any time.': '开启此功能即允许 Ailleo 将你的录音转成文字。你可以随时关闭。',
-    'Turning this on lets Ailleo analyze the words in your original transcript with the question as context. You can turn it off at any time.': '开启此功能即允许 Ailleo 结合题目分析原始转录中的文字。你可以随时关闭。',
+    'Agree and enable both features': '同意并开启两项功能',
+    'Turn off Ailleo Math Practice Service': '关闭 Ailleo 数学练习服务',
+    'Only Speech-to-Text LLM is enabled from your previous settings.': '根据你之前的设置，目前仅开启了语音转文字大语言模型。',
+    'Only Sentiment Check LLM is enabled from your previous settings.': '根据你之前的设置，目前仅开启了情绪分析大语言模型。',
     'Waiting for server connection': '等待服务器连接',
     'Ailleo’s server is not connected to this website yet. You can save your choice for later.': 'Ailleo 的服务器尚未连接到本网站。你可以先保存选择，待连接后使用。',
     'Your choice is saved. Ailleo’s server is not connected to this website yet.': '已保存你的选择。Ailleo 的服务器尚未连接到本网站。',
@@ -30,13 +30,13 @@
     'Checks service availability without sending your audio or thinking.': '仅检查服务是否可用，不发送你的音频或思考内容。',
     'Off': '已关闭', 'Service reachable': '服务可连接', 'Unavailable': '暂不可用', 'Connection not checked': '尚未检查连接',
     'Checking Ailleo’s server. No audio or thinking is sent.': '正在检查 Ailleo 的服务器，不会发送音频或思考内容。',
-    'This feature is off. Turn it on to use Ailleo’s service during practice.': '此功能已关闭。开启后，可在练习中使用 Ailleo 服务。',
+    'This feature is off. You can enable both features above.': '此功能已关闭。你可以在上方开启两项功能。',
     'The server is reachable. This feature is off.': '服务器可连接。此功能已关闭。',
     'Ailleo’s server is unavailable. This feature is off. Check connection to try again.': 'Ailleo 的服务器暂不可用。此功能已关闭。请检查连接以重试。',
     'Your choice is saved. Check the connection before using this feature.': '已保存你的选择。使用此功能前，请先检查连接。',
     'The server is reachable. This check does not run the Speech-to-Text LLM or Sentiment Check LLM.': '服务器可连接。此检查不会运行语音转文字大语言模型或情绪分析大语言模型。',
     'Your choice is saved, but Ailleo’s server is unavailable. Check connection to try again.': '已保存你的选择，但 Ailleo 的服务器暂不可用。请检查连接以重试。',
-    'Optional service settings are saved.': '已保存可选服务设置。',
+    'Both features are enabled.': '两项功能均已开启。',
     'Processing permission removed. Both optional features are off.': '已撤回数据处理许可。两项可选功能均已关闭。',
     'Optional service settings could not load. Reload this page to try again.': '无法加载可选服务设置。请重新加载页面后重试。',
     'Your choice could not be saved. Try again.': '无法保存你的选择，请重试。',
@@ -94,16 +94,23 @@
   const serviceChecking = {speech: false, decision: false};
   const serviceErrors = {speech: '', decision: ''};
   const serviceCheckButton = role => $(role === 'speech' ? 'checkSpeech' : 'checkDecision');
+  const serviceToggle = $('serviceEnabled');
   function renderServices() {
     const preferences = services.preferences();
+    const bothEnabled = preferences.speech && preferences.decision;
+    const partial = preferences.speech !== preferences.decision;
+    text(serviceToggle, bothEnabled ? 'Turn off Ailleo Math Practice Service' : 'Agree and enable both features');
+    serviceToggle.classList.toggle('primary', !bothEnabled);
+    serviceToggle.classList.toggle('secondary', bothEnabled);
+    serviceToggle.disabled = false;
+    $('legacyServiceChoice').hidden = !partial;
+    $('clearServiceChoice').hidden = !partial;
+    if (partial) say('legacyServiceChoice', preferences.speech
+      ? 'Only Speech-to-Text LLM is enabled from your previous settings.'
+      : 'Only Sentiment Check LLM is enabled from your previous settings.');
     for (const role of serviceRoles) {
       const status = services.status(role);
       const enabled = preferences[role] === true;
-      const toggle = $(role + 'Enabled');
-      text(toggle, role === 'speech' ? enabled ? 'Turn off Speech-to-Text LLM' : 'Agree and enable Speech-to-Text LLM' : enabled ? 'Turn off Sentiment Check LLM' : 'Agree and enable Sentiment Check LLM');
-      toggle.classList.toggle('primary', !enabled);
-      toggle.classList.toggle('secondary', enabled);
-      toggle.disabled = false;
       const check = serviceCheckButton(role);
       check.disabled = !status.configured || serviceChecking[role];
       check.setAttribute('aria-busy', String(serviceChecking[role]));
@@ -112,11 +119,11 @@
       if (!status.configured) {
         label = 'Waiting for server connection';
         message = enabled ? 'Your choice is saved. Ailleo’s server is not connected to this website yet.' : 'Ailleo’s server is not connected to this website yet. You can save your choice for later.';
-      } else if (!enabled) {
-        label = 'Off';
-        message = status.available === true ? 'The server is reachable. This feature is off.' : status.available === false ? 'Ailleo’s server is unavailable. This feature is off. Check connection to try again.' : 'This feature is off. Turn it on to use Ailleo’s service during practice.';
       } else if (serviceChecking[role]) {
         label = 'Checking…'; message = 'Checking Ailleo’s server. No audio or thinking is sent.';
+      } else if (!enabled) {
+        label = 'Off';
+        message = status.available === true ? 'The server is reachable. This feature is off.' : status.available === false ? 'Ailleo’s server is unavailable. This feature is off. Check connection to try again.' : 'This feature is off. You can enable both features above.';
       } else if (status.state === 'ready') {
         label = 'Service reachable'; message = 'The server is reachable. This check does not run the Speech-to-Text LLM or Sentiment Check LLM.'; state = 'ok';
       } else if (status.available === false) {
@@ -135,10 +142,10 @@
     catch (error) { serviceErrors[role] = safeMessage(error || new Error(t('The service connection could not be checked. Try again.'))); }
     finally { serviceChecking[role] = false; renderServices(); notify(); }
   }
-  function saveServiceChoice(value) {
+  function saveServiceChoice(enabled) {
     try {
-      services.savePreferences(value);
-      say('servicePreferencesResult', value.acknowledged === false ? 'Processing permission removed. Both optional features are off.' : 'Optional service settings are saved.');
+      services.savePreferences({acknowledged: enabled, speech: enabled, decision: enabled});
+      say('servicePreferencesResult', enabled ? 'Both features are enabled.' : 'Processing permission removed. Both optional features are off.');
       for (const role of serviceRoles) serviceErrors[role] = '';
       renderServices(); notify(); return true;
     } catch (error) {
@@ -146,22 +153,24 @@
       renderServices(); return false;
     }
   }
-  try {
-    if (!services) throw new Error();
-    renderServices();
-    for (const role of serviceRoles) {
-      $(role + 'Enabled').addEventListener('click', () => {
+  if (serviceToggle) {
+    try {
+      if (!services) throw new Error();
+      renderServices();
+      serviceToggle.addEventListener('click', () => {
         const preferences = services.preferences();
-        const enabled = !preferences[role];
-        const next = {...preferences, [role]: enabled};
-        next.acknowledged = next.speech || next.decision;
-        if (saveServiceChoice(next) && enabled) checkService(role);
+        const enable = !(preferences.speech && preferences.decision);
+        if (saveServiceChoice(enable) && enable) serviceRoles.forEach(checkService);
       });
-      serviceCheckButton(role).addEventListener('click', () => checkService(role));
+      $('clearServiceChoice').addEventListener('click', () => {
+        if (saveServiceChoice(false)) serviceToggle.focus();
+      });
+      for (const role of serviceRoles) serviceCheckButton(role).addEventListener('click', () => checkService(role));
+    } catch (_) {
+      serviceToggle.disabled = true;
+      for (const role of serviceRoles) serviceCheckButton(role).disabled = true;
+      say('servicePreferencesResult', 'Optional service settings could not load. Reload this page to try again.', 'error');
     }
-  } catch (_) {
-    for (const role of serviceRoles) { $(role + 'Enabled').disabled = true; serviceCheckButton(role).disabled = true; }
-    say('servicePreferencesResult', 'Optional service settings could not load. Reload this page to try again.', 'error');
   }
   function badge() {
     say('inferenceBadge', passed === identity() ? 'Text test passed' : snapshot().model ? 'Not tested' : 'Not configured', passed === identity() ? 'ok' : '');
@@ -225,21 +234,37 @@
     } catch (error) { say('inferenceResult', safeMessage(error), 'error'); $('inferenceResult').focus(); }
     finally { busy(false); say('saveInference', 'Save Settings'); }
   }
-  function selectTab(name, focus) {
-    for (const role of ['speech', 'decision']) {
-      const selected = role === name;
-      $(role + 'Tab').setAttribute('aria-selected', String(selected)); $(role + 'Tab').tabIndex = selected ? 0 : -1;
-      $(role + 'Panel').hidden = !selected;
+  const tabs = {tutor: $('tutorTab'), service: $('serviceTab')};
+  const panels = {tutor: $('inferencePanel'), service: $('servicePanel')};
+  function selectTab(name, updateHash = false) {
+    for (const key of Object.keys(tabs)) {
+      const selected = key === name;
+      tabs[key].setAttribute('aria-selected', String(selected));
+      tabs[key].tabIndex = selected ? 0 : -1;
+      panels[key].hidden = !selected;
     }
-    if (focus) $(name + 'Tab').focus();
+    if (updateHash) history.replaceState(history.state, '', '#' + name);
   }
-  ['speech', 'decision'].forEach((name, index) => {
-    $(name + 'Tab').addEventListener('click', () => selectTab(name));
-    $(name + 'Tab').addEventListener('keydown', event => {
-      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
-      event.preventDefault(); selectTab(event.key === 'Home' ? 'speech' : event.key === 'End' ? 'decision' : ['speech', 'decision'][1 - index], true);
-    });
-  });
+  function selectFragment() {
+    const target = location.hash.slice(1);
+    const service = target === 'service' || target === 'speechTab' || target === 'decisionTab' || panels.service.contains($(target));
+    selectTab(service ? 'service' : 'tutor');
+  }
+  if (tabs.tutor && tabs.service) {
+    for (const [name, tab] of Object.entries(tabs)) {
+      tab.addEventListener('click', () => selectTab(name, true));
+      tab.addEventListener('keydown', event => {
+        const other = name === 'tutor' ? 'service' : 'tutor';
+        const target = {ArrowLeft: other, ArrowRight: other, Home: 'tutor', End: 'service'}[event.key];
+        if (!target) return;
+        event.preventDefault();
+        selectTab(target, true);
+        tabs[target].focus();
+      });
+    }
+    window.addEventListener('hashchange', selectFragment);
+    selectFragment();
+  }
   $('inferenceForm').addEventListener('input', edited);
   $('inferenceForm').addEventListener('submit', save);
   $('testInference').addEventListener('click', test);

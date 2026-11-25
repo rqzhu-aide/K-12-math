@@ -1,4 +1,4 @@
-# Math Practice UI 2.2.0
+# Math Practice UI 2.2.1
 
 **[Open Math Practice online](https://math-practice.ailleo.net/)** to practice 8,790 questions. Choose **Try a problem** for a starting question, or **Browse** to pick a contest, curriculum topic, or mathematical idea.
 
@@ -21,7 +21,7 @@ Open **Settings → Model settings**. Settings opens over the current problem, s
 
 API keys remain in the current browser tab session, including its settings frame. Nonsecret preferences can persist between visits. Provider charges and data-use policies apply. Your tutor requests do not pass through the site operator's desktop.
 
-Ailleo speech-to-text and D3 are separate optional services. They remain **Not connected** until their public gateway and frontend adapter are ready. The desktop programmer's remaining work is in [the service connection handoff](../DESKTOP_SERVICES_CONNECT.md).
+In **Model settings**, choose **Agree and enable both features** under **Ailleo Math Practice Service** to use Speech-to-Text LLM and Sentiment Check LLM. Ailleo processes the recording, original transcript and question as described in the [privacy and use agreement](../agreement.html). You can turn the service off at any time.
 
 ## Run locally
 

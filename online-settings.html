@@ -9,12 +9,12 @@
   <script src="language.js"></script>
   <link rel="stylesheet" href="settings.css">
   <link rel="stylesheet" href="theme.css">
-  <link rel="stylesheet" href="online-settings.css">
+  <link rel="stylesheet" href="online-settings.css?v=2.2.1">
   <script src="hosted-config.js"></script>
   <script src="online-connections.js"></script>
   <script src="online-turnstile.js"></script>
   <script src="online-services.js"></script>
-  <script src="online-settings.js" defer></script>
+  <script src="online-settings.js?v=2.2.1" defer></script>
 </head>
 <body class="settings-page online-settings-page">
 <div class="page">
@@ -33,11 +33,15 @@
   </header>
   <main>
     <h1 data-i18n="Model settings">Model settings</h1>
-    <p class="intro" data-i18n="Choose your own Math Tutor LLM, then test the connection. You can browse questions, check answers and read included solutions without AI.">Choose your own Math Tutor LLM, then test the connection. You can browse questions, check answers and read included solutions without AI.</p>
-    <p id="pageStatus" class="page-status" role="status" data-i18n="Loading saved settings…">Loading saved settings…</p>
+    <div class="settings-tabs" role="tablist" aria-label="Model settings" data-i18n-aria-label="Model settings">
+      <button type="button" id="tutorTab" role="tab" aria-selected="true" aria-controls="inferencePanel" data-i18n="Math Tutor LLM">Math Tutor LLM</button>
+      <button type="button" id="serviceTab" role="tab" aria-selected="false" aria-controls="servicePanel" tabindex="-1" data-i18n="Ailleo Math Practice Service">Ailleo Math Practice Service</button>
+    </div>
 
-    <section id="inferencePanel" data-model-role="inference" aria-labelledby="inferenceTitle">
+    <section id="inferencePanel" data-model-role="inference" role="tabpanel" aria-labelledby="tutorTab" tabindex="0">
       <div class="section-head"><h2 id="inferenceTitle" data-i18n="Math Tutor LLM">Math Tutor LLM</h2><span id="inferenceBadge" class="badge" data-i18n="Not tested">Not tested</span></div>
+      <p class="intro" data-i18n="Choose your own Math Tutor LLM, then test the connection. You can browse questions, check answers and read included solutions without AI.">Choose your own Math Tutor LLM, then test the connection. You can browse questions, check answers and read included solutions without AI.</p>
+      <p id="pageStatus" class="page-status" role="status" data-i18n="Loading saved settings…">Loading saved settings…</p>
       <p class="section-description" data-i18n="Reviews your answers and reasoning and offers hints. Questions with figures need a model that can read images.">Reviews your answers and reasoning and offers hints. Questions with figures need a model that can read images.</p>
       <form id="inferenceForm" novalidate>
         <div id="inferenceApiFields">
@@ -68,38 +72,36 @@
       <p class="forthcoming-connection"><span data-i18n="ChatGPT login">ChatGPT login</span><span class="badge" data-i18n="Forthcoming">Forthcoming</span></p>
     </section>
 
-    <div class="experimental-features" aria-labelledby="experimentalTitle">
-      <h2 id="experimentalTitle" data-i18n="Experimental features">Experimental features</h2>
-      <p class="experimental-intro" data-i18n="Optional Ailleo services are managed by the site operator. You do not need to enter an API key for them.">Optional Ailleo services are managed by the site operator. You do not need to enter an API key for them.</p>
+    <div id="servicePanel" class="experimental-features" role="tabpanel" aria-labelledby="serviceTab" tabindex="0" hidden>
+      <h2 id="experimentalTitle" data-i18n="Ailleo Math Practice Service">Ailleo Math Practice Service</h2>
+      <p class="experimental-intro" data-i18n="This optional service includes Speech-to-Text LLM and Sentiment Check LLM. Ailleo provides both without an API key from you.">This optional service includes Speech-to-Text LLM and Sentiment Check LLM. Ailleo provides both without an API key from you.</p>
       <div class="service-consent">
-        <p id="serviceProcessingNotice" data-i18n="If you enable speech-to-text, stopping a recording sends the audio to Ailleo’s server. If you also enable Sentiment Check, the app automatically sends the original transcript and question before you edit the transcript or press Submit. Ailleo processes this temporarily, without keeping the audio, original transcript or sentiment results as learner records.">If you enable speech-to-text, stopping a recording sends the audio to Ailleo’s server. If you also enable Sentiment Check, the app automatically sends the original transcript and question before you edit the transcript or press Submit. Ailleo processes this temporarily, without keeping the audio, original transcript or sentiment results as learner records.</p>
+        <p id="serviceProcessingNotice" data-i18n="If you enable both features, stopping a recording sends the audio to Ailleo for transcription. The app then automatically sends the original transcript and question for Sentiment Check before you edit the text or press Submit. Ailleo uses the audio, original transcript and sentiment results only for temporary processing.">If you enable both features, stopping a recording sends the audio to Ailleo for transcription. The app then automatically sends the original transcript and question for Sentiment Check before you edit the text or press Submit. Ailleo uses the audio, original transcript and sentiment results only for temporary processing.</p>
+        <p id="serviceOptionalNotice" class="help" data-i18n="You can practice by typing and turn off this service at any time.">You can practice by typing and turn off this service at any time.</p>
         <div id="serviceDataUse" class="service-data-use">
           <p><strong data-i18n="Improving question recommendations">Improving question recommendations</strong></p>
           <p id="serviceSharingStatus" class="help" data-i18n="Ailleo’s collection for question recommendations is off. Enabling a feature gives permission only for processing.">Ailleo’s collection for question recommendations is off. Enabling a feature gives permission only for processing.</p>
           <p data-i18n="If sharing becomes available and you separately opt in, Ailleo will keep only the final text you explicitly submit in ‘Your thinking’ for up to 90 days to improve its internal question recommendations. This can include typed text or speech-to-text output that you submit with or without edits.">If sharing becomes available and you separately opt in, Ailleo will keep only the final text you explicitly submit in ‘Your thinking’ for up to 90 days to improve its internal question recommendations. This can include typed text or speech-to-text output that you submit with or without edits.</p>
           <p class="help"><a href="agreement.html#recommendationTitle" target="_blank" rel="noopener" data-i18n="Data use and deletion">Data use and deletion</a> · <a href="mailto:rqzhu-aide@qq.com">rqzhu-aide@qq.com</a></p>
         </div>
+        <p id="legacyServiceChoice" class="help" hidden></p>
+        <div class="service-actions">
+          <button id="serviceEnabled" class="primary service-toggle" type="button" aria-describedby="serviceProcessingNotice serviceOptionalNotice serviceSharingStatus" disabled data-i18n="Agree and enable both features">Agree and enable both features</button>
+          <button id="clearServiceChoice" class="secondary service-toggle" type="button" hidden data-i18n="Turn off Ailleo Math Practice Service">Turn off Ailleo Math Practice Service</button>
+        </div>
         <p id="servicePreferencesResult" class="result" role="status"></p>
       </div>
-      <div class="connection-tabs" role="tablist" aria-label="Experimental features" data-i18n-aria-label="Experimental features">
-        <button type="button" id="speechTab" data-model-role="speech" role="tab" aria-selected="true" aria-controls="speechPanel"><span class="connection-tab-title" data-i18n="Speech-to-Text LLM">Speech-to-Text LLM</span><span class="connection-tab-help" data-i18n="Spoken thinking to editable text.">Spoken thinking to editable text.</span></button>
-        <button type="button" id="decisionTab" data-model-role="decision" role="tab" aria-selected="false" aria-controls="decisionPanel" tabindex="-1"><span class="connection-tab-title" data-i18n="Sentiment Check LLM">Sentiment Check LLM</span><span class="connection-tab-help" data-i18n="Confidence, clarity and engagement.">Confidence, clarity and engagement.</span></button>
-      </div>
-      <section id="speechPanel" data-model-role="speech" role="tabpanel" aria-labelledby="speechTab" tabindex="0">
-        <div class="section-head"><h3 data-i18n="Speech-to-Text LLM">Speech-to-Text LLM</h3><span id="speechBadge" class="badge" data-i18n="Waiting for server connection">Waiting for server connection</span></div>
+      <section id="speechPanel" data-model-role="speech" aria-labelledby="speechTitle">
+        <div class="section-head"><h3 id="speechTitle" data-i18n="Speech-to-Text LLM">Speech-to-Text LLM</h3><span id="speechBadge" class="badge" data-i18n="Connection not checked">Connection not checked</span></div>
         <p class="section-description" data-i18n="Turns your spoken thinking into a text draft you can review and edit.">Turns your spoken thinking into a text draft you can review and edit.</p>
-        <button id="speechEnabled" class="primary service-toggle" type="button" aria-describedby="serviceProcessingNotice speechConsentHelp" disabled data-i18n="Agree and enable Speech-to-Text LLM">Agree and enable Speech-to-Text LLM</button>
-        <p id="speechConsentHelp" class="help" data-i18n="Turning this on lets Ailleo transcribe your recordings. You can turn it off at any time.">Turning this on lets Ailleo transcribe your recordings. You can turn it off at any time.</p>
-        <p id="speechStatus" class="service-status" role="status" data-i18n="Ailleo’s server is not connected to this website yet. You can save your choice for later.">Ailleo’s server is not connected to this website yet. You can save your choice for later.</p>
+        <p id="speechStatus" class="service-status" role="status"></p>
         <div class="service-actions"><button id="checkSpeech" class="secondary" type="button" aria-describedby="speechStatus speechCheckHelp" disabled data-i18n="Check connection">Check connection</button></div>
         <p id="speechCheckHelp" class="help" data-i18n="Checks service availability without sending your audio or thinking.">Checks service availability without sending your audio or thinking.</p>
       </section>
-      <section id="decisionPanel" data-model-role="decision" role="tabpanel" aria-labelledby="decisionTab" tabindex="0" hidden>
-        <div class="section-head"><h3 data-i18n="Sentiment Check LLM">Sentiment Check LLM</h3><span id="decisionBadge" class="badge" data-i18n="Waiting for server connection">Waiting for server connection</span></div>
+      <section id="decisionPanel" data-model-role="decision" aria-labelledby="decisionTitle">
+        <div class="section-head"><h3 id="decisionTitle" data-i18n="Sentiment Check LLM">Sentiment Check LLM</h3><span id="decisionBadge" class="badge" data-i18n="Connection not checked">Connection not checked</span></div>
         <p class="section-description" data-i18n="Uses your original speech transcript to observe expressed confidence and engagement, and how clearly you explain your thinking. Clarity describes the explanation, not mathematical correctness. No voice tone is analyzed.">Uses your original speech transcript to observe expressed confidence and engagement, and how clearly you explain your thinking. Clarity describes the explanation, not mathematical correctness. No voice tone is analyzed.</p>
-        <button id="decisionEnabled" class="primary service-toggle" type="button" aria-describedby="serviceProcessingNotice decisionConsentHelp" disabled data-i18n="Agree and enable Sentiment Check LLM">Agree and enable Sentiment Check LLM</button>
-        <p id="decisionConsentHelp" class="help" data-i18n="Turning this on lets Ailleo analyze the words in your original transcript with the question as context. You can turn it off at any time.">Turning this on lets Ailleo analyze the words in your original transcript with the question as context. You can turn it off at any time.</p>
-        <p id="decisionStatus" class="service-status" role="status" data-i18n="Ailleo’s server is not connected to this website yet. You can save your choice for later.">Ailleo’s server is not connected to this website yet. You can save your choice for later.</p>
+        <p id="decisionStatus" class="service-status" role="status"></p>
         <div class="service-actions"><button id="checkDecision" class="secondary" type="button" aria-describedby="decisionStatus decisionCheckHelp" disabled data-i18n="Check connection">Check connection</button></div>
         <p id="decisionCheckHelp" class="help" data-i18n="Checks service availability without sending your audio or thinking.">Checks service availability without sending your audio or thinking.</p>
       </section>
