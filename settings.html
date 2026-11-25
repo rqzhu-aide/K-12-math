@@ -4,17 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title data-i18n="Model settings · Math Practice">Model settings · Math Practice</title>
-  <script src="agreement.js"></script>
-  <script src="theme.js"></script>
-  <script src="language.js"></script>
-  <link rel="stylesheet" href="settings.css">
-  <link rel="stylesheet" href="theme.css">
-  <link rel="stylesheet" href="online-settings.css?v=2.2.1">
-  <script src="hosted-config.js"></script>
-  <script src="online-connections.js"></script>
-  <script src="online-turnstile.js"></script>
-  <script src="online-services.js"></script>
-  <script src="online-settings.js?v=2.2.1" defer></script>
+  <script src="agreement.js?v=2.3.0"></script>
+  <script src="theme.js?v=2.3.0"></script>
+  <script src="language.js?v=2.3.0"></script>
+  <link rel="stylesheet" href="settings.css?v=2.3.0">
+  <link rel="stylesheet" href="theme.css?v=2.3.0">
+  <link rel="stylesheet" href="online-settings.css?v=2.3.0">
+  <script src="hosted-config.js?v=2.3.0"></script>
+  <script src="online-connections.js?v=2.3.0"></script>
+  <script src="online-turnstile.js?v=2.3.0"></script>
+  <script src="online-services.js?v=2.3.0"></script>
+  <script src="settings-tabs.js?v=2.3.0" defer></script>
+  <script src="online-settings.js?v=2.3.0" defer></script>
 </head>
 <body class="settings-page online-settings-page">
 <div class="page">
@@ -38,83 +39,81 @@
       <button type="button" id="serviceTab" role="tab" aria-selected="false" aria-controls="servicePanel" tabindex="-1" data-i18n="Ailleo Math Practice Service">Ailleo Math Practice Service</button>
     </div>
 
-    <section id="inferencePanel" data-model-role="inference" role="tabpanel" aria-labelledby="tutorTab" tabindex="0">
-      <div class="section-head"><h2 id="inferenceTitle" data-i18n="Math Tutor LLM">Math Tutor LLM</h2><span id="inferenceBadge" class="badge" data-i18n="Not tested">Not tested</span></div>
-      <p class="intro" data-i18n="Choose your own Math Tutor LLM, then test the connection. You can browse questions, check answers and read included solutions without AI.">Choose your own Math Tutor LLM, then test the connection. You can browse questions, check answers and read included solutions without AI.</p>
-      <p id="pageStatus" class="page-status" role="status" data-i18n="Loading saved settings…">Loading saved settings…</p>
-      <p class="section-description" data-i18n="Reviews your answers and reasoning and offers hints. Questions with figures need a model that can read images.">Reviews your answers and reasoning and offers hints. Questions with figures need a model that can read images.</p>
+    <section id="inferencePanel" class="settings-panel" data-model-role="inference" role="tabpanel" aria-labelledby="tutorTab" tabindex="0">
+      <h2 data-i18n="Connect your tutor">Connect your tutor</h2>
+      <p class="intro" data-i18n="Connect your own model to review your answers and give hints. Choose a model that can read images for questions with figures. Browsing, answer-key checks and included solutions work on their own.">Connect your own model to review your answers and give hints. Choose a model that can read images for questions with figures. Browsing, answer-key checks and included solutions work on their own.</p>
       <form id="inferenceForm" novalidate>
         <div id="inferenceApiFields">
           <div class="field">
             <label for="inferenceBases" data-i18n="Provider API URL">Provider API URL</label>
             <input id="inferenceBases" type="url" spellcheck="false" inputmode="url" autocomplete="off" placeholder="https://api.openai.com/v1" aria-describedby="apiHelp" maxlength="2048">
-            <p id="apiHelp" class="help" data-i18n="Use an OpenAI-compatible API that permits requests from this website. Requests go directly from your browser to your chosen provider.">Use an OpenAI-compatible API that permits requests from this website. Requests go directly from your browser to your chosen provider.</p>
+            <p id="apiHelp" class="help" data-i18n="Use an OpenAI-compatible API that accepts requests from this website.">Use an OpenAI-compatible API that accepts requests from this website.</p>
           </div>
           <div class="field">
             <label for="inferenceKey" data-i18n="API Key">API Key</label>
-            <input id="inferenceKey" type="password" autocomplete="new-password" spellcheck="false" maxlength="4096" aria-describedby="apiKeyHelp" placeholder="Optional" data-i18n-placeholder="Optional">
-            <p id="apiKeyHelp" class="help" data-i18n="Your API key is kept only for this browser tab session. It is sent directly to the provider you choose. Provider charges and data-use policies apply.">Your API key is kept only for this browser tab session. It is sent directly to the provider you choose. Provider charges and data-use policies apply.</p>
+            <input id="inferenceKey" type="password" autocomplete="new-password" spellcheck="false" maxlength="4096" aria-describedby="tutorPrivacy" placeholder="Optional" data-i18n-placeholder="Optional">
           </div>
         </div>
 
         <div class="field model-field">
           <label for="inferenceModel" data-i18n="Model Name">Model Name</label>
           <div class="model-picker"><input id="inferenceModel" type="text" list="inferenceModelNames" placeholder="Your model name" maxlength="200" spellcheck="false" autocomplete="off" data-i18n-placeholder="Your model name" aria-describedby="modelListStatus"><datalist id="inferenceModelNames"></datalist><button type="button" class="secondary" id="fetchModels" data-i18n="Fetch models">Fetch models</button></div>
-          <p id="modelListStatus" class="help" role="status" data-i18n="Enter a model name, or fetch available models.">Enter a model name, or fetch available models.</p>
+          <p id="modelListStatus" class="help" role="status"></p>
         </div>
+        <p id="tutorPrivacy" class="help" data-i18n="Your browser sends requests directly to your provider and keeps your API key only for this tab session. A test sends a text-only sample and may use API credits. The provider’s data policy applies.">Your browser sends requests directly to your provider and keeps your API key only for this tab session. A test sends a text-only sample and may use API credits. The provider’s data policy applies.</p>
         <div class="actions tutor-actions">
           <button type="button" class="secondary" id="testInference" data-i18n="Test Connection">Test Connection</button>
           <button type="submit" class="primary" id="saveInference" data-i18n="Save Settings">Save Settings</button>
         </div>
-        <p id="inferenceResult" class="result" role="status" tabindex="-1" data-i18n="The test sends a sample answer for a text tutor review.">The test sends a sample answer for a text tutor review.</p>
-        <p class="help" data-i18n="Tests may use API credits. A successful text test does not verify image support.">Tests may use API credits. A successful text test does not verify image support.</p>
+        <p id="inferenceResult" class="result" role="status" tabindex="-1"></p>
       </form>
-      <p class="forthcoming-connection"><span data-i18n="ChatGPT login">ChatGPT login</span><span class="badge" data-i18n="Forthcoming">Forthcoming</span></p>
+      <p class="forthcoming-connection help" data-i18n="ChatGPT sign-in is coming to the website.">ChatGPT sign-in is coming to the website.</p>
     </section>
 
-    <div id="servicePanel" class="experimental-features" role="tabpanel" aria-labelledby="serviceTab" tabindex="0" hidden>
-      <h2 id="experimentalTitle" data-i18n="Ailleo Math Practice Service">Ailleo Math Practice Service</h2>
-      <p class="experimental-intro" data-i18n="This optional service includes Speech-to-Text LLM and Sentiment Check LLM. Ailleo provides both without an API key from you.">This optional service includes Speech-to-Text LLM and Sentiment Check LLM. Ailleo provides both without an API key from you.</p>
-      <div class="service-consent">
-        <p id="serviceProcessingNotice" data-i18n="If you enable both features, stopping a recording sends the audio to Ailleo for transcription. The app then automatically sends the original transcript and question for Sentiment Check before you edit the text or press Submit. Ailleo uses the audio, original transcript and sentiment results only for temporary processing.">If you enable both features, stopping a recording sends the audio to Ailleo for transcription. The app then automatically sends the original transcript and question for Sentiment Check before you edit the text or press Submit. Ailleo uses the audio, original transcript and sentiment results only for temporary processing.</p>
-        <p id="serviceOptionalNotice" class="help" data-i18n="You can practice by typing and turn off this service at any time.">You can practice by typing and turn off this service at any time.</p>
-        <div id="serviceDataUse" class="service-data-use">
-          <p><strong data-i18n="Improving question recommendations">Improving question recommendations</strong></p>
-          <p id="serviceSharingStatus" class="help" data-i18n="Ailleo’s collection for question recommendations is off. Enabling a feature gives permission only for processing.">Ailleo’s collection for question recommendations is off. Enabling a feature gives permission only for processing.</p>
-          <p data-i18n="If sharing becomes available and you separately opt in, Ailleo will keep only the final text you explicitly submit in ‘Your thinking’ for up to 90 days to improve its internal question recommendations. This can include typed text or speech-to-text output that you submit with or without edits.">If sharing becomes available and you separately opt in, Ailleo will keep only the final text you explicitly submit in ‘Your thinking’ for up to 90 days to improve its internal question recommendations. This can include typed text or speech-to-text output that you submit with or without edits.</p>
-          <p class="help"><a href="agreement.html#recommendationTitle" target="_blank" rel="noopener" data-i18n="Data use and deletion">Data use and deletion</a> · <a href="mailto:rqzhu-aide@qq.com">rqzhu-aide@qq.com</a></p>
+    <section id="servicePanel" class="settings-panel" role="tabpanel" aria-labelledby="serviceTab" tabindex="0" hidden>
+      <section class="service-consent" aria-labelledby="experimentalTitle">
+        <div id="experimentalConsentHeader" class="section-head">
+          <h2 id="experimentalTitle" data-i18n="Service agreement">Service agreement</h2>
+          <p id="experimentalConsentState" class="badge" role="status"></p>
         </div>
-        <p id="legacyServiceChoice" class="help" hidden></p>
-        <div class="service-actions">
-          <button id="serviceEnabled" class="primary service-toggle" type="button" aria-describedby="serviceProcessingNotice serviceOptionalNotice serviceSharingStatus" disabled data-i18n="Agree and enable both features">Agree and enable both features</button>
-          <button id="clearServiceChoice" class="secondary service-toggle" type="button" hidden data-i18n="Turn off Ailleo Math Practice Service">Turn off Ailleo Math Practice Service</button>
+        <p class="intro" data-i18n="One setting controls all three features, independently of your tutor. Recommendations use your practice history whether you type or speak.">One setting controls all three features, independently of your tutor. Recommendations use your practice history whether you type or speak.</p>
+        <p id="experimentalConsentNotice" class="help" role="status"></p>
+        <dl class="service-feature-list">
+          <div><dt data-i18n="Speech-to-text">Speech-to-text</dt> <dd id="speechConsentDetails" data-i18n="When you stop recording, Ailleo receives the audio and returns text you can edit before submitting.">When you stop recording, Ailleo receives the audio and returns text you can edit before submitting.</dd></div>
+          <div><dt data-i18n="Sentiment feedback">Sentiment feedback</dt> <dd id="decisionConsentDetails" data-i18n="When available, Ailleo automatically reads the question and original transcript before you edit or submit it. It comments on clarity and confidence or frustration expressed in words.">When available, Ailleo automatically reads the question and original transcript before you edit or submit it. It comments on clarity and confidence or frustration expressed in words.</dd></div>
+          <div><dt data-i18n="Practice recommendations">Practice recommendations</dt> <dd id="recommendationConsentDetails" data-i18n="For suggestions, your browser sends Ailleo’s server the question bank, current question ID, topic or target question, and a limited history of scored question IDs, outcomes (which can include changed-answer retries) and time between visits.">For suggestions, your browser sends Ailleo’s server the question bank, current question ID, topic or target question, and a limited history of scored question IDs, outcomes (which can include changed-answer retries) and time between visits.</dd></div>
+        </dl>
+        <p id="experimentalConsentDetails" class="help" data-i18n="Ailleo temporarily processes recommendation requests, audio, original transcripts and sentiment feedback. Your browser keeps a limited recommendation history. Practice data collection for model training is off. Please do not include any confidential information.">Ailleo temporarily processes recommendation requests, audio, original transcripts and sentiment feedback. Your browser keeps a limited recommendation history. Practice data collection for model training is off. Please do not include any confidential information.</p>
+        <p class="help"><a href="agreement.html?v=2.3.0#experimentalAgreement" target="_blank" rel="noopener" data-i18n="Read the full agreement">Read the full agreement</a></p>
+        <p id="experimentalConsentAssent" class="help" data-i18n="I agree to this processing for myself or as the parent or legal guardian supervising my child’s use.">I agree to this processing for myself or as the parent or legal guardian supervising my child’s use.</p>
+        <div id="experimentalConsentControls">
+          <div class="actions experimental-consent-actions">
+            <button id="experimentalConsent" class="primary" type="button" aria-describedby="speechConsentDetails decisionConsentDetails recommendationConsentDetails experimentalConsentDetails experimentalConsentAssent" disabled data-i18n="Agree and enable">Agree and enable</button>
+            <button id="experimentalDecline" class="secondary" type="button" disabled data-i18n="Continue without these features">Continue without these features</button>
+          </div>
+          <p id="experimentalConsentWithdrawal" class="help" hidden data-i18n="Turning these features off clears this browser’s recommendation history.">Turning these features off clears this browser’s recommendation history.</p>
+          <p id="experimentalConsentResult" class="result" role="status"></p>
         </div>
-        <p id="servicePreferencesResult" class="result" role="status"></p>
-      </div>
-      <section id="speechPanel" data-model-role="speech" aria-labelledby="speechTitle">
-        <div class="section-head"><h3 id="speechTitle" data-i18n="Speech-to-Text LLM">Speech-to-Text LLM</h3><span id="speechBadge" class="badge" data-i18n="Connection not checked">Connection not checked</span></div>
-        <p class="section-description" data-i18n="Turns your spoken thinking into a text draft you can review and edit.">Turns your spoken thinking into a text draft you can review and edit.</p>
-        <p id="speechStatus" class="service-status" role="status"></p>
-        <div class="service-actions"><button id="checkSpeech" class="secondary" type="button" aria-describedby="speechStatus speechCheckHelp" disabled data-i18n="Check connection">Check connection</button></div>
-        <p id="speechCheckHelp" class="help" data-i18n="Checks service availability without sending your audio or thinking.">Checks service availability without sending your audio or thinking.</p>
       </section>
-      <section id="decisionPanel" data-model-role="decision" aria-labelledby="decisionTitle">
-        <div class="section-head"><h3 id="decisionTitle" data-i18n="Sentiment Check LLM">Sentiment Check LLM</h3><span id="decisionBadge" class="badge" data-i18n="Connection not checked">Connection not checked</span></div>
-        <p class="section-description" data-i18n="Uses your original speech transcript to observe expressed confidence and engagement, and how clearly you explain your thinking. Clarity describes the explanation, not mathematical correctness. No voice tone is analyzed.">Uses your original speech transcript to observe expressed confidence and engagement, and how clearly you explain your thinking. Clarity describes the explanation, not mathematical correctness. No voice tone is analyzed.</p>
-        <p id="decisionStatus" class="service-status" role="status"></p>
-        <div class="service-actions"><button id="checkDecision" class="secondary" type="button" aria-describedby="decisionStatus decisionCheckHelp" disabled data-i18n="Check connection">Check connection</button></div>
-        <p id="decisionCheckHelp" class="help" data-i18n="Checks service availability without sending your audio or thinking.">Checks service availability without sending your audio or thinking.</p>
-      </section>
-    </div>
 
-    <div class="workflow-note" aria-labelledby="workflowTitle">
-      <h2 id="workflowTitle" data-i18n="Your data and connections">Your data and connections</h2>
-      <p data-i18n="Tutor requests go directly to your chosen API provider. The site operator does not provide your Math Tutor LLM.">Tutor requests go directly to your chosen API provider. The site operator does not provide your Math Tutor LLM.</p>
-      <p data-i18n="Reloading or closing the practice tab clears any unsubmitted work. After a valid submission, your browser saves the submitted work in your practice history and notebook.">Reloading or closing the practice tab clears any unsubmitted work. After a valid submission, your browser saves the submitted work in your practice history and notebook.</p>
-      <p class="help" data-i18n="Opening or saving settings does not run a model. Keep personal information out of your work. Provider data-use policies apply.">Opening or saving settings does not run a model. Keep personal information out of your work. Provider data-use policies apply.</p>
-    </div>
+      <section class="model-connections" aria-labelledby="modelConnectionsTitle">
+        <h2 id="modelConnectionsTitle" data-i18n="Speech and sentiment connections">Speech and sentiment connections</h2>
+        <p id="serviceCheckHelp" class="help" data-i18n="Connection checks send no audio or practice data.">Connection checks send no audio or practice data.</p>
+        <section id="speechPanel" class="connection-row" data-model-role="speech" aria-labelledby="speechTitle">
+          <div class="section-head"><h3 id="speechTitle" data-i18n="Speech-to-Text LLM">Speech-to-Text LLM</h3><span id="speechBadge" class="badge" role="status"></span></div>
+          <p id="speechStatus" class="service-status" role="status"></p>
+          <div class="service-actions"><button id="checkSpeech" class="secondary" type="button" aria-labelledby="checkSpeech speechTitle" aria-describedby="speechStatus serviceCheckHelp" disabled data-i18n="Check connection">Check connection</button></div>
+        </section>
+        <section id="decisionPanel" class="connection-row" data-model-role="decision" aria-labelledby="decisionTitle">
+          <div class="section-head"><h3 id="decisionTitle" data-i18n="Sentiment Check LLM">Sentiment Check LLM</h3><span id="decisionBadge" class="badge" role="status"></span></div>
+          <p id="decisionStatus" class="service-status" role="status"></p>
+          <div class="service-actions"><button id="checkDecision" class="secondary" type="button" aria-labelledby="checkDecision decisionTitle" aria-describedby="decisionStatus serviceCheckHelp" disabled data-i18n="Check connection">Check connection</button></div>
+        </section>
+      </section>
+    </section>
+
   </main>
-  <footer><span data-i18n="Secrets last only for this tab session.">Secrets last only for this tab session.</span> <a href="agreement.html" target="_blank" rel="noopener" data-i18n="Privacy & use agreement">Privacy &amp; use agreement</a><span class="site-credit"><span data-i18n="Developed by Ruoqing Zhu · ">Developed by Ruoqing Zhu · </span><a href="https://github.com/rqzhu-aide" target="_blank" rel="noopener noreferrer" data-i18n="GitHub: rqzhu-aide">GitHub: rqzhu-aide</a></span></footer>
+  <footer><a href="agreement.html?v=2.3.0" target="_blank" rel="noopener" data-i18n="Privacy & use agreement">Privacy &amp; use agreement</a><span class="site-credit"><span data-i18n="Developed by Ruoqing Zhu · ">Developed by Ruoqing Zhu · </span><a href="https://github.com/rqzhu-aide" target="_blank" rel="noopener noreferrer" data-i18n="GitHub: rqzhu-aide">GitHub: rqzhu-aide</a></span></footer>
 </div>
 </body>
 </html>

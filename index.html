@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title data-i18n="Math Practice">Math Practice</title>
-<script src="agreement.js"></script>
-<script src="theme.js"></script>
-<script src="language.js"></script>
-<script src="index-language.js"></script>
+<script src="agreement.js?v=2.3.0"></script>
+<script src="theme.js?v=2.3.0"></script>
+<script src="language.js?v=2.3.0"></script>
+<script src="index-language.js?v=2.3.0"></script>
 <link rel="stylesheet" href="vendor/katex/katex.min.css">
 <style>
 
@@ -276,7 +276,7 @@
   }
   body.modal-open { overflow: hidden; }
   .connection-dialog {
-    width: min(1040px, calc(100% - 32px));
+    width: min(860px, calc(100% - 32px));
     height: calc(100dvh - 32px);
     max-height: none;
     padding: 0;
@@ -288,6 +288,12 @@
   .connection-dialog[open] { display: flex; flex-direction: column; }
   .connection-dialog::backdrop { background: var(--backdrop); }
   .connection-dialog iframe { flex: 1; min-height: 0; width: 100%; border: 0; }
+  .connection-dialog .modal-head { position: absolute; inset: 9px 14px auto auto; z-index: 2; border: 0; padding: 0; }
+  .connection-dialog .modal-title { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  @media (max-width: 600px) {
+    .connection-dialog { inset: 0; width: 100%; max-width: none; height: 100dvh; margin: 0; border: 0; border-radius: 0; }
+    .connection-dialog .modal-head { top: 7px; right: 10px; }
+  }
   .q-id { font-weight: 650; font-size: 0.9375rem; }
   .q-area {
     font: 650 0.6875rem/1 var(--font);
@@ -894,7 +900,7 @@
   }
 
 </style>
-<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="theme.css?v=2.3.0">
 <style id="studyStyles">
 /* Student study surface. The source mathematics keeps its existing renderer. */
 [hidden] { display: none !important; }
@@ -910,13 +916,17 @@ h1 { font: 400 1.65rem/1.2 var(--book-serif); letter-spacing: -.025em; }
 .theme-toggle { padding: 0; background: transparent; border: 0; }
 .theme-choice { width: 40px; min-height: 44px; }
 .connections-menu { position: relative; }
+.settings-shortcuts { display: flex; align-items: stretch; background: var(--surface); border: 1px solid var(--hairline); border-radius: 9px; }
 summary { cursor: pointer; }
-.connections-menu > summary { width: 40px; min-height: 44px; display: flex; align-items: center; justify-content: center; color: var(--ink-2); list-style: none; border-radius: 8px; }
+.connections-menu > summary { width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; color: var(--ink-2); list-style: none; border-radius: 0 8px 8px 0; }
 .connections-menu > summary:hover { background: var(--accent-soft); color: var(--accent-deep); }
 .connections-menu > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .connections-menu > summary svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; }
 .connections-menu .connection-status { position: absolute; right: 0; top: 48px; z-index: 30; width: 235px; padding: 12px; display: grid; gap: 8px; border: 1px solid var(--hairline); border-radius: 12px; background: var(--surface); }
-.connection-settings { display: flex; align-items: center; min-height: 44px; padding: 8px 6px; color: var(--accent-deep); font-size: .875rem; font-weight: 600; text-underline-offset: 4px; }
+.connection-settings { display: flex; align-items: center; gap: 7px; min-height: 44px; padding: 7px 10px; border-inline-end: 1px solid var(--hairline); border-radius: 8px 0 0 8px; color: var(--accent-deep); font-size: .875rem; font-weight: 600; text-decoration: none; }
+.connection-settings:hover { background: var(--accent-soft); }
+.connection-settings svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; }
+@media (max-width: 420px) { .connection-settings svg { display: none; } .header-actions { flex-wrap: wrap; } }
 .settings-link { width: auto; padding: 0 10px; gap: 7px; display: flex; font-size: .8125rem; }
 .settings-link svg { width: 17px; height: 17px; }
 .practice-main { min-width: 0; }
@@ -1006,6 +1016,28 @@ button.path-question { height: auto; min-height: 44px; padding: 10px 14px; line-
 .problem-navigation .ghost { background: transparent; border-color: transparent; padding: 8px 6px; min-height: 44px; font-size: .8125rem; }
 .problem-navigation .ghost:hover { background: var(--accent-soft); }
 #nextProblem { color: var(--accent-deep); font-weight: 650; }
+#recommendationPanel { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--hairline); }
+#recommendationPanel:has(#recommendationStatus:not(:empty)) {
+  padding: 14px 16px;
+  background: var(--accent-soft);
+  border: 1px solid var(--hairline);
+  border-inline-start-color: var(--decision-ink);
+  border-radius: 8px;
+}
+#recommendationHeading { margin: 0 0 4px; color: var(--ink); font: 650 1.0625rem/1.4 var(--font); }
+#recommendationStatus, #recommendationReference { margin: 0; max-width: 65ch; color: var(--ink-2); line-height: 1.55; }
+#recommendationStatus { font-size: .9375rem; }
+#recommendationReference { margin-top: 5px; font-size: .8125rem; }
+#recommendationActions { display: flex; flex-wrap: wrap; gap: 8px; }
+#recommendationStatus:not(:empty) ~ #recommendationActions { margin-top: 12px; }
+#recommendationPanel button { height: auto; min-height: 44px; max-width: 100%; padding-block: 8px; line-height: 1.35; }
+#recommendationPanel [aria-disabled="true"] { opacity: .7; cursor: progress; transform: none; }
+#recommendationPanel:not([hidden]) + .problem-navigation #nextProblem { color: var(--ink-2); font-weight: 500; }
+@media (max-width: 480px) {
+  #recommendationPanel:has(#recommendationStatus:not(:empty)) { padding: 12px; }
+  #recommendationActions .primary { flex: 1 1 100%; }
+  #recommendationActions .ghost { flex: 1 1 100%; }
+}
 #thoughtsCard { border-top: 1px solid var(--hairline); border-radius: 0 0 14px 14px; padding: 18px 34px 24px; margin-bottom: 0; }
 .thoughts .results-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-bottom: 10px; }
 .thinking-heading { flex: 1 1 auto; }
@@ -1026,6 +1058,12 @@ button.path-question { height: auto; min-height: 44px; padding: 10px 14px; line-
 button.primary { background: var(--accent); color: var(--accent-on); border-radius: 8px; min-height: 46px; }
 button.primary:hover { background: var(--accent-deep); }
 #thoughtsSubmit { min-width: min(180px, 100%); gap: 10px; }
+#thoughtsCard:has(#recommendationPanel:not([hidden])) #thoughtsSubmit[data-submitted="true"][aria-busy="false"] {
+  background: var(--surface); color: var(--ink); border-color: var(--field-line);
+}
+#thoughtsCard:has(#recommendationPanel:not([hidden])) #thoughtsSubmit[data-submitted="true"][aria-busy="false"]:hover {
+  background: var(--surface-hover); border-color: var(--field-line-hover);
+}
 .submit-icon { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: transform 180ms cubic-bezier(.16,1,.3,1); }
 .submit-spinner { display: none; }
 #thoughtsSubmit:not(:disabled):focus-visible .submit-icon { transform: translateX(3px); }
@@ -1168,14 +1206,16 @@ footer .source-credits p { margin: 0; }
         <button class="language-choice" type="button" data-language-choice="en" aria-label="English" data-i18n-aria-label="English" aria-pressed="true">EN</button>
         <button class="language-choice" type="button" data-language-choice="zh-CN" aria-label="Chinese" data-i18n-aria-label="Chinese" aria-pressed="false">CN</button>
       </div>
-      <details class="connections-menu"><summary aria-label="Settings" data-i18n-aria-label="Settings" title="Settings" data-i18n-title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.6 3.2-.4 2.4-1.6.72-2-.88L3.2 9.6l2 1.52v1.76l-2 1.52 2.4 4.16 2-.88 1.6.72.4 2.4h4.8l.4-2.4 1.6-.72 2 .88 2.4-4.16-2-1.52v-1.76l2-1.52-2.4-4.16-2 .88-1.6-.72-.4-2.4Z"></path><circle cx="12" cy="12" r="3"></circle></svg></summary>
+      <div class="settings-shortcuts">
+      <a class="connection-settings" href="settings.html?v=2.3.0"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.6 3.2-.4 2.4-1.6.72-2-.88L3.2 9.6l2 1.52v1.76l-2 1.52 2.4 4.16 2-.88 1.6.72.4 2.4h4.8l.4-2.4 1.6-.72 2 .88 2.4-4.16-2-1.52v-1.76l2-1.52-2.4-4.16-2 .88-1.6-.72-.4-2.4Z"></path><circle cx="12" cy="12" r="3"></circle></svg><span data-i18n="Settings">Settings</span></a>
+      <details class="connections-menu"><summary aria-label="Model connections" data-i18n-aria-label="Model connections" title="Model connections" data-i18n-title="Model connections"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></summary>
       <div class="connection-status" role="group" aria-label="Backend readiness. Select a badge to check again." data-i18n-aria-label="Backend readiness. Select a badge to check again.">
-        <a class="connection-settings" href="settings.html" data-i18n="Model settings">Model settings</a>
         <button class="chip" data-model-role="inference" id="inferenceStatus" type="button" data-state="checking" title="Check Math Tutor LLM connection" data-i18n-title="Check Math Tutor LLM connection"><span class="dot" aria-hidden="true"></span><span><span class="chip-label" data-i18n="Math Tutor LLM">Math Tutor LLM</span><span class="chip-state" id="inferenceStatusText" role="status" data-i18n="Checking...">Checking...</span></span></button>
         <button class="chip" data-model-role="speech" id="speechServiceStatus" type="button" data-state="checking" title="Check Speech-to-Text LLM connection" data-i18n-title="Check Speech-to-Text LLM connection"><span class="dot" aria-hidden="true"></span><span><span class="chip-label" data-i18n="Speech-to-Text LLM">Speech-to-Text LLM</span><span class="chip-state" id="speechServiceStatusText" role="status" data-i18n="Checking...">Checking...</span></span></button>
         <button class="chip" data-model-role="decision" id="decisionStatus" type="button" data-state="checking" title="Check Sentiment Check LLM connection" data-i18n-title="Check Sentiment Check LLM connection"><span class="dot" aria-hidden="true"></span><span><span class="chip-label" data-i18n="Sentiment Check LLM">Sentiment Check LLM</span><span class="chip-state" id="decisionStatusText" role="status" data-i18n="Checking...">Checking...</span></span></button>
       </div>
       </details>
+      </div>
     </div>
   </header>
 
@@ -1282,7 +1322,19 @@ footer .source-credits p { margin: 0; }
       <p class="review-note" id="reviewNote" hidden></p>
     </section>
     <details class="earlier-attempt" id="earlierAttempt" hidden><summary id="earlierAttemptLabel" data-i18n="Look back at your first approach">Look back at your first approach</summary><p id="earlierAnswer"></p><p id="earlierWork"></p><p data-i18n="What do you notice now that you did not notice before?">What do you notice now that you did not notice before?</p></details>
-    <nav class="problem-navigation" aria-label="Problems in this set" data-i18n-aria-label="Problems in this set"><button class="ghost" type="button" id="previousProblem" data-i18n="Previous">Previous</button><button class="ghost" type="button" id="nextProblem" data-i18n="Next problem">Next problem</button></nav>
+    <section id="recommendationPanel" aria-label="Practice recommendations" data-i18n-aria-label="Practice recommendations" hidden>
+      <h2 id="recommendationHeading" hidden></h2>
+      <p id="recommendationStatus" role="status"></p>
+      <p id="recommendationReference" hidden></p>
+      <div id="recommendationActions">
+        <button class="ghost" type="button" id="suggestProblem"></button>
+        <button class="primary" type="button" id="openSuggestion" aria-describedby="recommendationHeading recommendationStatus recommendationReference" hidden></button>
+        <button class="ghost" type="button" id="pauseRecommendations" data-i18n="Pause suggestions for today" hidden>Pause suggestions for today</button>
+        <button class="ghost" type="button" id="openAlternateTopic" hidden></button>
+        <button class="ghost" type="button" id="resumeRecommendations" data-i18n="Resume recommendations" hidden>Resume recommendations</button>
+      </div>
+    </section>
+    <nav class="problem-navigation" aria-label="Problems in this set" data-i18n-aria-label="Problems in this set"><button class="ghost" type="button" id="previousProblem" data-i18n="Previous">Previous</button><button class="ghost" type="button" id="nextProblem" data-i18n="Next in this set">Next in this set</button></nav>
   </section>
 
   </main>
@@ -1331,7 +1383,7 @@ footer .source-credits p { margin: 0; }
       <span class="modal-title" id="connectionDialogTitle" data-i18n="Model settings">Model settings</span>
       <button type="button" class="modal-close" id="connectionClose" aria-label="Back to practice" data-i18n-aria-label="Back to practice">×</button>
     </div>
-    <iframe id="connectionFrame" title="Model settings" data-i18n-title="Model settings"></iframe>
+    <iframe id="connectionFrame" name="math-practice-settings" title="Model settings" data-i18n-title="Model settings"></iframe>
   </dialog>
 
   <footer>
@@ -1340,26 +1392,27 @@ footer .source-credits p { margin: 0; }
       <p><span data-i18n="Chinese curriculum: ">Chinese curriculum: </span><a href="https://github.com/xiaoyang111222/cn-math-taxonomy" target="_blank" rel="noopener noreferrer">cn-math-taxonomy</a><span data-i18n=" · English adaptations · "> · English adaptations · </span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a><span data-i18n=" (also the original app)"> (also the original app)</span> · <a href="database/cn-math-bank/NOTICE.md" target="_blank" rel="noopener noreferrer" data-i18n="Source notes">Source notes</a></p>
       <p id="pathAttribution" hidden><a href="https://www.thecorestandards.org/public-license/" target="_blank" rel="noopener noreferrer">© Copyright 2010. National Governors Association Center for Best Practices and Council of Chief State School Officers. All rights reserved.</a></p>
     </div>
-    <span data-i18n="Drafts stay in this open tab. Submitted work is saved in this browser. When enabled, AI features send text or audio to configured services. Keep personal information out.">Drafts stay in this open tab. Submitted work is saved in this browser. When enabled, AI features send text or audio to configured services. Keep personal information out.</span>
-    <a href="agreement.html" target="_blank" rel="noopener" data-i18n="Privacy & use agreement">Privacy &amp; use agreement</a>
+    <span data-i18n="Drafts stay in this open tab. Submitted work is saved in this browser. Connected services may receive practice scores, text or audio. Keep personal information out.">Drafts stay in this open tab. Submitted work is saved in this browser. Connected services may receive practice scores, text or audio. Keep personal information out.</span>
+    <a href="agreement.html?v=2.3.0" target="_blank" rel="noopener" data-i18n="Privacy & use agreement">Privacy &amp; use agreement</a>
     <span class="site-credit"><span data-i18n="Developed by Ruoqing Zhu · ">Developed by Ruoqing Zhu · </span><a href="https://github.com/rqzhu-aide" target="_blank" rel="noopener noreferrer">GitHub: rqzhu-aide</a></span>
   </footer>
 </div>
 
-<script src="hosted-config.js"></script>
-<script src="hosted-data.js"></script>
-<script src="online-connections.js"></script>
-<script src="online-turnstile.js"></script>
-<script src="online-services.js"></script>
-<script src="answer-check.js"></script>
-<script src="amc-figure-descriptions.js"></script>
+<script src="hosted-config.js?v=2.3.0"></script>
+<script src="hosted-data.js?v=2.3.0"></script>
+<script src="online-connections.js?v=2.3.0"></script>
+<script src="online-turnstile.js?v=2.3.0"></script>
+<script src="online-services.js?v=2.3.0"></script>
+<script src="answer-check.js?v=2.3.0"></script>
+<script src="amc-figure-descriptions.js?v=2.3.0"></script>
 <script src="vendor/katex/katex.min.js"></script>
 <script src="vendor/katex/contrib/auto-render.min.js"></script>
-<script src="speech-input.js"></script>
-<script src="graph-evidence.js"></script>
-<script src="practice-feedback.js"></script>
-<script src="topic-labels.js"></script>
-<script src="curriculum-path.js"></script>
+<script src="speech-input.js?v=2.3.0"></script>
+<script src="graph-evidence.js?v=2.3.0"></script>
+<script src="practice-feedback.js?v=2.3.0"></script>
+<script src="practice-recommendations.js?v=2.3.0"></script>
+<script src="topic-labels.js?v=2.3.0"></script>
+<script src="curriculum-path.js?v=2.3.0"></script>
 <script>
 (async function () {
   "use strict";
@@ -1397,7 +1450,7 @@ footer .source-credits p { margin: 0; }
     uiAttribute(document.querySelector('.connection-status'), 'aria-label', 'Model connections');
     ['decisionStatus', 'speechServiceStatus'].forEach(function (id) {
       $(id).disabled = true; $(id).dataset.state = 'idle';
-      uiAttribute($(id), 'title', 'Ailleo speech and learning signals are not connected yet.');
+      uiAttribute($(id), 'title', 'The website is awaiting an Ailleo Math Practice Service connection.');
     });
     ['decisionStatusText', 'speechServiceStatusText'].forEach(function (id) { uiText($(id), 'Not connected'); });
     uiAttribute($('openAnswer'), 'placeholder', 'Describe your answer, then compare it with the solution.');
@@ -1576,6 +1629,15 @@ footer .source-credits p { margin: 0; }
   function saveSubmission(snapshot) {
     lastSubmitted = snapshot;
     var id = snapshot.question.id, now = Date.now();
+    if (practiceRecommendations) {
+      var notebookAnswer = notebook[id]?.last?.answer;
+      var previousAnswer = snapshot.turn?.previous?.answer ?? notebookAnswer;
+      // An unchanged resubmission can still refer to an earlier, different turn.
+      var answerChanged = answerTools.hasAnswer(previousAnswer) && !answerTools.same(previousAnswer, snapshot.answer) &&
+        !answerTools.same(notebookAnswer, snapshot.answer);
+      practiceRecommendations.record(snapshot.question, snapshot.bank, snapshot.answer,
+        {answerChanged, revisionId: snapshot.turn?.revisionId});
+    }
     var approach = {answer: answerTools.copy(snapshot.answer), thoughts: snapshot.thoughts};
     var context = PracticeFeedback.savedContext(feedback.state(), id, snapshot.bank);
     if (drafts[id]) drafts[id].touched = 0;
@@ -1655,6 +1717,7 @@ footer .source-credits p { margin: 0; }
   });
   function updatePracticeTools() {
     var q = currentQuestion;
+    if (practiceRecommendations) practiceRecommendations.refresh();
     $('practiceWelcome').hidden = !!q;
     $('thoughtsCard').hidden = !q;
     uiText($('pickerTitle'), function () { return q ? questionTitle(q) : t('Find a problem'); });
@@ -2288,8 +2351,14 @@ footer .source-credits p { margin: 0; }
     uiText(connection.text, text);
     uiAttribute(connection.button, 'title', function () { return t('{message} Select to check again.', {message: t(message)}); });
   }
+  function experimentalEnabled() { return window.MathPracticeAgreement.experimentalEnabled?.() === true; }
   function ping(role, check) {
     var connection = connections[role];
+    if (!hosted && role !== 'inference' && !experimentalEnabled()) {
+      connection.configured = false;
+      setConnection(role, 'idle', 'Off', 'Enable this feature in Model settings.');
+      return Promise.resolve();
+    }
     if (connection.pending) return connection.pending;
     if (hosted) {
       connection.configured = false;
@@ -2301,7 +2370,7 @@ footer .source-credits p { margin: 0; }
           connection.button.disabled = false;
           setConnection(role, status.available === true && connection.configured ? 'ok' : 'idle',
             !status.configured ? 'Not connected' : !status.enabled ? 'Off' : status.available === true ? 'Service reachable' : status.available === false ? 'Unavailable' : 'On',
-            !status.configured ? 'Ailleo speech and learning signals are not connected yet.' : !status.enabled ? 'Enable this feature in Model settings.' : 'Check whether Ailleo’s server is reachable. This does not send your thinking.');
+            !status.configured ? 'The website is awaiting an Ailleo Math Practice Service connection.' : !status.enabled ? 'Enable this feature in Model settings.' : 'Check whether the Ailleo Math Practice Service is reachable.');
           if (role === 'speech' && speechInput) {
             if (!connection.configured && speechInput.busy()) speechInput.reset();
             speechInput.sync();
@@ -2344,8 +2413,9 @@ footer .source-credits p { margin: 0; }
     connection.pending = fetch("/api/status/" + role, {signal: controller.signal})
       .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
       .then(function (j) {
+        if (role !== 'inference' && !experimentalEnabled()) return;
         connection.configured = j.configured === true;
-        if (role === 'decision') connection.localEvidenceItems = Array.isArray(j.localEvidenceItems) ? j.localEvidenceItems : [];
+        if (Array.isArray(j.localEvidenceItems)) connections.decision.localEvidenceItems = j.localEvidenceItems;
         var label = connection.configured ? j.label || (j.ready === true ? "Ready" : "Offline") : "Not configured";
         var state = !connection.configured || label === "Not tested" ? "idle" : j.ready === true ? "ok" : "down";
         setConnection(role, state, label, j.message || "Add an optional connection in Settings.");
@@ -2361,7 +2431,7 @@ footer .source-credits p { margin: 0; }
   function serviceSettings() {
     if (hosted) return {decision: false, inference: connections.inference.configured === true, localEvidence: false};
     var reviewed = connections.decision.localEvidenceItems || [];
-    return {decision: connections.decision.configured === true, inference: connections.inference.configured === true,
+    return {decision: experimentalEnabled() && connections.decision.configured === true, inference: connections.inference.configured === true,
       localEvidence: !!currentQuestion && reviewed.indexOf(currentQuestion.id) >= 0};
   }
   function waitServices() { return Promise.all(['decision', 'inference'].map(function (role) { return connections[role].pending; })); }
@@ -2371,25 +2441,32 @@ footer .source-credits p { margin: 0; }
     uiText(els.panelStatus, '');
     els.resultsBody.replaceChildren();
   }
-  Object.keys(connections).forEach(function (role) {
-    connections[role].button.addEventListener("click", function () {
-      if (hosted && role !== 'inference' && !connections[role].configured) document.querySelector('.connection-settings').click();
-      else ping(role, true);
-    });
-  });
-
   // Keep practice and any pending tutor request alive while changing connections.
   {
     var connectionDialog = $('connectionDialog'), connectionFrame = $('connectionFrame');
     var connectionLink = document.querySelector('.connection-settings');
     connectionLink.setAttribute('aria-haspopup', 'dialog');
+    function openConnectionSettings(tab) {
+      document.querySelector('.connections-menu').open = false;
+      saveDraft();
+      if (tab || !connectionFrame.getAttribute('src')) {
+        var destination = new URL(connectionLink.href);
+        if (tab) destination.hash = tab;
+        connectionFrame.src = destination.href;
+      }
+      connectionDialog.showModal();
+      document.body.classList.add('modal-open');
+    }
     connectionLink.addEventListener('click', function (event) {
       if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
-      saveDraft();
-      if (!connectionFrame.getAttribute('src')) connectionFrame.src = connectionLink.href;
-      connectionDialog.showModal();
-      document.body.classList.add('modal-open');
+      openConnectionSettings();
+    });
+    Object.keys(connections).forEach(function (role) {
+      connections[role].button.addEventListener('click', function () {
+        if (role !== 'inference' && (!experimentalEnabled() || hosted && !connections[role].configured)) openConnectionSettings('service');
+        else ping(role, true);
+      });
     });
     $('connectionClose').addEventListener('click', function () { connectionDialog.close(); });
     connectionDialog.addEventListener('close', function () {
@@ -2398,12 +2475,24 @@ footer .source-credits p { margin: 0; }
       Object.keys(connections).forEach(ping);
     });
     window.addEventListener('message', function (event) {
-      if (event.origin !== location.origin || event.source !== connectionFrame.contentWindow) return;
-      if (event.data === 'math-practice:close-settings' && connectionDialog.open) connectionDialog.close();
+      if (event.source !== connectionFrame.contentWindow) return;
+      var closeSettings = event.data === 'math-practice:close-settings';
+      if (event.origin !== location.origin && !(closeSettings && location.protocol === 'file:' && event.origin === 'null')) return;
+      if (closeSettings && connectionDialog.open) connectionDialog.close();
       if (event.data && event.data.type === 'math-practice-settings-updated') Object.keys(connections).forEach(ping);
     });
     window.addEventListener('math-practice-online-change', function () { if (hosted) ping('inference'); });
     window.addEventListener('math-practice-services-change', function () { if (hosted) { ping('speech'); ping('decision'); } });
+    window.addEventListener(window.MathPracticeAgreement.experimentalEvent || 'math-practice-experimental-change', function () {
+      if (!experimentalEnabled()) {
+        if (speechInput) speechInput.reset();
+        if (feedback) feedback.clearSpeech();
+        Object.values(drafts).forEach(function (draft) { delete draft.originalSpeech; });
+        resetSignalsMessage();
+      }
+      ping('speech'); ping('decision');
+      if (speechInput) speechInput.sync();
+    });
   }
 
   var running = false, lastSubmitted = null, speechInput = null, feedback = null, practicePath = null;
@@ -2431,6 +2520,8 @@ footer .source-credits p { margin: 0; }
   }
   function updateSubmitControl() {
     var checking = running || !!(feedback && feedback.submissionPending());
+    var work = currentQuestion && (lastSubmitted?.question === currentQuestion ? lastSubmitted : notebook[currentQuestion.id]?.last);
+    els.thoughtsSubmit.dataset.submitted = String(!!sameWork(work, {answer: selectedAnswer, thoughts: els.thoughts.value.trim()}));
     els.thoughtsSubmit.disabled = checking || !!(speechInput && speechInput.busy());
     els.thoughtsSubmit.setAttribute('aria-busy', String(checking));
     uiText($('submitLabel'), checking ? 'Checking...' : currentQuestion && window.MathPracticeAnswers.gradingNotice(currentQuestion) !== null ? 'Save work' : 'Submit answer');
@@ -2524,6 +2615,27 @@ footer .source-credits p { margin: 0; }
   }
 
   function run() { feedback.submit(); }
+  var practiceRecommendations = window.MathPracticeRecommendations && window.MathPracticeRecommendations.setup({
+    panel: $('recommendationPanel'), button: $('suggestProblem'), heading: $('recommendationHeading'),
+    status: $('recommendationStatus'), reference: $('recommendationReference'), open: $('openSuggestion'),
+    pause: $('pauseRecommendations'), alternate: $('openAlternateTopic'), resume: $('resumeRecommendations'),
+    hosted: hosted, text: uiText, classify: answerTools.classify,
+    title: function (q, conceptId) {
+      return conceptId && conceptId === q.topic?.id && usesGradeNavigation(questionIndex[q.id].bank) ?
+        gradeName(q.unit) + ' · ' + t('Problem {number}', {number: q.number}) : questionTitle(q);
+    },
+    canBrowse: function () { return BANKS.some(function (b) { return b.id === BANK.id ? b.questions.length > 1 : b.questions.length > 0; }); },
+    browse: function () { $('problemPicker').open = true; selectPickerTab('topic', true); },
+    context: function () {
+      if (!currentQuestion) return null;
+      var answer = lastSubmitted?.question === currentQuestion ? lastSubmitted.answer : notebook[currentQuestion.id]?.last?.answer;
+      var scored = answerTools.hasAnswer(answer) && ['correct', 'wrong', 'partial'].includes(answerTools.classify(currentQuestion, answer));
+      return {question: currentQuestion, bank: BANK.id, scored,
+        targetId: practicePath && practicePath.layer() === 'ailleo' && practicePath.nodeId(currentQuestion.id)};
+    },
+    lookup: function (id, bank) { var row = questionIndex[id]; return row && row.bank.id === bank && row.question; },
+    select: async function (question) { var loaded = await goToQuestion(question); focusQuestion(loaded); return loaded; }
+  });
   feedback = new PracticeFeedback({
     question: function () { return currentQuestion; }, answer: function () { return selectedAnswer; },
     bank: function () { return BANK.id; },
@@ -2543,7 +2655,7 @@ footer .source-credits p { margin: 0; }
     question: function () { return currentQuestion; }, bank: function () { return BANK.id; },
     record: $("speechRecord"), recordLabel: $("speechRecordLabel"), recordTime: $("speechRecordTime"), recordProgress: $("speechRecordProgress"), cancel: $("speechCancel"), retry: $("speechRetry"), status: $("speechStatus"), draft: els.thoughts,
     isEnabled: function () { return !!currentQuestion; },
-    isConfigured: function () { return connections.speech.configured === true; },
+    isConfigured: function () { return experimentalEnabled() && connections.speech.configured === true; },
     isAssessing: function () { return running; },
     onState: updateSubmitControl,
     onDraft: function () { saveDraft(true); updateSubmissionNote(); },
@@ -2554,7 +2666,10 @@ footer .source-credits p { margin: 0; }
     question: function (id) { return questionIndex[id] && questionIndex[id].question; },
     title: questionTitle,
     select: function (q) { goToQuestion(q).then(focusQuestion); },
-    changed: function () { if (feedback) feedback.revisionChanged(); saveDraft(); updateSubmissionNote(); }
+    changed: function () {
+      if (practiceRecommendations) practiceRecommendations.refresh();
+      if (feedback) feedback.revisionChanged(); saveDraft(); updateSubmissionNote();
+    }
   });
   if (location.search) {
     var linkedId = new URLSearchParams(location.search).get('problem');

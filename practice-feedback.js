@@ -177,6 +177,9 @@
         if (window.MathPracticeServices && url === '/api/learning-signals') return window.MathPracticeServices.learningSignals({question: this.o.question(), bank: this.bank(), transcript: body.transcript}, {signal: controller.signal});
         throw new Error('AI feedback is available in the local app.');
       }
+      if (window.MathPracticeAgreement && (url === '/api/assessment' || url === '/api/tutor')) {
+        body = {...body, allowDecision: window.MathPracticeAgreement.experimentalEnabled?.() === true};
+      }
       const timer = setTimeout(() => controller.abort(), 155000);
       try {
         const response = await fetch(url, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body), signal: controller.signal});
@@ -188,7 +191,9 @@
     }
     services() {
       if (window.MATH_PRACTICE_HOSTED) return {decision: false, inference: !!window.MathPracticeOnline && window.MathPracticeOnline.status().configured, localEvidence: false};
-      return Object.assign({decision: false, inference: false}, this.o.services ? this.o.services() : {}, this.serviceOverrides);
+      const available = Object.assign({decision: false, inference: false}, this.o.services ? this.o.services() : {}, this.serviceOverrides);
+      if (window.MathPracticeAgreement && !window.MathPracticeAgreement.experimentalEnabled?.()) available.decision = false;
+      return available;
     }
     signalsConfigured() {
       if (!window.MATH_PRACTICE_HOSTED) return this.services().decision;

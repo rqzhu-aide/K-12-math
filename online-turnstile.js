@@ -12,7 +12,7 @@
   const SCRIPT_TIMEOUT = 15000, CHALLENGE_TIMEOUT = 90000;
   const copy = {
     title: 'Verify your Ailleo connection',
-    help: 'Complete this check to use speech input or learning feedback. You can cancel and continue practicing.',
+    help: 'Complete this check to use the Ailleo Math Practice Service. You can cancel and continue practicing.',
     loading: 'Loading verification…',
     ready: 'Complete the verification below to continue.',
     failed: 'Verification could not finish. Check your connection and try again.',
@@ -23,7 +23,7 @@
   const language = window.MathPracticeLanguage;
   if (language) language.register({
     [copy.title]: '验证 Ailleo 连接',
-    [copy.help]: '完成验证后，即可使用语音输入或学习反馈。你也可以取消验证，继续练习。',
+    [copy.help]: '完成验证后，即可使用 Ailleo 数学练习服务。你也可以取消验证，继续练习。',
     [copy.loading]: '正在加载验证…',
     [copy.ready]: '请完成下方验证以继续。',
     [copy.failed]: '验证未能完成。请检查网络连接，然后重试。',
@@ -93,9 +93,9 @@
   services.getChallengeToken = function (options = {}) {
     const signal = options.signal;
     if (signal && signal.aborted) return Promise.reject(aborted());
-    let preferences;
-    try { preferences = window.MathPracticeServices && window.MathPracticeServices.preferences(); } catch (_) {}
-    if (!preferences || !preferences.acknowledged || !(preferences.speech || preferences.decision)
+    const agreement = window.MathPracticeAgreement;
+    const grant = agreement?.experimentalGrant?.();
+    if (!grant
         || window.location.protocol !== 'https:' || window.location.hostname.toLowerCase() !== config.expectedHostname.toLowerCase()
         || active || !document.body) return Promise.reject(failure());
     active = true;
@@ -130,6 +130,7 @@
         if (done) return;
         done = true; clearTimeout(deadline); removeWidget();
         if (signal) signal.removeEventListener('abort', cancelled);
+        window.removeEventListener(agreement.experimentalEvent, grantChanged);
         window.removeEventListener('pagehide', cancelled); window.removeEventListener('languagechange', translate);
         if (dialog.open) dialog.close();
         dialog.remove(); active = false;
@@ -137,12 +138,14 @@
         if (error) reject(error); else resolve(token);
       }
       function cancelled() { finish(aborted()); }
+      function grantChanged() { if (agreement.experimentalGrant() !== grant) cancelled(); }
       function showError(message) {
         if (done) return;
         removeWidget(); state = message; spinner.hidden = true; retry.hidden = false;
         statusRow.dataset.error = 'true'; translate(); retry.focus();
       }
       function start() {
+        if (agreement.experimentalGrant() !== grant) return cancelled();
         removeWidget(); state = copy.loading; spinner.hidden = false; retry.hidden = true;
         statusRow.dataset.error = 'false'; translate();
         const current = {id: null}; attempt = current;
@@ -159,6 +162,7 @@
             'refresh-expired': 'never', 'refresh-timeout': 'never', 'response-field': false,
             callback(token) {
               if (!currentAttempt()) return;
+              if (agreement.experimentalGrant() !== grant) return cancelled();
               if (typeof token !== 'string' || !token.trim() || token.length > 2048) showError(copy.failed);
               else finish(null, token);
             },
@@ -178,6 +182,7 @@
       dialog.addEventListener('cancel', event => { event.preventDefault(); cancelled(); });
       dialog.addEventListener('close', cancelled);
       window.addEventListener('pagehide', cancelled); window.addEventListener('languagechange', translate);
+      window.addEventListener(agreement.experimentalEvent, grantChanged);
       if (signal) signal.addEventListener('abort', cancelled, {once: true});
       try {
         styleDialog(); translate(); document.body.appendChild(dialog);

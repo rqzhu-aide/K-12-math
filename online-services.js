@@ -1,16 +1,22 @@
 /* Optional owner services. Tutor credentials and raw audio are never persisted here. */
 (function () {
   'use strict';
-  const PREFS = 'math-practice.optional-services.preferences.v1';
   const SESSION = 'math-practice.optional-services.session.v1';
   const NOTICE = '2026-11-16';
   const EVENT = 'math-practice-services-change';
   const ROLES = ['speech', 'decision'];
+  const RECOMMENDATION_SCOPE = 'recommendation';
+  const RECOMMENDATION_BANKS = ['cn-math', 'amc'];
+  const RECOMMENDATION_OUTCOMES = ['correct', 'incorrect', 'partial'];
+  const STOP_REASONS = ['visit_budget', 'no_suitable_question', 'unsupported_scope'];
+  const MAX_HISTORY = 256;
+  const MAX_RETRIES = 4;
+  const MAX_GAP_DAYS = 1826.25;
   const messages = {
     unconfigured: 'Ailleo’s server connection is not ready yet.',
-    permission: 'Review the Ailleo service notice and enable this service in Settings first.',
-    consent_required: 'Review the Ailleo service notice in Settings before trying again.',
-    notice_outdated: 'The Ailleo service notice changed. Review it in Settings before trying again.',
+    permission: 'Review the agreement and enable experimental features in Settings first.',
+    consent_required: 'Review the experimental features agreement in Settings before trying again.',
+    notice_outdated: 'The service agreement changed. Review it in Settings before trying again.',
     unauthorized: 'Your Ailleo service session ended. Try again to start a new session.',
     token_expired: 'Your Ailleo service session expired. Try again to start a new session.',
     session_mismatch: 'Your Ailleo service session changed. Try again.',
@@ -30,9 +36,9 @@
   };
   if (window.MathPracticeLanguage) window.MathPracticeLanguage.register({
     [messages.unconfigured]: 'Ailleo 的服务器连接尚未准备好。',
-    [messages.permission]: '请先在设置中阅读 Ailleo 服务说明，并启用此服务。',
-    [messages.consent_required]: '请先在设置中阅读 Ailleo 服务说明，然后重试。',
-    [messages.notice_outdated]: 'Ailleo 服务说明已更新。请先在设置中重新阅读。',
+    [messages.permission]: '请先在设置中阅读协议，并开启实验性功能。',
+    [messages.consent_required]: '请先在设置中阅读实验性功能协议，然后重试。',
+    [messages.notice_outdated]: '服务协议已更新。请先在设置中查看，然后重试。',
     [messages.unauthorized]: 'Ailleo 服务会话已结束。请重试以开始新会话。',
     [messages.token_expired]: 'Ailleo 服务会话已过期。请重试以开始新会话。',
     [messages.session_mismatch]: 'Ailleo 服务会话已更改，请重试。',
@@ -80,12 +86,8 @@
     return {configured: !!baseUrl && challengeConfigured, baseUrl, challengeConfigured};
   }
   function notice() { return clean(deployment().noticeVersion) || NOTICE; }
-  function preferences() {
-    let value = {};
-    try { value = read(localStorage, PREFS); } catch (_) {}
-    const acknowledged = value.acknowledged === true && value.noticeVersion === notice();
-    return {acknowledged, speech: acknowledged && value.speech === true, decision: acknowledged && value.decision === true};
-  }
+  const agreement = window.MathPracticeAgreement;
+  function currentGrant() { return agreement?.experimentalGrant?.(notice()) || ''; }
   function changed() {
     const targets = new Set([window, ownerWindow()]);
     for (const target of targets) {
@@ -93,15 +95,6 @@
         if (typeof CustomEvent !== 'undefined') target.dispatchEvent(new CustomEvent(EVENT));
       }
     }
-  }
-  function savePreferences(input) {
-    const previous = preferences(), value = input && typeof input === 'object' ? input : {};
-    const next = {acknowledged: value.acknowledged === undefined ? previous.acknowledged : value.acknowledged === true,
-      speech: value.speech === undefined ? previous.speech : value.speech === true,
-      decision: value.decision === undefined ? previous.decision : value.decision === true, noticeVersion: notice()};
-    if (!next.acknowledged) next.speech = next.decision = false;
-    try { localStorage.setItem(PREFS, JSON.stringify(next)); } catch (_) { throw failure('storage'); }
-    changed(); return preferences();
   }
   function shared() {
     const owner = ownerWindow();
@@ -113,8 +106,7 @@
   function roleName(role) { if (!ROLES.includes(role)) throw failure('bad_request'); return role; }
   function status(role) {
     roleName(role);
-    const configured = configuration().configured, settings = preferences();
-    const enabled = settings.acknowledged && settings[role], available = shared().health[role];
+    const configured = configuration().configured, enabled = Boolean(currentGrant()), available = shared().health[role];
     return {configured, enabled, available,
       state: !configured ? 'unconfigured' : !enabled ? 'off' : available === null ? 'unchecked' : available ? 'ready' : 'unavailable'};
   }
@@ -201,13 +193,15 @@
       if (signal) signal.removeEventListener('abort', cancel);
     }
   }
-  async function session(state, signal) {
+  async function session(state, signal, grant, scope) {
     let current = state.session || loadSession();
     const now = Date.now(), expires = Date.parse(current.expires_at);
-    const valid = clean(current.token) && clean(current.session_id) && Array.isArray(current.scopes);
+    // A token issued before a new service was added may still be within its lifetime.
+    const valid = clean(current.token) && clean(current.session_id) && Array.isArray(current.scopes) && current.scopes.includes(scope);
     if (valid && expires > now && Number(current.renewAt) > now) { state.session = current; return current; }
     const renew = valid && expires > now;
     const body = {turnstile_token: await challengeToken(!!renew, signal)};
+    assertPermission(grant);
     const headers = {'Content-Type': 'application/json'};
     if (renew) {
       headers.Authorization = 'Bearer ' + current.token;
@@ -226,44 +220,59 @@
     try { sessionStorage.setItem(SESSION, JSON.stringify(current)); } catch (_) { forgetSession(state); throw failure('storage'); }
     state.session = current; state.consentKey = ''; return current;
   }
-  function assertPermission(role) {
+  function assertPermission(expectedGrant) {
     if (!configuration().configured) throw failure('unconfigured');
-    const value = preferences();
-    if (!value.acknowledged || !value[role]) throw failure('permission');
-    return value;
+    const grant = currentGrant();
+    if (!grant || expectedGrant && expectedGrant !== grant) throw failure('permission');
+    return grant;
   }
-  async function consent(state, token, settings, signal) {
-    const body = {transcription: settings.speech, d3: settings.decision, collection: false,
+  async function consent(state, token, grant, signal) {
+    const body = {transcription: Boolean(grant), d3: Boolean(grant), collection: false,
       notice_version: notice(), site_release: deployment().siteRelease};
-    const key = token.token + '|' + JSON.stringify(body);
+    const supportsRecommendation = Array.isArray(token.scopes) && token.scopes.includes(RECOMMENDATION_SCOPE);
+    if (supportsRecommendation) body.recommendation = Boolean(grant);
+    const key = token.token + '|' + grant + '|' + JSON.stringify(body);
     if (state.consentKey === key) return;
-    const value = await request(route('/api/consent'), {method: 'POST', headers: {'Content-Type': 'application/json', Authorization: 'Bearer ' + token.token}, body: JSON.stringify(body)}, signal);
+    const value = await request(route('/api/consent'), {method: 'POST', headers: {'Content-Type': 'application/json', Authorization: 'Bearer ' + token.token}, body: JSON.stringify(body)}, signal, grant ? 150000 : 15000);
     if (!value || value.session_id !== token.session_id || value.notice_version !== notice() || value.effective_collection !== false) throw failure('response');
+    if (supportsRecommendation && value.effective_recommendation !== body.recommendation) throw failure('response');
     state.consentKey = key;
   }
-  function authorized(role, signal, action) {
-    roleName(role); assertPermission(role);
+  function withdraw() {
+    if (currentGrant() || !configuration().configured) return;
+    const state = shared();
+    state.tail = state.tail.then(async () => {
+      if (currentGrant()) return;
+      const token = state.session || loadSession();
+      try {
+        if (clean(token.token) && Date.parse(token.expires_at) > Date.now()) await consent(state, token, '', null);
+      } finally { forgetSession(state); }
+    }).catch(() => {
+      // Browser permission is already off. Never issue a new session to withdraw.
+    });
+  }
+  if (agreement) window.addEventListener(agreement.experimentalEvent, withdraw);
+  function authorized(scope, signal, action) {
+    const grant = assertPermission();
     const state = shared();
     // Rotation invalidates old tokens. One shared tab queue also covers same-origin settings frames.
     const pending = state.tail.then(async () => {
       if (signal && signal.aborted) throw aborted();
-      let settings = assertPermission(role);
+      assertPermission(grant);
       try {
-        const token = await session(state, signal);
-        if (!token.scopes.includes(role === 'speech' ? 'transcribe' : 'd3')) throw failure('unauthorized');
-        settings = assertPermission(role);
-        await consent(state, token, settings, signal);
-        assertPermission(role);
+        const token = await session(state, signal, grant, scope);
+        if (!token.scopes.includes(scope)) throw failure('unauthorized');
+        assertPermission(grant);
+        await consent(state, token, grant, signal);
+        assertPermission(grant);
         const value = await action(token);
-        assertPermission(role);
+        assertPermission(grant);
         if (value && (value.session_id !== token.session_id || value.recorded !== false || value.record_id !== null)) throw failure('response');
         return value;
       } catch (error) {
         if (['unauthorized', 'token_expired', 'session_mismatch'].includes(error.code)) forgetSession(state);
         if (['consent_required', 'notice_outdated'].includes(error.code)) state.consentKey = '';
-        if (error.code === 'notice_outdated') {
-          try { savePreferences({acknowledged: false}); } catch (_) {}
-        }
+        if (error.code === 'notice_outdated' && grant === currentGrant()) agreement.setExperimentalEnabled(false);
         throw error;
       }
     });
@@ -284,13 +293,13 @@
     return {id: question.id, bank, release, text: question.question, choices};
   }
   async function transcribe(audio, question, options = {}) {
-    assertPermission('speech');
+    assertPermission();
     const context = questionMetadata(question, options.bank);
     if (!audio || audio.type !== 'audio/wav' || !Number.isFinite(audio.size) || audio.size > 2000000 || audio.size < 44) throw failure('bad_audio');
     const url = new URL(route('/api/transcription'));
     url.searchParams.set('question_id', context.id); url.searchParams.set('bank', context.bank); url.searchParams.set('release', context.release);
     url.searchParams.set('site_release', deployment().siteRelease);
-    const value = await authorized('speech', options.signal, token => request(url.href, {method: 'POST', headers: {'Content-Type': 'audio/wav', Authorization: 'Bearer ' + token.token}, body: audio}, options.signal));
+    const value = await authorized('transcribe', options.signal, token => request(url.href, {method: 'POST', headers: {'Content-Type': 'audio/wav', Authorization: 'Bearer ' + token.token}, body: audio}, options.signal));
     if (!value || value.question_id !== context.id || typeof value.text !== 'string' || value.text.length > 12000) throw failure('response');
     return value;
   }
@@ -318,14 +327,59 @@
     });
   }
   async function learningSignals(input, options = {}) {
-    assertPermission('decision');
+    assertPermission();
     const context = questionMetadata(input.question, input.bank), transcript = input.transcript;
     if (typeof transcript !== 'string' || !transcript.trim() || transcript.length > 12000) throw failure('bad_request');
     const body = {transcript, question: context, site_release: deployment().siteRelease};
-    const value = await authorized('decision', options.signal, token => request(route('/api/learning-signals'), {method: 'POST',
+    const value = await authorized('d3', options.signal, token => request(route('/api/learning-signals'), {method: 'POST',
       headers: {'Content-Type': 'application/json', Authorization: 'Bearer ' + token.token}, body: JSON.stringify(body)}, options.signal));
     return {questionId: context.id, transcript, signals: signals(value, input), decisionConfigured: true,
       rubricVersion: value.rubric_version, recorded: false, recordId: null};
   }
-  window.MathPracticeServices = {config: configuration, preferences, savePreferences, status, check, transcribe, learningSignals};
+  const validId = value => typeof value === 'string' && value.length > 0 && value.length <= 200 && !/[^A-Za-z0-9_.:-]/u.test(value);
+  function recommendationBody(input) {
+    if (!input || !RECOMMENDATION_BANKS.includes(input.bank)) throw failure('bad_request');
+    const {bank, targetId, targetQuestionId, excludeQuestionId, anchorQuestionId, history = []} = input;
+    if ((targetId == null) === (targetQuestionId == null) ||
+        [targetId, targetQuestionId, excludeQuestionId, anchorQuestionId].some(id => id != null && !validId(id)) ||
+        !Array.isArray(history) || history.length > MAX_HISTORY + MAX_RETRIES) throw failure('bad_request');
+    const body = {bank, history: []};
+    if (targetId != null) body.targetId = targetId;
+    if (targetQuestionId != null) body.targetQuestionId = targetQuestionId;
+    if (excludeQuestionId != null) body.excludeQuestionId = excludeQuestionId;
+    if (anchorQuestionId != null) body.anchorQuestionId = anchorQuestionId;
+    let retries = 0;
+    for (const event of history) {
+      if (!event || typeof event !== 'object' || Array.isArray(event)) throw failure('bad_request');
+      if (event.gapDays !== undefined) {
+        if (!Number.isFinite(event.gapDays) || event.gapDays <= 0 || event.gapDays > MAX_GAP_DAYS) throw failure('bad_request');
+        body.history.push({gapDays: event.gapDays});
+        continue;
+      }
+      const {questionId, outcome, retry} = event;
+      if (!validId(questionId) || !RECOMMENDATION_OUTCOMES.includes(outcome) || retry !== undefined && retry !== true) throw failure('bad_request');
+      const score = {questionId, outcome};
+      if (retry === true) { retries++; score.retry = true; }
+      body.history.push(score);
+    }
+    if (retries > MAX_RETRIES || history.length - retries > MAX_HISTORY) throw failure('bad_request');
+    return body;
+  }
+  async function recommendation(input, options = {}) {
+    assertPermission();
+    const body = recommendationBody(input);
+    const value = await authorized(RECOMMENDATION_SCOPE, options.signal, token => request(route('/api/practice/recommendation'), {
+      method: 'POST', headers: {'Content-Type': 'application/json', Authorization: 'Bearer ' + token.token},
+      body: JSON.stringify(body)
+    }, options.signal));
+    if (!value) throw failure('response');
+    const {recommendation: item, stopReason, alternateQuestionId} = value;
+    if (stopReason === null) {
+      if (!validId(item?.questionId) || !Number.isInteger(item.prerequisiteDepth) || item.prerequisiteDepth < 0 ||
+          alternateQuestionId != null) throw failure('response');
+    } else if (!STOP_REASONS.includes(stopReason) || item !== null ||
+        alternateQuestionId != null && !validId(alternateQuestionId)) throw failure('response');
+    return value;
+  }
+  window.MathPracticeServices = {config: configuration, status, check, transcribe, learningSignals, recommendation};
 })();

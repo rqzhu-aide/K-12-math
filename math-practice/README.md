@@ -1,4 +1,4 @@
-# Math Practice UI 2.2.1
+# Math Practice UI 2.3.0
 
 **[Open Math Practice online](https://math-practice.ailleo.net/)** to practice 8,790 questions. Choose **Try a problem** for a starting question, or **Browse** to pick a contest, curriculum topic, or mathematical idea.
 
@@ -14,14 +14,14 @@ For an app icon, use your browser’s **Install** option where available. On iPh
 
 ## Connect your tutor online
 
-Open **Settings → Model settings**. Settings opens over the current problem, so your draft and any pending response remain in place.
+Open **Settings → Math Tutor LLM**. Settings opens over the current problem, so your draft and any pending response remain in place.
 
 - **Custom API:** enter your own OpenAI-compatible API base URL, API key if required, and model. Save and test the connection. Requests go directly from the browser to that provider. The provider must allow browser requests from this site (CORS). A successful text test does not verify image support; choose a model that can read images for figure questions.
 - **ChatGPT account: Forthcoming.** Online sign-in is not available in this release.
 
 API keys remain in the current browser tab session, including its settings frame. Nonsecret preferences can persist between visits. Provider charges and data-use policies apply. Your tutor requests do not pass through the site operator's desktop.
 
-In **Model settings**, choose **Agree and enable both features** under **Ailleo Math Practice Service** to use Speech-to-Text LLM and Sentiment Check LLM. Ailleo processes the recording, original transcript and question as described in the [privacy and use agreement](../agreement.html). You can turn the service off at any time.
+The **Ailleo Math Practice Service** tab in Settings lets you enable speech-to-text, sentiment feedback, and practice recommendations together. After you submit a scored answer, choose **Suggest my next problem** to request a follow-up. The service processes only the information described in the [privacy and use agreement](../agreement.html). You can turn it off at any time. Practice data collection for model training is off.
 
 ## Run locally
 
