@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title data-i18n="Math Practice">Math Practice</title>
-<script src="agreement.js?v=2.3.2"></script>
-<script src="theme.js?v=2.3.2"></script>
-<script src="language.js?v=2.3.2"></script>
-<script src="index-language.js?v=2.3.2"></script>
+<script src="agreement.js?v=2.3.3"></script>
+<script src="theme.js?v=2.3.3"></script>
+<script src="language.js?v=2.3.3"></script>
+<script src="index-language.js?v=2.3.3"></script>
 <link rel="stylesheet" href="vendor/katex/katex.min.css">
 <style>
 
@@ -900,7 +900,7 @@
   }
 
 </style>
-<link rel="stylesheet" href="theme.css?v=2.3.2">
+<link rel="stylesheet" href="theme.css?v=2.3.3">
 <style id="studyStyles">
 /* Student study surface. The source mathematics keeps its existing renderer. */
 [hidden] { display: none !important; }
@@ -961,6 +961,7 @@ summary { cursor: pointer; }
 button.path-question { height: auto; min-height: 44px; padding: 10px 14px; line-height: 1.5; text-align: left; justify-content: flex-start; }
 @media (max-width: 560px) { .practice-path { grid-template-columns: minmax(0, 1fr); } }
 .bank-choice { max-width: none; }
+.bank-choice select { width: 100%; }
 .pool-selects { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 0; }
 .pool-selects select { width: 100%; min-width: 0; }
 .pool-selects[data-navigation="curriculum"] #topicField { min-width: 0; }
@@ -970,6 +971,20 @@ button.path-question { height: auto; min-height: 44px; padding: 10px 14px; line-
 .pool-reset { grid-column: 4; justify-self: end; }
 .field-inline label, .answer-label { text-transform: none; letter-spacing: 0; font-size: .8125rem; font-weight: 600; }
 .pool-hint { font-size: .8125rem; line-height: 1.6; }
+#supplementalSelectors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+#supplementalSelectors select { width: 100%; min-width: 0; }
+#supplementalSelectors[data-mode="repository"] > :last-child { grid-column: 1 / -1; }
+#bankStatus:empty { display: none; }
+#bankStatus button { margin-left: 8px; }
+#bankNotice { margin-left: 10px; }
+.source-credit-link { color: var(--accent-deep); text-underline-offset: 3px; }
+.question-credits { margin: 16px 0 0; color: var(--ink-2); font-size: .8125rem; line-height: 1.6; overflow-wrap: anywhere; }
+.question-credits summary { width: fit-content; cursor: pointer; color: var(--accent-deep); }
+.question-credits p { margin: 6px 0 0; }
+@media (max-width: 560px) {
+  #supplementalSelectors { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #supplementalSelectors > :last-child { grid-column: 1 / -1; }
+}
 #poolHint { margin: 0; padding: 18px 30px 0; }
 .welcome { padding: 32px 34px 40px; display: grid; grid-template-columns: minmax(0,1fr) 136px; gap: 28px; align-items: center; }
 .welcome h2 { margin: 0 0 15px; font: 400 2.125rem/1.2 var(--book-serif); max-width: 15ch; text-wrap: balance; }
@@ -1125,8 +1140,6 @@ button:disabled { opacity: .55; cursor: not-allowed; }
 .signals-status { font-size: .75rem; }
 .signals-panel .panel-toggle { font-size: .75rem; }
 footer { border-top: 1px solid var(--hairline); text-align: left; padding-top: 18px; margin-top: 32px; font-size: .75rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 18px; }
-footer .source-credits { width: 100%; line-height: 1.7; }
-footer .source-credits p { margin: 0; }
 .modal { background: var(--surface); }
 .modal-title { font-family: var(--font); }
 .solution-reflection { padding-top: 22px; margin-top: 28px; border-top: 1px solid var(--hairline); color: var(--accent-deep); font: 400 1.125rem/1.6 var(--book-serif); }
@@ -1207,7 +1220,7 @@ footer .source-credits p { margin: 0; }
         <button class="language-choice" type="button" data-language-choice="zh-CN" aria-label="Chinese" data-i18n-aria-label="Chinese" aria-pressed="false">CN</button>
       </div>
       <div class="settings-shortcuts">
-      <a class="connection-settings" href="settings.html?v=2.3.2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.6 3.2-.4 2.4-1.6.72-2-.88L3.2 9.6l2 1.52v1.76l-2 1.52 2.4 4.16 2-.88 1.6.72.4 2.4h4.8l.4-2.4 1.6-.72 2 .88 2.4-4.16-2-1.52v-1.76l2-1.52-2.4-4.16-2 .88-1.6-.72-.4-2.4Z"></path><circle cx="12" cy="12" r="3"></circle></svg><span data-i18n="Settings">Settings</span></a>
+      <a class="connection-settings" href="settings.html?v=2.3.3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.6 3.2-.4 2.4-1.6.72-2-.88L3.2 9.6l2 1.52v1.76l-2 1.52 2.4 4.16 2-.88 1.6.72.4 2.4h4.8l.4-2.4 1.6-.72 2 .88 2.4-4.16-2-1.52v-1.76l2-1.52-2.4-4.16-2 .88-1.6-.72-.4-2.4Z"></path><circle cx="12" cy="12" r="3"></circle></svg><span data-i18n="Settings">Settings</span></a>
       <details class="connections-menu"><summary aria-label="Model connections" data-i18n-aria-label="Model connections" title="Model connections" data-i18n-title="Model connections"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></summary>
       <div class="connection-status" role="group" aria-label="Backend readiness. Select a badge to check again." data-i18n-aria-label="Backend readiness. Select a badge to check again.">
         <button class="chip" data-model-role="inference" id="inferenceStatus" type="button" data-state="checking" title="Check Math Tutor LLM connection" data-i18n-title="Check Math Tutor LLM connection"><span class="dot" aria-hidden="true"></span><span><span class="chip-label" data-i18n="Math Tutor LLM">Math Tutor LLM</span><span class="chip-state" id="inferenceStatusText" role="status" data-i18n="Checking...">Checking...</span></span></button>
@@ -1239,10 +1252,12 @@ footer .source-credits p { margin: 0; }
       <p class="pool-hint path-copy" id="pathStatus" role="status"></p>
       <div class="field-inline" id="pathPageField" hidden><label for="pathPage" data-i18n="Results page">Results page</label><select id="pathPage" aria-controls="pathResults"></select></div>
       <div class="path-results" id="pathResults"></div>
+      <p class="pool-hint path-copy" id="pathAttribution" lang="en" hidden><a href="https://www.thecorestandards.org/public-license/" target="_blank" rel="noopener noreferrer">© Copyright 2010. National Governors Association Center for Best Practices and Council of Chief State School Officers. All rights reserved.</a></p>
     </div>
     </div>
     <div class="picker-panel" id="sourcePanel" role="tabpanel" aria-labelledby="sourceTab">
     <div class="field-inline bank-choice"><label for="selBank" data-i18n="Question bank">Question bank</label><select id="selBank"></select></div>
+    <div class="field-inline bank-choice" id="repositoryField" hidden><label for="selRepository" data-i18n="Question repository">Question repository</label><select id="selRepository"></select></div>
     <div class="pool-selects" id="poolSelectors">
       <div class="field-inline"><label for="selLevel" data-i18n="Level">Level</label><select id="selLevel"></select></div>
       <div class="field-inline"><label for="selYear" id="yearLabel" data-i18n="Year">Year</label><select id="selYear"></select></div>
@@ -1250,7 +1265,13 @@ footer .source-credits p { margin: 0; }
       <div class="field-inline"><label for="selNum" data-i18n="Problem">Problem</label><select id="selNum"></select></div>
       <button type="button" class="ghost pool-reset" id="poolReset" data-i18n="Reset">Reset</button>
     </div>
-    <p class="pool-hint" id="poolCount"></p>
+    <div id="supplementalSelectors" hidden>
+      <div class="field-inline" id="splitField"><label for="selSplit" data-i18n="GSM8K set">GSM8K set</label><select id="selSplit"></select></div>
+      <div class="field-inline" id="rangeField"><label for="selRange" data-i18n="Problem range">Problem range</label><select id="selRange"></select></div>
+      <div class="field-inline"><label for="selSupplementalProblem" data-i18n="Problem">Problem</label><select id="selSupplementalProblem"></select></div>
+    </div>
+    <p class="pool-hint" id="bankStatus" role="status"></p>
+    <p class="pool-hint" id="poolCountLine" hidden><span id="poolCount"></span><a class="source-credit-link" id="bankNotice" target="_blank" rel="noopener" data-i18n="Source notes" hidden>Source notes</a></p>
     </div>
     </div>
     </details>
@@ -1387,32 +1408,30 @@ footer .source-credits p { margin: 0; }
   </dialog>
 
   <footer>
-    <div class="source-credits">
-      <p><span data-i18n="AMC: ">AMC: </span>© <a href="https://maa.org/student-programs/amc/" target="_blank" rel="noopener noreferrer">MAA</a><span data-i18n=" · Adapted material · "> · Adapted material · </span><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> · <a href="database/amc-bank/NOTICE.md" target="_blank" rel="noopener noreferrer" data-i18n="Source notes">Source notes</a></p>
-      <p><span data-i18n="Chinese curriculum: ">Chinese curriculum: </span><a href="https://github.com/xiaoyang111222/cn-math-taxonomy" target="_blank" rel="noopener noreferrer">cn-math-taxonomy</a><span data-i18n=" · English adaptations · "> · English adaptations · </span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a><span data-i18n=" (also the original app)"> (also the original app)</span> · <a href="database/cn-math-bank/NOTICE.md" target="_blank" rel="noopener noreferrer" data-i18n="Source notes">Source notes</a></p>
-      <p id="pathAttribution" hidden><a href="https://www.thecorestandards.org/public-license/" target="_blank" rel="noopener noreferrer">© Copyright 2010. National Governors Association Center for Best Practices and Council of Chief State School Officers. All rights reserved.</a></p>
-    </div>
     <span data-i18n="Drafts stay in this open tab. Submitted work is saved in this browser. Connected services may receive practice scores, text or audio. Keep personal information out.">Drafts stay in this open tab. Submitted work is saved in this browser. Connected services may receive practice scores, text or audio. Keep personal information out.</span>
-    <a href="agreement.html?v=2.3.2" target="_blank" rel="noopener" data-i18n="Privacy & use agreement">Privacy &amp; use agreement</a>
+    <a href="agreement.html?v=2.3.3" target="_blank" rel="noopener" data-i18n="Privacy & use agreement">Privacy &amp; use agreement</a>
+    <a href="dataset-acknowledgements.html?v=2.3.3" target="_blank" rel="noopener" data-i18n="Dataset acknowledgements">Dataset acknowledgements</a>
+    <a href="LICENSE" target="_blank" rel="noopener" data-i18n="Software license">Software license</a>
     <span class="site-credit"><span data-i18n="Developed by Ruoqing Zhu · ">Developed by Ruoqing Zhu · </span><a href="https://github.com/rqzhu-aide" target="_blank" rel="noopener noreferrer">GitHub: rqzhu-aide</a></span>
   </footer>
 </div>
 
-<script src="hosted-config.js?v=2.3.2"></script>
-<script src="hosted-data.js?v=2.3.2"></script>
-<script src="online-connections.js?v=2.3.2"></script>
-<script src="online-turnstile.js?v=2.3.2"></script>
-<script src="online-services.js?v=2.3.2"></script>
-<script src="answer-check.js?v=2.3.2"></script>
-<script src="amc-figure-descriptions.js?v=2.3.2"></script>
+<script src="hosted-config.js?v=2.3.3"></script>
+<script src="hosted-data.js?v=2.3.3"></script>
+<script src="online-connections.js?v=2.3.3"></script>
+<script src="online-turnstile.js?v=2.3.3"></script>
+<script src="online-services.js?v=2.3.3"></script>
+<script id="practiceBankManifest" src="practice-banks/manifest.js?v=2.3.3"></script>
+<script src="answer-check.js?v=2.3.3"></script>
+<script src="amc-figure-descriptions.js?v=2.3.3"></script>
 <script src="vendor/katex/katex.min.js"></script>
 <script src="vendor/katex/contrib/auto-render.min.js"></script>
-<script src="speech-input.js?v=2.3.2"></script>
-<script src="graph-evidence.js?v=2.3.2"></script>
-<script src="practice-feedback.js?v=2.3.2"></script>
-<script src="practice-recommendations.js?v=2.3.2"></script>
-<script src="topic-labels.js?v=2.3.2"></script>
-<script src="curriculum-path.js?v=2.3.2"></script>
+<script src="speech-input.js?v=2.3.3"></script>
+<script src="graph-evidence.js?v=2.3.3"></script>
+<script src="practice-feedback.js?v=2.3.3"></script>
+<script src="practice-recommendations.js?v=2.3.3"></script>
+<script src="topic-labels.js?v=2.3.3"></script>
+<script src="curriculum-path.js?v=2.3.3"></script>
 <script>
 (async function () {
   "use strict";
@@ -1545,7 +1564,7 @@ footer .source-credits p { margin: 0; }
     else if (event.key === NOTEBOOK_KEY || event.key === null) loadNotebook(readNotebook());
     else return;
     updateSaveWarning();
-    if (questionIndex) updatePracticeTools();
+    if (questionIndex) { updatePracticeTools(); restoreNotebookBanks(); }
   });
   function updateSaveWarning() {
     var warning = $('saveWarning');
@@ -1568,10 +1587,11 @@ footer .source-credits p { margin: 0; }
     drafts[id] = { ...work, touched, originalSpeech: feedback.evidence, tutorContext: feedback.state() };
     if (changed) renderNotebook();
   }
+  function questionServiceBank() { return BANK.supplemental ? currentQuestion?.sourceId || BANK.id : BANK.id; }
   function saveContext() {
     saveDraft();
     if (!currentQuestion) return;
-    var context = PracticeFeedback.savedContext(feedback.state(), currentQuestion.id, BANK.id);
+    var context = PracticeFeedback.savedContext(feedback.state(), currentQuestion.id, questionServiceBank());
     if (!context || !context.last) return;
     editNotebook(currentQuestion.id, function (entry) {
       if (sameWork(entry.last, context.last) && entry.tutorContext && entry.tutorContext.last.revisionId === context.last.revisionId) entry.tutorContext = context;
@@ -1583,10 +1603,7 @@ footer .source-credits p { margin: 0; }
   if (hosted) {
     try { hostedBanks = await window.MathPracticeHosted.ready; }
     catch (_) {
-      uiText($('poolHint'), 'Practice data could not load. Check your connection and reload this page.');
-      $('beginPractice').disabled = true;
       uiText($('pathStatus'), 'Practice paths could not load. Reload this page to try again.');
-      return;
     }
   }
 
@@ -1597,18 +1614,74 @@ footer .source-credits p { margin: 0; }
   function publishedBankURL(value) {
     return typeof value === 'string' ? value.replace(/^\.\.\/(amc-bank|cn-math-bank)\//, 'database/$1/') : value;
   }
-  var BANKS = (hosted ? hostedBanks : [window.CN_MATH_BANK, window.AMC_BANK]).filter(function (b) { return b && ['amc', 'cn-math'].includes(b.id) && Array.isArray(b.questions) && b.questions.length; });
-  var BANK = BANKS[0] || { id: 'cn-math', questions: [] };
-  function usesGradeNavigation(bank) { return bank.id !== 'amc'; }
+  var BANKS = ['cn-math', 'amc'].map(function (id, position) {
+    var banks = hosted ? hostedBanks : [window.CN_MATH_BANK, window.AMC_BANK];
+    return banks.find(function (b) { return b && b.id === id && Array.isArray(b.questions) && b.questions.length; }) ||
+      {id: id, label: position === 0 ? 'Chinese curriculum (English)' : 'AMC contests', questions: []};
+  });
+  var supplementalBanks = new Map((window.MathPracticeBankManifest || []).map(function (entry) {
+    return [entry.id, {...entry, label: entry.id === 'im_first' ? 'Illustrative Mathematics (first edition)' : entry.name, questions: [], supplemental: true}];
+  }));
+  var repositories = ['ks2', 'naep', 'im_first', 'cemc', 'oatutor'].map(function (id) { return supplementalBanks.get(id); }).filter(Boolean);
+  var otherBank = {id: 'other', label: 'Other', questions: [], supplemental: true};
+  var BANK = BANKS[0], repositoryId = '', sourceSelectionSerial = 0;
+  var pendingBanks = new Map(), supplementalRangeSize = 100;
+  var supplementalVersion = new URL($('practiceBankManifest').src).search;
+  function usesGradeNavigation(bank) { return bank.id === 'cn-math'; }
   var questionIndex = Object.create(null);
-  BANKS.forEach(function (bank) { bank.questions.forEach(function (q) { questionIndex[q.id] = { question: q, bank: bank }; }); });
+  function indexBank(bank) {
+    bank.questions.forEach(function (q) {
+      if (bank.supplemental) q.figuresBase = bank.figuresBase;
+      questionIndex[q.id] = {question: q, bank: bank};
+    });
+  }
+  BANKS.forEach(indexBank);
+  function supplementalBankForQuestion(id) {
+    var sourceId = id && id.includes('__') && id.split('__', 1)[0];
+    return sourceId && [...supplementalBanks.values()].find(function (bank) { return bank.sourceIds.includes(sourceId); });
+  }
+  function loadSupplementalBank(bank) {
+    if (bank.questions.length) return Promise.resolve();
+    if (!pendingBanks.has(bank.id)) {
+      var pending = new Promise(function (resolve, reject) {
+        var script = document.createElement('script');
+        script.src = bank.script + supplementalVersion;
+        script.onerror = function () { script.remove(); reject(new Error('Bank script could not load')); };
+        script.onload = function () {
+          script.remove();
+          var data = window.MathPracticeBankData?.[bank.id];
+          if (!Array.isArray(data?.questions) || data.questions.length !== bank.count) {
+            reject(new Error('Practice data is incomplete'));
+            return;
+          }
+          bank.questions = data.questions.slice().sort(function (a, b) { return a.number - b.number; });
+          indexBank(bank);
+          resolve();
+        };
+        document.head.appendChild(script);
+      }).finally(function () { pendingBanks.delete(bank.id); });
+      pendingBanks.set(bank.id, pending);
+    }
+    return pendingBanks.get(bank.id);
+  }
+  function restoreNotebookBanks() {
+    var missing = new Set(Object.keys(notebook).filter(function (id) {
+      return !questionIndex[id] && !notebook[id].removed && (notebook[id].saved || notebook[id].last);
+    }).map(supplementalBankForQuestion).filter(Boolean));
+    if (missing.size) Promise.allSettled([...missing].map(loadSupplementalBank)).then(renderNotebook);
+  }
   var pool = {
     bank: $("selBank"),
     year: $("selYear"), level: $("selLevel"), batch: $("selBatch"), num: $("selNum"),
-    display: $("poolDisplay"), body: $("questionBody"), hint: $("poolHint"), count: $("poolCount"), reset: $("poolReset")
+    repository: $('selRepository'), split: $('selSplit'), range: $('selRange'), supplementalProblem: $('selSupplementalProblem'),
+    display: $("poolDisplay"), body: $("questionBody"), hint: $("poolHint"), count: $("poolCount"), reset: $("poolReset"), status: $('bankStatus')
   };
   var poolPrompt = 'Choose a year and problem to begin.';
-  function setPoolHint(source) { pool.hint.removeAttribute('data-i18n'); pool.hint.replaceChildren(uiEl('span', null, source)); }
+  function setPoolHint(source) {
+    pool.hint.hidden = !source;
+    pool.hint.removeAttribute('data-i18n');
+    pool.hint.replaceChildren(uiEl('span', null, source));
+  }
 
   var notebookUndoEntry = null;
   function writeNotebook(current) {
@@ -1629,7 +1702,7 @@ footer .source-credits p { margin: 0; }
   function saveSubmission(snapshot) {
     lastSubmitted = snapshot;
     var id = snapshot.question.id, now = Date.now();
-    if (practiceRecommendations) {
+    if (practiceRecommendations && ['cn-math', 'amc'].includes(snapshot.bank)) {
       var notebookAnswer = notebook[id]?.last?.answer;
       var previousAnswer = snapshot.turn?.previous?.answer ?? notebookAnswer;
       // An unchanged resubmission can still refer to an earlier, different turn.
@@ -1731,7 +1804,7 @@ footer .source-credits p { margin: 0; }
     uiText($('earlierAnswer'), function () { return entry.first ? (answerTools.hasAnswer(entry.first.answer) ? t('Your first answer: {answer}', {answer: answerTools.format(entry.first.answer)}) : t('No answer recorded for this approach.')) : ''; });
     $('earlierWork').textContent = entry.first ? entry.first.thoughts : '';
     $('earlierWork').hidden = !firstThinking;
-    var group = qsIn(pool.level.value, +pool.year.value, pool.batch.value).slice().sort(function (a,b) { return a.number - b.number; });
+    var group = problemGroup();
     var index = group.findIndex(function (item) { return item.id === q.id; });
     $('previousProblem').disabled = index <= 0;
     $('nextProblem').disabled = index < 0 || index >= group.length - 1;
@@ -1739,19 +1812,34 @@ footer .source-credits p { margin: 0; }
   }
   function goToQuestion(q) {
     var source = questionIndex[q.id];
-    if (!source) return;
+    if (!source) return Promise.resolve(null);
+    sourceSelectionSerial++;
     saveDraft();
-    BANK = source.bank; pool.bank.value = BANK.id || 'amc'; configureBank(); fillYears();
-    pool.level.value = q.level; fillYearOptions();
-    pool.year.value = String(usesGradeNavigation(BANK) ? q.grade : q.year); fillBatches();
-    pool.batch.value = q.batch; fillNums();
-    pool.num.value = String(q.number); var loaded = loadQuestion();
+    var sameBank = BANK === source.bank;
+    BANK = source.bank;
+    configureBank();
+    if (BANK.supplemental) {
+      selectPickerTab('source');
+      if (sameBank) pool.supplementalProblem.value = q.id;
+      if (!sameBank || pool.supplementalProblem.value !== q.id) fillSupplementalSelectors(q);
+    } else {
+      fillYears();
+      pool.level.value = q.level; fillYearOptions();
+      pool.year.value = String(usesGradeNavigation(BANK) ? q.grade : q.year); fillBatches();
+      pool.batch.value = q.batch; fillNums();
+      pool.num.value = String(q.number);
+    }
+    var loaded = loadQuestion();
     $('problemPicker').open = false;
     return loaded;
   }
+  function problemGroup() {
+    if (BANK.supplemental) return BANK.id === 'gsm8k' ? BANK.questions.filter(function (q) { return q.batch === pool.split.value; }) : BANK.questions;
+    return qsIn(pool.level.value, +pool.year.value, pool.batch.value).sort(function (a, b) { return a.number - b.number; });
+  }
   function moveProblem(step) {
     if (!currentQuestion) return;
-    var group = qsIn(pool.level.value, +pool.year.value, pool.batch.value).slice().sort(function (a,b) { return a.number - b.number; });
+    var group = problemGroup();
     var index = group.findIndex(function (q) { return q.id === currentQuestion.id; });
     if (group[index + step]) goToQuestion(group[index + step]).then(focusQuestion);
   }
@@ -1773,8 +1861,8 @@ footer .source-credits p { margin: 0; }
     if (currentQuestion) openSolution(currentQuestion, this);
   });
   $('beginPractice').addEventListener('click', function () {
-    var candidates = BANK.questions.filter(function (q) { return q.level === pool.level.value; }).slice();
-    candidates.sort(function (a,b) { return (b.year || 0) - (a.year || 0) || a.number - b.number; });
+    var candidates = BANK.supplemental ? supplementalRange() : BANK.questions.filter(function (q) { return q.level === pool.level.value; })
+      .sort(function (a,b) { return (b.year || 0) - (a.year || 0) || a.number - b.number; });
     if (candidates[0]) goToQuestion(candidates[0]).then(focusQuestion);
   });
 
@@ -1894,6 +1982,10 @@ footer .source-credits p { margin: 0; }
     clearQuestion();
   }
   function currentQ() {
+    if (BANK.supplemental) {
+      var source = questionIndex[pool.supplementalProblem.value];
+      return source?.bank === BANK ? source.question : null;
+    }
     return qsIn(pool.level.value, +pool.year.value, pool.batch.value)
       .find(function (q) { return q.number === +pool.num.value; }) || null;
   }
@@ -1923,7 +2015,7 @@ footer .source-credits p { margin: 0; }
         });
       } catch (e) { /* rendering must never break the instrument */ }
     }
-    node.querySelectorAll(".math-block, .figure-link, .choice-figure").forEach(function (block) {
+    node.querySelectorAll(".math-block, .figure-link, .choice-figure, .solution-table-wrap").forEach(function (block) {
       var before = block.previousSibling, after = block.nextSibling;
       if (before && before.nodeType === 3) before.textContent = before.textContent.replace(/\s+$/, "");
       if (after && after.nodeType === 3) after.textContent = after.textContent.replace(/^\s+/, "");
@@ -2021,7 +2113,7 @@ footer .source-credits p { margin: 0; }
       return figurePaths(q.choices[L]).every(function (p) { return shared.indexOf(p) >= 0; }) &&
         (!plain || /^(?:Image|Graph|Figure|Histogram)\s+\(?[A-E]\)?\s+(?:shown\s+)?in$/i.test(plain));
     })) shared = []; // Shared diagrams with distinct text/images are still individual choices.
-    box.appendChild(richContent(q.question, q, "q-text", shared));
+    box.appendChild(formattedContent(q.question, q, shared));
     if (gradingNotice !== null) {
       var gradingLine = el('p', 'pool-hint'); gradingLine.appendChild(uiEl('span', null, 'Not graded. ')); gradingLine.appendChild(el('span', null, gradingNotice)); box.appendChild(gradingLine);
     }
@@ -2060,16 +2152,14 @@ footer .source-credits p { margin: 0; }
       }
     }
     if (q.editorialNote) box.appendChild(el("p", "pool-hint", q.editorialNote.split(" See processing code/")[0]));
+    if (BANK.supplemental) box.appendChild(questionSourceCredits(q, BANK));
 
     pool.body.replaceChildren(box);
     renderAnswerExample(q);
     pool.display.hidden = false;
-    typeset(box);
-    if (location.protocol !== 'file:') {
-      var questionURL = new URL(location.href);
-      questionURL.searchParams.set('problem', q.id);
-      history.replaceState(null, '', questionURL.href);
-    }
+    // These collections use explicit TeX delimiters and ordinary dollar prices.
+    typeset(box, BANK.supplemental === true);
+    updatePracticeURL(q);
   }
 
   /* ---------- solution window ---------- */
@@ -2090,7 +2180,46 @@ footer .source-credits p { margin: 0; }
   function solutionSourceURL(source) {
     return officialBookletPage(source.officialSolution) || httpURL(source.sourceURL || source.url);
   }
-  function methodCredit(source) {
+  function creditLink(label, url) {
+    var link = uiEl('a', 'source-credit-link', label);
+    link.href = url;
+    link.target = '_blank'; link.rel = 'noopener noreferrer';
+    return link;
+  }
+  function appendLicense(line, source) {
+    if (!source.license) return;
+    if (line.childNodes.length) line.appendChild(document.createTextNode(' · '));
+    var url = httpURL(source.licenseURL);
+    line.appendChild(url ? creditLink(source.license, url) : document.createTextNode(source.license));
+  }
+  function questionSourceCredits(q, bank) {
+    var details = el('details', 'question-credits');
+    details.appendChild(uiEl('summary', null, 'Question source and credits'));
+    var source = q.sourceInfo || {};
+    if (source.attribution) details.appendChild(el('p', null, source.attribution));
+    var links = el('p');
+    var origin = httpURL(source.sourceURL || q.sourceURL);
+    if (origin) links.appendChild(creditLink('Original source', origin));
+    appendLicense(links, source);
+    if (links.childNodes.length) links.appendChild(document.createTextNode(' · '));
+    links.appendChild(creditLink('Source notes', sourceCreditsURL(bank)));
+    details.appendChild(links);
+    if (source.adaptation || source.changes) details.appendChild(el('p', null, source.adaptation || source.changes));
+    var seen = new Set();
+    Object.values(q.figureSources || {}).forEach(function (figure) {
+      var key = JSON.stringify([figure.sourceURL, figure.attribution, figure.licenseURL]);
+      if (seen.has(key)) return;
+      seen.add(key);
+      var line = el('p');
+      var url = httpURL(figure.sourceURL);
+      line.appendChild(url ? creditLink('Figure source', url) : uiEl('span', null, 'Figure source'));
+      if (figure.attribution) line.appendChild(document.createTextNode(' · ' + figure.attribution));
+      appendLicense(line, figure);
+      details.appendChild(line);
+    });
+    return details;
+  }
+  function methodCredit(source, supplemental) {
     if (!source) return null;
     var label = typeof source.source === 'string' ? source.source : typeof source.label === 'string' ? source.label : '';
     var status = typeof source.reviewStatus === 'string' ? source.reviewStatus : '';
@@ -2102,6 +2231,10 @@ footer .source-credits p { margin: 0; }
       var link = el('a', null, label); link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer'; line.appendChild(link);
     } else if (label) line.appendChild(document.createTextNode(label));
     if (status) line.appendChild(document.createTextNode((label ? '. ' : '') + status));
+    if (supplemental) {
+      if (source.attribution && source.attribution !== label) line.appendChild(document.createTextNode(' · ' + source.attribution));
+      appendLicense(line, source);
+    }
     return line;
   }
   function displaySolution(text) {
@@ -2115,8 +2248,8 @@ footer .source-credits p { margin: 0; }
     });
     return cells.map(function (cell) { return cell.trim(); });
   }
-  function workedContent(text, q) {
-    if (!/^\s*\|[^\n]+\|\s*$/m.test(text)) return richContent(text, q, 'q-text');
+  function formattedContent(text, q, skip) {
+    if (!/^\s*\|[^\n]+\|\s*$/m.test(text)) return richContent(text, q, 'q-text', skip);
     var content = el('div', 'q-text rich-content');
     text.split(/(\r?\n\s*\r?\n)/).forEach(function (part) {
       var lines = part.trim().split(/\r?\n/);
@@ -2136,7 +2269,7 @@ footer .source-credits p { margin: 0; }
           return;
         }
       }
-      var fragment = richContent(part, q);
+      var fragment = richContent(part, q, '', skip);
       while (fragment.firstChild) content.appendChild(fragment.firstChild);
     });
     return content;
@@ -2157,7 +2290,13 @@ footer .source-credits p { margin: 0; }
       var formatted = answerTools.format(value); answerLine.appendChild(richContent(kind === 'choice' || kind === 'multiSelect' ? '(' + formatted + ')' : formatted, q));
     });
     if (referenceLabel === 'Historical printed key: ') answerLine.appendChild(document.createTextNode('.'));
-    body.appendChild(answerLine);
+    var comparisonOnly = q.responseType === 'self' && [
+      'Compare your answer and reasoning with the worked solution.',
+      'Compare your result and reasoning with a worked solution.'
+    ].includes(q.answerRubric);
+    if (!comparisonOnly || !q.solutionMethods?.some(function (method) { return method.explanation?.trim(); })) {
+      body.appendChild(answerLine);
+    }
     if (gradingNotice !== null) body.appendChild(el('p', 'pool-hint', gradingNotice));
     var methods = Array.isArray(q.solutionMethods) ? q.solutionMethods : null;
     var written = methods && methods.filter(function(method){return typeof method.explanation === 'string' && method.explanation.trim();});
@@ -2172,8 +2311,8 @@ footer .source-credits p { margin: 0; }
       written.forEach(function(method){
         var section = el('section', 'solution-method');
         section.appendChild(method.label || method.title ? el('h3', 'solution-method-title', method.label || method.title) : uiEl('h3', 'solution-method-title', 'Worked explanation'));
-        section.appendChild(workedContent(displaySolution(method.explanation), q));
-        var credit = methodCredit(method.provenance);
+        section.appendChild(formattedContent(displaySolution(method.explanation), q));
+        var credit = methodCredit(method.provenance, questionIndex[q.id].bank.supplemental);
         if (credit) section.appendChild(credit);
         var refs = method.provenance && method.provenance.references;
         if (Array.isArray(refs)) {
@@ -2188,7 +2327,7 @@ footer .source-credits p { margin: 0; }
           });
           if (links.childElementCount > 1) section.appendChild(links);
         }
-        typeset(section, method.provenance && method.provenance.source === 'Original Math Practice solution');
+        typeset(section, questionIndex[q.id].bank.supplemental === true || method.provenance && method.provenance.source === 'Original Math Practice solution');
         body.appendChild(section);
       });
     } else body.appendChild(displaySol ? richContent(displaySol, q, "q-text") : uiEl("p", "q-text", solutionMessage));
@@ -2290,10 +2429,16 @@ footer .source-credits p { margin: 0; }
   }
 
   function initPool() {
-    setOptions(pool.bank, BANKS.map(function (b) { return [b.id || 'amc', b.label || 'AMC contests']; }));
-    pool.bank.value = BANK.id || 'amc';
+    var choices = BANKS.concat(supplementalBanks.get('gsm8k') || [], otherBank);
+    setOptions(pool.bank, choices.map(function (b) { return [b.id, b.label || 'AMC contests']; }));
+    setOptions(pool.repository, repositories.map(function (b) { return [b.id, b.label]; }), 'Choose a repository');
     pool.bank.addEventListener('change', function () {
-      clearQuestion(); BANK = BANKS.find(function (b) { return b.id === pool.bank.value; }); configureBank(); fillYears();
+      var choice = pool.bank.value;
+      chooseSource(choice === 'other' ? supplementalBanks.get(repositoryId) || otherBank : choices.find(function (b) { return b.id === choice; }));
+    });
+    pool.repository.addEventListener('change', function () {
+      repositoryId = pool.repository.value;
+      chooseSource(supplementalBanks.get(repositoryId) || otherBank);
     });
     pool.level.addEventListener("change", function () { fillYearOptions(); });
     pool.year.addEventListener("change", function () { fillBatches(); });
@@ -2301,20 +2446,132 @@ footer .source-credits p { margin: 0; }
     pool.num.addEventListener("change", function () { loadQuestion(); });
     pool.reset.addEventListener("click", function () {
       fillYears();   /* re-selects AMC 8 and clears the rest */
+      updatePracticeURL();
       pool.level.focus();
     });
+    pool.split.addEventListener('change', function () { fillSupplementalRanges(); clearQuestion(); updatePracticeURL(); });
+    pool.range.addEventListener('change', function () { fillSupplementalProblems(); clearQuestion(); updatePracticeURL(); });
+    pool.supplementalProblem.addEventListener('change', function () { if (!pool.supplementalProblem.value) updatePracticeURL(); loadQuestion(); });
     configureBank(); fillYears();
+    restoreNotebookBanks();
+  }
+
+  function updatePracticeURL(q) {
+    if (location.protocol === 'file:') return;
+    var url = new URL(location.href);
+    if (BANK.supplemental) url.searchParams.set('bank', BANK.id);
+    else url.searchParams.delete('bank');
+    if (q) url.searchParams.set('problem', q.id);
+    else url.searchParams.delete('problem');
+    if (url.href !== location.href) history.replaceState(null, '', url.href);
+  }
+  function sourceCreditsURL(bank) { return 'dataset-acknowledgements.html' + supplementalVersion + '#' + bank.id; }
+  async function chooseSource(bank, linkedId, fromLocation) {
+    if (!bank) return;
+    var serial = ++sourceSelectionSerial;
+    clearQuestion();
+    BANK = bank;
+    configureBank();
+    if (!fromLocation) updatePracticeURL();
+    if (bank.supplemental && bank !== otherBank && !bank.questions.length) {
+      pool.status.replaceChildren(uiEl('span', null, function () { return t('Loading {bank}…', {bank: t(bank.label)}); }));
+      try { await loadSupplementalBank(bank); }
+      catch (_) {
+        if (serial !== sourceSelectionSerial) return;
+        setPoolHint('This question bank could not load. Try again in the source picker.');
+        var retry = uiEl('button', 'ghost', 'Try again');
+        retry.type = 'button';
+        retry.addEventListener('click', function () {
+          (bank.id === 'gsm8k' ? pool.bank : pool.repository).focus();
+          chooseSource(bank, linkedId, fromLocation);
+        });
+        pool.status.replaceChildren(uiEl('span', null, 'Could not load this question bank.'), retry);
+        return;
+      }
+      if (serial !== sourceSelectionSerial) return;
+      configureBank();
+    }
+    if (!bank.supplemental) fillYears();
+    else if (bank.questions.length) fillSupplementalSelectors();
+    if (linkedId) {
+      var source = questionIndex[linkedId];
+      if (source?.bank === bank) return goToQuestion(source.question);
+      setPoolHint('This problem is unavailable. Choose another problem from the question bank.');
+    }
+  }
+
+  function supplementalProblemName(q, bank) {
+    var number = bank.id === 'gsm8k' ? q.sourceNumber || q.number : q.number;
+    var numbered = t('Problem {number}', {number: number});
+    var label = q.sourceInfo?.label;
+    if (bank.id === 'gsm8k' || !label) return numbered;
+    return bank.id === 'oatutor' ? numbered + ' · ' + label : label;
+  }
+  function gsmProblemRange(q) { return Math.floor(((q.sourceNumber || q.number) - 1) / supplementalRangeSize); }
+  function gsmSplitLabel(split) { return split === 'train' ? 'Training set' : 'Test set'; }
+  function supplementalRange() {
+    var group = problemGroup();
+    return BANK.id === 'gsm8k' ? group.filter(function (q) { return gsmProblemRange(q) === +pool.range.value; }) : group;
+  }
+  function fillSupplementalProblems(q) {
+    var bank = BANK;
+    setOptions(pool.supplementalProblem, supplementalRange().map(function (item) {
+      return [item.id, function () { return supplementalProblemName(item, bank); }];
+    }), 'Choose problem');
+    pool.supplementalProblem.value = q?.id || '';
+  }
+  function fillSupplementalRanges(q) {
+    var group = problemGroup();
+    var ranges = uniq(group.map(gsmProblemRange));
+    var last = group.at(-1);
+    setOptions(pool.range, ranges.map(function (index) {
+      var start = index * supplementalRangeSize + 1;
+      var end = Math.min(start + supplementalRangeSize - 1, last.sourceNumber || last.number);
+      return [index, {key: '{start} to {end}', params: {start: start, end: end}}];
+    }));
+    pool.range.value = q ? String(gsmProblemRange(q)) : String(ranges[0]);
+    fillSupplementalProblems(q);
+  }
+  function fillSupplementalSelectors(q) {
+    if (BANK.id === 'gsm8k') {
+      var splits = ['train', 'test'].filter(function (split) { return BANK.questions.some(function (item) { return item.batch === split; }); });
+      setOptions(pool.split, splits.map(function (split) { return [split, gsmSplitLabel(split)]; }));
+      pool.split.value = q?.batch || splits[0] || '';
+      fillSupplementalRanges(q);
+    } else fillSupplementalProblems(q);
   }
 
   function configureBank() {
     var cn = BANK.id === 'cn-math';
     var curriculum = usesGradeNavigation(BANK);
-    uiText(pool.count, {key: cn ? '{count} English questions' : curriculum ? (BANK.questions.length === 1 ? '{count} question' : '{count} questions') : '{count} problems banked', params: {count: BANK.questions.length}});
-    uiText($('yearLabel'), curriculum ? 'Grade / unit' : 'Year');
-    uiText($('batchLabel'), curriculum ? 'Topic' : 'Batch');
-    $('poolSelectors').dataset.bank = BANK.id || 'amc';
-    $('poolSelectors').dataset.navigation = curriculum ? 'curriculum' : 'contest';
-    poolPrompt = cn ? 'Explore a curriculum topic, or start with a problem below.' : curriculum ? 'Explore a topic, or start with a problem below.' : 'Start with an AMC 8 problem, or browse the collection above.';
+    var supplemental = BANK.supplemental, gsm = BANK.id === 'gsm8k', other = BANK === otherBank;
+    var ready = BANK.questions.length > 0, usingRepository = supplemental && !gsm && !other;
+    if (usingRepository) repositoryId = BANK.id;
+    pool.bank.value = usingRepository ? 'other' : BANK.id;
+    $('repositoryField').hidden = pool.bank.value !== 'other';
+    pool.repository.value = usingRepository ? BANK.id : '';
+    $('poolSelectors').hidden = !!supplemental || !ready;
+    $('supplementalSelectors').hidden = !supplemental || !ready;
+    $('supplementalSelectors').dataset.mode = gsm ? 'gsm8k' : 'repository';
+    $('splitField').hidden = !gsm;
+    $('rangeField').hidden = !gsm;
+    $('beginPractice').disabled = !ready;
+    pool.status.replaceChildren();
+    var count = supplemental ? BANK.count : BANK.questions.length;
+    $('poolCountLine').hidden = !count;
+    uiText(pool.count, {key: cn ? '{count} English questions' : supplemental ? (count === 1 ? '{count} question' : '{count} questions') : '{count} problems banked', params: {count: count}});
+    var sourceNotice = $('bankNotice');
+    sourceNotice.hidden = !supplemental || other;
+    if (supplemental && !other) sourceNotice.href = sourceCreditsURL(BANK);
+    if (supplemental) {
+      poolPrompt = other ? 'Choose a repository to find a problem.' : ready ? 'Choose a problem from this collection or start below.' : '';
+    } else {
+      uiText($('yearLabel'), curriculum ? 'Grade / unit' : 'Year');
+      uiText($('batchLabel'), curriculum ? 'Topic' : 'Batch');
+      $('poolSelectors').dataset.bank = BANK.id;
+      $('poolSelectors').dataset.navigation = curriculum ? 'curriculum' : 'contest';
+      poolPrompt = !ready ? 'Practice data could not load. Check your connection and reload this page.' : cn ? 'Explore a curriculum topic, or start with a problem below.' : 'Start with an AMC 8 problem, or browse the collection above.';
+    }
     setPoolHint(poolPrompt);
   }
   function httpURL(value) {
@@ -2322,7 +2579,9 @@ footer .source-credits p { margin: 0; }
     catch (_) { return null; }
   }
   function questionTitle(q) {
-    return usesGradeNavigation(questionIndex[q.id].bank) ? gradeName(q.unit) + ' · ' + topicName(q) + ' · ' + t('Problem {number}', {number: q.number}) : q.level + ' ' + q.year + (q.batch !== 'NA' ? ' ' + q.batch : '') + ' · ' + t('Problem {number}', {number: q.number});
+    var bank = questionIndex[q.id].bank;
+    if (bank.supplemental) return t(bank.label) + ' · ' + (bank.id === 'gsm8k' ? t(gsmSplitLabel(q.batch)) + ' · ' : '') + supplementalProblemName(q, bank);
+    return usesGradeNavigation(bank) ? gradeName(q.unit) + ' · ' + topicName(q) + ' · ' + t('Problem {number}', {number: q.number}) : q.level + ' ' + q.year + (q.batch !== 'NA' ? ' ' + q.batch : '') + ' · ' + t('Problem {number}', {number: q.number});
   }
 
   function el(tag, cls, text) {
@@ -2627,7 +2886,7 @@ footer .source-credits p { margin: 0; }
     canBrowse: function () { return BANKS.some(function (b) { return b.id === BANK.id ? b.questions.length > 1 : b.questions.length > 0; }); },
     browse: function () { $('problemPicker').open = true; selectPickerTab('topic', true); },
     context: function () {
-      if (!currentQuestion) return null;
+      if (!currentQuestion || BANK.supplemental) return null;
       var answer = lastSubmitted?.question === currentQuestion ? lastSubmitted.answer : notebook[currentQuestion.id]?.last?.answer;
       var scored = answerTools.hasAnswer(answer) && ['correct', 'wrong', 'partial'].includes(answerTools.classify(currentQuestion, answer));
       return {question: currentQuestion, bank: BANK.id, scored,
@@ -2638,9 +2897,9 @@ footer .source-credits p { margin: 0; }
   });
   feedback = new PracticeFeedback({
     question: function () { return currentQuestion; }, answer: function () { return selectedAnswer; },
-    bank: function () { return BANK.id; },
-    layer: function () { return practicePath ? practicePath.layer() : 'ailleo'; },
-    curriculumNodeId: function () { return practicePath ? hosted ? practicePath.nodeId(currentQuestion && currentQuestion.id) : practicePath.nodeId() : null; },
+    bank: questionServiceBank,
+    layer: function () { return practicePath && !BANK.supplemental ? practicePath.layer() : 'ailleo'; },
+    curriculumNodeId: function () { return practicePath && !BANK.supplemental ? hosted ? practicePath.nodeId(currentQuestion && currentQuestion.id) : practicePath.nodeId() : null; },
     draft: els.thoughts, note: els.submissionNote, panel: els.panel, panelStatus: els.panelStatus,
     results: els.resultsBody, announce: els.announcement, el: el, percent: fmtPct, typeset: typeset,
     connection: setConnection, collapse: setCollapsed, setRunning: setRunning, saveDraft: saveDraft, saveContext: saveContext,
@@ -2652,7 +2911,7 @@ footer .source-credits p { margin: 0; }
     updated: updateSubmissionNote
   });
   speechInput = new window.MathPracticeSpeech({
-    question: function () { return currentQuestion; }, bank: function () { return BANK.id; },
+    question: function () { return currentQuestion; }, bank: questionServiceBank,
     record: $("speechRecord"), recordLabel: $("speechRecordLabel"), recordTime: $("speechRecordTime"), recordProgress: $("speechRecordProgress"), cancel: $("speechCancel"), retry: $("speechRetry"), status: $("speechStatus"), draft: els.thoughts,
     isEnabled: function () { return !!currentQuestion; },
     isConfigured: function () { return experimentalEnabled() && connections.speech.configured === true; },
@@ -2671,11 +2930,12 @@ footer .source-credits p { margin: 0; }
       if (feedback) feedback.revisionChanged(); saveDraft(); updateSubmissionNote();
     }
   });
-  if (location.search) {
-    var linkedId = new URLSearchParams(location.search).get('problem');
-    if (linkedId && Object.hasOwn(questionIndex, linkedId)) goToQuestion(questionIndex[linkedId].question);
-  }
-  if (!currentQuestion && !window.matchMedia?.('(max-width: 620px)').matches) $('problemPicker').open = true;
+  var route = new URLSearchParams(location.search);
+  var linkedId = route.get('problem'), linkedBankId = route.get('bank');
+  var linkedBank = supplementalBankForQuestion(linkedId) || supplementalBanks.get(linkedBankId) || (linkedBankId === 'other' ? otherBank : null);
+  if (linkedBank || !window.matchMedia?.('(max-width: 620px)').matches) $('problemPicker').open = true;
+  if (linkedId && questionIndex[linkedId]) goToQuestion(questionIndex[linkedId].question);
+  else if (linkedBank) chooseSource(linkedBank, linkedId, true);
   Object.keys(connections).forEach(ping);
 })();
 </script>

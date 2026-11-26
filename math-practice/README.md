@@ -1,6 +1,6 @@
-# Math Practice UI 2.3.2
+# Math Practice UI 2.3.3
 
-**[Open Math Practice online](https://math-practice.ailleo.net/)** to practice 8,790 questions. Choose **Try a problem** for a starting question, or **Browse** to pick a contest, curriculum topic, or mathematical idea.
+**[Open Math Practice online](https://math-practice.ailleo.net/)** to practice 18,687 questions across eight sources. Choose **Try a problem** for a starting question, or **Browse** to pick a contest, curriculum topic, or mathematical idea.
 
 | Practice a question | Configure the three model roles |
 |:---:|:---:|
@@ -8,7 +8,7 @@
 
 ## Start practicing
 
-The online edition needs only a browser and an internet connection. It downloads a browsing index, then loads each question, its worked methods, and any figures you open. Type your answer and reasoning, submit to check supported answers against the key, or open **Explore solution** to read a method. Drafts and saved problems stay in that browser.
+The online edition needs only a browser and an internet connection. Chinese curriculum and AMC problems load individually. GSM8K and the five repositories under **Other** load when selected. Type your answer and reasoning, submit to check supported answers against the key, or open **Explore solution** to read a method. Unsubmitted drafts stay in the open tab. Saved problems stay in this browser.
 
 For an app icon, use your browser’s **Install** option where available. On iPhone, open the site in Safari and choose **Share → Add to Home Screen**. New questions still load online.
 

@@ -1,0 +1,40 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ground); color: var(--ink); font: 1rem/1.6 var(--font); }
+::selection { background: var(--selection); color: var(--selection-ink); }
+a { color: var(--accent); text-underline-offset: .18em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+:root:not([data-language="zh-CN"]) .copy-cn,
+:root[data-language="zh-CN"] .copy-en { display: none; }
+
+.credits-page { max-width: 68rem; margin-inline: auto; padding: 0 clamp(1rem, 4vw, 2rem) 2.5rem; }
+.credits-header, .credits-footer { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.5rem; padding-block: 1rem; }
+.credits-header { justify-content: space-between; }
+.credits-header > a, .credits-footer > a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+.credits-intro { background: var(--surface); padding: clamp(1.25rem, 5vw, 3.5rem); }
+h1, h2, p { margin: 0; overflow-wrap: anywhere; }
+h1 { font-size: clamp(2rem, 5vw, 4.25rem); line-height: 1.12; letter-spacing: -.035em; }
+.credits-intro > p { max-width: 53ch; margin-block: .75rem 1.75rem; font-size: 1.125rem; }
+.credits-intro h2 { font-size: 1rem; margin-bottom: .25rem; }
+.credits-intro ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: .125rem 1rem; margin: 0; padding: 0; list-style: none; }
+.credits-intro nav a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+.credit { display: grid; grid-template-columns: minmax(11rem, 1fr) minmax(0, 2.7fr); gap: .625rem clamp(1rem, 3vw, 2rem); padding: clamp(1.125rem, 3vw, 1.85rem); }
+.credit:has(h2:target), .credit-support { background: var(--surface); }
+.credit h2 { align-self: start; font-size: 1.2rem; line-height: 1.3; scroll-margin-top: 1rem; }
+.credit > div { max-width: 73ch; }
+.credit p + p { margin-top: .5rem; }
+:root[data-language="zh-CN"] .credit > div > p.copy-en:first-child + p.copy-cn { margin-top: 0; }
+.credit-links { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.125rem; }
+.credit-links a { display: inline-flex; align-items: center; min-height: 1.5rem; }
+.license-notice { margin-top: .75rem; padding: .5rem .875rem; background: var(--accent-soft); }
+.license-notice summary { min-height: 1.75rem; cursor: pointer; }
+.license-text { margin: .5rem 0; }
+
+@media (max-width: 42rem) {
+  .credit { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 30rem) {
+  .credits-intro ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  h1 { font-size: clamp(1.75rem, 8.2vw, 2rem); }
+}

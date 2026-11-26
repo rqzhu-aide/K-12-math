@@ -250,8 +250,25 @@
     if (!object(result)) throw new Error(messages.selection);
     return result;
   }
-  async function teachingContext(question, body, signal) {
-    const context = question.tutorContext, layer = body.curriculumLayer || 'ailleo';
+  function tutorContext(question) {
+    if (question.tutorContext) return question.tutorContext;
+    // Supplementary collections are source-browsed. A worked method is a
+    // reference for the tutor; it does not establish a student's graph mastery.
+    if (!question.sourceId || question.sourceId !== question.id.split('__')[0]
+        || !question.sourceInfo || typeof question.question !== 'string') return null;
+    const methods = (question.solutionMethods || []).filter(method => method.explanation);
+    const solution = methods.map((method, i) => 'Method ' + (i + 1) + ': ' + method.label + '\n\n' + method.explanation).join('\n\n');
+    return {reference: {
+      question: question.question, choices: question.choices || {}, answer: question.answer,
+      solution, solutionAvailability: question.solutionAvailability || (solution ? 'present' : 'missing'),
+      solutionProvenance: {methods: methods.map(method => method.provenance)}, solutionOmittedReason: question.solutionOmittedReason || '',
+      responseType: question.responseType, acceptedAnswers: question.acceptedResponses || [],
+      ...(question.answerRubric ? {rubric: question.answerRubric} : {}),
+      rejectedAnswers: question.rejectedAnswers || [], unorderedAnswers: !!question.unorderedAnswers, answerForm: question.answerForm || null
+    }, teachingContextByLayer: {ailleo: {contextSource: 'displayed_task', candidateRoutes: []}}, reviewedCriterion: null};
+  }
+  async function teachingContext(question, body, signal, context) {
+    const layer = body.curriculumLayer || 'ailleo';
     const base = context && context.teachingContextByLayer && context.teachingContextByLayer[layer];
     if (!object(base)) throw new Error(messages.context);
     if (!body.curriculumNodeId) return base;
@@ -405,9 +422,9 @@
     if (!status().configured) throw new Error(messages.unconfigured);
     try {
       const value = await timed(controller && controller.signal, async signal => {
-        const data = await contract(signal), context = question.tutorContext;
+        const data = await contract(signal), context = tutorContext(question);
         if (!context || !context.reference) throw new Error(messages.context);
-        const teaching = await teachingContext(question, body, signal);
+        const teaching = await teachingContext(question, body, signal, context);
         const {names, images} = await figures(question, context.reference, signal);
         const known = window.MathPracticeAnswers.classify(question, body.answer);
         const prompt = JSON.stringify({reference: {...context.reference, knownAnswerCorrect: known === 'correct' ? true : known === 'wrong' ? false : null, knownAnswerCategory: known},

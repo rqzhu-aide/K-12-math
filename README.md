@@ -3,9 +3,9 @@
 [![Knowledge graph 1.0.0](https://img.shields.io/badge/Knowledge_graph-1.0.0-245984)](database/knowledge-graph/source/metadata.json)
 [![CN bank 2.0.0](https://img.shields.io/badge/CN_bank-2.0.0-427354)](database/cn-math-bank/VERSION)
 [![AMC bank 2.7.0](https://img.shields.io/badge/AMC_bank-2.7.0-996532)](database/amc-bank/VERSION)
-[![Math Practice UI 2.3.2](https://img.shields.io/badge/Math_Practice_UI-2.3.2-625395)](math-practice/VERSION)
+[![Math Practice UI 2.3.3](https://img.shields.io/badge/Math_Practice_UI-2.3.3-625395)](math-practice/VERSION)
 
-**[Open Math Practice online](https://math-practice.ailleo.net/)** to browse all 8,790 questions. The site loads the question you choose. No installation or account is needed.
+**[Open Math Practice online](https://math-practice.ailleo.net/)** to browse 18,687 questions across eight sources. No installation or account is needed.
 
 K-12-math is a mathematics study collection with **936 knowledge graph nodes (knowledge items), 3,355 Chinese curriculum questions, and 5,435 AMC questions**. Students can follow the Chinese curriculum, browse US Common Core standards, or explore concepts through the grade-independent **ailleo** map. A question can connect to several concepts, and different solution methods can use different sets of concepts.
 
@@ -16,11 +16,13 @@ K-12-math is a mathematics study collection with **936 knowledge graph nodes (kn
 | [Mathematics knowledge graph](database/knowledge-graph/) | 1.0.0 | Connects 936 concepts through 1,634 accepted relationships and links questions to the concepts they assess or use in a solution. |
 | [Chinese curriculum question bank](database/cn-math-bank/) | 2.0.0 | Contains 3,355 questions in English with answers and worked solutions, alongside the original Chinese material. |
 | [AMC question bank](database/amc-bank/) | 2.7.0 | Contains 5,435 questions from 195 competition papers, each with an answer key and a worked solution. |
-| [Math Practice UI](math-practice/) | 2.3.2 | Serves both question banks online and runs locally with optional voice input and AI tutoring. |
+| [Math Practice UI](math-practice/) | 2.3.3 | Serves eight question collections online and runs locally with optional voice input and AI tutoring. |
+
+GSM8K is the third source in the picker. Under **Other**, learners can choose England KS2, U.S. NAEP, Illustrative Mathematics, Waterloo CEMC, or OATutor. Each question has a worked solution and source credit. [Dataset acknowledgements](https://math-practice.ailleo.net/dataset-acknowledgements.html)
 
 ## Question counts
 
-The two banks contain **8,790 question entries**, all with worked solutions and graph annotations. Each appearance of a problem on a separate AMC paper counts as one entry.
+The Chinese curriculum and AMC banks contain **8,790 question entries**, all with worked solutions and graph annotations. Each appearance of a problem on a separate AMC paper counts as one entry.
 
 | CN curriculum | Questions | AMC contest family | Questions |
 |---|---:|---|---:|
@@ -52,7 +54,7 @@ See [UI and model setup](math-practice/README.md#optional-ai-connections) for su
 
 ## Further development and custom question banks
 
-All 8,790 questions with stored worked solutions use the compact English format published in [question-bank template 1.0.0](question-bank-template/). It records the prompt, choices, accepted answers, classification, sources, and the immediate knowledge nodes for each solution method. To use your own bank, prepare its questions in this format and import the folder into Math Practice. The template includes an importable example and the commands to check it.
+The 8,790 Chinese curriculum and AMC questions use the compact English format published in [question-bank template 1.0.0](question-bank-template/). It records the prompt, choices, accepted answers, classification, sources, and the immediate knowledge nodes for each solution method. To use your own bank, prepare its questions in this format and import the folder into Math Practice. The template includes an importable example and the commands to check it.
 
 Every stored AMC question now has a worked solution. The [AMC release notes](https://github.com/rqzhu-aide/K-12-math/releases/tag/amc-bank-v2.7.0) describe the final 236 AMC 12 explanations and their source credits.
 
