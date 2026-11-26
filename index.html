@@ -1849,7 +1849,7 @@ footer .source-credits p { margin: 0; }
     var l = pool.level.value;
     var curriculum = usesGradeNavigation(BANK);
     var years = uniq(qsIn(l, null, null).map(function (q) { return curriculum ? q.grade : q.year; })).sort(function (a, b) { return curriculum ? a-b : b-a; });
-    setOptions(pool.year, years.map(function (y) { var sample = qsIn(l,y,null)[0]; return [y, curriculum ? function () { return gradeName(sample.unit); } : y]; }), curriculum ? 'Choose grade / unit' : 'Choose year');
+    setOptions(pool.year, years.map(function (y) { var sample = qsIn(l,y,null)[0]; return [y, curriculum ? function () { return gradeName(sample.unit); } : y]; }), curriculum ? 'Select…' : 'Choose year');
     pool.year.value = "";
     fillBatches();
   }
@@ -2675,7 +2675,7 @@ footer .source-credits p { margin: 0; }
     var linkedId = new URLSearchParams(location.search).get('problem');
     if (linkedId && Object.hasOwn(questionIndex, linkedId)) goToQuestion(questionIndex[linkedId].question);
   }
-  if (!currentQuestion) $('problemPicker').open = true;
+  if (!currentQuestion && !window.matchMedia?.('(max-width: 620px)').matches) $('problemPicker').open = true;
   Object.keys(connections).forEach(ping);
 })();
 </script>

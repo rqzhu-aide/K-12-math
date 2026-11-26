@@ -57,7 +57,7 @@
     'Recent work': '最近作答', 'Draft': '草稿', '{count} approach submitted': '已提交 {count} 次思路', '{count} approaches submitted': '已提交 {count} 次思路',
     'Remove {title} from notebook': '从笔记本移除 {title}', 'Removed {title} from your notebook.': '已从笔记本移除 {title}。',
     'Your first answer: {answer}': '你最初的答案：{answer}', 'No answer recorded for this approach.': '这次尝试没有记录答案。',
-    'Primary': '小学', 'Junior Secondary': '初中', 'Senior Secondary': '高中', 'Elementary': '小学', 'Middle School': '初中', 'High School': '高中', 'Choose grade / unit': '选择年级 / 单元', '— year —': '选择年份', '— batch —': '选择批次', 'Choose topic': '选择主题', '— problem —': '选择题目', 'Problem {number}': '第 {number} 题',
+    'Primary': '小学', 'Junior Secondary': '初中', 'Senior Secondary': '高中', 'Elementary': '小学', 'Middle School': '初中', 'High School': '高中', 'Select…': '请选择', '— year —': '选择年份', '— batch —': '选择批次', 'Choose topic': '选择主题', '— problem —': '选择题目', 'Problem {number}': '第 {number} 题',
     'Choice {choice}': '选项 {choice}', 'Figure for this choice': '此选项的图形', 'Choice {choice}. Open figure at full size.': '选项 {choice}。打开原尺寸图形。', 'Problem figure. Open at full size.': '题目图形。打开原尺寸图形。',
     'Figure could not load. Check your connection and try opening this problem again.': '图形加载失败。请检查网络连接后重新打开此题。', 'Figure unavailable. Check the local question bank files.': '图形不可用。请检查本地题库文件。',
     'Explore solution': '查看解答', 'Not graded. ': '不计分。', 'Select all answers that apply.': '请选择所有符合条件的答案。', 'Answer choices (A to E):': '答案选项（A 至 E）：', 'Enlarge choice {choice}': '放大选项 {choice}', 'Enlarge choice {choice}, figure {number}': '放大选项 {choice}，图 {number}',
