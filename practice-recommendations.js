@@ -62,6 +62,10 @@
     'domain:number-theory': 'Number theory',
     'domain:counting-probability': 'Counting and probability'
   };
+  function domainLabel(question) {
+    return Array.isArray(question.domain) ?
+      domainLabels[question.domain.find(domain => Object.hasOwn(domainLabels, domain))] : undefined;
+  }
   const copy = {
     'Practice recommendations': '练习推荐',
     'Suggest my next problem': '推荐下一题',
@@ -80,6 +84,7 @@
     'Recommendations are paused for today. You can still choose problems yourself.': '今天的题目推荐已暂停，你仍可自己选题练习。',
     'Practice {topic}': '练习{topic}',
     'Change topic to {topic}': '换个主题，练习{topic}',
+    'Try a different problem': '试做另一道题',
     'Browse topics': '浏览练习主题',
     'Choose another topic': '换个主题',
     'Number and algebra': '数与代数',
@@ -153,9 +158,10 @@
       pause.hidden = (!stop && !suggestion) || !!stop?.budgetReached || paused;
       const choice = alternateQuestion() ? stop.choice : null;
       alternate.hidden = paused || (!stop && !suggestion && !manual && !failed) || (!choice && !o.canBrowse());
-      const label = alternate.hidden ? null : choice || (suggestion ? 'Choose another topic' : 'Browse topics');
+      const label = alternate.hidden ? null : choice?.topic ? choice :
+        (choice ? 'Try a different problem' : suggestion ? 'Choose another topic' : 'Browse topics');
       if (label && label !== renderedChoice) {
-        o.text(alternate, choice ? () => ({key: 'Change topic to {topic}', params: {topic: choice.topicId ?
+        o.text(alternate, choice?.topic ? () => ({key: 'Change topic to {topic}', params: {topic: choice.topicId ?
           window.MathPracticeTopics?.name(choice.topicId, choice.topic) || choice.topic :
           language?.t(choice.topic) || choice.topic}}) : label);
       }
@@ -292,10 +298,19 @@
         } else if (!item && ['visit_budget', 'no_suitable_question'].includes(reply.stopReason)) {
           const id = reply.alternateQuestionId;
           const alt = id && id !== ctx.question.id && o.lookup(id, ctx.bank);
-          const topic = alt && (ctx.bank === 'cn-math' ? alt.topic?.label :
-            domainLabels[alt.domain?.find(domain => Object.hasOwn(domainLabels, domain))]);
-          const choice = topic ? {problemId: id, topic, topicId: ctx.bank === 'cn-math' ? alt.topic.id : null} : null;
-          stop = {day, budgetReached: reply.stopReason === 'visit_budget', choice};
+          const amc = ctx.bank === 'amc';
+          const topic = alt && (amc ? domainLabel(alt) : alt.topic?.label);
+          const choice = alt && (amc || topic) ? {problemId: id, topic, topicId: amc ? null : alt.topic.id} : null;
+          const stopped = stop = {day, budgetReached: reply.stopReason === 'visit_budget', choice};
+          if (choice && amc && o.hosted && alt.questionURL && !Array.isArray(alt.domain)) {
+            // Older hosted catalogs omit domains. The question loader also caches the problem for opening it.
+            window.MathPracticeHosted?.question(alt).then(question => {
+              if (stop !== stopped || !requestCurrent() || day !== today() || question.id !== id ||
+                  (question.bank != null && question.bank !== ctx.bank)) return;
+              choice.topic = domainLabel(question);
+              render();
+            }).catch(() => { /* Keep the alternate actionable without a topic label. */ });
+          }
         } else if (!item && reply.stopReason === 'unsupported_scope') {
           message = 'There is no suggestion for this problem yet. You can choose another from the question bank.';
         } else {
