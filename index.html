@@ -7,7 +7,7 @@
 <script src="agreement.js?v=2.3.3"></script>
 <script src="theme.js?v=2.3.3"></script>
 <script src="language.js?v=2.3.3"></script>
-<script src="index-language.js?v=2.3.3"></script>
+<script src="index-language.js?v=2.3.3-bank-2.1.0"></script>
 <link rel="stylesheet" href="vendor/katex/katex.min.css">
 <style>
 
@@ -1410,19 +1410,19 @@ footer { border-top: 1px solid var(--hairline); text-align: left; padding-top: 1
   <footer>
     <span data-i18n="Connected services may receive text, audio or practice scores. Please do not include any confidential information.">Connected services may receive text, audio or practice scores. Please do not include any confidential information.</span>
     <a href="agreement.html?v=2.3.3" target="_blank" rel="noopener" data-i18n="Privacy & use agreement">Privacy &amp; use agreement</a>
-    <a href="dataset-acknowledgements.html?v=2.3.3" target="_blank" rel="noopener" data-i18n="Question banks and credits">Question banks and credits</a>
+    <a href="dataset-acknowledgements.html?v=2.3.3-bank-2.1.0" target="_blank" rel="noopener" data-i18n="Question banks and credits">Question banks and credits</a>
     <a href="LICENSE" target="_blank" rel="noopener" data-i18n="Software license">Software license</a>
     <span class="site-credit"><span data-i18n="Developed by Ruoqing Zhu · ">Developed by Ruoqing Zhu · </span><a href="https://github.com/rqzhu-aide" target="_blank" rel="noopener noreferrer">GitHub: rqzhu-aide</a></span>
   </footer>
 </div>
 
-<script src="hosted-config.js?v=2.3.3"></script>
+<script src="hosted-config.js?v=2.3.3-bank-2.1.0"></script>
 <script src="hosted-data.js?v=2.3.3"></script>
 <script src="online-connections.js?v=2.3.3"></script>
 <script src="online-turnstile.js?v=2.3.3"></script>
 <script src="online-services.js?v=2.3.3"></script>
-<script id="practiceBankManifest" src="practice-banks/manifest.js?v=2.3.3"></script>
-<script src="answer-check.js?v=2.3.3"></script>
+<script id="practiceBankManifest" src="practice-banks/manifest.js?v=2.3.3-bank-2.1.0"></script>
+<script src="answer-check.js?v=2.3.3-bank-2.1.0"></script>
 <script src="amc-figure-descriptions.js?v=2.3.3"></script>
 <script src="vendor/katex/katex.min.js"></script>
 <script src="vendor/katex/contrib/auto-render.min.js"></script>
@@ -1622,7 +1622,7 @@ footer { border-top: 1px solid var(--hairline); text-align: left; padding-top: 1
   var supplementalBanks = new Map((window.MathPracticeBankManifest || []).map(function (entry) {
     return [entry.id, {...entry, label: entry.id === 'im_first' ? 'Illustrative Mathematics (first edition)' : entry.name, questions: [], supplemental: true}];
   }));
-  var repositories = ['ks2', 'naep', 'im_first', 'cemc', 'oatutor'].map(function (id) { return supplementalBanks.get(id); }).filter(Boolean);
+  var repositories = [...supplementalBanks.values()].filter(function (bank) { return bank.id !== 'gsm8k'; });
   var otherBank = {id: 'other', label: 'Other', questions: [], supplemental: true};
   var BANK = BANKS[0], repositoryId = '', sourceSelectionSerial = 0;
   var pendingBanks = new Map(), supplementalRangeSize = 100;

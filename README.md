@@ -1,10 +1,10 @@
 # K-12-Math knowledge graph, questions and practice UI
 
 [![Knowledge graph 1.0.0](https://img.shields.io/badge/Knowledge_graph-1.0.0-245984)](https://github.com/rqzhu-aide/K-12-math/blob/main/database/knowledge-graph/source/metadata.json)
-[![Question Bank 2.0.0](https://img.shields.io/badge/Question_Bank-2.0.0-427354)](https://github.com/rqzhu-aide/K-12-math/releases/tag/ailleo-question-bank-v2.0.0)
+[![Question Bank 2.1.0](https://img.shields.io/badge/Question_Bank-2.1.0-427354)](https://github.com/rqzhu-aide/K-12-math/releases/tag/ailleo-question-bank-v2.1.0)
 [![Online Math Practice 2.3.3](https://img.shields.io/badge/Online_Math_Practice-2.3.3-625395)](https://math-practice.ailleo.net/build-info.json)
 
-**Ailleo Question Bank 2.0.0** brings together **18,687 questions from eight sources**, each with a worked solution. [Practice free online](https://math-practice.ailleo.net/) · [Browse the question bank directory](database/QUESTION_BANKS.md) · [Download the full question bank (ZIP)](https://github.com/rqzhu-aide/K-12-math/releases/download/ailleo-question-bank-v2.0.0/ailleo-question-bank-2.0.0.zip)
+**Ailleo Question Bank 2.1.0** brings together **18,789 questions from nine sources**, each with a worked solution. [Practice free online](https://math-practice.ailleo.net/) · [Browse the question bank directory](database/QUESTION_BANKS.md) · [Download the full question bank (ZIP)](https://github.com/rqzhu-aide/K-12-math/releases/download/ailleo-question-bank-v2.1.0/ailleo-question-bank-2.1.0.zip)
 
 The Ailleo knowledge graph connects 936 mathematical concepts. Students can follow the Chinese curriculum, browse US Common Core standards, or explore a mathematical idea across grade levels. A question can assess several concepts, and different solutions can use different skills.
 
@@ -13,14 +13,14 @@ The Ailleo knowledge graph connects 936 mathematical concepts. Students can foll
 | Component | Version | Contents |
 |---|---|---|
 | [Mathematics knowledge graph](https://github.com/rqzhu-aide/K-12-math/tree/main/database/knowledge-graph) | 1.0.0 | Connects 936 concepts through 1,634 accepted relationships and links questions to the concepts they assess or use in a solution. |
-| [Ailleo Question Bank](#question-counts) | 2.0.0 | Includes all eight sources, their worked solutions, figures and credits. |
+| [Ailleo Question Bank](#question-counts) | 2.1.0 | Includes all nine sources, their worked solutions, figures and credits. |
 | [Math Practice desktop edition on `main`](math-practice/README.md#run-locally) | [2.2.0](https://github.com/rqzhu-aide/K-12-math/blob/main/math-practice/VERSION) | Runs locally with 8,790 Chinese curriculum and AMC questions. You can also import your own bank. |
 
 ## Question counts
 
-See the question counts and coverage for all eight collections. [Question bank directory](database/QUESTION_BANKS.md) · [Bilingual directory, source credits and licenses](https://math-practice.ailleo.net/dataset-acknowledgements.html)
+See the question counts and coverage for all nine collections. [Question bank directory](database/QUESTION_BANKS.md) · [Bilingual directory, source credits and licenses](https://math-practice.ailleo.net/dataset-acknowledgements.html)
 
-Question and solution credits identify the original source and any Ailleo-authored explanation or arithmetic correction. The six newer collections include 9,916 worked methods for 9,897 questions.
+Question and solution credits identify the original source and any Ailleo-authored explanation or arithmetic correction. For BCcampus, the source files include the original exercise locations and the reviewed links to Ailleo concepts. [BCcampus collection](https://github.com/rqzhu-aide/K-12-math/tree/main/database/bccampus-bank)
 
 ### Chinese curriculum and AMC breakdown
 

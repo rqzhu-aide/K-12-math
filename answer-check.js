@@ -29,15 +29,22 @@
   }
   function numbers(value) {
     return value.normalize('NFKC').replace(/−/g, '-').split(',').map(function (item) {
-      var parts=item.trim().split('/');
+      item=item.trim();
+      var mixed=item.match(/^([+-]?)([0-9]+)[ \t]+([0-9]+)[ \t]*\/[ \t]*([0-9]+)$/);
+      if (mixed) {
+        var whole=BigInt(mixed[2]), numerator=BigInt(mixed[3]), denominator=BigInt(mixed[4]);
+        if (numerator<=0n || numerator>=denominator) throw new Error('A mixed number needs a positive proper fraction');
+        return {n:(whole*denominator+numerator)*(mixed[1]==='-'?-1n:1n),d:denominator};
+      }
+      var parts=item.split('/');
       if (parts.length>2) throw new Error('Unsupported number');
       var a=decimal(parts[0]),b=parts.length===2?decimal(parts[1]):{n:1n,d:1n};
       if (!b.n) throw new Error('Zero denominator');
       return {n:a.n*b.d*(b.n<0n?-1n:1n),d:a.d*(b.n<0n?-b.n:b.n)};
     });
   }
-  function formText(value) {
-    var text=normal(value, true);
+  function formText(value, keepSpaces = false) {
+    var text=keepSpaces ? value.normalize('NFKC').replace(/−/g, '-').trim() : normal(value, true);
     for (var pair of [['\\(','\\)'],['$','$']]) {
       if (text.startsWith(pair[0]) && text.endsWith(pair[1])) return text.slice(pair[0].length,-pair[1].length);
     }
@@ -50,7 +57,7 @@
     if (q.answerForm==='standard-monomial' && !/^[+-]?(?:[0-9]+(?:\.[0-9]*)?)?[A-Za-z]+$/.test(text)) return 'Write the numerical coefficient first and omit multiplication signs between the coefficient and letters.';
     if (q.answerForm==='ordered-list') {
       try {
-        var a=numbers(text.replace(/^\(|\)$/g,'')),b=numbers(q.answer);
+        var a=numbers(formText(answer, true).replace(/^\(|\)$/g,'')),b=numbers(q.answer);
         var equal=function(x,y){return x.n*y.d===y.n*x.d;};
         var compare=function(x,y){var d=x.n*y.d-y.n*x.d;return d<0n?-1:d>0n?1:0;};
         if (a.length===b.length && !a.every(function(x,i){return equal(x,b[i]);})) {
@@ -106,9 +113,11 @@
   function numericCategory(q, answer) {
     var a,b;
     try { a=numbers(answer);b=numbers(q.answer); } catch (_) { return null; }
-    var close = function(x,y) { var d=x.n*y.d-y.n*x.d; return (d<0n?-d:d)*1000000000n<=x.d*y.d; };
+    var ordered = q.answerForm==='ordered-list';
+    var exact = ordered && /^[+-]?[0-9]+(?:\s*,\s*[+-]?[0-9]+)*$/.test(q.answer.normalize('NFKC').replace(/−/g, '-').trim());
+    var close = function(x,y) { var d=x.n*y.d-y.n*x.d; return exact ? d===0n : (d<0n?-d:d)*1000000000n<=x.d*y.d; };
     var compare = function(x,y) { var d=x.n*y.d-y.n*x.d; return d<0n?-1:d>0n?1:0; };
-    if (q.unorderedAnswers || q.answerForm==='ordered-list') {
+    if (q.unorderedAnswers || ordered) {
       var inOrder=a.length===b.length && a.every(function(x,i){return close(x,b[i]);});
       a.sort(compare); b.sort(compare);
       for (var value of a) {
@@ -116,7 +125,7 @@
         if (i < 0) return 'wrong';
         b.splice(i,1);
       }
-      return b.length || (q.answerForm==='ordered-list' && !inOrder) ? 'partial' : enforceForm(q,answer,'correct');
+      return b.length || (ordered && !inOrder) ? 'partial' : enforceForm(q,answer,'correct');
     }
     if (a.length < b.length) return a.every(function(x,i){return close(x,b[i]);}) ? 'partial' : null;
     if (a.length === b.length && a.every(function (x, i) { return close(x,b[i]); })) return enforceForm(q,answer,'correct');

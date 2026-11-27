@@ -1,6 +1,6 @@
 # Source credits and licenses
 
-The directory covers the questions, worked solutions and diagrams in all eight collections. [Question bank directory, source credits and licenses](https://math-practice.ailleo.net/dataset-acknowledgements.html)
+The directory covers the questions, worked solutions and diagrams in each collection. [Question bank directory, source credits and licenses](https://math-practice.ailleo.net/dataset-acknowledgements.html)
 
 The original [K-12-math knowledge graph](database/knowledge-graph/NOTICE.md) is licensed under [CC BY-NC 4.0](database/knowledge-graph/LICENSE). Original project code, documentation, the template and original sample questions also use [CC BY-NC 4.0](LICENSE). Source-specific licenses apply to the following materials.
 
