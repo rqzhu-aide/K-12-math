@@ -4,7 +4,7 @@
 [![Question Bank 2.0.0](https://img.shields.io/badge/Question_Bank-2.0.0-427354)](https://github.com/rqzhu-aide/K-12-math/releases/tag/ailleo-question-bank-v2.0.0)
 [![Online Math Practice 2.3.3](https://img.shields.io/badge/Online_Math_Practice-2.3.3-625395)](https://math-practice.ailleo.net/build-info.json)
 
-**Ailleo Question Bank 2.0.0** brings together **18,687 questions from eight sources**, each with a worked solution. [Practice free online](https://math-practice.ailleo.net/) · [Download the full question bank (ZIP)](https://github.com/rqzhu-aide/K-12-math/releases/download/ailleo-question-bank-v2.0.0/ailleo-question-bank-2.0.0.zip)
+**Ailleo Question Bank 2.0.0** brings together **18,687 questions from eight sources**, each with a worked solution. [Practice free online](https://math-practice.ailleo.net/) · [Browse the question bank directory](database/QUESTION_BANKS.md) · [Download the full question bank (ZIP)](https://github.com/rqzhu-aide/K-12-math/releases/download/ailleo-question-bank-v2.0.0/ailleo-question-bank-2.0.0.zip)
 
 The Ailleo knowledge graph connects 936 mathematical concepts. Students can follow the Chinese curriculum, browse US Common Core standards, or explore a mathematical idea across grade levels. A question can assess several concepts, and different solutions can use different skills.
 
@@ -18,19 +18,9 @@ The Ailleo knowledge graph connects 936 mathematical concepts. Students can foll
 
 ## Question counts
 
-| Online collection | Selectable questions |
-|---|---:|
-| Chinese curriculum (English) | 3,355 |
-| AMC contests | 5,435 |
-| GSM8K | 8,766 |
-| England KS2 | 254 |
-| U.S. NAEP | 305 |
-| Illustrative Mathematics, first edition | 67 |
-| University of Waterloo CEMC | 338 |
-| OATutor | 167 |
-| **Total** | **18,687** |
+See the question counts and coverage for all eight collections. [Question bank directory](database/QUESTION_BANKS.md) · [Bilingual directory, source credits and licenses](https://math-practice.ailleo.net/dataset-acknowledgements.html)
 
-Question and solution credits identify the original source and any Ailleo-authored explanation or arithmetic correction. The six newer collections include 9,916 worked methods for 9,897 questions. The acknowledgements page lists each publisher and its terms. [Dataset acknowledgements](https://math-practice.ailleo.net/dataset-acknowledgements.html)
+Question and solution credits identify the original source and any Ailleo-authored explanation or arithmetic correction. The six newer collections include 9,916 worked methods for 9,897 questions.
 
 ### Chinese curriculum and AMC breakdown
 
