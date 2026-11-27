@@ -1,20 +1,34 @@
-# Math Practice UI 2.2.0
+# Math Practice
 
-**[Open Math Practice online](https://rqzhu-aide.github.io/K-12-math/)** to practice all 8,790 questions with worked solutions. Choose **Try a problem** for a starting question, or **Browse** to pick a contest, curriculum topic, or mathematical idea.
+**[Open Math Practice online](https://math-practice.ailleo.net/)** for version 2.3.3 with **18,687 questions across eight collections**. The desktop ZIP from `main` contains version 2.2.0 and 8,790 Chinese curriculum and AMC questions. [Run locally](#run-locally)
 
 | Practice a question | Configure the three model roles |
 |:---:|:---:|
-| [![Question with answer and reasoning controls](images/question-page.png)](images/question-page.png) | [![API settings for math reasoning and feedback, voice to text, and sentiment analysis](images/model-settings.png)](images/model-settings.png) |
+| [![Question with answer and reasoning controls](https://math-practice.ailleo.net/images/question-page.png)](https://math-practice.ailleo.net/images/question-page.png) | [![API settings for math reasoning and feedback, voice to text, and sentiment analysis](https://math-practice.ailleo.net/images/model-settings.png)](https://math-practice.ailleo.net/images/model-settings.png) |
 
 ## Start practicing
 
-The online edition needs only a browser and an internet connection. It downloads a browsing index, then loads each question, its worked methods, and any figures you open. Type your answer and reasoning, submit to check supported answers against the key, or open **Explore solution** to read a method. Drafts and saved problems stay in that browser.
+1. On your first visit, an adult reviews and accepts the use agreement. Children practice under a parent or legal guardian’s supervision. [Privacy and use agreement](https://math-practice.ailleo.net/agreement.html)
+2. Choose **Try a problem** or open **Browse**. Under **By source**, choose Chinese curriculum, AMC contests or GSM8K. Choose **Other** for England KS2, U.S. NAEP, Illustrative Mathematics, Waterloo CEMC or OATutor. **By topic** lets you explore the knowledge graph. [Dataset acknowledgements](https://math-practice.ailleo.net/dataset-acknowledgements.html)
+3. Type your answer and reasoning. Choose **Submit answer** to check a supported answer, or **Explore solution** to see the worked steps. Basic practice and worked solutions require no model connection. Unsubmitted drafts stay in the open tab. Saved problems stay in this browser.
 
 For an app icon, use your browser’s **Install** option where available. On iPhone, open the site in Safari and choose **Share → Add to Home Screen**. New questions still load online.
 
+## Connect your tutor online
+
+Open **Settings → Math Tutor LLM** for feedback and hints on submitted reasoning. Enter your OpenAI-compatible provider’s API URL, key if required, and model. Use **Test Connection**. Requests go directly from your browser to your provider, which must allow requests from the Math Practice website (CORS). Choose a model with image support for diagram questions. The key stays in the current tab session. Your provider’s charges and data-use terms apply. Online ChatGPT account sign-in is marked **Forthcoming**.
+
+Under **Settings → Ailleo Math Practice Service**, choose **Agree and enable** to use three optional features together.
+
+- **Speech-to-Text LLM** turns a spoken explanation into a draft you can edit before submitting.
+- **Sentiment Check LLM** reads the original speech transcript for cues such as expressed confidence. The Math Tutor LLM receives the reasoning you actually submit.
+- **Suggest my next problem** uses a limited history of scored practice to recommend another Chinese curriculum or AMC question. You can use recommendations with typed answers, switch topics, or pause.
+
+Ailleo temporarily processes service requests on its own server. Practice data collection for model training is off in this release. Please do not include any confidential information. [Privacy and use agreement](https://math-practice.ailleo.net/agreement.html#experimentalAgreement)
+
 ## Run locally
 
-Choose the local edition for offline practice, your own question banks, or model-backed features such as recorded thinking and tutor feedback.
+Choose the local edition for offline practice, your own question banks, or your own speech and learning-signal connections.
 
 1. Install Python **3.11 or newer** on your computer. [Download Python](https://www.python.org/downloads/)
 2. Download the project ZIP, extract it, and open the **K-12-math-main** folder. [Download the project ZIP](https://github.com/rqzhu-aide/K-12-math/archive/refs/heads/main.zip)
@@ -24,12 +38,12 @@ The first launch builds a search index from the included banks and can take a fe
 
 ## Use your own question bank
 
-Use the [question-bank template](../question-bank-template/README.md) to process your
+Use the [question-bank template](https://github.com/rqzhu-aide/K-12-math/blob/main/question-bank-template/README.md) to process your
 own questions into the shared JSON format, then use the Math Practice UI to serve
 and practice the processed questions. The template includes schemas, four example
 questions, a diagram, and a conversion guide. Preserve each question's answer,
 worked solution, figures, and source attribution when preparing your collection.
-The [explanation style guide](../question-bank-template/EXPLANATION_STYLE.md) helps
+The [explanation style guide](https://github.com/rqzhu-aide/K-12-math/blob/main/question-bank-template/EXPLANATION_STYLE.md) helps
 authors turn correct solutions into connected, student-facing reasoning.
 
 From the repository root, replace `path/to/your-bank` with your prepared bank
@@ -56,7 +70,7 @@ for conversion details and answer-checking limits.
 
 ## Optional AI connections
 
-AI connections run in the **local edition**. The public GitHub Pages site provides answer-key checks and worked solutions. The Python server on your computer handles model requests, API keys, and ChatGPT sign-in. [OpenAI API authentication](https://developers.openai.com/api/reference/overview#authentication)
+The connections below apply to the **local edition**. For the public website, use the [online custom API setup](#connect-your-tutor-online); online ChatGPT sign-in is forthcoming. The local Python server on your computer handles model requests, API keys, and ChatGPT sign-in. [OpenAI API authentication](https://developers.openai.com/api/reference/overview#authentication)
 
 Open the local app’s **Settings → Connection settings → Math reasoning & feedback** and choose how to connect.
 
@@ -135,14 +149,17 @@ reuse a running server with a different profile; choose another port or restart 
 
 ## Updating the hosted site
 
-The hosted edition is published from the root of the `gh-pages` branch. Run these
-PowerShell commands from the repository root with shared installations of Python
-3.11 or newer, Node.js, and Git. Each update uses a new output folder outside
-the checkout.
+GitHub Pages serves the root of `gh-pages`. To rebuild the eight-collection site,
+use the release source checkout that contains the supplemental question bundles,
+the Pages exporter, and the tests below. The desktop ZIP on `main` builds the
+older two-bank edition. Run the following commands from the release source root
+with shared installations of Python 3.11 or newer, Node.js, and Git.
 
 ```powershell
-node --test scripts/test_hosted_runtime.js
+node --test scripts/test_hosted_runtime.js scripts/test_agreement.js
 if ($LASTEXITCODE -ne 0) { throw 'Hosted practice tests failed.' }
+python scripts/test_pages_export.py
+if ($LASTEXITCODE -ne 0) { throw 'Pages export tests failed.' }
 $pagesOutput = Join-Path (Split-Path -Parent $PWD.Path) ("K-12-math-pages-" + (Get-Date -Format yyyyMMdd-HHmmss))
 $pagesWorktree = "$pagesOutput-branch"
 python scripts/build_pages.py --output $pagesOutput
@@ -179,4 +196,12 @@ git worktree remove $pagesWorktree
 
 In GitHub **Settings → Pages**, the source is **Deploy from a branch**, with
 `gh-pages` and **/(root)** selected. GitHub publishes each update to that branch. Check the published
-[Math Practice site](https://rqzhu-aide.github.io/K-12-math/) after deployment.
+[Math Practice site](https://math-practice.ailleo.net/) after deployment.
+
+### Live domain and service
+
+Cloudflare manages DNS for `ailleo.net`. The `math-practice` CNAME points to
+`rqzhu-aide.github.io`, where GitHub Pages serves the website. The optional
+Ailleo Math Practice Service runs on the desktop and uses `api.ailleo.net`.
+The public build record gives the website version and the number of questions in
+each collection. [Published build record](https://math-practice.ailleo.net/build-info.json)

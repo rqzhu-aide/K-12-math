@@ -1,26 +1,44 @@
 # K-12-Math knowledge graph, questions and practice UI
 
-[![Knowledge graph 1.0.0](https://img.shields.io/badge/Knowledge_graph-1.0.0-245984)](database/knowledge-graph/source/metadata.json)
-[![CN bank 2.0.0](https://img.shields.io/badge/CN_bank-2.0.0-427354)](database/cn-math-bank/VERSION)
-[![AMC bank 2.7.0](https://img.shields.io/badge/AMC_bank-2.7.0-996532)](database/amc-bank/VERSION)
-[![Math Practice UI 2.2.0](https://img.shields.io/badge/Math_Practice_UI-2.2.0-625395)](math-practice/VERSION)
+[![Knowledge graph 1.0.0](https://img.shields.io/badge/Knowledge_graph-1.0.0-245984)](https://github.com/rqzhu-aide/K-12-math/blob/main/database/knowledge-graph/source/metadata.json)
+[![CN bank 2.0.0](https://img.shields.io/badge/CN_bank-2.0.0-427354)](https://github.com/rqzhu-aide/K-12-math/blob/main/database/cn-math-bank/VERSION)
+[![AMC bank 2.7.0](https://img.shields.io/badge/AMC_bank-2.7.0-996532)](https://github.com/rqzhu-aide/K-12-math/blob/main/database/amc-bank/VERSION)
+[![Online Math Practice 2.3.3](https://img.shields.io/badge/Online_Math_Practice-2.3.3-625395)](https://math-practice.ailleo.net/build-info.json)
 
-**[Open Math Practice online](https://rqzhu-aide.github.io/K-12-math/)** to browse all 8,790 questions. The site loads the question you choose. No installation or account is needed.
+**[Open Math Practice](https://math-practice.ailleo.net/)** to try **18,687 questions from eight collections**, each with a worked solution. Basic practice is free and works in a browser. The downloadable desktop edition includes the Chinese curriculum and AMC banks, with 8,790 questions. [Local setup](math-practice/README.md#run-locally)
 
-K-12-math is a mathematics study collection with **936 knowledge graph nodes (knowledge items), 3,355 Chinese curriculum questions, and 5,435 AMC questions**. Students can follow the Chinese curriculum, browse US Common Core standards, or explore concepts through the grade-independent **ailleo** map. A question can connect to several concepts, and different solution methods can use different sets of concepts.
+The Ailleo knowledge graph connects 936 mathematical concepts. Students can follow the Chinese curriculum, browse US Common Core standards, or explore a mathematical idea across grade levels. A question can assess several concepts, and different solutions can use different skills.
 
 ## What’s in the repository
 
 | Component | Version | Contents |
 |---|---|---|
-| [Mathematics knowledge graph](database/knowledge-graph/) | 1.0.0 | Connects 936 concepts through 1,634 accepted relationships and links questions to the concepts they assess or use in a solution. |
-| [Chinese curriculum question bank](database/cn-math-bank/) | 2.0.0 | Contains 3,355 questions in English with answers and worked solutions, alongside the original Chinese material. |
-| [AMC question bank](database/amc-bank/) | 2.7.0 | Contains 5,435 questions from 195 competition papers, each with an answer key and a worked solution. |
-| [Math Practice UI](math-practice/) | 2.2.0 | Serves both question banks online and runs locally with optional voice input and AI tutoring. |
+| [Mathematics knowledge graph](https://github.com/rqzhu-aide/K-12-math/tree/main/database/knowledge-graph) | 1.0.0 | Connects 936 concepts through 1,634 accepted relationships and links questions to the concepts they assess or use in a solution. |
+| [Chinese curriculum question bank](https://github.com/rqzhu-aide/K-12-math/tree/main/database/cn-math-bank) | 2.0.0 | Contains 3,355 questions in English with answers and worked solutions, alongside the original Chinese material. |
+| [AMC question bank](https://github.com/rqzhu-aide/K-12-math/tree/main/database/amc-bank) | 2.7.0 | Contains 5,435 questions from 195 competition papers, each with an answer key and a worked solution. |
+| [Math Practice desktop edition](math-practice/README.md#run-locally) | [2.2.0](https://github.com/rqzhu-aide/K-12-math/blob/main/math-practice/VERSION) | Runs the Chinese curriculum and AMC banks locally and can import your own questions. |
 
 ## Question counts
 
-The two banks contain **8,790 question entries**, all with worked solutions and graph annotations. Each appearance of a problem on a separate AMC paper counts as one entry.
+Open **Browse → By source → Question bank**. Chinese curriculum, AMC and GSM8K appear directly. Select **Other** to choose one of the remaining five collections under **Question repository**.
+
+| Online collection | Selectable questions |
+|---|---:|
+| Chinese curriculum (English) | 3,355 |
+| AMC contests | 5,435 |
+| GSM8K | 8,766 |
+| England KS2 | 254 |
+| U.S. NAEP | 305 |
+| Illustrative Mathematics, first edition | 67 |
+| University of Waterloo CEMC | 338 |
+| OATutor | 167 |
+| **Total** | **18,687** |
+
+Question and solution credits identify the original source and any Ailleo-authored explanation or arithmetic correction. The six newer collections include 9,916 worked methods for 9,897 questions. The acknowledgements page lists each publisher and its terms. [Dataset acknowledgements](https://math-practice.ailleo.net/dataset-acknowledgements.html)
+
+### Chinese curriculum and AMC breakdown
+
+These two banks contain 8,790 questions with graph annotations. Each appearance of a problem on a separate AMC paper counts as one entry.
 
 | CN curriculum | Questions | AMC contest family | Questions |
 |---|---:|---|---:|
@@ -34,13 +52,15 @@ For 8,780 questions, the annotation identifies an assessed concept or a solution
 
 ## Practice with the collection
 
-**Online practice.** Choose **Try a problem** to start immediately, or **Browse** to pick a contest, curriculum topic, or concept. Enter your answer and use **Explore solution** to read the worked methods. Your notebook stays in that browser. [Open Math Practice](https://rqzhu-aide.github.io/K-12-math/)
+**Online practice.** Choose **Try a problem**, or choose **Browse → By topic** to follow a concept. Use **Submit answer** to check an answer where automatic grading is available. **Explore solution** opens the worked methods at any time.
+
+For hints on your reasoning, connect your own API under **Settings → Math Tutor LLM**. The optional **Ailleo Math Practice Service** provides voice transcription and sentiment feedback with one consent setting. After a scored Chinese curriculum or AMC submission, **Suggest my next problem** can recommend a follow-up. [Online setup and data use](math-practice/README.md#connect-your-tutor-online)
 
 **Local practice.** For offline access, voice transcription, or AI feedback using your own model connections, download and extract the repository ZIP and install Python 3.11 or newer. On Windows, double-click **Start Math Practice.cmd** in the extracted folder. On macOS or Linux, run `python3 math-practice/runtime/serve_math_practice.py` from that folder. [Download ZIP](https://github.com/rqzhu-aide/K-12-math/archive/refs/heads/main.zip) · [Local setup instructions](math-practice/README.md#run-locally)
 
 | 1. Practice a question | 2. Choose the model for each task |
 |:---:|:---:|
-| [![Question page with the problem, answer controls, and space to explain the solution](math-practice/images/question-page.png)](math-practice/images/question-page.png) | [![API connection settings showing math reasoning and feedback, voice to text, and sentiment analysis](math-practice/images/model-settings.png)](math-practice/images/model-settings.png) |
+| [![Question page with the problem, answer controls, and space to explain the solution](https://math-practice.ailleo.net/images/question-page.png)](https://math-practice.ailleo.net/images/question-page.png) | [![API connection settings showing math reasoning and feedback, voice to text, and sentiment analysis](https://math-practice.ailleo.net/images/model-settings.png)](https://math-practice.ailleo.net/images/model-settings.png) |
 
 In the local edition, students can record their reasoning, edit the transcript, and submit it with their answer. In **Settings → Connection settings**, each of three optional roles can use its own provider. For example, use an OpenAI account for math and local models for the other two.
 
@@ -52,7 +72,7 @@ See [UI and model setup](math-practice/README.md#optional-ai-connections) for su
 
 ## Further development and custom question banks
 
-All 8,790 questions with stored worked solutions use the compact English format published in [question-bank template 1.0.0](question-bank-template/). It records the prompt, choices, accepted answers, classification, sources, and the immediate knowledge nodes for each solution method. To use your own bank, prepare its questions in this format and import the folder into Math Practice. The template includes an importable example and the commands to check it.
+The 8,790 Chinese curriculum and AMC questions use the compact English format published in [question-bank template 1.0.0](https://github.com/rqzhu-aide/K-12-math/tree/main/question-bank-template). It records the prompt, choices, accepted answers, classification, sources, and the immediate knowledge nodes for each solution method. To use your own bank, prepare its questions in this format and import the folder into Math Practice. The template includes an importable example and the commands to check it.
 
 Every stored AMC question now has a worked solution. The [AMC release notes](https://github.com/rqzhu-aide/K-12-math/releases/tag/amc-bank-v2.7.0) describe the final 236 AMC 12 explanations and their source credits.
 
