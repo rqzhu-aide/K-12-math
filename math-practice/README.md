@@ -1,27 +1,30 @@
-# Math Practice UI 2.3.3
+# Math Practice
 
-**[Open Math Practice online](https://math-practice.ailleo.net/)** to practice 18,687 questions across eight sources. Choose **Try a problem** for a starting question, or **Browse** to pick a contest, curriculum topic, or mathematical idea.
+**[Open Math Practice online](https://math-practice.ailleo.net/)** for version 2.3.3 with **18,687 questions across eight collections**. The desktop ZIP from `main` contains version 2.2.0 and 8,790 Chinese curriculum and AMC questions. [Run locally](#run-locally)
 
 | Practice a question | Configure the three model roles |
 |:---:|:---:|
-| [![Question with answer and reasoning controls](images/question-page.png)](images/question-page.png) | [![API settings for math reasoning and feedback, voice to text, and sentiment analysis](images/model-settings.png)](images/model-settings.png) |
+| [![Question with answer and reasoning controls](https://math-practice.ailleo.net/images/question-page.png)](https://math-practice.ailleo.net/images/question-page.png) | [![API settings for math reasoning and feedback, voice to text, and sentiment analysis](https://math-practice.ailleo.net/images/model-settings.png)](https://math-practice.ailleo.net/images/model-settings.png) |
 
 ## Start practicing
 
-The online edition needs only a browser and an internet connection. Chinese curriculum and AMC problems load individually. GSM8K and the five repositories under **Other** load when selected. Type your answer and reasoning, submit to check supported answers against the key, or open **Explore solution** to read a method. Unsubmitted drafts stay in the open tab. Saved problems stay in this browser.
+1. On your first visit, an adult reviews and accepts the use agreement. Children practice under a parent or legal guardian’s supervision. [Privacy and use agreement](https://math-practice.ailleo.net/agreement.html)
+2. Choose **Try a problem** or open **Browse**. Under **By source**, choose Chinese curriculum, AMC contests or GSM8K. Choose **Other** for England KS2, U.S. NAEP, Illustrative Mathematics, Waterloo CEMC or OATutor. **By topic** lets you explore the knowledge graph. [Dataset acknowledgements](https://math-practice.ailleo.net/dataset-acknowledgements.html)
+3. Type your answer and reasoning. Choose **Submit answer** to check a supported answer, or **Explore solution** to see the worked steps. Basic practice and worked solutions require no model connection. Unsubmitted drafts stay in the open tab. Saved problems stay in this browser.
 
 For an app icon, use your browser’s **Install** option where available. On iPhone, open the site in Safari and choose **Share → Add to Home Screen**. New questions still load online.
 
 ## Connect your tutor online
 
-Open **Settings → Math Tutor LLM**. Settings opens over the current problem, so your draft and any pending response remain in place.
+Open **Settings → Math Tutor LLM** for feedback and hints on submitted reasoning. Enter your OpenAI-compatible provider’s API URL, key if required, and model. Use **Test Connection**. Requests go directly from your browser to your provider, which must allow requests from the Math Practice website (CORS). Choose a model with image support for diagram questions. The key stays in the current tab session. Your provider’s charges and data-use terms apply. Online ChatGPT account sign-in is marked **Forthcoming**.
 
-- **Custom API:** enter your own OpenAI-compatible API base URL, API key if required, and model. Save and test the connection. Requests go directly from the browser to that provider. The provider must allow browser requests from this site (CORS). A successful text test does not verify image support; choose a model that can read images for figure questions.
-- **ChatGPT account: Forthcoming.** Online sign-in is not available in this release.
+Under **Settings → Ailleo Math Practice Service**, choose **Agree and enable** to use three optional features together.
 
-API keys remain in the current browser tab session, including its settings frame. Nonsecret preferences can persist between visits. Provider charges and data-use policies apply. Your tutor requests do not pass through the site operator's desktop.
+- **Speech-to-Text LLM** turns a spoken explanation into a draft you can edit before submitting.
+- **Sentiment Check LLM** reads the original speech transcript for cues such as expressed confidence. The Math Tutor LLM receives the reasoning you actually submit.
+- **Suggest my next problem** uses a limited history of scored practice to recommend another Chinese curriculum or AMC question. You can use recommendations with typed answers, switch topics, or pause.
 
-The **Ailleo Math Practice Service** tab in Settings lets you enable speech-to-text, sentiment feedback, and practice recommendations together. After you submit a scored answer, choose **Suggest my next problem** to request a follow-up. The service processes only the information described in the [privacy and use agreement](../agreement.html). You can turn it off at any time. Practice data collection for model training is off.
+Ailleo temporarily processes service requests on its own server. Practice data collection for model training is off in this release. Please do not include any confidential information. [Privacy and use agreement](https://math-practice.ailleo.net/agreement.html#experimentalAgreement)
 
 ## Run locally
 
@@ -35,12 +38,12 @@ The first launch builds a search index from the included banks and can take a fe
 
 ## Use your own question bank
 
-Use the [question-bank template](../question-bank-template/README.md) to process your
+Use the [question-bank template](https://github.com/rqzhu-aide/K-12-math/blob/main/question-bank-template/README.md) to process your
 own questions into the shared JSON format, then use the Math Practice UI to serve
 and practice the processed questions. The template includes schemas, four example
 questions, a diagram, and a conversion guide. Preserve each question's answer,
 worked solution, figures, and source attribution when preparing your collection.
-The [explanation style guide](../question-bank-template/EXPLANATION_STYLE.md) helps
+The [explanation style guide](https://github.com/rqzhu-aide/K-12-math/blob/main/question-bank-template/EXPLANATION_STYLE.md) helps
 authors turn correct solutions into connected, student-facing reasoning.
 
 From the repository root, replace `path/to/your-bank` with your prepared bank
@@ -146,10 +149,11 @@ reuse a running server with a different profile; choose another port or restart 
 
 ## Updating the hosted site
 
-The hosted edition is published from the root of the `gh-pages` branch. Run these
-PowerShell commands from the repository root with shared installations of Python
-3.11 or newer, Node.js, and Git. Each update uses a new output folder outside
-the checkout.
+GitHub Pages serves the root of `gh-pages`. To rebuild the eight-collection site,
+use the release source checkout that contains the supplemental question bundles,
+the Pages exporter, and the tests below. The desktop ZIP on `main` builds the
+older two-bank edition. Run the following commands from the release source root
+with shared installations of Python 3.11 or newer, Node.js, and Git.
 
 ```powershell
 node --test scripts/test_hosted_runtime.js scripts/test_agreement.js
@@ -194,46 +198,10 @@ In GitHub **Settings → Pages**, the source is **Deploy from a branch**, with
 `gh-pages` and **/(root)** selected. GitHub publishes each update to that branch. Check the published
 [Math Practice site](https://math-practice.ailleo.net/) after deployment.
 
-### Connect the Squarespace domain
+### Live domain and service
 
-The public app uses **https://math-practice.ailleo.net/**. Squarespace continues
-hosting **ailleo.net** and **www.ailleo.net**. A separate subdomain does not need
-a URL redirect, a Squarespace page, or Cloudflare routing.
-
-1. In [GitHub Pages settings](https://github.com/rqzhu-aide/K-12-math/settings/pages),
-   use **Deploy from a branch**, **gh-pages**, and **/(root)**. Set **Custom domain**
-   to `math-practice.ailleo.net`, without `https://` or a path. Configure the GitHub
-   side before adding its DNS record.
-2. In the Squarespace domains dashboard, select **ailleo.net**, open **DNS**, and
-   add this custom record:
-
-   | Field | Value |
-   | --- | --- |
-   | Type | CNAME |
-   | Host / Name | `math-practice` |
-   | Data / Alias | `rqzhu-aide.github.io` |
-   | TTL | Default |
-
-   The target contains no scheme, repository name, or path. Leave the existing
-   apex (`@`), `www`, email, and verification records in place. If the exact
-   `math-practice` name already has a conflicting record, inspect that record
-   before replacing it.
-3. After DNS propagates, GitHub provisions the HTTPS certificate. Return to
-   GitHub Pages settings and enable **Enforce HTTPS** when available. Open
-   `https://math-practice.ailleo.net/` to check the agreement, a question, a figure,
-   and a worked solution. Squarespace advises allowing up to 24 to 48 hours for
-   DNS changes; GitHub says HTTPS availability can take up to 24 hours.
-
-The app opens at the site root. Old `/math-practice/` links redirect to the root
-and retain their query and fragment. The source repository's `CNAME` file is
-copied into the exported site so subsequent updates preserve the domain.
-The exporter's `--custom-domain` option can override that source setting.
-
-The publication includes question banks, answer-key checks, available worked solutions,
-drafts held in the open tab, a browser notebook for submitted work, and online tutor settings for the learner's own API URL,
-key, and model. ChatGPT account sign-in is forthcoming; its helper and setup guide
-are not included in the hosted build. Publishing the site does not activate the
-separate desktop speech/D3 gateway.
-
-References: [Squarespace DNS settings](https://support.squarespace.com/hc/en-us/articles/360002101888-Edit-your-domain-s-DNS-records),
-[GitHub Pages custom domains](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
+Cloudflare manages DNS for `ailleo.net`. The `math-practice` CNAME points to
+`rqzhu-aide.github.io`, where GitHub Pages serves the website. The optional
+Ailleo Math Practice Service runs on the desktop and uses `api.ailleo.net`.
+The public build record gives the website version and the number of questions in
+each collection. [Published build record](https://math-practice.ailleo.net/build-info.json)
