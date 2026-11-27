@@ -1,6 +1,6 @@
 # Math Practice
 
-[Open Math Practice online](https://math-practice.ailleo.net/) to practice from all eight collections, or [run the desktop app](#run-locally) for offline practice with Chinese curriculum, AMC and your own questions. [Question counts, sources and full-bank download](../README.md)
+[Open Math Practice online](https://math-practice.ailleo.net/) to practice from all eight collections, or [run the desktop app](#run-locally) for offline practice with Chinese curriculum, AMC and your own questions. [Question bank directory](../database/QUESTION_BANKS.md) · [Question counts and download information](../README.md)
 
 ## Start practicing online
 

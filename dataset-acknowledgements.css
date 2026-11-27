@@ -15,9 +15,23 @@ a:hover { text-decoration-thickness: 2px; }
 h1, h2, p { margin: 0; overflow-wrap: anywhere; }
 h1 { font-size: clamp(2rem, 5vw, 4.25rem); line-height: 1.12; letter-spacing: -.035em; }
 .credits-intro > p { max-width: 53ch; margin-block: .75rem 1.75rem; font-size: 1.125rem; }
-.credits-intro h2 { font-size: 1rem; margin-bottom: .25rem; }
-.credits-intro ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: .125rem 1rem; margin: 0; padding: 0; list-style: none; }
-.credits-intro nav a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+.directory-nav { display: flex; flex-wrap: wrap; gap: 0 1.5rem; }
+.directory-nav a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+.directory-section { margin-block-start: clamp(2rem, 5vw, 3.5rem); }
+.directory-section h2 { font-size: clamp(1.35rem, 3.5vw, 1.85rem); line-height: 1.25; scroll-margin-block-start: 1rem; }
+.directory-section > p { margin-block: .5rem 1rem; max-width: 82ch; color: var(--ink-2); }
+.bank-table { width: 100%; border-collapse: collapse; font-size: .95rem; line-height: 1.5; }
+.bank-table th, .bank-table td { padding: .8rem .9rem; border-block-end: 1px solid var(--hairline); text-align: start; vertical-align: top; }
+.bank-table thead { background: var(--accent-soft); }
+.bank-table tbody { background: var(--surface); }
+.bank-table th:first-child { width: 23%; }
+.bank-table th:nth-child(2) { width: 10%; }
+.bank-table th:nth-child(3) { width: 39%; }
+.bank-table td:nth-child(2) { font-variant-numeric: tabular-nums; }
+.directory-section:not(.candidates) .bank-table :is(th, td):nth-child(2) { text-align: end; }
+.candidates .bank-table th:nth-child(2) { width: 23%; }
+.candidates .bank-table th:nth-child(3) { width: 33%; }
+.bank-table .cell-label { display: none; }
 .credit { display: grid; grid-template-columns: minmax(11rem, 1fr) minmax(0, 2.7fr); gap: .625rem clamp(1rem, 3vw, 2rem); padding: clamp(1.125rem, 3vw, 1.85rem); }
 .credit:has(h2:target), .credit-support { background: var(--surface); }
 .credit h2 { align-self: start; font-size: 1.2rem; line-height: 1.3; scroll-margin-top: 1rem; }
@@ -30,11 +44,17 @@ h1 { font-size: clamp(2rem, 5vw, 4.25rem); line-height: 1.12; letter-spacing: -.
 .license-notice summary { min-height: 1.75rem; cursor: pointer; }
 .license-text { margin: .5rem 0; }
 
-@media (max-width: 42rem) {
+@media (max-width: 46rem) {
   .credit { grid-template-columns: minmax(0, 1fr); }
+  .bank-table, .bank-table tbody { display: block; }
+  .bank-table thead { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .bank-table tbody tr { display: block; padding: .85rem 1rem; border-block-end: 1px solid var(--hairline); }
+  .bank-table tbody th:first-child { display: block; width: auto; padding: 0 0 .35rem; border: 0; }
+  .bank-table tbody td { display: grid; grid-template-columns: minmax(5.5rem, .58fr) minmax(0, 1.42fr); gap: .8rem; padding: .15rem 0; border: 0; }
+  .directory-section:not(.candidates) .bank-table tbody td:nth-child(2) { text-align: start; }
+  .bank-table .cell-label { display: block; color: var(--ink-2); }
 }
 
 @media (max-width: 30rem) {
-  .credits-intro ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   h1 { font-size: clamp(1.75rem, 8.2vw, 2rem); }
 }

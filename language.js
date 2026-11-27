@@ -115,6 +115,7 @@
     'Settings apply to this installation.': '这些设置适用于此安装。',
     'Privacy & use agreement': '隐私与使用协议',
     'Dataset acknowledgements': '题库来源与致谢', 'Software license': '软件许可',
+    'Question banks and credits': '题库目录与致谢',
     'Developed by Ruoqing Zhu · ': '开发者 Ruoqing Zhu · ',
     'Saved key (leave blank to keep)': '已保存密钥（留空则保留）', 'Text tutor test passed': '文字辅导测试通过', 'Test passed': '测试通过',
     'Choose a plan model': '选择套餐模型', 'Enter model name': '输入模型名称', 'Sign in to see models': '登录后查看模型',
