@@ -1,5 +1,7 @@
 # Source credits and licenses
 
+For the questions, worked solutions and diagrams in all eight collections, see the [dataset acknowledgements](https://math-practice.ailleo.net/dataset-acknowledgements.html).
+
 The original [K-12-math knowledge graph](database/knowledge-graph/NOTICE.md) is licensed under [CC BY-NC 4.0](database/knowledge-graph/LICENSE). Original project code, documentation, the template and original sample questions also use [CC BY-NC 4.0](LICENSE). Source-specific licenses apply to the following materials.
 
 | Material | Credit and terms |
@@ -11,7 +13,7 @@ The original [K-12-math knowledge graph](database/knowledge-graph/NOTICE.md) is 
 | Common Core mathematics standards | The National Governors Association Center for Best Practices and the Council of Chief State School Officers are the sole owners and developers of the standards. Standard text is included for educational use supporting the initiative, under the [Common Core Public License](https://www.thecorestandards.org/public-license/). The license has its own terms for examples. |
 | US learning connections | [Student Achievement Partners, Math Coherence Map](https://tools.achievethecore.org/coherence-map/). Learning Commons identifies SAP as the source and documents **CC0** for these learning progressions. The graph retains directional links and related pairs and expresses their direction explicitly. [Dataset description](https://docs.learningcommons.org/knowledge-graph/datasets/learning-progressions/math-coherence-map) and [dataset license](https://docs.learningcommons.org/knowledge-graph/resources/license). |
 | Sources consulted for US concept review | [Illustrative Mathematics legacy tasks](https://tasks.illustrativemathematics.org/) (CC BY-NC-SA 4.0), the [Progressions for the Common Core State Standards in Mathematics writing team](https://archive.math.arizona.edu/ime/progressions/), and [Marble Skill Taxonomy, Generative Spark, Inc.](https://github.com/withmarbleapp/os-taxonomy) (ODbL 1.0 database, CC BY-SA 4.0 authored text). Review records cite these sources for specific comparisons and give the project's own concept definitions and teaching judgments. |
-| Math rendering | [KaTeX](https://katex.org/) contributors, MIT license, with the [bundled license and font notices](math-practice/vendor/katex/). |
+| Math rendering | [KaTeX](https://katex.org/) contributors, MIT license, with the [bundled license and font notices](https://github.com/rqzhu-aide/K-12-math/tree/main/math-practice/vendor/katex). |
 | Sign-in artwork | OpenAI's official ChatGPT sign-in logo is used for the account connection button. [OpenAI sign-in button guidance](https://developers.openai.com/siwc/website). |
 
 **Common Core standards notice.** © Copyright 2010. National Governors Association Center for Best Practices and Council of Chief State School Officers. All rights reserved.
