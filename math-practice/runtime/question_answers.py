@@ -6,10 +6,21 @@ import unicodedata
 
 NUMBER = re.compile(r'^[+-]?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)(?:e([+-]?[0-9]+))?$', re.I)
 DECIMAL = re.compile(r'^[+-]?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)$')
+MIXED_NUMBER = re.compile(r'([+-]?)([0-9]+)[ \t]+([0-9]+)[ \t]*/[ \t]*([0-9]+)')
+INTEGER_LIST = re.compile(r'[+-]?[0-9]+(?:\s*,\s*[+-]?[0-9]+)*')
 
 
 def numeric_value(text):
-    parts = text.strip().split('/')
+    text = text.strip()
+    mixed = MIXED_NUMBER.fullmatch(text)
+    if mixed:
+        sign, whole, numerator, denominator = mixed.groups()
+        whole, numerator, denominator = int(whole), int(numerator), int(denominator)
+        if not 0 < numerator < denominator:
+            raise ValueError('A mixed number needs a positive proper fraction')
+        value = Fraction(whole * denominator + numerator, denominator)
+        return -value if sign == '-' else value
+    parts = text.split('/')
     if len(parts) > 2:
         raise ValueError('Unsupported number')
     for part in parts:
@@ -27,8 +38,9 @@ def normalized(value):
     return re.sub(r'\s+', '', unicodedata.normalize('NFKC', value).replace('−', '-')).casefold()
 
 
-def form_text(value):
-    value = normalized(value)
+def form_text(value, *, keep_spaces=False):
+    value = (unicodedata.normalize('NFKC', value).replace('−', '-').strip()
+             if keep_spaces else normalized(value))
     for left, right in (('\\(', '\\)'), ('$', '$')):
         if value.startswith(left) and value.endswith(right):
             return value[len(left):-len(right)]
@@ -58,7 +70,7 @@ def answer_form_feedback(question, answer):
         return 'Write the numerical coefficient first and omit multiplication signs between the coefficient and letters.'
     if form == 'ordered-list':
         try:
-            actual = numeric_list(text.strip('()'))
+            actual = numeric_list(form_text(answer, keep_spaces=True).strip('()'))
             targets = [numeric_list(value) for value in question.get('Accepted Responses', [question['Correct Answer']])]
             if actual not in targets and any(sorted(actual) == sorted(target) for target in targets):
                 return 'Write the values in the order requested in the problem.'
@@ -151,8 +163,11 @@ def exact_answer_category(question, answer):
 def _numeric_category(question, answer, expected):
     try:
         actual, target = numeric_list(answer), numeric_list(expected)
-        close = lambda a, b: abs(a-b) <= Fraction(1, 10**9)
-        if question.get('Unordered Answers') or question.get('Answer Form') == 'ordered-list':
+        ordered = question.get('Answer Form') == 'ordered-list'
+        integer_key = ordered and INTEGER_LIST.fullmatch(unicodedata.normalize('NFKC', expected).replace('−', '-').strip())
+        tolerance = 0 if integer_key else Fraction(1, 10**9)
+        close = lambda a, b: abs(a-b) <= tolerance
+        if question.get('Unordered Answers') or ordered:
             # Match occurrences once, not just membership: 3,3 cannot replace 3,-3.
             remaining = sorted(target)
             for value in sorted(actual):
@@ -161,7 +176,7 @@ def _numeric_category(question, answer, expected):
                     return 'wrong'
                 remaining.pop(index)
             in_order = len(actual) == len(target) and all(close(a, b) for a, b in zip(actual, target))
-            return 'partial' if remaining or (question.get('Answer Form') == 'ordered-list' and not in_order) else enforce_answer_form(question, answer, 'correct')
+            return 'partial' if remaining or (ordered and not in_order) else enforce_answer_form(question, answer, 'correct')
         if len(actual) < len(target):
             return 'partial' if all(close(a, b) for a, b in zip(actual, target)) else None
         if len(actual) == len(target) and all(close(a, b) for a, b in zip(actual, target)):

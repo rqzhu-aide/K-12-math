@@ -9,6 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATABASE = ROOT / "database"
 WEB = "https://math-practice.ailleo.net/dataset-acknowledgements.html"
+DIRECTORY_PATH = "database/question-bank-directory.json"
 
 
 def english(value):
@@ -73,24 +74,36 @@ def write(path, value, check):
     path.write_text(value, encoding="utf-8", newline="\n")
 
 
+def validate_release_directory(catalog, version, published_counts=None):
+    if catalog["version"] != version:
+        raise ValueError("The catalog version differs from the question bank version.")
+    released = catalog["released"]
+    counts = {row["id"]: row["size"] for row in released}
+    if len(counts) != len(released) or not all(type(n) is int and n > 0 for n in counts.values()):
+        raise ValueError("Released sources must have unique IDs and positive integer counts.")
+    if published_counts is not None and counts != published_counts:
+        differences = [f"{bank}: directory={counts.get(bank)}, Pages={published_counts.get(bank)}"
+                       for bank in sorted(counts.keys() | published_counts.keys())
+                       if counts.get(bank) != published_counts.get(bank)]
+        raise ValueError("Published question counts differ from the directory. " + ", ".join(differences))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true")
     parser.add_argument("--build-info", type=Path, help="Verify each released count against a Pages build-info.json")
     parser.add_argument("--page", type=Path, help="Update or check the bilingual HTML in a separate site checkout")
     args = parser.parse_args()
-    catalog = json.loads((DATABASE / "question-bank-directory.json").read_text(encoding="utf-8"))
+    catalog = json.loads((ROOT / DIRECTORY_PATH).read_text(encoding="utf-8"))
     released, candidates = catalog["released"], catalog["candidates"]
     version = (DATABASE / "QUESTION_BANK_VERSION").read_text(encoding="ascii").strip()
-    if catalog["version"] != version:
-        raise ValueError("Update the source directory for the current question bank version.")
-    counts = {row["id"]: row["size"] for row in released}
-    if len(counts) != len(released) or not all(isinstance(n, int) and n > 0 for n in counts.values()):
-        raise ValueError("Released sources must have unique IDs and positive integer counts.")
+    published_counts = None
     if args.build_info:
         build = json.loads(args.build_info.read_text(encoding="utf-8"))
-        if build["questionBankVersion"] != version or counts != {**build["questions"], **build["practicePools"]}:
-            raise ValueError("The catalog version or question counts differ from the Pages build.")
+        if build["questionBankVersion"] != version:
+            raise ValueError("The Pages build version differs from the question bank version.")
+        published_counts = {**build["questions"], **build["practicePools"]}
+    validate_release_directory(catalog, version, published_counts)
     total = sum(row["size"] for row in released)
     intro = f"Ailleo Question Bank {version} contains {total:,} questions from {len(released)} sources."
     chinese_intro = f"Ailleo 题库 {version} 共收录 {len(released)} 个来源的 {total:,} 道题。"
@@ -104,7 +117,13 @@ def main():
     md = (f"# Ailleo question bank directory\n\n{intro} {scope} "
           f"[Practice online](https://math-practice.ailleo.net/) · [Bilingual directory and credits]({WEB})\n\n"
           f"## Available in Ailleo\n\n{table(released, True, False)}\n\n{rights}\n\n"
-          f"## Sources under review\n\n{candidate_note}\n\n{table(candidates, False, False)}\n")
+          f"## Sources under review\n\n{candidate_note}\n\n{table(candidates, False, False)}\n\n"
+          "## Updating the directory\n\n"
+          "For each new collection, record the included question count, coverage and original license in "
+          "[the source inventory](question-bank-directory.json). Link the questions and their worked methods "
+          "to the skills they assess or use. Regenerate the directory with "
+          "`python scripts/render_question_directory.py` and compare it with the release using "
+          "`python scripts/render_question_directory.py --check --build-info PATH/TO/build-info.json`.\n")
     write(DATABASE / "QUESTION_BANKS.md", md, args.check)
     # The downloadable desktop edition has its own source layout. Its README links to the online directory.
     page = args.page or ROOT / "math-practice" / "dataset-acknowledgements.html"

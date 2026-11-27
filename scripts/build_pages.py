@@ -104,7 +104,8 @@ def copy_public_assets(root, output, inventory):
                  or relative.startswith("database/amc-bank/official-solutions/"))
         notice = (relative in ("LICENSE", "THIRD_PARTY_NOTICES.md", "README.md",
                                "math-practice/README.md", "database/amc-bank/ADAPTATIONS.md",
-                               "database/amc-bank/sources.json", "database/QUESTION_BANKS.md")
+                               "database/amc-bank/sources.json", "database/QUESTION_BANKS.md",
+                               "database/question-bank-directory.json")
                   or re.fullmatch(r"database/(amc-bank|cn-math-bank|knowledge-graph)/(LICENSE|NOTICE.md)", relative))
         if asset or notice:
             copy_file(root, output, relative, inventory=inventory)
