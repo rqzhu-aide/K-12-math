@@ -1,4 +1,6 @@
-# Processed Chinese curriculum bank 2.0.0
+# Chinese curriculum collection
+
+These 3,355 questions are part of Ailleo Question Bank 2.0.0. [Full eight-source release](https://github.com/rqzhu-aide/K-12-math/releases/tag/ailleo-question-bank-v2.0.0)
 
 All 3,355 English questions and their worked solutions use the [compact 3.0 question schema](../../question-bank-template/question-v3.schema.json). Each question has a `sourceRef` in the [bank source index](source-index.json). Its entry preserves the original Chinese question and explanation under `meta.Original`. Each solution method also identifies its source. The browser reads the included `bank.js` for offline practice.
 

@@ -1,6 +1,6 @@
 # Math Practice
 
-**[Open Math Practice online](https://math-practice.ailleo.net/)** for version 2.3.3 with **18,687 questions across eight collections**. The desktop ZIP from `main` contains version 2.2.0 and 8,790 Chinese curriculum and AMC questions. [Run locally](#run-locally)
+**[Open Math Practice online](https://math-practice.ailleo.net/)** to use **Ailleo Question Bank 2.0.0** in app version 2.3.3. The bank contains 18,687 questions from eight sources in one download. The separate desktop app ZIP from `main` contains app version 2.2.0 and 8,790 Chinese curriculum and AMC questions. [Download the full question bank](https://github.com/rqzhu-aide/K-12-math/releases/download/ailleo-question-bank-v2.0.0/ailleo-question-bank-2.0.0.zip) · [Run the desktop app](#run-locally)
 
 | Practice a question | Configure the three model roles |
 |:---:|:---:|
@@ -203,5 +203,5 @@ In GitHub **Settings → Pages**, the source is **Deploy from a branch**, with
 Cloudflare manages DNS for `ailleo.net`. The `math-practice` CNAME points to
 `rqzhu-aide.github.io`, where GitHub Pages serves the website. The optional
 Ailleo Math Practice Service runs on the desktop and uses `api.ailleo.net`.
-The public build record gives the website version and the number of questions in
-each collection. [Published build record](https://math-practice.ailleo.net/build-info.json)
+The public build record gives the app version, the combined question bank version
+and the count for each source. [Published build record](https://math-practice.ailleo.net/build-info.json)

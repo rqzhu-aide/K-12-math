@@ -1,11 +1,10 @@
 # K-12-Math knowledge graph, questions and practice UI
 
 [![Knowledge graph 1.0.0](https://img.shields.io/badge/Knowledge_graph-1.0.0-245984)](https://github.com/rqzhu-aide/K-12-math/blob/main/database/knowledge-graph/source/metadata.json)
-[![CN bank 2.0.0](https://img.shields.io/badge/CN_bank-2.0.0-427354)](https://github.com/rqzhu-aide/K-12-math/blob/main/database/cn-math-bank/VERSION)
-[![AMC bank 2.7.0](https://img.shields.io/badge/AMC_bank-2.7.0-996532)](https://github.com/rqzhu-aide/K-12-math/blob/main/database/amc-bank/VERSION)
+[![Question Bank 2.0.0](https://img.shields.io/badge/Question_Bank-2.0.0-427354)](https://github.com/rqzhu-aide/K-12-math/releases/tag/ailleo-question-bank-v2.0.0)
 [![Online Math Practice 2.3.3](https://img.shields.io/badge/Online_Math_Practice-2.3.3-625395)](https://math-practice.ailleo.net/build-info.json)
 
-**[Open Math Practice](https://math-practice.ailleo.net/)** to try **18,687 questions from eight collections**, each with a worked solution. Basic practice is free and works in a browser. The downloadable desktop edition includes the Chinese curriculum and AMC banks, with 8,790 questions. [Local setup](math-practice/README.md#run-locally)
+**Ailleo Question Bank 2.0.0** brings together **18,687 questions from eight sources**, each with a worked solution. Practice is free in a browser, or you can download the whole bank as one ZIP. [Open Math Practice](https://math-practice.ailleo.net/) · [Download the question bank](https://github.com/rqzhu-aide/K-12-math/releases/download/ailleo-question-bank-v2.0.0/ailleo-question-bank-2.0.0.zip)
 
 The Ailleo knowledge graph connects 936 mathematical concepts. Students can follow the Chinese curriculum, browse US Common Core standards, or explore a mathematical idea across grade levels. A question can assess several concepts, and different solutions can use different skills.
 
@@ -14,9 +13,8 @@ The Ailleo knowledge graph connects 936 mathematical concepts. Students can foll
 | Component | Version | Contents |
 |---|---|---|
 | [Mathematics knowledge graph](https://github.com/rqzhu-aide/K-12-math/tree/main/database/knowledge-graph) | 1.0.0 | Connects 936 concepts through 1,634 accepted relationships and links questions to the concepts they assess or use in a solution. |
-| [Chinese curriculum question bank](https://github.com/rqzhu-aide/K-12-math/tree/main/database/cn-math-bank) | 2.0.0 | Contains 3,355 questions in English with answers and worked solutions, alongside the original Chinese material. |
-| [AMC question bank](https://github.com/rqzhu-aide/K-12-math/tree/main/database/amc-bank) | 2.7.0 | Contains 5,435 questions from 195 competition papers, each with an answer key and a worked solution. |
-| [Math Practice desktop edition](math-practice/README.md#run-locally) | [2.2.0](https://github.com/rqzhu-aide/K-12-math/blob/main/math-practice/VERSION) | Runs the Chinese curriculum and AMC banks locally and can import your own questions. |
+| [Ailleo Question Bank](#question-counts) | 2.0.0 | Includes all eight sources, their worked solutions, figures and credits. |
+| [Math Practice desktop edition](math-practice/README.md#run-locally) | [2.2.0](https://github.com/rqzhu-aide/K-12-math/blob/main/math-practice/VERSION) | Includes 8,790 Chinese curriculum and AMC questions and can import your own questions. |
 
 ## Question counts
 
@@ -74,7 +72,7 @@ See [UI and model setup](math-practice/README.md#optional-ai-connections) for su
 
 The 8,790 Chinese curriculum and AMC questions use the compact English format published in [question-bank template 1.0.0](https://github.com/rqzhu-aide/K-12-math/tree/main/question-bank-template). It records the prompt, choices, accepted answers, classification, sources, and the immediate knowledge nodes for each solution method. To use your own bank, prepare its questions in this format and import the folder into Math Practice. The template includes an importable example and the commands to check it.
 
-Every stored AMC question now has a worked solution. The [AMC release notes](https://github.com/rqzhu-aide/K-12-math/releases/tag/amc-bank-v2.7.0) describe the final 236 AMC 12 explanations and their source credits.
+Every stored AMC question has a worked solution. The earlier release notes document the final 236 AMC 12 explanations and their source credits. [AMC collection history](https://github.com/rqzhu-aide/K-12-math/releases/tag/amc-bank-v2.7.0)
 
 ## License and sources
 

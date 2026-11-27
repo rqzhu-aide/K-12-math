@@ -1,4 +1,6 @@
-# AMC practice bank 2.7.0
+# AMC contest collection
+
+These 5,435 questions are part of Ailleo Question Bank 2.0.0. [Full eight-source release](https://github.com/rqzhu-aide/K-12-math/releases/tag/ailleo-question-bank-v2.0.0)
 
 **5,435 questions and answer keys from 195 papers**, with question and choice
 diagrams. American Mathematics Competitions (AMC) content is credited to the
