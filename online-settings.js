@@ -7,9 +7,9 @@
   if (language) language.register({
     'Provider API URL': '服务商 API 网址',
     'Use an OpenAI-compatible API that accepts requests from this website.': '请使用允许本网站发送请求的 OpenAI 兼容 API。',
-    'Your browser sends requests directly to your provider and keeps your API key only for this tab session. A test sends a text-only sample and may use API credits. The provider’s data policy applies.': '浏览器会直接向你的服务商发送请求。API 密钥仅保留在当前标签页的会话中。连接测试只发送文字示例，可能消耗 API 额度。数据处理遵循服务商的政策。',
-    'ChatGPT sign-in is coming to the website.': '网页版将支持 ChatGPT 登录。',
+    'Requests go directly to your provider under its data policy. This browser keeps your API key for this tab’s session. Test Connection sends a text-only sample and may use API credits.': '请求会直接发送给所选服务商，数据处理遵循其政策。浏览器仅在当前标签页的会话中保留 API 密钥。测试连接时只发送文字示例，可能消耗 API 额度。',
     'Fetch models': '获取模型列表',
+    'ChatGPT account sign-in is forthcoming.': '网页版将支持使用 ChatGPT 账号登录。',
     'Check connection': '检查连接', 'Checking…': '正在检查…',
     'Connection checks send no audio or practice data.': '检查连接时不会发送录音或练习数据。',
     'Server setup pending': '服务器尚未接入',

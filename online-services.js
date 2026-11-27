@@ -14,8 +14,8 @@
   const MAX_GAP_DAYS = 1826.25;
   const messages = {
     unconfigured: 'Ailleo’s server connection is not ready yet.',
-    permission: 'Review the agreement and enable experimental features in Settings first.',
-    consent_required: 'Review the experimental features agreement in Settings before trying again.',
+    permission: 'In Settings, open Ailleo Math Practice Service and choose Agree and enable.',
+    consent_required: 'Review the agreement in Settings under Ailleo Math Practice Service, then try again.',
     notice_outdated: 'The service agreement changed. Review it in Settings before trying again.',
     unauthorized: 'Your Ailleo service session ended. Try again to start a new session.',
     token_expired: 'Your Ailleo service session expired. Try again to start a new session.',
@@ -36,8 +36,8 @@
   };
   if (window.MathPracticeLanguage) window.MathPracticeLanguage.register({
     [messages.unconfigured]: 'Ailleo 的服务器连接尚未准备好。',
-    [messages.permission]: '请先在设置中阅读协议，并开启实验性功能。',
-    [messages.consent_required]: '请先在设置中阅读实验性功能协议，然后重试。',
+    [messages.permission]: '请在设置中打开“Ailleo 数学练习服务”，然后选择“同意并开启”。',
+    [messages.consent_required]: '请在设置中的“Ailleo 数学练习服务”下阅读协议，然后重试。',
     [messages.notice_outdated]: '服务协议已更新。请先在设置中查看，然后重试。',
     [messages.unauthorized]: 'Ailleo 服务会话已结束。请重试以开始新会话。',
     [messages.token_expired]: 'Ailleo 服务会话已过期。请重试以开始新会话。',

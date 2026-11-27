@@ -123,9 +123,9 @@ pilot's pairing and card-ordering arguments. Such checks support the correspondi
 written arguments; they are not a formal verification of all 200 proofs.
 
 All 200 reviewed drafts were preserved before comparison with archived LIVE
-explanations. The [editorial experiment report](EXPLANATION_REVIEW.md) records what
+explanations. The [editorial experiment report](https://github.com/rqzhu-aide/K-12-math/blob/main/database/amc-bank/EXPLANATION_REVIEW.md) records what
 that comparison revealed and how it informed the updated
-[explanation style guide](../../question-bank-template/EXPLANATION_STYLE.md).
+[explanation style guide](https://github.com/rqzhu-aide/K-12-math/blob/main/question-bank-template/EXPLANATION_STYLE.md).
 After the initial drafts were frozen, the comparison informed original
 refinements to teaching choices. Archived worked-solution sentences were not used
 as a rewriting template, and their prose and solution-only diagrams are not

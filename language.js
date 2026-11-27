@@ -81,7 +81,7 @@
     'Math Practice': '数学练习', 'Model settings · Math Practice': '模型设置 · 数学练习', 'Back to practice': '返回练习',
     'Model settings': '模型设置',
     'Connect your tutor': '连接辅导模型',
-    'Connect your own model to review your answers and give hints. Choose a model that can read images for questions with figures. Browsing, answer-key checks and included solutions work on their own.': '连接自己的模型来检查答案并获取提示。带图题目需要能理解图片的模型。浏览题目、核对标准答案和阅读已有解答均可独立使用。',
+    'Connect a tutor for feedback and hints on submitted work. Choose a model that can read images for problems with figures.': '连接辅导模型后，可获得对已提交作答的反馈和提示。练习带图题时，请选择能读取图片的模型。',
     'The launcher stores API keys on this computer and sends tutor requests to your provider. A test sends a text-only sample and may use API credits or plan usage. The provider’s data policy applies.': '启动器将 API 密钥保存在本机，并向你的服务商发送辅导请求。连接测试只发送文字示例，可能消耗 API 额度或套餐用量。数据处理遵循服务商的政策。',
     'Speech-to-text tests use a silent clip. Keep the local launcher running to use your model connections.': '语音转文字测试使用静音片段。使用模型连接时，请保持本地启动器运行。',
     'Settings saved.': '设置已保存。', 'Settings saved. Text test passed.': '设置已保存。文字测试已通过。',
